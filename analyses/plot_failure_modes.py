@@ -78,46 +78,43 @@ def main():
     df = df.sort_values("pct_of_all_classified")            # smallest first -> top of chart after barh
     fam_share = df.groupby("fam").pct_of_all_classified.sum()
 
-    fig, ax = plt.subplots(figsize=(9.6, 6.4))
-    fig.subplots_adjust(left=0.30, right=0.93, top=0.66, bottom=0.11)
-    y = range(len(df))
-    ax.barh(list(y), df.pct_of_all_classified, height=0.62, color=df.color, zorder=3)
-    for yi, (pct, n) in enumerate(zip(df.pct_of_all_classified, df.n_trials)):
-        ax.text(pct + 0.7, yi, f"{pct:.0f}%" if pct >= 1 else f"{pct:.1f}%",
-                va="center", ha="left", fontsize=10.5, fontweight="bold", color=INK)
-
-    ax.set_yticks(list(y))
-    ax.set_yticklabels(df.disp, fontsize=11, color=INK)
-    ax.set_xticks([]); ax.set_xlim(0, 50)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    ax.tick_params(length=0)
-    ax.margins(y=0.02)
-
-    # legend keyed to family (with family shares)
-    handles = [Patch(facecolor=FAMILY[f], label=f"{FAMILY_LABEL[f]}  ·  {fam_share[f]:.0f}%")
-               for f in ("biology", "business", "ambiguous")]
-    leg = ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=9.5,
-                    handlelength=1.0, handleheight=1.0, borderpad=0, labelspacing=0.6)
-    for t in leg.get_texts():
-        t.set_color(SEC)
-
-    # title block
-    fig.text(0.035, 0.92, "Why industry trials are terminated",
-             fontsize=19, fontweight="bold", color=INK, ha="left")
-    fig.text(0.035, 0.855,
-             "Classified reason for stopping, across 5,510 terminated industry Phase 1–3 trials (2015–2025).",
-             fontsize=11, color=SEC, ha="left", linespacing=1.4)
-    fig.add_artist(Line2D([0.035, 0.965], [0.75, 0.75], color=RULE, lw=1, transform=fig.transFigure))
-    fig.text(0.035, 0.028,
-             "Source: Melissa Du predictive-validity benchmark — why_stopped classifications "
-             "(Claude Sonnet) over industry Phase 1–3 trials, 2015–2025.",
-             fontsize=8, color=MUTED, ha="left")
-
-    fig.savefig(os.path.join(FIGDIR, "failure_modes.png"), bbox_inches="tight", dpi=600)
-    fig.savefig(os.path.join(FIGDIR, "failure_modes.svg"), bbox_inches="tight")
-    plt.close(fig)
-    print("wrote data/failure_modes.png (600 dpi) + .svg")
+    for clean in (False, True):
+        fig, ax = plt.subplots(figsize=(9.6, 5.8) if clean else (9.6, 6.4))
+        fig.subplots_adjust(left=0.30, right=0.93, top=0.965 if clean else 0.66, bottom=0.06)
+        y = range(len(df))
+        ax.barh(list(y), df.pct_of_all_classified, height=0.62, color=df.color, zorder=3)
+        for yi, pct in enumerate(df.pct_of_all_classified):
+            ax.text(pct + 0.7, yi, f"{pct:.0f}%" if pct >= 1 else f"{pct:.1f}%",
+                    va="center", ha="left", fontsize=10.5, fontweight="bold", color=INK)
+        ax.set_yticks(list(y))
+        ax.set_yticklabels(df.disp, fontsize=11, color=INK)
+        ax.set_xticks([]); ax.set_xlim(0, 50)
+        for s in ax.spines.values():
+            s.set_visible(False)
+        ax.tick_params(length=0)
+        ax.margins(y=0.02)
+        handles = [Patch(facecolor=FAMILY[f], label=f"{FAMILY_LABEL[f]}  ·  {fam_share[f]:.0f}%")
+                   for f in ("biology", "business", "ambiguous")]
+        leg = ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=9.5,
+                        handlelength=1.0, handleheight=1.0, borderpad=0, labelspacing=0.6)
+        for t in leg.get_texts():
+            t.set_color(SEC)
+        if not clean:
+            fig.text(0.035, 0.92, "Why industry trials are terminated",
+                     fontsize=19, fontweight="bold", color=INK, ha="left")
+            fig.text(0.035, 0.855,
+                     "Classified reason for stopping, across 5,510 terminated industry Phase 1–3 trials (2015–2025).",
+                     fontsize=11, color=SEC, ha="left", linespacing=1.4)
+            fig.add_artist(Line2D([0.035, 0.965], [0.75, 0.75], color=RULE, lw=1, transform=fig.transFigure))
+            fig.text(0.035, 0.028,
+                     "Source: Melissa Du predictive-validity benchmark — why_stopped classifications "
+                     "(Claude Sonnet) over industry Phase 1–3 trials, 2015–2025.",
+                     fontsize=8, color=MUTED, ha="left")
+        stem = "failure_modes" + ("_clean" if clean else "")
+        fig.savefig(os.path.join(FIGDIR, stem + ".png"), bbox_inches="tight", dpi=600)
+        fig.savefig(os.path.join(FIGDIR, stem + ".svg"), bbox_inches="tight")
+        plt.close(fig)
+        print(f"wrote data/{stem}.png (600 dpi) + .svg")
 
 
 if __name__ == "__main__":
