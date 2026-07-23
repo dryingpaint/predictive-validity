@@ -115,18 +115,27 @@ def main():
         ck_sponsor_ph2[ck][canonical_sp] += r["n_ph2plus_trials"] or 0
 
     # Determine originator for each canonical drug
-    originator = {}  # ck -> canonical sponsor
+    # Rule:
+    #   - If in preclin.approval → use approval sponsor (definitive)
+    #   - Otherwise: sponsor must have >=50% of ALL Ph2+ trials on this drug
+    #     AND at least 2 Ph2+ trials.
+    #   This excludes comparator drugs (many-sponsor drugs where no one has majority)
+    #   AND pre-2015 approved drugs (where many sponsors run add-on combo trials).
+    originator = {}
     for ck in unique_canonical:
         if ck in approved_owner:
             originator[ck] = approved_owner[ck]
-        else:
-            # Modal Phase 2+ sponsor
-            sponsors = ck_sponsor_ph2.get(ck, {})
-            if sponsors:
-                # Pick sponsor with most Phase 2+ trials
-                best = max(sponsors.items(), key=lambda x: x[1])
-                if best[1] > 0:
-                    originator[ck] = best[0]
+            continue
+        sponsors = ck_sponsor_ph2.get(ck, {})
+        if not sponsors:
+            continue
+        total_ph2 = sum(sponsors.values())
+        if total_ph2 < 2:
+            continue
+        best_sponsor, best_count = max(sponsors.items(), key=lambda x: x[1])
+        share = best_count / total_ph2
+        if best_count >= 2 and share >= 0.5:
+            originator[ck] = best_sponsor
 
     print(f"Canonical drugs with attributed originator: {len(originator)}")
 
