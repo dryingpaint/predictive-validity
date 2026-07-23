@@ -72,7 +72,9 @@ python3 analyses/final_benchmark.py
 predictive-validity/
 ├── README.md            ← you are here
 ├── RESULTS.md           ← full leaderboard, ablation, pathway wrongness, robustness
-├── data/                CSV snapshots (approvals + leaderboard)
+├── CASE_STUDIES.md      6 preclinical-strong / clinical-fail drug case studies
+├── CONTEXT_FDA.md       FDA approvals landscape + failure-reason breakdown
+├── data/                CSV snapshots (approvals + leaderboard) + charts
 ├── db/                  Postgres schema + ingest + SCHEMA.md (evidence taxonomy)
 ├── benchmark/           Scoring framework — 5 scorer files + runner
 └── analyses/            Reproducible analysis scripts (ablation, time-machine, etc.)
