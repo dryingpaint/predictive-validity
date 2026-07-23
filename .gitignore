@@ -1,0 +1,35 @@
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Large data (not for public repo — see docs/STATE_OF_ANALYSIS.md for how
+# to reingest from source)
+*.log
+db/data_pubmed_abstracts.jsonl
+db/data_trials_*.csv
+db/data_impc*.jsonl
+db/data_gnomad*.tsv
+db/data_chembl*.json
+db/data_drug_master_lookup.csv
+db/data_program_master.csv
+db/data_trials_industry_drug.csv
