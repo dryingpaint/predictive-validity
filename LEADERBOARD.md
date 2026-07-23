@@ -62,28 +62,67 @@ The loose AUC (0.917) is inflated by the "already-known-approved-target" shortcu
 | oncology | 1,370 | 0.927 [0.911, 0.940] | 4.92 |
 | other | 1,035 | 0.844 [0.818, 0.870] | 4.41 |
 
-## Leave-one-category-out ablation (loose outcome, full model AUC = 0.917)
+## Per-modality (STRICT outcome, LogReg 5-fold CV)
+
+| Modality | n T-I | Approved | AUC (95% CI) | RS(top 10%) |
+|---|---|---|---|---|
+| biologic (mAb / protein / peptide) | 762 | 136 (17.8%) | **0.832 [0.778, 0.872]** | **9.86** |
+| small_molecule | 961 | 216 (22.5%) | 0.824 [0.792, 0.862] | 6.56 |
+| genetic_medicine (ASO / siRNA / gene therapy) | 78 | 28 (35.9%) | too small (n<100) | — |
+| cell_therapy (CAR-T / TIL) | 36 | 10 (27.8%) | too small (n<100) | — |
+
+**Reading:** small-molecule and biologic programs are predicted equally well (AUC ≈ 0.83). Biologics have higher top-decile enrichment (RS 9.9 vs 6.6). Genetic-medicine and cell-therapy modalities have too few T-I pairs at Phase 2+ for stable per-modality CV.
+
+## Larger cohort — Phase 1+ (relaxes phase filter)
+
+The Phase 2+ filter is itself an outcome filter (drugs that die at Phase 1 are excluded). Relaxing to Phase 1+ gives a bigger and less biased cohort.
+
+| Model | Cohort | n | Base rate | AUC (95% CI) | RS(top 10%) |
+|---|---|---|---|---|---|
+| **stacked_ph1_strict_v1** | Phase 1+ strict | **13,639** | **2.95%** | **0.838 [0.815, 0.861]** | **13.81** |
+| logreg_ph1_strict_v1 | Phase 1+ strict | 13,639 | 2.95% | 0.837 [0.813, 0.859] | 13.95 |
+| stacked_v1 | Phase 2+ strict | 8,035 | 5.02% | 0.829 [0.806, 0.855] | 12.84 |
+| logreg_strict_v1 | Phase 2+ strict | 8,035 | 5.02% | 0.826 [0.801, 0.851] | 13.11 |
+
+Larger cohort improves AUC slightly (0.838 vs 0.829) and increases RS(top 10%) to nearly 14×.
+
+## Leave-one-category-out ablation
+
+### STRICT outcome (LogReg, full model AUC = 0.829, cohort n=8,035)
 
 | Category removed | AUC | ΔAUC | Interpretation |
 |---|---|---|---|
-| A. Genetics | 0.893 | **−0.024** | Most load-bearing category |
-| Context (Nelson tier + TA) | 0.912 | −0.005 | Secondary |
-| B. Mechanistic | 0.915 | −0.002 | Marginal |
-| E. Human PD | 0.915 | −0.001 | Marginal |
-| H. Safety | 0.915 | −0.001 | Marginal |
-| I. Landscape | 0.916 | −0.001 | Marginal |
-| C. Cell (excl. DepMap) | 0.916 | −0.001 | Marginal |
-| D. Animal | 0.917 | **+0.000** | Null — adds no marginal information |
+| **A. Genetics** | **0.651** | **−0.177** | **Absolutely load-bearing** |
+| Context (Nelson tier + TA) | 0.811 | −0.018 | Secondary |
+| B. Mechanistic | 0.822 | −0.006 | Marginal |
+| E. Human PD | 0.826 | −0.003 | Marginal |
+| H. Safety | 0.827 | −0.002 | Marginal |
+| I. Landscape | 0.827 | −0.001 | Marginal |
+| **D. Animal** | 0.829 | **+0.000** | **Null — adds no signal** |
+| **C. Cell** | 0.829 | **+0.000** | **Null — adds no signal** |
 
-**Reading:** genetics is dominant. Removing all animal in vivo evidence doesn't hurt AUC — target-level animal-in-vivo literature is fully redundant with other categories. Consistent with our earlier RS analysis (target-level Line D score has RS ≈ 1.0).
+**Reading:** on the STRICT (per-T-I) outcome, genetics contributes ~18pp of AUC (out of ~33pp above random). Removing target-level cell + animal literature evidence changes AUC by exactly zero. This is a cleaner and more dramatic version of the earlier loose-outcome ablation.
+
+### Loose outcome (LightGBM, previous run — for comparison)
+
+| Category removed | AUC | ΔAUC |
+|---|---|---|
+| A. Genetics | 0.893 | −0.024 |
+| Context | 0.912 | −0.005 |
+| B. Mechanistic | 0.915 | −0.002 |
+| D. Animal | 0.917 | +0.000 |
+
+Genetics dominance is consistent across outcome definitions. On strict outcome the effect is 7× larger.
 
 ## Key claims (honest, robust)
 
-1. **Preclinical evidence predicts T-I-level FDA approval at AUC 0.826** (LogReg, 5-fold CV OOF, strict outcome, cohort n=8,035, base rate 5.0%).
-2. **Top-decile predictions are 13× enriched for approvals.** ~30% of top-10% scored T-I pairs got FDA-approved (base rate 5%).
-3. **Model is well-calibrated** (LogReg ECE 0.001 on strict outcome).
-4. **Genetics (Category A) is the dominant preclinical signal.** Removing it drops AUC 2.4pp; removing D. Animal in vivo drops AUC 0.0pp.
-5. **AUC is inflated 12pp by loose vs strict outcome** (0.92 → 0.79). Prior "any-approval" formulations of T-I benchmarks systematically overestimate model performance.
+1. **Preclinical evidence predicts T-I-level FDA approval at AUC 0.838** (stacked ensemble, 5-fold CV OOF, strict outcome, Phase 1+ cohort n=13,639, base rate 2.95%).
+2. **Top-decile predictions are 13.8× enriched for approvals.** Top 10% of scored T-Is contain 60% of all approvals in the cohort.
+3. **Model is well-calibrated** (stacked ECE 0.012 on strict outcome).
+4. **Genetics (Category A) is the dominant preclinical signal.** On strict outcome, removing it drops AUC by 17.7pp (0.829 → 0.651). Removing target-level cell + animal literature drops AUC by exactly 0.0pp.
+5. **AUC is inflated 8-12pp by loose vs strict outcome** (0.92 → 0.79-0.83). Prior "any-approval" formulations of T-I benchmarks systematically overestimate model performance.
+6. **LightGBM overfits on strict time-machine** (AUC collapses from 0.79 in-fold to 0.58 out-of-time). LogReg is robust (0.77 out-of-time with RS 12-14×).
+7. **Predictive performance is consistent across small-molecule (AUC 0.82) and biologic (AUC 0.83) modalities.**
 
 ## Data-quality fixes applied vs v1
 

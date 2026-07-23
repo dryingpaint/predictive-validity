@@ -80,35 +80,48 @@ predictive-validity/
 
 Some tables live in the `public.*` schema (targets, gene_essentiality, gnomAD constraint, ClinGen, Mendelian, GWAS, IMPC, tissue expression, single-cell, Open Targets composites, adverse events, GO, Reactome). These come from the sibling [genome-browser](https://github.com/dryingpaint/genome-browser) project's Neon ingestion pipeline.
 
-## Benchmark leaderboard (current — see [LEADERBOARD.md](LEADERBOARD.md) for full detail)
+## Benchmark headline (see [LEADERBOARD.md](LEADERBOARD.md) for full detail)
 
-Cohort: 2,611 T-I pairs Phase 2+. Baseline approval rate 28.4%.
+**Task:** given a (target × indication) pair and public preclinical evidence, predict P(any drug on this T-I gets FDA-approved for THIS specific indication).
 
-**Top of leaderboard (5-fold CV OOF):**
+**Cohort:** 13,639 T-I pairs at Phase 1+, strict per-T-I outcome, base rate 2.95%.
 
-| Scorer | AUC (95% CI) | RS(top 10%) |
-|---|---|---|
-| **lightgbm_v1** | **0.917 [0.904, 0.926]** | 4.70 |
-| ensemble_top3_v1 | 0.909 [0.895, 0.920] | 4.37 |
-| randomforest_v1 | 0.879 [0.865, 0.893] | 4.10 |
-| logreg_l2_v1 | 0.809 [0.793, 0.825] | 3.80 |
-| rs_composite_calibrated_v1 | 0.723 [0.702, 0.744] | 2.23 |
-| genetic_only_v1 | 0.629 [0.608, 0.659] | 3.24 |
-| family_precedent_v1 | 0.606 [0.590, 0.628] | 1.12 |
-| nelson_only_v1 | 0.532 [0.518, 0.548] | 4.90 |
-| random_v1 | 0.509 [0.485, 0.539] | 1.01 |
+**Top of leaderboard (5-fold CV OOF, STRICT outcome):**
 
-**Time-machine (LightGBM, trained pre-cutoff, tested post-cutoff):**
+| Scorer | AUC (95% CI) | RS(top 10%) | ECE |
+|---|---|---|---|
+| **stacked_ph1_strict_v1** | **0.838 [0.815, 0.861]** | **13.81** | 0.012 |
+| logreg_ph1_strict_v1 | 0.837 [0.813, 0.859] | 13.95 | 0.257 |
+| stacked_v1 (Ph2+) | 0.829 [0.806, 0.855] | 12.84 | 0.017 |
+| logreg_strict_v1 (Ph2+) | 0.826 [0.801, 0.851] | 13.11 | **0.001** |
+| lightgbm_robust_strict (Ph2+, regularized) | 0.733 | 6.76 | 0.29 |
+
+**Time-machine (STRICT, LogReg, out-of-time):**
 
 | Cutoff | Train n | Test n | AUC | RS(top 10%) |
 |---|---|---|---|---|
-| 2021-01-01 | 1,656 | 682 | 0.875 [0.844, 0.903] | **6.16** |
-| 2019-01-01 | 1,189 | 1,149 | 0.860 [0.832, 0.886] | 6.08 |
-| 2017-01-01 | 593 | 1,745 | 0.795 [0.771, 0.822] | 3.70 |
+| 2019-01-01 | 4,199 | 3,522 | 0.769 [0.651, 0.888] | 12.28 |
+| 2017-01-01 | 2,311 | 5,410 | 0.770 [0.656, 0.876] | 14.00 |
 
-**Per-TA:** oncology AUC **0.927**, "other" 0.844.
+LightGBM overfits on strict time-machine (drops to AUC 0.58) — LogReg is robust.
 
-**Ablation:** removing Category A (genetics) drops AUC 2.4pp — dominant signal. Removing D (animal in vivo) drops AUC 0.0pp — target-level animal literature adds no marginal information beyond other categories.
+**Per-modality (STRICT):**
+
+| Modality | n | AUC | RS(top 10%) |
+|---|---|---|---|
+| biologic (mAb/protein/peptide) | 762 | 0.832 | 9.86 |
+| small_molecule | 961 | 0.824 | 6.56 |
+
+**Ablation (STRICT outcome, LogReg full = 0.829):**
+
+| Removed | AUC | ΔAUC |
+|---|---|---|
+| A. Genetics | 0.651 | **−0.177** (dominant) |
+| Context (Nelson tier + TA) | 0.811 | −0.018 |
+| C. Cell | 0.829 | **+0.000** (null) |
+| D. Animal | 0.829 | **+0.000** (null) |
+
+**Key finding: on strict outcome, human genetic evidence contributes ~18pp of AUC. Target-level cell + animal literature contribute exactly zero.**
 
 Live leaderboard: `SELECT * FROM preclin.v_benchmark_leaderboard`.
 
