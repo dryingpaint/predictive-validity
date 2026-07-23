@@ -80,21 +80,35 @@ predictive-validity/
 
 Some tables live in the `public.*` schema (targets, gene_essentiality, gnomAD constraint, ClinGen, Mendelian, GWAS, IMPC, tissue expression, single-cell, Open Targets composites, adverse events, GO, Reactome). These come from the sibling [genome-browser](https://github.com/dryingpaint/genome-browser) project's Neon ingestion pipeline.
 
-## Benchmark leaderboard (current)
+## Benchmark leaderboard (current — see [LEADERBOARD.md](LEADERBOARD.md) for full detail)
 
 Cohort: 2,611 T-I pairs Phase 2+. Baseline approval rate 28.4%.
 
-| Scorer | AUC (95% CI) | Recall@10% | Prec@10% | RS(top 10%) | ECE |
-|---|---|---|---|---|---|
-| lightgbm_v1 (5-fold CV OOF) | **0.917 [0.904, 0.926]** | 0.34 | 0.97 | 4.70 | 0.07 |
-| randomforest_v1 (5-fold CV OOF) | 0.879 [0.865, 0.893] | 0.31 | 0.89 | 4.10 | 0.13 |
-| logreg_l2_v1 (5-fold CV OOF) | 0.809 [0.793, 0.825] | 0.30 | 0.84 | 3.80 | 0.05 |
-| rs_composite_calibrated_v1 | 0.723 [0.702, 0.744] | 0.20 | 0.56 | 2.23 | **0.004** |
-| rs_composite_v1 | 0.714 [0.694, 0.738] | 0.19 | 0.55 | 2.17 | 0.36 |
-| genetic_only_v1 | 0.629 [0.608, 0.659] | 0.27 | 0.75 | 3.24 | 0.05 |
-| family_precedent_v1 | 0.606 [0.590, 0.628] | 0.11 | 0.31 | 1.12 | 0.15 |
-| nelson_only_v1 | 0.532 [0.518, 0.548] | 0.35 | **1.00** | **4.90** | 0.10 |
-| random_v1 | 0.509 [0.485, 0.539] | 0.10 | 0.29 | 1.01 | 0.29 |
+**Top of leaderboard (5-fold CV OOF):**
+
+| Scorer | AUC (95% CI) | RS(top 10%) |
+|---|---|---|
+| **lightgbm_v1** | **0.917 [0.904, 0.926]** | 4.70 |
+| ensemble_top3_v1 | 0.909 [0.895, 0.920] | 4.37 |
+| randomforest_v1 | 0.879 [0.865, 0.893] | 4.10 |
+| logreg_l2_v1 | 0.809 [0.793, 0.825] | 3.80 |
+| rs_composite_calibrated_v1 | 0.723 [0.702, 0.744] | 2.23 |
+| genetic_only_v1 | 0.629 [0.608, 0.659] | 3.24 |
+| family_precedent_v1 | 0.606 [0.590, 0.628] | 1.12 |
+| nelson_only_v1 | 0.532 [0.518, 0.548] | 4.90 |
+| random_v1 | 0.509 [0.485, 0.539] | 1.01 |
+
+**Time-machine (LightGBM, trained pre-cutoff, tested post-cutoff):**
+
+| Cutoff | Train n | Test n | AUC | RS(top 10%) |
+|---|---|---|---|---|
+| 2021-01-01 | 1,656 | 682 | 0.875 [0.844, 0.903] | **6.16** |
+| 2019-01-01 | 1,189 | 1,149 | 0.860 [0.832, 0.886] | 6.08 |
+| 2017-01-01 | 593 | 1,745 | 0.795 [0.771, 0.822] | 3.70 |
+
+**Per-TA:** oncology AUC **0.927**, "other" 0.844.
+
+**Ablation:** removing Category A (genetics) drops AUC 2.4pp — dominant signal. Removing D (animal in vivo) drops AUC 0.0pp — target-level animal literature adds no marginal information beyond other categories.
 
 Live leaderboard: `SELECT * FROM preclin.v_benchmark_leaderboard`.
 
