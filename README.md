@@ -1,157 +1,133 @@
-# Predictive Validity — a benchmark for preclinical evidence → clinical drug approval
+# Predictive Validity
 
-**Core question:** how much does each kind of preclinical evidence lift the probability that a target–indication pair yields an approved drug?
+**Benchmark for how well public preclinical evidence predicts clinical drug approval.**
 
-**Cohort:** every industry-sponsored Phase 1–3 drug/biological trial from ClinicalTrials.gov 2015–2025, joined against 40+ evidence dimensions from public sources (genetics, tissue expression, cell essentiality, animal models, pathway biology, safety, landscape). All data lives in a Postgres schema; every analysis is a SQL query.
+Given a `(target × indication)` hypothesis and 40+ public evidence dimensions (human genetics, tissue expression, cell essentiality, animal models, safety, landscape), predict `P(any drug on this T-I gets FDA-approved for THIS indication)`. Comparable across models — trained ML, rule-based composites (Nelson/Pheiron RS), LLM agents.
 
-**Novel angles vs. published work in this area:**
+## Headline result
 
-- **Sponsor-euphemism-corrected failure classification** — Haiku + Sonnet re-labeled 5,510 clinical failures whose stated reasons systematically euphemize efficacy fails as "commercial/strategic."
-- **Silent-kill audit** — 25,877 programs completed a Phase 2/3 without approval; publication cross-reference recovers their true failure reasons.
-- **Pathway-wrongness** — even with strong Line C/D/E evidence, ~50% of Phase 3 attempts fail for efficacy. Answers "given positive evidence, how often is the pathway still wrong."
-- **Pluggable benchmark** — any target-scoring model plugs in via Python callable or CSV; leaderboard compares AUC / Recall@k / RS / calibration.
+Best model: **stacked ensemble (LogReg + regularized LightGBM + RandomForest)** on Phase 1+ target-matched T-I pairs, strict per-indication outcome, held-out-target GroupKFold.
+
+| Metric | Value |
+|---|---|
+| **AUC** | **0.825 [0.797, 0.849]** |
+| **RS(top 10%)** | **13.67** (top decile enriched 13.7× for approvals) |
+| Cohort | n=13,639, base rate 2.95% |
+| ECE | 0.013 (well-calibrated) |
+| Recall @ top 10% | 0.60 |
+
+Compare against:
+- **Untrained Pheiron RS composite** (published methodology): AUC 0.615
+- **Sonnet LLM agent** (reads evidence dossier, predicts): AUC 0.633
+- **Random baseline**: AUC 0.500
+
+**Trained ML extracts ~21pp more signal than published rule-based composites, ~19pp more than LLM.**
+
+Full leaderboard across 8 scorers × 3 cohorts × 3 CV strategies: [`RESULTS.md`](RESULTS.md).
+
+## Key finding
+
+**Genetic evidence alone accounts for ~18pp of AUC.** Removing all A. Genetics features drops LogReg from 0.829 to 0.651. Removing target-level C (cell) or D (animal) literature drops AUC by exactly 0.0pp — target-level publication saturates due to publication bias.
+
+See [`ANALYSIS.md`](ANALYSIS.md) for the full "pathway-wrongness" analysis (even strong evidence still fails 50-78% at Phase 3).
 
 ## Quick start
 
 ```bash
-git clone https://github.com/dryingpaint/predictive-validity.git
+git clone git@github.com:dryingpaint/predictive-validity.git
 cd predictive-validity
+cp .env.example .env       # add DATABASE_URL
 
-# 1. Environment
-cp .env.example .env
-# Edit .env — add DATABASE_URL
+pip install psycopg2-binary scikit-learn numpy lightgbm anthropic
 
-# 2. Python deps
-pip install psycopg2-binary scikit-learn numpy lightgbm
-
-# 3. Explore
+# Explore live leaderboard
 psql "$DATABASE_URL" -c "SELECT * FROM preclin.v_benchmark_leaderboard"
-psql "$DATABASE_URL" -c "SELECT * FROM preclin.v_relative_success_clean ORDER BY relative_success DESC NULLS LAST"
+
+# Run the honest final benchmark (~5 min)
+python3 analyses/final_benchmark.py
 ```
 
-## What's in the box
+## Repo structure
 
 ```
 predictive-validity/
-├── README.md                       ← you are here
-├── .env.example                    ← credential template
-├── db/                             ← canonical SQL layer
-│   ├── 01_schema.sql                 DDL for preclin.* tables
-│   ├── 02_ingest.py                  Big-bang JSONL/CSV → Postgres
-│   ├── 03_views.sql                  Analysis views
-│   ├── 04_effect_size_ci.py          Bootstrap CIs
-│   ├── 05_ingest_extra.py            Untapped genome-browser tables
-│   ├── 06_ti_views.sql               Target-indication unit + Relative Success
-│   ├── 07_ingest_more.py             Single-cell Tau + GO annotations
-│   ├── 08_analysis_views.sql         Clean views (placebos filtered)
-│   ├── 09_benchmark_schema.sql       Benchmark run + prediction tables
-│   ├── 10_benchmark_scorers.py       5 rule-based scorers
-│   ├── 11_benchmark_runner.py        Cohort loader + metrics + storage
-│   ├── 12_external_scorer_template.py Wire external models
-│   ├── 13_ml_scorers.py              LogReg / RandomForest / LightGBM
-│   ├── 14_calibrate_rs_composite.py  Platt scaling
-│   ├── 15_llm_agent_scorer.py        Sonnet reads evidence, predicts
-│   ├── BENCHMARK.md                  Benchmark methodology
-│   ├── COVERAGE_STATE.md             What we have vs what's missing
-│   ├── QUESTIONS.md                  25 example SQL queries
-│   ├── RUNBOOK.md                    Operational runbook
-│   └── data_approvals.csv            544 FDA approvals 2015-2025
-└── docs/
-    ├── STATE_OF_ANALYSIS.md          ← start here
-    ├── ANSWERS.md                    Direct answers to 5 core questions
-    ├── PRECLINICAL_EVIDENCE_SPEC.md  40-dim evidence taxonomy
-    ├── PATHWAY_WRONGNESS.md          "78% Rule" analysis
-    ├── REPORT_FDA_APPROVALS.md       FDA approvals landscape
-    ├── CASE_STUDIES.md               6 preclinical-strong / clinical-fail cases
-    ├── DB_SCHEMA_DESIGN.md           Schema design rationale
-    └── EFFECT_SIZES_*.md             Bootstrap CI effect-size tables
+├── README.md            ← you are here
+├── RESULTS.md           ← full leaderboard + interpretation
+├── ROBUSTNESS.md        ← 12 attacks vs benchmark + how each survives
+├── ANALYSIS.md          ← pathway wrongness, ablation, RS metric
+├── SCHEMA.md            ← evidence taxonomy + database design
+├── CASE_STUDIES.md      ← 6 preclinical-strong / clinical-fail drugs
+├── CONTEXT_FDA.md       ← FDA approvals landscape 2015-2025
+├── data/
+│   ├── approvals.csv       544 FDA approvals
+│   └── leaderboard.csv     Live snapshot of all benchmark runs
+├── db/                  ← schema + ingest (SQL + Python)
+│   ├── 01_schema.sql       preclin.* DDL
+│   ├── 02_ingest.py        Big-bang JSONL/CSV → Postgres
+│   ├── 03_views.sql
+│   ├── 04_ingest_extra.py    Tissue, pleiotropy, pathways, DGIdb, HPO
+│   ├── 05_ti_views.sql       Target-indication unit + RS metric
+│   ├── 06_ingest_more.py     Single-cell Tau + GO annotations
+│   ├── 07_analysis_views.sql
+│   ├── 08_strict_outcome_view.sql   Per-T-I approval
+│   ├── 09_time_cutoff_features.sql  Time-aware family precedent
+│   ├── README.md              How to operate the DB
+│   └── QUESTIONS.md           25 SQL example queries
+├── benchmark/           ← benchmark framework
+│   ├── schema.sql          benchmark_run + benchmark_prediction tables
+│   ├── runner.py           Cohort loader, metrics, bootstrap CIs
+│   ├── scorers_rule_based.py   5 baselines (random, family, nelson, genetic, rs_composite)
+│   ├── scorers_ml.py       LogReg, LightGBM, RF + robust variants
+│   ├── scorers_ensemble.py    Stacked LogReg meta-learner
+│   ├── scorers_pheiron.py     Untrained Pheiron RS composite
+│   ├── scorers_llm_agent.py   Sonnet reads evidence, predicts
+│   ├── external_template.py   How to wire an external model
+│   └── README.md              Benchmark methodology
+└── analyses/            ← one-off analysis scripts
+    ├── final_benchmark.py     Ph1+ strict held-out-target (headline)
+    ├── ablation.py            Leave-one-category-out
+    ├── time_machine.py        Pre-cutoff train, post-cutoff test
+    ├── held_out_target.py     GroupKFold on target_id
+    ├── phase1_cohort.py       Broader Ph1+ cohort
+    ├── per_ta_loose_deprecated.py    Per therapeutic area
+    ├── per_modality.py        Small-mol vs biologic
+    ├── feature_importance.py  Coefficients vs published RS
+    ├── calibrate_rs.py        Platt scaling
+    ├── effect_sizes_ci.py     Bootstrap CIs on evidence dimensions
+    ├── negative_result_xgb_catboost.py    Tried, didn't help
+    └── negative_result_family_features.py  Tried, didn't help
 ```
-
-## Where the data lives
-
-**Postgres schema `preclin.*` in a hosted Neon instance.** Contains:
-
-- 52,694 canonical drugs
-- 76,974 programs (drug × indication × sponsor)
-- 88,999 program → trial links (mapped to CT.gov)
-- 250,000+ evidence facts (long-form: subject × dimension × source)
-- 13,000+ LLM classifications (Haiku + Sonnet failure reasons, target resolutions, silent-kill verifications)
-- 40 evidence dimensions across Categories A–I
-
-Some tables live in the `public.*` schema (targets, gene_essentiality, gnomAD constraint, ClinGen, Mendelian, GWAS, IMPC, tissue expression, single-cell, Open Targets composites, adverse events, GO, Reactome). These come from the sibling [genome-browser](https://github.com/dryingpaint/genome-browser) project's Neon ingestion pipeline.
-
-## Benchmark headline (see [LEADERBOARD.md](LEADERBOARD.md) for full detail)
-
-**Task:** given a (target × indication) pair and public preclinical evidence, predict P(any drug on this T-I gets FDA-approved for THIS specific indication).
-
-**Cohort:** 13,639 T-I pairs at Phase 1+, strict per-T-I outcome, base rate 2.95%.
-
-**FINAL benchmark (Phase 1+ strict, GROUP KFOLD on target_id — no target in both train and test):**
-
-| Scorer | AUC (95% CI) | RS(top 10%) | ECE |
-|---|---|---|---|
-| **stacked_final_v1** | **0.825 [0.802, 0.848]** | **13.67** | 0.013 |
-| logreg_final_v1 | 0.822 [0.798, 0.845] | 13.53 | 0.268 |
-
-Held-out-target AUC drops only 1.3pp from random-split (0.838 → 0.825). Model generalizes to unseen targets.
-
-**Top of leaderboard (5-fold CV OOF, STRICT outcome):**
-
-| Scorer | AUC (95% CI) | RS(top 10%) | ECE |
-|---|---|---|---|
-| **stacked_ph1_strict_v1** | **0.838 [0.815, 0.861]** | **13.81** | 0.012 |
-| logreg_ph1_strict_v1 | 0.837 [0.813, 0.859] | 13.95 | 0.257 |
-| stacked_v1 (Ph2+) | 0.829 [0.806, 0.855] | 12.84 | 0.017 |
-| logreg_strict_v1 (Ph2+) | 0.826 [0.801, 0.851] | 13.11 | **0.001** |
-| lightgbm_robust_strict (Ph2+, regularized) | 0.733 | 6.76 | 0.29 |
-
-**Time-machine (STRICT, LogReg, out-of-time):**
-
-| Cutoff | Train n | Test n | AUC | RS(top 10%) |
-|---|---|---|---|---|
-| 2019-01-01 | 4,199 | 3,522 | 0.769 [0.651, 0.888] | 12.28 |
-| 2017-01-01 | 2,311 | 5,410 | 0.770 [0.656, 0.876] | 14.00 |
-
-LightGBM overfits on strict time-machine (drops to AUC 0.58) — LogReg is robust.
-
-**Per-modality (STRICT):**
-
-| Modality | n | AUC | RS(top 10%) |
-|---|---|---|---|
-| biologic (mAb/protein/peptide) | 762 | 0.832 | 9.86 |
-| small_molecule | 961 | 0.824 | 6.56 |
-
-**Ablation (STRICT outcome, LogReg full = 0.829):**
-
-| Removed | AUC | ΔAUC |
-|---|---|---|
-| A. Genetics | 0.651 | **−0.177** (dominant) |
-| Context (Nelson tier + TA) | 0.811 | −0.018 |
-| C. Cell | 0.829 | **+0.000** (null) |
-| D. Animal | 0.829 | **+0.000** (null) |
-
-**Key finding: on strict outcome, human genetic evidence contributes ~18pp of AUC. Target-level cell + animal literature contribute exactly zero.**
-
-Live leaderboard: `SELECT * FROM preclin.v_benchmark_leaderboard`.
 
 ## How to plug in your own model
 
-**Option 1 — in-process Python scorer.** Implement the standard interface in `db/12_external_scorer_template.py`, register it, run `python3 11_benchmark_runner.py <your_scorer_name>`.
+Two paths (see [`benchmark/external_template.py`](benchmark/external_template.py)):
 
-**Option 2 — external CSV.** Produce `(target_id, indication_id, predicted_p_approval)` CSV, wire in via `wire_external_scores()` in `12_external_scorer_template.py`.
+**Path 1 — in-process:** implement a Python callable matching the standard interface, register it, run `python3 benchmark/runner.py <your_scorer_name>`.
 
-Either way, results land in `preclin.v_benchmark_leaderboard` alongside our baselines.
+**Path 2 — external CSV:** produce `(target_id, indication_id, predicted_p_approval)` CSV, wire in via `wire_external_scores()`. Same benchmark, same leaderboard, direct comparison.
 
-## Honest caveats
+Either way, results appear in `preclin.v_benchmark_leaderboard`.
 
-- **Cohort has selection bias.** 2,611 Phase 2+ T-I pairs are enriched for approved drugs (28.4% base rate vs 1.8% across all 82,014 programs).
-- **No time-machine backtest yet.** All scorers use current-day evidence (not "what was known in 2018"). Real predictive-validity requires retrofitting `evidence_as_of` dates.
-- **Publication bias saturates target-level literature.** Line B/C/D/E scores are collinear at the top; DepMap essentiality gives cleaner negative signal.
-- **Non-CT.gov trials (EU-CTR, ChiCTR, JP) not ingested.** ~20% coverage gap for global drug development.
-- **Preclinical / IND kills are invisible.** Never enter CT.gov.
+## What we CAN claim (with statistical support)
 
-Full caveats: [`docs/STATE_OF_ANALYSIS.md`](docs/STATE_OF_ANALYSIS.md), [`db/COVERAGE_STATE.md`](db/COVERAGE_STATE.md).
+1. Public preclinical evidence predicts strict per-T-I FDA approval at **AUC 0.825** on Phase 1+ target-matched cohort, held-out-target CV.
+2. **Top-decile predictions are 13.7× enriched** for approvals.
+3. Model is well-calibrated (**ECE 0.013**).
+4. **Human genetic evidence is dominant** (17.7pp of AUC by itself).
+5. **Target-level cell + animal literature contribute zero marginal signal** on top of genetics + safety.
+6. Model **generalizes to unseen targets** (2pp drop between random-split and held-out-target for LogReg).
+7. Model **generalizes out-of-time** (LogReg trained pre-2019 predicts 2019+ outcomes at AUC 0.77, RS 12.3).
+8. **Trained ML beats published rule-based methodology by 21pp AUC** (0.826 vs 0.615) and beats LLM-agent scoring by 19pp (0.826 vs 0.633).
+
+## What we CANNOT claim
+
+- Absolute `p_approval` interpretation is cohort-scoped (base rate 2.95% in Phase 1+ target-matched; not directly comparable to a random drug in the world).
+- Non-CT.gov trials (EU-CTR, ChiCTR) not covered — ~20% of global drug development invisible.
+- Preclinical / IND-stage kills never enter CT.gov, invisible entirely.
+- Full temporal validity would require retrofit `evidence_as_of` per fact; feature values are current-day even in time-machine splits.
+
+Full caveats: [`ROBUSTNESS.md`](ROBUSTNESS.md).
 
 ## License
 
-MIT — do what you want. If you build something interesting on top, please let us know.
+MIT. If you build something on top, please cite / link back.

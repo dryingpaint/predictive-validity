@@ -22,14 +22,18 @@ Thumbs.db
 .idea/
 *.swp
 
-# Large data (not for public repo — see docs/STATE_OF_ANALYSIS.md for how
-# to reingest from source)
+# Large upstream data (not committed — reingest from source per db/README.md)
 *.log
-db/data_pubmed_abstracts.jsonl
+*.jsonl.tmp
+db/data_*.jsonl
+db/data_*.tsv
+db/data_*.json
 db/data_trials_*.csv
-db/data_impc*.jsonl
-db/data_gnomad*.tsv
-db/data_chembl*.json
 db/data_drug_master_lookup.csv
 db/data_program_master.csv
-db/data_trials_industry_drug.csv
+
+# Model artifacts / training telemetry
+catboost_info/
+*.model
+*.pkl
+*.joblib

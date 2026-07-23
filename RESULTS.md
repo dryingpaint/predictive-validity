@@ -104,8 +104,10 @@ LightGBM overfits and doesn't generalize temporally. LogReg with L2 + calibratio
 
 ## Files (see repo)
 
-- `db/LEADERBOARD.md` — full leaderboard details
-- `db/BENCHMARK.md` — methodology
-- `ROBUSTNESS.md` — 12 attacks vs benchmark and how each survives
-- `db/QUESTIONS.md` — 25 example SQL queries
-- `docs/STATE_OF_ANALYSIS.md` — overall state of the project
+- [`ROBUSTNESS.md`](ROBUSTNESS.md) — 12 attacks vs benchmark and how each survives
+- [`ANALYSIS.md`](ANALYSIS.md) — pathway wrongness analysis and effect sizes
+- [`SCHEMA.md`](SCHEMA.md) — evidence taxonomy + database schema design
+- [`CASE_STUDIES.md`](CASE_STUDIES.md) — 6 preclinical-strong / clinical-fail drugs
+- [`benchmark/README.md`](benchmark/README.md) — benchmark methodology
+- [`db/QUESTIONS.md`](db/QUESTIONS.md) — 25 example SQL queries
+- [`data/leaderboard.csv`](data/leaderboard.csv) — snapshot of all benchmark runs
