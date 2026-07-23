@@ -86,6 +86,15 @@ Some tables live in the `public.*` schema (targets, gene_essentiality, gnomAD co
 
 **Cohort:** 13,639 T-I pairs at Phase 1+, strict per-T-I outcome, base rate 2.95%.
 
+**FINAL benchmark (Phase 1+ strict, GROUP KFOLD on target_id — no target in both train and test):**
+
+| Scorer | AUC (95% CI) | RS(top 10%) | ECE |
+|---|---|---|---|
+| **stacked_final_v1** | **0.825 [0.802, 0.848]** | **13.67** | 0.013 |
+| logreg_final_v1 | 0.822 [0.798, 0.845] | 13.53 | 0.268 |
+
+Held-out-target AUC drops only 1.3pp from random-split (0.838 → 0.825). Model generalizes to unseen targets.
+
 **Top of leaderboard (5-fold CV OOF, STRICT outcome):**
 
 | Scorer | AUC (95% CI) | RS(top 10%) | ECE |

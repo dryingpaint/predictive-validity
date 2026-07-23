@@ -114,6 +114,28 @@ Larger cohort improves AUC slightly (0.838 vs 0.829) and increases RS(top 10%) t
 
 Genetics dominance is consistent across outcome definitions. On strict outcome the effect is 7× larger.
 
+## FINAL benchmark — held-out targets + Phase 1+ + strict outcome
+
+Most stringent evaluation: GroupKFold splits so no target appears in both train and test — tests generalization to genuinely unseen targets.
+
+| Scorer | Cohort | n | AUC (95% CI) | RS(top 10%) | ECE |
+|---|---|---|---|---|---|
+| **stacked_final_v1** | Ph1+ strict, held-out target | 13,639 | **0.825 [0.802, 0.848]** | **13.67** | 0.013 |
+| **logreg_final_v1** | Ph1+ strict, held-out target | 13,639 | **0.822 [0.798, 0.845]** | 13.53 | 0.268 |
+| stacked_v1 (random-split) | Ph1+ strict | 13,639 | 0.838 [0.815, 0.861] | 13.81 | 0.012 |
+
+**Held-out-target drop:** only 1.3pp (0.838 → 0.825). Model has learned generalizable biology, not target-specific shortcuts.
+
+## Robustness comparison — random split vs held-out-target
+
+| Scorer | Random-split AUC | Held-out-target AUC | Δ |
+|---|---|---|---|
+| stacked (Ph1+) | 0.838 | 0.825 | −1.3pp |
+| logreg (Ph2+) | 0.826 | 0.804 | −2.2pp |
+| lightgbm_robust (Ph2+) | 0.733 | 0.670 | **−6.3pp** (overfits to targets) |
+
+**Reading:** LogReg + linear stack generalize to unseen targets. LightGBM had target-specific pattern-matching baked in.
+
 ## Key claims (honest, robust)
 
 1. **Preclinical evidence predicts T-I-level FDA approval at AUC 0.838** (stacked ensemble, 5-fold CV OOF, strict outcome, Phase 1+ cohort n=13,639, base rate 2.95%).
