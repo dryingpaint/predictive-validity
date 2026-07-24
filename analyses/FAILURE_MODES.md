@@ -37,6 +37,16 @@ Biology (efficacy / safety / PK) ≈ 18%.
 - **Terminations only.** This is why trials were *stopped early*. A trial that ran
   to completion and missed its endpoint is not a "termination," so efficacy is
   under-counted here relative to all-cause program failure.
+- **"Stopped early" was fixed at classification time; a few trials have since
+  changed status in the registry.** The population was selected as
+  terminated/withdrawn/suspended when the classifier ran. Re-checking all 5,510
+  against the live ClinicalTrials.gov status today: 73.4% TERMINATED, 21.1%
+  WITHDRAWN, 2.0% SUSPENDED, and ~3.5% (191 trials) now show a different status
+  (recruiting, active, or completed) — registry updates or resumed trials since
+  the snapshot. Excluding those 191 leaves every family total within 0.3pp of the
+  headline (Business 58.0→57.7%, Biology 18.0→18.1%, Other 24.0→24.1%), so the
+  distribution is unaffected; but any single NCT cited as an example should be
+  spot-checked against its current status.
 - **Masked-efficacy fraction is not measurable from this data.** The `why_stopped`
   records store only a category + confidence (no rationale text or secondary
   reason), so the share of "commercial / strategic" stops that are really quiet
