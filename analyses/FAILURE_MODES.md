@@ -5,8 +5,9 @@ lives in the post.
 
 ## What it shows
 
-`data/failure_modes.png` (+ `.svg`) — the classified reason 5,510 terminated
+`data/failure_modes_clean.png` (+ `.svg`) — the classified reason 5,510 terminated
 industry Phase 1–3 trials (2015–2025) were stopped, grouped into three families.
+Publication-grade (data only); narrative lives in the post, not the figure.
 
 | Category | % of classified terminations | Family |
 |---|---|---|
