@@ -22,7 +22,20 @@ DATA = os.path.join(HERE, "..", "data")
 
 
 CTE = """
-WITH trial_class AS (
+WITH program_activity AS (
+  -- Latest trial activity per program + whether any trial is still running.
+  -- Used to gate the "terminated by 2026" filter below (BIO-style: only count
+  -- programs whose fate is settled — advanced or suspended — not still in flight).
+  SELECT pt.program_id,
+    BOOL_OR(t.status IN ('RECRUITING','ACTIVE_NOT_RECRUITING',
+                         'ENROLLING_BY_INVITATION','NOT_YET_RECRUITING'))
+      AS has_active_trial,
+    MAX(COALESCE(t.completion_date, t.primary_completion_date, t.start_date)) AS latest_date
+  FROM preclin.program_trial pt
+  JOIN public.trials t ON t.nct_id = pt.nct_id
+  GROUP BY pt.program_id
+),
+trial_class AS (
   -- Latest classification per trial, Sonnet preferred over Haiku
   SELECT DISTINCT ON (c.subject_key) c.subject_key AS nct_id, c.category
   FROM preclin.classification c
@@ -88,10 +101,23 @@ classified AS (
   JOIN preclin.indication i ON i.indication_id = p.indication_id
   LEFT JOIN program_reasons pr ON pr.program_id = p.program_id
   LEFT JOIN drug_modality dm ON dm.drug_id = p.drug_id
-  -- Denominator: every Ph1+ program that did not reach approval.
-  -- Ph1 stalls kept as their own bucket so readers see the composition explicitly.
+  LEFT JOIN program_activity pa ON pa.program_id = p.program_id
+  -- Denominator: every Ph1+ program that has definitively terminated by 2026.
+  --   * No currently-active/recruiting trials
+  --   * outcome != 'unknown' (we couldn't determine what happened)
+  --   * If outcome is a presumptive-fail bucket, require last activity ≥ 18mo ago
+  --     (2024-07-01 cutoff for a today = 2026-07-24 read date) — gives the sponsor
+  --     time to advance-or-suspend before we call the program terminated.
   WHERE po.outcome_broad != 'approved'
     AND p.highest_phase >= 1
+    AND po.outcome_broad != 'unknown'
+    AND (pa.has_active_trial IS NULL OR pa.has_active_trial = FALSE)
+    AND (
+      po.outcome_broad IN ('efficacy_fail','safety_fail','commercial_fail',
+                            'enrollment_fail','unclassified_termination','planned_termination')
+      OR (po.outcome_broad IN ('phase1_only','presumptive_fail_ph2','presumptive_efficacy_fail_ph3')
+          AND pa.latest_date < '2024-07-01')
+    )
 )
 """
 
@@ -157,16 +183,43 @@ def main() -> None:
     df.to_csv(os.path.join(DATA, "failure_holistic_by_phase.csv"), index=False)
     print(f"failure_holistic_by_phase.csv  {df.n_programs.sum():>7,} programs")
 
-    # (6) Attrition rollup — entrants per phase + approvals
+    # (6) Attrition rollup — entrants per phase + approvals.
+    # Same "terminated by 2026" filter as the failure-taxonomy CTE, PLUS approvals
+    # (which are always definitive). This makes the funnel comparable to BIO's
+    # advanced-or-suspended denominator.
     df = pd.read_sql("""
-      WITH totals AS (
-        SELECT
-          COUNT(*) FILTER (WHERE p.highest_phase >= 1) AS n_ph1_entrants,
-          COUNT(*) FILTER (WHERE p.highest_phase >= 2) AS n_ph2_entrants,
-          COUNT(*) FILTER (WHERE p.highest_phase >= 3) AS n_ph3_entrants,
-          COUNT(*) FILTER (WHERE po.outcome_broad = 'approved') AS n_approved
+      WITH program_activity AS (
+        SELECT pt.program_id,
+          BOOL_OR(t.status IN ('RECRUITING','ACTIVE_NOT_RECRUITING',
+                               'ENROLLING_BY_INVITATION','NOT_YET_RECRUITING'))
+            AS has_active_trial,
+          MAX(COALESCE(t.completion_date, t.primary_completion_date, t.start_date)) AS latest_date
+        FROM preclin.program_trial pt
+        JOIN public.trials t ON t.nct_id = pt.nct_id
+        GROUP BY pt.program_id
+      ),
+      terminated AS (
+        SELECT p.program_id, p.highest_phase, po.outcome_broad
         FROM preclin.program p
         JOIN preclin.program_outcome po ON po.program_id = p.program_id
+        LEFT JOIN program_activity pa ON pa.program_id = p.program_id
+        WHERE (pa.has_active_trial IS NULL OR pa.has_active_trial = FALSE)
+          AND po.outcome_broad != 'unknown'
+          AND (
+            po.outcome_broad IN ('approved','efficacy_fail','safety_fail','commercial_fail',
+                                  'enrollment_fail','unclassified_termination','planned_termination')
+            OR (po.outcome_broad IN ('phase1_only','presumptive_fail_ph2',
+                                      'presumptive_efficacy_fail_ph3')
+                AND pa.latest_date < '2024-07-01')
+          )
+      ),
+      totals AS (
+        SELECT
+          COUNT(*) FILTER (WHERE highest_phase >= 1) AS n_ph1_entrants,
+          COUNT(*) FILTER (WHERE highest_phase >= 2) AS n_ph2_entrants,
+          COUNT(*) FILTER (WHERE highest_phase >= 3) AS n_ph3_entrants,
+          COUNT(*) FILTER (WHERE outcome_broad = 'approved') AS n_approved
+        FROM terminated
       )
       SELECT 'ph1_entrants' AS phase, n_ph1_entrants AS n FROM totals
       UNION ALL SELECT 'ph2_entrants', n_ph2_entrants FROM totals
@@ -207,7 +260,13 @@ def main() -> None:
       UNION ALL SELECT 'n_programs_failed_ph1plus',
         COUNT(*) FROM preclin.program p
         JOIN preclin.program_outcome po ON po.program_id=p.program_id
-        WHERE p.highest_phase >= 1 AND po.outcome_broad != 'approved';
+        WHERE p.highest_phase >= 1 AND po.outcome_broad != 'approved'
+      UNION ALL SELECT 'n_programs_still_active',
+        COUNT(*) FROM preclin.program p
+        JOIN preclin.program_trial pt ON pt.program_id=p.program_id
+        JOIN public.trials t ON t.nct_id=pt.nct_id
+        WHERE t.status IN ('RECRUITING','ACTIVE_NOT_RECRUITING',
+                           'ENROLLING_BY_INVITATION','NOT_YET_RECRUITING');
     """, conn)
     df.to_csv(os.path.join(DATA, "failure_modes_audit.csv"), index=False)
     print(f"failure_modes_audit.csv        {len(df)} rows")

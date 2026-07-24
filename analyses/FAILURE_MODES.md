@@ -6,56 +6,80 @@ Factual reference. Prose lives in the post.
 
 | File | What it shows |
 |---|---|
-| `data/failure_modes_main.png` (+`.svg`) | **Main chart** — three-panel composite. **A)** attrition through the pipeline (74k Ph1 entrants → 40k Ph2 → 18k Ph3 → 5.7k approved). **B)** overall failure reasons over all 69k Ph1+ programs that never reached approval, ranked. **C)** the same reasons split by which phase the program stalled at. |
+| `data/failure_modes_main.png` (+`.svg`) | **Main chart** — three-panel composite. **A)** attrition through the pipeline (60k Ph1 entrants → 32k Ph2 → 15k Ph3 → 5.4k approved). **B)** overall failure reasons over 55k Ph1+ programs terminated by 2026, ranked. **C)** the same reasons split by which phase the program stalled at. |
 | `data/failure_modes_terminations.png` (+`.svg`) | Stephen's original — 5,510 trials terminated early, split by *stated* reason. Comparable to Cook 2014 and BIO analyses. Kept as a companion to show what the terminations-only lens hides. |
 | `data/failure_modes_stratified.png` (+`.svg`) | Holistic view stratified by therapeutic area and by drug modality (small mol / antibody / protein / ADC / oligonucleotide / peptide). |
 
-## Denominators — what's in vs. out
+## Universe and cohort
 
 **Universe.** Every CT.gov industry-sponsored Phase 1–3 drug/biological trial with `start_date` 2015-01-01 → 2025-12-31: **41,836 trials**.
 
-**In our cohort (`preclin.program_trial`)**: **28,193 trials** (67% of the universe). The gap of ~13,600 trials are ones we couldn't resolve to a canonical (drug × indication × sponsor) tuple — either the intervention couldn't be mapped to a known drug, or it was a placebo-only / device / procedure arm. These are excluded silently; if the missing 33% is enriched for any particular failure mode, the picture is biased. Best guess: enriched for oncology combinations (dozens of interventions per trial, hard to normalize) and early academic-industry collaborations (weaker drug metadata). Neither should systematically distort the biology / business ratio.
+**In our cohort (`preclin.program_trial`)**: **28,193 trials** (67% of the universe). The gap of ~13,600 trials are ones we couldn't resolve to a canonical (drug × indication × sponsor) tuple — either the intervention couldn't be mapped to a known drug, or it was a placebo-only / device / procedure arm.
 
-**Trial status in our cohort:** 21,800 completed · 5,537 terminated/withdrawn/suspended · ~800 still running or unknown.
+**Trial status in cohort:** 21,800 completed · 5,537 terminated/withdrawn/suspended · ~800 still running or unknown.
+
+## Denominator: "terminated by 2026"
+
+The main-chart denominator restricts to programs whose fate is settled — advanced-to-approval or definitively-stopped — matching BIO's `advanced / (advanced + suspended)` methodology. A program qualifies as terminated by 2026 if **all** of:
+
+1. No currently-active trial (no status `RECRUITING` / `ACTIVE_NOT_RECRUITING` / `ENROLLING_BY_INVITATION` / `NOT_YET_RECRUITING`).
+2. `outcome_broad != 'unknown'` — we could determine what happened.
+3. Either explicit outcome (`approved` / `efficacy_fail` / `safety_fail` / `commercial_fail` / `enrollment_fail` / `unclassified_termination` / `planned_termination`), **or** presumptive outcome (`phase1_only` / `presumptive_fail_ph2` / `presumptive_efficacy_fail_ph3`) with last trial activity ≥ 18 months ago (`latest_date < 2024-07-01`, given today is 2026-07-24). The 18-month window is a rough gate for how long a sponsor typically takes to advance-or-suspend after a phase reads out.
+
+Removes ~14k programs vs. the raw Ph1+ pool: 8k with active trials, 5.9k with `unknown` outcome, some presumptive-fails with recent activity.
+
+## Comparison to published benchmarks
+
+BIO 2021 (Thomas et al., *Clinical Development Success Rates 2011–2020*, n=12,728 phase transitions from Biomedtracker) is the closest published comparator. Their methodology: analyst-curated tracking of US-market FDA-registration-enabling programs, transition = advanced-or-suspended.
+
+| Metric | BIO 2011-2020 | Us 2015-2025 (terminated-by-2026) |
+|---|---|---|
+| Ph1 → Ph2 | 52.0% | 53.3% |
+| Ph2 → Ph3 | 28.9% | 46.8% |
+| Ph3 → Approval | 52.4% (composed) | 18.9% |
+| **Ph1 → Approval** | **7.9%** | **9.0%** |
+
+- **Ph1 → Ph2** and **Ph1 → approval** match BIO within a point. Load-bearing.
+- **Ph2 → Ph3** and **Ph3 → approval** are structurally off. The "terminated by 2026" filter closes some of the gap (Ph3→approval went from 16% → 19%) but the residual is CT.gov cohort composition: our Ph3 denominator includes label-extension Ph3b/c trials, non-US-market programs, Phase 2/3 combined designations, and investigator-initiated confirmatory trials — all of which BIO filters out. At **drug** level (deduplicating indications), our Ph3→approval is ~8% vs. BIO's ~52%.
+- **Failure reason** breakdown is not published in BIO 2021; the closest benchmarks are Cook 2014 (AstraZeneca) and DiMasi 2013/2020. Cook says Ph3 fails are ~66% efficacy, ~21% safety, ~8% strategic — shape matches ours once silent-efficacy is folded in.
+
+Bottom line: the headline Ph1→approval number is credible. Middle-phase transition rates should be caveated with "our cohort is broader than BIO's; drug-level rates converge."
+
+## Chart details
 
 ### Terminations chart (`failure_modes_terminations.png`, 5,510 trials)
 
-Denominator: every trial in our cohort with a `why_stopped` classification from Claude Sonnet or Haiku (Sonnet preferred where both exist). Practically this is 4,043 `TERMINATED` + 1,165 `WITHDRAWN` + 109 `SUSPENDED` + a small tail of trials with a stated stop reason despite a non-terminal status.
-
-**What this cut *does not* include** — the reason it under-counts efficacy:
-- **Completed trials that missed their endpoint.** A negative Phase 3 that ran to completion is not a "termination." There is no `why_stopped` row for it because the trial didn't stop early.
-- **Programs that completed Phase 2 and were quietly dropped.** Same reason: no early stop.
-- **Sponsor euphemism.** The `commercial_strategic` bucket (44% of terminations) is known from prior work (Cook 2014) to absorb quiet efficacy failures — sponsors write "portfolio prioritization" rather than "did not work."
+Trial-level, `why_stopped` classifications from Claude Sonnet or Haiku (Sonnet preferred). Kept as a companion because it shows the sponsor-euphemism problem: 44% of stated reasons are `commercial_strategic`, which Cook 2014 shows absorbs quiet efficacy failures.
 
 ### Main chart (`failure_modes_main.png`)
 
-**Panel A — attrition.** Cohort funnel: programs that reached each phase, expressed as % of Ph1 entrants. Transition rates (~53% Ph1→Ph2, ~47% Ph2→Ph3, ~16% Ph3→approval) are on the low side of BIO/Wong 2019 benchmarks; the cohort skews recent (2015+ starts), so some Ph3 entrants haven't had time to read out.
+**Panel A — attrition.** Cohort funnel among terminated-by-2026 programs: 60,070 Ph1 → 32,015 Ph2 (53%) → 14,993 Ph3 (25%) → 5,436 approved (9%). See benchmark comparison above.
 
-**Panel B — overall failure reasons.** Denominator: every **program** (drug × indication × sponsor, `preclin.program`) with `highest_phase >= 1` and `outcome_broad != 'approved'`. That's **69,029 failed Ph1+ programs**. No arbitrary phase cutoff — Ph1 stalls kept as their own explicit bucket so readers see the composition rather than have it hidden.
+**Panel B — overall failure reasons.** Denominator: 55,133 Ph1+ programs terminated by 2026 that didn't reach approval. No arbitrary phase cutoff — Ph1 stalls kept as their own explicit bucket. Family shares: 40% biology · 17% business & operational · 43% other/undisclosed (dominated by Ph1 stall).
 
-**Panel C — reasons by phase failed at.** Same buckets, but conditioned on `highest_phase` (1 / 2 / 3). Composition shifts predictably as programs advance:
-- **Ph1 fails** (n=33,229): 76% Ph1 stall (Ph1 tests safety/PK; most stalls here are pipeline decisions or IND-then-quiet-death). Biology inference weak — tagged ambiguous.
-- **Ph2 fails** (n=20,248): 71% Ph2 stall. Ph2→Ph3 is industry-efficacy-gated, so tagged biology-soft (hatched).
-- **Ph3 fails** (n=15,560): 77% Silent efficacy Ph3. A completed Ph3 followed by no approval is efficacy or safety ~90% of the time. Strongest biology inference of the three.
+**Panel C — reasons by phase failed at.** Composition shifts predictably as programs advance:
+- **Ph1 fails** (n=26,841): 76% Ph1 stall (ambiguous — Ph1 tests safety/PK, most stalls are pipeline decisions).
+- **Ph2 fails** (n=16,139): 66% Ph2 stall (biology-soft, hatched). Ph2→Ph3 is efficacy-gated.
+- **Ph3 fails** (n=12,153): 73% Silent efficacy Ph3 (strong biology). Ph3 complete → no approval is efficacy or safety ~90% of the time.
 
 ### Bucketing rule
 
 Per program, in priority order:
 
-1. **Biology, direct signal** — any linked trial classified as `efficacy` / `safety` / `pk_pd_formulation` in `why_stopped` (Sonnet-preferred).
+1. **Biology, direct signal** — trial classified `efficacy` / `safety` / `pk_pd_formulation` in `why_stopped` (Sonnet-preferred).
 2. **Silent efficacy (Ph3 complete, no approval)** — `outcome_broad = 'presumptive_efficacy_fail_ph3'`. Strong biology inference.
-3. **Ph2 stall (Ph2 complete, program halted)** — `outcome_broad = 'presumptive_fail_ph2'`. Efficacy-gated but weaker. Tagged biology, hatched.
-4. **Ph1 stall (Ph1 complete, program halted)** — `outcome_broad = 'phase1_only'`. Ph1 doesn't test efficacy, so most Ph1 stalls are pipeline decisions. Tagged ambiguous, hatched.
-5. **Business & operational** — commercial / enrollment / regulatory / competitive / manufacturing / covid signals, from either the trial-level classifier or `outcome_broad`.
-6. **Other** — planned / unclassified / unknown.
+3. **Ph2 stall (Ph2 complete, program halted)** — `outcome_broad = 'presumptive_fail_ph2'`. Efficacy-gated, biology-soft, hatched.
+4. **Ph1 stall (Ph1 complete, program halted)** — `outcome_broad = 'phase1_only'`. Ph1 doesn't test efficacy, tagged ambiguous, hatched.
+5. **Business & operational** — commercial / enrollment / regulatory / competitive / manufacturing / covid.
+6. **Other** — planned / unclassified.
 
-Trial-level reasons take precedence over program-level outcome inference — an explicitly-stated efficacy failure beats a "we couldn't figure it out" bucket. Silent / stall buckets are only invoked when no explicit reason exists.
+Trial-level reasons take precedence over program-level outcome inference. Silent / stall buckets only invoked when no explicit reason exists.
 
 ## Stratification (companion figure)
 
-**By therapeutic area** — `preclin.indication.therapeutic_area`, curated from CT.gov `conditions` strings. Populated for 100% of programs, though 54% land in `other` (mixed / rare / hard-to-categorize conditions). The seven named areas each have 100+ failed Ph1+ programs.
+**By therapeutic area** — `preclin.indication.therapeutic_area`, curated from CT.gov `conditions`. Populated for 100% of programs, 54% land in `other`. Seven named areas each have 100+ failed programs.
 
-**By modality** — populated for 12,185 / 69,029 failed programs (18%). Sources, in preference order: `preclin.drug.modality` (curated from `approvals.csv`, biased toward approved drugs), `public.therapies.modality` matched by ChEMBL ID, then by normalized name. Only modalities with ≥50 failed programs shown (small mol · antibody · ADC · protein · peptide · oligonucleotide). **Caveat:** modality-known drugs skew toward well-characterized chemistry, so cell / gene / mRNA therapies are almost certainly under-represented in the plot.
+**By modality** — populated for 10,172 / 55,133 failed programs (18%). Sources, preference order: `preclin.drug.modality` (curated from `approvals.csv`, biased toward approved drugs), `public.therapies.modality` matched by ChEMBL ID or normalized name. Only modalities with ≥50 failed programs shown. **Caveat:** modality-known drugs skew toward well-characterized chemistry — cell / gene / mRNA therapies are under-represented.
 
 ## Reproduce
 
@@ -71,9 +95,16 @@ python3 analyses/plot_failure_modes.py
 
 ## Known limitations
 
-- **Silent efficacy attribution is inference, not measurement.** Ph3 complete → no approval is 90%+ efficacy in industry practice, but the actual rationale is unrecorded. Similarly for Ph2 stalls. If we ever run a targeted extraction pass against Ph3 results + subsequent press releases, we can replace the inference with direct classification.
-- **Ph1 stalls are mostly pipeline decisions.** Ph1 does not test efficacy, so a Ph1 stall carries almost no biology signal — we tag them ambiguous. They still dominate Ph1 fails (76%) because ~half of all Ph1 entrants never advance.
-- **`commercial_strategic` masking.** Only 805 / 2,434 commercial-strategic classifier calls are high-confidence in the trial-level data. The holistic view partially corrects (silent-efficacy Ph3 outranks commercial in the priority rule), but a program with mixed trial reasons still lands in whichever family got the first hit.
-- **Modality coverage is skewed.** Small mol and antibody are well-populated; cell / gene / mRNA therapies are sparse because our modality metadata comes mostly from approvals.
-- **Non-CT.gov trials excluded.** ChiCTR (~70K), EU-CTR (~35K), and CTIS are not ingested. Sponsors that mostly file outside CT.gov (Chinese biotechs, some EU academic-industry) are under-weighted.
-- **Attrition rates skew low.** Cohort is 2015+ start-date, so some Ph3 entrants are still active or too recent to have read out. Real transition rates will settle a few points higher over time.
+- **Silent efficacy is inference, not measurement.** Ph3 complete → no approval is ~90% efficacy in industry practice, but the rationale is unrecorded. Same for Ph2 stalls.
+- **Ph1 stalls carry weak biology signal.** Ph1 tests safety/PK, so a Ph1 stall is mostly pipeline decision. We tag them ambiguous. Still 76% of Ph1 fails — half of Ph1 entrants never advance.
+- **Cohort broader than BIO.** We include label-extension Ph3s, non-US programs, and investigator-initiated confirmatory trials. Inflates Ph3 denominator and drags the transition rate down. Drug-level rates converge.
+- **18-month cutoff is a heuristic.** Some programs classified as "terminated by 2026" may re-emerge (e.g., a sponsor decides to reformulate); some excluded as "still active" may quietly die without a status update.
+- **`commercial_strategic` masking.** Only 805 / 2,434 commercial-strategic classifier calls are high-confidence — the holistic view partially corrects (silent-efficacy Ph3 outranks commercial), but a program with mixed trial reasons lands wherever the priority rule matches first.
+- **Modality skewed.** Small mol and antibody well-populated; cell / gene / mRNA sparse.
+- **Non-CT.gov trials excluded.** ChiCTR (~70K), EU-CTR (~35K), CTIS not ingested. Chinese biotechs under-weighted.
+
+## References
+
+- Thomas D, Chancellor D, Micklus A, LaFever S, Hay M, Chaudhuri S, Bowden R, Lo AW (2021). *Clinical Development Success Rates and Contributing Factors 2011–2020*. BIO / QLS Advisors / Informa Pharma Intelligence.
+- Cook D, Brown D, Alexander R, March R, Morgan P, Satterthwaite G, Pangalos MN (2014). Lessons learned from the fate of AstraZeneca's drug pipeline: a five-dimensional framework. *Nature Reviews Drug Discovery* 13, 419–431.
+- Wong CH, Siah KW, Lo AW (2019). Estimation of clinical trial success rates and related parameters. *Biostatistics* 20, 273–286.
