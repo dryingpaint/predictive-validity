@@ -187,9 +187,7 @@ def main():
 
     print("\n(5b) Therapeutic area distribution")
     df = q(conn, """
-      SELECT bio_area, COUNT(*) AS n_indications,
-             COUNT(*) FILTER (WHERE is_rare) AS rare,
-             COUNT(*) FILTER (WHERE is_chronic_high_prev) AS chronic
+      SELECT bio_area, COUNT(*) AS n_indications
       FROM preclin.indication_bio_class GROUP BY bio_area ORDER BY n_indications DESC;
     """)
     print(df.to_string(index=False))
@@ -216,8 +214,7 @@ def main():
 
     print("\n(6b) Known-indication spot check")
     df = q(conn, """
-      SELECT i.display_name AS indication, ibc.bio_area, ibc.is_rare,
-             ibc.is_chronic_high_prev, ibc.confidence
+      SELECT i.display_name AS indication, ibc.bio_area, ibc.confidence
       FROM preclin.indication i
       LEFT JOIN preclin.indication_bio_class ibc USING(indication_id)
       WHERE i.display_name IN (

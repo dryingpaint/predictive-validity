@@ -46,8 +46,7 @@ WITH program_activity AS (
 ),
 cohort AS (
   SELECT p.program_id, p.highest_phase, po.outcome_broad,
-         ibc.bio_area, ibc.is_rare, ibc.is_chronic_high_prev,
-         ibc.is_methodology_study, ibc.oncology_subtype,
+         ibc.bio_area, ibc.is_methodology_study,
          dbc.modality, dbc.novelty_class, dbc.is_novel
   FROM preclin.program p
   JOIN preclin.program_outcome po ON po.program_id = p.program_id
@@ -170,17 +169,6 @@ def main():
     df.to_csv(f"{DATA}/bio_replication_oncology.csv", index=False)
     print_table("Oncology vs non-oncology (BIO Figure 6)", df, "cohort")
 
-    # (4) Rare vs chronic-high-prev vs other (excluding oncology, per BIO Fig 8 convention)
-    df = transitions_by(
-        conn,
-        "CASE WHEN is_rare THEN 'Rare disease' "
-        "     WHEN is_chronic_high_prev THEN 'Chronic high-prevalence' "
-        "     ELSE 'Other non-oncology' END",
-        where="bio_area != 'Oncology' OR bio_area IS NULL",
-    )
-    df.to_csv(f"{DATA}/bio_replication_rare_chronic.csv", index=False)
-    print_table("Rare vs chronic-high-prevalence (BIO Figure 8)", df, "prevalence_class")
-
     # (5) By modality
     df = transitions_by(conn, "COALESCE(modality, 'unclassified')")
     df.to_csv(f"{DATA}/bio_replication_by_modality.csv", index=False)
@@ -223,16 +211,7 @@ def main():
     print_table("Novel subgroups: NME / Biologic / Vaccine / Biosimilar / Non-NME (BIO Figure 9 body)",
                 df, "novelty_subgroup")
 
-    # (8) Oncology subtypes: Solid / Hematologic / IO (BIO Figure 7)
-    df = transitions_by(
-        conn,
-        "COALESCE(oncology_subtype, 'unclassified')",
-        where="bio_area='Oncology'",
-    )
-    df.to_csv(f"{DATA}/bio_replication_oncology_subtypes.csv", index=False)
-    print_table("Oncology subtypes (BIO Figure 7)", df, "oncology_subtype")
-
-    # (9) Drug-level LOA (deduplicate to unique drugs — approximates BIO's molecule-level view)
+    # (8) Drug-level LOA (deduplicate to unique drugs — approximates BIO's molecule-level view)
     df = pd.read_sql(COHORT_CTE + """
       SELECT
         COUNT(DISTINCT p.drug_id) AS n_drugs_ph1plus,

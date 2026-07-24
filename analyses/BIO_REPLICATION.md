@@ -12,12 +12,10 @@ Headline replication numbers, side-by-side with BIO:
 | Ph1 → Ph2 | 56.6% | 52.0% |
 | Ph2 → Ph3 | 51.2% | 28.9% |
 | Ph3 → Approval | 24.2% | ~52% (composed) |
-| Rare disease LOA | **17.9%** | **17.0%** |
-| Chronic-high-prev LOA | 7.7% | 5.9% |
 | Hematology LOA (top area) | 18.4% | 23.9% |
 | Oncology LOA | 6.5% | 5.3% |
-| **Rare vs chronic ratio** | **2.3×** | **2.9×** |
-| Hematologic vs solid oncology LOA | 10.5% vs 5.6% | 7.5% vs 4.6% |
+| NME (small-molecule) LOA | 8.6% | 5.7% |
+| Biologic LOA | 26.5% | 9.1% |
 
 ## What we built to get here
 
@@ -25,7 +23,7 @@ BIO uses Biomedtracker's analyst-curated 14-area disease taxonomy + FDA modality
 
 | Table | Rows | Populated by |
 |---|---|---|
-| `preclin.indication_bio_class` | 8,875 / 8,875 (100%) | Claude Haiku over indication names → 14 BIO areas + subarea + `is_rare` + `is_chronic_high_prev` + `is_methodology_study` + `oncology_subtype` (Solid / Hematologic / IO) |
+| `preclin.indication_bio_class` | 8,875 / 8,875 (100%) | Claude Haiku over indication names → 14 BIO areas + subarea + `is_methodology_study` |
 | `preclin.drug_bio_class` | 32,193 / 32,321 (99.6%) | Ladder: `preclin.drug.modality` (curated) → `public.therapies` → ChEMBL /molecule API → Claude Haiku |
 | `preclin.v_bio_enrichment_coverage` | view | One-row coverage snapshot |
 
@@ -44,8 +42,6 @@ Filters we apply (all novel to our pipeline; BIO already excludes these via Biom
 | Denominator | advanced-or-suspended | "terminated by 2026" filter (equivalent) |
 | Program filter | Company, US-FDA-registration-enabling | Non-placebo, non-methodology, non-device |
 | Disease taxonomy | 14 BIO areas + Other | Same 14 (LLM-classified) |
-| Rare disease | US <200k or EU 1/2000 | Same criterion (LLM) |
-| Chronic-high-prev | CMS CCW ∩ >1M US ∩ non-cancer | Same criterion (LLM) |
 | Novelty | Biomedtracker + FDA class | ChEMBL molecule_type + `public.therapies.novelty_class` + LLM fallback |
 
 ## Full results
@@ -89,26 +85,6 @@ Filters we apply (all novel to our pipeline; BIO already excludes these via Biom
 | Non-oncology (n=29,841) | 7.4% | 62.4% | 51.8% | 23.0% |
 
 BIO: oncology 5.3% vs non-oncology 9.3%. Ordering matches (oncology lower). Numerical gap smaller than BIO's because our non-oncology cohort still has some heterogeneity BIO's doesn't.
-
-### Figure 7 — oncology sub-classification
-
-| Subtype | LOA | n | BIO 2021 LOA |
-|---|---|---|---|
-| Hematologic malignancies | 10.5% | 3,048 | 7.5% |
-| Solid tumors | 5.6% | 12,222 | 4.6% |
-| Immuno-oncology | 0.0% | 13 | 12.4% |
-
-Hematologic vs solid matches BIO shape. IO too low-n to be meaningful — BIO defines IO drug-level (checkpoint inhibitor / adoptive cell / cancer vaccine), we defined at indication level.
-
-### Figure 8 — rare vs chronic-high-prevalence (excl. oncology)
-
-| Cohort | LOA | Ph1→2 | Ph2→3 | Ph3→Approval | n |
-|---|---|---|---|---|---|
-| **Rare disease** | **17.9%** | 76.6% | 55.3% | 42.4% | 4,830 |
-| Chronic high-prevalence | 7.7% | 65.4% | 55.9% | 21.1% | 9,577 |
-| Other non-oncology | 4.1% | 56.0% | 47.4% | 15.3% | 15,434 |
-
-BIO: rare 17.0%, chronic 5.9%. **Both align tightly.** Rare-disease advantage reproduces cleanly.
 
 ### Figure 9 — novel vs off-patent, plus subgroups
 
@@ -158,9 +134,8 @@ export DATABASE_URL='...'
 psql "$DATABASE_URL" -f db/10_bio_enrichment_schema.sql
 python3 analyses/enrich_modality.py             # curated + public.therapies + ChEMBL + LLM
 python3 analyses/enrich_indications.py          # LLM → 14-area BIO taxonomy
-python3 analyses/enrich_oncology_subtypes.py    # LLM → Solid / Hematologic / IO
-python3 analyses/bio_replication.py             # emit 9 CSVs
-python3 analyses/plot_bio_replication.py        # render 7 figures
+python3 analyses/bio_replication.py             # emit replication CSVs
+python3 analyses/plot_bio_replication.py        # render replication figures
 python3 analyses/audit_data.py                  # full data audit → data_audit.md
 ```
 
@@ -170,7 +145,6 @@ python3 analyses/audit_data.py                  # full data audit → data_audit
 - **Cohort scope**: we include Ph3b/c label-extension trials, non-US-market programs, and Phase 2/3 combined designations that Biomedtracker filters out. Depresses Ph3→Approval (24% vs BIO ~52%).
 - **Program level**: drug × indication × **sponsor** vs BIO's drug × indication. Co-development shows as 2 programs for us, 1 for BIO.
 - **NDA→Approval separate rate**: BIO reports Ph3→NDA (57.8%) and NDA→Approval (90.6%). We don't track NDA filings — Ph3→Approval combined only.
-- **Immuno-oncology**: BIO defines IO at the drug level (checkpoint inhibitor / adoptive cell / cancer vaccine); we defined at indication level, which under-counts IO dramatically (only 13 programs).
 
 ## References
 

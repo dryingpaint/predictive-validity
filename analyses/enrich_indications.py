@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 """
-Classify each of the 8,875 indications in `preclin.indication` into:
-  * `bio_area`   — one of BIO 2021's 14 major disease areas + "Other"
-  * `bio_subarea` — a finer indication like "Alzheimer's" or "T2 diabetes"
-  * `is_rare`    — affects <200K people in US or 1/2000 in EU (BIO's rare-disease def)
-  * `is_chronic_high_prev` — chronic disease with >1M US patients (CMS CCW criterion)
-
-Uses Claude Haiku, batched (20 indications per call) to keep costs bounded.
-Idempotent — skips indications already in `preclin.indication_bio_class`.
+Classify each indication in `preclin.indication` into BIO 2021's 14 major disease areas + Other,
+plus a short subarea name. Uses Claude Haiku, batched, concurrent, idempotent.
 """
 from __future__ import annotations
 import os, sys, json, time, subprocess, re
@@ -47,9 +41,6 @@ SYSTEM_PROMPT = (
     "For each indication, output JSON with these fields:\n"
     "  - bio_area: one of {areas}\n"
     "  - bio_subarea: a short (2-4 word) canonical name for the indication\n"
-    "  - is_rare: true if the disease affects <200,000 people in US OR 1 in 2,000 in EU\n"
-    "  - is_chronic_high_prev: true if the disease is chronic AND >1M US patients (e.g., type 2 "
-    "    diabetes, hypertension, COPD, depression, hyperlipidemia). Exclude cancers.\n"
     "  - confidence: 'high' | 'medium' | 'low'\n\n"
     "Rules:\n"
     "* Oncology = any cancer. If the indication is a cancer, bio_area='Oncology'.\n"
@@ -151,17 +142,13 @@ def upsert_batch(cur, items: list[tuple[int, str, str | None]], results: list[di
     for (ind_id, name, _ta), res in zip(items, results):
         bio_area = normalize_area(res.get("bio_area", "Other"))
         subarea = (res.get("bio_subarea") or "")[:120]
-        is_rare = bool(res.get("is_rare", False))
-        is_chp = bool(res.get("is_chronic_high_prev", False))
         conf = (res.get("confidence") or "medium")[:8]
-        rows.append((ind_id, bio_area, subarea, is_rare, is_chp,
-                     "llm_haiku_4_5", conf, name))
+        rows.append((ind_id, bio_area, subarea, "llm_haiku_4_5", conf, name))
     if not rows:
         return 0
     psycopg2.extras.execute_values(cur, """
         INSERT INTO preclin.indication_bio_class
-          (indication_id, bio_area, bio_subarea, is_rare, is_chronic_high_prev,
-           source, confidence, rationale)
+          (indication_id, bio_area, bio_subarea, source, confidence, rationale)
         VALUES %s
         ON CONFLICT (indication_id) DO NOTHING
     """, rows)
@@ -217,15 +204,11 @@ def main():
     cur.execute("SELECT COUNT(*) FROM preclin.indication_bio_class")
     total = cur.fetchone()[0]
     print(f"\nTotal classified: {total:,}")
-    cur.execute("""
-        SELECT bio_area, COUNT(*),
-               COUNT(*) FILTER (WHERE is_rare) AS n_rare,
-               COUNT(*) FILTER (WHERE is_chronic_high_prev) AS n_chronic
-        FROM preclin.indication_bio_class GROUP BY bio_area ORDER BY 2 DESC
-    """)
-    print(f"{'bio_area':<20}  {'n':>6}  {'rare':>6}  {'chronic':>7}")
-    for area, n, nr, nc in cur.fetchall():
-        print(f"  {area:<18}  {n:>6,}  {nr:>6,}  {nc:>7,}")
+    cur.execute("SELECT bio_area, COUNT(*) FROM preclin.indication_bio_class "
+                "GROUP BY bio_area ORDER BY 2 DESC")
+    print(f"{'bio_area':<20}  {'n':>6}")
+    for area, n in cur.fetchall():
+        print(f"  {area:<18}  {n:>6,}")
 
     conn.close()
 

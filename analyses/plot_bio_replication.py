@@ -3,12 +3,11 @@
 Render BIO-replication figures matching the BIO 2021 report style.
 
 Produces:
-  data/bio_replication_transitions.png    — Figure 1 (four bars)
-  data/bio_replication_by_area.png        — Figure 2 grid (4 phase transitions × 14 areas)
-  data/bio_replication_loa_by_area.png    — Figure 5a (LOA from Ph1 by area)
+  data/bio_replication_transitions.png     — Figure 1 (four bars)
+  data/bio_replication_loa_by_area.png     — Figure 5a (LOA from Ph1 by area)
   data/bio_replication_loa_by_modality.png — Figure 10a (LOA by modality)
-  data/bio_replication_oncology.png       — Figure 6
-  data/bio_replication_rare_chronic.png   — Figure 8a
+  data/bio_replication_oncology.png        — Figure 6
+  data/bio_replication_novelty.png         — Figure 9 (novel subgroups)
 
 Reads cached CSVs written by `bio_replication.py`.
 """
@@ -186,69 +185,6 @@ def fig_oncology():
     save(fig, "bio_replication_oncology")
 
 
-# ─── Figure 8: rare vs chronic ─────────────────────────────────────────────
-def fig_rare_chronic():
-    df = pd.read_csv(f"{DATA}/bio_replication_rare_chronic.csv")
-    phases = ["Ph I to II", "Ph II to III", "Ph III to Approval", "LOA from Ph I"]
-    metric_cols = ["pos_ph1_to_2", "pos_ph2_to_3", "pos_ph3_to_approval", "loa_from_ph1"]
-
-    fig, ax = plt.subplots(figsize=(10, 5.5))
-    fig.subplots_adjust(left=0.10, right=0.96, top=0.83, bottom=0.12)
-    x = np.arange(len(phases))
-    strata = ["Rare disease", "Chronic high-prevalence", "Other non-oncology"]
-    colors = [BIO_PINK, BIO_TEAL, MUTED]
-    w = 0.26
-    for i, stratum in enumerate(strata):
-        row = df[df.stratum == stratum]
-        if row.empty:
-            continue
-        vals = row[metric_cols].iloc[0].tolist()
-        n = int(row["n_ph1"].iloc[0])
-        offset = (i - 1) * w
-        bars = ax.bar(x + offset, vals, w, color=colors[i], label=f"{stratum} (n={n:,})", zorder=3)
-        for b, v in zip(bars, vals):
-            ax.text(b.get_x() + b.get_width() / 2, v + 1.5, f"{v:.0f}%",
-                    ha="center", fontsize=8.5, color=INK, fontweight="bold")
-    ax.set_xticks(x); ax.set_xticklabels(phases, fontsize=10, color=INK)
-    ax.set_ylim(0, max(70, df[metric_cols].values.max() * 1.15))
-    ax.set_ylabel("Probability of success (%)", color=SEC, fontsize=10)
-    ax.set_axisbelow(True); ax.yaxis.grid(True, color=RULE, lw=0.6)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    ax.tick_params(length=0)
-    ax.legend(frameon=False, loc="upper right", fontsize=9)
-    fig.text(0.02, 0.94, "Rare vs chronic-high-prevalence, excl. oncology (BIO Figure 8)",
-             fontsize=13, fontweight="bold")
-    save(fig, "bio_replication_rare_chronic")
-
-
-def fig_oncology_subtypes():
-    """BIO Figure 7 — solid vs hematologic vs IO."""
-    df = pd.read_csv(f"{DATA}/bio_replication_oncology_subtypes.csv")
-    df = df[df.n_ph1 >= 30].copy()
-    df["label"] = df.stratum.str.replace("_", " ").str.title()
-    df = df.sort_values("loa_from_ph1", ascending=True)
-
-    fig, ax = plt.subplots(figsize=(9, 3.6))
-    fig.subplots_adjust(left=0.28, right=0.94, top=0.79, bottom=0.15)
-    y = range(len(df))
-    ax.barh(list(y), df.loa_from_ph1, height=0.55, color=BIO_PINK, zorder=3)
-    xmax = max(df.loa_from_ph1.max() * 1.30, 15)
-    for yi, (v, n) in enumerate(zip(df.loa_from_ph1, df.n_ph1)):
-        ax.text(v + 0.3, yi, f"{v:.1f}%  (n={int(n):,})",
-                va="center", fontsize=10, color=INK, fontweight="bold")
-    ax.set_yticks(list(y)); ax.set_yticklabels(df.label, fontsize=10.5)
-    ax.set_xlim(0, xmax)
-    ax.set_xlabel("LOA from Phase I (%)", color=SEC, fontsize=10)
-    ax.xaxis.grid(True, color=RULE, lw=0.6); ax.set_axisbelow(True)
-    for s in ax.spines.values():
-        s.set_visible(False)
-    ax.tick_params(length=0)
-    fig.text(0.02, 0.92, "Oncology subtypes  (BIO Figure 7)", fontsize=13, fontweight="bold")
-    fig.text(0.02, 0.86, "Solid tumor vs hematologic malignancy LOA.", fontsize=9, color=SEC)
-    save(fig, "bio_replication_oncology_subtypes")
-
-
 def fig_novelty():
     df = pd.read_csv(f"{DATA}/bio_replication_novelty_subgroups.csv")
     df = df[df.n_ph1 >= 30].copy()
@@ -285,8 +221,6 @@ def main():
     fig_loa_by_area()
     fig_loa_by_modality()
     fig_oncology()
-    fig_oncology_subtypes()
-    fig_rare_chronic()
     fig_novelty()
 
 

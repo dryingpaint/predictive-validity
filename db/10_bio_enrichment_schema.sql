@@ -20,19 +20,16 @@ CREATE TABLE IF NOT EXISTS preclin.indication_bio_class (
                                               -- Oncology | Ophthalmology | Psychiatry |
                                               -- Respiratory | Urology | Other
   bio_subarea           TEXT,                 -- free-text; a short canonical name
-  is_rare               BOOLEAN NOT NULL DEFAULT FALSE,
-  is_chronic_high_prev  BOOLEAN NOT NULL DEFAULT FALSE,
+  is_methodology_study  BOOLEAN NOT NULL DEFAULT FALSE,  -- healthy vol / PK / bioequivalence
   source                TEXT    NOT NULL,     -- 'llm_haiku_4_5' | 'curated' | 'ct_gov_conditions'
   confidence            TEXT,                 -- 'high' | 'medium' | 'low'
   rationale             TEXT,                 -- source display_name (audit)
   extracted_at          TIMESTAMPTZ DEFAULT now()
 );
-CREATE INDEX IF NOT EXISTS idx_ibc_area    ON preclin.indication_bio_class (bio_area);
-CREATE INDEX IF NOT EXISTS idx_ibc_rare    ON preclin.indication_bio_class (is_rare);
-CREATE INDEX IF NOT EXISTS idx_ibc_chronic ON preclin.indication_bio_class (is_chronic_high_prev);
+CREATE INDEX IF NOT EXISTS idx_ibc_area ON preclin.indication_bio_class (bio_area);
 
 COMMENT ON TABLE preclin.indication_bio_class IS
-  'BIO 2021 replication: canonical 14-area classification + rare/chronic-high-prev flags. Populated by Claude Haiku over indication display names.';
+  'BIO 2021 replication: canonical 14-area classification + methodology-study flag. Populated by Claude Haiku over indication display names.';
 
 
 -- ─────────────────────────────────────────────────────────────────────────
