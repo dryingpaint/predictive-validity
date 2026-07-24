@@ -9,13 +9,15 @@ example — so this replaces that framing with a sharper one.
 ## Why PCSK9 and semaglutide don't work as "thin evidence" cases
 
 - **PCSK9**: human genetics came *first* and drove the program. GOF variants
-  causing autosomal-dominant hypercholesterolemia (Cohen/Hobbs, *NEJM* 2003)
-  and LOF variants protective against CHD (Cohen et al., *NEJM* 2006) were
-  both published before Amgen/Regeneron/Sanofi's antibody programs started
-  (~2005-07). Scored honestly it's strong-to-maxed on every category,
-  genetics included — the mirror of Section 3 in the *other* direction
-  (strong evidence, and this time it worked), not a counterexample to
-  "genetics matters."
+  causing autosomal-dominant hypercholesterolemia (Abifadel et al.,
+  *Nature Genetics* 2003) and LOF variants protective against CHD (Cohen,
+  Boerwinkle, Mosley & Hobbs, *NEJM* 2006) were both published before
+  Amgen/Regeneron/Sanofi's antibody programs started (~2005-07) — indeed
+  Amgen's program reportedly began right after Hobbs presented the
+  then-unpublished LOF data. Scored honestly it's strong-to-maxed on every
+  category, genetics included — the mirror of Section 3 in the *other*
+  direction (strong evidence, and this time it worked), not a counterexample
+  to "genetics matters."
 - **Semaglutide**: by the time its own program started (~2006-09), GLP1R was
   already de-risked — exenatide was approved in 2005, liraglutide in 2009.
   Its own program wasn't thin-evidence; it inherited a validated target.
@@ -45,11 +47,14 @@ new, sourced below.
   (Saxena et al., *Science* 2007) postdates approval, and GLP1R-specific
   common-variant associations came later still. There was no genetic
   evidence to score, for or against, because the method to produce it hadn't
-  been invented yet. (Scoring GLP1R with *today's* Open Targets genetic
-  association score would read ~0.70-0.74 — well above the strong-support
-  threshold — which is exactly the hindsight-leakage problem already
-  excluded from the Section 2 figures, just showing up in genetics instead
-  of literature this time.)
+  been invented yet. (Scoring GLP1R with *today's* data would give it nonzero
+  genetic support — its current Open Targets genetic-association sub-score is
+  ~0.78, which clears that component's ≥0.5 threshold. Its *aggregate*
+  `genetic_only_v1` score comes to ~0.7, i.e. the "Weak" tier — not "Strong,"
+  but not zero either. The point stands: hindsight would credit GLP1R with
+  genetics it did not have when the program started — the same leakage problem
+  already excluded from the Section 2 figures, showing up in genetics here
+  instead of literature.)
 - **Mechanistic: 2.** The GLP-1 hormone (proglucagon-derived) and its
   insulinotropic action were characterized through the 1980s; the GLP-1
   receptor was cloned in 1992 (Thorens, *PNAS*). Receptor pharmacology was
@@ -82,7 +87,10 @@ genetics (PCSK9-style) or strong, convergent *non-genetic* evidence
 Genetics is the single most informative category on average (Section 2's
 ablation), but it isn't the only route to success: a target with no genetic
 signal can still succeed if mechanistic, cell, animal, and human-PD evidence
-all converge and reinforce each other, the way they did for GLP-1.
+all converge and reinforce each other, the way they did for GLP-1. (This is
+one illustrative case, n=1 — exenatide shows genetics is not *necessary*, not
+that convergent non-genetic evidence is generally *sufficient*; the average
+still favors genetics per Section 2.)
 
 This reframes Melissa's original Section 4 question ("what evidence is
 useful when genetics is thin?") into a more precise one: not "how little
