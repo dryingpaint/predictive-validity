@@ -1,0 +1,24 @@
+category,dimension,n_supported,n_not_supported,n_supported_approved,n_not_supported_approved,supported_pct_approved,not_supported_pct_approved,relative_success
+A_genetics,A. OT somatic ≥0.3,1633,456,617,87,37.8,19.1,1.98
+A_genetics,A. ClinGen Strong/Def ≥1,2200,5944,736,1141,33.5,19.2,1.74
+A_genetics,A. Mendelian ≥5,933,7211,303,1574,32.5,21.8,1.49
+A_genetics,A. OT genetic ≥0.3,6530,1002,1583,213,24.2,21.3,1.14
+A_genetics,A. GWAS ≥50,2610,5534,648,1229,24.8,22.2,1.12
+B_mechanistic,B. Reactome pathways ≥5,3116,1796,903,239,29.0,13.3,2.18
+B_mechanistic,B. GO-BP ≥20 terms,2349,5406,682,1142,29.0,21.1,1.37
+B_mechanistic,B. Tractable — small mol,6124,2020,1482,395,24.2,19.6,1.24
+B_mechanistic,B. Tractable — antibody,5788,2356,1395,482,24.1,20.5,1.18
+B_mechanistic,B. Bulk Tau ≥0.75,6102,1876,1427,413,23.4,22.0,1.06
+B_mechanistic,B. PPI hub (≥50 partners),2519,4854,614,1148,24.4,23.7,1.03
+B_mechanistic,B. SC Tau ≥0.75,7529,230,1745,85,23.2,37.0,0.63
+C_cell,C. Line C lit high (≥2),3550,643,1154,146,32.5,22.7,1.43
+C_cell,C. DepMap pan-essential,658,6996,40,1765,6.1,25.2,0.24
+D_animal,D. Line D lit high (≥2),3369,824,1103,197,32.7,23.9,1.37
+D_animal,D. OT animal model ≥0.3,5757,360,1519,81,26.4,22.5,1.17
+D_animal,D. IMPC ≥3 phenotypes,2558,954,523,176,20.4,18.4,1.11
+D_animal,D. HPO ≥10 phenotypes,4242,689,996,241,23.5,35.0,0.67
+E_pd,E. Line E lit high (≥2),2771,1422,1037,263,37.4,18.5,2.02
+H_safety,H. gnomAD pLI ≥0.9,2365,5127,486,1248,20.5,24.3,0.84
+H_safety,H. gnomAD LOEUF <0.35,1440,6052,282,1452,19.6,24.0,0.82
+I_landscape,I. Causal disease pleiotropy ≥3,3044,4964,813,1034,26.7,20.8,1.28
+I_landscape,I. DGIdb drug precedent ≥5,0,7061,0,1716,,24.3,
