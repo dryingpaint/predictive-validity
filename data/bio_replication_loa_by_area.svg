@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="649.239375pt" height="466.312812pt" viewBox="0 0 649.239375 466.312812" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-24T14:12:51.235435</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 466.312812 
+L 649.239375 466.312812 
+L 649.239375 0 
+L 0 0 
+z
+" style="fill: #fbfaf8"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 185.04 433.222187 
+L 636.48 433.222187 
+L 636.48 58.822187 
+L 185.04 58.822187 
+z
+" style="fill: #fbfaf8"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 185.04 433.222187 
+L 185.04 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="185.04" y="443.862812" transform="rotate(-0 185.04 443.862812)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 260.28 433.222187 
+L 260.28 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="260.28" y="443.862812" transform="rotate(-0 260.28 443.862812)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 335.52 433.222187 
+L 335.52 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="335.52" y="443.862812" transform="rotate(-0 335.52 443.862812)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 410.76 433.222187 
+L 410.76 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="410.76" y="443.862812" transform="rotate(-0 410.76 443.862812)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 486 433.222187 
+L 486 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="486" y="443.862812" transform="rotate(-0 486 443.862812)">20</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 561.24 433.222187 
+L 561.24 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="561.24" y="443.862812" transform="rotate(-0 561.24 443.862812)">25</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 636.48 433.222187 
+L 636.48 58.822187 
+" clip-path="url(#pe62ba281ad)" style="fill: none; stroke: #d8d3cb; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle" x="636.48" y="443.862812" transform="rotate(-0 636.48 443.862812)">30</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #5b544e" x="410.76" y="457.1425" transform="rotate(-0 410.76 457.1425)">Likelihood of Approval from Phase I (%)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15"/>
+     <g id="text_9">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="412.735821" transform="rotate(-0 181.54 412.735821)">Urology</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_16"/>
+     <g id="text_10">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="389.455135" transform="rotate(-0 181.54 389.455135)">Other</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17"/>
+     <g id="text_11">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="366.174448" transform="rotate(-0 181.54 366.174448)">Infectious disease</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_18"/>
+     <g id="text_12">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="342.893762" transform="rotate(-0 181.54 342.893762)">Respiratory</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_19"/>
+     <g id="text_13">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="319.701669" transform="rotate(-0 181.54 319.701669)">Ophthalmology</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_20"/>
+     <g id="text_14">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="296.332389" transform="rotate(-0 181.54 296.332389)">Cardiovascular</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_21"/>
+     <g id="text_15">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="273.051702" transform="rotate(-0 181.54 273.051702)">Metabolic</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_22"/>
+     <g id="text_16">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="249.859609" transform="rotate(-0 181.54 249.859609)">Oncology</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_23"/>
+     <g id="text_17">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="226.490329" transform="rotate(-0 181.54 226.490329)">Autoimmune</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_24"/>
+     <g id="text_18">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="203.209643" transform="rotate(-0 181.54 203.209643)">Allergy</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_25"/>
+     <g id="text_19">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="180.01755" transform="rotate(-0 181.54 180.01755)">Gastroenterology</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_26"/>
+     <g id="text_20">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="156.64827" transform="rotate(-0 181.54 156.64827)">Psychiatry</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_27"/>
+     <g id="text_21">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="133.367583" transform="rotate(-0 181.54 133.367583)">Neurology</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_28"/>
+     <g id="text_22">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="110.086897" transform="rotate(-0 181.54 110.086897)">Endocrine</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_29"/>
+     <g id="text_23">
+      <text style="font-size: 10.5px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="181.54" y="86.80621" transform="rotate(-0 181.54 86.80621)">Hematology</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 185.04 416.204006 
+L 201.5928 416.204006 
+L 201.5928 401.76998 
+L 185.04 401.76998 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 185.04 392.923319 
+L 210.6216 392.923319 
+L 210.6216 378.489294 
+L 185.04 378.489294 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 185.04 369.642633 
+L 246.7368 369.642633 
+L 246.7368 355.208607 
+L 185.04 355.208607 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 185.04 346.361946 
+L 246.7368 346.361946 
+L 246.7368 331.927921 
+L 185.04 331.927921 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 185.04 323.08126 
+L 252.756 323.08126 
+L 252.756 308.647234 
+L 185.04 308.647234 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 185.04 299.800573 
+L 269.3088 299.800573 
+L 269.3088 285.366548 
+L 185.04 285.366548 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 185.04 276.519887 
+L 275.328 276.519887 
+L 275.328 262.085861 
+L 185.04 262.085861 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 185.04 253.2392 
+L 276.8328 253.2392 
+L 276.8328 238.805175 
+L 185.04 238.805175 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 185.04 229.958514 
+L 279.8424 229.958514 
+L 279.8424 215.524488 
+L 185.04 215.524488 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 185.04 206.677827 
+L 279.8424 206.677827 
+L 279.8424 192.243802 
+L 185.04 192.243802 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 185.04 183.397141 
+L 282.852 183.397141 
+L 282.852 168.963115 
+L 185.04 168.963115 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 185.04 160.116454 
+L 294.8904 160.116454 
+L 294.8904 145.682429 
+L 185.04 145.682429 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 185.04 136.835768 
+L 321.9768 136.835768 
+L 321.9768 122.401742 
+L 185.04 122.401742 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 185.04 113.555081 
+L 374.6448 113.555081 
+L 374.6448 99.121056 
+L 185.04 99.121056 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 185.04 90.274395 
+L 422.7984 90.274395 
+L 422.7984 75.840369 
+L 185.04 75.840369 
+z
+" clip-path="url(#pe62ba281ad)" style="fill: #c4287a"/>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="207.612" y="411.523048" transform="rotate(-0 207.612 411.523048)">1.1%  (n=479)</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="216.6408" y="388.242361" transform="rotate(-0 216.6408 388.242361)">1.7%  (n=13,543)</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="252.756" y="364.961675" transform="rotate(-0 252.756 364.961675)">4.1%  (n=6,834)</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="252.756" y="341.680988" transform="rotate(-0 252.756 341.680988)">4.1%  (n=2,258)</text>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="258.7752" y="318.400302" transform="rotate(-0 258.7752 318.400302)">4.5%  (n=1,788)</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="275.328" y="295.119615" transform="rotate(-0 275.328 295.119615)">5.6%  (n=1,841)</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="281.3472" y="271.838929" transform="rotate(-0 281.3472 271.838929)">6.0%  (n=3,727)</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="282.852" y="248.558242" transform="rotate(-0 282.852 248.558242)">6.1%  (n=15,823)</text>
+   </g>
+   <g id="text_32">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="285.8616" y="225.277556" transform="rotate(-0 285.8616 225.277556)">6.3%  (n=3,084)</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="285.8616" y="201.996869" transform="rotate(-0 285.8616 201.996869)">6.3%  (n=1,429)</text>
+   </g>
+   <g id="text_34">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="288.8712" y="178.716183" transform="rotate(-0 288.8712 178.716183)">6.5%  (n=1,098)</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="300.9096" y="155.435496" transform="rotate(-0 300.9096 155.435496)">7.3%  (n=1,840)</text>
+   </g>
+   <g id="text_36">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="327.996" y="132.15481" transform="rotate(-0 327.996 132.15481)">9.1%  (n=4,054)</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="380.664" y="108.874123" transform="rotate(-0 380.664 108.874123)">12.6%  (n=851)</text>
+   </g>
+   <g id="text_38">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="428.8176" y="85.593437" transform="rotate(-0 428.8176 85.593437)">15.8%  (n=1,421)</text>
+   </g>
+  </g>
+  <g id="text_39">
+   <text style="font-weight: 700; font-size: 13px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="7.2" y="16.702187" transform="rotate(-0 7.2 16.702187)">LOA from Phase I, by therapeutic area</text>
+  </g>
+  <g id="text_40">
+   <text style="font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #5b544e" x="7.2" y="30.742187" transform="rotate(-0 7.2 30.742187)">Compounded probability across all four phase transitions. Our cohort, 2015-2025.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe62ba281ad">
+   <rect x="185.04" y="58.822187" width="451.44" height="374.4"/>
+  </clipPath>
+ </defs>
+</svg>
