@@ -222,13 +222,72 @@ def fig_rare_chronic():
     save(fig, "bio_replication_rare_chronic")
 
 
+def fig_oncology_subtypes():
+    """BIO Figure 7 — solid vs hematologic vs IO."""
+    df = pd.read_csv(f"{DATA}/bio_replication_oncology_subtypes.csv")
+    df = df[df.n_ph1 >= 30].copy()
+    df["label"] = df.stratum.str.replace("_", " ").str.title()
+    df = df.sort_values("loa_from_ph1", ascending=True)
+
+    fig, ax = plt.subplots(figsize=(9, 3.6))
+    fig.subplots_adjust(left=0.28, right=0.94, top=0.79, bottom=0.15)
+    y = range(len(df))
+    ax.barh(list(y), df.loa_from_ph1, height=0.55, color=BIO_PINK, zorder=3)
+    xmax = max(df.loa_from_ph1.max() * 1.30, 15)
+    for yi, (v, n) in enumerate(zip(df.loa_from_ph1, df.n_ph1)):
+        ax.text(v + 0.3, yi, f"{v:.1f}%  (n={int(n):,})",
+                va="center", fontsize=10, color=INK, fontweight="bold")
+    ax.set_yticks(list(y)); ax.set_yticklabels(df.label, fontsize=10.5)
+    ax.set_xlim(0, xmax)
+    ax.set_xlabel("LOA from Phase I (%)", color=SEC, fontsize=10)
+    ax.xaxis.grid(True, color=RULE, lw=0.6); ax.set_axisbelow(True)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    ax.tick_params(length=0)
+    fig.text(0.02, 0.92, "Oncology subtypes  (BIO Figure 7)", fontsize=13, fontweight="bold")
+    fig.text(0.02, 0.86, "Solid tumor vs hematologic malignancy LOA.", fontsize=9, color=SEC)
+    save(fig, "bio_replication_oncology_subtypes")
+
+
+def fig_novelty():
+    df = pd.read_csv(f"{DATA}/bio_replication_novelty_subgroups.csv")
+    df = df[df.n_ph1 >= 30].copy()
+    df = df.sort_values("loa_from_ph1", ascending=True)
+
+    fig, ax = plt.subplots(figsize=(9.5, 4.2))
+    fig.subplots_adjust(left=0.30, right=0.94, top=0.79, bottom=0.13)
+    y = range(len(df))
+    colors = [BIO_PINK if s in ("NME (small-molecule)", "Biologic", "Vaccine") else BIO_TEAL
+              for s in df.stratum]
+    ax.barh(list(y), df.loa_from_ph1, height=0.55, color=colors, zorder=3)
+    xmax = max(df.loa_from_ph1.max() * 1.30, 30)
+    for yi, (v, n) in enumerate(zip(df.loa_from_ph1, df.n_ph1)):
+        ax.text(v + 0.3, yi, f"{v:.1f}%  (n={int(n):,})",
+                va="center", fontsize=10, color=INK, fontweight="bold")
+    ax.set_yticks(list(y)); ax.set_yticklabels(df.stratum, fontsize=10.5)
+    ax.set_xlim(0, xmax)
+    ax.set_xlabel("LOA from Phase I (%)", color=SEC, fontsize=10)
+    ax.xaxis.grid(True, color=RULE, lw=0.6); ax.set_axisbelow(True)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    ax.tick_params(length=0)
+    handles = [Patch(color=BIO_PINK, label="Novel (NME / biologic / vaccine)"),
+               Patch(color=BIO_TEAL, label="Off-patent (biosimilar / non-NME)")]
+    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=9)
+    fig.text(0.02, 0.92, "Novel-drug subgroups  (BIO Figure 9)", fontsize=13, fontweight="bold")
+    fig.text(0.02, 0.87, "LOA from Phase I by drug novelty class.", fontsize=9, color=SEC)
+    save(fig, "bio_replication_novelty")
+
+
 def main():
     style()
     fig_transitions()
     fig_loa_by_area()
     fig_loa_by_modality()
     fig_oncology()
+    fig_oncology_subtypes()
     fig_rare_chronic()
+    fig_novelty()
 
 
 if __name__ == "__main__":

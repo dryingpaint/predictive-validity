@@ -47,14 +47,22 @@ WITH program_activity AS (
 cohort AS (
   SELECT p.program_id, p.highest_phase, po.outcome_broad,
          ibc.bio_area, ibc.is_rare, ibc.is_chronic_high_prev,
+         ibc.is_methodology_study, ibc.oncology_subtype,
          dbc.modality, dbc.novelty_class, dbc.is_novel
   FROM preclin.program p
   JOIN preclin.program_outcome po ON po.program_id = p.program_id
+  JOIN preclin.drug d ON d.drug_id = p.drug_id
   LEFT JOIN program_activity pa ON pa.program_id = p.program_id
   LEFT JOIN preclin.indication_bio_class ibc ON ibc.indication_id = p.indication_id
   LEFT JOIN preclin.drug_bio_class dbc ON dbc.drug_id = p.drug_id
   WHERE (pa.has_active_trial IS NULL OR pa.has_active_trial = FALSE)
     AND po.outcome_broad != 'unknown'
+    -- Exclude Phase 1 methodology studies (healthy volunteer, PK, bioequivalence, etc.)
+    -- These are not FDA-registration-enabling programs — BIO filters them out.
+    AND (ibc.is_methodology_study IS NULL OR ibc.is_methodology_study = FALSE)
+    -- Exclude placebo / vehicle / device / procedure "programs" — these are not drug programs.
+    AND NOT d.is_placebo
+    AND (dbc.modality_subtype IS NULL OR dbc.modality_subtype != 'non_drug_program')
     AND (
       po.outcome_broad IN ('approved','efficacy_fail','safety_fail','commercial_fail',
                             'enrollment_fail','unclassified_termination','planned_termination')
@@ -178,15 +186,64 @@ def main():
     df.to_csv(f"{DATA}/bio_replication_by_modality.csv", index=False)
     print_table("By drug modality (BIO Figures 9, 10)", df, "modality")
 
-    # (6) Novel vs off-patent
+    # Novelty coarsening — align our labels to BIO's binary novel/off-patent
+    #   Novel     = NME | first_in_class | best_in_class | me_too | repurposed
+    #               | biologic | novel_biologic | vaccine
+    #   Off-patent = non_NME | biosimilar
+    NOVEL_SQL = (
+        "novelty_class IN ('NME','first_in_class','best_in_class','me_too','repurposed',"
+        "'biologic','novel_biologic','vaccine')"
+    )
+    OFFP_SQL = "novelty_class IN ('non_NME','biosimilar')"
+
+    # (6) Novel vs off-patent (Figure 9 top-level)
     df = transitions_by(
         conn,
-        "CASE WHEN novelty_class IN ('NME','biologic','vaccine','novel_biologic') THEN 'Novel' "
-        "     WHEN novelty_class IN ('biosimilar','non_NME') THEN 'Off-patent' "
-        "     ELSE 'Unclassified' END",
+        f"CASE WHEN {NOVEL_SQL} THEN 'Novel' "
+        f"     WHEN {OFFP_SQL} THEN 'Off-patent' "
+        f"     ELSE 'Unclassified' END",
     )
     df.to_csv(f"{DATA}/bio_replication_novelty.csv", index=False)
-    print_table("Novel vs off-patent (BIO Figure 9 header)", df, "novelty")
+    print_table("Novel vs off-patent (BIO Figure 9 top)", df, "novelty")
+
+    # (7) Novel sub-groups: NME vs Biologic vs Vaccine (BIO Figure 9 body)
+    df = transitions_by(
+        conn,
+        "CASE "
+        "  WHEN modality='small_molecule' AND novelty_class IN "
+        "       ('NME','first_in_class','best_in_class','me_too','repurposed') "
+        "       THEN 'NME (small-molecule)' "
+        "  WHEN modality='small_molecule' AND novelty_class='non_NME' THEN 'Non-NME' "
+        "  WHEN novelty_class IN ('biologic','novel_biologic') THEN 'Biologic' "
+        "  WHEN novelty_class='vaccine' OR modality='vaccine' THEN 'Vaccine' "
+        "  WHEN novelty_class='biosimilar' THEN 'Biosimilar' "
+        "  ELSE 'Unclassified' END",
+    )
+    df.to_csv(f"{DATA}/bio_replication_novelty_subgroups.csv", index=False)
+    print_table("Novel subgroups: NME / Biologic / Vaccine / Biosimilar / Non-NME (BIO Figure 9 body)",
+                df, "novelty_subgroup")
+
+    # (8) Oncology subtypes: Solid / Hematologic / IO (BIO Figure 7)
+    df = transitions_by(
+        conn,
+        "COALESCE(oncology_subtype, 'unclassified')",
+        where="bio_area='Oncology'",
+    )
+    df.to_csv(f"{DATA}/bio_replication_oncology_subtypes.csv", index=False)
+    print_table("Oncology subtypes (BIO Figure 7)", df, "oncology_subtype")
+
+    # (9) Drug-level LOA (deduplicate to unique drugs — approximates BIO's molecule-level view)
+    df = pd.read_sql(COHORT_CTE + """
+      SELECT
+        COUNT(DISTINCT p.drug_id) AS n_drugs_ph1plus,
+        COUNT(DISTINCT p.drug_id) FILTER (WHERE c.outcome_broad='approved') AS n_drugs_approved,
+        ROUND(100.0 * COUNT(DISTINCT p.drug_id) FILTER (WHERE c.outcome_broad='approved')
+                    / NULLIF(COUNT(DISTINCT p.drug_id), 0), 1) AS drug_level_approval_rate
+      FROM cohort c JOIN preclin.program p ON p.program_id = c.program_id
+    """, conn)
+    df.to_csv(f"{DATA}/bio_replication_drug_level.csv", index=False)
+    print("\n### Drug-level approval rate (deduplicated across indications)")
+    print(df.to_string(index=False))
 
     conn.close()
     print("\nAll six tables written to data/bio_replication_*.csv")
