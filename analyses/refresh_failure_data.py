@@ -57,7 +57,7 @@ drug_modality AS (
   FROM preclin.drug d
 ),
 classified AS (
-  SELECT p.program_id, i.therapeutic_area, dm.modality_raw,
+  SELECT p.program_id, p.highest_phase, i.therapeutic_area, dm.modality_raw,
     CASE
       -- Biology signals from trial-level termination reason take priority
       WHEN pr.r_eff THEN 'efficacy'
@@ -65,8 +65,12 @@ classified AS (
       WHEN pr.r_pkpd THEN 'pk_pd'
       -- Silent efficacy: Ph3 completed but no approval — strong biology inference
       WHEN po.outcome_broad = 'presumptive_efficacy_fail_ph3' THEN 'silent_efficacy_ph3'
-      -- Ph2 stall: Ph2 complete but program halted — ambiguous but usually efficacy-gated
+      -- Ph2 stall: Ph2 complete but program halted — biology-leaning inference
+      -- (industry Ph2→Ph3 transitions are typically efficacy-gated)
       WHEN po.outcome_broad = 'presumptive_fail_ph2' THEN 'ph2_stall'
+      -- Ph1 stall: Ph1 complete but program halted. Ambiguous — Ph1 tests safety/PK
+      -- not efficacy, so most Ph1 stalls are pipeline decisions rather than clinical fails.
+      WHEN po.outcome_broad = 'phase1_only' THEN 'phase1_stall'
       -- Business & operational
       WHEN pr.r_comm OR po.outcome_broad = 'commercial_fail' THEN 'commercial_strategic'
       WHEN pr.r_enr OR po.outcome_broad = 'enrollment_fail' THEN 'enrollment_operational'
@@ -84,10 +88,10 @@ classified AS (
   JOIN preclin.indication i ON i.indication_id = p.indication_id
   LEFT JOIN program_reasons pr ON pr.program_id = p.program_id
   LEFT JOIN drug_modality dm ON dm.drug_id = p.drug_id
-  -- Denominator: Ph2+ programs that did not reach approval, excluding Ph1-only stalls
-  -- (Ph1-only stalls are dominated by pipeline reprioritization, not clinical failure).
-  WHERE po.outcome_broad NOT IN ('approved','phase1_only')
-    AND p.highest_phase >= 2
+  -- Denominator: every Ph1+ program that did not reach approval.
+  -- Ph1 stalls kept as their own bucket so readers see the composition explicitly.
+  WHERE po.outcome_broad != 'approved'
+    AND p.highest_phase >= 1
 )
 """
 
@@ -144,7 +148,35 @@ def main() -> None:
     df.to_csv(os.path.join(DATA, "failure_holistic_by_modality.csv"), index=False)
     print(f"failure_holistic_by_modality.csv {df.n_programs.sum():>5,} programs (subset w/ modality known)")
 
-    # (5) Audit: cohort sizes at every filter step
+    # (5) Stratified by highest_phase reached (which phase the program failed at)
+    df = pd.read_sql(CTE + """
+      SELECT highest_phase, bucket, COUNT(*) AS n_programs
+      FROM classified GROUP BY highest_phase, bucket
+      ORDER BY highest_phase, n_programs DESC;
+    """, conn)
+    df.to_csv(os.path.join(DATA, "failure_holistic_by_phase.csv"), index=False)
+    print(f"failure_holistic_by_phase.csv  {df.n_programs.sum():>7,} programs")
+
+    # (6) Attrition rollup — entrants per phase + approvals
+    df = pd.read_sql("""
+      WITH totals AS (
+        SELECT
+          COUNT(*) FILTER (WHERE p.highest_phase >= 1) AS n_ph1_entrants,
+          COUNT(*) FILTER (WHERE p.highest_phase >= 2) AS n_ph2_entrants,
+          COUNT(*) FILTER (WHERE p.highest_phase >= 3) AS n_ph3_entrants,
+          COUNT(*) FILTER (WHERE po.outcome_broad = 'approved') AS n_approved
+        FROM preclin.program p
+        JOIN preclin.program_outcome po ON po.program_id = p.program_id
+      )
+      SELECT 'ph1_entrants' AS phase, n_ph1_entrants AS n FROM totals
+      UNION ALL SELECT 'ph2_entrants', n_ph2_entrants FROM totals
+      UNION ALL SELECT 'ph3_entrants', n_ph3_entrants FROM totals
+      UNION ALL SELECT 'approved',     n_approved     FROM totals;
+    """, conn)
+    df.to_csv(os.path.join(DATA, "failure_attrition.csv"), index=False)
+    print(f"failure_attrition.csv          {len(df)} rows")
+
+    # (7) Audit: cohort sizes at every filter step
     df = pd.read_sql("""
       SELECT 'ctgov_industry_ph1_3_2015_2025' AS metric,
              COUNT(*) AS value FROM public.trials
@@ -164,14 +196,18 @@ def main() -> None:
         COUNT(DISTINCT subject_key) FROM preclin.classification
         WHERE classifier_task='why_stopped' AND subject_type='trial'
       UNION ALL SELECT 'n_programs_total', COUNT(*) FROM preclin.program
+      UNION ALL SELECT 'n_programs_ph1plus',
+        COUNT(*) FROM preclin.program WHERE highest_phase >= 1
       UNION ALL SELECT 'n_programs_ph2plus',
         COUNT(*) FROM preclin.program WHERE highest_phase >= 2
+      UNION ALL SELECT 'n_programs_ph3plus',
+        COUNT(*) FROM preclin.program WHERE highest_phase >= 3
       UNION ALL SELECT 'n_programs_approved',
         COUNT(*) FROM preclin.program_outcome WHERE outcome_broad='approved'
-      UNION ALL SELECT 'n_programs_failed_ph2plus',
+      UNION ALL SELECT 'n_programs_failed_ph1plus',
         COUNT(*) FROM preclin.program p
         JOIN preclin.program_outcome po ON po.program_id=p.program_id
-        WHERE p.highest_phase >= 2 AND po.outcome_broad NOT IN ('approved','phase1_only');
+        WHERE p.highest_phase >= 1 AND po.outcome_broad != 'approved';
     """, conn)
     df.to_csv(os.path.join(DATA, "failure_modes_audit.csv"), index=False)
     print(f"failure_modes_audit.csv        {len(df)} rows")
