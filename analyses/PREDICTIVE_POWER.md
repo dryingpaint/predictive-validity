@@ -63,3 +63,12 @@ OT-genetic 92%, OT-somatic 25%** (somatic is cancer-only) — ANY genetic dim pr
 Phase 2+ T-I pairs (n = 8,179, base approval 23%), placebos filtered, canonical sponsors.
 `analyses/plot_predictive_power.py` reads cached CSVs in `data/` (no DB required):
 `relative_success_by_dimension`, `genetics_dose_response`, `category_ablation`.
+
+## Data generation (how each cached CSV is produced)
+
+- **`relative_success_by_dimension.csv`** — direct dump of `preclin.v_relative_success_clean`.
+- **`genetics_dose_response.csv`** — `analyses/genetics_dose_response.py` (needs `DATABASE_URL`).
+  Applies Melissa's exact `genetic_only_v1` additive scorer (ported verbatim from
+  `benchmark/scorers_rule_based.py`) to the Phase 2+ pool, then bins by score.
+- **`category_ablation.csv`** — transcribed from the leave-one-category-out ablation in
+  `RESULTS.md` (`analyses/ablation.py`; strict Ph2+ LogReg, full AUC 0.829).
