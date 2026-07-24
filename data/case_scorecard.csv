@@ -1,0 +1,7 @@
+drug,target,group,genetic_only_v1,genetic_tier,genetics_display_0_3,mechanistic,cell_pathway,animal_invivo,human_pd,outcome
+BACE1 inhibitors,BACE1 · Alzheimer's,efficacy,1.0,Moderate,2.0,3,3,3,3.0,FAILED (efficacy)
+γ-secretase (semagacestat),PSEN1 · Alzheimer's,efficacy,1.0,Moderate,2.0,3,3,3,3.0,FAILED (efficacy)
+Anti-Aβ mAbs (sola/bapi),APP · Alzheimer's,efficacy,1.6,Strong,3.0,3,3,3,2.0,FAILED (efficacy)
+Torcetrapib (CETP),CETP · cardiovascular,efficacy,0.7,Weak*,1.0,3,3,3,3.0,FAILED (efficacy)
+TGN1412 (CD28 superagonist),CD28 · Phase 1,safety,1.0,Moderate,2.0,3,3,3,,FAILED (safety)
+Fialuridine (FIAU),HBV pol · hepatitis B,safety,,n/a,,3,2,3,,FAILED (safety)
