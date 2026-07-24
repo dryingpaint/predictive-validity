@@ -26,7 +26,7 @@ the 1990s, before GWAS existed as a technology at all.
 
 ## The pairing
 
-`genetics_mirror.png` / `_clean.png` — two rows, same five-column rubric as
+`genetics_mirror_clean.png` (publication-grade, data only) — two rows, same five-column rubric as
 `CASE_SCORECARD.md` (Genetics + Mechanistic + Cell-pathway + Animal in-vivo +
 Human PD, each 0-3), opposite genetics status, opposite outcome:
 
