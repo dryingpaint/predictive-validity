@@ -40,7 +40,11 @@ FAILRED = "#b0322a"
 # columns of evidence (0-3); genetics carries a tier label too
 COLS = ["Genetics", "Mechanistic", "Cell-pathway", "Animal in-vivo", "Human PD"]
 
-# (drug, target·indication, group, genetics_score, gen_tier, mech, cell, animal, pd, outcome)
+# (drug, target·indication, group, genetics_display_0_3, gen_tier, mech, cell, animal, pd, outcome)
+# NOTE: element [3] is a 0-3 value used only to drive the figure's cell colour intensity.
+# The REAL underlying score is the genetic_only_v1 raw score in GENETIC_ONLY_V1 below,
+# which is what the tier labels and the accompanying doc quote — that raw score is what
+# gets written to the provenance CSV (see main()).
 CASES = [
     ("BACE1 inhibitors",           "BACE1 · Alzheimer's",   "efficacy", 2, "Moderate",  3, 3, 3, 3,   "efficacy"),
     ("γ-secretase (semagacestat)", "PSEN1 · Alzheimer's",   "efficacy", 2, "Moderate",  3, 3, 3, 3,   "efficacy"),
@@ -49,6 +53,18 @@ CASES = [
     ("TGN1412 (CD28 superagonist)","CD28 · Phase 1",        "safety",   2, "Moderate",  3, 3, 3, None, "safety"),
     ("Fialuridine (FIAU)",         "HBV pol · hepatitis B", "safety",   None, "n/a",     3, 2, 3, None, "safety"),
 ]
+
+# Real genetic_only_v1 raw scores, pulled from preclin.v_target_evidence_wide via the
+# repo's own scorer (benchmark/scorers_rule_based.py::scorer_genetic_only). These are the
+# numbers the tier labels and CASE_SCORECARD.md quote. HBV polymerase is viral (n/a).
+GENETIC_ONLY_V1 = {
+    "BACE1 inhibitors": 1.0,
+    "γ-secretase (semagacestat)": 1.0,
+    "Anti-Aβ mAbs (sola/bapi)": 1.6,
+    "Torcetrapib (CETP)": 0.7,
+    "TGN1412 (CD28 superagonist)": 1.0,
+    "Fialuridine (FIAU)": None,
+}
 
 
 def _sans():
@@ -149,8 +165,9 @@ def plot(with_genetics=True, clean=False):
 
 
 def main():
-    pd.DataFrame([{"drug": c[0], "target": c[1], "group": c[2], "genetics_0_3": c[3],
-                   "genetic_tier": c[4], "mechanistic": c[5], "cell_pathway": c[6],
+    pd.DataFrame([{"drug": c[0], "target": c[1], "group": c[2],
+                   "genetic_only_v1": GENETIC_ONLY_V1[c[0]], "genetic_tier": c[4],
+                   "genetics_display_0_3": c[3], "mechanistic": c[5], "cell_pathway": c[6],
                    "animal_invivo": c[7], "human_pd": c[8], "outcome": "FAILED (%s)" % c[9]}
                   for c in CASES]).to_csv(os.path.join(CURATED, "case_scorecard.csv"), index=False)
     for wg in (False, True):

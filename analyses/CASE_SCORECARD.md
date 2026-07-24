@@ -42,6 +42,16 @@ Mendelian) and still failed. So the lesson is sharper and more defensible:
 
 This tempers the Section-2 "genetics leads" message rather than overclaiming it.
 
+**Hindsight caveat (read alongside the genetics-mirror PR).** The genetics column here is
+scored from **present-day** (2026) DB values, not time-sliced to what was known when these
+1990s–2000s programs started. That is deliberate — the point is "*even knowing everything we
+know today*, genetics didn't save these programs" — but it is the same present-day-scoring
+practice the companion `GENETICS_MIRROR.md` treats as hindsight leakage and specifically
+avoids for exenatide. The two are consistent (there, the question is whether genetics that
+*didn't exist yet* would be credited today; here, the genetics is real and long-established),
+but since the PRs are meant to be read together, the different standard is called out rather
+than left implicit.
+
 The two **safety / species-specific** failures (TGN1412, fialuridine) are a different
 failure mode entirely — human-vs-animal pharmacology, not predictable from any evidence
 category — hence the visual split.
