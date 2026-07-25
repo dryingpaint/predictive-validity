@@ -1,0 +1,7 @@
+dimension,cutoff,rs,lo,hi,n_support,n_not,pct_appr_support,pct_appr_not
+Cell literature (line_c),raw (any date),1.83,1.73,1.95,19582,8110,24.2,13.2
+Cell literature (line_c),clean_strict (pre-first-trial),1.4,1.33,1.46,7726,19966,26.4,18.9
+Cell literature (line_c),clean_loose (pre-last-trial),1.52,1.46,1.59,11044,16648,26.5,17.4
+Animal literature (line_d),raw (any date),1.63,1.54,1.72,18174,9518,24.2,14.9
+Animal literature (line_d),clean_strict (pre-first-trial),1.21,1.15,1.27,7122,20570,24.2,19.9
+Animal literature (line_d),clean_loose (pre-last-trial),1.36,1.3,1.43,10128,17564,25.3,18.5
