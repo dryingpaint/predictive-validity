@@ -22,6 +22,12 @@ identical `predicted_p_approval` = 0.273. All three have a Mendelian association
 an Open Targets genetic score ≥ 0.70, and (for IL-6R/IL-6) a large GWAS hit
 count. On genetics alone they are indistinguishable.
 
+(One caveat: this exact three-way tie is a current-DB snapshot. IL-6's Mendelian count
+is 4 — one below the ≥5 threshold that would add +0.5 and push it to Moderate — so a data
+refresh could break the *precise* 0.70/0.70/0.70. The point that genetics alone can't
+cleanly separate a non-causal bystander marker from a validated causal target is robust
+to that; the numbers just wouldn't be identical to the digit.)
+
 That is the point, not a weakness of the exercise: **genetics gets you to the
 door for all three; it is the *biomarker-causal-for-outcome* gate — answerable
 only with Mendelian randomisation, not with an aggregate genetic score — that
