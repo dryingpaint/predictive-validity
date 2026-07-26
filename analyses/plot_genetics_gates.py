@@ -44,17 +44,17 @@ GATES = ["Human genetics", "Target-biomarker\nlink", "Biomarker\ncausal?",
 # each cell = (color, top_label, sub_label)
 GATE_ROWS = [
     ("Anti-PCSK9 mAbs", "PCSK9 · cardiovascular",
-     [(GREEN, "Moderate", "1.3"), (GREEN, "yes", "LDL"), (GREEN, "yes", "LDL (MR)"),
+     [(GREEN, "Strong", "1.6"), (GREEN, "yes", "LDL"), (GREEN, "yes", "LDL (MR)"),
       (GREEN, "yes", "LDL cut ~60%"), (GREEN, "clean", ""), (BLUE, "APPROVED", "2015")]),
     ("Evinacumab (ANGPTL3)", "ANGPTL3 · HoFH",
-     [(GREEN, "Moderate", "1.3"), (GREEN, "yes", "LDL/TG"), (GREEN, "yes", "lipids"),
+     [(GREEN, "Strong", "1.6"), (GREEN, "yes", "LDL/TG"), (GREEN, "yes", "lipids"),
       (GREEN, "yes", "LDL cut ~49%"), (GREEN, "clean", ""), (BLUE, "APPROVED", "2021")]),
     ("Asundexian (Factor XI)", "F11 · atrial fibrillation",
      [(GREEN, "Moderate", "1.3"), (GREEN, "yes", "clotting"), (GREEN, "yes", "less stroke"),
       (RED, "no", "dose too low?"), (GREEN, "less bleeding", "thesis held"),
       (RED, "HALTED", "OCEANIC-AF")]),
     ("Volanesorsen (APOC3)", "APOC3 · FCS",
-     [(GREEN, "Weak*", "0.7 — undervalued"), (GREEN, "yes", "TG"), (GREEN, "yes", "TG/TRL"),
+     [(GREEN, "Moderate*", "1.0 — undervalued"), (GREEN, "yes", "TG"), (GREEN, "yes", "TG/TRL"),
       (GREEN, "yes", "TG cut ~70%"), (RED, "thrombocytopenia", "76% of pts"),
       (AMBER, "EMA yes", "FDA no")]),
 ]
@@ -62,14 +62,14 @@ GATE_ROWS = [
 # --- Figure 2: genetics score vs outcome (whole case library) -----------------
 # (label, target, score, outcome_category)
 LIB = [
-    ("Anti-Aβ mAbs",       "APP",     1.6, "failed"),
-    ("Anti-PCSK9 mAbs",    "PCSK9",   1.3, "approved"),
-    ("Evinacumab",         "ANGPTL3", 1.3, "approved"),
+    ("Anti-Aβ mAbs",       "APP",     1.9, "failed"),
+    ("Anti-PCSK9 mAbs",    "PCSK9",   1.6, "approved"),
+    ("Evinacumab",         "ANGPTL3", 1.6, "approved"),
     ("Asundexian",         "F11",     1.3, "failed"),
     ("BACE1 inhibitors",   "BACE1",   1.0, "failed"),
     ("Pelacarsen/olpasiran","LPA",    1.0, "pending"),
     ("Torcetrapib",        "CETP",    0.7, "failed"),
-    ("Volanesorsen",       "APOC3",   0.7, "mixed"),
+    ("Volanesorsen",       "APOC3",   1.0, "mixed"),
     ("Darapladib",         "PLA2G7",  0.5, "failed"),
 ]
 OUTCOME_COLOR = {"approved": BLUE, "failed": RED, "pending": AMBER, "mixed": PURPLE}

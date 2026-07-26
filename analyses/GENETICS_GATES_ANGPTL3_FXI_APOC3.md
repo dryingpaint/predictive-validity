@@ -32,7 +32,7 @@ needed to plot). Supporting data: `data/genetics_gates_cases.csv`.
 
 ## ANGPTL3 / evinacumab — a second PCSK9-pattern success
 
-**`genetic_only_v1` = 1.3 (Moderate), same as PCSK9.** Loss-of-function carriers
+**`genetic_only_v1` = 1.6 (Strong), same as PCSK9.** Loss-of-function carriers
 have familial combined hypolipidemia — low LDL and triglycerides — and are
 protected from coronary artery disease; genetic *and* pharmacologic inactivation
 both point the same way (according to PubMed, Dewey et al., *NEJM* 2017;
@@ -46,8 +46,14 @@ example" to sit beside PCSK9.
 
 ## Factor XI / asundexian — genetics held, the drug (or dose) didn't
 
-**`genetic_only_v1` = 1.3 (Moderate), same as PCSK9 — and ClinGen-curated.** The
-genetic rationale is textbook: congenital Factor XI deficiency (hemophilia C)
+**`genetic_only_v1` = 1.3 (Moderate) — and ClinGen-curated.** (Data caveat: this 1.3
+is scored on Factor XI's **VTE-prophylaxis / knee-arthroplasty** target-indication —
+the only F11 T-I with a stored score; the DB has **no atrial-fibrillation T-I** for
+F11, which is the indication OCEANIC-AF/asundexian actually addresses. So the score is
+right for the gene but not indication-matched to the failure discussed below. Unlike
+PCSK9/ANGPTL3, F11 carries no Nelson tier, so 1.3 is its full canonical score — below
+PCSK9/ANGPTL3's 1.6.) The genetic rationale is textbook: congenital Factor XI
+deficiency (hemophilia C)
 protects against venous thrombosis and ischemic stroke with only mild, provoked
 bleeding — the basis for a "hemostasis-sparing anticoagulant." All three early
 gates hold: FXI is genetically implicated, inhibiting it reduces clotting, and less
@@ -68,13 +74,16 @@ genetics was wrong" — read it as a failure at a gate genetics never covered.
 
 ## APOC3 / volanesorsen — genetics and efficacy held, safety split the regulators
 
-Scored **0.7 (Weak) — but that is a scorer artifact.** APOC3's human genetics is
+Scored **1.0 (Moderate) — and still undervalued.** APOC3's human genetics is
 strong: loss-of-function carriers have low triglycerides and reduced coronary
 disease (according to PubMed, TG and HDL Working Group of the Exome Sequencing
-Project, *NEJM* 2014; [DOI](https://doi.org/10.1056/NEJMoa1307095)). The scorer
-undervalues it for the same reason it undervalues CETP — no ClinGen gene-*disease*
-curation for a quantitative-trait/protective phenotype (see the head-to-head PR's
-calibration note). Every efficacy gate holds: APOC3 is genetically implicated,
+Project, *NEJM* 2014; [DOI](https://doi.org/10.1056/NEJMoa1307095)). Even at 1.0
+(the canonical lead-indication score, with a Nelson T1), it sits below PCSK9/ANGPTL3's
+1.6 — and the gap is the same ClinGen artifact that undervalues CETP: no ClinGen
+gene-*disease* curation for a quantitative-trait/protective phenotype (see the
+head-to-head PR's calibration note). So the "genetics is genuinely strong but the
+scorer can't fully see it" point stands — just smaller than the earlier 0.7 figure
+implied. Every efficacy gate holds: APOC3 is genetically implicated,
 inhibiting it lowers triglycerides, low triglycerides are protective, and
 volanesorsen lowered TG ~70% (APPROACH trial; Witztum et al., *NEJM* 2019).
 
@@ -93,10 +102,16 @@ expert regulators can weigh that gate oppositely.**
 
 | Program | Genetics | Causal? | Drug engaged? | Safe? | Outcome | Gate that broke |
 |---|---|---|---|---|---|---|
-| PCSK9 (evolocumab) | 1.3 | yes | yes | yes | **approved** | — |
-| ANGPTL3 (evinacumab) | 1.3 | yes | yes | yes | **approved** | — |
-| Factor XI (asundexian) | 1.3 | yes | **no (dose/indication)** | yes (less bleeding) | halted | **drug engagement** |
-| APOC3 (volanesorsen) | 0.7* | yes | yes | **no (thrombocytopenia)** | EMA yes / FDA no | **safety** |
+| PCSK9 (evolocumab) | 1.6 | yes | yes | yes | **approved** | — |
+| ANGPTL3 (evinacumab) | 1.6 | yes | yes | yes | **approved** | — |
+| Factor XI (asundexian) | 1.3† | yes | **no (dose/indication)** | yes (less bleeding) | halted | **drug engagement** |
+| APOC3 (volanesorsen) | 1.0* | yes | yes | **no (thrombocytopenia)** | EMA yes / FDA no | **safety** |
+
+*APOC3 1.0 is still an undervaluation (no ClinGen entry — same artifact as CETP).
+†Factor XI 1.3 is scored on the VTE-prophylaxis indication; no atrial-fibrillation
+T-I exists in the DB. Scores are canonical `genetic_only_v1` at each target's lead
+indication (incl. the per-indication Nelson term); corrected 2026-07-26 from an
+earlier Nelson-omitting variant that read PCSK9/ANGPTL3 as 1.3 and APOC3 as 0.7.
 
 Genetics guards gates 1–3 and it does its job in all four — the divergence is
 entirely downstream. Combined with the `genetics_vs_outcome` figure (APP failed at
@@ -112,7 +127,7 @@ separate gates it cannot see.**
 - **Factor XI:** the efficacy failure is dose/indication-specific to asundexian in
   AF; the class (milvexian, abelacimab) is still in Phase 3. Not "FXI genetics was
   wrong."
-- **APOC3:** the 0.7 score understates genuinely strong LOF-protective genetics —
+- **APOC3:** the 1.0 score still understates genuinely strong LOF-protective genetics —
   a `genetic_only_v1` calibration flag (quantitative-trait genetics without a
   ClinGen disease entry), same pattern as CETP.
 - **Lp-PLA2 / darapladib** (in the `genetics_vs_outcome` figure, score 0.5) is the
