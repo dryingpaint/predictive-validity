@@ -93,9 +93,11 @@ date-cleaning is possible, same operationalization #9 used); and `rs_ci()` verba
 
 **New / improved here:**
 - All **four** lines (B–E), not just C/D.
-- **Dedup.** `evidence_score` stores ~4 *identical* duplicate rows per (target,
-  dimension) — the same job re-inserted (identical score + citation array, different
-  `evidence_id`/`extracted_at`). PR #9 merged without deduping, fanning programs out
+- **Dedup.** `evidence_score` stores ~4 *near-duplicate* rows per (target, dimension)
+  from repeated ingest — **mostly** identical (same score + citation array, different
+  `evidence_id`/`extracted_at`), but ~12/579 targets per line carry a genuinely
+  *divergent* (score, citation) variant; we resolve those with `max` score / keep-first
+  citations (a small, documented tie-break). PR #9 merged without deduping, fanning programs out
   ~4× non-uniformly; this shifts its reported numbers (its cell strict 1.40 / animal
   1.21 become 1.71 / 1.41 once deduped). We dedup to one row per (target, dimension).
 - The **scored-subset** sensitivity that isolates the selection confound.
