@@ -34,11 +34,14 @@ INK, SEC, MUTED = "#14110f", "#5b544e", "#938b82"
 SURFACE, RULE = "#fbfaf8", "#d8d3cb"
 GREEN, AMBER, RED, BLUE = "#2e7d47", "#d99a2b", "#b0322a", "#1f6fd0"
 
-# genetic_only_v1 raw score + key components (present-day, from v_target_evidence_wide)
+# genetic_only_v1 at each target's lead/approved indication (includes the per-indication
+# Nelson-tier term; present-day = hindsight). Corrected 2026-07-26: an earlier version
+# used v_target_evidence_wide alone, which omits Nelson and understated PCSK9 (1.3→1.6)
+# and APP (1.6→1.9). Tiers: Weak 0.1-0.9 / Moderate 1.0-1.3 / Strong >=1.4.
 SUPPORT = {
     #             score  tier          clingen mend(dom) gwas  otgen  n_causal
-    "PCSK9": dict(score=1.3, tier="Moderate",     clingen=1, mend="4 (2 dom)", gwas=1410, otgen=0.99, ncausal=5),
-    "APP":   dict(score=1.6, tier="Strong",       clingen=1, mend="15 (7 dom)", gwas=40,  otgen=0.65, ncausal=3),
+    "PCSK9": dict(score=1.6, tier="Strong",       clingen=1, mend="4 (2 dom)", gwas=1410, otgen=0.99, ncausal=5),
+    "APP":   dict(score=1.9, tier="Strong",       clingen=1, mend="15 (7 dom)", gwas=40,  otgen=0.65, ncausal=3),
     "CETP":  dict(score=0.7, tier="Weak*",        clingen=0, mend="2 (1 dom)", gwas=2498, otgen=0.98, ncausal=3),
 }
 
@@ -46,13 +49,13 @@ SUPPORT = {
 # each middle cell = (color, top_label, sub_label)
 ROWS = [
     ("Anti-PCSK9 mAbs",  "PCSK9 · cardiovascular",
-     (GREEN, "Moderate", "score 1.3"),
+     (GREEN, "Strong", "score 1.6"),
      (GREEN, "validated", "LDL"),
      (GREEN, "yes", "LDL causal (MR)"),
      (GREEN, "yes", "LDL cut ~60%"),
      (BLUE,  "APPROVED", "")),
     ("Anti-Aβ mAbs (sola/bapi)", "APP · Alzheimer's",
-     (GREEN, "Strong", "score 1.6"),
+     (GREEN, "Strong", "score 1.9"),
      (GREEN, "validated", "Aβ"),
      (AMBER, "stage-limited", "right node, late"),
      (GREEN, "yes", "Aβ cleared"),

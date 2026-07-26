@@ -28,13 +28,22 @@ guarantee success," not a time-frozen prediction.
 
 | Target | genetic_only_v1 | tier | ClinGen | Mendelian (dom) | GWAS sig | OT-genetic | n_causal_dis | LLM mech/cell/animal/PD | Outcome |
 |---|---|---|---|---|---|---|---|---|---|
-| **PCSK9** | **1.3** | Moderate | 1 | 4 (2) | 1,410 | 0.99 | **5** | 3/3/3/3 | **approved** |
-| **APP** | **1.6** | **Strong** | 1 | **15 (7)** | 40 | 0.65 | 3 | 3/2/2/2 | failed |
+| **PCSK9** | **1.6** | **Strong** | 1 | 4 (2) | 1,410 | 0.99 | **5** | 3/3/3/3 | **approved** |
+| **APP** | **1.9** | **Strong** | 1 | **15 (7)** | 40 | 0.65 | 3 | 3/2/2/2 | failed |
 | **CETP** | 0.7 | Weak | 0 | 2 (1) | 2,498 | 0.98 | 3 | 3/2/2/1 | failed |
 | BACE1 (for contrast) | 1.0 | Moderate | 0 | 1 (0) | 112 | 0.88 | **0** | 3/2/3/2 | failed |
 
 (LLM lines are present-day and leakage-prone — approved drugs accrue
 confirmatory literature — so they are texture, not load-bearing here.)
+
+> **Scoring note (corrected 2026-07-26).** These are the canonical `genetic_only_v1`
+> scores at each target's **lead/approved indication**, which include the
+> indication-specific Nelson-tier term. An earlier version computed the score from
+> `v_target_evidence_wide` alone, which structurally omits Nelson and understated the
+> targets that carry it: **PCSK9 1.3→1.6, APP 1.6→1.9** (both "Strong"). PCSK9's
+> approved hypercholesterolemia indication and APP's early-AD indication each carry a
+> Nelson T1 (+0.3); CETP and BACE1 have no Nelson tier, so they are unchanged. Tiers:
+> Weak 0.1–0.9 / Moderate 1.0–1.3 / Strong ≥1.4.
 
 Note the three "shapes" of strong genetics: PCSK9 and CETP are **Mendelian +
 massive-GWAS** lipid targets; APP is **Mendelian-dominated** (rare familial
@@ -62,8 +71,11 @@ about*.
 
 ## APP — genetics stronger than PCSK9, and the drugs still failed
 
-**APP scores 1.6 (Strong) — higher than PCSK9's 1.3.** And it is not a scorer
-fluke; APP's genetic architecture is, if anything, richer than PCSK9's:
+**APP scores 1.9 (Strong) — higher than PCSK9's 1.6, and both are top-tier.** The
+two success/failure cases are matched at "Strong," with APP marginally above — this
+is *not* a tier gap, it's APP being at least PCSK9's equal on genetics and failing
+anyway. And it is not a scorer fluke; APP's genetic architecture is, if anything,
+richer than PCSK9's:
 
 - **15 Mendelian variants, 7 dominant** — the familial-Alzheimer's mutations
   (APP duplications, Swedish/London missense), ClinGen-curated.
@@ -150,18 +162,19 @@ recapitulated a protective human variant.
 
 ## Scorer-calibration note (flag for Melissa)
 
-- **PCSK9 1.3 vs. CETP 0.7 — the entire 0.6 gap is the ClinGen term.** PCSK9 has
-  a curated gene-disease validity entry (familial hypercholesterolemia, a
-  *disease* with hard outcomes); CETP does not (CETP deficiency is a lab value —
-  high HDL — not a curated disease). This is arguably *signal*: the scorer is
-  separating "monogenic-disease genetics" from "quantitative-trait genetics," and
-  the disease-anchored kind is what tracked the outcome here. But it means the
-  scorer **undervalues strong-MR quantitative-trait genetics** — exactly the
-  PCSK9/CETP flavor — so a "Weak 0.7" for CETP understates how much genetic
+- **PCSK9 vs. CETP — the gap is ClinGen (+0.6) plus Nelson (+0.3), CETP has neither.**
+  Nelson-free, PCSK9 is 1.3 and CETP 0.7, a clean 0.6 gap that is *entirely* the
+  ClinGen term; PCSK9's approved indication adds a further +0.3 (Nelson T1) → 1.6.
+  PCSK9 has a curated gene-disease validity entry (familial hypercholesterolemia, a
+  *disease* with hard outcomes); CETP does not (CETP deficiency is a lab value — high
+  HDL — not a curated disease). The ClinGen split is arguably *signal* (monogenic-
+  disease vs quantitative-trait genetics, and the disease-anchored kind tracked the
+  outcome here) — but it means the scorer **undervalues strong-MR quantitative-trait
+  genetics**, exactly the CETP flavor, so "Weak 0.7" understates how much genetic
   information actually existed (it was strong and *misleading*, not absent).
-- **APP 1.6 > PCSK9 1.3** shows the scorer correctly ranks APP's genetics as
-  top-tier — and APP *still failed*. That is the whole point: the score measures
-  genetic *support*, not therapeutic *tractability*.
+- **APP 1.9 ≥ PCSK9 1.6 — both "Strong."** The scorer ranks APP's genetics at the
+  top tier, matched with the success case, and APP *still failed*. That is the whole
+  point: the score measures genetic *support*, not therapeutic *tractability*.
 
 ## Recommendation for the piece
 
