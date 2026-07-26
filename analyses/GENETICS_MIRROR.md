@@ -26,6 +26,17 @@ The real thin-evidence moment is the **class-founding program: exenatide**
 (Byetta, Amylin/Eli Lilly), developed off Gila-monster-venom pharmacology in
 the 1990s, before GWAS existed as a technology at all.
 
+## How to read the scores
+
+`scorecard_legend_clean.png` (`analyses/plot_scorecard_legend.py`) is the key for the
+0–3 cells and the genetics tier used here and in the case-study / head-to-head
+scorecards. Each evidence column (Mechanistic / Cell-pathway / Animal in-vivo / Human
+PD) is 0–3 on directness of evidence (0 none → 3 direct & reproduced; the 2-vs-3 line is
+whether the evidence is direct, e.g. Mechanistic 3 = pharmacology + solved structure vs
+2 = pharmacology without structure). Genetics is `genetic_only_v1` mapped onto the same
+scale: Absent (0) / Weak (0.1–0.9) / Moderate (1.0–1.3) / Strong (≥1.4). The numeral is
+drawn in every cell, so scores read independent of colour.
+
 ## The pairing
 
 `genetics_mirror_clean.png` (publication-grade, data only) — two rows, same five-column rubric as
