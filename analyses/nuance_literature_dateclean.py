@@ -54,6 +54,11 @@ def pull_cohort():
         WHERE subject_type='target' AND dimension IN ('line_c_lit','line_d_lit')
     """)
     ev = pd.DataFrame(cur.fetchall())
+    # DEDUP (fix 2026-07-25, cf. PR #12): preclin.evidence_score holds ~4 identical
+    # rows per (subject, dimension) from repeated ingest jobs. Without deduping, the
+    # downstream left-merge on target_id fans out ~4x and distorts RS. Duplicates are
+    # identical, so keep-first is exact.
+    ev = ev.drop_duplicates(subset=["target_id", "dimension"], keep="first").reset_index(drop=True)
     conn.close()
     return progs, ev
 

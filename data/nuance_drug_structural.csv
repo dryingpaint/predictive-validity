@@ -1,7 +1,7 @@
 tier,measure,rs,lo,hi,n_support,n_not,pct_appr_support,pct_appr_not
-drug_efficacy,"Drug cell efficacy (rubric, raw)",2.7,2.59,2.81,1284,16240.0,75.7,28.0
-drug_efficacy,"Drug rodent efficacy (rubric, raw)",2.01,1.92,2.09,2800,14724.0,54.5,27.2
-drug_efficacy,"Drug non-rodent efficacy (rubric, raw)",2.98,2.82,3.13,156,17368.0,92.3,31.0
+drug_efficacy,"Drug cell efficacy (rubric, raw)",1.54,1.42,1.67,338,2118.0,71.9,46.7
+drug_efficacy,"Drug rodent efficacy (rubric, raw)",1.28,1.19,1.39,661,1795.0,59.9,46.6
+drug_efficacy,"Drug non-rodent efficacy (rubric, raw)",1.82,1.6,1.99,40,2416.0,90.0,49.5
 drug_efficacy,"Drug preclinical evidence PRE-first-trial (PubMed, date-clean)",0.81,0.75,0.87,1556,900.0,46.2,57.1
 structural,DepMap essentiality (raw),0.24,,,658,,,
 structural,OT animal-model (raw),1.17,,,5757,,,

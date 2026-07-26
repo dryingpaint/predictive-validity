@@ -14,6 +14,30 @@ is far from the clinical endpoint (Alzheimer's), at any level of model sophistic
 We are **not** ranking model types (organoid > primary > immortalized). The data
 can't support it and it's disease-specific — see the design spec's out-of-scope note.
 
+## Correction (2026-07-25)
+
+Two data artifacts in the original version were found and fixed (independently
+cross-checked in PR #12 and PR #13). All numbers/readings below are the corrected ones.
+
+1. **De-duplication.** `preclin.evidence_score` stores ~4 identical rows per
+   (subject, dimension) from repeated ingest jobs; the original left-merges fanned out
+   ~4× and distorted RS. Fixed by de-duplicating on (subject, dimension) before merging.
+   Effect: the literature numbers were *understated* — cell date-clean 1.40 → **1.75**,
+   animal 1.21 → **1.54** (so "animal is nearly null" was wrong; it's modest-but-real).
+2. **Scored-vs-unscored selection.** The raw drug-efficacy RS previously left-joined
+   the rubric onto the full cohort, lumping ~13k never-scored drugs into "not supported"
+   — deflating the baseline and inflating RS. Restricting to drugs that actually carry
+   the score: drug cell 2.70 → **1.54**, non-rodent 2.98 → **1.82**. **The original
+   "strongest predictor of anything, above genetics" claim was mostly this artifact** —
+   the raw rubric signal sits *inside* the genetics band, not above it.
+
+**What survives:** the thesis is unchanged and cleaner — apparent preclinical-efficacy
+signal still collapses under date-cleaning (drug pre-trial RS 0.81), and structured
+genetics remains the robust benchmark. Retracted: the "above genetics" magnitude and
+"animal nearly null." PR #12 (literature, incl. a scored-subset sensitivity: the
+stricter view is B/D ≈ null, C/E ~1.2–1.3) and PR #13 (drug-efficacy dated re-score)
+are the authoritative deeper recomputes.
+
 ## Headline result
 
 Split cell/animal evidence into three tiers by how "mechanistic" it is, and measure
@@ -25,20 +49,22 @@ the benchmark.
 
 | Tier | Measure | Raw RS | Date-clean RS | Read |
 |---|---|---|---|---|
-| **Drug-efficacy** (does *this drug* work in the model) | drug cell efficacy (rubric) | **2.70** | — | rubric can't be dated (no PMIDs stored) |
-| | drug rodent / non-rodent efficacy (rubric) | 2.01 / 2.98 | — | " |
-| | **pre-first-trial preclinical evidence (PubMed)** | — | **0.81** [0.75,0.87] | date-clean measure: the huge raw signal **vanishes** |
-| **Literature** (is there a cell/animal paper) | cell literature (line_c) | 1.83 | **1.40** [1.33,1.46] | ~half was hindsight |
-| | animal literature (line_d) | 1.63 | **1.21** [1.15,1.27] | ~two-thirds was hindsight; nearly null |
+| **Drug-efficacy** (does *this drug* work in the model) | drug cell efficacy (rubric, scored subset) | **1.54** | — | rubric can't be dated (no PMIDs stored) |
+| | drug rodent / non-rodent efficacy (rubric, scored subset) | 1.28 / 1.82 | — | " |
+| | **pre-first-trial preclinical evidence (PubMed)** | — | **0.81** [0.75,0.87] | date-clean measure: the raw signal collapses to null |
+| **Literature** (is there a cell/animal paper) | cell literature (line_c) | 2.05 | **1.75** [1.60,1.92] | ~30% of the excess was hindsight |
+| | animal literature (line_d) | 1.94 | **1.54** [1.40,1.69] | ~40% was hindsight; modest but real |
 | **Structural** (causal-perturbation screens) | DepMap essentiality | **0.24** | (snapshot) | a *liability* — essential genes make bad targets |
 | | IMPC KO phenotypes / OT animal-model | 1.11 / 1.17 | (snapshot) | modest |
 
 The field's flagship preclinical deliverable — *"the drug worked in our model"* —
-looks like the **single strongest predictor of anything** (RS ~2.7–3.0, above
-genetics). But that is almost entirely leakage: a date-clean measure of whether
-genuinely pre-trial preclinical evidence existed gives **RS 0.81** — no positive
-association with approval at all. Genetics, which is structural and hard to
-retro-fit, holds. See `data/nuance_dateclean_collapse*` and `nuance_tier_overview*`.
+looks predictive raw (RS ~1.5–1.8), but that sits **within** the genetics band once
+the scored-vs-unscored selection artifact is removed — the earlier "above genetics"
+reading was that artifact. And even that modest raw signal does not reproduce under
+date-cleaning: a measure of whether genuinely pre-trial preclinical evidence existed
+gives **RS 0.81** — no positive association with approval. Genetics, which is
+structural and hard to retro-fit, holds. See `data/nuance_dateclean_collapse*` and
+`nuance_tier_overview*`.
 
 ## Method
 

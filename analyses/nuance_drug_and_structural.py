@@ -114,6 +114,9 @@ def main():
                    FROM preclin.evidence_score WHERE subject_type='drug'
                    AND dimension IN ('drug_cell_efficacy','drug_rodent_efficacy','drug_nonrodent_efficacy')""")
     drugeff = pd.DataFrame(cur.fetchall())
+    # DEDUP (fix 2026-07-25, cf. PR #12): evidence_score has ~4 identical rows per
+    # (drug, dimension) from repeated ingest jobs; dedup before merging to avoid fan-out.
+    drugeff = drugeff.drop_duplicates(subset=["drug_id", "dimension"], keep="first").reset_index(drop=True)
     # structural raw RS straight from the clean view
     cur.execute("""SELECT dimension, n_supported, relative_success
                    FROM preclin.v_relative_success_clean
@@ -128,7 +131,11 @@ def main():
                      ("drug_rodent_efficacy","Drug rodent efficacy (rubric, raw)"),
                      ("drug_nonrodent_efficacy","Drug non-rodent efficacy (rubric, raw)")]:
         e = drugeff[drugeff.dimension==dim][["drug_id","score"]]
-        m = progs.merge(e, on="drug_id", how="left")
+        # SELECTION FIX (2026-07-25, cf. PR #13): inner-join so only drugs that ACTUALLY
+        # carry this rubric score enter the cohort. The prior left-join lumped ~13k
+        # never-scored drugs into "not supported", deflating P(appr|not) and inflating RS
+        # (a scored-vs-unscored selection artifact, not real signal).
+        m = progs.merge(e, on="drug_id", how="inner")
         sup = (m.score.fillna(0) >= 2).to_numpy()
         r = rs_ci(sup, m.approved.fillna(False).to_numpy(bool)); r.update(tier="drug_efficacy", measure=lab)
         rows.append(r)
