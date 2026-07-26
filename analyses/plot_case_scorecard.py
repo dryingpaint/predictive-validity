@@ -60,7 +60,7 @@ CASES = [
 GENETIC_ONLY_V1 = {
     "BACE1 inhibitors": 1.0,
     "γ-secretase (semagacestat)": 1.0,
-    "Anti-Aβ mAbs (sola/bapi)": 1.6,
+    "Anti-Aβ mAbs (sola/bapi)": 1.9,
     "Torcetrapib (CETP)": 0.7,
     "TGN1412 (CD28 superagonist)": 1.0,
     "Fialuridine (FIAU)": None,

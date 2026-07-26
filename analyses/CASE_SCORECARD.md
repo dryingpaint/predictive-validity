@@ -15,13 +15,16 @@ and **safety / species-specific failures** (TGN1412, fialuridine).
 
 The original rubric scores mechanistic / cell / animal / PD but **omits human
 genetics** — the category the benchmark finds most predictive (see `RESULTS.md`
-ablation and `analyses/PREDICTIVE_POWER.md`). Genetics here is scored from the DB
-using the repo's own `genetic_only_v1` scorer (`benchmark/scorers_rule_based.py`) on
-each target (`v_target_evidence_wide`, target-level):
+ablation and `analyses/PREDICTIVE_POWER.md`). Genetics here is scored with the repo's
+own `genetic_only_v1` scorer (`benchmark/scorers_rule_based.py`) at each target's
+**lead indication**, which includes the per-indication Nelson-tier term. (Corrected
+2026-07-26: an earlier version scored from `v_target_evidence_wide` alone, which omits
+Nelson — APP was thereby understated 1.6→**1.9**; BACE1/PSEN1/CD28/CETP carry no Nelson
+tier, so they are unchanged.)
 
 | Drug (target) | genetic_only_v1 | tier |
 |---|---|---|
-| Anti-Aβ mAbs (APP) | 1.6 | Strong |
+| Anti-Aβ mAbs (APP) | 1.9 | Strong |
 | BACE1 inhibitors (BACE1) | 1.0 | Moderate |
 | γ-secretase / semagacestat (PSEN1) | 1.0 | Moderate |
 | TGN1412 (CD28) | 1.0 | Moderate |
