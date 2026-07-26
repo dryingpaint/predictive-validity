@@ -30,6 +30,16 @@ All scores are `genetic_only_v1` on `preclin.v_target_evidence_wide`, present-da
 Regenerate: `python3 analyses/plot_genetics_gates.py` (scores baked in; no DB
 needed to plot). Supporting data: `data/genetics_gates_cases.csv`.
 
+## How to read the scores
+
+`scorecard_legend_clean.png` (`analyses/plot_scorecard_legend.py`) is the key for the
+0–3 evidence cells and the genetics tier. Each evidence column is 0–3 on directness
+(0 none → 3 direct & reproduced; the 2-vs-3 line is whether the evidence is direct, e.g.
+Mechanistic 3 = pharmacology + solved structure vs 2 = pharmacology without structure).
+Genetics is `genetic_only_v1` mapped to the same scale — Absent (0) / Weak (0.1–0.9) /
+Moderate (1.0–1.3) / Strong (≥1.4). The numeral is in every cell, so scores read
+independent of colour.
+
 ## ANGPTL3 / evinacumab — a second PCSK9-pattern success
 
 **`genetic_only_v1` = 1.6 (Strong), same as PCSK9.** Loss-of-function carriers
