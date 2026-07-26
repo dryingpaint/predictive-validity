@@ -89,7 +89,15 @@ drugs**, which lumps every *unscored* drug into "not supported." That conflates 
 high score"* with *"was even assessed on this rubric,"* inflating RS via a
 scored-vs-unscored selection effect. Among drugs **actually assessed**, the present-day
 raw RS is only **1.77 (cell) / 1.32 (animal)** — already far below genetics-band
-framing and well under #9's headline. This is a real clarification the re-score
+framing and well under #9's headline.
+
+(Two caveats to keep this honest as a before/after: 2.70/2.98 is not a clean
+*same-cohort* baseline — it also carried PR #9's pre-dedup ~4× fan-out and its
+primary-target cohort. On *this* PR's own 425-drug cohort, the left-join gives
+**15.48 / 12.81** — that's the pure within-cohort selection artifact. And PR #9 has
+since self-corrected within its own cohort to **1.54 / 1.82**, consistent with this.)
+
+This is a real clarification the re-score
 surfaces before any date-cleaning is applied.
 
 ### 2. Time-sliced re-score (POC, N = 12) — the signal is null
