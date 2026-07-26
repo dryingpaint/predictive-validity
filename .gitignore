@@ -37,3 +37,13 @@ catboost_info/
 *.model
 *.pkl
 *.joblib
+
+# Structural versioned re-pull: raw source downloads are streamed and never kept;
+# ignore any raw/intermediate spillover. Only the lean derived data/versioned/*.csv
+# (per-release per-gene summaries) are committed.
+data/versioned/**/raw/
+data/versioned/*.json.gz
+data/versioned/*.parquet
+data/versioned/*_raw.csv
+*.snappy.parquet
+*_association_data.json.gz
