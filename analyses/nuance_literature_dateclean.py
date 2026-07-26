@@ -173,7 +173,13 @@ def main():
     for dim, label in [("line_c_lit", "Cell literature (line_c)"),
                        ("line_d_lit", "Animal literature (line_d)")]:
         e = ev[ev.dimension == dim][["target_id", "score", "min_year", "has_paper"]]
-        m = progs.merge(e, on="target_id", how="left")
+        # SELECTION FIX (2026-07-26): inner-join so only programs whose target was
+        # actually LLM-scored for this line enter the cohort. Only 579 of ~951 Ph2+
+        # targets were ever scored; a left-join dumped the other ~372 (lower baseline
+        # approval) into "not supported", deflating P(appr|not) and inflating RS — the
+        # SAME artifact already fixed on the drug tier. This makes the literature RS
+        # a high-vs-low comparison among scored targets, consistent with PR #12.
+        m = progs.merge(e, on="target_id", how="inner")
         score = m.score.fillna(0).to_numpy()
         miny = m.min_year.fillna(np.inf).to_numpy()                  # no datable paper -> +inf
         fy = m.fy.fillna(9999).to_numpy(); ly = m.ly.fillna(9999).to_numpy()

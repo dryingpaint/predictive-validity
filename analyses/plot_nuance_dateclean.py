@@ -30,7 +30,8 @@ DATA = os.path.join(HERE, "..", "data")
 INK, SEC, MUTED = "#14110f", "#5b544e", "#938b82"
 SURFACE, RULE = "#fbfaf8", "#d8d3cb"
 BLUE, ORANGE, GREEN, GREY = "#1f6fd0", "#e2673a", "#2e7d47", "#b9b2a8"
-GEN_LO, GEN_HI = 1.44, 1.98   # genetics dims RS band (from v_relative_success_clean)
+GEN_LO, GEN_HI = 1.12, 1.98   # genetics dims RS spread (from v_relative_success_clean:
+                              # GWAS 1.12, OT-genetic 1.14, Mendelian 1.49, ClinGen 1.74, OT-somatic 1.98)
 
 
 def _sans():
