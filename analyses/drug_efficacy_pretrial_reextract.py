@@ -398,10 +398,85 @@ CASE_STUDIES_PRESENT_CELL = {20212: 3, 11898: 3, 11151: 3, 16167: 3, 18800: 3, 9
 CASE_STUDIES_PRESENT_ANIMAL = {20212: 3, 11898: 3, 11151: 3, 16167: 3, 18800: 3, 999001: 3}
 
 
+# ---------------------------------------------------------------------------
+# FULL-COHORT run (all 425 assessed drugs). Fetch here; scoring is done by Haiku
+# subagents (an LLM reading the abstracts against RUBRIC), which write FULL_SCORES;
+# then rs-full computes the time-sliced RS. No external API key: the subagents are
+# the LLM. Synonyms = display_name + normalized_name only (no hand-curated code names
+# at this scale -- a coverage limitation vs the POC; noted in the doc).
+# ---------------------------------------------------------------------------
+FULL_ABSTRACTS = os.path.join(DATA, "drug_pretrial_abstracts_full.json")
+FULL_SCORES = os.path.join(DATA, "drug_efficacy_pretrial_scores_full.csv")
+FULL_COMPARISON = os.path.join(DATA, "drug_efficacy_pretrial_comparison_full.csv")
+
+
+def fetch_all():
+    cohort = load_cohort()
+    dl = cohort.drop_duplicates("drug_id").copy()
+    dl["cutoff_year"] = pd.to_datetime(dl.first_trial_date).dt.year
+    cache = json.load(open(FULL_ABSTRACTS)) if os.path.exists(FULL_ABSTRACTS) else {}
+    preclin = ('(mice OR mouse OR rat OR "cell line" OR "in vitro" OR xenograft OR '
+               'preclinical OR "animal model" OR "cell culture" OR monkey OR dog OR '
+               'cynomolgus OR pharmacology)')
+    n = 0
+    for _, d in dl.iterrows():
+        key = str(int(d.drug_id))
+        if key in cache:
+            continue
+        cy = int(d.cutoff_year)
+        syns = [s for s in {str(d.display_name or "").strip(),
+                            str(d.normalized_name or "").strip()} if s and s != "None"]
+        if not syns:
+            continue
+        name_clause = "(" + " OR ".join(f'"{s}"[tiab]' for s in syns) + ")"
+        term = f'{name_clause} AND {preclin} AND ("1900"[dp] : "{cy - 1}"[dp])'
+        pmids, count = esearch(term, retmax=15)
+        time.sleep(0.34)
+        abstracts = efetch_abstracts(pmids) if pmids else []
+        if pmids:
+            time.sleep(0.34)
+        cache[key] = {"drug_id": int(d.drug_id), "name": syns[0], "cutoff_year": cy,
+                      "n_hits_total": count, "n_fetched": len(abstracts),
+                      "abstracts": abstracts}
+        n += 1
+        if n % 25 == 0:
+            json.dump(cache, open(FULL_ABSTRACTS, "w"))
+            print(f"  ...{n} newly fetched ({len(cache)} total)")
+    json.dump(cache, open(FULL_ABSTRACTS, "w"))
+    withabs = sum(1 for v in cache.values() if v["n_fetched"] > 0)
+    print(f"  wrote {FULL_ABSTRACTS}: {len(cache)} drugs, {withabs} with >=1 pre-trial abstract")
+
+
+def rs_full():
+    ts = pd.read_csv(FULL_SCORES)
+    cohort = load_cohort()
+    dl = (cohort.sort_values("approved", ascending=False).drop_duplicates("drug_id")
+          [["drug_id", "approved", "present_cell", "present_animal"]])
+    m = ts.merge(dl, on="drug_id", how="left")
+    m["approved"] = m.approved.fillna(False)
+    m["ts_max"] = m[["ts_cell", "ts_animal"]].max(axis=1)
+    appr = m.approved.to_numpy(bool)
+    print(f"  n={len(m)} drugs; approved={int(appr.sum())} failed={int((~appr).sum())}")
+    rows = []
+    for lab, col in [("present cell", "present_cell"), ("present animal", "present_animal"),
+                     ("time-sliced cell", "ts_cell"), ("time-sliced animal", "ts_animal"),
+                     ("time-sliced max(cell,animal)", "ts_max")]:
+        sup = (m[col].fillna(0) >= 2).to_numpy()
+        r = rs_ci(sup, appr)
+        r.update(measure=lab)
+        rows.append(r)
+        print(f"  RS {lab:30s}: {r['rs']} [{r['lo']},{r['hi']}] "
+              f"n_sup={r['n_support']} n_not={r['n_not']}")
+    pd.DataFrame(rows).to_csv(FULL_COMPARISON, index=False)
+    m.to_csv(os.path.join(DATA, "drug_efficacy_pretrial_scores_full_joined.csv"), index=False)
+    print(f"  wrote {FULL_COMPARISON}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", required=True,
-                    choices=["present-rs", "fetch", "score", "rs", "all"])
+                    choices=["present-rs", "fetch", "score", "rs", "all",
+                             "fetch-all", "rs-full"])
     ap.add_argument("--scorer", default="manual", choices=["manual", "anthropic"])
     args = ap.parse_args()
 
@@ -413,6 +488,12 @@ def main():
     if args.mode == "fetch":
         print("== fetch pre-first-trial abstracts (PubMed) ==")
         fetch_poc(POC)
+    if args.mode == "fetch-all":
+        print("== fetch pre-first-trial abstracts, FULL cohort (PubMed) ==")
+        fetch_all()
+    if args.mode == "rs-full":
+        print("== time-sliced RS, FULL cohort (subagent-scored) ==")
+        rs_full()
     if args.mode == "score":
         print(f"== score time-sliced ({args.scorer}) ==")
         run_score(args.scorer)

@@ -37,3 +37,8 @@ catboost_info/
 *.model
 *.pkl
 *.joblib
+
+# drug-efficacy full-run intermediates (reproducible via --mode fetch-all)
+analyses/../data/_scorebatch/
+data/_scorebatch/
+data/drug_pretrial_abstracts_full.json

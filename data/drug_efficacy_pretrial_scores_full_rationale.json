@@ -1,0 +1,1556 @@
+[
+ {
+  "drug_id": 6,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Both cell (1) and animal (3) efficacy documented."
+ },
+ {
+  "drug_id": 7,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Both cell (1) and animal (9) efficacy documented."
+ },
+ {
+  "drug_id": 9,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence in provided abstracts."
+ },
+ {
+  "drug_id": 12,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Both cell (1) and animal (9) efficacy documented."
+ },
+ {
+  "drug_id": 18,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Animal model efficacy shown (1 abstract(s))."
+ },
+ {
+  "drug_id": 20,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence in provided abstracts."
+ },
+ {
+  "drug_id": 22,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (2) and animal (3) efficacy documented."
+ },
+ {
+  "drug_id": 42,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Animal model efficacy shown (1 abstract(s))."
+ },
+ {
+  "drug_id": 45,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (7) and animal (8) efficacy documented."
+ },
+ {
+  "drug_id": 60,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (9) and animal (12) efficacy documented."
+ },
+ {
+  "drug_id": 64,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence in provided abstracts."
+ },
+ {
+  "drug_id": 65,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Both cell (1) and animal (1) efficacy documented."
+ },
+ {
+  "drug_id": 68,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (2) and animal (2) efficacy documented."
+ },
+ {
+  "drug_id": 72,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (6) and animal (9) efficacy documented."
+ },
+ {
+  "drug_id": 76,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (8) and animal (10) efficacy documented."
+ },
+ {
+  "drug_id": 82,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Both cell (1) and animal (10) efficacy documented."
+ },
+ {
+  "drug_id": 87,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "Animal model efficacy shown (5 abstract(s))."
+ },
+ {
+  "drug_id": 94,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Animal model efficacy shown (1 abstract(s))."
+ },
+ {
+  "drug_id": 96,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (5) and animal (4) efficacy documented."
+ },
+ {
+  "drug_id": 99,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Both cell (3) and animal (3) efficacy documented."
+ },
+ {
+  "drug_id": 123,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence in provided abstracts."
+ },
+ {
+  "drug_id": 130,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Both cell (1) and animal (1) efficacy documented."
+ },
+ {
+  "drug_id": 133,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 136,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "Cell: None; Animal: Non-rodent or replicated"
+ },
+ {
+  "drug_id": 138,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell: Strong; Animal: Multiple/replicated"
+ },
+ {
+  "drug_id": 140,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 142,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 143,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 145,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 147,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 149,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Cell: Single; Animal: None"
+ },
+ {
+  "drug_id": 150,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell: Strong; Animal: Multiple/replicated"
+ },
+ {
+  "drug_id": 155,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 157,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Cell: None; Animal: Single rodent"
+ },
+ {
+  "drug_id": 158,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 163,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 164,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 165,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell: Single; Animal: Multiple/replicated"
+ },
+ {
+  "drug_id": 178,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 179,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 182,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 183,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 185,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell: Multiple; Animal: Multiple/replicated"
+ },
+ {
+  "drug_id": 191,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell: None; Animal: None"
+ },
+ {
+  "drug_id": 195,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell: 3 (9 markers); animal: 3 (8 markers)"
+ },
+ {
+  "drug_id": 199,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (4 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 200,
+  "ts_cell": 2,
+  "ts_animal": 1,
+  "rationale": "cell: 2 (3 markers); animal: 1 (3 markers)"
+ },
+ {
+  "drug_id": 204,
+  "ts_cell": 2,
+  "ts_animal": 1,
+  "rationale": "cell: 2 (3 markers); animal: 1 (4 markers)"
+ },
+ {
+  "drug_id": 217,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "cell: 2 (3 markers)"
+ },
+ {
+  "drug_id": 220,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "animal: 1 (1 markers)"
+ },
+ {
+  "drug_id": 221,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "animal: 1 (1 markers)"
+ },
+ {
+  "drug_id": 229,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence"
+ },
+ {
+  "drug_id": 235,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (5 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 238,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (9 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 239,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "cell: 3 (9 markers); animal: 2 (4 markers)"
+ },
+ {
+  "drug_id": 243,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (9 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 302,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "animal: 1 (1 markers)"
+ },
+ {
+  "drug_id": 333,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (5 markers); animal: 1 (3 markers)"
+ },
+ {
+  "drug_id": 336,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (6 markers); animal: 1 (8 markers)"
+ },
+ {
+  "drug_id": 337,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "animal: 2 (2 markers)"
+ },
+ {
+  "drug_id": 341,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "cell: 1 (2 markers)"
+ },
+ {
+  "drug_id": 344,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "cell: 1 (1 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 347,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "animal: 1 (1 markers)"
+ },
+ {
+  "drug_id": 351,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "cell: 3 (4 markers); animal: 2 (5 markers)"
+ },
+ {
+  "drug_id": 353,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "animal: 1 (1 markers)"
+ },
+ {
+  "drug_id": 354,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "cell: 3 (6 markers); animal: 1 (2 markers)"
+ },
+ {
+  "drug_id": 356,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 357,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 358,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 360,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 361,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Evidence: cell=1, animal=1"
+ },
+ {
+  "drug_id": 363,
+  "ts_cell": 3,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=3"
+ },
+ {
+  "drug_id": 365,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 367,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=2"
+ },
+ {
+  "drug_id": 368,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 374,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=2"
+ },
+ {
+  "drug_id": 375,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 377,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 379,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 380,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=2"
+ },
+ {
+  "drug_id": 381,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 382,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 383,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 385,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence in abstracts"
+ },
+ {
+  "drug_id": 386,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 387,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Evidence: cell=2, animal=2"
+ },
+ {
+  "drug_id": 391,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 392,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Evidence: cell=1"
+ },
+ {
+  "drug_id": 395,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 397,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 398,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell evidence: in_vitro=False, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 399,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 401,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 402,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=False, culture=True, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 409,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=True, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=True, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 410,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 411,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Cell evidence: in_vitro=False, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 412,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=True, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=True, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 413,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "Cell evidence: in_vitro=False, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=True, rodent=True, non-rodent=True."
+ },
+ {
+  "drug_id": 414,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 421,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "Cell evidence: in_vitro=True, culture=False, human=False, ipsc=False, dose-resp=True. Animal: in_vivo=True, rodent=True, non-rodent=True."
+ },
+ {
+  "drug_id": 423,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=True, culture=True, human=False, ipsc=False, dose-resp=True. Animal: in_vivo=True, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 424,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "Cell evidence: in_vitro=True, culture=True, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=True, non-rodent=True."
+ },
+ {
+  "drug_id": 426,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Clinical trial abstracts without described preclinical data."
+ },
+ {
+  "drug_id": 427,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Cell evidence: in_vitro=True, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 428,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Cell evidence: in_vitro=False, culture=True, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 430,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=False, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 431,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cell evidence: in_vitro=False, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=False, rodent=False, non-rodent=False."
+ },
+ {
+  "drug_id": 432,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=True, culture=True, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=True, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 433,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell evidence: in_vitro=True, culture=False, human=False, ipsc=False, dose-resp=False. Animal: in_vivo=True, rodent=True, non-rodent=False."
+ },
+ {
+  "drug_id": 435,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "benralizumab: cell=3, animal=3"
+ },
+ {
+  "drug_id": 438,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "brigatinib: cell=2, animal=0"
+ },
+ {
+  "drug_id": 439,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "brodalumab: cell=0, animal=0"
+ },
+ {
+  "drug_id": 442,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "deflazacort: cell=0, animal=0"
+ },
+ {
+  "drug_id": 444,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "dupilumab: cell=0, animal=0"
+ },
+ {
+  "drug_id": 445,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "durvalumab: cell=0, animal=0"
+ },
+ {
+  "drug_id": 449,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "etelcalcetide: cell=2, animal=2"
+ },
+ {
+  "drug_id": 451,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "guselkumab: cell=0, animal=0"
+ },
+ {
+  "drug_id": 454,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "letermovir: cell=1, animal=0"
+ },
+ {
+  "drug_id": 455,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "macimorelin: cell=1, animal=0"
+ },
+ {
+  "drug_id": 456,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "meropenemvaborbactam: cell=0, animal=0"
+ },
+ {
+  "drug_id": 457,
+  "ts_cell": 3,
+  "ts_animal": 0,
+  "rationale": "midostaurin: cell=3, animal=0"
+ },
+ {
+  "drug_id": 458,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "naldemedine: cell=1, animal=1"
+ },
+ {
+  "drug_id": 459,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "neratinib: cell=3, animal=2"
+ },
+ {
+  "drug_id": 494,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "pimavanserin: cell=0, animal=0"
+ },
+ {
+  "drug_id": 500,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "alectinib: cell=3, animal=2"
+ },
+ {
+  "drug_id": 506,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "cariprazine: cell=2, animal=2"
+ },
+ {
+  "drug_id": 510,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "daclatasvir: cell=2, animal=0"
+ },
+ {
+  "drug_id": 514,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "edoxaban: cell=2, animal=3"
+ },
+ {
+  "drug_id": 518,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "evolocumab: cell=0, animal=0"
+ },
+ {
+  "drug_id": 520,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "idarucizumab: cell=1, animal=0"
+ },
+ {
+  "drug_id": 521,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "insulindegludec: cell=0, animal=0"
+ },
+ {
+  "drug_id": 523,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "ivabradine"
+ },
+ {
+  "drug_id": 525,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "lenvatinib"
+ },
+ {
+  "drug_id": 528,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "mepolizumab"
+ },
+ {
+  "drug_id": 529,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "necitumumab"
+ },
+ {
+  "drug_id": 534,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "patiromer"
+ },
+ {
+  "drug_id": 536,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "sacubitrilvalsartan"
+ },
+ {
+  "drug_id": 538,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "secukinumab"
+ },
+ {
+  "drug_id": 539,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "selexipag"
+ },
+ {
+  "drug_id": 542,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "trabectedin"
+ },
+ {
+  "drug_id": 543,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "trifluridine/tipiracil"
+ },
+ {
+  "drug_id": 25059,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Cyclophosphamide"
+ },
+ {
+  "drug_id": 25060,
+  "ts_cell": 2,
+  "ts_animal": 1,
+  "rationale": "gemcitabine"
+ },
+ {
+  "drug_id": 25061,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Rosuvastatin"
+ },
+ {
+  "drug_id": 25062,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Metformin"
+ },
+ {
+  "drug_id": 25063,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Moxifloxacin"
+ },
+ {
+  "drug_id": 25064,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Matching Placebo"
+ },
+ {
+  "drug_id": 25065,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Nab-paclitaxel"
+ },
+ {
+  "drug_id": 25066,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "leucovorin"
+ },
+ {
+  "drug_id": 25068,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "IVA"
+ },
+ {
+  "drug_id": 25069,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "atorvastatin"
+ },
+ {
+  "drug_id": 25070,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Irinotecan"
+ },
+ {
+  "drug_id": 25072,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "Warfarin"
+ },
+ {
+  "drug_id": 25074,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25075,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25076,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25078,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25079,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25081,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25084,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25085,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 1, animal efficacy 2."
+ },
+ {
+  "drug_id": 25086,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25087,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25088,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25089,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Cell efficacy score 1; no animal data."
+ },
+ {
+  "drug_id": 25091,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25092,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25102,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25104,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25105,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 2, animal efficacy 2."
+ },
+ {
+  "drug_id": 25106,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25108,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25109,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25110,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "Cell efficacy 1, animal efficacy 1."
+ },
+ {
+  "drug_id": 25113,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Cell efficacy 3, animal efficacy 2."
+ },
+ {
+  "drug_id": 25114,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "Control with unrelated abstracts"
+ },
+ {
+  "drug_id": 25123,
+  "ts_cell": 1,
+  "ts_animal": 1,
+  "rationale": "One cell study (HSCs), one animal study (arthritis rats)"
+ },
+ {
+  "drug_id": 25126,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "Vaccine studies with clinical/animal efficacy evidence"
+ },
+ {
+  "drug_id": 25129,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "Multiple cell studies of TAF, multiple animal models"
+ },
+ {
+  "drug_id": 25133,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:4, animal:10"
+ },
+ {
+  "drug_id": 25134,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "cell:1, animal:5"
+ },
+ {
+  "drug_id": 25135,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "cell:0, animal:0"
+ },
+ {
+  "drug_id": 25137,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:4, animal:6"
+ },
+ {
+  "drug_id": 25138,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:3, animal:7"
+ },
+ {
+  "drug_id": 25139,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:5, animal:11"
+ },
+ {
+  "drug_id": 25140,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "cell:1, animal:3"
+ },
+ {
+  "drug_id": 25142,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "cell:1, animal:9"
+ },
+ {
+  "drug_id": 25144,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "cell:0, animal:0"
+ },
+ {
+  "drug_id": 25145,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:4, animal:5"
+ },
+ {
+  "drug_id": 25146,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "cell:0, animal:5"
+ },
+ {
+  "drug_id": 25150,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "cell:2, animal:7"
+ },
+ {
+  "drug_id": 25155,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "cell:0, animal:0"
+ },
+ {
+  "drug_id": 25156,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "cell:0, animal:0"
+ },
+ {
+  "drug_id": 25160,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:4, animal:7"
+ },
+ {
+  "drug_id": 25161,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "cell:0, animal:0"
+ },
+ {
+  "drug_id": 25164,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "cell:0, animal:6"
+ },
+ {
+  "drug_id": 25165,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "cell:7, animal:7"
+ },
+ {
+  "drug_id": 25167,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25179,
+  "ts_cell": 3,
+  "ts_animal": 2,
+  "rationale": "Multiple cell and animal efficacy results."
+ },
+ {
+  "drug_id": 25180,
+  "ts_cell": 3,
+  "ts_animal": 1,
+  "rationale": "Multiple cell efficacy results but limited animal data."
+ },
+ {
+  "drug_id": 25182,
+  "ts_cell": 2,
+  "ts_animal": 1,
+  "rationale": "Multiple cell efficacy results but limited animal data."
+ },
+ {
+  "drug_id": 25183,
+  "ts_cell": 2,
+  "ts_animal": 1,
+  "rationale": "Multiple cell efficacy results but limited animal data."
+ },
+ {
+  "drug_id": 25184,
+  "ts_cell": 2,
+  "ts_animal": 0,
+  "rationale": "Multiple cell efficacy results but limited animal data."
+ },
+ {
+  "drug_id": 25186,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25190,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25191,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Multiple cell and animal efficacy results."
+ },
+ {
+  "drug_id": 25192,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25209,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25212,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25213,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Limited preclinical efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25214,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25216,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "Multiple cell and animal efficacy results."
+ },
+ {
+  "drug_id": 25217,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25221,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No efficacy evidence for drug in provided abstracts."
+ },
+ {
+  "drug_id": 25222,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "Multiple cell and animal efficacy results."
+ },
+ {
+  "drug_id": 25223,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "Multiple cell and animal efficacy results."
+ },
+ {
+  "drug_id": 25224,
+  "ts_cell": 3,
+  "ts_animal": 0,
+  "rationale": "Multiple cell efficacy results but limited animal data."
+ },
+ {
+  "drug_id": 25231,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Limited preclinical efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25237,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Limited preclinical efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25239,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "TAS-102: single positive cell result; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25243,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "N-803: multiple cell results or human model; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25244,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "Cannabidiol Oral Solution: multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25245,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "SBRT: single positive cell result; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25251,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "comparator: non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25258,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "13-valent pneumococcal conjugate vaccine: single positive cell result; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25261,
+  "ts_cell": 2,
+  "ts_animal": 2,
+  "rationale": "canagliflozin: multiple cell results or human model; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25262,
+  "ts_cell": 0,
+  "ts_animal": 2,
+  "rationale": "zolpidem: multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25268,
+  "ts_cell": 2,
+  "ts_animal": 3,
+  "rationale": "antroquinonol: multiple cell results or human model; non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25269,
+  "ts_cell": 3,
+  "ts_animal": 3,
+  "rationale": "Loperamide: strong cell efficacy with dose-response/human cells; non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25270,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "CT1812: single positive cell result; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25273,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence for nktr214 in abstracts."
+ },
+ {
+  "drug_id": 25275,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "Bupivacaine HCl: single positive cell result; non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25277,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "13vpnc: single positive cell result; non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25279,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "ALKS 5461: non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25289,
+  "ts_cell": 0,
+  "ts_animal": 3,
+  "rationale": "lcz696: non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25293,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Dolutegravir: single positive cell result; multiple rodent models or dose-response"
+ },
+ {
+  "drug_id": 25295,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "ModraDoc006/r: single rodent model"
+ },
+ {
+  "drug_id": 25297,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence for axs05 in abstracts."
+ },
+ {
+  "drug_id": 25300,
+  "ts_cell": 1,
+  "ts_animal": 3,
+  "rationale": "Oral Placebo: single positive cell result; non-rodent or replicated animal efficacy"
+ },
+ {
+  "drug_id": 25303,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "S-1: single rodent model"
+ },
+ {
+  "drug_id": 25304,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No preclinical efficacy evidence for influenzavaccine in abstracts."
+ },
+ {
+  "drug_id": 25305,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25306,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25309,
+  "ts_cell": 1,
+  "ts_animal": 2,
+  "rationale": "Multiple animal models; limited cell evidence."
+ },
+ {
+  "drug_id": 25311,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Single cell assay efficacy result."
+ },
+ {
+  "drug_id": 25312,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25317,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25320,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25321,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25324,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Single animal model efficacy result."
+ },
+ {
+  "drug_id": 25325,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25327,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25331,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25333,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25334,
+  "ts_cell": 0,
+  "ts_animal": 1,
+  "rationale": "Single animal model efficacy result."
+ },
+ {
+  "drug_id": 25336,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ },
+ {
+  "drug_id": 25338,
+  "ts_cell": 1,
+  "ts_animal": 0,
+  "rationale": "Single cell assay efficacy result."
+ },
+ {
+  "drug_id": 25342,
+  "ts_cell": 0,
+  "ts_animal": 0,
+  "rationale": "No cell or animal efficacy evidence in abstracts."
+ }
+]

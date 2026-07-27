@@ -105,10 +105,52 @@ since self-corrected within its own cohort to **1.54 / 1.82**, consistent with t
 This is a real clarification the re-score
 surfaces before any date-cleaning is applied.
 
-### 2. Time-sliced re-score (POC, N = 12) — the signal is null
+### 2. Time-sliced re-score — FULL cohort (N = 425, Haiku-subagent scored) — the headline
+
+The rigorous version. Re-score every assessed drug's cell/animal efficacy on the 0–3
+rubric using **only PubMed abstracts published before its first trial**, then RS vs
+approval. Fetch = `--mode fetch-all` (eutils, date-restricted; 259/425 drugs have ≥1
+pre-trial abstract, 166 have none → 0/0). Scoring = **12 Haiku subagents** reading the
+abstracts against the rubric (no external API key — the subagents are the LLM). RS =
+`--mode rs-full`, **drug-level** (one score per drug),
+`data/drug_efficacy_pretrial_comparison_full.csv`. Support = score ≥ 2.
+
+| Measure (N=425; 216 approved / 209 failed) | RS [95% CI] | n_sup | n_not |
+|---|---|---|---|
+| present cell (drug-level) | 1.51 [1.25, 1.80] | 69 | 356 |
+| present animal (drug-level) | 1.30 [1.08, 1.55] | 136 | 289 |
+| **time-sliced cell** | **0.95** [0.72, 1.18] | 84 | 341 |
+| **time-sliced animal** | **0.78** [0.59, 0.98] | 103 | 322 |
+| **time-sliced max(cell, animal)** | **0.89** [0.70, 1.09] | 126 | 299 |
+
+**Present-day scored drug-efficacy is modestly predictive (1.3–1.5, CIs exclude 1); the
+pre-trial re-score is null (0.8–1.0, CIs touch or cross 1).** The flagship deliverable —
+"the drug worked in a model" — carries **no positive predictive signal for approval**
+once restricted to evidence that existed before the trial. This is the properly-powered
+confirmation of #9's collapse (vs the 0.81 presence-proxy and the N=12 POC below).
+
+Two credibility checks:
+- **Not a scorer-harshness artifact:** the Haiku subagents flagged *more* drugs cell≥2
+  (84) than the DB present-day did (69) — the collapse is not from under-scoring; the
+  pre-trial high-scorers simply don't preferentially get approved.
+- **Grain:** drug-level (one score/drug), so the matched present anchor is 1.51/1.30;
+  the 1.77/1.32 in §1 is program-level (over-weights drugs with many programs). Same
+  present→dated collapse either way.
+
+**Caveats:** (a) fetch searches `display_name`+`normalized_name` only (no hand-curated
+code-name synonyms at 425-scale), so early code-named pre-trial papers are under-caught
+— biasing *toward* under-counting pre-trial evidence, i.e. conservative against finding
+a signal; (b) `first_trial_date` is the DB's 2015-window value, so for drugs whose true
+first-in-human predates it the cutoff is too permissive (admits some hindsight), which
+would *inflate* the dated RS — a null is again conservative; (c) retmax 15 abstracts/drug;
+(d) 51% cohort base rate reflects the assessed-drug selection (RS is within-cohort, so
+unaffected). Per-drug scores + rationales: `data/drug_efficacy_pretrial_scores_full_rationale.json`.
+
+### 3. POC precursor (N = 12, hand-scored) — same direction
 
 `--mode rs`, `data/drug_efficacy_pretrial_comparison.csv`. Support = time-sliced
-score ≥ 2.
+score ≥ 2. Superseded by §2's full run; kept as the hand-checkable validation that
+seeded the method.
 
 | Time-sliced measure | RS [95% CI] | n_support | n_not |
 |---|---|---|---|
@@ -117,9 +159,8 @@ score ≥ 2.
 | max(cell, animal) | **1.00** [0.0, 3.66] | 4 | 8 |
 
 Time-sliced drug-efficacy **does not separate approved from failed** in this balanced
-hand sample (6 approved, 6 failed). RS is a clean **1.0**. The CI is very wide (N=12),
-so this is **directional, not definitive** — but it points the same way as #9's
-collapse, now via a real dated rubric score rather than a presence proxy.
+hand sample (6 approved, 6 failed). RS is a clean **1.0**, CI wide (N=12) — directional,
+and confirmed by the full N=425 run above.
 
 ### 3. Per-drug: present-day score vs. time-sliced score
 

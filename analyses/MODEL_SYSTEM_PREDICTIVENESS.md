@@ -108,9 +108,12 @@ in place. Two things matter:
   (never-assessed drugs dumped into "not supported"; the deep-dive reproduces the
   15.5 / 12.8 left-join baseline that generates the illusory 2.7–3.0).
 - **Dated — the edge disappears.** This tier's proxy (any pre-trial PubMed paper on
-  the drug) gives **RS 0.81**; the deep-dive attempts the rigorous version —
-  re-scoring the 0–3 rubric from **pre-trial abstracts only** — and finds ≈ null
-  (proof-of-concept, N=12, wide CI; full LLM run pending an API key).
+  the drug) gives **RS 0.81**; the deep-dive's **full-cohort dated re-score (N=425,
+  Haiku-subagent scored on pre-trial abstracts only)** gives **RS cell 0.95
+  [0.72,1.18] / animal 0.78 [0.59,0.98] / max 0.89 [0.70,1.09] — null** (present-day
+  drug-level anchor: 1.51 / 1.30). An N=12 hand-scored POC agreed. So the modest
+  present-day signal (1.3–1.5) does not survive requiring the evidence to predate the
+  trial.
 **Honest caveat:** the proxy is date **plus** metric change (rubric-score vs
 paper-presence are different measures) and crude (drug-name disambiguation) — so the
 defensible claim is "the apparent drug-efficacy signal does not reproduce under any
@@ -171,8 +174,9 @@ precise, defensible version, in four claims:
 3. **Its apparent predictive power is mostly hindsight.** Raw, "the drug worked in our
    model" looks like the strongest predictor of anything (~2.7–3.0) — but that's
    largely confirmatory scores/literature accrued *after* success (plus the
-   selection artifact). Date-cleaned, the edge is gone (≈null); cell *literature*
-   retains only a sliver (~1.26), at the level of the weakest genetics signals.
+   selection artifact). A full **N=425 dated re-score** (rubric re-applied to pre-trial
+   abstracts only) collapses it to **null** (RS 0.8–1.0); cell *literature* retains
+   only a sliver (~1.26), at the level of the weakest genetics signals.
 4. **The exception is when the model *is* the disease mechanism** (CF organoids):
    predictiveness tracks mechanism-proximity to the endpoint — near-deterministic for a
    monogenic channelopathy, unbuildable for Alzheimer's.
@@ -200,7 +204,10 @@ Results: `data/nuance_literature_dateclean.csv`, `data/nuance_drug_structural.cs
 - Structural tier is present-day snapshots; full versioned re-pull is the key TODO.
 - Drug-efficacy date-clean in this tier is a paper-presence proxy; the drug-level
   deep-dive (`DRUG_EFFICACY_PRETRIAL_REEXTRACT.md`) does the proper 0–3 rubric re-score
-  from pre-trial abstracts but is a proof-of-concept (N=12; full LLM run needs an API key).
+  from pre-trial abstracts — now run over the **full 425-drug cohort** (Haiku subagents,
+  no API key), giving RS ~0.8–1.0 (null). Fetch is name-search only (no code-name
+  synonyms at scale) and uses the DB's 2015-window first-trial dates — both bias toward
+  under-counting pre-trial evidence, so the null is conservative.
 - `citation_pmids` pollution limits literature-tier datability to ~66% of high-score targets.
 - Present-day genetics benchmark (hindsight), consistent with PR #3/#4/#6/#8 disclosures.
 - CF-organoid synthesis is curated literature, not from her DB.
