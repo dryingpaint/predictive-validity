@@ -82,7 +82,7 @@ def plot_collapse(clean=False):
     ax.set_xlabel("Relative Success (approval with ÷ without evidence)", fontsize=9, color=SEC)
     ax.tick_params(axis="x", labelsize=8, colors=MUTED, length=0)
     handles = [Line2D([0],[0],marker="o",color="none",markerfacecolor=ORANGE,markersize=9,label="raw (any-date papers)"),
-               Line2D([0],[0],marker="o",color="none",markerfacecolor=BLUE,markersize=9,label="pre-first-trial (clean)")]
+               Line2D([0],[0],marker="o",color="none",markerfacecolor=BLUE,markersize=9,label="pre-first-trial")]
     leg = ax.legend(handles=handles, loc="lower right", frameon=True, fontsize=8, handletextpad=0.3)
     leg.get_frame().set_facecolor(SURFACE); leg.get_frame().set_edgecolor("none"); leg.get_frame().set_alpha(1.0)
     if not clean:
