@@ -91,7 +91,7 @@ Project, *NEJM* 2014; [DOI](https://doi.org/10.1056/NEJMoa1307095)). Even at 1.0
 (the canonical lead-indication score, with a Nelson T1), it sits below PCSK9/ANGPTL3's
 1.6 — and the gap is the same ClinGen artifact that undervalues CETP: no ClinGen
 gene-*disease* curation for a quantitative-trait/protective phenotype (see the
-head-to-head PR's calibration note). So the "genetics is genuinely strong but the
+PCSK9/CETP calibration note in the sibling `PCSK9_VS_APP_CETP.md`). So the "genetics is genuinely strong but the
 scorer can't fully see it" point stands — just smaller than the earlier 0.7 figure
 implied. Every efficacy gate holds: APOC3 is genetically implicated,
 inhibiting it lowers triglycerides, low triglycerides are protective, and
@@ -132,7 +132,7 @@ separate gates it cannot see.**
 
 ## Scope, rigor caveats, and reproduce
 
-- **Present-day genetics (hindsight)** — consistent with the PR #3 / #4 / #6
+- **Present-day genetics (hindsight)** — consistent with the PR #3 / #4
   disclosures.
 - **Factor XI:** the efficacy failure is dose/indication-specific to asundexian in
   AF; the class (milvexian, abelacimab) is still in Phase 3. Not "FXI genetics was
