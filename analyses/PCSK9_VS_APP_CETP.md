@@ -2,11 +2,12 @@
 
 A head-to-head for the Section 3/4 "strong evidence, still failed" story. The
 question that prompted it: is **BACE1** a fair evidence-matched comparator to
-**PCSK9** (the success case)? Answer: no — BACE1 ties PCSK9 on the aggregate
-genetic score but not on substance (BACE1 has 0 ClinGen curations and 0
-causally-linked diseases; its score is carried by association-flavored Open
-Targets numbers). A BACE1-vs-PCSK9 contrast invites the true rebuttal *"PCSK9
-just had better genetics."* Two targets survive as genuine head-to-heads:
+**PCSK9** (the success case)? Answer: no — BACE1 scores *below* PCSK9 (1.0
+"Moderate" vs 1.6 "Strong"), and underneath even that gap its support is
+non-causal: 0 ClinGen curations, 0 causally-linked diseases, its score carried
+by association-flavored Open Targets numbers. A BACE1-vs-PCSK9 contrast invites
+the true rebuttal *"PCSK9 just had better genetics."* Two targets survive as
+genuine head-to-heads:
 **APP** (genetics as strong as / stronger than PCSK9, still failed) and **CETP**
 (matched evidence *type*, still failed). This note works through both.
 
