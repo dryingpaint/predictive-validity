@@ -86,7 +86,8 @@ def plot_collapse(clean=False):
     handles = [Line2D([0],[0],marker="o",color="none",markerfacecolor=ORANGE,markersize=9,label="raw (any-date papers)"),
                Line2D([0],[0],marker="o",color="none",markerfacecolor="#caa14a",markersize=7,label="pre-last-trial"),
                Line2D([0],[0],marker="o",color="none",markerfacecolor=BLUE,markersize=9,label="pre-first-trial (clean)")]
-    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=8, handletextpad=0.3)
+    leg = ax.legend(handles=handles, loc="lower right", frameon=True, fontsize=8, handletextpad=0.3)
+    leg.get_frame().set_facecolor(SURFACE); leg.get_frame().set_edgecolor("none"); leg.get_frame().set_alpha(1.0)
     if not clean:
         fig.text(0.02, 0.925, "Half the apparent power of cell/animal literature is hindsight",
                  fontsize=14.5, fontweight="bold", color=INK)
@@ -133,7 +134,8 @@ def plot_drug_collapse(clean=False):
     ax.tick_params(axis="x", labelsize=8, colors=MUTED, length=0)
     handles = [Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE, markersize=9, label="present-day rubric"),
                Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE, markersize=9, label="pre-trial re-score (N=425)")]
-    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=8, handletextpad=0.3)
+    leg = ax.legend(handles=handles, loc="lower right", frameon=True, fontsize=8, handletextpad=0.3)
+    leg.get_frame().set_facecolor(SURFACE); leg.get_frame().set_edgecolor("none"); leg.get_frame().set_alpha(1.0)
     if not clean:
         fig.text(0.02, 0.925, '"The drug worked in a model" does not survive date-cleaning',
                  fontsize=14.5, fontweight="bold", color=INK)
