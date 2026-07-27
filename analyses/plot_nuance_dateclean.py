@@ -75,9 +75,7 @@ def plot_collapse(clean=False):
                 fontweight="bold", color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.plot([GEN_LO, GEN_HI], [1.5, 1.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
-    ax.text((GEN_LO+GEN_HI)/2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
-    ax.set_xlim(0.9, 2.05); ax.set_ylim(-0.6, 1.75)
+    ax.set_xlim(0, 2.0); ax.set_xticks([0, 0.5, 1.0, 1.5, 2.0]); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
     ax.spines["bottom"].set_color(RULE)
@@ -93,7 +91,7 @@ def plot_collapse(clean=False):
         fig.text(0.02, 0.79,
                  "Relative Success of target-level cell and animal literature evidence, before vs. after requiring the "
                  "supporting papers to predate the trial. When only pre-first-trial papers count, the signal collapses "
-                 "toward the null — animal evidence nearly to 1.0 — and stays well below genetics.",
+                 "toward the null — animal evidence nearly to 1.0 —.",
                  fontsize=9.2, color=SEC, linespacing=1.4, wrap=True)
         fig.add_artist(Line2D([0.02, 0.965], [0.70, 0.70], color=RULE, lw=1, transform=fig.transFigure))
         fig.text(0.02, 0.03, "Source: preclin line_c_lit/line_d_lit + NCBI eutils publication dates. Ph2+ programs.",
@@ -124,9 +122,7 @@ def plot_drug_collapse(clean=False):
                 color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.plot([GEN_LO, GEN_HI], [1.5, 1.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
-    ax.text((GEN_LO + GEN_HI) / 2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
-    ax.set_xlim(0.55, 2.05); ax.set_ylim(-0.6, 1.75)
+    ax.set_xlim(0, 2.0); ax.set_xticks([0, 0.5, 1.0, 1.5, 2.0]); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
     ax.spines["bottom"].set_color(RULE)
@@ -181,20 +177,18 @@ def plot_overview(clean=False):
                 transform=ax.get_yaxis_transform())
     _genetics_band(ax, min(ys)-1, max(ys)+1)
     ax.text(1.0, max(ys)+0.75, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.plot([GEN_LO, GEN_HI], [max(ys)+0.5, max(ys)+0.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
-    ax.text((GEN_LO+GEN_HI)/2, max(ys)+0.75, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
-    ax.set_xlim(0, 3.25); ax.set_ylim(min(ys)-0.6, max(ys)+1.1)
+    ax.set_xlim(0, 2.0); ax.set_xticks([0, 0.5, 1.0, 1.5, 2.0]); ax.set_ylim(min(ys)-0.6, max(ys)+1.1)
     ax.set_yticks([])
     for s in ("top","right","left"): ax.spines[s].set_visible(False)
     ax.spines["bottom"].set_color(RULE)
     ax.set_xlabel("Relative Success", fontsize=9, color=SEC)
     ax.tick_params(axis="x", labelsize=8, colors=MUTED, length=0)
     if not clean:
-        fig.text(0.02, 0.945, "No clean cell/animal measure comes near genetics",
+        fig.text(0.02, 0.945, "No clean cell/animal measure predicts approval",
                  fontsize=14.5, fontweight="bold", color=INK)
         fig.text(0.02, 0.79,
                  "Relative Success for every cell/animal evidence measure, across the three tiers (structural screens, "
-                 "literature, drug-specific efficacy), raw and date-cleaned where possible. Genetics band shown for scale. "
+                 "literature, drug-specific efficacy), raw and date-cleaned where possible. "
                  "The raw literature/drug numbers are inflated by hindsight; the clean ones sit near the null.",
                  fontsize=9, color=SEC, linespacing=1.4)
         fig.add_artist(Line2D([0.02, 0.965], [0.735, 0.735], color=RULE, lw=1, transform=fig.transFigure))
