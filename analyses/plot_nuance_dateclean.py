@@ -30,6 +30,7 @@ DATA = os.path.join(HERE, "..", "data")
 INK, SEC, MUTED = "#14110f", "#5b544e", "#938b82"
 SURFACE, RULE = "#fbfaf8", "#d8d3cb"
 BLUE, ORANGE, GREEN, GREY = "#1f6fd0", "#e2673a", "#2e7d47", "#b9b2a8"
+GENBAND = "#e7e2db"   # neutral benchmark band (no blue)
 GEN_LO, GEN_HI = 1.12, 1.98   # genetics dims RS spread (from v_relative_success_clean:
                               # GWAS 1.12, OT-genetic 1.14, Mendelian 1.49, ClinGen 1.74, OT-somatic 1.98)
 
@@ -49,7 +50,7 @@ def _rc():
 
 
 def _genetics_band(ax, y0, y1):
-    ax.axvspan(GEN_LO, GEN_HI, color=BLUE, alpha=0.08, zorder=0)
+    ax.axvspan(GEN_LO, GEN_HI, color=GENBAND, zorder=0)
     ax.axvline(1.0, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
 
 
@@ -76,7 +77,7 @@ def plot_collapse(clean=False):
                 fontweight="bold", color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.text((GEN_LO+GEN_HI)/2, 1.62, "genetics", fontsize=7.5, color=BLUE, ha="center", fontweight="bold")
+    ax.text((GEN_LO+GEN_HI)/2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0.9, 2.05); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
@@ -125,7 +126,7 @@ def plot_drug_collapse(clean=False):
                 color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.text((GEN_LO + GEN_HI) / 2, 1.62, "genetics", fontsize=7.5, color=BLUE, ha="center", fontweight="bold")
+    ax.text((GEN_LO + GEN_HI) / 2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0.55, 2.05); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
     for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
@@ -181,7 +182,7 @@ def plot_overview(clean=False):
                 transform=ax.get_yaxis_transform())
     _genetics_band(ax, min(ys)-1, max(ys)+1)
     ax.text(1.0, max(ys)+0.75, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.text((GEN_LO+GEN_HI)/2, max(ys)+0.75, "genetics band", fontsize=7.5, color=BLUE, ha="center", fontweight="bold")
+    ax.text((GEN_LO+GEN_HI)/2, max(ys)+0.75, "genetics band", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0, 3.25); ax.set_ylim(min(ys)-0.6, max(ys)+1.1)
     ax.set_yticks([])
     for s in ("top","right","left"): ax.spines[s].set_visible(False)
