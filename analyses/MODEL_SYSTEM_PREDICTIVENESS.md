@@ -98,16 +98,23 @@ PMIDs, raw DOIs, and free-text citations — so even this tier is only partly da
 dropped in the cleaned versions). Undatable free-text/DOI citations get a year by
 regex where one is embedded.
 
-### Tier 2 — drug-efficacy (`nuance_drug_and_structural.py`)
+### Tier 2 — drug-efficacy (`nuance_drug_and_structural.py`; deep-dive in `DRUG_EFFICACY_PRETRIAL_REEXTRACT.md`)
 Melissa's `drug_*_efficacy` rubric scores store **no PMIDs**, so they can't be dated
-in place. Raw RS is reported (contaminated). The date-clean measure is different:
-per program-linked drug, a PubMed search for any preclinical (cell/animal) paper on
-that drug published **before its first trial**; RS of that presence.
-**Honest caveat:** rubric-score and paper-presence are *different metrics*, so the
-2.70 → 0.81 drop is date **plus** metric change — the correct claim is "the huge raw
-rubric number does not reproduce under any date-clean measure," not a clean
-apples-to-apples date delta. The paper-presence proxy is crude (drug-name
-disambiguation; abstract indexing) — searchable for 2,456 programs.
+in place. Two things matter:
+- **Present-day, scored subset — modest, not spectacular.** RS ≈ 1.5–1.8 (cell 1.54
+  in this tier; the drug-level deep-dive recomputes **1.77 cell / 1.32 animal** on the
+  425-drug assessed cohort). That is already far below the raw ~2.7–3.0 a naive
+  left-join produces — the inflation is a **scored-vs-unscored selection artifact**
+  (never-assessed drugs dumped into "not supported"; the deep-dive reproduces the
+  15.5 / 12.8 left-join baseline that generates the illusory 2.7–3.0).
+- **Dated — the edge disappears.** This tier's proxy (any pre-trial PubMed paper on
+  the drug) gives **RS 0.81**; the deep-dive attempts the rigorous version —
+  re-scoring the 0–3 rubric from **pre-trial abstracts only** — and finds ≈ null
+  (proof-of-concept, N=12, wide CI; full LLM run pending an API key).
+**Honest caveat:** the proxy is date **plus** metric change (rubric-score vs
+paper-presence are different measures) and crude (drug-name disambiguation) — so the
+defensible claim is "the apparent drug-efficacy signal does not reproduce under any
+date-clean measure," not a clean apples-to-apples delta.
 
 ### Tier 3 — structural (`nuance_drug_and_structural.py`)
 DepMap / IMPC / OT-animal RS straight from `v_relative_success_clean`. These are
@@ -147,20 +154,53 @@ only, and is trustworthy in proportion to how tightly the model's readout sits o
 causally-validated path to the human endpoint. That is the same causal chain genetics
 speaks to — which is why, on average, genetics wins.
 
+## For the write-up — stating this correctly
+
+The finding is easy to overstate ("so in vitro data is useless?"). It isn't that. The
+precise, defensible version, in four claims:
+
+1. **A preclinical model certifies mechanism *engagement*, not disease *causality*.**
+   "The drug did the expected thing to the biology" ≠ "that biology is the right lever
+   for the human endpoint." Approval hinges on the second; genetics speaks to it, a
+   model cannot.
+2. **Among Phase-2+ programs, "it worked in the model" is a gate, not a discriminator.**
+   You can't advance a compound that fails in models, so model efficacy has real
+   go/no-go value — but *every* program in this cohort already cleared that bar, so
+   among survivors it no longer separates winners from losers. "Doesn't predict
+   approval here" ≠ "worthless."
+3. **Its apparent predictive power is mostly hindsight.** Raw, "the drug worked in our
+   model" looks like the strongest predictor of anything (~2.7–3.0) — but that's
+   largely confirmatory scores/literature accrued *after* success (plus the
+   selection artifact). Date-cleaned, the edge is gone (≈null); cell *literature*
+   retains only a sliver (~1.26), at the level of the weakest genetics signals.
+4. **The exception is when the model *is* the disease mechanism** (CF organoids):
+   predictiveness tracks mechanism-proximity to the endpoint — near-deterministic for a
+   monogenic channelopathy, unbuildable for Alzheimer's.
+
+**Do not write** "in vitro data does nothing." **Do write:** *once hindsight is removed,
+whether a compound worked in a cell or animal model does not tell you which Phase-2+
+program will be approved — because it certifies target engagement, not that the target
+is the right lever for the disease. Genetics, being structural and hard to retrofit,
+carries that causal question; a model can't.*
+
 ## Reproduce
 
 ```bash
 DATABASE_URL=... python3 analyses/nuance_literature_dateclean.py   # Tier 1 (eutils dates)
 DATABASE_URL=... python3 analyses/nuance_drug_and_structural.py    # Tiers 2-3 (PubMed search)
+DATABASE_URL=... python3 analyses/drug_efficacy_pretrial_reextract.py  # Tier-2 deep-dive (pre-trial re-score)
 python3 analyses/plot_nuance_dateclean.py                          # figures
 ```
-Cached intermediates: `data/pmid_pubyear.csv`, `data/drug_pretrial_pubmed.csv`.
+Cached intermediates: `data/pmid_pubyear.csv`, `data/drug_pretrial_pubmed.csv`,
+`data/drug_pretrial_abstracts.json`.
 Results: `data/nuance_literature_dateclean.csv`, `data/nuance_drug_structural.csv`.
 
 ## Limitations (read before citing)
 
 - Structural tier is present-day snapshots; full versioned re-pull is the key TODO.
-- Drug-efficacy date-clean is a paper-presence proxy, not Melissa's 0–3 rubric dated.
+- Drug-efficacy date-clean in this tier is a paper-presence proxy; the drug-level
+  deep-dive (`DRUG_EFFICACY_PRETRIAL_REEXTRACT.md`) does the proper 0–3 rubric re-score
+  from pre-trial abstracts but is a proof-of-concept (N=12; full LLM run needs an API key).
 - `citation_pmids` pollution limits literature-tier datability to ~66% of high-score targets.
 - Present-day genetics benchmark (hindsight), consistent with PR #3/#4/#6/#8 disclosures.
 - CF-organoid synthesis is curated literature, not from her DB.

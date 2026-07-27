@@ -1,0 +1,325 @@
+{
+ "20212": {
+  "drug_id": 20212,
+  "name": "verubecestat",
+  "cutoff_year": 2012,
+  "note": "BACE1/AD, fail; FIH ~2012",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "11898": {
+  "drug_id": 11898,
+  "name": "torcetrapib",
+  "cutoff_year": 2004,
+  "note": "CETP/CVD, fail; FIH ~2004",
+  "n_hits_total": 1,
+  "n_fetched": 1,
+  "abstracts": [
+   {
+    "pmid": "14596646",
+    "year": "2003",
+    "title": "Pharmacotherapy for dyslipidaemia--current therapies and future agents.",
+    "abstract": "Current lipid-altering agents that lower low density lipoprotein cholesterol (LDL-C) primarily through increased hepatic LDL receptor activity include statins, bile acid sequestrants/resins and cholesterol absorption inhibitors such as ezetimibe, plant stanols/sterols, polyphenols, as well as nutraceuticals such as oat bran, psyllium and soy proteins; those currently in development include newer statins, phytostanol analogues, squalene synthase inhibitors, bile acid transport inhibitors and SREBP cleavage-activating protein (SCAP) activating ligands. Other current agents that affect lipid metabolism include nicotinic acid (niacin), acipimox, high-dose fish oils, antioxidants and policosanol, whilst those in development include microsomal triglyceride transfer protein (MTP) inhibitors, acylcoenzyme A: cholesterol acyltransferase (ACAT) inhibitors, gemcabene, lifibrol, pantothenic acid analogues, nicotinic acid-receptor agonists, anti-inflammatory agents (such as Lp-PLA(2) antagonists and AGI1067) and functional oils. Current agents that affect nuclear receptors include PPAR-alpha and -gamma agonists, while in development are newer PPAR-alpha, -gamma and -delta agonists, as well as dual PPAR-alpha/gamma and 'pan' PPAR-alpha/gamma/delta agonists. Liver X receptor (LXR), farnesoid X receptor (FXR) and sterol-regulatory element binding protein (SREBP) are also nuclear receptor targets of investigational agents. Agents in development also may affect high density lipoprotein cholesterol (HDL-C) blood levels or flux and include cholesteryl ester transfer protein (CETP) inhibitors (such as torcetrapib), CETP vaccines, various HDL 'therapies' and upregulators of ATP-binding cassette transporter (ABC) A1, lecithin cholesterol acyltransferase (LCAT) and scavenger receptor class B Type 1 (SRB1), as well as synthetic apolipoprotein (Apo)E-related peptides. Fixed-dose combination lipid-altering drugs are currently available such as extended-release niacin/lovastatin, whilst atorvastatin/amlodipine, ezetimibe/simvastatin, atorvastatin/CETP inhibitor, statin/PPAR agonist, extended-release niacin/simvastatin and pravastatin/aspirin are under development. Finally, current and future lipid-altering drugs may include anti-obesity agents which could favourably affect lipid levels."
+   }
+  ]
+ },
+ "11151": {
+  "drug_id": 11151,
+  "name": "semagacestat",
+  "cutoff_year": 2005,
+  "note": "gamma-secretase/AD, fail; FIH ~2005",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "16167": {
+  "drug_id": 16167,
+  "name": "solanezumab",
+  "cutoff_year": 2007,
+  "note": "anti-Abeta mAb/AD, fail; FIH ~2007",
+  "n_hits_total": 6,
+  "n_fetched": 6,
+  "abstracts": [
+   {
+    "pmid": "16498501",
+    "year": "2006",
+    "title": "Cholinergic dysfunction in a mouse model of Alzheimer disease is reversed by an anti-A beta antibody.",
+    "abstract": "Disruption of cholinergic neurotransmission contributes to the memory impairment that characterizes Alzheimer disease (AD). Since the amyloid cascade hypothesis of AD pathogenesis postulates that amyloid beta (A beta) peptide accumulation in critical brain regions also contributes to memory impairment, we assessed cholinergic function in transgenic mice where the human A beta peptide is overexpressed. We first measured hippocampal acetylcholine (ACh) release in young, freely moving PDAPP mice, a well-characterized transgenic mouse model of AD, and found marked A beta-dependent alterations in both basal and evoked ACh release compared with WT controls. We also found that A beta could directly interact with the high-affinity choline transporter which may impair steady-state and on-demand ACh release. Treatment of PDAPP mice with the anti-A beta antibody m266 rapidly and completely restored hippocampal ACh release and high-affinity choline uptake while greatly reducing impaired habituation learning that is characteristic of these mice. Thus, soluble \"cholinotoxic\" species of the A beta peptide can directly impair cholinergic neurotransmission in PDAPP mice leading to memory impairment in the absence of overt neurodegeneration. Treatment with certain anti-A beta antibodies may therefore rapidly reverse this cholinergic dysfunction and relieve memory deficits associated with early AD."
+   },
+   {
+    "pmid": "14698294",
+    "year": "2004",
+    "title": "Effect of different anti-Abeta antibodies on Abeta fibrillogenesis as assessed by atomic force microscopy.",
+    "abstract": "Extensive data suggest that the conversion of the amyloid-beta (Abeta) peptide from soluble to insoluble forms is a key factor in the pathogenesis of Alzheimer's disease (AD). In recent years, atomic force microscopy (AFM) has provided useful insights into the physicochemical processes involving Abeta morphology, and it can now be used to explore factors that either inhibit or promote fibrillogenesis. We used ex situ AFM to explore the impact of anti-Abeta antibodies directed against different domains of Abeta on fibril formation. For the AFM studies, two monoclonal antibodies (m3D6 and m266.2) were incubated in solution with Abeta(1-42) with a molar ratio of 1:10 (antibody to Abeta) over several days. Fibril formation was analyzed quantitatively by determining the number of fibrils per microm(2) and by aggregate size analysis. m3D6, which is directed against an N-terminal domain of Abeta (amino acid residues 1-5) slowed down fibril formation. However, m266.2, which is directed against the central domain of Abeta (amino acid residues 13-28) appeared to completely prevent the formation of fibrils over the course of the experiment. Inhibition of fibril formation by both antibodies was also confirmed by thioflavin-T (ThT) fluorescence experiments carried out with Abeta(1-40) incubated for five days. However, unlike AFM results, ThT did not differentiate between the samples incubated with m3D6 versus m266.2. These results indicate that AFM can be not only reliably used to study the effect of different molecules on Abeta aggregation, but that it can provide additional information such as the role of epitope specificity of antibodies as potential inhibitors of fibril formation."
+   },
+   {
+    "pmid": "11941374",
+    "year": "2002",
+    "title": "Immunization reverses memory deficits without reducing brain Abeta burden in Alzheimer's disease model.",
+    "abstract": "We have previously shown that chronic treatment with the monoclonal antibody m266, which is specific for amyloid beta-peptide (Abeta), increases plasma concentrations of Abeta and reduces Abeta burden in the PDAPP transgenic mouse model of Alzheimer's disease (AD). We now report that administration of m266 to PDAPP mice can rapidly reverse memory deficits in both an object recognition task and a holeboard learning and memory task, but without altering brain Abeta burden. We also found that an Abeta/antibody complex was present in both the plasma and the cerebrospinal fluid of m266-treated mice. Our data indicate that passive immunization with this anti-Abeta monoclonal antibody can very rapidly reverse memory impairment in certain learning and memory tasks in the PDAPP mouse model of AD, owing perhaps to enhanced peripheral clearance and (or) sequestration of a soluble brain Abeta species."
+   },
+   {
+    "pmid": "11910111",
+    "year": "2002",
+    "title": "Brain to plasma amyloid-beta efflux: a measure of brain amyloid burden in a mouse model of Alzheimer's disease.",
+    "abstract": "The deposition of amyloid-beta (Abeta) peptides into amyloid plaques precedes the cognitive dysfunction of Alzheimer's disease (AD) by years. Biomarkers indicative of brain amyloid burden could be useful for identifying individuals at high risk for developing AD. As in AD in humans, baseline plasma Abeta levels in a transgenic mouse model of AD did not correlate with brain amyloid burden. However, after peripheral administration of a monoclonal antibody to Abeta (m266), we observed a rapid increase in plasma Abeta and the magnitude of this increase was highly correlated with amyloid burden in the hippocampus and cortex. This method may be useful for quantifying brain amyloid burden in patients at risk for or those who have been diagnosed with AD."
+   },
+   {
+    "pmid": "11438712",
+    "year": "2001",
+    "title": "Peripheral anti-A beta antibody alters CNS and plasma A beta clearance and decreases brain A beta burden in a mouse model of Alzheimer's disease.",
+    "abstract": "Active immunization with the amyloid beta (A beta) peptide has been shown to decrease brain A beta deposition in transgenic mouse models of Alzheimer's disease and certain peripherally administered anti-A beta antibodies were shown to mimic this effect. In exploring factors that alter A beta metabolism and clearance, we found that a monoclonal antibody (m266) directed against the central domain of A beta was able to bind and completely sequester plasma A beta. Peripheral administration of m266 to PDAPP transgenic mice, in which A beta is generated specifically within the central nervous system (CNS), results in a rapid 1,000-fold increase in plasma A beta, due, in part, to a change in A beta equilibrium between the CNS and plasma. Although peripheral administration of m266 to PDAPP mice markedly reduces A beta deposition, m266 did not bind to A beta deposits in the brain. Thus, m266 appears to reduce brain A beta burden by altering CNS and plasma A beta clearance."
+   },
+   {
+    "pmid": "10991923",
+    "year": "2000",
+    "title": "Tryptophan scanning mutagenesis in TM2 of the GABA(A) receptor alpha subunit: effects on channel gating and regulation by ethanol.",
+    "abstract": "1. Each residue in the second transmembrane segment (TM2) of the human GABA(A) receptor alpha(2) subunit was individually mutated to tryptophan. The wild-type or mutant alpha(2) subunits were expressed with the wild-type human GABA(A) receptor beta(2) subunit in Xenopus oocytes, and the effects of these mutations were investigated using two-electrode voltage-clamp recording. 2. Four mutations (V257W, T262W, T265W and S270W) produced receptors which were active in the absence of agonist, and this spontaneous open channel activity was blocked by both picrotoxin and bicuculline, except in the alpha(2)(V257W)beta(2) mutant receptor, which was not sensitive to picrotoxin. 3. Six mutations (V257W, V260W, T262W, T267W, S270W and A273W) enhanced the agonist sensitivity of the receptor, by 10 - 100 times compared with the wild-type alpha(2)beta(2) receptor. Other mutations (T261W, V263W, L269W, I271W and S272W) had little or no effect on the apparent affinity of the receptor to GABA. Eight of the tryptophan mutations (R255, T256, F258, G259, L264, T265, M266 or T268) resulted in undetectable GABA-induced currents. 4. The S270W mutation eliminated potentiation of GABA by ethanol, whereas T261W markedly increased the action of ethanol. The T262W mutation produced direct activation (10% of maximal GABA response) by ethanol in the absence of GABA, while other mutations did not alter the action of ethanol significantly. 5. These results are consistent with a unique role for S270 in the action of ethanol within the TM2 region, and with models of GABA(A) receptor channel function, in which specific residues within TM2 are critical for the regulation of channel gating (S270, L264), while other residues (L269, I271 and S272) have little effect on these functions and may be non-critical structural residues."
+   }
+  ]
+ },
+ "18800": {
+  "drug_id": 18800,
+  "name": "theralizumab",
+  "cutoff_year": 2006,
+  "note": "TGN1412 CD28/2006 fail",
+  "n_hits_total": 1,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "999001": {
+  "drug_id": 999001,
+  "name": "fialuridine",
+  "cutoff_year": 1993,
+  "note": "HBV pol, 5 deaths 1993; not in DB",
+  "n_hits_total": 52,
+  "n_fetched": 20,
+  "abstracts": [
+   {
+    "pmid": "1629711",
+    "year": "1992",
+    "title": "Effects of 2'-fluorinated arabinosyl-pyrimidine nucleosides on duck hepatitis B virus DNA level in serum and liver of chronically infected ducks.",
+    "abstract": "The 2'-fluorinated arabinosyl-pyrimidine nucleosides, 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC) and 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-methyluracil (FMAU), are new antiviral compounds with in vitro inhibitory activity against the DNA polymerase of hepadnaviruses. Those compounds also induced permanent inhibition of viral replication in woodchucks chronically infected by woodchuck hepatitis virus. The effects of these antiviral compounds were assessed in ducks chronically infected by duck hepatitis B virus (DHBV). Following intraperitoneal administration for 5 days, FMAU (2 mg/kg/day) and FIAC (10 mg/kg/day) induced a transient decrease in DHBV replication, as shown by the decrease in both the serum and liver DHBV DNA level. After stopping therapy, DHBV replication rebounded immediately to the pretreatment level. The supercoiled form of liver viral DNA was found to be less affected by the therapy. By contrast, no obvious antiviral effect was observed with vidarabine monophosphate (ara-AMP) (80 mg/kg/day) therapy. No sign of toxicity was observed during the course of the treatment. These preliminary results confirmed in the DHBV model the higher efficacy of FIAC and FMAU as compared to ara-AMP. Pharmacokinetic studies are needed to explain the differences observed in viral replication in these 2 models of HBV infection."
+   },
+   {
+    "pmid": "1666492",
+    "year": "1991",
+    "title": "Ganciclovir-resistant cytomegalovirus clinical isolates: mode of resistance to ganciclovir.",
+    "abstract": "Cytomegalovirus strains with reduced in vitro susceptibilities to ganciclovir have been recovered from patients who failed long-term ganciclovir therapy. The ganciclovir-resistant clinical isolates in this study were unable to induce ganciclovir phosphorylation in virus-infected cells. The viral DNA polymerase function appeared unaltered in one genetically pure ganciclovir-resistant strain, compared with that of its wild-type ganciclovir-sensitive counterpart. All nine of the ganciclovir-resistant strains were susceptible to foscarnet. Moreover, these strains were sensitive to inhibition both by vidarabine and 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC), antiviral agents that are activated by cellular enzymes, and by (S)-1(3-hydroxy-2-phosphonylmethoxypropyl)cytosine (HPMPC), which is a monophosphate nucleoside analog. The in vitro resistance to ganciclovir of the ganciclovir-resistant clinical isolates studied was attributed to the inability of the cells infected with these isolates to phosphorylate ganciclovir; the virally encoded DNA polymerase did not appear to play a role in this ganciclovir resistance."
+   },
+   {
+    "pmid": "1663729",
+    "year": "1991",
+    "title": "Particular characteristics of the anti-human cytomegalovirus activity of (S)-1-(3-hydroxy-2-phosphonylmethoxypropyl)cytosine (HPMPC) in vitro.",
+    "abstract": "The acyclic nucleoside phosphonate analogue (S)-1-[3-hydroxy-2-phosphonylmethoxypropyl]cytosine (HPMPC) is a potent and selective inhibitor of human cytomegalovirus (HCMV) replication and DNA synthesis. Unlike 9-(1,3-dihydroxy-2-propoxymethyl)guanine (DHPG), HPMPC inhibits HCMV replication in cell cultures which have been treated with the compound before infection. Upon short-pulse treatment of HCMV-infected cells with HPMPC, a long-lasting antiviral response is obtained. The antiviral activity of HPMPC, unlike the antiviral activity of other cytosine derivatives (i.e. Ara-C, FIAC), is not readily reversed by 2'-deoxycytidine or cytidine. Neutral and alkaline sucrose gradient analysis of HCMV DNA isolated from HPMPC-treated HCMV-infected cell cultures revealed that HPMPC does not cause (detectable) single- or double-strand breakage of HCMV DNA."
+   },
+   {
+    "pmid": "1645389",
+    "year": "1991",
+    "title": "Antiviral activity of FIAU (1-[2'deoxy-2'-fluoro-1-beta-D-arabinofuranosyl]-5-iodo-uridine) on strains of cytomegalovirus sensitive and resistant to ganciclovir.",
+    "abstract": ""
+   },
+   {
+    "pmid": "1983184",
+    "year": "1990",
+    "title": "Equine herpes virus 1 and pseudorabies virus resistance to 2'-fluoropyrimidine analogs and to bromovinyldeoxyuridine: implications for dTMP kinase activity.",
+    "abstract": "The 2'-fluoropyrimidine nucleoside analogs 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC). 1(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-methyluracil (FMAU), and 1(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodouracil (FIAU) showed higher in vitro activity against herpes simplex virus type 1 (HSV-1), than equine herpesvirus 1 (EHV-1) or pseudorabies virus (PRV). Comparison of the 50% plaque inhibitory doses for HSV-1 and its mutant MMdUr-20 in cell cultures with inhibition constants (Ki's) for the viral deoxythymidine kinases (dTKs) suggests that in the infected cell FMAU is phosphorylated by host enzymes. As compared to HSV-1, EHV-1 and PRV were more resistant to E-5-(2-bromovinyl-2'-deoxyuridine (BVdU) and to the 2'-fluoropyrimidine analogs, as are HSV-2 and the HSV-1 mutants MMdUr-20 and S1. Because the dTKs of the latter lack deoxythymidylate kinase (dTMPK) activity, there appears to be a correlation between resistance to these analogs and BVdU on the one hand, and lack of dTMPK activity on the other. We predict that EHV-1 and PRV dTKs will be shown to lack significant dTMPK activity."
+   },
+   {
+    "pmid": "1695683",
+    "year": "1990",
+    "title": "Synthesis and anti-HIV-1 activity of 2'-\"up\"-fluoro analogues of active anti-AIDS nucleosides 3'-azido-3'-deoxythymidine (AZT) and 2',3'-dideoxycytidine (DDC).",
+    "abstract": "1-(3-Azido-2,3-dideoxy-2-fluoro-beta-D-arabinofuranosyl)thymine (6, F-AZT) and 1-(2,3-dideoxy-2-fluoro-beta-D-threopentofuranosyl)cytosine (12, F-DDC) were synthesized from the potent antiherpes virus nucleosides 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)thymine (1, FMAU) and 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC) in the hope that introduction of a 2-\"up\"-fluoro substituent might potentiate the anti-HIV activity of AZT and DDC. FMAU (1) was converted in three steps into 2,3'-anhydro-1-(2-fluoro-2-deoxy-5-O-trityl-beta-D-lyxofuranosyl)thymine (4), which when treated with NaN3 followed by detritylation afforded 6. F-DDC was prepared by two methods. Tritylation of FIAC followed by treatment of the product with thiocarbonyldimidazole afforded the 5'-O-trityl-3'-O-(imidazolyl)thiocarbonyl nucleoside 9. Upon radical reduction of 9 with Bu3SnH and AIBN, 5'-O-trityl-DDC 10 was obtained. Compound 10 was detritylated to give 12, which (when obtained by this procedure) resisted crystallization, but the diacetate 12' was obtained in crystalline form. Alternatively, FAC (14) was converted into N4,O5'-dibenzoyl derivative 15, which was treated with thiocarbonyldiimidazole. Reduction of 16 with Bu3SnH/AIBN followed by debenzoylation afforded 12, which was obtained in crystalline form. F-AZT did not exhibit any significant activity against the human immunodeficiency virus (HIV) in vitro. F-DDC, however, showed activity against HIV-1, but the therapeutic index is much inferior to that of AZT."
+   },
+   {
+    "pmid": "2334160",
+    "year": "1990",
+    "title": "Inhibitory effects of 2'-fluorinated arabinosyl-pyrimidine nucleosides on woodchuck hepatitis virus replication in chronically infected woodchucks.",
+    "abstract": "The treatment of woodchuck hepatitis virus infections with 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC) and 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-methyluracil (FMAU), given intraperitoneally, caused complete and permanent decrease of serum virus endogenous DNA polymerase and viral DNA in all treated woodchucks but was associated with severe toxicity. By contrast 1-(2'-deoxy-2'-fluoro-beta-D-arabinofuranosyl)-5-ethyluracil (FEAU) induced a sustained, although less dramatic, decrease of viral replication without apparent toxic effect. FEAU was also effective when given orally. However, in both cases this inhibitory effect was transient."
+   },
+   {
+    "pmid": "2153201",
+    "year": "1990",
+    "title": "Fluoro carbocyclic nucleosides: synthesis and antiviral activity of 2'- and 6'-fluoro carbocyclic pyrimidine nucleosides including carbocyclic 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-methyluracil and carbocyclic 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodouracil.",
+    "abstract": "The racemic carbocyclic 2'-fluoroarabinosyl pyrimidine nucleosides 8, 9 (C-FIAU), 12, and 13 (C-FMAU) and the 2'-fluororibosyl pyrimidine nucleosides 17, 20, and 21 were prepared from their respective protected 2'-fluoro amino diols 5 and 14. The carbocyclic 2'-2'-difluorothymidine analogue 27 was obtained from the protected difluoro amino diol 24 which was prepared from the ketone 23 and (diethylamino)sulfur trifluoride (DAST). The chiral carbocyclic 2'-deoxy-6'-fluorouridines 33, 34, 38, and 39 were synthesized from the protected 6'-fluoro amino diols 30 and 36, which were prepared by reduction of the azides 28 and 35. C-FMAU (13) and C-FIAU (9) were active in vitro against HSV-1 with ID50 values of 4.4 and 11 micrograms/mL, respectively, but they were inactive against HSV-2. The cytidine analogues 12 and 20 displayed modest activity in vitro against HSV-1 and HSV-2 but were inactive against human influenza A virus."
+   },
+   {
+    "pmid": "2733785",
+    "year": "1989",
+    "title": "Transgenic mice with inducible dwarfism.",
+    "abstract": "The pituitary gland, composed of the anterior, intermediate and posterior lobe, represents a principal regulatory interface through which the central nervous system controls body physiology. The ontogeny of the growth hormone (GH) and prolactin (Prl) producing cells of the anterior pituitary has been analysed in transgenic mice, using the thymidine kinase obliteration system (TKO). Cells expressing the herpes virus 1 thymidine kinase (HSV1-TK) gene acquire pharmacological sensitivity to synthetic nucleosides such as FIAU (1-(2-deoxy-2-fluoro-beta-delta-arabinofuranosyl)-5-iodouracil), whose metabolites kill dividing cells. Consequently we created transgenic mice carrying the HSV1-TK gene under the control of either the rat growth hormone or the rat prolactin promoter. If transgenic mice expressing HSV1-TK in somatotropes (GH-producing cells) are treated with FIAU, they develop as dwarfs. The anterior pituitary in these animals is nearly devoid of both somatotropes and lactotropes (Prl-producing cells). By contrast, transgenic mice expressing HSV1-TK in the lactotropes, treated with FIAU, have anatomically and histologically normal pituitaries. Because toxicity depends on cell division, we conclude that Prl expression and lactotrope differentiation are post-mitotic events. These results indicate that both somatotropes and lactotropes derive from a common GH-expressing stem-somatotrope. Unexpectedly, the stemsomatotrope is still present in the adult animal and is capable of repopulating the pituitaries of treated animals with mature GH and Prl producing cells."
+   },
+   {
+    "pmid": "2536980",
+    "year": "1989",
+    "title": "Low levels of herpes simplex virus thymidine- thymidylate kinase are not limiting for sensitivity to certain antiviral drugs or for latency in a mouse model.",
+    "abstract": "Herpes simplex virus mutant KG111 contains a nonsense mutation at codon 44 of the viral thymidine kinase (tk) gene and produces low amounts of a truncated tk polypeptide. We tested mutant KG111 and related viruses that specify varying amounts of similar truncated tk polypeptides for their sensitivities to antiviral nucleoside analogs at different temperatures using plaque reduction assays. The results of these assays showed that the nonsense mutation confers high resistance to bromovinyldeoxyuridine (BVdU) at any temperature and temperature-dependent resistance to acyclovir (ACV), buciclovir (BCV), ganciclovir (DHPG), and fluoroiodoarabinouracil (FIAU). Above relatively low threshold levels of tk that varied depending on the drug tested, viruses exhibited full sensitivity to ACV, BCV, DHPG, and FIAU at 34 degrees. Below these threshold levels, however, decreases in drug sensitivity were linear with decreases in tk levels, forming the basis of a pharmacological assay for tk gene expression. Studies of thymidine (TdR) anabolism in infected 143 tk-cells showed that when high TdR concentrations were added to the medium, KG111 directed thymidine monophosphate (TMP) formation at rates consonant with the amount of tk polypeptide produced by the mutant. When low concentrations to TdR were added to the medium, however, KG111 directed TMP formation at a rate similar to that directed by wild-type virus, indicating that the truncation of the tk polypeptide had little or no effect on tk activity at 34 degrees. Subsequent anabolism to thymidine diphosphate and thymidine triphosphate was reduced in KG111-infected cells, indicating a defect in TMP kinase activity that explains this mutant's resistance to BVdU. Despite the low levels of tk and TMP kinase activity expressed by KG111, this mutant established reactivatable latent infections as efficiently as wild-type virus in a mouse model."
+   },
+   {
+    "pmid": "2855577",
+    "year": "1988",
+    "title": "The in vitro evaluation of nucleoside analogues as probes for use in the noninvasive diagnosis of herpes simplex encephalitis.",
+    "abstract": "1-(2-Deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodouracil (FIAU) and the 5-iodo (FIRU), 5-bromo (FBrRU), 5-chloro (FClRU) and 5-fluoro (FFRU) analogues of 1-(2-deoxy-2-fluoro-beta-D-ribofuranosyl)uracil were examined in four in vitro tests designed to evaluate their potential as radiopharmaceuticals in a non-invasive diagnostic test for herpes simplex encephalitis (HSE). The tests involved, (a) cellular uptake studies--which showed that all five nucleosides are selectively trapped in rabbit kidney cells infected with herpes simplex virus, type I, which codes for its own thymidine kinase; (b) incubation studies--which showed that, in human platelets, FIAU, FIRU and FFRU are not degraded by thymidine phosphorylase (an enzyme which catalyzes the glycosidic bond cleavage of physiological nucleosides); (c) a transport study, using mouse erythrocytes--which indicated that all five nucleosides have good affinity for a NBMPR-sensitive nucleoside transporter, with inhibition constants (Ki values in the range of 0.177-0.41; and (d) determination of octanol/water partition coefficients--which (log P = -0.14 to -1.67) indicated that FIAU is the most lipophilic of the five compounds studied, and may therefore cross the blood-brain barrier most readily. We conclude from the results that FIAU is the most promising compound for further evaluation in HSE animal models. The combination of tests described in this study provide a useful screening protocol for evaluation of other nucleoside analogues of potential use in a diagnostic test for HSE."
+   },
+   {
+    "pmid": "2845412",
+    "year": "1988",
+    "title": "Targeting of an inducible toxic phenotype in animal cells.",
+    "abstract": "We have developed a toxic, or suicide, vector whose action is based on the targeted expression of the herpes simplex virus 1 thymidine kinase gene product in cultured cells or transgenic animals. This protein is able to convert nucleoside analogs such as acyclovir and 1-(2-deoxy-2-fluoro-beta-D-arabino-furanosyl)-5-iodouracil (FIAU) to toxic intermediates. The activation of these compounds disrupts cellular DNA replication, leading to rapid cell death. Neither acyclovir, FIAU, nor the herpes thymidine kinase alone is harmful to cells. This approach is simple and should have widespread applicability in studying lineage formation in cultured cells and transgenic animals."
+   },
+   {
+    "pmid": "2840503",
+    "year": "1988",
+    "title": "Nucleosides. 150. Synthesis and some biological properties of 5-monofluoromethyl, 5-difluoromethyl, and 5-trifluoromethyl derivatives of 2'-deoxyuridine and 2'-deoxy-2'-fluoro-beta-D-arabinofuranosyluracil.",
+    "abstract": "A new synthesis of 5-(monofluoromethyl)- and 5-(difluoromethyl)-2'-deoxy-2'-fluoro-beta-D-arabinofuranosyluracil (F-FMAU and F2-FMAU) is reported. 3',5'-Di-O-(tert-butyldiphenyl)silylated thymidine or FMAU was photochemically brominated with NBS to the corresponding alpha-monobromide, which was hydrolyzed to the 5-hydroxymethyl derivative. Further oxidation of the latter with MnO2 afforded the 5-formyluracil nucleoside. Treatment of these nucleosides with DAST in CH2Cl2 gave the protected alpha-fluorinated nucleosides. Desiylation with TBAF afforded the desired free nucleosides. Also, 5-(trifluoromethyl)-2'-deoxy-2'-fluoro-beta-D-arabinofuranosyluracil (F3-FMAU) was synthesized by copper-catalyzed trifluoromethylation of 5-iodo-2'-fluoro-ara-U (FIAU). These new nucleosides were studied in comparison with the corresponding 2'-deoxy-erythro-pentofuranosyl derivatives, for their inhibitory activity against cellular thymidylate synthase (TS) and [3H]TdR incorporation into DNA, cytotoxicity against HL-60 cells, and antiviral activity against herpes simplex types 1 and 2 (HSV-1 and -2). F2-TDR and F3-TDR strongly inhibited TS and were also quite cytotoxic and antiherpetic, whereas FTDR was only active in the antiviral assay. In the 2'-fluoroarabino series, fluorine substitution at the alpha-methyl function did not alter significantly the antiherpetic activity. Although FMAU and F-FMAU did not inhibit TS to any significant extent, F2-FMAU and F3-FMAU were weakly inhibitory. The latter nucleosides did not inhibit [3H]TDR incorporation into DNA, while all the other alpha-fluorinated thymine nucleosides inhibited the incorporation of radioactivity of [3H]TDR into DNA to various extents. F2-FMAU and F3-FMAU were about 2 orders of magnitude less cytotoxic against HL-60 cells than were F2-TDR and F3-TDR. The results strongly suggest that in both the 2'-deoxy-2'-fluoroarabino and the 2'-deoxy-erythro-pentofurano series the cytotoxic action of the alpha,alpha-difluoro and alpha,alpha,alpha-trifluoro derivatives may involve the inhibition of TS. The synthesis of [2-14C]F2-FMAU, as an experimental imaging agent, is also described. Unfortunately, the highly selective uptake of the labeled compound within infected brain regions previously noted with [2-14C]FMAU was not detected with the derivative [2-14C]F2-FMAU."
+   },
+   {
+    "pmid": "3036717",
+    "year": "1987",
+    "title": "A mammalian cell line designed to test the mutagenic activity of anti-herpes nucleosides.",
+    "abstract": "The herpes simplex virus (HSV) thymidine kinase (tk) gene was transfected into Chinese hamster ovary (CHO) 51-11 gly- cells to test its effect on the cytotoxic and mutagenic activity of anti-herpetic nucleoside analogues. Insertion of the viral tk was verified by Southern blot analysis, by sensitivity to acyclovir, and by elevated in vitro thymidine kinase (TK) activity. TK activity was increased by superinfection with a tk- virus and inhibited by antibody to viral TK. Acyclovir (ACV) was somewhat more cytotoxic in the 51-D3 cell line that expresses the viral TK than in the 51-11 parent line. Growth in ACV did not increase over background mutations at the hprt locus. FIAC (2'-fluoro-5-iodio-aracytosine) was slightly cytotoxic to the parent 51-11 line and the tk-containing clone 51-D3. FMAU (2'-fluoro-5-methyl-arauracil) had pronounced cytotoxicity in both cell lines: the 50% survival points were 1.0 microM for 51-11 cells and 0.2 microM for 51-D3. The clone 51-D3 was more sensitive than 51-11 to low concentrations of FIAU (2'-fluoro-5-iodo-arauracil), and when treated with FIAU 51-D3 had a mutation frequency to glycine independence 5 times greater than that of 51-11 cells. With both cell lines the mutation frequency at the hprt locus did not increase after growth in the presence of FIAC or FIAU. A 7-fold increase in mutation frequency at the hprt locus was detected after 51-D3 cells were grown with iododeoxyuridine. Trifluorothymidine was more toxic to 51-D3 than to 51-11 cells and increased the mutation frequency 2-fold. Cytosine-beta-D-arabinofuranoside showed no differential cytotoxicity on the two cell lines and did not increase the mutation frequency at the hprt locus."
+   },
+   {
+    "pmid": "2823299",
+    "year": "1987",
+    "title": "[(E)-5-(2-bromovinyl)-2'-desoxyuridine--a new nucleoside analog with selective inhibitory action against herpesviruses. Studies in cell culture and animal experiments].",
+    "abstract": "(E)-5-(2-Bromovinyl)-2'-deoxyuridine (1; BrVUdR) inhibits the replication of herpes simplex virus type 1 (HSV-1) and of varicella-zoster virus (VZV) in vitro at concentrations of 0.01 to 0.23 mumol/l, whereas herpes simplex virus type 2 (HSV-2) is influenced only at 5.5 to 27 mumol/l. In comparison to some classical and newly developed antiherpetics, i. e. 5-iodo-2'-desoxyuridine (2; idoxuridine, IDU), 9-beta-D-arabinofuranosyladenine (4; vidarabine Ara-A), 9-(2-hydroxyethoxymethyl) guanine (5; acyclovir, ACV) and 2'-fluoro-5-iodo-1-beta-D-aracytosine (6;FIAC) the following order of decreasing activity was found:1 greater than 6 greater than 5 greater than 2 greater than 4 (against HSV-1) and 6 greater than 2 greater than 5 greater than 1 greater than 4 (against HSV-2). The high selectivity of the antiviral effect of BrVUdR towards HSV-1 and TZV is based on the fact, that proliferation of different mammalian cell lines is inhibited by 50% only at concentrations as high as 90 to 170 mumol/l, resulting in a therapeutical index of 1000 to 10,000. Successful treatment of an HSV-1 encephalitis in mice as well as an HSV-1 keratitis of rabbits confirmed the efficiency of 1 in experimental animal infections. No toxic side effects in both local and systemic applications were observed. Promising data from cell culture and animal experiments recommend 1 as a potential candidate for the local and systemic treatment of HSV-1 and VZV infections in man."
+   },
+   {
+    "pmid": "3033244",
+    "year": "1987",
+    "title": "1-(2-Deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-ethyluracil. A highly selective antiherpes simplex agent.",
+    "abstract": "The protected nucleoside 1-(2-deoxy-2-fluoro-3,5-di-O-benzoyl-beta-D-arabinofuranosyl)-5-ethylura cil (10) was prepared by condensation of 3,5-dibenzoyl-2-deoxy-2-fluoro-alpha-D-arabinofuranosyl bromide (9) with 2,4-bis-O-(trimethylsilyl)-5-ethyluracil (8). The ratio in this coupling reaction has been raised to 17:1 in favor of the desired beta-anomer. Deprotection by aminolysis gave 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-ethyluracil (FEAU, 1) in 67% isolated yield from the bromo sugar 9. In vitro data show that FEAU has activity against herpes simplex virus types 1 and 2 comparable to that of 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-methyluracil (FMAU, 2), 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodouracil (FIAU, 3), and acyclovir (ACV, 12). The cellular toxicity of FEAU was found to be much lower than that of the other nucleoside analogues. Biochemical experiments indicate that FEAU has similar affinity toward thymidine kinases encoded by HSV 1 and 2 and a much lower affinity for cellular thymidine kinase than thymidine. The in vivo antiviral effects of FEAU, FMAU, FIAU, and ACV were evaluated against herpes infection in a systemic mouse encephalitis model and a cutaneous guinea pig model. While FEAU showed activity comparable to that of ACV in the systemic infection model, it was superior in the cutaneous herpes infection model."
+   },
+   {
+    "pmid": "3027334",
+    "year": "1987",
+    "title": "Nucleosides. 139. Synthesis and anticytomegalovirus and antiherpes simplex virus activity of 5'-modified analogues of 2'-fluoroarabinosylpyrimidine nucleosides.",
+    "abstract": "In order to determine if modification of the 5'-position reduces or abolishes the antiviral activity of 2'-fluoro-5-iodo-ara-C (FIAC), 2'-fluoro-5-iodo-ara-U (FIAU), or 2'-fluoro-5-methyl-ara-U (FMAU) against human cytomegalovirus (HCMV) and herpes simplex virus (HSV), the 5'-deoxy, 5'-mercapto, and 5'-amino analogues of these nucleosides were prepared. 5'-Deoxy-FIAC and 5'-deoxy-FIAU were prepared by catalytic hydrogenation of 5'-iodo-FIAC and 5'-iodo-FIAU to 5'-deoxy-FAC and 5'-deoxy-FAU, respectively, followed by reiodination at C-5. Reduction of 5'-iodo-FMAU afforded 5'-deoxy-FMAU. These 5'-deoxy nucleosides were found to be inactive against HCMV, indicating that the conversion to 5'-phosphate by the cellular enzyme(s) is a requirement for antiviral activity against this virus. Other 5'-modified (NH2 and SH) analogues were also prepared from 5'-O-tosyl-FIAC and 5'-O-tosyl-FMAU. Treatment of these tosylates with LiN3 in DMF afforded the corresponding 5'-N3 products. Catalytic hydrogenation of 5'-N3-FMAU afforded 5'-NH2-FMAU, whereas 5'-NH2-FIAC was obtained by treatment of 5'-N3-FIAC with Ph3P in pyridine. 5'-Mercapto analogues were prepared by treatment of 5'-O-tosyl-3'-O-acetyl nucleosides with KSAc followed by deacetylation. 5'-NH2-FMAU was the only compound that showed good activity against HSV-1 and HSV-2 in vitro. However, this compound was less potent and had a lower therapeutic index than FMAU."
+   },
+   {
+    "pmid": "3026244",
+    "year": "1987",
+    "title": "Comparative efficacy of three 2'-fluoropyrimidine nucleosides and 9-(1,3-dihydroxy-2-propoxymethyl)guanine (BW B759U) against pseudorabies and equine rhinopneumonitis virus infection in vitro and in laboratory animals.",
+    "abstract": "The three 2'-fluoropyrimidine nucleosides 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodocytosine (FIAC), 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-iodouracil (FIAU), and 1-(2-deoxy-2-fluoro-beta-D-arabinofuranosyl)-5-methyluracil (FMAU), showed high activity in RK13 monolayers against equine rhinopneumonitis virus, (EHV-1, IC50 range 0.02-0.18 microM), Aujeszky's disease virus (SHV-1, pseudorabies, IC50 range 0.25-7 microM) and infectious bovine rhinotracheitis virus (1BR, BHV-1, IC50 range 0.1-3 microM). The activity of these compounds was compared with 9-(1,3-dihydroxy-2-propoxymethyl)guanine (BW B759U, DHPG) in two laboratory animal disease models: EHV-1-induced hepatitis in hamsters and SHV-1-induced encephalitis in mice. All the compounds, provided from 3 to 5 h pre-infection for 5 days, were effective in preventing EHV-1 mortality (at 3-5 mg/kg per day) and in significantly reducing SHV-1 mortality (at 60 mg/kg per day). While FIAU had the greatest activity in vitro, FMAU tended to be more potent in vivo. The reasons for these differences between relative in vitro and in vivo activities are briefly discussed."
+   },
+   {
+    "pmid": "3777913",
+    "year": "1986",
+    "title": "Delayed treatment with combinations of antiviral drugs in mice infected with herpes simplex virus and application of the median effect method of analysis.",
+    "abstract": "Mice were inoculated intracerebrally with a lethal dose of herpes simplex virus type 2. Three days later, the mice were treated intraperitoneally, twice daily for 4 days, with the following drugs alone or in combination: acyclovir (ACV), vidarabine (ara-A), 2'-fluoro-5-iodoaracytosine (FIAC), and 2'-fluoro-5-methylarauracil (FMAU). Despite delayed treatment, most of the animals receiving low doses of FMAU alone or in combination with ACV or ara-A survived. In contrast, significantly higher mortality rates were noted in mice receiving ara-A, ACV, or FIAC alone. The data were analyzed for quantitation of synergism, additivity, and antagonism of multiple drug effect by the median effect method. The median effective doses (in nanomoles per kilogram per day) calculated in this manner were: FMAU, 22.5; FIAC, 510; ara-A, 901; ACV, 7,587; ACV-ara-A (drug ratio, 1:1), 550; FIAC-ara-A (1:1), 376; FIAC-ACV (1:1), 133; FMAU-ACV (1:8), 60.3; and FMAU-ara-A (1:8), 65.2. Marked synergy was found throughout a wide range of effect levels with the five different combinations, with no increased toxicity over the single-drug treatments. Similar results were obtained when the data were analyzed by the isobologram method. Since many patients with severe herpetic infections, such as herpes encephalitis, have a poor prognosis despite single-drug therapy, the possible use of combinations including low doses of FMAU deserves further investigation."
+   },
+   {
+    "pmid": "3525694",
+    "year": "1986",
+    "title": "2'-Fluoro-5-iodoarabinosylcytosine, a new potent antiviral agent: efficacy in immunosuppressed individuals with herpes zoster.",
+    "abstract": "2'-Fluoro-5-iodoarabinosylcytosine (FIAC) has potent antiviral activity in vivo against herpes simplex virus types 1 and 2 and cytomegalovirus. For examination of the clinical efficacy of FIAC, a randomized, double-blind study of FIAC versus adenine arabinoside (ara-A) was conducted in 34 immunosuppressed individuals with varicella-zoster virus infections. The median time to the appearance of the last new lesion was shorter in patients who received FIAC relative to those who received ara-A (two versus five days, respectively; P less than .001) FIAC also reduced pain and accelerated initial crusting within 72 hr in a significantly greater proportion of patients when compared with ara-A (P = .004 and P = .0009, respectively). FIAC caused few toxic reactions (mild nausea and transient elevation in activity of serum aspartate aminotransferase). Thus FIAC is therapeutically superior to ara-A for the treatment of varicella-zoster virus infections in immunosuppressed subjects."
+   }
+  ]
+ },
+ "999101": {
+  "drug_id": 999101,
+  "name": "sofosbuvir",
+  "cutoff_year": 2010,
+  "note": "HCV NS5B, approved 2013",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "999102": {
+  "drug_id": 999102,
+  "name": "sitagliptin",
+  "cutoff_year": 2003,
+  "note": "DPP4, approved 2006",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "999103": {
+  "drug_id": 999103,
+  "name": "maraviroc",
+  "cutoff_year": 2003,
+  "note": "CCR5, approved 2007",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "999104": {
+  "drug_id": 999104,
+  "name": "palbociclib",
+  "cutoff_year": 2009,
+  "note": "CDK4/6, approved 2015",
+  "n_hits_total": 6,
+  "n_fetched": 6,
+  "abstracts": [
+   {
+    "pmid": "18632601",
+    "year": "2008",
+    "title": "A novel therapeutic combination using PD 0332991 and bortezomib: study in the 5T33MM myeloma model.",
+    "abstract": "Multiple myeloma (MM) remains incurable partly because no effective cell cycle-based therapy has been available to both control tumor cell proliferation and synergize with cytotoxic killing. PD 0332991 is an orally active small molecule that potently and specifically inhibits Cdk4 and Cdk6. It has been shown to induce rapid G(1) cell cycle arrest in primary human myeloma cells and suppress tumor growth in xenograft models. To improve therapeutic targeting of myeloma progression, we combined tumor suppression by PD 0332991 with cytotoxic killing by bortezomib, a proteasome inhibitor widely used in myeloma treatment, in the immunocompetent 5T33MM myeloma model. We show that 5T33MM tumor cells proliferate aggressively in vivo due to expression of cyclin D2, elevation of Cdk4, and impaired p27(Kip1) expression, despite inhibition of Cdk4/6 by p18(INK4c) and the maintenance of a normal plasma cell transcription program. PD 0332991 potently inhibits Cdk4/6-specific phosphorylation of Rb and cell cycle progression through G(1) in aggressively proliferating primary 5T33MM cells, in vivo and ex vivo. This leads to tumor suppression and a significant improvement in survival. Moreover, induction of G(1) arrest by PD 0332991 sensitizes 5T33MM tumor cells to killing by bortezomib. Inhibition of Cdk4/6 by PD 0332991, therefore, effectively controls myeloma tumor expansion and sensitizes tumor cells to bortezomib killing in the presence of an intact immune system, thereby representing a novel and promising cell cycle-based combination therapy."
+   },
+   {
+    "pmid": "17510401",
+    "year": "2007",
+    "title": "Expression of p16Ink4a compensates for p18Ink4c loss in cyclin-dependent kinase 4/6-dependent tumors and tissues.",
+    "abstract": "Cell cycle progression from G(1) to S phase depends on phosphorylation of pRb by complexes containing a cyclin (D type or E type) and cyclin-dependent kinase (e.g., cdk2, cdk4, or cdk6). Ink4 proteins function to oppose the action of cdk4/6-cyclin D complexes by inhibiting cdk4/6. We employed genetic and pharmacologic approaches to study the interplay among Ink4 proteins and cdk4/6 activity in vivo. Mouse embryo fibroblasts (MEF) lacking p16(Ink4a) and p18(Ink4c) showed similar growth kinetics as wild-type MEFs despite increased cdk4 activity. In vivo, germline deficiency of p16(Ink4a) and p18(Ink4c) resulted in increased proliferation in the intermediate pituitary and pancreatic islets of adult mice, and survival of p16(Ink4a-/-);p18(Ink4c-/-) mice was significantly reduced due to aggressive pituitary tumors. Compensation among the Ink4 proteins was observed both in vivo in p18(Ink4c-/-) mice and in MEFs from p16(Ink4a-/-), p18(Ink4c-/-), or p16(Ink4a-/-);p18(Ink4c-/-) mice. Treatment with PD 0332991, a specific cdk4/6 kinase inhibitor, abrogated proliferation in those compartments where Ink4 deficiency was associated with enhanced proliferation (i.e., islets, pituitary, and B lymphocytes) but had no effect on proliferation in other tissues such as the small bowel. These data suggest that p16(Ink4a) and p18(Ink4c) coordinately regulate the in vivo catalytic activity of cdk4/6 in specific compartments of adult mice."
+   },
+   {
+    "pmid": "16885367",
+    "year": "2006",
+    "title": "A novel orally active small molecule potently induces G1 arrest in primary myeloma cells and prevents tumor growth by specific inhibition of cyclin-dependent kinase 4/6.",
+    "abstract": "Cell cycle deregulation is central to the initiation and fatality of multiple myeloma, the second most common hematopoietic cancer, although impaired apoptosis plays a critical role in the accumulation of myeloma cells in the bone marrow. The mechanism for intermittent, unrestrained proliferation of myeloma cells is unknown, but mutually exclusive activation of cyclin-dependent kinase 4 (Cdk4)-cyclin D1 or Cdk6-cyclin D2 precedes proliferation of bone marrow myeloma cells in vivo. Here, we show that by specific inhibition of Cdk4/6, the orally active small-molecule PD 0332991 potently induces G(1) arrest in primary bone marrow myeloma cells ex vivo and prevents tumor growth in disseminated human myeloma xenografts. PD 0332991 inhibits Cdk4/6 proportional to the cycling status of the cells independent of cellular transformation and acts in concert with the physiologic Cdk4/6 inhibitor p18(INK4c). Inhibition of Cdk4/6 by PD 0332991 is not accompanied by induction of apoptosis. However, when used in combination with a second agent, such as dexamethasone, PD 0332991 markedly enhances the killing of myeloma cells by dexamethasone. PD 0332991, therefore, represents the first promising and specific inhibitor for therapeutic targeting of Cdk4/6 in multiple myeloma and possibly other B-cell cancers."
+   },
+   {
+    "pmid": "16731763",
+    "year": "2006",
+    "title": "Pharmacologic inhibition of cyclin-dependent kinase 4/6 activity arrests proliferation in myoblasts and rhabdomyosarcoma-derived cells.",
+    "abstract": "Myoblast cell cycle exit and differentiation are mediated in part by down-regulation of cyclin D1 and associated cyclin-dependent kinase (Cdk) activity. Because rhabdomyosarcoma may represent a malignant tumor composed of myoblast-like cells failing to exit the cell cycle and differentiate, we considered whether excess Cdk activity might contribute to this biology. Cyclin D-dependent Cdk4 and Cdk6 were expressed in most of a panel of six human rhabdomyosarcoma-derived cell lines. Cdk4 was expressed in 73% of alveolar and embryonal rhabdomyosarcoma tumors evaluated using a human tissue microarray. When challenged to differentiate by mitogen deprivation in vitro, mouse C2C12 myoblasts arrested in G(1) phase of the cell cycle, whereas four in the panel of rhabdomyosarcoma cell lines failed to do so. C2C12 myoblasts maintained in mitogen-rich media and exposed to a Cdk4/Cdk6 inhibitor PD 0332991 accumulated in G(1) cell cycle phase. Similar treatment of rhabdomyosarcoma cell lines caused G(1) arrest and prevented cell accumulation in vitro, and it delayed growth of rhabdomyosarcoma xenografts in vivo. Consistent with a role for Cdk4/Cdk6 activity as a regulator of myogenic differentiation, we observed that PD 0332991 exposure promoted morphologic changes and enhanced the expression of muscle-specific proteins in cultured myoblasts and in the Rh30 cell line. Our findings support the concept that pharmacologic inhibition of Cdk4/Cdk6 may represent a useful therapeutic strategy to control cell proliferation and possibly promote myogenic differentiation in rhabdomyosarcoma."
+   },
+   {
+    "pmid": "15801831",
+    "year": "2005",
+    "title": "Discovery of a potent and selective inhibitor of cyclin-dependent kinase 4/6.",
+    "abstract": "A pharmacological approach to inhibition of cyclin-dependent kinases 4 and 6 (Cdk4/6) using highly selective small molecule inhibitors has the potential to provide novel cancer therapies for clinical use. Achieving high levels of selectivity for Cdk4/6, versus other ATP-dependent kinases, presents a significant challenge. The pyrido[2,3-d]pyrimidin-7-one template provides an effective platform for the inhibition of a broad cross-section of kinases, including Cdks. It is now demonstrated that the modification of pyrido[2,3-d]pyrimidin-7-ones to include a 2-aminopyridine side chain at the C2-position provides inhibitors with exquisite selectivity for Cdk4/6 in vitro. This selectivity profile is recapitulated in cells where the most selective inhibitors create a G(1) block at concentrations up to 100-fold the IC(50) for cell proliferation. On the basis of its selectivity profile and pharmacokinetic profile, compound 43 (PD 0332991) was identified as a drug candidate for the treatment of cancer."
+   },
+   {
+    "pmid": "15542782",
+    "year": "2004",
+    "title": "Specific inhibition of cyclin-dependent kinase 4/6 by PD 0332991 and associated antitumor activity in human tumor xenografts.",
+    "abstract": "PD 0332991 is a highly specific inhibitor of cyclin-dependent kinase 4 (Cdk4) (IC50, 0.011 micromol/L) and Cdk6 (IC50, 0.016 micromol/L), having no activity against a panel of 36 additional protein kinases. It is a potent antiproliferative agent against retinoblastoma (Rb)-positive tumor cells in vitro, inducing an exclusive G1 arrest, with a concomitant reduction of phospho-Ser780/Ser795 on the Rb protein. Oral administration of PD 0332991 to mice bearing the Colo-205 human colon carcinoma produces marked tumor regression. Therapeutic doses of PD 0332991 cause elimination of phospho-Rb and the proliferative marker Ki-67 in tumor tissue and down-regulation of genes under the transcriptional control of E2F. The results indicate that inhibition of Cdk4/6 alone is sufficient to cause tumor regression and a net reduction in tumor burden in some tumors."
+   }
+  ]
+ },
+ "999105": {
+  "drug_id": 999105,
+  "name": "venetoclax",
+  "cutoff_year": 2011,
+  "note": "BCL2, approved 2016",
+  "n_hits_total": 0,
+  "n_fetched": 0,
+  "abstracts": []
+ },
+ "999106": {
+  "drug_id": 999106,
+  "name": "tofacitinib",
+  "cutoff_year": 2004,
+  "note": "JAK, approved 2012",
+  "n_hits_total": 2,
+  "n_fetched": 2,
+  "abstracts": [
+   {
+    "pmid": "14758768",
+    "year": "2003",
+    "title": "JAK3 inhibition as a new concept for immune suppression.",
+    "abstract": "Although current immunosuppressive drugs are effective, they have numerous severe side effects that mandate the search for new agents. Mutations in the gene for janus kinase (JAK)3 result in severe combined immune deficiency with severely impaired humoral and cellular immunity, an observation that has prompted the development of JAK3 inhibitors. Due to its central role in lymphocyte activation, proliferation and homeostasis, targeting the JAK/signal transducer and activator of transcription (STAT) pathway may provide the required efficacy, without the toxicities associated with current therapies. Several studies conducted in rodents have validated the proof-of-concept, with a variety of JAK3 inhibitors demonstrating efficacy for immune suppression. In addition, the selective JAK3 inhibitor CP-690550 (Pfizer Inc) significantly improved allograft survival in a stringent preclinical model in primates and exhibited a good safety profile in non-human primates. This, along with studies of protein kinase inhibitors for cancer treatment, could demonstrate that development of effective, safe and selective kinase inhibitors for immunosuppression is possible."
+   },
+   {
+    "pmid": "14593182",
+    "year": "2003",
+    "title": "Prevention of organ allograft rejection by a specific Janus kinase 3 inhibitor.",
+    "abstract": "Because of its requirement for signaling by multiple cytokines, Janus kinase 3 (JAK3) is an excellent target for clinical immunosuppression. We report the development of a specific, orally active inhibitor of JAK3, CP-690,550, that significantly prolonged survival in a murine model of heart transplantation and in cynomolgus monkeys receiving kidney transplants. CP-690,550 treatment was not associated with hypertension, hyperlipidemia, or lymphoproliferative disease. On the basis of these preclinical results, we believe JAK3 blockade by CP-690,550 has potential for therapeutically desirable immunosuppression in human organ transplantation and in other clinical settings."
+   }
+  ]
+ }
+}
