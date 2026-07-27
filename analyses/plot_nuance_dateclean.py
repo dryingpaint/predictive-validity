@@ -50,7 +50,6 @@ def _rc():
 
 
 def _genetics_band(ax, y0, y1):
-    ax.axvspan(GEN_LO, GEN_HI, color=GENBAND, zorder=0)
     ax.axvline(1.0, color=MUTED, lw=1, ls=(0, (4, 3)), zorder=1)
 
 
@@ -68,7 +67,6 @@ def plot_collapse(clean=False):
         loose = sub.loc["clean_loose (pre-last-trial)", "rs"]
         ax.plot([strict, raw], [y, y], color=GREY, lw=3, zorder=2, solid_capstyle="round")
         ax.scatter([raw], [y], s=130, color=ORANGE, zorder=3, edgecolor=SURFACE, lw=1.5)
-        ax.scatter([loose], [y], s=70, color="#caa14a", zorder=3, edgecolor=SURFACE, lw=1.5)
         ax.scatter([strict], [y], s=130, color=BLUE, zorder=3, edgecolor=SURFACE, lw=1.5)
         ax.text(raw + 0.03, y + 0.12, f"raw {raw}", fontsize=8.5, color=ORANGE, va="center", fontweight="bold")
         ax.text(strict - 0.03, y + 0.12, f"pre-trial {strict}", fontsize=8.5, color=BLUE, va="center",
@@ -77,6 +75,7 @@ def plot_collapse(clean=False):
                 fontweight="bold", color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
+    ax.plot([GEN_LO, GEN_HI], [1.5, 1.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
     ax.text((GEN_LO+GEN_HI)/2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0.9, 2.05); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
@@ -85,7 +84,6 @@ def plot_collapse(clean=False):
     ax.set_xlabel("Relative Success (approval with ÷ without evidence)", fontsize=9, color=SEC)
     ax.tick_params(axis="x", labelsize=8, colors=MUTED, length=0)
     handles = [Line2D([0],[0],marker="o",color="none",markerfacecolor=ORANGE,markersize=9,label="raw (any-date papers)"),
-               Line2D([0],[0],marker="o",color="none",markerfacecolor="#caa14a",markersize=7,label="pre-last-trial"),
                Line2D([0],[0],marker="o",color="none",markerfacecolor=BLUE,markersize=9,label="pre-first-trial (clean)")]
     leg = ax.legend(handles=handles, loc="lower right", frameon=True, fontsize=8, handletextpad=0.3)
     leg.get_frame().set_facecolor(SURFACE); leg.get_frame().set_edgecolor("none"); leg.get_frame().set_alpha(1.0)
@@ -126,6 +124,7 @@ def plot_drug_collapse(clean=False):
                 color=INK, transform=ax.get_yaxis_transform())
     _genetics_band(ax, -0.5, 1.5)
     ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
+    ax.plot([GEN_LO, GEN_HI], [1.5, 1.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
     ax.text((GEN_LO + GEN_HI) / 2, 1.62, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0.55, 2.05); ax.set_ylim(-0.6, 1.75)
     ax.set_yticks([])
@@ -182,7 +181,8 @@ def plot_overview(clean=False):
                 transform=ax.get_yaxis_transform())
     _genetics_band(ax, min(ys)-1, max(ys)+1)
     ax.text(1.0, max(ys)+0.75, "no signal", fontsize=7.5, color=MUTED, ha="center")
-    ax.text((GEN_LO+GEN_HI)/2, max(ys)+0.75, "genetics band", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
+    ax.plot([GEN_LO, GEN_HI], [max(ys)+0.5, max(ys)+0.5], color=GREY, lw=1.3, zorder=1, solid_capstyle="butt")
+    ax.text((GEN_LO+GEN_HI)/2, max(ys)+0.75, "genetics", fontsize=7.5, color=SEC, ha="center", fontweight="bold")
     ax.set_xlim(0, 3.25); ax.set_ylim(min(ys)-0.6, max(ys)+1.1)
     ax.set_yticks([])
     for s in ("top","right","left"): ax.spines[s].set_visible(False)
