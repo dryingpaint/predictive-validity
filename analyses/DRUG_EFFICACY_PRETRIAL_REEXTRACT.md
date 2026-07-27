@@ -123,6 +123,9 @@ abstracts against the rubric (no external API key — the subagents are the LLM)
 | **time-sliced animal** | **0.78** [0.59, 0.98] | 103 | 322 |
 | **time-sliced max(cell, animal)** | **0.89** [0.70, 1.09] | 126 | 299 |
 
+Figure: `data/nuance_drug_efficacy_collapse_clean.png` (present → pre-trial dumbbell);
+also folded into `data/nuance_tier_overview_clean.png` alongside the literature/structural tiers.
+
 **Present-day scored drug-efficacy is modestly predictive (1.3–1.5, CIs exclude 1); the
 pre-trial re-score is null (0.8–1.0, CIs touch or cross 1).** The flagship deliverable —
 "the drug worked in a model" — carries **no positive predictive signal for approval**

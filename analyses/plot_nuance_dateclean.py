@@ -104,6 +104,54 @@ def plot_collapse(clean=False):
     plt.close(fig); print(f"wrote data/{stem}.png + .svg")
 
 
+def plot_drug_collapse(clean=False):
+    """Drug-specific efficacy rubric: present-day vs pre-trial re-score (N=425)."""
+    _rc()
+    df = pd.read_csv(os.path.join(DATA, "drug_efficacy_pretrial_comparison_full.csv")).set_index("measure")
+    pairs = [("Drug cell efficacy", "present cell", "time-sliced cell"),
+             ("Drug animal efficacy", "present animal", "time-sliced animal")]
+    fig, ax = plt.subplots(figsize=(9.4, 3.2 if clean else 4.3))
+    fig.subplots_adjust(left=0.22, right=0.965, top=0.80 if clean else 0.58, bottom=0.18)
+    for y, (lab, pk, tk) in zip([1, 0], pairs):
+        pres = round(float(df.loc[pk, "rs"]), 2)
+        dat = round(float(df.loc[tk, "rs"]), 2)
+        ax.plot([dat, pres], [y, y], color=GREY, lw=3, zorder=2, solid_capstyle="round")
+        ax.scatter([pres], [y], s=130, color=ORANGE, zorder=3, edgecolor=SURFACE, lw=1.5)
+        ax.scatter([dat], [y], s=130, color=BLUE, zorder=3, edgecolor=SURFACE, lw=1.5)
+        ax.text(pres + 0.03, y + 0.12, f"present {pres}", fontsize=8.5, color=ORANGE, va="center", fontweight="bold")
+        ax.text(dat - 0.03, y + 0.12, f"pre-trial {dat}", fontsize=8.5, color=BLUE, va="center", ha="right", fontweight="bold")
+        ax.text(-0.02, y, lab, fontsize=10.5, ha="right", va="center", fontweight="bold",
+                color=INK, transform=ax.get_yaxis_transform())
+    _genetics_band(ax, -0.5, 1.5)
+    ax.text(1.0, 1.62, "no signal", fontsize=7.5, color=MUTED, ha="center")
+    ax.text((GEN_LO + GEN_HI) / 2, 1.62, "genetics", fontsize=7.5, color=BLUE, ha="center", fontweight="bold")
+    ax.set_xlim(0.55, 2.05); ax.set_ylim(-0.6, 1.75)
+    ax.set_yticks([])
+    for s in ("top", "right", "left"): ax.spines[s].set_visible(False)
+    ax.spines["bottom"].set_color(RULE)
+    ax.set_xlabel("Relative Success (approval with ÷ without evidence)", fontsize=9, color=SEC)
+    ax.tick_params(axis="x", labelsize=8, colors=MUTED, length=0)
+    handles = [Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE, markersize=9, label="present-day rubric"),
+               Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE, markersize=9, label="pre-trial re-score (N=425)")]
+    ax.legend(handles=handles, loc="lower right", frameon=False, fontsize=8, handletextpad=0.3)
+    if not clean:
+        fig.text(0.02, 0.925, '"The drug worked in a model" does not survive date-cleaning',
+                 fontsize=14.5, fontweight="bold", color=INK)
+        fig.text(0.02, 0.78,
+                 "Drug-specific preclinical efficacy (Melissa's 0–3 rubric), present-day vs. re-scored on pre-trial "
+                 "abstracts only (N=425 drugs, Haiku-subagent scored). The modest present-day signal collapses to the "
+                 "null once only evidence predating the trial counts — a model certifies mechanism engagement, not "
+                 "disease causality.",
+                 fontsize=9.2, color=SEC, linespacing=1.4)
+        fig.add_artist(Line2D([0.02, 0.965], [0.70, 0.70], color=RULE, lw=1, transform=fig.transFigure))
+        fig.text(0.02, 0.03, "Source: preclin drug_*_efficacy rubric (present) + pre-trial PubMed abstracts re-scored on "
+                 "the same rubric via Haiku subagents. Drug-level, Ph2+.", fontsize=7.4, color=MUTED)
+    stem = "nuance_drug_efficacy_collapse" + ("_clean" if clean else "")
+    fig.savefig(os.path.join(DATA, stem + ".png"), bbox_inches="tight", dpi=200)
+    fig.savefig(os.path.join(DATA, stem + ".svg"), bbox_inches="tight")
+    plt.close(fig); print(f"wrote data/{stem}.png + .svg")
+
+
 def plot_overview(clean=False):
     _rc()
     lit = pd.read_csv(os.path.join(DATA, "nuance_literature_dateclean.csv"))
@@ -115,12 +163,11 @@ def plot_overview(clean=False):
         s = lit[lit.dimension == dim].set_index("cutoff")
         bars.append((dim.split(" (")[0] + " · lit (raw)", s.loc["raw (any date)","rs"], "#d9b38c"))
         bars.append((dim.split(" (")[0] + " · lit (pre-trial)", s.loc["clean_strict (pre-first-trial)","rs"], ORANGE))
-    for _, r in ds[ds.tier == "drug_efficacy"].iterrows():
-        m = r.measure
-        col = BLUE if "date-clean" in m else "#d9b38c"
-        short = ("Drug pre-trial preclinical · date-clean" if "date-clean" in m
-                 else m.replace(" (rubric, raw)", " · drug (raw)"))
-        bars.append((short, r.rs, col))
+    dfull = pd.read_csv(os.path.join(DATA, "drug_efficacy_pretrial_comparison_full.csv")).set_index("measure")
+    for lab, pk, tk in [("Drug cell efficacy", "present cell", "time-sliced cell"),
+                        ("Drug animal efficacy", "present animal", "time-sliced animal")]:
+        bars.append((lab + " · drug (present)", round(float(dfull.loc[pk, "rs"]), 2), "#d9b38c"))
+        bars.append((lab + " · drug (pre-trial re-score)", round(float(dfull.loc[tk, "rs"]), 2), ORANGE))
     bars = [(l, v, c) for l, v, c in bars if pd.notna(v)]
     fig, ax = plt.subplots(figsize=(9.8, 5.2 if clean else 6.2))
     fig.subplots_adjust(left=0.42, right=0.965, top=0.88 if clean else 0.72, bottom=0.10)
@@ -158,7 +205,7 @@ def plot_overview(clean=False):
 
 
 def main():
-    for fn in (plot_collapse, plot_overview):
+    for fn in (plot_collapse, plot_drug_collapse, plot_overview):
         fn(clean=False); fn(clean=True)
 
 
