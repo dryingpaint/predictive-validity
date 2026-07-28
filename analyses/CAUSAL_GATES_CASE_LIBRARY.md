@@ -37,6 +37,16 @@ target's lead indication (present-day — hindsight caveat noted in each case do
    drug-outcome story — and IL-6R's CVD payoff is still in trials. See its doc's "Why this
    case is here — and whether to keep it" note. Melissa's call to keep or cut.
 
+## The cross-case scorecard
+
+`CASE_SCORECARD.md` (figs `case_scorecard_hers_clean.png` + `case_scorecard_genetics_clean.png`)
+— six efficacy/safety failures (BACE1, γ-secretase/semagacestat, anti-Aβ mAbs, torcetrapib,
+TGN1412, fialuridine) scored 0–3 on the preclinical rubric (mechanistic / cell / animal /
+human-PD), plus a genetics column. **Near-maximal preclinical scores, all failed** — the
+at-a-glance "strong evidence isn't enough" picture that the gate cases above diagnose
+target-by-target. (Anti-Aβ = APP and torcetrapib = CETP also appear as gate cases above;
+the scorecard is the summary view, the gate cases the mechanism.)
+
 ## The through-line
 
 The **biomarker-causality gate** is the sharpest recurring divider across the library:
