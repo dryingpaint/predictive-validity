@@ -157,6 +157,27 @@ only, and is trustworthy in proportion to how tightly the model's readout sits o
 causally-validated path to the human endpoint. That is the same causal chain genetics
 speaks to — which is why, on average, genetics wins.
 
+## Capstone: does the genetics benchmark itself survive the same filter?
+
+Genetics is the benchmark the tiers above are measured against — so the honest final
+check is to put genetics through the **same** pre-first-trial date-cleaning. It does — but
+only the *causal* part (full analysis + figure: `GENETICS_TIMEGATING.md`,
+`genetics_timegating_clean.png`):
+
+| genetics dimension | present RS | pre-first-trial RS |
+|---|---|---|
+| Mendelian ≥5 (causal) | 1.42 | **1.42** (unchanged; 25/25 sample validated pre-trial) |
+| ClinGen ≥1 (causal) | 1.80 | **1.87** (survives, even with conservative late curation dates) |
+| GWAS ≥50 (association) | 1.12 | **0.97** (null — collapses) |
+
+So the dividing line across this whole analysis is **causal/structural vs.
+associational/accretive**, not "genetics vs. the rest." Causal genetics (Mendelian,
+ClinGen) can't be retrofitted after a drug works, so it passes the filter that literature,
+drug-efficacy, *and* the weak GWAS-*association* signal all fail. That is why genetics is
+the honest benchmark — and it's the "measure genetics by strength, not any-dimension" rule
+demonstrated under date-cleaning. (One residual: OT-genetic/OT-somatic composite scores are
+present-day black-boxes, not date-able from source.)
+
 ## For the write-up — stating this correctly
 
 The finding is easy to overstate ("so in vitro data is useless?"). It isn't that. The
