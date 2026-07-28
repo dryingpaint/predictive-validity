@@ -35,6 +35,13 @@ where a definition is hers vs. a presentation choice is flagged.
    LLM-extracted literature lines (C/D/E) removed from this headline view; annotation-count
    dims (Reactome/GO/PPI) are study-depth proxies — read with care.
 
+4. **`genetic_conditioning`** — the forward complement to the ablation: does any
+   non-genetic evidence add predictive value *on top of* genetics? Two panels (marginal
+   RS vs adjusted OR), each evidence type fit within genetics-present vs -absent Phase 2+
+   programs. Marginally everything looks additive; adjusted, only **human PD engagement**
+   survives in both strata — cell/animal literature collapse (matching the ablation).
+   Full detail, numbers, and caveats in **`GENETIC_CONDITIONING.md`**.
+
 ## What was wrong before (now fixed)
 
 The earlier "category as a whole" figure and a hand-built genetics tier were **my

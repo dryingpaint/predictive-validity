@@ -142,6 +142,117 @@ def plot_category_ablation(clean=False):
     print(f"wrote data/{stem}.png (600 dpi) + .svg")
 
 
+def plot_genetic_conditioning(clean=False):
+    """Two-panel paired forest — does each non-genetic evidence type add predictive
+    value ON TOP OF genetics? Each evidence type is fit separately within
+    genetics-present vs genetics-absent Phase 2+ programs. LEFT panel = marginal
+    relative success (unadjusted, same metric as the rest of Section 2); RIGHT panel =
+    adjusted odds ratio (multivariate: each other + therapeutic area + target class).
+    The contrast is the point: literature looks additive marginally, but the
+    independent signal collapses under adjustment — only human PD engagement survives
+    in both strata. Color = stratum; the 1.0 line + left/right = failure vs approval."""
+    df = pd.read_csv(os.path.join(CURATED, "genetic_conditioning.csv")).set_index("term")
+    GPOS, GNEG = "#1f6fd0", "#d68a3c"          # genetics present / absent (stratum, not pos/neg)
+    GROUPS = [
+        ("Adds signal on top of genetics", ["pd_lit"]),
+        ("Rides on genetics (collapses / flips when adjusted)", ["cell_lit", "animal_lit", "ot_animal", "impc3"]),
+        ("Adverse flag regardless of genetics", ["depmap_ess", "loeuf_lo"]),
+        ("No signal either way", ["tract_sm"]),
+    ]
+    rows, ticks, ticklab, headers = [], [], [], []
+    yc = 0.0
+    for title, terms in GROUPS:
+        headers.append((yc, title)); yc -= 1.15
+        for t in terms:
+            rows.append((t, yc)); ticks.append(yc)
+            ticklab.append(df.loc[t, "label"] + (" †" if df.loc[t, "llm_literature"] else ""))
+            yc -= 1.0
+        yc -= 0.55
+    ybot = yc + 0.4
+
+    fig, (axL, axR) = plt.subplots(1, 2, sharey=True,
+                                   figsize=(12.8, 7.4) if clean else (12.8, 8.6))
+    fig.subplots_adjust(left=0.265, right=0.975, wspace=0.08,
+                        top=0.905 if clean else 0.78, bottom=0.115 if clean else 0.13)
+
+    def draw(ax, pre, lo_k, hi_k, xmax):
+        for t, yy in rows:
+            r = df.loc[t]
+            for suf, col, off in (("Gneg", GNEG, -0.16), ("Gpos", GPOS, 0.16)):
+                v, lo, hi = r[f"{pre}_{suf}"], r[f"{lo_k}_{suf}"], r[f"{hi_k}_{suf}"]
+                if pd.isna(v):
+                    continue
+                ax.plot([lo, hi], [yy + off, yy + off], color=col, lw=2.3,
+                        solid_capstyle="round", zorder=2)
+                ax.plot(v, yy + off, "o", color=col, ms=7.0, mec=SURFACE, mew=1.2, zorder=3)
+        ax.axvline(1, color=AXLINE, lw=1.3, zorder=1)
+        ax.set_xscale("log"); ax.set_xlim(0.13, xmax)
+        ticks_x = [0.2, 0.35, 0.5, 0.7, 1, 1.4, 2, 3, 4]
+        ticks_x = [x for x in ticks_x if x <= xmax]
+        ax.set_xticks(ticks_x)
+        ax.set_xticklabels([str(x).rstrip("0").rstrip(".") if x != 1 else "1" for x in ticks_x])
+        for x in ticks_x:
+            ax.axvline(x, color=GRID, lw=0.6, zorder=0)
+        ax.set_ylim(ybot, 1.0)
+        for s in ax.spines.values():
+            s.set_visible(False)
+        ax.tick_params(length=0)
+
+    draw(axL, "rs", "rslo", "rshi", 4.7)
+    draw(axR, "aOR", "lo", "hi", 4.7)
+    # interaction asterisks on the adjusted panel
+    for t, yy in rows:
+        r = df.loc[t]
+        star = ("***" if r.interaction_p < 1e-3 else "**" if r.interaction_p < 1e-2
+                else "*" if r.interaction_p < 0.05 else "")
+        if star:
+            axR.text(4.6, yy, star, va="center", ha="right", fontsize=10.5,
+                     color=SEC, fontweight="bold")
+
+    axL.set_yticks(ticks); axL.set_yticklabels(ticklab, fontsize=9.8, color=INK)
+    for yy, name in headers:
+        axL.text(-0.42, yy, name.upper(), transform=axL.get_yaxis_transform(),
+                 fontsize=8.2, fontweight="bold", color=SEC, va="center", ha="left")
+    pty = 0.925 if clean else 0.80
+    fig.text(0.435, pty, "Marginal — relative success (unadjusted)",
+             fontsize=10.5, color=INK, ha="center", fontweight="bold")
+    fig.text(0.80, pty, "Adjusted — odds ratio (+ other evidence, area, target class)",
+             fontsize=10.5, color=INK, ha="center", fontweight="bold")
+    for ax in (axL, axR):
+        ax.set_xlabel("predicts failure  ·  1  ·  predicts approval   (log scale)",
+                      color=SEC, fontsize=8.8)
+
+    handles = [Line2D([0], [0], marker="o", color=GPOS, lw=2.3, ms=7.0, mec=SURFACE,
+                      label="Genetics present (score ≥ 1.0)"),
+               Line2D([0], [0], marker="o", color=GNEG, lw=2.3, ms=7.0, mec=SURFACE,
+                      label="Genetics absent (score < 1.0)")]
+    leg = fig.legend(handles=handles, loc="lower center",
+                     bbox_to_anchor=(0.5, 0.008 if clean else 0.03),
+                     ncol=2, frameon=False, fontsize=9.5, columnspacing=2.2, handlelength=1.6)
+    for tx in leg.get_texts():
+        tx.set_color(SEC)
+    if not clean:
+        fig.text(0.035, 0.972, "Does other evidence add anything on top of genetics?",
+                 fontsize=15.5, fontweight="bold", color=INK, ha="left", va="top")
+        fig.text(0.035, 0.93,
+                 "Each non-genetic evidence type, fit separately within genetics-present vs genetics-absent programs "
+                 "(11,404 Phase 2+ non-placebo).\nLeft: unadjusted relative success — everything looks additive. "
+                 "Right: adjusted for the other evidence + area + target class — the apparent literature signal "
+                 "collapses;\nonly human PD engagement survives in both strata.  *** interaction p<0.001.",
+                 fontsize=9.6, color=SEC, ha="left", va="top")
+        fig.add_artist(Line2D([0.035, 0.972], [0.84, 0.84], color=RULE, lw=1, transform=fig.transFigure))
+        fig.text(0.035, 0.010,
+                 "Genetics stratum = Melissa Du's genetic_only_v1 strength score (not any-single-dimension). "
+                 "Odds ratios run larger than rate ratios at this base rate — compare panels for direction, not "
+                 "magnitude.  † LLM-extracted literature (present-day, not time-gated).",
+                 fontsize=7.6, color=MUTED, ha="left")
+    stem = "genetic_conditioning" + ("_clean" if clean else "")
+    fig.savefig(os.path.join(FIGDIR, stem + ".png"), bbox_inches="tight", dpi=600)
+    fig.savefig(os.path.join(FIGDIR, stem + ".svg"), bbox_inches="tight")
+    plt.close(fig)
+    print(f"wrote data/{stem}.png (600 dpi) + .svg")
+
+
 def main():
     plt.rcParams.update({
         "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
