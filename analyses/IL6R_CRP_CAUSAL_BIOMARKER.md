@@ -12,6 +12,35 @@ cleanest textbook pair in cardiovascular biology: two inflammation biomarkers,
 both associated with CVD, both with human genetic support — where only one is
 *causal*, and the causal one is the drug target.
 
+## Why this case is here — and whether to keep it (for review)
+
+**Provenance — this is *our* proposed addition, not Melissa's.** It sits in our project
+handoff's open-threads list ("a promising 'which biomarker is causal' example"); it is
+not in Melissa's case studies, outline, or feedback. The IL-6R-vs-CRP MR contrast is
+textbook, but the decision to put it in the post is ours — so treat it as a **proposal
+for Melissa to accept or drop**, like the Section-4 exenatide reframe.
+
+**What it uniquely adds.** Unlike every other case here (each a specific drug that
+succeeded or failed), this is a **target-selection** contrast, and the *purest* form of
+the biomarker-causality gate: `genetic_only_v1` scores CRP, IL-6R, and IL-6 **identically
+(0.70)** — genetic *support* alone cannot tell a real target from a dead end — and only
+the causal test (Mendelian randomization) separates them. The lesson: a drug can be
+pharmacologically **effective** (it hits its target and moves the biomarker exactly as
+designed) and still **fail clinically** if the target/biomarker isn't *causal* for the
+outcome. It's the same point as CETP (torcetrapib raised HDL beautifully and failed), but
+shown at the **target-picking stage — before a program is spent — rather than after.**
+
+**Reasons one might drop it.** (1) It's a *concept/target* case sitting among
+*drug-outcome* cases, so it reads as the odd one out. (2) IL-6R's cardiovascular payoff
+is **still in trials** (ziltivekimab / ZEUS ongoing); IL-6R is an *approved target*
+(tocilizumab, in rheumatoid arthritis) and *causal by MR*, but this is target *validity*
+corroborated by the drug landscape — **not a closed CVD success** like PCSK9. (3) It
+partly duplicates CETP's causality-gate point.
+
+**Recommendation:** keep it if the post wants the causality gate in its cleanest,
+decision-stage form (genetics tied, MR decides); otherwise CETP alone carries the point.
+Melissa's call.
+
 ## The punchline (and the honest part first)
 
 **The repo's own genetics scorer cannot tell these three apart.**

@@ -32,7 +32,10 @@ target's lead indication (present-day — hindsight caveat noted in each case do
 3. **IL-6R vs CRP** — `IL6R_CRP_CAUSAL_BIOMARKER.md` (fig `il6r_crp_causal_biomarker_clean.png`).
    A close-up on the **biomarker-causality gate.** Genetics scores CRP, IL-6R, and IL-6
    *identically* (0.70, "Weak"); only MR separates the dead-end **bystander marker (CRP)**
-   from the causal, approved target (**IL-6R**).
+   from the causal, approved target (**IL-6R**). **⚠ Proposed addition / odd-one-out:**
+   this is *our* proposal (not Melissa's) and a *target-selection concept* case, not a
+   drug-outcome story — and IL-6R's CVD payoff is still in trials. See its doc's "Why this
+   case is here — and whether to keep it" note. Melissa's call to keep or cut.
 
 ## The through-line
 
