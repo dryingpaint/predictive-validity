@@ -39,7 +39,7 @@ target's lead indication (present-day — hindsight caveat noted in each case do
 
 ## The cross-case scorecard
 
-`CASE_SCORECARD.md` (figs `case_scorecard_hers_clean.png` + `case_scorecard_genetics_clean.png`)
+`CASE_SCORECARD.md` (figs `case_scorecard_dryingpaint_clean.png` + `case_scorecard_stephengoldstein_clean.png`)
 — six efficacy/safety failures (BACE1, γ-secretase/semagacestat, anti-Aβ mAbs, torcetrapib,
 TGN1412, fialuridine) scored 0–3 on the preclinical rubric (mechanistic / cell / animal /
 human-PD), plus a genetics column. **Near-maximal preclinical scores, all failed** — the

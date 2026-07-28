@@ -81,7 +81,7 @@ def plot(with_genetics=True, clean=False):
                          "text.color": INK, "figure.dpi": 300, "svg.fonttype": "none"})
     cmap = cm.get_cmap("RdYlGn"); norm = Normalize(0, 3)
     n = len(CASES)
-    cols = COLS if with_genetics else COLS[1:]                 # drop Genetics column for "hers"
+    cols = COLS if with_genetics else COLS[1:]                 # drop Genetics column for the dryingpaint (original-rubric) variant
     out_x = len(cols)
     w = 11.0 if with_genetics else 9.7
     fig, ax = plt.subplots(figsize=(w, 5.0) if clean else (w, 6.0))
@@ -157,7 +157,7 @@ def plot(with_genetics=True, clean=False):
         fig.text(0.035, 0.845, sub, fontsize=10, color=SEC, linespacing=1.4)
         fig.add_artist(Line2D([0.035, 0.985], [0.795, 0.795], color=RULE, lw=1, transform=fig.transFigure))
         fig.text(0.035, 0.02, src, fontsize=8, color=MUTED, ha="left")
-    stem = ("case_scorecard_genetics" if with_genetics else "case_scorecard_hers") + ("_clean" if clean else "")
+    stem = ("case_scorecard_stephengoldstein" if with_genetics else "case_scorecard_dryingpaint") + ("_clean" if clean else "")
     fig.savefig(os.path.join(FIGDIR, stem + ".png"), bbox_inches="tight", dpi=600)
     fig.savefig(os.path.join(FIGDIR, stem + ".svg"), bbox_inches="tight")
     plt.close(fig)

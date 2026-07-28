@@ -4,9 +4,9 @@ Figures for the "strong preclinical evidence, still failed" case studies in
 `CASE_STUDIES.md`. Two versions, each annotated + `_clean` (publication-grade),
 600-dpi PNG + editable SVG, in `data/`:
 
-- **`case_scorecard_hers`** — the six cases on the **original rubric** (Mechanistic /
+- **`case_scorecard_dryingpaint`** — Melissa Du's (@dryingpaint) **original rubric** (Mechanistic /
   Cell-pathway / Animal in-vivo / Human PD). All near-maximal, all failed.
-- **`case_scorecard_genetics`** — the same, **with a Genetics column added**.
+- **`case_scorecard_stephengoldstein`** — the same, **with a Genetics column added** (@StephenGoldstein).
 
 Rows are split into **efficacy failures** (BACE1, γ-secretase, anti-Aβ, torcetrapib)
 and **safety / species-specific failures** (TGN1412, fialuridine).
