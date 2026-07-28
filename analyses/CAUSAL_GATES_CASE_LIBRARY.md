@@ -47,6 +47,27 @@ at-a-glance "strong evidence isn't enough" picture that the gate cases above dia
 target-by-target. (Anti-Aβ = APP and torcetrapib = CETP also appear as gate cases above;
 the scorecard is the summary view, the gate cases the mechanism.)
 
+## How the figures relate (read this to orient)
+
+Seven figures, **two lenses over an overlapping case set** plus an overview — none is a
+subset of another. `scorecard_legend_clean.png` is the shared 0–3 / genetics-tier key.
+
+| Figure | Cases | Scored on | Answers |
+|---|---|---|---|
+| `case_scorecard_dryingpaint` | 6 failures: BACE1, semagacestat, anti-Aβ (**APP**), torcetrapib (**CETP**), TGN1412/CD28, fialuridine | preclinical rubric (mech/cell/animal/PD) | strong preclinical evidence, still failed |
+| `case_scorecard_stephengoldstein` | same 6 | rubric **+ genetics column** | …and genetics doesn't rescue the story |
+| `headtohead_scorecard` | PCSK9, **APP**, **CETP** | causal-gate chain | 1 success vs 2 evidence-matched failures |
+| `causal_gates_scorecard` | PCSK9, ANGPTL3, F11, APOC3 | causal-gate chain | genetics guards only the first ~3 gates |
+| `il6r_crp_causal_biomarker` | IL-6R, CRP | the causality gate alone | a genetics-tied pair split only by MR |
+| `genetics_vs_outcome` | whole library (9: APP, PCSK9, ANGPTL3, F11, BACE1, LPA, CETP, APOC3, PLA2G7) | genetic score vs. outcome | genetic *strength* doesn't separate approved from failed |
+
+**Overlaps are deliberate, not redundant.** **APP** and **CETP** appear in both lenses —
+they're the bridge (failures that are *also* evidence-matched to the PCSK9 success), so the
+preclinical-rubric view shows "maxed out, still failed" and the gate view shows *which gate
+broke* for the same drug. The two `case_scorecard_*` figures are the same 6 rows ±the
+genetics column; the three gate scorecards are different case slices of the gate chain; and
+`genetics_vs_outcome` is the single wide-angle scatter tying the whole library together.
+
 ## The through-line
 
 The **biomarker-causality gate** is the sharpest recurring divider across the library:
