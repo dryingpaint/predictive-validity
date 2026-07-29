@@ -103,6 +103,30 @@ genetics-dominance.
 - **PD = LLM literature.** As above — the single additive signal is un-time-gated; don't
   oversell it.
 
+## Attempted: time-gating the PD signal (underpowered — recorded, not used)
+
+Since human PD engagement is the one non-genetic evidence type that looks additive, the
+obvious follow-up is whether it survives **time-gating** (does the signal hold when the
+supporting PD paper must predate the program's first trial, the same filter applied to
+literature in PR #12 and to genetics in the #15 capstone). We tried it
+(`analyses/pd_timegating.py`, reusing PR #12's cached citation dates
+`data/pmid_pubyear.csv`; time-gated PD := present-day PD support **and** earliest cited
+paper < first-trial year). **It's underpowered and we do not draw a conclusion from it.**
+
+- Only **1,407 of 4,290** present-day PD-supported programs have a datable pre-trial
+  citation (74% datable overall; the undatable ~26% conservatively fall to not-gated).
+  That leaves **n=521 in the genetics-present arm** — too small to trust.
+- Point estimates (for the record, `data/pd_timegating.csv`): PD present-day adj OR
+  **2.09 (G+) / 3.52 (G−)** → time-gated **0.38 (G+) / 1.53 (G−)**. The estimates *hint*
+  that the present-day signal is largely hindsight, but the genetics-present reversal to
+  0.38 at n=521 is almost certainly a small-sample selection/collider artifact, not a
+  real "early PD hurts" effect — the same caution we apply to the adjusted animal-lit
+  flip. So this neither confirms nor refutes whether PD's additivity is hindsight.
+- **Not used** in the figure or the headline. The present-day conditioning result stands
+  with its existing caveat (PD is LLM-extracted / un-time-gated). A properly-powered
+  time-gated PD test would need either better citation coverage or a larger PD-scored
+  cohort.
+
 ## Reproduce
 
 ```bash
