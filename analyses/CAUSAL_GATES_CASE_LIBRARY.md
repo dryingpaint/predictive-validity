@@ -51,6 +51,16 @@ the scorecard is the summary view, the gate cases the mechanism. The rubric-only
 "dryingpaint" twin was retired 2026-07-29 — the genetics-column version is strictly more
 informative.)
 
+## Deep dives — why the biology failed, and what a later drug proved
+
+`CASE_STUDY_DEEPDIVES.md` — for each failed program, **what they got wrong about the biology**
+and **whether a later drug at the same target (with different biology) succeeded**. The
+later-drug natural experiment sorts the cases into three verdicts: **biology wrong** (Lp-PLA2,
+CRP, CETP-as-HDL, BACE1-production), **partly right — wrong species/stage** (anti-Aβ →
+lecanemab/donanemab), and **biology right — wrong molecule/dose/delivery** (APOC3 → olezarsen;
+Factor XI → OCEANIC-STROKE/milvexian; the two safety cases). This is the raw material for the
+paper's Case Studies write-up.
+
 ## How the figures relate (read this to orient)
 
 **Four figures** after the 2026-07-29 consolidation. `scorecard_legend_clean.png` is the
