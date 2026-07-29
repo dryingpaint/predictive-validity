@@ -64,19 +64,21 @@ does what the genetic score structurally cannot.
 
 ## The scorecard
 
-Rows = the three players; columns = the gates. **The standalone figure
-(`il6r_crp_causal_biomarker`) and its plot script + CSV were retired 2026-07-29** to keep
-the Section-3 figure set to four; this case is now **prose only** (Melissa's call whether to
-work it back up into a figure). The table below carries the full content, and the
-biomarker-causality gate it illustrates is shown visually by CETP in the unified
-`causal_gates_scorecard`.
+Rows = the three players; columns = the gates. **The standalone figure was retired
+2026-07-29 and this case folded into the unified `causal_gates_scorecard`** — tied to two
+specific drug candidates so it reads as ordinary drug-outcome rows rather than a
+target-selection concept: **tocilizumab** (anti-IL-6R, approved in RA) and **ISIS-CRPRx**
+(anti-CRP antisense; cut CRP ~77% with no clinical benefit, PMID 25885521). They have
+identical genetics (0.7) and both engage their biomarker, so they split at exactly one gate
+(biomarker-causal-by-MR) and get opposite outcomes — the sharpest pair in that figure. The
+three-way conceptual table below (adding the IL-6 ligand) is retained as prose.
 
 | Gate | CRP | IL-6R | IL-6 |
 |---|---|---|---|
 | **Human genetics** (`genetic_only_v1`) | Weak **0.70** | Weak **0.70** | Weak **0.70** |
 | Target → biomarker | *is* the marker | validated (→ CRP/IL-6) | validated (→ CRP) |
 | **Biomarker causal for outcome? (MR)** | **NO** | **YES** | **YES (axis)** |
-| Drug engages target | no CV agent | yes (tocilizumab; ziltivekimab) | yes (ziltivekimab) |
+| Drug engages target | yes — ISIS-CRPRx cut CRP ~77% (RA/AF) | yes (tocilizumab; ziltivekimab) | yes (ziltivekimab) |
 | Safety | n/a | acceptable (approved in RA) | TBD (outcomes trial) |
 | Approval / outcome | **dead end** | **APPROVED** (RA); CV: ZEUS ph3 | in dev (RESCUE → ZEUS) |
 

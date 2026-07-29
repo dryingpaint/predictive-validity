@@ -30,13 +30,14 @@ target's lead indication (present-day — hindsight caveat noted in each case do
    (mirrors PCSK9); **Factor XI** broke at drug-engagement (asundexian under-dosed for
    AF, not a genetics failure); **APOC3** broke at safety (thrombocytopenia; EMA yes /
    FDA no).
-3. **IL-6R vs CRP** — `IL6R_CRP_CAUSAL_BIOMARKER.md` (**prose only** — the standalone figure
-   was retired 2026-07-29 to keep the figure set tight). A close-up on the
-   **biomarker-causality gate**: genetics scores CRP, IL-6R, and IL-6 *identically* (0.70,
-   "Weak"); only MR separates the dead-end **bystander marker (CRP)** from the causal,
-   approved target (**IL-6R**). Still our proposal / a target-selection concept case (not a
-   drug-outcome story) — Melissa's call whether to work it back up. The gate it illustrates
-   is carried visually by CETP in the scorecard.
+3. **IL-6R vs CRP** — `IL6R_CRP_CAUSAL_BIOMARKER.md`, now **tied to specific drug candidates
+   and folded into the `causal_gates_scorecard`** (2026-07-29): **tocilizumab** (anti-IL-6R,
+   approved in RA) and **ISIS-CRPRx** (anti-CRP antisense). This turns it from a
+   target-selection concept case into two ordinary drug-outcome rows that fold in cleanly.
+   It's now the sharpest row-pair in the library: genetics scores IL-6R and CRP *identically*
+   (0.70, "Weak"), **both drugs hit their biomarker** (tocilizumab blocks IL-6R; ISIS-CRPRx
+   cut CRP ~77%, PMID 25885521) — they split at exactly one gate (biomarker-causal-by-MR) and
+   get **opposite outcomes** (IL-6R approved; CRP no clinical benefit).
 
 ## The cross-case scorecard
 
@@ -58,15 +59,16 @@ shared 0–3 / genetics-tier key.
 | Figure | Cases | Scored on | Answers |
 |---|---|---|---|
 | `case_scorecard_stephengoldstein` | 7 failures: BACE1, semagacestat, anti-Aβ (**APP**), torcetrapib (**CETP**), **darapladib**, TGN1412/CD28, fialuridine | preclinical rubric (mech/cell/animal/PD) **+ genetics** | strong preclinical evidence, still failed — and genetics doesn't rescue it |
-| `causal_gates_scorecard` | 6: PCSK9, ANGPTL3 (approved) · **APP**, **CETP**, F11, APOC3 (failed/mixed) | causal-gate chain (6 gates) | which gate breaks — and APP breaks above PCSK9's genetic score |
-| `genetics_vs_outcome` | whole library (10: APP, PCSK9, ANGPTL3, F11, BACE1, **semagacestat**, LPA, CETP, APOC3, PLA2G7) | genetic score vs. outcome | genetic *strength* doesn't separate approved from failed |
+| `causal_gates_scorecard` | 8: PCSK9, ANGPTL3, **tocilizumab** (approved) · **APP**, **CETP**, F11, APOC3, **ISIS-CRPRx** (failed/mixed) | causal-gate chain (6 gates) | which gate breaks — APP above PCSK9's score; and the IL-6R/CRP pair split only at the causality gate |
+| `genetics_vs_outcome` | whole library (12: APP, PCSK9, ANGPTL3, F11, BACE1, **semagacestat**, LPA, CETP, **tocilizumab/IL6R**, **ISIS-CRPRx/CRP**, APOC3, PLA2G7) | genetic score vs. outcome | genetic *strength* doesn't separate approved from failed (three programs sit at 0.7 — one approved, two failed) |
 | `scorecard_legend` | — | — | the shared 0–3 / tier key |
 
 **Overlaps are deliberate, not redundant.** **APP** and **CETP** appear in both the case
 scorecard (as "maxed out, still failed") and the gate scorecard (showing *which gate broke*).
 `genetics_vs_outcome` is the single wide-angle scatter tying the whole library together. The
-former head-to-head figure and the IL-6R/CRP figure were folded/retired here to keep the set
-to four.
+former head-to-head figure was folded into the gate scorecard; the IL-6R/CRP case was tied to
+specific drug candidates (tocilizumab / ISIS-CRPRx) and folded in as two rows — keeping the set
+to four figures.
 
 ## The through-line
 
@@ -82,7 +84,8 @@ And genetic *strength* does not decide the outcome: **APP failed at a higher
 *support*, not therapeutic tractability — the downstream gates do the deciding.
 
 *(Consolidated 2026-07-27 from the former standalone PRs for PCSK9/APP/CETP and IL-6R/CRP;
-they are the same Section-3 causal-gates thread. Figure set further reduced 2026-07-29 —
-head-to-head folded into `causal_gates_scorecard`, IL-6R/CRP figure retired to prose, the
-rubric-only case-scorecard twin dropped, and darapladib added to the case scorecard. "Head-to-head"
-in the case docs now refers to the PCSK9/APP/CETP rows of the unified gate scorecard.)*
+they are the same Section-3 causal-gates thread. Figure set consolidated to four 2026-07-29 —
+head-to-head folded into `causal_gates_scorecard`; IL-6R/CRP tied to specific drug candidates
+(tocilizumab / ISIS-CRPRx) and folded into the gate scorecard as two rows; the rubric-only
+case-scorecard twin dropped; and darapladib added to the case scorecard. "Head-to-head" in the
+case docs now refers to the PCSK9/APP/CETP rows of the unified gate scorecard.)*

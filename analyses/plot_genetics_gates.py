@@ -67,6 +67,14 @@ GATE_ROWS = [
      [(GREEN, "Moderate*", "1.0 — undervalued"), (GREEN, "yes", "TG"), (GREEN, "yes", "TG/TRL"),
       (GREEN, "yes", "TG cut ~70%"), (RED, "thrombocytopenia", "76% of pts"),
       (AMBER, "EMA yes", "FDA no")]),
+    # The IL-6R / CRP pair: identical genetics (0.7), both drugs hit their biomarker —
+    # they split at exactly one gate (biomarker-causal?) and get opposite outcomes.
+    ("Tocilizumab (anti-IL-6R)", "IL6R · rheumatoid arthritis",
+     [(GREEN, "Weak", "0.7"), (GREEN, "yes", "IL-6 axis"), (GREEN, "yes", "IL-6 causal (MR)"),
+      (GREEN, "yes", "blocks IL-6R"), (GREEN, "clean", ""), (BLUE, "APPROVED", "RA")]),
+    ("ISIS-CRPRx (anti-CRP)", "CRP · rheumatoid arthritis",
+     [(GREEN, "Weak", "0.7"), (GREEN, "yes", "is the marker"), (RED, "no", "bystander (MR)"),
+      (GREEN, "yes", "CRP down 77%"), (GREEN, "tolerated", ""), (RED, "FAILED", "no benefit")]),
 ]
 
 # --- Figure 2: genetics score vs outcome (whole case library) -----------------
@@ -80,6 +88,8 @@ LIB = [
     ("γ-secretase (semagacestat)", "PSEN1", 1.0, "failed"),
     ("Pelacarsen/olpasiran","LPA",    1.0, "pending"),
     ("Torcetrapib",        "CETP",    0.7, "failed"),
+    ("Tocilizumab",        "IL6R",    0.7, "approved"),
+    ("ISIS-CRPRx",         "CRP",     0.7, "failed"),
     ("Volanesorsen",       "APOC3",   1.0, "mixed"),
     ("Darapladib",         "PLA2G7",  0.5, "failed"),
 ]
@@ -105,8 +115,8 @@ def plot_gates(clean=False):
     _rc()
     n = len(GATE_ROWS)
     ncol = len(GATES)
-    fig, ax = plt.subplots(figsize=(12.6, 5.6 if clean else 6.8))
-    fig.subplots_adjust(left=0.175, right=0.995, top=0.88 if clean else 0.72, bottom=0.09)
+    fig, ax = plt.subplots(figsize=(12.6, 7.4 if clean else 8.6))
+    fig.subplots_adjust(left=0.185, right=0.995, top=0.91 if clean else 0.78, bottom=0.07)
     yrows = list(range(n - 1, -1, -1))
     for ri, (drug, sub, cells) in enumerate(GATE_ROWS):
         y = yrows[ri]
@@ -134,17 +144,19 @@ def plot_gates(clean=False):
         ax.text(i * 1.05 + 0.38, -0.75, lab, ha="left", va="center", fontsize=7.4, color=MUTED)
     if not clean:
         title = "Genetics guards the first gates — the downstream gates decide the outcome"
-        sub = ("Six genetically-supported programs walked across the causal chain. PCSK9 and ANGPTL3 clear every "
-               "gate (approved). The failures each break downstream — and APP fails at a HIGHER genetic score than "
-               "PCSK9: APP at causal-for-stage (right node, too late); CETP at biomarker-causality (HDL non-causal by "
-               "MR) and off-target safety; Factor XI at drug engagement (asundexian under-dosed for AF); APOC3 at "
-               "safety (thrombocytopenia). Genetic strength doesn't decide — the later gates do.")
+        sub = ("Eight genetically-supported programs walked across the causal chain. PCSK9, ANGPTL3 and tocilizumab "
+               "clear every gate (approved). The failures each break downstream — and APP fails at a HIGHER genetic "
+               "score than PCSK9: APP at causal-for-stage (right node, too late); CETP at biomarker-causality (HDL "
+               "non-causal by MR) and off-target safety; Factor XI at drug engagement (asundexian under-dosed for AF); "
+               "APOC3 at safety (thrombocytopenia). The bottom pair is the sharpest test: tocilizumab (IL-6R) and "
+               "ISIS-CRPRx (CRP) have IDENTICAL genetics (0.7) and both drugs hit their biomarker — they split at one "
+               "gate, biomarker-causality, and get opposite outcomes. Genetic strength doesn't decide — the later gates do.")
         src = ("Genetics = genetic_only_v1 on v_target_evidence_wide (present-day; hindsight). "
                "*CETP genetics present but misread (HDL non-causal); *APOC3 strong LoF-protective genetics the scorer "
-               "undervalues — see docs.")
-        fig.text(0.015, 0.945, title, fontsize=14.5, fontweight="bold", color=INK)
-        fig.text(0.015, 0.80, sub, fontsize=9.0, color=SEC, linespacing=1.4)
-        fig.add_artist(Line2D([0.015, 0.995], [0.735, 0.735], color=RULE, lw=1, transform=fig.transFigure))
+               "undervalues. CRP: ISIS-CRPRx cut CRP ~77% with no clinical benefit (RA POC, PMID 25885521). See docs.")
+        fig.text(0.015, 0.955, title, fontsize=14.5, fontweight="bold", color=INK)
+        fig.text(0.015, 0.85, sub, fontsize=9.0, color=SEC, linespacing=1.4)
+        fig.add_artist(Line2D([0.015, 0.995], [0.795, 0.795], color=RULE, lw=1, transform=fig.transFigure))
         fig.text(0.015, 0.02, src, fontsize=7.4, color=MUTED, ha="left")
     stem = "causal_gates_scorecard" + ("_clean" if clean else "")
     fig.savefig(os.path.join(DATA, stem + ".png"), bbox_inches="tight", dpi=200)
@@ -157,8 +169,8 @@ def plot_score_vs_outcome(clean=False):
     _rc()
     rows = sorted(LIB, key=lambda r: r[2])          # ascending so highest at top
     n = len(rows)
-    fig, ax = plt.subplots(figsize=(9.2, 4.7 if clean else 5.7))
-    fig.subplots_adjust(left=0.28, right=0.82, top=0.87 if clean else 0.68, bottom=0.10)
+    fig, ax = plt.subplots(figsize=(9.2, 5.6 if clean else 6.7))
+    fig.subplots_adjust(left=0.28, right=0.82, top=0.88 if clean else 0.71, bottom=0.09)
     for i, (label, tgt, score, outc) in enumerate(rows):
         c = OUTCOME_COLOR[outc]
         ax.barh(i, score, height=0.6, color=c, edgecolor=SURFACE, zorder=2)
