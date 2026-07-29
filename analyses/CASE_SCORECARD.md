@@ -71,9 +71,42 @@ avoids for exenatide. The two are consistent (there, the question is whether gen
 but since the PRs are meant to be read together, the different standard is called out rather
 than left implicit.
 
-The two **safety / species-specific** failures (TGN1412, fialuridine) are a different
-failure mode entirely — human-vs-animal pharmacology, not predictable from any evidence
-category — hence the visual split.
+## Safety failures — was the target hypothesis actually right?
+
+A safety failure kills the *drug*; it does not, by itself, indict the *target*. For both
+safety cases here the underlying biology was later **validated** — the failure was the
+molecule and the dose, not the hypothesis. That is the mirror image of the efficacy
+failures above, where the causal hypothesis itself was often wrong (CETP / darapladib / CRP:
+biomarker non-causal; amyloid: right node, wrong stage). Worth stating explicitly, because
+"strong preclinical evidence, still failed" means something different in each bucket.
+
+- **TGN1412 (CD28 superagonist) — target validated; a dose + species-translation failure.**
+  The 2006 first-in-human trial caused a near-fatal cytokine storm in all six volunteers
+  (Suntharalingam et al., *NEJM* 2006). The lesson is *not* that CD28 costimulation is a bad
+  target: (1) the tox species (cynomolgus macaque) structurally could not predict it —
+  macaque CD4⁺ effector-memory T cells are **CD28-negative** where the human cells are
+  **CD28-positive** (a 4-aa species difference incl. G68E in the binding loop; Eastwood et
+  al., *Br J Pharmacol* 2010, PMID 20880392), so the superagonist engaged a human cell
+  population absent from the model; and (2) the *same antibody*, redeveloped as **TAB08 /
+  theralizumab** at ~1000× lower dose, selectively activates regulatory T cells (IL-10
+  signature) with no cytokine storm and re-entered rheumatoid-arthritis trials (Tabares et
+  al., *Eur J Immunol* 2014, PMID 24374661; Hünig, *FEBS J* 2016). The Treg-activation-via-
+  CD28 hypothesis held; the first-in-human dose and the animal model did not.
+- **Fialuridine (HBV polymerase) — target validated; a molecule-specific mitochondrial
+  toxicity.** The 1993 NIH trial caused fatal hepatic failure and lactic acidosis (5 of 15
+  died; 2 more survived only after liver transplant; McKenzie et al., *NEJM* 1995). Yet HBV
+  polymerase is arguably **the most validated target in hepatitis B** — the nucleos(t)ide-
+  analog class (lamivudine, entecavir, tenofovir) is the backbone of modern HBV therapy.
+  Fialuridine failed on a molecule-specific liability: its triphosphate inhibits
+  **mitochondrial DNA polymerase-γ** and is incorporated into mtDNA, depleting it and
+  destroying mitochondria (PMID 8622980) — a chemistry problem the later, mitochondrially
+  gentler analogs do not share. Right target, wrong molecule.
+
+**So the two failure modes sit on opposite sides of the target-validity question:** efficacy
+failures frequently indict the *biology* (biomarker not causal, or right node / wrong stage);
+these safety catastrophes indict the *molecule / dose / model*, with the target hypothesis
+vindicated by later drugs. (Hence the visual split in the scorecard — but the deeper reason
+is this validity asymmetry, not just "safety vs efficacy.")
 
 ## Scope & reproduce
 
