@@ -1,15 +1,14 @@
 # Case-study scorecard (Section 3)
 
-Figures for the "strong preclinical evidence, still failed" case studies in
-`CASE_STUDIES.md`. Two versions, each annotated + `_clean` (publication-grade),
-600-dpi PNG + editable SVG, in `data/`:
+One figure for the "strong preclinical evidence, still failed" case studies in
+`CASE_STUDIES.md` — `case_scorecard_stephengoldstein` (annotated + `_clean`
+publication-grade, 600-dpi PNG + editable SVG in `data/`): Melissa Du's original rubric
+(Mechanistic / Cell-pathway / Animal in-vivo / Human PD) **with a Genetics column added**.
+*(The rubric-only "dryingpaint" twin was retired 2026-07-29 — the genetics-column version is
+strictly more informative. `plot(with_genetics=False)` still generates it if ever wanted.)*
 
-- **`case_scorecard_dryingpaint`** — Melissa Du's (@dryingpaint) **original rubric** (Mechanistic /
-  Cell-pathway / Animal in-vivo / Human PD). All near-maximal, all failed.
-- **`case_scorecard_stephengoldstein`** — the same, **with a Genetics column added** (@StephenGoldstein).
-
-Rows are split into **efficacy failures** (BACE1, γ-secretase, anti-Aβ, torcetrapib)
-and **safety / species-specific failures** (TGN1412, fialuridine).
+Rows are split into **efficacy failures** (BACE1, γ-secretase, anti-Aβ, torcetrapib,
+**darapladib**) and **safety / species-specific failures** (TGN1412, fialuridine).
 
 ## What this adds to CASE_STUDIES.md
 
@@ -29,7 +28,14 @@ tier, so they are unchanged.)
 | γ-secretase / semagacestat (PSEN1) | 1.0 | Moderate |
 | TGN1412 (CD28) | 1.0 | Moderate |
 | Torcetrapib (CETP) | 0.7 | Weak |
+| Darapladib (PLA2G7) | 0.5 | Weak |
 | Fialuridine (HBV polymerase) | — | n/a (viral) |
+
+**Darapladib (PLA2G7 / Lp-PLA2), added 2026-07-29** — the cleanest modern efficacy failure of
+this kind: maxed preclinical evidence (mechanism, structure, atherosclerosis models, human
+Lp-PLA2 PD all 3/3), Lp-PLA2 fully engaged, yet STABILITY and SOLID-TIMI 52 showed **no
+reduction in cardiovascular events** — because Lp-PLA2 is a non-causal bystander (MR), the
+same "wrong causal lever" failure as CETP. Genetics weak (0.5).
 
 ## How to read the scores
 
@@ -50,8 +56,8 @@ Mendelian) and still failed. So the lesson is sharper and more defensible:
 > **Human genetics improves the odds but is not sufficient.** A genetically supported
 > target can still fail if the causal hypothesis is wrong (Aβ→cognition), the node is
 > pleiotropic (BACE1 beyond APP; γ-secretase / Notch), the stage is too late (anti-Aβ),
-> or the genetics is *misread* — as with **CETP**, where LoF genetics existed but
-> Mendelian randomization later showed HDL is not causal (the benefit was LDL).
+> or the biomarker is a *non-causal bystander* — as with **CETP** (HDL not causal by MR;
+> benefit was LDL) and **darapladib** (Lp-PLA2 engaged, no CV benefit — Lp-PLA2 not causal).
 
 This tempers the Section-2 "genetics leads" message rather than overclaiming it.
 
@@ -74,5 +80,6 @@ category — hence the visual split.
 Most of these trials predate the 2015–2025 benchmark window, so the mechanistic / cell /
 animal / PD scores are curated (from `CASE_STUDIES.md`); the **genetics values are live
 from the DB**. Reproduce: `python3 analyses/plot_case_scorecard.py` (writes
-`data/case_scorecard.csv` + the four figure variants; scores baked in, no DB needed to
-plot — the genetic_only_v1 values were pulled once from `v_target_evidence_wide`).
+`data/case_scorecard.csv` + the annotated & `_clean` variants of the single scorecard;
+scores baked in, no DB needed to plot — the genetic_only_v1 values were pulled once from
+`v_target_evidence_wide`).

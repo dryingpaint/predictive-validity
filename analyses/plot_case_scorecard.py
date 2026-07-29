@@ -50,6 +50,7 @@ CASES = [
     ("γ-secretase (semagacestat)", "PSEN1 · Alzheimer's",   "efficacy", 2, "Moderate",  3, 3, 3, 3,   "efficacy"),
     ("Anti-Aβ mAbs (sola/bapi)",   "APP · Alzheimer's",     "efficacy", 3, "Strong",    3, 3, 3, 2,   "efficacy"),
     ("Torcetrapib (CETP)",         "CETP · cardiovascular", "efficacy", 1, "Weak*",     3, 3, 3, 3,   "efficacy"),
+    ("Darapladib (PLA2G7)",        "PLA2G7 · cardiovascular","efficacy", 1, "Weak",      3, 3, 3, 3,   "efficacy"),
     ("TGN1412 (CD28 superagonist)","CD28 · Phase 1",        "safety",   2, "Moderate",  3, 3, 3, None, "safety"),
     ("Fialuridine (FIAU)",         "HBV pol · hepatitis B", "safety",   None, "n/a",     3, 2, 3, None, "safety"),
 ]
@@ -62,6 +63,7 @@ GENETIC_ONLY_V1 = {
     "γ-secretase (semagacestat)": 1.0,
     "Anti-Aβ mAbs (sola/bapi)": 1.9,
     "Torcetrapib (CETP)": 0.7,
+    "Darapladib (PLA2G7)": 0.5,
     "TGN1412 (CD28 superagonist)": 1.0,
     "Fialuridine (FIAU)": None,
 }
@@ -128,12 +130,13 @@ def plot(with_genetics=True, clean=False):
 
     eff_ys = [yrows[i] for i in range(n) if CASES[i][2] == "efficacy"]
     saf_ys = [yrows[i] for i in range(n) if CASES[i][2] == "safety"]
-    ax.text(-1.95, np.mean(eff_ys), "EFFICACY\nFAILURES", ha="left", va="center",
+    side_x = -3.35
+    ax.text(side_x, np.mean(eff_ys), "EFFICACY\nFAILURES", ha="left", va="center",
             fontsize=8.5, fontweight="bold", color=MUTED)
-    ax.text(-1.95, np.mean(saf_ys), "SAFETY /\nSPECIES", ha="left", va="center",
+    ax.text(side_x, np.mean(saf_ys), "SAFETY /\nSPECIES", ha="left", va="center",
             fontsize=8.5, fontweight="bold", color=MUTED)
 
-    ax.set_xlim(-2.0, out_x + 1.75); ax.set_ylim(-1.15, ytop + 1.15)
+    ax.set_xlim(-3.5, out_x + 1.75); ax.set_ylim(-1.15, ytop + 1.15)
     ax.axis("off")
     for i, (lab, v) in enumerate([("absent 0", 0), ("1", 1), ("2", 2), ("strong 3", 3)]):
         ax.add_patch(Rectangle((0.3 + i * 0.9, -0.95), 0.5, 0.26, facecolor=cmap(norm(v)),
@@ -143,9 +146,9 @@ def plot(with_genetics=True, clean=False):
     if not clean:
         if with_genetics:
             title = "A maxed-out preclinical scorecard did not stop these drugs failing"
-            sub = ("Six drugs with strong mechanistic / cell / animal / PD evidence that failed in humans. "
-                   "Genetics (added here from Melissa Du's genetic_only_v1) is the one column that varies — "
-                   "and even the well-supported ones failed.")
+            sub = ("Seven drugs with strong mechanistic / cell / animal / PD evidence that failed in humans "
+                   "(five on efficacy, two on safety). Genetics (added here from Melissa Du's genetic_only_v1) "
+                   "is the one column that varies — and even the well-supported ones failed.")
             src = ("Preclinical scores from CASE_STUDIES.md; genetics from her DB (target-level). "
                    "*CETP: genetics weak AND misleading — Mendelian randomization later showed HDL is not causal.")
         else:
@@ -170,9 +173,11 @@ def main():
                    "genetics_display_0_3": c[3], "mechanistic": c[5], "cell_pathway": c[6],
                    "animal_invivo": c[7], "human_pd": c[8], "outcome": "FAILED (%s)" % c[9]}
                   for c in CASES]).to_csv(os.path.join(CURATED, "case_scorecard.csv"), index=False)
-    for wg in (False, True):
-        plot(with_genetics=wg, clean=False)
-        plot(with_genetics=wg, clean=True)
+    # Single scorecard (with the genetics column). The rubric-only "dryingpaint" twin was
+    # retired 2026-07-29 to reduce the figure set — the genetics-column version is strictly
+    # more informative. (plot(with_genetics=False, ...) still works if the twin is ever wanted.)
+    plot(with_genetics=True, clean=False)
+    plot(with_genetics=True, clean=True)
 
 
 if __name__ == "__main__":

@@ -42,6 +42,9 @@ GATES = ["Human genetics", "Target-biomarker\nlink", "Biomarker\ncausal?",
          "Drug engaged\ntarget?", "Safety /\ntolerability", "Outcome"]
 
 # each cell = (color, top_label, sub_label)
+# Merged 2026-07-29: the former standalone head-to-head figure (PCSK9 / APP / CETP) is folded
+# in here — one unified causal-gates scorecard. Two approvals clear every gate; each failure
+# breaks at a different downstream gate, and APP fails at a HIGHER genetic score than PCSK9.
 GATE_ROWS = [
     ("Anti-PCSK9 mAbs", "PCSK9 · cardiovascular",
      [(GREEN, "Strong", "1.6"), (GREEN, "yes", "LDL"), (GREEN, "yes", "LDL (MR)"),
@@ -49,6 +52,13 @@ GATE_ROWS = [
     ("Evinacumab (ANGPTL3)", "ANGPTL3 · HoFH",
      [(GREEN, "Strong", "1.6"), (GREEN, "yes", "LDL/TG"), (GREEN, "yes", "lipids"),
       (GREEN, "yes", "LDL cut ~49%"), (GREEN, "clean", ""), (BLUE, "APPROVED", "2021")]),
+    ("Anti-Aβ mAbs (sola/bapi)", "APP · Alzheimer's",
+     [(GREEN, "Strong", "1.9"), (GREEN, "yes", "Aβ"), (AMBER, "stage-limited", "right node, late"),
+      (GREEN, "yes", "Aβ cleared"), (GREEN, "clean", ""), (RED, "FAILED", "efficacy")]),
+    ("Torcetrapib (CETP)", "CETP · cardiovascular",
+     [(GREEN, "Weak*", "0.7 — misread"), (GREEN, "yes", "HDL"), (RED, "no", "HDL bystander (MR)"),
+      (GREEN, "yes", "HDL up ~60%"), (RED, "excess deaths", "off-target BP"),
+      (RED, "FAILED", "class: no benefit")]),
     ("Asundexian (Factor XI)", "F11 · atrial fibrillation",
      [(GREEN, "Moderate", "1.3"), (GREEN, "yes", "clotting"), (GREEN, "yes", "less stroke"),
       (RED, "no", "dose too low?"), (GREEN, "less bleeding", "thesis held"),
@@ -67,6 +77,7 @@ LIB = [
     ("Evinacumab",         "ANGPTL3", 1.6, "approved"),
     ("Asundexian",         "F11",     1.3, "failed"),
     ("BACE1 inhibitors",   "BACE1",   1.0, "failed"),
+    ("γ-secretase (semagacestat)", "PSEN1", 1.0, "failed"),
     ("Pelacarsen/olpasiran","LPA",    1.0, "pending"),
     ("Torcetrapib",        "CETP",    0.7, "failed"),
     ("Volanesorsen",       "APOC3",   1.0, "mixed"),
@@ -94,8 +105,8 @@ def plot_gates(clean=False):
     _rc()
     n = len(GATE_ROWS)
     ncol = len(GATES)
-    fig, ax = plt.subplots(figsize=(12.6, 4.0 if clean else 5.0))
-    fig.subplots_adjust(left=0.175, right=0.995, top=0.82 if clean else 0.62, bottom=0.12)
+    fig, ax = plt.subplots(figsize=(12.6, 5.6 if clean else 6.8))
+    fig.subplots_adjust(left=0.175, right=0.995, top=0.88 if clean else 0.72, bottom=0.09)
     yrows = list(range(n - 1, -1, -1))
     for ri, (drug, sub, cells) in enumerate(GATE_ROWS):
         y = yrows[ri]
@@ -122,15 +133,18 @@ def plot_gates(clean=False):
         ax.add_patch(Rectangle((i * 1.05, -0.86), 0.30, 0.22, facecolor=c, edgecolor=SURFACE, lw=1.2))
         ax.text(i * 1.05 + 0.38, -0.75, lab, ha="left", va="center", fontsize=7.4, color=MUTED)
     if not clean:
-        title = "Genetics guards the first three gates — execution and safety are separate"
-        sub = ("All four targets clear the genetics and causal gates. PCSK9 and ANGPTL3 clear all six and are approved. "
-               "Factor XI breaks at drug engagement (asundexian under-dosed for AF); APOC3 breaks at safety "
-               "(thrombocytopenia) despite working on triglycerides.")
+        title = "Genetics guards the first gates — the downstream gates decide the outcome"
+        sub = ("Six genetically-supported programs walked across the causal chain. PCSK9 and ANGPTL3 clear every "
+               "gate (approved). The failures each break downstream — and APP fails at a HIGHER genetic score than "
+               "PCSK9: APP at causal-for-stage (right node, too late); CETP at biomarker-causality (HDL non-causal by "
+               "MR) and off-target safety; Factor XI at drug engagement (asundexian under-dosed for AF); APOC3 at "
+               "safety (thrombocytopenia). Genetic strength doesn't decide — the later gates do.")
         src = ("Genetics = genetic_only_v1 on v_target_evidence_wide (present-day; hindsight). "
-               "*APOC3 genetics is strong (LoF-protective) but the scorer undervalues quantitative-trait genetics — see doc.")
-        fig.text(0.015, 0.925, title, fontsize=14.5, fontweight="bold", color=INK)
-        fig.text(0.015, 0.80, sub, fontsize=9.2, color=SEC, linespacing=1.4)
-        fig.add_artist(Line2D([0.015, 0.995], [0.72, 0.72], color=RULE, lw=1, transform=fig.transFigure))
+               "*CETP genetics present but misread (HDL non-causal); *APOC3 strong LoF-protective genetics the scorer "
+               "undervalues — see docs.")
+        fig.text(0.015, 0.945, title, fontsize=14.5, fontweight="bold", color=INK)
+        fig.text(0.015, 0.80, sub, fontsize=9.0, color=SEC, linespacing=1.4)
+        fig.add_artist(Line2D([0.015, 0.995], [0.735, 0.735], color=RULE, lw=1, transform=fig.transFigure))
         fig.text(0.015, 0.02, src, fontsize=7.4, color=MUTED, ha="left")
     stem = "causal_gates_scorecard" + ("_clean" if clean else "")
     fig.savefig(os.path.join(DATA, stem + ".png"), bbox_inches="tight", dpi=200)
@@ -143,8 +157,8 @@ def plot_score_vs_outcome(clean=False):
     _rc()
     rows = sorted(LIB, key=lambda r: r[2])          # ascending so highest at top
     n = len(rows)
-    fig, ax = plt.subplots(figsize=(9.2, 4.2 if clean else 5.2))
-    fig.subplots_adjust(left=0.28, right=0.82, top=0.86 if clean else 0.66, bottom=0.11)
+    fig, ax = plt.subplots(figsize=(9.2, 4.7 if clean else 5.7))
+    fig.subplots_adjust(left=0.28, right=0.82, top=0.87 if clean else 0.68, bottom=0.10)
     for i, (label, tgt, score, outc) in enumerate(rows):
         c = OUTCOME_COLOR[outc]
         ax.barh(i, score, height=0.6, color=c, edgecolor=SURFACE, zorder=2)

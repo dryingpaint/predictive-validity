@@ -11,13 +11,13 @@ genuine head-to-heads:
 **APP** (genetics as strong as / stronger than PCSK9, still failed) and **CETP**
 (matched evidence *type*, still failed). This note works through both.
 
-The figure (`data/headtohead_scorecard_clean.png`, editable `.svg`) walks the
-causal chain left to right and colours where each program holds or breaks: all
-three have genetics and all three moved their biomarker as designed — they only
-diverge at "is the biomarker actually causal for the hard outcome?". Regenerate
-with `python3 analyses/plot_headtohead_scorecard.py` (scores baked in from the
-table below; no DB needed to plot). Supporting genetics components are in
-`data/headtohead_scorecard.csv`.
+These three are now rows in the **unified `causal_gates_scorecard_clean.png`** (editable
+`.svg`; the former standalone head-to-head figure was folded in 2026-07-29). It walks the
+causal chain left to right and colours where each program holds or breaks: all three have
+genetics and all three moved their biomarker as designed — they diverge at "is the biomarker
+actually causal for the hard outcome?" (and, for torcetrapib, off-target safety). Regenerate
+with `python3 analyses/plot_genetics_gates.py` (scores baked in from the table below; no DB
+needed to plot).
 
 All genetics below is from `preclin.v_target_evidence_wide` via the repo's own
 `genetic_only_v1` scorer, pulled present-day (2026). **Present-day scoring is

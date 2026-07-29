@@ -64,12 +64,12 @@ does what the genetic score structurally cannot.
 
 ## The scorecard
 
-Rows = the three players; columns = the gates. Colour = holds / breaks.
-Figure: `data/il6r_crp_causal_biomarker_clean.png` (editable `.svg`). Regenerate
-with `python3 analyses/il6r_crp_causal_biomarker.py` (re-pulls genetics from
-`preclin.v_target_evidence_wide` via the repo scorer if `DATABASE_URL` is set;
-otherwise uses the last-pulled values baked into the script). Provenance CSV:
-`data/il6r_crp_causal_biomarker.csv`.
+Rows = the three players; columns = the gates. **The standalone figure
+(`il6r_crp_causal_biomarker`) and its plot script + CSV were retired 2026-07-29** to keep
+the Section-3 figure set to four; this case is now **prose only** (Melissa's call whether to
+work it back up into a figure). The table below carries the full content, and the
+biomarker-causality gate it illustrates is shown visually by CETP in the unified
+`causal_gates_scorecard`.
 
 | Gate | CRP | IL-6R | IL-6 |
 |---|---|---|---|

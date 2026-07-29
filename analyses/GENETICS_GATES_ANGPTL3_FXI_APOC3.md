@@ -18,14 +18,17 @@ All scores are `genetic_only_v1` on `preclin.v_target_evidence_wide`, present-da
 
 ## Figures
 
-- **`data/causal_gates_scorecard_clean.png`** (editable `.svg`) — PCSK9, ANGPTL3,
-  Factor XI, APOC3 across six gates. All four clear genetics + causal; PCSK9 and
-  ANGPTL3 clear all six (approved); Factor XI breaks at drug-engagement; APOC3
-  breaks at safety.
+- **`data/causal_gates_scorecard_clean.png`** (editable `.svg`) — the unified gate
+  scorecard across six gates. Since 2026-07-29 it also carries the former head-to-head
+  rows, so it now shows **six** programs: PCSK9 and ANGPTL3 clear all six gates (approved);
+  **APP** breaks at causal-for-stage (and at a *higher* genetic score than PCSK9); **CETP**
+  breaks at biomarker-causality (HDL non-causal) and off-target safety; **Factor XI**
+  (asundexian) breaks at drug-engagement; **APOC3** breaks at safety.
 - **`data/genetics_vs_outcome_clean.png`** — genetic score for the whole case
-  library, coloured by outcome. The approvals sit *among* the failures at equal or
-  lower score (APP failed at a **higher** score than either approval): genetic
-  strength is necessary-ish but does not decide the outcome.
+  library (10 programs, incl. semagacestat as of 2026-07-29), coloured by outcome. The
+  approvals sit *among* the failures at equal or lower score (APP failed at a **higher**
+  score than either approval): genetic strength is necessary-ish but does not decide the
+  outcome.
 
 Regenerate: `python3 analyses/plot_genetics_gates.py` (scores baked in; no DB
 needed to plot). Supporting data: `data/genetics_gates_cases.csv`.

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="502.09088pt" height="269.39693pt" viewBox="0 0 502.09088 269.39693" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="520.976005pt" height="303.118582pt" viewBox="0 0 520.976005 303.118582" xmlns="http://www.w3.org/2000/svg" version="1.1">
  <metadata>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-07-26T00:21:51.880523</dc:date>
+    <dc:date>2026-07-29T16:15:04.917352</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,258 +21,275 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 269.39693 
-L 502.09088 269.39693 
-L 502.09088 0 
-L 0 0 
+   <path d="M -0 303.118582 
+L 520.976005 303.118582 
+L 520.976005 0 
+L -0 0 
 z
 " style="fill: #fbfaf8"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 109.218351 239.561617 
-L 466.914351 239.561617 
-L 466.914351 12.761617 
-L 109.218351 12.761617 
+    <path d="M 128.103476 273.283269 
+L 485.799476 273.283269 
+L 485.799476 12.715269 
+L 128.103476 12.715269 
 z
 " style="fill: #fbfaf8"/>
    </g>
    <g id="line2d_1">
-    <path d="M 302.56754 239.561617 
-L 302.56754 12.761617 
-" clip-path="url(#p931265e35a)" style="fill: none; stroke-dasharray: 4,3; stroke-dashoffset: 0; stroke: #d8d3cb"/>
+    <path d="M 321.452665 273.283269 
+L 321.452665 12.715269 
+" clip-path="url(#pf06ba4222c)" style="fill: none; stroke-dasharray: 4,3; stroke-dashoffset: 0; stroke: #d8d3cb"/>
    </g>
    <g id="line2d_2">
-    <path d="M 379.907216 239.561617 
-L 379.907216 12.761617 
-" clip-path="url(#p931265e35a)" style="fill: none; stroke-dasharray: 4,3; stroke-dashoffset: 0; stroke: #d8d3cb"/>
+    <path d="M 398.792341 273.283269 
+L 398.792341 12.715269 
+" clip-path="url(#pf06ba4222c)" style="fill: none; stroke-dasharray: 4,3; stroke-dashoffset: 0; stroke: #d8d3cb"/>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_3"/>
      <g id="text_1">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="109.218351" y="248.774117" transform="rotate(-0 109.218351 248.774117)">0.00</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="128.103476" y="282.495769" transform="rotate(-0 128.103476 282.495769)">0.00</text>
      </g>
     </g>
     <g id="xtick_2">
      <g id="line2d_4"/>
      <g id="text_2">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="157.555648" y="248.774117" transform="rotate(-0 157.555648 248.774117)">0.25</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="176.440773" y="282.495769" transform="rotate(-0 176.440773 282.495769)">0.25</text>
      </g>
     </g>
     <g id="xtick_3">
      <g id="line2d_5"/>
      <g id="text_3">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="205.892945" y="248.774117" transform="rotate(-0 205.892945 248.774117)">0.50</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="224.77807" y="282.495769" transform="rotate(-0 224.77807 282.495769)">0.50</text>
      </g>
     </g>
     <g id="xtick_4">
      <g id="line2d_6"/>
      <g id="text_4">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="254.230243" y="248.774117" transform="rotate(-0 254.230243 248.774117)">0.75</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="273.115368" y="282.495769" transform="rotate(-0 273.115368 282.495769)">0.75</text>
      </g>
     </g>
     <g id="xtick_5">
      <g id="line2d_7"/>
      <g id="text_5">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="302.56754" y="248.774117" transform="rotate(-0 302.56754 248.774117)">1.00</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="321.452665" y="282.495769" transform="rotate(-0 321.452665 282.495769)">1.00</text>
      </g>
     </g>
     <g id="xtick_6">
      <g id="line2d_8"/>
      <g id="text_6">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="350.904837" y="248.774117" transform="rotate(-0 350.904837 248.774117)">1.25</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="369.789962" y="282.495769" transform="rotate(-0 369.789962 282.495769)">1.25</text>
      </g>
     </g>
     <g id="xtick_7">
      <g id="line2d_9"/>
      <g id="text_7">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="399.242134" y="248.774117" transform="rotate(-0 399.242134 248.774117)">1.50</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="418.127259" y="282.495769" transform="rotate(-0 418.127259 282.495769)">1.50</text>
      </g>
     </g>
     <g id="xtick_8">
      <g id="line2d_10"/>
      <g id="text_8">
-      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="447.579432" y="248.774117" transform="rotate(-0 447.579432 248.774117)">1.75</text>
+      <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="466.464557" y="282.495769" transform="rotate(-0 466.464557 282.495769)">1.75</text>
      </g>
     </g>
     <g id="text_9">
-     <text style="font-size: 8.5px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #5b544e" x="288.066351" y="260.419898" transform="rotate(-0 288.066351 260.419898)">genetic_only_v1 score</text>
+     <text style="font-size: 8.5px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #5b544e" x="306.951476" y="294.14155" transform="rotate(-0 306.951476 294.14155)">genetic_only_v1 score</text>
     </g>
    </g>
    <g id="matplotlib.axis_2"/>
    <g id="patch_3">
-    <path d="M 109.218351 229.910553 
-L 205.892945 229.910553 
-L 205.892945 215.433957 
-L 109.218351 215.433957 
+    <path d="M 128.103476 263.261423 
+L 224.77807 263.261423 
+L 224.77807 248.228654 
+L 128.103476 248.228654 
 z
-" clip-path="url(#p931265e35a)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
-    <path d="M 109.218351 205.782894 
-L 244.562783 205.782894 
-L 244.562783 191.306298 
-L 109.218351 191.306298 
+    <path d="M 128.103476 238.206808 
+L 263.447908 238.206808 
+L 263.447908 223.174038 
+L 128.103476 223.174038 
 z
-" clip-path="url(#p931265e35a)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
-    <path d="M 109.218351 181.655234 
-L 302.56754 181.655234 
-L 302.56754 167.178638 
-L 109.218351 167.178638 
+    <path d="M 128.103476 213.152192 
+L 321.452665 213.152192 
+L 321.452665 198.119423 
+L 128.103476 198.119423 
 z
-" clip-path="url(#p931265e35a)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
-    <path d="M 109.218351 157.527574 
-L 302.56754 157.527574 
-L 302.56754 143.050979 
-L 109.218351 143.050979 
+    <path d="M 128.103476 188.097577 
+L 321.452665 188.097577 
+L 321.452665 173.064808 
+L 128.103476 173.064808 
 z
-" clip-path="url(#p931265e35a)" style="fill: #d99a2b; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
-    <path d="M 109.218351 133.399915 
-L 302.56754 133.399915 
-L 302.56754 118.923319 
-L 109.218351 118.923319 
+    <path d="M 128.103476 163.042962 
+L 321.452665 163.042962 
+L 321.452665 148.010192 
+L 128.103476 148.010192 
 z
-" clip-path="url(#p931265e35a)" style="fill: #7a4fa3; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #d99a2b; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
-    <path d="M 109.218351 109.272255 
-L 360.572297 109.272255 
-L 360.572297 94.79566 
-L 109.218351 94.79566 
+    <path d="M 128.103476 137.988346 
+L 321.452665 137.988346 
+L 321.452665 122.955577 
+L 128.103476 122.955577 
 z
-" clip-path="url(#p931265e35a)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #7a4fa3; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
-    <path d="M 109.218351 85.144596 
-L 418.577053 85.144596 
-L 418.577053 70.668 
-L 109.218351 70.668 
+    <path d="M 128.103476 112.933731 
+L 379.457422 112.933731 
+L 379.457422 97.900962 
+L 128.103476 97.900962 
 z
-" clip-path="url(#p931265e35a)" style="fill: #1f6fd0; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
-    <path d="M 109.218351 61.016936 
-L 418.577053 61.016936 
-L 418.577053 46.54034 
-L 109.218351 46.54034 
+    <path d="M 128.103476 87.879115 
+L 437.462178 87.879115 
+L 437.462178 72.846346 
+L 128.103476 72.846346 
 z
-" clip-path="url(#p931265e35a)" style="fill: #1f6fd0; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #1f6fd0; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_11">
-    <path d="M 109.218351 36.889277 
-L 476.58181 36.889277 
-L 476.58181 22.412681 
-L 109.218351 22.412681 
+    <path d="M 128.103476 62.8245 
+L 437.462178 62.8245 
+L 437.462178 47.791731 
+L 128.103476 47.791731 
 z
-" clip-path="url(#p931265e35a)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+" clip-path="url(#pf06ba4222c)" style="fill: #1f6fd0; stroke: #fbfaf8; stroke-linejoin: miter"/>
    </g>
    <g id="patch_12">
-    <path d="M 109.218351 239.561617 
-L 466.914351 239.561617 
+    <path d="M 128.103476 37.769885 
+L 495.466935 37.769885 
+L 495.466935 22.737115 
+L 128.103476 22.737115 
+z
+" clip-path="url(#pf06ba4222c)" style="fill: #b0322a; stroke: #fbfaf8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 128.103476 273.283269 
+L 485.799476 273.283269 
 " style="fill: none; stroke: #d8d3cb; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_10">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="211.693421" y="224.998896" transform="rotate(-0 211.693421 224.998896)">0.5</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="230.578546" y="258.071679" transform="rotate(-0 230.578546 258.071679)">0.5</text>
    </g>
    <g id="text_11">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="221.241877" transform="rotate(-0 103.417875 221.241877)">Darapladib</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="254.166347" transform="rotate(-0 122.303 254.166347)">Darapladib</text>
    </g>
    <g id="text_12">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="229.514209" transform="rotate(-0 103.417875 229.514209)">PLA2G7 · failed</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="262.772383" transform="rotate(-0 122.303 262.772383)">PLA2G7 · failed</text>
    </g>
    <g id="text_13">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="250.363259" y="200.871236" transform="rotate(-0 250.363259 200.871236)">0.7</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="269.248384" y="233.017064" transform="rotate(-0 269.248384 233.017064)">0.7</text>
    </g>
    <g id="text_14">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="197.114217" transform="rotate(-0 103.417875 197.114217)">Torcetrapib</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="229.111731" transform="rotate(-0 122.303 229.111731)">Torcetrapib</text>
    </g>
    <g id="text_15">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="205.38655" transform="rotate(-0 103.417875 205.38655)">CETP · failed</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="237.717768" transform="rotate(-0 122.303 237.717768)">CETP · failed</text>
    </g>
    <g id="text_16">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="308.368016" y="176.743577" transform="rotate(-0 308.368016 176.743577)">1.0</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="327.253141" y="207.962448" transform="rotate(-0 327.253141 207.962448)">1.0</text>
    </g>
    <g id="text_17">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="172.986558" transform="rotate(-0 103.417875 172.986558)">BACE1 inhibitors</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="204.057116" transform="rotate(-0 122.303 204.057116)">BACE1 inhibitors</text>
    </g>
    <g id="text_18">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="181.25889" transform="rotate(-0 103.417875 181.25889)">BACE1 · failed</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="212.663153" transform="rotate(-0 122.303 212.663153)">BACE1 · failed</text>
    </g>
    <g id="text_19">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="308.368016" y="152.615917" transform="rotate(-0 308.368016 152.615917)">1.0</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="327.253141" y="182.907833" transform="rotate(-0 327.253141 182.907833)">1.0</text>
    </g>
    <g id="text_20">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="148.93821" transform="rotate(-0 103.417875 148.93821)">Pelacarsen/olpasiran</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="179.025266" transform="rotate(-0 122.303 179.025266)">γ-secretase (semagacestat)</text>
    </g>
    <g id="text_21">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="157.084309" transform="rotate(-0 103.417875 157.084309)">LPA · pending</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="187.608537" transform="rotate(-0 122.303 187.608537)">PSEN1 · failed</text>
    </g>
    <g id="text_22">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="308.368016" y="128.488258" transform="rotate(-0 308.368016 128.488258)">1.0</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="327.253141" y="157.853218" transform="rotate(-0 327.253141 157.853218)">1.0</text>
    </g>
    <g id="text_23">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="124.731238" transform="rotate(-0 103.417875 124.731238)">Volanesorsen</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="154.027198" transform="rotate(-0 122.303 154.027198)">Pelacarsen/olpasiran</text>
    </g>
    <g id="text_24">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="133.030383" transform="rotate(-0 103.417875 133.030383)">APOC3 · EMA yes / FDA no</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="162.507" transform="rotate(-0 122.303 162.507)">LPA · pending</text>
    </g>
    <g id="text_25">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="366.372772" y="104.360598" transform="rotate(-0 366.372772 104.360598)">1.3</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="327.253141" y="132.798602" transform="rotate(-0 327.253141 132.798602)">1.0</text>
    </g>
    <g id="text_26">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="100.603579" transform="rotate(-0 103.417875 100.603579)">Asundexian</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="128.89327" transform="rotate(-0 122.303 128.89327)">Volanesorsen</text>
    </g>
    <g id="text_27">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="108.875911" transform="rotate(-0 103.417875 108.875911)">F11 · failed</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="137.526119" transform="rotate(-0 122.303 137.526119)">APOC3 · EMA yes / FDA no</text>
    </g>
    <g id="text_28">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="424.377529" y="80.232938" transform="rotate(-0 424.377529 80.232938)">1.6</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="385.257897" y="107.743987" transform="rotate(-0 385.257897 107.743987)">1.3</text>
    </g>
    <g id="text_29">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="76.475919" transform="rotate(-0 103.417875 76.475919)">Anti-PCSK9 mAbs</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="103.838655" transform="rotate(-0 122.303 103.838655)">Asundexian</text>
    </g>
    <g id="text_30">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="84.814064" transform="rotate(-0 103.417875 84.814064)">PCSK9 · approved</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="112.444691" transform="rotate(-0 122.303 112.444691)">F11 · failed</text>
    </g>
    <g id="text_31">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="424.377529" y="56.105279" transform="rotate(-0 424.377529 56.105279)">1.6</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="443.262654" y="82.689371" transform="rotate(-0 443.262654 82.689371)">1.6</text>
    </g>
    <g id="text_32">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="52.34826" transform="rotate(-0 103.417875 52.34826)">Evinacumab</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="78.784039" transform="rotate(-0 122.303 78.784039)">Anti-PCSK9 mAbs</text>
    </g>
    <g id="text_33">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="60.686405" transform="rotate(-0 103.417875 60.686405)">ANGPTL3 · approved</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="87.455888" transform="rotate(-0 122.303 87.455888)">PCSK9 · approved</text>
    </g>
    <g id="text_34">
-    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="482.382286" y="31.977619" transform="rotate(-0 482.382286 31.977619)">1.9</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="443.262654" y="57.634756" transform="rotate(-0 443.262654 57.634756)">1.6</text>
    </g>
    <g id="text_35">
-    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="103.417875" y="28.295506" transform="rotate(-0 103.417875 28.295506)">Anti-Aβ mAbs</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="53.729424" transform="rotate(-0 122.303 53.729424)">Evinacumab</text>
    </g>
    <g id="text_36">
-    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="103.417875" y="36.492933" transform="rotate(-0 103.417875 36.492933)">APP · failed</text>
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="62.401273" transform="rotate(-0 122.303 62.401273)">ANGPTL3 · approved</text>
    </g>
    <g id="text_37">
-    <text style="font-size: 7.2px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="302.56754" y="12.549375" transform="rotate(-0 302.56754 12.549375)">Moderate</text>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="501.267411" y="32.580141" transform="rotate(-0 501.267411 32.580141)">1.9</text>
    </g>
    <g id="text_38">
-    <text style="font-size: 7.2px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="379.907216" y="12.46275" transform="rotate(-0 379.907216 12.46275)">Strong</text>
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #14110f" x="122.303" y="28.749715" transform="rotate(-0 122.303 28.749715)">Anti-Aβ mAbs</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 7.8px; font-family: 'Helvetica Neue'; text-anchor: end; fill: #938b82" x="122.303" y="37.280845" transform="rotate(-0 122.303 37.280845)">APP · failed</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 7.2px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="321.452665" y="12.549375" transform="rotate(-0 321.452665 12.549375)">Moderate</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 7.2px; font-family: 'Helvetica Neue'; text-anchor: middle; fill: #938b82" x="398.792341" y="12.46275" transform="rotate(-0 398.792341 12.46275)">Strong</text>
    </g>
    <g id="legend_1">
     <g id="line2d_11">
-     <path d="M 375.171851 193.807867 
-L 383.171851 193.807867 
-L 391.171851 193.807867 
+     <path d="M 394.056976 227.529519 
+L 402.056976 227.529519 
+L 410.056976 227.529519 
 " style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
      <defs>
-      <path id="m53f385c3e3" d="M -4.5 4.5 
+      <path id="m631a749eaf" d="M -4.5 4.5 
 L 4.5 4.5 
 L 4.5 -4.5 
 L -4.5 -4.5 
@@ -280,78 +297,78 @@ z
 " style="stroke: #000000; stroke-linejoin: miter"/>
      </defs>
      <g>
-      <use xlink:href="#m53f385c3e3" x="383.171851" y="193.807867" style="fill: #1f6fd0; stroke: #000000; stroke-linejoin: miter"/>
-     </g>
-    </g>
-    <g id="text_39">
-     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="394.371851" y="196.607867" transform="rotate(-0 394.371851 196.607867)">approved</text>
-    </g>
-    <g id="line2d_12">
-     <path d="M 375.171851 205.096617 
-L 383.171851 205.096617 
-L 391.171851 205.096617 
-" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
-     <defs>
-      <path id="m1c70c3b49c" d="M -4.5 4.5 
-L 4.5 4.5 
-L 4.5 -4.5 
-L -4.5 -4.5 
-z
-" style="stroke: #000000; stroke-linejoin: miter"/>
-     </defs>
-     <g>
-      <use xlink:href="#m1c70c3b49c" x="383.171851" y="205.096617" style="fill: #b0322a; stroke: #000000; stroke-linejoin: miter"/>
-     </g>
-    </g>
-    <g id="text_40">
-     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="394.371851" y="207.896617" transform="rotate(-0 394.371851 207.896617)">failed</text>
-    </g>
-    <g id="line2d_13">
-     <path d="M 375.171851 216.385367 
-L 383.171851 216.385367 
-L 391.171851 216.385367 
-" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
-     <defs>
-      <path id="m4cb2d14b27" d="M -4.5 4.5 
-L 4.5 4.5 
-L 4.5 -4.5 
-L -4.5 -4.5 
-z
-" style="stroke: #000000; stroke-linejoin: miter"/>
-     </defs>
-     <g>
-      <use xlink:href="#m4cb2d14b27" x="383.171851" y="216.385367" style="fill: #d99a2b; stroke: #000000; stroke-linejoin: miter"/>
-     </g>
-    </g>
-    <g id="text_41">
-     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="394.371851" y="219.185367" transform="rotate(-0 394.371851 219.185367)">pending</text>
-    </g>
-    <g id="line2d_14">
-     <path d="M 375.171851 227.905367 
-L 383.171851 227.905367 
-L 391.171851 227.905367 
-" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
-     <defs>
-      <path id="m8a8548807b" d="M -4.5 4.5 
-L 4.5 4.5 
-L 4.5 -4.5 
-L -4.5 -4.5 
-z
-" style="stroke: #000000; stroke-linejoin: miter"/>
-     </defs>
-     <g>
-      <use xlink:href="#m8a8548807b" x="383.171851" y="227.905367" style="fill: #7a4fa3; stroke: #000000; stroke-linejoin: miter"/>
+      <use xlink:href="#m631a749eaf" x="402.056976" y="227.529519" style="fill: #1f6fd0; stroke: #000000; stroke-linejoin: miter"/>
      </g>
     </g>
     <g id="text_42">
-     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="394.371851" y="230.705367" transform="rotate(-0 394.371851 230.705367)">EMA yes / FDA no</text>
+     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="413.256976" y="230.329519" transform="rotate(-0 413.256976 230.329519)">approved</text>
+    </g>
+    <g id="line2d_12">
+     <path d="M 394.056976 238.818269 
+L 402.056976 238.818269 
+L 410.056976 238.818269 
+" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+     <defs>
+      <path id="mc01dd454ea" d="M -4.5 4.5 
+L 4.5 4.5 
+L 4.5 -4.5 
+L -4.5 -4.5 
+z
+" style="stroke: #000000; stroke-linejoin: miter"/>
+     </defs>
+     <g>
+      <use xlink:href="#mc01dd454ea" x="402.056976" y="238.818269" style="fill: #b0322a; stroke: #000000; stroke-linejoin: miter"/>
+     </g>
+    </g>
+    <g id="text_43">
+     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="413.256976" y="241.618269" transform="rotate(-0 413.256976 241.618269)">failed</text>
+    </g>
+    <g id="line2d_13">
+     <path d="M 394.056976 250.107019 
+L 402.056976 250.107019 
+L 410.056976 250.107019 
+" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+     <defs>
+      <path id="m1006ce7ee4" d="M -4.5 4.5 
+L 4.5 4.5 
+L 4.5 -4.5 
+L -4.5 -4.5 
+z
+" style="stroke: #000000; stroke-linejoin: miter"/>
+     </defs>
+     <g>
+      <use xlink:href="#m1006ce7ee4" x="402.056976" y="250.107019" style="fill: #d99a2b; stroke: #000000; stroke-linejoin: miter"/>
+     </g>
+    </g>
+    <g id="text_44">
+     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="413.256976" y="252.907019" transform="rotate(-0 413.256976 252.907019)">pending</text>
+    </g>
+    <g id="line2d_14">
+     <path d="M 394.056976 261.627019 
+L 402.056976 261.627019 
+L 410.056976 261.627019 
+" style="fill: none; stroke: #000000; stroke-opacity: 0; stroke-width: 1.5; stroke-linecap: square"/>
+     <defs>
+      <path id="m4d9c935cb1" d="M -4.5 4.5 
+L 4.5 4.5 
+L 4.5 -4.5 
+L -4.5 -4.5 
+z
+" style="stroke: #000000; stroke-linejoin: miter"/>
+     </defs>
+     <g>
+      <use xlink:href="#m4d9c935cb1" x="402.056976" y="261.627019" style="fill: #7a4fa3; stroke: #000000; stroke-linejoin: miter"/>
+     </g>
+    </g>
+    <g id="text_45">
+     <text style="font-size: 8px; font-family: 'Helvetica Neue'; text-anchor: start; fill: #14110f" x="413.256976" y="264.427019" transform="rotate(-0 413.256976 264.427019)">EMA yes / FDA no</text>
     </g>
    </g>
   </g>
  </g>
  <defs>
-  <clipPath id="p931265e35a">
-   <rect x="109.218351" y="12.761617" width="357.696" height="226.8"/>
+  <clipPath id="pf06ba4222c">
+   <rect x="128.103476" y="12.715269" width="357.696" height="260.568"/>
   </clipPath>
  </defs>
 </svg>
