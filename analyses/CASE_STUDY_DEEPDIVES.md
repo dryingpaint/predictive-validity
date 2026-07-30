@@ -1,95 +1,137 @@
 # Case-study deep dives — what they got wrong, and what a later drug proved
 
 Reference material for the paper's Case Studies section. For each failed program we answer
-two questions: **(A) what did they get wrong about the biology?** and **(B) did a later drug
-hit the same target with *different* biology — and what happened?** The "later drug" column
-is the discriminator: it separates *the target was wrong* from *the molecule/dose/stage was
-wrong*.
+two plain questions:
+
+- **(A) What did they get wrong about the biology?**
+- **(B) Did a later drug hit the same target a different way — and did it work?**
+
+Question B is the key. A drug can fail for two very different reasons: the *target* was a bad
+idea, or the *target was fine but the molecule / dose / timing was wrong*. The way to tell
+them apart is to look at what happened next: if a later, better drug aimed at the same target
+succeeded, the biology was right and the first attempt just fumbled it. If nobody ever made
+that target work, the biology was probably wrong.
+
+> A note on one tool we lean on: **Mendelian randomization (MR)**. People inherit gene
+> variants at random, and some of those variants nudge a specific biomarker up or down for
+> life. If a variant that lowers (say) LDL also lowers heart-attack risk, that's strong
+> evidence LDL actually *causes* heart attacks — a natural randomized experiment, free of the
+> confounding that plagues ordinary observational correlations. MR is how the field now tells
+> a causal target from a mere marker.
 
 Sourced via literature search (2026-07-29); trial names, effect sizes, and primary citations
-verified. A handful of PMIDs and several still-running outcome trials are flagged in
-**Verify before publication** at the end — dates/statuses reflect mid-2026.
+verified. Some PMIDs and several still-running trials are flagged in **Verify before
+publication** at the end; statuses are as of mid-2026.
 
-The cases sort into three verdicts:
+**The cases sort into three verdicts:**
 
-| Verdict | Meaning | Cases |
+| Verdict | Plain meaning | Cases |
 |---|---|---|
-| **1. Biology wrong** | the target/biomarker doesn't drive the disease | CETP (HDL), Lp-PLA2/darapladib, CRP, BACE1 (partly) |
-| **2. Partly right — wrong species/stage/molecule** | the node is causal but the approach missed | anti-Aβ mAbs (APP), γ-secretase/semagacestat |
-| **3. Biology right — molecule/dose/delivery wrong** | target validated by a later, better drug | APOC3/volanesorsen, Factor XI/asundexian, + the two safety cases (TGN1412, fialuridine — see `CASE_SCORECARD.md`) |
+| **1. Biology was wrong** | the target doesn't actually drive the disease | CETP (HDL), Lp-PLA2 / darapladib, CRP, BACE1 |
+| **2. Partly right** | the target matters, but they hit the wrong form of it, too late | anti-amyloid antibodies (APP), gamma-secretase / semagacestat |
+| **3. Biology was right** | the target was fine; the molecule, dose, or delivery was the problem | APOC3 / volanesorsen, Factor XI / asundexian, plus the two safety cases (TGN1412, fialuridine — in `CASE_SCORECARD.md`) |
 
 ---
 
-## Verdict 1 — the biology was wrong (non-causal target or biomarker)
+## Verdict 1 — the biology was wrong (the target doesn't drive the disease)
 
-### CETP / torcetrapib — an HDL story that was really an LDL story
-- **What they got wrong.** Two layers. (i) *Proximate:* torcetrapib died on a **molecule-specific off-target** — induction of adrenal aldosterone/cortisol → raised BP → excess deaths (ILLUMINATE: HDL +72%, LDL −25%, yet mortality HR 1.58; Barter, *NEJM* 2007, PMID 17984165). (ii) *Deeper:* the **HDL-raising premise itself was non-causal** — HDL-raising genetic variants do not lower MI risk (Voight, *Lancet* 2012), whereas LDL variants do.
-- **Later drugs, same target.** The class became a natural experiment: **dalcetrapib** (HDL-only, dal-OUTCOMES, PMID 23126252) → **futility**; **evacetrapib** (ACCELERATE, PMID 28514624) → futility despite ~25% LDL drop; **anacetrapib** (REVEAL, NEJMoa1706444) → the **only positive** trial (9% fewer coronary events), and the benefit tracks its **LDL/apoB lowering, not HDL**. **Obicetrapib** is now explicitly repositioned as an **LDL/apoB(-and Lp(a))-lowering** drug (BROADWAY ~33% LDL drop; PREVAIL CVOT ongoing).
-- **Lesson.** The pathway was pursued for the wrong reason: HDL-raising was a dead end (torcetrapib's adrenal toxicity was the acute killer; MR + dal-OUTCOMES show HDL was never causal), and CETP inhibition only earned a positive trial once **reconceived as LDL/apoB lowering**.
+### CETP / torcetrapib — chasing HDL, which turned out not to matter
+**In one line:** raising "good cholesterol" (HDL) never actually prevented heart attacks; the target only produced a win once the field stopped chasing HDL and used it to lower LDL instead.
+
+- **What they got wrong.** Torcetrapib was meant to raise HDL. In the ILLUMINATE trial it did exactly that (HDL up about 72%) — and *killed people* (mortality up, hazard ratio 1.58; Barter, *NEJM* 2007, PMID 17984165). The proximate cause was a toxicity specific to this one molecule: it triggered adrenal hormones that raised blood pressure. The deeper problem: **raising HDL was never going to help.** Inherited variants that raise HDL do not lower heart-attack risk (Voight, *Lancet* 2012, MR) — HDL is a bystander, not a cause.
+- **The later drugs.** The whole CETP class became a natural experiment. **Dalcetrapib** (pure HDL-raiser) — no benefit, stopped for futility (*NEJM* 2012, PMID 23126252). **Evacetrapib** — no benefit despite also lowering LDL about 25% (*NEJM* 2017, PMID 28514624). **Anacetrapib** — the one positive trial (9% fewer coronary events, REVEAL), but the benefit tracked its **LDL lowering, not its HDL raising**. **Obicetrapib** (now in late trials) is deliberately marketed as an **LDL-lowering** drug, not an HDL drug.
+- **Bottom line.** The target survived — but only after the field admitted the original rationale (HDL) was wrong and repurposed it to lower LDL.
 
 ### Lp-PLA2 / darapladib — the cleanest "wrong target"
-- **What they got wrong.** Lp-PLA2 (*PLA2G7*) is a **biomarker of plaque inflammation mistaken for a causal node.** Both Phase 3s were negative: **STABILITY** (stable CHD; White, *NEJM* 2014, PMID 24678955) missed its primary endpoint; **SOLID-TIMI 52** (post-ACS; O'Donoghue, *JAMA* 2014, PMID 25173516) was flatly null (15.0% vs 15.0%). Human genetics had already predicted this — *PLA2G7* loss-of-function (V279F null) carriers have lifelong low Lp-PLA2 but **no cardioprotection** ("genetic invalidation of Lp-PLA2," *Eur Heart J* 2017).
-- **Later drugs, same target.** **None.** The target was **abandoned** for ASCVD; no successful successor. (Unlike CETP, it wasn't rescued by a reframe.)
-- **Lesson.** A marker of the disease milieu, not a driver — inhibiting it moved the readout, not outcomes.
+**In one line:** they inhibited an enzyme that marks inflamed plaque but doesn't cause disease; two big trials failed and the target was abandoned.
 
-### CRP / ISIS-CRPRx — engaged the biomarker perfectly, wrong target entirely
-- **What they got wrong.** The anti-CRP antisense **ISIS-CRPRx cut CRP ~77%** (RA POC, PMID 25885521) — and produced **no clinical benefit** (ACR20 no different from placebo). CRP is a **non-causal bystander**: CRP-raising alleles don't raise CHD risk (CCGC, *BMJ* 2011, PMID 21325005; Zacho, *NEJM* 2008).
-- **The different (causal) target.** The lever is **upstream on the IL-6 axis**: IL-6R MR (rs2228145) predicts lower CHD (*Lancet* 2012). Drugs on the *causal* axis: **canakinumab** (anti-IL-1β, CANTOS positive, *NEJM* 2017, PMID 28845751); **ziltivekimab** (anti-IL-6, RESCUE phase 2 PMID 34015342; **ZEUS** CV-outcomes trial pending); **tocilizumab** (anti-IL-6R, approved RA). This is the tocilizumab-vs-ISIS-CRPRx pair in the gate scorecard.
-- **Lesson.** Perfect biomarker engagement, zero benefit — because the drug was aimed at the readout, not the cause; the causal target was a *different* protein upstream.
+- **What they got wrong.** High Lp-PLA2 is *associated* with heart disease, so darapladib inhibited it to "stabilize" plaque. But it's a passenger, not a driver. Both Phase 3 trials were negative — STABILITY (stable heart disease; *NEJM* 2014, PMID 24678955) and SOLID-TIMI 52 (after a heart attack; *JAMA* 2014, PMID 25173516; event rates literally identical to placebo). Genetics had already warned this would happen: people born with low Lp-PLA2 get no protection from heart disease.
+- **The later drugs.** None. The target was dropped and never revived. (Contrast CETP, which was at least rescued by a reframe.)
+- **Bottom line.** A marker of the disease, not a cause of it. Lowering it moved the lab value and nothing else.
 
-### BACE1 inhibitors — the amyloid-production half of the hypothesis
-- **What they got wrong.** Verubecestat cut CSF Aβ 63–81% yet gave **no benefit and cognitive *worsening*** (EPOCH, Egan *NEJM* 2018; APECS prodromal, Egan *NEJM* 2019). Two errors: (i) blocking Aβ *production* once pathology is established is insufficient; (ii) **on-target harm from BACE1 substrate pleiotropy** — BACE1 cleaves neuregulin-1, SEZ6, CHL1 (synaptic substrates), so class-wide dose-dependent cognitive worsening + hippocampal volume loss. Atabecestat also had hepatotoxicity; lanabecestat futility; elenbecestat unfavorable risk/benefit.
-- **Later drugs, same target.** **None** — the entire BACE1 class was abandoned by ~2019. The field pivoted to *clearing aggregated Aβ* (antibodies), not blocking synthesis.
-- **Lesson.** Lowering Aβ production is neither sufficient nor safe — the enzyme's normal substrate biology is load-bearing for cognition. (Belongs in "biology wrong" for the *production-blocking* thesis specifically.)
+### CRP / ISIS-CRPRx — the drug worked perfectly on the wrong target
+**In one line:** the drug lowered CRP beautifully and did nothing for patients, because CRP is a readout of inflammation, not its cause — the real target sits one step upstream.
 
----
+- **What they got wrong.** ISIS-CRPRx cut CRP by about 77% and produced **zero clinical benefit** in rheumatoid arthritis (no difference from placebo; PMID 25885521). CRP is a bystander: inherited variants that raise CRP don't raise heart-disease risk (*BMJ* 2011, PMID 21325005; *NEJM* 2008).
+- **The real target.** The cause is upstream, in the **IL-6 pathway.** Variants that dampen IL-6 signaling *do* lower heart-disease risk (*Lancet* 2012). And drugs on that pathway show real effects: canakinumab (anti-IL-1-beta) cut cardiovascular events in CANTOS (*NEJM* 2017, PMID 28845751); ziltivekimab (anti-IL-6) is in a large outcomes trial (ZEUS); tocilizumab (anti-IL-6-receptor) is approved in rheumatoid arthritis. This is the tocilizumab-vs-CRP pair in the gate scorecard.
+- **Bottom line.** Perfect engagement of the biomarker, no benefit — because they aimed at the readout instead of the cause, which was a different protein entirely.
 
-## Verdict 2 — partly right: the node is causal, the species/stage/molecule were wrong
+### BACE1 inhibitors — turning off amyloid production didn't help, and hurt
+**In one line:** blocking the enzyme that makes amyloid lowered amyloid but made patients worse, because that enzyme has other important jobs in the brain.
 
-### Anti-Aβ mAbs (APP) — solanezumab & bapineuzumab → lecanemab & donanemab
-- **What they got wrong.** **Solanezumab** targeted **soluble monomeric Aβ** — the *wrong species* — and failed even in *prevention* (A4, Sperling *NEJM* 2023), isolating "wrong species," not just "too late." **Bapineuzumab** engaged plaque (lowered PET/CSF p-tau) but too weakly and with dose-limiting **ARIA**, no benefit (EXPEDITION-era, *NEJM* 2014, PMID 24450891).
-- **Later drugs, same pathway, different biology — and they worked.** **Lecanemab** (anti-**protofibril**, early symptomatic AD): CLARITY-AD **27% slowing** on CDR-SB, ~50-centiloid PET reduction, FDA traditional approval 2023 (van Dyck *NEJM* 2023, PMID 36449413). **Donanemab** (anti-**pyroglutamate-N3pG plaque** epitope): TRAILBLAZER-ALZ 2 **~35% slowing**, ~80% reached plaque-clearance threshold (Sims *JAMA* 2023, PMID 37459141). Same ARIA liability as bapineuzumab, now managed with MRI.
-- **Lesson.** The amyloid hypothesis is **partly vindicated** — clearing the *aggregated* species *early* with *confirmed PET clearance* modestly slows decline (~25–35%). Solanezumab (wrong species, failed in prevention) is the pivotal control isolating the necessary conditions. Benefit is real but small → amyloid an upstream contributor, not the sole driver of established dementia.
-
-### γ-secretase / semagacestat — right pathway, unselective attack
-- **What they got wrong.** IDENTITY (Doody *NEJM* 2013, PMID 23883379) was stopped because semagacestat **worsened** cognition + caused skin cancers/infections — from **Notch and other substrate** inhibition (γ-secretase is a promiscuous protease), plus paradoxical Aβ pharmacology. An unselective attack on essential proteolysis.
-- **Later drugs, same target.** γ-secretase **modulators (GSMs)** — designed to *shift* cleavage toward shorter Aβ without blocking Notch — remain **experimental, no approval**. The successful path went to antibodies, not production modulation.
-- **Lesson.** *This way* of engaging amyloid was wrong (unselective proteolysis); it didn't by itself resolve whether amyloid was the right target — the antibodies later did.
+- **What they got wrong.** BACE1 inhibitors cut brain amyloid by 60-80% and produced **no benefit — and cognitive *worsening*** (verubecestat EPOCH, *NEJM* 2018; APECS, *NEJM* 2019). Two lessons: shutting off amyloid *production* once disease is established is too late, and BACE1 also cuts other proteins the brain needs for synapses, so blocking it does harm. Atabecestat added liver toxicity; the rest failed for futility or bad risk/benefit.
+- **The later drugs.** None — the entire BACE1 class was abandoned by about 2019. The field switched to *clearing* amyloid with antibodies instead of blocking its synthesis.
+- **Bottom line.** Lowering amyloid production is neither enough nor safe. (The *production-blocking* idea was wrong; whether amyloid itself matters is answered by the antibodies below.)
 
 ---
 
-## Verdict 3 — the biology was right: molecule / dose / delivery / indication was wrong
+## Verdict 2 — partly right (the target matters, but they hit the wrong form of it, too late)
 
-### APOC3 / volanesorsen — a delivery problem later drugs fixed
-- **What went wrong.** Volanesorsen (unconjugated 2nd-gen ASO) lowered TG ~77% in FCS (APPROACH, Witztum *NEJM* 2019) — **efficacy was never the problem** — but caused **thrombocytopenia in ~75%** of patients → **FDA rejected (2018)** / **EMA approved (2019, Waylivra)**. The platelet effect is a **modality liability** of high-dose systemic ASO, not an APOC3-target problem. Target was human-genetics-validated first: APOC3 LoF carriers have low TG and **~40% lower CHD** (Crosby & Jørgensen, *NEJM* 2014, PMID 24941081).
-- **Later drugs, same target, better delivery.** **Olezarsen** (GalNAc-conjugated, hepatocyte-targeted ASO): BALANCE TG −43.5%, **no severe thrombocytopenia**, **FDA-approved Dec 2024 (Tryngolza)** — first-ever FDA approval in FCS. **Plozasiran** (GalNAc APOC3 **siRNA**): PALISADE TG ~−80%, ~83% fewer pancreatitis events, no platelet signal, **FDA-approved Nov 2025 (Redemplo)**.
-- **Lesson.** Same target, safety liability vanishes when delivery changes → the toxicity was **modality-driven, not mechanism-driven**; the APOC3 target was right all along.
+### Anti-amyloid antibodies (APP) — the failures that set up the wins
+**In one line:** the first amyloid antibodies aimed at the wrong form of amyloid, too late; the next generation aimed at the right form, early, and finally slowed the disease.
 
-### Factor XI / asundexian — a dose/indication miss, not a dead target
-- **What went wrong.** OCEANIC-AF (asundexian 50 mg vs apixaban in AF) stopped for **inferior efficacy** — stroke/SE HR **3.79** — *but* major bleeding HR **0.32** (Piccini *NEJM* 2024, PMID 39225267). So the **bleeding half of the FXI thesis held**; efficacy failed. Leading reads: (i) **under-dosing** (only ~92% trough FXIa inhibition; AF may need near-total suppression), (ii) AF's stasis/tissue-factor clot may be **less FXI-dependent** than atherothrombosis. Genetic rationale intact: congenital FXI deficiency → less stroke/VTE with only mild bleeding (Salomon *Blood* 2008, PMID 18268095).
-- **Later drugs / other indications, same target.** **Asundexian's own OCEANIC-STROKE** (secondary stroke prevention) **hit its primary endpoint (~26% fewer recurrent strokes, no bleeding increase)** — *same drug, different indication → it worked.* **Milvexian** LIBREXIA-AF (100 mg BID, chosen for deeper suppression) **ongoing, 2026 readout**; LIBREXIA-ACS **failed**. **Abelacimab** (anti-FXI mAb): AZALEA-TIMI 71 stopped early for **~67% bleeding reduction** vs rivaroxaban; Phase 3 LILAC (AF) + cancer-VTE (ASTER/MAGNOLIA) ongoing.
-- **Lesson.** The uncouple-thrombosis-from-hemostasis thesis **held** (bleeding reproducibly reduced; OCEANIC-STROKE positive); asundexian's AF failure is a **dose/indication** problem — milvexian's higher-dose LIBREXIA-AF will test it directly.
+- **What they got wrong.** **Solanezumab** targeted *soluble, single-molecule* amyloid — the wrong form — and failed even when given to people *before* symptoms (the A4 prevention trial, *NEJM* 2023), which rules out "just too late" as the only problem. **Bapineuzumab** did hit plaque but too weakly, and its dose was capped by brain-swelling side effects (ARIA); no benefit (*NEJM* 2014, PMID 24450891).
+- **The later drugs — same pathway, done right.** **Lecanemab** targets amyloid *protofibrils* in *early* disease: 27% slowing of decline, confirmed amyloid clearance on PET scans, FDA-approved 2023 (*NEJM* 2023, PMID 36449413). **Donanemab** targets a plaque-specific form of amyloid: about 35% slowing, most patients cleared their plaque (*JAMA* 2023, PMID 37459141). Both carry the same brain-swelling risk as bapineuzumab, now managed with MRI monitoring instead of being a dealbreaker.
+- **Bottom line.** The amyloid idea was **partly right.** Clearing the *aggregated* form *early*, with proof the drug reached its target, does slow decline — but only modestly (25-35%), which says amyloid is one upstream contributor, not the whole story.
 
-### Safety cases (TGN1412 / CD28, fialuridine / HBV pol)
-Fully written up in `CASE_SCORECARD.md` → *"Safety failures — was the target hypothesis actually right?"* Both belong here: **TGN1412** (same antibody works as TAB08/theralizumab at ~1000× lower dose; failure = superagonist dose + macaque-vs-human CD28 species gap) and **fialuridine** (HBV polymerase is the backbone of modern HBV therapy — tenofovir/entecavir/lamivudine; failure = molecule-specific mtDNA/pol-γ toxicity). Right target, wrong molecule/dose.
+### Gamma-secretase / semagacestat — right pathway, blunt instrument
+**In one line:** they blocked an enzyme in the amyloid pathway, but that enzyme is used all over the body, so the drug made patients worse.
+
+- **What they got wrong.** Semagacestat didn't just fail — it *worsened* cognition and caused skin cancers, so the trial was halted (*NEJM* 2013, PMID 23883379). Gamma-secretase cuts many proteins besides amyloid (notably Notch), so blocking it hits a lot of essential biology at once.
+- **The later drugs.** A gentler version (gamma-secretase "modulators," which shift rather than block the enzyme) is still experimental, nothing approved. The wins came from antibodies, not from this enzyme.
+- **Bottom line.** This *way* of engaging amyloid was wrong (too blunt); it didn't settle whether amyloid mattered — the antibodies did.
+
+---
+
+## Verdict 3 — the biology was right (the molecule, dose, or delivery was the problem)
+
+### APOC3 / volanesorsen — a delivery problem the next drugs fixed
+**In one line:** the drug worked but caused a platelet side effect; later drugs that delivered the same idea straight to the liver kept the benefit and dropped the side effect.
+
+- **What went wrong.** Volanesorsen cut triglycerides by about 77% in a rare fat-metabolism disease (FCS) — **efficacy was never in doubt** (*NEJM* 2019). The problem was a **platelet drop in roughly 75% of patients**, which got it **rejected by the FDA (2018)** even though **Europe approved it (2019)**. That platelet effect is a known quirk of this *type* of molecule (a first-generation antisense drug spread through the whole body), not a problem with the APOC3 target. And the target itself was rock-solid going in: people born with low APOC3 have low triglycerides and about 40% less heart disease (*NEJM* 2014, PMID 24941081).
+- **The later drugs — same target, better delivery.** **Olezarsen** attaches a sugar tag that routes the drug straight into liver cells, so it works at far lower doses: similar triglyceride lowering, **no severe platelet problem, FDA-approved December 2024** — the first-ever FDA approval for FCS. **Plozasiran** (a different molecule type, siRNA, same liver targeting) cut triglycerides about 80% with no platelet signal and was **FDA-approved November 2025.**
+- **Bottom line.** Same target, and the side effect disappeared once the delivery changed — so the toxicity was about the *molecule*, not the *target*. APOC3 was right all along.
+
+### Factor XI / asundexian — a dose-and-disease miss, not a dead target
+**In one line:** the safety promise (less bleeding) held up perfectly; the one trial that failed used too low a dose in a disease where this target matters least — and the same drug worked in a different disease.
+
+- **What went wrong.** The idea behind Factor XI is a "safer blood thinner" — block clots without causing bleeds (people born short on Factor XI rarely bleed but are protected from strokes/clots). In atrial fibrillation (OCEANIC-AF), asundexian was **worse than standard-of-care at preventing strokes** (nearly 4x the events) — **but caused far less bleeding, exactly as promised** (*NEJM* 2024, PMID 39225267). So the safety half of the thesis held; efficacy failed. The likely reasons: the dose was too low (it only blocked about 92% of the enzyme, and atrial fibrillation may need near-total blockade), and atrial-fibrillation clots may simply depend less on Factor XI than other kinds of clots do.
+- **The later drugs / other diseases — same target.** **Asundexian's own next trial** in stroke prevention (OCEANIC-STROKE) **succeeded** — same drug, different disease, about 26% fewer strokes with no extra bleeding. **Milvexian** is running an atrial-fibrillation trial at a deliberately higher dose (readout expected 2026). **Abelacimab** (an antibody against Factor XI) cut bleeding about 67% versus a standard blood thinner and is in Phase 3.
+- **Bottom line.** The Factor XI idea held (less bleeding everywhere; a win in stroke); asundexian's atrial-fibrillation failure looks like a **dose-and-disease** miss, not a wrong target. The higher-dose milvexian trial will test that directly.
+
+### Safety cases (TGN1412 / CD28, fialuridine / HBV polymerase)
+Written up in `CASE_SCORECARD.md` under *"Safety failures — was the target hypothesis actually right?"* Both belong in Verdict 3. **TGN1412**: the *same antibody*, given at roughly 1/1000th the dose (as TAB08 / theralizumab), safely does what it was meant to do; the 2006 disaster was a dose problem plus an animal-model gap (monkeys don't carry the human immune cells the drug hit). **Fialuridine**: its target, HBV polymerase, is the backbone of every modern hepatitis-B drug (tenofovir, entecavir, lamivudine); fialuridine failed on a toxicity specific to that one molecule (it poisoned mitochondria). Right target, wrong molecule.
 
 ---
 
 ## The through-line for the section
 
-**"Strong preclinical evidence, still failed" means three different things**, and the *later
-drug* tells you which:
-- If **no later drug at the same target ever worked** (Lp-PLA2; BACE1 production-blocking) or the win required **abandoning the original rationale** (CETP → LDL not HDL) — the **biology was wrong**.
-- If a later drug at the same node succeeded by **changing the species/stage** (anti-Aβ: protofibril + early + PET-confirmed) — the biology was **partly right**.
-- If a later drug at the same target succeeded by **changing the molecule/delivery/dose** (APOC3: GalNAc; FXI: higher dose / stroke indication; the safety cases) — the **biology was right**, and the first attempt failed on execution.
+**"Strong evidence, still failed" means three different things — and the later drug tells you
+which one:**
 
-This is the sharpest thing the case studies add on top of the scorecards: genetics/evidence
-gets you a *candidate* target; only the downstream causal test (MR) and the *later-drug
-natural experiment* tell you whether the target — or just the first molecule — was the problem.
+- **No later drug at that target ever worked** (Lp-PLA2, BACE1), or the win required
+  **throwing out the original rationale** (CETP: HDL out, LDL in) — the **biology was wrong**.
+- **A later drug worked once it hit the right *form* at the right *stage*** (anti-amyloid:
+  protofibrils, early, with proof of clearance) — the biology was **partly right**.
+- **A later drug worked once the *molecule / dose / delivery* changed** (APOC3: liver-targeted
+  delivery; Factor XI: higher dose and a different disease; the two safety cases) — the
+  **biology was right**, and the first attempt just fumbled the execution.
+
+The sharpest point the case studies add on top of the charts: **genetics and preclinical
+evidence get you a candidate target, but they can't tell you whether a failure means the
+target was wrong or just the first drug was wrong. Two things settle that — a causal test
+(Mendelian randomization) and the natural experiment of whatever drug came next.**
 
 ---
 
-## Verify before publication (uncertainty flags from the research pass)
-- **Ongoing outcome trials (statuses as of mid-2026):** ZEUS (ziltivekimab CV outcomes), PREVAIL (obicetrapib CVOT), LIBREXIA-AF (milvexian), LILAC / ASTER / MAGNOLIA (abelacimab) — confirm whether any have read out before publication; the CRP→IL-6 "causal proof still pending ZEUS" line is the most likely to change.
-- **PMIDs flagged as best-recall (confirm on PubMed):** verubecestat EPOCH (Egan *NEJM* 2018, ~29719179) / APECS (2019, ~30970186); solanezumab A4 (~37458272); the *PLA2G7* "genetic invalidation" *Eur Heart J* 2017 paper (PMC5460752); Zacho 2008 (~18971492). DOIs given elsewhere are solid.
-- **Interpretive, not proven:** REVEAL's "benefit = LDL/apoB, not HDL" is the consensus reading, not a randomized dissection; volanesorsen's platelet effect as "modality not mechanism" is inferred from the cleaner GalNAc successors; APOC3/TG genetics predict CV benefit but no completed TG-lowering CVOT yet.
+## Verify before publication (flags from the research pass)
+- **Trials still running (as of mid-2026), confirm before citing as pending/positive:** ZEUS
+  (ziltivekimab), PREVAIL (obicetrapib), LIBREXIA-AF (milvexian), and abelacimab's Phase 3s.
+  The CRP -> IL-6 "final causal proof still pending ZEUS" line is the one most likely to change.
+- **PMIDs to confirm on PubMed (stated from best recall):** verubecestat EPOCH (*NEJM* 2018,
+  ~29719179) and APECS (2019, ~30970186); solanezumab A4 (~37458272); the Lp-PLA2 "genetic
+  invalidation" paper (*Eur Heart J* 2017); Zacho 2008 (~18971492). DOIs elsewhere are solid.
+- **Interpretations, not proofs:** anacetrapib's benefit being "LDL not HDL" is the consensus
+  reading, not a formal split; volanesorsen's platelet effect being "molecule not target" is
+  inferred from the cleaner later drugs; APOC3 genetics predict heart benefit but no completed
+  triglyceride-lowering outcomes trial has proven it yet.

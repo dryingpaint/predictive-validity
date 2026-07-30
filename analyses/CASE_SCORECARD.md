@@ -88,7 +88,7 @@ biomarker non-causal; amyloid: right node, wrong stage). Worth stating explicitl
   **CD28-positive** (a 4-aa species difference incl. G68E in the binding loop; Eastwood et
   al., *Br J Pharmacol* 2010, PMID 20880392), so the superagonist engaged a human cell
   population absent from the model; and (2) the *same antibody*, redeveloped as **TAB08 /
-  theralizumab** at ~1000× lower dose, selectively activates regulatory T cells (IL-10
+  theralizumab** at about 1000× lower dose, selectively activates regulatory T cells (IL-10
   signature) with no cytokine storm and re-entered rheumatoid-arthritis trials (Tabares et
   al., *Eur J Immunol* 2014, PMID 24374661; Hünig, *FEBS J* 2016). The Treg-activation-via-
   CD28 hypothesis held; the first-in-human dose and the animal model did not.
