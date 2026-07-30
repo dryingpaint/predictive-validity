@@ -1,9 +1,9 @@
 # Case Studies — proposed outline for the paper section
 
 A suggested skeleton for the "Case Studies" section of *Modeling Clinical Predictive
-Validity*. Bullets to expand, not final prose. Source material: `CASE_STUDY_DEEPDIVES.md`
-(the per-case detail + citations) and `CASE_SCORECARD.md` (the scorecard + safety cases).
-Figures live in `data/`.
+Validity* (target venue: medRxiv preprint). Bullets to expand, not final prose. Source
+material: `CASE_STUDY_DEEPDIVES.md` (per-case detail + citations) and `CASE_SCORECARD.md`
+(the scorecard + safety cases). Figures live in `data/`.
 
 ---
 
@@ -41,9 +41,9 @@ does.** Organize the cases by what the later drug revealed.
 - **CETP / torcetrapib** — feature case. Raising HDL never worked; the class only produced a
   win (anacetrapib) once repurposed to lower LDL; obicetrapib now sold as an LDL drug. Great
   "the correlation fooled us; genetics (MR) called it" story.
-- **CRP / anti-CRP drug** — feature case. Drug lowered CRP about 77%, zero
-  benefit; the real target was IL-6, one step upstream. The cleanest "engaged the marker, not
-  the cause" example, and it pairs with tocilizumab in the gate figure.
+- **CRP / anti-CRP drug** — feature case. Drug lowered CRP about 77%, zero benefit; the real
+  target was IL-6, one step upstream. The cleanest "engaged the marker, not the cause" example,
+  and it pairs with tocilizumab in the gate figure.
 - *Mention briefly:* Lp-PLA2 / darapladib (cleanest "wrong target, abandoned"); BACE1
   (blocking amyloid production was useless and harmful).
 
@@ -73,7 +73,7 @@ does.** Organize the cases by what the later drug revealed.
 - Two things settle that: a **causal test** (Mendelian randomization) and the **natural
   experiment of the next drug**.
 - Tie back to Section 2: this is *why* genetics leads on average but isn't destiny — it clears
-  the early gates, and the causal + execution gates do the rest.
+  the early gates, and the causal and execution gates do the rest.
 - Optional kicker: the failure modes map onto the paper's taxonomy — efficacy failures tend to
   indict the biology; safety failures tend to indict the molecule.
 
@@ -98,105 +98,124 @@ does.** Organize the cases by what the later drug revealed.
 
 ---
 
-# Draft text blocks (starting points — edit freely)
+# Draft text blocks (manuscript register — edit freely)
 
-Rough prose to get you off a blank page. Plain-language, every fact drawn from the verified
-`CASE_STUDY_DEEPDIVES.md`. Cut, merge, and re-voice as you like; drop figure callouts where
-they fit.
+Draft prose for the Case Studies section in a register suitable for a medRxiv preprint:
+declarative, past tense for events, measured claims. Facts are drawn from the verified
+`CASE_STUDY_DEEPDIVES.md`; trial names are given as citation cues (full references and
+PMIDs/DOIs are in that document) and should be converted to the manuscript's citation style.
+Figure numbers are placeholders.
 
 ### Opening
-> The previous section's headline — that genetics moves the odds of success more than any
-> other line of evidence — is easy to over-read as "find a genetically supported target and
-> you're most of the way there." The cases below are the correction. Every program here
-> carried strong preclinical evidence, several carried strong human genetics, and all of them
-> failed. What makes them worth studying is not that they failed but *how*: the way a program
-> dies tells you whether the underlying biology was wrong, or whether the biology was right
-> and the first drug simply got the molecule, dose, or timing wrong. That distinction is the
-> difference between abandoning a target and trying again.
+> The preceding analysis established that human genetic support is the evidence class most
+> strongly associated with subsequent clinical success. That association is readily
+> over-interpreted as implying that a genetically supported target is most of the way to an
+> approved drug. The following cases delimit that inference. Each program described here was
+> supported by strong preclinical evidence — and, in several instances, by strong human
+> genetic evidence — yet each failed in clinical development. Their interpretive value lies not
+> in the fact of failure but in its mode: whether a program fails on efficacy or on safety, and
+> whether a later agent against the same target succeeds, distinguishes programs in which the
+> biological hypothesis was incorrect from those in which the hypothesis was sound but the
+> molecule, dose, or developmental timing was not.
 
 ### The gates (frame)
-> It helps to picture a drug program as a chain of gates it must clear in order: the target
-> has to be genetically implicated, modulating it has to move a biomarker, that biomarker has
-> to actually *cause* the clinical outcome, the drug has to engage the target well enough, and
-> the whole thing has to be safe. Human genetics speaks to the first few gates and says almost
-> nothing about the last ones — whether the biomarker is causal rather than merely correlated,
-> and whether the target can be hit safely. Those later gates are where genetically validated
-> targets keep dying. [*Figure: causal_gates_scorecard.*] The sharpest illustration is the
-> pair at the bottom: an anti-IL-6-receptor antibody and an anti-CRP drug score identically on
-> genetics and both move their biomarker exactly as designed, yet one is approved and the
-> other did nothing — because only one of those biomarkers sits on the causal path.
+> We represent each program as an ordered sequence of gates that must be cleared: genetic
+> implication of the target; evidence that modulating the target moves a biomarker; evidence
+> that the biomarker is causal for the clinical endpoint rather than merely correlated with it;
+> adequate target engagement by the drug; and acceptable safety. Human genetic evidence informs
+> the earliest gates but is largely uninformative about the later ones — biomarker causality and
+> safe engagement — which is where genetically validated targets most often fail (Figure X). The
+> paired comparison of an anti-IL-6-receptor antibody and an anti-CRP agent is illustrative: the
+> two targets receive identical genetic scores and both agents engage their biomarker as
+> designed, yet only one has reached approval, because only one biomarker lies on the causal
+> pathway.
 
-### "Strong evidence, still failed" (transition into the scorecard)
-> [*Figure: case_scorecard.*] Seven programs, near-maximal scores across mechanistic, cell,
-> animal, and human-pharmacology evidence — and every one failed in humans. [*Figure:
-> genetics_vs_outcome.*] Genetic strength does not sort the winners from the losers either:
-> three of these programs sit at exactly the same genetic score, one approved and two failed,
-> and the amyloid antibodies failed at a *higher* genetic score than either lipid-lowering
-> success. Strong evidence turns out to be necessary-ish and nowhere near sufficient.
+### Strong evidence, discordant outcomes (into the scorecard)
+> Figure X summarizes seven programs with near-maximal preclinical evidence across mechanistic,
+> cellular, animal, and human pharmacodynamic domains, all of which failed in clinical
+> development. Genetic strength did not discriminate outcomes (Figure Y): three programs share
+> an effectively identical genetic score with divergent outcomes (one approval, two failures),
+> and the anti-amyloid antibodies failed at a higher genetic score than either lipid-lowering
+> success. Strong preclinical evidence thus appears necessary but far from sufficient.
 
-### CETP — a correlation mistaken for a cause
-> CETP inhibition is the textbook case of chasing a correlation. Torcetrapib raised HDL — "good
-> cholesterol" — by about 72%, exactly as intended, and increased deaths. The immediate cause
-> was a toxicity specific to that one molecule, but the deeper problem was that raising HDL was
-> never going to help: inherited variants that raise HDL do not lower heart-attack risk. The
-> cleaner successors proved it. A pure HDL-raiser (dalcetrapib) did nothing, and the single
-> CETP inhibitor that eventually reduced events (anacetrapib) did so through the LDL it lowered,
-> not the HDL it raised. The target survived only after the field discarded its original
-> rationale — the newest CETP drug in development is being positioned as an LDL-lowering agent.
+### CETP — a correlational biomarker mistaken for a causal one
+> The CETP programs illustrate the misattribution of causality to a correlational biomarker.
+> Torcetrapib raised HDL cholesterol by approximately 72%, as intended, but was associated with
+> increased mortality (ILLUMINATE); the proximate cause was an off-target, molecule-specific
+> effect on adrenal steroidogenesis, but the more fundamental limitation was that HDL elevation
+> is not cardioprotective. Mendelian randomization indicates that HDL-raising alleles do not
+> reduce myocardial infarction risk, and the subsequent class was consistent with this: a
+> selective HDL-raising agent (dalcetrapib, dal-OUTCOMES) conferred no benefit, whereas the only
+> CETP inhibitor to reduce events (anacetrapib, REVEAL) did so in proportion to its reduction in
+> LDL/apoB rather than its elevation of HDL. The target has been retained only after its
+> rationale was reframed around LDL lowering.
 
-### CRP — the drug worked perfectly on the wrong target
-> C-reactive protein is the case where the drug did its job flawlessly and it didn't matter. An
-> antisense drug lowered CRP by about 77% and produced no clinical benefit at all, because CRP
-> is a readout of inflammation, not a driver of it — people born with CRP-raising variants are
-> at no higher cardiovascular risk. The actual causal lever sits one step upstream, in IL-6
-> signaling, where drugs do move hard endpoints. Engaging a biomarker is not the same as
-> engaging a cause.
+### CRP — efficacious engagement of a non-causal biomarker
+> The CRP program demonstrates that engaging a biomarker efficaciously is not equivalent to
+> engaging a cause. An antisense oligonucleotide reduced C-reactive protein by approximately
+> 77% without measurable clinical benefit, consistent with CRP being a marker rather than a
+> mediator of inflammatory cardiovascular risk; genetically elevated CRP is not associated with
+> increased coronary risk (Mendelian randomization). The causal node lies upstream in IL-6
+> signaling, where pharmacological intervention does modify clinical endpoints (e.g., IL-1-beta
+> inhibition in CANTOS; ongoing IL-6 outcome trials).
 
-### Anti-amyloid antibodies — the same target, from failure to a modest win
-> The amyloid antibodies are the most instructive case, because the same target went from a
-> decade of failure to a real, if modest, success. The early antibodies missed in two specific
-> ways: solanezumab bound the wrong form of amyloid — soluble single molecules — and failed
-> even when given before symptoms appeared; bapineuzumab bound plaque but too weakly and with
-> dose-limiting brain-swelling side effects. The next generation fixed both the form and the
-> timing: lecanemab and donanemab target aggregated amyloid, given early, with brain scans
-> confirming the plaque was actually cleared — and they slowed decline by roughly a quarter to
-> a third. That is a genuine win and a modest one. It says amyloid is a real upstream
-> contributor rather than the whole disease, and that the earlier failures were about hitting
-> the wrong form too late, not about the target being a mirage.
+### Anti-amyloid antibodies — the same target, from failure to modest efficacy
+> The anti-amyloid antibodies are particularly informative because the same target progressed
+> from repeated failure to modest efficacy. The first-generation antibodies failed for
+> identifiable reasons: solanezumab targeted soluble monomeric amyloid-beta and failed even in
+> an asymptomatic prevention population (A4), while bapineuzumab engaged plaque but with limited
+> potency and dose-limiting amyloid-related imaging abnormalities. Second-generation antibodies
+> (lecanemab, CLARITY-AD; donanemab, TRAILBLAZER-ALZ 2) targeted aggregated species, were
+> administered earlier in disease, and demonstrated target engagement by amyloid PET; both
+> slowed cognitive decline by approximately one-quarter to one-third. This constitutes a genuine
+> but modest effect, consistent with amyloid as an upstream contributor rather than the sole
+> driver of established disease, and it localizes the earlier failures to amyloid species and
+> treatment timing rather than to target validity.
 
-### APOC3 — the cleanest "right target, wrong molecule"
-> APOC3 is the clearest case of a good target undone by the wrong molecule. Volanesorsen
-> lowered triglycerides by about 77% in a severe inherited disorder — efficacy was never in
-> doubt — but dropped platelets in roughly three-quarters of patients, enough for the FDA to
-> reject it. That platelet effect is a known liability of the drug's *format* (a
-> first-generation antisense molecule spread through the whole body), not a problem with APOC3,
-> whose genetic credentials were airtight going in. What came next is the proof: two successors
-> that deliver the same idea straight to the liver kept the triglyceride benefit, lost the
-> platelet problem, and were approved. Same target, fixed molecule.
+### APOC3 — a valid target constrained by molecular format
+> The APOC3 program exemplifies a valid target initially constrained by molecular format.
+> Volanesorsen reduced triglycerides by approximately 77% in familial chylomicronemia syndrome
+> — efficacy was not in question — but produced thrombocytopenia in approximately three-quarters
+> of treated patients, resulting in a negative U.S. regulatory decision despite European
+> approval. The platelet effect is a recognized liability of systemically distributed
+> first-generation antisense oligonucleotides rather than a property of APOC3 inhibition, and
+> the target was well supported by loss-of-function genetics (approximately 40% lower coronary
+> risk in carriers). Hepatocyte-targeted successors — olezarsen (a GalNAc-conjugated antisense
+> oligonucleotide) and plozasiran (a GalNAc-conjugated siRNA) — retained triglyceride lowering
+> without clinically significant thrombocytopenia and have since been approved, indicating that
+> the limitation resided in the molecule rather than the target.
 
-### Factor XI — failure and success from the same drug
-> Factor XI is a target where the failure and the success came from the same drug. The
-> premise — a blood thinner that stops clots without causing bleeds — held up cleanly: in
-> atrial fibrillation, asundexian caused far less bleeding than standard care, exactly as
-> promised. But it prevented fewer strokes, and the trial was stopped. The likely culprits were
-> a dose set too low and the disease itself, since atrial-fibrillation clots may depend less on
-> Factor XI than other clots do. The tell is that the very same drug then succeeded in stroke
-> prevention, and competitors are now testing the target at higher doses. The Factor XI idea is
-> alive; asundexian's atrial-fibrillation trial was a dose-and-disease miss, not a dead target.
+### Factor XI — failure and success from the same agent
+> The Factor XI program demonstrates that failure and success can arise from the same agent.
+> The central hypothesis — anticoagulation with reduced bleeding, motivated by the mild
+> bleeding phenotype of congenital Factor XI deficiency — was supported: in atrial fibrillation,
+> asundexian produced substantially less bleeding than standard-of-care apixaban (OCEANIC-AF).
+> It nonetheless prevented fewer strokes and the trial was terminated, plausibly reflecting
+> sub-maximal Factor XIa inhibition at the dose studied and an indication in which thrombus
+> formation is comparatively less Factor XI-dependent. The same agent subsequently met its
+> endpoint in secondary stroke prevention (OCEANIC-STROKE), and other Factor XI inhibitors are
+> under evaluation at higher doses (milvexian) and as antibodies (abelacimab). The target
+> therefore remains viable, and the atrial-fibrillation failure is more consistent with dose and
+> indication than with an incorrect hypothesis.
 
-### Safety failures — the molecule, not the biology (short)
-> The two safety catastrophes make the same point from the opposite direction. A safety failure
-> kills the drug, but it does not tell you the target was wrong — and in both of ours, later
-> work vindicated the target. The CD28 antibody that caused a notorious cytokine storm in 2006
-> does exactly what it was designed to do at about one-thousandth the dose. Fialuridine's
-> target, the hepatitis-B polymerase, is the backbone of every modern hepatitis-B therapy;
-> fialuridine died on a toxicity unique to that one molecule. Where efficacy failures tend to
-> indict the biology, safety failures usually indict the molecule.
+### Safety failures — implicating the molecule rather than the target
+> The two safety failures make a complementary point. A safety failure terminates a drug but
+> does not, in itself, invalidate the target, and in both cases the target was subsequently
+> vindicated. The anti-CD28 superagonist responsible for a well-documented 2006 cytokine-release
+> event produces its intended regulatory-T-cell pharmacology at approximately one-thousandth of
+> that dose (redeveloped as TAB08/theralizumab), and the 2006 event is attributable to the dose
+> together with a species difference in CD28 expression that rendered the primate model
+> non-predictive. The target of fialuridine — the hepatitis B polymerase — underlies all current
+> nucleos(t)ide therapy for the disease; fialuridine failed on a molecule-specific mitochondrial
+> toxicity. Whereas efficacy failures frequently implicate the biology, safety failures more
+> often implicate the molecule.
 
-### Closing takeaway
-> The thread through all of these is simple. Genetic and preclinical evidence can hand you a
-> promising target, but when a program fails, that evidence cannot by itself tell you whether
-> the target was wrong or the drug was. Two things can: a causal test — Mendelian randomization,
-> which separates a biomarker that drives disease from one that merely tracks it — and the
-> natural experiment of whatever drug comes next. That is why genetics leads on average without
-> being destiny: it clears the early gates, and the causal and execution gates decide the rest.
+### Closing
+> Taken together, these cases indicate that genetic and preclinical evidence can nominate a
+> credible target but cannot, at the point of clinical failure, distinguish an incorrect target
+> from an inadequate drug. Two forms of evidence resolve this ambiguity: a formal causal test —
+> Mendelian randomization, which separates biomarkers that drive disease from those that merely
+> track it — and the subsequent development of alternative agents against the same target. This
+> reconciles the population-level primacy of genetic evidence with its limits at the level of an
+> individual program: genetic evidence clears the early gates, while the causal and execution
+> gates determine the outcome.
