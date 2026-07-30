@@ -129,8 +129,8 @@ target was wrong or just the first drug was wrong. Two things settle that — a 
   (ziltivekimab), PREVAIL (obicetrapib), LIBREXIA-AF (milvexian), and abelacimab's Phase 3s.
   The CRP -> IL-6 "final causal proof still pending ZEUS" line is the one most likely to change.
 - **PMIDs to confirm on PubMed (stated from best recall):** verubecestat EPOCH (*NEJM* 2018,
-  ~29719179) and APECS (2019, ~30970186); solanezumab A4 (~37458272); the Lp-PLA2 "genetic
-  invalidation" paper (*Eur Heart J* 2017); Zacho 2008 (~18971492). DOIs elsewhere are solid.
+  29719179?) and APECS (2019, 30970186?); solanezumab A4 (37458272?); the Lp-PLA2 "genetic
+  invalidation" paper (*Eur Heart J* 2017); Zacho 2008 (18971492?). DOIs elsewhere are solid.
 - **Interpretations, not proofs:** anacetrapib's benefit being "LDL not HDL" is the consensus
   reading, not a formal split; volanesorsen's platelet effect being "molecule not target" is
   inferred from the cleaner later drugs; APOC3 genetics predict heart benefit but no completed

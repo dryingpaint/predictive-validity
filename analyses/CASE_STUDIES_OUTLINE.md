@@ -41,7 +41,7 @@ does.** Organize the cases by what the later drug revealed.
 - **CETP / torcetrapib** — feature case. Raising HDL never worked; the class only produced a
   win (anacetrapib) once repurposed to lower LDL; obicetrapib now sold as an LDL drug. Great
   "the correlation fooled us; genetics (MR) called it" story.
-- **CRP / anti-CRP drug** — feature case. Drug lowered CRP ~77% (write "about 77%"), zero
+- **CRP / anti-CRP drug** — feature case. Drug lowered CRP about 77%, zero
   benefit; the real target was IL-6, one step upstream. The cleanest "engaged the marker, not
   the cause" example, and it pairs with tocilizumab in the gate figure.
 - *Mention briefly:* Lp-PLA2 / darapladib (cleanest "wrong target, abandoned"); BACE1
@@ -51,7 +51,7 @@ does.** Organize the cases by what the later drug revealed.
 - **Anti-amyloid antibodies** — feature case, and the emotional arc of the section: the
   early antibodies (solanezumab, bapineuzumab) failed on the wrong amyloid form / too late,
   then lecanemab and donanemab hit the right form early and finally slowed the disease
-  (~25-35%). Shows the same target going from failure to modest success by changing form +
+  (about 25-35%). Shows the same target going from failure to modest success by changing form +
   stage. Also the honest "modest, not a cure" note.
 
 ### 3c. The biology was right — molecule / dose / delivery was wrong
