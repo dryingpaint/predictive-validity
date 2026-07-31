@@ -10,12 +10,13 @@ material: `CASE_STUDY_DEEPDIVES.md` (per-case detail + citations) and `CASE_SCOR
 ## 0. The one-line job of this section
 The logical arc: **genetics is the strongest predictor of success — but most programs fail
 even with it, so what do the failures reveal about why?**
-- Quantify the setup from our own data (Phase 2+ T-I pairs, base approval ~23%; the
+- Quantify the setup from our own data (Phase 2+ T-I pairs, base approval 23%; the
   `genetics_dose_response` numbers): approval rises 7.5% (no genetics) -> 19.2% (weak) ->
   21.7% (moderate) -> **45.2% (strong)** — about a 6x gradient, the steepest of any evidence
-  type, and genetics is the biggest contributor to the model (removing it costs ~17.7 AUC
-  points). *And yet:* even the strongest genetic tier still fails **~55%** of the time
-  (45.2% approved). Genetic support moves the odds a lot; it does not make success likely.
+  type, and genetics is the biggest contributor to the model (removing it costs about 17.7
+  AUC points). *And yet:* even the strongest genetic tier still fails **more than half the
+  time** (45.2% approved). Genetic support moves the odds a lot; it does not make success
+  likely.
 - So the section's job: given a genetically credible target, **what breaks downstream** — and
   does the *way* it fails tell you whether the biology was wrong or just the execution?
 
@@ -41,6 +42,29 @@ even with it, so what do the failures reveal about why?**
 ## 3. The heart of the section — three verdicts, told through cases
 Frame: the failure alone doesn't tell you if the target was wrong. **The drug that came next
 does.** Organize the cases by what the later drug revealed.
+
+### Tie every case back to the 45%/55% number
+These programs *are* the 55%. Each is an instance of failure despite genetic support, and the
+point of the section is to name, case by case, *which gate broke*. Note the range of genetic
+strength: several failed on only weak support (CETP, CRP, Lp-PLA2), but the anti-amyloid
+antibodies failed at **Strong** support — a genetic score (1.9) *higher* than the approved
+PCSK9 (1.6). So this is not "they failed because their genetics was weak"; genetically strong
+programs fail too, and the reason is always downstream. This table is the spine — consider
+including it as a manuscript table, and open each case paragraph by stating its genetic tier
+and the gate it failed.
+
+| Case | Genetic support (`genetic_only_v1`) | Gate that broke | Failed because… |
+|---|---|---|---|
+| CETP / torcetrapib | Weak (0.7) | biomarker not causal | HDL doesn't cause heart disease (MR); plus an off-target toxicity |
+| CRP / anti-CRP ASO | Weak (0.7) | biomarker not causal | CRP is a marker, not a cause — the causal node is IL-6, upstream |
+| Lp-PLA2 / darapladib | Weak (0.5) | biomarker not causal | Lp-PLA2 is a passenger of plaque inflammation, not a driver |
+| BACE1 inhibitors | Moderate (1.0) | wrong node + on-target harm | blocking amyloid *production* is insufficient and the enzyme has essential jobs |
+| Anti-amyloid mAbs (APP) | **Strong (1.9)** | right node, wrong form/stage | early antibodies hit the wrong amyloid form too late; fixed by lecanemab/donanemab |
+| γ-secretase / semagacestat | Moderate (1.0) | drug engagement (too blunt) | inhibiting the enzyme also blocks Notch and others — net harm |
+| APOC3 / volanesorsen | Moderate (1.0) | safety (molecule) | platelet toxicity of the ASO format; fixed by liver-targeted successors |
+| Factor XI / asundexian | Moderate (1.3) | drug engagement + indication | under-dosed in AF (a less FXI-dependent clot); won in stroke prevention |
+| TGN1412 / CD28 | Moderate (1.0) | safety (dose/species) | superagonist dose + monkey model missed it; works at 1/1000 the dose |
+| Fialuridine / HBV pol | n/a (viral) | safety (molecule) | mitochondrial toxicity of this molecule; the target underlies all modern HBV therapy |
 
 ### 3a. The biology was wrong
 *(the target doesn't drive the disease)*
@@ -145,7 +169,10 @@ Figure numbers are placeholders.
 > development. Genetic strength did not discriminate outcomes (Figure Y): three programs share
 > an effectively identical genetic score with divergent outcomes (one approval, two failures),
 > and the anti-amyloid antibodies failed at a higher genetic score than either lipid-lowering
-> success. Strong preclinical evidence thus appears necessary but far from sufficient.
+> success. Strong preclinical evidence thus appears necessary but far from sufficient. The
+> programs discussed below are representative of the failures that persist despite genetic
+> support; for each, we indicate the strength of genetic support and identify the gate at
+> which development failed.
 
 ### CETP — a correlational biomarker mistaken for a causal one
 > The CETP programs illustrate the misattribution of causality to a correlational biomarker.
