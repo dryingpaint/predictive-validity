@@ -8,10 +8,16 @@ material: `CASE_STUDY_DEEPDIVES.md` (per-case detail + citations) and `CASE_SCOR
 ---
 
 ## 0. The one-line job of this section
-Sections 1-2 showed, in aggregate, that most trials fail and that genetics is the evidence
-type that most moves the odds. This section makes it concrete and adds the crucial nuance:
-**strong evidence — even strong human genetics — does not guarantee success, and the *way* a
-program fails tells you whether the biology was wrong or just the execution.**
+The logical arc: **genetics is the strongest predictor of success — but most programs fail
+even with it, so what do the failures reveal about why?**
+- Quantify the setup from our own data (Phase 2+ T-I pairs, base approval ~23%; the
+  `genetics_dose_response` numbers): approval rises 7.5% (no genetics) -> 19.2% (weak) ->
+  21.7% (moderate) -> **45.2% (strong)** — about a 6x gradient, the steepest of any evidence
+  type, and genetics is the biggest contributor to the model (removing it costs ~17.7 AUC
+  points). *And yet:* even the strongest genetic tier still fails **~55%** of the time
+  (45.2% approved). Genetic support moves the odds a lot; it does not make success likely.
+- So the section's job: given a genetically credible target, **what breaks downstream** — and
+  does the *way* it fails tell you whether the biology was wrong or just the execution?
 
 ## 1. Setup — the causal gates (short)
 - A program has to clear a chain of gates: genetics -> target moves a biomarker -> **the
@@ -107,16 +113,19 @@ PMIDs/DOIs are in that document) and should be converted to the manuscript's cit
 Figure numbers are placeholders.
 
 ### Opening
-> The preceding analysis established that human genetic support is the evidence class most
-> strongly associated with subsequent clinical success. That association is readily
-> over-interpreted as implying that a genetically supported target is most of the way to an
-> approved drug. The following cases delimit that inference. Each program described here was
-> supported by strong preclinical evidence — and, in several instances, by strong human
-> genetic evidence — yet each failed in clinical development. Their interpretive value lies not
-> in the fact of failure but in its mode: whether a program fails on efficacy or on safety, and
-> whether a later agent against the same target succeeds, distinguishes programs in which the
-> biological hypothesis was incorrect from those in which the hypothesis was sound but the
-> molecule, dose, or developmental timing was not.
+> Human genetic support was the strongest single predictor of clinical success in our
+> analysis. Across Phase 2+ target-indication pairs, the probability of approval increased
+> monotonically with genetic strength, from 7.5% for programs with no genetic support to
+> 45.2% for those in the strongest tier (Figure X) — an approximately six-fold gradient — and
+> removal of the genetic feature block degraded model discrimination more than that of any
+> other evidence class. The same figures, however, bound the value of genetic evidence: even
+> in the strongest-support tier, most programs — approximately 55% — still failed. Genetic
+> support substantially raises the probability of success without rendering success likely in
+> absolute terms. The cases that follow examine this residual failure directly: given a
+> genetically credible target, what fails downstream, and does the mode of failure — efficacy
+> versus safety, and whether a later agent against the same target succeeds — distinguish
+> programs in which the biological hypothesis was wrong from those in which the hypothesis was
+> sound but the molecule, dose, or developmental timing was not.
 
 ### The gates (frame)
 > We represent each program as an ordered sequence of gates that must be cleared: genetic
