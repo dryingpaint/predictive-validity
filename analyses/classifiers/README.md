@@ -19,18 +19,25 @@ export ANTHROPIC_API_KEY=sk-ant-...
 export DATABASE_URL=postgres://...
 ```
 
-## The five classifiers
+## The four classifiers
 
-| Script | Produces | Target file | Model | Cost per 1k items |
+| Script | Purpose | Target file | Default model | Cost per 1k items |
 |---|---|---|---|---|
 | `score_target_literature.py` | Line B/C/D/E evidence scores per target | `data/target_evidence/literature_scores.jsonl` | Haiku | ~$30-60 |
-| `classify_why_stopped_haiku.py` | First-pass termination classification | `data/clinical_trials/why_stopped_haiku.jsonl` | Haiku | ~$5-10 |
-| `classify_why_stopped_sonnet.py` | Verification of Haiku's commercial_strategic / unclear labels | `data/clinical_trials/why_stopped_sonnet.jsonl` | Sonnet | ~$20-40 |
+| `classify_why_stopped.py` | Trial termination classification. First-pass (default) OR verify (`--verify-from PRIOR.jsonl`). | `data/clinical_trials/why_stopped_*.jsonl` | Haiku (first-pass) / Sonnet (verify) | Haiku ~$5-10 / Sonnet ~$20-40 |
 | `classify_silent_kill.py` | Ph3+ silent-kill verification per drug | `data/silent_kill_verified.jsonl` | Sonnet | ~$50-150 |
 | `nelson_tier_classify.py` | T-I Nelson tier assignment | `data/target_evidence/nelson_tiers_batch_YYYYMMDD.csv` | Sonnet | ~$50 |
 
-Every row records `_cost_usd` (or `_cost` / `_cost_share`) so cumulative spend is
-auditable per run.
+**Canonical cost field is `_cost_usd`.** Older classifier outputs used
+`_cost_share` (Sonnet why_stopped verify) or `_cost` (silent_kill,
+target_resolution). `db/02_ingest.py:_read_cost` accepts all three for
+back-compat, but new runs write only `_cost_usd`.
+
+The cost value is never produced by the LLM — the LLM output schema is
+strictly the evidence fields (cat / confidence / rationale / scores /
+tier / etc.). `common.py:call_with_retry` reads `resp.usage.input_tokens`
+and `resp.usage.output_tokens` from the API response, applies a per-model
+price table, and the wrapper appends `_cost_usd` to the row.
 
 ## Resumability
 

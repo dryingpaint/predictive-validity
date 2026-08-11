@@ -16,7 +16,7 @@ Output row schema:
              "alive_no_approval" | "approved_ex_us" | "unclear",
       "confidence": "high" | "medium" | "low",
       "evidence": str,        # supporting text
-      "_cost": float,
+      "_cost_usd": float,
       ...
     }
 
@@ -194,7 +194,7 @@ def main():
         parsed["_prompt_version"] = PROMPT_VERSION
         parsed["_input_tokens"] = result.input_tokens
         parsed["_output_tokens"] = result.output_tokens
-        parsed["_cost"] = round(result.cost_usd, 6)
+        parsed["_cost_usd"] = round(result.cost_usd, 6)
         append_jsonl(args.out, parsed)
         total_cost += result.cost_usd
         print(
