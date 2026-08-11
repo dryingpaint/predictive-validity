@@ -60,6 +60,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from common import (
+    annotate,
     append_jsonl,
     call_with_retry,
     db_conn,
@@ -206,9 +207,9 @@ def confidence_rank(c: str) -> int:
 def classify_first_pass(client, trial: dict, model: str) -> dict:
     user = FIRST_PASS_USER.format(**trial)
     result = call_with_retry(client, model, FIRST_PASS_SYSTEM, user, max_tokens=512)
-    parsed = extract_json_block(result.text)
-    _annotate(parsed, trial["nct_id"], model, result)
-    return parsed
+    row = extract_json_block(result.text)
+    row["nct_id"] = trial["nct_id"]
+    return annotate(row, result, PROMPT_VERSION)
 
 
 def classify_verify(client, trial: dict, prior: dict, model: str) -> dict:
@@ -220,19 +221,9 @@ def classify_verify(client, trial: dict, prior: dict, model: str) -> dict:
     }
     user = VERIFY_USER.format(**ctx)
     result = call_with_retry(client, model, VERIFY_SYSTEM, user, max_tokens=512)
-    parsed = extract_json_block(result.text)
-    _annotate(parsed, trial["nct_id"], model, result)
-    return parsed
-
-
-def _annotate(parsed: dict, nct_id: str, model: str, result) -> None:
-    """Add audit fields to a parsed row. Canonical cost field is `_cost_usd`."""
-    parsed["nct_id"] = nct_id
-    parsed["_model"] = model
-    parsed["_prompt_version"] = PROMPT_VERSION
-    parsed["_input_tokens"] = result.input_tokens
-    parsed["_output_tokens"] = result.output_tokens
-    parsed["_cost_usd"] = round(result.cost_usd, 6)
+    row = extract_json_block(result.text)
+    row["nct_id"] = trial["nct_id"]
+    return annotate(row, result, PROMPT_VERSION)
 
 
 # --------------------------------------------------------------------------

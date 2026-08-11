@@ -32,6 +32,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from common import (
+    annotate,
     append_jsonl,
     call_with_retry,
     db_conn,
@@ -190,11 +191,7 @@ def main():
             print(f"  [{idx}] {drug_key} FAILED: {e}", file=sys.stderr, flush=True)
             continue
         parsed["drug_key"] = drug_key
-        parsed["_model"] = args.model
-        parsed["_prompt_version"] = PROMPT_VERSION
-        parsed["_input_tokens"] = result.input_tokens
-        parsed["_output_tokens"] = result.output_tokens
-        parsed["_cost_usd"] = round(result.cost_usd, 6)
+        annotate(parsed, result, PROMPT_VERSION)
         append_jsonl(args.out, parsed)
         total_cost += result.cost_usd
         print(

@@ -19,7 +19,7 @@ import sys
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Iterator
+from typing import Iterator
 
 try:
     from anthropic import Anthropic
@@ -42,7 +42,6 @@ class CallResult:
     output_tokens: int
     cost_usd: float
     model: str
-    stop_reason: str
 
 
 def get_client():
@@ -87,7 +86,6 @@ def call_with_retry(
                 output_tokens=out_tok,
                 cost_usd=cost,
                 model=model,
-                stop_reason=resp.stop_reason,
             )
         except Exception as e:
             if attempt == max_attempts - 1:
@@ -131,6 +129,21 @@ def extract_json_block(text: str) -> dict:
             if depth == 0:
                 return json.loads(text[start : i + 1])
     raise ValueError(f"unterminated JSON in response: {text[start:start+200]}")
+
+
+def annotate(row: dict, result: CallResult, prompt_version: str) -> dict:
+    """Add the canonical audit-trail fields to a parsed classifier row.
+
+    Every classifier row records: which model produced it, which prompt version
+    generated it, input/output token counts, and USD cost. All computed from
+    the API response — the LLM never produces these fields.
+    """
+    row["_model"] = result.model
+    row["_prompt_version"] = prompt_version
+    row["_input_tokens"] = result.input_tokens
+    row["_output_tokens"] = result.output_tokens
+    row["_cost_usd"] = round(result.cost_usd, 6)
+    return row
 
 
 def append_jsonl(path: Path, obj: dict) -> None:

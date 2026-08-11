@@ -31,15 +31,14 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import sys
-import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from common import (
+    annotate,
     append_jsonl,
     call_with_retry,
     db_conn,
@@ -99,15 +98,17 @@ Abstracts follow. Each item is: PMID | Title | Abstract text.
 
 
 def score_one_target(client, gene: str, abstracts: list[dict], model: str) -> dict:
-    """Call the LLM to score one target."""
+    """Call the LLM to score one target. Emits a `_no_abstracts` sentinel row
+    when the abstract cache is empty, so downstream ingest can distinguish
+    "never scored" from "scored and found no evidence"."""
     if not abstracts:
         return {
             "gene": gene,
             "line_b": 0, "line_c": 0, "line_d": 0, "line_e": 0,
-            "rationale": {"line_b": "no abstracts", "line_c": "no abstracts",
-                          "line_d": "no abstracts", "line_e": "no abstracts"},
             "notable_pmids": [],
             "_no_abstracts": True,
+            "_model": model,
+            "_prompt_version": PROMPT_VERSION,
         }
     abs_blob = "\n\n".join(
         f"PMID {a['pmid']} | {a.get('title','')} | {a.get('abstract','')[:1500]}"
@@ -115,15 +116,10 @@ def score_one_target(client, gene: str, abstracts: list[dict], model: str) -> di
     )
     user = USER_TEMPLATE.format(gene=gene, abstracts=abs_blob)
     result = call_with_retry(client, model, SYSTEM_PROMPT, user, max_tokens=1024)
-    parsed = extract_json_block(result.text)
-    parsed["gene"] = gene
-    parsed["_model"] = model
-    parsed["_prompt_version"] = PROMPT_VERSION
-    parsed["_input_tokens"] = result.input_tokens
-    parsed["_output_tokens"] = result.output_tokens
-    parsed["_cost_usd"] = round(result.cost_usd, 6)
-    parsed["_n_abstracts_provided"] = len(abstracts)
-    return parsed
+    row = extract_json_block(result.text)
+    row["gene"] = gene
+    row["_n_abstracts_provided"] = len(abstracts)
+    return annotate(row, result, PROMPT_VERSION)
 
 
 def fetch_target_abstracts(cur, gene: str, limit: int = 60) -> list[dict]:
@@ -164,24 +160,6 @@ def load_abstracts_from_dir(cache_dir: Path, gene: str) -> list[dict]:
             except Exception:
                 pass
     return out
-
-
-def gene_needs_score(cur, gene: str, dimension: str, source_version: str) -> bool:
-    """Return True if the target has no score for `dimension` at this source_version."""
-    cur.execute(
-        """
-        SELECT 1
-        FROM preclin.evidence_score es
-        JOIN public.targets t ON t.id = es.subject_id
-        WHERE es.subject_type = 'target'
-          AND es.dimension = %s
-          AND es.source_version = %s
-          AND t.symbol = %s
-        LIMIT 1
-        """,
-        (dimension, source_version, gene),
-    )
-    return cur.fetchone() is None
 
 
 def genes_missing_dimension(cur, dimension: str, source_version: str, limit: int) -> list[str]:

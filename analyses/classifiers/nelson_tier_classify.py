@@ -44,6 +44,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from common import (
+    annotate,
     call_with_retry,
     db_conn,
     extract_json_block,
@@ -189,15 +190,10 @@ def score_one_pair(client, cur, gene: str, indication: str, model: str) -> dict:
     }
     user = USER_TEMPLATE.format(**ctx)
     result = call_with_retry(client, model, SYSTEM_PROMPT, user, max_tokens=768)
-    parsed = extract_json_block(result.text)
-    parsed["gene"] = gene
-    parsed["indication"] = indication
-    parsed["_model"] = model
-    parsed["_prompt_version"] = PROMPT_VERSION
-    parsed["_input_tokens"] = result.input_tokens
-    parsed["_output_tokens"] = result.output_tokens
-    parsed["_cost_usd"] = round(result.cost_usd, 6)
-    return parsed
+    row = extract_json_block(result.text)
+    row["gene"] = gene
+    row["indication"] = indication
+    return annotate(row, result, PROMPT_VERSION)
 
 
 def parse_args():
