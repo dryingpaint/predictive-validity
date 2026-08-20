@@ -141,3 +141,33 @@ Every score below is against the rubric:
 **The pattern:** strong preclinical scores can be individually correct but collectively fail when the underlying causal hypothesis is wrong. Preclinical models test the mechanism WORKS as predicted, not whether the mechanism DRIVES the disease outcome in humans. That second question is what human genetics + human clinical readouts answer.
 
 **Reference in report:** these cases falsify the naive "high preclinical evidence = high approval odds" model. Consistent with the null cell-pathway / animal-in-vivo odds ratios in the current data (§2 of REPORT.md).
+
+---
+
+## 7. TAM-163 / PF-05230901 (TrkB agonist antibody, cachexia / body-weight modulation) — species reversal on primary efficacy endpoint
+
+**Target:** TrkB (NTRK2), a receptor tyrosine kinase. BDNF/TrkB signaling regulates satiety, nociception, and neuroplasticity. Loss-of-function BDNF/NTRK2 variants cause hyperphagic obesity in humans (Yeo 2004 PMID 15494731; Gray 2006 PMID 17130481; Han 2008 NEJM PMID 18753648, WAGR cohort 100% obesity in BDNF-deletion carriers vs 20% in controls).
+
+**Drug:** Pfizer's TAM-163, a TrkB agonist antibody (IgG2). Aimed at body-weight reduction and antidepressant-related applications.
+
+**Preclinical scores:**
+- Mechanistic biology: **3** — TrkB crystal structure known, ligand-binding interface defined, BDNF binding modeled
+- Cell-pathway validation: **2** — TrkB autophosphorylation on BDNF stimulation confirmed; human iPSC-derived neurons show dose-dependent BDNF-responsive signaling
+- Animal in vivo: **3** — mouse models: Bdnf+/− heterozygotes and conditional Bdnf-KO show hyperphagia + obesity; exogenous BDNF infusion (ICV) reduces intake and reverses obesity in genetic models; TrkB agonist antibodies produce weight loss in rodents
+- Human genetic support: **YES** — BDNF/NTRK2 haploinsufficiency causally linked to obesity (Mendelian-grade evidence from multiple independent case reports and WAGR cohort)
+
+**Why it failed:** 
+1. **Phase 1 terminated for on-target sensory safety concern (emergent sensory symptoms)** — TrkB is expressed in peripheral nociceptors; agonism sensitizes pain signaling (NCT01262690, terminated 2011). Mirror-image validation: approved pan-TRK inhibitors (larotrectinib, entrectinib) cause withdrawal hyperalgesia and paresthesias (PMID 32422171), confirming TrkB's bidirectional role in pain.
+2. **Species-specific efficacy reversal on the primary endpoint:** **TAM-163 caused weight LOSS in rodents but weight GAIN in non-human primates** (PMID 23700410). The direction flipped in the species closest to humans.
+
+**Preclinical did NOT predict:**
+- The magnitude or on-target nature of the sensory liability (TrkB agonism is not engineerable away from nociceptive sensitization)
+- The species-reversal on body-weight outcome — rodent models cannot predict the primate efficacy direction on this endpoint
+- The mechanistic reason for the species divergence (likely multi-factorial: differential CNS penetration, receptor expression patterns, metabolic rate, satiety vs. feeding-drive routing across species)
+
+**What this case teaches:** 
+- Strong human genetics (BDNF-LOF → obesity) + validated animal efficacy (mouse BDNF rescue works) + clean mechanism (TrkB agonism) can all be individually correct, but the **species-outcome concordance is not guaranteed**. Rodent efficacy does not predict primate efficacy direction, even for a clean agonist.
+- On-target liabilities (sensory pain from TrkB nociceptor expression) are harder to engineer away than off-target effects — they are intrinsic to the pathway.
+- A single failed agonist (TAM-163) does not kill the target, but it does materially raise the bar for a subsequent attempt. The next TrkB agonist program (MT200605 / Shaanxi Micot, Phase 2 stroke trial, 14-day BID dosing, expected readout Q3/Q4 2026) is the live external test of whether the sensory liability and species-reversal concerns apply broadly or were TAM-163-specific.
+
+**Status (as of Aug 2026):** Program-scoped deprioritization pending MT200605 seizure/safety readout. Human genetics are solid; rodent models are validated; the agonist direction remains mechanistically justified but empirically de-risked by TAM-163. No subsequent clinical TrkB agonist for obesity or body-weight modulation has entered the clinic.
