@@ -1,0 +1,13 @@
+drug_id,name,cutoff_year,n_fetched,ts_cell,ts_animal,scorer,approved,present_cell,present_animal,ts_max
+20212,verubecestat,2012,0,0,0,manual,False,3.0,3.0,0
+11898,torcetrapib,2004,1,0,0,manual,False,3.0,3.0,0
+11151,semagacestat,2005,0,0,0,manual,False,3.0,3.0,0
+16167,solanezumab,2007,6,1,3,manual,False,3.0,3.0,3
+18800,theralizumab,2006,0,0,0,manual,False,3.0,3.0,0
+999001,fialuridine,1993,20,2,2,manual,False,2.0,3.0,2
+999101,sofosbuvir,2010,0,0,0,manual,True,,,0
+999102,sitagliptin,2003,0,0,0,manual,True,,,0
+999103,maraviroc,2003,0,0,0,manual,True,,,0
+999104,palbociclib,2009,6,3,2,manual,True,,,3
+999105,venetoclax,2011,0,0,0,manual,True,,,0
+999106,tofacitinib,2004,2,1,3,manual,True,,,3
