@@ -75,6 +75,33 @@ python3 scorers_llm_agent.py 200    # Sonnet agent on 200 T-Is
 
 **Path 2** (external CSV): produce `(target_id, indication_id, predicted_p_approval)` rows, wire in via `wire_external_scores()` in `external_template.py`.
 
+## Score a novel (not-yet-clinical) target × indication hypothesis
+
+Everything above scores T-I pairs already in the cohort (≥1 Phase 1+ program). For scoping a brand-new
+target before any clinical program exists — e.g. an internal discovery program — use
+`score_novel_target.py`:
+
+```bash
+python3 benchmark/score_novel_target.py --csv examples/capable_targets.csv --out results.json
+# or single-pair:
+python3 benchmark/score_novel_target.py --gene SIK3 --indication "Idiopathic Hypersomnia" --area other
+```
+
+This is genuine out-of-cohort extrapolation, not a lookup, and it differs from naively reusing
+`v_target_evidence_wide` in two ways that matter — both documented at length in the module docstring:
+
+1. **Category A/D evidence is re-scoped to the specific indication**, not borrowed from the target's
+   best-evidenced disease overall (which is a real, easy-to-make mistake — see the module docstring for
+   a case where two targets had strong genetic evidence for Epilepsy that had nothing to do with the
+   indication actually being scored).
+2. **`nelson_tier` must be left unset for uncurated targets.** Setting it — even to `T0`, meant to look
+   conservative — triggers a leakage artifact (documented with the exact cohort statistics in the module
+   docstring) that pushes every score to ~0.99. The tool refuses to set it without an explicit
+   acknowledgment flag.
+
+See `examples/capable_targets.csv` for a worked example (7 preclinical GPCR/kinase programs, including
+cases with zero disease-specific evidence and one indication with no Open Targets entry at all).
+
 ## Query the leaderboard
 
 ```sql
