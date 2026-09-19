@@ -29,6 +29,7 @@ from psycopg2.extras import Json
 
 CTG_STUDY_URL = "https://clinicaltrials.gov/api/v2/studies/{nct_id}"
 PUBMED_EFETCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi"
+PUBMED_ESEARCH_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
 USER_AGENT = "predictive-validity-trial-source-ingest/1.0"
 CTG_REQUEST_INTERVAL_SECONDS = 0.2  # Globally cap request starts at 5/second.
 _ctg_rate_lock = threading.Lock()
@@ -176,6 +177,26 @@ def pubmed_request(pmids: list[str], email: str, api_key: str | None) -> bytes:
     )
     with urllib.request.urlopen(request, timeout=90) as response:
         return response.read()
+
+
+def search_pubmed_by_nct(nct_id: str, email: str, api_key: str | None) -> list[str]:
+    """Return PubMed IDs whose indexed record contains this exact NCT ID."""
+    params = {
+        "db": "pubmed",
+        "term": f'"{nct_id}"[All Fields]',
+        "retmode": "json",
+        "retmax": "100",
+        "tool": "predictive_validity",
+        "email": email,
+    }
+    if api_key:
+        params["api_key"] = api_key
+    result = fetch_json(f"{PUBMED_ESEARCH_URL}?{urllib.parse.urlencode(params)}")
+    return [
+        str(value)
+        for value in (result.get("esearchresult") or {}).get("idlist") or []
+        if str(value).isdigit()
+    ]
 
 
 def pubmed_documents(payload: bytes) -> list[dict]:
@@ -345,6 +366,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--scope", choices=("classified", "program", "all"), default="classified")
     parser.add_argument("--nct-id", action="append", default=[], help="Explicit NCT id; repeatable")
+    parser.add_argument(
+        "--nct-id-file",
+        type=argparse.FileType("r", encoding="utf-8"),
+        help="Text file containing one explicit NCT id per line",
+    )
     parser.add_argument("--limit", type=int, default=100, help="0 means no limit")
     parser.add_argument("--refresh-days", type=int, default=30, help="0 refetches every selected trial")
     parser.add_argument(
@@ -352,6 +378,14 @@ def parse_args() -> argparse.Namespace:
         help="Concurrent ClinicalTrials.gov fetches; starts are capped at 5/second (default 4)",
     )
     parser.add_argument("--skip-pubmed", action="store_true")
+    parser.add_argument(
+        "--search-pubmed-by-nct",
+        action="store_true",
+        help=(
+            "discover PubMed records by exact NCT-id search in addition to "
+            "ClinicalTrials.gov links; requires NCBI_EMAIL"
+        ),
+    )
     parser.add_argument("--ncbi-email", default=os.environ.get("NCBI_EMAIL"))
     parser.add_argument("--dry-run", action="store_true", help="Fetch and parse without writing")
     return parser.parse_args()
@@ -361,9 +395,27 @@ def main() -> None:
     args = parse_args()
     if not 1 <= args.workers <= 32:
         raise SystemExit("--workers must be between 1 and 32")
+    if args.search_pubmed_by_nct and not args.ncbi_email:
+        raise SystemExit("--search-pubmed-by-nct requires NCBI_EMAIL or --ncbi-email")
+    explicit_nct_ids = list(args.nct_id)
+    if args.nct_id_file is not None:
+        explicit_nct_ids.extend(
+            line.strip()
+            for line in args.nct_id_file
+            if line.strip() and not line.lstrip().startswith("#")
+        )
+    invalid_nct_ids = sorted(
+        value for value in explicit_nct_ids
+        if not (len(value.strip()) == 11 and value.strip().upper().startswith("NCT")
+                and value.strip()[3:].isdigit())
+    )
+    if invalid_nct_ids:
+        raise SystemExit(f"Invalid NCT ids: {', '.join(invalid_nct_ids[:5])}")
+    explicit_nct_ids = [value.strip().upper() for value in explicit_nct_ids]
+
     conn = psycopg2.connect(os.environ["DATABASE_URL"])
     cur = conn.cursor()
-    selected = candidate_nct_ids(cur, args.scope, args.nct_id)
+    selected = candidate_nct_ids(cur, args.scope, explicit_nct_ids)
     fresh = recently_fetched(cur, selected, args.refresh_days)
     todo = [nct_id for nct_id in selected if nct_id not in fresh]
     if args.limit:
@@ -408,6 +460,27 @@ def main() -> None:
                     f"  registry {index}/{len(todo)}; stored={registry_count}; "
                     f"failures={failures}"
                 )
+
+    if args.search_pubmed_by_nct and not args.skip_pubmed:
+        api_key = os.environ.get("NCBI_API_KEY")
+        search_targets = selected[: args.limit] if args.limit else selected
+        known_links = {
+            (nct_id, pmid)
+            for pmid, links in pmid_trials.items()
+            for nct_id, _ in links
+        }
+        for index, nct_id in enumerate(search_targets, start=1):
+            try:
+                for pmid in search_pubmed_by_nct(nct_id, args.ncbi_email, api_key):
+                    if (nct_id, pmid) not in known_links:
+                        pmid_trials[pmid].append((nct_id, "nct_indexed_publication"))
+                        known_links.add((nct_id, pmid))
+            except (urllib.error.URLError, TimeoutError, ValueError) as exc:
+                failures += 1
+                print(f"  PubMed search {nct_id}: {type(exc).__name__}", file=sys.stderr)
+            if index % 100 == 0 or index == len(search_targets):
+                print(f"  PubMed NCT search {index}/{len(search_targets)}")
+            time.sleep(0.11 if api_key else 0.34)
 
     abstract_count = 0
     existing_abstract_count = 0

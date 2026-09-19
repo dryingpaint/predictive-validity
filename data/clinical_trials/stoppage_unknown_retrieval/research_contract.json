@@ -1,0 +1,40 @@
+{
+  "as_of_date": "2026-09-03",
+  "decision": "Determine which enrolled trials currently scored with an unknown stoppage driver can be resolved using external, trial-specific evidence before any LLM rescore.",
+  "deliverables": [
+    "A frozen 393-trial cohort with reproducible selection criteria",
+    "A source-candidate ledger with query provenance and trial-linkage strength",
+    "Preserved abstracts or full-text excerpts for eligible evidence",
+    "A precision-reviewed pilot before cohort-wide enrichment",
+    "Updated dossiers and a staged rescore only for trials with material new evidence"
+  ],
+  "evidence_tiers": {
+    "A": "Exact NCT identifier in a primary results source, registry, regulatory record, sponsor disclosure, or SEC filing",
+    "B": "Exact protocol identifier or an unambiguous intervention, sponsor, indication, design, enrollment, and date match",
+    "C": "Program-level evidence relevant to program outcome but not sufficient by itself to assign the trial's scientific outcome or stoppage driver",
+    "exclude": "Background biology, another trial of the same intervention, search-result snippets without a stable source, or ambiguous name-only matches"
+  },
+  "outcomes_to_extract": [
+    "whether the source reports this exact trial",
+    "whether any planned efficacy analysis was performed",
+    "primary endpoint result or futility finding",
+    "safety finding",
+    "proximate termination reason",
+    "subsequent program continuation or discontinuation"
+  ],
+  "scope": {
+    "cohort": "Frozen records in backlog.jsonl",
+    "include_sources": [
+      "PubMed and PubMed Central",
+      "Paperclip scholarly full text",
+      "Crossref, Europe PMC, and OpenAlex metadata",
+      "conference abstracts",
+      "sponsor press releases and investor materials",
+      "SEC filings",
+      "FDA and other regulator documents"
+    ],
+    "languages": "Any; machine translation may aid screening but the source language is retained",
+    "time_window": "From trial registration through 2026-09-03"
+  },
+  "stopping_rule": "For each trial, stop after a primary trial-specific results source is found and corroborated, or after exact-ID searches plus intervention/sponsor/indication searches across the defined source families yield no eligible source. Absence is recorded as search-negative, not as proof that no publication exists."
+}

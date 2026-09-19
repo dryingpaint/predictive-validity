@@ -51,6 +51,42 @@ COMMENT ON VIEW preclin.v_target_indication_program IS
 'Pheiron-style T-I unit: one row per (target × indication), with rolled-up outcome across all programs that pursued it.';
 
 -- ============================================================
+-- v_target_literature_evidence_current — one declared score per target/dimension
+-- ============================================================
+DROP VIEW IF EXISTS preclin.v_target_literature_evidence_current CASCADE;
+CREATE VIEW preclin.v_target_literature_evidence_current AS
+WITH ranked AS (
+  SELECT es.*,
+         ROW_NUMBER() OVER (
+           PARTITION BY es.subject_id, es.dimension
+           ORDER BY
+             CASE es.source_version
+               WHEN 'v2_proper' THEN 1
+               WHEN 'v1' THEN 2
+               ELSE 99
+             END,
+             es.extracted_at DESC,
+             es.evidence_id DESC
+         ) AS version_rank
+  FROM preclin.evidence_score es
+  WHERE es.subject_type = 'target'
+    AND es.subject_id2 IS NULL
+    AND es.source = 'pubmed_haiku'
+    AND es.dimension IN (
+      'line_b_lit', 'line_c_lit', 'line_d_lit', 'line_e_lit'
+    )
+    AND es.source_version IN ('v2_proper', 'v1')
+)
+SELECT evidence_id, subject_id AS target_id, dimension, category,
+       value_numeric, source, source_version, confidence, citation_pmids,
+       extracted_by, extracted_at
+FROM ranked
+WHERE version_rank = 1;
+
+COMMENT ON VIEW preclin.v_target_literature_evidence_current IS
+'Canonical target-literature projection: prefer v2_proper per target and dimension, fall back to the latest v1 row only when v2 is absent; a new scorer version requires an explicit migration.';
+
+-- ============================================================
 -- v_target_evidence_wide — all evidence at TARGET level (indication-agnostic)
 -- ============================================================
 DROP VIEW IF EXISTS preclin.v_target_evidence_wide CASCADE;
@@ -58,11 +94,11 @@ CREATE VIEW preclin.v_target_evidence_wide AS
 SELECT
   t.id AS target_id, t.symbol, t.family, t.tdl,
   t.tractability_sm, t.tractability_ab, t.tractability_protac,
-  -- Line scores (from PubMed Haiku)
-  MAX(CASE WHEN es.dimension = 'line_b_lit' THEN es.value_numeric END) AS line_b_lit,
-  MAX(CASE WHEN es.dimension = 'line_c_lit' THEN es.value_numeric END) AS line_c_lit,
-  MAX(CASE WHEN es.dimension = 'line_d_lit' THEN es.value_numeric END) AS line_d_lit,
-  MAX(CASE WHEN es.dimension = 'line_e_lit' THEN es.value_numeric END) AS line_e_lit,
+  -- Canonical versioned line scores (v2_proper, with v1 fallback)
+  MAX(CASE WHEN lit.dimension = 'line_b_lit' THEN lit.value_numeric END) AS line_b_lit,
+  MAX(CASE WHEN lit.dimension = 'line_c_lit' THEN lit.value_numeric END) AS line_c_lit,
+  MAX(CASE WHEN lit.dimension = 'line_d_lit' THEN lit.value_numeric END) AS line_d_lit,
+  MAX(CASE WHEN lit.dimension = 'line_e_lit' THEN lit.value_numeric END) AS line_e_lit,
   -- Genome-browser derived
   MAX(CASE WHEN es.dimension = 'impc_n_phenotypes' THEN es.value_numeric END) AS impc_n_phenotypes,
   MAX(CASE WHEN es.dimension = 'family_approved_count' THEN es.value_numeric END) AS family_approved_count,
@@ -102,7 +138,14 @@ SELECT
   ggwas.n_sig AS gwas_n_sig,
   gte.ot_overall_max, gte.ot_genetic_max, gte.ot_animal_model_max, gte.ot_known_drug_max
 FROM public.targets t
-LEFT JOIN preclin.evidence_score es ON es.subject_type = 'target' AND es.subject_id = t.id
+LEFT JOIN preclin.evidence_score es
+  ON es.subject_type = 'target'
+ AND es.subject_id = t.id
+ AND es.dimension NOT IN (
+   'line_b_lit', 'line_c_lit', 'line_d_lit', 'line_e_lit'
+ )
+LEFT JOIN preclin.v_target_literature_evidence_current lit
+  ON lit.target_id = t.id
 LEFT JOIN public.gene_constraint gc ON gc.target_id = t.id
 LEFT JOIN public.gene_essentiality_summary ges ON ges.target_id = t.id
 LEFT JOIN LATERAL (
