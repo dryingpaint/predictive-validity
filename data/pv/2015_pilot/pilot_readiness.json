@@ -1,0 +1,716 @@
+{
+  "schema_version": "pv.pilot-readiness-2015/1.0",
+  "generated_at": "2026-09-19T00:46:41.279505+00:00",
+  "cohort_id": "pv_2015_actual_completed_drug_biological_pilot5_v1",
+  "llm_decision_run_id": "46c3debc-ec74-450b-b9d2-788712685a7d",
+  "policy_version": "human_therapeutics_v2",
+  "summary": {
+    "candidate_trials": 10,
+    "included_trials": 5,
+    "excluded_trials": 5,
+    "llm_decisions": 5,
+    "included_trials_in_scope": 5,
+    "target_bridge_rows": 101,
+    "phenotype_bridge_rows": 52999,
+    "structured_target_phenotype_rows": 37362,
+    "structured_target_context_rows": 107775,
+    "scholarly_works_global": 362436,
+    "document_candidate_relations_global": 498236,
+    "historical_pilot_asset_preclinical_relations": 89172,
+    "historical_pilot_asset_preclinical_unique_works": 83700,
+    "pilot_asset_mention_relations": 357439,
+    "pilot_asset_mention_unique_works": 317199,
+    "retained_jats": 7,
+    "retained_pdfs": 0,
+    "gcs_objects": 0,
+    "preclinical_experiments_extracted": 0
+  },
+  "quality_gates": [
+    {
+      "gate": "ten deterministic candidates retained",
+      "status": "pass",
+      "value": 10
+    },
+    {
+      "gate": "five reviewed inclusions",
+      "status": "pass",
+      "value": 5
+    },
+    {
+      "gate": "one LLM decision per inclusion",
+      "status": "pass",
+      "value": 5
+    },
+    {
+      "gate": "all five inclusions in development scope",
+      "status": "pass",
+      "value": 5
+    },
+    {
+      "gate": "no unresolved latest asset proposal",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "no unresolved latest indication proposal",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "literature queue complete",
+      "status": "fail",
+      "value": 23
+    },
+    {
+      "gate": "no duplicate literature work keys",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "no duplicate canonical document candidates",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "asset mention corpus contains every historical preclinical pair",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "no PMID-backed abstract remains pending",
+      "status": "fail",
+      "value": 915
+    },
+    {
+      "gate": "no unfinished acquisition runs",
+      "status": "pass",
+      "value": 0
+    },
+    {
+      "gate": "GCS configured and populated",
+      "status": "warn",
+      "value": 0
+    },
+    {
+      "gate": "narrative preclinical experiment extraction",
+      "status": "warn",
+      "value": 0,
+      "note": "downstream enrichment over retained asset-specific documents"
+    }
+  ],
+  "trials": [
+    {
+      "candidate_ordinal": 0,
+      "membership_status": "excluded",
+      "reason_code": "vaccine",
+      "nct_id": "NCT00711230",
+      "brief_title": "Repeated DermaVir Immunizations in HIV-1 Infected Treatment-naïve Patients",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "HIV Infection"
+      ],
+      "trial_kind": null,
+      "scope_status": null,
+      "scope_category": null,
+      "scope_reason": null,
+      "assets": [],
+      "indications": [],
+      "targets": [],
+      "literature": []
+    },
+    {
+      "candidate_ordinal": 1,
+      "membership_status": "included",
+      "reason_code": "reviewed_therapeutic_candidate",
+      "nct_id": "NCT00911183",
+      "brief_title": "Diffuse Large B Cell Non-Hodgkin's Lymphoma in the Vulnerable/Frail Elderly. A Multicentric Randomized Phase II Trial",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Lymphoma"
+      ],
+      "trial_kind": "therapeutic_drug",
+      "scope_status": "included",
+      "scope_category": "human_therapeutic",
+      "scope_reason": "all_resolved_assets_in_scope",
+      "assets": [
+        {
+          "active_moiety_name": "cyclophosphamide (anhydrous)",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "doxorubicin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "filgrastim",
+          "link_role": "background_therapy",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "pegfilgrastim",
+          "link_role": "background_therapy",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "prednisone",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "rituximab",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "vincristine",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        }
+      ],
+      "indications": [
+        {
+          "preferred_name": "diffuse large B-cell lymphoma",
+          "ontology_identifier": "MONDO:0018905",
+          "indication_role": "treatment"
+        }
+      ],
+      "targets": [
+        {
+          "asset": "cyclophosphamide (anhydrous)",
+          "target": "DNA",
+          "target_kind": "nucleic_acid",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "doxorubicin",
+          "target": "DNA",
+          "target_kind": "nucleic_acid",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "doxorubicin",
+          "target": "TOP2A",
+          "target_kind": "protein",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "filgrastim",
+          "target": "CSF3R",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "pegfilgrastim",
+          "target": "CSF3R",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "prednisone",
+          "target": "NR3C1",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "rituximab",
+          "target": "MS4A1",
+          "target_kind": "protein",
+          "action_normalized": "unknown"
+        },
+        {
+          "asset": "vincristine",
+          "target": "Tubulin",
+          "target_kind": "protein_family",
+          "action_normalized": "inhibits"
+        }
+      ],
+      "literature": [
+        {
+          "candidate_kind": "asset_indication_preclinical",
+          "candidate_relations": 980,
+          "unique_works": 465,
+          "works_with_abstract": 464
+        },
+        {
+          "candidate_kind": "asset_indication_v2",
+          "candidate_relations": 3,
+          "unique_works": 3,
+          "works_with_abstract": 3
+        },
+        {
+          "candidate_kind": "asset_mention",
+          "candidate_relations": 224160,
+          "unique_works": 185538,
+          "works_with_abstract": 174365
+        },
+        {
+          "candidate_kind": "asset_preclinical_wide",
+          "candidate_relations": 57227,
+          "unique_works": 53717,
+          "works_with_abstract": 53017
+        },
+        {
+          "candidate_kind": "effective_target_only_v1",
+          "candidate_relations": 3,
+          "unique_works": 3,
+          "works_with_abstract": 3
+        },
+        {
+          "candidate_kind": "target_phenotype",
+          "candidate_relations": 913,
+          "unique_works": 911,
+          "works_with_abstract": 908
+        },
+        {
+          "candidate_kind": "target_wide_phenotype",
+          "candidate_relations": 14386,
+          "unique_works": 14366,
+          "works_with_abstract": 14268
+        }
+      ]
+    },
+    {
+      "candidate_ordinal": 2,
+      "membership_status": "excluded",
+      "reason_code": "vaccine",
+      "nct_id": "NCT01272466",
+      "brief_title": "Vaccination With Peptides From Anti-apoptotic Proteins in Relapsed Multiple Myeloma",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Relapsed Multiple Myeloma"
+      ],
+      "trial_kind": null,
+      "scope_status": null,
+      "scope_category": null,
+      "scope_reason": null,
+      "assets": [],
+      "indications": [],
+      "targets": [],
+      "literature": []
+    },
+    {
+      "candidate_ordinal": 3,
+      "membership_status": "included",
+      "reason_code": "reviewed_therapeutic_candidate",
+      "nct_id": "NCT01434342",
+      "brief_title": "Feasibility of Delivering a Quitline Based Smoking Cessation Intervention in Cancer Patients",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Lung Cancer",
+        "Tobacco Use Disorder",
+        "Breast Cancer",
+        "Colorectal Cancer",
+        "Prostate Cancer"
+      ],
+      "trial_kind": "behavioral",
+      "scope_status": "included",
+      "scope_category": "human_therapeutic",
+      "scope_reason": "verified_asset_overrides_coarse_trial_kind",
+      "assets": [
+        {
+          "active_moiety_name": "nicotine",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        }
+      ],
+      "indications": [
+        {
+          "preferred_name": "cancer",
+          "ontology_identifier": "MONDO:0004992",
+          "indication_role": "background_condition"
+        },
+        {
+          "preferred_name": "nicotine dependence",
+          "ontology_identifier": "MONDO:0008575",
+          "indication_role": "treatment"
+        }
+      ],
+      "targets": [
+        {
+          "asset": "nicotine",
+          "target": "Neuronal acetylcholine receptor; alpha4/beta2",
+          "target_kind": "protein_complex",
+          "action_normalized": "agonizes"
+        }
+      ],
+      "literature": [
+        {
+          "candidate_kind": "asset_indication_preclinical",
+          "candidate_relations": 541,
+          "unique_works": 541,
+          "works_with_abstract": 539
+        },
+        {
+          "candidate_kind": "asset_mention",
+          "candidate_relations": 59943,
+          "unique_works": 59943,
+          "works_with_abstract": 55625
+        },
+        {
+          "candidate_kind": "asset_preclinical_wide",
+          "candidate_relations": 12649,
+          "unique_works": 12649,
+          "works_with_abstract": 12386
+        },
+        {
+          "candidate_kind": "target_phenotype",
+          "candidate_relations": 108,
+          "unique_works": 108,
+          "works_with_abstract": 108
+        },
+        {
+          "candidate_kind": "target_wide_phenotype",
+          "candidate_relations": 283,
+          "unique_works": 283,
+          "works_with_abstract": 280
+        }
+      ]
+    },
+    {
+      "candidate_ordinal": 4,
+      "membership_status": "excluded",
+      "reason_code": "antibiotic",
+      "nct_id": "NCT01507974",
+      "brief_title": "Examination of the Efficacy of Preventive Antibiotic Treatment During the Puerperium Among Pregnant Women With Recurrent Urinary Tract Infections",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Pregnancy Complications"
+      ],
+      "trial_kind": null,
+      "scope_status": null,
+      "scope_category": null,
+      "scope_reason": null,
+      "assets": [],
+      "indications": [],
+      "targets": [],
+      "literature": []
+    },
+    {
+      "candidate_ordinal": 5,
+      "membership_status": "included",
+      "reason_code": "reviewed_therapeutic_candidate",
+      "nct_id": "NCT01882166",
+      "brief_title": "Time-lapse Monitoring of Early Embryo Development After Ovarian Stimulation During Infertility Treatment",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Infertility, Female"
+      ],
+      "trial_kind": "therapeutic_drug",
+      "scope_status": "included",
+      "scope_category": "human_therapeutic",
+      "scope_reason": "all_resolved_assets_in_scope",
+      "assets": [
+        {
+          "active_moiety_name": "choriogonadotropin alfa",
+          "link_role": "background_therapy",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "follitropin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_exact_parent"
+        },
+        {
+          "active_moiety_name": "follitropin beta",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "urofollitropin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        }
+      ],
+      "indications": [
+        {
+          "preferred_name": "female infertility",
+          "ontology_identifier": "MONDO:0021124",
+          "indication_role": "treatment"
+        }
+      ],
+      "targets": [
+        {
+          "asset": "choriogonadotropin alfa",
+          "target": "LHCGR",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "follitropin",
+          "target": "FSHR",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "follitropin beta",
+          "target": "FSHR",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        },
+        {
+          "asset": "urofollitropin",
+          "target": "FSHR",
+          "target_kind": "protein",
+          "action_normalized": "agonizes"
+        }
+      ],
+      "literature": [
+        {
+          "candidate_kind": "asset_indication_preclinical",
+          "candidate_relations": 3,
+          "unique_works": 2,
+          "works_with_abstract": 2
+        },
+        {
+          "candidate_kind": "asset_indication_v2",
+          "candidate_relations": 1,
+          "unique_works": 1,
+          "works_with_abstract": 1
+        },
+        {
+          "candidate_kind": "asset_mention",
+          "candidate_relations": 972,
+          "unique_works": 865,
+          "works_with_abstract": 809
+        },
+        {
+          "candidate_kind": "asset_preclinical_wide",
+          "candidate_relations": 395,
+          "unique_works": 348,
+          "works_with_abstract": 343
+        },
+        {
+          "candidate_kind": "target_phenotype",
+          "candidate_relations": 892,
+          "unique_works": 829,
+          "works_with_abstract": 822
+        },
+        {
+          "candidate_kind": "target_wide_phenotype",
+          "candidate_relations": 1048,
+          "unique_works": 972,
+          "works_with_abstract": 951
+        }
+      ]
+    },
+    {
+      "candidate_ordinal": 6,
+      "membership_status": "excluded",
+      "reason_code": "non_therapeutic_registry_misclassification",
+      "nct_id": "NCT02046239",
+      "brief_title": "Suture vs Staples for Skin Closure After Liver Resection",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Closure of the Skin After Liver Resection"
+      ],
+      "trial_kind": null,
+      "scope_status": null,
+      "scope_category": null,
+      "scope_reason": null,
+      "assets": [],
+      "indications": [],
+      "targets": [],
+      "literature": []
+    },
+    {
+      "candidate_ordinal": 7,
+      "membership_status": "included",
+      "reason_code": "reviewed_therapeutic_candidate",
+      "nct_id": "NCT02231931",
+      "brief_title": "Drug-drug Interaction Between Digoxin, Furosemide, Metformin, and Rosuvastatin",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Healthy"
+      ],
+      "trial_kind": "therapeutic_drug",
+      "scope_status": "included",
+      "scope_category": "human_therapeutic",
+      "scope_reason": "all_resolved_assets_in_scope",
+      "assets": [
+        {
+          "active_moiety_name": "digoxin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "furosemide",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "metformin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        },
+        {
+          "active_moiety_name": "rosuvastatin",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        }
+      ],
+      "indications": [],
+      "targets": [
+        {
+          "asset": "digoxin",
+          "target": "Sodium/potassium-transporting ATPase",
+          "target_kind": "protein_family",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "furosemide",
+          "target": "SLC12A1",
+          "target_kind": "protein",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "metformin",
+          "target": "GPD2",
+          "target_kind": "protein",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "metformin",
+          "target": "Mitochondrial complex I (NADH dehydrogenase)",
+          "target_kind": "protein_complex",
+          "action_normalized": "inhibits"
+        },
+        {
+          "asset": "rosuvastatin",
+          "target": "HMGCR",
+          "target_kind": "protein",
+          "action_normalized": "inhibits"
+        }
+      ],
+      "literature": [
+        {
+          "candidate_kind": "asset_mention",
+          "candidate_relations": 71330,
+          "unique_works": 70672,
+          "works_with_abstract": 64070
+        },
+        {
+          "candidate_kind": "asset_preclinical_wide",
+          "candidate_relations": 17291,
+          "unique_works": 17159,
+          "works_with_abstract": 16924
+        }
+      ]
+    },
+    {
+      "candidate_ordinal": 8,
+      "membership_status": "excluded",
+      "reason_code": "vaccine",
+      "nct_id": "NCT03998215",
+      "brief_title": "Diphtheria Vaccination in Adolescents With Inflammatory Bowel Disease",
+      "completion_date_text": "2015-01-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Diphtheria",
+        "Inflammatory Bowel Diseases"
+      ],
+      "trial_kind": null,
+      "scope_status": null,
+      "scope_category": null,
+      "scope_reason": null,
+      "assets": [],
+      "indications": [],
+      "targets": [],
+      "literature": []
+    },
+    {
+      "candidate_ordinal": 9,
+      "membership_status": "included",
+      "reason_code": "reviewed_therapeutic_candidate",
+      "nct_id": "NCT00082719",
+      "brief_title": "Short-Term Low-Dose Interferon Alfa in Treating Patients With Cancer of the Urothelium",
+      "completion_date_text": "2015-01",
+      "completion_date_type": "ACTUAL",
+      "study_type": "INTERVENTIONAL",
+      "conditions": [
+        "Bladder Cancer",
+        "Urethral Cancer"
+      ],
+      "trial_kind": "therapeutic_drug",
+      "scope_status": "included",
+      "scope_category": "human_therapeutic",
+      "scope_reason": "all_resolved_assets_in_scope",
+      "assets": [
+        {
+          "active_moiety_name": "interferon alfa-2b",
+          "link_role": "registered_intervention",
+          "resolution_method": "llm_proposal_then_chembl_deterministic_parent"
+        }
+      ],
+      "indications": [
+        {
+          "preferred_name": "carcinoma of urethra",
+          "ontology_identifier": "MONDO:0021327",
+          "indication_role": "treatment"
+        },
+        {
+          "preferred_name": "urinary bladder carcinoma",
+          "ontology_identifier": "MONDO:0004986",
+          "indication_role": "treatment"
+        },
+        {
+          "preferred_name": "urothelial carcinoma",
+          "ontology_identifier": "MONDO:0040679",
+          "indication_role": "treatment"
+        }
+      ],
+      "targets": [
+        {
+          "asset": "interferon alfa-2b",
+          "target": "Interferon alpha/beta receptor",
+          "target_kind": "protein_complex",
+          "action_normalized": "agonizes"
+        }
+      ],
+      "literature": [
+        {
+          "candidate_kind": "asset_mention",
+          "candidate_relations": 1034,
+          "unique_works": 1034,
+          "works_with_abstract": 927
+        },
+        {
+          "candidate_kind": "asset_preclinical_wide",
+          "candidate_relations": 86,
+          "unique_works": 86,
+          "works_with_abstract": 86
+        },
+        {
+          "candidate_kind": "target_phenotype",
+          "candidate_relations": 283,
+          "unique_works": 273,
+          "works_with_abstract": 273
+        },
+        {
+          "candidate_kind": "target_wide_phenotype",
+          "candidate_relations": 789,
+          "unique_works": 789,
+          "works_with_abstract": 785
+        }
+      ]
+    }
+  ]
+}

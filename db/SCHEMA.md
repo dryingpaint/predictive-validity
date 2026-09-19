@@ -1,5 +1,13 @@
 # Preclinical Evidence → Clinical Efficacy: Comprehensive Spec
 
+> **Scope note (2026-09-16):** This file describes the legacy `preclin.*`
+> analytical schema and feature taxonomy. It is not the raw PV ingestion
+> contract. The canonical replayable source ledger, current pilot status,
+> identity rules, and no-big-bang loading procedure are defined in
+> [`../docs/pv/PV_CANONICAL_EVIDENCE_LEDGER.md`](../docs/pv/PV_CANONICAL_EVIDENCE_LEDGER.md).
+> Existing GWAS and Open Targets data remain in place and are reconciled by
+> source-backed links; they are not rebuilt or discarded.
+
 **Core question:** how do different kinds of preclinical evidence predict clinical efficacy, and what are the effect sizes?
 
 **Scope:** every industry-sponsored Phase 1–3 drug/biological clinical trial 2015–2025 (28,286 trials), joined against ~1,700 unique drug programs, ~1,050 unique gene targets, and every relevant preclinical evidence source.
@@ -819,11 +827,9 @@ be reconstructed.
 
 4. **Do we want `preclin.raw_ingestion_proposal` matching your Iris pattern?** Your `MEMORY.md` mentions propose-then-promote 24h cadence. If yes, I add a proposal table + promotion trigger. Otherwise direct-write.
 
-5. **Migration cutover strategy.** Two options:
-   - **Big-bang**: write ingest script, drop schema, reload, cut over analyses to SQL. 4-6 hours, all-or-nothing.
-   - **Dual-write**: keep JSONL as the write path, add nightly job that syncs to DB. Analyses can run either way during transition.
-   
-   I recommend big-bang given data volume is modest and this is one-off setup.
+5. **Migration cutover strategy.** Superseded: the implemented PV source ledger
+   uses numbered schema migrations plus independently replayable, idempotent
+   source acquisition runs. There is no destructive big-bang reload.
 
 ---
 
