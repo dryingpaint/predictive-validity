@@ -47,6 +47,7 @@ from psycopg2.extras import Json
 
 TASKS = (
     "why-stopped",
+    "trial-stoppage-rescore",
     "target-literature",
     "silent-kill",
     "drug-evidence",
@@ -1204,6 +1205,290 @@ def ingest_row(cur, task: str, row: dict) -> tuple[int, int]:
         )
         return 1, 0
 
+    if task == "trial-stoppage-rescore":
+        if row.get("schema_version") not in {
+            "trial_stoppage_rescore_v1", "trial_stoppage_rescore_v2",
+            "trial_stoppage_rescore_v3",
+        }:
+            raise ValueError(
+                "trial-stoppage-rescore row has an unsupported schema version"
+            )
+        nct_id = str(row.get("nct_id") or "").strip()
+        if not nct_id:
+            raise ValueError("trial-stoppage-rescore row has no nct_id")
+        valid_axis_values = {
+            "study_execution": {
+                "withdrawn_before_enrollment", "stopped_before_primary_analysis",
+                "primary_analysis_completed", "completed_as_planned", "unknown",
+            },
+            "primary_endpoint_assessment": {
+                "met", "missed", "mixed", "not_reported", "not_applicable",
+                "unclear",
+            },
+            "scientific_outcome": {
+                "efficacy_success", "confirmed_efficacy_failure",
+                "probable_efficacy_failure", "safety_failure",
+                "unfavorable_benefit_risk", "mixed_or_inconclusive",
+                "not_efficacy_evaluable", "unknown",
+            },
+            "termination_driver": {
+                "efficacy", "positive_efficacy_progression", "safety",
+                "unfavorable_benefit_risk", "commercial_strategic",
+                "competitive_landscape", "enrollment_operational",
+                "manufacturing_supply", "pk_pd_formulation",
+                "pandemic_external", "regulatory_administrative",
+                "planned_or_not_applicable", "unknown",
+            },
+            "program_outcome": {
+                "continued", "discontinued", "followup_only_stopped", "unknown",
+            },
+            "euphemism_assessment": {
+                "confirmed_efficacy_euphemism", "confirmed_not_efficacy",
+                "suspected_efficacy_euphemism", "indeterminate", "not_applicable",
+            },
+            "evidence_strength": {"direct", "strong_indirect", "weak", "insufficient"},
+            "confidence": {"high", "medium", "low"},
+        }
+        for field, allowed in valid_axis_values.items():
+            if row.get(field) not in allowed:
+                raise ValueError(f"invalid {field}: {row.get(field)!r}")
+        termination_driver = row["termination_driver"]
+        if (
+            row["euphemism_assessment"] == "confirmed_efficacy_euphemism"
+            and termination_driver != "efficacy"
+        ):
+            raise ValueError(
+                "confirmed_efficacy_euphemism requires efficacy as the "
+                "termination_driver"
+            )
+        if termination_driver == "positive_efficacy_progression" and (
+            row["scientific_outcome"] not in {
+                "efficacy_success", "mixed_or_inconclusive"
+            }
+            or row["program_outcome"] != "continued"
+        ):
+            raise ValueError(
+                "positive_efficacy_progression requires a positive scientific "
+                "outcome and continued development"
+            )
+        require_source_inputs(row, task)
+        sources = row["_source_documents"]
+        registry_sources = [
+            source for source in sources
+            if source.get("relationship") == "registry_evidence_input"
+        ]
+        if len(registry_sources) != 1:
+            raise ValueError(
+                "trial-stoppage-rescore row must link exactly one registry input"
+            )
+        cited = row.get("cited_source_document_ids")
+        if not isinstance(cited, list) or any(
+            not isinstance(document_id, int) for document_id in cited
+        ):
+            raise ValueError(
+                "trial-stoppage-rescore cited_source_document_ids must be integers"
+            )
+        source_ids = {source.get("source_document_id") for source in sources}
+        if not set(cited).issubset(source_ids):
+            raise ValueError("trial-stoppage-rescore cites an unlinked source document")
+        if registry_sources[0].get("source_document_id") not in cited:
+            raise ValueError("trial-stoppage-rescore must cite its registry input")
+        if row.get("schema_version") == "trial_stoppage_rescore_v3":
+            scope = row.get("program_outcome_scope")
+            allowed_scopes = {
+                "target_indication", "protocol_family", "asset_global", "unknown"
+            }
+            if scope not in allowed_scopes:
+                raise ValueError("trial-stoppage-rescore has invalid program scope")
+            if row["program_outcome"] == "unknown" and scope != "unknown":
+                raise ValueError("unknown program outcome requires unknown scope")
+            if row["program_outcome"] != "unknown" and scope == "unknown":
+                raise ValueError("non-unknown program outcome requires explicit scope")
+            secondary = row.get("secondary_termination_drivers")
+            if not isinstance(secondary, list) or any(
+                value not in valid_axis_values["termination_driver"] - {"unknown"}
+                for value in secondary
+            ):
+                raise ValueError("invalid secondary termination drivers")
+            if termination_driver in secondary:
+                raise ValueError("primary termination driver repeated as secondary")
+            for field in (
+                "scientific_outcome_source_document_ids",
+                "termination_driver_source_document_ids",
+                "program_outcome_source_document_ids",
+            ):
+                values = row.get(field)
+                if not isinstance(values, list) or not values or any(
+                    not isinstance(document_id, int) for document_id in values
+                ):
+                    raise ValueError(f"{field} must be a nonempty integer array")
+                if not set(values).issubset(set(cited)):
+                    raise ValueError(f"{field} must be a subset of cited sources")
+            source_by_id = {
+                source.get("source_document_id"): source for source in sources
+            }
+            allowed_evidence_relations = {
+                "exact_nct", "unique_protocol", "registry_linked",
+                "probable_composite", "parent_trial", "extension_trial",
+                "sibling_indication", "program_only",
+            }
+            allowed_support_types = {
+                "registry_results", "publication_results",
+                "participant_results_present", "primary_endpoint_status",
+                "safety_descriptive_only", "safety_failure",
+                "efficacy_futility", "causal_stop", "study_execution",
+                "program_continuation", "program_discontinuation",
+                "followup_only_stop",
+            }
+            for source in sources:
+                if source.get("relationship") == "registry_evidence_input":
+                    continue
+                missing_capabilities = [
+                    field for field in (
+                        "supports_scientific_outcome",
+                        "supports_termination_driver",
+                        "supports_program_outcome",
+                    )
+                    if not isinstance(source.get(field), bool)
+                ]
+                if missing_capabilities:
+                    raise ValueError(
+                        "v3 non-registry source is missing boolean capabilities: "
+                        + ", ".join(missing_capabilities)
+                    )
+                if source.get("evidence_relation") not in allowed_evidence_relations:
+                    raise ValueError("v3 non-registry source has invalid evidence_relation")
+                if not isinstance(source.get("support_types"), list):
+                    raise ValueError("v3 non-registry source lacks support_types")
+                invalid_support_types = set(source["support_types"]) - allowed_support_types
+                if invalid_support_types:
+                    raise ValueError(
+                        "v3 non-registry source has invalid support_types: "
+                        + ", ".join(sorted(invalid_support_types))
+                    )
+                if any(
+                    source.get(field) for field in (
+                        "supports_scientific_outcome",
+                        "supports_termination_driver",
+                        "supports_program_outcome",
+                    )
+                ) and not source["support_types"]:
+                    raise ValueError("supported v3 source requires nonempty support_types")
+                if not str(source.get("source_text_kind") or "").strip():
+                    raise ValueError("v3 non-registry source lacks source_text_kind")
+                if not str(source.get("source_locator") or "").strip():
+                    raise ValueError("v3 non-registry source lacks source_locator")
+                if source["supports_program_outcome"] and source.get(
+                    "program_scope"
+                ) not in allowed_scopes - {"unknown"}:
+                    raise ValueError("program-supporting source lacks valid scope")
+            for axis, field in (
+                ("scientific_outcome", "scientific_outcome_source_document_ids"),
+                ("termination_driver", "termination_driver_source_document_ids"),
+                ("program_outcome", "program_outcome_source_document_ids"),
+            ):
+                for document_id in row[field]:
+                    source = source_by_id[document_id]
+                    if source.get("relationship") == "registry_evidence_input":
+                        continue
+                    support = source.get(f"supports_{axis}")
+                    if support is not True:
+                        raise ValueError(
+                            f"{field} cites source {document_id} whose flags "
+                            f"prohibit {axis}"
+                        )
+                    if (
+                        axis == "scientific_outcome"
+                        and source.get("evidence_relation") in {
+                            "parent_trial", "extension_trial",
+                            "sibling_indication", "program_only",
+                        }
+                    ):
+                        raise ValueError(
+                            f"{field} cites non-target source {document_id}"
+                        )
+            scientific_sources = [
+                source_by_id[document_id]
+                for document_id in row["scientific_outcome_source_document_ids"]
+            ]
+            scientific_support_types = set().union(*(
+                set(source.get("support_types") or [])
+                for source in scientific_sources
+            ))
+            required_scientific_types = {
+                "confirmed_efficacy_failure": {
+                    "primary_endpoint_status", "efficacy_futility",
+                    "registry_results", "publication_results",
+                },
+                "probable_efficacy_failure": {
+                    "primary_endpoint_status", "efficacy_futility",
+                    "registry_results", "publication_results",
+                },
+                "efficacy_success": {
+                    "participant_results_present", "primary_endpoint_status",
+                    "registry_results", "publication_results",
+                },
+                "mixed_or_inconclusive": {
+                    "participant_results_present", "primary_endpoint_status",
+                    "registry_results", "publication_results",
+                },
+                "safety_failure": {"safety_failure", "registry_results"},
+                "unfavorable_benefit_risk": {
+                    "safety_failure", "registry_results",
+                },
+            }.get(row["scientific_outcome"])
+            if (
+                required_scientific_types is not None
+                and not scientific_support_types & required_scientific_types
+            ):
+                raise ValueError(
+                    "scientific outcome lacks a compatible support type"
+                )
+            if row["primary_endpoint_assessment"] in {"met", "missed", "mixed"} and not (
+                scientific_support_types & {
+                    "primary_endpoint_status", "registry_results",
+                    "publication_results",
+                }
+            ):
+                raise ValueError(
+                    "primary endpoint assessment lacks compatible evidence"
+                )
+            if row["program_outcome"] != "unknown":
+                expected_program_type = {
+                    "continued": "program_continuation",
+                    "discontinued": "program_discontinuation",
+                    "followup_only_stopped": "followup_only_stop",
+                }[row["program_outcome"]]
+                program_sources = [
+                    source_by_id[document_id]
+                    for document_id in row["program_outcome_source_document_ids"]
+                    if source_by_id[document_id].get("relationship")
+                    != "registry_evidence_input"
+                ]
+                if not any(
+                    source.get("supports_program_outcome") is True
+                    and source.get("program_scope") == scope
+                    and expected_program_type in set(source.get("support_types") or [])
+                    for source in program_sources
+                ):
+                    raise ValueError(
+                        "program outcome lacks a matching supported source and scope"
+                    )
+        run_id = insert_run(
+            cur, row, "trial", nct_id, "trial_stoppage_rescore"
+        )
+        upsert_classification(
+            cur,
+            row,
+            run_id,
+            "trial",
+            nct_id,
+            "trial_stoppage_rescore",
+            termination_driver,
+            row.get("rationale"),
+        )
+        return 1, 0
+
     if task == "silent-kill":
         drug_key = str(row.get("drug_key") or "").strip()
         if not drug_key:
@@ -1409,7 +1694,7 @@ def ingest_row(cur, task: str, row: dict) -> tuple[int, int]:
 def log_ingest(cur, path: Path, task: str, rows_read: int, affected: int) -> None:
     target_table = (
         "preclin.classification"
-        if task in ("why-stopped", "silent-kill")
+        if task in ("why-stopped", "trial-stoppage-rescore", "silent-kill")
         else "preclin.evidence_score"
     )
     cur.execute(
@@ -1469,6 +1754,11 @@ def main() -> None:
                 counts[path]["runs"] += 1
                 counts[path]["classifications"] += classifications
                 counts[path]["facts"] += facts
+                if counts[path]["runs"] % 500 == 0:
+                    print(
+                        f"{path}: processed={counts[path]['runs']}",
+                        flush=True,
+                    )
 
         for path, count in counts.items():
             affected = count["classifications"] + count["facts"]
