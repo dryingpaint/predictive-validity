@@ -1,0 +1,5 @@
+pd_def,stratum,rs,rslo,rshi,nsup,aOR,lo,hi,p,adj
+PD present-day,Gpos,2.026,1.873,2.191,2067,2.085,1.723,2.524,4.701248363328827e-14,C(ta) C(tdl)
+PD present-day,Gneg,1.863,1.715,2.024,2223,3.517,2.894,4.276,1.5021892730964475e-36,C(ta) C(tdl)
+PD time-gated,Gpos,0.737,0.637,0.841,521,0.382,0.309,0.473,1.2154598917979501e-18,C(ta) C(tdl)
+PD time-gated,Gneg,1.298,1.16,1.451,886,1.531,1.273,1.841,6.264437240750839e-06,C(ta) C(tdl)
