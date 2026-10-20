@@ -148,7 +148,7 @@ def fill(text: str, numbers: dict) -> str:
         if fmt == "x2":
             return f"{v:.2f}"
         return str(v)
-    return re.sub(r"\{\{([A-Za-z0-9_.|]+)\}\}", sub, text)
+    return re.sub(r"\{\{([A-Za-z0-9_.|+-]+)\}\}", sub, text)
 
 
 def main() -> None:
