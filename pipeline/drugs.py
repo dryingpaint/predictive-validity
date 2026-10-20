@@ -74,10 +74,35 @@ def moiety_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", name.lower())
 
 
-def canonicalize(_args) -> None:
+def canonicalize(args) -> None:
+    """Resolve intervention names. A name that is exactly an entity's
+    nonproprietary name or sponsor code (ignoring case and punctuation) is
+    linked directly; the rest go to the LLM. --scope industry limits the LLM
+    to names from the legacy program tables or from industry-sponsored trials."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id FROM preclin.drug")
+        cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id, normalized_name, "
+                    "resolved_via FROM preclin.drug")
         drugs = cur.fetchall()
+        cur.execute("""SELECT k, min(moiety_id) FROM (
+                         SELECT moiety_key AS k, moiety_id FROM preclin.moiety
+                         UNION SELECT regexp_replace(lower(c), '[^a-z0-9]', '', 'g'), moiety_id
+                         FROM preclin.moiety, unnest(code_names) c) x
+                       WHERE k <> '' GROUP BY k HAVING count(DISTINCT moiety_id) = 1""")
+        exact_keys = dict(cur.fetchall())
+        cur.execute("""SELECT DISTINCT sd.drug_id FROM preclin.ctgov_study_drug sd
+                       JOIN preclin.ctgov_study s USING (nct_id) WHERE s.lead_sponsor_class = 'INDUSTRY'""")
+        industry = {r[0] for r in cur.fetchall()}
+        cur.execute("""SELECT DISTINCT d.subject_key::int FROM pv_evidence.llm_decision d
+                       JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
+                       WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'""",
+                    (TASK.name, TASK.prompt_version))
+        decided_before = {r[0] for r in cur.fetchall()}
+    exact = {did: exact_keys[nk] for did, _, _, _, nk, _ in drugs
+             if did not in decided_before and nk in exact_keys}
+    in_scope = {did for did, *_, via in drugs
+                if args.scope == "all" or via != "ctgov_snapshot" or did in industry}
+    drugs = [d for d in drugs if d[0] in in_scope and d[0] not in exact]
+    with llm.connect() as conn, conn.cursor() as cur:
         # Context: up to three trials per name, from the legacy program tables
         # when the name has programs there, otherwise from the CT.gov snapshot.
         cur.execute("""
@@ -104,7 +129,7 @@ def canonicalize(_args) -> None:
         items = {str(did): {"name": name, "synonyms": list(syn)[:6], "chembl_id": chembl,
                             "trials": [{**t, "interventions": t["interventions"] or []}
                                        for t in context.get(did, [])]}
-                 for did, name, syn, chembl in drugs}
+                 for did, name, syn, chembl, _, _ in drugs}
     run_id = llm.run(TASK, items, reuse_by="subject")
 
     with llm.connect() as conn, conn.cursor() as cur:
@@ -130,15 +155,22 @@ def canonicalize(_args) -> None:
             [(k, m["name"], sorted(m["codes"])) for k, m in moieties.items()])
         cur.execute("DELETE FROM preclin.drug_moiety")
         execute_values(cur, """INSERT INTO preclin.drug_moiety
-              (drug_id, moiety_id, role, biosimilar_of, llm_decision_id)
-            SELECT v.drug_id, m.moiety_id, v.role, v.biosimilar_of, v.did
+              (drug_id, moiety_id, role, biosimilar_of, llm_decision_id, method)
+            SELECT v.drug_id, m.moiety_id, v.role, v.biosimilar_of, v.did, 'llm'
             FROM (VALUES %s) AS v(drug_id, key, role, biosimilar_of, did)
             JOIN preclin.moiety m ON m.moiety_key = v.key
             ON CONFLICT (drug_id, moiety_id) DO NOTHING""", links)
+        if exact:
+            execute_values(cur, """INSERT INTO preclin.drug_moiety (drug_id, moiety_id, role, method)
+                VALUES %s ON CONFLICT (drug_id, moiety_id) DO NOTHING""",
+                           [(did, mid, "investigational", "exact_name") for did, mid in exact.items()])
+            execute_values(cur, """UPDATE preclin.drug d SET entity_kind = 'drug', moiety_decision_id = NULL
+                FROM (VALUES %s) AS v(drug_id) WHERE d.drug_id = v.drug_id""", [(did,) for did in exact])
         execute_values(cur, """UPDATE preclin.drug d SET entity_kind = v.kind, moiety_decision_id = v.did
             FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""", kinds)
         conn.commit()
-    print(f"drugs={len(items)} decided={len(decided)} moieties={len(moieties)} links={len(links)}")
+    print(f"llm items={len(items)} decided={len(decided)} exact-name links={len(exact)} "
+          f"moieties={len(moieties)} links={len(links)}")
 
 
 MODALITIES = ["small_molecule", "peptide", "protein", "monoclonal_antibody", "multispecific_antibody",
@@ -219,7 +251,9 @@ def modality(_args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("canonicalize").set_defaults(fn=canonicalize)
+    canon = sub.add_parser("canonicalize")
+    canon.add_argument("--scope", choices=["all", "industry"], default="all")
+    canon.set_defaults(fn=canonicalize)
     sub.add_parser("modality").set_defaults(fn=modality)
     args = parser.parse_args()
     args.fn(args)
