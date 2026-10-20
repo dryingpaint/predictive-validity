@@ -37,16 +37,30 @@ def table(df: pd.DataFrame) -> str:
 
 
 def transitions_table() -> str:
-    o = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv")).iloc[0]
+    df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv")).set_index("label")
+    cohorts = {"all programs": "All programs", "programs with a US site in the phase": "Developed in the US"}
     rows = []
     for ph, label in [(1, "Phase 1 → Phase 2"), (2, "Phase 2 → Phase 3"), (3, "Phase 3 → Approval")]:
-        n = int(o[f"ph{ph}_n_advanced"] + o[f"ph{ph}_n_suspended"])
-        rows.append([label, f"{pct(o[f'ph{ph}_rate'])}{ci(o[f'ph{ph}_lo'], o[f'ph{ph}_hi'])}", f"{n:,}",
-                     pct(o[f"ph{ph}_aj"]), f"{BIO_TRANSITIONS[ph]:.1f}%"])
-    rows.append(["**Phase 1 → Approval (LOA)**", f"**{pct(o.loa)}**{ci(o.loa_lo, o.loa_hi)}", "",
-                 pct(o.loa_aj), "**7.9%** (novel drugs 6.8%)"])
-    return table(pd.DataFrame(rows, columns=["Transition", "This study, BIO method (95% CI)", "Programs resolved",
-                                             "Competing-risks, 6 years", "BIO 2011–2020"]))
+        row = [label]
+        for key in cohorts:
+            o = df.loc[key]
+            n = int(o[f"ph{ph}_n_advanced"] + o[f"ph{ph}_n_suspended"])
+            row.append(f"{pct(o[f'ph{ph}_rate'])}{ci(o[f'ph{ph}_lo'], o[f'ph{ph}_hi'])}, n={n:,}")
+        rows.append(row + [f"{BIO_TRANSITIONS[ph]:.1f}%"])
+    rows.append(["**Phase 1 → Approval (LOA)**"]
+                + [f"**{pct(df.at[k, 'loa'])}**{ci(df.at[k, 'loa_lo'], df.at[k, 'loa_hi'])}" for k in cohorts]
+                + ["**7.9%** (novel drugs 6.8%)"])
+    return table(pd.DataFrame(rows, columns=["Transition", *[f"{v} (95% CI)" for v in cohorts.values()],
+                                             "BIO 2011–2020"]))
+
+
+def sensitivity_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
+    df = df.assign(**{"Cohort or definition": df.label.str.capitalize(),
+                      "Ph1→2": df.ph1_rate.map(pct), "Ph2→3": df.ph2_rate.map(pct), "Ph3→approval": df.ph3_rate.map(pct),
+                      "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
+                      "LOA, competing risks (6 y)": df.loa_aj.map(pct)})
+    return table(df.iloc[:, -6:])
 
 
 def stratum_table(csv: str, label: str) -> str:
@@ -113,7 +127,7 @@ def ablation_table() -> str:
     return table(df.iloc[:, -2:])
 
 
-TABLES = {"TRANSITIONS_TABLE": transitions_table, "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area"),
+TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table, "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area"),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality"),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table}
