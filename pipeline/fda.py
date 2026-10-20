@@ -3,6 +3,7 @@
     python -m pipeline.fda fetch     # Drugs@FDA, openFDA labels, approval letters -> .cache/fda
     python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
+    python -m pipeline.fda link      # LLM: each application's active ingredients -> preclin.moiety
 
 Letters cover every approved original NDA/BLA and every approved efficacy
 supplement (Drugs@FDA submission class EFFICACY) dated 2015-01-01..2025-12-31.
@@ -294,10 +295,82 @@ def extract(_args) -> None:
     print(f"run={run_id} approved_uses={len(rows)}")
 
 
+INGREDIENT_SYSTEM = """You resolve the active ingredients of an FDA-approved product to molecular entities.
+
+Return every active entity in the product. For each give its international nonproprietary name (INN) or USAN in lower case (e.g. "metformin", "insulin glargine", "trastuzumab deruxtecan", "axicabtagene ciloleucel"), with salts, esters used only as salt forms, hydrates, strengths and formulations stripped ("METFORMIN HYDROCHLORIDE" -> "metformin", "ATAZANAVIR SULFATE" -> "atazanavir"). Keep a prodrug or ester that has its own INN as that INN (e.g. "tenofovir alafenamide", "valacyclovir").
+
+For a biologic with a four-letter FDA suffix, use the core name without the suffix and say whether the product is a biosimilar or interchangeable biosimilar of an earlier reference product (biosimilar_of = the reference product's core name), or the originator (biosimilar_of = null). Mixtures without a single defined entity (e.g. allergenic extracts, plasma pools, multivitamins) use kind = mixture with the components you can name."""
+
+INGREDIENT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "kind": {"type": "string", "enum": ["single", "combination", "mixture"]},
+        "components": {"type": "array", "items": {
+            "type": "object",
+            "properties": {"name": {"type": "string"}, "biosimilar_of": {"type": ["string", "null"]}},
+            "required": ["name", "biosimilar_of"], "additionalProperties": False}},
+    },
+    "required": ["kind", "components"],
+    "additionalProperties": False,
+}
+
+
+def render_ingredient(p: dict) -> str:
+    return (f"{p['appl_type']} {p['appl_no']} (sponsor: {p['sponsor']})\nBrand names: {', '.join(p['brands'])}\n"
+            f"Active ingredient field(s): {' | '.join(p['ingredients'])}")
+
+
+INGREDIENT_TASK = llm.Task(
+    name="fda_application_moiety", prompt_version="v1", schema_version="v1",
+    system=INGREDIENT_SYSTEM, schema=INGREDIENT_SCHEMA, render=render_ingredient,
+    subject_type="fda_application", effort="low", max_tokens=2000)
+
+
+def link(_args) -> None:
+    from pipeline.drugs import moiety_key
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT a.appl_no, a.appl_type, coalesce(a.sponsor_name, ''),
+                   array_agg(DISTINCT p.drug_name) FILTER (WHERE p.drug_name IS NOT NULL),
+                   array_agg(DISTINCT p.active_ingredient) FILTER (WHERE p.active_ingredient IS NOT NULL)
+            FROM preclin.fda_application a LEFT JOIN preclin.fda_product p USING (appl_no)
+            GROUP BY a.appl_no, a.appl_type, a.sponsor_name""")
+        items = {}
+        for appl_no, appl_type, sponsor, brands, ingredients in cur.fetchall():
+            cur.execute("""SELECT array_agg(DISTINCT b) , array_agg(DISTINCT g)
+                           FROM preclin.fda_label l, unnest(l.brand_names) b, unnest(l.generic_names) g
+                           WHERE %s = ANY(l.application_numbers)""", (appl_type + appl_no,))
+            lb, lg = cur.fetchone()
+            items[appl_no] = {"appl_no": appl_no, "appl_type": appl_type, "sponsor": sponsor,
+                              "brands": sorted(set((brands or []) + (lb or []))),
+                              "ingredients": sorted(set((ingredients or []) + (lg or [])))}
+    run_id = llm.run(INGREDIENT_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+        links, names = [], {}
+        for appl_no, decision_id, out in cur.fetchall():
+            for comp in out["components"]:
+                key = moiety_key(comp["name"])
+                if key:
+                    names.setdefault(key, comp["name"])
+                    links.append((appl_no, key, comp["biosimilar_of"], decision_id))
+        execute_values(cur, """INSERT INTO preclin.moiety (moiety_key, name) VALUES %s
+                               ON CONFLICT (moiety_key) DO NOTHING""", list(names.items()))
+        cur.execute("DELETE FROM preclin.fda_application_moiety")
+        execute_values(cur, """INSERT INTO preclin.fda_application_moiety
+              (appl_no, moiety_id, biosimilar_of, llm_decision_id)
+            SELECT v.appl_no, m.moiety_id, v.biosimilar_of, v.did
+            FROM (VALUES %s) AS v(appl_no, key, biosimilar_of, did)
+            JOIN preclin.moiety m ON m.moiety_key = v.key ON CONFLICT DO NOTHING""", links)
+        conn.commit()
+    print(f"applications={len(items)} links={len(links)} moieties={len(names)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load), ("extract", extract)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("extract", extract), ("link", link)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
