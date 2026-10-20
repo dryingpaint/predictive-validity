@@ -261,17 +261,29 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
             return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
     n_ok = n_bad = 0
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool, conn.cursor() as cur:
+    pending = []  # decisions not yet committed, replayed after a dropped connection
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         for i, fut in enumerate(as_completed([pool.submit(call, k) for k in todo]), 1):
             key, request_id, raw, parsed, error, usage = fut.result()
-            _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, error, None)
+            pending.append((key, raw, parsed, request_id, usage, error))
             n_bad += error is not None
             n_ok += error is None
-            if i % 25 == 0:  # short transactions: migrations adding FKs to llm_decision need gaps
-                conn.commit()
+            if i % 25 == 0 or i == len(todo):  # short transactions: FK migrations on llm_decision need gaps
+                for attempt in range(5):
+                    try:
+                        with conn.cursor() as cur:
+                            for k, r, pa, req, us, err in pending:
+                                _store(cur, run_id, task, k, items[k], r, pa, req, us, err, None)
+                        conn.commit()
+                        pending = []
+                        break
+                    except psycopg2.OperationalError:
+                        time.sleep(10 * (attempt + 1))
+                        conn = connect()
+                else:
+                    raise RuntimeError("database unreachable")
             if i % 500 == 0 or i == len(todo):
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
-    conn.commit()
 
 
 AGENT_INSTRUCTIONS = """Each line of the chunk file is one item: {"subject_key": ..., "user_message": ...}.
