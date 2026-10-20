@@ -1,0 +1,8 @@
+This report rebuilds both questions from primary records. We took every interventional drug or biological study on ClinicalTrials.gov ({{section1.scale.ctgov_studies|int}} studies, snapshot of {{section1.snapshot}}), resolved each intervention to the molecular entity it contains and each condition to a MONDO disease, and joined them to every FDA approval we could document: Drugs@FDA applications, {{section1.scale.fda_approved_uses|int}} approved uses read from 2015–2026 approval letters, current labels, and {{section1.scale.cber_applications|int}} CBER biologics applications rebuilt from the agency's yearly pages and letters. The unit throughout is a *development program*: one molecular entity developed for one disease. An entity counts toward a program only in trials where it is the investigational agent, not a comparator or background therapy.
+
+The report has two parts:
+
+1. **Industry failure modes.** Phase transitions, likelihood of approval (LOA) and the reasons programs stop, for programs that entered each phase in 2015–2025: an updated companion to BIO's *Clinical Development Success Rates 2011–2020*.
+2. **Predictive power of preclinical evidence.** For programs aimed at a human protein target, whether the target had human genetic, somatic, animal-model, expression, pathway or functional-screen evidence for the program's disease, as known before the program entered the phase, and how much each line changes the chance of approval.
+
+Every classification in the pipeline (entity resolution, disease mapping, trial purpose and roles, approvals, stop reasons, trial outcomes, targets) was made by an LLM reading the source record, recorded with its prompt and input, and checked against an independent re-derivation of a seeded sample (Appendix).
