@@ -65,8 +65,7 @@ SYSTEM_PROMPT = (
 
 
 def get_db_url() -> str:
-    return ("postgresql://neondb_owner:npg_Snpr6yPT9sOE@ep-late-smoke-amionchh-pooler."
-            "c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+    return os.environ["DATABASE_URL"]
 
 
 def get_api_key() -> str:

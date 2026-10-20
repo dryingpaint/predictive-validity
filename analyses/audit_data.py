@@ -22,8 +22,7 @@ import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
-DB = ("postgresql://neondb_owner:npg_Snpr6yPT9sOE@ep-late-smoke-amionchh-pooler."
-      "c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+DB = os.environ["DATABASE_URL"]
 
 
 def q(conn, sql: str, **kw) -> pd.DataFrame:

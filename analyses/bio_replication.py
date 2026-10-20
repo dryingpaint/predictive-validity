@@ -80,8 +80,7 @@ cohort AS (
 
 
 def get_db_url() -> str:
-    return ("postgresql://neondb_owner:npg_Snpr6yPT9sOE@ep-late-smoke-amionchh-pooler."
-            "c-5.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require")
+    return os.environ["DATABASE_URL"]
 
 
 def transitions_by(conn, group_col: str | None, where: str = "") -> pd.DataFrame:
