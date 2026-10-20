@@ -85,6 +85,9 @@ Status values: `open` (not yet checked) · `confirmed` (reproduces, method sound
 | D02 | Two conflicting LOA definitions in circulation: committed `bio_replication.py` (approved only → 7.4%) and local working copy (approved + approved_elsewhere → 16.1%) | C11, C15 | open |
 | D03 | `preclin.approval` holds 544 novel FDA approvals 2015–2025 with one indication each; supplemental indications, pre-2015 approvals and biosimilars are absent | Strict per-T-I outcome; C11–C25, C27–C39 | open |
 | D04 | Report cites the leaked Nelson-tier model (AUC 0.825, genetics −17.7pp); `origin/main` RESULTS.md has the corrected AUC 0.570 and genetics −1.9pp | C26, C32–C34 | open |
+| D06 | Drug entity resolution: 79% of 31,405 `preclin.drug` rows are `unresolved` strings; one molecule appears as many drugs (pembrolizumab: `keytruda`, `pembrolizumab 200 mg`, `Pembrolizumab Dose A`, `Pembrolizumab (MK-3475)`, `Keytruda-EU`, …) and placebo arms appear as drugs (`Tirzepatide-Placebo`). Programs are keyed on these strings. | Program counts, LOA denominators, drug-level labels | fixing (pipeline.drugs → preclin.moiety) |
+| D07 | `preclin.indication.mondo_id`/`efo_id` empty for all 8,875 indications; `canonical_disease` (90% filled) has case/synonym duplicates | Disease-level units, approval matching | fixing (pipeline.indications) |
+| D08 | 6,687 drugs flagged `is_globally_approved` with no ChEMBL ID (approval status from earlier LLM name classification) drive 14,669 `approved_elsewhere` programs | Outcome labels | open |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | open |
 
 ## Work log
@@ -92,3 +95,12 @@ Status values: `open` (not yet checked) · `confirmed` (reproduces, method sound
 - 2026-10-20 — Exported the report; mapped DB (`ep-late-smoke`); found main ahead
   of the report (PRs #20–#26). Created worktree, merged Section 1 and Section 2
   branches. Logged D01–D05.
+- 2026-10-20 — Launched read-only audit workflow (10 claim clusters, each
+  adversarially verified). Scraped FDA sources: Drugs@FDA (6,389 NDA/BLA
+  applications, 87,337 submissions), 3,821 approval letters for every 2015–2025
+  original approval and efficacy supplement (3,410 unique PDFs, text extracted),
+  openFDA labels (5,273 NDA/BLA SPLs), ChEMBL 37 drug_indication (60,055 rows).
+  Migrations 53–55: `preclin.fda_*`, indication MONDO columns, `preclin.moiety` /
+  `preclin.drug_moiety`. Started three claude-opus-5 batch jobs, all recorded in
+  `pv_evidence.llm_decision`: letter → approved uses (3,410), indication → MONDO
+  (8,875), intervention name → molecular entities (31,405). Logged D06–D08.

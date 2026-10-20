@@ -75,23 +75,35 @@ def moiety_key(name: str) -> str:
 
 def canonicalize(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id FROM preclin.drug")
+        drugs = cur.fetchall()
+        # Context: up to three trials per name, from the legacy program tables
+        # when the name has programs there, otherwise from the CT.gov snapshot.
         cur.execute("""
             WITH t AS (
               SELECT p.drug_id, pt.nct_id,
                      row_number() OVER (PARTITION BY p.drug_id ORDER BY pt.nct_id) AS rn
               FROM preclin.program p JOIN preclin.program_trial pt USING (program_id)
               GROUP BY p.drug_id, pt.nct_id)
-            SELECT d.drug_id, d.display_name, coalesce(d.synonyms, '{}'), d.chembl_id,
-                   coalesce(json_agg(json_build_object('title', tr.brief_title, 'sponsor', tr.sponsor_name,
-                                     'interventions', tr.interventions))
-                            FILTER (WHERE tr.nct_id IS NOT NULL), '[]')
-            FROM preclin.drug d
-            LEFT JOIN t ON t.drug_id = d.drug_id AND t.rn <= 3
-            LEFT JOIN public.trials tr ON tr.nct_id = t.nct_id
-            GROUP BY d.drug_id""")
+            SELECT t.drug_id, json_agg(json_build_object('title', tr.brief_title, 'sponsor', tr.sponsor_name,
+                                                         'interventions', tr.interventions))
+            FROM t JOIN public.trials tr ON tr.nct_id = t.nct_id
+            WHERE t.rn <= 3 GROUP BY t.drug_id""")
+        context = dict(cur.fetchall())
+        cur.execute("""
+            WITH s AS (
+              SELECT drug_id, nct_id, row_number() OVER (PARTITION BY drug_id ORDER BY nct_id) AS rn
+              FROM preclin.ctgov_study_drug)
+            SELECT s.drug_id, json_agg(json_build_object('title', c.brief_title, 'sponsor', c.lead_sponsor,
+                                                         'interventions', c.interventions))
+            FROM s JOIN preclin.ctgov_study c USING (nct_id)
+            WHERE s.rn <= 3 GROUP BY s.drug_id""")
+        for drug_id, trials in cur.fetchall():
+            context.setdefault(drug_id, trials)
         items = {str(did): {"name": name, "synonyms": list(syn)[:6], "chembl_id": chembl,
-                            "trials": [{**t, "interventions": t["interventions"] or []} for t in trials]}
-                 for did, name, syn, chembl, trials in cur.fetchall()}
+                            "trials": [{**t, "interventions": t["interventions"] or []}
+                                       for t in context.get(did, [])]}
+                 for did, name, syn, chembl in drugs}
     run_id = llm.run(TASK, items)
 
     with llm.connect() as conn, conn.cursor() as cur:

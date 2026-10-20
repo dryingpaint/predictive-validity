@@ -1,7 +1,8 @@
 """Map every condition string (preclin.indication) to the MONDO term for its core disease.
 
-    python -m pipeline.indications register   # add ClinicalTrials.gov condition strings to preclin.indication
-    python -m pipeline.indications map        # LLM choice among MONDO candidates -> indication.mondo_id
+    python -m pipeline.indications map   # LLM choice among MONDO candidates -> indication.mondo_id
+
+Condition strings enter preclin.indication through pipeline.programs register.
 
 Candidates come from the pinned MONDO release in preclin.ontology_term:
 character n-gram TF-IDF retrieval over labels and exact synonyms. The LLM
@@ -13,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import re
-from collections import defaultdict
 
 import numpy as np
 from psycopg2.extras import execute_values
@@ -111,24 +111,6 @@ TASK = llm.Task(name="indication_mondo", prompt_version="v2", schema_version="v1
                 effort="medium", max_tokens=3000)
 
 
-def register(_args) -> None:
-    """Every condition string of every snapshot study, keyed like the legacy rows."""
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT DISTINCT c FROM preclin.ctgov_study, unnest(conditions) c")
-        variants = defaultdict(set)
-        for (c,) in cur.fetchall():
-            if norm(c):
-                variants[norm(c)].add(c.strip())
-        rows = [(k, sorted(v)[0], sorted(v)) for k, v in variants.items()]
-        execute_values(cur, """INSERT INTO preclin.indication (normalized_name, display_name, ct_gov_conditions)
-            VALUES %s ON CONFLICT (normalized_name) DO UPDATE SET ct_gov_conditions =
-              (SELECT array_agg(DISTINCT x) FROM unnest(preclin.indication.ct_gov_conditions
-                                                        || EXCLUDED.ct_gov_conditions) x)""",
-                       rows, page_size=5000)
-        conn.commit()
-    print(f"condition strings registered: {len(rows)}")
-
-
 def map_indications(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         index = MondoIndex(cur)
@@ -173,7 +155,6 @@ def map_indications(_args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("register").set_defaults(fn=register)
     sub.add_parser("map").set_defaults(fn=map_indications)
     args = parser.parse_args()
     args.fn(args)
