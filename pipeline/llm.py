@@ -181,8 +181,14 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
     earlier decisions when only incidental payload details (e.g. the order of
     context rows) changed."""
     conn = connect()
-    run_id = uuid.uuid4()
     api = client()
+    resume = os.environ.get("LLM_RESUME_RUN")
+    if resume:  # re-attach to an agent run whose chunks are already exported
+        run_id = uuid.UUID(resume)
+        _run_agents(conn, run_id, task, items, [], poll_seconds, resume=True)
+        _complete(run_id)
+        return run_id
+    run_id = uuid.uuid4()
     with conn.cursor() as cur:
         cur.execute(
             """
@@ -212,13 +218,14 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
         _run_agents(conn, run_id, task, items, todo, poll_seconds)
     else:
         _run_batches(api, conn, run_id, task, items, todo, poll_seconds)
+    _complete(run_id)
+    return run_id
 
-    with conn.cursor() as cur:
+
+def _complete(run_id: uuid.UUID) -> None:
+    with connect() as conn, conn.cursor() as cur:
         cur.execute("UPDATE pv_evidence.llm_decision_run SET status='completed', completed_at=%s "
                     "WHERE decision_run_id=%s", (datetime.now(timezone.utc), str(run_id)))
-    conn.commit()
-    conn.close()
-    return run_id
 
 
 def _parse(task: Task, payload: dict[str, Any], msg) -> tuple[str, dict | None, str | None, dict]:
@@ -270,21 +277,31 @@ task.json's "output_schema". Write one line per item to the .out.jsonl file:
 
 
 def _run_agents(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str],
-                poll_seconds: int) -> None:
+                poll_seconds: int, resume: bool = False) -> None:
     import jsonschema
     out_dir = os.path.join(REPO, ".cache", "agent", task.name, str(run_id))
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, "task.json"), "w") as f:
-        json.dump({"task": task.name, "prompt_version": task.prompt_version, "system": task.system,
-                   "output_schema": task.schema, "instructions": AGENT_INSTRUCTIONS}, f, indent=1)
-    chunks = []
-    for start in range(0, len(todo), AGENT_CHUNK):
-        name = f"chunk_{start // AGENT_CHUNK:05d}"
-        with open(os.path.join(out_dir, name + ".jsonl"), "w") as f:
-            for key in todo[start:start + AGENT_CHUNK]:
-                f.write(json.dumps({"subject_key": key, "user_message": task.render(items[key])}) + "\n")
-        chunks.append(name)
-    print(f"[{task.name}] wrote {len(chunks)} agent chunks to {out_dir}", flush=True)
+    if resume:
+        chunks = sorted(f[:-6] for f in os.listdir(out_dir) if f.startswith("chunk_") and f.endswith(".jsonl")
+                        and not f.endswith(".out.jsonl"))
+        with conn.cursor() as cur:
+            cur.execute("""SELECT DISTINCT split_part(provider_request_id, ':', 2) FROM pv_evidence.llm_decision
+                           WHERE decision_run_id = %s AND provider_request_id LIKE 'agent:%%'""", (str(run_id),))
+            done = {r[0] for r in cur.fetchall()}
+        chunks = [c for c in chunks if c not in done]
+        print(f"[{task.name}] resuming {run_id}: {len(done)} chunks imported, {len(chunks)} pending", flush=True)
+    else:
+        os.makedirs(out_dir, exist_ok=True)
+        with open(os.path.join(out_dir, "task.json"), "w") as f:
+            json.dump({"task": task.name, "prompt_version": task.prompt_version, "system": task.system,
+                       "output_schema": task.schema, "instructions": AGENT_INSTRUCTIONS}, f, indent=1)
+        chunks = []
+        for start in range(0, len(todo), AGENT_CHUNK):
+            name = f"chunk_{start // AGENT_CHUNK:05d}"
+            with open(os.path.join(out_dir, name + ".jsonl"), "w") as f:
+                for key in todo[start:start + AGENT_CHUNK]:
+                    f.write(json.dumps({"subject_key": key, "user_message": task.render(items[key])}) + "\n")
+            chunks.append(name)
+        print(f"[{task.name}] wrote {len(chunks)} agent chunks to {out_dir}", flush=True)
 
     pending = set(chunks)
     while pending:
@@ -292,34 +309,58 @@ def _run_agents(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             path = os.path.join(out_dir, name + ".out.jsonl")
             if not os.path.exists(path):
                 continue
-            lines = [json.loads(l) for l in open(path) if l.strip()]
+            lines = []
+            for raw_line in open(path):
+                try:
+                    lines.append(json.loads(raw_line))
+                except json.JSONDecodeError:  # a malformed line counts as a missing item
+                    continue
             if not lines or not lines[-1].get("done"):
                 continue
             expected = [json.loads(l)["subject_key"] for l in open(os.path.join(out_dir, name + ".jsonl"))]
             got = {r["subject_key"]: r.get("output") for r in lines if "subject_key" in r}
             n_bad = 0
-            with conn.cursor() as cur:
-                for key in expected:
-                    out, error = got.get(key), None
-                    if out is None:
-                        error = "agent_missing"
-                    else:
-                        try:
-                            jsonschema.validate(out, task.schema)
-                            if task.validate:
-                                task.validate(items[key], out)
-                        except Exception as exc:
-                            error = f"{type(exc).__name__}: {str(exc)[:300]}"
-                    raw = json.dumps(out) if out is not None else ""
-                    _store(cur, run_id, task, key, items[key], raw, None if error else out,
-                           f"agent:{name}", {}, error, None)
-                    n_bad += error is not None
-            conn.commit()
+            for attempt in range(5):
+                try:
+                    if conn.closed:
+                        conn = connect()
+                    n_bad = _import_chunk(conn, run_id, task, items, name, expected, got)
+                    break
+                except psycopg2.OperationalError:
+                    conn.close()
+                    time.sleep(10 * (attempt + 1))
+            else:
+                raise RuntimeError(f"could not import {name}")
             pending.discard(name)
             print(f"[{task.name}] {name}: imported {len(expected)} invalid={n_bad} ({len(pending)} chunks left)",
                   flush=True)
         if pending:
             time.sleep(poll_seconds)
+
+
+def _import_chunk(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], name: str,
+                  expected: list[str], got: dict) -> int:
+    """Validate one chunk's outputs and store them; returns the number of invalid items."""
+    import jsonschema
+    n_bad = 0
+    with conn.cursor() as cur:
+        for key in expected:
+            out, error = got.get(key), None
+            if out is None:
+                error = "agent_missing"
+            else:
+                try:
+                    jsonschema.validate(out, task.schema)
+                    if task.validate:
+                        task.validate(items[key], out)
+                except Exception as exc:  # schema or semantic check failed
+                    error = f"{type(exc).__name__}: {str(exc)[:300]}"
+            raw = json.dumps(out) if out is not None else ""
+            _store(cur, run_id, task, key, items[key], raw, None if error else out,
+                   f"agent:{name}", {}, error, None)
+            n_bad += error is not None
+    conn.commit()
+    return n_bad
 
 
 def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
