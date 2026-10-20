@@ -126,13 +126,24 @@ def fetch(_args) -> None:
     print(f"letters fetched: {len(todo)}")
 
 
+COMMON_WORDS = {"the", "of", "and", "to", "in", "for", "this", "that", "your", "with", "is", "we", "on", "be"}
+
+
+def readable(text: str) -> bool:
+    """False for an empty text layer, or one with many words and none of the
+    commonest English words (a font with a shifted encoding)."""
+    words = [w.lower() for w in text.split() if w.isalpha()]
+    return bool(words) and (len(words) < 40 or any(w in COMMON_WORDS for w in words))
+
+
 def pdf_text(path: str) -> str:
-    """Text of every page of a PDF. Pages with no text layer (letters whose first
-    page is a scanned letterhead image) are rendered at 300 dpi and OCRed."""
+    """Text of every page of a PDF. Pages whose text layer is missing (letters
+    whose first page is a scanned letterhead image) or unreadable are rendered
+    at 300 dpi and OCRed."""
     pages = []
     for i, page in enumerate(PdfReader(path).pages, start=1):
         text = page.extract_text() or ""
-        if not text.strip():
+        if not readable(text):
             with tempfile.TemporaryDirectory() as tmp:
                 subprocess.run(["pdftoppm", "-r", "300", "-f", str(i), "-l", str(i), "-png", path,
                                 os.path.join(tmp, "page")], check=True, capture_output=True)

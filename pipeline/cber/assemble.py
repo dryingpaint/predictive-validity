@@ -6,6 +6,7 @@ import json
 import os
 import re
 
+from pipeline.cber import corrections
 from pipeline.cber import extra_decisions
 from pipeline.cber import fetch
 from pipeline.cber import letters
@@ -55,6 +56,35 @@ def pick_letter(cands, appl, suppl, date):
 
 def clean_name(s):
     return re.sub(r"\s+", " ", (s or "")).strip() or None
+
+
+def apply_corrections(index):
+    """Drop, re-letter and add records per pipeline.cber.corrections."""
+    out = []
+    for r in index:
+        key = (r["appl_no"], r["submission_no"])
+        if key in corrections.DROP:
+            continue
+        if key in corrections.LETTER:
+            fix = corrections.LETTER[key]
+            path = os.path.join(fetch.PDF_DIR, fix["sha256"] + ".pdf")
+            r.update({"url": fix["url"], "wayback_pdf": fix["wayback_pdf"], "sha256": fix["sha256"],
+                      "n_bytes": os.path.getsize(path), "text": None, "error": None, "pdf_source": "wayback",
+                      "letter_note": fix["why"]})
+        out.append(r)
+    for a in corrections.ADD:
+        path = os.path.join(fetch.PDF_DIR, a["sha256"] + ".pdf")
+        out.append({"appl_no": a["appl_no"], "appl_type": "BLA", "submission_type": "SUPPL",
+                    "submission_no": a["submission_no"], "submission_class_code_id": None,
+                    "approval_date": a["approval_date"], "review_priority": None, "sponsor": a["sponsor"],
+                    "url": a["url"], "doc_date": a["approval_date"], "doc_title": None, "error": None,
+                    "sha256": a["sha256"], "n_bytes": os.path.getsize(path), "text": None, "center": "CBER",
+                    "product_brand": a["product_brand"], "proper_name": a["proper_name"],
+                    "product_class": a["product_class"], "is_vaccine": a["product_class"] == "vaccine",
+                    "change_category": a["change_category"], "listed_on_yearly_page": False,
+                    "match_method": "verification", "pdf_source": "wayback", "source_page": a["source_page"],
+                    "letter_note": a["letter_note"]})
+    return out
 
 
 def main():
@@ -174,6 +204,7 @@ def main():
                 used_keys.add((a_, s_, date))
                 index.append(make_record(a_, s_, date, cat, letter=r, how="product_page_letter"))
 
+    index = apply_corrections(index)
     with open(os.path.join(BASE, "actions_enumerated.jsonl"), "w") as f:
         for e in enum:
             f.write(json.dumps(e) + "\n")
