@@ -63,8 +63,12 @@ def git_commit() -> str | None:
     return value if result.returncode == 0 and len(value) == 40 else None
 
 
+KEEPALIVE = {"keepalives": 1, "keepalives_idle": 30, "keepalives_interval": 10, "keepalives_count": 3}
+
+
 def connect():
-    return psycopg2.connect(os.environ["DATABASE_URL"])
+    """A connection that notices a dead peer within about a minute instead of hanging."""
+    return psycopg2.connect(os.environ["DATABASE_URL"], **KEEPALIVE)
 
 
 def client() -> anthropic.Anthropic:

@@ -20,7 +20,8 @@ ACTIVE = ("RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATION", "NOT
 
 
 def connect():
-    return psycopg2.connect(os.environ.get("DATABASE_URL_RO") or os.environ["DATABASE_URL"])
+    return psycopg2.connect(os.environ.get("DATABASE_URL_RO") or os.environ["DATABASE_URL"],
+                            keepalives=1, keepalives_idle=30, keepalives_interval=10, keepalives_count=3)
 
 
 def query(sql: str, params=None) -> pd.DataFrame:
