@@ -33,9 +33,14 @@ load_dotenv(os.path.join(REPO, ".env"))
 MODEL = "claude-opus-5"
 BATCH_SIZE = 2000
 # anthropic: Message Batches on the Anthropic API. openrouter: concurrent
-# Messages calls through OpenRouter's Anthropic-compatible endpoint.
+# Messages calls through OpenRouter's Anthropic-compatible endpoint. agent:
+# item chunks are written under .cache/agent/<task>/<run>/ for Claude Code
+# workflow agents, and each <chunk>.out.jsonl they write is validated and
+# stored as it appears.
 PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))
+AGENT_CHUNK = int(os.environ.get("LLM_AGENT_CHUNK", "100"))
+AGENT_MODEL = "claude-opus-5-5"  # the Claude Code session model the workflow agents run on
 OPENROUTER_MODELS = {"claude-opus-5": "anthropic/claude-opus-5", "claude-opus-5-5": "anthropic/claude-opus-5.5",
                      "claude-sonnet-5": "anthropic/claude-sonnet-5"}
 
@@ -67,7 +72,9 @@ def client() -> anthropic.Anthropic:
 
 
 def provider_model(model: str) -> str:
-    return OPENROUTER_MODELS[model] if PROVIDER == "openrouter" else model
+    if PROVIDER == "openrouter":
+        return OPENROUTER_MODELS[model]
+    return AGENT_MODEL if PROVIDER == "agent" else model
 
 
 @dataclass
@@ -180,6 +187,8 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
     if PROVIDER == "openrouter":
         _run_concurrent(api, conn, run_id, task, items, todo)
+    elif PROVIDER == "agent":
+        _run_agents(conn, run_id, task, items, todo, poll_seconds)
     else:
         _run_batches(api, conn, run_id, task, items, todo, poll_seconds)
 
@@ -229,6 +238,66 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
                 conn.commit()
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
     conn.commit()
+
+
+AGENT_INSTRUCTIONS = """Each line of the chunk file is one item: {"subject_key": ..., "user_message": ...}.
+Decide every item independently, exactly as if the user_message had been sent to a model whose
+system prompt is task.json's "system", and whose reply must be one JSON object valid against
+task.json's "output_schema". Write one line per item to the .out.jsonl file:
+{"subject_key": <same key>, "output": <the JSON object>}. After the last item write {"done": true}."""
+
+
+def _run_agents(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str],
+                poll_seconds: int) -> None:
+    import jsonschema
+    out_dir = os.path.join(REPO, ".cache", "agent", task.name, str(run_id))
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "task.json"), "w") as f:
+        json.dump({"task": task.name, "prompt_version": task.prompt_version, "system": task.system,
+                   "output_schema": task.schema, "instructions": AGENT_INSTRUCTIONS}, f, indent=1)
+    chunks = []
+    for start in range(0, len(todo), AGENT_CHUNK):
+        name = f"chunk_{start // AGENT_CHUNK:05d}"
+        with open(os.path.join(out_dir, name + ".jsonl"), "w") as f:
+            for key in todo[start:start + AGENT_CHUNK]:
+                f.write(json.dumps({"subject_key": key, "user_message": task.render(items[key])}) + "\n")
+        chunks.append(name)
+    print(f"[{task.name}] wrote {len(chunks)} agent chunks to {out_dir}", flush=True)
+
+    pending = set(chunks)
+    while pending:
+        for name in sorted(pending):
+            path = os.path.join(out_dir, name + ".out.jsonl")
+            if not os.path.exists(path):
+                continue
+            lines = [json.loads(l) for l in open(path) if l.strip()]
+            if not lines or not lines[-1].get("done"):
+                continue
+            expected = [json.loads(l)["subject_key"] for l in open(os.path.join(out_dir, name + ".jsonl"))]
+            got = {r["subject_key"]: r.get("output") for r in lines if "subject_key" in r}
+            n_bad = 0
+            with conn.cursor() as cur:
+                for key in expected:
+                    out, error = got.get(key), None
+                    if out is None:
+                        error = "agent_missing"
+                    else:
+                        try:
+                            jsonschema.validate(out, task.schema)
+                            if task.validate:
+                                task.validate(items[key], out)
+                        except Exception as exc:
+                            error = f"{type(exc).__name__}: {str(exc)[:300]}"
+                    raw = json.dumps(out) if out is not None else ""
+                    _store(cur, run_id, task, key, items[key], raw, None if error else out,
+                           f"agent:{name}", {}, error, None)
+                    n_bad += error is not None
+            conn.commit()
+            pending.discard(name)
+            print(f"[{task.name}] {name}: imported {len(expected)} invalid={n_bad} ({len(pending)} chunks left)",
+                  flush=True)
+        if pending:
+            time.sleep(poll_seconds)
 
 
 def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
