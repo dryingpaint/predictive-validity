@@ -25,7 +25,7 @@ import psycopg2
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages.batch_create_params import Request
 from dotenv import load_dotenv
-from psycopg2.extras import Json
+from psycopg2.extras import Json, execute_values
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(REPO, ".env"))
@@ -128,6 +128,29 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) 
             if reuse_by == "subject" or hashes.get(row[0]) == row[1]}
 
 
+def _store_reused(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
+                  reused: dict[str, tuple]) -> None:
+    """Copy earlier decisions into this run in bulk, committing every 2,000 rows."""
+    rows = []
+    for key, (_, _, raw, parsed, request_id, usage, decision_id) in reused.items():
+        rows.append((str(run_id), task.name, task.subject_type, key,
+                     sha256_text(canonical_json(items[key])), raw, Json(parsed),
+                     sha256_text(raw), Json(parsed), sha256_text(canonical_json(parsed)),
+                     decision_id, "unchanged", Json(items[key]), request_id,
+                     Json({"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
+                     Json(usage), "validated", Json([])))
+    for start in range(0, len(rows), 2000):
+        with conn.cursor() as cur:
+            execute_values(cur, """
+                INSERT INTO pv_evidence.llm_decision
+                  (decision_run_id, task, subject_type, subject_key, input_sha256, raw_response,
+                   parsed_output, output_sha256, canonical_decision, decision_sha256,
+                   prior_decision_id, change_status, input_payload, provider_request_id,
+                   model_parameters, usage, validation_status, validation_detail)
+                VALUES %s""", rows[start:start + 2000])
+        conn.commit()
+
+
 def _store(cur, run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
            parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
            error: str | None, prior_id: int | None) -> None:
@@ -179,10 +202,8 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
              datetime.now(timezone.utc)),
         )
         reused = _reusable(cur, task, items, reuse_by)
-        for key, row in reused.items():
-            _, _, raw, parsed, request_id, usage, decision_id = row
-            _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, None, decision_id)
         conn.commit()
+    _store_reused(conn, run_id, task, items, reused)
     todo = [k for k in items if k not in reused]
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
     if PROVIDER == "openrouter":
