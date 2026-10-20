@@ -1,7 +1,7 @@
 """Canonicalize every preclin.drug name to the molecular entities it contains.
 
     python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
-    python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities sharing one
+    python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities that are the same
     python -m pipeline.drugs modality       # modality class of every entity with a development program
 
 Trial intervention strings name the same molecule many ways ("Keytruda",
@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import argparse
 import re
+from collections import defaultdict
 
 from psycopg2.extras import execute_values
 
@@ -311,41 +312,53 @@ def unii(_args) -> None:
         chosen = {mid: (u, did) for mid, u, did in cur.fetchall()}
     merge(chosen)
     print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
+    same_entities()
 
 
 def merge(chosen: dict[int, tuple[str, int]]) -> None:
-    """Record each entity's UNII; merge entities sharing a UNII into the one
-    already named by the substance's preferred (display) name (else the one with most
-    intervention names). Trial, FDA-application and target links move to the
-    survivor; the merged entities' development programs are dropped for
-    pipeline.programs build to rebuild. The survivor's name becomes the
-    preferred name unless another entity holds it."""
+    """Record each entity's UNII and merge entities that resolved to the same one,
+    the survivor taking the substance's preferred (display) name."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT moiety_id, moiety_key, name, code_names, aliases FROM preclin.moiety")
+        cur.execute("SELECT unii, display_name FROM preclin.unii_substance WHERE unii = ANY(%s)",
+                    (sorted({u for u, _ in chosen.values()}),))
+        preferred = {u: n.strip().lower() for u, n in cur.fetchall()}
+    groups = defaultdict(list)
+    for mid, (u, _) in chosen.items():
+        groups[u].append(mid)
+    merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items()])
+
+
+def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int, int]]]) -> None:
+    """Merge each group (members, preferred name, UNII, member -> UNII decision) into one
+    entity: the member already named by the preferred name, else the one with a UNII
+    and the most intervention names. Trial, FDA-application and target links move to
+    the survivor; the merged entities' development programs are dropped for
+    pipeline.programs build to rebuild. The survivor takes the preferred name
+    unless another entity holds it, and keeps every other name as an alias."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, moiety_key, name, code_names, aliases, unii, unii_decision_id FROM preclin.moiety")
         ent = {r[0]: r[1:] for r in cur.fetchall()}
         cur.execute("""SELECT moiety_id, count(*) FROM preclin.drug_moiety GROUP BY 1""")
         n_links = dict(cur.fetchall())
-        cur.execute("SELECT unii, display_name FROM preclin.unii_substance WHERE unii = ANY(%s)",
-                    (sorted({u for u, _ in chosen.values()}),))
-        official = {u: n.strip().lower() for u, n in cur.fetchall()}
-        groups = {}
-        for mid, (u, _) in chosen.items():
-            groups.setdefault(u, []).append(mid)
         taken = {key: mid for mid, (key, *_) in ent.items()}
         mapping, renames, assigned = [], [], set()
-        for u, mids in groups.items():
-            name = official[u]
-            key = moiety_key(name)
-            winner = next((m for m in mids if ent[m][0] == key), None) or \
-                max(mids, key=lambda m: (n_links.get(m, 0), -m))
-            losers = [m for m in mids if m != winner]
-            mapping += [(m, winner) for m in losers]
+        for mids, preferred, unii, dids in groups:
+            mids = [m for m in mids if m in ent]
+            if not mids:
+                continue
+            key = moiety_key(preferred) if preferred else None
+            winner = next((m for m in mids if key and ent[m][0] == key), None) or \
+                max(mids, key=lambda m: (ent[m][4] is not None, n_links.get(m, 0), -m))
+            mapping += [(m, winner) for m in mids if m != winner]
             names = {ent[m][1] for m in mids} | {a for m in mids for a in ent[m][3]}
             codes = sorted({c for m in mids for c in ent[m][2]})
+            name = preferred or ent[winner][1]
+            key = key or ent[winner][0]
             if ent[winner][0] != key and (taken.get(key, winner) not in mids or key in assigned):
-                name, key = ent[winner][1], ent[winner][0]  # another entity holds the official name
+                name, key = ent[winner][1], ent[winner][0]  # another entity holds the preferred name
             assigned.add(key)
-            renames.append((winner, key, name, codes, sorted(names - {name}), u, chosen[winner][1]))
+            renames.append((winner, key, name, codes, sorted(names - {name}), unii or ent[winner][4],
+                            dids.get(winner) if unii else ent[winner][5]))
         cur.execute("CREATE TEMP TABLE merge_map (loser int PRIMARY KEY, winner int NOT NULL) ON COMMIT DROP")
         if mapping:
             execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
@@ -370,7 +383,98 @@ def merge(chosen: dict[int, tuple[str, int]]) -> None:
                                WHERE m.moiety_id = v.moiety_id""", renames,
                        template="(%s, %s, %s, %s::text[], %s::text[], %s, %s)")
         conn.commit()
-    print(f"substances={len(groups)} entities merged away={len(mapping)}")
+    print(f"groups={len(groups)} entities merged away={len(mapping)}")
+
+
+SAME_SYSTEM = """You decide which candidate entities are the same active entity as a given drug entity from clinical trials, so that they can be merged.
+
+Same entity: the same molecule whatever its salt, hydrate, solvate, crystal form or unspecified stereochemistry (aclidinium and aclidinium bromide); the same biologic under a code name, a nonproprietary name or a descriptive name; the same vaccine or cell or gene therapy product from the same developer with the same antigens or components, valency, adjuvant and platform, however it is spelled.
+Not the same: a different molecule from the same class or with a shared stem; a prodrug or a conjugate whose nonproprietary name differs from the parent's (tenofovir disoproxil vs tenofovir alafenamide; trastuzumab vs trastuzumab deruxtecan); a radiolabelled form vs the unlabelled ligand; a vaccine with another valency, strain composition, adjuvant or manufacturer; a combination product vs one of its components; a generic description that could cover several products ("influenza vaccine") vs a specific product.
+Use the names, code names, sponsors and trial titles. When unsure, leave the candidate out."""
+
+SAME_SCHEMA = {
+    "type": "object",
+    "properties": {"same": {"type": "array", "items": {"type": "integer"}}, "rationale": {"type": "string"}},
+    "required": ["same", "rationale"],
+    "additionalProperties": False,
+}
+SAME_CANDIDATES = 8
+SAME_MIN_SIMILARITY = 0.5
+
+
+def render_same(p: dict) -> str:
+    def desc(e):
+        return (f"{e['name']}" + (f" (also: {'; '.join(e['other_names'])})" if e["other_names"] else "")
+                + (f" | sponsors: {', '.join(e['sponsors'])}" if e["sponsors"] else "")
+                + (f" | trial: {e['trial']}" if e["trial"] else "") + (f" | UNII {e['unii']}" if e["unii"] else ""))
+    cands = "\n".join(f"- {c['moiety_id']}: {desc(c)}" for c in p["candidates"])
+    return f"Entity: {desc(p['entity'])}\n\nCandidates:\n{cands}"
+
+
+def validate_same(p: dict, out: dict) -> None:
+    extra = set(out["same"]) - {c["moiety_id"] for c in p["candidates"]}
+    if extra:
+        raise ValueError(f"not candidates: {sorted(extra)}")
+
+
+SAME_TASK = llm.Task(name="moiety_same_entity", prompt_version="v1", schema_version="v1", system=SAME_SYSTEM,
+                     schema=SAME_SCHEMA, render=render_same, validate=validate_same, subject_type="moiety",
+                     model="claude-opus-5-5", effort="medium", max_tokens=1500)
+
+
+def same_entities() -> None:
+    """Merge entities that are the same active entity under names UNII does not
+    connect (salt and parent registered separately, vaccines and other products
+    without a UNII). Candidates are each entity's nearest names; an LLM decides;
+    a pair merges when every decision that saw it agrees."""
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.neighbors import NearestNeighbors
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT m.moiety_id, m.name, m.code_names || m.aliases, m.unii,
+                   coalesce((SELECT array_agg(DISTINCT c.lead_sponsor) FROM (
+                       SELECT c.lead_sponsor FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
+                       JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 3) c), '{}'),
+                   (SELECT c.brief_title FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
+                    JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 1)
+            FROM preclin.moiety m
+            WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm WHERE dm.moiety_id = m.moiety_id)
+               OR EXISTS (SELECT 1 FROM preclin.fda_application_moiety am WHERE am.moiety_id = m.moiety_id)""")
+        ents = [{"moiety_id": mid, "name": name, "other_names": sorted(set(others))[:6], "unii": unii,
+                 "sponsors": sorted(s for s in sponsors if s)[:3], "trial": trial}
+                for mid, name, others, unii, sponsors, trial in cur.fetchall()]
+    texts = [" ".join([e["name"], *e["other_names"]]).lower() for e in ents]
+    vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 4), sublinear_tf=True)
+    X = vec.fit_transform(texts)
+    dist, idx = NearestNeighbors(n_neighbors=SAME_CANDIDATES + 1, metric="cosine").fit(X).kneighbors(X)
+    items = {}
+    for i, e in enumerate(ents):
+        cands = [ents[j] for d, j in zip(dist[i], idx[i]) if j != i and 1 - d >= SAME_MIN_SIMILARITY
+                 and not (e["unii"] and ents[j]["unii"])]  # two resolved substances are already distinct
+        if cands:
+            items[str(e["moiety_id"])] = {"entity": e, "candidates": cands}
+    run_id = llm.run(SAME_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key::int, parsed_output->'same' FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+        said = {mid: set(same) for mid, same in cur.fetchall()}
+    seen = {int(k): {c["moiety_id"] for c in it["candidates"]} for k, it in items.items()}
+    parent = {}
+
+    def find(x):
+        while parent.get(x, x) != x:
+            x = parent[x]
+        return x
+    for a, same in said.items():
+        for b in same:
+            if b in seen and a in seen[b] and a not in said.get(b, set()):
+                continue  # b saw a and disagreed
+            parent[find(a)] = find(b)
+    groups = defaultdict(list)
+    for m in {m for pair in parent.items() for m in pair}:
+        groups[find(m)].append(m)
+    merge_groups([(mids, None, None, {}) for mids in groups.values() if len(mids) > 1])
+    print(f"same-entity checks={len(items)} groups={sum(len(g) > 1 for g in groups.values())}")
 
 
 MODALITIES = ["small_molecule", "peptide", "protein", "monoclonal_antibody", "multispecific_antibody",
