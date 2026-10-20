@@ -147,25 +147,56 @@ def loa_by(rows: pd.DataFrame) -> float:
     return float(np.prod([rate[ph] for ph in (1, 2, 3)]))
 
 
-def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n: int = N_BOOT) -> dict:
-    with_ = rows[rows[feature] > threshold]
-    without = rows[rows[feature] <= threshold]
-    rs = loa_by(with_) / loa_by(without)
-    rng = np.random.default_rng(SEED)
+def target_counts(rows: pd.DataFrame, group: pd.Series) -> tuple[np.ndarray, list, np.ndarray]:
+    """Advanced and suspended counts per target, for each group and phase:
+    array [target, group, phase, (advanced, suspended)]."""
+    groups = sorted(group.unique())
     targets = rows.target.unique()
-    groups = {t: g for t, g in rows.groupby("target")}
-    draws = []
-    for _ in range(n):
-        sample = pd.concat([groups[t] for t in rng.choice(targets, len(targets))], ignore_index=True)
-        w, wo = sample[sample[feature] > threshold], sample[sample[feature] <= threshold]
-        a, b = loa_by(w), loa_by(wo)
-        draws.append(a / b if b else np.nan)
-    lo, hi = np.nanpercentile(draws, [2.5, 97.5])
+    t_idx = pd.Series(np.arange(len(targets)), index=targets)
+    g_idx = {g: i for i, g in enumerate(groups)}
+    counts = np.zeros((len(targets), len(groups), 3, 2))
+    r = rows[rows.event.isin(["advanced", "suspended"])]
+    np.add.at(counts, (t_idx[r.target].to_numpy(), group[r.index].map(g_idx).to_numpy(),
+                       r.phase.to_numpy() - 1, (r.event == "suspended").to_numpy().astype(int)), 1)
+    return counts, groups, targets
+
+
+def loa_from(c: np.ndarray) -> np.ndarray:
+    """LOA from summed counts [..., phase, (advanced, suspended)]."""
+    with np.errstate(invalid="ignore", divide="ignore"):
+        rate = c[..., 0] / (c[..., 0] + c[..., 1])
+    return np.prod(rate, axis=-1)
+
+
+def boot_loa(counts: np.ndarray, n: int = N_BOOT, seed: int = SEED) -> np.ndarray:
+    """Target-cluster bootstrap: LOA per group for each of n resamples of targets."""
+    rng = np.random.default_rng(seed)
+    out = np.empty((n, counts.shape[1]))
+    for i in range(n):
+        w = np.bincount(rng.integers(0, len(counts), len(counts)), minlength=len(counts))
+        out[i] = loa_from(np.tensordot(w, counts, axes=1))
+    return out
+
+
+def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n: int = N_BOOT) -> dict:
+    has = rows[feature] > threshold
+    if has.all() or not has.any():
+        return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": threshold,
+                "n_with": int(has.sum()), "n_without": int((~has).sum()), "n_targets_with": 0,
+                "loa_with": np.nan, "loa_without": np.nan, "rs": np.nan, "rs_lo": np.nan, "rs_hi": np.nan}
+    counts, groups, _ = target_counts(rows, has)
+    draws = boot_loa(counts, n)
+    i_with, i_wo = groups.index(True), groups.index(False)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        rs_draws = draws[:, i_with] / draws[:, i_wo]
+    lo, hi = np.nanpercentile(rs_draws, [2.5, 97.5])
+    with_, without = rows[has], rows[~has]
     label = LABELS.get(feature.removesuffix("_untimed").removesuffix("_strict"), feature)
     return {"feature": feature, "label": label, "threshold": threshold,
             "n_with": int(with_.program_id.nunique()), "n_without": int(without.program_id.nunique()),
             "n_targets_with": int(with_.target.nunique()),
-            "loa_with": loa_by(with_), "loa_without": loa_by(without), "rs": rs, "rs_lo": lo, "rs_hi": hi}
+            "loa_with": loa_by(with_), "loa_without": loa_by(without), "rs": loa_by(with_) / loa_by(without),
+            "rs_lo": float(lo), "rs_hi": float(hi)}
 
 
 def adjusted_rr(rows: pd.DataFrame, feature: str) -> list[dict]:
@@ -198,23 +229,16 @@ def dose_response(rows: pd.DataFrame, feature: str, n: int = N_BOOT) -> pd.DataF
     band = pd.Series("none", index=rows.index)
     for lab, lo, hi in zip(labels[1:], cuts[:-1], cuts[1:]):
         band[(rows[feature] > lo) & (rows[feature] <= hi)] = lab
-    rows = rows.assign(band=band)
-    rng = np.random.default_rng(SEED)
-    targets = rows.target.unique()
-    groups = {t: g for t, g in rows.groupby("target")}
-    draws = {lab: [] for lab in labels}
-    for _ in range(n):
-        sample = pd.concat([groups[t] for t in rng.choice(targets, len(targets))], ignore_index=True)
-        for lab in labels:
-            draws[lab].append(loa_by(sample[sample.band == lab]))
+    counts, groups, _ = target_counts(rows, band)
+    draws = boot_loa(counts, n)
     out = []
     for lab, lo, hi in zip(labels, [0.0, *cuts[:-1]], cuts):
-        g = rows[rows.band == lab]
+        g = rows[band == lab]
+        d = draws[:, groups.index(lab)] if lab in groups else np.array([np.nan])
         out.append({"feature": feature, "band": lab, "score_from": lo if lab != "none" else 0.0,
                     "score_to": hi if lab != "none" else 0.0, "n_programs": int(g.program_id.nunique()),
                     "n_targets": int(g.target.nunique()), "loa": loa_by(g),
-                    "loa_lo": float(np.nanpercentile(draws[lab], 2.5)),
-                    "loa_hi": float(np.nanpercentile(draws[lab], 97.5))})
+                    "loa_lo": float(np.nanpercentile(d, 2.5)), "loa_hi": float(np.nanpercentile(d, 97.5))})
     return pd.DataFrame(out)
 
 
