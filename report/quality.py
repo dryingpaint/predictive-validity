@@ -3,7 +3,8 @@
     python -m report.quality
 
 1. Independent re-derivation of seeded samples by agents working from the
-   primary sources (label audit: .cache/label_audit/results.json; trial
+   primary sources (label audit: .cache/label_audit/results.json, with
+   fresh post-fix samples in .cache/label_audit_v2/results.json; trial
    outcomes: .cache/outcome_audit/results.json; program approvals by stratum:
    .cache/approval_audit/results.json): accuracy with Wilson 95% intervals,
    counting correct and acceptable verdicts as agreement.
@@ -24,7 +25,8 @@ from sklearn.metrics import cohen_kappa_score
 from report import frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "quality")
-AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")
+AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")  # before the pipeline fixes
+AUDIT_V2 = os.path.join(frame.REPO, ".cache", "label_audit_v2", "results.json")  # fresh samples after them
 OUTCOME_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "results.json")
 PUBLICATION_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "publication_results.json")
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
@@ -85,7 +87,8 @@ def main() -> None:
     numbers = {"stop_reason_agreement": stop_reason_agreement()}
     if os.path.exists(AUDIT):
         audits = {}
-        for r in json.load(open(AUDIT)):
+        records = json.load(open(AUDIT)) + (json.load(open(AUDIT_V2)) if os.path.exists(AUDIT_V2) else [])
+        for r in records:  # a post-fix audit of a label replaces its pre-fix audit
             ok = r["n_correct"] + r["n_acceptable"]
             lo, hi = wilson(ok, r["n"])
             audits[r["task"]] = {"n": r["n"], "correct": r["n_correct"], "acceptable": r["n_acceptable"],
