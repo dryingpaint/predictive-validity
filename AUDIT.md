@@ -52,7 +52,10 @@ layer for every number in the report.
 - **Program.** One row per (entity, MONDO disease) (`preclin.dev_program`). A trial whose
   condition is broader than another of the entity's diseases (e.g. "solid tumors") rolls
   into the more specific programs; healthy-volunteer trials roll into every program of the
-  entity. Sponsors are attributes, not part of the key.
+  entity. Such a shared trial marks phase entry only for programs already under way when it
+  started and for the program(s) begun next (the lead indication then); an indication added
+  later enters at its own first trial (`dev_program_trial.marks_entry`; attach-all is a
+  sensitivity). Sponsors are attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
   LLM from the entity's 2015–2026 approval letters (4,639 extracted approved uses; pages
   without a text layer OCRed; labeling-only changes are not approval events), its
@@ -157,9 +160,19 @@ layer for every number in the report.
 | D23 | Labeling-only supplements were extracted as `efficacy_labeling` uses (label audit: 5 of 60 letters); dated as approval events they could move a disease's first approval to a later labeling update | Approval dates | fixed: excluded from approval events |
 | D24 | 7,497 completed industry Phase 2/3 trials (start ≥ 2010) posted no results, so their primary-endpoint outcome was unknown | Failure modes (efficacy failures among completed trials) | fixed where possible: 2,284 have a linked results paper (registry reference or PubMed secondary id); classified from abstracts by a separate task. The rest stay "no results" (published results skew positive, so the paper-based rate is not the rate for unpublished trials) |
 | D25 | `benchmark/` (scorer framework, RESULTS.md) still takes ground truth from the legacy views (`preclin.v_target_indication_strict_outcome` over `preclin.program`/`preclin.approval`), so its cohort and AUCs disagree with the report's Section 2 | Second source of truth for predictiveness | open: point the benchmark's ground truth at `preclin.dev_program` + `dev_program_approval` + `moiety_target` |
+| D26 | Shared trials (healthy-volunteer Phase 1, "solid tumors" baskets) counted as Phase 1 entry for every later indication of the entity, so each indication expansion started at Phase 2 scored as a Phase 1 success | Phase 1→2 rate, LOA | fixed: shared trials mark entry only for programs under way or begun next (lead indication); attach-all reported as a sensitivity |
+| D27 | 845 stopped or withdrawn industry trials have an empty whyStopped; some give the reason only in the brief summary, which the outcome classifier did not see (trial-outcome audit: 1 of 30 stop reasons) | Failure-reason shares ("no reason stated") | fixed: brief summary stored and shown to the classifier when whyStopped is empty |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-20 — Trial-outcome audit (60 seeded trials, 30 stopped/withdrawn and 30 completed
+  with posted results, re-derived by agents from the CT.gov API before reading the stored
+  labels; `.cache/outcome_audit/results.json`): stop reason 28 correct / 1 acceptable /
+  1 wrong of 30; primary endpoint 58 / 2 / 0 of 60; safety signal 58 / 2 / 0; efficacy
+  failure 60 / 60. The one error led to D27. CBER biologics approvals (177 BLAs, 325
+  actions 2015–2025, built by `pipeline.cber` from yearly pages, product pages, approval
+  zips and Wayback captures) loaded into `preclin.fda_*`. Program build revised (D26).
 
 - 2026-10-20 — Label audit (independent re-derivation of seeded samples by agents with
   web access, results in `.cache/label_audit/results.json`, reported by `report.quality`):
