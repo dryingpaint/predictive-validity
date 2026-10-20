@@ -35,8 +35,8 @@ SEED = 20261020
 
 
 def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS,
-               uncertain_as_approved: bool = False) -> pd.DataFrame:
-    """One row per (program, phase) in that phase's cohort."""
+               uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW) -> pd.DataFrame:
+    """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`."""
     ind = trials[trials.industry & trials.start_date.notna()].copy()
     ind["active"] = ind.overall_status.isin(frame.ACTIVE)
     ind["end"] = ind.completion_date.fillna(ind.primary_completion_date).fillna(ind.start_date)
@@ -60,7 +60,7 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
         s = starts.loc[pid]
         for phase in (1, 2, 3):
             entry = s.get(phase)
-            if pd.isna(entry) or not (frame.WINDOW[0] <= entry <= frame.WINDOW[1]):
+            if pd.isna(entry) or not (window[0] <= entry <= window[1]):
                 continue
             entry = pd.Timestamp(entry)
             later = [pd.Timestamp(s.get(q)) for q in (1, 2, 3) if q > phase and pd.notna(s.get(q))]
@@ -89,6 +89,7 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
                 "modality": p.at[pid, "modality"] if pd.notna(p.at[pid, "modality"]) else "unknown",
                 "novel": pd.isna(first_fda) or pd.Timestamp(first_fda) > entry,
                 "us_site": us.get(pid, 0) >= phase, "entry_year": entry.year,
+                "approval_date": a if pd.notna(a) else None,
             })
     return pd.DataFrame(rows)
 
