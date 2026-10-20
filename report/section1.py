@@ -29,6 +29,7 @@ from report import frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "section1")
 LAG_MONTHS = 24
+MATURE_WINDOW = (date(2015, 1, 1), date(2019, 12, 31))
 HORIZON_YEARS = 6.0
 N_BOOT = 1000
 SEED = 20261020
@@ -276,6 +277,9 @@ def main() -> None:
                              "uncertain approvals counted as approved"))
     results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True),
                              "shared trials mark entry for every program of the entity"))
+    mature = phase_rows(progs, trials, snap, window=MATURE_WINDOW)
+    results.append(summarize(mature, "phase entry 2015-2019 (at least six years of follow-up)"))
+    results.append(summarize(mature[mature.us_site], "phase entry 2015-2019, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     by_area = [summarize(g, a) for a, g in rows.groupby("bio_area") if g.moiety_id.nunique() >= 20]
@@ -303,7 +307,7 @@ def main() -> None:
                "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
-               "shared_entry": results[8],
+               "shared_entry": results[8], "mature": results[9], "mature_us": results[10],
                "failure_modes": failure_numbers}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
