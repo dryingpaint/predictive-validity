@@ -24,8 +24,9 @@ def connect():
 
 
 def query(sql: str, params=None) -> pd.DataFrame:
-    with connect() as conn:
-        return pd.read_sql_query(sql, conn, params=params)
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute(sql, params)
+        return pd.DataFrame(cur.fetchall(), columns=[c.name for c in cur.description])
 
 
 def snapshot() -> date:
