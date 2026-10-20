@@ -1,0 +1,1024 @@
+{
+ "n_program_phase_rows": 12969,
+ "n_programs": 10369,
+ "n_targets": 1694,
+ "evidence_coverage_ph1": {
+  "genetic_any": 0.1498643289501148,
+  "genetic_gwas": 0.08202880400751408,
+  "genetic_rare": 0.08745564600292215,
+  "somatic": 0.19453141306616573,
+  "animal_model": 0.17783343769567939,
+  "rna_expression": 0.14631600918388646,
+  "affected_pathway": 0.01857649759966604,
+  "functional_screen": 0.003548319766228345,
+  "constrained": 0.19745355875600085,
+  "pan_essential": 0.06950532247964934
+ },
+ "rs": {
+  "genetic_any": {
+   "feature": "genetic_any",
+   "label": "Human genetics (any germline source)",
+   "threshold": 0.0,
+   "n_with": 1721,
+   "n_without": 8727,
+   "n_targets_with": 513,
+   "loa_with": 0.2637227238812816,
+   "loa_without": 0.07705803606409238,
+   "rs": 3.422390932231032,
+   "rs_lo": 2.585668569653252,
+   "rs_hi": 4.5069705032066025
+  },
+  "genetic_gwas": {
+   "feature": "genetic_gwas",
+   "label": "GWAS credible set",
+   "threshold": 0.0,
+   "n_with": 882,
+   "n_without": 9572,
+   "n_targets_with": 280,
+   "loa_with": 0.22469603242320818,
+   "loa_without": 0.09075034208144869,
+   "rs": 2.4759800048086085,
+   "rs_lo": 1.6888334015255795,
+   "rs_hi": 3.509702945019554
+  },
+  "genetic_rare": {
+   "feature": "genetic_rare",
+   "label": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
+   "threshold": 0.0,
+   "n_with": 1046,
+   "n_without": 9355,
+   "n_targets_with": 338,
+   "loa_with": 0.28683901592486727,
+   "loa_without": 0.08463962222117913,
+   "rs": 3.3889448983515473,
+   "rs_lo": 2.531285459802994,
+   "rs_hi": 4.410221842783152
+  },
+  "somatic": {
+   "feature": "somatic",
+   "label": "Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic)",
+   "threshold": 0.0,
+   "n_with": 1730,
+   "n_without": 8668,
+   "n_targets_with": 269,
+   "loa_with": 0.2016390005560569,
+   "loa_without": 0.08799281713973817,
+   "rs": 2.2915393223044718,
+   "rs_lo": 1.6250507712478004,
+   "rs_hi": 3.181360230878078
+  },
+  "animal_model": {
+   "feature": "animal_model",
+   "label": "Mouse model (IMPC)",
+   "threshold": 0.0,
+   "n_with": 1974,
+   "n_without": 8397,
+   "n_targets_with": 611,
+   "loa_with": 0.14965214763479173,
+   "loa_without": 0.08761351026668707,
+   "rs": 1.7080944157957494,
+   "rs_lo": 1.2576073644716133,
+   "rs_hi": 2.2924990591601238
+  },
+  "rna_expression": {
+   "feature": "rna_expression",
+   "label": "Differential expression in disease (Expression Atlas)",
+   "threshold": 0.0,
+   "n_with": 1405,
+   "n_without": 8977,
+   "n_targets_with": 488,
+   "loa_with": 0.13612965923696665,
+   "loa_without": 0.0949247155464218,
+   "rs": 1.4340802440476534,
+   "rs_lo": 0.8785165884250754,
+   "rs_hi": 2.039300087863763
+  },
+  "affected_pathway": {
+   "feature": "affected_pathway",
+   "label": "Pathway (Reactome)",
+   "threshold": 0.0,
+   "n_with": 222,
+   "n_without": 10149,
+   "n_targets_with": 71,
+   "loa_with": 0.2038795569192366,
+   "loa_without": 0.09709874682448981,
+   "rs": 2.099713575992466,
+   "rs_lo": 1.2586989430848303,
+   "rs_hi": 3.2513334970633783
+  },
+  "functional_screen": {
+   "feature": "functional_screen",
+   "label": "CRISPR screen",
+   "threshold": 0.0,
+   "n_with": 79,
+   "n_without": 12890,
+   "n_targets_with": 0,
+   "loa_with": NaN,
+   "loa_without": NaN,
+   "rs": NaN,
+   "rs_lo": NaN,
+   "rs_hi": NaN
+  },
+  "constrained": {
+   "feature": "constrained",
+   "label": "LoF-intolerant target (gnomAD LOEUF < 0.35)",
+   "threshold": 0.0,
+   "n_with": 1934,
+   "n_without": 8435,
+   "n_targets_with": 279,
+   "loa_with": 0.08902365846787816,
+   "loa_without": 0.10208712865398027,
+   "rs": 0.8720360699889977,
+   "rs_lo": 0.5335668338448308,
+   "rs_hi": 1.3187873669774186
+  },
+  "pan_essential": {
+   "feature": "pan_essential",
+   "label": "Pan-essential (DepMap)",
+   "threshold": 0.0,
+   "n_with": 570,
+   "n_without": 9799,
+   "n_targets_with": 86,
+   "loa_with": 0.0250312301128998,
+   "loa_without": 0.10421002886642965,
+   "rs": 0.2401998193953422,
+   "rs_lo": 0.0763284522726328,
+   "rs_hi": 0.6161623031624085
+  }
+ },
+ "rs_untimed": {
+  "genetic_any_untimed": {
+   "feature": "genetic_any_untimed",
+   "label": "Human genetics (any germline source)",
+   "threshold": 0.0,
+   "n_with": 2425,
+   "n_without": 7944,
+   "n_targets_with": 694,
+   "loa_with": 0.2103188783871034,
+   "loa_without": 0.07130517767366461,
+   "rs": 2.9495596988713655,
+   "rs_lo": 2.213137938493549,
+   "rs_hi": 3.8184241303297006
+  },
+  "genetic_gwas_untimed": {
+   "feature": "genetic_gwas_untimed",
+   "label": "GWAS credible set",
+   "threshold": 0.0,
+   "n_with": 1704,
+   "n_without": 8665,
+   "n_targets_with": 493,
+   "loa_with": 0.18144568105008035,
+   "loa_without": 0.08411042027983184,
+   "rs": 2.1572318916778466,
+   "rs_lo": 1.5857342162408408,
+   "rs_hi": 2.8851012655412687
+  },
+  "genetic_rare_untimed": {
+   "feature": "genetic_rare_untimed",
+   "label": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
+   "threshold": 0.0,
+   "n_with": 1309,
+   "n_without": 9060,
+   "n_targets_with": 392,
+   "loa_with": 0.2537775758935657,
+   "loa_without": 0.08210506916952375,
+   "rs": 3.0908880348128904,
+   "rs_lo": 2.268459172887501,
+   "rs_hi": 4.052072881855406
+  },
+  "somatic_untimed": {
+   "feature": "somatic_untimed",
+   "label": "Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic)",
+   "threshold": 0.0,
+   "n_with": 1883,
+   "n_without": 8486,
+   "n_targets_with": 276,
+   "loa_with": 0.1995336522133089,
+   "loa_without": 0.085944508171446,
+   "rs": 2.3216568045891908,
+   "rs_lo": 1.6834339670472405,
+   "rs_hi": 3.159782652378997
+  },
+  "animal_model_untimed": {
+   "feature": "animal_model_untimed",
+   "label": "Mouse model (IMPC)",
+   "threshold": 0.0,
+   "n_with": 2044,
+   "n_without": 8325,
+   "n_targets_with": 638,
+   "loa_with": 0.14902281672701456,
+   "loa_without": 0.08732654653144614,
+   "rs": 1.7065007451468575,
+   "rs_lo": 1.2613951614942476,
+   "rs_hi": 2.2827777391400943
+  },
+  "rna_expression_untimed": {
+   "feature": "rna_expression_untimed",
+   "label": "Differential expression in disease (Expression Atlas)",
+   "threshold": 0.0,
+   "n_with": 1667,
+   "n_without": 8702,
+   "n_targets_with": 560,
+   "loa_with": 0.128021648075287,
+   "loa_without": 0.09511638171172211,
+   "rs": 1.3459474148553492,
+   "rs_lo": 0.8743273910718132,
+   "rs_hi": 1.8798012632575922
+  },
+  "affected_pathway_untimed": {
+   "feature": "affected_pathway_untimed",
+   "label": "Pathway (Reactome)",
+   "threshold": 0.0,
+   "n_with": 235,
+   "n_without": 10134,
+   "n_targets_with": 76,
+   "loa_with": 0.20467836257309943,
+   "loa_without": 0.09674593650585786,
+   "rs": 2.115627487472886,
+   "rs_lo": 1.289220238868119,
+   "rs_hi": 3.146736909582888
+  },
+  "functional_screen_untimed": {
+   "feature": "functional_screen_untimed",
+   "label": "CRISPR screen",
+   "threshold": 0.0,
+   "n_with": 482,
+   "n_without": 9887,
+   "n_targets_with": 109,
+   "loa_with": 0.2940407127317932,
+   "loa_without": 0.09353816178647589,
+   "rs": 3.1435374302417256,
+   "rs_lo": 2.0050351005829996,
+   "rs_hi": 4.31364320064726
+  }
+ },
+ "rs_lin_only": {
+  "genetic_any_strict": {
+   "feature": "genetic_any_strict",
+   "label": "Human genetics (any germline source)",
+   "threshold": 0.0,
+   "n_with": 1679,
+   "n_without": 8769,
+   "n_targets_with": 503,
+   "loa_with": 0.27104749726877475,
+   "loa_without": 0.07695466477478646,
+   "rs": 3.5221711128495636,
+   "rs_lo": 2.689704223496843,
+   "rs_hi": 4.603028205869911
+  },
+  "genetic_gwas_strict": {
+   "feature": "genetic_gwas_strict",
+   "label": "GWAS credible set",
+   "threshold": 0.0,
+   "n_with": 869,
+   "n_without": 9586,
+   "n_targets_with": 276,
+   "loa_with": 0.22931589013075124,
+   "loa_without": 0.0906666721180198,
+   "rs": 2.529219224372251,
+   "rs_lo": 1.7265813016814664,
+   "rs_hi": 3.561988649742885
+  },
+  "genetic_rare_strict": {
+   "feature": "genetic_rare_strict",
+   "label": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
+   "threshold": 0.0,
+   "n_with": 1001,
+   "n_without": 9393,
+   "n_targets_with": 327,
+   "loa_with": 0.2946054934185498,
+   "loa_without": 0.0848915361534766,
+   "rs": 3.4703753373708355,
+   "rs_lo": 2.5955790784145165,
+   "rs_hi": 4.4974701790056395
+  },
+  "somatic_strict": {
+   "feature": "somatic_strict",
+   "label": "Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic)",
+   "threshold": 0.0,
+   "n_with": 1687,
+   "n_without": 8711,
+   "n_targets_with": 267,
+   "loa_with": 0.20364944858286366,
+   "loa_without": 0.08804131123044928,
+   "rs": 2.3131123984490483,
+   "rs_lo": 1.6340042235231527,
+   "rs_hi": 3.216630424057561
+  },
+  "animal_model_strict": {
+   "feature": "animal_model_strict",
+   "label": "Mouse model (IMPC)",
+   "threshold": 0.0,
+   "n_with": 1792,
+   "n_without": 8579,
+   "n_targets_with": 560,
+   "loa_with": 0.16555879342142688,
+   "loa_without": 0.08561846641025801,
+   "rs": 1.933680902763649,
+   "rs_lo": 1.4464947584274543,
+   "rs_hi": 2.555356013915347
+  },
+  "rna_expression_strict": {
+   "feature": "rna_expression_strict",
+   "label": "Differential expression in disease (Expression Atlas)",
+   "threshold": 0.0,
+   "n_with": 1314,
+   "n_without": 9067,
+   "n_targets_with": 450,
+   "loa_with": 0.14966822499568322,
+   "loa_without": 0.09382787299048151,
+   "rs": 1.5951360744463057,
+   "rs_lo": 1.00022548484704,
+   "rs_hi": 2.254239931470911
+  },
+  "affected_pathway_strict": {
+   "feature": "affected_pathway_strict",
+   "label": "Pathway (Reactome)",
+   "threshold": 0.0,
+   "n_with": 213,
+   "n_without": 10158,
+   "n_targets_with": 67,
+   "loa_with": 0.19570707070707072,
+   "loa_without": 0.09729651079108419,
+   "rs": 2.0114500418961008,
+   "rs_lo": 1.1975571140510168,
+   "rs_hi": 3.0757645304238603
+  },
+  "functional_screen_strict": {
+   "feature": "functional_screen_strict",
+   "label": "functional_screen_strict",
+   "threshold": 0.0,
+   "n_with": 78,
+   "n_without": 12891,
+   "n_targets_with": 0,
+   "loa_with": NaN,
+   "loa_without": NaN,
+   "rs": NaN,
+   "rs_lo": NaN,
+   "rs_hi": NaN
+  }
+ },
+ "adjusted_rr": {
+  "genetic_any_1": {
+   "feature": "genetic_any",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0922722080902167,
+   "rr_lo": 1.033559749325927,
+   "rr_hi": 1.1543198904024405,
+   "p": 0.0017423042662235687
+  },
+  "genetic_any_2": {
+   "feature": "genetic_any",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.7037519242705992,
+   "rr_lo": 1.5140014754075455,
+   "rr_hi": 1.9172838775962153,
+   "p": 9.177919887876161e-19
+  },
+  "genetic_any_3": {
+   "feature": "genetic_any",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.4711850407795162,
+   "rr_lo": 1.240860890843731,
+   "rr_hi": 1.7442611336889982,
+   "p": 8.819133211700371e-06
+  },
+  "genetic_gwas_1": {
+   "feature": "genetic_gwas",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0745771552622592,
+   "rr_lo": 1.0127282329351721,
+   "rr_hi": 1.140203289548704,
+   "p": 0.01739795423293873
+  },
+  "genetic_gwas_2": {
+   "feature": "genetic_gwas",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.6618906436922853,
+   "rr_lo": 1.4213140567235276,
+   "rr_hi": 1.943188064964868,
+   "p": 1.9308347741174777e-10
+  },
+  "genetic_gwas_3": {
+   "feature": "genetic_gwas",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.116508237384496,
+   "rr_lo": 0.8355214713896137,
+   "rr_hi": 1.4919911538289283,
+   "p": 0.45622048951099514
+  },
+  "genetic_rare_1": {
+   "feature": "genetic_rare",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.109886180967529,
+   "rr_lo": 1.0338901134281813,
+   "rr_hi": 1.1914683375954884,
+   "p": 0.003964463166829648
+  },
+  "genetic_rare_2": {
+   "feature": "genetic_rare",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.490152549229722,
+   "rr_lo": 1.2988471212004211,
+   "rr_hi": 1.7096350938696754,
+   "p": 1.271066858856645e-08
+  },
+  "genetic_rare_3": {
+   "feature": "genetic_rare",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.6306242926628676,
+   "rr_lo": 1.3939314782144545,
+   "rr_hi": 1.9075080987683986,
+   "p": 9.920682416033429e-10
+  },
+  "somatic_1": {
+   "feature": "somatic",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.050957161213176,
+   "rr_lo": 0.9516179262058073,
+   "rr_hi": 1.160666402228308,
+   "p": 0.32655210801068313
+  },
+  "somatic_2": {
+   "feature": "somatic",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.3590960836956691,
+   "rr_lo": 1.0923364424934086,
+   "rr_hi": 1.6910011356030095,
+   "p": 0.005918917601793455
+  },
+  "somatic_3": {
+   "feature": "somatic",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.3043907080371653,
+   "rr_lo": 1.0106205344323689,
+   "rr_hi": 1.6835548667822544,
+   "p": 0.04123618608462934
+  },
+  "animal_model_1": {
+   "feature": "animal_model",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0152879103566126,
+   "rr_lo": 0.9476554636719068,
+   "rr_hi": 1.0877471617397643,
+   "p": 0.66619486622768
+  },
+  "animal_model_2": {
+   "feature": "animal_model",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.2066962420231253,
+   "rr_lo": 1.0389448858326413,
+   "rr_hi": 1.4015332674223218,
+   "p": 0.013882632490151378
+  },
+  "animal_model_3": {
+   "feature": "animal_model",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.1299404750669986,
+   "rr_lo": 0.9532020764610122,
+   "rr_hi": 1.3394489046172957,
+   "p": 0.15921476937491963
+  },
+  "rna_expression_1": {
+   "feature": "rna_expression",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0164936316218174,
+   "rr_lo": 0.9364422738724815,
+   "rr_hi": 1.1033881446368934,
+   "p": 0.6958742155446478
+  },
+  "rna_expression_2": {
+   "feature": "rna_expression",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.1290063104860741,
+   "rr_lo": 0.9230975779519194,
+   "rr_hi": 1.3808456219173069,
+   "p": 0.23756683357748676
+  },
+  "rna_expression_3": {
+   "feature": "rna_expression",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.9363893289784797,
+   "rr_lo": 0.7509969561090364,
+   "rr_hi": 1.1675479751178408,
+   "p": 0.5593082847404091
+  },
+  "affected_pathway_1": {
+   "feature": "affected_pathway",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.1044614629800626,
+   "rr_lo": 0.9828573448831203,
+   "rr_hi": 1.2411110621075137,
+   "p": 0.09502572364620485
+  },
+  "affected_pathway_2": {
+   "feature": "affected_pathway",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.1414573396064913,
+   "rr_lo": 0.876914129823128,
+   "rr_hi": 1.4858066643359098,
+   "p": 0.3253285129889337
+  },
+  "affected_pathway_3": {
+   "feature": "affected_pathway",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.5254476551293805,
+   "rr_lo": 1.1428883826688538,
+   "rr_hi": 2.036061074578233,
+   "p": 0.004148470085587606
+  },
+  "constrained_1": {
+   "feature": "constrained",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.9457514396349228,
+   "rr_lo": 0.8477834430852729,
+   "rr_hi": 1.0550404031440406,
+   "p": 0.31746360559654574
+  },
+  "constrained_2": {
+   "feature": "constrained",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.190014976977976,
+   "rr_lo": 0.9852311581250686,
+   "rr_hi": 1.4373638447720751,
+   "p": 0.07098511819544183
+  },
+  "constrained_3": {
+   "feature": "constrained",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.9825332099892923,
+   "rr_lo": 0.7681948230255787,
+   "rr_hi": 1.2566753638480568,
+   "p": 0.8883880071494397
+  },
+  "pan_essential_1": {
+   "feature": "pan_essential",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.7170217494993282,
+   "rr_lo": 0.5788202445497284,
+   "rr_hi": 0.8882208148317582,
+   "p": 0.002326279355998105
+  },
+  "pan_essential_2": {
+   "feature": "pan_essential",
+   "phase": 2,
+   "n": 3376,
+   "rr": 0.6828133525560953,
+   "rr_lo": 0.46298898164422625,
+   "rr_hi": 1.007009006506254,
+   "p": 0.054258858234486014
+  },
+  "pan_essential_3": {
+   "feature": "pan_essential",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.6292284841674788,
+   "rr_lo": 0.30796513960253463,
+   "rr_hi": 1.285627606419011,
+   "p": 0.20380246273696512
+  }
+ },
+ "joint_rr": {
+  "genetic_gwas_1": {
+   "feature": "genetic_gwas",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0628312816341803,
+   "rr_lo": 0.999141332298006,
+   "rr_hi": 1.130581126718151,
+   "p": 0.05326657748011164
+  },
+  "genetic_rare_1": {
+   "feature": "genetic_rare",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.088874055755067,
+   "rr_lo": 1.0008694077857305,
+   "rr_hi": 1.1846167942324755,
+   "p": 0.04767980600973953
+  },
+  "somatic_1": {
+   "feature": "somatic",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.0238222992735757,
+   "rr_lo": 0.9287145852643511,
+   "rr_hi": 1.1286697949203268,
+   "p": 0.6360064700234825
+  },
+  "animal_model_1": {
+   "feature": "animal_model",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.9722583686402189,
+   "rr_lo": 0.9078465725878638,
+   "rr_hi": 1.041240187421044,
+   "p": 0.4211365685896683
+  },
+  "rna_expression_1": {
+   "feature": "rna_expression",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.9925118031365272,
+   "rr_lo": 0.914558929235881,
+   "rr_hi": 1.0771090280517626,
+   "p": 0.8570697091570294
+  },
+  "affected_pathway_1": {
+   "feature": "affected_pathway",
+   "phase": 1,
+   "n": 3862,
+   "rr": 1.03538057172554,
+   "rr_lo": 0.9120551662528309,
+   "rr_hi": 1.1753816742369434,
+   "p": 0.591033729173468
+  },
+  "constrained_1": {
+   "feature": "constrained",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.9765919139226131,
+   "rr_lo": 0.878896428880027,
+   "rr_hi": 1.0851469354066756,
+   "p": 0.6596034467040062
+  },
+  "pan_essential_1": {
+   "feature": "pan_essential",
+   "phase": 1,
+   "n": 3862,
+   "rr": 0.7257454730197092,
+   "rr_lo": 0.5830334848179297,
+   "rr_hi": 0.9033897800451062,
+   "p": 0.00411127568394131
+  },
+  "genetic_gwas_2": {
+   "feature": "genetic_gwas",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.5834768310375908,
+   "rr_lo": 1.3464828041805572,
+   "rr_hi": 1.8621841041325475,
+   "p": 2.7522021772302966e-08
+  },
+  "genetic_rare_2": {
+   "feature": "genetic_rare",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.3954449179970854,
+   "rr_lo": 1.1809061496701085,
+   "rr_hi": 1.6489595889629924,
+   "p": 9.13917534881919e-05
+  },
+  "somatic_2": {
+   "feature": "somatic",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.140323591630232,
+   "rr_lo": 0.9019659571481138,
+   "rr_hi": 1.441670700898682,
+   "p": 0.272388861689421
+  },
+  "animal_model_2": {
+   "feature": "animal_model",
+   "phase": 2,
+   "n": 3376,
+   "rr": 0.9969964321181778,
+   "rr_lo": 0.8603433169370492,
+   "rr_hi": 1.1553549217946755,
+   "p": 0.968097319005595
+  },
+  "rna_expression_2": {
+   "feature": "rna_expression",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.033036488655923,
+   "rr_lo": 0.8591652389293667,
+   "rr_hi": 1.24209446395246,
+   "p": 0.729594222022085
+  },
+  "affected_pathway_2": {
+   "feature": "affected_pathway",
+   "phase": 2,
+   "n": 3376,
+   "rr": 0.9037382989147189,
+   "rr_lo": 0.6771581208970074,
+   "rr_hi": 1.2061332319892426,
+   "p": 0.4918861926479753
+  },
+  "constrained_2": {
+   "feature": "constrained",
+   "phase": 2,
+   "n": 3376,
+   "rr": 1.2303725287078289,
+   "rr_lo": 1.018205655454335,
+   "rr_hi": 1.4867493136476588,
+   "p": 0.03180686238825656
+  },
+  "pan_essential_2": {
+   "feature": "pan_essential",
+   "phase": 2,
+   "n": 3376,
+   "rr": 0.6483844790638111,
+   "rr_lo": 0.4480625704864141,
+   "rr_hi": 0.9382672429756034,
+   "p": 0.021564271533394255
+  },
+  "genetic_gwas_3": {
+   "feature": "genetic_gwas",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.0899557175826937,
+   "rr_lo": 0.8007898128232859,
+   "rr_hi": 1.4835396845306361,
+   "p": 0.5839511108341686
+  },
+  "genetic_rare_3": {
+   "feature": "genetic_rare",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.5738801083578695,
+   "rr_lo": 1.282083987388315,
+   "rr_hi": 1.9320876166081624,
+   "p": 1.4568377729413569e-05
+  },
+  "somatic_3": {
+   "feature": "somatic",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.1253855320300594,
+   "rr_lo": 0.8455720874049693,
+   "rr_hi": 1.4977937594763808,
+   "p": 0.4179932127941559
+  },
+  "animal_model_3": {
+   "feature": "animal_model",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.9781305843249111,
+   "rr_lo": 0.8166363573791675,
+   "rr_hi": 1.1715611622561815,
+   "p": 0.8101932965743687
+  },
+  "rna_expression_3": {
+   "feature": "rna_expression",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.838193932420858,
+   "rr_lo": 0.6593100502211813,
+   "rr_hi": 1.065612556810636,
+   "p": 0.1495479295989352
+  },
+  "affected_pathway_3": {
+   "feature": "affected_pathway",
+   "phase": 3,
+   "n": 1093,
+   "rr": 1.1406707623650993,
+   "rr_lo": 0.8242141796681759,
+   "rr_hi": 1.578630676602051,
+   "p": 0.42725836001825324
+  },
+  "constrained_3": {
+   "feature": "constrained",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.9799360802676458,
+   "rr_lo": 0.7650365483232947,
+   "rr_hi": 1.2552011057705939,
+   "p": 0.8725153155476294
+  },
+  "pan_essential_3": {
+   "feature": "pan_essential",
+   "phase": 3,
+   "n": 1093,
+   "rr": 0.6464133507098155,
+   "rr_lo": 0.32524062005349325,
+   "rr_hi": 1.284741801030775,
+   "p": 0.21312018745663075
+  }
+ },
+ "dose": {
+  "none": {
+   "feature": "genetic_any",
+   "band": "none",
+   "score_from": 0.0,
+   "score_to": 0.0,
+   "n_programs": 8727,
+   "n_targets": 1497,
+   "loa": 0.07705803606409238,
+   "loa_lo": 0.06113753805051735,
+   "loa_hi": 0.09522993330598116
+  },
+  "low": {
+   "feature": "genetic_any",
+   "band": "low",
+   "score_from": 0.0,
+   "score_to": 0.6082967,
+   "n_programs": 675,
+   "n_targets": 279,
+   "loa": 0.19137483579507225,
+   "loa_lo": 0.13286334480646037,
+   "loa_hi": 0.25198240762146146
+  },
+  "middle": {
+   "feature": "genetic_any",
+   "band": "middle",
+   "score_from": 0.6082967,
+   "score_to": 0.87670374,
+   "n_programs": 534,
+   "n_targets": 178,
+   "loa": 0.30083786189827044,
+   "loa_lo": 0.21043613538852693,
+   "loa_hi": 0.3772777453569682
+  },
+  "high": {
+   "feature": "genetic_any",
+   "band": "high",
+   "score_from": 0.87670374,
+   "score_to": Infinity,
+   "n_programs": 583,
+   "n_targets": 206,
+   "loa": 0.32506437567301844,
+   "loa_lo": 0.25667328160173364,
+   "loa_hi": 0.4010098022739374
+  }
+ },
+ "prediction": {
+  "grouped_cv_covariates": {
+   "split": "grouped_cv",
+   "features": "covariates",
+   "n": 3144,
+   "n_positive": 218,
+   "auc": 0.5960825750782293,
+   "auc_lo": 0.5432080331281717,
+   "auc_hi": 0.6427992669202414,
+   "pr_auc": 0.11532195446778856,
+   "pr_lo": 0.08592584620655168,
+   "pr_hi": 0.1549168185349579,
+   "base_rate": 0.0693384223918575
+  },
+  "temporal_covariates": {
+   "split": "temporal",
+   "features": "covariates",
+   "n": 1579,
+   "n_positive": 111,
+   "auc": 0.6427173085892431,
+   "auc_lo": 0.5200267284197642,
+   "auc_hi": 0.7266306077403636,
+   "pr_auc": 0.1480943162352745,
+   "pr_lo": 0.0808569025177422,
+   "pr_hi": 0.23767516840824573,
+   "base_rate": 0.07029765674477517
+  },
+  "grouped_cv_covariates+evidence": {
+   "split": "grouped_cv",
+   "features": "covariates+evidence",
+   "n": 3144,
+   "n_positive": 218,
+   "auc": 0.6045960919814131,
+   "auc_lo": 0.549304384685775,
+   "auc_hi": 0.655353391714517,
+   "pr_auc": 0.11338373640973616,
+   "pr_lo": 0.08573227068644783,
+   "pr_hi": 0.16193487222005168,
+   "base_rate": 0.0693384223918575
+  },
+  "temporal_covariates+evidence": {
+   "split": "temporal",
+   "features": "covariates+evidence",
+   "n": 1579,
+   "n_positive": 111,
+   "auc": 0.6435488622137124,
+   "auc_lo": 0.5377386734750719,
+   "auc_hi": 0.7230673710987024,
+   "pr_auc": 0.1379961893471054,
+   "pr_lo": 0.08092732974345787,
+   "pr_hi": 0.22137730024658447,
+   "base_rate": 0.07029765674477517
+  },
+  "grouped_cv_evidence": {
+   "split": "grouped_cv",
+   "features": "evidence",
+   "n": 3144,
+   "n_positive": 218,
+   "auc": 0.488591683545812,
+   "auc_lo": 0.4067021707387817,
+   "auc_hi": 0.5879916085906183,
+   "pr_auc": 0.07882051280718186,
+   "pr_lo": 0.06115673161743814,
+   "pr_hi": 0.10699783264500992,
+   "base_rate": 0.0693384223918575
+  },
+  "temporal_evidence": {
+   "split": "temporal",
+   "features": "evidence",
+   "n": 1579,
+   "n_positive": 111,
+   "auc": 0.550957974323097,
+   "auc_lo": 0.488542556980057,
+   "auc_hi": 0.6150694223857899,
+   "pr_auc": 0.08738529792675499,
+   "pr_lo": 0.05950029396517223,
+   "pr_hi": 0.12948464994067252,
+   "base_rate": 0.07029765674477517
+  }
+ },
+ "ablation": {
+  "genetic_any": {
+   "feature": "genetic_any",
+   "label": "Human genetics (any germline source)",
+   "auc_drop": 0.00788015702308309,
+   "drop_lo": 0.0025275130290356496,
+   "drop_hi": 0.013751844555047611
+  },
+  "genetic_gwas": {
+   "feature": "genetic_gwas",
+   "label": "GWAS credible set",
+   "auc_drop": 0.0007235039224415818,
+   "drop_lo": -0.000739068374844043,
+   "drop_hi": 0.002516555184975225
+  },
+  "genetic_rare": {
+   "feature": "genetic_rare",
+   "label": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
+   "auc_drop": 0.001167169383007094,
+   "drop_lo": -0.0005441345263166086,
+   "drop_hi": 0.003120180294756053
+  },
+  "somatic": {
+   "feature": "somatic",
+   "label": "Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic)",
+   "auc_drop": -0.004305749778951151,
+   "drop_lo": -0.011720208746083139,
+   "drop_hi": 0.0037476690078004572
+  },
+  "animal_model": {
+   "feature": "animal_model",
+   "label": "Mouse model (IMPC)",
+   "auc_drop": -0.0022747653119453703,
+   "drop_lo": -0.006878278718654379,
+   "drop_hi": 0.0015262379800367932
+  },
+  "rna_expression": {
+   "feature": "rna_expression",
+   "label": "Differential expression in disease (Expression Atlas)",
+   "auc_drop": 0.0012330137269779273,
+   "drop_lo": -0.012283500134238349,
+   "drop_hi": 0.011244580902582067
+  },
+  "affected_pathway": {
+   "feature": "affected_pathway",
+   "label": "Pathway (Reactome)",
+   "auc_drop": -0.001230662143264727,
+   "drop_lo": -0.006068563260358309,
+   "drop_hi": 0.0021049817802765796
+  },
+  "functional_screen": {
+   "feature": "functional_screen",
+   "label": "CRISPR screen",
+   "auc_drop": 1.5677224755039632e-06,
+   "drop_lo": -1.2114298705673265e-05,
+   "drop_hi": 1.2734832186955807e-05
+  },
+  "constrained": {
+   "feature": "constrained",
+   "label": "LoF-intolerant target (gnomAD LOEUF < 0.35)",
+   "auc_drop": -0.003935767274733992,
+   "drop_lo": -0.011092864720384515,
+   "drop_hi": 0.0029134673547644672
+  },
+  "pan_essential": {
+   "feature": "pan_essential",
+   "label": "Pan-essential (DepMap)",
+   "auc_drop": -0.019382536825800933,
+   "drop_lo": -0.05275924339676781,
+   "drop_hi": 0.003981717758888958
+  }
+ },
+ "n_prediction": 3144,
+ "n_prediction_positive": 218
+}

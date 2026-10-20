@@ -21,7 +21,8 @@ from report import bio, frame
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
 BIO = {"bio.loa": f"{bio.LOA}%", "bio.loa_novel": f"{bio.LOA_NOVEL}%",
-       **{f"bio.ph{ph}": f"{v}%" for ph, v in bio.TRANSITIONS.items()}}
+       **{f"bio.ph{ph}": f"{v}%" for ph, v in bio.TRANSITIONS.items()},
+       **{f"bio.{k}": f"{v}%" for k, v in {**bio.AREA_LOA, **bio.MODALITY_LOA}.items()}}
 
 
 def pct(x, digits=1):

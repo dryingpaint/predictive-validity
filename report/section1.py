@@ -247,6 +247,26 @@ def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFra
     return res
 
 
+TERMINATION_GROUPS = {"efficacy_futility": "efficacy", "safety_tolerability": "safety",
+                      "pk_pd_or_formulation": "pk_formulation", "business_portfolio": "business",
+                      "competitive_landscape": "business", "sponsor_decision_unspecified": "sponsor_decision",
+                      "enrollment_feasibility": "enrollment_operational", "operational_or_site": "enrollment_operational",
+                      "regulatory": "regulatory", "manufacturing_supply": "enrollment_operational", "covid19": "covid19",
+                      "replaced_by_new_protocol": "planned_or_replaced", "objectives_met_or_early_success": "planned_or_replaced",
+                      "other": "other"}
+
+
+def termination_reasons() -> dict:
+    """Stated reasons of industry Phase 1-3 trials started 2015-2025 that stopped
+    early or were withdrawn with a reason given: the trial-level denominator the
+    draft report used."""
+    t = frame.query("""SELECT o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
+                       WHERE o.execution <> 'completed' AND o.stop_reason NOT IN ('not_stated', 'not_applicable')
+                         AND s.start_date BETWEEN %s AND %s""", frame.WINDOW)
+    groups = t.stop_reason.map(TERMINATION_GROUPS).value_counts(normalize=True)
+    return {"n": int(len(t)), **{g: float(v) for g, v in groups.items()}}
+
+
 def scale(rows: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame) -> dict:
     """Size of the data behind Section 1."""
     q = frame.query("""
@@ -311,11 +331,21 @@ def main() -> None:
                          for k, g in modes.groupby("phase")[col]} | {"all": {
                              r: float(v) for r, v in modes[col].value_counts(normalize=True).items()}}
     endpoint = modes[modes.reason == "efficacy: primary endpoint not met"]
+    biology = {}
+    for ph, g in modes.groupby("phase"):
+        eff = g.reason.isin(["efficacy: stated", "efficacy: primary endpoint not met"]).sum()
+        saf = (g.reason == "safety").sum()
+        biology[str(ph)] = {"efficacy": float(eff / len(g)), "safety": float(saf / len(g)),
+                            "safety_of_efficacy_or_safety": float(saf / (eff + saf)) if eff + saf else None}
+    terminations = termination_reasons()
     failure_numbers = {"n_suspended": int(len(modes)), "reason_share": share("reason"),
                        "family_share": share("family"),
-                       "endpoint_not_met_from_publication": float((endpoint.results_source == "publication").mean())}
+                       "endpoint_not_met_from_publication": float((endpoint.results_source == "publication").mean()),
+                       "biology": biology, "terminations": terminations}
 
     overall = results[0]
+    strata = {name: {r["label"]: r for r in pd.read_csv(os.path.join(OUT, f"loa_by_{name}.csv")).to_dict(orient="records")}
+              for name in ("area", "modality")}
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
                "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
                "purpose": dict(frame.query("SELECT purpose, count(*)::int AS n FROM preclin.trial_purpose GROUP BY 1")
@@ -324,7 +354,7 @@ def main() -> None:
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "with_vaccines": results[9], "mature": results[10],
                "mature_us": results[11],
-               "failure_modes": failure_numbers}
+               "failure_modes": failure_numbers, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(overall, indent=1, default=float))
