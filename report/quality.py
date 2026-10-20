@@ -4,8 +4,9 @@
 
 1. Independent re-derivation of seeded samples by agents working from the
    primary sources (label audit: .cache/label_audit/results.json; trial
-   outcomes: .cache/outcome_audit/results.json): accuracy with Wilson 95%
-   intervals, counting correct and acceptable verdicts as agreement.
+   outcomes: .cache/outcome_audit/results.json; program approvals by stratum:
+   .cache/approval_audit/results.json): accuracy with Wilson 95% intervals,
+   counting correct and acceptable verdicts as agreement.
 2. Agreement of the trial stop reasons (preclin.trial_outcome) with the two
    earlier classifications of the same trials: the Sonnet why_stopped labels
    and the GPT-5.6 multi-axis rescore (preclin.classification), on a common
@@ -25,6 +26,7 @@ OUT = os.path.join(frame.REPO, "report", "output", "quality")
 AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")
 OUTCOME_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "results.json")
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
+APPROVAL_AUDIT = os.path.join(frame.REPO, ".cache", "approval_audit", "results.json")
 
 NEW = {"efficacy_futility": "efficacy", "safety_tolerability": "safety", "pk_pd_or_formulation": "pk_formulation",
        "business_portfolio": "business", "competitive_landscape": "business",
@@ -98,6 +100,20 @@ def main() -> None:
                             "acceptable": verdicts.count("acceptable"), "wrong": verdicts.count("wrong"),
                             "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
         numbers["outcome_audit"] = audits
+    if os.path.exists(APPROVAL_AUDIT):
+        programs = json.load(open(APPROVAL_AUDIT))["programs"]
+        audits = {}
+        for stratum in sorted({p["stratum"] for p in programs}) + ["all"]:
+            group = [p for p in programs if stratum in ("all", p["stratum"])]
+            for axis in ("approved", "date"):
+                verdicts = [p[f"{axis}_verdict"] for p in group if p[f"{axis}_verdict"] != "not_applicable"]
+                if not verdicts:
+                    continue
+                ok = sum(v in ("correct", "acceptable") for v in verdicts)
+                lo, hi = wilson(ok, len(verdicts))
+                audits[f"{stratum}.{axis}"] = {"n": len(verdicts), "wrong": verdicts.count("wrong"),
+                                               "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
+        numbers["approval_audit"] = audits
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(numbers, indent=1, default=float))
