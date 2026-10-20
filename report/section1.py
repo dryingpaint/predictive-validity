@@ -220,6 +220,25 @@ def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFra
     return res
 
 
+def scale(rows: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame) -> dict:
+    """Size of the data behind Section 1."""
+    q = frame.query("""
+        SELECT (SELECT count(*) FROM preclin.ctgov_study) AS ctgov_studies,
+               (SELECT count(*) FROM preclin.ctgov_study s WHERE s.lead_sponsor_class = 'INDUSTRY'
+                  AND s.start_date BETWEEN %s AND %s AND s.overall_status <> 'WITHDRAWN'
+                  AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']) AS industry_trials_window,
+               (SELECT count(*) FROM preclin.fda_approved_use) AS fda_approved_uses,
+               (SELECT count(DISTINCT letter_sha256) FROM preclin.fda_approved_use) AS fda_letters_with_uses,
+               (SELECT count(*) FROM preclin.fda_application WHERE center = 'CBER') AS cber_applications,
+               (SELECT count(*) FROM preclin.moiety) AS entities,
+               (SELECT count(*) FROM preclin.dev_program) AS programs""", frame.WINDOW).iloc[0]
+    out = {k: int(v) for k, v in q.items()}
+    out.update({"cohort_programs": int(rows.program_id.nunique()), "cohort_entities": int(rows.moiety_id.nunique()),
+                "cohort_rows_by_phase": {int(k): int(v) for k, v in rows.phase.value_counts().sort_index().items()},
+                "cohort_approved_programs": int(rows[rows.approval_date.notna()].program_id.nunique())})
+    return out
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
@@ -254,7 +273,9 @@ def main() -> None:
 
     overall = results[0]
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
-               "overall": overall, "us_site": results[1]}
+               "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
+               "novel": results[2], "not_novel": results[3],
+               "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7]}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(overall, indent=1, default=float))
