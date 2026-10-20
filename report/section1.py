@@ -278,7 +278,10 @@ def scale(rows: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame) -> dict
                (SELECT count(DISTINCT letter_sha256) FROM preclin.fda_approved_use) AS fda_letters_with_uses,
                (SELECT count(*) FROM preclin.fda_application WHERE center = 'CBER') AS cber_applications,
                (SELECT count(*) FROM preclin.moiety) AS entities,
-               (SELECT count(*) FROM preclin.dev_program) AS programs""", frame.WINDOW).iloc[0]
+               (SELECT count(*) FROM preclin.dev_program) AS programs,
+               (SELECT count(*) FROM preclin.dev_program_approval) AS approval_judgements,
+               (SELECT count(*) FROM preclin.dev_program_approval WHERE approved = 'uncertain') AS approvals_uncertain
+        """, frame.WINDOW).iloc[0]
     out = {k: int(v) for k, v in q.items()}
     out.update({"cohort_programs": int(rows.program_id.nunique()), "cohort_entities": int(rows.moiety_id.nunique()),
                 "cohort_rows_by_phase": {int(k): int(v) for k, v in rows.phase.value_counts().sort_index().items()},
