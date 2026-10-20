@@ -7,9 +7,9 @@ phase p, the cohort is programs whose first industry-sponsored phase-p trial
 started 2015-2025, that had not entered a later phase earlier, and whose
 entity was not already FDA-approved for the disease (a lifecycle program).
 Each program then either advanced (a later-phase industry trial started, or
-FDA approval for the disease), was suspended (no active trial and no trial
-activity for LAG months before the snapshot), or is censored (still active or
-too recent to call). The BIO-style rate is advanced / (advanced + suspended);
+FDA approval for the disease), was suspended (none of the program's own
+industry trials, those listing its disease, active or active within LAG months
+of the snapshot), or is censored (still active or too recent to call). The BIO-style rate is advanced / (advanced + suspended);
 the Aalen-Johansen estimate keeps censored programs in the risk set with
 suspension as a competing event. LOA is the product over phases.
 Confidence intervals resample molecular entities (programs of one entity
@@ -38,17 +38,28 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
                uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW,
                shared_entry: bool = False) -> pd.DataFrame:
     """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`.
-    Phase entry and advancement come from trials that mark entry for the program
-    (shared_entry=True lets every shared trial count, as if each indication
-    began with the entity's first trials)."""
-    ind = trials[trials.industry & trials.start_date.notna()].copy()
-    ind["active"] = ind.overall_status.isin(frame.ACTIVE)
-    ind["end"] = ind.completion_date.fillna(ind.primary_completion_date).fillna(ind.start_date)
-    entry_trials = ind if shared_entry else ind[ind.marks_entry]
+    shared_entry=True lets every shared trial count for every program, for entry,
+    advancement and activity alike (as if each indication began with the entity's
+    first trials)."""
+    t = trials[trials.start_date.notna()].copy()
+    t["active"] = t.overall_status.isin(frame.ACTIVE)
+    t["end"] = t.completion_date.fillna(t.primary_completion_date).fillna(t.start_date)
+    # A program's own trials list its disease (or, for an entity's disease-unspecified
+    # program, are its healthy-volunteer, basket and symptom trials). Shared trials
+    # (a healthy-volunteer study, a "solid tumors" basket) count only toward Phase 1
+    # entry of the lead indication. Phase entry is industry-sponsored; advancement and
+    # whether the disease is still in development come from the program's own trials
+    # by any sponsor (a cooperative-group Phase 3 of a company's drug is development).
+    unspecified = t.program_id.map(progs.set_index("program_id").mondo_id).isna()
+    own = t if shared_entry else t[t.attach.isin(["disease", "non_disease_condition"])
+                                   | (t.attach.isin(["no_disease", "basket"]) & unspecified)]
+    ind = t[t.industry]
+    entry_trials = ind if shared_entry else pd.concat([own[own.industry], ind[(ind.phase == 1) & ind.marks_entry]])
     starts = entry_trials.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
-    last = ind.assign(end=np.where(ind.active, pd.Timestamp(snap), pd.to_datetime(ind.end))) \
+    later = own.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
+    last = own.assign(end=np.where(own.active, pd.Timestamp(snap), pd.to_datetime(own.end))) \
               .groupby("program_id").end.max()
-    active = ind.groupby("program_id").active.any()
+    active = own.groupby("program_id").active.any()
     us = ind[ind.us_site].groupby("program_id").phase.max()
 
     p = progs.set_index("program_id")
@@ -68,14 +79,16 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
             if pd.isna(entry) or not (window[0] <= entry <= window[1]):
                 continue
             entry = pd.Timestamp(entry)
-            later = [pd.Timestamp(s.get(q)) for q in (1, 2, 3) if q > phase and pd.notna(s.get(q))]
-            if any(x < entry for x in later):
+            if any(pd.notna(s.get(q)) and pd.Timestamp(s.get(q)) < entry for q in (1, 2, 3) if q > phase):
+                continue
+            nxt = later.loc[pid] if pid in later.index else pd.Series(dtype=object)
+            later_starts = [pd.Timestamp(nxt.get(q)) for q in (2, 3) if q > phase and pd.notna(nxt.get(q))]
+            if any(x < entry for x in later_starts):
                 continue
             a = appr_date.get(pid)
             if pd.notna(a) and a <= entry:
                 continue  # already approved for this disease: lifecycle program
-            advance = min([x for x in later if x >= entry] + ([a] if pd.notna(a) and phase < 4 else []),
-                          default=None)
+            advance = min([x for x in later_starts if x >= entry] + ([a] if pd.notna(a) else []), default=None)
             if phase == 3:
                 advance = a if pd.notna(a) else None
             if advance is not None and advance <= pd.Timestamp(snap):

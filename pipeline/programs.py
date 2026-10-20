@@ -276,7 +276,14 @@ def build(_args) -> None:
     unspecified program. Any condition with a MONDO term counts as a disease. Such a shared
     trial marks phase entry (marks_entry) only for programs whose own first
     trial had started by then and for the program(s) begun next after it: an
-    indication the sponsor added later enters at its own first trial."""
+    indication the sponsor added later enters at its own first trial.
+
+    Industry trials follow their purpose (preclin.trial_purpose): product-support
+    and other trials are left out; an indication-development trial counts for the
+    conditions it develops the drug for; an early-development trial is shared like
+    a healthy-volunteer trial; a multi-indication basket is shared by the programs
+    of the diseases it lists (marking entry for those under way or begun next), and
+    belongs to the entity's unspecified program when none of them qualifies."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT max(source_version) FROM preclin.evidence_source_release "
                     "WHERE source_name = 'clinicaltrials_gov_api_v2'")
@@ -290,20 +297,28 @@ def build(_args) -> None:
             trials[nct] = {"phase": max(PHASE_NUM[p] for p in phases if p in PHASE_NUM), "start": start,
                            "active": status in ACTIVE_STATUSES, "end": comp or pcd or start,
                            "industry": sponsor_class == "INDUSTRY", "sponsor": sponsor}
+        cur.execute("SELECT nct_id, purpose, development_conditions FROM preclin.trial_purpose")
+        purpose = {nct: (p, set(conds)) for nct, p, conds in cur.fetchall()}
+        trials = {nct: t for nct, t in trials.items()
+                  if purpose.get(nct, ("",))[0] not in ("product_support", "other")}
         cur.execute("""SELECT nct_id, moiety_id FROM preclin.ctgov_study_moiety WHERE role = 'investigational'""")
         trial_moieties = defaultdict(set)
         for nct, mid in cur.fetchall():
             if nct in trials:
                 trial_moieties[nct].add(mid)
-        cur.execute("""SELECT si.nct_id, i.mondo_id, i.indication_kind FROM preclin.ctgov_study_indication si
-                       JOIN preclin.indication i USING (indication_id)
+        cur.execute("""SELECT si.nct_id, i.mondo_id, i.display_name, coalesce(i.ct_gov_conditions, '{}')
+                       FROM preclin.ctgov_study_indication si JOIN preclin.indication i USING (indication_id)
                        WHERE i.indication_kind IS DISTINCT FROM 'healthy_volunteers'""")
         trial_diseases, trial_other = defaultdict(set), set()
-        for nct, mondo, kind in cur.fetchall():
+        for nct, mondo, name, spellings in cur.fetchall():
+            p, developed = purpose.get(nct, ("indication_development", set()))
+            if p == "early_development" or (developed and not developed & {name, *spellings}):
+                continue  # a condition the trial does not develop the drug for
             if mondo:
                 trial_diseases[nct].add(mondo)
             else:
                 trial_other.add(nct)
+        baskets = {nct for nct, (p, _) in purpose.items() if p == "multi_indication"}
         cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
         ancestors = defaultdict(set)
         for term, anc in cur.fetchall():
@@ -325,9 +340,11 @@ def build(_args) -> None:
     programs = {}   # (moiety, mondo) -> {nct: (attach, marks_entry)}
     for mid, ncts in by_moiety.items():
         direct = defaultdict(set)
-        no_disease, other_condition = [], []
+        no_disease, other_condition, basket = [], [], []
         for nct in ncts:
-            if trial_diseases[nct]:
+            if nct in baskets:
+                basket.append(nct)
+            elif trial_diseases[nct]:
                 for d in trial_diseases[nct]:
                     direct[d].add(nct)
             elif nct in trial_other:
@@ -347,6 +364,13 @@ def build(_args) -> None:
         if other_condition:
             programs[(mid, None)] = {nct: ("non_disease_condition", True) for nct in other_condition}
             first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
+        for nct in basket:  # shared by the programs of the diseases it lists, else the unspecified program
+            listed = {k for k in first if any(d == k[1] or d in ancestors[k[1]] for d in trial_diseases[nct])}
+            lead = entry_programs({k: first[k] for k in listed}, trials[nct]["start"])
+            for key in listed:
+                programs[key].setdefault(nct, ("basket", key in lead))
+            if not lead:
+                programs.setdefault((mid, None), {})[nct] = ("basket", True)
         targets = [k for k in programs if k[0] == mid] or [(mid, None)]
         for nct in no_disease:
             lead = entry_programs({k: first[k] for k in targets if k in first}, trials[nct]["start"]) \
@@ -375,7 +399,8 @@ def build(_args) -> None:
                     (str(build_id), llm.git_commit(), snap,
                      Json({"phases": IN_SCOPE_PHASES, "active_statuses": sorted(ACTIVE_STATUSES),
                            "combined_phase": "higher", "withdrawn": "excluded",
-                           "shared_trial_entry": "programs under way or begun next"})))
+                           "shared_trial_entry": "programs under way or begun next",
+                           "industry_trials": "by purpose (preclin.trial_purpose)"})))
         cur.execute("DELETE FROM preclin.dev_program")
         ids = execute_values(cur, """INSERT INTO preclin.dev_program
               (moiety_id, mondo_id, ph1_start, ph2_start, ph3_start, first_start, highest_phase, n_trials,
