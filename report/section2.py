@@ -385,13 +385,15 @@ def main() -> None:
     ablation.to_csv(os.path.join(OUT, "prediction_ablation.csv"), index=False)
     cohort[["program_id", "target", "entry_year", "y"]].to_csv(os.path.join(OUT, "prediction_cohort.csv"), index=False)
 
+    keyed = lambda df, *cols: {"_".join(str(r[c]) for c in cols): r for r in df.to_dict(orient="records")}
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
-               "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records"),
-               "relative_success_untimed": untimed.to_dict(orient="records"),
-               "relative_success_lin_only": strict.to_dict(orient="records"),
-               "genetic_dose_response": dose.to_dict(orient="records"),
-               "joint_rr": joint.to_dict(orient="records"),
-               "prediction": metrics.to_dict(orient="records"), "ablation": ablation.to_dict(orient="records")}
+               "n_targets": int(data.target.nunique()),
+               "evidence_coverage_ph1": {f: float((data[data.phase == 1][f] > 0).mean()) for f in features},
+               "rs": keyed(rs, "feature"), "rs_untimed": keyed(untimed, "feature"), "rs_lin_only": keyed(strict, "feature"),
+               "adjusted_rr": keyed(adj, "feature", "phase"), "joint_rr": keyed(joint, "feature", "phase"),
+               "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
+               "ablation": keyed(ablation, "feature"), "n_prediction": int(len(cohort)),
+               "n_prediction_positive": int(cohort.y.sum())}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(rs[["label", "n_with", "loa_with", "loa_without", "rs", "rs_lo", "rs_hi"]].to_string())
