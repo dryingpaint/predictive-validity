@@ -127,10 +127,38 @@ def ablation_table() -> str:
     return table(df.iloc[:, -2:])
 
 
+QUALITY_ROWS = [
+    ("label_audit", "indication_mondo", "Condition → MONDO disease"),
+    ("label_audit", "drug_moiety", "Intervention name → molecular entities"),
+    ("label_audit", "fda_application_moiety", "FDA application → molecular entities"),
+    ("label_audit", "fda_letter_approved_uses", "Approval letter → approved uses"),
+    ("outcome_audit", "stop_reason", "Trial stop reason"),
+    ("outcome_audit", "primary_endpoint", "Primary endpoint met / not met (posted results)"),
+    ("publication_audit", "primary_endpoint", "Primary endpoint met / not met (results papers)"),
+    ("approval_audit", "yes_dated.approved", "Approval: judged approved, dated 2015 or later"),
+    ("approval_audit", "yes_dated.date", "Approval date: judged approved, dated 2015 or later"),
+    ("approval_audit", "yes_pre2015.approved", "Approval: judged approved before 2015"),
+    ("approval_audit", "no_entity_appr.approved", "Approval: judged not approved (Phase 2+ programs)"),
+    ("approval_audit", "uncertain.approved", "Approval: judged uncertain"),
+]
+
+
+def quality_table() -> str:
+    q = json.load(open(os.path.join(OUT, "quality", "numbers.json")))
+    rows = []
+    for group, key, label in QUALITY_ROWS:
+        r = q.get(group, {}).get(key)
+        if r:
+            rows.append([label, f"{r['n']:,}", f"{pct(r['accuracy'], 0)} ({pct(r['lo'], 0)}–{pct(r['hi'], 0)})",
+                         str(r.get("wrong", r["n"] - r.get("correct", 0) - r.get("acceptable", 0)))])
+    return table(pd.DataFrame(rows, columns=["Label", "Audited", "Agreement (95% CI)", "Wrong"]))
+
+
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table, "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area"),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality"),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
-          "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table}
+          "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
+          "QUALITY_TABLE": quality_table}
 
 
 def flatten(d, prefix=""):

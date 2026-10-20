@@ -25,6 +25,7 @@ from report import frame
 OUT = os.path.join(frame.REPO, "report", "output", "quality")
 AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")
 OUTCOME_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "results.json")
+PUBLICATION_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "publication_results.json")
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
 APPROVAL_AUDIT = os.path.join(frame.REPO, ".cache", "approval_audit", "results.json")
 
@@ -89,17 +90,21 @@ def main() -> None:
             audits[r["task"]] = {"n": r["n"], "correct": r["n_correct"], "acceptable": r["n_acceptable"],
                                  "wrong": r["n_wrong"], "accuracy": ok / r["n"], "lo": lo, "hi": hi}
         numbers["label_audit"] = audits
-    if os.path.exists(OUTCOME_AUDIT):
-        trials = json.load(open(OUTCOME_AUDIT))["trials"]
+    for name, path in (("outcome_audit", OUTCOME_AUDIT), ("publication_audit", PUBLICATION_AUDIT)):
+        if not os.path.exists(path):
+            continue
+        trials = json.load(open(path))["trials"]
         audits = {}
         for axis in OUTCOME_AXES:
+            if not any(f"{axis}_verdict" in t for t in trials):
+                continue
             verdicts = [t[f"{axis}_verdict"] for t in trials if t[f"{axis}_verdict"] != "not_applicable"]
             ok = sum(v in ("correct", "acceptable") for v in verdicts)
             lo, hi = wilson(ok, len(verdicts))
             audits[axis] = {"n": len(verdicts), "correct": verdicts.count("correct"),
                             "acceptable": verdicts.count("acceptable"), "wrong": verdicts.count("wrong"),
                             "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
-        numbers["outcome_audit"] = audits
+        numbers[name] = audits
     if os.path.exists(APPROVAL_AUDIT):
         programs = json.load(open(APPROVAL_AUDIT))["programs"]
         audits = {}
