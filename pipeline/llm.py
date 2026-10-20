@@ -81,9 +81,10 @@ class Task:
         )
 
 
-def _reusable(cur, task: Task, items: dict[str, dict[str, Any]]) -> dict[str, tuple]:
-    """Validated decisions from earlier runs of this task and prompt version
-    whose input hash equals the current payload's hash."""
+def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
+    """Validated decisions from earlier runs of this task and prompt version:
+    with reuse_by='input' only those whose input hash equals the current
+    payload's hash; with reuse_by='subject' the latest one per subject."""
     hashes = {key: sha256_text(canonical_json(payload)) for key, payload in items.items()}
     cur.execute(
         """
@@ -98,7 +99,8 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]]) -> dict[str, tu
         """,
         (task.name, task.subject_type, task.prompt_version, task.schema_version, list(items)),
     )
-    return {row[0]: row for row in cur.fetchall() if hashes.get(row[0]) == row[1]}
+    return {row[0]: row for row in cur.fetchall()
+            if reuse_by == "subject" or hashes.get(row[0]) == row[1]}
 
 
 def _store(cur, run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
@@ -124,9 +126,12 @@ def _store(cur, run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any]
     )
 
 
-def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60) -> uuid.UUID:
+def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
+        reuse_by: str = "input") -> uuid.UUID:
     """Decide every item (subject_key -> payload). Returns the run id; the
-    run's decisions cover every key, reused or new."""
+    run's decisions cover every key, reused or new. reuse_by='subject' keeps
+    earlier decisions when only incidental payload details (e.g. the order of
+    context rows) changed."""
     conn = connect()
     run_id = uuid.uuid4()
     client = anthropic.Anthropic()
@@ -144,10 +149,10 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60)
                    "output_schema": task.schema,
                    "output_schema_sha256": sha256_text(canonical_json(task.schema)),
                    "effort": task.effort, "max_tokens": task.max_tokens, "n_items": len(items),
-                   **task.params}),
+                   "reuse_by": reuse_by, **task.params}),
              datetime.now(timezone.utc)),
         )
-        reused = _reusable(cur, task, items)
+        reused = _reusable(cur, task, items, reuse_by)
         for key, row in reused.items():
             _, _, raw, parsed, request_id, usage, decision_id = row
             _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, None, decision_id)

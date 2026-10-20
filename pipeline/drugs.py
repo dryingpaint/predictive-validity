@@ -104,7 +104,7 @@ def canonicalize(_args) -> None:
                             "trials": [{**t, "interventions": t["interventions"] or []}
                                        for t in context.get(did, [])]}
                  for did, name, syn, chembl in drugs}
-    run_id = llm.run(TASK, items)
+    run_id = llm.run(TASK, items, reuse_by="subject")
 
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
