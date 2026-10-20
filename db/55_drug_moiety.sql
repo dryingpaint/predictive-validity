@@ -7,6 +7,9 @@
 
 BEGIN;
 
+-- Fail fast instead of queueing behind long readers of preclin.drug.
+SET LOCAL lock_timeout = '10s';
+
 CREATE TABLE IF NOT EXISTS preclin.moiety (
     moiety_id   serial PRIMARY KEY,
     moiety_key  text NOT NULL UNIQUE CHECK (moiety_key ~ '^[a-z0-9]+$'),
