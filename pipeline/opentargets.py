@@ -83,13 +83,10 @@ def load(_args) -> None:
         cur.execute("DELETE FROM preclin.ot_disease")
         execute_values(cur, """INSERT INTO preclin.ot_disease (disease_id, name, mondo_ids, therapeutic_areas,
                                  source_release_id) VALUES %s""", disease_rows, page_size=5000)
-        for start in range(0, len(rows), 20000):
-            execute_values(cur, """INSERT INTO preclin.ot_association
-                  (target_ensembl, disease_id, datasource, datatype, score, evidence_count, first_year,
-                   series_years, series_scores, source_release_id) VALUES %s""",
-                           rows[start:start + 20000], page_size=5000)
-            conn.commit()
-        conn.commit()
+        execute_values(cur, """INSERT INTO preclin.ot_association
+              (target_ensembl, disease_id, datasource, datatype, score, evidence_count, first_year,
+               series_years, series_scores, source_release_id) VALUES %s""", rows, page_size=5000)
+        conn.commit()  # one transaction: readers never see a half-loaded table
     print(f"release={RELEASE} targets={len(targets)} associations={len(rows)} diseases={len(disease_rows)}")
 
 
