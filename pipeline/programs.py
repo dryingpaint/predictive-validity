@@ -3,7 +3,8 @@
     python -m pipeline.programs register   # trial -> intervention names / conditions (preclin.ctgov_study_*)
     python -m pipeline.programs roles      # role of each molecular entity in each trial (arm types, else LLM)
     python -m pipeline.programs purposes   # LLM: what each industry trial contributes to development
-    python -m pipeline.programs build      # (molecular entity, MONDO disease) programs -> preclin.dev_program
+    python -m pipeline.programs indications  # LLM: group each entity's diseases into development indications
+    python -m pipeline.programs build      # (molecular entity, indication) programs -> preclin.dev_program
 
 A trial is in scope when it lists Early Phase 1, Phase 1, 2 or 3 (any sponsor,
 any date). Intervention names (DRUG, BIOLOGICAL, GENETIC, COMBINATION_PRODUCT)
@@ -259,12 +260,100 @@ def purposes(_args) -> None:
     print(f"trials={len(items)}")
 
 
+INDICATION_SYSTEM = """You group the diseases a drug (molecular entity) has been tested in into development indications: the units a sponsor runs and reports as separate development programs, as industry trackers such as Biomedtracker record them.
+
+Put a disease together with its subtypes, stages, lines of therapy, biomarker groups and settings when they are the same indication for development (prostate cancer, castration-resistant prostate carcinoma, metastatic prostate carcinoma and prostate adenocarcinoma are one indication; non-small cell lung carcinoma with squamous and non-squamous NSCLC; type 2 diabetes mellitus with its complications studied as glycaemic control). Keep apart diseases that are separate indications even when one ontology term contains the other: different cancer types or lymphoma subtypes (diffuse large B-cell vs follicular lymphoma), type 1 vs type 2 diabetes, Crohn's disease vs ulcerative colitis, a complication developed as its own indication (diabetic kidney disease vs type 2 diabetes; diabetic macular edema vs diabetes). A generic grouping term the trials used for a basket (cancer, solid tumor, neoplasm) is its own group.
+
+Every disease belongs to exactly one group. The representative of a group is the member that names the indication, usually the broadest member that is still a single indication."""
+
+INDICATION_SCHEMA = {
+    "type": "object",
+    "properties": {"groups": {"type": "array", "items": {
+        "type": "object",
+        "properties": {"representative": {"type": "string"}, "members": {"type": "array", "items": {"type": "string"}}},
+        "required": ["representative", "members"], "additionalProperties": False}}},
+    "required": ["groups"],
+    "additionalProperties": False,
+}
+
+
+def render_indications(p: dict) -> str:
+    lines = "\n".join(f"- {d['mondo_id']} {d['label']} ({d['n_trials']} trials, phases {d['phases']}"
+                       + (f"; subtype of {', '.join(d['within'])}" if d["within"] else "") + ")"
+                       for d in p["diseases"])
+    return f"Entity: {p['entity']}\n\nDiseases (MONDO):\n{lines}"
+
+
+def validate_indications(p: dict, out: dict) -> None:
+    want = sorted(d["mondo_id"] for d in p["diseases"])
+    got = sorted(m for g in out["groups"] for m in g["members"])
+    if got != want:
+        raise ValueError(f"groups cover {len(got)} diseases, expected {len(want)} once each")
+    for g in out["groups"]:
+        if g["representative"] not in g["members"]:
+            raise ValueError(f"representative {g['representative']} not a member")
+
+
+INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v1", schema_version="v1",
+                           system=INDICATION_SYSTEM, schema=INDICATION_SCHEMA, render=render_indications,
+                           validate=validate_indications, subject_type="moiety", model="claude-opus-5-5",
+                           effort="medium", max_tokens=16000)
+
+
+def indications(_args) -> None:
+    """Group each entity's diseases into development indications (entities with
+    two or more diseases, one of which contains another)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT sm.moiety_id, m.name, i.mondo_id, t.label, count(DISTINCT sm.nct_id),
+                   array_agg(DISTINCT s.phases[array_upper(s.phases, 1)])
+            FROM preclin.ctgov_study_moiety sm JOIN preclin.moiety m USING (moiety_id)
+            JOIN preclin.ctgov_study s USING (nct_id)
+            JOIN preclin.ctgov_study_indication si USING (nct_id) JOIN preclin.indication i USING (indication_id)
+            JOIN preclin.ontology_term t ON t.term_id = i.mondo_id
+            WHERE sm.role = 'investigational' AND i.mondo_id IS NOT NULL
+              AND i.indication_kind IS DISTINCT FROM 'healthy_volunteers'
+            GROUP BY 1, 2, 3, 4""")
+        rows = cur.fetchall()
+        cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
+        ancestors = defaultdict(set)
+        for term, anc in cur.fetchall():
+            ancestors[term].add(anc)
+    by_entity = defaultdict(list)
+    names = {}
+    for mid, name, mondo, label, n, phases in rows:
+        names[mid] = name
+        by_entity[mid].append({"mondo_id": mondo, "label": label, "n_trials": n,
+                               "phases": ", ".join(sorted(p for p in phases if p))})
+    items = {}
+    for mid, ds in by_entity.items():
+        ids = {d["mondo_id"] for d in ds}
+        for d in ds:
+            d["within"] = sorted(ids & ancestors[d["mondo_id"]])
+        if any(d["within"] for d in ds):
+            items[str(mid)] = {"entity": names[mid], "diseases": sorted(ds, key=lambda d: d["mondo_id"])}
+    run_id = llm.run(INDICATION_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key::int, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+        out = [(mid, m, g["representative"], did) for mid, did, o in cur.fetchall()
+               for g in o["groups"] for m in g["members"]]
+        cur.execute("DELETE FROM preclin.program_indication")
+        execute_values(cur, """INSERT INTO preclin.program_indication (moiety_id, mondo_id, indication_mondo,
+                                 llm_decision_id) VALUES %s""", out, page_size=5000)
+        conn.commit()
+    print(f"entities={len(items)} diseases={len(out)} grouped into "
+          f"{len({(m, r) for m, _, r, _ in out})} indications")
+
+
 ACTIVE_STATUSES = {"RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING"}
 PHASE_NUM = {"EARLY_PHASE1": 1, "PHASE1": 1, "PHASE2": 2, "PHASE3": 3}
 
 
 def build(_args) -> None:
-    """(molecular entity, MONDO disease) programs from investigational trials.
+    """(molecular entity, indication) programs from investigational trials. An
+    indication is the MONDO disease representing a group of the entity's diseases
+    (preclin.program_indication); ungrouped diseases are their own indication.
 
     A trial's phase is the highest phase it lists (Phase 1/2 counts as 2).
     Withdrawn trials never enrolled and are left out. A trial whose condition
@@ -321,6 +410,8 @@ def build(_args) -> None:
             else:
                 trial_other.add(nct)
         baskets = {nct for nct, (p, _) in purpose.items() if p == "multi_indication"}
+        cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
+        indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
         cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
         ancestors = defaultdict(set)
         for term, anc in cur.fetchall():
@@ -348,7 +439,7 @@ def build(_args) -> None:
                 basket.append(nct)
             elif trial_diseases[nct]:
                 for d in trial_diseases[nct]:
-                    direct[d].add(nct)
+                    direct[indication.get((mid, d), d)].add(nct)
             elif nct in trial_other:
                 other_condition.append(nct)
             else:
@@ -367,7 +458,8 @@ def build(_args) -> None:
             programs[(mid, None)] = {nct: ("non_disease_condition", True) for nct in other_condition}
             first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
         for nct in basket:  # shared by the programs of the diseases it lists, else the unspecified program
-            listed = {k for k in first if any(d == k[1] or d in ancestors[k[1]] for d in trial_diseases[nct])}
+            listed = {k for k in first if any(indication.get((mid, d), d) == k[1] or d in ancestors[k[1]]
+                                              for d in trial_diseases[nct])}
             lead = entry_programs({k: first[k] for k in listed}, trials[nct]["start"])
             for key in listed:
                 programs[key].setdefault(nct, ("basket", key in lead))
@@ -425,6 +517,7 @@ def main() -> None:
     sub.add_parser("register").set_defaults(fn=register)
     sub.add_parser("roles").set_defaults(fn=roles)
     sub.add_parser("purposes").set_defaults(fn=purposes)
+    sub.add_parser("indications").set_defaults(fn=indications)
     sub.add_parser("build").set_defaults(fn=build)
     args = parser.parse_args()
     args.fn(args)

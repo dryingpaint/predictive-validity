@@ -364,7 +364,7 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
             execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
         for table, cols in [("drug_moiety", "drug_id, role, biosimilar_of, llm_decision_id, method"),
                             ("fda_application_moiety", "appl_no, biosimilar_of, llm_decision_id"),
-                            ("ctgov_study_moiety", None), ("moiety_target", None)]:
+                            ("ctgov_study_moiety", None), ("moiety_target", None), ("program_indication", None)]:
             if cols is None:
                 cur.execute("""SELECT string_agg(quote_ident(column_name), ', ') FROM information_schema.columns
                                 WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
