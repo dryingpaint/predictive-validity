@@ -201,8 +201,12 @@ def render_trial(p: dict) -> str:
 PUBLICATION_SYSTEM = CLASSIFY_SYSTEM.replace(
     "and posted results if any) and record what happened.",
     "and the published results paper(s) of the trial) and record what happened. The trial completed and posted "
-    "no results on the registry; judge the primary endpoint from the publication abstracts, and use no_results "
-    "only when no abstract reports this trial's primary endpoint.")
+    "no results on the registry; judge the primary endpoint from the publication abstracts given, and use no_results "
+    "only when no abstract reports this trial's primary endpoint. Judge only from the text given: never fill in a "
+    "result from memory. A linked paper may be a protocol, a pooled or post hoc analysis, a review or a different "
+    "trial; use only a paper that reports this trial's prespecified primary endpoint. When that endpoint is a "
+    "descriptive safety, tolerability or PK measure with no comparison or success criterion (common in open-label "
+    "extensions), the answer is not_assessable whatever the authors conclude about safety or efficacy.")
 
 
 def render_publication(p: dict) -> str:
@@ -214,7 +218,7 @@ CLASSIFY_TASK = llm.Task(name="trial_outcome", prompt_version="v1", schema_versi
                          model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
 
-PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_version="v1", schema_version="v1",
+PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_version="v2", schema_version="v1",
                             system=PUBLICATION_SYSTEM, schema=CLASSIFY_SCHEMA, render=render_publication,
                             subject_type="trial", model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
