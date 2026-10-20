@@ -377,7 +377,7 @@ def main() -> None:
 
     dose = dose_response(data, "genetic_any")
     dose.to_csv(os.path.join(OUT, "genetic_dose_response.csv"), index=False)
-    joint = pd.DataFrame(joint_rr(data, features))
+    joint = pd.DataFrame(joint_rr(data, [f for f in features if f != "genetic_any"]))  # its parts enter instead
     joint.to_csv(os.path.join(OUT, "joint_rr_by_phase.csv"), index=False)
 
     metrics, ablation, cohort = prediction(progs, trials, snap)
