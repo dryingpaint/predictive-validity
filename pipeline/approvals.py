@@ -103,7 +103,8 @@ def items(cur) -> dict[str, dict]:
         FROM preclin.fda_application_moiety am
         JOIN preclin.fda_application a USING (appl_no)
         JOIN preclin.fda_submission_letter sl ON sl.appl_no = a.appl_no
-        JOIN preclin.fda_submission s USING (appl_no, submission_type, submission_no)
+        JOIN preclin.fda_submission s ON s.appl_no = sl.appl_no AND s.submission_type = sl.submission_type
+                                     AND s.submission_no = sl.submission_no
         JOIN preclin.fda_approved_use u ON u.letter_sha256 = sl.letter_sha256
         WHERE u.change_type <> 'efficacy_labeling'
         ORDER BY s.status_date""")
