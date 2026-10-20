@@ -6,6 +6,7 @@ reads the legacy preclin.program / program_outcome / approval tables.
 from __future__ import annotations
 
 import os
+import time
 from datetime import date
 
 import pandas as pd
@@ -24,10 +25,17 @@ def connect():
                             keepalives=1, keepalives_idle=30, keepalives_interval=10, keepalives_count=3)
 
 
-def query(sql: str, params=None) -> pd.DataFrame:
-    with connect() as conn, conn.cursor() as cur:
-        cur.execute(sql, params)
-        return pd.DataFrame(cur.fetchall(), columns=[c.name for c in cur.description])
+def query(sql: str, params=None, attempts: int = 4) -> pd.DataFrame:
+    """Run a read query, retrying when the connection drops."""
+    for attempt in range(attempts):
+        try:
+            with connect() as conn, conn.cursor() as cur:
+                cur.execute(sql, params)
+                return pd.DataFrame(cur.fetchall(), columns=[c.name for c in cur.description])
+        except psycopg2.OperationalError:
+            if attempt == attempts - 1:
+                raise
+            time.sleep(15 * (attempt + 1))
 
 
 def snapshot() -> date:
