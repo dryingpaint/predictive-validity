@@ -13,24 +13,29 @@ all: migrate sources identity programs labels evidence report
 migrate:
 	$(PY) db/migrate.py apply
 
-# Raw sources: ClinicalTrials.gov snapshot, FDA approvals (CDER + CBER), ontologies.
+# Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER),
+# UNII substance names, ontologies.
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
 	$(RUN) pipeline.ctgov countries
 	$(RUN) pipeline.outcomes results
+	$(RUN) pipeline.outcomes publications
 	$(RUN) pipeline.fda fetch
 	$(RUN) pipeline.fda load
 	$(RUN) pipeline.fda load-cber
+	$(RUN) pipeline.unii load
 	$(RUN) pipeline.ontology load
 
-# Identity: trial links, conditions -> MONDO, interventions -> molecular entities, FDA products -> entities.
+# Identity: trial links, conditions -> MONDO, interventions -> molecular entities, FDA products -> entities,
+# entities -> UNII substances (merging entities that are the same substance).
 identity:
 	$(RUN) pipeline.programs register
 	$(RUN) pipeline.indications map
 	$(RUN) pipeline.drugs canonicalize --scope industry
 	$(RUN) pipeline.fda extract
 	$(RUN) pipeline.fda link
+	$(RUN) pipeline.drugs unii
 
 # Programs: entity role in each trial, then (entity, disease) programs.
 programs:

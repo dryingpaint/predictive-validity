@@ -1,6 +1,7 @@
 """What happened in a trial: posted results and the stated reason for stopping.
 
     python -m pipeline.outcomes results    # cached CT.gov results sections -> preclin.ctgov_result_summary
+    python -m pipeline.outcomes publications   # PubMed results papers for completed trials without posted results
     python -m pipeline.outcomes classify   # LLM: execution, stop reason and primary-endpoint outcome per trial
 
 The results summary keeps, for up to three primary outcome measures, the
@@ -15,7 +16,10 @@ import glob
 import gzip
 import json
 import os
+import time
+import xml.etree.ElementTree as ET
 
+import requests
 from psycopg2.extras import Json, execute_values
 
 from pipeline import llm
@@ -74,6 +78,70 @@ def results(_args) -> None:
     print(f"studies with results={len(rows)}")
 
 
+EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+
+
+def _eutils(endpoint: str, **params) -> str:
+    for attempt in range(6):
+        try:
+            r = requests.post(f"{EUTILS}/{endpoint}.fcgi", data={"db": "pubmed", **params}, timeout=120)
+            r.raise_for_status()
+            time.sleep(0.4)  # stay under 3 requests/second without an API key
+            return r.text
+        except requests.RequestException:
+            time.sleep(5 * (attempt + 1))
+    raise RuntimeError(f"eutils {endpoint} failed")
+
+
+def publications(_args) -> None:
+    """Results papers for industry Phase 2/3 trials completed since 2010 without
+    posted results: PMIDs the registry lists as RESULT/DERIVED, plus PubMed
+    articles indexing the NCT id as a ClinicalTrials.gov secondary identifier."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT nct_id, references_ FROM preclin.ctgov_study
+                       WHERE lead_sponsor_class = 'INDUSTRY' AND overall_status = 'COMPLETED' AND NOT has_results
+                         AND phases && ARRAY['PHASE2','PHASE3'] AND start_date >= '2010-01-01'""")
+        trials = cur.fetchall()
+    ncts = {n for n, _ in trials}
+    links = {(n, r["pmid"], "ctgov_reference") for n, refs in trials for r in refs
+             if r.get("pmid") and r.get("type") in ("RESULT", "DERIVED")}
+    found = set()
+    for start in range(0, len(trials), 100):
+        batch = [n for n, _ in trials[start:start + 100]]
+        xml = _eutils("esearch", term=" OR ".join(f"{n}[si]" for n in batch), retmax=5000)
+        found.update(e.text for e in ET.fromstring(xml).iter("Id"))
+    pmids = sorted(found | {p for _, p, _ in links})
+    rows = {}
+    for start in range(0, len(pmids), 200):
+        xml = _eutils("efetch", id=",".join(pmids[start:start + 200]), retmode="xml")
+        for art in ET.fromstring(xml).iter("PubmedArticle"):
+            pmid = art.findtext(".//PMID")
+            title = art.find(".//ArticleTitle")
+            abstract = " ".join("".join(t.itertext()) for t in art.iter("AbstractText"))
+            year = art.findtext(".//PubDate/Year") or (art.findtext(".//PubDate/MedlineDate") or "")[:4]
+            authors = [a.findtext("LastName") + " " + (a.findtext("Initials") or "")
+                       for a in art.iter("Author") if a.findtext("LastName")]
+            doi = next((i.text for i in art.iter("ArticleId") if i.get("IdType") == "doi"), None)
+            rows[pmid] = (pmid, "".join(title.itertext()) if title is not None else "",
+                          (authors[0].strip() + (" et al." if len(authors) > 1 else "")) if authors else None,
+                          art.findtext(".//Journal/ISOAbbreviation") or art.findtext(".//Journal/Title"),
+                          int(year) if year.isdigit() else None, doi, abstract or None)
+            for acc in art.iter("AccessionNumber"):
+                if acc.text in ncts:
+                    links.add((acc.text, pmid, "pubmed_secondary_id"))
+    links = {(n, p, s) for n, p, s in links if p in rows}
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """INSERT INTO public.publications (pmid, title, authors, journal, year, doi, abstract)
+                               VALUES %s
+                               ON CONFLICT (pmid) DO UPDATE SET abstract = EXCLUDED.abstract,
+                                   doi = coalesce(publications.doi, EXCLUDED.doi)""", list(rows.values()))
+        execute_values(cur, """INSERT INTO preclin.trial_publication (nct_id, pmid, link_source) VALUES %s
+                               ON CONFLICT DO NOTHING""", sorted(links))
+        conn.commit()
+    print(f"trials={len(trials)} articles={len(rows)} links={len(links)} "
+          f"trials with a paper={len({n for n, _, _ in links})}")
+
+
 STOP_REASONS = ["efficacy_futility", "safety_tolerability", "pk_pd_or_formulation", "business_portfolio",
                 "sponsor_decision_unspecified", "competitive_landscape", "enrollment_feasibility",
                 "operational_or_site", "regulatory", "manufacturing_supply", "covid19",
@@ -128,9 +196,25 @@ def render_trial(p: dict) -> str:
             f"Posted results:\n{p['results'] or '(no results posted)'}")
 
 
+PUBLICATION_SYSTEM = CLASSIFY_SYSTEM.replace(
+    "and posted results if any) and record what happened.",
+    "and the published results paper(s) of the trial) and record what happened. The trial completed and posted "
+    "no results on the registry; judge the primary endpoint from the publication abstracts, and use no_results "
+    "only when no abstract reports this trial's primary endpoint.")
+
+
+def render_publication(p: dict) -> str:
+    return render_trial(p).replace("Posted results:", "Results publications:")
+
+
 CLASSIFY_TASK = llm.Task(name="trial_outcome", prompt_version="v1", schema_version="v1", system=CLASSIFY_SYSTEM,
                          schema=CLASSIFY_SCHEMA, render=render_trial, subject_type="trial",
                          model="claude-opus-5-5", effort="medium", max_tokens=2000)
+
+
+PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_version="v1", schema_version="v1",
+                            system=PUBLICATION_SYSTEM, schema=CLASSIFY_SCHEMA, render=render_publication,
+                            subject_type="trial", model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
 
 def classify(_args) -> None:
@@ -154,6 +238,24 @@ def classify(_args) -> None:
                  for nct, title, phases, status, enr, start, comp, conds, ivs, why, summary in cur.fetchall()}
     run_id = llm.run(CLASSIFY_TASK, items)
     with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
+                   s.completion_date, s.conditions,
+                   (SELECT array_agg(i->>'name') FROM jsonb_array_elements(s.interventions) i), s.why_stopped,
+                   (SELECT string_agg('PMID ' || a.pmid || ' (' || coalesce(a.year::text, '') || '): ' || a.title
+                                      || E'\n' || left(coalesce(a.abstract, ''), 3000), E'\n\n' ORDER BY a.pmid)
+                    FROM preclin.trial_publication tp JOIN public.publications a USING (pmid)
+                    WHERE tp.nct_id = s.nct_id)
+            FROM preclin.ctgov_study s
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01' AND NOT s.has_results
+              AND s.overall_status = 'COMPLETED' AND s.phases && ARRAY['PHASE2','PHASE3']
+              AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""")
+        pub_items = {nct: {"nct_id": nct, "title": title, "phases": phases, "status": status, "enrollment": enr,
+                           "start": str(start), "completion": str(comp), "conditions": conds or [],
+                           "interventions": ivs or [], "why_stopped": why, "results": papers}
+                     for nct, title, phases, status, enr, start, comp, conds, ivs, why, papers in cur.fetchall()}
+    pub_run = llm.run(PUBLICATION_TASK, pub_items) if pub_items else None
+    with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_outcome")
         cur.execute("""INSERT INTO preclin.trial_outcome
               (nct_id, execution, stop_reason, secondary_reasons, primary_endpoint, safety_signal,
@@ -163,15 +265,17 @@ def classify(_args) -> None:
                    o->>'primary_endpoint', o->>'safety_signal', (o->>'efficacy_failure')::boolean,
                    o->>'evidence', llm_decision_id
             FROM (SELECT subject_key, parsed_output o, llm_decision_id FROM pv_evidence.llm_decision
-                  WHERE decision_run_id = %s AND validation_status = 'validated') d""", (str(run_id),))
+                  WHERE decision_run_id = ANY(%s::uuid[]) AND validation_status = 'validated') d""",
+                    ([str(r) for r in (run_id, pub_run) if r],))
         conn.commit()
-    print(f"trials={len(items)}")
+    print(f"trials={len(items)} from publications={len(pub_items)}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("results").set_defaults(fn=results)
+    sub.add_parser("publications").set_defaults(fn=publications)
     sub.add_parser("classify").set_defaults(fn=classify)
     args = parser.parse_args()
     args.fn(args)

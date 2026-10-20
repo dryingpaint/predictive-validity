@@ -3,7 +3,8 @@
     python -m pipeline.approvals judge   # LLM: was this entity FDA-approved for this disease, and when?
 
 For every molecular entity with FDA applications, the LLM sees the entity's
-dated approval events (uses extracted from 2015-2026 approval letters,
+dated approval events (uses extracted from 2015-2026 approval letters, less
+efficacy_labeling changes that add data without approving a new use;
 original-approval dates) and its current label indications, and rules on each
 of the entity's program diseases (preclin.dev_program). Results go to
 preclin.dev_program_approval.
@@ -104,6 +105,7 @@ def items(cur) -> dict[str, dict]:
         JOIN preclin.fda_submission_letter sl ON sl.appl_no = a.appl_no
         JOIN preclin.fda_submission s USING (appl_no, submission_type, submission_no)
         JOIN preclin.fda_approved_use u ON u.letter_sha256 = sl.letter_sha256
+        WHERE u.change_type <> 'efficacy_labeling'
         ORDER BY s.status_date""")
     events = defaultdict(dict)
     for mid, appl, d, kind, use, quals, partners in cur.fetchall():

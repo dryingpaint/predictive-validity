@@ -108,24 +108,26 @@ class Task:
 
 def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
     """Validated decisions from earlier runs of this task and prompt version:
-    with reuse_by='input' only those whose input hash equals the current
-    payload's hash; with reuse_by='subject' the latest one per subject."""
-    hashes = {key: sha256_text(canonical_json(payload)) for key, payload in items.items()}
+    with reuse_by='input' the latest one per subject whose input hash equals
+    the current payload's hash; with reuse_by='subject' the latest one per
+    subject whatever its input."""
+    keys = list(items)
+    hashes = [sha256_text(canonical_json(items[k])) for k in keys]
     cur.execute(
         """
         SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_sha256, d.raw_response,
                d.parsed_output, d.provider_request_id, d.usage, d.llm_decision_id
-        FROM pv_evidence.llm_decision d
+        FROM unnest(%s::text[], %s::text[]) AS w(subject_key, input_sha256)
+        JOIN pv_evidence.llm_decision d ON d.subject_key = w.subject_key
+             AND (%s = 'subject' OR d.input_sha256 = w.input_sha256)
         JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
         WHERE d.task = %s AND d.subject_type = %s AND r.prompt_version = %s
           AND r.output_schema_version = %s AND d.validation_status = 'validated'
-          AND d.subject_key = ANY(%s)
         ORDER BY d.subject_key, d.created_at DESC
         """,
-        (task.name, task.subject_type, task.prompt_version, task.schema_version, list(items)),
+        (keys, hashes, reuse_by, task.name, task.subject_type, task.prompt_version, task.schema_version),
     )
-    return {row[0]: row for row in cur.fetchall()
-            if reuse_by == "subject" or hashes.get(row[0]) == row[1]}
+    return {row[0]: row for row in cur.fetchall()}
 
 
 def _store_reused(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],

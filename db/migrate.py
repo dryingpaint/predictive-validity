@@ -19,11 +19,13 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import psycopg2
+from dotenv import load_dotenv
 from psycopg2.extras import Json
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_DIR = Path(__file__).resolve().parent
+load_dotenv(ROOT / ".env")
 FIRST_TRACKED_MIGRATION = 14
 LEDGER_MIGRATION = 26
 MIGRATION_RE = re.compile(r"^(?P<number>[0-9]{2})_(?P<name>.+)[.](?P<kind>sql|py)$")

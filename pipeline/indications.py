@@ -9,7 +9,10 @@ Candidates come from the pinned MONDO release in preclin.ontology_term:
 character n-gram TF-IDF retrieval over labels and exact synonyms. The LLM
 picks the term naming the disease itself, leaving population qualifiers (line,
 stage, biomarker, age) aside, or reports that none fits and proposes standard
-disease names; a second retrieval round runs on those names.
+disease names; a second retrieval round runs on those names. A disease still
+without a term gets the most specific MONDO term that contains it (its nearest
+parent disease or grouping), chosen from the retrieved terms and their parents;
+indication.mondo_match records which kind of match each mapping is.
 """
 from __future__ import annotations
 
@@ -37,14 +40,16 @@ class MondoIndex:
         cur.execute("""SELECT t.term_id, t.label, t.synonyms, t.definition,
                               (SELECT string_agg(p.label, '; ') FROM preclin.ontology_is_a e
                                JOIN preclin.ontology_term p ON p.term_id = e.parent_id
-                               WHERE e.child_id = t.term_id)
+                               WHERE e.child_id = t.term_id),
+                              (SELECT array_agg(e.parent_id) FROM preclin.ontology_is_a e WHERE e.child_id = t.term_id)
                        FROM preclin.ontology_term t
                        WHERE t.ontology = 'MONDO' AND NOT t.is_obsolete""")
-        self.terms = {}
+        self.terms, self.parents = {}, {}
         strings, owners = [], []
-        for tid, label, syns, definition, parents in cur.fetchall():
+        for tid, label, syns, definition, parents, parent_ids in cur.fetchall():
             self.terms[tid] = {"mondo_id": tid, "label": label, "synonyms": list(syns)[:6],
                                "parents": parents or "", "definition": (definition or "")[:240]}
+            self.parents[tid] = parent_ids or []
             for s in [label, *syns]:
                 strings.append(s.lower())
                 owners.append(tid)
@@ -112,6 +117,40 @@ TASK = llm.Task(name="indication_mondo", prompt_version="v2", schema_version="v1
                 effort="medium", max_tokens=3000)
 
 
+BROADER_SYSTEM = """You map a clinical-trial condition that is a disease to the MONDO disease ontology. An earlier pass found no MONDO term naming it exactly.
+
+Pick from the candidate list:
+- match "exact": a candidate names the condition's core disease itself (by label, synonym or definition), leaving population qualifiers (line of therapy, stage, biomarker, age, setting) aside. Example: "metastatic malignant neoplasm in the rectum" -> rectal cancer.
+- match "broader": no candidate names it, so pick the most specific candidate whose meaning contains the condition: its nearest parent disease or grouping (e.g. "melasma" -> hyperpigmentation of the skin; "contrast-induced nephropathy" -> acute kidney injury; "finger injuries" -> injury). Prefer the narrowest candidate that still contains the whole condition.
+- match "none" with mondo_id null: no candidate contains the condition, or the condition is not a disease."""
+
+BROADER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "match": {"type": "string", "enum": ["exact", "broader", "none"]},
+        "mondo_id": {"type": ["string", "null"]},
+        "rationale": {"type": "string"},
+    },
+    "required": ["match", "mondo_id", "rationale"],
+    "additionalProperties": False,
+}
+
+
+def render_broader(p: dict) -> str:
+    return render(p).replace("\n\nMONDO candidates:", f"\nCore disease: {p['core_disease']}\n\nMONDO candidates:")
+
+
+def validate_broader(p: dict, out: dict) -> None:
+    validate(p, out)
+    if (out["match"] == "none") != (out["mondo_id"] is None):
+        raise ValueError("match 'none' requires mondo_id null, and only then")
+
+
+BROADER_TASK = llm.Task(name="indication_mondo_broader", prompt_version="v1", schema_version="v1",
+                        system=BROADER_SYSTEM, schema=BROADER_SCHEMA, render=render_broader,
+                        validate=validate_broader, subject_type="indication", effort="medium", max_tokens=3000)
+
+
 def map_indications(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         index = MondoIndex(cur)
@@ -126,16 +165,30 @@ def map_indications(_args) -> None:
 
     retry = {k: v for k, v in first.items() if not v["mondo_id"] and v["kind"] == "disease" and v["retry_queries"]}
     final, runs = dict(first), {k: run1 for k in first}
+    match = {k: "exact" for k, d in first.items() if d["mondo_id"]}
+    for k in retry:
+        extra = [c for q in index.search(retry[k]["retry_queries"]) for c in q]
+        merged = {c["mondo_id"]: c for c in items[k]["candidates"] + extra}
+        items[k] = {**items[k], "candidates": list(merged.values())[:3 * N_CANDIDATES]}
     if retry:
-        keys = list(retry)
-        retry_items = {}
-        for k in keys:
-            extra = [c for q in index.search(retry[k]["retry_queries"]) for c in q]
-            merged = {c["mondo_id"]: c for c in items[k]["candidates"] + extra}
-            retry_items[k] = {**items[k], "candidates": list(merged.values())[:3 * N_CANDIDATES]}
-        run2 = llm.run(TASK, retry_items)
+        run2 = llm.run(TASK, {k: items[k] for k in retry})
         for k, d in llm.decisions(run2).items():
             final[k], runs[k] = d, run2
+            if d["mondo_id"]:
+                match[k] = "exact"
+
+    unmapped = {k: d for k, d in final.items() if not d["mondo_id"] and d["kind"] == "disease"}
+    broader_items = {}
+    for k, d in unmapped.items():
+        pool = items[k]["candidates"] + [c for q in index.search([d["core_disease"]]) for c in q]
+        parents = [index.terms[p] for c in pool for p in index.parents.get(c["mondo_id"], []) if p in index.terms]
+        merged = {c["mondo_id"]: c for c in pool + parents}
+        broader_items[k] = {**items[k], "core_disease": d["core_disease"], "candidates": list(merged.values())[:100]}
+    if broader_items:
+        run3 = llm.run(BROADER_TASK, broader_items)
+        for k, d in llm.decisions(run3).items():
+            if d["mondo_id"]:
+                final[k], runs[k], match[k] = {**final[k], "mondo_id": d["mondo_id"]}, run3, d["match"]
 
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT subject_key, decision_run_id, llm_decision_id FROM pv_evidence.llm_decision
@@ -143,14 +196,16 @@ def map_indications(_args) -> None:
                     ([str(r) for r in set(runs.values())],))
         ids = {(k, str(run)): did for k, run, did in cur.fetchall()}
         updates = [(int(k), d["mondo_id"], index.terms[d["mondo_id"]]["label"] if d["mondo_id"] else None,
-                    d["kind"], ids[(k, str(runs[k]))]) for k, d in final.items()]
+                    match.get(k), d["kind"], ids[(k, str(runs[k]))]) for k, d in final.items()]
         execute_values(cur, """UPDATE preclin.indication i SET mondo_id = u.mondo_id,
-                 mondo_label = u.mondo_label, indication_kind = u.kind, mondo_decision_id = u.did
-               FROM (VALUES %s) AS u(iid, mondo_id, mondo_label, kind, did)
+                 mondo_label = u.mondo_label, mondo_match = u.match, indication_kind = u.kind,
+                 mondo_decision_id = u.did
+               FROM (VALUES %s) AS u(iid, mondo_id, mondo_label, match, kind, did)
                WHERE i.indication_id = u.iid""", updates, page_size=5000)
         conn.commit()
     print(f"indications={len(rows)} decided={len(final)} mapped={sum(1 for u in updates if u[1])} "
-          f"retried={len(retry)}")
+          f"retried={len(retry)} broader_pass={len(broader_items)} "
+          f"broader={sum(1 for v in match.values() if v == 'broader')}")
 
 
 BIO_AREAS = ["allergy", "autoimmune", "cardiovascular", "endocrine", "gastroenterology", "hematology",

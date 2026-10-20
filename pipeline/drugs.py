@@ -1,6 +1,7 @@
 """Canonicalize every preclin.drug name to the molecular entities it contains.
 
     python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
+    python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities sharing one
     python -m pipeline.drugs modality       # modality class of every entity with a development program
 
 Trial intervention strings name the same molecule many ways ("Keytruda",
@@ -10,6 +11,12 @@ name with the trials it appears in and returns its active components under
 their nonproprietary (INN/USAN) names, or sponsor code when no name exists.
 Results go to preclin.moiety (one row per distinct active entity) and
 preclin.drug_moiety (drug_id -> moiety_id, one row per active component).
+
+An entity is then resolved to the FDA UNII substance it is (pipeline.unii
+names: official, common, code and brand). Entities that resolve to the same
+substance (a sponsor code and its later INN, say) are merged: the survivor
+takes the substance's official name and keeps every other name as an alias, so
+later runs map those names straight to it.
 """
 from __future__ import annotations
 
@@ -74,6 +81,31 @@ def moiety_key(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", name.lower())
 
 
+def entity_keys(cur) -> dict[str, int]:
+    """Every name key that identifies exactly one entity: its own key, a code
+    name or an alias."""
+    cur.execute("""SELECT k, min(moiety_id) FROM (
+                     SELECT moiety_key AS k, moiety_id FROM preclin.moiety
+                     UNION SELECT regexp_replace(lower(c), '[^a-z0-9]', '', 'g'), moiety_id
+                     FROM preclin.moiety, unnest(code_names || aliases) c) x
+                   WHERE k <> '' GROUP BY k HAVING count(DISTINCT moiety_id) = 1""")
+    return dict(cur.fetchall())
+
+
+def entity_ids(cur, names: dict[str, str]) -> dict[str, int]:
+    """moiety_id for each name key: the entity it already identifies, else a
+    new entity with that name."""
+    known = entity_keys(cur)
+    new = [(k, n) for k, n in names.items() if k not in known]
+    if new:
+        execute_values(cur, """INSERT INTO preclin.moiety (moiety_key, name) VALUES %s
+                               ON CONFLICT (moiety_key) DO NOTHING""", new)
+        cur.execute("SELECT moiety_key, moiety_id FROM preclin.moiety WHERE moiety_key = ANY(%s)",
+                    ([k for k, _ in new],))
+        known.update(cur.fetchall())
+    return {k: known[k] for k in names}
+
+
 def canonicalize(args) -> None:
     """Resolve intervention names. A name that is exactly an entity's
     nonproprietary name or sponsor code (ignoring case and punctuation) is
@@ -83,12 +115,7 @@ def canonicalize(args) -> None:
         cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id, normalized_name, "
                     "resolved_via FROM preclin.drug")
         drugs = cur.fetchall()
-        cur.execute("""SELECT k, min(moiety_id) FROM (
-                         SELECT moiety_key AS k, moiety_id FROM preclin.moiety
-                         UNION SELECT regexp_replace(lower(c), '[^a-z0-9]', '', 'g'), moiety_id
-                         FROM preclin.moiety, unnest(code_names) c) x
-                       WHERE k <> '' GROUP BY k HAVING count(DISTINCT moiety_id) = 1""")
-        exact_keys = dict(cur.fetchall())
+        exact_keys = entity_keys(cur)
         cur.execute("""SELECT DISTINCT sd.drug_id FROM preclin.ctgov_study_drug sd
                        JOIN preclin.ctgov_study s USING (nct_id) WHERE s.lead_sponsor_class = 'INDUSTRY'""")
         industry = {r[0] for r in cur.fetchall()}
@@ -150,16 +177,18 @@ def canonicalize(args) -> None:
                 m = moieties.setdefault(key, {"name": comp["name"], "codes": set()})
                 m["codes"].update(comp["code_names"])
                 links.append((int(drug_id), key, comp["role"], comp["biosimilar_of"], decision_id))
-        execute_values(cur, """INSERT INTO preclin.moiety (moiety_key, name, code_names) VALUES %s
-            ON CONFLICT (moiety_key) DO UPDATE SET code_names = EXCLUDED.code_names""",
-            [(k, m["name"], sorted(m["codes"])) for k, m in moieties.items()])
+        ids = entity_ids(cur, {k: m["name"] for k, m in moieties.items()})
+        codes = {}
+        for k, m in moieties.items():
+            codes.setdefault(ids[k], set()).update(m["codes"])
+        execute_values(cur, """UPDATE preclin.moiety m SET code_names = v.codes
+            FROM (VALUES %s) AS v(moiety_id, codes) WHERE m.moiety_id = v.moiety_id""",
+                       [(mid, sorted(c)) for mid, c in codes.items()], template="(%s, %s::text[])")
         cur.execute("DELETE FROM preclin.drug_moiety")
         execute_values(cur, """INSERT INTO preclin.drug_moiety
               (drug_id, moiety_id, role, biosimilar_of, llm_decision_id, method)
-            SELECT v.drug_id, m.moiety_id, v.role, v.biosimilar_of, v.did, 'llm'
-            FROM (VALUES %s) AS v(drug_id, key, role, biosimilar_of, did)
-            JOIN preclin.moiety m ON m.moiety_key = v.key
-            ON CONFLICT (drug_id, moiety_id) DO NOTHING""", links)
+            VALUES %s ON CONFLICT (drug_id, moiety_id) DO NOTHING""",
+                       [(did, ids[k], role, bio, dec, "llm") for did, k, role, bio, dec in links])
         if exact:
             execute_values(cur, """INSERT INTO preclin.drug_moiety (drug_id, moiety_id, role, method)
                 VALUES %s ON CONFLICT (drug_id, moiety_id) DO NOTHING""",
@@ -171,6 +200,179 @@ def canonicalize(args) -> None:
         conn.commit()
     print(f"llm items={len(items)} decided={len(decided)} exact-name links={len(exact)} "
           f"moieties={len(moieties)} links={len(links)}")
+
+
+UNII_SYSTEM = """You decide which registered substance (FDA UNII) a drug entity from clinical trials is.
+
+You get the entity's name, its code names and other names, the intervention strings that named it, some trials using it, and candidate substances from the FDA Global Substance Registration System: every substance with one of the entity's names among its registered names (exact match ignoring case and punctuation), shown with its display name, the names that matched and some other registered names.
+
+Return the UNII of the candidate that is this same active entity, or null.
+- A shared sponsor code or brand is not enough: the substance must fit the trials (sponsor, molecule type, mechanism, indication). Sponsors reuse code formats, and short codes collide.
+- When candidates include a parent substance and its salts, hydrates, solvates, crystal forms or formulation esters, choose the parent active moiety (metformin, not metformin hydrochloride). Keep a conjugate, prodrug ester or radiolabelled form that is itself the entity's nonproprietary name (baloxavir marboxil, trastuzumab deruxtecan, lutetium Lu-177 dotatate).
+- A biosimilar is the same substance as its reference product.
+- null when no candidate is this entity, or when the entity is a combination or mixture that no single candidate represents."""
+
+UNII_SCHEMA = {
+    "type": "object",
+    "properties": {"unii": {"type": ["string", "null"]},
+                   "confidence": {"type": "string", "enum": ["high", "medium", "low"]}},
+    "required": ["unii", "confidence"],
+    "additionalProperties": False,
+}
+UNII_CANDIDATES = 15
+UNII_NAMES = 12
+
+
+def render_unii(p: dict) -> str:
+    trials = "\n".join(f"- {t['title']} (sponsor: {t['sponsor']})" for t in p["trials"])
+    cands = "\n".join(f"- UNII {c['unii']} | {c['display_name']} | {c['substance_type'] or '?'}"
+                       f"{' | INN' if c['inn'] else ''} | matched: {'; '.join(c['matched'])} | "
+                       f"other names: {'; '.join(c['names'])}" for c in p["candidates"])
+    return (f"Entity: {p['name']}\nCode names: {', '.join(p['codes']) or 'none'}\n"
+            f"Other names: {', '.join(p['aliases']) or 'none'}\n"
+            f"Intervention strings naming it: {'; '.join(p['strings']) or 'none'}\n"
+            f"Trials:\n{trials or '(none)'}\n\nCandidate substances:\n{cands}")
+
+
+def validate_unii(p: dict, out: dict) -> None:
+    if out["unii"] is not None and out["unii"] not in {c["unii"] for c in p["candidates"]}:
+        raise ValueError(f"unii {out['unii']} is not a candidate")
+
+
+UNII_TASK = llm.Task(name="moiety_unii", prompt_version="v1", schema_version="v1", system=UNII_SYSTEM,
+                     schema=UNII_SCHEMA, render=render_unii, validate=validate_unii, subject_type="moiety",
+                     model="claude-opus-5-5", effort="medium", max_tokens=1500)
+
+
+def unii(_args) -> None:
+    """Resolve every entity to its UNII substance, then merge entities that
+    resolved to the same one into a single entity named by the substance's
+    official name."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT m.moiety_id, m.name, m.code_names, m.aliases,
+                   coalesce((SELECT array_agg(DISTINCT x) FROM preclin.drug_moiety dm JOIN preclin.drug d USING (drug_id),
+                             unnest(array_append(coalesce(d.synonyms, '{}'), d.display_name)) x
+                             WHERE dm.moiety_id = m.moiety_id), '{}'),
+                   coalesce((SELECT array_agg(DISTINCT x) FROM preclin.fda_application_moiety am
+                             JOIN preclin.fda_product p USING (appl_no), unnest(ARRAY[p.drug_name, p.active_ingredient]) x
+                             WHERE am.moiety_id = m.moiety_id), '{}')
+            FROM preclin.moiety m""")
+        entities = cur.fetchall()
+        keys = {}
+        for mid, name, codes, aliases, strings, fda_names in entities:
+            ordered = [name, *codes, *aliases, *fda_names, *strings]
+            keys[mid] = list(dict.fromkeys(k for k in map(moiety_key, ordered) if k))
+        cur.execute("""SELECT name_key, unii, name FROM preclin.unii_name WHERE name_key = ANY(%s)""",
+                    (sorted({k for ks in keys.values() for k in ks}),))
+        by_key = {}
+        for key, u, name in cur.fetchall():
+            by_key.setdefault(key, {}).setdefault(u, []).append(name)
+        matched = {}
+        for mid, ks in keys.items():
+            cands = {}
+            for k in ks:
+                for u, names in by_key.get(k, {}).items():
+                    cands.setdefault(u, []).extend(names)
+            if cands:
+                matched[mid] = dict(list(cands.items())[:UNII_CANDIDATES])
+        uniis = sorted({u for c in matched.values() for u in c})
+        cur.execute("""SELECT s.unii, s.display_name, s.substance_type, s.inn_id IS NOT NULL,
+                              (SELECT array_agg(n.name ORDER BY array_position(ARRAY['of','cn','cd','bn'], n.name_type), n.name)
+                               FROM preclin.unii_name n WHERE n.unii = s.unii AND n.name_type IN ('of','cn','cd','bn'))
+                       FROM preclin.unii_substance s WHERE s.unii = ANY(%s)""", (uniis,))
+        subs = {u: {"display_name": d, "substance_type": t, "inn": inn, "names": names or []}
+                for u, d, t, inn, names in cur.fetchall()}
+        cur.execute("""
+            WITH s AS (SELECT dm.moiety_id, c.brief_title, c.lead_sponsor,
+                              row_number() OVER (PARTITION BY dm.moiety_id ORDER BY c.start_date DESC NULLS LAST) rn
+                       FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
+                       JOIN preclin.ctgov_study c USING (nct_id)
+                       WHERE dm.moiety_id = ANY(%s))
+            SELECT moiety_id, json_agg(json_build_object('title', brief_title, 'sponsor', lead_sponsor))
+            FROM s WHERE rn <= 3 GROUP BY moiety_id""", (list(matched),))
+        trials = dict(cur.fetchall())
+    items = {}
+    for mid, name, codes, aliases, strings, fda_names in entities:
+        if mid not in matched:
+            continue
+        items[str(mid)] = {
+            "name": name, "codes": codes, "aliases": aliases,
+            "strings": sorted(set(strings) | set(fda_names))[:10], "trials": trials.get(mid, []),
+            "candidates": [{"unii": u, **{k: v for k, v in subs[u].items() if k != "names"},
+                            "matched": sorted(set(m))[:4],
+                            "names": [n for n in dict.fromkeys(subs[u]["names"]) if n not in m][:UNII_NAMES]}
+                           for u, m in matched[mid].items()]}
+    run_id = llm.run(UNII_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key::int, parsed_output->>'unii', llm_decision_id FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'
+                         AND parsed_output->>'unii' IS NOT NULL""", (str(run_id),))
+        chosen = {mid: (u, did) for mid, u, did in cur.fetchall()}
+    merge(chosen)
+    print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
+
+
+def merge(chosen: dict[int, tuple[str, int]]) -> None:
+    """Record each entity's UNII; merge entities sharing a UNII into the one
+    already named by the substance's official name (else the one with most
+    intervention names). Trial, FDA-application and target links move to the
+    survivor; the merged entities' development programs are dropped for
+    pipeline.programs build to rebuild. The survivor's name becomes the
+    official name unless another entity holds it."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, moiety_key, name, code_names, aliases FROM preclin.moiety")
+        ent = {r[0]: r[1:] for r in cur.fetchall()}
+        cur.execute("""SELECT moiety_id, count(*) FROM preclin.drug_moiety GROUP BY 1""")
+        n_links = dict(cur.fetchall())
+        cur.execute("""SELECT s.unii, coalesce((SELECT min(n.name) FROM preclin.unii_name n
+                                                WHERE n.unii = s.unii AND n.name_type = 'of'), s.display_name)
+                       FROM preclin.unii_substance s WHERE s.unii = ANY(%s)""",
+                    (sorted({u for u, _ in chosen.values()}),))
+        official = {u: re.sub(r"\s*\[[^\]]*\]", "", n).strip().lower() for u, n in cur.fetchall()}
+        groups = {}
+        for mid, (u, _) in chosen.items():
+            groups.setdefault(u, []).append(mid)
+        taken = {key: mid for mid, (key, *_) in ent.items()}
+        mapping, renames, assigned = [], [], set()
+        for u, mids in groups.items():
+            name = official[u]
+            key = moiety_key(name)
+            winner = next((m for m in mids if ent[m][0] == key), None) or \
+                max(mids, key=lambda m: (n_links.get(m, 0), -m))
+            losers = [m for m in mids if m != winner]
+            mapping += [(m, winner) for m in losers]
+            names = {ent[m][1] for m in mids} | {a for m in mids for a in ent[m][3]}
+            codes = sorted({c for m in mids for c in ent[m][2]})
+            if ent[winner][0] != key and (taken.get(key, winner) not in mids or key in assigned):
+                name, key = ent[winner][1], ent[winner][0]  # another entity holds the official name
+            assigned.add(key)
+            renames.append((winner, key, name, codes, sorted(names - {name}), u, chosen[winner][1]))
+        cur.execute("CREATE TEMP TABLE merge_map (loser int PRIMARY KEY, winner int NOT NULL) ON COMMIT DROP")
+        if mapping:
+            execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
+        for table, cols in [("drug_moiety", "drug_id, role, biosimilar_of, llm_decision_id, method"),
+                            ("fda_application_moiety", "appl_no, biosimilar_of, llm_decision_id"),
+                            ("ctgov_study_moiety", None), ("moiety_target", None)]:
+            if cols is None:
+                cur.execute(f"""SELECT string_agg(quote_ident(column_name), ', ') FROM information_schema.columns
+                                WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
+                            (table,))
+                cols = cur.fetchone()[0]
+            cur.execute(f"""INSERT INTO preclin.{table} (moiety_id, {cols})
+                            SELECT mm.winner, {', '.join('t.' + c.strip() for c in cols.split(','))}
+                            FROM preclin.{table} t JOIN merge_map mm ON mm.loser = t.moiety_id
+                            ON CONFLICT DO NOTHING""")
+            cur.execute(f"DELETE FROM preclin.{table} t USING merge_map mm WHERE t.moiety_id = mm.loser")
+        cur.execute("DELETE FROM preclin.dev_program p USING merge_map mm WHERE p.moiety_id IN (mm.loser, mm.winner)")
+        cur.execute("DELETE FROM preclin.moiety m USING merge_map mm WHERE m.moiety_id = mm.loser")
+        execute_values(cur, """UPDATE preclin.moiety m SET moiety_key = v.key, name = v.name, code_names = v.codes,
+                                 aliases = v.aliases, unii = v.unii, unii_decision_id = v.did
+                               FROM (VALUES %s) AS v(moiety_id, key, name, codes, aliases, unii, did)
+                               WHERE m.moiety_id = v.moiety_id""", renames,
+                       template="(%s, %s, %s, %s::text[], %s::text[], %s, %s)")
+        conn.commit()
+    print(f"substances={len(groups)} entities merged away={len(mapping)}")
 
 
 MODALITIES = ["small_molecule", "peptide", "protein", "monoclonal_antibody", "multispecific_antibody",
@@ -254,6 +456,7 @@ def main() -> None:
     canon = sub.add_parser("canonicalize")
     canon.add_argument("--scope", choices=["all", "industry"], default="all")
     canon.set_defaults(fn=canonicalize)
+    sub.add_parser("unii").set_defaults(fn=unii)
     sub.add_parser("modality").set_defaults(fn=modality)
     args = parser.parse_args()
     args.fn(args)

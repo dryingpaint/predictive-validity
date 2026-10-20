@@ -23,12 +23,13 @@ import argparse
 import csv
 import glob
 import hashlib
-import io
 import json
 import os
+import subprocess
+import tempfile
 import time
 import zipfile
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 
 import requests
 from psycopg2.extras import Json, execute_values
@@ -120,10 +121,25 @@ def fetch(_args) -> None:
             if content:
                 sha = hashlib.sha256(content).hexdigest()
                 open(os.path.join(CACHE, "letters", f"{sha}.pdf"), "wb").write(content)
-                text = "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(content)).pages)
-                rec.update(sha256=sha, n_bytes=len(content), text=text)
+                rec.update(sha256=sha, n_bytes=len(content))
             out.write(json.dumps(rec) + "\n")
     print(f"letters fetched: {len(todo)}")
+
+
+def pdf_text(path: str) -> str:
+    """Text of every page of a PDF. Pages with no text layer (letters whose first
+    page is a scanned letterhead image) are rendered at 300 dpi and OCRed."""
+    pages = []
+    for i, page in enumerate(PdfReader(path).pages, start=1):
+        text = page.extract_text() or ""
+        if not text.strip():
+            with tempfile.TemporaryDirectory() as tmp:
+                subprocess.run(["pdftoppm", "-r", "300", "-f", str(i), "-l", str(i), "-png", path,
+                                os.path.join(tmp, "page")], check=True, capture_output=True)
+                image = glob.glob(os.path.join(tmp, "page*.png"))[0]
+                text = subprocess.run(["tesseract", image, "-"], check=True, capture_output=True, text=True).stdout
+        pages.append(text)
+    return "\n".join(pages).replace("\x00", "")
 
 
 def register_release(cur, name: str, version: str, url: str, sha: str, metadata: dict) -> int:
@@ -175,17 +191,20 @@ def load(_args) -> None:
              for s in read_tsv("Submissions.txt")
              if s["ApplNo"] in apps and s["SubmissionType"].strip() in ("ORIG", "SUPPL")])
 
-        letters, links = {}, {}
+        sizes, links = {}, {}
         for line in open(os.path.join(CACHE, "letters_index.jsonl")):
             r = json.loads(line)
             if r.get("sha256"):
-                letters[r["sha256"]] = (r["sha256"], r["text"].replace("\x00", ""), r["n_bytes"])
+                sizes[r["sha256"]] = r["n_bytes"]
             key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
             if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
                 links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"))
         links = list(links.values())
+        with ProcessPoolExecutor() as pool:
+            texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
+            letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
         execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes)
-            VALUES %s ON CONFLICT DO NOTHING""", list(letters.values()))
+            VALUES %s ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""", letters)
         execute_values(cur, """INSERT INTO preclin.fda_submission_letter
             (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
             ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
@@ -336,7 +355,7 @@ INGREDIENT_TASK = llm.Task(
 
 
 def link(_args) -> None:
-    from pipeline.drugs import moiety_key
+    from pipeline.drugs import entity_ids, moiety_key
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT substr(a, 4), array_agg(DISTINCT b), array_agg(DISTINCT g)
@@ -368,14 +387,11 @@ def link(_args) -> None:
                 if key:
                     names.setdefault(key, comp["name"])
                     links.append((appl_no, key, comp["biosimilar_of"], decision_id))
-        execute_values(cur, """INSERT INTO preclin.moiety (moiety_key, name) VALUES %s
-                               ON CONFLICT (moiety_key) DO NOTHING""", list(names.items()))
+        ids = entity_ids(cur, names)
         cur.execute("DELETE FROM preclin.fda_application_moiety")
         execute_values(cur, """INSERT INTO preclin.fda_application_moiety
-              (appl_no, moiety_id, biosimilar_of, llm_decision_id)
-            SELECT v.appl_no, m.moiety_id, v.biosimilar_of, v.did
-            FROM (VALUES %s) AS v(appl_no, key, biosimilar_of, did)
-            JOIN preclin.moiety m ON m.moiety_key = v.key ON CONFLICT DO NOTHING""", links)
+              (appl_no, moiety_id, biosimilar_of, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""",
+                       [(appl, ids[k], bio, did) for appl, k, bio, did in links])
         conn.commit()
     print(f"applications={len(items)} links={len(links)} moieties={len(names)}")
 
