@@ -55,7 +55,9 @@ layer for every number in the report.
   entity. Such a shared trial marks phase entry only for programs already under way when it
   started and for the program(s) begun next (the lead indication then); an indication added
   later enters at its own first trial (`dev_program_trial.marks_entry`; attach-all is a
-  sensitivity). Sponsors are attributes, not part of the key.
+  sensitivity). Trials whose conditions are only symptoms or procedures without a MONDO term
+  (pain, contraception) form the entity's condition-unspecified program instead. Sponsors are
+  attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
   LLM from the entity's 2015–2026 approval letters (4,639 extracted approved uses; pages
   without a text layer OCRed; labeling-only changes are not approval events), its
@@ -162,6 +164,7 @@ layer for every number in the report.
 | D25 | `benchmark/` (scorer framework, RESULTS.md) still takes ground truth from the legacy views (`preclin.v_target_indication_strict_outcome` over `preclin.program`/`preclin.approval`), so its cohort and AUCs disagree with the report's Section 2 | Second source of truth for predictiveness | open: point the benchmark's ground truth at `preclin.dev_program` + `dev_program_approval` + `moiety_target` |
 | D26 | Shared trials (healthy-volunteer Phase 1, "solid tumors" baskets) counted as Phase 1 entry for every later indication of the entity, so each indication expansion started at Phase 2 scored as a Phase 1 success | Phase 1→2 rate, LOA | fixed: shared trials mark entry only for programs under way or begun next (lead indication); attach-all reported as a sensitivity |
 | D27 | 845 stopped or withdrawn industry trials have an empty whyStopped; some give the reason only in the brief summary, which the outcome classifier did not see (trial-outcome audit: 1 of 30 stop reasons) | Failure-reason shares ("no reason stated") | fixed: brief summary stored and shown to the classifier when whyStopped is empty |
+| D28 | Trials whose only conditions are symptoms or procedures without a MONDO term (pain, cough, contraception; 1,337 industry trials 2015–2025, 3.4%) were treated like healthy-volunteer trials and attached to every disease program of the entity, so a Phase 3 in low back pain could count as advancement of the same drug's osteoarthritis program | Phase transitions | fixed: they form the entity's condition-unspecified program; symptoms with a MONDO term form their own programs. Limitation: pain and similar indications are not separate programs or disease-area strata |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
