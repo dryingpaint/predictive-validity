@@ -55,7 +55,9 @@ layer for every number in the report.
   entity. Such a shared trial marks phase entry only for programs already under way when it
   started and for the program(s) begun next (the lead indication then); an indication added
   later enters at its own first trial (`dev_program_trial.marks_entry`; attach-all is a
-  sensitivity). Trials whose conditions are only symptoms or procedures without a MONDO term
+  sensitivity). The disease of a program is a development indication: an LLM groups each
+  entity's MONDO diseases into the indications a sponsor runs as programs
+  (`preclin.program_indication`). Trials whose conditions are only symptoms or procedures without a MONDO term
   (pain, contraception) form the entity's condition-unspecified program instead. Each industry
   trial's purpose is classified by an LLM (`preclin.trial_purpose`): product-support trials
   (bioequivalence, formulation bridging, food effect, interactions, generic or biosimilar PK)
@@ -176,6 +178,7 @@ layer for every number in the report.
 | D33 | Vaccine co-administration trials labelled the licensed vaccine given alongside as investigational, creating programs such as (influenza vaccine, RSV infection) and (HPV vaccine, dengue) | Vaccine and infectious-disease strata | fixed: trial-role prompt v2 makes a co-administered licensed product background; all 27,480 multi-entity trials re-decided |
 | D34 | The same product under two entities where UNII does not connect them: salt and parent registered separately (aclidinium vs aclidinium bromide, so Tudorza's 2012 COPD approval never reached the program) and vaccine naming variants | Lifecycle exclusion, approvals, program counts | fixed: same-entity pass in `pipeline.drugs unii` (nearest-name candidates, LLM decides, merge only where every decision that saw the pair agrees) |
 | D35 | FDA-side and trial-side names of vaccines, cell and gene therapies never met (Gardasil 9 split into nine antigens; trials name a "9-valent HPV vaccine"), so their approvals were invisible (vaccine Phase 3→approval 2.7%) | Vaccine, biologic strata | fixed: `fda link` matches each application with no trial-named entity to the trial entities that are the same product (750 applications, 78 links) |
+| D36 | Programs keyed on single MONDO terms split one development indication into several programs (Pluvicto: castration-resistant, metastatic and adenocarcinoma of the prostate), and a Phase 3 listing the parent term (VISION: "Prostate Cancer") counted for none of them, or for all of them if broader trials were credited. LOA moved from 3.9% to 7.9% (all programs) between the two crediting rules | Every transition rate and LOA | fixed: an LLM groups each entity's diseases into development indications (`preclin.program_indication`); programs are keyed on the indication |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
