@@ -155,7 +155,7 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60)
     todo = [k for k in items if k not in reused]
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
 
-    custom_ids = {}
+    custom_ids, pending = {}, []
     for start in range(0, len(todo), BATCH_SIZE):
         chunk = todo[start:start + BATCH_SIZE]
         requests = []
@@ -165,42 +165,16 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60)
             requests.append(Request(custom_id=cid,
                                     params=MessageCreateParamsNonStreaming(**task.request_params(items[key]))))
         batch = client.messages.batches.create(requests=requests)
+        pending.append(batch.id)
         print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
-        while True:
-            batch = client.messages.batches.retrieve(batch.id)
-            if batch.processing_status == "ended":
-                break
-            time.sleep(poll_seconds)
-        n_ok = n_bad = 0
-        with conn.cursor() as cur:
-            for result in client.messages.batches.results(batch.id):
-                key = custom_ids[result.custom_id]
-                request_id = f"{batch.id}/{result.custom_id}"
-                raw, parsed, error, usage = "", None, None, {}
-                if result.result.type == "succeeded":
-                    msg = result.result.message
-                    usage = {"input_tokens": msg.usage.input_tokens,
-                             "output_tokens": msg.usage.output_tokens,
-                             "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
-                    raw = next((b.text for b in msg.content if b.type == "text"), "")
-                    if msg.stop_reason == "refusal":
-                        error = "refusal"
-                    elif msg.stop_reason == "max_tokens":
-                        error = "max_tokens"
-                    else:
-                        try:
-                            parsed = json.loads(raw)
-                            if task.validate:
-                                task.validate(items[key], parsed)
-                        except Exception as exc:  # invalid JSON or failed semantic check
-                            parsed, error = None, f"{type(exc).__name__}: {exc}"
-                else:
-                    error = f"batch_{result.result.type}"
-                _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, error, None)
-                n_bad += error is not None
-                n_ok += error is None
-            conn.commit()
-        print(f"[{task.name}] batch {batch.id}: validated={n_ok} invalid={n_bad}", flush=True)
+
+    while pending:
+        time.sleep(poll_seconds)
+        ended = [b for b in pending
+                 if client.messages.batches.retrieve(b).processing_status == "ended"]
+        for batch_id in ended:
+            pending.remove(batch_id)
+            _collect(client, conn, run_id, task, items, custom_ids, batch_id)
 
     with conn.cursor() as cur:
         cur.execute("UPDATE pv_evidence.llm_decision_run SET status='completed', completed_at=%s "
@@ -208,6 +182,39 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60)
     conn.commit()
     conn.close()
     return run_id
+
+
+def _collect(client, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
+             custom_ids: dict[str, str], batch_id: str) -> None:
+    """Validate and store every result of one ended batch."""
+    n_ok = n_bad = 0
+    with conn.cursor() as cur:
+        for result in client.messages.batches.results(batch_id):
+            key = custom_ids[result.custom_id]
+            raw, parsed, error, usage = "", None, None, {}
+            if result.result.type == "succeeded":
+                msg = result.result.message
+                usage = {"input_tokens": msg.usage.input_tokens,
+                         "output_tokens": msg.usage.output_tokens,
+                         "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
+                raw = next((b.text for b in msg.content if b.type == "text"), "")
+                if msg.stop_reason in ("refusal", "max_tokens"):
+                    error = msg.stop_reason
+                else:
+                    try:
+                        parsed = json.loads(raw)
+                        if task.validate:
+                            task.validate(items[key], parsed)
+                    except Exception as exc:  # invalid JSON or failed semantic check
+                        parsed, error = None, f"{type(exc).__name__}: {exc}"
+            else:
+                error = f"batch_{result.result.type}"
+            _store(cur, run_id, task, key, items[key], raw, parsed,
+                   f"{batch_id}/{result.custom_id}", usage, error, None)
+            n_bad += error is not None
+            n_ok += error is None
+    conn.commit()
+    print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 
 def decisions(run_id: uuid.UUID | str) -> dict[str, dict[str, Any]]:
