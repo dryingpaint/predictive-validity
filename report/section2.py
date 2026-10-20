@@ -10,7 +10,9 @@ disease matches the program's disease on MONDO (same term, a subtype, or Lin
 similarity >= 0.8), scored as of the year before the program entered the
 phase. Open Targets leaves undated evidence out of its yearly series, so
 as-of scores undercount; a sensitivity analysis uses the release score
-(evidence known by 2026, dated or not). Target-level properties
+(evidence known by 2026, dated or not); another counts only evidence diseases
+with Lin similarity >= 0.8 (Minikel et al.'s criterion), dropping the subtype
+rule, which is permissive for broad program diseases. Target-level properties
 (loss-of-function constraint, pan-essentiality) are not disease-specific.
 
 Relative success (RS) for an evidence line = LOA of programs with it / LOA of
@@ -37,7 +39,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
 from report import frame
-from report.disease_match import Mondo
+from report.disease_match import SIMILARITY_THRESHOLD, Mondo
 from report.section1 import N_BOOT, SEED, phase_rows
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
@@ -108,16 +110,15 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
         year = r.entry_year - 1
         flags = {k: 0.0 for k in EVIDENCE}
         untimed = {f"{k}_untimed": 0.0 for k in EVIDENCE}
+        strict = {f"{k}_strict": 0.0 for k in EVIDENCE}
         for ens in tg.ensembl_id.dropna():
             for src, ys, ss, final, mids in by_target.get(ens, ()):
-                hit = False
+                hit = close = False
                 for g in mids:
                     key = (g, d)
                     if key not in match_cache:
-                        match_cache[key] = mondo.matches(g, d)
-                    if match_cache[key]:
-                        hit = True
-                        break
+                        match_cache[key] = (mondo.matches(g, d), mondo.lin(g, d) >= SIMILARITY_THRESHOLD)
+                    hit, close = hit or match_cache[key][0], close or match_cache[key][1]
                 if not hit:
                     continue
                 sc = score_as_of(ys, ss, year)
@@ -125,11 +126,13 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
                     if src in srcs:
                         flags[k] = max(flags[k], sc)
                         untimed[f"{k}_untimed"] = max(untimed[f"{k}_untimed"], final or 0.0)
+                        if close:
+                            strict[f"{k}_strict"] = max(strict[f"{k}_strict"], sc)
         ens = list(tg.ensembl_id.dropna())
         lo = [constraint.get(e) for e in ens if pd.notna(constraint.get(e))]
         out.append({"program_id": r.program_id, "phase": r.phase,
                     "target": tg.symbol.iloc[0] if len(tg) == 1 else "+".join(sorted(tg.symbol)),
-                    **flags, **untimed,
+                    **flags, **untimed, **strict,
                     "constrained": float(bool(lo) and min(lo) < 0.35),
                     "pan_essential": float(any(e in essential for e in ens))})
     return pd.DataFrame(out)
@@ -158,7 +161,7 @@ def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n
         a, b = loa_by(w), loa_by(wo)
         draws.append(a / b if b else np.nan)
     lo, hi = np.nanpercentile(draws, [2.5, 97.5])
-    label = LABELS.get(feature.removesuffix("_untimed"), feature)
+    label = LABELS.get(feature.removesuffix("_untimed").removesuffix("_strict"), feature)
     return {"feature": feature, "label": label, "threshold": threshold,
             "n_with": int(with_.program_id.nunique()), "n_without": int(without.program_id.nunique()),
             "n_targets_with": int(with_.target.nunique()),
@@ -333,6 +336,8 @@ def main() -> None:
     rs.to_csv(os.path.join(OUT, "relative_success.csv"), index=False)
     untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in EVIDENCE])
     untimed.to_csv(os.path.join(OUT, "relative_success_untimed.csv"), index=False)
+    strict = pd.DataFrame([relative_success(data, f"{f}_strict") for f in EVIDENCE])
+    strict.to_csv(os.path.join(OUT, "relative_success_lin_only.csv"), index=False)
     adj = pd.DataFrame([x for f in features for x in adjusted_rr(data, f)])
     adj.to_csv(os.path.join(OUT, "adjusted_rr_by_phase.csv"), index=False)
 
@@ -359,6 +364,7 @@ def main() -> None:
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
                "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records"),
                "relative_success_untimed": untimed.to_dict(orient="records"),
+               "relative_success_lin_only": strict.to_dict(orient="records"),
                "genetic_dose_response": dose.to_dict(orient="records"),
                "joint_rr": joint.to_dict(orient="records"),
                "prediction": metrics.to_dict(orient="records"), "ablation": ablation.to_dict(orient="records")}
