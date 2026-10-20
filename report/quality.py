@@ -18,6 +18,7 @@ import json
 import math
 import os
 
+import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 from report import frame
@@ -66,13 +67,13 @@ def stop_reason_agreement() -> dict:
                          WHERE classifier_task IN ('why_stopped', 'trial_stoppage_rescore')""")
     out = {}
     for model, mapping in [("claude-sonnet", SONNET), ("gpt-5.6-terra", GPT)]:
-        o = old[(old.classifier_model == model) & ~old.failed].set_index("nct_id").category
-        both = new.index.intersection(o.index)
+        o = old[(old.classifier_model == model) & ~old.failed].drop_duplicates("nct_id").set_index("nct_id").category
+        both = new.index.drop_duplicates().intersection(o.index)
         for unspecified in ("business", "unknown"):
-            a = new[both].map(NEW).replace("unspecified", unspecified)
-            b = o[both].map(mapping)
-            keep = a.notna() & b.notna()
-            a, b = a[keep], b[keep]
+            a = new.loc[both].map(NEW).replace("unspecified", unspecified).to_numpy()
+            b = o.loc[both].map(mapping).to_numpy()
+            keep = pd.notna(a) & pd.notna(b)
+            a, b = pd.Series(a[keep]), pd.Series(b[keep])
             out[f"{model}|unspecified_as_{unspecified}"] = {
                 "n": int(len(a)), "agreement": float((a == b).mean()), "kappa": float(cohen_kappa_score(a, b)),
                 "efficacy_kappa": float(cohen_kappa_score(a == "efficacy", b == "efficacy"))}

@@ -39,11 +39,13 @@ SEED = 20261020
 
 def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS,
                uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW,
-               shared_entry: bool = False) -> pd.DataFrame:
+               shared_entry: bool = False, vaccines: bool = False) -> pd.DataFrame:
     """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`.
     shared_entry=True lets every shared trial count for every program, for entry,
     advancement and activity alike (as if each indication began with the entity's
-    first trials)."""
+    first trials). Vaccines are left out unless vaccines=True: strain-updated
+    formulations are licensed under the parent product and never approved under
+    their own names, so their programs cannot be followed to approval."""
     t = trials[trials.start_date.notna()].copy()
     t["active"] = t.overall_status.isin(frame.ACTIVE)
     t["end"] = t.completion_date.fillna(t.primary_completion_date).fillna(t.start_date)
@@ -74,7 +76,7 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
 
     rows = []
     for pid in starts.index:
-        if pid not in p.index:
+        if pid not in p.index or (not vaccines and p.at[pid, "modality"] == "vaccine"):
             continue
         s = starts.loc[pid]
         for phase in (1, 2, 3):
@@ -281,6 +283,7 @@ def main() -> None:
                              "uncertain approvals counted as approved"))
     results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True),
                              "shared trials mark entry for every program of the entity"))
+    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True), "including vaccines"))
     mature = phase_rows(progs, trials, snap, window=MATURE_WINDOW)
     results.append(summarize(mature, "phase entry 2015-2019 (at least six years of follow-up)"))
     results.append(summarize(mature[mature.us_site], "phase entry 2015-2019, developed in the US"))
@@ -319,7 +322,8 @@ def main() -> None:
                                .itertuples(index=False)),
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
-               "shared_entry": results[8], "mature": results[9], "mature_us": results[10],
+               "shared_entry": results[8], "with_vaccines": results[9], "mature": results[10],
+               "mature_us": results[11],
                "failure_modes": failure_numbers}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
