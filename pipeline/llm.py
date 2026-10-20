@@ -234,8 +234,9 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
             _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, error, None)
             n_bad += error is not None
             n_ok += error is None
-            if i % 500 == 0 or i == len(todo):
+            if i % 25 == 0:  # short transactions: migrations adding FKs to llm_decision need gaps
                 conn.commit()
+            if i % 500 == 0 or i == len(todo):
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
     conn.commit()
 
