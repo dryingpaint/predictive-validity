@@ -2,9 +2,10 @@
 
     python -m report.quality
 
-1. Independent re-derivation of seeded samples (label audit; results saved
-   by the audit workflow to .cache/label_audit/results.json): accuracy with
-   Wilson 95% intervals.
+1. Independent re-derivation of seeded samples by agents working from the
+   primary sources (label audit: .cache/label_audit/results.json; trial
+   outcomes: .cache/outcome_audit/results.json): accuracy with Wilson 95%
+   intervals, counting correct and acceptable verdicts as agreement.
 2. Agreement of the trial stop reasons (preclin.trial_outcome) with the two
    earlier classifications of the same trials: the Sonnet why_stopped labels
    and the GPT-5.6 multi-axis rescore (preclin.classification), on a common
@@ -23,6 +24,8 @@ from report import frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "quality")
 AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")
+OUTCOME_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "results.json")
+OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
 
 NEW = {"efficacy_futility": "efficacy", "safety_tolerability": "safety", "pk_pd_or_formulation": "pk_formulation",
        "business_portfolio": "business", "competitive_landscape": "business",
@@ -85,6 +88,17 @@ def main() -> None:
             audits[r["task"]] = {"n": r["n"], "correct": r["n_correct"], "acceptable": r["n_acceptable"],
                                  "wrong": r["n_wrong"], "accuracy": ok / r["n"], "lo": lo, "hi": hi}
         numbers["label_audit"] = audits
+    if os.path.exists(OUTCOME_AUDIT):
+        trials = json.load(open(OUTCOME_AUDIT))["trials"]
+        audits = {}
+        for axis in OUTCOME_AXES:
+            verdicts = [t[f"{axis}_verdict"] for t in trials if t[f"{axis}_verdict"] != "not_applicable"]
+            ok = sum(v in ("correct", "acceptable") for v in verdicts)
+            lo, hi = wilson(ok, len(verdicts))
+            audits[axis] = {"n": len(verdicts), "correct": verdicts.count("correct"),
+                            "acceptable": verdicts.count("acceptable"), "wrong": verdicts.count("wrong"),
+                            "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
+        numbers["outcome_audit"] = audits
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(numbers, indent=1, default=float))
