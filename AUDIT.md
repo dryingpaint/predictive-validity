@@ -140,6 +140,30 @@ layer for every number in the report.
 | C49 | Appendix | 18-month rule matches BIO's advanced-or-suspended denominator | wrong | BIO counts dated Biomedtracker transitions (advanced/suspended, curated); no inactivity rule. LOA moves 14.5→19.2% (current labels) as the lag goes 6→36 months; use competing-risks censoring instead. |
 | C50 | Appendix | Limitations list (modality known for 18%; approvals exclude vaccines, mRNA, biosimilars; features not time-frozen except precedent) | wrong | 18% modality figure is stale/other source; limitations omit supplemental and pre-2015 approvals. |
 
+## Report claims after the rebuild
+
+The rebuilt report (`REPORT.md`, rendered from `report/output/`) replaces the draft's numbers.
+Each quantitative claim, with the value the rebuild gives:
+
+| Claim | Draft | Rebuilt |
+|---|---|---|
+| C02, C11 Phase 1 → FDA approval | 7.4%, "within 0.5pt of BIO's 7.9%" | 9.4% (8.4–10.5) for US-developed programs; 5.6% (4.9–6.3) for all registered industry programs; 4.0–10.8% across defensible definitions (sensitivity table) |
+| C09, C13 Trials analysed | 28,193 industry trials "started after 2015 and ended before 2026" (67% of 41,836) | 39,348 industry Phase 1–3 trials started 2015–2025 (not withdrawn); every in-scope trial is used, none dropped for failing to resolve |
+| C14 Programs | 84,117 programs; 13,639 T-I pairs | 54,173 (entity, indication) programs from all trials; 17,127 entered a phase in 2015–2025 |
+| C15 Transitions | 55.9 / 51.0 / 26.1% | US-developed 59.3 / 32.0 / 49.4%; all programs 55.3 / 29.3 / 34.3% (BIO 52.0 / 28.9 / 52.4%) |
+| C16 Mid-phase gap | Ph3b, non-US and Ph2/3 designs | The gap came from labelling errors; with the rebuild Phase 2→3 is close to BIO, and the remaining Phase 3 gap is approvals outside the US |
+| C18, C20, C21 Why programs fail | 55,133 failed programs; "silent efficacy" 73% of Ph3 failures | 7,119 suspended programs: no reason and no results 72% (Ph1), 44% (Ph2), 36% (Ph3); efficacy 25% (Ph2), 29% (Ph3); positive Phase 3 readout without US approval 19% of Ph3 stops |
+| C19 Early terminations | 5,510 with a reason; 44% commercial/strategic | 5,557 with a reason: explicit business/portfolio/competitive 36%, bare "sponsor decision" 19%, efficacy 14%, enrollment/operational 14%, safety 4% |
+| C22 Disease areas | 18.4% hematology to 1.6% urology | US-developed: metabolic 26.3%, endocrine 26.9%, hematology 24.1% down to gastroenterology 5.7%, infectious disease 4.5% and urology 0% (few programs); BIO's ordering broadly holds except oncology (higher) and infectious disease (lower) |
+| C23, C24 Modalities | Oligonucleotides 32.5%, small molecules 5.8% | US-developed: siRNA/RNAi 32.5%, multispecifics 24.9%, CAR-T 22.2%, ADCs 18.3%, mAbs 14.6%, small molecules 8.0%; vaccines not estimable from registry data |
+| C26, C32 What genetics adds | Only genetics adds; ablation −17.7pp | Joint model: GWAS and rare-variant evidence keep independent effects at Phase 2 (and rare-variant at Phase 3); removing genetics lowers held-out AUC by 0.011 (0.004–0.019) |
+| C27, C28 Genetic support | 45% vs 11%; 8,144 pairs, base rate 23% | LOA 27.6% with vs 7.9% without (relative success 3.50, 2.65–4.53) on 10,240 human-protein programs |
+| C31 Dose–response | 10.9 / 19.7 / 23.0 / 45.0% | LOA 7.9 / 20.0 / 31.3 / 34.5% (none, then tertiles of the Open Targets genetic score at phase entry) |
+| C33, C34 Model AUC | 0.825 held-out targets; 0.769 time split | 0.604 (0.555–0.652) held-out targets with all evidence vs 0.595 without; time split 0.638 vs 0.640 |
+| C35 Pan-essential | RS 0.24 | 0.24 (0.07–0.57); confirmed, and penalised at Phases 1–2 in the joint model |
+| C36 LoF-intolerant | RS 0.82–0.84 | 0.87 (0.56–1.31): no detectable penalty |
+| C37–C39 Phase 3 with strong evidence | 73–85% still fail; best profile 22% | Phase 3 programs with human genetic evidence were approved 62% of the time (n=187) vs 39% without |
+
 ## Data issues register
 
 | ID | Issue | Effect | Status |
