@@ -145,9 +145,27 @@ layer for every number in the report.
 | D17 | Owner DB password hard-coded in 4 scripts on the public GitHub repo (origin/section-1-failure-modes) | Security | removed from code on this branch; rotation needed (owner decision) |
 | D18 | Methodology filter misses indication 'Healthy' (4,101 programs); modality from Haiku name guesses for 85% of drugs; placeholder `public.therapies` rows type biologics as small molecules; two modality columns disagree for 2,551 drugs | Section 1 strata | fixing: moiety modality + per-trial methodology |
 | D19 | Figure 2 / BIO_REPLICATION.md mix pre- and post-vaccine-exclusion cohorts; leaked benchmark runs stored under canonical scorer names (runs 187–192) | Reproducibility | open |
+| D20 | Development codes left unresolved when an INN exists (label audit: 5 of 100 names, e.g. E7046 = palupiprant, IO102-IO103 = imsapepimut + etimupepimut). A molecule run in Phase 1 under its code and later under its INN splits into two entities, and the code entity looks like a Phase 1 failure. | Program counts, transition rates, LOA | fixing: entities resolved to FDA UNII substances (1.05M registered names incl. codes) and merged when they are the same substance (pipeline.drugs unii) |
+| D21 | 2,238 of 34,092 disease conditions (6.6%) had no MONDO term because none named them exactly (label audit: all 6 errors in 100); trials with only such conditions lose their disease | Programs, disease matching | fixing: nearest containing MONDO term, flagged `indication.mondo_match = 'broader'` |
+| D22 | 147 of 3,669 FDA letters have pages with no text layer (scanned letterheads), so the indication paragraph of e.g. Asparlas and Imjudo original approvals was missing | Approved uses, approval dates | fixed: pages without text are OCRed (pdftoppm + tesseract); 147 letters re-extracted, 4,639 approved uses |
+| D23 | Labeling-only supplements were extracted as `efficacy_labeling` uses (label audit: 5 of 60 letters); dated as approval events they could move a disease's first approval to a later labeling update | Approval dates | fixed: excluded from approval events |
+| D24 | 7,497 completed industry Phase 2/3 trials (start ≥ 2010) posted no results, so their primary-endpoint outcome was unknown | Failure modes (efficacy failures among completed trials) | fixed where possible: 2,284 have a linked results paper (registry reference or PubMed secondary id); classified from abstracts by a separate task. The rest stay "no results" (published results skew positive, so the paper-based rate is not the rate for unpublished trials) |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-20 — Label audit (independent re-derivation of seeded samples by agents with
+  web access, results in `.cache/label_audit/results.json`, reported by `report.quality`):
+  condition → MONDO 88 correct / 6 acceptable / 6 wrong of 100; intervention → entities
+  91 / 4 / 5 of 100; FDA application → entities 96 / 2 / 2 of 100; letter → approved uses
+  55 / 5 / 0 of 60. Every error class was fixed in the pipeline (D20–D23) rather than
+  patched in place. Migrations 62–72 add program approvals, modality and BIO area,
+  CT.gov results summaries, entity targets, Open Targets associations, trial outcomes,
+  results papers (`preclin.trial_publication`, abstracts in `public.publications`),
+  `indication.mondo_match`, and the UNII substance lists with `moiety.unii`/`aliases`.
+  Fixed `llm.run` reuse: with `reuse_by="input"` it compared only the latest decision per
+  subject, so subjects decided twice (two retrieval rounds) were re-sent; a duplicate run
+  was stopped and its batches cancelled (run 82a29a32 marked failed).
 
 - 2026-10-20 — Rebuild layer (ledgered migrations 53–61): FDA approval sources and
   letter-extracted approved uses (`preclin.fda_*`); pinned MONDO 2026-10-06 and EFO 3.95
