@@ -212,8 +212,10 @@ def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFra
     t = trials[trials.industry].merge(stopped[["program_id", "phase"]], on=["program_id", "phase"])
     t["reason"] = [trial_reason(out.loc[n] if n in out.index else None, st)
                    for n, st in zip(t.nct_id, t.overall_status)]
+    t["results_source"] = t.nct_id.map(out.results_source)
     t["rank"] = t.reason.map(rank)
-    best = t.sort_values("rank").drop_duplicates(["program_id", "phase"])[["program_id", "phase", "reason"]]
+    best = t.sort_values("rank").drop_duplicates(["program_id", "phase"])[
+        ["program_id", "phase", "reason", "nct_id", "results_source"]]
     res = stopped.merge(best, on=["program_id", "phase"], how="left")
     res["reason"] = res.reason.fillna("stopped, no reason stated")
     res["family"] = res.reason.map(family)
@@ -264,18 +266,24 @@ def main() -> None:
     by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
     by_year.to_csv(os.path.join(OUT, "ph1_outcome_by_entry_year.csv"))
 
-    if os.environ.get("SECTION1_FAILURES", "1") == "1":
-        modes = failure_modes(rows, trials, frame.trial_outcomes())
-        modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
-        tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count",
-                                fill_value=0)
-        tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))
+    modes = failure_modes(rows, trials, frame.trial_outcomes())
+    modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
+    tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count", fill_value=0)
+    tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))
+    share = lambda col: {str(k): {r: float(v) for r, v in g.value_counts(normalize=True).items()}
+                         for k, g in modes.groupby("phase")[col]} | {"all": {
+                             r: float(v) for r, v in modes[col].value_counts(normalize=True).items()}}
+    endpoint = modes[modes.reason == "efficacy: primary endpoint not met"]
+    failure_numbers = {"n_suspended": int(len(modes)), "reason_share": share("reason"),
+                       "family_share": share("family"),
+                       "endpoint_not_met_from_publication": float((endpoint.results_source == "publication").mean())}
 
     overall = results[0]
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
                "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
                "novel": results[2], "not_novel": results[3],
-               "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7]}
+               "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
+               "failure_modes": failure_numbers}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(overall, indent=1, default=float))
