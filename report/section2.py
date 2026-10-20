@@ -177,6 +177,68 @@ def adjusted_rr(rows: pd.DataFrame, feature: str) -> list[dict]:
     return out
 
 
+PREDICT_WINDOW = (pd.Timestamp("2008-01-01").date(), pd.Timestamp("2016-10-20").date())
+HORIZON_DAYS = 3653
+
+
+def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Fixed-horizon prediction: programs entering Phase 1 in 2008-2016, outcome =
+    FDA approval for the disease within ten years; features frozen at entry."""
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.metrics import average_precision_score, roc_auc_score
+    from sklearn.model_selection import GroupKFold
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import StandardScaler
+
+    rows = phase_rows(progs, trials, snap, window=PREDICT_WINDOW)
+    rows = rows[rows.phase == 1]
+    ev = target_evidence(rows, progs)
+    d = rows.merge(ev, on=["program_id", "phase"])
+    appr = pd.to_datetime(d.approval_date)
+    d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= HORIZON_DAYS)).astype(int)
+    evidence = list(EVIDENCE) + ["constrained", "pan_essential"]
+    X_ev = (d[evidence] > 0).astype(float)
+    X_cov = pd.get_dummies(d[["bio_area", "modality"]], drop_first=False).astype(float)
+    X_cov["novel"] = d.novel.astype(float)
+    X_cov["entry_year"] = d.entry_year - 2008
+    sets = {"covariates": X_cov, "covariates+evidence": pd.concat([X_cov, X_ev], axis=1), "evidence": X_ev}
+    groups = pd.factorize(d.target)[0]
+
+    def fit_predict(X, train, test):
+        model = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, max_iter=2000))
+        model.fit(X.iloc[train], d.y.iloc[train])
+        return model.predict_proba(X.iloc[test])[:, 1]
+
+    preds = {}
+    for name, X in sets.items():
+        oof = np.zeros(len(d))
+        for train, test in GroupKFold(n_splits=5).split(X, d.y, groups):
+            oof[test] = fit_predict(X, train, test)
+        preds[("grouped_cv", name)] = (np.arange(len(d)), oof)
+        train = np.where(d.entry_year <= 2012)[0]
+        test = np.where(d.entry_year >= 2013)[0]
+        preds[("temporal", name)] = (test, fit_predict(X, train, test))
+
+    rng = np.random.default_rng(SEED)
+    metrics = []
+    for (split, name), (idx, p) in preds.items():
+        y, g = d.y.to_numpy()[idx], groups[idx]
+        auc, ap = roc_auc_score(y, p), average_precision_score(y, p)
+        uniq = np.unique(g)
+        draws = []
+        for _ in range(N_BOOT):
+            members = np.concatenate([np.where(g == u)[0] for u in rng.choice(uniq, len(uniq))])
+            if y[members].min() == y[members].max():
+                continue
+            draws.append((roc_auc_score(y[members], p[members]), average_precision_score(y[members], p[members])))
+        draws = np.array(draws)
+        metrics.append({"split": split, "features": name, "n": len(idx), "n_positive": int(y.sum()),
+                        "auc": auc, "auc_lo": np.percentile(draws[:, 0], 2.5), "auc_hi": np.percentile(draws[:, 0], 97.5),
+                        "pr_auc": ap, "pr_lo": np.percentile(draws[:, 1], 2.5), "pr_hi": np.percentile(draws[:, 1], 97.5),
+                        "base_rate": float(y.mean())})
+    return pd.DataFrame(metrics), d
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
@@ -202,8 +264,13 @@ def main() -> None:
                       "approved_with": float(rw), "approved_without": float(rwo)})
     pd.DataFrame(table).to_csv(os.path.join(OUT, "phase3_approval_by_evidence.csv"), index=False)
 
+    metrics, cohort = prediction(progs, trials, snap)
+    metrics.to_csv(os.path.join(OUT, "prediction_metrics.csv"), index=False)
+    cohort[["program_id", "target", "entry_year", "y"]].to_csv(os.path.join(OUT, "prediction_cohort.csv"), index=False)
+
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
-               "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records")}
+               "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records"),
+               "prediction": metrics.to_dict(orient="records")}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(rs[["label", "n_with", "loa_with", "loa_without", "rs", "rs_lo", "rs_hi"]].to_string())
