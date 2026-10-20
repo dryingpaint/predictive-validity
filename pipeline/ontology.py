@@ -26,8 +26,22 @@ SOURCES = {
 }
 
 
+def norm_id(value: str) -> str:
+    """CURIE form: efo:EFO_0000270 and .../obo/EFO_0000270 -> EFO:0000270."""
+    value = value.split(" ")[0]
+    if value.startswith("efo:"):
+        value = value[4:]
+    if "/obo/" in value or "/efo/" in value:
+        value = value.rsplit("/", 1)[1]
+    if ":" not in value and "_" in value:
+        prefix, local = value.split("_", 1)
+        value = f"{prefix}:{local}"
+    return value
+
+
 def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
-    """(header, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs, obsolete."""
+    """(header, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs,
+    replaced_by and obsolete flag; identifiers in CURIE form."""
     header, terms, term = {}, [], None
     with open(path, encoding="utf-8") as f:
         for raw in f:
@@ -35,7 +49,8 @@ def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
             if line.startswith("["):
                 if term:
                     terms.append(term)
-                term = {"synonyms": [], "is_a": [], "xrefs": [], "obsolete": False} if line == "[Term]" else None
+                term = ({"synonyms": [], "is_a": [], "xrefs": [], "replaced_by": None, "obsolete": False}
+                        if line == "[Term]" else None)
                 continue
             if ": " not in line:
                 continue
@@ -45,7 +60,7 @@ def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
                     header[key] = value
                 continue
             if key == "id":
-                term["id"] = value
+                term["id"] = norm_id(value)
             elif key == "name":
                 term["name"] = value
             elif key == "def":
@@ -55,9 +70,11 @@ def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
                 if "EXACT" in rest.split("[")[0]:
                     term["synonyms"].append(text)
             elif key == "is_a":
-                term["is_a"].append(value.split(" ")[0])
+                term["is_a"].append(norm_id(value))
             elif key == "xref":
-                term["xrefs"].append(value.split(" ")[0])
+                term["xrefs"].append(norm_id(value))
+            elif key == "replaced_by":
+                term["replaced_by"] = norm_id(value)
             elif key == "is_obsolete" and value == "true":
                 term["obsolete"] = True
     if term:
@@ -92,13 +109,22 @@ def load(_args) -> None:
                     f.write(block)
         sha = hashlib.sha256(open(path, "rb").read()).hexdigest()
         header, terms = parse_obo(path)
-        terms = [t for t in terms if t.get("id", "").startswith(prefix + ":")]
         version = header.get("data-version", "unknown")
+        if prefix == "MONDO":
+            terms = [t for t in terms if t.get("id", "").startswith("MONDO:")]
+            graph = {}
+        else:  # EFO imports MONDO terms; those stay owned by the MONDO release.
+            terms = [t for t in terms if "id" in t and not t["id"].startswith("MONDO:")]
+            with llm.connect() as conn, conn.cursor() as cur:
+                cur.execute("SELECT child_id, parent_id FROM preclin.ontology_is_a WHERE ontology = 'MONDO'")
+                graph = defaultdict(list)
+                for child, parent in cur.fetchall():
+                    graph[child].append(parent)
         parents = defaultdict(list)
         for t in terms:
             if not t["obsolete"]:
-                parents[t["id"]].extend(p for p in t["is_a"] if p.startswith(prefix + ":"))
-        anc = closure(parents)
+                parents[t["id"]].extend(t["is_a"])
+        anc = [r for r in closure({**graph, **parents}) if r[0] in parents]
         with llm.connect() as conn, conn.cursor() as cur:
             cur.execute("""INSERT INTO preclin.evidence_source_release
                   (source_name, source_version, source_url, content_sha256, metadata)
@@ -112,16 +138,18 @@ def load(_args) -> None:
             cur.execute("DELETE FROM preclin.ontology_is_a WHERE ontology = %s", (prefix,))
             cur.execute("DELETE FROM preclin.ontology_term WHERE ontology = %s", (prefix,))
             execute_values(cur, """INSERT INTO preclin.ontology_term
-                (term_id, ontology, label, definition, synonyms, is_obsolete, source_release_id) VALUES %s""",
-                [(t["id"], prefix, t.get("name", ""), t.get("def"), t["synonyms"], t["obsolete"], release)
-                 for t in terms], page_size=5000)
-            execute_values(cur, "INSERT INTO preclin.ontology_is_a (ontology, child_id, parent_id) VALUES %s",
+                (term_id, ontology, label, definition, synonyms, is_obsolete, replaced_by, source_release_id)
+                VALUES %s ON CONFLICT (term_id) DO NOTHING""",
+                [(t["id"], prefix, t.get("name", ""), t.get("def"), t["synonyms"], t["obsolete"],
+                  t["replaced_by"], release) for t in terms], page_size=5000)
+            execute_values(cur, """INSERT INTO preclin.ontology_is_a (ontology, child_id, parent_id) VALUES %s
+                                   ON CONFLICT DO NOTHING""",
                            [(prefix, c, p) for c, ps in parents.items() for p in set(ps)], page_size=5000)
             execute_values(cur, """INSERT INTO preclin.ontology_xref (ontology, term_id, xref_id) VALUES %s
                                    ON CONFLICT DO NOTHING""",
                            [(prefix, t["id"], x) for t in terms for x in set(t["xrefs"])], page_size=5000)
             execute_values(cur, """INSERT INTO preclin.ontology_ancestor (ontology, term_id, ancestor_id, distance)
-                                   VALUES %s""", [(prefix, *r) for r in anc], page_size=10000)
+                                   VALUES %s ON CONFLICT DO NOTHING""", [(prefix, *r) for r in anc], page_size=10000)
             conn.commit()
         print(f"{prefix} {version}: terms={len(terms)} is_a={sum(len(p) for p in parents.values())} "
               f"ancestor_rows={len(anc)}")
