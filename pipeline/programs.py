@@ -2,6 +2,7 @@
 
     python -m pipeline.programs register   # trial -> intervention names / conditions (preclin.ctgov_study_*)
     python -m pipeline.programs roles      # role of each molecular entity in each trial (arm types, else LLM)
+    python -m pipeline.programs purposes   # LLM: what each industry trial contributes to development
     python -m pipeline.programs build      # (molecular entity, MONDO disease) programs -> preclin.dev_program
 
 A trial is in scope when it lists Early Phase 1, Phase 1, 2 or 3 (any sponsor,
@@ -180,6 +181,82 @@ def roles(_args) -> None:
     print(f"trials={len(by_trial)} single-entity={len(fixed)} llm={len(items)} llm-decided={len(decided)}")
 
 
+PURPOSE_SYSTEM = """You classify what an industry-sponsored clinical trial contributes to the development of its investigational drug(s).
+
+purpose:
+- indication_development: tests the drug in people with a particular disease or condition as part of developing it for that indication: dose finding, proof of concept, pivotal or confirmatory efficacy, a new population, line of therapy or combination within the indication, or long-term extension of such trials.
+- multi_indication: one trial spanning several distinct indications with none as the single target: dose escalation in "advanced solid tumors" or in several named tumor types, basket, umbrella or tumor-agnostic designs, or a platform across diseases.
+- early_development: first-in-human or early clinical pharmacology of a drug still in development (single or multiple ascending dose, healthy-volunteer or patient PK/PD, early safety) that does not itself establish an indication.
+- product_support: clinical pharmacology or bridging work on a drug that is already marketed or past early development, done for labelling, manufacturing or market access rather than for an indication: bioequivalence or bioavailability, formulation, device or manufacturing-site bridging, food effect, drug-drug interaction, thorough QT, renal or hepatic impairment PK, ethnic bridging PK, generic or biosimilar comparative PK or equivalence.
+- other: anything else (e.g. an observational protocol registered as interventional, a diagnostic or imaging use, an expanded-access program).
+
+development_conditions: for indication_development and multi_indication, the listed conditions the trial develops the drug for, copied exactly as listed (leave out listed conditions that only describe the population, such as "Healthy"); otherwise an empty list.
+Judge from the design, not from words alone: a Phase 1 in patients with one named disease that tests efficacy is indication_development; a Phase 3 bioequivalence study is product_support."""
+
+PURPOSE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "purpose": {"type": "string", "enum": ["indication_development", "multi_indication", "early_development",
+                                               "product_support", "other"]},
+        "development_conditions": {"type": "array", "items": {"type": "string"}},
+        "rationale": {"type": "string"},
+    },
+    "required": ["purpose", "development_conditions", "rationale"],
+    "additionalProperties": False,
+}
+
+
+def render_purpose(p: dict) -> str:
+    arms = "\n".join(f"- [{a.get('type')}] {a.get('label')}: {(a.get('description') or '')[:200]}" for a in p["arms"][:8])
+    ivs = "\n".join(f"- {i.get('name')} [{i.get('type')}]: {(i.get('description') or '')[:200]}"
+                     for i in p["interventions"][:8])
+    return (f"Trial {p['nct_id']}: {p['title']}\nOfficial title: {p['official_title'] or '-'}\n"
+            f"Sponsor: {p['sponsor']}; phases: {', '.join(p['phases'])}; status: {p['status']}; start: {p['start']}; "
+            f"enrollment: {p['enrollment']}; healthy volunteers accepted: {p['healthy_volunteers']}; "
+            f"primary purpose: {p['primary_purpose']}\nListed conditions: {'; '.join(p['conditions']) or '(none)'}\n"
+            f"Interventions:\n{ivs or '(none)'}\nArms:\n{arms or '(none)'}\n"
+            f"Brief summary: {p['summary'] or '(none)'}")
+
+
+def validate_purpose(p: dict, out: dict) -> None:
+    extra = set(out["development_conditions"]) - set(p["conditions"])
+    if extra:
+        raise ValueError(f"development_conditions not among listed conditions: {sorted(extra)[:3]}")
+
+
+PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v1", schema_version="v1", system=PURPOSE_SYSTEM,
+                        schema=PURPOSE_SCHEMA, render=render_purpose, validate=validate_purpose,
+                        subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
+
+
+def purposes(_args) -> None:
+    """Purpose of every in-scope industry trial with an investigational entity."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT s.nct_id, s.brief_title, s.official_title, s.lead_sponsor, s.phases, s.overall_status,
+                   s.start_date, s.enrollment, s.healthy_volunteers, s.primary_purpose, s.conditions,
+                   s.interventions, s.arm_groups, left(s.brief_summary, 1500)
+            FROM preclin.ctgov_study s
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.phases && %s::text[] AND s.overall_status <> 'WITHDRAWN'
+              AND EXISTS (SELECT 1 FROM preclin.ctgov_study_moiety sm
+                          WHERE sm.nct_id = s.nct_id AND sm.role = 'investigational')""", (IN_SCOPE_PHASES,))
+        items = {r[0]: {"nct_id": r[0], "title": r[1], "official_title": r[2], "sponsor": r[3], "phases": r[4],
+                        "status": r[5], "start": str(r[6]), "enrollment": r[7], "healthy_volunteers": r[8],
+                        "primary_purpose": r[9], "conditions": r[10] or [], "interventions": r[11] or [],
+                        "arms": r[12] or [], "summary": r[13]} for r in cur.fetchall()}
+    run_id = llm.run(PURPOSE_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.trial_purpose")
+        cur.execute("""INSERT INTO preclin.trial_purpose (nct_id, purpose, development_conditions, llm_decision_id)
+                       SELECT subject_key, parsed_output->>'purpose',
+                              ARRAY(SELECT jsonb_array_elements_text(parsed_output->'development_conditions')),
+                              llm_decision_id
+                       FROM pv_evidence.llm_decision WHERE decision_run_id = %s AND validation_status = 'validated'""",
+                    (str(run_id),))
+        conn.commit()
+    print(f"trials={len(items)}")
+
+
 ACTIVE_STATUSES = {"RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATION", "NOT_YET_RECRUITING"}
 PHASE_NUM = {"EARLY_PHASE1": 1, "PHASE1": 1, "PHASE2": 2, "PHASE3": 3}
 
@@ -320,6 +397,7 @@ def main() -> None:
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("register").set_defaults(fn=register)
     sub.add_parser("roles").set_defaults(fn=roles)
+    sub.add_parser("purposes").set_defaults(fn=purposes)
     sub.add_parser("build").set_defaults(fn=build)
     args = parser.parse_args()
     args.fn(args)
