@@ -35,12 +35,17 @@ SEED = 20261020
 
 
 def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS,
-               uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW) -> pd.DataFrame:
-    """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`."""
+               uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW,
+               shared_entry: bool = False) -> pd.DataFrame:
+    """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`.
+    Phase entry and advancement come from trials that mark entry for the program
+    (shared_entry=True lets every shared trial count, as if each indication
+    began with the entity's first trials)."""
     ind = trials[trials.industry & trials.start_date.notna()].copy()
     ind["active"] = ind.overall_status.isin(frame.ACTIVE)
     ind["end"] = ind.completion_date.fillna(ind.primary_completion_date).fillna(ind.start_date)
-    starts = ind.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
+    entry_trials = ind if shared_entry else ind[ind.marks_entry]
+    starts = entry_trials.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
     last = ind.assign(end=np.where(ind.active, pd.Timestamp(snap), pd.to_datetime(ind.end))) \
               .groupby("program_id").end.max()
     active = ind.groupby("program_id").active.any()
@@ -256,6 +261,8 @@ def main() -> None:
         results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag), f"suspension lag {lag} months"))
     results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True),
                              "uncertain approvals counted as approved"))
+    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True),
+                             "shared trials mark entry for every program of the entity"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     by_area = [summarize(g, a) for a, g in rows.groupby("bio_area") if g.moiety_id.nunique() >= 20]
@@ -283,6 +290,7 @@ def main() -> None:
                "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
+               "shared_entry": results[8],
                "failure_modes": failure_numbers}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
