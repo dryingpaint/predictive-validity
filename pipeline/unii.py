@@ -3,8 +3,9 @@
     python -m pipeline.unii load
 
 Downloads the pinned GSRS public release (UNII records and all registered
-names), records it in preclin.evidence_source_release and replaces both
-tables. pipeline.drugs unii resolves molecular entities against these names.
+names), records it in preclin.evidence_source_release, upserts substances
+(entities may reference them) and replaces the names. pipeline.drugs unii
+resolves molecular entities against these names.
 """
 from __future__ import annotations
 
@@ -68,8 +69,6 @@ def load(_args) -> None:
                     ("fda_unii", RELEASE, ARCHIVE, sha,
                      Json({"n_substances": len(substances), "n_names": len(name_rows), "files": FILES})))
         release = cur.fetchone()[0]
-        cur.execute("UPDATE preclin.moiety SET unii = NULL WHERE unii IS NOT NULL AND unii <> ALL(%s)",
-                    (list(substances),))
         cur.execute("DELETE FROM preclin.unii_name")
         execute_values(cur, """INSERT INTO preclin.unii_substance (unii, display_name, substance_type, ingredient_type,
                                  inn_id, usan_id, rxcui, pubchem_cid, inchikey, source_release_id) VALUES %s

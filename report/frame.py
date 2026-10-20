@@ -63,4 +63,9 @@ def program_trials() -> pd.DataFrame:
 
 
 def trial_outcomes() -> pd.DataFrame:
-    return query("SELECT * FROM preclin.trial_outcome")
+    """Classified trial outcomes; results_source says whether the endpoint was
+    judged from registry-posted results or from a results paper's abstract."""
+    return query("""
+        SELECT o.*, CASE d.task WHEN 'trial_outcome_from_publication' THEN 'publication'
+                                ELSE 'registry' END AS results_source
+        FROM preclin.trial_outcome o JOIN pv_evidence.llm_decision d USING (llm_decision_id)""")

@@ -1,11 +1,9 @@
 -- FDA Global Substance Registration System lists (pipeline.unii): every
 -- registered substance (UNII) and all its registered names: official, common,
--- code, systematic and brand. preclin.moiety gains the UNII of its active
--- substance (pipeline.drugs unii) and aliases, the other names of entities
--- merged into it because they resolved to the same substance.
+-- code, systematic and brand.
 
 BEGIN;
-SET LOCAL lock_timeout = '90s';
+SET LOCAL lock_timeout = '3s';
 
 CREATE TABLE IF NOT EXISTS preclin.unii_substance (
     unii              text PRIMARY KEY,
@@ -28,11 +26,5 @@ CREATE TABLE IF NOT EXISTS preclin.unii_name (
     PRIMARY KEY (unii, name, name_type)
 );
 CREATE INDEX IF NOT EXISTS unii_name_key_idx ON preclin.unii_name (name_key);
-
-ALTER TABLE preclin.moiety
-    DROP COLUMN IF EXISTS chembl_id,
-    ADD COLUMN IF NOT EXISTS unii text REFERENCES preclin.unii_substance,
-    ADD COLUMN IF NOT EXISTS unii_decision_id bigint REFERENCES pv_evidence.llm_decision,
-    ADD COLUMN IF NOT EXISTS aliases text[] NOT NULL DEFAULT '{}';
 
 COMMIT;
