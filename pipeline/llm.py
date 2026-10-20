@@ -40,6 +40,7 @@ BATCH_SIZE = 2000
 PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))
 AGENT_CHUNK = int(os.environ.get("LLM_AGENT_CHUNK", "100"))
+DIRECT_MAX = 100  # Anthropic runs with at most this many new items skip the batch queue
 AGENT_MODEL = "claude-opus-5-5"  # the Claude Code session model the workflow agents run on
 OPENROUTER_MODELS = {"claude-opus-5": "anthropic/claude-opus-5", "claude-opus-5-5": "anthropic/claude-opus-5.5",
                      "claude-sonnet-5": "anthropic/claude-sonnet-5"}
@@ -214,7 +215,7 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
     _store_reused(conn, run_id, task, items, reused)
     todo = [k for k in items if k not in reused]
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
-    if PROVIDER == "openrouter":
+    if PROVIDER == "openrouter" or (PROVIDER == "anthropic" and len(todo) <= DIRECT_MAX):
         _run_concurrent(api, conn, run_id, task, items, todo)
     elif PROVIDER == "agent":
         _run_agents(conn, run_id, task, items, todo, poll_seconds)
