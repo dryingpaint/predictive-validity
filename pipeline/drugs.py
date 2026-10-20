@@ -1,6 +1,7 @@
 """Canonicalize every preclin.drug name to the molecular entities it contains.
 
-    python -m pipeline.drugs canonicalize
+    python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
+    python -m pipeline.drugs modality       # modality class of every entity with a development program
 
 Trial intervention strings name the same molecule many ways ("Keytruda",
 "pembrolizumab 200 mg", "Pembrolizumab Dose A", "MK-3475"), bundle placebo
@@ -140,10 +141,86 @@ def canonicalize(_args) -> None:
     print(f"drugs={len(items)} decided={len(decided)} moieties={len(moieties)} links={len(links)}")
 
 
+MODALITIES = ["small_molecule", "peptide", "protein", "monoclonal_antibody", "multispecific_antibody",
+              "antibody_drug_conjugate", "radioligand", "sirna_rnai", "antisense_oligonucleotide",
+              "other_oligonucleotide", "mrna", "gene_therapy", "car_t", "other_cell_therapy", "vaccine",
+              "microbiome_or_live_biotherapeutic", "other"]
+
+MODALITY_SYSTEM = """You classify a drug (molecular entity) into one modality, following the classes used by BIO's 2021 Clinical Development Success Rates report plus a few finer classes.
+
+- small_molecule: synthetic or natural-product small molecules, including prodrugs and small-molecule radiosensitizers.
+- peptide: peptides and peptide analogues up to about 40 amino acids, including GLP-1 analogues, cyclic peptides, peptide hormones and peptide-drug conjugates.
+- protein: recombinant or purified proteins that are not antibodies: enzymes, hormones such as insulin, cytokines, fusion proteins (e.g. Fc-fusion), coagulation factors, plasma proteins, toxins.
+- monoclonal_antibody: monospecific antibodies and antibody fragments (including nanobodies), unconjugated.
+- multispecific_antibody: bispecific or multispecific antibodies and T-cell engagers.
+- antibody_drug_conjugate: antibodies conjugated to a cytotoxic or other payload (not radionuclides).
+- radioligand: small molecules, peptides or antibodies carrying a therapeutic radionuclide.
+- sirna_rnai: siRNA and other RNA-interference agents.
+- antisense_oligonucleotide: antisense oligonucleotides, including splice-switching ASOs and gapmers.
+- other_oligonucleotide: aptamers, CpG and other oligonucleotides that are neither siRNA nor antisense.
+- mrna: mRNA therapeutics other than vaccines.
+- gene_therapy: viral or non-viral gene transfer and in vivo gene editing.
+- car_t: chimeric antigen receptor T cells (autologous or allogeneic).
+- other_cell_therapy: other cell therapies (TCR-T, TILs, NK, stem cells, ex vivo gene-modified HSCs).
+- vaccine: prophylactic or therapeutic vaccines (any platform, including mRNA vaccines).
+- microbiome_or_live_biotherapeutic: live bacteria, fecal microbiota, phages.
+- other: anything else (e.g. herbal extracts, plasma, mixtures, devices with drug).
+Use the name, code names and trial context. If you do not recognise a code-named entity, infer from the trial descriptions; say so with confidence low."""
+
+MODALITY_SCHEMA = {
+    "type": "object",
+    "properties": {"modality": {"type": "string", "enum": MODALITIES},
+                   "confidence": {"type": "string", "enum": ["high", "medium", "low"]}},
+    "required": ["modality", "confidence"],
+    "additionalProperties": False,
+}
+
+
+def render_modality(p: dict) -> str:
+    return (f"Entity: {p['name']}\nCode names: {', '.join(p['codes']) or 'none'}\n"
+            f"Intervention strings naming it: {'; '.join(p['strings'])}\n"
+            f"FDA application types: {', '.join(p['fda']) or 'none'}\n"
+            f"Trial titles: {' | '.join(p['titles'])}")
+
+
+MODALITY_TASK = llm.Task(name="moiety_modality", prompt_version="v1", schema_version="v1",
+                         system=MODALITY_SYSTEM, schema=MODALITY_SCHEMA, render=render_modality,
+                         subject_type="moiety", model="claude-opus-5-5", effort="low", max_tokens=1000)
+
+
+def modality(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT m.moiety_id, m.name, m.code_names,
+                   (SELECT array_agg(DISTINCT d.display_name) FROM preclin.drug_moiety dm
+                    JOIN preclin.drug d USING (drug_id) WHERE dm.moiety_id = m.moiety_id),
+                   (SELECT array_agg(DISTINCT a.appl_type) FROM preclin.fda_application_moiety am
+                    JOIN preclin.fda_application a USING (appl_no) WHERE am.moiety_id = m.moiety_id),
+                   (SELECT array_agg(t.brief_title) FROM (
+                      SELECT DISTINCT c.brief_title FROM preclin.ctgov_study_moiety sm
+                      JOIN preclin.ctgov_study c USING (nct_id)
+                      WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' LIMIT 3) t)
+            FROM preclin.moiety m
+            WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id)""")
+        items = {str(mid): {"name": name, "codes": codes or [], "strings": sorted(strings or [])[:8],
+                            "fda": fda or [], "titles": titles or []}
+                 for mid, name, codes, strings, fda, titles in cur.fetchall()}
+    run_id = llm.run(MODALITY_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""UPDATE preclin.moiety m SET modality = d.parsed_output->>'modality',
+                         modality_decision_id = d.llm_decision_id
+                       FROM pv_evidence.llm_decision d
+                       WHERE d.decision_run_id = %s AND d.validation_status = 'validated'
+                         AND d.subject_key = m.moiety_id::text""", (str(run_id),))
+        conn.commit()
+    print(f"entities={len(items)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("canonicalize").set_defaults(fn=canonicalize)
+    sub.add_parser("modality").set_defaults(fn=modality)
     args = parser.parse_args()
     args.fn(args)
 

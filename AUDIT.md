@@ -35,7 +35,7 @@ Status values: `open` (not yet checked) · `confirmed` (reproduces, method sound
 | C07 | Intro | Scannell coined Eroom's Law; Scannell & Bosley 2016 introduced predictive validity; "landmark study names four reasons" | revised | Eroom's Law coined by the four 2012 authors; 'predictive validity' predates Scannell (Willner 1984); S&B 2016 present it as a hypothesis. |
 | C08 | History | Seven-era history table | revised | Dates fine; lead-in says '50 years' for a table starting pre-1900; sulfonamides were a phenotypic discovery. |
 | C09 | Intro | 28,193 industry trials "started after 2015 and ended before 2026" | wrong | Cohort = 28,0xx closed industry trials started 2015-01-01..2025-12-31 (3,065 started in 2015); no 'ended before 2026' filter exists. |
-| C10 | Intro | Six core lines of evidence compiled from databases and literature classification | open | |
+| C10 | Intro | Six core lines of evidence compiled from databases and literature classification | revised | The literature-classified lines (B–E) used scores later found to rest on hallucinated PMIDs (v1) or post-outcome citations (v2); only the database lines are usable as stated. |
 | C11 | S1 | 7.4% of Ph1 programs reached FDA approval, within 0.5pt of BIO | wrong | 7.4% ≈ BIO only through offsetting errors (1,908 approval-seeded phantom programs, drug-level labels, comparators). LLM-corrected sample estimate 10.0% [5.4, 15.8]. Rebuild pending. |
 | C12 | S1 | Only 1 in 20 failed programs records an efficacy or safety reason | revised | 4.5–7% depending on cohort; qualitative claim holds. |
 | C13 | S1 | 28,193 trials = 67% of 41,836 industry Ph1–3 drug trials started 2015–2025 | wrong | 41,836 includes EARLY_PHASE1 and non-drug trials (in-definition: 40,218 on CT.gov 2026-10-20); the 33% gap is closed vs active status, not failed resolution. |
@@ -74,7 +74,7 @@ Status values: `open` (not yet checked) · `confirmed` (reproduces, method sound
 | C46 | Appendix | why_stopped category counts (11 categories, n=5,510) | revised | Counts reproduce; 360 Sonnet API failures stored as 'unclear'; κ(Haiku,Sonnet)=0.81 on valid pairs. |
 | C47 | Appendix | Sonnet and Haiku classified every trial; Sonnet kept on disagreement | revised | 480 failed calls; Sonnet preferred unconditionally; prompts not committed. |
 | C48 | Appendix | Silent efficacy = efficacy or safety ~90% of the time | unsupported | No source for ~90%; literature gives 69–87% among disclosed failures, not 'Ph3 completed, no approval'. |
-| C49 | Appendix | 18-month rule matches BIO's advanced-or-suspended denominator | open | |
+| C49 | Appendix | 18-month rule matches BIO's advanced-or-suspended denominator | wrong | BIO counts dated Biomedtracker transitions (advanced/suspended, curated); no inactivity rule. LOA moves 14.5→19.2% (current labels) as the lag goes 6→36 months; use competing-risks censoring instead. |
 | C50 | Appendix | Limitations list (modality known for 18%; approvals exclude vaccines, mRNA, biosimilars; features not time-frozen except precedent) | wrong | 18% modality figure is stale/other source; limitations omit supplemental and pre-2015 approvals. |
 
 ## Data issues register

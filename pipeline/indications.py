@@ -1,6 +1,7 @@
 """Map every condition string (preclin.indication) to the MONDO term for its core disease.
 
-    python -m pipeline.indications map   # LLM choice among MONDO candidates -> indication.mondo_id
+    python -m pipeline.indications map     # LLM choice among MONDO candidates -> indication.mondo_id
+    python -m pipeline.indications areas   # BIO 2021 disease area of every program disease
 
 Condition strings enter preclin.indication through pipeline.programs register.
 
@@ -152,10 +153,71 @@ def map_indications(_args) -> None:
           f"retried={len(retry)}")
 
 
+BIO_AREAS = ["allergy", "autoimmune", "cardiovascular", "endocrine", "gastroenterology", "hematology",
+             "infectious_disease", "metabolic", "neurology", "oncology", "ophthalmology", "psychiatry",
+             "respiratory", "urology", "other"]
+
+AREA_SYSTEM = """You assign a disease to one of the disease areas of BIO's 2021 Clinical Development Success Rates report, which follows Biomedtracker's conventions.
+
+Areas: allergy, autoimmune, cardiovascular, endocrine, gastroenterology (non-IBD), hematology, infectious_disease, metabolic, neurology, oncology, ophthalmology, psychiatry, respiratory, urology, other.
+Conventions:
+- oncology includes all cancers and pre-malignant neoplasms, including hematologic malignancies (leukemia, lymphoma, myeloma, MDS, myeloproliferative neoplasms) and cancer-related conditions treated with anticancer intent.
+- hematology covers non-malignant blood disorders: anemias, hemoglobinopathies, hemophilia and other coagulation disorders, thrombocytopenia, neutropenia, PNH.
+- autoimmune covers immune-mediated inflammatory diseases including rheumatoid arthritis, lupus, psoriasis and psoriatic arthritis, spondyloarthritis, inflammatory bowel disease (Crohn's disease, ulcerative colitis), vasculitis, Sjogren's, and transplant rejection.
+- gastroenterology covers non-IBD digestive and liver diseases (e.g. GERD, IBS, NASH/MASH, cirrhosis, pancreatitis).
+- metabolic covers lipid disorders, obesity, inborn errors of metabolism and lysosomal storage diseases; endocrine covers diabetes, thyroid, adrenal, pituitary, growth and reproductive-hormone disorders.
+- infectious_disease covers bacterial, viral, fungal and parasitic infections, including prevention by vaccination.
+- neurology includes multiple sclerosis, epilepsy, migraine, pain syndromes of neurological origin, neurodegeneration and neuromuscular disease; psychiatry includes depression, schizophrenia, bipolar disorder, anxiety, ADHD, substance use disorders and insomnia.
+- respiratory includes asthma, COPD, cystic fibrosis, pulmonary fibrosis and pulmonary hypertension.
+- urology covers urological conditions (overactive bladder, BPH, urinary incontinence, erectile dysfunction, interstitial cystitis).
+- other covers dermatology (non-autoimmune skin disease, e.g. acne, atopic dermatitis unless clearly allergic, wounds), renal disease (CKD, glomerulonephritis, kidney transplant function), obstetrics and gynecology, non-autoimmune rheumatology (osteoarthritis, gout, osteoporosis), ENT/dental, orthopedics, and anything that fits no other area.
+Choose the single best area."""
+
+AREA_SCHEMA = {
+    "type": "object",
+    "properties": {"area": {"type": "string", "enum": BIO_AREAS},
+                   "confidence": {"type": "string", "enum": ["high", "medium", "low"]}},
+    "required": ["area", "confidence"],
+    "additionalProperties": False,
+}
+
+
+def render_area(p: dict) -> str:
+    return (f"Disease: {p['label']} ({p['mondo_id']})\nDefinition: {p['definition'] or 'none'}\n"
+            f"Broader terms: {p['ancestors']}")
+
+
+AREA_TASK = llm.Task(name="mondo_bio_area", prompt_version="v1", schema_version="v1", system=AREA_SYSTEM,
+                     schema=AREA_SCHEMA, render=render_area, subject_type="mondo_term",
+                     model="claude-opus-5-5", effort="low", max_tokens=1000)
+
+
+def areas(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT t.term_id, t.label, t.definition,
+                   (SELECT string_agg(a.label, '; ' ORDER BY x.distance) FROM preclin.ontology_ancestor x
+                    JOIN preclin.ontology_term a ON a.term_id = x.ancestor_id
+                    WHERE x.term_id = t.term_id AND x.distance <= 4)
+            FROM preclin.ontology_term t
+            WHERE t.term_id IN (SELECT DISTINCT mondo_id FROM preclin.dev_program WHERE mondo_id IS NOT NULL)""")
+        items = {tid: {"mondo_id": tid, "label": label, "definition": (definition or "")[:400],
+                       "ancestors": anc or ""} for tid, label, definition, anc in cur.fetchall()}
+    run_id = llm.run(AREA_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.mondo_bio_area")
+        cur.execute("""INSERT INTO preclin.mondo_bio_area (mondo_id, bio_area, llm_decision_id)
+                       SELECT subject_key, parsed_output->>'area', llm_decision_id FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+        conn.commit()
+    print(f"diseases={len(items)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("map").set_defaults(fn=map_indications)
+    sub.add_parser("areas").set_defaults(fn=areas)
     args = parser.parse_args()
     args.fn(args)
 
