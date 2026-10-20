@@ -56,19 +56,23 @@ layer for every number in the report.
   started and for the program(s) begun next (the lead indication then); an indication added
   later enters at its own first trial (`dev_program_trial.marks_entry`; attach-all is a
   sensitivity). Trials whose conditions are only symptoms or procedures without a MONDO term
-  (pain, contraception) form the entity's condition-unspecified program instead. Sponsors are
-  attributes, not part of the key.
+  (pain, contraception) form the entity's condition-unspecified program instead. Each industry
+  trial's purpose is classified by an LLM (`preclin.trial_purpose`): product-support trials
+  (bioequivalence, formulation bridging, food effect, interactions, generic or biosimilar PK)
+  belong to no program; multi-indication baskets and early-development trials are shared like
+  healthy-volunteer trials. Sponsors are attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
   LLM from the entity's 2015–2026 approval letters (4,639 extracted approved uses; pages
   without a text layer OCRed; labeling-only changes are not approval events), its
   original-approval dates and current label indications (`preclin.dev_program_approval`).
   Approvals before 2015 are taken from the label.
 - **Phase cohorts and outcomes.** For phase p, programs whose first industry-sponsored
-  phase-p trial started 2015–2025, had not already entered a later phase, and were not
-  already approved for the disease (lifecycle programs are excluded). Advanced = a
-  later-phase industry trial started, or FDA approval for the disease. Suspended = no
-  active trial and no industry trial activity in the 24 months before the snapshot.
-  Otherwise censored. BIO-style rate = advanced / (advanced + suspended); a competing-risks
+  phase-p trial started 2015–2025 (shared trials count only for Phase 1 of the lead
+  indication), had not already entered a later phase, and were not already approved for the
+  disease (lifecycle programs are excluded). Advanced = a later-phase trial of the program's
+  own disease started (any sponsor: a cooperative-group trial of a company's drug is
+  development), or FDA approval for the disease. Suspended = none of the program's own
+  trials active, or active within 24 months of the snapshot. Otherwise censored. BIO-style rate = advanced / (advanced + suspended); a competing-risks
   (Aalen–Johansen) estimate keeps censored programs. LOA = product of phase rates.
   Confidence intervals resample molecular entities (1,000 draws). Sensitivity: lag 12/18/36
   months, US-site programs, novel vs already-approved entities, uncertain approvals.
@@ -165,6 +169,9 @@ layer for every number in the report.
 | D26 | Shared trials (healthy-volunteer Phase 1, "solid tumors" baskets) counted as Phase 1 entry for every later indication of the entity, so each indication expansion started at Phase 2 scored as a Phase 1 success | Phase 1→2 rate, LOA | fixed: shared trials mark entry only for programs under way or begun next (lead indication); attach-all reported as a sensitivity |
 | D27 | 845 stopped or withdrawn industry trials have an empty whyStopped; some give the reason only in the brief summary, which the outcome classifier did not see (trial-outcome audit: 1 of 30 stop reasons) | Failure-reason shares ("no reason stated") | fixed: brief summary stored and shown to the classifier when whyStopped is empty |
 | D28 | Trials whose only conditions are symptoms or procedures without a MONDO term (pain, cough, contraception; 1,337 industry trials 2015–2025, 3.4%) were treated like healthy-volunteer trials and attached to every disease program of the entity, so a Phase 3 in low back pain could count as advancement of the same drug's osteoarthritis program | Phase transitions | fixed: they form the entity's condition-unspecified program; symptoms with a MONDO term form their own programs. Limitation: pain and similar indications are not separate programs or disease-area strata |
+| D29 | Registry-derived Phase 1 cohorts included trials that are not development programs: bioequivalence, formulation, food-effect and interaction studies of marketed drugs (Phase 1 programs of already-approved entities advanced 8% of the time), and oncology dose escalations that list many tumor types, each counted as its own Phase 1 program (entry trials listing 5+ diseases advanced 10% of the time). BIO's unit is a disclosed Biomedtracker program, and generics are excluded | Phase 1 rate, LOA | fixing: LLM trial-purpose classification of all 75,774 in-scope industry trials; product-support trials leave the programs, baskets are shared |
+| D30 | Shared trials (healthy-volunteer studies, "solid tumors" baskets) kept every program of a multi-indication entity "active", so programs never read as suspended (616 of 916 Phase 3 entrants of 2017 still censored in 2026) | Suspension, all transition rates | fixed: whether a disease is still in development is read from the program's own trials |
+| D31 | Advancement counted only industry-sponsored later-phase trials; investigator and cooperative-group trials of a company's drug in the same disease were ignored (Phase 1→2 22.6% vs 34.6% when counted) | Transition rates | fixed: advancement and activity from the program's own trials of any sponsor |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
