@@ -311,6 +311,8 @@ def main() -> None:
     overall = results[0]
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
                "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
+               "purpose": dict(frame.query("SELECT purpose, count(*)::int AS n FROM preclin.trial_purpose GROUP BY 1")
+                               .itertuples(index=False)),
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "mature": results[9], "mature_us": results[10],

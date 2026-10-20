@@ -21,6 +21,7 @@ from report import frame
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
 BIO_TRANSITIONS = {1: 52.0, 2: 28.9, 3: 52.4}
+BIO = {"bio.loa": "7.9%", "bio.loa_novel": "6.8%", "bio.ph1": "52.0%", "bio.ph2": "28.9%", "bio.ph3": "52.4%"}
 
 
 def pct(x, digits=1):
@@ -165,7 +166,7 @@ def fill(text: str, numbers: dict) -> str:
 
 
 def main() -> None:
-    numbers = {}
+    numbers = dict(BIO)
     for section in ("section1", "section2", "quality"):
         path = os.path.join(OUT, section, "numbers.json")
         if os.path.exists(path):
