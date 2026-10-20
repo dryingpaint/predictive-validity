@@ -92,6 +92,8 @@ ROLE_SYSTEM = """You read a clinical trial's arms and interventions and say what
 - background: given to every participant or added on in every arm as standard therapy (e.g. "drug X + standard chemotherapy vs placebo + standard chemotherapy": the chemotherapy is background), premedication, rescue or supportive medication, or a diagnostic/probe drug in a drug-interaction study other than the drug being studied.
 - comparator: what the investigational agent is compared against (active control or standard-of-care arm drug that the investigational arm does not receive).
 
+In a co-administration study (two vaccines, or a vaccine and a drug, given together to test interference, immunogenicity or safety of the combination), an already licensed product given alongside the one in development is background, even though the trial measures its response; it is investigational only when the trial is developing it for the listed condition.
+
 Use the arm types and descriptions. Every entity listed must get exactly one role."""
 
 ROLE_SCHEMA = {
@@ -121,7 +123,7 @@ def validate_roles(p: dict, out: dict) -> None:
         raise ValueError(f"roles cover {got}, expected {sorted(p['moieties'])}")
 
 
-ROLE_TASK = llm.Task(name="trial_moiety_role", prompt_version="v1", schema_version="v1", system=ROLE_SYSTEM,
+ROLE_TASK = llm.Task(name="trial_moiety_role", prompt_version="v2", schema_version="v1", system=ROLE_SYSTEM,
                      schema=ROLE_SCHEMA, render=render_roles, validate=validate_roles,
                      subject_type="trial", effort="low", max_tokens=2000)
 
