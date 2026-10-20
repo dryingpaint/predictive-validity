@@ -35,7 +35,9 @@ BATCH_SIZE = 2000
 # anthropic: Message Batches on the Anthropic API. openrouter: concurrent
 # Messages calls through OpenRouter's Anthropic-compatible endpoint.
 PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
-WORKERS = 24
+WORKERS = int(os.environ.get("LLM_WORKERS", "24"))
+OPENROUTER_MODELS = {"claude-opus-5": "anthropic/claude-opus-5", "claude-opus-5-5": "anthropic/claude-opus-5.5",
+                     "claude-sonnet-5": "anthropic/claude-sonnet-5"}
 
 
 def canonical_json(value: Any) -> str:
@@ -65,7 +67,7 @@ def client() -> anthropic.Anthropic:
 
 
 def provider_model(model: str) -> str:
-    return f"anthropic/{model}" if PROVIDER == "openrouter" else model
+    return OPENROUTER_MODELS[model] if PROVIDER == "openrouter" else model
 
 
 @dataclass

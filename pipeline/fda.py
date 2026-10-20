@@ -6,7 +6,9 @@
     python -m pipeline.fda link      # LLM: each application's active ingredients -> preclin.moiety
 
 Letters cover every approved original NDA/BLA and every approved efficacy
-supplement (Drugs@FDA submission class EFFICACY) dated 2015-01-01..2025-12-31.
+supplement (Drugs@FDA submission class EFFICACY) from 2015-01-01 through the
+Drugs@FDA data date, so programs that started in the study window are
+followed to the snapshot.
 """
 from __future__ import annotations
 
@@ -30,7 +32,7 @@ from pipeline import llm
 CACHE = os.path.join(llm.REPO, ".cache", "fda")
 DRUGSFDA_URL = "https://www.fda.gov/media/89850/download"
 OPENFDA_INDEX = "https://api.fda.gov/download.json"
-WINDOW = ("2015-01-01", "2025-12-31")
+WINDOW = ("2015-01-01", "2026-12-31")
 EFFICACY_CLASS = "2"
 HEADERS = {"User-Agent": "Mozilla/5.0 (predictive-validity research)"}
 
@@ -323,7 +325,7 @@ def render_ingredient(p: dict) -> str:
 INGREDIENT_TASK = llm.Task(
     name="fda_application_moiety", prompt_version="v1", schema_version="v1",
     system=INGREDIENT_SYSTEM, schema=INGREDIENT_SCHEMA, render=render_ingredient,
-    subject_type="fda_application", effort="low", max_tokens=2000)
+    subject_type="fda_application", model="claude-opus-5-5", effort="low", max_tokens=2000)
 
 
 def link(_args) -> None:
