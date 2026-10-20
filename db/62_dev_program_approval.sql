@@ -7,7 +7,7 @@
 BEGIN;
 
 -- Fail fast instead of queueing ahead of writers to pv_evidence.llm_decision.
-SET LOCAL lock_timeout = '5s';
+SET LOCAL lock_timeout = '90s';
 
 CREATE TABLE IF NOT EXISTS preclin.dev_program_approval (
     program_id          integer PRIMARY KEY REFERENCES preclin.dev_program ON DELETE CASCADE,
