@@ -4,6 +4,13 @@
     python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
     python -m pipeline.fda link      # LLM: each application's active ingredients -> preclin.moiety
+    python -m pipeline.fda load-cber # CBER approval letters (.cache/cber/letters_index.jsonl) -> preclin.fda_*
+
+CBER-regulated biologics (vaccines, blood and plasma products, cell and gene
+therapies) are not in Drugs@FDA; their original approvals and supplements come
+from CBER's yearly approval pages and product approval-history pages. An
+action listed without a retrievable letter keeps the listing text as its
+document.
 
 Letters cover every approved original NDA/BLA and every approved efficacy
 supplement (Drugs@FDA submission class EFFICACY) from 2015-01-01 through the
@@ -373,10 +380,55 @@ def link(_args) -> None:
     print(f"applications={len(items)} links={len(links)} moieties={len(names)}")
 
 
+def load_cber(_args) -> None:
+    path = os.path.join(llm.REPO, ".cache", "cber", "letters_index.jsonl")
+    records = [json.loads(line) for line in open(path)]
+    sha = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    apps, products, subs, letters, links = {}, set(), {}, {}, {}
+    for r in records:
+        appl = r["appl_no"]
+        apps.setdefault(appl, r.get("sponsor"))
+        products.add((appl, r.get("product_brand") or "", r.get("proper_name") or r.get("product_brand") or ""))
+        key = (appl, r["submission_type"], str(r["submission_no"]))
+        subs[key] = r["approval_date"]
+        text = r.get("text") or r.get("yearly_listing_text") or ""
+        if not text.strip():
+            continue
+        doc_sha = r.get("sha256") or hashlib.sha256(text.encode()).hexdigest()
+        letters[doc_sha] = (doc_sha, text.replace("\x00", ""), int(r.get("n_bytes") or len(text.encode())))
+        links[key + (r["url"],)] = (*key, r["url"], r.get("doc_date") or None, doc_sha, r.get("error"))
+    with llm.connect() as conn, conn.cursor() as cur:
+        release = register_release(cur, "fda_cber_approvals", records and max(r["approval_date"] for r in records),
+                                   "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/"
+                                   "biological-approvals-year", sha, {"n_records": len(records)})
+        execute_values(cur, """INSERT INTO preclin.fda_application (appl_no, appl_type, center, sponsor_name,
+                                 source_release_id) VALUES %s
+            ON CONFLICT (appl_no) DO UPDATE SET center = 'CBER', sponsor_name = EXCLUDED.sponsor_name,
+              source_release_id = EXCLUDED.source_release_id""",
+                       [(a, "BLA", "CBER", sp, release) for a, sp in apps.items()])
+        execute_values(cur, """INSERT INTO preclin.fda_product (appl_no, product_no, drug_name, active_ingredient)
+            VALUES %s ON CONFLICT (appl_no, product_no) DO UPDATE SET drug_name = EXCLUDED.drug_name,
+              active_ingredient = EXCLUDED.active_ingredient""",
+                       [(a, f"cber{i}", brand, proper) for i, (a, brand, proper) in enumerate(sorted(products))])
+        execute_values(cur, """INSERT INTO preclin.fda_submission (appl_no, submission_type, submission_no, status,
+                                 status_date, submission_class) VALUES %s
+            ON CONFLICT (appl_no, submission_type, submission_no) DO UPDATE SET status_date = EXCLUDED.status_date""",
+                       [(*k, "AP", d, "CBER") for k, d in subs.items()])
+        execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes) VALUES %s
+                               ON CONFLICT DO NOTHING""", list(letters.values()))
+        execute_values(cur, """INSERT INTO preclin.fda_submission_letter
+            (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
+            ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
+              letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""", list(links.values()))
+        conn.commit()
+    print(f"CBER applications={len(apps)} submissions={len(subs)} documents={len(letters)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load), ("extract", extract), ("link", link)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("extract", extract), ("link", link),
+                     ("load-cber", load_cber)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
