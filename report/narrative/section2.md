@@ -11,7 +11,7 @@ Each program aimed at a human protein (the entity's primary targets, resolved by
 * **Mouse models:** IMPC phenotypes. **Expression:** differential expression in the disease (Expression Atlas). **Pathways:** Reactome. **Functional screens:** CRISPR screens.
 * **Target-level properties** that are not disease-specific: loss-of-function intolerance (gnomAD LOEUF < 0.35) and pan-essentiality across DepMap cell lines.
 
-Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used. Of the {{section2.n_programs|int}} programs on {{section2.n_targets|int}} targets scored, {{section2.evidence_coverage_ph1.genetic_any|pct}} of Phase 1 entrants had human genetic evidence for their disease at entry.
+Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used. These programs (vaccines, cell and gene therapies and other entities without a single human protein target fall outside) reach approval more often than the full Section 1 cohort. Of the {{section2.n_programs|int}} programs on {{section2.n_targets|int}} targets scored, {{section2.evidence_coverage_ph1.genetic_any|pct}} of Phase 1 entrants had human genetic evidence for their disease at entry.
 
 ### Relative success
 

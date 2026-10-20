@@ -58,15 +58,29 @@ def transitions_table() -> str:
 
 def sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
-    df = df.assign(**{"Cohort or definition": df.label.str.capitalize(),
+    df = df.assign(**{"Cohort or definition": df.label.map(sentence_case),
                       "Ph1→2": df.ph1_rate.map(pct), "Ph2→3": df.ph2_rate.map(pct), "Ph3→approval": df.ph3_rate.map(pct),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
     return table(df.iloc[:, -5:])
 
 
+STRATUM_NAMES = {"sirna_rnai": "siRNA / RNAi", "car_t": "CAR-T", "mrna": "mRNA (non-vaccine)",
+                 "antibody_drug_conjugate": "Antibody–drug conjugate", "other_cell_therapy": "Other cell therapy",
+                 "microbiome_or_live_biotherapeutic": "Microbiome or live biotherapeutic",
+                 "infectious_disease": "Infectious disease"}
+
+
+def stratum_name(key: str) -> str:
+    return STRATUM_NAMES.get(key, key.replace("_", " ").capitalize())
+
+
+def sentence_case(text: str) -> str:
+    return text[:1].upper() + text[1:]
+
+
 def stratum_table(csv: str, label: str, bio: dict) -> str:
-    df = pd.read_csv(os.path.join(OUT, "section1", csv))
-    df = df.assign(**{label: df.label.str.replace("_", " ").str.capitalize(),
+    df = pd.read_csv(os.path.join(OUT, "section1", csv)).dropna(subset=["loa"])
+    df = df.assign(**{label: df.label.map(stratum_name),
                       "All programs, LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
                       "Entities": df.n_entities.map("{:,}".format),
                       "Developed in the US, LOA (95% CI)": [
@@ -97,7 +111,10 @@ def rs_table() -> str:
 
 def prediction_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
-    df = df.assign(**{"Validation": df.split.str.replace("_", " "), "Features": df.features,
+    splits = {"grouped_cv": "Held-out targets", "temporal": "Temporal (2013–2016)"}
+    features = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus all evidence lines",
+                "evidence": "Evidence lines only"}
+    df = df.assign(**{"Validation": df.split.map(splits), "Features": df.features.map(features),
                       "AUC (95% CI)": [f"{a:.3f} ({lo:.3f}–{hi:.3f})" for a, lo, hi in zip(df.auc, df.auc_lo, df.auc_hi)],
                       "PR-AUC (base rate)": [f"{a:.3f} ({b:.3f})" for a, b in zip(df.pr_auc, df.base_rate)],
                       "Programs (approved)": [f"{n:,} ({p:,})" for n, p in zip(df.n, df.n_positive)]})
@@ -108,7 +125,7 @@ def dose_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
     band = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
     df = df.assign(**{"Human genetic support (Open Targets score, as of phase entry)": [
-                          band[b] + ("" if b == "none" else f" ({lo:.2f}–{hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
+                          band[b] + ("" if b == "none" else f" (> {lo:.2f} to {hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
                           for b, lo, hi in zip(df.band, df.score_from, df.score_to)],
                       "Programs": df.n_programs.map("{:,}".format), "Targets": df.n_targets.map("{:,}".format),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
@@ -117,9 +134,11 @@ def dose_table() -> str:
 
 def joint_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
-    labels = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").label
+    rs = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv"))
+    labels, order = rs.set_index("feature").label, {f: i for i, f in enumerate(rs.feature)}
     df["cell"] = [f"{r:.2f} ({lo:.2f}–{hi:.2f})" for r, lo, hi in zip(df.rr, df.rr_lo, df.rr_hi)]
     wide = df.pivot(index="feature", columns="phase", values="cell").fillna("–")
+    wide = wide.loc[sorted(wide.index, key=lambda f: order.get(f, 99))]
     wide.columns = [f"Phase {c} → next" for c in wide.columns]
     wide.insert(0, "Evidence", [labels.get(f, f) for f in wide.index])
     return table(wide.reset_index(drop=True))
@@ -127,6 +146,7 @@ def joint_table() -> str:
 
 def ablation_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_ablation.csv")).sort_values("auc_drop", ascending=False)
+    df = df[(df.drop_hi - df.drop_lo).abs() > 1e-9]  # a line present in too few programs changes nothing
     df = df.assign(**{"Evidence removed": df.label,
                       "AUC change (95% CI)": [f"{-d:+.3f} ({-hi:+.3f} to {-lo:+.3f})"
                                               for d, lo, hi in zip(df.auc_drop, df.drop_lo, df.drop_hi)]})
