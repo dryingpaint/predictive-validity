@@ -2,6 +2,7 @@
 
     python -m pipeline.ctgov fetch   # every interventional study with a DRUG or BIOLOGICAL intervention
     python -m pipeline.ctgov load    # cached pages -> preclin.ctgov_study (one row per NCT id)
+    python -m pipeline.ctgov countries   # site countries of every cached study
 
 The snapshot covers all sponsors and all dates so that a molecule's full
 trial history (earlier phases, later or still-active trials) is visible when
@@ -147,10 +148,27 @@ def load(_args) -> None:
     print(f"loaded {n} studies from {snap}")
 
 
+def countries(_args) -> None:
+    snap = sorted(glob.glob(os.path.join(CACHE, "*")))[-1]
+    rows = []
+    for path in sorted(glob.glob(os.path.join(snap, "page_*.json.gz"))):
+        with gzip.open(path, "rt") as f:
+            for study in json.load(f)["studies"]:
+                p = study.get("protocolSection", {})
+                locs = (p.get("contactsLocationsModule") or {}).get("locations") or []
+                rows.append((p.get("identificationModule", {}).get("nctId"),
+                             sorted({l.get("country") for l in locs if l.get("country")})))
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """UPDATE preclin.ctgov_study s SET countries = v.c
+                               FROM (VALUES %s) AS v(nct, c) WHERE s.nct_id = v.nct""", rows, page_size=5000)
+        conn.commit()
+    print(f"studies={len(rows)} with sites={sum(1 for _, c in rows if c)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("countries", countries)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
