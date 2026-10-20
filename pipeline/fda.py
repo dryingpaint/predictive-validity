@@ -407,7 +407,8 @@ def load_cber(_args) -> None:
         products.add((appl, r.get("product_brand") or "", r.get("proper_name") or r.get("product_brand") or ""))
         key = (appl, r["submission_type"], str(r["submission_no"]))
         subs[key] = r["approval_date"]
-        text = r.get("text") or r.get("yearly_listing_text") or ""
+        pdf = os.path.join(llm.REPO, ".cache", "cber", "letters", f"{r['sha256']}.pdf") if r.get("sha256") else ""
+        text = pdf_text(pdf) if os.path.exists(pdf) else (r.get("text") or r.get("yearly_listing_text") or "")
         if not text.strip():
             continue
         doc_sha = r.get("sha256") or hashlib.sha256(text.encode()).hexdigest()
@@ -431,7 +432,8 @@ def load_cber(_args) -> None:
             ON CONFLICT (appl_no, submission_type, submission_no) DO UPDATE SET status_date = EXCLUDED.status_date""",
                        [(*k, "AP", d, "CBER") for k, d in subs.items()])
         execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes) VALUES %s
-                               ON CONFLICT DO NOTHING""", list(letters.values()))
+                               ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""",
+                       list(letters.values()))
         execute_values(cur, """INSERT INTO preclin.fda_submission_letter
             (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
             ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
