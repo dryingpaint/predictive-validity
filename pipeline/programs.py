@@ -192,8 +192,11 @@ def build(_args) -> None:
     is an ancestor of another of the entity's diseases (e.g. "solid tumors"
     and "non-small cell lung carcinoma") attaches to the more specific
     programs instead of forming its own; a trial without a disease
-    (healthy volunteers) attaches to every program of the entity, or forms the
-    entity's disease-unspecified program when it has none. Such a shared
+    (healthy volunteers, or none listed) attaches to every program of the
+    entity, or forms the entity's disease-unspecified program when it has none.
+    A trial whose conditions are only symptoms, procedures or other conditions
+    without a MONDO term (pain, contraception) attaches only to that
+    unspecified program. Any condition with a MONDO term counts as a disease. Such a shared
     trial marks phase entry (marks_entry) only for programs whose own first
     trial had started by then and for the program(s) begun next after it: an
     indication the sponsor added later enters at its own first trial."""
@@ -215,12 +218,15 @@ def build(_args) -> None:
         for nct, mid in cur.fetchall():
             if nct in trials:
                 trial_moieties[nct].add(mid)
-        cur.execute("""SELECT si.nct_id, i.mondo_id FROM preclin.ctgov_study_indication si
+        cur.execute("""SELECT si.nct_id, i.mondo_id, i.indication_kind FROM preclin.ctgov_study_indication si
                        JOIN preclin.indication i USING (indication_id)
-                       WHERE i.indication_kind = 'disease' AND i.mondo_id IS NOT NULL""")
-        trial_diseases = defaultdict(set)
-        for nct, mondo in cur.fetchall():
-            trial_diseases[nct].add(mondo)
+                       WHERE i.indication_kind IS DISTINCT FROM 'healthy_volunteers'""")
+        trial_diseases, trial_other = defaultdict(set), set()
+        for nct, mondo, kind in cur.fetchall():
+            if mondo:
+                trial_diseases[nct].add(mondo)
+            else:
+                trial_other.add(nct)
         cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
         ancestors = defaultdict(set)
         for term, anc in cur.fetchall():
@@ -242,11 +248,13 @@ def build(_args) -> None:
     programs = {}   # (moiety, mondo) -> {nct: (attach, marks_entry)}
     for mid, ncts in by_moiety.items():
         direct = defaultdict(set)
-        no_disease = []
+        no_disease, other_condition = [], []
         for nct in ncts:
             if trial_diseases[nct]:
                 for d in trial_diseases[nct]:
                     direct[d].add(nct)
+            elif nct in trial_other:
+                other_condition.append(nct)
             else:
                 no_disease.append(nct)
         specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
@@ -259,6 +267,9 @@ def build(_args) -> None:
                 lead = entry_programs(covered, trials[nct]["start"])
                 for key in covered:
                     programs[key].setdefault(nct, ("broader_condition", key in lead))
+        if other_condition:
+            programs[(mid, None)] = {nct: ("non_disease_condition", True) for nct in other_condition}
+            first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
         targets = [k for k in programs if k[0] == mid] or [(mid, None)]
         for nct in no_disease:
             lead = entry_programs({k: first[k] for k in targets if k in first}, trials[nct]["start"]) \
