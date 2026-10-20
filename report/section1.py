@@ -286,9 +286,11 @@ def main() -> None:
     results.append(summarize(mature[mature.us_site], "phase entry 2015-2019, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
-    by_area = [summarize(g, a) for a, g in rows.groupby("bio_area") if g.moiety_id.nunique() >= 20]
+    by_area = [summarize(g, a) for a, g in rows.groupby("bio_area")
+               if a != "unmapped" and g.moiety_id.nunique() >= 20]
     pd.DataFrame(by_area).sort_values("loa", ascending=False).to_csv(os.path.join(OUT, "loa_by_area.csv"), index=False)
-    by_mod = [summarize(g, m) for m, g in rows.groupby("modality") if g.moiety_id.nunique() >= 20]
+    by_mod = [summarize(g, m) for m, g in rows.groupby("modality")
+              if m != "unknown" and g.moiety_id.nunique() >= 20]
     pd.DataFrame(by_mod).sort_values("loa", ascending=False).to_csv(os.path.join(OUT, "loa_by_modality.csv"),
                                                                    index=False)
     by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
