@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from report import frame
+from report import bio, frame
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -39,13 +39,6 @@ REASON_FAMILY = {
     "completed, no results posted, no reason stated": "No reason, no results",
     "stopped, no reason stated": "No reason, no results",
 }
-BIO_AREA_LOA = {"hematology": 23.9, "metabolic": 15.5, "infectious_disease": 13.2, "other": 13.0,
-                "ophthalmology": 11.9, "autoimmune": 10.7, "allergy": 10.3, "gastroenterology": 8.3,
-                "psychiatry": 7.3, "respiratory": 7.5, "endocrine": 6.6, "neurology": 5.9,
-                "cardiovascular": 4.8, "oncology": 5.3, "urology": 3.6}
-BIO_MODALITY_LOA = {"car_t": 17.3, "sirna_rnai": 13.5, "monoclonal_antibody": 12.1, "antibody_drug_conjugate": 10.8,
-                    "gene_therapy": 10.0, "vaccine": 9.7, "protein": 9.4, "peptide": 8.0, "small_molecule": 7.5,
-                    "antisense_oligonucleotide": 5.2}
 
 
 def style(ax):
@@ -147,9 +140,9 @@ def dose_response():
 
 def main():
     failure_modes()
-    loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", BIO_AREA_LOA,
+    loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA,
              lambda s: s.replace("_", " ").capitalize())
-    loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", BIO_MODALITY_LOA,
+    loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA,
              lambda s: s.replace("_", " ").replace("rnai", "RNAi").replace("car t", "CAR-T").capitalize())
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()

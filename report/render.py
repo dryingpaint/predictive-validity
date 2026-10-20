@@ -16,12 +16,12 @@ import re
 import numpy as np
 import pandas as pd
 
-from report import frame
+from report import bio, frame
 
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
-BIO_TRANSITIONS = {1: 52.0, 2: 28.9, 3: 52.4}
-BIO = {"bio.loa": "7.9%", "bio.loa_novel": "6.8%", "bio.ph1": "52.0%", "bio.ph2": "28.9%", "bio.ph3": "52.4%"}
+BIO = {"bio.loa": f"{bio.LOA}%", "bio.loa_novel": f"{bio.LOA_NOVEL}%",
+       **{f"bio.ph{ph}": f"{v}%" for ph, v in bio.TRANSITIONS.items()}}
 
 
 def pct(x, digits=1):
@@ -47,10 +47,10 @@ def transitions_table() -> str:
             o = df.loc[key]
             n = int(o[f"ph{ph}_n_advanced"] + o[f"ph{ph}_n_suspended"])
             row.append(f"{pct(o[f'ph{ph}_rate'])}{ci(o[f'ph{ph}_lo'], o[f'ph{ph}_hi'])}, n={n:,}")
-        rows.append(row + [f"{BIO_TRANSITIONS[ph]:.1f}%"])
+        rows.append(row + [f"{bio.TRANSITIONS[ph]:.1f}%"])
     rows.append(["**Phase 1 → Approval (LOA)**"]
                 + [f"**{pct(df.at[k, 'loa'])}**{ci(df.at[k, 'loa_lo'], df.at[k, 'loa_hi'])}" for k in cohorts]
-                + ["**7.9%** (novel drugs 6.8%)"])
+                + [f"**{bio.LOA}%** (novel drugs {bio.LOA_NOVEL}%)"])
     return table(pd.DataFrame(rows, columns=["Transition", *[f"{v} (95% CI)" for v in cohorts.values()],
                                              "BIO 2011–2020"]))
 
@@ -63,12 +63,17 @@ def sensitivity_table() -> str:
     return table(df.iloc[:, -5:])
 
 
-def stratum_table(csv: str, label: str) -> str:
+def stratum_table(csv: str, label: str, bio: dict) -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", csv))
     df = df.assign(**{label: df.label.str.replace("_", " ").str.capitalize(),
-                      "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
-                      "Entities": df.n_entities.map("{:,}".format)})
-    return table(df[[label, "LOA (95% CI)", "Entities"]])
+                      "All programs, LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
+                      "Entities": df.n_entities.map("{:,}".format),
+                      "Developed in the US, LOA (95% CI)": [
+                          f"{pct(r.us_loa)}{ci(r.us_loa_lo, r.us_loa_hi)}" if pd.notna(getattr(r, "us_loa", np.nan)) else "–"
+                          for r in df.itertuples()],
+                      "BIO 2011–2020": [f"{bio[k]:.1f}%" if k in bio else "–" for k in df.label]})
+    return table(df[[label, "All programs, LOA (95% CI)", "Entities", "Developed in the US, LOA (95% CI)",
+                     "BIO 2011–2020"]])
 
 
 def failure_table() -> str:
@@ -154,8 +159,9 @@ def quality_table() -> str:
     return table(pd.DataFrame(rows, columns=["Label", "Audited", "Agreement (95% CI)", "Wrong"]))
 
 
-TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table, "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area"),
-          "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality"),
+TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
+          "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
+          "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
           "QUALITY_TABLE": quality_table}

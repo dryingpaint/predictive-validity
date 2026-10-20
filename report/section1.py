@@ -286,13 +286,17 @@ def main() -> None:
     results.append(summarize(mature[mature.us_site], "phase entry 2015-2019, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
-    by_area = [summarize(g, a) for a, g in rows.groupby("bio_area")
-               if a != "unmapped" and g.moiety_id.nunique() >= 20]
-    pd.DataFrame(by_area).sort_values("loa", ascending=False).to_csv(os.path.join(OUT, "loa_by_area.csv"), index=False)
-    by_mod = [summarize(g, m) for m, g in rows.groupby("modality")
-              if m != "unknown" and g.moiety_id.nunique() >= 20]
-    pd.DataFrame(by_mod).sort_values("loa", ascending=False).to_csv(os.path.join(OUT, "loa_by_modality.csv"),
-                                                                   index=False)
+    for column, name, skip in (("bio_area", "area", "unmapped"), ("modality", "modality", "unknown")):
+        strata = []
+        for value, g in rows.groupby(column):
+            if value == skip or g.moiety_id.nunique() < 20:
+                continue
+            us = g[g.us_site]
+            strata.append({**summarize(g, value), **{f"us_{k}": v for k, v in summarize(us, value).items()
+                                                      if k != "label"}} if us.moiety_id.nunique() >= 20
+                          else summarize(g, value))
+        pd.DataFrame(strata).sort_values("loa", ascending=False).to_csv(
+            os.path.join(OUT, f"loa_by_{name}.csv"), index=False)
     by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
     by_year.to_csv(os.path.join(OUT, "ph1_outcome_by_entry_year.csv"))
 
