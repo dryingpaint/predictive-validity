@@ -163,6 +163,62 @@ def summarize(rows: pd.DataFrame, label: str) -> dict:
     return res
 
 
+REASON_ORDER = [
+    ("efficacy: stated", "biology"), ("efficacy: primary endpoint not met", "biology"),
+    ("safety", "biology"), ("PK, dose or formulation", "biology"),
+    ("business or strategic (explicit)", "business"), ("sponsor decision, unspecified", "unspecified"),
+    ("enrollment, operational or regulatory", "operational"),
+    ("positive readout, not advanced", "other"),
+    ("completed, no results posted, no reason stated", "unexplained"),
+    ("stopped, no reason stated", "unexplained"),
+]
+OPERATIONAL = {"enrollment_feasibility", "operational_or_site", "regulatory", "manufacturing_supply", "covid19",
+               "replaced_by_new_protocol"}
+
+
+def trial_reason(o: pd.Series | None, status: str) -> str:
+    """Reason a single trial of the stopping phase gives, or None if it gives none."""
+    if o is None:
+        return ("completed, no results posted, no reason stated" if status == "COMPLETED"
+                else "stopped, no reason stated")
+    if o.stop_reason == "efficacy_futility":
+        return "efficacy: stated"
+    if o.efficacy_failure or o.primary_endpoint == "not_met":
+        return "efficacy: primary endpoint not met"
+    if o.stop_reason == "safety_tolerability" or o.safety_signal == "notable":
+        return "safety"
+    if o.stop_reason == "pk_pd_or_formulation":
+        return "PK, dose or formulation"
+    if o.stop_reason in ("business_portfolio", "competitive_landscape"):
+        return "business or strategic (explicit)"
+    if o.stop_reason == "sponsor_decision_unspecified":
+        return "sponsor decision, unspecified"
+    if o.stop_reason in OPERATIONAL:
+        return "enrollment, operational or regulatory"
+    if o.primary_endpoint in ("met", "mixed") or o.stop_reason == "objectives_met_or_early_success":
+        return "positive readout, not advanced"
+    return ("completed, no results posted, no reason stated" if o.execution == "completed"
+            else "stopped, no reason stated")
+
+
+def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame) -> pd.DataFrame:
+    """One reason per suspended program: the highest-priority reason among the
+    industry trials of the phase it stopped in."""
+    rank = {r: i for i, (r, _) in enumerate(REASON_ORDER)}
+    family = dict(REASON_ORDER)
+    out = outcomes.set_index("nct_id")
+    stopped = rows[rows.event == "suspended"][["program_id", "phase", "moiety_id", "bio_area", "modality"]]
+    t = trials[trials.industry].merge(stopped[["program_id", "phase"]], on=["program_id", "phase"])
+    t["reason"] = [trial_reason(out.loc[n] if n in out.index else None, st)
+                   for n, st in zip(t.nct_id, t.overall_status)]
+    t["rank"] = t.reason.map(rank)
+    best = t.sort_values("rank").drop_duplicates(["program_id", "phase"])[["program_id", "phase", "reason"]]
+    res = stopped.merge(best, on=["program_id", "phase"], how="left")
+    res["reason"] = res.reason.fillna("stopped, no reason stated")
+    res["family"] = res.reason.map(family)
+    return res
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
@@ -187,6 +243,13 @@ def main() -> None:
                                                                    index=False)
     by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
     by_year.to_csv(os.path.join(OUT, "ph1_outcome_by_entry_year.csv"))
+
+    if os.environ.get("SECTION1_FAILURES", "1") == "1":
+        modes = failure_modes(rows, trials, frame.trial_outcomes())
+        modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
+        tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count",
+                                fill_value=0)
+        tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))
 
     overall = results[0]
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
