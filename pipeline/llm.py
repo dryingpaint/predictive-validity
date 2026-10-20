@@ -40,7 +40,9 @@ BATCH_SIZE = 2000
 PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))
 AGENT_CHUNK = int(os.environ.get("LLM_AGENT_CHUNK", "100"))
-DIRECT_MAX = 100  # Anthropic runs with at most this many new items skip the batch queue
+# Anthropic runs with at most this many new items call the Messages API directly
+# instead of waiting in the batch queue (which can sit for hours).
+DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
 AGENT_MODEL = "claude-opus-5-5"  # the Claude Code session model the workflow agents run on
 OPENROUTER_MODELS = {"claude-opus-5": "anthropic/claude-opus-5", "claude-opus-5-5": "anthropic/claude-opus-5.5",
                      "claude-sonnet-5": "anthropic/claude-sonnet-5"}
