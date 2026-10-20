@@ -80,7 +80,7 @@ def failure_table() -> str:
 
 
 def rs_table() -> str:
-    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).sort_values("rs", ascending=False)
+    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).dropna(subset=["rs"]).sort_values("rs", ascending=False)
     df = df.assign(**{"Evidence (for the program's disease, as of phase entry)": df.label,
                       "Programs with it": df.n_with.map("{:,}".format),
                       "LOA with / without": [f"{pct(a)} / {pct(b)}" for a, b in zip(df.loa_with, df.loa_without)],
