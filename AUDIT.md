@@ -26,75 +26,104 @@ Status values: `open` (not yet checked) · `confirmed` (reproduces, method sound
 
 | ID | Report section | Claim | Status | Verified value / note |
 |---|---|---|---|---|
-| C01 | Intro | Drugs per $bn R&D halved ~every 9 years since 1950 (Scannell 2012) | open | |
-| C02 | Intro | 7.9% of Phase 1 entrants reach FDA approval (BIO 2021) | open | |
-| C03 | Intro | "The 92% of programs that fail" | open | |
-| C04 | Intro | Genetic support 2.6× Ph1→approval (Minikel 2024), 2× (Nelson 2015) | open | |
-| C05 | Intro | Efficacy ~52% and safety ~24% of Ph2/Ph3 failures (Harrison 2016) | open | |
-| C06 | Intro | AZ 5R programs far more likely to succeed (Cook 2014) | open | |
-| C07 | Intro | Scannell coined Eroom's Law; Scannell & Bosley 2016 introduced predictive validity; "landmark study names four reasons" | open | |
-| C08 | History | Seven-era history table | open | |
-| C09 | Intro | 28,193 industry trials "started after 2015 and ended before 2026" | open | |
+| C01 | Intro | Drugs per $bn R&D halved ~every 9 years since 1950 (Scannell 2012) | revised | Verbatim in Scannell 2012 (halved ~9y, ~80×, 1950–2010). The four causes come from the 2012 paper, not Scannell & Bosley 2016; trend flattened after 2010 (Ringel 2020). |
+| C02 | Intro | 7.9% of Phase 1 entrants reach FDA approval (BIO 2021) | revised | BIO 7.9% is an all-program LOA incl. non-NME and biosimilars; the like-for-like novel-drug LOA is 6.8% (NME 5.7%, biologic 9.1%). |
+| C03 | Intro | "The 92% of programs that fail" | revised | 92% = 1 − LOA; 'hundreds of billions' uncited. |
+| C04 | Intro | Genetic support 2.6× Ph1→approval (Minikel 2024), 2× (Nelson 2015) | revised | Minikel 2.6× is Ph1→launch (any market, Pharmaprojects), not FDA approval; Nelson ~2×. |
+| C05 | Intro | Efficacy ~52% and safety ~24% of Ph2/Ph3 failures (Harrison 2016) | confirmed | 52%/24% of 174 Ph2/Ph3 failures with a disclosed reason (Harrison 2016). |
+| C06 | Intro | AZ 5R programs far more likely to succeed (Cook 2014) | wrong | Cook 2014 derived the 5Rs; the improvement after adoption (4%→19%) is Morgan 2018. |
+| C07 | Intro | Scannell coined Eroom's Law; Scannell & Bosley 2016 introduced predictive validity; "landmark study names four reasons" | revised | Eroom's Law coined by the four 2012 authors; 'predictive validity' predates Scannell (Willner 1984); S&B 2016 present it as a hypothesis. |
+| C08 | History | Seven-era history table | revised | Dates fine; lead-in says '50 years' for a table starting pre-1900; sulfonamides were a phenotypic discovery. |
+| C09 | Intro | 28,193 industry trials "started after 2015 and ended before 2026" | wrong | Cohort = 28,0xx closed industry trials started 2015-01-01..2025-12-31 (3,065 started in 2015); no 'ended before 2026' filter exists. |
 | C10 | Intro | Six core lines of evidence compiled from databases and literature classification | open | |
-| C11 | S1 | 7.4% of Ph1 programs reached FDA approval, within 0.5pt of BIO | open | |
-| C12 | S1 | Only 1 in 20 failed programs records an efficacy or safety reason | open | |
-| C13 | S1 | 28,193 trials = 67% of 41,836 industry Ph1–3 drug trials started 2015–2025 | open | |
-| C14 | S1 | 84,117 programs; 13,639 T-I pairs with ≥1 Ph1 trial | open | |
-| C15 | S1 | Transitions 55.9 / 51.0 / 26.1 / 7.4% vs BIO 52.0 / 28.9 / ~52 / 7.9% | open | |
-| C16 | S1 | Mid-phase gap explained by Ph3b, non-US, Ph2/3 designs | open | |
-| C17 | S1 | 42,984 Ph1+ programs settled by 2026, vaccines and mRNA excluded | open | |
-| C18 | S1 | 55,133 failed programs; silent efficacy = 73% of Ph3 failures | open | |
-| C19 | S1 | 5,510 early terminations with a reason; 44% commercial/strategic; Cook 2014 says this masks efficacy failures | open | |
-| C20 | S1 | Figure 1: failure reasons by phase | open | |
-| C21 | S1 | Ph1 failures mostly non-advancement after safety/PK; Ph3 failures mostly completed trials without approval | open | |
-| C22 | S1 | LOA varies ~10× by area: 18.4% hematology → 1.6% urology | open | |
-| C23 | S1 | Oligonucleotides 32.5%, small molecules 5.8%; same rank order as BIO | open | |
-| C24 | S1 | Modality rates above BIO because of ASO/GLP-1/AAV approvals; infectious/Other lower for missing vaccines/biosimilars | open | |
-| C25 | S1 | Figure 2: LOA by area and modality vs BIO | open | |
-| C26 | S2 | Genetics is the only line that adds predictive power once the others are known | open | |
-| C27 | S2 | Strong genetic support 45% approval vs 11% for none | open | |
-| C28 | S2 | 8,144 Ph2+ T-I pairs, base approval rate 23% | open | |
-| C29 | S2 | Figure 3: relative success per evidence dimension | open | |
-| C30 | S2 | Pathway/GO counts are study-depth proxies | open | |
-| C31 | S2 | Genetic dose–response table (8,392 pairs) | open | |
-| C32 | S2 | Ablation: genetics −17.7pp; cell/animal 0.0; mechanistic −0.6; PD −0.3; safety −0.2 | open | |
-| C33 | S2 | AUC 0.825 on held-out targets, 13,639 Ph1+ pairs | open | |
-| C34 | S2 | Time-split AUC 0.769 (train pre-2019) on Ph2+ pairs | open | |
-| C35 | S2 | DepMap pan-essential targets RS 0.24 | open | |
-| C36 | S2 | gnomAD LoF-intolerant genes RS 0.82–0.84 | open | |
-| C37 | Cases | 1,182 Ph3 T-I pairs; strong single-line evidence still fails 73–85% | open | |
-| C38 | Cases | Ph3 strong-evidence table (8 rows) | open | |
-| C39 | Cases | Best profile (C∧D∧E∧genetics) approves 22% of 422 Ph3 pairs | open | |
-| C40 | Cases | BACE1 inhibitors (CSF Aβ42 −50–80%, cognition worsened, ~$4bn) | open | |
-| C41 | Cases | Torcetrapib/CETP (HDL +60%, mortality +25%, aldosterone; successors failed) | open | |
-| C42 | Cases | Semagacestat (faster decline, Notch → skin cancer, GI) | open | |
-| C43 | Cases | Solanezumab/bapineuzumab (no benefit; mouse models overpredicted) | open | |
-| C44 | Cases | TGN1412 (500× monkey margin; 6/6 cytokine storm) | open | |
-| C45 | Cases | Fialuridine (clean 4-species tox; 5/15 deaths; human-specific transporter) | open | |
-| C46 | Appendix | why_stopped category counts (11 categories, n=5,510) | open | |
-| C47 | Appendix | Sonnet and Haiku classified every trial; Sonnet kept on disagreement | open | |
-| C48 | Appendix | Silent efficacy = efficacy or safety ~90% of the time | open | |
+| C11 | S1 | 7.4% of Ph1 programs reached FDA approval, within 0.5pt of BIO | wrong | 7.4% ≈ BIO only through offsetting errors (1,908 approval-seeded phantom programs, drug-level labels, comparators). LLM-corrected sample estimate 10.0% [5.4, 15.8]. Rebuild pending. |
+| C12 | S1 | Only 1 in 20 failed programs records an efficacy or safety reason | revised | 4.5–7% depending on cohort; qualitative claim holds. |
+| C13 | S1 | 28,193 trials = 67% of 41,836 industry Ph1–3 drug trials started 2015–2025 | wrong | 41,836 includes EARLY_PHASE1 and non-drug trials (in-definition: 40,218 on CT.gov 2026-10-20); the 33% gap is closed vs active status, not failed resolution. |
+| C14 | S1 | 84,117 programs; 13,639 T-I pairs with ≥1 Ph1 trial | wrong | Program rows include 7,425 duplicates (NULL sponsor_id), placebo/comparator/background arms and healthy-volunteer pseudo-indications; 13,639 T-I pairs is the leaked-era cohort. |
+| C15 | S1 | Transitions 55.9 / 51.0 / 26.1 / 7.4% vs BIO 52.0 / 28.9 / ~52 / 7.9% | wrong | Transitions depend on label convention (3.2–16.1% LOA); corrected sample Ph3→approval ≈42% [24, 62]. |
+| C16 | S1 | Mid-phase gap explained by Ph3b, non-US, Ph2/3 designs | wrong | The mid-phase gap comes from mislabelled non-development programs and combined phases coded as phase 0, not Ph3b designs. |
+| C17 | S1 | 42,984 Ph1+ programs settled by 2026, vaccines and mRNA excluded | wrong | Not reproducible from committed code after out-of-ledger relabel (db/11); includes phantoms and duplicates. |
+| C18 | S1 | 55,133 failed programs; silent efficacy = 73% of Ph3 failures | wrong | Failure set (55,133) is not nested in the LOA cohort: 30.6% placebo/methodology/vaccine/non-drug; 'silent efficacy' bucket is mostly approved drugs and placebo arms. |
+| C19 | S1 | 5,510 early terminations with a reason; 44% commercial/strategic; Cook 2014 says this masks efficacy failures | revised | 5,510 confirmed (21% withdrawn before enrolment). 44% commercial is mostly boilerplate 'sponsor decision'; Cook 2014 attribution unsupported. |
+| C20 | S1 | Figure 1: failure reasons by phase | wrong | Arithmetic reproduces; bars inherit C18 cohort errors. |
+| C21 | S1 | Ph1 failures mostly non-advancement after safety/PK; Ph3 failures mostly completed trials without approval | wrong | Ph1 stalls include healthy-volunteer/PK studies and approved drugs; commercial-prioritization inference untested. |
+| C22 | S1 | LOA varies ~10× by area: 18.4% hematology → 1.6% urology | wrong | Spread survives but levels driven by phantom approvals; Urology rests on 5 approvals; taxonomy departs from BIO (renal/OB-GYN, heme malignancies). |
+| C23 | S1 | Oligonucleotides 32.5%, small molecules 5.8%; same rank order as BIO | wrong | Oligo 32.5% is pre-vaccine-exclusion and drug-level; BIO's rank order differs (antisense below small molecules). |
+| C24 | S1 | Modality rates above BIO because of ASO/GLP-1/AAV approvals; infectious/Other lower for missing vaccines/biosimilars | wrong | Gaps driven by drug-level crediting and phantom programs, not the approval window. |
+| C25 | S1 | Figure 2: LOA by area and modality vs BIO | wrong | Figure mixes two cohort vintages (pre/post vaccine exclusion); no CIs. |
+| C26 | S2 | Genetics is the only line that adds predictive power once the others are known | wrong | Rests on leaked ablation; corrected ablations show no category with a robust increment. |
+| C27 | S2 | Strong genetic support 45% approval vs 11% for none | wrong | 'None' bin is 233/266 pathogen/pseudogene targets; outcome drug-level; Strong vs Weak adjusted RR ≈1.6. |
+| C28 | S2 | 8,144 Ph2+ T-I pairs, base approval rate 23% | wrong | 23% is a drug-level any-indication rate; strict per-indication 5.2–9.9%. |
+| C29 | S2 | Figure 3: relative success per evidence dimension | wrong | Literature bars from invalidated v1 scores; Reactome bar pre-dates gap fill; no CIs; ~34% wrong drug→target links. |
+| C30 | S2 | Pathway/GO counts are study-depth proxies | revised | Reactome ≥5 not a study-depth proxy here and null under strict outcome. |
+| C31 | S2 | Genetic dose–response table (8,392 pairs) | revised | Reproduces on loose outcome; target-clustered CIs 3–8× wider; step at Strong only. |
+| C32 | S2 | Ablation: genetics −17.7pp; cell/animal 0.0; mechanistic −0.6; PD −0.3; safety −0.2 | wrong | −17.7pp came from Nelson one-hots inside 'genetics' (leaked) with random-split CV. |
+| C33 | S2 | AUC 0.825 on held-out targets, 13,639 Ph1+ pairs | wrong | 0.825 is the leaked run; corrected 0.570 [0.515, 0.620]; 75% of positives are trial-less phantom pairs. |
+| C34 | S2 | Time-split AUC 0.769 (train pre-2019) on Ph2+ pairs | wrong | 0.769 leaked; corrected time split ≈0.51 (24 test positives). |
+| C35 | S2 | DepMap pan-essential targets RS 0.24 | revised | Arithmetic reproduces; driven by old cytotoxics; adjusted ≈0.4, n.s. under strict outcome (41 targets). |
+| C36 | S2 | gnomAD LoF-intolerant genes RS 0.82–0.84 | wrong | Not distinguishable from 1 under clustering; null after adjustment. |
+| C37 | Cases | 1,182 Ph3 T-I pairs; strong single-line evidence still fails 73–85% | wrong | 1,182 were programs not T-I pairs; generating script missing; 73–85% fail ≈ base Ph3 failure rate. |
+| C38 | Cases | Ph3 strong-evidence table (8 rows) | wrong | Rows mix runs; literature rows used hallucinated-PMID v1 scores. |
+| C39 | Cases | Best profile (C∧D∧E∧genetics) approves 22% of 422 Ph3 pairs | wrong | Convergent rows include Phase 2 programs; no comparator. |
+| C40 | Cases | BACE1 inhibitors (CSF Aβ42 −50–80%, cognition worsened, ~$4bn) | revised | CSF Aβ −50–90%; worsening in some trials, reversible; '$4bn' unsupported; amyloid-causal claim contradicted by lecanemab/donanemab. |
+| C41 | Cases | Torcetrapib/CETP (HDL +60%, mortality +25%, aldosterone; successors failed) | wrong | Torcetrapib deaths +58% (HR 1.58), MACE +25%; anacetrapib met its endpoint (RR 0.91). |
+| C42 | Cases | Semagacestat (faster decline, Notch → skin cancer, GI) | revised | Functional (not cognitive) worsening significant; Phase 2 CSF Aβ not reduced. |
+| C43 | Cases | Solanezumab/bapineuzumab (no benefit; mouse models overpredicted) | revised | Solanezumab did not clear plaque; bapineuzumab ARIA-capped; failure better explained by insufficient engagement. |
+| C44 | Cases | TGN1412 (500× monkey margin; 6/6 cytokine storm) | confirmed | Facts correct; framing overstated (in vitro human assays/MABEL would have flagged it). |
+| C45 | Cases | Fialuridine (clean 4-species tox; 5/15 deaths; human-specific transporter) | confirmed | 7/15 severe hepatotoxicity, 5 deaths, 2 transplants; mitochondrial hENT1. |
+| C46 | Appendix | why_stopped category counts (11 categories, n=5,510) | revised | Counts reproduce; 360 Sonnet API failures stored as 'unclear'; κ(Haiku,Sonnet)=0.81 on valid pairs. |
+| C47 | Appendix | Sonnet and Haiku classified every trial; Sonnet kept on disagreement | revised | 480 failed calls; Sonnet preferred unconditionally; prompts not committed. |
+| C48 | Appendix | Silent efficacy = efficacy or safety ~90% of the time | unsupported | No source for ~90%; literature gives 69–87% among disclosed failures, not 'Ph3 completed, no approval'. |
 | C49 | Appendix | 18-month rule matches BIO's advanced-or-suspended denominator | open | |
-| C50 | Appendix | Limitations list (modality known for 18%; approvals exclude vaccines, mRNA, biosimilars; features not time-frozen except precedent) | open | |
+| C50 | Appendix | Limitations list (modality known for 18%; approvals exclude vaccines, mRNA, biosimilars; features not time-frozen except precedent) | wrong | 18% modality figure is stale/other source; limitations omit supplemental and pre-2015 approvals. |
 
 ## Data issues register
 
 | ID | Issue | Effect | Status |
 |---|---|---|---|
-| D01 | `program_outcome.outcome_broad='approved'` is drug-level: any program whose drug is in the 544-row novel-approval table counts as approved, whatever its indication. `approved_elsewhere` is likewise drug-level (ChEMBL max_phase=4). | Every LOA, transition rate and RS in Section 1; the base rate in Section 2 | open |
-| D02 | Two conflicting LOA definitions in circulation: committed `bio_replication.py` (approved only → 7.4%) and local working copy (approved + approved_elsewhere → 16.1%) | C11, C15 | open |
-| D03 | `preclin.approval` holds 544 novel FDA approvals 2015–2025 with one indication each; supplemental indications, pre-2015 approvals and biosimilars are absent | Strict per-T-I outcome; C11–C25, C27–C39 | open |
-| D04 | Report cites the leaked Nelson-tier model (AUC 0.825, genetics −17.7pp); `origin/main` RESULTS.md has the corrected AUC 0.570 and genetics −1.9pp | C26, C32–C34 | open |
+| D01 | `program_outcome.outcome_broad='approved'` is drug-level: any program whose drug is in the 544-row novel-approval table counts as approved, whatever its indication. `approved_elsewhere` is likewise drug-level (ChEMBL max_phase=4). | Every LOA, transition rate and RS in Section 1; the base rate in Section 2 | confirmed; replaced by indication-level FDA events (pipeline.fda) and the program rebuild |
+| D02 | Two conflicting LOA definitions in circulation: committed `bio_replication.py` (approved only → 7.4%) and local working copy (approved + approved_elsewhere → 16.1%) | C11, C15 | confirmed; both superseded by the rebuild |
+| D03 | `preclin.approval` holds 544 novel FDA approvals 2015–2025 with one indication each; supplemental indications, pre-2015 approvals and biosimilars are absent | Strict per-T-I outcome; C11–C25, C27–C39 | confirmed; fixed: 3,410 letters → 4,281 dated approved uses (2015–2025) + labels |
+| D04 | Report cites the leaked Nelson-tier model (AUC 0.825, genetics −17.7pp); `origin/main` RESULTS.md has the corrected AUC 0.570 and genetics −1.9pp | C26, C32–C34 | confirmed; leaked numbers removed from the report |
 | D06 | Drug entity resolution: 79% of 31,405 `preclin.drug` rows are `unresolved` strings; one molecule appears as many drugs (pembrolizumab: `keytruda`, `pembrolizumab 200 mg`, `Pembrolizumab Dose A`, `Pembrolizumab (MK-3475)`, `Keytruda-EU`, …) and placebo arms appear as drugs (`Tirzepatide-Placebo`). Programs are keyed on these strings. | Program counts, LOA denominators, drug-level labels | fixing (pipeline.drugs → preclin.moiety) |
 | D07 | `preclin.indication.mondo_id`/`efo_id` empty for all 8,875 indications; `canonical_disease` (90% filled) has case/synonym duplicates | Disease-level units, approval matching | fixing (pipeline.indications) |
-| D08 | 6,687 drugs flagged `is_globally_approved` with no ChEMBL ID (approval status from earlier LLM name classification) drive 14,669 `approved_elsewhere` programs | Outcome labels | open |
-| D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | open |
+| D08 | 6,687 drugs flagged `is_globally_approved` with no ChEMBL ID (approval status from earlier LLM name classification) drive 14,669 `approved_elsewhere` programs | Outcome labels | confirmed (Haiku name-only guesses); superseded by moiety-level FDA linkage |
+| D09 | 1,908 approval-seeded 'phantom' programs with no trials (n_trials=0, highest_phase=4), ~1,500 of them duplicates because a NULL `sponsor_id` defeats the unique key on every ingest run; they enter every cohort as successes | LOA (+~5pp), area/modality LOA, 75% of model positives | fixing: programs rebuilt from trials only |
+| D10 | Every intervention on a trial becomes a program: comparators, background chemo, premedication, placebo-coded strings | Failure counts, LOA denominators | fixing: per-trial investigational role (arm types + LLM) |
+| D11 | Combined-phase trials (Ph1/2, Ph2/3) stored as phase 0 / lower phase | Transitions | fixing: phases array from snapshot |
+| D12 | Program roster holds only trials closed by the CSV snapshot; `n_active = 0` everywhere, `public.trials` status from 2026-04-06 | Right-censoring | fixed: CT.gov snapshot 2026-10-20 (222,915 studies) |
+| D13 | ~34% of drug→target links wrong (`therapy_targets_public` alias collisions: PD-1 mAbs→GM2A, atezolizumab→MAT1A, semaglutide→ALPL) | Every Section 2 number | open: moiety→target rebuild |
+| D14 | Genetic and other evidence is target-level (any disease), not matched to the indication; indication ontology IDs empty | Section 2 interpretation | fixing: MONDO mapping + ontology-based matching |
+| D15 | Literature lines B–E: v1 from hallucinated PMIDs; v2 mostly cites papers after first trial, overlaps the drugs' own programs | Figure 3, Ph3 table, model | open: exclude from headline or time-gate |
+| D16 | 360 Sonnet + 120 Haiku why_stopped calls failed and were stored as 'unclear'; Sonnet preferred even when it errored; prompts not committed | C46, C47, failure figure | open: reclassification |
+| D17 | Owner DB password hard-coded in 4 scripts on the public GitHub repo (origin/section-1-failure-modes) | Security | removed from code on this branch; rotation needed (owner decision) |
+| D18 | Methodology filter misses indication 'Healthy' (4,101 programs); modality from Haiku name guesses for 85% of drugs; placeholder `public.therapies` rows type biologics as small molecules; two modality columns disagree for 2,551 drugs | Section 1 strata | fixing: moiety modality + per-trial methodology |
+| D19 | Figure 2 / BIO_REPLICATION.md mix pre- and post-vaccine-exclusion cohorts; leaked benchmark runs stored under canonical scorer names (runs 187–192) | Reproducibility | open |
+| D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-20 — Rebuild layer (ledgered migrations 53–61): FDA approval sources and
+  letter-extracted approved uses (`preclin.fda_*`); pinned MONDO 2026-10-06 and EFO 3.95
+  (`preclin.ontology_*`); ClinicalTrials.gov snapshot 2026-10-20, 222,915 interventional
+  drug/biological studies (`preclin.ctgov_study`), of which 167,601 list Early Ph1–Ph3;
+  trial↔intervention/condition links; molecular entities (`preclin.moiety`,
+  `preclin.drug_moiety`); per-trial entity roles; development programs
+  (`preclin.dev_program`). LLM decisions are recorded in `pv_evidence.llm_decision` with
+  prompt, schema, model, provider and code commit. The Anthropic API key in use
+  (radical-numerics account) ran out of credit mid-run; batches already submitted completed.
+  Remaining decisions run on OpenRouter (Capable key; 20 requests/min per model) or on
+  Claude Code workflow agents (`LLM_PROVIDER=agent`), recorded with their provider.
 
 - 2026-10-20 — Exported the report; mapped DB (`ep-late-smoke`); found main ahead
   of the report (PRs #20–#26). Created worktree, merged Section 1 and Section 2
   branches. Logged D01–D05.
+- 2026-10-20 — Audit verdicts recorded for C01–C50 (clusters: universe, approval
+  labels, failure reasons, classification quality, relative success, model,
+  Phase 3 table, literature; adversarial verification upheld or refined each).
+  Evidence for every verdict is under the audit scratch directories listed in
+  the workflow results. Numbers marked wrong or revised are recomputed in the
+  rebuild below; this register keeps the audit verdict.
 - 2026-10-20 — Launched read-only audit workflow (10 claim clusters, each
   adversarially verified). Scraped FDA sources: Drugs@FDA (6,389 NDA/BLA
   applications, 87,337 submissions), 3,821 approval letters for every 2015–2025
