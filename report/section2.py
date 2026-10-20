@@ -43,6 +43,8 @@ from report.disease_match import SIMILARITY_THRESHOLD, Mondo
 from report.section1 import N_BOOT, SEED, phase_rows
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
+MIN_PROGRAMS_RS = 100  # programs with the evidence below which relative success is not estimated
+MIN_PROGRAMS_RR = 20   # resolved programs with the evidence, per phase, below which no relative risk is fitted
 
 EVIDENCE = {
     "genetic_any": {"gwas_credible_sets", "gene_burden", "eva", "genomics_england", "orphanet",
@@ -180,7 +182,7 @@ def boot_loa(counts: np.ndarray, n: int = N_BOOT, seed: int = SEED) -> np.ndarra
 
 def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n: int = N_BOOT) -> dict:
     has = rows[feature] > threshold
-    if has.all() or not has.any():
+    if rows[has].program_id.nunique() < MIN_PROGRAMS_RS or has.all():
         return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": threshold,
                 "n_with": int(has.sum()), "n_without": int((~has).sum()), "n_targets_with": 0,
                 "loa_with": np.nan, "loa_without": np.nan, "rs": np.nan, "rs_lo": np.nan, "rs_hi": np.nan}
@@ -207,7 +209,7 @@ def adjusted_rr(rows: pd.DataFrame, feature: str) -> list[dict]:
         r["y"] = (r.event == "advanced").astype(int)
         r["x"] = (r[feature] > 0).astype(int)
         r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
-        if r.x.nunique() < 2:
+        if r.x.sum() < MIN_PROGRAMS_RR or r.x.nunique() < 2:
             continue
         model = smf.glm("y ~ x + C(bio_area) + C(modality) + novel + C(period)", data=r,
                         family=sm.families.Poisson())
@@ -251,7 +253,7 @@ def joint_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
         r = rows[(rows.phase == ph) & rows.event.isin(["advanced", "suspended"])].copy()
         r["y"] = (r.event == "advanced").astype(int)
         r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
-        present = [f for f in features if (r[f] > 0).nunique() == 2]
+        present = [f for f in features if (r[f] > 0).sum() >= MIN_PROGRAMS_RR and (r[f] > 0).nunique() == 2]
         for f in present:
             r[f"x_{f}"] = (r[f] > 0).astype(int)
         formula = "y ~ " + " + ".join(f"x_{f}" for f in present) + " + C(bio_area) + C(modality) + novel + C(period)"
