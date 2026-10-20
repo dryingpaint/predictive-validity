@@ -8,8 +8,10 @@ human protein targets. Each program carries evidence about its entity's
 primary targets *for its disease*: Open Targets associations (26.09) whose
 disease matches the program's disease on MONDO (same term, a subtype, or Lin
 similarity >= 0.8), scored as of the year before the program entered the
-phase. Target-level properties (loss-of-function constraint, pan-essentiality)
-are not disease-specific.
+phase. Open Targets leaves undated evidence out of its yearly series, so
+as-of scores undercount; a sensitivity analysis uses the release score
+(evidence known by 2026, dated or not). Target-level properties
+(loss-of-function constraint, pan-essentiality) are not disease-specific.
 
 Relative success (RS) for an evidence line = LOA of programs with it / LOA of
 programs without it, LOA being the product of BIO-style phase rates; 95%
@@ -78,12 +80,12 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
         JOIN preclin.moiety m USING (moiety_id)
         WHERE mt.is_primary AND m.target_kind = 'human_protein'""")
     assoc = frame.query("""
-        SELECT a.target_ensembl, a.datasource, a.series_years, a.series_scores, d.mondo_ids
+        SELECT a.target_ensembl, a.datasource, a.series_years, a.series_scores, a.score, d.mondo_ids
         FROM preclin.ot_association a JOIN preclin.ot_disease d USING (disease_id)""")
     by_target = defaultdict(list)
-    for ens, src, ys, ss, mids in assoc.itertuples(index=False):
+    for ens, src, ys, ss, final, mids in assoc.itertuples(index=False):
         if mids:
-            by_target[ens].append((src, ys, ss, mids))
+            by_target[ens].append((src, ys, ss, final, mids))
     constraint = frame.query("""SELECT t.ensembl_id, min(g.loeuf) AS loeuf
                                 FROM public.gene_constraint g JOIN public.targets t ON t.id = g.target_id
                                 GROUP BY 1""").set_index("ensembl_id").loeuf
@@ -102,8 +104,9 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
         tg = tmap.get_group(r.moiety_id)
         year = r.entry_year - 1
         flags = {k: 0.0 for k in EVIDENCE}
+        untimed = {f"{k}_untimed": 0.0 for k in EVIDENCE}
         for ens in tg.ensembl_id.dropna():
-            for src, ys, ss, mids in by_target.get(ens, ()):
+            for src, ys, ss, final, mids in by_target.get(ens, ()):
                 hit = False
                 for g in mids:
                     key = (g, d)
@@ -118,11 +121,12 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
                 for k, srcs in EVIDENCE.items():
                     if src in srcs:
                         flags[k] = max(flags[k], sc)
+                        untimed[f"{k}_untimed"] = max(untimed[f"{k}_untimed"], final or 0.0)
         ens = list(tg.ensembl_id.dropna())
         lo = [constraint.get(e) for e in ens if pd.notna(constraint.get(e))]
         out.append({"program_id": r.program_id, "phase": r.phase,
                     "target": tg.symbol.iloc[0] if len(tg) == 1 else "+".join(sorted(tg.symbol)),
-                    **{k: v for k, v in flags.items()},
+                    **flags, **untimed,
                     "constrained": float(bool(lo) and min(lo) < 0.35),
                     "pan_essential": float(any(e in essential for e in ens))})
     return pd.DataFrame(out)
@@ -151,7 +155,8 @@ def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n
         a, b = loa_by(w), loa_by(wo)
         draws.append(a / b if b else np.nan)
     lo, hi = np.nanpercentile(draws, [2.5, 97.5])
-    return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": threshold,
+    label = LABELS.get(feature.removesuffix("_untimed"), feature)
+    return {"feature": feature, "label": label, "threshold": threshold,
             "n_with": int(with_.program_id.nunique()), "n_without": int(without.program_id.nunique()),
             "n_targets_with": int(with_.target.nunique()),
             "loa_with": loa_by(with_), "loa_without": loa_by(without), "rs": rs, "rs_lo": lo, "rs_hi": hi}
@@ -251,6 +256,8 @@ def main() -> None:
     features = list(EVIDENCE) + ["constrained", "pan_essential"]
     rs = pd.DataFrame([relative_success(data, f) for f in features])
     rs.to_csv(os.path.join(OUT, "relative_success.csv"), index=False)
+    untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in EVIDENCE])
+    untimed.to_csv(os.path.join(OUT, "relative_success_untimed.csv"), index=False)
     adj = pd.DataFrame([x for f in features for x in adjusted_rr(data, f)])
     adj.to_csv(os.path.join(OUT, "adjusted_rr_by_phase.csv"), index=False)
 
@@ -270,6 +277,7 @@ def main() -> None:
 
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
                "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records"),
+               "relative_success_untimed": untimed.to_dict(orient="records"),
                "prediction": metrics.to_dict(orient="records")}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
