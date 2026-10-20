@@ -2,7 +2,6 @@
 
     python -m pipeline.ctgov fetch   # every interventional study with a DRUG or BIOLOGICAL intervention
     python -m pipeline.ctgov load    # cached pages -> preclin.ctgov_study (one row per NCT id)
-    python -m pipeline.ctgov countries   # site countries of every cached study
 
 The snapshot covers all sponsors and all dates so that a molecule's full
 trial history (earlier phases, later or still-active trials) is visible when
@@ -75,6 +74,7 @@ def row(study: dict, release: int) -> tuple:
     sponsor, design = p.get("sponsorCollaboratorsModule", {}), p.get("designModule", {})
     arms, cond = p.get("armsInterventionsModule", {}), p.get("conditionsModule", {})
     elig, refs = p.get("eligibilityModule", {}), p.get("referencesModule", {})
+    locations = (p.get("contactsLocationsModule") or {}).get("locations") or []
     start, start_t = parse_date(status.get("startDateStruct"))
     pcd, pcd_t = parse_date(status.get("primaryCompletionDateStruct"))
     comp, comp_t = parse_date(status.get("completionDateStruct"))
@@ -92,7 +92,8 @@ def row(study: dict, release: int) -> tuple:
         info.get("interventionModel"), (info.get("maskingInfo") or {}).get("masking"), info.get("primaryPurpose"),
         elig.get("healthyVolunteers"), cond.get("conditions") or [], cond.get("keywords") or [],
         Json(arms.get("interventions") or []), Json(arms.get("armGroups") or []),
-        Json(refs.get("references") or []), release,
+        Json(refs.get("references") or []), sorted({l["country"] for l in locations if l.get("country")}),
+        (p.get("descriptionModule") or {}).get("briefSummary"), release,
     )
 
 
@@ -123,7 +124,7 @@ def load(_args) -> None:
                   results_first_posted, has_results, lead_sponsor, lead_sponsor_class, collaborators,
                   enrollment, allocation, intervention_model, masking, primary_purpose,
                   healthy_volunteers, conditions, keywords, interventions, arm_groups, references_,
-                  source_release_id) VALUES %s
+                  countries, brief_summary, source_release_id) VALUES %s
                 ON CONFLICT (nct_id) DO UPDATE SET
                   brief_title = EXCLUDED.brief_title, official_title = EXCLUDED.official_title,
                   overall_status = EXCLUDED.overall_status, why_stopped = EXCLUDED.why_stopped,
@@ -141,6 +142,7 @@ def load(_args) -> None:
                   healthy_volunteers = EXCLUDED.healthy_volunteers, conditions = EXCLUDED.conditions,
                   keywords = EXCLUDED.keywords, interventions = EXCLUDED.interventions,
                   arm_groups = EXCLUDED.arm_groups, references_ = EXCLUDED.references_,
+                  countries = EXCLUDED.countries, brief_summary = EXCLUDED.brief_summary,
                   source_release_id = EXCLUDED.source_release_id""",
                            [row(s, release) for s in studies], page_size=1000)
             n += len(studies)
@@ -148,27 +150,10 @@ def load(_args) -> None:
     print(f"loaded {n} studies from {snap}")
 
 
-def countries(_args) -> None:
-    snap = sorted(glob.glob(os.path.join(CACHE, "*")))[-1]
-    rows = []
-    for path in sorted(glob.glob(os.path.join(snap, "page_*.json.gz"))):
-        with gzip.open(path, "rt") as f:
-            for study in json.load(f)["studies"]:
-                p = study.get("protocolSection", {})
-                locs = (p.get("contactsLocationsModule") or {}).get("locations") or []
-                rows.append((p.get("identificationModule", {}).get("nctId"),
-                             sorted({l.get("country") for l in locs if l.get("country")})))
-    with llm.connect() as conn, conn.cursor() as cur:
-        execute_values(cur, """UPDATE preclin.ctgov_study s SET countries = v.c
-                               FROM (VALUES %s) AS v(nct, c) WHERE s.nct_id = v.nct""", rows, page_size=5000)
-        conn.commit()
-    print(f"studies={len(rows)} with sites={sum(1 for _, c in rows if c)}")
-
-
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load), ("countries", countries)]:
+    for name, fn in [("fetch", fetch), ("load", load)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)

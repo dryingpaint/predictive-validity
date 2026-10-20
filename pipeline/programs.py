@@ -193,7 +193,10 @@ def build(_args) -> None:
     and "non-small cell lung carcinoma") attaches to the more specific
     programs instead of forming its own; a trial without a disease
     (healthy volunteers) attaches to every program of the entity, or forms the
-    entity's disease-unspecified program when it has none."""
+    entity's disease-unspecified program when it has none. Such a shared
+    trial marks phase entry (marks_entry) only for programs whose own first
+    trial had started by then and for the program(s) begun next after it: an
+    indication the sponsor added later enters at its own first trial."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT max(source_version) FROM preclin.evidence_source_release "
                     "WHERE source_name = 'clinicaltrials_gov_api_v2'")
@@ -229,7 +232,14 @@ def build(_args) -> None:
         for mid in mids:
             by_moiety[mid].append(nct)
 
-    programs = {}   # (moiety, mondo) -> {nct: attach}
+    def entry_programs(first: dict, start: date) -> set:
+        """Programs a shared trial starting on `start` can mark entry for: those
+        already under way and the one(s) begun next after it."""
+        later = [f for f in first.values() if f > start]
+        nxt = min(later, default=None)
+        return {k for k, f in first.items() if f <= start or f == nxt}
+
+    programs = {}   # (moiety, mondo) -> {nct: (attach, marks_entry)}
     for mid, ncts in by_moiety.items():
         direct = defaultdict(set)
         no_disease = []
@@ -240,18 +250,21 @@ def build(_args) -> None:
             else:
                 no_disease.append(nct)
         specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
+        first = {(mid, d): min(trials[n]["start"] for n in direct[d]) for d in specific}
         for d in specific:
-            programs[(mid, d)] = {nct: "disease" for nct in direct[d]}
+            programs[(mid, d)] = {nct: ("disease", True) for nct in direct[d]}
         for d in set(direct) - specific:
-            for o in specific:
-                if d in ancestors[o]:
-                    for nct in direct[d]:
-                        programs[(mid, o)].setdefault(nct, "broader_condition")
+            covered = {k: f for k, f in first.items() if d in ancestors[k[1]]}
+            for nct in direct[d]:
+                lead = entry_programs(covered, trials[nct]["start"])
+                for key in covered:
+                    programs[key].setdefault(nct, ("broader_condition", key in lead))
         targets = [k for k in programs if k[0] == mid] or [(mid, None)]
-        for key in targets:
-            attached = programs.setdefault(key, {})
-            for nct in no_disease:
-                attached.setdefault(nct, "no_disease")
+        for nct in no_disease:
+            lead = entry_programs({k: first[k] for k in targets if k in first}, trials[nct]["start"]) \
+                if first else set(targets)
+            for key in targets:
+                programs.setdefault(key, {}).setdefault(nct, ("no_disease", key in lead))
 
     rows, links = [], []
     for (mid, mondo), attached in programs.items():
@@ -265,7 +278,7 @@ def build(_args) -> None:
                      [s for s, _ in sponsors.most_common(5)],
                      min(snap, max(snap if t["active"] else t["end"] for t in ts)),
                      sum(t["active"] for t in ts)))
-        links.append([(n, trials[n]["phase"], a) for n, a in attached.items()])
+        links.append([(n, trials[n]["phase"], a, entry) for n, (a, entry) in attached.items()])
 
     build_id = uuid.uuid4()
     with llm.connect() as conn, conn.cursor() as cur:
@@ -273,14 +286,16 @@ def build(_args) -> None:
                        VALUES (%s, %s, %s, %s)""",
                     (str(build_id), llm.git_commit(), snap,
                      Json({"phases": IN_SCOPE_PHASES, "active_statuses": sorted(ACTIVE_STATUSES),
-                           "combined_phase": "higher", "withdrawn": "excluded"})))
+                           "combined_phase": "higher", "withdrawn": "excluded",
+                           "shared_trial_entry": "programs under way or begun next"})))
         cur.execute("DELETE FROM preclin.dev_program")
         ids = execute_values(cur, """INSERT INTO preclin.dev_program
               (moiety_id, mondo_id, ph1_start, ph2_start, ph3_start, first_start, highest_phase, n_trials,
                n_industry_trials, first_industry_start, lead_sponsors, last_activity, n_active_trials, build_id)
             VALUES %s RETURNING program_id""",
             [r + (str(build_id),) for r in rows], page_size=5000, fetch=True)
-        execute_values(cur, "INSERT INTO preclin.dev_program_trial (program_id, nct_id, phase, attach) VALUES %s",
+        execute_values(cur, """INSERT INTO preclin.dev_program_trial (program_id, nct_id, phase, attach, marks_entry)
+                               VALUES %s""",
                        [(pid, *l) for (pid,), ls in zip(ids, links) for l in ls], page_size=10000)
         cur.execute("UPDATE preclin.dev_program_build SET parameters = parameters || %s WHERE build_id = %s",
                     (Json({"n_programs": len(rows), "n_links": sum(map(len, links))}), str(build_id)))

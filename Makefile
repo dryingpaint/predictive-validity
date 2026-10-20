@@ -19,7 +19,6 @@ migrate:
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
-	$(RUN) pipeline.ctgov countries
 	$(RUN) pipeline.outcomes results
 	$(RUN) pipeline.outcomes publications
 	$(RUN) pipeline.fda fetch

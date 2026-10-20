@@ -192,8 +192,10 @@ def render_trial(p: dict) -> str:
     return (f"Trial {p['nct_id']}: {p['title']}\nPhases: {', '.join(p['phases'])}; status: {p['status']}; "
             f"enrollment: {p['enrollment']}; start {p['start']}; completion {p['completion']}\n"
             f"Conditions: {'; '.join(p['conditions'][:6])}\nInterventions: {'; '.join(p['interventions'][:8])}\n"
-            f"Stated reason for stopping: {p['why_stopped'] or '(none)'}\n\n"
-            f"Posted results:\n{p['results'] or '(no results posted)'}")
+            f"Stated reason for stopping: {p['why_stopped'] or '(none)'}\n"
+            + (f"Brief summary (the record states no reason above; sponsors sometimes give it here):\n"
+               f"{p['brief_summary']}\n" if p.get("brief_summary") else "")
+            + f"\nPosted results:\n{p['results'] or '(no results posted)'}")
 
 
 PUBLICATION_SYSTEM = CLASSIFY_SYSTEM.replace(
@@ -225,7 +227,9 @@ def classify(_args) -> None:
             SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
                    s.completion_date, s.conditions,
                    (SELECT array_agg(i->>'name') FROM jsonb_array_elements(s.interventions) i),
-                   s.why_stopped, r.summary
+                   s.why_stopped, r.summary,
+                   CASE WHEN coalesce(s.why_stopped, '') = '' AND s.overall_status <> 'COMPLETED'
+                        THEN left(s.brief_summary, 3000) END
             FROM preclin.ctgov_study s LEFT JOIN preclin.ctgov_result_summary r USING (nct_id)
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01'
               AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
@@ -234,8 +238,9 @@ def classify(_args) -> None:
                        AND s.phases && ARRAY['PHASE2','PHASE3']))""")
         items = {nct: {"nct_id": nct, "title": title, "phases": phases, "status": status, "enrollment": enr,
                        "start": str(start), "completion": str(comp), "conditions": conds or [],
-                       "interventions": ivs or [], "why_stopped": why, "results": summary}
-                 for nct, title, phases, status, enr, start, comp, conds, ivs, why, summary in cur.fetchall()}
+                       "interventions": ivs or [], "why_stopped": why, "results": summary,
+                       **({"brief_summary": brief} if brief else {})}
+                 for nct, title, phases, status, enr, start, comp, conds, ivs, why, summary, brief in cur.fetchall()}
     run_id = llm.run(CLASSIFY_TASK, items)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
