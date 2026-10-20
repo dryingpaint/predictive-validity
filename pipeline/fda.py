@@ -365,6 +365,81 @@ INGREDIENT_TASK = llm.Task(
     subject_type="fda_application", model="claude-opus-5-5", effort="low", max_tokens=2000)
 
 
+PRODUCT_SYSTEM = """You match an FDA-approved product to the molecular entities that clinical trials registered it under.
+
+The application's own ingredient names did not match any entity seen in trials: vaccines, cell and gene therapies, blood products and some biologics are named differently in trial records (a code name, a descriptive name such as "recombinant zoster vaccine (gE, adjuvanted)", or an antigen list) than on the FDA application ("Zoster Vaccine Recombinant, Adjuvanted", brand SHINGRIX).
+
+From the candidate trial entities, list every one that is this approved product or the same product under development (the same vaccine with the same antigens and valency, the same cell or gene therapy, the same biologic), including its development code names. Leave out related but different products: another valency or strain composition, a different adjuvant, a competitor's vaccine against the same pathogen, an earlier or later generation. Return an empty list when none is the same product."""
+
+PRODUCT_SCHEMA = {
+    "type": "object",
+    "properties": {"same_product": {"type": "array", "items": {"type": "integer"}},
+                   "rationale": {"type": "string"}},
+    "required": ["same_product", "rationale"],
+    "additionalProperties": False,
+}
+PRODUCT_CANDIDATES = 15
+
+
+def render_product(p: dict) -> str:
+    cands = "\n".join(f"- {c['moiety_id']}: {c['name']}" + (f" (also: {'; '.join(c['other_names'])})" if c["other_names"] else "")
+                       + (f" | trial: {c['trial']}" if c["trial"] else "") for c in p["candidates"])
+    return (f"FDA {p['appl_type']} {p['appl_no']} ({p['center']}), sponsor {p['sponsor']}\n"
+            f"Brand names: {', '.join(p['brands']) or '-'}\nProper names / ingredients: {', '.join(p['ingredients']) or '-'}\n"
+            f"Approved uses: {p['uses'] or '-'}\n\nCandidate trial entities:\n{cands}")
+
+
+def validate_product(p: dict, out: dict) -> None:
+    extra = set(out["same_product"]) - {c["moiety_id"] for c in p["candidates"]}
+    if extra:
+        raise ValueError(f"not candidates: {sorted(extra)}")
+
+
+PRODUCT_TASK = llm.Task(name="fda_application_trial_entity", prompt_version="v1", schema_version="v1",
+                        system=PRODUCT_SYSTEM, schema=PRODUCT_SCHEMA, render=render_product,
+                        validate=validate_product, subject_type="fda_application", model="claude-opus-5-5",
+                        effort="medium", max_tokens=2000)
+
+
+def match_products(cur, apps: dict) -> list[tuple]:
+    """Links (appl_no, moiety_id, decision) from applications none of whose
+    entities appears in a trial to the trial entities that are the same product."""
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.neighbors import NearestNeighbors
+    cur.execute("""SELECT m.moiety_id, m.name, m.code_names || m.aliases,
+                          (SELECT c.brief_title FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
+                           JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 1)
+                   FROM preclin.moiety m
+                   WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
+                                 WHERE dm.moiety_id = m.moiety_id)""")
+    entities = cur.fetchall()
+    in_trials = {e[0] for e in entities}
+    cur.execute("SELECT appl_no, array_agg(moiety_id) FROM preclin.fda_application_moiety GROUP BY 1")
+    linked = dict(cur.fetchall())
+    todo = [a for a in apps if not set(linked.get(a, [])) & in_trials]
+    if not todo:
+        return []
+    texts = [" ".join([name, *others]).lower() for _, name, others, _ in entities]
+    vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 4), sublinear_tf=True)
+    nn = NearestNeighbors(n_neighbors=PRODUCT_CANDIDATES, metric="cosine").fit(vec.fit_transform(texts))
+    queries = [" ".join(apps[a]["brands"] + apps[a]["ingredients"]).lower() for a in todo]
+    _, idx = nn.kneighbors(vec.transform(queries))
+    cur.execute("""SELECT sl.appl_no, string_agg(DISTINCT u.indication_as_written, '; ')
+                   FROM preclin.fda_submission_letter sl JOIN preclin.fda_approved_use u USING (letter_sha256)
+                   WHERE sl.appl_no = ANY(%s) GROUP BY 1""", (todo,))
+    uses = dict(cur.fetchall())
+    items = {}
+    for a, row in zip(todo, idx):
+        items[a] = {**apps[a], "uses": (uses.get(a) or "")[:1500],
+                    "candidates": [{"moiety_id": entities[i][0], "name": entities[i][1],
+                                    "other_names": sorted(set(entities[i][2]))[:6], "trial": entities[i][3]}
+                                   for i in row]}
+    run_id = llm.run(PRODUCT_TASK, items)
+    cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
+                   WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+    return [(a, mid, did) for a, did, out in cur.fetchall() for mid in out["same_product"]]
+
+
 def link(_args) -> None:
     from pipeline.drugs import entity_ids, moiety_key
     with llm.connect() as conn, conn.cursor() as cur:
@@ -375,15 +450,17 @@ def link(_args) -> None:
             GROUP BY 1""")
         label_names = {appl: (brands, generics) for appl, brands, generics in cur.fetchall()}
         cur.execute("""
-            SELECT a.appl_no, a.appl_type, coalesce(a.sponsor_name, ''),
+            SELECT a.appl_no, a.appl_type, a.center, coalesce(a.sponsor_name, ''),
                    coalesce(array_agg(DISTINCT p.drug_name) FILTER (WHERE p.drug_name IS NOT NULL), '{}'),
                    coalesce(array_agg(DISTINCT p.active_ingredient)
                             FILTER (WHERE p.active_ingredient IS NOT NULL), '{}')
             FROM preclin.fda_application a LEFT JOIN preclin.fda_product p USING (appl_no)
-            GROUP BY a.appl_no, a.appl_type, a.sponsor_name""")
+            GROUP BY a.appl_no, a.appl_type, a.center, a.sponsor_name""")
         items = {}
-        for appl_no, appl_type, sponsor, brands, ingredients in cur.fetchall():
+        centers = {}
+        for appl_no, appl_type, center, sponsor, brands, ingredients in cur.fetchall():
             lb, lg = label_names.get(appl_no, ([], []))
+            centers[appl_no] = center
             items[appl_no] = {"appl_no": appl_no, "appl_type": appl_type, "sponsor": sponsor,
                               "brands": sorted(set(brands) | set(lb)),
                               "ingredients": sorted(set(ingredients) | set(lg))}
@@ -403,8 +480,12 @@ def link(_args) -> None:
         execute_values(cur, """INSERT INTO preclin.fda_application_moiety
               (appl_no, moiety_id, biosimilar_of, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""",
                        [(appl, ids[k], bio, did) for appl, k, bio, did in links])
+        products = match_products(cur, {a: {**it, "center": centers[a]} for a, it in items.items()})
+        if products:
+            execute_values(cur, """INSERT INTO preclin.fda_application_moiety (appl_no, moiety_id, llm_decision_id)
+                                   VALUES %s ON CONFLICT DO NOTHING""", products)
         conn.commit()
-    print(f"applications={len(items)} links={len(links)} moieties={len(names)}")
+    print(f"applications={len(items)} links={len(links)} moieties={len(names)} product matches={len(products)}")
 
 
 def load_cber(_args) -> None:
