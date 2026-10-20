@@ -169,6 +169,14 @@ layer for every number in the report.
 
 ## Work log
 
+- 2026-10-20 — CBER index verified by an independent enumeration (yearly pages, ~700 live and
+  214 archived product pages, the Purple Book, 968 letters read): 318 of 325 records and all
+  112 original BLAs (with dates) match. Its fixes are recorded in `pipeline/cber/corrections.py`
+  (two dropped supplements, two corrected letters, one added action; index now 324 actions).
+  Estimated recall ≥ 0.94 per year, lowest for 2015–2016 supplements absent from the
+  noteworthy lists. PDF pages with a mis-encoded text layer are now OCRed too. Batch queue
+  stalls (no batch started after 45 min) moved LLM steps to direct calls (`LLM_DIRECT_MAX`).
+
 - 2026-10-20 — Trial-outcome audit (60 seeded trials, 30 stopped/withdrawn and 30 completed
   with posted results, re-derived by agents from the CT.gov API before reading the stored
   labels; `.cache/outcome_audit/results.json`): stop reason 28 correct / 1 acceptable /
