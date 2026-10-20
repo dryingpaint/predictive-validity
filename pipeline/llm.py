@@ -15,6 +15,7 @@ import os
 import subprocess
 import time
 import uuid
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Callable
@@ -31,6 +32,10 @@ load_dotenv(os.path.join(REPO, ".env"))
 
 MODEL = "claude-opus-5"
 BATCH_SIZE = 2000
+# anthropic: Message Batches on the Anthropic API. openrouter: concurrent
+# Messages calls through OpenRouter's Anthropic-compatible endpoint.
+PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
+WORKERS = 24
 
 
 def canonical_json(value: Any) -> str:
@@ -50,6 +55,17 @@ def git_commit() -> str | None:
 
 def connect():
     return psycopg2.connect(os.environ["DATABASE_URL"])
+
+
+def client() -> anthropic.Anthropic:
+    if PROVIDER == "openrouter":
+        return anthropic.Anthropic(base_url="https://openrouter.ai/api", api_key=None,
+                                   auth_token=os.environ["OPENROUTER_API_KEY"], max_retries=8)
+    return anthropic.Anthropic(max_retries=8)
+
+
+def provider_model(model: str) -> str:
+    return f"anthropic/{model}" if PROVIDER == "openrouter" else model
 
 
 @dataclass
@@ -72,7 +88,7 @@ class Task:
 
     def request_params(self, payload: dict[str, Any]) -> dict[str, Any]:
         return dict(
-            model=self.model,
+            model=provider_model(self.model),
             max_tokens=self.max_tokens,
             system=[{"type": "text", "text": self.system, "cache_control": {"type": "ephemeral"}}],
             output_config={"effort": self.effort,
@@ -134,16 +150,17 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
     context rows) changed."""
     conn = connect()
     run_id = uuid.uuid4()
-    client = anthropic.Anthropic()
+    api = client()
     with conn.cursor() as cur:
         cur.execute(
             """
             INSERT INTO pv_evidence.llm_decision_run
               (decision_run_id, task, provider, model, prompt_version, output_schema_version,
                code_commit, parameters, status, started_at)
-            VALUES (%s,%s,'anthropic',%s,%s,%s,%s,%s,'running',%s)
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,'running',%s)
             """,
-            (str(run_id), task.name, task.model, task.prompt_version, task.schema_version,
+            (str(run_id), task.name, PROVIDER, provider_model(task.model), task.prompt_version,
+             task.schema_version,
              git_commit(),
              Json({"system_prompt": task.system, "system_prompt_sha256": sha256_text(task.system),
                    "output_schema": task.schema,
@@ -159,27 +176,10 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
         conn.commit()
     todo = [k for k in items if k not in reused]
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
-
-    custom_ids, pending = {}, []
-    for start in range(0, len(todo), BATCH_SIZE):
-        chunk = todo[start:start + BATCH_SIZE]
-        requests = []
-        for i, key in enumerate(chunk):
-            cid = f"r{start + i}"
-            custom_ids[cid] = key
-            requests.append(Request(custom_id=cid,
-                                    params=MessageCreateParamsNonStreaming(**task.request_params(items[key]))))
-        batch = client.messages.batches.create(requests=requests)
-        pending.append(batch.id)
-        print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
-
-    while pending:
-        time.sleep(poll_seconds)
-        ended = [b for b in pending
-                 if client.messages.batches.retrieve(b).processing_status == "ended"]
-        for batch_id in ended:
-            pending.remove(batch_id)
-            _collect(client, conn, run_id, task, items, custom_ids, batch_id)
+    if PROVIDER == "openrouter":
+        _run_concurrent(api, conn, run_id, task, items, todo)
+    else:
+        _run_batches(api, conn, run_id, task, items, todo, poll_seconds)
 
     with conn.cursor() as cur:
         cur.execute("UPDATE pv_evidence.llm_decision_run SET status='completed', completed_at=%s "
@@ -189,29 +189,80 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
     return run_id
 
 
-def _collect(client, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
+def _parse(task: Task, payload: dict[str, Any], msg) -> tuple[str, dict | None, str | None, dict]:
+    """(raw text, parsed output, error, usage) for one Messages response."""
+    usage = {"input_tokens": msg.usage.input_tokens, "output_tokens": msg.usage.output_tokens,
+             "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
+    if getattr(msg.usage, "cost", None) is not None:  # OpenRouter reports the billed cost
+        usage["cost_usd"] = msg.usage.cost
+    raw = next((b.text for b in msg.content if b.type == "text"), "")
+    if msg.stop_reason in ("refusal", "max_tokens"):
+        return raw, None, msg.stop_reason, usage
+    try:
+        parsed = json.loads(raw)
+        if task.validate:
+            task.validate(payload, parsed)
+        return raw, parsed, None, usage
+    except Exception as exc:  # invalid JSON or failed semantic check
+        return raw, None, f"{type(exc).__name__}: {exc}", usage
+
+
+def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
+                    todo: list[str]) -> None:
+    def call(key):
+        try:
+            msg = api.messages.create(**task.request_params(items[key]))
+            return key, msg.id, *_parse(task, items[key], msg)
+        except anthropic.APIError as exc:
+            return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
+
+    n_ok = n_bad = 0
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool, conn.cursor() as cur:
+        for i, fut in enumerate(as_completed([pool.submit(call, k) for k in todo]), 1):
+            key, request_id, raw, parsed, error, usage = fut.result()
+            _store(cur, run_id, task, key, items[key], raw, parsed, request_id, usage, error, None)
+            n_bad += error is not None
+            n_ok += error is None
+            if i % 500 == 0 or i == len(todo):
+                conn.commit()
+                print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
+    conn.commit()
+
+
+def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
+                 todo: list[str], poll_seconds: int) -> None:
+    custom_ids, pending = {}, []
+    for start in range(0, len(todo), BATCH_SIZE):
+        chunk = todo[start:start + BATCH_SIZE]
+        requests = []
+        for i, key in enumerate(chunk):
+            cid = f"r{start + i}"
+            custom_ids[cid] = key
+            requests.append(Request(custom_id=cid,
+                                    params=MessageCreateParamsNonStreaming(**task.request_params(items[key]))))
+        batch = api.messages.batches.create(requests=requests)
+        pending.append(batch.id)
+        print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
+
+    while pending:
+        time.sleep(poll_seconds)
+        ended = [b for b in pending
+                 if api.messages.batches.retrieve(b).processing_status == "ended"]
+        for batch_id in ended:
+            pending.remove(batch_id)
+            _collect(api, conn, run_id, task, items, custom_ids, batch_id)
+
+
+def _collect(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
              custom_ids: dict[str, str], batch_id: str) -> None:
     """Validate and store every result of one ended batch."""
     n_ok = n_bad = 0
     with conn.cursor() as cur:
-        for result in client.messages.batches.results(batch_id):
+        for result in api.messages.batches.results(batch_id):
             key = custom_ids[result.custom_id]
             raw, parsed, error, usage = "", None, None, {}
             if result.result.type == "succeeded":
-                msg = result.result.message
-                usage = {"input_tokens": msg.usage.input_tokens,
-                         "output_tokens": msg.usage.output_tokens,
-                         "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
-                raw = next((b.text for b in msg.content if b.type == "text"), "")
-                if msg.stop_reason in ("refusal", "max_tokens"):
-                    error = msg.stop_reason
-                else:
-                    try:
-                        parsed = json.loads(raw)
-                        if task.validate:
-                            task.validate(items[key], parsed)
-                    except Exception as exc:  # invalid JSON or failed semantic check
-                        parsed, error = None, f"{type(exc).__name__}: {exc}"
+                raw, parsed, error, usage = _parse(task, items[key], result.result.message)
             else:
                 error = f"batch_{result.result.type}"
             _store(cur, run_id, task, key, items[key], raw, parsed,

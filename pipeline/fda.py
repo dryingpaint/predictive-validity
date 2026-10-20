@@ -330,20 +330,24 @@ def link(_args) -> None:
     from pipeline.drugs import moiety_key
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
+            SELECT substr(a, 4), array_agg(DISTINCT b), array_agg(DISTINCT g)
+            FROM preclin.fda_label l, unnest(l.application_numbers) a,
+                 unnest(l.brand_names) b, unnest(l.generic_names) g
+            GROUP BY 1""")
+        label_names = {appl: (brands, generics) for appl, brands, generics in cur.fetchall()}
+        cur.execute("""
             SELECT a.appl_no, a.appl_type, coalesce(a.sponsor_name, ''),
-                   array_agg(DISTINCT p.drug_name) FILTER (WHERE p.drug_name IS NOT NULL),
-                   array_agg(DISTINCT p.active_ingredient) FILTER (WHERE p.active_ingredient IS NOT NULL)
+                   coalesce(array_agg(DISTINCT p.drug_name) FILTER (WHERE p.drug_name IS NOT NULL), '{}'),
+                   coalesce(array_agg(DISTINCT p.active_ingredient)
+                            FILTER (WHERE p.active_ingredient IS NOT NULL), '{}')
             FROM preclin.fda_application a LEFT JOIN preclin.fda_product p USING (appl_no)
             GROUP BY a.appl_no, a.appl_type, a.sponsor_name""")
         items = {}
         for appl_no, appl_type, sponsor, brands, ingredients in cur.fetchall():
-            cur.execute("""SELECT array_agg(DISTINCT b) , array_agg(DISTINCT g)
-                           FROM preclin.fda_label l, unnest(l.brand_names) b, unnest(l.generic_names) g
-                           WHERE %s = ANY(l.application_numbers)""", (appl_type + appl_no,))
-            lb, lg = cur.fetchone()
+            lb, lg = label_names.get(appl_no, ([], []))
             items[appl_no] = {"appl_no": appl_no, "appl_type": appl_type, "sponsor": sponsor,
-                              "brands": sorted(set((brands or []) + (lb or []))),
-                              "ingredients": sorted(set((ingredients or []) + (lg or [])))}
+                              "brands": sorted(set(brands) | set(lb)),
+                              "ingredients": sorted(set(ingredients) | set(lg))}
     run_id = llm.run(INGREDIENT_TASK, items)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
