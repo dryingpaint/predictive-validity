@@ -36,21 +36,26 @@ layer for every number in the report.
 - **Molecular entity.** Each intervention name is resolved by an LLM (with the trials it
   appears in) to its active entities under nonproprietary names; doses, salts, brands and
   sponsor codes collapse to one entity, placebo and non-drug interventions drop out
-  (`preclin.moiety`, `preclin.drug_moiety`). Names identical to a known entity name or
-  code are linked directly.
+  (`preclin.moiety`, `preclin.drug_moiety`). Names identical to a known entity name,
+  code or alias are linked directly. Each entity is then resolved to its FDA UNII
+  substance (GSRS 2026-08-04 names, including sponsor codes and brands); entities that
+  are the same substance are merged under its official name, the other names kept as
+  aliases (`moiety.unii`, `moiety.aliases`).
 - **Role in a trial.** An entity counts toward a program only in trials where it is
   investigational (`preclin.ctgov_study_moiety`): comparators and background therapy do
   not. Single-entity trials are decided from arm types; industry trials with several
   entities by an LLM reading the arms.
 - **Disease.** Each condition string maps to the MONDO term for its core disease, without
   line, stage, biomarker or age qualifiers (`preclin.indication.mondo_id`; pinned MONDO
-  2026-10-06).
+  2026-10-06). A disease MONDO does not name gets its nearest containing term
+  (`mondo_match = 'broader'`).
 - **Program.** One row per (entity, MONDO disease) (`preclin.dev_program`). A trial whose
   condition is broader than another of the entity's diseases (e.g. "solid tumors") rolls
   into the more specific programs; healthy-volunteer trials roll into every program of the
   entity. Sponsors are attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
-  LLM from the entity's 2015–2026 approval letters (4,626 extracted approved uses), its
+  LLM from the entity's 2015–2026 approval letters (4,639 extracted approved uses; pages
+  without a text layer OCRed; labeling-only changes are not approval events), its
   original-approval dates and current label indications (`preclin.dev_program_approval`).
   Approvals before 2015 are taken from the label.
 - **Phase cohorts and outcomes.** For phase p, programs whose first industry-sponsored
@@ -63,10 +68,11 @@ layer for every number in the report.
   Confidence intervals resample molecular entities (1,000 draws). Sensitivity: lag 12/18/36
   months, US-site programs, novel vs already-approved entities, uncertain approvals.
 - **Why programs stop.** Each industry trial since 2010 that stopped early, or completed
-  Phase 2/3 with posted results, is classified (`preclin.trial_outcome`) on separate axes:
-  execution, stated stop reason (with "sponsor decision, unspecified" kept apart from
-  explicit business reasons), primary-endpoint result from posted results, and safety
-  signal. A suspended program's reason comes from the trials of the phase it stopped in.
+  Phase 2/3 with posted results or a results paper, is classified (`preclin.trial_outcome`)
+  on separate axes: execution, stated stop reason (with "sponsor decision, unspecified"
+  kept apart from explicit business reasons), primary-endpoint result (from posted results,
+  else from the abstracts of PubMed papers linked to the NCT id), and safety signal. A
+  suspended program's reason comes from the trials of the phase it stopped in.
 
 ## Claim register
 
