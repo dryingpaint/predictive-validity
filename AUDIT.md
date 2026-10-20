@@ -207,6 +207,15 @@ Each quantitative claim, with the value the rebuild gives:
 
 ## Work log
 
+- 2026-10-20 — Post-fix re-audit on fresh seeded samples: condition → MONDO 99/100 defensible
+  (pattern: some containing terms flagged `exact` instead of `broader`); intervention → entity
+  92/100 (scattered: a code resolved to the wrong UNII, a salt UNII over its parent, one wrong
+  molecule); program approvals v2 by stratum: dated approvals 25/25, dates 24/25 (was 17/25),
+  pre-2015 15/15, not-approved 35/35, uncertain 9/15. Programs are keyed on LLM-grouped
+  development indications (D36); vaccines are out of the headline cohorts (strain updates are
+  never approved under their own names). Report rendered (`REPORT.md`): US-developed LOA 9.4%
+  (8.4–10.5), all programs 5.6%; human genetic evidence relative success 3.50 (2.65–4.53).
+
 - 2026-10-20 — Trial purpose classified for all 75,774 in-scope industry trials (49,364
   indication development, 10,772 product support, 8,635 early development, 6,287
   multi-indication, 349 other); programs rebuilt from it (D29). Approval audit (90
