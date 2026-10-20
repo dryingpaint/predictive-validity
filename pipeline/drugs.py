@@ -315,21 +315,19 @@ def unii(_args) -> None:
 
 def merge(chosen: dict[int, tuple[str, int]]) -> None:
     """Record each entity's UNII; merge entities sharing a UNII into the one
-    already named by the substance's official name (else the one with most
+    already named by the substance's preferred (display) name (else the one with most
     intervention names). Trial, FDA-application and target links move to the
     survivor; the merged entities' development programs are dropped for
     pipeline.programs build to rebuild. The survivor's name becomes the
-    official name unless another entity holds it."""
+    preferred name unless another entity holds it."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT moiety_id, moiety_key, name, code_names, aliases FROM preclin.moiety")
         ent = {r[0]: r[1:] for r in cur.fetchall()}
         cur.execute("""SELECT moiety_id, count(*) FROM preclin.drug_moiety GROUP BY 1""")
         n_links = dict(cur.fetchall())
-        cur.execute("""SELECT s.unii, coalesce((SELECT min(n.name) FROM preclin.unii_name n
-                                                WHERE n.unii = s.unii AND n.name_type = 'of'), s.display_name)
-                       FROM preclin.unii_substance s WHERE s.unii = ANY(%s)""",
+        cur.execute("SELECT unii, display_name FROM preclin.unii_substance WHERE unii = ANY(%s)",
                     (sorted({u for u, _ in chosen.values()}),))
-        official = {u: re.sub(r"\s*\[[^\]]*\]", "", n).strip().lower() for u, n in cur.fetchall()}
+        official = {u: n.strip().lower() for u, n in cur.fetchall()}
         groups = {}
         for mid, (u, _) in chosen.items():
             groups.setdefault(u, []).append(mid)
