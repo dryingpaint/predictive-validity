@@ -355,7 +355,7 @@ def merge(chosen: dict[int, tuple[str, int]]) -> None:
                             ("fda_application_moiety", "appl_no, biosimilar_of, llm_decision_id"),
                             ("ctgov_study_moiety", None), ("moiety_target", None)]:
             if cols is None:
-                cur.execute(f"""SELECT string_agg(quote_ident(column_name), ', ') FROM information_schema.columns
+                cur.execute("""SELECT string_agg(quote_ident(column_name), ', ') FROM information_schema.columns
                                 WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
                             (table,))
                 cols = cur.fetchone()[0]

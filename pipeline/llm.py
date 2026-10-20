@@ -281,7 +281,6 @@ task.json's "output_schema". Write one line per item to the .out.jsonl file:
 
 def _run_agents(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str],
                 poll_seconds: int, resume: bool = False) -> None:
-    import jsonschema
     out_dir = os.path.join(REPO, ".cache", "agent", task.name, str(run_id))
     if resume:
         chunks = sorted(f[:-6] for f in os.listdir(out_dir) if f.startswith("chunk_") and f.endswith(".jsonl")

@@ -17,10 +17,13 @@ Relative success (RS) for an evidence line = LOA of programs with it / LOA of
 programs without it, LOA being the product of BIO-style phase rates; 95%
 intervals resample targets. Adjusted per-phase relative risks come from a
 Poisson model with cluster-robust errors (cluster = primary target), adjusting
-for disease area, modality, entity novelty and entry period. Prediction is
-evaluated on a fixed-horizon cohort (Phase 1 entry 2008-2016, approval within
-ten years), with features frozen at entry, by target-grouped cross-validation
-and a temporal split.
+for disease area, modality, entity novelty and entry period, one evidence line
+at a time and all lines jointly. Genetic dose-response: LOA by tertile of the
+positive genetic scores. Prediction is evaluated on a fixed-horizon cohort
+(Phase 1 entry 2008-2016, approval within ten years), with features frozen at
+entry, by target-grouped cross-validation and a temporal split; each evidence
+line's contribution is the drop in cross-validated AUC when it is removed,
+with a paired target-bootstrap interval.
 """
 from __future__ import annotations
 
@@ -182,6 +185,59 @@ def adjusted_rr(rows: pd.DataFrame, feature: str) -> list[dict]:
     return out
 
 
+def dose_response(rows: pd.DataFrame, feature: str, n: int = N_BOOT) -> pd.DataFrame:
+    """LOA by strength of one evidence line: none, then tertiles of the positive
+    scores (cut points set by the score distribution, not by outcomes); 95%
+    intervals resample targets."""
+    pos = rows.loc[rows[feature] > 0, feature]
+    cuts = [0.0, *pos.quantile([1 / 3, 2 / 3]).tolist(), float("inf")]
+    labels = ["none", "low", "middle", "high"]
+    band = pd.Series("none", index=rows.index)
+    for lab, lo, hi in zip(labels[1:], cuts[:-1], cuts[1:]):
+        band[(rows[feature] > lo) & (rows[feature] <= hi)] = lab
+    rows = rows.assign(band=band)
+    rng = np.random.default_rng(SEED)
+    targets = rows.target.unique()
+    groups = {t: g for t, g in rows.groupby("target")}
+    draws = {lab: [] for lab in labels}
+    for _ in range(n):
+        sample = pd.concat([groups[t] for t in rng.choice(targets, len(targets))], ignore_index=True)
+        for lab in labels:
+            draws[lab].append(loa_by(sample[sample.band == lab]))
+    out = []
+    for lab, lo, hi in zip(labels, [0.0, *cuts[:-1]], cuts):
+        g = rows[rows.band == lab]
+        out.append({"feature": feature, "band": lab, "score_from": lo if lab != "none" else 0.0,
+                    "score_to": hi if lab != "none" else 0.0, "n_programs": int(g.program_id.nunique()),
+                    "n_targets": int(g.target.nunique()), "loa": loa_by(g),
+                    "loa_lo": float(np.nanpercentile(draws[lab], 2.5)),
+                    "loa_hi": float(np.nanpercentile(draws[lab], 97.5))})
+    return pd.DataFrame(out)
+
+
+def joint_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
+    """Per-phase relative risks of advancing with every evidence line in one
+    Poisson model (each adjusted for the others and the covariates),
+    cluster-robust by target."""
+    out = []
+    for ph in (1, 2, 3):
+        r = rows[(rows.phase == ph) & rows.event.isin(["advanced", "suspended"])].copy()
+        r["y"] = (r.event == "advanced").astype(int)
+        r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
+        present = [f for f in features if (r[f] > 0).nunique() == 2]
+        for f in present:
+            r[f"x_{f}"] = (r[f] > 0).astype(int)
+        formula = "y ~ " + " + ".join(f"x_{f}" for f in present) + " + C(bio_area) + C(modality) + novel + C(period)"
+        fit = smf.glm(formula, data=r, family=sm.families.Poisson()).fit(
+            cov_type="cluster", cov_kwds={"groups": pd.factorize(r.target)[0]})
+        for f in present:
+            b, se = fit.params[f"x_{f}"], fit.bse[f"x_{f}"]
+            out.append({"feature": f, "phase": ph, "n": len(r), "rr": float(np.exp(b)),
+                        "rr_lo": float(np.exp(b - 1.96 * se)), "rr_hi": float(np.exp(b + 1.96 * se)),
+                        "p": float(fit.pvalues[f"x_{f}"])})
+    return out
+
+
 PREDICT_WINDOW = (pd.Timestamp("2008-01-01").date(), pd.Timestamp("2016-10-20").date())
 HORIZON_DAYS = 3653
 
@@ -207,6 +263,8 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
     X_cov["novel"] = d.novel.astype(float)
     X_cov["entry_year"] = d.entry_year - 2008
     sets = {"covariates": X_cov, "covariates+evidence": pd.concat([X_cov, X_ev], axis=1), "evidence": X_ev}
+    for f in evidence:
+        sets[f"covariates+evidence-{f}"] = pd.concat([X_cov, X_ev.drop(columns=f)], axis=1)
     groups = pd.factorize(d.target)[0]
 
     def fit_predict(X, train, test):
@@ -241,7 +299,24 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
                         "auc": auc, "auc_lo": np.percentile(draws[:, 0], 2.5), "auc_hi": np.percentile(draws[:, 0], 97.5),
                         "pr_auc": ap, "pr_lo": np.percentile(draws[:, 1], 2.5), "pr_hi": np.percentile(draws[:, 1], 97.5),
                         "base_rate": float(y.mean())})
-    return pd.DataFrame(metrics), d
+    full = preds[("grouped_cv", "covariates+evidence")][1]
+    y, uniq = d.y.to_numpy(), np.unique(groups)
+    members_by = {u: np.where(groups == u)[0] for u in uniq}
+    ablation = []
+    for f in evidence:
+        reduced = preds[("grouped_cv", f"covariates+evidence-{f}")][1]
+        delta = roc_auc_score(y, full) - roc_auc_score(y, reduced)
+        diffs = []
+        for _ in range(N_BOOT):
+            m = np.concatenate([members_by[u] for u in rng.choice(uniq, len(uniq))])
+            if y[m].min() == y[m].max():
+                continue
+            diffs.append(roc_auc_score(y[m], full[m]) - roc_auc_score(y[m], reduced[m]))
+        ablation.append({"feature": f, "label": LABELS[f], "auc_drop": delta,
+                         "drop_lo": float(np.percentile(diffs, 2.5)), "drop_hi": float(np.percentile(diffs, 97.5))})
+    metrics = pd.DataFrame(metrics)
+    metrics = metrics[~metrics.features.str.contains("-")]
+    return metrics, pd.DataFrame(ablation), d
 
 
 def main() -> None:
@@ -271,14 +346,22 @@ def main() -> None:
                       "approved_with": float(rw), "approved_without": float(rwo)})
     pd.DataFrame(table).to_csv(os.path.join(OUT, "phase3_approval_by_evidence.csv"), index=False)
 
-    metrics, cohort = prediction(progs, trials, snap)
+    dose = dose_response(data, "genetic_any")
+    dose.to_csv(os.path.join(OUT, "genetic_dose_response.csv"), index=False)
+    joint = pd.DataFrame(joint_rr(data, features))
+    joint.to_csv(os.path.join(OUT, "joint_rr_by_phase.csv"), index=False)
+
+    metrics, ablation, cohort = prediction(progs, trials, snap)
     metrics.to_csv(os.path.join(OUT, "prediction_metrics.csv"), index=False)
+    ablation.to_csv(os.path.join(OUT, "prediction_ablation.csv"), index=False)
     cohort[["program_id", "target", "entry_year", "y"]].to_csv(os.path.join(OUT, "prediction_cohort.csv"), index=False)
 
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
                "n_targets": int(data.target.nunique()), "relative_success": rs.to_dict(orient="records"),
                "relative_success_untimed": untimed.to_dict(orient="records"),
-               "prediction": metrics.to_dict(orient="records")}
+               "genetic_dose_response": dose.to_dict(orient="records"),
+               "joint_rr": joint.to_dict(orient="records"),
+               "prediction": metrics.to_dict(orient="records"), "ablation": ablation.to_dict(orient="records")}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(rs[["label", "n_with", "loa_with", "loa_without", "rs", "rs_lo", "rs_hi"]].to_string())
