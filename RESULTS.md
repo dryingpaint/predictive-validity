@@ -1,5 +1,7 @@
 # Results
 
+> **Superseded for the report.** These results come from `benchmark/`, which takes its ground truth from the legacy program tables (`preclin.program`, `preclin.approval`). The audit (AUDIT.md: D01, D09, D10, D25) found those labels drug-level, inflated by approval-seeded phantom programs and comparator arms. The report's Section 2 ([REPORT.md](REPORT.md)) is computed from the rebuilt programs instead.
+
 ## Headline
 
 **Predicting FDA approval for a specific `(target × indication)` pair from public preclinical evidence:**
