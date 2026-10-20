@@ -129,6 +129,23 @@ def relative_success():
     save(fig, "relative_success_by_evidence")
 
 
+def dose_response():
+    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
+    names = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
+    fig, ax = plt.subplots(figsize=(6.2, 2.6))
+    y = np.arange(len(df))[::-1]
+    ax.barh(y, df.loa * 100, height=0.6, color=[BAR if b == "none" else ACCENT for b in df.band])
+    ax.errorbar(df.loa * 100, y, xerr=[(df.loa - df.loa_lo) * 100, (df.loa_hi - df.loa) * 100],
+                fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
+    for yi, (v, hi, n) in zip(y, zip(df.loa, df.loa_hi, df.n_programs)):
+        ax.text(hi * 100 + 0.4, yi, f"{v:.1%} (n={n:,})", va="center", color=INK2, fontsize=8)
+    ax.set_yticks(y, [names[b] for b in df.band], color=INK)
+    ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI", color=INK2, fontsize=8)
+    style(ax)
+    ax.set_title("Likelihood of approval by strength of human genetic support", loc="left", color=INK, fontsize=11)
+    save(fig, "genetic_dose_response")
+
+
 def main():
     failure_modes()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", BIO_AREA_LOA,
@@ -137,6 +154,7 @@ def main():
              lambda s: s.replace("_", " ").replace("rnai", "RNAi").replace("car t", "CAR-T").capitalize())
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
+        dose_response()
 
 
 if __name__ == "__main__":
