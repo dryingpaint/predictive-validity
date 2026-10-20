@@ -1,7 +1,8 @@
 # Rebuild the report's data and numbers from source, in dependency order.
 # Every step is idempotent: LLM steps reuse earlier validated decisions whose
 # inputs are unchanged (pipeline/llm.py), loaders upsert, and builds replace.
-# Requires DATABASE_URL (and ANTHROPIC_API_KEY or LLM_PROVIDER) in .env.
+# Requires DATABASE_URL (and ANTHROPIC_API_KEY or LLM_PROVIDER) in .env, a venv from `uv sync`,
+# and pdftoppm (poppler) and tesseract on PATH for OCR of scanned FDA letters.
 
 PY := .venv/bin/python
 RUN := $(PY) -m
@@ -23,6 +24,14 @@ sources:
 	$(RUN) pipeline.outcomes publications
 	$(RUN) pipeline.fda fetch
 	$(RUN) pipeline.fda load
+	$(RUN) pipeline.cber.enumerate_year_pages
+	$(RUN) pipeline.cber.crawl_products
+	$(RUN) pipeline.cber.historic_products
+	$(RUN) pipeline.cber.download_letters
+	$(RUN) pipeline.cber.build_letters
+	$(RUN) pipeline.cber.find_missing
+	$(RUN) pipeline.cber.find_missing2
+	$(RUN) pipeline.cber.assemble
 	$(RUN) pipeline.fda load-cber
 	$(RUN) pipeline.unii load
 	$(RUN) pipeline.ontology load
