@@ -11,7 +11,8 @@
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
 | MONDO, EFO | Disease ontology and hierarchy | MONDO 2026-10-06, EFO 3.95 |
 | Open Targets Platform | Target–disease associations by data source, with yearly score series | 26.09 |
-| gnomAD, DepMap | Loss-of-function constraint; pan-essential genes | As loaded in the project database |
+| gnomAD | Loss-of-function constraint (LOEUF) | v4.1 |
+| DepMap | Pan-essential genes from CRISPR (Chronos) screens | Release not recorded in the project database |
 
 ### How each label was made, and how good it is
 
