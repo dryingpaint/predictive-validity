@@ -173,9 +173,22 @@ layer for every number in the report.
 | D30 | Shared trials (healthy-volunteer studies, "solid tumors" baskets) kept every program of a multi-indication entity "active", so programs never read as suspended (616 of 916 Phase 3 entrants of 2017 still censored in 2026) | Suspension, all transition rates | fixed: whether a disease is still in development is read from the program's own trials |
 | D31 | Advancement counted only industry-sponsored later-phase trials; investigator and cooperative-group trials of a company's drug in the same disease were ignored (Phase 1→2 22.6% vs 34.6% when counted) | Transition rates | fixed: advancement and activity from the program's own trials of any sponsor |
 | D32 | Approval judge: 8 of 25 dated first approvals were the original approval of a later application (505(b)(2), reformulation) for a use an older application already had before 2015, and 6 of 15 'uncertain' calls were clear yes (old drugs whose labels were not among the five shown). A wrong post-2015 date turns a lifecycle program into an approval | Phase 3→approval, LOA | fixing: prompt v2 with up to 12 labels ordered by application age and dated, the repeat-use rule, and knowledge of pre-2015 labelling (flagged in evidence); re-audit after rerun |
+| D33 | Vaccine co-administration trials labelled the licensed vaccine given alongside as investigational, creating programs such as (influenza vaccine, RSV infection) and (HPV vaccine, dengue) | Vaccine and infectious-disease strata | fixed: trial-role prompt v2 makes a co-administered licensed product background; all 27,480 multi-entity trials re-decided |
+| D34 | The same product under two entities where UNII does not connect them: salt and parent registered separately (aclidinium vs aclidinium bromide, so Tudorza's 2012 COPD approval never reached the program) and vaccine naming variants | Lifecycle exclusion, approvals, program counts | fixed: same-entity pass in `pipeline.drugs unii` (nearest-name candidates, LLM decides, merge only where every decision that saw the pair agrees) |
+| D35 | FDA-side and trial-side names of vaccines, cell and gene therapies never met (Gardasil 9 split into nine antigens; trials name a "9-valent HPV vaccine"), so their approvals were invisible (vaccine Phase 3→approval 2.7%) | Vaccine, biologic strata | fixed: `fda link` matches each application with no trial-named entity to the trial entities that are the same product (750 applications, 78 links) |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-20 — Trial purpose classified for all 75,774 in-scope industry trials (49,364
+  indication development, 10,772 product support, 8,635 early development, 6,287
+  multi-indication, 349 other); programs rebuilt from it (D29). Approval audit (90
+  programs, four strata): approval calls 88/90 defensible but 8 of 25 dated first approvals
+  wrong (D32), fixed in approvals v2. Publication-outcome audit v1: 17/20; prompt v2 (only the
+  abstracts given; descriptive safety primaries not assessable) re-audited on 30 fresh
+  trials: 29/30 primary endpoint, 30/30 safety and efficacy failure. Section 1 on the
+  purpose-based build: Phase 1→2 53.2% (BIO 52.0%); US-developed LOA 6.3% (BIO 7.9%, novel
+  6.8%). D33–D35 found from the vaccine and Phase 3 strata and fixed.
 
 - 2026-10-20 — CBER index verified by an independent enumeration (yearly pages, ~700 live and
   214 archived product pages, the Purple Book, 968 letters read): 318 of 325 records and all
