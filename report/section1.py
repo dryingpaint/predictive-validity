@@ -11,7 +11,9 @@ FDA approval for the disease), was suspended (none of the program's own
 industry trials, those listing its disease, active or active within LAG months
 of the snapshot), or is censored (still active or too recent to call). The BIO-style rate is advanced / (advanced + suspended);
 the Aalen-Johansen estimate keeps censored programs in the risk set with
-suspension as a competing event. LOA is the product over phases.
+suspension as a competing event. LOA is the product over phases. Programs with
+no disease (healthy-volunteer, basket or symptom trials only) enter the Phase 1
+and Phase 2 cohorts but not Phase 3: FDA approval is judged per disease.
 Confidence intervals resample molecular entities (programs of one entity
 are not independent).
 """
@@ -79,6 +81,8 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
             entry = s.get(phase)
             if pd.isna(entry) or not (window[0] <= entry <= window[1]):
                 continue
+            if phase == 3 and pd.isna(p.at[pid, "mondo_id"]):
+                continue  # approval is judged per disease, so an unspecified program cannot be followed to it
             entry = pd.Timestamp(entry)
             if any(pd.notna(s.get(q)) and pd.Timestamp(s.get(q)) < entry for q in (1, 2, 3) if q > phase):
                 continue

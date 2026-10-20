@@ -58,9 +58,8 @@ def sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
     df = df.assign(**{"Cohort or definition": df.label.str.capitalize(),
                       "Ph1→2": df.ph1_rate.map(pct), "Ph2→3": df.ph2_rate.map(pct), "Ph3→approval": df.ph3_rate.map(pct),
-                      "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
-                      "LOA, competing risks (6 y)": df.loa_aj.map(pct)})
-    return table(df.iloc[:, -6:])
+                      "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
+    return table(df.iloc[:, -5:])
 
 
 def stratum_table(csv: str, label: str) -> str:
