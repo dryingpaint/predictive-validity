@@ -13,6 +13,7 @@ import json
 import os
 import re
 
+import numpy as np
 import pandas as pd
 
 from report import frame
@@ -83,9 +84,39 @@ def prediction_table() -> str:
     return table(df.iloc[:, -5:])
 
 
+def dose_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
+    band = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
+    df = df.assign(**{"Human genetic support (Open Targets score, as of phase entry)": [
+                          band[b] + ("" if b == "none" else f" ({lo:.2f}–{hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
+                          for b, lo, hi in zip(df.band, df.score_from, df.score_to)],
+                      "Programs": df.n_programs.map("{:,}".format), "Targets": df.n_targets.map("{:,}".format),
+                      "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
+    return table(df.iloc[:, -4:])
+
+
+def joint_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
+    labels = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").label
+    df["cell"] = [f"{r:.2f} ({lo:.2f}–{hi:.2f})" for r, lo, hi in zip(df.rr, df.rr_lo, df.rr_hi)]
+    wide = df.pivot(index="feature", columns="phase", values="cell").fillna("–")
+    wide.columns = [f"Phase {c} → next" for c in wide.columns]
+    wide.insert(0, "Evidence", [labels.get(f, f) for f in wide.index])
+    return table(wide.reset_index(drop=True))
+
+
+def ablation_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section2", "prediction_ablation.csv")).sort_values("auc_drop", ascending=False)
+    df = df.assign(**{"Evidence removed": df.label,
+                      "AUC change (95% CI)": [f"{-d:+.3f} ({-hi:+.3f} to {-lo:+.3f})"
+                                              for d, lo, hi in zip(df.auc_drop, df.drop_lo, df.drop_hi)]})
+    return table(df.iloc[:, -2:])
+
+
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area"),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality"),
-          "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table}
+          "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
+          "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table}
 
 
 def flatten(d, prefix=""):
