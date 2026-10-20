@@ -45,3 +45,6 @@ catboost_info/
 /output/
 /reports/
 /tmp/
+
+# Raw source downloads (re-fetched by pipeline modules)
+.cache/

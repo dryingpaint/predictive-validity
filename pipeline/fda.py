@@ -1,0 +1,307 @@
+"""FDA approval sources -> preclin.fda_* tables.
+
+    python -m pipeline.fda fetch     # Drugs@FDA, openFDA labels, approval letters -> .cache/fda
+    python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
+    python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
+
+Letters cover every approved original NDA/BLA and every approved efficacy
+supplement (Drugs@FDA submission class EFFICACY) dated 2015-01-01..2025-12-31.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import glob
+import hashlib
+import io
+import json
+import os
+import time
+import zipfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+import requests
+from psycopg2.extras import Json, execute_values
+from pypdf import PdfReader
+
+from pipeline import llm
+
+CACHE = os.path.join(llm.REPO, ".cache", "fda")
+DRUGSFDA_URL = "https://www.fda.gov/media/89850/download"
+OPENFDA_INDEX = "https://api.fda.gov/download.json"
+WINDOW = ("2015-01-01", "2025-12-31")
+EFFICACY_CLASS = "2"
+HEADERS = {"User-Agent": "Mozilla/5.0 (predictive-validity research)"}
+
+
+def sha256_file(path: str) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def read_tsv(name: str) -> list[dict[str, str]]:
+    with open(os.path.join(CACHE, "drugsfda", name), encoding="latin-1") as f:
+        return list(csv.DictReader(f, delimiter="\t"))
+
+
+def letter_targets() -> tuple[dict, list[dict]]:
+    """Submissions in scope and their letter documents."""
+    apps = {r["ApplNo"]: r for r in read_tsv("Applications.txt")}
+    wanted = {}
+    for s in read_tsv("Submissions.txt"):
+        date = s["SubmissionStatusDate"][:10]
+        if s["SubmissionStatus"] != "AP" or not (WINDOW[0] <= date <= WINDOW[1]):
+            continue
+        if apps.get(s["ApplNo"], {}).get("ApplType") not in ("NDA", "BLA"):
+            continue
+        if s["SubmissionType"] == "ORIG" or s["SubmissionClassCodeID"] == EFFICACY_CLASS:
+            wanted[(s["ApplNo"], s["SubmissionType"].strip(), s["SubmissionNo"])] = s
+    docs = [d for d in read_tsv("ApplicationDocs.txt")
+            if d["ApplicationDocsTypeID"] == "1"
+            and (d["ApplNo"], d["SubmissionType"].strip(), d["SubmissionNo"]) in wanted]
+    return wanted, docs
+
+
+def fetch(_args) -> None:
+    os.makedirs(os.path.join(CACHE, "openfda"), exist_ok=True)
+    zpath = os.path.join(CACHE, "drugsfda.zip")
+    with open(zpath, "wb") as f:
+        f.write(requests.get(DRUGSFDA_URL, headers=HEADERS, timeout=300).content)
+    zipfile.ZipFile(zpath).extractall(os.path.join(CACHE, "drugsfda"))
+    index = requests.get(OPENFDA_INDEX, timeout=60).json()["results"]["drug"]["label"]
+    json.dump(index, open(os.path.join(CACHE, "openfda", "label_index.json"), "w"))
+    for part in index["partitions"]:
+        dest = os.path.join(CACHE, "openfda", os.path.basename(part["file"]))
+        if not os.path.exists(dest):
+            with open(dest, "wb") as f:
+                f.write(requests.get(part["file"], timeout=600).content)
+
+    _, docs = letter_targets()
+    index_path = os.path.join(CACHE, "letters_index.jsonl")
+    done = {json.loads(line)["url"] for line in open(index_path)} if os.path.exists(index_path) else set()
+    todo = [d for d in docs if d["ApplicationDocsURL"].strip() not in done]
+    os.makedirs(os.path.join(CACHE, "letters"), exist_ok=True)
+    session = requests.Session()
+    session.headers.update(HEADERS)
+
+    def get(doc):
+        url = doc["ApplicationDocsURL"].strip()
+        for attempt in range(5):
+            try:
+                r = session.get(url.replace("http://", "https://"), timeout=90)
+                if r.status_code == 404:
+                    return doc, None, "404"
+                r.raise_for_status()
+                return doc, r.content, None
+            except requests.RequestException as exc:
+                err = str(exc)
+                time.sleep(3 * (attempt + 1))
+        return doc, None, err
+
+    with open(index_path, "a") as out, ThreadPoolExecutor(max_workers=4) as pool:
+        for fut in as_completed([pool.submit(get, d) for d in todo]):
+            doc, content, err = fut.result()
+            rec = {"url": doc["ApplicationDocsURL"].strip(), "appl_no": doc["ApplNo"],
+                   "submission_type": doc["SubmissionType"].strip(), "submission_no": doc["SubmissionNo"],
+                   "doc_date": doc["ApplicationDocsDate"][:10], "error": err}
+            if content:
+                sha = hashlib.sha256(content).hexdigest()
+                open(os.path.join(CACHE, "letters", f"{sha}.pdf"), "wb").write(content)
+                text = "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(content)).pages)
+                rec.update(sha256=sha, n_bytes=len(content), text=text)
+            out.write(json.dumps(rec) + "\n")
+    print(f"letters fetched: {len(todo)}")
+
+
+def register_release(cur, name: str, version: str, url: str, sha: str, metadata: dict) -> int:
+    cur.execute(
+        """INSERT INTO preclin.evidence_source_release
+             (source_name, source_version, source_url, content_sha256, metadata)
+           VALUES (%s,%s,%s,%s,%s)
+           ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
+           RETURNING source_release_id""",
+        (name, version, url, sha, Json(metadata)))
+    return cur.fetchone()[0]
+
+
+def load(_args) -> None:
+    apps = {r["ApplNo"]: r for r in read_tsv("Applications.txt") if r["ApplType"] in ("NDA", "BLA")}
+    zip_sha = sha256_file(os.path.join(CACHE, "drugsfda.zip"))
+    data_date = max(r["SubmissionStatusDate"][:10] for r in read_tsv("Submissions.txt"))
+    label_index = json.load(open(os.path.join(CACHE, "openfda", "label_index.json")))
+    label_files = sorted(glob.glob(os.path.join(CACHE, "openfda", "drug-label-*.json.zip")))
+    label_sha = hashlib.sha256("".join(sha256_file(p) for p in label_files).encode()).hexdigest()
+
+    with llm.connect() as conn, conn.cursor() as cur:
+        rel_drugsfda = register_release(cur, "fda_drugsfda", data_date, DRUGSFDA_URL, zip_sha,
+                                        {"latest_submission_date": data_date})
+        rel_label = register_release(cur, "openfda_drug_label", label_index["export_date"],
+                                     OPENFDA_INDEX, label_sha,
+                                     {"partitions": [os.path.basename(p) for p in label_files],
+                                      "sha256_of": "concatenated per-partition sha256 hex digests"})
+
+        execute_values(cur, """INSERT INTO preclin.fda_application
+            (appl_no, appl_type, center, sponsor_name, source_release_id) VALUES %s
+            ON CONFLICT (appl_no) DO UPDATE SET sponsor_name = EXCLUDED.sponsor_name,
+              source_release_id = EXCLUDED.source_release_id""",
+            [(a, r["ApplType"], "CDER", r["SponsorName"], rel_drugsfda) for a, r in apps.items()])
+        execute_values(cur, """INSERT INTO preclin.fda_product
+            (appl_no, product_no, drug_name, active_ingredient, form, strength) VALUES %s
+            ON CONFLICT (appl_no, product_no) DO UPDATE SET drug_name = EXCLUDED.drug_name,
+              active_ingredient = EXCLUDED.active_ingredient""",
+            [(p["ApplNo"], p["ProductNo"], p["DrugName"], p["ActiveIngredient"], p["Form"], p["Strength"])
+             for p in read_tsv("Products.txt") if p["ApplNo"] in apps])
+        classes = {r["SubmissionClassCodeID"]: r["SubmissionClassCode"] for r in read_tsv("SubmissionClass_Lookup.txt")}
+        execute_values(cur, """INSERT INTO preclin.fda_submission
+            (appl_no, submission_type, submission_no, submission_class, status, status_date, review_priority)
+            VALUES %s ON CONFLICT (appl_no, submission_type, submission_no) DO UPDATE SET
+              submission_class = EXCLUDED.submission_class, status = EXCLUDED.status,
+              status_date = EXCLUDED.status_date, review_priority = EXCLUDED.review_priority""",
+            [(s["ApplNo"], s["SubmissionType"].strip(), s["SubmissionNo"], classes.get(s["SubmissionClassCodeID"]),
+              s["SubmissionStatus"], s["SubmissionStatusDate"][:10] or None, s["ReviewPriority"] or None)
+             for s in read_tsv("Submissions.txt")
+             if s["ApplNo"] in apps and s["SubmissionType"].strip() in ("ORIG", "SUPPL")])
+
+        letters, links = {}, {}
+        for line in open(os.path.join(CACHE, "letters_index.jsonl")):
+            r = json.loads(line)
+            if r.get("sha256"):
+                letters[r["sha256"]] = (r["sha256"], r["text"].replace("\x00", ""), r["n_bytes"])
+            key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
+            if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
+                links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"))
+        links = list(links.values())
+        execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes)
+            VALUES %s ON CONFLICT DO NOTHING""", list(letters.values()))
+        execute_values(cur, """INSERT INTO preclin.fda_submission_letter
+            (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
+            ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
+              letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""",
+            [l for l in links if l[0] in apps])
+
+        labels = []
+        for path in label_files:
+            with zipfile.ZipFile(path) as zf:
+                for name in zf.namelist():
+                    for r in json.loads(zf.read(name))["results"]:
+                        of = r.get("openfda", {})
+                        nums = [a for a in of.get("application_number", []) if a.startswith(("NDA", "BLA"))]
+                        if not nums:
+                            continue
+                        eff = r.get("effective_time")
+                        labels.append((r["set_id"], r["id"], f"{eff[:4]}-{eff[4:6]}-{eff[6:8]}" if eff else None,
+                                       nums, of.get("brand_name", []), of.get("generic_name", []),
+                                       of.get("substance_name", []), of.get("unii", []),
+                                       " ".join(r.get("indications_and_usage", [])) or None, rel_label))
+        execute_values(cur, """INSERT INTO preclin.fda_label
+            (set_id, spl_id, effective_date, application_numbers, brand_names, generic_names,
+             substance_names, unii, indications_text, source_release_id) VALUES %s
+            ON CONFLICT (set_id) DO UPDATE SET spl_id = EXCLUDED.spl_id,
+              effective_date = EXCLUDED.effective_date, application_numbers = EXCLUDED.application_numbers,
+              brand_names = EXCLUDED.brand_names, generic_names = EXCLUDED.generic_names,
+              substance_names = EXCLUDED.substance_names, unii = EXCLUDED.unii,
+              indications_text = EXCLUDED.indications_text, source_release_id = EXCLUDED.source_release_id""",
+            labels)
+        conn.commit()
+    print(f"applications={len(apps)} letters={len(letters)} letter_links={len(links)} labels={len(labels)}")
+
+
+LETTER_SYSTEM = """You read U.S. FDA approval letters (NDA/BLA original approvals and efficacy supplements) and record exactly what use was approved by THIS action.
+
+Rules:
+- Report only uses that this letter approves or changes. Do not list the drug's previously approved indications unless the letter re-states them as part of this action.
+- If the letter only says the supplement "provides for revisions to the labeling" without naming a disease or population, set letter_states_use=false and leave approved_uses empty.
+- One entry per distinct disease/population combination approved.
+- disease: the disease or condition in plain standard medical terms (e.g. "non-small cell lung cancer", "type 2 diabetes mellitus", "chronic plaque psoriasis"), without population qualifiers.
+- qualifiers: the population restrictions stated (age group, line of therapy, prior treatment, biomarker/mutation, disease stage/severity, combination partner drugs, setting such as adjuvant/neoadjuvant/maintenance).
+- change_type:
+  new_indication = a disease/condition not previously on the label for this product;
+  new_population = same disease, newly approved population (e.g. pediatric extension, new line of therapy, new biomarker subgroup, new stage/setting such as adjuvant);
+  new_regimen = new dose, schedule, formulation-related use, or combination partner within an already-approved population;
+  conversion_to_full = accelerated approval converted to regular approval / confirmatory data;
+  efficacy_labeling = efficacy data added to labeling (e.g. new clinical study results, new endpoint) without a new population;
+  original_approval = first approval of this application (ORIG submissions);
+  other.
+- If uncertain whether the disease was already on the label, use your best judgment from the letter text and say so in notes."""
+
+LETTER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "products": {"type": "array", "items": {"type": "string"}},
+        "letter_states_use": {"type": "boolean"},
+        "approved_uses": {"type": "array", "items": {
+            "type": "object",
+            "properties": {
+                "indication_as_written": {"type": "string"},
+                "disease": {"type": "string"},
+                "qualifiers": {"type": "array", "items": {"type": "string"}},
+                "change_type": {"type": "string", "enum": [
+                    "original_approval", "new_indication", "new_population", "new_regimen",
+                    "conversion_to_full", "efficacy_labeling", "other"]},
+                "accelerated_approval": {"type": "boolean"},
+            },
+            "required": ["indication_as_written", "disease", "qualifiers", "change_type", "accelerated_approval"],
+            "additionalProperties": False}},
+        "notes": {"type": "string"},
+    },
+    "required": ["products", "letter_states_use", "approved_uses", "notes"],
+    "additionalProperties": False,
+}
+
+
+def render_letter(p: dict) -> str:
+    subs = "; ".join(f"{s['appl_type']} {s['appl_no']} {s['submission_type']}-{s['submission_no']} "
+                     f"approved {s['approval_date']}" for s in p["submissions"])
+    return f"Submissions covered by this letter: {subs}\n\nLetter text:\n{p['text']}"
+
+
+LETTER_TASK = llm.Task(
+    name="fda_letter_approved_uses", prompt_version="v1", schema_version="v1",
+    system=LETTER_SYSTEM, schema=LETTER_SCHEMA, render=render_letter, subject_type="fda_letter",
+    effort="medium", max_tokens=6000)
+
+
+def extract(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT l.letter_sha256, l.letter_text,
+                   json_agg(json_build_object('appl_no', a.appl_no, 'appl_type', a.appl_type,
+                            'submission_type', s.submission_type, 'submission_no', s.submission_no,
+                            'approval_date', s.status_date) ORDER BY a.appl_no, s.submission_no)
+            FROM preclin.fda_letter l
+            JOIN preclin.fda_submission_letter sl USING (letter_sha256)
+            JOIN preclin.fda_submission s USING (appl_no, submission_type, submission_no)
+            JOIN preclin.fda_application a USING (appl_no)
+            GROUP BY l.letter_sha256, l.letter_text""")
+        items = {sha: {"text": text[:150000], "submissions": subs} for sha, text, subs in cur.fetchall()}
+    run_id = llm.run(LETTER_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
+                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
+        rows = []
+        for sha, decision_id, out in cur.fetchall():
+            for i, use in enumerate(out["approved_uses"]):
+                rows.append((sha, i, use["disease"], use["indication_as_written"], use["qualifiers"],
+                             use["change_type"], use["accelerated_approval"], decision_id))
+        cur.execute("DELETE FROM preclin.fda_approved_use")
+        execute_values(cur, """INSERT INTO preclin.fda_approved_use
+            (letter_sha256, ordinal, disease, indication_as_written, qualifiers, change_type,
+             accelerated_approval, llm_decision_id) VALUES %s""", rows)
+        conn.commit()
+    print(f"run={run_id} approved_uses={len(rows)}")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    for name, fn in [("fetch", fetch), ("load", load), ("extract", extract)]:
+        sub.add_parser(name).set_defaults(fn=fn)
+    args = parser.parse_args()
+    args.fn(args)
+
+
+if __name__ == "__main__":
+    main()
