@@ -264,7 +264,7 @@ INDICATION_SYSTEM = """You group the diseases a drug (molecular entity) has been
 
 Put a disease together with its subtypes, stages, lines of therapy, biomarker groups and settings when they are the same indication for development (prostate cancer, castration-resistant prostate carcinoma, metastatic prostate carcinoma and prostate adenocarcinoma are one indication; non-small cell lung carcinoma with squamous and non-squamous NSCLC; type 2 diabetes mellitus with its complications studied as glycaemic control). Keep apart diseases that are separate indications even when one ontology term contains the other: different cancer types or lymphoma subtypes (diffuse large B-cell vs follicular lymphoma), type 1 vs type 2 diabetes, Crohn's disease vs ulcerative colitis, a complication developed as its own indication (diabetic kidney disease vs type 2 diabetes; diabetic macular edema vs diabetes). A generic grouping term the trials used for a basket (cancer, solid tumor, neoplasm) is its own group.
 
-Every disease belongs to exactly one group. The representative of a group is the member that names the indication, usually the broadest member that is still a single indication."""
+Every disease belongs to exactly one group. The representative of a group is the member that names the indication, usually the broadest member that is still a single indication. Write members and representatives as the MONDO ids exactly as listed (e.g. "MONDO:0008315"), never as names."""
 
 INDICATION_SCHEMA = {
     "type": "object",
@@ -278,10 +278,10 @@ INDICATION_SCHEMA = {
 
 
 def render_indications(p: dict) -> str:
-    lines = "\n".join(f"- {d['mondo_id']} {d['label']} ({d['n_trials']} trials, phases {d['phases']}"
+    lines = "\n".join(f"- {d['mondo_id']}: {d['label']} ({d['n_trials']} trials, phases {d['phases']}"
                        + (f"; subtype of {', '.join(d['within'])}" if d["within"] else "") + ")"
                        for d in p["diseases"])
-    return f"Entity: {p['entity']}\n\nDiseases (MONDO):\n{lines}"
+    return f"Entity: {p['entity']}\n\nDiseases (answer with these MONDO ids):\n{lines}"
 
 
 def validate_indications(p: dict, out: dict) -> None:
@@ -294,7 +294,7 @@ def validate_indications(p: dict, out: dict) -> None:
             raise ValueError(f"representative {g['representative']} not a member")
 
 
-INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v1", schema_version="v1",
+INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v2", schema_version="v1",
                            system=INDICATION_SYSTEM, schema=INDICATION_SCHEMA, render=render_indications,
                            validate=validate_indications, subject_type="moiety", model="claude-opus-5-5",
                            effort="medium", max_tokens=16000)
