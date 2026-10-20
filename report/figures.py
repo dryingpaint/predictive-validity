@@ -100,7 +100,7 @@ def loa_bars(csv, title, name, bio, label_fmt):
     for yi, (lab, v, hi) in enumerate(zip(df.label, df.loa, df.loa_hi)):
         if lab in bio:
             ax.plot([bio[lab]] * 2, [yi - 0.35, yi + 0.35], color=INK, linewidth=2)
-        ax.text(hi * 100 + 0.6, yi, f"{v:.1%}", va="center", color=INK2, fontsize=8)
+        ax.text(max(hi * 100, bio.get(lab, 0)) + 0.6, yi, f"{v:.1%}", va="center", color=INK2, fontsize=8)
     ax.set_yticks(y, [label_fmt(l) for l in df.label], color=INK)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI; tick = BIO 2011–2020", color=INK2, fontsize=8)
     style(ax)
@@ -109,7 +109,7 @@ def loa_bars(csv, title, name, bio, label_fmt):
 
 
 def relative_success():
-    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).sort_values("rs")
+    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).dropna(subset=["rs"]).sort_values("rs")
     fig, ax = plt.subplots(figsize=(7, 0.42 * len(df) + 1))
     y = np.arange(len(df))
     genetic = df.feature.str.startswith("genetic")
@@ -124,8 +124,7 @@ def relative_success():
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
     ax.set_yticks(y, df.label, color=INK, fontsize=9)
     style(ax)
-    ax.set_title("Relative success: likelihood of approval with the evidence ÷ without it (95% CI)",
-                 loc="left", color=INK, fontsize=10)
+    ax.set_title("Relative success: LOA with the evidence ÷ LOA without it (95% CI)", loc="left", color=INK, fontsize=10)
     save(fig, "relative_success_by_evidence")
 
 
