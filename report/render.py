@@ -196,6 +196,8 @@ def fill(text: str, numbers: dict) -> str:
             return f"{int(v):,}"
         if fmt == "x2":
             return f"{v:.2f}"
+        if fmt == "x3":
+            return f"{v:.3f}"
         return str(v)
     return re.sub(r"\{\{([A-Za-z0-9_.|+-]+)\}\}", sub, text)
 
