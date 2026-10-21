@@ -2,20 +2,24 @@
 
     python -m report.section1
 
-Unit: a development program = (molecular entity, MONDO disease). For each
-phase p, the cohort is programs whose first industry-sponsored phase-p trial
-started 2015-2025, that had not entered a later phase earlier, and whose
+Unit: a development program = (molecular entity, development indication). For
+each phase p, the cohort is programs whose first industry-sponsored phase-p
+trial started 2015-2025, that had not entered a later phase earlier, and whose
 entity was not already FDA-approved for the disease (a lifecycle program).
-Each program then either advanced (a later-phase industry trial started, or
-FDA approval for the disease), was suspended (none of the program's own
-industry trials, those listing its disease, active or active within LAG months
-of the snapshot), or is censored (still active or too recent to call). The BIO-style rate is advanced / (advanced + suspended);
-the Aalen-Johansen estimate keeps censored programs in the risk set with
-suspension as a competing event. LOA is the product over phases. Programs with
-no disease (healthy-volunteer, basket or symptom trials only) enter the Phase 1
-and Phase 2 cohorts but not Phase 3: FDA approval is judged per disease.
-Confidence intervals resample molecular entities (programs of one entity
-are not independent).
+Each program then either advanced (a later-phase trial of its own, by any
+sponsor, started, or FDA approval for the disease), was suspended (none of its
+own trials, by any sponsor, or of the trials that marked its Phase 1 entry,
+active or active within LAG months of the snapshot), or is censored (still
+active or too recent to call). A phase a program skipped on its way to a later
+phase or to approval counts as a success in that phase, as in BIO's report. The
+BIO-style rate is advanced / (advanced + suspended); the Aalen-Johansen
+estimate keeps censored programs in the risk set with suspension as a competing
+event. LOA is the product over phases. Programs with no disease
+(healthy-volunteer, basket or symptom trials only) enter the Phase 1 and Phase
+2 cohorts but not Phase 3: FDA approval is judged per disease. Confidence
+intervals resample molecular entities (programs of one entity are not
+independent); a cohort with fewer than MIN_RESOLVED_ENTITIES entities resolved
+in a phase gets no LOA.
 """
 from __future__ import annotations
 
@@ -36,6 +40,22 @@ MATURE_WINDOW = (date(2015, 1, 1), date(2019, 12, 31))
 HORIZON_YEARS = 6.0
 N_BOOT = 1000
 SEED = 20261020
+MIN_RESOLVED_ENTITIES = 10  # per phase, below which a cohort's LOA and intervals are not estimated
+
+
+def own_trials(progs: pd.DataFrame, trials: pd.DataFrame) -> pd.Series:
+    """Whether each trial row is one of its program's own trials: it lists the program's
+    disease, or, for an entity's disease-unspecified program, it is one of the entity's
+    healthy-volunteer, basket and symptom trials."""
+    unspecified = trials.program_id.map(progs.set_index("program_id").mondo_id).isna()
+    return (trials.attach.isin(["disease", "non_disease_condition"])
+            | (trials.attach.isin(["no_disease", "basket"]) & unspecified))
+
+
+def activity(trials: pd.DataFrame, snap: date) -> tuple[pd.Series, pd.Series]:
+    """Per program: when its last trial ended (the snapshot for an active trial), and whether one is active."""
+    end = trials.assign(end=np.where(trials.active, pd.Timestamp(snap), pd.to_datetime(trials.end)))
+    return end.groupby("program_id").end.max(), trials.groupby("program_id").active.any()
 
 
 def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS,
@@ -50,29 +70,32 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
     t = trials[trials.start_date.notna()].copy()
     t["active"] = t.overall_status.isin(frame.ACTIVE)
     t["end"] = t.completion_date.fillna(t.primary_completion_date).fillna(t.start_date)
-    # A program's own trials list its disease (or, for an entity's disease-unspecified
-    # program, are its healthy-volunteer, basket and symptom trials). Shared trials
-    # (a healthy-volunteer study, a "solid tumors" basket) count only toward Phase 1
-    # entry of the lead indication. Phase entry is industry-sponsored; advancement and
-    # whether the disease is still in development come from the program's own trials
-    # by any sponsor (a cooperative-group Phase 3 of a company's drug is development).
-    unspecified = t.program_id.map(progs.set_index("program_id").mondo_id).isna()
-    own = t if shared_entry else t[t.attach.isin(["disease", "non_disease_condition"])
-                                   | (t.attach.isin(["no_disease", "basket"]) & unspecified)]
+    # Shared trials (a healthy-volunteer study, a "solid tumors" basket) count only toward
+    # Phase 1 entry of the lead indication, and keep that Phase 1 program active while
+    # they run. Phase entry is industry-sponsored; advancement and whether the disease is
+    # still in development come from the program's own trials by any sponsor (a
+    # cooperative-group Phase 3 of a company's drug is development). A later-phase trial
+    # advances a program once it has started, not while it is only registered.
+    own = t if shared_entry else t[own_trials(progs, t)]
     ind = t[t.industry]
     entry_trials = ind if shared_entry else pd.concat([own[own.industry], ind[(ind.phase == 1) & ind.marks_entry]])
     starts = entry_trials.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
-    later = own.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
-    last = own.assign(end=np.where(own.active, pd.Timestamp(snap), pd.to_datetime(own.end))) \
-              .groupby("program_id").end.max()
-    active = own.groupby("program_id").active.any()
-    us = ind[ind.us_site].groupby("program_id").phase.max()
+    later = own[own.overall_status != "NOT_YET_RECRUITING"].pivot_table(
+        index="program_id", columns="phase", values="start_date", aggfunc="min")
+    last, active = activity(own, snap)
+    last1, active1 = activity(pd.concat([own, entry_trials[entry_trials.phase == 1]])
+                              .drop_duplicates(["program_id", "nct_id"]), snap)
+    us = set(zip(entry_trials.program_id[entry_trials.us_site], entry_trials.phase[entry_trials.us_site]))
 
     p = progs.set_index("program_id")
     approved = p.approved.eq("yes") | (uncertain_as_approved & p.approved.eq("uncertain"))
     appr_date = pd.to_datetime(p.first_approval_date).where(p.date_basis.eq("dated"))
-    appr_date = appr_date.where(~(approved & p.date_basis.isin(["before_2015", "undated"])),
-                                pd.Timestamp("2014-12-31")).where(approved)
+    # An approval known only to predate 2015, or undated, is placed at the earliest date it
+    # could have happened, the entity's first FDA approval, so that a program entering
+    # after it is treated as a lifecycle program.
+    earliest = pd.to_datetime(p.moiety_first_fda_approval).clip(upper=pd.Timestamp("2014-12-31")) \
+                 .fillna(pd.Timestamp("2014-12-31"))
+    appr_date = appr_date.where(~(approved & p.date_basis.isin(["before_2015", "undated"])), earliest).where(approved)
     cutoff = pd.Timestamp(snap) - pd.DateOffset(months=lag_months)
 
     rows = []
@@ -97,24 +120,31 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
             if pd.notna(a) and a <= entry:
                 continue  # already approved for this disease: lifecycle program
             advance = min([x for x in later_starts if x >= entry] + ([a] if pd.notna(a) else []), default=None)
+            on, end_at = (active1, last1) if phase == 1 else (active, last)
             if advance is not None and advance <= pd.Timestamp(snap):
                 event, end = "advanced", advance
-            elif active.get(pid, False):
+            elif on.get(pid, False):
                 event, end = "censored", pd.Timestamp(snap)
-            elif last.get(pid, entry) <= cutoff:
-                event, end = "suspended", last.get(pid, entry)
+            elif end_at.get(pid, entry) <= cutoff:
+                event, end = "suspended", end_at.get(pid, entry)
             else:
                 event, end = "censored", pd.Timestamp(snap)
             first_fda = p.at[pid, "moiety_first_fda_approval"]
-            rows.append({
+            row = {
                 "program_id": pid, "moiety_id": p.at[pid, "moiety_id"], "phase": phase, "entry": entry,
-                "event": event, "years": max((end - entry).days, 0) / 365.25,
+                "event": event, "years": max((end - entry).days, 0) / 365.25, "credited": False,
                 "bio_area": p.at[pid, "bio_area"] if pd.notna(p.at[pid, "bio_area"]) else "unmapped",
                 "modality": p.at[pid, "modality"] if pd.notna(p.at[pid, "modality"]) else "unknown",
                 "novel": pd.isna(first_fda) or pd.Timestamp(first_fda) > entry,
-                "us_site": us.get(pid, 0) >= phase, "entry_year": entry.year,
+                "us_site": (pid, phase) in us, "entry_year": entry.year,
                 "approval_date": a if pd.notna(a) else None,
-            })
+            }
+            rows.append(row)
+            if event == "advanced":  # phases skipped on the way count as successes in them
+                to = next((q for q in (2, 3) if q > phase and pd.notna(nxt.get(q))
+                           and pd.Timestamp(nxt.get(q)) == advance), 4)  # 4: approval
+                rows += [{**row, "phase": q, "credited": True} for q in range(phase + 1, to)
+                         if pd.isna(s.get(q)) and not (q == 3 and pd.isna(p.at[pid, "mondo_id"]))]
     # Rows are ordered by (entity, disease, phase), which a rebuild of the programs
     # keeps, rather than by program id, which each build reassigns.
     out = pd.DataFrame(rows)
@@ -162,10 +192,11 @@ def boot_rates(counts: np.ndarray) -> np.ndarray:
 
 def aalen_johansen(rows: pd.DataFrame) -> dict:
     """Cumulative incidence of advancement by HORIZON_YEARS per phase, with
-    suspension as a competing event and censoring at the snapshot."""
+    suspension as a competing event and censoring at the snapshot; programs that
+    skipped the phase have no time in it and are left out."""
     out = {}
     for ph in (1, 2, 3):
-        r = rows[rows.phase == ph]
+        r = rows[(rows.phase == ph) & ~rows.credited]
         if r.empty:
             continue
         code = r.event.map({"advanced": 1, "suspended": 2, "censored": 0})
@@ -180,6 +211,8 @@ def aalen_johansen(rows: pd.DataFrame) -> dict:
 def summarize(rows: pd.DataFrame, label: str) -> dict:
     r = rates(rows)
     counts, _ = resolved_counts(rows, pd.factorize(rows.moiety_id, sort=True)[0], pd.Series(True, index=rows.index))
+    resolved = (counts[:, 0].sum(axis=2) > 0).sum(axis=0)  # entities with a resolved program, per phase
+    estimable = bool((resolved >= MIN_RESOLVED_ENTITIES).all())
     d = boot_rates(counts)[:, 0]
     ci = pd.DataFrame({1: d[:, 0], 2: d[:, 1], 3: d[:, 2], "loa": d.prod(axis=1)}).quantile([0.025, 0.975])
     aj = aalen_johansen(rows)
@@ -189,11 +222,15 @@ def summarize(rows: pd.DataFrame, label: str) -> dict:
             res[f"ph{ph}_n_advanced"] = int(r.at[ph, "advanced"])
             res[f"ph{ph}_n_suspended"] = int(r.at[ph, "suspended"])
             res[f"ph{ph}_n_censored"] = int(r.at[ph, "censored"])
+            res[f"ph{ph}_n_entities_resolved"] = int(resolved[ph - 1])
             res[f"ph{ph}_rate"] = float(r.at[ph, "rate"])
-            res[f"ph{ph}_lo"], res[f"ph{ph}_hi"] = float(ci.at[0.025, ph]), float(ci.at[0.975, ph])
+            ok = resolved[ph - 1] >= MIN_RESOLVED_ENTITIES
+            res[f"ph{ph}_lo"] = float(ci.at[0.025, ph]) if ok else np.nan
+            res[f"ph{ph}_hi"] = float(ci.at[0.975, ph]) if ok else np.nan
             res[f"ph{ph}_aj"] = aj.get(ph)
-    res["loa"] = loa(rows)
-    res["loa_lo"], res["loa_hi"] = float(ci.at[0.025, "loa"]), float(ci.at[0.975, "loa"])
+    res["loa"] = loa(rows) if estimable else np.nan
+    res["loa_lo"] = float(ci.at[0.025, "loa"]) if estimable else np.nan
+    res["loa_hi"] = float(ci.at[0.975, "loa"]) if estimable else np.nan
     res["loa_aj"] = aj["loa"]
     res["n_entities"] = int(rows.moiety_id.nunique())
     return res
@@ -204,7 +241,8 @@ REASON_ORDER = [
     ("safety", "biology"), ("PK, dose or formulation", "biology"),
     ("business or strategic (explicit)", "business"), ("sponsor decision, unspecified", "unspecified"),
     ("enrollment, operational or regulatory", "operational"),
-    ("positive readout, not advanced", "other"),
+    ("positive readout, not advanced", "other"), ("other stated reason", "other"),
+    ("results posted, no reason stated, endpoint not assessable", "results_unread"),
     ("completed, no results posted, no reason stated", "unexplained"),
     ("stopped, no reason stated", "unexplained"),
 ]
@@ -212,12 +250,15 @@ OPERATIONAL = {"enrollment_feasibility", "operational_or_site", "regulatory", "m
                "replaced_by_new_protocol"}
 
 
-def trial_reason(o: pd.Series | None, status: str) -> str:
+def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
     """Reason one trial of the stopping phase gives; a trial with no outcome row or
-    no stated reason gets a "no reason stated" category."""
-    if o is None:
-        return ("completed, no results posted, no reason stated" if status == "COMPLETED"
+    no stated reason falls into a "no reason stated" category, split by whether it
+    posted results."""
+    unstated = ("results posted, no reason stated, endpoint not assessable" if has_results
+                else "completed, no results posted, no reason stated" if status == "COMPLETED"
                 else "stopped, no reason stated")
+    if o is None:
+        return unstated
     if o.stop_reason == "efficacy_futility":
         return "efficacy: stated"
     if o.efficacy_failure or o.primary_endpoint == "not_met":
@@ -234,20 +275,25 @@ def trial_reason(o: pd.Series | None, status: str) -> str:
         return "enrollment, operational or regulatory"
     if o.primary_endpoint in ("met", "mixed") or o.stop_reason == "objectives_met_or_early_success":
         return "positive readout, not advanced"
-    return ("completed, no results posted, no reason stated" if o.execution == "completed"
-            else "stopped, no reason stated")
+    if o.stop_reason == "other":
+        return "other stated reason"
+    return unstated
 
 
-def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame) -> pd.DataFrame:
-    """One reason per suspended program: the highest-priority reason among the
-    industry trials of the phase it stopped in (the first such trial by NCT id)."""
+def failure_modes(rows: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame,
+                  outcomes: pd.DataFrame) -> pd.DataFrame:
+    """One reason per suspended program: the highest-priority reason among its own
+    industry trials of the phase it stopped in (in Phase 1, also the trials that
+    marked its entry), the first such trial by NCT id."""
     rank = {r: i for i, (r, _) in enumerate(REASON_ORDER)}
     family = dict(REASON_ORDER)
     out = outcomes.set_index("nct_id")
-    stopped = rows[rows.event == "suspended"][["program_id", "phase", "moiety_id", "bio_area", "modality"]]
-    t = trials[trials.industry].merge(stopped[["program_id", "phase"]], on=["program_id", "phase"])
-    t["reason"] = [trial_reason(out.loc[n] if n in out.index else None, st)
-                   for n, st in zip(t.nct_id, t.overall_status)]
+    stopped = rows[(rows.event == "suspended") & ~rows.credited][["program_id", "phase", "moiety_id", "bio_area",
+                                                                  "modality"]]
+    counted = own_trials(progs, trials) | ((trials.phase == 1) & trials.marks_entry)
+    t = trials[trials.industry & counted].merge(stopped[["program_id", "phase"]], on=["program_id", "phase"])
+    t["reason"] = [trial_reason(out.loc[n] if n in out.index else None, st, bool(hr))
+                   for n, st, hr in zip(t.nct_id, t.overall_status, t.has_results)]
     t["results_source"] = t.nct_id.map(out.results_source)
     t["rank"] = t.reason.map(rank)
     best = t.sort_values(["rank", "nct_id"]).drop_duplicates(["program_id", "phase"])[
@@ -295,8 +341,9 @@ def scale(rows: pd.DataFrame) -> dict:
         """, frame.WINDOW).iloc[0]
     out = {k: int(v) for k, v in q.items()}
     out.update({"cohort_programs": int(rows.program_id.nunique()), "cohort_entities": int(rows.moiety_id.nunique()),
-                "cohort_rows_by_phase": {int(k): int(v) for k, v in rows.phase.value_counts().sort_index().items()},
-                "cohort_approved_programs": int(rows[rows.approval_date.notna()].program_id.nunique())})
+                "cohort_rows_by_phase": {int(k): int(v) for k, v in rows[~rows.credited].phase.value_counts().sort_index().items()},
+                "cohort_approved_programs": int(rows[rows.approval_date.notna()].program_id.nunique()),
+                "credited_rows_by_phase": {int(k): int(v) for k, v in rows[rows.credited].phase.value_counts().sort_index().items()}})
     return out
 
 
@@ -308,7 +355,7 @@ def main() -> None:
     rows.to_csv(os.path.join(OUT, "phase_cohort_rows.csv"), index=False)
 
     results = [summarize(rows, "all programs")]
-    results.append(summarize(rows[rows.us_site], "programs with a US site in the phase"))
+    results.append(summarize(rows[rows.us_site], "programs with a US-sited industry trial in the phase"))
     results.append(summarize(rows[rows.novel], "entity not yet FDA-approved at phase entry"))
     results.append(summarize(rows[~rows.novel], "entity already FDA-approved for another disease"))
     for lag in (12, 18, 36):
@@ -337,7 +384,7 @@ def main() -> None:
     by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
     by_year.to_csv(os.path.join(OUT, "ph1_outcome_by_entry_year.csv"))
 
-    modes = failure_modes(rows, trials, frame.trial_outcomes())
+    modes = failure_modes(rows, progs, trials, frame.trial_outcomes())
     modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
     tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count", fill_value=0)
     tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))

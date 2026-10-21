@@ -62,7 +62,7 @@ def program_trials() -> pd.DataFrame:
         SELECT dt.program_id, dt.nct_id, dt.phase, dt.attach, dt.marks_entry,
                s.lead_sponsor_class = 'INDUSTRY' AS industry,
                s.overall_status, s.start_date, s.primary_completion_date, s.completion_date,
-               'United States' = ANY(coalesce(s.countries, '{}')) AS us_site
+               'United States' = ANY(coalesce(s.countries, '{}')) AS us_site, s.has_results
         FROM preclin.dev_program_trial dt JOIN preclin.ctgov_study s USING (nct_id)""")
 
 

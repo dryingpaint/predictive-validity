@@ -29,7 +29,7 @@ The unit is a development program: one molecular entity developed for one diseas
 | Open Targets associations with yearly score series | `pipeline.opentargets` | `preclin.ot_association` |
 | Analyses, label-quality checks, figures, report | `report.section1`, `section2`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md` |
 
-Classification and matching are done by LLM calls recorded in `pv_evidence.llm_decision` (prompt, output schema, model, provider, input hash and code commit for every decision); a rerun reuses a decision only when its input is unchanged. Independent audits of seeded samples measure each label's accuracy (`report.quality`).
+Classification and matching are done by LLM calls recorded in `pv_evidence.llm_decision` (prompt, output schema, model, provider, input hash and code commit for every decision); a rerun reuses a decision only when its input is unchanged (intervention-name resolution keeps a name's latest decision when only its trial context changed). Independent audits of seeded samples measure the accuracy of disease mapping, entity resolution, approvals and trial outcomes (`report.quality`).
 
 To rebuild from source:
 

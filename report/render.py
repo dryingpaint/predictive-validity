@@ -106,7 +106,7 @@ def failure_table() -> str:
 
 def rs_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).dropna(subset=["rs"]).sort_values("rs", ascending=False)
-    df = df.assign(**{"Evidence (for the program's disease, as of phase entry)": df.label,
+    df = df.assign(**{"Evidence line": df.label,
                       "Programs with it": df.n_with.map("{:,}".format),
                       "LOA with / without": [f"{pct(a)} / {pct(b)}" for a, b in zip(df.loa_with, df.loa_without)],
                       "Relative success (95% CI)": [f"{r:.2f} ({lo:.2f}–{hi:.2f})"
@@ -116,7 +116,7 @@ def rs_table() -> str:
 
 def prediction_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
-    splits = {"grouped_cv": "Held-out targets", "temporal": "Temporal (2013–2016)"}
+    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (2013–2016)"}
     features = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus all evidence lines",
                 "evidence": "Evidence lines only"}
     df = df.assign(**{"Validation": df.split.map(splits), "Features": df.features.map(features),
@@ -150,7 +150,6 @@ def joint_table() -> str:
 
 def ablation_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_ablation.csv")).sort_values("auc_drop", ascending=False)
-    df = df[(df.drop_hi - df.drop_lo).abs() > 1e-9]  # a line present in too few programs changes nothing
     df = df.assign(**{"Evidence removed": df.label,
                       "AUC change (95% CI)": [f"{-d:+.3f} ({-hi:+.3f} to {-lo:+.3f})"
                                               for d, lo, hi in zip(df.auc_drop, df.drop_lo, df.drop_hi)]})

@@ -1,6 +1,7 @@
 # Rebuild the report's data and numbers from source, in dependency order.
 # Every step is idempotent: LLM steps reuse earlier validated decisions whose
-# inputs are unchanged (pipeline/llm.py), loaders upsert, and builds replace.
+# inputs are unchanged (intervention names: whatever their trial context; pipeline/llm.py),
+# loaders upsert, and builds replace.
 # Requires DATABASE_URL and ANTHROPIC_API_KEY in .env, a venv from `uv sync`,
 # and pdftoppm (poppler) and tesseract on PATH for OCR of scanned FDA letters. LLM steps use the
 # Batches API above LLM_DIRECT_MAX new items (default 100); raise it to call the API directly,

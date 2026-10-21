@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
-from report.render import BAND_NAMES
+from report.render import BAND_NAMES, stratum_name
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -27,7 +27,7 @@ FAMILY_COLORS = {  # reference categorical order; each family keeps its hue in e
     "Efficacy (stated or measured)": "#2a78d6", "Safety, PK or formulation": "#eb6834",
     "Business or strategy (explicit)": "#1baf7a", "Sponsor decision, no reason": "#eda100",
     "Enrollment, operational, regulatory": "#4a3aa7", "Positive readout, not advanced": "#008300",
-    "No reason, no results": "#c3c2b7",
+    "Other stated reason": "#6b6a65", "No reason, results posted": "#a5a39a", "No reason, no results": "#d6d5ce",
 }
 REASON_FAMILY = {
     "efficacy: stated": "Efficacy (stated or measured)",
@@ -37,6 +37,8 @@ REASON_FAMILY = {
     "sponsor decision, unspecified": "Sponsor decision, no reason",
     "enrollment, operational or regulatory": "Enrollment, operational, regulatory",
     "positive readout, not advanced": "Positive readout, not advanced",
+    "other stated reason": "Other stated reason",
+    "results posted, no reason stated, endpoint not assessable": "No reason, results posted",
     "completed, no results posted, no reason stated": "No reason, no results",
     "stopped, no reason stated": "No reason, no results",
 }
@@ -83,8 +85,8 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-def loa_bars(csv, title, name, ref, label_fmt):
-    df = pd.read_csv(os.path.join(OUT, "section1", csv)).sort_values("loa")
+def loa_bars(csv, title, name, ref):
+    df = pd.read_csv(os.path.join(OUT, "section1", csv)).dropna(subset=["loa"]).sort_values("loa")
     fig, ax = plt.subplots(figsize=(6.2, 0.38 * len(df) + 1))
     y = np.arange(len(df))
     top = df.loa.idxmax()
@@ -95,7 +97,7 @@ def loa_bars(csv, title, name, ref, label_fmt):
         if lab in ref:
             ax.plot([ref[lab]] * 2, [yi - 0.35, yi + 0.35], color=INK, linewidth=2)
         ax.text(max(hi * 100, ref.get(lab, 0)) + 0.6, yi, f"{v:.1%}", va="center", color=INK2, fontsize=8)
-    ax.set_yticks(y, [label_fmt(l) for l in df.label], color=INK)
+    ax.set_yticks(y, [stratum_name(l) for l in df.label], color=INK)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI; tick = BIO 2011–2020", color=INK2, fontsize=8)
     style(ax)
     ax.set_title(title, loc="left", color=INK, fontsize=11)
@@ -140,10 +142,8 @@ def dose_response():
 
 def main():
     failure_modes()
-    loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA,
-             lambda s: s.replace("_", " ").capitalize())
-    loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA,
-             lambda s: s.replace("_", " ").replace("car t", "CAR-T").capitalize())
+    loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
+    loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()

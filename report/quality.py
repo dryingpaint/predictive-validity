@@ -10,7 +10,8 @@
    publication_outcome_audit.json; program approvals by stratum:
    approval_audit.json): accuracy with Wilson 95% intervals, counting correct
    and acceptable verdicts as agreement.
-2. Items the model declined to answer, per LLM task.
+2. Items the model declined to answer, per LLM task, and agreement of tasks
+   re-decided under a prompt revision (RETEST) with their earlier decisions.
 3. Agreement of the trial stop reasons (preclin.trial_outcome) with the two
    earlier classifications of the same trials: the Sonnet why_stopped labels
    and the GPT-5.6 multi-axis rescore (preclin.classification), on a common
@@ -84,6 +85,29 @@ def stop_reason_agreement() -> dict:
     return out
 
 
+# Tasks re-decided under a prompt revision that changed only how lists are shown to the model:
+# task -> (earlier version, later version, the part of the output compared).
+RETEST = {"trial_purpose": ("v1", "v2", lambda o: o["purpose"]),
+          "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"]))}
+
+
+def retest() -> dict:
+    """Share of subjects decided the same way under both prompt versions (latest validated decision of each)."""
+    out = {}
+    for task, (a, b, key) in RETEST.items():
+        df = frame.query("""
+            SELECT DISTINCT ON (r.prompt_version, d.subject_key) r.prompt_version, d.subject_key, d.parsed_output
+            FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
+            WHERE d.task = %s AND r.prompt_version IN (%s, %s) AND d.validation_status = 'validated'
+            ORDER BY r.prompt_version, d.subject_key, d.created_at DESC""", (task, a, b))
+        old = {k: key(o) for v, k, o in df.itertuples(index=False) if v == a}
+        new = {k: key(o) for v, k, o in df.itertuples(index=False) if v == b}
+        both = old.keys() & new.keys()
+        out[task] = sum(old[k] == new[k] for k in both) / len(both)
+        out[f"{task}_n"] = len(both)
+    return out
+
+
 def refusals() -> dict:
     """Items the model declined to answer in the latest completed run of each LLM task."""
     return dict(frame.query("""
@@ -96,7 +120,7 @@ def refusals() -> dict:
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    numbers = {"stop_reason_agreement": stop_reason_agreement(), "refusals": refusals()}
+    numbers = {"stop_reason_agreement": stop_reason_agreement(), "refusals": refusals(), "retest": retest()}
     audits = {}
     for name in LABEL_AUDITS:  # a post-fix audit of a label replaces its pre-fix audit
         for r in json.load(open(os.path.join(AUDITS, name))):

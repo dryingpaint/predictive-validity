@@ -3,7 +3,7 @@
     python -m report.section2
 
 Unit: the Section 1 phase cohorts (development programs = molecular entity x
-MONDO disease, entering a phase in 2015-2025), restricted to entities acting on
+development indication, entering a phase in 2015-2025), restricted to entities acting on
 human protein targets. Each program carries evidence about its entity's
 primary targets *for its disease*: Open Targets associations (26.09) whose
 disease matches the program's disease on MONDO (same term, a subtype, or Lin
@@ -13,19 +13,23 @@ as-of scores undercount; a sensitivity analysis uses the release score
 (evidence known by 2026, dated or not); another counts only evidence diseases
 with Lin similarity >= 0.8 (Minikel et al.'s criterion), dropping the subtype
 rule, which is permissive for broad program diseases. Target-level properties
-(loss-of-function constraint, pan-essentiality) are not disease-specific.
+(loss-of-function constraint, pan-essentiality) are not disease-specific and
+come from the current gnomAD and DepMap releases, not as of entry.
 
 Relative success (RS) for an evidence line = LOA of programs with it / LOA of
 programs without it, LOA being the product of BIO-style phase rates; 95%
-intervals resample targets. Adjusted per-phase relative risks come from a
-Poisson model with cluster-robust errors (cluster = primary target), adjusting
-for disease area, modality, entity novelty and entry period, one evidence line
-at a time and all lines jointly. Genetic dose-response: LOA by tertile of the
-positive genetic scores. Prediction is evaluated on a fixed-horizon cohort
-(Phase 1 entry 2008-2016, approval within ten years), with features frozen at
-entry, by target-grouped cross-validation and a temporal split; each evidence
-line's contribution is the drop in cross-validated AUC when it is removed,
-with a paired target-bootstrap interval.
+intervals resample primary-target sets (an entity's primary targets taken
+together, so programs on overlapping sets such as EGFR and EGFR+ERBB2 are
+separate clusters). Adjusted per-phase relative risks come from a Poisson model
+with cluster-robust errors (cluster = primary-target set), adjusting for disease
+area, modality, entity novelty and entry period, one evidence line at a time and
+all lines jointly. Genetic dose-response: LOA by tertile of the positive genetic
+scores. Prediction is evaluated on a fixed-horizon cohort (Phase 1 entry
+2008-2016, approval within ten years), with the Open Targets evidence and
+novelty as of entry, by cross-validation grouped by primary-target set and a
+temporal split; each evidence line's contribution is the drop in
+cross-validated AUC when it is removed (human genetics: GWAS and rare-variant
+evidence together), with a paired bootstrap interval.
 """
 from __future__ import annotations
 
@@ -147,11 +151,17 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(out)
 
 
+def n_genes(targets: pd.Series) -> int:
+    """Distinct genes among primary-target sets ("EGFR+ERBB2" holds two)."""
+    return len({g for t in targets.dropna() for g in t.split("+")})
+
+
 def relative_success(rows: pd.DataFrame, feature: str) -> dict:
     has = rows[feature] > 0
     if rows[has].program_id.nunique() < MIN_PROGRAMS_RS or has.all():
         return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": 0.0,
-                "n_with": int(has.sum()), "n_without": int((~has).sum()), "n_targets_with": 0,
+                "n_with": int(rows[has].program_id.nunique()), "n_without": int(rows[~has].program_id.nunique()),
+                "n_targets_with": n_genes(rows[has].target),
                 "loa_with": np.nan, "loa_without": np.nan, "rs": np.nan, "rs_lo": np.nan, "rs_hi": np.nan}
     counts, groups = resolved_counts(rows, pd.factorize(rows.target, use_na_sentinel=False)[0], has)
     draws = boot_rates(counts).prod(axis=-1)
@@ -164,7 +174,7 @@ def relative_success(rows: pd.DataFrame, feature: str) -> dict:
     label = LABELS.get(feature.removesuffix("_untimed").removesuffix("_strict"), feature)
     return {"feature": feature, "label": label, "threshold": 0.0,
             "n_with": int(with_.program_id.nunique()), "n_without": int(without.program_id.nunique()),
-            "n_targets_with": int(with_.target.nunique()),
+            "n_targets_with": n_genes(with_.target),
             "loa_with": loa_with, "loa_without": loa_without, "rs": loa_with / loa_without,
             "rs_lo": float(lo), "rs_hi": float(hi)}
 
@@ -186,7 +196,7 @@ def dose_response(rows: pd.DataFrame, feature: str) -> pd.DataFrame:
         g = rows[band == lab]
         d = draws[:, groups.index(lab)] if lab in groups else np.array([np.nan])
         out.append({"feature": feature, "band": lab, "score_from": lo, "score_to": hi,
-                    "n_programs": int(g.program_id.nunique()), "n_targets": int(g.target.nunique()), "loa": loa(g),
+                    "n_programs": int(g.program_id.nunique()), "n_targets": n_genes(g.target), "loa": loa(g),
                     "loa_lo": float(np.nanpercentile(d, 2.5)), "loa_hi": float(np.nanpercentile(d, 97.5))})
     return pd.DataFrame(out)
 
@@ -235,20 +245,26 @@ def resample_targets(groups: np.ndarray, y: np.ndarray, rng: np.random.Generator
 
 def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Fixed-horizon prediction: programs entering Phase 1 in 2008-2016, outcome =
-    FDA approval for the disease within ten years; features frozen at entry."""
+    FDA approval for the disease within ten years; Open Targets evidence and
+    novelty as of entry. Human genetics enters as its parts (GWAS, rare-variant)
+    and is removed as a group; a line with fewer than MIN_PROGRAMS_RS programs
+    carrying it is left out."""
     rows = phase_rows(progs, trials, snap, window=PREDICT_WINDOW)
     rows = rows[rows.phase == 1]
     ev = target_evidence(rows, progs)
     d = rows.merge(ev, on=["program_id", "phase"])
     appr = pd.to_datetime(d.approval_date)
     d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= HORIZON_DAYS)).astype(int)
-    X_ev = (d[FEATURES] > 0).astype(float)
+    model_features = [f for f in FEATURES if f != "genetic_any" and (d[f] > 0).sum() >= MIN_PROGRAMS_RS]
+    ablations = {f: [f] for f in model_features}
+    ablations["genetic_any"] = [f for f in ("genetic_gwas", "genetic_rare") if f in model_features]
+    X_ev = (d[model_features] > 0).astype(float)
     X_cov = pd.get_dummies(d[["bio_area", "modality"]], drop_first=False).astype(float)
     X_cov["novel"] = d.novel.astype(float)
     X_cov["entry_year"] = d.entry_year - 2008
     sets = {"covariates": X_cov, "covariates+evidence": pd.concat([X_cov, X_ev], axis=1), "evidence": X_ev}
-    for f in FEATURES:
-        sets[f"covariates+evidence-{f}"] = pd.concat([X_cov, X_ev.drop(columns=f)], axis=1)
+    for f, cols in ablations.items():
+        sets[f"covariates+evidence-{f}"] = pd.concat([X_cov, X_ev.drop(columns=cols)], axis=1)
     groups = pd.factorize(d.target, sort=True)[0]
 
     def fit_predict(X, train, test):
@@ -283,7 +299,7 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
     full = preds[("grouped_cv", "covariates+evidence")][1]
     y = d.y.to_numpy()
     ablation = []
-    for f in FEATURES:
+    for f in [f for f in FEATURES if f in ablations]:
         reduced = preds[("grouped_cv", f"covariates+evidence-{f}")][1]
         delta = roc_auc_score(y, full) - roc_auc_score(y, reduced)
         diffs = [roc_auc_score(y[m], full[m]) - roc_auc_score(y[m], reduced[m])
@@ -335,7 +351,7 @@ def main() -> None:
 
     keyed = lambda df, *cols: {"_".join(str(r[c]) for c in cols): r for r in df.to_dict(orient="records")}
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
-               "n_targets": int(data.target.nunique()),
+               "n_targets": n_genes(data.target),
                "evidence_coverage_ph1": {f: float((data[data.phase == 1][f] > 0).mean()) for f in FEATURES},
                "rs": keyed(rs, "feature"), "rs_untimed": keyed(untimed, "feature"), "rs_lin_only": keyed(strict, "feature"),
                "adjusted_rr": keyed(adj, "feature", "phase"), "joint_rr": keyed(joint, "feature", "phase"),
