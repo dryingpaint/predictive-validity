@@ -1,0 +1,22 @@
+[project]
+name = "predictive-validity"
+version = "0.1.0"
+description = "Which lines of preclinical evidence predict clinical success: data pipeline and analyses"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.15",
+    "beautifulsoup4>=4.15",
+    "httpx2>=2.15",
+    "lxml>=5.3",
+    "numpy>=2.5",
+    "openai>=3.35",
+    "psycopg2-binary>=2.9",
+    "pypdf>=6.21",
+    "python-dotenv[cli]>=1.2",
+    "reportlab>=5.0",
+    "requests>=2.34",
+    "scipy>=1.18",
+]
+
+[tool.uv]
+package = false
