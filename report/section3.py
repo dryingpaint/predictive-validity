@@ -33,6 +33,8 @@ from report.disease_match import Mondo
 from report.section1 import SEED, failure_modes, phase_rows
 
 OUT = os.path.join(frame.REPO, "report", "output", "section3")
+CASE_AUDIT = os.path.join(frame.REPO, "report", "audits", "section3_cases.json")
+BIOLOGY_CODES = ("F2", "F3", "F4", "F5")  # failures that test the evidence's biological claim
 WINDOW = (date(2015, 1, 1), date(2020, 10, 20))  # four years of follow-up before the 24-month inactivity cutoff
 HORIZON_YEARS = 4.0
 TRIALS_FROM = date(2010, 1, 1)
@@ -697,6 +699,32 @@ def permutation_null(com: pd.DataFrame, ev: Evidence, rng: np.random.Generator) 
             "p_one_sided": float((np.sum(ok >= observed) + 1) / (len(ok) + 1)), "n_permutations": int(len(ok))}
 
 
+def case_audit(cases: pd.DataFrame) -> dict:
+    """Agreement of the agent-verified case studies (report/audits/section3_cases.json) with the
+    pipeline: outcome within four years, the evidence claim and its date, and the failure codes.
+    The audit must cover exactly the cases picked."""
+    a = pd.DataFrame(json.load(open(CASE_AUDIT)))
+    picked = {f"{r}:{int(p)}" for r, p in zip(cases.rule_key, cases.program_id)}
+    if set(a.case_id) != picked:
+        raise ValueError(f"case audit covers {len(set(a.case_id) & picked)} of {len(picked)} picked cases")
+    prog = a.drop_duplicates("program_id")
+    failed = prog[prog.advanced_within_4y == "no"]
+    return {"cases": int(len(a)), "programs": int(len(prog)),
+            "outcome_correct": int((prog.pipeline_correct == "yes").sum()),
+            "outcome_wrong": int((prog.pipeline_correct == "no").sum()),
+            "claim_supported": int(a.claim_supported.eq("yes").sum()),
+            "claim_partial": int(a.claim_supported.eq("partial").sum()),
+            "claim_not_supported": int(a.claim_supported.eq("no").sum()),
+            "predates_entry": int(a.predates_entry.eq("yes").sum()),
+            "failed_programs": int(len(failed)),
+            "failure_codes": failed.failure_code.value_counts().to_dict(),
+            "biology_failures": int(failed.failure_code.isin(BIOLOGY_CODES).sum()),
+            "by_rule": {r: {"cases": int(len(g)), "advanced": int((g.advanced_within_4y == "yes").sum()),
+                            "claim_supported": int(g.claim_supported.isin(["yes", "partial"]).sum()),
+                            "biology_failures": int(g.failure_code.isin(BIOLOGY_CODES).sum())}
+                        for r, g in a.groupby("rule")}}
+
+
 def jsonable(o):
     if isinstance(o, dict):
         return {str(k): jsonable(v) for k, v in o.items()}
@@ -818,8 +846,8 @@ def main() -> None:
     classes = pd.Series([c for cs in com.classes for c in cs]).value_counts().index[:5]
     n["influence"] = {
         "most_influential": infl[0][0], "rr_without": infl[0][1], "rr_range": [infl[0][1], infl[-1][1]],
-        "without_class": {c: coef(poisson(com[~com.classes.map(lambda cs: c in cs)], "s4", ["g3", "g2", "g1"]), "g3")
-                          for c in classes}}
+        "without_class": {c.replace(" ", "_"): coef(poisson(com[~com.classes.map(lambda cs: c in cs)], "s4",
+                                                            ["g3", "g2", "g1"]), "g3") for c in classes}}
     n["permutation"] = permutation_null(com, ev, rng)
 
     # Not in the plan: direction of effect from the drug-blind mechanism and mouse-model labels
@@ -866,6 +894,7 @@ def main() -> None:
     # The split and the case draws get their own generators, so they do not move with the analyses above.
     rule_table, exposed = rules(c2, np.random.default_rng(SEED))
     rule_table.to_csv(os.path.join(OUT, "rules.csv"), index=False)
+    n["rules"] = {r["rule"]: r for r in rule_table.to_dict("records")}
     missed = set(frame.query("""SELECT o.nct_id FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
                                  WHERE o.primary_endpoint IN ('not_met', 'mixed')
                                    AND s.allocation = 'RANDOMIZED'""").nct_id)
@@ -879,6 +908,8 @@ def main() -> None:
            "entry", "event", "years", "s4", "reason", "reason_nct", "g3", "gwas", "gwas_strong", "mendelian",
            "somatic_concordant", "mgi", "reactome", "b1", "mechanism", "mouse_direction"]] \
         .to_csv(os.path.join(OUT, "cases.csv"), index=False)
+    if os.path.exists(CASE_AUDIT):
+        n["case_audit"] = case_audit(cases)
     d.drop(columns=["classes"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     tf.to_csv(os.path.join(OUT, "trials.csv"), index=False)
     with open(os.path.join(OUT, "numbers.json"), "w") as f:

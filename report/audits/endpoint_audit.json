@@ -1,0 +1,365 @@
+{
+ "description": "Seeded sample (numpy default_rng(20261021)) of 40 trials from report/output/section3/trials.csv, stratified by endpoint class (4 each from B3-B6, 3 from each other class), judged by a review agent against the codebook in pipeline/outcomes.py ENDPOINT_SYSTEM from the registered primary outcomes, the conditions and the classifier's stated rationale.",
+ "trials": [
+  {
+   "nct_id": "NCT02170025",
+   "stored_class": "B1_target_engagement",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": false,
+   "correct_class": "B2_exploratory_biomarker",
+   "note": "Sweat chloride is not riociguat's target or pathway; under the codebook it is an exploratory biomarker."
+  },
+  {
+   "nct_id": "NCT04564833",
+   "stored_class": "B1_target_engagement",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B1_target_engagement",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04221451",
+   "stored_class": "B1_target_engagement",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B1_target_engagement",
+   "note": "CSF GM2 for venglustat: target engagement or exploratory biomarker"
+  },
+  {
+   "nct_id": "NCT01357850",
+   "stored_class": "B2_exploratory_biomarker",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B2_exploratory_biomarker",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01428453",
+   "stored_class": "B2_exploratory_biomarker",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B2_exploratory_biomarker",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04269408",
+   "stored_class": "B2_exploratory_biomarker",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B2_exploratory_biomarker",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01143246",
+   "stored_class": "B3_regulatory_surrogate",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B3_regulatory_surrogate",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01709864",
+   "stored_class": "B3_regulatory_surrogate",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B3_regulatory_surrogate",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04166773",
+   "stored_class": "B3_regulatory_surrogate",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B3_regulatory_surrogate",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02652819",
+   "stored_class": "B3_regulatory_surrogate",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B3_regulatory_surrogate",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04236440",
+   "stored_class": "B4_objective_physiological",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B4_objective_physiological",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03938545",
+   "stored_class": "B4_objective_physiological",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B4_objective_physiological",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01794208",
+   "stored_class": "B4_objective_physiological",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B4_objective_physiological",
+   "note": "follicle count: objective physiology or regulatory surrogate"
+  },
+  {
+   "nct_id": "NCT03715998",
+   "stored_class": "B4_objective_physiological",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B4_objective_physiological",
+   "note": null
+  },
+  {
+   "nct_id": "NCT05149313",
+   "stored_class": "B5_clinician_scale",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B5_clinician_scale",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04162769",
+   "stored_class": "B5_clinician_scale",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B5_clinician_scale",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01727726",
+   "stored_class": "B5_clinician_scale",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B5_clinician_scale",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01810380",
+   "stored_class": "B5_clinician_scale",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B5_clinician_scale",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02655224",
+   "stored_class": "B6_patient_reported",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B6_patient_reported",
+   "note": null
+  },
+  {
+   "nct_id": "NCT04788511",
+   "stored_class": "B6_patient_reported",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B6_patient_reported",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01453725",
+   "stored_class": "B6_patient_reported",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B6_patient_reported",
+   "note": "ASAS20: patient-reported or clinician composite"
+  },
+  {
+   "nct_id": "NCT03002974",
+   "stored_class": "B6_patient_reported",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B6_patient_reported",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02238483",
+   "stored_class": "B7_disease_events",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B7_disease_events",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01080131",
+   "stored_class": "B7_disease_events",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B7_disease_events",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03927157",
+   "stored_class": "B7_disease_events",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B7_disease_events",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03315143",
+   "stored_class": "B8_hard_outcome",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B8_hard_outcome",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03766581",
+   "stored_class": "B8_hard_outcome",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B8_hard_outcome",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01145560",
+   "stored_class": "B8_hard_outcome",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B8_hard_outcome",
+   "note": "ventilator-free days: hard outcome under the composite-with-death rule"
+  },
+  {
+   "nct_id": "NCT03357614",
+   "stored_class": "B9_infection_cure",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B9_infection_cure",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03317223",
+   "stored_class": "B9_infection_cure",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B9_infection_cure",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01980095",
+   "stored_class": "B9_infection_cure",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B9_infection_cure",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02282020",
+   "stored_class": "O1_tumor_response",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O1_tumor_response",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03578367",
+   "stored_class": "O1_tumor_response",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O1_tumor_response",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03280563",
+   "stored_class": "O1_tumor_response",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O1_tumor_response",
+   "note": null
+  },
+  {
+   "nct_id": "NCT01605396",
+   "stored_class": "O2_progression_free",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O2_progression_free",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03084939",
+   "stored_class": "O2_progression_free",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O2_progression_free",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02314117",
+   "stored_class": "O2_progression_free",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O2_progression_free",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02106546",
+   "stored_class": "O3_overall_survival",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O3_overall_survival",
+   "note": null
+  },
+  {
+   "nct_id": "NCT03941093",
+   "stored_class": "O3_overall_survival",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O3_overall_survival",
+   "note": null
+  },
+  {
+   "nct_id": "NCT02753127",
+   "stored_class": "O3_overall_survival",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "O3_overall_survival",
+   "note": null
+  }
+ ]
+}

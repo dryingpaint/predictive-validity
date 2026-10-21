@@ -56,21 +56,28 @@ programs:
 	$(RUN) pipeline.programs indications
 	$(RUN) pipeline.programs build
 
-# Labels on programs: approval, modality, disease area, trial outcomes, targets.
+# Labels on programs: approval, modality, disease area, trial outcomes and endpoints, targets.
 labels:
 	$(RUN) pipeline.approvals judge
 	$(RUN) pipeline.drugs modality
 	$(RUN) pipeline.indications areas
 	$(RUN) pipeline.outcomes classify
+	$(RUN) pipeline.outcomes endpoints
 	$(RUN) pipeline.targets resolve
 
+# Open Targets associations and evidence rows, then the germline mechanism of each target in each
+# program disease and the orientation of each mouse model, both decided without the drug.
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
+	$(RUN) pipeline.opentargets evidence
+	$(RUN) pipeline.targets mechanism
+	$(RUN) pipeline.targets mouse
 
 report:
 	$(RUN) report.section1
 	$(RUN) report.section2
+	$(RUN) report.section3
 	$(RUN) report.quality
 	$(RUN) report.figures
 	$(RUN) report.render

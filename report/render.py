@@ -204,7 +204,7 @@ def s3_hypotheses_table() -> str:
     n = s3_numbers()
     h4 = n["h4"]["fdaaa"]["interaction_per_step"]
     rows = [
-        ("H1", "Common-disease regime: genetics for the disease (G3) vs none (G0), advancing within 4 years of Phase 2",
+        ("H1", "Outside oncology: genetics for the disease (G3) vs no germline genetics (G0), advancing within 4 years of Phase 2",
          "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
         ("H2", "Same target, different diseases: G3 vs not (conditional logit)", "odds ratio", rr_ci(n["h2"], "or"),
          n["h2"].get("p")),
@@ -278,7 +278,9 @@ def s3_rules_table() -> str:
     for r in df.itertuples():
         def split(name):
             v = getattr(r, f"{name}_rr")
-            return "–" if pd.isna(v) else f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
+            if pd.isna(v) or v == 0:
+                return "–" if pd.isna(v) else "none advanced"
+            return f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
         rows.append([f"{r.rule}{'' if r.registered else '*'}", r.label, regime[r.regime],
                      f"{int(r.n):,} ({int(r.n_targets):,})", pct(r.ppv, 0) if r.n else "–",
                      pct(r.coverage, 0), "–" if pd.isna(r.adj_rr) else f"{r.adj_rr:.2f} ({r.adj_lo:.2f}–{r.adj_hi:.2f})",
@@ -289,13 +291,57 @@ def s3_rules_table() -> str:
                                              "Discovery RR (90%)", "Held-out RR (90%)", "Meets the bar"]))
 
 
+S3_RULE_NAMES = {"M3": "M3 Mendelian evidence, non-hereditary disease", "M4": "M4 GWAS, locus-to-gene ≥ 0.8",
+                 "M10": "M10 Reactome pathway", "B1": "B1 Approved drug on the target, related disease",
+                 "P2": "P2* Germline mechanism concordant with the drug"}
+CODE_NAMES = {"F1": "F1 exposure", "F2": "F2 biology did not translate", "F3": "F3 wrong population",
+              "F4": "F4 surrogate gap", "F5": "F5 on-target toxicity", "F6": "F6 off-target toxicity",
+              "F7": "F7 trial design", "F8": "F8 commercial", "unknown": "unknown", "not_a_failure": "–"}
+
+
+def s3_case_audit() -> pd.DataFrame:
+    return pd.DataFrame(json.load(open(os.path.join(frame.REPO, "report", "audits", "section3_cases.json"))))
+
+
+def s3_cases_table() -> str:
+    a = s3_case_audit()
+    rows = []
+    for rule, g in a.groupby("rule", sort=False):
+        failed = g[g.advanced_within_4y == "no"]
+        codes = failed.failure_code.value_counts()
+        rows.append([S3_RULE_NAMES.get(rule, rule), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
+                     f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
+                     f"partly)", f"{(g.predates_entry == 'yes').sum()}",
+                     ", ".join(f"{'still progressing' if c == 'not_a_failure' else c}: {k}" for c, k in codes.items())
+                     or "–"])
+    return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
+                                             "Evidence claim verified", "Evidence published before entry",
+                                             "Why the others stopped (codes)"]))
+
+
+def s3_case_cards() -> str:
+    a = s3_case_audit()
+    rows = []
+    for r in a.itertuples():
+        source = (r.evidence_source or "").split("](")[0].strip("[ ")[:140]
+        rows.append([S3_RULE_NAMES.get(r.rule, r.rule).split()[0], f"{r.entity} ({', '.join(r.targets)})", r.disease,
+                     r.phase2_entry, f"{r.claim_supported}; {source}" + (f" ({r.evidence_year})" if r.evidence_year else ""),
+                     ("advanced" if r.advanced_within_4y == "yes" else "did not advance" if r.advanced_within_4y == "no"
+                      else "unclear") + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
+                     CODE_NAMES.get(r.failure_code, r.failure_code)])
+    return table(pd.DataFrame(rows, columns=["Rule", "Drug (target, action)", "Disease", "Phase 2 entry",
+                                             "Evidence claim: verdict; earliest source", "Outcome (verified)",
+                                             "Failure"]))
+
+
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
-          "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table}
+          "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table, "S3_CASES_TABLE": s3_cases_table,
+          "S3_CASE_CARDS": s3_case_cards}
 
 
 def flatten(d, prefix=""):
