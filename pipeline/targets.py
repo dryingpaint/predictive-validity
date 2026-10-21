@@ -141,15 +141,17 @@ def resolve(_args) -> None:
 
 MECHANISM_SYSTEM = """You state how germline variation in a human gene acts on a disease, from the human genetics literature. You are not told about any drug, and you answer from genetics alone.
 
+- germline_link: established when inherited (germline) variants in this gene are shown to cause this disease or change its risk; somatic_only when the gene's link to the disease rests on somatic tumour mutations, fusions or mosaic variants (for example FLT3 or IDH1 in leukaemia), which do not count here; none otherwise. Evidence for a different disease does not count, however related (a coronary-disease variant says nothing about ulcerative colitis unless shown for ulcerative colitis).
 - risk_mechanism: how the variants that cause the disease or raise its risk change the gene product's function. loss_of_function: null, hypomorphic, haploinsufficient or biallelic loss, or lower expression. gain_of_function: higher or constitutive activity, toxic gain (misfolding, aggregation), neomorphic activity, or higher expression. dominant_negative: a mutant product that interferes with the wild-type protein. mixed: variants acting in opposite directions on function both cause or raise risk of this disease. unknown: a genetic association is established but the direction of its effect on the gene's function is not (for example a GWAS locus without functional follow-up). none: no established germline link between this gene and this disease.
 - protective: loss_of_function_protective when variants that lower the gene's function are established to protect against this disease (for example PCSK9 nonsense variants and coronary disease); gain_of_function_protective when variants that raise its function protect; none_known otherwise.
-- established_year: the year the risk mechanism or the protective effect you report was first published with reasonable support (the earlier of the two when both); null when risk_mechanism is unknown or none and no protective effect is known.
+- established_year: the year of the first publication that showed the risk mechanism or the protective effect you report for this gene in this disease (the earlier of the two when both); a later paper that only confirmed it does not move the year, and a paper on another disease does not count. Null when risk_mechanism is unknown or none and no protective effect is known.
 - confidence: high for replicated human genetic and functional evidence, medium for consistent but limited evidence, low otherwise.
-- basis: one or two sentences naming the key finding (first author and year when you know them)."""
+- basis: one or two sentences naming the publication that sets established_year (first author and year) and its finding for this disease."""
 
 MECHANISM_SCHEMA = {
     "type": "object",
     "properties": {
+        "germline_link": {"type": "string", "enum": ["established", "somatic_only", "none"]},
         "risk_mechanism": {"type": "string", "enum": ["loss_of_function", "gain_of_function", "dominant_negative",
                                                        "mixed", "unknown", "none"]},
         "protective": {"type": "string", "enum": ["loss_of_function_protective", "gain_of_function_protective",
@@ -158,7 +160,7 @@ MECHANISM_SCHEMA = {
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
         "basis": {"type": "string"},
     },
-    "required": ["risk_mechanism", "protective", "established_year", "confidence", "basis"],
+    "required": ["germline_link", "risk_mechanism", "protective", "established_year", "confidence", "basis"],
     "additionalProperties": False,
 }
 
@@ -170,6 +172,8 @@ def render_mechanism(p: dict) -> str:
 
 def validate_mechanism(p: dict, out: dict) -> None:
     directed = out["risk_mechanism"] not in ("unknown", "none") or out["protective"] != "none_known"
+    if directed and out["germline_link"] != "established":
+        raise ValueError(f"a mechanism without an established germline link ({out['germline_link']})")
     year = out["established_year"]
     if directed and year is None:
         raise ValueError("a stated mechanism needs the year it was established")
@@ -177,10 +181,10 @@ def validate_mechanism(p: dict, out: dict) -> None:
         raise ValueError(f"established_year {year}")
 
 
-MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v1", schema_version="v1",
+MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v2", schema_version="v2",
                           system=MECHANISM_SYSTEM, schema=MECHANISM_SCHEMA, render=render_mechanism,
                           validate=validate_mechanism, subject_type="gene_disease", model="claude-opus-5-5",
-                          effort="low", max_tokens=1500)
+                          effort="medium", max_tokens=4000)
 GERMLINE_SOURCES = ["gwas_credible_sets", "gene_burden", "eva", "orphanet", "gene2phenotype", "clingen",
                     "genomics_england", "uniprot_variants", "uniprot_literature"]
 
@@ -227,16 +231,17 @@ MOUSE_SYSTEM = """You compare mouse models with a human disease. You are told a 
 
 For each model, by its number:
 - perturbation: reduced_function for knockouts, knockdowns, hypomorphs, null or loss-of-function point mutants (including heterozygotes); increased_function for transgenic overexpression, constitutively active or gain-of-function mutants, and toxic mutant transgenes (for example mutant SOD1 or mutant APP overexpression); other when the effect on the gene's function cannot be told (humanised alleles, reporters, unknown chemically induced alleles).
-- relation: mimics_disease when the listed phenotypes resemble the disease (same direction of change: e.g. increased circulating cholesterol for hypercholesterolaemia, neurodegeneration for ALS); opposes_disease when they are its opposite or protective (decreased circulating cholesterol for hypercholesterolaemia, resistance to diet-induced obesity for obesity, decreased bone loss for osteoporosis); unrelated when they neither resemble nor oppose it."""
+- relation, judged against the disease's defining feature (bleeding for haemophilia, thrombosis for thrombophilia, seizures for epilepsy, leukaemic blasts for leukaemia, high LDL cholesterol for hypercholesterolaemia): mimics_disease when the phenotypes show that feature in the same direction (increased circulating cholesterol for hypercholesterolaemia, motor neuron degeneration for ALS); opposes_disease when they show its opposite or protection from it (decreased circulating cholesterol for hypercholesterolaemia, thrombosis for a bleeding disorder, resistance to diet-induced obesity for obesity); unrelated when they show neither, including lethality, growth defects and abnormalities of other systems."""
 
 MOUSE_SCHEMA = {
     "type": "object",
     "properties": {"models": {"type": "array", "items": {
         "type": "object",
         "properties": {"index": {"type": "integer"},
+                       "defining_feature": {"type": "string"},
                        "perturbation": {"type": "string", "enum": ["reduced_function", "increased_function", "other"]},
                        "relation": {"type": "string", "enum": ["mimics_disease", "opposes_disease", "unrelated"]}},
-        "required": ["index", "perturbation", "relation"], "additionalProperties": False}}},
+        "required": ["index", "defining_feature", "perturbation", "relation"], "additionalProperties": False}}},
     "required": ["models"],
     "additionalProperties": False,
 }
@@ -255,9 +260,9 @@ def validate_mouse(p: dict, out: dict) -> None:
         raise ValueError(f"models {[m['index'] for m in out['models']]} for {len(p['models'])} given")
 
 
-MOUSE_TASK = llm.Task(name="mouse_model_relation", prompt_version="v1", schema_version="v1", system=MOUSE_SYSTEM,
+MOUSE_TASK = llm.Task(name="mouse_model_relation", prompt_version="v2", schema_version="v2", system=MOUSE_SYSTEM,
                       schema=MOUSE_SCHEMA, render=render_mouse, validate=validate_mouse, subject_type="gene_disease",
-                      model="claude-opus-5-5", effort="low", max_tokens=2500)
+                      model="claude-opus-5-5", effort="medium", max_tokens=6000)
 
 
 def mouse(_args) -> None:
