@@ -2,6 +2,7 @@
 
     python -m pipeline.targets resolve     # LLM: human protein targets (HGNC) -> preclin.moiety_target
     python -m pipeline.targets mechanism   # LLM: germline mechanism per (target, disease) -> preclin.gene_disease_mechanism
+    python -m pipeline.targets mouse       # LLM: mouse model vs disease, per model -> preclin.mouse_model_relation
 
 resolve: the LLM sees the entity's names, modality, the ChEMBL mechanism-of-action
 records attached to any of its intervention names, and trial titles. Every
@@ -19,6 +20,14 @@ variants are known, and when that was established. Open Targets' own direction
 field follows variant consequence alone, so a few truncating ClinVar variants
 make a gain-of-function disease gene such as PCSK9, MYH7 or TTR read as loss of
 function.
+
+mouse: for the same (target, disease) pairs, every mouse model Open Targets links
+to the disease or a subtype (IMPC and MGI, matched by PhenoDigm) is shown with its
+allele and the phenotypes that matched; the LLM, again without any drug, says
+whether the model lowers or raises the gene's function and whether those
+phenotypes resemble the disease or its opposite (a knockout with low LDL
+cholesterol opposes hypercholesterolaemia). PhenoDigm scores phenotype
+similarity without direction, so both kinds match.
 """
 from __future__ import annotations
 
@@ -214,11 +223,99 @@ def mechanism(_args) -> None:
     print(f"pairs={len(items)} classified={len(rows)}")
 
 
+MOUSE_SYSTEM = """You compare mouse models with a human disease. You are told a gene, a disease and the mouse models of that gene (allele and the phenotypes that an automated matcher linked to the disease). You are not told about any drug.
+
+For each model, by its number:
+- perturbation: reduced_function for knockouts, knockdowns, hypomorphs, null or loss-of-function point mutants (including heterozygotes); increased_function for transgenic overexpression, constitutively active or gain-of-function mutants, and toxic mutant transgenes (for example mutant SOD1 or mutant APP overexpression); other when the effect on the gene's function cannot be told (humanised alleles, reporters, unknown chemically induced alleles).
+- relation: mimics_disease when the listed phenotypes resemble the disease (same direction of change: e.g. increased circulating cholesterol for hypercholesterolaemia, neurodegeneration for ALS); opposes_disease when they are its opposite or protective (decreased circulating cholesterol for hypercholesterolaemia, resistance to diet-induced obesity for obesity, decreased bone loss for osteoporosis); unrelated when they neither resemble nor oppose it."""
+
+MOUSE_SCHEMA = {
+    "type": "object",
+    "properties": {"models": {"type": "array", "items": {
+        "type": "object",
+        "properties": {"index": {"type": "integer"},
+                       "perturbation": {"type": "string", "enum": ["reduced_function", "increased_function", "other"]},
+                       "relation": {"type": "string", "enum": ["mimics_disease", "opposes_disease", "unrelated"]}},
+        "required": ["index", "perturbation", "relation"], "additionalProperties": False}}},
+    "required": ["models"],
+    "additionalProperties": False,
+}
+MAX_MODELS = 12  # per (gene, disease), best PhenoDigm match first
+
+
+def render_mouse(p: dict) -> str:
+    models = "\n".join(f"{i}. allele {m['allele']} (background {m['background']}): {'; '.join(m['phenotypes'])}"
+                       for i, m in enumerate(p["models"], 1))
+    return (f"Gene: {p['symbol']} ({p['gene_name']})\nDisease: {p['disease']} ({p['mondo_id']})\n"
+            f"Disease definition: {p['definition'] or 'none given'}\n\nMouse models:\n{models}")
+
+
+def validate_mouse(p: dict, out: dict) -> None:
+    if sorted(m["index"] for m in out["models"]) != list(range(1, len(p["models"]) + 1)):
+        raise ValueError(f"models {[m['index'] for m in out['models']]} for {len(p['models'])} given")
+
+
+MOUSE_TASK = llm.Task(name="mouse_model_relation", prompt_version="v1", schema_version="v1", system=MOUSE_SYSTEM,
+                      schema=MOUSE_SCHEMA, render=render_mouse, validate=validate_mouse, subject_type="gene_disease",
+                      model="claude-opus-5-5", effort="low", max_tokens=2500)
+
+
+def mouse(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            WITH ev AS (
+                SELECT e.target_ensembl, m.term, e.detail->>'biologicalModelId' AS model_id,
+                       e.detail->>'biologicalModelAllelicComposition' AS allele,
+                       e.detail->>'biologicalModelGeneticBackground' AS background,
+                       e.detail->'model_phenotypes' AS phenotypes, e.resource_score
+                FROM preclin.ot_evidence e JOIN preclin.ot_disease od USING (disease_id)
+                CROSS JOIN LATERAL unnest(od.mondo_ids) AS m(term)
+                WHERE e.datasource = 'impc' AND e.detail ? 'biologicalModelId'),
+            covered AS (
+                SELECT ev.*, ev.term AS mondo_id FROM ev
+                UNION ALL
+                SELECT ev.*, a.ancestor_id FROM ev
+                JOIN preclin.ontology_ancestor a ON a.ontology = 'MONDO' AND a.term_id = ev.term),
+            pairs AS (
+                SELECT DISTINCT t.ensembl_id, t.symbol, t.name, p.mondo_id
+                FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
+                JOIN preclin.moiety_target mt USING (moiety_id) JOIN public.targets t ON t.id = mt.target_id
+                WHERE mt.is_primary AND m.target_kind = 'human_protein' AND p.mondo_id IS NOT NULL),
+            best AS (
+                SELECT DISTINCT ON (c.target_ensembl, c.mondo_id, c.model_id) c.target_ensembl, c.mondo_id, c.model_id,
+                       c.allele, c.background, c.phenotypes, c.resource_score
+                FROM covered c JOIN pairs p ON p.ensembl_id = c.target_ensembl AND p.mondo_id = c.mondo_id
+                ORDER BY c.target_ensembl, c.mondo_id, c.model_id, c.resource_score DESC NULLS LAST)
+            SELECT b.target_ensembl, p.symbol, p.name, b.mondo_id, o.label, o.definition, b.model_id, b.allele,
+                   b.background, b.phenotypes
+            FROM best b JOIN pairs p ON p.ensembl_id = b.target_ensembl AND p.mondo_id = b.mondo_id
+            JOIN preclin.ontology_term o ON o.ontology = 'MONDO' AND o.term_id = b.mondo_id
+            ORDER BY b.target_ensembl, b.mondo_id, b.resource_score DESC NULLS LAST, b.model_id""")
+        items: dict = {}
+        for ens, symbol, name, mondo, label, definition, model_id, allele, background, phenotypes in cur.fetchall():
+            item = items.setdefault(f"{ens}|{mondo}", {"symbol": symbol, "gene_name": name or "", "mondo_id": mondo,
+                                                       "disease": label, "definition": (definition or "")[:500],
+                                                       "models": []})
+            if len(item["models"]) < MAX_MODELS:
+                item["models"].append({"id": model_id, "allele": allele, "background": background or "unknown",
+                                       "phenotypes": (phenotypes or [])[:8]})
+    run_id = llm.run(MOUSE_TASK, items)
+    rows = [(*key.split("|"), items[key]["models"][m["index"] - 1]["id"], m["perturbation"], m["relation"], did)
+            for key, did, o in llm.decisions(run_id) for m in o["models"]]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.mouse_model_relation")
+        execute_values(cur, """INSERT INTO preclin.mouse_model_relation (ensembl_id, mondo_id, model_id, perturbation,
+                                 relation, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
+        conn.commit()
+    print(f"pairs={len(items)} models={len(rows)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("resolve").set_defaults(fn=resolve)
     sub.add_parser("mechanism").set_defaults(fn=mechanism)
+    sub.add_parser("mouse").set_defaults(fn=mouse)
     args = parser.parse_args()
     args.fn(args)
 
