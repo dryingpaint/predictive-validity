@@ -1,0 +1,187 @@
+[
+ {
+  "task": "indication_mondo",
+  "n": 100,
+  "n_correct": 81,
+  "n_acceptable": 18,
+  "n_wrong": 1,
+  "errors": [
+   {
+    "item": "9: Psychosocial Effects of Cancer and Its Treatment",
+    "stored": "disease; MONDO:0004992 cancer (exact)",
+    "should_be": "symptom_or_sign (or other); no MONDO term. The thing being treated is psychosocial distress, and cancer only describes who is enrolled. Mapping it to cancer makes a supportive-care trial count as an oncology indication. Line 2 (pruritus in hemodialysis patients) handles the same pattern correctly: kind symptom_or_sign, no MONDO term."
+   },
+   {
+    "item": "15: Unresectable HER2-Positive Breast Carcinoma",
+    "stored": "disease; MONDO:0006244 HER2 positive breast carcinoma (exact)",
+    "should_be": "disease; MONDO:0004989 breast carcinoma (exact), because the spec says to drop biomarker qualifiers. The HER2+ subtype term is a defensible finer granularity, so this is acceptable."
+   },
+   {
+    "item": "16: Under Fed Condition",
+    "stored": "healthy_volunteers; no MONDO term",
+    "should_be": "procedure_or_state (the fed state of a food-effect PK study); no MONDO term. healthy_volunteers is defensible because these studies enroll healthy volunteers, so this is acceptable."
+   },
+   {
+    "item": "19: Locally Advanced (Unresectable) or Metastatic Solid Tumor Malignancies",
+    "stored": "disease; MONDO:0004992 cancer (exact)",
+    "should_be": "disease; MONDO:0004992 cancer, but mondo_match should be broader. MONDO has no general solid-tumor term, and cancer also covers blood cancers."
+   },
+   {
+    "item": "20: Advanced Solid Tumors With HER2 Mutation (basket)",
+    "stored": "disease; MONDO:0004992 cancer (exact)",
+    "should_be": "disease; MONDO:0004992 cancer with mondo_match broader. MONDO has no solid-tumor term, and the HER2 biomarker is dropped per the spec."
+   },
+   {
+    "item": "31: Advanced HER2 Negative Breast Carcinoma HRD+Breast Cancer",
+    "stored": "disease; MONDO:0000618 Her2-receptor negative breast cancer (exact)",
+    "should_be": "disease; MONDO:0004989 breast carcinoma (or MONDO:0007254 breast cancer), dropping the biomarker. The HER2-negative subtype term is a defensible granularity, so this is acceptable."
+   },
+   {
+    "item": "32: Strokes Thrombotic",
+    "stored": "disease; MONDO:1060198 ischemic stroke (exact)",
+    "should_be": "disease; MONDO:1060198 ischemic stroke with mondo_match broader. MONDO has no thrombotic-stroke term or synonym; its ischemic stroke definition includes both thrombotic and embolic causes."
+   },
+   {
+    "item": "35: Drug Interaction",
+    "stored": "healthy_volunteers; no MONDO term",
+    "should_be": "procedure_or_state or other (a DDI study design); no MONDO term. healthy_volunteers is defensible because DDI studies usually enroll healthy volunteers."
+   },
+   {
+    "item": "37: Enterovirus 71 Inactivated Vaccine",
+    "stored": "other; MONDO:0005747 enterovirus infectious disease (exact)",
+    "should_be": "disease (prevention of EV71 infection, treated the same way as PrEP of HIV on line 12); MONDO:0005747 enterovirus infectious disease with mondo_match broader, since MONDO has no EV71-specific term. MONDO:0005779 hand, foot and mouth disease is an alternative. The stored disease is right, but kind=other with a disease mapping is inconsistent, and the match should not be exact."
+   },
+   {
+    "item": "45: Preterm Birth Complication",
+    "stored": "disease; MONDO:0024575 pregnancy disorder (broader)",
+    "should_be": "disease; MONDO:0100086 perinatal disease (broader) is the better containing term. 'Preterm birth complications' usually means neonatal complications (the GBD neonatal category). MONDO has no preterm birth or preterm labor term, so pregnancy disorder (broader) is a defensible maternal-side reading."
+   },
+   {
+    "item": "48: Dyslipidemia Associated With Type II Diabetes Mellitus",
+    "stored": "disease; MONDO:0021187 hyperlipidemia (exact)",
+    "should_be": "disease; MONDO:0021187 hyperlipidemia with mondo_match broader or near rather than exact. Diabetic dyslipidemia includes low HDL, so it is not the same thing as hyperlipidemia. MONDO's only 'dyslipidemia' synonym sits on MONDO:0002525 inherited lipid metabolism disorder, which does not fit an acquired diabetic dyslipidemia."
+   },
+   {
+    "item": "52: Spinal Curvatures",
+    "stored": "disease; MONDO:0000812 vertebral column disorder; broader",
+    "should_be": "Acceptable as stored. MONDO has no umbrella 'spinal curvature' term: scoliosis (MONDO:0005392) is too narrow, and there is no standalone kyphosis or lordosis term. The broader match is correctly flagged."
+   },
+   {
+    "item": "56: L-Dopa Causing Adverse Effects in Therapeutic Use",
+    "stored": "disease; MONDO:0006732 drug-induced dyskinesia; exact",
+    "should_be": "Acceptable. The only trial using this string (NCT04147949) is about levodopa-induced dyskinesia, so the disease is right. But the string itself names generic levodopa adverse effects, not dyskinesia, so 'exact' overclaims; an inferred or broader flag would be more honest."
+   },
+   {
+    "item": "59: Recurrent Ovarian High Grade Serous Adenocarcinoma",
+    "stored": "disease; MONDO:0005211 ovarian serous adenocarcinoma; exact",
+    "should_be": "Same ID, but mondo_match should be broader. MONDO has no high-grade serous ovarian carcinoma term, yet it does have the sibling low-grade serous ovarian carcinoma (MONDO:1060257) under 0005211. Grade marks a distinct WHO entity, not one of the ignored line, stage, biomarker or age qualifiers."
+   },
+   {
+    "item": "72: Anaplastic Kidney Wilms Tumor",
+    "stored": "disease; MONDO:0019004 kidney Wilms tumor; broader",
+    "should_be": "Acceptable as stored. MONDO has 'nonanaplastic kidney Wilms tumor' (MONDO:0003316) but no anaplastic subtype, so the parent with a broader flag is right."
+   },
+   {
+    "item": "78: Overweight Subject",
+    "stored": "disease; MONDO:0003916 overnutrition; broader",
+    "should_be": "Acceptable. MONDO has no 'overweight' term, and overnutrition (the parent of obesity disorder) is a defensible containing term. In the trials, though (DDI studies in 'healthy and overweight subjects', a body-fat study), it describes the population, so symptom_or_sign or other with no MONDO term is equally defensible."
+   },
+   {
+    "item": "90: Shock, Septic",
+    "stored": "disease; MONDO:1040015 infectious disease with sepsis; broader",
+    "should_be": "Acceptable as stored. MONDO's only septic shock term is MONDO:1014822 'septic shock, non-human animal'. There is no human septic shock term, so the sepsis parent with a broader flag is right."
+   },
+   {
+    "item": "100: Ischemic Cholangiopathy",
+    "stored": "disease; MONDO:0006322 non-neoplastic bile duct disorder; broader",
+    "should_be": "Acceptable. MONDO has no ischemic cholangiopathy term. Secondary sclerosing cholangitis (MONDO:0018647) is a possibly tighter containing term, since ischemic cholangiopathy usually presents as SSC-like non-anastomotic strictures, but not every ischemic cholangiopathy fits it, so the stored broader parent is defensible."
+   }
+  ],
+  "notes": "I checked every stored MONDO ID against OLS4. All 39 IDs exist, are not obsolete and match their stored labels, so there are no fabricated or mismatched IDs.\n\nMain pattern (lines 19, 20, 32, 37, 48): mondo_match says 'exact' when MONDO has no specific term and the stored term only contains the disease. 'Solid tumor' was mapped to cancer, 'thrombotic stroke' to ischemic stroke, 'EV71' to enterovirus infectious disease and 'dyslipidemia' to hyperlipidemia. The disease choice is fine in each case, but the flag overstates precision and should be 'broader'. Downstream code that trusts 'exact' would over-weight these rows.\n\nBiomarker handling is inconsistent:\n- Breast lines keep the HER2 subtype term: line 15 (HER2+) and line 31 (HER2-).\n- Line 38 (MSS CRC) and line 20 (HER2-mutant basket) drop the biomarker, as the spec says.\n\nThe only clear error is line 9. A supportive-care indication ('psychosocial effects of cancer') was mapped to cancer as a disease, although line 2 shows the labeler handles 'symptom in patients with Y' correctly elsewhere.\n\nKind assignment for study-design strings is loose: 'Under Fed Condition' and 'Drug Interaction' are labelled healthy_volunteers, where procedure_or_state is more literal. Line 37 (vaccine name) is kind=other but still carries a disease mapping, while PrEP of HIV (line 12) is kind=disease.\n\nBroader matches that are right:\n- Line 7 HIV facial lipoatrophy -> acquired lipodystrophy. MONDO has no HIV lipodystrophy term.\n- Line 27 uncomplicated diverticular disease -> colonic disorder. MONDO has diverticulitis and diverticulitis of colon but no colonic diverticulosis or diverticular disease term.\n\nLine 14 (manic type of manic-depressive illness -> bipolar disorder) is correct because the spec maps the core disease. MONDO:0024612 manic bipolar affective disorder exists as a finer option.\n\nSymptom and non-disease rows (LUTS, oxygen saturation, PET binding, allosensitization, ileostomy healthy volunteers) are correctly left unmapped. MONDO has no terms for LUTS, uremic pruritus or allosensitization.\n\nSource file, read only and not modified: /Users/melissadu/Documents/projects/capable/predictive-validity-audit/.cache/label_audit_v2/indication_mondo.jsonl\nI checked every stored MONDO ID against OLS4. All 37 resolve, none is obsolete, and every label matches what is stored. There are no wrong labels in lines 51-100.\n\nPatterns:\n1. The non-disease rows are classified sensibly and left unmapped. These are drug names (Tapentadol, Thalidomide, Blinatumomab), anatomy (Pelvis, Skeletal Muscle), study meta-terms (Feasibility Studies, Cognitive Investigation), procedures (Adductor Canal Block, Breathhold), states (Hyperoxia; Perioperative/Postoperative Complications, for which MONDO has no term) and a symptom (Stomach Acid Related Symptoms).\n2. Stage, line, relapse, age, prevention and metastatic-site qualifiers are stripped correctly: Intermediate AMD, Stage III AITL, Relapsed AML, Childhood LD-Hodgkin, Prevention of CMV, CRC liver metastases.\n3. Several mappings depend on MONDO synonyms and are right: FAP coli to classic FAP (it carries the 'familial adenomatous polyposis coli' synonym), chondroid syringoma to eccrine mixed tumor of skin, 'Positive C-Diff Culture' to C. difficile colitis (its synonyms include 'Clostridium difficile infection'; the trial is about relapse of C. difficile diarrhoea), uterine sarcoma to uterine corpus sarcoma, and GEJ tumor to gastroesophageal cancer (MONDO:0850129, which cross-references the UMLS GEJ malignancy concept).\n4. The four broader matches checked (52, 72, 90, 100) are all legitimate: MONDO really lacks the specific term.\n5. The one systematic weakness is the mondo_match flag:\n   - Row 59 is flagged exact but is really broader. MONDO lacks high-grade serous ovarian carcinoma while having the low-grade sibling.\n   - Row 56 is flagged exact although the condition string never names dyskinesia; the disease was inferred from the trial context.\n   Grade or histologic subtype seems to be treated like a stage qualifier and dropped without marking the match broader.\n\nMinor: Cocaine Use Disorder maps to 'cocaine abuse' (MONDO:0004456). That is fine because the term's definition is the broad 'disorders related to cocaine use', but cocaine dependence (MONDO:0005186) also exists as a separate term.\n"
+ },
+ {
+  "task": "drug_moiety",
+  "n": 100,
+  "n_correct": 85,
+  "n_acceptable": 7,
+  "n_wrong": 8,
+  "errors": [
+   {
+    "item": "11 ION363",
+    "stored": "tadnersen sodium [UNII 4GJV2Y7RD9]",
+    "should_be": "ulefnersen [UNII TND56EA1LE]. ION363 (formerly jacifusen) is the FUS antisense oligonucleotide. GSRS lists tadnersen sodium as BIIB078, the C9orf72 ASO, so this is a different drug. The salt was also not stripped."
+   },
+   {
+    "item": "30 GenSci048",
+    "stored": "genakumab (no UNII)",
+    "should_be": "firsekibart [UNII 6ZU8B6H4KT]. The GSRS record for firsekibart is literally 'anti-IL-1beta (human monoclonal GenSci048...)'. 'Genakumab' is the company's name from before the INN, so the nonproprietary name and UNII both exist but were not used."
+   },
+   {
+    "item": "33 allo-APZ2-ACLF",
+    "stored": "allo-APZ2-CVU (no UNII)",
+    "should_be": "allo-APZ2 / human allogeneic skin-derived ABCB5+ mesenchymal stromal cells [UNII T2DBY7Y42S]. The stored name is the code for the chronic venous ulcer product, which does not appear in this input. It is the same cell product, so this is a naming/UNII error, not a different biological entity."
+   },
+   {
+    "item": "5 autologous cSVF + MSCs (cryo)",
+    "stored": "autologous cellular stromal vascular fraction (no UNII); autologous adipose derived MSCs [UNII KA0IJR9DZ7]",
+    "should_be": "Same two components, but the SVF component has a UNII: AUTOLOGOUS ADIPOSE-DERIVED STROMAL VASCULAR FRACTION [UNII 5Q2L7M2AAX]. Acceptable: entities right, one UNII missing."
+   },
+   {
+    "item": "9 NX-1607",
+    "stored": "NX-1607 (no UNII)",
+    "should_be": "NX-1607 [UNII Y9AV5Y4VQ4, 'NX-1607 free base']. Keeping the code is correct because there is no INN, but an existing UNII was not assigned. Acceptable."
+   },
+   {
+    "item": "19 Bone Repair Cells (BRCs)",
+    "stored": "Bone Repair Cells (no UNII)",
+    "should_be": "ixmyelocel-T. Aastrom's BRCs come from the Tissue Repair Cell process, and the USAN ixmyelocel-T was later adopted for that product (no UNII found in GSRS). Whether the pre-USAN BRC product is exactly ixmyelocel-T is uncertain, so marked acceptable rather than wrong."
+   },
+   {
+    "item": "52: V116517 30-mg tablets",
+    "stored": "oxycodone [UNII CD35PMG570]",
+    "should_be": "V116517 [UNII TBJ73RQT8F] (Purdue TRPV1 antagonist, no INN). Wrong entity: the trial (NCT01688934) has V116517, naproxen and placebo arms, and oxycodone appears nowhere in it."
+   },
+   {
+    "item": "84: Meperizumab injection",
+    "stored": "meperizumab (no UNII)",
+    "should_be": "mepolizumab [UNII 90Z2UF0E52]. This is Chia Tai Tianqing's proposed mepolizumab biosimilar, tested for PK similarity against NUCALA (NCT05353179). 'Meperizumab' is a transliteration, not an INN, and the biosimilar rule (use the core nonproprietary name) was not applied."
+   },
+   {
+    "item": "72: TAK-418",
+    "stored": "tak-418 [UNII LVM0PK6IHG]",
+    "should_be": "TAK-418 [UNII N9N6RK0CBN] (free base). LVM0PK6IHG is the hydrochloride salt (MF C17H24N2O2S.ClH). The GSRS record named with the bare code 'TAK-418' is the salt, so matching on the name picked the salt."
+   },
+   {
+    "item": "59: DN022150+AG (Stage II)",
+    "stored": "gemcitabine [B76N6SBZ8R]; nab-paclitaxel [UNII PF4ZJ19BNY]; DN022150",
+    "should_be": "gemcitabine [B76N6SBZ8R]; paclitaxel [UNII P88XT4IS4D]; DN022150. nab-paclitaxel is a formulation, and the pipeline's own prompt says to strip formulations. PF4ZJ19BNY is a specifiedSubstanceG1 formulation record, so these arms will not pool with paclitaxel. NanoDoce on line 65 was correctly stripped to docetaxel."
+   },
+   {
+    "item": "58: Lavior Diabetic Wound Gel",
+    "stored": "entity_kind unclear, moieties null",
+    "should_be": "drug: allantoin [UNII 344S277G0Z]. The OTC label (DailyMed 'Diabetic Wound Gel Professional - allantoin gel', Lavior Inc) lists allantoin 0.5% as the skin-protectant active. The trial (NCT05607979) lists it as a Drug-type active comparator. Moderate confidence."
+   },
+   {
+    "item": "95: Stage 3: glucocorticoid",
+    "stored": "kind drug; prednisolone, dexamethasone, prednisone",
+    "should_be": "Acceptable. NCT00600535 reads 'prednisone/prednisolone 5 mg BID or dexamethasone 0.5 mg QD', so these three are the named alternatives. But kind 'drug' means one active entity, and three moieties without an either-or marker read like a combination. This also disagrees with line 55, where an either-or class with named members was left null."
+   },
+   {
+    "item": "100: Metformin and Sulfonylurea",
+    "stored": "metformin [9100L32L2N]; sulfonylurea (no UNII)",
+    "should_be": "Acceptable. Metformin [9100L32L2N] plus an unspecified sulfonylurea background therapy. 'sulfonylurea' is a drug-class placeholder stored as if it were a moiety, so it creates a pseudo-entity. Elsewhere class terms (lines 55, 75) are left unclear/null."
+   },
+   {
+    "item": "82: BCG Vaccine IP - Serum Institute of India",
+    "stored": "bacillus calmette-guerin live antigen, unspecified substrain [UNII 8VJE55B0VG]",
+    "should_be": "Acceptable. Serum Institute of India's BCG is the Russian BCG-I (Moscow) strain, which has its own UNII, 6NDGUCSPCL. The unspecified-substrain record is a less precise but valid fallback."
+   },
+   {
+    "item": "62: tas0612",
+    "stored": "TAS-0612",
+    "should_be": "Acceptable. TAS0612: Taiho and the trial title write the code without a hyphen, and the prompt asks for the code 'exactly as commonly written'. No INN or UNII exists."
+   }
+  ],
+  "notes": "Every UNII stored in lines 1-50 (32 distinct ids) was checked against the GSRS API (gsrs.ncats.nih.gov). Each id resolves to the substance name it is stored with: no invented ids, no mismatched pairs.\n\nMain error: line 11 has a real UNII and INN, but for a different drug from the same company. Ionis/Biogen ASO code names (ION363, BIIB078, ION541, etc.) look alike and are easy to confuse. Any ION-/BIIB- antisense mapping elsewhere in the file is worth spot-checking.\n\nSecond pattern: the code-to-INN mapping is stale. GenSci048 maps to its old company name (genakumab) instead of the INN firsekibart, which already has a UNII. Newer INNs (2024-2025) are a weak spot.\n\nThird pattern, the minor issues: cell therapies and code-only small molecules often leave out a UNII that exists in GSRS (SVF, NX-1607, ALLO-APZ2). In line 33 the label carries a sibling product's indication code (CVU instead of ACLF). It looks like the label was copied from another record rather than resolved.\n\nHandled well:\n- Doses, formulations, salts and brands were stripped consistently: Lipitor, Daonil, Norvir-SEC, Filgrastim Hospira, DT-216P2 to DT-216, and [14C]-TRV130 to oliceridine.\n- Biosimilar codes were resolved correctly (BCD-148 to eculizumab, YNP-1807 to pregabalin).\n- Code-to-INN mappings checked out: DS-8500a to firuglipel, SYN-004 to ribaxamase, T-1249 to tifuvirtide, WF10 to tetrachlorodecaoxide, M2ES to the PEG-endostar UNII.\n- Placebos (lines 22, 39, 40) and the unresolvable 'Dose 3 QD' (line 49) were correctly left without moieties.\n- Codes that were kept were checked by web search and have no public INN or disclosed active ingredient: PRO-118 (trial records do not name the antihistamine), TS-172, CPL500036, JNJ-47910382, AZD4117, AV-1959R, ASC10, CM583, DHP2302R1, YH4808.\nI checked all 44 stored UNIIs against the local GSRS release (.cache/unii, 2026-08-04). Every one exists and its display name matches the stored name. The UNII name registry also confirms most of the code-to-INN mappings: GS-5829 to alobresib, JTT-130 to granotapide, KBPA-101 to panobacumab, APD356 to lorcaserin (stored as the free base, which is correct), RPL-554 to ensifentrine, SGI-110 to guadecitabine, UC-961/cirmtuzumab to zilovertamab, L19IL2 to darleukin, and pCK-HGFX7 to donaperminogene seltoplasmid. Codes with no INN or UNII were correctly kept as codes: RO7497372 (= RG6209, a VEGF/IL-6 DutaFab), PF-07209326 (anti-E-selectin antibody, discontinued), JNJ-78306358, DN022150, NCR100 (hPSC-derived MSCs), LVRNA009 and BXOS110 (PSD-95 inhibitor). Patterns: (1) One hallucinated code mapping (line 52): V116517 was sent to oxycodone even though it has its own UNII under that exact code. A check that a code with its own GSRS name is never remapped to a different INN would catch this. (2) The UNII resolver can attach a salt. GSRS sometimes registers the bare sponsor code on the salt record (TAK-418 on the HCl salt). The resolver should prefer the parent/free-base record, or check the MF for counter-ions. This can recur for other code-named drugs. (3) Formulation stripping is inconsistent: nab-paclitaxel was kept as its own entity (formulation UNII) while NanoDoce was stripped to docetaxel. (4) A biosimilar under a nonstandard or transliterated name (meperizumab vs NUCALA) was not mapped to its reference INN. (5) Drug-class terms are handled four different ways: null/unclear with named members (55), null for an unnamed class (75), expanded into the named alternatives under kind 'drug' (95), and a class string kept as a pseudo-moiety (100). The scheme needs one rule. (6) An OTC product with a labelled active ingredient (Lavior gel, allantoin) was left unclear. Judgement calls I counted as correct: esters reduced to the parent (megestrol acetate to megestrol, methylprednisolone acetate to methylprednisolone), which follows FDA's active-moiety rule and matches salt stripping; anhydrous forms used as the moiety (carbidopa, docetaxel); SmofKabiven parenteral nutrition as non_drug (diet/nutrition); line 55 (alpha-glucosidase inhibitor class) left unclear, which fits the scheme but conflicts with line 95. I confirmed the trial arms on ClinicalTrials.gov for 52, 53 (5% NaF varnish), 57, 58, 80, 84, 95 and 100. No files were modified.\n"
+ }
+]

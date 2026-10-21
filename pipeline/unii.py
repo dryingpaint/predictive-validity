@@ -2,10 +2,12 @@
 
     python -m pipeline.unii load
 
-Downloads the pinned GSRS public release (UNII records and all registered
-names), records it in preclin.evidence_source_release, upserts substances
-(entities may reference them) and replaces the names. pipeline.drugs unii
-resolves molecular entities against these names.
+Downloads the GSRS public UNII records pinned to RELEASE and the list of all
+registered names, which the archive serves only as latest: the copy cached
+under .cache/unii at first download pins the names (both URLs are recorded in
+the release metadata). Records the release in preclin.evidence_source_release,
+upserts substances (entities may reference them) and replaces the names.
+pipeline.drugs unii resolves molecular entities against these names.
 """
 from __future__ import annotations
 
@@ -18,7 +20,7 @@ import re
 import zipfile
 
 import requests
-from psycopg2.extras import Json, execute_values
+from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.drugs import moiety_key
@@ -28,12 +30,6 @@ RELEASE = "2026-08-04"
 ARCHIVE = "https://precision.fda.gov/uniisearch/archive"
 FILES = {"records": f"{ARCHIVE}/{RELEASE}/UNII_Data_{RELEASE.replace('-', '')}.zip",
          "names": f"{ARCHIVE}/latest/UNIIs.zip"}
-
-
-def name_key(name: str) -> str:
-    """Identity key of a registered name: bracketed source tags ([INN], [USAN],
-    [WHO-DD]) dropped, then the moiety key (case and punctuation ignored)."""
-    return moiety_key(re.sub(r"\[[^\]]*\]", "", name))
 
 
 def read_member(path: str, prefix: str) -> list[dict]:
@@ -58,17 +54,12 @@ def load(_args) -> None:
     substances = {r["UNII"]: (r["UNII"], r["DISPLAY_NAME"], r["SUBSTANCE_TYPE"] or None, r["INGREDIENT_TYPE"] or None,
                               r["INN_ID"] or None, r["USAN_ID"] or None, r["RXCUI"] or None, r["PUBCHEM"] or None,
                               r["INCHIKEY"] or None) for r in records}
-    name_rows = {(n["UNII"], n["NAME"], n["TYPE"]): name_key(n["NAME"]) for n in names
+    # A name's key drops bracketed source tags ([INN], [USAN], [WHO-DD]), then applies the moiety key.
+    name_rows = {(n["UNII"], n["NAME"], n["TYPE"]): moiety_key(re.sub(r"\[[^\]]*\]", "", n["NAME"])) for n in names
                  if n["UNII"] in substances and n["NAME"]}
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""INSERT INTO preclin.evidence_source_release
-              (source_name, source_version, source_url, content_sha256, metadata)
-            VALUES (%s,%s,%s,%s,%s)
-            ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
-            RETURNING source_release_id""",
-                    ("fda_unii", RELEASE, ARCHIVE, sha,
-                     Json({"n_substances": len(substances), "n_names": len(name_rows), "files": FILES})))
-        release = cur.fetchone()[0]
+        release = llm.register_release(cur, "fda_unii", RELEASE, ARCHIVE, sha,
+                                       {"n_substances": len(substances), "n_names": len(name_rows), "files": FILES})
         cur.execute("DELETE FROM preclin.unii_name")
         execute_values(cur, """INSERT INTO preclin.unii_substance (unii, display_name, substance_type, ingredient_type,
                                  inn_id, usan_id, rxcui, pubchem_cid, inchikey, source_release_id) VALUES %s

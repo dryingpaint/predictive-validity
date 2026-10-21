@@ -29,6 +29,11 @@ def pct(x, digits=1):
     return "–" if pd.isna(x) else f"{100 * x:.{digits}f}%"
 
 
+FORMATS = {"": str, "pct": pct, "pct0": lambda v: pct(v, 0), "int": lambda v: f"{int(v):,}",
+           "x2": "{:.2f}".format, "x3": "{:.3f}".format}
+BAND_NAMES = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
+
+
 def ci(lo, hi, digits=1):
     return "" if pd.isna(lo) else f" ({100 * lo:.{digits}f}–{100 * hi:.{digits}f})"
 
@@ -78,7 +83,7 @@ def sentence_case(text: str) -> str:
     return text[:1].upper() + text[1:]
 
 
-def stratum_table(csv: str, label: str, bio: dict) -> str:
+def stratum_table(csv: str, label: str, ref: dict) -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", csv)).dropna(subset=["loa"])
     df = df.assign(**{label: df.label.map(stratum_name),
                       "All programs, LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()],
@@ -86,7 +91,7 @@ def stratum_table(csv: str, label: str, bio: dict) -> str:
                       "Developed in the US, LOA (95% CI)": [
                           f"{pct(r.us_loa)}{ci(r.us_loa_lo, r.us_loa_hi)}" if pd.notna(getattr(r, "us_loa", np.nan)) else "–"
                           for r in df.itertuples()],
-                      "BIO 2011–2020": [f"{bio[k]:.1f}%" if k in bio else "–" for k in df.label]})
+                      "BIO 2011–2020": [f"{ref[k]:.1f}%" if k in ref else "–" for k in df.label]})
     return table(df[[label, "All programs, LOA (95% CI)", "Entities", "Developed in the US, LOA (95% CI)",
                      "BIO 2011–2020"]])
 
@@ -123,9 +128,8 @@ def prediction_table() -> str:
 
 def dose_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    band = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
     df = df.assign(**{"Human genetic support (Open Targets score, as of phase entry)": [
-                          band[b] + ("" if b == "none" else f" (> {lo:.2f} to {hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
+                          BAND_NAMES[b] + ("" if b == "none" else f" (> {lo:.2f} to {hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
                           for b, lo, hi in zip(df.band, df.score_from, df.score_to)],
                       "Programs": df.n_programs.map("{:,}".format), "Targets": df.n_targets.map("{:,}".format),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
@@ -176,7 +180,7 @@ def quality_table() -> str:
         r = q.get(group, {}).get(key)
         if r:
             rows.append([label, f"{r['n']:,}", f"{pct(r['accuracy'], 0)} ({pct(r['lo'], 0)}–{pct(r['hi'], 0)})",
-                         str(r.get("wrong", r["n"] - r.get("correct", 0) - r.get("acceptable", 0)))])
+                         str(r["wrong"])])
     return table(pd.DataFrame(rows, columns=["Label", "Audited", "Agreement (95% CI)", "Wrong"]))
 
 
@@ -205,29 +209,15 @@ def fill(text: str, numbers: dict) -> str:
         if key in TABLES:
             return TABLES[key]()
         if key.isupper():  # narrative block
-            path = os.path.join(NARRATIVE, key.lower() + ".md")
-            return fill(open(path).read(), numbers) if os.path.exists(path) else m.group(0)
-        v = numbers[key]
-        if fmt == "pct":
-            return pct(v)
-        if fmt == "pct0":
-            return pct(v, 0)
-        if fmt == "int":
-            return f"{int(v):,}"
-        if fmt == "x2":
-            return f"{v:.2f}"
-        if fmt == "x3":
-            return f"{v:.3f}"
-        return str(v)
+            return fill(open(os.path.join(NARRATIVE, key.lower() + ".md")).read(), numbers)
+        return FORMATS[fmt](numbers[key])
     return re.sub(r"\{\{([A-Za-z0-9_.|+-]+)\}\}", sub, text)
 
 
 def main() -> None:
     numbers = dict(BIO)
     for section in ("section1", "section2", "quality"):
-        path = os.path.join(OUT, section, "numbers.json")
-        if os.path.exists(path):
-            numbers.update(flatten(json.load(open(path)), section + "."))
+        numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)
     template = open(os.path.join(frame.REPO, "report", "REPORT.template.md")).read()

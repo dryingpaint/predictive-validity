@@ -6,10 +6,11 @@
 Condition strings enter preclin.indication through pipeline.programs register.
 
 Candidates come from the pinned MONDO release in preclin.ontology_term:
-character n-gram TF-IDF retrieval over labels and exact synonyms. The LLM
-picks the term naming the disease itself, leaving population qualifiers (line,
-stage, biomarker, age) aside, or reports that none fits and proposes standard
-disease names; a second retrieval round runs on those names. A disease still
+character n-gram and word TF-IDF retrieval (hits interleaved) over labels and
+exact synonyms. The LLM picks the term naming the disease itself, leaving
+population qualifiers (line, stage, biomarker, age) aside, or reports that none
+fits and proposes standard disease names; a second retrieval round runs on
+those names. A disease still
 without a term gets the most specific MONDO term that contains it (its nearest
 parent disease or grouping), chosen from the retrieved terms and their parents;
 indication.mondo_match records which kind of match each mapping is.
@@ -17,9 +18,7 @@ indication.mondo_match records which kind of match each mapping is.
 from __future__ import annotations
 
 import argparse
-import re
 
-import numpy as np
 from psycopg2.extras import execute_values
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
@@ -27,10 +26,6 @@ from sklearn.neighbors import NearestNeighbors
 from pipeline import llm
 
 N_CANDIDATES = 20
-
-
-def norm(text: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", text.lower().strip())
 
 
 class MondoIndex:
@@ -53,7 +48,7 @@ class MondoIndex:
             for s in [label, *syns]:
                 strings.append(s.lower())
                 owners.append(tid)
-        self.owners = np.array(owners)
+        self.owners = owners
         self.char = TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 4), sublinear_tf=True)
         self.word = TfidfVectorizer(analyzer="word", token_pattern=r"[a-z0-9]+", sublinear_tf=True)
         self.nn_char = NearestNeighbors(n_neighbors=60, metric="cosine").fit(self.char.fit_transform(strings))
@@ -66,13 +61,8 @@ class MondoIndex:
         _, iw = self.nn_word.kneighbors(self.word.transform(q))
         out = []
         for row_c, row_w in zip(ic, iw):
-            seen = []
-            for a, b in zip(row_c, row_w):
-                for k in (a, b):
-                    tid = self.owners[k]
-                    if tid not in seen:
-                        seen.append(tid)
-            out.append([self.terms[t] for t in seen[:N_CANDIDATES]])
+            seen = dict.fromkeys(self.owners[k] for pair in zip(row_c, row_w) for k in pair)
+            out.append([self.terms[t] for t in list(seen)[:N_CANDIDATES]])
         return out
 
 
@@ -156,28 +146,23 @@ def map_indications(_args) -> None:
         index = MondoIndex(cur)
         cur.execute("SELECT indication_id, display_name, coalesce(ct_gov_conditions, '{}') FROM preclin.indication")
         rows = cur.fetchall()
-    names = [r[1] for r in rows]
-    cands = index.search(names)
     items = {str(r[0]): {"name": r[1], "variants": [v for v in r[2] if v != r[1]], "candidates": c}
-             for r, c in zip(rows, cands)}
-    run1 = llm.run(TASK, items)
-    first = llm.decisions(run1)
+             for r, c in zip(rows, index.search([r[1] for r in rows]))}
+    final = {k: (did, d) for k, did, d in llm.decisions(llm.run(TASK, items))}
 
-    retry = {k: v for k, v in first.items() if not v["mondo_id"] and v["kind"] == "disease" and v["retry_queries"]}
-    final, runs = dict(first), {k: run1 for k in first}
-    match = {k: "exact" for k, d in first.items() if d["mondo_id"]}
+    retry = {k: d for k, (_, d) in final.items() if not d["mondo_id"] and d["kind"] == "disease" and d["retry_queries"]}
+    match = {k: "exact" for k, (_, d) in final.items() if d["mondo_id"]}
     for k in retry:
         extra = [c for q in index.search(retry[k]["retry_queries"]) for c in q]
         merged = {c["mondo_id"]: c for c in items[k]["candidates"] + extra}
         items[k] = {**items[k], "candidates": list(merged.values())[:3 * N_CANDIDATES]}
     if retry:
-        run2 = llm.run(TASK, {k: items[k] for k in retry})
-        for k, d in llm.decisions(run2).items():
-            final[k], runs[k] = d, run2
+        for k, did, d in llm.decisions(llm.run(TASK, {k: items[k] for k in retry})):
+            final[k] = did, d
             if d["mondo_id"]:
                 match[k] = "exact"
 
-    unmapped = {k: d for k, d in final.items() if not d["mondo_id"] and d["kind"] == "disease"}
+    unmapped = {k: d for k, (_, d) in final.items() if not d["mondo_id"] and d["kind"] == "disease"}
     broader_items = {}
     for k, d in unmapped.items():
         pool = items[k]["candidates"] + [c for q in index.search([d["core_disease"]]) for c in q]
@@ -185,18 +170,13 @@ def map_indications(_args) -> None:
         merged = {c["mondo_id"]: c for c in pool + parents}
         broader_items[k] = {**items[k], "core_disease": d["core_disease"], "candidates": list(merged.values())[:100]}
     if broader_items:
-        run3 = llm.run(BROADER_TASK, broader_items)
-        for k, d in llm.decisions(run3).items():
+        for k, did, d in llm.decisions(llm.run(BROADER_TASK, broader_items)):
             if d["mondo_id"]:
-                final[k], runs[k], match[k] = {**final[k], "mondo_id": d["mondo_id"]}, run3, d["match"]
+                final[k], match[k] = (did, {**final[k][1], "mondo_id": d["mondo_id"]}), d["match"]
 
+    updates = [(int(k), d["mondo_id"], index.terms[d["mondo_id"]]["label"] if d["mondo_id"] else None,
+                match.get(k), d["kind"], did) for k, (did, d) in final.items()]
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, decision_run_id, llm_decision_id FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = ANY(%s::uuid[]) AND validation_status = 'validated'""",
-                    ([str(r) for r in set(runs.values())],))
-        ids = {(k, str(run)): did for k, run, did in cur.fetchall()}
-        updates = [(int(k), d["mondo_id"], index.terms[d["mondo_id"]]["label"] if d["mondo_id"] else None,
-                    match.get(k), d["kind"], ids[(k, str(runs[k]))]) for k, d in final.items()]
         execute_values(cur, """UPDATE preclin.indication i SET mondo_id = u.mondo_id,
                  mondo_label = u.mondo_label, mondo_match = u.match, indication_kind = u.kind,
                  mondo_decision_id = u.did

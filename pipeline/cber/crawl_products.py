@@ -1,5 +1,4 @@
 """Step 2: build the CBER product universe and crawl each product page for document links."""
-import json
 import os
 import re
 import urllib.parse
@@ -8,7 +7,6 @@ from bs4 import BeautifulSoup
 
 from pipeline.cber import fetch
 
-BASE = fetch.BASE
 FDA = "https://www.fda.gov"
 LISTS = {
     "master": "https://www.fda.gov/vaccines-blood-biologics/cber-regulated-products-supporting-documents",
@@ -84,13 +82,9 @@ def product_universe():
             if key not in prods[u]["sources"]:
                 prods[u]["sources"].append(key)
     # yearly-page links
-    for line in open(os.path.join(BASE, "year_page_rows.jsonl")):
-        r = json.loads(line)
+    for r in fetch.read_jsonl("year_page_rows.jsonl"):
         for l in r["links"]:
-            href = l["href"]
-            if "web.archive.org" in href:
-                href = re.sub(r"^https?://web\.archive\.org/web/\d+[a-z_]*/", "", href)
-            u = canon(href, FDA)
+            u = canon(fetch.unwayback(l["href"]), FDA)
             if not u:
                 continue
             prods.setdefault(u, {"url": u, "sources": []})
@@ -177,9 +171,7 @@ def main():
         merged[final] = rec
         if i % 25 == 0:
             print(i, u, st, len(rec.get("docs", [])), flush=True)
-    with open(os.path.join(BASE, "products.jsonl"), "w") as f:
-        for r in merged.values():
-            f.write(json.dumps(r) + "\n")
+    fetch.write_jsonl("products.jsonl", merged.values())
     print("products", len(merged))
 
 

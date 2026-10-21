@@ -16,6 +16,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
+from report.render import BAND_NAMES
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -82,7 +83,7 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-def loa_bars(csv, title, name, bio, label_fmt):
+def loa_bars(csv, title, name, ref, label_fmt):
     df = pd.read_csv(os.path.join(OUT, "section1", csv)).sort_values("loa")
     fig, ax = plt.subplots(figsize=(6.2, 0.38 * len(df) + 1))
     y = np.arange(len(df))
@@ -91,9 +92,9 @@ def loa_bars(csv, title, name, bio, label_fmt):
     ax.errorbar(df.loa * 100, y, xerr=[(df.loa - df.loa_lo) * 100, (df.loa_hi - df.loa) * 100],
                 fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
     for yi, (lab, v, hi) in enumerate(zip(df.label, df.loa, df.loa_hi)):
-        if lab in bio:
-            ax.plot([bio[lab]] * 2, [yi - 0.35, yi + 0.35], color=INK, linewidth=2)
-        ax.text(max(hi * 100, bio.get(lab, 0)) + 0.6, yi, f"{v:.1%}", va="center", color=INK2, fontsize=8)
+        if lab in ref:
+            ax.plot([ref[lab]] * 2, [yi - 0.35, yi + 0.35], color=INK, linewidth=2)
+        ax.text(max(hi * 100, ref.get(lab, 0)) + 0.6, yi, f"{v:.1%}", va="center", color=INK2, fontsize=8)
     ax.set_yticks(y, [label_fmt(l) for l in df.label], color=INK)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI; tick = BIO 2011–2020", color=INK2, fontsize=8)
     style(ax)
@@ -123,7 +124,6 @@ def relative_success():
 
 def dose_response():
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    names = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
     fig, ax = plt.subplots(figsize=(6.2, 2.6))
     y = np.arange(len(df))[::-1]
     ax.barh(y, df.loa * 100, height=0.6, color=[BAR if b == "none" else ACCENT for b in df.band])
@@ -131,7 +131,7 @@ def dose_response():
                 fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
     for yi, (v, hi, n) in zip(y, zip(df.loa, df.loa_hi, df.n_programs)):
         ax.text(hi * 100 + 0.4, yi, f"{v:.1%} (n={n:,})", va="center", color=INK2, fontsize=8)
-    ax.set_yticks(y, [names[b] for b in df.band], color=INK)
+    ax.set_yticks(y, [BAND_NAMES[b] for b in df.band], color=INK)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI", color=INK2, fontsize=8)
     style(ax)
     ax.set_title("Likelihood of approval by strength of human genetic support", loc="left", color=INK, fontsize=11)
@@ -143,7 +143,7 @@ def main():
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA,
              lambda s: s.replace("_", " ").capitalize())
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA,
-             lambda s: s.replace("_", " ").replace("rnai", "RNAi").replace("car t", "CAR-T").capitalize())
+             lambda s: s.replace("_", " ").replace("car t", "CAR-T").capitalize())
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()

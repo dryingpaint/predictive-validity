@@ -16,7 +16,7 @@ JSONL runs are loaded incrementally with `db/13_ingest_llm_outputs.py`;
 ```bash
 pip install anthropic openai psycopg2-binary
 export ANTHROPIC_API_KEY=sk-ant-...
-# Or, for the OpenAI Nelson batch runner:
+# The trial-stoppage rescore calls OpenAI:
 export OPENAI_API_KEY=sk-...
 export DATABASE_URL=postgres://...
 ```
@@ -25,17 +25,7 @@ export DATABASE_URL=postgres://...
 
 | Script | Purpose | Target file | Default model | Cost per 1k items |
 |---|---|---|---|---|
-| `score_target_literature.py` | Line B/C/D/E evidence scores per target | `data/target_evidence/literature_scores.jsonl` | Haiku | ~$30-60 |
-| `classify_why_stopped.py` | Trial termination classification. First-pass (default) OR verify (`--verify-from PRIOR.jsonl`). | `data/clinical_trials/why_stopped_*.jsonl` | Haiku (first-pass) / Sonnet (verify) | Haiku ~$5-10 / Sonnet ~$20-40 |
 | `rescore_trial_stoppage.py` | Multi-axis trial stoppage adjudication from registry results, publications, and curated external evidence | `data/clinical_trials/stoppage_rescore_*.jsonl` | GPT-5.6 Terra | depends on dossier size |
-| `classify_silent_kill.py` | Ph3+ silent-kill verification per drug | `data/silent_kill_verified.jsonl` | Sonnet | ~$50-150 |
-| `nelson_tier_classify.py` | Cohort-wide T-I genetics-tier adjudication | `data/target_evidence/nelson_tiers_*.jsonl` + `.dossiers.jsonl` | Sonnet | depends on cohort/prompt size |
-
-`nelson_tier` is retained for audit and descriptive analysis but is temporarily
-excluded from all predictive scorers because existing coverage was selectively
-curated on approval-oriented pairs. Do not run a bulk tiering job to restore it
-as a model feature: reintroduction requires uniform, indication-specific,
-pre-outcome computation and held-out-target validation.
 
 ## Trial-stoppage rescore
 
@@ -166,91 +156,6 @@ describes as coequal; every such edit is recorded in
 for new submissions, the system prompt hash so a changed collector cannot
 misattribute the submitted prompt.
 
-The v4 Nelson workflow enumerates every non-placebo human target-indication
-pair represented in `preclin.program`; it does not join approval, outcome, or
-phase tables. Before any optional LLM call, it writes a full evidence dossier
-containing every Mendelian, ClinGen, GWAS, genetics-only Open Targets, and
-canonical PubMed record retrieved. The complete stable dossier content is
-stored as an immutable `preclin.source_document`; local dossier JSONL is a
-resumable ignored sidecar, not the durable audit record. Evidence below the
-default 400,000-character budget is sent intact. Only the oversized tail is
-trimmed; indication-term overlap orders overflow rows.
-
-The model still assigns the final T0-T3 tier. Each prompt record carries a
-stable evidence ID, a non-binding ontology/text relationship hint, and a
-deterministic ceiling describing what it could support if disease-matched.
-The model adjudicates disease relevance and cites supporting evidence IDs; a
-post-call validator rejects T2 without replicated coding GWAS studies and T3
-without qualifying germline Mendelian or Strong/Definitive ClinGen evidence.
-T4 is disabled at target-indication level; genetic effect direction is stored
-separately from drug-mechanism concordance.
-
-Prepare and inspect the full cohort without spending money:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-  --all-clinical --prepare-only \
-  --out data/target_evidence/nelson_tiers_all_v5.jsonl
-```
-
-For a reproducible 50-pair pilot, prepare an outcome-blind random sample:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-  --all-clinical --sample-size 50 --seed 20260821 --prepare-only \
-  --out data/target_evidence/nelson_tiers_pilot_v5.jsonl
-```
-
-Large scoring runs should use the asynchronous Message Batches workflow. The
-submit command begins paid work and requires an explicit confirmation flag;
-collection is resumable and validates every response against the submitted
-dossier and prompt hashes:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_batch.py submit \
-  --dossiers data/target_evidence/nelson_tiers_pilot_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_pilot_v5.batches.jsonl \
-  --confirm-paid-batch
-
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_batch.py collect \
-  --dossiers data/target_evidence/nelson_tiers_pilot_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_pilot_v5.batches.jsonl \
-  --out data/target_evidence/nelson_tiers_pilot_v5.jsonl
-```
-
-Remove `--prepare-only` only after explicit approval for the paid run. The
-scoring pass resumes from the saved dossiers, so the exact evidence supplied
-to the model is stable. Import caches or cited PMIDs first with
-`db/12_ingest_evidence_abstracts.py`; Nelson reads only immutable records in
-`preclin.source_document`. Target-linked records and canonical PMIDs cited by
-GWAS/Open Targets are both included. Each PubMed excerpt shown to the model is
-written to `_source_documents` for ingestion into `preclin.llm_run_source`.
-
-Nelson adjudication can instead use OpenAI Batches with `gpt-5.6-luna`. The
-OpenAI runner consumes the same dossiers and applies the same prompt-hash,
-evidence-ID, PMID, deterministic-ceiling, and result-schema validation. Pass an
-existing result file with `--completed-out` to submit only missing pairs; this
-also permits a run to resume across providers without replacing valid rows:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_openai_batch.py submit \
-  --dossiers data/target_evidence/nelson_tiers_all_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_all_openai_v7.batches.jsonl \
-  --completed-out data/target_evidence/nelson_tiers_all_v7.jsonl \
-  --confirm-paid-batch
-
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_openai_batch.py collect \
-  --dossiers data/target_evidence/nelson_tiers_all_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_all_openai_v7.batches.jsonl \
-  --out data/target_evidence/nelson_tiers_all_v7.jsonl
-```
-
 **Canonical cost field is `_cost_usd`.** Older classifier outputs used
 `_cost_share` (Sonnet why_stopped verify) or `_cost` (silent_kill,
 target_resolution). `db/02_ingest.py:_read_cost` accepts all three for
@@ -288,73 +193,13 @@ to their latest run, while literature extraction runs connect to every
 `fact_snapshot` of the run-produced value. Legacy rows remain auditable as
 outputs but are explicitly marked as missing their unrecoverable exact inputs.
 
-## Concrete recipe — score the neuroprotection candidates
-
-The scoring diagnostic in `analyses/verify_candidate_scores.py` exposed that
-9 of 11 neuroprotection candidates have NULL Line B/C/D/E scores — the model
-imputes cohort medians for those. To close the gap:
-
-```bash
-# 1. Import the per-target abstract cache into the canonical source store.
-#    This is required before a paid call so every prompt excerpt has a stable id.
-.venv/bin/dotenv run -- .venv/bin/python db/12_ingest_evidence_abstracts.py \
-    --cache-dir /path/to/per-target-jsonl --subject-type target
-
-# 2. Score the 11 candidates' literature evidence
-.venv/bin/dotenv run -- .venv/bin/python analyses/classifiers/score_target_literature.py \
-    --targets UNC13A,NTRK2,ADCYAP1R1,KL,GALR1,NPY1R,GHSR,VIPR2,APLNR,VGF,CORT \
-    --out data/target_evidence/literature_scores_neuro_2026.jsonl
-
-# 3. Prepare complete evidence dossiers for each T-I pair (no paid calls)
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-    --pair UNC13A:ALS \
-    --pair NTRK2:Alzheimer \
-    --pair ADCYAP1R1:Alzheimer \
-    --pair KL:Alzheimer \
-    --pair GALR1:Alzheimer \
-    --pair NPY1R:Alzheimer \
-    --pair GHSR:Parkinson \
-    --pair VIPR2:Alzheimer \
-    --pair APLNR:Ischemic-stroke \
-    --pair VGF:Alzheimer \
-    --pair CORT:Alzheimer \
-    --prepare-only \
-    --out data/target_evidence/nelson_tiers_neuro_v4.jsonl
-
-# 4. After explicit spend approval, rerun the same Nelson command without
-#    --prepare-only. It reuses the exact saved dossiers and writes score rows.
-
-# 5. Incrementally ingest the audited literature runs
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task target-literature \
-    data/target_evidence/literature_scores_neuro_2026.jsonl
-
-# 6. Bulk-preflight, then atomically ingest the audited Nelson runs and facts
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task nelson-tier --preflight \
-    data/target_evidence/nelson_tiers_neuro_v4.jsonl
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task nelson-tier data/target_evidence/nelson_tiers_neuro_v4.jsonl
-
-# 7. Update the established database view without rerunning bootstrap views
-.venv/bin/dotenv run -- sh -c \
-  'psql "$DATABASE_URL" -f db/16_nelson_tier_view.sql'
-
-# 8. Rescore
-.venv/bin/dotenv run -- .venv/bin/python analyses/score_neuro_candidates.py
-```
-
-Expected total cost: ~$1-3.
-
 ## Cost accounting
 
 Every classifier records per-row token counts and USD cost. Aggregate at any
 time with e.g.:
 
 ```bash
-jq -s 'map(._cost_usd // ._cost // ._cost_share) | add' \
-  data/target_evidence/literature_scores.jsonl
+jq -s 'map(._cost_usd) | add' data/clinical_trials/stoppage_rescore_all.jsonl
 ```
 
 Cumulative spend is also printed after each row while a script runs.
@@ -365,16 +210,6 @@ Cumulative spend is also printed after each row while a script runs.
   STRING / Reactome / SIDER / HPO / DGIdb / HPA / GTEx / Open Targets / IMPC).
   Those tables live in `public.*`, populated by a separate project. This repo
   reads from them but does not rebuild them.
-- **Target-literature PubMed abstract discovery.** The scorer reads only
-  canonical PubMed snapshots linked to a target in `preclin.source_document`.
-  Import per-gene JSONL caches with `db/12_ingest_evidence_abstracts.py` first;
-  the scorer fails before any paid call if an input lacks a stable
-  `source_document_id`. Trial-linked abstracts are handled separately by
-  `db/11_ingest_trial_sources.py`.
-- **Broad PubMed searching.** Nelson does not fetch directly. Discovering a
-  broad gene/indication corpus remains outside this repository; import records
-  with `db/12_ingest_evidence_abstracts.py` so immutable source IDs and hashes
-  exist before dossier preparation.
 
 ## Adding a new classifier
 

@@ -1,4 +1,8 @@
-"""Download CBER letter PDFs, extract text with pypdf, parse STN / date / sponsor / purpose."""
+"""CBER letter PDFs: download, extract text with pypdf, parse STN / date / sponsor / purpose, and
+match letters to yearly-page actions."""
+import datetime
+import functools
+import glob
 import json
 import os
 import re
@@ -7,11 +11,9 @@ import pypdf
 
 from pipeline.cber import fetch
 
-BASE = fetch.BASE
 MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
 DATE_RE = re.compile(rf"({MONTHS})\s+(\d{{1,2}})\s*,?\s*(\d{{4}})")
 MNUM = {m: i + 1 for i, m in enumerate(MONTHS.split("|"))}
-TEXT_CACHE = os.environ.get("CBER_TEXT_CACHE", os.path.join(BASE, "letters_text.jsonl"))
 
 
 def iso(m):
@@ -24,36 +26,26 @@ def canon_media(u):
     return f"https://www.fda.gov/media/{m.group(1)}/download" if m else u
 
 
-def extract_text(path):
-    try:
-        rd = pypdf.PdfReader(path)
-        return "\n".join((p.extract_text() or "") for p in rd.pages), len(rd.pages), None
-    except Exception as e:  # noqa: BLE001
-        return "", 0, f"pdf_text_error: {e}"
-
-
-_cache = None
-
-
-def load_cache():
-    global _cache
-    if _cache is None:
-        _cache = {}
-        if os.path.exists(TEXT_CACHE):
-            for line in open(TEXT_CACHE):
-                r = json.loads(line)
-                _cache[r["url"]] = r
-    return _cache
+@functools.cache
+def texts():
+    """{letter url: download record} over letters_text*.jsonl in name order: the first record per url,
+    replaced by any later one that has a PDF hash. get_letter appends to letters_text.jsonl and to this dict."""
+    d = {}
+    for name in sorted(glob.glob("letters_text*.jsonl", root_dir=fetch.BASE)):
+        for r in fetch.read_jsonl(name):
+            if r["url"] not in d or r.get("sha256"):
+                d[r["url"]] = r
+    return d
 
 
 def wayback_pdf(url):
     """Find an archived copy of a PDF URL on the Wayback Machine; returns fetch.get_pdf-style dict."""
     variants = [url, url + "?attachment", url.replace("https://", "http://")]
     for v in variants:
-        caps = fetch.cdx(re.sub(r"^https?://", "", v))
+        caps = fetch.cdx(v)
         caps = [c for c in caps if c.get("mimetype", "").endswith("pdf") or c.get("mimetype") == "application/octet-stream"] or caps
         for c in reversed(caps[-3:]):
-            wu = f"https://web.archive.org/web/{c['timestamp']}id_/{c['original']}"
+            wu = fetch.wayback(c)
             r = fetch.get_pdf(wu)
             if r.get("sha256"):
                 r["wayback_url"] = wu
@@ -61,17 +53,17 @@ def wayback_pdf(url):
     return None
 
 
-def get_letter(url, allow_wayback=True):
+def get_letter(url):
     """Download (cached) and extract a letter; returns dict with sha256, n_bytes, text, error.
     Falls back to the Wayback Machine copy when fda.gov no longer serves the file."""
     url = canon_media(url)
-    c = load_cache()
-    if url in c and (c[url].get("sha256") or c[url].get("wayback_tried") or not allow_wayback):
+    c = texts()
+    if url in c and (c[url].get("sha256") or c[url].get("wayback_tried")):
         return c[url]
     r = fetch.get_pdf(url) if url not in c else {"status": c[url].get("status"), "error": c[url].get("error")}
     rec = {"url": url, "status": r.get("status"), "sha256": r.get("sha256"), "n_bytes": r.get("n_bytes"),
            "error": r.get("error"), "text": None, "n_pages": None, "wayback_url": None}
-    if not r.get("sha256") and allow_wayback:
+    if not r.get("sha256"):
         rec["wayback_tried"] = True
         w = wayback_pdf(url)
         if w:
@@ -79,14 +71,16 @@ def get_letter(url, allow_wayback=True):
             rec.update({"sha256": w["sha256"], "n_bytes": w["n_bytes"], "error": None,
                         "wayback_url": w["wayback_url"]})
     if r.get("path"):
-        txt, n, err = extract_text(r["path"])
-        rec.update({"text": txt, "n_pages": n})
-        if err:
-            rec["error"] = err
-        elif len(txt.strip()) < 200:
-            rec["error"] = "little_or_no_text"
+        try:
+            rd = pypdf.PdfReader(r["path"])
+            rec.update({"text": "\n".join((p.extract_text() or "") for p in rd.pages), "n_pages": len(rd.pages)})
+        except Exception as e:  # noqa: BLE001
+            rec.update({"text": "", "n_pages": 0, "error": f"pdf_text_error: {e}"})
+        else:
+            if len(rec["text"].strip()) < 200:
+                rec["error"] = "little_or_no_text"
     c[url] = rec
-    with open(TEXT_CACHE, "a") as f:
+    with open(os.path.join(fetch.BASE, "letters_text.jsonl"), "a") as f:
         f.write(json.dumps(rec) + "\n")
     return rec
 
@@ -133,14 +127,13 @@ def parse_letter(text):
     body = t[dear.start():] if dear else t
     out = {}
     stns = _stns_in(header)
-    src = "header"
     if not stns:
         pg = []
         for m in re.finditer(r"Page\s+\d+\s*[-–—]\s*(?:Our\s+)?(?:STN|BLA?|BL)[^\n]{0,40}?(1\d{5}|10\d{4})\s*/\s*(\d{1,5})", t):
             k = (m.group(1), str(int(m.group(2))))
             if k not in pg:
                 pg.append(k)
-        stns, src = pg, "page_header"
+        stns = pg
     if not stns:
         # bundled letters list the STNs in a table right after the salutation
         first = body[:2500]
@@ -152,17 +145,14 @@ def parse_letter(text):
             k = (m.group(1), str(int(m.group(2))))
             if k not in cand:
                 cand.append(k)
-        stns, src = cand, "body"
+        stns = cand
     if not stns:
         m = re.search(r"(?:STN|BLA|BL)\s*:?\s*#?\s*(?:BL\s*)?(1\d{5}|10\d{4})", t[:3000])
         if m:
-            stns, src = [(m.group(1), None)], "appl_only"
+            stns = [(m.group(1), None)]
     out["stns"] = stns
-    out["stn_source"] = src
     out["letter_date"] = header_date(header)
     dm = DATE_RE.search(header)
-    hm = re.search(r"(BLA APPROVAL|SUPPLEMENT APPROVAL|SUPPLEMENTAL APPROVAL|ACCELERATED APPROVAL|BLA ACCELERATED APPROVAL|APPROVAL[^\n]{0,40}|ORDER[^\n]{0,30})", header)
-    out["letter_kind"] = hm.group(1).strip() if hm else None
     am = re.search(r"\n([^\n]+)\n\s*(?:ATTENTION|Attention|Attn)", header)
     if am and not re.match(r"^\s*(Our STN|STN|BL|BLA|SUPPLEMENT|APPROVAL|\w+ \d{1,2}, \d{4})", am.group(1).strip()):
         out["sponsor"] = am.group(1).strip()[:120]
@@ -173,5 +163,63 @@ def parse_letter(text):
     para = body[:2200]
     para = re.split(r"\n\s*(?:LABELING|BIOLOGICAL PRODUCT DEVIATIONS|POSTMARKETING|PEDIATRIC REQUIREMENTS|ADVISORY COMMITTEE|MANUFACTURING LOCATIONS|We hereby approve the draft)", para)[0]
     out["purpose"] = re.sub(r"\s+", " ", para)[:1500]
-    out["mentions_indication"] = bool(re.search(r"indicat", para, re.I))
+    return out
+
+
+def letter_date(r):
+    """A letters_parsed row's date: the letterhead date, else the date in its link text."""
+    date = r.get("letter_date")
+    if not date and r.get("link_date"):
+        m = DATE_RE.search(r["link_date"])
+        date = iso(m) if m else None
+    return date
+
+
+def letter_matches(parsed, appl, suppl, date):
+    """A parsed letter is for the action if it lists the action's STN/supplement, or its BLA and is
+    dated within a week of the action."""
+    if not parsed:
+        return False
+    for a, s in parsed.get("stns") or []:
+        if a == appl and suppl is not None and s == suppl:
+            return True
+    ld = parsed.get("letter_date")
+    return bool(ld and any(a == appl for a, _ in parsed.get("stns") or [])
+                and abs((datetime.date.fromisoformat(ld) - datetime.date.fromisoformat(date)).days) <= 7)
+
+
+def match_actions(actions, lrows):
+    """(action, letters, how) per yearly-page action: letters_parsed rows listing its STN/supplement
+    (how='stn'), else rows for its BLA dated within a week of it (how='appl_date'); how is None without letters."""
+    by_stn, by_appl = {}, {}
+    for r in lrows:
+        dt = letter_date(r)
+        for a, s in r.get("stns") or []:
+            if s is not None:
+                by_stn.setdefault((a, s), []).append(r)
+            by_appl.setdefault(a, []).append((dt, r))
+    out = []
+    for a in actions:
+        cands = []
+        how = None
+        if a.get("appl_no") and a.get("stn_suppl") is not None:
+            cands = by_stn.get((a["appl_no"], a["stn_suppl"]), [])
+            how = "stn"
+        if not cands and a.get("appl_no") and a.get("approval_date"):
+            ad = datetime.date.fromisoformat(a["approval_date"])
+            cands = [r for dt, r in by_appl.get(a["appl_no"], [])
+                     if dt and abs((datetime.date.fromisoformat(dt) - ad).days) <= 7]
+            how = "appl_date"
+        out.append((a, cands, how if cands else None))
+    return out
+
+
+def found_letters():
+    """{action_row: record} over found_letters*.jsonl (both Wayback passes): the first record per
+    action, replaced by any later one that found a letter."""
+    out = {}
+    for name in glob.glob("found_letters*.jsonl", root_dir=fetch.BASE):
+        for r in fetch.read_jsonl(name):
+            if r["action_row"] not in out or r.get("found"):
+                out[r["action_row"]] = r
     return out

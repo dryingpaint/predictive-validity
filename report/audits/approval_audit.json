@@ -1,0 +1,814 @@
+{
+ "programs": [
+  {
+   "program_id": 289116,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-12-20",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Zepbound NDA 217806 S-013 (efficacy), approved 2024-12-20, covers moderate-to-severe OSA in adults with obesity."
+  },
+  {
+   "program_id": 267216,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2017-02-02",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Opdivo BLA 125554 S-024, approved 2017-02-02, covers locally advanced or metastatic urothelial carcinoma after platinum therapy. Sarcomatoid urothelial carcinoma is a histologic variant of it, so the broader class covers it."
+  },
+  {
+   "program_id": 288662,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2019-09-06",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Ofev NDA 205832 S-012, approved 2019-09-06, covers SSc-ILD. That is a population within systemic sclerosis, so it counts under the rubric."
+  },
+  {
+   "program_id": 283733,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2019-08-21",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Ga 68 DOTATOC NDA 210828, original approval 2019-08-21, covers localization of SSTR-positive NETs in adults and children. Paraganglioma is a (non-epithelial) neuroendocrine neoplasm, so the broader class includes it."
+  },
+  {
+   "program_id": 298865,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2021-11-12",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Besremi BLA 761166, original approval 2021-11-12, covers adults with polycythemia vera."
+  },
+  {
+   "program_id": 285398,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-06-21",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Vyvgart Hytrulo BLA 761304 S-005 (efficacy), approved 2024-06-21, added CIDP in adults."
+  },
+  {
+   "program_id": 278123,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-02-09",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Eohilia NDA 213976, original approval 2024-02-09, is the first budesonide product approved for EoE. No earlier budesonide application had this use."
+  },
+  {
+   "program_id": 272440,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2020-11-13",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Keytruda BLA 125514 S-088, approved 2020-11-13, covers PD-L1 CPS>=10 metastatic TNBC (accelerated approval). Early-stage TNBC followed on 2021-07-26."
+  },
+  {
+   "program_id": 307153,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2020-12-01",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Gavreto NDA 214701, approved 2020-12-01, covers RET-fusion thyroid cancer and RET-mutant MTC. The MTC use was later withdrawn, but the RET-fusion thyroid cancer use is still on the 2025-12 label, so the approval stands as of Oct 2026."
+  },
+  {
+   "program_id": 278268,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2018-06-13",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Moxidectin NDA 210867, original approval 2018-06-13, covers onchocerciasis due to Onchocerca volvulus."
+  },
+  {
+   "program_id": 277736,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2017-06-29",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Triptodur NDA 208956, original approval 2017-06-29, covers central precocious puberty in patients aged 2 and older. The Trelstar NDAs cover prostate cancer only."
+  },
+  {
+   "program_id": 275252,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2018-10-11",
+   "approved_verdict": "correct",
+   "date_verdict": "wrong",
+   "note": "The stored date 2021-08-23 is the VOYAGER PAD expansion (post-revascularization). The first approval covering PAD was 2018-10-11 (NDA 202439 S-025, COMPASS): Xarelto plus aspirin to reduce the risk of major cardiovascular events in chronic CAD or PAD. Bayer/Janssen announcements and openFDA confirm this. The stored evidence itself says PAD was first approved in October 2018, yet it still gave the 2021 date."
+  },
+  {
+   "program_id": 294385,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-06-06",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Rytelo NDA 217779, original approval 2024-06-06, covers low- to intermediate-1 risk MDS with transfusion-dependent anemia."
+  },
+  {
+   "program_id": 289729,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Synribo NDA 203585, original approval 2012-10-26, covers CML resistant to or intolerant of 2 or more TKIs. The stored exact date 2012-10-26 is the application's original approval date and is right; before_2015 would also do. Drugs@FDA lists Synribo as discontinued, but the approval was never withdrawn."
+  },
+  {
+   "program_id": 299461,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-05-31",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "UNII 2ZKG2M978D is mRNA-1345 (mRESVIA), BLA STN 125796, approved 2024-05-31 for prevention of RSV lower respiratory tract disease in adults 60 and older. Prevention counts under the rubric."
+  },
+  {
+   "program_id": 304990,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2025-02-14",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Romvimza NDA 219304 original approval 2025-02-14 (Drugs@FDA ORIG-1 AP 20250214) for symptomatic TGCT."
+  },
+  {
+   "program_id": 272476,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2018-06-12",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Keytruda BLA 125514 S-034 AP 2018-06-12: accelerated approval for recurrent/metastatic PD-L1+ cervical cancer. Keytruda Qlex (BLA 761467, 2025) is later."
+  },
+  {
+   "program_id": 286920,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-12-10",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "The FDA approval letter STN BL 101766/5169 (OneBlood), dated 2024-12-10, licenses high-titer CCP for COVID-19 in patients with immunosuppressive disease or treatment. The EUA was revoked in Aug 2025 and Stanford (BLA 125396/21) followed later."
+  },
+  {
+   "program_id": 272489,
+   "stratum": "yes_dated",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "correct",
+   "note": "The only approved use that could cover this is the tissue-agnostic one (MSI-H/dMMR, S-014 2017-05-23; TMB-H 2020-06-16). The program's only trial, ZEBRA NCT02949219, enrolled small bowel adenocarcinoma without selecting by biomarker, and its listed conditions name no biomarker. Under the rubric's intent this is a no. The stored yes is defensible because ZEBRA did enroll MSI-H patients and stratified outcomes by them (50% PR in MSI-H). But the stored evidence applies the rule wrongly: it says small intestinal cancers were in the FDA's supporting trials, when the rule asks what the program's own trials enrolled. If the answer is yes, 2017-05-23 is the right earliest date."
+  },
+  {
+   "program_id": 305220,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2024-05-30",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "The May 30, 2024 Breyanzi approval letter and FDA announcement cover R/R MCL after 2 or more lines including a BTKi."
+  },
+  {
+   "program_id": 294684,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2022-11-30",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Rebyota (fecal microbiota, live-jslm) STN 125739 approved 2022-11-30 for prevention of recurrence of CDI."
+  },
+  {
+   "program_id": 278020,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2023-09-21",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Jardiance NDA 204629 S-040 AP 2023-09-21 for CKD at risk of progression, a broader class that includes diabetic kidney disease. No earlier kidney indication."
+  },
+  {
+   "program_id": 306247,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2018-08-29",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "CBER's Jivi page lists the original BLA 125661 approval letter as 2018-08-29 (Bayer announced on Aug 30)."
+  },
+  {
+   "program_id": 316807,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2017-06-19",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Baxdela NDA 208610 ORIG AP 2017-06-19 for ABSSSI."
+  },
+  {
+   "program_id": 277041,
+   "stratum": "yes_dated",
+   "own_approved": "yes",
+   "own_first_approval": "2021-09-22",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Jakafi NDA 202192 S-023 AP 2021-09-22 for cGVHD after failure of 1-2 lines of systemic therapy."
+  },
+  {
+   "program_id": 272961,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "GSRS identifies UNII D733ET3F9O as crisantaspase (Erwinaze); openFDA lists Rylaze under a different UNII. Erwinaze, BLA 125359, was approved Nov 2011 for ALL with E. coli asparaginase hypersensitivity, so before_2015 is right. The stored evidence quotes Rylaze (2021) but rests the date on Erwinaze, which is appropriate."
+  },
+  {
+   "program_id": 308997,
+   "stratum": "yes_pre2015",
+   "own_approved": "uncertain",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "acceptable",
+   "date_verdict": "correct",
+   "note": "Trihexyphenidyl is labeled only for parkinsonism and for drug-induced extrapyramidal disorders. It has no labeled use for dystonia as such: primary, generalized or CP-related dystonia, the usual trial populations, are off-label. A yes is defensible only through drug-induced acute dystonia, a secondary-dystonia subtype that sits inside the drug-induced EPS indication. That use overlaps dystonia rather than being a clean subtype of it, so no would be equally defensible. If the answer is yes, before_2015 is right (Artane NDA 006773, 1949)."
+  },
+  {
+   "program_id": 301181,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "BeneFIX BLA 103677 was approved in 1997 for hemophilia B."
+  },
+  {
+   "program_id": 285630,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Proglycem oral diazoxide (NDA 017425/017453) was approved in 1976 for hypoglycemia due to hyperinsulinism."
+  },
+  {
+   "program_id": 274415,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Humulin R BLA 018780 (1982) is labeled for diabetes mellitus, a broader class that includes T2DM."
+  },
+  {
+   "program_id": 315523,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Dyrenium (NDA 013174, 1964) is labelled for edema only. The triamterene/HCTZ combinations Dyazide (NDA 016042, 1965-12-02) and Maxzide (NDA 019129, 1984-10-22) carry the label text 'indicated for the treatment of hypertension or edema in patients who develop hypokalemia on hydrochlorothiazide alone'. The rubric counts combination use, so the answer is yes, before 2015."
+  },
+  {
+   "program_id": 294154,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Creon (BLA 020725, 2009-04-30), Zenpep (2009-08-27), Pancreaze (2010), Pertzye and Viokace (2012) are all labelled for exocrine pancreatic insufficiency. Cotazym (1996) is older still."
+  },
+  {
+   "program_id": 274590,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Reclast (NDA 021817, original approval 2007) states that it 'reduces the incidence of fractures (hip, vertebral...)' in postmenopausal osteoporosis, and that 'in patients ... [with] a recent low-trauma hip fracture, Reclast reduces the incidence of new clinical fractures'. That is prevention in the hip-fracture population, which the rubric counts. Both claims were on the label before 2015. Whether 'hip fracture' counts as an approved disease is mildly debatable, but yes matches the rubric."
+  },
+  {
+   "program_id": 271001,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "The vinblastine label (Velban NDA 012665 from 1965, and current generics) lists 'Letterer-Siwe disease (histiocytosis X)', i.e. LCH. The stored relation is same_disease where subtype is arguable, but this does not affect the verdicts."
+  },
+  {
+   "program_id": 282143,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Epivir-HBV (NDA 021003/021004) was approved 1998-12-08 for chronic hepatitis B. The brand has since been discontinued, but the approval stands."
+  },
+  {
+   "program_id": 274878,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Travatan (NDA 021257) was approved 2001-03-16 to reduce elevated IOP in open-angle glaucoma or ocular hypertension."
+  },
+  {
+   "program_id": 298078,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Acthar Gel (NDA 008372, 1952) and Purified Cortrophin Gel (NDA 008975, 1954) are labelled 'as adjunctive therapy for short-term administration in ... rheumatoid arthritis, including juvenile rheumatoid arthritis'. That indication is long-standing and pre-dates 2015."
+  },
+  {
+   "program_id": 297488,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Varivax was licensed 1995-03-17 for prevention of varicella, and ProQuad followed in 2005. The stored evidence quotes an unrelated 2023 route-of-administration letter, but its conclusion rests correctly on the 1995 approval."
+  },
+  {
+   "program_id": 302213,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Horizant (NDA 022399) was approved 2011-04-06 for moderate-to-severe primary RLS."
+  },
+  {
+   "program_id": 286832,
+   "stratum": "yes_pre2015",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "correct",
+   "date_verdict": "correct",
+   "note": "Fresenius Kabi magnesium sulfate injection (NDA 019316, 1986-09-08) is labelled 'suitable for replacement therapy in magnesium deficiency'. The premixed Hospira bags are labelled only for pre-eclampsia/eclampsia, but NDA 019316 alone settles the answer."
+  },
+  {
+   "program_id": 267906,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Xeloda's indications are colorectal, breast, gastric/esophageal/GEJ and pancreatic cancer. It has no leukemia indication."
+  },
+  {
+   "program_id": 274201,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Vidaza is approved for MDS and JMML, and Onureg for AML maintenance. The generic NDA 208216 has no prostate cancer indication."
+  },
+  {
+   "program_id": 275509,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Balversa (NDA 212018) is approved only for FGFR3-altered metastatic urothelial carcinoma (2019 accelerated approval, 2024 full approval). There is no tissue-agnostic FGFR approval as of Oct 2026."
+  },
+  {
+   "program_id": 274321,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The current Venclexta label (2026-05) covers only CLL/SLL and AML. T-PLL is not covered."
+  },
+  {
+   "program_id": 273860,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Celebrex is approved for OA, RA, JRA, ankylosing spondylitis, acute pain and dysmenorrhea. Its former FAP polyp indication was withdrawn in 2011. The combination products cover hypertension/OA, migraine and acute pain. None covers laryngeal papilloma."
+  },
+  {
+   "program_id": 274660,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Dasatinib (Sprycel, NDA 021986; Phyrago, NDA 216099) is approved only for Ph+ CML and Ph+ ALL. It has no approval for Alzheimer disease."
+  },
+  {
+   "program_id": 272434,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Axitinib (Inlyta, NDA 202324) is approved only for advanced renal cell carcinoma, alone or with pembrolizumab or avelumab. It has no breast cancer approval."
+  },
+  {
+   "program_id": 284505,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Oxytocin is approved for antepartum use (labor induction or augmentation, incomplete or inevitable abortion) and for postpartum hemorrhage. It has no gastroparesis or gastric-emptying indication."
+  },
+  {
+   "program_id": 274981,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "No BoNT-A product (Botox, Dysport, Xeomin, Daxxify/Jeuveau) is approved for chronic pain syndrome or for its MONDO children (fibromyalgia, CRPS, loin pain hematuria). Botox's chronic migraine prophylaxis and its cervical dystonia indication ('neck pain associated with cervical dystonia') are separate disorders that sit outside MONDO:0024317. So 'no' is right."
+  },
+  {
+   "program_id": 283443,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Sunitinib (Sutent) is approved for GIST, advanced RCC, adjuvant RCC and pancreatic NET. It has no melanoma approval."
+  },
+  {
+   "program_id": 292826,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The HBsAg vaccines (Engerix-B, PreHevbrio) are approved only to prevent hepatitis B virus infection. Neither has a breast cancer indication."
+  },
+  {
+   "program_id": 268030,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Paclitaxel (Taxol and the protein-bound products) is approved only for oncology indications: breast, ovarian, NSCLC, pancreatic and AIDS-related Kaposi sarcoma. It has no psoriasis approval."
+  },
+  {
+   "program_id": 281339,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Colchicine is approved for gout flares (prophylaxis and treatment), familial Mediterranean fever, and cardiovascular risk reduction (Lodoco, NDA 215727). It has no substance-dependence indication."
+  },
+  {
+   "program_id": 276328,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Aspirin products (Durlaza, Aggrenox, Yosprala, OTC monographs and others) carry vascular risk-reduction and analgesic indications. None is labelled for thrombotic thrombocytopenic purpura."
+  },
+  {
+   "program_id": 281690,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Hydrocortisone's only neoplastic indication is palliative management of leukemias and lymphomas. It has no cholangiocarcinoma approval."
+  },
+  {
+   "program_id": 290344,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Levothyroxine is approved for hypothyroidism and for TSH suppression in thyroid cancer. It has no indication for recurrent pregnancy loss."
+  },
+  {
+   "program_id": 267238,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Nivolumab (Opdivo, Opdivo Qvantig, Opdualag) has no glioma or oligoastrocytoma approval as of Oct 2026. It is not tissue-agnostic, so no biomarker route applies."
+  },
+  {
+   "program_id": 272638,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Dexamethasone labels cover adjunctive treatment of cerebral edema associated with primary or metastatic brain tumor. That treats a complication, not the meningioma itself. Its neoplastic indications are leukemias, lymphomas and multiple myeloma (Hemady). So 'no' is right."
+  },
+  {
+   "program_id": 289492,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Mycophenolic acid (Myfortic, NDA 050791) is approved for prophylaxis of organ rejection in kidney transplant recipients. It is not approved to treat chronic kidney disease."
+  },
+  {
+   "program_id": 272824,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Telmisartan (Micardis and its combinations) is approved for hypertension and cardiovascular risk reduction. It has no psychiatric indication."
+  },
+  {
+   "program_id": 277288,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Metopirone (NDA 012911) is approved only as a diagnostic test of hypothalamic-pituitary ACTH function. It has no smoking-cessation or nicotine-dependence use. The stored evidence calls this 'diagnosis of adrenal insufficiency', which is loose wording, but the verdict is unaffected."
+  },
+  {
+   "program_id": 310568,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The listed gatifloxacin applications are ophthalmic products (Zymar NDA 021493, Zymaxid NDA 022548) for bacterial conjunctivitis. The discontinued systemic Tequin was never approved for tuberculosis either."
+  },
+  {
+   "program_id": 266918,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Imfinzi is approved for NSCLC, SCLC, biliary tract cancer, HCC, endometrial cancer (dMMR), gastric/GEJ cancer, MIBC and, since May 2026, BCG-naive NMIBC. It has no lymphoma or CTCL indication."
+  },
+  {
+   "program_id": 305796,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The listed NDAs are loperamide/simethicone combinations (Imodium Advanced/multi-symptom) for diarrhea with gas. Simethicone is otherwise an OTC antiflatulent. Neither has an otitis media use."
+  },
+  {
+   "program_id": 285087,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Intron A (BLA 103132) was approved for hairy cell leukemia, melanoma, follicular lymphoma, condylomata acuminata, AIDS-related Kaposi sarcoma and chronic hepatitis B and C. It was never approved for pancreatic cancer."
+  },
+  {
+   "program_id": 283993,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Ultane (NDA 020478) is approved only for induction and maintenance of general anesthesia. It has no COVID-19 or coronavirus indication."
+  },
+  {
+   "program_id": 276224,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The acetylcysteine NDAs cover a mucolytic for inhalation and acetaminophen overdose (Acetadote IV, Cetylev effervescent and others). None covers female infertility."
+  },
+  {
+   "program_id": 300428,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Rozerem (NDA 021782) is approved only for sleep-onset insomnia. It has no nicotine-dependence use."
+  },
+  {
+   "program_id": 280614,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Voxzogo is approved only for achondroplasia (2021, expanded 2023). CANOPY-HCH-3 reported positive results in hypochondroplasia in May 2026 and BioMarin submitted an sNDA in Q3 2026. As of October 2026 it is under review and BioMarin says no hypochondroplasia approval exists, with a 2027 launch anticipated. 'no' is correct as of October 2026."
+  },
+  {
+   "program_id": 272091,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Farxiga is approved for T2DM glycemic control, heart failure and CKD. It has no MASLD/MASH (NAFLD/NASH) indication; the 2025 MASH approval went to semaglutide."
+  },
+  {
+   "program_id": 274911,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Gilotrif (NDA 201292) is approved only for NSCLC (EGFR-mutant, and squamous after platinum). It has no endometrial indication."
+  },
+  {
+   "program_id": 288661,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Ofev (NDA 205832) is approved for IPF, SSc-ILD and chronic fibrosing ILD with a progressive phenotype. It has no oncology indication in the US."
+  },
+  {
+   "program_id": 284964,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Invanz (NDA 021337) is approved for cIAI, cSSSI, CAP, cUTI, acute pelvic infections and colorectal surgical prophylaxis. Tuberculosis is not among them."
+  },
+  {
+   "program_id": 293777,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Aliqopa (NDA 209936) had accelerated approval only for relapsed follicular lymphoma, later withdrawn. It was never approved for endometrial cancer."
+  },
+  {
+   "program_id": 313990,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Amicar is approved to enhance hemostasis when fibrinolysis contributes to bleeding. The conditions its label lists (including some carcinomas and aplastic anemia) are settings of fibrinolytic bleeding, not approved uses for treating a neoplasm. No hematologic malignancy is approved."
+  },
+  {
+   "program_id": 293246,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "wrong",
+   "date_verdict": "not_applicable",
+   "note": "Should be no. Fragmin's labelled uses (DailyMed/openFDA label for NDA 020287) are: prophylaxis of ischemic complications of unstable angina/non-Q-wave MI, DVT prophylaxis, extended VTE treatment in cancer, and pediatric VTE. None is arterial occlusion. In MONDO, the subtypes of arterial occlusion (MONDO:0020673) are cerebral, vertebral, basilar and central retinal artery occlusion; it has no coronary subtype. NSTE-ACS is usually a non-occlusive thrombus, so 'subtype_or_subpopulation' via UA/NQWMI does not hold. The evidence lets you decide, so 'uncertain' is not justified."
+  },
+  {
+   "program_id": 290988,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "wrong",
+   "date_verdict": "not_applicable",
+   "note": "Should be no. The only dostarlimab coverage would be the tissue-agnostic dMMR solid-tumor indication (BLA 761223, 2021-08-17; still on the 2025 label). Under the rubric that counts only if the program's trials enrolled dMMR patients. The program's BTC trial, NCT04779151 (niraparib + dostarlimab basket, cohort 1D BTC/PDAC), selects for bi-allelic DNA-repair/HRD gene alterations (BRCA1/2, ATM, ARID1A, etc.), not dMMR/MSI-H. GARNET is not in this program. The trial record resolves the question, so 'uncertain' should be 'no'."
+  },
+  {
+   "program_id": 290991,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "2021-08-17",
+   "approved_verdict": "wrong",
+   "date_verdict": "wrong",
+   "note": "Should be yes, first approval 2021-08-17. The program's only adrenocortical carcinoma trial, NCT06333314 ('Dostarlimab for ... Cancer (Non-colorectal/Non-endometrial) With Tumor dMMR/MSI'), requires 'Histologically proven, dMMR/MSI-H solid tumors'. So the trial enrolled the biomarker group, and the tissue-agnostic approval for 'dMMR recurrent or advanced solid tumors' (BLA 761223, original approval 2021-08-17, still on the current label) covers dMMR ACC. The stored answer was 'uncertain' with no date."
+  },
+  {
+   "program_id": 288609,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "2016-12-19",
+   "approved_verdict": "acceptable",
+   "date_verdict": "correct",
+   "note": "Borderline. Rubraca's approvals are for 'deleterious BRCA mutation (germline and/or somatic)-associated' ovarian cancer (first 2016-12-19, NDA 209115) and mCRPC. Germline BRCA2 carriers with these cancers are a subpopulation of BRCA2-related cancer predisposition, so I lean yes. The stored point that the drug treats the cancers rather than the predisposition itself is a defensible reason for hedging. The stored date of 2016-12-19 matches."
+  },
+  {
+   "program_id": 283266,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "acceptable",
+   "date_verdict": "correct",
+   "note": "Borderline. Ramipril is indicated in patients aged 55 or older at high risk 'because of a history of coronary artery disease, stroke, peripheral vascular disease, or diabetes ...' to reduce the risk of MI, stroke and CV death. This is efficacy supplement S-028 to NDA 019901, dated 2000-10-04, and the text remains on current ramipril labels. Patients with CAD/PVD in that group are an atherosclerotic subpopulation, so I lean yes. However, the indication is framed as CV risk reduction, not atherosclerosis, so hedging is defensible. before_2015 is correct."
+  },
+  {
+   "program_id": 314131,
+   "stratum": "uncertain",
+   "own_approved": "uncertain",
+   "own_first_approval": "undated",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "The current thioridazine label (ANDA labels on DailyMed; Mellaril since June 2000) covers only treatment-refractory schizophrenia. Before 2000, Mellaril labelling (NDA 011808, 1962) included short-term treatment of depression with variable anxiety and treatment of anxiety and other symptoms in geriatric patients. Whether that counts as 'anxiety disorder' is a genuine judgement call, and I could not retrieve the pre-2000 label text from a primary source. 'Uncertain' is a reasonable answer."
+  },
+  {
+   "program_id": 277913,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
+   "note": "Lean no. Coverage could only come from the BRAF V600E tissue-agnostic approval (2022-06-22). The program's STS trials are NCT01438554 (pazopanib + trametinib, unselected) and NCT03784014 (MULTISARC, unselected advanced STS). MULTISARC has an NGS-guided sub-arm in which dabrafenib + trametinib is one option, so a few BRAF-altered patients may have been treated. Because of that, 'uncertain' is defensible, but neither trial enrolled a BRAF V600E population as such."
+  },
+  {
+   "program_id": 282435,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
+   "note": "Lean no. Mozobil (NDA 022311, 2008-12-15) is indicated with filgrastim to mobilize HSCs for autologous transplant in NHL or multiple myeloma. MONDO does place B-cell CLL under non-Hodgkin lymphoma, as the stored evidence notes, so hedging is defensible. However, FDA labelling treats CLL separately from NHL (Rituxan has a separate CLL indication), and the mobilization indication was not studied in CLL. The program's CLL trials (NCT00694590, NCT01373229) test a different use, chemosensitization."
+  },
+  {
+   "program_id": 314151,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
+   "note": "Lean no. Taractan (NDA 012486/012487/016149, all discontinued) was marketed for psychotic disorders. DrugCentral lists only schizophrenia, and I found no FDA source for an anxiety indication. The AMA Council on Drugs described use in severe neurotic states with anxiety, but that is not FDA labelling. The pre-DESI labelling cannot be verified, so 'uncertain' is defensible, though the evidence leans no."
+  },
+  {
+   "program_id": 274577,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
+   "note": "Borderline, lean no. Zometa/generic labels cover 'patients with ... documented bone metastases from solid tumors' (Zometa 2002), hypercalcemia of malignancy and myeloma; Reclast covers bone disease. That is treatment of skeletal metastases, not of clear cell sarcoma. A literal 'solid tumors' broader-class reading could give yes (before_2015). The program's trial, NCT06625190, uses zoledronic acid as an immunomodulator after alpha/beta T-cell-depleted transplant, an unrelated use. Hedging is defensible."
+  },
+  {
+   "program_id": 278410,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "wrong",
+   "date_verdict": "not_applicable",
+   "note": "Should be no. NDA 020958 is Pepcid Complete, OTC; its use is 'relieves heartburn associated with acid indigestion and sour stomach'. NDA 021823 is Actonel with Calcium, for osteoporosis. FDA itself separates episodic OTC heartburn relief from a GERD indication, and the stored evidence says the label does not cover GERD. The evidence lets you decide, so it should not be 'uncertain'."
+  },
+  {
+   "program_id": 313418,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "acceptable",
+   "date_verdict": "correct",
+   "note": "Borderline, lean yes. Teslascan (NDA 020652, approved 1997-11-26, withdrawn about 2003) was indicated, per the FDA's patent-term Federal Register notice of 2000-01-31, 'as an adjunct to MRI ... in the detection, localization, characterization, and evaluation of lesions of the liver'. The EU wording is 'lesions ... suspected to be due to metastatic disease or hepatocellular carcinoma'. Diagnosing malignant liver lesions is a diagnostic use within 'cancer', but the US label never names cancer, so hedging is defensible. before_2015 is correct."
+  },
+  {
+   "program_id": 268549,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "wrong",
+   "date_verdict": "correct",
+   "note": "Should be yes. Rituxan's NHL indications are not restricted by site: 'Relapsed or refractory, low grade or follicular, CD20-positive B-cell NHL' (1997-11-26) and 'Previously untreated diffuse large B-cell, CD20-positive NHL' (2006). Primary hepatic lymphoma is mostly DLBCL or MALT, so CD20+ B-cell NHL of the liver is a population within liver lymphoma that these indications cover. The rubric says such class wording is yes, not uncertain. The stored date_basis of before_2015 is right."
+  },
+  {
+   "program_id": 295417,
+   "stratum": "uncertain",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
+   "note": "Lean no. The Gleostine label (NDA 017588) covers 'primary and metastatic brain tumors following appropriate surgical and/or radiotherapeutic procedures' and Hodgkin lymphoma. Leptomeningeal metastasis (neoplastic meningitis) is normally distinguished from parenchymal brain metastases, and the wording does not plainly include it. Some would read 'metastatic brain tumors' broadly, so 'uncertain' is defensible."
+  },
+  {
+   "program_id": 268813,
+   "stratum": "uncertain",
+   "own_approved": "yes",
+   "own_first_approval": "before_2015",
+   "approved_verdict": "wrong",
+   "date_verdict": "correct",
+   "note": "Should be yes. MONDO:0021334 is MeSH D007160, defined as 'abnormal proliferation of primary cells of the immune system'. In MeSH, B-cell CLL sits under it (C15.604.515.560.080.125 and C20.683.515.528.080.125, via Lymphoproliferative Disorders). Fludarabine is approved for B-cell CLL: Fludara NDA 020038 in 1991, and oral NDA 022273 in 2008 repeats the use. The class plainly includes the approved disease, so the answer is yes, not uncertain. before_2015 is correct."
+  }
+ ]
+}

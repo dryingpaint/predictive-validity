@@ -1,4 +1,4 @@
-"""Canonicalize every preclin.drug name to the molecular entities it contains.
+"""Resolve preclin.drug intervention names to the molecular entities they contain.
 
     python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
     python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities that are the same
@@ -6,17 +6,23 @@
 
 Trial intervention strings name the same molecule many ways ("Keytruda",
 "pembrolizumab 200 mg", "Pembrolizumab Dose A", "MK-3475"), bundle placebo
-with drug ("Tirzepatide-Placebo") and describe combinations. The LLM reads each
-name with the trials it appears in and returns its active components under
-their nonproprietary (INN/USAN) names, or sponsor code when no name exists.
-Results go to preclin.moiety (one row per distinct active entity) and
-preclin.drug_moiety (drug_id -> moiety_id, one row per active component).
+with drug ("Tirzepatide-Placebo") and describe combinations. A name with no
+earlier LLM decision that exactly matches an entity's name, code name or alias
+(ignoring case and punctuation) is linked to that entity directly. The LLM reads
+every other in-scope name with up to three of its CT.gov snapshot trials and
+returns its active components under their nonproprietary (INN/USAN) names, or
+sponsor code when no name exists. Results go to preclin.moiety (one row per
+distinct active entity) and preclin.drug_moiety (drug_id -> moiety_id, one row
+per active component).
 
 An entity is then resolved to the FDA UNII substance it is (pipeline.unii
 names: official, common, code and brand). Entities that resolve to the same
 substance (a sponsor code and its later INN, say) are merged: the survivor
 takes the substance's official name and keeps every other name as an alias, so
-later runs map those names straight to it.
+later runs map those names straight to it. A same-entity pass then merges
+entities UNII does not connect (salt and parent registered separately, vaccines
+and other products without a UNII) when every LLM decision that saw the pair
+agrees.
 """
 from __future__ import annotations
 
@@ -107,11 +113,13 @@ def entity_ids(cur, names: dict[str, str]) -> dict[str, int]:
     return {k: known[k] for k in names}
 
 
-def canonicalize(args) -> None:
-    """Resolve intervention names. A name that is exactly an entity's
-    nonproprietary name or sponsor code (ignoring case and punctuation) is
-    linked directly; the rest go to the LLM. --scope industry limits the LLM
-    to names from the legacy program tables or from industry-sponsored trials."""
+def canonicalize(_args) -> None:
+    """Resolve intervention names. A name with no earlier validated decision
+    that is exactly an entity's name, code name or alias (ignoring case and
+    punctuation) is linked directly. The LLM reads the other names that are not
+    from the CT.gov snapshot registration (resolved_via <> 'ctgov_snapshot') or
+    that appear in an industry-sponsored snapshot trial, each with up to three
+    of its CT.gov snapshot trials."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id, normalized_name, "
                     "resolved_via FROM preclin.drug")
@@ -125,25 +133,6 @@ def canonicalize(args) -> None:
                        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'""",
                     (TASK.name, TASK.prompt_version))
         decided_before = {r[0] for r in cur.fetchall()}
-    exact = {did: exact_keys[nk] for did, _, _, _, nk, _ in drugs
-             if did not in decided_before and nk in exact_keys}
-    in_scope = {did for did, *_, via in drugs
-                if args.scope == "all" or via != "ctgov_snapshot" or did in industry}
-    drugs = [d for d in drugs if d[0] in in_scope and d[0] not in exact]
-    with llm.connect() as conn, conn.cursor() as cur:
-        # Context: up to three trials per name, from the legacy program tables
-        # when the name has programs there, otherwise from the CT.gov snapshot.
-        cur.execute("""
-            WITH t AS (
-              SELECT p.drug_id, pt.nct_id,
-                     row_number() OVER (PARTITION BY p.drug_id ORDER BY pt.nct_id) AS rn
-              FROM preclin.program p JOIN preclin.program_trial pt USING (program_id)
-              GROUP BY p.drug_id, pt.nct_id)
-            SELECT t.drug_id, json_agg(json_build_object('title', tr.brief_title, 'sponsor', tr.sponsor_name,
-                                                         'interventions', tr.interventions))
-            FROM t JOIN public.trials tr ON tr.nct_id = t.nct_id
-            WHERE t.rn <= 3 GROUP BY t.drug_id""")
-        context = dict(cur.fetchall())
         cur.execute("""
             WITH s AS (
               SELECT drug_id, nct_id, row_number() OVER (PARTITION BY drug_id ORDER BY nct_id) AS rn
@@ -152,18 +141,18 @@ def canonicalize(args) -> None:
                                                          'interventions', c.interventions))
             FROM s JOIN preclin.ctgov_study c USING (nct_id)
             WHERE s.rn <= 3 GROUP BY s.drug_id""")
-        for drug_id, trials in cur.fetchall():
-            context.setdefault(drug_id, trials)
-        items = {str(did): {"name": name, "synonyms": list(syn)[:6], "chembl_id": chembl,
-                            "trials": [{**t, "interventions": t["interventions"] or []}
-                                       for t in context.get(did, [])]}
-                 for did, name, syn, chembl, _, _ in drugs}
+        context = dict(cur.fetchall())
+    exact = {did: exact_keys[nk] for did, _, _, _, nk, _ in drugs
+             if did not in decided_before and nk in exact_keys}
+    in_scope = {did for did, *_, via in drugs if via != "ctgov_snapshot" or did in industry}
+    items = {str(did): {"name": name, "synonyms": list(syn)[:6], "chembl_id": chembl,
+                        "trials": [{**t, "interventions": t["interventions"] or []}
+                                   for t in context.get(did, [])]}
+             for did, name, syn, chembl, _, _ in drugs if did in in_scope and did not in exact}
     run_id = llm.run(TASK, items, reuse_by="subject")
 
+    decided = llm.decisions(run_id)
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        decided = cur.fetchall()
         moieties: dict[str, dict] = {}
         links = []
         kinds = []
@@ -189,15 +178,11 @@ def canonicalize(args) -> None:
         execute_values(cur, """INSERT INTO preclin.drug_moiety
               (drug_id, moiety_id, role, biosimilar_of, llm_decision_id, method)
             VALUES %s ON CONFLICT (drug_id, moiety_id) DO NOTHING""",
-                       [(did, ids[k], role, bio, dec, "llm") for did, k, role, bio, dec in links])
-        if exact:
-            execute_values(cur, """INSERT INTO preclin.drug_moiety (drug_id, moiety_id, role, method)
-                VALUES %s ON CONFLICT (drug_id, moiety_id) DO NOTHING""",
-                           [(did, mid, "investigational", "exact_name") for did, mid in exact.items()])
-            execute_values(cur, """UPDATE preclin.drug d SET entity_kind = 'drug', moiety_decision_id = NULL
-                FROM (VALUES %s) AS v(drug_id) WHERE d.drug_id = v.drug_id""", [(did,) for did in exact])
+                       [(did, ids[k], role, bio, dec, "llm") for did, k, role, bio, dec in links]
+                       + [(did, mid, "investigational", None, None, "exact_name") for did, mid in exact.items()])
         execute_values(cur, """UPDATE preclin.drug d SET entity_kind = v.kind, moiety_decision_id = v.did
-            FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""", kinds)
+            FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""",
+                       kinds + [(did, "drug", None) for did in exact], template="(%s, %s, %s::bigint)")
         conn.commit()
     print(f"llm items={len(items)} decided={len(decided)} exact-name links={len(exact)} "
           f"moieties={len(moieties)} links={len(links)}")
@@ -246,9 +231,9 @@ UNII_TASK = llm.Task(name="moiety_unii", prompt_version="v1", schema_version="v1
 
 
 def unii(_args) -> None:
-    """Resolve every entity to its UNII substance, then merge entities that
+    """Resolve every entity to its UNII substance, merge entities that
     resolved to the same one into a single entity named by the substance's
-    official name."""
+    official name, then run the same-entity pass (same_entities)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT m.moiety_id, m.name, m.code_names, m.aliases,
@@ -286,11 +271,12 @@ def unii(_args) -> None:
                 for u, d, t, inn, names in cur.fetchall()}
         cur.execute("""
             WITH s AS (SELECT dm.moiety_id, c.brief_title, c.lead_sponsor,
-                              row_number() OVER (PARTITION BY dm.moiety_id ORDER BY c.start_date DESC NULLS LAST) rn
+                              row_number() OVER (PARTITION BY dm.moiety_id
+                                                 ORDER BY c.start_date DESC NULLS LAST, c.nct_id) rn
                        FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
                        JOIN preclin.ctgov_study c USING (nct_id)
                        WHERE dm.moiety_id = ANY(%s))
-            SELECT moiety_id, json_agg(json_build_object('title', brief_title, 'sponsor', lead_sponsor))
+            SELECT moiety_id, json_agg(json_build_object('title', brief_title, 'sponsor', lead_sponsor) ORDER BY rn)
             FROM s WHERE rn <= 3 GROUP BY moiety_id""", (list(matched),))
         trials = dict(cur.fetchall())
     items = {}
@@ -305,19 +291,7 @@ def unii(_args) -> None:
                             "names": [n for n in dict.fromkeys(subs[u]["names"]) if n not in m][:UNII_NAMES]}
                            for u, m in matched[mid].items()]}
     run_id = llm.run(UNII_TASK, items)
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key::int, parsed_output->>'unii', llm_decision_id FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'
-                         AND parsed_output->>'unii' IS NOT NULL""", (str(run_id),))
-        chosen = {mid: (u, did) for mid, u, did in cur.fetchall()}
-    merge(chosen)
-    print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
-    same_entities()
-
-
-def merge(chosen: dict[int, tuple[str, int]]) -> None:
-    """Record each entity's UNII and merge entities that resolved to the same one,
-    the survivor taking the substance's preferred (display) name."""
+    chosen = {int(k): (out["unii"], did) for k, did, out in llm.decisions(run_id) if out["unii"] is not None}
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT unii, display_name FROM preclin.unii_substance WHERE unii = ANY(%s)",
                     (sorted({u for u, _ in chosen.values()}),))
@@ -326,15 +300,19 @@ def merge(chosen: dict[int, tuple[str, int]]) -> None:
     for mid, (u, _) in chosen.items():
         groups[u].append(mid)
     merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items()])
+    print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
+    same_entities()
 
 
 def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int, int]]]) -> None:
     """Merge each group (members, preferred name, UNII, member -> UNII decision) into one
     entity: the member already named by the preferred name, else the one with a UNII
-    and the most intervention names. Trial, FDA-application and target links move to
-    the survivor; the merged entities' development programs are dropped for
-    pipeline.programs build to rebuild. The survivor takes the preferred name
-    unless another entity holds it, and keeps every other name as an alias."""
+    and the most intervention names. Intervention-name (drug_moiety), trial
+    (ctgov_study_moiety), FDA-application, target and development-indication
+    (program_indication) links move to the survivor; the development programs of
+    the merged entities and of the survivor are deleted for pipeline.programs build
+    to rebuild. The survivor takes the preferred name unless another entity holds
+    it, and keeps every other name as an alias."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT moiety_id, moiety_key, name, code_names, aliases, unii, unii_decision_id FROM preclin.moiety")
         ent = {r[0]: r[1:] for r in cur.fetchall()}
@@ -360,18 +338,17 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
             renames.append((winner, key, name, codes, sorted(names - {name}), unii or ent[winner][4],
                             dids.get(winner) if unii else ent[winner][5]))
         cur.execute("CREATE TEMP TABLE merge_map (loser int PRIMARY KEY, winner int NOT NULL) ON COMMIT DROP")
-        if mapping:
-            execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
-        for table, cols in [("drug_moiety", "drug_id, role, biosimilar_of, llm_decision_id, method"),
-                            ("fda_application_moiety", "appl_no, biosimilar_of, llm_decision_id"),
-                            ("ctgov_study_moiety", None), ("moiety_target", None), ("program_indication", None)]:
-            if cols is None:
-                cur.execute("""SELECT string_agg(quote_ident(column_name), ', ') FROM information_schema.columns
-                                WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
-                            (table,))
-                cols = cur.fetchone()[0]
+        execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
+        for table in ("drug_moiety", "fda_application_moiety", "ctgov_study_moiety", "moiety_target",
+                      "program_indication"):
+            cur.execute("""SELECT string_agg(quote_ident(column_name), ', ' ORDER BY ordinal_position),
+                                  string_agg('t.' || quote_ident(column_name), ', ' ORDER BY ordinal_position)
+                           FROM information_schema.columns
+                           WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
+                        (table,))
+            cols, t_cols = cur.fetchone()
             cur.execute(f"""INSERT INTO preclin.{table} (moiety_id, {cols})
-                            SELECT mm.winner, {', '.join('t.' + c.strip() for c in cols.split(','))}
+                            SELECT mm.winner, {t_cols}
                             FROM preclin.{table} t JOIN merge_map mm ON mm.loser = t.moiety_id
                             ON CONFLICT DO NOTHING""")
             cur.execute(f"DELETE FROM preclin.{table} t USING merge_map mm WHERE t.moiety_id = mm.loser")
@@ -453,11 +430,7 @@ def same_entities() -> None:
                  and not (e["unii"] and ents[j]["unii"])]  # two resolved substances are already distinct
         if cands:
             items[str(e["moiety_id"])] = {"entity": e, "candidates": cands}
-    run_id = llm.run(SAME_TASK, items)
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key::int, parsed_output->'same' FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        said = {mid: set(same) for mid, same in cur.fetchall()}
+    said = {int(k): set(out["same"]) for k, _, out in llm.decisions(llm.run(SAME_TASK, items))}
     seen = {int(k): {c["moiety_id"] for c in it["candidates"]} for k, it in items.items()}
     parent = {}
 
@@ -555,9 +528,7 @@ def modality(_args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    canon = sub.add_parser("canonicalize")
-    canon.add_argument("--scope", choices=["all", "industry"], default="all")
-    canon.set_defaults(fn=canonicalize)
+    sub.add_parser("canonicalize").set_defaults(fn=canonicalize)
     sub.add_parser("unii").set_defaults(fn=unii)
     sub.add_parser("modality").set_defaults(fn=modality)
     args = parser.parse_args()

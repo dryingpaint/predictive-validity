@@ -32,7 +32,7 @@ import zipfile
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 
 import requests
-from psycopg2.extras import Json, execute_values
+from psycopg2.extras import execute_values
 from pypdf import PdfReader
 
 from pipeline import llm
@@ -45,35 +45,9 @@ EFFICACY_CLASS = "2"
 HEADERS = {"User-Agent": "Mozilla/5.0 (predictive-validity research)"}
 
 
-def sha256_file(path: str) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for block in iter(lambda: f.read(1 << 20), b""):
-            h.update(block)
-    return h.hexdigest()
-
-
 def read_tsv(name: str) -> list[dict[str, str]]:
     with open(os.path.join(CACHE, "drugsfda", name), encoding="latin-1") as f:
         return list(csv.DictReader(f, delimiter="\t"))
-
-
-def letter_targets() -> tuple[dict, list[dict]]:
-    """Submissions in scope and their letter documents."""
-    apps = {r["ApplNo"]: r for r in read_tsv("Applications.txt")}
-    wanted = {}
-    for s in read_tsv("Submissions.txt"):
-        date = s["SubmissionStatusDate"][:10]
-        if s["SubmissionStatus"] != "AP" or not (WINDOW[0] <= date <= WINDOW[1]):
-            continue
-        if apps.get(s["ApplNo"], {}).get("ApplType") not in ("NDA", "BLA"):
-            continue
-        if s["SubmissionType"] == "ORIG" or s["SubmissionClassCodeID"] == EFFICACY_CLASS:
-            wanted[(s["ApplNo"], s["SubmissionType"].strip(), s["SubmissionNo"])] = s
-    docs = [d for d in read_tsv("ApplicationDocs.txt")
-            if d["ApplicationDocsTypeID"] == "1"
-            and (d["ApplNo"], d["SubmissionType"].strip(), d["SubmissionNo"]) in wanted]
-    return wanted, docs
 
 
 def fetch(_args) -> None:
@@ -90,7 +64,15 @@ def fetch(_args) -> None:
             with open(dest, "wb") as f:
                 f.write(requests.get(part["file"], timeout=600).content)
 
-    _, docs = letter_targets()
+    # Submissions in scope: approved ORIG submissions and efficacy-class supplements of NDA/BLA
+    # applications inside WINDOW.
+    apps = {r["ApplNo"] for r in read_tsv("Applications.txt") if r["ApplType"] in ("NDA", "BLA")}
+    wanted = {(s["ApplNo"], s["SubmissionType"].strip(), s["SubmissionNo"]) for s in read_tsv("Submissions.txt")
+              if s["SubmissionStatus"] == "AP" and WINDOW[0] <= s["SubmissionStatusDate"][:10] <= WINDOW[1]
+              and s["ApplNo"] in apps
+              and (s["SubmissionType"] == "ORIG" or s["SubmissionClassCodeID"] == EFFICACY_CLASS)}
+    docs = [d for d in read_tsv("ApplicationDocs.txt") if d["ApplicationDocsTypeID"] == "1"
+            and (d["ApplNo"], d["SubmissionType"].strip(), d["SubmissionNo"]) in wanted]
     index_path = os.path.join(CACHE, "letters_index.jsonl")
     done = {json.loads(line)["url"] for line in open(index_path)} if os.path.exists(index_path) else set()
     todo = [d for d in docs if d["ApplicationDocsURL"].strip() not in done]
@@ -153,32 +135,31 @@ def pdf_text(path: str) -> str:
     return "\n".join(pages).replace("\x00", "")
 
 
-def register_release(cur, name: str, version: str, url: str, sha: str, metadata: dict) -> int:
-    cur.execute(
-        """INSERT INTO preclin.evidence_source_release
-             (source_name, source_version, source_url, content_sha256, metadata)
-           VALUES (%s,%s,%s,%s,%s)
-           ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
-           RETURNING source_release_id""",
-        (name, version, url, sha, Json(metadata)))
-    return cur.fetchone()[0]
+def write_letters(cur, letters: list[tuple], links: list[tuple]) -> None:
+    """Letter texts by sha256, then each submission's letter links."""
+    execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes)
+        VALUES %s ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""", letters)
+    execute_values(cur, """INSERT INTO preclin.fda_submission_letter
+        (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
+        ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
+          letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""", links)
 
 
 def load(_args) -> None:
     apps = {r["ApplNo"]: r for r in read_tsv("Applications.txt") if r["ApplType"] in ("NDA", "BLA")}
-    zip_sha = sha256_file(os.path.join(CACHE, "drugsfda.zip"))
+    zip_sha = llm.sha256_file(os.path.join(CACHE, "drugsfda.zip"))
     data_date = max(r["SubmissionStatusDate"][:10] for r in read_tsv("Submissions.txt"))
     label_index = json.load(open(os.path.join(CACHE, "openfda", "label_index.json")))
     label_files = sorted(glob.glob(os.path.join(CACHE, "openfda", "drug-label-*.json.zip")))
-    label_sha = hashlib.sha256("".join(sha256_file(p) for p in label_files).encode()).hexdigest()
+    label_sha = hashlib.sha256("".join(llm.sha256_file(p) for p in label_files).encode()).hexdigest()
 
     with llm.connect() as conn, conn.cursor() as cur:
-        rel_drugsfda = register_release(cur, "fda_drugsfda", data_date, DRUGSFDA_URL, zip_sha,
-                                        {"latest_submission_date": data_date})
-        rel_label = register_release(cur, "openfda_drug_label", label_index["export_date"],
-                                     OPENFDA_INDEX, label_sha,
-                                     {"partitions": [os.path.basename(p) for p in label_files],
-                                      "sha256_of": "concatenated per-partition sha256 hex digests"})
+        rel_drugsfda = llm.register_release(cur, "fda_drugsfda", data_date, DRUGSFDA_URL, zip_sha,
+                                            {"latest_submission_date": data_date})
+        rel_label = llm.register_release(cur, "openfda_drug_label", label_index["export_date"],
+                                         OPENFDA_INDEX, label_sha,
+                                         {"partitions": [os.path.basename(p) for p in label_files],
+                                          "sha256_of": "concatenated per-partition sha256 hex digests"})
 
         execute_values(cur, """INSERT INTO preclin.fda_application
             (appl_no, appl_type, center, sponsor_name, source_release_id) VALUES %s
@@ -214,13 +195,7 @@ def load(_args) -> None:
         with ProcessPoolExecutor() as pool:
             texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
             letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
-        execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes)
-            VALUES %s ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""", letters)
-        execute_values(cur, """INSERT INTO preclin.fda_submission_letter
-            (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
-            ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
-              letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""",
-            [l for l in links if l[0] in apps])
+        write_letters(cur, letters, [l for l in links if l[0] in apps])
 
         labels = []
         for path in label_files:
@@ -318,14 +293,10 @@ def extract(_args) -> None:
             GROUP BY l.letter_sha256, l.letter_text""")
         items = {sha: {"text": text[:150000], "submissions": subs} for sha, text, subs in cur.fetchall()}
     run_id = llm.run(LETTER_TASK, items)
+    rows = [(sha, i, use["disease"], use["indication_as_written"], use["qualifiers"], use["change_type"],
+             use["accelerated_approval"], decision_id)
+            for sha, decision_id, out in llm.decisions(run_id) for i, use in enumerate(out["approved_uses"])]
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        rows = []
-        for sha, decision_id, out in cur.fetchall():
-            for i, use in enumerate(out["approved_uses"]):
-                rows.append((sha, i, use["disease"], use["indication_as_written"], use["qualifiers"],
-                             use["change_type"], use["accelerated_approval"], decision_id))
         cur.execute("DELETE FROM preclin.fda_approved_use")
         execute_values(cur, """INSERT INTO preclin.fda_approved_use
             (letter_sha256, ordinal, disease, indication_as_written, qualifiers, change_type,
@@ -435,9 +406,7 @@ def match_products(cur, apps: dict) -> list[tuple]:
                                     "other_names": sorted(set(entities[i][2]))[:6], "trial": entities[i][3]}
                                    for i in row]}
     run_id = llm.run(PRODUCT_TASK, items)
-    cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                   WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-    return [(a, mid, did) for a, did, out in cur.fetchall() for mid in out["same_product"]]
+    return [(a, mid, did) for a, did, out in llm.decisions(run_id) for mid in out["same_product"]]
 
 
 def link(_args) -> None:
@@ -465,16 +434,14 @@ def link(_args) -> None:
                               "brands": sorted(set(brands) | set(lb)),
                               "ingredients": sorted(set(ingredients) | set(lg))}
     run_id = llm.run(INGREDIENT_TASK, items)
+    links, names = [], {}
+    for appl_no, decision_id, out in llm.decisions(run_id):
+        for comp in out["components"]:
+            key = moiety_key(comp["name"])
+            if key:
+                names.setdefault(key, comp["name"])
+                links.append((appl_no, key, comp["biosimilar_of"], decision_id))
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        links, names = [], {}
-        for appl_no, decision_id, out in cur.fetchall():
-            for comp in out["components"]:
-                key = moiety_key(comp["name"])
-                if key:
-                    names.setdefault(key, comp["name"])
-                    links.append((appl_no, key, comp["biosimilar_of"], decision_id))
         ids = entity_ids(cur, names)
         cur.execute("DELETE FROM preclin.fda_application_moiety")
         execute_values(cur, """INSERT INTO preclin.fda_application_moiety
@@ -491,7 +458,7 @@ def link(_args) -> None:
 def load_cber(_args) -> None:
     path = os.path.join(llm.REPO, ".cache", "cber", "letters_index.jsonl")
     records = [json.loads(line) for line in open(path)]
-    sha = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    sha = llm.sha256_file(path)
     apps, products, subs, letters, links = {}, set(), {}, {}, {}
     for r in records:
         appl = r["appl_no"]
@@ -507,9 +474,9 @@ def load_cber(_args) -> None:
         letters[doc_sha] = (doc_sha, text.replace("\x00", ""), int(r.get("n_bytes") or len(text.encode())))
         links[key + (r["url"],)] = (*key, r["url"], r.get("doc_date") or None, doc_sha, r.get("error"))
     with llm.connect() as conn, conn.cursor() as cur:
-        release = register_release(cur, "fda_cber_approvals", records and max(r["approval_date"] for r in records),
-                                   "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/"
-                                   "biological-approvals-year", sha, {"n_records": len(records)})
+        release = llm.register_release(cur, "fda_cber_approvals", records and max(r["approval_date"] for r in records),
+                                       "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/"
+                                       "biological-approvals-year", sha, {"n_records": len(records)})
         execute_values(cur, """INSERT INTO preclin.fda_application (appl_no, appl_type, center, sponsor_name,
                                  source_release_id) VALUES %s
             ON CONFLICT (appl_no) DO UPDATE SET center = 'CBER', sponsor_name = EXCLUDED.sponsor_name,
@@ -523,13 +490,7 @@ def load_cber(_args) -> None:
                                  status_date, submission_class) VALUES %s
             ON CONFLICT (appl_no, submission_type, submission_no) DO UPDATE SET status_date = EXCLUDED.status_date""",
                        [(*k, "AP", d, "CBER") for k, d in subs.items()])
-        execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes) VALUES %s
-                               ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""",
-                       list(letters.values()))
-        execute_values(cur, """INSERT INTO preclin.fda_submission_letter
-            (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
-            ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
-              letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""", list(links.values()))
+        write_letters(cur, list(letters.values()), list(links.values()))
         conn.commit()
     print(f"CBER applications={len(apps)} submissions={len(subs)} documents={len(letters)}")
 

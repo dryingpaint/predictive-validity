@@ -1,6 +1,5 @@
 """Build evidence dossiers and rescore trial stoppage with OpenAI Responses.
 
-The legacy ``classify_why_stopped.py`` task classifies a registry status string.
 This task deliberately keeps four separate questions separate: whether the
 study ran far enough to be evaluated, what the scientific readout showed, why
 the study stopped, and what happened to the broader development program.

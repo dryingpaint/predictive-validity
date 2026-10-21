@@ -5,7 +5,7 @@ with d(t) the number of descendants and N the number of terms. The Lin
 similarity of two terms is 2 * IC(MICA) / (IC(a) + IC(b)), where MICA is their
 most informative common ancestor (a term counts as its own ancestor).
 Minikel et al. 2024 count genetic support when trait-indication similarity is
-at least 0.8; that is the default threshold here.
+at least 0.8; that is the threshold here.
 """
 from __future__ import annotations
 
@@ -41,16 +41,8 @@ class Mondo:
         denom = self.ic.get(a, 0.0) + self.ic.get(b, 0.0)
         return 2 * mica / denom if denom else 0.0
 
-    def relation(self, evidence: str, program: str) -> str:
-        """same, narrower (evidence is a subtype of the program disease), broader, or other."""
-        if evidence == program:
-            return "same"
-        if program in self.ancestors[evidence]:
-            return "narrower"
-        if evidence in self.ancestors[program]:
-            return "broader"
-        return "other"
-
-    def matches(self, evidence: str, program: str, threshold: float = SIMILARITY_THRESHOLD) -> bool:
-        rel = self.relation(evidence, program)
-        return rel in ("same", "narrower") or self.lin(evidence, program) >= threshold
+    def matches(self, evidence: str, program: str) -> tuple[bool, bool]:
+        """(match, close): close is Lin similarity >= SIMILARITY_THRESHOLD; a match
+        is also the same term or a subtype of the program disease."""
+        close = self.lin(evidence, program) >= SIMILARITY_THRESHOLD
+        return close or program in self.ancestors[evidence], close

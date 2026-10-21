@@ -22,7 +22,6 @@ Reproduce the recorded analysis and 5,000-resample bootstrap:
 The ChEMBL release, mapping provenance, target mappings, and molecule-level
 events live in `preclin.*`; the analysis reads
 `preclin.v_chembl_target_first_approval`. Generated analysis outputs live in
-`data/` beside the scripts. The interpretation and headline estimates are
-recorded in `RESULTS.md`. A focused analytical report, including
+`data/` beside the scripts. The interpretation and headline estimates, with
 therapeutic-area composition and the proposed extension to dated cell/animal
-literature evidence, is in [`REPORT.md`](REPORT.md).
+literature evidence, are in [`REPORT.md`](REPORT.md).

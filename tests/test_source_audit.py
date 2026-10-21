@@ -21,43 +21,6 @@ def load_module(name: str, relative_path: str):
 
 
 ingest = load_module("source_audit_ingest", "db/13_ingest_llm_outputs.py")
-scorer = load_module(
-    "source_audit_target_scorer",
-    "analyses/classifiers/score_target_literature.py",
-)
-
-
-class NeverCalledClient:
-    class Messages:
-        @staticmethod
-        def create(**_kwargs):
-            raise AssertionError("paid model must not be called")
-
-    messages = Messages()
-
-
-class FakeClient:
-    class Messages:
-        @staticmethod
-        def create(**_kwargs):
-            class Usage:
-                input_tokens = 10
-                output_tokens = 5
-
-            class Block:
-                text = (
-                    '{"line_b": 1, "line_c": 2, "line_d": 0, '
-                    '"line_e": 0, "notable_pmids": ["123"]}'
-                )
-
-            class Response:
-                usage = Usage()
-                content = [Block()]
-                id = "request-test"
-
-            return Response()
-
-    messages = Messages()
 
 
 class SourceAuditTests(unittest.TestCase):
@@ -93,15 +56,6 @@ class SourceAuditTests(unittest.TestCase):
         self.assertTrue(
             ingest.REDUNDANT_PARSED_OUTPUT_FIELDS.isdisjoint(payload)
         )
-
-    def test_noncanonical_abstract_fails_before_model_call(self):
-        with self.assertRaisesRegex(ValueError, "non-canonical abstracts"):
-            scorer.score_one_target(
-                NeverCalledClient(),
-                "GENE1",
-                [{"pmid": "123", "title": "Title", "abstract": "Text"}],
-                "test-model",
-            )
 
     def test_evidence_snapshot_is_complete_and_defensive(self):
         citations = [123, "456"]
@@ -140,25 +94,6 @@ class SourceAuditTests(unittest.TestCase):
         self.assertEqual(snapshot["subject_id2"], 7)
         self.assertEqual(snapshot["value_text"], "T3")
         self.assertEqual(snapshot["value_json"], {"dossier_sha256": "abc"})
-
-    def test_canonical_abstract_produces_complete_source_links(self):
-        row = scorer.score_one_target(
-            FakeClient(),
-            "GENE1",
-            [
-                {
-                    "source_document_id": 99,
-                    "pmid": "123",
-                    "title": "Title",
-                    "abstract": "Text",
-                }
-            ],
-            "test-model",
-        )
-        self.assertEqual(row["_n_abstracts_provided"], 1)
-        self.assertEqual(len(row["_source_documents"]), 1)
-        self.assertEqual(row["_source_documents"][0]["source_document_id"], 99)
-        ingest.require_source_inputs(row, "target-literature", expected_count=1)
 
 
 if __name__ == "__main__":

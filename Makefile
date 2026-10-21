@@ -1,7 +1,7 @@
 # Rebuild the report's data and numbers from source, in dependency order.
 # Every step is idempotent: LLM steps reuse earlier validated decisions whose
 # inputs are unchanged (pipeline/llm.py), loaders upsert, and builds replace.
-# Requires DATABASE_URL (and ANTHROPIC_API_KEY or LLM_PROVIDER) in .env, a venv from `uv sync`,
+# Requires DATABASE_URL and ANTHROPIC_API_KEY in .env, a venv from `uv sync`,
 # and pdftoppm (poppler) and tesseract on PATH for OCR of scanned FDA letters. LLM steps use the
 # Batches API above LLM_DIRECT_MAX new items (default 100); raise it to call the API directly.
 
@@ -15,8 +15,8 @@ all: migrate sources identity programs labels evidence report
 migrate:
 	$(PY) db/migrate.py apply
 
-# Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER),
-# UNII substance names, ontologies.
+# Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER) and
+# the uses each approval letter states, UNII substance names, ontologies.
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
@@ -33,6 +33,7 @@ sources:
 	$(RUN) pipeline.cber.find_missing2
 	$(RUN) pipeline.cber.assemble
 	$(RUN) pipeline.fda load-cber
+	$(RUN) pipeline.fda extract
 	$(RUN) pipeline.unii load
 	$(RUN) pipeline.ontology load
 
@@ -41,14 +42,16 @@ sources:
 identity:
 	$(RUN) pipeline.programs register
 	$(RUN) pipeline.indications map
-	$(RUN) pipeline.drugs canonicalize --scope industry
-	$(RUN) pipeline.fda extract
+	$(RUN) pipeline.drugs canonicalize
 	$(RUN) pipeline.fda link
 	$(RUN) pipeline.drugs unii
 
-# Programs: entity role in each trial, then (entity, disease) programs.
+# Programs: entity role and purpose of each trial, each entity's diseases grouped into indications,
+# then (entity, indication) programs.
 programs:
 	$(RUN) pipeline.programs roles
+	$(RUN) pipeline.programs purposes
+	$(RUN) pipeline.programs indications
 	$(RUN) pipeline.programs build
 
 # Labels on programs: approval, modality, disease area, trial outcomes, targets.
@@ -60,6 +63,7 @@ labels:
 	$(RUN) pipeline.targets resolve
 
 evidence:
+	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
 
 report:

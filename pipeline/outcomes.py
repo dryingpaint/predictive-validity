@@ -223,9 +223,19 @@ PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_versio
                             subject_type="trial", model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
 
+def trial_payload(nct_id, title, phases, status, enrollment, start, completion, conditions, interventions,
+                  why_stopped, results) -> dict:
+    """The registry fields every outcome judgement sees, in the SELECT order of classify's queries."""
+    return {"nct_id": nct_id, "title": title, "phases": phases, "status": status, "enrollment": enrollment,
+            "start": str(start), "completion": str(completion), "conditions": conditions or [],
+            "interventions": interventions or [], "why_stopped": why_stopped, "results": results}
+
+
 def classify(_args) -> None:
     """Industry-sponsored in-scope trials started since 2010 that stopped early,
-    or completed Phase 2/3 trials with posted results."""
+    or completed Phase 2/3 trials with posted results; completed Phase 2/3
+    trials without posted results that have a linked results paper are judged
+    from the paper abstracts (PUBLICATION_TASK)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
@@ -240,13 +250,8 @@ def classify(_args) -> None:
               AND (s.overall_status IN ('TERMINATED', 'WITHDRAWN', 'SUSPENDED')
                    OR (s.overall_status = 'COMPLETED' AND s.has_results
                        AND s.phases && ARRAY['PHASE2','PHASE3']))""")
-        items = {nct: {"nct_id": nct, "title": title, "phases": phases, "status": status, "enrollment": enr,
-                       "start": str(start), "completion": str(comp), "conditions": conds or [],
-                       "interventions": ivs or [], "why_stopped": why, "results": summary,
-                       **({"brief_summary": brief} if brief else {})}
-                 for nct, title, phases, status, enr, start, comp, conds, ivs, why, summary, brief in cur.fetchall()}
-    run_id = llm.run(CLASSIFY_TASK, items)
-    with llm.connect() as conn, conn.cursor() as cur:
+        items = {r[0]: {**trial_payload(*r[:11]), **({"brief_summary": r[11]} if r[11] else {})}
+                 for r in cur.fetchall()}
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
                    s.completion_date, s.conditions,
@@ -259,10 +264,8 @@ def classify(_args) -> None:
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01' AND NOT s.has_results
               AND s.overall_status = 'COMPLETED' AND s.phases && ARRAY['PHASE2','PHASE3']
               AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""")
-        pub_items = {nct: {"nct_id": nct, "title": title, "phases": phases, "status": status, "enrollment": enr,
-                           "start": str(start), "completion": str(comp), "conditions": conds or [],
-                           "interventions": ivs or [], "why_stopped": why, "results": papers}
-                     for nct, title, phases, status, enr, start, comp, conds, ivs, why, papers in cur.fetchall()}
+        pub_items = {r[0]: trial_payload(*r) for r in cur.fetchall()}
+    run_id = llm.run(CLASSIFY_TASK, items)
     pub_run = llm.run(PUBLICATION_TASK, pub_items) if pub_items else None
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_outcome")

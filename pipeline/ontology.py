@@ -1,21 +1,23 @@
-"""Pinned MONDO and EFO releases -> preclin.ontology_* tables.
+"""MONDO and EFO OBO releases -> preclin.ontology_* tables.
 
     python -m pipeline.ontology load
 
-Downloads each ontology's OBO release, records it in
-preclin.evidence_source_release, and loads terms, is_a edges, the transitive
-ancestor closure (with distances) and cross-references. MONDO is the disease
-vocabulary for indications; EFO is needed to place GWAS Catalog traits.
+Downloads each ontology's latest OBO release once (SOURCES points at
+releases/latest); the cached file under .cache/ontology is what pins the
+release. Records it in preclin.evidence_source_release, and loads terms, is_a
+edges, the transitive ancestor closure (with distances) and cross-references.
+MONDO is the disease vocabulary for indications; EFO is needed to place GWAS
+Catalog traits.
 """
 from __future__ import annotations
 
 import argparse
-import hashlib
 import os
 from collections import defaultdict, deque
+from collections.abc import Iterable
 
 import requests
-from psycopg2.extras import Json, execute_values
+from psycopg2.extras import execute_values
 
 from pipeline import llm
 
@@ -39,10 +41,10 @@ def norm_id(value: str) -> str:
     return value
 
 
-def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
-    """(header, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs,
+def parse_obo(path: str) -> tuple[str, list[dict]]:
+    """(data-version, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs,
     replaced_by and obsolete flag; identifiers in CURIE form."""
-    header, terms, term = {}, [], None
+    version, terms, term = "unknown", [], None
     with open(path, encoding="utf-8") as f:
         for raw in f:
             line = raw.rstrip("\n")
@@ -56,8 +58,8 @@ def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
                 continue
             key, value = line.split(": ", 1)
             if term is None:
-                if key == "data-version" or key == "format-version":
-                    header[key] = value
+                if key == "data-version":
+                    version = value
                 continue
             if key == "id":
                 term["id"] = norm_id(value)
@@ -79,18 +81,18 @@ def parse_obo(path: str) -> tuple[dict[str, str], list[dict]]:
                 term["obsolete"] = True
     if term:
         terms.append(term)
-    return header, terms
+    return version, terms
 
 
-def closure(parents: dict[str, list[str]]) -> list[tuple[str, str, int]]:
-    """(term, ancestor, shortest is_a distance) for every term, excluding self."""
+def closure(graph: dict[str, list[str]], terms: Iterable[str]) -> list[tuple[str, str, int]]:
+    """(term, ancestor, shortest is_a distance) for each of terms, excluding self."""
     rows = []
-    for term in parents:
+    for term in terms:
         seen = {term: 0}
         queue = deque([term])
         while queue:
             node = queue.popleft()
-            for parent in parents.get(node, ()):
+            for parent in graph.get(node, ()):
                 if parent not in seen:
                     seen[parent] = seen[node] + 1
                     queue.append(parent)
@@ -107,9 +109,8 @@ def load(_args) -> None:
                 r.raise_for_status()
                 for block in r.iter_content(1 << 20):
                     f.write(block)
-        sha = hashlib.sha256(open(path, "rb").read()).hexdigest()
-        header, terms = parse_obo(path)
-        version = header.get("data-version", "unknown")
+        sha = llm.sha256_file(path)
+        version, terms = parse_obo(path)
         if prefix == "MONDO":
             terms = [t for t in terms if t.get("id", "").startswith("MONDO:")]
             graph = {}
@@ -124,15 +125,9 @@ def load(_args) -> None:
         for t in terms:
             if not t["obsolete"]:
                 parents[t["id"]].extend(t["is_a"])
-        anc = [r for r in closure({**graph, **parents}) if r[0] in parents]
+        anc = closure({**graph, **parents}, parents)
         with llm.connect() as conn, conn.cursor() as cur:
-            cur.execute("""INSERT INTO preclin.evidence_source_release
-                  (source_name, source_version, source_url, content_sha256, metadata)
-                VALUES (%s,%s,%s,%s,%s)
-                ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
-                RETURNING source_release_id""",
-                        (f"{prefix.lower()}_obo", version, url, sha, Json({"n_terms": len(terms)})))
-            release = cur.fetchone()[0]
+            release = llm.register_release(cur, f"{prefix.lower()}_obo", version, url, sha, {"n_terms": len(terms)})
             cur.execute("DELETE FROM preclin.ontology_ancestor WHERE ontology = %s", (prefix,))
             cur.execute("DELETE FROM preclin.ontology_xref WHERE ontology = %s", (prefix,))
             cur.execute("DELETE FROM preclin.ontology_is_a WHERE ontology = %s", (prefix,))

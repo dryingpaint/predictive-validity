@@ -1,10 +1,11 @@
-"""Anthropic Message Batches runner that records every decision in
+"""Anthropic Messages runner that records every decision in
 pv_evidence.llm_decision_run / pv_evidence.llm_decision.
 
 A task supplies a system prompt, a JSON schema and one input payload per
 subject. The runner reuses any validated decision from an earlier run of the
-same task whose prompt version and input hash match, submits the rest as
-batches, validates each response against the schema, and stores raw output,
+same task whose prompt version and input hash match, sends the rest to the
+Messages API (directly for at most DIRECT_MAX items, otherwise as Message
+Batches), validates each response against the schema, and stores raw output,
 parsed output and usage with the run's prompt, schema and code commit.
 """
 from __future__ import annotations
@@ -16,7 +17,7 @@ import subprocess
 import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Callable
 
@@ -32,20 +33,11 @@ load_dotenv(os.path.join(REPO, ".env"))
 
 MODEL = "claude-opus-5"
 BATCH_SIZE = 2000
-# anthropic: Message Batches on the Anthropic API. openrouter: concurrent
-# Messages calls through OpenRouter's Anthropic-compatible endpoint. agent:
-# item chunks are written under .cache/agent/<task>/<run>/ for Claude Code
-# workflow agents, and each <chunk>.out.jsonl they write is validated and
-# stored as it appears.
-PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
-WORKERS = int(os.environ.get("LLM_WORKERS", "24"))
-AGENT_CHUNK = int(os.environ.get("LLM_AGENT_CHUNK", "100"))
-# Anthropic runs with at most this many new items call the Messages API directly
+POLL_SECONDS = 60
+WORKERS = 24  # concurrent Messages calls of a direct run
+# Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
 DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
-AGENT_MODEL = "claude-opus-5-5"  # the Claude Code session model the workflow agents run on
-OPENROUTER_MODELS = {"claude-opus-5": "anthropic/claude-opus-5", "claude-opus-5-5": "anthropic/claude-opus-5.5",
-                     "claude-sonnet-5": "anthropic/claude-sonnet-5"}
 
 
 def canonical_json(value: Any) -> str:
@@ -54,6 +46,14 @@ def canonical_json(value: Any) -> str:
 
 def sha256_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def sha256_file(path: str) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    return h.hexdigest()
 
 
 def git_commit() -> str | None:
@@ -71,17 +71,15 @@ def connect():
     return psycopg2.connect(os.environ["DATABASE_URL"], **KEEPALIVE)
 
 
-def client() -> anthropic.Anthropic:
-    if PROVIDER == "openrouter":
-        return anthropic.Anthropic(base_url="https://openrouter.ai/api", api_key=None,
-                                   auth_token=os.environ["OPENROUTER_API_KEY"], max_retries=8)
-    return anthropic.Anthropic(max_retries=8)
-
-
-def provider_model(model: str) -> str:
-    if PROVIDER == "openrouter":
-        return OPENROUTER_MODELS[model]
-    return AGENT_MODEL if PROVIDER == "agent" else model
+def register_release(cur, name: str, version: str, url: str, sha: str, metadata: dict) -> int:
+    cur.execute(
+        """INSERT INTO preclin.evidence_source_release
+             (source_name, source_version, source_url, content_sha256, metadata)
+           VALUES (%s,%s,%s,%s,%s)
+           ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
+           RETURNING source_release_id""",
+        (name, version, url, sha, Json(metadata)))
+    return cur.fetchone()[0]
 
 
 @dataclass
@@ -100,11 +98,10 @@ class Task:
     model: str = MODEL
     effort: str = "medium"
     max_tokens: int = 8000
-    params: dict[str, Any] = field(default_factory=dict)
 
     def request_params(self, payload: dict[str, Any]) -> dict[str, Any]:
         return dict(
-            model=provider_model(self.model),
+            model=self.model,
             max_tokens=self.max_tokens,
             system=[{"type": "text", "text": self.system, "cache_control": {"type": "ephemeral"}}],
             output_config={"effort": self.effort,
@@ -114,16 +111,17 @@ class Task:
 
 
 def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
-    """Validated decisions from earlier runs of this task and prompt version:
-    with reuse_by='input' the latest one per subject whose input hash equals
-    the current payload's hash; with reuse_by='subject' the latest one per
-    subject whatever its input."""
+    """subject_key -> (raw_response, parsed_output, provider_request_id, usage,
+    llm_decision_id) of validated decisions from earlier runs of this task and
+    prompt version: with reuse_by='input' the latest one per subject whose
+    input hash equals the current payload's hash; with reuse_by='subject' the
+    latest one per subject whatever its input."""
     keys = list(items)
     hashes = [sha256_text(canonical_json(items[k])) for k in keys]
     cur.execute(
         """
-        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_sha256, d.raw_response,
-               d.parsed_output, d.provider_request_id, d.usage, d.llm_decision_id
+        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.raw_response, d.parsed_output,
+               d.provider_request_id, d.usage, d.llm_decision_id
         FROM unnest(%s::text[], %s::text[]) AS w(subject_key, input_sha256)
         JOIN pv_evidence.llm_decision d ON d.subject_key = w.subject_key
              AND (%s = 'subject' OR d.input_sha256 = w.input_sha256)
@@ -134,20 +132,24 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) 
         """,
         (keys, hashes, reuse_by, task.name, task.subject_type, task.prompt_version, task.schema_version),
     )
-    return {row[0]: row for row in cur.fetchall()}
+    return {row[0]: row[1:] for row in cur.fetchall()}
 
 
-def _store_reused(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
-                  reused: dict[str, tuple]) -> None:
-    """Copy earlier decisions into this run in bulk, committing every 2,000 rows."""
-    rows = []
-    for key, (_, _, raw, parsed, request_id, usage, decision_id) in reused.items():
-        rows.append((str(run_id), task.name, task.subject_type, key,
-                     sha256_text(canonical_json(items[key])), raw, Json(parsed),
-                     sha256_text(raw), Json(parsed), sha256_text(canonical_json(parsed)),
-                     decision_id, "unchanged", Json(items[key]), request_id,
-                     Json({"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
-                     Json(usage), "validated", Json([])))
+def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
+         parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
+         error: str | None = None, prior_id: int | None = None) -> tuple:
+    """One llm_decision row; prior_id is the earlier decision a reused one copies."""
+    canonical = parsed if parsed is not None else {"error": error}
+    return (str(run_id), task.name, task.subject_type, key,
+            sha256_text(canonical_json(payload)), raw, Json(canonical),
+            sha256_text(raw), Json(canonical), sha256_text(canonical_json(canonical)),
+            prior_id, "unchanged" if prior_id else "not_compared", Json(payload), request_id,
+            Json({"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
+            Json(usage), "invalid" if error else "validated", Json([error] if error else []))
+
+
+def _insert(conn, rows: list[tuple]) -> None:
+    """Insert decision rows, committing every 2,000."""
     for start in range(0, len(rows), 2000):
         with conn.cursor() as cur:
             execute_values(cur, """
@@ -160,43 +162,13 @@ def _store_reused(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str
         conn.commit()
 
 
-def _store(cur, run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
-           parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
-           error: str | None, prior_id: int | None) -> None:
-    canonical = parsed if parsed is not None else {"error": error}
-    cur.execute(
-        """
-        INSERT INTO pv_evidence.llm_decision
-          (decision_run_id, task, subject_type, subject_key, input_sha256, raw_response,
-           parsed_output, output_sha256, canonical_decision, decision_sha256,
-           prior_decision_id, change_status, input_payload, provider_request_id,
-           model_parameters, usage, validation_status, validation_detail)
-        VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        """,
-        (str(run_id), task.name, task.subject_type, key,
-         sha256_text(canonical_json(payload)), raw, Json(canonical),
-         sha256_text(raw), Json(canonical), sha256_text(canonical_json(canonical)),
-         prior_id, "unchanged" if prior_id else "not_compared", Json(payload), request_id,
-         Json({"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
-         Json(usage), "invalid" if error else "validated",
-         Json([error] if error else [])),
-    )
-
-
-def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
-        reuse_by: str = "input") -> uuid.UUID:
+def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input") -> uuid.UUID:
     """Decide every item (subject_key -> payload). Returns the run id; the
     run's decisions cover every key, reused or new. reuse_by='subject' keeps
     earlier decisions when only incidental payload details (e.g. the order of
     context rows) changed."""
     conn = connect()
-    api = client()
-    resume = os.environ.get("LLM_RESUME_RUN")
-    if resume:  # re-attach to an agent run whose chunks are already exported
-        run_id = uuid.UUID(resume)
-        _run_agents(conn, run_id, task, items, [], poll_seconds, resume=True)
-        _complete(run_id)
-        return run_id
+    api = anthropic.Anthropic(max_retries=8)
     run_id = uuid.uuid4()
     with conn.cursor() as cur:
         cur.execute(
@@ -204,45 +176,36 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, poll_seconds: int = 60,
             INSERT INTO pv_evidence.llm_decision_run
               (decision_run_id, task, provider, model, prompt_version, output_schema_version,
                code_commit, parameters, status, started_at)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,'running',%s)
+            VALUES (%s,%s,'anthropic',%s,%s,%s,%s,%s,'running',%s)
             """,
-            (str(run_id), task.name, PROVIDER, provider_model(task.model), task.prompt_version,
-             task.schema_version,
-             git_commit(),
+            (str(run_id), task.name, task.model, task.prompt_version, task.schema_version, git_commit(),
              Json({"system_prompt": task.system, "system_prompt_sha256": sha256_text(task.system),
                    "output_schema": task.schema,
                    "output_schema_sha256": sha256_text(canonical_json(task.schema)),
                    "effort": task.effort, "max_tokens": task.max_tokens, "n_items": len(items),
-                   "reuse_by": reuse_by, **task.params}),
+                   "reuse_by": reuse_by}),
              datetime.now(timezone.utc)),
         )
         reused = _reusable(cur, task, items, reuse_by)
         conn.commit()
-    _store_reused(conn, run_id, task, items, reused)
+    _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage, prior_id=decision_id)
+                   for key, (raw, parsed, request_id, usage, decision_id) in reused.items()])
     todo = [k for k in items if k not in reused]
     print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
-    if PROVIDER == "openrouter" or (PROVIDER == "anthropic" and len(todo) <= DIRECT_MAX):
+    if len(todo) <= DIRECT_MAX:
         _run_concurrent(api, conn, run_id, task, items, todo)
-    elif PROVIDER == "agent":
-        _run_agents(conn, run_id, task, items, todo, poll_seconds)
     else:
-        _run_batches(api, conn, run_id, task, items, todo, poll_seconds)
-    _complete(run_id)
-    return run_id
-
-
-def _complete(run_id: uuid.UUID) -> None:
+        _run_batches(api, conn, run_id, task, items, todo)
     with connect() as conn, conn.cursor() as cur:
         cur.execute("UPDATE pv_evidence.llm_decision_run SET status='completed', completed_at=%s "
                     "WHERE decision_run_id=%s", (datetime.now(timezone.utc), str(run_id)))
+    return run_id
 
 
 def _parse(task: Task, payload: dict[str, Any], msg) -> tuple[str, dict | None, str | None, dict]:
     """(raw text, parsed output, error, usage) for one Messages response."""
     usage = {"input_tokens": msg.usage.input_tokens, "output_tokens": msg.usage.output_tokens,
              "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
-    if getattr(msg.usage, "cost", None) is not None:  # OpenRouter reports the billed cost
-        usage["cost_usd"] = msg.usage.cost
     raw = next((b.text for b in msg.content if b.type == "text"), "")
     if msg.stop_reason in ("refusal", "max_tokens"):
         return raw, None, msg.stop_reason, usage
@@ -265,20 +228,17 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
             return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
     n_ok = n_bad = 0
-    pending = []  # decisions not yet committed, replayed after a dropped connection
+    pending = []  # rows not yet committed, replayed after a dropped connection
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         for i, fut in enumerate(as_completed([pool.submit(call, k) for k in todo]), 1):
             key, request_id, raw, parsed, error, usage = fut.result()
-            pending.append((key, raw, parsed, request_id, usage, error))
+            pending.append(_row(run_id, task, key, items[key], raw, parsed, request_id, usage, error))
             n_bad += error is not None
             n_ok += error is None
             if i % 25 == 0 or i == len(todo):  # short transactions: FK migrations on llm_decision need gaps
                 for attempt in range(5):
                     try:
-                        with conn.cursor() as cur:
-                            for k, r, pa, req, us, err in pending:
-                                _store(cur, run_id, task, k, items[k], r, pa, req, us, err, None)
-                        conn.commit()
+                        _insert(conn, pending)
                         pending = []
                         break
                     except psycopg2.OperationalError:
@@ -290,101 +250,8 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
 
 
-AGENT_INSTRUCTIONS = """Each line of the chunk file is one item: {"subject_key": ..., "user_message": ...}.
-Decide every item independently, exactly as if the user_message had been sent to a model whose
-system prompt is task.json's "system", and whose reply must be one JSON object valid against
-task.json's "output_schema". Write one line per item to the .out.jsonl file:
-{"subject_key": <same key>, "output": <the JSON object>}. After the last item write {"done": true}."""
-
-
-def _run_agents(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str],
-                poll_seconds: int, resume: bool = False) -> None:
-    out_dir = os.path.join(REPO, ".cache", "agent", task.name, str(run_id))
-    if resume:
-        chunks = sorted(f[:-6] for f in os.listdir(out_dir) if f.startswith("chunk_") and f.endswith(".jsonl")
-                        and not f.endswith(".out.jsonl"))
-        with conn.cursor() as cur:
-            cur.execute("""SELECT DISTINCT split_part(provider_request_id, ':', 2) FROM pv_evidence.llm_decision
-                           WHERE decision_run_id = %s AND provider_request_id LIKE 'agent:%%'""", (str(run_id),))
-            done = {r[0] for r in cur.fetchall()}
-        chunks = [c for c in chunks if c not in done]
-        print(f"[{task.name}] resuming {run_id}: {len(done)} chunks imported, {len(chunks)} pending", flush=True)
-    else:
-        os.makedirs(out_dir, exist_ok=True)
-        with open(os.path.join(out_dir, "task.json"), "w") as f:
-            json.dump({"task": task.name, "prompt_version": task.prompt_version, "system": task.system,
-                       "output_schema": task.schema, "instructions": AGENT_INSTRUCTIONS}, f, indent=1)
-        chunks = []
-        for start in range(0, len(todo), AGENT_CHUNK):
-            name = f"chunk_{start // AGENT_CHUNK:05d}"
-            with open(os.path.join(out_dir, name + ".jsonl"), "w") as f:
-                for key in todo[start:start + AGENT_CHUNK]:
-                    f.write(json.dumps({"subject_key": key, "user_message": task.render(items[key])}) + "\n")
-            chunks.append(name)
-        print(f"[{task.name}] wrote {len(chunks)} agent chunks to {out_dir}", flush=True)
-
-    pending = set(chunks)
-    while pending:
-        for name in sorted(pending):
-            path = os.path.join(out_dir, name + ".out.jsonl")
-            if not os.path.exists(path):
-                continue
-            lines = []
-            for raw_line in open(path):
-                try:
-                    lines.append(json.loads(raw_line))
-                except json.JSONDecodeError:  # a malformed line counts as a missing item
-                    continue
-            if not lines or not lines[-1].get("done"):
-                continue
-            expected = [json.loads(l)["subject_key"] for l in open(os.path.join(out_dir, name + ".jsonl"))]
-            got = {r["subject_key"]: r.get("output") for r in lines if "subject_key" in r}
-            n_bad = 0
-            for attempt in range(5):
-                try:
-                    if conn.closed:
-                        conn = connect()
-                    n_bad = _import_chunk(conn, run_id, task, items, name, expected, got)
-                    break
-                except psycopg2.OperationalError:
-                    conn.close()
-                    time.sleep(10 * (attempt + 1))
-            else:
-                raise RuntimeError(f"could not import {name}")
-            pending.discard(name)
-            print(f"[{task.name}] {name}: imported {len(expected)} invalid={n_bad} ({len(pending)} chunks left)",
-                  flush=True)
-        if pending:
-            time.sleep(poll_seconds)
-
-
-def _import_chunk(conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], name: str,
-                  expected: list[str], got: dict) -> int:
-    """Validate one chunk's outputs and store them; returns the number of invalid items."""
-    import jsonschema
-    n_bad = 0
-    with conn.cursor() as cur:
-        for key in expected:
-            out, error = got.get(key), None
-            if out is None:
-                error = "agent_missing"
-            else:
-                try:
-                    jsonschema.validate(out, task.schema)
-                    if task.validate:
-                        task.validate(items[key], out)
-                except Exception as exc:  # schema or semantic check failed
-                    error = f"{type(exc).__name__}: {str(exc)[:300]}"
-            raw = json.dumps(out) if out is not None else ""
-            _store(cur, run_id, task, key, items[key], raw, None if error else out,
-                   f"agent:{name}", {}, error, None)
-            n_bad += error is not None
-    conn.commit()
-    return n_bad
-
-
 def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
-                 todo: list[str], poll_seconds: int) -> None:
+                 todo: list[str]) -> None:
     custom_ids, pending = {}, []
     for start in range(0, len(todo), BATCH_SIZE):
         chunk = todo[start:start + BATCH_SIZE]
@@ -399,37 +266,29 @@ def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict
         print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
 
     while pending:
-        time.sleep(poll_seconds)
+        time.sleep(POLL_SECONDS)
         ended = [b for b in pending
                  if api.messages.batches.retrieve(b).processing_status == "ended"]
         for batch_id in ended:
             pending.remove(batch_id)
-            _collect(api, conn, run_id, task, items, custom_ids, batch_id)
+            rows, n_ok, n_bad = [], 0, 0
+            for result in api.messages.batches.results(batch_id):
+                key = custom_ids[result.custom_id]
+                raw, parsed, error, usage = "", None, f"batch_{result.result.type}", {}
+                if result.result.type == "succeeded":
+                    raw, parsed, error, usage = _parse(task, items[key], result.result.message)
+                rows.append(_row(run_id, task, key, items[key], raw, parsed,
+                                 f"{batch_id}/{result.custom_id}", usage, error))
+                n_bad += error is not None
+                n_ok += error is None
+            _insert(conn, rows)
+            print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 
-def _collect(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
-             custom_ids: dict[str, str], batch_id: str) -> None:
-    """Validate and store every result of one ended batch."""
-    n_ok = n_bad = 0
-    with conn.cursor() as cur:
-        for result in api.messages.batches.results(batch_id):
-            key = custom_ids[result.custom_id]
-            raw, parsed, error, usage = "", None, None, {}
-            if result.result.type == "succeeded":
-                raw, parsed, error, usage = _parse(task, items[key], result.result.message)
-            else:
-                error = f"batch_{result.result.type}"
-            _store(cur, run_id, task, key, items[key], raw, parsed,
-                   f"{batch_id}/{result.custom_id}", usage, error, None)
-            n_bad += error is not None
-            n_ok += error is None
-    conn.commit()
-    print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
-
-
-def decisions(run_id: uuid.UUID | str) -> dict[str, dict[str, Any]]:
-    """subject_key -> parsed output for every validated decision of a run."""
+def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:
+    """(subject_key, llm_decision_id, parsed_output) for every validated decision of a run."""
     with connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT subject_key, parsed_output FROM pv_evidence.llm_decision "
-                    "WHERE decision_run_id=%s AND validation_status='validated'", (str(run_id),))
-        return dict(cur.fetchall())
+        cur.execute("SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision "
+                    "WHERE decision_run_id = %s AND validation_status = 'validated' ORDER BY subject_key",
+                    (str(run_id),))
+        return cur.fetchall()

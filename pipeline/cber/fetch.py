@@ -1,5 +1,7 @@
-"""Polite cached fetcher for fda.gov / web.archive.org pages and PDFs."""
+"""Polite cached fetcher for fda.gov / web.archive.org pages and PDFs, and the .cache/cber file helpers."""
+import functools
 import hashlib
+import json
 import os
 import re
 import time
@@ -11,12 +13,38 @@ import requests
 BASE = str(Path(__file__).resolve().parents[2] / ".cache" / "cber")
 HTML_DIR = os.path.join(BASE, "html")
 PDF_DIR = os.path.join(BASE, "letters")
+os.makedirs(HTML_DIR, exist_ok=True)
+os.makedirs(PDF_DIR, exist_ok=True)
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 S = requests.Session()
 S.headers.update({"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9",
                   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,application/pdf,*/*;q=0.8"})
 _last = [0.0]
+_IDX_PATH = os.path.join(HTML_DIR, "_index.jsonl")
+_WAYBACK_PREFIX = re.compile(r"^https?://web\.archive\.org/web/\d+[a-z_]*/")
+
+
+def read_jsonl(name):
+    """Rows of a JSON-lines file under .cache/cber."""
+    with open(os.path.join(BASE, name)) as f:
+        return [json.loads(line) for line in f]
+
+
+def write_jsonl(name, rows):
+    with open(os.path.join(BASE, name), "w") as f:
+        for r in rows:
+            f.write(json.dumps(r) + "\n")
+
+
+def wayback(cap):
+    """Raw (id_) Wayback URL of a CDX capture."""
+    return f"https://web.archive.org/web/{cap['timestamp']}id_/{cap['original']}"
+
+
+def unwayback(url):
+    """The original URL inside a Wayback URL; any other URL unchanged."""
+    return _WAYBACK_PREFIX.sub("", url)
 
 
 def _name(url):
@@ -26,10 +54,9 @@ def _name(url):
     return f"{slug}__{h}.html"
 
 
-def get(url, binary=False, tries=6, min_gap=None, timeout=60):
-    if min_gap is None:
-        min_gap = 3.5 if "archive.org" in url else 0.6
-    for i in range(tries):
+def get(url, timeout=60):
+    min_gap = 3.5 if "archive.org" in url else 0.6
+    for i in range(6):
         gap = time.time() - _last[0]
         if gap < min_gap:
             time.sleep(min_gap - gap)
@@ -47,38 +74,30 @@ def get(url, binary=False, tries=6, min_gap=None, timeout=60):
     return None
 
 
-_IDX_PATH = os.path.join(HTML_DIR, "_index.jsonl")
-
-
-def _idx():
+@functools.cache
+def _index():
+    """{url: fetch record} from html/_index.jsonl; get_html adds to it as it fetches."""
     d = {}
     if os.path.exists(_IDX_PATH):
-        for line in open(_IDX_PATH):
-            try:
-                import json as _j
-                r = _j.loads(line)
-                d[r["url"]] = r
-            except Exception:  # noqa: BLE001
-                pass
+        with open(_IDX_PATH) as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                    d[r["url"]] = r
+                except Exception:  # noqa: BLE001
+                    pass
     return d
 
 
-_IDX = None
-
-
-def get_html(url, refresh=False):
+def get_html(url):
     """Return (html_text, local_path, final_url, status). Cached; url->final_url kept in html/_index.jsonl."""
-    global _IDX
-    import json as _j
-    if _IDX is None:
-        _IDX = _idx()
+    idx = _index()
     path = os.path.join(HTML_DIR, _name(url))
-    if os.path.exists(path) and not refresh:
+    if os.path.exists(path):
         with open(path, encoding="utf-8", errors="replace") as f:
-            final = _IDX.get(url, {}).get("final_url", url)
-            return f.read(), path, final, 200
-    if not refresh and url in _IDX and _IDX[url].get("status") not in (200, None, "challenge"):
-        return None, None, _IDX[url].get("final_url", url), _IDX[url]["status"]
+            return f.read(), path, idx.get(url, {}).get("final_url", url), 200
+    if url in idx and idx[url].get("status") not in (200, None, "challenge"):
+        return None, None, idx[url].get("final_url", url), idx[url]["status"]
     r = get(url)
     if r is None:
         return None, None, url, None
@@ -91,28 +110,26 @@ def get_html(url, refresh=False):
         with open(path, "w", encoding="utf-8") as f:
             f.write(txt)
         rec["file"] = os.path.basename(path)
-    _IDX[url] = rec
+    idx[url] = rec
     with open(_IDX_PATH, "a") as f:
-        f.write(_j.dumps(rec) + "\n")
+        f.write(json.dumps(rec) + "\n")
     if r.status_code != 200:
         return None, None, r.url, r.status_code
     return txt, path, r.url, r.status_code
 
 
 def get_pdf(url):
-    """Return dict(sha256, n_bytes, path, status, final_url, content_type)."""
-    r = get(url, binary=True, timeout=120)
+    """Return dict(status, sha256, n_bytes, path), or dict(status, error) when no PDF came back."""
+    r = get(url, timeout=120)
     if r is None:
         return {"status": None, "error": "fetch_failed"}
-    ct = r.headers.get("Content-Type", "")
-    data = r.content
-    out = {"status": r.status_code, "final_url": r.url, "content_type": ct}
+    out = {"status": r.status_code}
     if r.status_code != 200:
         out["error"] = str(r.status_code)
         return out
+    data = r.content
     if not data.startswith(b"%PDF"):
         out["error"] = "not_pdf"
-        out["head"] = data[:300].decode("utf-8", "replace")
         return out
     sha = hashlib.sha256(data).hexdigest()
     path = os.path.join(PDF_DIR, sha + ".pdf")
@@ -123,11 +140,10 @@ def get_pdf(url):
     return out
 
 
-def cdx(url, limit=None, extra=""):
-    """List Wayback captures (timestamp, original) with status 200 for url (exact or prefix)."""
-    q = f"https://web.archive.org/cdx/search/cdx?url={urllib.parse.quote(url, safe='/:*')}&output=json&filter=statuscode:200&collapse=digest{extra}"
-    if limit:
-        q += f"&limit={limit}"
+def cdx(url):
+    """List Wayback captures with status 200 for url (exact or prefix; any scheme is dropped)."""
+    url = re.sub(r"^https?://", "", url)
+    q = f"https://web.archive.org/cdx/search/cdx?url={urllib.parse.quote(url, safe='/:*')}&output=json&filter=statuscode:200&collapse=digest"
     r = get(q, timeout=120)
     if r is None or r.status_code != 200:
         return []
@@ -136,11 +152,3 @@ def cdx(url, limit=None, extra=""):
     except Exception:  # noqa: BLE001
         return []
     return [dict(zip(rows[0], x)) for x in rows[1:]]
-
-
-def wayback_latest(url, before="20991231"):
-    caps = [c for c in cdx(url) if c["timestamp"] <= before]
-    if not caps:
-        return None
-    c = caps[-1]
-    return f"https://web.archive.org/web/{c['timestamp']}id_/{c['original']}"

@@ -6,10 +6,8 @@ requires-python = ">=3.12"
 dependencies = [
     "anthropic>=1.15",
     "beautifulsoup4>=4.15",
-    "catboost>=1.2",
-    "jsonschema>=4.26",
     "lifelines>=0.30",
-    "lightgbm>=4.7",
+    "lxml>=5.3",
     "matplotlib>=3.11",
     "numpy>=2.5",
     "openai>=3.35",
@@ -23,7 +21,6 @@ dependencies = [
     "scikit-learn>=1.9",
     "scipy>=1.18",
     "statsmodels>=0.15",
-    "xgboost>=3.4",
 ]
 
 [tool.uv]

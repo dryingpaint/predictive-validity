@@ -1,5 +1,6 @@
 """Open Targets Platform target-disease evidence -> preclin.ot_association.
 
+    python -m pipeline.opentargets fetch  # DATASETS of the release -> .cache/opentargets/<release>/<dataset>
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
 
 Loads direct associations by data source for the targets of every molecular
@@ -16,15 +17,18 @@ import argparse
 import glob
 import hashlib
 import os
+import re
 
 import pyarrow.dataset as ds
-from psycopg2.extras import Json, execute_values
+import requests
+from psycopg2.extras import execute_values
 
 from pipeline import llm
 
 RELEASE = "26.09"
 CACHE = os.path.join(llm.REPO, ".cache", "opentargets", RELEASE)
 SOURCE_URL = f"https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/{RELEASE}/output"
+DATASETS = ("association_by_datasource_direct", "disease")  # the release datasets load reads
 DATASOURCES = {
     # germline genetics
     "gwas_credible_sets": "genetic", "gene_burden": "genetic", "eva": "genetic", "genomics_england": "genetic",
@@ -43,19 +47,40 @@ def curie(ot_id: str) -> str:
     return f"{prefix}:{local}" if local else ot_id
 
 
+def fetch(_args) -> None:
+    """Every parquet file of each of DATASETS, as listed by the release's directory index. A file
+    already in the cache is kept; a download lands under a dot-prefixed name (which glob and
+    pyarrow skip) and is renamed into place once complete."""
+    session = requests.Session()
+    for dataset in DATASETS:
+        url = f"{SOURCE_URL}/{dataset}/"
+        index = session.get(url, timeout=60)
+        index.raise_for_status()
+        names = sorted(set(re.findall(r'href="(?:[^"]*/)?([^"/]+\.parquet)"', index.text)))
+        if not names:
+            raise RuntimeError(f"no parquet files listed at {url}")
+        os.makedirs(os.path.join(CACHE, dataset), exist_ok=True)
+        for name in names:
+            dest = os.path.join(CACHE, dataset, name)
+            if os.path.exists(dest):
+                continue
+            part = os.path.join(CACHE, dataset, f".{name}.part")
+            with session.get(url + name, stream=True, timeout=600) as r, open(part, "wb") as f:
+                r.raise_for_status()
+                for block in r.iter_content(1 << 20):
+                    f.write(block)
+            os.replace(part, dest)
+        print(f"{dataset}: {len(names)} files -> {os.path.join(CACHE, dataset)}", flush=True)
+
+
 def load(_args) -> None:
-    files = sorted(glob.glob(os.path.join(CACHE, "*", "*.parquet")))
-    digest = hashlib.sha256("".join(hashlib.sha256(open(f, "rb").read()).hexdigest() for f in files).encode())
+    files = sorted(f for name in DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
+    digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""INSERT INTO preclin.evidence_source_release
-              (source_name, source_version, source_url, content_sha256, metadata)
-            VALUES ('open_targets_platform', %s, %s, %s, %s)
-            ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
-            RETURNING source_release_id""",
-                    (RELEASE, SOURCE_URL, digest.hexdigest(),
-                     Json({"datasets": sorted({os.path.basename(os.path.dirname(f)) for f in files}),
-                           "datasources": DATASOURCES, "sha256_of": "concatenated per-file sha256"})))
-        release = cur.fetchone()[0]
+        release = llm.register_release(
+            cur, "open_targets_platform", RELEASE, SOURCE_URL, digest.hexdigest(),
+            {"datasets": list(DATASETS),
+             "datasources": DATASOURCES, "sha256_of": "concatenated per-file sha256"})
         cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
                        JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
         targets = [r[0] for r in cur.fetchall()]
@@ -93,7 +118,8 @@ def load(_args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("load").set_defaults(fn=load)
+    for name, fn in [("fetch", fetch), ("load", load)]:
+        sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
 

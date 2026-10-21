@@ -11,7 +11,7 @@ Over the past 60 years the industry has added new model organisms, large-scale i
 
 ## Report
 
-[REPORT.md](REPORT.md) is generated from the database by `python -m report.render`; every number and table in it comes from `report/output/`. [AUDIT.md](AUDIT.md) records the audit of the earlier draft (Google Doc): each claim's verdict, the data issues found and how each was fixed, the definitions the rebuild uses, and a work log.
+[REPORT.md](REPORT.md) is generated from the database by `python -m report.render`; every number and table in it comes from `report/output/`, which `make report` regenerates (only its figure PNGs are tracked). [AUDIT.md](AUDIT.md) records the audit of the earlier draft (Google Doc): each claim's verdict, the data issues found and how each was fixed, the definitions the rebuild uses, and a work log.
 
 ## How it is built
 
@@ -39,8 +39,6 @@ make all                # migrate, sources, identity, programs, labels, evidence
 ```
 
 This needs `DATABASE_URL` and `ANTHROPIC_API_KEY` in `.env`, and `pdftoppm` and `tesseract` on the path (OCR of scanned FDA letters). Schema changes are ledgered migrations in `db/` (`python db/migrate.py apply`).
-
-`benchmark/` and [RESULTS.md](RESULTS.md) are an earlier scorer framework built on the legacy program tables; they are not used by the report (see AUDIT.md, D25).
 
 ## License
 

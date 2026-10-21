@@ -1,33 +1,15 @@
 """Step 4: join downloaded letters with the product pages that link them; one row per (letter, STN)."""
-import json
-import os
 import re
 
 from pipeline.cber import fetch
 from pipeline.cber import letters
 
-BASE = fetch.BASE
-
-
-def load_texts():
-    d = {}
-    import glob
-    for p in sorted(glob.glob(os.path.join(BASE, "letters_text*.jsonl"))):
-        if True:
-            for line in open(p):
-                r = json.loads(line)
-                if r["url"] not in d or r.get("sha256"):
-                    d[r["url"]] = r
-    return d
-
 
 def main():
-    texts = load_texts()
-    prods = [json.loads(l) for l in open(os.path.join(BASE, "products.jsonl"))]
-    hist = [json.loads(l) for l in open(os.path.join(BASE, "products_historic.jsonl"))]
+    texts = letters.texts()
     rows = []
     seen = set()
-    for p in prods + hist:
+    for p in fetch.read_jsonl("products.jsonl") + fetch.read_jsonl("products_historic.jsonl"):
         page = p.get("final_url") or p.get("url") or p.get("hist_url")
         src_page = p.get("wayback_url") or page
         for d in p.get("docs", []):
@@ -51,9 +33,7 @@ def main():
                 if t.get("text"):
                     row.update(letters.parse_letter(t["text"]))
             rows.append(row)
-    with open(os.path.join(BASE, "letters_parsed.jsonl"), "w") as f:
-        for r in rows:
-            f.write(json.dumps(r) + "\n")
+    fetch.write_jsonl("letters_parsed.jsonl", rows)
     print(len(rows))
 
 

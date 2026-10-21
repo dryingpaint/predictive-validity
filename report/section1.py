@@ -96,8 +96,6 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
             if pd.notna(a) and a <= entry:
                 continue  # already approved for this disease: lifecycle program
             advance = min([x for x in later_starts if x >= entry] + ([a] if pd.notna(a) else []), default=None)
-            if phase == 3:
-                advance = a if pd.notna(a) else None
             if advance is not None and advance <= pd.Timestamp(snap):
                 event, end = "advanced", advance
             elif active.get(pid, False):
@@ -116,7 +114,11 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
                 "us_site": us.get(pid, 0) >= phase, "entry_year": entry.year,
                 "approval_date": a if pd.notna(a) else None,
             })
-    return pd.DataFrame(rows)
+    # Rows are ordered by (entity, disease, phase), which a rebuild of the programs
+    # keeps, rather than by program id, which each build reassigns.
+    out = pd.DataFrame(rows)
+    return out.assign(_disease=out.program_id.map(p.mondo_id).fillna("")) \
+              .sort_values(["moiety_id", "_disease", "phase"]).drop(columns="_disease").reset_index(drop=True)
 
 
 def rates(rows: pd.DataFrame) -> pd.DataFrame:
@@ -129,31 +131,36 @@ def rates(rows: pd.DataFrame) -> pd.DataFrame:
     return c[["advanced", "suspended", "censored", "rate"]]
 
 
-def loa(rate_by_phase: pd.Series) -> float:
-    return float(np.prod([rate_by_phase.get(ph, np.nan) for ph in (1, 2, 3)]))
+def loa(rows: pd.DataFrame) -> float:
+    """Likelihood of approval from Phase 1: the product of the BIO-style phase rates."""
+    rate = rates(rows).rate
+    return float(np.prod([rate.get(ph, np.nan) for ph in (1, 2, 3)]))
 
 
-def boot(rows: pd.DataFrame, n: int = N_BOOT, seed: int = SEED) -> pd.DataFrame:
-    """Entity-cluster bootstrap of per-phase rates and LOA: 2.5/97.5 percentiles."""
-    counts = rows.groupby(["moiety_id", "phase", "event"]).size().unstack(["phase", "event"], fill_value=0)
-    rng = np.random.default_rng(seed)
-    ids = counts.index.to_numpy()
-    out = []
-    for _ in range(n):
-        w = np.bincount(rng.integers(0, len(ids), len(ids)), minlength=len(ids))
-        tot = (counts.to_numpy() * w[:, None]).sum(axis=0)
-        s = pd.Series(tot, index=counts.columns)
-        r = {}
-        for ph in (1, 2, 3):
-            adv, sus = s.get((ph, "advanced"), 0), s.get((ph, "suspended"), 0)
-            r[ph] = adv / (adv + sus) if adv + sus else np.nan
-        r["loa"] = np.prod([r[ph] for ph in (1, 2, 3)])
-        out.append(r)
-    return pd.DataFrame(out).quantile([0.025, 0.975])
+def resolved_counts(rows: pd.DataFrame, cluster: np.ndarray, group: pd.Series) -> tuple[np.ndarray, list]:
+    """Advanced and suspended counts per cluster (codes 0..k-1, one per row), for
+    each group and phase: array [cluster, group, phase, (advanced, suspended)]."""
+    groups = sorted(group.unique())
+    counts = np.zeros((cluster.max() + 1, len(groups), 3, 2))
+    r = rows.event.isin(["advanced", "suspended"]).to_numpy()
+    np.add.at(counts, (cluster[r], group[r].map({g: i for i, g in enumerate(groups)}).to_numpy(),
+                       rows.phase.to_numpy()[r] - 1, (rows.event[r] == "suspended").to_numpy().astype(int)), 1)
+    return counts, groups
 
 
-def aalen_johansen(rows: pd.DataFrame, horizon: float = HORIZON_YEARS) -> dict:
-    """Cumulative incidence of advancement by `horizon` years per phase, with
+def boot_rates(counts: np.ndarray) -> np.ndarray:
+    """Cluster bootstrap of the BIO-style rates from resolved_counts: array
+    [draw, group, phase] over N_BOOT resamples of the clusters."""
+    rng = np.random.default_rng(SEED)
+    k = len(counts)
+    c = np.stack([np.tensordot(np.bincount(rng.integers(0, k, k), minlength=k), counts, axes=1)
+                  for _ in range(N_BOOT)])
+    with np.errstate(invalid="ignore", divide="ignore"):
+        return c[..., 0] / (c[..., 0] + c[..., 1])
+
+
+def aalen_johansen(rows: pd.DataFrame) -> dict:
+    """Cumulative incidence of advancement by HORIZON_YEARS per phase, with
     suspension as a competing event and censoring at the snapshot."""
     out = {}
     for ph in (1, 2, 3):
@@ -164,14 +171,16 @@ def aalen_johansen(rows: pd.DataFrame, horizon: float = HORIZON_YEARS) -> dict:
         ajf = AalenJohansenFitter(calculate_variance=False, seed=SEED)
         ajf.fit(r.years.clip(lower=1 / 365.25), code, event_of_interest=1)
         cif = ajf.cumulative_density_
-        out[ph] = float(cif[cif.index <= horizon].iloc[-1, 0]) if (cif.index <= horizon).any() else np.nan
+        out[ph] = float(cif[cif.index <= HORIZON_YEARS].iloc[-1, 0]) if (cif.index <= HORIZON_YEARS).any() else np.nan
     out["loa"] = float(np.prod([out.get(ph, np.nan) for ph in (1, 2, 3)]))
     return out
 
 
 def summarize(rows: pd.DataFrame, label: str) -> dict:
     r = rates(rows)
-    ci = boot(rows)
+    counts, _ = resolved_counts(rows, pd.factorize(rows.moiety_id, sort=True)[0], pd.Series(True, index=rows.index))
+    d = boot_rates(counts)[:, 0]
+    ci = pd.DataFrame({1: d[:, 0], 2: d[:, 1], 3: d[:, 2], "loa": d.prod(axis=1)}).quantile([0.025, 0.975])
     aj = aalen_johansen(rows)
     res = {"label": label}
     for ph in (1, 2, 3):
@@ -182,7 +191,7 @@ def summarize(rows: pd.DataFrame, label: str) -> dict:
             res[f"ph{ph}_rate"] = float(r.at[ph, "rate"])
             res[f"ph{ph}_lo"], res[f"ph{ph}_hi"] = float(ci.at[0.025, ph]), float(ci.at[0.975, ph])
             res[f"ph{ph}_aj"] = aj.get(ph)
-    res["loa"] = loa(r.rate)
+    res["loa"] = loa(rows)
     res["loa_lo"], res["loa_hi"] = float(ci.at[0.025, "loa"]), float(ci.at[0.975, "loa"])
     res["loa_aj"] = aj["loa"]
     res["n_entities"] = int(rows.moiety_id.nunique())
@@ -203,7 +212,8 @@ OPERATIONAL = {"enrollment_feasibility", "operational_or_site", "regulatory", "m
 
 
 def trial_reason(o: pd.Series | None, status: str) -> str:
-    """Reason a single trial of the stopping phase gives, or None if it gives none."""
+    """Reason one trial of the stopping phase gives; a trial with no outcome row or
+    no stated reason gets a "no reason stated" category."""
     if o is None:
         return ("completed, no results posted, no reason stated" if status == "COMPLETED"
                 else "stopped, no reason stated")
@@ -229,7 +239,7 @@ def trial_reason(o: pd.Series | None, status: str) -> str:
 
 def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame) -> pd.DataFrame:
     """One reason per suspended program: the highest-priority reason among the
-    industry trials of the phase it stopped in."""
+    industry trials of the phase it stopped in (the first such trial by NCT id)."""
     rank = {r: i for i, (r, _) in enumerate(REASON_ORDER)}
     family = dict(REASON_ORDER)
     out = outcomes.set_index("nct_id")
@@ -239,7 +249,7 @@ def failure_modes(rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFra
                    for n, st in zip(t.nct_id, t.overall_status)]
     t["results_source"] = t.nct_id.map(out.results_source)
     t["rank"] = t.reason.map(rank)
-    best = t.sort_values("rank").drop_duplicates(["program_id", "phase"])[
+    best = t.sort_values(["rank", "nct_id"]).drop_duplicates(["program_id", "phase"])[
         ["program_id", "phase", "reason", "nct_id", "results_source"]]
     res = stopped.merge(best, on=["program_id", "phase"], how="left")
     res["reason"] = res.reason.fillna("stopped, no reason stated")
@@ -267,7 +277,7 @@ def termination_reasons() -> dict:
     return {"n": int(len(t)), **{g: float(v) for g, v in groups.items()}}
 
 
-def scale(rows: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame) -> dict:
+def scale(rows: pd.DataFrame) -> dict:
     """Size of the data behind Section 1."""
     q = frame.query("""
         SELECT (SELECT count(*) FROM preclin.ctgov_study) AS ctgov_studies,
@@ -350,7 +360,7 @@ def main() -> None:
     strata = {name: {r["label"]: r for r in pd.read_csv(os.path.join(OUT, f"loa_by_{name}.csv")).to_dict(orient="records")}
               for name in ("area", "modality")}
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
-               "scale": scale(rows, progs, trials), "overall": overall, "us_site": results[1],
+               "scale": scale(rows), "overall": overall, "us_site": results[1],
                "purpose": dict(frame.query("SELECT purpose, count(*)::int AS n FROM preclin.trial_purpose GROUP BY 1")
                                .itertuples(index=False)),
                "novel": results[2], "not_novel": results[3],

@@ -81,89 +81,86 @@ TASK = llm.Task(name="program_fda_approval", prompt_version="v2", schema_version
                 model="claude-opus-5-5", effort="medium", max_tokens=12000)
 
 
-def items(cur) -> dict[str, dict]:
-    cur.execute("""
-        SELECT am.moiety_id, m.name, a.appl_type || ' ' || a.appl_no,
-               (SELECT min(status_date) FROM preclin.fda_submission s
-                WHERE s.appl_no = a.appl_no AND s.submission_type = 'ORIG' AND s.status = 'AP')
-        FROM preclin.fda_application_moiety am
-        JOIN preclin.moiety m USING (moiety_id)
-        JOIN preclin.fda_application a USING (appl_no)
-        WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = am.moiety_id
-                      AND p.mondo_id IS NOT NULL)""")
-    entities = defaultdict(lambda: {"name": None, "apps": []})
-    for mid, name, appl, orig in cur.fetchall():
-        entities[mid]["name"] = name
-        entities[mid]["apps"].append((appl, orig))
-    cur.execute("""
-        SELECT am.moiety_id, a.appl_type || ' ' || a.appl_no, s.status_date, u.change_type, u.indication_as_written,
-               u.qualifiers,
-               (SELECT array_agg(m2.name) FROM preclin.fda_application_moiety am2 JOIN preclin.moiety m2 USING (moiety_id)
-                WHERE am2.appl_no = a.appl_no AND am2.moiety_id <> am.moiety_id)
-        FROM preclin.fda_application_moiety am
-        JOIN preclin.fda_application a USING (appl_no)
-        JOIN preclin.fda_submission_letter sl ON sl.appl_no = a.appl_no
-        JOIN preclin.fda_submission s ON s.appl_no = sl.appl_no AND s.submission_type = sl.submission_type
-                                     AND s.submission_no = sl.submission_no
-        JOIN preclin.fda_approved_use u ON u.letter_sha256 = sl.letter_sha256
-        WHERE u.change_type <> 'efficacy_labeling'
-        ORDER BY s.status_date""")
-    events = defaultdict(dict)
-    for mid, appl, d, kind, use, quals, partners in cur.fetchall():
-        events[mid][(d, use)] = {"date": d.isoformat(), "appl": appl, "kind": kind, "use": use,
-                                 "qualifiers": quals, "partners": partners or []}
-    cur.execute("""
-        SELECT am.moiety_id, a.appl_type || ' ' || a.appl_no, l.indications_text, l.effective_date
-        FROM preclin.fda_application_moiety am JOIN preclin.fda_application a USING (appl_no)
-        JOIN preclin.fda_label l ON (a.appl_type || a.appl_no) = ANY(l.application_numbers)
-        WHERE l.indications_text IS NOT NULL""")
-    labels = defaultdict(dict)
-    for mid, appl, text, eff in cur.fetchall():
-        orig = dict(entities[mid]["apps"]).get(appl) if mid in entities else None
-        labels[mid].setdefault(text, {"appl": appl, "orig": str(orig) if orig else "unknown",
-                                      "text": text[:LABEL_CHARS]})
-    cur.execute("""
-        SELECT p.moiety_id, p.mondo_id, t.label,
-               (SELECT string_agg(pt.label, '; ') FROM preclin.ontology_is_a e
-                JOIN preclin.ontology_term pt ON pt.term_id = e.parent_id WHERE e.child_id = p.mondo_id),
-               (SELECT array_agg(DISTINCT i.display_name) FROM preclin.dev_program_trial dt
-                JOIN preclin.ctgov_study_indication si USING (nct_id)
-                JOIN preclin.indication i USING (indication_id)
-                WHERE dt.program_id = p.program_id AND i.mondo_id = p.mondo_id)
-        FROM preclin.dev_program p JOIN preclin.ontology_term t ON t.term_id = p.mondo_id""")
-    diseases = defaultdict(list)
-    for mid, mondo, label, parents, conds in cur.fetchall():
-        diseases[mid].append({"mondo_id": mondo, "label": label, "parents": parents or "",
-                              "conditions": sorted(conds or [])[:5]})
+def judge(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT am.moiety_id, m.name, a.appl_type || ' ' || a.appl_no,
+                   (SELECT min(status_date) FROM preclin.fda_submission s
+                    WHERE s.appl_no = a.appl_no AND s.submission_type = 'ORIG' AND s.status = 'AP')
+            FROM preclin.fda_application_moiety am
+            JOIN preclin.moiety m USING (moiety_id)
+            JOIN preclin.fda_application a USING (appl_no)
+            WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = am.moiety_id
+                          AND p.mondo_id IS NOT NULL)""")
+        entities = defaultdict(lambda: {"name": None, "apps": {}})
+        for mid, name, appl, orig in cur.fetchall():
+            entities[mid]["name"] = name
+            entities[mid]["apps"][appl] = orig
+        cur.execute("""
+            SELECT am.moiety_id, a.appl_type || ' ' || a.appl_no, s.status_date, u.change_type, u.indication_as_written,
+                   u.qualifiers,
+                   (SELECT array_agg(m2.name ORDER BY m2.name) FROM preclin.fda_application_moiety am2
+                    JOIN preclin.moiety m2 USING (moiety_id)
+                    WHERE am2.appl_no = a.appl_no AND am2.moiety_id <> am.moiety_id)
+            FROM preclin.fda_application_moiety am
+            JOIN preclin.fda_application a USING (appl_no)
+            JOIN preclin.fda_submission_letter sl ON sl.appl_no = a.appl_no
+            JOIN preclin.fda_submission s ON s.appl_no = sl.appl_no AND s.submission_type = sl.submission_type
+                                         AND s.submission_no = sl.submission_no
+            JOIN preclin.fda_approved_use u ON u.letter_sha256 = sl.letter_sha256
+            WHERE u.change_type <> 'efficacy_labeling'
+            ORDER BY s.status_date, a.appl_type, a.appl_no, s.submission_type, s.submission_no, u.letter_sha256,
+                     u.ordinal""")
+        events = defaultdict(dict)
+        for mid, appl, d, kind, use, quals, partners in cur.fetchall():
+            events[mid][(d, use)] = {"date": d.isoformat(), "appl": appl, "kind": kind, "use": use,
+                                     "qualifiers": quals, "partners": partners or []}
+        cur.execute("""
+            SELECT am.moiety_id, a.appl_type || ' ' || a.appl_no, l.indications_text
+            FROM preclin.fda_application_moiety am JOIN preclin.fda_application a USING (appl_no)
+            JOIN preclin.fda_label l ON (a.appl_type || a.appl_no) = ANY(l.application_numbers)
+            WHERE l.indications_text IS NOT NULL
+            ORDER BY am.moiety_id, a.appl_type, a.appl_no, l.set_id""")
+        labels = defaultdict(dict)
+        for mid, appl, text in cur.fetchall():
+            if mid not in entities:
+                continue
+            orig = entities[mid]["apps"].get(appl)
+            labels[mid].setdefault(text, {"appl": appl, "orig": str(orig) if orig else "unknown",
+                                          "text": text[:LABEL_CHARS]})
+        cur.execute("""
+            SELECT p.moiety_id, p.mondo_id, t.label,
+                   (SELECT string_agg(pt.label, '; ' ORDER BY pt.label) FROM preclin.ontology_is_a e
+                    JOIN preclin.ontology_term pt ON pt.term_id = e.parent_id WHERE e.child_id = p.mondo_id),
+                   (SELECT array_agg(DISTINCT i.display_name) FROM preclin.dev_program_trial dt
+                    JOIN preclin.ctgov_study_indication si USING (nct_id)
+                    JOIN preclin.indication i USING (indication_id)
+                    WHERE dt.program_id = p.program_id AND i.mondo_id = p.mondo_id)
+            FROM preclin.dev_program p JOIN preclin.ontology_term t ON t.term_id = p.mondo_id""")
+        diseases = defaultdict(list)
+        for mid, mondo, label, parents, conds in cur.fetchall():
+            diseases[mid].append({"mondo_id": mondo, "label": label, "parents": parents or "",
+                                  "conditions": sorted(conds or [])[:5]})
 
-    out = {}
+    work = {}
     for mid, ent in entities.items():
         ds = sorted(diseases.get(mid, []), key=lambda d: d["mondo_id"])
         ent_labels = sorted(labels[mid].values(), key=lambda l: l["orig"])[:LABELS_PER_ENTITY]
         for start in range(0, len(ds), DISEASES_PER_CALL):
-            out[f"{mid}:{start // DISEASES_PER_CALL}"] = {
+            work[f"{mid}:{start // DISEASES_PER_CALL}"] = {
                 "entity": ent["name"], "events": list(events[mid].values()),
-                "originals": sorted({(a, o.isoformat()) for a, o in ent["apps"] if o}),
+                "originals": sorted({(a, o.isoformat()) for a, o in ent["apps"].items() if o}),
                 "labels": ent_labels, "diseases": ds[start:start + DISEASES_PER_CALL]}
-    return out
-
-
-def judge(_args) -> None:
-    with llm.connect() as conn, conn.cursor() as cur:
-        work = items(cur)
     run_id = llm.run(TASK, work)
+    rows = []
+    for key, did, out in llm.decisions(run_id):
+        mid = int(key.split(":")[0])
+        for d in out["decisions"]:
+            fa = d["first_approval"]
+            dated = fa[:2] in ("19", "20")
+            rows.append((mid, d["mondo_id"], d["approved"], fa if dated else None, "dated" if dated else fa,
+                         d["relation"], d["evidence"], did))
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        rows = []
-        for key, did, out in cur.fetchall():
-            mid = int(key.split(":")[0])
-            for d in out["decisions"]:
-                fa = d["first_approval"]
-                rows.append((mid, d["mondo_id"], d["approved"],
-                             fa if fa[:2] in ("19", "20") else None,
-                             fa if fa[:2] not in ("19", "20") else "dated",
-                             d["relation"], d["evidence"], did))
         cur.execute("DELETE FROM preclin.dev_program_approval")
         execute_values(cur, """INSERT INTO preclin.dev_program_approval
               (program_id, approved, first_approval_date, date_basis, relation, evidence, llm_decision_id)

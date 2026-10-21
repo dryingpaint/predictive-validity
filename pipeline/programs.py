@@ -9,7 +9,7 @@
 A trial is in scope when it lists Early Phase 1, Phase 1, 2 or 3 (any sponsor,
 any date). Intervention names (DRUG, BIOLOGICAL, GENETIC, COMBINATION_PRODUCT)
 and condition strings are registered in preclin.drug and preclin.indication,
-keyed like every earlier row (lower-case alphanumerics), so pipeline.drugs and
+keyed by their lower-case alphanumerics (norm), so pipeline.drugs and
 pipeline.indications resolve them.
 """
 from __future__ import annotations
@@ -30,18 +30,23 @@ COMPARATOR_ARMS = {"ACTIVE_COMPARATOR", "PLACEBO_COMPARATOR", "SHAM_COMPARATOR",
 
 
 def norm(text: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", (text or "").lower().strip())
+    return re.sub(r"[^a-z0-9]", "", (text or "").lower())
 
 
-def in_scope_studies(cur):
-    cur.execute("""SELECT nct_id, interventions, arm_groups, conditions FROM preclin.ctgov_study
-                   WHERE phases && %s::text[]""", (IN_SCOPE_PHASES,))
-    return cur.fetchall()
+def mondo_ancestors(cur) -> defaultdict[str, set[str]]:
+    """MONDO term -> all of its ancestor terms."""
+    cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
+    ancestors = defaultdict(set)
+    for term, anc in cur.fetchall():
+        ancestors[term].add(anc)
+    return ancestors
 
 
 def register(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        studies = in_scope_studies(cur)
+        cur.execute("""SELECT nct_id, interventions, arm_groups, conditions FROM preclin.ctgov_study
+                       WHERE phases && %s::text[]""", (IN_SCOPE_PHASES,))
+        studies = cur.fetchall()
         drug_names, drug_syns = defaultdict(Counter), defaultdict(set)
         cond_names = defaultdict(Counter)
         study_drugs = {}
@@ -49,19 +54,18 @@ def register(_args) -> None:
         for nct, interventions, arms, conditions in studies:
             arm_type = {a.get("label"): a.get("type") or "UNKNOWN" for a in arms}
             for iv in interventions:
-                if iv.get("type") not in DRUG_TYPES or not norm(iv.get("name")):
+                key = norm(iv.get("name"))
+                if iv.get("type") not in DRUG_TYPES or not key:
                     continue
-                key = norm(iv["name"])
                 drug_names[key][iv["name"].strip()] += 1
                 drug_syns[key].update(o.strip() for o in iv.get("otherNames") or [] if o.strip())
-                types = sorted({arm_type.get(l, "UNKNOWN") for l in iv.get("armGroupLabels") or []})
-                prev = study_drugs.get((nct, key))
-                study_drugs[(nct, key)] = (iv["type"], sorted(set(types) | set(prev[1] if prev else [])),
-                                           sorted(drug_syns[key])[:10])
+                seen = study_drugs.get((nct, key), (None, []))[1]
+                types = {arm_type.get(l, "UNKNOWN") for l in iv.get("armGroupLabels") or []}
+                study_drugs[(nct, key)] = (iv["type"], sorted(types | set(seen)), sorted(drug_syns[key])[:10])
             for c in conditions:
-                if norm(c):
-                    cond_names[norm(c)][c.strip()] += 1
-                    study_conds.add((nct, norm(c)))
+                if key := norm(c):
+                    cond_names[key][c.strip()] += 1
+                    study_conds.add((nct, key))
 
         execute_values(cur, """INSERT INTO preclin.drug (normalized_name, display_name, synonyms, resolved_via)
             VALUES %s ON CONFLICT (normalized_name) DO NOTHING""",
@@ -136,14 +140,14 @@ def roles(_args) -> None:
     comparator arms, investigational otherwise."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
-            SELECT sd.nct_id, m.moiety_id, m.name, d.display_name, sd.intervention_type, sd.arm_types
+            SELECT sd.nct_id, m.moiety_id, m.name, d.display_name, sd.arm_types
             FROM preclin.ctgov_study_drug sd
             JOIN preclin.drug_moiety dm USING (drug_id)
             JOIN preclin.moiety m USING (moiety_id)
             JOIN preclin.drug d USING (drug_id)""")
         by_trial = defaultdict(list)
-        for nct, mid, mname, dname, itype, arms in cur.fetchall():
-            by_trial[nct].append((mid, mname, dname, itype, arms))
+        for nct, *row in cur.fetchall():
+            by_trial[nct].append(row)
         cur.execute("""SELECT nct_id, brief_title, phases, arm_groups, interventions,
                               lead_sponsor_class = 'INDUSTRY'
                        FROM preclin.ctgov_study WHERE nct_id = ANY(%s)""", (list(by_trial),))
@@ -151,18 +155,16 @@ def roles(_args) -> None:
 
     fixed, items, moiety_ids = [], {}, {}
     for nct, rows in by_trial.items():
-        moieties = {}
-        for mid, mname, dname, itype, arms in rows:
+        moieties, names = {}, defaultdict(set)
+        for mid, mname, dname, arms in rows:
             moieties.setdefault(mid, (mname, set()))[1].update(arms)
+            names[norm(dname)].add(mname)
         title, phases, arm_groups, interventions, industry = studies[nct]
         if len(moieties) == 1 or not industry:
             for mid, (_, arms) in moieties.items():
                 role = "comparator" if arms and arms <= COMPARATOR_ARMS else "investigational"
                 fixed.append((nct, mid, role, "arm_types", None))
             continue
-        names = {}
-        for mid, mname, dname, itype, arms in rows:
-            names.setdefault(norm(dname), set()).add(mname)
         ivs = [{"name": iv.get("name"), "type": iv.get("type"),
                 "description": iv.get("description") or "",
                 "moieties": sorted(names.get(norm(iv.get("name")), []))}
@@ -172,16 +174,14 @@ def roles(_args) -> None:
         moiety_ids[nct] = {m[0]: mid for mid, m in moieties.items()}
 
     run_id = llm.run(ROLE_TASK, items)
+    decided = [(nct, moiety_ids[nct][r["moiety"]], r["role"], "llm", did)
+               for nct, did, out in llm.decisions(run_id) for r in out["roles"]]
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        decided = [(nct, moiety_ids[nct][r["moiety"]], r["role"], "llm", did)
-                   for nct, did, out in cur.fetchall() for r in out["roles"]]
         cur.execute("DELETE FROM preclin.ctgov_study_moiety")
         execute_values(cur, """INSERT INTO preclin.ctgov_study_moiety (nct_id, moiety_id, role, method, llm_decision_id)
                                VALUES %s""", fixed + decided, page_size=10000)
         conn.commit()
-    print(f"trials={len(by_trial)} single-entity={len(fixed)} llm={len(items)} llm-decided={len(decided)}")
+    print(f"trials={len(by_trial)} arm-types={len(fixed)} llm={len(items)} llm-decided={len(decided)}")
 
 
 PURPOSE_SYSTEM = """You classify what an industry-sponsored clinical trial contributes to the development of its investigational drug(s).
@@ -315,10 +315,7 @@ def indications(_args) -> None:
               AND i.indication_kind IS DISTINCT FROM 'healthy_volunteers'
             GROUP BY 1, 2, 3, 4""")
         rows = cur.fetchall()
-        cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
-        ancestors = defaultdict(set)
-        for term, anc in cur.fetchall():
-            ancestors[term].add(anc)
+        ancestors = mondo_ancestors(cur)
     by_entity = defaultdict(list)
     names = {}
     for mid, name, mondo, label, n, phases in rows:
@@ -333,11 +330,9 @@ def indications(_args) -> None:
         if any(d["within"] for d in ds):
             items[str(mid)] = {"entity": names[mid], "diseases": sorted(ds, key=lambda d: d["mondo_id"])}
     run_id = llm.run(INDICATION_TASK, items)
+    out = [(int(mid), m, g["representative"], did) for mid, did, o in llm.decisions(run_id)
+           for g in o["groups"] for m in g["members"]]
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key::int, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        out = [(mid, m, g["representative"], did) for mid, did, o in cur.fetchall()
-               for g in o["groups"] for m in g["members"]]
         cur.execute("DELETE FROM preclin.program_indication")
         execute_values(cur, """INSERT INTO preclin.program_indication (moiety_id, mondo_id, indication_mondo,
                                  llm_decision_id) VALUES %s""", out, page_size=5000)
@@ -379,24 +374,24 @@ def build(_args) -> None:
         cur.execute("SELECT max(source_version) FROM preclin.evidence_source_release "
                     "WHERE source_name = 'clinicaltrials_gov_api_v2'")
         snapshot = cur.fetchone()[0]
+        cur.execute("SELECT nct_id, purpose, development_conditions FROM preclin.trial_purpose")
+        purpose = {nct: (p, set(conds)) for nct, p, conds in cur.fetchall()}
         cur.execute("""SELECT nct_id, phases, start_date, primary_completion_date, completion_date,
                               overall_status, lead_sponsor, lead_sponsor_class
                        FROM preclin.ctgov_study WHERE phases && %s::text[]
                          AND overall_status <> 'WITHDRAWN' AND start_date IS NOT NULL""", (IN_SCOPE_PHASES,))
         trials = {}
         for nct, phases, start, pcd, comp, status, sponsor, sponsor_class in cur.fetchall():
+            if purpose.get(nct, ("",))[0] in ("product_support", "other"):
+                continue
             trials[nct] = {"phase": max(PHASE_NUM[p] for p in phases if p in PHASE_NUM), "start": start,
                            "active": status in ACTIVE_STATUSES, "end": comp or pcd or start,
                            "industry": sponsor_class == "INDUSTRY", "sponsor": sponsor}
-        cur.execute("SELECT nct_id, purpose, development_conditions FROM preclin.trial_purpose")
-        purpose = {nct: (p, set(conds)) for nct, p, conds in cur.fetchall()}
-        trials = {nct: t for nct, t in trials.items()
-                  if purpose.get(nct, ("",))[0] not in ("product_support", "other")}
-        cur.execute("""SELECT nct_id, moiety_id FROM preclin.ctgov_study_moiety WHERE role = 'investigational'""")
-        trial_moieties = defaultdict(set)
+        cur.execute("SELECT nct_id, moiety_id FROM preclin.ctgov_study_moiety WHERE role = 'investigational'")
+        by_moiety = defaultdict(list)
         for nct, mid in cur.fetchall():
             if nct in trials:
-                trial_moieties[nct].add(mid)
+                by_moiety[mid].append(nct)
         cur.execute("""SELECT si.nct_id, i.mondo_id, i.display_name, coalesce(i.ct_gov_conditions, '{}')
                        FROM preclin.ctgov_study_indication si JOIN preclin.indication i USING (indication_id)
                        WHERE i.indication_kind IS DISTINCT FROM 'healthy_volunteers'""")
@@ -412,16 +407,9 @@ def build(_args) -> None:
         baskets = {nct for nct, (p, _) in purpose.items() if p == "multi_indication"}
         cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
         indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
-        cur.execute("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
-        ancestors = defaultdict(set)
-        for term, anc in cur.fetchall():
-            ancestors[term].add(anc)
+        ancestors = mondo_ancestors(cur)
 
     snap = date.fromisoformat(snapshot)
-    by_moiety = defaultdict(list)
-    for nct, mids in trial_moieties.items():
-        for mid in mids:
-            by_moiety[mid].append(nct)
 
     def entry_programs(first: dict, start: date) -> set:
         """Programs a shared trial starting on `start` can mark entry for: those
@@ -446,16 +434,16 @@ def build(_args) -> None:
                 no_disease.append(nct)
         specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
         first = {(mid, d): min(trials[n]["start"] for n in direct[d]) for d in specific}
-        for d in specific:
-            programs[(mid, d)] = {nct: ("disease", True) for nct in direct[d]}
-        for d in set(direct) - specific:
+        for d in sorted(specific):
+            programs[(mid, d)] = dict.fromkeys(sorted(direct[d]), ("disease", True))
+        for d in sorted(set(direct) - specific):
             covered = {k: f for k, f in first.items() if d in ancestors[k[1]]}
             for nct in direct[d]:
                 lead = entry_programs(covered, trials[nct]["start"])
                 for key in covered:
                     programs[key].setdefault(nct, ("broader_condition", key in lead))
         if other_condition:
-            programs[(mid, None)] = {nct: ("non_disease_condition", True) for nct in other_condition}
+            programs[(mid, None)] = dict.fromkeys(other_condition, ("non_disease_condition", True))
             first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
         for nct in basket:  # shared by the programs of the diseases it lists, else the unspecified program
             listed = {k for k in first if any(indication.get((mid, d), d) == k[1] or d in ancestors[k[1]]
@@ -486,26 +474,25 @@ def build(_args) -> None:
                      sum(t["active"] for t in ts)))
         links.append([(n, trials[n]["phase"], a, entry) for n, (a, entry) in attached.items()])
 
-    build_id = uuid.uuid4()
+    build_id = str(uuid.uuid4())
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""INSERT INTO preclin.dev_program_build (build_id, code_commit, snapshot, parameters)
                        VALUES (%s, %s, %s, %s)""",
-                    (str(build_id), llm.git_commit(), snap,
+                    (build_id, llm.git_commit(), snap,
                      Json({"phases": IN_SCOPE_PHASES, "active_statuses": sorted(ACTIVE_STATUSES),
                            "combined_phase": "higher", "withdrawn": "excluded",
                            "shared_trial_entry": "programs under way or begun next",
-                           "industry_trials": "by purpose (preclin.trial_purpose)"})))
+                           "industry_trials": "by purpose (preclin.trial_purpose)",
+                           "n_programs": len(rows), "n_links": sum(map(len, links))})))
         cur.execute("DELETE FROM preclin.dev_program")
         ids = execute_values(cur, """INSERT INTO preclin.dev_program
               (moiety_id, mondo_id, ph1_start, ph2_start, ph3_start, first_start, highest_phase, n_trials,
                n_industry_trials, first_industry_start, lead_sponsors, last_activity, n_active_trials, build_id)
             VALUES %s RETURNING program_id""",
-            [r + (str(build_id),) for r in rows], page_size=5000, fetch=True)
+            [r + (build_id,) for r in rows], page_size=5000, fetch=True)
         execute_values(cur, """INSERT INTO preclin.dev_program_trial (program_id, nct_id, phase, attach, marks_entry)
                                VALUES %s""",
-                       [(pid, *l) for (pid,), ls in zip(ids, links) for l in ls], page_size=10000)
-        cur.execute("UPDATE preclin.dev_program_build SET parameters = parameters || %s WHERE build_id = %s",
-                    (Json({"n_programs": len(rows), "n_links": sum(map(len, links))}), str(build_id)))
+                       [(pid, *l) for (pid,), ls in zip(ids, links, strict=True) for l in ls], page_size=10000)
         conn.commit()
     print(f"build={build_id} programs={len(rows)} trial links={sum(map(len, links))} "
           f"entities={len(by_moiety)}")

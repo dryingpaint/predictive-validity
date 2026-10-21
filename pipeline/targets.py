@@ -100,14 +100,12 @@ def resolve(_args) -> None:
                             "titles": titles or []}
                  for mid, name, codes, modality, strings, titles in cur.fetchall()}
     run_id = llm.run(TASK, items)
+    rows, kinds = [], []
+    for mid, did, out in llm.decisions(run_id):
+        kinds.append((int(mid), out["target_kind"], did))
+        for t in out["targets"]:
+            rows.append((int(mid), symbol_id[t["symbol"]], t["action"], t["primary"], did))
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT subject_key, llm_decision_id, parsed_output FROM pv_evidence.llm_decision
-                       WHERE decision_run_id = %s AND validation_status = 'validated'""", (str(run_id),))
-        rows, kinds = [], []
-        for mid, did, out in cur.fetchall():
-            kinds.append((int(mid), out["target_kind"], did))
-            for t in out["targets"]:
-                rows.append((int(mid), symbol_id[t["symbol"]], t["action"], t["primary"], did))
         cur.execute("DELETE FROM preclin.moiety_target")
         execute_values(cur, """INSERT INTO preclin.moiety_target (moiety_id, target_id, action, is_primary, llm_decision_id)
                                VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)

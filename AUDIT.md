@@ -191,7 +191,7 @@ Each quantitative claim, with the value the rebuild gives:
 | D22 | 147 of 3,669 FDA letters have pages with no text layer (scanned letterheads), so the indication paragraph of e.g. Asparlas and Imjudo original approvals was missing | Approved uses, approval dates | fixed: pages without text are OCRed (pdftoppm + tesseract); 147 letters re-extracted, 4,639 approved uses |
 | D23 | Labeling-only supplements were extracted as `efficacy_labeling` uses (label audit: 5 of 60 letters); dated as approval events they could move a disease's first approval to a later labeling update | Approval dates | fixed: excluded from approval events |
 | D24 | 7,497 completed industry Phase 2/3 trials (start ≥ 2010) posted no results, so their primary-endpoint outcome was unknown | Failure modes (efficacy failures among completed trials) | fixed where possible: 2,284 have a linked results paper (registry reference or PubMed secondary id); classified from abstracts by a separate task. The rest stay "no results" (published results skew positive, so the paper-based rate is not the rate for unpublished trials) |
-| D25 | `benchmark/` (scorer framework, RESULTS.md) still takes ground truth from the legacy views (`preclin.v_target_indication_strict_outcome` over `preclin.program`/`preclin.approval`), so its cohort and AUCs disagree with the report's Section 2 | Second source of truth for predictiveness | open: point the benchmark's ground truth at `preclin.dev_program` + `dev_program_approval` + `moiety_target` |
+| D25 | `benchmark/` (scorer framework, RESULTS.md) still takes ground truth from the legacy views (`preclin.v_target_indication_strict_outcome` over `preclin.program`/`preclin.approval`), so its cohort and AUCs disagree with the report's Section 2 | Second source of truth for predictiveness | fixed: `benchmark/`, RESULTS.md and the analyses built on them deleted; the report's Section 2 is the only predictiveness analysis |
 | D26 | Shared trials (healthy-volunteer Phase 1, "solid tumors" baskets) counted as Phase 1 entry for every later indication of the entity, so each indication expansion started at Phase 2 scored as a Phase 1 success | Phase 1→2 rate, LOA | fixed: shared trials mark entry only for programs under way or begun next (lead indication); attach-all reported as a sensitivity |
 | D27 | 845 stopped or withdrawn industry trials have an empty whyStopped; some give the reason only in the brief summary, which the outcome classifier did not see (trial-outcome audit: 1 of 30 stop reasons) | Failure-reason shares ("no reason stated") | fixed: brief summary stored and shown to the classifier when whyStopped is empty |
 | D28 | Trials whose only conditions are symptoms or procedures without a MONDO term (pain, cough, contraception; 1,337 industry trials 2015–2025, 3.4%) were treated like healthy-volunteer trials and attached to every disease program of the entity, so a Phase 3 in low back pain could count as advancement of the same drug's osteoarthritis program | Phase transitions | fixed: they form the entity's condition-unspecified program; symptoms with a MONDO term form their own programs. Limitation: pain and similar indications are not separate programs or disease-area strata |
@@ -206,6 +206,14 @@ Each quantitative claim, with the value the rebuild gives:
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-20 — Repository cleanup: deleted the legacy benchmark (`benchmark/`, RESULTS.md and 17
+  one-off `analyses/*.py` scripts; D25), the superseded classifiers (why_stopped, silent_kill,
+  nelson_tier_*, score_target_literature), the 8 tests that exercised only those, 10 stale
+  `data/` snapshots and `db/QUESTIONS.md`. Of `report/output/` only the figure PNGs stay tracked;
+  `make report` regenerates the rest. `make programs` now runs `pipeline.programs purposes`
+  and `indications` before `build`, which reads their tables, and `make evidence` runs
+  `pipeline.opentargets fetch` before `load`.
 
 - 2026-10-20 — Post-fix re-audit on fresh seeded samples: condition → MONDO 99/100 defensible
   (pattern: some containing terms flagged `exact` instead of `broader`); intervention → entity
@@ -228,7 +236,7 @@ Each quantitative claim, with the value the rebuild gives:
 
 - 2026-10-20 — CBER index verified by an independent enumeration (yearly pages, ~700 live and
   214 archived product pages, the Purple Book, 968 letters read): 318 of 325 records and all
-  112 original BLAs (with dates) match. Its fixes are recorded in `pipeline/cber/corrections.py`
+  112 original BLAs (with dates) match. Its fixes are recorded in `pipeline/cber/decisions.py`
   (two dropped supplements, two corrected letters, one added action; index now 324 actions).
   Estimated recall ≥ 0.94 per year, lowest for 2015–2016 supplements absent from the
   noteworthy lists. PDF pages with a mis-encoded text layer are now OCRed too. Batch queue

@@ -2,8 +2,6 @@
 
 The `preclin.*` schema in Neon Postgres is the single source of truth for the analysis. This directory has schema DDL and ingest scripts.
 
-For example SQL queries, see [`QUESTIONS.md`](QUESTIONS.md).
-
 ## File taxonomy
 
 The numeric prefixes predate the migration ledger and describe execution order,
@@ -78,8 +76,8 @@ reason and `--yes`, and labels every resulting row as `baseline`:
 ```
 
 Do not use `baseline` on a fresh or uncertain database; use `apply` instead.
-Recurring source refreshes remain audited in `preclin.ingest_log` or dedicated
-release tables, while model evaluations remain in `preclin.benchmark_run`.
+Recurring source refreshes are audited in `preclin.ingest_log` or dedicated
+release tables.
 
 ## Canonical PV evidence ingestion pilot
 
@@ -568,13 +566,12 @@ version requires a new migration.
 
 ## Cohort-wide genetics tiers
 
-`analyses/classifiers/nelson_tier_classify.py --all-clinical` enumerates all
-non-placebo human target-indication pairs from program and drug-target tables,
-without reading outcomes or approvals. It restricts Open Targets input to
-genetic evidence and reads PubMed only from immutable `source_document` rows.
-Preparation also stores each complete, stable dossier as an immutable
-`nelson_dossier` source document. Exact model inputs use the standard audit
-format. Versioned result files are ingested by
+Cohort-wide Nelson tier result files (`nelson_tiers_*.jsonl`) cover the
+non-placebo human target-indication pairs of the program and drug-target
+tables, judged without outcomes or approvals from genetics-only Open Targets
+input and immutable PubMed `source_document` rows. Each complete, stable
+dossier is stored as an immutable `nelson_dossier` source document. Exact model
+inputs use the standard audit format. Versioned result files are ingested by
 `13_ingest_llm_outputs.py --task nelson-tier`, which atomically stores the
 `llm_run`, `llm_run_source`, `evidence_score`, and immutable fact snapshot.
 The exact prompt, response, and source excerpts live only in their dedicated
@@ -715,30 +712,18 @@ so paid calls survive interruption. Load those completed runs with the narrow
 incremental importer rather than rerunning the big-bang `02_ingest.py`:
 
 ```bash
-# Trial why-stopped verdicts
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-  --task why-stopped data/clinical_trials/why_stopped_2026.jsonl
-
 # Evidence-enriched, multi-axis stoppage rescores (kept as a separate task)
 .venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
   --task trial-stoppage-rescore data/clinical_trials/stoppage_rescore_2026.jsonl
-
-# Target-level PubMed evidence tiers
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-  --task target-literature data/target_evidence/literature_scores_2026.jsonl
 ```
 
-The importer also accepts `--task trial-stoppage-rescore`, `--task silent-kill`,
-`--task drug-evidence`, and `--task nelson-tier`.
+The importer also accepts `--task why-stopped`, `--task target-literature`,
+`--task silent-kill`, `--task drug-evidence`, and `--task nelson-tier` result
+files.
 It requires the exact audit fields emitted by `analyses/classifiers/common.py`,
 commits all supplied files atomically, and supports `--dry-run`. It never calls
 an LLM or retrieves a source. `02_ingest.py` remains unchanged as the manual
 bootstrap loader for the historical local data bundle.
-
-Target-literature scoring refuses to call a paid model unless every supplied
-abstract is already represented by a canonical `source_document_id`. Import a
-legacy cache with `db/12_ingest_evidence_abstracts.py` before scoring; this
-ensures the completed JSONL can always pass the audited importer.
 
 Backfill abstracts used for target/drug evidence extraction separately:
 

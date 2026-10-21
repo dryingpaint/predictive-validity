@@ -3,11 +3,13 @@
     python -m report.quality
 
 1. Independent re-derivation of seeded samples by agents working from the
-   primary sources (label audit: .cache/label_audit/results.json, with
-   fresh post-fix samples in .cache/label_audit_v2/results.json; trial
-   outcomes: .cache/outcome_audit/results.json; program approvals by stratum:
-   .cache/approval_audit/results.json): accuracy with Wilson 95% intervals,
-   counting correct and acceptable verdicts as agreement.
+   primary sources, committed in report/audits/ (labels: label_audit.json
+   before the pipeline fixes, and label_audit_post_fix.json with fresh samples
+   after them, which replaces a label's pre-fix result; trial outcomes from
+   posted results and from results papers: outcome_audit.json and
+   publication_outcome_audit.json; program approvals by stratum:
+   approval_audit.json): accuracy with Wilson 95% intervals, counting correct
+   and acceptable verdicts as agreement.
 2. Agreement of the trial stop reasons (preclin.trial_outcome) with the two
    earlier classifications of the same trials: the Sonnet why_stopped labels
    and the GPT-5.6 multi-axis rescore (preclin.classification), on a common
@@ -25,12 +27,11 @@ from sklearn.metrics import cohen_kappa_score
 from report import frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "quality")
-AUDIT = os.path.join(frame.REPO, ".cache", "label_audit", "results.json")  # before the pipeline fixes
-AUDIT_V2 = os.path.join(frame.REPO, ".cache", "label_audit_v2", "results.json")  # fresh samples after them
-OUTCOME_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "results.json")
-PUBLICATION_AUDIT = os.path.join(frame.REPO, ".cache", "outcome_audit", "publication_results.json")
+AUDITS = os.path.join(frame.REPO, "report", "audits")
+LABEL_AUDITS = ("label_audit.json", "label_audit_post_fix.json")  # before the pipeline fixes, fresh samples after them
+OUTCOME_AUDITS = {"outcome_audit": "outcome_audit.json", "publication_audit": "publication_outcome_audit.json"}
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
-APPROVAL_AUDIT = os.path.join(frame.REPO, ".cache", "approval_audit", "results.json")
+APPROVAL_AUDIT = "approval_audit.json"
 
 NEW = {"efficacy_futility": "efficacy", "safety_tolerability": "safety", "pk_pd_or_formulation": "pk_formulation",
        "business_portfolio": "business", "competitive_landscape": "business",
@@ -51,22 +52,22 @@ GPT = {"efficacy": "efficacy", "unfavorable_benefit_risk": "efficacy", "safety":
        "unknown": "unknown"}
 
 
-def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
-    if n == 0:
-        return math.nan, math.nan
-    p = k / n
+def agreement(ok: int, n: int, z: float = 1.96) -> dict:
+    """Share of n audited verdicts in agreement, with its Wilson interval."""
+    p = ok / n
     centre = (p + z * z / (2 * n)) / (1 + z * z / n)
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
-    return centre - half, centre + half
+    return {"accuracy": p, "lo": centre - half, "hi": centre + half}
 
 
 def stop_reason_agreement() -> dict:
     new = frame.query("""SELECT nct_id, stop_reason FROM preclin.trial_outcome
                          WHERE execution <> 'completed'""").set_index("nct_id").stop_reason
-    old = frame.query("""SELECT subject_key AS nct_id, classifier_model, category,
+    old = frame.query("""SELECT subject_key AS nct_id, classifier_model, category, extracted_at, classification_id,
                                 coalesce(raw_output ? 'error', false) AS failed
                          FROM preclin.classification
-                         WHERE classifier_task IN ('why_stopped', 'trial_stoppage_rescore')""")
+                         WHERE classifier_task IN ('why_stopped', 'trial_stoppage_rescore')""") \
+        .sort_values(["nct_id", "extracted_at", "classification_id"], ascending=[True, False, False])  # latest first
     out = {}
     for model, mapping in [("claude-sonnet", SONNET), ("gpt-5.6-terra", GPT)]:
         o = old[(old.classifier_model == model) & ~old.failed].drop_duplicates("nct_id").set_index("nct_id").category
@@ -85,44 +86,35 @@ def stop_reason_agreement() -> dict:
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     numbers = {"stop_reason_agreement": stop_reason_agreement()}
-    if os.path.exists(AUDIT):
-        audits = {}
-        records = json.load(open(AUDIT)) + (json.load(open(AUDIT_V2)) if os.path.exists(AUDIT_V2) else [])
-        for r in records:  # a post-fix audit of a label replaces its pre-fix audit
-            ok = r["n_correct"] + r["n_acceptable"]
-            lo, hi = wilson(ok, r["n"])
+    audits = {}
+    for name in LABEL_AUDITS:  # a post-fix audit of a label replaces its pre-fix audit
+        for r in json.load(open(os.path.join(AUDITS, name))):
             audits[r["task"]] = {"n": r["n"], "correct": r["n_correct"], "acceptable": r["n_acceptable"],
-                                 "wrong": r["n_wrong"], "accuracy": ok / r["n"], "lo": lo, "hi": hi}
-        numbers["label_audit"] = audits
-    for name, path in (("outcome_audit", OUTCOME_AUDIT), ("publication_audit", PUBLICATION_AUDIT)):
-        if not os.path.exists(path):
-            continue
-        trials = json.load(open(path))["trials"]
+                                 "wrong": r["n_wrong"], **agreement(r["n_correct"] + r["n_acceptable"], r["n"])}
+    numbers["label_audit"] = audits
+    for name, path in OUTCOME_AUDITS.items():
+        trials = json.load(open(os.path.join(AUDITS, path)))["trials"]
         audits = {}
         for axis in OUTCOME_AXES:
             if not any(f"{axis}_verdict" in t for t in trials):
                 continue
             verdicts = [t[f"{axis}_verdict"] for t in trials if t[f"{axis}_verdict"] != "not_applicable"]
-            ok = sum(v in ("correct", "acceptable") for v in verdicts)
-            lo, hi = wilson(ok, len(verdicts))
             audits[axis] = {"n": len(verdicts), "correct": verdicts.count("correct"),
                             "acceptable": verdicts.count("acceptable"), "wrong": verdicts.count("wrong"),
-                            "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
+                            **agreement(sum(v in ("correct", "acceptable") for v in verdicts), len(verdicts))}
         numbers[name] = audits
-    if os.path.exists(APPROVAL_AUDIT):
-        programs = json.load(open(APPROVAL_AUDIT))["programs"]
-        audits = {}
-        for stratum in sorted({p["stratum"] for p in programs}) + ["all"]:
-            group = [p for p in programs if stratum in ("all", p["stratum"])]
-            for axis in ("approved", "date"):
-                verdicts = [p[f"{axis}_verdict"] for p in group if p[f"{axis}_verdict"] != "not_applicable"]
-                if not verdicts:
-                    continue
-                ok = sum(v in ("correct", "acceptable") for v in verdicts)
-                lo, hi = wilson(ok, len(verdicts))
-                audits[f"{stratum}.{axis}"] = {"n": len(verdicts), "wrong": verdicts.count("wrong"),
-                                               "accuracy": ok / len(verdicts), "lo": lo, "hi": hi}
-        numbers["approval_audit"] = audits
+    programs = json.load(open(os.path.join(AUDITS, APPROVAL_AUDIT)))["programs"]
+    audits = {}
+    for stratum in sorted({p["stratum"] for p in programs}) + ["all"]:
+        group = [p for p in programs if stratum in ("all", p["stratum"])]
+        for axis in ("approved", "date"):
+            verdicts = [p[f"{axis}_verdict"] for p in group if p[f"{axis}_verdict"] != "not_applicable"]
+            if not verdicts:
+                continue
+            audits[f"{stratum}.{axis}"] = {"n": len(verdicts), "wrong": verdicts.count("wrong"),
+                                           **agreement(sum(v in ("correct", "acceptable") for v in verdicts),
+                                                       len(verdicts))}
+    numbers["approval_audit"] = audits
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(numbers, indent=1, default=float))

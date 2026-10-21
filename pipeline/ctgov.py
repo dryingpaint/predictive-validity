@@ -68,6 +68,18 @@ def parse_date(struct: dict | None) -> tuple[date | None, str | None]:
     return date(int(parts[0]), int(parts[1]), int(parts[2])), struct.get("type")
 
 
+# row() returns values in this order.
+COLUMNS = ("nct_id", "brief_title", "official_title", "overall_status", "why_stopped", "phases",
+           "start_date", "start_date_type", "primary_completion_date", "primary_completion_date_type",
+           "completion_date", "completion_date_type", "first_posted", "last_update_posted",
+           "results_first_posted", "has_results", "lead_sponsor", "lead_sponsor_class", "collaborators",
+           "enrollment", "allocation", "intervention_model", "masking", "primary_purpose",
+           "healthy_volunteers", "conditions", "keywords", "interventions", "arm_groups", "references_",
+           "countries", "brief_summary", "source_release_id")
+UPSERT = (f"INSERT INTO preclin.ctgov_study ({', '.join(COLUMNS)}) VALUES %s ON CONFLICT (nct_id) DO UPDATE SET "
+          + ", ".join(f"{c} = EXCLUDED.{c}" for c in COLUMNS[1:]))
+
+
 def row(study: dict, release: int) -> tuple:
     p = study.get("protocolSection", {})
     ident, status = p.get("identificationModule", {}), p.get("statusModule", {})
@@ -104,47 +116,14 @@ def load(_args) -> None:
     for path in pages:
         digest.update(open(path, "rb").read())
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""INSERT INTO preclin.evidence_source_release
-              (source_name, source_version, source_url, content_sha256, metadata)
-            VALUES ('clinicaltrials_gov_api_v2', %s, %s, %s, %s)
-            ON CONFLICT (source_name, source_version, content_sha256) DO UPDATE SET metadata = EXCLUDED.metadata
-            RETURNING source_release_id""",
-                    (os.path.basename(snap), API, digest.hexdigest(),
-                     Json({"filter.advanced": QUERY, "pages": len(pages),
-                           "sha256_of": "concatenated gzipped page files"})))
-        release = cur.fetchone()[0]
+        release = llm.register_release(
+            cur, "clinicaltrials_gov_api_v2", os.path.basename(snap), API, digest.hexdigest(),
+            {"filter.advanced": QUERY, "pages": len(pages), "sha256_of": "concatenated gzipped page files"})
         n = 0
         for path in pages:
             with gzip.open(path, "rt") as f:
                 studies = json.load(f)["studies"]
-            execute_values(cur, """INSERT INTO preclin.ctgov_study (
-                  nct_id, brief_title, official_title, overall_status, why_stopped, phases,
-                  start_date, start_date_type, primary_completion_date, primary_completion_date_type,
-                  completion_date, completion_date_type, first_posted, last_update_posted,
-                  results_first_posted, has_results, lead_sponsor, lead_sponsor_class, collaborators,
-                  enrollment, allocation, intervention_model, masking, primary_purpose,
-                  healthy_volunteers, conditions, keywords, interventions, arm_groups, references_,
-                  countries, brief_summary, source_release_id) VALUES %s
-                ON CONFLICT (nct_id) DO UPDATE SET
-                  brief_title = EXCLUDED.brief_title, official_title = EXCLUDED.official_title,
-                  overall_status = EXCLUDED.overall_status, why_stopped = EXCLUDED.why_stopped,
-                  phases = EXCLUDED.phases, start_date = EXCLUDED.start_date,
-                  start_date_type = EXCLUDED.start_date_type,
-                  primary_completion_date = EXCLUDED.primary_completion_date,
-                  primary_completion_date_type = EXCLUDED.primary_completion_date_type,
-                  completion_date = EXCLUDED.completion_date, completion_date_type = EXCLUDED.completion_date_type,
-                  first_posted = EXCLUDED.first_posted, last_update_posted = EXCLUDED.last_update_posted,
-                  results_first_posted = EXCLUDED.results_first_posted, has_results = EXCLUDED.has_results,
-                  lead_sponsor = EXCLUDED.lead_sponsor, lead_sponsor_class = EXCLUDED.lead_sponsor_class,
-                  collaborators = EXCLUDED.collaborators, enrollment = EXCLUDED.enrollment,
-                  allocation = EXCLUDED.allocation, intervention_model = EXCLUDED.intervention_model,
-                  masking = EXCLUDED.masking, primary_purpose = EXCLUDED.primary_purpose,
-                  healthy_volunteers = EXCLUDED.healthy_volunteers, conditions = EXCLUDED.conditions,
-                  keywords = EXCLUDED.keywords, interventions = EXCLUDED.interventions,
-                  arm_groups = EXCLUDED.arm_groups, references_ = EXCLUDED.references_,
-                  countries = EXCLUDED.countries, brief_summary = EXCLUDED.brief_summary,
-                  source_release_id = EXCLUDED.source_release_id""",
-                           [row(s, release) for s in studies], page_size=1000)
+            execute_values(cur, UPSERT, [row(s, release) for s in studies], page_size=1000)
             n += len(studies)
             conn.commit()
     print(f"loaded {n} studies from {snap}")

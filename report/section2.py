@@ -32,15 +32,21 @@ from __future__ import annotations
 import json
 import os
 from collections import defaultdict
+from datetime import date
 
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import average_precision_score, roc_auc_score
+from sklearn.model_selection import GroupKFold
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
 
 from report import frame
-from report.disease_match import SIMILARITY_THRESHOLD, Mondo
-from report.section1 import N_BOOT, SEED, phase_rows
+from report.disease_match import Mondo
+from report.section1 import N_BOOT, SEED, boot_rates, loa, phase_rows, resolved_counts
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
 MIN_PROGRAMS_RS = 100  # programs with the evidence below which relative success is not estimated
@@ -58,6 +64,7 @@ EVIDENCE = {
     "affected_pathway": {"reactome"},
     "functional_screen": {"crispr", "crispr_screen"},
 }
+FEATURES = [*EVIDENCE, "constrained", "pan_essential"]
 LABELS = {
     "genetic_any": "Human genetics (any germline source)", "genetic_gwas": "GWAS credible set",
     "genetic_rare": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
@@ -82,7 +89,7 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     """Evidence flags per (program, phase) row, as of the year before phase entry."""
     mondo = Mondo()
     targets = frame.query("""
-        SELECT mt.moiety_id, t.id AS target_id, t.symbol, t.ensembl_id
+        SELECT mt.moiety_id, t.symbol, t.ensembl_id
         FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
         JOIN preclin.moiety m USING (moiety_id)
         WHERE mt.is_primary AND m.target_kind = 'human_protein'""")
@@ -102,7 +109,7 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
 
     disease = progs.set_index("program_id").mondo_id
     tmap = targets.groupby("moiety_id")
-    match_cache: dict[tuple[str, str], bool] = {}
+    match_cache: dict[tuple[str, str], tuple[bool, bool]] = {}
     out = []
     for r in rows.itertuples(index=False):
         d = disease.get(r.program_id)
@@ -113,13 +120,14 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
         flags = {k: 0.0 for k in EVIDENCE}
         untimed = {f"{k}_untimed": 0.0 for k in EVIDENCE}
         strict = {f"{k}_strict": 0.0 for k in EVIDENCE}
-        for ens in tg.ensembl_id.dropna():
-            for src, ys, ss, final, mids in by_target.get(ens, ()):
+        ens = list(tg.ensembl_id.dropna())
+        for e in ens:
+            for src, ys, ss, final, mids in by_target.get(e, ()):
                 hit = close = False
                 for g in mids:
                     key = (g, d)
                     if key not in match_cache:
-                        match_cache[key] = (mondo.matches(g, d), mondo.lin(g, d) >= SIMILARITY_THRESHOLD)
+                        match_cache[key] = mondo.matches(g, d)
                     hit, close = hit or match_cache[key][0], close or match_cache[key][1]
                 if not hit:
                     continue
@@ -130,7 +138,6 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
                         untimed[f"{k}_untimed"] = max(untimed[f"{k}_untimed"], final or 0.0)
                         if close:
                             strict[f"{k}_strict"] = max(strict[f"{k}_strict"], sc)
-        ens = list(tg.ensembl_id.dropna())
         lo = [constraint.get(e) for e in ens if pd.notna(constraint.get(e))]
         out.append({"program_id": r.program_id, "phase": r.phase,
                     "target": tg.symbol.iloc[0] if len(tg) == 1 else "+".join(sorted(tg.symbol)),
@@ -140,88 +147,29 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(out)
 
 
-def loa_by(rows: pd.DataFrame) -> float:
-    rate = {}
-    for ph in (1, 2, 3):
-        r = rows[rows.phase == ph]
-        adv, sus = (r.event == "advanced").sum(), (r.event == "suspended").sum()
-        rate[ph] = adv / (adv + sus) if adv + sus else np.nan
-    return float(np.prod([rate[ph] for ph in (1, 2, 3)]))
-
-
-def target_counts(rows: pd.DataFrame, group: pd.Series) -> tuple[np.ndarray, list, np.ndarray]:
-    """Advanced and suspended counts per target, for each group and phase:
-    array [target, group, phase, (advanced, suspended)]."""
-    groups = sorted(group.unique())
-    targets = rows.target.unique()
-    t_idx = pd.Series(np.arange(len(targets)), index=targets)
-    g_idx = {g: i for i, g in enumerate(groups)}
-    counts = np.zeros((len(targets), len(groups), 3, 2))
-    r = rows[rows.event.isin(["advanced", "suspended"])]
-    np.add.at(counts, (t_idx[r.target].to_numpy(), group[r.index].map(g_idx).to_numpy(),
-                       r.phase.to_numpy() - 1, (r.event == "suspended").to_numpy().astype(int)), 1)
-    return counts, groups, targets
-
-
-def loa_from(c: np.ndarray) -> np.ndarray:
-    """LOA from summed counts [..., phase, (advanced, suspended)]."""
-    with np.errstate(invalid="ignore", divide="ignore"):
-        rate = c[..., 0] / (c[..., 0] + c[..., 1])
-    return np.prod(rate, axis=-1)
-
-
-def boot_loa(counts: np.ndarray, n: int = N_BOOT, seed: int = SEED) -> np.ndarray:
-    """Target-cluster bootstrap: LOA per group for each of n resamples of targets."""
-    rng = np.random.default_rng(seed)
-    out = np.empty((n, counts.shape[1]))
-    for i in range(n):
-        w = np.bincount(rng.integers(0, len(counts), len(counts)), minlength=len(counts))
-        out[i] = loa_from(np.tensordot(w, counts, axes=1))
-    return out
-
-
-def relative_success(rows: pd.DataFrame, feature: str, threshold: float = 0.0, n: int = N_BOOT) -> dict:
-    has = rows[feature] > threshold
+def relative_success(rows: pd.DataFrame, feature: str) -> dict:
+    has = rows[feature] > 0
     if rows[has].program_id.nunique() < MIN_PROGRAMS_RS or has.all():
-        return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": threshold,
+        return {"feature": feature, "label": LABELS.get(feature, feature), "threshold": 0.0,
                 "n_with": int(has.sum()), "n_without": int((~has).sum()), "n_targets_with": 0,
                 "loa_with": np.nan, "loa_without": np.nan, "rs": np.nan, "rs_lo": np.nan, "rs_hi": np.nan}
-    counts, groups, _ = target_counts(rows, has)
-    draws = boot_loa(counts, n)
+    counts, groups = resolved_counts(rows, pd.factorize(rows.target, use_na_sentinel=False)[0], has)
+    draws = boot_rates(counts).prod(axis=-1)
     i_with, i_wo = groups.index(True), groups.index(False)
     with np.errstate(invalid="ignore", divide="ignore"):
         rs_draws = draws[:, i_with] / draws[:, i_wo]
     lo, hi = np.nanpercentile(rs_draws, [2.5, 97.5])
     with_, without = rows[has], rows[~has]
+    loa_with, loa_without = loa(with_), loa(without)
     label = LABELS.get(feature.removesuffix("_untimed").removesuffix("_strict"), feature)
-    return {"feature": feature, "label": label, "threshold": threshold,
+    return {"feature": feature, "label": label, "threshold": 0.0,
             "n_with": int(with_.program_id.nunique()), "n_without": int(without.program_id.nunique()),
             "n_targets_with": int(with_.target.nunique()),
-            "loa_with": loa_by(with_), "loa_without": loa_by(without), "rs": loa_by(with_) / loa_by(without),
+            "loa_with": loa_with, "loa_without": loa_without, "rs": loa_with / loa_without,
             "rs_lo": float(lo), "rs_hi": float(hi)}
 
 
-def adjusted_rr(rows: pd.DataFrame, feature: str) -> list[dict]:
-    """Per-phase relative risk of advancing, Poisson with cluster-robust SE by target."""
-    out = []
-    for ph in (1, 2, 3):
-        r = rows[(rows.phase == ph) & rows.event.isin(["advanced", "suspended"])].copy()
-        r["y"] = (r.event == "advanced").astype(int)
-        r["x"] = (r[feature] > 0).astype(int)
-        r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
-        if r.x.sum() < MIN_PROGRAMS_RR or r.x.nunique() < 2:
-            continue
-        model = smf.glm("y ~ x + C(bio_area) + C(modality) + novel + C(period)", data=r,
-                        family=sm.families.Poisson())
-        fit = model.fit(cov_type="cluster", cov_kwds={"groups": pd.factorize(r.target)[0]})
-        b, se = fit.params["x"], fit.bse["x"]
-        out.append({"feature": feature, "phase": ph, "n": len(r), "rr": float(np.exp(b)),
-                    "rr_lo": float(np.exp(b - 1.96 * se)), "rr_hi": float(np.exp(b + 1.96 * se)),
-                    "p": float(fit.pvalues["x"])})
-    return out
-
-
-def dose_response(rows: pd.DataFrame, feature: str, n: int = N_BOOT) -> pd.DataFrame:
+def dose_response(rows: pd.DataFrame, feature: str) -> pd.DataFrame:
     """LOA by strength of one evidence line: none, then tertiles of the positive
     scores (cut points set by the score distribution, not by outcomes); 95%
     intervals resample targets."""
@@ -231,29 +179,31 @@ def dose_response(rows: pd.DataFrame, feature: str, n: int = N_BOOT) -> pd.DataF
     band = pd.Series("none", index=rows.index)
     for lab, lo, hi in zip(labels[1:], cuts[:-1], cuts[1:]):
         band[(rows[feature] > lo) & (rows[feature] <= hi)] = lab
-    counts, groups, _ = target_counts(rows, band)
-    draws = boot_loa(counts, n)
+    counts, groups = resolved_counts(rows, pd.factorize(rows.target, use_na_sentinel=False)[0], band)
+    draws = boot_rates(counts).prod(axis=-1)
     out = []
     for lab, lo, hi in zip(labels, [0.0, *cuts[:-1]], cuts):
         g = rows[band == lab]
         d = draws[:, groups.index(lab)] if lab in groups else np.array([np.nan])
-        out.append({"feature": feature, "band": lab, "score_from": lo if lab != "none" else 0.0,
-                    "score_to": hi if lab != "none" else 0.0, "n_programs": int(g.program_id.nunique()),
-                    "n_targets": int(g.target.nunique()), "loa": loa_by(g),
+        out.append({"feature": feature, "band": lab, "score_from": lo, "score_to": hi,
+                    "n_programs": int(g.program_id.nunique()), "n_targets": int(g.target.nunique()), "loa": loa(g),
                     "loa_lo": float(np.nanpercentile(d, 2.5)), "loa_hi": float(np.nanpercentile(d, 97.5))})
     return pd.DataFrame(out)
 
 
-def joint_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
-    """Per-phase relative risks of advancing with every evidence line in one
-    Poisson model (each adjusted for the others and the covariates),
-    cluster-robust by target."""
+def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
+    """Per-phase relative risks of advancing from one Poisson model holding every
+    feature in `features` (each adjusted for the others and for area, modality,
+    novelty and entry period), cluster-robust by target; a feature with fewer
+    than MIN_PROGRAMS_RR resolved programs in a phase is left out of that phase."""
     out = []
     for ph in (1, 2, 3):
         r = rows[(rows.phase == ph) & rows.event.isin(["advanced", "suspended"])].copy()
         r["y"] = (r.event == "advanced").astype(int)
         r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
         present = [f for f in features if (r[f] > 0).sum() >= MIN_PROGRAMS_RR and (r[f] > 0).nunique() == 2]
+        if not present:
+            continue
         for f in present:
             r[f"x_{f}"] = (r[f] > 0).astype(int)
         formula = "y ~ " + " + ".join(f"x_{f}" for f in present) + " + C(bio_area) + C(modality) + novel + C(period)"
@@ -267,34 +217,38 @@ def joint_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
     return out
 
 
-PREDICT_WINDOW = (pd.Timestamp("2008-01-01").date(), pd.Timestamp("2016-10-20").date())
+PREDICT_WINDOW = (date(2008, 1, 1), date(2016, 10, 20))
 HORIZON_DAYS = 3653
+
+
+def resample_targets(groups: np.ndarray, y: np.ndarray, rng: np.random.Generator):
+    """Row indices of N_BOOT target-cluster resamples, skipping a draw whose
+    outcomes are all one class; every draw takes one rng.choice."""
+    uniq = np.unique(groups)
+    members = {u: np.where(groups == u)[0] for u in uniq}
+    for _ in range(N_BOOT):
+        m = np.concatenate([members[u] for u in rng.choice(uniq, len(uniq))])
+        if y[m].min() < y[m].max():
+            yield m
 
 
 def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Fixed-horizon prediction: programs entering Phase 1 in 2008-2016, outcome =
     FDA approval for the disease within ten years; features frozen at entry."""
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.metrics import average_precision_score, roc_auc_score
-    from sklearn.model_selection import GroupKFold
-    from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import StandardScaler
-
     rows = phase_rows(progs, trials, snap, window=PREDICT_WINDOW)
     rows = rows[rows.phase == 1]
     ev = target_evidence(rows, progs)
     d = rows.merge(ev, on=["program_id", "phase"])
     appr = pd.to_datetime(d.approval_date)
     d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= HORIZON_DAYS)).astype(int)
-    evidence = list(EVIDENCE) + ["constrained", "pan_essential"]
-    X_ev = (d[evidence] > 0).astype(float)
+    X_ev = (d[FEATURES] > 0).astype(float)
     X_cov = pd.get_dummies(d[["bio_area", "modality"]], drop_first=False).astype(float)
     X_cov["novel"] = d.novel.astype(float)
     X_cov["entry_year"] = d.entry_year - 2008
     sets = {"covariates": X_cov, "covariates+evidence": pd.concat([X_cov, X_ev], axis=1), "evidence": X_ev}
-    for f in evidence:
+    for f in FEATURES:
         sets[f"covariates+evidence-{f}"] = pd.concat([X_cov, X_ev.drop(columns=f)], axis=1)
-    groups = pd.factorize(d.target)[0]
+    groups = pd.factorize(d.target, sort=True)[0]
 
     def fit_predict(X, train, test):
         model = make_pipeline(StandardScaler(), LogisticRegression(C=0.5, max_iter=2000))
@@ -314,33 +268,22 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
     rng = np.random.default_rng(SEED)
     metrics = []
     for (split, name), (idx, p) in preds.items():
-        y, g = d.y.to_numpy()[idx], groups[idx]
+        y = d.y.to_numpy()[idx]
         auc, ap = roc_auc_score(y, p), average_precision_score(y, p)
-        uniq = np.unique(g)
-        draws = []
-        for _ in range(N_BOOT):
-            members = np.concatenate([np.where(g == u)[0] for u in rng.choice(uniq, len(uniq))])
-            if y[members].min() == y[members].max():
-                continue
-            draws.append((roc_auc_score(y[members], p[members]), average_precision_score(y[members], p[members])))
-        draws = np.array(draws)
+        draws = np.array([(roc_auc_score(y[m], p[m]), average_precision_score(y[m], p[m]))
+                          for m in resample_targets(groups[idx], y, rng)])
         metrics.append({"split": split, "features": name, "n": len(idx), "n_positive": int(y.sum()),
                         "auc": auc, "auc_lo": np.percentile(draws[:, 0], 2.5), "auc_hi": np.percentile(draws[:, 0], 97.5),
                         "pr_auc": ap, "pr_lo": np.percentile(draws[:, 1], 2.5), "pr_hi": np.percentile(draws[:, 1], 97.5),
                         "base_rate": float(y.mean())})
     full = preds[("grouped_cv", "covariates+evidence")][1]
-    y, uniq = d.y.to_numpy(), np.unique(groups)
-    members_by = {u: np.where(groups == u)[0] for u in uniq}
+    y = d.y.to_numpy()
     ablation = []
-    for f in evidence:
+    for f in FEATURES:
         reduced = preds[("grouped_cv", f"covariates+evidence-{f}")][1]
         delta = roc_auc_score(y, full) - roc_auc_score(y, reduced)
-        diffs = []
-        for _ in range(N_BOOT):
-            m = np.concatenate([members_by[u] for u in rng.choice(uniq, len(uniq))])
-            if y[m].min() == y[m].max():
-                continue
-            diffs.append(roc_auc_score(y[m], full[m]) - roc_auc_score(y[m], reduced[m]))
+        diffs = [roc_auc_score(y[m], full[m]) - roc_auc_score(y[m], reduced[m])
+                 for m in resample_targets(groups, y, rng)]
         ablation.append({"feature": f, "label": LABELS[f], "auc_drop": delta,
                          "drop_lo": float(np.percentile(diffs, 2.5)), "drop_hi": float(np.percentile(diffs, 97.5))})
     metrics = pd.DataFrame(metrics)
@@ -357,19 +300,18 @@ def main() -> None:
     data = rows.merge(ev, on=["program_id", "phase"])
     data.to_csv(os.path.join(OUT, "phase_rows_with_evidence.csv"), index=False)
 
-    features = list(EVIDENCE) + ["constrained", "pan_essential"]
-    rs = pd.DataFrame([relative_success(data, f) for f in features])
+    rs = pd.DataFrame([relative_success(data, f) for f in FEATURES])
     rs.to_csv(os.path.join(OUT, "relative_success.csv"), index=False)
     untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in EVIDENCE])
     untimed.to_csv(os.path.join(OUT, "relative_success_untimed.csv"), index=False)
     strict = pd.DataFrame([relative_success(data, f"{f}_strict") for f in EVIDENCE])
     strict.to_csv(os.path.join(OUT, "relative_success_lin_only.csv"), index=False)
-    adj = pd.DataFrame([x for f in features for x in adjusted_rr(data, f)])
+    adj = pd.DataFrame([x for f in FEATURES for x in poisson_rr(data, [f])])
     adj.to_csv(os.path.join(OUT, "adjusted_rr_by_phase.csv"), index=False)
 
     ph3 = data[data.phase == 3]
     table = []
-    for f in features:
+    for f in FEATURES:
         w, wo = ph3[ph3[f] > 0], ph3[ph3[f] <= 0]
         rw = (w.event == "advanced").sum() / max(1, w.event.isin(["advanced", "suspended"]).sum())
         rwo = (wo.event == "advanced").sum() / max(1, wo.event.isin(["advanced", "suspended"]).sum())
@@ -379,7 +321,7 @@ def main() -> None:
 
     dose = dose_response(data, "genetic_any")
     dose.to_csv(os.path.join(OUT, "genetic_dose_response.csv"), index=False)
-    joint = pd.DataFrame(joint_rr(data, [f for f in features if f != "genetic_any"]))  # its parts enter instead
+    joint = pd.DataFrame(poisson_rr(data, [f for f in FEATURES if f != "genetic_any"]))  # its parts enter instead
     joint.to_csv(os.path.join(OUT, "joint_rr_by_phase.csv"), index=False)
 
     metrics, ablation, cohort = prediction(progs, trials, snap)
@@ -390,7 +332,7 @@ def main() -> None:
     keyed = lambda df, *cols: {"_".join(str(r[c]) for c in cols): r for r in df.to_dict(orient="records")}
     numbers = {"n_program_phase_rows": len(data), "n_programs": int(data.program_id.nunique()),
                "n_targets": int(data.target.nunique()),
-               "evidence_coverage_ph1": {f: float((data[data.phase == 1][f] > 0).mean()) for f in features},
+               "evidence_coverage_ph1": {f: float((data[data.phase == 1][f] > 0).mean()) for f in FEATURES},
                "rs": keyed(rs, "feature"), "rs_untimed": keyed(untimed, "feature"), "rs_lin_only": keyed(strict, "feature"),
                "adjusted_rr": keyed(adj, "feature", "phase"), "joint_rr": keyed(joint, "feature", "phase"),
                "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
