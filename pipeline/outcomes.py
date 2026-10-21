@@ -94,9 +94,10 @@ def _eutils(endpoint: str, **params) -> str:
 
 
 def publications(_args) -> None:
-    """Results papers for industry Phase 2/3 trials completed since 2010 without
-    posted results: PMIDs the registry lists as RESULT/DERIVED, plus PubMed
-    articles indexing the NCT id as a ClinicalTrials.gov secondary identifier."""
+    """Results papers for completed industry Phase 2/3 trials that started on or
+    after 2010-01-01 and have no posted results: PMIDs the registry lists as
+    RESULT/DERIVED, plus PubMed articles indexing the NCT id as a
+    ClinicalTrials.gov secondary identifier."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT nct_id, references_ FROM preclin.ctgov_study
                        WHERE lead_sponsor_class = 'INDUSTRY' AND overall_status = 'COMPLETED' AND NOT has_results

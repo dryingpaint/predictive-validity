@@ -1,4 +1,9 @@
-"""Step 4: join downloaded letters with the product pages that link them; one row per (letter, STN)."""
+"""Step 4: join the letter links with the product pages that carry them.
+
+One row per (letter URL, product page) for every page document whose link text
+mentions a letter, with the page's STNs (page_stns) and, when the letter was
+downloaded, the fields parsed from its text, including the letter's STNs (stns).
+"""
 import re
 
 from pipeline.cber import fetch

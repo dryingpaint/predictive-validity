@@ -566,20 +566,28 @@ version requires a new migration.
 
 ## Cohort-wide genetics tiers
 
-Cohort-wide Nelson tier result files (`nelson_tiers_*.jsonl`) cover the
-non-placebo human target-indication pairs of the program and drug-target
-tables, judged without outcomes or approvals from genetics-only Open Targets
-input and immutable PubMed `source_document` rows. Each complete, stable
-dossier is stored as an immutable `nelson_dossier` source document. Exact model
-inputs use the standard audit format. Versioned result files are ingested by
-`13_ingest_llm_outputs.py --task nelson-tier`, which atomically stores the
-`llm_run`, `llm_run_source`, `evidence_score`, and immutable fact snapshot.
-The exact prompt, response, and source excerpts live only in their dedicated
-audit columns/tables; `parsed_output` omits those redundant envelope fields.
-Adjacent ignored `*.dossiers.jsonl` files provide local resumability; the
-database snapshot is the durable audit artifact. `03_views.sql` exposes only the newest
-cohort-wide `nelson_llm` row; legacy approval-derived tiers remain in the long
-table for audit but cannot populate the canonical view.
+Cohort-wide Nelson tiers are frozen result files (`nelson_tiers_*.jsonl`,
+kept in the git-ignored `data/target_evidence/`). Each row is a
+`nelson_tier_result_v5` tier (T0-T3) for one non-placebo human
+target-indication pair of the program and drug-target tables, judged without
+outcomes or approvals from genetics-only Open Targets input and immutable
+PubMed `source_document` rows, and carries the standard exact-audit fields.
+The repository does not generate these files; `13_ingest_llm_outputs.py
+--task nelson-tier` ingests them and does not create source documents. Each
+row names its dossier by `dossier_source_document_id` and `dossier_sha256`,
+and the ingest rejects the file unless that dossier already exists as a
+`preclin.source_document` row with `source_name = 'nelson_dossier'`,
+`external_id` equal to the row's `pair_key` (`target_id:indication_id`) and
+`content_sha256` equal to `dossier_sha256`, linked exactly once in
+`_source_documents` as a `dossier_snapshot`. Every other linked source
+document must already exist too. The ingest atomically stores the `llm_run`,
+`llm_run_source`, `evidence_score`, and immutable fact snapshot. The exact
+prompt, response, and source excerpts live only in their dedicated audit
+columns/tables; `parsed_output` omits those redundant envelope fields.
+`03_views.sql` exposes only the newest cohort-wide `nelson_llm` row; the
+approval-derived (`fda_approval`) and hand-curated (`manual_curation`) tiers
+that `02_ingest.py` loads remain in the long table for audit but cannot
+populate the canonical view.
 
 For an incremental ingest, validate first and then commit only these rows:
 
@@ -633,8 +641,6 @@ must be used for an established database instead of rerunning the bootstrap
 | `preclin.llm_run_source` | varies | Exact source excerpts supplied to each model call |
 | `preclin.llm_run_evidence_score` | varies | Model run→current fact link plus immutable run-produced value snapshot |
 | `preclin.evidence_dimension` | 40 | Registry of every evidence dimension |
-| `preclin.benchmark_run` | ~70 | Benchmark leaderboard rows |
-| `preclin.benchmark_prediction` | ~40,000 | Per-(scorer × T-I) predictions |
 
 ## Views
 
@@ -646,7 +652,6 @@ must be used for an established database instead of rerunning the bootstrap
 - `v_relative_success_clean` — Pheiron RS metric per dimension (placebos filtered)
 - `v_pathway_wrongness` — Phase 3 fail rate per evidence tier
 - `v_combination_evidence` — pairwise RS(A ∧ B) lift
-- `v_benchmark_leaderboard` — scorer comparison
 - `v_dimension_coverage` — coverage per dimension × subject
 - `v_trial_source_latest` — latest full registry/publication text linked to each NCT id
 - `v_classification_audit` — verdict + exact model input/output + exact/available source links

@@ -9,7 +9,7 @@ Wayback captures for pages no longer live); every page fetch is cached under
     python -m pipeline.cber.crawl_products         # 2  product universe and document links
     python -m pipeline.cber.historic_products      # 2b products no longer on the live master list
     python -m pipeline.cber.download_letters       # 3  approval-letter PDFs linked from product pages
-    python -m pipeline.cber.build_letters          # 4  letter <-> product (STN) rows
+    python -m pipeline.cber.build_letters          # 4  (letter, product page) rows with page and letter STNs
     python -m pipeline.cber.find_missing           # 5  Wayback captures of the product page taken after the action date
     python -m pipeline.cber.find_missing2          # 5b wider Wayback pass
     python -m pipeline.cber.assemble               # 6  in-scope actions in the CDER letter-index format

@@ -1,24 +1,25 @@
 # Classifier scripts
 
-The LLM classifiers that produce resumable JSONL / CSV outputs. New audited
-JSONL runs are loaded incrementally with `db/13_ingest_llm_outputs.py`;
-`db/02_ingest.py` remains the legacy big-bang bootstrap loader.
+The trial-stoppage rescore, an OpenAI classifier that writes resumable,
+audited JSONL, plus the scripts that retrieve, snapshot and export the trial
+sources it reads. Its runs are loaded incrementally with
+`db/13_ingest_llm_outputs.py`; `db/02_ingest.py` is the one-shot bootstrap
+loader for the earlier classifier files.
 
-**Every paid workflow here:**
-- reads Neon DB state to pick which subjects need scoring
-- calls Anthropic or OpenAI with a versioned prompt
-- writes a resumable JSONL / CSV output
+**The paid rescore workflow:**
+- reads Neon DB state to pick which trials need scoring
+- calls OpenAI with a versioned prompt
+- writes a resumable JSONL output
 - records the exact system/user prompts, raw response, model parameters,
   provider request id, prompt version, token counts, and USD cost per row
 
 ## Setup
 
 ```bash
-pip install anthropic openai psycopg2-binary
-export ANTHROPIC_API_KEY=sk-ant-...
-# The trial-stoppage rescore calls OpenAI:
-export OPENAI_API_KEY=sk-...
-export DATABASE_URL=postgres://...
+uv sync    # openai and psycopg2-binary come from pyproject.toml
+# In .env (read by `.venv/bin/dotenv run --`):
+#   OPENAI_API_KEY=sk-...
+#   DATABASE_URL=postgres://...
 ```
 
 ## Classifier workflows
@@ -29,11 +30,20 @@ export DATABASE_URL=postgres://...
 
 ## Trial-stoppage rescore
 
-The stoppage rescore does not replace `why_stopped`. It writes a separate
-`trial_stoppage_rescore` task so old and new labels can be compared before any
-analytical cutover. Its result has independent fields for study execution,
-primary-endpoint assessment, scientific outcome, termination driver, and
-program outcome. This prevents a phrase such as "business decision" from
+The trial stop reasons the analyses use come from `pipeline/outcomes.py`
+(`preclin.trial_outcome`). The rescore is kept as a reference for them:
+`report/quality.py` (`stop_reason_agreement()`) maps the stop reason of every
+trial whose `execution` is not `completed`, the latest non-error
+`trial_stoppage_rescore` label (`gpt-5.6-terra`) and the latest non-error
+Sonnet `why_stopped` label (`claude-sonnet`) of the same trial onto one coarse
+taxonomy, and reports percent agreement, Cohen's kappa, and an
+efficacy-versus-other kappa against each, scoring a sponsor decision with no
+stated reason once as business and once as unknown. The rescore writes its own
+`trial_stoppage_rescore` classifier task beside `why_stopped`, so both labels
+stay in `preclin.classification`.
+
+The rescore result has independent fields for study execution, primary-endpoint
+assessment, scientific outcome, termination driver, and program outcome. This prevents a phrase such as "business decision" from
 silently becoming an efficacy failure—or hiding a successful efficacy readout.
 
 Refresh canonical registry records and their linked PubMed abstracts first.
@@ -82,7 +92,8 @@ Prepare and validate a free single-trial dossier:
 ```
 
 Before a cohort run, create a reproducible validation set balanced across the
-11 legacy Sonnet categories and across registry/results/publication coverage:
+11 Sonnet `why_stopped` categories and across registry/results/publication
+coverage:
 
 ```bash
 .venv/bin/dotenv run -- .venv/bin/python \
@@ -100,10 +111,11 @@ Before a cohort run, create a reproducible validation set balanced across the
 
 Run the identical frozen dossiers with `gpt-5.6-terra` into a separate output
 file for a paired comparison. Validation sampling metadata is excluded from the
-model prompt, so the legacy category cannot leak into the new verdict.
+model prompt, so the Sonnet category (`legacy_category`) cannot leak into the
+rescore verdict.
 
 For a cohort run, omit `--nct-id`. The default scope is every trial that has a
-legacy `why_stopped` classification. The dossier includes structured primary
+`why_stopped` classification. The dossier includes structured primary
 outcome values/analyses, adverse-event summary counts, and up to 20 linked
 publication abstracts. Every excerpt is tied to its immutable
 `source_document_id`. Dossier v4 also includes curated external-source excerpts,
@@ -156,25 +168,30 @@ describes as coequal; every such edit is recorded in
 for new submissions, the system prompt hash so a changed collector cannot
 misattribute the submitted prompt.
 
-**Canonical cost field is `_cost_usd`.** Older classifier outputs used
-`_cost_share` (Sonnet why_stopped verify) or `_cost` (silent_kill,
-target_resolution). `db/02_ingest.py:_read_cost` accepts all three for
-back-compat, but new runs write only `_cost_usd`.
+**Canonical cost field is `_cost_usd`.** `common.annotate` writes it on every
+rescore row. `db/02_ingest.py:_read_cost` and
+`db/13_ingest_llm_outputs.py:read_cost` also accept `_cost_share` (Sonnet
+why_stopped verify) and `_cost` (silent_kill, target_resolution), the field
+names in the earlier classifier files.
 
-The cost value is never produced by the LLM — the LLM output schema is
-strictly the evidence fields (cat / confidence / rationale / scores /
-tier / etc.). `common.py:call_with_retry` reads `resp.usage.input_tokens`
-and `resp.usage.output_tokens` from the API response, applies a per-model
-price table, and the wrapper appends `_cost_usd` to the row.
+The cost value is never produced by the LLM — the model's structured output
+holds only the classification fields. The rescore scripts read the input and
+output token counts from the OpenAI response `usage`, price them with
+`common.PRICING` (the Batch collector applies `BATCH_PRICE_MULTIPLIER`), and
+`common.annotate` writes `_cost_usd` to the row.
 
 ## Resumability
 
-Each script skips subjects already present in its output file. Interrupted runs
-resume cleanly — just re-invoke with the same `--out`.
+`score` skips trials already present in its `--out` file, so an interrupted run
+resumes when re-invoked with the same `--out`. Batch `submit` skips trials
+already in `--manifest` or `--completed-out`, and `collect` skips trials already
+in its `--out` or `--errors-out`. `prepare` rewrites its `--out` file.
 
 ## Prompt versioning
 
-Every script has a `PROMPT_VERSION` constant. When the prompt changes:
+`rescore_trial_stoppage.py` defines `PROMPT_VERSION`; the Batch script uses the
+same constant and its collector rejects a manifest submitted under a different
+prompt version. When the prompt changes:
 
 1. Bump `PROMPT_VERSION` (e.g. `"v1"` → `"v2"`).
 2. Rerun with a new output filename.
@@ -190,8 +207,11 @@ New classifier JSONL rows receive a unique `_run_id`. After
 `db/13_ingest_llm_outputs.py` stores them in `preclin.llm_run`. Verdicts point
 to their latest run, while literature extraction runs connect to every
 `preclin.evidence_score` fact they produced and retain an immutable
-`fact_snapshot` of the run-produced value. Legacy rows remain auditable as
-outputs but are explicitly marked as missing their unrecoverable exact inputs.
+`fact_snapshot` of the run-produced value. `db/10_clinical_trial_source_audit.sql`
+wraps each classification and PubMed-scored fact that had no run in a
+`provider = 'legacy_import'` run whose `model_parameters` record
+`"audit_status": "exact_input_unavailable"`; those rows remain auditable as
+outputs.
 
 ## Cost accounting
 
@@ -202,7 +222,8 @@ time with e.g.:
 jq -s 'map(._cost_usd) | add' data/clinical_trials/stoppage_rescore_all.jsonl
 ```
 
-Cumulative spend is also printed after each row while a script runs.
+`score` prints cumulative spend after each trial; `collect` prints the spend
+it added when it finishes.
 
 ## Not in scope
 
@@ -216,8 +237,8 @@ Cumulative spend is also printed after each row while a script runs.
 Follow the existing pattern:
 
 1. Add a script to `analyses/classifiers/`.
-2. Use `common.py` for the Anthropic client, retry, JSON extraction, JSONL
-   append, and resumability helpers.
+2. Use `common.py` for `CallResult`, the audit fields (`annotate`), JSON
+   extraction, JSONL append/read, and model pricing (`PRICING`).
 3. Define `PROMPT_VERSION` and `DEFAULT_MODEL` at module top.
 4. Write audited JSONL that `db/13_ingest_llm_outputs.py` knows how to read,
    or add a new explicit task handler there. CSV-only workflows need their own
