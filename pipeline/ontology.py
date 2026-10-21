@@ -1,13 +1,14 @@
-"""MONDO OBO release -> preclin.ontology_* tables.
+"""MONDO and Mammalian Phenotype OBO releases -> preclin.ontology_* tables.
 
     python -m pipeline.ontology load
 
-Downloads MONDO's latest OBO release once (SOURCES points at releases/latest);
-the cached file under .cache/ontology is what pins the release. Records it in
+Downloads each ontology's latest OBO release once (SOURCES points at the latest
+release); the cached file under .cache/ontology is what pins it. Records it in
 preclin.evidence_source_release, and loads terms, is_a edges, the transitive
 ancestor closure (with distances) and cross-references, flagging those MONDO
 declares equivalent. MONDO is the disease vocabulary for indications and for
-matching Open Targets evidence to them.
+matching Open Targets evidence to them; MP places mouse mutant phenotypes
+(preclin.ot_mouse_phenotype), e.g. under preweaning lethality.
 """
 from __future__ import annotations
 
@@ -22,7 +23,8 @@ from psycopg2.extras import execute_values
 from pipeline import llm
 
 CACHE = os.path.join(llm.REPO, ".cache", "ontology")
-SOURCES = {"MONDO": "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo"}
+SOURCES = {"MONDO": "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo",
+           "MP": "http://purl.obolibrary.org/obo/mp.obo"}
 
 
 def norm_id(value: str) -> str:

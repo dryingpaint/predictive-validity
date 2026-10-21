@@ -75,7 +75,7 @@ COLUMNS = ("nct_id", "brief_title", "official_title", "overall_status", "why_sto
            "results_first_posted", "has_results", "lead_sponsor", "lead_sponsor_class", "collaborators",
            "enrollment", "allocation", "intervention_model", "masking", "primary_purpose",
            "healthy_volunteers", "conditions", "keywords", "interventions", "arm_groups", "references_",
-           "countries", "brief_summary", "source_release_id")
+           "countries", "brief_summary", "primary_outcomes", "source_release_id")
 UPSERT = (f"INSERT INTO preclin.ctgov_study ({', '.join(COLUMNS)}) VALUES %s ON CONFLICT (nct_id) DO UPDATE SET "
           + ", ".join(f"{c} = EXCLUDED.{c}" for c in COLUMNS[1:]))
 
@@ -105,7 +105,8 @@ def row(study: dict, release: int) -> tuple:
         elig.get("healthyVolunteers"), cond.get("conditions") or [], cond.get("keywords") or [],
         Json(arms.get("interventions") or []), Json(arms.get("armGroups") or []),
         Json(refs.get("references") or []), sorted({l["country"] for l in locations if l.get("country")}),
-        (p.get("descriptionModule") or {}).get("briefSummary"), release,
+        (p.get("descriptionModule") or {}).get("briefSummary"),
+        Json((p.get("outcomesModule") or {}).get("primaryOutcomes") or []), release,
     )
 
 
