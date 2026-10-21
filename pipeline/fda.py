@@ -380,7 +380,8 @@ def match_products(cur, apps: dict) -> list[tuple]:
     from sklearn.neighbors import NearestNeighbors
     cur.execute("""SELECT m.moiety_id, m.name, m.code_names || m.aliases,
                           (SELECT c.brief_title FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
-                           JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 1)
+                           JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id
+                           ORDER BY c.start_date DESC NULLS LAST, c.nct_id LIMIT 1)
                    FROM preclin.moiety m
                    WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
                                  WHERE dm.moiety_id = m.moiety_id)""")

@@ -165,11 +165,11 @@ QUALITY_ROWS = [
     ("outcome_audit", "stop_reason", "Trial stop reason"),
     ("outcome_audit", "primary_endpoint", "Primary endpoint met / not met (posted results)"),
     ("publication_audit", "primary_endpoint", "Primary endpoint met / not met (results papers)"),
-    ("approval_audit", "yes_dated.approved", "Approval: judged approved, dated 2015 or later"),
-    ("approval_audit", "yes_dated.date", "Approval date: judged approved, dated 2015 or later"),
-    ("approval_audit", "yes_pre2015.approved", "Approval: judged approved before 2015"),
-    ("approval_audit", "no_entity_appr.approved", "Approval: judged not approved (Phase 2+ programs)"),
-    ("approval_audit", "uncertain.approved", "Approval: judged uncertain"),
+    ("approval_audit", "yes_dated.approved", "Approval (sampled as approved, dated 2015 or later)"),
+    ("approval_audit", "yes_dated.date", "Approval date (sampled as approved, dated 2015 or later)"),
+    ("approval_audit", "yes_pre2015.approved", "Approval (sampled as approved before 2015)"),
+    ("approval_audit", "no_entity_appr.approved", "Approval (sampled as not approved, Phase 2+ programs)"),
+    ("approval_audit", "uncertain.approved", "Approval (sampled as uncertain)"),
 ]
 
 

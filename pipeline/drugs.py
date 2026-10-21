@@ -138,7 +138,7 @@ def canonicalize(_args) -> None:
               SELECT drug_id, nct_id, row_number() OVER (PARTITION BY drug_id ORDER BY nct_id) AS rn
               FROM preclin.ctgov_study_drug)
             SELECT s.drug_id, json_agg(json_build_object('title', c.brief_title, 'sponsor', c.lead_sponsor,
-                                                         'interventions', c.interventions))
+                                                         'interventions', c.interventions) ORDER BY s.rn)
             FROM s JOIN preclin.ctgov_study c USING (nct_id)
             WHERE s.rn <= 3 GROUP BY s.drug_id""")
         context = dict(cur.fetchall())
@@ -411,9 +411,11 @@ def same_entities() -> None:
             SELECT m.moiety_id, m.name, m.code_names || m.aliases, m.unii,
                    coalesce((SELECT array_agg(DISTINCT c.lead_sponsor) FROM (
                        SELECT c.lead_sponsor FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
-                       JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 3) c), '{}'),
+                       JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id
+                       ORDER BY c.start_date DESC NULLS LAST, c.nct_id LIMIT 3) c), '{}'),
                    (SELECT c.brief_title FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
-                    JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id LIMIT 1)
+                    JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id
+                    ORDER BY c.start_date DESC NULLS LAST, c.nct_id LIMIT 1)
             FROM preclin.moiety m
             WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm WHERE dm.moiety_id = m.moiety_id)
                OR EXISTS (SELECT 1 FROM preclin.fda_application_moiety am WHERE am.moiety_id = m.moiety_id)""")
@@ -505,10 +507,11 @@ def modality(_args) -> None:
                     JOIN preclin.drug d USING (drug_id) WHERE dm.moiety_id = m.moiety_id),
                    (SELECT array_agg(DISTINCT a.appl_type) FROM preclin.fda_application_moiety am
                     JOIN preclin.fda_application a USING (appl_no) WHERE am.moiety_id = m.moiety_id),
-                   (SELECT array_agg(t.brief_title) FROM (
-                      SELECT DISTINCT c.brief_title FROM preclin.ctgov_study_moiety sm
+                   (SELECT array_agg(t.brief_title ORDER BY t.latest DESC NULLS LAST, t.brief_title) FROM (
+                      SELECT c.brief_title, max(c.start_date) AS latest FROM preclin.ctgov_study_moiety sm
                       JOIN preclin.ctgov_study c USING (nct_id)
-                      WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' LIMIT 3) t)
+                      WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' GROUP BY c.brief_title
+                      ORDER BY latest DESC NULLS LAST, c.brief_title LIMIT 3) t)
             FROM preclin.moiety m
             WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id)""")
         items = {str(mid): {"name": name, "codes": codes or [], "strings": sorted(strings or [])[:8],

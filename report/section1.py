@@ -26,8 +26,9 @@ from datetime import date
 import numpy as np
 import pandas as pd
 from lifelines import AalenJohansenFitter
+from scipy.stats import spearmanr
 
-from report import frame
+from report import bio, frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "section1")
 LAG_MONTHS = 24
@@ -359,6 +360,13 @@ def main() -> None:
     overall = results[0]
     strata = {name: {r["label"]: r for r in pd.read_csv(os.path.join(OUT, f"loa_by_{name}.csv")).to_dict(orient="records")}
               for name in ("area", "modality")}
+    rank_bio = {}  # Spearman correlation of stratum LOA with BIO's, over the strata BIO also reports
+    for name, ref in (("area", bio.AREA_LOA), ("modality", bio.MODALITY_LOA)):
+        for col in ("loa", "us_loa"):
+            shared = [k for k in ref if pd.notna(strata[name].get(k, {}).get(col, np.nan))]
+            rank_bio[f"{name}_{col}"] = float(spearmanr([strata[name][k][col] for k in shared],
+                                                        [ref[k] for k in shared]).statistic)
+            rank_bio[f"{name}_{col}_n"] = len(shared)
     numbers = {"snapshot": str(snap), "lag_months": LAG_MONTHS, "horizon_years": HORIZON_YEARS,
                "scale": scale(rows), "overall": overall, "us_site": results[1],
                "purpose": dict(frame.query("SELECT purpose, count(*)::int AS n FROM preclin.trial_purpose GROUP BY 1")
@@ -367,7 +375,7 @@ def main() -> None:
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "with_vaccines": results[9], "mature": results[10],
                "mature_us": results[11],
-               "failure_modes": failure_numbers, **strata}
+               "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(overall, indent=1, default=float))

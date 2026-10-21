@@ -40,7 +40,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score, roc_auc_score
-from sklearn.model_selection import GroupKFold
+from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -219,6 +219,7 @@ def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
 
 PREDICT_WINDOW = (date(2008, 1, 1), date(2016, 10, 20))
 HORIZON_DAYS = 3653
+CV_REPEATS = 20  # repetitions of the grouped 5-fold split; one split's AUC moves by several points with the folds
 
 
 def resample_targets(groups: np.ndarray, y: np.ndarray, rng: np.random.Generator):
@@ -255,11 +256,14 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
         model.fit(X.iloc[train], d.y.iloc[train])
         return model.predict_proba(X.iloc[test])[:, 1]
 
+    splits = [list(StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=SEED + r).split(d, d.y, groups))
+              for r in range(CV_REPEATS)]
     preds = {}
     for name, X in sets.items():
-        oof = np.zeros(len(d))
-        for train, test in GroupKFold(n_splits=5).split(X, d.y, groups):
-            oof[test] = fit_predict(X, train, test)
+        oof = np.zeros(len(d))  # out-of-fold prediction averaged over the repetitions
+        for folds in splits:
+            for train, test in folds:
+                oof[test] += fit_predict(X, train, test) / CV_REPEATS
         preds[("grouped_cv", name)] = (np.arange(len(d)), oof)
         train = np.where(d.entry_year <= 2012)[0]
         test = np.where(d.entry_year >= 2013)[0]

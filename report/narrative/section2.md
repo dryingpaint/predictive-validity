@@ -39,7 +39,7 @@ Programs with genetic evidence differ from programs without it in disease area, 
 
 ### Does the evidence predict which programs reach approval?
 
-We followed programs that entered Phase 1 in 2008–2016 for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), with every feature frozen at entry, and fitted logistic models on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out targets (5-fold cross-validation grouped by target) and on a temporal split (trained on 2008–2012 entries, tested on 2013–2016).
+We followed programs that entered Phase 1 in 2008–2016 for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), with every feature frozen at entry, and fitted logistic models on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out targets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by target and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on 2013–2016).
 
 {{PREDICTION_TABLE}}
 

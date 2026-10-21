@@ -33,10 +33,11 @@ class MondoIndex:
 
     def __init__(self, cur):
         cur.execute("""SELECT t.term_id, t.label, t.synonyms, t.definition,
-                              (SELECT string_agg(p.label, '; ') FROM preclin.ontology_is_a e
+                              (SELECT string_agg(p.label, '; ' ORDER BY p.label) FROM preclin.ontology_is_a e
                                JOIN preclin.ontology_term p ON p.term_id = e.parent_id
                                WHERE e.child_id = t.term_id),
-                              (SELECT array_agg(e.parent_id) FROM preclin.ontology_is_a e WHERE e.child_id = t.term_id)
+                              (SELECT array_agg(e.parent_id ORDER BY e.parent_id) FROM preclin.ontology_is_a e
+                               WHERE e.child_id = t.term_id)
                        FROM preclin.ontology_term t
                        WHERE t.ontology = 'MONDO' AND NOT t.is_obsolete""")
         self.terms, self.parents = {}, {}
@@ -231,7 +232,7 @@ def areas(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT t.term_id, t.label, t.definition,
-                   (SELECT string_agg(a.label, '; ' ORDER BY x.distance) FROM preclin.ontology_ancestor x
+                   (SELECT string_agg(a.label, '; ' ORDER BY x.distance, a.label) FROM preclin.ontology_ancestor x
                     JOIN preclin.ontology_term a ON a.term_id = x.ancestor_id
                     WHERE x.term_id = t.term_id AND x.distance <= 4)
             FROM preclin.ontology_term t

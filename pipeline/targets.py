@@ -89,10 +89,11 @@ def resolve(_args) -> None:
             SELECT m.moiety_id, m.name, m.code_names, m.modality,
                    (SELECT array_agg(DISTINCT d.display_name) FROM preclin.drug_moiety dm
                     JOIN preclin.drug d USING (drug_id) WHERE dm.moiety_id = m.moiety_id),
-                   (SELECT array_agg(t.brief_title) FROM (
-                      SELECT DISTINCT c.brief_title FROM preclin.ctgov_study_moiety sm
+                   (SELECT array_agg(t.brief_title ORDER BY t.latest DESC NULLS LAST, t.brief_title) FROM (
+                      SELECT c.brief_title, max(c.start_date) AS latest FROM preclin.ctgov_study_moiety sm
                       JOIN preclin.ctgov_study c USING (nct_id)
-                      WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' LIMIT 3) t)
+                      WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' GROUP BY c.brief_title
+                      ORDER BY latest DESC NULLS LAST, c.brief_title LIMIT 3) t)
             FROM preclin.moiety m
             WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id
                           AND p.n_industry_trials > 0)""")
