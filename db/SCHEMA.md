@@ -593,8 +593,8 @@ verified postconditions were baselined.
 
 Source-release ingestion and model execution are intentionally separate:
 their mutable/repeated run provenance belongs in `preclin.ingest_log`,
-source-specific release tables, `preclin.llm_run`, or
-`preclin.benchmark_run`, rather than the schema-migration ledger.
+source-specific release tables, or `preclin.llm_run`, rather than the
+schema-migration ledger.
 
 ### New: `preclin.evidence_score` (the fact table)
 **One row per (subject × dimension × source × extraction).**

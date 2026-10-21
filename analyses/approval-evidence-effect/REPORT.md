@@ -174,13 +174,14 @@ hashes are absent. They do not represent the `v2_proper` rerun.
 
 The repository and database do not retain the exact command that produced the
 `v2_proper` rows. Their timestamps place them after the audited-run schema was
-added, but they do not appear in `ingest_log` and the checked-in scorer now
-declares prompt version `v1`. The most supportable explanation is therefore
-that the v2 content was produced by a separate or one-off scoring path and
-loaded through the older evidence-only ingestion route. This is a provenance
-failure, not evidence that the content itself was never rerun. Recovering the
-original cache or rerunning the missing targets through the audited scorer is
-still required; a paid rerun requires explicit approval.
+added, but they do not appear in `ingest_log`, and the repository holds no
+scorer that declares prompt version `v2_proper`. The most supportable
+explanation is therefore that the v2 content was produced by a separate or
+one-off scoring path and loaded through the older evidence-only ingestion
+route. This is a provenance failure, not evidence that the content itself was
+never rerun. Recovering the original cache or rerunning the missing targets
+through an audited scoring path is still required; a paid rerun requires
+explicit approval.
 
 Within the 792-target headline cohort, `v2_proper` covers 676 targets; another
 87 fall back to v1 evidence and 29 have no literature score. Migration 27 now

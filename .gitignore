@@ -35,8 +35,7 @@ db/data_trials_*.csv
 db/data_drug_master_lookup.csv
 db/data_program_master.csv
 
-# Model artifacts / training telemetry
-catboost_info/
+# Model artifacts
 *.model
 *.pkl
 *.joblib

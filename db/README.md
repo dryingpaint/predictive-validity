@@ -2,8 +2,6 @@
 
 The `preclin.*` schema in Neon Postgres is the single source of truth for the analysis. This directory has schema DDL and ingest scripts.
 
-For example SQL queries, see [`QUESTIONS.md`](QUESTIONS.md).
-
 ## File taxonomy
 
 The numeric prefixes predate the migration ledger and describe execution order,
@@ -78,8 +76,8 @@ reason and `--yes`, and labels every resulting row as `baseline`:
 ```
 
 Do not use `baseline` on a fresh or uncertain database; use `apply` instead.
-Recurring source refreshes remain audited in `preclin.ingest_log` or dedicated
-release tables, while model evaluations remain in `preclin.benchmark_run`.
+Recurring source refreshes are audited in `preclin.ingest_log` or dedicated
+release tables.
 
 ## Canonical PV evidence ingestion pilot
 
@@ -568,21 +566,28 @@ version requires a new migration.
 
 ## Cohort-wide genetics tiers
 
-`analyses/classifiers/nelson_tier_classify.py --all-clinical` enumerates all
-non-placebo human target-indication pairs from program and drug-target tables,
-without reading outcomes or approvals. It restricts Open Targets input to
-genetic evidence and reads PubMed only from immutable `source_document` rows.
-Preparation also stores each complete, stable dossier as an immutable
-`nelson_dossier` source document. Exact model inputs use the standard audit
-format. Versioned result files are ingested by
-`13_ingest_llm_outputs.py --task nelson-tier`, which atomically stores the
-`llm_run`, `llm_run_source`, `evidence_score`, and immutable fact snapshot.
-The exact prompt, response, and source excerpts live only in their dedicated
-audit columns/tables; `parsed_output` omits those redundant envelope fields.
-Adjacent ignored `*.dossiers.jsonl` files provide local resumability; the
-database snapshot is the durable audit artifact. `03_views.sql` exposes only the newest
-cohort-wide `nelson_llm` row; legacy approval-derived tiers remain in the long
-table for audit but cannot populate the canonical view.
+Cohort-wide Nelson tiers are frozen result files (`nelson_tiers_*.jsonl`,
+kept in the git-ignored `data/target_evidence/`). Each row is a
+`nelson_tier_result_v5` tier (T0-T3) for one non-placebo human
+target-indication pair of the program and drug-target tables, judged without
+outcomes or approvals from genetics-only Open Targets input and immutable
+PubMed `source_document` rows, and carries the standard exact-audit fields.
+The repository does not generate these files; `13_ingest_llm_outputs.py
+--task nelson-tier` ingests them and does not create source documents. Each
+row names its dossier by `dossier_source_document_id` and `dossier_sha256`,
+and the ingest rejects the file unless that dossier already exists as a
+`preclin.source_document` row with `source_name = 'nelson_dossier'`,
+`external_id` equal to the row's `pair_key` (`target_id:indication_id`) and
+`content_sha256` equal to `dossier_sha256`, linked exactly once in
+`_source_documents` as a `dossier_snapshot`. Every other linked source
+document must already exist too. The ingest atomically stores the `llm_run`,
+`llm_run_source`, `evidence_score`, and immutable fact snapshot. The exact
+prompt, response, and source excerpts live only in their dedicated audit
+columns/tables; `parsed_output` omits those redundant envelope fields.
+`03_views.sql` exposes only the newest cohort-wide `nelson_llm` row; the
+approval-derived (`fda_approval`) and hand-curated (`manual_curation`) tiers
+that `02_ingest.py` loads remain in the long table for audit but cannot
+populate the canonical view.
 
 For an incremental ingest, validate first and then commit only these rows:
 
@@ -636,8 +641,6 @@ must be used for an established database instead of rerunning the bootstrap
 | `preclin.llm_run_source` | varies | Exact source excerpts supplied to each model call |
 | `preclin.llm_run_evidence_score` | varies | Model run→current fact link plus immutable run-produced value snapshot |
 | `preclin.evidence_dimension` | 40 | Registry of every evidence dimension |
-| `preclin.benchmark_run` | ~70 | Benchmark leaderboard rows |
-| `preclin.benchmark_prediction` | ~40,000 | Per-(scorer × T-I) predictions |
 
 ## Views
 
@@ -649,7 +652,6 @@ must be used for an established database instead of rerunning the bootstrap
 - `v_relative_success_clean` — Pheiron RS metric per dimension (placebos filtered)
 - `v_pathway_wrongness` — Phase 3 fail rate per evidence tier
 - `v_combination_evidence` — pairwise RS(A ∧ B) lift
-- `v_benchmark_leaderboard` — scorer comparison
 - `v_dimension_coverage` — coverage per dimension × subject
 - `v_trial_source_latest` — latest full registry/publication text linked to each NCT id
 - `v_classification_audit` — verdict + exact model input/output + exact/available source links
@@ -715,30 +717,18 @@ so paid calls survive interruption. Load those completed runs with the narrow
 incremental importer rather than rerunning the big-bang `02_ingest.py`:
 
 ```bash
-# Trial why-stopped verdicts
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-  --task why-stopped data/clinical_trials/why_stopped_2026.jsonl
-
 # Evidence-enriched, multi-axis stoppage rescores (kept as a separate task)
 .venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
   --task trial-stoppage-rescore data/clinical_trials/stoppage_rescore_2026.jsonl
-
-# Target-level PubMed evidence tiers
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-  --task target-literature data/target_evidence/literature_scores_2026.jsonl
 ```
 
-The importer also accepts `--task trial-stoppage-rescore`, `--task silent-kill`,
-`--task drug-evidence`, and `--task nelson-tier`.
+The importer also accepts `--task why-stopped`, `--task target-literature`,
+`--task silent-kill`, `--task drug-evidence`, and `--task nelson-tier` result
+files.
 It requires the exact audit fields emitted by `analyses/classifiers/common.py`,
 commits all supplied files atomically, and supports `--dry-run`. It never calls
 an LLM or retrieves a source. `02_ingest.py` remains unchanged as the manual
 bootstrap loader for the historical local data bundle.
-
-Target-literature scoring refuses to call a paid model unless every supplied
-abstract is already represented by a canonical `source_document_id`. Import a
-legacy cache with `db/12_ingest_evidence_abstracts.py` before scoring; this
-ensures the completed JSONL can always pass the audited importer.
 
 Backfill abstracts used for target/drug evidence extraction separately:
 
