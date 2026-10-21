@@ -37,6 +37,7 @@ BATCH_SIZE = 2000
 POLL_SECONDS = 60
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))  # concurrent Messages calls of a direct run
 STREAM_ATTEMPTS = 3  # the SDK retries opening a request, not a stream that drops partway
+API_FAILURE_LIMIT = 0.2  # share of a direct run's calls failing at the API (e.g. credit exhausted) that stops it
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
 DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
@@ -271,7 +272,7 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
             except anthropic.APIError as exc:
                 return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
-    n_ok = n_bad = 0
+    n_ok = n_bad = n_api = 0
     pending = []
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         for i, fut in enumerate(as_completed([pool.submit(call, k) for k in todo]), 1):
@@ -279,6 +280,10 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
             pending.append(_row(run_id, task, key, items[key], raw, parsed, request_id, usage, error))
             n_bad += error is not None
             n_ok += error is None
+            n_api += not request_id  # no message came back
+            if i >= 100 and n_api > API_FAILURE_LIMIT * i:  # a failing API, not failing items: stop, decide later
+                pool.shutdown(wait=False, cancel_futures=True)
+                raise RuntimeError(f"[{task.name}] {n_api} of {i} calls failed at the API; last: {error}")
             if i % 25 == 0 or i == len(todo):  # short transactions: FK migrations on llm_decision need gaps
                 _store(pending)
                 pending = []
