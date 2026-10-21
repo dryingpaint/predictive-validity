@@ -4,7 +4,7 @@
 
 Tables are built from report/output/section*/ CSVs; inline numbers use
 {{key}} placeholders resolved against report/output/numbers.json (written by
-report.section1, report.section2 and report.quality). Narrative blocks live
+report.section1, report.section2, report.section3 and report.quality). Narrative blocks live
 in report/narrative/*.md with the same placeholders.
 """
 from __future__ import annotations
@@ -183,12 +183,119 @@ def quality_table() -> str:
     return table(pd.DataFrame(rows, columns=["Label", "Audited", "Agreement (95% CI)", "Wrong"]))
 
 
+def rr_ci(r, ratio="rr", digits=2) -> str:
+    v = r.get(ratio) if isinstance(r, dict) else getattr(r, ratio, np.nan)
+    lo = r.get("lo") if isinstance(r, dict) else getattr(r, "lo", np.nan)
+    hi = r.get("hi") if isinstance(r, dict) else getattr(r, "hi", np.nan)
+    if v is None or pd.isna(v):
+        return "–"
+    return f"{v:.{digits}f} ({lo:.{digits}f}–{hi:.{digits}f})"
+
+
+def p_value(p) -> str:
+    return "–" if p is None or pd.isna(p) else "< 0.001" if p < 0.001 else f"{p:.3f}"
+
+
+def s3_numbers() -> dict:
+    return json.load(open(os.path.join(OUT, "section3", "numbers.json")))
+
+
+def s3_hypotheses_table() -> str:
+    n = s3_numbers()
+    h4 = n["h4"]["fdaaa"]["interaction_per_step"]
+    rows = [
+        ("H1", "Common-disease regime: genetics for the disease (G3) vs none (G0), advancing within 4 years of Phase 2",
+         "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
+        ("H2", "Same target, different diseases: G3 vs not (conditional logit)", "odds ratio", rr_ci(n["h2"], "or"),
+         n["h2"].get("p")),
+        ("H3", "Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < "
+               "concordant", "risk ratio per step", rr_ci(n["h3"]["trend"]), n["h3"]["trend"].get("p")),
+        ("H4", "Trials outside oncology: change in G3's effect on NOT MET per step from proximal to distal endpoints "
+               "(registry-posted results, FDAAA era)", "ratio of risk ratios", rr_ci(h4), h4.get("p")),
+        ("H5", "G3 lowers efficacy failure more than business or operational failure (Phase 2 and 3)",
+         "ratio of risk ratios", rr_ci(n["h5"]["ratio_f_bizops_vs_f_efficacy"]),
+         n["h5"]["ratio_f_bizops_vs_f_efficacy"].get("p")),
+        ("H6", "Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases "
+               "1–3; intersection-union test)", "risk ratio, safety failure", rr_ci(n["h6"]["safety"]), n["h6"]["p"]),
+        ("H7", "Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2",
+         "risk ratio", rr_ci(n["h7"]), n["h7"].get("p")),
+    ]
+    out = [[h, text, measure, est, p_value(p), p_value(n["holm"].get(h)),
+            "supported" if n["holm"].get(h, 1) < 0.05 else "not supported"] for h, text, measure, est, p in rows]
+    return table(pd.DataFrame(out, columns=["", "Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
+
+
+S3_MAP_ROWS = ["g3", "gwas", "gwas_strong", "gwas_mid", "gwas_weak", "mendelian", "mendelian_strong",
+               "somatic", "somatic_concordant", "mgi", "mgi_strong", "expression", "reactome", "b1", "precedent",
+               "pan_essential", "constrained", "ko_lethal"]
+
+
+def s3_map_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section3", "evidence_map.csv"))
+    c2, com, onc = (df[df.scope == s].set_index("feature") for s in ("C2", "C2 COM", "C2 ONC"))
+    rows = []
+    for f in S3_MAP_ROWS:
+        r = c2.loc[f]
+        rows.append([r.label, f"{int(r.n):,} ({int(r.n_targets):,})", f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}",
+                     pct(r.coverage, 0), rr_ci(r), rr_ci(com.loc[f]), rr_ci(onc.loc[f]),
+                     "–" if pd.isna(r.get("today_rr")) else f"{r.today_rr:.2f} (n={int(r.today_n):,})"])
+    return table(pd.DataFrame(rows, columns=["Evidence for the program's disease, before entry", "Programs (targets)",
+                                             "Advanced: with / without", "Share of all that advanced",
+                                             "Risk ratio vs programs without it, all (95% CI)", "Non-oncology",
+                                             "Oncology", "Evidence known today"]))
+
+
+S3_ENDPOINTS = {"B1_target_engagement": "Target engagement", "B2_exploratory_biomarker": "Exploratory biomarker",
+                "B3_regulatory_surrogate": "Regulatory surrogate (LDL-C, HbA1c, viral load…)",
+                "B4_objective_physiological": "Objective physiology (FEV1, 6MWD, weight…)",
+                "B5_clinician_scale": "Clinician-rated scale or responder index",
+                "B6_patient_reported": "Patient-reported outcome", "B7_disease_events": "Disease events (relapses, "
+                "exacerbations…)", "B8_hard_outcome": "Hard outcome (death, MI, stroke…)",
+                "O1_tumor_response": "Tumour response", "O2_progression_free": "Progression-free survival",
+                "O3_overall_survival": "Overall survival"}
+
+
+def s3_endpoint_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section3", "endpoint_classes.csv"))
+    a, f = (df[df.scope == s].set_index("endpoint_class") for s in ("all", "fdaaa"))
+    rows = []
+    for c, name in S3_ENDPOINTS.items():
+        if c not in a.index:
+            continue
+        r = a.loc[c]
+        rows.append([name, f"{int(r.n_cohort):,}", pct(r.not_met, 0), f"{int(r.n):,}",
+                     f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}", rr_ci(r),
+                     rr_ci(f.loc[c]) if c in f.index else "–"])
+    return table(pd.DataFrame(rows, columns=["Class of the governing primary endpoint", "Trials", "Not met",
+                                             "Trials with G3", "Not met: with G3 / without", "Risk ratio of NOT MET, "
+                                             "all readable (95% CI)", "Registry-posted, FDAAA era"]))
+
+
+def s3_rules_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section3", "rules.csv"))
+    regime = {"all": "All", "COM": "Non-oncology", "ONC": "Oncology", "DD": "Hereditary"}
+    rows = []
+    for r in df.itertuples():
+        def split(name):
+            v = getattr(r, f"{name}_rr")
+            return "–" if pd.isna(v) else f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
+        rows.append([f"{r.rule}{'' if r.registered else '*'}", r.label, regime[r.regime],
+                     f"{int(r.n):,} ({int(r.n_targets):,})", pct(r.ppv, 0) if r.n else "–",
+                     pct(r.coverage, 0), "–" if pd.isna(r.adj_rr) else f"{r.adj_rr:.2f} ({r.adj_lo:.2f}–{r.adj_hi:.2f})",
+                     split("discovery"), split("confirmation"),
+                     "**predictive**" if r.predictive else ("not testable" if r.n == 0 else "no")])
+    return table(pd.DataFrame(rows, columns=["Rule", "Applied at Phase 2 entry", "Regime", "Programs (targets)",
+                                             "Advanced", "Share of all that advanced", "Adjusted RR (95% CI)",
+                                             "Discovery RR (90%)", "Held-out RR (90%)", "Meets the bar"]))
+
+
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
-          "QUALITY_TABLE": quality_table}
+          "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
+          "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table}
 
 
 def flatten(d, prefix=""):
@@ -215,7 +322,7 @@ def fill(text: str, numbers: dict) -> str:
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "quality"):
+    for section in ("section1", "section2", "section3", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)
