@@ -15,6 +15,7 @@ dependencies = [
     "python-dotenv[cli]>=1.2",
     "reportlab>=5.0",
     "requests>=2.34",
+    "scikit-learn>=1.9",
     "scipy>=1.18",
 ]
 
