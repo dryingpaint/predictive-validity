@@ -303,7 +303,7 @@ Statistical methodology:
 - Full table with bootstrap CIs
 - Interaction plots
 
-### D4. Case studies (extension of `CASE_STUDIES.md`)
+### D4. Case studies (extension of the case-study table in `report/REPORT.template.md`)
 - 5 more high-signal examples covering:
   - Efficacy failures with strong Category A (e.g., ARN-509 → androgen receptor, well-validated but tox)
   - Efficacy failures with strong Category C/D (BACE1 already covered)

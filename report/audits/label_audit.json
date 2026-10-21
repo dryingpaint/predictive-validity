@@ -1,0 +1,196 @@
+[
+ {
+  "task": "indication_mondo",
+  "n": 100,
+  "n_correct": 88,
+  "n_acceptable": 6,
+  "n_wrong": 6,
+  "errors": [
+   {
+    "item": "#3 Chylothorax",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0002037 pleural disorder. MONDO has no human 'chylothorax' term; congenital chylothorax MONDO:0011331 applies only to neonatal cohorts."
+   },
+   {
+    "item": "#27 Metastatic Malignant Neoplasm in the Rectum",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0006519 rectal cancer. It is defined as a 'primary or metastatic malignant neoplasm involving the rectum', so it fits exactly."
+   },
+   {
+    "item": "#36 Radiographic Contrast Agent Nephropathy",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0002492 acute kidney injury. Contrast-induced nephropathy is contrast-associated AKI, and MONDO has no contrast-specific term."
+   },
+   {
+    "item": "#58 Finger Injuries",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0021178 injury. MONDO has no finger or hand injury term. The sibling item #91, ankle sprain, was mapped to MONDO:0043895 ankle injury."
+   },
+   {
+    "item": "#90 Melasma",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0019289 hyperpigmentation of the skin, or its parent MONDO:0019288 skin pigmentation disorder. MONDO has no melasma or chloasma term."
+   },
+   {
+    "item": "#92 Complete Miscarriage",
+    "stored": "disease / null",
+    "should_be": "[WRONG] disease / MONDO:0041526 pregnancy disorder with abortive outcome, which matches the ICD-10 O00-O08 block that contains spontaneous abortion. MONDO has no plain 'spontaneous abortion' or 'miscarriage' term."
+   },
+   {
+    "item": "#17 Immune-Related Adverse Events",
+    "stored": "disease / null",
+    "should_be": "[ACCEPTABLE] There is no MONDO term for irAEs. If kept as a disease, the nearest parent is MONDO:0005046 immune system disorder. If it is treated as a treatment toxicity, kind 'other' with null also works. The stored disease+null pair is inconsistent but defensible."
+   },
+   {
+    "item": "#21 Plaque Morphology",
+    "stored": "disease / MONDO:0005311 atherosclerosis",
+    "should_be": "[ACCEPTABLE] This is an imaging outcome, not a disease, and 'plaque' is ambiguous (atherosclerotic, dental, psoriatic, MS). Atherosclerosis is the likely intent, but other / null is equally defensible."
+   },
+   {
+    "item": "#28 Bone Marrow Fibrosis",
+    "stored": "disease / MONDO:0009692 primary myelofibrosis",
+    "should_be": "[ACCEPTABLE] Should be MONDO:0044903 myelofibrosis, whose definition is bone marrow fibrosis of any cause. The stored term is a narrower child."
+   },
+   {
+    "item": "#33 COVID 19 Associated Coagulopathy",
+    "stored": "disease / MONDO:0100096 COVID-19",
+    "should_be": "[ACCEPTABLE] The core noun is coagulopathy, so better is MONDO:0001531 blood coagulation disease. COVID-19 is the underlying disease, so the stored label is defensible."
+   },
+   {
+    "item": "#57 Locally Advanced Cancer in the Anal Region",
+    "stored": "disease / MONDO:0000405 anal canal cancer",
+    "should_be": "[ACCEPTABLE] Better is MONDO:0001879 anus cancer (malignant anal neoplasm), which covers the whole anal region. Anal canal cancer is a narrower anatomic subsite."
+   },
+   {
+    "item": "#86 Refractory Cytopenias",
+    "stored": "disease / MONDO:0019453 myelodysplastic syndrome with multilineage dysplasia (RCMD)",
+    "should_be": "[ACCEPTABLE, borderline] Should be MONDO:0018881 myelodysplastic syndrome. The plural 'refractory cytopenias' does not imply multilineage dysplasia, since RCUD and childhood RC are other kinds. If the trial means cytopenias refractory to treatment outside MDS (e.g. post-HCT or post-CAR-T), the label is wrong."
+   }
+  ],
+  "notes": "I checked every stored mondo_id (71 distinct) against OLS4. All are live, non-obsolete terms whose labels match the stored mondo_label. I also checked candidate terms against MONDO release 2026-10-06, downloaded to the session scratchpad. No files were modified, and the pasted DB credentials were not needed or used.\n\nSix items are wrong, and all six are diseases left with a null mondo_id: #3, #27, #36, #58, #90 and #92. In #27 (rectal cancer MONDO:0006519) and #36 (acute kidney injury MONDO:0002492), MONDO has a good match and the labeler missed it.\n\nThe other four (#3 chylothorax, #58 finger injuries, #90 melasma, #92 complete miscarriage) were marked wrong only because the rubric says a disease mapped to null is wrong. MONDO has no specific term for any of them, only broad parents. If the pipeline's rule is 'null when MONDO has no specific term', reclassify these four as acceptable, giving 92 correct / 8 acceptable / 2 wrong.\n\nCalls I made that look odd but are judged correct:\n- #18 Achilles tendinopathy -> 'Achilles bursitis' MONDO:0001594: that term has the synonym 'Achilles bursitis or tendinitis' and is_a tendinitis.\n- #14 Ovarian Insufficiency -> ovarian dysfunction: it has the synonym 'ovarian insufficiency'.\n- #13 SSc-ILD -> pulmonary systemic sclerosis: it has the synonym 'scleroderma lung disease'.\n- #51 axSpA -> spondyloarthropathy: there is no axial-specific term.\n- #96 NSTEMI -> acute subendocardial MI: there is no NSTEMI term.\n- #95 H7N9 -> avian influenza.\n- #99 pseudomembranous colitis -> C. difficile colitis: an exact synonym.\n- #32 mushroom poisoning -> mycotoxicosis: it has the exact synonym 'Fungi poisoning', and there is no mycetism term.\n- #41 NLPBCL -> NLPHL: the same entity, renamed in WHO-HAEM5.\n- #42 ARCA1 -> autosomal recessive ataxia, Beauce type: it has the synonym ARCA1.\n- #52 Hemiplegia is a symptom_or_sign with MONDO hemiplegia. That is an exact concept match, but the other symptoms (#23, #43) got null, so the rule is applied inconsistently.\n\nAll procedure_or_state and other labels (#1, 6, 11, 15, 22, 29, 35, 37, 44, 54, 55, 56, 71, 73, 76, 79, 81, 85, 100) are correct. No item should have been healthy_volunteers.",
+  "description": "Audit of the LLM-assigned indication_kind and MONDO core-disease labels in /Users/melissadu/Documents/projects/capable/predictive-validity-audit/.cache/label_audit/indication_mondo.jsonl (100 items)"
+ },
+ {
+  "task": "drug_moiety",
+  "n": 100,
+  "n_correct": 91,
+  "n_acceptable": 4,
+  "n_wrong": 5,
+  "errors": [
+   {
+    "item": "#88 HPP737 20mg",
+    "stored": "drug: ['HPP737']",
+    "should_be": "drug: ['prifemilast']. vTv's pipeline page says 'Prifemilast (HPP737)', so an INN exists and the code should be mapped to it. WRONG"
+   },
+   {
+    "item": "#56 E7046",
+    "stored": "drug: ['E7046']",
+    "should_be": "drug: ['palupiprant']. Palupiprant is the INN for E7046 (EP4 antagonist, also called AN0025 / ER-886046). Guide to Pharmacology, NCATS Inxight and the UNII record (YWY620GU8I) all list it. WRONG"
+   },
+   {
+    "item": "#28 IO102-IO103 in combination with pembrolizumab",
+    "stored": "combination: ['pembrolizumab', 'IO102-IO103']",
+    "should_be": "combination: ['imsapepimut', 'etimupepimut', 'pembrolizumab']. IO102-IO103 is two peptide vaccines that already have nonproprietary names (Cylembio = imsapepimut and etimupepimut, adjuvanted). The stored label keeps the code and merges the two components into one entry. WRONG"
+   },
+   {
+    "item": "#51 CKD-348(6)",
+    "stored": "unclear: null",
+    "should_be": "combination: ['telmisartan', 'amlodipine', 'rosuvastatin', 'ezetimibe']. NCT06112678 compares CKD-348(6) with co-administered 'CKD-828, D097, D337'. Korean press identifies CKD-348 (brand Telminuvo-zet) as Telminuvo (telmisartan+amlodipine) plus rosuvastatin and ezetimibe. Earlier CKD-828 trials describe it as telmisartan/S-amlodipine, so 'levamlodipine' may be the more exact name. At the very least the entity_kind is combination, not unclear. WRONG"
+   },
+   {
+    "item": "#72 NPF-08 (2-day split dose)",
+    "stored": "drug: ['NPF-08']",
+    "should_be": "combination: ['sodium sulfate', 'potassium sulfate', 'magnesium sulfate']. In NCT03423771 (Nihon Pharmaceutical) the intervention is 'NPF-08 oral sulfate solution', a bowel prep. The components are public, so the code-only single-drug label misses them. Borderline call. WRONG"
+   },
+   {
+    "item": "#85 Tarcocimab",
+    "stored": "drug: ['tarcocimab']",
+    "should_be": "drug: ['tarcocimab tedromer']. The full INN carries the 'tedromer' suffix, as 'dapirolizumab pegol' keeps 'pegol' in #16. Minor naming variant. ACCEPTABLE"
+   },
+   {
+    "item": "#69 Test formulation",
+    "stored": "drug: ['testosterone cypionate']",
+    "should_be": "drug: ['testosterone']. The trial context is right (NCT03792477, testosterone cypionate bioequivalence study), but the label keeps the ester; the active moiety is testosterone. ACCEPTABLE"
+   },
+   {
+    "item": "#48 Secukinumab/Adalimumab-Biosimilar",
+    "stored": "combination: ['adalimumab', 'secukinumab']",
+    "should_be": "Moieties are right. In AScalate (NCT03906136) this is a treat-to-target arm where patients get secukinumab or adalimumab biosimilar in sequence, not co-administered, so 'combination' overstates it. ACCEPTABLE"
+   },
+   {
+    "item": "#71 Approved DEX PS DDS Applicator",
+    "stored": "drug: ['dexamethasone']",
+    "should_be": "non_drug (device). In NCT04976777 the applicator is registered as a DEVICE and dexamethasone 0.7 mg is a separate DRUG intervention. That matches #96 APFS Device, which is labelled non_drug. Labelling the applicator as dexamethasone double-counts the drug. ACCEPTABLE"
+   }
+  ],
+  "notes": "I formed each verdict before reading the stored label, using web search and ClinicalTrials.gov records (API v2) to resolve code names and intervention context. No files were modified, and I did not use the pasted Postgres credentials because nothing in the task needed the database.\n\nAll 5 errors follow one pattern: a code was left unresolved even though an INN or known components exist (HPP737, E7046, IO102-IO103, CKD-348, NPF-08). NPF-08 is the closest call; if a code with a known multi-component composition is allowed to stay as a code, it moves to acceptable.\n\nCodes checked and confirmed to have no INN, so keeping the code is correct: GSK3901961 (TCR-T cell therapy), NA-831/Traneurocin, MTL-CEBPA, TL-925, FL-101, T3D-959, SPH4336, SCIO-323, FT576, Lu AF35700 (d8-zicronapine), VES001, BOS172722, TAS1553, HMBD-002, NP-011, MRT-6160 (DDY391 is a Novartis code, not an INN), EP547 (INCB000547), BR3005-1/-2 (components undisclosed), F2F22D/DL001Z (GSK flu mRNA vaccine), IVT PCV-25.\n\nCode-to-INN mappings confirmed correct: ZP7570 = dapiglutide, M5717 = cabamiquine, PAC-14028 = asivatrep, APX001 = fosmanogepix, GSK2269557 = nemiralisib, IBI306 = tafolecimab, GRI-0621 = tazarotene, LEV102 = oxymetazoline, EYN-1601 = phenylephrine 10% microdose, HGP1602 = dapagliflozin, M207 = zolmitriptan, TLC599 = dexamethasone, TNX-102 SL = cyclobenzaprine.\n\nLabels that looked doubtful but the trial record supports:\n- 'Lymphodepleting' = fludarabine + cyclophosphamide (NCT07510802).\n- The H7N9 vaccine label (whole-virion, aluminium-adjuvanted) matches NCT03369808 / NCT03755427.\n- 'unclear' is right for SATURNO II association (EMS eye drop, composition not disclosed), D578 (coded reference product in a Chong Kun Dang trial), j21373j (no hits) and 'T'.",
+  "description": "Audit of LLM drug-moiety labels in /Users/melissadu/Documents/projects/capable/predictive-validity-audit/.cache/label_audit/drug_moiety.jsonl (100 intervention names)"
+ },
+ {
+  "task": "fda_application_moiety",
+  "n": 100,
+  "n_correct": 96,
+  "n_acceptable": 2,
+  "n_wrong": 2,
+  "errors": [
+   {
+    "item": "line 10, NDA 021321, ingredients [ICODEXTRIN] (Extraneal)",
+    "stored": "[sodium chloride, calcium chloride, sodium lactate, magnesium chloride, icodextrin]",
+    "should_be": "[icodextrin]. WRONG (extra components): the application lists only icodextrin as its active ingredient. The four electrolytes are dialysate background components. They are not the application's active ingredient, and sodium lactate also keeps its salt form."
+   },
+   {
+    "item": "line 100, NDA 209589, ingredients [CITRIC ACID; MAGNESIUM OXIDE; SODIUM PICOSULFATE] (Clenpiq)",
+    "stored": "[citric acid, magnesium oxide, sodium picosulfate]",
+    "should_be": "[citric acid, magnesium oxide, picosulfate]. WRONG (salt not stripped): sodium is a counterion; the FDA active moiety is picosulfate. The same file strips sodium from SODIUM NITROPRUSSIDE to give nitroprusside (line 63), so keeping 'sodium picosulfate' breaks the file's own policy. Citric acid and magnesium oxide are inorganic or acid actives and are correctly kept whole."
+   },
+   {
+    "item": "line 31, NDA 021535, ingredients [CLOBETASOL PROPIONATE]",
+    "stored": "[clobetasol propionate]",
+    "should_be": "[clobetasol]. ACCEPTABLE: an ester is not a salt, so the stored name holds up under the strict 'salts stripped' rule. However, the file strips esters everywhere else, following the FDA active-moiety convention: halobetasol propionate becomes halobetasol (line 50), cortisone acetate becomes cortisone (line 22), triamcinolone diacetate becomes triamcinolone (line 40) and estradiol valerate becomes estradiol (line 53). For consistency this should be clobetasol."
+   },
+   {
+    "item": "line 51, BLA 021859, ingredients [HYALURONIDASE RECOMBINANT HUMAN] (Hylenex)",
+    "stored": "[hyaluronidase]",
+    "should_be": "[hyaluronidase human recombinant] (rHuPH20). ACCEPTABLE: the entity is right, but dropping 'human recombinant' merges this product with the bovine (Amphadase) and ovine (Vitrase) hyaluronidases, which are different proteins. The file keeps similar distinctions elsewhere, e.g. interferon beta-1a."
+   }
+  ],
+  "notes": "I formed my own answer for each line before reading the stored moieties. 96 lines are correct. The most common pattern is a salt correctly stripped: hydrochloride, sulfate, sodium, fumarate, mesylate, besylate, maleate, malate, lactate, tosylate, napsylate, benzathine (line 52 gives benzylpenicillin) and disodium (line 28 gives carbenicillin). Biologic and biosimilar suffixes are also correctly dropped: -lanm, -ipdl, -dssb and -adet. Combination products list every component and nothing extra (lines 35, 43, 53, 66, 67, 68, 70, 73, 77, 87, 90). \n\nLine 42 (Cenestin, synthetic conjugated estrogens A) correctly expands to the nine sodium sulfate-conjugate estrogens in its label. The sodium is stripped and the covalent sulfate is kept, which is right. \n\nLine 77 keeps sodium bicarbonate whole, which is right because the inorganic salt is itself the active ingredient. Line 76 keeps 'baloxavir marboxil', which is the INN of the approved prodrug and counts as correct. Line 11 (Tc-99m medronate kit) and line 5 (Lu-177 dotatate) are reasonable radiopharmaceutical normalizations. \n\nThe file has an ester-stripping policy that is applied unevenly: line 31 keeps the propionate while lines 22, 40, 50 and 53 strip their esters. If the pipeline intends FDA active-moiety semantics (21 CFR 314.3), only line 31 needs changing. If it intends 'salts only', then lines 22, 40, 50 and 53 would need to keep their esters instead. I followed the FDA active-moiety reading. No files were modified.",
+  "description": "Audit of FDA NDA/BLA application -> molecular entity (moiety) labels in /Users/melissadu/Documents/projects/capable/predictive-validity-audit/.cache/label_audit/fda_application_moiety.jsonl (100 lines, each judged once)"
+ },
+ {
+  "task": "fda_letter_approved_uses",
+  "n": 60,
+  "n_correct": 55,
+  "n_acceptable": 5,
+  "n_wrong": 0,
+  "errors": [
+   {
+    "item": "line 9 (sha a3906f2206d5) Gazyva sBLA: adds GADOLIN results to sections 14/6 and embryo-fetal toxicity to section 5",
+    "stored": "1 use: indolent non-Hodgkin's lymphoma (follicular lymphoma), efficacy_labeling. The letter never names this disease; the extractor inferred it.",
+    "should_be": "no uses. This is a labeling-only supplement, and its PREA section says none of the new-indication/population/regimen criteria apply."
+   },
+   {
+    "item": "line 27 (sha 9743728847f8) Kisqali / Kisqali Femara Co-Pack sNDAs: adds MONALEESA-2 final overall survival plus safety (W&P, AR, geriatric) updates",
+    "stored": "1 use: breast cancer (HR+/HER2- advanced, with an aromatase inhibitor), efficacy_labeling",
+    "should_be": "no uses. Labeling-only; PREA says none of the criteria apply."
+   },
+   {
+    "item": "line 42 (sha 4d4dfce24d43) Velcade sNDA: adds TMA to W&P, chalazion/blepharitis to AR, and 5-year OS from LYM-3002 in newly diagnosed MCL",
+    "stored": "1 use: mantle cell lymphoma (newly diagnosed, VcR-CAP), efficacy_labeling",
+    "should_be": "no uses. Labeling-only; PREA says none of the criteria apply."
+   },
+   {
+    "item": "line 43 (sha 461a5d52fb53) Ilumya sBLA: adds information about adults with moderate-to-severe scalp psoriasis",
+    "stored": "1 use: plaque psoriasis (scalp psoriasis), efficacy_labeling",
+    "should_be": "no uses. Scalp-psoriasis trial data was added to existing plaque-psoriasis labeling; there is no new indication or population (PREA says none of the criteria apply)."
+   },
+   {
+    "item": "line 58 (sha 78f9d51c7bc0) Crysvita sBLA: PI revisions based on adult XLH Study UX023-CL303",
+    "stored": "1 use: X-linked hypophosphatemia (adults), efficacy_labeling",
+    "should_be": "no uses. Adult XLH was already on the label; this is a labeling-only update (PREA says none of the criteria apply)."
+   }
+  ],
+  "notes": "Judgments formed from the letter text before reading the stored uses; every line counted once (indices are 0-based). Result: 55 correct, 5 partially (all reported in n_acceptable), 0 wrong.\n\n1) All 5 errors are the same pattern: an extra efficacy_labeling row on a labeling-only letter (lines 9, 27, 42, 43, 58). The rubric says a labeling-only letter should have no uses, so each is an extra use. The extraction prompt (pipeline/fda.py LETTER_SYSTEM) explicitly allows an efficacy_labeling change_type for 'efficacy data added to labeling without a new population'. The model followed its own schema, and the schema conflicts with the rubric. Either filter change_type='efficacy_labeling' out of anything treated as an approved use, or drop that category from the prompt. Elsewhere the model correctly returned empty uses for labeling-only letters (1, 23, 27 excepted, 36, 41, 48, 57, 59).\n\n2) Truncated source text (counted correct, but a real data gap): lines 12 (sha 3de1d61842f8, Imjudo BLA 761289 original approval) and 52 (sha cbbc9d90247d, Asparlas BLA 761102 original approval). The stored letter_text starts on page 3 and page 2, so the indication paragraph is missing. Empty uses is the faithful extraction, but the DB will lack the true original-approval rows (Imjudo: unresectable HCC with durvalumab; Asparlas: ALL). The source PDF text extraction should be re-fetched.\n\n3) Borderline calls accepted as correct:\n- Line 2: Steqeyma interchangeability (BLA Original 2) lists the 6 indications as change_type=other. Reasonable, since these uses were first approved in the Dec 2024 biosimilarity letter.\n- Line 20: Jylamvo pJIA stored as new_population. pJIA was not on the adult label, but the letter frames it as a pediatric expansion and PREA says the new-indication criteria do not apply.\n- Line 22: Daklinza second row (HCV GT3 with HIV coinfection, new_regimen). It covers added dosing recommendations; acceptable.\n- Line 38: Opdivo flat-dose change for cHL and SCCHN as new_regimen. Matches the schema, and PREA applied as a new dosing regimen.\n- Lines 0 and 35: new-dosage-form NDAs (Promacta oral suspension, Trikafta oral granules) stored as original_approval, per the schema's ORIG rule.\n\nOnly disease and change_type were judged; qualifiers were not scored. No files were modified, and the DB credentials in the user message were not used (not needed).",
+  "description": "Audit of LLM-extracted approved uses in FDA approval letters (/Users/melissadu/Documents/projects/capable/predictive-validity-audit/.cache/label_audit/fda_letter_approved_uses.jsonl, 60 letters)"
+ }
+]

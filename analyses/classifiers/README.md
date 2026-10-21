@@ -16,9 +16,10 @@ loader for the earlier classifier files.
 ## Setup
 
 ```bash
-pip install openai psycopg2-binary
-export OPENAI_API_KEY=sk-...
-export DATABASE_URL=postgres://...
+uv sync    # openai and psycopg2-binary come from pyproject.toml
+# In .env (read by `.venv/bin/dotenv run --`):
+#   OPENAI_API_KEY=sk-...
+#   DATABASE_URL=postgres://...
 ```
 
 ## Classifier workflows
@@ -29,11 +30,20 @@ export DATABASE_URL=postgres://...
 
 ## Trial-stoppage rescore
 
-The stoppage rescore does not replace `why_stopped`. It writes a separate
-`trial_stoppage_rescore` task so old and new labels can be compared before any
-analytical cutover. Its result has independent fields for study execution,
-primary-endpoint assessment, scientific outcome, termination driver, and
-program outcome. This prevents a phrase such as "business decision" from
+The trial stop reasons the analyses use come from `pipeline/outcomes.py`
+(`preclin.trial_outcome`). The rescore is kept as a reference for them:
+`report/quality.py` (`stop_reason_agreement()`) maps the stop reason of every
+trial whose `execution` is not `completed`, the latest non-error
+`trial_stoppage_rescore` label (`gpt-5.6-terra`) and the latest non-error
+Sonnet `why_stopped` label (`claude-sonnet`) of the same trial onto one coarse
+taxonomy, and reports percent agreement, Cohen's kappa, and an
+efficacy-versus-other kappa against each, scoring a sponsor decision with no
+stated reason once as business and once as unknown. The rescore writes its own
+`trial_stoppage_rescore` classifier task beside `why_stopped`, so both labels
+stay in `preclin.classification`.
+
+The rescore result has independent fields for study execution, primary-endpoint
+assessment, scientific outcome, termination driver, and program outcome. This prevents a phrase such as "business decision" from
 silently becoming an efficacy failure—or hiding a successful efficacy readout.
 
 Refresh canonical registry records and their linked PubMed abstracts first.

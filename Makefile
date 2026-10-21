@@ -1,4 +1,4 @@
-# Rebuild the data from source, in dependency order.
+# Rebuild the report's data and numbers from source, in dependency order.
 # Every step is idempotent: LLM steps reuse earlier validated decisions whose
 # inputs are unchanged (intervention names: whatever their trial context; pipeline/llm.py),
 # loaders upsert, and builds replace.
@@ -10,9 +10,9 @@
 PY := .venv/bin/python
 RUN := $(PY) -m
 
-.PHONY: all sources identity programs labels evidence migrate
+.PHONY: all sources identity programs labels evidence report migrate
 
-all: migrate sources identity programs labels evidence
+all: migrate sources identity programs labels evidence report
 
 migrate:
 	$(PY) db/migrate.py apply
@@ -67,3 +67,10 @@ labels:
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
+
+report:
+	$(RUN) report.section1
+	$(RUN) report.section2
+	$(RUN) report.quality
+	$(RUN) report.figures
+	$(RUN) report.render
