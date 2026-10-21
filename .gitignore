@@ -44,3 +44,6 @@ db/data_program_master.csv
 /output/
 /reports/
 /tmp/
+
+# Raw source downloads (re-fetched by pipeline modules)
+.cache/
