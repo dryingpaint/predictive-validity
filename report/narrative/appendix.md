@@ -11,6 +11,8 @@
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
 | MONDO, EFO | Disease ontology and hierarchy | MONDO 2026-10-06, EFO 3.95 |
 | Open Targets Platform | Target–disease associations by data source, with yearly score series | 26.09 |
+| Open Targets Platform evidence | Every evidence row behind those associations for drug targets, with its date, direction of effect, confidence and source detail; mouse-model phenotypes | 26.09 |
+| Mammalian Phenotype ontology | Mouse phenotype hierarchy (knockouts lethal before weaning) | Retrieved October 2026 |
 | gnomAD | Loss-of-function constraint (LOEUF) | v4.1 |
 | DepMap | Pan-essential genes from CRISPR (Chronos) screens | Release not recorded in the project database |
 
@@ -21,6 +23,12 @@ Every judgement in the pipeline is an LLM call (Claude) that reads the source re
 {{QUALITY_TABLE}}
 
 Each error pattern these audits found was fixed in the pipeline and the affected labels re-derived, not patched by hand: diseases MONDO has no exact term for now map to their nearest broader term; development codes resolve to UNII substances, and the same substance under two names is merged; scanned FDA letters are read by OCR; labelling-only supplements no longer count as approvals; stop reasons stated only in a trial's summary are read; publication-based outcomes use only the abstracts given; and approval dates account for older applications of the same drug. The disease-mapping, entity and approval figures above come from fresh samples drawn after those fixes; before them, disease mapping agreed 94% of the time, entity resolution 95%, and 8 of 25 dated first approvals were wrong. Remaining entity errors are scattered (a development code resolved to the wrong substance, a salt chosen over its parent) rather than systematic. Programs whose approval is judged "uncertain" ({{section1.scale.approvals_uncertain|int}} of {{section1.scale.approval_judgements|int}} judgements) count as not approved; counting them as approved instead moves no rate by more than a tenth of a percentage point (sensitivity table). The approval audit's strata are those of the judgements it sampled; it was re-scored after the final rebuild against the auditors' own answers, and programs that are no longer development programs left the sample. The audit of the earlier draft, with every claim's verdict and every data issue, is in `AUDIT.md`.
+
+### Section 3 case studies
+
+Every case picked by the rule protocol, checked by agents against primary sources: one agent established each program's outcome without seeing its evidence, another checked the evidence claim without seeing the outcome, a second agent coded each failure independently, and a third adjudicated any disagreement with the pipeline or between agents.
+
+{{S3_CASE_CARDS}}
 
 ### Limitations
 
@@ -33,3 +41,6 @@ Each error pattern these audits found was fixed in the pipeline and the affected
 * **The model declines some products.** Claude declines to classify some products derived from pathogens, toxins or live bacterial and viral vectors (botulinum and plague vaccines, oncolytic viruses, engineered bacteria) on every attempt: {{quality.refusals.moiety_targets|int}} entities have no resolved target and {{quality.refusals.moiety_modality|int}} no modality, so they fall out of Section 2 and the modality strata.
 * **Constraint and essentiality are current.** gnomAD v4.1 constraint and DepMap pan-essentiality are today's values, not values as of phase entry.
 * **Evidence as of phase entry undercounts.** Open Targets leaves undated evidence out of its yearly series; a sensitivity uses the 2026 scores instead.
+* **Section 3 rests on labels made for it.** The trial endpoint class, the germline mechanism of each target in each disease and the orientation of each mouse model were classified by an LLM without the drug's name. The endpoint classifier was audited on 40 trials (39 classes and 40 governing outcomes right); the mechanism and mouse labels were spot-checked, and the errors found there led to a revised prompt rather than hand corrections.
+* **Some evidence cannot be dated.** IMPC knockouts carry no date in Open Targets, MGI mouse models carry their gene's earliest literature year, gene-burden results start in 2019, and GWAS on measurement traits cannot be matched to a disease, so these lines are untestable or undercounted in Section 3.
+* **Section 3's post-hoc analyses are exploratory.** The direction analyses and rules P1–P3 were added after the plan was committed, once their labels existed; their intervals are not corrected for the number of comparisons.

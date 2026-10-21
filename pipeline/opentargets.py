@@ -2,6 +2,7 @@
 
     python -m pipeline.opentargets fetch  # DATASETS of the release -> .cache/opentargets/<release>/<dataset>
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
+    python -m pipeline.opentargets evidence  # evidence rows behind those associations, mouse phenotypes
 
 Loads direct associations by data source for the targets of every molecular
 entity with an industry-sponsored development program (preclin.moiety_target), keeping each
@@ -10,20 +11,23 @@ Sources that encode clinical outcomes or literature co-mention
 (clinical_precedence, europepmc, cancer_biomarkers) are not loaded.
 Disease identifiers are kept as Open Targets ids in preclin.ot_disease, each
 with the MONDO terms it is (mondo_disease); traits and measurements that are
-not diseases have none.
+not diseases have none. `evidence` keeps, for the same targets and sources, each
+evidence item with its date, direction of effect, confidence and source detail
+(preclin.ot_evidence), and the targets' mouse mutant phenotypes
+(preclin.ot_mouse_phenotype).
 """
 from __future__ import annotations
 
 import argparse
 import glob
-from collections import defaultdict
 import hashlib
 import os
 import re
+from collections import defaultdict
 
 import pyarrow.dataset as ds
 import requests
-from psycopg2.extras import execute_values
+from psycopg2.extras import Json, execute_values
 
 from pipeline import llm
 
@@ -31,6 +35,11 @@ RELEASE = "26.09"
 CACHE = os.path.join(llm.REPO, ".cache", "opentargets", RELEASE)
 SOURCE_URL = f"https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/{RELEASE}/output"
 DATASETS = ("association_by_datasource_direct", "disease")  # the release datasets load reads
+EVIDENCE_DATASETS = ("evidence_gwas_credible_sets", "evidence_gene_burden", "evidence_eva", "evidence_genomics_england",
+                     "evidence_orphanet", "evidence_gene2phenotype", "evidence_clingen", "evidence_uniprot_literature",
+                     "evidence_uniprot_variants", "evidence_cancer_gene_census", "evidence_intogen",
+                     "evidence_eva_somatic", "evidence_impc", "evidence_expression_atlas", "evidence_reactome",
+                     "evidence_crispr", "evidence_crispr_screen", "mouse_phenotype")  # the datasets evidence reads
 # Disease-concept vocabularies MONDO declares one-to-one equivalences with; OMIM entries are often
 # gene-specific forms and ICD codes classification groups, so neither identifies a disease.
 CONCEPT_XREFS = ("DOID", "Orphanet", "NCIT", "MESH")
@@ -45,6 +54,34 @@ DATASOURCES = {
     "impc": "animal_model", "expression_atlas": "rna_expression", "reactome": "affected_pathway",
     "crispr": "functional_screen", "crispr_screen": "functional_screen",
 }
+
+
+# Source-specific fields kept in ot_evidence.detail.
+DETAIL = {
+    "gwas_credible_sets": ("studyLocusId",),
+    "gene_burden": ("beta", "oddsRatio", "pValueMantissa", "pValueExponent", "projectId", "statisticalMethod",
+                    "studyCasesWithQualifyingVariants"),
+    "eva": ("clinicalSignificances", "alleleOrigins", "studyId", "variantId"),
+    "eva_somatic": ("clinicalSignificances", "variantId"),
+    "genomics_england": ("studyId", "studyOverview"),
+    "orphanet": ("alleleOrigins",),
+    "gene2phenotype": ("studyId",),
+    "clingen": ("studyId",),
+    "uniprot_literature": ("targetModulation",),
+    "uniprot_variants": ("targetModulation", "variantId"),
+    "cancer_gene_census": ("mutatedSamples",),
+    "intogen": ("cohortShortName", "significantDriverMethods"),
+    "impc": ("biologicalModelId", "biologicalModelAllelicComposition", "biologicalModelGeneticBackground",
+             "targetInModel"),
+    "expression_atlas": ("studyId", "contrast", "log2FoldChangeValue", "log2FoldChangePercentileRank"),
+    "reactome": ("reactionName", "targetModulation"),
+    "crispr": ("diseaseCellLines",),
+    "crispr_screen": ("studyId", "contrast", "log2FoldChangeValue", "cellType"),
+}
+EVIDENCE_COLUMNS = ("id", "targetId", "diseaseId", "datasourceId", "score", "resourceScore", "publicationDate",
+                    "evidenceDate", "releaseDate", "directionOnTarget", "directionOnTrait", "confidence",
+                    "allelicRequirements", "variantFunctionalConsequenceId", "literature",
+                    "diseaseModelAssociatedModelPhenotypes", "diseaseModelAssociatedHumanPhenotypes")
 
 
 def curie(ot_id: str) -> str:
@@ -67,11 +104,11 @@ def mondo_disease(disease_id: str, xrefs: list[str], equivalent: dict[str, set[s
 
 
 def fetch(_args) -> None:
-    """Every parquet file of each of DATASETS, as listed by the release's directory index. A file
+    """Every parquet file of each of DATASETS and EVIDENCE_DATASETS, as listed by the release's directory index. A file
     already in the cache is kept; a download lands under a dot-prefixed name (which glob and
     pyarrow skip) and is renamed into place once complete."""
     session = requests.Session()
-    for dataset in DATASETS:
+    for dataset in DATASETS + EVIDENCE_DATASETS:
         url = f"{SOURCE_URL}/{dataset}/"
         index = session.get(url, timeout=60)
         index.raise_for_status()
@@ -138,10 +175,60 @@ def load(_args) -> None:
     print(f"release={RELEASE} targets={len(targets)} associations={len(rows)} diseases={len(disease_rows)}")
 
 
+def evidence_row(r: dict, release: int) -> tuple:
+    day = r.get("publicationDate") or r.get("evidenceDate") or r.get("releaseDate")
+    detail = {k: r[k] for k in DETAIL.get(r["datasourceId"], ()) if r.get(k) not in (None, [], "")}
+    detail["n_literature"] = len(r.get("literature") or [])
+    if r.get("diseaseModelAssociatedModelPhenotypes"):  # mouse phenotypes that matched the disease's
+        detail["model_phenotypes"] = [p["label"] for p in r["diseaseModelAssociatedModelPhenotypes"]][:10]
+        detail["n_human_phenotypes"] = len(r.get("diseaseModelAssociatedHumanPhenotypes") or [])
+    return (r["id"], r["targetId"], curie(r["diseaseId"]), r["datasourceId"], r.get("score"), r.get("resourceScore"),
+            int(day[:4]) if day else None, r.get("directionOnTarget"), r.get("directionOnTrait"), r.get("confidence"),
+            r.get("allelicRequirements"), r.get("variantFunctionalConsequenceId"), Json(detail), release)
+
+
+def evidence(_args) -> None:
+    files = sorted(f for name in EVIDENCE_DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
+    digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
+    with llm.connect() as conn, conn.cursor() as cur:
+        release = llm.register_release(
+            cur, "open_targets_platform_evidence", RELEASE, SOURCE_URL, digest.hexdigest(),
+            {"datasets": list(EVIDENCE_DATASETS), "sha256_of": "concatenated per-file sha256"})
+        cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
+                       JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
+        targets = [r[0] for r in cur.fetchall()]
+    rows = []
+    for name in EVIDENCE_DATASETS[:-1]:
+        data = ds.dataset(os.path.join(CACHE, name), format="parquet")
+        columns = [c for c in {*EVIDENCE_COLUMNS, *(k for v in DETAIL.values() for k in v)} if c in data.schema.names]
+        table = data.to_table(columns=columns, filter=ds.field("targetId").isin(targets)
+                              & ds.field("datasourceId").isin(list(DATASOURCES)))
+        rows += [evidence_row(r, release) for r in table.to_pylist()]
+    mouse = ds.dataset(os.path.join(CACHE, "mouse_phenotype"), format="parquet").to_table(
+        columns=["targetFromSourceId", "modelPhenotypeId", "modelPhenotypeLabel", "modelPhenotypeClasses",
+                 "biologicalModels"], filter=ds.field("targetFromSourceId").isin(targets)).to_pylist()
+    mouse_rows = [(m["targetFromSourceId"], m["modelPhenotypeId"], m["modelPhenotypeLabel"],
+                   sorted(c["id"] for c in m["modelPhenotypeClasses"] or []),
+                   sorted({b["allelicComposition"] for b in m["biologicalModels"] or [] if b.get("allelicComposition")}),
+                   release) for m in mouse]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.ot_evidence")
+        cur.execute("DELETE FROM preclin.ot_mouse_phenotype")
+        execute_values(cur, """INSERT INTO preclin.ot_evidence
+              (evidence_id, target_ensembl, disease_id, datasource, score, resource_score, evidence_year,
+               direction_on_target, direction_on_trait, confidence, allelic_requirements, variant_consequence,
+               detail, source_release_id) VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
+        execute_values(cur, """INSERT INTO preclin.ot_mouse_phenotype
+              (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s
+              ON CONFLICT DO NOTHING""", mouse_rows, page_size=5000)
+        conn.commit()  # one transaction: readers never see a half-loaded table
+    print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("evidence", evidence)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
