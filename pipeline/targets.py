@@ -16,7 +16,7 @@ is developed for, where Open Targets has germline evidence (GWAS, gene burden,
 ClinVar pathogenic, Orphanet, Gene2Phenotype, ClinGen, PanelApp, UniProt) for the
 disease or a subtype, the LLM states, without being told any drug, whether
 risk variants lower or raise the gene product's function, whether protective
-variants are known, and when that was established. Open Targets' own direction
+variants are known, and when each was first shown for that disease. Open Targets' own direction
 field follows variant consequence alone, so a few truncating ClinVar variants
 make a gain-of-function disease gene such as PCSK9, MYH7 or TTR read as loss of
 function.
@@ -144,9 +144,10 @@ MECHANISM_SYSTEM = """You state how germline variation in a human gene acts on a
 - germline_link: established when inherited (germline) variants in this gene are shown to cause this disease or change its risk; somatic_only when the gene's link to the disease rests on somatic tumour mutations, fusions or mosaic variants (for example FLT3 or IDH1 in leukaemia), which do not count here; none otherwise. Evidence for a different disease does not count, however related (a coronary-disease variant says nothing about ulcerative colitis unless shown for ulcerative colitis).
 - risk_mechanism: how the variants that cause the disease or raise its risk change the gene product's function. loss_of_function: null, hypomorphic, haploinsufficient or biallelic loss, or lower expression. gain_of_function: higher or constitutive activity, toxic gain (misfolding, aggregation), neomorphic activity, or higher expression. dominant_negative: a mutant product that interferes with the wild-type protein. mixed: variants acting in opposite directions on function both cause or raise risk of this disease. unknown: a genetic association is established but the direction of its effect on the gene's function is not (for example a GWAS locus without functional follow-up). none: no established germline link between this gene and this disease.
 - protective: loss_of_function_protective when variants that lower the gene's function are established to protect against this disease (for example PCSK9 nonsense variants and coronary disease); gain_of_function_protective when variants that raise its function protect; none_known otherwise.
-- established_year: the year of the first publication that showed the risk mechanism or the protective effect you report for this gene in this disease (the earlier of the two when both); a later paper that only confirmed it does not move the year, and a paper on another disease does not count. Null when risk_mechanism is unknown or none and no protective effect is known.
+- risk_year: the year of the first publication that showed the risk mechanism you report for this gene in this disease; a later paper that only confirmed it does not move the year, and a paper on another disease does not count. Null when risk_mechanism is unknown or none.
+- protective_year: the same for the protective effect; null when protective is none_known.
 - confidence: high for replicated human genetic and functional evidence, medium for consistent but limited evidence, low otherwise.
-- basis: one or two sentences naming the publication that sets established_year (first author and year) and its finding for this disease."""
+- basis: one or two sentences naming the publications that set risk_year and protective_year (first author and year) and their findings for this disease."""
 
 MECHANISM_SCHEMA = {
     "type": "object",
@@ -156,11 +157,13 @@ MECHANISM_SCHEMA = {
                                                        "mixed", "unknown", "none"]},
         "protective": {"type": "string", "enum": ["loss_of_function_protective", "gain_of_function_protective",
                                                    "none_known"]},
-        "established_year": {"type": ["integer", "null"]},
+        "risk_year": {"type": ["integer", "null"]},
+        "protective_year": {"type": ["integer", "null"]},
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
         "basis": {"type": "string"},
     },
-    "required": ["germline_link", "risk_mechanism", "protective", "established_year", "confidence", "basis"],
+    "required": ["germline_link", "risk_mechanism", "protective", "risk_year", "protective_year", "confidence",
+                 "basis"],
     "additionalProperties": False,
 }
 
@@ -171,17 +174,18 @@ def render_mechanism(p: dict) -> str:
 
 
 def validate_mechanism(p: dict, out: dict) -> None:
-    directed = out["risk_mechanism"] not in ("unknown", "none") or out["protective"] != "none_known"
-    if directed and out["germline_link"] != "established":
+    risk, protective = out["risk_mechanism"] not in ("unknown", "none"), out["protective"] != "none_known"
+    if (risk or protective) and out["germline_link"] != "established":
         raise ValueError(f"a mechanism without an established germline link ({out['germline_link']})")
-    year = out["established_year"]
-    if directed and year is None:
-        raise ValueError("a stated mechanism needs the year it was established")
-    if year is not None and not 1900 <= year <= 2026:
-        raise ValueError(f"established_year {year}")
+    for stated, key in ((risk, "risk_year"), (protective, "protective_year")):
+        year = out[key]
+        if stated != (year is not None):
+            raise ValueError(f"{key} {year} with the mechanism {'stated' if stated else 'not stated'}")
+        if year is not None and not 1900 <= year <= 2026:
+            raise ValueError(f"{key} {year}")
 
 
-MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v2", schema_version="v2",
+MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v3", schema_version="v3",
                           system=MECHANISM_SYSTEM, schema=MECHANISM_SCHEMA, render=render_mechanism,
                           validate=validate_mechanism, subject_type="gene_disease", model="claude-opus-5-5",
                           effort="medium", max_tokens=4000)
@@ -217,12 +221,13 @@ def mechanism(_args) -> None:
                                     "definition": (definition or "")[:500]}
                  for ens, symbol, name, mondo, label, definition in cur.fetchall()}
     run_id = llm.run(MECHANISM_TASK, items)
-    rows = [(*key.split("|"), o["risk_mechanism"], o["protective"], o["established_year"], o["confidence"], did)
-            for key, did, o in llm.decisions(run_id)]
+    rows = [(*key.split("|"), o["risk_mechanism"], o["protective"], o["risk_year"], o["protective_year"],
+             o["confidence"], did) for key, did, o in llm.decisions(run_id)]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.gene_disease_mechanism")
         execute_values(cur, """INSERT INTO preclin.gene_disease_mechanism (ensembl_id, mondo_id, risk_mechanism,
-                                 protective, established_year, confidence, llm_decision_id) VALUES %s""", rows)
+                                 protective, risk_year, protective_year, confidence, llm_decision_id) VALUES %s""",
+                       rows)
         conn.commit()
     print(f"pairs={len(items)} classified={len(rows)}")
 
