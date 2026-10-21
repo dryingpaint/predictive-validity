@@ -36,6 +36,7 @@ from psycopg2.extras import execute_values
 from pypdf import PdfReader
 
 from pipeline import llm
+from pipeline.drugs import entity_ids, moiety_key
 
 CACHE = os.path.join(llm.REPO, ".cache", "fda")
 DRUGSFDA_URL = "https://www.fda.gov/media/89850/download"
@@ -410,7 +411,6 @@ def match_products(cur, apps: dict) -> list[tuple]:
 
 
 def link(_args) -> None:
-    from pipeline.drugs import entity_ids, moiety_key
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT substr(a, 4), array_agg(DISTINCT b), array_agg(DISTINCT g)
