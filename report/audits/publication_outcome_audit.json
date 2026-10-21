@@ -1,0 +1,346 @@
+{
+ "n": 30,
+ "primary_endpoint": {
+  "correct": 28,
+  "acceptable": 1,
+  "wrong": 1
+ },
+ "safety_signal": {
+  "correct": 30
+ },
+ "efficacy_failure": {
+  "correct": 30
+ },
+ "trials": [
+  {
+   "nct_id": "NCT05104892",
+   "results_paper_pmid": "41936356",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Lancet Respir Med 2026 abstract names NCT05104892 and reports the registered primary endpoint (proportion with an LOAC event over 12 weeks): 38% vs 50%, p=0.29 (800 mg) and 19% vs 29%, p=0.21 (1200 mg); 'numerical decrease in LOAC events that was not statistically significant.' The significant ACQ-5 result is a key secondary endpoint and does not change the primary result. Safety: 'most frequent adverse event with rilzabrutinib was diarrhoea. No increase in infections', so no excess of deaths or SAEs. PMID 39899371 is a nephrology commentary with no abstract, so it was correctly ignored. All stored labels match mine."
+  },
+  {
+   "nct_id": "NCT04772742",
+   "results_paper_pmid": "38102535",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "SUNLIGHT (BMC Neurol 2023) names NCT04772742. The primary endpoint, change in MMDs over Weeks 1-12, matches the registry: 'difference between treatments was -1.2; p = 0.1484 ... this study did not meet its primary endpoint and is therefore negative.' Safety: 'No new safety signals were identified.' This is a Phase 3 efficacy trial, so efficacy_failure=true is correct. All stored labels match mine."
+  },
+  {
+   "nct_id": "NCT04192500",
+   "results_paper_pmid": "35464450",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The registered primary endpoint is the increase in NP-specific IFN\u03b3 T cells by ELISPOT at Day 8 versus baseline. The abstract (Front Immunol 2022, names NCT04192500) reports that OVX836 'induced a significant increase in terms of NP-specific interferon-gamma (IFN\u03b3) spot forming cells (SFCs)' and 'was superior to Influvac Tetra for all immunological parameters related to NP', so met. Safety: 'OVX836 was safe and presented a reactogenicity profile similar to Influvac Tetra.' All stored labels match mine."
+  },
+  {
+   "nct_id": "NCT05005234",
+   "results_paper_pmid": "39127176",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "This is a single-arm Phase I/II study with several primary endpoints: Phase Ia AEs/DLT (descriptive), Phase Ib ORR, and Phase II IRRC-assessed ORR. PMID 39127176 (JTO 2024; NCT05005234 is in its PubMed accession list) reports the phase 2 pivotal NSCLC cohort with 'primary endpoint ... confirmed objective response rate assessed by an independent radiological review committee'. Result: 'confirmed objective response rate was 49.1% (95% CI: 39.7-58.6)' and 'demonstrated promising and sustained efficacy with manageable safety.' I read this as a single-arm primary objective achieved (met), the same as the stored label. The caveat, which the stored evidence also notes, is that the abstract gives no prespecified ORR threshold, so not_assessable could also be argued. PMID 40715048 pools the phase I parts of two studies (NCT05005234 + NCT05497336) and was rightly not used for the primary endpoint. Safety: grade>=3 TRAEs in 41.4% and discontinuation in 7.8%. With no comparator arm and nothing beyond what is typical in oncology, this is not a 'clear excess', so none_evident. One small error in the stored evidence: it says 'The abstract does not name this trial'. The abstract text indeed does not, but the PubMed record lists NCT05005234 as an accession, and this does not affect the labels."
+  },
+  {
+   "nct_id": "NCT01507857",
+   "results_paper_pmid": "24571754",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "NEJM 2014 (names NCT01507857). The primary endpoint is EV71-associated HFMD/herpangina over 12 months: 'vaccine efficacy ... was 94.8% (95% CI, 87.2 to 97.9; P<0.001)'. SAEs were 2.2% with vaccine vs 2.6% with placebo, so there is no excess. PMID 22992566 is a review of EV71 vaccine production and was correctly not used. All stored labels match mine."
+  },
+  {
+   "nct_id": "NCT02752828",
+   "results_paper_pmid": "32291880",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "LixiLan JP-O2 (open-label phase 3, iGlarLixi vs iGlar). The registry primary endpoint is change in HbA1c at week 26, and PMID 32291880 reports it: \"HbA1c reduction was significantly greater with iGlarLixi (-1.40%) than with iGlar (-0.76%).\" On safety, hypoglycaemia was 14.2% vs 12.3%, there was \"No severe hypoglycemia\" and \"no major difference in the incidence of TEAEs\" apart from the expected GI effects. Every stored label matches mine."
+  },
+  {
+   "nct_id": "NCT05754957",
+   "results_paper_pmid": "42670965",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Librexia ACS. PMID 39986336 is the design paper and was rightly not used. NEJM PMID 42670965 reports the primary MACE endpoint: \"the trial was terminated for futility ... 384 patients (5.4%) in the milvexian group and in 365 patients (5.1%) in the placebo group (hazard ratio, 1.05; 95% CI, 0.91 to 1.21; P = 0.50).\" The primary analysis was performed and reported, so the right label is not_met, not not_assessable. On safety, \"BARC type 3c or 5 bleeding occurred in 23 patients (0.3%) ... and in 22 patients (0.3%)\", so none_evident. Upstream note, outside this schema: the registry status is COMPLETED with no whyStopped, but the abstract says the trial was terminated for futility after the interim analysis. Any registry-derived execution or stop_reason field for this trial (completed / not_applicable) therefore understates the futility stop."
+  },
+  {
+   "nct_id": "NCT01423188",
+   "results_paper_pmid": "none",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "unknown",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "SUSTAIN (RVX-208/RVX000222). The only linked paper, PMID 22349989, is a rationale and design paper for SUSTAIN and ASSURE, even though PubMed tags it 'Randomized Controlled Trial'. It is written in the future tense: \"In SUSTAIN, 172 patients with low levels of HDL-C will be randomized ... The primary efficacy parameter will be the percentage change in HDL-C levels.\" No abstract reports the primary endpoint result, so no_results, unknown safety and efficacy_failure=false follow from the rubric. results_paper_pmid is 'none' because no linked paper reports results."
+  },
+  {
+   "nct_id": "NCT04895345",
+   "results_paper_pmid": "41067232",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Single-arm phase II trial of TQB2450 plus IMRT in recurrent NPC (n=25). The primary endpoint is ORR: \"The ORR of this trial is 72.0% (95% CI: 50.6-87.9)\", and the authors conclude \"promising efficacy\". I agree with met, as a single-arm primary objective achieved. One caveat: the abstract states no prespecified null or threshold ORR, so not_assessable would also have been defensible. On safety, \"Treatment-related grade >=3 adverse events are observed in 10 patients (40.0%), with the most common being nasopharyngeal necrosis (32.0%)\" is a heavy toxicity burden. Notable would have been defensible too, but with a single arm there is no comparator to show a 'clear excess in the drug arm', and the authors call it \"a manageable safety profile\". Under the rubric, none_evident stands."
+  },
+  {
+   "nct_id": "NCT04556526",
+   "results_paper_pmid": "40921806",
+   "own_primary_endpoint": "not_assessable",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Ebola vaccine (Ad26.ZEBOV/MVA-BN-Filo) in pregnant women. PMID 35725488 is the protocol and was rightly not used. Nature Medicine PMID 40921806 reports the primary endpoints, which are 13 descriptive percentages of adverse pregnancy and infant outcomes: \"2,012 women and 1,945 infants born alive were descriptively analyzed.\" The authors write \"The trial met all primary and secondary objectives\", but the rubric says descriptive safety endpoints are not_assessable \"whatever the authors conclude\". That supports the stored label, although an unvaccinated randomized control arm exists. On safety, the stored evidence leaves out one imbalance: \"neonatal/infant SAE frequencies ... 21.9% in group A, 15.9% in group B\". The authors call this \"comparable\" and say the vaccine \"did not raise concerns ... had no unexpected safety issues\", so none_evident is the faithful reading. A reviewer would still be justified in flagging the 6-point infant SAE excess. efficacy_failure=false because this is a safety trial."
+  },
+  {
+   "nct_id": "NCT02063997",
+   "results_paper_pmid": "26989892",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Registry primary outcome is flare incidence, arhalofenate 800 mg vs allopurinol 300 mg. The abstract says: 'The primary outcome measure comparing flare incidence between 800 mg arhalofenate and 300 mg allopurinol was achieved ... (0.66 versus 1.24; P = 0.0056).' On safety it says: 'There were no meaningful differences in adverse events (AEs) between groups, and there were no serious AEs related to arhalofenate.' The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT01424319",
+   "results_paper_pmid": "24722445",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The stored labels match mine. One caveat: 24722445 reports pooled results from 'two identically designed, parallel, multinational, double-blind studies' (n=211, while this Japanese trial enrolled 58). It does not give this trial's own result. 26153128 is a 'post hoc analysis', but its conclusion confirms that the pooled set is 'the Reducing Residual Albuminuria in Subjects With Diabetes and Nephropathy With Atrasentan/JAPAN trials'. 28756065 is a pooled PK and exposure-response analysis. I treated 24722445 as the joint primary report of the prespecified UACR endpoint: 'Compared with placebo, 0.75 mg and 1.25 mg atrasentan reduced urine albumin/creatinine ratios by an average of 35% and 38% (95% CI 24 to 45 and 28 to 47)'. Under the rubric's exclusion of pooled papers, a strict labeler could defensibly answer no_results. On safety, the abstract notes 'more patients treated with 1.25 mg/d atrasentan discontinued due to adverse events' and fluid-related weight gain and hemoglobin fall. It also says 'rates of peripheral edema, heart failure, or other side effects did not differ between groups', and it reports no excess of deaths or SAEs. So none_evident is right under the rubric, though notable would be arguable."
+  },
+  {
+   "nct_id": "NCT01497522",
+   "results_paper_pmid": "24604395",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Registry primary outcome is HbA1c change at 12 weeks vs placebo. The abstract reports 'a between-treatment difference of -1.0% (P < 0.001)'. On safety it reports 'comparable incidences of adverse events (44.1% vs. 41.4%). No deaths or hypoglycemic events.' The stored labels match mine. Minor point: the registry shows 183 enrolled while the abstract says 139 randomized, which probably reflects screening. This does not affect the labels."
+  },
+  {
+   "nct_id": "NCT04557085",
+   "results_paper_pmid": "none",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The registry primary outcome is the overall percent change in seizure frequency during the maintenance phase. Neither linked abstract reports that comparison. 41101116 is a seizure-subtype analysis that reports only 'numerically greater reductions vs placebo occurred across all cenobamate doses and seizure subtypes', with no significance test. 41428177 is a 'post hoc analysis' of 227 Chinese participants. no_results therefore follows the rubric, and labeling met would mean filling the result in from memory. On safety, the abstracts report 'most common cenobamate-related treatment-emergent adverse events (>=20%) were dizziness and somnolence' and 'an acceptable safety profile across all dosage groups'. They describe no excess of deaths or SAEs, so none_evident holds, though unknown would also be defensible because no primary results paper is available. The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT01870895",
+   "results_paper_pmid": "26551550",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The abstract names this trial ('Clinicaltrials.gov no: NCT01870895'). Both co-primary endpoints were met: global improvement 50.7% vs 32.0% (P < .001), and increased stool consistency 40.8% vs 24.3% (P < .001). The only safety finding is 'Ramosetron induced constipation in 11.0% of patients', which is an expected on-target effect rather than an excess of deaths or SAEs, so none_evident holds. The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT05053139",
+   "results_paper_pmid": "42054679",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "FRONTIER2. The NEJM paper (42054679) reports both prespecified primary comparisons of treated-bleed ABR, and all four are significant: 0.57 and 0.20 vs 15.76 on-demand (P<0.001), and 54.0% and 42.8% reductions vs run-in prophylaxis (P=0.006 each). The abstract reports \"No patient was reported to have a thromboembolic event or clinical evidence of neutralizing anti-Mim8 antibodies.\" 41257207 is an ex vivo thrombin-generation assay comparison, and 42824064 is the 52-week extension, so neither reports the primary endpoint. All three stored labels agree with mine."
+  },
+  {
+   "nct_id": "NCT04060979",
+   "results_paper_pmid": "36169967",
+   "own_primary_endpoint": "mixed",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "acceptable",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The registered primary objective tests whether NO \"administered intermittently in 2 concentrations ... shortens the recovery time of infants with bronchiolitis, compared to SST alone\". Only the high dose reached significance against control: \"Group 1 demonstrated significant efficacy for time to reach fit to discharge compared with groups 2 (HR, 2.11; P = 0.041) and 3 (HR, 2.32; P = 0.049)\". The low dose did not: \"No significant differences were observed between groups 2 and 3 for either endpoint.\" One of the two drug-vs-control comparisons was met and the other was not, which matches the rubric's 'mixed' (\"some primary endpoints met, others not\"). The stored 'met' is still defensible, because the 150 ppm arm beat control on the prespecified primary endpoint and this is a phase 2 dose-selection study. Safety: \"well tolerated, with no treatment-related serious AEs\". efficacy_failure is false either way, since the high dose showed efficacy."
+  },
+  {
+   "nct_id": "NCT01868061",
+   "results_paper_pmid": "27616196",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "LAVOLTA II. The replicate-trial Lancet Respir Med paper (27616196) gives this trial's primary result separately. For exacerbation rate in biomarker-high patients: \"37.5 mg: RR 0.74 [95% CI 0.54-1.01], p=0.0609; 125 mg: RR 0.74 [0.54-1.02], p=0.0626\". Neither dose is significant, so the endpoint is not_met, and this is a phase 3 efficacy trial, so efficacy_failure is true. Pooled safety was similar between arms: SAEs 8% vs 9%, and discontinuation for AEs 3% vs 4%. The isolated aplastic anaemia and eosinophil-related SAEs are not a clear excess. 31803473 (seasonal post hoc analysis) and 33217063 (baseline phenotype overlap) do not report the primary endpoint. All stored labels agree with mine."
+  },
+  {
+   "nct_id": "NCT01408082",
+   "results_paper_pmid": "none",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "unknown",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The only linked paper (29325546) is a psychometric study: \"This paper reports on the development of psychometric evaluation of a patient-reported measure of blepharitis symptoms.\" It uses the trial's symptom self-reports but reports neither registered primary endpoint (Day 15 clinical resolution vs AzaSite, or 6-month recurrence vs dexamethasone). It also gives no safety data. Under the rubric that means no_results, unknown and false. The stored labels match."
+  },
+  {
+   "nct_id": "NCT02265731",
+   "results_paper_pmid": "33094474",
+   "own_primary_endpoint": "not_assessable",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The registered primary outcomes are TEAE counts, PK parameters (Tmax, Cmax, AUC24) and phase 2 ORR. The paper reports only the 12 CLL/SLL patients, and the abstract states no success threshold for ORR (\"Patients receiving combination therapy had an ORR of 67% and a CR rate of 50%\"). The safety and PK outcomes are descriptive, with no comparison or success criterion, so the result is not_assessable. Safety is single-arm with no comparator. Grade 3 or higher neutropenia in 83% is expected for this drug class, and the authors call the regimen \"well-tolerated\", so none_evident. The stored labels match. The paper does not cover the enrolled NHL, MM and AML arms, which supports not_assessable rather than met."
+  },
+  {
+   "nct_id": "NCT04498650",
+   "results_paper_pmid": "",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "unknown",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The only linked PMID, 34425883, is a Clinical Trial Protocol paper (VIVIAD rationale and design). Its abstract says \"[RESULTS] To be expected early 2023\", so no abstract reports the primary safety or efficacy (cognition z-score) endpoint. The stored no_results/unknown/false labels match mine."
+  },
+  {
+   "nct_id": "NCT01241422",
+   "results_paper_pmid": "25018015",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The registry primary endpoint is the change in FEV1 during the late response to allergen. The abstract reports \"there was no significant attenuation of the maximal percent reduction in the LAR FEV1 with JNJ-40929837 (n = 16, LS mean = 28.6, P = 0.63)\" versus placebo, while montelukast was significant. The drug \"was well-tolerated\", and AEs leading to withdrawal were the same as with placebo. This was a phase 2 efficacy trial with a negative primary result, so efficacy_failure is true. The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT02579850",
+   "results_paper_pmid": "29429593",
+   "own_primary_endpoint": "met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "29429593 is the TRIBUTE primary paper and reports the registry primary endpoint, the moderate-to-severe exacerbation rate over 52 weeks: \"rate ratio of 0.848 (0.723-0.995, p=0.043) in favour of BDP/FF/G\". On safety, AEs were 64% vs 67% and pneumonia 4% vs 4%, with one treatment-related SAE per arm, so there is no excess. 30880943 is a pooled post hoc CID analysis and was correctly not used. The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT05717062",
+   "results_paper_pmid": "",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "unknown",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The only linked PMID, 40738154, is a veterinary case report (\"3 dogs presenting to a tertiary referral academic teaching hospital\" with coral snake envenomation). It is not the BRAVIO human RCT and does not report the viper SSS AUC or elapid head-lift primary endpoints. The registry wrongly linked this paper as DERIVED. The stored no_results/unknown/false labels match mine."
+  },
+  {
+   "nct_id": "NCT01204762",
+   "results_paper_pmid": "26739688",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "26739688 (LIRA-B) reports the Part A primary endpoint, HBeAg seroconversion 24 weeks post-treatment (week 72): \"lambda non-inferiority was not met at week 24 post-treatment (13.8% vs. 30.1%, respectively; lambda vs. alfa 80% CI lower bound -24%)\". The other registry primaries are descriptive SAE/discontinuation counts, so the overall label is not_met rather than mixed. For safety, \"Overall adverse events (AE), serious AE, and AE-discontinuation rates were comparable between arms\". More ALT flares and bilirubin elevations with lambda is a different AE spectrum, not a clear excess of SAEs or deaths, so none_evident applies. 28611778 is a Part B immunology substudy and was correctly not used. The stored labels match mine."
+  },
+  {
+   "nct_id": "NCT01808638",
+   "results_paper_pmid": "33114652",
+   "own_primary_endpoint": "not_assessable",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "wrong",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "Phase Ib/IIa; PMID 33114652 is this trial's results paper ('ClinicalTrials.gov Identifier: NCT01808638'). All registry primary outcomes are descriptive safety and PK measures: number of subjects with AEs, physical exam, vital signs, ECG, labs, and Cmax/AUC/tmax/t1/2. None has a comparison or success criterion, so the rubric makes this not_assessable whatever the authors conclude. The stored 'mixed' rests on a secondary efficacy result from one subgroup, and the comparison is between two Atu027 schedules, not drug vs control: 'The median progression-free survival reached statistical significance in patients who had metastatic disease (1.6 vs. 2.9 months, p = 0.025)'. That is not the prespecified primary endpoint. The stored evidence itself concedes 'The abstract does not state the prespecified primary endpoint', yet the abstract does report the AE primary ('Grade 3 adverse events (AEs) in 9/11 pts (arm 1) and 11/12 pts (arm 2)'). Safety none_evident is correct: there is no control arm and 'The AEs were mainly laboratory abnormalities without clinical significance', so there is no excess of deaths or SAEs in a drug arm to compare. efficacy_failure false is correct."
+  },
+  {
+   "nct_id": "NCT02021409",
+   "results_paper_pmid": "",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "unknown",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The only linked PMID, 36005278, is a Cochrane systematic review and meta-analysis ('We included 51 studies randomising 30,994 adults'). It lists NCT02021409 among 65 accessions but reports only pooled class-level estimates. It never gives this trial's primary result (change in Hb from baseline to weeks 12-16, molidustat vs darbepoetin). So no_results, unknown safety and efficacy_failure false are all correct. results_paper_pmid is left empty because no linked paper reports this trial's primary endpoint."
+  },
+  {
+   "nct_id": "NCT06796868",
+   "results_paper_pmid": "41425080",
+   "own_primary_endpoint": "not_met",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": true,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "PMID 41425080 reports this trial. The abstract's primary endpoint, 'change from baseline to Week 8 in the total score of the Hamilton Rating Scale for Depression-17 item (HAMD-17)', matches the registry. The result is 'GW117 showed numerically greater reductions versus placebo in the HAMD-17 and MADRS total scores ... However, these differences did not reach statistical significance', so not_met is correct. The significant results ('a significant 3.66-point greater reduction in MADRS (p=0.026)') come from a post hoc subgroup and are on MADRS and response rate, not HAMD-17. They therefore do not make the primary endpoint mixed. Safety none_evident is correct: 'well-tolerated ... no concerning safety signals reported'. This is a placebo-controlled phase 2 efficacy trial whose primary endpoint was not met, so efficacy_failure true is correct."
+  },
+  {
+   "nct_id": "NCT02713282",
+   "results_paper_pmid": "",
+   "own_primary_endpoint": "no_results",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "The only linked PMID, 35186258, describes itself as an 'exploratory post hoc subgroup analysis of the 52-week, phase 3b REMISSIO study'. It reports remission only by age and disease-duration subgroups ('60.7% ... of younger patients and 54.1% of older patients ... achieved symptomatic remission'), never the overall prespecified month-12 remission rate. The rubric excludes post hoc analyses, so no_results fits. not_assessable would also be defensible, because the primary endpoint is a single-arm proportion with no stated success criterion; met would not be. Safety none_evident is supported for the whole cohort: 'PP3M had a favourable safety profile and was generally well tolerated in both age groups'. efficacy_failure false is correct. results_paper_pmid is left empty because the linked paper is post hoc and does not report the primary endpoint."
+  },
+  {
+   "nct_id": "NCT03617367",
+   "results_paper_pmid": "40439027",
+   "own_primary_endpoint": "not_assessable",
+   "own_safety_signal": "none_evident",
+   "own_efficacy_failure": false,
+   "primary_endpoint_verdict": "correct",
+   "safety_signal_verdict": "correct",
+   "efficacy_failure_verdict": "correct",
+   "note": "PMID 40439027 is the ASPEN-OLS results paper ('phase 3, open-label ASPEN-OLS (NCT03617367)'). The registry primary endpoint is the incidence of TEAEs over 52 weeks, a descriptive safety measure in a single-arm open-label extension with no comparison. The rubric makes this not_assessable even though the authors conclude 'DAXI was safe and efficacious'. Safety none_evident is correct: 'No trend was observed between exposure to DAXI and any safety signals or antibody events', and the most common TRAEs were 'muscular weakness (4.9%), injection-site pain (4.2%), and dysphagia (3.9%)'. efficacy_failure false is correct."
+  }
+ ]
+}
