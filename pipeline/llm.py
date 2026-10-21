@@ -64,11 +64,19 @@ def git_commit() -> str | None:
 
 
 KEEPALIVE = {"keepalives": 1, "keepalives_idle": 30, "keepalives_interval": 10, "keepalives_count": 3}
+CONNECT_ATTEMPTS = 6
 
 
 def connect():
-    """A connection that notices a dead peer within about a minute instead of hanging."""
-    return psycopg2.connect(os.environ["DATABASE_URL"], **KEEPALIVE)
+    """A connection that notices a dead peer within about a minute instead of hanging,
+    retried with backoff while the server cannot be reached."""
+    for attempt in range(CONNECT_ATTEMPTS):
+        try:
+            return psycopg2.connect(os.environ["DATABASE_URL"], **KEEPALIVE)
+        except psycopg2.OperationalError:
+            if attempt == CONNECT_ATTEMPTS - 1:
+                raise
+            time.sleep(10 * (attempt + 1))
 
 
 def register_release(cur, name: str, version: str, url: str, sha: str, metadata: dict) -> int:
