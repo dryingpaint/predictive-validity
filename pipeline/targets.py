@@ -1,13 +1,24 @@
 """Molecular targets of every entity with an industry-sponsored development program.
 
-    python -m pipeline.targets resolve   # LLM: human protein targets (HGNC) -> preclin.moiety_target
+    python -m pipeline.targets resolve     # LLM: human protein targets (HGNC) -> preclin.moiety_target
+    python -m pipeline.targets mechanism   # LLM: germline mechanism per (target, disease) -> preclin.gene_disease_mechanism
 
-The LLM sees the entity's names, modality, the ChEMBL mechanism-of-action
+resolve: the LLM sees the entity's names, modality, the ChEMBL mechanism-of-action
 records attached to any of its intervention names, and trial titles. Every
 returned symbol must be an approved human protein symbol in public.targets.
 Entities acting on pathogens, or without a defined molecular target, are
 recorded as such and get no target rows; entities without an industry trial,
 or whose decision failed, keep no target kind.
+
+mechanism: for each primary target gene of an entity and each disease the entity
+is developed for, where Open Targets has germline evidence (GWAS, gene burden,
+ClinVar pathogenic, Orphanet, Gene2Phenotype, ClinGen, PanelApp, UniProt) for the
+disease or a subtype, the LLM states, without being told any drug, whether
+risk variants lower or raise the gene product's function, whether protective
+variants are known, and when that was established. Open Targets' own direction
+field follows variant consequence alone, so a few truncating ClinVar variants
+make a gain-of-function disease gene such as PCSK9, MYH7 or TTR read as loss of
+function.
 """
 from __future__ import annotations
 
@@ -119,10 +130,95 @@ def resolve(_args) -> None:
     print(f"entities={len(items)} target rows={len(rows)}")
 
 
+MECHANISM_SYSTEM = """You state how germline variation in a human gene acts on a disease, from the human genetics literature. You are not told about any drug, and you answer from genetics alone.
+
+- risk_mechanism: how the variants that cause the disease or raise its risk change the gene product's function. loss_of_function: null, hypomorphic, haploinsufficient or biallelic loss, or lower expression. gain_of_function: higher or constitutive activity, toxic gain (misfolding, aggregation), neomorphic activity, or higher expression. dominant_negative: a mutant product that interferes with the wild-type protein. mixed: variants acting in opposite directions on function both cause or raise risk of this disease. unknown: a genetic association is established but the direction of its effect on the gene's function is not (for example a GWAS locus without functional follow-up). none: no established germline link between this gene and this disease.
+- protective: loss_of_function_protective when variants that lower the gene's function are established to protect against this disease (for example PCSK9 nonsense variants and coronary disease); gain_of_function_protective when variants that raise its function protect; none_known otherwise.
+- established_year: the year the risk mechanism or the protective effect you report was first published with reasonable support (the earlier of the two when both); null when risk_mechanism is unknown or none and no protective effect is known.
+- confidence: high for replicated human genetic and functional evidence, medium for consistent but limited evidence, low otherwise.
+- basis: one or two sentences naming the key finding (first author and year when you know them)."""
+
+MECHANISM_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "risk_mechanism": {"type": "string", "enum": ["loss_of_function", "gain_of_function", "dominant_negative",
+                                                       "mixed", "unknown", "none"]},
+        "protective": {"type": "string", "enum": ["loss_of_function_protective", "gain_of_function_protective",
+                                                   "none_known"]},
+        "established_year": {"type": ["integer", "null"]},
+        "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+        "basis": {"type": "string"},
+    },
+    "required": ["risk_mechanism", "protective", "established_year", "confidence", "basis"],
+    "additionalProperties": False,
+}
+
+
+def render_mechanism(p: dict) -> str:
+    return (f"Gene: {p['symbol']} ({p['gene_name']})\nDisease: {p['disease']} ({p['mondo_id']})\n"
+            f"Disease definition: {p['definition'] or 'none given'}")
+
+
+def validate_mechanism(p: dict, out: dict) -> None:
+    directed = out["risk_mechanism"] not in ("unknown", "none") or out["protective"] != "none_known"
+    year = out["established_year"]
+    if directed and year is None:
+        raise ValueError("a stated mechanism needs the year it was established")
+    if year is not None and not 1900 <= year <= 2026:
+        raise ValueError(f"established_year {year}")
+
+
+MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v1", schema_version="v1",
+                          system=MECHANISM_SYSTEM, schema=MECHANISM_SCHEMA, render=render_mechanism,
+                          validate=validate_mechanism, subject_type="gene_disease", model="claude-opus-5-5",
+                          effort="low", max_tokens=1500)
+GERMLINE_SOURCES = ["gwas_credible_sets", "gene_burden", "eva", "orphanet", "gene2phenotype", "clingen",
+                    "genomics_england", "uniprot_variants", "uniprot_literature"]
+
+
+def mechanism(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            WITH ev AS (
+                SELECT DISTINCT e.target_ensembl, m.term
+                FROM preclin.ot_evidence e JOIN preclin.ot_disease od USING (disease_id)
+                CROSS JOIN LATERAL unnest(od.mondo_ids) AS m(term)
+                WHERE e.datasource = ANY(%s)
+                  AND (e.datasource <> 'eva'
+                       OR e.detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic'])),
+            covered AS (
+                SELECT target_ensembl, term AS mondo_id FROM ev
+                UNION
+                SELECT ev.target_ensembl, a.ancestor_id FROM ev
+                JOIN preclin.ontology_ancestor a ON a.ontology = 'MONDO' AND a.term_id = ev.term),
+            pairs AS (
+                SELECT DISTINCT t.ensembl_id, t.symbol, t.name, p.mondo_id
+                FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
+                JOIN preclin.moiety_target mt USING (moiety_id) JOIN public.targets t ON t.id = mt.target_id
+                WHERE mt.is_primary AND m.target_kind = 'human_protein' AND p.mondo_id IS NOT NULL)
+            SELECT p.ensembl_id, p.symbol, p.name, p.mondo_id, o.label, o.definition
+            FROM pairs p JOIN covered c ON c.target_ensembl = p.ensembl_id AND c.mondo_id = p.mondo_id
+            JOIN preclin.ontology_term o ON o.ontology = 'MONDO' AND o.term_id = p.mondo_id
+            ORDER BY p.ensembl_id, p.mondo_id""", (GERMLINE_SOURCES,))
+        items = {f"{ens}|{mondo}": {"symbol": symbol, "gene_name": name or "", "mondo_id": mondo, "disease": label,
+                                    "definition": (definition or "")[:500]}
+                 for ens, symbol, name, mondo, label, definition in cur.fetchall()}
+    run_id = llm.run(MECHANISM_TASK, items)
+    rows = [(*key.split("|"), o["risk_mechanism"], o["protective"], o["established_year"], o["confidence"], did)
+            for key, did, o in llm.decisions(run_id)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.gene_disease_mechanism")
+        execute_values(cur, """INSERT INTO preclin.gene_disease_mechanism (ensembl_id, mondo_id, risk_mechanism,
+                                 protective, established_year, confidence, llm_decision_id) VALUES %s""", rows)
+        conn.commit()
+    print(f"pairs={len(items)} classified={len(rows)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("resolve").set_defaults(fn=resolve)
+    sub.add_parser("mechanism").set_defaults(fn=mechanism)
     args = parser.parse_args()
     args.fn(args)
 
