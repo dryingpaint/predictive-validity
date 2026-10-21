@@ -7,6 +7,7 @@ SVG files to report/output/figures/.
 """
 from __future__ import annotations
 
+import json
 import os
 
 import matplotlib
@@ -140,6 +141,145 @@ def dose_response():
     save(fig, "genetic_dose_response")
 
 
+S3_MAP = [  # (feature, group) in display order; features with no exposed programs before entry are left out
+    ("g3", "Human genetics"), ("gwas_strong", "Human genetics"),
+    ("gwas_mid", "Human genetics"), ("gwas_weak", "Human genetics"),
+    ("mendelian", "Human genetics"), ("mendelian_strong", "Human genetics"),
+    ("somatic", "Somatic"), ("somatic_concordant", "Somatic"),
+    ("mgi", "Mouse"), ("mgi_strong", "Mouse"), ("expression", "Expression and pathways"),
+    ("reactome", "Expression and pathways"), ("b1", "Clinical precedent"), ("precedent", "Clinical precedent"),
+    ("pan_essential", "Target liability"), ("constrained", "Target liability"), ("ko_lethal", "Target liability"),
+]
+S3_GROUP_COLORS = {"Human genetics": "#2a78d6", "Somatic": "#eb6834", "Mouse": "#1baf7a",
+                   "Expression and pathways": "#eda100", "Clinical precedent": "#4a3aa7", "Target liability": "#6b6a65"}
+
+
+def s3_evidence_map():
+    df = pd.read_csv(os.path.join(OUT, "section3", "evidence_map.csv"))
+    df = df[df.scope == "C2"].set_index("feature")
+    rows = [(f, g) for f, g in S3_MAP if f in df.index and pd.notna(df.at[f, "rr"])]
+    fig, ax = plt.subplots(figsize=(9.5, 0.36 * len(rows) + 1.2))
+    for i, (f, g) in enumerate(rows):
+        y = len(rows) - 1 - i
+        r = df.loc[f]
+        color = S3_GROUP_COLORS[g]
+        ax.plot([np.log2(r.lo), np.log2(r.hi)], [y, y], color=color, linewidth=2, solid_capstyle="round")
+        if pd.notna(r.get("today_rr")):
+            ax.plot(np.log2(r.today_rr), y, "o", markerfacecolor="white", markeredgecolor=color, markersize=7,
+                    markeredgewidth=1.5)
+        ax.plot(np.log2(r.rr), y, "o", color=color, markersize=6, markeredgecolor="white", markeredgewidth=1)
+        ax.text(3.15, y, f"{int(r.n):,}", va="center", ha="right", color=INK2, fontsize=8)
+        ax.text(3.9, y, f"{r.ppv:.0%}", va="center", ha="right", color=INK2, fontsize=8)
+        ax.text(4.75, y, f"{r.coverage:.0%}", va="center", ha="right", color=INK2, fontsize=8)
+    for x, head in ((3.15, "Programs"), (3.9, "Advanced"), (4.75, "Share of all\nadvancers")):
+        ax.text(x, len(rows) - 0.45, head, ha="right", va="bottom", color=INK2, fontsize=8)
+    ax.set_ylim(-0.6, len(rows) + 0.3)
+    ax.axvline(0, color=INK2, linewidth=1)
+    ticks = [0.25, 0.5, 1, 2, 4]
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.set_xlim(np.log2(0.2), 4.85)
+    ax.set_yticks(range(len(rows)), [LABEL_S3.get(f, f) for f, _ in rows][::-1], color=INK, fontsize=9)
+    ax.set_xlabel("Risk ratio of reaching Phase 3 or approval within 4 years of Phase 2 entry (95% CI); "
+                  "hollow: evidence known today", color=INK2, fontsize=8)
+    style(ax)
+    ax.set_title("Phase 2 programs, 2015–2020: evidence for the disease as of the year before entry",
+                 loc="left", color=INK, fontsize=10, pad=24)
+    save(fig, "s3_evidence_map")
+
+
+LABEL_S3 = {"g3": "Germline genetics for the disease", "gwas": "GWAS, any",
+            "gwas_strong": "GWAS, locus-to-gene ≥ 0.8", "gwas_mid": "GWAS, best locus-to-gene 0.5–0.8",
+            "gwas_weak": "GWAS, best locus-to-gene < 0.5",
+            "mendelian": "Mendelian / ClinVar pathogenic", "mendelian_strong": "Mendelian, top-tier curation",
+            "somatic": "Somatic driver", "somatic_concordant": "Somatic driver, direction matches drug",
+            "mgi": "Mouse model (literature)", "mgi_strong": "Mouse model, top-quartile match",
+            "expression": "Differential expression", "reactome": "Reactome pathway",
+            "b1": "Approved drug on target, related disease", "precedent": "Approved drug on target, any disease",
+            "pan_essential": "Pan-essential (DepMap)", "constrained": "LoF-intolerant (LOEUF < 0.35)",
+            "ko_lethal": "Mouse knockout lethal before weaning"}
+ENDPOINT_NAMES = {"B1_target_engagement": "Target engagement", "B2_exploratory_biomarker": "Exploratory biomarker",
+                  "B3_regulatory_surrogate": "Regulatory surrogate", "B4_objective_physiological": "Objective physiology",
+                  "B5_clinician_scale": "Clinician-rated scale", "B6_patient_reported": "Patient-reported",
+                  "B7_disease_events": "Disease events", "B8_hard_outcome": "Hard outcome (death, etc.)",
+                  "O1_tumor_response": "Tumour response", "O2_progression_free": "Progression-free survival",
+                  "O3_overall_survival": "Overall survival"}
+
+
+def s3_endpoints():
+    df = pd.read_csv(os.path.join(OUT, "section3", "endpoint_classes.csv"))
+    df = df[(df.scope == "all") & df.endpoint_class.isin(ENDPOINT_NAMES) & (df.n >= 10)].set_index("endpoint_class")
+    order = [c for c in ENDPOINT_NAMES if c in df.index]
+    fig, ax = plt.subplots(figsize=(8, 0.42 * len(order) + 1.2))
+    for i, c in enumerate(order):
+        y = len(order) - 1 - i
+        r = df.loc[c]
+        ax.plot([r.rate_without * 100, r.ppv * 100], [y, y], color=GRID, linewidth=3, solid_capstyle="round")
+        ax.plot(r.rate_without * 100, y, "o", color=BAR, markersize=8, markeredgecolor="white", markeredgewidth=1.5)
+        ax.plot(r.ppv * 100, y, "o", color=ACCENT, markersize=8, markeredgecolor="white", markeredgewidth=1.5)
+        ax.text(101, y, f"{int(r.n):,} / {int(r.n_cohort):,}", va="center", color=INK2, fontsize=8)
+    ax.text(101, len(order) - 0.45, "Trials with genetics\n/ all trials", va="bottom", color=INK2, fontsize=8)
+    ax.set_ylim(-0.6, len(order) + 0.3)
+    ax.set_yticks(range(len(order)), [ENDPOINT_NAMES[c] for c in order][::-1], color=INK, fontsize=9)
+    ax.set_xlim(0, 100)
+    ax.set_xlabel("Primary endpoint not met (%): grey, no germline genetics for the disease; blue, with it",
+                  color=INK2, fontsize=8)
+    style(ax)
+    ax.set_title("Randomised industry Phase 2/3 efficacy trials since 2010, by primary endpoint",
+                 loc="left", color=INK, fontsize=10, pad=24)
+    save(fig, "s3_endpoints")
+
+
+def s3_specificity():
+    n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
+    names = {"g0": "None (G0)", "g1": "Unrelated diseases only (G1)", "g2": "Related disease only (G2)",
+             "g3": "The program's disease (G3)"}
+    fig, axes = plt.subplots(1, 2, figsize=(9, 2.6), sharex=True)
+    for ax, scope, title in zip(axes, ("COM", "ONC"), ("Non-oncology", "Oncology")):
+        lv = n["levels"][scope]["frozen"]
+        rows = [("g0", lv["g3"]["rate_without"], None),
+                *((k, lv[k]["ppv"], lv[k].get("rr")) for k in ("g1", "g2", "g3"))]
+        y = np.arange(len(rows))[::-1]
+        ax.barh(y, [100 * v for _, v, _ in rows], height=0.6, color=[BAR, BAR, BAR, ACCENT])
+        for yi, (k, v, rr) in zip(y, rows):
+            ax.text(100 * v + 0.8, yi, f"{v:.0%}" + ("" if rr is None else f"  ({rr:.2f}× G0)"), va="center",
+                    color=INK2, fontsize=8)
+        ax.set_yticks(y, [names[k] for k, _, _ in rows], color=INK, fontsize=8)
+        ax.set_title(title, loc="left", color=INK, fontsize=9)
+        ax.set_xlim(0, 50)
+        style(ax)
+    axes[1].set_yticklabels([])
+    fig.suptitle("Phase 2 programs advancing within 4 years, by where the target's germline genetic evidence lay "
+                 "before entry", x=0.01, y=1.06, ha="left", color=INK, fontsize=10)
+    save(fig, "s3_specificity")
+
+
+def s3_rules():
+    df = pd.read_csv(os.path.join(OUT, "section3", "rules.csv")).dropna(subset=["discovery_rr", "confirmation_rr"])
+    fig, ax = plt.subplots(figsize=(8.5, 0.5 * len(df) + 1.2))
+    for i, r in enumerate(df.itertuples()):
+        y = len(df) - 1 - i
+        for dy, (rr, lo, hi, color) in ((0.14, (r.discovery_rr, r.discovery_lo90, r.discovery_hi90, BAR)),
+                                        (-0.14, (r.confirmation_rr, r.confirmation_lo90, r.confirmation_hi90, ACCENT))):
+            if rr == 0:
+                ax.text(np.log2(0.13), y + dy, "no exposed program advanced", va="center", color=color, fontsize=7)
+                continue
+            lo, hi = max(lo, 0.125), min(max(hi, 0.125), 16)
+            ax.plot([np.log2(lo), np.log2(hi)], [y + dy] * 2, color=color, linewidth=2)
+            ax.plot(np.log2(rr), y + dy, "o", color=color, markersize=6, markeredgecolor="white")
+    ax.axvline(0, color=INK2, linewidth=1)
+    ax.axvline(np.log2(1.3), color=GRID, linewidth=1, linestyle="--")
+    ticks = [0.25, 0.5, 1, 2, 4, 8]
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.set_yticks(range(len(df)), [f"{r.rule} {r.label}" + ("" if r.registered else " (post hoc)")
+                                   for r in df.itertuples()][::-1], color=INK, fontsize=8)
+    ax.set_xlabel("Crude risk ratio of advancing within 4 years (90% target bootstrap); grey: discovery targets, "
+                  "blue: held-out targets", color=INK2, fontsize=8)
+    style(ax)
+    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation", loc="left", color=INK,
+                 fontsize=10)
+    save(fig, "s3_rules")
+
+
 def main():
     failure_modes()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
@@ -147,6 +287,11 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()
+    if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
+        s3_evidence_map()
+        s3_specificity()
+        s3_endpoints()
+        s3_rules()
 
 
 if __name__ == "__main__":
