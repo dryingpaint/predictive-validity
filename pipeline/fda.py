@@ -276,7 +276,7 @@ def render_letter(p: dict) -> str:
 LETTER_TASK = llm.Task(
     name="fda_letter_approved_uses", prompt_version="v1", schema_version="v1",
     system=LETTER_SYSTEM, schema=LETTER_SCHEMA, render=render_letter, subject_type="fda_letter",
-    effort="medium", max_tokens=6000)
+    effort="medium", max_tokens=32000)
 
 
 def extract(_args) -> None:

@@ -116,10 +116,11 @@ ROLE_SCHEMA = {
 def render_roles(p: dict) -> str:
     arms = "\n".join(f"- [{a.get('type')}] {a.get('label')}: {(a.get('description') or '')[:300]} "
                       f"(interventions: {', '.join(a.get('interventionNames') or [])})" for a in p["arms"])
-    ivs = "\n".join(f"- {i['name']} [{i['type']}] -> {', '.join(i['moieties'])}: {i['description'][:200]}"
+    ivs = "\n".join(f"- {i['name']} [{i['type']}] -> {'; '.join(i['moieties'])}: {i['description'][:200]}"
                      for i in p["interventions"])
+    entities = "\n".join(f"- {m}" for m in p["moieties"])  # one per line: entity names can contain commas
     return (f"Trial {p['nct_id']}: {p['title']}\nPhases: {', '.join(p['phases'])}\n\nArms:\n{arms or '(none listed)'}"
-            f"\n\nInterventions (-> molecular entities):\n{ivs}\n\nEntities to classify: {', '.join(p['moieties'])}")
+            f"\n\nInterventions (-> molecular entities):\n{ivs}\n\nEntities to classify, one per line:\n{entities}")
 
 
 def validate_roles(p: dict, out: dict) -> None:
@@ -128,7 +129,7 @@ def validate_roles(p: dict, out: dict) -> None:
         raise ValueError(f"roles cover {got}, expected {sorted(p['moieties'])}")
 
 
-ROLE_TASK = llm.Task(name="trial_moiety_role", prompt_version="v2", schema_version="v1", system=ROLE_SYSTEM,
+ROLE_TASK = llm.Task(name="trial_moiety_role", prompt_version="v3", schema_version="v1", system=ROLE_SYSTEM,
                      schema=ROLE_SCHEMA, render=render_roles, validate=validate_roles,
                      subject_type="trial", effort="low", max_tokens=2000)
 
@@ -210,13 +211,15 @@ PURPOSE_SCHEMA = {
 
 
 def render_purpose(p: dict) -> str:
+    conditions = "\n".join(f"- {c}" for c in p["conditions"])  # one per line: a condition can contain commas
     arms = "\n".join(f"- [{a.get('type')}] {a.get('label')}: {(a.get('description') or '')[:200]}" for a in p["arms"][:8])
     ivs = "\n".join(f"- {i.get('name')} [{i.get('type')}]: {(i.get('description') or '')[:200]}"
                      for i in p["interventions"][:8])
     return (f"Trial {p['nct_id']}: {p['title']}\nOfficial title: {p['official_title'] or '-'}\n"
             f"Sponsor: {p['sponsor']}; phases: {', '.join(p['phases'])}; status: {p['status']}; start: {p['start']}; "
             f"enrollment: {p['enrollment']}; healthy volunteers accepted: {p['healthy_volunteers']}; "
-            f"primary purpose: {p['primary_purpose']}\nListed conditions: {'; '.join(p['conditions']) or '(none)'}\n"
+            f"primary purpose: {p['primary_purpose']}\n"
+            f"Listed conditions, one per line:\n{conditions or '(none)'}\n"
             f"Interventions:\n{ivs or '(none)'}\nArms:\n{arms or '(none)'}\n"
             f"Brief summary: {p['summary'] or '(none)'}")
 
@@ -227,7 +230,7 @@ def validate_purpose(p: dict, out: dict) -> None:
         raise ValueError(f"development_conditions not among listed conditions: {sorted(extra)[:3]}")
 
 
-PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v1", schema_version="v1", system=PURPOSE_SYSTEM,
+PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v2", schema_version="v1", system=PURPOSE_SYSTEM,
                         schema=PURPOSE_SCHEMA, render=render_purpose, validate=validate_purpose,
                         subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
 
@@ -297,7 +300,7 @@ def validate_indications(p: dict, out: dict) -> None:
 INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v2", schema_version="v1",
                            system=INDICATION_SYSTEM, schema=INDICATION_SCHEMA, render=render_indications,
                            validate=validate_indications, subject_type="moiety", model="claude-opus-5-5",
-                           effort="medium", max_tokens=16000)
+                           effort="medium", max_tokens=32000)
 
 
 def indications(_args) -> None:

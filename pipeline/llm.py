@@ -230,7 +230,8 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
                     todo: list[str]) -> None:
     def call(key):
         try:
-            msg = api.messages.create(**task.request_params(items[key]))
+            with api.messages.stream(**task.request_params(items[key])) as stream:  # streamed: no cap on max_tokens
+                msg = stream.get_final_message()
             return key, msg.id, *_parse(task, items[key], msg)
         except anthropic.APIError as exc:
             return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
