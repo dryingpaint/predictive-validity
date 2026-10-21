@@ -1,13 +1,13 @@
-"""MONDO and EFO OBO releases -> preclin.ontology_* tables.
+"""MONDO OBO release -> preclin.ontology_* tables.
 
     python -m pipeline.ontology load
 
-Downloads each ontology's latest OBO release once (SOURCES points at
-releases/latest); the cached file under .cache/ontology is what pins the
-release. Records it in preclin.evidence_source_release, and loads terms, is_a
-edges, the transitive ancestor closure (with distances) and cross-references.
-MONDO is the disease vocabulary for indications; EFO is needed to place GWAS
-Catalog traits.
+Downloads MONDO's latest OBO release once (SOURCES points at releases/latest);
+the cached file under .cache/ontology is what pins the release. Records it in
+preclin.evidence_source_release, and loads terms, is_a edges, the transitive
+ancestor closure (with distances) and cross-references, flagging those MONDO
+declares equivalent. MONDO is the disease vocabulary for indications and for
+matching Open Targets evidence to them.
 """
 from __future__ import annotations
 
@@ -22,10 +22,7 @@ from psycopg2.extras import execute_values
 from pipeline import llm
 
 CACHE = os.path.join(llm.REPO, ".cache", "ontology")
-SOURCES = {
-    "MONDO": "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo",
-    "EFO": "https://github.com/EBISPOT/efo/releases/latest/download/efo.obo",
-}
+SOURCES = {"MONDO": "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo"}
 
 
 def norm_id(value: str) -> str:
@@ -42,8 +39,8 @@ def norm_id(value: str) -> str:
 
 
 def parse_obo(path: str) -> tuple[str, list[dict]]:
-    """(data-version, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs,
-    replaced_by and obsolete flag; identifiers in CURIE form."""
+    """(data-version, terms): one dict per [Term] stanza with id, name, def, exact synonyms, is_a, xrefs
+    as (id, declared equivalent), replaced_by and obsolete flag; identifiers in CURIE form."""
     version, terms, term = "unknown", [], None
     with open(path, encoding="utf-8") as f:
         for raw in f:
@@ -74,7 +71,7 @@ def parse_obo(path: str) -> tuple[str, list[dict]]:
             elif key == "is_a":
                 term["is_a"].append(norm_id(value))
             elif key == "xref":
-                term["xrefs"].append(norm_id(value))
+                term["xrefs"].append((norm_id(value), 'source="MONDO:equivalentTo"' in value))
             elif key == "replaced_by":
                 term["replaced_by"] = norm_id(value)
             elif key == "is_obsolete" and value == "true":
@@ -102,6 +99,9 @@ def closure(graph: dict[str, list[str]], terms: Iterable[str]) -> list[tuple[str
 
 def load(_args) -> None:
     os.makedirs(CACHE, exist_ok=True)
+    with llm.connect() as conn, conn.cursor() as cur:  # ontologies no longer in SOURCES
+        for table in ("ontology_ancestor", "ontology_xref", "ontology_is_a", "ontology_term"):
+            cur.execute(f"DELETE FROM preclin.{table} WHERE ontology <> ALL(%s)", (list(SOURCES),))
     for prefix, url in SOURCES.items():
         path = os.path.join(CACHE, os.path.basename(url))
         if not os.path.exists(path):
@@ -111,21 +111,12 @@ def load(_args) -> None:
                     f.write(block)
         sha = llm.sha256_file(path)
         version, terms = parse_obo(path)
-        if prefix == "MONDO":
-            terms = [t for t in terms if t.get("id", "").startswith("MONDO:")]
-            graph = {}
-        else:  # EFO imports MONDO terms; those stay owned by the MONDO release.
-            terms = [t for t in terms if "id" in t and not t["id"].startswith("MONDO:")]
-            with llm.connect() as conn, conn.cursor() as cur:
-                cur.execute("SELECT child_id, parent_id FROM preclin.ontology_is_a WHERE ontology = 'MONDO'")
-                graph = defaultdict(list)
-                for child, parent in cur.fetchall():
-                    graph[child].append(parent)
+        terms = [t for t in terms if t.get("id", "").startswith(f"{prefix}:")]
         parents = defaultdict(list)
         for t in terms:
             if not t["obsolete"]:
                 parents[t["id"]].extend(t["is_a"])
-        anc = closure({**graph, **parents}, parents)
+        anc = closure(parents, parents)
         with llm.connect() as conn, conn.cursor() as cur:
             release = llm.register_release(cur, f"{prefix.lower()}_obo", version, url, sha, {"n_terms": len(terms)})
             cur.execute("DELETE FROM preclin.ontology_ancestor WHERE ontology = %s", (prefix,))
@@ -140,9 +131,11 @@ def load(_args) -> None:
             execute_values(cur, """INSERT INTO preclin.ontology_is_a (ontology, child_id, parent_id) VALUES %s
                                    ON CONFLICT DO NOTHING""",
                            [(prefix, c, p) for c, ps in parents.items() for p in set(ps)], page_size=5000)
-            execute_values(cur, """INSERT INTO preclin.ontology_xref (ontology, term_id, xref_id) VALUES %s
+            xrefs = {(t["id"], x): False for t in terms for x, _ in t["xrefs"]}
+            xrefs.update({(t["id"], x): True for t in terms for x, eq in t["xrefs"] if eq})
+            execute_values(cur, """INSERT INTO preclin.ontology_xref (ontology, term_id, xref_id, equivalent) VALUES %s
                                    ON CONFLICT DO NOTHING""",
-                           [(prefix, t["id"], x) for t in terms for x in set(t["xrefs"])], page_size=5000)
+                           [(prefix, term, x, eq) for (term, x), eq in xrefs.items()], page_size=5000)
             execute_values(cur, """INSERT INTO preclin.ontology_ancestor (ontology, term_id, ancestor_id, distance)
                                    VALUES %s ON CONFLICT DO NOTHING""", [(prefix, *r) for r in anc], page_size=10000)
             conn.commit()

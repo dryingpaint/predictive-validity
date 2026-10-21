@@ -22,6 +22,7 @@ from datetime import datetime, timezone
 from typing import Any, Callable
 
 import anthropic
+import httpx2
 import psycopg2
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages.batch_create_params import Request
@@ -35,6 +36,7 @@ MODEL = "claude-opus-5"
 BATCH_SIZE = 2000
 POLL_SECONDS = 60
 WORKERS = 24  # concurrent Messages calls of a direct run
+STREAM_ATTEMPTS = 3  # the SDK retries opening a request, not a stream that drops partway
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
 DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
@@ -120,16 +122,17 @@ class Task:
 
 def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
     """subject_key -> (raw_response, parsed_output, provider_request_id, usage,
-    llm_decision_id) of validated decisions from earlier runs of this task and
-    prompt version: with reuse_by='input' the latest one per subject whose
-    input hash equals the current payload's hash; with reuse_by='subject' the
-    latest one per subject whatever its input."""
+    llm_decision_id, model_parameters) of validated decisions from earlier runs
+    of this task and prompt version: with reuse_by='input' the latest one per
+    subject whose input hash equals the current payload's hash; with
+    reuse_by='subject' the latest one per subject whatever its input. A decision
+    that fails the task's validation against today's data is not reused."""
     keys = list(items)
     hashes = [sha256_text(canonical_json(items[k])) for k in keys]
     cur.execute(
         """
         SELECT DISTINCT ON (d.subject_key) d.subject_key, d.raw_response, d.parsed_output,
-               d.provider_request_id, d.usage, d.llm_decision_id
+               d.provider_request_id, d.usage, d.llm_decision_id, d.model_parameters
         FROM unnest(%s::text[], %s::text[]) AS w(subject_key, input_sha256)
         JOIN pv_evidence.llm_decision d ON d.subject_key = w.subject_key
              AND (%s = 'subject' OR d.input_sha256 = w.input_sha256)
@@ -140,19 +143,28 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) 
         """,
         (keys, hashes, reuse_by, task.name, task.subject_type, task.prompt_version, task.schema_version),
     )
-    return {row[0]: row[1:] for row in cur.fetchall()}
+    reused = {}
+    for key, *row in cur.fetchall():
+        try:
+            if task.validate:
+                task.validate(items[key], row[1])
+        except Exception:  # valid when decided, not against today's data: decide again
+            continue
+        reused[key] = tuple(row)
+    return reused
 
 
 def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
          parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
-         error: str | None = None, prior_id: int | None = None) -> tuple:
-    """One llm_decision row; prior_id is the earlier decision a reused one copies."""
+         error: str | None = None, prior_id: int | None = None, params: dict[str, Any] | None = None) -> tuple:
+    """One llm_decision row; prior_id and params are the earlier decision a reused
+    one copies and the model parameters it was made with."""
     canonical = parsed if parsed is not None else {"error": error}
     return (str(run_id), task.name, task.subject_type, key,
             sha256_text(canonical_json(payload)), raw, Json(canonical),
             sha256_text(raw), Json(canonical), sha256_text(canonical_json(canonical)),
             prior_id, "unchanged" if prior_id else "not_compared", Json(payload), request_id,
-            Json({"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
+            Json(params or {"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
             Json(usage), "invalid" if error else "validated", Json([error] if error else []))
 
 
@@ -170,15 +182,30 @@ def _insert(conn, rows: list[tuple]) -> None:
         conn.commit()
 
 
+def _store(rows: list[tuple]) -> None:
+    """Insert at most 2,000 decision rows (one transaction) on a fresh connection,
+    replaying them while the database cannot be reached."""
+    for attempt in range(CONNECT_ATTEMPTS):
+        conn = connect()
+        try:
+            _insert(conn, rows)
+            return
+        except (psycopg2.OperationalError, psycopg2.InterfaceError):
+            if attempt == CONNECT_ATTEMPTS - 1:
+                raise
+            time.sleep(10 * (attempt + 1))
+        finally:
+            conn.close()
+
+
 def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input") -> uuid.UUID:
     """Decide every item (subject_key -> payload). Returns the run id; the
     run's decisions cover every key, reused or new. reuse_by='subject' keeps
     earlier decisions when only incidental payload details (e.g. the order of
-    context rows) changed."""
-    conn = connect()
+    context rows) changed. A run that stops on an error is marked failed."""
     api = anthropic.Anthropic(max_retries=8)
     run_id = uuid.uuid4()
-    with conn.cursor() as cur:
+    with connect() as conn, conn.cursor() as cur:
         cur.execute(
             """
             INSERT INTO pv_evidence.llm_decision_run
@@ -194,19 +221,24 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
                    "reuse_by": reuse_by}),
              datetime.now(timezone.utc)),
         )
-        reused = _reusable(cur, task, items, reuse_by)
-        conn.commit()
-    _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage, prior_id=decision_id)
-                   for key, (raw, parsed, request_id, usage, decision_id) in reused.items()])
-    todo = [k for k in items if k not in reused]
-    print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
-    if len(todo) <= DIRECT_MAX:
-        _run_concurrent(api, conn, run_id, task, items, todo)
-    else:
-        _run_batches(api, conn, run_id, task, items, todo)
-    with connect() as conn, conn.cursor() as cur:
-        cur.execute("UPDATE pv_evidence.llm_decision_run SET status='completed', completed_at=%s "
-                    "WHERE decision_run_id=%s", (datetime.now(timezone.utc), str(run_id)))
+    status = "failed"
+    try:
+        with connect() as conn, conn.cursor() as cur:
+            reused = _reusable(cur, task, items, reuse_by)
+            _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage,
+                                prior_id=decision_id, params=params)
+                           for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()])
+        todo = [k for k in items if k not in reused]
+        print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
+        if len(todo) <= DIRECT_MAX:
+            _run_concurrent(api, run_id, task, items, todo)
+        else:
+            _run_batches(api, run_id, task, items, todo)
+        status = "completed"
+    finally:
+        with connect() as conn, conn.cursor() as cur:
+            cur.execute("UPDATE pv_evidence.llm_decision_run SET status=%s, completed_at=%s "
+                        "WHERE decision_run_id=%s", (status, datetime.now(timezone.utc), str(run_id)))
     return run_id
 
 
@@ -226,18 +258,21 @@ def _parse(task: Task, payload: dict[str, Any], msg) -> tuple[str, dict | None, 
         return raw, None, f"{type(exc).__name__}: {exc}", usage
 
 
-def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
-                    todo: list[str]) -> None:
+def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str]) -> None:
     def call(key):
-        try:
-            with api.messages.stream(**task.request_params(items[key])) as stream:  # streamed: no cap on max_tokens
-                msg = stream.get_final_message()
-            return key, msg.id, *_parse(task, items[key], msg)
-        except anthropic.APIError as exc:
-            return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
+        for attempt in range(STREAM_ATTEMPTS):
+            try:
+                with api.messages.stream(**task.request_params(items[key])) as stream:  # streamed: no cap on max_tokens
+                    msg = stream.get_final_message()
+                return key, msg.id, *_parse(task, items[key], msg)
+            except httpx2.TransportError as exc:
+                if attempt == STREAM_ATTEMPTS - 1:
+                    return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
+            except anthropic.APIError as exc:
+                return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
     n_ok = n_bad = 0
-    pending = []  # rows not yet committed, replayed after a dropped connection
+    pending = []
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         for i, fut in enumerate(as_completed([pool.submit(call, k) for k in todo]), 1):
             key, request_id, raw, parsed, error, usage = fut.result()
@@ -245,22 +280,13 @@ def _run_concurrent(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, d
             n_bad += error is not None
             n_ok += error is None
             if i % 25 == 0 or i == len(todo):  # short transactions: FK migrations on llm_decision need gaps
-                for attempt in range(5):
-                    try:
-                        _insert(conn, pending)
-                        pending = []
-                        break
-                    except psycopg2.OperationalError:
-                        time.sleep(10 * (attempt + 1))
-                        conn = connect()
-                else:
-                    raise RuntimeError("database unreachable")
+                _store(pending)
+                pending = []
             if i % 500 == 0 or i == len(todo):
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
 
 
-def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]],
-                 todo: list[str]) -> None:
+def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str]) -> None:
     custom_ids, pending = {}, []
     for start in range(0, len(todo), BATCH_SIZE):
         chunk = todo[start:start + BATCH_SIZE]
@@ -290,7 +316,7 @@ def _run_batches(api, conn, run_id: uuid.UUID, task: Task, items: dict[str, dict
                                  f"{batch_id}/{result.custom_id}", usage, error))
                 n_bad += error is not None
                 n_ok += error is None
-            _insert(conn, rows)
+            _store(rows)
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 

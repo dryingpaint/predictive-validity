@@ -21,6 +21,7 @@ from pipeline import llm
 DISEASES_PER_CALL = 30
 LABELS_PER_ENTITY = 12
 LABEL_CHARS = 3000
+CONDITIONS_PER_DISEASE = 10  # trial condition strings shown per disease (a biomarker group decides tissue-agnostic uses)
 
 SYSTEM = """You decide whether a drug (molecular entity) has been approved by the U.S. FDA for each of a list of diseases, and when.
 
@@ -72,8 +73,11 @@ def validate(p: dict, out: dict) -> None:
         raise ValueError(f"decisions cover {got[:5]}..., expected {want[:5]}...")
     allowed = {e["date"] for e in p["events"]} | {d for _, d in p["originals"]} | {"before_2015", "undated", "none"}
     for d in out["decisions"]:
-        if d["approved"] == "yes" and d["first_approval"] not in allowed:
-            raise ValueError(f"{d['mondo_id']}: first_approval {d['first_approval']} not an event date")
+        fa = d["first_approval"]
+        if fa not in allowed:
+            raise ValueError(f"{d['mondo_id']}: first_approval {fa} not an event date or basis")
+        if (d["approved"] == "no") != (fa == "none") and d["approved"] != "uncertain":
+            raise ValueError(f"{d['mondo_id']}: first_approval {fa} with approved={d['approved']}")
 
 
 TASK = llm.Task(name="program_fda_approval", prompt_version="v2", schema_version="v1", system=SYSTEM,
@@ -135,12 +139,13 @@ def judge(_args) -> None:
                    (SELECT array_agg(DISTINCT i.display_name) FROM preclin.dev_program_trial dt
                     JOIN preclin.ctgov_study_indication si USING (nct_id)
                     JOIN preclin.indication i USING (indication_id)
-                    WHERE dt.program_id = p.program_id AND i.mondo_id = p.mondo_id)
+                    LEFT JOIN preclin.program_indication pi ON pi.moiety_id = p.moiety_id AND pi.mondo_id = i.mondo_id
+                    WHERE dt.program_id = p.program_id AND coalesce(pi.indication_mondo, i.mondo_id) = p.mondo_id)
             FROM preclin.dev_program p JOIN preclin.ontology_term t ON t.term_id = p.mondo_id""")
         diseases = defaultdict(list)
         for mid, mondo, label, parents, conds in cur.fetchall():
             diseases[mid].append({"mondo_id": mondo, "label": label, "parents": parents or "",
-                                  "conditions": sorted(conds or [])[:5]})
+                                  "conditions": sorted(conds or [])[:CONDITIONS_PER_DISEASE]})
 
     work = {}
     for mid, ent in entities.items():
@@ -152,8 +157,9 @@ def judge(_args) -> None:
                 "originals": sorted({(a, o.isoformat()) for a, o in ent["apps"].items() if o}),
                 "labels": ent_labels, "diseases": ds[start:start + DISEASES_PER_CALL]}
     run_id = llm.run(TASK, work)
+    decided = llm.decisions(run_id)
     rows = []
-    for key, did, out in llm.decisions(run_id):
+    for key, did, out in decided:
         mid = int(key.split(":")[0])
         for d in out["decisions"]:
             fa = d["first_approval"]
@@ -168,7 +174,10 @@ def judge(_args) -> None:
             FROM (VALUES %s) AS v(mid, mondo, approved, d, basis, relation, evidence, did)
             JOIN preclin.dev_program p ON p.moiety_id = v.mid AND p.mondo_id = v.mondo""", rows, page_size=5000)
         conn.commit()
-    print(f"calls={len(work)} judgements={len(rows)} approved={sum(r[2] == 'yes' for r in rows)}")
+    unjudged = sorted(set(work) - {key for key, _, _ in decided})  # no validated decision: no approval row
+    print(f"calls={len(work)} judgements={len(rows)} approved={sum(r[2] == 'yes' for r in rows)} "
+          f"unjudged calls={len(unjudged)} programs={sum(len(work[k]['diseases']) for k in unjudged)}: "
+          f"{[work[k]['entity'] for k in unjudged][:10]}")
 
 
 def main() -> None:

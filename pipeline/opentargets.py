@@ -4,17 +4,19 @@
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
 
 Loads direct associations by data source for the targets of every molecular
-entity with a development program (preclin.moiety_target), keeping each
+entity with an industry-sponsored development program (preclin.moiety_target), keeping each
 association's yearly score series so evidence can be taken as of a date.
 Sources that encode clinical outcomes or literature co-mention
 (clinical_precedence, europepmc, cancer_biomarkers) are not loaded.
-Disease identifiers are kept as Open Targets ids with their MONDO
-cross-references in preclin.ot_disease.
+Disease identifiers are kept as Open Targets ids in preclin.ot_disease, each
+with the MONDO terms it is (mondo_disease); traits and measurements that are
+not diseases have none.
 """
 from __future__ import annotations
 
 import argparse
 import glob
+from collections import defaultdict
 import hashlib
 import os
 import re
@@ -29,6 +31,9 @@ RELEASE = "26.09"
 CACHE = os.path.join(llm.REPO, ".cache", "opentargets", RELEASE)
 SOURCE_URL = f"https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/{RELEASE}/output"
 DATASETS = ("association_by_datasource_direct", "disease")  # the release datasets load reads
+# Disease-concept vocabularies MONDO declares one-to-one equivalences with; OMIM entries are often
+# gene-specific forms and ICD codes classification groups, so neither identifies a disease.
+CONCEPT_XREFS = ("DOID", "Orphanet", "NCIT", "MESH")
 DATASOURCES = {
     # germline genetics
     "gwas_credible_sets": "genetic", "gene_burden": "genetic", "eva": "genetic", "genomics_england": "genetic",
@@ -45,6 +50,20 @@ DATASOURCES = {
 def curie(ot_id: str) -> str:
     prefix, _, local = ot_id.partition("_")
     return f"{prefix}:{local}" if local else ot_id
+
+
+def mondo_disease(disease_id: str, xrefs: list[str], equivalent: dict[str, set[str]]) -> list[str]:
+    """MONDO terms an Open Targets disease is: its own MONDO id or MONDO cross-references; else the
+    terms MONDO declares equivalent to its id; else the one term MONDO declares equivalent to its
+    CONCEPT_XREFS cross-references (an EFO disease MONDO knows only by its DOID or Orphanet id), none
+    when they point at several."""
+    direct = {x for x in xrefs if x.startswith("MONDO:")} | ({disease_id} if disease_id.startswith("MONDO:") else set())
+    if direct:
+        return sorted(direct)
+    if equivalent.get(disease_id):
+        return sorted(equivalent[disease_id])
+    via = set().union(*(equivalent.get(x, set()) for x in xrefs if x.split(":", 1)[0] in CONCEPT_XREFS))
+    return sorted(via) if len(via) == 1 else []
 
 
 def fetch(_args) -> None:
@@ -84,12 +103,16 @@ def load(_args) -> None:
         cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
                        JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
         targets = [r[0] for r in cur.fetchall()]
+        cur.execute("""SELECT x.xref_id, x.term_id FROM preclin.ontology_xref x
+                       JOIN preclin.ontology_term t ON t.term_id = x.term_id
+                       WHERE x.ontology = 'MONDO' AND x.equivalent AND NOT t.is_obsolete""")
+        equivalent = defaultdict(set)
+        for xref, term in cur.fetchall():
+            equivalent[xref].add(term)
 
     diseases = ds.dataset(os.path.join(CACHE, "disease"), format="parquet").to_table(
         columns=["id", "name", "dbXRefs", "therapeuticAreas"]).to_pylist()
-    disease_rows = [(curie(d["id"]), d["name"],
-                     sorted({x for x in (d["dbXRefs"] or []) if x.startswith("MONDO:")}
-                            | ({curie(d["id"])} if d["id"].startswith("MONDO_") else set())),
+    disease_rows = [(curie(d["id"]), d["name"], mondo_disease(curie(d["id"]), d["dbXRefs"] or [], equivalent),
                      [curie(t) for t in d["therapeuticAreas"] or []], release) for d in diseases]
 
     assoc = ds.dataset(os.path.join(CACHE, "association_by_datasource_direct"), format="parquet")

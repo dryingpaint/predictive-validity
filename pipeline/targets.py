@@ -1,4 +1,4 @@
-"""Molecular targets of every entity with a development program.
+"""Molecular targets of every entity with an industry-sponsored development program.
 
     python -m pipeline.targets resolve   # LLM: human protein targets (HGNC) -> preclin.moiety_target
 
@@ -6,7 +6,8 @@ The LLM sees the entity's names, modality, the ChEMBL mechanism-of-action
 records attached to any of its intervention names, and trial titles. Every
 returned symbol must be an approved human protein symbol in public.targets.
 Entities acting on pathogens, or without a defined molecular target, are
-recorded as such and get no target rows.
+recorded as such and get no target rows; entities without an industry trial,
+or whose decision failed, keep no target kind.
 """
 from __future__ import annotations
 
@@ -103,10 +104,12 @@ def resolve(_args) -> None:
     rows, kinds = [], []
     for mid, did, out in llm.decisions(run_id):
         kinds.append((int(mid), out["target_kind"], did))
-        for t in out["targets"]:
-            rows.append((int(mid), symbol_id[t["symbol"]], t["action"], t["primary"], did))
+        if out["target_kind"] == "human_protein":
+            rows += [(int(mid), symbol_id[t["symbol"]], t["action"], t["primary"], did) for t in out["targets"]]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.moiety_target")
+        cur.execute("""UPDATE preclin.moiety SET target_kind = NULL, target_decision_id = NULL
+                       WHERE target_kind IS NOT NULL OR target_decision_id IS NOT NULL""")
         execute_values(cur, """INSERT INTO preclin.moiety_target (moiety_id, target_id, action, is_primary, llm_decision_id)
                                VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
         execute_values(cur, """UPDATE preclin.moiety m SET target_kind = v.kind, target_decision_id = v.did
