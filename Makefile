@@ -10,18 +10,20 @@
 PY := .venv/bin/python
 RUN := $(PY) -m
 
-.PHONY: all sources identity programs migrate
+.PHONY: all sources identity programs labels evidence migrate
 
-all: migrate sources identity programs
+all: migrate sources identity programs labels evidence
 
 migrate:
 	$(PY) db/migrate.py apply
 
-# Raw sources: ClinicalTrials.gov snapshot, FDA approvals (CDER + CBER) and the uses each
-# approval letter states, UNII substance names, ontologies.
+# Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER) and
+# the uses each approval letter states, UNII substance names, ontologies.
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
+	$(RUN) pipeline.outcomes results
+	$(RUN) pipeline.outcomes publications
 	$(RUN) pipeline.fda fetch
 	$(RUN) pipeline.fda load
 	$(RUN) pipeline.cber.enumerate_year_pages
@@ -53,3 +55,15 @@ programs:
 	$(RUN) pipeline.programs purposes
 	$(RUN) pipeline.programs indications
 	$(RUN) pipeline.programs build
+
+# Labels on programs: approval, modality, disease area, trial outcomes, targets.
+labels:
+	$(RUN) pipeline.approvals judge
+	$(RUN) pipeline.drugs modality
+	$(RUN) pipeline.indications areas
+	$(RUN) pipeline.outcomes classify
+	$(RUN) pipeline.targets resolve
+
+evidence:
+	$(RUN) pipeline.opentargets fetch
+	$(RUN) pipeline.opentargets load
