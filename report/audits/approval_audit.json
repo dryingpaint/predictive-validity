@@ -1,5 +1,5 @@
 {
- "rescored": "Verdicts on the judgements of the 2026-10-20 rebuild: unchanged judgements keep the audit's verdicts; a changed judgement equal to the auditor's answer is correct; the four others were judged against the auditor's notes (rescore_note). Programs are identified by entity and MONDO id; program_mondo_id is the indication a disease is now grouped under.",
+ "rescored": "Verdicts on the judgements of the final rebuild (2026-10-21): an unchanged judgement keeps the audit's verdict; a changed judgement equal to the auditor's answer is correct; the others were judged against the auditor's notes (rescore_note). Programs are identified by entity and MONDO id; program_mondo_id is the indication a disease is now grouped under.",
  "programs": [
   {
    "program_id": 289116,
@@ -180,12 +180,7 @@
    "mondo_id": "MONDO:0005386",
    "disease": "peripheral arterial disease",
    "judged_approved": "yes",
-   "judged_first_approval": "undated",
-   "previous_judgement": {
-    "approved": "yes",
-    "first_approval": "2021-08-23"
-   },
-   "rescore_note": "Re-judged 'undated': the 2018-10-11 letter (NDA 202439 S-025) is not in the letter set, so the judge could not give the date; an undated approval counts as before 2015, which wrongly makes the program a lifecycle program."
+   "judged_first_approval": "2021-08-23"
   },
   {
    "program_id": 294385,
@@ -286,16 +281,19 @@
    "stratum": "yes_dated",
    "own_approved": "no",
    "own_first_approval": "none",
-   "approved_verdict": "acceptable",
-   "date_verdict": "correct",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
    "note": "The only approved use that could cover this is the tissue-agnostic one (MSI-H/dMMR, S-014 2017-05-23; TMB-H 2020-06-16). The program's only trial, ZEBRA NCT02949219, enrolled small bowel adenocarcinoma without selecting by biomarker, and its listed conditions name no biomarker. Under the rubric's intent this is a no. The stored yes is defensible because ZEBRA did enroll MSI-H patients and stratified outcomes by them (50% PR in MSI-H). But the stored evidence applies the rule wrongly: it says small intestinal cancers were in the FDA's supporting trials, when the rule asks what the program's own trials enrolled. If the answer is yes, 2017-05-23 is the right earliest date.",
    "entity": "pembrolizumab",
    "unii": "DPT0O3T46P",
    "mondo_id": "MONDO:0005522",
    "disease": "small intestine carcinoma",
-   "program_mondo_id": "MONDO:0003198",
-   "judged_approved": "yes",
-   "judged_first_approval": "2017-05-23"
+   "judged_approved": "no",
+   "judged_first_approval": "none",
+   "previous_judgement": {
+    "approved": "yes",
+    "first_approval": "2017-05-23"
+   }
   },
   {
    "program_id": 305220,
@@ -838,6 +836,21 @@
    "judged_first_approval": "none"
   },
   {
+   "program_id": 272638,
+   "stratum": "no_entity_appr",
+   "own_approved": "no",
+   "own_first_approval": "none",
+   "approved_verdict": "correct",
+   "date_verdict": "not_applicable",
+   "note": "Dexamethasone labels cover adjunctive treatment of cerebral edema associated with primary or metastatic brain tumor. That treats a complication, not the meningioma itself. Its neoplastic indications are leukemias, lymphomas and multiple myeloma (Hemady). So 'no' is right.",
+   "entity": "dexamethasone",
+   "unii": "7S5I7G3JQL",
+   "mondo_id": "MONDO:0016642",
+   "disease": "meningioma",
+   "judged_approved": "no",
+   "judged_first_approval": "none"
+  },
+  {
    "program_id": 289492,
    "stratum": "no_entity_appr",
    "own_approved": "no",
@@ -1003,21 +1016,6 @@
    "judged_first_approval": "none"
   },
   {
-   "program_id": 274911,
-   "stratum": "no_entity_appr",
-   "own_approved": "no",
-   "own_first_approval": "none",
-   "approved_verdict": "correct",
-   "date_verdict": "not_applicable",
-   "note": "Gilotrif (NDA 201292) is approved only for NSCLC (EGFR-mutant, and squamous after platinum). It has no endometrial indication.",
-   "entity": "afatinib",
-   "unii": "41UD74L59M",
-   "mondo_id": "MONDO:0002447",
-   "disease": "endometrial carcinoma",
-   "judged_approved": "no",
-   "judged_first_approval": "none"
-  },
-  {
    "program_id": 288661,
    "stratum": "no_entity_appr",
    "own_approved": "no",
@@ -1114,7 +1112,7 @@
     "approved": "uncertain",
     "first_approval": "none"
    },
-   "rescore_note": "Re-judged yes from the tissue-agnostic dMMR approval, citing GARNET, which is not in this program; the program's trial selects HRD alterations, not dMMR."
+   "rescore_note": "Judged yes from the tissue-agnostic dMMR approval; the program's trial selects HRD alterations, not dMMR."
   },
   {
    "program_id": 290991,
@@ -1140,19 +1138,21 @@
    "stratum": "uncertain",
    "own_approved": "yes",
    "own_first_approval": "2016-12-19",
-   "approved_verdict": "correct",
-   "date_verdict": "correct",
+   "approved_verdict": "acceptable",
+   "date_verdict": "not_applicable",
    "note": "Borderline. Rubraca's approvals are for 'deleterious BRCA mutation (germline and/or somatic)-associated' ovarian cancer (first 2016-12-19, NDA 209115) and mCRPC. Germline BRCA2 carriers with these cancers are a subpopulation of BRCA2-related cancer predisposition, so I lean yes. The stored point that the drug treats the cancers rather than the predisposition itself is a defensible reason for hedging. The stored date of 2016-12-19 matches.",
    "entity": "rucaparib",
    "unii": "8237F3U7EH",
    "mondo_id": "MONDO:0700269",
    "disease": "BRCA2-related cancer predisposition",
-   "judged_approved": "yes",
-   "judged_first_approval": "2016-12-19",
+   "program_mondo_id": "MONDO:0700268",
+   "judged_approved": "no",
+   "judged_first_approval": "none",
    "previous_judgement": {
     "approved": "uncertain",
     "first_approval": "2016-12-19"
-   }
+   },
+   "rescore_note": "Judged no: the drug treats BRCA-associated cancers, not the predisposition, a reason the auditor called defensible on a borderline case."
   },
   {
    "program_id": 283266,
@@ -1160,18 +1160,14 @@
    "own_approved": "yes",
    "own_first_approval": "before_2015",
    "approved_verdict": "acceptable",
-   "date_verdict": "not_applicable",
+   "date_verdict": "correct",
    "note": "Borderline. Ramipril is indicated in patients aged 55 or older at high risk 'because of a history of coronary artery disease, stroke, peripheral vascular disease, or diabetes ...' to reduce the risk of MI, stroke and CV death. This is efficacy supplement S-028 to NDA 019901, dated 2000-10-04, and the text remains on current ramipril labels. Patients with CAD/PVD in that group are an atherosclerotic subpopulation, so I lean yes. However, the indication is framed as CV risk reduction, not atherosclerosis, so hedging is defensible. before_2015 is correct.",
    "entity": "ramipril",
    "unii": "L35JN3I7SJ",
    "mondo_id": "MONDO:0005311",
    "disease": "atherosclerosis",
    "judged_approved": "uncertain",
-   "judged_first_approval": "none",
-   "previous_judgement": {
-    "approved": "uncertain",
-    "first_approval": "before_2015"
-   }
+   "judged_first_approval": "before_2015"
   },
   {
    "program_id": 314131,
@@ -1216,15 +1212,20 @@
    "stratum": "uncertain",
    "own_approved": "no",
    "own_first_approval": "none",
-   "approved_verdict": "acceptable",
+   "approved_verdict": "wrong",
    "date_verdict": "not_applicable",
    "note": "Lean no. Mozobil (NDA 022311, 2008-12-15) is indicated with filgrastim to mobilize HSCs for autologous transplant in NHL or multiple myeloma. MONDO does place B-cell CLL under non-Hodgkin lymphoma, as the stored evidence notes, so hedging is defensible. However, FDA labelling treats CLL separately from NHL (Rituxan has a separate CLL indication), and the mobilization indication was not studied in CLL. The program's CLL trials (NCT00694590, NCT01373229) test a different use, chemosensitization.",
    "entity": "plerixafor",
    "unii": "S915P5499N",
    "mondo_id": "MONDO:0004948",
    "disease": "B-cell chronic lymphocytic leukemia",
-   "judged_approved": "uncertain",
-   "judged_first_approval": "before_2015"
+   "judged_approved": "yes",
+   "judged_first_approval": "before_2015",
+   "previous_judgement": {
+    "approved": "uncertain",
+    "first_approval": "before_2015"
+   },
+   "rescore_note": "Judged yes because MONDO places CLL under NHL, but the NHL use is stem-cell mobilization, not treatment of CLL, and the program's trials test another use."
   },
   {
    "program_id": 314151,
@@ -1246,20 +1247,19 @@
    "stratum": "uncertain",
    "own_approved": "no",
    "own_first_approval": "none",
-   "approved_verdict": "acceptable",
+   "approved_verdict": "correct",
    "date_verdict": "not_applicable",
    "note": "Borderline, lean no. Zometa/generic labels cover 'patients with ... documented bone metastases from solid tumors' (Zometa 2002), hypercalcemia of malignancy and myeloma; Reclast covers bone disease. That is treatment of skeletal metastases, not of clear cell sarcoma. A literal 'solid tumors' broader-class reading could give yes (before_2015). The program's trial, NCT06625190, uses zoledronic acid as an immunomodulator after alpha/beta T-cell-depleted transplant, an unrelated use. Hedging is defensible.",
    "entity": "zoledronic acid anhydrous",
    "unii": "70HZ18PH24",
    "mondo_id": "MONDO:0002926",
    "disease": "clear cell sarcoma",
-   "judged_approved": "yes",
-   "judged_first_approval": "before_2015",
+   "judged_approved": "no",
+   "judged_first_approval": "none",
    "previous_judgement": {
     "approved": "uncertain",
     "first_approval": "none"
-   },
-   "rescore_note": "Re-judged yes before 2015 from the 'bone metastases from solid tumors' class; the auditor named this broad reading defensible."
+   }
   },
   {
    "program_id": 278410,
@@ -1313,45 +1313,27 @@
     "approved": "uncertain",
     "first_approval": "before_2015"
    },
-   "rescore_note": "Re-judged no; the CD20+ B-cell NHL approvals (1997, 2006) cover liver lymphoma."
-  },
-  {
-   "program_id": 295417,
-   "stratum": "uncertain",
-   "own_approved": "no",
-   "own_first_approval": "none",
-   "approved_verdict": "correct",
-   "date_verdict": "not_applicable",
-   "note": "Lean no. The Gleostine label (NDA 017588) covers 'primary and metastatic brain tumors following appropriate surgical and/or radiotherapeutic procedures' and Hodgkin lymphoma. Leptomeningeal metastasis (neoplastic meningitis) is normally distinguished from parenchymal brain metastases, and the wording does not plainly include it. Some would read 'metastatic brain tumors' broadly, so 'uncertain' is defensible.",
-   "entity": "lomustine",
-   "unii": "7BRF0Z81KG",
-   "mondo_id": "MONDO:0700219",
-   "disease": "neoplastic meningitis",
-   "judged_approved": "no",
-   "judged_first_approval": "none",
-   "previous_judgement": {
-    "approved": "uncertain",
-    "first_approval": "none"
-   }
+   "rescore_note": "Judged no; the CD20+ B-cell NHL approvals (1997, 2006) cover liver lymphoma."
   },
   {
    "program_id": 268813,
    "stratum": "uncertain",
    "own_approved": "yes",
    "own_first_approval": "before_2015",
-   "approved_verdict": "correct",
-   "date_verdict": "correct",
+   "approved_verdict": "wrong",
+   "date_verdict": "not_applicable",
    "note": "Should be yes. MONDO:0021334 is MeSH D007160, defined as 'abnormal proliferation of primary cells of the immune system'. In MeSH, B-cell CLL sits under it (C15.604.515.560.080.125 and C20.683.515.528.080.125, via Lymphoproliferative Disorders). Fludarabine is approved for B-cell CLL: Fludara NDA 020038 in 1991, and oral NDA 022273 in 2008 repeats the use. The class plainly includes the approved disease, so the answer is yes, not uncertain. before_2015 is correct.",
    "entity": "fludarabine",
    "unii": "P2K93U8740",
    "mondo_id": "MONDO:0021334",
    "disease": "immunoproliferative disorder",
-   "judged_approved": "yes",
-   "judged_first_approval": "before_2015",
+   "judged_approved": "no",
+   "judged_first_approval": "none",
    "previous_judgement": {
     "approved": "uncertain",
     "first_approval": "before_2015"
-   }
+   },
+   "rescore_note": "Judged no; fludarabine's B-cell CLL approval (1991) falls within immunoproliferative disorder."
   }
  ],
  "dropped": [
@@ -1366,13 +1348,18 @@
    "reason": "no longer a development program after the rebuild"
   },
   {
-   "program_id": 272638,
+   "program_id": 272091,
    "stratum": "no_entity_appr",
    "reason": "no longer a development program after the rebuild"
   },
   {
-   "program_id": 272091,
+   "program_id": 274911,
    "stratum": "no_entity_appr",
+   "reason": "no longer a development program after the rebuild"
+  },
+  {
+   "program_id": 295417,
+   "stratum": "uncertain",
    "reason": "no longer a development program after the rebuild"
   }
  ]

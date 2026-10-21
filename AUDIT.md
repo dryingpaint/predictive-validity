@@ -49,7 +49,7 @@ layer for every number in the report.
   line, stage, biomarker or age qualifiers (`preclin.indication.mondo_id`; pinned MONDO
   2026-10-06). A disease MONDO does not name gets its nearest containing term
   (`mondo_match = 'broader'`).
-- **Program.** One row per (entity, MONDO disease) (`preclin.dev_program`). A trial whose
+- **Program.** One row per (entity, development indication) (`preclin.dev_program`). A trial whose
   condition is broader than another of the entity's diseases (e.g. "solid tumors") rolls
   into the more specific programs; healthy-volunteer trials roll into every program of the
   entity. Such a shared trial marks phase entry only for programs already under way when it
@@ -61,29 +61,39 @@ layer for every number in the report.
   (pain, contraception) form the entity's condition-unspecified program instead. Each industry
   trial's purpose is classified by an LLM (`preclin.trial_purpose`): product-support trials
   (bioequivalence, formulation bridging, food effect, interactions, generic or biosimilar PK)
-  belong to no program; multi-indication baskets and early-development trials are shared like
+  belong to no program; a multi-indication basket attaches to the programs of the diseases it
+  lists (else to the unspecified program), and early-development trials are shared like
   healthy-volunteer trials. Sponsors are attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
-  LLM from the entity's 2015–2026 approval letters (4,639 extracted approved uses; pages
+  LLM from the entity's 2015–2026 approval letters (5,034 extracted approved uses; pages
   without a text layer OCRed; labeling-only changes are not approval events), its
   original-approval dates and current label indications (`preclin.dev_program_approval`).
-  Approvals before 2015 are taken from the label.
+  Approvals before 2015 are taken from the label and placed at the entity's first FDA
+  approval, the earliest date they could have happened.
 - **Phase cohorts and outcomes.** For phase p, programs whose first industry-sponsored
   phase-p trial started 2015–2025 (shared trials count only for Phase 1 of the lead
   indication), had not already entered a later phase, and were not already approved for the
   disease (lifecycle programs are excluded). Advanced = a later-phase trial of the program's
   own disease started (any sponsor: a cooperative-group trial of a company's drug is
-  development), or FDA approval for the disease. Suspended = none of the program's own
-  trials active, or active within 24 months of the snapshot. Otherwise censored. BIO-style rate = advanced / (advanced + suspended); a competing-risks
+  development; a trial registered but not yet recruiting does not count), or FDA approval
+  for the disease. Suspended = none of the program's own trials, nor the trial that marked
+  its Phase 1 entry, active or active within 24 months of the snapshot. Otherwise censored.
+  A phase skipped on the way to a later phase or to approval counts as a success in it (as
+  in BIO). BIO-style rate = advanced / (advanced + suspended); a competing-risks
   (Aalen–Johansen) estimate keeps censored programs. LOA = product of phase rates.
-  Confidence intervals resample molecular entities (1,000 draws). Sensitivity: lag 12/18/36
-  months, US-site programs, novel vs already-approved entities, uncertain approvals.
+  Confidence intervals resample molecular entities (1,000 draws); no LOA for a cohort with
+  fewer than 10 entities resolved in a phase. US-developed = a US-sited industry trial
+  among those marking entry to the phase. Sensitivity: lag 12/18/36 months, novel vs
+  already-approved entities, uncertain approvals, shared-trial entry, vaccines, 2015–2019
+  entrants.
 - **Why programs stop.** Each industry trial since 2010 that stopped early, or completed
   Phase 2/3 with posted results or a results paper, is classified (`preclin.trial_outcome`)
   on separate axes: execution, stated stop reason (with "sponsor decision, unspecified"
   kept apart from explicit business reasons), primary-endpoint result (from posted results,
   else from the abstracts of PubMed papers linked to the NCT id), and safety signal. A
-  suspended program's reason comes from the trials of the phase it stopped in.
+  suspended program's reason comes from its own industry trials of the phase it stopped in
+  (in Phase 1 also the trial that marked its entry); posted results without a readable
+  endpoint and other stated reasons are kept apart from "no reason, no result".
 
 ## Claim register
 
@@ -147,22 +157,22 @@ Each quantitative claim, with the value the rebuild gives:
 
 | Claim | Draft | Rebuilt |
 |---|---|---|
-| C02, C11 Phase 1 → FDA approval | 7.4%, "within 0.5pt of BIO's 7.9%" | 9.4% (8.4–10.5) for US-developed programs; 5.6% (4.9–6.3) for all registered industry programs; 4.0–10.8% across defensible definitions (sensitivity table) |
+| C02, C11 Phase 1 → FDA approval | 7.4%, "within 0.5pt of BIO's 7.9%" | 10.5% (9.4–11.8) for US-developed programs; 7.2% (6.4–8.0) for all registered industry programs; 5.1–12.1% across defensible definitions (sensitivity table) |
 | C09, C13 Trials analysed | 28,193 industry trials "started after 2015 and ended before 2026" (67% of 41,836) | 39,348 industry Phase 1–3 trials started 2015–2025 (not withdrawn); every in-scope trial is used, none dropped for failing to resolve |
-| C14 Programs | 84,117 programs; 13,639 T-I pairs | 54,173 (entity, indication) programs from all trials; 17,127 entered a phase in 2015–2025 |
-| C15 Transitions | 55.9 / 51.0 / 26.1% | US-developed 59.3 / 32.0 / 49.4%; all programs 55.3 / 29.3 / 34.3% (BIO 52.0 / 28.9 / 52.4%) |
-| C16 Mid-phase gap | Ph3b, non-US and Ph2/3 designs | The gap came from labelling errors; with the rebuild Phase 2→3 is close to BIO, and the remaining Phase 3 gap is approvals outside the US |
-| C18, C20, C21 Why programs fail | 55,133 failed programs; "silent efficacy" 73% of Ph3 failures | 7,119 suspended programs: no reason and no results 72% (Ph1), 44% (Ph2), 36% (Ph3); efficacy 25% (Ph2), 29% (Ph3); positive Phase 3 readout without US approval 19% of Ph3 stops |
+| C14 Programs | 84,117 programs; 13,639 T-I pairs | 53,948 (entity, indication) programs from all trials; 17,047 entered a phase in 2015–2025 |
+| C15 Transitions | 55.9 / 51.0 / 26.1% | US-developed 57.0 / 34.7 / 53.0%; all programs 56.8 / 34.0 / 37.1% (BIO 52.0 / 28.9 / 52.4%), skipped phases credited as in BIO |
+| C16 Mid-phase gap | Ph3b, non-US and Ph2/3 designs | The gap came from labelling errors; with the rebuild Phase 2→3 is 34.0% (BIO 28.9%), and the remaining Phase 3 gap is approvals outside the US (53.0% for US-developed programs vs 37.1% for all) |
+| C18, C20, C21 Why programs fail | 55,133 failed programs; "silent efficacy" 73% of Ph3 failures | 6,742 suspended programs: no reason and no result 64% (Ph1), 33% (Ph2), 33% (Ph3); efficacy 25% (Ph2), 29% (Ph3); positive Phase 3 readout without US approval 18% of Ph3 stops |
 | C19 Early terminations | 5,510 with a reason; 44% commercial/strategic | 5,557 with a reason: explicit business/portfolio/competitive 36%, bare "sponsor decision" 19%, efficacy 14%, enrollment/operational 14%, safety 4% |
-| C22 Disease areas | 18.4% hematology to 1.6% urology | US-developed: metabolic 26.3%, endocrine 26.9%, hematology 24.1% down to gastroenterology 5.7%, infectious disease 4.5% and urology 0% (few programs); BIO's ordering broadly holds except oncology (higher) and infectious disease (lower) |
-| C23, C24 Modalities | Oligonucleotides 32.5%, small molecules 5.8% | US-developed: siRNA/RNAi 32.5%, multispecifics 24.9%, CAR-T 22.2%, ADCs 18.3%, mAbs 14.6%, small molecules 8.0%; vaccines not estimable from registry data |
-| C26, C32 What genetics adds | Only genetics adds; ablation −17.7pp | Joint model: GWAS and rare-variant evidence keep independent effects at Phase 2 (and rare-variant at Phase 3); removing genetics lowers held-out AUC by 0.011 (0.004–0.019) |
-| C27, C28 Genetic support | 45% vs 11%; 8,144 pairs, base rate 23% | LOA 27.6% with vs 7.9% without (relative success 3.50, 2.65–4.53) on 10,240 human-protein programs |
-| C31 Dose–response | 10.9 / 19.7 / 23.0 / 45.0% | LOA 7.9 / 20.0 / 31.3 / 34.5% (none, then tertiles of the Open Targets genetic score at phase entry) |
-| C33, C34 Model AUC | 0.825 held-out targets; 0.769 time split | 0.604 (0.555–0.652) held-out targets with all evidence vs 0.595 without; time split 0.638 vs 0.640 |
-| C35 Pan-essential | RS 0.24 | 0.24 (0.07–0.57); confirmed, and penalised at Phases 1–2 in the joint model |
-| C36 LoF-intolerant | RS 0.82–0.84 | 0.87 (0.56–1.31): no detectable penalty |
-| C37–C39 Phase 3 with strong evidence | 73–85% still fail; best profile 22% | Phase 3 programs with human genetic evidence were approved 62% of the time (n=187) vs 39% without |
+| C22 Disease areas | 18.4% hematology to 1.6% urology | All programs: hematology 19.3%, metabolic 18.0%, oncology 17.2% down to urology 1.4%; US-developed: endocrine 27.9%, metabolic 26.4%, oncology 21.0%, hematology 19.0% down to infectious disease 6.0%. The ordering does not follow BIO's (rank correlation 0.26 all programs, −0.26 US-developed) |
+| C23, C24 Modalities | Oligonucleotides 32.5%, small molecules 5.8% | All programs: multispecifics 21.3%, ADCs 20.6%, mAbs 13.9% … proteins 4.5%; siRNA and CAR-T not estimable (fewer than 10 entities resolved in Phase 3; most approvals came from Phase 2); vaccines not estimable from registry data |
+| C26, C32 What genetics adds | Only genetics adds; ablation −17.7pp | Joint model: GWAS and rare-variant evidence keep independent effects at Phase 2, rare-variant at Phase 3, GWAS a small one at Phase 1; removing human genetics (both parts) lowers held-out AUC by 0.028 (0.002–0.053) |
+| C27, C28 Genetic support | 45% vs 11%; 8,144 pairs, base rate 23% | LOA 30.6% with vs 10.8% without (relative success 2.83, 2.21–3.64) on 10,190 human-protein programs |
+| C31 Dose–response | 10.9 / 19.7 / 23.0 / 45.0% | LOA 10.8 / 21.6 / 35.1 / 37.6% (none, then tertiles of the Open Targets genetic score at phase entry) |
+| C33, C34 Model AUC | 0.825 held-out targets; 0.769 time split | 0.665 (0.602–0.723) on held-out target sets with all evidence vs 0.611 without; time split 0.655 vs 0.617 |
+| C35 Pan-essential | RS 0.24 | 0.39 (0.13–0.72); penalised at Phases 1–2 in the joint model |
+| C36 LoF-intolerant | RS 0.82–0.84 | 1.00 (0.67–1.42): no detectable penalty |
+| C37–C39 Phase 3 with strong evidence | 73–85% still fail; best profile 22% | Phase 3 programs with human genetic evidence were approved 63% of the time (n=196) vs 42% without |
 
 ## Data issues register
 
@@ -203,9 +213,42 @@ Each quantitative claim, with the value the rebuild gives:
 | D34 | The same product under two entities where UNII does not connect them: salt and parent registered separately (aclidinium vs aclidinium bromide, so Tudorza's 2012 COPD approval never reached the program) and vaccine naming variants | Lifecycle exclusion, approvals, program counts | fixed: same-entity pass in `pipeline.drugs unii` (nearest-name candidates, LLM decides, merge only where every decision that saw the pair agrees) |
 | D35 | FDA-side and trial-side names of vaccines, cell and gene therapies never met (Gardasil 9 split into nine antigens; trials name a "9-valent HPV vaccine"), so their approvals were invisible (vaccine Phase 3→approval 2.7%) | Vaccine, biologic strata | fixed: `fda link` matches each application with no trial-named entity to the trial entities that are the same product (750 applications, 78 links) |
 | D36 | Programs keyed on single MONDO terms split one development indication into several programs (Pluvicto: castration-resistant, metastatic and adenocarcinoma of the prostate), and a Phase 3 listing the parent term (VISION: "Prostate Cancer") counted for none of them, or for all of them if broader trials were credited. LOA moved from 3.9% to 7.9% (all programs) between the two crediting rules | Every transition rate and LOA | fixed: an LLM groups each entity's diseases into development indications (`preclin.program_indication`); programs are keyed on the indication |
+| D37 | Run-to-run nondeterminism. `programs build` attached broader-condition trials in hash-seed set order. Payload queries had no total order: approvals (events, labels, parent terms; 1,861 of 2,293 payloads hashed differently once ordered), UNII trial context (200–330 payloads changed on every run), MONDO candidate parents (10,103 of 43,390 mappings re-hashed after the ontology tables were reloaded), and `LIMIT` subsets of context trials (modality, targets, same-entity, product match). Unchanged inputs were re-asked on every run, and the report's row order followed program ids, which each build reassigns (failure-mode trial ties, cross-validation folds) | Reproducibility; repeated LLM spend | fixed: sorted iteration, total orderings (latest trials by start date, then NCT id), report rows ordered by (entity, disease, phase); Sections 1 and 2 are unchanged when input rows are shuffled |
+| D38 | Role and purpose prompts joined entities and conditions with commas or semicolons. Names that contain commas ("diphtheria, tetanus and acellular pertussis vaccine", "Chronic Obstructive Pulmonary Disease, COPD") made the model split or merge them, failing the copied-exactly check: 367 trials had no purpose (defaulting to indication development; 87 would differ) and 14 had no roles | Programs, baskets | fixed: one item per line (roles prompt v3, purposes v2). All 27,370 multi-entity trials and 75,777 industry trials were re-decided; agreement with the previous version is 98.6% of entity roles and 98.5% of purposes; failures fell to 1 and 4 |
+| D39 | Output caps cut answers on every run: the Keytruda Qlex letter (BLA 761467: 35 approved uses) at 6,000 tokens, and the indication grouping of entities with hundreds of diseases (cyclophosphamide 664, nivolumab 623, bevacizumab 554, carboplatin 548, aldesleukin, prednisone) at 16,000, which left each of their diseases a separate program, with broader-condition links to all its subtypes | Approved uses; program and link counts | fixed: caps raised to 32,000 and direct calls streamed; trial links fell from 704,049 to 574,254 in the final build |
+| D40 | The model declines to answer for some products derived from pathogens, toxins or live vectors (botulinum, plague and Ebola antigens, oncolytic viruses, engineered bacteria) on every attempt; in the latest runs, 162 entities have no target, 53 no modality, 21 intervention names no entity and 10 entities no indication grouping | Those entities have no target or modality and fall out of Section 2 and the modality strata | disclosed (report Limitations; `report.quality` counts them) |
+| D41 | Open Targets diseases keyed by EFO, HP or Orphanet ids had no MONDO id, because the 26.09 cross-references hold only 19 MONDO ids. Their evidence never matched a program: all of OT's idiopathic pulmonary fibrosis genetics sits under EFO:0000768 | Section 2 evidence coverage | fixed: migration 79 stores MONDO's `equivalentTo` flag. An OT disease maps through MONDO's equivalence to its own id (42 diseases) or, when unambiguous, to its DOID, Orphanet, NCIT or MeSH ids (261); traits and measurements stay unmapped |
+| D42 | Held-out-target AUCs from one grouped 5-fold split moved by 0.03 with the fold assignment alone (evidence model 0.604 vs 0.640 on the same data), so "what the evidence adds" depended on the split | C33, C34, ablation | fixed: out-of-fold predictions averaged over 20 stratified grouped splits; two seeds agree within 0.006 |
+| D43 | Statements in the narrative that the numbers did not support: "the ordering of disease areas broadly follows BIO's" (rank correlation 0.30; endocrine and oncology far above BIO), cardiovascular among the lowest areas, small molecules and proteins the lowest modalities, genetics' ablation "small but real", "the temporal split tells the same story", and uncertain approvals "defensible 60% of the time" | Report text | fixed: rewritten from the outputs, and every static statement checked against `numbers.json` by script |
+| D44 | Runner and approval writes. A chunk with no validated approval decision left up to 30 programs without a row, which read as "not approved" (anastrozole and methylprednisolone in the rebuild). A dropped stream or database connection aborted a run and discarded results already paid for, and such runs were never marked failed. Reused decisions were stamped with the current task's model parameters. Target kinds of re-decided entities went stale | Approvals; provenance | fixed: unjudged calls are reported and re-asked until none remain. The runner stores decisions on fresh connections with replay, retries dropped streams, marks failed runs, and keeps the original model parameters; target kinds are reset on each rebuild |
+| D45 | The "US-developed" cohort looked ahead. A row counted as US when the program had a US-sited industry trial in that phase or in any later phase, and a later phase exists mostly for programs that advanced: 513 Phase 1 rows were US only through a later trial, 452 of which advanced | Headline US LOA, US strata | fixed: a US-sited industry trial among the trials that mark entry to that phase |
+| D46 | A Phase 1 program that entered through a shared trial (a first-in-human or basket study) could be "suspended" while that trial was still recruiting: activity was read only from its own trials. 365 Phase 1 suspensions had a duration of zero | Phase 1 rate | fixed: the trial that marked the program's Phase 1 entry counts toward its activity |
+| D47 | Phases a program skipped were not credited. A Phase 2 program approved directly, or one that went from Phase 1 straight to Phase 3, still had its LOA discounted by the skipped phase's rate, which BIO counts as a success | LOA (about 12% too low) | fixed: skipped phases count as successes (397 Phase 2 and 55 Phase 3 credits) |
+| D48 | Approvals dated only as "before 2015" were placed at 2014-12-31. In the 2008–2016 prediction cohort this turned programs of already-approved drugs into ten-year successes: 43 of 199 positives were entities approved before their Phase 1 entry (vincristine, dexamethasone, cytarabine) | Prediction metrics | fixed: such an approval sits at the entity's first FDA approval, the earliest it could have happened, so a program entering after it is a lifecycle program |
+| D49 | The genetics ablation removed only the union column and left GWAS and rare-variant evidence in the model, so "removing genetics barely changes AUC" was untested | C26, C32, prediction narrative | fixed: genetics enters as its parts and is removed as a group |
+| D50 | The "no reason, no result" failure category included trials that had posted results (609 programs) or stated another reason (32) | Failure-mode shares | fixed: separate categories for posted results without a readable endpoint and for other stated reasons |
+| D51 | Strata with very few resolved programs got bootstrap intervals from the draws in which they happened to resolve (CAR-T: one resolved Phase 3 program, 36% of draws empty), so their intervals were too narrow | Area and modality tables | fixed: no LOA for a cohort with fewer than 10 entities resolved in a phase |
+| D52 | A registered but not-yet-recruiting later-phase trial counted as advancement (247 rows) | Transition rates | fixed: a later-phase trial advances a program once it has started; while registered it keeps the program active |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-21 — PR #27 split into five stacked PRs (legacy removal; LLM runner and sources; entities,
+  diseases and programs; labels and evidence; report). Code consolidated without behaviour change
+  (same LLM payload hashes, written rows and report outputs on the same database): one Anthropic
+  runner, one CBER HTTP/cache layer and corrections module, no duplicated readers. Two independent
+  reviews (pipeline stack; report code) found the problems recorded as D37–D52, all fixed. The
+  rebuild ran twice from indication mapping onward: roles (prompt v3) and purposes (v2) were
+  re-decided for every trial (98.6% of entity roles and 98.5% of purposes as before); 42,876
+  disease mappings were re-decided once their candidate lists were ordered (same MONDO term for
+  92%); 1,241 calls of that run failed when the API credit balance ran out and were re-asked (the
+  runner now stops such a run instead of completing it). The identity steps converge over passes
+  (entities merged: 145, then 69) and a rerun still re-asks a few hundred product matches and
+  same-entity checks. The approval audit was re-scored against the final judgements (85 programs;
+  5 left the sample as no longer programs; changed judgements adjudicated against the auditors'
+  notes). Final report: US-developed LOA 10.5% (9.4–11.8), all programs 7.2%; human genetic
+  evidence relative success 2.83 (2.21–3.64); held-out AUC 0.611 without and 0.665 with evidence.
+  Every static statement in the narrative is checked against the outputs by script.
 
 - 2026-10-20 — Repository cleanup: deleted the legacy benchmark (`benchmark/`, RESULTS.md and 17
   one-off `analyses/*.py` scripts; D25), the superseded classifiers (why_stopped, silent_kill,

@@ -45,7 +45,7 @@ def table(df: pd.DataFrame) -> str:
 
 def transitions_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv")).set_index("label")
-    cohorts = {"all programs": "All programs", "programs with a US site in the phase": "Developed in the US"}
+    cohorts = {"all programs": "All programs", "programs with a US-sited industry trial in the phase": "Developed in the US"}
     rows = []
     for ph, label in [(1, "Phase 1 → Phase 2"), (2, "Phase 2 → Phase 3"), (3, "Phase 3 → Approval")]:
         row = [label]

@@ -241,7 +241,7 @@ REASON_ORDER = [
     ("safety", "biology"), ("PK, dose or formulation", "biology"),
     ("business or strategic (explicit)", "business"), ("sponsor decision, unspecified", "unspecified"),
     ("enrollment, operational or regulatory", "operational"),
-    ("positive readout, not advanced", "other"), ("other stated reason", "other"),
+    ("positive readout, not advanced", "positive_readout"), ("other stated reason", "other"),
     ("results posted, no reason stated, endpoint not assessable", "results_unread"),
     ("completed, no results posted, no reason stated", "unexplained"),
     ("stopped, no reason stated", "unexplained"),
