@@ -1,40 +1,30 @@
-"""Shared utilities for the classifier scripts.
+"""Shared audit helpers for the OpenAI trial-stoppage rescore scripts.
 
-Includes:
-- Anthropic client construction (reads ANTHROPIC_API_KEY from env)
-- Rate-limited call wrapper (retries on 429/5xx)
-- JSONL append/read helpers (resumability)
-- Cost accounting per model
-- Prompt-versioning helper
+Used by ``rescore_trial_stoppage.py`` and
+``rescore_trial_stoppage_openai_batch.py``:
 
-Every classifier records its prompt version explicitly so that re-runs against
-newer prompt versions coexist with older records in the DB (per the schema's
-`source_version` and `classifier_version` fields).
+- ``CallResult``: one model response plus the exact prompts and parameters.
+- ``PRICING``: USD per 1M input / output tokens for the OpenAI models they call.
+- ``extract_json_block``: first JSON object in a response text.
+- ``annotate``: adds the audit fields (run id, provider, model, prompt version,
+  exact prompts, raw response, usage, cost) that
+  ``db/13_ingest_llm_outputs.py`` reads.
+- ``append_jsonl`` / ``read_jsonl``: append one JSON row; read rows, skipping
+  blank and malformed lines and yielding nothing for a missing file.
 """
 from __future__ import annotations
 
 import json
-import os
-import sys
-import time
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterator
 
-try:
-    from anthropic import Anthropic
-except ImportError:  # pragma: no cover
-    Anthropic = None
 
-
-# Pricing per 1M input / output tokens (as of Aug 2026 — update if prices change).
+# USD per 1M input / output tokens.
 PRICING = {
-    "claude-haiku-4-5-20251001": {"input": 1.0, "output": 5.0},
-    "claude-sonnet-4-6":         {"input": 3.0, "output": 15.0},
-    "claude-opus-4-7":           {"input": 15.0, "output": 75.0},
-    "gpt-5.6-luna":              {"input": 0.2, "output": 1.2},
-    "gpt-5.6-terra":             {"input": 2.0, "output": 12.0},
+    "gpt-5.6-luna": {"input": 0.2, "output": 1.2},
+    "gpt-5.6-terra": {"input": 2.0, "output": 12.0},
 }
 
 
@@ -50,68 +40,7 @@ class CallResult:
     user_prompt: str
     max_tokens: int
     temperature: float
-    provider: str = "anthropic"
-
-
-def get_client():
-    if Anthropic is None:
-        raise RuntimeError("anthropic package not installed. `pip install anthropic`")
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        raise RuntimeError("ANTHROPIC_API_KEY not set. See .env.example")
-    return Anthropic(api_key=key)
-
-
-def call_with_retry(
-    client,
-    model: str,
-    system: str,
-    user: str,
-    max_tokens: int = 2048,
-    temperature: float = 0.0,
-    max_attempts: int = 5,
-) -> CallResult:
-    """Call Anthropic; retry with exponential backoff on 429 / 5xx."""
-    for attempt in range(max_attempts):
-        try:
-            resp = client.messages.create(
-                model=model,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                system=system,
-                messages=[{"role": "user", "content": user}],
-            )
-            in_tok = resp.usage.input_tokens
-            out_tok = resp.usage.output_tokens
-            price = PRICING.get(model)
-            if price is None:
-                cost = 0.0
-            else:
-                cost = (in_tok / 1e6) * price["input"] + (out_tok / 1e6) * price["output"]
-            text_parts = [b.text for b in resp.content if hasattr(b, "text")]
-            return CallResult(
-                text="".join(text_parts),
-                input_tokens=in_tok,
-                output_tokens=out_tok,
-                cost_usd=cost,
-                model=model,
-                provider_request_id=getattr(resp, "id", None),
-                system_prompt=system,
-                user_prompt=user,
-                max_tokens=max_tokens,
-                temperature=temperature,
-            )
-        except Exception as e:
-            if attempt == max_attempts - 1:
-                raise
-            wait = 2 ** attempt
-            print(
-                f"  [call retry {attempt+1}/{max_attempts}] {type(e).__name__}: "
-                f"waiting {wait}s",
-                file=sys.stderr,
-                flush=True,
-            )
-            time.sleep(wait)
+    provider: str = "openai"
 
 
 def extract_json_block(text: str) -> dict:
@@ -188,19 +117,3 @@ def read_jsonl(path: Path) -> Iterator[dict]:
                 yield json.loads(line)
             except json.JSONDecodeError:
                 pass
-
-
-def load_processed_keys(path: Path, key_field: str) -> set:
-    """Return set of subject keys already present in a JSONL file (for resumability)."""
-    seen = set()
-    for row in read_jsonl(path):
-        k = row.get(key_field)
-        if k is not None:
-            seen.add(k)
-    return seen
-
-
-def db_conn():
-    """Neon connection from DATABASE_URL."""
-    import psycopg2
-    return psycopg2.connect(os.environ["DATABASE_URL"])
