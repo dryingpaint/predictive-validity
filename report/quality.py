@@ -85,26 +85,33 @@ def stop_reason_agreement() -> dict:
     return out
 
 
-# Tasks re-decided under a prompt revision that changed only how lists are shown to the model:
-# task -> (earlier version, later version, the part of the output compared).
+# Tasks decided twice: under a prompt revision that changed only how lists are shown to the
+# model, or (same version) again after their payload order changed. task -> (earlier version,
+# later version, the part of the output compared).
 RETEST = {"trial_purpose": ("v1", "v2", lambda o: o["purpose"]),
-          "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"]))}
+          "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"])),
+          "indication_mondo": ("v2", "v2", lambda o: o["mondo_id"])}
 
 
 def retest() -> dict:
-    """Share of subjects decided the same way under both prompt versions (latest validated decision of each)."""
+    """Share of subjects decided the same way the two times (the two latest model calls,
+    one per version when the versions differ; reused copies are not calls)."""
     out = {}
     for task, (a, b, key) in RETEST.items():
         df = frame.query("""
-            SELECT DISTINCT ON (r.prompt_version, d.subject_key) r.prompt_version, d.subject_key, d.parsed_output
+            SELECT r.prompt_version, d.subject_key, d.parsed_output
             FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
             WHERE d.task = %s AND r.prompt_version IN (%s, %s) AND d.validation_status = 'validated'
-            ORDER BY r.prompt_version, d.subject_key, d.created_at DESC""", (task, a, b))
-        old = {k: key(o) for v, k, o in df.itertuples(index=False) if v == a}
-        new = {k: key(o) for v, k, o in df.itertuples(index=False) if v == b}
-        both = old.keys() & new.keys()
-        out[task] = sum(old[k] == new[k] for k in both) / len(both)
-        out[f"{task}_n"] = len(both)
+              AND d.prior_decision_id IS NULL
+            ORDER BY d.subject_key, d.created_at DESC""", (task, a, b))
+        later, earlier = {}, {}
+        for v, k, o in df.itertuples(index=False):
+            if k not in later and v == b:
+                later[k] = key(o)
+            elif k in later and k not in earlier and v == a:
+                earlier[k] = key(o)
+        out[task] = sum(earlier[k] == later[k] for k in earlier) / len(earlier)
+        out[f"{task}_n"] = len(earlier)
     return out
 
 
