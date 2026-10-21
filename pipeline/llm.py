@@ -35,7 +35,7 @@ load_dotenv(os.path.join(REPO, ".env"))
 MODEL = "claude-opus-5"
 BATCH_SIZE = 2000
 POLL_SECONDS = 60
-WORKERS = 24  # concurrent Messages calls of a direct run
+WORKERS = int(os.environ.get("LLM_WORKERS", "24"))  # concurrent Messages calls of a direct run
 STREAM_ATTEMPTS = 3  # the SDK retries opening a request, not a stream that drops partway
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).

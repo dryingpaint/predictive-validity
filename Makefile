@@ -3,7 +3,8 @@
 # inputs are unchanged (pipeline/llm.py), loaders upsert, and builds replace.
 # Requires DATABASE_URL and ANTHROPIC_API_KEY in .env, a venv from `uv sync`,
 # and pdftoppm (poppler) and tesseract on PATH for OCR of scanned FDA letters. LLM steps use the
-# Batches API above LLM_DIRECT_MAX new items (default 100); raise it to call the API directly.
+# Batches API above LLM_DIRECT_MAX new items (default 100); raise it to call the API directly,
+# LLM_WORKERS (default 24) calls at a time.
 
 PY := .venv/bin/python
 RUN := $(PY) -m
