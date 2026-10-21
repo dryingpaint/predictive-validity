@@ -1,145 +1,197 @@
 # Classifier scripts
 
-The LLM classifiers that produce resumable JSONL / CSV outputs. New audited
-JSONL runs are loaded incrementally with `db/13_ingest_llm_outputs.py`;
-`db/02_ingest.py` remains the legacy big-bang bootstrap loader.
+The trial-stoppage rescore, an OpenAI classifier that writes resumable,
+audited JSONL, plus the scripts that retrieve, snapshot and export the trial
+sources it reads. Its runs are loaded incrementally with
+`db/13_ingest_llm_outputs.py`; `db/02_ingest.py` is the one-shot bootstrap
+loader for the earlier classifier files.
 
-**Every script here:**
-- reads Neon DB state to pick which subjects need scoring
-- calls the Anthropic API with a versioned prompt
-- writes a resumable JSONL / CSV output
+**The paid rescore workflow:**
+- reads Neon DB state to pick which trials need scoring
+- calls OpenAI with a versioned prompt
+- writes a resumable JSONL output
 - records the exact system/user prompts, raw response, model parameters,
   provider request id, prompt version, token counts, and USD cost per row
 
 ## Setup
 
 ```bash
-pip install anthropic openai psycopg2-binary
-export ANTHROPIC_API_KEY=sk-ant-...
-# Or, for the OpenAI Nelson batch runner:
-export OPENAI_API_KEY=sk-...
-export DATABASE_URL=postgres://...
+uv sync    # openai and psycopg2-binary come from pyproject.toml
+# In .env (read by `.venv/bin/dotenv run --`):
+#   OPENAI_API_KEY=sk-...
+#   DATABASE_URL=postgres://...
 ```
 
-## The four classifiers
+## Classifier workflows
 
 | Script | Purpose | Target file | Default model | Cost per 1k items |
 |---|---|---|---|---|
-| `score_target_literature.py` | Line B/C/D/E evidence scores per target | `data/target_evidence/literature_scores.jsonl` | Haiku | ~$30-60 |
-| `classify_why_stopped.py` | Trial termination classification. First-pass (default) OR verify (`--verify-from PRIOR.jsonl`). | `data/clinical_trials/why_stopped_*.jsonl` | Haiku (first-pass) / Sonnet (verify) | Haiku ~$5-10 / Sonnet ~$20-40 |
-| `classify_silent_kill.py` | Ph3+ silent-kill verification per drug | `data/silent_kill_verified.jsonl` | Sonnet | ~$50-150 |
-| `nelson_tier_classify.py` | Cohort-wide T-I genetics-tier adjudication | `data/target_evidence/nelson_tiers_*.jsonl` + `.dossiers.jsonl` | Sonnet | depends on cohort/prompt size |
+| `rescore_trial_stoppage.py` | Multi-axis trial stoppage adjudication from registry results, publications, and curated external evidence | `data/clinical_trials/stoppage_rescore_*.jsonl` | GPT-5.6 Terra | depends on dossier size |
 
-`nelson_tier` is retained for audit and descriptive analysis but is temporarily
-excluded from all predictive scorers because existing coverage was selectively
-curated on approval-oriented pairs. Do not run a bulk tiering job to restore it
-as a model feature: reintroduction requires uniform, indication-specific,
-pre-outcome computation and held-out-target validation.
+## Trial-stoppage rescore
 
-The v4 Nelson workflow enumerates every non-placebo human target-indication
-pair represented in `preclin.program`; it does not join approval, outcome, or
-phase tables. Before any optional LLM call, it writes a full evidence dossier
-containing every Mendelian, ClinGen, GWAS, genetics-only Open Targets, and
-canonical PubMed record retrieved. The complete stable dossier content is
-stored as an immutable `preclin.source_document`; local dossier JSONL is a
-resumable ignored sidecar, not the durable audit record. Evidence below the
-default 400,000-character budget is sent intact. Only the oversized tail is
-trimmed; indication-term overlap orders overflow rows.
+The trial stop reasons the analyses use come from `pipeline/outcomes.py`
+(`preclin.trial_outcome`). The rescore is kept as a reference for them:
+`report/quality.py` (`stop_reason_agreement()`) maps the stop reason of every
+trial whose `execution` is not `completed`, the latest non-error
+`trial_stoppage_rescore` label (`gpt-5.6-terra`) and the latest non-error
+Sonnet `why_stopped` label (`claude-sonnet`) of the same trial onto one coarse
+taxonomy, and reports percent agreement, Cohen's kappa, and an
+efficacy-versus-other kappa against each, scoring a sponsor decision with no
+stated reason once as business and once as unknown. The rescore writes its own
+`trial_stoppage_rescore` classifier task beside `why_stopped`, so both labels
+stay in `preclin.classification`.
 
-The model still assigns the final T0-T3 tier. Each prompt record carries a
-stable evidence ID, a non-binding ontology/text relationship hint, and a
-deterministic ceiling describing what it could support if disease-matched.
-The model adjudicates disease relevance and cites supporting evidence IDs; a
-post-call validator rejects T2 without replicated coding GWAS studies and T3
-without qualifying germline Mendelian or Strong/Definitive ClinGen evidence.
-T4 is disabled at target-indication level; genetic effect direction is stored
-separately from drug-mechanism concordance.
+The rescore result has independent fields for study execution, primary-endpoint
+assessment, scientific outcome, termination driver, and program outcome. This prevents a phrase such as "business decision" from
+silently becoming an efficacy failure—or hiding a successful efficacy readout.
 
-Prepare and inspect the full cohort without spending money:
+Refresh canonical registry records and their linked PubMed abstracts first.
+Exact-NCT PubMed discovery is optional and requires `NCBI_EMAIL`:
+
+```bash
+.venv/bin/dotenv run -- .venv/bin/python db/11_ingest_trial_sources.py \
+  --scope classified --limit 100 --search-pubmed-by-nct
+```
+
+For a frozen subset, pass one NCT per line with `--nct-id-file`. An exact-NCT
+search hit is only a discovery candidate: it can still be a protocol, review
+table, sibling trial, or unrelated result. Preserve raw results and inspect the
+source text before linking it to a trial.
+
+Curated sponsor, SEC, regulatory, non-US registry, and scholarly excerpts are
+loaded with the dry-run-by-default external-source importer:
 
 ```bash
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-  --all-clinical --prepare-only \
-  --out data/target_evidence/nelson_tiers_all_v5.jsonl
+  db/ingest_trial_external_sources.py curated_sources.jsonl
+
+.venv/bin/dotenv run -- .venv/bin/python \
+  db/ingest_trial_external_sources.py --commit curated_sources.jsonl
 ```
 
-For a reproducible 50-pair pilot, prepare an outcome-blind random sample:
+Every row declares its relationship to the target (`exact_nct`,
+`unique_protocol`, `probable_composite`, `parent_trial`, `extension_trial`,
+`sibling_indication`, or `program_only`), whether it can support each
+classification axis, a controlled list of supported claim types, and whether
+the retained text is an exact excerpt, source text, or a verified paraphrase.
+Program-supporting rows also declare `target_indication`, `protocol_family`, or
+`asset_global` scope. Parent, sibling, and program-only evidence cannot be
+marked as the target trial's own scientific outcome.
+
+Prepare and validate a free single-trial dossier:
 
 ```bash
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-  --all-clinical --sample-size 50 --seed 20260821 --prepare-only \
-  --out data/target_evidence/nelson_tiers_pilot_v5.jsonl
+  analyses/classifiers/rescore_trial_stoppage.py prepare \
+  --nct-id NCT02470585 \
+  --out data/clinical_trials/stoppage_rescore_pilot.dossiers.jsonl
+
+.venv/bin/python analyses/classifiers/rescore_trial_stoppage.py validate \
+  --dossiers data/clinical_trials/stoppage_rescore_pilot.dossiers.jsonl
 ```
 
-Large scoring runs should use the asynchronous Message Batches workflow. The
-submit command begins paid work and requires an explicit confirmation flag;
-collection is resumable and validates every response against the submitted
-dossier and prompt hashes:
+Before a cohort run, create a reproducible validation set balanced across the
+11 Sonnet `why_stopped` categories and across registry/results/publication
+coverage:
 
 ```bash
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_batch.py submit \
-  --dossiers data/target_evidence/nelson_tiers_pilot_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_pilot_v5.batches.jsonl \
-  --confirm-paid-batch
+  analyses/classifiers/rescore_trial_stoppage.py prepare \
+  --validation-per-category 5 --seed 20260902 \
+  --out tmp/stoppage-validation-v1/dossiers.jsonl \
+  --selection-out tmp/stoppage-validation-v1/selection.jsonl
 
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_batch.py collect \
-  --dossiers data/target_evidence/nelson_tiers_pilot_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_pilot_v5.batches.jsonl \
-  --out data/target_evidence/nelson_tiers_pilot_v5.jsonl
+  analyses/classifiers/rescore_trial_stoppage.py score \
+  --dossiers tmp/stoppage-validation-v1/dossiers.jsonl \
+  --out tmp/stoppage-validation-v1/luna.jsonl \
+  --model gpt-5.6-luna --workers 4 --confirm-paid
 ```
 
-Remove `--prepare-only` only after explicit approval for the paid run. The
-scoring pass resumes from the saved dossiers, so the exact evidence supplied
-to the model is stable. Import caches or cited PMIDs first with
-`db/12_ingest_evidence_abstracts.py`; Nelson reads only immutable records in
-`preclin.source_document`. Target-linked records and canonical PMIDs cited by
-GWAS/Open Targets are both included. Each PubMed excerpt shown to the model is
-written to `_source_documents` for ingestion into `preclin.llm_run_source`.
+Run the identical frozen dossiers with `gpt-5.6-terra` into a separate output
+file for a paired comparison. Validation sampling metadata is excluded from the
+model prompt, so the Sonnet category (`legacy_category`) cannot leak into the
+rescore verdict.
 
-Nelson adjudication can instead use OpenAI Batches with `gpt-5.6-luna`. The
-OpenAI runner consumes the same dossiers and applies the same prompt-hash,
-evidence-ID, PMID, deterministic-ceiling, and result-schema validation. Pass an
-existing result file with `--completed-out` to submit only missing pairs; this
-also permits a run to resume across providers without replacing valid rows:
+For a cohort run, omit `--nct-id`. The default scope is every trial that has a
+`why_stopped` classification. The dossier includes structured primary
+outcome values/analyses, adverse-event summary counts, and up to 20 linked
+publication abstracts. Every excerpt is tied to its immutable
+`source_document_id`. Dossier v4 also includes curated external-source excerpts,
+their target relationship, support flags/types, locator, source-text kind, and
+program scope. Result v3 requires separate source-ID arrays for scientific
+outcome, termination driver, and program outcome; deterministic validation
+rejects sources whose flags do not permit the claimed axis. Multiple explicit
+stopping causes retain one benchmark-compatible primary driver plus secondary
+drivers.
+
+Use the resumable Batch API for the full cohort. Submission is the only command
+below that starts paid work:
 
 ```bash
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_openai_batch.py submit \
-  --dossiers data/target_evidence/nelson_tiers_all_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_all_openai_v7.batches.jsonl \
-  --completed-out data/target_evidence/nelson_tiers_all_v7.jsonl \
-  --confirm-paid-batch
+  analyses/classifiers/rescore_trial_stoppage_openai_batch.py submit \
+  --dossiers data/clinical_trials/stoppage_rescore_all.dossiers.jsonl \
+  --manifest data/clinical_trials/stoppage_rescore_all.batches.jsonl \
+  --model gpt-5.6-terra --confirm-paid-batch
 
 .venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_openai_batch.py collect \
-  --dossiers data/target_evidence/nelson_tiers_all_v5.dossiers.jsonl \
-  --manifest data/target_evidence/nelson_tiers_all_openai_v7.batches.jsonl \
-  --out data/target_evidence/nelson_tiers_all_v7.jsonl
+  analyses/classifiers/rescore_trial_stoppage_openai_batch.py collect \
+  --dossiers data/clinical_trials/stoppage_rescore_all.dossiers.jsonl \
+  --manifest data/clinical_trials/stoppage_rescore_all.batches.jsonl \
+  --out data/clinical_trials/stoppage_rescore_all.raw.jsonl
+
+.venv/bin/python analyses/classifiers/rescore_trial_stoppage.py assemble \
+  --dossiers data/clinical_trials/stoppage_rescore_all.dossiers.jsonl \
+  --results data/clinical_trials/stoppage_rescore_all.raw.jsonl \
+  --out data/clinical_trials/stoppage_rescore_all.jsonl \
+  --expected-count 5510
+
+.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
+  --task trial-stoppage-rescore --dry-run \
+  data/clinical_trials/stoppage_rescore_all.jsonl
 ```
 
-**Canonical cost field is `_cost_usd`.** Older classifier outputs used
-`_cost_share` (Sonnet why_stopped verify) or `_cost` (silent_kill,
-target_resolution). `db/02_ingest.py:_read_cost` accepts all three for
-back-compat, but new runs write only `_cost_usd`.
+The direct `score` subcommand exists for a small pilot, rejected-row repair, or
+Batch API long tail and also requires `--confirm-paid`. Pass each reviewed
+repair file with `--replacement-result`; base-result duplicates, invalid rows,
+or a missing trial prevent final output. Replacements are applied explicitly
+and counted. Both scoring paths use strict structured output, reject cited
+document IDs absent from the dossier, and retain exact prompts, responses,
+hashes, token usage, and costs. Rejected direct calls retain the raw response
+and usage envelope. Narrow deterministic repairs may fill an unknown axis's
+registry citation, conservatively downgrade an unsupported primary-endpoint
+claim to `unclear`, or apply the declared precedence to causes the model itself
+describes as coequal; every such edit is recorded in
+`_deterministic_repairs`. The Batch manifest also pins the prompt version and,
+for new submissions, the system prompt hash so a changed collector cannot
+misattribute the submitted prompt.
 
-The cost value is never produced by the LLM — the LLM output schema is
-strictly the evidence fields (cat / confidence / rationale / scores /
-tier / etc.). `common.py:call_with_retry` reads `resp.usage.input_tokens`
-and `resp.usage.output_tokens` from the API response, applies a per-model
-price table, and the wrapper appends `_cost_usd` to the row.
+**Canonical cost field is `_cost_usd`.** `common.annotate` writes it on every
+rescore row. `db/02_ingest.py:_read_cost` and
+`db/13_ingest_llm_outputs.py:read_cost` also accept `_cost_share` (Sonnet
+why_stopped verify) and `_cost` (silent_kill, target_resolution), the field
+names in the earlier classifier files.
+
+The cost value is never produced by the LLM — the model's structured output
+holds only the classification fields. The rescore scripts read the input and
+output token counts from the OpenAI response `usage`, price them with
+`common.PRICING` (the Batch collector applies `BATCH_PRICE_MULTIPLIER`), and
+`common.annotate` writes `_cost_usd` to the row.
 
 ## Resumability
 
-Each script skips subjects already present in its output file. Interrupted runs
-resume cleanly — just re-invoke with the same `--out`.
+`score` skips trials already present in its `--out` file, so an interrupted run
+resumes when re-invoked with the same `--out`. Batch `submit` skips trials
+already in `--manifest` or `--completed-out`, and `collect` skips trials already
+in its `--out` or `--errors-out`. `prepare` rewrites its `--out` file.
 
 ## Prompt versioning
 
-Every script has a `PROMPT_VERSION` constant. When the prompt changes:
+`rescore_trial_stoppage.py` defines `PROMPT_VERSION`; the Batch script uses the
+same constant and its collector rejects a manifest submitted under a different
+prompt version. When the prompt changes:
 
 1. Bump `PROMPT_VERSION` (e.g. `"v1"` → `"v2"`).
 2. Rerun with a new output filename.
@@ -155,67 +207,11 @@ New classifier JSONL rows receive a unique `_run_id`. After
 `db/13_ingest_llm_outputs.py` stores them in `preclin.llm_run`. Verdicts point
 to their latest run, while literature extraction runs connect to every
 `preclin.evidence_score` fact they produced and retain an immutable
-`fact_snapshot` of the run-produced value. Legacy rows remain auditable as
-outputs but are explicitly marked as missing their unrecoverable exact inputs.
-
-## Concrete recipe — score the neuroprotection candidates
-
-The scoring diagnostic in `analyses/verify_candidate_scores.py` exposed that
-9 of 11 neuroprotection candidates have NULL Line B/C/D/E scores — the model
-imputes cohort medians for those. To close the gap:
-
-```bash
-# 1. Import the per-target abstract cache into the canonical source store.
-#    This is required before a paid call so every prompt excerpt has a stable id.
-.venv/bin/dotenv run -- .venv/bin/python db/12_ingest_evidence_abstracts.py \
-    --cache-dir /path/to/per-target-jsonl --subject-type target
-
-# 2. Score the 11 candidates' literature evidence
-.venv/bin/dotenv run -- .venv/bin/python analyses/classifiers/score_target_literature.py \
-    --targets UNC13A,NTRK2,ADCYAP1R1,KL,GALR1,NPY1R,GHSR,VIPR2,APLNR,VGF,CORT \
-    --out data/target_evidence/literature_scores_neuro_2026.jsonl
-
-# 3. Prepare complete evidence dossiers for each T-I pair (no paid calls)
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/classifiers/nelson_tier_classify.py \
-    --pair UNC13A:ALS \
-    --pair NTRK2:Alzheimer \
-    --pair ADCYAP1R1:Alzheimer \
-    --pair KL:Alzheimer \
-    --pair GALR1:Alzheimer \
-    --pair NPY1R:Alzheimer \
-    --pair GHSR:Parkinson \
-    --pair VIPR2:Alzheimer \
-    --pair APLNR:Ischemic-stroke \
-    --pair VGF:Alzheimer \
-    --pair CORT:Alzheimer \
-    --prepare-only \
-    --out data/target_evidence/nelson_tiers_neuro_v4.jsonl
-
-# 4. After explicit spend approval, rerun the same Nelson command without
-#    --prepare-only. It reuses the exact saved dossiers and writes score rows.
-
-# 5. Incrementally ingest the audited literature runs
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task target-literature \
-    data/target_evidence/literature_scores_neuro_2026.jsonl
-
-# 6. Bulk-preflight, then atomically ingest the audited Nelson runs and facts
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task nelson-tier --preflight \
-    data/target_evidence/nelson_tiers_neuro_v4.jsonl
-.venv/bin/dotenv run -- .venv/bin/python db/13_ingest_llm_outputs.py \
-    --task nelson-tier data/target_evidence/nelson_tiers_neuro_v4.jsonl
-
-# 7. Update the established database view without rerunning bootstrap views
-.venv/bin/dotenv run -- sh -c \
-  'psql "$DATABASE_URL" -f db/16_nelson_tier_view.sql'
-
-# 8. Rescore
-.venv/bin/dotenv run -- .venv/bin/python analyses/score_neuro_candidates.py
-```
-
-Expected total cost: ~$1-3.
+`fact_snapshot` of the run-produced value. `db/10_clinical_trial_source_audit.sql`
+wraps each classification and PubMed-scored fact that had no run in a
+`provider = 'legacy_import'` run whose `model_parameters` record
+`"audit_status": "exact_input_unavailable"`; those rows remain auditable as
+outputs.
 
 ## Cost accounting
 
@@ -223,11 +219,11 @@ Every classifier records per-row token counts and USD cost. Aggregate at any
 time with e.g.:
 
 ```bash
-jq -s 'map(._cost_usd // ._cost // ._cost_share) | add' \
-  data/target_evidence/literature_scores.jsonl
+jq -s 'map(._cost_usd) | add' data/clinical_trials/stoppage_rescore_all.jsonl
 ```
 
-Cumulative spend is also printed after each row while a script runs.
+`score` prints cumulative spend after each trial; `collect` prints the spend
+it added when it finishes.
 
 ## Not in scope
 
@@ -235,24 +231,14 @@ Cumulative spend is also printed after each row while a script runs.
   STRING / Reactome / SIDER / HPO / DGIdb / HPA / GTEx / Open Targets / IMPC).
   Those tables live in `public.*`, populated by a separate project. This repo
   reads from them but does not rebuild them.
-- **Target-literature PubMed abstract discovery.** The scorer reads only
-  canonical PubMed snapshots linked to a target in `preclin.source_document`.
-  Import per-gene JSONL caches with `db/12_ingest_evidence_abstracts.py` first;
-  the scorer fails before any paid call if an input lacks a stable
-  `source_document_id`. Trial-linked abstracts are handled separately by
-  `db/11_ingest_trial_sources.py`.
-- **Broad PubMed searching.** Nelson does not fetch directly. Discovering a
-  broad gene/indication corpus remains outside this repository; import records
-  with `db/12_ingest_evidence_abstracts.py` so immutable source IDs and hashes
-  exist before dossier preparation.
 
 ## Adding a new classifier
 
 Follow the existing pattern:
 
 1. Add a script to `analyses/classifiers/`.
-2. Use `common.py` for the Anthropic client, retry, JSON extraction, JSONL
-   append, and resumability helpers.
+2. Use `common.py` for `CallResult`, the audit fields (`annotate`), JSON
+   extraction, JSONL append/read, and model pricing (`PRICING`).
 3. Define `PROMPT_VERSION` and `DEFAULT_MODEL` at module top.
 4. Write audited JSONL that `db/13_ingest_llm_outputs.py` knows how to read,
    or add a new explicit task handler there. CSV-only workflows need their own
