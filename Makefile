@@ -10,15 +10,15 @@
 PY := .venv/bin/python
 RUN := $(PY) -m
 
-.PHONY: all sources migrate
+.PHONY: all sources identity programs migrate
 
-all: migrate sources
+all: migrate sources identity programs
 
 migrate:
 	$(PY) db/migrate.py apply
 
 # Raw sources: ClinicalTrials.gov snapshot, FDA approvals (CDER + CBER) and the uses each
-# approval letter states, ontologies.
+# approval letter states, UNII substance names, ontologies.
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
@@ -34,4 +34,22 @@ sources:
 	$(RUN) pipeline.cber.assemble
 	$(RUN) pipeline.fda load-cber
 	$(RUN) pipeline.fda extract
+	$(RUN) pipeline.unii load
 	$(RUN) pipeline.ontology load
+
+# Identity: trial links, conditions -> MONDO, interventions -> molecular entities, FDA products -> entities,
+# entities -> UNII substances (merging entities that are the same substance).
+identity:
+	$(RUN) pipeline.programs register
+	$(RUN) pipeline.indications map
+	$(RUN) pipeline.drugs canonicalize
+	$(RUN) pipeline.fda link
+	$(RUN) pipeline.drugs unii
+
+# Programs: entity role and purpose of each trial, each entity's diseases grouped into indications,
+# then (entity, indication) programs.
+programs:
+	$(RUN) pipeline.programs roles
+	$(RUN) pipeline.programs purposes
+	$(RUN) pipeline.programs indications
+	$(RUN) pipeline.programs build
