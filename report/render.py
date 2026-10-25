@@ -17,6 +17,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
+from report.section3 import CASE_AUDIT
 
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
@@ -183,29 +184,22 @@ def quality_table() -> str:
     return table(pd.DataFrame(rows, columns=["Label", "Audited", "Agreement (95% CI)", "Wrong"]))
 
 
-def rr_ci(r, ratio="rr", digits=2) -> str:
-    v = r.get(ratio) if isinstance(r, dict) else getattr(r, ratio, np.nan)
-    lo = r.get("lo") if isinstance(r, dict) else getattr(r, "lo", np.nan)
-    hi = r.get("hi") if isinstance(r, dict) else getattr(r, "hi", np.nan)
-    if v is None or pd.isna(v):
-        return "–"
-    return f"{v:.{digits}f} ({lo:.{digits}f}–{hi:.{digits}f})"
+def rr_ci(r, ratio="rr") -> str:
+    """'1.23 (1.01–1.50)' from a dict or row with the ratio, lo and hi; '–' when not estimated."""
+    v = r.get(ratio)
+    return "–" if v is None or pd.isna(v) else f"{v:.2f} ({r.get('lo'):.2f}–{r.get('hi'):.2f})"
 
 
 def p_value(p) -> str:
     return "–" if p is None or pd.isna(p) else "< 0.001" if p < 0.001 else f"{p:.3f}"
 
 
-def s3_numbers() -> dict:
-    return json.load(open(os.path.join(OUT, "section3", "numbers.json")))
-
-
 def s3_hypotheses_table() -> str:
-    n = s3_numbers()
+    n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
     h4 = n["h4"]["fdaaa"]["interaction_per_step"]
     rows = [
-        ("H1", "Outside oncology: genetics for the disease (G3) vs no germline genetics (G0), advancing within 4 years of Phase 2",
-         "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
+        ("H1", "Outside oncology: genetics for the disease (G3) vs no germline genetics (G0), advancing within 4 years "
+               "of Phase 2", "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
         ("H2", "Same target, different diseases: G3 vs not (conditional logit)", "odds ratio", rr_ci(n["h2"], "or"),
          n["h2"].get("p")),
         ("H3", "Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < "
@@ -225,6 +219,8 @@ def s3_hypotheses_table() -> str:
     return table(pd.DataFrame(out, columns=["", "Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
 
 
+# Evidence-map rows shown in the table and the figure: section3.MAP_FEATURES without the families no program had
+# before entry (burden, IMPC, CRISPR) and the union of the three liability rows.
 S3_MAP_ROWS = ["g3", "gwas", "gwas_strong", "gwas_mid", "gwas_weak", "mendelian", "mendelian_strong",
                "somatic", "somatic_concordant", "mgi", "mgi_strong", "expression", "reactome", "b1", "precedent",
                "pan_essential", "constrained", "ko_lethal"]
@@ -247,12 +243,12 @@ def s3_map_table() -> str:
 
 S3_ENDPOINTS = {"B1_target_engagement": "Target engagement", "B2_exploratory_biomarker": "Exploratory biomarker",
                 "B3_regulatory_surrogate": "Regulatory surrogate (LDL-C, HbA1c, viral load…)",
-                "B4_objective_physiological": "Objective physiology (FEV1, 6MWD, weight…)",
+                "B4_objective_physiological": "Objective physiology (6MWD, visual acuity, weight…)",
                 "B5_clinician_scale": "Clinician-rated scale or responder index",
-                "B6_patient_reported": "Patient-reported outcome", "B7_disease_events": "Disease events (relapses, "
-                "exacerbations…)", "B8_hard_outcome": "Hard outcome (death, MI, stroke…)",
-                "O1_tumor_response": "Tumour response", "O2_progression_free": "Progression-free survival",
-                "O3_overall_survival": "Overall survival"}
+                "B6_patient_reported": "Patient-reported outcome",
+                "B7_disease_events": "Disease events (relapses, exacerbations…)",
+                "B8_hard_outcome": "Hard outcome (death, MI, stroke…)", "O1_tumor_response": "Tumour response",
+                "O2_progression_free": "Progression-free survival", "O3_overall_survival": "Overall survival"}
 
 
 def s3_endpoint_table() -> str:
@@ -271,11 +267,19 @@ def s3_endpoint_table() -> str:
                                              "all readable (95% CI)", "Registry-posted, FDAAA era"]))
 
 
+def s3_rules() -> pd.DataFrame:
+    return pd.read_csv(os.path.join(OUT, "section3", "rules.csv")).set_index("rule", drop=False)
+
+
+def rule_name(r) -> str:
+    """'M3 Mendelian evidence …', with * for a rule added after the plan."""
+    return f"{r.rule}{'' if r.registered else '*'} {r.label}"
+
+
 def s3_rules_table() -> str:
-    df = pd.read_csv(os.path.join(OUT, "section3", "rules.csv"))
     regime = {"all": "All", "COM": "Non-oncology", "ONC": "Oncology", "DD": "Hereditary"}
     rows = []
-    for r in df.itertuples():
+    for r in s3_rules().itertuples():
         def split(name):
             v = getattr(r, f"{name}_rr")
             if pd.isna(v) or v == 0:
@@ -291,44 +295,53 @@ def s3_rules_table() -> str:
                                              "Discovery RR (90%)", "Held-out RR (90%)", "Meets the bar"]))
 
 
-S3_RULE_NAMES = {"M3": "M3 Mendelian evidence, non-hereditary disease", "M4": "M4 GWAS, locus-to-gene ≥ 0.8",
-                 "M10": "M10 Reactome pathway", "B1": "B1 Approved drug on the target, related disease",
-                 "P2": "P2* Germline mechanism concordant with the drug"}
 CODE_NAMES = {"F1": "F1 exposure", "F2": "F2 biology did not translate", "F3": "F3 wrong population",
               "F4": "F4 surrogate gap", "F5": "F5 on-target toxicity", "F6": "F6 off-target toxicity",
-              "F7": "F7 trial design", "F8": "F8 commercial", "unknown": "unknown", "not_a_failure": "–"}
+              "F7": "F7 trial design", "F8": "F8 commercial", "unknown": "unknown"}
+SOURCE_CHARS = 160  # length of the evidence source shown in a case card
+
+
+def failure_label(advanced: str, code: str, short: bool = False) -> str:
+    if advanced == "yes":
+        return "–"
+    if code == "not_a_failure":
+        return "still progressing"
+    return code if short else CODE_NAMES[code]
 
 
 def s3_case_audit() -> pd.DataFrame:
-    return pd.DataFrame(json.load(open(os.path.join(frame.REPO, "report", "audits", "section3_cases.json"))))
+    return pd.DataFrame(json.load(open(CASE_AUDIT)))
 
 
 def s3_cases_table() -> str:
-    a = s3_case_audit()
+    a, rules = s3_case_audit(), s3_rules()
     rows = []
     for rule, g in a.groupby("rule", sort=False):
         failed = g[g.advanced_within_4y == "no"]
-        codes = failed.failure_code.value_counts()
-        rows.append([S3_RULE_NAMES.get(rule, rule), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
+        codes = pd.Series([failure_label("no", c, short=True) for c in failed.failure_code]).value_counts()
+        rows.append([rule_name(rules.loc[rule]), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
                      f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
                      f"partly)", f"{(g.predates_entry == 'yes').sum()}",
-                     ", ".join(f"{'still progressing' if c == 'not_a_failure' else c}: {k}" for c, k in codes.items())
-                     or "–"])
+                     ", ".join(f"{c}: {k}" for c, k in codes.items()) or "–"])
     return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
                                              "Evidence claim verified", "Evidence published before entry",
                                              "Why the others stopped (codes)"]))
 
 
+def shorten(text: str, limit: int) -> str:
+    """`text` cut at the last word boundary before `limit` characters, with an ellipsis."""
+    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+
 def s3_case_cards() -> str:
-    a = s3_case_audit()
     rows = []
-    for r in a.itertuples():
-        source = (r.evidence_source or "").split("](")[0].strip("[ ")[:140]
-        rows.append([S3_RULE_NAMES.get(r.rule, r.rule).split()[0], f"{r.entity} ({', '.join(r.targets)})", r.disease,
-                     r.phase2_entry, f"{r.claim_supported}; {source}" + (f" ({r.evidence_year})" if r.evidence_year else ""),
-                     ("advanced" if r.advanced_within_4y == "yes" else "did not advance" if r.advanced_within_4y == "no"
-                      else "unclear") + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
-                     CODE_NAMES.get(r.failure_code, r.failure_code)])
+    for r in s3_case_audit().itertuples():
+        source = shorten(r.evidence_source or "", SOURCE_CHARS) + (f" ({r.evidence_year})" if r.evidence_year else "")
+        outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
+        rows.append([f"{r.rule}", f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
+                     f"{r.claim_supported}; {source}",
+                     outcome + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
+                     failure_label(r.advanced_within_4y, r.failure_code)])
     return table(pd.DataFrame(rows, columns=["Rule", "Drug (target, action)", "Disease", "Phase 2 entry",
                                              "Evidence claim: verdict; earliest source", "Outcome (verified)",
                                              "Failure"]))

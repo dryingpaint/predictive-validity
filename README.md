@@ -23,7 +23,7 @@ The unit is a development program: one molecular entity developed for one diseas
 | ClinicalTrials.gov snapshot (all interventional drug/biological studies) | `pipeline.ctgov` | `preclin.ctgov_study` |
 | Posted results and results papers (PubMed) | `pipeline.outcomes results`, `publications` | `preclin.ctgov_result_summary`, `preclin.trial_publication` |
 | FDA approvals: Drugs@FDA, approval letters, labels (CDER); CBER biologics | `pipeline.fda`, `pipeline.cber` | `preclin.fda_*` |
-| Substance names (FDA UNII), MONDO, EFO and the Mammalian Phenotype ontology | `pipeline.unii`, `pipeline.ontology` | `preclin.unii_*`, `preclin.ontology_*` |
+| Substance names (FDA UNII), MONDO and the Mammalian Phenotype ontology | `pipeline.unii`, `pipeline.ontology` | `preclin.unii_*`, `preclin.ontology_*` |
 | Conditions → MONDO; intervention names → molecular entities → UNII | `pipeline.indications`, `pipeline.drugs` | `preclin.indication`, `preclin.moiety`, `preclin.drug_moiety` |
 | Entity role per trial; programs | `pipeline.programs` | `preclin.ctgov_study_moiety`, `preclin.dev_program` |
 | Approval of each program's disease; modality; disease area; trial outcomes and endpoint classes; targets | `pipeline.approvals`, `drugs`, `indications`, `outcomes`, `targets` | `preclin.dev_program_approval`, `preclin.trial_endpoint`, … |

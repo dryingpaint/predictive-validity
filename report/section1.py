@@ -43,6 +43,19 @@ SEED = 20261020
 MIN_RESOLVED_ENTITIES = 10  # per phase, below which a cohort's LOA and intervals are not estimated
 
 
+PRE_2015 = pd.Timestamp("2014-12-31")  # the latest date an approval known only to predate 2015 can carry
+
+
+def approval_dates(p: pd.DataFrame, approved: pd.Series) -> pd.Series:
+    """Approval date of each approved program (p indexed by program_id). An approval known
+    only to predate 2015, or undated, is placed at the earliest date it could have happened,
+    the entity's first FDA approval, so that a program entering after it is treated as a
+    lifecycle program."""
+    dated = pd.to_datetime(p.first_approval_date).where(p.date_basis.eq("dated"))
+    earliest = pd.to_datetime(p.moiety_first_fda_approval).clip(upper=PRE_2015).fillna(PRE_2015)
+    return dated.where(~(approved & p.date_basis.isin(["before_2015", "undated"])), earliest).where(approved)
+
+
 def own_trials(progs: pd.DataFrame, trials: pd.DataFrame) -> pd.Series:
     """Whether each trial row is one of its program's own trials: it lists the program's
     disease, or, for an entity's disease-unspecified program, it is one of the entity's
@@ -94,14 +107,7 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
     us = set(zip(entered.program_id[entered.us_site], entered.phase[entered.us_site]))
 
     p = progs.set_index("program_id")
-    approved = p.approved.eq("yes") | (uncertain_as_approved & p.approved.eq("uncertain"))
-    appr_date = pd.to_datetime(p.first_approval_date).where(p.date_basis.eq("dated"))
-    # An approval known only to predate 2015, or undated, is placed at the earliest date it
-    # could have happened, the entity's first FDA approval, so that a program entering
-    # after it is treated as a lifecycle program.
-    earliest = pd.to_datetime(p.moiety_first_fda_approval).clip(upper=pd.Timestamp("2014-12-31")) \
-                 .fillna(pd.Timestamp("2014-12-31"))
-    appr_date = appr_date.where(~(approved & p.date_basis.isin(["before_2015", "undated"])), earliest).where(approved)
+    appr_date = approval_dates(p, p.approved.eq("yes") | (uncertain_as_approved & p.approved.eq("uncertain")))
     cutoff = pd.Timestamp(snap) - pd.DateOffset(months=lag_months)
 
     rows = []
@@ -138,7 +144,8 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
             first_fda = p.at[pid, "moiety_first_fda_approval"]
             row = {
                 "program_id": pid, "moiety_id": p.at[pid, "moiety_id"], "phase": phase, "entry": entry,
-                "event": event, "years": max((end - entry).days, 0) / 365.25, "credited": False,
+                "event": event, "event_date": end, "years": max((end - entry).days, 0) / 365.25,
+                "credited": False,
                 "bio_area": p.at[pid, "bio_area"] if pd.notna(p.at[pid, "bio_area"]) else "unmapped",
                 "modality": p.at[pid, "modality"] if pd.notna(p.at[pid, "modality"]) else "unknown",
                 "novel": pd.isna(first_fda) or pd.Timestamp(first_fda) > entry,

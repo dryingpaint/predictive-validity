@@ -24,7 +24,7 @@ from pipeline import llm
 
 CACHE = os.path.join(llm.REPO, ".cache", "ontology")
 SOURCES = {"MONDO": "https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo",
-           "MP": "http://purl.obolibrary.org/obo/mp.obo"}
+           "MP": "https://purl.obolibrary.org/obo/mp.obo"}
 
 
 def norm_id(value: str) -> str:
