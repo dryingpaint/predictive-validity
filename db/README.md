@@ -12,7 +12,7 @@ not one uniform file type:
 | `01`–`11` | Ordered bootstrap schema, canonical views, and initial loaders | May evolve so a fresh database reaches the current state. Any change needed by an existing database must also have a new immutable migration. |
 | `12`–`13` | Repeatable source/LLM ingestion applications | May evolve. Their runs are audited in source, ingest, and LLM provenance tables—not `schema_migration`. |
 | `14` and later | Immutable one-time SQL or Python migrations | Never edit after the file is recorded. Add the next migration number instead. `db/migrate.py` reports any checksum change as drift. |
-| Unnumbered utilities and `analyses/` | Repeatable refresh or analysis programs | May evolve; outputs must carry their own source release/run provenance. |
+| Unnumbered utilities and `analyses/classifiers/` | Repeatable refresh programs, and the trial-stoppage rescore behind `preclin.classification` (compared in `report.quality`) | May evolve; outputs must carry their own source release/run provenance. |
 
 The repository currently has no migration 15. Its absence is historical and is
 not treated as a pending migration. Migration 14 was baselined after its
@@ -78,365 +78,6 @@ reason and `--yes`, and labels every resulting row as `baseline`:
 Do not use `baseline` on a fresh or uncertain database; use `apply` instead.
 Recurring source refreshes are audited in `preclin.ingest_log` or dedicated
 release tables.
-
-## Canonical PV evidence ingestion pilot
-
-Migration 28 creates the `pv_source`, `pv_core`, and `pv_evidence` schemas. The
-canonical adapter inventories ClinicalTrials.gov studies with an `ACTUAL` Study
-Completion Date in a requested range. The active replacement pilot uses 2015;
-the old first-posted-2025 pilot remains historical. The cohort requires
-`INTERVENTIONAL` study type and at
-least one intervention typed `DRUG` or `BIOLOGICAL`. Registration,
-first-posted, start, and primary-completion dates do not determine cohort
-membership:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python db/migrate.py apply
-
-# Network and parsing validation only; the default is also a dry run.
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.clinicaltrials_gov \
-  --from-date 2015-01-01 --through-date 2015-12-31 --limit 10 --dry-run
-
-# Persist the immutable source versions and normalized trial/intervention rows.
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.clinicaltrials_gov \
-  --from-date 2015-01-01 --through-date 2015-12-31 --limit 10 --commit
-```
-
-The discovery query always records the complete ID/date/type manifest before
-applying the limit. Day-, month-, and year-precision completion dates remain
-literal; explicit lower and upper bounds support deterministic ordering without
-inventing a day. The initial pilot retains exact JSON response bytes in Neon and
-their SHA-256 hashes. `pv_source.object_blob` is ready for GCS-backed
-representations, but no bucket is guessed or created when GCS is not configured.
-
-An explicitly selected eligible trial uses the same immutable adapter and is
-useful for bounded sentinel tests:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.clinicaltrials_gov --nct-id NCT02934698 --commit
-
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.exact_trial_normalizer \
-  --nct-id NCT02934698 --intervention Ivacaftor \
-  --condition 'Cystic Fibrosis' \
-  --cohort-id pv_cftr_organoid_sentinel_v1 --commit
-```
-
-The exact normalizer is deliberately narrower than the LLM path: it succeeds
-only for a unique literal registry intervention, unique ChEMBL parent, complete
-structured mechanism enumeration, and unique native OLS condition identifier.
-It does not infer combination components or reinterpret ambiguous wording.
-
-An immediate repeat can assert that every payload was reused:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.clinicaltrials_gov \
-  --from-date 2015-01-01 --through-date 2015-12-31 --limit 10 --commit \
-  --expect-no-new-versions
-```
-
-Migration 41 and the cohort adapter materialize the source-grounded five-trial
-review pilot without deleting the five excluded candidates:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.pilot_cohort_2015 --commit
-```
-
-The rerun records a new acquisition observation but does not duplicate unchanged
-source versions, trials, arms, intervention mentions, or condition mentions.
-Future LLM enrichment commands must implement `--compare-decisions-to latest`
-and explicit run-ID comparison against the decision ledger created by migration
-28. Migration 29 adds complete persisted comparisons, including decisions that
-were removed in the new run. The same comparison can be inspected without
-calling a model:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python -m pv.audit.llm_decisions \
-  --run RUN_UUID --compare-decisions-to latest
-```
-
-Migration 33 retains exact per-trial LLM input packets and provider audit
-metadata. Run the LLM-first semantic pass over the immutable ten-trial pilot:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.trial_semantic_llm \
-  --limit 10 --model gpt-5.6-terra --workers 4 --confirm-paid --commit
-
-# A later run compares canonical decision-bearing fields without overwriting.
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.trial_semantic_llm \
-  --limit 10 --model gpt-5.6-terra --workers 4 \
-  --compare-decisions-to latest --confirm-paid --commit
-```
-
-The model proposes intervention/exposure semantics, compositional indications,
-and target or broader-mechanism candidates. These rows remain LLM decisions;
-they are not promoted to canonical asset/target/phenotype assertions until
-deterministic identifier lookup and relationship verification succeed.
-
-Migration 34 adds promoted, source-backed trial relationships and normalized
-trial-indication links. Extract explicit related sponsor protocols from the
-archived trial records without guessing NCT mappings:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.trial_relationships --dry-run
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.trial_relationships --commit
-```
-
-The initial run stores `NCT06754553 reuses_data_from PHRC 2015-HUS 6398
-(PIMPARK)` with two exact ClinicalTrials.gov passages. Resolve the sponsor
-protocol through an archived ClinicalTrials.gov ID search and exact
-`orgStudyIdInfo.id` match:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.related_trial_resolver --commit
-```
-
-For the pilot this resolves the supporting record to `NCT03947216` without
-adding it to the ten-trial focal cohort.
-
-Migrations 35--37 add deterministic LLM-proposal verification, typed target
-kinds, preclinical document/experiment inventory tables, and explicit abstract
-availability. Verify every exact ChEMBL parent by enumerating its complete
-parent/form mechanism set, then normalize exact OLS indication concepts:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.semantic_verifier --commit
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.indication_normalizer --commit
-```
-
-Migrations 38--39 and 43 add the versioned `human_therapeutics_v2` development-scope
-policy. It retains every selected raw trial while allowing literature expansion
-only for assets with verified human therapeutic targets. Antibiotics and assets
-with therapeutic-primary non-human targets are excluded, vaccines are routed to
-a separate track, a verified drug asset can qualify a mixed drug/behavioral
-study, and unknown target domains are held unresolved. Materialize
-the idempotent scope decisions after semantic and structured verification:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python db/migrate.py apply
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.development_scope --dry-run
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.development_scope --commit
-```
-
-Both literature adapters read the scope views created by migration 38; they do
-not accept an excluded, vaccine, non-molecular, or unresolved subject merely
-because its raw trial record exists. Migration 39 makes the materialized keys
-policy-versioned and retains an append-only row for every distinct scope
-decision hash.
-
-Migrations 42 and 45 bridge the existing genetics/phenotype databases without
-copying or deleting their raw rows. They expose target--phenotype evidence and
-non-causal target context separately:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.legacy_evidence_bridge --dry-run
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.legacy_evidence_bridge --commit
-```
-
-The bridge refuses silent legacy-table drift, uses stable source-native keys,
-and labels unknown releases `legacy_release_unknown`. Migration 44 adds the
-durable literature queue. Plan is idempotent; workers lease one item at a time;
-interrupted leases can be recovered without duplicating canonical papers:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator plan --commit
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator validate-resume --commit
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator run --max-jobs 24
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator audit
-```
-
-The model does not bound structured retrieval. For example, the azacitidine
-projection contains all four current ChEMBL mechanism rows (DNMT1, DNMT3A,
-DNA, and RNA) even though the LLM did not propose all four.
-
-### Target-to-phenotype literature pilot
-
-Migrations 30 and 31 add explicit asset-target, asset-mechanism,
-target-phenotype, and mechanism-phenotype assertions; scholarly works; and
-deduplicated literature candidates with run-specific query observations.
-
-The first end-to-end molecular case resolves the registered salbutamol
-interventions through PubChem, an FDA label, HGNC, and UniProt. It does not call
-an LLM:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.pilot_asset_targets --dry-run
-.venv/bin/dotenv run -- .venv/bin/python -m pv.ingest.pilot_asset_targets --commit
-```
-
-Then run the target-wide and indication-scoped Europe PMC searches. The default
-stores every returned metadata record; a positive `--limit-per-query` is only a
-debugging option. Search pages, complete manifests, provider ranks, and
-canonical candidate observations are all retained:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.target_phenotype_literature \
-  --target ADRB2 --phenotype asthma --dry-run
-
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.target_phenotype_literature \
-  --target ADRB2 --phenotype asthma --commit
-```
-
-A query hit is stored as an `unreviewed` document candidate, not as a biological
-assertion. `pv_evidence.target_phenotype_assertion` remains empty until a source
-span or structured database row actually supports the relationship. Repeated
-searches reuse scholarly works and canonical candidates; only the acquisition
-run and query-observation rows are new.
-
-The superseded first-posted-2025 pilot also ran DNMT1--AML, DNMT3A--AML, and
-HTR2A--impulse-control-disorder searches. Its counts remain useful as replay
-fixtures, but the active checkpoint is the completion-date-selected 2015 pilot
-documented in `data/pv/2015_pilot/PILOT_REVIEW.md`.
-
-Migration 51 activates `pv_literature_v2`. It plans only asset + normalized
-indication provider queries and effective-target-only provider queries. It does
-not put assay or generic preclinical vocabulary into retrieval; target +
-indication is a local title/abstract projection of the completed target corpus.
-Plan idempotent work for a cohort:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator \
-  --cohort-id pv_2015_actual_completed_drug_biological_pilot5_v1 \
-  plan --commit
-```
-
-The pilot plan is 15 asset--indication items and 9 effective-target items.
-Replanning inserts zero rows. To run a bounded number of complete work items:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.literature_orchestrator \
-  --cohort-id pv_2015_actual_completed_drug_biological_pilot5_v1 \
-  run --max-jobs 1
-```
-
-Each Europe PMC page is archived and committed before retrieval advances;
-canonical projection commits in 200-record batches. A direct adapter `--limit`
-is validation-only and marks the query `truncated`, which excludes it from the
-active views. The prior `asset_preclinical_literature` and `asset_mention`
-outputs remain immutable historical query-version data. This is raw candidate
-acquisition, not result interpretation. The
-`preclinical_experiment` tables are populated only by a later passage-backed
-enrichment that preserves positive, negative, null, mixed, and unclear results.
-
-Audit a proposed Europe PMC relevance top-N cutoff without changing Neon:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.audit.top100_asset_relevance \
-  --asset rituximab --asset nicotine --top-n 100 --scan-n 1000
-```
-
-The 2026-09-18 five-asset audit rejected relevance top 100 as a standalone
-retention policy for broad assets; important older mechanistic papers were
-outside both the first 100 and, in several cases, the first 1,000. The audit
-uses text rules only to surface review probes and never treats them as evidence
-labels or ingestion filters.
-
-Count the proposed asset--indication and target-only replacement queries for a
-cohort without writing to Neon:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.audit.literature_search_policy_pilot \
-  --cohort-id pv_2015_actual_completed_drug_biological_pilot5_v1 \
-  --json-output data/pv/2015_pilot/LITERATURE_SEARCH_POLICY_HIT_COUNTS.json \
-  --markdown-output data/pv/2015_pilot/LITERATURE_SEARCH_POLICY_HIT_COUNTS.md
-```
-
-This command performs count-only Europe PMC requests. It does not create
-acquisition runs or scholarly-work rows. Target--indication is intentionally a
-later local projection of the target-only corpus rather than another provider
-query. Its query builder uses the source-aware alias projection: ChEMBL names
-are typed, unsafe class labels are excluded, OLS exact synonyms are eligible,
-and family/complex component membership is not treated as a set of asserted
-target aliases.
-
-Rebuild typed search aliases from the immutable raw ChEMBL and OLS records
-without making new network requests. Both commands are dry-run by default and
-idempotent under `--commit`:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.backfill_chembl_aliases --commit
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.backfill_ols_aliases --commit
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.backfill_chembl_mechanism_context --commit
-```
-
-After deterministic ChEMBL asset resolution and complete mechanism
-enumeration, structure free-text target qualifiers in a separate, explicitly
-approved LLM stage:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.chembl_mechanism_context_llm \
-  --cohort-id pv_2015_actual_completed_drug_biological_pilot5_v1 \
-  --model gpt-5.6-terra --workers 4 --confirm-paid --commit
-```
-
-The model sees only archived ChEMBL fields and supplied component candidates.
-Mechanical validation requires exact source paths and quotes, forbids component
-membership from becoming target evidence, and rejects identifiers not present
-in the packet. Migration 49 stores exact-source contexts; migration 50 exposes
-only the latest validated decision per asset through
-`pv_evidence.v_latest_asset_target_context` while retaining all earlier runs.
-Use `--compare-decisions-to latest` to persist field-level rerun differences.
-
-Enrich records for which Europe PMC did not provide an abstract from archived
-PubMed XML:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.pubmed_abstracts --commit
-```
-
-Migration 32 adds canonical full-text representations. Fetch and validate the
-open-access JATS candidates without writes, then commit them:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python db/migrate.py apply
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.europe_pmc_fulltext --dry-run
-.venv/bin/dotenv run -- .venv/bin/python \
-  -m pv.ingest.europe_pmc_fulltext --commit
-```
-
-The full-text adapter continues past unavailable or unsupported-license items
-and records each failure in the acquisition run. The review pilot currently has
-seven rights-reviewed, checksummed JATS representations in Neon. With
-`PV_GCS_BUCKET` set the adapter uploads licensed JATS and tries
-provider-advertised free PDFs, storing immutable object coordinates and
-generations. Without a configured bucket it retains permitted JATS in Neon but
-never guesses a bucket or stores binary PDFs there.
-
-Export the review checkpoint before enlarging the trial cohort:
-
-```bash
-.venv/bin/dotenv run -- .venv/bin/python -m pv.audit.pilot_readiness
-```
-
-The exact implemented-versus-planned status and unresolved review queue are maintained in
-[`../docs/pv/PV_CANONICAL_EVIDENCE_LEDGER.md`](../docs/pv/PV_CANONICAL_EVIDENCE_LEDGER.md#21-implemented-pilot-status-as-of-2026-09-16).
 
 ## Immutable database migrations (14+)
 
@@ -536,19 +177,10 @@ The immutable target-level audit is `data/impc_missing_update_dr24.csv`; the
 generated before/after ledger is `data/impc_dr24_feature_changes.csv`.
 
 Migration 25 adds normalized ChEMBL release provenance, exact human
-single-protein target mappings, and molecule-level first-approval events. The
-latest-release view retains mapped targets without qualifying approval events
-as explicit `NULL` controls. Refreshing is deliberate and writes directly to
-PostgreSQL; no analysis-side JSON cache is required:
-
-```bash
-.venv/bin/dotenv run -- sh -c \
-  'psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -f db/25_chembl_target_approval_history.sql'
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/approval-evidence-effect/fetch_chembl_target_approval_history.py --dry-run
-.venv/bin/dotenv run -- .venv/bin/python \
-  analyses/approval-evidence-effect/fetch_chembl_target_approval_history.py
-```
+single-protein target mappings, and molecule-level first-approval events. Its
+rows were loaded by the approval event study's fetch script, which was removed
+with that study; the current pipeline reads ChEMBL mechanisms through
+`pipeline.chembl` instead.
 
 These records are target–molecule history, not exact target–indication
 regulatory outcomes, and therefore remain separate from `preclin.approval`.
@@ -618,44 +250,44 @@ Migration 16 uses `CREATE OR REPLACE VIEW`, preserving all dependent views. It
 must be used for an established database instead of rerunning the bootstrap
 `03_views.sql`, whose `DROP VIEW ... CASCADE` is intended only for a full setup.
 
-## Tables
+## Tables written by the current pipeline
 
-| Table | Rows | Purpose |
-|---|---|---|
-| `preclin.drug` | 52,694 | Canonical drug identity |
-| `preclin.drug_target` | 36,686 | Drug→target multi-source junction |
-| `preclin.indication` | 8,875 | Canonical indications |
-| `preclin.program` | 76,974 | (drug × indication × sponsor) — analytical unit |
-| `preclin.program_trial` | 88,999 | Program → CT.gov trial junction |
-| `preclin.program_outcome` | 76,974 | Rollup: approved / efficacy_fail / silent_kill / etc. |
-| `preclin.approval` | 544 | FDA approvals with Nelson tier |
-| `preclin.chembl_target_approval_release` | 1 | Versioned ChEMBL import provenance |
-| `preclin.chembl_target_mapping` | 513 | ChEMBL human single-protein mappings for clinical targets |
-| `preclin.chembl_target_approval_event` | 1,442 | Distinct direct approved molecule–target mechanisms |
-| `preclin.schema_migration` | varies | Append-only numbered-migration checksums and application provenance |
-| `preclin.evidence_score` | ~250,000 | LONG-form evidence facts |
-| `preclin.classification` | ~13,000 | LLM outputs (why_stopped, silent-kill, target resolution) |
-| `preclin.llm_run` | varies | Append-only exact prompt/response records behind classifications and evidence facts |
-| `preclin.source_document` | varies | Immutable CT.gov, PubMed, and other source snapshots |
-| `preclin.source_document_subject` | varies | Trial/target/drug→source provenance links |
-| `preclin.llm_run_source` | varies | Exact source excerpts supplied to each model call |
-| `preclin.llm_run_evidence_score` | varies | Model run→current fact link plus immutable run-produced value snapshot |
-| `preclin.evidence_dimension` | 40 | Registry of every evidence dimension |
+`make all` (see the root Makefile and README) builds the report from
+`pipeline.*` modules, each owning its tables: ClinicalTrials.gov studies
+(`preclin.ctgov_study*`), FDA approvals (`preclin.fda_*`), molecular entities
+(`preclin.moiety`, `preclin.drug_moiety`, `preclin.unii_*`), ontologies
+(`preclin.ontology_*`), development programs (`preclin.dev_program*`,
+`preclin.program_indication`, `preclin.trial_purpose`), labels
+(`preclin.dev_program_approval`, `preclin.trial_outcome`, `preclin.trial_endpoint`,
+`preclin.moiety_target`, `preclin.gene_disease_mechanism`,
+`preclin.mouse_model_relation`), Open Targets evidence (`preclin.ot_*`,
+`preclin.evidence_known_year`, `preclin.clinvar_accession_calibration`), and
+reference genes (`preclin.hgnc_gene`, `preclin.depmap_common_essential`,
+`preclin.chembl_*`). Every LLM decision is stored in
+`pv_evidence.llm_decision`. Each table's columns are described by the `COMMENT ON` statements in the migration that creates it
+(`\d+ preclin.<table>` in psql shows them).
 
-## Views
+## Legacy tables and views
 
-- `v_program_evidence_wide` — flat master, one row per program with all evidence + outcome
-- `v_target_indication_program` — Pheiron-style T-I unit (loose outcome)
-- `v_target_indication_strict_outcome` — strict per-T-I outcome (approved for THIS indication)
-- `v_target_evidence_wide` — all evidence per target (wide-form)
-- `v_target_family_precedent_by_year` — time-cutoff-aware family/gene precedent
-- `v_relative_success_clean` — Pheiron RS metric per dimension (placebos filtered)
-- `v_pathway_wrongness` — Phase 3 fail rate per evidence tier
-- `v_combination_evidence` — pairwise RS(A ∧ B) lift
-- `v_dimension_coverage` — coverage per dimension × subject
-- `v_trial_source_latest` — latest full registry/publication text linked to each NCT id
-- `v_classification_audit` — verdict + exact model input/output + exact/available source links
-- `v_evidence_score_audit` — current fact, immutable run-produced value, extraction run, and exact abstract excerpts
+The tables below come from the bootstrap scripts (`01`–`13`) and the earlier
+benchmark. The report does not read them, except `public.targets`,
+`public.gene_constraint` and `public.publications`, which the pipeline still
+uses, and `preclin.classification`, which `report.quality` compares against.
+They stay in the database as the record of the audited draft (AUDIT.md).
+
+| Table | Purpose |
+|---|---|
+| `preclin.drug`, `preclin.drug_target`, `preclin.indication` | Drug, target-link and indication tables of the earlier benchmark |
+| `preclin.program`, `preclin.program_trial`, `preclin.program_outcome` | (drug × indication × sponsor) programs and outcomes, replaced by `preclin.dev_program` |
+| `preclin.approval` | 544 FDA approvals with Nelson tier, replaced by `preclin.dev_program_approval` |
+| `preclin.evidence_score`, `preclin.evidence_dimension` | Long-form evidence facts, including the literature scores invalidated in AUDIT C29 and D66 |
+| `preclin.classification`, `preclin.llm_run*`, `preclin.source_document*` | Earlier LLM outputs and their audit records |
+| `preclin.chembl_target_*` | ChEMBL first-approval history (migration 25) |
+| `preclin.schema_migration` | Append-only numbered-migration checksums (current) |
+
+Their views (`v_program_evidence_wide`, `v_target_indication_*`,
+`v_relative_success_clean` and the others in `03`, `05`, `07`–`09`) serve
+only those tables.
 
 ## Ingest and audit clinical-trial sources
 
@@ -775,20 +407,6 @@ legacy JSON is preserved, but the old prompt cannot be reconstructed honestly.
 For source-level inspection, `preclin.v_trial_source_latest.why_stopped_text`
 is the verbatim registry field and `.abstract_text` is the PubMed abstract;
 `raw_content` / `raw_content_text` retain the complete JSON/XML payloads.
-
-## Add a new evidence dimension
-
-```sql
-INSERT INTO preclin.evidence_dimension (dimension, category, subject_type, data_type, description)
-VALUES ('my_new_dim', 'C_cell', 'target', 'numeric_float', 'What this measures');
-
-INSERT INTO preclin.evidence_score
-  (subject_type, subject_id, dimension, category, value_numeric, source, source_version, extracted_by)
-SELECT 'target', target_id, 'my_new_dim', 'C_cell', <value>, 'my_source', '2026-07', 'script:mine'
-FROM ...;
-```
-
-Then rebuild views to include it in `v_target_evidence_wide` (edit `05_ti_views.sql`, re-run).
 
 ## Reset
 
