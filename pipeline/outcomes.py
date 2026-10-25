@@ -5,7 +5,7 @@
     python -m pipeline.outcomes classify   # LLM: execution, stop reason and primary-endpoint outcome per trial
     python -m pipeline.outcomes endpoints  # LLM: the kind of endpoint each Phase 2/3 trial's primary measures
 
-The results summary keeps, for up to three primary outcome measures, the
+The results summary keeps, for every primary outcome measure, the
 measured values per group and every statistical comparison (p-value, method,
 estimate, confidence interval), plus deaths and serious adverse events per arm,
 so an LLM can judge whether the primary endpoint was met.
@@ -26,38 +26,34 @@ from psycopg2.extras import Json, execute_values
 from pipeline import llm
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
-MAX_PRIMARY = 3
-MAX_CHARS = 6000
-
-
 def summarize(results: dict) -> tuple[str, list[dict]]:
     lines, analyses = [], []
     measures = [m for m in (results.get("outcomeMeasuresModule") or {}).get("outcomeMeasures", [])
                 if m.get("type") == "PRIMARY"]
-    for m in measures[:MAX_PRIMARY]:
+    for m in measures:
         groups = {g["id"]: g.get("title", "") for g in m.get("groups", [])}
         n = {c["groupId"]: c.get("value") for d in m.get("denoms", []) for c in d.get("counts", [])}
         lines.append(f"PRIMARY: {m.get('title')} [{m.get('timeFrame', '')}] "
                      f"({m.get('paramType', '')}, {m.get('unitOfMeasure', '')})")
-        for cls in m.get("classes", [])[:4]:
-            for cat in cls.get("categories", [])[:4]:
-                vals = "; ".join(f"{groups.get(x['groupId'], x['groupId'])[:40]} (n={n.get(x['groupId'])}): "
+        for cls in m.get("classes", []):
+            for cat in cls.get("categories", []):
+                vals = "; ".join(f"{groups.get(x['groupId'], x['groupId'])} (n={n.get(x['groupId'])}): "
                                  f"{x.get('value')}" + (f" ±{x['spread']}" if x.get("spread") else "")
                                  for x in cat.get("measurements", []))
                 label = " / ".join(filter(None, [cls.get("title"), cat.get("title")]))
                 lines.append(f"  {label + ': ' if label else ''}{vals}")
-        for a in m.get("analyses", [])[:4]:
+        for a in m.get("analyses", []):
             row = {k: a.get(k) for k in ("pValue", "statisticalMethod", "paramType", "paramValue",
                                           "ciLowerLimit", "ciUpperLimit", "nonInferiorityType")}
-            row["groups"] = [groups.get(g, g)[:40] for g in a.get("groupIds", [])]
+            row["groups"] = [groups.get(g, g) for g in a.get("groupIds", [])]
             analyses.append(row)
             lines.append(f"  analysis {' vs '.join(row['groups'])}: p={row['pValue']} {row['statisticalMethod'] or ''} "
                          f"{row['paramType'] or ''} {row['paramValue'] or ''} "
                          f"[{row['ciLowerLimit']}, {row['ciUpperLimit']}] {row['nonInferiorityType'] or ''}")
-    for g in (results.get("adverseEventsModule") or {}).get("eventGroups", [])[:6]:
-        lines.append(f"AE {g.get('title', '')[:40]}: deaths {g.get('deathsNumAffected')}/{g.get('deathsNumAtRisk')}, "
+    for g in (results.get("adverseEventsModule") or {}).get("eventGroups", []):
+        lines.append(f"AE {g.get('title', '')}: deaths {g.get('deathsNumAffected')}/{g.get('deathsNumAtRisk')}, "
                      f"serious {g.get('seriousNumAffected')}/{g.get('seriousNumAtRisk')}")
-    return "\n".join(lines)[:MAX_CHARS], analyses
+    return "\n".join(lines), analyses
 
 
 def results(_args) -> None:
@@ -193,7 +189,7 @@ CLASSIFY_SCHEMA = {
 def render_trial(p: dict) -> str:
     return (f"Trial {p['nct_id']}: {p['title']}\nPhases: {', '.join(p['phases'])}; status: {p['status']}; "
             f"enrollment: {p['enrollment']}; start {p['start']}; completion {p['completion']}\n"
-            f"Conditions: {'; '.join(p['conditions'][:6])}\nInterventions: {'; '.join(p['interventions'][:8])}\n"
+            f"Conditions: {'; '.join(p['conditions'])}\nInterventions: {'; '.join(p['interventions'])}\n"
             f"Stated reason for stopping: {p['why_stopped'] or '(none)'}\n"
             + (f"Brief summary (the record states no reason above; sponsors sometimes give it here):\n"
                f"{p['brief_summary']}\n" if p.get("brief_summary") else "")
@@ -245,7 +241,7 @@ def classify(_args) -> None:
                    (SELECT array_agg(i->>'name') FROM jsonb_array_elements(s.interventions) i),
                    s.why_stopped, r.summary,
                    CASE WHEN coalesce(s.why_stopped, '') = '' AND s.overall_status <> 'COMPLETED'
-                        THEN left(s.brief_summary, 3000) END
+                        THEN s.brief_summary END
             FROM preclin.ctgov_study s LEFT JOIN preclin.ctgov_result_summary r USING (nct_id)
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01'
               AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
@@ -259,7 +255,7 @@ def classify(_args) -> None:
                    s.completion_date, s.conditions,
                    (SELECT array_agg(i->>'name') FROM jsonb_array_elements(s.interventions) i), s.why_stopped,
                    (SELECT string_agg('PMID ' || a.pmid || ' (' || coalesce(a.year::text, '') || '): ' || a.title
-                                      || E'\n' || left(coalesce(a.abstract, ''), 3000), E'\n\n' ORDER BY a.pmid)
+                                      || E'\n' || coalesce(a.abstract, ''), E'\n\n' ORDER BY a.pmid)
                     FROM preclin.trial_publication tp JOIN public.publications a USING (pmid)
                     WHERE tp.nct_id = s.nct_id)
             FROM preclin.ctgov_study s
@@ -333,10 +329,10 @@ ENDPOINT_SCHEMA = {
 
 
 def render_endpoint(p: dict) -> str:
-    outcomes = "\n".join(f"{i}. {o.get('measure', '')}" + (f" | {o['description'][:600]}" if o.get("description") else "")
+    outcomes = "\n".join(f"{i}. {o.get('measure', '')}" + (f" | {o['description']}" if o.get("description") else "")
                          + (f" | time frame: {o['timeFrame']}" if o.get("timeFrame") else "")
                          for i, o in enumerate(p["primary_outcomes"], 1))
-    return (f"Conditions: {'; '.join(p['conditions'][:6])}\nPhases: {', '.join(p['phases'])}; allocation: "
+    return (f"Conditions: {'; '.join(p['conditions'])}\nPhases: {', '.join(p['phases'])}; allocation: "
             f"{p['allocation']}; masking: {p['masking']}; model: {p['model']}\n\nPrimary outcome measures:\n{outcomes}")
 
 
@@ -364,7 +360,7 @@ def endpoints(_args) -> None:
               AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""")
         items = {r[0]: {"conditions": r[1] or [], "phases": r[2], "allocation": r[3], "masking": r[4], "model": r[5],
                         "primary_outcomes": [{k: o.get(k) for k in ("measure", "description", "timeFrame")}
-                                             for o in r[6][:8]]} for r in cur.fetchall()}
+                                             for o in r[6]]} for r in cur.fetchall()}
     run_id = llm.run(ENDPOINT_TASK, items)
     rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"],
              o["n_primaries"], did) for nct, did, o in llm.decisions(run_id)]
