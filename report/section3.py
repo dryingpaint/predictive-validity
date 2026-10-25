@@ -33,6 +33,7 @@ import pandas as pd
 import statsmodels.api as sm
 from statsmodels.discrete.conditional_models import ConditionalLogit
 
+from pipeline.opentargets import IMPC_ALLELE
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
@@ -56,7 +57,6 @@ HEREDITARY = "MONDO:0003847"
 PREWEANING_LETHAL = "MP:0010770"
 NEVER = 9999  # year given to evidence with no date: it counts only when evidence is not frozen
 ABSENT = 10**6  # year of a tier or direction that a target-disease pair does not have
-IMPC_ALLELE = "[(](EUCOMM|KOMP|IMPC|EUCOMMTools|NCOM)[)]"  # alleles made by the high-throughput knockout consortia
 
 FAMILY = {"gwas_credible_sets": "gwas", "gene_burden": "burden", "eva": "mendelian", "orphanet": "mendelian",
           "gene2phenotype": "mendelian", "clingen": "mendelian", "genomics_england": "mendelian",
@@ -105,9 +105,10 @@ def evidence_index() -> tuple[dict, dict]:
     term. Strength tiers: GWAS locus-to-gene >= 0.8 (0.5-0.8 mid, < 0.5 weak); ClinVar
     pathogenic with multiple submitters or expert review, ClinGen or Gene2Phenotype
     definitive or strong, PanelApp green; mouse PhenoDigm score in the top quartile.
-    ClinVar 'protective' records inform direction only. Mouse models from the IMPC
-    consortia carry no date of their own in Open Targets (none, or the gene's first
-    literature year), so they count only when evidence is not frozen."""
+    ClinVar 'protective' records inform direction only. Each item is dated by the year it
+    became known (preclin.ot_evidence.evidence_year: IMPC-consortium mouse models by their
+    first IMPC data release, ClinVar records by their creation); undated items count only
+    when evidence is not frozen."""
     q75 = float(frame.query("""SELECT percentile_cont(0.75) WITHIN GROUP (ORDER BY resource_score) AS q
                                FROM preclin.ot_evidence WHERE datasource = 'impc'""").q.iloc[0])
     g = frame.query("""
@@ -116,8 +117,7 @@ def evidence_index() -> tuple[dict, dict]:
                    direction_on_target AS dot, direction_on_trait AS dtr, (detail->>'log2FoldChangeValue')::float AS lfc,
                    CASE WHEN datasource <> 'impc' THEN datasource
                         WHEN detail->>'biologicalModelAllelicComposition' ~ %(impc)s THEN 'impc' ELSE 'mgi' END AS source,
-                   CASE WHEN datasource = 'impc' AND detail->>'biologicalModelAllelicComposition' ~ %(impc)s
-                        THEN %(never)s ELSE coalesce(evidence_year, %(never)s) END AS y,
+                   coalesce(evidence_year, %(never)s) AS y,
                    datasource NOT IN ('eva', 'eva_somatic')
                      OR detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic'] AS counts
             FROM preclin.ot_evidence
@@ -143,7 +143,7 @@ def evidence_index() -> tuple[dict, dict]:
                min(y) FILTER (WHERE counts AND dot = 'GoF' AND dtr = 'risk') AS y_gof_risk,
                min(y) FILTER (WHERE dot = 'GoF' AND dtr = 'protect') AS y_gof_protect,
                min(y) FILTER (WHERE lfc > 0) AS y_up
-        FROM e GROUP BY 1, 2, 3""", {"impc": IMPC_ALLELE, "never": NEVER, "q75": q75})
+        FROM e GROUP BY 1, 2, 3""", {"impc": IMPC_ALLELE.pattern, "never": NEVER, "q75": q75})
     g["family"] = g.source.map(FAMILY)
     germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
     mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")
@@ -233,13 +233,11 @@ class Evidence:
         self.mouse = defaultdict(list)
         for e, m, pert, rel, year in frame.query("""
                 SELECT r.ensembl_id, r.mondo_id, r.perturbation, r.relation,
-                       min(CASE WHEN e.detail->>'biologicalModelAllelicComposition' ~ %s THEN NULL
-                                ELSE e.evidence_year END) AS year
+                       min(e.evidence_year) AS year
                 FROM preclin.mouse_model_relation r JOIN preclin.ot_evidence e
                   ON e.target_ensembl = r.ensembl_id AND e.datasource = 'impc'
                  AND e.detail->>'biologicalModelId' = r.model_id
-                GROUP BY r.ensembl_id, r.mondo_id, r.model_id, r.perturbation, r.relation""",
-                (IMPC_ALLELE,)).itertuples(index=False):
+                GROUP BY r.ensembl_id, r.mondo_id, r.model_id, r.perturbation, r.relation""").itertuples(index=False):
             self.mouse[(e, m)].append((pert, rel, int(year) if pd.notna(year) else NEVER))
         self.disease = progs.set_index("program_id").mondo_id
         # Approvals on each gene: each entity's first FDA approval (any disease, or the dated approval
