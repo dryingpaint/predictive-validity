@@ -27,7 +27,8 @@ The unit is a development program: one molecular entity developed for one diseas
 | Conditions → MONDO; intervention names → molecular entities → UNII | `pipeline.indications`, `pipeline.drugs` | `preclin.indication`, `preclin.moiety`, `preclin.drug_moiety` |
 | Entity role per trial; programs | `pipeline.programs` | `preclin.ctgov_study_moiety`, `preclin.dev_program` |
 | Approval of each program's disease; modality; disease area; trial outcomes and endpoint classes; targets | `pipeline.approvals`, `drugs`, `indications`, `outcomes`, `targets` | `preclin.dev_program_approval`, `preclin.trial_endpoint`, … |
-| Open Targets associations with yearly score series; dated evidence rows; mouse phenotypes | `pipeline.opentargets` | `preclin.ot_association`, `preclin.ot_evidence`, `preclin.ot_mouse_phenotype` |
+| Year each evidence item became known where its own date is missing or a later revision (ClinVar record creation, IMPC releases, study dates) | `pipeline.evidence_dates` | `preclin.evidence_known_year`, `preclin.clinvar_accession_calibration` |
+| Open Targets associations; evidence rows dated by when they became known, with yearly score series rebuilt from them; mouse phenotypes | `pipeline.opentargets` | `preclin.ot_association`, `preclin.ot_evidence`, `preclin.ot_mouse_phenotype` |
 | Germline mechanism per target and disease; mouse-model orientation (both drug-blind) | `pipeline.targets mechanism`, `mouse` | `preclin.gene_disease_mechanism`, `preclin.mouse_model_relation` |
 | Analyses, label-quality checks, figures, report | `report.section1`, `section2`, `section3`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md` |
 
