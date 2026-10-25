@@ -1,0 +1,471 @@
+schema_version: 1
+catalog_id: pv-source-catalog
+updated_at: 2026-09-17
+
+defaults:
+  intended_use: noncommercial_research
+  initial_trial_registry: clinicaltrials_gov
+  trial_window_field: actual_study_completion_date
+  trial_window_from: 2015-01-01
+  trial_window_through: 2025-12-31
+  trial_study_type: INTERVENTIONAL
+  trial_intervention_types_any:
+    - DRUG
+    - BIOLOGICAL
+  pilot_window_from: 2015-01-01
+  pilot_window_through: 2015-12-31
+  pilot_candidate_limit: 10
+  pilot_included_limit: 5
+  retain_permitted_fulltext: true
+  destination_raw: pv_source
+  destination_normalized: pv_core
+  immutable_archive: gcs
+  require_release_or_snapshot: true
+  require_sha256: true
+  require_rights_decision: true
+  allow_implicit_latest: false
+
+sources:
+  - id: clinicaltrials_gov
+    provider: U.S. National Library of Medicine
+    domain: clinical_trials
+    role: primary_registry
+    access: bulk_api_and_record_history
+    adapter: pv.ingest.clinicaltrials_gov
+    cadence: daily
+    historical_as_of: partial
+    current_asset: public.trials
+    rights_status: review_required
+    status: pilot_implemented
+
+  - id: eu_clinical_trials_register
+    provider: European Medicines Agency
+    domain: clinical_trials
+    role: primary_registry
+    access: registry_export
+    adapter: pv.ingest.eu_ctr
+    cadence: periodic
+    historical_as_of: partial
+    current_asset: preclin.source_document
+    rights_status: review_required
+    status: deferred_after_initial_collection
+
+  - id: ctis
+    provider: European Medicines Agency
+    domain: clinical_trials
+    role: primary_registry
+    access: public_portal
+    adapter: pv.ingest.ctis
+    cadence: periodic
+    historical_as_of: partial
+    current_asset: public.raw_ingestion_data
+    rights_status: review_required
+    status: deferred_after_initial_collection
+
+  - id: who_ictrp
+    provider: World Health Organization
+    domain: clinical_trials
+    role: discovery_and_duplicate_bridge
+    access: licensed_export
+    adapter: pv.ingest.who_ictrp
+    cadence: weekly
+    historical_as_of: partial
+    current_asset: pv_source.scholarly_work
+    rights_status: terms_review_required
+    status: deferred_after_initial_collection
+
+  - id: pubmed
+    provider: U.S. National Library of Medicine
+    domain: literature
+    role: authoritative_bibliographic_metadata
+    access: annual_baseline_plus_daily_updates
+    adapter: pv.ingest.pubmed
+    cadence: daily
+    historical_as_of: true
+    current_asset: preclin.source_document
+    rights_status: record_level_rights_required
+    status: partial_current
+
+  - id: pmc
+    provider: U.S. National Library of Medicine
+    domain: literature
+    role: fulltext_repository
+    access: approved_article_datasets
+    adapter: pv.ingest.pmc
+    cadence: daily
+    historical_as_of: partial
+    current_asset: preclin.source_document
+    rights_status: article_level_license_required
+    status: partial_current
+
+  - id: europe_pmc
+    provider: EMBL-EBI
+    domain: literature
+    role: discovery_citations_and_licensed_fulltext
+    access: rest_and_bulk_services
+    adapter: pv.ingest.europe_pmc
+    cadence: daily
+    historical_as_of: partial
+    current_asset: pv_source.scholarly_work
+    rights_status: representation_level_license_required
+    status: pilot_implemented
+
+  - id: crossref
+    provider: Crossref
+    domain: literature
+    role: doi_metadata_licenses_and_integrity_events
+    access: rest_api
+    adapter: pv.ingest.crossref
+    cadence: daily
+    historical_as_of: partial
+    current_asset: null
+    rights_status: field_level_review_required
+    status: planned
+
+  - id: openalex
+    provider: OurResearch
+    domain: literature
+    role: citation_and_related_work_discovery
+    access: api_or_snapshot
+    adapter: pv.ingest.openalex
+    cadence: monthly
+    historical_as_of: partial
+    current_asset: null
+    rights_status: review_required
+    status: planned
+
+  - id: unpaywall
+    provider: OurResearch
+    domain: literature
+    role: copy_level_open_access_locations
+    access: api_or_snapshot
+    adapter: pv.ingest.unpaywall
+    cadence: monthly
+    historical_as_of: partial
+    current_asset: null
+    rights_status: downstream_copy_license_required
+    status: planned
+
+  - id: hgnc
+    provider: HUGO Gene Nomenclature Committee
+    domain: target_identity
+    role: canonical_human_gene_identity
+    access: release_download
+    adapter: pv.ingest.hgnc
+    cadence: monthly
+    historical_as_of: true
+    current_asset: public.targets
+    rights_status: review_required
+    status: pilot_api_record_implemented
+
+  - id: uniprot
+    provider: UniProt Consortium
+    domain: target_identity
+    role: protein_and_isoform_identity
+    access: release_download
+    adapter: pv.ingest.uniprot
+    cadence: release
+    historical_as_of: true
+    current_asset: public.raw_ingestion_data
+    rights_status: review_required
+    status: pilot_api_record_implemented
+
+  - id: rxnorm
+    provider: U.S. National Library of Medicine
+    domain: asset_identity
+    role: normalized_clinical_drug_names_ingredients_and_products
+    access: versioned_release_and_api
+    adapter: pv.ingest.rxnorm
+    cadence: monthly
+    historical_as_of: true
+    current_asset: null
+    rights_status: attribution_and_terms_review_required
+    status: planned
+
+  - id: pubchem
+    provider: NCBI
+    domain: asset_identity
+    role: compound_identity_structure_synonyms_and_cross_references
+    access: api_and_bulk_download
+    adapter: pv.ingest.pubchem
+    cadence: snapshot
+    historical_as_of: partial
+    current_asset: null
+    rights_status: contributing_source_rights_required
+    status: pilot_api_record_implemented
+
+  - id: mondo
+    provider: Monarch Initiative
+    domain: ontology
+    role: disease_ontology
+    access: release_download
+    adapter: pv.ingest.mondo
+    cadence: release
+    historical_as_of: true
+    current_asset: public.mondo_terms
+    rights_status: attribution_required
+    status: partial_current
+
+  - id: efo
+    provider: EMBL-EBI
+    domain: ontology
+    role: experimental_factor_and_trait_ontology
+    access: release_download
+    adapter: pv.ingest.efo
+    cadence: release
+    historical_as_of: true
+    current_asset: public.target_evidence
+    rights_status: attribution_required
+    status: planned
+
+  - id: hpo
+    provider: Human Phenotype Ontology
+    domain: phenotype
+    role: human_phenotype_terms_and_annotations
+    access: pinned_release_download
+    adapter: pv.ingest.hpo
+    cadence: release
+    historical_as_of: true
+    current_asset: public.gene_phenotypes
+    rights_status: attribution_and_release_display_required
+    status: partial_current
+
+  - id: clingen
+    provider: Clinical Genome Resource
+    domain: human_genetics
+    role: expert_gene_disease_validity_and_related_curations
+    access: downloads_and_apis
+    adapter: pv.ingest.clingen
+    cadence: periodic
+    historical_as_of: partial
+    current_asset: public.clingen_validity
+    rights_status: review_required
+    status: partial_current
+
+  - id: gencc
+    provider: Gene Curation Coalition
+    domain: human_genetics
+    role: gene_disease_validity_assertions
+    access: versioned_download
+    adapter: pv.ingest.gencc
+    cadence: weekly
+    historical_as_of: true
+    current_asset: null
+    rights_status: open_with_attribution_review
+    status: planned
+
+  - id: clinvar
+    provider: NCBI
+    domain: human_genetics
+    role: submitter_level_variant_assertions
+    access: complete_xml_releases
+    adapter: pv.ingest.clinvar
+    cadence: weekly
+    historical_as_of: true
+    current_asset: public.target_evidence
+    rights_status: record_level_review_required
+    status: partial_current
+
+  - id: orphanet
+    provider: Orphanet/Orphadata
+    domain: rare_disease
+    role: gene_disease_phenotype_and_epidemiology
+    access: versioned_download
+    adapter: pv.ingest.orphanet
+    cadence: release
+    historical_as_of: true
+    current_asset: public.mendelian_associations
+    rights_status: attribution_required
+    status: partial_current
+
+  - id: omim
+    provider: Johns Hopkins University
+    domain: rare_disease
+    role: mendelian_gene_disease_evidence
+    access: licensed
+    adapter: pv.ingest.omim
+    cadence: licensed_release
+    historical_as_of: contract_dependent
+    current_asset: public.mendelian_associations
+    rights_status: license_required
+    status: gated
+
+  - id: gwas_catalog
+    provider: EMBL-EBI/NHGRI
+    domain: human_genetics
+    role: curated_common_variant_associations
+    access: versioned_release_download
+    adapter: pv.ingest.gwas_catalog
+    cadence: biweekly
+    historical_as_of: true
+    current_asset: public.gwas_associations
+    rights_status: study_level_review_required
+    status: current_reconcile
+
+  - id: open_targets
+    provider: Open Targets
+    domain: integrated_target_evidence
+    role: row_level_evidence_and_derived_target_associations
+    access: versioned_snapshot
+    adapter: pv.ingest.open_targets
+    cadence: quarterly
+    historical_as_of: true
+    current_asset: public.target_evidence
+    rights_status: originating_source_lineage_required
+    status: current_reconcile
+
+  - id: finngen
+    provider: FinnGen
+    domain: human_genetics
+    role: public_summary_statistics_and_finemapping
+    access: versioned_release_download
+    adapter: pv.ingest.finngen
+    cadence: release
+    historical_as_of: true
+    current_asset: null
+    rights_status: release_terms_review_required
+    status: planned
+
+  - id: gnomad
+    provider: Genome Aggregation Database
+    domain: human_genetics
+    role: population_frequency_and_constraint
+    access: versioned_release
+    adapter: pv.ingest.gnomad
+    cadence: release
+    historical_as_of: true
+    current_asset: public.gene_constraint
+    rights_status: review_required
+    status: partial_current
+
+  - id: gtex
+    provider: GTEx Project
+    domain: expression_and_regulation
+    role: tissue_expression_and_eqtl_summary_data
+    access: open_summary_releases
+    adapter: pv.ingest.gtex
+    cadence: release
+    historical_as_of: true
+    current_asset: public.tissue_expression
+    rights_status: protected_data_excluded
+    status: partial_current
+
+  - id: impc
+    provider: International Mouse Phenotyping Consortium
+    domain: model_organism
+    role: raw_mouse_procedures_and_statistical_results
+    access: versioned_download_or_api
+    adapter: pv.ingest.impc
+    cadence: release
+    historical_as_of: true
+    current_asset: preclin.evidence_score
+    rights_status: attribution_required
+    status: current_reconcile
+
+  - id: mgi
+    provider: Mouse Genome Informatics
+    domain: model_organism
+    role: genotype_and_background_specific_mouse_phenotypes
+    access: reports_download
+    adapter: pv.ingest.mgi
+    cadence: periodic
+    historical_as_of: partial
+    current_asset: null
+    rights_status: image_and_annotation_rights_separate
+    status: planned
+
+  - id: depmap
+    provider: Broad Institute
+    domain: cell_models
+    role: cancer_cell_line_dependency
+    access: versioned_release
+    adapter: pv.ingest.depmap
+    cadence: quarterly
+    historical_as_of: true
+    current_asset: public.gene_essentiality
+    rights_status: release_terms_review_required
+    status: partial_current
+
+  - id: chembl
+    provider: EMBL-EBI
+    domain: pharmacology
+    role: assets_targets_mechanisms_assays_and_activities
+    access: versioned_database_release
+    adapter: pv.ingest.chembl
+    cadence: release
+    historical_as_of: true
+    current_asset: preclin.chembl_target_mapping
+    rights_status: attribution_sharealike_review_required
+    status: partial_current
+
+  - id: guide_to_pharmacology
+    provider: IUPHAR/BPS
+    domain: pharmacology
+    role: curated_ligand_target_interactions
+    access: versioned_download
+    adapter: pv.ingest.guide_to_pharmacology
+    cadence: release
+    historical_as_of: true
+    current_asset: public.raw_ingestion_data
+    rights_status: review_required
+    status: partial_current
+
+  - id: reactome
+    provider: Reactome
+    domain: mechanism
+    role: curated_pathways
+    access: versioned_download
+    adapter: pv.ingest.reactome
+    cadence: quarterly
+    historical_as_of: true
+    current_asset: public.target_pathways
+    rights_status: attribution_required
+    status: partial_current
+
+  - id: gene_ontology
+    provider: Gene Ontology Consortium
+    domain: mechanism
+    role: molecular_function_process_and_component_annotations
+    access: versioned_download
+    adapter: pv.ingest.gene_ontology
+    cadence: release
+    historical_as_of: true
+    current_asset: public.gene_go
+    rights_status: attribution_required
+    status: partial_current
+
+  - id: pubchem_bioassay
+    provider: NCBI
+    domain: assays
+    role: public_assay_definitions_and_results
+    access: api_and_bulk_download
+    adapter: pv.ingest.pubchem_bioassay
+    cadence: periodic
+    historical_as_of: partial
+    current_asset: null
+    rights_status: record_level_review_required
+    status: planned
+
+  - id: drugs_fda
+    provider: U.S. Food and Drug Administration
+    domain: regulatory
+    role: approvals_labels_reviews_and_application_documents
+    access: structured_files_and_documents
+    adapter: pv.ingest.regulatory
+    cadence: daily
+    historical_as_of: partial
+    current_asset: preclin.approval
+    rights_status: document_level_review_required
+    status: partial_current
+
+  - id: openfda
+    provider: U.S. Food and Drug Administration
+    domain: regulatory
+    role: structured_current_label_records
+    access: public_api
+    adapter: pv.ingest.pilot_asset_targets
+    cadence: daily
+    historical_as_of: partial
+    current_asset: pv_source.source_record_version
+    rights_status: document_level_review_required
+    status: pilot_api_record_implemented
