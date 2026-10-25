@@ -696,15 +696,26 @@ def permutation_null(com: pd.DataFrame, ev: Evidence, observed: float, rng: np.r
             "p_one_sided": float((np.sum(ok >= observed) + 1) / (len(ok) + 1)), "n_permutations": int(len(ok))}
 
 
+def case_key(rule: str, moiety_id: int, mondo_id: str, entry) -> str:
+    """A case is a rule's program, named by entity, disease and Phase 2 entry date, which survive a
+    rebuild of dev_program (program ids do not); a changed entry date makes it a new case."""
+    return f"{rule}:{int(moiety_id)}:{mondo_id}:{pd.Timestamp(entry).date().isoformat()}"
+
+
 def case_audit(cases: pd.DataFrame) -> dict:
     """Agreement of the agent-verified case studies (CASE_AUDIT) with the pipeline: the outcome
     within four years, the evidence claim and its date, and the failure codes. The audit must
-    cover exactly the cases picked; report.render tabulates it by rule."""
+    cover exactly the cases picked, with the pipeline outcome it was checked against;
+    report.render tabulates it by rule."""
     a = pd.DataFrame(json.load(open(CASE_AUDIT)))
-    picked = {f"{r}:{int(p)}" for r, p in zip(cases.rule_key, cases.program_id)}
-    if set(a.case_id) != picked:
-        raise ValueError(f"case audit does not match the picked cases: missing {sorted(picked - set(a.case_id))[:5]}, "
-                         f"extra {sorted(set(a.case_id) - picked)[:5]}")
+    picked = {case_key(r, m, d, e): int(s4 > 0)
+              for r, m, d, e, s4 in zip(cases.rule_key, cases.moiety_id, cases.mondo_id, cases.entry, cases.s4)}
+    if set(a.case_id) != set(picked):
+        raise ValueError(f"case audit does not match the picked cases: missing {sorted(set(picked) - set(a.case_id))[:5]}, "
+                         f"extra {sorted(set(a.case_id) - set(picked))[:5]}")
+    stale = [c for c, s4 in zip(a.case_id, a.pipeline_s4) if picked[c] != int(s4)]
+    if stale:
+        raise ValueError(f"case audit checked a pipeline outcome that has since changed: {stale[:5]}")
     prog = a.drop_duplicates("program_id")
     failed = prog[prog.advanced_within_4y == "no"]
     return {"cases": int(len(a)), "programs": int(len(prog)),
