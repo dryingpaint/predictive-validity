@@ -2,11 +2,17 @@
 
     python -m pipeline.opentargets fetch  # DATASETS of the release -> .cache/opentargets/<release>/<dataset>
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
-    python -m pipeline.opentargets evidence  # evidence rows behind those associations, mouse phenotypes
+    python -m pipeline.opentargets evidence  # evidence rows behind those associations, dated; mouse phenotypes
+    python -m pipeline.opentargets dates     # re-date the rows from preclin.evidence_known_year, rebuild the series
 
 Loads direct associations by data source for the targets of every molecular
-entity with an industry-sponsored development program (preclin.moiety_target), keeping each
-association's yearly score series so evidence can be taken as of a date.
+entity with an industry-sponsored development program (preclin.moiety_target).
+`evidence` and `dates` date each evidence item by the year it became known (the
+year preclin.evidence_known_year, filled by pipeline.evidence_dates, holds for its
+preclin.ot_evidence_key, else its own publication or evidence date) and rebuild
+each association's yearly score series from the dated items in the database
+(preclin.harmonic_series), so evidence can be taken as of a date; undated items
+count only in the release score.
 Sources that encode clinical outcomes or literature co-mention
 (clinical_precedence, europepmc, cancer_biomarkers) are not loaded.
 Disease identifiers are kept as Open Targets ids in preclin.ot_disease, each
@@ -39,10 +45,14 @@ EVIDENCE_DATASETS = ("evidence_gwas_credible_sets", "evidence_gene_burden", "evi
                      "evidence_orphanet", "evidence_gene2phenotype", "evidence_clingen", "evidence_uniprot_literature",
                      "evidence_uniprot_variants", "evidence_cancer_gene_census", "evidence_intogen",
                      "evidence_eva_somatic", "evidence_impc", "evidence_expression_atlas", "evidence_reactome",
-                     "evidence_crispr", "evidence_crispr_screen", "mouse_phenotype")  # the datasets evidence reads
+                     "evidence_crispr", "evidence_crispr_screen")  # the evidence rows evidence reads
+MOUSE_PHENOTYPE = "mouse_phenotype"  # mouse-model phenotypes per target, which evidence also reads
 # Disease-concept vocabularies MONDO declares one-to-one equivalences with; OMIM entries are often
 # gene-specific forms and ICD codes classification groups, so neither identifies a disease.
 CONCEPT_XREFS = ("DOID", "Orphanet", "NCIT", "MESH")
+GERMLINE_DATASOURCES = ("gwas_credible_sets", "gene_burden", "eva", "genomics_england", "orphanet",
+                        "uniprot_literature", "uniprot_variants", "gene2phenotype", "clingen")
+CLINVAR_PATHOGENIC = ("pathogenic", "likely pathogenic")  # the ClinVar significances that count as evidence
 DATASOURCES = {
     # germline genetics
     "gwas_credible_sets": "genetic", "gene_burden": "genetic", "eva": "genetic", "genomics_england": "genetic",
@@ -104,11 +114,12 @@ def mondo_disease(disease_id: str, xrefs: list[str], equivalent: dict[str, set[s
 
 
 def fetch(_args) -> None:
-    """Every parquet file of each of DATASETS and EVIDENCE_DATASETS, as listed by the release's directory index. A file
+    """Every parquet file of each of DATASETS, EVIDENCE_DATASETS and MOUSE_PHENOTYPE, as listed by the release's
+    directory index. A file
     already in the cache is kept; a download lands under a dot-prefixed name (which glob and
     pyarrow skip) and is renamed into place once complete."""
     session = requests.Session()
-    for dataset in DATASETS + EVIDENCE_DATASETS:
+    for dataset in (*DATASETS, *EVIDENCE_DATASETS, MOUSE_PHENOTYPE):
         url = f"{SOURCE_URL}/{dataset}/"
         index = session.get(url, timeout=60)
         index.raise_for_status()
@@ -129,17 +140,22 @@ def fetch(_args) -> None:
         print(f"{dataset}: {len(names)} files -> {os.path.join(CACHE, dataset)}", flush=True)
 
 
-def load(_args) -> None:
-    files = sorted(f for name in DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
+def release_and_targets(cur, name: str, datasets: list[str], metadata: dict) -> tuple[int, list[str]]:
+    """Register the release behind `datasets` (by the sha256 of their cached files), and return it
+    with the Ensembl ids of every entity target, the targets the loaders keep."""
+    files = sorted(f for d in datasets for f in glob.glob(os.path.join(CACHE, d, "*.parquet")))
     digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
+    release = llm.register_release(cur, name, RELEASE, SOURCE_URL, digest.hexdigest(),
+                                   {"datasets": datasets, **metadata, "sha256_of": "concatenated per-file sha256"})
+    cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
+                   JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
+    return release, [r[0] for r in cur.fetchall()]
+
+
+def load(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(
-            cur, "open_targets_platform", RELEASE, SOURCE_URL, digest.hexdigest(),
-            {"datasets": list(DATASETS),
-             "datasources": DATASOURCES, "sha256_of": "concatenated per-file sha256"})
-        cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
-                       JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
-        targets = [r[0] for r in cur.fetchall()]
+        release, targets = release_and_targets(cur, "open_targets_platform", list(DATASETS),
+                                               {"datasources": DATASOURCES})
         cur.execute("""SELECT x.xref_id, x.term_id FROM preclin.ontology_xref x
                        JOIN preclin.ontology_term t ON t.term_id = x.term_id
                        WHERE x.ontology = 'MONDO' AND x.equivalent AND NOT t.is_obsolete""")
@@ -154,15 +170,11 @@ def load(_args) -> None:
 
     assoc = ds.dataset(os.path.join(CACHE, "association_by_datasource_direct"), format="parquet")
     table = assoc.to_table(
-        columns=["diseaseId", "targetId", "aggregationValue", "associationScore", "evidenceCount", "timeseries"],
+        columns=["diseaseId", "targetId", "aggregationValue", "associationScore", "evidenceCount"],
         filter=ds.field("aggregationValue").isin(list(DATASOURCES)) & ds.field("targetId").isin(targets))
-    rows = []
-    for r in table.to_pylist():
-        series = sorted((p["year"], p["associationScore"]) for p in r["timeseries"] or [] if p["year"])
-        positive = [y for y, sc in series if sc and sc > 0]
-        rows.append((r["targetId"], curie(r["diseaseId"]), r["aggregationValue"], DATASOURCES[r["aggregationValue"]],
-                     r["associationScore"], r["evidenceCount"], min(positive) if positive else None,
-                     [y for y, _ in series], [float(sc or 0) for _, sc in series], release))
+    # The yearly series are left empty here: `evidence` builds them from the evidence rows as dated there.
+    rows = [(r["targetId"], curie(r["diseaseId"]), r["aggregationValue"], DATASOURCES[r["aggregationValue"]],
+             r["associationScore"], r["evidenceCount"], None, [], [], release) for r in table.to_pylist()]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.ot_association")
         cur.execute("DELETE FROM preclin.ot_disease")
@@ -187,48 +199,83 @@ def evidence_row(r: dict, release: int) -> tuple:
             r.get("allelicRequirements"), r.get("variantFunctionalConsequenceId"), Json(detail), release)
 
 
-def evidence(_args) -> None:
-    files = sorted(f for name in EVIDENCE_DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
-    digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
+def apply_dates(cur) -> None:
+    """Date every evidence row by the year preclin.evidence_known_year holds for its key, else its own
+    (source) year, and rebuild each association's yearly series from the dated rows."""
+    cur.execute("""UPDATE preclin.ot_evidence
+                   SET evidence_year = source_year,
+                       year_basis = CASE WHEN source_year IS NOT NULL THEN 'open_targets' END
+                   WHERE evidence_year IS DISTINCT FROM source_year
+                      OR year_basis IS DISTINCT FROM CASE WHEN source_year IS NOT NULL THEN 'open_targets' END""")
+    cur.execute("""UPDATE preclin.ot_evidence e SET evidence_year = k.year, year_basis = k.basis
+                   FROM preclin.evidence_known_year k
+                   WHERE k.datasource = e.datasource AND k.key = preclin.ot_evidence_key(e.datasource, e.detail)""")
+    cur.execute("UPDATE preclin.ot_association SET series_years = '{}', series_scores = '{}', first_year = NULL")
+    cur.execute("""UPDATE preclin.ot_association a
+                   SET series_years = s.years, series_scores = s.scores, first_year = s.years[1]
+                   FROM (SELECT target_ensembl, disease_id, datasource,
+                                (preclin.harmonic_series(array_agg(evidence_year ORDER BY evidence_year, score),
+                                                         array_agg(score ORDER BY evidence_year, score))).*
+                         FROM preclin.ot_evidence WHERE evidence_year IS NOT NULL AND score > 0
+                         GROUP BY 1, 2, 3) s
+                   WHERE (a.target_ensembl, a.disease_id, a.datasource) = (s.target_ensembl, s.disease_id, s.datasource)""")
+
+
+def dates(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(
-            cur, "open_targets_platform_evidence", RELEASE, SOURCE_URL, digest.hexdigest(),
-            {"datasets": list(EVIDENCE_DATASETS), "sha256_of": "concatenated per-file sha256"})
-        cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
-                       JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
-        targets = [r[0] for r in cur.fetchall()]
+        apply_dates(cur)
+        cur.execute("""SELECT coalesce(year_basis, 'undated'), count(*) FROM preclin.ot_evidence GROUP BY 1 ORDER BY 1""")
+        counts = cur.fetchall()
+        conn.commit()
+    print(", ".join(f"{b}={n}" for b, n in counts))
+
+
+def evidence(_args) -> None:
+    """Evidence rows with their own dates, then dated by preclin.evidence_known_year and the association
+    series rebuilt from them (apply_dates), so evidence as of a year counts only what was known by then."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        release, targets = release_and_targets(cur, "open_targets_platform_evidence",
+                                               [*EVIDENCE_DATASETS, MOUSE_PHENOTYPE], {})
     rows = []
-    for name in EVIDENCE_DATASETS[:-1]:
+    for name in EVIDENCE_DATASETS:
         data = ds.dataset(os.path.join(CACHE, name), format="parquet")
         columns = [c for c in {*EVIDENCE_COLUMNS, *(k for v in DETAIL.values() for k in v)} if c in data.schema.names]
         table = data.to_table(columns=columns, filter=ds.field("targetId").isin(targets)
                               & ds.field("datasourceId").isin(list(DATASOURCES)))
         rows += [evidence_row(r, release) for r in table.to_pylist()]
-    mouse = ds.dataset(os.path.join(CACHE, "mouse_phenotype"), format="parquet").to_table(
-        columns=["targetFromSourceId", "modelPhenotypeId", "modelPhenotypeLabel", "modelPhenotypeClasses",
-                 "biologicalModels"], filter=ds.field("targetFromSourceId").isin(targets)).to_pylist()
-    mouse_rows = [(m["targetFromSourceId"], m["modelPhenotypeId"], m["modelPhenotypeLabel"],
-                   sorted(c["id"] for c in m["modelPhenotypeClasses"] or []),
-                   sorted({b["allelicComposition"] for b in m["biologicalModels"] or [] if b.get("allelicComposition")}),
-                   release) for m in mouse]
+    # A human gene with several mouse orthologs has one row per ortholog for the same phenotype: their
+    # models are pooled under the human gene.
+    phenotypes: dict = {}
+    for m in ds.dataset(os.path.join(CACHE, MOUSE_PHENOTYPE), format="parquet").to_table(
+            columns=["targetFromSourceId", "modelPhenotypeId", "modelPhenotypeLabel", "modelPhenotypeClasses",
+                     "biologicalModels"], filter=ds.field("targetFromSourceId").isin(targets)).to_pylist():
+        label, classes, models = phenotypes.setdefault((m["targetFromSourceId"], m["modelPhenotypeId"]),
+                                                       (m["modelPhenotypeLabel"], set(), set()))
+        classes.update(c["id"] for c in m["modelPhenotypeClasses"] or [])
+        models.update(b["allelicComposition"] for b in m["biologicalModels"] or [] if b.get("allelicComposition"))
+    mouse_rows = [(t, ph, label, sorted(classes), sorted(models), release)
+                  for (t, ph), (label, classes, models) in phenotypes.items()]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.ot_evidence")
         cur.execute("DELETE FROM preclin.ot_mouse_phenotype")
         execute_values(cur, """INSERT INTO preclin.ot_evidence
               (evidence_id, target_ensembl, disease_id, datasource, score, resource_score, evidence_year,
                direction_on_target, direction_on_trait, confidence, allelic_requirements, variant_consequence,
-               detail, source_release_id) VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
+               detail, source_release_id) VALUES %s""", rows, page_size=5000)
+        cur.execute("UPDATE preclin.ot_evidence SET source_year = evidence_year")
+        apply_dates(cur)
         execute_values(cur, """INSERT INTO preclin.ot_mouse_phenotype
-              (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s
-              ON CONFLICT DO NOTHING""", mouse_rows, page_size=5000)
+              (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s""",
+                       mouse_rows, page_size=5000)
         conn.commit()  # one transaction: readers never see a half-loaded table
-    print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)}")
+    print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)} "
+          f"undated={sum(r[6] is None for r in rows)}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("fetch", fetch), ("load", load), ("evidence", evidence)]:
+    for name, fn in [("fetch", fetch), ("load", load), ("evidence", evidence), ("dates", dates)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)

@@ -24,5 +24,12 @@ dependencies = [
     "statsmodels>=0.15",
 ]
 
+[dependency-groups]
+dev = ["pytest>=8.3"]
+
 [tool.uv]
 package = false
+
+# The repository root is pytest's rootdir, so a conftest.py in a parent checkout is never loaded.
+[tool.pytest.ini_options]
+testpaths = ["tests"]

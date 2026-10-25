@@ -18,7 +18,8 @@ migrate:
 	$(PY) db/migrate.py apply
 
 # Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER) and
-# the uses each approval letter states, UNII substance names, ontologies.
+# the uses each approval letter states, UNII substance names, HGNC genes, ChEMBL mechanisms of action,
+# DepMap common-essential genes, ontologies.
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
@@ -37,6 +38,9 @@ sources:
 	$(RUN) pipeline.fda load-cber
 	$(RUN) pipeline.fda extract
 	$(RUN) pipeline.unii load
+	$(RUN) pipeline.hgnc load
+	$(RUN) pipeline.chembl load
+	$(RUN) pipeline.depmap load
 	$(RUN) pipeline.ontology load
 
 # Identity: trial links, conditions -> MONDO, interventions -> molecular entities, FDA products -> entities,
@@ -65,11 +69,16 @@ labels:
 	$(RUN) pipeline.outcomes endpoints
 	$(RUN) pipeline.targets resolve
 
-# Open Targets associations and evidence rows, then the germline mechanism of each target in each
-# program disease and the orientation of each mouse model, both decided without the drug.
+# Open Targets associations, the year each evidence item became known where its own date is
+# missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
+# dated by it with their yearly series, then the germline mechanism of each target in each program
+# disease and the orientation of each mouse model, both decided without the drug.
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
+	$(RUN) pipeline.evidence_dates clinvar
+	$(RUN) pipeline.evidence_dates impc
+	$(RUN) pipeline.evidence_dates studies
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse

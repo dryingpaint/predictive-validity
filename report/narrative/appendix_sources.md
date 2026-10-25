@@ -22,7 +22,7 @@ Each entry gives who compiles the source and from what, what the pipeline keeps,
 
 #### PubMed E-utilities
 
-*Queried at run time, with no snapshot recorded · `esearch.fcgi?db=pubmed&term=NCT…[si]`, then `efetch.fcgi?retmode=xml`*
+*Queried at run time; each run is recorded with its date and a hash of what it returned · `esearch.fcgi?db=pubmed&term=NCT…[si]`, then `efetch.fcgi?retmode=xml`*
 
 **Compiled by.** NCBI indexes citations from publishers and MEDLINE. A trial registration number named in an article is recorded in its data-bank list and is searchable as a secondary identifier.
 **We use.** We look up only completed industry Phase 2/3 trials, started from 2010, that posted no results. A paper links to a trial when the registry lists it as a RESULT or DERIVED reference, or when PubMed lists the NCT number. This links 2,284 trials. For each paper we keep title, first author, journal, year, DOI and abstract, and the abstracts feed the outcome classifier.
@@ -150,26 +150,33 @@ is_a: MP:0010770 ! preweaning lethality
 
 #### Gene symbols and identifiers
 
-*Loaded by earlier project code; release not recorded*
+*Project catalogue, resolved through HGNC 2026-10-16 · `https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt`*
 
-**Compiled by.** The symbols follow HGNC, which approves one symbol per human gene, but the table is the project's own catalogue. It adds Ensembl identifiers, Pharos development level and family, and RefSeq summaries. Some symbols predate HGNC renames.
-**We use.** The 26,957 human protein symbols are the closed list that every LLM-assigned drug target must match. Ensembl identifiers join targets to Open Targets, gnomAD and DepMap.
+**Compiled by.** HGNC approves one symbol per human gene and records each gene's previous symbols and aliases. The project's own catalogue of 26,957 human proteins adds Ensembl identifiers, Pharos development level and family, and RefSeq summaries; some of its symbols predate HGNC renames.
+**We use.** A target the LLM names is accepted when the symbol is a catalogue protein, or an HGNC approved, previous or alias symbol of one (an alias two genes share is not used). Ensembl identifiers join targets to Open Targets, gnomAD and DepMap.
+**Shape.** Tab-separated, one approved gene per row: `hgnc_id, symbol, name, locus_group, alias_symbol, prev_symbol, entrez_id, ensembl_gene_id, uniprot_ids, …`, with lists separated by `|`.
 
 ```text
-PCSK9  proprotein convertase subtilisin/kexin type 9  Protein  ENSG00000169174  Tclin  Enzyme  secreted
+HGNC:11701  CRIPTO  cripto, EGF-CFC family member  protein-coding gene  prev_symbol TDGF1  ensembl ENSG00000241186
+TDGF1 (previous) -> CRIPTO · CTGF (previous) -> CCN2 · CD20 (alias) -> MS4A1 · TIM3 (alias) -> HAVCR2
 ```
 
 #### ChEMBL mechanisms of action
 
-*Loaded by the project's first ingest; ChEMBL release not recorded*
+*ChEMBL 37 (2026-05-01), 7,561 mechanisms · `GET https://www.ebi.ac.uk/chembl/api/data/mechanism.json?limit=1000&offset=…`, then `target.json` and `molecule.json` for the ids they name*
 
 **Compiled by.** EMBL-EBI curators assign each approved or clinical-stage drug its molecular targets and action type, with references from labels and the literature.
-**We use.** Only as hints. When the LLM assigns an entity's targets, it sees up to 12 "SYMBOL: action" pairs from ChEMBL; its own answer is what we store. The bulk file kept one symbol per drug name, so multi-target drugs are incomplete there; tirzepatide shows only GIPR.
+**We use.** Only as hints. When the LLM assigns an entity's targets, it sees every mechanism of the parent molecule of each of its ChEMBL ids, as "SYMBOL: action" for each human gene of the target; its own answer is what we store. A target's genes are its UniProt components mapped to HGNC, so a complex or receptor family keeps all of them (1,257 mechanisms name more than one gene); mechanisms with no human gene, such as antibacterials, are shown as text.
+**Shape.** `{mechanisms: [{mec_id, molecule_chembl_id, parent_molecule_chembl_id, target_chembl_id, action_type, mechanism_of_action, …}], page_meta: {next, …}}`; a target's `target_components[{accession}]` give its genes.
 
-```text
-pembrolizumab (CHEMBL3137343)  PDCD1  inhibitor
-semaglutide   (CHEMBL2108724)  GLP1R  agonist   PMID 22918257
+```json
+{"mec_id": 8862, "molecule_chembl_id": "CHEMBL4297839", "target_chembl_id": "CHEMBL4383", "action_type": "AGONIST",
+ "mechanism_of_action": "Gastric inhibitory polypeptide receptor agonist"}
+{"mec_id": 8994, "molecule_chembl_id": "CHEMBL4297839", "target_chembl_id": "CHEMBL1784", "action_type": "AGONIST",
+ "mechanism_of_action": "Glucagon-like peptide 1 receptor agonist"}
 ```
+
+Tirzepatide's hints: GIPR: agonist, GLP1R: agonist.
 
 #### gnomAD constraint
 
@@ -185,14 +192,17 @@ POLR2A  pLI 1.0      LOEUF 0.161   missense z 9.21
 
 #### DepMap gene essentiality
 
-*Loaded by earlier project code; DepMap release and the pan-essential rule not recorded*
+*DepMap Public 24Q4 · `CRISPRInferredCommonEssentials.csv` from the release's figshare record, `https://api.figshare.com/v2/articles/27993248/files`*
 
-**Compiled by.** The Broad Institute's Cancer Dependency Map knocks out every gene by CRISPR in about a thousand cancer cell lines. Chronos estimates each gene's effect on growth: 0 is none, and −1 is the median effect of common-essential genes.
-**We use.** The pan-essential flag alone, set for 1,284 of 17,916 genes across 1,178 screened lines, as of today. The flag's cutoff is not documented. Some core genes, such as POLR2A, are missing from the table and read as not essential.
+**Compiled by.** The Broad Institute's Cancer Dependency Map knocks out every gene by CRISPR in about a thousand cancer cell lines, and Chronos estimates each gene's effect on growth. DepMap's inferred common-essential list holds the genes whose knockout ranks among the most depleting in most lines.
+**We use.** That list, 1,523 genes keyed by Entrez id and mapped to Ensembl through HGNC, as the pan-essential flag. It is the 24Q4 release, not the state at phase entry; it is the newest release the DepMap portal's download block leaves reachable to scripts.
+**Shape.** One column, `Essentials`, each row `SYMBOL (Entrez id)`.
 
 ```text
-POLR2B  mean effect -2.42  1,178 lines  pan-essential  dependent in 30 lineages
-PCSK9   mean effect -0.19  1,178 lines  not essential  dependent in 0 lineages
+Essentials
+AAMP (14)
+AARS1 (16)
+POLR2B (5431)
 ```
 
 #### Open Targets Platform: associations

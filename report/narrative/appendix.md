@@ -9,12 +9,14 @@
 | Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; {{section1.scale.fda_approved_uses|int}} approved uses read from 2015–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
 | CBER yearly approval pages, product pages and letters | {{section1.scale.cber_applications|int}} biologics applications (vaccines, blood products, cell and gene therapies) and their 2015–2025 approval actions, verified by an independent second enumeration | Retrieved October 2026 |
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
-| MONDO, EFO | Disease ontology and hierarchy | MONDO 2026-10-06, EFO 3.95 |
+| MONDO | Disease ontology and hierarchy | 2026-10-06 |
 | Open Targets Platform | Target–disease associations by data source, with yearly score series | 26.09 |
 | Open Targets Platform evidence | Every evidence row behind those associations for drug targets, with its date, direction of effect, confidence and source detail; mouse-model phenotypes | 26.09 |
 | Mammalian Phenotype ontology | Mouse phenotype hierarchy (knockouts lethal before weaning) | Retrieved October 2026 |
 | gnomAD | Loss-of-function constraint (LOEUF) | v4.1 |
-| DepMap | Pan-essential genes from CRISPR (Chronos) screens | Release not recorded in the project database |
+| DepMap | Common-essential genes from CRISPR (Chronos) screens | Public 24Q4 |
+| HGNC | Approved human gene symbols with previous symbols and aliases | 2026-10-16 |
+| ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 
 {{APPENDIX_SOURCES}}
 
@@ -41,8 +43,8 @@ Every case picked by the rule protocol, checked by agents against primary source
 * **Symptom and procedure indications without a MONDO term** (pain, cough, contraception; about 3% of trials) are grouped in each entity's disease-unspecified program, followed through Phase 2 but not to approval.
 * **Most stopped programs give no reason.** Reasons come from the registry's why-stopped field, posted results and abstracts of results papers. Published results favour positive findings, and a missing reason is reported as such, not inferred. A vague reason ("sponsor decision", "business reasons") may hide an efficacy or safety result; reasons were not filled in from press releases, company filings or pipeline updates, so efficacy and safety shares are lower bounds.
 * **The model declines some products.** Claude declines to classify some products derived from pathogens, toxins or live bacterial and viral vectors (botulinum and plague vaccines, oncolytic viruses, engineered bacteria) on every attempt: {{quality.refusals.moiety_targets|int}} entities have no resolved target and {{quality.refusals.moiety_modality|int}} no modality, so they fall out of Section 2 and the modality strata.
-* **Constraint and essentiality are current.** gnomAD v4.1 constraint and DepMap pan-essentiality are today's values, not values as of phase entry.
-* **Evidence as of phase entry undercounts.** Open Targets leaves undated evidence out of its yearly series; a sensitivity uses the 2026 scores instead.
-* **Section 3 rests on labels made for it.** The trial endpoint class, the germline mechanism of each target in each disease and the orientation of each mouse model were classified by an LLM without the drug's name. The endpoint classifier was audited on 40 trials (39 classes and 40 governing outcomes right); the mechanism and mouse labels were spot-checked, and the errors found there led to a revised prompt rather than hand corrections.
-* **Some evidence cannot be dated.** IMPC knockouts carry no date in Open Targets, MGI mouse models carry their gene's earliest literature year, gene-burden results start in 2019, and GWAS on measurement traits cannot be matched to a disease, so these lines are untestable or undercounted in Section 3.
+* **Constraint and essentiality are current.** gnomAD v4.1 constraint and the DepMap Public 24Q4 common-essential genes come from those releases, not as of phase entry.
+* **Evidence as of phase entry undercounts.** The yearly series count only dated evidence. Cancer Gene Census, Orphanet, UniProt, Reactome and PanelApp entries without a publication, and IMPC knockouts first released after 2024, have no date; a sensitivity uses the 2026 scores instead.
+* **Section 3 rests on labels made for it.** The trial endpoint class, the germline mechanism of each target in each disease and the orientation of each mouse model were classified by an LLM without the drug's name. The endpoint classifier was audited on {{section3.endpoint_audit.trials|int}} trials ({{section3.endpoint_audit.class_correct|int}} classes and {{section3.endpoint_audit.governing_index_correct|int}} governing outcomes right); the mechanism and mouse labels were spot-checked, and the errors found there led to a revised prompt rather than hand corrections.
+* **Some evidence is dated approximately.** Open Targets dates ClinVar records by their latest review; here each record takes the year it was created, read off its accession number, so a variant first submitted as uncertain and reclassified pathogenic later counts from its first submission. IMPC knockouts take the year of the first IMPC data release with calls for the allele (none before 2015) and MGI models the year of their first paper. Gene-burden results start in 2019, and GWAS on measurement traits cannot be matched to a disease, so these lines are undercounted in Section 3.
 * **Section 3's post-hoc analyses are exploratory.** The direction analyses and rules P1–P3 were added after the plan was committed, once their labels existed; their intervals are not corrected for the number of comparisons.

@@ -19,6 +19,7 @@ import json
 import os
 import time
 import xml.etree.ElementTree as ET
+from datetime import date
 
 import requests
 from psycopg2.extras import Json, execute_values
@@ -26,16 +27,27 @@ from psycopg2.extras import Json, execute_values
 from pipeline import llm
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
+TRIALS_FROM = date(2010, 1, 1)  # completed trials that start earlier get no outcome or endpoint label
+
+
+def analysed(denoms: list[dict], units: str | None) -> dict[str, str]:
+    """Group id -> number analysed, in the unit the measure selects (participants, eyes, lesions…)."""
+    chosen = next((d for d in denoms if d.get("units") == units), denoms[0] if denoms else {})
+    return {c["groupId"]: c.get("value") for c in chosen.get("counts", [])}
+
+
 def summarize(results: dict) -> tuple[str, list[dict]]:
     lines, analyses = [], []
     measures = [m for m in (results.get("outcomeMeasuresModule") or {}).get("outcomeMeasures", [])
                 if m.get("type") == "PRIMARY"]
     for m in measures:
         groups = {g["id"]: g.get("title", "") for g in m.get("groups", [])}
-        n = {c["groupId"]: c.get("value") for d in m.get("denoms", []) for c in d.get("counts", [])}
+        units = m.get("denomUnitsSelected")
+        measure_n = analysed(m.get("denoms", []), units)
         lines.append(f"PRIMARY: {m.get('title')} [{m.get('timeFrame', '')}] "
                      f"({m.get('paramType', '')}, {m.get('unitOfMeasure', '')})")
         for cls in m.get("classes", []):
+            n = analysed(cls["denoms"], units) if cls.get("denoms") else measure_n
             for cat in cls.get("categories", []):
                 vals = "; ".join(f"{groups.get(x['groupId'], x['groupId'])} (n={n.get(x['groupId'])}): "
                                  f"{x.get('value')}" + (f" ±{x['spread']}" if x.get("spread") else "")
@@ -92,13 +104,13 @@ def _eutils(endpoint: str, **params) -> str:
 
 def publications(_args) -> None:
     """Results papers for completed industry Phase 2/3 trials that started on or
-    after 2010-01-01 and have no posted results: PMIDs the registry lists as
+    after TRIALS_FROM and have no posted results: PMIDs the registry lists as
     RESULT/DERIVED, plus PubMed articles indexing the NCT id as a
     ClinicalTrials.gov secondary identifier."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT nct_id, references_ FROM preclin.ctgov_study
                        WHERE lead_sponsor_class = 'INDUSTRY' AND overall_status = 'COMPLETED' AND NOT has_results
-                         AND phases && ARRAY['PHASE2','PHASE3'] AND start_date >= '2010-01-01'""")
+                         AND phases && ARRAY['PHASE2','PHASE3'] AND start_date >= %s""", (TRIALS_FROM,))
         trials = cur.fetchall()
     ncts = {n for n, _ in trials}
     links = {(n, r["pmid"], "ctgov_reference") for n, refs in trials for r in refs
@@ -128,7 +140,10 @@ def publications(_args) -> None:
                 if acc.text in ncts:
                     links.add((acc.text, pmid, "pubmed_secondary_id"))
     links = {(n, p, s) for n, p, s in links if p in rows}
+    content = llm.canonical_json({"articles": sorted(rows.values()), "links": sorted(links)})
     with llm.connect() as conn, conn.cursor() as cur:
+        llm.register_release(cur, "pubmed_trial_results", date.today().isoformat(), EUTILS, llm.sha256_text(content),
+                             {"n_trials": len(trials), "n_articles": len(rows), "n_links": len(links)})
         execute_values(cur, """INSERT INTO public.publications (pmid, title, authors, journal, year, doi, abstract)
                                VALUES %s
                                ON CONFLICT (pmid) DO UPDATE SET abstract = EXCLUDED.abstract,
@@ -230,10 +245,10 @@ def trial_payload(nct_id, title, phases, status, enrollment, start, completion, 
 
 
 def classify(_args) -> None:
-    """Industry-sponsored in-scope trials started since 2010 that stopped early,
-    or completed Phase 2/3 trials with posted results; completed Phase 2/3
-    trials without posted results that have a linked results paper are judged
-    from the paper abstracts (PUBLICATION_TASK)."""
+    """Every in-scope trial that stopped early, whatever its sponsor or start date, and industry
+    Phase 2/3 trials started since TRIALS_FROM that completed with posted results; completed
+    Phase 2/3 trials without posted results that have a linked results paper are judged from the
+    paper abstracts (PUBLICATION_TASK). The report filters to its own sponsors and years."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
@@ -243,11 +258,10 @@ def classify(_args) -> None:
                    CASE WHEN coalesce(s.why_stopped, '') = '' AND s.overall_status <> 'COMPLETED'
                         THEN s.brief_summary END
             FROM preclin.ctgov_study s LEFT JOIN preclin.ctgov_result_summary r USING (nct_id)
-            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01'
-              AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
+            WHERE s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
               AND (s.overall_status IN ('TERMINATED', 'WITHDRAWN', 'SUSPENDED')
-                   OR (s.overall_status = 'COMPLETED' AND s.has_results
-                       AND s.phases && ARRAY['PHASE2','PHASE3']))""")
+                   OR (s.overall_status = 'COMPLETED' AND s.has_results AND s.lead_sponsor_class = 'INDUSTRY'
+                       AND s.start_date >= %s AND s.phases && ARRAY['PHASE2','PHASE3']))""", (TRIALS_FROM,))
         items = {r[0]: {**trial_payload(*r[:11]), **({"brief_summary": r[11]} if r[11] else {})}
                  for r in cur.fetchall()}
         cur.execute("""
@@ -259,9 +273,9 @@ def classify(_args) -> None:
                     FROM preclin.trial_publication tp JOIN public.publications a USING (pmid)
                     WHERE tp.nct_id = s.nct_id)
             FROM preclin.ctgov_study s
-            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01' AND NOT s.has_results
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= %s AND NOT s.has_results
               AND s.overall_status = 'COMPLETED' AND s.phases && ARRAY['PHASE2','PHASE3']
-              AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""")
+              AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""", (TRIALS_FROM,))
         pub_items = {r[0]: trial_payload(*r) for r in cur.fetchall()}
     run_id = llm.run(CLASSIFY_TASK, items)
     pub_run = llm.run(PUBLICATION_TASK, pub_items) if pub_items else None
@@ -349,25 +363,25 @@ ENDPOINT_TASK = llm.Task(name="trial_endpoint", prompt_version="v1", schema_vers
 
 
 def endpoints(_args) -> None:
-    """Industry Phase 2/3 trials started since 2010 that belong to a development program."""
+    """Industry Phase 2/3 trials started since TRIALS_FROM that belong to a development program."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.conditions, s.phases, s.allocation, s.masking, s.intervention_model, s.primary_outcomes
             FROM preclin.ctgov_study s
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.phases && ARRAY['PHASE2','PHASE3']
-              AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= '2010-01-01'
+              AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= %s
               AND jsonb_array_length(s.primary_outcomes) > 0
-              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""")
+              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""", (TRIALS_FROM,))
         items = {r[0]: {"conditions": r[1] or [], "phases": r[2], "allocation": r[3], "masking": r[4], "model": r[5],
                         "primary_outcomes": [{k: o.get(k) for k in ("measure", "description", "timeFrame")}
                                              for o in r[6]]} for r in cur.fetchall()}
     run_id = llm.run(ENDPOINT_TASK, items)
-    rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"],
-             o["n_primaries"], did) for nct, did, o in llm.decisions(run_id)]
+    rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"], did)
+            for nct, did, o in llm.decisions(run_id)]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_endpoint")
         execute_values(cur, """INSERT INTO preclin.trial_endpoint (nct_id, purpose, endpoint_class, governing_index,
-                                 measurement_type, scale, n_primaries, llm_decision_id) VALUES %s""", rows,
+                                 measurement_type, scale, llm_decision_id) VALUES %s""", rows,
                        page_size=5000)
         conn.commit()
     print(f"trials={len(items)} classified={len(rows)}")
