@@ -42,7 +42,9 @@ Over the past century, drug development moved from natural observation and pheno
 
 {{SECTION2}}
 
-## Case studies
+{{SECTION3}}
+
+## Historical case studies
 
 The cases below each looked strong on mechanism, cell and animal evidence, and failed in humans.
 

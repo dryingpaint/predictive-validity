@@ -3,6 +3,7 @@
     python -m pipeline.outcomes results    # cached CT.gov results sections -> preclin.ctgov_result_summary
     python -m pipeline.outcomes publications   # PubMed results papers for completed trials without posted results
     python -m pipeline.outcomes classify   # LLM: execution, stop reason and primary-endpoint outcome per trial
+    python -m pipeline.outcomes endpoints  # LLM: the kind of endpoint each Phase 2/3 trial's primary measures
 
 The results summary keeps, for up to three primary outcome measures, the
 measured values per group and every statistical comparison (p-value, method,
@@ -284,12 +285,105 @@ def classify(_args) -> None:
     print(f"trials={len(items)} from publications={len(pub_items)}")
 
 
+ENDPOINT_CLASSES = ["B1_target_engagement", "B2_exploratory_biomarker", "B3_regulatory_surrogate",
+                    "B4_objective_physiological", "B5_clinician_scale", "B6_patient_reported", "B7_disease_events",
+                    "B8_hard_outcome", "B9_infection_cure", "O1_tumor_response", "O2_progression_free",
+                    "O3_overall_survival", "not_efficacy"]
+
+ENDPOINT_SYSTEM = """You classify the primary endpoint of a clinical trial from its registry entry: the conditions, the design and the primary outcome measures as registered (title, description, time frame). You are not told the drug.
+
+First pick the governing primary outcome: with one primary, that one; with several, the first in a stated hierarchy, else the one the description says the trial is powered on, else the first listed efficacy measure. Answer its number (governing_index) and how many primary outcomes are listed (n_primaries).
+
+purpose of the governing primary: efficacy (does the drug treat, prevent or change the disease), safety_tolerability (adverse events, tolerability, lab safety as the primary), pk_pd_dose (pharmacokinetics, exposure, dose finding, bioequivalence), other (feasibility, device performance, adherence, immunogenicity of a non-vaccine drug).
+
+endpoint_class (efficacy only; otherwise not_efficacy):
+- B1_target_engagement: the analyte is the drug's own target, its immediate product or a direct pathway readout (receptor occupancy, enzyme activity, target protein or mRNA knockdown, free ligand, pSTAT for a JAK inhibitor, complement activity for a complement inhibitor, IgE for anti-IgE).
+- B2_exploratory_biomarker: a disease-related lab, imaging or histology measure that regulators do not accept as a surrogate for approval in this disease (amyloid PET, neurofilament light, CRP or cytokines, MRI lesion counts in an exploratory setting, endoscopic or histologic scores used exploratorily, liver fat by MRI-PDFF).
+- B3_regulatory_surrogate: a measure FDA accepts as a basis for approval in this disease (LDL-C for hypercholesterolaemia, HbA1c for diabetes, blood pressure for hypertension, viral load for HIV or hepatitis B/C, bone mineral density for osteoporosis, proteinuria or eGFR slope where accepted, serum phosphate or calcium, platelet count for ITP, hemoglobin for anemia, FEV1 for asthma/COPD bronchodilators, MRI gadolinium lesions in relapsing MS dose finding, uric acid for gout, biomarker reduction accepted for accelerated approval).
+- B4_objective_physiological: an objective physiological or performance measure that is not an accepted surrogate here (FEV1 or FVC outside the above, six-minute walk distance, visual acuity, timed motor tests, ejection fraction, exercise capacity, body weight).
+- B5_clinician_scale: a clinician-rated scale, composite or responder index, including remission defined by such an index (PASI-75, EASI-75, IGA, ACR20, DAS28, Mayo score, CDAI, EDSS, MDS-UPDRS, ADAS-Cog, CDR-SB, PANSS, MADRS, HAM-D, ALSFRS-R, SLEDAI/BICLA, clinical cure assessed by investigator outside infection).
+- B6_patient_reported: a patient-reported symptom, function or quality-of-life measure (pain NRS, itch NRS, diaries, migraine days from diaries when reported as symptom scores, SGRQ, fatigue scales, PROMIS).
+- B7_disease_events: recurrent or non-fatal disease events or their rate (exacerbations, relapses, flares, attacks, seizures or seizure frequency, monthly migraine days, bleeding episodes, infections, hypoglycaemia events as efficacy, confirmed disability progression).
+- B8_hard_outcome: death, MACE or its components, heart-failure hospitalisation, clinical fracture, kidney failure, dialysis or transplant, decompensation, amputation, incident disease in a prevention trial; any composite that includes death or an irreversible organ event.
+- B9_infection_cure: microbiological or clinical cure or eradication of an infection.
+- O1_tumor_response (oncology): objective response rate, complete response, pathological complete response, MRD negativity, other tumour response criteria.
+- O2_progression_free (oncology): progression-free, event-free, disease-free, relapse-free or metastasis-free survival, time to progression.
+- O3_overall_survival (oncology): overall survival.
+
+measurement_type of the governing primary: lab, imaging, clinician_rated, patient_reported, performance, event, other.
+scale: continuous (change in a measure), responder (proportion reaching a threshold), time_to_event, count_rate, other.
+Judge from the outcome text and the conditions; a trial's own wording ("primary efficacy endpoint") does not override what is measured."""
+
+ENDPOINT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "governing_index": {"type": "integer"},
+        "n_primaries": {"type": "integer"},
+        "purpose": {"type": "string", "enum": ["efficacy", "safety_tolerability", "pk_pd_dose", "other"]},
+        "endpoint_class": {"type": "string", "enum": ENDPOINT_CLASSES},
+        "measurement_type": {"type": "string", "enum": ["lab", "imaging", "clinician_rated", "patient_reported",
+                                                        "performance", "event", "other"]},
+        "scale": {"type": "string", "enum": ["continuous", "responder", "time_to_event", "count_rate", "other"]},
+        "rationale": {"type": "string"},
+    },
+    "required": ["governing_index", "n_primaries", "purpose", "endpoint_class", "measurement_type", "scale",
+                 "rationale"],
+    "additionalProperties": False,
+}
+
+
+def render_endpoint(p: dict) -> str:
+    outcomes = "\n".join(f"{i}. {o.get('measure', '')}" + (f" | {o['description'][:600]}" if o.get("description") else "")
+                         + (f" | time frame: {o['timeFrame']}" if o.get("timeFrame") else "")
+                         for i, o in enumerate(p["primary_outcomes"], 1))
+    return (f"Conditions: {'; '.join(p['conditions'][:6])}\nPhases: {', '.join(p['phases'])}; allocation: "
+            f"{p['allocation']}; masking: {p['masking']}; model: {p['model']}\n\nPrimary outcome measures:\n{outcomes}")
+
+
+def validate_endpoint(p: dict, out: dict) -> None:
+    if not 1 <= out["governing_index"] <= len(p["primary_outcomes"]):
+        raise ValueError(f"governing_index {out['governing_index']} of {len(p['primary_outcomes'])} outcomes")
+    if (out["purpose"] == "efficacy") == (out["endpoint_class"] == "not_efficacy"):
+        raise ValueError(f"purpose {out['purpose']} with class {out['endpoint_class']}")
+
+
+ENDPOINT_TASK = llm.Task(name="trial_endpoint", prompt_version="v1", schema_version="v1", system=ENDPOINT_SYSTEM,
+                         schema=ENDPOINT_SCHEMA, render=render_endpoint, validate=validate_endpoint,
+                         subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
+
+
+def endpoints(_args) -> None:
+    """Industry Phase 2/3 trials started since 2010 that belong to a development program."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT s.nct_id, s.conditions, s.phases, s.allocation, s.masking, s.intervention_model, s.primary_outcomes
+            FROM preclin.ctgov_study s
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.phases && ARRAY['PHASE2','PHASE3']
+              AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= '2010-01-01'
+              AND jsonb_array_length(s.primary_outcomes) > 0
+              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""")
+        items = {r[0]: {"conditions": r[1] or [], "phases": r[2], "allocation": r[3], "masking": r[4], "model": r[5],
+                        "primary_outcomes": [{k: o.get(k) for k in ("measure", "description", "timeFrame")}
+                                             for o in r[6][:8]]} for r in cur.fetchall()}
+    run_id = llm.run(ENDPOINT_TASK, items)
+    rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"],
+             o["n_primaries"], did) for nct, did, o in llm.decisions(run_id)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.trial_endpoint")
+        execute_values(cur, """INSERT INTO preclin.trial_endpoint (nct_id, purpose, endpoint_class, governing_index,
+                                 measurement_type, scale, n_primaries, llm_decision_id) VALUES %s""", rows,
+                       page_size=5000)
+        conn.commit()
+    print(f"trials={len(items)} classified={len(rows)}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("results").set_defaults(fn=results)
     sub.add_parser("publications").set_defaults(fn=publications)
     sub.add_parser("classify").set_defaults(fn=classify)
+    sub.add_parser("endpoints").set_defaults(fn=endpoints)
     args = parser.parse_args()
     args.fn(args)
 

@@ -157,22 +157,22 @@ Each quantitative claim, with the value the rebuild gives:
 
 | Claim | Draft | Rebuilt |
 |---|---|---|
-| C02, C11 Phase 1 → FDA approval | 7.4%, "within 0.5pt of BIO's 7.9%" | 10.5% (9.4–11.8) for US-developed programs; 7.2% (6.4–8.0) for all registered industry programs; 5.1–12.1% across defensible definitions (sensitivity table) |
+| C02, C11 Phase 1 → FDA approval | 7.4%, "within 0.5pt of BIO's 7.9%" | 10.4% (9.2–11.8) for US-developed programs; 7.3% (6.5–8.2) for all registered industry programs; 5.3–12.4% across defensible definitions (sensitivity table) |
 | C09, C13 Trials analysed | 28,193 industry trials "started after 2015 and ended before 2026" (67% of 41,836) | 39,348 industry Phase 1–3 trials started 2015–2025 (not withdrawn); every in-scope trial is used, none dropped for failing to resolve |
-| C14 Programs | 84,117 programs; 13,639 T-I pairs | 53,948 (entity, indication) programs from all trials; 17,047 entered a phase in 2015–2025 |
-| C15 Transitions | 55.9 / 51.0 / 26.1% | US-developed 57.0 / 34.7 / 53.0%; all programs 56.8 / 34.0 / 37.1% (BIO 52.0 / 28.9 / 52.4%), skipped phases credited as in BIO |
-| C16 Mid-phase gap | Ph3b, non-US and Ph2/3 designs | The gap came from labelling errors; with the rebuild Phase 2→3 is 34.0% (BIO 28.9%), and the remaining Phase 3 gap is approvals outside the US (53.0% for US-developed programs vs 37.1% for all) |
-| C18, C20, C21 Why programs fail | 55,133 failed programs; "silent efficacy" 73% of Ph3 failures | 6,742 suspended programs: no reason and no result 64% (Ph1), 33% (Ph2), 33% (Ph3); efficacy 25% (Ph2), 29% (Ph3); positive Phase 3 readout without US approval 18% of Ph3 stops |
+| C14 Programs | 84,117 programs; 13,639 T-I pairs | 53,948 (entity, indication) programs from all trials; 16,562 entered a phase in 2015–2025 (a trial counts once it has started) |
+| C15 Transitions | 55.9 / 51.0 / 26.1% | US-developed 56.5 / 34.7 / 53.2%; all programs 56.2 / 34.4 / 37.9% (BIO 52.0 / 28.9 / 52.4%), skipped phases credited as in BIO |
+| C16 Mid-phase gap | Ph3b, non-US and Ph2/3 designs | The gap came from labelling errors; with the rebuild Phase 2→3 is 34.4% (BIO 28.9%), and the remaining Phase 3 gap is approvals outside the US (53.2% for US-developed programs vs 37.9% for all) |
+| C18, C20, C21 Why programs fail | 55,133 failed programs; "silent efficacy" 73% of Ph3 failures | 6,604 suspended programs: no reason and no result 64% (Ph1), 31% (Ph2), 31% (Ph3); efficacy 26% (Ph2), 30% (Ph3); positive Phase 3 readout without US approval 19% of Ph3 stops |
 | C19 Early terminations | 5,510 with a reason; 44% commercial/strategic | 5,557 with a reason: explicit business/portfolio/competitive 36%, bare "sponsor decision" 19%, efficacy 14%, enrollment/operational 14%, safety 4% |
-| C22 Disease areas | 18.4% hematology to 1.6% urology | All programs: hematology 19.3%, metabolic 18.0%, oncology 17.2% down to urology 1.4%; US-developed: endocrine 27.9%, metabolic 26.4%, oncology 21.0%, hematology 19.0% down to infectious disease 6.0%. The ordering does not follow BIO's (rank correlation 0.26 all programs, −0.26 US-developed) |
-| C23, C24 Modalities | Oligonucleotides 32.5%, small molecules 5.8% | All programs: multispecifics 21.3%, ADCs 20.6%, mAbs 13.9% … proteins 4.5%; siRNA and CAR-T not estimable (fewer than 10 entities resolved in Phase 3; most approvals came from Phase 2); vaccines not estimable from registry data |
+| C22 Disease areas | 18.4% hematology to 1.6% urology | All programs: hematology 19.6%, metabolic 17.8%, oncology 17.8% down to urology 1.3%; US-developed: endocrine 27.4%, metabolic 25.8%, oncology 21.2%, hematology 18.5% down to infectious disease 5.9%. The ordering does not follow BIO's (rank correlation 0.26 all programs, −0.26 US-developed) |
+| C23, C24 Modalities | Oligonucleotides 32.5%, small molecules 5.8% | All programs: multispecifics 22.7%, ADCs 21.0%, mAbs 14.1% … proteins 4.5%; siRNA and CAR-T not estimable (fewer than 10 entities resolved in Phase 3; most approvals came from Phase 2); vaccines not estimable from registry data |
 | C26, C32 What genetics adds | Only genetics adds; ablation −17.7pp | Joint model: GWAS and rare-variant evidence keep independent effects at Phase 2, rare-variant at Phase 3, GWAS a small one at Phase 1; removing human genetics (both parts) lowers held-out AUC by 0.028 (0.002–0.053) |
-| C27, C28 Genetic support | 45% vs 11%; 8,144 pairs, base rate 23% | LOA 30.6% with vs 10.8% without (relative success 2.83, 2.21–3.64) on 10,190 human-protein programs |
-| C31 Dose–response | 10.9 / 19.7 / 23.0 / 45.0% | LOA 10.8 / 21.6 / 35.1 / 37.6% (none, then tertiles of the Open Targets genetic score at phase entry) |
+| C27, C28 Genetic support | 45% vs 11%; 8,144 pairs, base rate 23% | LOA 30.8% with vs 11.0% without (relative success 2.80, 2.16–3.61) on 9,993 human-protein programs |
+| C31 Dose–response | 10.9 / 19.7 / 23.0 / 45.0% | LOA 11.0 / 21.4 / 36.0 / 37.8% (none, then tertiles of the Open Targets genetic score at phase entry) |
 | C33, C34 Model AUC | 0.825 held-out targets; 0.769 time split | 0.665 (0.602–0.723) on held-out target sets with all evidence vs 0.611 without; time split 0.655 vs 0.617 |
-| C35 Pan-essential | RS 0.24 | 0.39 (0.13–0.72); penalised at Phases 1–2 in the joint model |
-| C36 LoF-intolerant | RS 0.82–0.84 | 1.00 (0.67–1.42): no detectable penalty |
-| C37–C39 Phase 3 with strong evidence | 73–85% still fail; best profile 22% | Phase 3 programs with human genetic evidence were approved 63% of the time (n=196) vs 42% without |
+| C35 Pan-essential | RS 0.24 | 0.40 (0.17–0.73); penalised at Phase 2 in the joint model (Phase 1: 0.79, 0.62–1.01) |
+| C36 LoF-intolerant | RS 0.82–0.84 | 1.01 (0.71–1.48): no detectable penalty |
+| C37–C39 Phase 3 with strong evidence | 73–85% still fail; best profile 22% | Phase 3 programs with human genetic evidence were approved 64% of the time (n=195) vs 43% without |
 
 ## Data issues register
 
@@ -229,9 +229,33 @@ Each quantitative claim, with the value the rebuild gives:
 | D50 | The "no reason, no result" failure category included trials that had posted results (609 programs) or stated another reason (32) | Failure-mode shares | fixed: separate categories for posted results without a readable endpoint and for other stated reasons |
 | D51 | Strata with very few resolved programs got bootstrap intervals from the draws in which they happened to resolve (CAR-T: one resolved Phase 3 program, 36% of draws empty), so their intervals were too narrow | Area and modality tables | fixed: no LOA for a cohort with fewer than 10 entities resolved in a phase |
 | D52 | A registered but not-yet-recruiting later-phase trial counted as advancement (247 rows) | Transition rates | fixed: a later-phase trial advances a program once it has started; while registered it keeps the program active |
+| D53 | A trial that never started (status UNKNOWN, estimated start date, no update since before it) still marked phase entry and advancement; not-yet-recruiting trials marked entry | Section 1 cohorts and transitions; Section 3 cohorts | fixed: such trials mark neither entry nor advancement (16,562 cohort programs instead of 17,047; US LOA 10.4% instead of 10.5%) |
+| D54 | Open Targets' direction-of-effect fields follow variant consequence, so a few truncating ClinVar variants make gain-of-function disease genes (PCSK9, MYH7, TTR) read as loss of function | Section 3 H3 | disclosed; H3 reported as registered and direction re-derived from drug-blind mechanism labels (`preclin.gene_disease_mechanism`) |
+| D55 | 89% of GWAS rows are on measurement traits with no MONDO disease (LDL cholesterol, blood pressure), so they cannot match a program's disease | Section 3 G3, Section 2 genetics | partly fixed: they now count as germline evidence on the target (G1), not as 'none'; disclosed that G3 undercounts trait-found genetics |
+| D56 | IMPC-consortium mouse models carry no date in Open Targets, and MGI models carry the gene's earliest literature year | Section 3 mouse evidence; rule M7 | disclosed; IMPC models count only as evidence known today, M7 untestable |
+| D57 | Open Targets exports burden results only at p < 2.5e-6 and expression changes only at abs(log2FC) >= 1.1, so the plan's strength tiers for those sources equal the family | Section 3 evidence map | disclosed; the tiers are left out of the map |
+| D58 | First-pass gene-disease mechanism labels counted somatic tumour mutations as germline and dated some pairs by another disease's paper (9 of 30 audited pairs wrong) | Section 3 direction | fixed: prompt v3 requires an established germline link and separate risk and protective years for the disease |
+| D59 | An open-label extension study registered as Phase 2/3 counts as a Phase 3 start (amlitelimab, RIVER-AD) | Transition rates; Section 3 S4 | open: found by the Section 3 case verification (1 of 76 programs); Phase 2/3 counts as Phase 3 as in BIO |
+| D60 | Another sponsor's Phase 3 trial of a different drug linked to a program (zigakibart credited with atrasentan's ALIGN trial) | Transition rates; Section 3 S4 | open: found by the Section 3 case verification (1 of 76 programs); entity-role labels |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-21 — Section 3, which evidence translates. Plan committed before any outcome analysis
+  (`report/translation_plan.md`). New data: primary outcome measures for every trial
+  (`ctgov_study.primary_outcomes`), Open Targets 26.09 evidence rows with dates, direction and
+  confidence (`preclin.ot_evidence`, 3.3 million rows) and mouse phenotypes, the Mammalian
+  Phenotype ontology, the governing primary endpoint of 31,802 industry Phase 2/3 trials
+  (`preclin.trial_endpoint`, LLM, drug-blind), drug-blind germline mechanism labels for 1,887
+  target-disease pairs (`preclin.gene_disease_mechanism`, v3) and orientation labels for 7,676
+  mouse models (`preclin.mouse_model_relation`, v2). An adversarial review of the analysis (six
+  dimensions, each finding verified) led to D53–D58 and to fixes in the analysis itself: a
+  separate sentinel for absent evidence in the 'known today' comparison, the permutation null
+  fitted with the H1 model, outcome-specific covariates in the stacked H5/H6 models, rare
+  covariate levels given their own indicator, the endpoint stratum taken only from trials that
+  started within a year of entry and before the program advanced, and the case protocol of
+  the plan. Case studies verified by agents against primary sources (outcome blind to evidence,
+  evidence blind to outcome, a second failure coder, adjudication).
 
 - 2026-10-21 — PR #27 split into five stacked PRs (legacy removal; LLM runner and sources; entities,
   diseases and programs; labels and evidence; report). Code consolidated without behaviour change

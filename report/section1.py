@@ -69,6 +69,11 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
     their own names, so their programs cannot be followed to approval."""
     t = trials[trials.start_date.notna()].copy()
     t["active"] = t.overall_status.isin(frame.ACTIVE)
+    # A trial that has not started (not yet recruiting, or gone silent before its estimated start date)
+    # neither marks phase entry nor advances a program; it still counts as activity.
+    t["started"] = ~(t.overall_status.eq("NOT_YET_RECRUITING")
+                     | (t.overall_status.eq("UNKNOWN") & t.start_date_type.eq("ESTIMATED")
+                        & (pd.to_datetime(t.last_update_posted) < pd.to_datetime(t.start_date))))
     t["end"] = t.completion_date.fillna(t.primary_completion_date).fillna(t.start_date)
     # Shared trials (a healthy-volunteer study, a "solid tumors" basket) count only toward
     # Phase 1 entry of the lead indication, and keep that Phase 1 program active while
@@ -79,13 +84,14 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
     own = t if shared_entry else t[own_trials(progs, t)]
     ind = t[t.industry]
     entry_trials = ind if shared_entry else pd.concat([own[own.industry], ind[(ind.phase == 1) & ind.marks_entry]])
-    starts = entry_trials.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
-    later = own[own.overall_status != "NOT_YET_RECRUITING"].pivot_table(
+    entered = entry_trials[entry_trials.started]
+    starts = entered.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
+    later = own[own.started].pivot_table(
         index="program_id", columns="phase", values="start_date", aggfunc="min")
     last, active = activity(own, snap)
     last1, active1 = activity(pd.concat([own, entry_trials[entry_trials.phase == 1]])
                               .drop_duplicates(["program_id", "nct_id"]), snap)
-    us = set(zip(entry_trials.program_id[entry_trials.us_site], entry_trials.phase[entry_trials.us_site]))
+    us = set(zip(entered.program_id[entered.us_site], entered.phase[entered.us_site]))
 
     p = progs.set_index("program_id")
     approved = p.approved.eq("yes") | (uncertain_as_approved & p.approved.eq("uncertain"))
