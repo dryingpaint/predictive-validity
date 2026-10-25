@@ -19,6 +19,7 @@ import json
 import os
 import time
 import xml.etree.ElementTree as ET
+from datetime import date
 
 import requests
 from psycopg2.extras import Json, execute_values
@@ -27,6 +28,8 @@ from pipeline import llm
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
 MAX_PRIMARY = 3
+TRIALS_FROM = date(2010, 1, 1)  # trials that start earlier get no outcome or endpoint label
+MAX_ENDPOINT_PRIMARIES = 8  # primary outcomes shown to the endpoint classifier
 MAX_CHARS = 6000
 
 
@@ -96,13 +99,13 @@ def _eutils(endpoint: str, **params) -> str:
 
 def publications(_args) -> None:
     """Results papers for completed industry Phase 2/3 trials that started on or
-    after 2010-01-01 and have no posted results: PMIDs the registry lists as
+    after TRIALS_FROM and have no posted results: PMIDs the registry lists as
     RESULT/DERIVED, plus PubMed articles indexing the NCT id as a
     ClinicalTrials.gov secondary identifier."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT nct_id, references_ FROM preclin.ctgov_study
                        WHERE lead_sponsor_class = 'INDUSTRY' AND overall_status = 'COMPLETED' AND NOT has_results
-                         AND phases && ARRAY['PHASE2','PHASE3'] AND start_date >= '2010-01-01'""")
+                         AND phases && ARRAY['PHASE2','PHASE3'] AND start_date >= %s""", (TRIALS_FROM,))
         trials = cur.fetchall()
     ncts = {n for n, _ in trials}
     links = {(n, r["pmid"], "ctgov_reference") for n, refs in trials for r in refs
@@ -247,11 +250,11 @@ def classify(_args) -> None:
                    CASE WHEN coalesce(s.why_stopped, '') = '' AND s.overall_status <> 'COMPLETED'
                         THEN left(s.brief_summary, 3000) END
             FROM preclin.ctgov_study s LEFT JOIN preclin.ctgov_result_summary r USING (nct_id)
-            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01'
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= %s
               AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
               AND (s.overall_status IN ('TERMINATED', 'WITHDRAWN', 'SUSPENDED')
                    OR (s.overall_status = 'COMPLETED' AND s.has_results
-                       AND s.phases && ARRAY['PHASE2','PHASE3']))""")
+                       AND s.phases && ARRAY['PHASE2','PHASE3']))""", (TRIALS_FROM,))
         items = {r[0]: {**trial_payload(*r[:11]), **({"brief_summary": r[11]} if r[11] else {})}
                  for r in cur.fetchall()}
         cur.execute("""
@@ -263,9 +266,9 @@ def classify(_args) -> None:
                     FROM preclin.trial_publication tp JOIN public.publications a USING (pmid)
                     WHERE tp.nct_id = s.nct_id)
             FROM preclin.ctgov_study s
-            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= '2010-01-01' AND NOT s.has_results
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= %s AND NOT s.has_results
               AND s.overall_status = 'COMPLETED' AND s.phases && ARRAY['PHASE2','PHASE3']
-              AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""")
+              AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""", (TRIALS_FROM,))
         pub_items = {r[0]: trial_payload(*r) for r in cur.fetchall()}
     run_id = llm.run(CLASSIFY_TASK, items)
     pub_run = llm.run(PUBLICATION_TASK, pub_items) if pub_items else None
@@ -353,25 +356,25 @@ ENDPOINT_TASK = llm.Task(name="trial_endpoint", prompt_version="v1", schema_vers
 
 
 def endpoints(_args) -> None:
-    """Industry Phase 2/3 trials started since 2010 that belong to a development program."""
+    """Industry Phase 2/3 trials started since TRIALS_FROM that belong to a development program."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.conditions, s.phases, s.allocation, s.masking, s.intervention_model, s.primary_outcomes
             FROM preclin.ctgov_study s
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.phases && ARRAY['PHASE2','PHASE3']
-              AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= '2010-01-01'
+              AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= %s
               AND jsonb_array_length(s.primary_outcomes) > 0
-              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""")
+              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""", (TRIALS_FROM,))
         items = {r[0]: {"conditions": r[1] or [], "phases": r[2], "allocation": r[3], "masking": r[4], "model": r[5],
                         "primary_outcomes": [{k: o.get(k) for k in ("measure", "description", "timeFrame")}
-                                             for o in r[6][:8]]} for r in cur.fetchall()}
+                                             for o in r[6][:MAX_ENDPOINT_PRIMARIES]]} for r in cur.fetchall()}
     run_id = llm.run(ENDPOINT_TASK, items)
-    rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"],
-             o["n_primaries"], did) for nct, did, o in llm.decisions(run_id)]
+    rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"], did)
+            for nct, did, o in llm.decisions(run_id)]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_endpoint")
         execute_values(cur, """INSERT INTO preclin.trial_endpoint (nct_id, purpose, endpoint_class, governing_index,
-                                 measurement_type, scale, n_primaries, llm_decision_id) VALUES %s""", rows,
+                                 measurement_type, scale, llm_decision_id) VALUES %s""", rows,
                        page_size=5000)
         conn.commit()
     print(f"trials={len(items)} classified={len(rows)}")

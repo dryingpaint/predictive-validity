@@ -21,8 +21,9 @@ field follows variant consequence alone, so a few truncating ClinVar variants
 make a gain-of-function disease gene such as PCSK9, MYH7 or TTR read as loss of
 function.
 
-mouse: for the same (target, disease) pairs, every mouse model Open Targets links
-to the disease or a subtype (IMPC and MGI, matched by PhenoDigm) is shown with its
+mouse: for each primary target gene and program disease with mouse models that
+Open Targets links to the disease or a subtype (IMPC and MGI, matched by
+PhenoDigm), up to MAX_MODELS of them, best match first, are shown with their
 allele and the phenotypes that matched; the LLM, again without any drug, says
 whether the model lowers or raises the gene's function and whether those
 phenotypes resemble the disease or its opposite (a knockout with low LDL
@@ -33,10 +34,12 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from datetime import date
 
 from psycopg2.extras import execute_values
 
 from pipeline import llm
+from pipeline.opentargets import CLINVAR_PATHOGENIC, GERMLINE_DATASOURCES
 
 SYSTEM = """You give the molecular target(s) through which a drug acts, as human gene symbols (HGNC).
 
@@ -168,7 +171,21 @@ MECHANISM_SCHEMA = {
 }
 
 
-def render_mechanism(p: dict) -> str:
+# Each primary target gene of an entity, with each disease the entity is developed for.
+PROGRAM_TARGET_DISEASES = """
+    SELECT DISTINCT t.ensembl_id, t.symbol, t.name, p.mondo_id
+    FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
+    JOIN preclin.moiety_target mt USING (moiety_id) JOIN public.targets t ON t.id = mt.target_id
+    WHERE mt.is_primary AND m.target_kind = 'human_protein' AND p.mondo_id IS NOT NULL"""
+DEFINITION_CHARS = 500  # of the MONDO definition shown with the disease
+
+
+def gene_disease(symbol: str, name: str | None, mondo: str, label: str, definition: str | None) -> dict:
+    return {"symbol": symbol, "gene_name": name or "", "mondo_id": mondo, "disease": label,
+            "definition": (definition or "")[:DEFINITION_CHARS]}
+
+
+def gene_disease_header(p: dict) -> str:
     return (f"Gene: {p['symbol']} ({p['gene_name']})\nDisease: {p['disease']} ({p['mondo_id']})\n"
             f"Disease definition: {p['definition'] or 'none given'}")
 
@@ -181,44 +198,36 @@ def validate_mechanism(p: dict, out: dict) -> None:
         year = out[key]
         if stated != (year is not None):
             raise ValueError(f"{key} {year} with the mechanism {'stated' if stated else 'not stated'}")
-        if year is not None and not 1900 <= year <= 2026:
+        if year is not None and not 1900 <= year <= date.today().year:
             raise ValueError(f"{key} {year}")
 
 
 MECHANISM_TASK = llm.Task(name="gene_disease_mechanism", prompt_version="v3", schema_version="v3",
-                          system=MECHANISM_SYSTEM, schema=MECHANISM_SCHEMA, render=render_mechanism,
+                          system=MECHANISM_SYSTEM, schema=MECHANISM_SCHEMA, render=gene_disease_header,
                           validate=validate_mechanism, subject_type="gene_disease", model="claude-opus-5-5",
                           effort="medium", max_tokens=4000)
-GERMLINE_SOURCES = ["gwas_credible_sets", "gene_burden", "eva", "orphanet", "gene2phenotype", "clingen",
-                    "genomics_england", "uniprot_variants", "uniprot_literature"]
 
 
 def mechanism(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""
+        cur.execute(f"""
             WITH ev AS (
                 SELECT DISTINCT e.target_ensembl, m.term
                 FROM preclin.ot_evidence e JOIN preclin.ot_disease od USING (disease_id)
                 CROSS JOIN LATERAL unnest(od.mondo_ids) AS m(term)
                 WHERE e.datasource = ANY(%s)
-                  AND (e.datasource <> 'eva'
-                       OR e.detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic'])),
+                  AND (e.datasource <> 'eva' OR e.detail->'clinicalSignificances' ?| %s)),
             covered AS (
                 SELECT target_ensembl, term AS mondo_id FROM ev
                 UNION
                 SELECT ev.target_ensembl, a.ancestor_id FROM ev
                 JOIN preclin.ontology_ancestor a ON a.ontology = 'MONDO' AND a.term_id = ev.term),
-            pairs AS (
-                SELECT DISTINCT t.ensembl_id, t.symbol, t.name, p.mondo_id
-                FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
-                JOIN preclin.moiety_target mt USING (moiety_id) JOIN public.targets t ON t.id = mt.target_id
-                WHERE mt.is_primary AND m.target_kind = 'human_protein' AND p.mondo_id IS NOT NULL)
+            pairs AS ({PROGRAM_TARGET_DISEASES})
             SELECT p.ensembl_id, p.symbol, p.name, p.mondo_id, o.label, o.definition
             FROM pairs p JOIN covered c ON c.target_ensembl = p.ensembl_id AND c.mondo_id = p.mondo_id
             JOIN preclin.ontology_term o ON o.ontology = 'MONDO' AND o.term_id = p.mondo_id
-            ORDER BY p.ensembl_id, p.mondo_id""", (GERMLINE_SOURCES,))
-        items = {f"{ens}|{mondo}": {"symbol": symbol, "gene_name": name or "", "mondo_id": mondo, "disease": label,
-                                    "definition": (definition or "")[:500]}
+            ORDER BY p.ensembl_id, p.mondo_id""", (list(GERMLINE_DATASOURCES), list(CLINVAR_PATHOGENIC)))
+        items = {f"{ens}|{mondo}": gene_disease(symbol, name, mondo, label, definition)
                  for ens, symbol, name, mondo, label, definition in cur.fetchall()}
     run_id = llm.run(MECHANISM_TASK, items)
     rows = [(*key.split("|"), o["risk_mechanism"], o["protective"], o["risk_year"], o["protective_year"],
@@ -251,13 +260,13 @@ MOUSE_SCHEMA = {
     "additionalProperties": False,
 }
 MAX_MODELS = 12  # per (gene, disease), best PhenoDigm match first
+MAX_MODEL_PHENOTYPES = 8  # matched phenotypes shown per model
 
 
 def render_mouse(p: dict) -> str:
     models = "\n".join(f"{i}. allele {m['allele']} (background {m['background']}): {'; '.join(m['phenotypes'])}"
                        for i, m in enumerate(p["models"], 1))
-    return (f"Gene: {p['symbol']} ({p['gene_name']})\nDisease: {p['disease']} ({p['mondo_id']})\n"
-            f"Disease definition: {p['definition'] or 'none given'}\n\nMouse models:\n{models}")
+    return f"{gene_disease_header(p)}\n\nMouse models:\n{models}"
 
 
 def validate_mouse(p: dict, out: dict) -> None:
@@ -272,7 +281,7 @@ MOUSE_TASK = llm.Task(name="mouse_model_relation", prompt_version="v2", schema_v
 
 def mouse(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""
+        cur.execute(f"""
             WITH ev AS (
                 SELECT e.target_ensembl, m.term, e.detail->>'biologicalModelId' AS model_id,
                        e.detail->>'biologicalModelAllelicComposition' AS allele,
@@ -286,11 +295,7 @@ def mouse(_args) -> None:
                 UNION ALL
                 SELECT ev.*, a.ancestor_id FROM ev
                 JOIN preclin.ontology_ancestor a ON a.ontology = 'MONDO' AND a.term_id = ev.term),
-            pairs AS (
-                SELECT DISTINCT t.ensembl_id, t.symbol, t.name, p.mondo_id
-                FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
-                JOIN preclin.moiety_target mt USING (moiety_id) JOIN public.targets t ON t.id = mt.target_id
-                WHERE mt.is_primary AND m.target_kind = 'human_protein' AND p.mondo_id IS NOT NULL),
+            pairs AS ({PROGRAM_TARGET_DISEASES}),
             best AS (
                 SELECT DISTINCT ON (c.target_ensembl, c.mondo_id, c.model_id) c.target_ensembl, c.mondo_id, c.model_id,
                        c.allele, c.background, c.phenotypes, c.resource_score
@@ -303,19 +308,18 @@ def mouse(_args) -> None:
             ORDER BY b.target_ensembl, b.mondo_id, b.resource_score DESC NULLS LAST, b.model_id""")
         items: dict = {}
         for ens, symbol, name, mondo, label, definition, model_id, allele, background, phenotypes in cur.fetchall():
-            item = items.setdefault(f"{ens}|{mondo}", {"symbol": symbol, "gene_name": name or "", "mondo_id": mondo,
-                                                       "disease": label, "definition": (definition or "")[:500],
+            item = items.setdefault(f"{ens}|{mondo}", {**gene_disease(symbol, name, mondo, label, definition),
                                                        "models": []})
             if len(item["models"]) < MAX_MODELS:
                 item["models"].append({"id": model_id, "allele": allele, "background": background or "unknown",
-                                       "phenotypes": (phenotypes or [])[:8]})
+                                       "phenotypes": (phenotypes or [])[:MAX_MODEL_PHENOTYPES]})
     run_id = llm.run(MOUSE_TASK, items)
     rows = [(*key.split("|"), items[key]["models"][m["index"] - 1]["id"], m["perturbation"], m["relation"], did)
             for key, did, o in llm.decisions(run_id) for m in o["models"]]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.mouse_model_relation")
         execute_values(cur, """INSERT INTO preclin.mouse_model_relation (ensembl_id, mondo_id, model_id, perturbation,
-                                 relation, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
+                                 relation, llm_decision_id) VALUES %s""", rows, page_size=5000)
         conn.commit()
     print(f"pairs={len(items)} models={len(rows)}")
 

@@ -6,7 +6,7 @@
 
 The analysis plan ([report/translation_plan.md](report/translation_plan.md)) was committed before any of these analyses touched outcomes; departures from it are marked below.
 
-* **Cohort and outcome.** Programs on a human protein target that entered Phase 2 from 2015-01-01 to 2020-10-20 ({{section3.cohorts.C2.all.programs|int}} programs on {{section3.cohorts.C2.all.targets|int}} primary-target sets). Each has at least four years of follow-up before the 24-month inactivity cutoff, so the outcome needs no inferred suspension: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years of entering Phase 2 ({{section3.cohorts.C2.all.s4|pct}} did). The same is done for Phase 1 entrants (a negative control: genetics should matter little for safety and dosing studies) and Phase 3 entrants (approval within four years).
+* **Cohort and outcome.** Programs on a human protein target that entered Phase 2 from {{section3.window.start}} to {{section3.window.end}} ({{section3.c2.programs|int}} programs on {{section3.c2.targets|int}} primary-target sets). Each has at least four years of follow-up before the 24-month inactivity cutoff, so the outcome needs no inferred suspension: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years of entering Phase 2 ({{section3.c2.s4|pct}} did). The same is done for Phase 1 entrants (a negative control: genetics should matter little for safety and dosing studies) and Phase 3 entrants (approval within four years).
 * **Evidence.** Every Open Targets 26.09 evidence row for the program's primary targets, each carrying its own date, frozen at the year before entry and matched to the program's disease on MONDO: the same term, a subtype, or Lin similarity ≥ 0.8 (*G3*, genetics for the disease); a disease at Lin 0.5–0.8 only (*G2*); germline evidence only for unrelated diseases (*G1*); none (*G0*). Evidence is split by family and strength (the best GWAS locus-to-gene score, ≥ 0.8, 0.5–0.8 or below; ClinVar pathogenic with multiple submitters or expert review, ClinGen or Gene2Phenotype definitive or strong, PanelApp green; mouse phenotype match in the top quartile), and mouse models are split into IMPC high-throughput knockouts and literature-curated MGI models.
 * **Regimes.** Oncology; *hereditary* (the disease is a MONDO hereditary disease and the target has curated Mendelian evidence for it); and every other disease (*non-oncology*, the regime of the headline hypothesis).
 * **Models.** Modified Poisson regression (risk ratios) with standard errors clustered by primary-target set, adjusted for disease area, modality, entity novelty, entry period and target precedent (an FDA-approved entity on the target before entry). The seven confirmatory hypotheses are Holm-corrected together.
@@ -15,6 +15,8 @@ The analysis plan ([report/translation_plan.md](report/translation_plan.md)) was
 ### Confirmatory hypotheses
 
 {{S3_HYPOTHESES_TABLE}}
+
+![Specificity of the genetic evidence](report/output/figures/s3_specificity.png)
 
 {{SECTION3_HYPOTHESES}}
 

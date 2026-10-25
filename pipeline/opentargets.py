@@ -39,10 +39,14 @@ EVIDENCE_DATASETS = ("evidence_gwas_credible_sets", "evidence_gene_burden", "evi
                      "evidence_orphanet", "evidence_gene2phenotype", "evidence_clingen", "evidence_uniprot_literature",
                      "evidence_uniprot_variants", "evidence_cancer_gene_census", "evidence_intogen",
                      "evidence_eva_somatic", "evidence_impc", "evidence_expression_atlas", "evidence_reactome",
-                     "evidence_crispr", "evidence_crispr_screen", "mouse_phenotype")  # the datasets evidence reads
+                     "evidence_crispr", "evidence_crispr_screen")  # the evidence rows evidence reads
+MOUSE_PHENOTYPE = "mouse_phenotype"  # mouse-model phenotypes per target, which evidence also reads
 # Disease-concept vocabularies MONDO declares one-to-one equivalences with; OMIM entries are often
 # gene-specific forms and ICD codes classification groups, so neither identifies a disease.
 CONCEPT_XREFS = ("DOID", "Orphanet", "NCIT", "MESH")
+GERMLINE_DATASOURCES = ("gwas_credible_sets", "gene_burden", "eva", "genomics_england", "orphanet",
+                        "uniprot_literature", "uniprot_variants", "gene2phenotype", "clingen")
+CLINVAR_PATHOGENIC = ("pathogenic", "likely pathogenic")  # the ClinVar significances that count as evidence
 DATASOURCES = {
     # germline genetics
     "gwas_credible_sets": "genetic", "gene_burden": "genetic", "eva": "genetic", "genomics_england": "genetic",
@@ -104,11 +108,12 @@ def mondo_disease(disease_id: str, xrefs: list[str], equivalent: dict[str, set[s
 
 
 def fetch(_args) -> None:
-    """Every parquet file of each of DATASETS and EVIDENCE_DATASETS, as listed by the release's directory index. A file
+    """Every parquet file of each of DATASETS, EVIDENCE_DATASETS and MOUSE_PHENOTYPE, as listed by the release's
+    directory index. A file
     already in the cache is kept; a download lands under a dot-prefixed name (which glob and
     pyarrow skip) and is renamed into place once complete."""
     session = requests.Session()
-    for dataset in DATASETS + EVIDENCE_DATASETS:
+    for dataset in (*DATASETS, *EVIDENCE_DATASETS, MOUSE_PHENOTYPE):
         url = f"{SOURCE_URL}/{dataset}/"
         index = session.get(url, timeout=60)
         index.raise_for_status()
@@ -129,17 +134,22 @@ def fetch(_args) -> None:
         print(f"{dataset}: {len(names)} files -> {os.path.join(CACHE, dataset)}", flush=True)
 
 
-def load(_args) -> None:
-    files = sorted(f for name in DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
+def release_and_targets(cur, name: str, datasets: list[str], metadata: dict) -> tuple[int, list[str]]:
+    """Register the release behind `datasets` (by the sha256 of their cached files), and return it
+    with the Ensembl ids of every entity target, the targets the loaders keep."""
+    files = sorted(f for d in datasets for f in glob.glob(os.path.join(CACHE, d, "*.parquet")))
     digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
+    release = llm.register_release(cur, name, RELEASE, SOURCE_URL, digest.hexdigest(),
+                                   {"datasets": datasets, **metadata, "sha256_of": "concatenated per-file sha256"})
+    cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
+                   JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
+    return release, [r[0] for r in cur.fetchall()]
+
+
+def load(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(
-            cur, "open_targets_platform", RELEASE, SOURCE_URL, digest.hexdigest(),
-            {"datasets": list(DATASETS),
-             "datasources": DATASOURCES, "sha256_of": "concatenated per-file sha256"})
-        cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
-                       JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
-        targets = [r[0] for r in cur.fetchall()]
+        release, targets = release_and_targets(cur, "open_targets_platform", list(DATASETS),
+                                               {"datasources": DATASOURCES})
         cur.execute("""SELECT x.xref_id, x.term_id FROM preclin.ontology_xref x
                        JOIN preclin.ontology_term t ON t.term_id = x.term_id
                        WHERE x.ontology = 'MONDO' AND x.equivalent AND NOT t.is_obsolete""")
@@ -188,39 +198,38 @@ def evidence_row(r: dict, release: int) -> tuple:
 
 
 def evidence(_args) -> None:
-    files = sorted(f for name in EVIDENCE_DATASETS for f in glob.glob(os.path.join(CACHE, name, "*.parquet")))
-    digest = hashlib.sha256("".join(llm.sha256_file(f) for f in files).encode())
     with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(
-            cur, "open_targets_platform_evidence", RELEASE, SOURCE_URL, digest.hexdigest(),
-            {"datasets": list(EVIDENCE_DATASETS), "sha256_of": "concatenated per-file sha256"})
-        cur.execute("""SELECT DISTINCT t.ensembl_id FROM preclin.moiety_target mt
-                       JOIN public.targets t ON t.id = mt.target_id WHERE t.ensembl_id IS NOT NULL""")
-        targets = [r[0] for r in cur.fetchall()]
+        release, targets = release_and_targets(cur, "open_targets_platform_evidence",
+                                               [*EVIDENCE_DATASETS, MOUSE_PHENOTYPE], {})
     rows = []
-    for name in EVIDENCE_DATASETS[:-1]:
+    for name in EVIDENCE_DATASETS:
         data = ds.dataset(os.path.join(CACHE, name), format="parquet")
         columns = [c for c in {*EVIDENCE_COLUMNS, *(k for v in DETAIL.values() for k in v)} if c in data.schema.names]
         table = data.to_table(columns=columns, filter=ds.field("targetId").isin(targets)
                               & ds.field("datasourceId").isin(list(DATASOURCES)))
         rows += [evidence_row(r, release) for r in table.to_pylist()]
-    mouse = ds.dataset(os.path.join(CACHE, "mouse_phenotype"), format="parquet").to_table(
-        columns=["targetFromSourceId", "modelPhenotypeId", "modelPhenotypeLabel", "modelPhenotypeClasses",
-                 "biologicalModels"], filter=ds.field("targetFromSourceId").isin(targets)).to_pylist()
-    mouse_rows = [(m["targetFromSourceId"], m["modelPhenotypeId"], m["modelPhenotypeLabel"],
-                   sorted(c["id"] for c in m["modelPhenotypeClasses"] or []),
-                   sorted({b["allelicComposition"] for b in m["biologicalModels"] or [] if b.get("allelicComposition")}),
-                   release) for m in mouse]
+    # A human gene with several mouse orthologs has one row per ortholog for the same phenotype: their
+    # models are pooled under the human gene.
+    phenotypes: dict = {}
+    for m in ds.dataset(os.path.join(CACHE, MOUSE_PHENOTYPE), format="parquet").to_table(
+            columns=["targetFromSourceId", "modelPhenotypeId", "modelPhenotypeLabel", "modelPhenotypeClasses",
+                     "biologicalModels"], filter=ds.field("targetFromSourceId").isin(targets)).to_pylist():
+        label, classes, models = phenotypes.setdefault((m["targetFromSourceId"], m["modelPhenotypeId"]),
+                                                       (m["modelPhenotypeLabel"], set(), set()))
+        classes.update(c["id"] for c in m["modelPhenotypeClasses"] or [])
+        models.update(b["allelicComposition"] for b in m["biologicalModels"] or [] if b.get("allelicComposition"))
+    mouse_rows = [(t, ph, label, sorted(classes), sorted(models), release)
+                  for (t, ph), (label, classes, models) in phenotypes.items()]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.ot_evidence")
         cur.execute("DELETE FROM preclin.ot_mouse_phenotype")
         execute_values(cur, """INSERT INTO preclin.ot_evidence
               (evidence_id, target_ensembl, disease_id, datasource, score, resource_score, evidence_year,
                direction_on_target, direction_on_trait, confidence, allelic_requirements, variant_consequence,
-               detail, source_release_id) VALUES %s ON CONFLICT DO NOTHING""", rows, page_size=5000)
+               detail, source_release_id) VALUES %s""", rows, page_size=5000)
         execute_values(cur, """INSERT INTO preclin.ot_mouse_phenotype
-              (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s
-              ON CONFLICT DO NOTHING""", mouse_rows, page_size=5000)
+              (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s""",
+                       mouse_rows, page_size=5000)
         conn.commit()  # one transaction: readers never see a half-loaded table
     print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)}")
 
