@@ -889,7 +889,9 @@ def main() -> None:
                   .set_index("term_id").label
     cases = cases.assign(entity=cases.moiety_id.map(names), disease=cases.mondo_id.map(labels),
                          registered=cases.rule_key.map({k: v[3] for k, v in RULES.items()}))
-    cases[["rule_key", "registered", "status", "why", "program_id", "entity", "target", "sign", "disease", "mondo_id",
+    cases["case_id"] = [case_key(r, m, d, e) for r, m, d, e in
+                        zip(cases.rule_key, cases.moiety_id, cases.mondo_id, cases.entry)]
+    cases[["case_id", "rule_key", "registered", "status", "why", "program_id", "moiety_id", "entity", "target", "sign", "disease", "mondo_id",
            "entry", "event", "years", "s4", "reason", "reason_nct", "g3", "gwas", "gwas_strong", "mendelian",
            "somatic_concordant", "mgi", "reactome", "b1", "mechanism", "mouse_direction"]] \
         .to_csv(os.path.join(OUT, "cases.csv"), index=False)
