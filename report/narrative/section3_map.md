@@ -5,6 +5,4 @@
 * **Clinical precedent.** An FDA-approved drug on the target for a related disease (Lin similarity ≥ 0.5) was the strongest single predictor ({{section3.map.C2.b1.rr|x2}}) and was present for {{section3.coverage.with_b1|pct0}} of the programs that advanced.
 * **Target liabilities.** Pan-essential targets advanced less often ({{section3.map.C2.pan_essential.rr|x2}}, {{section3.map.C2.pan_essential.lo|x2}}–{{section3.map.C2.pan_essential.hi|x2}}, mostly oncology); loss-of-function intolerance ({{section3.map.C2.constrained.rr|x2}}) and lethality of the mouse knockout ({{section3.map.C2.ko_lethal.rr|x2}}) made no difference.
 
-**Foresight, not hindsight.** Counting all the evidence known today instead of what was known before entry weakens the genetic signal ({{section3.map.C2.g3.today_rr|x2}} against {{section3.map.C2.g3.rr|x2}}): evidence that arrived after entry also arrived for targets that failed.
-
 **What the evidence leaves out.** Of the {{section3.coverage.successes|int}} Phase 2 programs that advanced, {{section3.coverage.with_g3|pct0}} had germline genetics for the disease, {{section3.coverage.with_any_evidence|pct0}} had any of the disease-specific evidence families, and {{section3.coverage.neither|pct0}} had neither such evidence nor an approved drug on the target for a related disease.

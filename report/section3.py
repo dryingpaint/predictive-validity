@@ -54,7 +54,7 @@ MIN_LEVEL = 30  # programs below which a covariate level pools into '<covariate>
 CLOSE, RELATED = 0.8, 0.5  # Lin similarity at which evidence counts for the disease (G3) or a related one (G2)
 HEREDITARY = "MONDO:0003847"
 PREWEANING_LETHAL = "MP:0010770"
-NEVER = 9999  # year given to evidence with no date: it counts only when evidence is not frozen
+NEVER = 9999  # year given to evidence with no date: evidence frozen at a year never counts it
 ABSENT = 10**6  # year of a tier or direction that a target-disease pair does not have
 
 FAMILY = {"gwas_credible_sets": "gwas", "gene_burden": "burden", "eva": "mendelian", "orphanet": "mendelian",
@@ -94,8 +94,6 @@ LABELS = {  # evidence map rows, in display order (report.render and report.figu
     "ko_lethal": "Mouse knockout lethal before weaning",
 }
 MAP_FEATURES = list(LABELS)
-NOT_EVIDENCE = ("b1", "precedent", "liability", "pan_essential", "constrained", "ko_lethal")  # same frozen or not
-TODAY = [f for f in MAP_FEATURES if f not in NOT_EVIDENCE]
 
 
 def evidence_index() -> tuple[dict, dict]:
@@ -322,15 +320,14 @@ class Evidence:
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
 
-    def features(self, rows: pd.DataFrame, freeze: bool = True) -> pd.DataFrame:
-        """Features per (program, phase) row with a target and a disease; frozen at entry - 1, or all
-        evidence known today when freeze is False."""
+    def features(self, rows: pd.DataFrame) -> pd.DataFrame:
+        """Features per (program, phase) row with a target and a disease, frozen at entry - 1."""
         out = []
         for r in rows.itertuples(index=False):
             d = self.disease.get(r.program_id)
             if r.moiety_id not in self.ent.index or not isinstance(d, str):
                 continue
-            cut = pd.Timestamp(r.entry).year - 1 if freeze else NEVER
+            cut = pd.Timestamp(r.entry).year - 1
             out.append({"program_id": r.program_id, "phase": r.phase,
                         **self.program(r.moiety_id, d, pd.Timestamp(r.entry), cut)})
         return pd.DataFrame(out)
@@ -345,13 +342,9 @@ def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date) -> pd.DataFra
 
 
 def cohorts(rows: pd.DataFrame, ev: Evidence) -> pd.DataFrame:
-    """C1-C3 program rows with a disease and a target: regime, frozen evidence, and *_today
-    columns with the evidence known today."""
+    """C1-C3 program rows with a disease and a target: regime and evidence frozen at entry - 1."""
     rows = rows.assign(era=pd.cut(rows.entry_year, ERA_BINS, labels=ERA_LABELS).astype(str))
     d = rows.merge(ev.features(rows), on=["program_id", "phase"])
-    today = ev.features(rows, freeze=False)
-    d = d.merge(today[["program_id", "phase", *TODAY]].rename(columns={k: f"{k}_today" for k in TODAY}),
-                on=["program_id", "phase"])
     d["mondo_id"] = d.program_id.map(ev.disease)
     d["hereditary"] = d.mondo_id.map(lambda m: HEREDITARY in ev.mondo.ancestors.get(m, ()))
     d["regime"] = np.where(d.bio_area.eq("oncology"), "ONC",
@@ -825,9 +818,6 @@ def main() -> None:
     for scope, g in (("C2", c2), ("C2 COM", com), ("C2 ONC", onc)):
         for f in MAP_FEATURES:  # each against programs without it; the G levels against G0 are in h1
             r = estimate(g, "s4", f)
-            if f in TODAY:
-                t = estimate(g, "s4", f"{f}_today")
-                r.update({"today_n": t["n"], "today_rr": t.get("rr"), "today_lo": t.get("lo"), "today_hi": t.get("hi")})
             emap.append({"scope": scope, "label": LABELS[f], **r})
     pd.DataFrame(emap).to_csv(os.path.join(OUT, "evidence_map.csv"), index=False)
     n["map"] = {r["scope"].replace(" ", "_"): {} for r in emap}

@@ -233,12 +233,11 @@ def s3_map_table() -> str:
     for f in S3_MAP_ROWS:
         r = c2.loc[f]
         rows.append([r.label, f"{int(r.n):,} ({int(r.n_targets):,})", f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}",
-                     pct(r.coverage, 0), rr_ci(r), rr_ci(com.loc[f]), rr_ci(onc.loc[f]),
-                     "–" if pd.isna(r.get("today_rr")) else f"{r.today_rr:.2f} (n={int(r.today_n):,})"])
+                     pct(r.coverage, 0), rr_ci(r), rr_ci(com.loc[f]), rr_ci(onc.loc[f])])
     return table(pd.DataFrame(rows, columns=["Evidence for the program's disease, before entry", "Programs (targets)",
                                              "Advanced: with / without", "Share of all that advanced",
                                              "Risk ratio vs programs without it, all (95% CI)", "Non-oncology",
-                                             "Oncology", "Evidence known today"]))
+                                             "Oncology"]))
 
 
 S3_ENDPOINTS = {"B1_target_engagement": "Target engagement", "B2_exploratory_biomarker": "Exploratory biomarker",

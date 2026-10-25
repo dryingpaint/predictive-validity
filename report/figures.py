@@ -163,9 +163,6 @@ def s3_evidence_map():
         r = df.loc[f]
         color = S3_GROUP_COLORS[S3_GROUP[f]]
         ax.plot([np.log2(r.lo), np.log2(r.hi)], [y, y], color=color, linewidth=2, solid_capstyle="round")
-        if pd.notna(r.get("today_rr")):
-            ax.plot(np.log2(r.today_rr), y, "o", markerfacecolor="white", markeredgecolor=color, markersize=7,
-                    markeredgewidth=1.5)
         ax.plot(np.log2(r.rr), y, "o", color=color, markersize=6, markeredgecolor="white", markeredgewidth=1)
         ax.text(3.15, y, f"{int(r.n):,}", va="center", ha="right", color=INK2, fontsize=8)
         ax.text(3.9, y, f"{r.ppv:.0%}", va="center", ha="right", color=INK2, fontsize=8)
@@ -178,8 +175,8 @@ def s3_evidence_map():
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
     ax.set_xlim(np.log2(0.2), 4.85)
     ax.set_yticks(range(len(rows)), [df.at[f, "label"] for f in rows][::-1], color=INK, fontsize=9)
-    ax.set_xlabel("Risk ratio of reaching Phase 3 or approval within 4 years of Phase 2 entry (95% CI); "
-                  "hollow: evidence known today", color=INK2, fontsize=8)
+    ax.set_xlabel("Risk ratio of reaching Phase 3 or approval within 4 years of Phase 2 entry, "
+                  "adjusted; bars: 95% CI", color=INK2, fontsize=8)
     style(ax)
     ax.set_title("Phase 2 programs, 2015–2020: evidence for the disease as of the year before entry",
                  loc="left", color=INK, fontsize=10, pad=24)
