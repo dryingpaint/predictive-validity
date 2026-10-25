@@ -18,12 +18,10 @@ COMMENT ON TABLE preclin.evidence_known_year IS
     'Year an evidence item became public, by source key (ClinVar RCV accession, IMPC allele symbol, '
     'study accession or cohort), from the source''s own release history (pipeline.evidence_dates)';
 COMMENT ON COLUMN preclin.evidence_known_year.basis IS
-    'How the year was found: clinvar_accession (creation year of the RCV record, calibrated from its '
-    'accession number), clinvar_evaluated (record from ClinVar''s 2013 launch import, dated by its '
-    'earlier evaluation), impc_release (first IMPC data release with phenotype calls for the '
-    'allele), geo_public or arrayexpress_public (public date of the experiment), panelapp_green or '
-    'panelapp_listed (PanelApp activity first rating the gene green or listing it), intogen_cohort_year '
-    '(year in the cohort name), publication (the screen''s paper)';
+    'How the year was found: clinvar_snapshot (first yearly ClinVar snapshot showing the record with '
+    'its current significance), clinvar_evaluated (record already in the earliest snapshot, Feb 2015, '
+    'dated by its evaluation), impc_release (first IMPC data release with phenotype calls for the '
+    'allele), geo_public (GEO public date of the experiment), publication (the cohort''s or screen''s paper)';
 
 ALTER TABLE preclin.ot_evidence ADD COLUMN IF NOT EXISTS year_basis text;
 COMMENT ON COLUMN preclin.ot_evidence.evidence_year IS

@@ -33,7 +33,6 @@ import pandas as pd
 import statsmodels.api as sm
 from statsmodels.discrete.conditional_models import ConditionalLogit
 
-from pipeline.opentargets import IMPC_ALLELE
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
@@ -116,7 +115,7 @@ def evidence_index() -> tuple[dict, dict]:
             SELECT target_ensembl AS ens, disease_id, resource_score, confidence,
                    direction_on_target AS dot, direction_on_trait AS dtr, (detail->>'log2FoldChangeValue')::float AS lfc,
                    CASE WHEN datasource <> 'impc' THEN datasource
-                        WHEN detail->>'biologicalModelAllelicComposition' ~ %(impc)s THEN 'impc' ELSE 'mgi' END AS source,
+                        WHEN preclin.ot_evidence_key(datasource, detail) IS NOT NULL THEN 'impc' ELSE 'mgi' END AS source,
                    coalesce(evidence_year, %(never)s) AS y,
                    datasource NOT IN ('eva', 'eva_somatic')
                      OR detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic'] AS counts
@@ -143,7 +142,7 @@ def evidence_index() -> tuple[dict, dict]:
                min(y) FILTER (WHERE counts AND dot = 'GoF' AND dtr = 'risk') AS y_gof_risk,
                min(y) FILTER (WHERE dot = 'GoF' AND dtr = 'protect') AS y_gof_protect,
                min(y) FILTER (WHERE lfc > 0) AS y_up
-        FROM e GROUP BY 1, 2, 3""", {"impc": IMPC_ALLELE.pattern, "never": NEVER, "q75": q75})
+        FROM e GROUP BY 1, 2, 3""", {"never": NEVER, "q75": q75})
     g["family"] = g.source.map(FAMILY)
     germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
     mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")
