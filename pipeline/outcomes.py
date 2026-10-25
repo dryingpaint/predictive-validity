@@ -27,7 +27,7 @@ from psycopg2.extras import Json, execute_values
 from pipeline import llm
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
-TRIALS_FROM = date(2010, 1, 1)  # trials that start earlier get no outcome or endpoint label
+TRIALS_FROM = date(2010, 1, 1)  # completed trials that start earlier get no outcome or endpoint label
 
 
 def analysed(denoms: list[dict], units: str | None) -> dict[str, str]:
@@ -245,10 +245,10 @@ def trial_payload(nct_id, title, phases, status, enrollment, start, completion, 
 
 
 def classify(_args) -> None:
-    """Industry-sponsored in-scope trials started since 2010 that stopped early,
-    or completed Phase 2/3 trials with posted results; completed Phase 2/3
-    trials without posted results that have a linked results paper are judged
-    from the paper abstracts (PUBLICATION_TASK)."""
+    """Every in-scope trial that stopped early, whatever its sponsor or start date, and industry
+    Phase 2/3 trials started since TRIALS_FROM that completed with posted results; completed
+    Phase 2/3 trials without posted results that have a linked results paper are judged from the
+    paper abstracts (PUBLICATION_TASK). The report filters to its own sponsors and years."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.phases, s.overall_status, s.enrollment, s.start_date,
@@ -258,11 +258,10 @@ def classify(_args) -> None:
                    CASE WHEN coalesce(s.why_stopped, '') = '' AND s.overall_status <> 'COMPLETED'
                         THEN s.brief_summary END
             FROM preclin.ctgov_study s LEFT JOIN preclin.ctgov_result_summary r USING (nct_id)
-            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= %s
-              AND s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
+            WHERE s.phases && ARRAY['EARLY_PHASE1','PHASE1','PHASE2','PHASE3']
               AND (s.overall_status IN ('TERMINATED', 'WITHDRAWN', 'SUSPENDED')
-                   OR (s.overall_status = 'COMPLETED' AND s.has_results
-                       AND s.phases && ARRAY['PHASE2','PHASE3']))""", (TRIALS_FROM,))
+                   OR (s.overall_status = 'COMPLETED' AND s.has_results AND s.lead_sponsor_class = 'INDUSTRY'
+                       AND s.start_date >= %s AND s.phases && ARRAY['PHASE2','PHASE3']))""", (TRIALS_FROM,))
         items = {r[0]: {**trial_payload(*r[:11]), **({"brief_summary": r[11]} if r[11] else {})}
                  for r in cur.fetchall()}
         cur.execute("""

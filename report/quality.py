@@ -63,8 +63,9 @@ def agreement(ok: int, n: int, z: float = 1.96) -> dict:
 
 
 def stop_reason_agreement() -> dict:
-    new = frame.query("""SELECT nct_id, stop_reason FROM preclin.trial_outcome
-                         WHERE execution <> 'completed'""").set_index("nct_id").stop_reason
+    new = frame.query("""SELECT o.nct_id, o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
+                         WHERE o.execution <> 'completed' AND s.lead_sponsor_class = 'INDUSTRY'
+                           AND s.start_date >= '2010-01-01'""").set_index("nct_id").stop_reason
     old = frame.query("""SELECT subject_key AS nct_id, classifier_model, category, extracted_at, classification_id,
                                 coalesce(raw_output ? 'error', false) AS failed
                          FROM preclin.classification

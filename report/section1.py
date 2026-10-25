@@ -335,7 +335,7 @@ def termination_reasons() -> dict:
     draft report used."""
     t = frame.query("""SELECT o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
                        WHERE o.execution <> 'completed' AND o.stop_reason NOT IN ('not_stated', 'not_applicable')
-                         AND s.start_date BETWEEN %s AND %s""", frame.WINDOW)
+                         AND s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s""", frame.WINDOW)
     groups = t.stop_reason.map(TERMINATION_GROUPS).value_counts(normalize=True)
     return {"n": int(len(t)), **{g: float(v) for g, v in groups.items()}}
 
