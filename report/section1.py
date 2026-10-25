@@ -95,11 +95,14 @@ def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months
     # cooperative-group Phase 3 of a company's drug is development). A later-phase trial
     # advances a program once it has started, not while it is only registered.
     own = t if shared_entry else t[own_trials(progs, t)]
-    ind = t[t.industry]
-    entry_trials = ind if shared_entry else pd.concat([own[own.industry], ind[(ind.phase == 1) & ind.marks_entry]])
+    # An extension study, or a trial the entity joins only after its main period, neither enters nor
+    # advances a phase (starts_phase); it still counts as activity.
+    starting = own[own.starts_phase]
+    ind = t[t.industry & t.starts_phase]
+    entry_trials = ind if shared_entry else pd.concat([starting[starting.industry], ind[(ind.phase == 1) & ind.marks_entry]])
     entered = entry_trials[entry_trials.started]
     starts = entered.pivot_table(index="program_id", columns="phase", values="start_date", aggfunc="min")
-    later = own[own.started].pivot_table(
+    later = starting[starting.started].pivot_table(
         index="program_id", columns="phase", values="start_date", aggfunc="min")
     last, active = activity(own, snap)
     last1, active1 = activity(pd.concat([own, entry_trials[entry_trials.phase == 1]])

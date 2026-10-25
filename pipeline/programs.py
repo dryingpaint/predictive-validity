@@ -235,6 +235,77 @@ PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v2", schema_versio
                         subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
 
 
+PHASE_ROLE_SYSTEM = """You read one clinical trial registration and the investigational drugs linked to it, and decide whether the trial can mark a drug's entry into its registered phase.
+
+extension: true when the trial enrolls only people who took part in earlier trials of the drug (an open-label extension, rollover or long-term continuation study), rather than recruiting new participants; false otherwise.
+main_period_drugs: the listed drugs that the trial's main period tests (its first, randomized or primary-endpoint period), copied exactly as listed. Leave out a drug that enters only in a later sub-study, extension period or optional add-on to another drug's trial. For an extension study, list the drugs it continues.
+Judge from the design described, not from words alone."""
+
+PHASE_ROLE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "extension": {"type": "boolean"},
+        "main_period_drugs": {"type": "array", "items": {"type": "string"}},
+        "rationale": {"type": "string"},
+    },
+    "required": ["extension", "main_period_drugs", "rationale"],
+    "additionalProperties": False,
+}
+
+
+def render_phase_role(p: dict) -> str:
+    arms = "\n".join(f"- [{a.get('type')}] {a.get('label')} ({', '.join(a.get('interventionNames') or [])}): "
+                     f"{(a.get('description') or '')[:400]}" for a in p["arms"][:8])
+    ivs = "\n".join(f"- {i.get('name')} (also {', '.join(i.get('otherNames') or []) or '-'})" for i in p["interventions"][:8])
+    drugs = "\n".join(f"- {d}" for d in p["drugs"])
+    return (f"Trial {p['nct_id']}: {p['title']}\nOfficial title: {p['official_title'] or '-'}\n"
+            f"Phases: {', '.join(p['phases'])}; status: {p['status']}; start: {p['start']}; enrollment: {p['enrollment']}; "
+            f"allocation: {p['allocation']}; masking: {p['masking']}; model: {p['model']}\n"
+            f"Investigational drugs linked to the trial, one per line:\n{drugs}\n"
+            f"Interventions:\n{ivs or '(none)'}\nArms:\n{arms or '(none)'}\n"
+            f"Brief summary: {p['summary'] or '(none)'}")
+
+
+def validate_phase_role(p: dict, out: dict) -> None:
+    extra = set(out["main_period_drugs"]) - set(p["drugs"])
+    if extra:
+        raise ValueError(f"main_period_drugs not among the listed drugs: {sorted(extra)[:3]}")
+
+
+PHASE_ROLE_TASK = llm.Task(name="trial_phase_role", prompt_version="v1", schema_version="v1", system=PHASE_ROLE_SYSTEM,
+                           schema=PHASE_ROLE_SCHEMA, render=render_phase_role, validate=validate_phase_role,
+                           subject_type="trial", model="claude-sonnet-5", effort="low", max_tokens=1500)
+
+
+def judge_phase_roles(ncts: set[str]) -> None:
+    """Judge PHASE_ROLE_TASK for `ncts` and add the validated decisions to preclin.trial_phase_role."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT s.nct_id, s.brief_title, s.official_title, s.phases, s.overall_status, s.start_date, s.enrollment,
+                   s.allocation, s.masking, s.intervention_model, s.interventions, s.arm_groups, left(s.brief_summary, 1500),
+                   array_agg(m.name ORDER BY m.name), array_agg(m.moiety_id ORDER BY m.name)
+            FROM preclin.ctgov_study s JOIN preclin.ctgov_study_moiety sm ON sm.nct_id = s.nct_id AND sm.role = 'investigational'
+            JOIN preclin.moiety m ON m.moiety_id = sm.moiety_id
+            WHERE s.nct_id = ANY(%s) GROUP BY s.nct_id""", (sorted(ncts),))
+        rows = cur.fetchall()
+    items, ids = {}, {}
+    for (nct, title, official, phases, status, start, enrollment, allocation, masking, model, ivs, arms, summary,
+         names, mids) in rows:
+        items[nct] = {"nct_id": nct, "title": title, "official_title": official, "phases": phases, "status": status,
+                      "start": str(start), "enrollment": enrollment, "allocation": allocation, "masking": masking,
+                      "model": model, "interventions": ivs or [], "arms": arms or [], "summary": summary, "drugs": names}
+        ids[nct] = dict(zip(names, mids))
+    run_id = llm.run(PHASE_ROLE_TASK, items)
+    out = [(key, parsed["extension"], sorted(ids[key][d] for d in parsed["main_period_drugs"]), decision)
+           for key, decision, parsed in llm.decisions(run_id)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """INSERT INTO preclin.trial_phase_role (nct_id, extension, main_period_moieties, llm_decision_id)
+                               VALUES %s ON CONFLICT (nct_id) DO UPDATE SET extension = EXCLUDED.extension,
+                               main_period_moieties = EXCLUDED.main_period_moieties,
+                               llm_decision_id = EXCLUDED.llm_decision_id""", out)
+        conn.commit()
+
+
 def purposes(_args) -> None:
     """Purpose of every in-scope industry trial with an investigational entity."""
     with llm.connect() as conn, conn.cursor() as cur:
@@ -372,7 +443,12 @@ def build(_args) -> None:
     conditions it develops the drug for; an early-development trial is shared like
     a healthy-volunteer trial; a multi-indication basket is shared by the programs
     of the diseases it lists (marking entry for those under way or begun next), and
-    belongs to the entity's unspecified program when none of them qualifies."""
+    belongs to the entity's unspecified program when none of them qualifies.
+
+    A Phase 2 or 3 trial starts its phase for a program (starts_phase) unless it is an extension
+    of earlier trials or the program's entity enters it only after its main period
+    (preclin.trial_phase_role, judged by PHASE_ROLE_TASK for the trials that would set a phase
+    start); either kind still attaches and counts as activity."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT max(source_version) FROM preclin.evidence_source_release "
                     "WHERE source_name = 'clinicaltrials_gov_api_v2'")
@@ -380,16 +456,17 @@ def build(_args) -> None:
         cur.execute("SELECT nct_id, purpose, development_conditions FROM preclin.trial_purpose")
         purpose = {nct: (p, set(conds)) for nct, p, conds in cur.fetchall()}
         cur.execute("""SELECT nct_id, phases, start_date, primary_completion_date, completion_date,
-                              overall_status, lead_sponsor, lead_sponsor_class
+                              overall_status, lead_sponsor, lead_sponsor_class, allocation, masking
                        FROM preclin.ctgov_study WHERE phases && %s::text[]
                          AND overall_status <> 'WITHDRAWN' AND start_date IS NOT NULL""", (IN_SCOPE_PHASES,))
         trials = {}
-        for nct, phases, start, pcd, comp, status, sponsor, sponsor_class in cur.fetchall():
+        for nct, phases, start, pcd, comp, status, sponsor, sponsor_class, allocation, masking in cur.fetchall():
             if purpose.get(nct, ("",))[0] in ("product_support", "other"):
                 continue
             trials[nct] = {"phase": max(PHASE_NUM[p] for p in phases if p in PHASE_NUM), "start": start,
                            "active": status in ACTIVE_STATUSES, "end": comp or pcd or start,
-                           "industry": sponsor_class == "INDUSTRY", "sponsor": sponsor}
+                           "industry": sponsor_class == "INDUSTRY", "sponsor": sponsor,
+                           "open_uncontrolled": allocation != "RANDOMIZED" and masking in (None, "NONE")}
         cur.execute("SELECT nct_id, moiety_id FROM preclin.ctgov_study_moiety WHERE role = 'investigational'")
         by_moiety = defaultdict(list)
         for nct, mid in cur.fetchall():
@@ -463,10 +540,40 @@ def build(_args) -> None:
             for key in targets:
                 programs.setdefault(key, {}).setdefault(nct, ("no_disease", key in lead))
 
+    # Which trials can start a phase (preclin.trial_phase_role). A Phase 2 or 3 trial that would set a
+    # program's phase start is judged when it could be an extension (open-label, not randomised) or
+    # tests several investigational entities; judging one can expose the next trial, hence the loop.
+    investigational = Counter(n for ncts in by_moiety.values() for n in ncts)
+
+    def load_roles() -> dict:
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("SELECT nct_id, extension, main_period_moieties FROM preclin.trial_phase_role")
+            return {n: (ext, set(mids)) for n, ext, mids in cur.fetchall()}
+
+    def starts_phase(nct: str, mid: int) -> bool:
+        r = roles.get(nct)
+        return r is None or (not r[0] and mid in r[1])
+
+    roles = load_roles()
+    while True:
+        need = set()
+        for (mid, _), attached in programs.items():
+            for phase in (2, 3):
+                eligible = [n for n in attached if trials[n]["phase"] == phase and starts_phase(n, mid)]
+                if eligible:
+                    first = min(trials[n]["start"] for n in eligible)
+                    need |= {n for n in eligible if trials[n]["start"] == first and n not in roles
+                             and (trials[n]["open_uncontrolled"] or investigational[n] > 1)}
+        if not need:
+            break
+        judge_phase_roles(need)
+        roles = load_roles()
+
     rows, links = [], []
     for (mid, mondo), attached in programs.items():
         ts = [trials[n] for n in attached]
-        starts = {p: min((t["start"] for t in ts if t["phase"] == p), default=None) for p in (1, 2, 3)}
+        starting = [trials[n] for n in attached if trials[n]["phase"] == 1 or starts_phase(n, mid)]
+        starts = {p: min((t["start"] for t in starting if t["phase"] == p), default=None) for p in (1, 2, 3)}
         industry = [t for t in ts if t["industry"]]
         sponsors = Counter(t["sponsor"] for t in industry)
         rows.append((mid, mondo, starts[1], starts[2], starts[3], min(t["start"] for t in ts),
@@ -475,7 +582,8 @@ def build(_args) -> None:
                      [s for s, _ in sponsors.most_common(5)],
                      min(snap, max(snap if t["active"] else t["end"] for t in ts)),
                      sum(t["active"] for t in ts)))
-        links.append([(n, trials[n]["phase"], a, entry) for n, (a, entry) in attached.items()])
+        links.append([(n, trials[n]["phase"], a, entry, trials[n]["phase"] == 1 or starts_phase(n, mid))
+                      for n, (a, entry) in attached.items()])
 
     build_id = str(uuid.uuid4())
     with llm.connect() as conn, conn.cursor() as cur:
@@ -486,6 +594,7 @@ def build(_args) -> None:
                            "combined_phase": "higher", "withdrawn": "excluded",
                            "shared_trial_entry": "programs under way or begun next",
                            "industry_trials": "by purpose (preclin.trial_purpose)",
+                           "phase_start": "not extensions or later-period entities (preclin.trial_phase_role)",
                            "n_programs": len(rows), "n_links": sum(map(len, links))})))
         cur.execute("DELETE FROM preclin.dev_program")
         ids = execute_values(cur, """INSERT INTO preclin.dev_program
@@ -493,8 +602,8 @@ def build(_args) -> None:
                n_industry_trials, first_industry_start, lead_sponsors, last_activity, n_active_trials, build_id)
             VALUES %s RETURNING program_id""",
             [r + (build_id,) for r in rows], page_size=5000, fetch=True)
-        execute_values(cur, """INSERT INTO preclin.dev_program_trial (program_id, nct_id, phase, attach, marks_entry)
-                               VALUES %s""",
+        execute_values(cur, """INSERT INTO preclin.dev_program_trial (program_id, nct_id, phase, attach, marks_entry,
+                                                                    starts_phase) VALUES %s""",
                        [(pid, *l) for (pid,), ls in zip(ids, links, strict=True) for l in ls], page_size=10000)
         conn.commit()
     print(f"build={build_id} programs={len(rows)} trial links={sum(map(len, links))} "
