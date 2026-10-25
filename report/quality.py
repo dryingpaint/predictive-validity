@@ -12,10 +12,6 @@
    and acceptable verdicts as agreement.
 2. Items the model declined to answer, per LLM task, and agreement of tasks
    re-decided under a prompt revision (RETEST) with their earlier decisions.
-3. Agreement of the trial stop reasons (preclin.trial_outcome) with the two
-   earlier classifications of the same trials: the Sonnet why_stopped labels
-   and the GPT-5.6 multi-axis rescore (preclin.classification), on a common
-   coarse taxonomy, as Cohen's kappa.
 """
 from __future__ import annotations
 
@@ -23,8 +19,6 @@ import json
 import math
 import os
 
-import pandas as pd
-from sklearn.metrics import cohen_kappa_score
 
 from report import frame
 
@@ -35,23 +29,6 @@ OUTCOME_AUDITS = {"outcome_audit": "outcome_audit.json", "publication_audit": "p
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
 APPROVAL_AUDIT = "approval_audit.json"
 
-NEW = {"efficacy_futility": "efficacy", "safety_tolerability": "safety", "pk_pd_or_formulation": "pk_formulation",
-       "business_portfolio": "business", "competitive_landscape": "business",
-       "sponsor_decision_unspecified": "unspecified", "enrollment_feasibility": "enrollment_operational",
-       "operational_or_site": "enrollment_operational", "regulatory": "regulatory",
-       "manufacturing_supply": "manufacturing", "covid19": "covid", "replaced_by_new_protocol": "planned_other",
-       "objectives_met_or_early_success": "planned_other", "other": "unknown", "not_stated": "unknown"}
-SONNET = {"efficacy": "efficacy", "safety": "safety", "pk_pd_formulation": "pk_formulation",
-          "commercial_strategic": "business", "competitive_landscape": "business",
-          "enrollment_operational": "enrollment_operational", "regulatory_admin": "regulatory",
-          "manufacturing_supply": "manufacturing", "covid": "covid", "planned_termination": "planned_other",
-          "unclear": "unknown"}
-GPT = {"efficacy": "efficacy", "unfavorable_benefit_risk": "efficacy", "safety": "safety",
-       "pk_pd_formulation": "pk_formulation", "commercial_strategic": "business", "competitive_landscape": "business",
-       "enrollment_operational": "enrollment_operational", "regulatory_administrative": "regulatory",
-       "manufacturing_supply": "manufacturing", "pandemic_external": "covid",
-       "planned_or_not_applicable": "planned_other", "positive_efficacy_progression": "planned_other",
-       "unknown": "unknown"}
 
 
 def agreement(ok: int, n: int, z: float = 1.96) -> dict:
@@ -60,30 +37,6 @@ def agreement(ok: int, n: int, z: float = 1.96) -> dict:
     centre = (p + z * z / (2 * n)) / (1 + z * z / n)
     half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / (1 + z * z / n)
     return {"accuracy": p, "lo": centre - half, "hi": centre + half}
-
-
-def stop_reason_agreement() -> dict:
-    new = frame.query("""SELECT o.nct_id, o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
-                         WHERE o.execution <> 'completed' AND s.lead_sponsor_class = 'INDUSTRY'
-                           AND s.start_date >= '2010-01-01'""").set_index("nct_id").stop_reason
-    old = frame.query("""SELECT subject_key AS nct_id, classifier_model, category, extracted_at, classification_id,
-                                coalesce(raw_output ? 'error', false) AS failed
-                         FROM preclin.classification
-                         WHERE classifier_task IN ('why_stopped', 'trial_stoppage_rescore')""") \
-        .sort_values(["nct_id", "extracted_at", "classification_id"], ascending=[True, False, False])  # latest first
-    out = {}
-    for model, mapping in [("claude-sonnet", SONNET), ("gpt-5.6-terra", GPT)]:
-        o = old[(old.classifier_model == model) & ~old.failed].drop_duplicates("nct_id").set_index("nct_id").category
-        both = new.index.drop_duplicates().intersection(o.index)
-        for unspecified in ("business", "unknown"):
-            a = new.loc[both].map(NEW).replace("unspecified", unspecified).to_numpy()
-            b = o.loc[both].map(mapping).to_numpy()
-            keep = pd.notna(a) & pd.notna(b)
-            a, b = pd.Series(a[keep]), pd.Series(b[keep])
-            out[f"{model}|unspecified_as_{unspecified}"] = {
-                "n": int(len(a)), "agreement": float((a == b).mean()), "kappa": float(cohen_kappa_score(a, b)),
-                "efficacy_kappa": float(cohen_kappa_score(a == "efficacy", b == "efficacy"))}
-    return out
 
 
 # Tasks decided twice: under a prompt revision that changed only how lists are shown to the
@@ -128,7 +81,7 @@ def refusals() -> dict:
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    numbers = {"stop_reason_agreement": stop_reason_agreement(), "refusals": refusals(), "retest": retest()}
+    numbers = {"refusals": refusals(), "retest": retest()}
     audits = {}
     for name in LABEL_AUDITS:  # a post-fix audit of a label replaces its pre-fix audit
         for r in json.load(open(os.path.join(AUDITS, name))):

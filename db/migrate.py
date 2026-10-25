@@ -1,9 +1,13 @@
-"""Apply and audit numbered database migrations.
+"""Create the database schema and apply numbered migrations after it.
 
-The core bootstrap files (01-13) are intentionally outside this runner.
-Numbered SQL and Python migrations from 14 onward are discovered directly from
-``db/``. Applied file hashes are immutable; changing a recorded file produces
-a hard drift error.
+    python db/migrate.py init     # empty database -> db/schema.sql, recorded as migration SCHEMA_THROUGH
+    python db/migrate.py status   # each migration's state; ledger rows the schema squashes
+    python db/migrate.py apply    # pending migrations numbered above SCHEMA_THROUGH, in order
+
+db/schema.sql is the schema as of migration SCHEMA_THROUGH: every earlier migration is
+squashed into it, and their ledger rows (preclin.schema_migration, append-only) stay as
+history. Later migrations are SQL or Python files named NN_name.sql / NN_name.py; an
+applied file's SHA-256 is recorded, and changing it afterwards is a hard drift error.
 """
 
 from __future__ import annotations
@@ -25,9 +29,9 @@ from psycopg2.extras import Json
 ROOT = Path(__file__).resolve().parents[1]
 DB_DIR = Path(__file__).resolve().parent
 load_dotenv(ROOT / ".env")
-FIRST_TRACKED_MIGRATION = 14
-LEDGER_MIGRATION = 26
-MIGRATION_RE = re.compile(r"^(?P<number>[0-9]{2})_(?P<name>.+)[.](?P<kind>sql|py)$")
+SCHEMA = DB_DIR / "schema.sql"
+SCHEMA_THROUGH = 92  # the last migration db/schema.sql includes
+MIGRATION_RE = re.compile(r"^(?P<number>[0-9]{2,})_(?P<name>.+)[.](?P<kind>sql|py)$")
 ADVISORY_LOCK_NAME = "predictive-validity:preclin.schema_migration"
 
 
@@ -49,31 +53,23 @@ def file_sha256(path: Path) -> str:
 
 
 def discover_migrations(db_dir: Path = DB_DIR) -> list[Migration]:
+    """Migration files numbered above SCHEMA_THROUGH; a lower-numbered file is an error, since the
+    schema already contains it."""
     migrations = []
     for path in sorted(db_dir.iterdir()):
         match = MIGRATION_RE.fullmatch(path.name)
         if match is None:
             continue
         number = int(match.group("number"))
-        if number < FIRST_TRACKED_MIGRATION:
-            continue
-        migrations.append(
-            Migration(
-                number=number,
-                name=match.group("name"),
-                kind="python" if match.group("kind") == "py" else "sql",
-                path=path,
-                sha256=file_sha256(path),
-            )
-        )
-    duplicates = {
-        number for number in (m.number for m in migrations)
-        if sum(item.number == number for item in migrations) > 1
-    }
+        if number <= SCHEMA_THROUGH:
+            raise RuntimeError(f"{path.name} is numbered within db/schema.sql (<= {SCHEMA_THROUGH})")
+        migrations.append(Migration(number=number, name=match.group("name"),
+                                    kind="python" if match.group("kind") == "py" else "sql",
+                                    path=path, sha256=file_sha256(path)))
+    numbers = [m.number for m in migrations]
+    duplicates = sorted({n for n in numbers if numbers.count(n) > 1})
     if duplicates:
-        raise RuntimeError(f"Duplicate migration numbers: {sorted(duplicates)}")
-    if not any(m.number == LEDGER_MIGRATION for m in migrations):
-        raise RuntimeError(f"Ledger migration {LEDGER_MIGRATION} is missing")
+        raise RuntimeError(f"Duplicate migration numbers: {duplicates}")
     return sorted(migrations, key=lambda migration: migration.number)
 
 
@@ -84,25 +80,12 @@ def direct_database_url(url: str) -> str:
     parsed = urlsplit(url)
     if "-pooler." not in (parsed.hostname or ""):
         return url
-    return urlunsplit(
-        (
-            parsed.scheme,
-            parsed.netloc.replace("-pooler.", ".", 1),
-            parsed.path,
-            parsed.query,
-            parsed.fragment,
-        )
-    )
+    return urlunsplit((parsed.scheme, parsed.netloc.replace("-pooler.", ".", 1), parsed.path, parsed.query,
+                       parsed.fragment))
 
 
 def git_commit() -> str | None:
-    result = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
+    result = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=False)
     value = result.stdout.strip()
     return value if result.returncode == 0 and re.fullmatch(r"[0-9a-f]{40}", value) else None
 
@@ -117,15 +100,9 @@ def load_ledger(conn) -> dict[int, dict]:
     if not ledger_exists(conn):
         return {}
     with conn.cursor() as cur:
-        cur.execute(
-            """
-            SELECT migration_number, migration_name, filename, file_sha256,
-                   migration_kind, execution_mode, applied_at, applied_by,
-                   git_commit, details
-            FROM preclin.schema_migration
-            ORDER BY migration_number
-            """
-        )
+        cur.execute("""SELECT migration_number, migration_name, filename, file_sha256, migration_kind,
+                              execution_mode, applied_at, applied_by, git_commit, details
+                       FROM preclin.schema_migration ORDER BY migration_number""")
         fields = [description.name for description in cur.description]
         return {row[0]: dict(zip(fields, row)) for row in cur.fetchall()}
 
@@ -133,115 +110,66 @@ def load_ledger(conn) -> dict[int, dict]:
 def migration_state(migration: Migration, ledger_row: dict | None) -> str:
     if ledger_row is None:
         return "pending"
-    if (
-        ledger_row["filename"] != migration.filename
-        or ledger_row["migration_name"] != migration.name
-        or ledger_row["migration_kind"] != migration.kind
-        or ledger_row["file_sha256"] != migration.sha256
-    ):
+    if (ledger_row["filename"] != migration.filename or ledger_row["migration_name"] != migration.name
+            or ledger_row["migration_kind"] != migration.kind or ledger_row["file_sha256"] != migration.sha256):
         return "drift"
     return ledger_row["execution_mode"]
 
 
-def record_migration(
-    conn,
-    migration: Migration,
-    execution_mode: str,
-    details: dict | None = None,
-) -> None:
+def record(conn, number: int, name: str, filename: str, sha256: str, kind: str, mode: str, details: dict) -> None:
     with conn.cursor() as cur:
-        cur.execute(
-            """
-            INSERT INTO preclin.schema_migration
-              (migration_number, migration_name, filename, file_sha256,
-               migration_kind, execution_mode, git_commit, details)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            """,
-            (
-                migration.number,
-                migration.name,
-                migration.filename,
-                migration.sha256,
-                migration.kind,
-                execution_mode,
-                git_commit(),
-                Json(details or {}),
-            ),
-        )
+        cur.execute("""INSERT INTO preclin.schema_migration
+                         (migration_number, migration_name, filename, file_sha256, migration_kind, execution_mode,
+                          git_commit, details)
+                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+                    (number, name, filename, sha256, kind, mode, git_commit(), Json(details)))
     conn.commit()
 
 
-def execute_sql(conn, migration: Migration) -> None:
-    with conn.cursor() as cur:
-        cur.execute(migration.path.read_text())
-    conn.commit()
-
-
-def execute_python(migration: Migration) -> None:
-    result = subprocess.run(
-        [sys.executable, str(migration.path)],
-        cwd=ROOT,
-        check=False,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(
-            f"Python migration {migration.filename} failed with exit code "
-            f"{result.returncode}"
-        )
-
-
-def ensure_ledger(conn, migrations: list[Migration]) -> None:
-    migration = next(m for m in migrations if m.number == LEDGER_MIGRATION)
+def init_schema(conn) -> None:
+    """Create db/schema.sql in an empty database and record it as migration SCHEMA_THROUGH."""
     if ledger_exists(conn):
-        state = migration_state(migration, load_ledger(conn).get(LEDGER_MIGRATION))
-        if state == "drift":
-            raise RuntimeError(f"Checksum drift for {migration.filename}")
-        if state != "pending":
-            return
-        print(f"registering ledger migration {migration.filename}")
-        execute_sql(conn, migration)
-        record_migration(
-            conn,
-            migration,
-            "applied",
-            {"runner": "db/migrate.py", "bootstrap": True},
-        )
-        return
-    print(f"initializing ledger with {migration.filename}")
-    execute_sql(conn, migration)
-    record_migration(
-        conn,
-        migration,
-        "applied",
-        {"runner": "db/migrate.py", "bootstrap": True},
-    )
+        raise RuntimeError("preclin.schema_migration exists: this database already has a schema")
+    with conn.cursor() as cur:
+        cur.execute(SCHEMA.read_text())
+    conn.commit()
+    record(conn, SCHEMA_THROUGH, "schema", SCHEMA.name, file_sha256(SCHEMA), "sql", "applied",
+           {"runner": "db/migrate.py", "schema_through": SCHEMA_THROUGH})
+    print(f"created {SCHEMA.name} (schema through migration {SCHEMA_THROUGH})")
 
 
 def print_status(conn, migrations: list[Migration]) -> int:
-    rows = load_ledger(conn)
     if not ledger_exists(conn):
         print("ledger: absent (run `db/migrate.py init`)")
+        return 0
+    rows = load_ledger(conn)
+    squashed = [n for n in rows if n <= SCHEMA_THROUGH]
+    if SCHEMA_THROUGH not in rows:
+        print(f"schema: migration {SCHEMA_THROUGH} not recorded; this database predates db/schema.sql")
+        return 2
+    print(f"schema: {SCHEMA.name} through migration {SCHEMA_THROUGH} ({len(squashed)} ledger rows)")
     drift = False
     for migration in migrations:
         state = migration_state(migration, rows.get(migration.number))
         drift |= state == "drift"
-        print(
-            f"{migration.number:02d} {state:8s} {migration.sha256[:12]} "
-            f"{migration.filename}"
-        )
-    unknown = sorted(set(rows) - {migration.number for migration in migrations})
-    for number in unknown:
+        print(f"{migration.number:02d} {state:8s} {migration.sha256[:12]} {migration.filename}")
+    for number in sorted(set(rows) - set(squashed) - {m.number for m in migrations}):
         drift = True
         print(f"{number:02d} drift    {'-' * 12} ledger row has no local file")
     return 2 if drift else 0
 
 
+def execute_python(migration: Migration) -> None:
+    result = subprocess.run([sys.executable, str(migration.path)], cwd=ROOT, check=False)
+    if result.returncode != 0:
+        raise RuntimeError(f"Python migration {migration.filename} failed with exit code {result.returncode}")
+
+
 def apply_pending(conn, migrations: list[Migration], through: int | None) -> None:
-    ensure_ledger(conn, migrations)
     rows = load_ledger(conn)
+    if SCHEMA_THROUGH not in rows:
+        raise RuntimeError("no schema recorded: run `db/migrate.py init` on an empty database first")
     for migration in migrations:
-        if migration.number == LEDGER_MIGRATION:
-            continue
         if through is not None and migration.number > through:
             continue
         state = migration_state(migration, rows.get(migration.number))
@@ -251,41 +179,14 @@ def apply_pending(conn, migrations: list[Migration], through: int | None) -> Non
             continue
         print(f"applying {migration.filename}", flush=True)
         if migration.kind == "sql":
-            execute_sql(conn, migration)
+            with conn.cursor() as cur:
+                cur.execute(migration.path.read_text())
+            conn.commit()
         else:
             execute_python(migration)
-        record_migration(
-            conn,
-            migration,
-            "applied",
-            {"runner": "db/migrate.py"},
-        )
+        record(conn, migration.number, migration.name, migration.filename, migration.sha256, migration.kind,
+               "applied", {"runner": "db/migrate.py"})
         rows = load_ledger(conn)
-
-
-def baseline_existing(
-    conn,
-    migrations: list[Migration],
-    through: int,
-    reason: str,
-) -> None:
-    ensure_ledger(conn, migrations)
-    rows = load_ledger(conn)
-    for migration in migrations:
-        if migration.number == LEDGER_MIGRATION or migration.number > through:
-            continue
-        state = migration_state(migration, rows.get(migration.number))
-        if state == "drift":
-            raise RuntimeError(f"Checksum drift for {migration.filename}")
-        if state != "pending":
-            continue
-        record_migration(
-            conn,
-            migration,
-            "baseline",
-            {"runner": "db/migrate.py", "reason": reason},
-        )
-        print(f"baselined {migration.filename}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -293,22 +194,15 @@ def parse_args() -> argparse.Namespace:
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("status")
     subparsers.add_parser("init")
-
     apply_parser = subparsers.add_parser("apply")
     apply_parser.add_argument("--through", type=int)
-
-    baseline_parser = subparsers.add_parser("baseline")
-    baseline_parser.add_argument("--through", type=int, required=True)
-    baseline_parser.add_argument("--reason", required=True)
-    baseline_parser.add_argument("--yes", action="store_true")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     migrations = discover_migrations()
-    database_url = direct_database_url(os.environ["DATABASE_URL"])
-    conn = psycopg2.connect(database_url)
+    conn = psycopg2.connect(direct_database_url(os.environ["DATABASE_URL"]))
     conn.autocommit = False
     try:
         with conn.cursor() as cur:
@@ -316,18 +210,10 @@ def main() -> None:
         if args.command == "status":
             raise SystemExit(print_status(conn, migrations))
         if args.command == "init":
-            ensure_ledger(conn, migrations)
+            init_schema(conn)
             return
         if args.command == "apply":
             apply_pending(conn, migrations, args.through)
-            return
-        if args.command == "baseline":
-            if not args.yes:
-                raise RuntimeError(
-                    "Baseline records migrations without executing them; pass --yes "
-                    "after verifying this database's current state"
-                )
-            baseline_existing(conn, migrations, args.through, args.reason)
             return
         raise AssertionError(args.command)
     finally:
