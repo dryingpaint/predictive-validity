@@ -552,7 +552,7 @@ def program_endpoint(trials: pd.DataFrame, endpoints: pd.DataFrame, c2: pd.DataF
     """Endpoint class of each Phase 2 program's first randomised industry Phase 2 efficacy trial
     that started within a year of entry and before the program advanced (a later trial would
     let the outcome choose the stratum)."""
-    own = trials[(trials.phase == 2) & trials.attach.eq("disease")][["program_id", "nct_id", "start_date"]] \
+    own = trials[(trials.phase == 2) & trials.attach.eq("disease") & trials.starts_phase][["program_id", "nct_id", "start_date"]] \
         .merge(endpoints, on="nct_id").merge(c2[["program_id", "entry", "event", "event_date"]], on="program_id")
     start = pd.to_datetime(own.start_date)
     own = own[(start <= pd.to_datetime(own.entry) + pd.Timedelta(days=365))

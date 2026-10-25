@@ -59,7 +59,7 @@ def programs() -> pd.DataFrame:
 def program_trials() -> pd.DataFrame:
     """Every trial attached to a program, with its sponsor class, status and dates."""
     return query("""
-        SELECT dt.program_id, dt.nct_id, dt.phase, dt.attach, dt.marks_entry,
+        SELECT dt.program_id, dt.nct_id, dt.phase, dt.attach, dt.marks_entry, dt.starts_phase,
                s.lead_sponsor_class = 'INDUSTRY' AS industry,
                s.overall_status, s.start_date, s.start_date_type, s.last_update_posted,
                s.primary_completion_date, s.completion_date,
