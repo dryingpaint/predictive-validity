@@ -108,9 +108,9 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     constraint = frame.query("""SELECT t.ensembl_id, min(g.loeuf) AS loeuf
                                 FROM public.gene_constraint g JOIN public.targets t ON t.id = g.target_id
                                 GROUP BY 1""").set_index("ensembl_id").loeuf
-    essential = set(frame.query("""SELECT t.ensembl_id FROM public.gene_essentiality_summary e
-                                   JOIN public.targets t ON t.id = e.target_id
-                                   WHERE e.pan_essential""").ensembl_id)
+    essential = set(frame.query("""SELECT g.ensembl_id FROM preclin.depmap_common_essential e
+                                   JOIN preclin.hgnc_gene g USING (entrez_id)
+                                   WHERE g.ensembl_id IS NOT NULL""").ensembl_id)
 
     disease = progs.set_index("program_id").mondo_id
     tmap = targets.groupby("moiety_id")

@@ -214,9 +214,9 @@ class Evidence:
             classes=("target_class", lambda s: sorted(set(s.fillna("Unclassified")))),
             sign=("sign", lambda s: s.iloc[0] if s.nunique() == 1 else "ambiguous"))
         self.liab = {
-            "pan_essential": set(frame.query("""SELECT t.ensembl_id FROM public.gene_essentiality_summary e
-                                                JOIN public.targets t ON t.id = e.target_id
-                                                WHERE e.pan_essential""").ensembl_id),
+            "pan_essential": set(frame.query("""SELECT g.ensembl_id FROM preclin.depmap_common_essential e
+                                                JOIN preclin.hgnc_gene g USING (entrez_id)
+                                                WHERE g.ensembl_id IS NOT NULL""").ensembl_id),
             "constrained": set(frame.query("""SELECT t.ensembl_id FROM public.gene_constraint g
                                               JOIN public.targets t ON t.id = g.target_id
                                               GROUP BY 1 HAVING min(g.loeuf) < 0.35""").ensembl_id),

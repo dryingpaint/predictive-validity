@@ -4,9 +4,11 @@
     python -m pipeline.targets mechanism   # LLM: germline mechanism per (target, disease) -> preclin.gene_disease_mechanism
     python -m pipeline.targets mouse       # LLM: mouse model vs disease, per model -> preclin.mouse_model_relation
 
-resolve: the LLM sees the entity's names, modality, the ChEMBL mechanism-of-action
-records attached to any of its intervention names, and trial titles. Every
-returned symbol must be an approved human protein symbol in public.targets.
+resolve: the LLM sees the entity's names, modality, every ChEMBL mechanism record
+of the parent molecule of any of its intervention names (pipeline.chembl), and
+trial titles. Every returned symbol must name a human protein in public.targets,
+by its catalogue symbol or by an HGNC approved, previous or alias symbol of its
+gene (pipeline.hgnc), so TDGF1 resolves to CRIPTO and CD20 to MS4A1.
 Entities acting on pathogens, or without a defined molecular target, are
 recorded as such and get no target rows; entities without an industry trial,
 or whose decision failed, keep no target kind.
@@ -79,11 +81,30 @@ def render(p: dict) -> str:
             f"Trial titles: {' | '.join(p['titles'])}")
 
 
-HUMAN_SYMBOLS: set[str] = set()
+# Symbol -> public.targets id for every human protein, under its catalogue symbol and under the
+# HGNC approved, previous and alias symbols of its gene (an alias shared by two genes is left out).
+SYMBOL_TARGET: dict[str, int] = {}
+
+
+def load_symbols(cur) -> None:
+    cur.execute("SELECT symbol, id, ensembl_id FROM public.targets WHERE ip_type = 'Protein'")
+    catalogue = cur.fetchall()
+    by_symbol = {s: i for s, i, _ in catalogue}
+    by_ensembl = {e: i for _, i, e in catalogue if e}
+    cur.execute("SELECT symbol, ensembl_id, prev_symbols, alias_symbols FROM preclin.hgnc_gene")
+    names: dict[str, set[int]] = defaultdict(set)
+    for symbol, ensembl, prev, alias in cur.fetchall():
+        tid = by_symbol.get(symbol) or by_ensembl.get(ensembl)
+        if tid:
+            for name in (symbol, *prev, *alias):
+                names[name].add(tid)
+    SYMBOL_TARGET.clear()
+    SYMBOL_TARGET.update({n: next(iter(ids)) for n, ids in names.items() if len(ids) == 1})
+    SYMBOL_TARGET.update(by_symbol)
 
 
 def validate(p: dict, out: dict) -> None:
-    bad = [t["symbol"] for t in out["targets"] if t["symbol"] not in HUMAN_SYMBOLS]
+    bad = [t["symbol"] for t in out["targets"] if t["symbol"] not in SYMBOL_TARGET]
     if bad:
         raise ValueError(f"not human protein symbols: {bad}")
     if out["target_kind"] == "human_protein" and not out["targets"]:
@@ -97,17 +118,18 @@ TASK = llm.Task(name="moiety_targets", prompt_version="v1", schema_version="v1",
 
 def resolve(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT symbol, id FROM public.targets WHERE ip_type = 'Protein'")
-        symbol_id = dict(cur.fetchall())
-        HUMAN_SYMBOLS.update(symbol_id)
+        load_symbols(cur)
         cur.execute("""
-            SELECT dm.moiety_id, t.symbol || ': ' || coalesce(dt.mechanism, dt.role)
-            FROM preclin.drug_moiety dm JOIN preclin.drug_target dt USING (drug_id)
-            JOIN public.targets t ON t.id = dt.target_id
-            WHERE dt.source = 'chembl_bulk'""")
+            SELECT DISTINCT dm.moiety_id, cm.symbols, lower(cm.action_type), cm.mechanism_of_action
+            FROM preclin.drug_moiety dm JOIN preclin.drug d USING (drug_id)
+            JOIN preclin.chembl_molecule mol ON mol.molecule_chembl_id = d.chembl_id
+            JOIN preclin.chembl_mechanism cm ON cm.parent_chembl_id = mol.parent_chembl_id""")
         chembl = defaultdict(set)
-        for mid, rec in cur.fetchall():
-            chembl[mid].add(rec)
+        for mid, symbols, action, text in cur.fetchall():
+            if symbols:
+                chembl[mid].update(f"{s}: {action}" for s in symbols)
+            else:
+                chembl[mid].add(f"{text} ({action})")
         cur.execute("""
             SELECT m.moiety_id, m.name, m.code_names, m.modality,
                    (SELECT array_agg(DISTINCT d.display_name) FROM preclin.drug_moiety dm
@@ -121,7 +143,7 @@ def resolve(_args) -> None:
             WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id
                           AND p.n_industry_trials > 0)""")
         items = {str(mid): {"name": name, "codes": codes or [], "modality": modality,
-                            "strings": sorted(strings or [])[:8], "chembl": sorted(chembl[mid])[:12],
+                            "strings": sorted(strings or [])[:8], "chembl": sorted(chembl[mid]),
                             "titles": titles or []}
                  for mid, name, codes, modality, strings, titles in cur.fetchall()}
     run_id = llm.run(TASK, items)
@@ -129,7 +151,7 @@ def resolve(_args) -> None:
     for mid, did, out in llm.decisions(run_id):
         kinds.append((int(mid), out["target_kind"], did))
         if out["target_kind"] == "human_protein":
-            rows += [(int(mid), symbol_id[t["symbol"]], t["action"], t["primary"], did) for t in out["targets"]]
+            rows += [(int(mid), SYMBOL_TARGET[t["symbol"]], t["action"], t["primary"], did) for t in out["targets"]]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.moiety_target")
         cur.execute("""UPDATE preclin.moiety SET target_kind = NULL, target_decision_id = NULL

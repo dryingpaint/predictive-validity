@@ -30,16 +30,24 @@ from pipeline.ctgov import CACHE as CTGOV_CACHE
 TRIALS_FROM = date(2010, 1, 1)  # trials that start earlier get no outcome or endpoint label
 
 
+def analysed(denoms: list[dict], units: str | None) -> dict[str, str]:
+    """Group id -> number analysed, in the unit the measure selects (participants, eyes, lesions…)."""
+    chosen = next((d for d in denoms if d.get("units") == units), denoms[0] if denoms else {})
+    return {c["groupId"]: c.get("value") for c in chosen.get("counts", [])}
+
+
 def summarize(results: dict) -> tuple[str, list[dict]]:
     lines, analyses = [], []
     measures = [m for m in (results.get("outcomeMeasuresModule") or {}).get("outcomeMeasures", [])
                 if m.get("type") == "PRIMARY"]
     for m in measures:
         groups = {g["id"]: g.get("title", "") for g in m.get("groups", [])}
-        n = {c["groupId"]: c.get("value") for d in m.get("denoms", []) for c in d.get("counts", [])}
+        units = m.get("denomUnitsSelected")
+        measure_n = analysed(m.get("denoms", []), units)
         lines.append(f"PRIMARY: {m.get('title')} [{m.get('timeFrame', '')}] "
                      f"({m.get('paramType', '')}, {m.get('unitOfMeasure', '')})")
         for cls in m.get("classes", []):
+            n = analysed(cls["denoms"], units) if cls.get("denoms") else measure_n
             for cat in cls.get("categories", []):
                 vals = "; ".join(f"{groups.get(x['groupId'], x['groupId'])} (n={n.get(x['groupId'])}): "
                                  f"{x.get('value')}" + (f" ±{x['spread']}" if x.get("spread") else "")
@@ -132,7 +140,10 @@ def publications(_args) -> None:
                 if acc.text in ncts:
                     links.add((acc.text, pmid, "pubmed_secondary_id"))
     links = {(n, p, s) for n, p, s in links if p in rows}
+    content = llm.canonical_json({"articles": sorted(rows.values()), "links": sorted(links)})
     with llm.connect() as conn, conn.cursor() as cur:
+        llm.register_release(cur, "pubmed_trial_results", date.today().isoformat(), EUTILS, llm.sha256_text(content),
+                             {"n_trials": len(trials), "n_articles": len(rows), "n_links": len(links)})
         execute_values(cur, """INSERT INTO public.publications (pmid, title, authors, journal, year, doi, abstract)
                                VALUES %s
                                ON CONFLICT (pmid) DO UPDATE SET abstract = EXCLUDED.abstract,
