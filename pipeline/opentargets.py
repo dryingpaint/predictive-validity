@@ -2,11 +2,15 @@
 
     python -m pipeline.opentargets fetch  # DATASETS of the release -> .cache/opentargets/<release>/<dataset>
     python -m pipeline.opentargets load   # release files in .cache/opentargets/<release>
-    python -m pipeline.opentargets evidence  # evidence rows behind those associations, mouse phenotypes
+    python -m pipeline.opentargets evidence  # evidence rows behind those associations, their yearly series, mouse phenotypes
 
 Loads direct associations by data source for the targets of every molecular
-entity with an industry-sponsored development program (preclin.moiety_target), keeping each
-association's yearly score series so evidence can be taken as of a date.
+entity with an industry-sponsored development program (preclin.moiety_target).
+`evidence` dates each evidence item by the year it became known (its source key's
+year in preclin.evidence_known_year, from pipeline.evidence_dates, else its own
+publication or evidence date) and rebuilds each association's yearly score series
+from the dated items, so evidence can be taken as of a date; undated items count
+only in the release score.
 Sources that encode clinical outcomes or literature co-mention
 (clinical_precedence, europepmc, cancer_biomarkers) are not loaded.
 Disease identifiers are kept as Open Targets ids in preclin.ot_disease, each
@@ -21,6 +25,7 @@ from __future__ import annotations
 import argparse
 import glob
 import hashlib
+import math
 import os
 import re
 from collections import defaultdict
@@ -47,6 +52,8 @@ CONCEPT_XREFS = ("DOID", "Orphanet", "NCIT", "MESH")
 GERMLINE_DATASOURCES = ("gwas_credible_sets", "gene_burden", "eva", "genomics_england", "orphanet",
                         "uniprot_literature", "uniprot_variants", "gene2phenotype", "clingen")
 CLINVAR_PATHOGENIC = ("pathogenic", "likely pathogenic")  # the ClinVar significances that count as evidence
+IMPC_ALLELE = re.compile(r"[(](EUCOMM|KOMP|IMPC|EUCOMMTools|NCOM)[)]")  # alleles of the high-throughput knockout consortia
+HARMONIC_MAX = math.pi ** 2 / 6  # sum of 1/i^2: Open Targets divides a datasource's harmonic sum by it
 DATASOURCES = {
     # germline genetics
     "gwas_credible_sets": "genetic", "gene_burden": "genetic", "eva": "genetic", "genomics_england": "genetic",
@@ -164,15 +171,11 @@ def load(_args) -> None:
 
     assoc = ds.dataset(os.path.join(CACHE, "association_by_datasource_direct"), format="parquet")
     table = assoc.to_table(
-        columns=["diseaseId", "targetId", "aggregationValue", "associationScore", "evidenceCount", "timeseries"],
+        columns=["diseaseId", "targetId", "aggregationValue", "associationScore", "evidenceCount"],
         filter=ds.field("aggregationValue").isin(list(DATASOURCES)) & ds.field("targetId").isin(targets))
-    rows = []
-    for r in table.to_pylist():
-        series = sorted((p["year"], p["associationScore"]) for p in r["timeseries"] or [] if p["year"])
-        positive = [y for y, sc in series if sc and sc > 0]
-        rows.append((r["targetId"], curie(r["diseaseId"]), r["aggregationValue"], DATASOURCES[r["aggregationValue"]],
-                     r["associationScore"], r["evidenceCount"], min(positive) if positive else None,
-                     [y for y, _ in series], [float(sc or 0) for _, sc in series], release))
+    # The yearly series are left empty here: `evidence` builds them from the evidence rows as dated there.
+    rows = [(r["targetId"], curie(r["diseaseId"]), r["aggregationValue"], DATASOURCES[r["aggregationValue"]],
+             r["associationScore"], r["evidenceCount"], None, [], [], release) for r in table.to_pylist()]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.ot_association")
         cur.execute("DELETE FROM preclin.ot_disease")
@@ -185,29 +188,75 @@ def load(_args) -> None:
     print(f"release={RELEASE} targets={len(targets)} associations={len(rows)} diseases={len(disease_rows)}")
 
 
-def evidence_row(r: dict, release: int) -> tuple:
+def evidence_key(r: dict) -> str | None:
+    """The key under which preclin.evidence_known_year dates an Open Targets evidence row (pipeline.evidence_dates):
+    the ClinVar RCV accession, the IMPC-consortium allele of a mouse model, the study accession or IntOGen cohort;
+    None for rows dated only by their own publication."""
+    source = r["datasourceId"]
+    if source in ("eva", "eva_somatic", "expression_atlas", "crispr_screen"):
+        return r.get("studyId")
+    if source == "impc":
+        return next((a for a in (r.get("biologicalModelAllelicComposition") or "").split("/") if IMPC_ALLELE.search(a)),
+                    None)
+    if source == "intogen":
+        return r.get("cohortShortName")
+    return None
+
+
+def evidence_row(r: dict, release: int, known: dict[tuple[str, str], tuple[int, str]]) -> tuple:
+    """A preclin.ot_evidence row; its year is the one `known` holds for its key, else its own date."""
     day = r.get("publicationDate") or r.get("evidenceDate") or r.get("releaseDate")
+    year, basis = known.get((r["datasourceId"], evidence_key(r)), (int(day[:4]) if day else None, "open_targets"))
     detail = {k: r[k] for k in DETAIL.get(r["datasourceId"], ()) if r.get(k) not in (None, [], "")}
     detail["n_literature"] = len(r.get("literature") or [])
     if r.get("diseaseModelAssociatedModelPhenotypes"):  # mouse phenotypes that matched the disease's
         detail["model_phenotypes"] = [p["label"] for p in r["diseaseModelAssociatedModelPhenotypes"]][:10]
         detail["n_human_phenotypes"] = len(r.get("diseaseModelAssociatedHumanPhenotypes") or [])
     return (r["id"], r["targetId"], curie(r["diseaseId"]), r["datasourceId"], r.get("score"), r.get("resourceScore"),
-            int(day[:4]) if day else None, r.get("directionOnTarget"), r.get("directionOnTrait"), r.get("confidence"),
-            r.get("allelicRequirements"), r.get("variantFunctionalConsequenceId"), Json(detail), release)
+            year, r.get("directionOnTarget"), r.get("directionOnTrait"), r.get("confidence"),
+            r.get("allelicRequirements"), r.get("variantFunctionalConsequenceId"), Json(detail), release,
+            basis if year is not None else None)
+
+
+def series(rows: list[tuple]) -> list[tuple]:
+    """(target, disease, datasource, years, scores, first year) from dated evidence rows: at each year an item
+    was dated, the datasource association score Open Targets computes (harmonic sum of item scores, the
+    i-th largest weighted 1/i^2, over HARMONIC_MAX) from the items dated by then."""
+    dated = defaultdict(list)
+    for r in rows:
+        if r[6] is not None and r[4]:
+            dated[(r[1], r[2], r[3])].append((r[6], r[4]))
+    out = []
+    for key, items in dated.items():
+        items.sort()
+        years, scores, known = [], [], []
+        for i, (year, score) in enumerate(items):
+            known.append(score)
+            if i + 1 < len(items) and items[i + 1][0] == year:
+                continue
+            known.sort(reverse=True)
+            years.append(year)
+            scores.append(sum(s / (j * j) for j, s in enumerate(known, 1)) / HARMONIC_MAX)
+        out.append((*key, years, scores, years[0]))
+    return out
 
 
 def evidence(_args) -> None:
+    """Evidence rows dated by preclin.evidence_known_year where it has their key, and the association
+    series rebuilt from them, so evidence as of a year counts only what was known by then."""
     with llm.connect() as conn, conn.cursor() as cur:
         release, targets = release_and_targets(cur, "open_targets_platform_evidence",
                                                [*EVIDENCE_DATASETS, MOUSE_PHENOTYPE], {})
+        cur.execute("SELECT datasource, key, year, basis FROM preclin.evidence_known_year")
+        known = {(d, k): (y, b) for d, k, y, b in cur.fetchall()}
     rows = []
     for name in EVIDENCE_DATASETS:
         data = ds.dataset(os.path.join(CACHE, name), format="parquet")
         columns = [c for c in {*EVIDENCE_COLUMNS, *(k for v in DETAIL.values() for k in v)} if c in data.schema.names]
         table = data.to_table(columns=columns, filter=ds.field("targetId").isin(targets)
                               & ds.field("datasourceId").isin(list(DATASOURCES)))
-        rows += [evidence_row(r, release) for r in table.to_pylist()]
+        rows += [evidence_row(r, release, known) for r in table.to_pylist()]
+    yearly = series(rows)
     # A human gene with several mouse orthologs has one row per ortholog for the same phenotype: their
     # models are pooled under the human gene.
     phenotypes: dict = {}
@@ -226,12 +275,22 @@ def evidence(_args) -> None:
         execute_values(cur, """INSERT INTO preclin.ot_evidence
               (evidence_id, target_ensembl, disease_id, datasource, score, resource_score, evidence_year,
                direction_on_target, direction_on_trait, confidence, allelic_requirements, variant_consequence,
-               detail, source_release_id) VALUES %s""", rows, page_size=5000)
+               detail, source_release_id, year_basis) VALUES %s""", rows, page_size=5000)
+        cur.execute("""CREATE TEMP TABLE yearly (target_ensembl text, disease_id text, datasource text,
+                         series_years smallint[], series_scores real[], first_year smallint) ON COMMIT DROP""")
+        execute_values(cur, "INSERT INTO yearly VALUES %s", yearly, page_size=5000)
+        cur.execute("UPDATE preclin.ot_association SET series_years = '{}', series_scores = '{}', first_year = NULL")
+        cur.execute("""UPDATE preclin.ot_association a
+                       SET series_years = y.series_years, series_scores = y.series_scores, first_year = y.first_year
+                       FROM yearly y WHERE (a.target_ensembl, a.disease_id, a.datasource)
+                                           = (y.target_ensembl, y.disease_id, y.datasource)""")
         execute_values(cur, """INSERT INTO preclin.ot_mouse_phenotype
               (target_ensembl, phenotype_id, phenotype_label, class_ids, models, source_release_id) VALUES %s""",
                        mouse_rows, page_size=5000)
         conn.commit()  # one transaction: readers never see a half-loaded table
-    print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)}")
+    print(f"release={RELEASE} targets={len(targets)} evidence={len(rows)} mouse phenotypes={len(mouse_rows)} "
+          f"dated by known year={sum(r[-1] not in (None, 'open_targets') for r in rows)} undated="
+          f"{sum(r[6] is None for r in rows)} association series={len(yearly)}")
 
 
 def main() -> None:

@@ -6,6 +6,10 @@
 The snapshot covers all sponsors and all dates so that a molecule's full
 trial history (earlier phases, later or still-active trials) is visible when
 programs are assembled. Raw API pages are kept gzipped under .cache/ctgov.
+A study that ran (STARTED_STATUSES) but registers no start date gets the
+latest date it can have started, the earliest of its first submission and
+completion dates, typed UPPER_BOUND; without it the study would be left out of
+every program, and the molecule's earlier history with it.
 """
 from __future__ import annotations
 
@@ -25,6 +29,7 @@ from pipeline import llm
 CACHE = os.path.join(llm.REPO, ".cache", "ctgov")
 API = "https://clinicaltrials.gov/api/v2/studies"
 QUERY = "AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL)"
+STARTED_STATUSES = ("COMPLETED", "TERMINATED", "SUSPENDED")  # statuses a study reaches only once it has started
 
 
 def fetch(_args) -> None:
@@ -93,6 +98,11 @@ def row(study: dict, release: int) -> tuple:
     first, _ = parse_date(status.get("studyFirstPostDateStruct"))
     last, _ = parse_date(status.get("lastUpdatePostDateStruct"))
     res_first, _ = parse_date(status.get("resultsFirstPostDateStruct"))
+    if start is None and status.get("overallStatus") in STARTED_STATUSES:
+        submitted, _ = parse_date({"date": status.get("studyFirstSubmitDate")})
+        bounds = [d for d in (submitted, pcd, comp) if d]
+        if bounds:
+            start, start_t = min(bounds), "UPPER_BOUND"
     info = design.get("designInfo", {})
     lead = sponsor.get("leadSponsor", {})
     return (

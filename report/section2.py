@@ -8,9 +8,10 @@ human protein targets. Each program carries evidence about its entity's
 primary targets *for its disease*: Open Targets associations (26.09) whose
 disease matches the program's disease on MONDO (same term, a subtype, or Lin
 similarity >= 0.8), scored as of the year before the program entered the
-phase. Open Targets leaves undated evidence out of its yearly series, so
-as-of scores undercount; a sensitivity analysis uses the release score
-(evidence known by 2026, dated or not); another counts only evidence diseases
+phase, from yearly series rebuilt from the evidence items dated by the year
+each became known (pipeline.opentargets evidence). Undated items are left out
+of the series, so as-of scores undercount; a sensitivity analysis uses the
+release score (evidence known by 2026, dated or not); another counts only evidence diseases
 with Lin similarity >= 0.8 (Minikel et al.'s criterion), dropping the subtype
 rule, which is permissive for broad program diseases. Target-level properties
 (loss-of-function constraint, pan-essentiality) are not disease-specific and
