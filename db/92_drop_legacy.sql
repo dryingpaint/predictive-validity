@@ -169,6 +169,7 @@ DROP TABLE IF EXISTS pv_evidence.preclinical_experiment_evidence CASCADE;
 DROP TABLE IF EXISTS pv_evidence.target_phenotype_assertion CASCADE;
 DROP TABLE IF EXISTS pv_evidence.trial_indication_evidence CASCADE;
 DROP TABLE IF EXISTS pv_evidence.trial_relationship_evidence CASCADE;
+DROP FUNCTION IF EXISTS preclin.validate_pmid_array(text[]);
 DO $$
 DECLARE
     missing text[];
