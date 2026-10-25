@@ -10,8 +10,6 @@ BEGIN;
 SET LOCAL lock_timeout = '30s';
 ALTER TABLE preclin.drug DROP CONSTRAINT IF EXISTS drug_therapy_id_fkey;
 ALTER TABLE preclin.indication DROP CONSTRAINT IF EXISTS indication_disease_id_fkey;
-ALTER TABLE preclin.drug DROP COLUMN IF EXISTS therapy_id;
-ALTER TABLE preclin.indication DROP COLUMN IF EXISTS disease_id;
 DROP SCHEMA IF EXISTS pv_core, pv_source CASCADE;
 DROP MATERIALIZED VIEW IF EXISTS public.opportunities CASCADE;
 DROP MATERIALIZED VIEW IF EXISTS public.opportunity_facet_rollup CASCADE;
@@ -169,6 +167,8 @@ DROP TABLE IF EXISTS pv_evidence.preclinical_experiment_evidence CASCADE;
 DROP TABLE IF EXISTS pv_evidence.target_phenotype_assertion CASCADE;
 DROP TABLE IF EXISTS pv_evidence.trial_indication_evidence CASCADE;
 DROP TABLE IF EXISTS pv_evidence.trial_relationship_evidence CASCADE;
+ALTER TABLE preclin.drug DROP COLUMN IF EXISTS therapy_id;
+ALTER TABLE preclin.indication DROP COLUMN IF EXISTS disease_id;
 DROP FUNCTION IF EXISTS preclin.validate_pmid_array(text[]);
 DO $$
 DECLARE
