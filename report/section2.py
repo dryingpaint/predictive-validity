@@ -98,9 +98,9 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
         FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
         JOIN preclin.moiety m USING (moiety_id)
         WHERE mt.is_primary AND m.target_kind = 'human_protein'""")
-    assoc = frame.query("""
+    assoc = frame.query_paged("""
         SELECT a.target_ensembl, a.datasource, a.series_years, a.series_scores, a.score, d.mondo_ids
-        FROM preclin.ot_association a JOIN preclin.ot_disease d USING (disease_id)""")
+        FROM preclin.ot_association a JOIN preclin.ot_disease d USING (disease_id)""", "target_ensembl")
     by_target = defaultdict(list)
     for ens, src, ys, ss, final, mids in assoc.itertuples(index=False):
         if mids:
