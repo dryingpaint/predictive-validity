@@ -266,8 +266,39 @@ def render_phase_role(p: dict) -> str:
             f"Brief summary: {p['summary'] or '(none)'}")
 
 
+def listed_drug(name: str, p: dict) -> str | None:
+    """The listed drug a returned name stands for. Models often copy the trial's own wording ("RAD001",
+    "AZOPT (brinzolamide)", "Daclizumab", "tacrolimus" for "tacrolimus anhydrous") instead of the listed
+    name: the drug in any case, the one listed drug named within it or whose name it begins, or, for
+    a name the trial lists as an intervention, the one listed drug that intervention entry names (the
+    trial's only drug when the entry names none). A name the trial does not use resolves to nothing."""
+    drugs = p["drugs"]
+
+    def direct(text: str) -> str | None:
+        low = text.strip().lower()
+        for hits in ([d for d in drugs if d.lower() == low],
+                     [d for d in drugs if re.search(rf"\b{re.escape(d.lower())}\b", low)],
+                     [d for d in drugs if re.match(rf"{re.escape(low)}\b", d.lower())]):
+            if len(hits) == 1:
+                return hits[0]
+        return None
+
+    if (hit := direct(name)) is not None:
+        return hit
+    low = name.strip().lower()
+    for iv in p.get("interventions") or []:
+        names = [n for n in [iv.get("name"), *(iv.get("otherNames") or [])] if n]
+        if any(n.lower() == low or n.lower() in low for n in names):
+            hits = {h for n in names if (h := direct(n)) is not None}
+            if len(hits) == 1:
+                return hits.pop()
+            if not hits and len(drugs) == 1:
+                return drugs[0]
+    return None
+
+
 def validate_phase_role(p: dict, out: dict) -> None:
-    extra = set(out["main_period_drugs"]) - set(p["drugs"])
+    extra = [n for n in out["main_period_drugs"] if listed_drug(n, p) is None]
     if extra:
         raise ValueError(f"main_period_drugs not among the listed drugs: {sorted(extra)[:3]}")
 
@@ -296,8 +327,8 @@ def judge_phase_roles(ncts: set[str]) -> None:
                       "model": model, "interventions": ivs or [], "arms": arms or [], "summary": summary, "drugs": names}
         ids[nct] = dict(zip(names, mids))
     run_id = llm.run(PHASE_ROLE_TASK, items)
-    out = [(key, parsed["extension"], sorted(ids[key][d] for d in parsed["main_period_drugs"]), decision)
-           for key, decision, parsed in llm.decisions(run_id)]
+    out = [(key, parsed["extension"], sorted({ids[key][listed_drug(d, items[key])] for d in parsed["main_period_drugs"]}),
+            decision) for key, decision, parsed in llm.decisions(run_id)]
     with llm.connect() as conn, conn.cursor() as cur:
         execute_values(cur, """INSERT INTO preclin.trial_phase_role (nct_id, extension, main_period_moieties, llm_decision_id)
                                VALUES %s ON CONFLICT (nct_id) DO UPDATE SET extension = EXCLUDED.extension,
@@ -554,7 +585,7 @@ def build(_args) -> None:
         r = roles.get(nct)
         return r is None or (not r[0] and mid in r[1])
 
-    roles = load_roles()
+    roles, asked = load_roles(), set()  # a trial is asked once per build: one left undecided keeps starts_phase
     while True:
         need = set()
         for (mid, _), attached in programs.items():
@@ -562,10 +593,11 @@ def build(_args) -> None:
                 eligible = [n for n in attached if trials[n]["phase"] == phase and starts_phase(n, mid)]
                 if eligible:
                     first = min(trials[n]["start"] for n in eligible)
-                    need |= {n for n in eligible if trials[n]["start"] == first and n not in roles
+                    need |= {n for n in eligible if trials[n]["start"] == first and n not in roles and n not in asked
                              and (trials[n]["open_uncontrolled"] or investigational[n] > 1)}
         if not need:
             break
+        asked |= need
         judge_phase_roles(need)
         roles = load_roles()
 
