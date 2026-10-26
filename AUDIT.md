@@ -249,9 +249,21 @@ Each quantitative claim, with the value the rebuild gives:
 | D70 | Target hints came from a ChEMBL bulk file with no recorded release that kept one gene per drug name (tirzepatide: GIPR only) | Entity targets | fixed: every ChEMBL 37 mechanism of the parent molecule, all genes of each target (`pipeline.chembl`) |
 | D71 | The pan-essential flag came from a DepMap table with no recorded release or rule | Section 2 covariate; Section 3 liability | fixed: DepMap Public 24Q4 CRISPR inferred common essentials (`pipeline.depmap`; 1,523 genes, 1,278 of the 1,284 previously flagged) |
 | D72 | The PubMed results-paper step recorded no retrieval date or content | Publication-based outcomes provenance | fixed: each run registers a release with its date and content hash |
+| D73 | A cough trial abbreviated "CRC" (chronic refractory cough) mapped to colorectal carcinoma: nedizantrep (GDC-6599, NCT05660850) | Program disease; Section 1 failure modes; attribution | open: found by the efficacy-attribution adjudication; disease mapping |
+| D74 | Orvepitant's Phase 2 chronic refractory cough program carries no disease (NCT02993822) | Program disease; Phase 3 cohort and attribution | open: found by the efficacy-attribution adjudication; disease mapping |
+| D75 | The attribution model refuses to label some gene therapies, engineered cell therapies, live biotherapeutics and viral-vector products (31 Phase 2/3 efficacy failures) | Section 1 efficacy attribution | disclosed: reported as unlabelled, not worked around (as for targets) |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-26 — Why efficacy failed (Section 1). Plan committed before labelling
+  (`report/attribution_plan.md`). New data: PubMed searches on each failed entity's human
+  pharmacology and on the entity in each program disease (`preclin.moiety_publication`, reviews
+  excluded), and a three-pillar reading (exposure, engagement, pathway) with a failure code for
+  every program Section 1 records as stopped for efficacy (`preclin.efficacy_failure_attribution`,
+  LLM, sources limited to the bundle and validated). Checks: a stepwise re-derivation by a second
+  model on a seeded sample of 150, and a blind web adjudication of a seeded sample of 66 by agents
+  (`report/audits/attribution_adjudication.json`), which also found D73–D74.
 
 - 2026-10-21 — Section 3, which evidence translates. Plan committed before any outcome analysis
   (`report/translation_plan.md`). New data: primary outcome measures for every trial

@@ -105,8 +105,8 @@ def bounds(d: pd.DataFrame, adj: dict) -> dict:
     return out
 
 
-def agreement(a: pd.Series, b: pd.Series) -> dict:
-    ga, gb = a.map(GROUP), b.map(GROUP)
+def agreement(a: pd.Series, b: pd.Series, ga: pd.Series, gb: pd.Series) -> dict:
+    """Agreement of two labellings: codes a and b, and their groups ga and gb."""
     three = lambda g: g.where(g.isin(["not_engaged", "engaged_no_benefit"]), "other")
     return {"n": int(len(a)), "code_agree": float((a == b).mean()), "code_kappa": float(cohen_kappa_score(a, b)),
             "group_agree": float((ga == gb).mean()), "group_kappa": float(cohen_kappa_score(ga, gb)),
@@ -126,7 +126,7 @@ def rederivation(d: pd.DataFrame) -> dict:
     m = d.merge(chk, on="key")
     if m.empty:
         return {"n": 0}
-    out = agreement(m.primary_code, m.check_code)
+    out = agreement(m.primary_code, m.check_code, m.group, group(m.check_code, m.check_engagement))
     out["sampled"] = CHECK_SAMPLE
     out["engagement_agree"] = float((m.engagement == m.check_engagement).mean())
     out["engaged_agree"] = float((m.engagement.isin(ENGAGED) == m.check_engagement.isin(ENGAGED)).mean())
@@ -137,23 +137,23 @@ def adjudication(d: pd.DataFrame) -> dict:
     if not os.path.exists(ADJUDICATION):
         return {"n": 0}
     adj = pd.DataFrame(json.load(open(ADJUDICATION)))
-    m = d.merge(adj[["key", "code"]].rename(columns={"code": "adjudicated"}), on="key")
+    m = d.merge(adj[["key", "code", "engagement"]].rename(columns={"code": "adjudicated",
+                                                                   "engagement": "adjudicated_engagement"}), on="key")
     m = m[m.adjudicated.isin(CODES)]
-    out = agreement(m.primary_code, m.adjudicated)
+    ga, gb = m.group, group(m.adjudicated, m.adjudicated_engagement)
+    out = agreement(m.primary_code, m.adjudicated, ga, gb)
     out["sampled"] = int(len(adj))
     u = m[m.primary_code == "U"]
     out["pipeline_u"] = int(len(u))
     out["pipeline_u_decided_outside"] = int((u.adjudicated != "U").sum())
-    out["outside_u_groups"] = u[u.adjudicated != "U"].adjudicated.map(GROUP).value_counts().to_dict()
-    ga, gb = m.primary_code.map(GROUP), m.adjudicated.map(GROUP)
+    out["outside_u_groups"] = gb[(m.primary_code == "U") & (m.adjudicated != "U")].value_counts().to_dict()
     key = ["not_engaged", "engaged_no_benefit"]
     out["contradictions"] = int((ga.isin(key) & gb.isin(key) & (ga != gb)).sum())
     out["adjudicated_testable"] = int(gb.isin(key).sum())
     out["adjudicated_not_engaged"] = int((gb == "not_engaged").sum())
     out["adjudicated_not_engaged_share"] = float((gb == "not_engaged").sum() / max(gb.isin(key).sum(), 1))
-    decided = m[m.primary_code != "U"]
-    out["decided_group_agree"] = float((decided.primary_code.map(GROUP) == decided.adjudicated.map(GROUP)).mean()) \
-        if len(decided) else None
+    decided = m.primary_code != "U"
+    out["decided_group_agree"] = float((ga[decided] == gb[decided]).mean()) if decided.any() else None
     return out
 
 
@@ -208,7 +208,7 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
         "direct pillar evidence only (inferred engagement counted as unknown)":
             d.assign(primary_code=np.where(d.engagement.eq("inferred_adequate") & d.primary_code.isin(["F2", "F3", "F4"]),
                                            "U", d.primary_code)),
-        "engagement known before the index trial": before,
+        "engaged only if shown before the index trial": before,
         "one program per entity": first,
         "high or medium confidence": d[d.confidence.isin(["high", "medium"])],
     }
