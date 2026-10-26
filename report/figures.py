@@ -92,12 +92,15 @@ ATTRIBUTION_COLORS = {  # stacking order; the not-engaged hue marks that group i
     "trial_design": ("Trial design, population, endpoint", "#1baf7a"), "toxicity": ("Toxicity", "#eda100"),
     "not_a_failure": ("Recorded as efficacy, but was not", "#e87ba4"), "indeterminate": ("No data", "#d6d5ce"),
 }
-ATTRIBUTION_ROWS = {  # sensitivity variant -> label in the right-hand panel
-    "Phase 2": "Phase 2", "Phase 3": "Phase 3", "outside oncology": "Outside oncology", "oncology": "Oncology",
-    "one program per entity": "One program per drug", "high or medium confidence": "High or medium confidence",
-    "direct pillar evidence only (inferred engagement counted as unknown)": "Directly measured engagement only",
-    "engaged only if shown before the index trial": "Engagement shown before the failed trial",
-}
+NOT_ENGAGED = ATTRIBUTION_COLORS["not_engaged"][1]
+ATTRIBUTION_ROWS = [  # (group heading, [(sensitivity variant, label)]) for the right-hand panel
+    ("Subsets", [("Phase 2", "Phase 2"), ("Phase 3", "Phase 3"), ("outside oncology", "Outside oncology"),
+                 ("oncology", "Oncology"), ("one program per entity", "One program per drug")]),
+    ("Stricter evidence", [("high or medium confidence", "High or medium confidence"),
+                           ("direct pillar evidence only (inferred engagement counted as unknown)",
+                            "Directly measured engagement"),
+                           ("engaged only if shown before the index trial", "Engagement shown pre-trial")]),
+]
 
 
 def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
@@ -109,49 +112,81 @@ def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
 def efficacy_attribution():
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
     sens = pd.read_csv(os.path.join(OUT, "attribution", "sensitivity.csv")).set_index("variant")
-    fig, (left, right) = plt.subplots(1, 2, figsize=(12, 4.2), gridspec_kw={"width_ratios": [1.25, 1], "wspace": 0.55})
+    t, adj = n["phase23"]["testable"], n["adjudication"]
+    rc = {"font.family": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9}
+    with plt.rc_context(rc):
+        fig = plt.figure(figsize=(12, 5.6))
+        grid = fig.add_gridspec(1, 2, width_ratios=[1.15, 1], wspace=0.42, left=0.1, right=0.97, top=0.74, bottom=0.17)
+        left, right = fig.add_subplot(grid[0]), fig.add_subplot(grid[1])
+        fig.text(0.02, 0.975, "Where it can be traced, most efficacy failures engaged their target",
+                 fontsize=15, fontweight="bold", color=INK, va="top")
+        fig.text(0.02, 0.915, f"{n['phase23']['programs']:,} industry Phase 2 and 3 programs recorded as stopping for "
+                 "efficacy, 2015–2025 entries", fontsize=10, color=INK2, va="top")
 
-    cols = [("Phase 2", n["by_phase"]["2"]), ("Phase 3", n["by_phase"]["3"]), ("Phase 2 and 3", n["phase23"])]
-    for i, (label, c) in enumerate(reversed(cols)):
-        start = 0.0
-        for g, (_, color) in ATTRIBUTION_COLORS.items():
-            w = c["groups"][g]["share"]
-            left.barh(i, w, left=start, height=0.6, color=color, edgecolor="white", linewidth=2)
-            if w >= 0.06:
-                left.text(start + w / 2, i, f"{w:.0%}", ha="center", va="center", fontsize=9,
-                          color=INK if g == "indeterminate" else "white")
-            start += w
-    left.set_yticks(range(len(cols)), [f"{label}\n{c['programs']:,} programs" for label, c in reversed(cols)],
-                    color=INK)
-    left.set_xlim(0, 1)
-    left.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
-    style(left)
-    left.legend(handles=[matplotlib.patches.Patch(color=c, label=l) for l, c in ATTRIBUTION_COLORS.values()],
-                ncol=3, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(0, -0.12))
-    left.set_title("Phase 2 and 3 programs recorded as stopping for efficacy:\nwhat the evidence shows", loc="left", color=INK, fontsize=11)
+        cols = [("Phase 2", n["by_phase"]["2"]), ("Phase 3", n["by_phase"]["3"]), ("Phase 2 and 3", n["phase23"])]
+        for i, (label, c) in enumerate(reversed(cols)):
+            start = 0.0
+            for g, (_, color) in ATTRIBUTION_COLORS.items():
+                w = c["groups"][g]["share"]
+                left.barh(i, w, left=start, height=0.56, color=color, edgecolor="white", linewidth=2)
+                if w >= 0.06:
+                    left.text(start + w / 2, i, f"{w:.0%}", ha="center", va="center", fontsize=9,
+                              fontweight="bold", color=INK2 if g == "indeterminate" else "white")
+                start += w
+        left.set_yticks(range(len(cols)), [""] * len(cols))
+        for i, (label, c) in enumerate(reversed(cols)):
+            left.text(-0.02, i + 0.06, label, ha="right", va="bottom", fontsize=10, color=INK,
+                      fontweight="bold" if label == "Phase 2 and 3" else "normal")
+            left.text(-0.02, i - 0.04, f"{c['programs']:,} programs", ha="right", va="top", fontsize=8, color=MUTED)
+        left.set_xlim(0, 1)
+        left.set_xticks([])
+        for side in ("top", "right", "left", "bottom"):
+            left.spines[side].set_visible(False)
+        left.tick_params(length=0)
+        left.legend(handles=[matplotlib.patches.Patch(color=c, label=l) for l, c in ATTRIBUTION_COLORS.values()],
+                    ncol=3, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(-0.02, -0.02),
+                    handlelength=1, handleheight=1, columnspacing=1.2, labelcolor=INK2)
+        left.set_title("What the evidence shows", loc="left", color=INK, fontsize=11, fontweight="bold", pad=22)
+        left.text(0, 1.035, "Share of programs", transform=left.transAxes, fontsize=8, color=MUTED)
 
-    t = n["phase23"]["testable"]
-    adj = n["adjudication"]
-    rows = [("All programs (main estimate)", t["not_engaged_share"], t["lo"], t["hi"], True)]
-    rows += [(label, sens.at[v, "not_engaged_of_testable"], sens.at[v, "lo"], sens.at[v, "hi"], False)
-             for v, label in ATTRIBUTION_ROWS.items()]
-    rows.append((f"Blind web adjudication ({adj['adjudicated_not_engaged']} of {adj['adjudicated_testable']})",
-                 adj["adjudicated_not_engaged_share"],
-                 *wilson(adj["adjudicated_not_engaged"], adj["adjudicated_testable"]), False))
-    y = np.arange(len(rows))[::-1]
-    for yi, (label, v, lo, hi, main) in zip(y, rows):
-        right.plot([lo, hi], [yi, yi], color="#eb6834", linewidth=2, solid_capstyle="round")
-        right.plot(v, yi, "o", color="#eb6834", markersize=9 if main else 7, markeredgecolor="white", markeredgewidth=2)
-        right.text(hi + 0.012, yi, f"{v:.0%}", va="center", fontsize=8, color=INK if main else INK2,
-                   fontweight="bold" if main else "normal")
-    right.set_yticks(y, [r[0] for r in rows], color=INK, fontsize=8)
-    right.get_yticklabels()[0].set_fontweight("bold")
-    right.set_xlim(0, 0.5)
-    right.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
-    style(right)
-    right.set_title("Not engaged, of failures whose mechanism was tested", loc="left", color=INK, fontsize=11)
-    right.set_xlabel("Share not engaged (95% CI)", color=INK2, fontsize=8)
-    save(fig, "efficacy_attribution")
+        rows = [("", [("All programs (main estimate)", t["not_engaged_share"], t["lo"], t["hi"])])]
+        rows += [(head, [(label, sens.at[v, "not_engaged_of_testable"], sens.at[v, "lo"], sens.at[v, "hi"])
+                         for v, label in items]) for head, items in ATTRIBUTION_ROWS]
+        rows.append(("Independent check", [(f"Blind web adjudication ({adj['adjudicated_not_engaged']} of "
+                                            f"{adj['adjudicated_testable']})", adj["adjudicated_not_engaged_share"],
+                                            *wilson(adj["adjudicated_not_engaged"], adj["adjudicated_testable"]))]))
+        right.axvspan(t["lo"], t["hi"], color=NOT_ENGAGED, alpha=0.08, linewidth=0)
+        y, ticks, labels = 0.0, [], []
+        for head, items in rows:
+            if head:
+                y -= 0.35
+                right.text(-0.012, y, head.upper(), ha="right", va="center", fontsize=7, color=MUTED,
+                           fontweight="bold", transform=right.get_yaxis_transform())
+                y -= 0.75
+            for label, v, lo, hi in items:
+                main = label.startswith("All programs")
+                right.plot([lo, hi], [y, y], color=NOT_ENGAGED, linewidth=2.5 if main else 2,
+                           alpha=1 if main else 0.55, solid_capstyle="round")
+                right.plot(v, y, "o", color=NOT_ENGAGED, markersize=10 if main else 7,
+                           markeredgecolor="white", markeredgewidth=1.5)
+                right.text(hi + 0.01, y, f"{v:.0%}", va="center", fontsize=9 if main else 8,
+                           color=INK if main else INK2, fontweight="bold" if main else "normal")
+                ticks.append(y)
+                labels.append(label)
+                y -= 1
+        right.set_yticks(ticks, labels, fontsize=8.5, color=INK2)
+        right.get_yticklabels()[0].set_fontweight("bold")
+        right.get_yticklabels()[0].set_color(INK)
+        right.set_ylim(y + 0.4, 0.6)
+        right.set_xlim(0, 0.35)
+        right.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0, decimals=0))
+        right.set_xticks([0, 0.1, 0.2, 0.3])
+        style(right)
+        right.set_title("Not engaged, of failures whose mechanism was tested", loc="left", color=INK, fontsize=11,
+                        fontweight="bold", pad=22)
+        right.text(0, 1.035, "Share where the drug never adequately engaged its target, 95% CI; band = main estimate",
+                   transform=right.transAxes, fontsize=8, color=MUTED)
+        save(fig, "efficacy_attribution")
 
 
 def loa_bars(csv, title, name, ref):
