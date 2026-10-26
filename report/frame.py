@@ -21,7 +21,7 @@ QUERY_ATTEMPTS = 4
 
 
 def query(sql: str, params=None) -> pd.DataFrame:
-    """Run a read query, retrying when the connection drops."""
+    """Run a read query, retrying when the connection drops (before or during the query)."""
     for attempt in range(QUERY_ATTEMPTS):
         try:
             with (psycopg2.connect(os.environ.get("DATABASE_URL_RO") or os.environ["DATABASE_URL"],
@@ -30,7 +30,7 @@ def query(sql: str, params=None) -> pd.DataFrame:
                   conn.cursor() as cur):
                 cur.execute(sql, params)
                 return pd.DataFrame(cur.fetchall(), columns=[c.name for c in cur.description])
-        except psycopg2.OperationalError:
+        except (psycopg2.OperationalError, psycopg2.InterfaceError):
             if attempt == QUERY_ATTEMPTS - 1:
                 raise
             time.sleep(15 * (attempt + 1))
