@@ -109,7 +109,7 @@ ATTRIBUTION_GROUPS = {"not_engaged": "Not engaged: exposure or engagement inadeq
                       "engaged_no_benefit": "Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4)",
                       "trial_design": "Trial design, population or endpoint, mechanism not in question (F7)",
                       "toxicity": "Toxicity offset or ended efficacy (F5, F6)",
-                      "not_a_failure": "Not an efficacy failure on reading the sources (F8, F9)",
+                      "not_a_failure": "Recorded as efficacy, but the sources show otherwise: endpoint met, non-inferiority margin, business stop (F8, F9)",
                       "indeterminate": "Indeterminate: no human engagement evidence either way (U)"}
 
 
@@ -123,7 +123,7 @@ def attribution_table() -> str:
                 + [f"**{pct(c['testable']['not_engaged_share'], 0)}**{ci(c['testable']['lo'], c['testable']['hi'], 0)}"
                    for c in cols.values()])
     rows.append(["Programs (entities)"] + [f"{c['programs']:,} ({c['entities']:,})" for c in cols.values()])
-    return table(pd.DataFrame(rows, columns=["Why the program failed"] + list(cols)))
+    return table(pd.DataFrame(rows, columns=["What the evidence shows"] + list(cols)))
 
 
 def attribution_sensitivity_table() -> str:
