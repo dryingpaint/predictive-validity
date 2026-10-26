@@ -1,4 +1,4 @@
-"""Report figures from the Section 1 and Section 2 outputs.
+"""Report figures from the Section 1, Section 2, Section 3 and attribution outputs.
 
     python -m report.figures
 
@@ -85,6 +85,73 @@ def failure_modes():
               ncol=4, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(0, -0.18))
     ax.set_title("Why suspended programs stopped, by the phase they stopped in", loc="left", color=INK, fontsize=11)
     save(fig, "failure_modes_by_phase")
+
+
+ATTRIBUTION_COLORS = {  # stacking order; the not-engaged hue marks that group in both panels
+    "not_engaged": ("Not engaged", "#eb6834"), "engaged_no_benefit": ("Engaged, no benefit", "#2a78d6"),
+    "trial_design": ("Trial design, population, endpoint", "#1baf7a"), "toxicity": ("Toxicity", "#eda100"),
+    "not_a_failure": ("Not an efficacy failure", "#e87ba4"), "indeterminate": ("No human engagement data", "#d6d5ce"),
+}
+ATTRIBUTION_ROWS = {  # sensitivity variant -> label in the right-hand panel
+    "Phase 2": "Phase 2", "Phase 3": "Phase 3", "outside oncology": "Outside oncology", "oncology": "Oncology",
+    "one program per entity": "One program per drug", "high or medium confidence": "High or medium confidence",
+    "direct pillar evidence only (inferred engagement counted as unknown)": "Directly measured engagement only",
+    "engaged only if shown before the index trial": "Engagement shown before the failed trial",
+}
+
+
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    p, d = k / n, 1 + z * z / n
+    c, h = (p + z * z / (2 * n)) / d, z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return c - h, c + h
+
+
+def efficacy_attribution():
+    n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
+    sens = pd.read_csv(os.path.join(OUT, "attribution", "sensitivity.csv")).set_index("variant")
+    fig, (left, right) = plt.subplots(1, 2, figsize=(12, 4.2), gridspec_kw={"width_ratios": [1.25, 1], "wspace": 0.55})
+
+    cols = [("Phase 2", n["by_phase"]["2"]), ("Phase 3", n["by_phase"]["3"]), ("Phase 2 and 3", n["phase23"])]
+    for i, (label, c) in enumerate(reversed(cols)):
+        start = 0.0
+        for g, (_, color) in ATTRIBUTION_COLORS.items():
+            w = c["groups"][g]["share"]
+            left.barh(i, w, left=start, height=0.6, color=color, edgecolor="white", linewidth=2)
+            if w >= 0.06:
+                left.text(start + w / 2, i, f"{w:.0%}", ha="center", va="center", fontsize=9,
+                          color=INK if g == "indeterminate" else "white")
+            start += w
+    left.set_yticks(range(len(cols)), [f"{label}\n{c['programs']:,} programs" for label, c in reversed(cols)],
+                    color=INK)
+    left.set_xlim(0, 1)
+    left.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    style(left)
+    left.legend(handles=[matplotlib.patches.Patch(color=c, label=l) for l, c in ATTRIBUTION_COLORS.values()],
+                ncol=3, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(0, -0.12))
+    left.set_title("Why Phase 2 and 3 programs failed on efficacy", loc="left", color=INK, fontsize=11)
+
+    t = n["phase23"]["testable"]
+    adj = n["adjudication"]
+    rows = [("All programs (main estimate)", t["not_engaged_share"], t["lo"], t["hi"], True)]
+    rows += [(label, sens.at[v, "not_engaged_of_testable"], sens.at[v, "lo"], sens.at[v, "hi"], False)
+             for v, label in ATTRIBUTION_ROWS.items()]
+    rows.append((f"Blind web adjudication ({adj['adjudicated_not_engaged']} of {adj['adjudicated_testable']})",
+                 adj["adjudicated_not_engaged_share"],
+                 *wilson(adj["adjudicated_not_engaged"], adj["adjudicated_testable"]), False))
+    y = np.arange(len(rows))[::-1]
+    for yi, (label, v, lo, hi, main) in zip(y, rows):
+        right.plot([lo, hi], [yi, yi], color="#eb6834", linewidth=2, solid_capstyle="round")
+        right.plot(v, yi, "o", color="#eb6834", markersize=9 if main else 7, markeredgecolor="white", markeredgewidth=2)
+        right.text(hi + 0.012, yi, f"{v:.0%}", va="center", fontsize=8, color=INK if main else INK2,
+                   fontweight="bold" if main else "normal")
+    right.set_yticks(y, [r[0] for r in rows], color=INK, fontsize=8)
+    right.get_yticklabels()[0].set_fontweight("bold")
+    right.set_xlim(0, 0.5)
+    right.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
+    style(right)
+    right.set_title("Not engaged, of failures whose mechanism was tested", loc="left", color=INK, fontsize=11)
+    right.set_xlabel("Share not engaged (95% CI)", color=INK2, fontsize=8)
+    save(fig, "efficacy_attribution")
 
 
 def loa_bars(csv, title, name, ref):
@@ -263,6 +330,8 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()
+    if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
+        efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
         s3_specificity()
