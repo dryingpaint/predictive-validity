@@ -41,7 +41,7 @@ uv sync                 # Python environment from pyproject.toml / uv.lock
 make all                # migrate, sources, identity, programs, labels, evidence, report
 ```
 
-This needs `DATABASE_URL` and `ANTHROPIC_API_KEY` in `.env`, and `pdftoppm` and `tesseract` on the path (OCR of scanned FDA letters). Schema changes are ledgered migrations in `db/` (`python db/migrate.py apply`).
+This needs `DATABASE_URL` and `ANTHROPIC_API_KEY` in `.env`, and `pdftoppm` and `tesseract` on the path (OCR of scanned FDA letters). The schema is `db/schema.sql` (`python db/migrate.py init` on an empty database); later changes are ledgered migrations in `db/` (`python db/migrate.py apply`, which `make all` runs first).
 
 ## License
 
