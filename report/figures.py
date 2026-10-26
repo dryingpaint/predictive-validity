@@ -131,39 +131,39 @@ def efficacy_attribution():
     rc = {"font.family": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
           "hatch.color": "white", "hatch.linewidth": 1.2}
     with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10, 5.6))
-        fig.subplots_adjust(left=0.16, right=0.97, top=0.84, bottom=0.2)
+        fig, ax = plt.subplots(figsize=(10, 4.4))
+        fig.subplots_adjust(left=0.16, right=0.97, top=0.8, bottom=0.25)
         fig.text(0.02, 0.975, "Where it can be traced, most efficacy failures engaged their target",
                  fontsize=15, fontweight="bold", color=INK, va="top")
         fig.text(0.02, 0.915, "Industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
                  fontsize=10, color=INK2, va="top")
 
-        cols = [("Phase 2 and 3", n["phase23"]), ("Phase 3", n["by_phase"]["3"]), ("Phase 2", n["by_phase"]["2"])]
-        rows = [(f"{total:,} programs", "All stops", everything, True)]
-        rows += [(f"{c['programs']:,} programs", label,
-                  [(c["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()],
-                  label == "Phase 2 and 3") for label, c in reversed(cols)]
-        ys = [4.6, 2.0, 1.0, 0.0]
+        c = n["phase23"]
+        rows = [(f"{total:,} programs", "All stops", everything, True),
+                (f"{c['programs']:,} programs", "Efficacy stops",
+                 [(c["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()],
+                 True)]
+        ys = [2.6, 0.0]
         for y, (count, label, segments, bold) in zip(ys, rows):
             stacked(ax, y, segments)
             ax.text(-0.02, y + 0.05, label, ha="right", va="bottom", fontsize=10, color=INK,
                     fontweight="bold" if bold else "normal")
             ax.text(-0.02, y - 0.03, count, ha="right", va="top", fontsize=8, color=MUTED)
-        ax.text(0, 5.75, "ALL PROGRAMS THAT STOPPED, FOR ANY REASON", fontsize=7.5, color=MUTED, fontweight="bold")
-        ax.text(0, 2.6, "PROGRAMS THAT STOPPED FOR EFFICACY: WHAT THE EVIDENCE SHOWS", fontsize=7.5, color=MUTED,
+        ax.text(0, 3.75, "ALL PROGRAMS THAT STOPPED, FOR ANY REASON", fontsize=7.5, color=MUTED, fontweight="bold")
+        ax.text(0, 0.6, "PROGRAMS THAT STOPPED FOR EFFICACY: WHAT THE EVIDENCE SHOWS", fontsize=7.5, color=MUTED,
                 fontweight="bold")
         eff_share = float(efficacy.mean())
         ne_share = float((stops.group == "not_engaged").mean())
-        bracket = 4.2
+        bracket = 2.2
         ax.plot([0.002, 0.002, eff_share - 0.002, eff_share - 0.002], [bracket + 0.08, bracket, bracket, bracket + 0.08],
                 color=INK2, linewidth=1)
         ax.text(0, bracket - 0.12, f"Stopped for efficacy: {eff_share:.0%} of all stops, broken down below",
                 ha="left", va="top", fontsize=8, color=INK2)
-        ax.annotate(f"Not engaged: {ne_share:.0%} of all stops", xy=(ne_share / 2, 4.6 + 0.3), xytext=(0.02, 5.25),
+        ax.annotate(f"Not engaged: {ne_share:.0%} of all stops", xy=(ne_share / 2, 2.6 + 0.3), xytext=(0.02, 3.25),
                     fontsize=8, color="#c4501f", fontweight="bold", ha="left", va="bottom",
                     arrowprops=dict(arrowstyle="-", color="#c4501f", lw=1, shrinkA=0, shrinkB=0))
         ax.set_xlim(0, 1)
-        ax.set_ylim(-0.5, 5.95)
+        ax.set_ylim(-0.45, 3.95)
         ax.set_xticks([])
         ax.set_yticks([])
         for side in ("top", "right", "left", "bottom"):
