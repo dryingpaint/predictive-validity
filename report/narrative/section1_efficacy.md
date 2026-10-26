@@ -4,7 +4,7 @@ A program that fails on efficacy fails in one of two ways that matter for target
 
 {{ATTRIBUTION_TABLE}}
 
-![Phase 2 and 3 programs recorded as stopping for efficacy, by what the evidence shows, and the not-engaged share of failures whose mechanism was tested](report/output/figures/efficacy_attribution.png)
+![All Phase 2 and 3 stops, and the programs among them recorded as stopping for efficacy, by what the evidence shows](report/output/figures/efficacy_attribution.png)
 
 Where the record shows whether the mechanism was tested, the drug had engaged its target in {{attribution.phase23.groups.engaged_no_benefit.n|int}} of {{attribution.phase23.testable.n|int}} programs and the disease did not respond; **{{attribution.phase23.testable.not_engaged_share|pct0}}** ({{attribution.phase23.testable.lo|pct0}}–{{attribution.phase23.testable.hi|pct0}}) failed without adequate engagement or exposure, or with another drug on the same target succeeding in the disease. The split is about the same in Phase 2 ({{attribution.by_phase.2.testable.not_engaged_share|pct0}}) and Phase 3 ({{attribution.by_phase.3.testable.not_engaged_share|pct0}}), and outside oncology ({{attribution.outside_oncology.testable.not_engaged_share|pct0}}). Trial design, population or endpoint account for {{attribution.phase23.groups.trial_design.share|pct0}} of efficacy failures, toxicity for {{attribution.phase23.groups.toxicity.share|pct0}}, and {{attribution.phase23.groups.not_a_failure.share|pct0}} were not efficacy failures on reading the sources (a non-inferiority margin, a met endpoint, a business stop).
 
