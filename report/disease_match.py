@@ -19,7 +19,8 @@ SIMILARITY_THRESHOLD = 0.8
 
 class Mondo:
     def __init__(self):
-        anc = frame.query("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
+        anc = frame.query_paged("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'",
+                                "term_id")
         self.ancestors = defaultdict(set)
         for t, a in anc.itertuples(index=False):
             self.ancestors[t].add(a)
