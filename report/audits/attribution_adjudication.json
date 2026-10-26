@@ -1,0 +1,1114 @@
+[
+ {
+  "key": "10137|MONDO:0018881|2",
+  "drug": "tamnorzatinib",
+  "disease": "myelodysplastic syndrome",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC12795523/",
+   "https://clinicaltrials.gov/study/NCT03176277"
+  ],
+  "notes": "Phase I/II NCT03176277 enrolled R/R AML and R/R MDS. Plasma exposure rose with dose. Phospho-Axl/Mer in patient blood showed near-maximal inhibition (Axl 67-100%, Mer 80-100% at 6-10 mg). No MTD was reached; 6 mg was chosen on PD and retinal grounds. There were no complete remissions on monotherapy and none (no CR/CRh) with venetoclax. Results were not split out for MDS. Because the target was engaged with no clinical activity, this is F2. Confidence is medium because MDS-specific data are thin."
+ },
+ {
+  "key": "10302|MONDO:0005249|2",
+  "drug": "zegocractin",
+  "disease": "pneumonia",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "medium",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC8992417/",
+   "https://clinicaltrials.gov/study/NCT04345614",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC13273768/"
+  ],
+  "notes": "CARDEA (Part 2, IV 2.0/1.6 mg/kg) was stopped early because US hospitalizations fell and tocilizumab use rose, not for futility. The primary endpoint, time to recovery, showed 7 vs 10 days (p=0.098). Day-30 mortality was 7.7% vs 17.6% (p=0.017). Ex vivo stimulated IL-2 release fell 55% after about 2 mg/kg in acute pancreatitis patients, which shows engagement. Auxora also lowered D-dimer and angiopoietin-2 in COVID. The miss reflects an underpowered, truncated trial with positive trends: F7."
+ },
+ {
+  "key": "10341|MONDO:0004979|2",
+  "drug": "AZD1419",
+  "disease": "asthma",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://doi.org/10.1164/rccm.202001-0133oc",
+   "https://clinicaltrials.gov/study/NCT02898662"
+  ],
+  "notes": "INCONTRO gave 13 weekly inhaled doses while ICS/LABA were withdrawn. AZD1419 induced a Th1/type-1 IFN response, showing TLR9 engagement, and produced sustained reductions in type-2 inflammation markers. There was no difference from placebo in time to or proportion with loss of asthma control, ACQ-5, exacerbations, FEV1 or FeNO. Engagement and biomarker effects did not give clinical benefit, so this is F2. The ICS-withdrawal design (many placebo patients stayed controlled) leaves F4/F7 possible."
+ },
+ {
+  "key": "10444|MONDO:0024331|2",
+  "drug": "nedizantrep",
+  "disease": "colorectal carcinoma",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT05660850",
+   "https://cdn.clinicaltrials.gov/large-docs/50/NCT05660850/Prot_SAP_000.pdf",
+   "https://onderzoekmetmensen.nl/en/node/52277/pdf",
+   "https://drughunter.com/articles/gdc-6599"
+  ],
+  "notes": "The failed trial was in chronic cough (CRC with asthma/UCC), not colorectal carcinoma; the disease label looks like a mapping error. Plasma levels reached about 360-400 ng/mL, against a human TRPA1 IC50 of 5.3 nM. 24-h cough frequency at Day 14 was 12.6 vs 13.2/h on placebo, with no severity benefit, and Roche dropped the program. Phase 1 included a human AITC dermal blood-flow challenge, but I found no published result. Published engagement data are animal only: U."
+ },
+ {
+  "key": "10678|MONDO:0005416|2",
+  "drug": "asp-7962",
+  "disease": "osteoarthritis, knee",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://www.sciencedirect.com/science/article/pii/S1063458419311483",
+   "https://ora.ox.ac.uk/objects/uuid:ad26e7c0-bec8-4816-b4f7-9de9dc5caee6/download_file?safe_filename=Watt-et-al-Tropomyosin-related-kinase-A-_TrkA_-inhibition-for-the-treatment-of-painful-knee-osteoarthritis.pdf&type_of_work=Journal+article",
+   "https://clinicaltrials.gov/study/NCT02611466"
+  ],
+  "notes": "At 100 mg BID, WOMAC pain did not separate from placebo, while naproxen did. Total plasma levels were 'well above IC50' (unbound Cmax 249 ng/mL, trough 44 ng/mL). No human TrkA engagement or NGF-pathway PD was measured. Dose was set by the extent of preclinical safety coverage, not human tolerability, and the authors suggest small-molecule blockade may have been incomplete. Anti-NGF mAbs work, but they act on the ligand, not TrkA, so F1b does not apply: U."
+ },
+ {
+  "key": "10785|MONDO:0007147|2",
+  "drug": "BAY2253651",
+  "disease": "obstructive sleep apnea syndrome",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03603678",
+   "https://publications.ersnet.org/content/erj/58/5/2101937",
+   "https://www.sciencedirect.com/science/article/abs/pii/S0012369222041940"
+  ],
+  "notes": "SANDMAN gave a single 100 ug nasal dose to 34 OSA patients. Responders were 6.3% vs 6.7% on placebo, with no PSG differences. No human pharyngeal collapsibility or genioglossus PD was reported for BAY2253651. The human Pcrit improvement (Osman, Chest 2023) and later responder data used a different, more potent TASK-1/3 antagonist, BAY2586116, which suggests a molecule issue but not a same-target pivotal success. Without engagement data: U."
+ },
+ {
+  "key": "11142|MONDO:0005386|2",
+  "drug": "LLG783",
+  "disease": "peripheral arterial disease",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03194776",
+   "https://cdn.clinicaltrials.gov/large-docs/76/NCT03194776/Prot_000.pdf",
+   "https://synapse.patsnap.com/drug/bd27e98ee38a473aa85443563a73c893"
+  ],
+  "notes": "This was a Novartis IgG mAb given at 6 mg/kg IV every 4 weeks. Its target is redacted in the protocol; Patsnap lists LDLR, which is unverified. Serum PK was measured (Cmax about 200-270 ug/mL), but with no known target the adequacy of exposure cannot be judged. 6MWT maximal walking distance changed +19.1 m vs +36.8 m on placebo (p=0.26). No target-engagement or pathway biomarker data are public: U."
+ },
+ {
+  "key": "12330|MONDO:0004842|2",
+  "drug": "AG013",
+  "disease": "stomatitis",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03234465",
+   "https://pubmed.ncbi.nlm.nih.gov/24114811/",
+   "https://www.targetedonc.com/view/chemoradiation-companion-ag013-fails-to-prevent-oral-mucositis-in-head-and-neck-cancer",
+   "https://www.sec.gov/Archives/edgar/data/1174940/000149315220013051/ex99-1.htm"
+  ],
+  "notes": "AG013 is an L. lactis mouth rinse that secretes hTFF1. In Phase 1b, live bacteria and hTFF1 were detected in saliva and oral mucosa, so local delivery was shown. In the Phase 2 (n=200), severe OM duration was 19.6 vs 20.6 d (US) and 17.2 vs 15.3 d (EU). The trial was terminated, and Oragenics cited overall lack of efficacy plus portfolio reasons. TFF1 receptor engagement and downstream mucosal-repair markers were never reported. Claimed subgroup activity is unpublished: U."
+ },
+ {
+  "key": "12862|MONDO:0005101|2",
+  "drug": "PF-06687234",
+  "disease": "ulcerative colitis",
+  "exposure": "inadequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F1a",
+  "confidence": "high",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC12891412/",
+   "https://clinicaltrials.gov/study/NCT03269695"
+  ],
+  "notes": "BUILD UC tested F8-IL-10 at 20 mg SC weekly on top of infliximab. It was stopped for futility after 20 patients: remission 14.3% vs 12.5%. Drug was detected in only 1 of 66 colon biopsies, at low concentration in noninflamed tissue. The authors conclude efficacious tissue concentrations were likely not reached. pSTAT3 and other IL-10 engagement markers were not measured. Inadequate tissue exposure means the mechanism was not tested: F1a."
+ },
+ {
+  "key": "13084|MONDO:0008661|2",
+  "drug": "AS012",
+  "disease": "vitiligo",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04487860",
+   "https://cdn.clinicaltrials.gov/large-docs/60/NCT04487860/Prot_002.pdf",
+   "https://patents.google.com/patent/WO2008098325A1/de"
+  ],
+  "notes": "AS012 is an oral Ach\u00e9/Sun product derived from Stachytarpheta cayennensis (ipolamiide hydrolysis products). Its rationale rests on in-vitro CD8+ T-cell IFN-gamma inhibition, and it has no defined molecular target. In the 327-patient, four-regimen dose-ranging Phase 2, no regimen separated from placebo on VASI (p>0.7) or VES. No human PK, target or biomarker data are public: U."
+ },
+ {
+  "key": "13237|MONDO:0005101|2",
+  "drug": "BBT-401",
+  "disease": "ulcerative colitis",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04596293",
+   "https://www.biospace.com/bridge-biotherapeutics-presents-phase-2a-clinical-trial-results-for-bbt-401-a-drug-candidate-to-treat-ulcerative-colitis",
+   "https://www.koreabiomed.com/news/articleView.html?idxno=20484"
+  ],
+  "notes": "BBT-401 is a GI-restricted Pellino-1 inhibitor, tested as BBT-401-1S at 800 mg QD/BID. Clinical response at Day 57 was 54.5% in both drug arms vs 63.6% on placebo, and remission was numerically worse. The company says colon/ileum distribution improved over the earlier formulation and plans further delivery work, but it gave no tissue levels against potency. No Pellino-1 engagement or pathway biomarkers were reported: U."
+ },
+ {
+  "key": "13296|MONDO:0002492|2",
+  "drug": "ASP1128",
+  "disease": "acute kidney injury",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F3",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT03941483",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC10334402/",
+   "https://accp1.onlinelibrary.wiley.com/doi/10.1002/cpdd.1236"
+  ],
+  "notes": "100 mg IV daily x3 post-CABG/valve. Patient PK matched phase 1 exposures; drug significantly upregulated 6/7 PPAR\u03b4/fatty-acid-oxidation target genes in patients, so engagement and proximal pathway were shown. AKI at 72 h 24.6% vs 21.0% (p=0.595); MAKE no better. Authors judged exposure/timing unlikely to be the problem and attributed failure to a low-risk population with good renal reserve (median eGFR ~80) and insufficient injury severity, so patient selection (F3); F2 is the alternative."
+ },
+ {
+  "key": "1365|MONDO:0005338|2",
+  "drug": "nebivolol",
+  "disease": "open-angle glaucoma",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F9",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT04910100"
+  ],
+  "notes": "Active-controlled non-inferiority trial (no placebo arm). Nebivolol 0.5%/1.0% suspensions lowered diurnal IOP by 3.2-3.5 mmHg from baseline at day 84 versus 4.9 (timolol solution) and 5.6 (timolol suspension), and failed the prespecified 1.5 mmHg non-inferiority margin at all timepoints. The drug lowered IOP but missed only a non-inferiority comparison to timolol; not a placebo-controlled efficacy failure. No ocular PK or receptor data were found."
+ },
+ {
+  "key": "14621|MONDO:0005970|2",
+  "drug": "atidortoxumab",
+  "disease": "staphylococcal pneumonia",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT02940626",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC6658777/",
+   "https://www.biospace.com/arsanis-provides-update-following-completion-of-planned-interim-analysis-of-phase-2-clinical-trial-of-asn100"
+  ],
+  "notes": "ASN-1 given as part of ASN100 (1800 mg each mAb). In the trial, ASN-1 Cmax was ~414 ug/mL with t1/2 ~179 h. In the phase 1 at 3600 mg, ASN-1/ASN-2 reached lung epithelial lining fluid and serum toxin-neutralizing activity lasted to day 58, but ELF neutralization was not measured. Stopped for futility at interim (S. aureus pneumonia 5 vs 7 of 155; p=0.55). Exposure and neutralizing capacity were shown without benefit, so F2. The low event count also makes F7 possible."
+ },
+ {
+  "key": "161|MONDO:0005647|2",
+  "drug": "furosemide",
+  "disease": "anogenital human papillomavirus infection",
+  "exposure": "no_human_data",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT03334240",
+   "PMID:30580460",
+   "https://chdr.nl/library/no-effect-of-topical-digoxin-and-furosemide-gel-for-patients-with-external-anogenital-warts"
+  ],
+  "notes": "CLS003 topical digoxin+furosemide (ICVT) gel. Terminated for lack of effect at interim (n=28); CHDR reported no effect on external anogenital warts. Engagement is inferred from the same topical formulation meeting its endpoint in cutaneous warts (wart diameter -3.0 mm, p=0.002; HPV load -94%). No skin or mucosal drug levels, ion-flux or HPV-load data exist for genital lesions. Mucosal vs keratinized skin weakens the inference, so a U reading is defensible."
+ },
+ {
+  "key": "1661|MONDO:0016218|3",
+  "drug": "eculizumab",
+  "disease": "Guillain-Barre syndrome",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT04752566",
+   "https://onlinelibrary.wiley.com/doi/10.1111/jns.12646"
+  ],
+  "notes": "Japanese phase 3 (n=57): eculizumab 900 mg weekly x4 plus IVIg. Time to Hughes FG<=1 was not different (HR 0.9, p=0.89), and secondaries were negative. Free C5 and hemolytic activity were reported only at week 24, after washout, so they are not informative. The standard C5-blocking regimen used here is effective in gMG/NMOSD (inferred engagement). Terminal complement blockade did not improve recovery, so F2."
+ },
+ {
+  "key": "1763|MONDO:0007256|2",
+  "drug": "enzalutamide",
+  "disease": "hepatocellular carcinoma",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02528643",
+   "PMID:34351608"
+  ],
+  "notes": "Randomized 2:1 placebo-controlled phase 2 (n=165) in sorafenib-pretreated advanced HCC at 160 mg/day, the dose approved in prostate cancer where AR antagonism is clinically effective. OS HR 1.15 (7.8 vs 7.7 mo); PFS HR 1.04. Toxicity was similar to placebo, so dose was not limited. No AR-pathway biomarker data were reported in HCC. The AR antagonism mechanism shows no benefit in unselected HCC, so F2."
+ },
+ {
+  "key": "1851|MONDO:0009807|2",
+  "drug": "lenvatinib",
+  "disease": "osteosarcoma",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "medium",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC11581622/",
+   "PMID:39418029"
+  ],
+  "notes": "OLIE randomized phase 2: lenvatinib 14 mg/m2 + ifosfamide/etoposide vs IE. PFS HR 0.54 (95% CI 0.27-1.08), one-sided p=0.04, missing the 0.025 threshold; median PFS 6.5 vs 5.5 mo; ORR 15% vs 9.8%. Most planned lenvatinib doses were delivered. Authors attribute the miss to the IE control performing better than assumed, baseline imbalance (prior IE 35% vs 17%) and open-label surgery bias. A favourable but underpowered effect, so F7."
+ },
+ {
+  "key": "1923|MONDO:0007661|2",
+  "drug": "valbenazine",
+  "disease": "Tourette syndrome",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT03530293",
+   "https://www.drugdiscoverynews.com/neurocrine-reevaluates-tourette-program-13019"
+  ],
+  "notes": "NCT03530293 was a pediatric randomized-withdrawal study at up to 60-80 mg. It was terminated for futility because placebo-switched patients rarely lost response. Its YGTSS changes did not separate (week 36: +0.6 vs +0.1). T-Force GOLD (phase 2b, n=127) also missed YGTSS; it used higher doses after T-Force GREEN's underexposure concern. VMAT2 inhibition at these doses is clinically effective in tardive dyskinesia and HD chorea (same CNS target). This was the third failure in TS, so F2."
+ },
+ {
+  "key": "2055|MONDO:0006733|3",
+  "drug": "voclosporin",
+  "disease": "dry eye syndrome",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F1b",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT04147650",
+   "https://eyewire.news/news/aurinia-announces-outcome-of-audrey-clinical-trial-in-dry-eye-syndrome",
+   "https://www.healio.com/news/ophthalmology/20190201/voclosporin-ophthalmic-solution-yields-positive-results-for-dry-eye",
+   "https://www.accessdata.fda.gov/drugsatfda_docs/label/2012/050790s020lbl.pdf"
+  ],
+  "notes": "AUDREY (n=509): no VOS dose (0.05-0.2%) beat vehicle on Schirmer >=10 mm at week 4 (10-11% vs 5%; p=0.09-0.28), and symptoms were not better. Topical cyclosporine, another calcineurin inhibitor, is approved to increase tear production in KCS, so the target works in this disease. No ocular-tissue voclosporin levels or calcineurin/T-cell readouts were found. Aurinia cited learnings about the severe-DES population (F3 possible) and a short 4-week endpoint (F4 possible)."
+ },
+ {
+  "key": "2111|MONDO:0005252|2",
+  "drug": "elamipretide",
+  "disease": "heart failure",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "PMID:32068002",
+   "PMID:29217757",
+   "https://clinicaltrials.gov/study/NCT02788747"
+  ],
+  "notes": "PROGRESS-HF (n=71) gave elamipretide 4 or 40 mg SC daily for 28 days. LVESV did not change vs placebo (-4.4 and -1.2 vs -3.8 mL); LVEDV and LVEF were also unchanged. The phase 1 single high-dose IV infusion reduced LV volumes acutely, but that is a functional, not engagement, readout. No myocardial uptake, cardiolipin binding or mitochondrial bioenergetic marker was measured in HFrEF patients. Never engaged and wrong mechanism cannot be told apart, so U."
+ },
+ {
+  "key": "2166|MONDO:0003233|2",
+  "drug": "zuranolone",
+  "disease": "essential tremor",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": true,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/api/v2/studies/NCT02978781",
+   "https://www.biospace.com/sage-therapeutics-announces-third-quarter-2017-financial-results-and-provides-pipeline-update"
+  ],
+  "notes": "Open-label Part A: TETRAS kinetic tremor improved >=30% in 8/12 patients at 7 days. Part B randomized withdrawal of only 8 patients (4/arm) at individually tolerated 10-30 mg: Kinesia change 0.15 vs 0.20 (p=0.91), stopped short of planned size. Somnolence, dizziness and sedation capped doses below the 30-50 mg used for approved depression indications. GABA-A PAM CNS efficacy is established. Sage moved ET to SAGE-324. A tiny, uninformative randomized phase, so F7; F1a dose cap is the alternative."
+ },
+ {
+  "key": "2193|MONDO:0013860|2",
+  "drug": "iptacopan",
+  "disease": "idiopathic membranous glomerulonephritis",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04154787",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC13156742/"
+  ],
+  "notes": "Posted results: plasma sC5b-9 fell ~80-90% from baseline on iptacopan (vs ~14-38% with rituximab), so alternative/terminal complement was inhibited. Iptacopan is approved in PNH, C3G and IgAN through the same target. UPCR ratio at 24 weeks was 0.88 on iptacopan vs 0.64 on rituximab, which was inferior, and the sponsor terminated the trial. With proximal complement blockade shown, the lack of proteinuria response points to factor B/alternative pathway not driving PLA2R-type MN as tested."
+ },
+ {
+  "key": "2291|MONDO:0018881|2",
+  "drug": "durvalumab",
+  "disease": "myelodysplastic syndrome",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02281084",
+   "https://dx.doi.org/10.1182/bloodadvances.2021005487"
+  ],
+  "notes": "Durvalumab 1500 mg q4w, the dose approved in solid tumours (systemic PD-L1 blockade), plus oral azacitidine in HMA-failure MDS. ORR stayed low in all arms and OS/PFS did not improve with durvalumab. The parallel Zeidan randomized trial of aza\u00b1durvalumab in HR-MDS found no clinical benefit and minimal immune activation on biomarker analysis, and PD-L1 was not upregulated on blasts. Engagement inferred from the approved indications. PD-L1 blockade does not drive response in MDS."
+ },
+ {
+  "key": "2312|MONDO:0043537|3",
+  "drug": "eptinezumab",
+  "disease": "cluster headache syndrome",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04688775",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC12090066/"
+  ],
+  "notes": "ALLEVIATE: 400 mg IV, above the approved migraine doses (100-300 mg) that are efficacious through CGRP neutralization. The weeks 1-2 attack-change primary missed (-4.6 vs -4.0, p=0.50), but \u226550% responder rates at weeks 2-4 were nominally significant. The trial stopped early for futility at 231/304. Authors cite an endpoint that is sensitive to variability, timing and a high placebo response. Galcanezumab (same ligand) works in episodic CH, so a design issue is likelier than a wrong target. Authors also raise CGRP being only one factor in CH."
+ },
+ {
+  "key": "2329|MONDO:0005342|3",
+  "drug": "narsoplimab",
+  "disease": "IgA glomerulonephritis",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03608033",
+   "https://www.sec.gov/Archives/edgar/data/1285819/000143774923028296/ex_579466.htm",
+   "https://www.hcplive.com/view/fda-approves-narsoplimab-yartemlea-as-first-ta-tma-therapy"
+  ],
+  "notes": "ARTEMIS-IGAN interim analysis: 24-h UPE -21.3% on narsoplimab vs -16.6% on vehicle, and the trial was terminated. MASP-2 blockade is inferred adequate because narsoplimab is FDA-approved (Dec 2025) for TA-TMA through systemic lectin-pathway inhibition. No IgAN lectin-pathway biomarker was reported. Omeros blamed an outsized placebo response (F7 possible), but the drug arm itself showed only a small reduction, and the phase 2 12-week result was also similar to placebo. Lectin-pathway blockade does not reduce proteinuria in IgAN."
+ },
+ {
+  "key": "2357|MONDO:0044212|2",
+  "drug": "tezepelumab",
+  "disease": "chronic idiopathic urticaria",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F4",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04833855",
+   "https://www.dermatologytimes.com/view/tezepelumab-shows-sustained-post-treatment-benefit-in-chronic-spontaneous-urticaria-despite-missed-primary-endpoint",
+   "https://www.jacionline.org/article/S0091-6749(25)00172-1/fulltext"
+  ],
+  "notes": "INCEPTION: 210 mg q4w and 420 mg q2w (\u2265 the approved asthma dose, where TSLP blockade is efficacious). The week-16 UAS7 primary missed in all patients. Anti-IgE-naive patients showed a delayed, sustained off-treatment UAS7 benefit through week 32, with reduced IL-5 and IL-13, so the pathway was engaged in this disease. Authors attribute the miss to a delayed treatment effect and the 16-week endpoint (F4). The anti-IgE-naive subgroup signal also suggests F3."
+ },
+ {
+  "key": "2364|MONDO:0004980|2",
+  "drug": "spesolimab",
+  "disease": "atopic eczema",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03822832",
+   "PMID:36376738"
+  ],
+  "notes": "Phase IIa, n=51: spesolimab 600 mg IV q4w, comparable to the 900 mg IV GPP dose, where IL-36R blockade is approved and efficacious in skin. EASI -37.9% vs -12.3% (p=0.149). A sensitivity analysis excluding patients who used restricted corticosteroids gave -48.3% (nominal p=0.024). The study was small and confounded by rescue therapy (F7 possible), but BI stopped AD development. No IL-36 pathway biomarkers were reported. With engagement inferred, the modest effect suggests IL-36 is not a major AD driver."
+ },
+ {
+  "key": "27037|MONDO:0004980|2",
+  "drug": "taurodeoxycholic acid",
+  "disease": "atopic eczema",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04530643",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC12127193/"
+  ],
+  "notes": "Phase 2a, n=80: HY209 (NuGel) 0.3%/0.5% topical gel for 4 weeks. EASI change did not differ from placebo (0.5%: -11.9% vs -2.9%). The publication gives no human evidence of skin penetration, TGR5 engagement or inflammasome inhibition, only post-hoc plasma proteomic responder subgroups (CRK-low), which the authors use to argue for heterogeneity. With no engagement data, never-engaged and wrong-target cannot be separated."
+ },
+ {
+  "key": "2|MONDO:0100096|3",
+  "drug": "amantadine",
+  "disease": "COVID-19",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04952519",
+   "https://abm.gov.pl/en/news/119,Results-from-clinical-trials-on-the-efficacy-of-amantadine-in-the-treatment-of-C.html",
+   "https://onlinelibrary.wiley.com/doi/full/10.1111/ene.16045"
+  ],
+  "notes": "Polish ABM-funded hospital trial (Katowice/Lublin): 149 analysed, moderate-severe COVID-19. No difference from placebo, and the trial was terminated after the annual analysis. The proposed anti-SARS-CoV-2 mechanisms (viroporin/lysosomal or NMDA effects) were never shown in patients. There are no human data on whether antiviral-relevant concentrations or target modulation were reached, so engagement is unknown. The outpatient Lublin trial was also null on time to recovery."
+ },
+ {
+  "key": "33265|MONDO:0100096|2",
+  "drug": "arumakimig",
+  "disease": "COVID-19",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04382651",
+   "PMID:37338154"
+  ],
+  "notes": "MAS-COVID: a single 10 mg/kg IV dose in 138 hospitalized patients. The APACHE II primary did not improve (14.5 vs 13.5, p=0.33). By day 15, CRP fell 51%, IL-6 42%, neutrophils 19% and IFN-\u03b3 16% vs placebo, which the authors read as IL-1\u03b2/IL-18 pathway engagement. ICU admissions fell 33% and viral clearance was faster (secondary, not significant). Pathway inhibited without benefit on the primary, so IL-1\u03b2/IL-18 is not a dominant driver of severe COVID-19 pneumonia."
+ },
+ {
+  "key": "4117|MONDO:0000723|2",
+  "drug": "ecopipam",
+  "disease": "stutter disorder",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04492956",
+   "https://www.neurologylive.com/view/ecopipam-meets-primary-secondary-end-points-phase-3-study-tourette-syndrome"
+  ],
+  "notes": "Speak Freely: ~2 mg/kg/day for 12 weeks, n=68. SSI-4 change was -1.5 on ecopipam vs -1.8 on placebo, with a small CGI-S/SSS numerical edge. The same CNS D1 target at ~1.8 mg/kg/day met the phase 3 Tourette primary (D1AMOND, relapse HR 0.5), so central D1 antagonism is inferred adequate. The positive earlier signal came from an open-label pilot. D1 blockade does not improve stuttering as tested."
+ },
+ {
+  "key": "4551|MONDO:0005340|2",
+  "drug": "daxdilimab",
+  "disease": "alopecia areata",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "high",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT05368103"
+  ],
+  "notes": "Single-arm phase 2, n=30: 300 mg SC. Serum drug was measurable, and blood pDCs fell ~88-89% at weeks 4 and 12, so target-cell depletion was achieved. Mean SALT fell only 12.6% at week 24, with 0% SALT \u226410 at weeks 12-20 and 10% at week 40, far below JAK inhibitors. Scalp pDC or IFN data were not posted. pDC depletion does not drive hair regrowth in AA."
+ },
+ {
+  "key": "4609|MONDO:0021100|2",
+  "drug": "xentuzumab",
+  "disease": "breast neoplasm",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC10258741/",
+   "https://www.nature.com/articles/s41416-020-0774-1",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC7811234/",
+   "https://clinicaltrials.gov/study/NCT03659136"
+  ],
+  "notes": "XENERA-1 (1000 mg weekly + everolimus/exemestane, n=101) showed no PFS benefit (HR 1.19 IRC; 1.23 investigator). Engagement was not measured in this trial, but first-in-human studies showed IGF bioactivity near the limit of detection at >=450 mg/week, and >=90% free IGF-1 and >=64% free IGF-2 neutralization at 1000 mg/week. The phase Ib/II non-visceral subgroup signal did not replicate. Authors suggest the IGF axis is not a main driver or is compensated. Ligand neutralization was shown and gave no benefit, so F2."
+ },
+ {
+  "key": "4727|MONDO:0019393|2",
+  "drug": "tropifexor",
+  "disease": "idiopathic malabsorption due to bile acid synthesis defects",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F4",
+  "confidence": "low",
+  "sources": [
+   "PMID:32702169",
+   "https://onlinelibrary.wiley.com/doi/10.1111/apt.15967",
+   "https://clinicaltrials.gov/study/NCT02713243"
+  ],
+  "notes": "This was a 20-patient, 14-day crossover at 60 ug daily in primary bile acid diarrhoea. FGF19 rose and C4 fell (the authors call this effective target engagement). Peak serum bile acids fell 33% and ascending-colon emptying slowed. Stool frequency, stool form and loperamide use did not change. The authors suggest higher doses or longer treatment may be needed. The proximal biomarker effect was shown in this disease, but there was no symptom change in a short, small pilot, so F4 (F7 underpowered is the alternative)."
+ },
+ {
+  "key": "4736|MONDO:0007488|2",
+  "drug": "irsenontrine",
+  "disease": "Lewy body dementia",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://alzforum.org/therapeutics/e2027",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC11712912/",
+   "https://clinicaltrials.gov/study/NCT03467152"
+  ],
+  "notes": "The phase 1 MAD showed a dose-dependent rise in CSF cGMP, maximal at 50 mg. The phase 2 DLB trial (n=326, 50 mg) confirmed a 150-192% CSF cGMP increase, but every primary and secondary endpoint missed. A post hoc trend in amyloid-negative patients was not significant. CNS exposure and PDE9 engagement were shown in this population with no cognitive effect, so F2 (F3 is a weaker alternative given the amyloid-negative hypothesis)."
+ },
+ {
+  "key": "5120|MONDO:0005090|3",
+  "drug": "Lu AF35700",
+  "disease": "schizophrenia",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02333487",
+   "https://www.sciencedirect.com/science/article/abs/pii/S0920996422003449",
+   "https://clinicaltrials.gov/study/NCT02717195",
+   "https://clinicaltrials.gov/study/NCT03230864",
+   "https://pharmaphorum.com/news/lundbeck-craters-as-resistant-schizophrenia-drug-fails-phase-iii"
+  ],
+  "notes": "A PET study in schizophrenia patients predicted about 74% D1, 43% D2 and 87% 5-HT6 occupancy at 10 mg. DAYBREAK (n=697) gave PANSS improvement similar to risperidone/olanzapine (-10.1 and -8.2 vs -9.9) and was not superior. NCT03230864 was terminated on those data. The D1-preferring, low-D2 mechanism engaged its targets but gave no added benefit in treatment-resistant schizophrenia, so F2."
+ },
+ {
+  "key": "5182|MONDO:0004691|3",
+  "drug": "venglustat",
+  "disease": "autosomal dominant polycystic kidney disease",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "PMID:36535535",
+   "https://www.ajkd.org/article/S0272-6386(22)01079-4/fulltext",
+   "PMID:36204243"
+  ],
+  "notes": "STAGED-PKD (8 or 15 mg) lowered plasma glucosylceramide dose-dependently but did not change the TKV growth rate. eGFR declined faster on drug, and the trial was terminated for futility. Kidney-tissue GL-1 was not reported; plasma GL-1 lowering shows systemic GCS inhibition. Engagement was confirmed with no effect on cyst growth, so F2."
+ },
+ {
+  "key": "5182|MONDO:0005180|2",
+  "drug": "venglustat",
+  "disease": "Parkinson disease",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "high",
+  "sources": [
+   "https://www.thelancet.com/journals/laneur/article/PIIS1474-4422(23)00470-2/fulltext",
+   "https://journals.sagepub.com/doi/10.3233/JPD-212714",
+   "https://cureparkinsons.org.uk/2021/03/results-of-the-moves-pd-trial-announced/",
+   "https://www.mdsabstracts.org/abstract/effect-of-venglustat-by-gba-mutation-severity-in-patients-with-parkinsons-disease/"
+  ],
+  "notes": "MOVES-PD markedly lowered plasma and CSF glucosylceramide, confirming CNS target engagement. Part 2 (52 weeks) missed its primary and secondary endpoints, and motor and cognitive scores worsened on drug. The authors conclude GCS inhibition may not be a viable approach for GBA1-PD. Engagement was adequate with no benefit, so F2."
+ },
+ {
+  "key": "5250|MONDO:0005109|2",
+  "drug": "rovafovir etalafenamide",
+  "disease": "HIV infectious disease",
+  "exposure": "adequate",
+  "engagement": "inadequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F1a",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03472326",
+   "https://cdn.clinicaltrials.gov/large-docs/26/NCT03472326/Prot_000.pdf",
+   "PMID:18056281"
+  ],
+  "notes": "PBMC GS-9148-diphosphate was measured. In treatment-naive HIV, 30 mg for 10 days gave a median 1.03 log10 drop. In NRTI-resistant virus (K65R/TAMs), 60 mg and 180 mg functional monotherapy gave only -0.13 and -0.29 log10. That missed the >0.5 log10 stopping rule, and the trial was terminated. The intracellular drug was present but did not inhibit resistant RT enough in vivo. RT itself is a validated target, so this molecule's inadequate activity against resistant virus is the failure: F1a."
+ },
+ {
+  "key": "5270|MONDO:0002974|2",
+  "drug": "IBI310",
+  "disease": "cervical cancer",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F1b",
+  "confidence": "low",
+  "sources": [
+   "PMID:39827881",
+   "https://clinicaltrials.gov/study/NCT04590599",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC11179243",
+   "https://www.akesobio.com/en/media/akeso-news/20220629/"
+  ],
+  "notes": "IBI310 3 mg/kg q3w x4 plus sintilimab vs placebo plus sintilimab (n=205): ORR 32.3% vs 23.5% (p=0.17), no PFS or OS gain, and more grade >=3 TRAEs (55% vs 19%). PK was linear, but no human CTLA-4 PD or occupancy data were found. Cadonilimab (PD-1/CTLA-4) is approved in China for this disease, so the target has succeeded here. That approval was single-arm, though, so the add-on value of CTLA-4 is unproven: F1b, with U the alternative."
+ },
+ {
+  "key": "5330|MONDO:0850230|2",
+  "drug": "lirentelimab",
+  "disease": "chronic urticaria",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://www.biospace.com/allakos-announces-phase-2-lirentelimab-trials-in-atopic-dermatitis-and-chronic-spontaneous-urticaria-did-not-meet-their-primary-endpoints",
+   "https://clinicaltrials.gov/study/NCT05528861",
+   "https://www.researchgate.net/publication/357274979_An_Open-Label_Proof-of-Concept_Study_of_Lirentelimab_for_Antihistamine-Resistant_Chronic_Spontaneous_and_Inducible_Urticaria"
+  ],
+  "notes": "MAVERICK (300 mg SC q2w, n=123) gave UAS7 -27% vs -26% with placebo. Blood eosinophils fell 95%, showing Siglec-8 engagement and ADCC depletion. No skin mast-cell data were reported. Allakos stopped lirentelimab development. The open-label IV CURSIG signal did not replicate. Engagement was shown with no clinical benefit, so F2. Skin mast-cell inhibition was unmeasured, which leaves some doubt about the tissue compartment."
+ },
+ {
+  "key": "5338|MONDO:0000607|2",
+  "drug": "acimtamig",
+  "disease": "primary cutaneous T-cell non-Hodgkin lymphoma",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F8",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04101331",
+   "https://www.sec.gov/Archives/edgar/data/1608390/000110465923036050/afmd-20211231x20f.htm",
+   "https://onlinelibrary.wiley.com/doi/full/10.1002/hon.3163_126",
+   "https://doi.org/10.1182/blood-2018-99-115269"
+  ],
+  "notes": "REDIRECT (200 mg weekly, n=108) gave ORR 32.4% and CR 10.2%, but responses were short (median DoR 2.3 months, PFS 3.5 months). The cutaneous biomarker study showed NK infiltration and activation in blood and skin that correlated with response. Affimed's 20-F says it dropped monotherapy for the more attractive clinical and commercial opportunity of AFM13 plus NK cells. The readout showed activity, so this was a strategic stop: F8. Weak durability means F2 or F4 are alternatives."
+ },
+ {
+  "key": "5354|MONDO:0003005|2",
+  "drug": "BI 1026706",
+  "disease": "macular retinal edema",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "PMID:32818112",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC7396196/",
+   "PMID:37562641"
+  ],
+  "notes": "Oral 100 mg bid for 12 weeks (n=105) left CSFT unchanged vs placebo, with no BCVA difference. Plasma steady state was confirmed, but retinal concentrations were not measured and no B1R occupancy or PD biomarker was reported. The authors question whether enough drug reached the retina. A separate LPS lung challenge at the same dose also showed no anti-inflammatory effect. Retinal exposure and engagement are unknown, so U."
+ },
+ {
+  "key": "5469|MONDO:0100233|2",
+  "drug": "temelimab",
+  "disease": "long COVID-19",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT05497089",
+   "PMID:42409185",
+   "https://www.marketscreener.com/quote/stock/GENEURO-SA-27100923/news/GeNeuro-Announces-Results-of-the-GNC-501-Study-in-Post-Covid-19-Syndrome-47262245/"
+  ],
+  "notes": "GNC-501 (n=203, HERV-W ENV-positive, 54 mg/kg IV monthly, 24 wk): PROMIS fatigue -3.2 vs -3.8 placebo; secondaries null; well tolerated, so no dose cap. Publication (Brain Behav Immun 2026) reports no PK, ENV neutralisation, CNS penetration or downstream biomarker data. The company said post hoc that the course of ENV status and disease duration may matter, but showed no data. Temelimab has no efficacy win elsewhere to infer engagement from. Engagement unknown, so U."
+ },
+ {
+  "key": "5655|MONDO:0005178|2",
+  "drug": "aldumastat (GLPG1972/S201086)",
+  "disease": "osteoarthritis",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "high",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03595618",
+   "https://www.oarsijournal.com/article/S1063-4584(24)01255-X/fulltext",
+   "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9299907/",
+   "https://www.biospace.com/galapagos-and-servier-s-osteoarthritis-knee-drug-flops-in-phase-ii"
+  ],
+  "notes": "In phase 1b, serum ARGS-aggrecan neoepitope (made by ADAMTS5 cleavage) fell >50%. In ROCCELLA (n=932, 75-300 mg for 52 wk), serum ARGS fell markedly and dose-dependently, so ADAMTS5 was engaged. Cartilage thickness loss on qMRI did not differ from placebo (p=0.17-0.94), and WOMAC and VAS pain were null. ARGS change was not associated with cartilage thinning or pain. The drug engaged its target without structural or clinical benefit, so F2."
+ },
+ {
+  "key": "5667|MONDO:0007254|3",
+  "drug": "balixafortide (POL6326)",
+  "disease": "breast cancer",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03786094",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC5209880/",
+   "PMID:29706375",
+   "https://www.onclive.com/view/balixafortide-plus-eribulin-fails-to-improve-orr-in-advanced-her2-negative-breast-cancer"
+  ],
+  "notes": "In healthy volunteers, IV balixafortide mobilised CD34+ cells dose-dependently (about 38 cells/uL at 1500-2500 ug/kg), showing human CXCR4 antagonism. FORTRESS used phase 1b doses with a favourable safety profile, so no tolerability cap. In the 3rd line+ population, ORR was 13.0% vs 13.7%, PFS HR 1.07 and OS HR 1.08, and the trial stopped for failing its primary endpoint. CXCR4 blockade added to eribulin gave no benefit; tumour-level engagement was not measured."
+ },
+ {
+  "key": "5792|MONDO:0009831|2",
+  "drug": "rucosopasem manganese (GC4711)",
+  "disease": "malignant pancreatic neoplasm",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04698915",
+   "https://clinicaltrials.gov/study/NCT03762031",
+   "https://ascopubs.org/doi/10.1200/JCO.2022.40.16_suppl.TPS4184",
+   "https://www.biospace.com/galera-reports-third-quarter-2023-financial-results-and-recent-corporate-updates"
+  ],
+  "notes": "GRECO-2 (SBRT plus GC4711 vs placebo, OS endpoint) was terminated in Oct 2023 after an interim futility analysis (177 enrolled, 35 deaths); Galera then dropped both GRECO trials. Healthy-volunteer phase 1 studies report plasma PK only. I found no human measure of superoxide dismutation, tumour H2O2 or radiosensitisation for rucosopasem. Engagement is unknown, so U."
+ },
+ {
+  "key": "57|MONDO:0005326|2",
+  "drug": "ibuprofen (SP160412 = ibuprofen 400 mg + chlorpheniramine 4 mg)",
+  "disease": "sunburn",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03332524",
+   "https://synapse.patsnap.com/drug/bce0a0a5548749eea0cc15d2aec4ef4b",
+   "https://www.dovepress.com/placebo-controlled-crossover-validation-study-of-oral-ibuprofen-and-to-peer-reviewed-fulltext-article-JPR"
+  ],
+  "notes": "The sponsor terminated the 80-patient phase 2 for lack of efficacy; no results were posted. Oral ibuprofen 400 mg is a standard analgesic dose that meets pain endpoints through COX inhibition, so engagement is inferred adequate. In a UVB pain model, ibuprofen 600 mg BID lowered erythema and heat-pain sensitivity only in period 2, so the sunburn signal is inconsistent. The trial mainly tested combination synergy. Given the missing data, F7 is plausible; confidence low."
+ },
+ {
+  "key": "5874|MONDO:0018177|2",
+  "drug": "copper gluconate (with disulfiram)",
+  "disease": "glioblastoma",
+  "exposure": "inadequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": true,
+  "code": "F1a",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03034135",
+   "PMID:30771200",
+   "PMID:38768767",
+   "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2802966"
+  ],
+  "notes": "Single-arm phase 2 (DSF 80 mg TID + Cu 1.5 mg TID + TMZ, n=23): ORR 0%, median PFS 1.7 months. In a companion phase 1/2, DSF was capped by DLTs at an MTD of 375-500 mg/d. That study found Cu-diethyldithiocarbamate (the proposed active complex) in plasma but not in tumour tissue. The active species did not reach the site of action at tolerable doses, so the mechanism was not properly tested: F1a. The randomized GBM-DSF trial was also negative."
+ },
+ {
+  "key": "6058|MONDO:0004980|2",
+  "drug": "AMTX-100",
+  "disease": "atopic eczema",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04313400",
+   "https://synapse.patsnap.com/drug/0f3d8097381a43d09893f3c40e005588"
+  ],
+  "notes": "Topical nuclear-transport-modifier peptide (importin-alpha). Part 1 had no DLTs up to 70% BSA, so no dose cap. Part 2 RCT (1.1% BID, 28 days): responder rate 3.8% drug vs 9.7% vehicle, and vIGA changes favoured vehicle. No human skin penetration, NF-kB nuclear-import inhibition or cytokine biomarker data were reported. Engagement unknown, so U."
+ },
+ {
+  "key": "6310|MONDO:0024355|3",
+  "drug": "azoximer bromide (Polyoxidonium)",
+  "disease": "respiratory tract infectious disorder",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03840135",
+   "https://www.oatext.com/pdf/PD-5-204.pdf"
+  ],
+  "notes": "Paediatric ARI phase 3 (nasal/sublingual 0.15 mg/kg/d for 7 days, n=155 analysed): fever 2.04 vs 2.26 days. The difference was -0.22 d (95% CI -0.60 to 0.16; Mann-Whitney p=0.24), which missed the pre-set -0.52 d superiority margin. Authors still called it effective. The immunomodulator has no defined molecular target, and no human immunological engagement or biomarker data were reported. Engagement unknown, so U."
+ },
+ {
+  "key": "6329|MONDO:0004980|2",
+  "drug": "daleuton (DS107, oral DGLA)",
+  "disease": "atopic eczema",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03817190",
+   "https://clinicaltrials.gov/study/NCT02864498",
+   "https://clinicaltrials.gov/study/NCT02211417",
+   "https://synapse.patsnap.com/drug/aea335d2e35a4532837acb21e4da2a6b"
+  ],
+  "notes": "Phase 2b (2 g/d for 16 wk, n=219) was terminated after interim analysis. vIGA success was 14% vs 15% placebo (p=0.69) and EASI-75 27% vs 30% (p=0.43). The earlier 8-week oral phase 2 (1 g, 2 g) was also null. No published plasma or skin DGLA, 15-HETrE or eicosanoid shift data at these doses, and the target is not defined. Engagement unknown, so U."
+ },
+ {
+  "key": "6552|MONDO:0018177|3",
+  "drug": "ofranergene obadenovec (VB-111)",
+  "disease": "glioblastoma",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "inadequate",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02511405",
+   "PMID:31844890",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC7229248/"
+  ],
+  "notes": "GLOBE (1e13 VP q2mo + bevacizumab vs bevacizumab): OS 6.8 vs 7.9 months, HR 1.20, P=0.19. Investigators blame the design: dropping the phase 2 VB-111 monotherapy priming. They argue concurrent bevacizumab suppresses PPE-1-driven transgene expression in angiogenic endothelium, citing the missing phase 2 MRI signature. Fever after dosing tracked survival. No human tumour transgene-expression data exist, so engagement is unproven; U is the alternative."
+ },
+ {
+  "key": "6600|MONDO:0006541|3",
+  "drug": "allantoin (SD-101 6%)",
+  "disease": "epidermolysis bullosa",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02384460",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC7310548/"
+  ],
+  "notes": "ESSENCE (n=169, whole-body cream daily for 3 months): time to target wound closure HR 1.004 (p=0.985), and 3-month closure was 49% vs 54% vehicle. Authors blame a high vehicle response (lanolin and cod-liver-oil vehicle, intensive skin care) and note trends in children aged 2-12 and patients with \u22655% wound burden. Allantoin has no defined target and no human mechanistic or biomarker data. Engagement unknown, so U; F7 is the alternative."
+ },
+ {
+  "key": "6609|MONDO:0100096|3",
+  "drug": "olokizumab",
+  "disease": "COVID-19",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "inferred_adequate",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04380519",
+   "https://docs.olokizumab.com/Olokizumab_SmPc_ENG_incl_changes_1_7.pdf",
+   "https://en.wikipedia.org/wiki/Olokizumab"
+  ],
+  "notes": "A single 64 mg SC dose, the same dose approved in Russia for RA (CREDO 1-3 normalised CRP at 64 mg), so systemic IL-6 engagement is inferred. Three-arm trial, about 124 per arm, early 2020 with no steroid standard of care: responders 98 vs 87 on placebo (p=0.073), clinical improvement p=0.061. IL-6 blockade (tocilizumab) later succeeded in COVID-19, so the target is valid. The likeliest cause is an underpowered three-arm design in an evolving standard of care. F2 is the alternative."
+ },
+ {
+  "key": "6902|MONDO:0002009|2",
+  "drug": "GW117",
+  "disease": "major depressive disorder",
+  "exposure": "adequate",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC12716496/",
+   "PMID:41425080",
+   "https://clinicaltrials.gov/study/NCT06796868"
+  ],
+  "notes": "Agomelatine-like MT1/MT2 agonist and 5-HT2C antagonist. Phase 1 showed dose-proportional plasma exposure. No human receptor or circadian engagement data. Phase 2 (n=276, 20/40/60 mg): numerically better than placebo but not significant. Placebo response was very high (57-61%), and the authors blame low baseline severity, site heterogeneity and COVID disruption. 20 mg was significant on MADRS (p=0.026). Coded as a design/placebo-response failure; U is the fallback because engagement is unmeasured."
+ },
+ {
+  "key": "7311|MONDO:0002009|2",
+  "drug": "onfasprodil",
+  "disease": "major depressive disorder",
+  "exposure": "adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04722666",
+   "https://www.psychiatrist.com/jcp/rapid-onset-sustained-efficacy-onfasprodil-mij821-novel-nr2b-negative-allosteric-modulator-treatment-resistant-depression-phase-2-randomized-proof-of-concept-study/"
+  ],
+  "notes": "In TRD, 0.16 mg/kg IV beat placebo on MADRS at 24 h (-8.25, p=0.001), so GluN2B engagement at that dose is inferred. Plasma PK was measured in this trial (Cmax 118 at 0.16 mg/kg). In the suicidal-intent trial, placebo plus comprehensive standard of care reached -17.5 MADRS, against -16.4 to -17.7 on drug. Novartis ended it on a benefit-risk review. The intensive standard of care swamped any drug signal, so the cause is high placebo response (F7)."
+ },
+ {
+  "key": "7466|MONDO:0000607|2",
+  "drug": "cobomarsen",
+  "disease": "primary cutaneous T-cell non-Hodgkin lymphoma",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F7",
+  "confidence": "low",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03713320",
+   "https://investors.viridiantherapeutics.com/news/news-details/2020/miRagen-Announces-Internal-Review-of-Preliminary-Topline-Data-for-the-Phase-2-SOLAR-Clinical-Trial-of-Cobomarsen-in-Patients-with-Cutaneous-T-Cell-Lymphoma-CTCL-10-05-2020/default.aspx",
+   "PMID:30125933"
+  ],
+  "notes": "SOLAR enrolment was halted for resource reasons at 37 of 126 planned patients. ORR4 was 15.8% vs 16.7% on vorinostat (active comparator, p=0.95), while PFS favoured cobomarsen (p=0.011). miRagen dropped development as lacking a compelling primary result. miR-155 target derepression is shown only in cell lines; I found no human lesional pharmacodynamic data. A truncated, underpowered active-comparator trial with a positive PFS signal points to F7; F8 and U are alternatives."
+ },
+ {
+  "key": "7585|MONDO:0850353|2",
+  "drug": "tomivosertib",
+  "disease": "castration-resistant prostate carcinoma",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT03690141",
+   "https://cdn.clinicaltrials.gov/large-docs/41/NCT03690141/Prot_000.pdf"
+  ],
+  "notes": "The protocol reports that 200 mg BID (the RP2D used here) holds >85% P-eIF4E inhibition in PBMCs over 24 h and completely inhibits P-eIF4E in on-treatment tumour biopsies (phase 1, solid tumours). In CRPC (n=16) there were 0 responses on the primary endpoint, and the trial was terminated for lack of efficacy. MNK1/2 was engaged, but blocking it did not control CRPC: F2."
+ },
+ {
+  "key": "771|MONDO:0021107|2",
+  "drug": "flecainide",
+  "disease": "narcolepsy",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02821715",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC6982634/"
+  ],
+  "notes": "THN102 adds very low-dose flecainide (3 or 27 mg), meant as an astroglial connexin inhibitor, to modafinil 300 mg. ESS was not better than modafinil alone (14.7 vs 15.3/15.3). I found no human evidence that these sub-antiarrhythmic doses engage connexins (or SCN5A) in the brain. A review blames over-representation of severe, modafinil-resistant patients (possible F3), but without engagement data the mechanism cannot be judged: U."
+ },
+ {
+  "key": "8051|MONDO:0010679|3",
+  "drug": "pamrevlumab",
+  "disease": "Duchenne muscular dystrophy",
+  "exposure": "no_human_data",
+  "engagement": "no_human_data",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "U",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT04371666",
+   "https://www.medrxiv.org/content/10.1101/2025.02.17.25321407v1",
+   "https://pmc.ncbi.nlm.nih.gov/articles/PMC10357134/"
+  ],
+  "notes": "LELANTOS-1 (35 mg/kg q2w, n=98): PUL2.0 at week 52 not different (p=0.88), and grip strength worsened on drug. Phase 2 MISSION was open-label against historical controls, with MRI fat/fibrosis scores but no CTGF engagement or muscle exposure measure. Pamrevlumab also failed phase 3 in IPF and pancreatic cancer, so no other disease provides a validated engagement anchor. No human evidence of CCN2 neutralisation in muscle: U."
+ },
+ {
+  "key": "8367|nan|2",
+  "drug": "orvepitant",
+  "disease": "chronic refractory cough",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "PMID:23539641",
+   "https://clinicaltrials.gov/study/NCT02993822",
+   "PMID:31421110",
+   "PMID:42889769"
+  ],
+  "notes": "Human PET shows >99% central NK1 occupancy for >=24 h at 30-60 mg. In VOLCANO-2 (10/20/30 mg, n=315), awake objective cough frequency at week 12 was not reduced (30 mg -0.27 vs placebo -0.24, p=0.53), although 30 mg improved patient-reported outcomes (LCQ, VAS). A 2026 meta-analysis finds NK1 antagonists do not reduce objective cough frequency. Full engagement with no objective efficacy is F2; F4 is an alternative given the PRO benefit."
+ },
+ {
+  "key": "8497|MONDO:0002009|2",
+  "drug": "sirukumab",
+  "disease": "major depressive disorder",
+  "exposure": "inferred_adequate",
+  "engagement": "inferred_adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F3",
+  "confidence": "medium",
+  "sources": [
+   "https://clinicaltrials.gov/study/NCT02473289",
+   "https://www.psychiatrist.com/jcp/immune-targeted-therapies-depression-antidepressant-effects-monoclonal-antibodies/",
+   "PMID:28855173"
+  ],
+  "notes": "50 mg SC q4w is the same regimen that met ACR20 in RA (SIRROUND-D), so peripheral IL-6 neutralisation is inferred; the mAb's CNS exposure is unknown. As adjunct in MDD with CRP >=3 mg/L, HDRS-17 at week 12 was -11.4 vs -10.6 (p=0.31). Benefit appeared only in patients with baseline CRP >=8 mg/L, plus anhedonia gains, so the failure is attributed to population heterogeneity (F3)."
+ },
+ {
+  "key": "8778|MONDO:0005036|3",
+  "drug": "andecaliximab",
+  "disease": "gastric adenocarcinoma",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "no_human_data",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "medium",
+  "sources": [
+   "PMID:29691300",
+   "PMID:33577358",
+   "https://clinicaltrials.gov/study/NCT02545504"
+  ],
+  "notes": "In phase 1, 800 mg q2w was chosen on target engagement, and free MMP9 was undetectable in plasma in the gastric/GEJ cohort (Shah 2018). GAMMA-1 (n=432) used the same 800 mg plus mFOLFOX6: OS 12.5 vs 11.8 months (HR 0.93, p=0.56), PFS not significant, ORR 51% vs 41%. Circulating MMP9 was fully bound without survival benefit: F2. Tumour-tissue inhibition was not measured."
+ },
+ {
+  "key": "8816|MONDO:0005542|3",
+  "drug": "apolipoprotein a-i",
+  "disease": "acute coronary syndrome",
+  "exposure": "adequate",
+  "engagement": "adequate",
+  "pathway": "adequate",
+  "dose_limited": false,
+  "code": "F2",
+  "confidence": "high",
+  "sources": [
+   "PMID:38587254",
+   "PMID:36994730",
+   "https://clinicaltrials.gov/study/NCT03473223"
+  ],
+  "notes": "In AEGIS-I, CSL112 6 g infusions raised apoA-I, cholesterol efflux capacity and the APOA1 exchange rate in post-MI patients. AEGIS-II (n=18,219; four weekly 6 g infusions) missed 90-day MACE (HR 0.93, p=0.24), with non-significant trends at 180 and 365 days. The pathway was engaged in a large adequately powered trial with no outcome benefit: F2."
+ }
+]

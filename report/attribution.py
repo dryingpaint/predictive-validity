@@ -18,7 +18,7 @@ import pandas as pd
 from scipy.stats import fisher_exact
 from sklearn.metrics import cohen_kappa_score
 
-from pipeline.attribution import CHECK_TASK, cohort
+from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, cohort
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, phase_rows
@@ -28,6 +28,8 @@ OUT = os.path.join(frame.REPO, "report", "output", "attribution")
 ADJUDICATION = os.path.join(frame.REPO, "report", "audits", "attribution_adjudication.json")
 N_BOOT = 1000
 RELATED_DISEASE = 0.5
+# F3 and F4 count as engaged without benefit only when engagement was shown or inferred; otherwise
+# they join trial design as a failure of the trial's population or endpoint (see group()).
 GROUP = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
          "F4": "engaged_no_benefit", "F5": "toxicity", "F6": "toxicity", "F7": "trial_design",
          "F8": "not_a_failure", "F9": "not_a_failure", "U": "indeterminate"}
@@ -36,21 +38,24 @@ CODES = ["F1a", "F1b", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "U"]
 ENGAGED = ("adequate", "inferred_adequate")
 
 
-def load() -> pd.DataFrame:
+def group(code: pd.Series, engagement: pd.Series) -> pd.Series:
+    g = code.map(GROUP)
+    return g.where(~(code.isin(["F3", "F4"]) & ~engagement.isin(ENGAGED)), "trial_design")
+
+
+def load() -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Labelled cohort programs, and the cohort programs without a validated label (refusals)."""
     eff = cohort()
     lab = frame.query("""SELECT a.*, d.input_payload FROM preclin.efficacy_failure_attribution a
                          JOIN pv_evidence.llm_decision d USING (llm_decision_id)""")
     lab["key"] = [f"{m}|{d}|{p}" for m, d, p in zip(lab.moiety_id, lab.mondo_id, lab.phase)]
-    d = eff.merge(lab.drop(columns=["moiety_id", "mondo_id", "phase"]), on="key", how="left")
-    if d.primary_code.isna().any():
-        raise ValueError(f"{int(d.primary_code.isna().sum())} cohort programs have no attribution; run "
-                         "pipeline.attribution label")
-    d["group"] = d.primary_code.map(GROUP)
+    d = eff.merge(lab.drop(columns=["moiety_id", "mondo_id", "phase"]), on="key")
+    d["group"] = group(d.primary_code, d.engagement)
     d["oncology"] = d.bio_area.eq("oncology")
     d["n_papers"] = [len(p["papers"]) for p in d.input_payload]
     d["n_phase1"] = [len(p["phase1_results"]) for p in d.input_payload]
     d["index_start"] = pd.to_datetime([p["index"]["start"] for p in d.input_payload], errors="coerce")
-    return d.drop(columns=["input_payload"])
+    return d.drop(columns=["input_payload"]), eff[~eff.key.isin(d.key)][["key", "phase", "modality"]]
 
 
 def shares(d: pd.DataFrame, col: str, levels: list[str], rng: np.random.Generator) -> pd.DataFrame:
@@ -79,10 +84,25 @@ def split(d: pd.DataFrame, rng: np.random.Generator) -> dict:
 
 
 def summary(d: pd.DataFrame, rng: np.random.Generator) -> dict:
+    keyed = lambda df: {r.pop("level"): r for r in df.to_dict("records")}
     return {"programs": int(len(d)), "entities": int(d.moiety_id.nunique()),
-            "groups": shares(d, "group", GROUPS, rng).to_dict("records"),
-            "codes": shares(d, "primary_code", CODES, rng).to_dict("records"),
+            "groups": keyed(shares(d, "group", GROUPS, rng)), "codes": keyed(shares(d, "primary_code", CODES, rng)),
             "testable": split(d, rng)}
+
+
+def bounds(d: pd.DataFrame, adj: dict) -> dict:
+    """Not-engaged share of failures whose mechanism was tested, if indeterminate programs split like
+    the indeterminate programs that outside research could decide, and if every one was not engaged."""
+    g = d.group.value_counts()
+    ne, eng, u = g.get("not_engaged", 0), g.get("engaged_no_benefit", 0), g.get("indeterminate", 0)
+    out = {"labelled": ne / (ne + eng), "all_indeterminate_not_engaged": (ne + u) / (ne + eng + u)}
+    outside = adj.get("outside_u_groups", {})
+    tested = outside.get("not_engaged", 0) + outside.get("engaged_no_benefit", 0)
+    if adj.get("pipeline_u") and tested:
+        decided = u * tested / adj["pipeline_u"]
+        extra_ne = decided * outside.get("not_engaged", 0) / tested
+        out["indeterminate_split_as_adjudicated"] = (ne + extra_ne) / (ne + eng + decided)
+    return out
 
 
 def agreement(a: pd.Series, b: pd.Series) -> dict:
@@ -107,6 +127,7 @@ def rederivation(d: pd.DataFrame) -> dict:
     if m.empty:
         return {"n": 0}
     out = agreement(m.primary_code, m.check_code)
+    out["sampled"] = CHECK_SAMPLE
     out["engagement_agree"] = float((m.engagement == m.check_engagement).mean())
     out["engaged_agree"] = float((m.engagement.isin(ENGAGED) == m.check_engagement.isin(ENGAGED)).mean())
     return out
@@ -119,10 +140,17 @@ def adjudication(d: pd.DataFrame) -> dict:
     m = d.merge(adj[["key", "code"]].rename(columns={"code": "adjudicated"}), on="key")
     m = m[m.adjudicated.isin(CODES)]
     out = agreement(m.primary_code, m.adjudicated)
+    out["sampled"] = int(len(adj))
     u = m[m.primary_code == "U"]
     out["pipeline_u"] = int(len(u))
     out["pipeline_u_decided_outside"] = int((u.adjudicated != "U").sum())
     out["outside_u_groups"] = u[u.adjudicated != "U"].adjudicated.map(GROUP).value_counts().to_dict()
+    ga, gb = m.primary_code.map(GROUP), m.adjudicated.map(GROUP)
+    key = ["not_engaged", "engaged_no_benefit"]
+    out["contradictions"] = int((ga.isin(key) & gb.isin(key) & (ga != gb)).sum())
+    out["adjudicated_testable"] = int(gb.isin(key).sum())
+    out["adjudicated_not_engaged"] = int((gb == "not_engaged").sum())
+    out["adjudicated_not_engaged_share"] = float((gb == "not_engaged").sum() / max(gb.isin(key).sum(), 1))
     decided = m[m.primary_code != "U"]
     out["decided_group_agree"] = float((decided.primary_code.map(GROUP) == decided.adjudicated.map(GROUP)).mean()) \
         if len(decided) else None
@@ -134,7 +162,7 @@ def fisher(d: pd.DataFrame, flag: str, a: str = "F2", b: str = "F1a") -> dict:
     tab = [[int(((x.primary_code == c) & x[flag]).sum()), int(((x.primary_code == c) & ~x[flag]).sum())]
            for c in (a, b)]
     odds, p = fisher_exact(tab) if min(map(sum, tab)) else (float("nan"), float("nan"))
-    return {"table": {a: tab[0], b: tab[1]}, f"share_{a}": tab[0][0] / max(sum(tab[0]), 1),
+    return {"table": {a: tab[0], b: tab[1]}, "n": {a: sum(tab[0]), b: sum(tab[1])}, f"share_{a}": tab[0][0] / max(sum(tab[0]), 1),
             f"share_{b}": tab[1][0] / max(sum(tab[1]), 1), "odds_ratio": float(odds), "p": float(p)}
 
 
@@ -186,7 +214,7 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
     }
     out = []
     for name, v in variants.items():
-        v = v.assign(group=v.primary_code.map(GROUP))
+        v = v.assign(group=group(v.primary_code, v.engagement))
         s = shares(v, "group", GROUPS, rng).set_index("level")
         t = split(v, rng)
         out.append({"variant": name, "programs": int(len(v)), **{g: float(s.at[g, "share"]) for g in GROUPS},
@@ -214,7 +242,7 @@ def main() -> None:
     rng = np.random.default_rng(SEED)
     progs, trials = frame.programs(), frame.program_trials()
     rows = phase_rows(progs, trials, frame.snapshot())
-    d = load()
+    d, unlabelled = load()
     d.drop(columns=["secondary_codes", "sources"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     main_cohort = d[d.phase.isin([2, 3])]
     n = {"phase23": summary(main_cohort, rng), "phase1": summary(d[d.phase == 1], rng),
@@ -222,9 +250,15 @@ def main() -> None:
          "outside_oncology": summary(main_cohort[~main_cohort.oncology], rng),
          "oncology": summary(main_cohort[main_cohort.oncology], rng),
          "coverage": coverage(main_cohort),
+         "unlabelled": {"programs": int(len(unlabelled)), "phase23": int(unlabelled.phase.isin([2, 3]).sum()),
+                        "by_modality": unlabelled.modality.value_counts().to_dict()},
          "rederivation": rederivation(main_cohort), "adjudication": adjudication(main_cohort),
          "construct": construct(main_cohort, progs, rows)}
-    sensitivity(main_cohort, rng).to_csv(os.path.join(OUT, "sensitivity.csv"), index=False)
+    n["bounds"] = bounds(main_cohort, n["adjudication"])
+    sens = sensitivity(main_cohort, rng)
+    sens.to_csv(os.path.join(OUT, "sensitivity.csv"), index=False)
+    n["sensitivity_range"] = {"lo": float(sens.not_engaged_of_testable.min()),
+                              "hi": float(sens.not_engaged_of_testable.max())}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=lambda x: x.item() if hasattr(x, "item") else str(x))
 

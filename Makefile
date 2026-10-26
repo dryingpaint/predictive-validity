@@ -72,7 +72,8 @@ labels:
 # Open Targets associations, the year each evidence item became known where its own date is
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
 # dated by it with their yearly series, then the germline mechanism of each target in each program
-# disease and the orientation of each mouse model, both decided without the drug.
+# disease and the orientation of each mouse model, both decided without the drug; last, why each
+# program that stopped for efficacy failed (PubMed retrieval, three-pillar labels, a re-derivation sample).
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
@@ -82,11 +83,15 @@ evidence:
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse
+	$(RUN) pipeline.attribution literature
+	$(RUN) pipeline.attribution label
+	$(RUN) pipeline.attribution check
 
 report:
 	$(RUN) report.section1
 	$(RUN) report.section2
 	$(RUN) report.section3
+	$(RUN) report.attribution
 	$(RUN) report.quality
 	$(RUN) report.figures
 	$(RUN) report.render
