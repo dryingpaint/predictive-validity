@@ -90,7 +90,7 @@ def failure_modes():
 ATTRIBUTION_COLORS = {  # stacking order; the not-engaged hue marks that group in both panels
     "not_engaged": ("Not engaged", "#eb6834"), "engaged_no_benefit": ("Engaged, no benefit", "#2a78d6"),
     "trial_design": ("Trial design, population, endpoint", "#1baf7a"), "toxicity": ("Toxicity", "#eda100"),
-    "not_a_failure": ("Recorded as efficacy, but was not", "#e87ba4"), "indeterminate": ("No human engagement data", "#d6d5ce"),
+    "not_a_failure": ("Recorded as efficacy, but was not", "#e87ba4"), "indeterminate": ("No data", "#d6d5ce"),
 }
 ATTRIBUTION_ROWS = {  # sensitivity variant -> label in the right-hand panel
     "Phase 2": "Phase 2", "Phase 3": "Phase 3", "outside oncology": "Outside oncology", "oncology": "Oncology",
