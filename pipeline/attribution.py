@@ -57,18 +57,24 @@ def subject_key(moiety_id: int, mondo_id: str | None, phase: int) -> str:
     return f"{moiety_id}|{mondo_id or ''}|{phase}"
 
 
-def cohort():
-    """Section 1's efficacy-suspended programs with their index trial, one row per
-    (entity, disease, phase)."""
+def stops():
+    """Every program Section 1 records as suspended, with the reason it assigns and its disease,
+    one row per (entity, disease, phase), and the phase rows, programs and trials it was built from."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
     rows = section1.phase_rows(progs, trials, snap)
-    modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes())
-    eff = modes[modes.reason.isin(EFFICACY_REASONS)].merge(progs[["program_id", "mondo_id"]], on="program_id")
-    eff["key"] = [subject_key(m, d, p) for m, d, p in zip(eff.moiety_id, eff.mondo_id, eff.phase)]
-    if eff.key.duplicated().any():
-        raise ValueError(f"programs share an (entity, disease, phase): {eff[eff.key.duplicated()].key.tolist()[:5]}")
-    return eff
+    modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes()).merge(
+        progs[["program_id", "mondo_id"]], on="program_id")
+    modes["key"] = [subject_key(m, d, p) for m, d, p in zip(modes.moiety_id, modes.mondo_id, modes.phase)]
+    if modes.key.duplicated().any():
+        raise ValueError(f"programs share an (entity, disease, phase): {modes[modes.key.duplicated()].key.tolist()[:5]}")
+    return modes, rows, progs, trials
+
+
+def cohort():
+    """Section 1's efficacy-suspended programs with their index trial."""
+    modes = stops()[0]
+    return modes[modes.reason.isin(EFFICACY_REASONS)]
 
 
 def search_names(name: str, codes: list[str]) -> list[str]:
@@ -426,7 +432,41 @@ def bundles(eff) -> dict[str, dict]:
     return items
 
 
+LITERATURE_METHOD = "pharmacology_literature@v1"
+LITERATURE_DESCRIPTION = f"""PubMed (E-utilities, relevance order, reviews, systematic reviews and meta-analyses excluded)
+searched once per entity with a program Section 1 records as stopped for efficacy: its name and up to {MAX_CODES} code
+names (code names need a digit and five alphanumerics) with human-pharmacology terms (pharmacodynamics, target
+engagement, occupancy, proof of mechanism, first-in-human, healthy volunteers, ascending dose, PET, CSF,
+dose-response, dose-ranging), top {PHARMACOLOGY_HITS}; and once per (entity, program disease) with the disease's MONDO
+label, top {DISEASE_HITS}. A changed query replaces the earlier results. Results: preclin.moiety_publication, papers in
+public.publications."""
+ATTRIBUTION_METHOD = "efficacy_attribution@v1"
+ATTRIBUTION_DESCRIPTION = f"""Cohort: programs Section 1 records as suspended for efficacy (sponsor-stated, or the primary
+endpoint missed), keyed by (entity, disease, phase); the trial that gave the reason is the index trial. Each program's
+bundle holds the index trial (record, classified outcome, primary outcomes, posted results up to {RESULTS_CHARS}
+characters, linked papers), up to {MAX_OTHER_TRIALS} other trials of the entity with classified outcomes, posted
+results of up to {MAX_PHASE1_RESULTS} Phase 1 trials, FDA approvals, other entities on a shared primary target in a
+disease with Lin similarity >= {RELATED_DISEASE}, and pharmacology_literature@v1 abstracts. The model (task
+{TASK.name} {TASK.prompt_version}, {TASK.model}, effort {TASK.effort}) judges the three pillars of Morgan et al.
+2012 in humans at the tested dose (exposure, engagement, pathway: adequate, inferred_adequate, inadequate,
+no_human_data) and a failure code (F1a, F1b, F2-F9, U; report/attribution_plan.md), using only the bundle; validation
+rejects citations outside the bundle and codes that contradict the pillars. Checks: {CHECK_TASK.name} (stepwise
+prompt, {CHECK_TASK.model}) on a seeded sample of {CHECK_SAMPLE}, and a blind web adjudication of a seeded sample
+(report/audits/attribution_adjudication.json)."""
+
+
 def label(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, LITERATURE_METHOD, "PubMed retrieval of human pharmacology", LITERATURE_DESCRIPTION,
+                          ["PubMed"], {"pharmacology_hits": PHARMACOLOGY_HITS, "disease_hits": DISEASE_HITS,
+                                       "terms": PHARMACOLOGY_TERMS, "exclude": NOT_REVIEWS})
+        llm.record_method(cur, ATTRIBUTION_METHOD, "Why efficacy failed: three pillars", ATTRIBUTION_DESCRIPTION,
+                          ["preclin.ctgov_study", "preclin.trial_outcome", "preclin.trial_endpoint",
+                           "preclin.ctgov_result_summary", "preclin.moiety_target", "preclin.dev_program_approval",
+                           "preclin.moiety_publication"],
+                          {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
+                           "codes": CODES, "check_sample": CHECK_SAMPLE, "check_seed": CHECK_SEED})
+        conn.commit()
     eff = cohort()
     items = bundles(eff)
     run_id = llm.run(TASK, items)

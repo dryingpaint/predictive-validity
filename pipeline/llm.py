@@ -93,6 +93,18 @@ def register_release(cur, name: str, version: str, url: str, sha: str, metadata:
     return cur.fetchone()[0]
 
 
+def record_method(cur, method_id: str, name: str, description: str, inputs: list[str], parameters: dict) -> str:
+    """Record (or refresh) a method, id name@version, in preclin.analysis_method; returns the id."""
+    cur.execute("""INSERT INTO preclin.analysis_method
+                     (method_id, name, version, description, inputs, parameters, code_commit)
+                   VALUES (%s,%s,%s,%s,%s,%s,%s)
+                   ON CONFLICT (method_id) DO UPDATE SET description = EXCLUDED.description,
+                     inputs = EXCLUDED.inputs, parameters = EXCLUDED.parameters,
+                     code_commit = EXCLUDED.code_commit, recorded_at = now()""",
+                (method_id, name, method_id.split("@")[1], description, inputs, Json(parameters), git_commit()))
+    return method_id
+
+
 @dataclass
 class Task:
     """One LLM classification task. `render` turns an input payload into the
@@ -109,9 +121,13 @@ class Task:
     model: str = MODEL
     effort: str = "medium"
     max_tokens: int = 8000
+    # Server tools (web search, web fetch) the model may call; a task with tools runs direct calls
+    # only, resumes paused turns up to MAX_CONTINUATIONS times, and records every URL it retrieved.
+    tools: list[dict[str, Any]] | None = None
 
     def request_params(self, payload: dict[str, Any]) -> dict[str, Any]:
-        return dict(
+        extra = {"tools": self.tools} if self.tools else {}
+        return dict(**extra,
             model=self.model,
             max_tokens=self.max_tokens,
             system=[{"type": "text", "text": self.system, "cache_control": {"type": "ephemeral"}}],
@@ -231,7 +247,7 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
                            for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()])
         todo = [k for k in items if k not in reused]
         print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
-        if len(todo) <= DIRECT_MAX:
+        if len(todo) <= DIRECT_MAX or task.tools:
             _run_concurrent(api, run_id, task, items, todo)
         else:
             _run_batches(api, run_id, task, items, todo)
@@ -243,15 +259,57 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
     return run_id
 
 
-def _parse(task: Task, payload: dict[str, Any], msg) -> tuple[str, dict | None, str | None, dict]:
-    """(raw text, parsed output, error, usage) for one Messages response."""
-    usage = {"input_tokens": msg.usage.input_tokens, "output_tokens": msg.usage.output_tokens,
-             "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
-    raw = next((b.text for b in msg.content if b.type == "text"), "")
-    if msg.stop_reason in ("refusal", "max_tokens"):
+MAX_CONTINUATIONS = 4  # resumptions of a turn the server paused while running its tools
+
+
+def retrieved_urls(content) -> list[str]:
+    """URLs that web search returned or web fetch read in a response, in order, without repeats."""
+    urls = []
+    for b in content:
+        if b.type == "web_search_tool_result" and isinstance(b.content, list):
+            urls += [r.url for r in b.content if getattr(r, "url", None)]
+        elif b.type == "web_fetch_tool_result" and getattr(b.content, "url", None):
+            urls.append(b.content.url)
+    return list(dict.fromkeys(urls))
+
+
+def _complete(api, task: Task, payload: dict[str, Any]):
+    """One decision: the final message, every content block of the turn, and summed usage. A turn
+    the server paused (stop_reason pause_turn) is resumed by sending it back unchanged."""
+    params = task.request_params(payload)
+    content, usage = [], {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0,
+                          "web_search_requests": 0, "web_fetch_requests": 0}
+    for _ in range(MAX_CONTINUATIONS + 1):
+        with api.messages.stream(**params) as stream:  # streamed: no cap on max_tokens
+            msg = stream.get_final_message()
+        content += msg.content
+        usage["input_tokens"] += msg.usage.input_tokens
+        usage["output_tokens"] += msg.usage.output_tokens
+        usage["cache_read_input_tokens"] += msg.usage.cache_read_input_tokens or 0
+        server = getattr(msg.usage, "server_tool_use", None)
+        if server:
+            usage["web_search_requests"] += server.web_search_requests or 0
+            usage["web_fetch_requests"] += getattr(server, "web_fetch_requests", 0) or 0
+        if msg.stop_reason != "pause_turn":
+            break
+        params = {**params, "messages": [*params["messages"][:1], {"role": "assistant", "content": content}]}
+    return msg, content, usage
+
+
+def _parse(task: Task, payload: dict[str, Any], msg, content=None, usage=None
+           ) -> tuple[str, dict | None, str | None, dict]:
+    """(raw text, parsed output, error, usage) for one decision. The answer is the last text block;
+    for a task with tools, parsed output also carries retrieved_urls, the URLs the turn retrieved."""
+    content = msg.content if content is None else content
+    usage = usage or {"input_tokens": msg.usage.input_tokens, "output_tokens": msg.usage.output_tokens,
+                      "cache_read_input_tokens": msg.usage.cache_read_input_tokens or 0}
+    raw = next((b.text for b in reversed(content) if b.type == "text"), "")
+    if msg.stop_reason in ("refusal", "max_tokens", "pause_turn"):
         return raw, None, msg.stop_reason, usage
     try:
         parsed = json.loads(raw)
+        if task.tools:
+            parsed["retrieved_urls"] = retrieved_urls(content)
         if task.validate:
             task.validate(payload, parsed)
         return raw, parsed, None, usage
@@ -263,9 +321,8 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
     def call(key):
         for attempt in range(STREAM_ATTEMPTS):
             try:
-                with api.messages.stream(**task.request_params(items[key])) as stream:  # streamed: no cap on max_tokens
-                    msg = stream.get_final_message()
-                return key, msg.id, *_parse(task, items[key], msg)
+                msg, content, usage = _complete(api, task, items[key])
+                return key, msg.id, *_parse(task, items[key], msg, content, usage)
             except httpx2.TransportError as exc:
                 if attempt == STREAM_ATTEMPTS - 1:
                     return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
