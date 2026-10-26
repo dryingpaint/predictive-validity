@@ -8,11 +8,14 @@ SVG files to report/output/figures/.
 from __future__ import annotations
 
 import json
+import logging
 import os
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.lines
+import matplotlib.patches
 import numpy as np
 import pandas as pd
 
@@ -90,7 +93,7 @@ def failure_modes():
 ATTRIBUTION_COLORS = {  # efficacy failures, in stacking order
     "not_engaged": ("Not engaged", "#eb6834"), "engaged_no_benefit": ("Engaged, no benefit", "#2a78d6"),
     "trial_design": ("Trial design, population, endpoint", "#1baf7a"), "toxicity": ("Toxicity", "#eda100"),
-    "not_a_failure": ("Recorded as efficacy, but was not", "#e87ba4"), "indeterminate": ("No data", "#d6d5ce"),
+    "not_a_failure": ("Misclassified: not a failed efficacy test", "#e87ba4"), "indeterminate": ("No data", "#d6d5ce"),
 }
 OTHER_STOPS = {  # every other Section 1 reason for a stop, in neutral greys after the efficacy segments
     "Safety or PK": (("safety", "PK, dose or formulation"), "#8a8984"),
@@ -102,16 +105,28 @@ OTHER_STOPS = {  # every other Section 1 reason for a stop, in neutral greys aft
 }
 
 
-def stacked(ax, y, segments, height=0.56):
-    """One 100% bar from (share, color, hatched) segments, labelled where wide enough."""
+def rounded(ax, x, y, w, h, radius_px, **kw):
+    """A rectangle with corners of radius_px pixels, whatever the axes' aspect (limits must be set)."""
+    box = ax.get_window_extent()
+    sx, sy = box.width / np.ptp(ax.get_xlim()), box.height / np.ptp(ax.get_ylim())
+    r = min(radius_px, w * sx / 2, h * sy / 2)
+    patch = matplotlib.patches.FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r / sx}",
+                                              mutation_aspect=sx / sy, linewidth=0, **kw)
+    ax.add_patch(patch)
+    return patch
+
+
+def stacked(ax, y, segments, height=0.62, gap=0.004):
+    """One 100% bar of rounded (share, color, hatched) segments with small gaps, labelled where wide enough."""
     start = 0.0
     for w, color, hatched in segments:
-        ax.barh(y, w, left=start, height=height, color=color, edgecolor="white", linewidth=2,
-                hatch="////" if hatched else None)
+        if w > gap:
+            rounded(ax, start + gap / 2, y - height / 2, w - gap, height, 7, facecolor=color,
+                    hatch="////" if hatched else None, edgecolor="white" if hatched else "none")
         if w >= 0.055:
-            ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=9, fontweight="bold",
+            ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=10, fontweight="bold",
                     color="white" if color in ("#eb6834", "#2a78d6", "#1baf7a", "#8a8984") else INK2,
-                    bbox=dict(boxstyle="round,pad=0.15", fc=color, ec="none") if hatched else None)
+                    bbox=dict(boxstyle="round,pad=0.25,rounding_size=0.6", fc=color, ec="none") if hatched else None)
         start += w
 
 
@@ -127,52 +142,51 @@ def efficacy_attribution():
     everything = [(float((stops.group == g).sum()) / total, c, g == "indeterminate")
                   for g, (_, c) in ATTRIBUTION_COLORS.items()]
     everything += [(float(stops.reason.isin(r).sum()) / total, c, False) for r, c in OTHER_STOPS.values()]
+    eff_share = float(efficacy.mean())
+    ne_share = float((stops.group == "not_engaged").mean())
+    c = n["phase23"]
 
-    rc = {"font.family": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
-          "hatch.color": "white", "hatch.linewidth": 1.2}
+    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
+    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
+          "hatch.color": "white", "hatch.linewidth": 1.4}
     with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10, 4.4))
-        fig.subplots_adjust(left=0.16, right=0.97, top=0.8, bottom=0.25)
-        fig.text(0.02, 0.975, "Where it can be traced, most efficacy failures engaged their target",
-                 fontsize=15, fontweight="bold", color=INK, va="top")
-        fig.text(0.02, 0.915, "Industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
-                 fontsize=10, color=INK2, va="top")
-
-        c = n["phase23"]
-        rows = [(f"{total:,} programs", "All stops", everything, True),
-                (f"{c['programs']:,} programs", "Efficacy stops",
-                 [(c["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()],
-                 True)]
-        ys = [2.6, 0.0]
-        for y, (count, label, segments, bold) in zip(ys, rows):
-            stacked(ax, y, segments)
-            ax.text(-0.02, y + 0.05, label, ha="right", va="bottom", fontsize=10, color=INK,
-                    fontweight="bold" if bold else "normal")
-            ax.text(-0.02, y - 0.03, count, ha="right", va="top", fontsize=8, color=MUTED)
-        ax.text(0, 3.75, "ALL PROGRAMS THAT STOPPED, FOR ANY REASON", fontsize=7.5, color=MUTED, fontweight="bold")
-        ax.text(0, 0.6, "PROGRAMS THAT STOPPED FOR EFFICACY: WHAT THE EVIDENCE SHOWS", fontsize=7.5, color=MUTED,
-                fontweight="bold")
-        eff_share = float(efficacy.mean())
-        ne_share = float((stops.group == "not_engaged").mean())
-        bracket = 2.2
-        ax.plot([0.002, 0.002, eff_share - 0.002, eff_share - 0.002], [bracket + 0.08, bracket, bracket, bracket + 0.08],
-                color=INK2, linewidth=1)
-        ax.text(0, bracket - 0.12, f"Stopped for efficacy: {eff_share:.0%} of all stops, broken down below",
-                ha="left", va="top", fontsize=8, color=INK2)
-        ax.annotate(f"Not engaged: {ne_share:.0%} of all stops", xy=(ne_share / 2, 2.6 + 0.3), xytext=(0.02, 3.25),
-                    fontsize=8, color="#c4501f", fontweight="bold", ha="left", va="bottom",
-                    arrowprops=dict(arrowstyle="-", color="#c4501f", lw=1, shrinkA=0, shrinkB=0))
+        fig, ax = plt.subplots(figsize=(10, 4.6))
+        fig.subplots_adjust(left=0.17, right=0.97, top=0.79, bottom=0.27)
         ax.set_xlim(0, 1)
-        ax.set_ylim(-0.45, 3.95)
-        ax.set_xticks([])
-        ax.set_yticks([])
-        for side in ("top", "right", "left", "bottom"):
-            ax.spines[side].set_visible(False)
-        handles = [matplotlib.patches.Patch(facecolor=c, edgecolor="white", hatch="////" if g == "indeterminate" else None,
-                                            label=l) for g, (l, c) in ATTRIBUTION_COLORS.items()]
-        handles += [matplotlib.patches.Patch(facecolor=c, edgecolor="white", label=l) for l, (_, c) in OTHER_STOPS.items()]
-        ax.legend(handles=handles, ncol=4, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(-0.17, -0.02),
-                  handlelength=1.2, handleheight=1.2, columnspacing=1.2, labelcolor=INK2)
+        ax.set_ylim(-0.5, 3.95)
+        ax.axis("off")
+        fig.text(0.03, 0.965, "Where it can be traced, most efficacy failures engaged their target",
+                 fontsize=16, fontweight="demibold", color=INK, va="top")
+        fig.text(0.03, 0.9, "Industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
+                 fontsize=10.5, color=MUTED, va="top")
+
+        rows = [(2.6, "All stops", f"{total:,} programs", everything),
+                (0.0, "Efficacy stops", f"{c['programs']:,} programs",
+                 [(c["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()])]
+        for y, label, count, segments in rows:
+            stacked(ax, y, segments)
+            ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
+            ax.text(-0.025, y - 0.02, count, ha="right", va="top", fontsize=8.5, color=MUTED)
+        for y, text in ((3.75, "All programs that stopped, for any reason"),
+                        (0.62, "Programs that stopped for efficacy: what the evidence shows")):
+            ax.text(0, y, text.upper(), fontsize=7.5, color=MUTED, fontweight="demibold")
+
+        ax.plot([0.004, 0.004, eff_share - 0.004, eff_share - 0.004], [2.17, 2.08, 2.08, 2.17],
+                color=MUTED, linewidth=1, solid_capstyle="round", solid_joinstyle="round")
+        ax.text(0.004, 1.95, f"Stopped for efficacy: {eff_share:.0%} of all stops, broken down below",
+                ha="left", va="top", fontsize=8.5, color=INK2)
+        ax.annotate(f"Not engaged: {ne_share:.0%} of all stops", xy=(ne_share / 2, 2.95), xytext=(0.045, 3.33),
+                    fontsize=8.5, color="#c4501f", fontweight="demibold", ha="left", va="center",
+                    arrowprops=dict(arrowstyle="-", color="#c4501f", lw=1, shrinkA=2, shrinkB=0,
+                                    connectionstyle="arc3,rad=0.3"))
+
+        handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
+                                           markeredgecolor=GRID if col == "#ecebe7" else "white", label=l)
+                   for l, col in [v for v in ATTRIBUTION_COLORS.values()] + [(l, v[1]) for l, v in OTHER_STOPS.items()]]
+        handles[5] = matplotlib.patches.Patch(facecolor=ATTRIBUTION_COLORS["indeterminate"][1], edgecolor="white",
+                                              hatch="////", label=ATTRIBUTION_COLORS["indeterminate"][0])
+        ax.legend(handles=handles, ncol=4, frameon=False, fontsize=8.5, loc="upper left", bbox_to_anchor=(-0.18, -0.04),
+                  handlelength=1.0, handleheight=1.0, columnspacing=1.6, labelspacing=0.8, labelcolor=INK2)
         save(fig, "efficacy_attribution")
 
 

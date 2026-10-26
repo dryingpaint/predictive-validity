@@ -109,7 +109,7 @@ ATTRIBUTION_GROUPS = {"not_engaged": "Not engaged: exposure or engagement inadeq
                       "engaged_no_benefit": "Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4)",
                       "trial_design": "Trial design, population or endpoint, mechanism not in question (F7)",
                       "toxicity": "Toxicity offset or ended efficacy (F5, F6)",
-                      "not_a_failure": "Recorded as efficacy, but the sources show otherwise: endpoint met, non-inferiority margin, business stop (F8, F9)",
+                      "not_a_failure": "Misclassified, not a failed efficacy test: endpoint met, only a non-inferiority margin missed, a safety study, or a business stop (F8, F9)",
                       "indeterminate": "Indeterminate: no human engagement evidence either way (U)"}
 
 
