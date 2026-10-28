@@ -74,9 +74,16 @@ def stops():
 
 
 def cohort():
-    """Section 1's efficacy-suspended programs with their index trial."""
+    """Programs that stopped for efficacy, with their index trial: those Section 1 records as suspended for
+    efficacy (origin registry), and Phase 2/3 stops with no usable registry reason that pipeline.stop_causes
+    traced to efficacy with a source (origin traced)."""
     modes = stops()[0]
-    return modes[modes.reason.isin(EFFICACY_REASONS)]
+    t = frame.query("""SELECT moiety_id, mondo_id, phase FROM preclin.stop_cause
+                       WHERE cause = 'efficacy' AND cause_source = 'inferred'""")
+    traced = {subject_key(m, d, p) for m, d, p in zip(t.moiety_id, t.mondo_id, t.phase)}
+    out = modes[modes.reason.isin(EFFICACY_REASONS) | modes.key.isin(traced)].copy()
+    out["origin"] = np.where(out.reason.isin(EFFICACY_REASONS), "registry", "traced")
+    return out
 
 
 def search_names(name: str, codes: list[str]) -> list[str]:
@@ -568,9 +575,9 @@ def search(_args) -> None:
 
 
 def check(_args) -> None:
-    """Label a seeded random sample of the cohort again under CHECK_TASK."""
+    """Label a seeded random sample of the registry-recorded cohort again under CHECK_TASK."""
     eff = cohort()
-    keys = sorted(eff.key)
+    keys = sorted(eff[eff.origin == "registry"].key)
     sample = np.random.default_rng(CHECK_SEED).choice(keys, size=min(CHECK_SAMPLE, len(keys)), replace=False)
     items = bundles(eff[eff.key.isin(set(sample))])
     run_id = llm.run(CHECK_TASK, items)

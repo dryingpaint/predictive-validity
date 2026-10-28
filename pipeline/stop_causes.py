@@ -352,8 +352,12 @@ def load_signals() -> pd.DataFrame:
 
 
 def corrected_keys() -> set[str]:
-    a = frame.query("SELECT moiety_id, mondo_id, phase FROM preclin.efficacy_failure_attribution "
-                    "WHERE primary_code = ANY(%s)", (list(CORRECTED_CODES),))
+    """Programs whose final efficacy-attribution code (the web-search label where the bundle label was U)
+    says the stop was not a failed efficacy test."""
+    a = frame.query("""SELECT a.moiety_id, a.mondo_id, a.phase FROM preclin.efficacy_failure_attribution a
+                       LEFT JOIN preclin.efficacy_attribution_search s USING (moiety_id, mondo_id, phase)
+                       WHERE CASE WHEN a.primary_code = 'U' AND s.primary_code IS NOT NULL THEN s.primary_code
+                                  ELSE a.primary_code END = ANY(%s)""", (list(CORRECTED_CODES),))
     return {f"{m}|{d}|{p}" for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)}
 
 
@@ -426,8 +430,8 @@ def validate_run(_args) -> None:
 ASSEMBLE_METHOD = "stop_cause_assembly@v2"
 ASSEMBLE_DESCRIPTION = f"""Final cause of every Phase 2/3 stop Section 1 counts. A stated registry reason is kept and
 mapped to a cause ({'; '.join(f'{k} -> {v}' for k, v in REGISTRY_CAUSE.items())}), cause_source registry. An
-efficacy-recorded stop the efficacy attribution coded {', '.join(CORRECTED_CODES)} takes the inferred cause,
-cause_source corrected. An unstated, bare sponsor-decision or unspecified other reason takes the inferred cause,
+efficacy-recorded stop whose final efficacy-attribution code (the web-search label where the bundle label was U)
+is {', '.join(CORRECTED_CODES)} takes the inferred cause, cause_source corrected. An unstated, bare sponsor-decision or unspecified other reason takes the inferred cause,
 cause_source inferred; likely_cause and likely_basis carry the model's best inference. If inference produced no
 validated decision (a refusal or invalid output) the cause is unknown with no decision. Efficacy stops the attribution left unlabelled keep efficacy."""
 
@@ -460,7 +464,7 @@ def assemble(_args) -> None:
                 rows.append((int(r.moiety_id), d, int(r.phase), r.reason, REGISTRY_CAUSE[r.reason], "registry",
                              None, None, [], None, mid, None, None))
                 continue
-            source = "corrected" if r.key in corrected else "inferred"
+            source = "inferred" if r.reason in UNSTATED else "corrected"
             if r.key in dec.index:
                 o = dec.at[r.key, "parsed_output"]
                 rows.append((int(r.moiety_id), d, int(r.phase), r.reason, o["cause"], source, o["evidence_kind"],

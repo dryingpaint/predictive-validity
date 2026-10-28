@@ -74,7 +74,8 @@ labels:
 # dated by it with their yearly series, then the germline mechanism of each target in each program
 # disease and the orientation of each mouse model, both decided without the drug; last, why each
 # program that stopped for efficacy failed (PubMed retrieval, three-pillar labels, a re-derivation sample),
-# and the cause of each Phase 2/3 stop the registry does not explain (web search, held-out validation).
+# and the cause of each Phase 2/3 stop the registry does not explain (web search, held-out validation); the stops
+# traced to efficacy then join the attribution cohort, so its steps run again (earlier labels are reused).
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
@@ -92,6 +93,9 @@ evidence:
 	$(RUN) pipeline.stop_causes infer
 	$(RUN) pipeline.stop_causes validate
 	$(RUN) pipeline.stop_causes assemble
+	$(RUN) pipeline.attribution literature
+	$(RUN) pipeline.attribution label
+	$(RUN) pipeline.attribution search
 
 report:
 	$(RUN) report.section1

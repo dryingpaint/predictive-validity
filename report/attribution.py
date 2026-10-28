@@ -72,8 +72,8 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     d["n_papers"] = [len(p["papers"]) for p in d.input_payload]
     d["n_phase1"] = [len(p["phase1_results"]) for p in d.input_payload]
     d["index_start"] = pd.to_datetime([p["index"]["start"] for p in d.input_payload], errors="coerce")
-    unlabelled = eff[~eff.key.isin(d.key)][["key", "phase", "modality"]]
-    reclassified = d[d.primary_code.isin(CORRECTED_CODES)][["key", "phase", "primary_code"]]
+    unlabelled = eff[~eff.key.isin(d.key)][["key", "phase", "modality", "origin"]]
+    reclassified = d[d.primary_code.isin(CORRECTED_CODES)][["key", "phase", "primary_code", "origin"]]
     return d[~d.primary_code.isin(CORRECTED_CODES)].drop(columns=["input_payload"]), unlabelled, reclassified
 
 
@@ -258,6 +258,8 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
                                             "U", d.primary_code))
     variants = {
         "all (Phase 2 and 3)": d, "Phase 2": d[d.phase == 2], "Phase 3": d[d.phase == 3],
+        "efficacy recorded in the registry": d[d.origin == "registry"],
+        "efficacy traced from unexplained stops": d[d.origin == "traced"],
         "outside oncology": d[~d.oncology], "oncology": d[d.oncology],
         "sponsor-stated efficacy reason": d[d.reason == "efficacy: stated"],
         "primary endpoint missed": d[d.reason == "efficacy: primary endpoint not met"],
@@ -308,7 +310,9 @@ def main() -> None:
          "oncology": summary(main_cohort[main_cohort.oncology], rng),
          "coverage": coverage(main_cohort),
          "reclassified": {"programs": int(reclassified.phase.isin([2, 3]).sum()),
-                          "codes": reclassified[reclassified.phase.isin([2, 3])].primary_code.value_counts().to_dict()},
+                          "codes": reclassified[reclassified.phase.isin([2, 3])].primary_code.value_counts().to_dict(),
+                          "by_origin": reclassified[reclassified.phase.isin([2, 3])].origin.value_counts().to_dict()},
+         "by_origin": {o: summary(g, rng) for o, g in main_cohort.groupby("origin")},
          "unlabelled": {"programs": int(len(unlabelled)), "phase23": int(unlabelled.phase.isin([2, 3]).sum()),
                         "by_modality": unlabelled.modality.value_counts().to_dict()},
          "search": search_summary(main_cohort), "bundle_only": summary(bundle_only(main_cohort), rng),
