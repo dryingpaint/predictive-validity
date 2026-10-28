@@ -3,7 +3,7 @@
     python -m pipeline.approvals judge   # LLM: was this entity FDA-approved for this disease, and when?
 
 For every molecular entity with FDA applications, the LLM sees the entity's
-dated approval events (uses extracted from 2015-2026 approval letters, less
+dated approval events (uses extracted from the 2008-2026 approval letters, less
 efficacy_labeling changes that add data without approving a new use;
 original-approval dates) and its current label indications, and rules on each
 of the entity's program diseases (preclin.dev_program). Results go to
@@ -17,19 +17,22 @@ from collections import defaultdict
 from psycopg2.extras import execute_values
 
 from pipeline import llm
+from pipeline.fda import LETTERS_FROM
 
 DISEASES_PER_CALL = 30
 LABELS_PER_ENTITY = 12
 LABEL_CHARS = 3000
 CONDITIONS_PER_DISEASE = 10  # trial condition strings shown per disease (a biomarker group decides tissue-agnostic uses)
+YEAR = LETTERS_FROM[:4]
+BEFORE = f"before_{YEAR}"  # the answer for a use approved before the first letter read; stored as date_basis 'before_letters'
 
-SYSTEM = """You decide whether a drug (molecular entity) has been approved by the U.S. FDA for each of a list of diseases, and when.
+SYSTEM = f"""You decide whether a drug (molecular entity) has been approved by the U.S. FDA for each of a list of diseases, and when.
 
-You are given the entity's FDA approval events: the uses approved by each approval letter dated from 2015 onward (with the action date), the original approval date of each application, and the Indications and Usage text of the current labels, oldest application first. A use counts for a disease when the FDA approved the entity to treat, prevent or diagnose that disease, alone or in combination, in any population, line of therapy or biomarker subgroup of it, or under a broader approved class that includes it (an approval for "acute leukemia" covers acute myeloid leukemia; "rheumatoid arthritis and osteoarthritis" covers knee osteoarthritis).
+You are given the entity's FDA approval events: the uses approved by each approval letter dated from {YEAR} onward (with the action date), the original approval date of each application, and the Indications and Usage text of the current labels, oldest application first. A use counts for a disease when the FDA approved the entity to treat, prevent or diagnose that disease, alone or in combination, in any population, line of therapy or biomarker subgroup of it, or under a broader approved class that includes it (an approval for "acute leukemia" covers acute myeloid leukemia; "rheumatoid arthritis and osteoarthritis" covers knee osteoarthritis).
 
 For each disease in the list:
 - approved: yes if an approved use is for this disease, a subtype of it, a population within it (e.g. an approval for "EGFR-mutant metastatic NSCLC" or for "squamous NSCLC" counts for "non-small cell lung carcinoma"), or a broader approved class that includes it. A tissue-agnostic biomarker approval (e.g. MSI-H or NTRK-fusion solid tumors) counts for a specific cancer only if the program's trials enrolled that biomarker group. no if no approved use covers the disease. uncertain only when the evidence genuinely does not let you decide; a broad class wording that plainly includes the disease is yes, not uncertain.
-- first_approval: the action date (YYYY-MM-DD) of the earliest approval that covers the disease, chosen from the dates listed, or "before_2015". A later application of the same entity (a new formulation, a 505(b)(2) product, a new manufacturer's application) whose original approval repeats a use that an older application already had is not the first approval of that use. Answer "before_2015" when an application approved before 2015 carries the use on its label and no letter from 2015 onward added the use to that application, or when you know with confidence that the FDA approved the entity for the use before 2015 (older, discontinued or generic labelling not given here); say so in evidence when the answer rests on your knowledge rather than the text given. Use "undated" only when the use is approved but its date cannot be placed, and "none" when approved is no.
+- first_approval: the action date (YYYY-MM-DD) of the earliest approval that covers the disease, chosen from the dates listed, or "{BEFORE}". A later application of the same entity (a new formulation, a 505(b)(2) product, a new manufacturer's application) whose original approval repeats a use that an older application already had is not the first approval of that use. Answer "{BEFORE}" when an application approved before {YEAR} carries the use on its label and no letter from {YEAR} onward added the use to that application, or when you know with confidence that the FDA approved the entity for the use before {YEAR} (older, discontinued or generic labelling not given here); say so in evidence when the answer rests on your knowledge rather than the text given. Use "undated" only when the use is approved but its date cannot be placed, and "none" when approved is no.
 - relation: same_disease, subtype_or_subpopulation (the approved use is narrower than the program disease), broader (the approved use covers a broader disease that includes the program disease), or none.
 - evidence: a short verbatim quote from the event or label that supports a yes.
 Judge the disease by its meaning, not by matching words: "plaque psoriasis" is psoriasis; "chronic hepatitis C virus infection" is hepatitis C; "type 2 diabetes mellitus" is not type 1 diabetes."""
@@ -61,7 +64,7 @@ def render(p: dict) -> str:
     labels = "\n\n".join(f"[{l['appl']}, original approval {l['orig']}] {l['text']}" for l in p["labels"])
     diseases = "\n".join(f"- {d['mondo_id']} | {d['label']} (is_a: {d['parents']}) | trial conditions: "
                          f"{'; '.join(d['conditions'])}" for d in p["diseases"])
-    return (f"Entity: {p['entity']}\n\nApproval events from letters (2015 onward):\n{events or '(none)'}\n\n"
+    return (f"Entity: {p['entity']}\n\nApproval events from letters ({YEAR} onward):\n{events or '(none)'}\n\n"
             f"Applications:\n{origs}\n\nCurrent label indications:\n{labels or '(no current label)'}\n\n"
             f"Diseases to judge:\n{diseases}")
 
@@ -71,7 +74,7 @@ def validate(p: dict, out: dict) -> None:
     got = sorted(d["mondo_id"] for d in out["decisions"])
     if got != want:
         raise ValueError(f"decisions cover {got[:5]}..., expected {want[:5]}...")
-    allowed = {e["date"] for e in p["events"]} | {d for _, d in p["originals"]} | {"before_2015", "undated", "none"}
+    allowed = {e["date"] for e in p["events"]} | {d for _, d in p["originals"]} | {BEFORE, "undated", "none"}
     for d in out["decisions"]:
         fa = d["first_approval"]
         if fa not in allowed:
@@ -80,7 +83,7 @@ def validate(p: dict, out: dict) -> None:
             raise ValueError(f"{d['mondo_id']}: first_approval {fa} with approved={d['approved']}")
 
 
-TASK = llm.Task(name="program_fda_approval", prompt_version="v2", schema_version="v1", system=SYSTEM,
+TASK = llm.Task(name="program_fda_approval", prompt_version="v3", schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="moiety_disease_chunk",
                 model="claude-opus-5-5", effort="medium", max_tokens=12000)
 
@@ -164,7 +167,8 @@ def judge(_args) -> None:
         for d in out["decisions"]:
             fa = d["first_approval"]
             dated = fa[:2] in ("19", "20")
-            rows.append((mid, d["mondo_id"], d["approved"], fa if dated else None, "dated" if dated else fa,
+            basis = "dated" if dated else "before_letters" if fa == BEFORE else fa
+            rows.append((mid, d["mondo_id"], d["approved"], fa if dated else None, basis,
                          d["relation"], d["evidence"], did))
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.dev_program_approval")

@@ -65,10 +65,10 @@ layer for every number in the report.
   lists (else to the unspecified program), and early-development trials are shared like
   healthy-volunteer trials. Sponsors are attributes, not part of the key.
 - **Approval.** FDA approval for the program's disease and its first date, judged by an
-  LLM from the entity's 2015–2026 approval letters (5,034 extracted approved uses; pages
+  LLM from the entity's 2008–2026 approval letters (6,529 extracted approved uses; pages
   without a text layer OCRed; labeling-only changes are not approval events), its
   original-approval dates and current label indications (`preclin.dev_program_approval`).
-  Approvals before 2015 are taken from the label and placed at the entity's first FDA
+  Approvals before 2008 are taken from the label and placed at the entity's first FDA
   approval, the earliest date they could have happened.
 - **Phase cohorts and outcomes.** For phase p, programs whose first industry-sponsored
   phase-p trial started 2015–2025 (shared trials count only for Phase 1 of the lead

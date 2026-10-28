@@ -32,6 +32,7 @@ import pandas as pd
 from lifelines import AalenJohansenFitter
 from scipy.stats import spearmanr
 
+from pipeline.fda import LETTERS_FROM
 from report import bio, frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "section1")
@@ -43,17 +44,17 @@ SEED = 20261020
 MIN_RESOLVED_ENTITIES = 10  # per phase, below which a cohort's LOA and intervals are not estimated
 
 
-PRE_2015 = pd.Timestamp("2014-12-31")  # the latest date an approval known only to predate 2015 can carry
+BEFORE_LETTERS = pd.Timestamp(LETTERS_FROM) - pd.Timedelta(days=1)  # the latest date an approval that predates the letters can carry
 
 
 def approval_dates(p: pd.DataFrame, approved: pd.Series) -> pd.Series:
     """Approval date of each approved program (p indexed by program_id). An approval known
-    only to predate 2015, or undated, is placed at the earliest date it could have happened,
-    the entity's first FDA approval, so that a program entering after it is treated as a
-    lifecycle program."""
+    only to predate the first approval letter read, or undated, is placed at the earliest
+    date it could have happened, the entity's first FDA approval, so that a program
+    entering after it is treated as a lifecycle program."""
     dated = pd.to_datetime(p.first_approval_date).where(p.date_basis.eq("dated"))
-    earliest = pd.to_datetime(p.moiety_first_fda_approval).clip(upper=PRE_2015).fillna(PRE_2015)
-    return dated.where(~(approved & p.date_basis.isin(["before_2015", "undated"])), earliest).where(approved)
+    earliest = pd.to_datetime(p.moiety_first_fda_approval).clip(upper=BEFORE_LETTERS).fillna(BEFORE_LETTERS)
+    return dated.where(~(approved & p.date_basis.isin(["before_letters", "undated"])), earliest).where(approved)
 
 
 def own_trials(progs: pd.DataFrame, trials: pd.DataFrame) -> pd.Series:
