@@ -110,28 +110,18 @@ def tint(color: str, amount: float = 0.55) -> str:
     return "#" + "".join(f"{round(c + (255 - c) * amount):02x}" for c in (r, g, b))
 
 
-def rounded(ax, x, y, w, h, radius_px, **kw):
-    """A rectangle with corners of radius_px pixels, whatever the axes' aspect (limits must be set)."""
-    box = ax.get_window_extent()
-    sx, sy = box.width / np.ptp(ax.get_xlim()), box.height / np.ptp(ax.get_ylim())
-    r = min(radius_px, w * sx / 2, h * sy / 2)
-    patch = matplotlib.patches.FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r / sx}",
-                                              mutation_aspect=sx / sy, linewidth=0, **kw)
-    ax.add_patch(patch)
-    return patch
-
-
 def stacked(ax, y, segments, height=0.62, gap=0.004):
-    """One 100% bar of rounded (share, color, hatched) segments with small gaps, labelled where wide enough."""
+    """One 100% bar of (share, color, hatched) segments with small gaps, labelled where wide enough."""
     start = 0.0
     for w, color, hatched in segments:
         if w > gap:
-            rounded(ax, start + gap / 2, y - height / 2, w - gap, height, 7, facecolor=color,
-                    hatch="////" if hatched else None, edgecolor="white" if hatched else "none")
+            ax.add_patch(matplotlib.patches.Rectangle((start + gap / 2, y - height / 2), w - gap, height, facecolor=color,
+                                                      hatch="////" if hatched else None,
+                                                      edgecolor="white" if hatched else "none", linewidth=0))
         if w >= 0.055:
             ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=10, fontweight="bold",
                     color="white" if color in DARK_FILLS else INK2,
-                    bbox=dict(boxstyle="round,pad=0.25,rounding_size=0.6", fc=color, ec="none") if hatched else None)
+                    bbox=dict(boxstyle="square,pad=0.25", fc=color, ec="none") if hatched else None)
         start += w
 
 
