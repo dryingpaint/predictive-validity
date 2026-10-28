@@ -161,7 +161,7 @@ def efficacy_attribution():
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
             ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
         ax.text(0, 5.25, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
-        ax.text(0, 2.3, "STOPS FOR EFFICACY OR EXPOSURE (SOURCED): WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(0, 2.3, "WHY EFFICACY FAILED", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
                                                   hatch="////" if c == "unknown" else None, label=l)
