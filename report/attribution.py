@@ -3,8 +3,11 @@
     python -m report.attribution
 
 Implements report/attribution_plan.md on preclin.efficacy_failure_attribution
-(pipeline.attribution label), the independent re-derivation (pipeline.attribution
-check) and the external adjudication in report/audits/attribution_adjudication.json.
+(pipeline.attribution label) with the web-search labels of the programs it left
+indeterminate (preclin.efficacy_attribution_search, pipeline.attribution search),
+the independent re-derivation (pipeline.attribution check) and the external
+adjudication in report/audits/attribution_adjudication.json. The re-derivation and the
+adjudication are scored against the bundle-only labels they were designed for.
 Intervals resample entities, since one entity's programs share its pharmacology.
 """
 from __future__ import annotations
@@ -39,6 +42,8 @@ GROUP = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit",
 GROUPS = ["not_engaged", "engaged_no_benefit", "toxicity", "trial_design", "indeterminate"]
 CODES = ["F1a", "F1b", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "U"]
 ENGAGED = ("adequate", "inferred_adequate")
+SEARCHED_COLUMNS = ["exposure", "engagement", "pathway", "engagement_in_disease", "engagement_before_index",
+                    "dose_limited", "primary_code", "secondary_codes", "confidence", "sources"]
 
 
 def group(code: pd.Series, engagement: pd.Series) -> pd.Series:
@@ -54,7 +59,15 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
                          JOIN pv_evidence.llm_decision d USING (llm_decision_id)""")
     lab["key"] = [f"{m}|{d}|{p}" for m, d, p in zip(lab.moiety_id, lab.mondo_id, lab.phase)]
     d = eff.merge(lab.drop(columns=["moiety_id", "mondo_id", "phase"]), on="key")
+    found = frame.query("SELECT * FROM preclin.efficacy_attribution_search")
+    found["key"] = [f"{m}|{d}|{p}" for m, d, p in zip(found.moiety_id, found.mondo_id, found.phase)]
+    d["bundle_code"], d["bundle_engagement"] = d.primary_code, d.engagement
+    d["searched"] = d.key.isin(found.key) & d.bundle_code.eq("U")
+    found = found.set_index("key")
+    for col in SEARCHED_COLUMNS:
+        d.loc[d.searched, col] = found.loc[d.key[d.searched], col].to_numpy()
     d["group"] = group(d.primary_code, d.engagement)
+    d["bundle_group"] = group(d.bundle_code, d.bundle_engagement)
     d["oncology"] = d.bio_area.eq("oncology")
     d["n_papers"] = [len(p["papers"]) for p in d.input_payload]
     d["n_phase1"] = [len(p["phase1_results"]) for p in d.input_payload]
@@ -62,6 +75,41 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     unlabelled = eff[~eff.key.isin(d.key)][["key", "phase", "modality"]]
     reclassified = d[d.primary_code.isin(CORRECTED_CODES)][["key", "phase", "primary_code"]]
     return d[~d.primary_code.isin(CORRECTED_CODES)].drop(columns=["input_payload"]), unlabelled, reclassified
+
+
+def bundle_only(d: pd.DataFrame) -> pd.DataFrame:
+    """The labels before the web search."""
+    return d.assign(primary_code=d.bundle_code, engagement=d.bundle_engagement, group=d.bundle_group)
+
+
+def search_summary(d: pd.DataFrame) -> dict:
+    """What the web search decided among the programs the bundle left indeterminate, and how its labels
+    agree with the blind adjudication on the programs both labelled."""
+    s = d[d.searched]
+    out = {"searched": int(len(s)), "decided": int((s.primary_code != "U").sum()),
+           "groups": s.group.value_counts().to_dict(), "codes": s.primary_code.value_counts().to_dict(),
+           "confidence": s[s.primary_code != "U"].confidence.value_counts().to_dict()}
+    out["decided_share"] = out["decided"] / max(out["searched"], 1)
+    t = s[s.group.isin(["not_engaged", "engaged_no_benefit"])]
+    out["testable"] = int(len(t))
+    out["not_engaged"] = int((t.group == "not_engaged").sum())
+    out["not_engaged_share"] = out["not_engaged"] / max(len(t), 1)
+    if os.path.exists(ADJUDICATION):
+        adj = pd.DataFrame(json.load(open(ADJUDICATION)))
+        m = s.merge(adj[["key", "code", "engagement"]].rename(columns={"code": "adjudicated",
+                                                                       "engagement": "adjudicated_engagement"}), on="key")
+        m = m[m.adjudicated.isin(CODES)]
+        if len(m):
+            gb = group(m.adjudicated, m.adjudicated_engagement)
+            three = lambda g: g.where(g.isin(["not_engaged", "engaged_no_benefit"]), "other")
+            both = (m.primary_code != "U") & (m.adjudicated != "U")
+            out["adjudicated"] = {"n": int(len(m)), "both_decided": int(both.sum()),
+                                  "three_way_agree_both_decided": float((three(m.group) == three(gb))[both].mean())
+                                  if both.any() else None,
+                                  "search_decided_outside_u": int(((m.primary_code != "U") & (m.adjudicated == "U")).sum()),
+                                  "outside_decided_search_u": int(((m.primary_code == "U") & (m.adjudicated != "U")).sum()),
+                                  "pairs": [[a, b] for a, b in zip(m.group, gb)]}
+    return out
 
 
 def shares(d: pd.DataFrame, col: str, levels: list[str], rng: np.random.Generator) -> pd.DataFrame:
@@ -217,6 +265,7 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
         "engaged only if shown before the index trial": before,
         "one program per entity": first,
         "high or medium confidence": d[d.confidence.isin(["high", "medium"])],
+        "bundle only (before the web search)": bundle_only(d),
     }
     out = []
     for name, v in variants.items():
@@ -260,9 +309,11 @@ def main() -> None:
                           "codes": reclassified[reclassified.phase.isin([2, 3])].primary_code.value_counts().to_dict()},
          "unlabelled": {"programs": int(len(unlabelled)), "phase23": int(unlabelled.phase.isin([2, 3]).sum()),
                         "by_modality": unlabelled.modality.value_counts().to_dict()},
-         "rederivation": rederivation(main_cohort), "adjudication": adjudication(main_cohort),
+         "search": search_summary(main_cohort), "bundle_only": summary(bundle_only(main_cohort), rng),
+         "rederivation": rederivation(bundle_only(main_cohort)), "adjudication": adjudication(bundle_only(main_cohort)),
          "construct": construct(main_cohort, progs, rows)}
-    n["bounds"] = bounds(main_cohort, n["adjudication"])
+    n["bounds"] = bounds(main_cohort, {})
+    n["bundle_only"]["bounds"] = bounds(bundle_only(main_cohort), n["adjudication"])
     sens = sensitivity(main_cohort, rng)
     sens.to_csv(os.path.join(OUT, "sensitivity.csv"), index=False)
     n["sensitivity_range"] = {"lo": float(sens.not_engaged_of_testable.min()),

@@ -13,6 +13,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import subprocess
 import time
 import uuid
@@ -276,6 +277,12 @@ def retrieved_urls(content) -> list[str]:
         elif b.type == "web_fetch_tool_result" and getattr(b.content, "url", None):
             urls.append(b.content.url)
     return list(dict.fromkeys(urls))
+
+
+def norm_url(u: str) -> str:
+    """A URL compared without scheme, www, fragment, trailing slash or case."""
+    u = re.sub(r"^https?://(www\.)?", "", u.strip().lower())
+    return u.split("#")[0].rstrip("/")
 
 
 def _complete(api, task: Task, payload: dict[str, Any]):

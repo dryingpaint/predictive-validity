@@ -68,3 +68,20 @@ def test_subject_key_of_a_program_without_a_disease():
     assert attribution.subject_key(218, float("nan"), 2) == "218||2"
     assert attribution.subject_key(218, None, 2) == "218||2"
     assert attribution.subject_key(218, "MONDO:0005101", 3) == "218|MONDO:0005101|3"
+
+
+def searched(**changes) -> dict:
+    return {**decision(**changes), "quote": "", "retrieved_urls": ["https://www.example.org/occupancy-study/"]}
+
+
+def test_search_label_may_cite_a_page_it_retrieved():
+    attribution.validate_search(bundle(), searched(sources=["PMID:111", "http://example.org/occupancy-study"]))
+
+
+@pytest.mark.parametrize("changes", [
+    {"sources": ["https://example.org/never-retrieved"]},  # a page the searches did not return
+    {"engagement": "no_human_data"},  # F2 without engagement, as for the bundle label
+])
+def test_search_label_is_held_to_the_bundle_rules(changes):
+    with pytest.raises(ValueError):
+        attribution.validate_search(bundle(), searched(**changes))

@@ -87,6 +87,7 @@ evidence:
 	$(RUN) pipeline.attribution literature
 	$(RUN) pipeline.attribution label
 	$(RUN) pipeline.attribution check
+	$(RUN) pipeline.attribution search
 	$(RUN) pipeline.stop_causes signals
 	$(RUN) pipeline.stop_causes infer
 	$(RUN) pipeline.stop_causes validate

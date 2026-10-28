@@ -19,7 +19,6 @@ its searches returned. Each step records its method in preclin.analysis_method.
 from __future__ import annotations
 
 import argparse
-import re
 from collections import defaultdict
 
 import numpy as np
@@ -203,15 +202,10 @@ SCHEMA = {
 }
 
 
-def norm_url(u: str) -> str:
-    u = re.sub(r"^https?://(www\.)?", "", u.strip().lower())
-    return u.split("#")[0].rstrip("/")
-
-
 def validate(p: dict, out: dict) -> None:
     allowed = {t["nct_id"] for t in p["trials"]} | {f"PMID:{a['pmid']}" for a in p["papers"]}
-    retrieved = {norm_url(u) for u in out.get("retrieved_urls", [])}
-    unknown = [s for s in out["sources"] if s not in allowed and norm_url(s) not in retrieved]
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    unknown = [s for s in out["sources"] if s not in allowed and llm.norm_url(s) not in retrieved]
     if unknown:
         raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
     if (out["cause"] == "unknown") != (out["evidence_kind"] == "none"):

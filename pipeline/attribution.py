@@ -4,6 +4,7 @@ the target was engaged and the disease did not respond, or something else.
     python -m pipeline.attribution literature   # PubMed: each entity's human pharmacology and its program diseases
     python -m pipeline.attribution label        # LLM: three pillars and failure code -> preclin.efficacy_failure_attribution
     python -m pipeline.attribution check        # LLM: independent re-derivation on a seeded sample (stepwise prompt)
+    python -m pipeline.attribution search       # LLM with web search: Phase 2/3 programs the label left indeterminate
 
 The cohort is every program Section 1 records as suspended for efficacy
 (report.section1.failure_modes), keyed by (entity, disease, phase); the trial that
@@ -164,11 +165,13 @@ def literature(_args) -> None:
 PILLAR = ["adequate", "inferred_adequate", "inadequate", "no_human_data"]
 CODES = ["F1a", "F1b", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "U"]
 
-SYSTEM = """You explain why a drug development program stopped after a failed efficacy readout. You are given an evidence bundle: the program's index trial (the trial that failed), the drug's other trials with their classified outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts about the drug. Every source has an id (an NCT id or PMID:n).
+INTRO = """You explain why a drug development program stopped after a failed efficacy readout. You are given an evidence bundle: the program's index trial (the trial that failed), the drug's other trials with their classified outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts about the drug. Every source has an id (an NCT id or PMID:n).
 
-Judge only from the bundle. Never fill a gap from memory: if the bundle does not show something, it was not shown. Cite the ids you relied on.
+"""
+JUDGE = """Judge only from the bundle. Never fill a gap from memory: if the bundle does not show something, it was not shown. Cite the ids you relied on.
 
-First, the three pillars (Morgan et al. 2012), each for humans, at the doses taken into the index trial or comparable ones:
+"""
+RUBRIC = """First, the three pillars (Morgan et al. 2012), each for humans, at the doses taken into the index trial or comparable ones:
 1. exposure: the drug reached its site of action (plasma exposure for a systemic target; CSF or tissue levels, or brain penetration, for a CNS or tissue target).
 2. engagement: the drug bound or engaged its target (receptor occupancy, enzyme inhibition, target protein or ligand lowered, knockdown of the transcript).
 3. pathway: the expected immediate functional or pathway effect followed (a downstream biomarker moved as the mechanism predicts).
@@ -194,6 +197,7 @@ Then the primary failure code:
 Rules: F2 requires engagement adequate or inferred_adequate. F1a requires exposure or engagement inadequate, or dose_limited. F1b requires engagement not adequate. U requires engagement no_human_data. Pick the code the evidence supports most directly; list other codes that also apply in secondary_codes.
 
 confidence: high when the sources state the reason or the pillars are measured directly; medium when inferred; low when the bundle is thin. rationale: at most 120 words, citing ids."""
+SYSTEM = INTRO + JUDGE + RUBRIC
 
 PILLAR_SCHEMA = {"type": "string", "enum": PILLAR}
 SCHEMA = {
@@ -224,6 +228,11 @@ def validate(p: dict, out: dict) -> None:
     unknown = [s for s in out["sources"] if s not in source_ids(p)]
     if unknown:
         raise ValueError(f"cites sources not in the bundle: {unknown}")
+    validate_codes(out)
+
+
+def validate_codes(out: dict) -> None:
+    """Reject a failure code that contradicts the pillars."""
     code, eng = out["primary_code"], out["engagement"]
     engaged = eng in ("adequate", "inferred_adequate")
     if code == "F2" and not engaged:
@@ -270,6 +279,30 @@ def render(p: dict) -> str:
 TASK = llm.Task(name="efficacy_failure_attribution", prompt_version="v1", schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="program_phase",
                 model="claude-opus-5-5", effort="high", max_tokens=6000)
+
+SEARCH_JUDGE = """The bundle does not show human evidence of whether this drug engaged its target. Search the web for it: full-text papers (PubMed Central, journal sites), conference abstracts and posters, FDA and EMA review documents (Drugs@FDA reviews, EPARs), company presentations and press releases, and Phase 1 or pharmacology results published outside ClinicalTrials.gov. Look for, in humans: drug levels at the site of action, receptor occupancy, target enzyme inhibition, target protein or ligand lowering, transcript knockdown, and a downstream biomarker moving as the mechanism predicts; and for what the sponsor or investigators said about why the program failed. Search the drug's name and code names with words like pharmacodynamics, target engagement, occupancy, biomarker, first-in-human, phase 1, and with the program disease. Use at most a handful of searches; stop when you have the answer or the trail is cold.
+
+From here on, "the bundle" means the bundle together with the pages your searches return. Judge only from them. Never fill a gap from memory. Cite bundle ids and the URLs of the pages you relied on, and put the decisive sentence from a source in quote (empty if none).
+
+"""
+SEARCH_SCHEMA = {**SCHEMA, "properties": {**SCHEMA["properties"], "quote": {"type": "string"}},
+                 "required": [*SCHEMA["required"], "quote"]}
+SEARCH_TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 6},
+                {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 4}]
+
+
+def validate_search(p: dict, out: dict) -> None:
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    unknown = [s for s in out["sources"] if s not in source_ids(p) and llm.norm_url(s) not in retrieved]
+    if unknown:
+        raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
+    validate_codes(out)
+
+
+SEARCH_TASK = llm.Task(name="efficacy_attribution_search", prompt_version="v1", schema_version="v1",
+                       system=INTRO + SEARCH_JUDGE + RUBRIC, schema=SEARCH_SCHEMA, render=render,
+                       validate=validate_search, subject_type="program_phase", model="claude-opus-5-5",
+                       effort="medium", max_tokens=16000, tools=SEARCH_TOOLS)
 
 
 CHECK_SYSTEM = """You review one failed drug development program to decide whether the drug's target was ever properly tested in humans. You are given an evidence bundle with ids (NCT ids, PMID:n). Use only the bundle; when it does not show something, treat it as not shown. Cite the ids you used.
@@ -488,6 +521,52 @@ def label(_args) -> None:
     print(f"programs={len(items)} labelled={len(rows)}")
 
 
+SEARCH_PHASES = (2, 3)
+SEARCH_METHOD = "efficacy_attribution_search@v1"
+SEARCH_DESCRIPTION = f"""Cohort: Phase 2/3 programs that {ATTRIBUTION_METHOD} coded U (no human evidence of engagement in the
+bundle). Each is labelled again (task {SEARCH_TASK.name} {SEARCH_TASK.prompt_version}, {SEARCH_TASK.model}, effort
+{SEARCH_TASK.effort}) from the same bundle plus the web: the model searches (web_search up to 6 queries, web_fetch up
+to 4 pages) for human exposure, engagement and pathway evidence and for stated reasons for failure in full-text papers,
+conference reports, FDA and EMA reviews, company releases and Phase 1 results published outside the registry, then
+answers the same pillars and failure codes as {ATTRIBUTION_METHOD} with the same rubric. Validation rejects a URL its
+own searches did not return, an id outside the bundle, and codes that contradict the pillars. The search label
+replaces the bundle label in the report; the bundle label stays in preclin.efficacy_failure_attribution and is
+reported as a variant. Agreement with the blind web adjudication is reported on the programs both labelled."""
+
+
+def search(_args) -> None:
+    """Label the programs the bundle left indeterminate again, with web search."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, SEARCH_METHOD, "Why efficacy failed: web search for engagement", SEARCH_DESCRIPTION,
+                          ["preclin.efficacy_failure_attribution", "preclin.ctgov_study", "preclin.trial_outcome",
+                           "preclin.ctgov_result_summary", "preclin.moiety_publication", "web search"],
+                          {"task": SEARCH_TASK.name, "prompt_version": SEARCH_TASK.prompt_version,
+                           "model": SEARCH_TASK.model, "effort": SEARCH_TASK.effort, "tools": SEARCH_TOOLS,
+                           "phases": list(SEARCH_PHASES)})
+        conn.commit()
+    u = frame.query("""SELECT moiety_id, mondo_id, phase FROM preclin.efficacy_failure_attribution
+                       WHERE primary_code = 'U' AND phase = ANY(%s)""", (list(SEARCH_PHASES),))
+    keys = {subject_key(m, d, p) for m, d, p in zip(u.moiety_id, u.mondo_id, u.phase)}
+    eff = cohort()
+    items = bundles(eff[eff.key.isin(keys)])
+    run_id = llm.run(SEARCH_TASK, items)
+    rows = []
+    for key, did, o in llm.decisions(run_id):
+        m, d, phase = key.split("|")
+        rows.append((int(m), d, int(phase), o["exposure"], o["engagement"], o["pathway"], o["engagement_in_disease"],
+                     o["engagement_before_index"], o["dose_limited"], o["primary_code"], o["secondary_codes"],
+                     o["confidence"], o["quote"], o["sources"], did, SEARCH_METHOD))
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.efficacy_attribution_search")
+        execute_values(cur, """INSERT INTO preclin.efficacy_attribution_search
+                                 (moiety_id, mondo_id, phase, exposure, engagement, pathway, engagement_in_disease,
+                                  engagement_before_index, dose_limited, primary_code, secondary_codes, confidence,
+                                  quote, sources, llm_decision_id, method_id) VALUES %s""", rows)
+        conn.commit()
+    decided = sum(r[9] != "U" for r in rows)
+    print(f"programs={len(items)} labelled={len(rows)} decided={decided} run={run_id}")
+
+
 def check(_args) -> None:
     """Label a seeded random sample of the cohort again under CHECK_TASK."""
     eff = cohort()
@@ -504,6 +583,7 @@ def main() -> None:
     sub.add_parser("literature").set_defaults(fn=literature)
     sub.add_parser("label").set_defaults(fn=label)
     sub.add_parser("check").set_defaults(fn=check)
+    sub.add_parser("search").set_defaults(fn=search)
     args = parser.parse_args()
     args.fn(args)
 

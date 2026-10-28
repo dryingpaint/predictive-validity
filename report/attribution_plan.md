@@ -96,3 +96,19 @@ do not show engagement either way, and never to fill a gap from memory.
 5. **Source coverage.** Share of programs with any human pillar source, by
    modality and entry year, so U can be read as a gap in public data rather
    than in biology.
+
+## Amendment, 2026-10-27: web search for the indeterminate programs
+
+Added after the bundle-only labels and the checks above had been run and read.
+The blind adjudication decided a third of the programs the bundle left U, so
+the U share measured what the bundle lacked as much as what is public. Every
+Phase 2/3 program coded U is labelled again (`pipeline.attribution search`)
+from the same bundle plus web search for human pharmacology and stated reasons
+for failure: full-text papers, conference reports, FDA and EMA reviews,
+company releases. The rubric, codes and validation rules are unchanged, and a
+cited URL must be one the decision's own searches returned. The search label
+replaces U in the main estimates; the bundle-only labels are reported as a
+variant, and the re-derivation and adjudication stay scored against them.
+Agreement between search and adjudication labels is reported on the programs
+both labelled. Because the search can only resolve U, and engaged programs
+leave more to find, the direction of any bias is stated alongside the result.
