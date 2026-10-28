@@ -36,10 +36,10 @@ NCT03036488 (KEYNOTE-522; no posted results) -> PMID 32101663, linked by both ro
 
 #### Drugs@FDA data files
 
-*Data to 2026-10-16 · `GET https://www.fda.gov/media/89850/download`, a zip of tab-separated tables*
+*Data to 2026-10-26 · `GET https://www.fda.gov/media/89850/download`, a zip of tab-separated tables*
 
 **Compiled by.** FDA's drug center (CDER) publishes these files from its own application records. They cover drugs and therapeutic biologics, not the vaccines, blood products and cell or gene therapies that CBER regulates.
-**We use.** NDA and BLA applications: sponsor, products and active ingredients, every original and supplement submission with its class, status, date and review priority, and the links to approval letters. That is 6,389 applications.
+**We use.** NDA and BLA applications: sponsor, products and active ingredients, every original and supplement submission with its class, status, date and review priority, and the links to approval letters. That is 6,394 applications.
 **Shape.** `Applications.txt` (ApplNo, ApplType, SponsorName), `Products.txt`, `Submissions.txt` (ApplNo, SubmissionClassCodeID, SubmissionType, SubmissionNo, SubmissionStatus, SubmissionStatusDate, ReviewPriority), `ApplicationDocs.txt` (type 1 = letter, URL, date).
 
 ```text
@@ -67,7 +67,7 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
 
 #### openFDA drug labels
 
-*Export 2026-10-16, 262,897 labels · `GET https://api.fda.gov/download.json` lists the bulk files, e.g. `https://download.open.fda.gov/drug/label/drug-label-0001-of-0014.json.zip`*
+*Export 2026-10-28, 262,903 labels · `GET https://api.fda.gov/download.json` lists the bulk files, e.g. `https://download.open.fda.gov/drug/label/drug-label-0001-of-0014.json.zip`*
 
 **Compiled by.** Manufacturers submit Structured Product Labeling to FDA. openFDA republishes it in bulk with harmonised identifiers and notes that the data are not validated.
 **We use.** We keep the current label of each NDA or BLA product, 5,273 in all, with its application numbers, names, UNII and the full Indications and Usage text. The approval classifier reads that text as evidence of approved uses, including uses approved before 2008.
