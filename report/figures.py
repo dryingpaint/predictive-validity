@@ -110,12 +110,6 @@ def dark(color: str) -> bool:
     return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.5
 
 
-def tint(color: str, amount: float = 0.55) -> str:
-    """The color mixed with white: the lighter shade marks a likely, not sourced, cause."""
-    r, g, b = (int(color[i:i + 2], 16) for i in (1, 3, 5))
-    return "#" + "".join(f"{round(c + (255 - c) * amount):02x}" for c in (r, g, b))
-
-
 def stacked(ax, y, segments, height=0.62, gap=0.004):
     """One 100% bar of (share, color, hatched) segments with small gaps, labelled where wide enough."""
     start = 0.0
@@ -141,13 +135,8 @@ def efficacy_attribution():
     shown = {c: v for c, v in CAUSE_COLORS.items() if c not in (continued, "company_event")}
     shown["business_strategic"] = ("Business, strategic or company event", shown["business_strategic"][1])
     total = len(causes)
-    after = []
-    for c, (_, col) in shown.items():
-        if c == "unknown":
-            after.append((float(((causes.cause == "unknown") & (causes.likely == "unknown")).mean()), col, True))
-            continue
-        after.append((float((causes.cause == c).mean()), col, False))
-        after.append((float(((causes.cause == "unknown") & (causes.likely == c)).mean()), tint(col), False))
+    cause = causes.cause.where(causes.cause != "unknown", causes.likely)
+    after = [(float((cause == c).mean()), col, c == "unknown") for c, (_, col) in shown.items()]
     e = n["phase23"]
     efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()]
 
@@ -171,7 +160,6 @@ def efficacy_attribution():
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
             ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
         ax.text(0, 5.25, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
-        ax.text(1, 5.25, "solid: sourced · light: likely", ha="right", fontsize=8.5, color=INK2)
         ax.text(0, 2.3, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
