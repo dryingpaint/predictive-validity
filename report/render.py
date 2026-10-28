@@ -4,7 +4,7 @@
 
 Tables are built from report/output/section*/ CSVs; inline numbers use
 {{key}} placeholders resolved against report/output/numbers.json (written by
-report.section1, report.section2, report.section3 and report.quality). Narrative blocks live
+report.section1, report.section2, report.section3, report.attribution and report.quality). Narrative blocks live
 in report/narrative/*.md with the same placeholders.
 """
 from __future__ import annotations
@@ -18,6 +18,8 @@ import pandas as pd
 
 from report import bio, frame
 from report.section3 import CASE_AUDIT
+from report.attribution import GROUP_LABELS
+from report.stop_causes import CAUSE_LABELS
 
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
@@ -120,6 +122,37 @@ def failure_table() -> str:
     share = df.div(df.sum(axis=0), axis=1)
     out = pd.DataFrame({f"Phase {c}": [f"{pct(share.at[r, c], 0)} ({int(df.at[r, c]):,})" for r in df.index]
                         for c in df.columns}, index=df.index).reset_index().rename(columns={"reason": "Reason"})
+    return table(out)
+
+
+def attribution_table() -> str:
+    n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
+    cols = {"Phase 2": n["by_phase"]["2"], "Phase 3": n["by_phase"]["3"], "Phase 2 and 3": n["phase23"],
+            "Outside oncology": n["outside_oncology"]}
+    rows = [[label] + [f"{pct(c['groups'][g]['share'], 0)} ({int(c['groups'][g]['n']):,})" for c in cols.values()]
+            for g, (label, _) in GROUP_LABELS.items()]
+    rows.append(["**Not engaged, of failures whose mechanism was tested**"]
+                + [f"**{pct(c['testable']['not_engaged_share'], 0)}**{ci(c['testable']['lo'], c['testable']['hi'], 0)}"
+                   for c in cols.values()])
+    rows.append(["Programs (entities)"] + [f"{c['programs']:,} ({c['entities']:,})" for c in cols.values()])
+    return table(pd.DataFrame(rows, columns=["What the evidence shows"] + list(cols)))
+
+
+def stop_cause_table() -> str:
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
+    rows = [[name] + [f"{pct(n[k][c]['share'], 0)} ({n[k][c]['n']:,})" for k in ("recorded", "evidence", "likely")]
+            for c, name in CAUSE_LABELS.items()]
+    return table(pd.DataFrame(rows, columns=["Cause of the stop", "As registered", "After tracing: sourced",
+                                             "After tracing: sourced or likely"]))
+
+
+def attribution_sensitivity_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "attribution", "sensitivity.csv"))
+    out = pd.DataFrame({"Variant": df.variant.map(sentence_case), "Programs": df.programs.map("{:,}".format),
+                        "Mechanism tested": df.testable.map("{:,}".format),
+                        "Not engaged, of tested (95% CI)": [pct(v, 0) + ci(lo, hi, 0) for v, lo, hi
+                                                            in zip(df.not_engaged_of_testable, df.lo, df.hi)],
+                        "Indeterminate": df.indeterminate.map(lambda v: pct(v, 0))})
     return table(out)
 
 
@@ -372,7 +405,8 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table, "S3_CASES_TABLE": s3_cases_table,
-          "S3_CASE_CARDS": s3_case_cards}
+          "S3_CASE_CARDS": s3_case_cards, "ATTRIBUTION_TABLE": attribution_table,
+          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
 
 
 def flatten(d, prefix=""):
@@ -399,7 +433,7 @@ def fill(text: str, numbers: dict) -> str:
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "section3", "quality"):
+    for section in ("section1", "section2", "section3", "attribution", "stop_causes", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)

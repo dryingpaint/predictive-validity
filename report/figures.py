@@ -1,4 +1,4 @@
-"""Report figures from the Section 1 and Section 2 outputs.
+"""Report figures from the Section 1, Section 2, Section 3 and attribution outputs.
 
     python -m report.figures
 
@@ -8,17 +8,21 @@ SVG files to report/output/figures/.
 from __future__ import annotations
 
 import json
+import logging
 import os
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import matplotlib.patches
 import numpy as np
 import pandas as pd
 
 from report import bio, frame
 from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
+from report.attribution import GROUP_LABELS
+from report.stop_causes import SHOWN
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -85,6 +89,85 @@ def failure_modes():
               ncol=4, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(0, -0.18))
     ax.set_title("Why suspended programs stopped, by the phase they stopped in", loc="left", color=INK, fontsize=11)
     save(fig, "failure_modes_by_phase")
+
+
+EFFICACY = "#d62828"
+ATTRIBUTION_COLORS = {  # report.attribution.GROUP_LABELS, in stacking order; shades of the efficacy cause color
+    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a", "toxicity": "#f5b3b3",
+    "indeterminate": "#fbe3e3",
+}
+SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order, efficacy first
+    "efficacy": EFFICACY, "safety": "#f77f00", "business_strategic": "#2a9d8f", "operational": "#277da1",
+    "positive_not_advanced": "#6a4c93", "unknown": "#e8e6e0",
+}
+
+
+def dark(color: str) -> bool:
+    """Whether white text reads better than dark text on this fill."""
+    r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.55
+
+
+def stacked(ax, y, segments, height=0.62, gap=0.004):
+    """One 100% bar of (share, color, hatched) segments with small gaps, labelled where wide enough."""
+    start = 0.0
+    for w, color, hatched in segments:
+        if w > gap:
+            ax.add_patch(matplotlib.patches.Rectangle((start + gap / 2, y - height / 2), w - gap, height, facecolor=color,
+                                                      hatch="////" if hatched else None,
+                                                      edgecolor="white" if hatched else "none", linewidth=0))
+        if w >= 0.055:
+            ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=10, fontweight="bold",
+                    color="white" if dark(color) else INK2,
+                    bbox=dict(boxstyle="square,pad=0.25", fc=color, ec="none") if hatched else None)
+        start += w
+
+
+def efficacy_attribution():
+    n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
+    shown = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv")).shown.dropna()
+    total = len(shown)
+    after = [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]
+    e = n["phase23"]
+    efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, col in ATTRIBUTION_COLORS.items()]
+
+    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
+    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
+          "hatch.color": "white", "hatch.linewidth": 1.4}
+    with plt.rc_context(rc):
+        fig, ax = plt.subplots(figsize=(10.5, 4.9))
+        fig.subplots_adjust(left=0.17, right=0.97, top=0.82, bottom=0.2)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0.4, 5.4)
+        ax.axis("off")
+        fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop",
+                 fontsize=16, fontweight="demibold", color=INK, va="top")
+        fig.text(0.03, 0.895, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
+                 fontsize=10.5, color=MUTED, va="top")
+        rows = [(4.7, "All stops", f"{total:,} programs", after),
+                (1.75, "Efficacy or exposure", f"{e['programs']:,} programs", efficacy)]
+        for y, label, sub, segments in rows:
+            stacked(ax, y, segments)
+            ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
+            ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
+        ax.text(0, 5.25, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(0, 2.3, "WHY EFFICACY FAILED", fontsize=7.5, color=MUTED, fontweight="demibold")
+
+        cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                  hatch="////" if c == "unknown" else None, label=SHOWN[c])
+                         for c, col in SHOWN_COLORS.items()]
+        leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
+                        bbox_to_anchor=(-0.18, 0.80), handlelength=1.0, handleheight=1.0, columnspacing=1.4, labelspacing=0.6,
+                        labelcolor=INK2)
+        ax.add_artist(leg)
+        eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                hatch="////" if g == "indeterminate" else None,
+                                                label=GROUP_LABELS[g][1])
+                       for g, col in ATTRIBUTION_COLORS.items()]
+        ax.legend(handles=eff_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
+                  bbox_to_anchor=(-0.18, 0.2), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
+                  labelspacing=0.6, labelcolor=INK2)
+        save(fig, "efficacy_attribution")
 
 
 def loa_bars(csv, title, name, ref):
@@ -263,6 +346,8 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()
+    if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
+        efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
         s3_specificity()

@@ -90,7 +90,7 @@ def results(_args) -> None:
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
 
-def _eutils(endpoint: str, **params) -> str:
+def eutils(endpoint: str, **params) -> str:
     for attempt in range(6):
         try:
             r = requests.post(f"{EUTILS}/{endpoint}.fcgi", data={"db": "pubmed", **params}, timeout=120)
@@ -118,12 +118,12 @@ def publications(_args) -> None:
     found = set()
     for start in range(0, len(trials), 100):
         batch = [n for n, _ in trials[start:start + 100]]
-        xml = _eutils("esearch", term=" OR ".join(f"{n}[si]" for n in batch), retmax=5000)
+        xml = eutils("esearch", term=" OR ".join(f"{n}[si]" for n in batch), retmax=5000)
         found.update(e.text for e in ET.fromstring(xml).iter("Id"))
     pmids = sorted(found | {p for _, p, _ in links})
     rows = {}
     for start in range(0, len(pmids), 200):
-        xml = _eutils("efetch", id=",".join(pmids[start:start + 200]), retmode="xml")
+        xml = eutils("efetch", id=",".join(pmids[start:start + 200]), retmode="xml")
         for art in ET.fromstring(xml).iter("PubmedArticle"):
             pmid = art.findtext(".//PMID")
             title = art.find(".//ArticleTitle")

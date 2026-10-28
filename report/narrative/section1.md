@@ -35,6 +35,10 @@ Each suspended program takes one reason from the industry trials of the phase it
 
 {{SECTION1_FAILURES}}
 
+{{SECTION1_STOP_CAUSES}}
+
+{{SECTION1_EFFICACY}}
+
 ### By disease area and modality
 
 {{AREA_TABLE}}

@@ -150,6 +150,76 @@ At the level of individual trials, the 4,388 industry trials started in 2008–2
 Finally, 17% of Phase 3 programs that stopped short of FDA approval had met their primary endpoint. In a sample we read, most of them were approved outside the US (Japan, China, Korea, Russia) or received a complete response letter from the FDA: a positive Phase 3 readout is necessary but not sufficient for US approval.
 
 
+### Tracing the stops the registry does not explain
+
+For 1,917 of the 4,112 programs that stopped in Phase 2 or 3, the registry gives no reason, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the efficacy reading above found wrong. Each was traced. A model read the program's trials (records, posted results, linked papers) and structured signals: whether the drug went on in other diseases, whether its sponsor started any trial afterwards, whether drugs on the same target stopped at the same time. It then searched the web for company releases, SEC filings, pipeline updates, conference reports and trade news, with ClinicalTrials.gov excluded. It named a cause only where a source supported it, citing only pages its own searches returned, and separately gave a *likely* cause, its best inference from context, where no source says. Each step is recorded in the database (`preclin.analysis_method`, `preclin.stop_signal`, `preclin.stop_cause`), with every decision's inputs, searches and sources in `pv_evidence.llm_decision`.
+
+| Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
+| :---- | :---- | :---- | :---- |
+| Efficacy | 27% (1,112) | 33% (1,372) | 36% (1,477) |
+| Safety | 3% (117) | 4% (150) | 4% (154) |
+| PK or formulation | 0% (8) | 0% (16) | 0% (17) |
+| Business or strategic | 8% (334) | 14% (577) | 21% (858) |
+| Company acquired, merged, unfunded or closed | 0% (0) | 2% (90) | 3% (143) |
+| Operational (enrollment, sites, supply, regulatory) | 5% (222) | 6% (261) | 7% (283) |
+| Positive readout, not yet advanced | 12% (488) | 22% (891) | 23% (930) |
+| Did not actually stop | 0% (0) | 5% (201) | 5% (204) |
+| Unknown | 45% (1,831) | 13% (554) | 1% (46) |
+
+A sourced cause was found for 71% of the traced programs (1,363), and a likely cause for 98%. The biggest changes from the registry's picture:
+
+* **Many quiet stops were not failures.** A positive readout that was not taken further in the disease (approval outside the US, a stalled partnership, a move to another formulation) was the sourced cause for 444 traced programs, and 201 had not stopped at all: development continued under another registry, region, name or combination. Section 1's suspension rule, which reads only ClinicalTrials.gov, counts these as stops, so its failure rates are somewhat high.
+* **Efficacy is under-recorded.** Efficacy was the sourced cause of 305 traced programs, usually from published results or a company statement the registry never carried, raising efficacy from 27% of all Phase 2/3 stops as registered to 33% sourced (36% counting likely causes).
+* **Business reasons and company events are the rest.** Portfolio decisions account for 21% of all stops counting likely causes, and acquisitions, mergers, lost funding or closures for 3%. Safety stays rare (4%).
+
+**How far to trust it.** The same procedure was run on 129 stops whose registry does state a reason, drawn at random across causes, with the reason removed and ClinicalTrials.gov blocked. It named a sourced cause for 88% of them, and that cause matched the registry's for 61% (κ = 0.54); the likely cause matched for 59% (κ = 0.51). Accuracy differs by cause. Efficacy stops were recognised almost every time (87%), but only 54% of the stops it called efficacy were efficacy stops in the registry: safety stops were often read as efficacy (companies announce both as an unfavourable benefit–risk), and business and operational stops were confused with each other (52% and 52% recognised). The efficacy share after tracing is therefore an upper estimate, and safety is likely under-counted. The registry's stated reason is itself an imperfect reference, since a stated business reason can hide a failed readout. Stops with a stated reason are probably also easier to trace, so accuracy on the unexplained stops is likely lower. One independent check holds: of programs traced to a company event, 85% had a sponsor that started no trial afterwards, against 36% of those traced to efficacy.
+
+
+### Why efficacy failed: the target was not engaged, or it was the wrong target
+
+A program that fails on efficacy fails in one of two ways that matter for target selection: the drug never engaged its target well enough in patients, so the target hypothesis was never tested, or it engaged the target and the disease did not respond. The cohort is every Phase 2 and 3 program above that stopped for efficacy or for PK, dose or formulation: as the registry records it (1,066 efficacy, 8 PK), or as traced with a source from the stops the registry does not explain (279 efficacy, 8 PK). An exposure failure is the same biology as a failure to engage, so PK stops are broken down here rather than counted apart. For each of the 1,361 programs the model would label (27 more, mostly gene and cell therapies and live biotherapeutics, were refused), an LLM read an evidence bundle: the failed trial's record, posted results and papers, the drug's other trials and their outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts on the drug's human pharmacology and on the drug in that disease. It judged, for humans and at the doses tested, the three pillars of [Morgan et al. 2012](https://doi.org/10.1016/j.drudis.2011.12.020): exposure at the site of action, binding or engagement of the target, and the expected pathway effect. Engagement could also be inferred when the drug worked in another disease through the same target and tissue compartment at a comparable dose. It then coded the failure, using only the bundle and citing the sources it used. The codes and checks were fixed before any program was labelled; the full method, with examples and prompts, is in `report/methods_stops_and_engagement.md`. Where the bundle held no human evidence of engagement (43% of programs), a second pass, added after the first results, gave the same model the same bundle and the web: it searched full-text papers, conference reports, FDA and EMA reviews and company releases for human pharmacology, and could cite only pages its own searches returned. It decided 151 of the 575 programs it searched; the figures below use those labels.
+
+| What the evidence shows | Phase 2 | Phase 3 | Phase 2 and 3 | Outside oncology |
+| :---- | :---- | :---- | :---- | :---- |
+| Not engaged: exposure or engagement inadequate, or another drug on the target worked (F1) | 9% (92) | 7% (24) | 9% (116) | 8% (91) |
+| Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4) | 46% (472) | 50% (164) | 47% (636) | 45% (512) |
+| Trial design, population or endpoint, mechanism not in question (F7) | 7% (73) | 14% (47) | 9% (120) | 10% (110) |
+| Toxicity offset or ended efficacy (F5, F6) | 0% (1) | 0% (0) | 0% (1) | 0% (1) |
+| Indeterminate: no human engagement evidence either way (U) | 38% (392) | 29% (96) | 36% (488) | 37% (419) |
+| **Not engaged, of failures whose mechanism was tested** | **16%** (13–20) | **13%** (8–18) | **15%** (13–19) | **15%** (12–18) |
+| Programs (entities) | 1,030 (848) | 331 (285) | 1,361 (1,067) | 1,133 (908) |
+
+![Top: Phase 2 and 3 stops by cause, excluding programs whose development continued; where no source states the cause, the model's likely cause is counted. Safety is a floor: sponsors rarely state it, a missed endpoint takes precedence over a safety signal, and the tracing recognised fewer than half of known safety stops. Business is the least reliable cause. Positive readouts include programs whose primary endpoints were only partly met. Bottom: the programs stopped for efficacy or exposure with a sourced cause (likely-only causes are not broken down), by what the evidence shows about target engagement](report/output/figures/efficacy_attribution.png)
+
+Where the record shows whether the mechanism was tested, the drug had engaged its target in 636 of 752 programs and the disease did not respond; **15%** (13%–19%) failed without adequate engagement or exposure, or with another drug on the same target succeeding in the disease. The second kind is the larger and is inferred rather than measured: 66 of the 116 not-engaged programs failed where a drug on the same target worked, 56 of them with no human engagement data of their own; the rest had exposure or engagement measured and found inadequate. Failures to engage are about as common in Phase 3 (13%) as in Phase 2 (16%): no regulation requires engagement to be shown, and good practice places it in Phase 1 or 2a, yet engagement was often still unverified when confirmatory trials started. Outside oncology the share is 15%. Trial design, population or endpoint account for 9% of efficacy failures, and toxicity that offset efficacy for 1. Another 37 programs recorded as efficacy stops were not failed efficacy tests (a met endpoint, a missed non-inferiority margin, a business stop, or off-target toxicity); they are counted under their traced cause above and left out here.
+
+* *Engaged, no benefit.* Venglustat cut glucosylceramide in the cerebrospinal fluid of people with *GBA1* Parkinson's disease by about 73% at the top dose ([Peterschmitt 2022](https://doi.org/10.3233/JPD-212714)), and over a year their motor scores worsened by 7.3 points on drug against 4.7 on placebo ([MOVES-PD](https://doi.org/10.1016/S1474-4422(23)00205-3)). CSL112, plasma-derived apolipoprotein A1 that raises cholesterol efflux capacity, did not reduce myocardial infarction, stroke or cardiovascular death at 90 days in 18,219 patients after myocardial infarction (hazard ratio 0.93, 0.81–1.05; [AEGIS-II](https://doi.org/10.1056/NEJMoa2400969)).
+* *Not engaged.* PF-06687234, an IL-10 fusion protein added to infliximab for ulcerative colitis, was stopped for futility, and was detected, at low concentration, in only one colon tissue sample: the drug may never have reached the inflamed mucosa at a useful level ([Ther Adv Gastroenterol 2026](https://doi.org/10.1177/17562848251410784)).
+
+**The large caveat is what the public record does not say.** For 36% of efficacy failures there is still no human evidence of engagement either way, after the web search, so a drug that never engaged and a target that does not matter cannot be told apart. Engagement was shown in patients with the program's disease for only 29% of the programs where it was shown at all, and was public or registered before the failed trial started for 58%. The gap need not be neutral: a drug that never engaged its target leaves less to publish, and engagement inferred from success in another disease can only add to the engaged side. The search did not bear that out among the programs it could decide: 18 of the 122 it found tested were not engaged (15%), the same share as among programs the bundle decided, so the headline did not move. If every program still indeterminate were a failure to engage, the ceiling is 49%. Counting only directly measured engagement gives the same direction:
+
+| Variant | Programs | Mechanism tested | Not engaged, of tested (95% CI) | Indeterminate |
+| :---- | :---- | :---- | :---- | :---- |
+| All (Phase 2 and 3) | 1,361 | 752 | 15% (13–18) | 36% |
+| Phase 2 | 1,030 | 564 | 16% (13–20) | 38% |
+| Phase 3 | 331 | 188 | 13% (8–17) | 29% |
+| Efficacy recorded in the registry | 1,066 | 633 | 14% (11–17) | 32% |
+| Traced from unexplained stops | 287 | 113 | 18% (10–26) | 52% |
+| Outside oncology | 1,133 | 603 | 15% (12–18) | 37% |
+| Oncology | 228 | 149 | 17% (10–24) | 30% |
+| Sponsor-stated efficacy reason | 291 | 209 | 16% (12–22) | 26% |
+| Primary endpoint missed | 775 | 424 | 13% (10–17) | 34% |
+| Direct pillar evidence only (inferred engagement counted as unknown) | 1,361 | 581 | 20% (17–24) | 48% |
+| Engaged only if shown before the index trial | 1,361 | 491 | 24% (19–28) | 56% |
+| One program per entity | 1,067 | 558 | 16% (13–20) | 39% |
+| High or medium confidence | 870 | 557 | 11% (9–15) | 27% |
+| Bundle only (before the web search) | 1,361 | 596 | 16% (13–20) | 43% |
+
+**Checks.** A second model, given the same bundles and asked the pillar questions one at a time before choosing any code, relabelled a seeded random sample of 150 programs (133 with a validated label from both): it agreed on the not-engaged / engaged / other split for 74% (κ = 0.55) and on whether the target was engaged for 82%. Separately, agents with web access researched a seeded random sample of 66 programs from scratch (publications, conference reports, company releases), without the pipeline's labels (65 also have a pipeline label): they agreed on the three-way split for 82% (κ = 0.67) and on the group for 86% of the programs the pipeline decided; they never called engaged a program the pipeline called not engaged, or the reverse (0 contradictions). Of the 27 adjudicated programs the bundle had left indeterminate, the web search and the outside researchers both decided 5 and agreed on 80% of them; the search never decided one the researchers could not, and the researchers decided 4 that the search left open (2 of them not engaged). On their own, they found 5 failures to engage among 36 programs whose mechanism they could judge (14%). The pre-registered construct checks were uninformative rather than contradictory: programs coded not engaged and engaged-without-benefit did not differ in whether other drugs on their target failed (34% against 43%) or advanced (34% against 45%) in the disease, or in germline genetic support (14% against 9%), with only 50 programs coded F1a.
+
+The answer to "was the target wrong, or was it never hit?" is therefore: where anyone can tell, the target was usually hit. Among efficacy failures whose mechanism was tested, 15% failed to engage (11% to 24% across the variants above); in the rest the drug engaged its target and the disease did not move. For 36% of failures the public record, searched, cannot say.
+
+
 ### By disease area and modality
 
 | Disease area | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
@@ -378,7 +448,7 @@ Two of the seven hypotheses hold after correction for multiple testing.
 | Patient-reported outcome | 642 | 56% | 17 | 59% / 56% | 1.24 (0.88–1.73) | – |
 | Disease events (relapses, exacerbations…) | 365 | 44% | 57 | 40% / 45% | 0.90 (0.60–1.33) | 0.94 (0.61–1.45) |
 | Hard outcome (death, MI, stroke…) | 184 | 63% | 19 | 53% / 64% | – | – |
-| Tumour response | 168 | 67% | 35 | 57% / 70% | 0.86 (0.62–1.19) | 0.72 (0.46–1.11) |
+| Tumour response | 168 | 67% | 35 | 57% / 70% | 0.86 (0.62–1.18) | 0.72 (0.46–1.10) |
 | Progression-free survival | 447 | 61% | 91 | 53% / 63% | 1.09 (0.88–1.36) | 1.05 (0.79–1.39) |
 | Overall survival | 219 | 68% | 22 | 50% / 70% | – | – |
 

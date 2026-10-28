@@ -252,9 +252,21 @@ Each quantitative claim, with the value the rebuild gives:
 | D73 | Section 3 case verification (33 new cases) found: topiroxostat credited with a Phase 2 entry from a trial of another drug (dotinurad, NCT02837198) in which it is only a combination partner, a pattern that reaches about 2,600 industry Phase 2/3 trials pairing an approved drug with a new one; pruxelutamide's Phase 3 trials registered only in China, so the pipeline sees no advance. Padsevonil, also flagged, is not an error: its GABRA1 action is recorded as partial agonist, and its drug-level direction is mixed because its SV2 targets carry action 'other' | Phase starts of combination partners; outcomes for non-CT.gov trials | fixed (phase starts): trial_phase_role v2 re-judged 14,690 trials; an established drug given only as a partner to the drug a trial develops no longer starts a phase unless its sponsor or a collaborator develops it there. Drug-trial pairs left out of a main period rose from 921 to 4,338 and program-trial links that do not start a phase from 6,639 to 31,799 (a sample of 12 was all backbone chemotherapy, supportive, comparator or observational use); topiroxostat no longer has a Phase 2 entry. Non-CT.gov registries remain a stated limitation |
 | D74 | The ClinicalTrials.gov snapshot query fetches only DRUG or BIOLOGICAL interventions, so trials whose investigational product is registered only as a COMBINATION_PRODUCT (drug-device pens and injectors) or GENETIC intervention are missing, although the trial definition includes them: 3,669 interventional studies, 754 of them industry Phase 1–3 (eneboparatide's Phase 3 CALYPSO, NCT05778071, so the pipeline sees no advance) | Programs, phase transitions and outcomes for those products | open: widen `pipeline.ctgov` QUERY and take a new snapshot, then re-run the pipeline |
 | D75 | Second Section 3 case verification (44 new cases) found: target labels that are incomplete or imprecise (efzofitimod binds NRP2, recorded NRP1; OCTA12 is a von Willebrand factor fragment, recorded F8; catequentinib/anlotinib also inhibits KIT and PDGFRA, not recorded; miglustat in Pompe disease acts by stabilising co-administered GAA, UGCG recorded); afuresertib's 2012 ovarian-cancer Phase 1/2 (NCT01653912) attached to no disease because its condition was not mapped | Entity targets; condition mapping | open: target and condition labels for these entities |
+| D76 | A cough trial abbreviated "CRC" (chronic refractory cough) mapped to colorectal carcinoma: nedizantrep (GDC-6599, NCT05660850) | Program disease; Section 1 failure modes; attribution | open: found by the efficacy-attribution adjudication; disease mapping |
+| D77 | Orvepitant's Phase 2 chronic refractory cough program carries no disease (NCT02993822) | Program disease; Phase 3 cohort and attribution | open: found by the efficacy-attribution adjudication; disease mapping |
+| D78 | The attribution model refuses to label some gene therapies, engineered cell therapies, live biotherapeutics and viral-vector products (15 Phase 2/3 efficacy failures) | Section 1 efficacy attribution | disclosed: reported as unlabelled, not worked around (as for targets) |
 | D05 | Migration numbering collision: local untracked `db/10`–`db/23` vs `origin/main` `db/10`–`db/26`; some local files were applied to the DB outside the ledger | Reproducibility | confirmed; new work uses ledgered migrations 53+ |
 
 ## Work log
+
+- 2026-10-26 — Why efficacy failed (Section 1). Plan committed before labelling
+  (`report/methods_stops_and_engagement.md`). New data: PubMed searches on each failed entity's human
+  pharmacology and on the entity in each program disease (`preclin.moiety_publication`, reviews
+  excluded), and a three-pillar reading (exposure, engagement, pathway) with a failure code for
+  every program Section 1 records as stopped for efficacy (`preclin.efficacy_failure_attribution`,
+  LLM, sources limited to the bundle and validated). Checks: a stepwise re-derivation by a second
+  model on a seeded sample of 150, and a blind web adjudication of a seeded sample of 66 by agents
+  (`report/audits/attribution_adjudication.json`), which also found D73–D74.
 
 - 2026-10-21 — Section 3, which evidence translates. Plan committed before any outcome analysis
   (`report/translation_plan.md`). New data: primary outcome measures for every trial
