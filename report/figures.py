@@ -90,24 +90,24 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-EFFICACY = "#1f6feb"
+EFFICACY = "#d62828"
 ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; shades of the efficacy cause color
-    "not_engaged": ("Not engaged", "#0a3a8c"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
-    "trial_design": ("Trial design, population, endpoint", "#6ea8fe"), "toxicity": ("Toxicity offset efficacy", "#b6d4fe"),
-    "indeterminate": ("No engagement data", "#e1ecff"),
+    "not_engaged": ("Not engaged", "#7a0e0e"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
+    "trial_design": ("Trial design, population, endpoint", "#ec7a7a"), "toxicity": ("Toxicity offset efficacy", "#f5b3b3"),
+    "indeterminate": ("No engagement data", "#fbe3e3"),
 }
-CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; one hue per cause
-    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#f04438"), "pk_formulation": ("PK or formulation", "#f5a524"),
-    "business_strategic": ("Business or strategic", "#8e4ec6"), "company_event": ("Company acquired, merged or closed", "#e5489b"),
-    "operational": ("Operational", "#8b8d98"), "positive_not_advanced": ("Positive readout, not advanced", "#12b886"),
-    "development_continued": ("Did not actually stop", "#2b8a3e"), "unknown": ("Unknown", "#e8e6e0"),
+CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; spectrum order, efficacy first
+    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#f77f00"), "pk_formulation": ("PK or formulation", "#fcbf49"),
+    "business_strategic": ("Business or strategic", "#2a9d8f"), "company_event": ("Company acquired, merged or closed", "#2a9d8f"),
+    "operational": ("Operational", "#277da1"), "positive_not_advanced": ("Positive readout, not advanced", "#6a4c93"),
+    "development_continued": ("Did not actually stop", "#3d6b4f"), "unknown": ("Unknown", "#e8e6e0"),
 }
 
 
 def dark(color: str) -> bool:
     """Whether white text reads better than dark text on this fill."""
     r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.5
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.55
 
 
 def stacked(ax, y, segments, height=0.62, gap=0.004):
