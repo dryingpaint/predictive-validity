@@ -34,7 +34,18 @@ ADJUDICATION = os.path.join(frame.REPO, "report", "audits", "attribution_adjudic
 GROUP = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
          "F4": "engaged_no_benefit", "F5": "toxicity", "F6": "toxicity", "F7": "trial_design",
          "F8": "not_a_failure", "F9": "not_a_failure", "U": "indeterminate"}
-GROUPS = ["not_engaged", "engaged_no_benefit", "toxicity", "trial_design", "indeterminate"]
+# Each group with its label in the report table and in the figure legend, in stacking order.
+GROUP_LABELS = {
+    "not_engaged": ("Not engaged: exposure or engagement inadequate, or another drug on the target worked (F1)",
+                    "Not engaged"),
+    "engaged_no_benefit": ("Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4)",
+                           "Engaged, no benefit"),
+    "trial_design": ("Trial design, population or endpoint, mechanism not in question (F7)",
+                     "Trial design, population, endpoint"),
+    "toxicity": ("Toxicity offset or ended efficacy (F5, F6)", "Toxicity offset efficacy"),
+    "indeterminate": ("Indeterminate: no human engagement evidence either way (U)", "No engagement data"),
+}
+GROUPS = list(GROUP_LABELS)
 TESTED = ["not_engaged", "engaged_no_benefit"]
 
 

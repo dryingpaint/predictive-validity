@@ -21,6 +21,7 @@ import pandas as pd
 from report import bio, frame
 from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
+from report.attribution import GROUP_LABELS
 from report.stop_causes import SHOWN
 
 OUT = os.path.join(frame.REPO, "report", "output")
@@ -91,10 +92,9 @@ def failure_modes():
 
 
 EFFICACY = "#d62828"
-ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; shades of the efficacy cause color
-    "not_engaged": ("Not engaged", "#7a0e0e"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
-    "trial_design": ("Trial design, population, endpoint", "#ec7a7a"), "toxicity": ("Toxicity offset efficacy", "#f5b3b3"),
-    "indeterminate": ("No engagement data", "#fbe3e3"),
+ATTRIBUTION_COLORS = {  # report.attribution.GROUP_LABELS, in stacking order; shades of the efficacy cause color
+    "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a", "toxicity": "#f5b3b3",
+    "indeterminate": "#fbe3e3",
 }
 SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order, efficacy first
     "efficacy": EFFICACY, "safety": "#f77f00", "business_strategic": "#2a9d8f", "operational": "#277da1",
@@ -129,7 +129,7 @@ def efficacy_attribution():
     total = len(shown)
     after = [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]
     e = n["phase23"]
-    efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()]
+    efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, col in ATTRIBUTION_COLORS.items()]
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
@@ -161,8 +161,9 @@ def efficacy_attribution():
                         labelcolor=INK2)
         ax.add_artist(leg)
         eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                hatch="////" if g == "indeterminate" else None, label=l)
-                       for g, (l, col) in ATTRIBUTION_COLORS.items()]
+                                                hatch="////" if g == "indeterminate" else None,
+                                                label=GROUP_LABELS[g][1])
+                       for g, col in ATTRIBUTION_COLORS.items()]
         ax.legend(handles=eff_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
                   bbox_to_anchor=(-0.18, 0.2), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
                   labelspacing=0.6, labelcolor=INK2)

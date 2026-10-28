@@ -18,6 +18,7 @@ import pandas as pd
 
 from report import bio, frame
 from report.section3 import CASE_AUDIT
+from report.attribution import GROUP_LABELS
 from report.stop_causes import CAUSE_LABELS
 
 OUT = os.path.join(frame.REPO, "report", "output")
@@ -106,19 +107,12 @@ def failure_table() -> str:
     return table(out)
 
 
-ATTRIBUTION_GROUPS = {"not_engaged": "Not engaged: exposure or engagement inadequate, or another drug on the target worked (F1)",
-                      "engaged_no_benefit": "Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4)",
-                      "trial_design": "Trial design, population or endpoint, mechanism not in question (F7)",
-                      "toxicity": "Toxicity offset or ended efficacy (F5, F6)",
-                      "indeterminate": "Indeterminate: no human engagement evidence either way (U)"}
-
-
 def attribution_table() -> str:
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
     cols = {"Phase 2": n["by_phase"]["2"], "Phase 3": n["by_phase"]["3"], "Phase 2 and 3": n["phase23"],
             "Outside oncology": n["outside_oncology"]}
     rows = [[label] + [f"{pct(c['groups'][g]['share'], 0)} ({int(c['groups'][g]['n']):,})" for c in cols.values()]
-            for g, label in ATTRIBUTION_GROUPS.items()]
+            for g, (label, _) in GROUP_LABELS.items()]
     rows.append(["**Not engaged, of failures whose mechanism was tested**"]
                 + [f"**{pct(c['testable']['not_engaged_share'], 0)}**{ci(c['testable']['lo'], c['testable']['hi'], 0)}"
                    for c in cols.values()])

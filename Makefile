@@ -102,6 +102,7 @@ report:
 	$(RUN) report.section3
 	$(RUN) report.attribution
 	$(RUN) report.stop_causes
+	$(RUN) report.methods
 	$(RUN) report.quality
 	$(RUN) report.figures
 	$(RUN) report.render

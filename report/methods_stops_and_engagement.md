@@ -54,9 +54,10 @@ cause, sourced, is efficacy or exposure.
 | Did not actually stop (removed) | Development continued under another registry, region, name or combination | HS-20004 (noiiglutide) in type 2 diabetes went on to Phase 3 ([NCT06649773](https://clinicaltrials.gov/study/NCT06649773)); T89 in acute mountain sickness went on to a pivotal Phase 3 ([NCT04993729](https://clinicaltrials.gov/study/NCT04993729)) |
 | Unknown (likely cause counted) | No source states a cause; the likely cause is the model's inference | DMT210 in atopic dermatitis: no results announced and both indications ended together → likely efficacy; icosapent in COVID-19: enrollment fell as vaccines spread, no results → likely operational |
 
-**Known weaknesses.** On 131 stops whose registry reason is known, run with the reason hidden, the traced cause
-matched 63% of the time (κ = 0.55). Efficacy stops were recognised 92% of the time, but 7 of 24 safety stops were
-read as efficacy, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
+**Known weaknesses.** On 129 stops whose registry reason is known, run with the reason hidden, the traced cause
+matched 62% of the time (κ = 0.55). Efficacy stops were recognised
+92% of the time, but only 56% of the stops it called efficacy were, and
+safety stops were recognised 46% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
 a missed endpoint takes precedence over a safety signal). **Business** is the least reliable category: the model's
 business calls were right 48% of the time, often confused with operational. "Positive readout" includes programs
 whose primary endpoints were only partly met, and some recently quiet ones may still advance.
@@ -125,9 +126,9 @@ intervals from a bootstrap that resamples drugs (1,000 draws), since one drug's 
   rarer with germline genetic support (Section 3) than F1a.
 
 **Checks.** A second model (Claude Sonnet 5) with a stepwise prompt (prompt E) relabelled a seeded random sample of 150 registry efficacy stops
-and agreed on the not engaged / engaged / other split 75% of the time. Web-research agents labelled 64 programs from
-scratch, blind to the pipeline, and agreed 81% of the time (κ = 0.66), with no program called engaged by one and not
-engaged by the other. A deeper web search on 22 programs both had left undecided resolved 2.
+and agreed on the not engaged / engaged / other split 74% of the time. Web-research agents labelled
+65 programs from scratch, blind to the pipeline, and agreed 82% of the time
+(κ = 0.67), with 0 programs called engaged by one and not engaged by the other. A deeper web search on 22 programs both had left undecided resolved 2.
 
 ## Appendix: full prompts
 
