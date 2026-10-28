@@ -46,7 +46,8 @@ BLOCKED_DOMAINS = ["clinicaltrials.gov"]
 
 SIGNALS_METHOD = "stop_signals@v1"
 SIGNALS_DESCRIPTION = f"""For every program Section 1 records as suspended in Phase 2 or 3 (report.section1.failure_modes),
-keyed by (entity, disease, phase): stopped_on is the latest end (completion, else primary completion, else start)
+keyed by (entity, disease, phase), phase entries in pipeline.stops.TRACING_WINDOW: phase_entry is the phase entry
+date Section 1 assigns; stopped_on is the latest end (completion, else primary completion, else start)
 of the program's own trials; drug_continued_elsewhere is true when another program of the entity had a trial start
 after that date or has an active trial; drug_approved_anywhere is true when the entity has any FDA approval;
 sponsor_active_after is true when a lead sponsor of the program's trials started any registered trial more than
@@ -122,10 +123,10 @@ def signals(_args) -> None:
                      {"phases": list(PHASES), "sponsor_gap_months": SPONSOR_GAP_MONTHS,
                       "peer_window_months": PEER_WINDOW_MONTHS, "related_disease_lin": RELATED_DISEASE})
         cur.execute("DELETE FROM preclin.stop_signal")
-        execute_values(cur, """INSERT INTO preclin.stop_signal (moiety_id, mondo_id, phase, stopped_on,
+        execute_values(cur, """INSERT INTO preclin.stop_signal (moiety_id, mondo_id, phase, phase_entry, stopped_on,
                                  drug_continued_elsewhere, drug_approved_anywhere, sponsor_active_after,
                                  target_peers_stopped, method_id) VALUES %s""",
-                       [(int(r.moiety_id), r.mondo_id, int(r.phase),
+                       [(int(r.moiety_id), r.mondo_id, int(r.phase), pd.Timestamp(r.entry).date(),
                          r.stopped_on.date() if pd.notna(r.stopped_on) else None,
                          bool(r.drug_continued_elsewhere), bool(r.drug_approved_anywhere),
                          None if r.sponsor_active_after is None else bool(r.sponsor_active_after),

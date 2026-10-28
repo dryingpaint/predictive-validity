@@ -9,6 +9,8 @@ safety, F8 is business, and F9 (not an efficacy test) sends a registry efficacy 
 """
 from __future__ import annotations
 
+from datetime import date
+
 import numpy as np
 import pandas as pd
 
@@ -17,6 +19,9 @@ from report import frame, section1
 from report.disease_match import Mondo
 
 PHASES = (2, 3)
+# Phase entries whose stops are traced and labelled: every window the report shows (the Section 1 headline and the
+# 2015 onward comparison) lies inside it.
+TRACING_WINDOW = (date(2008, 1, 1), date(2025, 12, 31))
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
 PK_REASON = "PK, dose or formulation"
 POSITIVE = "positive readout, not advanced"
@@ -46,13 +51,15 @@ def keys(d: pd.DataFrame) -> list[str]:
 
 
 def stops():
-    """Every program Section 1 records as suspended, with the reason it assigns and its disease,
-    one row per (entity, disease, phase), and the phase rows, programs and trials it was built from."""
+    """Every program Section 1 records as suspended with a phase entry in TRACING_WINDOW, with the reason it assigns,
+    its disease and its phase entry date, one row per (entity, disease, phase), and the phase rows, programs and
+    trials it was built from."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = section1.phase_rows(progs, trials, snap)
+    rows = section1.phase_rows(progs, trials, snap, window=TRACING_WINDOW)
     modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes()).merge(
-        progs[["program_id", "mondo_id"]], on="program_id")
+        progs[["program_id", "mondo_id"]], on="program_id").merge(
+        rows[~rows.credited][["program_id", "phase", "entry"]], on=["program_id", "phase"])
     modes["key"] = keys(modes)
     if modes.key.duplicated().any():
         raise ValueError(f"programs share an (entity, disease, phase): {modes[modes.key.duplicated()].key.tolist()[:5]}")
