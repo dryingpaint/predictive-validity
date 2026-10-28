@@ -238,7 +238,7 @@ PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v2", schema_versio
 PHASE_ROLE_SYSTEM = """You read one clinical trial registration and the investigational drugs linked to it, and decide whether the trial can mark a drug's entry into its registered phase.
 
 extension: true when the trial enrolls only people who took part in earlier trials of the drug (an open-label extension, rollover or long-term continuation study), rather than recruiting new participants; false otherwise.
-main_period_drugs: the listed drugs that the trial's main period tests (its first, randomized or primary-endpoint period), copied exactly as listed. Leave out a drug that enters only in a later sub-study, extension period or optional add-on to another drug's trial. For an extension study, list the drugs it continues.
+main_period_drugs: the listed drugs that the trial's main period tests (its first, randomized or primary-endpoint period), copied exactly as listed. Leave out a drug that enters only in a later sub-study, extension period or optional add-on to another drug's trial. Also leave out an established drug (already marketed somewhere, or a standard treatment) that the trial gives only as a partner to the drug it is developing, measuring the new drug with or on top of it, unless the lead sponsor or a collaborator is also developing that established drug for this condition (it owns or co-develops it, or the trial is designed to register the combination for both). For an extension study, list the drugs it continues.
 Judge from the design described, not from words alone."""
 
 PHASE_ROLE_SCHEMA = {
@@ -261,6 +261,7 @@ def render_phase_role(p: dict) -> str:
     return (f"Trial {p['nct_id']}: {p['title']}\nOfficial title: {p['official_title'] or '-'}\n"
             f"Phases: {', '.join(p['phases'])}; status: {p['status']}; start: {p['start']}; enrollment: {p['enrollment']}; "
             f"allocation: {p['allocation']}; masking: {p['masking']}; model: {p['model']}\n"
+            f"Lead sponsor: {p['sponsor'] or '-'}; collaborators: {', '.join(p['collaborators']) or 'none'}\n"
             f"Investigational drugs linked to the trial, one per line:\n{drugs}\n"
             f"Interventions:\n{ivs or '(none)'}\nArms:\n{arms or '(none)'}\n"
             f"Brief summary: {p['summary'] or '(none)'}")
@@ -303,7 +304,7 @@ def validate_phase_role(p: dict, out: dict) -> None:
         raise ValueError(f"main_period_drugs not among the listed drugs: {sorted(extra)[:3]}")
 
 
-PHASE_ROLE_TASK = llm.Task(name="trial_phase_role", prompt_version="v1", schema_version="v1", system=PHASE_ROLE_SYSTEM,
+PHASE_ROLE_TASK = llm.Task(name="trial_phase_role", prompt_version="v2", schema_version="v1", system=PHASE_ROLE_SYSTEM,
                            schema=PHASE_ROLE_SCHEMA, render=render_phase_role, validate=validate_phase_role,
                            subject_type="trial", model="claude-sonnet-5", effort="low", max_tokens=1500)
 
@@ -314,17 +315,19 @@ def judge_phase_roles(ncts: set[str]) -> None:
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.official_title, s.phases, s.overall_status, s.start_date, s.enrollment,
                    s.allocation, s.masking, s.intervention_model, s.interventions, s.arm_groups, s.brief_summary,
-                   array_agg(m.name ORDER BY m.name), array_agg(m.moiety_id ORDER BY m.name)
+                   s.lead_sponsor, s.collaborators, array_agg(m.name ORDER BY m.name), array_agg(m.moiety_id ORDER BY m.name)
             FROM preclin.ctgov_study s JOIN preclin.ctgov_study_moiety sm ON sm.nct_id = s.nct_id AND sm.role = 'investigational'
             JOIN preclin.moiety m ON m.moiety_id = sm.moiety_id
             WHERE s.nct_id = ANY(%s) GROUP BY s.nct_id""", (sorted(ncts),))
         rows = cur.fetchall()
     items, ids = {}, {}
     for (nct, title, official, phases, status, start, enrollment, allocation, masking, model, ivs, arms, summary,
-         names, mids) in rows:
+         sponsor, collaborators, names, mids) in rows:
         items[nct] = {"nct_id": nct, "title": title, "official_title": official, "phases": phases, "status": status,
                       "start": str(start), "enrollment": enrollment, "allocation": allocation, "masking": masking,
-                      "model": model, "interventions": ivs or [], "arms": arms or [], "summary": summary, "drugs": names}
+                      "model": model, "interventions": ivs or [], "arms": arms or [], "summary": summary, "drugs": names,
+                      "sponsor": sponsor, "collaborators": [c.get("name", "") if isinstance(c, dict) else str(c)
+                                                            for c in collaborators or []]}
         ids[nct] = dict(zip(names, mids))
     run_id = llm.run(PHASE_ROLE_TASK, items)
     out = [(key, parsed["extension"], sorted({ids[key][listed_drug(d, items[key])] for d in parsed["main_period_drugs"]}),
@@ -578,7 +581,11 @@ def build(_args) -> None:
 
     def load_roles() -> dict:
         with llm.connect() as conn, conn.cursor() as cur:
-            cur.execute("SELECT nct_id, extension, main_period_moieties FROM preclin.trial_phase_role")
+            # Only decisions under the task's current prompt: a revised prompt re-judges every candidate.
+            cur.execute("""SELECT r.nct_id, r.extension, r.main_period_moieties FROM preclin.trial_phase_role r
+                           JOIN pv_evidence.llm_decision d USING (llm_decision_id)
+                           JOIN pv_evidence.llm_decision_run dr USING (decision_run_id)
+                           WHERE dr.prompt_version = %s""", (PHASE_ROLE_TASK.prompt_version,))
             return {n: (ext, set(mids)) for n, ext, mids in cur.fetchall()}
 
     def starts_phase(nct: str, mid: int) -> bool:
