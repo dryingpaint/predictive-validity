@@ -90,17 +90,17 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-EFFICACY = "#2b5c8a"
+EFFICACY = "#1f6feb"
 ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; shades of the efficacy cause color
-    "not_engaged": ("Not engaged", "#14304d"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
-    "trial_design": ("Trial design, population, endpoint", "#6f97bf"), "toxicity": ("Toxicity offset efficacy", "#a9c2dc"),
-    "indeterminate": ("No engagement data", "#dbe5ef"),
+    "not_engaged": ("Not engaged", "#0a3a8c"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
+    "trial_design": ("Trial design, population, endpoint", "#6ea8fe"), "toxicity": ("Toxicity offset efficacy", "#b6d4fe"),
+    "indeterminate": ("No engagement data", "#e1ecff"),
 }
-CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; efficacy saturated, the rest muted
-    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#c8553d"), "pk_formulation": ("PK or formulation", "#e0a458"),
-    "business_strategic": ("Business or strategic", "#7a6c9d"), "company_event": ("Company acquired, merged or closed", "#b07ca0"),
-    "operational": ("Operational", "#9a988c"), "positive_not_advanced": ("Positive readout, not advanced", "#5b9a7d"),
-    "development_continued": ("Did not actually stop", "#3d6b4f"), "unknown": ("Unknown", "#e8e6e0"),
+CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; one hue per cause
+    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#f04438"), "pk_formulation": ("PK or formulation", "#f5a524"),
+    "business_strategic": ("Business or strategic", "#8e4ec6"), "company_event": ("Company acquired, merged or closed", "#e5489b"),
+    "operational": ("Operational", "#8b8d98"), "positive_not_advanced": ("Positive readout, not advanced", "#12b886"),
+    "development_continued": ("Did not actually stop", "#2b8a3e"), "unknown": ("Unknown", "#e8e6e0"),
 }
 
 
