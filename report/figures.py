@@ -130,10 +130,11 @@ def efficacy_attribution():
     causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
     continued = "development_continued"
     causes = causes[(causes.cause != continued) & ~((causes.cause == "unknown") & (causes.likely == continued))]
-    causes = causes.replace({"cause": {"company_event": "business_strategic"},
-                             "likely": {"company_event": "business_strategic"}})
-    shown = {c: v for c, v in CAUSE_COLORS.items() if c not in (continued, "company_event")}
+    merged = {"company_event": "business_strategic", "pk_formulation": "efficacy"}
+    causes = causes.replace({"cause": merged, "likely": merged})
+    shown = {c: v for c, v in CAUSE_COLORS.items() if c not in (continued, *merged)}
     shown["business_strategic"] = ("Business, strategic or company event", shown["business_strategic"][1])
+    shown["efficacy"] = ("Efficacy or exposure (PK, dose, formulation)", shown["efficacy"][1])
     total = len(causes)
     cause = causes.cause.where(causes.cause != "unknown", causes.likely)
     after = [(float((cause == c).mean()), col, c == "unknown") for c, (_, col) in shown.items()]
@@ -154,13 +155,13 @@ def efficacy_attribution():
         fig.text(0.03, 0.895, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
                  fontsize=10.5, color=MUTED, va="top")
         rows = [(4.7, "All stops", f"{total:,} programs", after),
-                (1.75, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
+                (1.75, "Efficacy or exposure", f"{e['programs']:,} programs", efficacy)]
         for y, label, sub, segments in rows:
             stacked(ax, y, segments)
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
             ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
         ax.text(0, 5.25, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
-        ax.text(0, 2.3, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(0, 2.3, "STOPS FOR EFFICACY OR EXPOSURE (SOURCED): WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
                                                   hatch="////" if c == "unknown" else None, label=l)

@@ -45,6 +45,8 @@ MAX_SAME_TARGET = 15
 CHECK_SAMPLE = 150
 CHECK_SEED = 20261026
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
+REGISTRY_REASONS = {**{r: "registry efficacy" for r in EFFICACY_REASONS}, "PK, dose or formulation": "registry PK"}
+TRACED_CAUSES = {"efficacy": "traced efficacy", "pk_formulation": "traced PK"}
 
 PHARMACOLOGY_TERMS = ('pharmacodynamic*[tiab] OR "target engagement"[tiab] OR occupancy[tiab] OR '
                       '"proof of mechanism"[tiab] OR "proof-of-mechanism"[tiab] OR "first-in-human"[tiab] OR '
@@ -74,15 +76,16 @@ def stops():
 
 
 def cohort():
-    """Programs that stopped for efficacy, with their index trial: those Section 1 records as suspended for
-    efficacy (origin registry), and Phase 2/3 stops with no usable registry reason that pipeline.stop_causes
-    traced to efficacy with a source (origin traced)."""
+    """Programs that stopped for efficacy or exposure, with their index trial and the origin of that cause:
+    Section 1's suspensions for efficacy or for PK, dose or formulation (registry), and Phase 2/3 stops with
+    no usable registry reason that pipeline.stop_causes traced to efficacy or PK with a source (traced)."""
     modes = stops()[0]
-    t = frame.query("""SELECT moiety_id, mondo_id, phase FROM preclin.stop_cause
-                       WHERE cause = 'efficacy' AND cause_source = 'inferred'""")
-    traced = {subject_key(m, d, p) for m, d, p in zip(t.moiety_id, t.mondo_id, t.phase)}
-    out = modes[modes.reason.isin(EFFICACY_REASONS) | modes.key.isin(traced)].copy()
-    out["origin"] = np.where(out.reason.isin(EFFICACY_REASONS), "registry", "traced")
+    t = frame.query("""SELECT moiety_id, mondo_id, phase, cause FROM preclin.stop_cause
+                       WHERE cause = ANY(%s) AND cause_source = 'inferred'""", (list(TRACED_CAUSES),))
+    traced = {subject_key(m, d, p): c for m, d, p, c in zip(t.moiety_id, t.mondo_id, t.phase, t.cause)}
+    out = modes[modes.reason.isin(REGISTRY_REASONS) | modes.key.isin(set(traced))].copy()
+    out["origin"] = [REGISTRY_REASONS[r] if r in REGISTRY_REASONS else TRACED_CAUSES[traced[k]]
+                     for r, k in zip(out.reason, out.key)]
     return out
 
 
@@ -577,7 +580,7 @@ def search(_args) -> None:
 def check(_args) -> None:
     """Label a seeded random sample of the registry-recorded cohort again under CHECK_TASK."""
     eff = cohort()
-    keys = sorted(eff[eff.origin == "registry"].key)
+    keys = sorted(eff[eff.origin == "registry efficacy"].key)
     sample = np.random.default_rng(CHECK_SEED).choice(keys, size=min(CHECK_SAMPLE, len(keys)), replace=False)
     items = bundles(eff[eff.key.isin(set(sample))])
     run_id = llm.run(CHECK_TASK, items)

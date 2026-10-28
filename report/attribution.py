@@ -141,9 +141,11 @@ def split(d: pd.DataFrame, rng: np.random.Generator) -> dict:
 
 def summary(d: pd.DataFrame, rng: np.random.Generator) -> dict:
     keyed = lambda df: {r.pop("level"): r for r in df.to_dict("records")}
+    f1b = d[d.primary_code == "F1b"]
     return {"programs": int(len(d)), "entities": int(d.moiety_id.nunique()),
             "groups": keyed(shares(d, "group", GROUPS, rng)), "codes": keyed(shares(d, "primary_code", CODES, rng)),
-            "testable": split(d, rng)}
+            "testable": split(d, rng),
+            "f1b_no_engagement_data": int((f1b.engagement == "no_human_data").sum())}
 
 
 def bounds(d: pd.DataFrame, adj: dict) -> dict:
@@ -258,8 +260,9 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
                                             "U", d.primary_code))
     variants = {
         "all (Phase 2 and 3)": d, "Phase 2": d[d.phase == 2], "Phase 3": d[d.phase == 3],
-        "efficacy recorded in the registry": d[d.origin == "registry"],
-        "efficacy traced from unexplained stops": d[d.origin == "traced"],
+        "efficacy recorded in the registry": d[d.origin == "registry efficacy"],
+        "traced from unexplained stops": d[d.origin.str.startswith("traced")],
+        "stopped for PK, dose or formulation": d[d.origin.str.endswith("PK")],
         "outside oncology": d[~d.oncology], "oncology": d[d.oncology],
         "sponsor-stated efficacy reason": d[d.reason == "efficacy: stated"],
         "primary endpoint missed": d[d.reason == "efficacy: primary endpoint not met"],

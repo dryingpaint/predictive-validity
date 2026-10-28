@@ -254,7 +254,8 @@ TASK = llm.Task(name="stop_cause_inference", prompt_version="v2", schema_version
 
 INFER_METHOD = "stop_cause_inference@v2"
 INFER_DESCRIPTION = f"""Cohort: Phase 2/3 programs Section 1 records as suspended whose reason is unstated
-({'; '.join(UNSTATED)}), plus efficacy-recorded stops the efficacy attribution coded {', '.join(CORRECTED_CODES)}
+({'; '.join(UNSTATED)}), plus efficacy-recorded stops the efficacy attribution coded {', '.join(CORRECTED_CODES)}, and positive readouts whose
+index trial's primary endpoint is not an efficacy endpoint
 (not a failed efficacy test, a business stop, or off-target toxicity). Input per program (task
 {TASK.name} {TASK.prompt_version}, model {TASK.model}, effort {TASK.effort}): the drug, its primary targets, the
 disease, the program's trials in the phase (record, stated reason if any, primary outcomes, posted results up to
@@ -351,19 +352,27 @@ def load_signals() -> pd.DataFrame:
     return s
 
 
-def corrected_keys() -> set[str]:
-    """Programs whose final efficacy-attribution code (the web-search label where the bundle label was U)
-    says the stop was not a failed efficacy test."""
+POSITIVE = "positive readout, not advanced"
+
+
+def corrected_keys(modes: pd.DataFrame) -> set[str]:
+    """Stops whose registry reason the evidence does not support: the final efficacy-attribution code (the
+    web-search label where the bundle label was U) says the stop was not a failed efficacy test, or a positive
+    readout whose index trial's primary endpoint is not an efficacy endpoint (safety, PK or dose)."""
     a = frame.query("""SELECT a.moiety_id, a.mondo_id, a.phase FROM preclin.efficacy_failure_attribution a
                        LEFT JOIN preclin.efficacy_attribution_search s USING (moiety_id, mondo_id, phase)
                        WHERE CASE WHEN a.primary_code = 'U' AND s.primary_code IS NOT NULL THEN s.primary_code
                                   ELSE a.primary_code END = ANY(%s)""", (list(CORRECTED_CODES),))
-    return {f"{m}|{d}|{p}" for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)}
+    keys = {f"{m}|{d}|{p}" for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)}
+    pos = modes[modes.reason == POSITIVE]
+    e = frame.query("SELECT nct_id FROM preclin.trial_endpoint WHERE purpose <> 'efficacy' AND nct_id = ANY(%s)",
+                    (sorted(set(pos.nct_id.dropna())),))
+    return keys | set(pos[pos.nct_id.isin(set(e.nct_id))].key)
 
 
 def inference_cohort(modes: pd.DataFrame) -> pd.DataFrame:
     m = modes[modes.phase.isin(PHASES)]
-    return m[m.reason.isin(UNSTATED) | m.key.isin(corrected_keys())]
+    return m[m.reason.isin(UNSTATED) | m.key.isin(corrected_keys(modes))]
 
 
 def infer(_args) -> None:
@@ -394,7 +403,7 @@ under the task's subject keys with the suffix |heldout."""
 def validate_run(_args) -> None:
     modes = stops()[0]
     stated = modes[modes.phase.isin(PHASES) & modes.reason.isin(list(REGISTRY_CAUSE))
-                   & ~modes.key.isin(corrected_keys())].copy()
+                   & ~modes.key.isin(corrected_keys(modes))].copy()
     stated["cause"] = stated.reason.map(REGISTRY_CAUSE)
     rng = np.random.default_rng(VALIDATION_SEED)
     per = VALIDATION_SAMPLE // stated.cause.nunique()
@@ -431,7 +440,8 @@ ASSEMBLE_METHOD = "stop_cause_assembly@v2"
 ASSEMBLE_DESCRIPTION = f"""Final cause of every Phase 2/3 stop Section 1 counts. A stated registry reason is kept and
 mapped to a cause ({'; '.join(f'{k} -> {v}' for k, v in REGISTRY_CAUSE.items())}), cause_source registry. An
 efficacy-recorded stop whose final efficacy-attribution code (the web-search label where the bundle label was U)
-is {', '.join(CORRECTED_CODES)} takes the inferred cause, cause_source corrected. An unstated, bare sponsor-decision or unspecified other reason takes the inferred cause,
+is {', '.join(CORRECTED_CODES)}, and a positive readout whose index trial's primary endpoint is not an efficacy
+endpoint, take the inferred cause, cause_source corrected. An unstated, bare sponsor-decision or unspecified other reason takes the inferred cause,
 cause_source inferred; likely_cause and likely_basis carry the model's best inference. If inference produced no
 validated decision (a refusal or invalid output) the cause is unknown with no decision. Efficacy stops the attribution left unlabelled keep efficacy."""
 
@@ -449,7 +459,7 @@ def assemble(_args) -> None:
     modes = stops()[0]
     m = modes[modes.phase.isin(PHASES)].copy()
     dec = latest_decisions(TASK.name).set_index("key")
-    corrected = corrected_keys()
+    corrected = corrected_keys(modes)
     rows = []
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Final cause of each Phase 2/3 stop", ASSEMBLE_DESCRIPTION,

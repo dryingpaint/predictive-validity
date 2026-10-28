@@ -112,3 +112,20 @@ variant, and the re-derivation and adjudication stay scored against them.
 Agreement between search and adjudication labels is reported on the programs
 both labelled. Because the search can only resolve U, and engaged programs
 leave more to find, the direction of any bias is stated alongside the result.
+
+## Amendment, 2026-10-28: efficacy stops traced from unexplained stops
+
+The cohort above is Section 1's registry-recorded efficacy stops. Tracing the
+stops the registry does not explain (`pipeline.stop_causes`) found a source
+naming efficacy for about 300 more Phase 2/3 programs, so the efficacy share of
+all stops was larger than the cohort it was broken down by. Those programs
+join the cohort (origin `traced`) and go through the same labels and web
+search; programs whose efficacy cause is only the model's likely cause do not.
+Results are reported for both origins together and apart. The re-derivation
+sample stays drawn from the registry-recorded programs.
+
+The same amendment adds the stops for PK, dose or formulation (registry or traced
+with a source, origin `registry PK` / `traced PK`): an exposure failure is the
+same biology as a failure to engage, so it belongs in this breakdown and not in
+a separate cause. The labelling prompt is unchanged; its rubric codes a PK stop
+like any other (F1a when exposure was shown inadequate).
