@@ -22,7 +22,7 @@ from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
 from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, CODES
-from pipeline.stops import EFFICACY_CAUSES, ENGAGED, PHASES, RELATED_DISEASE, cohort, keys, labels, pillar_code, stops
+from pipeline.stops import EFFICACY_CAUSES, ENGAGED, PHASES, SameTarget, cohort, keys, labels, pillar_code, stops
 from report import frame
 from report.section1 import N_BOOT, SEED
 from report.section3 import Evidence, jsonable
@@ -178,10 +178,8 @@ def fisher(d: pd.DataFrame, flag: str, a: str = "F2", b: str = "F1a") -> dict:
 def construct(d: pd.DataFrame, progs: pd.DataFrame, rows: pd.DataFrame) -> dict:
     """Same-target entities that failed or advanced in a related disease, and germline genetic support for the
     disease at phase entry, compared between F1a and F2."""
-    targets = frame.query("SELECT moiety_id, target_id FROM preclin.moiety_target WHERE is_primary")
-    tset = targets.groupby("moiety_id").target_id.apply(set)
-    by_target = targets.groupby("target_id").moiety_id.apply(set)
     evidence = Evidence(progs)
+    same = SameTarget(evidence.mondo)
     p = progs[progs.mondo_id.notna()]
     p = p.assign(highest=p.program_id.map(frame.query(
         "SELECT program_id, highest_phase FROM preclin.dev_program").set_index("program_id").highest_phase))
@@ -191,9 +189,7 @@ def construct(d: pd.DataFrame, progs: pd.DataFrame, rows: pd.DataFrame) -> dict:
         by_entity[m].append((dz, pid in suspended, approved == "yes" or high >= 3))
     failed, advanced = [], []
     for m, dz in zip(d.moiety_id, d.mondo_id):
-        others = {o for t in tset.get(m, ()) for o in by_target[t]} - {m}
-        near = [x for o in others for x in by_entity[o]
-                if isinstance(dz, str) and evidence.mondo.lin(x[0], dz) >= RELATED_DISEASE]
+        near = [x for o in same.others(m) for x in by_entity[o] if same.related(x[0], dz)]
         failed.append(any(x[1] for x in near))
         advanced.append(any(x[2] for x in near))
     d = d.assign(same_target_failed=failed, same_target_advanced=advanced)

@@ -27,7 +27,7 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.stops import (CODE_CAUSE, INFERENCE_TASK, INFERENCE_VERSION, PHASES, REGISTRY_CAUSE, RELATED_DISEASE,
-                            UNSTATED, inferred_causes, keys, labels, settled, stops)
+                            UNSTATED, SameTarget, inferred_causes, keys, labels, settled, stops)
 from report import frame
 from report.disease_match import Mondo
 
@@ -96,21 +96,17 @@ def compute_signals(modes, rows, progs, trials) -> pd.DataFrame:
         None if not lead.get(k) else any(last_start.get(s, pd.Timestamp.min) > w + gap for s in lead[k])
         for k, w in zip(stopped.key, stopped.stopped_on)]
 
-    targets = frame.query("SELECT moiety_id, target_id FROM preclin.moiety_target WHERE is_primary")
-    tset = targets.groupby("moiety_id").target_id.apply(set)
-    by_target = targets.groupby("target_id").moiety_id.apply(set)
     susp = rows[(rows.event == "suspended") & ~rows.credited].merge(progs[["program_id", "mondo_id"]], on="program_id")
     susp_by_entity = defaultdict(list)
     for m, d, e in zip(susp.moiety_id, susp.mondo_id, pd.to_datetime(susp.event_date)):
         if isinstance(d, str):
             susp_by_entity[m].append((d, e))
-    mondo, window_days = Mondo(), PEER_WINDOW_MONTHS * 30.44
+    same, window_days = SameTarget(Mondo()), PEER_WINDOW_MONTHS * 30.44
     peers = []
     for m, d, when in zip(stopped.moiety_id, stopped.mondo_id, stopped.stopped_on):
-        others = {o for x in tset.get(m, ()) for o in by_target[x]} - {m}
-        peers.append(sum(any(isinstance(d, str) and mondo.lin(od, d) >= RELATED_DISEASE
-                             and abs((oe - when).days) <= window_days for od, oe in susp_by_entity[o])
-                         for o in others) if pd.notna(when) else 0)
+        peers.append(sum(any(same.related(od, d) and abs((oe - when).days) <= window_days
+                             for od, oe in susp_by_entity[o])
+                         for o in same.others(m)) if pd.notna(when) else 0)
     stopped["target_peers_stopped"] = peers
 
     phase_trials = own[own.phase == own.stop_phase]

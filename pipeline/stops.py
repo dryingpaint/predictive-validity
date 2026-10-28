@@ -14,6 +14,7 @@ import pandas as pd
 
 from pipeline import llm
 from report import frame, section1
+from report.disease_match import Mondo
 
 PHASES = (2, 3)
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
@@ -111,3 +112,25 @@ def settled(modes: pd.DataFrame, lab: pd.DataFrame) -> dict[str, str]:
                     (sorted(set(pos.nct_id.dropna())),))
     out |= {k: "infer" for k in pos.key[pos.nct_id.isin(set(e.nct_id))]}
     return out
+
+
+class SameTarget:
+    """Other entities sharing a primary target with an entity, and whether two diseases are related (MONDO Lin
+    similarity >= RELATED_DISEASE), with similarities cached since the same pairs recur across programs."""
+
+    def __init__(self, mondo: Mondo):
+        t = frame.query("SELECT moiety_id, target_id FROM preclin.moiety_target WHERE is_primary")
+        self.targets = t.groupby("moiety_id").target_id.apply(set)
+        self.entities = t.groupby("target_id").moiety_id.apply(set)
+        self.mondo = mondo
+        self.lin: dict[tuple[str, str], float] = {}
+
+    def others(self, moiety_id: int) -> set[int]:
+        return {o for x in self.targets.get(moiety_id, ()) for o in self.entities[x]} - {moiety_id}
+
+    def related(self, a, b) -> bool:
+        if not (isinstance(a, str) and isinstance(b, str)):
+            return False
+        if (a, b) not in self.lin:
+            self.lin[a, b] = self.mondo.lin(a, b)
+        return self.lin[a, b] >= RELATED_DISEASE
