@@ -52,8 +52,7 @@ after that date or has an active trial; drug_approved_anywhere is true when the 
 sponsor_active_after is true when a lead sponsor of the program's trials started any registered trial more than
 {SPONSOR_GAP_MONTHS} months after stopped_on (null without a sponsor name); target_peers_stopped counts other entities
 sharing a primary target whose programs in a related disease (MONDO Lin similarity >= {RELATED_DISEASE}) were suspended
-within {PEER_WINDOW_MONTHS} months of this one; trials_terminated, trials_completed, has_results and has_publication
-describe the program's own trials. No LLM is involved."""
+within {PEER_WINDOW_MONTHS} months of this one. No LLM is involved."""
 
 
 def program_trials(modes, trials):
@@ -109,19 +108,6 @@ def compute_signals(modes, rows, progs, trials) -> pd.DataFrame:
                          for o in same.others(m)) if pd.notna(when) else 0)
     stopped["target_peers_stopped"] = peers
 
-    phase_trials = own[own.phase == own.stop_phase]
-    pubs = set(frame.query("SELECT DISTINCT nct_id FROM preclin.trial_publication WHERE nct_id = ANY(%s)",
-                           (sorted(set(phase_trials.nct_id)),)).nct_id)
-    agg = phase_trials.groupby("key").agg(
-        trials_terminated=("overall_status", lambda s: int(s.isin(["TERMINATED", "SUSPENDED"]).sum())),
-        trials_completed=("overall_status", lambda s: int((s == "COMPLETED").sum())),
-        has_results=("has_results", "any"),
-        has_publication=("nct_id", lambda s: bool(set(s) & pubs)))
-    stopped = stopped.merge(agg, left_on="key", right_index=True, how="left")
-    for c in ("trials_terminated", "trials_completed"):
-        stopped[c] = stopped[c].fillna(0).astype(int)
-    for c in ("has_results", "has_publication"):
-        stopped[c] = stopped[c].fillna(False).astype(bool)
     stopped["mondo_id"] = stopped.mondo_id.fillna("")
     return stopped
 
@@ -132,20 +118,18 @@ def signals(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, SIGNALS_METHOD, "Structured signals of stopped programs", SIGNALS_DESCRIPTION,
                      ["preclin.dev_program", "preclin.dev_program_trial", "preclin.ctgov_study",
-                      "preclin.moiety_target", "preclin.trial_publication", "preclin.dev_program_approval"],
+                      "preclin.moiety_target", "preclin.dev_program_approval"],
                      {"phases": list(PHASES), "sponsor_gap_months": SPONSOR_GAP_MONTHS,
                       "peer_window_months": PEER_WINDOW_MONTHS, "related_disease_lin": RELATED_DISEASE})
         cur.execute("DELETE FROM preclin.stop_signal")
         execute_values(cur, """INSERT INTO preclin.stop_signal (moiety_id, mondo_id, phase, stopped_on,
                                  drug_continued_elsewhere, drug_approved_anywhere, sponsor_active_after,
-                                 target_peers_stopped, trials_terminated, trials_completed, has_results,
-                                 has_publication, method_id) VALUES %s""",
+                                 target_peers_stopped, method_id) VALUES %s""",
                        [(int(r.moiety_id), r.mondo_id, int(r.phase),
                          r.stopped_on.date() if pd.notna(r.stopped_on) else None,
                          bool(r.drug_continued_elsewhere), bool(r.drug_approved_anywhere),
                          None if r.sponsor_active_after is None else bool(r.sponsor_active_after),
-                         int(r.target_peers_stopped), int(r.trials_terminated), int(r.trials_completed),
-                         bool(r.has_results), bool(r.has_publication), mid) for r in s.itertuples()])
+                         int(r.target_peers_stopped), mid) for r in s.itertuples()])
         conn.commit()
     print(f"programs={len(s)} continued_elsewhere={int(s.drug_continued_elsewhere.sum())} "
           f"sponsor_inactive={int((s.sponsor_active_after == False).sum())}")  # noqa: E712
