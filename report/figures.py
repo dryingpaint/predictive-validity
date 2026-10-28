@@ -99,7 +99,7 @@ ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; sh
 CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; spectrum order, efficacy first
     "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#f77f00"), "pk_formulation": ("PK or formulation", "#fcbf49"),
     "business_strategic": ("Business or strategic", "#2a9d8f"), "company_event": ("Company acquired, merged or closed", "#2a9d8f"),
-    "operational": ("Operational", "#277da1"), "positive_not_advanced": ("Positive readout, not advanced", "#6a4c93"),
+    "operational": ("Operational", "#277da1"), "positive_not_advanced": ("Positive readout, not yet advanced", "#6a4c93"),
     "development_continued": ("Did not actually stop", "#3d6b4f"), "unknown": ("Unknown", "#e8e6e0"),
 }
 
