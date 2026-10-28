@@ -26,26 +26,16 @@ import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
-from pipeline.attribution import EFFICACY_REASONS, TRACED_OVERRIDE, final_codes, stops
+from pipeline.stops import (CODE_CAUSE, INFERENCE_TASK, INFERENCE_VERSION, PHASES, REGISTRY_CAUSE, RELATED_DISEASE,
+                            UNSTATED, inferred_causes, keys, labels, settled, stops)
 from report import frame
 from report.disease_match import Mondo
 
-PHASES = (2, 3)
 CAUSES = ["efficacy", "safety", "pk_formulation", "business_strategic", "company_event", "operational",
           "positive_not_advanced", "development_continued", "unknown"]
 EVIDENCE = ["explicit_program", "explicit_drug", "results", "context", "none"]
-UNSTATED = ("completed, no results posted, no reason stated", "stopped, no reason stated",
-            "results posted, no reason stated, endpoint not assessable", "sponsor decision, unspecified",
-            "other stated reason")
-REGISTRY_CAUSE = {"efficacy: stated": "efficacy", "efficacy: primary endpoint not met": "efficacy",
-                  "safety": "safety", "PK, dose or formulation": "pk_formulation",
-                  "business or strategic (explicit)": "business_strategic",
-                  "enrollment, operational or regulatory": "operational",
-                  "positive readout, not advanced": "positive_not_advanced"}
-CORRECTED_CODES = ("F6", "F8", "F9")  # efficacy-attribution codes that make the recorded efficacy reason wrong
 SPONSOR_GAP_MONTHS = 12
 PEER_WINDOW_MONTHS = 18
-RELATED_DISEASE = 0.5
 RESULTS_CHARS = 2500
 ABSTRACT_CHARS = 1500
 MAX_PAPERS = 6
@@ -94,11 +84,13 @@ def compute_signals(modes, rows, progs, trials) -> pd.DataFrame:
     approved = set(progs[progs.approved.eq("yes") | progs.moiety_first_fda_approval.notna()].moiety_id)
     stopped["drug_approved_anywhere"] = stopped.moiety_id.isin(approved)
 
-    sponsors = frame.query("""SELECT nct_id, lead_sponsor, start_date FROM preclin.ctgov_study
-                              WHERE lead_sponsor IS NOT NULL AND start_date IS NOT NULL""")
-    sponsors["start_date"] = pd.to_datetime(sponsors.start_date)
-    last_start = sponsors.groupby("lead_sponsor").start_date.max()
-    lead = own.merge(sponsors[["nct_id", "lead_sponsor"]], on="nct_id").groupby("key").lead_sponsor.agg(set)
+    last_start = frame.query("""SELECT lead_sponsor, max(start_date) AS start_date FROM preclin.ctgov_study
+                                WHERE lead_sponsor IS NOT NULL AND start_date IS NOT NULL GROUP BY 1""")
+    last_start = pd.to_datetime(last_start.set_index("lead_sponsor").start_date)
+    sponsor = frame.query("""SELECT nct_id, lead_sponsor FROM preclin.ctgov_study
+                             WHERE lead_sponsor IS NOT NULL AND start_date IS NOT NULL AND nct_id = ANY(%s)""",
+                          (sorted(set(own.nct_id)),))
+    lead = own.merge(sponsor, on="nct_id").groupby("key").lead_sponsor.agg(set)
     gap = pd.DateOffset(months=SPONSOR_GAP_MONTHS)
     stopped["sponsor_active_after"] = [
         None if not lead.get(k) else any(last_start.get(s, pd.Timestamp.min) > w + gap for s in lead[k])
@@ -122,7 +114,8 @@ def compute_signals(modes, rows, progs, trials) -> pd.DataFrame:
     stopped["target_peers_stopped"] = peers
 
     phase_trials = own[own.phase == own.stop_phase]
-    pubs = set(frame.query("SELECT DISTINCT nct_id FROM preclin.trial_publication").nct_id)
+    pubs = set(frame.query("SELECT DISTINCT nct_id FROM preclin.trial_publication WHERE nct_id = ANY(%s)",
+                           (sorted(set(phase_trials.nct_id)),)).nct_id)
     agg = phase_trials.groupby("key").agg(
         trials_terminated=("overall_status", lambda s: int(s.isin(["TERMINATED", "SUSPENDED"]).sum())),
         trials_completed=("overall_status", lambda s: int((s == "COMPLETED").sum())),
@@ -248,15 +241,14 @@ def render(p: dict) -> str:
 
 TOOLS = [{"type": "web_search_20260209", "name": "web_search", "max_uses": 6, "blocked_domains": BLOCKED_DOMAINS},
          {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 3, "blocked_domains": BLOCKED_DOMAINS}]
-TASK = llm.Task(name="stop_cause_inference", prompt_version="v2", schema_version="v2", system=SYSTEM,
+TASK = llm.Task(name=INFERENCE_TASK, prompt_version=INFERENCE_VERSION, schema_version="v2", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="program_phase",
                 model="claude-opus-5-5", effort="medium", max_tokens=16000, tools=TOOLS)
 
 INFER_METHOD = "stop_cause_inference@v2"
 INFER_DESCRIPTION = f"""Cohort: Phase 2/3 programs Section 1 records as suspended whose reason is unstated
-({'; '.join(UNSTATED)}), plus efficacy-recorded stops the efficacy attribution coded {', '.join(CORRECTED_CODES)}, and positive readouts whose
-index trial's primary endpoint is not an efficacy endpoint
-(not a failed efficacy test, a business stop, or off-target toxicity). Input per program (task
+({'; '.join(UNSTATED)}), plus registry efficacy stops the efficacy attribution coded F9 (not an efficacy test) and
+positive readouts whose index trial's primary endpoint is not an efficacy endpoint. Input per program (task
 {TASK.name} {TASK.prompt_version}, model {TASK.model}, effort {TASK.effort}): the drug, its primary targets, the
 disease, the program's trials in the phase (record, stated reason if any, primary outcomes, posted results up to
 {RESULTS_CHARS} characters), up to {MAX_PAPERS} linked or retrieved papers, the stop_signals@v1 facts, and the drug's
@@ -348,30 +340,15 @@ def bundles(cohort: pd.DataFrame, sig: pd.DataFrame, hide_reason: bool = False) 
 def load_signals() -> pd.DataFrame:
     s = frame.query("SELECT * FROM preclin.stop_signal")
     s["stopped_on"] = pd.to_datetime(s.stopped_on)
-    s["key"] = [f"{m}|{d}|{p}" for m, d, p in zip(s.moiety_id, s.mondo_id, s.phase)]
+    s["key"] = keys(s)
     return s
 
 
-POSITIVE = "positive readout, not advanced"
-
-
-def corrected_keys(modes: pd.DataFrame) -> set[str]:
-    """Stops whose registry reason the evidence does not support: a registry efficacy stop whose final efficacy
-    attribution code is F6, F8 or F9, a registry PK stop coded F6 or F8, or a positive readout whose index
-    trial's primary endpoint is not an efficacy endpoint (safety, PK or dose)."""
-    code = final_codes().set_index("key").code
-    c = modes.key.map(code)
-    efficacy = modes.reason.isin(EFFICACY_REASONS) & c.isin(CORRECTED_CODES)
-    pk = modes.reason.eq("PK, dose or formulation") & c.isin(list(TRACED_OVERRIDE))
-    pos = modes[modes.reason == POSITIVE]
-    e = frame.query("SELECT nct_id FROM preclin.trial_endpoint WHERE purpose <> 'efficacy' AND nct_id = ANY(%s)",
-                    (sorted(set(pos.nct_id.dropna())),))
-    return set(modes[efficacy | pk].key) | set(pos[pos.nct_id.isin(set(e.nct_id))].key)
-
-
 def inference_cohort(modes: pd.DataFrame) -> pd.DataFrame:
+    """Phase 2/3 stops with no usable registry reason, and those whose registry reason the evidence sends back."""
     m = modes[modes.phase.isin(PHASES)]
-    return m[m.reason.isin(UNSTATED) | m.key.isin(corrected_keys(modes))]
+    back = {k for k, how in settled(modes, labels()).items() if how == "infer"}
+    return m[m.reason.isin(UNSTATED) | m.key.isin(back)]
 
 
 def infer(_args) -> None:
@@ -382,7 +359,7 @@ def infer(_args) -> None:
         llm.record_method(cur, INFER_METHOD, "Cause of stops the registry does not explain", INFER_DESCRIPTION,
                ["preclin.ctgov_study", "preclin.ctgov_result_summary", "preclin.trial_publication",
                 "preclin.moiety_publication", "preclin.stop_signal", "preclin.efficacy_failure_attribution",
-                "web search"], {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
+                "preclin.efficacy_attribution_search", "web search"], {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
                                 "effort": TASK.effort, "tools": TOOLS, "causes": CAUSES, "evidence": EVIDENCE})
         conn.commit()
     run_id = llm.run(TASK, items)
@@ -401,95 +378,69 @@ under the task's subject keys with the suffix |heldout."""
 
 def validate_run(_args) -> None:
     modes = stops()[0]
+    contradicted = settled(modes, labels())
     stated = modes[modes.phase.isin(PHASES) & modes.reason.isin(list(REGISTRY_CAUSE))
-                   & ~modes.key.isin(corrected_keys(modes))].copy()
+                   & ~modes.key.isin(contradicted)].copy()
     stated["cause"] = stated.reason.map(REGISTRY_CAUSE)
     rng = np.random.default_rng(VALIDATION_SEED)
     per = VALIDATION_SAMPLE // stated.cause.nunique()
     picks = []
     for _, g in stated.sort_values("key").groupby("cause"):
         picks += list(rng.choice(g.key.to_numpy(), size=min(per, len(g)), replace=False))
-    sample = stated[stated.key.isin(set(picks))]
-    items = {f"{k}|heldout": v for k, v in bundles(sample, load_signals(), hide_reason=True).items()}
-    with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, VALIDATE_METHOD, "Held-out validation of stop-cause inference", VALIDATE_DESCRIPTION,
-               ["preclin.ctgov_study", "preclin.stop_signal", "web search"],
-               {"seed": VALIDATION_SEED, "sample": VALIDATION_SAMPLE, "per_cause": per})
-        conn.commit()
+    items = {f"{k}|heldout": v for k, v in bundles(stated[stated.key.isin(set(picks))], load_signals(),
+                                                    hide_reason=True).items()}
     run_id = llm.run(TASK, items)
-    truth = dict(zip(sample.key + "|heldout", sample.cause))
-    got = pd.DataFrame([(truth[k], o["cause"], o["likely_cause"]) for k, _, o in llm.decisions(run_id)],
-                       columns=["truth", "cause", "likely"])
-    resolved = got[got.cause != "unknown"]
-    results = {"decided": int(len(got)), "resolved": float((got.cause != "unknown").mean()),
-               "cause_accuracy_resolved": float((resolved.cause == resolved.truth).mean()),
-               "likely_accuracy": float((got.likely == got.truth).mean()),
-               "likely_recall": {c: float((g.likely == c).mean()) for c, g in got.groupby("truth")},
-               "likely_precision": {c: float((g.truth == c).mean()) for c, g in got.groupby("likely")}}
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, VALIDATE_METHOD, "Held-out validation of stop-cause inference", VALIDATE_DESCRIPTION,
                           ["preclin.ctgov_study", "preclin.stop_signal", "web search"],
-                          {"seed": VALIDATION_SEED, "sample": VALIDATION_SAMPLE, "per_cause": per, "run": str(run_id),
-                           "results": results})
+                          {"seed": VALIDATION_SEED, "sample": VALIDATION_SAMPLE, "per_cause": per, "run": str(run_id)})
         conn.commit()
-    print(f"sample={len(items)} decided={len(got)} accuracy={results['likely_accuracy']:.2f} run={run_id}")
+    print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
 
 
 ASSEMBLE_METHOD = "stop_cause_assembly@v2"
 ASSEMBLE_DESCRIPTION = f"""Final cause of every Phase 2/3 stop Section 1 counts. A stated registry reason is kept and
-mapped to a cause ({'; '.join(f'{k} -> {v}' for k, v in REGISTRY_CAUSE.items())}), cause_source registry. An
-efficacy-recorded stop whose final efficacy-attribution code (the web-search label where the bundle label was U)
-is {', '.join(CORRECTED_CODES)}, and a positive readout whose index trial's primary endpoint is not an efficacy
-endpoint, take the inferred cause, cause_source corrected. An unstated, bare sponsor-decision or unspecified other reason takes the inferred cause,
-cause_source inferred; likely_cause and likely_basis carry the model's best inference. If inference produced no
-validated decision (a refusal or invalid output) the cause is unknown with no decision. Efficacy stops the attribution left unlabelled keep efficacy."""
-
-
-def latest_decisions(task_name: str) -> pd.DataFrame:
-    return frame.query("""
-        SELECT DISTINCT ON (d.subject_key) d.subject_key AS key, d.llm_decision_id, d.parsed_output
-        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-          AND d.subject_key NOT LIKE '%%|heldout'
-        ORDER BY d.subject_key, d.created_at DESC""", (task_name, TASK.prompt_version))
+mapped to a cause ({'; '.join(f'{k} -> {v}' for k, v in REGISTRY_CAUSE.items())}), cause_source registry. A stop
+for efficacy or exposure, registry or traced, whose final efficacy-attribution code (the web-search label where the
+bundle label was U) is {' or '.join(f'{c} takes {v}' for c, v in CODE_CAUSE.items())}, cause_source corrected. A
+registry efficacy stop coded F9 and a positive readout whose index trial's primary endpoint is not an efficacy
+endpoint take the inferred cause, cause_source corrected. An unstated, bare sponsor-decision or unspecified other
+reason takes the inferred cause, cause_source inferred; likely_cause and likely_basis carry the model's best
+inference. If inference produced no validated decision (a refusal or invalid output) the cause is unknown with no
+decision."""
 
 
 def assemble(_args) -> None:
     modes = stops()[0]
-    m = modes[modes.phase.isin(PHASES)].copy()
-    dec = latest_decisions(TASK.name).set_index("key")
-    corrected = corrected_keys(modes)
+    dec = inferred_causes().set_index("key")
+    how = settled(modes, labels())
     rows = []
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Final cause of each Phase 2/3 stop", ASSEMBLE_DESCRIPTION,
                      ["report.section1.failure_modes", "preclin.efficacy_failure_attribution",
-                      f"pv_evidence.llm_decision ({TASK.name})"],
-                     {"registry_cause": REGISTRY_CAUSE, "corrected_codes": list(CORRECTED_CODES),
-                      "unstated": list(UNSTATED)})
-        for r in m.itertuples():
-            d = r.mondo_id if isinstance(r.mondo_id, str) else ""
-            inferred = r.reason in UNSTATED or r.key in corrected
-            if not inferred:
-                rows.append((int(r.moiety_id), d, int(r.phase), r.reason, REGISTRY_CAUSE[r.reason], "registry",
-                             None, None, [], None, mid, None, None))
-                continue
+                      "preclin.efficacy_attribution_search", f"pv_evidence.llm_decision ({TASK.name})"],
+                     {"registry_cause": REGISTRY_CAUSE, "code_cause": CODE_CAUSE, "unstated": list(UNSTATED)})
+        for r in modes[modes.phase.isin(PHASES)].itertuples():
+            row = (int(r.moiety_id), r.mondo_id if isinstance(r.mondo_id, str) else "", int(r.phase), r.reason)
             source = "inferred" if r.reason in UNSTATED else "corrected"
-            if r.key in dec.index:
+            settle = how.get(r.key, "infer" if r.reason in UNSTATED else None)
+            if settle is None:
+                rows.append((*row, REGISTRY_CAUSE[r.reason], "registry", None, None, [], None, mid, None, None))
+            elif settle != "infer":
+                rows.append((*row, settle, "corrected", None, None, [], None, mid, settle,
+                             "efficacy attribution code"))
+            elif r.key in dec.index:
                 o = dec.at[r.key, "parsed_output"]
-                rows.append((int(r.moiety_id), d, int(r.phase), r.reason, o["cause"], source, o["evidence_kind"],
-                             o["confidence"], o["sources"], int(dec.at[r.key, "llm_decision_id"]), mid,
-                             o["likely_cause"], o["likely_basis"]))
+                rows.append((*row, o["cause"], source, o["evidence_kind"], o["confidence"], o["sources"],
+                             int(dec.at[r.key, "llm_decision_id"]), mid, o["likely_cause"], o["likely_basis"]))
             else:
-                rows.append((int(r.moiety_id), d, int(r.phase), r.reason, "unknown", source, None, None, [], None,
-                             mid, "unknown", "no validated decision"))
+                rows.append((*row, "unknown", source, None, None, [], None, mid, "unknown", "no validated decision"))
         cur.execute("DELETE FROM preclin.stop_cause")
         execute_values(cur, """INSERT INTO preclin.stop_cause (moiety_id, mondo_id, phase, recorded_reason, cause,
                                  cause_source, evidence_kind, confidence, sources, llm_decision_id, method_id,
                                  likely_cause, likely_basis) VALUES %s""", rows)
         conn.commit()
-    s = pd.DataFrame(rows, columns=["m", "d", "p", "rec", "cause", "src", "ev", "conf", "srcs", "did", "mid", "likely",
-                                    "basis"])
-    print(s.groupby(["src", "cause"]).size().to_string())
+    print(pd.Series([(r[5], r[4]) for r in rows]).value_counts().sort_index().to_string())
 
 
 def main() -> None:

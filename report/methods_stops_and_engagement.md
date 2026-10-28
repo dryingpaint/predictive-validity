@@ -1,14 +1,15 @@
 # How the stop-cause and efficacy-failure figure is built
 
 Figure: `report/output/figures/efficacy_attribution.png`. Code: `pipeline/outcomes.py` (registry
-classification), `report/section1.py` (stops and their registry reason), `pipeline/stop_causes.py` (tracing),
+classification), `report/section1.py` (stops and their registry reason), `pipeline/stops.py` (the shared
+definitions: cohort, final labels, which label settles which cause), `pipeline/stop_causes.py` (tracing),
 `pipeline/attribution.py` (efficacy-failure labels), `report/stop_causes.py` and `report/attribution.py`
 (analysis), `report/figures.py` (figure). Every model decision is stored with its full input, output, sources and
 rationale in `pv_evidence.llm_decision`; each step's method is recorded in `preclin.analysis_method`.
 
 The efficacy-failure codes, estimands and checks were fixed before any program was labelled. Three steps were
 added after the first results: the web search for programs with no engagement evidence, the inclusion of traced
-efficacy and PK stops, and the rule for traced and PK stops coded F9.
+efficacy and PK stops, and the rules by which an efficacy label settles a stop's cause.
 
 A **program** is one drug developed for one disease. Both bars cover industry programs whose Phase 2 or Phase 3
 began 2015–2025 (ClinicalTrials.gov). Every model step uses Claude Opus 5.5 except the re-derivation check, which uses Claude Sonnet 5.
@@ -32,8 +33,10 @@ the web, with ClinicalTrials.gov blocked (prompt B). It names a cause only where
 only pages its own searches returned; where none does, it gives a *likely* cause. The figure counts sourced and
 likely causes together.
 
-**Step 3: consistency with the efficacy analysis.** A traced efficacy or PK stop that the efficacy analysis codes
-F6 (off-target toxicity) or F8 (business) takes safety or business as its cause.
+**Step 3: consistency with the efficacy analysis.** Any stop for efficacy or exposure that the efficacy analysis
+codes F6 (off-target toxicity) or F8 (business) takes safety or business as its cause. A registry efficacy stop coded
+F9 (not an efficacy test) is traced again like an unexplained stop. The bottom bar is exactly the stops whose final
+cause, sourced, is efficacy or exposure.
 
 **Merges in the figure:** company events are shown with business; PK, dose or formulation is shown with efficacy
 (as "efficacy or exposure"), since an exposure failure is the same biology as a failure to engage.
@@ -79,9 +82,10 @@ citation outside the bundle and a code that contradicts the pillars.
 same bundle and searches the web (full-text papers, conference reports, FDA and EMA reviews, company releases),
 citing only pages its searches returned. Its label replaces U where it decides one.
 
-**Rule for traced and PK stops.** Their index trial is the program's last trial, not one the registry named as a
-failed efficacy test, so code F9 ("not an efficacy test") does not remove them; they are coded by their pillars
-(engaged → F2; exposure or engagement inadequate, or dose-limited → F1a; otherwise U).
+**F9 on a stop that is still for efficacy or exposure.** For traced and PK stops the index trial is the program's
+last trial, not one the registry named as a failed efficacy test, and a registry stop traced again may still come
+back as efficacy. Such a stop stays in the breakdown, coded by its pillars (engaged → F2; exposure or engagement
+inadequate, or dose-limited → F1a; otherwise U).
 
 ### Groups and codes, with examples
 
@@ -95,7 +99,7 @@ failed efficacy test, so code F9 ("not an efficacy test") does not remove them; 
 | Trial design, population, endpoint | **F7** (and F3/F4 without shown engagement) | Rezpegaldesleukin in UC: terminated for enrollment futility at 81 patients, 14 on placebo ([NCT04677179](https://clinicaltrials.gov/study/NCT04677179)). Idasanutlin in colorectal cancer: 4 patients in the arm ([NCT03555149](https://clinicaltrials.gov/study/NCT03555149)) |
 | Toxicity offset efficacy | **F5**: on-target toxicity cancelled the benefit | Dilpacimab (VEGF/DLL4) with FOLFIRI in colorectal cancer: worse PFS than bevacizumab (HR 3.57), more deaths, a fatal perforation ([NCT03368859](https://clinicaltrials.gov/study/NCT03368859), [PMID 35920133](https://pubmed.ncbi.nlm.nih.gov/35920133/)) |
 | No engagement data | **U**: no human evidence of engagement either way, even after the web search | VX-210 in spinal cord injury: only serum PK in humans, Rho inactivation shown only in rats ([NCT02669849](https://clinicaltrials.gov/study/NCT02669849)). Napabucasin in colorectal cancer: plasma PK measured, no human evidence of STAT3 inhibition ([NCT02753127](https://clinicaltrials.gov/study/NCT02753127)). HL301, a 7-plant extract with no defined target, in radiation pneumonitis ([PMID 38565405](https://pubmed.ncbi.nlm.nih.gov/38565405/)) |
-| Removed (not a failed efficacy test) | **F6** off-target toxicity, **F8** business, **F9** endpoint met or not an efficacy test (registry efficacy stops only) | Counted under their traced cause in the top bar |
+| Removed (not a failed efficacy test) | **F6** off-target toxicity, **F8** business; **F9** endpoint met or not an efficacy test, when tracing finds another cause | Counted under that cause in the top bar |
 
 ### Analysis
 

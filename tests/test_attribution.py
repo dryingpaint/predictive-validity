@@ -1,9 +1,10 @@
 """Efficacy-failure attribution: which decisions the validator accepts, and what the model is shown."""
 from __future__ import annotations
 
+import pandas as pd
 import pytest
 
-from pipeline import attribution
+from pipeline import attribution, stops
 
 
 def bundle() -> dict:
@@ -65,9 +66,17 @@ def test_search_skips_short_code_names():
 
 
 def test_subject_key_of_a_program_without_a_disease():
-    assert attribution.subject_key(218, float("nan"), 2) == "218||2"
-    assert attribution.subject_key(218, None, 2) == "218||2"
-    assert attribution.subject_key(218, "MONDO:0005101", 3) == "218|MONDO:0005101|3"
+    assert stops.subject_key(218, float("nan"), 2) == "218||2"
+    assert stops.subject_key(218, None, 2) == "218||2"
+    assert stops.subject_key(218, "MONDO:0005101", 3) == "218|MONDO:0005101|3"
+
+
+def test_a_stop_that_was_not_an_efficacy_test_is_counted_by_its_pillars():
+    d = pd.DataFrame({"primary_code": ["F9", "F9", "F9", "F2"],
+                      "engagement": ["adequate", "inadequate", "no_human_data", "adequate"],
+                      "exposure": ["adequate", "adequate", "no_human_data", "adequate"],
+                      "dose_limited": [False, False, False, False]})
+    assert stops.pillar_code(d).tolist() == ["F2", "F1a", "U", "F2"]
 
 
 def searched(**changes) -> dict:

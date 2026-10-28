@@ -72,10 +72,11 @@ labels:
 # Open Targets associations, the year each evidence item became known where its own date is
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
 # dated by it with their yearly series, then the germline mechanism of each target in each program
-# disease and the orientation of each mouse model, both decided without the drug; last, why each
-# program that stopped for efficacy failed (PubMed retrieval, three-pillar labels, a re-derivation sample),
-# and the cause of each Phase 2/3 stop the registry does not explain (web search, held-out validation); the stops
-# traced to efficacy then join the attribution cohort, so its steps run again (earlier labels are reused).
+# disease and the orientation of each mouse model, both decided without the drug. Last, why each Phase 2/3
+# program stopped and, for stops for efficacy or exposure, whether the drug engaged its target: stop causes
+# are inferred where the registry gives none, the efficacy and exposure stops (registry and traced) are
+# labelled, and inference then runs again for the registry stops those labels contradict before the final
+# causes are assembled. Earlier decisions are reused, so the second inference pays only for new programs.
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
@@ -85,17 +86,15 @@ evidence:
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse
+	$(RUN) pipeline.stop_causes signals
+	$(RUN) pipeline.stop_causes infer
+	$(RUN) pipeline.stop_causes validate
 	$(RUN) pipeline.attribution literature
 	$(RUN) pipeline.attribution label
 	$(RUN) pipeline.attribution check
 	$(RUN) pipeline.attribution search
-	$(RUN) pipeline.stop_causes signals
 	$(RUN) pipeline.stop_causes infer
-	$(RUN) pipeline.stop_causes validate
 	$(RUN) pipeline.stop_causes assemble
-	$(RUN) pipeline.attribution literature
-	$(RUN) pipeline.attribution label
-	$(RUN) pipeline.attribution search
 
 report:
 	$(RUN) report.section1

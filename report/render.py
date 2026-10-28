@@ -18,6 +18,7 @@ import pandas as pd
 
 from report import bio, frame
 from report.section3 import CASE_AUDIT
+from report.stop_causes import CAUSE_LABELS
 
 OUT = os.path.join(frame.REPO, "report", "output")
 NARRATIVE = os.path.join(frame.REPO, "report", "narrative")
@@ -125,17 +126,10 @@ def attribution_table() -> str:
     return table(pd.DataFrame(rows, columns=["What the evidence shows"] + list(cols)))
 
 
-CAUSE_NAMES = {"efficacy": "Efficacy", "safety": "Safety", "pk_formulation": "PK or formulation",
-               "business_strategic": "Business or strategic", "company_event": "Company acquired, merged, unfunded or closed",
-               "operational": "Operational (enrollment, sites, supply, regulatory)",
-               "positive_not_advanced": "Positive readout, not advanced", "development_continued": "Did not actually stop",
-               "unknown": "Unknown"}
-
-
 def stop_cause_table() -> str:
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
     rows = [[name] + [f"{pct(n[k][c]['share'], 0)} ({n[k][c]['n']:,})" for k in ("recorded", "evidence", "likely")]
-            for c, name in CAUSE_NAMES.items()]
+            for c, name in CAUSE_LABELS.items()]
     return table(pd.DataFrame(rows, columns=["Cause of the stop", "As registered", "After tracing: sourced",
                                              "After tracing: sourced or likely"]))
 

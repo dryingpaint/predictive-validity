@@ -2,116 +2,95 @@
 
     python -m report.stop_causes
 
-Reads preclin.stop_cause (pipeline.stop_causes assemble), preclin.stop_signal and the held-out
-validation decisions; a stop traced to efficacy or PK that the efficacy attribution codes F6 or F8 takes
-that cause (pipeline.attribution.TRACED_OVERRIDE); writes report/output/stop_causes/numbers.json and programs.csv. Intervals
-resample entities.
+Reads preclin.stop_cause (pipeline.stop_causes assemble), preclin.stop_signal and the held-out validation
+decisions; writes report/output/stop_causes/numbers.json and programs.csv. programs.csv carries `shown`, the cause
+each stop takes in the figure (SHOWN), empty for a program whose development continued.
 """
 from __future__ import annotations
 
 import json
 import os
 
-import numpy as np
 import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
-from pipeline.attribution import TRACED_OVERRIDE, final_codes
-from pipeline.stop_causes import CAUSES, REGISTRY_CAUSE, TASK
+from pipeline import llm
+from pipeline.stop_causes import CAUSES, TASK
+from pipeline.stops import REGISTRY_CAUSE, keys
 from report import frame
-from report.section1 import SEED
+from report.section3 import jsonable
 
 OUT = os.path.join(frame.REPO, "report", "output", "stop_causes")
-N_BOOT = 1000
+CAUSE_LABELS = {"efficacy": "Efficacy", "safety": "Safety", "pk_formulation": "PK or formulation",
+                "business_strategic": "Business or strategic",
+                "company_event": "Company acquired, merged, unfunded or closed",
+                "operational": "Operational (enrollment, sites, supply, regulatory)",
+                "positive_not_advanced": "Positive readout, not yet advanced",
+                "development_continued": "Did not actually stop", "unknown": "Unknown"}
+# The figure's categories: PK joins efficacy (an exposure failure is a failure to engage), company events join
+# business, and a program whose development continued did not stop.
+SHOWN = {"efficacy": "Efficacy or exposure (PK, dose, formulation)", "safety": CAUSE_LABELS["safety"],
+         "business_strategic": "Business, strategic or company event", "operational": "Operational",
+         "positive_not_advanced": CAUSE_LABELS["positive_not_advanced"], "unknown": CAUSE_LABELS["unknown"]}
+SHOWN_AS = {"pk_formulation": "efficacy", "company_event": "business_strategic", "development_continued": None}
 
 
 def load() -> pd.DataFrame:
-    d = frame.query("""SELECT c.*, s.drug_continued_elsewhere, s.drug_approved_anywhere, s.sponsor_active_after,
-                              s.target_peers_stopped, s.has_results
+    d = frame.query("""SELECT c.*, s.drug_continued_elsewhere, s.sponsor_active_after
                        FROM preclin.stop_cause c JOIN preclin.stop_signal s USING (moiety_id, mondo_id, phase)""")
-    d["key"] = [f"{m}|{x}|{p}" for m, x, p in zip(d.moiety_id, d.mondo_id, d.phase)]
-    code = d.key.map(final_codes().set_index("key").code)
-    override = d.cause_source.eq("inferred") & d.cause.isin(["efficacy", "pk_formulation"]) & code.isin(list(TRACED_OVERRIDE))
-    d.loc[override, "cause"] = code[override].map(TRACED_OVERRIDE)
-    d.loc[override, "likely_cause"] = d.loc[override, "cause"]
-    d.loc[override, "cause_source"] = "corrected"
+    d["key"] = keys(d)
     d["recorded_cause"] = d.recorded_reason.map(REGISTRY_CAUSE).fillna("unknown")
     d["likely"] = d.likely_cause.fillna(d.cause)
+    d["shown"] = d.likely.map(lambda c: SHOWN_AS.get(c, c))
     return d
 
 
-def distribution(d: pd.DataFrame, col: str, rng: np.random.Generator) -> dict:
-    counts = pd.crosstab(d.moiety_id, d[col]).reindex(columns=CAUSES, fill_value=0).to_numpy()
-    draws = np.array([counts[rng.integers(0, len(counts), len(counts))].sum(axis=0) for _ in range(N_BOOT)])
-    frac = draws / draws.sum(axis=1, keepdims=True)
-    total = counts.sum()
-    return {c: {"n": int(counts[:, i].sum()), "share": float(counts[:, i].sum() / total),
-                "lo": float(np.percentile(frac[:, i], 2.5)), "hi": float(np.percentile(frac[:, i], 97.5))}
-            for i, c in enumerate(CAUSES)}
+def distribution(d: pd.DataFrame, col: str) -> dict:
+    counts = d[col].value_counts().reindex(CAUSES, fill_value=0)
+    return {c: {"n": int(n), "share": float(n / len(d))} for c, n in counts.items()}
 
 
 def validation() -> dict:
-    v = frame.query("""
-        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.parsed_output
-        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-          AND d.subject_key LIKE '%%|heldout'
-        ORDER BY d.subject_key, d.created_at DESC""", (TASK.name, TASK.prompt_version))
+    v = llm.latest_decisions(TASK.name, TASK.prompt_version, heldout=True)
     if v.empty:
         return {"n": 0}
-    v["key"] = v.subject_key.str.removesuffix("|heldout")
-    reasons = frame.query("""SELECT moiety_id, mondo_id, phase, recorded_reason FROM preclin.stop_cause
-                             WHERE cause_source = 'registry'""")
-    reasons["key"] = [f"{m}|{d}|{p}" for m, d, p in zip(reasons.moiety_id, reasons.mondo_id, reasons.phase)]
+    v["key"] = v.key.str.removesuffix("|heldout")
+    reasons = frame.query("SELECT moiety_id, mondo_id, phase, recorded_reason FROM preclin.stop_cause "
+                          "WHERE cause_source = 'registry'")
+    reasons["key"] = keys(reasons)
     v = v.merge(reasons[["key", "recorded_reason"]], on="key")
     v["truth"] = v.recorded_reason.map(REGISTRY_CAUSE)
     v["cause"] = [o["cause"] for o in v.parsed_output]
     v["likely"] = [o["likely_cause"] for o in v.parsed_output]
-    v["evidence"] = [o["evidence_kind"] for o in v.parsed_output]
     known = v[v.cause != "unknown"]
-    out = {"n": int(len(v)), "resolved": float((v.cause != "unknown").mean()),
-           "cause_accuracy_resolved": float((known.cause == known.truth).mean()) if len(known) else None,
-           "cause_kappa_resolved": float(cohen_kappa_score(known.truth, known.cause)) if len(known) > 1 else None,
-           "likely_accuracy": float((v.likely == v.truth).mean()),
-           "likely_kappa": float(cohen_kappa_score(v.truth, v.likely)),
-           "by_truth": {t: {"n": int(len(g)), "resolved": float((g.cause != "unknown").mean()),
-                            "cause_correct": float((g.cause == t).mean()), "likely_correct": float((g.likely == t).mean())}
-                        for t, g in v.groupby("truth")},
-           "precision_likely": {c: {"called": int(len(g)), "correct": float((g.truth == c).mean())}
-                                for c, g in v.groupby("likely") if c != "unknown"},
-           "by_evidence": {e: {"n": int(len(g)), "correct": float((g.cause == g.truth).mean())}
-                           for e, g in known.groupby("evidence")},
-           "confusion_likely": pd.crosstab(v.truth, v.likely).to_dict()}
-    return out
+    return {"n": int(len(v)), "resolved": float((v.cause != "unknown").mean()),
+            "cause_accuracy_resolved": float((known.cause == known.truth).mean()) if len(known) else None,
+            "cause_kappa_resolved": float(cohen_kappa_score(known.truth, known.cause)) if len(known) > 1 else None,
+            "likely_accuracy": float((v.likely == v.truth).mean()),
+            "likely_kappa": float(cohen_kappa_score(v.truth, v.likely)),
+            "by_truth": {t: {"n": int(len(g)), "likely_correct": float((g.likely == t).mean())}
+                         for t, g in v.groupby("truth")},
+            "precision_likely": {c: {"called": int(len(g)), "correct": float((g.truth == c).mean())}
+                                 for c, g in v.groupby("likely") if c != "unknown"}}
 
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
-    rng = np.random.default_rng(SEED)
     d = load()
     d.drop(columns=["sources"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     infer = d[d.cause_source != "registry"]
-    n = {"stops": int(len(d)), "entities": int(d.moiety_id.nunique()),
-         "recorded": distribution(d, "recorded_cause", rng),
-         "evidence": distribution(d, "cause", rng),
-         "likely": distribution(d, "likely", rng),
-         "inferred": {"programs": int(len(infer)),
-                      "by_reason": infer.recorded_reason.value_counts().to_dict(),
-                      "resolved": float((infer.cause != "unknown").mean()),
+    n = {"stops": int(len(d)),
+         "recorded": distribution(d, "recorded_cause"), "evidence": distribution(d, "cause"),
+         "likely": distribution(d, "likely"),
+         "inferred": {"programs": int(len(infer)), "resolved": float((infer.cause != "unknown").mean()),
                       "resolved_n": int((infer.cause != "unknown").sum()),
                       "likely_resolved": float((infer.likely != "unknown").mean()),
-                      "evidence": infer.evidence_kind.value_counts().to_dict(),
-                      "cause": infer.cause.value_counts().to_dict(),
-                      "likely": infer.likely.value_counts().to_dict(),
-                      "no_decision": int(infer.llm_decision_id.isna().sum())},
-         "corrected": {"programs": int((d.cause_source == "corrected").sum()),
-                       "to": d[d.cause_source == "corrected"].likely.value_counts().to_dict()},
-         "signals": {c: {"sponsor_inactive": float((g.sponsor_active_after == False).mean()),  # noqa: E712
-                         "drug_continued": float(g.drug_continued_elsewhere.mean()), "n": int(len(g))}
+                      "cause": infer.cause.value_counts().to_dict()},
+         "signals": {c: {"sponsor_inactive": float((g.sponsor_active_after == False).mean())}  # noqa: E712
                      for c, g in infer.groupby("likely")},
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
-        json.dump(n, f, indent=1, default=lambda x: x.item() if hasattr(x, "item") else str(x))
+        json.dump(n, f, indent=1, default=jsonable)
 
 
 if __name__ == "__main__":

@@ -6,9 +6,10 @@ the target was engaged and the disease did not respond, or something else.
     python -m pipeline.attribution check        # LLM: independent re-derivation on a seeded sample (stepwise prompt)
     python -m pipeline.attribution search       # LLM with web search: Phase 2/3 programs the label left indeterminate
 
-The cohort is every program Section 1 records as suspended for efficacy
-(report.section1.failure_modes), keyed by (entity, disease, phase); the trial that
-gave it that reason is the index trial. Each program's evidence bundle holds the
+The cohort is every stop for efficacy or exposure (pipeline.stops.cohort): Section 1's
+suspensions for efficacy or for PK, dose or formulation, and stops with no usable registry
+reason that stop-cause inference traced there with a source, keyed by (entity, disease,
+phase); the program's trial that gave Section 1 its reason is the index trial. Each program's evidence bundle holds the
 index trial (record, posted results, linked papers), the entity's other trials
 with their classified outcomes, results posted by its Phase 1 trials, its FDA
 approvals, other entities on the same primary target in the same or a related
@@ -25,17 +26,16 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 
 import numpy as np
-import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.outcomes import eutils
-from report import frame, section1
+from pipeline.stops import PHASES, RELATED_DISEASE, cohort, keys, stops
+from report import frame
 from report.disease_match import Mondo
 
 PHARMACOLOGY_HITS = 15  # PubMed results kept per entity, relevance order
 DISEASE_HITS = 8  # per (entity, program disease)
-RELATED_DISEASE = 0.5  # Lin similarity at which another entity's disease counts as related
 MAX_CODES = 6  # code names searched per entity
 ABSTRACT_CHARS = 2000
 RESULTS_CHARS = 4000  # posted results of the index trial
@@ -45,9 +45,6 @@ MAX_OTHER_TRIALS = 40
 MAX_SAME_TARGET = 15
 CHECK_SAMPLE = 150
 CHECK_SEED = 20261026
-EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
-REGISTRY_REASONS = {**{r: "registry_efficacy" for r in EFFICACY_REASONS}, "PK, dose or formulation": "registry_pk"}
-TRACED_CAUSES = {"efficacy": "traced_efficacy", "pk_formulation": "traced_pk"}
 
 PHARMACOLOGY_TERMS = ('pharmacodynamic*[tiab] OR "target engagement"[tiab] OR occupancy[tiab] OR '
                       '"proof of mechanism"[tiab] OR "proof-of-mechanism"[tiab] OR "first-in-human"[tiab] OR '
@@ -55,55 +52,6 @@ PHARMACOLOGY_TERMS = ('pharmacodynamic*[tiab] OR "target engagement"[tiab] OR oc
                       '"ascending dose"[tiab] OR "positron emission tomography"[tiab] OR "cerebrospinal fluid"[tiab] OR '
                       '"dose-response"[tiab] OR "dose-ranging"[tiab]')
 NOT_REVIEWS = "NOT (review[pt] OR systematic review[pt] OR meta-analysis[pt])"  # primary human studies only
-
-
-def subject_key(moiety_id: int, mondo_id: str | None, phase: int) -> str:
-    """Key of an (entity, disease, phase); a program without a disease (None or NaN) has an empty disease."""
-    return f"{moiety_id}|{mondo_id if isinstance(mondo_id, str) else ''}|{phase}"
-
-
-def stops():
-    """Every program Section 1 records as suspended, with the reason it assigns and its disease,
-    one row per (entity, disease, phase), and the phase rows, programs and trials it was built from."""
-    snap = frame.snapshot()
-    progs, trials = frame.programs(), frame.program_trials()
-    rows = section1.phase_rows(progs, trials, snap)
-    modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes()).merge(
-        progs[["program_id", "mondo_id"]], on="program_id")
-    modes["key"] = [subject_key(m, d, p) for m, d, p in zip(modes.moiety_id, modes.mondo_id, modes.phase)]
-    if modes.key.duplicated().any():
-        raise ValueError(f"programs share an (entity, disease, phase): {modes[modes.key.duplicated()].key.tolist()[:5]}")
-    return modes, rows, progs, trials
-
-
-def cohort():
-    """Programs that stopped for efficacy or exposure, with their index trial and the origin of that cause:
-    Section 1's suspensions for efficacy or for PK, dose or formulation (registry), and Phase 2/3 stops with
-    no usable registry reason that pipeline.stop_causes traced to efficacy or PK with a source (traced)."""
-    modes = stops()[0]
-    t = frame.query("""SELECT moiety_id, mondo_id, phase, cause FROM preclin.stop_cause
-                       WHERE cause = ANY(%s) AND cause_source = 'inferred'""", (list(TRACED_CAUSES),))
-    traced = {subject_key(m, d, p): c for m, d, p, c in zip(t.moiety_id, t.mondo_id, t.phase, t.cause)}
-    out = modes[modes.reason.isin(REGISTRY_REASONS) | modes.key.isin(set(traced))].copy()
-    out["origin"] = [REGISTRY_REASONS[r] if r in REGISTRY_REASONS else TRACED_CAUSES[traced[k]]
-                     for r, k in zip(out.reason, out.key)]
-    return out
-
-
-# A stop traced to efficacy or PK whose efficacy attribution finds toxicity (F6) or a business reason (F8) takes
-# that cause instead; F9 (not an efficacy test) removes only registry-recorded efficacy stops.
-TRACED_OVERRIDE = {"F6": "safety", "F8": "business_strategic"}
-
-
-def final_codes() -> pd.DataFrame:
-    """Final failure code of each labelled program: the web-search label where the bundle label was U."""
-    a = frame.query("""SELECT a.moiety_id, a.mondo_id, a.phase,
-                              CASE WHEN a.primary_code = 'U' AND s.primary_code IS NOT NULL THEN s.primary_code
-                                   ELSE a.primary_code END AS code
-                       FROM preclin.efficacy_failure_attribution a
-                       LEFT JOIN preclin.efficacy_attribution_search s USING (moiety_id, mondo_id, phase)""")
-    a["key"] = [subject_key(m, d, p) for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)]
-    return a[["key", "code"]]
 
 
 def search_names(name: str, codes: list[str]) -> list[str]:
@@ -143,9 +91,15 @@ def efetch(pmids: list[str]) -> list[tuple]:
 
 def literature(_args) -> None:
     """Search PubMed once per entity (human pharmacology) and once per (entity, program
-    disease) of the cohort; a search already stored with the same query is not repeated. New papers are
-    added to public.publications; existing rows are left as they are."""
-    eff = cohort()
+    disease) of the cohort; a search already run with the same query (preclin.pubmed_search) is not repeated,
+    whether or not it found anything. New papers are added to public.publications; existing rows are left as
+    they are."""
+    eff = cohort(stops()[0])
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, LITERATURE_METHOD, "PubMed retrieval of human pharmacology", LITERATURE_DESCRIPTION,
+                          ["PubMed"], {"pharmacology_hits": PHARMACOLOGY_HITS, "disease_hits": DISEASE_HITS,
+                                       "terms": PHARMACOLOGY_TERMS, "exclude": NOT_REVIEWS})
+        conn.commit()
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT moiety_id, name, code_names FROM preclin.moiety WHERE moiety_id = ANY(%s)",
                     (sorted({int(m) for m in eff.moiety_id}),))
@@ -154,7 +108,7 @@ def literature(_args) -> None:
                        WHERE ontology = 'MONDO' AND term_id = ANY(%s)""",
                     (sorted({d for d in eff.mondo_id if isinstance(d, str)}),))
         labels = dict(cur.fetchall())
-        cur.execute("SELECT DISTINCT moiety_id, mondo_id, query_kind, query FROM preclin.moiety_publication")
+        cur.execute("SELECT moiety_id, mondo_id, query_kind, query FROM preclin.pubmed_search")
         done = set(cur.fetchall())
     searches = [(m, "", "pharmacology", f"{name_clause(names[m])} AND ({PHARMACOLOGY_TERMS}) {NOT_REVIEWS}", PHARMACOLOGY_HITS)
                 for m in sorted(names)]
@@ -185,6 +139,10 @@ def literature(_args) -> None:
                 execute_values(cur, """INSERT INTO preclin.moiety_publication
                                          (moiety_id, mondo_id, pmid, query_kind, rank, query) VALUES %s
                                        ON CONFLICT DO NOTHING""", links)
+            execute_values(cur, """INSERT INTO preclin.pubmed_search (moiety_id, mondo_id, query_kind, query, n_hits)
+                                   VALUES %s ON CONFLICT (moiety_id, mondo_id, query_kind) DO UPDATE
+                                   SET query = EXCLUDED.query, n_hits = EXCLUDED.n_hits, searched_at = now()""",
+                           [(m, d, kind, q, sum(p in stored for p in ids)) for m, d, kind, q, ids in hits])
             conn.commit()
         print(f"searched {start + len(chunk)}/{len(todo)} new papers={len(papers)}", flush=True)
 
@@ -382,7 +340,7 @@ def outcome_text(outcomes) -> str:
 
 
 def bundles(eff) -> dict[str, dict]:
-    """Evidence bundle of every cohort program, keyed by subject_key."""
+    """Evidence bundle of every cohort program, keyed by pipeline.stops.subject_key."""
     moieties = sorted({int(m) for m in eff.moiety_id})
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT moiety_id, name, code_names, coalesce(modality, 'unknown')
@@ -495,15 +453,17 @@ def bundles(eff) -> dict[str, dict]:
 
 LITERATURE_METHOD = "pharmacology_literature@v1"
 LITERATURE_DESCRIPTION = f"""PubMed (E-utilities, relevance order, reviews, systematic reviews and meta-analyses excluded)
-searched once per entity with a program Section 1 records as stopped for efficacy: its name and up to {MAX_CODES} code
+searched once per entity with a stop for efficacy or exposure: its name and up to {MAX_CODES} code
 names (code names need a digit and five alphanumerics) with human-pharmacology terms (pharmacodynamics, target
 engagement, occupancy, proof of mechanism, first-in-human, healthy volunteers, ascending dose, PET, CSF,
 dose-response, dose-ranging), top {PHARMACOLOGY_HITS}; and once per (entity, program disease) with the disease's MONDO
-label, top {DISEASE_HITS}. A changed query replaces the earlier results. Results: preclin.moiety_publication, papers in
-public.publications."""
+label, top {DISEASE_HITS}. A changed query replaces the earlier results; every search run, with its hit count, is in
+preclin.pubmed_search. Results: preclin.moiety_publication, papers in public.publications."""
 ATTRIBUTION_METHOD = "efficacy_attribution@v1"
-ATTRIBUTION_DESCRIPTION = f"""Cohort: programs Section 1 records as suspended for efficacy (sponsor-stated, or the primary
-endpoint missed), keyed by (entity, disease, phase); the trial that gave the reason is the index trial. Each program's
+ATTRIBUTION_DESCRIPTION = f"""Cohort: stops for efficacy or exposure (pipeline.stops.cohort): Section 1's suspensions for
+efficacy (sponsor-stated, or the primary endpoint missed) or for PK, dose or formulation, and stops with no usable
+registry reason that stop-cause inference traced there with a source, keyed by (entity, disease, phase); the trial
+that gave Section 1 its reason is the index trial. Each program's
 bundle holds the index trial (record, classified outcome, primary outcomes, posted results up to {RESULTS_CHARS}
 characters, linked papers), up to {MAX_OTHER_TRIALS} other trials of the entity with classified outcomes, posted
 results of up to {MAX_PHASE1_RESULTS} Phase 1 trials, FDA approvals, other entities on a shared primary target in a
@@ -518,9 +478,6 @@ prompt, {CHECK_TASK.model}) on a seeded sample of {CHECK_SAMPLE}, and a blind we
 
 def label(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, LITERATURE_METHOD, "PubMed retrieval of human pharmacology", LITERATURE_DESCRIPTION,
-                          ["PubMed"], {"pharmacology_hits": PHARMACOLOGY_HITS, "disease_hits": DISEASE_HITS,
-                                       "terms": PHARMACOLOGY_TERMS, "exclude": NOT_REVIEWS})
         llm.record_method(cur, ATTRIBUTION_METHOD, "Why efficacy failed: three pillars", ATTRIBUTION_DESCRIPTION,
                           ["preclin.ctgov_study", "preclin.trial_outcome", "preclin.trial_endpoint",
                            "preclin.ctgov_result_summary", "preclin.moiety_target", "preclin.dev_program_approval",
@@ -528,7 +485,7 @@ def label(_args) -> None:
                           {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
                            "codes": CODES, "check_sample": CHECK_SAMPLE, "check_seed": CHECK_SEED})
         conn.commit()
-    eff = cohort()
+    eff = cohort(stops()[0])
     items = bundles(eff)
     run_id = llm.run(TASK, items)
     index = dict(zip(eff.key, eff.nct_id))
@@ -548,7 +505,6 @@ def label(_args) -> None:
     print(f"programs={len(items)} labelled={len(rows)}")
 
 
-SEARCH_PHASES = (2, 3)
 SEARCH_METHOD = "efficacy_attribution_search@v1"
 SEARCH_DESCRIPTION = f"""Cohort: Phase 2/3 programs that {ATTRIBUTION_METHOD} coded U (no human evidence of engagement in the
 bundle). Each is labelled again (task {SEARCH_TASK.name} {SEARCH_TASK.prompt_version}, {SEARCH_TASK.model}, effort
@@ -569,13 +525,12 @@ def search(_args) -> None:
                            "preclin.ctgov_result_summary", "preclin.moiety_publication", "web search"],
                           {"task": SEARCH_TASK.name, "prompt_version": SEARCH_TASK.prompt_version,
                            "model": SEARCH_TASK.model, "effort": SEARCH_TASK.effort, "tools": SEARCH_TOOLS,
-                           "phases": list(SEARCH_PHASES)})
+                           "phases": list(PHASES)})
         conn.commit()
     u = frame.query("""SELECT moiety_id, mondo_id, phase FROM preclin.efficacy_failure_attribution
-                       WHERE primary_code = 'U' AND phase = ANY(%s)""", (list(SEARCH_PHASES),))
-    keys = {subject_key(m, d, p) for m, d, p in zip(u.moiety_id, u.mondo_id, u.phase)}
-    eff = cohort()
-    items = bundles(eff[eff.key.isin(keys)])
+                       WHERE primary_code = 'U' AND phase = ANY(%s)""", (list(PHASES),))
+    eff = cohort(stops()[0])
+    items = bundles(eff[eff.key.isin(set(keys(u)))])
     run_id = llm.run(SEARCH_TASK, items)
     rows = []
     for key, did, o in llm.decisions(run_id):
@@ -596,9 +551,9 @@ def search(_args) -> None:
 
 def check(_args) -> None:
     """Label a seeded random sample of the registry-recorded cohort again under CHECK_TASK."""
-    eff = cohort()
-    keys = sorted(eff[eff.origin == "registry_efficacy"].key)
-    sample = np.random.default_rng(CHECK_SEED).choice(keys, size=min(CHECK_SAMPLE, len(keys)), replace=False)
+    eff = cohort(stops()[0])
+    registry = sorted(eff[eff.origin == "registry_efficacy"].key)
+    sample = np.random.default_rng(CHECK_SEED).choice(registry, size=min(CHECK_SAMPLE, len(registry)), replace=False)
     items = bundles(eff[eff.key.isin(set(sample))])
     run_id = llm.run(CHECK_TASK, items)
     print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")

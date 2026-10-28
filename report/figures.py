@@ -14,7 +14,6 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.lines
 import matplotlib.patches
 import numpy as np
 import pandas as pd
@@ -22,6 +21,7 @@ import pandas as pd
 from report import bio, frame
 from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
+from report.stop_causes import SHOWN
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -96,11 +96,9 @@ ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; sh
     "trial_design": ("Trial design, population, endpoint", "#ec7a7a"), "toxicity": ("Toxicity offset efficacy", "#f5b3b3"),
     "indeterminate": ("No engagement data", "#fbe3e3"),
 }
-CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; spectrum order, efficacy first
-    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#f77f00"), "pk_formulation": ("PK or formulation", "#fcbf49"),
-    "business_strategic": ("Business or strategic", "#2a9d8f"), "company_event": ("Company acquired, merged or closed", "#2a9d8f"),
-    "operational": ("Operational", "#277da1"), "positive_not_advanced": ("Positive readout, not yet advanced", "#6a4c93"),
-    "development_continued": ("Did not actually stop", "#3d6b4f"), "unknown": ("Unknown", "#e8e6e0"),
+SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order, efficacy first
+    "efficacy": EFFICACY, "safety": "#f77f00", "business_strategic": "#2a9d8f", "operational": "#277da1",
+    "positive_not_advanced": "#6a4c93", "unknown": "#e8e6e0",
 }
 
 
@@ -127,17 +125,9 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
 
 def efficacy_attribution():
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
-    causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
-    continued = "development_continued"
-    causes = causes[(causes.cause != continued) & ~((causes.cause == "unknown") & (causes.likely == continued))]
-    merged = {"company_event": "business_strategic", "pk_formulation": "efficacy"}
-    causes = causes.replace({"cause": merged, "likely": merged})
-    shown = {c: v for c, v in CAUSE_COLORS.items() if c not in (continued, *merged)}
-    shown["business_strategic"] = ("Business, strategic or company event", shown["business_strategic"][1])
-    shown["efficacy"] = ("Efficacy or exposure (PK, dose, formulation)", shown["efficacy"][1])
-    total = len(causes)
-    cause = causes.cause.where(causes.cause != "unknown", causes.likely)
-    after = [(float((cause == c).mean()), col, c == "unknown") for c, (_, col) in shown.items()]
+    shown = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv")).shown.dropna()
+    total = len(shown)
+    after = [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]
     e = n["phase23"]
     efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()]
 
@@ -164,8 +154,8 @@ def efficacy_attribution():
         ax.text(0, 2.3, "WHY EFFICACY FAILED", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                  hatch="////" if c == "unknown" else None, label=l)
-                         for c, (l, col) in shown.items()]
+                                                  hatch="////" if c == "unknown" else None, label=SHOWN[c])
+                         for c, col in SHOWN_COLORS.items()]
         leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
                         bbox_to_anchor=(-0.18, 0.80), handlelength=1.0, handleheight=1.0, columnspacing=1.4, labelspacing=0.6,
                         labelcolor=INK2)
