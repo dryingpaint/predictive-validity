@@ -159,29 +159,29 @@ def efficacy_attribution():
         fig, ax = plt.subplots(figsize=(10.5, 6.2))
         fig.subplots_adjust(left=0.17, right=0.97, top=0.84, bottom=0.25)
         ax.set_xlim(0, 1)
-        ax.set_ylim(-0.5, 6.1)
+        ax.set_ylim(-0.5, 6.3)
         ax.axis("off")
         fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop, once the unexplained stops are traced",
                  fontsize=16, fontweight="demibold", color=INK, va="top")
         fig.text(0.03, 0.92, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
                  fontsize=10.5, color=MUTED, va="top")
-        rows = [(5.0, "As registered", f"{total:,} programs", recorded),
-                (3.9, "After tracing", "solid: sourced · light: likely", after),
-                (1.0, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
+        rows = [(5.2, "As registered", f"{total:,} programs", recorded),
+                (4.1, "After tracing", "solid: sourced · light: likely", after),
+                (0.55, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
         for y, label, sub, segments in rows:
             stacked(ax, y, segments)
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
             ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
-        ax.text(0, 5.6, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
-        ax.text(1, 5.6, f"no stated reason: {unstated_before:.0%} → still unknown after tracing: {unknown_after:.0%}",
+        ax.text(0, 5.8, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(1, 5.8, f"no stated reason: {unstated_before:.0%} → still unknown after tracing: {unknown_after:.0%}",
                 ha="right", fontsize=8.5, color=INK2)
-        ax.text(0, 1.6, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(0, 1.15, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
                                                  markeredgecolor=GRID if c == "unknown" else "white", label=l)
                          for c, (l, col) in CAUSE_COLORS.items()]
         leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
-                        bbox_to_anchor=(-0.18, 0.66), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
+                        bbox_to_anchor=(-0.18, 0.56), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
                         labelcolor=INK2)
         ax.add_artist(leg)
         eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",

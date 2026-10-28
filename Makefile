@@ -73,7 +73,8 @@ labels:
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
 # dated by it with their yearly series, then the germline mechanism of each target in each program
 # disease and the orientation of each mouse model, both decided without the drug; last, why each
-# program that stopped for efficacy failed (PubMed retrieval, three-pillar labels, a re-derivation sample).
+# program that stopped for efficacy failed (PubMed retrieval, three-pillar labels, a re-derivation sample),
+# and the cause of each Phase 2/3 stop the registry does not explain (web search, held-out validation).
 evidence:
 	$(RUN) pipeline.opentargets fetch
 	$(RUN) pipeline.opentargets load
@@ -86,12 +87,17 @@ evidence:
 	$(RUN) pipeline.attribution literature
 	$(RUN) pipeline.attribution label
 	$(RUN) pipeline.attribution check
+	$(RUN) pipeline.stop_causes signals
+	$(RUN) pipeline.stop_causes infer
+	$(RUN) pipeline.stop_causes validate
+	$(RUN) pipeline.stop_causes assemble
 
 report:
 	$(RUN) report.section1
 	$(RUN) report.section2
 	$(RUN) report.section3
 	$(RUN) report.attribution
+	$(RUN) report.stop_causes
 	$(RUN) report.quality
 	$(RUN) report.figures
 	$(RUN) report.render
