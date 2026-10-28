@@ -549,12 +549,16 @@ def search(_args) -> None:
     print(f"programs={len(items)} labelled={len(rows)} decided={decided} run={run_id}")
 
 
-def check(_args) -> None:
-    """Label a seeded random sample of the registry-recorded cohort again under CHECK_TASK."""
-    eff = cohort(stops()[0])
+def check_sample(eff) -> set[str]:
+    """The seeded random sample of registry efficacy stops that CHECK_TASK labels again."""
     registry = sorted(eff[eff.origin == "registry_efficacy"].key)
-    sample = np.random.default_rng(CHECK_SEED).choice(registry, size=min(CHECK_SAMPLE, len(registry)), replace=False)
-    items = bundles(eff[eff.key.isin(set(sample))])
+    return set(np.random.default_rng(CHECK_SEED).choice(registry, size=min(CHECK_SAMPLE, len(registry)), replace=False))
+
+
+def check(_args) -> None:
+    """Label the check sample again under CHECK_TASK."""
+    eff = cohort(stops()[0])
+    items = bundles(eff[eff.key.isin(check_sample(eff))])
     run_id = llm.run(CHECK_TASK, items)
     print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
 

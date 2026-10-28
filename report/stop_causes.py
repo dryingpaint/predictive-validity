@@ -15,7 +15,7 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
-from pipeline.stop_causes import CAUSES, TASK
+from pipeline.stop_causes import CAUSES, VALIDATE_METHOD
 from pipeline.stops import REGISTRY_CAUSE, keys
 from report import frame
 from report.section3 import jsonable
@@ -51,9 +51,12 @@ def distribution(d: pd.DataFrame, col: str) -> dict:
 
 
 def validation() -> dict:
-    v = llm.latest_decisions(TASK.name, TASK.prompt_version, heldout=True)
-    if v.empty:
+    """Held-out agreement on the sample of the latest validation run (pipeline.stop_causes validate)."""
+    run = frame.query("SELECT parameters->>'run' AS run FROM preclin.analysis_method WHERE method_id = %s",
+                      (VALIDATE_METHOD,))
+    if run.empty or run.run[0] is None:
         return {"n": 0}
+    v = pd.DataFrame(llm.decisions(run.run[0]), columns=["key", "llm_decision_id", "parsed_output"])
     v["key"] = v.key.str.removesuffix("|heldout")
     reasons = frame.query("SELECT moiety_id, mondo_id, phase, recorded_reason FROM preclin.stop_cause "
                           "WHERE cause_source = 'registry'")

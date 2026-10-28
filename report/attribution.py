@@ -21,7 +21,7 @@ from scipy.stats import fisher_exact
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
-from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, CODES
+from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, CODES, check_sample
 from pipeline.stops import EFFICACY_CAUSES, ENGAGED, PHASES, SameTarget, cohort, keys, labels, pillar_code, stops
 from report import frame
 from report.section1 import N_BOOT, SEED
@@ -143,8 +143,10 @@ def agreement(ga: pd.Series, gb: pd.Series) -> dict:
             "three_way_kappa": float(cohen_kappa_score(three_way(ga), three_way(gb)))}
 
 
-def rederivation(d: pd.DataFrame) -> dict:
+def rederivation(d: pd.DataFrame, sample: set[str]) -> dict:
+    """Agreement with CHECK_TASK on the current check sample."""
     chk = llm.latest_decisions(CHECK_TASK.name, CHECK_TASK.prompt_version)
+    chk = chk[chk.key.isin(sample)]
     chk["check_code"] = [o["primary_code"] for o in chk.parsed_output]
     chk["check_engagement"] = [o["engagement"] for o in chk.parsed_output]
     m = d.merge(chk[["key", "check_code", "check_engagement"]], on="key")
@@ -247,7 +249,7 @@ def main() -> None:
          "reclassified": {"programs": reclassified}, "unlabelled": {"phase23": unlabelled},
          "search": search_summary(d),
          "bundle_only": {"groups": counts(bundle_only(d), "group", GROUPS)},
-         "rederivation": rederivation(bundle_only(d)), "adjudication": adjudication(bundle_only(d)),
+         "rederivation": rederivation(bundle_only(d), check_sample(cohort(modes))), "adjudication": adjudication(bundle_only(d)),
          "construct": construct(d, progs, rows),
          "bounds": {"labelled": ne / (ne + eng), "all_indeterminate_not_engaged": (ne + u) / (ne + eng + u)}}
     sens = sensitivity(d, rng)

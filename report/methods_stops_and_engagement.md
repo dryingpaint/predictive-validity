@@ -55,11 +55,11 @@ cause, sourced, is efficacy or exposure.
 | Unknown (likely cause counted) | No source states a cause; the likely cause is the model's inference | DMT210 in atopic dermatitis: no results announced and both indications ended together → likely efficacy; icosapent in COVID-19: enrollment fell as vaccines spread, no results → likely operational |
 
 **Known weaknesses.** On 129 stops whose registry reason is known, run with the reason hidden, the traced cause
-matched 62% of the time (κ = 0.55). Efficacy stops were recognised
-92% of the time, but only 56% of the stops it called efficacy were, and
-safety stops were recognised 46% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
+matched 61% of the time (κ = 0.54). Efficacy stops were recognised
+87% of the time, but only 54% of the stops it called efficacy were, and
+safety stops were recognised 48% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
 a missed endpoint takes precedence over a safety signal). **Business** is the least reliable category: the model's
-business calls were right 48% of the time, often confused with operational. "Positive readout" includes programs
+business calls were right 54% of the time, often confused with operational. "Positive readout" includes programs
 whose primary endpoints were only partly met, and some recently quiet ones may still advance.
 
 ## Bottom bar: why efficacy failed

@@ -269,16 +269,16 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
 MAX_CONTINUATIONS = 4  # resumptions of a turn the server paused while running its tools
 
 
-def latest_decisions(task: str, prompt_version: str, heldout: bool = False) -> pd.DataFrame:
-    """The latest validated decision of each subject for a task version: key, llm_decision_id, parsed_output.
-    heldout selects the subjects suffixed |heldout instead, with the suffix kept."""
+def latest_decisions(task: str, prompt_version: str) -> pd.DataFrame:
+    """The latest validated decision of each subject for a task version, held-out subjects (|heldout) aside:
+    key, llm_decision_id, parsed_output."""
     with connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
             FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
             WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-              AND (d.subject_key LIKE '%%|heldout') = %s
-            ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version, heldout))
+              AND d.subject_key NOT LIKE '%%|heldout'
+            ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
         return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
 
 
