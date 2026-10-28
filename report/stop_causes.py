@@ -69,6 +69,8 @@ def validation() -> dict:
            "by_truth": {t: {"n": int(len(g)), "resolved": float((g.cause != "unknown").mean()),
                             "cause_correct": float((g.cause == t).mean()), "likely_correct": float((g.likely == t).mean())}
                         for t, g in v.groupby("truth")},
+           "precision_likely": {c: {"called": int(len(g)), "correct": float((g.truth == c).mean())}
+                                for c, g in v.groupby("likely") if c != "unknown"},
            "by_evidence": {e: {"n": int(len(g)), "correct": float((g.cause == g.truth).mean())}
                            for e, g in known.groupby("evidence")},
            "confusion_likely": pd.crosstab(v.truth, v.likely).to_dict()}

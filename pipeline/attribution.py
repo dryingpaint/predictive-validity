@@ -54,7 +54,8 @@ NOT_REVIEWS = "NOT (review[pt] OR systematic review[pt] OR meta-analysis[pt])"  
 
 
 def subject_key(moiety_id: int, mondo_id: str | None, phase: int) -> str:
-    return f"{moiety_id}|{mondo_id or ''}|{phase}"
+    """Key of an (entity, disease, phase); a program without a disease (None or NaN) has an empty disease."""
+    return f"{moiety_id}|{mondo_id if isinstance(mondo_id, str) else ''}|{phase}"
 
 
 def stops():

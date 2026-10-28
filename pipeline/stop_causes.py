@@ -411,7 +411,22 @@ def validate_run(_args) -> None:
                {"seed": VALIDATION_SEED, "sample": VALIDATION_SAMPLE, "per_cause": per})
         conn.commit()
     run_id = llm.run(TASK, items)
-    print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+    truth = dict(zip(sample.key + "|heldout", sample.cause))
+    got = pd.DataFrame([(truth[k], o["cause"], o["likely_cause"]) for k, _, o in llm.decisions(run_id)],
+                       columns=["truth", "cause", "likely"])
+    resolved = got[got.cause != "unknown"]
+    results = {"decided": int(len(got)), "resolved": float((got.cause != "unknown").mean()),
+               "cause_accuracy_resolved": float((resolved.cause == resolved.truth).mean()),
+               "likely_accuracy": float((got.likely == got.truth).mean()),
+               "likely_recall": {c: float((g.likely == c).mean()) for c, g in got.groupby("truth")},
+               "likely_precision": {c: float((g.truth == c).mean()) for c, g in got.groupby("likely")}}
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, VALIDATE_METHOD, "Held-out validation of stop-cause inference", VALIDATE_DESCRIPTION,
+                          ["preclin.ctgov_study", "preclin.stop_signal", "web search"],
+                          {"seed": VALIDATION_SEED, "sample": VALIDATION_SAMPLE, "per_cause": per, "run": str(run_id),
+                           "results": results})
+        conn.commit()
+    print(f"sample={len(items)} decided={len(got)} accuracy={results['likely_accuracy']:.2f} run={run_id}")
 
 
 ASSEMBLE_METHOD = "stop_cause_assembly@v2"

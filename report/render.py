@@ -109,7 +109,6 @@ ATTRIBUTION_GROUPS = {"not_engaged": "Not engaged: exposure or engagement inadeq
                       "engaged_no_benefit": "Engaged, no benefit: target or mechanism wrong for the disease as tested (F2–F4)",
                       "trial_design": "Trial design, population or endpoint, mechanism not in question (F7)",
                       "toxicity": "Toxicity offset or ended efficacy (F5, F6)",
-                      "not_a_failure": "Misclassified, not a failed efficacy test: endpoint met, only a non-inferiority margin missed, a safety study, or a business stop (F8, F9)",
                       "indeterminate": "Indeterminate: no human engagement evidence either way (U)"}
 
 
@@ -124,6 +123,21 @@ def attribution_table() -> str:
                    for c in cols.values()])
     rows.append(["Programs (entities)"] + [f"{c['programs']:,} ({c['entities']:,})" for c in cols.values()])
     return table(pd.DataFrame(rows, columns=["What the evidence shows"] + list(cols)))
+
+
+CAUSE_NAMES = {"efficacy": "Efficacy", "safety": "Safety", "pk_formulation": "PK or formulation",
+               "business_strategic": "Business or strategic", "company_event": "Company acquired, merged, unfunded or closed",
+               "operational": "Operational (enrollment, sites, supply, regulatory)",
+               "positive_not_advanced": "Positive readout, not advanced", "development_continued": "Did not actually stop",
+               "unknown": "Unknown"}
+
+
+def stop_cause_table() -> str:
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
+    rows = [[name] + [f"{pct(n[k][c]['share'], 0)} ({n[k][c]['n']:,})" for k in ("recorded", "evidence", "likely")]
+            for c, name in CAUSE_NAMES.items()]
+    return table(pd.DataFrame(rows, columns=["Cause of the stop", "As registered", "After tracing: sourced",
+                                             "After tracing: sourced or likely"]))
 
 
 def attribution_sensitivity_table() -> str:
@@ -385,7 +399,7 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table, "S3_CASES_TABLE": s3_cases_table,
           "S3_CASE_CARDS": s3_case_cards, "ATTRIBUTION_TABLE": attribution_table,
-          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table}
+          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
 
 
 def flatten(d, prefix=""):
@@ -412,7 +426,7 @@ def fill(text: str, numbers: dict) -> str:
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "section3", "attribution", "quality"):
+    for section in ("section1", "section2", "section3", "attribution", "stop_causes", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)

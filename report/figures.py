@@ -90,19 +90,24 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-ATTRIBUTION_COLORS = {  # efficacy failures, in stacking order
+ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; efficacy in blues, toxicity in red
     "not_engaged": ("Not engaged", "#eb6834"), "engaged_no_benefit": ("Engaged, no benefit", "#2a78d6"),
-    "trial_design": ("Trial design, population, endpoint", "#1baf7a"), "toxicity": ("Toxicity", "#eda100"),
-    "not_a_failure": ("Misclassified: not a failed efficacy test", "#e87ba4"), "indeterminate": ("No data", "#d6d5ce"),
+    "trial_design": ("Trial design, population, endpoint", "#8fb8ea"), "toxicity": ("Toxicity offset efficacy", "#e34948"),
+    "indeterminate": ("No engagement data", "#d6d5ce"),
 }
-OTHER_STOPS = {  # every other Section 1 reason for a stop, in neutral greys after the efficacy segments
-    "Safety or PK": (("safety", "PK, dose or formulation"), "#8a8984"),
-    "Business, sponsor or operational": (("business or strategic (explicit)", "sponsor decision, unspecified",
-                                          "enrollment, operational or regulatory", "other stated reason"), "#a5a39a"),
-    "Positive readout, not advanced": (("positive readout, not advanced",), "#c3c2b7"),
-    "No reason given": (("completed, no results posted, no reason stated", "stopped, no reason stated",
-                         "results posted, no reason stated, endpoint not assessable"), "#ecebe7"),
+CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order (validated adjacent order; operational in grey)
+    "efficacy": ("Efficacy", "#2a78d6"), "safety": ("Safety", "#e34948"), "pk_formulation": ("PK or formulation", "#eda100"),
+    "business_strategic": ("Business or strategic", "#4a3aa7"), "company_event": ("Company acquired, merged or closed", "#e87ba4"),
+    "operational": ("Operational", "#8a8984"), "positive_not_advanced": ("Positive readout, not advanced", "#1baf7a"),
+    "development_continued": ("Did not actually stop", "#008300"), "unknown": ("Unknown", "#ecebe7"),
 }
+DARK_FILLS = ("#eb6834", "#2a78d6", "#e34948", "#4a3aa7", "#8a8984", "#008300")
+
+
+def tint(color: str, amount: float = 0.55) -> str:
+    """The color mixed with white: the lighter shade marks a likely, not sourced, cause."""
+    r, g, b = (int(color[i:i + 2], 16) for i in (1, 3, 5))
+    return "#" + "".join(f"{round(c + (255 - c) * amount):02x}" for c in (r, g, b))
 
 
 def rounded(ax, x, y, w, h, radius_px, **kw):
@@ -125,68 +130,66 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
                     hatch="////" if hatched else None, edgecolor="white" if hatched else "none")
         if w >= 0.055:
             ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=10, fontweight="bold",
-                    color="white" if color in ("#eb6834", "#2a78d6", "#1baf7a", "#8a8984") else INK2,
+                    color="white" if color in DARK_FILLS else INK2,
                     bbox=dict(boxstyle="round,pad=0.25,rounding_size=0.6", fc=color, ec="none") if hatched else None)
         start += w
 
 
 def efficacy_attribution():
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
-    stops = pd.read_csv(os.path.join(OUT, "section1", "failure_modes_programs.csv"))
-    stops = stops[stops.phase.isin([2, 3])]
-    labels = pd.read_csv(os.path.join(OUT, "attribution", "programs.csv"))[["program_id", "phase", "group"]]
-    stops = stops.merge(labels, on=["program_id", "phase"], how="left")
-    efficacy = stops.reason.str.startswith("efficacy")
-    stops.loc[efficacy & stops.group.isna(), "group"] = "indeterminate"  # refused by the labeller: no reading
-    total = len(stops)
-    everything = [(float((stops.group == g).sum()) / total, c, g == "indeterminate")
-                  for g, (_, c) in ATTRIBUTION_COLORS.items()]
-    everything += [(float(stops.reason.isin(r).sum()) / total, c, False) for r, c in OTHER_STOPS.values()]
-    eff_share = float(efficacy.mean())
-    ne_share = float((stops.group == "not_engaged").mean())
-    c = n["phase23"]
+    causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
+    total = len(causes)
+    recorded = [(float((causes.recorded_cause == c).mean()), col, c == "unknown") for c, (_, col) in CAUSE_COLORS.items()]
+    after = []
+    for c, (_, col) in CAUSE_COLORS.items():
+        if c == "unknown":
+            after.append((float(((causes.cause == "unknown") & (causes.likely == "unknown")).mean()), col, True))
+            continue
+        after.append((float((causes.cause == c).mean()), col, False))
+        after.append((float(((causes.cause == "unknown") & (causes.likely == c)).mean()), tint(col), False))
+    e = n["phase23"]
+    efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()]
+    unstated_before = float((causes.recorded_cause == "unknown").mean())
+    unknown_after = float(((causes.cause == "unknown") & (causes.likely == "unknown")).mean())
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
           "hatch.color": "white", "hatch.linewidth": 1.4}
     with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10, 4.6))
-        fig.subplots_adjust(left=0.17, right=0.97, top=0.79, bottom=0.27)
+        fig, ax = plt.subplots(figsize=(10.5, 6.2))
+        fig.subplots_adjust(left=0.17, right=0.97, top=0.84, bottom=0.25)
         ax.set_xlim(0, 1)
-        ax.set_ylim(-0.5, 3.95)
+        ax.set_ylim(-0.5, 6.1)
         ax.axis("off")
-        fig.text(0.03, 0.965, "Where it can be traced, most efficacy failures engaged their target",
+        fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop, once the unexplained stops are traced",
                  fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.9, "Industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
+        fig.text(0.03, 0.92, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
                  fontsize=10.5, color=MUTED, va="top")
-
-        rows = [(2.6, "All stops", f"{total:,} programs", everything),
-                (0.0, "Efficacy stops", f"{c['programs']:,} programs",
-                 [(c["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()])]
-        for y, label, count, segments in rows:
+        rows = [(5.0, "As registered", f"{total:,} programs", recorded),
+                (3.9, "After tracing", "solid: sourced · light: likely", after),
+                (1.0, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
+        for y, label, sub, segments in rows:
             stacked(ax, y, segments)
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
-            ax.text(-0.025, y - 0.02, count, ha="right", va="top", fontsize=8.5, color=MUTED)
-        for y, text in ((3.75, "All programs that stopped, for any reason"),
-                        (0.62, "Programs that stopped for efficacy: what the evidence shows")):
-            ax.text(0, y, text.upper(), fontsize=7.5, color=MUTED, fontweight="demibold")
+            ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
+        ax.text(0, 5.6, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(1, 5.6, f"no stated reason: {unstated_before:.0%} → still unknown after tracing: {unknown_after:.0%}",
+                ha="right", fontsize=8.5, color=INK2)
+        ax.text(0, 1.6, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
-        ax.plot([0.004, 0.004, eff_share - 0.004, eff_share - 0.004], [2.17, 2.08, 2.08, 2.17],
-                color=MUTED, linewidth=1, solid_capstyle="round", solid_joinstyle="round")
-        ax.text(0.004, 1.95, f"Stopped for efficacy: {eff_share:.0%} of all stops, broken down below",
-                ha="left", va="top", fontsize=8.5, color=INK2)
-        ax.annotate(f"Not engaged: {ne_share:.0%} of all stops", xy=(ne_share / 2, 2.95), xytext=(0.045, 3.33),
-                    fontsize=8.5, color="#c4501f", fontweight="demibold", ha="left", va="center",
-                    arrowprops=dict(arrowstyle="-", color="#c4501f", lw=1, shrinkA=2, shrinkB=0,
-                                    connectionstyle="arc3,rad=0.3"))
-
-        handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
-                                           markeredgecolor=GRID if col == "#ecebe7" else "white", label=l)
-                   for l, col in [v for v in ATTRIBUTION_COLORS.values()] + [(l, v[1]) for l, v in OTHER_STOPS.items()]]
-        handles[5] = matplotlib.patches.Patch(facecolor=ATTRIBUTION_COLORS["indeterminate"][1], edgecolor="white",
-                                              hatch="////", label=ATTRIBUTION_COLORS["indeterminate"][0])
-        ax.legend(handles=handles, ncol=4, frameon=False, fontsize=8.5, loc="upper left", bbox_to_anchor=(-0.18, -0.04),
-                  handlelength=1.0, handleheight=1.0, columnspacing=1.6, labelspacing=0.8, labelcolor=INK2)
+        cause_handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
+                                                 markeredgecolor=GRID if c == "unknown" else "white", label=l)
+                         for c, (l, col) in CAUSE_COLORS.items()]
+        leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
+                        bbox_to_anchor=(-0.18, 0.66), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
+                        labelcolor=INK2)
+        ax.add_artist(leg)
+        eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                hatch="////" if g == "indeterminate" else None, label=l)
+                       for g, (l, col) in ATTRIBUTION_COLORS.items()]
+        ax.legend(handles=eff_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
+                  bbox_to_anchor=(-0.18, 0.02), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
+                  labelspacing=0.6, labelcolor=INK2)
         save(fig, "efficacy_attribution")
 
 

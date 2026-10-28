@@ -19,6 +19,7 @@ from scipy.stats import fisher_exact
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, cohort
+from pipeline.stop_causes import CORRECTED_CODES
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, phase_rows
@@ -33,7 +34,9 @@ RELATED_DISEASE = 0.5
 GROUP = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
          "F4": "engaged_no_benefit", "F5": "toxicity", "F6": "toxicity", "F7": "trial_design",
          "F8": "not_a_failure", "F9": "not_a_failure", "U": "indeterminate"}
-GROUPS = ["not_engaged", "engaged_no_benefit", "toxicity", "trial_design", "not_a_failure", "indeterminate"]
+# Programs coded F6, F8 or F9 did not fail an efficacy test (off-target toxicity, a business stop, a met
+# endpoint or a non-inferiority margin): pipeline.stop_causes gives them their cause, and they leave this analysis.
+GROUPS = ["not_engaged", "engaged_no_benefit", "toxicity", "trial_design", "indeterminate"]
 CODES = ["F1a", "F1b", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "U"]
 ENGAGED = ("adequate", "inferred_adequate")
 
@@ -43,8 +46,9 @@ def group(code: pd.Series, engagement: pd.Series) -> pd.Series:
     return g.where(~(code.isin(["F3", "F4"]) & ~engagement.isin(ENGAGED)), "trial_design")
 
 
-def load() -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Labelled cohort programs, and the cohort programs without a validated label (refusals)."""
+def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Labelled efficacy failures, the cohort programs without a validated label (refusals), and the
+    programs reclassified as not efficacy failures (CORRECTED_CODES)."""
     eff = cohort()
     lab = frame.query("""SELECT a.*, d.input_payload FROM preclin.efficacy_failure_attribution a
                          JOIN pv_evidence.llm_decision d USING (llm_decision_id)""")
@@ -55,7 +59,9 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame]:
     d["n_papers"] = [len(p["papers"]) for p in d.input_payload]
     d["n_phase1"] = [len(p["phase1_results"]) for p in d.input_payload]
     d["index_start"] = pd.to_datetime([p["index"]["start"] for p in d.input_payload], errors="coerce")
-    return d.drop(columns=["input_payload"]), eff[~eff.key.isin(d.key)][["key", "phase", "modality"]]
+    unlabelled = eff[~eff.key.isin(d.key)][["key", "phase", "modality"]]
+    reclassified = d[d.primary_code.isin(CORRECTED_CODES)][["key", "phase", "primary_code"]]
+    return d[~d.primary_code.isin(CORRECTED_CODES)].drop(columns=["input_payload"]), unlabelled, reclassified
 
 
 def shares(d: pd.DataFrame, col: str, levels: list[str], rng: np.random.Generator) -> pd.DataFrame:
@@ -242,7 +248,7 @@ def main() -> None:
     rng = np.random.default_rng(SEED)
     progs, trials = frame.programs(), frame.program_trials()
     rows = phase_rows(progs, trials, frame.snapshot())
-    d, unlabelled = load()
+    d, unlabelled, reclassified = load()
     d.drop(columns=["secondary_codes", "sources"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     main_cohort = d[d.phase.isin([2, 3])]
     n = {"phase23": summary(main_cohort, rng), "phase1": summary(d[d.phase == 1], rng),
@@ -250,6 +256,8 @@ def main() -> None:
          "outside_oncology": summary(main_cohort[~main_cohort.oncology], rng),
          "oncology": summary(main_cohort[main_cohort.oncology], rng),
          "coverage": coverage(main_cohort),
+         "reclassified": {"programs": int(reclassified.phase.isin([2, 3]).sum()),
+                          "codes": reclassified[reclassified.phase.isin([2, 3])].primary_code.value_counts().to_dict()},
          "unlabelled": {"programs": int(len(unlabelled)), "phase23": int(unlabelled.phase.isin([2, 3]).sum()),
                         "by_modality": unlabelled.modality.value_counts().to_dict()},
          "rederivation": rederivation(main_cohort), "adjudication": adjudication(main_cohort),

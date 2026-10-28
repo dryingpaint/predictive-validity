@@ -62,3 +62,9 @@ def test_rendered_bundle_shows_every_citable_source():
 
 def test_search_skips_short_code_names():
     assert attribution.search_names("aspirin", ["ASA", "TF2", "BAY1019036"]) == ["aspirin", "BAY1019036"]
+
+
+def test_subject_key_of_a_program_without_a_disease():
+    assert attribution.subject_key(218, float("nan"), 2) == "218||2"
+    assert attribution.subject_key(218, None, 2) == "218||2"
+    assert attribution.subject_key(218, "MONDO:0005101", 3) == "218|MONDO:0005101|3"
