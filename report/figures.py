@@ -90,18 +90,24 @@ def failure_modes():
     save(fig, "failure_modes_by_phase")
 
 
-ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; efficacy in blues, toxicity in red
-    "not_engaged": ("Not engaged", "#eb6834"), "engaged_no_benefit": ("Engaged, no benefit", "#2a78d6"),
-    "trial_design": ("Trial design, population, endpoint", "#8fb8ea"), "toxicity": ("Toxicity offset efficacy", "#e34948"),
-    "indeterminate": ("No engagement data", "#d6d5ce"),
+EFFICACY = "#2b5c8a"
+ATTRIBUTION_COLORS = {  # efficacy failures by engagement, in stacking order; shades of the efficacy cause color
+    "not_engaged": ("Not engaged", "#14304d"), "engaged_no_benefit": ("Engaged, no benefit", EFFICACY),
+    "trial_design": ("Trial design, population, endpoint", "#6f97bf"), "toxicity": ("Toxicity offset efficacy", "#a9c2dc"),
+    "indeterminate": ("No engagement data", "#dbe5ef"),
 }
-CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order (validated adjacent order; operational in grey)
-    "efficacy": ("Efficacy", "#2a78d6"), "safety": ("Safety", "#e34948"), "pk_formulation": ("PK or formulation", "#eda100"),
-    "business_strategic": ("Business or strategic", "#4a3aa7"), "company_event": ("Company acquired, merged or closed", "#e87ba4"),
-    "operational": ("Operational", "#8a8984"), "positive_not_advanced": ("Positive readout, not advanced", "#1baf7a"),
-    "development_continued": ("Did not actually stop", "#008300"), "unknown": ("Unknown", "#ecebe7"),
+CAUSE_COLORS = {  # pipeline.stop_causes.CAUSES, in stacking order; efficacy saturated, the rest muted
+    "efficacy": ("Efficacy", EFFICACY), "safety": ("Safety", "#c8553d"), "pk_formulation": ("PK or formulation", "#e0a458"),
+    "business_strategic": ("Business or strategic", "#7a6c9d"), "company_event": ("Company acquired, merged or closed", "#b07ca0"),
+    "operational": ("Operational", "#9a988c"), "positive_not_advanced": ("Positive readout, not advanced", "#5b9a7d"),
+    "development_continued": ("Did not actually stop", "#3d6b4f"), "unknown": ("Unknown", "#e8e6e0"),
 }
-DARK_FILLS = ("#eb6834", "#2a78d6", "#e34948", "#4a3aa7", "#8a8984", "#008300")
+
+
+def dark(color: str) -> bool:
+    """Whether white text reads better than dark text on this fill."""
+    r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b < 0.5
 
 
 def tint(color: str, amount: float = 0.55) -> str:
@@ -120,7 +126,7 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
                                                       edgecolor="white" if hatched else "none", linewidth=0))
         if w >= 0.055:
             ax.text(start + w / 2, y, f"{w:.0%}", ha="center", va="center", fontsize=10, fontweight="bold",
-                    color="white" if color in DARK_FILLS else INK2,
+                    color="white" if dark(color) else INK2,
                     bbox=dict(boxstyle="square,pad=0.25", fc=color, ec="none") if hatched else None)
         start += w
 
