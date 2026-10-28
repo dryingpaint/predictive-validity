@@ -108,6 +108,8 @@ def search_summary(d: pd.DataFrame) -> dict:
                                   if both.any() else None,
                                   "search_decided_outside_u": int(((m.primary_code != "U") & (m.adjudicated == "U")).sum()),
                                   "outside_decided_search_u": int(((m.primary_code == "U") & (m.adjudicated != "U")).sum()),
+                                  "outside_decided_search_u_groups":
+                                      gb[(m.primary_code == "U") & (m.adjudicated != "U")].value_counts().to_dict(),
                                   "pairs": [[a, b] for a, b in zip(m.group, gb)]}
     return out
 
