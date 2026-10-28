@@ -22,7 +22,7 @@ Scannell and colleagues called the decline Eroom's Law (Moore's Law backwards) a
 
 [Scannell and Bosley (2016)](https://doi.org/10.1371/journal.pone.0147215) later used decision theory to show that a model's *predictive validity*, meaning how well its output tracks the clinical outcome, matters far more than its throughput, and proposed that a fall in the predictive validity of the industry's screening and disease models explains much of the decline.
 
-This report rebuilds both questions from primary records. We took every interventional drug or biological study on ClinicalTrials.gov (222,915 studies, snapshot of 2026-10-20), resolved each intervention to the molecular entity it contains and each condition to a MONDO disease, and joined them to every FDA approval we could document: Drugs@FDA applications, 5,034 approved uses read from 2015–2026 approval letters, current labels, and 177 CBER biologics applications rebuilt from the agency's yearly pages and letters. The unit throughout is a *development program*: one molecular entity developed for one indication. An entity counts toward a program only in trials where it is the investigational agent, not a comparator or background therapy.
+This report rebuilds both questions from primary records. We took every interventional drug or biological study on ClinicalTrials.gov (222,915 studies, snapshot of 2026-10-20), resolved each intervention to the molecular entity it contains and each condition to a MONDO disease, and joined them to every FDA approval we could document: Drugs@FDA applications, 6,529 approved uses read from 2008–2026 approval letters, current labels, and 177 CBER biologics applications rebuilt from the agency's yearly pages and letters. The unit throughout is a *development program*: one molecular entity developed for one indication. An entity counts toward a program only in trials where it is the investigational agent, not a comparator or background therapy.
 
 The report has three parts:
 
@@ -49,7 +49,7 @@ Over the past century, drug development moved from natural observation and pheno
 
 ## Industry failure modes
 
-For development programs that entered a phase in 2015–2025 and were developed in the US, the likelihood of FDA approval from Phase 1 is 9.8% (95% CI 8.6%–10.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 7.0%. Most programs stop without a stated reason: of 6,710 programs that stopped, 44% left no stated reason and no posted or published result, and 21% record an efficacy, safety or pharmacokinetic reason.
+For development programs that entered a phase in 2015–2025 and were developed in the US, the likelihood of FDA approval from Phase 1 is 9.8% (95% CI 8.7%–10.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 7.0%. Most programs stop without a stated reason: of 6,713 programs that stopped, 44% left no stated reason and no posted or published result, and 21% record an efficacy, safety or pharmacokinetic reason.
 
 ### How programs are counted
 
@@ -57,39 +57,39 @@ For development programs that entered a phase in 2015–2025 and were developed 
 * **Molecular entity:** the active substance, whatever its brand, sponsor code, dose or salt, resolved to its FDA UNII substance where one exists. Biosimilars fold into their reference entity.
 * **Disease:** the MONDO term for the condition the trial treats, without line, stage, biomarker or age qualifiers.
 * **Program:** one entity developed for one indication. An indication groups the entity's MONDO diseases the way a sponsor runs them as programs (prostate cancer with castration-resistant and metastatic prostate carcinoma; diffuse large B-cell and follicular lymphoma kept apart), decided by an LLM for each entity. An entity belongs to a program only in trials where it is the investigational agent, not a comparator or background therapy. Each industry trial's purpose is classified first: bioequivalence, formulation, food-effect, interaction and other product-support studies (10,770 trials) belong to no program; a first-in-human study or a basket across several diseases counts as Phase 1 only for the program the sponsor pursued next.
-* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor). A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement or the FDA approved the entity for the disease; it is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-10-20); otherwise it is still running and *censored*. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2015 is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
+* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor). A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement or the FDA approved the entity for the disease; it is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-10-20); otherwise it is still running and *censored*. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
 * **Approval:** FDA approval of the entity for the program's disease, a subtype or population of it, or a broader approved class that includes it, judged from the dated approval letters, original-approval dates and labels of every application of the entity (CDER and CBER).
 
-16,713 programs of 9,912 entities entered at least one phase in 2015–2025.
+16,715 programs of 9,914 entities entered at least one phase in 2015–2025.
 
 ### Phase transitions
 
 | Transition | All programs (95% CI) | Developed in the US (95% CI) | BIO 2011–2020 |
 | :---- | :---- | :---- | :---- |
-| Phase 1 → Phase 2 | 54.5% (52.6–56.4), n=5,718 | 54.4% (51.7–57.2), n=3,159 | 52.0% |
-| Phase 2 → Phase 3 | 33.8% (32.2–35.4), n=4,773 | 33.8% (31.8–35.8), n=2,927 | 28.9% |
-| Phase 3 → Approval | 37.9% (34.9–40.8), n=1,532 | 53.0% (49.6–56.6), n=1,047 | 52.4% |
-| **Phase 1 → Approval (LOA)** | **7.0%** (6.2–7.8) | **9.8%** (8.6–10.9) | **7.9%** (novel drugs 6.8%) |
+| Phase 1 → Phase 2 | 54.5% (52.6–56.4), n=5,719 | 54.4% (51.6–57.0), n=3,159 | 52.0% |
+| Phase 2 → Phase 3 | 33.8% (32.3–35.4), n=4,774 | 33.8% (31.8–35.7), n=2,927 | 28.9% |
+| Phase 3 → Approval | 38.1% (35.1–41.0), n=1,537 | 53.1% (49.8–56.3), n=1,051 | 52.4% |
+| **Phase 1 → Approval (LOA)** | **7.0%** (6.2–7.8) | **9.8%** (8.7–10.9) | **7.9%** (novel drugs 6.8%) |
 
-Programs developed in the US, the closest match to BIO's FDA-focused Biomedtracker programs, advance from Phase 1 at 54.4% (BIO 52.0%), from Phase 2 at 33.8% (BIO 28.9%) and from Phase 3 to approval at 53.0% (BIO 52.4%). Phase 2 remains the steepest single drop. Across all registered industry programs the Phase 3 rate falls to 37.9%, because many programs run only outside the US end in approvals elsewhere, which this report does not count.
+Programs developed in the US, the closest match to BIO's FDA-focused Biomedtracker programs, advance from Phase 1 at 54.4% (BIO 52.0%), from Phase 2 at 33.8% (BIO 28.9%) and from Phase 3 to approval at 53.1% (BIO 52.4%). Phase 2 remains the steepest single drop. Across all registered industry programs the Phase 3 rate falls to 38.1%, because many programs run only outside the US end in approvals elsewhere, which this report does not count.
 
-The likelihood of approval depends on choices a registry-based count has to make, and the table below shows how far each moves it. It is most sensitive to how long a program must be idle before it counts as suspended: 5.0% with a 12-month window and 10.0% with 36 months (24 in the headline). If every shared trial (a healthy-volunteer study, a basket) counted as the start of every later indication of the drug, LOA would rise to 11.9%, mostly by crediting indication expansions begun at Phase 2 with a Phase 1 success. Restricting to programs that entered a phase in 2015–2019, which have had at least six years to resolve, changes little (9.9% for US-developed programs). Vaccines are left out of the headline figures: annual and variant strain updates are licensed as supplements to the parent product, so registry entities for updated formulations never reach an approval of their own (LOA with vaccines included: 6.3%).
+The likelihood of approval depends on choices a registry-based count has to make, and the table below shows how far each moves it. It is most sensitive to how long a program must be idle before it counts as suspended: 5.0% with a 12-month window and 10.1% with 36 months (24 in the headline). If every shared trial (a healthy-volunteer study, a basket) counted as the start of every later indication of the drug, LOA would rise to 11.9%, mostly by crediting indication expansions begun at Phase 2 with a Phase 1 success. Restricting to programs that entered a phase in 2015–2019, which have had at least six years to resolve, changes little (9.9% for US-developed programs). Vaccines are left out of the headline figures: annual and variant strain updates are licensed as supplements to the parent product, so registry entities for updated formulations never reach an approval of their own (LOA with vaccines included: 6.3%).
 
 
 | Cohort or definition | Ph1→2 | Ph2→3 | Ph3→approval | LOA (95% CI) |
 | :---- | :---- | :---- | :---- | :---- |
-| All programs | 54.5% | 33.8% | 37.9% | 7.0% (6.2–7.8) |
-| Programs with a US-sited industry trial in the phase | 54.4% | 33.8% | 53.0% | 9.8% (8.6–10.9) |
+| All programs | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
+| Programs with a US-sited industry trial in the phase | 54.4% | 33.8% | 53.1% | 9.8% (8.7–10.9) |
 | Entity not yet FDA-approved at phase entry | 55.0% | 33.2% | 37.7% | 6.9% (6.1–7.7) |
-| Entity already FDA-approved for another disease | 51.8% | 38.4% | 38.8% | 7.7% (5.5–10.1) |
-| Suspension lag 12 months | 49.5% | 29.7% | 34.0% | 5.0% (4.4–5.6) |
-| Suspension lag 18 months | 51.8% | 31.4% | 35.7% | 5.8% (5.2–6.5) |
-| Suspension lag 36 months | 60.0% | 38.6% | 43.3% | 10.0% (9.0–11.1) |
-| Uncertain approvals counted as approved | 54.5% | 33.8% | 38.0% | 7.0% (6.3–7.8) |
-| Shared trials mark entry for every program of the entity | 66.6% | 45.5% | 39.3% | 11.9% (10.3–13.5) |
-| Including vaccines | 53.3% | 33.1% | 35.4% | 6.3% (5.6–7.0) |
-| Phase entry 2015-2019 (at least six years of follow-up) | 53.2% | 30.6% | 41.5% | 6.8% (5.8–7.8) |
-| Phase entry 2015-2019, developed in the US | 54.9% | 33.2% | 54.5% | 9.9% (8.6–11.5) |
+| Entity already FDA-approved for another disease | 51.8% | 38.3% | 39.3% | 7.8% (5.7–10.3) |
+| Suspension lag 12 months | 49.5% | 29.7% | 34.2% | 5.0% (4.5–5.6) |
+| Suspension lag 18 months | 51.8% | 31.4% | 35.8% | 5.8% (5.2–6.5) |
+| Suspension lag 36 months | 60.0% | 38.6% | 43.5% | 10.1% (9.0–11.1) |
+| Uncertain approvals counted as approved | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
+| Shared trials mark entry for every program of the entity | 66.6% | 45.4% | 39.3% | 11.9% (10.4–13.6) |
+| Including vaccines | 53.3% | 33.1% | 35.6% | 6.3% (5.6–7.0) |
+| Phase entry 2015-2019 (at least six years of follow-up) | 53.1% | 30.6% | 41.4% | 6.7% (5.8–7.8) |
+| Phase entry 2015-2019, developed in the US | 54.9% | 33.2% | 54.2% | 9.9% (8.4–11.4) |
 
 ### Why programs stop
 
@@ -98,13 +98,13 @@ Each suspended program takes one reason from the industry trials of the phase it
 | Reason | Phase 1 | Phase 2 | Phase 3 |
 | :---- | :---- | :---- | :---- |
 | PK, dose or formulation | 1% (22) | 0% (8) | 0% (0) |
-| business or strategic (explicit) | 12% (311) | 9% (273) | 6% (60) |
-| completed, no results posted, no reason stated | 51% (1,336) | 20% (638) | 21% (204) |
-| efficacy: primary endpoint not met | 0% (7) | 20% (634) | 19% (176) |
+| business or strategic (explicit) | 12% (311) | 9% (273) | 6% (61) |
+| completed, no results posted, no reason stated | 51% (1,337) | 20% (638) | 21% (204) |
+| efficacy: primary endpoint not met | 0% (7) | 20% (635) | 19% (177) |
 | efficacy: stated | 3% (67) | 6% (188) | 12% (112) |
 | enrollment, operational or regulatory | 3% (67) | 6% (181) | 4% (41) |
 | other stated reason | 1% (17) | 0% (14) | 1% (6) |
-| positive readout, not advanced | 0% (13) | 10% (310) | 19% (179) |
+| positive readout, not advanced | 0% (13) | 10% (310) | 19% (178) |
 | results posted, no reason stated, endpoint not assessable | 11% (275) | 11% (353) | 2% (23) |
 | safety | 2% (55) | 3% (83) | 4% (34) |
 | sponsor decision, unspecified | 4% (109) | 4% (135) | 3% (26) |
@@ -123,19 +123,19 @@ Finally, 19% of Phase 3 programs that stopped short of FDA approval had met thei
 
 | Disease area | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
 | :---- | :---- | :---- | :---- | :---- |
-| Hematology | 17.8% (12.0–25.3) | 265 | 16.3% (9.3–25.0) | 23.9% |
-| Oncology | 17.6% (14.7–20.6) | 2,503 | 20.5% (16.9–24.7) | 5.3% |
-| Metabolic | 17.2% (11.0–23.2) | 399 | 24.0% (16.4–32.7) | 15.5% |
-| Endocrine | 11.7% (6.2–18.4) | 307 | 24.1% (14.9–34.2) | 6.6% |
+| Hematology | 17.9% (11.7–25.6) | 266 | 16.3% (9.3–25.0) | 23.9% |
+| Oncology | 17.5% (14.4–20.6) | 2,504 | 20.4% (16.5–24.3) | 5.3% |
+| Metabolic | 17.2% (11.3–23.4) | 400 | 24.0% (16.4–32.7) | 15.5% |
+| Endocrine | 12.0% (6.4–19.0) | 307 | 24.5% (15.5–34.5) | 6.6% |
 | Allergy | 10.4% (4.5–17.7) | 127 | 11.6% (4.4–21.9) | 10.3% |
 | Autoimmune | 10.0% (7.0–13.2) | 623 | 10.1% (6.5–14.2) | 10.7% |
 | Psychiatry | 8.5% (4.1–12.3) | 284 | 10.5% (5.7–17.0) | 7.3% |
 | Neurology | 8.2% (6.0–10.6) | 879 | 12.3% (9.0–15.8) | 5.9% |
-| Other | 6.7% (4.8–9.0) | 877 | 8.8% (6.1–11.8) | 13.0% |
+| Other | 6.7% (4.8–9.1) | 880 | 8.6% (5.9–11.7) | 13.0% |
 | Respiratory | 6.3% (3.3–10.0) | 460 | 7.9% (4.2–12.4) | 7.5% |
-| Cardiovascular | 5.6% (2.8–9.2) | 349 | 12.2% (6.3–19.0) | 4.8% |
-| Ophthalmology | 4.8% (2.7–7.4) | 411 | 5.7% (2.7–9.1) | 11.9% |
-| Infectious disease | 3.6% (2.5–5.0) | 893 | 5.5% (3.5–8.0) | 13.2% |
+| Cardiovascular | 5.6% (2.7–9.2) | 348 | 12.2% (6.2–19.4) | 4.8% |
+| Ophthalmology | 5.2% (3.0–7.9) | 410 | 6.4% (3.3–9.9) | 11.9% |
+| Infectious disease | 3.7% (2.6–5.1) | 893 | 5.6% (3.6–8.1) | 13.2% |
 | Gastroenterology | 2.2% (0.6–4.4) | 319 | 5.9% (1.9–10.8) | 8.3% |
 | Urology | 1.0% (0.0–3.9) | 65 | – | 3.6% |
 
@@ -143,12 +143,12 @@ Finally, 19% of Phase 3 programs that stopped short of FDA approval had met thei
 | :---- | :---- | :---- | :---- | :---- |
 | Multispecific antibody | 22.8% (13.3–32.3) | 469 | 24.7% (13.9–34.7) | – |
 | Antibody–drug conjugate | 21.1% (8.1–34.5) | 403 | 18.5% (6.9–32.4) | 10.8% |
-| Monoclonal antibody | 13.9% (10.9–17.2) | 1,261 | 15.7% (11.8–19.8) | 12.1% |
-| Antisense oligonucleotide | 13.4% (5.4–23.9) | 112 | 16.3% (6.4–30.6) | 5.2% |
-| Peptide | 9.5% (4.8–14.9) | 341 | 12.5% (5.9–19.7) | 8.0% |
-| Small molecule | 5.9% (5.1–6.8) | 5,040 | 8.8% (7.4–10.1) | 7.5% |
+| Antisense oligonucleotide | 14.0% (6.0–24.2) | 112 | 16.9% (7.0–31.5) | 5.2% |
+| Monoclonal antibody | 13.7% (10.8–16.9) | 1,261 | 15.6% (11.7–19.5) | 12.1% |
+| Peptide | 9.3% (4.7–14.6) | 341 | 12.3% (5.7–19.3) | 8.0% |
+| Small molecule | 6.0% (5.2–6.9) | 5,040 | 8.8% (7.6–10.1) | 7.5% |
 | Gene therapy | 5.9% (1.6–13.2) | 231 | 6.7% (1.7–14.7) | 10.0% |
-| Protein | 4.5% (2.7–6.6) | 531 | 4.8% (2.7–7.4) | 9.4% |
+| Protein | 4.6% (2.7–6.6) | 533 | 4.9% (2.7–7.7) | 9.4% |
 | Other cell therapy | 1.3% (0.4–2.8) | 482 | 2.3% (0.5–5.8) | – |
 | Other | 0.1% (0.0–0.4) | 276 | – | – |
 
@@ -156,13 +156,13 @@ Finally, 19% of Phase 3 programs that stopped short of FDA approval had met thei
 
 ![Likelihood of approval by modality](report/output/figures/loa_by_modality.png)
 
-Disease areas rank differently from BIO's: the rank correlation with BIO's LOA across the 15 areas is 0.25 for all programs and -0.27 for US-developed ones. Across all programs, hematology, metabolic and oncology programs reach approval most often (17.8%, 17.2% and 17.6%), and urology, gastroenterology and infectious-disease programs least. Among US-developed programs, endocrine (24.1%) and oncology programs (20.5%) come out far above BIO's 6.6% and 5.3%; for oncology, the 2015–2025 window holds the wave of immunotherapy, antibody–drug conjugate and bispecific approvals, and an approval in a cancer subtype counts for the program's cancer. Infectious disease (5.5%) sits far below BIO's 13.2%, largely because many registered anti-infective and COVID-19 programs, including US-run ones, were never approved; ophthalmology (5.7%) and gastroenterology (5.9%) also fall below BIO's 11.9% and 8.3%. Among modalities, multispecific antibodies and antibody–drug conjugates reach approval most often across all programs (22.8% and 21.1%), and among the classes BIO also reports, non-antibody proteins (4.5%), gene therapies (5.9%) and small molecules (5.9%) least. RNA interference and CAR-T, near the top of BIO's ordering, have too few entities resolved in Phase 3 here (most of their approvals came straight from Phase 2) to estimate. The modality ordering agrees with BIO's only loosely (rank correlation 0.32 across the 7 classes both estimate).
+Disease areas rank differently from BIO's: the rank correlation with BIO's LOA across the 15 areas is 0.25 for all programs and -0.25 for US-developed ones. Across all programs, hematology, metabolic and oncology programs reach approval most often (17.9%, 17.2% and 17.5%), and urology, gastroenterology and infectious-disease programs least. Among US-developed programs, endocrine (24.5%) and oncology programs (20.4%) come out far above BIO's 6.6% and 5.3%; for oncology, the 2015–2025 window holds the wave of immunotherapy, antibody–drug conjugate and bispecific approvals, and an approval in a cancer subtype counts for the program's cancer. Infectious disease (5.6%) sits far below BIO's 13.2%, largely because many registered anti-infective and COVID-19 programs, including US-run ones, were never approved; ophthalmology (6.4%) and gastroenterology (5.9%) also fall below BIO's 11.9% and 8.3%. Among modalities, multispecific antibodies and antibody–drug conjugates reach approval most often across all programs (22.8% and 21.1%), and among the classes BIO also reports, non-antibody proteins (4.6%), gene therapies (5.9%) and small molecules (6.0%) least. RNA interference and CAR-T, near the top of BIO's ordering, have too few entities resolved in Phase 3 here (most of their approvals came straight from Phase 2) to estimate. The modality ordering agrees with BIO's only loosely (rank correlation 0.11 across the 7 classes both estimate).
 
 
 
 ## Predictive power of preclinical evidence
 
-Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before they entered the phase reached FDA approval 2.94 times as often as programs without it (29.9% against 10.2%; 95% CI 2.26–3.80), the likelihood rises with the strength of the evidence, and the association holds at every phase after accounting for disease area, modality, novelty and era. Somatic driver and mouse-model evidence carry weaker signals; targets essential in every cancer cell line are a liability. Yet as a predictor of which individual programs will be approved, the evidence lines raise discrimination only modestly over disease area and modality (held-out AUC 0.616 to 0.660), because most programs have none of them.
+Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before they entered the phase reached FDA approval 2.96 times as often as programs without it (30.1% against 10.2%; 95% CI 2.28–3.83), the likelihood rises with the strength of the evidence, and the association holds at every phase after accounting for disease area, modality, novelty and era. Somatic driver and mouse-model evidence carry weaker signals; targets essential in every cancer cell line are a liability. Yet as a predictor of which individual programs will be approved, the evidence lines raise discrimination only modestly over disease area and modality (held-out AUC 0.605 to 0.652), because most programs have none of them.
 
 
 ### Evidence lines and how they are matched
@@ -174,7 +174,7 @@ Each program aimed at a human protein (the entity's primary targets, resolved by
 * **Mouse models:** IMPC phenotypes. **Expression:** differential expression in the disease (Expression Atlas). **Pathways:** Reactome. **Functional screens:** CRISPR screens.
 * **Target-level properties** that are not disease-specific: loss-of-function intolerance (gnomAD v4.1 LOEUF < 0.35) and pan-essentiality (DepMap Public 24Q4 common-essential genes), taken from those releases rather than as of phase entry.
 
-Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the 10,168 programs on 1,467 targets scored, 15.2% of Phase 1 entrants had human genetic evidence for their disease at entry.
+Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the 10,169 programs on 1,467 targets scored, 15.2% of Phase 1 entrants had human genetic evidence for their disease at entry.
 
 ### Relative success
 
@@ -182,31 +182,31 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 
 | Evidence line | Programs with it | LOA with / without | Relative success (95% CI) |
 | :---- | :---- | :---- | :---- |
-| Human genetics (any germline source) | 1,742 | 29.9% / 10.2% | 2.94 (2.26–3.80) |
-| Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden) | 1,132 | 31.9% / 10.9% | 2.91 (2.20–3.76) |
-| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | 1,647 | 26.8% / 11.3% | 2.38 (1.70–3.23) |
-| GWAS credible set | 851 | 25.9% / 11.9% | 2.17 (1.53–3.01) |
-| Pathway (Reactome) | 206 | 24.7% / 12.6% | 1.96 (1.11–3.00) |
-| Mouse model (IMPC) | 2,042 | 16.3% / 11.9% | 1.37 (1.03–1.78) |
-| Differential expression in disease (Expression Atlas) | 1,559 | 16.6% / 12.4% | 1.34 (0.93–1.79) |
-| LoF-intolerant target (gnomAD LOEUF < 0.35) | 1,977 | 12.0% / 13.1% | 0.92 (0.61–1.34) |
-| Pan-essential (DepMap) | 685 | 6.0% / 13.3% | 0.45 (0.19–0.81) |
+| Human genetics (any germline source) | 1,740 | 30.1% / 10.2% | 2.96 (2.28–3.83) |
+| Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden) | 1,130 | 32.1% / 11.0% | 2.93 (2.24–3.77) |
+| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | 1,646 | 26.8% / 11.3% | 2.37 (1.68–3.25) |
+| GWAS credible set | 851 | 26.2% / 11.9% | 2.20 (1.54–2.98) |
+| Pathway (Reactome) | 206 | 24.7% / 12.6% | 1.95 (1.09–3.05) |
+| Mouse model (IMPC) | 2,040 | 16.3% / 11.9% | 1.37 (1.02–1.80) |
+| Differential expression in disease (Expression Atlas) | 1,560 | 16.6% / 12.4% | 1.34 (0.93–1.83) |
+| LoF-intolerant target (gnomAD LOEUF < 0.35) | 1,976 | 12.2% / 13.1% | 0.93 (0.62–1.37) |
+| Pan-essential (DepMap) | 686 | 6.0% / 13.3% | 0.45 (0.17–0.83) |
 
 ![Relative success by evidence line](report/output/figures/relative_success_by_evidence.png)
 
-Rare-variant and Mendelian evidence (2.91×) and GWAS evidence (2.17×) both carry the genetic signal, in line with Minikel et al. (2024), who found 2.6× from Phase 1 to launch with Mendelian evidence stronger than GWAS. Somatic driver evidence (2.38×), mouse phenotypes (1.37×) and Reactome pathways (1.96×, from only 206 programs) also associate with success; differential expression in the disease does not clearly (1.34×, interval spanning 1). Loss-of-function-intolerant targets show no penalty (0.92×), while pan-essential targets reach approval less than half as often (0.45×), mostly oncology small molecules aimed at machinery every cell needs (mTOR, tubulin, topoisomerases, histone deacetylases, WEE1 and ATR, BET proteins). CRISPR-screen evidence covered too few programs (62) to estimate.
+Rare-variant and Mendelian evidence (2.93×) and GWAS evidence (2.20×) both carry the genetic signal, in line with Minikel et al. (2024), who found 2.6× from Phase 1 to launch with Mendelian evidence stronger than GWAS. Somatic driver evidence (2.37×), mouse phenotypes (1.37×) and Reactome pathways (1.95×, from only 206 programs) also associate with success; differential expression in the disease does not clearly (1.34×, interval spanning 1). Loss-of-function-intolerant targets show no penalty (0.93×), while pan-essential targets reach approval less than half as often (0.45×), mostly oncology small molecules aimed at machinery every cell needs (mTOR, tubulin, topoisomerases, histone deacetylases, WEE1 and ATR, BET proteins). CRISPR-screen evidence covered too few programs (62) to estimate.
 
-Two checks bear on whether this reflects foresight rather than hindsight. Evidence is taken as it stood the year before the program entered the phase, each item dated by when it became known, so later discoveries do not count. Counting all evidence known by 2026 instead weakens the genetic relative success to 2.46×: what was known in advance is more telling than what was found afterwards. And restricting matches to diseases similar to the program's (Lin ≥ 0.8, Minikel's criterion, without the subtype rule) gives 2.97×.
+Two checks bear on whether this reflects foresight rather than hindsight. Evidence is taken as it stood the year before the program entered the phase, each item dated by when it became known, so later discoveries do not count. Counting all evidence known by 2026 instead weakens the genetic relative success to 2.47×: what was known in advance is more telling than what was found afterwards. And restricting matches to diseases similar to the program's (Lin ≥ 0.8, Minikel's criterion, without the subtype rule) gives 2.98×.
 
 
 ### Genetic dose–response
 
 | Human genetic support (Open Targets score, as of phase entry) | Programs | Targets | LOA (95% CI) |
 | :---- | :---- | :---- | :---- |
-| None | 8,488 | 1,310 | 10.2% (8.2–12.6) |
-| Lower third (> 0.00 to 0.61) | 682 | 346 | 17.6% (12.1–24.0) |
-| Middle third (> 0.61 to 0.88) | 538 | 204 | 40.2% (29.3–49.6) |
-| Upper third (> 0.88) | 597 | 241 | 37.3% (29.8–45.3) |
+| None | 8,491 | 1,310 | 10.2% (8.2–12.7) |
+| Lower third (> 0.00 to 0.61) | 680 | 346 | 18.1% (12.5–24.3) |
+| Middle third (> 0.61 to 0.88) | 539 | 204 | 40.2% (29.8–49.4) |
+| Upper third (> 0.88) | 596 | 241 | 37.3% (29.7–45.6) |
 
 ![Likelihood of approval by strength of human genetic support](report/output/figures/genetic_dose_response.png)
 
@@ -216,44 +216,44 @@ Programs with genetic evidence differ from programs without it in disease area, 
 
 | Evidence | Phase 1 → next | Phase 2 → next | Phase 3 → next |
 | :---- | :---- | :---- | :---- |
-| GWAS credible set | 1.08 (1.01–1.15) | 1.54 (1.33–1.79) | 1.03 (0.77–1.39) |
+| GWAS credible set | 1.08 (1.01–1.15) | 1.54 (1.33–1.79) | 1.04 (0.78–1.39) |
 | Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden) | 1.11 (1.03–1.21) | 1.35 (1.16–1.56) | 1.50 (1.25–1.80) |
-| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | 1.02 (0.91–1.13) | 1.10 (0.89–1.37) | 1.05 (0.83–1.33) |
-| Mouse model (IMPC) | 0.91 (0.85–0.98) | 0.98 (0.86–1.12) | 0.97 (0.82–1.14) |
-| Differential expression in disease (Expression Atlas) | 0.94 (0.87–1.02) | 1.02 (0.86–1.21) | 0.91 (0.75–1.11) |
-| Pathway (Reactome) | 1.10 (0.97–1.25) | 0.97 (0.73–1.28) | 1.11 (0.80–1.55) |
-| LoF-intolerant target (gnomAD LOEUF < 0.35) | 0.92 (0.80–1.06) | 1.16 (0.99–1.37) | 1.03 (0.83–1.27) |
-| Pan-essential (DepMap) | 0.86 (0.71–1.04) | 0.81 (0.59–1.12) | 0.69 (0.42–1.12) |
+| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | 1.02 (0.91–1.14) | 1.10 (0.89–1.37) | 1.06 (0.84–1.34) |
+| Mouse model (IMPC) | 0.91 (0.85–0.98) | 0.98 (0.86–1.12) | 0.96 (0.81–1.14) |
+| Differential expression in disease (Expression Atlas) | 0.94 (0.87–1.02) | 1.02 (0.86–1.21) | 0.92 (0.75–1.12) |
+| Pathway (Reactome) | 1.10 (0.97–1.25) | 0.97 (0.73–1.28) | 1.12 (0.80–1.56) |
+| LoF-intolerant target (gnomAD LOEUF < 0.35) | 0.92 (0.80–1.06) | 1.16 (0.99–1.37) | 1.03 (0.84–1.27) |
+| Pan-essential (DepMap) | 0.86 (0.71–1.04) | 0.81 (0.59–1.12) | 0.68 (0.42–1.10) |
 
-One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.40× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and pan-essentiality keeps its penalty at Phase 2 (at Phase 1 its interval just reaches 1); somatic, mouse-model, expression and pathway evidence lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
+One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.41× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and pan-essentiality keeps its penalty at Phase 2 (at Phase 1 its interval just reaches 1); somatic, mouse-model, expression and pathway evidence lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
 
 
 ### Does the evidence predict which programs reach approval?
 
-We followed programs that entered Phase 1 in 2008–2016 for ten years (3,187 programs, 162 approved), with the Open Targets evidence lines and novelty taken as of entry (loss-of-function constraint and pan-essentiality come from current releases), and fitted logistic models on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out primary-target sets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by primary-target set and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on 2013–2016).
+We followed programs that entered Phase 1 in 2008–2016 for ten years (3,185 programs, 159 approved), with the Open Targets evidence lines and novelty taken as of entry (loss-of-function constraint and pan-essentiality come from current releases), and fitted logistic models on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out primary-target sets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by primary-target set and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on 2013–2016).
 
 | Validation | Features | AUC (95% CI) | PR-AUC (base rate) | Programs (approved) |
 | :---- | :---- | :---- | :---- | :---- |
-| Held-out target sets | Area, modality, novelty, year | 0.616 (0.554–0.676) | 0.111 (0.051) | 3,187 (162) |
-| Temporal (2013–2016) | Area, modality, novelty, year | 0.626 (0.548–0.694) | 0.109 (0.055) | 1,603 (88) |
-| Held-out target sets | … plus all evidence lines | 0.660 (0.604–0.721) | 0.145 (0.051) | 3,187 (162) |
-| Temporal (2013–2016) | … plus all evidence lines | 0.653 (0.583–0.724) | 0.128 (0.055) | 1,603 (88) |
-| Held-out target sets | Evidence lines only | 0.620 (0.549–0.692) | 0.094 (0.051) | 3,187 (162) |
-| Temporal (2013–2016) | Evidence lines only | 0.654 (0.594–0.717) | 0.116 (0.055) | 1,603 (88) |
+| Held-out target sets | Area, modality, novelty, year | 0.605 (0.540–0.668) | 0.098 (0.050) | 3,185 (159) |
+| Temporal (2013–2016) | Area, modality, novelty, year | 0.620 (0.545–0.691) | 0.105 (0.056) | 1,603 (89) |
+| Held-out target sets | … plus all evidence lines | 0.652 (0.596–0.715) | 0.121 (0.050) | 3,185 (159) |
+| Temporal (2013–2016) | … plus all evidence lines | 0.649 (0.578–0.727) | 0.127 (0.056) | 1,603 (89) |
+| Held-out target sets | Evidence lines only | 0.625 (0.552–0.696) | 0.089 (0.050) | 3,185 (159) |
+| Temporal (2013–2016) | Evidence lines only | 0.663 (0.601–0.727) | 0.117 (0.056) | 1,603 (89) |
 
 Change in held-out AUC when each line is removed from the full model (human genetics: GWAS and rare-variant evidence removed together; lines carried by fewer than 100 programs are not modelled; paired bootstrap over target sets):
 
 | Evidence removed | AUC change (95% CI) |
 | :---- | :---- |
-| Human genetics (any germline source) | -0.025 (-0.046 to -0.006) |
-| Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden) | -0.025 (-0.047 to -0.005) |
-| Pan-essential (DepMap) | -0.006 (-0.020 to +0.011) |
-| Differential expression in disease (Expression Atlas) | -0.003 (-0.015 to +0.011) |
-| Mouse model (IMPC) | +0.000 (-0.002 to +0.003) |
-| LoF-intolerant target (gnomAD LOEUF < 0.35) | +0.002 (+0.000 to +0.004) |
-| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | +0.002 (-0.012 to +0.017) |
+| Human genetics (any germline source) | -0.025 (-0.046 to -0.005) |
+| Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden) | -0.025 (-0.047 to -0.006) |
+| Pan-essential (DepMap) | -0.011 (-0.026 to +0.004) |
+| Differential expression in disease (Expression Atlas) | -0.006 (-0.019 to +0.009) |
+| Mouse model (IMPC) | +0.002 (-0.001 to +0.004) |
+| LoF-intolerant target (gnomAD LOEUF < 0.35) | +0.003 (+0.001 to +0.005) |
+| Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic) | +0.006 (-0.008 to +0.020) |
 
-A model on disease area, modality, novelty and entry year alone ranks programs at an AUC of 0.616 on held-out target sets; adding the evidence lines raises it to 0.660 (95% CI 0.604–0.721), and the temporal split agrees (0.626 without, 0.653 with). Human genetics carries most of the gain: removing it lowers the held-out AUC by 0.025 (95% CI 0.006–0.046), and pan-essentiality is the only other line whose removal measurably lowers it (0.006). GWAS evidence covered too few of the 2008–2016 entrants to be modelled, so genetics here means rare-variant and Mendelian evidence. Discrimination stays modest all the same, and that does not contradict the relative success: genetic support multiplies the chance of approval by about 2.94 for the minority of programs that have it (15% of Phase 1 entrants, fewer among the 2008–2016 entrants this model follows), but says nothing about the majority, so it can sort only a small slice of programs. The draft's AUCs of 0.825 and 0.769 came from a leaked model and phantom programs (AUDIT.md, C33–C34).
+A model on disease area, modality, novelty and entry year alone ranks programs at an AUC of 0.605 on held-out target sets; adding the evidence lines raises it to 0.652 (95% CI 0.596–0.715), and the temporal split agrees (0.620 without, 0.649 with). Human genetics carries most of the gain: removing it lowers the held-out AUC by 0.025 (95% CI 0.005–0.046), and pan-essentiality is the only other line whose removal measurably lowers it (0.011). GWAS evidence covered too few of the 2008–2016 entrants to be modelled, so genetics here means rare-variant and Mendelian evidence. Discrimination stays modest all the same, and that does not contradict the relative success: genetic support multiplies the chance of approval by about 2.96 for the minority of programs that have it (15% of Phase 1 entrants, fewer among the 2008–2016 entrants this model follows), but says nothing about the majority, so it can sort only a small slice of programs. The draft's AUCs of 0.825 and 0.769 came from a leaked model and phantom programs (AUDIT.md, C33–C34).
 
 
 
@@ -279,9 +279,9 @@ The analysis plan ([report/translation_plan.md](report/translation_plan.md)) was
 | H1 | Outside oncology: genetics for the disease (G3) vs no germline genetics (G0), advancing within 4 years of Phase 2 | risk ratio | 2.34 (1.33–4.14) | 0.003 | 0.020 | supported |
 | H2 | Same target, different diseases: G3 vs not (conditional logit) | odds ratio | 3.00 (1.78–5.03) | < 0.001 | < 0.001 | supported |
 | H3 | Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 0.97 (0.69–1.37) | 0.871 | 1.000 | not supported |
-| H4 | Trials outside oncology: change in G3's effect on NOT MET per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.36 (1.09–1.69) | 0.007 | 0.034 | supported |
-| H5 | G3 lowers efficacy failure more than business or operational failure (Phase 2 and 3) | ratio of risk ratios | 0.99 (0.58–1.69) | 0.978 | 1.000 | not supported |
-| H6 | Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.88 (0.45–1.72) | 0.987 | 1.000 | not supported |
+| H4 | Trials outside oncology: change in G3's effect on NOT MET per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.35 (1.09–1.69) | 0.007 | 0.036 | supported |
+| H5 | G3 lowers efficacy failure more than business or operational failure (Phase 2 and 3) | ratio of risk ratios | 0.99 (0.58–1.69) | 0.975 | 1.000 | not supported |
+| H6 | Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.88 (0.45–1.72) | 0.994 | 1.000 | not supported |
 | H7 | Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.12 (0.72–1.75) | 0.610 | 1.000 | not supported |
 
 ![Specificity of the genetic evidence](report/output/figures/s3_specificity.png)
@@ -290,14 +290,14 @@ Two of the seven hypotheses hold after correction for multiple testing.
 
 * **H1, H2 (supported).** Outside oncology, Phase 2 programs advanced within four years at 11% with no germline genetic evidence on the target (172 programs), 16% with evidence only for unrelated diseases (1,006), 20% with evidence for a related disease (146) and 27% with evidence for the disease itself (153); only the last differs from none once disease area, modality, novelty, period and target precedent are accounted for. Among the 52 targets developed in several diseases with and without genetic support and with different outcomes (380 programs), the diseases with support advanced more often (odds ratio 3.00, 1.78–5.03): the signal is not only that some targets are better than others.
 * **H3 (not supported).** Open Targets' direction-of-effect fields follow each variant's predicted consequence, so a few truncating ClinVar variants make gain-of-function disease genes such as PCSK9, MYH7 and TTR read as loss of function, and inhibitors of them as discordant. The test is reported as registered; the direction analysis below replaces those fields.
-* **H4 (supported in the registered analysis; not robust).** In trials with registry-posted results, genetic support lowered the chance of missing the primary endpoint most on proximal endpoints (risk ratio 0.57, 0.44–0.76), and the effect weakened by a factor of 1.36 per step towards distal endpoints (p = 0.007; 0.034 after Holm correction). The registered test survives correction, but the pattern does not hold across all readable trials (1.07, p = 0.516) or with mixed results counted as met (1.27).
+* **H4 (supported in the registered analysis; not robust).** In trials with registry-posted results, genetic support lowered the chance of missing the primary endpoint most on proximal endpoints (risk ratio 0.58, 0.44–0.76), and the effect weakened by a factor of 1.35 per step towards distal endpoints (p = 0.007; 0.036 after Holm correction). The registered test survives correction, but the pattern does not hold across all readable trials (1.07, p = 0.525) or with mixed results counted as met (1.27).
 * **H5 (not supported).** Genetic support lowered efficacy stops (risk ratio 0.71, 0.53–0.96), but business and operational stops fell by a similar factor (ratio of the two 0.99, 0.58–1.69), so the data cannot say that it acts on efficacy alone. Safety stops were no rarer (1.14, 0.58–2.24), nor were stops for pharmacokinetic, formulation or operational reasons, the plan's negative control (0.70, 0.34–1.44).
 * **H6 (not supported).** Targets that are pan-essential, intolerant of loss of function, or lethal when knocked out in mice did not stop for safety more often (0.88, 0.45–1.72). Safety is the recorded reason for fewer than 2% of programs, so registries see little of it.
 * **H7 (not supported).** In oncology, a somatic driver whose direction matches the drug's (an activated oncogene and an inhibitor) did not raise the chance of advancing (1.12, 0.72–1.75).
 
 **Checks on H1.** Swapping each program's disease for another program's in the same disease area, 200 times, gives a median G3 risk ratio of 1.78 against the observed 2.34 (95th percentile 2.31; p = 0.040). Part of the contrast with G0 therefore reflects whether a target has been studied genetically at all; matching the disease adds to it. At Phase 1, where efficacy is rarely tested, the same contrast is 1.12 (0.89–1.41). Against all other programs rather than G0, genetic support gives 1.74 outside oncology, and 1.59 (1.13–2.21) after adjusting for an approved drug on the target for a related disease; on targets with no approved drug at all, genetic support gives 1.27 (0.80–2.02, all disease areas). Leaving out the most influential target set (PDE4A+PDE4B+PDE4C+PDE4D) gives 2.21. Leaving out each of the 5 largest target classes in turn gives 1.97 to 2.56; the lowest, without the "gpcr" class, has an interval of 1.01–3.86, so the estimate leans on that class.
 
-**Who is in the cohort.** The cohort is Phase 2 programs with a disease and a single resolved human protein target. Left out are 258 programs with no disease (healthy-volunteer, basket or symptom trials; 6% advanced) and 735 without a single human protein target (8%), so the cohort's base rate is higher than Section 1's.
+**Who is in the cohort.** The cohort is Phase 2 programs with a disease and a single resolved human protein target. Left out are 258 programs with no disease (healthy-volunteer, basket or symptom trials; 6% advanced) and 736 without a single human protein target (8%), so the cohort's base rate is higher than Section 1's.
 
 
 ### Which evidence translates
@@ -317,7 +317,7 @@ Two of the seven hypotheses hold after correction for multiple testing.
 | Mouse model, top-quartile phenotype match | 308 (184) | 22% / 17% | 15% | 1.15 (0.89–1.49) | 1.08 (0.77–1.51) | 0.95 (0.55–1.64) |
 | Differential expression in disease | 358 (198) | 18% / 17% | 15% | 1.05 (0.70–1.58) | 0.66 (0.35–1.22) | 1.33 (0.84–2.10) |
 | Reactome pathway | 66 (32) | 27% / 17% | 4% | 1.50 (1.00–2.25) | – | – |
-| Approved drug on the target, related disease | 760 (269) | 29% / 13% | 50% | 2.16 (1.62–2.88) | 2.15 (1.57–2.94) | 1.99 (1.03–3.83) |
+| Approved drug on the target, related disease | 763 (269) | 29% / 12% | 50% | 2.18 (1.65–2.88) | 2.16 (1.58–2.95) | 2.05 (1.11–3.78) |
 | Approved drug on the target, any disease | 1,557 (439) | 21% / 13% | 72% | 1.85 (1.48–2.32) | 1.68 (1.26–2.24) | 2.28 (1.50–3.47) |
 | Pan-essential (DepMap) | 143 (60) | 10% / 18% | 3% | 0.62 (0.33–1.18) | 0.79 (0.34–1.83) | 0.56 (0.25–1.27) |
 | LoF-intolerant (LOEUF < 0.35) | 464 (160) | 17% / 18% | 18% | 1.00 (0.76–1.32) | 1.26 (0.89–1.78) | 0.82 (0.54–1.25) |
@@ -329,7 +329,7 @@ Two of the seven hypotheses hold after correction for multiple testing.
 * **Somatic drivers.** In oncology, a somatic driver for the tumour raised the chance of advancing (1.48, 1.02–2.14); requiring the driver's direction to match the drug's did not sharpen it (1.12). Germline genetics for the tumour type was the stronger signal (1.98), carried by well-validated targets such as EGFR, ERBB2 and ESR1.
 * **Mouse models.** Literature-curated (MGI) mouse models of the disease gave 1.29 (1.00–1.68), and a top-quartile phenotype match 1.15. Each MGI model is dated by its first paper, and each knockout from the IMPC consortia by the first IMPC data release with calls for it (2015 at the earliest).
 * **Expression and pathways.** Differential expression in the disease carried nothing (1.05; outside oncology 0.66). Reactome pathway evidence gave 1.50 from 66 programs, most of them in hereditary diseases, which Reactome curates. No CRISPR-screen evidence matched a program before its entry.
-* **Clinical precedent.** An FDA-approved drug on the target for a related disease (Lin similarity ≥ 0.5) was the strongest single predictor (2.16) and was present for 50% of the programs that advanced.
+* **Clinical precedent.** An FDA-approved drug on the target for a related disease (Lin similarity ≥ 0.5) was the strongest single predictor (2.18) and was present for 50% of the programs that advanced.
 * **Target liabilities.** Pan-essential targets (DepMap's common-essential genes) tended to advance less often, but the interval includes no effect (0.62, 0.33–1.18, mostly oncology); loss-of-function intolerance (1.00) and lethality of the mouse knockout (0.98) made no difference.
 
 **What the evidence leaves out.** Of the 442 Phase 2 programs that advanced, 24% had germline genetics for the disease, 48% had any of the disease-specific evidence families, and 30% had neither such evidence nor an approved drug on the target for a related disease.
@@ -340,14 +340,14 @@ Two of the seven hypotheses hold after correction for multiple testing.
 | Class of the governing primary endpoint | Trials | Not met | Trials with G3 | Not met: with G3 / without | Risk ratio of NOT MET, all readable (95% CI) | Registry-posted, FDAAA era |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | Target engagement | 35 | 26% | 17 | 18% / 33% | – | – |
-| Exploratory biomarker | 272 | 68% | 33 | 70% / 67% | 1.06 (0.79–1.42) | – |
+| Exploratory biomarker | 272 | 68% | 33 | 70% / 67% | 1.06 (0.80–1.42) | – |
 | Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,328 | 24% | 283 | 13% / 27% | 0.68 (0.47–0.98) | 0.45 (0.32–0.63) |
-| Objective physiology (6MWD, visual acuity, weight…) | 545 | 45% | 105 | 33% / 48% | 0.85 (0.63–1.16) | 0.84 (0.56–1.28) |
-| Clinician-rated scale or responder index | 1,444 | 55% | 245 | 42% / 57% | 0.73 (0.60–0.90) | 0.76 (0.61–0.95) |
+| Objective physiology (6MWD, visual acuity, weight…) | 545 | 45% | 105 | 33% / 48% | 0.86 (0.63–1.18) | 0.84 (0.56–1.28) |
+| Clinician-rated scale or responder index | 1,444 | 55% | 245 | 42% / 57% | 0.73 (0.60–0.89) | 0.76 (0.61–0.95) |
 | Patient-reported outcome | 642 | 56% | 17 | 59% / 56% | 1.24 (0.88–1.73) | – |
-| Disease events (relapses, exacerbations…) | 365 | 44% | 57 | 40% / 45% | 0.89 (0.60–1.33) | 0.95 (0.62–1.46) |
+| Disease events (relapses, exacerbations…) | 365 | 44% | 57 | 40% / 45% | 0.90 (0.60–1.33) | 0.94 (0.61–1.45) |
 | Hard outcome (death, MI, stroke…) | 184 | 63% | 19 | 53% / 64% | – | – |
-| Tumour response | 168 | 67% | 35 | 57% / 70% | 0.86 (0.62–1.19) | 0.71 (0.46–1.11) |
+| Tumour response | 168 | 67% | 35 | 57% / 70% | 0.86 (0.62–1.19) | 0.72 (0.46–1.11) |
 | Progression-free survival | 447 | 61% | 91 | 53% / 63% | 1.09 (0.88–1.36) | 1.05 (0.79–1.39) |
 | Overall survival | 219 | 68% | 22 | 50% / 70% | – | – |
 
@@ -355,7 +355,7 @@ Two of the seven hypotheses hold after correction for multiple testing.
 
 Across 5,672 randomised industry efficacy trials, 48% missed their governing primary endpoint. Regulatory surrogates were missed least (24%); outside oncology, exploratory biomarkers (68%) and hard outcomes (63%) were missed most, and oncology's response and survival endpoints as often.
 
-Genetic support for the disease lowered the chance of a miss most on regulatory surrogates (risk ratio 0.68; 0.45 in trials with registry-posted results since FDAAA) and on clinician-rated scales (0.73). Objective physiology (0.85) and disease events (0.89) point the same way with intervals spanning 1; exploratory biomarkers (1.06), patient-reported outcomes (1.24, only 17 genetically supported trials) and oncology's response and progression endpoints show no benefit. Too few genetically supported trials had hard-outcome or overall-survival primaries to estimate. One reading is that genetic support predicts most reliably that a drug will move the measures nearest its biology, often the trait through which the genetics was found (LDL cholesterol, urate, glycaemia), and less reliably that it will change what patients feel or how often events happen.
+Genetic support for the disease lowered the chance of a miss most on regulatory surrogates (risk ratio 0.68; 0.45 in trials with registry-posted results since FDAAA) and on clinician-rated scales (0.73). Objective physiology (0.86) and disease events (0.90) point the same way with intervals spanning 1; exploratory biomarkers (1.06), patient-reported outcomes (1.24, only 17 genetically supported trials) and oncology's response and progression endpoints show no benefit. Too few genetically supported trials had hard-outcome or overall-survival primaries to estimate. One reading is that genetic support predicts most reliably that a drug will move the measures nearest its biology, often the trait through which the genetics was found (LDL cholesterol, urate, glycaemia), and less reliably that it will change what patients feel or how often events happen.
 
 At the program level, classifying each Phase 2 program by the endpoint of its first randomised Phase 2 efficacy trial (started within a year of entry and before it advanced), genetic support gives 1.32 (0.76–2.28; 296 programs) where that endpoint was proximal and 1.40 (0.83–2.36; 624) where it was intermediate; distal-endpoint and oncology programs had too few genetically supported targets to estimate.
 
@@ -370,7 +370,7 @@ We therefore had an LLM state, for every target and disease with germline eviden
 
 Sponsors almost never develop against an established mechanism. Of the Phase 2 programs with genetic support, 189 acted in the direction the genetics favoured, 6 against it, and 111 had genetics without an established direction by entry. Concordant programs advanced at 29% and undirected ones at 26%: once there is genetic support, knowing its direction did not pick winners among the programs sponsors chose to run, and the discordant group is too small to show whether going against the genetics fails. Protective loss of function plus a drug that lowers function, the PCSK9 pattern, covered 36 Phase 2 programs on 16 targets, which advanced as often as others (1.03, 0.56–1.92).
 
-Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.33 (0.97–1.83) against programs with no oriented model, a model pointing the other way 1.20, and nothing once genetic support is accounted for (1.02). Among Phase 3 programs a concordant model went with approval within four years (2.39, 1.54–3.70), one of many comparisons made after the plan.
+Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.33 (0.97–1.83) against programs with no oriented model, a model pointing the other way 1.20, and nothing once genetic support is accounted for (1.02). Among Phase 3 programs a concordant model went with approval within four years (2.38, 1.54–3.69), one of many comparisons made after the plan.
 
 
 ### Models that predict: rules applied at Phase 2 entry
@@ -390,14 +390,14 @@ A *model* here is a rule a sponsor could have applied at Phase 2 entry without k
 | M9 | Expression up in disease + drug that lowers function | All | 177 (104) | 18% | 7% | 1.00 (0.63–1.58) | 1.18 (0.70–1.66) | 0.88 (0.35–1.62) | no |
 | M10 | Reactome pathway | All | 66 (32) | 27% | 4% | 1.50 (1.00–2.25) | 1.21 (0.75–1.77) | 2.51 (1.29–4.03) | no |
 | M11 | Target liability + drug that lowers function | All | 924 (325) | 18% | 37% | 1.04 (0.82–1.32) | 1.09 (0.82–1.42) | 0.93 (0.66–1.28) | no |
-| B1 | Approved drug on the target, related disease (Lin ≥ 0.5) | All | 760 (269) | 29% | 50% | 2.16 (1.62–2.88) | 2.43 (1.93–3.04) | 2.19 (1.71–2.90) | **predictive** |
+| B1 | Approved drug on the target, related disease (Lin ≥ 0.5) | All | 763 (269) | 29% | 50% | 2.18 (1.65–2.88) | 2.43 (1.95–3.03) | 2.20 (1.72–2.91) | **predictive** |
 | P1* | Protective loss of function + drug that lowers function | All | 36 (16) | 19% | 2% | 1.03 (0.56–1.92) | 1.78 (0.73–3.47) | 0.57 (0.00–1.05) | no |
 | P2* | Germline mechanism concordant with the drug | All | 189 (97) | 29% | 12% | 1.79 (1.28–2.51) | 1.87 (1.29–2.57) | 1.42 (0.91–1.98) | no |
 | P3* | Mouse model direction concordant with the drug | All | 178 (111) | 24% | 10% | 1.29 (0.95–1.75) | 1.72 (1.24–2.32) | 0.92 (0.59–1.30) | no |
 
 ![Rule screen](report/output/figures/s3_rules.png)
 
-Only the benchmark met the bar: an approved drug on the target for a related disease (760 programs, 29% advanced; held-out risk ratio 2.19). Among evidence rules:
+Only the benchmark met the bar: an approved drug on the target for a related disease (763 programs, 29% advanced; held-out risk ratio 2.20). Among evidence rules:
 
 * **Mendelian evidence for a non-hereditary disease (M3)** came closest: 57 programs on 44 targets, 32% advanced, held-out risk ratio 2.09 (90% lower bound 0.92), but its discovery lower bound (1.01) fell short of 1.3. It covers few programs (7% of the non-oncology programs that advanced).
 * **GWAS with locus-to-gene ≥ 0.8 (M4)** and the post-hoc **germline mechanism concordant with the drug (P2)** have adjusted risk ratios of 1.38 and 1.79, but their held-out lower bounds reach 1 or below (0.99 and 0.91).
@@ -409,16 +409,16 @@ Only the benchmark met the bar: an approved drug on the target for a related dis
 
 ### Verified case studies
 
-The plan's protocol picked cases for the benchmark B1, the only rule that met the bar, and, beyond the plan, for every rule whose adjusted risk ratio's lower bound is above 1 (M3, M4, M10 and P2): four successes and four failures at random, up to two programs of each of the three most influential targets, and up to six programs that stopped after a randomised trial missed its primary endpoint (the plan asked for all such programs; the cap keeps every case checkable against primary sources). In all, 74 cases on 58 programs were checked. For each program one agent established the outcome from registry records, company filings, papers and FDA documents without seeing the evidence, another checked the evidence claim without seeing the outcome, a second coder classified each failure independently, and a third agent adjudicated any disagreement.
+The plan's protocol picked cases for the benchmark B1, the only rule that met the bar, and, beyond the plan, for every rule whose adjusted risk ratio's lower bound is above 1 (M3, M4, M10 and P2): four successes and four failures at random, up to two programs of each of the three most influential targets, and up to six programs that stopped after a randomised trial missed its primary endpoint (the plan asked for all such programs; the cap keeps every case checkable against primary sources). In all, 75 cases on 62 programs were checked. For each program one agent established the outcome from registry records, company filings, papers and FDA documents without seeing the evidence, another checked the evidence claim without seeing the outcome, a second coder classified each failure independently, and a third agent adjudicated any disagreement.
 
-The pipeline's outcome was right for 57 of 58 programs. The 1 errors were an open-label safety extension registered as Phase 2/3 that counted as a Phase 3 start (amlitelimab) and another drug's Phase 3 trial linked to the program (zigakibart, credited with atrasentan's ALIGN trial). The evidence claim held for 48 of 74 cases and partly for 18 more (usually because the source matched a broader or neighbouring disease, or the earliest paper predated the row's date), and failed for 8. Of the 31 programs that did not advance, 16 failed for reasons that test the evidence's biology (F2–F5: engagement without benefit, the wrong population, a surrogate gap, on-target toxicity); the rest stopped because exposure or engagement was never shown (F1), on trial design (F7), off-target toxicity (F6) or commercial grounds (F8), which say nothing about whether the evidence was right, and a few are still progressing or unexplained.
+The pipeline's outcome was right for 58 of 62 programs. In each of the 4 errors the program advanced and the pipeline missed it: Phase 3 trials registered under another condition (sabizabulin's COVID-19 trial in patients at risk of ARDS; pegadricase's gout trials, against a program mapped to purine metabolism disease), Phase 3 trials run in China and never registered on ClinicalTrials.gov (pruxelutamide), and a Phase 3 the pipeline did not link to the program (eneboparatide's CALYPSO). The evidence claim held for 49 of 75 cases and partly for 19 more (usually because the source matched a broader or neighbouring disease, or the earliest paper predated the row's date), and failed for 7. Of the 30 programs that did not advance, 16 failed for reasons that test the evidence's biology (F2–F5: engagement without benefit, the wrong population, a surrogate gap, on-target toxicity); the rest stopped because exposure or engagement was never shown (F1), on trial design (F7), off-target toxicity (F6) or commercial grounds (F8), which say nothing about whether the evidence was right, and a few are still progressing or unexplained.
 
 | Rule | Cases | Advanced within 4 years (verified) | Evidence claim verified | Evidence published before entry | Why the others stopped (codes) |
 | :---- | :---- | :---- | :---- | :---- | :---- |
 | M3 Mendelian evidence for a non-hereditary disease | 18 | 9 | 15 (5 partly) | 16 | F2: 4, F3: 2, unknown: 2, F1: 1 |
-| B1 Approved drug on the target, related disease (Lin ≥ 0.5) | 19 | 9 | 18 (4 partly) | 18 | F2: 5, F1: 2, F3: 1, F8: 1, F7: 1 |
-| P2* Germline mechanism concordant with the drug | 20 | 10 | 20 (6 partly) | 20 | F2: 5, F8: 2, F6: 2, F1: 1 |
 | M10 Reactome pathway | 17 | 9 | 13 (3 partly) | 13 | F2: 4, F8: 1, F6: 1, unknown: 1, F1: 1 |
+| B1 Approved drug on the target, related disease (Lin ≥ 0.5) | 20 | 13 | 20 (5 partly) | 20 | F2: 4, F8: 2, F7: 1 |
+| P2* Germline mechanism concordant with the drug | 20 | 10 | 20 (6 partly) | 20 | F2: 5, F8: 2, F6: 2, F1: 1 |
 
 **When the model worked.** The clearest successes pair germline genetics that points in one direction with a drug that pushes the other way, in a disease defined close to that genetics.
 
@@ -470,7 +470,7 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | :---- | :---- | :---- |
 | ClinicalTrials.gov API v2 | Every interventional drug or biological study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot 2026-10-20 (222,915 studies) |
 | PubMed | Results papers linked to completed trials without posted results (registry RESULT/DERIVED references and the NCT secondary identifier) | Retrieved 2026-10-20 |
-| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 5,034 approved uses read from 2015–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
+| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 6,529 approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
 | CBER yearly approval pages, product pages and letters | 177 biologics applications (vaccines, blood products, cell and gene therapies) and their 2015–2025 approval actions, verified by an independent second enumeration | Retrieved October 2026 |
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
 | MONDO | Disease ontology and hierarchy | 2026-10-06 |
@@ -520,10 +520,10 @@ NCT03036488 (KEYNOTE-522; no posted results) -> PMID 32101663, linked by both ro
 
 #### Drugs@FDA data files
 
-*Data to 2026-10-16 · `GET https://www.fda.gov/media/89850/download`, a zip of tab-separated tables*
+*Data to 2026-10-26 · `GET https://www.fda.gov/media/89850/download`, a zip of tab-separated tables*
 
 **Compiled by.** FDA's drug center (CDER) publishes these files from its own application records. They cover drugs and therapeutic biologics, not the vaccines, blood products and cell or gene therapies that CBER regulates.
-**We use.** NDA and BLA applications: sponsor, products and active ingredients, every original and supplement submission with its class, status, date and review priority, and the links to approval letters. That is 6,389 applications.
+**We use.** NDA and BLA applications: sponsor, products and active ingredients, every original and supplement submission with its class, status, date and review priority, and the links to approval letters. That is 6,394 applications.
 **Shape.** `Applications.txt` (ApplNo, ApplType, SponsorName), `Products.txt`, `Submissions.txt` (ApplNo, SubmissionClassCodeID, SubmissionType, SubmissionNo, SubmissionStatus, SubmissionStatusDate, ReviewPriority), `ApplicationDocs.txt` (type 1 = letter, URL, date).
 
 ```text
@@ -535,7 +535,7 @@ ApplicationDocs  125514  SUPPL 89  letter  …/appletter/2021/125514Orig1s089s11
 
 #### FDA approval letters (CDER)
 
-*Actions 2015 to 2026-10-16 · PDFs at `https://www.accessdata.fda.gov/drugsatfda_docs/appletter/<year>/<ApplNo>…ltr.pdf`, from the Drugs@FDA links*
+*Actions 2008 to 2026-10-22 · PDFs at `https://www.accessdata.fda.gov/drugsatfda_docs/appletter/<year>/<ApplNo>…ltr.pdf`, from the Drugs@FDA links*
 
 **Compiled by.** The review division sends the letter to the sponsor when it acts, and FDA posts it. It names the approved submission and, for efficacy supplements, usually the new use it provides for.
 **We use.** We fetch letters for every approved original application and every efficacy supplement. Text comes from the PDF's text layer, or from OCR when that layer is empty or garbled. An LLM records each approved use from the letter: disease, verbatim indication, qualifiers, type of change and accelerated approval.
@@ -551,10 +551,10 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
 
 #### openFDA drug labels
 
-*Export 2026-10-16, 262,897 labels · `GET https://api.fda.gov/download.json` lists the bulk files, e.g. `https://download.open.fda.gov/drug/label/drug-label-0001-of-0014.json.zip`*
+*Export 2026-10-28, 262,903 labels · `GET https://api.fda.gov/download.json` lists the bulk files, e.g. `https://download.open.fda.gov/drug/label/drug-label-0001-of-0014.json.zip`*
 
 **Compiled by.** Manufacturers submit Structured Product Labeling to FDA. openFDA republishes it in bulk with harmonised identifiers and notes that the data are not validated.
-**We use.** We keep the current label of each NDA or BLA product, 5,273 in all, with its application numbers, names, UNII and the full Indications and Usage text. The approval classifier reads that text as evidence of approved uses, including uses approved before 2015.
+**We use.** We keep the current label of each NDA or BLA product, 5,273 in all, with its application numbers, names, UNII and the full Indications and Usage text. The approval classifier reads that text as evidence of approved uses, including uses approved before 2008.
 **Shape.** `{meta, results: [{set_id, id, version, effective_time, indications_and_usage: [str], …, openfda: {application_number[], brand_name[], generic_name[], substance_name[], unii[]}}]}`
 
 ```json
@@ -767,7 +767,7 @@ Every judgement in the pipeline is an LLM call (Claude) that reads the source re
 | Approval (sampled as not approved, Phase 2+ programs) | 31 | 100% (89%–100%) | 0 |
 | Approval (sampled as uncertain) | 14 | 64% (39%–84%) | 5 |
 
-Each error pattern these audits found was fixed in the pipeline and the affected labels re-derived, not patched by hand: diseases MONDO has no exact term for now map to their nearest broader term; development codes resolve to UNII substances, and the same substance under two names is merged; scanned FDA letters are read by OCR; labelling-only supplements no longer count as approvals; stop reasons stated only in a trial's summary are read; publication-based outcomes use only the abstracts given; and approval dates account for older applications of the same drug. The disease-mapping, entity and approval figures above come from fresh samples drawn after those fixes; before them, disease mapping agreed 94% of the time, entity resolution 95%, and 8 of 25 dated first approvals were wrong. Remaining entity errors are scattered (a development code resolved to the wrong substance, a salt chosen over its parent) rather than systematic. Programs whose approval is judged "uncertain" (108 of 24,378 judgements) count as not approved; counting them as approved instead moves no rate by more than a tenth of a percentage point (sensitivity table). The approval audit's strata are those of the judgements it sampled; it was re-scored after the final rebuild against the auditors' own answers, and programs that are no longer development programs left the sample. The audit of the earlier draft, with every claim's verdict and every data issue, is in `AUDIT.md`.
+Each error pattern these audits found was fixed in the pipeline and the affected labels re-derived, not patched by hand: diseases MONDO has no exact term for now map to their nearest broader term; development codes resolve to UNII substances, and the same substance under two names is merged; scanned FDA letters are read by OCR; labelling-only supplements no longer count as approvals; stop reasons stated only in a trial's summary are read; publication-based outcomes use only the abstracts given; and approval dates account for older applications of the same drug. The disease-mapping, entity and approval figures above come from fresh samples drawn after those fixes; before them, disease mapping agreed 94% of the time, entity resolution 95%, and 8 of 25 dated first approvals were wrong. Remaining entity errors are scattered (a development code resolved to the wrong substance, a salt chosen over its parent) rather than systematic. Programs whose approval is judged "uncertain" (106 of 24,339 judgements) count as not approved; counting them as approved instead moves no rate by more than a tenth of a percentage point (sensitivity table). The approval audit's strata are those of the judgements it sampled; it was re-scored after the final rebuild against the auditors' own answers, and programs that are no longer development programs left the sample. The audit of the earlier draft, with every claim's verdict and every data issue, is in `AUDIT.md`.
 
 ### Section 3 case studies
 
@@ -779,7 +779,12 @@ Every case picked by the rule protocol, checked by agents against primary source
 | M3 | valiltramiprosate (APP (other)) | Alzheimer disease | 2020-09-30 | yes; Goate A et al., 'Segregation of a missense mutation in the amyloid precursor protein gene with familial Alzheimer's disease', Nature 1991 Feb… (1991) | advanced | – |
 | M3 | insulin efsitora alfa (INSR) | type 2 diabetes mellitus | 2018-11-15 | yes; Kadowaki T et al., 'Two mutant alleles of the insulin receptor gene in a patient with extreme insulin resistance', Science 1988 (PMID 2834824) - INSR… (1988) | advanced | – |
 | M3 | padsevonil (GABRA1+SV2A+SV2B+SV2C) | epilepsy | 2015-07-01 | yes; Cossette P et al. Mutation of GABRA1 in an autosomal dominant form of juvenile myoclonic epilepsy. Nat Genet 2002;31:184-189 (GABRA1 A322D; OMIM 611136 EJM5… (2002) | advanced | – |
+| M3 | cevidoplenib (SYK) | rheumatoid arthritis | 2019-03-20 | no; Wang L et al., Gain-of-function variants in SYK cause immune dysregulation and systemic inflammation in humans and mice, Nat Genet 53:500-510 (closest… (2021) | did not advance | F3 wrong population |
+| M3 | rocacetrapib (CETP) | hyperlipidemia | 2017-03-23 | partial; Brown ML, Inazu A, et al. Molecular basis of lipid transfer protein deficiency in a family with increased high-density lipoproteins. Nature 1989;342:448-51… (1989) | did not advance | unknown |
+| M3 | globalagliatin (GCK) | type 2 diabetes mellitus | 2019-12-10 | yes; Froguel P et al. 'Close linkage of glucokinase locus on chromosome 7p to early-onset non-insulin-dependent diabetes mellitus.' Nature 1992;356:162-164 (PMID… (1992) | did not advance | unknown |
+| M3 | eneboparatide (PTH1R) | hypoparathyroidism | 2020-09-07 | no; None found for PTH1R-hypoparathyroidism. PTH1R Mendelian disease links are Blomstrand chondrodysplasia (LoF, Jobert 1998), Jansen metaphyseal chondrodysplasia… (2021) | advanced (pipeline wrong) | – |
 | M3 | donanemab (APP (depleter)) | Alzheimer disease | 2017-12-18 | yes; Goate A et al., 'Segregation of a missense mutation in the amyloid precursor protein gene with familial Alzheimer's disease', Nature 1991 Feb 21;349:704-6… (1991) | advanced | – |
+| M3 | somapacitan (GHR) | pituitary dwarfism | 2016-03-31 | yes; Godowski PJ et al., 'Characterization of the human growth hormone receptor gene and demonstration of a partial gene deletion in two patients with Laron-type… (1989) | advanced | – |
 | M3 | mavacamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2016-08-01 | yes; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. "A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
 | M3 | aficamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2020-01-10 | yes; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. "A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
 | M3 | zagotenemab (MAPT) | Alzheimer disease | 2018-04-30 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705 (includes R406W, a… (1998) | did not advance | F2 biology did not translate |
@@ -788,28 +793,6 @@ Every case picked by the rule protocol, checked by agents against primary source
 | M3 | RO7123520 (CDH11 (binder_neutralizer), TNF (binder_neutralizer)) | rheumatoid arthritis | 2016-12-22 | no; Balding J et al., "Cytokine gene polymorphisms: association with psoriatic arthritis susceptibility and severity", Arthritis Rheum 2003;48(5):1408-13, PMID… (2003) | did not advance | F1 exposure |
 | M3 | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | partial; Jeunemaitre X, Soubrier F, ... Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct 2;71(1):169-80 (PMID… (1992) | did not advance | F2 biology did not translate |
 | M3 | TOL-3021 (INS (other)) | type 1 diabetes mellitus | 2019-06-17 | partial; Stoy J et al., "Insulin gene mutations as a cause of permanent neonatal diabetes", PNAS 2007;104(38):15040-4 (PMID 17855560). It is the earliest publication… (2007) | did not advance | F2 biology did not translate |
-| B1 | trastuzumab deruxtecan (ERBB2 (binder_neutralizer)) | gastric cancer | 2019-11-26 | yes; FDA supplemental BLA approval letter STN 103792/5250, Herceptin (trastuzumab, Genentech), dated October 20, 2010. It approved Herceptin for HER2-overexpressing… (2010) | advanced | – |
-| B1 | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; FDA accelerated approval of IRESSA (gefitinib), NDA 21-399, AstraZeneca, 5 May 2003, for locally advanced or metastatic NSCLC after failure of platinum-based… (2003) | advanced | – |
-| B1 | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; FDA accelerated approval letter, NDA 21-399, IRESSA (gefitinib, an EGFR tyrosine kinase inhibitor), to AstraZeneca, signed 5/5/03. It covers monotherapy for… (2003) | advanced | – |
-| B1 | zanidatamab (ERBB2 (inhibitor)) | biliary tract cancer | 2020-10-01 | partial; FDA supplemental BLA approval letter, Herceptin (trastuzumab) BLA 103792/5250, October 20, 2010, approving trastuzumab for HER2-overexpressing metastatic… (2010) | advanced | – |
-| B1 | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | ovarian cancer | 2015-03-23 | yes; FDA accelerated approval of Lynparza (olaparib, AstraZeneca), NDA 206162, approval letter dated 12/19/2014: monotherapy for deleterious or suspected… (2014) | advanced | – |
-| B1 | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | prostate cancer | 2016-08-31 | partial; FDA accelerated approval of Lynparza (olaparib) capsules, NDA 206162, AstraZeneca, signed 12/19/2014. Indication: monotherapy for deleterious germline… (2014) | advanced | – |
-| B1 | cevidoplenib (SYK) | rheumatoid arthritis | 2019-03-20 | partial; FDA approval of fostamatinib disodium (Tavalisse, NDA 209299), a SYK inhibitor, on 2018-04-17 for chronic immune thrombocytopenia (ITP) - not for RA (2018) | did not advance | F3 wrong population |
-| P2 | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; Bell DW et al., "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR", Nat Genet 2005;37(12):1315-6 (PMID… (2005) | advanced | – |
-| P2 | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; Bell DW, ..., Haber DA. "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR." Nat Genet… (2005) | advanced | – |
-| P2 | pabinafusp alfa (IDS) | mucopolysaccharidosis type 2 | 2017-03-30 | yes; Wilson PJ et al. Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA. PNAS 1990;87:8531-8535 (PMID 2122463), preceded… (1990) | advanced | – |
-| P2 | tividenofusp alfa (IDS) | mucopolysaccharidosis type 2 | 2020-07-16 | yes; Wilson PJ et al., PNAS 1990;87:8531-8535, 'Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA' (germline IDS gene… (1990) | advanced | – |
-| P2 | mavacamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2016-08-01 | partial; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
-| P2 | aficamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2020-01-10 | yes; Geisterfer-Lowrance AA, ..., Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta cardiac myosin heavy chain gene… (1990) | advanced | – |
-| P2 | PF-06687234 (IL10RA (agonist)) | ulcerative colitis | 2017-12-20 | partial; Glocker EO et al. "Inflammatory bowel disease and mutations affecting the interleukin-10 receptor." N Engl J Med 2009;361(21):2033-45, PMID 19890111. It… (2009) | did not advance | F1 exposure |
-| P2 | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | yes; Jeunemaitre X, Soubrier F, Kotelevtsev YV, Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct… (1992) | did not advance | F2 biology did not translate |
-| P2 | asp-8302 (CHRM3) | urinary bladder disorder | 2018-11-20 | yes; Weber S et al. Muscarinic acetylcholine receptor M3 mutation causes urinary bladder disease and a prune-belly-like syndrome. Am J Hum Genet 2011;89:668-674… (2011) | did not advance | F2 biology did not translate |
-| P2 | semorinemab (MAPT) | Alzheimer disease | 2017-10-04 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705… (1998) | did not advance | F2 biology did not translate |
-| M3 | cevidoplenib (SYK) | rheumatoid arthritis | 2019-03-20 | no; Wang L et al., Gain-of-function variants in SYK cause immune dysregulation and systemic inflammation in humans and mice, Nat Genet 53:500-510 (closest… (2021) | did not advance | F3 wrong population |
-| M3 | rocacetrapib (CETP) | hyperlipidemia | 2017-03-23 | partial; Brown ML, Inazu A, et al. Molecular basis of lipid transfer protein deficiency in a family with increased high-density lipoproteins. Nature 1989;342:448-51… (1989) | did not advance | unknown |
-| M3 | globalagliatin (GCK) | type 2 diabetes mellitus | 2019-12-10 | yes; Froguel P et al. 'Close linkage of glucokinase locus on chromosome 7p to early-onset non-insulin-dependent diabetes mellitus.' Nature 1992;356:162-164 (PMID… (1992) | did not advance | unknown |
-| M3 | eneboparatide (PTH1R) | hypoparathyroidism | 2020-09-07 | no; None found for PTH1R-hypoparathyroidism. PTH1R Mendelian disease links are Blomstrand chondrodysplasia (LoF, Jobert 1998), Jansen metaphyseal chondrodysplasia… (2021) | advanced (pipeline wrong) | – |
-| M3 | somapacitan (GHR) | pituitary dwarfism | 2016-03-31 | yes; Godowski PJ et al., 'Characterization of the human growth hormone receptor gene and demonstration of a partial gene deletion in two patients with Laron-type… (1989) | advanced | – |
 | M10 | elexacaftor (CFTR) | cystic fibrosis | 2017-01-23 | yes; Reactome pathway R-HSA-5678895 'Defective CFTR causes cystic fibrosis' (disease: cystic fibrosis; reaction R-HSA-5678822 'Defective CFTR does not transport… (2015) | advanced | – |
 | M10 | cipaglucosidase alfa (GAA) | glycogen storage disease II | 2016-04-01 | yes; Reactome pathway R-HSA-5357609 'Glycogen storage disease type II (GAA)' (disease-annotated: glycogen storage disease II), first released 2015-09-22 (Reactome… (2015) | advanced | – |
 | M10 | valoctocogene roxaparvovec (F8) | hemophilia A | 2015-09-28 | no; Reactome pathway R-HSA-9662001 'Defective factor VIII causes hemophilia A' (disease: factor VIII deficiency) and its reactions (R-HSA-9672397 Defective F8… (2020) | advanced | – |
@@ -827,18 +810,26 @@ Every case picked by the rule protocol, checked by agents against primary source
 | M10 | derazantinib (FGFR1+FGFR2+FGFR3) | gastric adenocarcinoma | 2020-10-06 | yes; Reactome R-HSA-2023837 'Signaling by FGFR2 amplification mutants' and parent R-HSA-5655253 'Signaling by FGFR2 in disease' (release date 2012-06-12): FGFR2… (2012) | did not advance | F2 biology did not translate |
 | M10 | afuresertib (AKT1+AKT2+AKT3) | ovarian cancer | 2020-07-07 | partial; Reactome pathways R-HSA-2219528 'PI3K/AKT Signaling in Cancer' and R-HSA-5674400 'Constitutive Signaling by AKT1 E17K in Cancer' (plus reaction R-HSA-2400010… (2012) | did not advance | F2 biology did not translate |
 | M10 | dilpacimab (DLL4+VEGFA) | cancer | 2018-03-20 | partial; Reactome 'Signaling by NOTCH1 in Cancer' sub-pathways, e.g. R-HSA-2894862 'Constitutive Signaling by NOTCH1 HD+PEST Domain Mutants' with reactions… (2012) | did not advance | F2 biology did not translate |
-| B1 | donafenib (BRAF+KDR+RAF1) | thyroid gland carcinoma | 2016-09-01 | yes; FDA approval of vandetanib (Caprelsa, NDA 022405; VEGFR2/KDR, EGFR, RET inhibitor) for medullary thyroid cancer, 2011-04-06; plus cabozantinib (Cometriq… (2011) | advanced | – |
-| B1 | firmonertinib (EGFR) | non-small cell lung carcinoma | 2018-04-30 | yes; Drugs@FDA NDA 021399 IRESSA (gefitinib, EGFR tyrosine kinase inhibitor), original approval 2003-05-05 for NSCLC; also NDA 021743 TARCEVA (erlotinib) 2004-11-18… (2003) | advanced | – |
+| B1 | fuzuloparib (PARP1, PARP2) | malignant pancreatic neoplasm | 2020-01-21 | yes; Olaparib (Lynparza tablets, AstraZeneca), NDA 208558 (supplemental approval), approved 2019-12-27 as maintenance treatment of adults with germline BRCA-mutated… (2019) | advanced | – |
+| B1 | dasiglucagon (GCGR) | type 1 diabetes mellitus | 2016-11-01 | yes; Glucagon (Eli Lilly), NDA 012122, approved 1960-11-14 (NME), for severe hypoglycemia (insulin reactions) in patients with diabetes. The rDNA Lilly Glucagon for… (1960) | advanced | – |
+| B1 | vepdegestrant (ESR1) | breast cancer | 2019-09-22 | yes; Tamoxifen citrate (Nolvadex), NDA 017970 (ICI, now AstraZeneca), original approval 1977-12-30, for breast cancer (metastatic breast cancer). A closer match by… (1977) | advanced | – |
 | B1 | anbenitamab (ERBB2) | breast cancer | 2019-12-31 | yes; FDA approval of trastuzumab (Herceptin, BLA 103792) for HER2-overexpressing metastatic breast cancer, 25 Sep 1998 (1998) | advanced | – |
-| B1 | sugemalimab (CD274) | hepatocellular carcinoma | 2019-12-16 | no; First FDA approval of a PD-L1 (CD274) inhibitor in HCC: atezolizumab + bevacizumab, 29 May 2020 (after entry). Before entry only PD-1 (PDCD1) inhibitors were… (2020) | did not advance | F2 biology did not translate |
-| B1 | catequentinib (FLT4+KDR) | gastrointestinal stromal tumor | 2018-10-23 | yes; FDA approval of sunitinib malate (SUTENT, NDA 021938, Pfizer), 26 Jan 2006, for GIST after disease progression on, or intolerance to, imatinib. Sunitinib… (2006) | did not advance | F2 biology did not translate |
-| B1 | BB-401 (EGFR) | head and neck squamous cell carcinoma | 2018-03-15 | yes; FDA approval of cetuximab (Erbitux, BLA 125084) for locally advanced HNSCC with radiation and for recurrent/metastatic HNSCC after platinum, 1 March 2006 (2006) | did not advance | F1 exposure |
-| B1 | imvotamab (CD3E+MS4A1) | follicular lymphoma | 2019-09-30 | yes; FDA approval of Rituxan (rituximab, anti-CD20/MS4A1), BLA 103705, Genentech/IDEC, 26 Nov 1997, for relapsed or refractory low-grade or follicular CD20-positive… (1997) | did not advance | F8 commercial |
-| B1 | dilpacimab (DLL4+VEGFA) | cancer | 2018-03-20 | yes; FDA approval of bevacizumab (Avastin, BLA 125085, Genentech), anti-VEGFA antibody, for first-line metastatic colorectal cancer, 2004-02-26 (2004) | did not advance | F2 biology did not translate |
-| B1 | min-117 (HTR1A+SLC6A4) | major depressive disorder | 2018-03-30 | yes; FDA approval of fluoxetine (Prozac, NDA 018936), a SLC6A4 (SERT) inhibitor, for major depressive disorder, 1987-12-29; many later SSRIs/SNRIs and vilazodone… (1987) | did not advance | F2 biology did not translate |
-| B1 | ocriplasmin (FN1+LAMA1) | vitreous detachment | 2015-12-01 | yes; Drugs@FDA BLA 125422 JETREA (ocriplasmin), ThromboGenics, approved 2012-10-17 for symptomatic vitreomacular adhesion (2012) | did not advance | F7 trial design |
+| B1 | cerdulatinib (JAK1, JAK3, SYK, TYK2) | vitiligo | 2019-09-27 | partial; Jakafi (ruxolitinib phosphate, a JAK1/JAK2 inhibitor), NDA 202192, approved 2011-11-16 for intermediate- or high-risk myelofibrosis (2011) | did not advance | F8 commercial |
+| B1 | avadomide (CRBN) | B-cell chronic lymphocytic leukemia | 2015-07-27 | yes; Lenalidomide (Revlimid), NDA 021880 supplement S-034, approved 2013-06-05 for relapsed/progressive mantle cell lymphoma after two prior therapies including… (2013) | did not advance | F8 commercial |
+| B1 | pegadricase (UOX) | purine metabolism disease | 2016-10-01 | yes; Krystexxa (pegloticase, Savient), BLA 125293, approved 2010-09-14, for chronic gout in adults refractory to conventional therapy (2010) | advanced (pipeline wrong) | – |
+| B1 | pruxelutamide (AR) | prostate cancer | 2019-05-30 | yes; Flutamide (EULEXIN, Schering), NDA 018554, approved 1989-01-27 (new molecular entity) for metastatic prostate cancer, given with an LHRH agonist; later… (1989) | advanced (pipeline wrong) | – |
+| B1 | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; FDA accelerated approval of IRESSA (gefitinib), NDA 21-399, AstraZeneca, 5 May 2003, for locally advanced or metastatic NSCLC after failure of platinum-based… (2003) | advanced | – |
+| B1 | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; FDA accelerated approval letter, NDA 21-399, IRESSA (gefitinib, an EGFR tyrosine kinase inhibitor), to AstraZeneca, signed 5/5/03. It covers monotherapy for… (2003) | advanced | – |
+| B1 | zanidatamab (ERBB2 (inhibitor)) | biliary tract cancer | 2020-10-01 | partial; FDA supplemental BLA approval letter, Herceptin (trastuzumab) BLA 103792/5250, October 20, 2010, approving trastuzumab for HER2-overexpressing metastatic… (2010) | advanced | – |
+| B1 | trastuzumab deruxtecan (ERBB2 (binder_neutralizer)) | gastric cancer | 2019-11-26 | yes; FDA supplemental BLA approval letter STN 103792/5250, Herceptin (trastuzumab, Genentech), dated October 20, 2010. It approved Herceptin for HER2-overexpressing… (2010) | advanced | – |
+| B1 | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | ovarian cancer | 2015-03-23 | yes; FDA accelerated approval of Lynparza (olaparib, AstraZeneca), NDA 206162, approval letter dated 12/19/2014: monotherapy for deleterious or suspected… (2014) | advanced | – |
+| B1 | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | prostate cancer | 2016-08-31 | partial; FDA accelerated approval of Lynparza (olaparib) capsules, NDA 206162, AstraZeneca, signed 12/19/2014. Indication: monotherapy for deleterious germline… (2014) | advanced | – |
+| B1 | trazodone (HTR2A, SLC6A4) | diabetic neuropathy | 2017-05-16 | yes; Cymbalta (duloxetine HCl, Eli Lilly), NDA 021733, approved 2004-09-03 (Lilly announced it 2004-09-07) for the management of diabetic peripheral neuropathic… (2004) | did not advance | F7 trial design |
+| B1 | OPC-64005 (SLC6A2, SLC6A3, SLC6A4) | major depressive disorder | 2020-03-03 | yes; Desipramine (Norpramin), NDA 014399, original approval 1964-11-20, for depression (a tricyclic that blocks norepinephrine reuptake, SLC6A2). A cleaner… (1964) | did not advance | F2 biology did not translate |
+| B1 | ramucirumab (KDR) | synovial sarcoma | 2020-03-04 | yes; Pazopanib (Votrient), NDA 022465 supplement S-010, approved 2012-04-26 for advanced soft tissue sarcoma in patients who had received prior chemotherapy.… (2012) | did not advance | F2 biology did not translate |
+| B1 | sabizabulin (TUBB) | adult acute respiratory distress syndrome | 2020-06-18 | partial; Oncovin (vincristine sulfate, Eli Lilly), NDA 014103, approved 1963-07-10, oncology (acute leukemia); a beta-tubulin binder that inhibits polymerization.… (1963) | advanced (pipeline wrong) | – |
 | B1 | samotolisib (MTOR+PIK3CA+PIK3CB+PIK3CD+PIK3CG) | pancreatic ductal adenocarcinoma | 2017-01-12 | partial; FDA approval of everolimus (Afinitor, NDA 022334 supplement) for progressive pancreatic neuroendocrine tumours, May 2011 (2011) | did not advance | F2 biology did not translate |
-| B1 | adrulipase alfa (PNLIP) | exocrine pancreatic insufficiency | 2019-01-10 | yes; Drugs@FDA: Creon (pancrelipase) NDA 020725 approved 30 April 2009 for exocrine pancreatic insufficiency (followed by Zenpep 2009, Pancreaze 2010… (2009) | did not advance | F1 exposure |
+| B1 | min-117 (HTR1A+SLC6A4) | major depressive disorder | 2018-03-30 | yes; FDA approval of fluoxetine (Prozac, NDA 018936), a SLC6A4 (SERT) inhibitor, for major depressive disorder, 1987-12-29; many later SSRIs/SNRIs and vilazodone… (1987) | did not advance | F2 biology did not translate |
 | P2 | ask-120067 (EGFR) | non-small cell lung carcinoma | 2017-11-30 | partial; Bell DW et al. 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR.' Nat Genet 2005;37:1315-1316 (PMID… (2005) | advanced | – |
 | P2 | cipaglucosidase alfa (GAA) | glycogen storage disease II | 2016-04-01 | yes; Hermans MM et al., Biochem Biophys Res Commun 1991, 'Identification of a point mutation in the human lysosomal alpha-glucosidase gene causing infantile… (1990) | advanced | – |
 | P2 | pyrotinib (EGFR+ERBB2) | non-small cell lung carcinoma | 2016-10-20 | partial; Bell DW et al., 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR', Nat Genet 2005 (PMID 16258541) (2005) | advanced | – |
@@ -847,7 +838,17 @@ Every case picked by the rule protocol, checked by agents against primary source
 | P2 | vupanorsen (ANGPTL3) | hyperlipidemia | 2020-09-28 | yes; Romeo S et al., 'Rare loss-of-function mutations in ANGPTL family members contribute to plasma triglyceride levels in humans', J Clin Invest 2009;119:70-79… (2009) | did not advance | F6 off-target toxicity |
 | P2 | VX-152 (CFTR) | cystic fibrosis | 2016-11-01 | yes; Riordan JR et al., Identification of the cystic fibrosis gene: cloning and characterization of complementary DNA, Science 245:1066-73 (with Rommens et al. and… (1989) | did not advance | F8 commercial |
 | P2 | OCTA12 (F8) | hemophilia A | 2019-07-03 | yes; Gitschier J et al. Characterization of the human factor VIII gene. Nature 1984;312:326-30, and Gitschier J et al. Detection and sequence of mutations in the… (1985) | did not advance | F6 off-target toxicity |
+| P2 | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; Bell DW et al., "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR", Nat Genet 2005;37(12):1315-6 (PMID… (2005) | advanced | – |
+| P2 | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; Bell DW, ..., Haber DA. "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR." Nat Genet… (2005) | advanced | – |
+| P2 | pabinafusp alfa (IDS) | mucopolysaccharidosis type 2 | 2017-03-30 | yes; Wilson PJ et al. Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA. PNAS 1990;87:8531-8535 (PMID 2122463), preceded… (1990) | advanced | – |
+| P2 | tividenofusp alfa (IDS) | mucopolysaccharidosis type 2 | 2020-07-16 | yes; Wilson PJ et al., PNAS 1990;87:8531-8535, 'Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA' (germline IDS gene… (1990) | advanced | – |
+| P2 | mavacamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2016-08-01 | partial; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
+| P2 | aficamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2020-01-10 | yes; Geisterfer-Lowrance AA, ..., Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta cardiac myosin heavy chain gene… (1990) | advanced | – |
+| P2 | PF-06687234 (IL10RA (agonist)) | ulcerative colitis | 2017-12-20 | partial; Glocker EO et al. "Inflammatory bowel disease and mutations affecting the interleukin-10 receptor." N Engl J Med 2009;361(21):2033-45, PMID 19890111. It… (2009) | did not advance | F1 exposure |
+| P2 | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | yes; Jeunemaitre X, Soubrier F, Kotelevtsev YV, Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct… (1992) | did not advance | F2 biology did not translate |
+| P2 | asp-8302 (CHRM3) | urinary bladder disorder | 2018-11-20 | yes; Weber S et al. Muscarinic acetylcholine receptor M3 mutation causes urinary bladder disease and a prune-belly-like syndrome. Am J Hum Genet 2011;89:668-674… (2011) | did not advance | F2 biology did not translate |
 | P2 | cinpanemab (SNCA) | Parkinson disease | 2018-01-10 | yes; Polymeropoulos MH et al. 'Mutation in the alpha-synuclein gene identified in families with Parkinson's disease.' Science 1997;276:2045-2047 (PMID 9197268… (1997) | did not advance | F2 biology did not translate |
+| P2 | semorinemab (MAPT) | Alzheimer disease | 2017-10-04 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705… (1998) | did not advance | F2 biology did not translate |
 | P2 | ngm-621 (C3) | dry age related macular degeneration | 2020-07-22 | yes; Yates JR et al., N Engl J Med 2007, 'Complement C3 variant and the risk of age-related macular degeneration' (PMID 17634448). C3 R102G (rs2230199) risk allele… (2007) | did not advance | F2 biology did not translate |
 
 ### Limitations
