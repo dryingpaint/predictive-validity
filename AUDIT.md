@@ -260,7 +260,7 @@ Each quantitative claim, with the value the rebuild gives:
 ## Work log
 
 - 2026-10-26 — Why efficacy failed (Section 1). Plan committed before labelling
-  (`report/attribution_plan.md`). New data: PubMed searches on each failed entity's human
+  (`report/methods_stops_and_engagement.md`). New data: PubMed searches on each failed entity's human
   pharmacology and on the entity in each program disease (`preclin.moiety_publication`, reviews
   excluded), and a three-pillar reading (exposure, engagement, pathway) with a failure code for
   every program Section 1 records as stopped for efficacy (`preclin.efficacy_failure_attribution`,

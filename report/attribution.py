@@ -2,7 +2,7 @@
 
     python -m report.attribution
 
-Implements report/attribution_plan.md on preclin.efficacy_failure_attribution
+Implements report/methods_stops_and_engagement.md on preclin.efficacy_failure_attribution
 (pipeline.attribution label) with the web-search labels of the programs it left
 indeterminate (preclin.efficacy_attribution_search, pipeline.attribution search),
 the independent re-derivation (pipeline.attribution check) and the external

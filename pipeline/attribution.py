@@ -15,7 +15,7 @@ approvals, other entities on the same primary target in the same or a related
 disease, and PubMed abstracts on the entity's human pharmacology and on the
 entity in the program's disease. The model judges the three pillars of Morgan et
 al. (2012) only from the bundle, cites what it used, and codes the failure. The
-plan is report/attribution_plan.md.
+methods are report/methods_stops_and_engagement.md.
 """
 from __future__ import annotations
 
@@ -510,7 +510,7 @@ results of up to {MAX_PHASE1_RESULTS} Phase 1 trials, FDA approvals, other entit
 disease with Lin similarity >= {RELATED_DISEASE}, and pharmacology_literature@v1 abstracts. The model (task
 {TASK.name} {TASK.prompt_version}, {TASK.model}, effort {TASK.effort}) judges the three pillars of Morgan et al.
 2012 in humans at the tested dose (exposure, engagement, pathway: adequate, inferred_adequate, inadequate,
-no_human_data) and a failure code (F1a, F1b, F2-F9, U; report/attribution_plan.md), using only the bundle; validation
+no_human_data) and a failure code (F1a, F1b, F2-F9, U; report/methods_stops_and_engagement.md), using only the bundle; validation
 rejects citations outside the bundle and codes that contradict the pillars. Checks: {CHECK_TASK.name} (stepwise
 prompt, {CHECK_TASK.model}) on a seeded sample of {CHECK_SAMPLE}, and a blind web adjudication of a seeded sample
 (report/audits/attribution_adjudication.json)."""
