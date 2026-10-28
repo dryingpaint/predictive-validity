@@ -62,6 +62,24 @@ def transitions_table() -> str:
                                              "BIO 2011–2020"]))
 
 
+def period_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section1", "loa_by_period.csv"))
+    rows = [[r.label.replace("-", "–"), f"{r.n_entities:,}", pct(r.ph1_rate), pct(r.ph2_rate), pct(r.ph3_rate),
+             f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}", pct(r.us_ph3_rate), f"{pct(r.us_loa)}{ci(r.us_loa_lo, r.us_loa_hi)}"]
+            for r in df.itertuples()]
+    return table(pd.DataFrame(rows, columns=["Phase entry", "Entities", "Ph1→2", "Ph2→3", "Ph3→approval",
+                                             "LOA (95% CI)", "US-developed Ph3→approval", "US-developed LOA (95% CI)"]))
+
+
+def year_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section1", "rates_by_entry_year.csv"))
+    rate = df.pivot(index="entry_year", columns="phase", values="rate")
+    running = df.pivot(index="entry_year", columns="phase", values="censored_share")
+    rows = [[str(y)] + [f"{pct(rate.at[y, ph], 0)} ({pct(running.at[y, ph], 0)})" for ph in (1, 2, 3)] for y in rate.index]
+    return table(pd.DataFrame(rows, columns=["Phase entry year", "Ph1→2 (still running)", "Ph2→3 (still running)",
+                                             "Ph3→approval (still running)"]))
+
+
 def sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
     df = df.assign(**{"Cohort or definition": df.label.map(sentence_case),
@@ -347,6 +365,7 @@ def s3_case_cards() -> str:
 
 
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
+          "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
