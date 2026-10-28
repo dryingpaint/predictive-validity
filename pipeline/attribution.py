@@ -45,8 +45,8 @@ MAX_SAME_TARGET = 15
 CHECK_SAMPLE = 150
 CHECK_SEED = 20261026
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
-REGISTRY_REASONS = {**{r: "registry efficacy" for r in EFFICACY_REASONS}, "PK, dose or formulation": "registry PK"}
-TRACED_CAUSES = {"efficacy": "traced efficacy", "pk_formulation": "traced PK"}
+REGISTRY_REASONS = {**{r: "registry_efficacy" for r in EFFICACY_REASONS}, "PK, dose or formulation": "registry_pk"}
+TRACED_CAUSES = {"efficacy": "traced_efficacy", "pk_formulation": "traced_pk"}
 
 PHARMACOLOGY_TERMS = ('pharmacodynamic*[tiab] OR "target engagement"[tiab] OR occupancy[tiab] OR '
                       '"proof of mechanism"[tiab] OR "proof-of-mechanism"[tiab] OR "first-in-human"[tiab] OR '
@@ -580,7 +580,7 @@ def search(_args) -> None:
 def check(_args) -> None:
     """Label a seeded random sample of the registry-recorded cohort again under CHECK_TASK."""
     eff = cohort()
-    keys = sorted(eff[eff.origin == "registry efficacy"].key)
+    keys = sorted(eff[eff.origin == "registry_efficacy"].key)
     sample = np.random.default_rng(CHECK_SEED).choice(keys, size=min(CHECK_SAMPLE, len(keys)), replace=False)
     items = bundles(eff[eff.key.isin(set(sample))])
     run_id = llm.run(CHECK_TASK, items)

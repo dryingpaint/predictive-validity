@@ -260,9 +260,9 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
                                             "U", d.primary_code))
     variants = {
         "all (Phase 2 and 3)": d, "Phase 2": d[d.phase == 2], "Phase 3": d[d.phase == 3],
-        "efficacy recorded in the registry": d[d.origin == "registry efficacy"],
+        "efficacy recorded in the registry": d[d.origin == "registry_efficacy"],
         "traced from unexplained stops": d[d.origin.str.startswith("traced")],
-        "stopped for PK, dose or formulation": d[d.origin.str.endswith("PK")],
+        "stopped for PK, dose or formulation": d[d.origin.str.endswith("pk")],
         "outside oncology": d[~d.oncology], "oncology": d[d.oncology],
         "sponsor-stated efficacy reason": d[d.reason == "efficacy: stated"],
         "primary endpoint missed": d[d.reason == "efficacy: primary endpoint not met"],
