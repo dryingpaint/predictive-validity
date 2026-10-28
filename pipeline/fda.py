@@ -13,9 +13,10 @@ action listed without a retrievable letter keeps the listing text as its
 document.
 
 Letters cover every approved original NDA/BLA and every approved efficacy
-supplement (Drugs@FDA submission class EFFICACY) from 2015-01-01 through the
-Drugs@FDA data date, so programs that started in the study window are
-followed to the snapshot.
+supplement (Drugs@FDA submission class EFFICACY) from 2008-01-01 (LETTERS_FROM) through the
+Drugs@FDA data date, so programs that entered a phase from 2008 on are dated
+against the letter that approved them. CBER letters start in 2015
+(pipeline.cber).
 """
 from __future__ import annotations
 
@@ -41,7 +42,8 @@ from pipeline.drugs import entity_ids, moiety_key
 CACHE = os.path.join(llm.REPO, ".cache", "fda")
 DRUGSFDA_URL = "https://www.fda.gov/media/89850/download"
 OPENFDA_INDEX = "https://api.fda.gov/download.json"
-WINDOW = ("2015-01-01", "2026-12-31")
+LETTERS_FROM = "2008-01-01"  # earliest approval action whose letter is read
+WINDOW = (LETTERS_FROM, "2026-12-31")
 EFFICACY_CLASS = "2"
 HEADERS = {"User-Agent": "Mozilla/5.0 (predictive-validity research)"}
 
