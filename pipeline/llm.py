@@ -68,6 +68,11 @@ def git_commit() -> str | None:
 
 KEEPALIVE = {"keepalives": 1, "keepalives_idle": 30, "keepalives_interval": 10, "keepalives_count": 3}
 CONNECT_ATTEMPTS = 6
+# Batches a run submitted, recorded as they are created (batch id -> custom id -> [subject key, input
+# sha256]) and dropped once collected, so a run that stops before collecting them is resumed by the
+# next run of the same task with the same inputs instead of resubmitted.
+BATCH_MANIFESTS = os.path.join(REPO, ".cache", "llm_batches")
+API_ATTEMPTS = 10  # batch status and result calls through a network outage, waiting 30 s more each time
 
 
 def connect():
@@ -348,29 +353,68 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
                 print(f"[{task.name}] {i}/{len(todo)} validated={n_ok} invalid={n_bad}", flush=True)
 
 
+def _api(call, *args, **kwargs):
+    """A batch API call, retried through connection failures the SDK's own retries do not outlast."""
+    for attempt in range(API_ATTEMPTS):
+        try:
+            return call(*args, **kwargs)
+        except (anthropic.APIConnectionError, httpx2.TransportError):
+            if attempt == API_ATTEMPTS - 1:
+                raise
+            time.sleep(30 * (attempt + 1))
+
+
+def _manifest_path(task: Task) -> str:
+    return os.path.join(BATCH_MANIFESTS, f"{task.name}-{task.prompt_version}-{task.schema_version}.json")
+
+
+def _read_manifest(task: Task) -> dict[str, dict[str, list[str]]]:
+    path = _manifest_path(task)
+    return json.load(open(path)) if os.path.exists(path) else {}
+
+
+def _write_manifest(task: Task, manifest: dict[str, dict[str, list[str]]]) -> None:
+    os.makedirs(BATCH_MANIFESTS, exist_ok=True)
+    tmp = _manifest_path(task) + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(manifest, f)
+    os.replace(tmp, _manifest_path(task))
+
+
 def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str]) -> None:
+    """Submit todo in batches and store each batch's decisions as it ends. Batches an earlier run of
+    the task submitted for keys still in todo with the same input are collected, not resubmitted."""
+    manifest = _read_manifest(task)
+    shas = {k: sha256_text(canonical_json(items[k])) for k in todo}
     custom_ids, pending = {}, []
-    for start in range(0, len(todo), BATCH_SIZE):
-        chunk = todo[start:start + BATCH_SIZE]
-        requests = []
-        for i, key in enumerate(chunk):
-            cid = f"r{start + i}"
-            custom_ids[cid] = key
-            requests.append(Request(custom_id=cid,
-                                    params=MessageCreateParamsNonStreaming(**task.request_params(items[key]))))
-        batch = api.messages.batches.create(requests=requests)
+    for batch_id, cids in manifest.items():
+        if all(shas.get(key) == sha for key, sha in cids.values()):
+            custom_ids.update({(batch_id, cid): key for cid, (key, _) in cids.items()})
+            pending.append(batch_id)
+    resumed = set(custom_ids.values())
+    if pending:
+        print(f"[{task.name}] collecting {len(pending)} batches an earlier run submitted ({len(resumed)} requests)",
+              flush=True)
+    rest = [k for k in todo if k not in resumed]
+    for start in range(0, len(rest), BATCH_SIZE):
+        chunk = rest[start:start + BATCH_SIZE]
+        requests = [Request(custom_id=f"r{start + i}",
+                            params=MessageCreateParamsNonStreaming(**task.request_params(items[key])))
+                    for i, key in enumerate(chunk)]
+        batch = _api(api.messages.batches.create, requests=requests)
+        manifest[batch.id] = {f"r{start + i}": [key, shas[key]] for i, key in enumerate(chunk)}
+        _write_manifest(task, manifest)
+        custom_ids.update({(batch.id, f"r{start + i}"): key for i, key in enumerate(chunk)})
         pending.append(batch.id)
         print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
 
     while pending:
         time.sleep(POLL_SECONDS)
-        ended = [b for b in pending
-                 if api.messages.batches.retrieve(b).processing_status == "ended"]
+        ended = [b for b in pending if _api(api.messages.batches.retrieve, b).processing_status == "ended"]
         for batch_id in ended:
-            pending.remove(batch_id)
             rows, n_ok, n_bad = [], 0, 0
-            for result in api.messages.batches.results(batch_id):
-                key = custom_ids[result.custom_id]
+            for result in _api(lambda b: list(api.messages.batches.results(b)), batch_id):
+                key = custom_ids[(batch_id, result.custom_id)]
                 raw, parsed, error, usage = "", None, f"batch_{result.result.type}", {}
                 if result.result.type == "succeeded":
                     raw, parsed, error, usage = _parse(task, items[key], result.result.message)
@@ -379,6 +423,9 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
                 n_bad += error is not None
                 n_ok += error is None
             _store(rows)
+            pending.remove(batch_id)
+            manifest.pop(batch_id, None)
+            _write_manifest(task, manifest)
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 

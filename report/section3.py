@@ -108,7 +108,7 @@ def evidence_index() -> tuple[dict, dict]:
     when evidence is not frozen."""
     q75 = float(frame.query("""SELECT percentile_cont(0.75) WITHIN GROUP (ORDER BY resource_score) AS q
                                FROM preclin.ot_evidence WHERE datasource = 'impc'""").q.iloc[0])
-    g = frame.query("""
+    g = frame.query_paged("""
         WITH e AS (
             SELECT target_ensembl AS ens, disease_id, resource_score, confidence,
                    direction_on_target AS dot, direction_on_trait AS dtr, (detail->>'log2FoldChangeValue')::float AS lfc,
@@ -140,7 +140,7 @@ def evidence_index() -> tuple[dict, dict]:
                min(y) FILTER (WHERE counts AND dot = 'GoF' AND dtr = 'risk') AS y_gof_risk,
                min(y) FILTER (WHERE dot = 'GoF' AND dtr = 'protect') AS y_gof_protect,
                min(y) FILTER (WHERE lfc > 0) AS y_up
-        FROM e GROUP BY 1, 2, 3""", {"never": NEVER, "q75": q75})
+        FROM e GROUP BY 1, 2, 3""", "ens", {"never": NEVER, "q75": q75})
     g["family"] = g.source.map(FAMILY)
     germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
     mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")

@@ -41,3 +41,15 @@ def test_phase_role_output_names_only_listed_drugs():
     validate_phase_role({"drugs": ["atrasentan", "zigakibart"]}, {"main_period_drugs": ["atrasentan"]})
     with pytest.raises(ValueError):
         validate_phase_role({"drugs": ["atrasentan"]}, {"main_period_drugs": ["sparsentan"]})
+
+
+def test_phase_role_names_in_the_trials_own_wording_resolve_to_listed_drugs():
+    from pipeline.programs import listed_drug
+    two = {"drugs": ["tacrolimus anhydrous", "sirolimus"],
+           "interventions": [{"name": "Prograf", "otherNames": ["tacrolimus"]}, {"name": "Rapamune"}]}
+    assert listed_drug("Tacrolimus", two) == "tacrolimus anhydrous"
+    assert listed_drug("Prograf", two) == "tacrolimus anhydrous"
+    assert listed_drug("AZOPT (brinzolamide)", {"drugs": ["brinzolamide", "levobetaxolol"]}) == "brinzolamide"
+    assert listed_drug("RAD001", {"drugs": ["everolimus"], "interventions": [{"name": "RAD001"}]}) == "everolimus"
+    assert listed_drug("Rapamune", two) is None  # its entry names no listed drug, and the trial has two
+    assert listed_drug("sparsentan", {"drugs": ["atrasentan"], "interventions": [{"name": "atrasentan"}]}) is None
