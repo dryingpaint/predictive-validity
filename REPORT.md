@@ -402,9 +402,9 @@ Only the benchmark met the bar: an approved drug on the target for a related dis
 * **Mendelian evidence for a non-hereditary disease (M3)** came closest: 57 programs on 44 targets, 32% advanced, held-out risk ratio 2.09 (90% lower bound 0.92), but its discovery lower bound (1.01) fell short of 1.3. It covers few programs (7% of the non-oncology programs that advanced).
 * **GWAS with locus-to-gene ≥ 0.8 (M4)** and the post-hoc **germline mechanism concordant with the drug (P2)** have adjusted risk ratios of 1.38 and 1.79, but their held-out lower bounds reach 1 or below (0.99 and 0.91).
 * **Reactome pathway evidence (M10)** held up on the held-out targets (risk ratio 2.51, 90% lower bound 1.29) but not on the discovery targets (lower bound 0.75); its adjusted risk ratio is 1.50.
-* **Literature mouse models (M8)** gave 1.18 on the held-out targets but 1.59 (90% lower bound 1.19) on the discovery targets: inconsistent between the two halves.
-* **Replacing or activating the gene in a hereditary disease (M2)** advanced less often than other programs in hereditary diseases (25% against 24%).
-* Expression up plus an inhibitor (M9), target liability plus an inhibitor (M11), the allelic series (M5), protective loss of function plus an inhibitor (P1) and a concordant mouse model (P3) carry no signal. Protective-variant burden evidence (M1) and IMPC knockouts (M7) could not be tested: Open Targets has no burden results before 2019 and no dates for IMPC models.
+* **Literature mouse models (M8)** gave 1.59 on the discovery targets (90% lower bound 1.19) and 1.18 on the held-out targets (90% lower bound 0.86): inconsistent between the two halves.
+* **Replacing or activating the gene in a hereditary disease (M2)** advanced at 25%, against 24% for other programs in hereditary diseases.
+* Expression up plus an inhibitor (M9), target liability plus an inhibitor (M11), the allelic series (M5), protective loss of function plus an inhibitor (P1) and a concordant mouse model (P3) carry no consistent signal. Protective-variant burden evidence (M1) could not be tested, because Open Targets has no burden results before 2019, and IMPC knockouts matching the disease (M7) covered 9 programs, too few to estimate.
 
 
 ### Verified case studies
