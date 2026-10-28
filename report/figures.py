@@ -140,7 +140,10 @@ def efficacy_attribution():
     causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
     continued = "development_continued"
     causes = causes[(causes.cause != continued) & ~((causes.cause == "unknown") & (causes.likely == continued))]
-    shown = {c: v for c, v in CAUSE_COLORS.items() if c != continued}
+    causes = causes.replace({"cause": {"company_event": "business_strategic"},
+                             "likely": {"company_event": "business_strategic"}})
+    shown = {c: v for c, v in CAUSE_COLORS.items() if c not in (continued, "company_event")}
+    shown["business_strategic"] = ("Business, strategic or company event", shown["business_strategic"][1])
     total = len(causes)
     after = []
     for c, (_, col) in shown.items():
