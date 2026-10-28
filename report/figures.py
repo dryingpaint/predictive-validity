@@ -139,7 +139,6 @@ def efficacy_attribution():
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
     causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
     total = len(causes)
-    recorded = [(float((causes.recorded_cause == c).mean()), col, c == "unknown") for c, (_, col) in CAUSE_COLORS.items()]
     after = []
     for c, (_, col) in CAUSE_COLORS.items():
         if c == "unknown":
@@ -149,46 +148,42 @@ def efficacy_attribution():
         after.append((float(((causes.cause == "unknown") & (causes.likely == c)).mean()), tint(col), False))
     e = n["phase23"]
     efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, (_, col) in ATTRIBUTION_COLORS.items()]
-    unstated_before = float((causes.recorded_cause == "unknown").mean())
-    unknown_after = float(((causes.cause == "unknown") & (causes.likely == "unknown")).mean())
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
           "hatch.color": "white", "hatch.linewidth": 1.4}
     with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10.5, 6.2))
-        fig.subplots_adjust(left=0.17, right=0.97, top=0.84, bottom=0.25)
+        fig, ax = plt.subplots(figsize=(10.5, 4.9))
+        fig.subplots_adjust(left=0.17, right=0.97, top=0.82, bottom=0.2)
         ax.set_xlim(0, 1)
-        ax.set_ylim(-0.5, 6.3)
+        ax.set_ylim(0.4, 5.4)
         ax.axis("off")
-        fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop, once the unexplained stops are traced",
+        fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop",
                  fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.92, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
+        fig.text(0.03, 0.895, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
                  fontsize=10.5, color=MUTED, va="top")
-        rows = [(5.2, "As registered", f"{total:,} programs", recorded),
-                (4.1, "After tracing", "solid: sourced · light: likely", after),
-                (0.55, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
+        rows = [(4.7, "All stops", f"{total:,} programs", after),
+                (1.75, "Efficacy stops", f"{e['programs']:,} programs", efficacy)]
         for y, label, sub, segments in rows:
             stacked(ax, y, segments)
             ax.text(-0.025, y + 0.04, label, ha="right", va="bottom", fontsize=11, color=INK, fontweight="demibold")
             ax.text(-0.025, y - 0.02, sub, ha="right", va="top", fontsize=8, color=MUTED)
-        ax.text(0, 5.8, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
-        ax.text(1, 5.8, f"no stated reason: {unstated_before:.0%} → still unknown after tracing: {unknown_after:.0%}",
-                ha="right", fontsize=8.5, color=INK2)
-        ax.text(0, 1.15, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(0, 5.25, "ALL STOPS, BY CAUSE", fontsize=7.5, color=MUTED, fontweight="demibold")
+        ax.text(1, 5.25, "solid: sourced · light: likely", ha="right", fontsize=8.5, color=INK2)
+        ax.text(0, 2.3, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
         cause_handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
                                                  markeredgecolor=GRID if c == "unknown" else "white", label=l)
                          for c, (l, col) in CAUSE_COLORS.items()]
         leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
-                        bbox_to_anchor=(-0.18, 0.56), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
+                        bbox_to_anchor=(-0.18, 0.80), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
                         labelcolor=INK2)
         ax.add_artist(leg)
         eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
                                                 hatch="////" if g == "indeterminate" else None, label=l)
                        for g, (l, col) in ATTRIBUTION_COLORS.items()]
         ax.legend(handles=eff_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
-                  bbox_to_anchor=(-0.18, 0.02), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
+                  bbox_to_anchor=(-0.18, 0.2), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
                   labelspacing=0.6, labelcolor=INK2)
         save(fig, "efficacy_attribution")
 
