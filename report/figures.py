@@ -138,9 +138,12 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
 def efficacy_attribution():
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
     causes = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
+    continued = "development_continued"
+    causes = causes[(causes.cause != continued) & ~((causes.cause == "unknown") & (causes.likely == continued))]
+    shown = {c: v for c, v in CAUSE_COLORS.items() if c != continued}
     total = len(causes)
     after = []
-    for c, (_, col) in CAUSE_COLORS.items():
+    for c, (_, col) in shown.items():
         if c == "unknown":
             after.append((float(((causes.cause == "unknown") & (causes.likely == "unknown")).mean()), col, True))
             continue
@@ -172,11 +175,11 @@ def efficacy_attribution():
         ax.text(1, 5.25, "solid: sourced · light: likely", ha="right", fontsize=8.5, color=INK2)
         ax.text(0, 2.3, "STOPS FOR EFFICACY: WAS THE TARGET ENGAGED?", fontsize=7.5, color=MUTED, fontweight="demibold")
 
-        cause_handles = [matplotlib.lines.Line2D([], [], marker="o", linestyle="", markersize=9, markerfacecolor=col,
-                                                 markeredgecolor=GRID if c == "unknown" else "white", label=l)
-                         for c, (l, col) in CAUSE_COLORS.items()]
+        cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                  hatch="////" if c == "unknown" else None, label=l)
+                         for c, (l, col) in shown.items()]
         leg = ax.legend(handles=cause_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
-                        bbox_to_anchor=(-0.18, 0.80), handlelength=1.0, columnspacing=1.4, labelspacing=0.6,
+                        bbox_to_anchor=(-0.18, 0.80), handlelength=1.0, handleheight=1.0, columnspacing=1.4, labelspacing=0.6,
                         labelcolor=INK2)
         ax.add_artist(leg)
         eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
