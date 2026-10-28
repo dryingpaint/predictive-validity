@@ -129,3 +129,10 @@ with a source, origin `registry_pk` / `traced_pk`): an exposure failure is the
 same biology as a failure to engage, so it belongs in this breakdown and not in
 a separate cause. The labelling prompt is unchanged; its rubric codes a PK stop
 like any other (F1a when exposure was shown inadequate).
+
+For traced and PK stops the index trial is the program's last trial, not one the
+registry named as a failed efficacy test, so F9 ("not an efficacy test") does not
+remove them: they are coded by their pillars (engaged: F2; exposure or engagement
+inadequate, or dose-limited: F1a; otherwise U). A traced stop coded F6 or F8 takes
+safety or business as its stop cause in the stop-cause report, so the two analyses
+agree on which programs are efficacy stops.

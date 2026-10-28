@@ -26,7 +26,7 @@ import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
-from pipeline.attribution import stops
+from pipeline.attribution import EFFICACY_REASONS, TRACED_OVERRIDE, final_codes, stops
 from report import frame
 from report.disease_match import Mondo
 
@@ -356,18 +356,17 @@ POSITIVE = "positive readout, not advanced"
 
 
 def corrected_keys(modes: pd.DataFrame) -> set[str]:
-    """Stops whose registry reason the evidence does not support: the final efficacy-attribution code (the
-    web-search label where the bundle label was U) says the stop was not a failed efficacy test, or a positive
-    readout whose index trial's primary endpoint is not an efficacy endpoint (safety, PK or dose)."""
-    a = frame.query("""SELECT a.moiety_id, a.mondo_id, a.phase FROM preclin.efficacy_failure_attribution a
-                       LEFT JOIN preclin.efficacy_attribution_search s USING (moiety_id, mondo_id, phase)
-                       WHERE CASE WHEN a.primary_code = 'U' AND s.primary_code IS NOT NULL THEN s.primary_code
-                                  ELSE a.primary_code END = ANY(%s)""", (list(CORRECTED_CODES),))
-    keys = {f"{m}|{d}|{p}" for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)}
+    """Stops whose registry reason the evidence does not support: a registry efficacy stop whose final efficacy
+    attribution code is F6, F8 or F9, a registry PK stop coded F6 or F8, or a positive readout whose index
+    trial's primary endpoint is not an efficacy endpoint (safety, PK or dose)."""
+    code = final_codes().set_index("key").code
+    c = modes.key.map(code)
+    efficacy = modes.reason.isin(EFFICACY_REASONS) & c.isin(CORRECTED_CODES)
+    pk = modes.reason.eq("PK, dose or formulation") & c.isin(list(TRACED_OVERRIDE))
     pos = modes[modes.reason == POSITIVE]
     e = frame.query("SELECT nct_id FROM preclin.trial_endpoint WHERE purpose <> 'efficacy' AND nct_id = ANY(%s)",
                     (sorted(set(pos.nct_id.dropna())),))
-    return keys | set(pos[pos.nct_id.isin(set(e.nct_id))].key)
+    return set(modes[efficacy | pk].key) | set(pos[pos.nct_id.isin(set(e.nct_id))].key)
 
 
 def inference_cohort(modes: pd.DataFrame) -> pd.DataFrame:

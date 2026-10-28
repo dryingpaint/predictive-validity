@@ -66,6 +66,14 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     found = found.set_index("key")
     for col in SEARCHED_COLUMNS:
         d.loc[d.searched, col] = found.loc[d.key[d.searched], col].to_numpy()
+    # F9 (not an efficacy test) removes only registry efficacy stops; a traced or PK stop coded F9 is coded by its
+    # pillars, since its index trial is the program's last trial, not a trial the registry named as failed.
+    d["coded_as"] = d.primary_code
+    by_pillars = d.primary_code.eq("F9") & d.origin.ne("registry_efficacy")
+    p = d[by_pillars]
+    d.loc[by_pillars, "primary_code"] = np.select(
+        [p.engagement.isin(ENGAGED), p.engagement.eq("inadequate") | p.exposure.eq("inadequate") | p.dose_limited],
+        ["F2", "F1a"], "U")
     d["group"] = group(d.primary_code, d.engagement)
     d["bundle_group"] = group(d.bundle_code, d.bundle_engagement)
     d["oncology"] = d.bio_area.eq("oncology")
@@ -73,8 +81,10 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     d["n_phase1"] = [len(p["phase1_results"]) for p in d.input_payload]
     d["index_start"] = pd.to_datetime([p["index"]["start"] for p in d.input_payload], errors="coerce")
     unlabelled = eff[~eff.key.isin(d.key)][["key", "phase", "modality", "origin"]]
-    reclassified = d[d.primary_code.isin(CORRECTED_CODES)][["key", "phase", "primary_code", "origin"]]
-    return d[~d.primary_code.isin(CORRECTED_CODES)].drop(columns=["input_payload"]), unlabelled, reclassified
+    out = d.primary_code.isin(CORRECTED_CODES)
+    reclassified = d[out][["key", "phase", "primary_code", "origin"]]
+    d["recoded_by_pillars"] = by_pillars
+    return d[~out].drop(columns=["input_payload"]), unlabelled, reclassified
 
 
 def bundle_only(d: pd.DataFrame) -> pd.DataFrame:
@@ -144,7 +154,7 @@ def summary(d: pd.DataFrame, rng: np.random.Generator) -> dict:
     f1b = d[d.primary_code == "F1b"]
     return {"programs": int(len(d)), "entities": int(d.moiety_id.nunique()),
             "groups": keyed(shares(d, "group", GROUPS, rng)), "codes": keyed(shares(d, "primary_code", CODES, rng)),
-            "testable": split(d, rng),
+            "testable": split(d, rng), "recoded_by_pillars": int(d.recoded_by_pillars.sum()),
             "f1b_no_engagement_data": int((f1b.engagement == "no_human_data").sum())}
 
 
@@ -262,7 +272,6 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
         "all (Phase 2 and 3)": d, "Phase 2": d[d.phase == 2], "Phase 3": d[d.phase == 3],
         "efficacy recorded in the registry": d[d.origin == "registry_efficacy"],
         "traced from unexplained stops": d[d.origin.str.startswith("traced")],
-        "stopped for PK, dose or formulation": d[d.origin.str.endswith("pk")],
         "outside oncology": d[~d.oncology], "oncology": d[d.oncology],
         "sponsor-stated efficacy reason": d[d.reason == "efficacy: stated"],
         "primary endpoint missed": d[d.reason == "efficacy: primary endpoint not met"],

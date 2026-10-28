@@ -3,7 +3,8 @@
     python -m report.stop_causes
 
 Reads preclin.stop_cause (pipeline.stop_causes assemble), preclin.stop_signal and the held-out
-validation decisions; writes report/output/stop_causes/numbers.json and programs.csv. Intervals
+validation decisions; a stop traced to efficacy or PK that the efficacy attribution codes F6 or F8 takes
+that cause (pipeline.attribution.TRACED_OVERRIDE); writes report/output/stop_causes/numbers.json and programs.csv. Intervals
 resample entities.
 """
 from __future__ import annotations
@@ -15,6 +16,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
+from pipeline.attribution import TRACED_OVERRIDE, final_codes
 from pipeline.stop_causes import CAUSES, REGISTRY_CAUSE, TASK
 from report import frame
 from report.section1 import SEED
@@ -27,6 +29,12 @@ def load() -> pd.DataFrame:
     d = frame.query("""SELECT c.*, s.drug_continued_elsewhere, s.drug_approved_anywhere, s.sponsor_active_after,
                               s.target_peers_stopped, s.has_results
                        FROM preclin.stop_cause c JOIN preclin.stop_signal s USING (moiety_id, mondo_id, phase)""")
+    d["key"] = [f"{m}|{x}|{p}" for m, x, p in zip(d.moiety_id, d.mondo_id, d.phase)]
+    code = d.key.map(final_codes().set_index("key").code)
+    override = d.cause_source.eq("inferred") & d.cause.isin(["efficacy", "pk_formulation"]) & code.isin(list(TRACED_OVERRIDE))
+    d.loc[override, "cause"] = code[override].map(TRACED_OVERRIDE)
+    d.loc[override, "likely_cause"] = d.loc[override, "cause"]
+    d.loc[override, "cause_source"] = "corrected"
     d["recorded_cause"] = d.recorded_reason.map(REGISTRY_CAUSE).fillna("unknown")
     d["likely"] = d.likely_cause.fillna(d.cause)
     return d

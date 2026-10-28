@@ -25,6 +25,7 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 
 import numpy as np
+import pandas as pd
 from psycopg2.extras import execute_values
 
 from pipeline import llm
@@ -87,6 +88,22 @@ def cohort():
     out["origin"] = [REGISTRY_REASONS[r] if r in REGISTRY_REASONS else TRACED_CAUSES[traced[k]]
                      for r, k in zip(out.reason, out.key)]
     return out
+
+
+# A stop traced to efficacy or PK whose efficacy attribution finds toxicity (F6) or a business reason (F8) takes
+# that cause instead; F9 (not an efficacy test) removes only registry-recorded efficacy stops.
+TRACED_OVERRIDE = {"F6": "safety", "F8": "business_strategic"}
+
+
+def final_codes() -> pd.DataFrame:
+    """Final failure code of each labelled program: the web-search label where the bundle label was U."""
+    a = frame.query("""SELECT a.moiety_id, a.mondo_id, a.phase,
+                              CASE WHEN a.primary_code = 'U' AND s.primary_code IS NOT NULL THEN s.primary_code
+                                   ELSE a.primary_code END AS code
+                       FROM preclin.efficacy_failure_attribution a
+                       LEFT JOIN preclin.efficacy_attribution_search s USING (moiety_id, mondo_id, phase)""")
+    a["key"] = [subject_key(m, d, p) for m, d, p in zip(a.moiety_id, a.mondo_id, a.phase)]
+    return a[["key", "code"]]
 
 
 def search_names(name: str, codes: list[str]) -> list[str]:
