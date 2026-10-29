@@ -7,18 +7,19 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 19,
+   "rev": 52,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
-    "Predictive Validity in Drug Development > Introduction": "ee429dbc0d78340c",
+    "Predictive Validity in Drug Development > Introduction": "a1ffe24e727c6143",
     "Predictive Validity in Drug Development > A history of drug development": "4c5b9ebaa68785de",
-    "Predictive Validity in Drug Development > Industry failure modes": "a61041d014cd97a7",
-    "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "6004e647c43cfb0d",
-    "Predictive Validity in Drug Development > Industry failure modes > Phase transitions": "94a67d2d86cae903",
-    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "57bed0dab757070f",
-    "Predictive Validity in Drug Development > Industry failure modes > Tracing the stops the registry does not explain": "f27a12ea650dd7dd",
-    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "20dde1d1205c19a2",
-    "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "a4867ae9398658e4",
+    "Predictive Validity in Drug Development > Industry failure modes": "d1fb905635dc6aeb",
+    "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "9068cc6c5a95fa0d",
+    "Predictive Validity in Drug Development > Industry failure modes > Phase transitions": "f2ef37203ef57fbf",
+    "Predictive Validity in Drug Development > Industry failure modes > Change over time": "8f60f9a6efe1a65c",
+    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "bedb64326efe1909",
+    "Predictive Validity in Drug Development > Industry failure modes > Tracing the stops the registry does not explain": "a1e05b12d49374fe",
+    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "0e2efd5684f6a1f5",
+    "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "881fd9d5e10c1ebf",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "6540a2164a82e44c",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence lines and how they are matched": "2ce1d75322045605",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Relative success": "73a1f3eb267e83e6",
@@ -26,10 +27,10 @@
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What each line adds once the others are known": "0a441c66c785ac4e",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does the evidence predict which programs reach approval?": "d7c02b0781c0f950",
     "Predictive Validity in Drug Development > What translates to the clinic": "583721db50313e53",
-    "Predictive Validity in Drug Development > What translates to the clinic > Design": "fb3950234f030641",
-    "Predictive Validity in Drug Development > What translates to the clinic > Confirmatory hypotheses": "acabbf31592c611d",
+    "Predictive Validity in Drug Development > What translates to the clinic > Design": "3c1f0c3f3690ac08",
+    "Predictive Validity in Drug Development > What translates to the clinic > Confirmatory hypotheses": "5ff6bbf868c4a81b",
     "Predictive Validity in Drug Development > What translates to the clinic > Which evidence translates": "034c7ce642bb6cf0",
-    "Predictive Validity in Drug Development > What translates to the clinic > By endpoint": "fb14e2e40798b919",
+    "Predictive Validity in Drug Development > What translates to the clinic > By endpoint": "68c432f2e3249d0e",
     "Predictive Validity in Drug Development > What translates to the clinic > Direction of effect": "59c9331d8af52919",
     "Predictive Validity in Drug Development > What translates to the clinic > Models that predict: rules applied at Phase 2 entry": "e2129e368a2fd6ae",
     "Predictive Validity in Drug Development > What translates to the clinic > Verified case studies": "583012865a3c1f28",
@@ -37,8 +38,9 @@
     "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
     "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
     "Predictive Validity in Drug Development > Appendix > Data": "4dfa70bf2d67f830",
+    "Predictive Validity in Drug Development > Appendix > How LOA moves with each definition": "f9d44d40828b19eb",
     "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "94963fb66bbc62be",
-    "Predictive Validity in Drug Development > Appendix > Limitations": "c8d95b2c67016eb6",
+    "Predictive Validity in Drug Development > Appendix > Limitations": "be774df299593388",
     "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
    }
   },
@@ -71,24 +73,24 @@
  },
  "figures": {
   "report/output/figures/failure_modes_by_phase.png": {
-   "hash": "ec24094f1e11d820",
-   "blob": "blob/375c6615-fd4d",
-   "published": "blob/375c6615-fd4d"
+   "hash": "cd4a2c539f6646d1",
+   "blob": "blob/05e66259-6bb3",
+   "published": "blob/05e66259-6bb3"
   },
   "report/output/figures/efficacy_attribution.png": {
-   "hash": "4c1eb0054c2de938",
-   "blob": "blob/802ffa10-4377",
-   "published": "blob/802ffa10-4377"
+   "hash": "bb065f687ac558e6",
+   "blob": "blob/c70b33c7-9fd6",
+   "published": "blob/c70b33c7-9fd6"
   },
   "report/output/figures/loa_by_area.png": {
-   "hash": "65618f6850002aae",
-   "blob": "blob/890d9982-ca6d",
-   "published": "blob/890d9982-ca6d"
+   "hash": "a0e68bfc5a18cfa2",
+   "blob": "blob/d6f0d7f1-b2de",
+   "published": "blob/d6f0d7f1-b2de"
   },
   "report/output/figures/loa_by_modality.png": {
-   "hash": "0427b5d5fc0b7c9b",
-   "blob": "blob/0510c764-ee4c",
-   "published": "blob/0510c764-ee4c"
+   "hash": "f56f3cc5a77e5946",
+   "blob": "blob/b10b4c9f-12d9",
+   "published": "blob/b10b4c9f-12d9"
   },
   "report/output/figures/relative_success_by_evidence.png": {
    "hash": "31f24c70768c9603",
@@ -111,14 +113,19 @@
    "published": "blob/edad3b80-8bc3"
   },
   "report/output/figures/s3_endpoints.png": {
-   "hash": "66c7a3d782f525d2",
-   "blob": "blob/c56f6bd2-e6fd",
-   "published": "blob/c56f6bd2-e6fd"
+   "hash": "a4933c7578cba5d7",
+   "blob": "blob/ca7e67cd-b69f",
+   "published": "blob/ca7e67cd-b69f"
   },
   "report/output/figures/s3_rules.png": {
    "hash": "fe5e5c5d744c9510",
    "blob": "blob/7df98a67-0570",
    "published": "blob/7df98a67-0570"
+  },
+  "report/output/figures/efficacy_attribution_phase1.png": {
+   "hash": "f82372946e5ca76e",
+   "blob": "blob/8220ef95-a019",
+   "published": "blob/8220ef95-a019"
   }
  }
 }

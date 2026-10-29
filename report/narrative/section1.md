@@ -17,10 +17,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 
 {{TRANSITIONS_TABLE}}
 
-{{SECTION1_TRANSITIONS}}
-
-{{SENSITIVITY_TABLE}}
-
 ### Change over time
 
 {{SECTION1_TIME}}

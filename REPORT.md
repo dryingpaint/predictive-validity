@@ -71,26 +71,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 | Phase 3 → Approval | 34.9% (32.5–37.4), n=2,155 | 50.0% (47.0–52.9), n=1,423 | 52.4% |
 | **Phase 1 → Approval (LOA)** | **5.4%** (4.9–6.0) | **8.9%** (8.0–9.9) | **7.9%** (novel drugs 6.8%) |
 
-Programs developed in the US, the closest match to BIO's FDA-focused Biomedtracker programs, advance from Phase 1 at 57.0% (BIO 52.0%), from Phase 2 at 31.3% (BIO 28.9%) and from Phase 3 to approval at 50.0% (BIO 52.4%). Phase 2 remains the steepest single drop. Across all registered industry programs the Phase 3 rate falls to 34.9%, because many programs run only outside the US end in approvals elsewhere, which this report does not count.
-
-The likelihood of approval depends on choices a registry-based count has to make, and the table below shows how far each moves it. How long a program must be idle before it counts as suspended moves it little: 5.1% with a 12-month window and 5.9% with 36 months (24 in the headline). How shared trials are counted moves it most: if every shared trial (a healthy-volunteer study, a basket) counted as the start of every later indication of the drug, LOA would rise to 11.0%, mostly by crediting indication expansions begun at Phase 2 with a Phase 1 success. Programs that entered a phase in 2015–2025, many of them still running at the snapshot, give 9.8% for US-developed programs and 7.0% for all; the success rate counts only programs that have advanced or stopped, so recent entrants lean on the ones that resolved first. Vaccines are left out of the headline figures: annual and variant strain updates are licensed as supplements to the parent product, so registry entities for updated formulations never reach an approval of their own (LOA with vaccines included: 4.8%).
-
-
-| Cohort or definition | Ph1→2 | Ph2→3 | Ph3→approval | LOA (95% CI) |
-| :---- | :---- | :---- | :---- | :---- |
-| All programs | 54.8% | 28.4% | 34.9% | 5.4% (4.9–6.0) |
-| Programs with a US-sited industry trial in the phase | 57.0% | 31.3% | 50.0% | 8.9% (8.0–9.9) |
-| Entity not yet FDA-approved at phase entry | 54.5% | 26.9% | 35.8% | 5.3% (4.6–5.9) |
-| Entity already FDA-approved for another disease | 55.8% | 37.9% | 32.5% | 6.9% (5.4–8.7) |
-| Suspension lag 12 months | 53.9% | 27.7% | 34.2% | 5.1% (4.6–5.7) |
-| Suspension lag 18 months | 54.2% | 28.0% | 34.6% | 5.2% (4.7–5.8) |
-| Suspension lag 36 months | 56.0% | 29.2% | 36.2% | 5.9% (5.3–6.6) |
-| Uncertain approvals counted as approved | 54.8% | 28.4% | 35.0% | 5.4% (4.9–6.1) |
-| Shared trials mark entry for every program of the entity | 74.2% | 44.6% | 33.4% | 11.0% (9.4–12.8) |
-| Including vaccines | 53.3% | 27.9% | 32.6% | 4.8% (4.3–5.4) |
-| Phase entry 2015-2025 (many programs still running) | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
-| Phase entry 2015-2025, developed in the US | 54.4% | 33.8% | 53.1% | 9.8% (8.7–10.9) |
-
 ### Change over time
 
 Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.1% of the time; those that entered in 2016–2019, 6.9% (7.3% and 10.0% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 25.0% to 30.7% and Phase 3 from 28.4% to 42.4% (44.2% to 55.9% for US-developed programs), while Phase 1 success fell slightly, from 57.6% to 52.7%.
@@ -596,6 +576,23 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 
 Per-source detail (who compiles each source, what the pipeline keeps, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
+
+### How LOA moves with each definition
+
+| Cohort or definition | Ph1→2 | Ph2→3 | Ph3→approval | LOA (95% CI) |
+| :---- | :---- | :---- | :---- | :---- |
+| All programs | 54.8% | 28.4% | 34.9% | 5.4% (4.9–6.0) |
+| Programs with a US-sited industry trial in the phase | 57.0% | 31.3% | 50.0% | 8.9% (8.0–9.9) |
+| Entity not yet FDA-approved at phase entry | 54.5% | 26.9% | 35.8% | 5.3% (4.6–5.9) |
+| Entity already FDA-approved for another disease | 55.8% | 37.9% | 32.5% | 6.9% (5.4–8.7) |
+| Suspension lag 12 months | 53.9% | 27.7% | 34.2% | 5.1% (4.6–5.7) |
+| Suspension lag 18 months | 54.2% | 28.0% | 34.6% | 5.2% (4.7–5.8) |
+| Suspension lag 36 months | 56.0% | 29.2% | 36.2% | 5.9% (5.3–6.6) |
+| Uncertain approvals counted as approved | 54.8% | 28.4% | 35.0% | 5.4% (4.9–6.1) |
+| Shared trials mark entry for every program of the entity | 74.2% | 44.6% | 33.4% | 11.0% (9.4–12.8) |
+| Including vaccines | 53.3% | 27.9% | 32.6% | 4.8% (4.3–5.4) |
+| Phase entry 2015-2025 (many programs still running) | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
+| Phase entry 2015-2025, developed in the US | 54.4% | 33.8% | 53.1% | 9.8% (8.7–10.9) |
 
 ### How each label was made, and how good it is
 
