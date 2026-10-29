@@ -2,7 +2,7 @@ This report rebuilds both questions from primary records. We took every interven
 
 The report has three parts:
 
-1. **Industry failure modes.** Phase transitions, likelihood of approval (LOA) and the reasons programs stop, for programs that entered each phase in 2015–2025: an updated companion to BIO's *Clinical Development Success Rates 2011–2020*.
+1. **Industry failure modes.** Phase transitions, likelihood of approval (LOA) and the reasons programs stop, for programs that entered each phase in 2008–2019: an updated companion to BIO's *Clinical Development Success Rates 2011–2020*.
 2. **Predictive power of preclinical evidence.** For programs aimed at a human protein target, whether the target had human genetic, somatic, animal-model, expression, pathway or functional-screen evidence for the program's disease, as known before the program entered the phase, and how much each line changes the chance of approval.
 3. **What translates to the clinic.** Which kinds of evidence, at what strength and in which direction, predicted that a Phase 2 program would advance; on which trial endpoints the advantage shows; and which decision rules applied at Phase 2 entry predicted well enough to call a model, with verified case studies.
 
