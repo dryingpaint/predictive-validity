@@ -153,7 +153,7 @@ def attribution_sensitivity_table() -> str:
                         "Mechanism tested": df.testable.map("{:,}".format),
                         "Not engaged, of tested (95% CI)": [pct(v, 0) + ci(lo, hi, 0) for v, lo, hi
                                                             in zip(df.not_engaged_of_testable, df.lo, df.hi)],
-                        "Indeterminate": df.indeterminate.map(lambda v: pct(v, 0))})
+                        "No engagement data": df.no_engagement_data.map(lambda v: pct(v, 0))})
     return table(out)
 
 

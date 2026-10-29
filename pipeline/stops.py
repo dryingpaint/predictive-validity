@@ -1,11 +1,12 @@
-"""Stopped programs, the reason the registry gives each, and the efficacy-attribution label of each stop for
-efficacy or exposure: the definitions pipeline.stop_causes, pipeline.attribution and the reports share.
+"""Stopped programs, the reason the registry gives each, why each stop for efficacy or exposure failed, and the
+vocabulary of preclin.stop: the definitions pipeline.stop_causes, pipeline.attribution and the reports share.
 
 A stopped program is one Section 1 records as suspended (report.section1.failure_modes), keyed by (entity,
 disease, phase). Its stop is for efficacy or exposure when the registry says so, or when stop-cause inference
 traced it there with a source. Each such stop gets an efficacy-attribution label (pipeline.attribution); the web
 search label replaces a bundle label of U. The label settles the stop's cause where it contradicts it: F6 is
-safety, F8 is business, and F9 (not an efficacy test) sends a registry efficacy stop back to inference.
+safety, F8 is a sponsor decision, and F9 (not an efficacy test) sends a registry efficacy stop back to inference.
+The model's failure codes stay inside the decisions; preclin.stop names them (SUBCAUSE, DETAIL).
 """
 from __future__ import annotations
 
@@ -29,12 +30,27 @@ REGISTRY_CAUSE = {**{r: "efficacy" for r in EFFICACY_REASONS}, "safety": "safety
                   "enrollment, operational or regulatory": "operational", POSITIVE: "positive_not_advanced"}
 EFFICACY_CAUSES = ("efficacy", "pk_formulation")
 ORIGINS = {"efficacy": "efficacy", "pk_formulation": "pk"}
-CODE_CAUSE = {"F6": "safety", "F8": "business_strategic"}  # attribution codes that settle a stop's cause
+# The cause in preclin.stop of each cause the inference names: PK joins efficacy (an exposure failure is a failure
+# to engage), business and company events are both the sponsor's decision, and continued development is no stop.
+CAUSE = {"efficacy": "efficacy", "pk_formulation": "efficacy", "safety": "safety",
+         "business_strategic": "sponsor_decision", "company_event": "sponsor_decision", "operational": "operational",
+         "positive_not_advanced": "positive_not_advanced", "development_continued": "not_stopped",
+         "unknown": "unknown"}
+CAUSES = list(dict.fromkeys(CAUSE.values()))
+CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes that settle a stop's cause
+# Why efficacy failed, by attribution code. F3 and F4 count as engaged without benefit only when engagement was
+# shown or inferred, otherwise as trial design (subcause()). F6 settles the stop as safety and F8 as a sponsor
+# decision, and F9 is coded by its pillars (pillar_code), so not_a_failure only names other labellers' codes.
+SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
+            "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F6": "off_target_toxicity", "F7": "trial_design",
+            "F8": "not_a_failure", "F9": "not_a_failure", "U": "no_engagement_data"}
+EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
+DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",
+          "F7": "trial_could_not_answer"}
 INFERENCE_TASK, INFERENCE_VERSION = "stop_cause_inference", "v2"
 ENGAGED = ("adequate", "inferred_adequate")
 RELATED_DISEASE = 0.5  # MONDO Lin similarity at which another disease counts as related
-LABEL_COLUMNS = ["exposure", "engagement", "pathway", "engagement_in_disease", "engagement_before_index",
-                 "dose_limited", "primary_code", "secondary_codes", "confidence", "sources", "llm_decision_id"]
+ATTRIBUTION_TASK, SEARCH_TASK, LABEL_VERSION = "efficacy_failure_attribution", "efficacy_attribution_search", "v1"
 
 
 def subject_key(moiety_id: int, mondo_id: str | None, phase: int) -> str:
@@ -79,18 +95,23 @@ def cohort(modes: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def decided(task: str) -> pd.DataFrame:
+    """The latest validated efficacy-attribution decision of each stop for a task: key, llm_decision_id and the
+    decision's fields."""
+    d = llm.latest_decisions(task, LABEL_VERSION)
+    return pd.concat([d[["key", "llm_decision_id"]], pd.DataFrame(list(d.parsed_output), index=d.index)], axis=1)
+
+
 def labels() -> pd.DataFrame:
     """The efficacy-attribution label of each labelled stop: the web-search label where the bundle label was U,
     with the bundle's code and engagement kept as bundle_code and bundle_engagement."""
-    a = frame.query("SELECT * FROM preclin.efficacy_failure_attribution")
-    s = frame.query("SELECT * FROM preclin.efficacy_attribution_search")
-    a["key"], s["key"] = keys(a), keys(s)
+    a, s = decided(ATTRIBUTION_TASK), decided(SEARCH_TASK).set_index("key")
     a["bundle_code"], a["bundle_engagement"] = a.primary_code, a.engagement
-    a["searched"] = a.primary_code.eq("U") & a.key.isin(s.key)
-    s = s.set_index("key")
-    for col in LABEL_COLUMNS:
+    a["searched"] = a.primary_code.eq("U") & a.key.isin(s.index)
+    a["quote"] = ""
+    for col in s.columns:
         a.loc[a.searched, col] = s.loc[a.key[a.searched], col].to_numpy()
-    return a.drop(columns=["moiety_id", "mondo_id", "phase"])
+    return a
 
 
 def pillar_code(d: pd.DataFrame) -> pd.Series:
@@ -101,6 +122,25 @@ def pillar_code(d: pd.DataFrame) -> pd.Series:
                          d.engagement.eq("inadequate") | d.exposure.eq("inadequate") | d.dose_limited.astype(bool)],
                         ["F2", "F1a"], "U")
     return d.primary_code.where(~by_pillars, pd.Series(pillars, index=d.index))
+
+
+def subcause(code: pd.Series, engagement: pd.Series) -> pd.Series:
+    """Why efficacy failed, from the attribution code and engagement."""
+    return code.map(SUBCAUSE).where(~(code.isin(["F3", "F4"]) & ~engagement.isin(ENGAGED)), "trial_design")
+
+
+def detail(code: pd.Series, dose_limited: pd.Series) -> pd.Series:
+    """The finer reason under subcause(): F1a is split by whether tolerability capped the dose."""
+    f1a = np.where(dose_limited.astype(bool), "dose_capped", "exposure_or_engagement_too_low")
+    return code.map(DETAIL).where(code.ne("F1a"), pd.Series(f1a, index=code.index))
+
+
+def fate(sig: pd.DataFrame) -> pd.Series:
+    """What the drug and its sponsor did after a stop no source explains: the subcause of an unknown cause."""
+    return pd.Series(np.select([sig.sponsor_active_after.eq(False), sig.drug_approved_anywhere.astype(bool),
+                                sig.drug_continued_elsewhere.astype(bool)],
+                               ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere"],
+                               "drug_dropped"), index=sig.index)
 
 
 def settled(modes: pd.DataFrame, lab: pd.DataFrame) -> dict[str, str]:

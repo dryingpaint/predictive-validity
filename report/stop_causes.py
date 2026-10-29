@@ -2,12 +2,13 @@
 
     python -m report.stop_causes
 
-Reads preclin.stop_cause (pipeline.stop_causes assemble), preclin.stop_signal and the held-out validation
-decisions; writes report/output/stop_causes/numbers.json and programs.csv. Stops are traced for phase entries in
+Reads preclin.stop (pipeline.stop_causes assemble), preclin.stop_signal and the held-out validation decisions;
+writes report/output/stop_causes/numbers.json and programs.csv. Stops are traced for phase entries in
 report.windows.TRACING; the numbers are for entries in the Section 1 headline window (report.windows.SECTION1),
 with the recent window (RECENT) and each of SECTION1_PERIODS alongside. programs.csv holds every traced stop with its
-phase entry, `headline`, and `shown`, the cause it takes in the figure (SHOWN), empty for a program whose development
-continued.
+phase entry, `headline`, and `shown`, the cause it takes in the figure (SHOWN): the cause, or the guess where no source
+states it; empty for a program that did not stop. A stop is `traced` when its cause did not come straight from the
+registry: no usable reason was stated, the evidence overturned it, or inference was run on it.
 """
 from __future__ import annotations
 
@@ -18,37 +19,36 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
-from pipeline.stop_causes import CAUSES, VALIDATE_METHOD
-from pipeline.stops import REGISTRY_CAUSE, keys
+from pipeline.stop_causes import VALIDATE_METHOD
+from pipeline.stops import CAUSE, CAUSES, REGISTRY_CAUSE, UNSTATED, inferred_causes, keys
 from report import frame
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 from report.section3 import jsonable
 
 OUT = os.path.join(frame.REPO, "report", "output", "stop_causes")
 MAIN_PHASES = (2, 3)  # the headline numbers; Phase 1 stops are reported apart
-CAUSE_LABELS = {"efficacy": "Efficacy", "safety": "Safety", "pk_formulation": "PK or formulation",
-                "business_strategic": "Business or strategic",
-                "company_event": "Company acquired, merged, unfunded or closed",
+CAUSE_LABELS = {"efficacy": "Efficacy or exposure (PK, dose, formulation)", "safety": "Safety",
+                "sponsor_decision": "Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure)",
                 "operational": "Operational (enrollment, sites, supply, regulatory)",
-                "positive_not_advanced": "Positive readout, not yet advanced",
-                "development_continued": "Did not actually stop", "unknown": "Unknown"}
-# The figure's categories: PK joins efficacy (an exposure failure is a failure to engage), company events join
-# business, and a program whose development continued did not stop.
-SHOWN = {"efficacy": "Efficacy or exposure (PK, dose, formulation)", "safety": CAUSE_LABELS["safety"],
-         "business_strategic": "Business, strategic or company event", "operational": "Operational",
-         "positive_not_advanced": CAUSE_LABELS["positive_not_advanced"], "unknown": CAUSE_LABELS["unknown"]}
-SHOWN_AS = {"pk_formulation": "efficacy", "company_event": "business_strategic", "development_continued": None}
+                "positive_not_advanced": "Positive readout, not yet advanced", "unknown": "Unknown",
+                "not_stopped": "Did not actually stop"}
+SHOWN = {"efficacy": CAUSE_LABELS["efficacy"], "safety": "Safety", "sponsor_decision": "Sponsor decision",
+         "operational": "Operational", "positive_not_advanced": CAUSE_LABELS["positive_not_advanced"],
+         "unknown": "Unknown"}  # the figure's categories; a program that did not stop is left out
 
 
 def load() -> pd.DataFrame:
     d = frame.query("""SELECT c.*, s.phase_entry, s.drug_continued_elsewhere, s.sponsor_active_after
-                       FROM preclin.stop_cause c JOIN preclin.stop_signal s USING (moiety_id, mondo_id, phase)""")
+                       FROM preclin.stop c JOIN preclin.stop_signal s USING (moiety_id, mondo_id, phase)""")
     d["key"] = keys(d)
     d["phase_entry"] = pd.to_datetime(d.phase_entry)
     d["headline"] = within(d, SECTION1) & d.phase.isin(MAIN_PHASES)
-    d["recorded_cause"] = d.recorded_reason.map(REGISTRY_CAUSE).fillna("unknown")
-    d["likely"] = d.likely_cause.fillna(d.cause)
-    d["shown"] = d.likely.map(lambda c: SHOWN_AS.get(c, c))
+    d["recorded_cause"] = d.registry_reason.map(REGISTRY_CAUSE).map(CAUSE).fillna("unknown")
+    inferred = set(inferred_causes().llm_decision_id)
+    d["traced"] = d.registry_reason.isin(UNSTATED) | d.recorded_cause.ne(d.cause) | \
+        d.decision_ids.map(lambda ids: bool(inferred & set(ids)))
+    d["likely"] = d.guess.where(d.cause.eq("unknown") & d.guess.notna(), d.cause)
+    d["shown"] = d.likely.where(d.likely.ne("not_stopped"))
     return d
 
 
@@ -69,13 +69,13 @@ def validation() -> dict:
         return {"n": 0}
     v = pd.DataFrame(llm.decisions(run.run[0]), columns=["key", "llm_decision_id", "parsed_output"])
     v["key"] = v.key.str.removesuffix("|heldout")
-    reasons = frame.query("SELECT moiety_id, mondo_id, phase, recorded_reason FROM preclin.stop_cause "
-                          "WHERE cause_source = 'registry'")
+    reasons = frame.query("SELECT moiety_id, mondo_id, phase, registry_reason FROM preclin.stop "
+                          "WHERE registry_reason = ANY(%s)", (list(REGISTRY_CAUSE),))
     reasons["key"] = keys(reasons)
-    v = v.merge(reasons[["key", "recorded_reason"]], on="key")
-    v["truth"] = v.recorded_reason.map(REGISTRY_CAUSE)
-    v["cause"] = [o["cause"] for o in v.parsed_output]
-    v["likely"] = [o["likely_cause"] for o in v.parsed_output]
+    v = v.merge(reasons[["key", "registry_reason"]], on="key")
+    v["truth"] = v.registry_reason.map(REGISTRY_CAUSE).map(CAUSE)
+    v["cause"] = [CAUSE[o["cause"]] for o in v.parsed_output]
+    v["likely"] = [CAUSE[o["likely_cause"]] for o in v.parsed_output]
     known = v[v.cause != "unknown"]
     return {"n": int(len(v)), "resolved": float((v.cause != "unknown").mean()),
             "cause_accuracy_resolved": float((known.cause == known.truth).mean()) if len(known) else None,
@@ -94,10 +94,10 @@ def main() -> None:
     traced.drop(columns=["sources"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     main = traced[traced.phase.isin(MAIN_PHASES)]
     d = traced[traced.headline]
-    infer = d[d.cause_source != "registry"]
+    infer = d[d.traced]
     stopped = lambda x: x[x.shown.notna()]
     p1 = traced[within(traced, SECTION1) & traced.phase.eq(1)]
-    p1_infer = p1[p1.cause_source != "registry"]
+    p1_infer = p1[p1.traced]
     n = {"traced": {"stops": int(len(main)), "phase1": int(traced.phase.eq(1).sum()),
                     "from": int(traced.phase_entry.min().year), "to": int(traced.phase_entry.max().year)},
          "window": {"from": SECTION1[0].year, "to": SECTION1[1].year},
@@ -119,8 +119,8 @@ def main() -> None:
                       "resolved_n": int((infer.cause != "unknown").sum()),
                       "likely_resolved": float((infer.likely != "unknown").mean()),
                       "cause": infer.cause.value_counts().to_dict()},
-         "signals": {c: {"sponsor_inactive": float((g.sponsor_active_after == False).mean())}  # noqa: E712
-                     for c, g in infer.groupby("likely")},
+         "signals": {c: {"sponsor_inactive": float(g.sponsor_active_after.eq(False).mean())}
+                     for c, g in [*infer.groupby("likely"), ("company_event", infer[infer.subcause.eq("company_event")])]},
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)

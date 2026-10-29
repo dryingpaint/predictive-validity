@@ -94,3 +94,24 @@ def test_search_label_may_cite_a_page_it_retrieved():
 def test_search_label_is_held_to_the_bundle_rules(changes):
     with pytest.raises(ValueError):
         attribution.validate_search(bundle(), searched(**changes))
+
+
+def test_an_efficacy_stop_is_named_by_why_it_failed():
+    d = pd.DataFrame({"code": ["F1a", "F1a", "F1b", "F3", "F3", "F5", "U"],
+                      "engagement": ["inadequate", "adequate", "no_human_data", "adequate", "no_human_data",
+                                     "adequate", "no_human_data"],
+                      "dose_limited": [False, True, False, False, False, False, False]})
+    assert stops.subcause(d.code, d.engagement).tolist() == [
+        "not_engaged", "not_engaged", "not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset",
+        "no_engagement_data"]
+    assert stops.detail(d.code, d.dose_limited).fillna("").tolist() == [
+        "exposure_or_engagement_too_low", "dose_capped", "other_drug_on_target_worked", "wrong_population",
+        "wrong_population", "", ""]
+
+
+def test_an_unexplained_stop_is_named_by_what_happened_next():
+    sig = pd.DataFrame({"sponsor_active_after": [False, True, True, True, None],
+                        "drug_approved_anywhere": [True, True, False, False, False],
+                        "drug_continued_elsewhere": [True, True, True, False, False]})
+    assert stops.fate(sig).tolist() == ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere",
+                                        "drug_dropped", "drug_dropped"]
