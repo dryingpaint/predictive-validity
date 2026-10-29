@@ -4,8 +4,9 @@
 
 Unit: a development program = (molecular entity, development indication). For
 each phase p, the cohort is programs whose first industry-sponsored phase-p
-trial started 2015-2025, that had not entered a later phase earlier, and whose
-entity was not already FDA-approved for the disease (a lifecycle program).
+trial started in WINDOW (2008-2019, so every entry has at least six years to
+the snapshot), that had not entered a later phase earlier, and whose entity was
+not already FDA-approved for the disease (a lifecycle program).
 Each program then either advanced (a later-phase trial of its own, by any
 sponsor, started, or FDA approval for the disease), was suspended (none of its
 own trials, by any sponsor, or of the trials that marked its Phase 1 entry,
@@ -37,7 +38,10 @@ from report import bio, frame
 
 OUT = os.path.join(frame.REPO, "report", "output", "section1")
 LAG_MONTHS = 24
-MATURE_WINDOW = (date(2015, 1, 1), date(2019, 12, 31))
+WINDOW = (date(2008, 1, 1), date(2019, 12, 31))  # headline phase entries: at least six years to the snapshot
+RECENT_WINDOW = frame.WINDOW  # entries through 2025, many of them still running at the snapshot
+PERIODS = [(date(2008, 1, 1), date(2011, 12, 31)), (date(2012, 1, 1), date(2015, 12, 31)),
+           (date(2016, 1, 1), date(2019, 12, 31))]
 HORIZON_YEARS = 6.0
 N_BOOT = 1000
 SEED = 20261020
@@ -331,12 +335,12 @@ TERMINATION_GROUPS = {"efficacy_futility": "efficacy", "safety_tolerability": "s
 
 
 def termination_reasons() -> dict:
-    """Stated reasons of industry Phase 1-3 trials started 2015-2025 that stopped
+    """Stated reasons of industry Phase 1-3 trials started in WINDOW that stopped
     early or were withdrawn with a reason given: the trial-level denominator the
     draft report used."""
     t = frame.query("""SELECT o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
                        WHERE o.execution <> 'completed' AND o.stop_reason NOT IN ('not_stated', 'not_applicable')
-                         AND s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s""", frame.WINDOW)
+                         AND s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s""", WINDOW)
     groups = t.stop_reason.map(TERMINATION_GROUPS).value_counts(normalize=True)
     return {"n": int(len(t)), **{g: float(v) for g, v in groups.items()}}
 
@@ -355,7 +359,7 @@ def scale(rows: pd.DataFrame) -> dict:
                (SELECT count(*) FROM preclin.dev_program) AS programs,
                (SELECT count(*) FROM preclin.dev_program_approval) AS approval_judgements,
                (SELECT count(*) FROM preclin.dev_program_approval WHERE approved = 'uncertain') AS approvals_uncertain
-        """, frame.WINDOW).iloc[0]
+        """, WINDOW).iloc[0]
     out = {k: int(v) for k, v in q.items()}
     out.update({"cohort_programs": int(rows.program_id.nunique()), "cohort_entities": int(rows.moiety_id.nunique()),
                 "cohort_rows_by_phase": {int(k): int(v) for k, v in rows[~rows.credited].phase.value_counts().sort_index().items()},
@@ -364,11 +368,34 @@ def scale(rows: pd.DataFrame) -> dict:
     return out
 
 
+def by_period(rows: pd.DataFrame) -> pd.DataFrame:
+    """Phase rates and LOA of the programs entering a phase in each of PERIODS, for all
+    programs and for US-developed ones (us_ columns)."""
+    out = []
+    for lo, hi in PERIODS:
+        g = rows[rows.entry.between(pd.Timestamp(lo), pd.Timestamp(hi))]
+        us = {f"us_{k}": v for k, v in summarize(g[g.us_site], "").items() if k != "label"}
+        out.append({**summarize(g, f"{lo.year}-{hi.year}"), **us})
+    return pd.DataFrame(out)
+
+
+def by_year(rows: pd.DataFrame) -> pd.DataFrame:
+    """Per phase and entry year: advanced, suspended and still-running programs, and the
+    BIO-style rate among the resolved."""
+    r = rows.groupby(["phase", "entry_year"]).event.value_counts().unstack(fill_value=0)
+    for col in ("advanced", "suspended", "censored"):
+        if col not in r:
+            r[col] = 0
+    r = r.assign(rate=r.advanced / (r.advanced + r.suspended),
+                 censored_share=r.censored / (r.advanced + r.suspended + r.censored))
+    return r.reset_index()[["phase", "entry_year", "advanced", "suspended", "censored", "rate", "censored_share"]]
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap)
+    rows = phase_rows(progs, trials, snap, window=WINDOW)
     rows.to_csv(os.path.join(OUT, "phase_cohort_rows.csv"), index=False)
 
     results = [summarize(rows, "all programs")]
@@ -376,15 +403,16 @@ def main() -> None:
     results.append(summarize(rows[rows.novel], "entity not yet FDA-approved at phase entry"))
     results.append(summarize(rows[~rows.novel], "entity already FDA-approved for another disease"))
     for lag in (12, 18, 36):
-        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag), f"suspension lag {lag} months"))
-    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True),
+        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag, window=WINDOW),
+                                 f"suspension lag {lag} months"))
+    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True, window=WINDOW),
                              "uncertain approvals counted as approved"))
-    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True),
+    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True, window=WINDOW),
                              "shared trials mark entry for every program of the entity"))
-    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True), "including vaccines"))
-    mature = phase_rows(progs, trials, snap, window=MATURE_WINDOW)
-    results.append(summarize(mature, "phase entry 2015-2019 (at least six years of follow-up)"))
-    results.append(summarize(mature[mature.us_site], "phase entry 2015-2019, developed in the US"))
+    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True, window=WINDOW), "including vaccines"))
+    recent = phase_rows(progs, trials, snap, window=RECENT_WINDOW)
+    results.append(summarize(recent, "phase entry 2015-2025 (many programs still running)"))
+    results.append(summarize(recent[recent.us_site], "phase entry 2015-2025, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     for column, name, skip in (("bio_area", "area", "unmapped"), ("modality", "modality", "unknown")):
@@ -398,8 +426,9 @@ def main() -> None:
                           else summarize(g, value))
         pd.DataFrame(strata).sort_values("loa", ascending=False).to_csv(
             os.path.join(OUT, f"loa_by_{name}.csv"), index=False)
-    by_year = rows[rows.phase == 1].groupby("entry_year").event.value_counts().unstack(fill_value=0)
-    by_year.to_csv(os.path.join(OUT, "ph1_outcome_by_entry_year.csv"))
+    periods = by_period(rows)
+    periods.to_csv(os.path.join(OUT, "loa_by_period.csv"), index=False)
+    by_year(rows).to_csv(os.path.join(OUT, "rates_by_entry_year.csv"), index=False)
 
     modes = failure_modes(rows, progs, trials, frame.trial_outcomes())
     modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
@@ -437,8 +466,8 @@ def main() -> None:
                                .itertuples(index=False)),
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
-               "shared_entry": results[8], "with_vaccines": results[9], "mature": results[10],
-               "mature_us": results[11],
+               "shared_entry": results[8], "with_vaccines": results[9], "recent": results[10],
+               "recent_us": results[11], "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
                "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)

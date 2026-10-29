@@ -71,7 +71,7 @@ layer for every number in the report.
   Approvals before 2008 are taken from the label and placed at the entity's first FDA
   approval, the earliest date they could have happened.
 - **Phase cohorts and outcomes.** For phase p, programs whose first industry-sponsored
-  phase-p trial started 2015–2025 (shared trials count only for Phase 1 of the lead
+  phase-p trial started 2008–2019 (shared trials count only for Phase 1 of the lead
   indication), had not already entered a later phase, and were not already approved for the
   disease (lifecycle programs are excluded). Advanced = a later-phase trial of the program's
   own disease started (any sponsor: a cooperative-group trial of a company's drug is
