@@ -4,7 +4,7 @@
 
 Unit: a development program = (molecular entity, development indication). For
 each phase p, the cohort is programs whose first industry-sponsored phase-p
-trial started in WINDOW (2008-2019, so every entry has at least six years to
+trial started in windows.SECTION1 (2008-2019, so every entry has at least six years to
 the snapshot), that had not entered a later phase earlier, and whose entity was
 not already FDA-approved for the disease (a lifecycle program).
 Each program then either advanced (a later-phase trial of its own, by any
@@ -35,13 +35,10 @@ from scipy.stats import spearmanr
 
 from pipeline.fda import LETTERS_FROM
 from report import bio, frame
+from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 
 OUT = os.path.join(frame.REPO, "report", "output", "section1")
 LAG_MONTHS = 24
-WINDOW = (date(2008, 1, 1), date(2019, 12, 31))  # headline phase entries: at least six years to the snapshot
-RECENT_WINDOW = frame.WINDOW  # entries through 2025, many of them still running at the snapshot
-PERIODS = [(date(2008, 1, 1), date(2011, 12, 31)), (date(2012, 1, 1), date(2015, 12, 31)),
-           (date(2016, 1, 1), date(2019, 12, 31))]
 HORIZON_YEARS = 6.0
 N_BOOT = 1000
 SEED = 20261020
@@ -77,7 +74,7 @@ def activity(trials: pd.DataFrame, snap: date) -> tuple[pd.Series, pd.Series]:
 
 
 def phase_rows(progs: pd.DataFrame, trials: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS,
-               uncertain_as_approved: bool = False, window: tuple[date, date] = frame.WINDOW,
+               uncertain_as_approved: bool = False, *, window: tuple[date, date],
                shared_entry: bool = False, vaccines: bool = False) -> pd.DataFrame:
     """One row per (program, phase) in that phase's cohort; phase entry must fall in `window`.
     shared_entry=True lets every shared trial count for every program, for entry,
@@ -335,12 +332,12 @@ TERMINATION_GROUPS = {"efficacy_futility": "efficacy", "safety_tolerability": "s
 
 
 def termination_reasons() -> dict:
-    """Stated reasons of industry Phase 1-3 trials started in WINDOW that stopped
+    """Stated reasons of industry Phase 1-3 trials started in SECTION1 that stopped
     early or were withdrawn with a reason given: the trial-level denominator the
     draft report used."""
     t = frame.query("""SELECT o.stop_reason FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
                        WHERE o.execution <> 'completed' AND o.stop_reason NOT IN ('not_stated', 'not_applicable')
-                         AND s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s""", WINDOW)
+                         AND s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s""", SECTION1)
     groups = t.stop_reason.map(TERMINATION_GROUPS).value_counts(normalize=True)
     return {"n": int(len(t)), **{g: float(v) for g, v in groups.items()}}
 
@@ -359,7 +356,7 @@ def scale(rows: pd.DataFrame) -> dict:
                (SELECT count(*) FROM preclin.dev_program) AS programs,
                (SELECT count(*) FROM preclin.dev_program_approval) AS approval_judgements,
                (SELECT count(*) FROM preclin.dev_program_approval WHERE approved = 'uncertain') AS approvals_uncertain
-        """, WINDOW).iloc[0]
+        """, SECTION1).iloc[0]
     out = {k: int(v) for k, v in q.items()}
     out.update({"cohort_programs": int(rows.program_id.nunique()), "cohort_entities": int(rows.moiety_id.nunique()),
                 "cohort_rows_by_phase": {int(k): int(v) for k, v in rows[~rows.credited].phase.value_counts().sort_index().items()},
@@ -369,10 +366,10 @@ def scale(rows: pd.DataFrame) -> dict:
 
 
 def by_period(rows: pd.DataFrame) -> pd.DataFrame:
-    """Phase rates and LOA of the programs entering a phase in each of PERIODS, for all
+    """Phase rates and LOA of the programs entering a phase in each of SECTION1_PERIODS, for all
     programs and for US-developed ones (us_ columns)."""
     out = []
-    for lo, hi in PERIODS:
+    for lo, hi in SECTION1_PERIODS:
         g = rows[rows.entry.between(pd.Timestamp(lo), pd.Timestamp(hi))]
         us = {f"us_{k}": v for k, v in summarize(g[g.us_site], "").items() if k != "label"}
         out.append({**summarize(g, f"{lo.year}-{hi.year}"), **us})
@@ -395,7 +392,7 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap, window=WINDOW)
+    rows = phase_rows(progs, trials, snap, window=SECTION1)
     rows.to_csv(os.path.join(OUT, "phase_cohort_rows.csv"), index=False)
 
     results = [summarize(rows, "all programs")]
@@ -403,14 +400,14 @@ def main() -> None:
     results.append(summarize(rows[rows.novel], "entity not yet FDA-approved at phase entry"))
     results.append(summarize(rows[~rows.novel], "entity already FDA-approved for another disease"))
     for lag in (12, 18, 36):
-        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag, window=WINDOW),
+        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag, window=SECTION1),
                                  f"suspension lag {lag} months"))
-    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True, window=WINDOW),
+    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True, window=SECTION1),
                              "uncertain approvals counted as approved"))
-    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True, window=WINDOW),
+    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True, window=SECTION1),
                              "shared trials mark entry for every program of the entity"))
-    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True, window=WINDOW), "including vaccines"))
-    recent = phase_rows(progs, trials, snap, window=RECENT_WINDOW)
+    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True, window=SECTION1), "including vaccines"))
+    recent = phase_rows(progs, trials, snap, window=RECENT)
     results.append(summarize(recent, "phase entry 2015-2025 (many programs still running)"))
     results.append(summarize(recent[recent.us_site], "phase entry 2015-2025, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)

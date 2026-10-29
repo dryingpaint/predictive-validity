@@ -12,7 +12,7 @@ Over the past 60 years the industry has added new model organisms, large-scale i
 
 ## Report
 
-[REPORT.md](REPORT.md) is generated from the database by `python -m report.render`; every number and table in it comes from `report/output/`, which `make report` regenerates (only its figure PNGs are tracked). [AUDIT.md](AUDIT.md) records the audit of the earlier draft (Google Doc): each claim's verdict, the data issues found and how each was fixed, the definitions the rebuild uses, and a work log.
+The report is a Claude Doc ([Predictive Validity Report](https://claude.ai/artifact/5WTC7P7U1V9SMYizuG6U1g)): people edit its prose there, and its numbers, tables and figures come from the pipeline. `python -m report` (`make report`) builds both tabs from the database in one snapshot, as [REPORT.md](REPORT.md) and [REPORT_APPENDIX.md](REPORT_APPENDIX.md), from `report/*.template.md` and `report/narrative/`; every number and table comes from `report/output/` (only its figure PNGs are tracked). The `report-doc` skill (`.claude/skills/report-doc`) ports the doc's edits into the templates, rebuilds and writes the changed sections into the doc (`report.doc`). Cohort windows are in `report/windows.py`. [AUDIT.md](AUDIT.md) records the audit of the earlier draft (Google Doc): each claim's verdict, the data issues found and how each was fixed, the definitions the rebuild uses, and a work log.
 
 ## How it is built
 
@@ -30,7 +30,7 @@ The unit is a development program: one molecular entity developed for one diseas
 | Year each evidence item became known where its own date is missing or a later revision (ClinVar record creation, IMPC releases, study dates) | `pipeline.evidence_dates` | `preclin.evidence_known_year`, `preclin.clinvar_accession_calibration` |
 | Open Targets associations; evidence rows dated by when they became known, with yearly score series rebuilt from them; mouse phenotypes | `pipeline.opentargets` | `preclin.ot_association`, `preclin.ot_evidence`, `preclin.ot_mouse_phenotype` |
 | Germline mechanism per target and disease; mouse-model orientation (both drug-blind) | `pipeline.targets mechanism`, `mouse` | `preclin.gene_disease_mechanism`, `preclin.mouse_model_relation` |
-| Analyses, label-quality checks, figures, report | `report.section1`, `section2`, `section3`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md` |
+| Analyses, label-quality checks, figures, report | `python -m report`: `report.section1`, `section2`, `section3`, `attribution`, `stop_causes`, `methods`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md`, `REPORT_APPENDIX.md` |
 
 Classification and matching are done by LLM calls recorded in `pv_evidence.llm_decision` (prompt, output schema, model, provider, input hash and code commit for every decision); a rerun reuses a decision only when its input is unchanged (intervention-name resolution keeps a name's latest decision when only its trial context changed). Independent audits of seeded samples measure the accuracy of disease mapping, entity resolution, approvals and trial outcomes (`report.quality`).
 

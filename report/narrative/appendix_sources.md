@@ -1,8 +1,8 @@
-### Sources in detail
+## Sources in detail
 
 Each entry gives who compiles the source and from what, what the pipeline keeps, the shape of the raw response, and a real record from the cached download, trimmed to the fields used.
 
-#### ClinicalTrials.gov API v2
+### ClinicalTrials.gov API v2
 
 *Snapshot 2026-10-20, 222,915 studies · `GET https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL)&pageSize=1000` paged by `pageToken`*
 
@@ -20,7 +20,7 @@ Each entry gives who compiles the source and from what, what the pipeline keeps,
  "eventGroups[0]": {"title": "Sema 2.4 mg", "deathsNumAffected": 1, "deathsNumAtRisk": 1306, "seriousNumAffected": 128}}
 ```
 
-#### PubMed E-utilities
+### PubMed E-utilities
 
 *Queried at run time; each run is recorded with its date and a hash of what it returned · `esearch.fcgi?db=pubmed&term=NCT…[si]`, then `efetch.fcgi?retmode=xml`*
 
@@ -34,7 +34,7 @@ NCT03036488 (KEYNOTE-522; no posted results) -> PMID 32101663, linked by both ro
   DataBank ClinicalTrials.gov / AccessionNumber NCT03036488, doi 10.1056/NEJMoa1910549
 ```
 
-#### Drugs@FDA data files
+### Drugs@FDA data files
 
 *Data to 2026-10-26 · `GET https://www.fda.gov/media/89850/download`, a zip of tab-separated tables*
 
@@ -49,7 +49,7 @@ Submissions      125514  class 2 (EFFICACY)  SUPPL 89  AP  2021-07-26  STANDARD
 ApplicationDocs  125514  SUPPL 89  letter  …/appletter/2021/125514Orig1s089s114ltr_.pdf
 ```
 
-#### FDA approval letters (CDER)
+### FDA approval letters (CDER)
 
 *Actions 2008 to 2026-10-22 · PDFs at `https://www.accessdata.fda.gov/drugsatfda_docs/appletter/<year>/<ApplNo>…ltr.pdf`, from the Drugs@FDA links*
 
@@ -65,7 +65,7 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
 -> use (S-114): metastatic TNBC, PD-L1 CPS ≥10 · conversion of the 2020 accelerated approval to full
 ```
 
-#### openFDA drug labels
+### openFDA drug labels
 
 *Export 2026-10-28, 262,903 labels · `GET https://api.fda.gov/download.json` lists the bulk files, e.g. `https://download.open.fda.gov/drug/label/drug-label-0001-of-0014.json.zip`*
 
@@ -80,7 +80,7 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
    antibody indicated: Melanoma for the treatment of patients with unresectable or metastatic melanoma. …"]}
 ```
 
-#### CBER biologics approvals
+### CBER biologics approvals
 
 *Actions 2015-01-09 to 2025-12-19, 324 records on 177 applications · yearly pages `https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/<year>-biological-license-application-approvals`, live from 2023 and from the Wayback Machine before; product pages; letter PDFs at `https://www.fda.gov/media/<id>/download`*
 
@@ -94,7 +94,7 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
  "yearly_listing_text": "KYMRIAH Tisagenlecleucel | For the treatment of patients up to 25 years of age with B-cell precursor ALL …"}
 ```
 
-#### FDA Global Substance Registration System (UNII)
+### FDA Global Substance Registration System (UNII)
 
 *2026-08-04, 171,912 substances and 1,047,975 names · `https://precision.fda.gov/uniisearch/archive/2026-08-04/UNII_Data_20260804.zip`, plus the matching names file*
 
@@ -107,7 +107,7 @@ BLA 125514/S-089 + S-114 (Keytruda, 2021-07-26):
   names: NN9535 (code) · NNC-0113-0217 (code) · OZEMPIC (brand) · WEGOVY (brand) · SEMAGLUTIDE [JAN] (common)
 ```
 
-#### MONDO disease ontology
+### MONDO disease ontology
 
 *2026-10-06 · `https://github.com/monarch-initiative/mondo/releases/latest/download/mondo.obo`*
 
@@ -123,7 +123,7 @@ xref: ICD9:V19.8 {source="MONDO:relatedTo"}          -> not equivalent
 is_a: MONDO:0001336 ! familial hyperlipidemia
 ```
 
-#### EFO
+### EFO
 
 *Reaches the analysis only as Open Targets disease identifiers*
 
@@ -135,7 +135,7 @@ EFO_0000768 idiopathic pulmonary fibrosis: no MONDO xref, and no MONDO term list
   -> DOID:0050156 and Orphanet:2032 are both equivalent to MONDO:0800504
 ```
 
-#### Mammalian Phenotype ontology
+### Mammalian Phenotype ontology
 
 *2026-09-23 · `http://purl.obolibrary.org/obo/mp.obo`*
 
@@ -148,7 +148,7 @@ name: preweaning lethality, complete penetrance
 is_a: MP:0010770 ! preweaning lethality
 ```
 
-#### Gene symbols and identifiers
+### Gene symbols and identifiers
 
 *Project catalogue, resolved through HGNC 2026-10-16 · `https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt`*
 
@@ -161,7 +161,7 @@ HGNC:11701  CRIPTO  cripto, EGF-CFC family member  protein-coding gene  prev_sym
 TDGF1 (previous) -> CRIPTO · CTGF (previous) -> CCN2 · CD20 (alias) -> MS4A1 · TIM3 (alias) -> HAVCR2
 ```
 
-#### ChEMBL mechanisms of action
+### ChEMBL mechanisms of action
 
 *ChEMBL 37 (2026-05-01), 7,561 mechanisms · `GET https://www.ebi.ac.uk/chembl/api/data/mechanism.json?limit=1000&offset=…`, then `target.json` and `molecule.json` for the ids they name*
 
@@ -178,7 +178,7 @@ TDGF1 (previous) -> CRIPTO · CTGF (previous) -> CCN2 · CD20 (alias) -> MS4A1 �
 
 Tirzepatide's hints: GIPR: agonist, GLP1R: agonist.
 
-#### gnomAD constraint
+### gnomAD constraint
 
 *v4.1 · loaded by earlier project code*
 
@@ -190,7 +190,7 @@ PCSK9   pLI 1.1e-20  LOEUF 1.25    missense z 0.59
 POLR2A  pLI 1.0      LOEUF 0.161   missense z 9.21
 ```
 
-#### DepMap gene essentiality
+### DepMap gene essentiality
 
 *DepMap Public 24Q4 · `CRISPRInferredCommonEssentials.csv` from the release's figshare record, `https://api.figshare.com/v2/articles/27993248/files`*
 
@@ -205,7 +205,7 @@ AARS1 (16)
 POLR2B (5431)
 ```
 
-#### Open Targets Platform: associations
+### Open Targets Platform: associations
 
 *26.09 · `https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/26.09/output/association_by_datasource_direct/*.parquet` and `…/disease/`*
 
@@ -223,7 +223,7 @@ POLR2B (5431)
 
 PCSK9 · familial hypercholesterolemia, ClinVar evidence.
 
-#### Open Targets Platform: evidence
+### Open Targets Platform: evidence
 
 *26.09 · `…/output/evidence_<datasource>/*.parquet` and `…/mouse_phenotype/`*
 

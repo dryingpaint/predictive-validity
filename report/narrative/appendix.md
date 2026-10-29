@@ -18,7 +18,7 @@
 | HGNC | Approved human gene symbols with previous symbols and aliases | 2026-10-16 |
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 
-{{APPENDIX_SOURCES}}
+Per-source detail (who compiles each source, what the pipeline keeps, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
 
 ### How each label was made, and how good it is
 
@@ -28,11 +28,7 @@ Every judgement in the pipeline is an LLM call (Claude) that reads the source re
 
 Each error pattern these audits found was fixed in the pipeline and the affected labels re-derived, not patched by hand: diseases MONDO has no exact term for now map to their nearest broader term; development codes resolve to UNII substances, and the same substance under two names is merged; scanned FDA letters are read by OCR; labelling-only supplements no longer count as approvals; stop reasons stated only in a trial's summary are read; publication-based outcomes use only the abstracts given; and approval dates account for older applications of the same drug. The disease-mapping, entity and approval figures above come from fresh samples drawn after those fixes; before them, disease mapping agreed 94% of the time, entity resolution 95%, and 8 of 25 dated first approvals were wrong. Remaining entity errors are scattered (a development code resolved to the wrong substance, a salt chosen over its parent) rather than systematic. Programs whose approval is judged "uncertain" ({{section1.scale.approvals_uncertain|int}} of {{section1.scale.approval_judgements|int}} judgements) count as not approved; counting them as approved instead moves no rate by more than a tenth of a percentage point (sensitivity table). The approval audit's strata are those of the judgements it sampled; it was re-scored after the final rebuild against the auditors' own answers, and programs that are no longer development programs left the sample. The audit of the earlier draft, with every claim's verdict and every data issue, is in `AUDIT.md`.
 
-### Section 3 case studies
-
-Every case picked by the rule protocol, checked by agents against primary sources: one agent established each program's outcome without seeing its evidence, another checked the evidence claim without seeing the outcome, a second agent coded each failure independently, and a third adjudicated any disagreement with the pipeline or between agents.
-
-{{S3_CASE_CARDS}}
+Two labels were also re-decided rather than re-derived. Trial purposes and roles, re-decided under a second prompt version, agree with the first on {{quality.retest.trial_purpose|pct0}} and {{quality.retest.trial_moiety_role|pct0}} of trials. Disease mapping, decided twice, chose the same MONDO term for {{quality.retest.indication_mondo|pct0}} of conditions. Modality, disease area and targets were not audited. The Section 3 endpoint classes were audited on a seeded sample of trials, and the mechanism and mouse-model labels were spot-checked (Section 3).
 
 ### Limitations
 

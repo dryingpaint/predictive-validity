@@ -97,12 +97,4 @@ evidence:
 	$(RUN) pipeline.stop_causes assemble
 
 report:
-	$(RUN) report.section1
-	$(RUN) report.section2
-	$(RUN) report.section3
-	$(RUN) report.attribution
-	$(RUN) report.stop_causes
-	$(RUN) report.methods
-	$(RUN) report.quality
-	$(RUN) report.figures
-	$(RUN) report.render
+	$(RUN) report

@@ -37,7 +37,6 @@ from __future__ import annotations
 import json
 import os
 from collections import defaultdict
-from datetime import date
 
 import numpy as np
 import pandas as pd
@@ -52,6 +51,7 @@ from sklearn.preprocessing import StandardScaler
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import N_BOOT, SEED, boot_rates, loa, phase_rows, resolved_counts
+from report.windows import RECENT, SECTION2_PREDICT
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
 MIN_PROGRAMS_RS = 100  # programs with the evidence below which relative success is not estimated
@@ -228,7 +228,6 @@ def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
     return out
 
 
-PREDICT_WINDOW = (date(2008, 1, 1), date(2016, 10, 20))
 HORIZON_DAYS = 3653
 CV_REPEATS = 20  # repetitions of the grouped 5-fold split; one split's AUC moves by several points with the folds
 
@@ -250,7 +249,7 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
     novelty as of entry. Human genetics enters as its parts (GWAS, rare-variant)
     and is removed as a group; a line with fewer than MIN_PROGRAMS_RS programs
     carrying it is left out."""
-    rows = phase_rows(progs, trials, snap, window=PREDICT_WINDOW)
+    rows = phase_rows(progs, trials, snap, window=SECTION2_PREDICT)
     rows = rows[rows.phase == 1]
     ev = target_evidence(rows, progs)
     d = rows.merge(ev, on=["program_id", "phase"])
@@ -316,7 +315,7 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap)
+    rows = phase_rows(progs, trials, snap, window=RECENT)
     ev = target_evidence(rows, progs)
     data = rows.merge(ev, on=["program_id", "phase"])
     data.to_csv(os.path.join(OUT, "phase_rows_with_evidence.csv"), index=False)
