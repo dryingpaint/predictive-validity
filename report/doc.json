@@ -7,7 +7,7 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 52,
+   "rev": 53,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "a1ffe24e727c6143",
@@ -18,7 +18,7 @@
     "Predictive Validity in Drug Development > Industry failure modes > Change over time": "8f60f9a6efe1a65c",
     "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "bedb64326efe1909",
     "Predictive Validity in Drug Development > Industry failure modes > Tracing the stops the registry does not explain": "a1e05b12d49374fe",
-    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "0e2efd5684f6a1f5",
+    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "1dad10e346c49f19",
     "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "881fd9d5e10c1ebf",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "6540a2164a82e44c",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence lines and how they are matched": "2ce1d75322045605",
@@ -78,9 +78,9 @@
    "published": "blob/05e66259-6bb3"
   },
   "report/output/figures/efficacy_attribution.png": {
-   "hash": "bb065f687ac558e6",
-   "blob": "blob/c70b33c7-9fd6",
-   "published": "blob/c70b33c7-9fd6"
+   "hash": "6b39e1b5e1c73476",
+   "blob": "blob/bc684924-457b",
+   "published": "blob/bc684924-457b"
   },
   "report/output/figures/loa_by_area.png": {
    "hash": "a0e68bfc5a18cfa2",
@@ -121,11 +121,6 @@
    "hash": "fe5e5c5d744c9510",
    "blob": "blob/7df98a67-0570",
    "published": "blob/7df98a67-0570"
-  },
-  "report/output/figures/efficacy_attribution_phase1.png": {
-   "hash": "f82372946e5ca76e",
-   "blob": "blob/8220ef95-a019",
-   "published": "blob/8220ef95-a019"
   }
  }
 }

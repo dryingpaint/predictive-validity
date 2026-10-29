@@ -61,7 +61,8 @@ def figure_hash(path: str) -> str:
 def plan(_args) -> None:
     state = json.load(open(STATE))
     known = state["figures"]
-    fresh = {path: f["blob"] for path, f in known.items() if f["hash"] == figure_hash(path)}
+    fresh = {path: f["blob"] for path, f in known.items()
+             if os.path.exists(os.path.join(frame.REPO, path)) and f["hash"] == figure_hash(path)}
     steps, figures = [], []
     for name, tab in state["tabs"].items():
         now = sections(open(os.path.join(frame.REPO, name)).read())
@@ -93,13 +94,16 @@ def plan(_args) -> None:
 def published(args) -> None:
     state = json.load(open(STATE))
     revs = dict(a.split("=", 1) for a in args.revs)
+    cited = set()
     for name, tab in state["tabs"].items():
         text = open(os.path.join(frame.REPO, name)).read()
+        cited |= {path for _, path in FIGURE.findall(text)}
         tab["sections"] = {s["key"]: s["hash"] for s in sections(text)}
         if name in revs:
             tab["rev"] = int(revs[name])
         for _, path in FIGURE.findall(text):
             state["figures"][path]["published"] = state["figures"][path]["blob"]
+    state["figures"] = {path: f for path, f in state["figures"].items() if path in cited}  # figures no tab shows
     with open(STATE, "w") as f:
         json.dump(state, f, indent=1, ensure_ascii=False)
         f.write("\n")
