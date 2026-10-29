@@ -2,7 +2,8 @@
 
     python -m report.attribution
 
-Implements report/methods_stops_and_engagement.md. The cohort is every Phase 2/3 stop whose final cause
+Implements report/methods_stops_and_engagement.md. The cohort is every Phase 2/3 stop, phase entry in the Section 1
+headline window (report.windows.SECTION1; the recent window and SECTION1_PERIODS alongside), whose final cause
 (preclin.stop_cause) is efficacy or exposure and that has an efficacy-attribution label (pipeline.stops.labels:
 the web-search label where the bundle label was U); labelled stops whose final cause is something else are
 counted as reclassified. The independent re-derivation (pipeline.attribution check) and the external adjudication
@@ -22,9 +23,10 @@ from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
 from pipeline.attribution import CHECK_SAMPLE, CHECK_TASK, CODES, check_sample
-from pipeline.stops import EFFICACY_CAUSES, ENGAGED, PHASES, SameTarget, cohort, keys, labels, pillar_code, stops
+from pipeline.stops import EFFICACY_CAUSES, ENGAGED, SameTarget, cohort, keys, labels, pillar_code, stops
 from report import frame
 from report.section1 import N_BOOT, SEED
+from report.windows import RECENT, SECTION1, SECTION1_PERIODS, TRACING
 from report.section3 import Evidence, jsonable
 
 OUT = os.path.join(frame.REPO, "report", "output", "attribution")
@@ -47,6 +49,7 @@ GROUP_LABELS = {
 }
 GROUPS = list(GROUP_LABELS)
 TESTED = ["not_engaged", "engaged_no_benefit"]
+MAIN_PHASES = (2, 3)  # the headline breakdown; Phase 1, whose trials rarely test efficacy, is reported apart
 
 
 def group(code: pd.Series, engagement: pd.Series) -> pd.Series:
@@ -58,11 +61,16 @@ def three_way(g: pd.Series) -> pd.Series:
     return g.where(g.isin(TESTED), "other")
 
 
-def load(modes: pd.DataFrame) -> tuple[pd.DataFrame, int, int]:
-    """Phase 2/3 stops for efficacy or exposure with their labels; the number of such stops with no validated
-    label (refusals), and the number of labelled stops whose final cause is not efficacy or exposure."""
+def within(d: pd.DataFrame, window) -> pd.Series:
+    return pd.to_datetime(d.entry).between(pd.Timestamp(window[0]), pd.Timestamp(window[1]))
+
+
+def load(modes: pd.DataFrame, window, phases=MAIN_PHASES) -> tuple[pd.DataFrame, int, int]:
+    """Stops in `phases` for efficacy or exposure with phase entry in `window`, with their labels; the number of such
+    stops with no validated label (refusals), and the number of labelled stops whose final cause is not efficacy or
+    exposure."""
     eff = cohort(modes)
-    eff = eff[eff.phase.isin(PHASES)]
+    eff = eff[eff.phase.isin(phases) & within(eff, window)]
     final = frame.query("SELECT moiety_id, mondo_id, phase, cause FROM preclin.stop_cause")
     cause = dict(zip(keys(final), final.cause))
     in_breakdown = eff.key.map(cause).isin(EFFICACY_CAUSES)
@@ -204,7 +212,8 @@ def construct(d: pd.DataFrame, progs: pd.DataFrame, rows: pd.DataFrame) -> dict:
             "c_g3": fisher(d, "g3", a="F1a", b="F2")}
 
 
-def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
+def sensitivity(d: pd.DataFrame, traced: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
+    """Variants of the headline-window cohort d, and the other windows of the traced cohort."""
     first = d.sort_values(["moiety_id", "phase", "program_id"]).drop_duplicates("moiety_id")
     unknown_unless = lambda keep: d.assign(primary_code=np.where(d.primary_code.isin(["F2", "F3", "F4"]) & ~keep,
                                                                  "U", d.primary_code))
@@ -221,6 +230,8 @@ def sensitivity(d: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
         "one program per entity": first,
         "high or medium confidence": d[d.confidence.isin(["high", "medium"])],
         "bundle only (before the web search)": bundle_only(d),
+        f"entries {RECENT[0].year}-{RECENT[1].year}": traced[within(traced, RECENT)],
+        f"all traced entries {TRACING[0].year}-{TRACING[1].year}": traced,
     }
     out = []
     for name, v in variants.items():
@@ -236,7 +247,10 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     rng = np.random.default_rng(SEED)
     modes, rows, progs, _ = stops()
-    d, unlabelled, reclassified = load(modes)
+    d, unlabelled, reclassified = load(modes, SECTION1)
+    traced = load(modes, TRACING)[0]
+    p1, p1_unlabelled, p1_reclassified = load(modes, SECTION1, phases=(1,))
+    p1_traced = load(modes, TRACING, phases=(1,))[0]
     engaged = d[d.engagement.isin(ENGAGED)]
     g = d.group.value_counts()
     ne, eng, u = g.get("not_engaged", 0), g.get("engaged_no_benefit", 0), g.get("indeterminate", 0)
@@ -247,12 +261,21 @@ def main() -> None:
          "coverage": {"engaged_in_disease": float(engaged.engagement_in_disease.mean()),
                       "engaged_before_index": float(engaged.engagement_before_index.mean())},
          "reclassified": {"programs": reclassified}, "unlabelled": {"phase23": unlabelled},
+         "window": {"from": SECTION1[0].year, "to": SECTION1[1].year},
+         "recent": {"from": RECENT[0].year, "to": RECENT[1].year,
+                    **summary(traced[within(traced, RECENT)], rng)},
+         "by_period": {f"{lo.year}-{hi.year}": summary(traced[within(traced, (lo, hi))], rng) for lo, hi in SECTION1_PERIODS},
+         "phase1": {**summary(p1, rng), "unlabelled": p1_unlabelled, "reclassified": p1_reclassified,
+                    "by_origin": {o: {"programs": int(len(x))} for o, x in p1.groupby("origin")},
+                    "recent": summary(p1_traced[within(p1_traced, RECENT)], rng)},
          "search": search_summary(d),
-         "bundle_only": {"groups": counts(bundle_only(d), "group", GROUPS)},
-         "rederivation": rederivation(bundle_only(d), check_sample(cohort(modes))), "adjudication": adjudication(bundle_only(d)),
+         "bundle_only": {"groups": counts(bundle_only(d), "group", GROUPS),
+                         "testable": split(bundle_only(d), rng)},
+         "rederivation": rederivation(bundle_only(traced), check_sample(cohort(modes))),
+         "adjudication": adjudication(bundle_only(traced)),
          "construct": construct(d, progs, rows),
          "bounds": {"labelled": ne / (ne + eng), "all_indeterminate_not_engaged": (ne + u) / (ne + eng + u)}}
-    sens = sensitivity(d, rng)
+    sens = sensitivity(d, traced, rng)
     sens.to_csv(os.path.join(OUT, "sensitivity.csv"), index=False)
     n["sensitivity_range"] = {"lo": float(sens.not_engaged_of_testable.min()),
                               "hi": float(sens.not_engaged_of_testable.max())}

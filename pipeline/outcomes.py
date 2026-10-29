@@ -27,7 +27,7 @@ from psycopg2.extras import Json, execute_values
 from pipeline import llm
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
-TRIALS_FROM = date(2010, 1, 1)  # completed trials that start earlier get no outcome or endpoint label
+TRIALS_FROM = date(2008, 1, 1)  # completed trials that start earlier get no outcome or endpoint label
 
 
 def analysed(denoms: list[dict], units: str | None) -> dict[str, str]:

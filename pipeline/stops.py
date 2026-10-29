@@ -15,9 +15,9 @@ import pandas as pd
 from pipeline import llm
 from report import frame, section1
 from report.disease_match import Mondo
-from report.windows import RECENT
+from report.windows import TRACING
 
-PHASES = (2, 3)
+PHASES = (1, 2, 3)  # phases whose stops are traced and labelled
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
 PK_REASON = "PK, dose or formulation"
 POSITIVE = "positive readout, not advanced"
@@ -47,13 +47,15 @@ def keys(d: pd.DataFrame) -> list[str]:
 
 
 def stops():
-    """Every program Section 1 records as suspended, with the reason it assigns and its disease,
-    one row per (entity, disease, phase), and the phase rows, programs and trials it was built from."""
+    """Every program Section 1 records as suspended with a phase entry in report.windows.TRACING, with the reason it assigns,
+    its disease and its phase entry date, one row per (entity, disease, phase), and the phase rows, programs and
+    trials it was built from."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = section1.phase_rows(progs, trials, snap, window=RECENT)
+    rows = section1.phase_rows(progs, trials, snap, window=TRACING)
     modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes()).merge(
-        progs[["program_id", "mondo_id"]], on="program_id")
+        progs[["program_id", "mondo_id"]], on="program_id").merge(
+        rows[~rows.credited][["program_id", "phase", "entry"]], on=["program_id", "phase"])
     modes["key"] = keys(modes)
     if modes.key.duplicated().any():
         raise ValueError(f"programs share an (entity, disease, phase): {modes[modes.key.duplicated()].key.tolist()[:5]}")
