@@ -19,7 +19,7 @@ import pandas as pd
 
 from report import bio, frame
 from report.section3 import CASE_AUDIT
-from report.attribution import GROUP_LABELS
+from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
 
 OUT = os.path.join(frame.REPO, "report", "output")
@@ -130,8 +130,8 @@ def attribution_table() -> str:
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
     cols = {"Phase 2": n["by_phase"]["2"], "Phase 3": n["by_phase"]["3"], "Phase 2 and 3": n["phase23"],
             "Outside oncology": n["outside_oncology"]}
-    rows = [[label] + [f"{pct(c['groups'][g]['share'], 0)} ({int(c['groups'][g]['n']):,})" for c in cols.values()]
-            for g, (label, _) in GROUP_LABELS.items()]
+    rows = [[label] + [f"{pct(c['subcauses'][g]['share'], 0)} ({int(c['subcauses'][g]['n']):,})" for c in cols.values()]
+            for g, (label, _) in SUBCAUSE_LABELS.items()]
     rows.append(["**Not engaged, of failures whose mechanism was tested**"]
                 + [f"**{pct(c['testable']['not_engaged_share'], 0)}**{ci(c['testable']['lo'], c['testable']['hi'], 0)}"
                    for c in cols.values()])
@@ -153,7 +153,7 @@ def attribution_sensitivity_table() -> str:
                         "Mechanism tested": df.testable.map("{:,}".format),
                         "Not engaged, of tested (95% CI)": [pct(v, 0) + ci(lo, hi, 0) for v, lo, hi
                                                             in zip(df.not_engaged_of_testable, df.lo, df.hi)],
-                        "Indeterminate": df.indeterminate.map(lambda v: pct(v, 0))})
+                        "No engagement data": df.no_engagement_data.map(lambda v: pct(v, 0))})
     return table(out)
 
 

@@ -2,7 +2,7 @@
 the target was engaged and the disease did not respond, or something else.
 
     python -m pipeline.attribution literature   # PubMed: each entity's human pharmacology and its program diseases
-    python -m pipeline.attribution label        # LLM: three pillars and failure code -> preclin.efficacy_failure_attribution
+    python -m pipeline.attribution label        # LLM: three pillars and failure code of each stop
     python -m pipeline.attribution check        # LLM: independent re-derivation on a seeded sample (stepwise prompt)
     python -m pipeline.attribution search       # LLM with web search: Phase 2/3 programs the label left indeterminate
 
@@ -15,8 +15,10 @@ with their classified outcomes, results posted by its Phase 1 trials, its FDA
 approvals, other entities on the same primary target in the same or a related
 disease, and PubMed abstracts on the entity's human pharmacology and on the
 entity in the program's disease. The model judges the three pillars of Morgan et
-al. (2012) only from the bundle, cites what it used, and codes the failure. The
-methods are report/methods_stops_and_engagement.md.
+al. (2012) only from the bundle, cites what it used, and codes the failure. The labels
+stay in pv_evidence.llm_decision (pipeline.stops.labels reads them); pipeline.stop_causes
+assemble writes what they say into preclin.stop. The methods are
+report/methods_stops_and_engagement.md.
 """
 from __future__ import annotations
 
@@ -30,8 +32,8 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.outcomes import eutils
-from pipeline.stops import PHASES, RELATED_DISEASE, cohort, keys, stops
-from report import frame
+from pipeline.stops import (BUNDLE_LABEL_TASK, LABEL_VERSION, PHASES, RELATED_DISEASE, SEARCH_LABEL_TASK, cohort,
+                            decided, stops)
 from report.disease_match import Mondo
 
 PHARMACOLOGY_HITS = 15  # PubMed results kept per entity, relevance order
@@ -261,7 +263,7 @@ def render(p: dict) -> str:
     return "\n".join(out)
 
 
-TASK = llm.Task(name="efficacy_failure_attribution", prompt_version="v1", schema_version="v1", system=SYSTEM,
+TASK = llm.Task(name=BUNDLE_LABEL_TASK, prompt_version=LABEL_VERSION, schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="program_phase",
                 model="claude-opus-5-5", effort="high", max_tokens=6000)
 
@@ -284,7 +286,7 @@ def validate_search(p: dict, out: dict) -> None:
     validate_codes(out)
 
 
-SEARCH_TASK = llm.Task(name="efficacy_attribution_search", prompt_version="v1", schema_version="v1",
+SEARCH_TASK = llm.Task(name=SEARCH_LABEL_TASK, prompt_version=LABEL_VERSION, schema_version="v1",
                        system=INTRO + SEARCH_JUDGE + RUBRIC, schema=SEARCH_SCHEMA, render=render,
                        validate=validate_search, subject_type="program_phase", model="claude-opus-5-5",
                        effort="medium", max_tokens=16000, tools=SEARCH_TOOLS)
@@ -485,24 +487,9 @@ def label(_args) -> None:
                           {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
                            "codes": CODES, "check_sample": CHECK_SAMPLE, "check_seed": CHECK_SEED})
         conn.commit()
-    eff = cohort(stops()[0])
-    items = bundles(eff)
+    items = bundles(cohort(stops()[0]))
     run_id = llm.run(TASK, items)
-    index = dict(zip(eff.key, eff.nct_id))
-    rows = []
-    for key, did, o in llm.decisions(run_id):
-        m, d, phase = key.split("|")
-        rows.append((int(m), d, int(phase), index[key], o["exposure"], o["engagement"], o["pathway"],
-                     o["engagement_in_disease"], o["engagement_before_index"], o["dose_limited"], o["primary_code"],
-                     o["secondary_codes"], o["confidence"], o["sources"], did))
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("DELETE FROM preclin.efficacy_failure_attribution")
-        execute_values(cur, """INSERT INTO preclin.efficacy_failure_attribution
-                                 (moiety_id, mondo_id, phase, index_nct_id, exposure, engagement, pathway,
-                                  engagement_in_disease, engagement_before_index, dose_limited, primary_code,
-                                  secondary_codes, confidence, sources, llm_decision_id) VALUES %s""", rows)
-        conn.commit()
-    print(f"programs={len(items)} labelled={len(rows)}")
+    print(f"programs={len(items)} labelled={len(llm.decisions(run_id))} run={run_id}")
 
 
 SEARCH_METHOD = "efficacy_attribution_search@v1"
@@ -513,40 +500,27 @@ to 4 pages) for human exposure, engagement and pathway evidence and for stated r
 conference reports, FDA and EMA reviews, company releases and Phase 1 results published outside the registry, then
 answers the same pillars and failure codes as {ATTRIBUTION_METHOD} with the same rubric. Validation rejects a URL its
 own searches did not return, an id outside the bundle, and codes that contradict the pillars. The search label
-replaces the bundle label in the report; the bundle label stays in preclin.efficacy_failure_attribution and is
-reported as a variant. Agreement with the blind web adjudication is reported on the programs both labelled."""
+replaces the bundle label in the report; the bundle label is reported as a variant. Agreement with the blind web adjudication is reported on the programs both labelled."""
 
 
 def search(_args) -> None:
     """Label the programs the bundle left indeterminate again, with web search."""
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, SEARCH_METHOD, "Why efficacy failed: web search for engagement", SEARCH_DESCRIPTION,
-                          ["preclin.efficacy_failure_attribution", "preclin.ctgov_study", "preclin.trial_outcome",
+                          [f"pv_evidence.llm_decision ({TASK.name})", "preclin.ctgov_study", "preclin.trial_outcome",
                            "preclin.ctgov_result_summary", "preclin.moiety_publication", "web search"],
                           {"task": SEARCH_TASK.name, "prompt_version": SEARCH_TASK.prompt_version,
                            "model": SEARCH_TASK.model, "effort": SEARCH_TASK.effort, "tools": SEARCH_TOOLS,
                            "phases": list(PHASES)})
         conn.commit()
-    u = frame.query("""SELECT moiety_id, mondo_id, phase FROM preclin.efficacy_failure_attribution
-                       WHERE primary_code = 'U' AND phase = ANY(%s)""", (list(PHASES),))
     eff = cohort(stops()[0])
-    items = bundles(eff[eff.key.isin(set(keys(u)))])
+    eff = eff[eff.phase.isin(PHASES)]
+    u = decided(TASK.name)
+    items = bundles(eff[eff.key.isin(set(u.key[u.primary_code.eq("U")]))])
     run_id = llm.run(SEARCH_TASK, items)
-    rows = []
-    for key, did, o in llm.decisions(run_id):
-        m, d, phase = key.split("|")
-        rows.append((int(m), d, int(phase), o["exposure"], o["engagement"], o["pathway"], o["engagement_in_disease"],
-                     o["engagement_before_index"], o["dose_limited"], o["primary_code"], o["secondary_codes"],
-                     o["confidence"], o["quote"], o["sources"], did, SEARCH_METHOD))
-    with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("DELETE FROM preclin.efficacy_attribution_search")
-        execute_values(cur, """INSERT INTO preclin.efficacy_attribution_search
-                                 (moiety_id, mondo_id, phase, exposure, engagement, pathway, engagement_in_disease,
-                                  engagement_before_index, dose_limited, primary_code, secondary_codes, confidence,
-                                  quote, sources, llm_decision_id, method_id) VALUES %s""", rows)
-        conn.commit()
-    decided = sum(r[9] != "U" for r in rows)
-    print(f"programs={len(items)} labelled={len(rows)} decided={decided} run={run_id}")
+    out = llm.decisions(run_id)
+    print(f"programs={len(items)} labelled={len(out)} decided={sum(o['primary_code'] != 'U' for _, _, o in out)} "
+          f"run={run_id}")
 
 
 def check_sample(eff) -> set[str]:
