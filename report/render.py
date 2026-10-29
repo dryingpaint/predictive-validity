@@ -282,9 +282,9 @@ def s3_hypotheses_table() -> str:
         ("H7", "Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2",
          "risk ratio", rr_ci(n["h7"]), n["h7"].get("p")),
     ]
-    out = [[h, text, measure, est, p_value(p), p_value(n["holm"].get(h)),
+    out = [[text, measure, est, p_value(p), p_value(n["holm"].get(h)),
             "supported" if n["holm"].get(h, 1) < 0.05 else "not supported"] for h, text, measure, est, p in rows]
-    return table(pd.DataFrame(out, columns=["", "Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
+    return table(pd.DataFrame(out, columns=["Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
 
 
 # Evidence-map rows shown in the table and the figure: section3.MAP_FEATURES without the families no program had
@@ -347,8 +347,8 @@ def s3_rules() -> pd.DataFrame:
 
 
 def rule_name(r) -> str:
-    """'M3 Mendelian evidence …', with * for a rule added after the plan."""
-    return f"{r.rule}{'' if r.registered else '*'} {r.label}"
+    """A rule as the report names it: its description, marked when it was added after the plan."""
+    return f"{r.label}{'' if r.registered else ' (added after the plan)'}"
 
 
 def s3_rules_table() -> str:
@@ -360,29 +360,29 @@ def s3_rules_table() -> str:
             if pd.isna(v) or v == 0:
                 return "–" if pd.isna(v) else "none advanced"
             return f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
-        rows.append([f"{r.rule}{'' if r.registered else '*'}", r.label, regime[r.regime],
+        rows.append([rule_name(r), regime[r.regime],
                      f"{int(r.n):,} ({int(r.n_targets):,})", pct(r.ppv, 0) if r.n else "–",
                      pct(r.coverage, 0), "–" if pd.isna(r.adj_rr) else f"{r.adj_rr:.2f} ({r.adj_lo:.2f}–{r.adj_hi:.2f})",
                      split("discovery"), split("confirmation"),
                      "**predictive**" if r.predictive else ("not testable" if r.n == 0 else "no")])
-    return table(pd.DataFrame(rows, columns=["Rule", "Applied at Phase 2 entry", "Regime", "Programs (targets)",
+    return table(pd.DataFrame(rows, columns=["Rule applied at Phase 2 entry", "Regime", "Programs (targets)",
                                              "Advanced", "Share of all that advanced", "Adjusted risk ratio (95% CI)",
                                              "Risk ratio, discovery targets (90% CI)",
                                              "Risk ratio, held-out targets (90% CI)", "Meets the bar"]))
 
 
-CODE_NAMES = {"F1": "F1 exposure", "F2": "F2 biology did not translate", "F3": "F3 wrong population",
-              "F4": "F4 surrogate gap", "F5": "F5 on-target toxicity", "F6": "F6 off-target toxicity",
-              "F7": "F7 trial design", "F8": "F8 commercial", "unknown": "unknown"}
+FAILURE_NAMES = {"F1": "engagement not shown", "F2": "engaged, disease did not respond", "F3": "wrong population",
+                 "F4": "surrogate did not carry over", "F5": "on-target toxicity", "F6": "off-target toxicity",
+                 "F7": "trial design", "F8": "commercial", "unknown": "unknown"}
 SOURCE_CHARS = 160  # length of the evidence source shown in a case card
 
 
-def failure_label(advanced: str, code: str, short: bool = False) -> str:
+def failure_label(advanced: str, code: str) -> str:
     if advanced == "yes":
         return "–"
     if code == "not_a_failure":
         return "still progressing"
-    return code if short else CODE_NAMES[code]
+    return FAILURE_NAMES[code]
 
 
 def s3_case_audit() -> pd.DataFrame:
@@ -397,14 +397,14 @@ def s3_cases_table() -> str:
     rows = []
     for rule, g in a.groupby("rule", sort=False):
         failed = g[g.advanced_within_4y == "no"]
-        codes = pd.Series([failure_label("no", c, short=True) for c in failed.failure_code]).value_counts()
+        codes = pd.Series([failure_label("no", c) for c in failed.failure_code]).value_counts()
         rows.append([rule_name(rules.loc[rule]), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
                      f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
                      f"partly)", f"{(g.predates_entry == 'yes').sum()}",
                      ", ".join(f"{c}: {k}" for c, k in codes.items()) or "–"])
     return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
                                              "Evidence claim verified", "Evidence published before entry",
-                                             "Why the others stopped (codes)"]))
+                                             "Why the others stopped"]))
 
 
 def shorten(text: str, limit: int) -> str:
@@ -414,10 +414,11 @@ def shorten(text: str, limit: int) -> str:
 
 def s3_case_cards() -> str:
     rows = []
+    rules = s3_rules()
     for r in s3_case_audit().itertuples():
         source = shorten(r.evidence_source or "", SOURCE_CHARS) + (f" ({r.evidence_year})" if r.evidence_year else "")
         outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
-        rows.append([f"{r.rule}", f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
+        rows.append([rule_name(rules.loc[r.rule]), f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
                      f"{r.claim_supported}; {source}",
                      outcome + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
                      failure_label(r.advanced_within_4y, r.failure_code)])
