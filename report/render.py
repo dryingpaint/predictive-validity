@@ -1,4 +1,5 @@
-"""Render REPORT.md from REPORT.template.md and the generated outputs.
+"""Render the report's two tabs, REPORT.md and REPORT_APPENDIX.md, from report/*.template.md and
+the generated outputs.
 
     python -m report.render
 
@@ -360,7 +361,10 @@ def failure_label(advanced: str, code: str, short: bool = False) -> str:
 
 
 def s3_case_audit() -> pd.DataFrame:
-    return pd.DataFrame(json.load(open(CASE_AUDIT)))
+    """The verified cases among those Section 3 picked, in the order it picked them."""
+    a = pd.DataFrame(json.load(open(CASE_AUDIT))).set_index("case_id")
+    picked = pd.read_csv(os.path.join(OUT, "section3", "cases.csv")).case_id
+    return a.loc[[c for c in picked if c in a.index]].reset_index()
 
 
 def s3_cases_table() -> str:
@@ -431,16 +435,23 @@ def fill(text: str, numbers: dict) -> str:
     return re.sub(r"\{\{([A-Za-z0-9_.|+-]+)\}\}", sub, text)
 
 
+TABS = [("REPORT.template.md", "REPORT.md"), ("APPENDIX.template.md", "REPORT_APPENDIX.md")]  # the doc's two tabs
+
+
 def main() -> None:
     numbers = dict(BIO)
     for section in ("section1", "section2", "section3", "attribution", "stop_causes", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)
-    template = open(os.path.join(frame.REPO, "report", "REPORT.template.md")).read()
-    with open(os.path.join(frame.REPO, "REPORT.md"), "w") as f:
-        f.write(fill(template, numbers))
-    print(f"REPORT.md written; {len(numbers)} numbers")
+    for template, out in TABS:
+        text = fill(open(os.path.join(frame.REPO, "report", template)).read(), numbers)
+        left = re.findall(r"\{\{[^}]*\}\}", text)
+        if left:
+            raise ValueError(f"{out}: placeholders left unfilled: {sorted(set(left))[:10]}")
+        with open(os.path.join(frame.REPO, out), "w") as f:
+            f.write(text)
+    print(f"{', '.join(out for _, out in TABS)} written; {len(numbers)} numbers")
 
 
 if __name__ == "__main__":

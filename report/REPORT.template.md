@@ -1,6 +1,6 @@
 # Predictive Validity in Drug Development
 
-<!-- Rendered by `python -m report.render` from report/output/*/numbers.json.
+<!-- Rendered by `python -m report` from report/output/*/numbers.json into REPORT.md, the doc's main tab.
      Every number in braces comes from the generated outputs; edit prose here, never the numbers. -->
 
 ## Introduction
