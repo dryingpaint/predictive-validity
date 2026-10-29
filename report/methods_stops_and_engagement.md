@@ -11,8 +11,12 @@ The efficacy-failure codes, estimands and checks were fixed before any program w
 added after the first results: the web search for programs with no engagement evidence, the inclusion of traced
 efficacy and PK stops, and the rules by which an efficacy label settles a stop's cause.
 
-A **program** is one drug developed for one disease. Both bars cover industry programs whose Phase 2 or Phase 3
-began 2015–2025 (ClinicalTrials.gov). Every model step uses Claude Opus 5.5 except the re-derivation check, which uses Claude Sonnet 5.
+A **program** is one drug developed for one disease. Every industry program whose Phase 1, 2 or 3 began 2008–2025
+(ClinicalTrials.gov) and stopped is traced and labelled (`pipeline.stops.TRACING_WINDOW`, `pipeline.stops.PHASES`).
+The figure's bars show Phase 2 and 3 entries from 2008–2019, the Section 1 headline window; a second figure shows Phase
+1 the same way, since Phase 1 trials rarely test efficacy; and the report compares entry periods and the 2015–2025
+window. Registry
+outcomes and endpoints are classified for every Phase 2/3 trial started from 2008 (`pipeline.outcomes.TRIALS_FROM`). Every model step uses Claude Opus 5.5 except the re-derivation check, which uses Claude Sonnet 5.
 
 ## Top bar: why programs stopped
 
@@ -54,12 +58,12 @@ cause, sourced, is efficacy or exposure.
 | Did not actually stop (removed) | Development continued under another registry, region, name or combination | HS-20004 (noiiglutide) in type 2 diabetes went on to Phase 3 ([NCT06649773](https://clinicaltrials.gov/study/NCT06649773)); T89 in acute mountain sickness went on to a pivotal Phase 3 ([NCT04993729](https://clinicaltrials.gov/study/NCT04993729)) |
 | Unknown (likely cause counted) | No source states a cause; the likely cause is the model's inference | DMT210 in atopic dermatitis: no results announced and both indications ended together → likely efficacy; icosapent in COVID-19: enrollment fell as vaccines spread, no results → likely operational |
 
-**Known weaknesses.** On 129 stops whose registry reason is known, run with the reason hidden, the traced cause
-matched 61% of the time (κ = 0.54). Efficacy stops were recognised
-87% of the time, but only 54% of the stops it called efficacy were, and
-safety stops were recognised 48% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
+**Known weaknesses.** On 141 stops whose registry reason is known, run with the reason hidden, the traced cause
+matched 59% of the time (κ = 0.52). Efficacy stops were recognised
+88% of the time, but only 69% of the stops it called efficacy were, and
+safety stops were recognised 52% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
 a missed endpoint takes precedence over a safety signal). **Business** is the least reliable category: the model's
-business calls were right 54% of the time, often confused with operational. "Positive readout" includes programs
+business calls were right 42% of the time, often confused with operational. "Positive readout" includes programs
 whose primary endpoints were only partly met, and some recently quiet ones may still advance.
 
 ## Bottom bar: why efficacy failed
@@ -126,7 +130,7 @@ intervals from a bootstrap that resamples drugs (1,000 draws), since one drug's 
   rarer with germline genetic support (Section 3) than F1a.
 
 **Checks.** A second model (Claude Sonnet 5) with a stepwise prompt (prompt E) relabelled a seeded random sample of 150 registry efficacy stops
-and agreed on the not engaged / engaged / other split 74% of the time. Web-research agents labelled
+and agreed on the not engaged / engaged / other split 69% of the time. Web-research agents labelled
 65 programs from scratch, blind to the pipeline, and agreed 82% of the time
 (κ = 0.67), with 0 programs called engaged by one and not engaged by the other. A deeper web search on 22 programs both had left undecided resolved 2.
 
