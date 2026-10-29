@@ -394,7 +394,8 @@ the cause is unknown with no guess. Subcause: for an efficacy stop, why efficacy
 its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety;
 company_event for a traced company event; for an unknown cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
+model's basis, else what the trial that gave Section 1 its reason states (its stated reason for stopping, else
+the result Section 1 read), with the trial in the sources. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
 it)."""
 
 
@@ -403,11 +404,13 @@ def first_text(*xs) -> str | None:
     return next((x.strip() for x in xs if isinstance(x, str) and x.strip()), None)
 
 
-def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict | None, fate: str | None) -> dict:
+def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict | None, fate: str | None,
+             trial: dict) -> dict:
     """What preclin.stop records for one stop. settle is None where the registry reason stands, a cause where the
     efficacy-attribution label settles it, or 'infer'; inferred is the validated inference decision
     (llm_decision_id, parsed_output) of a stop sent to inference, label its efficacy-attribution label with its
-    subcause and detail, and fate what the drug and sponsor did next."""
+    subcause and detail, fate what the drug and sponsor did next, and trial the trial that gave Section 1 its
+    reason (nct_id, and stated: the sponsor's stated reason, else the result Section 1 read)."""
     o = inferred["parsed_output"] if inferred else None
     if settle is None:
         cause = CAUSE[REGISTRY_CAUSE[reason]]
@@ -428,9 +431,12 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
     explains = label is not None and (cause == "efficacy" or settle in CODE_CAUSE.values())
     explanation = first_text(label["quote"], label["rationale"]) if explains else \
         first_text(o["quote"], o["likely_basis"], o["rationale"]) if o else None
+    from_trial = explanation is None and first_text(trial["stated"]) is not None
     return {"cause": cause, "subcause": None if pd.isna(sub) else sub, "detail": None if pd.isna(det) else det,
-            "guess": None if guess == "unknown" else guess, "explanation": explanation,
-            "sources": list(dict.fromkeys((o["sources"] if o else []) + (list(label["sources"]) if explains else []))),
+            "guess": None if guess == "unknown" else guess,
+            "explanation": first_text(trial["stated"]) if from_trial else explanation,
+            "sources": list(dict.fromkeys((o["sources"] if o else []) + (list(label["sources"]) if explains else [])
+                                          + ([trial["nct_id"]] if from_trial else []))),
             "decision_ids": ([int(inferred["llm_decision_id"])] if o else [])
                             + ([int(label["llm_decision_id"])] if explains else []),
             "traced": settle is not None}
@@ -449,6 +455,10 @@ def assemble(_args) -> None:
                      detail=detail(pillar_code(lab), lab.dose_limited)).set_index("key")
     sig = load_signals().set_index("key")
     fates = fate(sig)
+    stated = frame.query("""SELECT s.nct_id, coalesce(nullif(trim(s.why_stopped), ''), o.evidence) AS stated
+                            FROM preclin.ctgov_study s LEFT JOIN preclin.trial_outcome o USING (nct_id)
+                            WHERE s.nct_id = ANY(%s)""", (sorted(set(modes.nct_id.dropna())),))
+    stated = dict(zip(stated.nct_id, stated.stated))
     rows = []
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Why each program stopped", ASSEMBLE_DESCRIPTION,
@@ -460,7 +470,8 @@ def assemble(_args) -> None:
             settle = how.get(r.key, "infer" if r.reason in UNSTATED else None)
             inferred = dec.loc[r.key].to_dict() if settle == "infer" and r.key in dec.index else None
             label = lab.loc[r.key].to_dict() if r.key in lab.index else None
-            row = stop_row(r.reason, settle, inferred, label, fates.get(r.key))
+            row = stop_row(r.reason, settle, inferred, label, fates.get(r.key),
+                           {"nct_id": r.nct_id, "stated": stated.get(r.nct_id)})
             rows.append((int(r.moiety_id), r.mondo_id if isinstance(r.mondo_id, str) else "", int(r.phase), r.reason,
                          *(row[c] for c in COLUMNS), mid))
         cur.execute("DELETE FROM preclin.stop")
