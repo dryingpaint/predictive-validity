@@ -278,10 +278,10 @@ POLR2A  pLI 1.0      LOEUF 0.161   missense z 9.21
 
 ### DepMap gene essentiality
 
-*DepMap Public 24Q4 · `CRISPRInferredCommonEssentials.csv` from the release's figshare record, `https://api.figshare.com/v2/articles/27993248/files`*
+*DepMap Public 19Q4, 20Q4, 21Q4, 22Q4, 23Q4 and 24Q4 · the common-essential file of each release's figshare record (`Achilles_common_essentials.csv` through 20Q4, `CRISPR_common_essentials.csv` in 21Q4, `CRISPRInferredCommonEssentials.csv` from 22Q4), e.g. `https://api.figshare.com/v2/articles/27993248/files`*
 
 **Compiled by.** The Broad Institute's Cancer Dependency Map knocks out every gene by CRISPR in about a thousand cancer cell lines, and Chronos estimates each gene's effect on growth. DepMap's inferred common-essential list holds the genes whose knockout ranks among the most depleting in most lines.
-**We use.** That list, 1,523 genes keyed by Entrez id and mapped to Ensembl through HGNC, as the pan-essential flag. It is the 24Q4 release, not the state at phase entry; it is the newest release the DepMap portal's download block leaves reachable to scripts.
+**We use.** The list from the last release of each year, 2019 to 2024 (2,149 genes in 19Q4, 1,523 in 24Q4), keyed by Entrez id and mapped to Ensembl through HGNC. A target is flagged essential in most cell lines when it is on the latest list from before the program entered the phase. DepMap first published the list in 19Q2, so no list covers an earlier year. Through 20Q4 the list comes from the Broad's Achilles screens alone; from 21Q4 it combines them with the Sanger Project Score screens.
 **Shape.** One column, `Essentials`, each row `SYMBOL (Entrez id)`.
 
 ```text
@@ -343,7 +343,7 @@ PCSK9 loss of function lowers free cholesterol in very small VLDL.
 | IMPC | IMPC and MGI mouse models, matched to diseases by PhenoDigm phenotype similarity | The mutant's phenotypes resemble the disease's | PCSK9 · hyperlipoproteinemia V · knockout, PhenoDigm 95 |
 | Expression Atlas | Disease-versus-normal differential expression experiments | Gene is differentially expressed in the disease | PCSK9 · psoriasis · log2FC +2.5 |
 | Reactome | Curated disease reactions | A variant perturbs a reaction in a disease pathway | CFTR · cystic fibrosis · F508del binds ERAD machinery |
-| CRISPR | Project Score knockout fitness screens in cancer lines | Gene is a fitness dependency in that cancer type | KRAS · plasma cell myeloma · priority 78 |
+| CRISPR | Project Score knockout fitness screens in cancer lines (Behan et al. 2019; re-analysed by Pacini et al. 2024, which Open Targets now dates every row by) | Gene is a fitness dependency in that cancer type | KRAS · plasma cell myeloma · priority 78 |
 | CRISPR screens | CRISPRbrain screens in iPSC-derived neurons | Perturbing the gene shifts a screen phenotype | LDLR · neurodegeneration · log2FC −5.8 |
 | Mouse phenotypes | IMPC and MGI phenotype annotations (MP terms), not linked to a disease | A mutant allele shows the phenotype | PCSK9 · decreased circulating LDL cholesterol |
 
