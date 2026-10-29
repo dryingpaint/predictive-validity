@@ -15,6 +15,7 @@ import pandas as pd
 from pipeline import llm
 from report import frame, section1
 from report.disease_match import Mondo
+from report.windows import RECENT
 
 PHASES = (2, 3)
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
@@ -50,7 +51,7 @@ def stops():
     one row per (entity, disease, phase), and the phase rows, programs and trials it was built from."""
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = section1.phase_rows(progs, trials, snap)
+    rows = section1.phase_rows(progs, trials, snap, window=RECENT)
     modes = section1.failure_modes(rows, progs, trials, frame.trial_outcomes()).merge(
         progs[["program_id", "mondo_id"]], on="program_id")
     modes["key"] = keys(modes)

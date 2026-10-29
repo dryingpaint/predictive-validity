@@ -6,6 +6,7 @@ from datetime import date
 import pandas as pd
 
 from report.section1 import phase_rows
+from report.windows import RECENT
 
 
 def program() -> pd.DataFrame:
@@ -25,7 +26,7 @@ def trial(nct: str, phase: int, start: str, end: str, starts_phase: bool) -> dic
 def phase2_event(extension_starts_phase: bool) -> str:
     trials = pd.DataFrame([trial("NCT1", 2, "2016-01-01", "2018-01-01", True),
                            trial("NCT2", 3, "2018-06-01", "2020-01-01", extension_starts_phase)])
-    rows = phase_rows(program(), trials, date(2026, 10, 20))
+    rows = phase_rows(program(), trials, date(2026, 10, 20), window=RECENT)
     return rows[(rows.phase == 2) & ~rows.credited].event.iloc[0]
 
 

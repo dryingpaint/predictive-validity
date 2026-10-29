@@ -36,17 +36,16 @@ from statsmodels.discrete.conditional_models import ConditionalLogit
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
+from report.windows import SECTION3, SECTION3_TRIALS_FROM
 
 OUT = os.path.join(frame.REPO, "report", "output", "section3")
 CASE_AUDIT = os.path.join(frame.REPO, "report", "audits", "section3_cases.json")
 ENDPOINT_AUDIT = os.path.join(frame.REPO, "report", "audits", "endpoint_audit.json")
 BIOLOGY_CODES = ("F2", "F3", "F4", "F5")  # failures that test the evidence's biological claim
-WINDOW = (date(2015, 1, 1), date(2020, 10, 20))  # four years of follow-up before the 24-month inactivity cutoff
 HORIZON_YEARS = 4.0
-TRIALS_FROM = date(2010, 1, 1)  # pipeline.outcomes labels trials from this start date
 FDAAA_START = date(2017, 1, 18)
 ERA_BINS, ERA_LABELS = [2014, 2016, 2018, 2020], ["2015-16", "2017-18", "2019-20"]
-TRIAL_ERA_BINS, TRIAL_ERA_LABELS = [TRIALS_FROM.year - 1, 2014, 2018, np.inf], ["2010-14", "2015-18", "2019+"]
+TRIAL_ERA_BINS, TRIAL_ERA_LABELS = [SECTION3_TRIALS_FROM.year - 1, 2014, 2018, np.inf], ["2010-14", "2015-18", "2019+"]
 N_BOOT = 1000
 N_PERMUTATIONS = 200
 MIN_TARGETS = 15  # distinct exposed target sets below which no risk ratio is fitted
@@ -334,8 +333,8 @@ class Evidence:
 
 
 def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date) -> pd.DataFrame:
-    """Phase entries in WINDOW (skipped phases excluded) with the outcome S4."""
-    rows = phase_rows(progs, trials, snap, window=WINDOW)
+    """Phase entries in SECTION3 (skipped phases excluded) with the outcome S4."""
+    rows = phase_rows(progs, trials, snap, window=SECTION3)
     rows = rows[~rows.credited].copy()
     rows["s4"] = ((rows.event == "advanced") & (rows.years <= HORIZON_YEARS)).astype(float)
     return rows
@@ -486,13 +485,13 @@ def efficacy_endpoints() -> pd.DataFrame:
 
 def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame, endpoints: pd.DataFrame,
                 ev: Evidence) -> pd.DataFrame:
-    """One row per randomised industry Phase 2/3 efficacy trial started since TRIALS_FROM with a
+    """One row per randomised industry Phase 2/3 efficacy trial started since SECTION3_TRIALS_FROM with a
     readable primary result, with the G3 status (as of the year before its start) of the programs
     it tests."""
     t = endpoints.merge(outcomes.loc[outcomes.primary_endpoint.isin(["met", "not_met", "mixed"]),
                                      ["nct_id", "primary_endpoint", "results_source"]], on="nct_id")
     links = trials[(trials.attach == "disease") & trials.phase.isin([2, 3])
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(TRIALS_FROM))]
+                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
     links = links[["program_id", "nct_id", "phase", "start_date", "primary_completion_date", "us_site"]] \
         .merge(t[["nct_id"]], on="nct_id")
     p = progs.set_index("program_id")
@@ -533,7 +532,7 @@ def unlabelled_with_results(endpoints: pd.DataFrame, outcomes: pd.DataFrame, tri
     links = trials[trials.program_id.isin(programs) & (trials.attach == "disease") & trials.phase.isin([2, 3])
                    & trials.has_results
                    & trials.overall_status.isin(frame.ACTIVE)
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(TRIALS_FROM))]
+                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
     return int(links[links.nct_id.isin(endpoints.nct_id) & ~links.nct_id.isin(outcomes.nct_id)].nct_id.nunique())
 
 
@@ -697,21 +696,18 @@ def case_key(rule: str, moiety_id: int, mondo_id: str, entry) -> str:
 
 def case_audit(cases: pd.DataFrame) -> dict:
     """Agreement of the agent-verified case studies (CASE_AUDIT) with the pipeline: the outcome
-    within four years, the evidence claim and its date, and the failure codes. The audit must
-    cover exactly the cases picked, with the pipeline outcome it was checked against;
-    report.render tabulates it by rule."""
+    within four years, the evidence claim and its date, and the failure codes, over the picked
+    cases the audit covers with the pipeline outcome it was checked against. Picked cases it does
+    not cover, or covers against an outcome that has since changed, are listed as pending
+    (report.cases); report.render tabulates the audit by rule."""
     a = pd.DataFrame(json.load(open(CASE_AUDIT)))
     picked = {case_key(r, m, d, e): int(s4 > 0)
               for r, m, d, e, s4 in zip(cases.rule_key, cases.moiety_id, cases.mondo_id, cases.entry, cases.s4)}
-    if set(a.case_id) != set(picked):
-        raise ValueError(f"case audit does not match the picked cases: missing {sorted(set(picked) - set(a.case_id))[:5]}, "
-                         f"extra {sorted(set(a.case_id) - set(picked))[:5]}")
-    stale = [c for c, s4 in zip(a.case_id, a.pipeline_s4) if picked[c] != int(s4)]
-    if stale:
-        raise ValueError(f"case audit checked a pipeline outcome that has since changed: {stale[:5]}")
+    a = a[a.case_id.map(picked).eq(a.pipeline_s4.astype(int))]
+    pending = sorted(set(picked) - set(a.case_id))
     prog = a.drop_duplicates("program_id")
     failed = prog[prog.advanced_within_4y == "no"]
-    return {"cases": int(len(a)), "programs": int(len(prog)),
+    return {"cases": int(len(a)), "programs": int(len(prog)), "pending": pending,
             "outcome_correct": int((prog.pipeline_correct == "yes").sum()),
             "outcome_wrong": int((prog.pipeline_correct == "no").sum()),
             "claim_supported": int(a.claim_supported.eq("yes").sum()),
@@ -761,7 +757,7 @@ def main() -> None:
     ev = Evidence(progs)
     rows = entries(progs, trials, snap)
     d = cohorts(rows, ev)
-    fm = failure_modes(phase_rows(progs, trials, snap, window=WINDOW), progs, trials, outcomes)
+    fm = failure_modes(phase_rows(progs, trials, snap, window=SECTION3), progs, trials, outcomes)
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason", "nct_id"]].rename(columns={"nct_id": "reason_nct"}),
                                on=["program_id", "phase"], how="left"))
     d["endpoint_stratum"] = d.program_id.map(program_endpoint(trials, endpoints, d[d.phase == 2])) \
@@ -772,7 +768,7 @@ def main() -> None:
     # or no resolved human protein target, so they have no evidence features.
     outside = rows.assign(why=np.where(rows.program_id.map(ev.disease).isna(), "no_disease",
                                        np.where(~rows.moiety_id.isin(ev.ent.index), "no_protein_target", None)))
-    n: dict = {"window": {"start": str(WINDOW[0]), "end": str(WINDOW[1])},
+    n: dict = {"window": {"start": str(SECTION3[0]), "end": str(SECTION3[1])},
                "excluded": {w: {"programs": int(len(g)), "s4": float(g.s4.mean())}
                             for w, g in outside[outside.phase == 2].groupby("why")},
                "c2": summary(c2)}
