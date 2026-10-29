@@ -378,7 +378,7 @@ def s3_rules():
     ax.set_xlabel("Crude risk ratio of advancing within 4 years (90% target bootstrap); grey: discovery targets, "
                   "blue: held-out targets; dashed: the discovery bar", color=INK2, fontsize=8)
     style(ax)
-    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation (* added after the plan)",
+    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation",
                  loc="left", color=INK, fontsize=10)
     save(fig, "s3_rules")
 

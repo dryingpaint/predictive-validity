@@ -7,7 +7,7 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 62,
+   "rev": 90,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "a1ffe24e727c6143",
@@ -17,40 +17,40 @@
     "Predictive Validity in Drug Development > Industry failure modes > Phase transitions": "f2ef37203ef57fbf",
     "Predictive Validity in Drug Development > Industry failure modes > Change over time": "2506638351bd09e9",
     "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "bedb64326efe1909",
-    "Predictive Validity in Drug Development > Industry failure modes > Tracing the stops the registry does not explain": "a1e05b12d49374fe",
-    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "1dad10e346c49f19",
+    "Predictive Validity in Drug Development > Industry failure modes > Tracing the stops the registry does not explain": "87e14758d9bcc86e",
+    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "f67d418a59183f7c",
     "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "881fd9d5e10c1ebf",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "76fcb5d8fbe75603",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence lines and how they are matched": "73320fad7e83a5c7",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Relative success": "d4e3c6bc6f49055d",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Genetic dose–response": "5d8a6f1125dd682a",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What each line adds once the others are known": "1f3eaca5cb680917",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does the evidence predict which programs reach approval?": "61e3f0a6a8164b5f",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does the evidence predict which programs reach approval?": "21786886b13cce35",
     "Predictive Validity in Drug Development > What translates to the clinic": "583721db50313e53",
-    "Predictive Validity in Drug Development > What translates to the clinic > Design": "3c1f0c3f3690ac08",
-    "Predictive Validity in Drug Development > What translates to the clinic > Confirmatory hypotheses": "f4c072615925c684",
-    "Predictive Validity in Drug Development > What translates to the clinic > Which evidence translates": "5d24e478ac751ae4",
+    "Predictive Validity in Drug Development > What translates to the clinic > Design": "336303c5081f4601",
+    "Predictive Validity in Drug Development > What translates to the clinic > Confirmatory hypotheses": "1fe8d8c001f2ba08",
+    "Predictive Validity in Drug Development > What translates to the clinic > Which evidence translates": "a1310d8ce3ea41f7",
     "Predictive Validity in Drug Development > What translates to the clinic > By endpoint": "34635db2bc8823de",
     "Predictive Validity in Drug Development > What translates to the clinic > Direction of effect": "59c9331d8af52919",
-    "Predictive Validity in Drug Development > What translates to the clinic > Models that predict: rules applied at Phase 2 entry": "e6baa5ec4aeb9e3f",
-    "Predictive Validity in Drug Development > What translates to the clinic > Verified case studies": "583012865a3c1f28",
+    "Predictive Validity in Drug Development > What translates to the clinic > Models that predict: rules applied at Phase 2 entry": "251edb6488e96fe5",
+    "Predictive Validity in Drug Development > What translates to the clinic > Verified case studies": "caf06877f1b010c5",
     "Predictive Validity in Drug Development > What translates to the clinic > What this means": "3747b3c503db57a6",
     "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
     "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
     "Predictive Validity in Drug Development > Appendix > Data": "02177263d3f224db",
     "Predictive Validity in Drug Development > Appendix > How LOA moves with each definition": "11447192047b5d9d",
     "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "94963fb66bbc62be",
-    "Predictive Validity in Drug Development > Appendix > Limitations": "6b45bcae917608da",
+    "Predictive Validity in Drug Development > Appendix > Limitations": "81eeb8fead25246a",
     "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
    }
   },
   "REPORT_APPENDIX.md": {
    "name": "Appendix detail",
    "node": "9bf11c10-61a3",
-   "rev": 5,
+   "rev": 6,
    "sections": {
     "Appendix detail": "dd0cdf63730712ee",
-    "Appendix detail > Section 3 case studies": "17319c888fbc877d",
+    "Appendix detail > Section 3 case studies": "fa535c24820fe315",
     "Appendix detail > Sources in detail": "c76bf1b11d6c8380",
     "Appendix detail > Sources in detail > ClinicalTrials.gov API v2": "2bb3fe185a5f7894",
     "Appendix detail > Sources in detail > PubMed E-utilities": "907b408f1db6995c",
@@ -78,9 +78,9 @@
    "published": "blob/05e66259-6bb3"
   },
   "report/output/figures/efficacy_attribution.png": {
-   "hash": "6b39e1b5e1c73476",
-   "blob": "blob/bc684924-457b",
-   "published": "blob/bc684924-457b"
+   "hash": "a5a341ea55c41455",
+   "blob": "blob/ac6e5c0a-620d",
+   "published": "blob/ac6e5c0a-620d"
   },
   "report/output/figures/loa_by_area.png": {
    "hash": "a0e68bfc5a18cfa2",
@@ -118,9 +118,9 @@
    "published": "blob/ca7e67cd-b69f"
   },
   "report/output/figures/s3_rules.png": {
-   "hash": "2fd3f43d43134392",
-   "blob": "blob/dbeae775-6696",
-   "published": "blob/dbeae775-6696"
+   "hash": "20d5b52df3d77b6a",
+   "blob": "blob/6e4cec98-9678",
+   "published": "blob/6e4cec98-9678"
   }
  }
 }
