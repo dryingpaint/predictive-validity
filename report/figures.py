@@ -123,12 +123,18 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
         start += w
 
 
-def efficacy_attribution():
+def efficacy_attribution(phase1: bool = False):
+    """Why programs stop and why efficacy failed: Phase 2 and 3 (the headline), or Phase 1 apart."""
     n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
-    shown = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv")).shown.dropna()
+    traced = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
+    entry = pd.to_datetime(traced.phase_entry).dt.year
+    in_window = entry.between(n["window"]["from"], n["window"]["to"])
+    shown = traced[in_window & traced.phase.eq(1)].shown.dropna() if phase1 else traced[traced.headline].shown.dropna()
+    years = f"{n['window']['from']}–{n['window']['to']}"
+    phases = "Phase 1" if phase1 else "Phase 2 and 3"
     total = len(shown)
     after = [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]
-    e = n["phase23"]
+    e = n["phase1"] if phase1 else n["phase23"]
     efficacy = [(e["groups"][g]["share"], col, g == "indeterminate") for g, col in ATTRIBUTION_COLORS.items()]
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
@@ -140,9 +146,9 @@ def efficacy_attribution():
         ax.set_xlim(0, 1)
         ax.set_ylim(0.4, 5.4)
         ax.axis("off")
-        fig.text(0.03, 0.97, "Why Phase 2 and 3 programs stop",
+        fig.text(0.03, 0.97, f"Why {phases} programs stop",
                  fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.895, f"{total:,} industry programs that stopped in Phase 2 or 3, phase entries 2015–2025",
+        fig.text(0.03, 0.895, f"{total:,} industry programs that stopped in {phases.replace(' and ', ' or ')}, phase entries {years}",
                  fontsize=10.5, color=MUTED, va="top")
         rows = [(4.7, "All stops", f"{total:,} programs", after),
                 (1.75, "Efficacy or exposure", f"{e['programs']:,} programs", efficacy)]
@@ -167,7 +173,7 @@ def efficacy_attribution():
         ax.legend(handles=eff_handles, ncol=3, frameon=False, fontsize=8.5, loc="upper left",
                   bbox_to_anchor=(-0.18, 0.2), handlelength=1.0, handleheight=1.0, columnspacing=1.4,
                   labelspacing=0.6, labelcolor=INK2)
-        save(fig, "efficacy_attribution")
+        save(fig, "efficacy_attribution_phase1" if phase1 else "efficacy_attribution")
 
 
 def loa_bars(csv, title, name, ref):
@@ -348,6 +354,7 @@ def main():
         dose_response()
     if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
         efficacy_attribution()
+        efficacy_attribution(phase1=True)
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
         s3_specificity()

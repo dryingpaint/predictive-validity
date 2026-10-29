@@ -46,7 +46,7 @@ BLOCKED_DOMAINS = ["clinicaltrials.gov"]
 
 SIGNALS_METHOD = "stop_signals@v1"
 SIGNALS_DESCRIPTION = f"""For every program Section 1 records as suspended in Phase 2 or 3 (report.section1.failure_modes),
-keyed by (entity, disease, phase), phase entries in pipeline.stops.TRACING_WINDOW: phase_entry is the phase entry
+keyed by (entity, disease, phase), phase entries in report.windows.TRACING: phase_entry is the phase entry
 date Section 1 assigns; stopped_on is the latest end (completion, else primary completion, else start)
 of the program's own trials; drug_continued_elsewhere is true when another program of the entity had a trial start
 after that date or has an active trial; drug_approved_anywhere is true when the entity has any FDA approval;

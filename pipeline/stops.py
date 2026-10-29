@@ -17,7 +17,7 @@ from report import frame, section1
 from report.disease_match import Mondo
 from report.windows import TRACING
 
-PHASES = (2, 3)
+PHASES = (1, 2, 3)  # phases whose stops are traced and labelled
 EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
 PK_REASON = "PK, dose or formulation"
 POSITIVE = "positive readout, not advanced"
