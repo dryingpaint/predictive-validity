@@ -15,7 +15,7 @@ filings, pipeline updates, conference reports, news) and names the cause, how di
 sources state it, and the sources. ClinicalTrials.gov is excluded from search, so the held-out
 validation cannot read the reason it is scored against. Every URL a decision cites must be one
 its searches returned. Each step records its method in preclin.analysis_method. The model names
-causes in its own vocabulary (CAUSES); preclin.stop holds them in pipeline.stops.CAUSES.
+causes in its own vocabulary (MODEL_CAUSES); preclin.stop holds them in pipeline.stops.CAUSES.
 """
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ from pipeline.stops import (CAUSE, CODE_CAUSE, INFERENCE_TASK, INFERENCE_VERSION
 from report import frame
 from report.disease_match import Mondo
 
-CAUSES = ["efficacy", "safety", "pk_formulation", "business_strategic", "company_event", "operational",
+MODEL_CAUSES = ["efficacy", "safety", "pk_formulation", "business_strategic", "company_event", "operational",
           "positive_not_advanced", "development_continued", "unknown"]
 EVIDENCE = ["explicit_program", "explicit_drug", "results", "context", "none"]
 SPONSOR_GAP_MONTHS = 12
@@ -161,14 +161,14 @@ rationale: at most 100 words."""
 SCHEMA = {
     "type": "object",
     "properties": {
-        "cause": {"type": "string", "enum": CAUSES},
-        "secondary_causes": {"type": "array", "items": {"type": "string", "enum": CAUSES}},
+        "cause": {"type": "string", "enum": MODEL_CAUSES},
+        "secondary_causes": {"type": "array", "items": {"type": "string", "enum": MODEL_CAUSES}},
         "evidence_kind": {"type": "string", "enum": EVIDENCE},
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
         "stop_year": {"type": ["integer", "null"]},
         "quote": {"type": "string"},
         "sources": {"type": "array", "items": {"type": "string"}},
-        "likely_cause": {"type": "string", "enum": CAUSES},
+        "likely_cause": {"type": "string", "enum": MODEL_CAUSES},
         "likely_basis": {"type": "string"},
         "rationale": {"type": "string"},
     },
@@ -237,7 +237,7 @@ disease, the program's trials in the phase (record, stated reason if any, primar
 {RESULTS_CHARS} characters), up to {MAX_PAPERS} linked or retrieved papers, the stop_signals@v1 facts, and the drug's
 other programs. The model searches the web (web_search up to 6 queries, web_fetch up to 3 pages;
 {', '.join(BLOCKED_DOMAINS)} blocked) for releases, filings, pipeline updates, conference reports and news, then
-returns a cause ({', '.join(CAUSES)}), how directly sources state it ({', '.join(EVIDENCE)}), confidence, a
+returns a cause ({', '.join(MODEL_CAUSES)}), how directly sources state it ({', '.join(EVIDENCE)}), confidence, a
 supporting quote and its sources, and separately a likely cause: its best inference from context and signals when no
 source states the cause (equal to the cause when one is known), with a one-sentence basis. Validation rejects a decision that cites a URL its own searches did not return,
 names a cause without evidence, or claims explicit evidence without a quote. Prompt, schema, inputs, raw output and
@@ -343,7 +343,7 @@ def infer(_args) -> None:
                ["preclin.ctgov_study", "preclin.ctgov_result_summary", "preclin.trial_publication",
                 "preclin.moiety_publication", "preclin.stop_signal",
                 "pv_evidence.llm_decision (efficacy attribution)", "web search"], {"task": TASK.name, "prompt_version": TASK.prompt_version, "model": TASK.model,
-                                "effort": TASK.effort, "tools": TOOLS, "causes": CAUSES, "evidence": EVIDENCE})
+                                "effort": TASK.effort, "tools": TOOLS, "causes": MODEL_CAUSES, "evidence": EVIDENCE})
         conn.commit()
     run_id = llm.run(TASK, items)
     print(f"programs={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
@@ -394,12 +394,49 @@ the cause is unknown with no guess. Subcause: for an efficacy stop, why efficacy
 its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety;
 company_event for a traced company event; for an unknown cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis."""
+model's basis. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
+it)."""
 
 
 def first_text(*xs) -> str | None:
     """The first non-empty string, None if there is none."""
     return next((x.strip() for x in xs if isinstance(x, str) and x.strip()), None)
+
+
+def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict | None, fate: str | None) -> dict:
+    """What preclin.stop records for one stop. settle is None where the registry reason stands, a cause where the
+    efficacy-attribution label settles it, or 'infer'; inferred is the validated inference decision
+    (llm_decision_id, parsed_output) of a stop sent to inference, label its efficacy-attribution label with its
+    subcause and detail, and fate what the drug and sponsor did next."""
+    o = inferred["parsed_output"] if inferred else None
+    if settle is None:
+        cause = CAUSE[REGISTRY_CAUSE[reason]]
+    elif settle != "infer":
+        cause = settle
+    else:
+        cause = CAUSE[o["cause"]] if o else "unknown"
+    guess = CAUSE[o["likely_cause"]] if o and cause == "unknown" else "unknown"
+    sub = det = None
+    if cause == "efficacy":
+        sub, det = (label["subcause"], label["detail"]) if label else ("not_attributed", None)
+    elif cause == "safety" and settle == "safety":
+        sub = "off_target_toxicity"
+    elif o and o["cause"] == "company_event":
+        sub = "company_event"
+    elif cause == "unknown":
+        sub = fate
+    explains = label is not None and (cause == "efficacy" or settle in CODE_CAUSE.values())
+    explanation = first_text(label["quote"], label["rationale"]) if explains else \
+        first_text(o["quote"], o["likely_basis"], o["rationale"]) if o else None
+    return {"cause": cause, "subcause": None if pd.isna(sub) else sub, "detail": None if pd.isna(det) else det,
+            "guess": None if guess == "unknown" else guess, "explanation": explanation,
+            "sources": list(dict.fromkeys((o["sources"] if o else []) + (list(label["sources"]) if explains else []))),
+            "decision_ids": ([int(inferred["llm_decision_id"])] if o else [])
+                            + ([int(label["llm_decision_id"])] if explains else []),
+            "traced": settle is not None}
+
+
+COLUMNS = ["cause", "subcause", "detail", "guess", "explanation", "sources", "decision_ids", "traced"]
 
 
 def assemble(_args) -> None:
@@ -411,7 +448,7 @@ def assemble(_args) -> None:
     lab = lab.assign(subcause=subcause(pillar_code(lab), lab.engagement),
                      detail=detail(pillar_code(lab), lab.dose_limited)).set_index("key")
     sig = load_signals().set_index("key")
-    sig = sig.assign(fate=fate(sig))
+    fates = fate(sig)
     rows = []
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Why each program stopped", ASSEMBLE_DESCRIPTION,
@@ -421,36 +458,14 @@ def assemble(_args) -> None:
                                  "unstated": list(UNSTATED)})
         for r in modes.itertuples():
             settle = how.get(r.key, "infer" if r.reason in UNSTATED else None)
-            o = dec.at[r.key, "parsed_output"] if settle == "infer" and r.key in dec.index else None
-            if settle is None:
-                cause = CAUSE[REGISTRY_CAUSE[r.reason]]
-            elif settle != "infer":
-                cause = settle
-            else:
-                cause = CAUSE[o["cause"]] if o else "unknown"
-            guess = CAUSE[o["likely_cause"]] if o and cause == "unknown" else "unknown"
-            label = lab.loc[r.key] if r.key in lab.index else None
-            sub = det = None
-            if cause == "efficacy":
-                sub, det = (label.subcause, label.detail) if label is not None else ("not_attributed", None)
-            elif cause == "safety" and settle == "safety":
-                sub = "off_target_toxicity"
-            elif o and o["cause"] == "company_event":
-                sub = "company_event"
-            elif cause == "unknown" and r.key in sig.index:
-                sub = sig.at[r.key, "fate"]
-            explains = label is not None and (cause == "efficacy" or settle in CODE_CAUSE.values())
-            explanation = first_text(label.quote, label.rationale) if explains else \
-                first_text(o["quote"], o["likely_basis"], o["rationale"]) if o else None
-            sources = list(dict.fromkeys((o["sources"] if o else []) + (list(label.sources) if explains else [])))
-            ids = [int(dec.at[r.key, "llm_decision_id"])] if o else []
-            ids += [int(label.llm_decision_id)] if explains else []
+            inferred = dec.loc[r.key].to_dict() if settle == "infer" and r.key in dec.index else None
+            label = lab.loc[r.key].to_dict() if r.key in lab.index else None
+            row = stop_row(r.reason, settle, inferred, label, fates.get(r.key))
             rows.append((int(r.moiety_id), r.mondo_id if isinstance(r.mondo_id, str) else "", int(r.phase), r.reason,
-                         cause, None if pd.isna(sub) else sub, None if pd.isna(det) else det,
-                         None if guess == "unknown" else guess, explanation, sources, ids, mid))
+                         *(row[c] for c in COLUMNS), mid))
         cur.execute("DELETE FROM preclin.stop")
-        execute_values(cur, """INSERT INTO preclin.stop (moiety_id, mondo_id, phase, registry_reason, cause, subcause,
-                                 detail, guess, explanation, sources, decision_ids, method_id) VALUES %s""", rows)
+        execute_values(cur, f"""INSERT INTO preclin.stop (moiety_id, mondo_id, phase, registry_reason,
+                                  {', '.join(COLUMNS)}, method_id) VALUES %s""", rows)
         conn.commit()
     print(pd.Series([f"{r[4]} / {r[5] or '-'}" for r in rows]).value_counts().sort_index().to_string())
 

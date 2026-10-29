@@ -39,18 +39,17 @@ CAUSE = {"efficacy": "efficacy", "pk_formulation": "efficacy", "safety": "safety
 CAUSES = list(dict.fromkeys(CAUSE.values()))
 CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes that settle a stop's cause
 # Why efficacy failed, by attribution code. F3 and F4 count as engaged without benefit only when engagement was
-# shown or inferred, otherwise as trial design (subcause()). F6 settles the stop as safety and F8 as a sponsor
-# decision, and F9 is coded by its pillars (pillar_code), so not_a_failure only names other labellers' codes.
+# shown or inferred, otherwise as trial design (subcause()). The other codes are not efficacy failures: F6 settles
+# the stop as safety, F8 as a sponsor decision, and F9 is coded by its pillars (pillar_code).
 SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
-            "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F6": "off_target_toxicity", "F7": "trial_design",
-            "F8": "not_a_failure", "F9": "not_a_failure", "U": "no_engagement_data"}
+            "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F7": "trial_design", "U": "no_engagement_data"}
 EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
 DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",
           "F7": "trial_could_not_answer"}
 INFERENCE_TASK, INFERENCE_VERSION = "stop_cause_inference", "v2"
 ENGAGED = ("adequate", "inferred_adequate")
 RELATED_DISEASE = 0.5  # MONDO Lin similarity at which another disease counts as related
-ATTRIBUTION_TASK, SEARCH_TASK, LABEL_VERSION = "efficacy_failure_attribution", "efficacy_attribution_search", "v1"
+BUNDLE_LABEL_TASK, SEARCH_LABEL_TASK, LABEL_VERSION = "efficacy_failure_attribution", "efficacy_attribution_search", "v1"
 
 
 def subject_key(moiety_id: int, mondo_id: str | None, phase: int) -> str:
@@ -105,7 +104,7 @@ def decided(task: str) -> pd.DataFrame:
 def labels() -> pd.DataFrame:
     """The efficacy-attribution label of each labelled stop: the web-search label where the bundle label was U,
     with the bundle's code and engagement kept as bundle_code and bundle_engagement."""
-    a, s = decided(ATTRIBUTION_TASK), decided(SEARCH_TASK).set_index("key")
+    a, s = decided(BUNDLE_LABEL_TASK), decided(SEARCH_LABEL_TASK).set_index("key")
     a["bundle_code"], a["bundle_engagement"] = a.primary_code, a.engagement
     a["searched"] = a.primary_code.eq("U") & a.key.isin(s.index)
     a["quote"] = ""
@@ -125,7 +124,8 @@ def pillar_code(d: pd.DataFrame) -> pd.Series:
 
 
 def subcause(code: pd.Series, engagement: pd.Series) -> pd.Series:
-    """Why efficacy failed, from the attribution code and engagement."""
+    """Why efficacy failed, from the attribution code and engagement; null for a code that is not an efficacy
+    failure (F6, F8, F9)."""
     return code.map(SUBCAUSE).where(~(code.isin(["F3", "F4"]) & ~engagement.isin(ENGAGED)), "trial_design")
 
 

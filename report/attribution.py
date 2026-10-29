@@ -34,7 +34,7 @@ from report.section3 import Evidence, jsonable
 OUT = os.path.join(frame.REPO, "report", "output", "attribution")
 ADJUDICATION = os.path.join(frame.REPO, "report", "audits", "attribution_adjudication.json")
 # Each subcause of an efficacy stop with its label in the report table and in the figure legend, in stacking order.
-GROUP_LABELS = {
+SUBCAUSE_LABELS = {
     "not_engaged": ("Not engaged: exposure or engagement too low, or another drug on the target worked",
                     "Not engaged"),
     "engaged_no_benefit": ("Engaged, no benefit: target or mechanism wrong for the disease as tested",
@@ -44,12 +44,17 @@ GROUP_LABELS = {
     "toxicity_offset": ("On-target toxicity offset efficacy", "Toxicity offset efficacy"),
     "no_engagement_data": ("No engagement data: no human evidence of engagement either way", "No engagement data"),
 }
-GROUPS = EFFICACY_SUBCAUSES
 DETAILS = ["exposure_or_engagement_too_low", "dose_capped", "other_drug_on_target_worked", "wrong_population",
            "wrong_endpoint_or_timing", "trial_could_not_answer"]
 TESTED = ["not_engaged", "engaged_no_benefit"]
+NOT_EFFICACY = "not_an_efficacy_failure"  # the subcause compared for F6, F8 and F9 from any labeller
 MAIN_PHASES = (2, 3)  # the headline breakdown; Phase 1, whose trials rarely test efficacy, is reported apart
 NAMES = {"F1a": "not_engaged", "F2": "engaged"}  # the codes the construct checks compare
+
+
+def named(code: pd.Series, engagement: pd.Series) -> pd.Series:
+    """Why efficacy failed, for any labeller's code (the pipeline's, the re-derivation's or the adjudication's)."""
+    return subcause(code, engagement).fillna(NOT_EFFICACY)
 
 
 def three_way(g: pd.Series) -> pd.Series:
@@ -74,9 +79,9 @@ def load(modes: pd.DataFrame, window, phases=MAIN_PHASES) -> tuple[pd.DataFrame,
     reclassified = int((~stays).sum())
     d = d[stays].copy()
     d["primary_code"] = pillar_code(d)
-    d["group"] = subcause(d.primary_code, d.engagement)
+    d["subcause"] = named(d.primary_code, d.engagement)
     d["detail"] = detail(d.primary_code, d.dose_limited)
-    d["bundle_group"] = subcause(d.bundle_code, d.bundle_engagement)
+    d["bundle_subcause"] = named(d.bundle_code, d.bundle_engagement)
     d["oncology"] = d.bio_area.eq("oncology")
     unlabelled = int((in_breakdown & ~eff.key.isin(d.key)).sum())
     return d, unlabelled, reclassified
@@ -84,16 +89,16 @@ def load(modes: pd.DataFrame, window, phases=MAIN_PHASES) -> tuple[pd.DataFrame,
 
 def bundle_only(d: pd.DataFrame) -> pd.DataFrame:
     """The labels before the web search."""
-    return d.assign(primary_code=d.bundle_code, engagement=d.bundle_engagement, group=d.bundle_group)
+    return d.assign(primary_code=d.bundle_code, engagement=d.bundle_engagement, subcause=d.bundle_subcause)
 
 
 def adjudicated(d: pd.DataFrame) -> pd.DataFrame:
-    """d's programs that the blind adjudication labelled, with its code, engagement and group."""
+    """d's programs that the blind adjudication labelled, with its code, engagement and subcause."""
     adj = pd.DataFrame(json.load(open(ADJUDICATION)))
     m = d.merge(adj[["key", "code", "engagement"]].rename(columns={"code": "adjudicated",
                                                                    "engagement": "adjudicated_engagement"}), on="key")
     m = m[m.adjudicated.isin(CODES)]
-    return m.assign(adjudicated_group=subcause(m.adjudicated, m.adjudicated_engagement))
+    return m.assign(adjudicated_subcause=named(m.adjudicated, m.adjudicated_engagement))
 
 
 def counts(d: pd.DataFrame, col: str, levels: list[str]) -> dict:
@@ -104,10 +109,10 @@ def counts(d: pd.DataFrame, col: str, levels: list[str]) -> dict:
 def split(d: pd.DataFrame, rng: np.random.Generator) -> dict:
     """Among programs whose engagement is known either way, not engaged against engaged without benefit, with an
     entity-resampled interval on the not-engaged share."""
-    t = d[d.group.isin(TESTED)]
+    t = d[d.subcause.isin(TESTED)]
     if t.empty:
         return {"n": 0}
-    m = pd.crosstab(t.moiety_id, t.group).reindex(columns=TESTED, fill_value=0).to_numpy()
+    m = pd.crosstab(t.moiety_id, t.subcause).reindex(columns=TESTED, fill_value=0).to_numpy()
     draws = m[rng.integers(0, len(m), (N_BOOT, len(m)))].sum(axis=1)
     boot = draws[:, 0] / draws.sum(axis=1)
     return {"n": int(m.sum()), "not_engaged": int(m[:, 0].sum()), "engaged_no_benefit": int(m[:, 1].sum()),
@@ -116,7 +121,7 @@ def split(d: pd.DataFrame, rng: np.random.Generator) -> dict:
 
 
 def summary(d: pd.DataFrame, rng: np.random.Generator) -> dict:
-    return {"programs": int(len(d)), "entities": int(d.moiety_id.nunique()), "groups": counts(d, "group", GROUPS),
+    return {"programs": int(len(d)), "entities": int(d.moiety_id.nunique()), "subcauses": counts(d, "subcause", EFFICACY_SUBCAUSES),
             "details": counts(d, "detail", DETAILS), "testable": split(d, rng),
             "other_drug_worked_no_engagement_data": int((d.detail.eq("other_drug_on_target_worked")
                                                           & d.engagement.eq("no_human_data")).sum())}
@@ -126,20 +131,20 @@ def search_summary(d: pd.DataFrame) -> dict:
     """What the web search decided among the programs the bundle left indeterminate, and how its labels agree with
     the blind adjudication on the programs both labelled."""
     s = d[d.searched]
-    t = s[s.group.isin(TESTED)]
+    t = s[s.subcause.isin(TESTED)]
     out = {"searched": int(len(s)), "decided": int((s.primary_code != "U").sum()), "testable": int(len(t)),
-           "not_engaged": int((t.group == "not_engaged").sum()),
-           "not_engaged_share": float((t.group == "not_engaged").mean()) if len(t) else None}
+           "not_engaged": int((t.subcause == "not_engaged").sum()),
+           "not_engaged_share": float((t.subcause == "not_engaged").mean()) if len(t) else None}
     m = adjudicated(s)
     if len(m):
         both = (m.primary_code != "U") & (m.adjudicated != "U")
         open_here = (m.primary_code == "U") & (m.adjudicated != "U")
         out["adjudicated"] = {
             "n": int(len(m)), "both_decided": int(both.sum()),
-            "three_way_agree_both_decided": float((three_way(m.group) == three_way(m.adjudicated_group))[both].mean())
+            "three_way_agree_both_decided": float((three_way(m.subcause) == three_way(m.adjudicated_subcause))[both].mean())
             if both.any() else None,
             "outside_decided_search_u": int(open_here.sum()),
-            "outside_decided_search_u_groups": m.adjudicated_group[open_here].value_counts().to_dict()}
+            "outside_decided_search_u_subcauses": m.adjudicated_subcause[open_here].value_counts().to_dict()}
     return out
 
 
@@ -157,20 +162,20 @@ def rederivation(d: pd.DataFrame, sample: set[str]) -> dict:
     m = d.merge(chk[["key", "check_code", "check_engagement"]], on="key")
     if m.empty:
         return {"n": 0}
-    return {**agreement(m.group, subcause(m.check_code, m.check_engagement)), "sampled": CHECK_SAMPLE,
+    return {**agreement(m.subcause, named(m.check_code, m.check_engagement)), "sampled": CHECK_SAMPLE,
             "engaged_agree": float((m.engagement.isin(ENGAGED) == m.check_engagement.isin(ENGAGED)).mean())}
 
 
 def adjudication(d: pd.DataFrame) -> dict:
     m = adjudicated(d)
-    ga, gb = m.group, m.adjudicated_group
+    ga, gb = m.subcause, m.adjudicated_subcause
     tested = gb.isin(TESTED)
     decided = m.primary_code != "U"
     return {**agreement(ga, gb), "sampled": len(json.load(open(ADJUDICATION))),
             "contradictions": int((ga.isin(TESTED) & tested & (ga != gb)).sum()),
             "adjudicated_testable": int(tested.sum()), "adjudicated_not_engaged": int((gb == "not_engaged").sum()),
             "adjudicated_not_engaged_share": float((gb == "not_engaged").sum() / max(tested.sum(), 1)),
-            "decided_group_agree": float((ga[decided] == gb[decided]).mean()) if decided.any() else None}
+            "decided_subcause_agree": float((ga[decided] == gb[decided]).mean()) if decided.any() else None}
 
 
 def fisher(d: pd.DataFrame, flag: str, a: str = "F2", b: str = "F1a") -> dict:
@@ -234,9 +239,9 @@ def sensitivity(d: pd.DataFrame, traced: pd.DataFrame, rng: np.random.Generator)
     }
     out = []
     for name, v in variants.items():
-        v = v.assign(group=subcause(v.primary_code, v.engagement))
-        s, t = counts(v, "group", GROUPS), split(v, rng)
-        out.append({"variant": name, "programs": int(len(v)), **{g: s[g]["share"] for g in GROUPS},
+        v = v.assign(subcause=named(v.primary_code, v.engagement))
+        s, t = counts(v, "subcause", EFFICACY_SUBCAUSES), split(v, rng)
+        out.append({"variant": name, "programs": int(len(v)), **{g: s[g]["share"] for g in EFFICACY_SUBCAUSES},
                     "testable": t.get("n", 0), "not_engaged_of_testable": t.get("not_engaged_share"),
                     "lo": t.get("lo"), "hi": t.get("hi")})
     return pd.DataFrame(out)
@@ -251,7 +256,7 @@ def main() -> None:
     p1, p1_unlabelled, p1_reclassified = load(modes, SECTION1, phases=(1,))
     p1_traced = load(modes, TRACING, phases=(1,))[0]
     engaged = d[d.engagement.isin(ENGAGED)]
-    g = d.group.value_counts()
+    g = d.subcause.value_counts()
     ne, eng, u = g.get("not_engaged", 0), g.get("engaged_no_benefit", 0), g.get("no_engagement_data", 0)
     n = {"phase23": summary(d, rng),
          "by_phase": {int(p): summary(x, rng) for p, x in d.groupby("phase")},
@@ -268,7 +273,7 @@ def main() -> None:
                     "by_origin": {o: {"programs": int(len(x))} for o, x in p1.groupby("origin")},
                     "recent": summary(p1_traced[within(p1_traced, RECENT)], rng)},
          "search": search_summary(d),
-         "bundle_only": {"groups": counts(bundle_only(d), "group", GROUPS),
+         "bundle_only": {"subcauses": counts(bundle_only(d), "subcause", EFFICACY_SUBCAUSES),
                          "testable": split(bundle_only(d), rng)},
          "rederivation": rederivation(bundle_only(traced), check_sample(cohort(modes))),
          "adjudication": adjudication(bundle_only(traced)),

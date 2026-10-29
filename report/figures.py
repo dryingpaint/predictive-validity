@@ -21,7 +21,7 @@ import pandas as pd
 from report import bio, frame
 from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
-from report.attribution import GROUP_LABELS
+from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import SHOWN
 
 OUT = os.path.join(frame.REPO, "report", "output")
@@ -92,7 +92,7 @@ def failure_modes():
 
 
 EFFICACY = "#d62828"
-ATTRIBUTION_COLORS = {  # report.attribution.GROUP_LABELS, in stacking order; shades of the efficacy cause color
+ATTRIBUTION_COLORS = {  # report.attribution.SUBCAUSE_LABELS, in stacking order; shades of the efficacy cause color
     "not_engaged": "#7a0e0e", "engaged_no_benefit": EFFICACY, "trial_design": "#ec7a7a", "toxicity_offset": "#f5b3b3",
     "no_engagement_data": "#fbe3e3",
 }
@@ -138,7 +138,7 @@ def efficacy_attribution():
                       [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]))
         e = efficacy_of[phase]
         failures.append((f"Phase {phase}", f"{e['programs']:,} programs",
-                         [(e["groups"][g]["share"], col, g == "no_engagement_data") for g, col in ATTRIBUTION_COLORS.items()]))
+                         [(e["subcauses"][g]["share"], col, g == "no_engagement_data") for g, col in ATTRIBUTION_COLORS.items()]))
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
@@ -167,7 +167,7 @@ def efficacy_attribution():
         ax.add_artist(ax.legend(handles=cause_handles, bbox_to_anchor=(-0.12, 0.645), **legend))
         eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
                                                 hatch="////" if g == "no_engagement_data" else None,
-                                                label=GROUP_LABELS[g][1])
+                                                label=SUBCAUSE_LABELS[g][1])
                        for g, col in ATTRIBUTION_COLORS.items()]
         ax.legend(handles=eff_handles, bbox_to_anchor=(-0.12, 0.135), **legend)
         save(fig, "efficacy_attribution")

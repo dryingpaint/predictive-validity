@@ -7,8 +7,7 @@ writes report/output/stop_causes/numbers.json and programs.csv. Stops are traced
 report.windows.TRACING; the numbers are for entries in the Section 1 headline window (report.windows.SECTION1),
 with the recent window (RECENT) and each of SECTION1_PERIODS alongside. programs.csv holds every traced stop with its
 phase entry, `headline`, and `shown`, the cause it takes in the figure (SHOWN): the cause, or the guess where no source
-states it; empty for a program that did not stop. A stop is `traced` when its cause did not come straight from the
-registry: no usable reason was stated, the evidence overturned it, or inference was run on it.
+states it; empty for a program that did not stop.
 """
 from __future__ import annotations
 
@@ -20,7 +19,7 @@ from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
 from pipeline.stop_causes import VALIDATE_METHOD
-from pipeline.stops import CAUSE, CAUSES, REGISTRY_CAUSE, UNSTATED, inferred_causes, keys
+from pipeline.stops import CAUSE, CAUSES, REGISTRY_CAUSE, keys
 from report import frame
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 from report.section3 import jsonable
@@ -44,9 +43,6 @@ def load() -> pd.DataFrame:
     d["phase_entry"] = pd.to_datetime(d.phase_entry)
     d["headline"] = within(d, SECTION1) & d.phase.isin(MAIN_PHASES)
     d["recorded_cause"] = d.registry_reason.map(REGISTRY_CAUSE).map(CAUSE).fillna("unknown")
-    inferred = set(inferred_causes().llm_decision_id)
-    d["traced"] = d.registry_reason.isin(UNSTATED) | d.recorded_cause.ne(d.cause) | \
-        d.decision_ids.map(lambda ids: bool(inferred & set(ids)))
     d["likely"] = d.guess.where(d.cause.eq("unknown") & d.guess.notna(), d.cause)
     d["shown"] = d.likely.where(d.likely.ne("not_stopped"))
     return d

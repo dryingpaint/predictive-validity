@@ -32,8 +32,8 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.outcomes import eutils
-from pipeline.stops import (ATTRIBUTION_TASK, LABEL_VERSION, PHASES, RELATED_DISEASE, SEARCH_TASK as SEARCH_TASK_NAME,
-                            cohort, decided, stops)
+from pipeline.stops import (BUNDLE_LABEL_TASK, LABEL_VERSION, PHASES, RELATED_DISEASE, SEARCH_LABEL_TASK, cohort,
+                            decided, stops)
 from report.disease_match import Mondo
 
 PHARMACOLOGY_HITS = 15  # PubMed results kept per entity, relevance order
@@ -263,7 +263,7 @@ def render(p: dict) -> str:
     return "\n".join(out)
 
 
-TASK = llm.Task(name=ATTRIBUTION_TASK, prompt_version=LABEL_VERSION, schema_version="v1", system=SYSTEM,
+TASK = llm.Task(name=BUNDLE_LABEL_TASK, prompt_version=LABEL_VERSION, schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="program_phase",
                 model="claude-opus-5-5", effort="high", max_tokens=6000)
 
@@ -286,7 +286,7 @@ def validate_search(p: dict, out: dict) -> None:
     validate_codes(out)
 
 
-SEARCH_TASK = llm.Task(name=SEARCH_TASK_NAME, prompt_version=LABEL_VERSION, schema_version="v1",
+SEARCH_TASK = llm.Task(name=SEARCH_LABEL_TASK, prompt_version=LABEL_VERSION, schema_version="v1",
                        system=INTRO + SEARCH_JUDGE + RUBRIC, schema=SEARCH_SCHEMA, render=render,
                        validate=validate_search, subject_type="program_phase", model="claude-opus-5-5",
                        effort="medium", max_tokens=16000, tools=SEARCH_TOOLS)

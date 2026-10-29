@@ -1,5 +1,5 @@
 -- preclin.stop holds each stop's cause and why its efficacy failed; the efficacy-attribution labels are read
--- from pv_evidence.llm_decision. Apply after the code that reads preclin.stop is on main.
+-- from pv_evidence.llm_decision.
 BEGIN;
 SET LOCAL lock_timeout = '3s';
 DROP TABLE IF EXISTS preclin.stop_cause;
