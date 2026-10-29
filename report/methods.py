@@ -48,9 +48,9 @@ efficacy and PK stops, and the rules by which an efficacy label settles a stop's
 
 A **program** is one drug developed for one disease. Every industry program whose Phase 1, 2 or 3 began 2008–2025
 (ClinicalTrials.gov) and stopped is traced and labelled (`pipeline.stops.TRACING_WINDOW`, `pipeline.stops.PHASES`).
-The figure's bars show Phase 2 and 3 entries from 2008–2019, the Section 1 headline window; a second figure shows Phase
-1 the same way, since Phase 1 trials rarely test efficacy; and the report compares entry periods and the 2015–2025
-window. Registry
+The figure shows one bar per phase for entries from 2008–2019, the Section 1 headline window; the headline numbers in
+the text are for Phase 2 and 3, with Phase 1 reported apart since its trials rarely test efficacy; and the report
+compares entry periods and the 2015–2025 window. Registry
 outcomes and endpoints are classified for every Phase 2/3 trial started from 2008 (`pipeline.outcomes.TRIALS_FROM`). Every model step uses Claude Opus 5.5 except the re-derivation check, which uses Claude Sonnet 5.
 
 ## Top bar: why programs stopped
