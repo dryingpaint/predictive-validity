@@ -20,6 +20,10 @@
 
 Per-source detail (who compiles each source, what the pipeline keeps, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
 
+### How LOA moves with each definition
+
+{{SENSITIVITY_TABLE}}
+
 ### How each label was made, and how good it is
 
 Every judgement in the pipeline is an LLM call (Claude) that reads the source record and returns a structured answer, stored with its prompt, input, model and code version. Disease mapping, entity resolution, trial purpose and roles, approvals, stop reasons, trial outcomes, modality, disease area and targets were all made this way, not with keyword rules. For each high-stakes label, a seeded random sample was re-derived independently by agents working from the primary sources (registry records, PubMed, Drugs@FDA, DailyMed, CBER pages) before they saw the stored answer. Agreement counts answers judged correct or defensibly different under the same rules.
