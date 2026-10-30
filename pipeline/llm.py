@@ -269,6 +269,13 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
 MAX_CONTINUATIONS = 4  # resumptions of a turn the server paused while running its tools
 
 
+def current_decisions(task: Task, items: dict[str, dict[str, Any]]) -> dict[str, tuple[int, dict[str, Any]]]:
+    """The validated decision of each item whose input is the item's payload as it is now:
+    subject_key -> (llm_decision_id, parsed_output). Items never decided on this input are left out."""
+    with connect() as conn, conn.cursor() as cur:
+        return {k: (row[4], row[1]) for k, row in _reusable(cur, task, items, "input").items()}
+
+
 def latest_decisions(task: str, prompt_version: str) -> pd.DataFrame:
     """The latest validated decision of each subject for a task version, held-out subjects (|heldout) aside:
     key, llm_decision_id, parsed_output."""

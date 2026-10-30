@@ -1,7 +1,9 @@
 """What preclin.stop records for a stop, from its registry reason, inference decision and efficacy label."""
 from __future__ import annotations
 
-from pipeline.stop_causes import stop_row
+import pytest
+
+from pipeline.stop_causes import describe_items, stop_row, validate_plain, validate_subcause
 
 TRIAL = {"nct_id": "NCT00000001", "stated": None}
 
@@ -39,7 +41,7 @@ def test_a_label_of_off_target_toxicity_makes_the_stop_a_safety_stop():
 def test_a_traced_company_event_is_a_sponsor_decision():
     row = stop_row("stopped, no reason stated", "infer", inferred("company_event", quote="The company wound down."),
                    None, "sponsor_went_quiet", TRIAL)
-    assert (row["cause"], row["subcause"], row["guess"]) == ("sponsor_decision", "company_event", None)
+    assert (row["cause"], row["subcause"], row["guess"]) == ("sponsor_decision", None, None)
     assert (row["explanation"], row["decision_ids"]) == ("The company wound down.", [11])
 
 
@@ -67,3 +69,29 @@ def test_a_stop_the_registry_explains_quotes_its_trial():
 def test_a_label_explains_an_efficacy_stop_before_its_trial_does():
     row = stop_row("efficacy: stated", None, None, label(), None, {"nct_id": "NCT00000003", "stated": "Futility."})
     assert (row["explanation"], row["sources"]) == ("Occupancy was high; no benefit.", ["PMID:1"])
+
+
+def test_describe_asks_for_the_subcauses_and_rewordings_a_stop_needs():
+    rows = [("a", 1, "", 2, "safety", {"cause": "safety", "subcause": None, "explanation": "Liver injury in 3 patients."}),
+            ("b", 1, "", 2, "safety", {"cause": "safety", "subcause": "off_target_toxicity", "explanation": "F6 here."}),
+            ("c", 1, "", 2, "efficacy: stated",
+             {"cause": "efficacy", "subcause": "engaged_no_benefit", "explanation": "Engaged (F2) at 16 U."}),
+            ("d", 1, "", 2, "stopped, no reason stated", {"cause": "unknown", "subcause": "drug_dropped",
+                                                          "explanation": None})]
+    sub, plain = describe_items(rows)
+    assert sub == {"a": {"cause": "safety", "registry_reason": "safety", "explanation": "Liver injury in 3 patients."}}
+    assert set(plain) == {"b", "c"}
+
+
+def test_a_subcause_must_belong_to_its_cause():
+    validate_subcause({"cause": "operational"}, {"subcause": "enrollment", "basis": "slow accrual"})
+    with pytest.raises(ValueError):
+        validate_subcause({"cause": "operational"}, {"subcause": "funding_or_closure", "basis": ""})
+
+
+@pytest.mark.parametrize("text", ["Engagement unknown (secondary F1a).", "Engaged, no benefit (PMID:1)."])
+def test_a_rewording_keeps_no_code_and_every_citation(text):
+    with pytest.raises(ValueError):
+        validate_plain({"text": "Engaged (F2) per NCT01234567 and PMID:1."}, {"text": text})
+    validate_plain({"text": "Engaged (F2) per NCT01234567 and PMID:1."},
+                   {"text": "Engaged without benefit per NCT01234567 and PMID:1."})

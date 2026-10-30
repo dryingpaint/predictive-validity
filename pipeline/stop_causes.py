@@ -3,6 +3,7 @@
     python -m pipeline.stop_causes signals    # structured facts per stopped program -> preclin.stop_signal
     python -m pipeline.stop_causes infer      # LLM with web search: cause of each unexplained stop
     python -m pipeline.stop_causes validate   # the same on a seeded sample of stated stops, reason hidden
+    python -m pipeline.stop_causes describe   # LLM: subcause of each stop, and explanations without codes
     python -m pipeline.stop_causes assemble   # final cause of every stop, and why efficacy failed -> preclin.stop
 
 Section 1 gives each suspended program one reason from its own trials. For 40% of Phase 2/3
@@ -20,6 +21,7 @@ causes in its own vocabulary (MODEL_CAUSES); preclin.stop holds them in pipeline
 from __future__ import annotations
 
 import argparse
+import re
 from collections import defaultdict
 
 import numpy as np
@@ -28,8 +30,8 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 from pipeline.stops import (CAUSE, CODE_CAUSE, INFERENCE_TASK, INFERENCE_VERSION, PHASES, REGISTRY_CAUSE,
-                            RELATED_DISEASE, UNSTATED, SameTarget, detail, fate, inferred_causes, keys, labels,
-                            pillar_code, settled, stops, subcause)
+                            RELATED_DISEASE, SUBCAUSES, UNSTATED, SameTarget, detail, fate, inferred_causes, keys,
+                            labels, pillar_code, settled, stops, subcause)
 from report import frame
 from report.disease_match import Mondo
 
@@ -391,10 +393,12 @@ take the inferred cause, as does an unstated, bare sponsor-decision or unspecifi
 maps to preclin.stop's vocabulary ({'; '.join(f'{k} -> {v}' for k, v in CAUSE.items() if k != v)}), and is unknown
 where no source states it, with the model's likely cause as the guess. If inference produced no validated decision
 the cause is unknown with no guess. Subcause: for an efficacy stop, why efficacy failed from its label (F9 coded by
-its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety;
-company_event for a traced company event; for an unknown cause, what the drug and sponsor did next
+its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety; for
+safety, sponsor decision, operational and positive-readout stops, the stop_description@v1 subcause; for an unknown
+cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis, else what the trial that gave Section 1 its reason states (its stated reason for stopping, else
+model's basis (in stop_description@v1's plain wording where it used failure codes), else what the trial that
+gave Section 1 its reason states (its stated reason for stopping, else
 the result Section 1 read), with the trial in the sources. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
 it)."""
 
@@ -424,8 +428,6 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
         sub, det = (label["subcause"], label["detail"]) if label else ("not_attributed", None)
     elif cause == "safety" and settle == "safety":
         sub = "off_target_toxicity"
-    elif o and o["cause"] == "company_event":
-        sub = "company_event"
     elif cause == "unknown":
         sub = fate
     explains = label is not None and (cause == "efficacy" or settle in CODE_CAUSE.values())
@@ -445,7 +447,8 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
 COLUMNS = ["cause", "subcause", "detail", "guess", "explanation", "sources", "decision_ids", "traced"]
 
 
-def assemble(_args) -> None:
+def stop_rows() -> list[tuple]:
+    """(key, moiety_id, mondo_id, phase, registry reason, stop_row) of every stop, before describe's decisions."""
     modes = stops()[0]
     modes = modes[modes.phase.isin(PHASES)]
     dec = inferred_causes().set_index("key")
@@ -453,32 +456,162 @@ def assemble(_args) -> None:
     how = settled(modes, lab)
     lab = lab.assign(subcause=subcause(pillar_code(lab), lab.engagement),
                      detail=detail(pillar_code(lab), lab.dose_limited)).set_index("key")
-    sig = load_signals().set_index("key")
-    fates = fate(sig)
+    fates = fate(load_signals().set_index("key"))
     stated = frame.query("""SELECT s.nct_id, coalesce(nullif(trim(s.why_stopped), ''), o.evidence) AS stated
                             FROM preclin.ctgov_study s LEFT JOIN preclin.trial_outcome o USING (nct_id)
                             WHERE s.nct_id = ANY(%s)""", (sorted(set(modes.nct_id.dropna())),))
     stated = dict(zip(stated.nct_id, stated.stated))
-    rows = []
+    out = []
+    for r in modes.itertuples():
+        settle = how.get(r.key, "infer" if r.reason in UNSTATED else None)
+        inferred = dec.loc[r.key].to_dict() if settle == "infer" and r.key in dec.index else None
+        label = lab.loc[r.key].to_dict() if r.key in lab.index else None
+        out.append((r.key, int(r.moiety_id), r.mondo_id if isinstance(r.mondo_id, str) else "", int(r.phase),
+                    r.reason, stop_row(r.reason, settle, inferred, label, fates.get(r.key),
+                                       {"nct_id": r.nct_id, "stated": stated.get(r.nct_id)})))
+    return out
+
+
+SUBCAUSE_MEANING = {
+    "on_target_toxicity": "harm that follows from hitting the target itself (the mechanism's expected toxicity)",
+    "off_target_toxicity": "harm from the molecule rather than the target (off-target binding, metabolites, the formulation)",
+    "tolerability": "side effects patients would not tolerate, without a stated mechanism",
+    "preclinical_toxicity": "a finding in animal or laboratory toxicology studies",
+    "clinical_hold": "a regulator's clinical hold or a safety board's recommendation to stop",
+    "portfolio_prioritisation": "the sponsor chose to put its resources into other programs",
+    "commercial_or_competitive": "the market, pricing, reimbursement or a competing drug made it not worth pursuing",
+    "partner_returned_rights": "a licensing or development partner ended the deal or handed the rights back",
+    "acquisition_or_merger": "the sponsor was acquired or merged and the program was dropped",
+    "funding_or_closure": "the sponsor ran out of money, wound down, went bankrupt or closed",
+    "enrollment": "patients could not be recruited or retained fast enough",
+    "site_or_supply": "trial sites, drug supply, manufacturing for the trial or other logistics",
+    "covid_19": "the COVID-19 pandemic disrupted the trial",
+    "regulatory": "a regulatory or procedural requirement or hold not about safety",
+    "approved_outside_us": "the drug was approved, or filed, outside the United States",
+    "fda_complete_response": "the FDA declined to approve it (a complete response letter)",
+    "partnership_stalled": "a positive result was waiting for, or lost, a partner",
+    "new_formulation_or_combination": "development moved to another formulation, dose form, combination or follow-on drug",
+    "not_stated": "the text gives no more detail than the cause",
+}
+SUBCAUSE_SYSTEM = f"""You read why a drug development program stopped and name the subcause. The cause is already decided and is given; so is the text it rests on (the sponsor's stated reason, a quote from a source, a posted result, or an analyst's reasoning).
+
+Choose the one subcause, from the list for the given cause, that the text states or directly implies. Use not_stated when the text says no more than the cause. Judge only from the text; do not use what you know about the drug or the company.
+
+Subcauses for each cause:
+{chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
+
+What each subcause means:
+{chr(10).join(f"- {k}: {v}" for k, v in SUBCAUSE_MEANING.items())}
+
+basis: the words in the text the subcause rests on, or empty for not_stated."""
+SUBCAUSE_SCHEMA = {
+    "type": "object",
+    "properties": {"subcause": {"type": "string", "enum": list(SUBCAUSE_MEANING)}, "basis": {"type": "string"}},
+    "required": ["subcause", "basis"],
+    "additionalProperties": False,
+}
+
+
+def validate_subcause(p: dict, out: dict) -> None:
+    if out["subcause"] not in SUBCAUSES[p["cause"]]:
+        raise ValueError(f"subcause {out['subcause']} is not one of {p['cause']}'s")
+
+
+SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v1", schema_version="v1", system=SUBCAUSE_SYSTEM,
+                         schema=SUBCAUSE_SCHEMA, subject_type="program_phase", validate=validate_subcause,
+                         render=lambda p: f"Cause: {p['cause']}\nRegistry reason: {p['registry_reason']}\n\n"
+                                          f"Text:\n{p['explanation']}",
+                         model="claude-sonnet-5", effort="low", max_tokens=1000)
+
+F_CODE = r"\bF(?:1a|1b|[1-9])\b"  # the efficacy attribution's failure codes, as the labeller wrote them
+CODE = re.compile(F_CODE + r"|\bU\b")  # with U, which may also be a unit: the rewording tells them apart
+CITATION = re.compile(r"NCT\d{8}|PMID:?\s?\d+|https?://\S+")
+CODE_NAMES = {"F1a": "exposure or engagement too low, or dose capped", "F1b": "another drug on the target worked",
+              "F2": "engaged, no benefit", "F3": "wrong population", "F4": "wrong endpoint or timing",
+              "F5": "toxicity offset efficacy", "F6": "off-target toxicity", "F7": "the trial could not answer the question",
+              "F8": "a business stop", "F9": "not an efficacy test", "U": "no engagement data"}
+PLAIN_SYSTEM = f"""You edit an analyst's note about why a drug's efficacy failed so that a reader who does not know its codes can follow it. The note uses failure codes; replace each with its meaning, rewording the sentence only as much as that needs:
+{chr(10).join(f"- {k} (also written F1 for F1a or F1b): {v}" if k == "F1a" else f"- {k}: {v}" for k, v in CODE_NAMES.items())}
+Phrases like "the code is U" or "secondary F1a" become plain statements ("engagement is unknown", "it may also be that exposure was too low"). "U" in a dose or unit (e.g. "16 U") is not a code; keep it. Keep every fact, number, hedge, trial id, PMID and URL exactly; add nothing."""
+PLAIN_SCHEMA = {"type": "object", "properties": {"text": {"type": "string"}}, "required": ["text"],
+                "additionalProperties": False}
+
+
+def validate_plain(p: dict, out: dict) -> None:
+    left = re.findall(F_CODE, out["text"])
+    if left:
+        raise ValueError(f"codes left: {left}")
+    lost = set(CITATION.findall(p["text"])) - set(CITATION.findall(out["text"]))
+    if lost:
+        raise ValueError(f"citations lost: {sorted(lost)[:3]}")
+
+
+PLAIN_TASK = llm.Task(name="stop_explanation_plain", prompt_version="v1", schema_version="v1", system=PLAIN_SYSTEM,
+                      schema=PLAIN_SCHEMA, subject_type="program_phase", validate=validate_plain,
+                      render=lambda p: p["text"], model="claude-sonnet-5", effort="low", max_tokens=3000)
+
+
+def describe_items(rows: list[tuple]) -> tuple[dict, dict]:
+    """The stops each describe task decides: a subcause for a cause with SUBCAUSES that its row leaves open, and a
+    plain rewording of an explanation that uses failure codes."""
+    sub, plain = {}, {}
+    for key, *_, reason, row in rows:
+        if row["cause"] in SUBCAUSES and row["subcause"] is None and row["explanation"]:
+            sub[key] = {"cause": row["cause"], "registry_reason": reason, "explanation": row["explanation"]}
+        if row["explanation"] and CODE.search(row["explanation"]):
+            plain[key] = {"text": row["explanation"]}
+    return sub, plain
+
+
+DESCRIBE_METHOD = "stop_description@v1"
+DESCRIBE_DESCRIPTION = f"""Two passes over the rows stop_cause_assembly writes, without web search (model
+{SUBCAUSE_TASK.model}, effort {SUBCAUSE_TASK.effort}). {SUBCAUSE_TASK.name}: for every stop whose cause is
+{', '.join(SUBCAUSES)} and whose subcause the efficacy label does not set, the model reads the cause, the registry
+reason and the explanation (the trial's stated reason, the traced source quote or the model's reasoning) and picks
+the subcause the text states or directly implies from the cause's list, not_stated where it says no more; validation
+rejects a subcause outside the cause's list. {PLAIN_TASK.name}: every explanation that uses an efficacy-attribution
+failure code is reworded with the code's meaning; validation rejects a rewording that keeps a code or drops a trial
+id, PMID or URL. The original text stays in the decision it came from."""
+
+
+def describe(_args) -> None:
+    with llm.connect() as conn, conn.cursor() as cur:
+        llm.record_method(cur, DESCRIBE_METHOD, "Subcause and plain explanation of each stop", DESCRIBE_DESCRIPTION,
+                          ["stop_cause_assembly rows (pipeline.stop_causes.stop_rows)"],
+                          {"subcause_task": SUBCAUSE_TASK.name, "plain_task": PLAIN_TASK.name,
+                           "model": SUBCAUSE_TASK.model, "subcauses": SUBCAUSES})
+        conn.commit()
+    sub, plain = describe_items(stop_rows())
+    for task, items in ((SUBCAUSE_TASK, sub), (PLAIN_TASK, plain)):
+        run_id = llm.run(task, items)
+        print(f"{task.name}: items={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+
+
+def assemble(_args) -> None:
+    rows = stop_rows()
+    sub, plain = describe_items(rows)
+    sub, plain = llm.current_decisions(SUBCAUSE_TASK, sub), llm.current_decisions(PLAIN_TASK, plain)
+    out = []
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Why each program stopped", ASSEMBLE_DESCRIPTION,
                                 ["report.section1.failure_modes", "preclin.stop_signal",
-                                 f"pv_evidence.llm_decision ({TASK.name}, efficacy attribution)"],
+                                 f"pv_evidence.llm_decision ({TASK.name}, efficacy attribution, "
+                                 f"{SUBCAUSE_TASK.name}, {PLAIN_TASK.name})"],
                                 {"registry_cause": REGISTRY_CAUSE, "cause": CAUSE, "code_cause": CODE_CAUSE,
-                                 "unstated": list(UNSTATED)})
-        for r in modes.itertuples():
-            settle = how.get(r.key, "infer" if r.reason in UNSTATED else None)
-            inferred = dec.loc[r.key].to_dict() if settle == "infer" and r.key in dec.index else None
-            label = lab.loc[r.key].to_dict() if r.key in lab.index else None
-            row = stop_row(r.reason, settle, inferred, label, fates.get(r.key),
-                           {"nct_id": r.nct_id, "stated": stated.get(r.nct_id)})
-            rows.append((int(r.moiety_id), r.mondo_id if isinstance(r.mondo_id, str) else "", int(r.phase), r.reason,
-                         *(row[c] for c in COLUMNS), mid))
+                                 "unstated": list(UNSTATED), "subcauses": SUBCAUSES})
+        for key, moiety, mondo, phase, reason, row in rows:
+            if key in sub:
+                row["subcause"] = sub[key][1]["subcause"]
+                row["decision_ids"].append(int(sub[key][0]))
+            if key in plain:
+                row["explanation"] = plain[key][1]["text"]
+                row["decision_ids"].append(int(plain[key][0]))
+            out.append((moiety, mondo, phase, reason, *(row[c] for c in COLUMNS), mid))
         cur.execute("DELETE FROM preclin.stop")
         execute_values(cur, f"""INSERT INTO preclin.stop (moiety_id, mondo_id, phase, registry_reason,
-                                  {', '.join(COLUMNS)}, method_id) VALUES %s""", rows)
+                                  {', '.join(COLUMNS)}, method_id) VALUES %s""", out)
         conn.commit()
-    print(pd.Series([f"{r[4]} / {r[5] or '-'}" for r in rows]).value_counts().sort_index().to_string())
+    print(pd.Series([f"{r[4]} / {r[5] or '-'}" for r in out]).value_counts().sort_index().to_string())
 
 
 def main() -> None:
@@ -487,6 +620,7 @@ def main() -> None:
     sub.add_parser("signals").set_defaults(fn=signals)
     sub.add_parser("infer").set_defaults(fn=infer)
     sub.add_parser("validate").set_defaults(fn=validate_run)
+    sub.add_parser("describe").set_defaults(fn=describe)
     sub.add_parser("assemble").set_defaults(fn=assemble)
     args = parser.parse_args()
     args.fn(args)

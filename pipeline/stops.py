@@ -44,6 +44,18 @@ CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes tha
 SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
             "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F7": "trial_design", "U": "no_engagement_data"}
 EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
+# The subcauses of the other causes, chosen by pipeline.stop_causes describe from what the stop's explanation says;
+# not_stated where it says no more than the cause. A stop the efficacy label settles as safety is off_target_toxicity.
+SUBCAUSES = {
+    "safety": ["on_target_toxicity", "off_target_toxicity", "tolerability", "preclinical_toxicity", "clinical_hold",
+               "not_stated"],
+    "sponsor_decision": ["portfolio_prioritisation", "commercial_or_competitive", "partner_returned_rights",
+                         "acquisition_or_merger", "funding_or_closure", "not_stated"],
+    "operational": ["enrollment", "site_or_supply", "covid_19", "regulatory", "not_stated"],
+    "positive_not_advanced": ["approved_outside_us", "fda_complete_response", "partnership_stalled",
+                              "new_formulation_or_combination", "not_stated"],
+}
+COMPANY_ENDED = ("acquisition_or_merger", "funding_or_closure")
 DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",
           "F7": "trial_could_not_answer"}
 INFERENCE_TASK, INFERENCE_VERSION = "stop_cause_inference", "v2"
@@ -135,12 +147,14 @@ def detail(code: pd.Series, dose_limited: pd.Series) -> pd.Series:
     return code.map(DETAIL).where(code.ne("F1a"), pd.Series(f1a, index=code.index))
 
 
+FATES = ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere", "drug_dropped"]
+
+
 def fate(sig: pd.DataFrame) -> pd.Series:
     """What the drug and its sponsor did after a stop no source explains: the subcause of an unknown cause."""
     return pd.Series(np.select([sig.sponsor_active_after.eq(False), sig.drug_approved_anywhere.astype(bool),
                                 sig.drug_continued_elsewhere.astype(bool)],
-                               ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere"],
-                               "drug_dropped"), index=sig.index)
+                               FATES[:3], FATES[3]), index=sig.index)
 
 
 def settled(modes: pd.DataFrame, lab: pd.DataFrame) -> dict[str, str]:
