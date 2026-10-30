@@ -394,10 +394,10 @@ maps to preclin.stop's vocabulary ({'; '.join(f'{k} -> {v}' for k, v in CAUSE.it
 where no source states it, with the model's likely cause as the guess. If inference produced no validated decision
 the cause is unknown with no guess. Subcause: for an efficacy stop, why efficacy failed from its label (F9 coded by
 its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety; for
-safety, sponsor decision, operational and positive-readout stops, the stop_description@v1 subcause; for an unknown
+safety, sponsor decision, operational and positive-readout stops, the stop_description@v2 subcause; for an unknown
 cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis (in stop_description@v1's plain wording where it used failure codes), else what the trial that
+model's basis (in stop_description@v2's plain wording where it used failure codes), else what the trial that
 gave Section 1 its reason states (its stated reason for stopping, else
 the result Section 1 read), with the trial in the sources. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
 it)."""
@@ -480,22 +480,22 @@ SUBCAUSE_MEANING = {
     "clinical_hold": "a regulator's clinical hold or a safety board's recommendation to stop",
     "portfolio_prioritisation": "the sponsor chose to put its resources into other programs",
     "commercial_or_competitive": "the market, pricing, reimbursement or a competing drug made it not worth pursuing",
-    "partner_returned_rights": "a licensing or development partner ended the deal or handed the rights back",
+    "partner_exit": "a licensing or development partner ended the deal or handed the rights back, or the sponsor was "
+                    "looking for a partner to take it forward and none did",
     "acquisition_or_merger": "the sponsor was acquired or merged and the program was dropped",
     "funding_or_closure": "the sponsor ran out of money, wound down, went bankrupt or closed",
     "enrollment": "patients could not be recruited or retained fast enough",
     "site_or_supply": "trial sites, drug supply, manufacturing for the trial or other logistics",
     "covid_19": "the COVID-19 pandemic disrupted the trial",
     "regulatory": "a regulatory or procedural requirement or hold not about safety",
+    "replaced_by_successor": "development moved to another formulation, dose form, combination or follow-on drug",
     "approved_outside_us": "the drug was approved, or filed, outside the United States",
-    "fda_complete_response": "the FDA declined to approve it (a complete response letter)",
-    "partnership_stalled": "a positive result was waiting for, or lost, a partner",
-    "new_formulation_or_combination": "development moved to another formulation, dose form, combination or follow-on drug",
+    "fda_declined": "the FDA declined to approve it (a complete response letter)",
     "not_stated": "the text gives no more detail than the cause",
 }
 SUBCAUSE_SYSTEM = f"""You read why a drug development program stopped and name the subcause. The cause is already decided and is given; so is the text it rests on (the sponsor's stated reason, a quote from a source, a posted result, or an analyst's reasoning).
 
-Choose the one subcause, from the list for the given cause, that the text states or directly implies. Use not_stated when the text says no more than the cause. Judge only from the text; do not use what you know about the drug or the company.
+Choose the one subcause, from the list for the given cause, that the text states or directly implies. Use not_stated when the text says no more than the cause. For a positive readout that went no further, name why development did not go on after the good result. Judge only from the text; do not use what you know about the drug or the company.
 
 Subcauses for each cause:
 {chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
@@ -517,7 +517,7 @@ def validate_subcause(p: dict, out: dict) -> None:
         raise ValueError(f"subcause {out['subcause']} is not one of {p['cause']}'s")
 
 
-SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v1", schema_version="v1", system=SUBCAUSE_SYSTEM,
+SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v2", schema_version="v1", system=SUBCAUSE_SYSTEM,
                          schema=SUBCAUSE_SCHEMA, subject_type="program_phase", validate=validate_subcause,
                          render=lambda p: f"Cause: {p['cause']}\nRegistry reason: {p['registry_reason']}\n\n"
                                           f"Text:\n{p['explanation']}",
@@ -563,7 +563,7 @@ def describe_items(rows: list[tuple]) -> tuple[dict, dict]:
     return sub, plain
 
 
-DESCRIBE_METHOD = "stop_description@v1"
+DESCRIBE_METHOD = "stop_description@v2"
 DESCRIBE_DESCRIPTION = f"""Two passes over the rows stop_cause_assembly writes, without web search (model
 {SUBCAUSE_TASK.model}, effort {SUBCAUSE_TASK.effort}). {SUBCAUSE_TASK.name}: for every stop whose cause is
 {', '.join(SUBCAUSES)} and whose subcause the efficacy label does not set, the model reads the cause, the registry

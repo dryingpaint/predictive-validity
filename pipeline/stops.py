@@ -46,14 +46,16 @@ SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefi
 EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
 # The subcauses of the other causes, chosen by pipeline.stop_causes describe from what the stop's explanation says;
 # not_stated where it says no more than the cause. A stop the efficacy label settles as safety is off_target_toxicity.
+# A sponsor decision and a positive readout that went no further share the reasons development did not go on
+# (DISCONTINUED); a positive readout may also have been approved outside the US or declined by the FDA.
+DISCONTINUED = ["portfolio_prioritisation", "commercial_or_competitive", "partner_exit", "acquisition_or_merger",
+                "funding_or_closure", "replaced_by_successor"]
 SUBCAUSES = {
     "safety": ["on_target_toxicity", "off_target_toxicity", "tolerability", "preclinical_toxicity", "clinical_hold",
                "not_stated"],
-    "sponsor_decision": ["portfolio_prioritisation", "commercial_or_competitive", "partner_returned_rights",
-                         "acquisition_or_merger", "funding_or_closure", "not_stated"],
+    "sponsor_decision": [*DISCONTINUED, "not_stated"],
     "operational": ["enrollment", "site_or_supply", "covid_19", "regulatory", "not_stated"],
-    "positive_not_advanced": ["approved_outside_us", "fda_complete_response", "partnership_stalled",
-                              "new_formulation_or_combination", "not_stated"],
+    "positive_not_advanced": ["approved_outside_us", "fda_declined", *DISCONTINUED, "not_stated"],
 }
 COMPANY_ENDED = ("acquisition_or_merger", "funding_or_closure")
 DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",
