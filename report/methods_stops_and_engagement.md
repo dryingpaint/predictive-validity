@@ -51,7 +51,7 @@ sponsor decision, with acquisitions, mergers, lost funding and closures among it
 
 **Subcauses.** A second, cheaper pass (no web search) reads each safety, sponsor-decision, operational and
 positive-readout stop's explanation (the trial's stated reason, the traced source quote or the model's reasoning) and
-names the subcause it states or directly implies, or not stated: safety: on target toxicity, off target toxicity, tolerability, preclinical toxicity, clinical hold, not stated; sponsor decision: portfolio prioritisation, commercial or competitive, partner returned rights, acquisition or merger, funding or closure, not stated; operational: enrollment, site or supply, covid 19, regulatory, not stated; positive not advanced: approved outside us, fda complete response, partnership stalled, new formulation or combination, not stated.
+names the subcause it states or directly implies, or not stated: safety: on target toxicity, off target toxicity, tolerability, preclinical toxicity, clinical hold, not stated; sponsor decision: portfolio prioritisation, commercial or competitive, partner exit, acquisition or merger, funding or closure, replaced by successor, not stated; operational: enrollment, site or supply, covid 19, regulatory, not stated; positive not advanced: approved outside us, fda declined, portfolio prioritisation, commercial or competitive, partner exit, acquisition or merger, funding or closure, replaced by successor, not stated.
 The same pass rewrites explanations that used the efficacy labeller's failure codes in plain words.
 
 ### Categories, with examples

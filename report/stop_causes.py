@@ -19,7 +19,7 @@ from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
 from pipeline.stop_causes import VALIDATE_METHOD
-from pipeline.stops import CAUSE, CAUSES, COMPANY_ENDED, FATES, REGISTRY_CAUSE, SUBCAUSES, keys
+from pipeline.stops import CAUSE, CAUSES, COMPANY_ENDED, DISCONTINUED, FATES, REGISTRY_CAUSE, SUBCAUSES, keys
 from report import frame
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 from report.section3 import jsonable
@@ -41,11 +41,10 @@ SUBCAUSE_NAMES = {
     "on_target_toxicity": "On-target toxicity", "off_target_toxicity": "Off-target toxicity",
     "tolerability": "Tolerability", "preclinical_toxicity": "Preclinical toxicity", "clinical_hold": "Clinical hold",
     "portfolio_prioritisation": "Portfolio prioritisation", "commercial_or_competitive": "Commercial or competitive",
-    "partner_returned_rights": "Partner returned rights", "acquisition_or_merger": "Acquisition or merger",
+    "partner_exit": "Partner exit or none found", "acquisition_or_merger": "Acquisition or merger",
     "funding_or_closure": "Funding or closure", "enrollment": "Enrollment", "site_or_supply": "Sites or supply",
     "covid_19": "COVID-19", "regulatory": "Regulatory (not safety)", "approved_outside_us": "Approved outside the US",
-    "fda_complete_response": "FDA complete response letter", "partnership_stalled": "Partnership stalled",
-    "new_formulation_or_combination": "New formulation or combination",
+    "fda_declined": "FDA declined (complete response)", "replaced_by_successor": "Replaced by a successor",
     "sponsor_went_quiet": "Sponsor started no later trial", "drug_approved_elsewhere": "Drug approved in another disease",
     "drug_continued_elsewhere": "Drug continued in other diseases", "drug_dropped": "Drug dropped, sponsor active",
     "not_stated": "Not stated",
@@ -136,6 +135,7 @@ def main() -> None:
                                   ("company_event", infer[infer.subcause.isin(COMPANY_ENDED)])]},
          "subcauses": {c: distribution(g, "subcause", BREAKDOWN[c]) for c, g in d.groupby("cause") if c in BREAKDOWN},
          "subcause_programs": {c: int(len(g)) for c, g in d.groupby("cause") if c in BREAKDOWN},
+         "positive_discontinued": float(d[d.cause.eq("positive_not_advanced")].subcause.isin(DISCONTINUED).mean()),
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)
