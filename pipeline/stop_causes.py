@@ -397,7 +397,8 @@ its pillars; not_attributed without a label); off_target_toxicity for a stop the
 safety, sponsor decision, operational and positive-readout stops, the stop_description@v1 subcause; for an unknown
 cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis (in stop_description@v1's plain wording where it used failure codes), else what the trial that gave Section 1 its reason states (its stated reason for stopping, else
+model's basis (in stop_description@v1's plain wording where it used failure codes), else what the trial that
+gave Section 1 its reason states (its stated reason for stopping, else
 the result Section 1 read), with the trial in the sources. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
 it)."""
 
@@ -522,7 +523,8 @@ SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v1", schema_versi
                                           f"Text:\n{p['explanation']}",
                          model="claude-sonnet-5", effort="low", max_tokens=1000)
 
-CODE = re.compile(r"\bF(?:1a|1b|[1-9])\b|\bU\b")  # failure codes of the efficacy attribution, as the labeller wrote them
+F_CODE = r"\bF(?:1a|1b|[1-9])\b"  # the efficacy attribution's failure codes, as the labeller wrote them
+CODE = re.compile(F_CODE + r"|\bU\b")  # with U, which may also be a unit: the rewording tells them apart
 CITATION = re.compile(r"NCT\d{8}|PMID:?\s?\d+|https?://\S+")
 CODE_NAMES = {"F1a": "exposure or engagement too low, or dose capped", "F1b": "another drug on the target worked",
               "F2": "engaged, no benefit", "F3": "wrong population", "F4": "wrong endpoint or timing",
@@ -536,7 +538,7 @@ PLAIN_SCHEMA = {"type": "object", "properties": {"text": {"type": "string"}}, "r
 
 
 def validate_plain(p: dict, out: dict) -> None:
-    left = re.findall(r"\bF(?:1a|1b|[1-9])\b", out["text"])
+    left = re.findall(F_CODE, out["text"])
     if left:
         raise ValueError(f"codes left: {left}")
     lost = set(CITATION.findall(p["text"])) - set(CITATION.findall(out["text"]))

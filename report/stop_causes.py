@@ -135,6 +135,7 @@ def main() -> None:
                      for c, g in [*infer.groupby("likely"),
                                   ("company_event", infer[infer.subcause.isin(COMPANY_ENDED)])]},
          "subcauses": {c: distribution(g, "subcause", BREAKDOWN[c]) for c, g in d.groupby("cause") if c in BREAKDOWN},
+         "subcause_programs": {c: int(len(g)) for c, g in d.groupby("cause") if c in BREAKDOWN},
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)

@@ -175,11 +175,11 @@ def efficacy_attribution():
 
 def stop_subcauses():
     """Each cause of Phase 2 and 3 stops broken down by subcause, one panel per cause in its color from the cause bar;
-    not stated in gray."""
+    not stated in gray. Shares are of all the cause's stops, including the few with no subcause."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
-    panels = [(c, n["subcauses"][c]) for c in ("sponsor_decision", "safety", "operational", "positive_not_advanced",
+    panels = [(c, n["subcauses"][c], n["subcause_programs"][c]) for c in ("sponsor_decision", "safety", "operational", "positive_not_advanced",
                                                 "unknown") if c in n["subcauses"]]
-    sizes = [len(BREAKDOWN[c]) for c, _ in panels]
+    sizes = [len(BREAKDOWN[c]) for c, _, _ in panels]
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9}
     with plt.rc_context(rc):
@@ -191,10 +191,9 @@ def stop_subcauses():
         fig.text(0.03, 1 - 0.46 / fig.get_figheight(),
                  f"Phase 2 and 3 industry programs that stopped, phase entries {n['window']['from']}–{n['window']['to']}",
                  fontsize=9.5, color=MUTED, va="top")
-        for ax, (cause, dist) in zip(axes, panels):
+        for ax, (cause, dist, total) in zip(axes, panels):
             order = [x for x in BREAKDOWN[cause] if x != "not_stated"]
             order = sorted(order, key=lambda x: -dist[x]["share"]) + (["not_stated"] if "not_stated" in dist else [])
-            total = sum(dist[x]["n"] for x in order)
             y = np.arange(len(order))[::-1]
             color = SHOWN_COLORS[cause] if cause != "unknown" else "#a8a59c"
             for yi, x in zip(y, order):
