@@ -34,6 +34,8 @@ Each error pattern these audits found was fixed in the pipeline and the affected
 
 Two labels were also re-decided rather than re-derived. Trial purposes and roles, re-decided under a second prompt version, agree with the first on {{quality.retest.trial_purpose|pct0}} and {{quality.retest.trial_moiety_role|pct0}} of trials. Disease mapping, decided twice, chose the same MONDO term for {{quality.retest.indication_mondo|pct0}} of conditions. Modality, disease area and targets were not audited. The Section 3 endpoint classes were audited on a seeded sample of trials, and the mechanism and mouse-model labels were spot-checked (Section 3).
 
+{{APPENDIX_STOPS}}
+
 ### Limitations
 
 * **Registry programs are not Biomedtracker programs.** BIO counts transitions that analysts record for programs companies disclose; this report counts programs from registered trials. Trials registered only outside ClinicalTrials.gov (ChiCTR, EU CTR, CTIS) are missing, so programs developed there look suspended. Restricting to programs with a US site removes most of the difference.
