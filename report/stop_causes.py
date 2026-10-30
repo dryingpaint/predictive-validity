@@ -19,7 +19,7 @@ from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
 from pipeline.stop_causes import VALIDATE_METHOD
-from pipeline.stops import CAUSE, CAUSES, REGISTRY_CAUSE, keys
+from pipeline.stops import CAUSE, CAUSES, COMPANY_ENDED, REGISTRY_CAUSE, SUBCAUSES, keys
 from report import frame
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
 from report.section3 import jsonable
@@ -116,7 +116,10 @@ def main() -> None:
                       "likely_resolved": float((infer.likely != "unknown").mean()),
                       "cause": infer.cause.value_counts().to_dict()},
          "signals": {c: {"sponsor_inactive": float(g.sponsor_active_after.eq(False).mean())}
-                     for c, g in [*infer.groupby("likely"), ("company_event", infer[infer.subcause.eq("company_event")])]},
+                     for c, g in [*infer.groupby("likely"),
+                                  ("company_event", infer[infer.subcause.isin(COMPANY_ENDED)])]},
+         "subcauses": {c: distribution(g, "subcause", SUBCAUSES[c]) for c, g in stopped(d).groupby("cause")
+                       if c in SUBCAUSES},
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)
