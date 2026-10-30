@@ -1,6 +1,6 @@
 ### Why efficacy failed: the target was not engaged, or it was the wrong target
 
-A program that fails on efficacy fails in one of two ways that matter for target selection: the drug never engaged its target well enough in patients, so the target hypothesis was never tested, or it engaged the target and the disease did not respond. For each of the {{attribution.phase23.programs|int}} Phase 2 and 3 programs entering 2008–2019 that stopped for efficacy or exposure, we classified which happened with an LLM that read the evidence on whether the drug reached and engaged its target in humans at the doses tested: the trials, posted results, papers and, where those said nothing, the web. An exposure failure is the same biology as a failure to engage, so PK, dose and formulation stops are included. The method and its checks are in the appendix.
+Efficacy fails in one of two ways: the drug never engaged its target in patients, so the hypothesis went untested, or it engaged and the disease did not respond. For every program entering Phase 1, 2 or 3 in 2008–2019 that stopped for efficacy or exposure (PK, dose or formulation), {{attribution.phase1.programs|int}} in Phase 1 and {{attribution.phase23.programs|int}} in Phase 2 or 3, an LLM read the trials, results, papers and, where those were silent, the web, and judged whether the drug reached and engaged its target in humans at the doses tested. The method and its checks are in the appendix.
 
 {{ATTRIBUTION_TABLE}}
 

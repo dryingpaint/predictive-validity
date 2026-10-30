@@ -14,8 +14,9 @@ of the series, so as-of scores undercount; a sensitivity analysis uses the
 release score (evidence known by 2026, dated or not); another counts only evidence diseases
 with Lin similarity >= 0.8 (Minikel et al.'s criterion), dropping the subtype
 rule, which is permissive for broad program diseases. Target-level properties
-(loss-of-function constraint, pan-essentiality) are not disease-specific and
-come from the current gnomAD and DepMap releases, not as of entry.
+are not disease-specific: pan-essentiality is taken from the latest yearly
+DepMap list from before entry (none before 2019), with the current list as a
+sensitivity; loss-of-function constraint comes from the current gnomAD release.
 
 Relative success (RS) for an evidence line = LOA of programs with it / LOA of
 programs without it, LOA being the product of BIO-style phase rates; 95%
@@ -67,17 +68,19 @@ EVIDENCE = {
     "animal_model": {"impc"},
     "rna_expression": {"expression_atlas"},
     "affected_pathway": {"reactome"},
-    "functional_screen": {"crispr", "crispr_screen"},
+    "cell_line_screen": {"crispr"},      # Project Score knockout screens in cancer cell lines
+    "neuron_screen": {"crispr_screen"},  # CRISPRbrain screens in stem-cell-derived neurons and microglia
 }
 FEATURES = [*EVIDENCE, "constrained", "pan_essential"]
 LABELS = {
-    "genetic_any": "Human genetics (any germline source)", "genetic_gwas": "GWAS credible set",
-    "genetic_rare": "Rare-variant / Mendelian (ClinVar, Orphanet, G2P, ClinGen, burden)",
-    "somatic": "Somatic driver (COSMIC CGC, IntOGen, ClinVar somatic)", "animal_model": "Mouse model (IMPC)",
-    "rna_expression": "Differential expression in disease (Expression Atlas)",
-    "affected_pathway": "Pathway (Reactome)", "functional_screen": "CRISPR screen",
-    "constrained": "LoF-intolerant target (gnomAD LOEUF < 0.35)", "pan_essential": "Pan-essential (DepMap)",
+    "genetic_any": "Any human genetics", "genetic_gwas": "GWAS",
+    "genetic_rare": "Rare-variant or Mendelian genetics", "somatic": "Somatic cancer driver",
+    "animal_model": "Mouse model", "rna_expression": "Expressed differently in the disease",
+    "affected_pathway": "Disease pathway (Reactome)", "cell_line_screen": "CRISPR knockout screen in cancer cell lines",
+    "neuron_screen": "CRISPR screen in stem-cell-derived neurons",
+    "constrained": "Intolerant of loss of function", "pan_essential": "Essential in most cell lines",
 }
+LIABILITIES = ("pan_essential", "constrained")  # target-level properties, shown apart from the disease evidence
 
 
 def score_as_of(years: list[int], scores: list[float], year: int) -> float:
@@ -108,9 +111,7 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     constraint = frame.query("""SELECT t.ensembl_id, min(g.loeuf) AS loeuf
                                 FROM public.gene_constraint g JOIN public.targets t ON t.id = g.target_id
                                 GROUP BY 1""").set_index("ensembl_id").loeuf
-    essential = set(frame.query("""SELECT g.ensembl_id FROM preclin.depmap_common_essential e
-                                   JOIN preclin.hgnc_gene g USING (entrez_id)
-                                   WHERE g.ensembl_id IS NOT NULL""").ensembl_id)
+    essential = frame.common_essentials()
 
     disease = progs.set_index("program_id").mondo_id
     tmap = targets.groupby("moiety_id")
@@ -148,7 +149,8 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
                     "target": tg.symbol.iloc[0] if len(tg) == 1 else "+".join(sorted(tg.symbol)),
                     **flags, **untimed, **strict,
                     "constrained": float(bool(lo) and min(lo) < 0.35),
-                    "pan_essential": float(any(e in essential for e in ens))})
+                    "pan_essential": float(frame.essential_as_of(essential, ens, year)),
+                    "pan_essential_untimed": float(frame.essential_as_of(essential, ens, max(essential)))})
     return pd.DataFrame(out)
 
 
@@ -322,7 +324,7 @@ def main() -> None:
 
     rs = pd.DataFrame([relative_success(data, f) for f in FEATURES])
     rs.to_csv(os.path.join(OUT, "relative_success.csv"), index=False)
-    untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in EVIDENCE])
+    untimed = pd.DataFrame([relative_success(data, f"{f}_untimed") for f in [*EVIDENCE, "pan_essential"]])
     untimed.to_csv(os.path.join(OUT, "relative_success_untimed.csv"), index=False)
     strict = pd.DataFrame([relative_success(data, f"{f}_strict") for f in EVIDENCE])
     strict.to_csv(os.path.join(OUT, "relative_success_lin_only.csv"), index=False)
@@ -357,7 +359,12 @@ def main() -> None:
                "adjusted_rr": keyed(adj, "feature", "phase"), "joint_rr": keyed(joint, "feature", "phase"),
                "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
                "ablation": keyed(ablation, "feature"), "n_prediction": int(len(cohort)),
-               "n_prediction_positive": int(cohort.y.sum())}
+               "n_prediction_positive": int(cohort.y.sum()),
+               "cell_line_screen_somatic": float(data[data.cell_line_screen > 0].groupby("program_id").somatic.max()
+                                                 .gt(0).mean()),
+               "project_score": {f"n_{y}": int(n) for y, n in frame.query(
+                   """SELECT evidence_year, count(*) FROM preclin.ot_evidence WHERE datasource = 'crispr'
+                      GROUP BY 1""").itertuples(index=False)}}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(rs[["label", "n_with", "loa_with", "loa_without", "rs", "rs_lo", "rs_hi"]].to_string())

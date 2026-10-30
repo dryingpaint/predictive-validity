@@ -209,7 +209,9 @@ def apply_dates(cur) -> None:
                       OR year_basis IS DISTINCT FROM CASE WHEN source_year IS NOT NULL THEN 'open_targets' END""")
     cur.execute("""UPDATE preclin.ot_evidence e SET evidence_year = k.year, year_basis = k.basis
                    FROM preclin.evidence_known_year k
-                   WHERE k.datasource = e.datasource AND k.key = preclin.ot_evidence_key(e.datasource, e.detail)""")
+                   WHERE k.datasource = e.datasource
+                     AND k.key = CASE WHEN e.datasource = 'crispr' THEN e.target_ensembl || ' ' || e.disease_id
+                                      ELSE preclin.ot_evidence_key(e.datasource, e.detail) END""")
     cur.execute("UPDATE preclin.ot_association SET series_years = '{}', series_scores = '{}', first_year = NULL")
     cur.execute("""UPDATE preclin.ot_association a
                    SET series_years = s.years, series_scores = s.scores, first_year = s.years[1]
