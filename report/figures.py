@@ -22,7 +22,7 @@ from report import bio, frame
 from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
 from report.attribution import SUBCAUSE_LABELS
-from report.stop_causes import SHOWN
+from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
@@ -171,6 +171,47 @@ def efficacy_attribution():
                        for g, col in ATTRIBUTION_COLORS.items()]
         ax.legend(handles=eff_handles, bbox_to_anchor=(-0.12, 0.135), **legend)
         save(fig, "efficacy_attribution")
+
+
+def stop_subcauses():
+    """Each cause of Phase 2 and 3 stops broken down by subcause, one panel per cause in its color from the cause bar;
+    not stated in gray."""
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
+    panels = [(c, n["subcauses"][c]) for c in ("sponsor_decision", "safety", "operational", "positive_not_advanced",
+                                                "unknown") if c in n["subcauses"]]
+    sizes = [len(BREAKDOWN[c]) for c, _ in panels]
+    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
+    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9}
+    with plt.rc_context(rc):
+        fig, axes = plt.subplots(len(panels), 1, figsize=(8.6, 0.24 * sum(sizes) + 0.42 * len(panels) + 1.0),
+                                 gridspec_kw={"height_ratios": sizes, "hspace": 0.5})
+        fig.subplots_adjust(left=0.3, right=0.9, top=1 - 1.05 / fig.get_figheight(), bottom=0.02)
+        fig.text(0.03, 1 - 0.18 / fig.get_figheight(), "What each cause breaks down into", fontsize=14,
+                 fontweight="demibold", color=INK, va="top")
+        fig.text(0.03, 1 - 0.46 / fig.get_figheight(),
+                 f"Phase 2 and 3 industry programs that stopped, phase entries {n['window']['from']}–{n['window']['to']}",
+                 fontsize=9.5, color=MUTED, va="top")
+        for ax, (cause, dist) in zip(axes, panels):
+            order = [x for x in BREAKDOWN[cause] if x != "not_stated"]
+            order = sorted(order, key=lambda x: -dist[x]["share"]) + (["not_stated"] if "not_stated" in dist else [])
+            total = sum(dist[x]["n"] for x in order)
+            y = np.arange(len(order))[::-1]
+            color = SHOWN_COLORS[cause] if cause != "unknown" else "#a8a59c"
+            for yi, x in zip(y, order):
+                w = dist[x]["share"]
+                ax.add_patch(matplotlib.patches.Rectangle((0, yi - 0.34), w, 0.68, linewidth=0,
+                                                          facecolor="#d9d7d1" if x == "not_stated" else color))
+                ax.text(w + 0.008, yi, f"{w:.0%}  ({dist[x]['n']:,})", va="center", fontsize=8.5, color=INK2)
+            ax.set_yticks(y, [SUBCAUSE_NAMES[x] for x in order], fontsize=9, color=INK2)
+            ax.set_xlim(0, 1)
+            ax.set_ylim(-0.6, len(order) - 0.4)
+            ax.tick_params(length=0)
+            ax.set_xticks([])
+            for side in ax.spines.values():
+                side.set_visible(False)
+            ax.set_title(f"{SHOWN[cause].upper()} · {total:,} programs", loc="left", fontsize=7.5, color=MUTED,
+                         fontweight="demibold", x=-0.36)
+        save(fig, "stop_subcauses")
 
 
 def loa_bars(csv, title, name, ref):
@@ -351,6 +392,8 @@ def main():
         dose_response()
     if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
         efficacy_attribution()
+    if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
+        stop_subcauses()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
         s3_specificity()

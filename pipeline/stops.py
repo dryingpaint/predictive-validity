@@ -147,12 +147,14 @@ def detail(code: pd.Series, dose_limited: pd.Series) -> pd.Series:
     return code.map(DETAIL).where(code.ne("F1a"), pd.Series(f1a, index=code.index))
 
 
+FATES = ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere", "drug_dropped"]
+
+
 def fate(sig: pd.DataFrame) -> pd.Series:
     """What the drug and its sponsor did after a stop no source explains: the subcause of an unknown cause."""
     return pd.Series(np.select([sig.sponsor_active_after.eq(False), sig.drug_approved_anywhere.astype(bool),
                                 sig.drug_continued_elsewhere.astype(bool)],
-                               ["sponsor_went_quiet", "drug_approved_elsewhere", "drug_continued_elsewhere"],
-                               "drug_dropped"), index=sig.index)
+                               FATES[:3], FATES[3]), index=sig.index)
 
 
 def settled(modes: pd.DataFrame, lab: pd.DataFrame) -> dict[str, str]:

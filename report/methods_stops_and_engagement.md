@@ -46,8 +46,13 @@ registry efficacy stop it labels not an efficacy test is traced again like an un
 cause, sourced, is efficacy or exposure.
 
 **Merged causes:** business reasons and company events (acquisition, merger, lost funding, closure) are one cause,
-sponsor decision, with company events kept as its subcause; PK, dose or formulation is part of efficacy (shown as
+sponsor decision, with acquisitions, mergers, lost funding and closures among its subcauses; PK, dose or formulation is part of efficacy (shown as
 "efficacy or exposure"), since an exposure failure is the same biology as a failure to engage.
+
+**Subcauses.** A second, cheaper pass (no web search) reads each safety, sponsor-decision, operational and
+positive-readout stop's explanation (the trial's stated reason, the traced source quote or the model's reasoning) and
+names the subcause it states or directly implies, or not stated: safety: on target toxicity, off target toxicity, tolerability, preclinical toxicity, clinical hold, not stated; sponsor decision: portfolio prioritisation, commercial or competitive, partner returned rights, acquisition or merger, funding or closure, not stated; operational: enrollment, site or supply, covid 19, regulatory, not stated; positive not advanced: approved outside us, fda complete response, partnership stalled, new formulation or combination, not stated.
+The same pass rewrites explanations that used the efficacy labeller's failure codes in plain words.
 
 ### Categories, with examples
 
