@@ -80,17 +80,17 @@ STRATUM = {**PROXIMITY, "B9_infection_cure": "infection", "O1_tumor_response": "
 TREND = {"proximal": 0, "intermediate": 1, "distal": 2}
 EFFICACY = ("efficacy: stated", "efficacy: primary endpoint not met")
 LABELS = {  # evidence map rows, in display order (report.render and report.figures read them from evidence_map.csv)
-    "g3": "Germline genetics for the disease (G3)", "gwas": "GWAS, any locus-to-gene",
-    "gwas_strong": "GWAS, locus-to-gene ≥ 0.8", "gwas_mid": "GWAS, best locus-to-gene 0.5–0.8",
-    "gwas_weak": "GWAS, best locus-to-gene < 0.5", "burden": "Gene burden (exome)",
-    "mendelian": "Mendelian / ClinVar pathogenic", "mendelian_strong": "Mendelian, top-tier curation",
-    "somatic": "Somatic driver, any", "somatic_concordant": "Somatic driver, direction matches the drug",
-    "impc": "Mouse knockout (IMPC pipeline)", "mgi": "Mouse model (literature, MGI)",
-    "mgi_strong": "Mouse model, top-quartile phenotype match", "expression": "Differential expression in disease",
-    "reactome": "Reactome pathway", "crispr": "CRISPR screen", "b1": "Approved drug on the target, related disease",
-    "precedent": "Approved drug on the target, any disease", "liability": "Target liability (any)",
-    "pan_essential": "Pan-essential (DepMap)", "constrained": "LoF-intolerant (LOEUF < 0.35)",
-    "ko_lethal": "Mouse knockout lethal before weaning",
+    "g3": "Germline genetics for the disease", "gwas": "GWAS, any locus-to-gene score",
+    "gwas_strong": "GWAS, locus-to-gene score ≥ 0.8", "gwas_mid": "GWAS, best score 0.5–0.8",
+    "gwas_weak": "GWAS, best score below 0.5", "burden": "Gene burden (exome)",
+    "mendelian": "Mendelian or ClinVar pathogenic", "mendelian_strong": "Mendelian, top-tier curation",
+    "somatic": "Somatic cancer driver", "somatic_concordant": "Somatic driver, direction matches the drug",
+    "impc": "Mouse knockout (IMPC)", "mgi": "Mouse model (literature)",
+    "mgi_strong": "Mouse model, top-quartile phenotype match", "expression": "Expressed differently in the disease",
+    "reactome": "Disease pathway (Reactome)", "crispr": "CRISPR screen (cancer cell lines or neurons)", "b1": "Approved drug on the target, related disease",
+    "precedent": "Approved drug on the target, any disease", "liability": "Any target liability",
+    "pan_essential": "Essential in most cell lines", "constrained": "Intolerant of loss of function",
+    "ko_lethal": "Mouse knockout dies before weaning",
 }
 MAP_FEATURES = list(LABELS)
 
@@ -210,10 +210,8 @@ class Evidence:
             target=("symbol", lambda s: "+".join(sorted(set(s)))), genes=("ens", lambda s: sorted(set(s))),
             classes=("target_class", lambda s: sorted(set(s.fillna("Unclassified")))),
             sign=("sign", lambda s: s.iloc[0] if s.nunique() == 1 else "ambiguous"))
+        self.essential = frame.common_essentials()
         self.liab = {
-            "pan_essential": set(frame.query("""SELECT g.ensembl_id FROM preclin.depmap_common_essential e
-                                                JOIN preclin.hgnc_gene g USING (entrez_id)
-                                                WHERE g.ensembl_id IS NOT NULL""").ensembl_id),
             "constrained": set(frame.query("""SELECT t.ensembl_id FROM public.gene_constraint g
                                               JOIN public.targets t ON t.id = g.target_id
                                               GROUP BY 1 HAVING min(g.loeuf) < 0.35""").ensembl_id),
@@ -285,7 +283,8 @@ class Evidence:
         germ = {k: any(on(f, k) for f in GERMLINE) for k in ("lof_protect", "lof_risk", "gof_risk", "gof_protect")}
         conc = (dec and (germ["lof_protect"] or germ["gof_risk"])) or (inc and (germ["lof_risk"] or germ["gof_protect"]))
         disc = (dec and (germ["lof_risk"] or germ["gof_protect"])) or (inc and (germ["lof_protect"] or germ["gof_risk"]))
-        liab = {k: float(any(g in s for g in e.genes)) for k, s in self.liab.items()}
+        liab = {"pan_essential": float(frame.essential_as_of(self.essential, e.genes, cut)),
+                **{k: float(any(g in s for g in e.genes)) for k, s in self.liab.items()}}
         labelled = [m for m in (self.mechanism.get((g, d)) for g in e.genes) if m]
         risks = {risk for risk, _, ry, _ in labelled if pd.notna(ry) and ry <= cut}
         prots = {prot for _, prot, _, py in labelled if pd.notna(py) and py <= cut}

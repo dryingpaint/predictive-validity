@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
+from report.section2 import LIABILITIES
 from report.section3 import CASE_AUDIT
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
@@ -35,7 +36,15 @@ def pct(x, digits=1):
 
 FORMATS = {"": str, "pct": pct, "pct0": lambda v: pct(v, 0), "int": lambda v: f"{int(v):,}",
            "x2": "{:.2f}".format, "x3": "{:.3f}".format}
-BAND_NAMES = {"none": "None", "low": "Lower third", "middle": "Middle third", "high": "Upper third"}
+BAND_NAMES = {"low": "lowest third", "middle": "middle third", "high": "highest third"}  # of programs with any support
+
+
+def band_label(band: str, lo: float, hi: float) -> str:
+    """A genetic-score band as its score range, e.g. '0.61–0.88 (middle third)'; scores above 0 only, past the "none" band."""
+    if band == "none":
+        return "0 (no genetic support)"
+    span = f"above {lo:.2f}" if not np.isfinite(hi) else f"up to {hi:.2f}" if lo == 0 else f"{lo:.2f}–{hi:.2f}"
+    return f"{span} ({BAND_NAMES[band]})"
 
 
 def ci(lo, hi, digits=1):
@@ -70,8 +79,8 @@ def period_table() -> str:
     rows = [[r.label.replace("-", "–"), f"{r.n_entities:,}", pct(r.ph1_rate), pct(r.ph2_rate), pct(r.ph3_rate),
              f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}", pct(r.us_ph3_rate), f"{pct(r.us_loa)}{ci(r.us_loa_lo, r.us_loa_hi)}"]
             for r in df.itertuples()]
-    return table(pd.DataFrame(rows, columns=["Phase entry", "Entities", "Ph1→2", "Ph2→3", "Ph3→approval",
-                                             "LOA (95% CI)", "US-developed Ph3→approval", "US-developed LOA (95% CI)"]))
+    return table(pd.DataFrame(rows, columns=["Phase entry", "Entities", "Phase 1 → 2", "Phase 2 → 3", "Phase 3 → approval",
+                                             "LOA (95% CI)", "US-developed: Phase 3 → approval", "US-developed: LOA (95% CI)"]))
 
 
 def year_table() -> str:
@@ -79,14 +88,14 @@ def year_table() -> str:
     rate = df.pivot(index="entry_year", columns="phase", values="rate")
     running = df.pivot(index="entry_year", columns="phase", values="censored_share")
     rows = [[str(y)] + [f"{pct(rate.at[y, ph], 0)} ({pct(running.at[y, ph], 0)})" for ph in (1, 2, 3)] for y in rate.index]
-    return table(pd.DataFrame(rows, columns=["Phase entry year", "Ph1→2 (still running)", "Ph2→3 (still running)",
-                                             "Ph3→approval (still running)"]))
+    return table(pd.DataFrame(rows, columns=["Phase entry year", "Phase 1 → 2 (share still running)", "Phase 2 → 3 (share still running)",
+                                             "Phase 3 → approval (share still running)"]))
 
 
 def sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
     df = df.assign(**{"Cohort or definition": df.label.map(sentence_case),
-                      "Ph1→2": df.ph1_rate.map(pct), "Ph2→3": df.ph2_rate.map(pct), "Ph3→approval": df.ph3_rate.map(pct),
+                      "Phase 1 → 2": df.ph1_rate.map(pct), "Phase 2 → 3": df.ph2_rate.map(pct), "Phase 3 → approval": df.ph3_rate.map(pct),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
     return table(df.iloc[:, -5:])
 
@@ -157,6 +166,14 @@ def attribution_sensitivity_table() -> str:
     return table(out)
 
 
+def liability_divider(df: pd.DataFrame, features: pd.Series) -> pd.DataFrame:
+    """`df` with the target-liability rows (LIABILITIES, by `features`) moved under a divider row."""
+    liab = features.isin(LIABILITIES).to_numpy()
+    divider = pd.DataFrame([["**Target liabilities** (not specific to the disease)"] + [""] * (df.shape[1] - 1)],
+                           columns=df.columns)
+    return pd.concat([df[~liab], divider, df[liab]], ignore_index=True)
+
+
 def rs_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).dropna(subset=["rs"]).sort_values("rs", ascending=False)
     df = df.assign(**{"Evidence line": df.label,
@@ -164,7 +181,7 @@ def rs_table() -> str:
                       "LOA with / without": [f"{pct(a)} / {pct(b)}" for a, b in zip(df.loa_with, df.loa_without)],
                       "Relative success (95% CI)": [f"{r:.2f} ({lo:.2f}–{hi:.2f})"
                                                     for r, lo, hi in zip(df.rs, df.rs_lo, df.rs_hi)]})
-    return table(df.iloc[:, -4:])
+    return table(liability_divider(df.iloc[:, -4:], df.feature))
 
 
 def prediction_table() -> str:
@@ -181,9 +198,8 @@ def prediction_table() -> str:
 
 def dose_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    df = df.assign(**{"Human genetic support (Open Targets score, as of phase entry)": [
-                          BAND_NAMES[b] + ("" if b == "none" else f" (> {lo:.2f} to {hi:.2f})" if np.isfinite(hi) else f" (> {lo:.2f})")
-                          for b, lo, hi in zip(df.band, df.score_from, df.score_to)],
+    df = df.assign(**{"Genetic association score before entry (Open Targets, 0–1)": [
+                          band_label(*b) for b in zip(df.band, df.score_from, df.score_to)],
                       "Programs": df.n_programs.map("{:,}".format), "Targets": df.n_targets.map("{:,}".format),
                       "LOA (95% CI)": [f"{pct(r.loa)}{ci(r.loa_lo, r.loa_hi)}" for r in df.itertuples()]})
     return table(df.iloc[:, -4:])
@@ -196,9 +212,9 @@ def joint_table() -> str:
     df["cell"] = [f"{r:.2f} ({lo:.2f}–{hi:.2f})" for r, lo, hi in zip(df.rr, df.rr_lo, df.rr_hi)]
     wide = df.pivot(index="feature", columns="phase", values="cell").fillna("–")
     wide = wide.loc[sorted(wide.index, key=lambda f: order.get(f, 99))]
-    wide.columns = [f"Phase {c} → next" for c in wide.columns]
+    wide.columns = [{1: "Phase 1 → 2", 2: "Phase 2 → 3", 3: "Phase 3 → approval"}[c] for c in wide.columns]
     wide.insert(0, "Evidence", [labels.get(f, f) for f in wide.index])
-    return table(wide.reset_index(drop=True))
+    return table(liability_divider(wide.reset_index(drop=True), pd.Series(wide.index)))
 
 
 def ablation_table() -> str:
@@ -250,15 +266,15 @@ def s3_hypotheses_table() -> str:
     n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
     h4 = n["h4"]["fdaaa"]["interaction_per_step"]
     rows = [
-        ("H1", "Outside oncology: genetics for the disease (G3) vs no germline genetics (G0), advancing within 4 years "
-               "of Phase 2", "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
-        ("H2", "Same target, different diseases: G3 vs not (conditional logit)", "odds ratio", rr_ci(n["h2"], "or"),
+        ("H1", "Outside oncology: genetics for the disease vs no germline genetics on the target, advancing "
+               "within 4 years of Phase 2", "risk ratio", rr_ci(n["h1"]["g3"]), n["h1"]["g3"].get("p")),
+        ("H2", "Same target in different diseases: genetics for the disease vs not (conditional logit)", "odds ratio", rr_ci(n["h2"], "or"),
          n["h2"].get("p")),
         ("H3", "Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < "
                "concordant", "risk ratio per step", rr_ci(n["h3"]["trend"]), n["h3"]["trend"].get("p")),
-        ("H4", "Trials outside oncology: change in G3's effect on NOT MET per step from proximal to distal endpoints "
-               "(registry-posted results, FDAAA era)", "ratio of risk ratios", rr_ci(h4), h4.get("p")),
-        ("H5", "G3 lowers efficacy failure more than business or operational failure (Phase 2 and 3)",
+        ("H4", "Trials outside oncology: how the effect of genetics on missing the primary endpoint changes "
+               "per step from proximal to distal endpoints (registry-posted results, FDAAA era)", "ratio of risk ratios", rr_ci(h4), h4.get("p")),
+        ("H5", "Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3)",
          "ratio of risk ratios", rr_ci(n["h5"]["ratio_f_bizops_vs_f_efficacy"]),
          n["h5"]["ratio_f_bizops_vs_f_efficacy"].get("p")),
         ("H6", "Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases "
@@ -266,9 +282,9 @@ def s3_hypotheses_table() -> str:
         ("H7", "Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2",
          "risk ratio", rr_ci(n["h7"]), n["h7"].get("p")),
     ]
-    out = [[h, text, measure, est, p_value(p), p_value(n["holm"].get(h)),
+    out = [[text, measure, est, p_value(p), p_value(n["holm"].get(h)),
             "supported" if n["holm"].get(h, 1) < 0.05 else "not supported"] for h, text, measure, est, p in rows]
-    return table(pd.DataFrame(out, columns=["", "Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
+    return table(pd.DataFrame(out, columns=["Hypothesis", "Measure", "Estimate (95% CI)", "p", "Holm p", "Result"]))
 
 
 # Evidence-map rows shown in the table and the figure: section3.MAP_FEATURES without the families no program had
@@ -286,10 +302,17 @@ def s3_map_table() -> str:
         r = c2.loc[f]
         rows.append([r.label, f"{int(r.n):,} ({int(r.n_targets):,})", f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}",
                      pct(r.coverage, 0), rr_ci(r), rr_ci(com.loc[f]), rr_ci(onc.loc[f])])
-    return table(pd.DataFrame(rows, columns=["Evidence for the program's disease, before entry", "Programs (targets)",
-                                             "Advanced: with / without", "Share of all that advanced",
-                                             "Risk ratio vs programs without it, all (95% CI)", "Non-oncology",
-                                             "Oncology"]))
+    cols = ["Evidence for the disease, known before Phase 2", "Programs (targets)", "Advanced: with / without",
+            "Share of all that advanced", "Risk ratio, all (95% CI)", "Risk ratio, non-oncology",
+            "Risk ratio, oncology"]
+    df = pd.DataFrame(rows, columns=cols)
+    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Target liabilities** (not specific to the disease)"}
+    out = []
+    for f, row in zip(S3_MAP_ROWS, df.values.tolist()):
+        if f in groups:
+            out.append([groups[f]] + [""] * (len(cols) - 1))
+        out.append(row)
+    return table(pd.DataFrame(out, columns=cols))
 
 
 S3_ENDPOINTS = {"B1_target_engagement": "Target engagement", "B2_exploratory_biomarker": "Exploratory biomarker",
@@ -313,9 +336,10 @@ def s3_endpoint_table() -> str:
         rows.append([name, f"{int(r.n_cohort):,}", pct(r.not_met, 0), f"{int(r.n):,}",
                      f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}", rr_ci(r),
                      rr_ci(f.loc[c]) if c in f.index else "–"])
-    return table(pd.DataFrame(rows, columns=["Class of the governing primary endpoint", "Trials", "Not met",
-                                             "Trials with G3", "Not met: with G3 / without", "Risk ratio of NOT MET, "
-                                             "all readable (95% CI)", "Registry-posted, FDAAA era"]))
+    return table(pd.DataFrame(rows, columns=["Class of the governing primary endpoint", "Trials", "Missed primary endpoint",
+                                             "Trials with genetics for the disease", "Missed: with / without genetics",
+                                             "Risk ratio of a miss, all readable trials (95% CI)",
+                                             "Risk ratio, registry-posted results (FDAAA era)"]))
 
 
 def s3_rules() -> pd.DataFrame:
@@ -323,8 +347,8 @@ def s3_rules() -> pd.DataFrame:
 
 
 def rule_name(r) -> str:
-    """'M3 Mendelian evidence …', with * for a rule added after the plan."""
-    return f"{r.rule}{'' if r.registered else '*'} {r.label}"
+    """A rule as the report names it: its description, marked when it was added after the plan."""
+    return f"{r.label}{'' if r.registered else ' (added after the plan)'}"
 
 
 def s3_rules_table() -> str:
@@ -336,28 +360,29 @@ def s3_rules_table() -> str:
             if pd.isna(v) or v == 0:
                 return "–" if pd.isna(v) else "none advanced"
             return f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
-        rows.append([f"{r.rule}{'' if r.registered else '*'}", r.label, regime[r.regime],
+        rows.append([rule_name(r), regime[r.regime],
                      f"{int(r.n):,} ({int(r.n_targets):,})", pct(r.ppv, 0) if r.n else "–",
                      pct(r.coverage, 0), "–" if pd.isna(r.adj_rr) else f"{r.adj_rr:.2f} ({r.adj_lo:.2f}–{r.adj_hi:.2f})",
                      split("discovery"), split("confirmation"),
                      "**predictive**" if r.predictive else ("not testable" if r.n == 0 else "no")])
-    return table(pd.DataFrame(rows, columns=["Rule", "Applied at Phase 2 entry", "Regime", "Programs (targets)",
-                                             "Advanced", "Share of all that advanced", "Adjusted RR (95% CI)",
-                                             "Discovery RR (90%)", "Held-out RR (90%)", "Meets the bar"]))
+    return table(pd.DataFrame(rows, columns=["Rule applied at Phase 2 entry", "Regime", "Programs (targets)",
+                                             "Advanced", "Share of all that advanced", "Adjusted risk ratio (95% CI)",
+                                             "Risk ratio, discovery targets (90% CI)",
+                                             "Risk ratio, held-out targets (90% CI)", "Meets the bar"]))
 
 
-CODE_NAMES = {"F1": "F1 exposure", "F2": "F2 biology did not translate", "F3": "F3 wrong population",
-              "F4": "F4 surrogate gap", "F5": "F5 on-target toxicity", "F6": "F6 off-target toxicity",
-              "F7": "F7 trial design", "F8": "F8 commercial", "unknown": "unknown"}
+FAILURE_NAMES = {"F1": "engagement not shown", "F2": "engaged, disease did not respond", "F3": "wrong population",
+                 "F4": "surrogate did not carry over", "F5": "on-target toxicity", "F6": "off-target toxicity",
+                 "F7": "trial design", "F8": "commercial", "unknown": "unknown"}
 SOURCE_CHARS = 160  # length of the evidence source shown in a case card
 
 
-def failure_label(advanced: str, code: str, short: bool = False) -> str:
+def failure_label(advanced: str, code: str) -> str:
     if advanced == "yes":
         return "–"
     if code == "not_a_failure":
         return "still progressing"
-    return code if short else CODE_NAMES[code]
+    return FAILURE_NAMES[code]
 
 
 def s3_case_audit() -> pd.DataFrame:
@@ -372,14 +397,14 @@ def s3_cases_table() -> str:
     rows = []
     for rule, g in a.groupby("rule", sort=False):
         failed = g[g.advanced_within_4y == "no"]
-        codes = pd.Series([failure_label("no", c, short=True) for c in failed.failure_code]).value_counts()
+        codes = pd.Series([failure_label("no", c) for c in failed.failure_code]).value_counts()
         rows.append([rule_name(rules.loc[rule]), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
                      f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
                      f"partly)", f"{(g.predates_entry == 'yes').sum()}",
                      ", ".join(f"{c}: {k}" for c, k in codes.items()) or "–"])
     return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
                                              "Evidence claim verified", "Evidence published before entry",
-                                             "Why the others stopped (codes)"]))
+                                             "Why the others stopped"]))
 
 
 def shorten(text: str, limit: int) -> str:
@@ -389,10 +414,11 @@ def shorten(text: str, limit: int) -> str:
 
 def s3_case_cards() -> str:
     rows = []
+    rules = s3_rules()
     for r in s3_case_audit().itertuples():
         source = shorten(r.evidence_source or "", SOURCE_CHARS) + (f" ({r.evidence_year})" if r.evidence_year else "")
         outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
-        rows.append([f"{r.rule}", f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
+        rows.append([rule_name(rules.loc[r.rule]), f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
                      f"{r.claim_supported}; {source}",
                      outcome + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
                      failure_label(r.advanced_within_4y, r.failure_code)])

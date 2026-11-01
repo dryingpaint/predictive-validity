@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
-from report.render import BAND_NAMES, S3_ENDPOINTS, S3_MAP_ROWS, rule_name, stratum_name
+from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, rule_name, stratum_name
 from report.section3 import DISCOVERY_FLOOR
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
@@ -254,15 +254,16 @@ def relative_success():
 
 def dose_response():
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
-    fig, ax = plt.subplots(figsize=(6.2, 2.6))
+    fig, ax = plt.subplots(figsize=(7.4, 2.6))
     y = np.arange(len(df))[::-1]
     ax.barh(y, df.loa * 100, height=0.6, color=[BAR if b == "none" else ACCENT for b in df.band])
     ax.errorbar(df.loa * 100, y, xerr=[(df.loa - df.loa_lo) * 100, (df.loa_hi - df.loa) * 100],
                 fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
     for yi, (v, hi, n) in zip(y, zip(df.loa, df.loa_hi, df.n_programs)):
         ax.text(hi * 100 + 0.4, yi, f"{v:.1%} (n={n:,})", va="center", color=INK2, fontsize=8)
-    ax.set_yticks(y, [BAND_NAMES[b] for b in df.band], color=INK)
+    ax.set_yticks(y, [band_label(*b) for b in zip(df.band, df.score_from, df.score_to)], color=INK, fontsize=9)
     ax.set_xlabel("Likelihood of FDA approval from Phase 1 (%), 95% CI", color=INK2, fontsize=8)
+    ax.set_ylabel("Genetic association score before entry", color=INK2, fontsize=8)
     style(ax)
     ax.set_title("Likelihood of approval by strength of human genetic support", loc="left", color=INK, fontsize=11)
     save(fig, "genetic_dose_response")
@@ -377,7 +378,7 @@ def s3_rules():
     ax.set_xlabel("Crude risk ratio of advancing within 4 years (90% target bootstrap); grey: discovery targets, "
                   "blue: held-out targets; dashed: the discovery bar", color=INK2, fontsize=8)
     style(ax)
-    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation (* added after the plan)",
+    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation",
                  loc="left", color=INK, fontsize=10)
     save(fig, "s3_rules")
 

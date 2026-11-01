@@ -3,6 +3,7 @@
     python -m pipeline.evidence_dates clinvar  # ClinVar record accession -> year the record was created
     python -m pipeline.evidence_dates impc     # IMPC data releases -> year of the first release with an allele's calls
     python -m pipeline.evidence_dates studies  # GEO/ArrayExpress, IntOGen cohort and screen-paper years
+    python -m pipeline.evidence_dates projectscore  # Open Targets releases -> first year a Project Score pair was listed
 
 Each command replaces its rows of preclin.evidence_known_year, keyed by preclin.ot_evidence_key
 over the loaded rows of preclin.ot_evidence; `pipeline.opentargets dates` then dates every row
@@ -25,6 +26,10 @@ with a key year and rebuilds the association series from the dated rows.
 - Studies, for rows with no date of their own: Expression Atlas experiments by their GEO or
   ArrayExpress public date; IntOGen cohorts by the year their name carries; CRISPR screens without
   literature by the screen's paper (SCREEN_PAPERS).
+- Project Score (crispr). Open Targets dates every row by the 2024 re-analysis (Pacini et al.) that
+  now supplies it, though most target-cancer pairs were first prioritised in Behan et al. 2019. A row
+  is keyed by its target and disease and takes the year of the first Open Targets release whose
+  Project Score file lists the pair (PROJECT_SCORE_FILES).
 Cancer Gene Census, Orphanet, UniProt and Reactome rows without a date have no source history to
 date them, and Genomics England PanelApp genes only the panels' full activity logs (hundreds of
 megabytes across the panels); they stay undated and count only in release scores.
@@ -35,6 +40,7 @@ import argparse
 import csv
 import gzip
 import hashlib
+import json
 import os
 import re
 import time
@@ -62,6 +68,12 @@ IMPC_FILES = ("csv/ALL_genotype_phenotype.csv.gz", "results/genotype-phenotype-a
 BIOSTUDIES = "https://www.ebi.ac.uk/biostudies/api/v1/studies/"
 # CRISPR-screen studies Open Targets lists without literature: study id prefix -> (PMID, publication year)
 SCREEN_PAPERS = {"iTF-Microglia": ("35953545", 2022)}  # Dräger et al., Nat Neurosci 2022
+OPENTARGETS_URL = "https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/"
+# Each Project Score evidence file Open Targets ingested, in release order: Behan et al. 2019 and its
+# updates through 23.02, then Pacini et al. 2024 from 24.03
+PROJECT_SCORE_FILES = (("19.04", "crispr-2019-04-08.json.gz"), ("19.09", "crispr-2019-08-21.json.gz"),
+                       ("21.02", "crispr-2020-11-18.json.gz"), ("22.02", "crispr-2022-01-24.json.gz"),
+                       ("23.02", "crispr.json.gz"), ("24.03", "crispr.json.gz"))
 INTOGEN_YEAR = re.compile(r"_((?:19|20)\d\d)$")
 
 
@@ -293,10 +305,43 @@ def studies(_args) -> None:
           hashlib.sha256(repr(out).encode()).hexdigest(), out)
 
 
+def projectscore(_args) -> None:
+    """Each loaded Project Score (crispr) row keyed "target disease", dated by the first Open Targets release
+    whose crispr evidence file lists that target for that disease (EFO ids mapped to their equivalent MONDO term)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT DISTINCT target_ensembl || ' ' || disease_id FROM preclin.ot_evidence WHERE datasource = 'crispr'")
+        wanted = {k for (k,) in cur.fetchall()}
+        cur.execute("""SELECT xref_id, term_id FROM preclin.ontology_xref
+                       WHERE ontology = 'MONDO' AND equivalent AND xref_id LIKE 'EFO:%'""")
+        mondo = dict(cur.fetchall())
+    first: dict[str, int] = {}
+    shas = []
+    for release, name in PROJECT_SCORE_FILES:
+        url = f"{OPENTARGETS_URL}{release}/input/evidence-files/{name}"
+        year = parsedate_to_datetime(request("HEAD", url).headers["Last-Modified"]).year
+        local = download(url, os.path.join(CACHE, "projectscore", release, name))
+        shas.append(llm.sha256_file(local))
+        with gzip.open(local, "rt") as f:
+            for line in f:
+                r = json.loads(line)
+                if "target" in r:  # the 2019-2020 evidence schema
+                    target, disease = r["target"]["id"].rsplit("/", 1)[-1], r["disease"]["id"].rsplit("/", 1)[-1]
+                else:
+                    target, disease = r["targetFromSourceId"], r["diseaseFromSourceMappedId"]
+                disease = disease.replace("_", ":", 1)
+                key = f"{target} {mondo.get(disease, disease)}"
+                if key in wanted and key not in first:
+                    first[key] = year
+        print(f"release {release} ({year}): {len(first)} of {len(wanted)} target-disease pairs dated", flush=True)
+    store(("crispr",), "opentargets_projectscore_releases", ",".join(r for r, _ in PROJECT_SCORE_FILES),
+          OPENTARGETS_URL, hashlib.sha256("".join(shas).encode()).hexdigest(),
+          [("crispr", key, year, "opentargets_release") for key, year in sorted(first.items())])
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in [("clinvar", clinvar), ("impc", impc), ("studies", studies)]:
+    for name, fn in [("clinvar", clinvar), ("impc", impc), ("studies", studies), ("projectscore", projectscore)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)

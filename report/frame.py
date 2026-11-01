@@ -89,6 +89,22 @@ def loaded_once(load):
     return get
 
 
+def common_essentials() -> dict[int, set[str]]:
+    """DepMap common-essential genes (Ensembl ids) by the year of the release that listed them."""
+    lists: dict[int, set[str]] = {}
+    for year, ens in query("""SELECT e.release_year, g.ensembl_id FROM preclin.depmap_common_essential e
+                              JOIN preclin.hgnc_gene g USING (entrez_id)
+                              WHERE g.ensembl_id IS NOT NULL""").itertuples(index=False):
+        lists.setdefault(int(year), set()).add(ens)
+    return lists
+
+
+def essential_as_of(lists: dict[int, set[str]], genes, year: int) -> bool:
+    """Whether any of `genes` is on the latest common-essential list from `year` or before (none before 2019)."""
+    known = [y for y in lists if y <= year]
+    return bool(known) and any(g in lists[max(known)] for g in genes)
+
+
 def snapshot() -> date:
     return query("SELECT snapshot FROM preclin.dev_program_build ORDER BY built_at DESC LIMIT 1").iloc[0, 0]
 
