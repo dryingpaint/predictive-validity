@@ -19,7 +19,7 @@ from collections import defaultdict
 
 import numpy as np
 import pandas as pd
-from scipy.stats import fisher_exact
+from scipy.stats import fisher_exact, mannwhitneyu
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
@@ -216,6 +216,29 @@ def construct(d: pd.DataFrame, progs: pd.DataFrame, rows: pd.DataFrame) -> dict:
             "c_g3": fisher(d, "g3", a="F1a", b="F2")}
 
 
+def potency(d: pd.DataFrame) -> dict:
+    """Added after the plan: the drug's measured potency at its primary targets, as published by the year before
+    phase entry (report.frame.assays_as_of), compared between programs whose exposure or engagement was shown too
+    low (F1a) and programs engaged without benefit (F2); the best potency by a two-sided Mann-Whitney test among
+    programs with a measurement, the rest by Fisher tests."""
+    primary = frame.query("""SELECT mt.moiety_id, t.symbol FROM preclin.moiety_target mt
+                             JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""") \
+        .groupby("moiety_id").symbol.agg(set)
+    measurements = frame.drug_assays()
+    assays, none = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]
+    x = d[d.primary_code.isin(["F1a", "F2"]) & d.moiety_id.isin(primary.index)]
+    known = pd.DataFrame([frame.assays_as_of(assays.get(m, none), primary[m], pd.Timestamp(e).year - 1)
+                          for m, e in zip(x.moiety_id, x.entry)], index=x.index)
+    x = x.join(known)
+    m = x[x.measured]
+    best = {NAMES[c]: m[m.primary_code == c].best for c in ("F1a", "F2")}
+    p = mannwhitneyu(best["not_engaged"], best["engaged"]).pvalue if min(map(len, best.values())) else float("nan")
+    return {"measured": fisher(x, "measured", a="F1a", b="F2"),
+            "potent": fisher(m, "potent", a="F1a", b="F2"),
+            "cell_functional": fisher(m, "cell_functional", a="F1a", b="F2"),
+            "best_median": {k: float(v.median()) for k, v in best.items()}, "best_p": float(p)}
+
+
 def sensitivity(d: pd.DataFrame, traced: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
     """Variants of the headline-window cohort d, and the other windows of the traced cohort."""
     first = d.sort_values(["moiety_id", "phase", "program_id"]).drop_duplicates("moiety_id")
@@ -278,6 +301,7 @@ def main() -> None:
          "rederivation": rederivation(bundle_only(traced), check_sample(cohort(modes))),
          "adjudication": adjudication(bundle_only(traced)),
          "construct": construct(d, progs, rows),
+         "construct_potency": potency(d),
          "bounds": {"labelled": ne / (ne + eng), "all_no_data_not_engaged": (ne + u) / (ne + eng + u)}}
     sens = sensitivity(d, traced, rng)
     sens.to_csv(os.path.join(OUT, "sensitivity.csv"), index=False)

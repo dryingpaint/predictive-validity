@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
-from report.section2 import LIABILITIES
+from report.section2 import DRUG, LIABILITIES
 from report.section3 import CASE_AUDIT
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
@@ -166,12 +166,18 @@ def attribution_sensitivity_table() -> str:
     return table(out)
 
 
-def liability_divider(df: pd.DataFrame, features: pd.Series) -> pd.DataFrame:
-    """`df` with the target-liability rows (LIABILITIES, by `features`) moved under a divider row."""
-    liab = features.isin(LIABILITIES).to_numpy()
-    divider = pd.DataFrame([["**Target liabilities** (not specific to the disease)"] + [""] * (df.shape[1] - 1)],
-                           columns=df.columns)
-    return pd.concat([df[~liab], divider, df[liab]], ignore_index=True)
+GROUPS = [("**Target liabilities** (not specific to the disease)", LIABILITIES),
+          ("**Drug pharmacology** (assays of the drug itself, not evidence for the disease)", DRUG)]
+
+
+def evidence_groups(df: pd.DataFrame, features: pd.Series) -> pd.DataFrame:
+    """`df` with the disease-evidence rows first, then each group of GROUPS (by `features`) under its divider row."""
+    grouped = [features.isin(members).to_numpy() for _, members in GROUPS]
+    parts = [df[~np.logical_or.reduce(grouped)]]
+    for (title, _), rows in zip(GROUPS, grouped):
+        if rows.any():
+            parts += [pd.DataFrame([[title] + [""] * (df.shape[1] - 1)], columns=df.columns), df[rows]]
+    return pd.concat(parts, ignore_index=True)
 
 
 def rs_table() -> str:
@@ -181,7 +187,18 @@ def rs_table() -> str:
                       "LOA with / without": [f"{pct(a)} / {pct(b)}" for a, b in zip(df.loa_with, df.loa_without)],
                       "Relative success (95% CI)": [f"{r:.2f} ({lo:.2f}–{hi:.2f})"
                                                     for r, lo, hi in zip(df.rs, df.rs_lo, df.rs_hi)]})
-    return table(liability_divider(df.iloc[:, -4:], df.feature))
+    return table(evidence_groups(df.iloc[:, -4:], df.feature))
+
+
+def chembl_match_table() -> str:
+    df = pd.read_csv(os.path.join(OUT, "section2", "chembl_match_by_modality.csv"))
+    out = pd.DataFrame({"Modality": df.modality.map(stratum_name),
+                        "Entities": df.iloc[:, 1:].sum(axis=1).map("{:,}".format),
+                        "By a ChEMBL id of one of its names": df.drug_chembl_id.map("{:,}".format),
+                        "By its UNII structure (InChIKey)": df.inchikey.map("{:,}".format),
+                        "By a registered UNII name": df["name"].map("{:,}".format),
+                        "Not matched": df.unmatched.map("{:,}".format)})
+    return table(out)
 
 
 def prediction_table() -> str:
@@ -214,7 +231,7 @@ def joint_table() -> str:
     wide = wide.loc[sorted(wide.index, key=lambda f: order.get(f, 99))]
     wide.columns = [{1: "Phase 1 → 2", 2: "Phase 2 → 3", 3: "Phase 3 → approval"}[c] for c in wide.columns]
     wide.insert(0, "Evidence", [labels.get(f, f) for f in wide.index])
-    return table(liability_divider(wide.reset_index(drop=True), pd.Series(wide.index)))
+    return table(evidence_groups(wide.reset_index(drop=True), pd.Series(wide.index)))
 
 
 def ablation_table() -> str:
@@ -471,7 +488,7 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
-          "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
+          "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table, "CHEMBL_MATCH_TABLE": chembl_match_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,

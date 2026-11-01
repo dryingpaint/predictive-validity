@@ -4,7 +4,7 @@
 
 ### Evidence lines
 
-Each program aimed at a human protein is scored for the evidence its targets had **for the program's disease**, **as of the year before it entered the phase**, from Open Targets: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens in human cells, plus two properties of the target itself (essential in most cells; intolerant of loss of function). How each line is dated and matched to the program's disease is in the appendix. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the {{section2.n_programs|int}} programs on {{section2.n_targets|int}} targets scored, {{section2.evidence_coverage_ph1.genetic_any|pct}} of Phase 1 entrants had human genetic evidence for their disease at entry.
+Each program aimed at a human protein is scored for the evidence its targets had **for the program's disease**, **as of the year before it entered the phase**, from Open Targets: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens in human cells, plus two properties of the target itself (essential in most cells; intolerant of loss of function). A third group describes the drug rather than its target or disease: its potency, functional activity in cells and selectivity, as measured in laboratory assays published before entry and collected in ChEMBL. How each line is dated and matched to the program's disease is in the appendix. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the {{section2.n_programs|int}} programs on {{section2.n_targets|int}} targets scored, {{section2.evidence_coverage_ph1.genetic_any|pct}} of Phase 1 entrants had human genetic evidence for their disease at entry.
 
 ### Relative success
 
@@ -29,6 +29,10 @@ Programs with genetic evidence differ from programs without it in disease area, 
 {{JOINT_TABLE}}
 
 {{SECTION2_JOINT}}
+
+### The drug's own pharmacology
+
+{{SECTION2_DRUG}}
 
 ### Does the evidence predict which programs reach approval?
 

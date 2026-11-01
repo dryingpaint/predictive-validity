@@ -84,6 +84,7 @@ evidence:
 	$(RUN) pipeline.evidence_dates impc
 	$(RUN) pipeline.evidence_dates studies
 	$(RUN) pipeline.opentargets evidence
+	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse
 	$(RUN) pipeline.stop_causes signals

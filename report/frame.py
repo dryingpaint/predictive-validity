@@ -9,6 +9,7 @@ import os
 import time
 from datetime import date
 
+import numpy as np
 import pandas as pd
 import psycopg2
 from dotenv import load_dotenv
@@ -103,6 +104,47 @@ def essential_as_of(lists: dict[int, set[str]], genes, year: int) -> bool:
     """Whether any of `genes` is on the latest common-essential list from `year` or before (none before 2019)."""
     known = [y for y in lists if y <= year]
     return bool(known) and any(g in lists[max(known)] for g in genes)
+
+
+CELL_BASED = "BAO_0000219"  # BioAssay Ontology: cell-based format
+POTENT, VERY_POTENT, SELECTIVE = 7.0, 8.0, 2.0  # pChEMBL 7 = 100 nM, 8 = 10 nM; a 2-log margin is 100-fold
+
+
+def drug_assays() -> pd.DataFrame:
+    """ChEMBL potency measurements of each entity's molecules (every form of each parent preclin.chembl_moiety
+    matches to it), one row per activity: the target's genes and type, the measurement, whether the assay
+    was functional and in cells, and the year of the document that reported it."""
+    return query("""
+        SELECT DISTINCT cm.moiety_id, a.activity_id, a.target_chembl_id, t.symbols, t.target_type,
+               a.standard_type, a.pchembl_value::float AS pchembl, a.assay_type = 'F' AS functional,
+               a.bao_format = %s AS cell_based, doc.year
+        FROM preclin.chembl_moiety cm
+        JOIN preclin.chembl_activity a USING (parent_chembl_id)
+        JOIN preclin.chembl_target t USING (target_chembl_id)
+        JOIN preclin.chembl_document doc USING (document_chembl_id)
+        WHERE doc.year IS NOT NULL""", (CELL_BASED,))
+
+
+def assays_as_of(assays: pd.DataFrame, primary: set[str], year: int) -> dict:
+    """What `assays` (drug_assays rows of one entity) showed of its pharmacology by the end of `year`.
+    A target's potency is the median over its measurements of one type (IC50, Ki, ...), and the best
+    potency the highest such median. A measurement is at the primary target when the ChEMBL target
+    holds any `primary` gene (a complex or family counts); off-target when it is a single human
+    protein outside them. Selectivity is the best primary potency less the best off-target potency,
+    undefined when no off-target was measured."""
+    known = assays[assays.year <= year]
+    on = known.loc[np.array([bool(primary & set(s)) for s in known.symbols], dtype=bool)]
+    off = known.loc[np.array([t == "SINGLE PROTEIN" and bool(s) and not primary & set(s)
+                              for t, s in zip(known.target_type, known.symbols)], dtype=bool)]
+
+    def best(rows: pd.DataFrame) -> float:
+        return float(rows.groupby(["target_chembl_id", "standard_type"]).pchembl.median().max()) if len(rows) \
+            else float("nan")
+    b, b_off = best(on), best(off)
+    margin = b - b_off
+    return {"measured": len(on) > 0, "best": b, "potent": b >= POTENT, "very_potent": b >= VERY_POTENT,
+            "cell_functional": bool((on.functional & on.cell_based).any()),
+            "margin": margin, "selective": margin >= SELECTIVE}
 
 
 def snapshot() -> date:
