@@ -443,14 +443,21 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
         time.sleep(POLL_SECONDS)
         status = {b: _api(api.messages.batches.retrieve, b) for b in pending}
         for batch_id in [b for b, st in status.items() if stalled(st, datetime.now(timezone.utc))]:
-            _api(api.messages.batches.cancel, batch_id)
+            # Re-read just before cancelling: sending earlier stalled batches directly takes minutes, and a
+            # batch that finished meanwhile is collected below on a later poll instead.
+            if not stalled(_api(api.messages.batches.retrieve, batch_id), datetime.now(timezone.utc)):
+                continue
+            try:
+                _api(api.messages.batches.cancel, batch_id)
+            except anthropic.BadRequestError:  # it finished between the read and the cancel
+                continue
             keys = [key for (b, _), key in custom_ids.items() if b == batch_id]
             print(f"[{task.name}] batch {batch_id} stalled; sending its {len(keys)} requests directly", flush=True)
             _run_concurrent(api, run_id, task, items, keys)
             pending.remove(batch_id)
             manifest.pop(batch_id, None)
             _write_manifest(task, manifest)
-        ended = [b for b in pending if status[b].processing_status == "ended"]
+        ended = [b for b in pending if b in status and status[b].processing_status == "ended"]
         for batch_id in ended:
             rows, n_ok, n_bad = [], 0, 0
             for result in _api(lambda b: list(api.messages.batches.results(b)), batch_id):
