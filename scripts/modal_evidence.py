@@ -24,13 +24,18 @@ STEPS = ("pipeline.opentargets fetch", "pipeline.opentargets load", "pipeline.ev
          "pipeline.evidence_dates impc", "pipeline.evidence_dates studies", "pipeline.evidence_dates projectscore",
          "pipeline.opentargets evidence", "pipeline.chembl activities")  # the Makefile evidence steps with raw releases
 
-with open(os.path.join(REPO, "pyproject.toml"), "rb") as f:
-    DEPENDENCIES = tomllib.load(f)["project"]["dependencies"]
+# The image and secret are built from this checkout when the app is launched; inside the container this
+# module is imported again from /root, where neither the checkout nor its .env exists.
+if modal.is_local():
+    with open(os.path.join(REPO, "pyproject.toml"), "rb") as f:
+        DEPENDENCIES = tomllib.load(f)["project"]["dependencies"]
+    env = dotenv_values(os.path.join(REPO, ".env"))
+else:
+    DEPENDENCIES, env = [], {}
 image = (modal.Image.debian_slim(python_version="3.12")
          .uv_pip_install(*DEPENDENCIES)
          .add_local_dir(REPO, "/repo", ignore=[".venv", ".cache", ".git", ".env", "**/__pycache__", "report/output"]))
 volume = modal.Volume.from_name(VOLUME, create_if_missing=True)
-env = dotenv_values(os.path.join(REPO, ".env"))
 secret = modal.Secret.from_dict({k: env[k] for k in ("DATABASE_URL", "ANTHROPIC_API_KEY") if env.get(k)})
 app = modal.App("predictive-validity-evidence")
 
