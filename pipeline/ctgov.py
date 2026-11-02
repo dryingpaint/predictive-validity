@@ -139,7 +139,18 @@ def load(_args) -> None:
             execute_values(cur, UPSERT, [row(s, release) for s in studies], page_size=1000)
             n += len(studies)
             conn.commit()
-    print(f"loaded {n} studies from {snap}")
+        # The table holds this snapshot only: a study the registry no longer returns leaves, with the rows other
+        # tables derived from it (pipeline.programs register and later steps rebuild those tables).
+        cur.execute("SELECT nct_id FROM preclin.ctgov_study WHERE source_release_id <> %s", (release,))
+        gone = [r[0] for r in cur.fetchall()]
+        if gone:
+            cur.execute("""SELECT DISTINCT conrelid::regclass::text FROM pg_constraint
+                           WHERE contype = 'f' AND confrelid = 'preclin.ctgov_study'::regclass""")
+            for table, in cur.fetchall():
+                cur.execute(f"DELETE FROM {table} WHERE nct_id = ANY(%s)", (gone,))
+            cur.execute("DELETE FROM preclin.ctgov_study WHERE nct_id = ANY(%s)", (gone,))
+            conn.commit()
+    print(f"loaded {n} studies from {snap}; removed {len(gone)} the snapshot no longer has")
 
 
 def main() -> None:
