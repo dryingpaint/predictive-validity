@@ -1,4 +1,4 @@
-### Why the stops the registry does not explain happened
+### Why programs stop
 
 For {{stop_causes.inferred.programs|int}} of the {{stop_causes.stops|int}} Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
 

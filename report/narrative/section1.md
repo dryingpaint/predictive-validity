@@ -1,6 +1,6 @@
 ## Industry failure modes
 
-For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is {{section1.us_site.loa|pct}} (95% CI {{section1.us_site.loa_lo|pct}}–{{section1.us_site.loa_hi|pct}}), against BIO's {{bio.loa}} for 2011–2020 ({{bio.loa_novel}} for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is {{section1.overall.loa|pct}}. Most programs stop without a stated reason: of {{section1.failure_modes.n_suspended|int}} programs that stopped, {{section1.failure_modes.family_share.all.unexplained|pct0}} left no stated reason and no posted or published result, and {{section1.failure_modes.family_share.all.biology|pct0}} record an efficacy, safety or pharmacokinetic reason.
+For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is {{section1.us_site.loa|pct}} (95% CI {{section1.us_site.loa_lo|pct}}–{{section1.us_site.loa_hi|pct}}), against BIO's {{bio.loa}} for 2011–2020 ({{bio.loa_novel}} for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is {{section1.overall.loa|pct}}. Once each stop is traced to its cause, efficacy or exposure explains {{stop_causes.likely.efficacy.share|pct0}} of Phase 2 and 3 stops and sponsor decisions {{stop_causes.likely.sponsor_decision.share|pct0}}.
 
 ### How programs are counted
 
@@ -20,16 +20,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 ### Change over time
 
 {{SECTION1_TIME}}
-
-### Why programs stop
-
-Each suspended program takes one reason from the industry trials of the phase it stopped in, in this order: an efficacy reason stated by the sponsor, a primary endpoint missed in posted or published results, a safety signal, a pharmacokinetic or formulation problem, an explicit business or strategic reason, a bare "sponsor decision", an enrollment, operational or regulatory reason, a positive primary readout without advancement, another stated reason, posted results with no stated reason or readable endpoint, and finally neither a reason nor a result.
-
-{{FAILURE_TABLE}}
-
-![Why suspended programs stopped](report/output/figures/failure_modes_by_phase.png)
-
-{{SECTION1_FAILURES}}
 
 {{SECTION1_STOP_CAUSES}}
 
