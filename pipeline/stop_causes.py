@@ -505,7 +505,7 @@ SUBCAUSE_MEANING = {
     "enrollment": "patients could not be recruited or retained fast enough",
     "site_or_supply": "running the trial: sites, investigators or staff, drug supply, manufacturing for the trial, "
                       "trial procedures or measurements, delays, or other logistics",
-    "fda_declined": "the FDA declined to approve it (a complete response letter)",
+    "regulator_declined": "a regulator (the FDA, the EMA, China's NMPA or another) declined to approve it",
     "approved_outside_us": "the drug was approved, or filed, outside the United States, and no other reason is given",
     "other_stated": "the text gives a specific reason that none of the listed subcauses covers, each read broadly",
     "not_stated": "the text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', "
@@ -519,7 +519,7 @@ SUBCAUSE_SYSTEM = f"""You read why a drug development program stopped and name t
 
 Choose the one subcause, from the list for the given cause, that the text states or directly implies. Each list is in order of precedence: if more than one subcause applies, choose the one listed first. For a positive readout that went no further, name why development did not go on after the good result. Use other_stated, with the reason in a few words in other_reason, when the text gives a specific reason none of the listed subcauses fits; use not_stated when the text says no more than the cause. Judge only from the text; do not use what you know about the drug, its target or the company. In particular, call a harm on-target or off-target only when the text itself says which.
 
-Then check the cause against the text. text_cause is the cause the text itself gives for the stop, which may be the given cause or another one (for example a safety cause whose text says the stop was a business decision with no safety concern); not_stopped when the text says this drug's development in this disease is continuing, or the drug was approved for it (a placebo-controlled trial stopped because the drug had been approved), and not when it is a successor or another drug that goes on; not_a_program when the text says no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); unclear when the text gives no reason of its own. A business or regulatory reason for not going on after a positive readout is that readout's subcause, so its text_cause is positive_not_advanced. A stop because the money ran out, the trial's grant included, is sponsor_decision.
+Then check the cause against the text. text_cause is the cause the text itself gives for the stop, which may be the given cause or another one (for example a safety cause whose text says the stop was a business decision with no safety concern); not_stopped when the text says this drug's development in this disease is continuing, or the drug was approved for it (a placebo-controlled trial stopped because the drug had been approved), and not when it is a successor or another drug that goes on; not_a_program when the text says no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); unclear when the text gives no reason of its own. A business or regulatory reason for not going on after a positive readout is that readout's subcause, so its text_cause is positive_not_advanced. A stop because the money ran out, the trial's grant included, is sponsor_decision. A regulator declining approval after a positive readout is that readout's subcause, not efficacy. A safety endpoint met, or a stop with no safety concern, is not safety; and a harm the text reports keeps a stop's safety cause even when the drug also worked.
 
 Subcauses for each cause, in order of precedence:
 {chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
@@ -544,7 +544,7 @@ def validate_subcause(p: dict, out: dict) -> None:
         raise ValueError("other_reason is given exactly when the subcause is other_stated")
 
 
-SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v10", schema_version="v3", system=SUBCAUSE_SYSTEM,
+SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v11", schema_version="v3", system=SUBCAUSE_SYSTEM,
                          schema=SUBCAUSE_SCHEMA, subject_type="program_phase", validate=validate_subcause,
                          render=lambda p: f"Cause: {p['cause']}\nRegistry reason: {p['registry_reason']}\n\n"
                                           f"Text:\n{p['explanation']}",
@@ -597,12 +597,14 @@ def text_cause(cause: str, said: dict) -> str | None:
     """The cause a stop takes from its own text in place of the one it has, or None to keep it: no stop where the
     text says so (a non-program only from a positive readout's text, the one cause scripts.subcause_audit found them
     in), a sponsor decision for an operational stop whose text gives one, and efficacy, safety or a positive readout
-    where the text gives that instead."""
+    where the text gives that instead, except that a safety stop never becomes a positive readout."""
     t = said["text_cause"]
     if t == "not_stopped" or (t == "not_a_program" and cause == "positive_not_advanced"):
         return t
     if t == "sponsor_decision" and cause == "operational":  # the money ran out, or the sponsor chose to stop
         return t
+    if cause == "safety" and t == "positive_not_advanced":  # a harm the text reports outranks a good readout
+        return None
     return t if t in RECAST and t != cause else None
 
 

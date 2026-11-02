@@ -59,7 +59,7 @@ SUBCAUSES = {
     "sponsor_decision": [*DISCONTINUED, "other_stated", "not_stated"],
     "operational": ["covid_19", "regulatory", "trial_redesigned", "enrollment", "site_or_supply", "other_stated",
                     "not_stated"],
-    "positive_not_advanced": ["fda_declined", *DISCONTINUED, "approved_outside_us", "other_stated", "not_stated"],
+    "positive_not_advanced": ["regulator_declined", *DISCONTINUED, "approved_outside_us", "other_stated", "not_stated"],
 }
 COMPANY_ENDED = ("acquisition_or_merger", "funding_or_closure")
 DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",

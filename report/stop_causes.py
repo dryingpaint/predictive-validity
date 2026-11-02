@@ -46,7 +46,7 @@ SUBCAUSE_NAMES = {
     "funding_or_closure": "Funding or closure", "enrollment": "Enrollment", "site_or_supply": "Sites or supply",
     "trial_redesigned": "Trial redesigned or replaced",
     "covid_19": "COVID-19", "regulatory": "Regulatory hold on the trial", "approved_outside_us": "Approved outside the US",
-    "fda_declined": "FDA declined (complete response)", "replaced_by_successor": "Replaced by a successor",
+    "regulator_declined": "Regulator declined approval", "replaced_by_successor": "Replaced by a successor",
     "sponsor_went_quiet": "Sponsor started no later trial", "drug_approved_elsewhere": "Drug approved in another disease",
     "drug_continued_elsewhere": "Drug continued in other diseases", "drug_dropped": "Drug dropped, sponsor active",
     "not_stated": "Not stated",
