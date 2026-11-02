@@ -62,13 +62,18 @@ def fetch(_args) -> None:
     with open(zpath, "wb") as f:
         f.write(requests.get(DRUGSFDA_URL, headers=HEADERS, timeout=300).content)
     zipfile.ZipFile(zpath).extractall(os.path.join(CACHE, "drugsfda"))
+    # The cached label files are one export: a new export replaces every file, and the index naming the
+    # export is written only once all of its files are in place.
+    index_path = os.path.join(CACHE, "openfda", "label_index.json")
     index = requests.get(OPENFDA_INDEX, timeout=60).json()["results"]["drug"]["label"]
-    json.dump(index, open(os.path.join(CACHE, "openfda", "label_index.json"), "w"))
+    cached = json.load(open(index_path))["export_date"] if os.path.exists(index_path) else None
     for part in index["partitions"]:
         dest = os.path.join(CACHE, "openfda", os.path.basename(part["file"]))
-        if not os.path.exists(dest):
-            with open(dest, "wb") as f:
+        if cached != index["export_date"] or not os.path.exists(dest):
+            with open(dest + ".part", "wb") as f:
                 f.write(requests.get(part["file"], timeout=600).content)
+            os.replace(dest + ".part", dest)
+    json.dump(index, open(index_path, "w"))
 
     # Submissions in scope: approved ORIG submissions and efficacy-class supplements of NDA/BLA
     # applications inside WINDOW.
