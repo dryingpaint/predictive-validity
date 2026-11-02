@@ -30,6 +30,14 @@ Programs with genetic evidence differ from programs without it in disease area, 
 
 {{SECTION2_JOINT}}
 
+### By disease area
+
+{{AREA_RS_TABLE}}
+
+![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
+
+{{SECTION2_AREA}}
+
 ### The drug's own pharmacology
 
 {{SECTION2_DRUG}}

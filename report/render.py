@@ -234,6 +234,23 @@ def joint_table() -> str:
     return table(evidence_groups(wide.reset_index(drop=True), pd.Series(wide.index)))
 
 
+def area_rs_table() -> str:
+    """Relative success of each evidence line within each disease-area group, beside the
+    p-value for whether its Phase 2 effect differs between groups."""
+    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success_by_area.csv"))
+    tests = pd.read_csv(os.path.join(OUT, "section2", "area_interaction_tests.csv")).set_index("feature")
+    df["cell"] = [("–" if pd.isna(r.rs) else f"{r.rs:.2f} ({r.rs_lo:.2f}–{r.rs_hi:.2f})") + f", n={r.n_with:,}"
+                  for r in df.itertuples()]
+    order = df.groupby("group_label").n_without.max().sort_values(ascending=False).index
+    wide = df.pivot(index="feature", columns="group_label", values="cell")[order]
+    wide = wide.loc[[f for f in df.feature.drop_duplicates() if f in wide.index]]
+    wide.insert(0, "Evidence line", df.drop_duplicates("feature").set_index("feature").label[wide.index])
+    wide["Differs between groups, Phase 2 (p)"] = [
+        "–" if pd.isna(tests.at[f, "p"]) else f"{tests.at[f, 'p']:.2f} ({int(tests.at[f, 'groups'])} groups)"
+        for f in wide.index]
+    return table(wide.reset_index(drop=True))
+
+
 def ablation_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_ablation.csv")).sort_values("auc_drop", ascending=False)
     df = df.assign(**{"Evidence removed": df.label,
@@ -490,6 +507,7 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table, "CHEMBL_MATCH_TABLE": chembl_match_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
+          "AREA_RS_TABLE": area_rs_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,
           "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table, "S3_CASES_TABLE": s3_cases_table,

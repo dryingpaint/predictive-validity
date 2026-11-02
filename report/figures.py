@@ -256,6 +256,32 @@ def relative_success():
     save(fig, "relative_success_by_evidence")
 
 
+def genetics_by_area():
+    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success_by_area.csv"))
+    df = df[df.feature.eq("genetic_any")].dropna(subset=["rs"]).sort_values("rs")
+    pooled = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").loc["genetic_any"]
+    fig, ax = plt.subplots(figsize=(7, 0.42 * (len(df) + 1) + 1))
+    labels = [*df.group_label, "All areas"]
+    rs, lo, hi = [*df.rs, pooled.rs], [*df.rs_lo, pooled.rs_lo], [*df.rs_hi, pooled.rs_hi]
+    n = [*df.n_with, pooled.n_with]
+    y = np.arange(len(labels))
+    ax.errorbar(np.log2(rs), y, xerr=[np.log2(rs) - np.log2(lo), np.log2(hi) - np.log2(rs)], fmt="none",
+                ecolor=INK2, elinewidth=1, capsize=0)
+    ax.scatter(np.log2(rs), y, s=[28] * len(df) + [60], marker="o", zorder=3,
+               color=[ACCENT] * len(df) + [INK], edgecolors="none")
+    ax.axvline(0, color=INK2, linewidth=1)
+    for yi in y:
+        ax.text(max(np.log2(hi[yi]), 0) + 0.08, yi, f"{rs[yi]:.2f}× (n={n[yi]:,})", va="center", color=INK2, fontsize=8)
+    ticks = [0.5, 1, 2, 4, 8]
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.set_yticks(y, labels, color=INK, fontsize=9)
+    ax.get_yticklabels()[-1].set_fontweight("bold")
+    style(ax)
+    ax.set_title("Relative success of human genetic evidence, by disease area (95% CI)", loc="left", color=INK,
+                 fontsize=10)
+    save(fig, "genetics_by_area")
+
+
 def dose_response():
     df = pd.read_csv(os.path.join(OUT, "section2", "genetic_dose_response.csv"))
     fig, ax = plt.subplots(figsize=(7.4, 2.6))
@@ -401,6 +427,8 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         relative_success()
         dose_response()
+    if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
+        genetics_by_area()
     if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
         efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
