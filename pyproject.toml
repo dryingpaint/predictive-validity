@@ -6,6 +6,7 @@ requires-python = ">=3.12"
 dependencies = [
     "anthropic>=1.15",
     "beautifulsoup4>=4.15",
+    "google-auth>=2.40",
     "httpx2>=2.15",
     "lifelines>=0.30",
     "lxml>=5.3",

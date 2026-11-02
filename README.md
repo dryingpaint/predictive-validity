@@ -31,6 +31,7 @@ The unit is a development program: one molecular entity developed for one diseas
 | Open Targets associations; evidence rows dated by when they became known, with yearly score series rebuilt from them; mouse phenotypes | `pipeline.opentargets` | `preclin.ot_association`, `preclin.ot_evidence`, `preclin.ot_mouse_phenotype` |
 | Germline mechanism per target and disease; mouse-model orientation (both drug-blind) | `pipeline.targets mechanism`, `mouse` | `preclin.gene_disease_mechanism`, `preclin.mouse_model_relation` |
 | Analyses, label-quality checks, figures, report | `python -m report`: `report.section1`, `section2`, `section3`, `attribution`, `stop_causes`, `methods`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md`, `REPORT_APPENDIX.md` |
+| Every classification as a Google Sheet, one tab per kind | `python -m report.sheet` | [Predictive validity: classifications](https://docs.google.com/spreadsheets/d/1_--uUMY_ZQcGkUZw1rDUMgl4MAS44k5348GPZrY4q0I) |
 
 Classification and matching are done by LLM calls recorded in `pv_evidence.llm_decision` (prompt, output schema, model, provider, input hash and code commit for every decision); a rerun reuses a decision only when its input is unchanged (intervention-name resolution keeps a name's latest decision when only its trial context changed). Independent audits of seeded samples measure the accuracy of disease mapping, entity resolution, approvals and trial outcomes (`report.quality`).
 

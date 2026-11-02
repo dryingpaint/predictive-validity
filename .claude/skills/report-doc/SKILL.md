@@ -77,6 +77,9 @@ Run `.venv/bin/python -m report.doc plan`. It writes `report/output/doc_plan.jso
 
 ## 5. Record and open the PR
 
+First run `.venv/bin/python -m report.sheet`, which rewrites the classifications Google Sheet (every
+disease, drug, entity, program, trial and stop label, one tab each) from the same database.
+
 1. Run `.venv/bin/python -m report.doc published REPORT.md=<last rev> REPORT_APPENDIX.md=<last rev>`
    with each tab's revision from your last ack on it.
 2. Reply in the comment threads you acted on.
