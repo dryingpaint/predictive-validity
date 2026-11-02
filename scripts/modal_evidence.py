@@ -1,7 +1,7 @@
 """Run the evidence steps that read large raw releases on Modal, where their downloads fit.
 
-    modal run scripts/modal_evidence.py                     # every step in STEPS, in order
-    modal run scripts/modal_evidence.py --steps "pipeline.chembl activities"
+    modal run --detach scripts/modal_evidence.py             # every step in STEPS, in order
+    modal run --detach scripts/modal_evidence.py --steps "pipeline.chembl activities"
 
 Open Targets evidence and associations, the evidence-date sources and the ChEMBL MySQL dump take tens
 of GB on disk. Each step runs as `python -m <step>` in a container holding this checkout, with the
@@ -52,4 +52,7 @@ def run(steps: list[str]) -> None:
 
 @app.local_entrypoint()
 def main(steps: str = ",".join(STEPS)) -> None:
-    run.remote([s.strip() for s in steps.split(",") if s.strip()])
+    """Start the steps and return: with `modal run --detach` they run on Modal whatever happens to this
+    process (a call awaited here would be cancelled when the laptop loses its connection)."""
+    call = run.spawn([s.strip() for s in steps.split(",") if s.strip()])
+    print(f"spawned {call.object_id}; follow with: modal app logs <app id>")
