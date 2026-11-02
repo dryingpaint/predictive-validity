@@ -16,6 +16,7 @@ dependencies = [
     "pyarrow>=26.0",
     "pypdf>=6.21",
     "python-dotenv[cli]>=1.2",
+    "rdkit>=2025.3",
     "reportlab>=5.0",
     "requests>=2.34",
     "scikit-learn>=1.9",
