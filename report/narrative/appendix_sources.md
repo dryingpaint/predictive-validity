@@ -178,6 +178,19 @@ TDGF1 (previous) -> CRIPTO · CTGF (previous) -> CCN2 · CD20 (alias) -> MS4A1 �
 
 Tirzepatide's hints: GIPR: agonist, GLP1R: agonist.
 
+### ChEMBL bioactivities
+
+*ChEMBL 37 (2026-05-01), {{section2.drug.release.n_activities|int}} measurements of {{section2.drug.release.n_parents_measured|int}} of {{section2.drug.release.n_parents|int}} parent molecules · the release's MySQL dump, `https://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_37/chembl_37_mysql.tar.gz`, tables `activities`, `assays`, `docs`, `target_dictionary`, `target_components`, `component_sequences`, `molecule_dictionary` and `molecule_hierarchy`*
+
+**Compiled by.** EMBL-EBI curators extract bioactivity measurements from medicinal chemistry journals and patents, and research groups and companies deposit screening datasets directly. Each measurement is tied to an assay (its type, binding or functional, and its format, such as cell-based or purified protein), a target and the document that reported it. ChEMBL converts half-maximal concentrations and affinity constants to pChEMBL, the negative log of the molar value, flags values it judges doubtful and marks values that repeat an earlier paper's.
+**We use.** Every measurement with a pChEMBL value against a human target, for every form of each ChEMBL parent molecule matched to an entity with a development program (the routes are in the Section 2 methods): {{section2.drug.release.n_activities|int}} after dropping {{section2.drug.release.dropped.potential_duplicate|int}} repeat citations and {{section2.drug.release.dropped.validity_comment|int}} flagged as doubtful (ChEMBL gives a pChEMBL value only to measurements it has not flagged), on {{section2.drug.release.n_targets|int}} targets from {{section2.drug.release.n_documents|int}} documents. Each document's year (a paper's publication year, a patent's year, a dataset's deposition year) dates its measurements. A target's genes are its UniProt components mapped to HGNC, as for mechanisms.
+**Shape.** A MySQL dump with many rows per `INSERT`: `activities(activity_id, assay_id, doc_id, molregno, standard_type, pchembl_value, data_validity_comment, potential_duplicate, …)`, `assays(assay_id, chembl_id, assay_type, bao_format, tid, …)`, `docs(doc_id, chembl_id, year, journal, src_id, …)`.
+
+```
+INSERT INTO `activities` VALUES (…,'IC50',…,NULL,0,7.40,…)   imatinib, Abl kinase, binding assay, protein format
+docs: CHEMBL1144977  Bioorg Med Chem Lett  2003
+```
+
 ### gnomAD constraint
 
 *v4.1 · loaded by earlier project code*

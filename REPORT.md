@@ -27,8 +27,8 @@ This report rebuilds both questions from primary records. We took every interven
 The report has three parts:
 
 1. **Industry failure modes.** Phase transitions, likelihood of approval (LOA) and the reasons programs stop, for programs that entered each phase in 2008–2019: an updated companion to BIO's *Clinical Development Success Rates 2011–2020*.
-2. **Predictive power of preclinical evidence.** For programs aimed at a human protein target, whether the target had human genetic, somatic, animal-model, expression, pathway or functional-screen evidence for the program's disease, as known before the program entered the phase, and how much each line changes the chance of approval.
-3. **What translates to the clinic.** Which kinds of evidence, at what strength and in which direction, predicted that a Phase 2 program would advance; on which trial endpoints the advantage shows; and which decision rules applied at Phase 2 entry predicted well enough to call a model, with verified case studies.
+2. **Predictive power of preclinical evidence.** For programs aimed at a human protein target, whether the target had human genetic, somatic, animal-model, expression, pathway or cell-screen evidence for the program's disease, and how potent and selective the drug itself had measured in laboratory assays, all as known before the program entered the phase, and how much each changes the chance of approval.
+3. **What translates to the clinic.** Which kinds of evidence predicted that a Phase 2 program would advance, and whether a stronger, more specific or direction-matched version of each did better; on which trial endpoints the advantage shows; with verified case studies.
 
 Every classification in the pipeline was made by an LLM reading the source record and recorded with its prompt and input. The main labels were checked against an independent re-derivation of a seeded sample; modality, disease area and targets were not audited (Appendix).
 
@@ -234,12 +234,12 @@ Disease areas rank differently from BIO's: the rank correlation with BIO's LOA a
 
 ## Predictive power of preclinical evidence
 
-Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before they entered the phase reached FDA approval 2.96 times as often as programs without it (30.1% against 10.2%; 95% CI 2.28–3.83), the likelihood rises with the strength of the evidence, and the association holds at every phase after accounting for disease area, modality, novelty and era. Somatic driver and mouse-model evidence carry weaker signals. Cancer cell-line CRISPR screens single out the same validated oncology targets as somatic drivers and add nothing once those are known, and a target essential in most cell lines, judged by what DepMap had published before entry, is not a clear liability. Yet as a predictor of which individual programs will be approved, the evidence lines raise discrimination only modestly over disease area and modality (held-out AUC 0.605 to 0.641), because most programs have none of them.
+Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before they entered the phase reached FDA approval 2.96 times as often as programs without it (30.1% against 10.2%; 95% CI 2.28–3.83), the likelihood rises with the strength of the evidence, and the association holds at every phase after accounting for disease area, modality, novelty and era. Somatic driver and mouse-model evidence carry weaker signals. Cancer cell-line CRISPR screens single out the same validated oncology targets as somatic drivers and add nothing once those are known, and a target essential in most cell lines, judged by what DepMap had published before entry, is not a clear liability. The drug's own laboratory pharmacology, measured before entry for 45% of small-molecule programs and 0% of antibody programs, carries one signal: measured drugs at 100 nM or better at their target reached approval 2.68 times as often as weaker measured drugs, while functional measurement in cells and selectivity did not help. Yet as a predictor of which individual programs will be approved, the evidence lines raise discrimination only modestly over disease area and modality (held-out AUC 0.605 to 0.641), because most programs have none of them.
 
 
 ### Evidence lines
 
-Each program aimed at a human protein is scored for the evidence its targets had **for the program's disease**, **as of the year before it entered the phase**, from Open Targets: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens in human cells, plus two properties of the target itself (essential in most cells; intolerant of loss of function). How each line is dated and matched to the program's disease is in the appendix. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the 10,169 programs on 1,467 targets scored, 15.2% of Phase 1 entrants had human genetic evidence for their disease at entry.
+Each program aimed at a human protein is scored for the evidence its targets had **for the program's disease**, **as of the year before it entered the phase**, from Open Targets: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens in human cells, plus two properties of the target itself (essential in most cells; intolerant of loss of function). A third group describes the drug rather than its target or disease: its potency, functional activity in cells and selectivity, as measured in laboratory assays published before entry and collected in ChEMBL. How each line is dated and matched to the program's disease is in the appendix. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the 10,169 programs on 1,467 targets scored, 15.2% of Phase 1 entrants had human genetic evidence for their disease at entry.
 
 ### Relative success
 
@@ -258,6 +258,12 @@ Each program aimed at a human protein is scored for the evidence its targets had
 | **Target liabilities** (not specific to the disease) |  |  |  |
 | Intolerant of loss of function | 1,976 | 12.2% / 13.1% | 0.93 (0.62–1.37) |
 | Essential in most cell lines | 330 | 8.7% / 12.9% | 0.67 (0.09–1.91) |
+| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
+| Very potent at the target (10 nM or better) | 1,516 | 13.6% / 12.5% | 1.09 (0.76–1.46) |
+| Potent at the target (100 nM or better) | 2,042 | 13.3% / 12.4% | 1.07 (0.76–1.43) |
+| Potency at the target measured | 2,455 | 11.4% / 12.9% | 0.88 (0.63–1.15) |
+| At least 100-fold selective over measured off-targets | 389 | 8.5% / 13.0% | 0.66 (0.34–1.11) |
+| Functional potency measured in cells | 565 | 7.1% / 13.2% | 0.54 (0.29–0.89) |
 
 ![Relative success by evidence line](report/output/figures/relative_success_by_evidence.png)
 
@@ -285,18 +291,34 @@ Programs with genetic evidence differ from programs without it in disease area, 
 
 | Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |
 | :---- | :---- | :---- | :---- |
-| GWAS | 1.08 (1.01–1.15) | 1.54 (1.33–1.80) | 1.05 (0.78–1.40) |
-| Rare-variant or Mendelian genetics | 1.12 (1.04–1.22) | 1.35 (1.16–1.57) | 1.51 (1.26–1.81) |
-| Somatic cancer driver | 1.03 (0.92–1.15) | 1.11 (0.90–1.38) | 1.07 (0.84–1.35) |
-| Mouse model | 0.92 (0.86–0.99) | 0.99 (0.87–1.13) | 0.97 (0.82–1.15) |
-| Expressed differently in the disease | 0.94 (0.87–1.02) | 1.02 (0.85–1.22) | 0.90 (0.74–1.10) |
-| Disease pathway (Reactome) | 1.10 (0.97–1.25) | 0.97 (0.73–1.28) | 1.10 (0.80–1.52) |
-| CRISPR knockout screen in cancer cell lines | 0.92 (0.76–1.13) | 0.99 (0.78–1.26) | – |
+| GWAS | 1.07 (1.00–1.15) | 1.55 (1.33–1.80) | 1.00 (0.75–1.34) |
+| Rare-variant or Mendelian genetics | 1.12 (1.03–1.21) | 1.35 (1.16–1.58) | 1.52 (1.27–1.81) |
+| Somatic cancer driver | 1.03 (0.92–1.14) | 1.10 (0.89–1.37) | 1.06 (0.84–1.35) |
+| Mouse model | 0.92 (0.85–0.98) | 0.98 (0.86–1.12) | 0.98 (0.83–1.15) |
+| Expressed differently in the disease | 0.95 (0.88–1.03) | 1.01 (0.85–1.21) | 0.90 (0.74–1.10) |
+| Disease pathway (Reactome) | 1.10 (0.97–1.24) | 0.97 (0.73–1.28) | 1.07 (0.78–1.47) |
+| CRISPR knockout screen in cancer cell lines | 0.91 (0.75–1.10) | 0.99 (0.78–1.26) | – |
 | **Target liabilities** (not specific to the disease) |  |  |  |
-| Intolerant of loss of function | 0.90 (0.79–1.03) | 1.13 (0.96–1.33) | 1.00 (0.82–1.23) |
-| Essential in most cell lines | 1.05 (0.88–1.26) | 1.14 (0.84–1.53) | – |
+| Essential in most cell lines | 1.07 (0.91–1.26) | 1.14 (0.85–1.53) | – |
+| Intolerant of loss of function | 0.91 (0.80–1.03) | 1.13 (0.96–1.32) | 1.00 (0.83–1.22) |
+| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
+| Potency at the target measured | 0.70 (0.52–0.95) | 0.92 (0.70–1.20) | 1.16 (0.79–1.70) |
+| Potent at the target (100 nM or better) | 1.47 (1.06–2.03) | 1.26 (0.95–1.68) | 1.33 (0.92–1.93) |
+| Functional potency measured in cells | 0.68 (0.47–0.98) | 0.89 (0.70–1.13) | 0.92 (0.68–1.24) |
+| At least 100-fold selective over measured off-targets | 0.85 (0.65–1.13) | 0.87 (0.65–1.16) | 0.89 (0.67–1.19) |
 
-One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.41× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and essentiality across cell lines shows no penalty at any phase (1.14 at Phase 2, 0.84–1.53). Cancer cell-line screens, 1.30× at Phase 2 on their own, fall to 0.99× beside the somatic and genetic evidence on the same targets; somatic, mouse-model, expression and pathway evidence also lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
+One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.41× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and essentiality across cell lines shows no penalty at any phase (1.14 at Phase 2, 0.85–1.53). Cancer cell-line screens, 1.30× at Phase 2 on their own, fall to 0.99× beside the somatic and genetic evidence on the same targets; somatic, mouse-model, expression and pathway evidence also lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
+
+
+### The drug's own pharmacology
+
+The lines above concern the target and the disease. The drug-pharmacology lines concern the molecule: how strongly it acts on its primary target in laboratory assays (the concentration giving half its maximal effect, or its binding affinity), whether that was measured as a functional response in living cells, and how much more strongly it acts on its target than on any other human protein tested. Each measurement counts from the year of the paper, patent or dataset that reported it, as of the year before phase entry; the definitions are in the appendix.
+
+Coverage is thin and lopsided. 24% of the programs scored had any such measurement at their primary target before a phase entry: 45% of small-molecule programs and 16% of peptide programs, but 0% of antibody and 0% of other protein programs, because ChEMBL's curated measurements come from medicinal chemistry papers and patents about small molecules. Where a drug was measured, it was usually potent: the median best potency was 8.39 on the negative-log scale (4.07 nM), and 83% of measured programs reached 100 nM or better. Off-target measurements existed for 69% of measured programs, and 22% of those were at least 100-fold selective.
+
+A line carried by fewer than 100 programs is not estimated; all five drug lines clear that bar. Having a measurement at all says nothing about success (0.88×, 0.63–1.15). Potency does, a little, once the comparison is kept among drugs that were measured: those at 100 nM or better reached approval 2.68 times as often as the 417 measured programs whose drug was weaker (1.55–5.26); against all programs, measured or not, the ratio is 1.07× and the interval spans 1. In the joint model, with the disease evidence, disease area, modality, novelty and era held fixed, a potent drug advanced more often at every phase (1.47 at Phase 1, 1.06–2.03; 1.26 at Phase 2, 0.95–1.68; 1.33 at Phase 3, 0.92–1.93). Raising the bar to 10 nM separates measured programs less sharply (1.59×, 1.04–2.53). Selectivity of 100-fold or more shows no association (0.66×, 0.34–1.11), and neither does it at any phase in the joint model. Functional potency measured in cells goes the wrong way (0.54×, 0.29–0.89; 0.68 at Phase 1 in the joint model, 0.47–0.98), a pattern these data cannot explain; a cell-based readout is no sign that a program will do better. Counting every measurement published by 2026 instead of before entry gives 1.19× for potency against all programs.
+
+These lines measure the molecule, not whether its target matters in the disease, and they come with a bias of their own: drugs that look promising attract more papers, and potency is published mostly for small molecules from medicinal chemistry programs, so a measurement is partly a marker of a well-studied, novel-chemistry program. Weak measured drugs are a small group of 417 programs, and the clearest reading is that a drug well short of 100 nM at its intended target rarely reaches approval, not that more potency beyond that point helps.
 
 
 ### Does the evidence predict which programs reach approval?
@@ -550,6 +572,7 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | DepMap | Common-essential genes from CRISPR (Chronos) screens | Public 19Q4 to 24Q4, the last release of each year |
 | HGNC | Approved human gene symbols with previous symbols and aliases | 2026-10-16 |
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
+| ChEMBL bioactivities | Potency, affinity and selectivity measurements of each entity's molecules, dated by the year of the paper, patent or dataset that reported them | 37 (138,229 measurements) |
 
 Per-source detail (who compiles each source, what the pipeline keeps, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
 
@@ -624,7 +647,7 @@ Variants of the not-engaged share:
 | Entries 2015-2025 | 1,365 | 755 | 15% (13–19) | 36% |
 | All traced entries 2008-2025 | 2,681 | 1,500 | 17% (15–19) | 36% |
 
-**Checks.** A second model, given the same bundles and asked the pillar questions one at a time before choosing a category, relabelled a seeded random sample of 150 programs (136 with a validated label from both): it agreed on the not-engaged / engaged / other split for 69% (κ = 0.48) and on whether the target was engaged for 79%. Separately, agents with web access researched a seeded random sample of 66 programs from scratch (publications, conference reports, company releases), without the pipeline's labels (65 also have a pipeline label): they agreed on the three-way split for 82% (κ = 0.67) and on the group for 86% of the programs the pipeline decided; they never called engaged a program the pipeline called not engaged, or the reverse (0 contradictions). Of the 16 adjudicated programs whose bundle held no engagement data, the web search and the outside researchers both decided 4 and agreed on 75% of them; the search never decided one the researchers could not, and the researchers decided 2 that the search left open (1 of them not engaged). On their own, they found 5 failures to engage among 36 programs whose mechanism they could judge (14%). The pre-registered construct checks, on data the labels do not use, point one way or nowhere. Programs whose exposure or engagement was shown too low had germline genetic support for the disease more often than those engaged without benefit (13% against 7%, p = 0.04, 111 programs shown not engaged), as expected if engaged failures more often test a target the disease does not depend on. The two groups did not differ in whether other drugs on their target failed (52% against 55%) or advanced (48% against 50%) in the disease.
+**Checks.** A second model, given the same bundles and asked the pillar questions one at a time before choosing a category, relabelled a seeded random sample of 150 programs (136 with a validated label from both): it agreed on the not-engaged / engaged / other split for 69% (κ = 0.48) and on whether the target was engaged for 79%. Separately, agents with web access researched a seeded random sample of 66 programs from scratch (publications, conference reports, company releases), without the pipeline's labels (65 also have a pipeline label): they agreed on the three-way split for 82% (κ = 0.67) and on the group for 86% of the programs the pipeline decided; they never called engaged a program the pipeline called not engaged, or the reverse (0 contradictions). Of the 16 adjudicated programs whose bundle held no engagement data, the web search and the outside researchers both decided 4 and agreed on 75% of them; the search never decided one the researchers could not, and the researchers decided 2 that the search left open (1 of them not engaged). On their own, they found 5 failures to engage among 36 programs whose mechanism they could judge (14%). The pre-registered construct checks, on data the labels do not use, point one way or nowhere. Programs whose exposure or engagement was shown too low had germline genetic support for the disease more often than those engaged without benefit (13% against 7%, p = 0.04, 111 programs shown not engaged), as expected if engaged failures more often test a target the disease does not depend on. The two groups did not differ in whether other drugs on their target failed (52% against 55%) or advanced (48% against 50%) in the disease. A check added after the plan asked whether drugs that failed to engage were simply weaker, using the drug's potency at its primary target from laboratory assays published by the year before phase entry (ChEMBL; Section 2 describes the measurements). The data do not show it: 20% of programs shown not engaged and 23% of those engaged without benefit had such a measurement; among them the median best potency was 7.99 against 8.22 on the negative-log scale (p = 0.16, Mann–Whitney), and 94% against 87% reached 100 nM or better (p = 0.70). Only 18 not-engaged programs had a measurement, so a modest difference could be missed; but most drugs that failed to engage in patients had been potent in the assay, which points to exposure, dose or tissue access rather than a weak molecule.
 
 
 ### How the evidence is scored and modelled (Section 2)
@@ -638,6 +661,30 @@ Evidence lines:
 * **Mouse models:** IMPC phenotypes. **Expression:** differential expression in the disease (Expression Atlas). **Pathways:** Reactome.
 * **Cell screens:** genome-wide CRISPR screens, which switch off (or, in neurons, also switch on) each gene in turn in cultured human cells and record whether the cells grow or change. They are functional genomics, not compound assays: they show the cells depend on the gene, not that any molecule works. *Cancer cell lines* come from Project Score (Wellcome Sanger Institute; 324 lines in [Behan et al. 2019](https://doi.org/10.1038/s41586-019-1103-9), extended in [Pacini et al. 2024](https://pubmed.ncbi.nlm.nih.gov/38215750/)), which names a gene a priority target for a cancer type when knocking it out stops the growth of that type's lines, scoring it higher when the dependency is strong, shared across the type's lines and tied to a genomic marker. *Neurons* come from CRISPRbrain, screens in neurons and microglia made from human stem cells that record survival or a cell phenotype.
 * **Target liabilities**, properties of the target rather than evidence for the disease: essential in most cell lines (on the latest yearly DepMap common-essential list from before phase entry; DepMap first published such a list in 2019, so earlier entrants are never flagged) and intolerant of loss of function (gnomAD v4.1 LOEUF < 0.35, from the current release).
+* **Drug pharmacology**, assays of the drug itself rather than evidence for the disease, from ChEMBL, EMBL-EBI's database of bioactivity measurements that curators extract from journal papers and patents, plus screening datasets deposited directly. Each measurement is a concentration at which the drug has half its maximal effect (IC50 when it inhibits, EC50 when it activates, AC50 or "potency" in screens) or an affinity constant (Ki, Kd, Kb), converted to pChEMBL, the negative log of the molar value (7 is 100 nM, 8 is 10 nM, higher is more potent). A *binding* assay measures how tightly the drug holds its target; a *functional* assay measures what it does to the target's activity. A *biochemical* assay uses purified protein or membranes; a *cell-based* assay measures the drug acting on its target in living cells, such as a calcium or cAMP readout for a receptor. Every form of the drug (salts and the parent compound) is pooled, values ChEMBL flags as doubtful or as repeat citations are dropped, and each measurement counts from the year of the paper, patent or dataset that reported it, so only measurements published by the year before phase entry are used. A target's potency is the median of its measurements of one kind (Ki, IC50, ...), and the drug's best potency is the highest of these medians at its primary targets (a protein complex or family containing a primary target counts). The lines: any measurement at a primary target; best potency 100 nM or better; 10 nM or better; functional potency measured in cells; and at least 100-fold selectivity, the best potency at a primary target at least 2 log units above the best at any other single human protein measured (programs with no off-target measurement do not count as selective). These describe the molecule, not whether the target matters in the disease, and programs of drugs already approved or long studied carry many more published measurements, so the joint model's adjustment for novelty matters here.
+
+Each entity is matched to its ChEMBL molecules by the first of three routes that succeeds: the ChEMBL id recorded for one of its intervention names; the standard InChIKey of its UNII substance equal to a ChEMBL compound's; or an official, common or code name registered for its UNII equal, ignoring case and punctuation, to the preferred name or a synonym of exactly one ChEMBL molecule (a name two molecules share is not used). 7,307 of the 17,770 entities with a development program matched. A hand check of 12 randomly chosen name matches against ChEMBL's records found 12 correct (for example agatolimod sodium to agatolimod, ergoloid mesylates to ergoloid). Matched antibodies and proteins still carry almost no potency measurements at their targets: ChEMBL curates potency mostly from small-molecule chemistry.
+
+| Modality | Entities | By a ChEMBL id of one of its names | By its UNII structure (InChIKey) | By a registered UNII name | Not matched |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Small molecule | 8,883 | 2,338 | 2,413 | 225 | 3,907 |
+| Vaccine | 1,778 | 39 | 1 | 55 | 1,683 |
+| Monoclonal antibody | 1,716 | 550 | 0 | 269 | 897 |
+| Protein | 884 | 234 | 1 | 185 | 464 |
+| Other cell therapy | 704 | 2 | 1 | 50 | 651 |
+| Other | 593 | 9 | 4 | 81 | 499 |
+| Peptide | 572 | 114 | 54 | 106 | 298 |
+| Multispecific antibody | 559 | 41 | 0 | 99 | 419 |
+| Antibody–drug conjugate | 548 | 73 | 0 | 72 | 403 |
+| CAR-T | 406 | 7 | 0 | 23 | 376 |
+| Gene therapy | 316 | 14 | 0 | 49 | 253 |
+| siRNA / RNAi | 192 | 16 | 0 | 20 | 156 |
+| Antisense oligonucleotide | 178 | 33 | 0 | 45 | 100 |
+| Radioligand | 170 | 13 | 9 | 19 | 129 |
+| Microbiome or live biotherapeutic | 124 | 0 | 0 | 4 | 120 |
+| Other oligonucleotide | 74 | 16 | 0 | 19 | 39 |
+| mRNA (non-vaccine) | 40 | 0 | 0 | 3 | 37 |
+| Unknown | 33 | 0 | 0 | 1 | 32 |
 
 Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used.
 
