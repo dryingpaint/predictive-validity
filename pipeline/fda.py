@@ -180,6 +180,21 @@ def load(_args) -> None:
     label_files = sorted(glob.glob(os.path.join(CACHE, "openfda", "drug-label-*.json.zip")))
     label_sha = hashlib.sha256("".join(llm.sha256_file(p) for p in label_files).encode()).hexdigest()
 
+    # Document texts are read (and OCRed) before the connection opens, which would otherwise sit idle.
+    sizes, links = {}, {}
+    for line in open(os.path.join(CACHE, "letters_index.jsonl")):
+        r = json.loads(line)
+        if r.get("sha256"):
+            sizes[r["sha256"]] = r["n_bytes"]
+        key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
+        if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
+            links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"),
+                          r.get("doc_type", "letter"))
+    links = list(links.values())
+    with ProcessPoolExecutor() as pool:
+        texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
+        letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
+
     with llm.connect() as conn, conn.cursor() as cur:
         rel_drugsfda = llm.register_release(cur, "fda_drugsfda", data_date, DRUGSFDA_URL, zip_sha,
                                             {"latest_submission_date": data_date})
@@ -210,19 +225,6 @@ def load(_args) -> None:
              for s in read_tsv("Submissions.txt")
              if s["ApplNo"] in apps and s["SubmissionType"].strip() in ("ORIG", "SUPPL")])
 
-        sizes, links = {}, {}
-        for line in open(os.path.join(CACHE, "letters_index.jsonl")):
-            r = json.loads(line)
-            if r.get("sha256"):
-                sizes[r["sha256"]] = r["n_bytes"]
-            key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
-            if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
-                links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"),
-                              r.get("doc_type", "letter"))
-        links = list(links.values())
-        with ProcessPoolExecutor() as pool:
-            texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
-            letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
         write_letters(cur, letters, [l for l in links if l[0] in apps])
 
         labels = []
