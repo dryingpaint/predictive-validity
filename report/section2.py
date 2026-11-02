@@ -90,7 +90,7 @@ FEATURES = [*EVIDENCE, *LIABILITIES, *DRUG]
 LABELS = {
     "genetic_any": "Any human genetics", "genetic_gwas": "GWAS",
     "genetic_rare": "Rare-variant or Mendelian genetics", "somatic": "Somatic cancer driver",
-    "animal_model": "Mouse model", "rna_expression": "Expressed differently in the disease",
+    "animal_model": "Mouse model of the disease", "rna_expression": "Expressed differently in the disease",
     "affected_pathway": "Disease pathway (Reactome)", "cell_line_screen": "CRISPR knockout screen in cancer cell lines",
     "neuron_screen": "CRISPR screen in stem-cell-derived neurons",
     "constrained": "Intolerant of loss of function", "pan_essential": "Essential in most cell lines",

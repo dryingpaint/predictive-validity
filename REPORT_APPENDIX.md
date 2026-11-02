@@ -85,7 +85,7 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | Somatic cancer driver | 1,180 | 21.1% / 9.0% | 2.35 (1.62–3.19) |
 | Disease pathway (Reactome) | 191 | 19.2% / 9.8% | 1.96 (1.09–3.00) |
 | GWAS | 258 | 17.2% / 9.8% | 1.75 (1.11–2.55) |
-| Mouse model | 1,665 | 13.1% / 9.2% | 1.42 (1.08–1.88) |
+| Mouse model of the disease | 1,665 | 13.1% / 9.2% | 1.42 (1.08–1.88) |
 | Expressed differently in the disease | 1,046 | 10.6% / 10.0% | 1.07 (0.69–1.51) |
 | **Target liabilities** (not specific to the disease) |  |  |  |
 | Intolerant of loss of function | 1,817 | 8.7% / 10.4% | 0.83 (0.57–1.22) |
@@ -113,7 +113,7 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | GWAS | –, n=67 | –, n=80 | –, n=48 | –, n=28 | –, n=35 | –, n=0 | 0.76 (3 groups) |
 | Rare-variant or Mendelian genetics | 2.13 (1.07–3.74), n=284 | –, n=62 | –, n=54 | 3.03 (1.49–5.14), n=121 | 3.30 (1.95–5.59), n=140 | –, n=78 | 0.74 (6 groups) |
 | Somatic cancer driver | 2.02 (1.15–3.82), n=1,161 | –, n=4 | –, n=5 | –, n=1 | –, n=7 | –, n=2 | – |
-| Mouse model | 0.97 (0.53–1.65), n=470 | 1.63 (0.92–2.68), n=234 | 1.56 (0.69–2.89), n=178 | 1.78 (1.02–2.88), n=273 | 1.48 (0.92–2.51), n=408 | 1.38 (0.76–3.27), n=102 | 0.45 (6 groups) |
+| Mouse model of the disease | 0.97 (0.53–1.65), n=470 | 1.63 (0.92–2.68), n=234 | 1.56 (0.69–2.89), n=178 | 1.78 (1.02–2.88), n=273 | 1.48 (0.92–2.51), n=408 | 1.38 (0.76–3.27), n=102 | 0.45 (6 groups) |
 | Expressed differently in the disease | 1.03 (0.61–1.72), n=766 | 0.37 (0.06–0.77), n=169 | –, n=30 | –, n=71 | –, n=10 | –, n=0 | 0.01 (3 groups) |
 | Potent at the target (100 nM or better) | 0.98 (0.51–1.72), n=855 | 1.49 (0.77–2.49), n=194 | 1.78 (0.92–3.13), n=211 | 0.78 (0.40–1.32), n=236 | 1.28 (0.61–2.24), n=139 | –, n=16 | 0.34 (5 groups) |
 
@@ -124,7 +124,7 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | GWAS | 1.05 (0.94–1.17) | 1.09 (0.84–1.41) | 1.13 (0.83–1.55) |
 | Rare-variant or Mendelian genetics | 1.03 (0.94–1.13) | 1.51 (1.29–1.77) | 1.43 (1.17–1.74) |
 | Somatic cancer driver | 1.12 (1.00–1.24) | 1.31 (1.04–1.65) | 1.09 (0.87–1.37) |
-| Mouse model | 0.98 (0.92–1.04) | 1.13 (0.99–1.28) | 1.07 (0.90–1.27) |
+| Mouse model of the disease | 0.98 (0.92–1.04) | 1.13 (0.99–1.28) | 1.07 (0.90–1.27) |
 | Expressed differently in the disease | 0.95 (0.87–1.03) | 0.85 (0.69–1.05) | 0.83 (0.65–1.05) |
 | Disease pathway (Reactome) | 1.09 (0.98–1.21) | 0.81 (0.59–1.11) | 1.05 (0.82–1.35) |
 | **Target liabilities** (not specific to the disease) |  |  |  |
@@ -155,7 +155,7 @@ Change in held-out AUC when each line is removed from the full model:
 | Somatic cancer driver | -0.003 (-0.031 to +0.027) |
 | Expressed differently in the disease | -0.002 (-0.021 to +0.026) |
 | Intolerant of loss of function | -0.001 (-0.010 to +0.009) |
-| Mouse model | -0.000 (-0.005 to +0.005) |
+| Mouse model of the disease | -0.000 (-0.005 to +0.005) |
 
 ### Confirmatory hypotheses
 
@@ -219,7 +219,7 @@ Every rule the plan registered, each against programs without it, before the rul
 | Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
 | :---- | :---- | :---- | :---- | :---- | :---- |
 | Germline genetics for the disease | All | 526 (238) | 28% / 14% | 1.90 (1.54–2.33) | < 0.001 |
-| Animal model of the disease | All | 934 (427) | 22% / 14% | 1.46 (1.20–1.78) | < 0.001 |
+| Mouse model of the disease | All | 934 (427) | 22% / 14% | 1.46 (1.20–1.78) | < 0.001 |
 | Somatic driver for the tumour | Oncology | 533 (131) | 22% / 13% | 1.61 (1.16–2.24) | 0.019 |
 | CRISPR screen in cells | All | 0 (0) | – / 16% | too few programs (0) to test | – |
 | Expressed differently in the disease | All | 524 (262) | 17% / 16% | 1.05 (0.73–1.50) | 1.000 |
@@ -236,8 +236,8 @@ Every rule the plan registered, each against programs without it, before the rul
 | Drug raises function or replaces the gene, hereditary disease | Germline genetics for the disease | 110 of 166 | 32% / 20% | 1.82 (0.84–3.93) | 1.000 |
 | Genetics points the same way as the drug (added after the plan) | Germline genetics for the disease | 265 of 526 | 29% / 28% | 1.12 (0.77–1.63) | 1.000 |
 | Protective loss of function + drug that lowers function (added after the plan) | Germline genetics for the disease | 30 of 526 | 13% / 29% | too few to test | – |
-| Close phenotype match (top quartile) | Animal model of the disease | 564 of 934 | 23% / 19% | 1.16 (0.81–1.68) | 1.000 |
-| Mouse model points the same way as the drug (added after the plan) | Animal model of the disease | 328 of 934 | 23% / 20% | 1.10 (0.81–1.48) | 1.000 |
+| Close phenotype match (top quartile) | Mouse model of the disease | 564 of 934 | 23% / 19% | 1.16 (0.81–1.68) | 1.000 |
+| Mouse model points the same way as the drug (added after the plan) | Mouse model of the disease | 328 of 934 | 23% / 20% | 1.10 (0.81–1.48) | 1.000 |
 | Driver matches the drug (activated oncogene + inhibitor) | Somatic driver for the tumour | 385 of 533 | 23% / 21% | 1.00 (0.63–1.59) | 1.000 |
 | Expression up + drug that lowers function | Expressed differently in the disease | 247 of 524 | 15% / 18% | 0.94 (0.53–1.68) | 1.000 |
 | Liability + drug that lowers function | Target liability | 1,717 of 2,358 | 15% / 17% | 1.03 (0.79–1.34) | 1.000 |
