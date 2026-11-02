@@ -7,7 +7,7 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 110,
+   "rev": 113,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "a1ffe24e727c6143",
@@ -26,15 +26,15 @@
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Genetic dose–response": "5d8a6f1125dd682a",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What each line adds once the others are known": "c0f8f1f6b5a325a2",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does the evidence predict which programs reach approval?": "72798a7d2f38f788",
-    "Predictive Validity in Drug Development > What translates to the clinic": "583721db50313e53",
+    "Predictive Validity in Drug Development > What translates to the clinic": "bc060931f04c5a0d",
     "Predictive Validity in Drug Development > What translates to the clinic > Design": "a12dcc34003248d6",
     "Predictive Validity in Drug Development > What translates to the clinic > Confirmatory hypotheses": "1fe8d8c001f2ba08",
     "Predictive Validity in Drug Development > What translates to the clinic > Which evidence translates": "a1310d8ce3ea41f7",
     "Predictive Validity in Drug Development > What translates to the clinic > By endpoint": "34635db2bc8823de",
     "Predictive Validity in Drug Development > What translates to the clinic > Direction of effect": "59c9331d8af52919",
-    "Predictive Validity in Drug Development > What translates to the clinic > Models that predict: rules applied at Phase 2 entry": "2183f7e9594f5ac9",
+    "Predictive Validity in Drug Development > What translates to the clinic > Which kinds of evidence predict, and whether being more specific helps": "04d669ff82b90fe8",
     "Predictive Validity in Drug Development > What translates to the clinic > Verified case studies": "55357f5fb7fbf1b9",
-    "Predictive Validity in Drug Development > What translates to the clinic > What this means": "3747b3c503db57a6",
+    "Predictive Validity in Drug Development > What translates to the clinic > What this means": "eb4dd3a7b7e89f7e",
     "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
     "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
     "Predictive Validity in Drug Development > Appendix > Data": "02177263d3f224db",
@@ -42,7 +42,7 @@
     "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "5ba991d5abf91105",
     "Predictive Validity in Drug Development > Appendix > How stops were traced and efficacy failures classified": "c1b696af079216df",
     "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled (Section 2)": "3eaabaa947deea4d",
-    "Predictive Validity in Drug Development > Appendix > Design of the translation analysis (Section 3)": "39c0110f30fa2392",
+    "Predictive Validity in Drug Development > Appendix > Design of the translation analysis (Section 3)": "bd20166ac84bc061",
     "Predictive Validity in Drug Development > Appendix > Limitations": "81eeb8fead25246a",
     "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
    }
@@ -120,15 +120,15 @@
    "blob": "blob/ca7e67cd-b69f",
    "published": "blob/ca7e67cd-b69f"
   },
-  "report/output/figures/s3_rules.png": {
-   "hash": "20d5b52df3d77b6a",
-   "blob": "blob/6e4cec98-9678",
-   "published": "blob/6e4cec98-9678"
-  },
   "report/output/figures/stop_subcauses.png": {
    "hash": "9ed2fbea779e5820",
    "blob": "blob/c6f12529-7a00",
    "published": "blob/c6f12529-7a00"
+  },
+  "report/output/figures/s3_evidence_types.png": {
+   "hash": "da66c7e7ff209ebf",
+   "blob": "blob/4a42a9e3-7106",
+   "published": "blob/4a42a9e3-7106"
   }
  }
 }

@@ -329,7 +329,7 @@ A model on disease area, modality, novelty and entry year alone ranks programs a
 
 ## What translates to the clinic
 
-Human genetic evidence for the program's own disease is the one kind of preclinical evidence that consistently carried over into Phase 2. Outside oncology, programs whose target had germline genetic evidence for the disease before they entered Phase 2 reached Phase 3 or approval within four years 2.34 times as often as programs whose target had no germline genetic evidence at all (27% against 11%), and the advantage shrinks as the evidence moves to a related disease (20%) or to unrelated diseases only (16%). The same target does better in the diseases its genetics points to than in its other diseases (odds ratio 3.00), and the effect holds after accounting for an approved drug on the target. The advantage shows in efficacy: genetically supported programs stopped for efficacy less often (business and operational stops fell about as much), and their trials missed the primary endpoint less often on regulatory surrogates and clinician-rated scales; on patient-reported, exploratory-biomarker and event endpoints the difference was small or absent. Somatic drivers in oncology and Reactome pathway evidence carried weaker signals, literature mouse models a marginal one and differential expression none, and a mouse model whose direction matched the drug's did not predict Phase 2 success. Whether the direction of the genetic effect matters could not be tested, because almost no program went against an established mechanism. Of the rules a sponsor could have applied at Phase 2 entry, only the benchmark, an approved drug on the same target for a related disease, met the pre-registered bar for a particularly predictive model; Mendelian evidence for a non-hereditary disease came closest. Genetic support covered only 24% of the programs that advanced.
+Human genetic evidence for the program's own disease is the one kind of preclinical evidence that consistently carried over into Phase 2. Outside oncology, programs whose target had germline genetic evidence for the disease before they entered Phase 2 reached Phase 3 or approval within four years 2.34 times as often as programs whose target had no germline genetic evidence at all (27% against 11%), and the advantage shrinks as the evidence moves to a related disease (20%) or to unrelated diseases only (16%). The same target does better in the diseases its genetics points to than in its other diseases (odds ratio 3.00), and the effect holds after accounting for an approved drug on the target. The advantage shows in efficacy: genetically supported programs stopped for efficacy less often (business and operational stops fell about as much), and their trials missed the primary endpoint less often on regulatory surrogates and clinician-rated scales; on patient-reported, exploratory-biomarker and event endpoints the difference was small or absent. Somatic drivers in oncology and Reactome pathway evidence carried weaker signals, literature mouse models a marginal one and differential expression none, and a mouse model whose direction matched the drug's did not predict Phase 2 success. Whether the direction of the genetic effect matters could not be tested, because almost no program went against an established mechanism. Grouped by kind, germline genetics is the only preclinical evidence that predicts after correcting for the number of kinds tested, and no more specific version of any kind (stronger GWAS, Mendelian evidence, genetics or a mouse model pointing the drug's way) does better than the rest of its kind; an approved drug on the same target for a related disease predicts more strongly still. Genetic support covered only 24% of the programs that advanced.
 
 
 ### Design
@@ -439,38 +439,41 @@ Sponsors almost never develop against an established mechanism. Of the Phase 2 p
 Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.33 (0.97–1.83) against programs with no oriented model, a model pointing the other way 1.20, and nothing once genetic support is accounted for (1.02). Among Phase 3 programs a concordant model went with approval within four years (2.38, 1.54–3.69), one of many comparisons made after the plan.
 
 
-### Models that predict: rules applied at Phase 2 entry
+### Which kinds of evidence predict, and whether being more specific helps
 
-A *model* here is a rule a sponsor could have applied at Phase 2 entry without knowing the outcome: an evidence family, strength, direction and drug action. Eleven evidence rules and a benchmark (an approved drug on the target for a related disease) were fixed in the plan; three direction rules were added after it and are marked. Each rule was found on a random 60% of targets and checked on the other 40%; the criteria are in the appendix.
+The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but they are not fifteen ideas: several are narrower versions of another (every program with a mouse model pointing the drug's way also has a mouse model of the disease), so a flat screen counts the same programs more than once. The rules are therefore grouped by the kind of evidence behind them. Each kind is tested once against programs without it, with a Holm correction across the 6 preclinical kinds that could be tested; the benchmark, an approved drug on the target for a related disease, is shown beside them but is clinical precedent, not preclinical evidence. Each more specific version is then tested only against the rest of its own kind, with a Holm correction across the 10 that could be tested. This grouping departs from the plan; the registered screen is in the appendix.
 
-| Rule applied at Phase 2 entry | Regime | Programs (targets) | Advanced | Share of all that advanced | Adjusted risk ratio (95% CI) | Risk ratio, discovery targets (90% CI) | Risk ratio, held-out targets (90% CI) | Meets the bar |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Protective loss-of-function burden + drug that lowers function | All | 0 (0) | – | 0% | – | – | – | not testable |
-| Mendelian evidence + drug that raises function or replaces the gene | Hereditary | 75 (37) | 25% | 66% | 1.08 (0.61–1.90) | 1.59 (0.95–4.00) | 0.50 (0.18–1.15) | no |
-| Mendelian evidence for a non-hereditary disease | Non-oncology | 57 (44) | 32% | 7% | 1.71 (1.11–2.62) | 1.80 (1.01–2.70) | 2.09 (0.92–3.41) | no |
-| GWAS, locus-to-gene ≥ 0.8 | All | 68 (41) | 25% | 4% | 1.38 (0.90–2.13) | 1.10 (0.60–1.60) | 1.86 (0.99–2.75) | no |
-| GWAS and rare-variant evidence for the same disease | All | 26 (17) | 15% | 1% | 0.78 (0.35–1.72) | 1.08 (0.37–1.80) | none advanced | no |
-| Somatic driver matching the drug + drug that lowers function | Oncology | 215 (67) | 22% | 29% | 1.14 (0.73–1.78) | 1.69 (0.87–3.13) | 0.89 (0.50–1.51) | no |
-| IMPC knockout matching the disease, top quartile | All | 9 (5) | 33% | 1% | – | – | – | no |
-| Literature mouse model of the disease | All | 498 (281) | 23% | 26% | 1.29 (1.00–1.68) | 1.59 (1.19–2.09) | 1.18 (0.86–1.56) | no |
-| Expression up in disease + drug that lowers function | All | 177 (104) | 18% | 7% | 1.00 (0.63–1.58) | 1.18 (0.70–1.66) | 0.88 (0.35–1.62) | no |
-| Reactome pathway | All | 66 (32) | 27% | 4% | 1.50 (1.00–2.25) | 1.21 (0.75–1.77) | 2.51 (1.29–4.03) | no |
-| Target liability + drug that lowers function | All | 902 (316) | 18% | 37% | 1.08 (0.86–1.37) | 1.13 (0.85–1.47) | 0.98 (0.70–1.33) | no |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | All | 763 (269) | 29% | 50% | 2.18 (1.65–2.88) | 2.43 (1.95–3.03) | 2.20 (1.72–2.91) | **predictive** |
-| Protective loss of function + drug that lowers function (added after the plan) | All | 36 (16) | 19% | 2% | 1.03 (0.56–1.92) | 1.78 (0.73–3.47) | 0.57 (0.00–1.05) | no |
-| Germline mechanism concordant with the drug (added after the plan) | All | 189 (97) | 29% | 12% | 1.79 (1.28–2.51) | 1.87 (1.29–2.57) | 1.42 (0.91–1.98) | no |
-| Mouse model direction concordant with the drug (added after the plan) | All | 178 (111) | 24% | 10% | 1.29 (0.95–1.75) | 1.72 (1.24–2.32) | 0.92 (0.59–1.30) | no |
+| Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Germline genetics for the disease | All | 368 (194) | 29% / 16% | 1.83 (1.44–2.32) | < 0.001 |
+| Animal model of the disease | All | 505 (285) | 23% / 16% | 1.29 (1.00–1.67) | 0.192 |
+| Somatic driver for the tumour | Oncology | 326 (102) | 23% / 14% | 1.48 (1.02–2.14) | 0.184 |
+| CRISPR screen in cells | All | 5 (4) | 40% / 18% | too few programs (5) to test | – |
+| Expressed differently in the disease | All | 358 (198) | 18% / 17% | 1.05 (0.70–1.58) | 1.000 |
+| Disease pathway (Reactome) | All | 66 (32) | 27% / 17% | 1.50 (1.00–2.25) | 0.192 |
+| Target liability | All | 1,251 (436) | 18% / 17% | 1.03 (0.83–1.28) | 1.000 |
+| **Benchmark** (clinical precedent, not preclinical evidence) |  |  |  |  |  |
+| Approved drug on the target, related disease | All | 763 (269) | 29% / 12% | 2.18 (1.65–2.88) | – |
 
-![Rule screen](report/output/figures/s3_rules.png)
+| More specific version | Within programs with | Programs | Advanced: with / rest of the type | Adjusted risk ratio (95% CI) | Holm-corrected p |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| GWAS with locus-to-gene ≥ 0.8 | Germline genetics for the disease | 68 of 368 | 25% / 30% | 1.10 (0.67–1.80) | 1.000 |
+| Mendelian evidence in a non-hereditary disease | Germline genetics for the disease | 57 of 153 | 32% / 25% | 1.12 (0.63–1.98) | 1.000 |
+| GWAS and rare-variant evidence together | Germline genetics for the disease | 26 of 368 | 15% / 30% | 0.56 (0.24–1.28) | 1.000 |
+| Drug raises function or replaces the gene, hereditary disease | Germline genetics for the disease | 75 of 116 | 25% / 24% | 1.08 (0.61–1.90) | 1.000 |
+| Genetics points the same way as the drug (added after the plan) | Germline genetics for the disease | 189 of 368 | 29% / 29% | 1.05 (0.68–1.62) | 1.000 |
+| Protective loss of function + drug that lowers function (added after the plan) | Germline genetics for the disease | 30 of 368 | 17% / 30% | too few to test | – |
+| Close phenotype match (top quartile) | Animal model of the disease | 309 of 505 | 22% / 24% | 0.86 (0.57–1.32) | 1.000 |
+| Mouse model points the same way as the drug (added after the plan) | Animal model of the disease | 178 of 505 | 24% / 22% | 1.05 (0.74–1.50) | 1.000 |
+| Driver matches the drug (activated oncogene + inhibitor) | Somatic driver for the tumour | 215 of 326 | 22% / 24% | 0.75 (0.45–1.27) | 1.000 |
+| Expression up + drug that lowers function | Expressed differently in the disease | 177 of 358 | 18% / 18% | 0.97 (0.50–1.91) | 1.000 |
+| Liability + drug that lowers function | Target liability | 902 of 1,251 | 18% / 17% | 1.20 (0.85–1.68) | 1.000 |
 
-Only the benchmark met the bar: an approved drug on the target for a related disease (763 programs, 29% advanced; held-out risk ratio 2.20). Among evidence rules:
+![Kinds of evidence and their more specific versions](report/output/figures/s3_evidence_types.png)
 
-* **Mendelian evidence for a non-hereditary disease** came closest: 57 programs on 44 targets, 32% advanced, held-out risk ratio 2.09 (90% lower bound 0.92), but its discovery lower bound (1.01) fell short of 1.3. It covers few programs (7% of the non-oncology programs that advanced).
-* **GWAS with locus-to-gene ≥ 0.8** and the **germline mechanism concordant with the drug**, added after the plan, have adjusted risk ratios of 1.38 and 1.79, but their held-out lower bounds reach 1 or below (0.99 and 0.91).
-* **Reactome pathway evidence** held up on the held-out targets (risk ratio 2.51, 90% lower bound 1.29) but not on the discovery targets (lower bound 0.75); its adjusted risk ratio is 1.50.
-* **Literature mouse models** gave 1.59 on the discovery targets (90% lower bound 1.19) and 1.18 on the held-out targets (90% lower bound 0.86): inconsistent between the two halves.
-* **Replacing or activating the gene in a hereditary disease** advanced at 25%, against 24% for other programs in hereditary diseases.
-* Expression up plus an inhibitor, target liability plus an inhibitor, the allelic series, protective loss of function plus an inhibitor and a concordant mouse model carry no consistent signal. Protective-variant burden evidence could not be tested, because Open Targets has no burden results before 2019, and IMPC knockouts matching the disease covered 9 programs, too few to estimate.
+**Germline genetics is the one kind of preclinical evidence that predicts.** Phase 2 programs whose target had germline genetic evidence for the disease advanced 1.83 times as often as programs without it (1.44–2.32; Holm-corrected p < 0.001). Animal models (1.29), somatic drivers in oncology (1.48) and Reactome pathways (1.50) point the same way, but none survives the correction; expression (1.05) and target liabilities (1.03) carry nothing. Cell screens could not be tested: Project Score was first released in 2019, and only 5 programs in this cohort had a screen before entry. The benchmark is stronger than any preclinical kind (2.18, 1.65–2.88).
+
+**Being more specific does not help.** No narrower version beats the rest of its own kind. Among programs with germline genetics, strong GWAS evidence (1.10), Mendelian evidence in a non-hereditary disease (1.12) and genetics pointing the same way as the drug (1.05) advanced about as often as the rest. Among programs with an animal model, a close phenotype match (0.86) or a model pointing the drug's way (1.05) added nothing, nor did a somatic driver matching the drug among oncology programs with a driver (0.75). Protective loss of function plus an inhibitor covered 30 programs, too few targets to test. The rules that looked best in the registered screen did so because they sit inside germline genetics, not because their extra condition adds anything.
 
 
 ### Verified case studies
@@ -507,7 +510,7 @@ Every case, with its verdict and sources, is in the Appendix detail tab.
 ### What this means
 
 * **Disease-specific human genetics is the evidence that carries over.** It is specific (it fades as the evidence moves away from the disease), it holds within a target, it does not come from hindsight, and it adds to clinical precedent. Its size, about twice the chance of reaching Phase 3 within four years, is in line with published estimates of what genetic support does for clinical success.
-* **It is a filter, not a forecast.** Even with it, about two in three Phase 2 programs did not advance within four years, and most programs that did advance had no such evidence. No single rule built from preclinical evidence ranks programs reliably on targets it was not tuned on.
+* **It is a filter, not a forecast.** Even with it, about two in three Phase 2 programs did not advance within four years, and most programs that did advance had no such evidence. Making the evidence more specific (stronger, Mendelian, or pointing the drug's way) did not pick better programs among those that already had it.
 * **It predicts efficacy where efficacy is measured close to the biology.** The advantage is clearest on regulatory surrogates and clinician scales and is not demonstrable on patient-reported outcomes or exploratory biomarkers; trials with hard-outcome primaries were too few to judge.
 * **Other preclinical evidence adds less at Phase 2.** Somatic drivers in oncology and Reactome pathways carry weaker signals than germline genetics, literature mouse models a marginal one and differential expression none; neither the mouse model's direction nor the somatic driver's direction sharpens them.
 * **Direction cannot be learned from what sponsors ran.** Programs against an established genetic mechanism barely exist, so the data cannot show the cost of getting direction wrong, only that knowing the direction does not separate winners among the programs that were run.
@@ -653,7 +656,27 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 * **Models.** Modified Poisson regression (risk ratios) with standard errors clustered by primary-target set, adjusted for disease area, modality, entity novelty, entry period and target precedent (an FDA-approved entity on the target before entry). The seven confirmatory hypotheses are Holm-corrected together.
 * **Trials.** Randomised industry Phase 2/3 trials since 2010 whose governing primary endpoint measures efficacy and whose result is readable (5,674 trials; an LLM classified each trial's governing primary endpoint from its registry entry, without the drug's name). Outcome: primary endpoint not met (a mixed result counts as not met).
 
-**Rules.** Target sets were split 60/40 at random; a rule counts as *particularly predictive* when, on the discovery targets, its risk ratio's 90% bootstrap lower bound is above 1.3, and, on the held-out targets, its risk ratio is at least 1.2 with a one-sided 95% lower bound above 1, and it stays at least 1.2 without its most influential target.
+**Registered rule screen.** The plan tested fifteen rules on their own, each against all other programs, with a split of target sets in place of a correction for multiple testing. Because the rules overlap and the split halves the data, the body of the report groups them by kind of evidence instead (a change from the plan). The registered screen, as run: target sets were split 60/40 at random; a rule counts as *particularly predictive* when, on the discovery targets, its risk ratio's 90% bootstrap lower bound is above 1.3, and, on the held-out targets, its risk ratio is at least 1.2 with a one-sided 95% lower bound above 1, and it stays at least 1.2 without its most influential target.
+
+| Rule applied at Phase 2 entry | Regime | Programs (targets) | Advanced | Share of all that advanced | Adjusted risk ratio (95% CI) | Risk ratio, discovery targets (90% CI) | Risk ratio, held-out targets (90% CI) | Meets the bar |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| Protective loss-of-function burden + drug that lowers function | All | 0 (0) | – | 0% | – | – | – | not testable |
+| Mendelian evidence + drug that raises function or replaces the gene | Hereditary | 75 (37) | 25% | 66% | 1.08 (0.61–1.90) | 1.59 (0.95–4.00) | 0.50 (0.18–1.15) | no |
+| Mendelian evidence for a non-hereditary disease | Non-oncology | 57 (44) | 32% | 7% | 1.71 (1.11–2.62) | 1.80 (1.01–2.70) | 2.09 (0.92–3.41) | no |
+| GWAS, locus-to-gene ≥ 0.8 | All | 68 (41) | 25% | 4% | 1.38 (0.90–2.13) | 1.10 (0.60–1.60) | 1.86 (0.99–2.75) | no |
+| GWAS and rare-variant evidence for the same disease | All | 26 (17) | 15% | 1% | 0.78 (0.35–1.72) | 1.08 (0.37–1.80) | none advanced | no |
+| Somatic driver matching the drug + drug that lowers function | Oncology | 215 (67) | 22% | 29% | 1.14 (0.73–1.78) | 1.69 (0.87–3.13) | 0.89 (0.50–1.51) | no |
+| IMPC knockout matching the disease, top quartile | All | 9 (5) | 33% | 1% | – | – | – | no |
+| Literature mouse model of the disease | All | 498 (281) | 23% | 26% | 1.29 (1.00–1.68) | 1.59 (1.19–2.09) | 1.18 (0.86–1.56) | no |
+| Expression up in disease + drug that lowers function | All | 177 (104) | 18% | 7% | 1.00 (0.63–1.58) | 1.18 (0.70–1.66) | 0.88 (0.35–1.62) | no |
+| Reactome pathway | All | 66 (32) | 27% | 4% | 1.50 (1.00–2.25) | 1.21 (0.75–1.77) | 2.51 (1.29–4.03) | no |
+| Target liability + drug that lowers function | All | 902 (316) | 18% | 37% | 1.08 (0.86–1.37) | 1.13 (0.85–1.47) | 0.98 (0.70–1.33) | no |
+| Approved drug on the target, related disease (Lin ≥ 0.5) | All | 763 (269) | 29% | 50% | 2.18 (1.65–2.88) | 2.43 (1.95–3.03) | 2.20 (1.72–2.91) | **predictive** |
+| Protective loss of function + drug that lowers function (added after the plan) | All | 36 (16) | 19% | 2% | 1.03 (0.56–1.92) | 1.78 (0.73–3.47) | 0.57 (0.00–1.05) | no |
+| Germline mechanism concordant with the drug (added after the plan) | All | 189 (97) | 29% | 12% | 1.79 (1.28–2.51) | 1.87 (1.29–2.57) | 1.42 (0.91–1.98) | no |
+| Mouse model direction concordant with the drug (added after the plan) | All | 178 (111) | 24% | 10% | 1.29 (0.95–1.75) | 1.72 (1.24–2.32) | 0.92 (0.59–1.30) | no |
+
+Only the benchmark met the registered bar (held-out risk ratio 2.20); Mendelian evidence for a non-hereditary disease came closest (held-out 2.09, discovery lower bound 1.01).
 
 **Case studies.** The plan's protocol picked cases for the benchmark, the only rule that met the bar, and, beyond the plan, for every rule whose adjusted risk ratio's lower bound is above 1 (Mendelian evidence for a non-hereditary disease, GWAS with locus-to-gene ≥ 0.8, Reactome pathway evidence and a germline mechanism concordant with the drug): four successes and four failures at random, up to two programs of each of the three most influential targets, and up to six programs that stopped after a randomised trial missed its primary endpoint (the plan asked for all such programs; the cap keeps every case checkable against primary sources). For each program one agent established the outcome from registry records, company filings, papers and FDA documents without seeing the evidence, another checked the evidence claim without seeing the outcome, a second coder classified each failure independently, and a third agent adjudicated any disagreement.
 

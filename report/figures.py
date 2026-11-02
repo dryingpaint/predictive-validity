@@ -19,8 +19,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
-from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, rule_name, stratum_name
-from report.section3 import DISCOVERY_FLOOR
+from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, s3_types, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
 
@@ -357,30 +356,38 @@ def s3_specificity():
     save(fig, "s3_specificity")
 
 
-def s3_rules():
-    df = pd.read_csv(os.path.join(OUT, "section3", "rules.csv")).dropna(subset=["discovery_rr", "confirmation_rr"])
-    fig, ax = plt.subplots(figsize=(8.5, 0.5 * len(df) + 1.2))
-    for i, r in enumerate(df.itertuples()):
-        y = len(df) - 1 - i
-        for dy, (rr, lo, hi, color) in ((0.14, (r.discovery_rr, r.discovery_lo90, r.discovery_hi90, BAR)),
-                                        (-0.14, (r.confirmation_rr, r.confirmation_lo90, r.confirmation_hi90, ACCENT))):
-            if rr == 0:
-                ax.text(np.log2(0.13), y + dy, "no exposed program advanced", va="center", color=color, fontsize=7)
-                continue
-            lo, hi = max(lo, 0.125), min(max(hi, 0.125), 16)
-            ax.plot([np.log2(lo), np.log2(hi)], [y + dy] * 2, color=color, linewidth=2)
-            ax.plot(np.log2(rr), y + dy, "o", color=color, markersize=6, markeredgecolor="white")
+def s3_evidence_types():
+    """Adjusted risk ratios: each kind of evidence against programs without it, then each more specific
+    version against the rest of its kind; blue where the Holm-corrected p is below 0.05."""
+    types, refined = s3_types()
+    types = types[types.rr.notna()]
+    refined = refined[refined.rr.notna()]
+    rows = [(r.label, r.rr, r.lo, r.hi, r.type == "benchmark" or r.holm_p < 0.05, r.type == "benchmark")
+            for r in types.itertuples()]
+    rows += [(f"{r.label}{'' if r.registered else ' (added after the plan)'}", r.rr, r.lo, r.hi, r.holm_p < 0.05, False)
+             for r in refined.itertuples()]
+    fig, ax = plt.subplots(figsize=(8.5, 0.32 * len(rows) + 1.6))
+    n_types = len(types)
+    for i, (label, rr, lo, hi, strong, bench) in enumerate(rows):
+        y = len(rows) - 1 - i - (0.8 if i >= n_types else 0)
+        color = INK2 if bench else ACCENT if strong else BAR
+        ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 5))], [y, y], color=color, linewidth=2)
+        ax.plot(np.log2(rr), y, "o", color=color, markersize=6, markeredgecolor="white")
+    labels = [r[0] for r in rows]
+    ys = [len(rows) - 1 - i - (0.8 if i >= n_types else 0) for i in range(len(rows))]
     ax.axvline(0, color=INK2, linewidth=1)
-    ax.axvline(np.log2(DISCOVERY_FLOOR), color=GRID, linewidth=1, linestyle="--")
-    ticks = [0.25, 0.5, 1, 2, 4, 8]
+    ticks = [0.25, 0.5, 1, 2, 4]
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.set_yticks(range(len(df)), [rule_name(r) for r in df.itertuples()][::-1], color=INK, fontsize=8)
-    ax.set_xlabel("Crude risk ratio of advancing within 4 years (90% target bootstrap); grey: discovery targets, "
-                  "blue: held-out targets; dashed: the discovery bar", color=INK2, fontsize=8)
+    ax.set_yticks(ys, labels, color=INK, fontsize=8)
+    ax.text(np.log2(0.21), len(rows) - 0.4, "Kind of evidence, against programs without it", color=INK2, fontsize=8)
+    ax.text(np.log2(0.21), len(rows) - n_types - 1.2, "More specific version, against the rest of its kind",
+            color=INK2, fontsize=8)
+    ax.set_xlabel("Adjusted risk ratio of advancing within 4 years of Phase 2 (95% CI); blue: Holm-corrected "
+                  "p < 0.05; dark grey: the benchmark", color=INK2, fontsize=8)
     style(ax)
-    ax.set_title("Evidence rules applied at Phase 2 entry, discovery and confirmation",
+    ax.set_title("Which kinds of preclinical evidence predict, and whether being more specific helps",
                  loc="left", color=INK, fontsize=10)
-    save(fig, "s3_rules")
+    save(fig, "s3_evidence_types")
 
 
 def main():
@@ -398,7 +405,7 @@ def main():
         s3_evidence_map()
         s3_specificity()
         s3_endpoints()
-        s3_rules()
+        s3_evidence_types()
 
 
 if __name__ == "__main__":

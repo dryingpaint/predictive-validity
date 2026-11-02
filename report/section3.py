@@ -613,6 +613,73 @@ CASES_RANDOM = 4  # successes and failures drawn per rule
 CASES_EFFICACY = 6  # programs stopped for efficacy after a missed randomised trial, drawn per rule
 
 
+# Kinds of evidence a sponsor could have before Phase 2: (label, exposure, regime). The benchmark is
+# clinical precedent, not preclinical evidence, and sits outside the Holm family.
+EVIDENCE_TYPES = {
+    "germline": ("Germline genetics for the disease", lambda d: d.g3 > 0, "all"),
+    "animal": ("Animal model of the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
+    "somatic": ("Somatic driver for the tumour", lambda d: d.somatic > 0, "ONC"),
+    "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr > 0, "all"),
+    "expression": ("Expressed differently in the disease", lambda d: d.expression > 0, "all"),
+    "pathway": ("Disease pathway (Reactome)", lambda d: d.reactome > 0, "all"),
+    "liability": ("Target liability", lambda d: d.liability > 0, "all"),
+}
+BENCHMARK = ("Approved drug on the target, related disease", lambda d: d.b1 > 0, "all")
+# A more specific version of one evidence type, compared only with the rest of that type:
+# (label, parent type, refinement, regime, in the committed plan)
+REFINEMENTS = {
+    "gwas_strong": ("GWAS with locus-to-gene ≥ 0.8", "germline", lambda d: d.gwas_strong > 0, "all", True),
+    "mendelian_nonhereditary": ("Mendelian evidence in a non-hereditary disease", "germline",
+                                lambda d: d.mendelian > 0, "COM", True),
+    "allelic_series": ("GWAS and rare-variant evidence together", "germline",
+                       lambda d: (d.gwas > 0) & ((d.burden > 0) | (d.mendelian > 0)), "all", True),
+    "hereditary_activator": ("Drug raises function or replaces the gene, hereditary disease", "germline",
+                             lambda d: d.sign.eq("increase"), "DD", True),
+    "mechanism_concordant": ("Genetics points the same way as the drug", "germline",
+                             lambda d: d.mechanism.eq("concordant"), "all", False),
+    "protective_inhibitor": ("Protective loss of function + drug that lowers function", "germline",
+                             lambda d: (d.lof_protective > 0) & d.sign.eq("decrease"), "all", False),
+    "animal_close": ("Close phenotype match (top quartile)", "animal",
+                     lambda d: (d.mgi_strong > 0) | (d.impc_strong > 0), "all", True),
+    "animal_direction": ("Mouse model points the same way as the drug", "animal",
+                         lambda d: d.mouse_direction.eq("concordant"), "all", False),
+    "somatic_matching": ("Driver matches the drug (activated oncogene + inhibitor)", "somatic",
+                         lambda d: (d.somatic_concordant > 0) & d.sign.eq("decrease"), "ONC", True),
+    "expression_inhibitor": ("Expression up + drug that lowers function", "expression",
+                             lambda d: (d.expression_up > 0) & d.sign.eq("decrease"), "all", True),
+    "liability_inhibitor": ("Liability + drug that lowers function", "liability",
+                            lambda d: (d.liability > 0) & d.sign.eq("decrease"), "all", True),
+}
+
+
+def in_regime(d: pd.DataFrame, regime: str) -> pd.DataFrame:
+    return d if regime == "all" else d[d.regime == regime]
+
+
+def evidence_types(c2: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Each kind of evidence against Phase 2 programs without it, adjusted, Holm-corrected across the
+    preclinical kinds; then each refinement against the rest of its kind's programs, Holm-corrected
+    across refinements."""
+    types = []
+    for key, (label, exposure, regime) in [*EVIDENCE_TYPES.items(), ("benchmark", BENCHMARK)]:
+        d = in_regime(c2, regime)
+        types.append({"type": key, "label": label, "regime": regime,
+                      **estimate(d.assign(x=exposure(d).astype(float)), "s4", "x")})
+    types = pd.DataFrame(types)
+    family = types[types["type"] != "benchmark"]
+    types["holm_p"] = types["type"].map(holm(dict(zip(family["type"], family["p"]))))
+    refined = []
+    for key, (label, parent, refinement, regime, registered) in REFINEMENTS.items():
+        d = in_regime(c2, regime)
+        _, parent_exposure, _ = EVIDENCE_TYPES[parent]
+        d = d[parent_exposure(d)]
+        refined.append({"refinement": key, "label": label, "parent": parent, "regime": regime,
+                        "registered": registered, **estimate(d.assign(x=refinement(d).astype(float)), "s4", "x")})
+    refined = pd.DataFrame(refined)
+    refined["holm_p"] = refined["refinement"].map(holm(dict(zip(refined["refinement"], refined["p"]))))
+    return types, refined
+
+
 def rules(c2: pd.DataFrame, rng: np.random.Generator) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Rule screen on a split of target sets: a rule is predictive when its discovery risk
     ratio's 90% bootstrap lower bound exceeds DISCOVERY_FLOOR, its held-out risk ratio reaches
@@ -862,6 +929,13 @@ def main() -> None:
                      "neither": float((~evidence & (succ.b1 == 0)).mean())}
 
     # The split and the case draws get their own generators, so they do not move with the analyses above.
+    types, refined = evidence_types(c2)
+    types.to_csv(os.path.join(OUT, "evidence_types.csv"), index=False)
+    refined.to_csv(os.path.join(OUT, "refinements.csv"), index=False)
+    n["types"] = {r["type"]: r for r in types.to_dict("records")}
+    n["refinements"] = {r["refinement"]: r for r in refined.to_dict("records")}
+    n["types_family"] = int(types.loc[types["type"] != "benchmark", "p"].notna().sum())
+    n["refinements_family"] = int(refined.p.notna().sum())
     rule_table, exposed = rules(c2, np.random.default_rng(SEED))
     rule_table.to_csv(os.path.join(OUT, "rules.csv"), index=False)
     n["rules"] = {r["rule"]: r for r in rule_table.to_dict("records")}

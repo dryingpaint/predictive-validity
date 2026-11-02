@@ -34,13 +34,15 @@ The cohort is programs on a human protein target that entered Phase 2 from {{sec
 
 {{SECTION3_DIRECTION}}
 
-### Models that predict: rules applied at Phase 2 entry
+### Which kinds of evidence predict, and whether being more specific helps
 
-A *model* here is a rule a sponsor could have applied at Phase 2 entry without knowing the outcome: an evidence family, strength, direction and drug action. Eleven evidence rules and a benchmark (an approved drug on the target for a related disease) were fixed in the plan; three direction rules were added after it and are marked. Each rule was found on a random 60% of targets and checked on the other 40%; the criteria are in the appendix.
+The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but they are not fifteen ideas: several are narrower versions of another (every program with a mouse model pointing the drug's way also has a mouse model of the disease), so a flat screen counts the same programs more than once. The rules are therefore grouped by the kind of evidence behind them. Each kind is tested once against programs without it, with a Holm correction across the {{section3.types_family|int}} preclinical kinds that could be tested; the benchmark, an approved drug on the target for a related disease, is shown beside them but is clinical precedent, not preclinical evidence. Each more specific version is then tested only against the rest of its own kind, with a Holm correction across the {{section3.refinements_family|int}} that could be tested. This grouping departs from the plan; the registered screen is in the appendix.
 
-{{S3_RULES_TABLE}}
+{{S3_TYPES_TABLE}}
 
-![Rule screen](report/output/figures/s3_rules.png)
+{{S3_REFINEMENTS_TABLE}}
+
+![Kinds of evidence and their more specific versions](report/output/figures/s3_evidence_types.png)
 
 {{SECTION3_RULES}}
 

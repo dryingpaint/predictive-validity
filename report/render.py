@@ -35,7 +35,7 @@ def pct(x, digits=1):
 
 
 FORMATS = {"": str, "pct": pct, "pct0": lambda v: pct(v, 0), "int": lambda v: f"{int(v):,}",
-           "x2": "{:.2f}".format, "x3": "{:.3f}".format}
+           "x2": "{:.2f}".format, "x3": "{:.3f}".format, "p": lambda v: p_value(v)}
 BAND_NAMES = {"low": "lowest third", "middle": "middle third", "high": "highest third"}  # of programs with any support
 
 
@@ -342,6 +342,47 @@ def s3_endpoint_table() -> str:
                                              "Risk ratio, registry-posted results (FDAAA era)"]))
 
 
+REGIME_NAMES = {"all": "All", "COM": "Non-oncology", "ONC": "Oncology", "DD": "Hereditary"}
+
+
+def s3_types() -> tuple[pd.DataFrame, pd.DataFrame]:
+    return (pd.read_csv(os.path.join(OUT, "section3", "evidence_types.csv")),
+            pd.read_csv(os.path.join(OUT, "section3", "refinements.csv")))
+
+
+def holm_cell(p) -> str:
+    return "–" if pd.isna(p) else p_value(p)
+
+
+def s3_types_table() -> str:
+    types, _ = s3_types()
+    rows = []
+    for _, r in types.iterrows():
+        if r.type == "benchmark":
+            rows.append(["**Benchmark** (clinical precedent, not preclinical evidence)", "", "", "", "", ""])
+        tested = pd.notna(r.rr)
+        rows.append([r.label, REGIME_NAMES[r.regime], f"{int(r.n):,} ({int(r.n_targets):,})",
+                     f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}",
+                     rr_ci(r) if tested else f"too few programs ({int(r.n)}) to test",
+                     "–" if r.type == "benchmark" else holm_cell(r.holm_p)])
+    return table(pd.DataFrame(rows, columns=["Evidence before Phase 2", "Applies to", "With it (targets)",
+                                             "Advanced: with / without", "Adjusted risk ratio (95% CI)",
+                                             "Holm-corrected p"]))
+
+
+def s3_refinements_table() -> str:
+    types, refined = s3_types()
+    parent = types.set_index("type").label
+    rows = []
+    for _, r in refined.iterrows():
+        rows.append([r.label + ("" if r.registered else " (added after the plan)"), parent[r.parent],
+                     f"{int(r.n):,} of {int(r.n_cohort):,}", f"{pct(r.ppv, 0)} / {pct(r.rate_without, 0)}",
+                     rr_ci(r) if pd.notna(r.rr) else "too few to test", holm_cell(r.holm_p)])
+    return table(pd.DataFrame(rows, columns=["More specific version", "Within programs with", "Programs",
+                                             "Advanced: with / rest of the type", "Adjusted risk ratio (95% CI)",
+                                             "Holm-corrected p"]))
+
+
 def s3_rules() -> pd.DataFrame:
     return pd.read_csv(os.path.join(OUT, "section3", "rules.csv")).set_index("rule", drop=False)
 
@@ -352,7 +393,6 @@ def rule_name(r) -> str:
 
 
 def s3_rules_table() -> str:
-    regime = {"all": "All", "COM": "Non-oncology", "ONC": "Oncology", "DD": "Hereditary"}
     rows = []
     for r in s3_rules().itertuples():
         def split(name):
@@ -360,7 +400,7 @@ def s3_rules_table() -> str:
             if pd.isna(v) or v == 0:
                 return "–" if pd.isna(v) else "none advanced"
             return f"{v:.2f} ({getattr(r, f'{name}_lo90'):.2f}–{getattr(r, f'{name}_hi90'):.2f})"
-        rows.append([rule_name(r), regime[r.regime],
+        rows.append([rule_name(r), REGIME_NAMES[r.regime],
                      f"{int(r.n):,} ({int(r.n_targets):,})", pct(r.ppv, 0) if r.n else "–",
                      pct(r.coverage, 0), "–" if pd.isna(r.adj_rr) else f"{r.adj_rr:.2f} ({r.adj_lo:.2f}–{r.adj_hi:.2f})",
                      split("discovery"), split("confirmation"),
@@ -434,7 +474,8 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table,
           "DOSE_TABLE": dose_table, "JOINT_TABLE": joint_table, "ABLATION_TABLE": ablation_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
-          "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table, "S3_CASES_TABLE": s3_cases_table,
+          "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,
+          "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table, "S3_CASES_TABLE": s3_cases_table,
           "S3_CASE_CARDS": s3_case_cards, "ATTRIBUTION_TABLE": attribution_table,
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
 
