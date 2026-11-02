@@ -30,35 +30,5 @@
    }
   ],
   "safety": []
- },
- "events": [
-  {
-   "year": 1990,
-   "label": "MYH7 Arg403Gln causes familial HCM",
-   "src": "https://doi.org/10.1016/0092-8674(90)90274-i",
-   "srcLabel": "Geisterfer-Lowrance 1990",
-   "kind": "model"
-  },
-  {
-   "year": 2016,
-   "label": "Mavacamten in HCM mice",
-   "src": "https://doi.org/10.1126/science.aad3456",
-   "srcLabel": "Green 2016",
-   "kind": "model"
-  },
-  {
-   "year": 2020,
-   "label": "EXPLORER-HCM: 37% vs 17% met primary",
-   "src": "https://doi.org/10.1016/S0140-6736(20)31792-X",
-   "srcLabel": "Olivotto 2020",
-   "kind": "clinical"
-  },
-  {
-   "year": 2022,
-   "label": "FDA approval",
-   "src": "https://www.tctmd.com/news/fda-approves-mavacamten-obstructive-hypertrophic-cardiomyopathy",
-   "srcLabel": "TCTMD 2022",
-   "kind": "clinical"
-  }
- ]
+ }
 }

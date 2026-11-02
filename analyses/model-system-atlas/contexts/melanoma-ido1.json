@@ -38,35 +38,5 @@
    }
   ],
   "safety": []
- },
- "events": [
-  {
-   "year": 2003,
-   "label": "IDO lets mouse tumours escape rejection",
-   "src": "https://doi.org/10.1038/nm934",
-   "srcLabel": "Uyttenhove 2003",
-   "kind": "model"
-  },
-  {
-   "year": 2013,
-   "label": "Synergy with checkpoint blockade in mice",
-   "src": "https://doi.org/10.1084/jem.20130066",
-   "srcLabel": "Holmgaard 2013",
-   "kind": "model"
-  },
-  {
-   "year": 2017,
-   "label": "Single-arm ECHO-202: 56% response",
-   "src": "https://www.merck.com/news/progression-free-survival-data-from-echo-202-trial-of-incytes-epacadostat-in-combination-with-mercks-keytruda-pembrolizumab-underscore-durability-of-response-in-patients-wi/",
-   "srcLabel": "Merck 2017",
-   "kind": "clinical"
-  },
-  {
-   "year": 2019,
-   "label": "ECHO-301 negative",
-   "src": "https://doi.org/10.1016/S1470-2045(19)30274-8",
-   "srcLabel": "Long 2019",
-   "kind": "clinical"
-  }
- ]
+ }
 }

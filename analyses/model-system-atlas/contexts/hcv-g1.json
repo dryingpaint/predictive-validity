@@ -64,42 +64,5 @@
     "short": "Missed ciluprevir's heart toxicity"
    }
   ]
- },
- "events": [
-  {
-   "year": 1999,
-   "label": "Subgenomic replicon",
-   "src": "https://doi.org/10.1126/science.285.5424.110",
-   "srcLabel": "Lohmann 1999",
-   "kind": "model"
-  },
-  {
-   "year": 2003,
-   "label": "Ciluprevir cuts viral load in patients",
-   "src": "https://doi.org/10.1038/nature02099",
-   "srcLabel": "Lamarre 2003",
-   "kind": "clinical"
-  },
-  {
-   "year": 2005,
-   "label": "Infectious JFH-1 virus in cell culture",
-   "src": "https://doi.org/10.1038/nm1268",
-   "srcLabel": "Wakita 2005",
-   "kind": "model"
-  },
-  {
-   "year": 2010,
-   "label": "Daclatasvir: 3.3 log10 drop after one dose",
-   "src": "https://doi.org/10.1038/nature08960",
-   "srcLabel": "Gao 2010",
-   "kind": "clinical"
-  },
-  {
-   "year": 2014,
-   "label": "ION-1: 99% cure with ledipasvir-sofosbuvir",
-   "src": "https://doi.org/10.1056/NEJMoa1402454",
-   "srcLabel": "Afdhal 2014",
-   "kind": "clinical"
-  }
- ]
+ }
 }

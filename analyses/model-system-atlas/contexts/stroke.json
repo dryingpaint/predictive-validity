@@ -21,28 +21,5 @@
    }
   ],
   "safety": []
- },
- "events": [
-  {
-   "year": 1999,
-   "label": "STAIR preclinical standards",
-   "src": "https://doi.org/10.1161/01.str.30.12.2752",
-   "srcLabel": "STAIR 1999",
-   "kind": "model"
-  },
-  {
-   "year": 2007,
-   "label": "SAINT II: NXY-059 ineffective",
-   "src": "https://doi.org/10.1056/NEJMoa070240",
-   "srcLabel": "Shuaib 2007",
-   "kind": "clinical"
-  },
-  {
-   "year": 2010,
-   "label": "Publication bias inflates animal efficacy by about a third",
-   "src": "https://doi.org/10.1371/journal.pbio.1000344",
-   "srcLabel": "Sena 2010",
-   "kind": "model"
-  }
- ]
+ }
 }

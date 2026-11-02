@@ -38,42 +38,5 @@
     "short": "Blood-pressure rise unflagged"
    }
   ]
- },
- "events": [
-  {
-   "year": 1990,
-   "label": "CETP-deficient families: high HDL",
-   "src": "https://doi.org/10.1056/NEJM199011013231803",
-   "srcLabel": "Inazu 1990",
-   "kind": "model"
-  },
-  {
-   "year": 2000,
-   "label": "CETP inhibitor in rabbits",
-   "src": "https://doi.org/10.1038/35018119",
-   "srcLabel": "Okamoto 2000",
-   "kind": "model"
-  },
-  {
-   "year": 2007,
-   "label": "ILLUMINATE: excess deaths",
-   "src": "https://doi.org/10.1056/NEJMoa0706628",
-   "srcLabel": "Barter 2007",
-   "kind": "clinical"
-  },
-  {
-   "year": 2012,
-   "label": "Mendelian randomization: HDL not causal",
-   "src": "https://doi.org/10.1016/S0140-6736(12)60312-2",
-   "srcLabel": "Voight 2012",
-   "kind": "model"
-  },
-  {
-   "year": 2017,
-   "label": "REVEAL: 9% benefit tracks non-HDL lowering",
-   "src": "https://doi.org/10.1056/NEJMoa1706444",
-   "srcLabel": "REVEAL 2017",
-   "kind": "clinical"
-  }
- ]
+ }
 }

@@ -29,28 +29,5 @@
     "short": "Humanised-liver mice reproduce it"
    }
   ]
- },
- "events": [
-  {
-   "year": 1993,
-   "label": "Fialuridine liver failures",
-   "src": "https://doi.org/10.1056/NEJM199510263331702",
-   "srcLabel": "McKenzie 1995",
-   "kind": "clinical"
-  },
-  {
-   "year": 2006,
-   "label": "Human ENT1 targets mitochondria; rodent ENT1 does not",
-   "src": "https://doi.org/10.1074/jbc.M513825200",
-   "srcLabel": "Lee 2006",
-   "kind": "model"
-  },
-  {
-   "year": 2014,
-   "label": "Humanised-liver mice reproduce it",
-   "src": "https://doi.org/10.1371/journal.pmed.1001628",
-   "srcLabel": "Xu 2014",
-   "kind": "model"
-  }
- ]
+ }
 }
