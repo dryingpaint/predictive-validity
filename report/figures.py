@@ -403,32 +403,36 @@ HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_li
 
 
 def evidence_translates():
-    """Each kind of evidence and its narrower versions, two ways: relative success to approval from every
-    phase (Section 2), and the adjusted risk ratio of advancing from Phase 2 (Section 3). A filled dot is a
-    95% interval clear of 1 on the left and a Holm-corrected p below 0.05 on the right."""
+    """Each kind of evidence and its narrower versions, three ways: relative success to approval from any
+    phase; the adjusted risk ratio of advancing from Phase 2 within four years; and the relative risk of
+    advancing from Phase 2 with the other evidence lines held fixed (Section 2's joint model). A filled
+    dot is a 95% interval clear of 1 (middle panel: a Holm-corrected p below 0.05)."""
     rs = pd.concat([pd.read_csv(os.path.join(OUT, "section2", f)) for f in
                     ("relative_success.csv", "relative_success_untimed.csv")]).set_index("feature")
+    joint = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
+    joint = joint[joint.phase == 2].set_index("feature")
     types, refined = s3_types()
     s3 = pd.concat([types.set_index("type"), refined.set_index("refinement")])
     s3.loc["benchmark", "holm_p"] = s3.at["benchmark", "p"]
     late = pd.read_csv(os.path.join(OUT, "section3", "hindsight.csv")).set_index("line")
-    rows = []  # (label, family, narrow, left, right, Section 3 row, hindsight)
+    rows = []  # (label, family, narrow, approval, Phase 2, Phase 2 held fixed, Section 3 row, hindsight)
     for label, family, f2, f3, narrow in EVIDENCE_ROWS:
         left = rs.loc[f2] if f2 and pd.notna(rs.at[f2, "rs"]) else None
-        right = s3.loc[f3] if f3 and pd.notna(s3.at[f3, "rr"]) else None
-        if left is not None or right is not None:
-            rows.append((label, family, narrow, left, right, s3.loc[f3] if f3 else None, False))
+        mid = s3.loc[f3] if f3 and pd.notna(s3.at[f3, "rr"]) else None
+        held = joint.loc[f2] if f2 in joint.index else None
+        if left is not None or mid is not None:
+            rows.append((label, family, narrow, left, mid, held, s3.loc[f3] if f3 else None, False))
     for label, family, f2, f3 in HINDSIGHT_ROWS:
         left = rs.loc[f2] if pd.notna(rs.at[f2, "rs"]) else None
-        right = late.loc[f3] if pd.notna(late.at[f3, "rr"]) else None
-        rows.append((label, family, False, left, right, late.loc[f3], True))
-    first_late = next(i for i, r in enumerate(rows) if r[6])
+        mid = late.loc[f3] if pd.notna(late.at[f3, "rr"]) else None
+        rows.append((label, family, False, left, mid, None, late.loc[f3], True))
+    first_late = next(i for i, r in enumerate(rows) if r[7])
     ys, y = [], 0.0
     for i, r in enumerate(rows):
-        y -= 1 if i == 0 or r[2] or (r[6] and i != first_late) else 2.3 if i == first_late else 1.5
+        y -= 1 if i == 0 or r[2] or (r[7] and i != first_late) else 2.3 if i == first_late else 1.5
         ys.append(y)
-    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 0.34 * len(rows) + 1.8), sharey=True,
-                                 gridspec_kw={"wspace": 0.08})
+    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(16, 0.34 * len(rows) + 1.8), sharey=True,
+                                     gridspec_kw={"wspace": 0.08})
     lim = (np.log2(0.2), np.log2(7))
 
     def dot(ax, yi, est, lo, hi, color, filled, dashed=False):
@@ -437,27 +441,31 @@ def evidence_translates():
         ax.plot(np.log2(est), yi, "o", markersize=6, color=color, markeredgewidth=1.5,
                 markerfacecolor=color if filled else "white", markeredgecolor=color)
 
-    for yi, (label, family, narrow, left, right, kind, late_row) in zip(ys, rows):
+    def column(x, yi, text):
+        a3.text(np.log2(7) + x, yi, text, va="center", ha="right", color=INK2, fontsize=8)
+
+    for yi, (label, family, narrow, left, mid, held, kind, late_row) in zip(ys, rows):
         color = MUTED if late_row else FAMILY_COLORS[family]
         if left is not None:
             dot(a1, yi, left.rs, left.rs_lo, left.rs_hi, color, left.rs_lo > 1 or left.rs_hi < 1, late_row)
-            a2.text(np.log2(7) + 0.35, yi, f"{int(left.n_with):,}", va="center", ha="right", color=INK2, fontsize=8)
-            a2.text(np.log2(7) + 1.45, yi, f"{left.loa_with:.0%} / {left.loa_without:.0%}", va="center",
-                    ha="right", color=INK2, fontsize=8)
-        if right is not None:
-            dot(a2, yi, right.rr, right.lo, right.hi, color, (right.p if late_row else right.holm_p) < 0.05, late_row)
+            column(0.35, yi, f"{int(left.n_with):,}")
+            column(1.45, yi, f"{left.loa_with:.0%} / {left.loa_without:.0%}")
+        if mid is not None:
+            dot(a2, yi, mid.rr, mid.lo, mid.hi, color, (mid.p if late_row else mid.holm_p) < 0.05, late_row)
+        if held is not None:
+            dot(a3, yi, held.rr, held.rr_lo, held.rr_hi, color, held.rr_lo > 1 or held.rr_hi < 1)
         if kind is not None:
-            a2.text(np.log2(7) + 2.15, yi, f"{int(kind.n):,}", va="center", ha="right", color=INK2, fontsize=8)
-            a2.text(np.log2(7) + 3.25, yi, f"{kind.ppv:.0%} / {kind.rate_without:.0%}", va="center", ha="right",
-                    color=INK2, fontsize=8)
+            column(2.15, yi, f"{int(kind.n):,}")
+            column(3.25, yi, f"{kind.ppv:.0%} / {kind.rate_without:.0%}")
     top = ys[0] + 0.7
-    for x, head in ((0.35, "Programs"), (1.45, "Approved:\nwith / without"), (2.15, "Programs"),
+    for x, head in ((0.35, "Programs"), (1.45, "Approved:\nwith / without"), (2.15, "Phase 2\nprograms"),
                     (3.25, "Advanced:\nwith / without")):
-        a2.text(np.log2(7) + x, top, head, ha="right", va="bottom", color=INK2, fontsize=8)
+        a3.text(np.log2(7) + x, top, head, ha="right", va="bottom", color=INK2, fontsize=8)
     ticks = [0.25, 0.5, 1, 2, 4]
     for ax, title, xlabel in (
             (a1, "Reaching approval, from any phase", "Relative success: approval with ÷ without (95% CI)"),
-            (a2, "Advancing from Phase 2 within 4 years", "Adjusted risk ratio (95% CI)")):
+            (a2, "Advancing from Phase 2 within 4 years", "Adjusted risk ratio (95% CI)"),
+            (a3, "Advancing from Phase 2, other lines held fixed", "Relative risk, all lines in one model (95% CI)")):
         ax.axvline(0, color=INK2, linewidth=1)
         ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
         ax.set_xlim(*lim)
@@ -472,9 +480,9 @@ def evidence_translates():
     a1.text(-0.62, ys[first_late] + 0.95, "Known only after entry: first published in 2019, scored on today's data",
             transform=a1.get_yaxis_transform(), color=INK2, fontsize=8, style="italic")
     a1.set_ylim(ys[-1] - 0.7, top + 0.9)
-    fig.suptitle("Programs entering a phase in 2008–2019, by evidence known the year before entry. Indented: "
-                 "a narrower version (right panel: against the rest of its kind). Filled: interval clear of 1 "
-                 "(right: Holm-corrected p < 0.05)", x=0.01, ha="left", y=0.935, color=INK2, fontsize=8)
+    fig.suptitle("Programs entering a phase in 2008–2019, by evidence known the year before entry. Indented: a "
+                 "narrower version (middle panel: against the rest of its kind). Filled: interval clear of 1 "
+                 "(middle panel: Holm-corrected p < 0.05)", x=0.01, ha="left", y=0.935, color=INK2, fontsize=8)
     save(fig, "evidence_translates")
 
 
@@ -551,12 +559,6 @@ def phase_funnel():
     save(fig, "phase_funnel")
 
 
-FEATURE_FAMILY = {"genetic_any": "Human genetics", "genetic_gwas": "Human genetics", "genetic_rare": "Human genetics",
-                  "somatic": "Somatic", "animal_model": "Mouse", "rna_expression": "Expression and pathways",
-                  "affected_pathway": "Expression and pathways", "cell_line_screen": "Expression and pathways",
-                  "neuron_screen": "Expression and pathways", "pan_essential": "Target liability",
-                  "constrained": "Target liability"}
-
 
 def forest(ax, rows, lim=(0.25, 4)):
     """Dot and 95% interval per (y, estimate, lo, hi, color, filled) on a log2 axis with a line at 1."""
@@ -570,25 +572,6 @@ def forest(ax, rows, lim=(0.25, 4)):
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
     ax.set_xlim(np.log2(lim[0]), np.log2(lim[1]))
     style(ax)
-
-
-def joint_by_phase():
-    df = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
-    labels = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").label
-    features = [f for f in labels.index if f in set(df.feature)]
-    fig, axes = plt.subplots(1, 3, figsize=(11, 0.34 * len(features) + 1.3), sharey=True,
-                             gridspec_kw={"wspace": 0.06})
-    for ax, (ph, title) in zip(axes, [(1, "Phase 1 → 2"), (2, "Phase 2 → 3"), (3, "Phase 3 → approval")]):
-        d = df[df.phase == ph].set_index("feature")
-        forest(ax, [(-i, d.at[f, "rr"], d.at[f, "rr_lo"], d.at[f, "rr_hi"],
-                     FAMILY_COLORS[FEATURE_FAMILY.get(f, "Drug pharmacology")],
-                     d.at[f, "rr_lo"] > 1 or d.at[f, "rr_hi"] < 1)
-                    for i, f in enumerate(features) if f in d.index], lim=(0.5, 2.5))
-        ax.set_title(title, loc="left", color=INK, fontsize=9)
-    axes[0].set_yticks([-i for i in range(len(features))], [labels[f] for f in features], color=INK, fontsize=8.5)
-    axes[1].set_xlabel("Relative risk of advancing, holding the other lines, area, modality, novelty and period "
-                       "fixed (95% CI); filled: interval clear of 1", color=INK2, fontsize=8)
-    save(fig, "joint_by_phase")
 
 
 def prediction():
@@ -684,7 +667,6 @@ def main():
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         dose_response()
-        joint_by_phase()
         prediction()
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
