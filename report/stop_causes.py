@@ -141,6 +141,14 @@ def main() -> None:
          "subcause_support": {c: g.subcause_support.value_counts().reindex(["stated", "likely"], fill_value=0)
                               .astype(int).to_dict() for c, g in d.groupby("cause") if c in SUBCAUSES},
          "not_a_stop": {c: int((main.cause == c).sum()) for c in NOT_A_STOP},
+         "by_phase": {str(p): {"stops": int(len(stopped(x := traced[within(traced, SECTION1) & traced.phase.eq(p)]))),
+                               "shown": distribution(stopped(x), "shown", list(SHOWN)),
+                               "not_a_stop": {c: int((x.cause == c).sum()) for c in NOT_A_STOP}}
+                      for p in (1, 2, 3)},
+         "named": {c: {"share": float(g.subcause.ne("not_stated").mean()),
+                       "stated": float(g.subcause_support.eq("stated").mean()),
+                       "likely": float(g.subcause_support.eq("likely").mean())}
+                   for c, g in d.groupby("cause") if c in SUBCAUSES},
          "positive_discontinued": float(d[d.cause.eq("positive_not_advanced")].subcause.isin(DISCONTINUED).mean()),
          "validation": validation()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:

@@ -130,59 +130,31 @@ def registered_vs_traced():
         save(fig, "stop_causes_registered_vs_traced")
 
 
-def efficacy_attribution():
-    """Why efficacy failed, by phase: one bar per phase, by what the evidence shows about target engagement."""
-    n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
-    years = f"{n['window']['from']}–{n['window']['to']}"
-    efficacy_of = {1: n["phase1"], 2: n["by_phase"]["2"], 3: n["by_phase"]["3"]}
-    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
-    with plt.rc_context(RC):
-        fig, ax = plt.subplots(figsize=(10.5, 3.9))
-        fig.subplots_adjust(left=0.13, right=0.97, top=0.78, bottom=0.02)
-        ax.set_xlim(0, 1)
-        ax.set_ylim(-0.4, 3.1)
-        ax.axis("off")
-        fig.text(0.03, 0.975, "Why efficacy failed", fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.895, f"Industry programs stopped for efficacy or exposure with a sourced cause, phase entries "
-                 f"{years}: what the evidence shows about target engagement", fontsize=10.5, color=MUTED, va="top")
-        for k, phase in enumerate((1, 2, 3)):
-            e = efficacy_of[phase]
-            y = 2.6 - k * 0.95
-            stacked(ax, y, [(e["subcauses"][g]["share"], col, g == "no_engagement_data")
-                            for g, col in ATTRIBUTION_COLORS.items()], height=0.66)
-            ax.text(-0.02, y + 0.03, f"Phase {phase}", ha="right", va="bottom", fontsize=10.5, color=INK,
-                    fontweight="demibold")
-            ax.text(-0.02, y - 0.02, f"{e['programs']:,} programs", ha="right", va="top", fontsize=7.5, color=MUTED)
-        ax.legend(handles=[matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                    hatch="////" if g == "no_engagement_data" else None,
-                                                    label=SUBCAUSE_LABELS[g][1])
-                           for g, col in ATTRIBUTION_COLORS.items()],
-                  frameon=False, fontsize=8.5, loc="upper left", handlelength=1.0, handleheight=1.0,
-                  columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=3, bbox_to_anchor=(-0.12, 0.08))
-        save(fig, "efficacy_attribution")
-
-
-BROKEN_DOWN = ("sponsor_decision", "safety", "operational", "positive_not_advanced")  # efficacy: efficacy_attribution
+BROKEN_DOWN = ("efficacy", "sponsor_decision", "safety", "operational", "positive_not_advanced")
+EFFICACY_PARTS = [*ATTRIBUTION_COLORS, "not_attributed"]  # why efficacy failed, from the efficacy attribution
+GRAY_PARTS = ("not_stated", "no_engagement_data", "not_attributed")
 LIKELY_ONLY = "cause_likely"  # a stop whose cause is the model's likely cause has no subcause
 LIGHT = "#d9d7d1"
 
 
 def stop_causes_by_phase():
     """Why Phase 1, 2 and 3 programs stop: each phase's stops by cause (sourced or likely), then each cause's stops by
-    subcause in one panel per phase, solid where the text or a source states the subcause and pale where the search
-    finds it only likely. Every panel sums to its segment of the cause bar."""
+    subcause in one panel per phase (for efficacy, what the evidence shows about target engagement), solid where the
+    text or a source states the subcause and pale where the search finds it only likely. Every panel sums to its
+    segment of the cause bar."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
     d = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
     d = d[pd.to_datetime(d.phase_entry).dt.year.between(n["window"]["from"], n["window"]["to"]) & d.shown.notna()]
     d = d.assign(part=d.subcause.where(d.cause.eq(d.shown), LIKELY_ONLY),
                  likely=d.get("subcause_support", pd.Series(index=d.index, dtype=object)).eq("likely"))
-    orders = {}
-    for c in BROKEN_DOWN:
+    orders = {"efficacy": [x for x in [*EFFICACY_PARTS, LIKELY_ONLY] if d[d.shown.eq("efficacy")].part.eq(x).any()]}
+    for c in BROKEN_DOWN[1:]:
         share = d[d.shown.eq(c)].part.value_counts()
         named = [x for x in BREAKDOWN[c] if x not in ("other_stated", "not_stated")]
         orders[c] = [x for x in sorted(named, key=lambda x: -share.get(x, 0)) + ["other_stated", "not_stated", LIKELY_ONLY]
                      if share.get(x, 0)]  # a subcause no stop of the cause has is left out
-    names = {**SUBCAUSE_NAMES, LIKELY_ONLY: "Cause likely, not sourced"}
+    names = {**SUBCAUSE_NAMES, **{k: v[1] for k, v in SUBCAUSE_LABELS.items()}, "not_attributed": "Not attributed",
+             LIKELY_ONLY: "Cause likely, not sourced"}
     sizes = [len(orders[c]) for c in BROKEN_DOWN]
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
     with plt.rc_context(RC):
@@ -221,7 +193,7 @@ def stop_causes_by_phase():
                 for yi, x in zip(y, order):
                     part = g[g.part.eq(x)]
                     w, w_likely = len(part) / max(len(g), 1), part.likely.sum() / max(len(g), 1)
-                    gray = x in ("not_stated", LIKELY_ONLY)
+                    gray = x in (*GRAY_PARTS, LIKELY_ONLY)
                     ax.add_patch(matplotlib.patches.Rectangle((0, yi - 0.34), w - w_likely, 0.68, linewidth=0,
                                                               facecolor=LIGHT if gray else SHOWN_COLORS[cause]))
                     ax.add_patch(matplotlib.patches.Rectangle((w - w_likely, yi - 0.34), w_likely, 0.68, linewidth=0,
@@ -693,8 +665,6 @@ def main():
         prediction()
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
-    if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
-        efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
         stop_causes_by_phase()
         registered_vs_traced()
