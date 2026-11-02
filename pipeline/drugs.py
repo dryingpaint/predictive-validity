@@ -336,7 +336,7 @@ def is_code(key: str) -> bool:
 def candidate_uniis(found: list[tuple[str, list[str]]], parents: dict[str, list[str]]) -> dict[str, dict]:
     """The candidate substances of one entity, at most UNII_CANDIDATES: each substance found by
     name (UNII, matched names) in order, followed by its parents; a parent found by name too is
-    marked as one. Returns UNII -> {"matched": names, "parent_of": child UNIIs}."""
+    marked as one. Returns UNII -> {"matched": names, "parent_of": child UNIIs among the candidates}."""
     cands: dict[str, dict] = {}
     for u, names in found:
         for v in [u, *parents.get(u, [])]:
@@ -345,7 +345,8 @@ def candidate_uniis(found: list[tuple[str, list[str]]], parents: dict[str, list[
                 c["matched"] += names
             elif u not in c["parent_of"]:
                 c["parent_of"].append(u)
-    return dict(list(cands.items())[:UNII_CANDIDATES])
+    kept = dict(list(cands.items())[:UNII_CANDIDATES])
+    return {v: {**c, "parent_of": [u for u in c["parent_of"] if u in kept]} for v, c in kept.items()}
 
 
 def nonproprietary_name(display: str, names: list[str]) -> str | None:

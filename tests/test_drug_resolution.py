@@ -1,4 +1,5 @@
 from pipeline.drugs import (
+    UNII_CANDIDATES,
     candidate_uniis,
     components,
     disagreements,
@@ -83,6 +84,12 @@ def test_a_dose_unit_or_short_abbreviation_kept_as_a_code_groups_nothing():
                "4": resolved(("Hib conjugate", ["Hib"]), kind="vaccine"),
                "5": resolved(("DTaP", []), ("Hib conjugate", []), kind="vaccine")}
     assert disagreements(names, decided) == {}
+
+
+def test_a_parent_names_only_salts_that_are_still_candidates():
+    found = [(f"S{i}", [f"name{i}"]) for i in range(UNII_CANDIDATES + 3)]
+    cands = candidate_uniis(found, {"S0": ["P"], f"S{UNII_CANDIDATES + 2}": ["P"]})
+    assert len(cands) == UNII_CANDIDATES and cands["P"]["parent_of"] == ["S0"]
 
 
 def test_a_parent_substance_is_offered_right_after_its_salt():
