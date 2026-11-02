@@ -47,9 +47,10 @@ def agreement(ok: int, n: int, z: float = 1.96) -> dict:
 # Tasks decided twice: under a prompt revision that changed only how lists are shown to the
 # model, or (same version) again after their payload order changed. task -> (earlier version,
 # later version, the part of the output compared).
-RETEST = {"trial_purpose": ("v1", "v2", lambda o: o["purpose"]),
+# Each label's current prompt version against the one it replaced: how much a revision changed the labels.
+RETEST = {"trial_purpose": ("v2", "v4", lambda o: o["purpose"]),
           "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"])),
-          "indication_mondo": ("v2", "v2", lambda o: o["mondo_id"])}
+          "indication_mondo": ("v2", "v4", lambda o: o["mondo_id"])}
 
 
 def retest() -> dict:
