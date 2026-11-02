@@ -42,6 +42,7 @@ import requests
 from psycopg2.extras import execute_values
 
 from pipeline import llm
+from pipeline.evidence_dates import download
 
 API = "https://www.ebi.ac.uk/chembl/api/data"
 PAGE = 1000
@@ -259,12 +260,7 @@ def activities(_args) -> None:
     cache = os.path.join(llm.REPO, ".cache", "chembl", f"ChEMBL_{DUMP_RELEASE}")
     dump, out = os.path.join(cache, os.path.basename(DUMP_URL)), os.path.join(cache, "extract")
     os.makedirs(cache, exist_ok=True)
-    if not os.path.exists(dump):
-        with requests.get(DUMP_URL, stream=True, timeout=600) as r, open(dump + ".part", "wb") as f:
-            r.raise_for_status()
-            for block in r.iter_content(1 << 22):
-                f.write(block)
-        os.rename(dump + ".part", dump)
+    download(DUMP_URL, dump)
     if not os.path.exists(out):
         extract(dump, out)
     molecules = read(out, "molecule_dictionary").set_index("molregno").chembl_id

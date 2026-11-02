@@ -23,6 +23,77 @@ upper bounds.
 
 The NCT02205398 stop reason flagged in the outcome audit is already correct in the database.
 
+## Status: fixed and rebuilt (2026-11-02)
+
+Every fix above is in the code, and the database was rebuilt from a fresh ClinicalTrials.gov snapshot
+(2026-11-02, 227,126 studies) through every stage of `make sources identity programs labels evidence`.
+The evidence steps that read large raw releases ran on Modal (`scripts/modal_evidence.py`). The audited
+cases now come out right:
+
+| Case | Before | After |
+|---|---|---|
+| eneboparatide | Phase 2; CALYPSO missing | Phase 3 from 2023-06-07 (NCT05778071) |
+| pegadricase | gout + purine metabolism disease ("failed") | one gout program, Phase 3 |
+| sabizabulin | COVID trials under SARS; ARDS a separate program | one COVID-19 program, Phase 3 |
+| ION363 / BIIB078 | ION363 linked to tadnersen sodium | ulefnersen (ALS, Phase 3) and tadnersen, each on its parent UNII |
+| GenSci048 | "genakumab", no UNII | firsekibart |
+| SARS strings | 16 strings, 124 trials from 2020 on | 1 string |
+| Extraneal, Clenpiq | icodextrin + 4 electrolytes; sodium picosulfate anhydrous | icodextrin; picosulfate, magnesium oxide, citric acid |
+| nedizantrep (AUDIT D76) | "CRC" mapped to colorectal carcinoma | chronic refractory cough, a symptom with no MONDO term |
+| afuresertib (AUDIT D75) | 2012 ovarian Phase 1/2 attached to no disease | ovarian cancer program, entry 2012 |
+
+### Bugs found during the rebuild
+
+Each is fixed at its source, with a test:
+
+- Condition mapper v3 took a disease from trial titles for strings that name none (biomarkers, drugs,
+  qualifiers), and moved substance-cessation strings, diseases named with healthy volunteers and disease
+  episodes off their disease. An adjudication of 101 changed strings found it; prompt v4 fixes all of these.
+  The broader pass now reaches two levels of parents and never the MONDO root.
+- Sibling intervention strings were grouped by any kept "code", including dose units ("MG") and short
+  abbreviations, so 13,283 strings were sent for a second decision; only sponsor-code-shaped keys
+  (letters and digits, at least three characters) group them now (1,611).
+- An unregistered name was replaced by any kept code, so a vaccine became its study number ("208136");
+  only a sponsor-code-shaped code replaces a drug's name, and vaccines keep theirs.
+- UNII candidate truncation left a parent naming a salt outside the list (KeyError).
+- Entity merges moved rows of a fixed list of tables and failed on stop_signal; they now move the rows of
+  every table that references an entity, read from the catalog.
+- Entity renames failed when a page of decision ids was all null (Postgres read the column as text).
+- Entities nothing references were never removed; `drugs unii` now drops them.
+- `make evidence` never ran `evidence_dates projectscore`, so Project Score evidence was left undated
+  in a clean rebuild.
+- `fda load` held its connection open through 25 minutes of OCR, and the server dropped it.
+- The LLM runner waited indefinitely on batches the queue left untouched; a batch with no finished
+  request after 45 minutes is now cancelled and sent directly (and one that finished meanwhile is collected).
+
+### Accuracy after the rebuild
+
+Fresh seeded audits (`python -m scripts.audit_samples`, seed 20261102) against primary sources,
+counting correct and acceptable as agreement:
+
+| Label | Audited | Agree | Wrong | Before |
+|---|---|---|---|---|
+| Condition → MONDO | 100 | 99 | 1 | 99 |
+| Intervention → entities | 100 | 94 | 6 | 92 |
+| FDA application → entities | 100 | 95 | 5 | 98 |
+| Supplement label/review → approved uses (new) | 20 | 19 | 1 | — |
+| Approval, yes/no strata | 71 | 71 | 0 | 71 of 71 |
+| Approval, uncertain stratum | 12 | 9 | 3 | 9 of 14 |
+| Primary endpoint from results papers | 30 | 30 | 0 | 29 of 30 |
+
+### Remaining, measured
+
+- Sponsor codes whose INN is recent stay unresolved when GSRS does not list the code (DW4902 is merigolix;
+  HS-10365 is resencatinib), and reference-product codes in Korean bioequivalence trials stay opaque: about
+  4 of the 6 wrong intervention strings. A code-to-INN source (ChEMBL synonyms) would close most of it.
+- 22 entities, nearly all excipients and nutrients, sit on GSRS "unspecified form" grouping records, and
+  dextrose is split across that record and anhydrous dextrose (4 of the 5 wrong FDA applications).
+- A condition string naming several diseases sometimes maps to the first rather than a grouping.
+- Several efficacy supplements approved weeks apart share one label, whose Recent Major Changes cannot
+  separate them (1 of 20).
+- Approval judgements left "uncertain" (12 of 21,628) are often settled by the rubric; they count as not
+  approved, and the sensitivity table shows they move no rate.
+
 ## 1. Combination-product and genetic trials are never fetched
 
 - **Where:** `pipeline/ctgov.py:31`. The fetch query keeps `AREA[InterventionType](DRUG OR BIOLOGICAL)`.

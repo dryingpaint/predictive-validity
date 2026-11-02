@@ -95,16 +95,22 @@ def request(method: str, url: str, **kwargs) -> requests.Response:
 
 
 def download(url: str, dest: str) -> str:
-    """`url` saved at `dest` unless already cached; a partial download never takes the final name."""
+    """`url` saved at `dest` unless already cached; a partial download never takes the final name, and an
+    interrupted one resumes from the bytes it has (HTTP Range) instead of starting over."""
     if not os.path.exists(dest):
         os.makedirs(os.path.dirname(dest), exist_ok=True)
         part = dest + ".part"
         for attempt in range(6):
+            have = os.path.getsize(part) if os.path.exists(part) else 0
             try:
-                with requests.get(url, stream=True, timeout=600) as r, open(part, "wb") as f:
+                with requests.get(url, stream=True, timeout=600,
+                                  headers={"Range": f"bytes={have}-"} if have else {}) as r:
+                    if r.status_code == 416:  # the part file already holds every byte
+                        break
                     r.raise_for_status()
-                    for block in r.iter_content(1 << 16):
-                        f.write(block)
+                    with open(part, "ab" if have and r.status_code == 206 else "wb") as f:
+                        for block in r.iter_content(1 << 20):
+                            f.write(block)
                 break
             except requests.RequestException:
                 if attempt == 5:
