@@ -429,8 +429,8 @@ def unii_items(cur, entities: list[tuple], parents: dict[str, list[str]]) -> dic
 def unii(_args) -> None:
     """Resolve every entity to its UNII substance, merge entities that
     resolved to the same one into a single entity named by the substance's
-    nonproprietary name (nonproprietary_name), then run the same-entity pass
-    (same_entities)."""
+    nonproprietary name (nonproprietary_name), run the same-entity pass
+    (same_entities), and drop the entities nothing references (drop_unreferenced)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT m.moiety_id, m.name, m.code_names, m.aliases,
@@ -458,6 +458,20 @@ def unii(_args) -> None:
     merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items()])
     print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
     same_entities()
+    drop_unreferenced()
+
+
+def drop_unreferenced() -> None:
+    """Delete the entities no table references any longer: names a later canonicalize resolves
+    elsewhere leave their old entity behind."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT c.conrelid::regclass::text FROM pg_constraint c
+                       WHERE c.contype = 'f' AND c.confrelid = 'preclin.moiety'::regclass""")
+        unreferenced = " AND ".join(f"NOT EXISTS (SELECT 1 FROM {t} r WHERE r.moiety_id = m.moiety_id)"
+                                    for t, in cur.fetchall())
+        cur.execute(f"DELETE FROM preclin.moiety m WHERE {unreferenced}")
+        print(f"unreferenced entities dropped={cur.rowcount}")
+        conn.commit()
 
 
 def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int, int]]]) -> None:
