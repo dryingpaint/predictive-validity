@@ -3,7 +3,8 @@ available preclinical model in every year from 1985 to 2026.
 
     .venv/bin/python analyses/model-system-atlas/figure.py
 
-Reads one JSON file per context from contexts/ and writes atlas.png beside this file. Each context
+Reads one JSON file per context from contexts/ and writes atlas.png beside this file. Rows are grouped by
+the disease area the report uses (preclin.mondo_bio_area for the context's MONDO term). Each context
 file holds `cells`: for each decision, a list of {year, status, note, src} entries, each the year the
 best model reached that status. A cell's status in a year is that of the latest entry at or before it.
 Each tile shows the cell's latest change (year, short note, source) above a strip of its status by year.

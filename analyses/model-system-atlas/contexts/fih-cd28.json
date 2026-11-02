@@ -1,10 +1,11 @@
 {
  "order": 80,
- "area": "Immunology",
- "disease": "First-in-human",
- "population": "CD28 superagonist (TGN1412), healthy volunteers",
+ "area": "Autoimmune",
+ "disease": "Rheumatoid arthritis, B-cell leukaemia",
+ "mondo_id": "MONDO:0008383",
+ "population": "First-in-human, healthy volunteers",
  "mechanism": "T-cell co-stimulation",
- "note": "",
+ "note": "TGN1412 was developed for rheumatoid arthritis and B-cell chronic lymphocytic leukaemia; the failure came in its first-in-human study.",
  "programs": null,
  "loa": null,
  "cells": {
