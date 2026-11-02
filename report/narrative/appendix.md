@@ -4,7 +4,7 @@
 
 | Source | What it gives | Version |
 | :---- | :---- | :---- |
-| ClinicalTrials.gov API v2 | Every interventional drug or biological study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot {{section1.snapshot}} ({{section1.scale.ctgov_studies|int}} studies) |
+| ClinicalTrials.gov API v2 | Every interventional drug, biological, genetic or combination-product study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot {{section1.snapshot}} ({{section1.scale.ctgov_studies|int}} studies) |
 | PubMed | Results papers linked to completed trials without posted results (registry RESULT/DERIVED references and the NCT secondary identifier) | Retrieved {{section1.snapshot}} |
 | Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; {{section1.scale.fda_approved_uses|int}} approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
 | CBER yearly approval pages, product pages and letters | {{section1.scale.cber_applications|int}} biologics applications (vaccines, blood products, cell and gene therapies) and their 2015–2025 approval actions, verified by an independent second enumeration | Retrieved October 2026 |

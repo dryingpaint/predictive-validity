@@ -4,7 +4,7 @@ Each entry gives who compiles the source and from what, what the pipeline keeps,
 
 ### ClinicalTrials.gov API v2
 
-*Snapshot 2026-10-20, 222,915 studies · `GET https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL)&pageSize=1000` paged by `pageToken`*
+*Snapshot {{section1.snapshot}}, {{section1.scale.ctgov_studies|int}} studies · `GET https://clinicaltrials.gov/api/v2/studies?filter.advanced=AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL OR GENETIC OR COMBINATION_PRODUCT)&pageSize=1000` paged by `pageToken`*
 
 **Compiled by.** The National Library of Medicine runs the registry. Sponsors enter the protocol record and the results themselves, as FDAAA 801 requires for applicable trials. NLM reviews entries for quality but does not check them against source records.
 **We use.** From the protocol section we keep status, dates, the why-stopped text, phases, sponsor and its class, design, conditions, interventions, arms, references, countries, brief summary and primary outcomes. From the results section, posted for 53,446 studies, we keep every primary outcome's values per group and every statistical analysis, plus deaths and serious adverse events per arm.
