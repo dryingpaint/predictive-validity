@@ -60,14 +60,15 @@ programs:
 	$(RUN) pipeline.programs indications
 	$(RUN) pipeline.programs build
 
-# Labels on programs: approval, modality, disease area, trial outcomes and endpoints, targets.
+# Labels on programs: approval, modality, disease area, trial outcomes, targets, then endpoints, which
+# are classed knowing the targets of each trial's investigational drugs (resolve reads modality).
 labels:
 	$(RUN) pipeline.approvals judge
 	$(RUN) pipeline.drugs modality
 	$(RUN) pipeline.indications areas
 	$(RUN) pipeline.outcomes classify
-	$(RUN) pipeline.outcomes endpoints
 	$(RUN) pipeline.targets resolve
+	$(RUN) pipeline.outcomes endpoints
 
 # Open Targets associations, the year each evidence item became known where its own date is
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
