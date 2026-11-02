@@ -1,73 +1,82 @@
 {
  "sample": {
-  "positive_not_advanced": 24,
+  "positive_not_advanced": 22,
   "sponsor_decision": 17,
-  "safety": 10,
-  "operational": 4
+  "safety": 8,
+  "operational": 5
  },
  "seed": 11,
  "causes": {
   "operational": {
-   "n": 4,
+   "n": 5,
    "support": {
-    "not_found": 2,
-    "likely": 1,
-    "stated": 1
-   },
-   "subcauses": {
-    "other_stated": 2
-   },
-   "other_reasons": [
-    "sponsor pivoted away to a next-generation BCMA CAR-T program",
-    "sponsor transitioned patients to next-generation CD19 CAR-T (CTX112)"
-   ]
-  },
-  "positive_not_advanced": {
-   "n": 24,
-   "support": {
-    "likely": 13,
-    "not_found": 8,
-    "stated": 3
-   },
-   "subcauses": {
-    "portfolio_prioritisation": 5,
-    "approved_outside_us": 5,
-    "funding_or_closure": 4,
-    "replaced_by_successor": 1,
-    "other_stated": 1
-   },
-   "other_reasons": [
-    "approved in the US as IHEEZO using this cataract trial as pivotal data"
-   ]
-  },
-  "safety": {
-   "n": 10,
-   "support": {
-    "stated": 9,
+    "stated": 4,
     "not_found": 1
    },
+   "cause_found": {
+    "sponsor_decision": 1,
+    "efficacy": 1
+   },
    "subcauses": {
-    "harm_mechanism_not_stated": 7,
-    "off_target_toxicity": 1,
-    "on_target_toxicity": 1
+    "enrollment": 2,
+    "replaced_by_successor": 1,
+    "not_stated": 1
+   },
+   "other_reasons": []
+  },
+  "positive_not_advanced": {
+   "n": 22,
+   "support": {
+    "likely": 12,
+    "stated": 7,
+    "not_found": 3
+   },
+   "cause_found": {
+    "not_stopped": 4,
+    "efficacy": 1
+   },
+   "subcauses": {
+    "portfolio_prioritisation": 8,
+    "approved_outside_us": 5,
+    "not_stated": 5,
+    "replaced_by_successor": 1
+   },
+   "other_reasons": []
+  },
+  "safety": {
+   "n": 8,
+   "support": {
+    "stated": 6,
+    "likely": 2
+   },
+   "cause_found": {},
+   "subcauses": {
+    "harm_mechanism_not_stated": 6,
+    "off_target_toxicity": 2
    },
    "other_reasons": []
   },
   "sponsor_decision": {
    "n": 17,
    "support": {
-    "likely": 9,
-    "stated": 4,
-    "not_found": 4
+    "not_found": 6,
+    "likely": 6,
+    "stated": 5
+   },
+   "cause_found": {
+    "positive_not_advanced": 1,
+    "not_a_program": 1
    },
    "subcauses": {
-    "portfolio_prioritisation": 10,
-    "other_stated": 1,
+    "portfolio_prioritisation": 4,
+    "partner_exit": 2,
+    "commercial_or_competitive": 2,
     "funding_or_closure": 1,
-    "commercial_or_competitive": 1
+    "other_stated": 1,
+    "replaced_by_successor": 1
    },
    "other_reasons": [
-    "interim efficacy results failed, no backup combination"
+    "assessment of global regulatory landscape, development hurdles, and market-entry timelines"
    ]
   }
  }

@@ -642,7 +642,7 @@ Choose the one subcause, from the list for the given cause, that the sources giv
 
 support: stated when a source gives the reason for this drug (quote its decisive sentence in quote); likely when the sources make a subcause the likely reason without saying it (for example the sponsor was acquired and its pipeline cut, the drug was approved in this disease outside the United States, or the sponsor's later pipeline puts other programs first), with what it rests on in rationale; not_found, with subcause not_stated, when the sources give nothing more. Prefer not_found to a subcause no source supports. Cite only URLs your searches returned, and NCT ids and PMIDs from the input.
 
-cause_found: the cause the sources give for the stop. It is the given cause when they agree with it or say nothing else. It is efficacy, safety or positive_not_advanced when the sources give that instead (choose the subcause from that cause's list; for efficacy use not_stated), and sponsor_decision when the given cause is operational and the sources give a sponsor's decision or money running out (choose from sponsor_decision's list). It is not_stopped when development of the drug in this disease went on or the drug was approved for it, and not_a_program when no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); the subcause is then not_stated. Otherwise keep the given cause and choose from its list. A regulator declining approval after a positive readout is that readout's subcause, not efficacy; a harm the sources report keeps a safety stop's cause even when the drug also worked.
+cause_found: the cause the sources give for the stop. It is the given cause when they agree with it or say nothing else. It is efficacy, safety or positive_not_advanced when the sources give that instead (choose the subcause from that cause's list; for efficacy use not_stated), and sponsor_decision when the given cause is operational and the sources give a sponsor's decision or money running out (choose from sponsor_decision's list). It is not_stopped when development of the drug in this disease went on or the FDA approved the drug for it (an approval elsewhere is approved_outside_us), and not_a_program when no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); the subcause is then not_stated. Otherwise keep the given cause and choose from its list. A regulator declining approval after a positive readout is that readout's subcause, not efficacy; a harm the sources report keeps a safety stop's cause even when the drug also worked.
 
 Subcauses for each cause, in order of precedence:
 {chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
@@ -674,20 +674,19 @@ def validate_search(p: dict, out: dict) -> None:
         raise ValueError(f"subcause {out['subcause']} is not one of {cause}'s")
     if (out["subcause"] == "other_stated") != bool(out["other_reason"].strip()):
         raise ValueError("other_reason is given exactly when the subcause is other_stated")
-    if out["support"] == "not_found" and (out["subcause"] != "not_stated" or cause != p["cause"]):
-        raise ValueError(f"not_found with subcause {out['subcause']} and cause {cause}")
-    if out["subcause"] == "not_stated" and out["support"] != "not_found" and cause == p["cause"]:
-        raise ValueError(f"support {out['support']} with no subcause")
+    if out["support"] == "not_found" and out["subcause"] != "not_stated":
+        raise ValueError(f"not_found with subcause {out['subcause']}")
     if out["support"] == "stated" and not (out["quote"].strip() and out["sources"]):
         raise ValueError("a stated subcause without a quote and a source")
     allowed = {t["nct_id"] for t in p["trials"]} | {f"PMID:{a['pmid']}" for a in p["papers"]}
     retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
-    unknown = [x for x in out["sources"] if x not in allowed and llm.norm_url(x) not in retrieved]
+    unknown = [x for x in out["sources"] if x not in allowed and llm.norm_url(x) not in retrieved
+               and not set(re.findall(r"NCT\d{8}", x)) & allowed]  # a registry link to an input trial
     if unknown:
         raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
 
 
-SEARCH_TASK = llm.Task(name="stop_subcause_search", prompt_version="v2", schema_version="v2", system=SEARCH_SYSTEM,
+SEARCH_TASK = llm.Task(name="stop_subcause_search", prompt_version="v3", schema_version="v2", system=SEARCH_SYSTEM,
                        schema=SEARCH_SCHEMA, subject_type="program_phase", validate=validate_search,
                        render=lambda p: f"Cause: {p['cause']}\nWhat the cause rests on: {p['explanation'] or '(nothing)'}"
                                         f"\n\n{render(p)}",
@@ -706,9 +705,9 @@ def search_items(rows: list[tuple]) -> dict[str, dict]:
 def apply_search(rows: list[tuple], found: dict) -> None:
     """Set the subcause of each stop the search pass found one for, with what it rests on."""
     for key, *_, row in rows:
-        if key in found and found[key][1]["support"] != "not_found":
-            out = found[key][1]
-            cause = search_cause(row["cause"], out)
+        out = found[key][1] if key in found else None
+        cause = search_cause(row["cause"], out) if out else row["cause"]
+        if out and (cause != row["cause"] or out["subcause"] != "not_stated"):
             if cause != row["cause"]:
                 row.update(cause=cause, guess=None, traced=True)
             named = cause in SUBCAUSES and out["subcause"] != "not_stated"
