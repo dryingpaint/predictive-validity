@@ -10,6 +10,8 @@
    publication_outcome_audit.json; program approvals by stratum:
    approval_audit.json): accuracy with Wilson 95% intervals, counting correct
    and acceptable verdicts as agreement.
+   The registry's own MeSH indexing of conditions, carried to MONDO, against the
+   LLM disease mapping (mesh_crosswalk.json, from scripts.mesh_crosswalk_check).
 2. Items the model declined to answer, per LLM task, and agreement of tasks
    re-decided under a prompt revision (RETEST) with their earlier decisions.
 """
@@ -28,6 +30,9 @@ LABEL_AUDITS = ("label_audit.json", "label_audit_post_fix.json")  # before the p
 OUTCOME_AUDITS = {"outcome_audit": "outcome_audit.json", "publication_audit": "publication_outcome_audit.json"}
 OUTCOME_AXES = ("stop_reason", "primary_endpoint", "safety_signal", "efficacy_failure")
 APPROVAL_AUDIT = "approval_audit.json"
+MESH_CROSSWALK = "mesh_crosswalk.json"  # ClinicalTrials.gov's MeSH indexing against the LLM disease mapping
+COMPARABLE = {"same disease": "same", "MeSH broader": "broader", "MeSH narrower": "narrower",
+              "different disease": "different"}  # statuses where both routes name a disease, by number key
 
 
 
@@ -79,6 +84,21 @@ def refusals() -> dict:
         GROUP BY r.task""").itertuples(index=False))
 
 
+def mesh_crosswalk() -> dict:
+    """Shares of the MeSH-route comparison: of all condition strings, and of those both routes map."""
+    m = json.load(open(os.path.join(AUDITS, MESH_CROSSWALK)))
+    st = m["statuses"]
+    comparable = sum(st[s]["conditions"] for s in COMPARABLE)
+    comparable_links = sum(st[s]["links"] for s in COMPARABLE)
+    return {"conditions": m["conditions"], "comparable": comparable,
+            "attributable_share": 1 - st["only in multi-condition studies"]["conditions"] / m["conditions"],
+            "same_share_of_all": st["same disease"]["conditions"] / m["conditions"],
+            "same_links_share_of_all": st["same disease"]["links"] / m["study_condition_links"],
+            **{f"{key}_share": st[s]["conditions"] / comparable for s, key in COMPARABLE.items()},
+            "same_links_share": st["same disease"]["links"] / comparable_links,
+            "non_disease": st["MeSH names a disease, the LLM none"]["conditions"], "review": m["review"]}
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     numbers = {"refusals": refusals(), "retest": retest()}
@@ -111,6 +131,7 @@ def main() -> None:
                                            **agreement(sum(v in ("correct", "acceptable") for v in verdicts),
                                                        len(verdicts))}
     numbers["approval_audit"] = audits
+    numbers["mesh_crosswalk"] = mesh_crosswalk()
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(numbers, indent=1, default=float))

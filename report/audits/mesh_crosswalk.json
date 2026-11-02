@@ -1,0 +1,46 @@
+{
+ "conditions": 42949,
+ "study_condition_links": 291986,
+ "statuses": {
+  "same disease": {
+   "conditions": 5321,
+   "links": 117764
+  },
+  "MeSH broader": {
+   "conditions": 2176,
+   "links": 50048
+  },
+  "MeSH narrower": {
+   "conditions": 467,
+   "links": 5057
+  },
+  "different disease": {
+   "conditions": 974,
+   "links": 6408
+  },
+  "MeSH names a disease, the LLM none": {
+   "conditions": 520,
+   "links": 19041
+  },
+  "MeSH term has no MONDO equivalent": {
+   "conditions": 2334,
+   "links": 11631
+  },
+  "no MeSH term": {
+   "conditions": 6871,
+   "links": 17804
+  },
+  "only in multi-condition studies": {
+   "conditions": 24286,
+   "links": 64233
+  }
+ },
+ "review": {
+  "sample": 20,
+  "seed": 3,
+  "not_a_disease": 9,
+  "llm": 6,
+  "mesh": 1,
+  "tie": 4
+ }
+}
