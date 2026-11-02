@@ -48,16 +48,19 @@ def agreement(ok: int, n: int, z: float = 1.96) -> dict:
 # model, or (same version) again after their payload order changed. task -> (earlier version,
 # later version, the part of the output compared).
 # Each label's current prompt version against the one it replaced: how much a revision changed the labels.
-RETEST = {"trial_purpose": ("v2", "v4", lambda o: o["purpose"]),
-          "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"])),
-          "indication_mondo": ("v2", "v4", lambda o: o["mondo_id"])}
+# The optional fourth entry gives what must be equal for two decisions to be compared at all: a trial whose
+# entities were renamed between the two decisions says nothing about whether its roles changed.
+RETEST = {"trial_purpose": ("v2", "v4", lambda o: o["purpose"], None),
+          "trial_moiety_role": ("v2", "v3", lambda o: sorted((r["moiety"], r["role"]) for r in o["roles"]),
+                                lambda o: sorted(r["moiety"] for r in o["roles"])),
+          "indication_mondo": ("v2", "v4", lambda o: o["mondo_id"], None)}
 
 
 def retest() -> dict:
     """Share of subjects decided the same way the two times (the two latest model calls,
     one per version when the versions differ; reused copies are not calls)."""
     out = {}
-    for task, (a, b, key) in RETEST.items():
+    for task, (a, b, key, same) in RETEST.items():
         df = frame.query("""
             SELECT r.prompt_version, d.subject_key, d.parsed_output
             FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
@@ -67,10 +70,10 @@ def retest() -> dict:
         later, earlier = {}, {}
         for v, k, o in df.itertuples(index=False):
             if k not in later and v == b:
-                later[k] = key(o)
-            elif k in later and k not in earlier and v == a:
-                earlier[k] = key(o)
-        out[task] = sum(earlier[k] == later[k] for k in earlier) / len(earlier)
+                later[k] = o
+            elif k in later and k not in earlier and v == a and (same is None or same(o) == same(later[k])):
+                earlier[k] = o
+        out[task] = sum(key(earlier[k]) == key(later[k]) for k in earlier) / len(earlier)
         out[f"{task}_n"] = len(earlier)
     return out
 
