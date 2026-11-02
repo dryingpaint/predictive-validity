@@ -36,7 +36,10 @@ scores. Prediction is evaluated on a fixed-horizon cohort (Phase 1 entry
 novelty as of entry, by cross-validation grouped by primary-target set and a
 temporal split; each evidence line's contribution is the drop in
 cross-validated AUC when it is removed (human genetics: GWAS and rare-variant
-evidence together), with a paired bootstrap interval.
+evidence together), with a paired bootstrap interval. By disease area: the 15 areas
+are pooled into six groups, relative success is estimated within each, and whether
+an evidence line's Phase 2 effect differs between groups is a joint Wald test of its
+interaction with the group (modality, novelty and period held fixed).
 """
 from __future__ import annotations
 
@@ -95,6 +98,17 @@ LABELS = {
     "assay_cell_functional": "Functional potency measured in cells",
     "assay_selective": "At least 100-fold selective over measured off-targets",
 }
+AREA_GROUPS = {"oncology": "oncology",
+               "autoimmune": "immunology", "allergy": "immunology", "respiratory": "immunology",
+               "gastroenterology": "immunology",
+               "neurology": "neuroscience", "psychiatry": "neuroscience",
+               "cardiovascular": "cardiometabolic", "metabolic": "cardiometabolic", "endocrine": "cardiometabolic",
+               "hematology": "hematology"}  # every other area, and unmapped, is "other"
+AREA_GROUP_LABELS = {"oncology": "Oncology", "immunology": "Immunology and inflammation",
+                     "neuroscience": "Neuroscience", "cardiometabolic": "Cardiometabolic and endocrine",
+                     "hematology": "Hematology", "other": "Other"}
+AREA_LINES = ("genetic_any", "genetic_gwas", "genetic_rare", "somatic", "animal_model", "rna_expression",
+              "assay_potent")
 
 
 def score_as_of(years: list[int], scores: list[float], year: int) -> float:
@@ -251,6 +265,39 @@ def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
     return out
 
 
+def by_area(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Relative success of each line within each area group; whether its Phase 2 effect
+    differs between groups (joint Wald test of the line-by-group interaction, adjusted for
+    modality, novelty and period, cluster-robust by target); and the pooled relative
+    success of human genetics with each group left out."""
+    rows = rows.assign(area_group=rows.bio_area.map(AREA_GROUPS).fillna("other"))
+    rs = pd.DataFrame([{**relative_success(g, f), "group": grp, "group_label": AREA_GROUP_LABELS[grp]}
+                       for grp, g in rows.groupby("area_group") for f in AREA_LINES])
+    r = rows[(rows.phase == 2) & rows.event.isin(["advanced", "suspended"])].copy()
+    r["y"] = (r.event == "advanced").astype(int)
+    r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
+    tests = []
+    for f in AREA_LINES:
+        r["x"] = (r[f] > 0).astype(int)
+        # groups where the line is both present and absent among enough programs to estimate its effect
+        n_with = r.groupby("area_group").x.sum()
+        keep = n_with[(n_with >= MIN_PROGRAMS_RR) & (r.groupby("area_group").x.mean() < 1)].index
+        d = r[r.area_group.isin(keep)]
+        if len(keep) < 2:
+            tests.append({"feature": f, "groups": len(keep), "chi2": np.nan, "df": 0, "p": np.nan})
+            continue
+        fit = smf.glm("y ~ x * C(area_group) + C(modality) + novel + C(period)", data=d,
+                      family=sm.families.Poisson()).fit(cov_type="cluster",
+                                                        cov_kwds={"groups": pd.factorize(d.target)[0]})
+        terms = [n for n in fit.params.index if n.startswith("x:")]
+        w = fit.wald_test(", ".join(f"{t} = 0" for t in terms), scalar=True)
+        tests.append({"feature": f, "groups": len(keep), "chi2": float(w.statistic), "df": len(terms),
+                      "p": float(w.pvalue)})
+    loo = pd.DataFrame([{**relative_success(rows[rows.area_group != grp], "genetic_any"), "left_out": grp,
+                         "left_out_label": AREA_GROUP_LABELS[grp]} for grp in AREA_GROUP_LABELS])
+    return rs, pd.DataFrame(tests), loo
+
+
 HORIZON_DAYS = 3653
 CV_REPEATS = 20  # repetitions of the grouped 5-fold split; one split's AUC moves by several points with the folds
 
@@ -369,6 +416,12 @@ def main() -> None:
                                            and (f not in DRUG or f in JOINT_DRUG)]))
     joint.to_csv(os.path.join(OUT, "joint_rr_by_phase.csv"), index=False)
 
+    area_rs, area_tests, area_loo = by_area(data)
+    area_rs.to_csv(os.path.join(OUT, "relative_success_by_area.csv"), index=False)
+    area_tests.to_csv(os.path.join(OUT, "area_interaction_tests.csv"), index=False)
+    area_loo.to_csv(os.path.join(OUT, "genetics_leave_one_area_out.csv"), index=False)
+    groups = data.assign(area_group=data.bio_area.map(AREA_GROUPS).fillna("other")).groupby("area_group")
+
     metrics, ablation, cohort = prediction(progs, trials, snap)
     metrics.to_csv(os.path.join(OUT, "prediction_metrics.csv"), index=False)
     ablation.to_csv(os.path.join(OUT, "prediction_ablation.csv"), index=False)
@@ -397,7 +450,11 @@ def main() -> None:
                "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
                "ablation": keyed(ablation, "feature"), "n_prediction": int(len(cohort)),
                "n_prediction_positive": int(cohort.y.sum()),
-               "rs_drug_measured": keyed(rs_measured, "feature"), "min_programs_rs": MIN_PROGRAMS_RS,
+               "rs_drug_measured": keyed(rs_measured, "feature"),
+               "area": {"rs": keyed(area_rs, "group", "feature"), "tests": keyed(area_tests, "feature"),
+                        "loo": keyed(area_loo, "left_out"),
+                        "loo_min": area_loo.loc[area_loo.rs.idxmin()].to_dict(), "loo_max": float(area_loo.rs.max()),
+                        "n_programs": {k: int(g.program_id.nunique()) for k, g in groups}}, "min_programs_rs": MIN_PROGRAMS_RS,
                "drug": {"measured": float(by_program.measured.mean()),
                         "measured_by_modality": {m: {"share": float(g.measured.mean()), "n": int(len(g))}
                                                  for m, g in by_program.groupby("modality")},

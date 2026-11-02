@@ -251,6 +251,25 @@ Programs with genetic evidence differ from programs without it in disease area, 
 One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.41× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and essentiality across cell lines shows no penalty at any phase (1.14 at Phase 2, 0.85–1.53). Cancer cell-line screens, 1.30× at Phase 2 on their own, fall to 0.99× beside the somatic and genetic evidence on the same targets; somatic, mouse-model, expression and pathway evidence also lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
 
 
+### By disease area
+
+| Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| Any human genetics | 2.10 (1.30–3.10), n=553 | 1.82 (0.88–3.35), n=291 | 6.82 (3.83–11.87), n=225 | 3.44 (1.58–6.16), n=247 | 2.97 (1.86–4.82), n=356 | –, n=68 | 0.03 (6 groups) |
+| GWAS | 1.35 (0.39–2.42), n=178 | 1.72 (0.59–3.53), n=224 | 5.60 (2.30–9.99), n=132 | –, n=97 | 2.67 (1.36–5.05), n=212 | –, n=8 | 0.11 (5 groups) |
+| Rare-variant or Mendelian genetics | 2.32 (1.46–3.37), n=445 | –, n=85 | 4.61 (2.12–9.14), n=113 | 3.56 (1.70–6.17), n=195 | 2.03 (1.29–3.27), n=228 | –, n=64 | 0.30 (6 groups) |
+| Somatic cancer driver | 1.74 (1.09–3.07), n=1,575 | –, n=4 | –, n=15 | –, n=12 | –, n=38 | –, n=2 | – |
+| Mouse model | 0.66 (0.28–1.14), n=571 | 1.51 (0.88–2.40), n=283 | 1.05 (0.49–1.95), n=212 | 1.66 (0.89–3.10), n=351 | 1.57 (0.96–2.69), n=494 | 1.48 (0.67–3.51), n=129 | 0.28 (6 groups) |
+| Expressed differently in the disease | 1.04 (0.66–1.55), n=1,120 | 0.99 (0.34–1.98), n=274 | –, n=70 | –, n=83 | –, n=12 | –, n=1 | 0.41 (4 groups) |
+| Potent at the target (100 nM or better) | 1.18 (0.71–1.95), n=996 | 1.02 (0.50–1.91), n=240 | 2.05 (1.09–3.72), n=309 | 0.63 (0.28–1.19), n=292 | 1.09 (0.59–1.92), n=165 | –, n=40 | 0.26 (5 groups) |
+
+![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
+
+Human genetic evidence predicts approval in every group of disease areas where it can be measured, but not equally: whether its effect at Phase 2 differs between groups gives p = 0.03. It is strongest in the smaller areas pooled as "other" (ophthalmology, infectious disease, urology and the diseases outside the named areas, mostly kidney, skin and rare hereditary disorders), where programs with it reached approval 6.82 times as often (28.4% against 4.2%), and in neuroscience (3.44, carried by rare-variant evidence at 3.56). It is about threefold in cardiometabolic and endocrine diseases (2.97), twofold in oncology (2.10), and weakest in immunology and inflammation (1.82, 0.88–3.35), where most of the evidence is GWAS. Hematology has too few programs with genetic evidence (68) to estimate.
+
+No other line's effect measurably differs between groups. In oncology, a somatic driver gives 1.74 (1.09–3.07). A potent drug gives 2.05 in the "other" group and 0.63 in neuroscience, but the groups do not differ beyond chance (p = 0.26). Leaving out any one group moves the pooled relative success of human genetics between 2.46 and 3.57; it is lowest without the "other" group, so no single area carries the pooled result.
+
+
 ### The drug's own pharmacology
 
 The lines above concern the target and the disease. The drug-pharmacology lines concern the molecule: how strongly it acts on its primary target in laboratory assays (the concentration giving half its maximal effect, or its binding affinity), whether that was measured as a functional response in living cells, and how much more strongly it acts on its target than on any other human protein tested. Each measurement counts from the year of the paper, patent or dataset that reported it, as of the year before phase entry; the definitions are in the appendix.
@@ -687,6 +706,8 @@ Each entity is matched to its ChEMBL molecules by the first of three routes that
 Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used.
 
 **Relative success.** The 95% intervals resample primary-target sets (an entity's primary targets taken together), since programs on the same targets are not independent.
+
+**By disease area.** The 15 disease areas are pooled into six groups so that each holds enough programs with an evidence line: oncology; immunology and inflammation (autoimmune, allergy, respiratory, gastroenterology); neuroscience (neurology, psychiatry); cardiometabolic and endocrine (cardiovascular, metabolic, endocrine); hematology; and every other area. Relative success within a group is estimated as for all programs, and left blank where fewer than 100 programs in the group carry the line. Whether a line's effect differs between groups is a joint Wald test of its interaction with the group in a modified Poisson model of advancing from Phase 2, adjusted for modality, novelty and entry period, with standard errors clustered by primary-target set; groups with fewer than 20 resolved Phase 2 programs carrying the line are left out of that test.
 
 **Adjusted relative risks.** The joint table comes from one modified Poisson model per phase containing every evidence line together with disease area, modality, entity novelty and entry period, with standard errors clustered by primary-target set.
 
