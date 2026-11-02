@@ -118,7 +118,12 @@ Held against the others, rare-variant and Mendelian evidence keeps an independen
 
 ### By disease area
 
-*Pending: whether each line predicts equally well in oncology, immunology, neuroscience, cardiometabolic disease, hematology and other areas, rerun on 2008–2019 entries with efficacy stops as a second outcome.*
+![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
+
+Human genetic evidence predicts approval in every area group with enough programs to measure it, and its effect does not differ measurably between them (p = 0.52 for the difference at Phase 2). It is largest in cardiometabolic and endocrine diseases (4.40×, 26% against 6%), about 2.5-fold in oncology (2.54×) and neuroscience (2.57×), and least clear in immunology and inflammation (1.87×, 0.87–3.29), where much of the evidence is GWAS. Hematology and the other areas have too few genetically supported programs to estimate. Leaving out any one group keeps the pooled relative success between 2.90 and 3.33.
+
+Somatic drivers give 2.43× in oncology. Mouse models help in cardiometabolic disease (1.73×) and immunology (1.82×) but not in oncology (1.16×). Expression in the disease is the one line whose effect differs between groups (p = 0.05), going the wrong way in immunology (0.53×); with three groups tested and a borderline p, this is a lead, not a finding.
+
 
 ### The drug's own pharmacology
 
@@ -412,6 +417,8 @@ Each entity is matched to its ChEMBL molecules by the first of three routes that
 Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical precedence, Europe PMC) are not used.
 
 **Relative success.** The 95% intervals resample primary-target sets (an entity's primary targets taken together), since programs on the same targets are not independent.
+
+**By disease area.** The 15 disease areas are pooled into six groups so that each holds enough programs with an evidence line: oncology; immunology and inflammation (autoimmune, allergy, respiratory, gastroenterology); neuroscience (neurology, psychiatry); cardiometabolic and endocrine (cardiovascular, metabolic, endocrine); hematology; and every other area. Relative success within a group is estimated as for all programs, and left blank where fewer than 100 programs in the group carry the line. Whether a line's effect differs between groups is a joint Wald test of its interaction with the group in a modified Poisson model of advancing from Phase 2, adjusted for modality, novelty and entry period, with standard errors clustered by primary-target set; groups with fewer than 20 resolved Phase 2 programs carrying the line are left out of that test.
 
 **Adjusted relative risks.** The joint table comes from one modified Poisson model per phase containing every evidence line together with disease area, modality, entity novelty and entry period, with standard errors clustered by primary-target set.
 

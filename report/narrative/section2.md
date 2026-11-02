@@ -26,8 +26,6 @@ The evidence lines overlap, so the figure holds the other lines, disease area, m
 
 ### By disease area
 
-{{AREA_RS_TABLE}}
-
 ![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
 
 {{SECTION2_AREA}}

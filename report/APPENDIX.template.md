@@ -36,6 +36,10 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 {{DOSE_TABLE}}
 
+### Relative success by disease area
+
+{{AREA_RS_TABLE}}
+
 ### What each line adds once the others are known
 
 {{JOINT_TABLE}}

@@ -105,6 +105,18 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | 0.61–0.89 (middle third) | 249 | 139 | 24.7% (15.4–34.0) |
 | above 0.89 (highest third) | 285 | 148 | 30.2% (23.1–38.1) |
 
+### Relative success by disease area
+
+| Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| Any human genetics | 2.54 (1.37–4.19), n=320 | 1.87 (0.87–3.29), n=140 | –, n=98 | 2.57 (1.25–4.51), n=130 | 4.40 (2.70–7.50), n=160 | –, n=61 | 0.52 (6 groups) |
+| GWAS | –, n=68 | –, n=81 | –, n=48 | –, n=28 | –, n=40 | –, n=0 | 0.92 (3 groups) |
+| Rare-variant or Mendelian genetics | 2.70 (1.43–4.41), n=274 | –, n=61 | –, n=60 | 2.57 (1.28–4.43), n=114 | 4.34 (2.60–7.51), n=140 | –, n=61 | 0.51 (6 groups) |
+| Somatic cancer driver | 2.43 (1.36–4.44), n=1,176 | –, n=3 | –, n=6 | –, n=1 | –, n=8 | –, n=2 | – |
+| Mouse model | 1.16 (0.61–1.91), n=456 | 1.82 (1.08–3.05), n=244 | 1.16 (0.49–2.25), n=198 | 1.71 (0.95–2.92), n=270 | 1.73 (1.04–2.85), n=433 | –, n=98 | 0.82 (6 groups) |
+| Expressed differently in the disease | 1.11 (0.63–1.84), n=739 | 0.53 (0.10–1.04), n=166 | –, n=35 | –, n=65 | –, n=8 | –, n=0 | 0.05 (3 groups) |
+| Potent at the target (100 nM or better) | 1.19 (0.65–2.12), n=918 | 1.52 (0.78–2.63), n=202 | 2.04 (1.01–3.57), n=252 | 0.68 (0.30–1.24), n=251 | 1.03 (0.53–1.77), n=163 | –, n=26 | 0.57 (5 groups) |
+
 ### What each line adds once the others are known
 
 | Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |

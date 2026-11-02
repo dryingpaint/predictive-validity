@@ -7,7 +7,7 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 166,
+   "rev": 167,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "1d15dd36ae7cea0e",
@@ -22,7 +22,7 @@
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Relative success": "5279f41015e62d8d",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Genetic dose–response": "157ea4f2c74e7ae8",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What each line adds once the others are known": "a13d87fd20ca8bcb",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "f16e8cae3d73060f",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "e0a18253f02ba342",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > The drug's own pharmacology": "c8a82ea7f613424d",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does the evidence predict which programs reach approval?": "8450ec28944325bd",
     "Predictive Validity in Drug Development > What translates to the clinic": "208d8275c94ab876",
@@ -41,7 +41,7 @@
     "Predictive Validity in Drug Development > Appendix > Change over time": "d46dfe734ae29cc7",
     "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "548b8f02e4877909",
     "Predictive Validity in Drug Development > Appendix > How stops were traced and efficacy failures classified": "b75063d101765520",
-    "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled (Section 2)": "bf1a211857e9c07f",
+    "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled (Section 2)": "04f9139192fd39e9",
     "Predictive Validity in Drug Development > Appendix > Design of the translation analysis (Section 3)": "10b2fa2105bdca3f",
     "Predictive Validity in Drug Development > Appendix > Limitations": "81eeb8fead25246a",
     "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
@@ -50,7 +50,7 @@
   "REPORT_APPENDIX.md": {
    "name": "Appendix detail",
    "node": "9bf11c10-61a3",
-   "rev": 17,
+   "rev": 18,
    "sections": {
     "Appendix detail": "dd0cdf63730712ee",
     "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
@@ -60,6 +60,7 @@
     "Appendix detail > Tables behind the figures > By disease area and modality": "b7d40f349747d25a",
     "Appendix detail > Tables behind the figures > Relative success": "a5648cf0c010eaf7",
     "Appendix detail > Tables behind the figures > Genetic dose–response": "f197e26786c64005",
+    "Appendix detail > Tables behind the figures > Relative success by disease area": "1cd5bd8540cbc9e9",
     "Appendix detail > Tables behind the figures > What each line adds once the others are known": "12c9266f9c641544",
     "Appendix detail > Tables behind the figures > Does the evidence predict which programs reach approval?": "f68e3fc7ed00eb23",
     "Appendix detail > Tables behind the figures > Confirmatory hypotheses": "c46aac56a78a2987",
@@ -134,9 +135,9 @@
    "published": "blob/d777be11-ef85"
   },
   "report/output/figures/genetics_by_area.png": {
-   "hash": "64e8ceefe777ed04",
-   "blob": "blob/c9060603-0e78",
-   "published": "blob/c9060603-0e78"
+   "hash": "be0c684128bc8203",
+   "blob": "blob/ca47754a-4ffd",
+   "published": "blob/ca47754a-4ffd"
   },
   "report/output/figures/history.png": {
    "hash": "e3607251702dd4ef",
