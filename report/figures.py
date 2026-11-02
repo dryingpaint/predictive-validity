@@ -82,6 +82,7 @@ REGISTERED = {  # each registry reason (report.section1.REASON_ORDER) as the cau
     "business or strategic (explicit)": "sponsor_decision", "sponsor decision, unspecified": "sponsor_decision",
     "enrollment, operational or regulatory": "operational", "positive readout, not advanced": "positive_not_advanced",
     "other stated reason": "unknown", "results posted, no reason stated, endpoint not assessable": "unknown",
+    "results posted, mixed primary endpoint": "unknown",
     "completed, no results posted, no reason stated": "unknown", "stopped, no reason stated": "unknown",
 }
 

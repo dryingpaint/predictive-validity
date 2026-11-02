@@ -260,6 +260,7 @@ REASON_ORDER = [
     ("business or strategic (explicit)", "business"), ("sponsor decision, unspecified", "unspecified"),
     ("enrollment, operational or regulatory", "operational"),
     ("positive readout, not advanced", "positive_readout"), ("other stated reason", "other"),
+    ("results posted, mixed primary endpoint", "results_unread"),
     ("results posted, no reason stated, endpoint not assessable", "results_unread"),
     ("completed, no results posted, no reason stated", "unexplained"),
     ("stopped, no reason stated", "unexplained"),
@@ -269,8 +270,10 @@ OPERATIONAL = {"enrollment_feasibility", "operational_or_site", "regulatory", "m
 
 
 def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
-    """Reason one trial of the stopping phase gives; a trial with no outcome row or
-    no stated reason falls into a "no reason stated" category, split by whether it
+    """Reason one trial of the stopping phase gives. Safety counts only when the sponsor states it (an adverse-event
+    excess in posted results is not the reason a sponsor gave), and a positive readout needs a met primary endpoint or
+    stated early success; a mixed primary endpoint with no stated reason is left for tracing. A trial with no outcome
+    row or no stated reason falls into a "no reason stated" category, split by whether it
     posted results."""
     unstated = ("results posted, no reason stated, endpoint not assessable" if has_results
                 else "completed, no results posted, no reason stated" if status == "COMPLETED"
@@ -281,7 +284,7 @@ def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
         return "efficacy: stated"
     if o.efficacy_failure or o.primary_endpoint == "not_met":
         return "efficacy: primary endpoint not met"
-    if o.stop_reason == "safety_tolerability" or o.safety_signal == "notable":
+    if o.stop_reason == "safety_tolerability":
         return "safety"
     if o.stop_reason == "pk_pd_or_formulation":
         return "PK, dose or formulation"
@@ -291,10 +294,12 @@ def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
         return "sponsor decision, unspecified"
     if o.stop_reason in OPERATIONAL:
         return "enrollment, operational or regulatory"
-    if o.primary_endpoint in ("met", "mixed") or o.stop_reason == "objectives_met_or_early_success":
+    if o.primary_endpoint == "met" or o.stop_reason == "objectives_met_or_early_success":
         return "positive readout, not advanced"
     if o.stop_reason == "other":
         return "other stated reason"
+    if o.primary_endpoint == "mixed":
+        return "results posted, mixed primary endpoint"
     return unstated
 
 
