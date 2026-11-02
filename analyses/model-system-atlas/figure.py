@@ -7,7 +7,8 @@ Reads one JSON file per context from contexts/ and writes atlas.png beside this 
 the disease area the report uses (preclin.mondo_bio_area for the context's MONDO term). Each context
 file holds `cells`: for each decision, a list of {year, status, note, src} entries, each the year the
 best model reached that status. A cell's status in a year is that of the latest entry at or before it.
-Each tile shows the cell's latest change (year, short note, source) above a strip of its status by year.
+Each tile names the cell's best model, gives the year and reason for its latest status with the source, and shows a strip
+of its status by year.
 """
 
 import glob
@@ -20,6 +21,8 @@ from matplotlib.patches import Patch, Rectangle
 HERE = os.path.dirname(os.path.abspath(__file__))
 YEAR0, YEAR1 = 1985, 2026
 DECISIONS = [("engagement", "Target engagement"), ("dose", "Dose"), ("efficacy", "Efficacy"), ("safety", "Safety")]
+QUESTIONS = {"engagement": "Does the drug hit its target?", "dose": "How much drug is needed?",
+             "efficacy": "Will the disease respond?", "safety": "Will people be harmed?"}
 STATUS = {
     "cal": ("#00707d", "Calibrated against clinical outcomes"),
     "cause": ("#11a9b3", "Carries the human cause, not calibrated"),
@@ -58,9 +61,9 @@ def main():
     for r in rows:
         if not any(k == "area" and v == r["area"] for k, v, _ in layout):
             layout.append(("area", r["area"], 0.42))
-        layout.append(("ctx", r, 0.74))
+        layout.append(("ctx", r, 0.9))
 
-    head_h, foot_h = 1.95, 0.45
+    head_h, foot_h = 2.1, 0.45
     matrix_h = sum(h for _, _, h in layout)
     W = 14.5
     fig_h = head_h + matrix_h + foot_h
@@ -71,8 +74,8 @@ def main():
 
     fig.text(0.012, fy(0.3), "Where preclinical models predict, and since when", fontsize=17, fontweight="bold", color=INK, va="top")
     fig.text(0.012, fy(0.66),
-             "Best available model for each context of use (disease × the patients its cause defines × mechanism) and decision. "
-             "Each tile gives the latest change and its source; the strip shows its status from 1985 to 2026.",
+             "For each disease, patient group and drug class: the best preclinical model for each question, why it has its status, "
+             "and how that status changed from 1985 to 2026.",
              fontsize=9.3, color=MUTED, va="top")
     handles = [Patch(facecolor=c, edgecolor="none", label=l) for k, (c, l) in STATUS.items()]
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.008, fy(0.9)), ncol=5, frameon=False,
@@ -84,7 +87,8 @@ def main():
     for j, (key, title) in enumerate(DECISIONS):
         ax = fig.add_axes([label_w + j * (col_w + gap), fy(head_h + matrix_h), col_w, matrix_h / fig_h])
         ax.set_xlim(0, 1); ax.set_ylim(matrix_h, 0); ax.axis("off")
-        fig.text(label_w + j * (col_w + gap), fy(head_h - 0.32), title, fontsize=10.5, fontweight="bold", color=INK, va="bottom")
+        fig.text(label_w + j * (col_w + gap), fy(head_h - 0.42), title, fontsize=10.5, fontweight="bold", color=INK, va="bottom")
+        fig.text(label_w + j * (col_w + gap), fy(head_h - 0.27), QUESTIONS[key], fontsize=8.2, color=MUTED, va="bottom")
         axes.append((key, ax))
 
     x0, x1 = 0.035, 0.965
@@ -105,9 +109,9 @@ def main():
             if not hist:
                 continue
             last = hist[-1]
-            ax.text(x0, t0 + 0.15, f"{last['year']}  {last['short']}", fontsize=7.3, color=INK, va="center",
-                    fontweight="bold" if last["status"] in ("cal", "misled") else "normal")
-            ax.text(x0, t0 + 0.33, last.get("srcLabel", ""), fontsize=6.6, color=MUTED, va="center", style="italic")
+            ax.text(x0, t0 + 0.15, last.get("model", ""), fontsize=7.6, fontweight="bold", color=INK, va="center")
+            ax.text(x0, t0 + 0.33, f"{last['year']}: {last.get('reason', last['short'])}", fontsize=6.9, color=INK, va="center")
+            ax.text(x0, t0 + 0.5, last.get("srcLabel", ""), fontsize=6.4, color=MUTED, va="center", style="italic")
             sy, sh = t1 - 0.17, 0.1
             for a, b, st in spans(hist):
                 ax.add_patch(Rectangle((yx(a), sy), yx(b) - yx(a), sh, facecolor=STATUS[st][0], edgecolor="none"))

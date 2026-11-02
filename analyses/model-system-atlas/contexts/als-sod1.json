@@ -16,7 +16,9 @@
     "note": "The standard mouse carries human mutant SOD1 (23 copies; patients carry one).",
     "src": "https://doi.org/10.1080/17482960701856300",
     "srcLabel": "Scott 2008",
-    "short": "Mouse carries human mutant SOD1"
+    "short": "Mouse carries human mutant SOD1",
+    "model": "SOD1-G93A mouse",
+    "reason": "Carries the patients' mutant gene"
    }
   ],
   "dose": [],
@@ -27,7 +29,9 @@
     "note": "Model and patients share the cause.",
     "src": "https://doi.org/10.1080/17482960701856300",
     "srcLabel": "Scott 2008",
-    "short": "Model and patients share the cause"
+    "short": "Model and patients share the cause",
+    "model": "SOD1-G93A mouse",
+    "reason": "Shares the patients' cause"
    }
   ],
   "safety": []

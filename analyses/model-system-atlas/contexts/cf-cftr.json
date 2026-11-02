@@ -24,7 +24,9 @@
     "note": "Sweat chloride, the clinical read-out of the same channel, fell 48 mmol/L in STRIVE.",
     "src": "https://doi.org/10.1056/NEJMoa1105185",
     "srcLabel": "Ramsey 2011",
-    "short": "Sweat chloride fell 48 mmol/L"
+    "short": "Sweat chloride fell 48 mmol/L",
+    "model": "Patient bronchial cells",
+    "reason": "Matched sweat chloride in patients"
    }
   ],
   "dose": [
@@ -34,7 +36,9 @@
     "note": "Cell assays carry the patient variant but predict who responds, not how much; the label says the in-vitro gain does not correlate with clinical response.",
     "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ab0c9f8-3eee-4e0f-9f3f-c1e16aaffe25",
     "srcLabel": "Kalydeco label",
-    "short": "Predicts who responds, not how much"
+    "short": "Predicts who responds, not how much",
+    "model": "Rat cells carrying each CFTR mutation",
+    "reason": "Predicts who responds, not how much"
    }
   ],
   "efficacy": [
@@ -52,7 +56,9 @@
     "note": "FDA added 23 mutations to ivacaftor's label on cell-assay data, with no new trial.",
     "src": "https://doi.org/10.1513/AnnalsATS.201708-668PS",
     "srcLabel": "Durmowicz 2018",
-    "short": "FDA adds 23 mutations on cell data"
+    "short": "FDA adds 23 mutations on cell data",
+    "model": "Rat cells carrying each CFTR mutation",
+    "reason": "FDA expanded the label on its data"
    }
   ],
   "safety": []

@@ -24,7 +24,9 @@
     "note": "Animal exposure targets (free AUC/MIC 25–34) agreed with the clinical microbiological breakpoint (33.7).",
     "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
     "srcLabel": "Ambrose 2001",
-    "short": "Animal and patient targets agree"
+    "short": "Animal and patient targets agree",
+    "model": "Neutropenic mouse infection",
+    "reason": "Animal and patient targets agreed"
    }
   ],
   "dose": [
@@ -42,7 +44,9 @@
     "note": "Animal and patient exposure targets agreed for fluoroquinolones; EMA later based dose selection on nonclinical targets.",
     "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
     "srcLabel": "Ambrose 2001",
-    "short": "Targets agree; EMA doses from them"
+    "short": "Targets agree; EMA doses from them",
+    "model": "Neutropenic mouse infection",
+    "reason": "Regulators set doses from its targets"
    }
   ],
   "efficacy": [
@@ -52,7 +56,9 @@
     "note": "Killing carries over, but cure also depends on the host (neutropenic model; albumin strongly predicted tigecycline success).",
     "src": "https://doi.org/10.1128/aac.01615-10",
     "srcLabel": "Bhavnani 2012",
-    "short": "Cure also depends on the host"
+    "short": "Cure also depends on the host",
+    "model": "Neutropenic mouse infection",
+    "reason": "Kills the pathogen; cure needs the host"
    }
   ],
   "safety": []

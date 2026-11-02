@@ -17,7 +17,9 @@
     "note": "Phase 3 dose chosen on tolerability; kynurenine, the read-out of IDO1 activity, was not measured.",
     "src": "https://doi.org/10.1200/JCO.2018.78.9602",
     "srcLabel": "Mitchell 2018",
-    "short": "Dose set on tolerability; target unmeasured"
+    "short": "Dose set on tolerability; target unmeasured",
+    "model": "None",
+    "reason": "Dose set on tolerability alone"
    }
   ],
   "efficacy": [
@@ -35,7 +37,9 @@
     "note": "ECHO-301 (n=706): no benefit over pembrolizumab alone (PFS HR 1.00).",
     "src": "https://doi.org/10.1016/S1470-2045(19)30274-8",
     "srcLabel": "Long 2019",
-    "short": "ECHO-301: no benefit"
+    "short": "ECHO-301: no benefit",
+    "model": "Syngeneic mouse melanoma",
+    "reason": "Phase 3 showed no benefit"
    }
   ],
   "safety": []

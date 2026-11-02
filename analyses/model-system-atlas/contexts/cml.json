@@ -24,7 +24,9 @@
     "note": "53 of 54 patients had complete hematologic responses at ≥300 mg/day.",
     "src": "https://doi.org/10.1056/NEJM200104053441401",
     "srcLabel": "Druker 2001",
-    "short": "53 of 54 complete responses"
+    "short": "53 of 54 complete responses",
+    "model": "BCR-ABL cells, patient colonies",
+    "reason": "53 of 54 patients responded"
    }
   ],
   "dose": [
@@ -34,7 +36,9 @@
     "note": "Trough at 350 mg exceeded the cellular IC50, but ≥400 mg came from clinical white-cell response.",
     "src": "https://doi.org/10.1200/jco.2004.03.050",
     "srcLabel": "Peng 2004",
-    "short": "Trough > IC50; dose set clinically"
+    "short": "Trough > IC50; dose set clinically",
+    "model": "BCR-ABL cell potency",
+    "reason": "Below trough; dose set clinically"
    }
   ],
   "efficacy": [
@@ -52,7 +56,9 @@
     "note": "IRIS confirmed cytogenetic response; the mutagenesis screen recovered all major patient resistance mutations.",
     "src": "https://doi.org/10.1016/S0092-8674(03)00190-9",
     "srcLabel": "Azam 2003",
-    "short": "Screen recovers patients' mutations"
+    "short": "Screen recovers patients' mutations",
+    "model": "Ba/F3 cells with human BCR-ABL",
+    "reason": "Recovered patients' resistance mutations"
    }
   ],
   "safety": []

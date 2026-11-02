@@ -26,7 +26,9 @@
     "note": "Minocycline sped decline in a Phase 3 of 412 patients; a rigorous retest found no drug extended mouse survival.",
     "src": "https://doi.org/10.1016/S1474-4422(07)70270-3",
     "srcLabel": "Gordon 2007",
-    "short": "Minocycline harms; retest null"
+    "short": "Minocycline harms; retest null",
+    "model": "SOD1-G93A mouse",
+    "reason": "Minocycline harmed; retest null"
    }
   ],
   "safety": []

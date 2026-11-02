@@ -16,7 +16,9 @@
     "note": "Brain occupancy measured directly by PET in healthy volunteers: ≥90% at ≥100 mg/day.",
     "src": "https://doi.org/10.1016/j.biopsych.2004.02.007",
     "srcLabel": "Bergström 2004",
-    "short": "PET: ≥90% brain occupancy in volunteers"
+    "short": "PET: ≥90% brain occupancy in volunteers",
+    "model": "Gerbil foot tap, then human PET",
+    "reason": "≥90% occupancy confirmed"
    }
   ],
   "dose": [],
@@ -35,7 +37,9 @@
     "note": "Five Phase 3s at ~90% occupancy failed while paroxetine worked.",
     "src": "https://doi.org/10.1016/j.biopsych.2005.07.013",
     "srcLabel": "Keller 2006",
-    "short": "Five Phase 3s fail at ~90% occupancy"
+    "short": "Five Phase 3s fail at ~90% occupancy",
+    "model": "Gerbil and guinea-pig behaviour",
+    "reason": "Five Phase 3s failed"
    }
   ],
   "safety": []
