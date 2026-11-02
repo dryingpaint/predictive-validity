@@ -20,5 +20,7 @@ RECENT = (date(2015, 1, 1), date(2025, 12, 31))
 # Stops traced and labelled (pipeline.stops): every Phase 1-3 entry from 2008 through 2025, so the
 # Section 1 headline window and RECENT both lie inside it.
 TRACING = (date(2008, 1, 1), date(2025, 12, 31))
-# Section 2 prediction: Phase 1 entries with ten years to reach approval before the snapshot.
+# Section 2 prediction: Phase 1 entries with ten years to reach approval before the snapshot, the one
+# analysis outside SECTION1, since a six-year horizon on SECTION1 halves the approvals it learns from
+# (that version is reported as a check).
 SECTION2_PREDICT = (date(2008, 1, 1), date(2016, 10, 20))

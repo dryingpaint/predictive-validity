@@ -32,7 +32,7 @@ with cluster-robust errors (cluster = primary-target set), adjusting for disease
 area, modality, entity novelty and entry period, one evidence line at a time and
 all lines jointly. Genetic dose-response: LOA by tertile of the positive genetic
 scores. Prediction is evaluated on a fixed-horizon cohort (Phase 1 entry
-2008-2016, approval within ten years), with the Open Targets evidence and
+2008-2016, approval within ten years; 2008-2019 within six years as a check), with the Open Targets evidence and
 novelty as of entry, by cross-validation grouped by primary-target set and a
 temporal split; each evidence line's contribution is the drop in
 cross-validated AUC when it is removed (human genetics: GWAS and rare-variant
@@ -46,6 +46,7 @@ from __future__ import annotations
 import json
 import os
 from collections import defaultdict
+from datetime import date
 
 import numpy as np
 import pandas as pd
@@ -278,7 +279,7 @@ def by_area(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
                        for grp, g in rows.groupby("area_group") for f in AREA_LINES])
     r = rows[(rows.phase == 2) & rows.event.isin(["advanced", "suspended"])].copy()
     r["y"] = (r.event == "advanced").astype(int)
-    r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
+    r["period"] = pd.cut(r.entry_year, PERIOD_BINS).astype(str)
     tests = []
     for f in AREA_LINES:
         r["x"] = (r[f] > 0).astype(int)
@@ -301,7 +302,7 @@ def by_area(rows: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFram
     return rs, pd.DataFrame(tests), loo
 
 
-HORIZON_DAYS = 3653
+PREDICT_YEARS, PREDICT_YEARS_CHECK = 10, 6  # approval horizons of the prediction and of its SECTION1 check
 CV_REPEATS = 20  # repetitions of the grouped 5-fold split; one split's AUC moves by several points with the folds
 
 
@@ -316,18 +317,24 @@ def resample_targets(groups: np.ndarray, y: np.ndarray, rng: np.random.Generator
             yield m
 
 
-def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Fixed-horizon prediction: programs entering Phase 1 in 2008-2016, outcome =
-    FDA approval for the disease within ten years; Open Targets evidence and
-    novelty as of entry. Human genetics enters as its parts (GWAS, rare-variant)
+def temporal_split_year(window: tuple[date, date]) -> int:
+    return (window[0].year + window[1].year) // 2
+
+
+def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[date, date],
+               years: int) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Fixed-horizon prediction: programs entering Phase 1 in `window`, outcome =
+    FDA approval for the disease within `years`; Open Targets evidence and
+    novelty as of entry. The temporal split trains on entries up to the window's
+    middle year (temporal_split_year) and tests on later ones. Human genetics enters as its parts (GWAS, rare-variant)
     and is removed as a group; a line with fewer than MIN_PROGRAMS_RS programs
     carrying it is left out."""
-    rows = phase_rows(progs, trials, snap, window=SECTION2_PREDICT)
+    rows = phase_rows(progs, trials, snap, window=window)
     rows = rows[rows.phase == 1]
     ev = target_evidence(rows, progs)
     d = rows.merge(ev, on=["program_id", "phase"])
     appr = pd.to_datetime(d.approval_date)
-    d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= HORIZON_DAYS)).astype(int)
+    d["y"] = (appr.notna() & ((appr - d.entry).dt.days <= round(365.25 * years))).astype(int)
     model_features = [f for f in FEATURES if f != "genetic_any" and f not in DRUG
                       and (d[f] > 0).sum() >= MIN_PROGRAMS_RS]
     ablations = {f: [f] for f in model_features}
@@ -355,8 +362,8 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap) -> tuple[pd.Data
             for train, test in folds:
                 oof[test] += fit_predict(X, train, test) / CV_REPEATS
         preds[("grouped_cv", name)] = (np.arange(len(d)), oof)
-        train = np.where(d.entry_year <= 2012)[0]
-        test = np.where(d.entry_year >= 2013)[0]
+        train = np.where(d.entry_year <= temporal_split_year(window))[0]
+        test = np.where(d.entry_year > temporal_split_year(window))[0]
         preds[("temporal", name)] = (test, fit_predict(X, train, test))
 
     rng = np.random.default_rng(SEED)
@@ -425,7 +432,9 @@ def main() -> None:
     area_loo.to_csv(os.path.join(OUT, "genetics_leave_one_area_out.csv"), index=False)
     groups = data.assign(area_group=data.bio_area.map(AREA_GROUPS).fillna("other")).groupby("area_group")
 
-    metrics, ablation, cohort = prediction(progs, trials, snap)
+    metrics, ablation, cohort = prediction(progs, trials, snap, SECTION2_PREDICT, PREDICT_YEARS)
+    metrics_check, _, cohort_check = prediction(progs, trials, snap, SECTION1, PREDICT_YEARS_CHECK)
+    metrics_check.to_csv(os.path.join(OUT, "prediction_metrics_6y.csv"), index=False)
     metrics.to_csv(os.path.join(OUT, "prediction_metrics.csv"), index=False)
     ablation.to_csv(os.path.join(OUT, "prediction_ablation.csv"), index=False)
     cohort[["program_id", "target", "entry_year", "y"]].to_csv(os.path.join(OUT, "prediction_cohort.csv"), index=False)
@@ -453,6 +462,10 @@ def main() -> None:
                "dose": keyed(dose, "band"), "prediction": keyed(metrics, "split", "features"),
                "ablation": keyed(ablation, "feature"), "n_prediction": int(len(cohort)),
                "n_prediction_positive": int(cohort.y.sum()),
+               "prediction_split_year": temporal_split_year(SECTION2_PREDICT), "prediction_years": PREDICT_YEARS,
+               "prediction_window": [SECTION2_PREDICT[0].year, SECTION2_PREDICT[1].year],
+               "prediction_6y": keyed(metrics_check, "split", "features"), "n_prediction_6y": int(len(cohort_check)),
+               "n_prediction_6y_positive": int(cohort_check.y.sum()),
                "rs_drug_measured": keyed(rs_measured, "feature"),
                "area": {"rs": keyed(area_rs, "group", "feature"), "tests": keyed(area_tests, "feature"),
                         "loo": keyed(area_loo, "left_out"),

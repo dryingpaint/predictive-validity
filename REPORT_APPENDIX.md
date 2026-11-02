@@ -11,16 +11,9 @@ Every case picked by the rule protocol, checked by agents against primary source
 | Mendelian evidence for a non-hereditary disease | insulin efsitora alfa (INSR) | type 2 diabetes mellitus | 2018-11-15 | yes; Kadowaki T et al., 'Two mutant alleles of the insulin receptor gene in a patient with extreme insulin resistance', Science 1988 (PMID 2834824) - INSR… (1988) | advanced | – |
 | Mendelian evidence for a non-hereditary disease | RO7123520 (CDH11 (binder_neutralizer), TNF (binder_neutralizer)) | rheumatoid arthritis | 2016-12-22 | no; Balding J et al., "Cytokine gene polymorphisms: association with psoriatic arthritis susceptibility and severity", Arthritis Rheum 2003;48(5):1408-13, PMID… (2003) | did not advance | engagement not shown |
 | Mendelian evidence for a non-hereditary disease | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | partial; Jeunemaitre X, Soubrier F, ... Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct 2;71(1):169-80 (PMID… (1992) | did not advance | engaged, disease did not respond |
-| Mendelian evidence for a non-hereditary disease | semorinemab (MAPT) | Alzheimer disease | 2017-10-04 | partial; Hutton M et al., 'Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17', Nature 1998 (PMID 9641683); also Poorkaj… (1998) | did not advance | engaged, disease did not respond |
-| Mendelian evidence for a non-hereditary disease | cevidoplenib (SYK) | rheumatoid arthritis | 2019-03-20 | no; Wang L et al., Gain-of-function variants in SYK cause immune dysregulation and systemic inflammation in humans and mice, Nat Genet 53:500-510 (closest… (2021) | did not advance | wrong population |
-| Mendelian evidence for a non-hereditary disease | zagotenemab (MAPT) | Alzheimer disease | 2018-04-30 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705 (includes R406W, a… (1998) | did not advance | engaged, disease did not respond |
 | Approved drug on the target, related disease (Lin ≥ 0.5) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; FDA accelerated approval of IRESSA (gefitinib), NDA 21-399, AstraZeneca, 5 May 2003, for locally advanced or metastatic NSCLC after failure of platinum-based… (2003) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | trastuzumab deruxtecan (ERBB2 (binder_neutralizer)) | gastric cancer | 2019-11-26 | yes; FDA supplemental BLA approval letter STN 103792/5250, Herceptin (trastuzumab, Genentech), dated October 20, 2010. It approved Herceptin for HER2-overexpressing… (2010) | advanced | – |
 | Approved drug on the target, related disease (Lin ≥ 0.5) | min-117 (HTR1A+SLC6A4) | major depressive disorder | 2018-03-30 | yes; FDA approval of fluoxetine (Prozac, NDA 018936), a SLC6A4 (SERT) inhibitor, for major depressive disorder, 1987-12-29; many later SSRIs/SNRIs and vilazodone… (1987) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | trazodone (HTR2A, SLC6A4) | diabetic neuropathy | 2017-05-16 | yes; Cymbalta (duloxetine HCl, Eli Lilly), NDA 021733, approved 2004-09-03 (Lilly announced it 2004-09-07) for the management of diabetic peripheral neuropathic… (2004) | did not advance | trial design |
 | Germline mechanism concordant with the drug (added after the plan) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; Bell DW et al., "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR", Nat Genet 2005;37(12):1315-6 (PMID… (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | cinpanemab (SNCA) | Parkinson disease | 2018-01-10 | yes; Polymeropoulos MH et al. 'Mutation in the alpha-synuclein gene identified in families with Parkinson's disease.' Science 1997;276:2045-2047 (PMID 9197268… (1997) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | yes; Jeunemaitre X, Soubrier F, Kotelevtsev YV, Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct… (1992) | did not advance | engaged, disease did not respond |
 
 ## Tables behind the figures
 
@@ -148,11 +141,11 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 | Validation | Features | AUC (95% CI) | PR-AUC (base rate) | Programs (approved) |
 | :---- | :---- | :---- | :---- | :---- |
 | Held-out target sets | Area, modality, novelty, year | 0.605 (0.540–0.668) | 0.098 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | Area, modality, novelty, year | 0.620 (0.545–0.691) | 0.105 (0.056) | 1,603 (89) |
+| Temporal (later entrants held out) | Area, modality, novelty, year | 0.620 (0.545–0.691) | 0.105 (0.056) | 1,603 (89) |
 | Held-out target sets | … plus all evidence lines | 0.641 (0.580–0.705) | 0.118 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | … plus all evidence lines | 0.637 (0.565–0.719) | 0.125 (0.056) | 1,603 (89) |
+| Temporal (later entrants held out) | … plus all evidence lines | 0.637 (0.565–0.719) | 0.125 (0.056) | 1,603 (89) |
 | Held-out target sets | Evidence lines only | 0.622 (0.542–0.703) | 0.092 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | Evidence lines only | 0.623 (0.555–0.693) | 0.105 (0.056) | 1,603 (89) |
+| Temporal (later entrants held out) | Evidence lines only | 0.623 (0.555–0.693) | 0.105 (0.056) | 1,603 (89) |
 
 Change in held-out AUC when each line is removed from the full model:
 
@@ -254,9 +247,9 @@ Every rule the plan registered, each against programs without it, before the rul
 
 | Rule | Cases | Advanced within 4 years (verified) | Evidence claim verified | Evidence published before entry | Why the others stopped |
 | :---- | :---- | :---- | :---- | :---- | :---- |
-| Mendelian evidence for a non-hereditary disease | 6 | 1 | 4 (3 partly) | 5 | engaged, disease did not respond: 3, engagement not shown: 1, wrong population: 1 |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | 4 | 2 | 4 (0 partly) | 4 | engaged, disease did not respond: 1, trial design: 1 |
-| Germline mechanism concordant with the drug (added after the plan) | 3 | 1 | 3 (0 partly) | 3 | engaged, disease did not respond: 2 |
+| Mendelian evidence for a non-hereditary disease | 3 | 1 | 2 (1 partly) | 3 | engagement not shown: 1, engaged, disease did not respond: 1 |
+| Approved drug on the target, related disease (Lin ≥ 0.5) | 2 | 1 | 2 (0 partly) | 2 | engaged, disease did not respond: 1 |
+| Germline mechanism concordant with the drug (added after the plan) | 1 | 1 | 1 (0 partly) | 1 | – |
 
 ## Sources in detail
 

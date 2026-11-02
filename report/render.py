@@ -203,7 +203,7 @@ def chembl_match_table() -> str:
 
 def prediction_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
-    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (2013–2016)"}
+    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (later entrants held out)"}
     features = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus all evidence lines",
                 "evidence": "Evidence lines only"}
     df = df.assign(**{"Validation": df.split.map(splits), "Features": df.features.map(features),

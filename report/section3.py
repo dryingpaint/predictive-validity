@@ -610,9 +610,9 @@ DISCOVERY_SHARE = 0.6  # share of target sets in the discovery half
 DISCOVERY_FLOOR = 1.3  # the discovery risk ratio's 90% lower bound must exceed this
 CONFIRM_RR = 1.2  # the held-out risk ratio, and the risk ratio without the most influential target, must reach this
 MIN_SPLIT_TARGETS = 5  # exposed target sets below which a half gets no estimate
-INFLUENTIAL_TARGETS, CASES_PER_INFLUENTIAL = 3, 2
-CASES_RANDOM = 4  # successes and failures drawn per rule
-CASES_EFFICACY = 6  # programs stopped for efficacy after a missed randomised trial, drawn per rule
+INFLUENTIAL_TARGETS, CASES_PER_INFLUENTIAL = 3, 1
+CASES_RANDOM = 3  # successes and failures drawn per rule
+CASES_EFFICACY = 2  # programs stopped for efficacy after a missed randomised trial, drawn per rule
 
 
 # Kinds of evidence a sponsor could have before Phase 2: (label, exposure, regime). The benchmark is

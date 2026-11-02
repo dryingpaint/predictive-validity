@@ -599,7 +599,9 @@ def prediction():
              "evidence": "Evidence lines only"}
     colors = {"covariates": BAR, "covariates+evidence": ACCENT, "evidence": INK2}
     ticks, labels, y = [], [], 0
-    for split, title in (("grouped_cv", "Targets held out"), ("temporal", "Later programs held out (2013–2016)")):
+    n2 = json.load(open(os.path.join(OUT, "section2", "numbers.json")))
+    later = f"Later programs held out ({n2['prediction_split_year'] + 1}–{n2['prediction_window'][1]})"
+    for split, title in (("grouped_cv", "Targets held out"), ("temporal", later)):
         d = m[m.split == split].set_index("features")
         labels.append(title)
         ticks.append(y)
@@ -631,7 +633,8 @@ def prediction():
     a2.set_xlabel("Change in AUC when the line is removed (95% CI)", color=INK2, fontsize=8)
     a2.set_title("What each line contributes", loc="left", color=INK, fontsize=9)
     style(a2)
-    fig.suptitle("Programs entering Phase 1 in 2008–2016, approval within ten years", x=0.01, y=1.04, ha="left",
+    fig.suptitle(f"Programs entering Phase 1 in {n2['prediction_window'][0]}–{n2['prediction_window'][1]}, approval within "
+                 f"{n2['prediction_years']} years", x=0.01, y=1.04, ha="left",
                  color=INK2, fontsize=8)
     save(fig, "prediction")
 
