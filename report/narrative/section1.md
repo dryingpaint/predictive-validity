@@ -27,7 +27,7 @@ Each suspended program takes one reason from the industry trials of the phase it
 
 {{FAILURE_TABLE}}
 
-![Why suspended programs stopped, by phase](report/output/figures/failure_modes_by_phase.png)
+![Why suspended programs stopped](report/output/figures/failure_modes_by_phase.png)
 
 {{SECTION1_FAILURES}}
 

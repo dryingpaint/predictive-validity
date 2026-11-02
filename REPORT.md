@@ -121,7 +121,7 @@ Each suspended program takes one reason from the industry trials of the phase it
 | sponsor decision, unspecified | 3% (83) | 2% (101) | 1% (21) |
 | stopped, no reason stated | 9% (280) | 9% (401) | 10% (135) |
 
-![Why suspended programs stopped, by phase](report/output/figures/failure_modes_by_phase.png)
+![Why suspended programs stopped](report/output/figures/failure_modes_by_phase.png)
 
 The registry rarely says why a program stopped. In Phase 1, 66% of stopped programs left neither a stated reason nor a result, which is expected: Phase 1 trials seldom post results and companies seldom explain pausing early assets. In Phase 2 and Phase 3 the share without a reason falls to 36% and 32%. Efficacy is the recorded reason for 27% of programs that stopped in Phase 2 and 31% of those that stopped in Phase 3: the sponsor said so, or the posted or published primary endpoint was missed. Safety accounts for 3% and 4%: among Phase 2 and Phase 3 stops with an efficacy or safety reason, safety is 9% and 11%, against about 32% in Harrison (2016), whose 2013–2015 failures with a disclosed reason were 24% safety and 52% efficacy. Either registry records under-report safety stops, or company disclosures over-represent them.
 

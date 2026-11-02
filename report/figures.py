@@ -22,18 +22,13 @@ from report import bio, frame
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, s3_types, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
+from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
 
 INK, INK2, MUTED = "#0b0b0b", "#52514e", "#8a8984"
 GRID, BAR, ACCENT = "#e4e3df", "#c3c2b7", "#2a78d6"
-FAMILY_COLORS = {  # reference categorical order; each family keeps its hue in every panel
-    "Efficacy (stated or measured)": "#2a78d6", "Safety, PK or formulation": "#eb6834",
-    "Business or strategy (explicit)": "#1baf7a", "Sponsor decision, no reason": "#eda100",
-    "Enrollment, operational, regulatory": "#4a3aa7", "Positive readout, not advanced": "#008300",
-    "Other stated reason": "#6b6a65", "No reason, results posted": "#a5a39a", "No reason, no results": "#d6d5ce",
-}
 REASON_FAMILY = {
     "efficacy: stated": "Efficacy (stated or measured)",
     "efficacy: primary endpoint not met": "Efficacy (stated or measured)",
@@ -63,31 +58,6 @@ def save(fig, name):
     for ext in ("png", "svg"):
         fig.savefig(os.path.join(FIG, f"{name}.{ext}"), dpi=200, bbox_inches="tight")
     plt.close(fig)
-
-
-def failure_modes():
-    progs = pd.read_csv(os.path.join(OUT, "section1", "failure_modes_programs.csv"))
-    progs["family"] = progs.reason.map(REASON_FAMILY)
-    tab = progs.pivot_table(index="phase", columns="family", values="program_id", aggfunc="count", fill_value=0)
-    share = tab.div(tab.sum(axis=1), axis=0)
-    fig, ax = plt.subplots(figsize=(9, 3.2))
-    for i, ph in enumerate(sorted(share.index, reverse=True)):
-        left = 0.0
-        for fam, color in FAMILY_COLORS.items():
-            w = share.at[ph, fam] if fam in share.columns else 0.0
-            ax.barh(i, w, left=left, height=0.55, color=color, edgecolor="white", linewidth=2)
-            if w >= 0.07:
-                ax.text(left + w / 2, i, f"{w:.0%}", ha="center", va="center", color="white", fontsize=9)
-            left += w
-    ax.set_yticks(range(len(share)), [f"Phase {ph}\n{int(tab.loc[ph].sum()):,} programs"
-                                     for ph in sorted(share.index, reverse=True)], color=INK)
-    ax.set_xlim(0, 1)
-    ax.xaxis.set_major_formatter(matplotlib.ticker.PercentFormatter(1.0))
-    style(ax)
-    ax.legend(handles=[matplotlib.patches.Patch(color=c, label=f) for f, c in FAMILY_COLORS.items()],
-              ncol=4, frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(0, -0.18))
-    ax.set_title("Why suspended programs stopped, by the phase they stopped in", loc="left", color=INK, fontsize=11)
-    save(fig, "failure_modes_by_phase")
 
 
 EFFICACY = "#d62828"
@@ -120,6 +90,51 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
                     color="white" if dark(color) else INK2,
                     bbox=dict(boxstyle="square,pad=0.25", fc=color, ec="none") if hatched else None)
         start += w
+
+
+FAMILY_COLORS = {  # stacking order; hues follow SHOWN_COLORS so a cause looks the same in every stop figure
+    "Efficacy (stated or measured)": EFFICACY, "Safety, PK or formulation": "#f77f00",
+    "Business or strategy (explicit)": "#1d6f66", "Sponsor decision, no reason": "#2a9d8f",
+    "Enrollment, operational, regulatory": "#277da1", "Positive readout, not advanced": "#6a4c93",
+    "Other stated reason": "#8a8984", "No reason, results posted": "#d6d4cc", "No reason, no results": "#e8e6e0",
+}
+UNSTATED = {"No reason, results posted", "No reason, no results"}
+
+
+def failure_modes():
+    """Why suspended programs stopped: one 100% bar per phase, unstated reasons hatched."""
+    progs = pd.read_csv(os.path.join(OUT, "section1", "failure_modes_programs.csv"))
+    progs["family"] = progs.reason.map(REASON_FAMILY)
+    tab = progs.pivot_table(index="phase", columns="family", values="program_id", aggfunc="count", fill_value=0)
+    share = tab.div(tab.sum(axis=1), axis=0)
+    years = f"{SECTION1[0].year}–{SECTION1[1].year}"
+
+    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
+    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
+          "hatch.color": "white", "hatch.linewidth": 1.4}
+    with plt.rc_context(rc):
+        fig, ax = plt.subplots(figsize=(10.5, 3.75))
+        fig.subplots_adjust(left=0.13, right=0.97, top=0.78, bottom=0.03)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(-1.75, 2.45)
+        ax.axis("off")
+        fig.text(0.03, 0.965, "Why suspended programs stopped", fontsize=16, fontweight="demibold", color=INK, va="top")
+        fig.text(0.03, 0.875, f"Programs that stopped, phase entries {years}; the reason comes from their industry trials",
+                 fontsize=10.5, color=MUTED, va="top")
+        for k, ph in enumerate(sorted(share.index)):
+            y = 2 - k * 0.95
+            stacked(ax, y, [(float(share.at[ph, f]) if f in share.columns else 0.0, col, f in UNSTATED)
+                            for f, col in FAMILY_COLORS.items()], height=0.66)
+            ax.text(-0.02, y + 0.03, f"Phase {ph}", ha="right", va="bottom", fontsize=10.5, color=INK,
+                    fontweight="demibold")
+            ax.text(-0.02, y - 0.02, f"{int(tab.loc[ph].sum()):,} programs", ha="right", va="top", fontsize=7.5,
+                    color=MUTED)
+        ax.legend(handles=[matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                    hatch="////" if f in UNSTATED else None, label=f)
+                           for f, col in FAMILY_COLORS.items()],
+                  frameon=False, fontsize=8.5, loc="upper left", handlelength=1.0, handleheight=1.0,
+                  columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=3, bbox_to_anchor=(-0.12, 0.31))
+        save(fig, "failure_modes_by_phase")
 
 
 def efficacy_attribution():
