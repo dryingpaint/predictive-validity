@@ -76,6 +76,15 @@ def test_strings_resolving_a_shared_code_alike_are_left_alone():
     assert disagreements(names, decided) == {}
 
 
+def test_a_dose_unit_or_short_abbreviation_kept_as_a_code_groups_nothing():
+    names = {"1": "MG-2 : MG1000mg", "2": "itopride 50 mg", "3": "resveratrol 200 mg", "4": "Hib vaccine",
+             "5": "DTaP-Hib"}
+    decided = {"1": resolved(("MG", ["MG"])), "2": resolved(("itopride", [])), "3": resolved(("resveratrol", [])),
+               "4": resolved(("Hib conjugate", ["Hib"]), kind="vaccine"),
+               "5": resolved(("DTaP", []), ("Hib conjugate", []), kind="vaccine")}
+    assert disagreements(names, decided) == {}
+
+
 def test_a_parent_substance_is_offered_right_after_its_salt():
     found = [("LVM0PK6IHG", ["TAK-418"]), ("N9N6RK0CBN", ["TAK-418 FREE BASE"]), ("XYZ", ["TAK418"])]
     cands = candidate_uniis(found, {"LVM0PK6IHG": ["N9N6RK0CBN"], "XYZ": ["PARENT"]})

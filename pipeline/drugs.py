@@ -98,6 +98,7 @@ def render(p: dict) -> str:
 TASK = llm.Task(name="drug_moiety", prompt_version="v2", schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, subject_type="drug", effort="medium", max_tokens=3000)
 SIBLINGS = 8  # sibling strings shown to a second decision
+CODE_MIN = 3  # shortest sponsor-code key that groups sibling strings
 
 
 def moiety_key(name: str) -> str:
@@ -137,8 +138,11 @@ def disagreements(names: dict[str, str], resolved: dict[str, tuple[str, list[dic
     its decided kind and components. Siblings are strings with components or an unclear kind whose
     names carry, as words, the same sponsor code a decision kept. When they do not all resolve to
     the entity they most often give that code, the strings without it are decided again if the
-    rest are a majority, else all are."""
-    codes = {moiety_key(x) for _, comps in resolved.values() for c in comps for x in c["codes"]}
+    rest are a majority, else all are. Only keys shaped like a sponsor code (letters and digits, at
+    least CODE_MIN characters) define siblings: a dose unit or an abbreviation that a decision kept
+    as a code ("MG", "HIB") would otherwise group unrelated strings."""
+    codes = {k for _, comps in resolved.values() for c in comps for k in map(moiety_key, c["codes"])
+             if is_code(k) and len(k) >= CODE_MIN}
     members = defaultdict(list)
     for k, (kind, comps) in resolved.items():
         if comps or kind == "unclear":
