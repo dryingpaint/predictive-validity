@@ -35,7 +35,7 @@ def main():
             areas.append((r["area"], len(layout)))
         layout.append(r)
     n = len(layout)
-    row_h, head_h, foot_h = 0.42, 1.9, 0.5
+    row_h, head_h, foot_h = 0.42, 2.25, 0.55
     fig_h = head_h + row_h * n + foot_h
     fig = plt.figure(figsize=(14.5, fig_h), dpi=200)
     fy = lambda inches: 1 - inches / fig_h
@@ -47,8 +47,8 @@ def main():
     fig.text(0.012, fy(0.66), "How far each context's best model had got against patient results by 1995, 2005, 2015 and 2026. "
              "Further right = a stronger track record; red = contradicted by patients.", fontsize=9.5, color=MUTED, va="top")
     for k, (yr, c) in enumerate(YEARS):
-        fig.add_artist(plt.Line2D([0.012 + k * 0.075, 0.032 + k * 0.075], [fy(1.06), fy(1.06)], color=c, lw=2.2 if yr == 2026 else 1.4))
-        fig.text(0.036 + k * 0.075, fy(1.06), str(yr), fontsize=9.5, color=INK, va="center")
+        fig.add_artist(plt.Line2D([0.012 + k * 0.075, 0.032 + k * 0.075], [fy(1.08), fy(1.08)], color=c, lw=2.2 if yr == 2026 else 1.4))
+        fig.text(0.036 + k * 0.075, fy(1.08), str(yr), fontsize=9.5, color=INK, va="center")
 
     for j, (key, title) in enumerate(DECISIONS):
         ax = fig.add_axes([label_w + j * (col_w + gap), bottom, col_w, height])
@@ -84,8 +84,10 @@ def main():
     for i, r in enumerate(layout):
         lab.text(0.05, i + 0.12, f"{r['disease']}, {r['population']}", fontsize=7.8, color=INK, va="center")
 
-    fig.text(0.012, fy(fig_h - 0.14), "Hand-curated seed of 15 contexts, not a sample. Status rules and sources: issue #76 and contexts/*.json.",
-             fontsize=7.6, color=MUTED, va="bottom")
+    fig.text(0.012, fy(fig_h - 0.14),
+             "Rows are grouped by disease area; the frontier's shape depends on that order, and the track-record levels are ranked, not equally spaced.\n"
+             "Hand-curated seed of 15 contexts, not a sample. The model, reason and source behind each point are in the companion tile figure and contexts/*.json.",
+             fontsize=7.6, color=MUTED, va="bottom", linespacing=1.4)
     out = os.path.join(HERE, "frontier.png")
     fig.savefig(out, facecolor="white")
     print(out)
