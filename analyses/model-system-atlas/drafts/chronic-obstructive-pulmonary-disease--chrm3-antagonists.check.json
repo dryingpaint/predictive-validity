@@ -1,0 +1,51 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-obstructive-pulmonary-disease--chrm3-antagonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PubMed 8441333 carries DOI 10.1016/0024-3205(93)90312-q; quote verbatim in abstract. CHO/guinea-pig/dog models match MeSH. Untested is right: no patient data in source."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 1993,
+   "note": "DOI is CrossRef-registered (ERJ 8:1506-1513, 1995); 403 is a bot block. But Maesen 1993 pilot (DOI 10.1183/09031936.93.06071031, PMID 8370429) states the preclinical duration claim in-source then 10-15 h in 6 patients: first published comparison, direction matched."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Abstract gives no dose, exposure, occupancy or dosing-interval target; untested is right."},
+  {"cell": "dose", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested",
+   "note": "Source never predicted a dose, exposure or occupancy level; once-daily interval is the drafter's inference from a 34.7 h hM3 half-life and the dose came from clinical ranging. cf-cftr precedent keeps dose untested when the model predicts direction only. Collapse into entry 1."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; dog acetylcholine bronchospasm is the in-vivo efficacy model in the abstract."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 1993,
+   "note": "Quote and 20-25% vs 11% carry-over-corrected numbers verbatim in abstract. Same correction as engagement: the 1993 pilot (dose-related bronchodilation, peak 1.5-2 h) is the first published patient result set against the preclinical claim; 1995 RCT is the better number, not the first comparison."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Note over-reads: abstract says only 'kinetic receptor subtype selectivity', not a cardiac-sparing rationale. Status unaffected."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gavalda 2009 abstract does predict 'a favorable cardiovascular safety profile' from anaesthetised-dog heart rate vs tiotropium (TI 4.2 vs 1.6); Wise 2019 quote verbatim, MACE HR 0.89. Prediction is relative to tiotropium, trial is vs placebo, so direction_only is right. comparison_stated unverifiable (PMC captcha, JAMA paywalled)."}
+ ],
+ "missing": [
+  "FDA pharmacology reviews not checked (Tudorza NDA 202450 PharmR PDF >10 MB; Spiriva NDA 21-395 .cfm 404), so model_filed stays null for every entry.",
+  "Maesen 1993 pilot should carry the first same entries: https://doi.org/10.1183/09031936.93.06071031 (Eur Respir J 1993;6:1031-1036), quote 'Preclinical studies with Ba 679 Br have demonstrated a significantly longer duration of action than ipratropium bromide.' then 'A peak response was reached in 1.5-2 h, and persisted for 10-15 h in the majority of patients'.",
+  "Safety: an earlier class-level CV comparison exists in UPLIFT (Tashkin 2008, https://doi.org/10.1056/NEJMoa0805800, fewer cardiac AEs on tiotropium) but no primary source makes a tiotropium CV prediction from the model, so 2019 stands under rule 1.",
+  "Registry results-posted date for NCT01966107 not looked up (budget)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 1 strict vs house precedent: all four same entries have comparison_stated false. cf-cftr (Ramsey 2011) and ad-amyloid (Doody 2013) also rest on the drafter's juxtaposition and v2 says fact fields must not change the status call, so I scored to precedent. Read strictly, engagement/efficacy survive only on the Maesen 1993 pilot (prediction stated in-source) and safety becomes untested.",
+  "Same-year collision: model first use (Disse, Life Sci, 1993) and first comparison (Maesen pilot, Eur Respir J, Jul 1993) are both 1993, so rule 6's opening untested entry has zero width. Need a convention (month resolution, or keep both entries at 1993).",
+  "Quality bar: does an open-label n=6 pilot count as 'a published comparison', or does the first controlled trial? The brief sets no bar; the drafter chose the RCT, I applied rule 5 literally.",
+  "Dose cell: does a receptor dissociation half-life count as an 'exposure/occupancy target' when no dose or interval was derived from it in the source? I said no, following cf-cftr.",
+  "Engagement read-out: FEV1 is also the efficacy endpoint. Duration of bronchodilation as a PD time course is the closest available engagement read-out, but it double-counts with efficacy; the sweat-chloride analogy is imperfect."
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/atopic-eczema--nr3c1-agonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PNAS abstract quote verbatim (PMID 14694204; epub 2003-12-23, print Jan 2004). CT.gov NCT01299610 confirms the biopsy outcome 'results were not analyzed'. No patient GR-engagement comparison exists; untested stands."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "BJP 2009 abstract quote verbatim (PMID 19422381). Bayer synopsis reports only variable serum PK, no exposure target; untested stands. Minor: cell opens 2009 while model_first_use_year=2004; rule 6 would open the cell at 2004."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PNAS abstract quote verbatim (ZK 216348 vs prednisolone, murine skin inflammation). No patient comparison in 2004; untested stands."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": false, "proposed_status": "same", "proposed_year": 2015,
+   "note": "Quote verbatim, abstract only (Karger paywalled; Chrome has no access; refs 4-5 cite Schäcke 2004/Uings 2013). CT.gov values confirmed. 2% CI (-2.00, 0.23) includes FP's -1.51: underpowered non-result, not a contradiction. Mapracorat synopsis (2015-06-03) supplies a direction-only match."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PNAS abstract quote verbatim; 'ACTH suppression was similar' is a genuine no-HPA-sparing finding (ZK 216348, systemic rat dosing, not the clinical candidate). NCT01408511/NCT01407510 confirmed with no posted results."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract only). NCT01381445: 20 healthy volunteers, clobetasol 0.05% comparator, no CT.gov results. Brief's letter allows same; scientifically hollow because the efficacy half failed at the same doses. source_calls_it should be null (source does not compare with the model)."}
+ ],
+ "missing": [
+  "efficacy 2015: the mapracorat registry record should be its own entry (or the cell's source), not a judgement aside. Source: Bayer Clinical Study Synopsis, EudraCT 2010-024279-14 / NCT01359787 / Bayer study 15616, https://www.clinicaltrialsregister.eu/ctr-search/rest/download/result/attachment/2010-024279-14/1/4304 (first version publication date 03 Jun 2015). Verbatim quote: 'Statistically significant improvement in EASI from baseline to Visit 6 (EOSM) was observed for the 0.1% and 0.03% mapracorat groups compared with the vehicle, with the largest treatment difference in mean percentage change observed in the mapracorat 0.1% treatment group.' Facts: subjects=patients, comparison_stated=false, registry_date=2015-06-03, product_in_model=true (ZK 245186 dosed in Schäcke 2009 rodent models), magnitude=direction_only, source_calls_it=null, 'Publication(s): None', vehicle-only arms (no mometasone), 'No new safety findings have been observed during this study'.",
+  "Uings 2013 full text (PMC3831715) came back empty from the PMC tool, so the dose basis of 'comparable anti-inflammatory efficacy to FP' in mouse ICD (matched concentrations or matched effect?) is unverified; it bears on whether the 40x concentration gap in NCT01299610 is itself a potency miss (off_by_>5x) rather than within_2x on effect size.",
+  "efficacy 2015 fact fields: source_calls_it should be null, not 'miss' (Dölle's abstract characterises the result vs placebo, not vs the mouse model; comparison_stated is already false)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Inconclusive comparison: the brief has no status for 'compared, non-significant, CI spans the predicted effect'. Does contra require the patient result to be incompatible with the model's prediction (my reading: yes, so GW870086 at p=0.118, 59% of FP, CI -2.00..0.23 is not contra), or does failing the trial's own primary criterion while the comparator passed count as contra regardless of power? The draft's contra and my same both turn on this.",
+  "Same year, two drugs, opposite results: the override rule ('contra overrides every matched status') resolves the year only if one result is truly contra; the drafter's 'two statuses in one year would break the strip' is a figure-mechanics concern, not a rule. Also confirm that an EU-CTR sponsor synopsis PDF posted as a 'summary attachment' counts as a 'registry record' under rule 1 (I treated it as one) and that its year is the first-publication year (2015).",
+  "Safety match without the efficacy half: can a dissociation prediction ('less atrophy at efficacious doses') score same from a healthy-volunteer skin-thinning study against a superpotent comparator (clobetasol) when the same compound at the same doses showed no significant efficacy in patients? The letter of the brief says yes (four cells are scored independently); if the rule is amended to require the efficacious dose, this entry becomes untested.",
+  "Every non-untested status in this draft rests on drafter juxtaposition (comparison_stated=false for all). Rule 1 says the primary source must 'make the comparison'; the comparison_stated fact field implies juxtaposition is tolerated. Clarify which is intended, because under the strict reading both the 2015 efficacy and 2015 safety entries would fall to untested."
+ ]
+}

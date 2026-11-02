@@ -1,0 +1,49 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/endometriosis--gnrhr-antagonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Crossref and PubMed resolve (PMID 19006286; epub 2008-11-12, print 2008-12-11). Quote verbatim in abstract. Untested correct: medchem paper, castrated-macaque LH only, no patient data."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "untested", "proposed_year": 2009,
+   "note": "Resolves (PMID 19033369, PMC2646513; epub 2008-11-25, print 2009-02). Quote verbatim. Full text read: Intro cites Chen 2008 macaque LH; Discussion never compares. 55 healthy volunteers. Checker rule: no model-vs-patient comparison means untested; CF pattern would keep same."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Confirmed. Struthers dose range (25-400 mg single; 50-200 mg/d) and label 12.2 figures (median E2 ~42 and 12 pg/mL in Phase 3 patients) verbatim. Kim 2015 'suppressed serum LH levels only' verbatim. No macaque-derived human dose found."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Confirmed. Quote verbatim in abstract. Health Canada PM section 16 confirms no disease model in the elagolix package; the only on-target animal efficacy signal is reversible uterine atrophy in a 6-week monkey tox study."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "untested", "proposed_year": 2015,
+   "note": "Resolves (PMID 37186405; epub 2023-04-26, print 2023-07). Quote verbatim; rat vs dienogest, no patient comparison, untested holds. Rule 6: model first used for class 2015 (Kim 2015, SKI2670 rat autotransplant), so entry year 2015 not 2023. Wang 2026 DOI resolves; sentence unchecked."},
+  {"cell": "safety", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "untested", "proposed_year": 2018,
+   "note": "Label resolves; 13.1 quote verbatim (elision honest); 5.1 and 5.4 verbatim; registry dates verified. Label names no monkey, no 13.2. Health Canada PM 16: mouse 15-wk, rat 28-wk, cynomolgus 6/13-wk, beagle 39-wk; rat affinity 650-fold lower. Fix model field; untested stands."}
+ ],
+ "missing": [
+  "safety: cite the regulatory non-clinical source the label lacks. Health Canada Orilissa Product Monograph section 16 (https://pdf.hres.ca/dpd_pm/00075728.PDF, initial authorization 2018-10-04, control 282297) and Summary Basis of Decision SBD00426 (https://dhpp.hpfb-dgpsa.ca/review-documents/resource/SBD00426): species = mouse (15-wk dietary), rat (28-wk dietary), cynomolgus monkey (single-dose; 6-wk and 13-wk repeat-dose), beagle dog (39-wk, longest non-rodent). 'The affinity of elagolix for the rat GnRH receptor is 650-fold lower than for the human GnRH receptor' (rabbit 3.8-fold lower). Draft model field should read rat/mouse/dog/monkey, not 'rat and mouse ... plus monkey'.",
+  "safety, bone: no animal study in the elagolix package reports a bone or BMD finding (no bone mention anywhere in PM section 16). The monkey on-target signal was 'atrophy of the female reproductive organs; of uterus at doses >= 150 mg/kg/day and of cervix and vagina at all doses ... considered pharmacologically mediated effects and were reversible' (6-wk study, NOAEL 300 mg/kg/day, ~1x MRHD at lowest dose); the 13-wk monkey study showed nothing 'most likely due to substantial decline in plasma concentrations due to induction of enzymes'. Patients: dose-dependent BMD loss (SBD: lumbar spine -0.32%/-2.61% at 6 months, -0.63%/-3.61% at 12 months vs +0.47% placebo). Animal silence on bone did not hold; cf. AD/BACE precedent scored contra.",
+  "safety, liver: the animal package DID flag liver. PM 16: monkey single-dose MTD 300 mg/kg with ALT/AST/bilirubin changes above it; mouse 15-wk 'up to 3-fold elevation in ALT' and centrilobular hepatocellular change at 1700 mg/kg/day; dog 39-wk NOAEL 30 mg/kg/day 'based on clinical chemistry and gallbladder changes'. SBD: 'It was noted that elagolix could be associated with toxicity to the liver.' Patients (SBD): ALT >= 3x ULN in 0.2% (150 QD), 1.1% (200 BID) vs 0.1% placebo, no Hy's law. A direction-only match sits in one regulatory document, but no sentence states the comparison.",
+  "safety, class cross-check (relugolix): EMA Ryeqo CHMP assessment report EMA/CHMP/127692/2021 (https://www.ema.europa.eu/en/documents/assessment-report/ryeqo-epar-public-assessment-report_en.pdf): cynomolgus chosen as non-rodent (97.5% GnRHR homology vs 92.1% dog); 4-wk monkey 'increases in ALT/AST and histopathology findings in the liver were noted at 100 mg/kg/day'; 39-wk NOAEL 15 mg/kg/day 'based on liver toxicity'. Human-GnRHR knock-in mouse bone readout: 'There were no differences in cancellous and cortical bone density between intact, OVX and each treatment group' (an OVX-insensitive assay, i.e. the humanized mouse was negative on bone while women on relugolix monotherapy lose BMD). Assessor does not relate either to the clinical findings.",
+  "engagement, patient-side: if healthy volunteers are disallowed, the patient readout exists in the 2018 label 12.2 ('In the Phase 3 trials in women with endometriosis, ORILISSA caused a dose-dependent reduction in median estradiol concentrations to approximately 42 pg/mL ... and 12 pg/mL') and Taylor 2017 NEJM (10.1056/NEJMoa1700089, background sentence 'produced partial to nearly full estrogen suppression in previous studies'); registry NCT01931670 results first posted 2018-09-07, NCT01620528 2018-09-18 (CT.gov API v2, verified).",
+  "dose: a regulator-filed monkey exposure anchor exists that the draft does not mention: PM 16 reproductive-organ atrophy 'at all doses, which is approximately 1-fold the MRHD based on AUC' (6-wk cynomolgus). Still no published derivation of the human dose from it; untested holds, but model_filed for monkey should be true."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Healthy volunteers as 'patient results' for the engagement cell: the brief's same rule says patient results; Struthers 2009 is 55 healthy premenopausal women. For a pituitary GnRHR antagonist the readout is population-independent, and the subjects field exists to re-score. If HV counts, year 2009 stands; if not, the first patient-side readout is 2017 (Taylor NEJM) or 2018 (label 12.2), still juxtaposed.",
+  "Juxtaposition without a stated comparison: the checker brief lists 'same with no published model-vs-patient comparison (should be untested)' as a failure, but the cf-cftr house example scores same on exactly that pattern (Ramsey 2011). Struthers cites the macaque LH data in its Introduction and reports human LH/FSH/E2 suppression, but its Discussion never compares. Which document governs? I scored to the checker brief (untested) and flagged the alternative.",
+  "Regulatory-document juxtaposition for safety: Health Canada SBD00426 / PM 16 carry both halves (animal liver signal in mouse/monkey/dog; no bone finding in any species) and the clinical ALT and BMD results, without an explicit comparison sentence. Under the CF Kalydeco-label pattern this would score liver same 2018 and bone contra 2018 (silence did not hold, cf. AD/BACE 'missed in 4 species'), contra overriding. Under strict rule 1 it stays untested. Decide; I left untested.",
+  "Second model mid-cell: when a new model appears (rat autotransplant endometriosis), is the entry year the model's first use for the class (2015, Kim 2015, SKI2670, a class proxy never approved, product_in_model false) or the first product-dosed study (2023, Tezuka, linzagolix)? Rule 6 implies 2015; the draft's own model_first_use_year says 2015 while year says 2023."
+ ],
+ "test_3_fda_review": {
+  "reached": false,
+  "routes_tried": "accessdata.fda.gov direct curl returned the FDA abuse-detection 'excessive requests' page (HTTP 404 stub); WebFetch exceeded its 10 MB cap; Wayback Machine has no capture (404) and its availability API rate-limited; Drugs@FDA TOC page 404. A browser-user-agent retry was blocked by the permission classifier and not reattempted.",
+  "substitute_sources": "Health Canada Orilissa PM section 16 + SBD00426 (same non-clinical package); EMA Ryeqo EPAR for the relugolix class cross-check.",
+  "bone": "No. No bone or BMD finding is reported in any elagolix animal study (mouse, rat, monkey, dog); the monkey on-target signal was reversible uterine/cervical/vaginal atrophy at ~1x MRHD. Relugolix humanized-mouse bone density showed no treatment or OVX effect.",
+  "liver": "Yes. Monkey single-dose ALT/AST/bilirubin changes above the 300 mg/kg MTD; mouse up to 3-fold ALT with centrilobular hepatocellular change; dog 39-wk NOAEL set on clinical chemistry and gallbladder inflammation; SBD states elagolix 'could be associated with toxicity to the liver'. Relugolix monkey 39-wk NOAEL set on liver.",
+  "implication": "Under a juxtaposition rule the safety cell would move to contra 2018 (bone silence failed; liver matched); under strict rule 1 it stays untested. The FDA multidiscipline review should still be read to confirm the monkey findings and whether the FDA pharmacology reviewer drew the comparison."
+ }
+}

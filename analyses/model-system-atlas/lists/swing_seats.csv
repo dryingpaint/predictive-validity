@@ -1,0 +1,30 @@
+side,area,mondo_id,label,n
+enters under strict cohort,allergy,MONDO:0005271,allergic disease,7
+enters under strict cohort,allergy,MONDO:0005361,eosinophilic esophagitis,5
+leaves under strict cohort,allergy,MONDO:0700226,food allergy,9
+enters under strict cohort,endocrine,MONDO:0006964,secondary hyperparathyroidism,6
+enters under strict cohort,gastroenterology,MONDO:0005388,primary biliary cholangitis,15
+enters under strict cohort,gastroenterology,MONDO:0007186,gastroesophageal reflux disease,11
+leaves under strict cohort,gastroenterology,MONDO:0005155,cirrhosis of liver,28
+enters under strict cohort,hematology,MONDO:0010604,hemophilia B,10
+enters under strict cohort,hematology,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,9
+enters under strict cohort,infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18
+leaves under strict cohort,infectious_disease,MONDO:1040015,infectious disease with sepsis,39
+enters under strict cohort,metabolic,MONDO:0008300,Prader-Willi syndrome,6
+enters under strict cohort,neurology,MONDO:0006626,diabetic neuropathy,32
+enters under strict cohort,neurology,MONDO:0005277,migraine disorder,29
+leaves under strict cohort,neurology,MONDO:0004976,amyotrophic lateral sclerosis,53
+leaves under strict cohort,neurology,MONDO:0005301,multiple sclerosis,60
+enters under strict cohort,oncology,MONDO:0018906,follicular lymphoma,34
+leaves under strict cohort,oncology,MONDO:0010150,head and neck squamous cell carcinoma,89
+enters under strict cohort,ophthalmology,MONDO:0005338,open-angle glaucoma,20
+leaves under strict cohort,ophthalmology,MONDO:0020283,uveitis,20
+enters under strict cohort,other,MONDO:0011438,acne,31
+enters under strict cohort,other,MONDO:0005016,diabetic kidney disease,26
+leaves under strict cohort,other,MONDO:0005300,chronic kidney disease,44
+enters under strict cohort,psychiatry,MONDO:0007743,attention deficit-hyperactivity disorder,21
+enters under strict cohort,psychiatry,MONDO:0013600,insomnia,11
+leaves under strict cohort,psychiatry,MONDO:0005146,post-traumatic stress disorder,36
+leaves under strict cohort,psychiatry,MONDO:0007079,alcohol dependence,35
+enters under strict cohort,urology,MONDO:0001780,premature ejaculation,5
+leaves under strict cohort,urology,MONDO:0005362,erectile dysfunction,15

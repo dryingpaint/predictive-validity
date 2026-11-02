@@ -1,0 +1,50 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/prostate-cancer--ar-antagonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 14702632 (Nat Med 10:33, epub 2003-12-21). Quote verbatim in abstract. FDA PharmR lists 'LNCaP AR lux xenografts in castrated SCID' so model_filed=true holds. untested opener correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC2981508 full text. Quote verbatim; 22/30 sustained PSA declines, 13 >50% confirmed. Same paper carries mouse + patient data. NCT00510718 results first posted 2019-10-03 (CT.gov API) matches registry_date."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (RD162 dose-response in LNCaP/AR). The ~23 µM trough in the note is RD162 after 20 mg/kg, not MDV3100; say so or drop it. untested status correct."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC2948179 full text: 'Importantly, the steady-state serum concentrations observed in the 150 mg cohort (approximately 10 μg/mL) were comparable to those found to be effective in xenograft models of CRPC' is verbatim. FDHT saturation at 5-15 µg/mL not checked."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Chen 2004 abstract quote verbatim. Castrate LNCaP/AR xenografts; no drug-to-patient comparison; untested correct. Years (epub 2003, print 2004) correct."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "'The clinical results reported here establish that MDV3100 has significant antitumor activity ... thereby validating the preclinical models' is verbatim (Interpretation). Scher also states LNCaP/AR castrate model 'where bicalutamide treatment only slows growth'."},
+  {"cell": "efficacy", "index": 3, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "neg",
+   "proposed_year": 2011,
+   "note": "Abstract conclusion is verbatim; Discussion adds 'in retrospect much of what was seen in this study was predicted by the preclinical work, including ... cytostasis or stable disease, and partial agonism.' But model label is wrong: BMS-641988's package (Attar 2009, PMID 19654297) was CWR-22-BMSLD1 and LuCaP 23.1 xenografts in intact hosts (castration-sensitive; profile 'more similar to castration') plus LNCaP-cell agonism, not castrate xenografts and not LNCaP/AR. Relabel model 'AR-driven human prostate-cancer xenografts (CWR22-BMSLD1, LuCaP 23.1) + LNCaP cells'; keep neg only if the rule accepts model-type rather than model-line identity (see rule_questions). Judgement claim '7/12 tumours progressed' on bicalutamide not found in Tran text; Scher says 'only slows growth'. NCT00326586 has_results=false confirmed."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 20878947, Prostate 71:480 (epub 2010-09-28). Two-sentence quote verbatim in abstract; abstract also says 'Non-clinical findings are compared to disclosures of clinical trial results' so comparison_stated=true holds. FDA PharmR verified: mice convulsions >=100 mg/kg/day '0.6 times the human exposure based on AUC', GABA-gated Cl channel IC50 2.6 µM (M2 7.1 µM), 'seizure occurred in 0.9% of patients'. Rathkopf abstract confirms one seizure at 60 mg contributed to closure. '7 of 800' label figure not checked."}
+ ],
+ "missing": [
+  "Engagement: Scher 2010 FDHT-PET (22 patients, all showed reduced FDHT uptake) is a direct AR-occupancy model-vs-patient comparison and belongs as the engagement source or at least in the entry note, not only in judgement.",
+  "Efficacy: the entry note says 'The same xenograft approach foresaw ...'; per Rathkopf the stable-disease prediction came from CWR-22-BMSLD1/LuCaP 23.1 stasis (Rathkopf PMC3070382: 'tumors regrow upon discontinuation ... consistent with a cytostatic ... effect') and the agonism from LNCaP-cell proliferation; the note should name them.",
+  "Safety: Rathkopf 2011 (full text) also states 'No seizures were observed with the parent compound BMS-641988' in animals; seizures were from metabolite BMS-501949 in dogs. Foster 2011's class claim stands, but the BMS-641988 flag was metabolite-driven; worth one clause."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "neg rule says 'the model also flagged a drug of this class that went on to fail'. Enzalutamide's model is the LNCaP/AR castrate xenograft; BMS-641988 was flagged by different lines (CWR-22-BMSLD1, LuCaP 23.1, intact hosts; LNCaP cells). Does 'the model' mean the model type (AR-driven PCa xenograft) or the specific line? If line, efficacy neg falls back to same (2010) and the BMS case is only a note.",
+  "The BMS-641988 flag was acknowledged 'in retrospect' (Rathkopf Discussion) and the sponsor read the Attar 2009 package as positive (>90% TGI, stasis). Does neg require a prospective flag, or is a retrospective author-stated match enough?",
+  "Safety cell has no untested opener: the animal seizure model was used for this class before 2011 (Rathkopf: 2006 trial counseled on seizure risk from preclinical tox), but the earliest primary source is Foster 2011 itself. Rule 6 does not say whether a later paper's report of earlier use can date the opener."
+ ]
+}

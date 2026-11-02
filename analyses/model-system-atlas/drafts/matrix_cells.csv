@@ -1,0 +1,285 @@
+context,area,disease,mechanism,question,n_entries,checked,latest_year_draft,status_draft,latest_year_checked,status_checked,any_comparison_stated,latest_comparison_stated,latest_subjects,latest_product_in_model,latest_magnitude,overall
+acne--unknown,Other,acne,narrow-spectrum tetracyclines (sarecycline),engagement,1,True,2019,untested,2019,untested,False,False,,True,,accept_with_corrections
+acne--unknown,Other,acne,narrow-spectrum tetracyclines (sarecycline),dose,0,True,,,,,False,,,,,accept_with_corrections
+acne--unknown,Other,acne,narrow-spectrum tetracyclines (sarecycline),efficacy,2,True,2019,same,2019,untested,True,True,patients,True,direction_only,accept_with_corrections
+acne--unknown,Other,acne,narrow-spectrum tetracyclines (sarecycline),safety,2,True,2019,same,2019,untested,True,True,patients,True,direction_only,accept_with_corrections
+acute-myeloid-leukemia--flt3-inhibitors,Oncology,acute myeloid leukemia,FLT3 inhibitors,engagement,3,True,2011,neg,2011,same,True,True,patients,True,direction_only,accept_with_corrections
+acute-myeloid-leukemia--flt3-inhibitors,Oncology,acute myeloid leukemia,FLT3 inhibitors,dose,2,True,2011,contra,2006,contra,True,True,patients,True,direction_only,accept_with_corrections
+acute-myeloid-leukemia--flt3-inhibitors,Oncology,acute myeloid leukemia,FLT3 inhibitors,efficacy,2,True,2011,contra,2011,untested,False,False,patients,True,direction_only,accept_with_corrections
+acute-myeloid-leukemia--flt3-inhibitors,Oncology,acute myeloid leukemia,FLT3 inhibitors,safety,2,True,2012,contra,2012,contra,True,True,patients,True,direction_only,accept_with_corrections
+age-related-macular-degeneration--anti-vegfa-antibodies,Ophthalmology,age-related macular degeneration,anti-VEGFA antibodies,engagement,2,True,2006,same,2006,same,False,False,patients,True,direction_only,accept_with_corrections
+age-related-macular-degeneration--anti-vegfa-antibodies,Ophthalmology,age-related macular degeneration,anti-VEGFA antibodies,dose,2,True,2006,same,2006,same,True,True,patients,True,off_by_2-5x,accept_with_corrections
+age-related-macular-degeneration--anti-vegfa-antibodies,Ophthalmology,age-related macular degeneration,anti-VEGFA antibodies,efficacy,2,True,2006,same,2006,same,False,False,patients,True,direction_only,accept_with_corrections
+age-related-macular-degeneration--anti-vegfa-antibodies,Ophthalmology,age-related macular degeneration,anti-VEGFA antibodies,safety,3,True,2023,contra,2023,contra,True,True,patients,True,direction_only,accept_with_corrections
+allergic-rhinitis--ptgdr2-antagonists,Allergy,allergic rhinitis,PTGDR2 antagonists,engagement,2,True,2014,same,2014,same,False,False,patients,,direction_only,accept_with_corrections
+allergic-rhinitis--ptgdr2-antagonists,Allergy,allergic rhinitis,PTGDR2 antagonists,dose,1,True,2017,untested,2017,untested,True,True,,True,,accept_with_corrections
+allergic-rhinitis--ptgdr2-antagonists,Allergy,allergic rhinitis,PTGDR2 antagonists,efficacy,3,True,2017,contra,2017,same,False,False,patients,False,,accept_with_corrections
+allergic-rhinitis--ptgdr2-antagonists,Allergy,allergic rhinitis,PTGDR2 antagonists,safety,0,True,,,,,False,,,,,accept_with_corrections
+alzheimer-disease--anti-mapt-antibodies,Neurology,Alzheimer disease,anti-tau antibodies,engagement,3,True,2023,same,2021,same,True,True,patients,True,direction_only,accept_with_corrections
+alzheimer-disease--anti-mapt-antibodies,Neurology,Alzheimer disease,anti-tau antibodies,dose,1,True,2022,untested,2022,untested,False,False,patients,,,accept_with_corrections
+alzheimer-disease--anti-mapt-antibodies,Neurology,Alzheimer disease,anti-tau antibodies,efficacy,3,True,2023,contra,2022,contra,True,True,patients,,direction_only,accept_with_corrections
+alzheimer-disease--anti-mapt-antibodies,Neurology,Alzheimer disease,anti-tau antibodies,safety,1,True,2021,untested,2021,untested,False,False,mixed,,,accept_with_corrections
+asthma--ptgdr2-antagonists,Respiratory,Asthma,PTGDR2 antagonists,engagement,2,True,2013,same,2013,same,False,False,patients,True,direction_only,accept_with_corrections
+asthma--ptgdr2-antagonists,Respiratory,Asthma,PTGDR2 antagonists,dose,1,True,2012,untested,2012,untested,False,False,,,,accept_with_corrections
+asthma--ptgdr2-antagonists,Respiratory,Asthma,PTGDR2 antagonists,efficacy,3,True,2013,contra,2013,contra,False,False,patients,False,direction_only,accept_with_corrections
+asthma--ptgdr2-antagonists,Respiratory,Asthma,PTGDR2 antagonists,safety,1,True,2012,untested,2012,untested,False,False,,,,accept_with_corrections
+atopic-conjunctivitis--nr3c1-agonists,Allergy,atopic conjunctivitis,ophthalmic dissociated GR agonists,engagement,1,True,2009,untested,2009,untested,False,False,,True,,accept_with_corrections
+atopic-conjunctivitis--nr3c1-agonists,Allergy,atopic conjunctivitis,ophthalmic dissociated GR agonists,dose,1,True,2011,untested,2011,untested,False,False,,True,,accept_with_corrections
+atopic-conjunctivitis--nr3c1-agonists,Allergy,atopic conjunctivitis,ophthalmic dissociated GR agonists,efficacy,2,True,2020,contra,2020,same,False,False,patients,True,off_by_2-5x,accept_with_corrections
+atopic-conjunctivitis--nr3c1-agonists,Allergy,atopic conjunctivitis,ophthalmic dissociated GR agonists,safety,2,True,2011,untested,2011,untested,False,False,,True,,accept_with_corrections
+atopic-eczema--nr3c1-agonists,Other,atopic eczema,"Novel GR agonists (dissociated/selective GR agonists: mapracorat, GW870086)",engagement,1,True,2004,untested,2004,untested,False,False,,False,,accept_with_corrections
+atopic-eczema--nr3c1-agonists,Other,atopic eczema,"Novel GR agonists (dissociated/selective GR agonists: mapracorat, GW870086)",dose,1,True,2009,untested,2009,untested,False,False,,True,,accept_with_corrections
+atopic-eczema--nr3c1-agonists,Other,atopic eczema,"Novel GR agonists (dissociated/selective GR agonists: mapracorat, GW870086)",efficacy,2,True,2015,contra,2015,same,False,False,patients,True,within_2x,accept_with_corrections
+atopic-eczema--nr3c1-agonists,Other,atopic eczema,"Novel GR agonists (dissociated/selective GR agonists: mapracorat, GW870086)",safety,2,True,2015,same,2015,same,False,False,healthy_volunteers,True,direction_only,accept_with_corrections
+atrial-fibrillation--kcna5-blockers,Cardiovascular,Atrial fibrillation,Atrial-selective Kv1.5 / IKur blockers,engagement,2,True,2012,contra,2012,contra,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+atrial-fibrillation--kcna5-blockers,Cardiovascular,Atrial fibrillation,Atrial-selective Kv1.5 / IKur blockers,dose,2,True,2012,contra,2008,untested,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+atrial-fibrillation--kcna5-blockers,Cardiovascular,Atrial fibrillation,Atrial-selective Kv1.5 / IKur blockers,efficacy,2,True,2018,contra,2018,contra,False,False,patients,True,direction_only,accept_with_corrections
+atrial-fibrillation--kcna5-blockers,Cardiovascular,Atrial fibrillation,Atrial-selective Kv1.5 / IKur blockers,safety,2,True,2012,same,2013,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+attention-deficit-hyperactivity-disorder--slc6a2-inhibitors,Psychiatry,attention deficit-hyperactivity disorder,norepinephrine reuptake inhibitors,engagement,2,True,2007,same,2007,same,False,False,healthy_volunteers,True,direction_only,accept_with_corrections
+attention-deficit-hyperactivity-disorder--slc6a2-inhibitors,Psychiatry,attention deficit-hyperactivity disorder,norepinephrine reuptake inhibitors,dose,1,True,2006,untested,2006,untested,False,False,,True,,accept_with_corrections
+attention-deficit-hyperactivity-disorder--slc6a2-inhibitors,Psychiatry,attention deficit-hyperactivity disorder,norepinephrine reuptake inhibitors,efficacy,2,True,2014,contra,2012,untested,True,True,patients,True,direction_only,accept_with_corrections
+attention-deficit-hyperactivity-disorder--slc6a2-inhibitors,Psychiatry,attention deficit-hyperactivity disorder,norepinephrine reuptake inhibitors,safety,3,True,2005,contra,2002,same,True,False,patients,True,,accept_with_corrections
+benign-prostatic-hyperplasia--esr2-agonists,Urology,benign prostatic hyperplasia,ESR2 agonists,engagement,2,True,2010,untested,2010,untested,False,False,,False,,accept_with_corrections
+benign-prostatic-hyperplasia--esr2-agonists,Urology,benign prostatic hyperplasia,ESR2 agonists,dose,1,True,2006,untested,2006,untested,False,False,,True,,accept_with_corrections
+benign-prostatic-hyperplasia--esr2-agonists,Urology,benign prostatic hyperplasia,ESR2 agonists,efficacy,3,True,2015,contra,2015,contra,False,False,patients,True,direction_only,accept_with_corrections
+benign-prostatic-hyperplasia--esr2-agonists,Urology,benign prostatic hyperplasia,ESR2 agonists,safety,2,True,2015,same,2006,untested,False,False,patients,True,direction_only,accept_with_corrections
+breast-cancer--erbb2-inhibitors,Oncology,breast cancer,ERBB2 inhibitors,engagement,2,True,2004,contra,2004,same,True,True,patients,True,,accept_with_corrections
+breast-cancer--erbb2-inhibitors,Oncology,breast cancer,ERBB2 inhibitors,dose,2,True,2013,same,2013,same,True,True,patients,True,,accept_with_corrections
+breast-cancer--erbb2-inhibitors,Oncology,breast cancer,ERBB2 inhibitors,efficacy,2,True,2001,same,2001,same,False,False,patients,True,direction_only,accept_with_corrections
+breast-cancer--erbb2-inhibitors,Oncology,breast cancer,ERBB2 inhibitors,safety,2,True,2001,contra,2005,contra,False,False,patients,True,,accept_with_corrections
+chronic-hepatitis-b-virus-infection--core-antigen-inhibitor,Infectious disease,chronic hepatitis B virus infection,"HBV core/capsid assembly modulators (e.g. vebicorvir, morphothiadin/GLS4, ABI-H2158; also NVR 3-778, bersacapavir, AB-506)",engagement,2,True,2019,same,2019,same,True,True,patients,True,direction_only,accept_with_corrections
+chronic-hepatitis-b-virus-infection--core-antigen-inhibitor,Infectious disease,chronic hepatitis B virus infection,"HBV core/capsid assembly modulators (e.g. vebicorvir, morphothiadin/GLS4, ABI-H2158; also NVR 3-778, bersacapavir, AB-506)",dose,2,True,2021,same,2021,same,True,True,patients,True,direction_only,accept_with_corrections
+chronic-hepatitis-b-virus-infection--core-antigen-inhibitor,Infectious disease,chronic hepatitis B virus infection,"HBV core/capsid assembly modulators (e.g. vebicorvir, morphothiadin/GLS4, ABI-H2158; also NVR 3-778, bersacapavir, AB-506)",efficacy,3,True,2019,same,2019,same,True,True,patients,True,direction_only,accept_with_corrections
+chronic-hepatitis-b-virus-infection--core-antigen-inhibitor,Infectious disease,chronic hepatitis B virus infection,"HBV core/capsid assembly modulators (e.g. vebicorvir, morphothiadin/GLS4, ABI-H2158; also NVR 3-778, bersacapavir, AB-506)",safety,3,True,2022,contra,2022,contra,True,True,mixed,True,direction_only,accept_with_corrections
+chronic-obstructive-pulmonary-disease--chrm3-antagonists,Respiratory,Chronic obstructive pulmonary disease,CHRM3 antagonists,engagement,2,True,1995,same,1993,same,False,False,patients,True,direction_only,accept_with_corrections
+chronic-obstructive-pulmonary-disease--chrm3-antagonists,Respiratory,Chronic obstructive pulmonary disease,CHRM3 antagonists,dose,2,True,1995,same,1995,untested,False,False,patients,True,direction_only,accept_with_corrections
+chronic-obstructive-pulmonary-disease--chrm3-antagonists,Respiratory,Chronic obstructive pulmonary disease,CHRM3 antagonists,efficacy,2,True,1995,same,1993,same,False,False,patients,True,direction_only,accept_with_corrections
+chronic-obstructive-pulmonary-disease--chrm3-antagonists,Respiratory,Chronic obstructive pulmonary disease,CHRM3 antagonists,safety,2,True,2019,same,2019,same,False,False,patients,True,direction_only,accept_with_corrections
+colorectal-cancer--anti-egfr-antibodies,Oncology,colorectal cancer,anti-EGFR antibodies,engagement,2,True,2010,same,2010,untested,False,False,patients,True,direction_only,accept_with_corrections
+colorectal-cancer--anti-egfr-antibodies,Oncology,colorectal cancer,anti-EGFR antibodies,dose,1,True,2002,untested,2002,untested,False,False,,True,,accept_with_corrections
+colorectal-cancer--anti-egfr-antibodies,Oncology,colorectal cancer,anti-EGFR antibodies,efficacy,4,True,2011,same,2011,same,True,True,patients,True,within_2x,accept_with_corrections
+colorectal-cancer--anti-egfr-antibodies,Oncology,colorectal cancer,anti-EGFR antibodies,safety,1,True,2004,untested,2004,untested,False,False,patients,True,,accept_with_corrections
+coronary-artery-disorder--p2ry12-antagonists,Cardiovascular,coronary artery disorder,P2Y12 antagonists,engagement,2,True,2007,same,2009,same,False,False,patients,True,direction_only,accept_with_corrections
+coronary-artery-disorder--p2ry12-antagonists,Cardiovascular,coronary artery disorder,P2Y12 antagonists,dose,1,True,2000,untested,2000,untested,False,False,,True,,accept_with_corrections
+coronary-artery-disorder--p2ry12-antagonists,Cardiovascular,coronary artery disorder,P2Y12 antagonists,efficacy,2,True,2001,same,2001,same,False,False,patients,True,direction_only,accept_with_corrections
+coronary-artery-disorder--p2ry12-antagonists,Cardiovascular,coronary artery disorder,P2Y12 antagonists,safety,3,True,2011,same,2011,contra,True,True,patients,True,direction_only,accept_with_corrections
+crohn-disease--jak1-inhibitors,Autoimmune,Crohn disease,JAK inhibitors,engagement,1,True,2017,untested,2017,untested,False,False,,True,,accept_with_corrections
+crohn-disease--jak1-inhibitors,Autoimmune,Crohn disease,JAK inhibitors,dose,0,True,,,,,False,,,,,accept_with_corrections
+crohn-disease--jak1-inhibitors,Autoimmune,Crohn disease,JAK inhibitors,efficacy,2,True,2023,contra,2023,untested,True,True,patients,True,direction_only,accept_with_corrections
+crohn-disease--jak1-inhibitors,Autoimmune,Crohn disease,JAK inhibitors,safety,0,True,,,,,False,,,,,accept_with_corrections
+cystic-fibrosis--cftr-positive-modulators,Respiratory,cystic fibrosis,CFTR positive modulators,engagement,2,True,2010,same,2010,same,True,True,patients,True,direction_only,accept_with_corrections
+cystic-fibrosis--cftr-positive-modulators,Respiratory,cystic fibrosis,CFTR positive modulators,dose,2,True,2025,same,2009,untested,True,True,mixed,True,,accept_with_corrections
+cystic-fibrosis--cftr-positive-modulators,Respiratory,cystic fibrosis,CFTR positive modulators,efficacy,3,True,2012,neg,2012,same,True,True,patients,True,direction_only,accept_with_corrections
+cystic-fibrosis--cftr-positive-modulators,Respiratory,cystic fibrosis,CFTR positive modulators,safety,2,True,2014,same,2012,untested,True,True,patients,True,direction_only,accept_with_corrections
+diabetic-kidney-disease--nr3c2-antagonists,Other,diabetic kidney disease,NR3C2 antagonists,engagement,2,True,2021,same,2021,untested,False,False,healthy_volunteers,True,direction_only,accept_with_corrections
+diabetic-kidney-disease--nr3c2-antagonists,Other,diabetic kidney disease,NR3C2 antagonists,dose,1,True,2014,untested,2014,untested,False,False,,True,,accept_with_corrections
+diabetic-kidney-disease--nr3c2-antagonists,Other,diabetic kidney disease,NR3C2 antagonists,efficacy,2,True,2015,same,2015,same,False,False,patients,True,direction_only,accept_with_corrections
+diabetic-kidney-disease--nr3c2-antagonists,Other,diabetic kidney disease,NR3C2 antagonists,safety,2,True,2021,same,2020,contra,True,True,patients,True,direction_only,accept_with_corrections
+diabetic-macular-edema--anti-vegfa-antibodies,Ophthalmology,diabetic macular edema,anti-VEGFA antibodies,engagement,1,True,2001,untested,2001,untested,False,False,,False,,accept_with_corrections
+diabetic-macular-edema--anti-vegfa-antibodies,Ophthalmology,diabetic macular edema,anti-VEGFA antibodies,dose,1,True,2008,untested,2008,untested,False,False,,True,,accept_with_corrections
+diabetic-macular-edema--anti-vegfa-antibodies,Ophthalmology,diabetic macular edema,anti-VEGFA antibodies,efficacy,1,True,2001,untested,2001,untested,False,False,,False,,accept_with_corrections
+diabetic-macular-edema--anti-vegfa-antibodies,Ophthalmology,diabetic macular edema,anti-VEGFA antibodies,safety,2,True,2019,same,2019,untested,True,True,patients,True,direction_only,accept_with_corrections
+diabetic-neuropathy--anti-ngf-antibodies,Neurology,diabetic neuropathy,anti-NGF antibodies,engagement,1,True,2008,untested,2008,untested,False,False,,True,,accept_with_corrections
+diabetic-neuropathy--anti-ngf-antibodies,Neurology,diabetic neuropathy,anti-NGF antibodies,dose,0,True,,,,,False,,,,,accept_with_corrections
+diabetic-neuropathy--anti-ngf-antibodies,Neurology,diabetic neuropathy,anti-NGF antibodies,efficacy,3,True,2014,same,2014,untested,False,False,patients,False,direction_only,accept_with_corrections
+diabetic-neuropathy--anti-ngf-antibodies,Neurology,diabetic neuropathy,anti-NGF antibodies,safety,2,True,2017,same,2017,untested,True,True,patients,True,direction_only,accept_with_corrections
+dry-eye-syndrome--anti-tnf-antibodies,Ophthalmology,Dry eye syndrome,topical anti-TNF biologics,engagement,1,True,2013,untested,2013,untested,False,False,,True,,accept_with_corrections
+dry-eye-syndrome--anti-tnf-antibodies,Ophthalmology,Dry eye syndrome,topical anti-TNF biologics,dose,2,True,2013,same,2013,same,False,False,patients,True,direction_only,accept_with_corrections
+dry-eye-syndrome--anti-tnf-antibodies,Ophthalmology,Dry eye syndrome,topical anti-TNF biologics,efficacy,2,True,2022,contra,2022,contra,False,False,patients,True,direction_only,accept_with_corrections
+dry-eye-syndrome--anti-tnf-antibodies,Ophthalmology,Dry eye syndrome,topical anti-TNF biologics,safety,2,True,2022,same,2013,same,False,False,patients,True,direction_only,accept_with_corrections
+endometriosis--gnrhr-antagonists,Endocrine,Endometriosis,oral GnRH antagonists,engagement,2,True,2009,same,2009,untested,False,False,healthy_volunteers,True,direction_only,accept_with_corrections
+endometriosis--gnrhr-antagonists,Endocrine,Endometriosis,oral GnRH antagonists,dose,1,True,2008,untested,2008,untested,False,False,,True,,accept_with_corrections
+endometriosis--gnrhr-antagonists,Endocrine,Endometriosis,oral GnRH antagonists,efficacy,2,True,2023,untested,2015,untested,False,False,,True,,accept_with_corrections
+endometriosis--gnrhr-antagonists,Endocrine,Endometriosis,oral GnRH antagonists,safety,1,True,2018,untested,2018,untested,False,False,patients,True,,accept_with_corrections
+eosinophilic-esophagitis--anti-il13-antibodies,Allergy,eosinophilic esophagitis,anti-IL13 antibodies,engagement,2,True,2015,same,2015,same,False,,patients,False,direction_only,accept_with_corrections
+eosinophilic-esophagitis--anti-il13-antibodies,Allergy,eosinophilic esophagitis,anti-IL13 antibodies,dose,0,True,,,,,False,,,,,accept_with_corrections
+eosinophilic-esophagitis--anti-il13-antibodies,Allergy,eosinophilic esophagitis,anti-IL13 antibodies,efficacy,2,True,2015,same,2015,same,False,,patients,False,direction_only,accept_with_corrections
+eosinophilic-esophagitis--anti-il13-antibodies,Allergy,eosinophilic esophagitis,anti-IL13 antibodies,safety,0,True,,,,,False,,,,,accept_with_corrections
+follicular-lymphoma--cd19-directed-depleters,Oncology,follicular lymphoma,CD19-directed CAR-T,engagement,2,True,2010,same,2012,same,False,False,patients,False,direction_only,accept_with_corrections
+follicular-lymphoma--cd19-directed-depleters,Oncology,follicular lymphoma,CD19-directed CAR-T,dose,1,True,2009,untested,2009,untested,False,False,,True,,accept_with_corrections
+follicular-lymphoma--cd19-directed-depleters,Oncology,follicular lymphoma,CD19-directed CAR-T,efficacy,2,True,2010,same,2012,same,False,False,patients,False,direction_only,accept_with_corrections
+follicular-lymphoma--cd19-directed-depleters,Oncology,follicular lymphoma,CD19-directed CAR-T,safety,3,True,2012,contra,2012,contra,False,False,patients,False,,accept_with_corrections
+gastric-cancer--erbb2-inhibitors,Oncology,Gastric cancer,HER2-directed therapies,engagement,1,True,2005,untested,2005,untested,False,False,,True,,accept_with_corrections
+gastric-cancer--erbb2-inhibitors,Oncology,Gastric cancer,HER2-directed therapies,dose,1,True,2007,untested,2007,untested,False,False,,True,,accept_with_corrections
+gastric-cancer--erbb2-inhibitors,Oncology,Gastric cancer,HER2-directed therapies,efficacy,3,True,2014,contra,2014,contra,False,False,patients,True,direction_only,accept_with_corrections
+gastric-cancer--erbb2-inhibitors,Oncology,Gastric cancer,HER2-directed therapies,safety,2,True,2020,same,2020,same,True,True,patients,True,direction_only,accept_with_corrections
+gastroesophageal-reflux-disease--atp4a-blockers,Gastroenterology,gastroesophageal reflux disease,ATP4A blockers,engagement,2,True,2015,same,2015,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+gastroesophageal-reflux-disease--atp4a-blockers,Gastroenterology,gastroesophageal reflux disease,ATP4A blockers,dose,1,True,1983,untested,1983,untested,False,False,,False,,accept_with_corrections
+gastroesophageal-reflux-disease--atp4a-blockers,Gastroenterology,gastroesophageal reflux disease,ATP4A blockers,efficacy,2,True,2023,same,2016,same,False,False,patients,True,direction_only,accept_with_corrections
+gastroesophageal-reflux-disease--atp4a-blockers,Gastroenterology,gastroesophageal reflux disease,ATP4A blockers,safety,2,True,2025,contra,2025,contra,False,False,patients,True,direction_only,accept_with_corrections
+glioblastoma--tubb-inhibitors,Oncology,Glioblastoma,Tubulin inhibitors,engagement,1,True,2009,untested,2009,untested,False,False,,True,,accept_with_corrections
+glioblastoma--tubb-inhibitors,Oncology,Glioblastoma,Tubulin inhibitors,dose,2,True,2012,same,2012,same,True,True,patients,True,direction_only,accept_with_corrections
+glioblastoma--tubb-inhibitors,Oncology,Glioblastoma,Tubulin inhibitors,efficacy,4,True,2025,contra,2025,contra,True,True,patients,True,direction_only,accept_with_corrections
+glioblastoma--tubb-inhibitors,Oncology,Glioblastoma,Tubulin inhibitors,safety,0,True,,,,,False,,,,,accept_with_corrections
+heart-failure--npr1-agonists,Cardiovascular,Heart failure,natriuretic-peptide receptor agonists,engagement,3,True,2018,same,2018,same,True,False,patients,True,direction_only,accept_with_corrections
+heart-failure--npr1-agonists,Cardiovascular,Heart failure,natriuretic-peptide receptor agonists,dose,2,True,2009,contra,2009,untested,False,False,healthy_volunteers,True,off_by_2-5x,accept_with_corrections
+heart-failure--npr1-agonists,Cardiovascular,Heart failure,natriuretic-peptide receptor agonists,efficacy,3,True,2011,contra,2011,same,False,False,patients,False,,accept_with_corrections
+heart-failure--npr1-agonists,Cardiovascular,Heart failure,natriuretic-peptide receptor agonists,safety,3,True,2011,same,2011,same,False,False,patients,False,direction_only,accept_with_corrections
+hema-fviii-gt,Hematology,Hemophilia A,FVIII gene therapy (AAV),engagement,3,True,2022,same,2022,same,False,,,,,accept_with_corrections
+hema-fviii-gt,Hematology,Hemophilia A,FVIII gene therapy (AAV),dose,2,True,2018,contra,2018,untested,False,,,,,accept_with_corrections
+hema-fviii-gt,Hematology,Hemophilia A,FVIII gene therapy (AAV),efficacy,2,True,2021,contra,2021,contra,False,,,,,accept_with_corrections
+hema-fviii-gt,Hematology,Hemophilia A,FVIII gene therapy (AAV),safety,2,True,2022,same,2022,same,False,,,,,accept_with_corrections
+hemophilia-b--f9-replacement-gene-therapy,Hematology,hemophilia B,"FIX gene therapy, AAV",engagement,3,True,2014,same,2014,same,True,True,patients,True,direction_only,accept_with_corrections
+hemophilia-b--f9-replacement-gene-therapy,Hematology,hemophilia B,"FIX gene therapy, AAV",dose,2,True,2017,same,2017,untested,True,True,patients,False,direction_only,accept_with_corrections
+hemophilia-b--f9-replacement-gene-therapy,Hematology,hemophilia B,"FIX gene therapy, AAV",efficacy,3,True,2014,same,2014,same,True,True,patients,True,direction_only,accept_with_corrections
+hemophilia-b--f9-replacement-gene-therapy,Hematology,hemophilia B,"FIX gene therapy, AAV",safety,3,True,2014,contra,2014,contra,True,True,patients,True,direction_only,accept_with_corrections
+hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea,Infectious disease,hepatitis C virus infection,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",engagement,2,True,2003,same,2003,same,True,True,patients,True,direction_only,accept_with_corrections
+hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea,Infectious disease,hepatitis C virus infection,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",dose,2,True,2012,contra,2012,contra,True,True,patients,True,,accept_with_corrections
+hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea,Infectious disease,hepatitis C virus infection,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",efficacy,2,True,2005,same,2005,same,True,True,patients,True,direction_only,accept_with_corrections
+hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea,Infectious disease,hepatitis C virus infection,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",safety,2,True,2011,contra,2011,contra,True,True,patients,True,direction_only,accept_with_corrections
+hepatocellular-carcinoma--anti-pdcd1-antibodies,Oncology,Hepatocellular carcinoma,anti-PD-1 antibodies,engagement,1,True,2015,untested,2015,untested,False,False,,False,,accept_with_corrections
+hepatocellular-carcinoma--anti-pdcd1-antibodies,Oncology,Hepatocellular carcinoma,anti-PD-1 antibodies,dose,1,True,2015,untested,2015,untested,False,False,,False,,accept_with_corrections
+hepatocellular-carcinoma--anti-pdcd1-antibodies,Oncology,Hepatocellular carcinoma,anti-PD-1 antibodies,efficacy,2,True,2021,same,2021,untested,True,True,patients,False,direction_only,accept_with_corrections
+hepatocellular-carcinoma--anti-pdcd1-antibodies,Oncology,Hepatocellular carcinoma,anti-PD-1 antibodies,safety,1,True,2014,contra,2014,contra,True,True,patients,True,direction_only,accept_with_corrections
+hf-sglt2,Cardiovascular,Heart failure,SGLT2 inhibitors,engagement,1,True,2017,untested,2017,untested,False,,,,,accept_with_corrections
+hf-sglt2,Cardiovascular,Heart failure,SGLT2 inhibitors,dose,1,True,2017,untested,2017,untested,False,,,,,accept_with_corrections
+hf-sglt2,Cardiovascular,Heart failure,SGLT2 inhibitors,efficacy,1,True,2017,untested,2014,untested,False,,,,,accept_with_corrections
+hf-sglt2,Cardiovascular,Heart failure,SGLT2 inhibitors,safety,0,True,,,,,False,,,,,accept_with_corrections
+hiv-infectious-disease--human-immunodeficiency-virus-type-1-,Infectious disease,HIV infectious disease,Human immunodeficiency virus type 1 integrase inhibitor,engagement,2,True,2008,same,2008,same,False,False,patients,True,direction_only,accept_with_corrections
+hiv-infectious-disease--human-immunodeficiency-virus-type-1-,Infectious disease,HIV infectious disease,Human immunodeficiency virus type 1 integrase inhibitor,dose,2,True,2006,same,2006,same,True,True,patients,True,direction_only,accept_with_corrections
+hiv-infectious-disease--human-immunodeficiency-virus-type-1-,Infectious disease,HIV infectious disease,Human immunodeficiency virus type 1 integrase inhibitor,efficacy,2,True,2006,same,2006,same,True,True,patients,True,direction_only,accept_with_corrections
+hiv-infectious-disease--human-immunodeficiency-virus-type-1-,Infectious disease,HIV infectious disease,Human immunodeficiency virus type 1 integrase inhibitor,safety,2,True,2019,contra,2018,contra,False,False,patients,True,direction_only,accept_with_corrections
+hyperlipidemia--cetp-inhibitors,Metabolic,Hyperlipidemia,CETP inhibitors,engagement,2,True,2002,same,2002,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+hyperlipidemia--cetp-inhibitors,Metabolic,Hyperlipidemia,CETP inhibitors,dose,1,True,2000,untested,2000,untested,False,False,,True,,accept_with_corrections
+hyperlipidemia--cetp-inhibitors,Metabolic,Hyperlipidemia,CETP inhibitors,efficacy,2,True,2007,contra,2007,contra,False,False,patients,True,off_by_>5x,accept_with_corrections
+hyperlipidemia--cetp-inhibitors,Metabolic,Hyperlipidemia,CETP inhibitors,safety,2,True,2007,contra,2008,contra,False,False,patients,True,,accept_with_corrections
+hypertensive-disorder--agtr1-antagonists,Cardiovascular,Hypertensive disorder,Angiotensin II receptor blockers,engagement,2,True,1993,same,1993,same,True,True,healthy_volunteers,True,,accept_with_corrections
+hypertensive-disorder--agtr1-antagonists,Cardiovascular,Hypertensive disorder,Angiotensin II receptor blockers,dose,2,True,1993,same,1993,same,True,True,mixed,True,,accept_with_corrections
+hypertensive-disorder--agtr1-antagonists,Cardiovascular,Hypertensive disorder,Angiotensin II receptor blockers,efficacy,2,True,1993,same,1993,same,True,True,patients,True,direction_only,accept_with_corrections
+hypertensive-disorder--agtr1-antagonists,Cardiovascular,Hypertensive disorder,Angiotensin II receptor blockers,safety,3,True,2001,same,2001,same,True,False,patients,True,direction_only,accept_with_corrections
+hypertriglyceridemia--apoc3-antisense-sirna,Metabolic,Hypertriglyceridemia,APOC3 antisense / siRNA,engagement,2,True,2014,same,2014,same,True,False,patients,True,direction_only,accept_with_corrections
+hypertriglyceridemia--apoc3-antisense-sirna,Metabolic,Hypertriglyceridemia,APOC3 antisense / siRNA,dose,2,True,2019,same,2019,same,True,True,patients,True,within_2x,accept_with_corrections
+hypertriglyceridemia--apoc3-antisense-sirna,Metabolic,Hypertriglyceridemia,APOC3 antisense / siRNA,efficacy,2,True,2014,same,2014,same,True,False,patients,True,direction_only,accept_with_corrections
+hypertriglyceridemia--apoc3-antisense-sirna,Metabolic,Hypertriglyceridemia,APOC3 antisense / siRNA,safety,3,True,2019,same,2019,same,True,True,patients,True,direction_only,accept_with_corrections
+influenza--hemagglutinin-inhibitor,Infectious disease,influenza,"Haemagglutinin-targeting antibodies/inhibitors (HA-stem mAbs: CR6261, MHAA4549A/gedivumab, VIS410, MEDI8852)",engagement,3,True,2020,contra,2020,contra,True,True,patients,True,direction_only,accept_with_corrections
+influenza--hemagglutinin-inhibitor,Infectious disease,influenza,"Haemagglutinin-targeting antibodies/inhibitors (HA-stem mAbs: CR6261, MHAA4549A/gedivumab, VIS410, MEDI8852)",dose,2,True,2016,same,2016,same,True,True,healthy_volunteers,True,within_2x,accept_with_corrections
+influenza--hemagglutinin-inhibitor,Infectious disease,influenza,"Haemagglutinin-targeting antibodies/inhibitors (HA-stem mAbs: CR6261, MHAA4549A/gedivumab, VIS410, MEDI8852)",efficacy,3,True,2020,contra,2020,contra,True,True,patients,True,direction_only,accept_with_corrections
+influenza--hemagglutinin-inhibitor,Infectious disease,influenza,"Haemagglutinin-targeting antibodies/inhibitors (HA-stem mAbs: CR6261, MHAA4549A/gedivumab, VIS410, MEDI8852)",safety,1,True,2016,untested,2016,untested,False,False,,True,,accept_with_corrections
+insomnia--hcrtr2-antagonists,Psychiatry,Insomnia,Orexin receptor antagonists (DORAs),engagement,1,True,2007,same,2007,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+insomnia--hcrtr2-antagonists,Psychiatry,Insomnia,Orexin receptor antagonists (DORAs),dose,2,True,2013,same,2013,same,True,True,mixed,True,within_2x,accept_with_corrections
+insomnia--hcrtr2-antagonists,Psychiatry,Insomnia,Orexin receptor antagonists (DORAs),efficacy,2,True,2012,same,2012,same,True,False,patients,True,direction_only,accept_with_corrections
+insomnia--hcrtr2-antagonists,Psychiatry,Insomnia,Orexin receptor antagonists (DORAs),safety,2,True,2014,same,2014,same,True,True,patients,True,direction_only,accept_with_corrections
+interstitial-cystitis--anti-ngf-antibodies,Urology,interstitial cystitis,anti-NGF antibodies,engagement,1,True,1997,untested,1997,untested,False,False,,False,,accept_with_corrections
+interstitial-cystitis--anti-ngf-antibodies,Urology,interstitial cystitis,anti-NGF antibodies,dose,1,True,1997,untested,1997,untested,False,False,,False,,accept_with_corrections
+interstitial-cystitis--anti-ngf-antibodies,Urology,interstitial cystitis,anti-NGF antibodies,efficacy,3,True,2020,contra,2020,contra,False,False,patients,False,direction_only,accept_with_corrections
+interstitial-cystitis--anti-ngf-antibodies,Urology,interstitial cystitis,anti-NGF antibodies,safety,2,True,2012,contra,2012,untested,True,True,patients,True,direction_only,accept_with_corrections
+ipf-il13,Respiratory,Idiopathic pulmonary fibrosis,Anti-IL-13 antibodies,engagement,2,True,2021,same,2021,same,False,,,,,accept_with_corrections
+ipf-il13,Respiratory,Idiopathic pulmonary fibrosis,Anti-IL-13 antibodies,dose,1,True,2021,untested,2014,untested,False,,,,,accept_with_corrections
+ipf-il13,Respiratory,Idiopathic pulmonary fibrosis,Anti-IL-13 antibodies,efficacy,2,True,2018,contra,2018,contra,False,,,,,accept_with_corrections
+ipf-il13,Respiratory,Idiopathic pulmonary fibrosis,Anti-IL-13 antibodies,safety,1,True,2018,untested,2018,untested,False,,,,,accept_with_corrections
+irritable-bowel-syndrome--tph1-inhibitors,Gastroenterology,Irritable bowel syndrome,TPH1 inhibitors,engagement,2,True,2011,same,2011,same,True,True,patients,True,direction_only,accept_with_corrections
+irritable-bowel-syndrome--tph1-inhibitors,Gastroenterology,Irritable bowel syndrome,TPH1 inhibitors,dose,1,True,2008,untested,2008,untested,False,False,,False,,accept_with_corrections
+irritable-bowel-syndrome--tph1-inhibitors,Gastroenterology,Irritable bowel syndrome,TPH1 inhibitors,efficacy,2,True,2014,untested,2014,untested,False,False,,True,,accept_with_corrections
+irritable-bowel-syndrome--tph1-inhibitors,Gastroenterology,Irritable bowel syndrome,TPH1 inhibitors,safety,1,True,2008,untested,2008,untested,False,False,,False,,accept_with_corrections
+major-depressive-disorder--grin2b-antagonists,Psychiatry,Major depressive disorder,NMDA receptor antagonists,engagement,1,True,2014,same,2014,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+major-depressive-disorder--grin2b-antagonists,Psychiatry,Major depressive disorder,NMDA receptor antagonists,dose,1,True,2015,untested,2015,untested,False,False,,True,,accept_with_corrections
+major-depressive-disorder--grin2b-antagonists,Psychiatry,Major depressive disorder,NMDA receptor antagonists,efficacy,3,True,2017,contra,2017,contra,False,False,patients,False,direction_only,accept_with_corrections
+major-depressive-disorder--grin2b-antagonists,Psychiatry,Major depressive disorder,NMDA receptor antagonists,safety,2,True,2019,untested,2019,untested,False,False,,True,,accept_with_corrections
+malignant-pancreatic-neoplasm--map2k1-inhibitors,Oncology,malignant pancreatic neoplasm,MEK inhibitors,engagement,1,True,2007,untested,2017,same,False,False,,True,,accept_with_corrections
+malignant-pancreatic-neoplasm--map2k1-inhibitors,Oncology,malignant pancreatic neoplasm,MEK inhibitors,dose,0,True,,,,,False,,,,,accept_with_corrections
+malignant-pancreatic-neoplasm--map2k1-inhibitors,Oncology,malignant pancreatic neoplasm,MEK inhibitors,efficacy,2,True,2014,contra,2012,contra,False,False,patients,True,direction_only,accept_with_corrections
+malignant-pancreatic-neoplasm--map2k1-inhibitors,Oncology,malignant pancreatic neoplasm,MEK inhibitors,safety,1,True,2014,untested,2014,untested,False,False,,True,,accept_with_corrections
+melanoma--braf-inhibitors,Oncology,melanoma,BRAF inhibitors,engagement,2,True,2010,same,2010,same,True,True,patients,True,direction_only,accept_with_corrections
+melanoma--braf-inhibitors,Oncology,melanoma,BRAF inhibitors,dose,2,True,2011,same,2010,same,True,True,patients,True,within_2x,accept_with_corrections
+melanoma--braf-inhibitors,Oncology,melanoma,BRAF inhibitors,efficacy,2,True,2010,same,2010,same,True,True,patients,True,direction_only,accept_with_corrections
+melanoma--braf-inhibitors,Oncology,melanoma,BRAF inhibitors,safety,2,True,2010,same,2010,contra,True,True,patients,True,direction_only,accept_with_corrections
+metabolic-dysfunction-associated-steatoh--nr1h4-agonists,Gastroenterology,metabolic dysfunction-associated steatohepatitis,FXR agonists,engagement,2,True,2013,same,2013,untested,False,False,patients,True,direction_only,accept_with_corrections
+metabolic-dysfunction-associated-steatoh--nr1h4-agonists,Gastroenterology,metabolic dysfunction-associated steatohepatitis,FXR agonists,dose,1,True,2004,untested,2004,untested,False,False,,True,,accept_with_corrections
+metabolic-dysfunction-associated-steatoh--nr1h4-agonists,Gastroenterology,metabolic dysfunction-associated steatohepatitis,FXR agonists,efficacy,3,True,2023,contra,2023,contra,True,True,patients,True,direction_only,accept_with_corrections
+metabolic-dysfunction-associated-steatoh--nr1h4-agonists,Gastroenterology,metabolic dysfunction-associated steatohepatitis,FXR agonists,safety,2,True,2015,contra,2018,contra,True,True,patients,True,direction_only,accept_with_corrections
+migraine-disorder--calcrl-antagonists,Neurology,migraine disorder,CGRP receptor antagonists (gepants),engagement,2,True,2010,same,2020,same,False,False,healthy_volunteers,True,within_2x,accept_with_corrections
+migraine-disorder--calcrl-antagonists,Neurology,migraine disorder,CGRP receptor antagonists (gepants),dose,2,True,2015,same,2015,same,True,True,mixed,True,within_2x,accept_with_corrections
+migraine-disorder--calcrl-antagonists,Neurology,migraine disorder,CGRP receptor antagonists (gepants),efficacy,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+migraine-disorder--calcrl-antagonists,Neurology,migraine disorder,CGRP receptor antagonists (gepants),safety,3,True,2022,same,2020,same,True,True,mixed,True,direction_only,accept_with_corrections
+myelodysplastic-syndrome--cd33-directed-depleters,Oncology,Myelodysplastic syndrome,CD33-directed antibodies/ADCs,engagement,2,True,2022,contra,2022,contra,True,True,patients,True,direction_only,accept_with_corrections
+myelodysplastic-syndrome--cd33-directed-depleters,Oncology,Myelodysplastic syndrome,CD33-directed antibodies/ADCs,dose,2,True,2018,untested,2018,untested,False,False,patients,True,,accept_with_corrections
+myelodysplastic-syndrome--cd33-directed-depleters,Oncology,Myelodysplastic syndrome,CD33-directed antibodies/ADCs,efficacy,3,True,2022,contra,2022,untested,True,True,patients,True,direction_only,accept_with_corrections
+myelodysplastic-syndrome--cd33-directed-depleters,Oncology,Myelodysplastic syndrome,CD33-directed antibodies/ADCs,safety,2,True,2017,same,2017,untested,True,True,patients,False,direction_only,accept_with_corrections
+nsclc-egfr,Oncology,Non-small cell lung carcinoma,EGFR tyrosine-kinase inhibitors,engagement,2,True,2015,same,2015,same,False,,,,,accept_with_corrections
+nsclc-egfr,Oncology,Non-small cell lung carcinoma,EGFR tyrosine-kinase inhibitors,dose,3,True,2015,same,2015,contra,False,,,,,accept_with_corrections
+nsclc-egfr,Oncology,Non-small cell lung carcinoma,EGFR tyrosine-kinase inhibitors,efficacy,3,True,2014,neg,2014,neg,False,,,,,accept_with_corrections
+nsclc-egfr,Oncology,Non-small cell lung carcinoma,EGFR tyrosine-kinase inhibitors,safety,1,True,2003,contra,2003,untested,False,,,,,accept_with_corrections
+obesity-disorder--glp1r-agonists,Metabolic,obesity disorder,GLP-1 receptor agonists for weight management,engagement,2,True,2014,same,2014,same,True,True,patients,True,direction_only,accept_with_corrections
+obesity-disorder--glp1r-agonists,Metabolic,obesity disorder,GLP-1 receptor agonists for weight management,dose,1,True,2007,untested,2007,untested,False,False,,True,,accept_with_corrections
+obesity-disorder--glp1r-agonists,Metabolic,obesity disorder,GLP-1 receptor agonists for weight management,efficacy,2,True,2014,same,2014,untested,True,True,patients,True,direction_only,accept_with_corrections
+obesity-disorder--glp1r-agonists,Metabolic,obesity disorder,GLP-1 receptor agonists for weight management,safety,1,True,2012,same,2012,untested,True,True,patients,True,direction_only,accept_with_corrections
+open-angle-glaucoma--adora2a-agonists,Ophthalmology,Open-angle glaucoma,Adenosine receptor agonists for IOP lowering,engagement,1,True,1997,untested,1997,untested,False,False,,False,,accept_with_corrections
+open-angle-glaucoma--adora2a-agonists,Ophthalmology,Open-angle glaucoma,Adenosine receptor agonists for IOP lowering,dose,1,True,1997,untested,1997,untested,False,False,,False,,accept_with_corrections
+open-angle-glaucoma--adora2a-agonists,Ophthalmology,Open-angle glaucoma,Adenosine receptor agonists for IOP lowering,efficacy,2,True,2016,same,2018,same,True,True,patients,False,within_2x,accept_with_corrections
+open-angle-glaucoma--adora2a-agonists,Ophthalmology,Open-angle glaucoma,Adenosine receptor agonists for IOP lowering,safety,1,True,1997,untested,1997,untested,False,False,,False,,accept_with_corrections
+osteoarthritis--ntrk1-inhibitors,Other,osteoarthritis,NTRK1 inhibitors,engagement,2,True,2018,same,2018,untested,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+osteoarthritis--ntrk1-inhibitors,Other,osteoarthritis,NTRK1 inhibitors,dose,2,True,2020,contra,2020,contra,True,True,mixed,True,,accept_with_corrections
+osteoarthritis--ntrk1-inhibitors,Other,osteoarthritis,NTRK1 inhibitors,efficacy,2,True,2019,contra,2019,contra,False,False,patients,False,,accept_with_corrections
+osteoarthritis--ntrk1-inhibitors,Other,osteoarthritis,NTRK1 inhibitors,safety,2,True,2019,untested,2019,untested,False,False,patients,True,,accept_with_corrections
+ovarian-cancer--parp1-inhibitors,Oncology,Ovarian cancer,PARP inhibitors,engagement,2,True,2009,same,2009,same,False,False,patients,True,direction_only,accept_with_corrections
+ovarian-cancer--parp1-inhibitors,Oncology,Ovarian cancer,PARP inhibitors,dose,2,True,2014,same,2014,same,True,True,patients,True,direction_only,accept_with_corrections
+ovarian-cancer--parp1-inhibitors,Oncology,Ovarian cancer,PARP inhibitors,efficacy,2,True,2009,same,2009,same,True,True,patients,True,direction_only,accept_with_corrections
+ovarian-cancer--parp1-inhibitors,Oncology,Ovarian cancer,PARP inhibitors,safety,3,True,2014,same,2014,same,True,True,patients,True,off_by_>5x,accept_with_corrections
+overactive-bladder--adrb3-agonists,Urology,overactive bladder,ADRB3 agonists,engagement,1,True,2007,untested,2007,untested,False,False,,True,,accept_with_corrections
+overactive-bladder--adrb3-agonists,Urology,overactive bladder,ADRB3 agonists,dose,1,True,2007,untested,2007,untested,False,False,,True,,accept_with_corrections
+overactive-bladder--adrb3-agonists,Urology,overactive bladder,ADRB3 agonists,efficacy,2,True,2012,same,2012,same,False,False,patients,True,direction_only,accept_with_corrections
+overactive-bladder--adrb3-agonists,Urology,overactive bladder,ADRB3 agonists,safety,2,True,2012,same,2012,same,False,False,patients,True,direction_only,accept_with_corrections
+parkinson-disease--anti-snca-antibodies,Neurology,Parkinson disease,anti-α-synuclein antibodies,engagement,2,True,2018,untested,2018,untested,False,False,patients,False,,accept_with_corrections
+parkinson-disease--anti-snca-antibodies,Neurology,Parkinson disease,anti-α-synuclein antibodies,dose,2,True,2019,untested,2019,untested,False,False,mixed,True,,accept_with_corrections
+parkinson-disease--anti-snca-antibodies,Neurology,Parkinson disease,anti-α-synuclein antibodies,efficacy,4,True,2026,untested,2026,contra,False,False,patients,False,direction_only,accept_with_corrections
+parkinson-disease--anti-snca-antibodies,Neurology,Parkinson disease,anti-α-synuclein antibodies,safety,1,True,2019,untested,2019,untested,True,True,healthy_volunteers,True,,accept_with_corrections
+paroxysmal-nocturnal-hemoglobinuria--anti-c5-antibodies,Hematology,Paroxysmal nocturnal hemoglobinuria,anti-C5 antibodies,engagement,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+paroxysmal-nocturnal-hemoglobinuria--anti-c5-antibodies,Hematology,Paroxysmal nocturnal hemoglobinuria,anti-C5 antibodies,dose,2,True,2007,same,2007,same,True,True,patients,True,direction_only,accept_with_corrections
+paroxysmal-nocturnal-hemoglobinuria--anti-c5-antibodies,Hematology,Paroxysmal nocturnal hemoglobinuria,anti-C5 antibodies,efficacy,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+paroxysmal-nocturnal-hemoglobinuria--anti-c5-antibodies,Hematology,Paroxysmal nocturnal hemoglobinuria,anti-C5 antibodies,safety,2,True,2007,same,2007,same,False,False,patients,False,direction_only,accept_with_corrections
+plasma-cell-myeloma--tnfrsf17-directed-depleters,Oncology,Plasma cell myeloma,"BCMA-directed therapies — CAR-T, ADC, bispecifics",engagement,2,True,2016,same,2016,same,False,False,patients,True,direction_only,accept_with_corrections
+plasma-cell-myeloma--tnfrsf17-directed-depleters,Oncology,Plasma cell myeloma,"BCMA-directed therapies — CAR-T, ADC, bispecifics",dose,2,True,2022,same,2022,same,True,True,patients,True,within_2x,accept_with_corrections
+plasma-cell-myeloma--tnfrsf17-directed-depleters,Oncology,Plasma cell myeloma,"BCMA-directed therapies — CAR-T, ADC, bispecifics",efficacy,2,True,2016,same,2023,contra,False,False,patients,True,direction_only,accept_with_corrections
+plasma-cell-myeloma--tnfrsf17-directed-depleters,Oncology,Plasma cell myeloma,"BCMA-directed therapies — CAR-T, ADC, bispecifics",safety,2,True,2016,contra,2016,contra,False,False,patients,True,,accept_with_corrections
+prader-willi-syndrome--cnr1-negative-modulators,Metabolic,Prader-Willi syndrome,cannabinoid CB1 modulators,engagement,1,True,2016,untested,2016,untested,True,True,patients,,,accept
+prader-willi-syndrome--cnr1-negative-modulators,Metabolic,Prader-Willi syndrome,cannabinoid CB1 modulators,dose,1,True,2016,untested,2016,untested,False,False,,,,accept
+prader-willi-syndrome--cnr1-negative-modulators,Metabolic,Prader-Willi syndrome,cannabinoid CB1 modulators,efficacy,1,True,2016,untested,2016,untested,True,True,patients,False,direction_only,accept
+prader-willi-syndrome--cnr1-negative-modulators,Metabolic,Prader-Willi syndrome,cannabinoid CB1 modulators,safety,1,True,2016,untested,2016,untested,False,False,patients,False,,accept
+premature-ejaculation--oxtr-antagonists,Urology,premature ejaculation,OXTR antagonists,engagement,2,True,2018,same,2018,untested,False,False,healthy_volunteers,True,direction_only,accept_with_corrections
+premature-ejaculation--oxtr-antagonists,Urology,premature ejaculation,OXTR antagonists,dose,1,True,2018,untested,2018,untested,False,False,,True,,accept_with_corrections
+premature-ejaculation--oxtr-antagonists,Urology,premature ejaculation,OXTR antagonists,efficacy,3,True,2019,contra,2019,contra,False,False,patients,True,direction_only,accept_with_corrections
+premature-ejaculation--oxtr-antagonists,Urology,premature ejaculation,OXTR antagonists,safety,0,True,,,,,False,,,,,accept_with_corrections
+primary-biliary-cholangitis--nr1h4-agonists,Gastroenterology,Primary biliary cholangitis,FXR agonists,engagement,2,True,2016,same,2016,same,False,False,patients,True,direction_only,accept_with_corrections
+primary-biliary-cholangitis--nr1h4-agonists,Gastroenterology,Primary biliary cholangitis,FXR agonists,dose,1,True,2002,untested,2002,untested,False,False,,True,,accept_with_corrections
+primary-biliary-cholangitis--nr1h4-agonists,Gastroenterology,Primary biliary cholangitis,FXR agonists,efficacy,3,True,2025,contra,2025,same,False,False,patients,True,direction_only,accept_with_corrections
+primary-biliary-cholangitis--nr1h4-agonists,Gastroenterology,Primary biliary cholangitis,FXR agonists,safety,3,True,2021,contra,2021,contra,True,False,patients,True,direction_only,accept_with_corrections
+prostate-cancer--ar-antagonists,Oncology,Prostate cancer,AR antagonists,engagement,2,True,2009,same,2009,same,True,True,patients,True,direction_only,accept_with_corrections
+prostate-cancer--ar-antagonists,Oncology,Prostate cancer,AR antagonists,dose,2,True,2010,same,2010,same,True,True,patients,True,within_2x,accept_with_corrections
+prostate-cancer--ar-antagonists,Oncology,Prostate cancer,AR antagonists,efficacy,3,True,2011,neg,2011,neg,True,True,patients,True,direction_only,accept_with_corrections
+prostate-cancer--ar-antagonists,Oncology,Prostate cancer,AR antagonists,safety,1,True,2011,neg,2011,neg,True,True,patients,True,direction_only,accept_with_corrections
+psoriasis--anti-il17a-antibodies,Autoimmune,Psoriasis,anti-IL-17A antibodies,engagement,1,True,2012,same,2012,same,True,True,patients,False,direction_only,accept_with_corrections
+psoriasis--anti-il17a-antibodies,Autoimmune,Psoriasis,anti-IL-17A antibodies,dose,2,True,2015,same,2009,untested,True,True,patients,True,direction_only,accept_with_corrections
+psoriasis--anti-il17a-antibodies,Autoimmune,Psoriasis,anti-IL-17A antibodies,efficacy,2,True,2010,same,2010,untested,True,True,patients,False,direction_only,accept_with_corrections
+psoriasis--anti-il17a-antibodies,Autoimmune,Psoriasis,anti-IL-17A antibodies,safety,2,True,2012,same,2015,contra,True,True,patients,False,direction_only,accept_with_corrections
+rheumatoid-arthritis--btk-inhibitors,Autoimmune,Rheumatoid arthritis,BTK inhibitors,engagement,2,True,2013,same,2013,same,True,True,healthy_volunteers,True,direction_only,accept_with_corrections
+rheumatoid-arthritis--btk-inhibitors,Autoimmune,Rheumatoid arthritis,BTK inhibitors,dose,3,True,2022,contra,2020,same,True,False,patients,True,direction_only,accept_with_corrections
+rheumatoid-arthritis--btk-inhibitors,Autoimmune,Rheumatoid arthritis,BTK inhibitors,efficacy,3,True,2021,contra,2021,contra,False,False,patients,True,direction_only,accept_with_corrections
+rheumatoid-arthritis--btk-inhibitors,Autoimmune,Rheumatoid arthritis,BTK inhibitors,safety,1,True,2020,untested,2013,untested,False,False,,True,,accept_with_corrections
+scz-pde10a,Psychiatry,Schizophrenia,PDE10A inhibitors,engagement,2,True,2016,same,2016,untested,False,,,,,accept_with_corrections
+scz-pde10a,Psychiatry,Schizophrenia,PDE10A inhibitors,dose,2,True,2019,contra,2019,contra,False,,,,,accept_with_corrections
+scz-pde10a,Psychiatry,Schizophrenia,PDE10A inhibitors,efficacy,2,True,2019,contra,2019,contra,False,,,,,accept_with_corrections
+scz-pde10a,Psychiatry,Schizophrenia,PDE10A inhibitors,safety,2,True,2019,contra,2019,contra,False,,,,,accept_with_corrections
+secondary-hyperparathyroidism--casr-positive-modulators,Endocrine,Secondary hyperparathyroidism,Calcimimetics (CaSR positive modulators),engagement,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+secondary-hyperparathyroidism--casr-positive-modulators,Endocrine,Secondary hyperparathyroidism,Calcimimetics (CaSR positive modulators),dose,2,True,2004,same,2004,untested,True,True,patients,True,within_2x,accept_with_corrections
+secondary-hyperparathyroidism--casr-positive-modulators,Endocrine,Secondary hyperparathyroidism,Calcimimetics (CaSR positive modulators),efficacy,3,True,2012,contra,2011,same,False,False,patients,True,direction_only,accept_with_corrections
+secondary-hyperparathyroidism--casr-positive-modulators,Endocrine,Secondary hyperparathyroidism,Calcimimetics (CaSR positive modulators),safety,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+sickle-cell-disease--hbb-replacement-gene-therapy,Hematology,Sickle cell disease,Lentiviral β-globin (βA-T87Q) gene therapy,engagement,2,True,2017,same,2017,same,False,False,patients,False,within_2x,accept_with_corrections
+sickle-cell-disease--hbb-replacement-gene-therapy,Hematology,Sickle cell disease,Lentiviral β-globin (βA-T87Q) gene therapy,dose,2,True,2022,same,2001,untested,False,False,patients,False,within_2x,accept_with_corrections
+sickle-cell-disease--hbb-replacement-gene-therapy,Hematology,Sickle cell disease,Lentiviral β-globin (βA-T87Q) gene therapy,efficacy,2,True,2017,same,2017,same,False,False,patients,False,direction_only,accept_with_corrections
+sickle-cell-disease--hbb-replacement-gene-therapy,Hematology,Sickle cell disease,Lentiviral β-globin (βA-T87Q) gene therapy,safety,2,True,2020,same,2022,contra,False,False,patients,True,direction_only,accept_with_corrections
+small-cell-lung-carcinoma--anti-pdcd1-antibodies,Oncology,Small cell lung carcinoma,Anti-PD-1 antibodies,engagement,1,True,2014,untested,2014,untested,False,False,,True,,accept_with_corrections
+small-cell-lung-carcinoma--anti-pdcd1-antibodies,Oncology,Small cell lung carcinoma,Anti-PD-1 antibodies,dose,1,True,2014,untested,2014,untested,False,False,,True,,accept_with_corrections
+small-cell-lung-carcinoma--anti-pdcd1-antibodies,Oncology,Small cell lung carcinoma,Anti-PD-1 antibodies,efficacy,2,True,2019,same,2019,untested,True,True,patients,False,direction_only,accept_with_corrections
+small-cell-lung-carcinoma--anti-pdcd1-antibodies,Oncology,Small cell lung carcinoma,Anti-PD-1 antibodies,safety,2,True,2019,contra,2016,contra,False,False,patients,True,direction_only,accept_with_corrections
+type-1-diabetes-mellitus--slc5a2-inhibitors,Endocrine,Type 1 diabetes mellitus,SGLT2 inhibitors as adjunct to insulin in T1D,engagement,2,True,2014,same,2014,same,False,False,patients,True,direction_only,accept_with_corrections
+type-1-diabetes-mellitus--slc5a2-inhibitors,Endocrine,Type 1 diabetes mellitus,SGLT2 inhibitors as adjunct to insulin in T1D,dose,1,True,2008,untested,2008,untested,False,False,,True,,accept_with_corrections
+type-1-diabetes-mellitus--slc5a2-inhibitors,Endocrine,Type 1 diabetes mellitus,SGLT2 inhibitors as adjunct to insulin in T1D,efficacy,2,True,2017,same,2017,same,False,False,patients,True,direction_only,accept_with_corrections
+type-1-diabetes-mellitus--slc5a2-inhibitors,Endocrine,Type 1 diabetes mellitus,SGLT2 inhibitors as adjunct to insulin in T1D,safety,2,True,2017,contra,2017,contra,False,False,patients,True,,accept_with_corrections
+type-2-diabetes-mellitus--glp1r-agonists,Endocrine,Type 2 diabetes mellitus,GLP-1 receptor agonists,engagement,2,True,1993,same,2003,same,False,False,patients,True,direction_only,accept_with_corrections
+type-2-diabetes-mellitus--glp1r-agonists,Endocrine,Type 2 diabetes mellitus,GLP-1 receptor agonists,dose,2,True,2003,same,2003,same,False,False,patients,True,within_2x,accept_with_corrections
+type-2-diabetes-mellitus--glp1r-agonists,Endocrine,Type 2 diabetes mellitus,GLP-1 receptor agonists,efficacy,2,True,2004,same,2004,same,False,False,patients,True,direction_only,accept_with_corrections
+type-2-diabetes-mellitus--glp1r-agonists,Endocrine,Type 2 diabetes mellitus,GLP-1 receptor agonists,safety,3,True,2012,contra,2012,contra,True,True,patients,True,direction_only,accept_with_corrections
+ulcerative-colitis--s1pr1-agonists,Autoimmune,Ulcerative colitis,S1P receptor modulators,engagement,2,True,2016,same,2016,same,False,False,patients,True,direction_only,accept_with_corrections
+ulcerative-colitis--s1pr1-agonists,Autoimmune,Ulcerative colitis,S1P receptor modulators,dose,1,True,2016,untested,2016,untested,False,False,,True,,accept_with_corrections
+ulcerative-colitis--s1pr1-agonists,Autoimmune,Ulcerative colitis,S1P receptor modulators,efficacy,2,True,2016,same,2016,same,False,False,patients,True,direction_only,accept_with_corrections
+ulcerative-colitis--s1pr1-agonists,Autoimmune,Ulcerative colitis,S1P receptor modulators,safety,2,True,2012,contra,2012,contra,True,True,healthy_volunteers,False,direction_only,accept_with_corrections

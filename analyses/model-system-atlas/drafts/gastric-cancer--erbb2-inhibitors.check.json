@@ -1,0 +1,81 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/gastric-cancer--erbb2-inhibitors.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI -> Tanner, Ann Oncol 16(2) Feb 2005 (PMID 15668283); quote verbatim in abstract. Model-vs-patient engagement comparison absent; O'Donoghue 2018 and Sanchez-Vega 2019 DOIs resolve, neither compares a model. Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI -> Fujimoto-Ouchi, CCP 59(6), epub 2006-10-10, print May 2007 (PMID 17031648); quote verbatim. HELOISE DOI resolves (JCO 35(22) 2017). No exposure target in the model; untested stands. Entry opens 2007 while model_first_use_year is 2005."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Tanner 2005 record; quote verbatim in abstract (its last sentence). Abstract also states N87 xenograft growth inhibition in vivo, so the model field is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "ToGA DOI/PMID 20728210; quote verbatim. Cross-reference now verified: ToGA's 32-ref list (Europe PMC) cites Fujimoto-Ouchi as ref 17 and Tanner as ref 11; citation context unseen (Lancet 403), so comparison_stated false is still right. Registry 2014-11-05 confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "TyTAN -> PMID 24868024, epub 2014-05-27, print Jul 2014; quote verbatim; registry 2013-02-07 confirmed; all six judgement DOIs resolve. Status rests on the primary-endpoint reading (rule question 1). Sanchez-Vega does not state the comparison; Xu 2021 does for T-DM1."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ogitani DOI -> PMID 27026201, CCR 22(20), epub 2016-03-29, print Oct 2016; quote verbatim. No patient data in 2016, untested stands. Kumagai 2020 later shows the same 6-week study carried lung toxicity at >=30 mg/kg."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Read in full (PMC7734153, epub 2020-11-02). Quote verbatim; the paper itself compares monkey histology with patient ILD and calls monkeys 'an appropriate model'. DESTINY-Gastric01 12 ILD cases and registry 2020-11-27 confirmed. Fact fields need edits (see missing)."
+  }
+ ],
+ "missing": [
+  "Efficacy: Xu 2021, Front Pharmacol, doi:10.3389/fphar.2021.757994 (PMID 35069192, PMC8769204) is a primary paper that states the comparison outright: 'Although T-DM1 was highly effective in HER2-positive gastric cancer (GC) cells and xenografts, the GATSBY study conferred that T-DM1 was not superior to taxane in patients with previously treated HER2-positive AGC.' It is the only explicit model-vs-patient statement found for lapatinib/T-DM1/pertuzumab; the draft's contra should cite it (comparison_stated true, year 2021 if a stated comparison is required). The same paper reports an AVATAR-PDX-to-patient match for RC48-ADC in 3 patients (different model; no status change under the contra override).",
+  "Safety entry 2 fact fields: the source quantifies the gap (monkey toxic dose 30 mg/kg = HED 9.7 mg/kg, 'twice' the 5.4 mg/kg clinical dose; exposure 'seven times'), so magnitude should be off_by_2-5x (dose) rather than direction_only; the source's patient side is DESTINY-Breast01 (25/184), the gastric anchor is the drafter's; the 2019 Enhertu label section 13.2 names only testicular findings in monkeys, so model_filed cannot be set true from the label (FDA review not checked).",
+  "Safety: the cynomolgus model was used for this class before 2016. Kumagai 2020's introduction states trastuzumab caused no lung toxicity in monkeys (6 months, 25 mg/kg; patient ILD <0.5%) and that T-DM1 monkey lung infiltrates at >=3 mg/kg 'predicted adverse pulmonary events in patients' (~1%). That supports an earlier untested opening (trastuzumab 1998 BLA or T-DM1 ~2012) and a second same-mechanism match for the model; model_first_use_year 2016 undercounts.",
+  "Efficacy/dose: model_filed left null for ToGA's 2010 sBLA; not checked here either."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Primary endpoint missed, secondaries positive: TyTAN (ORR OR 3.85, IHC3+ OS benefit, OS p=0.10), LOGiC (PFS HR 0.82 p=0.038, ORR 53 vs 39%, OS HR 0.91) and JACOB (PFS HR 0.73, OS HR 0.84 p=0.057) all show the xenograft-predicted activity but miss OS. If 'did the disease respond' means response/activity, none of these contradicts the model and the first clean contra is GATSBY 2017 (T-DM1 OS HR 1.15, ORR 20.6 vs 19.6% taxane); if it means the primary endpoint, contra 2014 stands. The brief does not say which.",
+  "Stated vs juxtaposed comparison: both ToGA same (2010) and TyTAN contra (2014) are drafter juxtapositions (comparison_stated false), matching house style in ad-amyloid (Doody 2013) and cf-cftr (Ramsey 2011). Read strictly, rule 1 ('a PRIMARY source that makes the comparison') would move the contra to Xu 2021 (explicit T-DM1 statement) and leave the ToGA same resting on the trial citing the xenograft paper in its reference list. Decide whether a trial paper that cites the model paper counts as 'making the comparison'.",
+  "Safety comparison made in another indication: Kumagai's patient side is DESTINY-Breast01 (25/184 ILD at 5.4 mg/kg); the gastric anchor (DESTINY-Gastric01, 12/125 at 6.4 mg/kg) is the drafter's addition. Does a drug-level toxicity comparison in breast-cancer patients satisfy 'same' for the gastric context?",
+  "Which year opens a cell when the entry year (dose 2007) differs from model_first_use_year (2005)?"
+ ]
+}

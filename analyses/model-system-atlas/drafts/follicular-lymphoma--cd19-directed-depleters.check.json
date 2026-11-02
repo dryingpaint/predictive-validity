@@ -1,0 +1,118 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/follicular-lymphoma--cd19-directed-depleters.json",
+ "checked": "2026-11-02",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (Blood 116:3875). Quote verbatim in abstract. Methods confirm the tumour: '38c13 lymphoma is a carcinogen-induced, CD19-expressing B-cell lymphoma of C3H/HeN origin', hosts C3H/HeN-MTV-negative. Yescarta SBRA section 4 cites this paper. FDA review says 209 days, paper 143; both fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "proposed_src": "https://doi.org/10.1182/blood-2011-10-384388",
+   "proposed_srcLabel": "Kochenderfer 2012",
+   "proposed_quote": "Similar to the murine studies, these early clinical reports have suggested an anti-malignancy effect of T cells expressing anti-CD19 CARs, and Ag-specific eradication of normal B cells has been demonstrated.",
+   "proposed_fields": {
+    "comparison_stated": true,
+    "source_calls_it": "match",
+    "epub_year": 2011,
+    "print_year": 2012
+   },
+   "note": "Quote verbatim, but the case report never mentions the mouse model (full text: only the 'mouse stem cell virus' vector name). First published comparison is Kochenderfer 2012 Introduction, sentence verified. Move to 2012; FL is 3 of 8 patients (1, 2, 8), not 4."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_model": "Primary human pre-B ALL xenograft (patient cells) in NOD-SCID-gamma-c-null (NSG, JAX) mice",
+   "note": "DOI resolves; quote verbatim in abstract; untested stands. Model misnamed: Milone engrafted primary patient pre-B ALL cells ('5 x 10^5 to 2 x 10^6 viable human ALL cells'), not NALM-6, into NOD-SCID-gamma-c-null mice from JAX. Mouse dose (5 x 10^6 CAR+ cells) never converted to a human dose: confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_model": "Primary human pre-B ALL xenograft (patient cells) in NOD-SCID-gamma-c-null (NSG, JAX) mice",
+   "note": "Same model-name error as dose 1: the draft's own quote says 'primary human pre-B-cell ALL'; the paper used primary cells, not NALM-6. Status untested stands. Judgement DOIs (Sommermeyer 2016, Araujo-Ayala 2026) resolve via Crossref."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "proposed_src": "https://doi.org/10.1182/blood-2011-10-384388",
+   "proposed_srcLabel": "Kochenderfer 2012",
+   "proposed_quote": "Similar to the murine studies, these early clinical reports have suggested an anti-malignancy effect of T cells expressing anti-CD19 CARs, and Ag-specific eradication of normal B cells has been demonstrated.",
+   "proposed_fields": {
+    "comparison_stated": true,
+    "source_calls_it": "match",
+    "magnitude": "direction_only",
+    "epub_year": 2011,
+    "print_year": 2012
+   },
+   "note": "'32 weeks' sentence verbatim in full text, but the source makes no model comparison. Kochenderfer 2012 states it ('Similar to the murine studies... anti-malignancy effect') with 3 FL patients among 8. Move to 2012. ZUMA-5/ELARA/TRANSCEND DOIs and registry dates all verified."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Yescarta clinical review 4.3 'The mice did not show any overt signs of toxicity.' confirmed by pdftotext; Kymriah SBRA sentence confirmed. Stronger primary quote for the silence, Results: 'The only toxicity ever noted in the treated mice was a lack of B cells.'"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "note": "Quote verbatim; 'only acute toxicities ... cytopenias' and 2-day fever confirmed in full text. But no source compares model and patient before 2012, when contra overrides anyway. Delete this entry: the cell runs 2010 untested to 2012 contra."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract). Table 1 FL = patients 1, 2, 8 (3 of 8, patient 1 treated twice; draft says 4). Patient 8 toxicities confirmed. Neither this paper nor the FDA review compares mice with patient CRS: contra is juxtaposed, see rule_questions. Epub 2011-12-08, print 2012 correct."
+  }
+ ],
+ "missing": [
+  "Context note claims 'the first CD19 CAR-T patient ever treated (2010) had FL'. Wrong: Jensen 2010 BBMT (https://doi.org/10.1016/j.bbmt.2010.03.014, epub 2010-03-19) reports earlier City of Hope first-generation CD19-CAR infusions in refractory FL (no overt toxicity, persistence 24 h to 7 days, no responses), and Brentjens' CLL patients were treated 2007-2009. Say 'the first reported CD19 CAR-T regression was in an FL patient'. Jensen 2010 is also an in-class FL patient result with no model comparison (a first-generation CAR that failed, which no model flagged): belongs in the efficacy strip as untested at 2010 if first-generation CARs count as the class.",
+  "File name says 'cd19-directed-depleters' but the draft covers CAR-T only. If the class includes CD19 antibodies/ADCs in FL (tafasitamab, inMIND; loncastuximab tesirine), they rest on different models (MOR208 and ADCT-402 xenografts) and need their own entries. Not researched here; scope decision for the caller.",
+  "Safety untested 2010: the mouse paper's Discussion makes an explicit prospective prediction ('The prolonged B-cell depletion is also a warning that patients enrolled on clinical trials...'); quote it as the model's stated safety prediction rather than the 143-day sentence.",
+  "Registry: NCT00924326 results first posted 2019-03-21 (ACTUAL) confirmed via CT.gov v2; its conditions list names only 'DLBCL transformed from FL', not FL itself, because the record reflects later amendments; the 2010/2012 papers establish the FL patients."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety contra 2012 rests on juxtaposition: model silence is in the primary mouse paper ('The only toxicity ever noted in the treated mice was a lack of B cells') and Yescarta review 4.3; patient CRS/neurotoxicity is in Kochenderfer 2012; no source puts them side by side (confirmed in both full texts). Rule 1 (a primary source must make the comparison) would send this to untested, but the safety question explicitly scores a model's silence and v2's comparison_stated=false exists for this case. Recommend keeping contra and stating that silence-type failures are allowed with comparison_stated=false.",
+  "The 2012 comparison sentence compares murine studies with 'these early clinical reports' (the 2010 FL case report plus CLL/ALL reports from other groups); the paper's own cohort has 3 FL patients. Is a comparison stated over mixed-histology reports sufficient for the FL context? Treated as yes because the FL case report is among them and the cohort includes FL.",
+  "Year convention: Kochenderfer 2012 epub 2011-12-08, print 2012; house rule (print year) gives 2012, so the same-status strip starts 2012 not 2011. ELARA (epub 2021, print 2022) has the same split in the judgement text."
+ ]
+}

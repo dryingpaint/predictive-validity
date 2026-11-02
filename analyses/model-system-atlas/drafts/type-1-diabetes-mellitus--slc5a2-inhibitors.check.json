@@ -1,0 +1,38 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/type-1-diabetes-mellitus--slc5a2-inhibitors.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Meng 2008 (PMID 18260618) resolves; quote verbatim in abstract. FDA PharmR text confirms 'The STZ-treated rat is a model of insulin deficient diabetes' and the 0.03/0.1 mg/kg sentence. Untested correct."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2014,
+   "note": "Quote verbatim; NCT01392560 results 2014-06-17 confirmed. Cherney's 50 references cite no Akita/mouse/Vallon 2014, only STZ-rat tubular work (Vallon 1999, Thomson 2011, Malatiali 2008, Thorup 2000). Model -> STZ-diabetic rat; comparison_stated -> true; product_in_model -> false."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Same Meng quote verbatim. FDA PharmR confirms 'statistically significant at 0.03 and 0.1 mg/kg'. T1D phase-3 doses are the T2D doses; no rodent-to-patient exposure comparison published. Untested correct."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Meng quote verbatim. Vallon 2014 Akita glucose figures (187-237 vs 517-535 mg/dl) and Powell 2015 quote verbatim in abstracts. EMA/178275/2019 section 2.3.1 names NOD mice on low-dose insulin. Untested correct."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Garg 2017 (PMID 28899222) quote verbatim; primary endpoint met (28.6% vs 15.2%, P<0.001), HbA1c -0.46, bolus -2.8 U/day. NCT02531035 results 2019-11-19 (actual). EMA names NOD model, so model_filed true. Juxtaposition accepted per cf-cftr precedent."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim. FDA PharmR text (271,356 chars) has zero ketone/ketoacidosis/hydroxybutyrate/acidosis hits; EMA non-clinical section 2.3 is ketone-free. Devenny 2012 abstract verbatim: fasting BHBA elevated in DIO rats, framed as fuel shift. Untested correct."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim; EMA DKA rates and 'multiple mechanisms' sentences verbatim (latter sits in 2.4.4 clinical pharmacology). Perry 2019 '<125 pM, indicating type 1 diabetes, excluded', 6-20%, rodent-human caveat all verified. Devenny 2012 is a different finding; contra stands."}
+ ],
+ "missing": [
+  "efficacy: a candidate earlier `same` in 2014. Vallon 2014 (Akita, empagliflozin, glucose 517-535 -> 187-237 mg/dl) and Perkins 2014 (https://doi.org/10.2337/dc13-2338, NCT01392560, same product, 'Mean A1C decreased from 8.0 ± 0.9% ... to 7.6 ± 0.9% (P < 0.0001)') plus Cherney 2014 ('Empagliflozin reduced hemoglobin A1c significantly in both groups, despite lower insulin doses') are both 2014 publications; if a single-arm open-label PoC qualifies as the patient side, efficacy `same` dates to 2014 (model Akita mouse, product_in_model true, model_filed false) rather than 2017. The drafter already quotes Perkins 2014 in the engagement judgement, so the source was in hand.",
+  "engagement entry 2 judgement should drop 'whether Cherney cites Vallon's Akita data directly is unverified': the reference list is now checked (Europe PMC, 50 refs) and it does not; it cites Vallon 1999 JASN, Thomson 2011 AJP Regul (STZ rat, SGLT2 blockade), Malatiali 2008 (phlorizin, diabetic rats), Thorup 2000 (STZ rat TGF) and List & Whaley 2011 ('in animals and humans')."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Devenny 2012 (https://doi.org/10.1038/oby.2012.59, abstract verified: 'Fasting BHBA was elevated in the 1 mpk, 5 mpk, and 5 mpk PF-V groups'; also non-fasting BHBA up and RER down in pair-fed rats) is a rodent ketone signal published five years before the clinical DKA signal. I scored it as NOT changing the safety status because (a) it is a different model (DIO rat, obesity context, insulin present) from the insulin-deficient models the class relied on for T1D and from the filed tox package (FDA PharmR: zero ketone mentions); (b) it is ketosis/fuel shift, not ketoacidosis, and the authors frame it as energy-balance physiology, not a safety prediction; (c) rule 1 requires a primary source making the model-vs-patient comparison, and none exists: Perry 2019 does not cite Devenny (it cites Yokono 2014 for fat oxidation). The brief does not say whether an unread signal in a model the class did not rely on can convert `contra`-on-silence into `same`/`neg`; it should state that explicitly. If the rules are revised so that any published rodent signal counts regardless of model or framing, this entry becomes `same` (2012-2017) with a model string of 'DIO rat (Devenny 2012)'.",
+  "Engagement `same` 2014: the brief says model = the one the class relied on. Cherney 2014's own references show it relied on STZ-rat tubular-hypothesis work (phlorizin and SGLT2 blockade), not the Akita mouse; Vallon 2014 (Akita, empagliflozin) appeared one month earlier but is uncited. I proposed STZ rat (comparison_stated true, product_in_model false since the rat work used phlorizin/dapagliflozin, model_first_use_year 1999 for the phlorizin proxy or 2011 for selective SGLT2 blockade). Alternative reading: keep Akita because it is the only rodent study with the actual product. The brief should say whether a same-product academic model published alongside the trial outranks the class-proxy model the trial actually cites.",
+  "Efficacy `same` 2017: Garg 2017 does not mention the NOD mouse (comparison_stated false). The EMA assessment report contains both the NOD result (section 2.3.1) and the clinical HbA1c result but never juxtaposes them. Under a strict reading of rule 1 this is `untested`; under the cf-cftr precedent (Ramsey 2011 alone supports `same`) it is `same`. I followed the precedent. The brief should state whether a regulatory review that holds both results in one document counts as 'making the comparison'.",
+  "Whether a class proxy (phlorizin, Vallon 1999, nonselective SGLT inhibitor) opens the engagement strip for the hyperfiltration question (model_first_use_year 1999) or only the first SGLT2-selective use (dapagliflozin in STZ rats, 2008)."
+ ]
+}

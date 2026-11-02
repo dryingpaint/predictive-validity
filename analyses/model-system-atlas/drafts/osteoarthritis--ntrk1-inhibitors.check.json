@@ -1,0 +1,92 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/osteoarthritis--ntrk1-inhibitors.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 0,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 27766865, J Med Chem 59(22) Nov 2016; quote verbatim in abstract. Abstract names no pain model, so 'rat pain PD models' is inferred; low confidence is right. Untested opener OK."
+  },
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "note": "PMC5777446 confirms: 20 healthy volunteers, 5 primary endpoints, 400 mg met UVB only, 50 mg none; nonclinical models cited are UVB/carrageenan/CFA, not NGF. Analgesic PD in volunteers for a compound never dosed in OA is not an OA engagement comparison; Walsh & Neogi 2019: 'Neither study directly confirmed target engagement'. Keep facts, status untested."
+  },
+  {
+   "cell": "dose",
+   "index": 0,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PMC4893148; epub 2015-08-18, print Ann Rheum Dis 75(6) 2016 confirmed. Quote matches (dashes differ). No exposure target in paper, so untested is right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC6973102, print J Clin Pharmacol 60(1) 2020. Both sentences verbatim ('selected to exceed a trough...unpublished data'; 'exceeded or were comparable to'). Trough-met evidence is Phase 1 healthy men, data not shown; patient Ctrough not reported. Contra holds only under the 'sufficient' reading of 'hold' (see rule_questions); quote should be the dose-selection sentence, not the efficacy one."
+  },
+  {
+   "cell": "efficacy",
+   "index": 0,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nwosu conclusion sentence verbatim; 2016 print year correct. OARSI 2015 GZ389988 abstract not checked."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 31356878, OAC 27(11) 2019, epub 2019-07-26; abstract gives -0.14 (90% CI -0.62, 0.34; P=0.316) and naproxen -0.67 (80% CI -1.12, -0.23); EudraCT 2014-004996-22 first version 20 Jun 2018 confirmed. Watt itself states no model comparison (abstract-only); contra rests on drafter juxtaposition plus Ishiguro 2020, which does state it. Brief v2 permits class proxies, so status stands; year is a rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 0,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nwosu sentence verbatim; model silent on RPOA; untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 31351965, OAC 27(11) 2019, epub 2019-07-25; quote verbatim in abstract. All four NCT records exclude RPOA history/risk (NCT02611466 also radiographic RPOA-risk, NCT02845271 MRI-risk); none has results posted, so 'no RPOA' comes from the papers: Walsh & Neogi 'RPOA was not detected in either TrkA inhibitor study' (+ tibial stress fracture), Ishiguro no SAEs, EudraCT ASP7962 1 SAE arthralgia; VM902A has no data at all. Untested is defensible."
+  }
+ ],
+ "missing": [
+  "Efficacy: record Ishiguro 2020 (doi:10.1002/jcph.1470) as its own contra entry (product_in_model=true, comparison_stated=true: 'comparable with the effects of morphine' in rat MIA vs 'did not meet the expected efficacy of a weak opioid'); it is the only efficacy comparison a primary source itself states and would survive a stricter Rule 1 re-score. Note its epub (2019-07-08) precedes Watt (2019-07-26).",
+  "Engagement: a 2019 untested entry on Walsh & Neogi 2019 (doi:10.1016/j.joca.2019.07.013, PMC6941477) 'Neither study directly confirmed target engagement in the study participants' would document that OA-patient engagement was never measured, in place of the volunteer same.",
+  "Dose: ASP7962 Phase 1 dose selection is unpublished; Walsh & Neogi's 'whether...the investigators advanced the most effective dosing regimen' could be recorded as an untested fact entry, not a status."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose cell: does 'did the model's exposure target hold in patients' mean the target exposure was ACHIEVED (Ishiguro -> same: 100 mg BID met the rat-MIA/monkey trough) or was SUFFICIENT (-> contra: met trough gave sub-tramadol effect, authors propose 400 mg/day)? The brief's magnitude values (within_2x, off_by_2-5x) only make sense under the sufficiency reading, but that reading double-counts one efficacy miss in two cells.",
+  "Does a model prediction that exists only as '(unpublished data)' inside the clinical paper satisfy evidence rule 1 for the model side of a same/contra comparison (Ishiguro 2020 dose and efficacy)?",
+  "Rule 1 says the source must make the comparison, but v2's comparison_stated=false field implies drafter juxtaposition is tolerated. If not tolerated, efficacy contra moves from Watt 2019 to Ishiguro 2020 (print year). Which governs?",
+  "Engagement: can a healthy-volunteer evoked-pain PD readout (subjects=healthy_volunteers is an allowed value) for a class member never dosed in the context's disease score the disease context's engagement cell, and does an analgesic PD endpoint count as 'engagement' at all versus occupancy/biomarker?",
+  "Safety: when trials are <=12 weeks and exclude RPOA-risk patients, does 'no RPOA observed' count as the model's silence holding (same) or as untested? Draft chose untested."
+ ]
+}

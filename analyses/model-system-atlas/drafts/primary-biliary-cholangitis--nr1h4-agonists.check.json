@@ -1,0 +1,48 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/primary-biliary-cholangitis--nr1h4-agonists.json",
+ "checked_on": "2026-11-02",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 15644430 = Fiorucci JPET 313:604 (2005), DOI matches. Quote verbatim in abstract (17alpha-ethynylestradiol rat). No patient comparison, so untested holds as strip opener."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "s000 label (Revised 5/2016) p.10 sec 12.2 verbatim, incl. CA/CDCA fall and 'clinical relevance unknown'. NCT01473524 results first posted 2017-02-13 confirmed. Direction-only juxtaposition; same house style as cf-cftr engagement."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "EPAR EMA/725757/2016 (13 Oct 2016) p.95 'Dose finding' carries the sentence verbatim. No model-derived exposure target; untested holds. Source type is EMA, not in rule 1's list (see rule_questions)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 12166927 = J Med Chem 45:3569 (2002). Abstract verbatim ('anticholeretic' is the abstract's own slip; title says anticholestatic). EPAR p.20 names LCA-cholestasis, TAA fibrosis and two cirrhosis rat models but NOT the estrogen model; model label slightly over-reaches, status unaffected."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 25500425, Gastroenterology 148(4):751-61.e8, epub 2014-12-11, print 2015. ALP -21% to -25% vs -3% placebo verbatim; 165 pts, 10/25/50 mg, 3 mo; 69% vs 8% >=20% responders. NCT00550862 results posted 2012-01-23 confirmed. POISE 46/47% vs 10% from memory, not re-opened."},
+  {"cell": "efficacy", "index": 3, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "same", "proposed_year": 2025,
+   "note": "PMID 39140490, AJG 120(2):390-400, epub 2024-08-14; 28.6% vs 28.9%, HR 1.01 (0.68-1.51) verbatim; NCT02308111 results posted 2023-03-09. But the rat models predicted less cholestasis/fibrosis and never carried an outcome endpoint; the surrogate matched. Apply the HF-natriuretic-peptide / SHPT-EVOLVE precedent: same on the surrogate, outcome null as a note. The ITT null is also confounded by the authors' own account (unblinding, crossover; EC HR 0.39), so it is not even a clean patient failure. Fold into the 2015 entry's note, or keep as a dated same entry with reason 'ALP fell as rats said; outcomes never modelled'."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 24259407, Hepatology 59(6):2286-98 (2014). Quote verbatim in abstract (TAA + BDL rats, 2x30 mg/kg). EPAR p.20 cites 'two different rat models of cirrhosis', so model_filed true holds. Repeat-dose tox predates 2014 without a public primary; opener acceptable."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "EPAR p.26 (not ~29) verbatim, with the preceding sentences 'consistent with and predict the dose-limiting toxicity in humans ... toxicity would not be expected at therapeutic doses.' Source states the comparison itself; comparison_stated true and source_calls_it match are right. EMA source type: see rule_questions."},
+  {"cell": "safety", "index": 3, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "contra", "proposed_year": 2021,
+   "note": "Opened the 5/2021 revision itself: https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/207999s007lbl.pdf (Revised 5/2021; RMC dates Boxed Warning, 1, 2.1-2.4, 4 and 5.1 to 5/2021). Sec 5.1 p.5 carries the quote verbatim and itself contrasts the earlier higher-than-recommended-dosage cases with cases 'even when they received the recommended dosage'; contraindications = decompensated cirrhosis/prior decompensation, compensated cirrhosis with portal hypertension, complete biliary obstruction. The s008 (2/2022) text is identical. This contradicts EPAR p.26 'toxicity would not be expected at therapeutic doses' and the Verbeke cirrhotic-rat prediction, so contra 2021 stands. Correction: cite s007 directly rather than the 2022 reprint. The Feb-2018 label/DSC (dosing-frequency story) was not opened (guessed URLs 404); that sequencing rests on the 2021 sec 5.1 wording."}
+ ],
+ "missing": [
+  "efficacy: the EPAR p.20 prediction that OCA 'reversed established fibrosis and cirrhosis' (TAA rat) has no published patient histology comparison (POISE/COBALT carried none); say explicitly that the fibrosis prediction is untested in patients rather than letting the COBALT outcome composite stand in for it.",
+  "safety: if the 2018-to-2021 sequencing stays in the judgement, cite the Feb-2018 boxed-warning label or the FDA Drug Safety Communication of 2018-02-01 (dosed more frequently than recommended in Child-Pugh B/C) as its primary; the drafter and I both relied on the 2021 sec 5.1 wording for it.",
+  "efficacy: Nevens 2016 POISE (doi:10.1056/NEJMoa1509840, results posted 2017-02-13) is the pivotal 12-month surrogate confirmation and is only in the judgement text; worth a src on the 2015/2016 same entry if the figure allows two sources."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a confirmatory outcome-trial null on an endpoint the model never carried (COBALT death/transplant/decompensation vs rat bile flow/fibrosis) make the efficacy cell contra, or same-on-surrogate with the outcome failure as a note? I applied the HF natriuretic-peptide and SHPT/EVOLVE precedent and propose same; the brief's efficacy definition ('did the disease respond the way the model said') can be read either way.",
+  "Does a confounded ITT null that the authors themselves discount (functional unblinding, crossover; propensity-weighted external control HR 0.39) count as a patient-side failure at all, or does the comparison need a cleaner trial before any status moves?",
+  "Rule 1 enumerates FDA label/review, DOI paper, registry; two entries (dose 1, safety 2) and the safety-contra prediction rest on the EMA EPAR. Propose admitting EMA EPARs explicitly as regulatory primaries.",
+  "Safety contra 2021 is a juxtaposition (EPAR stated prediction + FDA label fact); no single source states the comparison. The ad-amyloid safety example accepts this shape, but rule 1's wording ('a PRIMARY source that makes the comparison') does not; clarify that two regulatory primaries, one stating the prediction and one the outcome, suffice.",
+  "'One entry per change of status': if efficacy 2025 becomes same, should it survive as a dated note entry (no status change) or be folded into the 2015 entry?"
+ ]
+}

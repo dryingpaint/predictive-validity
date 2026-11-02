@@ -1,0 +1,49 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/diabetic-kidney-disease--nr3c2-antagonists.json",
+ "index_base": 0,
+ "entries": [
+  {"cell": "engagement", "index": 0, "year": 2014, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kolkhof 2014 resolves (PMID 24621652); quote verbatim in abstract (abstract only). FDA review confirms rat natriuresis at 0.3 mg/kg, 3-10x eplerenone, as filed pharmacology. Barfacker 2012 abstract has no rat natriuresis, so the 2014 opening stands."},
+  {"cell": "engagement", "index": 1, "year": 2021, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2021,
+   "note": "Review resolves; quote verbatim (p.140 reviewer comment). NCT01473108 is Study 13786 (identical title; healthy male volunteers; no results posted, never published). Rat (p.19) and human natriuresis sit 120 pages apart, never linked: drafter-juxtaposed, so untested under rule 1."},
+  {"cell": "dose", "index": 0, "year": 2014, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kolkhof 2014 quote verbatim in abstract. FDA review confirms '1 mg/kg' DOCA-salt minimum effective dose and 'largely saturated at 20 mg' verbatim; no rat-to-human exposure comparison anywhere in the review. Untested stands."},
+  {"cell": "efficacy", "index": 0, "year": 2014, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Kolkhof 2014 abstract; FDA Table 43 lists the DOCA-salt rat as filed primary pharmacology ('at doses (<=1 mg/kg) that did not reduce arterial blood pressure'). Untested stands."},
+  {"cell": "efficacy", "index": 1, "year": 2015, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2015,
+   "note": "JAMA abstract verbatim; 0.62 at 20 mg and registry 2021-05-04 confirmed. Judgement wrong: ARTS-DN cites Kolkhof 2014 (ref 8); intro says 'equinatriuretic doses of finerenone provided a greater reduction in proteinuria'. Set comparison_stated true. Keep 2015 over FIDELIO."},
+  {"cell": "safety", "index": 0, "year": 2014, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Kolkhof 2014 abstract. FDA review confirms verbatim the 6-month rat potassium rise 'starting at the low dose of 0.5 mg/kg on day 179' and healthy-dog potassium 'unaffected by short-term drug treatment'. Untested stands."},
+  {"cell": "safety", "index": 1, "year": 2021, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "contra", "proposed_year": 2020,
+   "note": "Quote verbatim (p.72); FIDELIO 21.4% vs 9.2% confirmed. Review's supporting clinical data are FIDELIO (no steroidal arm); vs-steroidal never run in DKD; ARTS-HF vs eplerenone balanced. Esaxerenone rat 'no hyperkalemia' vs ESAX-DN 9%/2% contradicts: contra 2020."}
+ ],
+ "missing": [
+  "safety: esaxerenone contra. Arai 2015 Dahl salt-sensitive rat (https://doi.org/10.1016/j.ejphar.2015.11.028, PMID 26607463): 'prevented by treatment with CS-3150 in a dose-dependent manner with no hyperkalemia (>5.5mEq/L)'. ESAX-DN (Ito 2020, https://doi.org/10.2215/CJN.06870520, PMID 33239409, epub 2020-11-25, print 2020-12): 'More patients had a serum potassium level >=6.0 or >=5.5 mEq/L on two consecutive measurements in the esaxerenone group (20 [9%]) versus placebo (5 [2%])'. Ito's 37 references contain no Arai/rat paper (comparison_stated=false), i.e. the same juxtaposition standard the drafter used for engagement 2021 and efficacy 2015. Under that standard this is a contra and contra overrides; under strict rule 1 it and the finerenone 'same' are both untested. Either way 'same' falls. Model label would need to broaden to 'salt-loaded hypertensive rat (DOCA-salt/UNx for finerenone; Dahl SS for esaxerenone)'.",
+  "safety judgement: ARTS-HF (Filippatos 2016, https://doi.org/10.1093/eurheartj/ehw132, PMID 27130705), the only finerenone-vs-eplerenone head-to-head (eplerenone is the rat's comparator): 'A potassium level increase to >=5.6 mmol/L at any time point occurred in 4.3% of patients, with a balanced distribution among all treatment groups.' Out of context (HF with T2D and/or CKD) but it shows the vs-eplerenone reduced-hyperkalaemia prediction did not reproduce even where it was tested; the draft cites only ARTS vs spironolactone.",
+  "safety judgement: the FDA review's hyperkalaemia rationale (p.71) rests the preclinical-to-clinic hypothesis on a review (Naegele et al. 2016) and the 'clinical data' paragraph names only FIDELIO; ARTS appears only as a phase 2a description in the clinical-pharmacology section and ARTS-HF is never named. 'source_calls_it: match' overstates a class-level assertion.",
+  "efficacy judgement: ARTS-DN (JAMA 2015) cites Barfacker 2012 (ref 7) and Kolkhof 2014 (ref 8) and frames the trial against the rat in the Introduction; the draft's 'the JAMA paper does not cite the rat' and comparison_stated=false are wrong. Status and year unchanged.",
+  "unused third class member named in the context note: apararenone (MT-3995) phase 2 in diabetic nephropathy (Wada et al., Clin Exp Nephrol 2021) reported UACR reduction and serum potassium; I did not verify a DOI within budget, so it is a lead only, not a correction."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a drafter-juxtaposed comparison (comparison_stated=false) satisfy rule 1 ('a PRIMARY source that makes the comparison')? The drafter brief's fact field implies yes; the checker brief's failure list ('same/contra with no published model-vs-patient comparison -> untested') implies no. This single choice decides engagement 2021 (same vs untested) and whether the esaxerenone mismatch is contra or untested. Whichever reading is adopted must be applied symmetrically; the draft applied it to favourable statuses only.",
+  "Is a regulator review that summarises an unpublished study with no registry results (Study 13786 / NCT01473108) a primary source for the human side of a comparison? Rule 1 admits accessdata.fda.gov reviews as documents, so the source type is admissible; but the data exist only as the reviewer's summary (Tables 109/110 are redacted images in the PDF) and the subjects are healthy volunteers, while the engagement question asks about 'patients'. The brief says subjects must not change the status; the rule should say whether 'patients' is literal.",
+  "Can a comparative safety prediction (less hyperkalaemia than steroidal MRAs) be scored in a context where the comparator was never run (DKD)? Head-to-head exists only in HF populations: ARTS vs spironolactone reduced (5.3% vs 12.7%), ARTS-HF vs eplerenone balanced (4.3%, all arms). Recommend: a comparative prediction needs the comparator arm in-context, else untested; the absolute prediction (rat tox potassium rise -> FIDELIO hyperkalaemia doubled) is a separate, directionally matched, never-stated comparison.",
+  "When a second drug of the class relied on a sibling model (esaxerenone: Dahl salt-sensitive rat; finerenone: DOCA-salt uninephrectomised rat), does its contradiction override the cell, given the brief says validity belongs to the context not the model? Recommend yes, with the model label broadened to 'salt-loaded hypertensive rat'.",
+  "Should a regulator's class-level sentence ('Clinical data available to date also support that the structural and pharmacological differences ... have clinical relevance in reducing ... hyperkalemia') count as comparison_stated=true / source_calls_it='match' when it names neither a model result nor a trial? Recommend it does not; comparison_stated should require the source to name the model finding and the patient result."
+ ]
+}

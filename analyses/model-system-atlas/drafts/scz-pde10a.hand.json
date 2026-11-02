@@ -1,0 +1,98 @@
+{
+ "order": 71,
+ "area": "Psychiatry",
+ "disease": "Schizophrenia",
+ "mondo_id": "MONDO:0005090",
+ "population": "Unselected",
+ "mechanism": "PDE10A inhibitors",
+ "note": "Hand draft 2026-11-02 (SG). Rodent antipsychotic screens predicted efficacy; engagement and dose translated, efficacy did not.",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 2006,
+    "status": "untested",
+    "note": "Papaverine raised striatal cGMP and cAMP and CREB/ERK phosphorylation in rats; effects absent in PDE10A knockouts.",
+    "src": "https://doi.org/10.1016/j.neuropharm.2006.04.013",
+    "srcLabel": "Siuciak 2006",
+    "short": "Striatal cAMP/cGMP rise in rats",
+    "model": "Rat striatum + PDE10A KO mouse"
+   },
+   {
+    "year": 2016,
+    "status": "same",
+    "note": "[11C]T-773 PET: PDE10A occupancy in human putamen rose dose- and concentration-dependently (2.8-72.1% at 3-1000 mg TAK-063), as rat occupancy had.",
+    "src": "https://doi.org/10.1016/j.neuroimage.2016.06.047",
+    "srcLabel": "Takano 2016",
+    "short": "Human PET occupancy tracks dose as in rat",
+    "model": "Rat striatal occupancy",
+    "reason": "Human PET confirmed dose-occupancy"
+   }
+  ],
+  "dose": [
+   {
+    "year": 2008,
+    "status": "untested",
+    "note": "TP-10 gave antipsychotic-like effects in rodents at defined exposures; the dose rationale for clinical compounds came from rodent occupancy-efficacy.",
+    "src": "https://doi.org/10.1124/jpet.107.132910",
+    "srcLabel": "Schmidt 2008",
+    "short": "Rodent occupancy sets the dose",
+    "model": "Rodent occupancy\u2192efficacy"
+   },
+   {
+    "year": 2019,
+    "status": "same",
+    "note": "In the monotherapy trial, 'pharmacokinetics exposures seemed adequate for binding/inhibiting PDE10A enzyme'; in the adjunctive trial exposures were 'within the range predicted to be adequate for demonstrating efficacy'.",
+    "src": "https://doi.org/10.1097/JCP.0000000000001128",
+    "srcLabel": "Walling 2019",
+    "short": "Trials hit the predicted exposure",
+    "model": "Rodent occupancy\u2192efficacy",
+    "reason": "Predicted exposure was reached in patients"
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 2006,
+    "status": "untested",
+    "note": "Papaverine inhibited conditioned avoidance and PCP/amphetamine hyperlocomotion in rats and mice: 'behavioral models predictive of antipsychotic activity'.",
+    "src": "https://doi.org/10.1016/j.neuropharm.2006.04.013",
+    "srcLabel": "Siuciak 2006",
+    "short": "Rodent antipsychotic screens positive",
+    "model": "Rodent antipsychotic screens"
+   },
+   {
+    "year": 2019,
+    "status": "contra",
+    "note": "PF-02545920 monotherapy: neither dose beat placebo on PANSS while risperidone did; adjunctive trial also null. Authors: results 'refute the hypothesis that PDE10A inhibitors have use as antipsychotic agents'. TAK-063 (2018) also missed its primary endpoint.",
+    "src": "https://doi.org/10.1097/JCP.0000000000001047",
+    "srcLabel": "DeMartinis 2019",
+    "short": "Three PDE10A inhibitors fail; risperidone works",
+    "model": "Rodent antipsychotic screens",
+    "reason": "Screens predicted efficacy; patients showed none"
+   }
+  ],
+  "safety": [
+   {
+    "year": 2008,
+    "status": "untested",
+    "note": "TP-10 produced relatively low catalepsy in rats, read as predicting a low extrapyramidal risk in man.",
+    "src": "https://doi.org/10.1124/jpet.107.132910",
+    "srcLabel": "Schmidt 2008",
+    "short": "Low rat catalepsy, EPS-sparing predicted",
+    "model": "Rat catalepsy"
+   },
+   {
+    "year": 2019,
+    "status": "contra",
+    "note": "Dystonia in 6/74 on PF-02545920 15 mg vs 3/74 placebo; TAK-063 trial reported akathisia and dystonia more frequent than placebo.",
+    "src": "https://doi.org/10.1097/JCP.0000000000001128",
+    "srcLabel": "Walling 2019",
+    "short": "Dystonia/akathisia exceeded placebo",
+    "model": "Rat catalepsy",
+    "reason": "EPS-sparing not borne out (small numbers)"
+   }
+  ]
+ },
+ "label": "Schizophrenia (PDE10A)"
+}

@@ -1,0 +1,42 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hiv-infectious-disease--human-immunodeficiency-virus-type-1-.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DOI 10.1126/science.287.5453.646 = PMID 10649997 (Hazuda, Science 2000). Quote verbatim in abstract. Opening untested entry per rule 6; product_in_model=false correct (diketo acids, not raltegravir)."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 18650513; quote verbatim in abstract; NCT00293267 results first posted 2009-09-28 confirmed. 'Phenotypic resistance' is the cell-culture assay, so Cooper itself states the concordance; comparison_stated could be true. See rule_questions[2]."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim but is a mechanism sentence, not an exposure-target one; the IC95-in-50%-serum trough target is first stated in Markowitz 2006. Acceptable as the strip opener; a 2000 start is a judgement call."},
+  {"cell": "dose", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 17133211; trough-vs-IC95 sentence verbatim in abstract. Registry record found: NCT00100048 (org ID 0518-004, Day-10 monotherapy cohort I), results first posted 2010-03-29 -> set registry_date; status 'same' stands."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Same Hazuda 2000 quote, verbatim. Hazuda 2004 macaque DOI 10.1126/science.1098632 in the judgement resolves (PMID 15247437, L-870812 in SHIV-89.6P rhesus); correctly kept off the strip."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim (abstract conclusion). Same registry correction: NCT00100048, results first posted 2010-03-29. 'same' supported: abstract states IC95 33 nM in vitro and 1.7-2.2 log10 drop in patients side by side."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in current Isentress label (Revised 5/2022), rabbit sentence. Note overstates slightly: the rat study showed increased supernumerary ribs at 600 mg/kg/day; say 'no malformations' rather than 'no adverse developmental outcomes'."},
+  {"cell": "safety", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "contra", "proposed_year": 2018,
+   "note": "Zash 2019 quote verbatim (and open access, PMC6995896, so not abstract-only). But the comparison was published in 2018: Zash 2018 letter is quotable (PMC6550482: '4 (0.94%) had a neural-tube defect' among 426), and the Tivicay label revised 09/2018 (accessdata.fda.gov/drugsatfda_docs/label/2018/204790s016s018lbl.pdf) puts 'No adverse effects on embryo-fetal (rats and rabbits) ... development were observed at up to the highest dose tested' beside the 0.94% vs 0.12% human data in 8.1 -> primary source that makes the comparison, comparison_stated=true, year 2018. Animal side is also quotable from the 2013 FDA pharm review (204790Orig1s000PharmR.pdf): 'oral administration of DTG to pregnant rats and rabbits did not result in teratogenicity at systemic exposures up to 27X the human exposure for a 50 mg BID dose.' Contra as of 2018 stands under rule 5; the later attenuation is a new entry (see missing, rule_questions[1])."}
+ ],
+ "missing": [
+  "safety: a later entry for the attenuated NTD signal. Brummel/Zash 2025, AIDS 39:2266, https://doi.org/10.1097/QAD.0000000000004326 (PMID 40880283): 'updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures'; current Tivicay label (Revised 8/2026, DailyMed setid 63df5af3-b8ac-4e76-9830-2dbb340af922) 8.1: 0.11% (95% CI 0.05-0.19%) vs 0.11% (0.07-0.16%), 'did not differ significantly'. The animal negative now matches patients; what status that takes is rule_questions[1]. The label revision that first reported no difference was not identified (between s024 10/2019 and the current label).",
+  "safety: a possible 'same' entry for raltegravir itself between 2007 and 2018. The current Isentress label 8.1 carries Antiretroviral Pregnancy Registry human data for raltegravir (not quoted in this check; verify at the DailyMed URL already in the draft). If it reports no increase in birth defects, the rat/rabbit negative matched patients for the first drug of the class before dolutegravir's 2018 signal.",
+  "engagement (optional, stronger source): phenotypic testing of BENCHMRK patient-derived integrase mutants in the cell-culture assay (Fransen et al., J Virol 2009) would make the model-vs-patient comparison explicit; DOI not verified within budget, so not proposed as a replacement."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose/efficacy registry dates: Protocol 004 is NCT00100048 (results first posted 2010-03-29); the draft left registry_date null after not locating it. No rule issue, listed here so the fact fields are filled.",
+  "A contradiction that later resolved: the 2018 published comparison (animal EFD negative vs 0.94% human NTD) was a contradiction when published; by 2025 the human estimate is 0.10% vs 0.11% and the animal prediction turned out right. Rule 5 forbids using later knowledge to re-score 2018, and 'one entry per change of status' implies a later entry, but the status table has no state for 'contradiction withdrawn' and 'contra overrides every matched status' could be read as permanent. Proposed reading: keep contra at 2018 and add a later 'same' entry dated to the year the attenuated comparison was published (2025 peer-reviewed, or the first label revision that said 'did not differ significantly'). Needs a house decision.",
+  "Engagement via resistance mapping: Cooper 2008 says patient mutations were 'known to be associated with phenotypic resistance' (a cell-culture measurement), which I read as the primary source itself stating model-patient concordance, so comparison_stated should be true and 'same' holds. If the house requires an explicit side-by-side model-vs-patient statement, the entry drops to untested, not contra. Also undecided by the brief: whether resistance-mutation concordance counts as 'hits its target in patients' for antivirals, where no occupancy readout exists.",
+  "Year when a label revision publishes the comparison before the peer-reviewed paper: the 09/2018 Tivicay label is the first primary source that juxtaposes animal and human data; the brief's 'year = print_year' convention does not say whether a label revision date counts as the publication year. I used 2018 either way (the Zash 2018 letter is also quotable)."
+ ]
+}

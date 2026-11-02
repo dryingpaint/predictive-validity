@@ -1,0 +1,52 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hema-fviii-gt.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 12893764 resolves; sentence verbatim in abstract. First mouse use for the class, untested is right. Earlier AAV-FVIII mouse papers exist (Burton 1999, Chao 2000); start year may predate 2003, unverified."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "same", "proposed_year": 2018,
+   "note": "Quote verbatim (abstract) but mouse-vs-primate only. Same paper reports patients at 104% vs mice 380% at matched vg/kg: a published mouse-vs-patient expression comparison agreeing in kind, so 'same' starts 2018, not 2022."},
+  {"cell": "engagement", "index": 3, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text PMC9018415; sentence verbatim; explicit human-vs-animal tissue comparison on the drafter's own models. If entry 2 becomes 'same' in 2018 this is corroboration without a status change; keep or drop per strip rules."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Scallan 2003 abstract sentence, verbatim; untested as first use. Same start-year caveat as engagement."},
+  {"cell": "dose", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2018,
+   "note": "Quote verbatim, but the source frames the 3.7-fold gap as species scaling (AAV5 shows 'better species scaling' than AAV8-FIX's mouse-NHP-human drops); no human exposure target was stated then missed. Scaling, not a failed prediction; CF dose precedent gives untested."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 12738670 resolves; sentence verbatim in abstract; first canine use, untested is right."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "near",
+   "status_supported": true,
+   "note": "Full text PMC8672712: 'These results' = the AAV5-hFVIII-SQ year-1-to-2 halving (product named in Discussion); the sentence calls it unexpected given 10-year dog durability. Primary source states the comparison, not inferred. Ellipsis drops only the haemophilia-B clause."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text PMC5835117; sentence verbatim (NHP results); mouse ALT/caspase-3 negatives also stated. Untested correct."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Sentence verbatim; narrow ER-stress/GRP78 match in 3 of 5 biopsies. Fong 2022 mentions patient ALT rises but never compares them with animals, so no primary source for contra; 'same' stands at medium confidence."}
+ ],
+ "missing": [
+  "Engagement/dose start year: AAV-FVIII was in mice before 2003 (Burton 1999 PNAS, PMID 10535990; Chao 2000 Blood, PMID 10688813). Not verified whether F8-knockout mice were used; if so both strips start 1999/2000.",
+  "Engagement 'same' in 2018 on Bunting 2018's own mouse-vs-patient expression comparison (104% vs 380% at matched vg/kg), quote: 'Recently, results from BMN 270 phase I/II human clinical trial showed that mean FVIII levels plateaued at 20 weeks at 104% of normal hFVIII, while in the mouse experiments, it reached steady-state levels of FVIII of 380% at 12 weeks.'",
+  "Not re-opened (budget): FDA SBRA and reviews cited in the safety judgement; Pasi 2020 and Mahlangu 2023 cited in the efficacy judgement. Nguyen 2021 (PMC7855056) full text and Batty 2022 abstract were checked: neither states the dog-vs-valoctocogene contrast, so George 2021 is the correct source and 2021 the correct year."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose magnitude tolerance: the brief has no rule for a published comparison where direction and therapeutic range held but per-kg expression differed 3.7-fold and the authors attribute it to species scaling. I read it as untested (CF dose precedent: predicts that, not how much); 'same' is arguable. It is not contra.",
+  "Model never dosed with the failing product: haemophilia A dogs received canine FVIII at ~1e13 vg/kg, never valoctocogene (BioMarin's package was mice + NHP). George 2021 attributes the field's durability expectation to the dogs, so contra is accepted at class level, but the brief should say whether a class-level model counts as 'predicting' for a product it never saw.",
+  "One comparison, two cells: Bunting's 104%-vs-380% sentence sets engagement 'same' and dose 'untested' here; the draft used it for dose 'contra' while leaving engagement 'untested' in 2018. The brief should say whether a single published comparison may populate more than one cell."
+ ]
+}

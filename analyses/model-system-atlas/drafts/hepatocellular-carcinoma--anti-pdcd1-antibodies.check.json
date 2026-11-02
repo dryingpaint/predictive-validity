@@ -1,0 +1,66 @@
+{
+ "draft": "/Users/stephengoldstein/code/predictive-validity/analyses/model-system-atlas/drafts/hepatocellular-carcinoma--anti-pdcd1-antibodies.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves to PMID 25529917; quote verbatim in abstract (abstract-level). FDA review verbatim: 'Nivolumab does not recognize mouse PD-1', 4H2 in MC38/Sa1N/J558. No occupancy comparison exists. Note the filed monkey receptor-occupancy data (FDA Table 16) the entry omits."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same source/quote. El-Khoueiry 2017 quote verbatim (PMID 28434648). Mouse ~10 mg/kg and FDA SA1/N 0.3-30 mg/kg range not verified by me (abstract/TOC level). Untested is right: no model-derived exposure target for patients."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. PubMed 2005-2015/06 search: only Sawada (Int J Oncol 46(1), print 2015, doi 10.3892/ijo.2014.2737) is contemporaneous; Tzeng 2012 is HBV not HCC. 2015 opening year holds under print-year convention."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "note": "Quotes verbatim (abstract, PMC full text); HRs, interaction P, RMP1-14, registry dates check. Nature received 2020-02-17, after both phase 3 readouts; model's first class use is the comparison itself; agreement is a pooled post-hoc etiology subgroup including IMbrave150. Retrodiction, not prediction."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PDF resolves; main quote verbatim (executive summary); judgement quotes verbatim (p.6). 42-fold, 50 mg/kg, 4/13-week confirmed. Comparison patients are the 2014 melanoma-BLA safety population, not HCC: valid for the class; context inheritance is a rule question."
+  }
+ ],
+ "missing": [
+  "Efficacy strip opens 2015 with Chen, but the class entered HCC without any HCC model: CheckMate 040 (NCT01658878) started 2012-10-30, before any HCC-specific anti-PD-1 mouse paper. The model the sponsor relied on is the filed non-HCC syngeneic panel in the 2014 FDA review (4H2 in MC38/Sa1N/J558, model_filed true): 'The administration of anti-mouse PD-1 antibody 4H2 resulted in delayed tumor progression in the MC38 colon carcinoma, Sa1N fibrosarcoma, and J558 myeloma models' (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2014/125554Orig1s000PharmR.pdf). Consider a 2014 untested entry or at least say so in the 2015 judgement.",
+  "Engagement: the same FDA review carries monkey receptor-occupancy data (Table 16, 'Receptor occupancy in monkeys 4-weeks after cessation of dosing'), a filed engagement model with model_filed true and model_first_use_year 2014; still untested against HCC patients, but the draft's model_filed=false and 2014 opening year are affected.",
+  "Efficacy 2021 judgement should record Pfister's own chronology facts: Received 17 Feb 2020, Accepted 16 Feb 2021, online 2021-03-24, print 2021-04-15 (Nature 592:450-456); meta-analysis search window closed January 2020. The draft's 'mouse experiments were run after the trials read out' is inferred, not stated by the paper; the dates above are what the source supports.",
+  "Not verified (draft also flags it): that the 2017 HCC sBLA filed no new nonclinical safety study. No call spent on it."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Post-hoc models: Pfister 2021's NASH-HCC model was first used for this class in the comparison paper itself (received 2020-02-17; registry results 2020-02-17 and 2020-06-26; trial readouts 2019). The literal `same` rule ('a published comparison shows the model's prediction agreed') is met; the word 'prediction' and rule 6 (strip shows when a model existed before it was tested) are not. I scored it `untested`; if retrodictive comparisons are admitted, the draft's `same` stands as written with model_first_use_year 2021 and magnitude direction_only.",
+  "Subgroup agreement vs Unselected population: both anti-PD-1 monotherapy phase 3s missed their primary OS endpoint in the unselected population the context is defined by; Pfister's agreement is a pooled etiology subgroup that also includes IMbrave150 (anti-PD-L1 + bevacizumab), and the text does not show the etiology split within the two anti-PD-1 trials alone. Does a post-hoc subgroup match count toward `same` for an Unselected context?",
+  "Contra source standard: the ad-amyloid house example scores `contra` 2013 from the semagacestat trial paper (Doody 2013) with no model-vs-patient comparison in the source, whereas this checker brief says `contra` without a published comparison -> `untested`. If the house precedent governs, efficacy 2021 should be `contra` (model relied on: syngeneic/orthotopic mice that regress; KEYNOTE-240 HR 0.781 P=0.0238 vs 0.0174, Finn 2020 doi 10.1200/JCO.19.01307; CheckMate-459 HR 0.85 P=0.075 vs 0.0419, Yau 2022 doi 10.1016/S1470-2045(21)00604-5). Pfister 2021 itself contains both halves ('other (non-NASH) mouse models of liver cancer ... reacted to PD1 immunotherapy with tumour regression' and 'phase III trials failed to reach their primary endpoints to increase survival') without naming it a model miss. The rules do not decide between untested, same and contra here.",
+  "Cross-indication safety: the only monkey-vs-patient comparison is in the 2014 melanoma BLA review (patients from the pre-2014 clinical safety database, none with HCC). The brief says validity belongs to the context but gives no rule on inheriting a class-level safety comparison across indications. I accepted `contra` 2014 as class-valid; if same-context patients are required, safety becomes `untested` 2014 (model filed, no HCC comparison; El-Khoueiry 2017 never mentions the tox models).",
+  "Model the class relied on: when a class enters an indication with no indication-specific model (CheckMate 040 start 2012-10-30 vs first HCC mouse anti-PD-1 paper 2014/2015), should the efficacy cell open with the filed non-HCC syngeneic panel (2014) or the first indication-specific model (2015)?"
+ ]
+}

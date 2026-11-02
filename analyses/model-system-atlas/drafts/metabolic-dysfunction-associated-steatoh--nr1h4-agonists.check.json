@@ -1,0 +1,34 @@
+{
+ "draft": "/Users/stephengoldstein/code/predictive-validity/analyses/model-system-atlas/drafts/metabolic-dysfunction-associated-steatoh--nr1h4-agonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 0, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 15521018 = doi 10.1053/j.gastro.2004.08.001; HSC/SHP sentence verbatim in abstract. Untested is right: rat/HSC pharmacology, no patient arm. Model label (rat BDL/porcine serum) fits the paper."},
+  {"cell": "engagement", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": false, "proposed_status": "untested", "proposed_year": 2013,
+   "note": "PMID 23727264 resolves; quote verbatim (abstract). But no source states the rodent-vs-human PD comparison (drafter juxtaposed), and cohort is T2D + presumed NAFLD (NCT00501592 inclusion by enzymes/imaging), outside biopsy-confirmed MASH. Demote to untested; in-population candidate is Sanyal 2023 (FGF19 up, C4 down in NASH)."},
+  {"cell": "dose", "index": 0, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Fiorucci 2004 porcine-serum 1-10 mg/kg sentence verbatim in abstract. No rodent-exposure-to-human-dose comparison found by me either; untested stands. Ocaliva PBC NDA 207999 review (not checked) may carry exposure multiples."},
+  {"cell": "efficacy", "index": 0, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "BDL 3 mg/kg 70-80% sentence verbatim in abstract (PMID 15521018). Untested at 2004 is right."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 25468160/PMC4447192; 'Importantly, all components...' verbatim in Discussion; abstract Background states 'reduces liver fat and fibrosis in animal models'. No explicit contrast sentence (framing only; see rule question 1). 35% vs 19% is from tables (confirmed via Hernandez 2019). Epub 2014-11-07, print 2015; NCT01265498 results posted 2015-08-21."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "near", "status_supported": true,
+   "note": "PMID 36797481/PMC9941046; quote = first 34 words of the Discussion sentence, as drafter said. 'animal models of NASH' sentence cites ref 19 Hernandez 2019 (STAM/AMLN; 'tropifexor reversed established fibrosis' verbatim) + ref 20 Tully 2017. Fibrosis 21% vs 26%/26% verified; NCT02855164 results 2021-07-29. Contra holds for the STAM/AMLN model; whether it flips the class cell OCA still supports (REGENERATE 23% vs 12%, PMID 31813633) is rule question 2."},
+  {"cell": "safety", "index": 0, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "PMID 15146238 = doi 10.1172/JCI21025; cholic-acid sentence verbatim in abstract (full text not retrieved). Untested, product_in_model=false correct."},
+  {"cell": "safety", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": false, "proposed_status": "contra", "proposed_year": 2018,
+   "note": "FLINT quote verbatim, but 'In animal models, FXR agonists cause regression of atherosclerosis...' is in the Introduction, not the Discussion; the Discussion explains the LDL rise by blocked bile-acid synthesis and never contrasts animal vs patient. comparison_stated should be false. First stated comparison is Papazyan 2018 (PMID 29559521, abstract: 'FXR activation induces distinct changes in circulating cholesterol among animal models and humans.'); date contra 2018 with that source. Pruritus silence has no stated comparison anywhere."}
+ ],
+ "missing": [
+  "safety: Papazyan 2018 (doi 10.1194/jlr.M081935, Intercept authors, epub 2018-03-20, print Jun 2018) should be the dated contra entry rather than a judgement aside; its abstract states the animal-vs-human cholesterol split verbatim and shows humanized-liver chimeric mice reproduce the LDL rise.",
+  "engagement: in-population candidate Sanyal 2023 (doi 10.1038/s41591-022-02200-8) — 'FXR target engagement was confirmed at week 6 by dose-dependent increases in FGF19 levels and decreases in C4 levels' in NASH patients, with the intro citing Hernandez 2019/Tully 2017 for animal target engagement; same-paper framing as the efficacy entries (registry 2021-07-29).",
+  "dose: the 2016 Ocaliva PBC approval package (NDA 207999, accessdata.fda.gov) would carry OCA nonclinical exposure multiples and a model_filed answer; not checked here, and it is the PBC not the NASH filing.",
+  "Tølbøl 2018 (doi 10.3748/wjg.v24.i2.179): rightly left out of the strip (Gubra DIO-NASH/ob/ob-NASH is not the model OCA relied on). Note it is the only source that explicitly states a model-vs-FLINT comparison for OCA; its 'in accordance' is on NAS components, quoting FLINT as 'without worsening of fibrosis', while its own OCA arm did not reduce fibrosis morphometry — if a CRO model were admitted it would read as a fibrosis miss, not a match."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Same-paper framing: a trial paper that states the animal prediction in its abstract/introduction and reports the patient result, with no sentence contrasting the two — does that satisfy 'a published comparison' / comparison_stated=true? The draft relies on it for efficacy 2015 (FLINT) and 2023 (Sanyal); the safety 2015 entry fails even that test because the intro sentence is about atherosclerosis, not LDL.",
+  "Model switch within a class: tropifexor's relied-on model (STAM/AMLN mice) missed while OCA's relied-on model (rat BDL/porcine serum) still matches (FLINT 35% vs 19%; REGENERATE 2019 23% vs 12%). Does a contra for a different drug's different model override the class cell, or should the cell track one model and note the other?",
+  "Population: Mudaliar 2013 is T2D + presumed NAFLD, outside 'biopsy-confirmed MASH with fibrosis'. Can an out-of-population pharmacodynamic read-out carry the engagement cell, or must the subjects be in the context population?",
+  "Safety silence: pruritus is a class effect no rodent model flagged, but no source states that silence. Can 'the model's silence did not hold' carry a contra without a stated comparison, or is it untested until someone publishes the comparison?"
+ ]
+}

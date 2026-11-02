@@ -1,0 +1,51 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/atrial-fibrillation--kcna5-blockers.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 12382079 resolves; quote verbatim in abstract; untested / first-use 2002 fine. Pig in-vivo AERP is the Aventis S9947 pivotal paper."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Abstract states dog AERP prolongation without VERP change, the human null at >2 umol/L, and itself compares ('less prominent than in preclinical models'). Healthy volunteers and AERP-as-PD-surrogate kept per cf-cftr sweat-chloride precedent. AHA full text 403: abstract only."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 17967939; quote verbatim; print 2008 / epub 2007 correct; TAEA/ISQ-1 proxies correctly product_in_model=false. Dog IKur model was probably used earlier for this class (DPO-1: Stump 2005, Regan 2006 JPET) - unverified, no calls left."},
+  {"cell": "dose", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "untested", "proposed_year": 2008,
+   "note": "Same single AERP null as engagement. Abstract names no dog-derived exposure target (dog HF doses given only as mg/kg) and the quote is about IKur biology, not exposure. Not independent evidence: fold into the 2008 untested entry unless the full text supplies the target."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 12382079; quote verbatim including the abstract's 'S20951and'; untested first-use 2002 fine."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "contra", "proposed_year": 2018,
+   "note": "Source, print year, quote, EU-CTR 2016-07-09 date and ratio 1.01 (0.98-1.05, p=0.77) all confirmed. Contra by juxtaposition stands: Ford 2016 Discussion states the prediction ('expected to reduce AF burden'). Fix model label to the ex-vivo patient trabeculae Xention relied on; animal models belong in the note. Springer full text blocked."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 12382079; quote verbatim; untested first-use fine."},
+  {"cell": "safety", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "same", "proposed_year": 2013,
+   "note": "Verbatim but null-null: humans showed neither atrial nor ventricular change, so selectivity was untestable; abstract never calls it a match (source_calls_it should be null). Use Ford 2013 (doi 10.1097/FJC.0b013e31828780eb) instead: same-source, atrial effect present ex vivo, no ventricular AP effect, no QTc rise to 300 mg."}
+ ],
+ "missing": [
+  "dose: dog in-vivo AERP/QTc model was used for IKur blockers before 2008 (DPO-1: Stump 2005 JPET 315:1362; Regan 2006 JPET) - would open the dose strip ~2005; unverified, budget exhausted.",
+  "safety: Ford 2013 (doi 10.1097/FJC.0b013e31828780eb, print 2013) is a same-source model-vs-volunteer comparison (no human ventricular AP effect ex vivo; no QTc increase to 300 mg) that is discriminating, unlike the Pavri null-null; the draft only lists it as corroboration.",
+  "engagement judgement: Ford 2016 Discussion (PMC4768384) publishes a reconciliation of the Pavri miss - 'we would not have expected a prolonging effect of MK-0448 on atrial ERP at cycle lengths below 333 ms' - and states IKur 'could no longer be demonstrated' in dog atria. Later knowledge, not a status change, but worth one line in the judgement.",
+  "efficacy note: Shunmugam 2018 abstract reports a secondary reduction in AF-episode frequency (relative reduction 0.72, 95% CI 0.66-0.77, p<0.0001) alongside the null primary; magnitude 'direction_only' is fine but the note should mention it.",
+  "efficacy: Ford 2016 describes the pacemaker crossover trial dose as 150 mg bid, Shunmugam 2018 reports 50 mg bd - source-level discrepancy to record, not the draft's error.",
+  "registry_date: brief mandates the ClinicalTrials.gov results-first-posted date; the draft uses EU-CTR first-publication dates (2016-07-09 confirmed for 2013-004456-38; 2017-06-02 confirmed for 2014-002333-63). Whether DIAGRAF-IKUR has an NCT record with results was not checked.",
+  "verified as stated: NCT02156076 results first posted 2019-05-22, terminated 'business reasons, unrelated to safety', primary outcome 'Data was not collected for any participants due to termination of the study' (26 treated); NCT01356914 completed 2012-06, no results; NCT02153437 terminated, n=7, no results; S66913 stopped 'as a precautionary measure due to a non-clinical safety concern' (EU-CTR), n=58, no deaths."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "One study, one measurement, two contra cells: Pavri 2012's single null AERP reading is scored contra for both engagement and dose. The brief is silent. I ruled that a single observation populates one cell (engagement, per the cf-cftr sweat-chloride precedent) and dose stays untested because the abstract states no model-derived exposure target; reverse this if the full text gives a dog-effective [MK-0448] that the >2 umol/L exceeded.",
+  "Healthy volunteers as the patient side: the context is disease x population, but every engagement/dose/safety comparison here (Pavri 2012, Ford 2013, Ford 2016) is in healthy volunteers, not AF patients. Brief v2 says record `subjects` and do not let it change the status, so statuses stand; a rule is needed on whether HV-only comparisons count or are `untested` for the context.",
+  "PD surrogate as engagement: no Kv1.5 occupancy or current was measured in humans; AERP is downstream. If engagement requires a target-level measure, E2 becomes untested and the contra moves to dose or efficacy. Followed the cf-cftr precedent (sweat chloride under engagement).",
+  "Ex-vivo patient tissue as a 'preclinical model': cf-cftr lists 'Patient bronchial cells' as a model, so Ford 2016's atrial trabeculae qualify; but the draft bundles them with pig/goat/dog in one model label, which the 'model the class relied on' rule does not support. Needs a convention for composite labels.",
+  "Juxtaposed contra: comparison_stated=false for efficacy 2018. The checker brief says same/contra without a published comparison is untested; the drafter brief v2 and the ad-amyloid example (Doody 2013) accept juxtaposition when the prediction and the result are each published. I followed the examples.",
+  "Null-null as a safety match: Pavri's humans showed no atrial and no ventricular change, so the atrial-selectivity prediction could not fail. Literally it satisfies 'prediction agreed with patient results'; I ruled it non-discriminating and proposed the Ford 2013 same-source comparison (2013) as the first real safety `same`.",
+  "Unspecified preclinical safety flag: S66913 was stopped for an undescribed 'non-clinical safety concern' while 58 patients over 4 weeks were clean. Neither source names the model or the finding, so it cannot be scored; the brief should say whether an unnamed model flag followed by clean short-exposure patients is contra, untested, or ignored."
+ ]
+}

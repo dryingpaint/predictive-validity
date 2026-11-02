@@ -1,0 +1,39 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/crohn-disease--jak1-inhibitors.json",
+ "checked": "2026-11-02",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI -> PMID 29225517 / PMC5718031 (full text read). Quote is the abstract's last Results sentence. No mouse-vs-Crohn's-patient pSTAT comparison exists; patient-side CRP fall (Panes 2017, PMID 28209624) confirmed from abstract. Untested holds."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. PubMed sweep (JAK-inhibitor x colitis x rodent, 61 hits) finds nothing earlier: the two older hits are atherosclerosis (PMID 28601639) and Jak3-KO metabolic (26451047). Paper itself calls oxazolone a UC-like model; it is Theravance's gut-restricted programme, not a Crohn's model."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2023,
+   "note": "Sentence verbatim in Discussion but is background; paper frames tofacitinib as a UC drug, never calls transfer colitis Crohn's-like or the result a miss. Model was never relied on (Crohn's trials began 2008-01). Set comparison_stated=false, subjects=null, magnitude=null; merge into entry 1 or keep as untested."}
+ ],
+ "registry_dates_verified": {
+  "NCT00615199": {"start": "2008-01", "results_first_posted": "2012-12-31"},
+  "NCT01393626": {"start": "2011-10", "results_first_submitted": "2016-02-22", "results_first_posted": "2017-04-28"},
+  "NCT01393899": {"start": "2012-03", "results_first_posted": "2017-01-09"},
+  "NCT03345849_U-EXCEL": {"start": "2017-12-07", "results_first_posted": "2022-11-23"},
+  "NCT03345836_U-EXCEED": {"start": "2017-11-29", "results_first_posted": "2022-08-15"},
+  "NCT03345823_U-ENDURE": {"start": "2018-03-21", "results_first_posted": null, "primary_completion": "2027-09"}
+ },
+ "liu_2026_assessment": "DOI 10.1038/s41467-026-71808-y resolves (PMID 42009642, PMC13279951, full text read). Zero mentions of Crohn's; patient side is UC only (sc-RNA-seq and biopsies from UC patients on upadacitinib). Cannot set any Crohn's status. It does not contradict Subramanyam 2023: Liu dosed prophylactically (drug from 3 days before DSS; T-cell transfer 'similar effects', supplementary not read) and found tofacitinib non-protective in WT mice even at 450 mg/kg, which matches Subramanyam's prophylactic arm (no prevention at 10 or 40 mg/kg/day); Subramanyam's positive result was the therapeutic (post-onset) arm, which Liu did not test. Together they show the model's tofacitinib readout flips with regimen, which further undermines building a 'model positive, Crohn's negative' contra on it. The upadacitinib-yes/tofacitinib-no pattern matching the Crohn's clinic is the drafter's juxtaposition (rule 5), not the paper's.",
+ "missing": [
+  "safety: cell is empty, yet the class carries Crohn's-trial safety signals (GI perforation in 4 U-EXCEL/U-EXCEED 45-mg patients, herpes zoster; Loftus 2023 PMID 37224198). Whether tox species predicted or were silent on these needs the FDA Xeljanz (NDA 203214) / Rinvoq pharmacology-toxicology reviews; not checked within budget. Likely an untested or contra opener, not a true empty.",
+  "dose: Beattie 2017 does derive a model exposure target (colon >=89 ng/g for pSTAT1 inhibition; IC50 1790 ng/g colon, 882 ng/mL plasma) that was never compared with patients. Rule 6 would open the dose strip as untested 2017 rather than leave it empty; judgement call since that work served Theravance's gut-restricted concept, not the class's Crohn's dosing (which came from RA).",
+  "Context note: 'DIVERSITY (2025)' for filgotinib not verified within budget; the rest of the note (two tofacitinib phase 2 failures 2014/2017, upadacitinib positive 2023) is confirmed against PMIDs 24480677, 28209624, 37224198."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When the drug class entered a disease with no disease model at all (tofacitinib Crohn's trials 2008-2015 predate every published JAK-inhibitor colitis-model paper; first is Beattie 2017), should the cell carry an untested entry at all, or a distinct 'no model relied on' marker? The brief's 'best model = the one the class relied on' has no model to point at; the draft opens the strip with a later, different sponsor's UC-like model.",
+  "Does a later paper that uses the model for the class but makes no patient comparison warrant a second untested entry (status unchanged) just to record that a new model appeared? The brief says one entry per change of status, which argues for merging Subramanyam into entry 1's judgement.",
+  "A paper whose only Crohn's content is a background sentence ('efficacious in UC but not CD') while its own comparison is model-vs-UC: the brief's rule 1 says the source must 'make the comparison'. We read that as the source must compare model with THIS context's patients, so this is untested; if the rule only requires any model-patient juxtaposition in the same paper, contra would survive. Worth stating explicitly in the brief.",
+  "Minor: file is named jak1-inhibitors but mechanism reads 'JAK inhibitors' and the lead failure (tofacitinib) is pan-JAK; pick one and say whether pan-JAK and JAK1-preferential drugs are one class for this context, since the only clinic-level split (upadacitinib yes, tofacitinib no) runs along that line."
+ ]
+}

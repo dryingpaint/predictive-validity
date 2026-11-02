@@ -1,0 +1,95 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/interstitial-cystitis--anti-ngf-antibodies.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI->PMID 9145801 (Neuroscience 78:449, May 1997); quote verbatim in abstract. No IC trial reports NGF/PD; EU CTR ASP6294 lists no NGF endpoint. Lowe 1997 (PMID 9126085) resolves but is target-presence without drug, not engagement; untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Dmitrieva abstract (1 mg/kg). Tanezumab IC doses match registries (200 ug/kg IV single; 1/2.5/10/20 mg SC x2, 8 weeks apart). No exposure bridge published; untested stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (30-60% reversal). Judgement DOIs all resolve; Guerios Neurosci Lett prints Jan 2006 (epub Oct 2005) so label should read 2006. Pfizer 2012 briefing cites no bladder model, consistent with product_in_model=false."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 21420111, J Urol 185:1716 (May 2011); quote verbatim in abstract. NCT00601484 results posted 2021-05-13: LS diff -1.36 (90% CI -2.203,-0.510), 34/30 treated. Direction match only; 90% CI, single dose, 'preliminary efficacy'. Letter of the rule supports same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "EU CTR first publication 08 Feb 2020; n=119; MMRM diff -0.2, 90% CI -0.84 to 0.43, p=0.591; no NGF endpoint; quote assembled from result fields as disclosed. NCT00999518 results 2021-08-03, all doses null, futility confirmed. Contra holds on ASP6294 alone."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Evans abstract; registry (2021-05-13) shows arthralgia 3/34 vs 0/30, no adjudicated joint event. Pfizer briefing section 7.1 p.64 confirms three-species (primate, rat, mouse) hip/stifle histology. Untested stands."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "note": "URL serves Pfizer's 133-page briefing (8 Feb 2012); quotes verbatim (p.115; hold extension; futility). Not supported: sponsor document is outside rule-1 source types, and the joint signal is OA-patient (FDA package); IC trials logged no adjudicated joint event. Propose untested."
+  }
+ ],
+ "missing": [
+  "No missing cell. If the atlas wants the IC safety cell to carry the class joint signal, it needs an admissible IC-patient source; none exists (NCT00601484 and NCT00999518 report no adjudicated joint event; fulranumab NCT01060254 posted no results).",
+  "Peer-reviewed model-vs-patient joint comparison exists only in the OA context: LaBranche 2017, doi:10.1136/annrheumdis-2015-208913 (rat MMT dosed with tanezumab; 'failed to replicate the hypotrophic bone response observed in tanezumab-treated patients with RPOA'); belongs in the OA/NTRK1 entry, not here.",
+  "Hochberg 2016, doi:10.1002/art.39492 (adjudication: 2 primary ON, 68 RPOA among OA/CLBP trial patients) is the admissible patient-side source for the OA safety cell; its abstract makes no nonclinical comparison.",
+  "Minor label fix: Guerios 'neulet' citation in efficacy[1] judgement is print-year 2006 (Neurosci Lett 392:339), not 2005."
+ ],
+ "extra_checks": [
+  "NCT00999960 is an AP-HP laparoscopic prostatectomy simulator study (not tanezumab) - drafter's correction of the caller's number confirmed.",
+  "NCT01060254 is J&J JNJ-42160443 (fulranumab) in IC/PBS, 9 mg SC q28d, n=31, terminated 'Logistic reasons associated with the FDA-imposed clinical hold', no results posted - confirmed.",
+  "NCT03282318 (ASP6294, 6294-CL-0101) carries no results section on CT.gov; EU CTR is the only results record - confirmed.",
+  "NCT00999518 detailed description verbatim: terminated 16 November 2010 following the partial clinical hold announced 19 July 2010 'for potential safety issues' and a pre-planned interim analysis; limitations field: 'terminated due to lack of efficacy of all doses of tanezumab demonstrated during pre-planned interim analysis'. One osteoarthritis SAE in the 2.5 mg arm - confirmed.",
+  "Pfizer AAC briefing: 'On July 16, 2010 FDA informed Pfizer that studies in chronic low back pain, diabetic peripheral neuropathy and interstitial cystitis were also being placed on clinical hold.' and 'A second study in patients with interstitial cystitis was impacted by the clinical hold and terminated for futility.' both verbatim; study 1010 week-6 p=0.0032 (ITT, LOCF) also reported.",
+  "FDA's own background package for the 12 Mar 2012 AAC (UCM295202, 14 pp) frames the signal as 'tanezumab-treated patients with osteoarthritis in ... trials being conducted in support of the OA indication' and contains no nonclinical/toxicology statement, so it cannot substitute as the comparison source.",
+  "Nickel 2016 (PMID 26576710) abstract: pooled -0.60 (90% CI -0.99,-0.20), females -0.99 p=0.002, males -0.17; no per-trial A4091035 result - drafter right not to use it for contra.",
+  "Koya 2023 (PMID 36458900): ASP6294 pharmacology in adjuvant/collagen/MIA arthritis models only - confirmed."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 1 says the primary source 'makes the comparison', but v2's comparison_stated=false field (and the registry-record route) permit drafter juxtaposition. Which governs? Efficacy[2] and efficacy[3] here are juxtaposed; if rule 1 is read strictly both fall to untested.",
+  "Can a single-dose POC (n=64, 90% CI, authors' own wording 'preliminary efficacy') earn 'same' when the same drug then missed at four doses in a trial three times larger? The brief sets no size/replication/alpha threshold, so the letter says yes; a POC-grade qualifier may be wanted.",
+  "Can 'contra' rest on a class-proxy model (product_in_model=false: no bladder model was ever dosed with tanezumab, fulranumab or ASP6294)? The field exists for re-scoring, but the brief does not say whether a proxy-based miss counts against the model.",
+  "Is a sponsor advisory-committee briefing document hosted on fda.gov (not accessdata/dailymed, not an FDA review) an admissible source? Rule 1's list excludes it; the FDA's own package for the meeting lacks the nonclinical comparison.",
+  "Can a safety signal observed in another population (OA/CLBP patients) set the IC safety cell for the same drug when the IC trials themselves showed no joint event? The context definition (disease x population x class) says no; the hold extension is a regulatory action, not a patient outcome.",
+  "When a later entry is corrected to the same status as the prior entry (safety 2012 -> untested), should it be dropped (one entry per change of status) or kept to record the hold?"
+ ]
+}

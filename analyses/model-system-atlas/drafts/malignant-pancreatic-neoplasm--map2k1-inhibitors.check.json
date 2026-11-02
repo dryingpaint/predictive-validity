@@ -1,0 +1,37 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/malignant-pancreatic-neoplasm--map2k1-inhibitors.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "same", "proposed_year": 2017,
+   "note": "Yeh quote verbatim (abstract). But registry NCT01016483 (results posted 2017-06-23) reports on-treatment PBMC pERK in pancreatic patients (C1D1 ~6.1 to 1.5 FI at 60 mg BID, n=5-7): 'never read in patients' is false. same/2017 only if juxtaposed sources count; else keep untested, fix wording."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Both Yeh 2007 quotes verbatim (abstract); BxPC3 KRAS-WT is correct outside knowledge. Note wording wrong: Hofmann 2012 (epub 2012-08-31) postdates NCT00372944 (2006) and NCT01231581 (start 2010-08), so it was not 'the rationale for KRAS-mutant trials'. Status/year stand."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "contra", "proposed_year": 2012,
+   "note": "Infante quote verbatim in PubMed abstract; epub 2014-06-07, registry 2013-09-26, Junttila/Alagesan post-date it (epub 2014-11-05/2014-10-27) all confirmed. First comparison is Bodoky 2012 (print 2012, epub 2011-05-19; selumetinib = Yeh's drug; OS 5.4 vs 5.0, HR 1.03): house ad-amyloid precedent accepts biomarker-unselected trials and the context note already counts it. Fold Infante into judgement as first KRAS-genotyped confirmation."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lindberg quote verbatim (print Jul 2014; PMC4198828 full text exists, drafter read abstract only). untested holds, but model fails brief item 4: class relied on toxicology species (ad-amyloid uses 'Toxicology in 4 species'), not PDX tolerability; model_first_use_year likely 2013 (Walters trametinib PDX, uncited for safety)."}
+ ],
+ "missing": [
+  "engagement: registry record NCT01016483 (results first posted 2017-06-23) posts on-treatment PBMC pERK in metastatic pancreatic patients (safety run-in, pimasertib); draft states no patient read-out exists. Candidate `same` 2017 entry, comparison_stated false, product_in_model false vs Yeh 2007 (selumetinib).",
+  "efficacy: Bodoky 2012 (doi:10.1007/s10637-011-9687-4, NCT00372944) as the first contra, quote: 'There was no statistically significant difference in overall survival between selumetinib and capecitabine as second-line treatment in patients with advanced pancreatic cancer.' Drafter cited it but deferred the year choice.",
+  "efficacy: Van Cutsem 2018 (doi:10.1002/ijc.31603) is the one primary source that states model and patient results together ('pimasertib has shown anti-tumour activity in a pancreatic tumour model' ... 'no clinical benefit'); the only comparison_stated=true candidate in the context, not flagged as such.",
+  "dose: cell left empty, but a class dose model existed: Gilmartin 2011 (doi:10.1158/1078-0432.CCR-10-2200, epub 2011-01-18) xenograft PK/PD, 'sustained suppression of p-ERK1/2 for more than 24 hours' underpinning once-daily trametinib. Candidate `untested` 2011 opener if a non-disease-specific dose model counts (rule question 5).",
+  "safety: by house precedent (ad-amyloid 'Toxicology in 4 species') the safety model should be the regulatory toxicology package (trametinib NDA 204114 pharmacology review on accessdata.fda.gov; selumetinib package), not PDX tolerability. Not fetched in this check (budget); status would remain untested for the pancreatic context."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a biomarker-unselected trial count as a comparison in a biomarker-labelled context when the disease is ~90% biomarker-positive (PDAC/KRAS)? The brief is silent; ad-amyloid ('Amyloid-positive' contra dated to Doody 2013, a clinically-enrolled trial) implies yes, which moves this contra from 2014 to 2012.",
+  "Rule 1 says a non-untested status needs 'a PRIMARY source that makes the comparison', yet the fact field comparison_stated=false exists for checker-juxtaposed sources. Which governs? Decides engagement untested vs same/2017 (registry PBMC pERK vs Yeh 2007 model pERK).",
+  "Does an active-comparator null (Bodoky: selumetinib vs capecitabine, no placebo) count as 'predicted wrongly', and does a single-arm 0/15 cohort in a multi-tumour phase II (Rinehart 2004, CI-1040, under-exposed drug) count as a comparison at all? If the latter, contra could be 2004.",
+  "Is a regulatory toxicology package 'outside this context' for safety because it is not disease-specific? ad-amyloid treats tox species as the safety model; the draft excludes them and substitutes PDX tolerability.",
+  "Does a class-wide dose model (xenograft PK/PD, no pancreatic line) count as 'the model used for this class' to open the dose strip in a disease context, or is an empty dose cell correct?",
+  "population: context is 'KRAS-mutant' but entries 1-2 carry 'Unselected'. The brief says population is 'the biomarker the drug class is prescribed by' and no MEK inhibitor is prescribed by KRAS status anywhere; under that rule the context population would be 'Unselected', which also resolves question 1."
+ ]
+}

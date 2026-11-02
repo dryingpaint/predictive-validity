@@ -1,0 +1,33 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/eosinophilic-esophagitis--anti-il13-antibodies.json",
+ "entries": [
+  {"cell": "engagement", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI -> PMID 18073124 (Blanchard, JACI 2007;120:1292). Quote verbatim in abstract. 2007 untested correct: patient-side comparison not yet published. Model is primary patient epithelial cells ex vivo (see rule question 2)."},
+  {"cell": "engagement", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2015,
+   "note": "Status and year stand. Full text read (jacionline, not paywalled in Chrome): paper itself states the comparison, 'corroborating the previous finding that IL-13 can directly regulate these genes in the esophageal cells ex vivo' (ref 16 = Blanchard 2007). Set comparison_stated true, confidence high; drop 'paywalled/unverified' from judgement; consider that sentence as the quote."},
+  {"cell": "efficacy", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI -> PMID 16120093 (Blanchard, Clin Exp Allergy 2005;35:1096). Quote verbatim in abstract. Model is Blanchard 2005's human-IL-13 variant of Mishra 2003 (both cited as refs 9/10 in Rothenberg 2015); judgement could say so."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text confirms: responders 40% vs 13% (P=.3452, primary missed); mean eosinophils -60.0% vs +23.3% (P=.004). Intro cites mouse (refs 9,10,15) as 'the rationale' but no explicit mouse-vs-patient sentence: set comparison_stated false, not null. same/direction_only holds under brief as written (rule question 1)."}
+ ],
+ "missing": [
+  "efficacy: if a primary-endpoint rule is adopted (rule question 1), add 2019 `same` on Hirano 2019 (HEROES, NCT02098473, doi:10.1053/j.gastro.2018.10.051): primary endpoint = change in mean esophageal eosinophil count, met (-94.8/-99.9 vs -4.4 per hpf, P<.0001); abstract only; whether the paper cites the mouse model unverified; registry has no posted results.",
+  "safety: if the brief's '(or its silence)' clause means a dosed-but-silent model counts, open safety at 2005 `untested` on Blanchard 2005 (CAT-354 dosed in mice, no safety readout); otherwise empty is correct (rule question 4).",
+  "registry_date checks (no change needed): NCT01022970 has no posted results (only a delayed-results certification posted 2013-11-21), so null is correct; NCT02098473 has no posted results; NCT04753697 resultsFirstPostDate 2025-03-13 ACTUAL confirmed via CT.gov v2 API."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "1. Missed primary endpoint with significant secondary (Rothenberg 2015): DRAFTER_BRIEF v2 contains NO rule that the primary endpoint defines 'responded'; its only efficacy definition is 'did the disease respond in patients the way the model said?'. Under that text `same` (magnitude direction_only) is the right call: the mouse predicted a fall in esophageal eosinophils and the fall was real (P=.004); the 75%-responder threshold is the trial's bar, never the model's. `contra` is wrong (nothing the model predicted was falsified). If the house adopts a primary-endpoint rule, 2015 becomes `untested` (inconclusive) and `same` moves to 2019 on Hirano 2019, whose primary endpoint (mean eosinophil count) was met.",
+  "2. Does a human primary-cell ex vivo system (IL-13-stimulated patient esophageal epithelial cells, Blanchard 2007) count as a 'preclinical model' for the atlas? The brief never restricts 'model' to animals, and this class demonstrably relied on it (Rothenberg 2015 cites it as rationale and as the thing its transcript data 'corroborate'). I treated it as a model; needs a house ruling because it opens the door to any human-cell signature.",
+  "3. Rule 1 ('a PRIMARY source that makes the comparison'): does a trial paper that cites the model as its rationale in the Introduction and then reports the predicted outcome, without an explicit 'as in mice' sentence, count as a published comparison? Engagement has an explicit sentence ('corroborating ... ex vivo'); efficacy has only the Introduction rationale (refs 9,10,15). If implicit rationale does not count, efficacy 2015 should be `untested` with comparison_stated false.",
+  "4. Empty cell vs `untested`: brief rule 6 says each cell opens at the first year the model was used for the class, and the Output section says 'Empty list for a question with no model/comparison at all'. So empty is what the brief requires when no model was used for that question, which is the case for dose (no exposure/occupancy target was ever derived from the mouse; QAX576 6 mg/kg IV and RPC4046 180/360 mg came from PK, unpublished) and arguably safety (Blanchard 2005 reports no safety readout). But the safety definition 'did the model's safety prediction (or its silence) hold' implies a dosed-but-silent model may still count, which would open safety at 2005 `untested`. The brief does not decide this."
+ ]
+}

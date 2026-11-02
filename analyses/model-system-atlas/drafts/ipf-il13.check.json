@@ -1,0 +1,41 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/ipf-il13.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to PMID 24325475 (Murray, AJRCMB 2014). Quote verbatim in abstract; full text unreachable (PubMed tool empty, PMC captcha, EuropePMC 500). Model is tralokinumab's own pivotal preclinical paper (MedImmune authors). Untested correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 33008934; quote verbatim in 'Exploratory biomarker analyses' (PMC7859504 full text). Intro restates mouse/tissue premise; abstract: 'Pharmacodynamic biomarkers indicated lebrikizumab activity.' Same accepted on cf-cftr precedent (trial PD readout). Epub Oct 2020, print 2021."},
+  {"cell": "dose", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "untested", "proposed_year": 2014,
+   "note": "Quote verbatim in Discussion. Untested correct, but 2021 is the patient-paper year; rule 6 opens a cell at the model's first use (tralokinumab dosed in SCID mouse, Murray 2014; or Belperio 2002). Swap src accordingly, or leave cell empty."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to PMID 12356575 (Belperio, AJRCMB 2002). Quote verbatim in abstract; full text not accessed (no PMC). First anti-IL-13 antibody in bleomycin; untested correct."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 28787186; quote verbatim in abstract (full text paywalled). Abstract states preclinical premise and failure at both doses and periostin subgroups. Contra supported; model matches tralokinumab's pivotal preclinical. Epub Aug 2017/print Jan 2018. NCT01266135 TERMINATED, hasResults=false; exclusion correct."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. No model-patient safety comparison exists; untested correct. Opening year is the trial year because the tox package is unpublished (same pattern as the ad-amyloid house example)."}
+ ],
+ "missing": [
+  "Nothing required. Optional: Raghu 2018 SAR156597 (IL-4/IL-13 bispecific; https://doi.org/10.1183/13993003.01130-2018, Dec 2018, 'failed to demonstrate benefit') is a second negative FVC trial, but only belongs if the class is widened beyond anti-IL-13 monoclonals.",
+  "Engagement cell could open before 2014: Maher 2021's introduction cites pre-2014 IPF lung-biopsy (IL-13, IL-13 receptors, target genes raised) and BAL (IL-13 negatively correlated with FVC/DLCO) papers as the tissue model. Not verified within budget (PubMed search did not surface them); drafter should check Maher 2021 refs if the strip should show the tissue model predating tralokinumab.",
+  "Tralokinumab pharmacodynamics in Parker 2018 are unverified (paywalled). If the full text reports on-drug serum periostin/pathway-marker changes, the engagement 'same' entry dates to 2018, not 2021."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement 'same' rests on a trial paper's PD-biomarker result (Maher 2021) that restates the preclinical premise in its introduction, not on a formal model-vs-patient comparison. The cf-cftr house example (Ramsey 2011 sweat chloride) uses the same pattern, so accepted; the brief should state explicitly that this counts as 'the comparison'.",
+  "Dose cell when no model ever set an exposure target: empty, or 'untested' dated to the first year the model was dosed (rule 6)? The draft dated it to the patient-side paper (2021), which the rules do not support; I proposed 2014 but 2002 (Belperio) or empty are both defensible.",
+  "Safety cell with 'Nonclinical toxicology' as the model: the package is unpublished, so rule 6 (open at first model use) cannot be applied and the entry defaults to the trial year. The brief should say whether that is the intended convention (ad-amyloid does the same).",
+  "Year convention: the draft uses print years (Parker epub Aug 2017/print Jan 2018; Maher epub Oct 2020/print Feb 2021). The brief does not say print vs epub; the house examples appear to use print years, so accepted."
+ ]
+}

@@ -1,0 +1,96 @@
+{
+ "order": 11,
+ "area": "Respiratory",
+ "disease": "Idiopathic pulmonary fibrosis",
+ "mondo_id": "MONDO:0008345",
+ "population": "Unselected",
+ "mechanism": "Anti-IL-13 antibodies",
+ "note": "Three anti-IL-13 antibodies (QAX576, tralokinumab, lebrikizumab) entered IPF on bleomycin and IL-13-transgenic mouse data plus a humanized-SCID IPF mouse; all failed on FVC although the pathway was demonstrably hit.",
+ "programs": null,
+ "loa": null,
+ "label": "IPF (anti-IL-13)",
+ "cells": {
+  "engagement": [
+   {
+    "year": 2014,
+    "status": "untested",
+    "model": "IPF lung tissue + humanized-SCID IPF mouse",
+    "note": "IL-13 and its pathway markers were raised in IPF lung, most in rapid progressors; tralokinumab blocked remodelling in IPF-cell-engrafted SCID mice.",
+    "short": "IL-13 pathway raised in IPF lung",
+    "src": "https://doi.org/10.1165/rcmb.2013-0342OC",
+    "srcLabel": "Murray 2014",
+    "quote": "In the present study, an overexpression of IL-13 and IL-13 pathway markers was associated with IPF, particularly a rapidly progressive form of this disease.",
+    "confidence": "medium"
+   },
+   {
+    "year": 2021,
+    "status": "same",
+    "model": "IPF lung tissue + humanized-SCID IPF mouse",
+    "note": "Lebrikizumab lowered serum CCL13, CCL18 and periostin, the IL-13 pathway markers the model said were active, in both cohorts.",
+    "short": "Serum IL-13 markers fell on lebrikizumab",
+    "src": "https://doi.org/10.1183/13993003.02442-2019",
+    "srcLabel": "Maher 2021",
+    "quote": "Decreases in all three biomarkers were observed in the lebrikizumab-treated patients for both cohorts compared with their respective placebo or pirfenidone-treated controls, suggesting that lebrikizumab is active to block a component of these circulating biomarkers that is downstream of IL-13",
+    "confidence": "high",
+    "reason": "Pathway biomarkers fell in patients",
+    "judgement": "The trial paper infers engagement from downstream serum biomarkers rather than running a formal model-versus-patient comparison; Parker 2018 (tralokinumab) is paywalled, so tralokinumab pharmacodynamics in IPF are unverified."
+   }
+  ],
+  "dose": [
+   {
+    "year": 2021,
+    "status": "untested",
+    "model": "Humanized-SCID / bleomycin mouse (no exposure target)",
+    "note": "No IPF model set an exposure target; 250 mg gave a flat exposure-response and tralokinumab 400/800 mg both failed, so nothing to compare.",
+    "short": "No model exposure target to test",
+    "src": "https://doi.org/10.1183/13993003.02442-2019",
+    "srcLabel": "Maher 2021",
+    "quote": "Furthermore, efficacy/response relationships were generally flat across endpoints and did not suggest that increased dosing would have led to greater improvements in efficacy endpoints.",
+    "confidence": "medium",
+    "reason": "Models never set a human dose",
+    "judgement": "Kept as untested rather than empty: the mouse models were dosed with antibody, but no paper translated that to a patient exposure target, so the only dose data are patient-side (flat exposure-response at 250 mg; two tralokinumab doses both negative)."
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 2002,
+    "status": "untested",
+    "model": "Bleomycin mouse, anti-IL-13 antibody",
+    "note": "Neutralising IL-13, but not IL-4, cut bleomycin-induced lung fibrosis in mice: the first anti-IL-13 antibody in a fibrosis model.",
+    "short": "Anti-IL-13 cut bleomycin fibrosis in mice",
+    "src": "https://doi.org/10.1165/rcmb.2002-0009OC",
+    "srcLabel": "Belperio 2002",
+    "quote": "Neutralization of IL-13, but not IL-4, attenuated bleomycin-induced pulmonary fibrosis and levels of C10, suggesting that IL-13 has an important role in the development of pulmonary fibrosis.",
+    "confidence": "high"
+   },
+   {
+    "year": 2018,
+    "status": "contra",
+    "model": "Bleomycin mouse; humanized-SCID IPF mouse",
+    "note": "Tralokinumab at two doses failed on FVC and was stopped for futility, including in periostin-high patients, the IL-13-high group.",
+    "short": "Tralokinumab failed on FVC, stopped for futility",
+    "src": "https://doi.org/10.1164/rccm.201704-0784OC",
+    "srcLabel": "Parker 2018",
+    "quote": "The study was stopped due to lack of efficacy after interim analysis.",
+    "confidence": "medium",
+    "reason": "Mice fibrosed less; patients did not",
+    "judgement": "Status set from the first published failure (tralokinumab, Jan 2018; abstract only, paper paywalled). Lebrikizumab (Maher 2021) and the IL-4/IL-13 bispecific SAR156597 (Raghu 2018) repeated it, and Maher 2021 states the mouse prediction ('IL-13 deficiency or defective IL-13 signalling reduced lung fibrosis') and the failures side by side. QAX576's efficacy trial (NCT01266135) was terminated with no results posted, so it is not used."
+   }
+  ],
+  "safety": [
+   {
+    "year": 2018,
+    "status": "untested",
+    "model": "Nonclinical toxicology (not published for IPF)",
+    "note": "Tralokinumab and later lebrikizumab showed no safety signal in IPF; no published comparison with the nonclinical safety package exists.",
+    "short": "No signal; model comparison never published",
+    "src": "https://doi.org/10.1164/rccm.201704-0784OC",
+    "srcLabel": "Parker 2018",
+    "quote": "Tralokinumab demonstrated an acceptable safety and tolerability profile but did not achieve key efficacy endpoints.",
+    "confidence": "medium",
+    "reason": "No model-patient safety comparison",
+    "judgement": "Kept as untested, not empty: a toxicology package exists for both antibodies, but no source compares it with the IPF trial safety data; the trials compare only against earlier clinical experience."
+   }
+  ]
+ }
+}

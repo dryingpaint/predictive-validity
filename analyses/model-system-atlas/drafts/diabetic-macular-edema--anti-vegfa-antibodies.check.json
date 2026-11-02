@@ -1,0 +1,66 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/diabetic-macular-edema--anti-vegfa-antibodies.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 11527957 = Qaum IOVS 2001;42:2408 (no DOI; PubMed URL right). Quote verbatim in abstract. No published model-vs-patient comparison; Muether 2014 rightly not used. Model is systemic VEGF TrapA40 proxy; product_in_model false correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI 10.1136/bjo.2007.134874 = PMID 18356264 (BJO 2008;92:667). Quote verbatim in abstract. No source compares the decay model with VIVID/VISTA (registry 2014-09-09 / 2015-04-20 confirmed) or RISE/RIDE; untested holds. Best-model claim weak but defensible."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim, but it predicts reduced early BRB leak in 1-week STZ rats (no macula, no oedema), not DME efficacy; say so. No primary source compares any model with RISE/RIDE: PubMed, web, Nguyen 2012 abstract, Lucentis label s12.1/s13 all silent. Faricimab FDA-review sentence in judgement is wrong (see missing)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA PharmR p.33: report ESB01/E903S022.01, date August 26, 2008, GLP no; quote verbatim. Untested holds. Class model (cynomolgus ivt tox) was used for ranibizumab by 2006 (Lucentis ORIG-1 review posted on Drugs@FDA), so model_first_use_year 2008 is late; unverified."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "note": "Quote verbatim (review p.35; also p.34 'positive findings in this in vitro assay were consistent with ... IOI observed in patients treated with brolucizumab'). BLA 761125 was nAMD-only (HAWK/HARRIER, registry 2019-10-31 confirmed); no source compares the assay with DME IOI (Wykoff KESTREL 4.2% vs 1.1% confirmed, cites no model). nAMD patients cannot score the DME context; move this same entry to the nAMD context."
+  }
+ ],
+ "missing": [
+  "FARICIMAB FDA REVIEW: the judgement says Drugs@FDA posts only letters and labels for BLA 761235; wrong. ORIG-1 (2022-01-28) has a Review link (drugsatfda_docs/nda/2022/761235Orig1s000TOC.html) and a separate pharmacology review exists at https://www.accessdata.fda.gov/drugsatfda_docs/nda/2022/761235Orig1s000PharmR.pdf (plus MedR, ClinPharmR, SumR, OtherR). Grep of its text for diabetes/DME within 100 characters of model/animal/monkey/rodent returned 0 hits; the only in-vivo efficacy model named is 'Laser Induced Model of Choroidal Neovascularization in' cynomolgus monkeys (study 1056925), matching the EMA EPAR. So model_filed=false for a DME model survives, but rewrite the judgement sentence and cite this review as the FDA-side evidence that no DME model was filed.",
+  "SAFETY: FDA Beovu PharmR s11.1 states GMP lots 'continued to cause infrequent severe ocular inflammation in monkeys and rabbits', so the class model was not wholly silent as the judgement claims; no reviewer sentence compares monkey IOI with patient IOI, so no status change, but fix the judgement wording.",
+  "SAFETY: the nAMD anti-VEGF context (if drafted) should receive the 2019 same entry (EpiScreen -> IOI in HAWK/HARRIER patients, FDA PharmR 761125, registry 2019-10-31).",
+  "VERIFIED VERBATIM (keep): Eylea EMEA/H/C/002392/II/0009 s2.2 (CHMP opinion 26 June 2014): 'No new non-clinical data have been submitted in this application, which was considered acceptable by the CHMP.' Vabysmo EPAR EMA/687844/2022 (21 July 2022): 'The CHMP noted that the Applicant presented the in vivo experimental model only for nAMD and not for DME, in contrast with the intended indications of faricimab.'; 'classical animal models of diabetes could not work according to the applicant'; 'This is however not a blocking issue.' Drugs@FDA: Lucentis SUPPL-69/-76 (2012-08-10) Label+Letter only; Eylea SUPPL-37 (2014-07-29) Letter only; no pharmacology review posted for either DME supplement.",
+  "REGISTRY (CT.gov API v2) confirmed: RISE NCT00473330 and RIDE NCT00473382 results first posted 2013-01-17; HAWK NCT02307682 and HARRIER NCT02434328 2019-10-31; KESTREL 2022-10-28; KITE 2024-01-05; VIVID 2014-09-09; VISTA 2015-04-20. Wykoff KESTREL/KITE is Am J Ophthalmol vol 260 pp70-83 (epub 2023-07-15; volume 260 is dated 2024), so 'Wykoff 2023' may need print_year 2024 under the house convention.",
+  "Nguyen 2012 RISE/RIDE (doi 10.1016/j.ophtha.2011.12.039, PMID 22330964) resolves; full text paywalled, not in PMC; only the abstract was checked for a model comparison (none). Lucentis label s13 is carcinogenesis-only; s12.1 says only that VEGF-A causes leakage 'in models of ocular angiogenesis and vascular occlusion'."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Can a disease-agnostic safety prediction (in-vitro immunogenicity screen -> intraocular inflammation) take its patient side from another indication (nAMD, HAWK/HARRIER) of the same drug when the context is DME? The brief defines context = disease x population x class and the source compares with nAMD patients only; strict reading gives untested in DME, with the same belonging to the nAMD context. If molecule-level safety predictions may carry across indications, restore same 2019 with subjects recorded as nAMD patients.",
+  "Year of an untested opener sourced from a later regulatory review: the draft uses the 2008 study-report date (rule 6, first use) while the source prints in 2019 (house year = print_year). Which governs?",
+  "Best-model rule for safety: the class relied on cynomolgus ivt toxicology, which per the FDA reviewer gave infrequent severe inflammation with GMP lots but a clean pivotal NOAEL; the only stated match is a brolucizumab-only in-vitro screen. May a drug-specific assay the class did not rely on be the cell's best model, and does an uncommented monkey signal count as prediction or silence?"
+ ]
+}

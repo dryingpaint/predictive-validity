@@ -1,0 +1,44 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/open-angle-glaucoma--adora2a-agonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tian 1997 (PMID 9301479, DOI resolves) abstract carries the +71% outflow sentence verbatim. No patient outflow/engagement measure exists: Myers 2016 measured Goldmann IOP only; Li 2018 facility data are mouse. untested holds."},
+  {"cell": "dose", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote is Tian 1997 abstract sentence 1, verbatim. Judgement facts checked: Myers 2016 'no apparent plateau' to 500 mcg; NCT02565173 arms 3%/6% QD, 4.5% BID; Li 2018 3% 2.44 vs 6% 2.45 mmHg; Qiu 2021 abstract blames dose/regimen. untested holds."},
+  {"cell": "efficacy", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tian 1997 abstract verbatim (exactly 40 words): rise 4.9/3.5 mmHg at 30 min, fall 2.1/3.6 mmHg at 2-6 h. Myers 2016 cites Tian plus Crosson 1992-96 rabbit/cat and Avila 2001 mouse for the class, so monkey proxy model is right."},
+  {"cell": "efficacy", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "same", "proposed_year": 2018,
+   "note": "Myers 2016 full text (PMC5069706): the animal-model sentence is background citing Tian/Crosson/Avila; Discussion never relates patient IOP to animals. Juxtaposition, so comparison_stated=false. First stated comparison is Li 2018 'Like CHA, trabodenoson effectively lowers IOP in several animal species, including humans' (direction only)."},
+  {"cell": "safety", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DMPX sentence verbatim in Tian 1997. Crosson 1996 (PMID 8759351) abstract: CV-1808 raised rabbit IOP max +15.6 mmHg, cat +8.1, DMPX-blocked, blood-aqueous barrier breakdown. Konno 2007 A2A vasodilation, Laties single hyperaemia, Myers 16/85 and 11.8% baseline imbalance all confirmed. untested holds."}
+ ],
+ "text_corrections": [
+  "efficacy[1].judgement: 'no dose beat placebo at any of 12 time points' is wrong. Inotek 8-K Exhibit 99.1 (3 Jan 2017, https://www.sec.gov/Archives/edgar/data/0001281895/000119312517000341/d320382dex991.htm): primary endpoint was superiority at ALL 12 time points and was not achieved; 6%/2000 mcg QD was statistically superior to placebo at Days 14, 42, 84 in daily IOP change; only the 8 AM time point failed for every dose. 4.25 / 2.38 / 5.29 mmHg (6% QD / placebo / timolol) and n=303 are correct.",
+  "efficacy[1].judgement: the 8-K attributes the miss to a placebo response 2-3 mmHg larger than Phase 2 (and the Raber meta-analysis), not to dose or regimen; dose/regimen is Qiu 2021's reading (review, abstract only; full text 403). Hallaj 2021 (doi:10.1016/j.lfs.2021.119796, review) mislabels MATrX-1 as a non-inferiority failure; do not cite it.",
+  "efficacy[1].magnitude 'within_2x' is the drafter's own arithmetic (monkey 2.1-3.6 vs patient placebo-adjusted 2.5 mmHg); no source compares magnitudes. If the cell moves to Li 2018 it should read 'direction_only' with source_calls_it='match'.",
+  "context.mechanism: manifest names this context 'ADORA2A agonists'; the draft widened it to 'Adenosine receptor agonists for IOP lowering' and every patient-side datum is the A1 agonist trabodenoson. The note discloses it but the mechanism field and tile label do not; the two A2A agonists have zero ophthalmic PubMed records (OPA-6566, ATL-313, DE-112 with glaucoma/IOP/ophthalmic terms: 0 hits) and no posted results on NCT01410188 or NCT01279083."
+ ],
+ "missing": [
+  "Li 2018 (doi:10.1167/iovs.17-23212, IOVS, PMC5774255) as the efficacy `same` source: it is the only primary paper that itself states animal-human agreement for trabodenoson; the draft relegated it to a judgement note. Model should read 'several animal species (mouse measured; monkey/rabbit via ARVO abstracts)'.",
+  "SEC Form 8-K Exhibit 99.1 (Inotek, 3 Jan 2017) should be cited as the durable location of the MATrX-1 numbers instead of 'press release and trade coverage'; under rule 1 it still cannot carry a status entry (not peer-reviewed, FDA or registry).",
+  "Qiu 2021 abstract refers to TWO pivotal Phase 3 failures; the draft covers only MATrX-1. The second (trabodenoson + latanoprost adjunct study) was not checked within budget; its registry record should be looked up for has_results.",
+  "registry_date for the Phase 2 comparison trial (Myers 2016) is null in the draft; the NCT identifier is stripped in the PMC rendering and was not looked up (budget). Brief rule 7 makes this lookup mandatory.",
+  "If the context stays ADORA2A: the A2A animal models disagree with each other (Crosson 1996 rabbit/cat A2 agonists raise IOP; Konno 2005/2007 A2A agonist 2-CN-Ado lowers IOP and raises ocular blood flow in rabbits). That split, with no patient data, would be the whole story and every cell would be untested on Konno/Crosson, not on Tian A1 proxies."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a one-sentence cross-species agreement statement in a primary paper's introduction (Li 2018: 'lowers IOP in several animal species, including humans') count as a 'published comparison' for `same`? If not, efficacy stays untested for the whole strip, because Myers 2016 never relates its patient result to the animal data.",
+  "Does an SEC-filed press release (8-K Exhibit 99.1, legally attested, with per-arm mmHg) qualify as a primary source under rule 1? Registry has no results, PubMed has no Phase 3 paper, only reviews discuss it. Under the brief as written the cell must stay `same`. Note that even if admitted, MATrX-1 is a direction match with a stringent all-12-time-points miss and a high placebo response, not a model contradiction, so `contra` would be wrong on substance too.",
+  "Context definition: the manifest says ADORA2A agonists but the only drug with patient data is an A1 agonist. Either rename the context (adenosine A1 agonists / trabodenoson) and update the manifest, or keep ADORA2A and rebuild with Konno/Crosson models and all cells untested. The brief does not say which; the drafter chose a third option (widen the class) without changing the manifest."
+ ]
+}

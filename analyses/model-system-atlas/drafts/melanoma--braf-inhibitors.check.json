@@ -1,0 +1,55 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/melanoma--braf-inhibitors.json",
+ "checked": "2026-11-02",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PNAS abstract (PMID 18287029) carries the sentence verbatim. PLX4720 not vemurafenib, so product_in_model=false is right; FDA review names xenograft pMEK/pERK, so model_filed=true holds."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Nature 467:596 abstract verbatim (British 'tumours'); full text read via PMC2948082. Paired biopsies in NCT00405587; results first posted 2017-08-22 (ACTUAL) confirmed via CT.gov v2 API. direction_only is right: no numeric xenograft pERK threshold."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Tsai 2008 abstract verbatim. Exposure-response itself is in Bollag 2010 (COLO205 AUC titration), not Tsai; acceptable as the strip opener."},
+  {"cell": "dose", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2010,
+   "note": "FDA PharmR p.105 quote verbatim; document dated July 27, 2011 (e-signed 07/27 and 07/28/2011). But rule 5: Bollag 2010 published the same comparison first (COLO205 regression at AUC ~300; patients <300 uM.h no regression). Date 2010, FDA as corroboration."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Tsai 2008 abstract verbatim. Yang 2010 (PMID 20551065) resolves: RG7204 regressed BRAF V600E melanoma xenografts, no toxicity; FDA review names LOX, Colo829, A375."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Abstract verbatim. Full text: 24 PR + 2 CR of 32 at 960 mg BID; 0/5 BRAF-wt responders; matches Flaherty 2010 NEJM abstract. Nazarian, Johannessen, Karasarides, Hauschild DOIs all resolve. Sorafenib exclusion is a rule question, see below."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Tsai 2008 verbatim but covers xenografts only; rat/dog silence is documented in Bollag 2010 ('no histological changes were observed in the skin in any animal') and the FDA table (cuSCC ~29%; rats/dogs blank) exactly as the judgement says."},
+  {"cell": "safety", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "contra", "proposed_year": 2010,
+   "proposed_model": "Rat and dog toxicology; BRAF V600E xenografts",
+   "proposed_src": "https://doi.org/10.1038/nature09454",
+   "proposed_srcLabel": "Bollag 2010",
+   "proposed_quote": "Importantly, no histological changes were observed in the skin in any animal at any dose or duration of treatment, contrasting to results observed with other RAF inhibitors.",
+   "note": "Poulikakos sentence is verbatim in the abstract but retrospective ('recent clinical trial'; NEJM report postdates the Feb-2010 epub) and its body elaboration is exposure/ERK/regression, never cuSCC. The relied-on tox package was silent and 31% of MTD patients got cuSCC: contra."}
+ ],
+ "missing": [
+  "safety, 2012, status same, model switch to 'RAS-mutant keratinocyte / HRAS Q61L mouse skin (paradoxical RAF activation)': Su 2012, https://doi.org/10.1056/NEJMoa1105358 (print 2012-01-19, PMID 22256804). Quote: 'In a mouse model of HRAS Q61L-mediated skin carcinogenesis, the vemurafenib analogue PLX4720 was not an initiator or a promoter of carcinogenesis but accelerated growth of the lesions harboring HRAS mutations, and this growth was blocked by concomitant treatment with a MEK inhibitor.' Patient side in the same abstract: 60% (21 of 35) cuSCC/KA RAS-mutant, HRAS Q61L most prevalent; 'The molecular mechanism is consistent with the paradoxical activation of MAPK signaling.' This is the first prospective test of the paradox model (prediction 2010, patient genotypes and mouse test 2012). subjects=patients, comparison_stated=true, registry_date: NCT00405587 2017-08-22, NCT00949702 2011-12-22, NCT01001299 2015-10-05, NCT01006980 2011-11-16 (all confirmed via CT.gov v2 API); product_in_model: vemurafenib in HRAS Q61L cell lines, PLX4720 (analogue) in mice; magnitude direction_only; source_calls_it match.",
+  "safety: the draft's model_filed=true for the paradox model overstates the FDA review. The filed cuSCC model is an A431 SCC xenograft in athymic mice built after the clinical finding ('To investigate potential mechanisms for this finding, the sponsor conducted xenograft experiments'); the review says 'No clear mechanism was determined', that pMAPK/pMEK staining was not increased, and that another BRAF V600E inhibitor (RO5212054) had no effect, i.e. an off-target effect. model_filed should be false for the paradox model, or the model relabelled 'A431 cuSCC xenograft (mechanism undetermined)'.",
+  "safety judgement: Flaherty 2012 combination reduced cuSCC 19% -> 7% but the abstract states P=0.09 ('nonsignificantly reduced'); supportive, not a confirmed reduction. NCT01072175 results first posted 2013-11-21 confirmed.",
+  "dose: Bollag 2010 full text (PMC2948082) carries the first published exposure comparison. Model side: 'significant tumor regressions were observed at 20 mg/kg BID (AUC ~300 uM*hr)'. Patient side: 'Patients exposed to plasma levels of PLX4032 less than 300 uM.h experienced no measurable decreases in tumor burden.' Use it as src for a 2010 same entry; the FDA review's '>400 uM*hr' threshold is attributed to 'xenograft models' generally and the sponsor's interpretation, and does not name Colo205."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Model switch after contra (safety): the tox package the class relied on in 2008-2010 was contradicted (Bollag 2010; FDA 2011 table), then the class adopted a different model that was tested prospectively and matched (Su 2012). Does 'contra overrides every matched status' apply across models within a cell, or does 'best model = the model the class relied on' allow a later entry with the new model? I scored it as the latter (2010 contra, 2012 same with the model named); the brief should state which.",
+  "Explanation vs prediction: the same rule does not say the model's prediction must precede the patient result. Poulikakos 2010 ('These predictions have been borne out in a recent clinical trial') is a consistency claim written after the 2009 trial reports, and its body never mentions cuSCC. Recommend: a post-hoc explanation does not earn same; the model earns same when a forward prediction is tested (here Su 2012).",
+  "Class boundary: sorafenib (BAY 43-9006) was developed as a RAF inhibitor, inhibited melanoma xenografts (Karasarides 2004) and failed in melanoma, but its trials were in unselected patients, outside this context's BRAF V600-mutant population. The drafter excluded it by class; excluding by population is the cleaner reason. The brief should say how class-ancestor drugs are treated.",
+  "Year when an FDA review restates a comparison already published in a paper (dose cell): rule 5 says the year the comparison was published; the drafter chose the 2011 FDA sentence for its clarity. I applied first publication (2010).",
+  "model_filed semantics: the FDA review files a mechanism-agnostic, post-hoc model (A431 xenograft) for cuSCC. Does a model built after the clinical finding count as 'the model the class relied on' for that question?"
+ ],
+ "checker_findings": {
+  "test_1_safety_2010": "contra for the relied-on model (rat/dog toxicology + V600E xenografts), dated 2010 on Bollag 2010, which puts both sides in one paper: 26-week rat and 13-week dog toxicology with 'no histological changes ... in the skin in any animal at any dose or duration' versus 'Thirty-one percent of the patients treated at the MTD developed skin lesions described as cutaneous squamous cell carcinomas, keratoacanthoma type.' FDA PharmR (July 27, 2011) tabulates the same: cuSCC ~29% in humans, rats and dogs blank. The paradox model is a later model switch; it earns same in 2012 (Su 2012), not 2010.",
+  "test_2_poulikakos_quote": "Verbatim in the PubMed/Nature abstract including '(refs 4, 5)'; the PMC author manuscript reads 'borne out strikingly'. It is an explanation, not a forward prediction: (a) it reports an already-run trial, and the NEJM phase-1 report (Aug 26, 2010) postdates the Feb 3, 2010 epub, so refs 4-5 can only be the 2009 ASCO reports (reference list on nature.com is auth-gated; the 22 PubMed-indexed references contain no PLX4032 clinical paper); (b) the body elaborates 'these predictions' as 'High serum levels of drug were achieved with modest toxicity ... profound inhibition of ERK signaling ... Tumor regression was observed in more than 90% of patients', and the words squamous, keratoacanthoma and skin do not appear in the paper. It therefore supports engagement/efficacy consistency, not a safety comparison.",
+  "test_3_fda_quote": "Verbatim, p.105 'Correlation with Clinical Toxicity': 'Consistent with nonclinical findings, tumor regressions in PLX06-02 were first observed in the dose range of 240 mg b.i.d. to 360 mg b.i.d. that on average exceeded the target exposure threshold AUC0-24h of 400 µM*hr.' Document: Pharmacology Review(s), NDA 202429Orig1s000, memoranda dated July 27, 2011 (Helms; Leighton), electronic signatures 07/27/2011 (McGuinn, Aziz, Helms) and 07/28/2011 (Leighton); reviewers McGuinn and Aziz. Approval followed 2011-08-17. Year 2011 is correct for this document."
+ }
+}

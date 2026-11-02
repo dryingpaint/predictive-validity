@@ -1,0 +1,39 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/ulcerative-colitis--s1pr1-agonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DOI resolves (PMID 15290910, Inflamm Bowel Dis May 2004). Quote verbatim in abstract. Mouse-only, no patient comparison: untested correct; year = print year."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim (abstract); registry results-first-posted 2020-10-14 verified. Scott 2016 full text IS readable (PMC4867749) and itself states a human comparison (rodent 81-82% T-cell fall at 6 h; 'In humans RPC1063 has a 19 h half-life and 3-day lymphocyte count recovery'): comparison_stated can be true with Scott as src (subjects healthy_volunteers)."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim (abstract). Full text projects no human dose from rodent exposure/EC50, so untested is defensible. It does state rodent-vs-human half-life (once-daily held; human 19 h) - whether a regimen prediction counts for the dose cell is a rule question."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DOI resolves; quote verbatim in abstract. Untested correct. 'Fingolimod never trialled in UC' not checked (not load-bearing)."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim; 16% vs 6% and registry date 2020-10-14 verified. Amiselimod failure confirmed as Crohn's (NCT02378688; D'Haens 2022, 10.1093/ecco-jcc/jjab201). KRP-203 NCT01375179 terminated n=27, no results, confirmed. Scott 2016 full text itself cites TOUCHSTONE remission beside the mouse models."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DOI resolves (PMID 14732717, JBC 2004). Quote verbatim in abstract bar subscript formatting. Untested correct for 2004."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Abstract states the cross-species miss verbatim; full text: 'cardiac effects seen in mice did not translate into humans'. Fact fields right. Proxy-drug issue is a rule question (below). Judgement's 'amiselimod has no UC result' is wrong: positive topline press-released 2023-12-21 (not a primary source)."}
+ ],
+ "missing": [
+  "Scott 2016 full text is retrievable (https://pmc.ncbi.nlm.nih.gov/articles/PMC4867749/); the draft's dose/engagement judgements say it was not. It states rodent-vs-human comparisons for lymphocyte kinetics and for efficacy (cites TOUCHSTONE), and predicts 'limited effects on heart rate and no effect on QT interval prolongation' from S1P3-sparing - the in-context safety prediction for ozanimod.",
+  "In-context safety contradiction for the UC drugs: Tran 2017 (10.1002/jcph.887, ozanimod FIH) 'A dose-dependent negative chronotropic effect was observed following the first dose'; Lee 2024 (10.1002/cpdd.1379, etrasimod SAD/MAD) 'mean reductions seen after the first dose of up to 19.5 bpm'. Both healthy volunteers, both verified at abstract level; neither states the mouse comparison. Patient-level bradycardia in TRUE NORTH (10.1056/NEJMoa2033617) / ELEVATE (10.1016/S0140-6736(23)00061-2) not checked.",
+  "Amiselimod UC phase 2 NCT04857112: no registry results or paper (confirmed), but Bausch Health press release 2023-12-21 reports primary endpoint met (modified Mayo -2.3 vs -1.6, p=0.002; remission 32.4% vs 17.8%). Same direction as the CD45RBhi/IL-10-/- models; not a primary source under rule 1, so no status change, but the judgement text should carry it and watch for the publication.",
+  "model_filed is null in every entry: the Zeposia FDA pharmacology review (accessdata.fda.gov, NDA 209899) was not consulted for whether the TNBS/CD45RBhi colitis models or S1P3 data were filed. Not checked here (budget)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "safety contra 2012: Gergely 2012 is the only stated comparison in the draft, but siponimod was never a UC drug and the subjects were healthy volunteers in an MS programme. Does 'a drug in this context' (contra rule) mean drug-of-class (then 2012 stands) or drug-in-this-disease (then contra moves to 2017 via Tran 2017, juxtaposed with Sanna 2004 and Scott 2016's 'limited effects on heart rate'; or to 2021 if patients are required)? My call: 2012 stands - the prediction is receptor-level class pharmacology, indication-independent, and the pivotal ozanimod paper relied on the same S1P3 argument; fact fields already record the proxy.",
+  "same via juxtaposition: engagement 2 and efficacy 2 cite Sandborn 2016 with comparison_stated false. The checker brief says same without a published comparison should be untested; the v2 drafter brief tolerates juxtaposition and records it. Moot here only because Scott 2016 itself states both comparisons - decide whether src should move to Scott 2016 (comparison_stated true, subjects healthy_volunteers for engagement) or stay on the patient trial.",
+  "dose cell: Scott 2016 states a rodent half-life -> once-daily prediction that held in humans (19 h). If a regimen prediction counts as the 'exposure/occupancy target', dose becomes same 2016 (direction_only, comparison stated, healthy volunteers); the draft's untested assumes an exposure-target test is required.",
+  "contra 'overrides every matched status': the safety judgement reasons that amiselimod's replacement model 'does not lift the contra' because amiselimod lacks a UC result. Under the rule nothing lifts a contra, so the amiselimod argument is moot - unless the atlas intends a later entry to show a replacement model that matched (Sugahara 2017 / Harada 2017, not verified here)."
+ ]
+}

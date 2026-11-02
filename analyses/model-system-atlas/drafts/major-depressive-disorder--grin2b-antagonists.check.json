@@ -1,0 +1,81 @@
+{
+ "draft": "/Users/stephengoldstein/code/predictive-validity/analyses/model-system-atlas/drafts/major-depressive-disorder--grin2b-antagonists.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC4195977 full text: Sprague-Dawley rat EEG and healthy-volunteer crossover in one paper; 150 mg lanicemine gamma-EEG 'statistically indistinguishable from ketamine (0.5 mg/kg)'. Match is in healthy volunteers, not patients: hinges on rule question 1."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI -> PMID 27022470 (PMC4777252); quote verbatim in abstract. NCT01941043 and NCT02459236 both has_results=false (checked); 12/20 mg confirmed, 8 mg not stated in registry. 'Failed' in note rests on press releases only."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 2171955, DOI matches; quote verbatim in abstract; MeSH confirms mouse swimming/immobilization models with AP-7, MK-801, ACPC."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract; full text 403 at two sites). Chronology holds: abstract opens 'A growing body of preclinical research suggests...' and Crossref reference list shows Berman cites Trullas 1990 (BIB23) plus Papp 1994/1996, Layer 1995, Moryl 1993, Przegalinski 1997 rodent NMDA-antidepressant papers. Caveat: 7 'major depression' patients, not explicitly TRD."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC5312066: quote verbatim; no rodent/preclinical/FST mention anywhere, authors blame 13.9-point placebo response and compare only to Study 9. NCT01482221 results first posted 2017-04-11 (confirmed). Contra rests on a class-level proxy (rule question 2). Model name should match entries 1-2; gamma-EEG is engagement, not efficacy. Judgement omits that lanicemine MATCHED in Study 9 (Sanacora 2014, same DOI as engagement: MADRS -5.5 vs placebo, p=0.006) before failing."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 2660263, DOI matches; quote verbatim in abstract; ketamine among the agents dosed, so product_in_model=true holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label PDF extracted (Revised 03/2019), section 13.2: racemic ketamine vacuolation NOAEL 15 mg/kg = 1.6x AUC; esketamine no vacuolation to 1.8x AUC; 'The relevance of these findings to humans is unknown.' verbatim. untested correct; model_filed=true supported."
+  }
+ ],
+ "missing": [
+  "Earlier, product-in-model contra candidate: memantine (NMDA channel blocker) 'was not effective in the treatment of major depressive disorder' in a double-blind placebo-controlled trial, n=32, 5-20 mg/day -- Zarate 2006, doi 10.1176/appi.ajp.163.1.153 (PMID 16390905, verified). Memantine is antidepressant-like in rodent despair tests (Moryl 1993, doi 10.1111/j.1600-0773.1993.tb01351.x, cited by Berman 2000; abstract not read by me). Under the draft's own lanicemine logic this makes efficacy contra in 2006, not 2017, with product_in_model=true. Caveats: MDD not stated TRD (but the draft already accepts Berman's non-TRD patients), low-affinity blocker at low occupancy, small n.",
+  "Lanicemine Study 9 positive phase IIb (Sanacora 2014, doi 10.1038/mp.2013.130, full text read): the same drug matched the despair-test prediction in 2014 before the 2017 miss. No new strip entry needed (same->same), but efficacy entry 3's judgement should record it; it weakens 'model predicted wrongly' to 'one positive, one negative trial, authors blame placebo'.",
+  "Scope mismatch: file slug is 'grin2b-antagonists' but mechanism field is 'NMDA receptor antagonists' and every efficacy/safety/engagement source is a channel blocker (ketamine, lanicemine, esketamine). If the intended context is GluN2B-selective antagonists, the efficacy strip should be traxoprodil Preskorn 2008 (same; doi 10.1097/JCP.0b013e31818a6cea, not verified by me) with CERC-301/EVT-101 unpublished, and the engagement cell could use Fernandes 2015 in-vivo [3H]MK-801 binding (doi 10.1016/j.ejphar.2015.08.044, PMID 26325093, verified) showing GluN2B antagonists block only ~60% of forebrain NMDA receptors.",
+  "Not verified within budget: Zarate 2006 ketamine TRD trial DOI/registry date (NCT00088699, 2018-10-12) and the 8 mg dose of NCT01941043 cited in the dose cell confidence text."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Healthy-volunteer rule (engagement 1): the brief's `same` requires agreement with 'patient results', but the only rodent-to-human engagement comparison for this class (Sanacora 2014 gamma-EEG) is in healthy male volunteers. Does a PD match in healthy volunteers satisfy `same` for the engagement question, or should it stay `untested` with subjects=healthy_volunteers recorded?",
+  "Class-level contra with product_in_model=false (efficacy 3): the despair-test model never dosed lanicemine in any public source, the trial paper makes no model comparison and attributes the miss to placebo response, and the same drug had a published positive trial (Study 9). Does 'the model predicted wrongly for a drug in this context' cover a class proxy inferred by the drafter, or does contra require the failed product (or a proxy of it) to have been run in the model? If the latter, efficacy 3 falls back to `same` (or to memantine 2006, which has product in model).",
+  "Is a downstream PD biomarker (cortical gamma-EEG) acceptable as 'target engagement' when no receptor-occupancy comparison exists for the class, or should engagement be `untested` with the PD match noted?",
+  "Population 'Treatment-resistant' vs non-TRD comparison trials: Berman 2000 (n=7, 'major depression') and Zarate 2006 memantine (n=32, MDD) are both non-TRD. If the population field is enforced, efficacy `same` moves to 2006 (Zarate ketamine TRD) and the memantine contra may be excluded; if not enforced, memantine 2006 should be the contra."
+ ]
+}

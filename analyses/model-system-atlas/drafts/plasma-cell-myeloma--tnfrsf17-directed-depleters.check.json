@@ -1,0 +1,93 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/plasma-cell-myeloma--tnfrsf17-directed-depleters.json",
+ "checked": "2026-11-02",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 23344265 / PMC3630268, Clin Cancer Res 19(8):2048-60 (epub 2013-01-23). Quote verbatim in abstract. untested correct: mouse-only, no patient read-out."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 27412889, Blood 128(13):1688-700, epub 2016-07-13; PMC full text not retrievable, abstract only. NCT02215967 results first posted 2019-10-08 confirmed. Juxtaposition-type same, as cf-cftr/Ramsey. Set model_filed=true (FDA review names the xenograft; efficacy/safety rows already say true)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Carpenter 2013 record; quote verbatim in abstract. No mouse-derived exposure/cell-dose target carried to NCT02215967 (0.3-9e6 CAR+/kg empirical escalation per registry)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 35749004 / PMC9345835, Target Oncol 17(4):433-9, epub 2022-06-24. Quote verbatim in Discussion. comparison_stated=true holds; prediction mixes ex vivo EC50-EC90 with first-cycle clinical PK of low-dose cohorts, so say 'ex vivo + early clinical PK'. MajesTEC-1 NCT03145181: no results posted (checked 2026-11-02). model_first_use_year 2020 (Pillarisetti) not independently checked."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Carpenter 2013 abstract, verbatim. untested correct for 2013."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2023,
+   "note": "2016 same row stands as of 2016 (quote verbatim; registry date confirmed; FDA Abecma review names the xenograft so model_filed=true holds). Overrule the judgement: add a 2023 contra row for AUTO2 (see missing[0]). neg is impossible, the model never flagged AUTO2; it predicted complete clearance (Lee 2018 abstract) and the drug failed in patients."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Carpenter 2013 abstract, verbatim. Quote is the model's only explicit safety claim (plasma-cell-restricted expression), consistent with 'silent on CRS'. untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ali 2016 abstract, verbatim. contra is supported by the brief's safety wording ('or its silence') and the ad-amyloid precedent (Egan 2019, 4-species miss). But comparison_stated=false and the NCT02215967 pre-trial description already lists 'cytokine-associated toxicities such as fever, hypotension, and neurological toxicities' as expected, i.e. the class did not rely on the mouse for CRS; see rule_questions[2]. If rule 1 is read strictly, the single source carrying both sides is the FDA Abecma review 2021 ('No ABECMA-related adverse findings were reported in these studies' + CRS 84%), year 2021."
+  }
+ ],
+ "missing": [
+  "efficacy, new entry 3: year 2023, status contra, model 'BCMA+ myeloma xenografts (MM.1s intramedullary / escape model) in NSG mice', src https://doi.org/10.1136/jitc-2023-006699, srcLabel 'Lee 2023', PMID 37399355 / PMC10314698, J Immunother Cancer 11(6):e006699. Quote (abstract, verbatim): 'The APRIL CAR was well tolerated, but the clinical responses observed in AUTO2 were disappointing.' Lee 2018 (doi:10.1182/blood-2017-05-781351) predicted 'complete ACAR-mediated tumor clearance'; patients: 11 treated, 1 VGPR + 3 PR + 1 MR, terminated 'not sufficient to warrant further development' (NCT03287804, results first posted 2020-10-23, confirmed). Fields: subjects=patients, comparison_stated=true (paper traces the shortfall to reduced avidity/binding of cell-expressed APRIL that the xenograft never surfaced), epub/print 2023, registry_date 2020-10-23, product_in_model=true, magnitude=off_by_>5x (clearance vs 36% ORR, no CR), source_calls_it=miss. Fallback if the house takes the patient-side year: 2020 on the registry record, which rule 1 explicitly allows as a source.",
+  "safety, ADC arm (if the context is ever split by modality): EMA/CHMP/414341/2020 (23 July 2020) verbatim: 'In nonclinical toxicity studies, corneal effects (bilateral single cell necrosis in the corneal epithelium and/or increased mitoses of corneal epithelial cells) were seen in rats and rabbits, but not in monkeys.' Study dates: 13-week rat 2018N374327 and rabbit ocular 2018N385412 are 2018 as the drafter says, but the GLP 3-week rat study 2013N158643 already lists 'Non adverse changes in ... eyes' before DREAMM-1 (BMA117159, started 2014), so 'partly post hoc' overstates; the rat flagged the eye prospectively but called it non-adverse (direction matched, severity missed). This would be same/direction_only for the ADC arm, not contra.",
+  "engagement row 2: model_filed should be true, not null, for consistency with efficacy/safety rows citing the same FDA Abecma review (https://www.fda.gov/media/147627/download, section 4 'xenograft murine model'; verified)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a magnitude miss that ends in development termination count as contra, or only a direction reversal? The brief says 'predicted wrongly for a drug' and defines failure at the drug level ('went on to fail in patients'); the drafter's direction-only rule is its own invention. Checker's decision: contra (2023, Lee 2023 JITC). Consequence to decide: the same xenograft also predicted eradication for ide-cel (PFS 8.8 mo, no cures) and that is scored same/direction_only; the brief should state whether 'failed in patients' means development failure or direction reversal.",
+  "Can a registry record with no publication be the sole source for contra? Rule 1 lists 'a registry record' as a primary source, so yes; moot here because a peer-reviewed AUTO2 report exists (doi:10.1136/jitc-2023-006699).",
+  "Does structural model silence count as a wrong prediction when (a) the model could never show the toxicity (NSG, no human myeloid compartment), (b) the developers predicted it anyway from CD19 CAR experience and wrote it into the protocol (NCT02215967 detailed description), and (c) the model's one explicit safety prediction (plasma-cell-restricted BCMA expression, Carpenter 2013) held? The brief's 'best model = the one the class relied on for that question' argues the mouse was not the CRS model; its '(or its silence)' wording and the ad-amyloid precedent (species dosed, endpoint possible, nothing seen) argue contra. In ad-amyloid the species were actually asked; here the model was not. Needs a rule; checker left contra standing.",
+  "Mixed-modality class: 'BCMA-directed therapies - CAR-T, ADC, bispecifics' share an efficacy model but not safety or dose models (ADC: rat/rabbit/monkey tox, which did show cornea; bispecific: patient-marrow ex vivo + cyno; CAR-T: xenograft only). Should contra for one modality override the class, or should the context split by modality?",
+  "Rule 1 says the source must 'make the comparison', but both house examples (cf-cftr Ramsey 2011, ad-amyloid Egan 2019) accept drafter juxtaposition of a model paper and a patient paper (comparison_stated=false). Which governs? All three same/contra rows in this draft rely on juxtaposition; only the dose row is comparison_stated=true."
+ ]
+}

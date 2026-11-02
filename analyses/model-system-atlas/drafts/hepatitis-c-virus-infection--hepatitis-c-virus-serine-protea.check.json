@@ -1,0 +1,96 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea.json",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 12646587, J Biol Chem 278:20374 (epub 2003-03-19). Quote verbatim in abstract. Untested opener is right; the 1b replicon is the model every later PI label names."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2003,
+   "note": "Quote verbatim (PMID 14578911). The 2-3 log10 figure is not in the abstract; Nature body paywalled. Verbatim in Hinrichsen 2004 abstract (doi:10.1053/j.gastro.2004.08.002: 'reductions of 2-3 log 10 copies/mL ... in most of the patients'). Cite it; say 'most patients'."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim but generic: it names no EC50 or trough. Kneteman 2006 abstract (doi:10.1002/hep.21209) states the yardstick verbatim ('exposure to 10X replicon EC50 at trough'); 'protein-shifted' is a later refinement. Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 22470110 / PMC3370793, epub 2012-04-02, print Jun 2012. Quote verbatim. Full text unreachable by tools (PMC reCAPTCHA, ASM 403, Europe PMC 500): direction and size of the miss unread, magnitude stays null. Contra only by the letter; see rule_questions."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 12610142, J Virol 77:3669 (Mar 2003). Quote verbatim in abstract. Untested opener is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 15732092, Hepatology 41:832 (Apr 2005). Quote verbatim; 4/8 >=1 log10 and 3/8 no response verbatim. Thibeault 2004 Ki 80-90 vs 1.5 nM verbatim. Same holds, but the comparison is in genotype 2/3 patients on 2-day viral load; see rule_questions."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2004,
+   "note": "PMID 17919490; quote verbatim; untested is right. But Hinrichsen 2004 abstract (doi:10.1053/j.gastro.2004.08.002) pins the animal-toxicity hold: 'further clinical trials are on hold pending resolution of animal toxicity issues'. Open the strip (model_first_use_year) at 2004, not 2007."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2011,
+   "note": "Quote verbatim, section 13.1 of the 5/2011 label; no 13.2; NOAEL 0.17-fold confirmed. Fix note: 0.17x is the rat NOAEL, not the toxic dose. model_first_use_year 2007 unsupported for rat/dog (set null). Contra only by the letter; see rule_questions."
+  }
+ ],
+ "missing": [
+  "Hinrichsen 2004, doi:10.1053/j.gastro.2004.08.002 (Gastroenterology 127:1347): the primary for the 2-3 log10 patient figure and for the 2004 animal-toxicity hold on BILN 2061; cite it in engagement 2 and the safety opener.",
+  "Kneteman 2006, doi:10.1002/hep.21209: 'Performance of all three antiviral regimens in the chimeric mouse model paralleled responses in humans' is a stated model-vs-patient efficacy comparison for the only small-animal infection model (which the context note names but no entry carries); optional 2006 'same' entry for that model, status unchanged.",
+  "Safety false negatives (telaprevir SJS/DRESS boxed warning 2012, anemia; boceprevir anemia/dysgeusia): no primary stating the animal-vs-patient comparison was found within budget; the NDA 201917 pharmacology review is the lead to check, not the label.",
+  "Dose after 2012: no later comparison checked for the LPR-adjusted target (simeprevir, grazoprevir, glecaprevir); the cell ends on 2012 contra with no source showing the corrected yardstick held."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose 2012 (Reddy): the plasma-Cmin/EC50,PS yardstick 'was not successful' for 14 PIs, which is 'predicted wrongly' by the letter, but the source frames it as a liver-to-plasma scaling term with the replicon EC50 retained; the brief has no status for a conservative scaling miss, only the fact field source_calls_it='scaling'. Decide whether contra requires the miss to be against the patient (over-prediction) or any miss. Direction/size could not be read (full text blocked), so the draft's 'patients responded more than plasma predicted' is inferred, not quoted.",
+  "Safety 2011 (Incivek): is a false-positive animal flag (rat testicular toxicity; patients clean) a contra? The table says 'predicted wrongly' with no direction, but the house example (ad-amyloid) scores only a false negative. Also, when species disagree (rat positive, dog negative) which is 'the model', and does 'proposed hormonal biomarkers ... comparable to placebo' count as patients showing no harm (no histology, 12-week dosing)?",
+  "Antivirals: 2-day viral-load fall is scored as engagement (Lamarre 2003) and, by genotype, as efficacy (Reiser 2005); the brief does not say which cell owns a pharmacodynamic viral-load read-out, and the efficacy 'same' rests on genotype 2/3 patients outside the context's genotype-1 population.",
+  "Opener year: the safety strip opens at the first verifiable primary (2007) rather than the first use of the model (<=2004); does a primary that pins the animal-toxicity hold without naming the species (Hinrichsen 2004) suffice to open the strip?"
+ ]
+}

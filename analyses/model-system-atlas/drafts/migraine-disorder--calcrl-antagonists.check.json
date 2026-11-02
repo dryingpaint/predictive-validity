@@ -1,0 +1,48 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/migraine-disorder--calcrl-antagonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 15680472, Regul Pept 2005 Apr 15; quote verbatim in abstract. model_filed=true holds: FDA ubrogepant review names capsaicin-induced vasodilation in rhesus/monkey as the in vivo functional and 'animal efficacy' model."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": false,
+   "proposed_status": "same", "proposed_year": 2020,
+   "note": "Sinclair gives 909 nM but no rhesus figure (994/127 absent; Salvatore only in refs): self-juxtaposition, not a published comparison. Moore 2020 (10.1124/jpet.119.261065, PMID 31992609) states rhesus 3.2 vs human 2.6 nM in one source; make it src/year."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 18039958; JPET 324(2):416, epub 2007-11-26, print 2008; quote verbatim in abstract, 127/994 nM confirmed. model_filed holds (FDA: capsaicin-induced dermal vasodilation EC50 in monkey). NCT00432237/NCT00442936 result dates confirmed."},
+  {"cell": "dose", "index": 2, "verdict": "unverified",
+   "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Full text unreachable (PMC reCAPTCHA, Europe PMC 500); abstract confirms 20 mg prediction, 40-100 mg plateau, telcagepant phase 3 anchor. Hewitt 2011 abstract confirms 200 mg added for insufficient efficacy at 20-100 mg; NCT00712725 2010-11-22 confirmed. Model is human, not preclinical: see rule_questions."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 10711339, Br J Pharmacol 129:420, Feb 2000; quote verbatim in abstract. Olesen 2004 cites it (ref 10) as the marmoset model."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Full text read: 66% (21/32) vs 27% (11/41), P=0.001. Discussion: 'BIBN 4096 BS blocks trigeminal-induced facial vascular dilatation in the marmoset' (ref 10, Doods 2000); set comparison_stated=true, direction-only. Trial ran Feb-Dec 1999, not 2002-03."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PMID 25107879, Neurology 83(11):958, epub 2014-08-08; quote verbatim; NCT00797667 results 2014-09-08 confirmed. 'Never published' in the model name is now false: Smith 2020 Table 1 publishes the rat/NHP liver findings. untested is right as of 2014; the 2020 contra is missing (see missing)."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in the Nesti review (Reference ID 4535137); rat ALT <=3.2-fold and 'two other CGRP receptor antagonists, for which development was discontinued because of hepatotoxicity' confirmed. Whether in vitro + DILIsym is a 'preclinical model' is a rule question."},
+  {"cell": "safety", "index": 3, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2020,
+   "note": "Quote verbatim (abstract; Toxicol Sci 188:108; NCT02873221 2019-08-28 confirmed). But the first published QST-vs-patient comparison is Smith 2020 (10.1093/toxsci/kfaa093): 'first published example of DILIsym predicting liver safety of a dosing regimen before the clinical trial was conducted'. Rule 5 puts the same at 2020."}
+ ],
+ "missing": [
+  "safety contra 2020 (rat and monkey repeat-dose toxicology): Smith B, Rowe J, Watkins PB, Ashina M, Woodhead JL, Sistare FD (Merck), Goadsby PJ. Mechanistic Investigations Support Liver Safety of Ubrogepant. Toxicol Sci 2020;177(1):84-93, doi 10.1093/toxsci/kfaa093, PMID 32579200, PMC8312697, epub 2020-06-24. Results, verbatim: 'Results from conventional nonclinical animal toxicology studies, each conducted in 2 or more species, did not reveal liver safety liabilities for telcagepant, MK-3207, or ubrogepant.' Table 1 sets the pivotal animal findings (telcagepant: 3M rat <3x ALT/AST, no liver histopathology, 15x margin; 6M rat and 9M NHP no liver signal at 7x; MK-3207: 6M rat none at 25x, 9M NHP none at 4x) beside the clinical findings (telcagepant ALT >3x ULN in 3.2% at 280 mg BID, two symptomatic hepatitis cases >=10-fold, discontinued phase 3; MK-3207 42% (5/12) >500 mg with a Hy's law case, discontinued phase 2). Fields: subjects patients; comparison_stated true; epub_year 2020; print_year 2020; registry_date 2014-09-08 (NCT00797667); model_filed null (telcagepant never filed); product_in_model true; magnitude direction_only; source_calls_it null (states the silence, does not editorialise); population Unselected. This answers the caller's safety question: contra is supportable from a primary peer-reviewed source with a Merck co-author.",
+  "safety same 2020 (in vitro + DILIsym) in the same Smith 2020 paper, which predates Woodhead 2022: 'To our knowledge, this study is the first published example of DILIsym predicting liver safety of a dosing regimen before the clinical trial was conducted.' The dedicated hepatic-safety trial (516 healthy adults, 100 mg 2-days-on/2-off, 8 weeks) is the comparison; Woodhead 2022 then extends to rimegepant/zavegepant/atogepant without a status change.",
+  "dose: a preclinical (rhesus) dose comparison exists in Smith 2020 Methods: clinically effective doses of telcagepant, MK-3207 and ubrogepant were projected from rhesus CIDV corrected for human potency and protein binding, and 'Clinically effective doses were later confirmed in initial clinical trials for all 3 compounds.' Methods-level, no numbers; Table 1 footnote b records MK-3207's 'original projected daily dose was 80 mg' against 200 mg efficacious (2.5x). Use it if the human-CIDV model is ruled out as non-preclinical.",
+  "engagement: Moore 2020 (10.1124/jpet.119.261065; JPET 373(1):160, epub 2020-01-28) as the entry carrying the stated rhesus-vs-human CIDV comparison (3.2 vs 2.6 nM, within_2x, comparison_stated true, subjects healthy_volunteers, product_in_model true)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a self-juxtaposition of two primary sources (comparison_stated=false) satisfy rule 1 for `same`? The v2 field implies it may; the checker brief's failure list implies it does not. Engagement 2010 hinges on this; Moore 2020 resolves it either way.",
+  "Is a healthy-volunteer human PD model (human capsaicin dermal blood flow, Sinclair 2010 / Li 2015) a 'preclinical model' for this atlas? The dose `same` at 2015 rests on it; the rhesus-only version would rest on Smith 2020's methods statement.",
+  "Do in vitro hepatotoxicity assays plus DILIsym (in silico QST) count as a preclinical model? The FDA review names the package as submitted nonclinical data, so it meets 'the model the class relied on', but it is not an animal model. Safety 2019/2020/2022 hinge on this.",
+  "When the class switched liver-safety model (rat/monkey toxicology -> in vitro + QST) and the old model is contradicted while the new one matches, both published in the same 2020 paper, does `contra` on the superseded model override `same` on the replacement? 'Contra overrides every matched status' and 'best model = the one relied on' pull in opposite directions.",
+  "Dose: one within-2x hit (telcagepant, 300 mg) and one 2.5-10x miss (MK-3207: 20 mg predicted / 80 mg projected vs 200 mg efficacious) in the same source. Does a single miss make `contra` for the cell, or does the source's own 'reasonable correlation' (not re-verified; full text unreachable) keep `same`?"
+ ]
+}

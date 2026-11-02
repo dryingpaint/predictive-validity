@@ -1,0 +1,79 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/coronary-artery-disorder--p2ry12-antagonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 3127924, Thromb Res 1987-11-15; quote verbatim in abstract. PCR 4099 is clopidogrel's racemic precursor and the paper also covers ticlopidine; untested stands."},
+  {"cell": "engagement", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2009,
+   "note": "Storey 2007 resolves (PMID 17980251); quote verbatim. Model side (van Giezen 2009, epub 2009-08-18) postdates it; 2005 source is a review; Springthorpe 2007 abstract has no animal data. Chronology rule moves year to 2009; keep same as juxtaposition."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 10742300; quote verbatim. FDA review p.32 '91±9% - 99±1%' claim verified; Effient NDA 022307 PharmR 404 on six URL variants. Strip could open 1987/1993 with clopidogrel rat dosing."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 7510909; quote verbatim in abstract. Weak choice: paper is about aprotinin, antithrombotic activity is an aside; fine for untested."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 11519503, NEJM 2001-08-16; quote verbatim. Juxtaposed, model 1993 precedes patient 2001, chronology fine. Judgement's 'no P2Y12 antagonist has failed on efficacy in ACS' is wrong as written (see missing)."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 7510909; quote verbatim in abstract; untested stands."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 11519503; quote verbatim. Juxtaposed, direction only; chronology fine."},
+  {"cell": "safety", "index": 3, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "contra", "proposed_year": 2011,
+   "note": "Quote verbatim, printed p.36. Reviewer reconciles retrospectively ('explored further once dyspnea was recognized', p.42), never calls it a prediction. Dog CV safety pharmacology silent on rhythm while DISPERSE-2/PLATO found pauses: silence failed, contra overrides same."}
+ ],
+ "hard_tests": {
+  "1_fda_dyspnea_quote": {
+   "verbatim": true,
+   "where": "FDA NDA 22-433 Pharmacology Review (reviewer E.A. Hausner), printed p.36 = PDF p.109, section 'Adenosine: in vitro'. Exact text: 'The respiratory effects identified in the safety pharmacology studies were manifested in the clinical studies as dyspnea, one of the common adverse effects reported.'",
+   "also": "Printed p.9 (executive summary): 'Pulmonary function changes of increased respiratory rate (up to 20% of pre-dose baseline, p<0.01) ... were identified in the safety pharmacology studies in rats. These findings were apparent in clinical trials as dyspnea.' Printed p.42: 'These effects were explored further once dyspnea was recognized in the clinical trials. The repeat dose toxicology studies did not report respiratory effects, but, were not designed to detect those effects.' Table 16 dates the original rat study SR99346-01 to June 2000.",
+   "prediction_or_reconciliation": "Retrospective reconciliation. The reviewer's verbs are 'were manifested' / 'were apparent'; nowhere does the review say the rat finding predicted or flagged dyspnoea, and p.42 states the sponsor only followed it up after the clinical signal (mechanistic studies 0789SR Dec 2005 onward). The EMA EPAR (EMA/7143/2011, p.11) does the same reconciliation: respiratory effects at >=10 mg/kg, 'Similar adverse effects are also observed in the clinical trials.' Under the brief as written this is still a published comparison in which a pre-existing model finding (2000) agreed with patients, so `same` is supportable for dyspnoea; the entry's and context note's 'foreshadowed' wording overstates it and should read 'reconciled after the fact'. source_calls_it='match' and comparison_stated=true are correct."
+  },
+  "2_engagement_chronology": {
+   "model_side_dates": "van Giezen 2009 Thromb Res 124:565, PMID 19692114: received 2009-02-03, epub 2009-08-18, print Nov 2009. Patient side Storey 2007 JACC 50:1852, PMID 17980251: epub 2007-10-23, print 2007-11-06. van Giezen & Humphries 2005 (Semin Thromb Hemost 31:195, PMID 15852223) is PublicationType=Review, so excluded by rule 1. Springthorpe 2007 (BMCL 17:6013, PMID 17827008, epub 2007-08-19) abstract reports only SAR; no animal data seen at abstract level (full text not checked).",
+   "decision": "Move to 2009, keep `same`. The comparison could not be made from primary sources until the model side was published; year = 2009 by rule 5. Not `untested`, because the house examples (cf-cftr engagement/efficacy) accept juxtaposed `same` and the v2 comparison_stated field exists precisely to track that. If the atlas owner instead reads rule 1 strictly, this entry and both 2001 entries fall to `untested` together.",
+   "wording": "The van Giezen 2009 abstract ranks ticagrelor 63-fold over prasugrel's active metabolite on washed HUMAN platelets and over clopidogrel on antithrombotic/bleeding separation in rat and dog; it does not rank ticagrelor over clopidogrel on IPA extent in animals, so the note 'Dog/rat ranked ticagrelor above clopidogrel on platelet inhibition' should be reworded (direction-only agreement that a potent P2Y12 antagonist inhibits ADP aggregation).",
+   "registry": "DISPERSE-2 absence from ClinicalTrials.gov confirmed: a date-bounded search (AZD6140 OR ticagrelor, StartDate 2003-01-01..2006-12-31) returns only PLATO NCT00391872. registry_date=null is right."
+  },
+  "3_ventricular_pauses": {
+   "model_side": "FDA PharmR printed p.42, 4.3 Safety Pharmacology, Cardiovascular effects: canine Purkinje fibres no effect; hERG IC50 1.72 uM; intraduodenal 1/10/100 mg/kg in anaesthetised dogs lowered MAP (up to 20%, n.s.), DAP, SAP; 'There was no in vivo effect on QT or QTc.' Nothing on heart rate or rhythm; the strings 'pause', 'bradycard', 'sinus', 'conduction', 'heart rate' do not occur anywhere in the 235-page review. EMA EPAR p.11: 'In vivo, no significant ticagrelor-related effects were seen on cardiovascular, central, peripheral or autonomic nervous system following administration of 1, 10 or 100 mg/kg ticagrelor.'",
+   "patient_side": "Cannon 2007 DISPERSE-2 (PMID 17980250): post-hoc continuous ECG, ventricular pauses >2.5 s 4.3% / 5.5% / 9.9% (clopidogrel / 90 mg / 180 mg; p=0.01 for 180 mg). Scirica 2011 PLATO cECG substudy (JACC 57:1908, https://doi.org/10.1016/j.jacc.2010.11.056, PMID 21545948): pauses >=3 s in week 1 5.8% vs 3.6%, RR 1.61, p=0.006; mostly asymptomatic, sinoatrial. EMA EPAR p.37/50: 'A possible higher incidence of cardiac arrhythmias (also likely ADP mediated), in particular the bradycardia, were identified during phase II trials'; PLATO excluded patients at bradyarrhythmia risk and SmPC 4.4 carries it.",
+   "decision": "Yes, this is model silence under the safety rule. The dog CV safety-pharmacology study was the model the class relied on for cardiac safety, it recorded ECG (QT/QTc reported) and reported nothing on rhythm, and the clinical signal was unexpected (Cannon 2007 calls it post-hoc; it triggered the PLATO substudy and a label/SmPC precaution). The safety definition treats silence as a prediction, contra 'overrides every matched status', and the house precedent for a juxtaposed silence-contra is ad-amyloid safety 2019 ('Cognitive harm missed in 4 species', patient-side src only). The drafter's objection, that no source states animals missed it, would equally void their own juxtaposed 2001 `same` entries. The same 2011 year holds (model side only public in the 2011 FDA review; Scirica is 2011), so the strip changes from same->same to same->contra at 2011.",
+   "suggested_replacement_entry": {
+    "year": 2011, "status": "contra",
+    "model": "Dog cardiovascular safety pharmacology (anaesthetised, BP/QT) and rat respiratory safety pharmacology",
+    "src": "https://doi.org/10.1016/j.jacc.2010.11.056", "srcLabel": "Scirica 2011 (PLATO cECG)",
+    "quote": "During the first week after randomization, ventricular pauses ≥3 s occurred more frequently in patients receiving ticagrelor than clopidogrel (84 [5.8%] vs. 51 [3.6%]; relative risk: 1.61; p = 0.006).",
+    "note_hint": "Keep the dyspnoea reconciliation (FDA PharmR p.36, EMA EPAR p.11) in the note as the matched half; model-side quote for the miss: FDA PharmR p.42 'There was no in vivo effect on QT or QTc.'",
+    "comparison_stated": false, "subjects": "patients", "registry_date": "2012-03-13", "model_filed": true, "product_in_model": true, "magnitude": "direction_only", "source_calls_it": null,
+    "caveat": "Pauses were largely asymptomatic and did not raise clinical bradycardic SAEs in PLATO; if the atlas requires a clinically consequential AE for a silence-contra, keep `same` and log rule question 3."
+   }
+  }
+ },
+ "missing": [
+  "safety: PLATO continuous-ECG substudy, Scirica 2011, JACC 57:1908, https://doi.org/10.1016/j.jacc.2010.11.056 (ventricular pauses >=3 s in week 1: 5.8% vs 3.6%, RR 1.61, p=0.006). The primary patient-side source for the bradyarrhythmia miss; the draft cites only DISPERSE-2.",
+  "safety (model side, stated by a regulator): EMA Brilique EPAR EMA/7143/2011 p.11, https://www.ema.europa.eu/en/documents/assessment-report/brilique-epar-public-assessment-report_en.pdf : 'In vivo, no significant ticagrelor-related effects were seen on cardiovascular, central, peripheral or autonomic nervous system following administration of 1, 10 or 100 mg/kg ticagrelor. In contrast, adverse effects on the respiratory and renal system were observed ... Similar adverse effects are also observed in the clinical trials.' Second reconciliation of dyspnoea plus explicit CV silence.",
+  "efficacy: the judgement 'No P2Y12 antagonist has failed on efficacy in ACS' is wrong as written. Cangrelor failed CHAMPION-PCI (Harrington 2009, https://doi.org/10.1056/NEJMoa0908628, 7.5% vs 7.1% vs clopidogrel, P=0.59) and CHAMPION-PLATFORM (Bhatt 2009, https://doi.org/10.1056/NEJMoa0908629, 7.0% vs 8.0% vs placebo, P=0.17) in PCI/ACS patients before PHOENIX (Bhatt 2013, https://doi.org/10.1056/NEJMoa1300815, 4.7% vs 5.9%, P=0.005) succeeded; prasugrel did not beat clopidogrel in medically managed ACS in TRILOGY-ACS (Roe 2012, https://doi.org/10.1056/NEJMoa1205512, 13.9% vs 16.0%, HR 0.91, P=0.21) although the rat AV-shunt model the draft relies on ranked it ~9x more potent. Whether active-comparator failures are contra is rule question 4; at minimum the judgement text must record them.",
+  "class scope: ticlopidine is a P2Y12 antagonist and appears in the draft's own 1987 source; its ACS outcome trial STAI (Balsano 1990, Circulation 82:17, https://doi.org/10.1161/01.cir.82.1.17; vascular death/MI 13.6% -> 7.3%, 46% RRR) predates CURE by 11 years. If ticlopidine is in the class, efficacy `same` opens in 1990 and the safety cell must address ticlopidine neutropenia/TTP (animal-silent; not verified here, source needed)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Juxtaposition vs rule 1: the brief says a status other than untested needs a primary source that MAKES the comparison, but the house examples (cf-cftr engagement/efficacy, ad-amyloid safety) are juxtapositions and v2 added comparison_stated to track them. Which governs? It decides engagement 2007/2009, efficacy 2001, safety 2001 and the proposed safety contra together.",
+  "Retrospective reconciliation: the FDA/EMA reviewers reconcile the rat respiratory signal with clinical dyspnoea after the fact; the sponsor did not flag it before first-in-human. Does `same` require that the prediction was made (or at least reported) before the patient result, or is a pre-existing model finding plus a later published agreement enough? I scored it as enough.",
+  "Model silence: does a single-dose anaesthetised-dog cardiovascular study that reported BP and QT/QTc but nothing on rhythm count as 'silence that did not hold' when ACS patients showed Holter pauses that were mostly asymptomatic but earned a label precaution? I decided yes (contra 2011); the drafter decided no because no source states the miss. The brief should say whether a silence-contra needs a stated comparison and whether the missed AE must be clinically consequential.",
+  "Active-comparator failures when the model prediction was a potency ranking (prasugrel > clopidogrel in rat; cangrelor efficacy): TRILOGY-ACS and CHAMPION PCI/PLATFORM did not beat clopidogrel/placebo. Contra, neg (no model flagged them, so neg is unavailable), or neither because the mechanism-level prediction (antithrombotic vs no drug) was never contradicted?",
+  "Does the class include ticlopidine? It changes the opening years of every cell and may add a 1990s safety contra."
+ ]
+}

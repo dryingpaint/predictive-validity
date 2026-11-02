@@ -1,0 +1,46 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/dry-eye-syndrome--anti-tnf-antibodies.json",
+ "entries": [
+  {"cell": "engagement", "index": 0, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "untested", "proposed_year": 2013,
+   "note": "Ji 2013 resolves (PMID 24052636); quote verbatim in abstract; untested stands. Fix judgement text: Cornea retraction reason IS retrievable (PMC12345835): author-requested, Phase 2a data called 'exploratory' pending Phase 2b RELIFE, no error or misconduct stated. Retracted paper still cannot carry a status."},
+  {"cell": "dose", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Furrer 2009 resolves (PMID 18757508; epub 2008-08-29, print IOVS 50(2) Feb 2009); quote verbatim in abstract. First-use untested entry and 2009 house-convention year correct."},
+  {"cell": "dose", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2013,
+   "note": "Thiel 2013 resolves (PMID 23490328); quote verbatim (abstract only); abstract never mentions rabbit data. Subjects are 'otherwise healthy patients undergoing cataract surgery': set subjects=healthy_volunteers, not patients. Add that the rabbit 'all ocular compartments' prediction failed in human vitreous (5/6 undetectable); only the anterior-chamber half matched. Status stands under brief v2 (subjects must not change the call); see rule questions 1-2."},
+  {"cell": "efficacy", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ji 2013 quote verbatim in abstract; untested at first use (2013) correct. Lee 2018 canine KCS claim in judgement not re-verified (not load-bearing)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "near",
+   "status_supported": true,
+   "note": "NCT03846453 results first posted 2022-04-14: ICSS LS-mean diff 0.08 (95% CI -0.04 to 0.21) p=0.1871; ODS 0.05 (-0.12 to 0.23) p=0.5549. VELOS-3 NCT05109702 posted 2023-10-23, p=0.764/0.144, n=260, confirmed. SAEs 5/318 vs 4/319 non-ocular confirmed. Quote is a composite of verbatim registry fields, not a sentence. Contra stands only if drafter juxtaposition is admitted (rule question 1); strictly read, rule 1 makes it untested. VELOS-1/Dong 2022 not re-verified."},
+  {"cell": "safety", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Furrer 2009 quote verbatim in abstract; untested at first use correct. The rabbit study has no toxicology endpoints; its only safety-relevant output is the 25,000-fold systemic-exposure margin, so the cell is really an exposure-margin prediction."},
+  {"cell": "safety", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2013,
+   "note": "Shettle 2022 quote verbatim (Conclusion, full text PMC9271287); paper compares serum (<0.25-8.47 ng/mL) with systemic anti-TNFs, never with rabbit data. Matched quantity is systemic exposure, not a tox prediction. Draft admits cataract-surgery patients in the dose cell but not here: on the same rule the first published human systemic-exposure result is Thiel 2013 (serum detected 17/55 pre-op, 0/19 post-op; TEAEs identical to placebo), so year should be 2013; keep 2022 only if the dose cell is demoted to untested for the population reason. Registry NCT01338610 (results 2013-04-19) posts no serum PK and SAEs 0/124, 0/56, 0/29 whereas the paper reports one vehicle SAE (pneumonia)."}
+ ],
+ "missing": [
+  "safety/dose: NCT00820014 (ESBATech, first posted 2009-01-09, completed 2010-09, no results) detailed description is the only primary source that itself states the animal-to-human comparison: 'In animal experiments, ESBA105 was shown to efficiently penetrate into the inner of the eye upon topical administration, associated with very low systemic exposure. A recently completed Phase I trial with topical ESBA105 has confirmed the safety of topical administration to the human eye and the low systemic exposure using this route of administration.' The Phase I itself is unpublished; admissibility is rule question 3. If admitted, safety `same` with comparison_stated=true dates to 2009.",
+  "safety: Thiel 2013 (https://doi.org/10.1016/j.ophtha.2012.12.015) carries human systemic-exposure and AE data for the product nine years before Shettle 2022: 'ESBA105 was detected in 17 of 55 preoperative serum samples but no longer detectable in serum 1 day after surgery (0 of 19 samples).' and 'treatment-emergent adverse events were identical between ESBA105 and placebo groups (2 cases each of eye irritation).' Same population caveat as the dose cell.",
+  "dose: the same Thiel 2013 abstract records a partial miss of the rabbit prediction ('After 8 times daily dosing, 5 of 6 vitreous samples (cohort IV) had undetectable ESBA105 levels.') that the draft omits; irrelevant to an ocular-surface context but should be in the note so a re-scorer sees the model was right anteriorly and wrong posteriorly."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 1 says the primary source must 'make the comparison', yet lists registry records, which never contain model data. All three non-untested entries (dose same, efficacy contra, safety same) are drafter juxtapositions with comparison_stated=false; no source puts model and patient results side by side. Read literally, rule 1 collapses the whole entry to a four-cell untested strip. I applied the reading under which the registry/paper is the primary source for the patient-side result and comparison_stated=false records the juxtaposition (the only reading under which 'registry record' in rule 1 is not a dead letter). The brief should say which reading is intended; the efficacy contra on VELOS-2 is the case that turns on it.",
+  "Does a model-vs-human comparison made outside the context's disease population count? Thiel 2013 is otherwise-healthy cataract-surgery patients (effectively healthy volunteers for a dry-eye context), measuring aqueous humor, not the ocular-surface target tissue. Brief v2 says record `subjects` and do not let it change the status, and offers healthy_volunteers as a value, so I did not demote the dose same; but `subjects` should read healthy_volunteers, and the draft applies the opposite rule in the safety cell (uses dry-eye patients, Shettle 2022, instead of Thiel 2013). One rule must apply to both cells: either dose same 2013 + safety same 2013, or dose untested + safety same 2022.",
+  "Is a sponsor's registry protocol narrative (NCT00820014 detailed description, 2009) that states 'animal experiments showed very low systemic exposure; a completed Phase I confirmed the low systemic exposure and safety' an admissible primary source that makes the comparison? It is a registry record and it states the comparison, but it carries no results and the Phase I is unpublished.",
+  "Safety-cell scope: the rabbit model's only safety-relevant output is a systemic-exposure margin (PK), not a toxicology prediction. Whether 'minimal systemic exposure held in patients' is a safety match or an exposure match belonging to the dose cell is not decided by the brief; I accepted it as the safety-relevant exposure (ocular exposure sits in dose), with the model labelled as such.",
+  "Retracted sources: Donnenfeld 2024 (Cornea, doi:10.1097/ICO.0000000000003510) was withdrawn at the authors' request as exploratory pending Phase 2b RELIFE, not for error or misconduct. The brief does not say whether an author-withdrawn, not invalidated, paper can carry a status; the draft treats it as unusable and I agree under rule 1, but note the retraction reason does not impugn the conjunctival TNFa/IL1b/IL8 mRNA readout, which would otherwise be the class's only patient-side engagement data (and would open a TNFR1-genotype population, i.e. a new context)."
+ ]
+}

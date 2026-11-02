@@ -1,0 +1,48 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/benign-prostatic-hyperplasia--esr2-agonists.json",
+ "entries": [
+  {"cell": "engagement", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 11371645 / PMC33468 resolves; abstract quote verbatim. Genetic target-biology model, no agonist dosed, so untested is right. One of two no-status-change openers in this cell; see rule_questions on which to keep."},
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 20133657 / PMC2840300 resolves; abstract quote verbatim. 8beta-VE2 class proxy in human BPH xenograft; NCT01097707 took only PSA/TPV/testosterone, no prostate engagement readout, so untested holds. Second untested entry with no status change."},
+  {"cell": "dose", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 17034120 resolves; abstract quote verbatim (full text paywalled). SERBA-1 = LY500307 = erteberel confirmed (PubChem CID 10286159 synonyms). Hu 2015 (PMID 27136911) set the 25 mg ceiling from testosterone suppression, not mouse exposure; untested holds."},
+  {"cell": "efficacy", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same PNAS source; quote verbatim from abstract. Status fine, but this is a no-status-change entry duplicating the 2006 opener; recommend dropping it and naming BERKO in the 2006 entry's judgement so the strip opens on the model the 2015 entry is scored against."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 17034120; abstract quote verbatim. Hilbish 2013 (PMID 24323950) confirms LY500307 'was developed for the treatment of benign prostatic hyperplasia'. This is the model Lilly relied on and should be the sole untested opener for efficacy."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 25348255 (epub 2014-11-04, print 2015;18:43). Abstract quote verbatim; full text paywalled on every route, but its reference list cites Norman 2006. Registry 2019-04-08, whyStopped, TPV/IPSS/Qmax/PSA all verified. Registry primary is IPSS; TPV was the secondary a-priori PoC gate. contra stands."},
+  {"cell": "safety", "index": 0, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract). Hilbish 2013 abstract verified: 32-fold ERbeta selectivity; male-rat 10 mg/kg/day reproductive-tissue weight loss 'associated with atrophic histologic changes'; effects 'at or above parentally toxic dosage levels' and 'predominantly due to off-target ERalpha effects'."},
+  {"cell": "safety", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2006,
+   "note": "Quote verbatim; registry testosterone, AE and SAE counts all verified; Hu 2015 'loses its selectivity at high dose' verbatim. But the mouse predicted no hormone effect at 10x the EFFICACIOUS dose; no efficacious dose was ever found, and 1-25 mg was capped by Hu 2015's human window. Not a test of the mouse: fold into the 2006 entry."}
+ ],
+ "missing": [
+  "Nothing missing as a cell. S-equol NCT00962390 verified (Ausio, 116 men, 4 wk, results first posted 2017-05-19; PSA LS-mean diff vs placebo +0.3/+0.3/+0.1 ng/mL, p=0.4678/0.4892/0.8185; prostate volume -3.03/-0.25/-1.72 vs -1.74 mL): a registry record is an admissible primary source under rule 1, so it could stand as a second contra data point in the efficacy 2015 judgement rather than only as prose, but it does not change status or year.",
+  "Roehrborn 2015 Discussion could not be read (nature.com paywalled in Stephen's Chrome session; Europe PMC inEPMC=N; Semantic Scholar openAccessPdf CLOSED). Its reference list does cite Norman 2006 (ref 7), Imamov 2004 and Weihua 2002, so the paper itself links the trial to the mouse ventral-prostate work; whether the Discussion states the comparison explicitly is unverified. If anyone has the PDF, a sentence from it would turn comparison_stated to true for the efficacy entry.",
+  "Not re-checked: the draft's aside that NCT00407849 is a triamcinolone DME trial (irrelevant to the entry)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Published-comparison requirement vs comparison_stated=false. Checker brief item 3 says same/contra with no published model-vs-patient comparison should be untested; drafter brief v2 adds comparison_stated as a fact field that must not change the status call, which only makes sense if drafter juxtaposition is allowed. Under the strict reading the efficacy contra (and the safety same) both collapse to untested; under v2 the efficacy contra stands. I scored under v2 and kept contra: Lilly built the trial with TPV as the a-priori proof-of-concept gate, i.e. the direct clinical translation of mouse involution, dosed across 25-fold up to the ceiling the human ERalpha window allowed, for 24 weeks, and stopped it for insufficient TPV reduction. The model's own claim was involution at >=10x below the hormone-affecting dose, so the trial tested that joint claim and it failed; the trial could not test exposures above the testosterone threshold, but the model never claimed those were needed. The brief should state which reading governs.",
+  "Safety prediction confirmed inside a sponsor-designed window. The mouse prediction is 'no gonadal-hormone effect at 10x the efficacious dose'. In patients the efficacious dose never materialised and the 1-25 mg range was chosen below the healthy-volunteer testosterone EC50 from Hu 2015, so the clean hormone profile confirms Hu 2015's human PK/PD window under chronic dosing, not the mouse. I propose untested; one could argue the joint 10x-margin claim was contradicted (hormone threshold reached in humans with no efficacy beneath it), but that is the efficacy failure restated and should not be double-counted in safety. The brief does not say how to score a prediction whose reference point (an efficacious dose) was never reached, or one confirmed only inside a window the sponsor designed from human data.",
+  "Model-change entries without a status change. The brief says 'one entry per change of status' and rule 6 opens each cell at the first year the (best) model was used; it does not permit a second untested entry when only the model changes. The draft has two such pairs (engagement 2001 BERKO -> 2010 xenograft; efficacy 2001 BERKO -> 2006 CD-1 mouse). Recommendation: efficacy keep 2006 Norman (the model Lilly relied on and the one the 2015 contra is scored against), drop 2001 Weihua into the judgement text; engagement keep 2010 McPherson (a dosed class proxy with a readout a patient study could have matched), drop 2001 Weihua. If the house-style context files (not read here) do allow model-change entries, keep all four and ignore this item. Note the trade-off: dropping the 2001 entries moves model_first_use_year from 2001 to 2006/2010 and shortens the 'model existed before it was tested' strip."
+ ]
+}

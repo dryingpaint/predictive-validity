@@ -1,0 +1,38 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/acne--unknown.json",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 30397052, PMC6325184, AAC 63(1), epub 2018-12-21, print 2019-01). Quote verbatim in Results. FDA review adds a primary statement: 'No clinical microbiology assessments were included in the development program.' Consider opening this cell at 2018 (review names P. acnes isolate activity) to match the other cells."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 29537451 resolves; Europe PMC confirms no DOI (JDD 17(3):333-338, print 2018-03). Quote verbatim in abstract Background. Abstract-only, as the draft says."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2019,
+   "note": "Quote is the abstract's closing sentence, not a comparison. Full text read: the Discussion never puts C. acnes MICs beside the Phase 3 efficacy result; Phase 3 efficacy appears only in the Introduction as background. comparison_stated should be false, source_calls_it null. With no status change vs the 2018 opener, drop or fold this entry into it."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Leyden 2018 abstract Conclusion. No DOI confirmed. Note the same abstract already juxtaposes 'similar gastrointestinal AE rates in sarecycline and placebo groups' with the narrow-spectrum rationale, a year before Zhanel."},
+  {"cell": "safety", "index": 2, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": false, "proposed_status": "untested", "proposed_year": 2019,
+   "note": "Both sentences verbatim and adjacent in the Discussion, so comparison_stated=true holds. But the prediction is relative to minocycline/doxycycline and the trials were placebo-only; Zhanel calls the reduced effect 'putative' and asks for comparative studies. source_calls_it 'match' is overstated (null). Status rests on the rule question below."}
+ ],
+ "missing": [
+  "FDA multidiscipline review NDA 209521 (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/209521Orig1s000MultidisciplineR.pdf, review completed 27-Sep-2018, 199 pp) downloaded with curl + normal UA (HTTP 200, no bot check) and read with pdftotext. Primary pharmacology (5.3) names: intraperitoneal infection mouse model, acute respiratory tract infection mouse model, thigh wound infection mouse model (active vs S. aureus and S. pneumoniae, 'no significant activity against E. coli'), and a carrageenan-induced rat paw edema model (anti-inflammatory). Biopharmaceutics and Division Director memo name 'antibacterial activity against clinical isolates of P. acnes, including isolates with high-level resistance to the macrolide erythromycin' (i.e. the Zhanel isolate panel). It does NOT mention Enterobacteriaceae/gut-flora/intestinal-flora/microbiome MICs (0 hits), MIC50/MIC90 (0 hits) or any acne animal model. Proposed model_filed: engagement/efficacy C. acnes MIC panel = true (named, but 'No antimicrobial claims are asserted'; 'No clinical microbiology assessments were included in the development program. No labeling claims are asserted, and none are supported'; 6.2.1.1 'The mechanism of action of sarecycline in treating acne vulgaris is not known'); safety composite = true for the mouse E. coli infection model, false for the gut-flora MIC panel.",
+  "Phototoxicity model the draft did not find: FDA review 5.1/5.3 reports two SKH1-hr hairless-mouse UVA phototoxicity studies (IV up to 75 mg/kg/day x2 days + UVA 4.8 mW/cm2 1 h, dose-related phototoxicity mainly at >=50 mg/kg; intracutaneous 0.375 mg/mouse + UVA 5 mW/cm2, positive) and states 'Sarecycline exhibited phototoxicity in hairless mice, which is an expected effect of tetracyclines.' A Phase 1 clinical phototoxicity study (PR-07811, healthy males, 240 mg) is listed; its result is reported in Pariser 2019 (J Clin Aesthet Dermatol 12(11):E53-E62, no DOI, free full text PMC6937166, which the draft wrongly says is not in PMC) and patient phototoxic TEAEs were <=1% (Moore 2018, PMID 30235387, no DOI). Candidate safety comparison (model positive, patients low-rate); I did not find a source that states the model-vs-patient comparison in one sentence, so it may be untested rather than contra, but the model and both human read-outs exist and should be recorded.",
+  "If safety index 2 reverts to untested, Grada 2022 (doi 10.3389/fmed.2022.1033980, resolves, PMC9773825; abstract verbatim: 'The reduced blood-brain penetrance and lipophilicity of sarecycline compared with other tetracyclines may explain low rates of vestibular-related adverse events seen in clinical trials.') becomes the first published model-vs-patient safety comparison in this context (rat IV BBB penetration vs trial vestibular AEs, retrodiction, 2022) and would need its own entry.",
+  "Registry dates confirmed via ClinicalTrials.gov API v2: NCT02322866 (SC1402, n=1034) results first posted 2018-05-07 ACTUAL; NCT02320149 (SC1401, n=968) results first posted 2018-05-17 ACTUAL. Label (2018/209521s000lbl.pdf) 12.1 'The mechanism of action of SEYSARA in treating acne vulgaris is not known.' and 12.2 'The pharmacodynamics of SEYSARA for the treatment of acne vulgaris are unknown.' confirmed verbatim."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is an MIC panel against the putative pathogen a 'model that predicts efficacy' when the sponsor asserted no antimicrobial claim, FDA included no clinical microbiology, and the label calls mechanism and PD in acne unknown? If not, the efficacy cell has no model at all and should be empty (or carry the FDA-named mouse infection / rat paw-edema models as untested) rather than an MIC-panel opener.",
+  "Can a placebo-controlled trial confirm a model prediction that is explicitly relative to an active comparator (sarecycline 16-32x less active on enterics than minocycline/doxycycline -> fewer GI AEs than those drugs)? Zhanel 2019 juxtaposes prediction and placebo-controlled GI AE rates but labels the reduced effect 'putative' and calls for comparative studies. If juxtaposition of a comparative prediction with a non-comparative result counts as 'same', the year should arguably be 2018 (Leyden 2018 abstract already pairs the narrow-spectrum rationale with 'similar gastrointestinal AE rates in sarecycline and placebo groups'); if it does not, both the efficacy and safety 2019 entries are untested.",
+  "Does a retrodiction (model run after the trials, e.g. Grada 2022 rat BBB penetration explaining low vestibular AEs) count as a 'prediction compared with patient results' for status same, or only as untested?",
+  "Does a positive preclinical safety signal (hairless-mouse phototoxicity) paired with a class warning on the label and <=1% patient phototoxic TEAEs count as same (signal present, low-rate), contra (signal overstated), or untested (no source states the comparison)?"
+ ]
+}
