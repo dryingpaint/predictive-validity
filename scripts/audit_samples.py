@@ -22,7 +22,7 @@ from report import frame
 
 APPROVAL_STRATA = {"yes_dated": 25, "yes_before_letters": 15, "no_entity_appr": 31, "uncertain": 14}
 ENDPOINT_PER_CLASS = 3  # each endpoint class, 4 for B3-B6, as in the first audit
-ENDPOINT_LARGE = ("B3_regulatory_surrogate", "B4_objective_physiological", "B5_clinician_rated", "B6_patient_reported")
+ENDPOINT_LARGE = ("B3_regulatory_surrogate", "B4_objective_physiological", "B5_clinician_scale", "B6_patient_reported")  # names from pipeline.outcomes.ENDPOINT_CLASSES
 
 
 def pick(df: pd.DataFrame, n: int, rng: np.random.Generator) -> pd.DataFrame:
