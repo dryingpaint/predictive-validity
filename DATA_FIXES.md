@@ -26,7 +26,7 @@ The NCT02205398 stop reason flagged in the outcome audit is already correct in t
 ## Status: fixed and rebuilt (2026-11-02)
 
 Every fix above is in the code, and the database was rebuilt from a fresh ClinicalTrials.gov snapshot
-(2026-11-02, 227,126 studies) through every stage of `make sources identity programs labels evidence`.
+(2026-11-02, 227,130 studies) through every stage of `make sources identity programs labels evidence`.
 The evidence steps that read large raw releases ran on Modal (`scripts/modal_evidence.py`). The audited
 cases now come out right:
 
@@ -93,6 +93,17 @@ counting correct and acceptable as agreement:
   separate them (1 of 20).
 - Approval judgements left "uncertain" (12 of 21,628) are often settled by the rubric; they count as not
   approved, and the sensitivity table shows they move no rate.
+- Four studies the 2026-11-02 snapshot no longer returns (NCT06874855, NCT04686643, NCT07793162,
+  NCT07543315) are still in the database: `ctgov load` now removes studies absent from the snapshot, but
+  that code landed after this rebuild's load and takes effect at the next one.
+- A sponsor code reused by two companies for different products resolves to one of them (RGX-202).
+- Section 3's 72 historical cases were re-checked against the rebuilt data: the recorded outcome is right
+  for 79 of 80 programs (somavaratan is a disease-boundary disagreement). The report no longer carries
+  those case studies, so the check is not part of the build.
+
+Other fixes made during the rebuild: the openFDA label fetch keeps every bulk file of one export (it
+re-downloads all of them when a new export appears and writes the index last), and large downloads resume
+with HTTP Range requests.
 
 ## 1. Combination-product and genetic trials are never fetched
 

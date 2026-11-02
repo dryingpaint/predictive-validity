@@ -67,12 +67,12 @@ The same pass rewrites explanations that used the efficacy labeller's failure co
 | Did not actually stop (removed) | Development continued under another registry, region, name or combination | HS-20004 (noiiglutide) in type 2 diabetes went on to Phase 3 ([NCT06649773](https://clinicaltrials.gov/study/NCT06649773)); T89 in acute mountain sickness went on to a pivotal Phase 3 ([NCT04993729](https://clinicaltrials.gov/study/NCT04993729)) |
 | Unknown (likely cause counted) | No source states a cause; the likely cause is the model's inference | DMT210 in atopic dermatitis: no results announced and both indications ended together → likely efficacy; icosapent in COVID-19: enrollment fell as vaccines spread, no results → likely operational |
 
-**Known weaknesses.** On 141 stops whose registry reason is known, run with the reason hidden, the traced cause
-matched 65% of the time (κ = 0.55). Efficacy or exposure stops were recognised
-62% of the time, but only 77% of the stops it called efficacy were, and
-safety stops were recognised 52% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
+**Known weaknesses.** On 147 stops whose registry reason is known, run with the reason hidden, the traced cause
+matched 63% of the time (κ = 0.52). Efficacy or exposure stops were recognised
+77% of the time, but only 69% of the stops it called efficacy were, and
+safety stops were recognised 48% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
 a missed endpoint takes precedence over a safety signal). **Sponsor decision** is the least reliable category: the
-model's sponsor-decision calls were right 46% of the time, often confused with operational. "Positive readout" includes programs
+model's sponsor-decision calls were right 47% of the time, often confused with operational. "Positive readout" includes programs
 whose primary endpoints were only partly met, and some recently quiet ones may still advance.
 
 ## Bottom bar: why efficacy failed
@@ -143,9 +143,9 @@ intervals from a bootstrap that resamples drugs (1,000 draws), since one drug's 
   rarer with germline genetic support (Section 3).
 
 **Checks.** A second model (Claude Sonnet 5) with a stepwise prompt (prompt E) relabelled a seeded random sample of 150 registry efficacy stops
-and agreed on the not engaged / engaged / other split 69% of the time. Web-research agents labelled
-65 programs from scratch, blind to the pipeline, and agreed 82% of the time
-(κ = 0.67), with 0 programs called engaged by one and not engaged by the other. A deeper web search on 22 programs both had left undecided resolved 2.
+and agreed on the not engaged / engaged / other split 72% of the time. Web-research agents labelled
+60 programs from scratch, blind to the pipeline, and agreed 78% of the time
+(κ = 0.61), with 0 programs called engaged by one and not engaged by the other. A deeper web search on 22 programs both had left undecided resolved 2.
 
 ## Appendix: full prompts
 
