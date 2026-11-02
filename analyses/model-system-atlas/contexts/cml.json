@@ -1,0 +1,98 @@
+{
+ "order": 40,
+ "area": "Oncology",
+ "disease": "Chronic myeloid leukaemia",
+ "population": "BCR-ABL positive",
+ "mechanism": "ABL kinase inhibitors",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 1996,
+    "status": "cause",
+    "note": "Imatinib cut BCR-ABL colonies from patients 92–98% and spared normal ones.",
+    "src": "https://doi.org/10.1038/nm0596-561",
+    "srcLabel": "Druker 1996"
+   },
+   {
+    "year": 2001,
+    "status": "cal",
+    "note": "53 of 54 patients had complete hematologic responses at ≥300 mg/day.",
+    "src": "https://doi.org/10.1056/NEJM200104053441401",
+    "srcLabel": "Druker 2001"
+   }
+  ],
+  "dose": [
+   {
+    "year": 2004,
+    "status": "cause",
+    "note": "Trough at 350 mg exceeded the cellular IC50, but ≥400 mg came from clinical white-cell response.",
+    "src": "https://doi.org/10.1200/jco.2004.03.050",
+    "srcLabel": "Peng 2004"
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 1996,
+    "status": "cause",
+    "note": "Cells driven by the human fusion oncogene.",
+    "src": "https://doi.org/10.1038/nm0596-561",
+    "srcLabel": "Druker 1996"
+   },
+   {
+    "year": 2003,
+    "status": "cal",
+    "note": "IRIS confirmed cytogenetic response; the mutagenesis screen recovered all major patient resistance mutations.",
+    "src": "https://doi.org/10.1016/S0092-8674(03)00190-9",
+    "srcLabel": "Azam 2003"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 1990,
+   "label": "BCR-ABL causes CML-like disease in mice",
+   "src": "https://doi.org/10.1126/science.2406902",
+   "srcLabel": "Daley 1990",
+   "kind": "model"
+  },
+  {
+   "year": 1996,
+   "label": "Imatinib selectively kills BCR-ABL cells",
+   "src": "https://doi.org/10.1038/nm0596-561",
+   "srcLabel": "Druker 1996",
+   "kind": "model"
+  },
+  {
+   "year": 2001,
+   "label": "Phase 1: 53 of 54 complete responses",
+   "src": "https://doi.org/10.1056/NEJM200104053441401",
+   "srcLabel": "Druker 2001",
+   "kind": "clinical"
+  },
+  {
+   "year": 2003,
+   "label": "IRIS: 76% complete cytogenetic response",
+   "src": "https://doi.org/10.1056/NEJMoa022457",
+   "srcLabel": "O'Brien 2003",
+   "kind": "clinical"
+  },
+  {
+   "year": 2006,
+   "label": "Ba/F3 screen predicts nilotinib resistance",
+   "src": "https://doi.org/10.1182/blood-2006-02-004580",
+   "srcLabel": "Bradeen 2006",
+   "kind": "model"
+  },
+  {
+   "year": 2013,
+   "label": "Ponatinib works on T315I (PACE)",
+   "src": "https://doi.org/10.1056/NEJMoa1306494",
+   "srcLabel": "Cortes 2013",
+   "kind": "clinical"
+  }
+ ]
+}

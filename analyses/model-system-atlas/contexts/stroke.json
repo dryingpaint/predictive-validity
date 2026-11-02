@@ -1,0 +1,47 @@
+{
+ "order": 63,
+ "area": "Neurology",
+ "disease": "Acute ischaemic stroke",
+ "population": "All patients",
+ "mechanism": "Neuroprotectants",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 2006,
+    "status": "misled",
+    "note": "1,026 treatments tested in animals; those taken to the clinic worked no better in animals than the rest.",
+    "src": "https://doi.org/10.1002/ana.20741",
+    "srcLabel": "O'Collins 2006"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 1999,
+   "label": "STAIR preclinical standards",
+   "src": "https://doi.org/10.1161/01.str.30.12.2752",
+   "srcLabel": "STAIR 1999",
+   "kind": "model"
+  },
+  {
+   "year": 2007,
+   "label": "SAINT II: NXY-059 ineffective",
+   "src": "https://doi.org/10.1056/NEJMoa070240",
+   "srcLabel": "Shuaib 2007",
+   "kind": "clinical"
+  },
+  {
+   "year": 2010,
+   "label": "Publication bias inflates animal efficacy by about a third",
+   "src": "https://doi.org/10.1371/journal.pbio.1000344",
+   "srcLabel": "Sena 2010",
+   "kind": "model"
+  }
+ ]
+}

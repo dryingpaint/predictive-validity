@@ -1,0 +1,98 @@
+{
+ "order": 10,
+ "area": "Genetic and respiratory",
+ "disease": "Cystic fibrosis",
+ "population": "CFTR modulator-responsive variants",
+ "mechanism": "CFTR potentiators and correctors",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 2009,
+    "status": "cause",
+    "note": "Ivacaftor raised chloride secretion ~10-fold in bronchial cells from CF patients.",
+    "src": "https://doi.org/10.1073/pnas.0904709106",
+    "srcLabel": "Van Goor 2009"
+   },
+   {
+    "year": 2011,
+    "status": "cal",
+    "note": "Sweat chloride, the clinical read-out of the same channel, fell 48 mmol/L in STRIVE.",
+    "src": "https://doi.org/10.1056/NEJMoa1105185",
+    "srcLabel": "Ramsey 2011"
+   }
+  ],
+  "dose": [
+   {
+    "year": 2009,
+    "status": "cause",
+    "note": "Cell assays carry the patient variant but predict who responds, not how much; the label says the in-vitro gain does not correlate with clinical response.",
+    "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ab0c9f8-3eee-4e0f-9f3f-c1e16aaffe25",
+    "srcLabel": "Kalydeco label"
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 2009,
+    "status": "cause",
+    "note": "Rat thyroid (FRT) cells engineered with each human CFTR mutation.",
+    "src": "https://doi.org/10.1073/pnas.0904709106",
+    "srcLabel": "Van Goor 2009"
+   },
+   {
+    "year": 2017,
+    "status": "cal",
+    "note": "FDA added 23 mutations to ivacaftor's label on cell-assay data, with no new trial.",
+    "src": "https://doi.org/10.1513/AnnalsATS.201708-668PS",
+    "srcLabel": "Durmowicz 2018"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 1989,
+   "label": "CFTR gene cloned",
+   "src": "https://doi.org/10.1126/science.2475911",
+   "srcLabel": "Riordan 1989",
+   "kind": "model"
+  },
+  {
+   "year": 2009,
+   "label": "Ivacaftor characterised in patient bronchial cells",
+   "src": "https://doi.org/10.1073/pnas.0904709106",
+   "srcLabel": "Van Goor 2009",
+   "kind": "model"
+  },
+  {
+   "year": 2011,
+   "label": "STRIVE: FEV1 +10.6 points in G551D patients",
+   "src": "https://doi.org/10.1056/NEJMoa1105185",
+   "srcLabel": "Ramsey 2011",
+   "kind": "clinical"
+  },
+  {
+   "year": 2016,
+   "label": "Patient organoid responses match trial outcomes",
+   "src": "https://doi.org/10.1126/scitranslmed.aad8278",
+   "srcLabel": "Dekkers 2016",
+   "kind": "model"
+  },
+  {
+   "year": 2017,
+   "label": "FDA adds 23 mutations on cell data",
+   "src": "https://doi.org/10.1513/AnnalsATS.201708-668PS",
+   "srcLabel": "Durmowicz 2018",
+   "kind": "clinical"
+  },
+  {
+   "year": 2020,
+   "label": "177 mutations added to Trikafta on cell data",
+   "src": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2020/212273s002lbl.pdf",
+   "srcLabel": "Trikafta label",
+   "kind": "clinical"
+  }
+ ]
+}

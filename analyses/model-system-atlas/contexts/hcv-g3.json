@@ -1,0 +1,40 @@
+{
+ "order": 21,
+ "area": "Infectious disease",
+ "disease": "Hepatitis C",
+ "population": "Genotype 3",
+ "mechanism": "Direct-acting antivirals",
+ "note": "Same disease and mechanism as genotype 1, different population: the model's validity did not transfer.",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 2002,
+    "status": "cause",
+    "note": "The standard replicon was genotype 1b (Con1), not genotype 3.",
+    "src": "https://doi.org/10.1128/JVI.76.24.13001-13014.2002",
+    "srcLabel": "Blight 2002"
+   },
+   {
+    "year": 2013,
+    "status": "misled",
+    "note": "Sofosbuvir-ribavirin cured 56% in genotype 3 vs 97% in genotype 2; genotype 1b replicons did not foresee it.",
+    "src": "https://doi.org/10.1056/NEJMoa1214853",
+    "srcLabel": "Lawitz 2013"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 2013,
+   "label": "Sofosbuvir-ribavirin: 56% cure in genotype 3",
+   "src": "https://doi.org/10.1056/NEJMoa1214853",
+   "srcLabel": "Lawitz 2013",
+   "kind": "clinical"
+  }
+ ]
+}

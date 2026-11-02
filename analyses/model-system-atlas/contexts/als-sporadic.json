@@ -1,0 +1,61 @@
+{
+ "order": 62,
+ "area": "Neurology",
+ "disease": "ALS",
+ "population": "Sporadic (no SOD1 mutation)",
+ "mechanism": "Various (minocycline, ceftriaxone, dexpramipexole)",
+ "note": "Same disease as SOD1-ALS, different population: the same mouse misled here.",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 2002,
+    "status": "pheno",
+    "note": "Benefit in SOD1 mice, whose cause ~98% of patients do not share.",
+    "src": "https://doi.org/10.1006/nbdi.2002.0487",
+    "srcLabel": "Kriz 2002"
+   },
+   {
+    "year": 2007,
+    "status": "misled",
+    "note": "Minocycline sped decline in a Phase 3 of 412 patients; a rigorous retest found no drug extended mouse survival.",
+    "src": "https://doi.org/10.1016/S1474-4422(07)70270-3",
+    "srcLabel": "Gordon 2007"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 2002,
+   "label": "Minocycline extends SOD1 mouse survival",
+   "src": "https://doi.org/10.1006/nbdi.2002.0487",
+   "srcLabel": "Kriz 2002",
+   "kind": "model"
+  },
+  {
+   "year": 2007,
+   "label": "Minocycline Phase 3: harm",
+   "src": "https://doi.org/10.1016/S1474-4422(07)70270-3",
+   "srcLabel": "Gordon 2007",
+   "kind": "clinical"
+  },
+  {
+   "year": 2008,
+   "label": "Rigorous retest: none of 8 drugs replicate",
+   "src": "https://doi.org/10.1080/17482960701856300",
+   "srcLabel": "Scott 2008",
+   "kind": "model"
+  },
+  {
+   "year": 2014,
+   "label": "Ceftriaxone Phase 3 fails",
+   "src": "https://doi.org/10.1016/s1474-4422(14)70222-4",
+   "srcLabel": "Cudkowicz 2014",
+   "kind": "clinical"
+  }
+ ]
+}

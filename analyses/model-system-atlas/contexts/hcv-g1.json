@@ -1,0 +1,99 @@
+{
+ "order": 20,
+ "area": "Infectious disease",
+ "disease": "Hepatitis C",
+ "population": "Genotype 1",
+ "mechanism": "Direct-acting antivirals",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 1999,
+    "status": "cause",
+    "note": "The replicon copies HCV's own genome in a human hepatoma line.",
+    "src": "https://doi.org/10.1126/science.285.5424.110",
+    "srcLabel": "Lohmann 1999"
+   },
+   {
+    "year": 2000,
+    "status": "cal",
+    "note": "Interferon-α, an approved drug, stopped replication in the replicon.",
+    "src": "https://doi.org/10.1126/science.290.5498.1972",
+    "srcLabel": "Blight 2000"
+   }
+  ],
+  "dose": [
+   {
+    "year": 2012,
+    "status": "cause",
+    "note": "A viral-kinetics model predicted 3-day viral-load drops from replicon potency for one drug class, not another.",
+    "src": "https://doi.org/10.1128/AAC.06283-11",
+    "srcLabel": "Reddy 2012"
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 1999,
+    "status": "cause",
+    "note": "Replicon read-out is viral RNA, measured in patients' plasma too; cure is not measurable in the dish.",
+    "src": "https://doi.org/10.1126/science.285.5424.110",
+    "srcLabel": "Lohmann 1999"
+   },
+   {
+    "year": 2010,
+    "status": "cal",
+    "note": "Daclatasvir's picomolar replicon potency matched a 3.3 log10 viral-load drop after one dose; clinical resistance sat at replicon-identified positions.",
+    "src": "https://doi.org/10.1038/nature08960",
+    "srcLabel": "Gao 2010"
+   }
+  ],
+  "safety": [
+   {
+    "year": 2011,
+    "status": "misled",
+    "note": "The replicon has no safety read-out; ciluprevir's heart toxicity appeared in monkeys only after human proof of concept.",
+    "src": "https://doi.org/10.1177/0192623311398276",
+    "srcLabel": "Stoltz 2011"
+   }
+  ]
+ },
+ "events": [
+  {
+   "year": 1999,
+   "label": "Subgenomic replicon",
+   "src": "https://doi.org/10.1126/science.285.5424.110",
+   "srcLabel": "Lohmann 1999",
+   "kind": "model"
+  },
+  {
+   "year": 2003,
+   "label": "Ciluprevir cuts viral load in patients",
+   "src": "https://doi.org/10.1038/nature02099",
+   "srcLabel": "Lamarre 2003",
+   "kind": "clinical"
+  },
+  {
+   "year": 2005,
+   "label": "Infectious JFH-1 virus in cell culture",
+   "src": "https://doi.org/10.1038/nm1268",
+   "srcLabel": "Wakita 2005",
+   "kind": "model"
+  },
+  {
+   "year": 2010,
+   "label": "Daclatasvir: 3.3 log10 drop after one dose",
+   "src": "https://doi.org/10.1038/nature08960",
+   "srcLabel": "Gao 2010",
+   "kind": "clinical"
+  },
+  {
+   "year": 2014,
+   "label": "ION-1: 99% cure with ledipasvir-sofosbuvir",
+   "src": "https://doi.org/10.1056/NEJMoa1402454",
+   "srcLabel": "Afdhal 2014",
+   "kind": "clinical"
+  }
+ ]
+}

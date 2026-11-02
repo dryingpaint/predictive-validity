@@ -1,0 +1,54 @@
+{
+ "order": 80,
+ "area": "Immunology",
+ "disease": "First-in-human (healthy volunteers)",
+ "population": "CD28 superagonist (TGN1412)",
+ "mechanism": "T-cell co-stimulation",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [],
+  "dose": [],
+  "efficacy": [],
+  "safety": [
+   {
+    "year": 2006,
+    "status": "misled",
+    "note": "Macaques tolerated a 500-fold margin; all six volunteers had cytokine storm. Human memory T cells carry CD28, the monkeys' do not.",
+    "src": "https://doi.org/10.1056/NEJMoa063842",
+    "srcLabel": "Suntharalingam 2006"
+   },
+   {
+    "year": 2007,
+    "status": "cause",
+    "note": "Antibody bound to a surface and presented to human white cells reproduced the cytokine release.",
+    "src": "https://doi.org/10.4049/jimmunol.179.5.3325",
+    "srcLabel": "Stebbings 2007"
+   }
+  ]
+ },
+ "events": [
+  {
+   "year": 2006,
+   "label": "TGN1412 cytokine storm",
+   "src": "https://doi.org/10.1056/NEJMoa063842",
+   "srcLabel": "Suntharalingam 2006",
+   "kind": "clinical"
+  },
+  {
+   "year": 2007,
+   "label": "Human-cell assay reproduces it",
+   "src": "https://doi.org/10.4049/jimmunol.179.5.3325",
+   "srcLabel": "Stebbings 2007",
+   "kind": "model"
+  },
+  {
+   "year": 2007,
+   "label": "EMA first-in-human guideline",
+   "src": "https://www.ema.europa.eu/en/strategies-identify-mitigate-risks-first-human-early-clinical-trials-investigational-medicinal-products-scientific-guideline",
+   "srcLabel": "EMA",
+   "kind": "model"
+  }
+ ]
+}

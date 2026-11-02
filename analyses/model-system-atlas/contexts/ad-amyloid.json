@@ -1,0 +1,91 @@
+{
+ "order": 60,
+ "area": "Neurology",
+ "disease": "Alzheimer's disease",
+ "population": "Amyloid-positive",
+ "mechanism": "BACE1 and γ-secretase inhibitors; anti-amyloid antibodies",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 1997,
+    "status": "cause",
+    "note": "APP-overexpressing mice grow plaque, so they can show plaque clearance.",
+    "src": "https://doi.org/10.1097/00005072-199709000-00002",
+    "srcLabel": "Irizarry 1997"
+   }
+  ],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 1997,
+    "status": "pheno",
+    "note": "The same mice lost no neurons: a model of plaque, not of the disease.",
+    "src": "https://doi.org/10.1097/00005072-199709000-00002",
+    "srcLabel": "Irizarry 1997"
+   },
+   {
+    "year": 2013,
+    "status": "misled",
+    "note": "Semagacestat worsened function; BACE inhibitors later failed despite lowering Aβ.",
+    "src": "https://doi.org/10.1056/NEJMoa1210951",
+    "srcLabel": "Doody 2013"
+   }
+  ],
+  "safety": [
+   {
+    "year": 2019,
+    "status": "misled",
+    "note": "BACE inhibitors caused reversible cognitive worsening that safety work in four species missed.",
+    "src": "https://doi.org/10.1056/NEJMoa1812840",
+    "srcLabel": "Egan 2019"
+   }
+  ]
+ },
+ "events": [
+  {
+   "year": 1991,
+   "label": "APP mutation causes familial AD",
+   "src": "https://doi.org/10.1038/349704a0",
+   "srcLabel": "Goate 1991",
+   "kind": "model"
+  },
+  {
+   "year": 1997,
+   "label": "APP mice: plaque without neuron loss",
+   "src": "https://doi.org/10.1097/00005072-199709000-00002",
+   "srcLabel": "Irizarry 1997",
+   "kind": "model"
+  },
+  {
+   "year": 2012,
+   "label": "Protective APP A673T variant",
+   "src": "https://pubmed.ncbi.nlm.nih.gov/22801501/",
+   "srcLabel": "Jonsson 2012",
+   "kind": "model"
+  },
+  {
+   "year": 2013,
+   "label": "Semagacestat fails",
+   "src": "https://doi.org/10.1056/NEJMoa1210951",
+   "srcLabel": "Doody 2013",
+   "kind": "clinical"
+  },
+  {
+   "year": 2019,
+   "label": "Verubecestat worsens prodromal AD",
+   "src": "https://doi.org/10.1056/NEJMoa1812840",
+   "srcLabel": "Egan 2019",
+   "kind": "clinical"
+  },
+  {
+   "year": 2023,
+   "label": "Lecanemab: 27% slowing",
+   "src": "https://doi.org/10.1056/NEJMoa2212948",
+   "srcLabel": "van Dyck 2023",
+   "kind": "clinical"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "order": 61,
+ "area": "Neurology",
+ "disease": "ALS",
+ "population": "SOD1 carriers",
+ "mechanism": "SOD1-lowering antisense",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 2008,
+    "status": "cause",
+    "note": "The standard mouse carries human mutant SOD1 (23 copies; patients carry one).",
+    "src": "https://doi.org/10.1080/17482960701856300",
+    "srcLabel": "Scott 2008"
+   }
+  ],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 2008,
+    "status": "cause",
+    "note": "Model and patients share the cause.",
+    "src": "https://doi.org/10.1080/17482960701856300",
+    "srcLabel": "Scott 2008"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 2022,
+   "label": "VALOR: neurofilament falls, clinical primary missed",
+   "src": "https://doi.org/10.1056/NEJMoa2204705",
+   "srcLabel": "Miller 2022",
+   "kind": "clinical"
+  },
+  {
+   "year": 2023,
+   "label": "Tofersen accelerated approval",
+   "src": "https://www.fda.gov/drugs/news-events-human-drugs/fda-approves-treatment-amyotrophic-lateral-sclerosis-associated-mutation-sod1-gene",
+   "srcLabel": "FDA 2023",
+   "kind": "clinical"
+  }
+ ]
+}

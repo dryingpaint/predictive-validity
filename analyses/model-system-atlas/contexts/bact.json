@@ -1,0 +1,84 @@
+{
+ "order": 30,
+ "area": "Infectious disease",
+ "disease": "Bacterial infections",
+ "population": "Pathogen-defined (e.g. S. pneumoniae)",
+ "mechanism": "Antibacterials, by drug class",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 1998,
+    "status": "cause",
+    "note": "Neutropenic mouse infection models measure bacterial killing of the same pathogen.",
+    "src": "https://doi.org/10.1128/aac.42.9.2375",
+    "srcLabel": "Andes & Craig 1998"
+   },
+   {
+    "year": 2001,
+    "status": "cal",
+    "note": "Animal exposure targets (free AUC/MIC 25–34) agreed with the clinical microbiological breakpoint (33.7).",
+    "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
+    "srcLabel": "Ambrose 2001"
+   }
+  ],
+  "dose": [
+   {
+    "year": 1998,
+    "status": "cause",
+    "note": "Mouse thigh data supported amoxicillin breakpoints for pneumococcus.",
+    "src": "https://doi.org/10.1128/aac.42.9.2375",
+    "srcLabel": "Andes & Craig 1998"
+   },
+   {
+    "year": 2001,
+    "status": "cal",
+    "note": "Animal and patient exposure targets agreed for fluoroquinolones; EMA later based dose selection on nonclinical targets.",
+    "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
+    "srcLabel": "Ambrose 2001"
+   }
+  ],
+  "efficacy": [
+   {
+    "year": 1998,
+    "status": "cause",
+    "note": "Killing carries over, but cure also depends on the host (neutropenic model; albumin strongly predicted tigecycline success).",
+    "src": "https://doi.org/10.1128/aac.01615-10",
+    "srcLabel": "Bhavnani 2012"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 1993,
+   "label": "Ciprofloxacin exposure–response in patients",
+   "src": "https://doi.org/10.1128/aac.37.5.1073",
+   "srcLabel": "Forrest 1993",
+   "kind": "clinical"
+  },
+  {
+   "year": 1998,
+   "label": "Mouse-derived amoxicillin breakpoints",
+   "src": "https://doi.org/10.1128/aac.42.9.2375",
+   "srcLabel": "Andes & Craig 1998",
+   "kind": "model"
+  },
+  {
+   "year": 2001,
+   "label": "Animal and patient targets agree",
+   "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
+   "srcLabel": "Ambrose 2001",
+   "kind": "clinical"
+  },
+  {
+   "year": 2016,
+   "label": "EMA guideline: doses from PK/PD targets",
+   "src": "https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-use-pharmacokinetics-and-pharmacodynamics-development-antimicrobial-medicinal-products_en.pdf",
+   "srcLabel": "EMA 2016",
+   "kind": "model"
+  }
+ ]
+}

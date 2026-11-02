@@ -1,0 +1,69 @@
+{
+ "order": 70,
+ "area": "Psychiatry",
+ "disease": "Major depression",
+ "population": "Unselected",
+ "mechanism": "NK1 (substance P) antagonists",
+ "note": "",
+ "programs": null,
+ "loa": null,
+ "cells": {
+  "engagement": [
+   {
+    "year": 2004,
+    "status": "cause",
+    "note": "Brain occupancy measured directly by PET in healthy volunteers: ≥90% at ≥100 mg/day.",
+    "src": "https://doi.org/10.1016/j.biopsych.2004.02.007",
+    "srcLabel": "Bergström 2004"
+   }
+  ],
+  "dose": [],
+  "efficacy": [
+   {
+    "year": 1998,
+    "status": "pheno",
+    "note": "Guinea-pig vocalisation and gerbil foot-tapping; fluoxetine increased tapping.",
+    "src": "https://doi.org/10.1126/science.281.5383.1640",
+    "srcLabel": "Kramer 1998"
+   },
+   {
+    "year": 2006,
+    "status": "misled",
+    "note": "Five Phase 3s at ~90% occupancy failed while paroxetine worked.",
+    "src": "https://doi.org/10.1016/j.biopsych.2005.07.013",
+    "srcLabel": "Keller 2006"
+   }
+  ],
+  "safety": []
+ },
+ "events": [
+  {
+   "year": 1998,
+   "label": "Phase 2 looks positive",
+   "src": "https://doi.org/10.1126/science.281.5383.1640",
+   "srcLabel": "Kramer 1998",
+   "kind": "clinical"
+  },
+  {
+   "year": 2004,
+   "label": "PET occupancy in volunteers",
+   "src": "https://doi.org/10.1016/j.biopsych.2004.02.007",
+   "srcLabel": "Bergström 2004",
+   "kind": "model"
+  },
+  {
+   "year": 2006,
+   "label": "Phase 3s fail",
+   "src": "https://doi.org/10.1016/j.biopsych.2005.07.013",
+   "srcLabel": "Keller 2006",
+   "kind": "clinical"
+  },
+  {
+   "year": 2013,
+   "label": "Orvepitant at >99%: one positive, one failed",
+   "src": "https://doi.org/10.1177/0269881113480990",
+   "srcLabel": "Ratti 2013",
+   "kind": "clinical"
+  }
+ ]
+}
