@@ -1,4 +1,4 @@
-"""FDA UNII substance lists -> preclin.unii_substance and preclin.unii_name.
+"""FDA UNII substance lists -> preclin.unii_substance, preclin.unii_name and preclin.unii_parent.
 
     python -m pipeline.unii load
 
@@ -6,8 +6,9 @@ Downloads the GSRS public UNII records pinned to RELEASE and the list of all
 registered names, which the archive serves only as latest: the copy cached
 under .cache/unii at first download pins the names (both URLs are recorded in
 the release metadata). Records the release in preclin.evidence_source_release,
-upserts substances (entities may reference them) and replaces the names.
-pipeline.drugs unii resolves molecular entities against these names.
+upserts substances (entities may reference them) and replaces the names and the
+parent of each salt, hydrate or solvate (parents). pipeline.drugs unii resolves
+molecular entities against these names and offers each candidate's parent.
 """
 from __future__ import annotations
 
@@ -18,9 +19,12 @@ import io
 import os
 import re
 import zipfile
+from collections import Counter, defaultdict
 
 import requests
 from psycopg2.extras import execute_values
+from rdkit import Chem, RDLogger
+from rdkit.Chem.MolStandardize import rdMolStandardize
 
 from pipeline import llm
 from pipeline.drugs import moiety_key
@@ -30,6 +34,8 @@ RELEASE = "2026-08-04"
 ARCHIVE = "https://precision.fda.gov/uniisearch/archive"
 FILES = {"records": f"{ARCHIVE}/{RELEASE}/UNII_Data_{RELEASE.replace('-', '')}.zip",
          "names": f"{ARCHIVE}/latest/UNIIs.zip"}
+RDLogger.DisableLog("rdApp.*")  # GSRS SMILES that RDKit rejects are skipped, not reported one by one
+COUNTER_ION = 50  # a parent found in more salts than this is a counter-ion (mesylate, citrate), not offered
 
 
 def read_member(path: str, prefix: str) -> list[dict]:
@@ -37,6 +43,34 @@ def read_member(path: str, prefix: str) -> list[dict]:
         member = next(n for n in zf.namelist() if os.path.basename(n).startswith(prefix))
         text = io.TextIOWrapper(zf.open(member), encoding="utf-8", errors="replace")
         return list(csv.DictReader(text, delimiter="\t", quoting=csv.QUOTE_NONE))
+
+
+def structure(smiles: str) -> tuple[int, list[str]]:
+    """The number of components of a structure and the canonical SMILES of each one that contains
+    carbon, neutralised where protons account for its charge; (0, []) when it does not parse."""
+    mol = Chem.MolFromSmiles(smiles) if smiles else None
+    if mol is None:
+        return 0, []
+    uncharger = rdMolStandardize.Uncharger()
+    parts = Chem.GetMolFrags(mol, asMols=True)
+    return len(parts), [Chem.MolToSmiles(uncharger.uncharge(p)) for p in parts
+                        if any(a.GetAtomicNum() == 6 for a in p.GetAtoms())]
+
+
+def parents(records: list[dict]) -> set[tuple[str, str]]:
+    """(unii, parent unii): each record of several components (a salt, hydrate or solvate) and
+    every single-component ingredient substance whose structure is one of its carbon-containing
+    components, both neutralised, leaving out counter-ions."""
+    structures = {r["UNII"]: structure(r["SMILES"]) for r in records}
+    by_structure = defaultdict(set)
+    for r in records:
+        n, parts = structures[r["UNII"]]
+        if n == 1 and parts and r["INGREDIENT_TYPE"] == "INGREDIENT SUBSTANCE":
+            by_structure[parts[0]].add(r["UNII"])
+    pairs = {(u, p) for u, (n, parts) in structures.items() if n > 1
+             for part in parts for p in by_structure.get(part, ()) if p != u}
+    salts = Counter(p for _, p in pairs)
+    return {(u, p) for u, p in pairs if salts[p] <= COUNTER_ION}
 
 
 def load(_args) -> None:
@@ -57,10 +91,13 @@ def load(_args) -> None:
     # A name's key drops bracketed source tags ([INN], [USAN], [WHO-DD]), then applies the moiety key.
     name_rows = {(n["UNII"], n["NAME"], n["TYPE"]): moiety_key(re.sub(r"\[[^\]]*\]", "", n["NAME"])) for n in names
                  if n["UNII"] in substances and n["NAME"]}
+    parent_rows = parents(records)
     with llm.connect() as conn, conn.cursor() as cur:
         release = llm.register_release(cur, "fda_unii", RELEASE, ARCHIVE, sha,
-                                       {"n_substances": len(substances), "n_names": len(name_rows), "files": FILES})
+                                       {"n_substances": len(substances), "n_names": len(name_rows),
+                                        "n_parents": len(parent_rows), "files": FILES})
         cur.execute("DELETE FROM preclin.unii_name")
+        cur.execute("DELETE FROM preclin.unii_parent")
         execute_values(cur, """INSERT INTO preclin.unii_substance (unii, display_name, substance_type, ingredient_type,
                                  inn_id, usan_id, rxcui, pubchem_cid, inchikey, source_release_id) VALUES %s
             ON CONFLICT (unii) DO UPDATE SET display_name = EXCLUDED.display_name,
@@ -71,8 +108,10 @@ def load(_args) -> None:
                        [(*s, release) for s in substances.values()], page_size=5000)
         execute_values(cur, "INSERT INTO preclin.unii_name (unii, name, name_type, name_key) VALUES %s",
                        [(*k, v) for k, v in name_rows.items()], page_size=10000)
+        execute_values(cur, "INSERT INTO preclin.unii_parent (unii, parent_unii) VALUES %s", sorted(parent_rows),
+                       page_size=10000)
         conn.commit()
-    print(f"UNII {RELEASE}: substances={len(substances)} names={len(name_rows)}")
+    print(f"UNII {RELEASE}: substances={len(substances)} names={len(name_rows)} parents={len(parent_rows)}")
 
 
 def main() -> None:

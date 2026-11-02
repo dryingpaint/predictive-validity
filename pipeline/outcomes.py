@@ -213,17 +213,30 @@ def render_trial(p: dict) -> str:
 
 PUBLICATION_SYSTEM = CLASSIFY_SYSTEM.replace(
     "and posted results if any) and record what happened.",
-    "and the published results paper(s) of the trial) and record what happened. The trial completed and posted "
-    "no results on the registry; judge the primary endpoint from the publication abstracts given, and use no_results "
-    "only when no abstract reports this trial's primary endpoint. Judge only from the text given: never fill in a "
-    "result from memory. A linked paper may be a protocol, a pooled or post hoc analysis, a review or a different "
-    "trial; use only a paper that reports this trial's prespecified primary endpoint. When that endpoint is a "
-    "descriptive safety, tolerability or PK measure with no comparison or success criterion (common in open-label "
-    "extensions), the answer is not_assessable whatever the authors conclude about safety or efficacy.")
+    "the primary outcome measures as registered, and the published results paper(s) of the trial) and record what "
+    "happened. The trial completed and posted no results on the registry; judge the primary endpoint from the "
+    "publication abstracts given, and use no_results only when no abstract reports this trial's primary endpoint. "
+    "Judge only from the text given: never fill in a result from memory. A linked paper may be a protocol, a pooled "
+    "or post hoc analysis, a review or a different trial; use only a paper that reports this trial's prespecified "
+    "primary endpoint. The registered primary outcome measures say what that endpoint is, whatever a paper calls "
+    "its primary endpoint or emphasises in its abstract. When they are all descriptive safety, tolerability or PK "
+    "measures with no comparison or success criterion (common in open-label extensions and dose-escalation "
+    "trials), the answer is not_assessable whatever the authors conclude about safety or efficacy, including any "
+    "efficacy comparison the paper reports.")
+
+
+def render_outcomes(outcomes: list[dict]) -> str:
+    """Registered outcome measures, numbered from 1: measure | description | time frame."""
+    return "\n".join(f"{i}. {o.get('measure', '')}" + (f" | {o['description']}" if o.get("description") else "")
+                     + (f" | time frame: {o['timeFrame']}" if o.get("timeFrame") else "")
+                     for i, o in enumerate(outcomes, 1))
 
 
 def render_publication(p: dict) -> str:
-    return render_trial(p).replace("Posted results:", "Results publications:")
+    return render_trial(p).replace(
+        "Posted results:",
+        f"Registered primary outcome measures:\n{render_outcomes(p['primary_outcomes']) or '(none registered)'}\n"
+        "\nResults publications:", 1)
 
 
 CLASSIFY_TASK = llm.Task(name="trial_outcome", prompt_version="v1", schema_version="v1", system=CLASSIFY_SYSTEM,
@@ -231,7 +244,7 @@ CLASSIFY_TASK = llm.Task(name="trial_outcome", prompt_version="v1", schema_versi
                          model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
 
-PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_version="v2", schema_version="v1",
+PUBLICATION_TASK = llm.Task(name="trial_outcome_from_publication", prompt_version="v3", schema_version="v1",
                             system=PUBLICATION_SYSTEM, schema=CLASSIFY_SCHEMA, render=render_publication,
                             subject_type="trial", model="claude-opus-5-5", effort="medium", max_tokens=2000)
 
@@ -242,6 +255,11 @@ def trial_payload(nct_id, title, phases, status, enrollment, start, completion, 
     return {"nct_id": nct_id, "title": title, "phases": phases, "status": status, "enrollment": enrollment,
             "start": str(start), "completion": str(completion), "conditions": conditions or [],
             "interventions": interventions or [], "why_stopped": why_stopped, "results": results}
+
+
+def primary_outcomes(outcomes: list[dict] | None) -> list[dict]:
+    """The registered primary outcome measures as a payload shows them: measure, description, time frame."""
+    return [{k: o.get(k) for k in ("measure", "description", "timeFrame")} for o in outcomes or []]
 
 
 def classify(_args) -> None:
@@ -271,12 +289,14 @@ def classify(_args) -> None:
                    (SELECT string_agg('PMID ' || a.pmid || ' (' || coalesce(a.year::text, '') || '): ' || a.title
                                       || E'\n' || coalesce(a.abstract, ''), E'\n\n' ORDER BY a.pmid)
                     FROM preclin.trial_publication tp JOIN public.publications a USING (pmid)
-                    WHERE tp.nct_id = s.nct_id)
+                    WHERE tp.nct_id = s.nct_id),
+                   s.primary_outcomes
             FROM preclin.ctgov_study s
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date >= %s AND NOT s.has_results
               AND s.overall_status = 'COMPLETED' AND s.phases && ARRAY['PHASE2','PHASE3']
               AND EXISTS (SELECT 1 FROM preclin.trial_publication tp WHERE tp.nct_id = s.nct_id)""", (TRIALS_FROM,))
-        pub_items = {r[0]: trial_payload(*r) for r in cur.fetchall()}
+        pub_items = {r[0]: {**trial_payload(*r[:11]), "primary_outcomes": primary_outcomes(r[11])}
+                     for r in cur.fetchall()}
     run_id = llm.run(CLASSIFY_TASK, items)
     pub_run = llm.run(PUBLICATION_TASK, pub_items) if pub_items else None
     with llm.connect() as conn, conn.cursor() as cur:
@@ -300,14 +320,14 @@ ENDPOINT_CLASSES = ["B1_target_engagement", "B2_exploratory_biomarker", "B3_regu
                     "B8_hard_outcome", "B9_infection_cure", "O1_tumor_response", "O2_progression_free",
                     "O3_overall_survival", "not_efficacy"]
 
-ENDPOINT_SYSTEM = """You classify the primary endpoint of a clinical trial from its registry entry: the conditions, the design and the primary outcome measures as registered (title, description, time frame). You are not told the drug.
+ENDPOINT_SYSTEM = """You classify the primary endpoint of a clinical trial from its registry entry: the conditions, the design and the primary outcome measures as registered (title, description, time frame), and the molecular targets of each investigational drug (human gene symbols with the drug's action, or why it has none). You are not told the drug's name.
 
 First pick the governing primary outcome: with one primary, that one; with several, the first in a stated hierarchy, else the one the description says the trial is powered on, else the first listed efficacy measure. Answer its number (governing_index) and how many primary outcomes are listed (n_primaries).
 
 purpose of the governing primary: efficacy (does the drug treat, prevent or change the disease), safety_tolerability (adverse events, tolerability, lab safety as the primary), pk_pd_dose (pharmacokinetics, exposure, dose finding, bioequivalence), other (feasibility, device performance, adherence, immunogenicity of a non-vaccine drug).
 
 endpoint_class (efficacy only; otherwise not_efficacy):
-- B1_target_engagement: the analyte is the drug's own target, its immediate product or a direct pathway readout (receptor occupancy, enzyme activity, target protein or mRNA knockdown, free ligand, pSTAT for a JAK inhibitor, complement activity for a complement inhibitor, IgE for anti-IgE).
+- B1_target_engagement: the analyte is a listed target of an investigational drug, its immediate product or a direct readout of that target's pathway (receptor occupancy, enzyme activity, target protein or mRNA knockdown, free ligand, pSTAT for a JAK inhibitor, complement activity for a complement inhibitor, IgE for anti-IgE). Check the analyte against the listed targets: a disease measure that is not their own readout is B2 or B3, even when it is the usual readout of another drug class for the disease. With no target listed, use B1 only when the outcome text itself states that it measures the drug's target or pathway.
 - B2_exploratory_biomarker: a disease-related lab, imaging or histology measure that regulators do not accept as a surrogate for approval in this disease (amyloid PET, neurofilament light, CRP or cytokines, MRI lesion counts in an exploratory setting, endoscopic or histologic scores used exploratorily, liver fat by MRI-PDFF).
 - B3_regulatory_surrogate: a measure FDA accepts as a basis for approval in this disease (LDL-C for hypercholesterolaemia, HbA1c for diabetes, blood pressure for hypertension, viral load for HIV or hepatitis B/C, bone mineral density for osteoporosis, proteinuria or eGFR slope where accepted, serum phosphate or calcium, platelet count for ITP, hemoglobin for anemia, FEV1 for asthma/COPD bronchodilators, MRI gadolinium lesions in relapsing MS dose finding, uric acid for gout, biomarker reduction accepted for accelerated approval).
 - B4_objective_physiological: an objective physiological or performance measure that is not an accepted surrogate here (FEV1 or FVC outside the above, six-minute walk distance, visual acuity, timed motor tests, ejection fraction, exercise capacity, body weight).
@@ -343,11 +363,11 @@ ENDPOINT_SCHEMA = {
 
 
 def render_endpoint(p: dict) -> str:
-    outcomes = "\n".join(f"{i}. {o.get('measure', '')}" + (f" | {o['description']}" if o.get("description") else "")
-                         + (f" | time frame: {o['timeFrame']}" if o.get("timeFrame") else "")
-                         for i, o in enumerate(p["primary_outcomes"], 1))
+    targets = "\n".join(f"- {t}" for t in p["investigational_targets"]) or "(no investigational drug identified)"
     return (f"Conditions: {'; '.join(p['conditions'])}\nPhases: {', '.join(p['phases'])}; allocation: "
-            f"{p['allocation']}; masking: {p['masking']}; model: {p['model']}\n\nPrimary outcome measures:\n{outcomes}")
+            f"{p['allocation']}; masking: {p['masking']}; model: {p['model']}\n\n"
+            f"Targets of the investigational drug(s), one line per drug:\n{targets}\n\n"
+            f"Primary outcome measures:\n{render_outcomes(p['primary_outcomes'])}")
 
 
 def validate_endpoint(p: dict, out: dict) -> None:
@@ -357,24 +377,42 @@ def validate_endpoint(p: dict, out: dict) -> None:
         raise ValueError(f"purpose {out['purpose']} with class {out['endpoint_class']}")
 
 
-ENDPOINT_TASK = llm.Task(name="trial_endpoint", prompt_version="v1", schema_version="v1", system=ENDPOINT_SYSTEM,
+ENDPOINT_TASK = llm.Task(name="trial_endpoint", prompt_version="v2", schema_version="v1", system=ENDPOINT_SYSTEM,
                          schema=ENDPOINT_SCHEMA, render=render_endpoint, validate=validate_endpoint,
                          subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
 
 
+# Why an investigational entity has no primary target rows, by preclin.moiety.target_kind; any other kind,
+# or none (targets not resolved), reads "target unknown".
+NO_TARGET = {"pathogen": "acts on a pathogen, no human protein target", "no_single_target": "no single molecular target"}
+
+
+def investigational_targets(drugs: list[tuple[str | None, str | None]] | None) -> list[str]:
+    """One line per investigational entity, from (target_kind, primary targets as 'SYMBOL (action); ...'),
+    sorted and without repeats so the payload does not depend on entity order."""
+    return sorted({targets or NO_TARGET.get(kind, "target unknown") for kind, targets in drugs or []})
+
+
 def endpoints(_args) -> None:
-    """Industry Phase 2/3 trials started since TRIALS_FROM that belong to a development program."""
+    """Industry Phase 2/3 trials started since TRIALS_FROM that belong to a development program, each shown
+    with the primary targets of its investigational entities (pipeline.targets resolve) but not their names."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
-            SELECT s.nct_id, s.conditions, s.phases, s.allocation, s.masking, s.intervention_model, s.primary_outcomes
+            SELECT s.nct_id, s.conditions, s.phases, s.allocation, s.masking, s.intervention_model, s.primary_outcomes,
+                   (SELECT jsonb_agg(jsonb_build_array(m.target_kind,
+                             (SELECT string_agg(t.symbol || ' (' || mt.action || ')', '; ' ORDER BY t.symbol)
+                              FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
+                              WHERE mt.moiety_id = m.moiety_id AND mt.is_primary)))
+                    FROM preclin.ctgov_study_moiety sm JOIN preclin.moiety m USING (moiety_id)
+                    WHERE sm.nct_id = s.nct_id AND sm.role = 'investigational')
             FROM preclin.ctgov_study s
             WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.phases && ARRAY['PHASE2','PHASE3']
               AND s.overall_status <> 'WITHDRAWN' AND s.start_date >= %s
               AND jsonb_array_length(s.primary_outcomes) > 0
               AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id)""", (TRIALS_FROM,))
         items = {r[0]: {"conditions": r[1] or [], "phases": r[2], "allocation": r[3], "masking": r[4], "model": r[5],
-                        "primary_outcomes": [{k: o.get(k) for k in ("measure", "description", "timeFrame")}
-                                             for o in r[6]]} for r in cur.fetchall()}
+                        "primary_outcomes": primary_outcomes(r[6]),
+                        "investigational_targets": investigational_targets(r[7])} for r in cur.fetchall()}
     run_id = llm.run(ENDPOINT_TASK, items)
     rows = [(nct, o["purpose"], o["endpoint_class"], o["governing_index"], o["measurement_type"], o["scale"], did)
             for nct, did, o in llm.decisions(run_id)]

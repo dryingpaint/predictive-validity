@@ -3,7 +3,7 @@
     python -m pipeline.fda fetch     # Drugs@FDA, openFDA labels, approval letters -> .cache/fda
     python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
-    python -m pipeline.fda link      # LLM: each application's active ingredients -> preclin.moiety
+    python -m pipeline.fda link      # LLM: each application's principal active ingredients -> preclin.moiety
     python -m pipeline.fda load-cber # CBER approval letters (.cache/cber/letters_index.jsonl) -> preclin.fda_*
 
 CBER-regulated biologics (vaccines, blood and plasma products, cell and gene
@@ -15,8 +15,10 @@ document.
 Letters cover every approved original NDA/BLA and every approved efficacy
 supplement (Drugs@FDA submission class EFFICACY) from 2008-01-01 (LETTERS_FROM) through the
 Drugs@FDA data date, so programs that entered a phase from 2008 on are dated
-against the letter that approved them. CBER letters start in 2015
-(pipeline.cber).
+against the letter that approved them. An efficacy supplement Drugs@FDA posts
+no letter for is read from the label posted for it, else from its review
+(action_documents); `extract` reads those with their own prompt. CBER letters
+start in 2015 (pipeline.cber).
 """
 from __future__ import annotations
 
@@ -45,6 +47,7 @@ OPENFDA_INDEX = "https://api.fda.gov/download.json"
 LETTERS_FROM = "2008-01-01"  # earliest approval action whose letter is read
 WINDOW = (LETTERS_FROM, "2026-12-31")
 EFFICACY_CLASS = "2"
+DOC_TYPES = {"1": "letter", "2": "label", "3": "review", "21": "review"}  # Drugs@FDA ApplicationDocsTypeID
 HEADERS = {"User-Agent": "Mozilla/5.0 (predictive-validity research)"}
 
 
@@ -59,13 +62,18 @@ def fetch(_args) -> None:
     with open(zpath, "wb") as f:
         f.write(requests.get(DRUGSFDA_URL, headers=HEADERS, timeout=300).content)
     zipfile.ZipFile(zpath).extractall(os.path.join(CACHE, "drugsfda"))
+    # The cached label files are one export: a new export replaces every file, and the index naming the
+    # export is written only once all of its files are in place.
+    index_path = os.path.join(CACHE, "openfda", "label_index.json")
     index = requests.get(OPENFDA_INDEX, timeout=60).json()["results"]["drug"]["label"]
-    json.dump(index, open(os.path.join(CACHE, "openfda", "label_index.json"), "w"))
+    cached = json.load(open(index_path))["export_date"] if os.path.exists(index_path) else None
     for part in index["partitions"]:
         dest = os.path.join(CACHE, "openfda", os.path.basename(part["file"]))
-        if not os.path.exists(dest):
-            with open(dest, "wb") as f:
+        if cached != index["export_date"] or not os.path.exists(dest):
+            with open(dest + ".part", "wb") as f:
                 f.write(requests.get(part["file"], timeout=600).content)
+            os.replace(dest + ".part", dest)
+    json.dump(index, open(index_path, "w"))
 
     # Submissions in scope: approved ORIG submissions and efficacy-class supplements of NDA/BLA
     # applications inside WINDOW.
@@ -74,8 +82,7 @@ def fetch(_args) -> None:
               if s["SubmissionStatus"] == "AP" and WINDOW[0] <= s["SubmissionStatusDate"][:10] <= WINDOW[1]
               and s["ApplNo"] in apps
               and (s["SubmissionType"] == "ORIG" or s["SubmissionClassCodeID"] == EFFICACY_CLASS)}
-    docs = [d for d in read_tsv("ApplicationDocs.txt") if d["ApplicationDocsTypeID"] == "1"
-            and (d["ApplNo"], d["SubmissionType"].strip(), d["SubmissionNo"]) in wanted]
+    docs = action_documents(wanted, read_tsv("ApplicationDocs.txt"))
     index_path = os.path.join(CACHE, "letters_index.jsonl")
     done = {json.loads(line)["url"] for line in open(index_path)} if os.path.exists(index_path) else set()
     todo = [d for d in docs if d["ApplicationDocsURL"].strip() not in done]
@@ -102,13 +109,34 @@ def fetch(_args) -> None:
             doc, content, err = fut.result()
             rec = {"url": doc["ApplicationDocsURL"].strip(), "appl_no": doc["ApplNo"],
                    "submission_type": doc["SubmissionType"].strip(), "submission_no": doc["SubmissionNo"],
-                   "doc_date": doc["ApplicationDocsDate"][:10], "error": err}
+                   "doc_date": doc["ApplicationDocsDate"][:10], "doc_type": DOC_TYPES[doc["ApplicationDocsTypeID"]],
+                   "error": err}
             if content:
                 sha = hashlib.sha256(content).hexdigest()
                 open(os.path.join(CACHE, "letters", f"{sha}.pdf"), "wb").write(content)
                 rec.update(sha256=sha, n_bytes=len(content))
             out.write(json.dumps(rec) + "\n")
     print(f"letters fetched: {len(todo)}")
+
+
+def action_documents(wanted: set[tuple], docs: list[dict[str, str]]) -> list[dict[str, str]]:
+    """The documents that state what each wanted submission approved: its approval letters; for
+    an efficacy supplement with no letter, the label PDFs posted for it, else its review PDFs."""
+    by_sub: dict[tuple, dict[str, list]] = {}
+    for d in docs:
+        key = (d["ApplNo"], d["SubmissionType"].strip(), d["SubmissionNo"])
+        kind = DOC_TYPES.get(d["ApplicationDocsTypeID"])
+        if key in wanted and kind:
+            by_sub.setdefault(key, {}).setdefault(kind, []).append(d)
+    out = []
+    for key, kinds in by_sub.items():
+        if "letter" in kinds:
+            out += kinds["letter"]
+        elif key[1] == "SUPPL":
+            pdfs = {k: [d for d in v if d["ApplicationDocsURL"].strip().split("#")[0].lower().endswith(".pdf")]
+                    for k, v in kinds.items()}
+            out += pdfs.get("label") or pdfs.get("review") or []
+    return out
 
 
 COMMON_WORDS = {"the", "of", "and", "to", "in", "for", "this", "that", "your", "with", "is", "we", "on", "be"}
@@ -139,13 +167,14 @@ def pdf_text(path: str) -> str:
 
 
 def write_letters(cur, letters: list[tuple], links: list[tuple]) -> None:
-    """Letter texts by sha256, then each submission's letter links."""
+    """Document texts by sha256, then each submission's document links."""
     execute_values(cur, """INSERT INTO preclin.fda_letter (letter_sha256, letter_text, n_bytes)
         VALUES %s ON CONFLICT (letter_sha256) DO UPDATE SET letter_text = EXCLUDED.letter_text""", letters)
     execute_values(cur, """INSERT INTO preclin.fda_submission_letter
-        (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error) VALUES %s
+        (appl_no, submission_type, submission_no, url, doc_date, letter_sha256, fetch_error, doc_type) VALUES %s
         ON CONFLICT (appl_no, submission_type, submission_no, url) DO UPDATE SET
-          letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error""", links)
+          letter_sha256 = EXCLUDED.letter_sha256, fetch_error = EXCLUDED.fetch_error,
+          doc_type = EXCLUDED.doc_type""", links)
 
 
 def load(_args) -> None:
@@ -155,6 +184,21 @@ def load(_args) -> None:
     label_index = json.load(open(os.path.join(CACHE, "openfda", "label_index.json")))
     label_files = sorted(glob.glob(os.path.join(CACHE, "openfda", "drug-label-*.json.zip")))
     label_sha = hashlib.sha256("".join(llm.sha256_file(p) for p in label_files).encode()).hexdigest()
+
+    # Document texts are read (and OCRed) before the connection opens, which would otherwise sit idle.
+    sizes, links = {}, {}
+    for line in open(os.path.join(CACHE, "letters_index.jsonl")):
+        r = json.loads(line)
+        if r.get("sha256"):
+            sizes[r["sha256"]] = r["n_bytes"]
+        key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
+        if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
+            links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"),
+                          r.get("doc_type", "letter"))
+    links = list(links.values())
+    with ProcessPoolExecutor() as pool:
+        texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
+        letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
 
     with llm.connect() as conn, conn.cursor() as cur:
         rel_drugsfda = llm.register_release(cur, "fda_drugsfda", data_date, DRUGSFDA_URL, zip_sha,
@@ -186,18 +230,6 @@ def load(_args) -> None:
              for s in read_tsv("Submissions.txt")
              if s["ApplNo"] in apps and s["SubmissionType"].strip() in ("ORIG", "SUPPL")])
 
-        sizes, links = {}, {}
-        for line in open(os.path.join(CACHE, "letters_index.jsonl")):
-            r = json.loads(line)
-            if r.get("sha256"):
-                sizes[r["sha256"]] = r["n_bytes"]
-            key = (r["appl_no"], r["submission_type"], r["submission_no"], r["url"])
-            if r.get("sha256") or key not in links:  # a successful fetch supersedes a failed one
-                links[key] = (*key, r.get("doc_date") or None, r.get("sha256"), r.get("error"))
-        links = list(links.values())
-        with ProcessPoolExecutor() as pool:
-            texts = pool.map(pdf_text, [os.path.join(CACHE, "letters", f"{sha}.pdf") for sha in sizes], chunksize=20)
-            letters = [(sha, text, n) for (sha, n), text in zip(sizes.items(), texts)]
         write_letters(cur, letters, [l for l in links if l[0] in apps])
 
         labels = []
@@ -227,12 +259,7 @@ def load(_args) -> None:
     print(f"applications={len(apps)} letters={len(letters)} letter_links={len(links)} labels={len(labels)}")
 
 
-LETTER_SYSTEM = """You read U.S. FDA approval letters (NDA/BLA original approvals and efficacy supplements) and record exactly what use was approved by THIS action.
-
-Rules:
-- Report only uses that this letter approves or changes. Do not list the drug's previously approved indications unless the letter re-states them as part of this action.
-- If the letter only says the supplement "provides for revisions to the labeling" without naming a disease or population, set letter_states_use=false and leave approved_uses empty.
-- One entry per distinct disease/population combination approved.
+USE_RULES = """- One entry per distinct disease/population combination approved.
 - disease: the disease or condition in plain standard medical terms (e.g. "non-small cell lung cancer", "type 2 diabetes mellitus", "chronic plaque psoriasis"), without population qualifiers.
 - qualifiers: the population restrictions stated (age group, line of therapy, prior treatment, biomarker/mutation, disease stage/severity, combination partner drugs, setting such as adjuvant/neoadjuvant/maintenance).
 - change_type:
@@ -242,8 +269,23 @@ Rules:
   conversion_to_full = accelerated approval converted to regular approval / confirmatory data;
   efficacy_labeling = efficacy data added to labeling (e.g. new clinical study results, new endpoint) without a new population;
   original_approval = first approval of this application (ORIG submissions);
-  other.
+  other."""
+
+LETTER_SYSTEM = f"""You read U.S. FDA approval letters (NDA/BLA original approvals and efficacy supplements) and record exactly what use was approved by THIS action.
+
+Rules:
+- Report only uses that this letter approves or changes. Do not list the drug's previously approved indications unless the letter re-states them as part of this action.
+- If the letter only says the supplement "provides for revisions to the labeling" without naming a disease or population, set letter_states_use=false and leave approved_uses empty.
+{USE_RULES}
 - If uncertain whether the disease was already on the label, use your best judgment from the letter text and say so in notes."""
+
+SUPPLEMENT_DOC_SYSTEM = f"""You read the labeling or review that the U.S. FDA posted for an efficacy supplement to an NDA/BLA that has no approval letter, and record exactly what use was approved by THIS supplement.
+
+Rules:
+- A label states every indication of the product, including those approved before this supplement. Report only uses this supplement added or changed. The Recent Major Changes list in the label's Highlights names the sections the supplement changed, each with a month and year; an Indications and Usage change dated at or just before the supplement's action date is this supplement's, and the indication it names in the Indications and Usage section is the use. A review states the indication the supplement proposed and whether it was approved.
+- If the document does not show which use this supplement approved (no Indications and Usage change dated at the action date, a label without Recent Major Changes, or only dosage, safety or study-result changes), set letter_states_use=false (here: whether the document states the supplement's use) and leave approved_uses empty.
+{USE_RULES}
+- Say in notes which part of the document shows the use."""
 
 LETTER_SCHEMA = {
     "type": "object",
@@ -282,10 +324,22 @@ LETTER_TASK = llm.Task(
     effort="medium", max_tokens=32000)
 
 
+def render_supplement_doc(p: dict) -> str:
+    subs = "; ".join(f"{s['appl_type']} {s['appl_no']} {s['submission_type']}-{s['submission_no']} "
+                     f"approved {s['approval_date']}" for s in p["submissions"])
+    return f"Efficacy supplement with no approval letter: {subs}\n\n{p['document'].capitalize()} text:\n{p['text']}"
+
+
+SUPPLEMENT_DOC_TASK = llm.Task(
+    name="fda_supplement_document_approved_uses", prompt_version="v1", schema_version="v1",
+    system=SUPPLEMENT_DOC_SYSTEM, schema=LETTER_SCHEMA, render=render_supplement_doc, subject_type="fda_letter",
+    effort="medium", max_tokens=32000)
+
+
 def extract(_args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
-            SELECT l.letter_sha256, l.letter_text,
+            SELECT l.letter_sha256, l.letter_text, sl.doc_type,
                    json_agg(json_build_object('appl_no', a.appl_no, 'appl_type', a.appl_type,
                             'submission_type', s.submission_type, 'submission_no', s.submission_no,
                             'approval_date', s.status_date) ORDER BY a.appl_no, s.submission_no)
@@ -293,24 +347,34 @@ def extract(_args) -> None:
             JOIN preclin.fda_submission_letter sl USING (letter_sha256)
             JOIN preclin.fda_submission s USING (appl_no, submission_type, submission_no)
             JOIN preclin.fda_application a USING (appl_no)
-            GROUP BY l.letter_sha256, l.letter_text""")
-        items = {sha: {"text": text[:150000], "submissions": subs} for sha, text, subs in cur.fetchall()}
-    run_id = llm.run(LETTER_TASK, items)
+            GROUP BY l.letter_sha256, l.letter_text, sl.doc_type""")
+        letters, documents = {}, {}
+        for sha, text, doc_type, subs in cur.fetchall():
+            if doc_type == "letter":
+                letters[sha] = {"text": text[:150000], "submissions": subs}
+            else:
+                documents[sha] = {"text": text[:150000], "document": doc_type, "submissions": subs}
+    run_ids = [llm.run(LETTER_TASK, letters), llm.run(SUPPLEMENT_DOC_TASK, documents)]
     rows = [(sha, i, use["disease"], use["indication_as_written"], use["qualifiers"], use["change_type"],
              use["accelerated_approval"], decision_id)
-            for sha, decision_id, out in llm.decisions(run_id) for i, use in enumerate(out["approved_uses"])]
+            for run_id in run_ids for sha, decision_id, out in llm.decisions(run_id)
+            for i, use in enumerate(out["approved_uses"])]
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.fda_approved_use")
         execute_values(cur, """INSERT INTO preclin.fda_approved_use
             (letter_sha256, ordinal, disease, indication_as_written, qualifiers, change_type,
              accelerated_approval, llm_decision_id) VALUES %s""", rows)
         conn.commit()
-    print(f"run={run_id} approved_uses={len(rows)}")
+    print(f"runs={run_ids} letters={len(letters)} supplement documents={len(documents)} approved_uses={len(rows)}")
 
 
 INGREDIENT_SYSTEM = """You resolve the active ingredients of an FDA-approved product to molecular entities.
 
-Return every active entity in the product. For each give its international nonproprietary name (INN) or USAN in lower case (e.g. "metformin", "insulin glargine", "trastuzumab deruxtecan", "axicabtagene ciloleucel"), with salts, esters used only as salt forms, hydrates, strengths and formulations stripped ("METFORMIN HYDROCHLORIDE" -> "metformin", "ATAZANAVIR SULFATE" -> "atazanavir"). Keep a prodrug or ester that has its own INN as that INN (e.g. "tenofovir alafenamide", "valacyclovir").
+Return every ingredient listed as active in the product. For each give its international nonproprietary name (INN) or USAN in lower case (e.g. "metformin", "insulin glargine", "trastuzumab deruxtecan", "axicabtagene ciloleucel"), with salts, counter-ions, esters used only as salt forms, hydrates, strengths and formulations stripped ("METFORMIN HYDROCHLORIDE" -> "metformin", "ATAZANAVIR SULFATE" -> "atazanavir", "SODIUM PICOSULFATE" -> "picosulfate"). Keep a prodrug or ester that has its own INN as that INN (e.g. "tenofovir alafenamide", "valacyclovir"). An inorganic salt that is itself the active ingredient keeps its name ("sodium bicarbonate", "magnesium oxide").
+
+Give each ingredient a role:
+- principal: an ingredient the product is given for, whose effect is the product's use (in a bowel preparation, its laxatives; in an electrolyte replacement or oral rehydration product, the electrolytes themselves).
+- electrolyte_or_vehicle: an electrolyte, buffer, osmotic agent or diluent that the label lists as active only because it makes up the solution around a principal ingredient (the sodium, calcium and magnesium salts of a peritoneal dialysis solution built on icodextrin or dextrose; the electrolytes added to a polyethylene glycol bowel preparation).
 
 For a biologic with a four-letter FDA suffix, use the core name without the suffix and say whether the product is a biosimilar or interchangeable biosimilar of an earlier reference product (biosimilar_of = the reference product's core name), or the originator (biosimilar_of = null). Mixtures without a single defined entity (e.g. allergenic extracts, plasma pools, multivitamins) use kind = mixture with the components you can name."""
 
@@ -320,8 +384,9 @@ INGREDIENT_SCHEMA = {
         "kind": {"type": "string", "enum": ["single", "combination", "mixture"]},
         "components": {"type": "array", "items": {
             "type": "object",
-            "properties": {"name": {"type": "string"}, "biosimilar_of": {"type": ["string", "null"]}},
-            "required": ["name", "biosimilar_of"], "additionalProperties": False}},
+            "properties": {"name": {"type": "string"}, "biosimilar_of": {"type": ["string", "null"]},
+                           "role": {"type": "string", "enum": ["principal", "electrolyte_or_vehicle"]}},
+            "required": ["name", "biosimilar_of", "role"], "additionalProperties": False}},
     },
     "required": ["kind", "components"],
     "additionalProperties": False,
@@ -333,8 +398,15 @@ def render_ingredient(p: dict) -> str:
             f"Active ingredient field(s): {' | '.join(p['ingredients'])}")
 
 
+def principals(out: dict) -> list[dict]:
+    """The components an application links to: its principal ingredients, a biosimilar named by
+    its reference product."""
+    comps = [{**c, "name": c["biosimilar_of"] or c["name"]} for c in out["components"] if c["role"] == "principal"]
+    return [c for c in comps if moiety_key(c["name"])]
+
+
 INGREDIENT_TASK = llm.Task(
-    name="fda_application_moiety", prompt_version="v1", schema_version="v1",
+    name="fda_application_moiety", prompt_version="v2", schema_version="v2",
     system=INGREDIENT_SYSTEM, schema=INGREDIENT_SCHEMA, render=render_ingredient,
     subject_type="fda_application", model="claude-opus-5-5", effort="low", max_tokens=2000)
 
@@ -439,11 +511,10 @@ def link(_args) -> None:
     run_id = llm.run(INGREDIENT_TASK, items)
     links, names = [], {}
     for appl_no, decision_id, out in llm.decisions(run_id):
-        for comp in out["components"]:
+        for comp in principals(out):
             key = moiety_key(comp["name"])
-            if key:
-                names.setdefault(key, comp["name"])
-                links.append((appl_no, key, comp["biosimilar_of"], decision_id))
+            names.setdefault(key, comp["name"])
+            links.append((appl_no, key, comp["biosimilar_of"], decision_id))
     with llm.connect() as conn, conn.cursor() as cur:
         ids = entity_ids(cur, names)
         cur.execute("DELETE FROM preclin.fda_application_moiety")
@@ -475,7 +546,7 @@ def load_cber(_args) -> None:
             continue
         doc_sha = r.get("sha256") or hashlib.sha256(text.encode()).hexdigest()
         letters[doc_sha] = (doc_sha, text.replace("\x00", ""), int(r.get("n_bytes") or len(text.encode())))
-        links[key + (r["url"],)] = (*key, r["url"], r.get("doc_date") or None, doc_sha, r.get("error"))
+        links[key + (r["url"],)] = (*key, r["url"], r.get("doc_date") or None, doc_sha, r.get("error"), "letter")
     with llm.connect() as conn, conn.cursor() as cur:
         release = llm.register_release(cur, "fda_cber_approvals", records and max(r["approval_date"] for r in records),
                                        "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/"

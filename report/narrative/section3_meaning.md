@@ -1,5 +1,5 @@
 * **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3.
 * **It is a filter, not a forecast.** Nearly three in four genetically supported Phase 2 programs still did not advance, most programs that advanced had no such evidence, and sharper versions of the evidence did not pick better programs.
-* **It shows most on measures close to the biology.** Genetically supported trials missed regulatory surrogates less often, clearly so in trials with posted results; on clinical scales, events and survival the advantage is small or not demonstrable.
+* **No kind of endpoint shows it clearly.** Genetically supported trials missed regulatory surrogates less often in trials with posted results, but the interval spans no effect; on clinical scales, events and survival the difference is small or not demonstrable.
 * **Other preclinical evidence adds less.** Somatic drivers help in oncology; animal models help mostly by riding along with genetics; expression and pathways add nothing reliable.
 * **Some questions cannot be answered from what sponsors ran.** Almost no program went against an established genetic mechanism, and registries rarely record safety as the reason a program stopped.

@@ -60,17 +60,19 @@ programs:
 	$(RUN) pipeline.programs indications
 	$(RUN) pipeline.programs build
 
-# Labels on programs: approval, modality, disease area, trial outcomes and endpoints, targets.
+# Labels on programs: approval, modality, disease area, trial outcomes, targets, then endpoints, which
+# are classed knowing the targets of each trial's investigational drugs (resolve reads modality).
 labels:
 	$(RUN) pipeline.approvals judge
 	$(RUN) pipeline.drugs modality
 	$(RUN) pipeline.indications areas
 	$(RUN) pipeline.outcomes classify
-	$(RUN) pipeline.outcomes endpoints
 	$(RUN) pipeline.targets resolve
+	$(RUN) pipeline.outcomes endpoints
 
 # Open Targets associations, the year each evidence item became known where its own date is
-# missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
+# missing or a later revision (ClinVar record creation, IMPC releases, study dates, the first Open Targets
+# release listing a Project Score pair), the evidence rows
 # dated by it with their yearly series, then the germline mechanism of each target in each program
 # disease and the orientation of each mouse model, both decided without the drug. Last, why each Phase 2/3
 # program stopped and, for stops for efficacy or exposure, whether the drug engaged its target: stop causes
@@ -83,6 +85,7 @@ evidence:
 	$(RUN) pipeline.evidence_dates clinvar
 	$(RUN) pipeline.evidence_dates impc
 	$(RUN) pipeline.evidence_dates studies
+	$(RUN) pipeline.evidence_dates projectscore
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.targets mechanism

@@ -1,163 +1,163 @@
 {
- "doc": {
-  "id": "248143dc-c51a-4119-acfe-bd022335ebeb",
-  "url": "https://claude.ai/artifact/5WTC7P7U1V9SMYizuG6U1g"
- },
- "tabs": {
-  "REPORT.md": {
-   "name": "Predictive Validity Report",
-   "node": "1e3b2f56-9d69",
-   "rev": 179,
-   "sections": {
-    "Predictive Validity in Drug Development": "965f1731527f1e6e",
-    "Predictive Validity in Drug Development > Introduction": "1c6cc3e1d2ceda77",
-    "Predictive Validity in Drug Development > A history of drug development": "d5cc16d8618d2e15",
-    "Predictive Validity in Drug Development > Industry failure modes": "6bc462b7ba7ae5ab",
-    "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "93ed1887f1a08e68",
-    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "02f5ca044c52ace0",
-    "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "c2ebc344f1889307",
-    "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "550fec0fc2327224",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "8e6cb91cc2923938",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence and design": "7d32da8a8ec72fa6",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "7fd5689597c5e2a3",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does stronger or more specific evidence help?": "589689f2d546e1cc",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Confirmatory hypotheses": "3d1b2edfde5ec414",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "709568c3df762e5a",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By endpoint": "aef034e7e6aa606f",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > The drug's own pharmacology": "056af0a090b26de7",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Can the evidence pick individual programs?": "1f6365c79fe54712",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What this means": "8e13bbdcf100249f",
-    "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
-    "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
-    "Predictive Validity in Drug Development > Appendix > Data": "c1cbb2a1c7a9cd45",
-    "Predictive Validity in Drug Development > Appendix > How programs are counted": "b26a317e5571cf83",
-    "Predictive Validity in Drug Development > Appendix > Phase transitions": "b06ede82bd657be5",
-    "Predictive Validity in Drug Development > Appendix > How LOA moves with each definition": "70366243b6542ed2",
-    "Predictive Validity in Drug Development > Appendix > Change over time": "ba62663fe005fd5a",
-    "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "b6a9d60950fecc02",
-    "Predictive Validity in Drug Development > Appendix > How stops were traced and efficacy failures classified": "b8f1592a9c8f20e4",
-    "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled": "024afb8606b1cc46",
-    "Predictive Validity in Drug Development > Appendix > Design of the Phase 2 analysis": "b030fc56fb66f541",
-    "Predictive Validity in Drug Development > Appendix > Limitations": "e7123494f2e5bd3c",
-    "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
-   }
+  "doc": {
+    "id": "248143dc-c51a-4119-acfe-bd022335ebeb",
+    "url": "https://claude.ai/artifact/5WTC7P7U1V9SMYizuG6U1g"
   },
-  "REPORT_APPENDIX.md": {
-   "name": "Appendix detail",
-   "node": "9bf11c10-61a3",
-   "rev": 19,
-   "sections": {
-    "Appendix detail": "dd0cdf63730712ee",
-    "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
-    "Appendix detail > Tables behind the figures > Phase transitions": "4ce7711c2e3e0d3f",
-    "Appendix detail > Tables behind the figures > Why programs stop": "47edf7da1af5aa45",
-    "Appendix detail > Tables behind the figures > Why efficacy failed": "56a7c651a4c93ee8",
-    "Appendix detail > Tables behind the figures > By disease area and modality": "11d58fb6e90dbba7",
-    "Appendix detail > Tables behind the figures > Relative success": "1243df387d09e600",
-    "Appendix detail > Tables behind the figures > Genetic dose–response": "f4547a49901766fa",
-    "Appendix detail > Tables behind the figures > Relative success by disease area": "9f49cc72fdb2c699",
-    "Appendix detail > Tables behind the figures > What each line adds once the others are known": "1234b368d15cbcf5",
-    "Appendix detail > Tables behind the figures > Does the evidence predict which programs reach approval?": "8d1d1e37630329a0",
-    "Appendix detail > Tables behind the figures > Confirmatory hypotheses": "83bdd261805cad06",
-    "Appendix detail > Tables behind the figures > Which evidence translates: the registered screen": "f0052dfff95f0e82",
-    "Appendix detail > Tables behind the figures > By endpoint": "2cab0610e1561feb",
-    "Appendix detail > Tables behind the figures > Which kinds of evidence predict, and whether being more specific helps": "c487e8dfee1ebe7e",
-    "Appendix detail > Sources in detail": "fc2096a550735a39",
-    "Appendix detail > Sources in detail > ClinicalTrials.gov API v2": "2bb3fe185a5f7894",
-    "Appendix detail > Sources in detail > PubMed E-utilities": "a1585f11b0addafd",
-    "Appendix detail > Sources in detail > Drugs@FDA data files": "800861a61d26f657",
-    "Appendix detail > Sources in detail > FDA approval letters (CDER)": "b28681c0e44dcb49",
-    "Appendix detail > Sources in detail > openFDA drug labels": "74c28b1ea6a84df9",
-    "Appendix detail > Sources in detail > CBER biologics approvals": "8f6f4a1c1cdfb033",
-    "Appendix detail > Sources in detail > FDA Global Substance Registration System (UNII)": "b8506d822bb5be8f",
-    "Appendix detail > Sources in detail > MONDO disease ontology": "adfcb88f2206bc4e",
-    "Appendix detail > Sources in detail > EFO": "3fdffa272affa0eb",
-    "Appendix detail > Sources in detail > Mammalian Phenotype ontology": "bdc80bc175a2b0ea",
-    "Appendix detail > Sources in detail > Gene symbols and identifiers": "23c3b507e948cbde",
-    "Appendix detail > Sources in detail > ChEMBL mechanisms of action": "22b733c0c8e12323",
-    "Appendix detail > Sources in detail > ChEMBL bioactivities": "3df2b0e30b6a538c",
-    "Appendix detail > Sources in detail > gnomAD constraint": "cf57c685e9c3074d",
-    "Appendix detail > Sources in detail > DepMap gene essentiality": "723636d566db8080",
-    "Appendix detail > Sources in detail > Open Targets Platform: associations": "01913571386a147f",
-    "Appendix detail > Sources in detail > Open Targets Platform: evidence": "f14a54349250b901"
-   }
+  "tabs": {
+    "REPORT.md": {
+      "name": "Predictive Validity Report",
+      "node": "1e3b2f56-9d69",
+      "rev": 187,
+      "sections": {
+        "Predictive Validity in Drug Development": "965f1731527f1e6e",
+        "Predictive Validity in Drug Development > Introduction": "c092d7abfa2347b8",
+        "Predictive Validity in Drug Development > A history of drug development": "d5cc16d8618d2e15",
+        "Predictive Validity in Drug Development > Industry failure modes": "0903becaec3be3ec",
+        "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "ae227dfd3019983d",
+        "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "02f5ca044c52ace0",
+        "Predictive Validity in Drug Development > Industry failure modes > Why efficacy failed: the target was not engaged, or it was the wrong target": "c2ebc344f1889307",
+        "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "7f5f425e5eab8cbf",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "9f5926af2c45f1f7",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence and design": "48e361e795de792e",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "df3c50199d1fb2cd",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does stronger or more specific evidence help?": "553c272cf07274da",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Confirmatory hypotheses": "dbb3e1b09ec51037",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "262342f0dc04aa38",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By endpoint": "41e444a6a80d3b04",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > The drug's own pharmacology": "85d0ee194196f4c0",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Can the evidence pick individual programs?": "53ad3d0b2a401406",
+        "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What this means": "b2f82de3cec7db3d",
+        "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
+        "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
+        "Predictive Validity in Drug Development > Appendix > Data": "0256316b0ed95935",
+        "Predictive Validity in Drug Development > Appendix > How programs are counted": "19d5f7b162df9384",
+        "Predictive Validity in Drug Development > Appendix > Phase transitions": "b06ede82bd657be5",
+        "Predictive Validity in Drug Development > Appendix > How LOA moves with each definition": "d390fb571e842637",
+        "Predictive Validity in Drug Development > Appendix > Change over time": "f4f1519869421d66",
+        "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "b2222f889b1b9c89",
+        "Predictive Validity in Drug Development > Appendix > How stops were traced and efficacy failures classified": "b8f1592a9c8f20e4",
+        "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled": "ebf3e4de4e943fc6",
+        "Predictive Validity in Drug Development > Appendix > Design of the Phase 2 analysis": "73840c53764a7d4e",
+        "Predictive Validity in Drug Development > Appendix > Limitations": "2058d362846eaa42",
+        "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
+      }
+    },
+    "REPORT_APPENDIX.md": {
+      "name": "Appendix detail",
+      "node": "9bf11c10-61a3",
+      "rev": 20,
+      "sections": {
+        "Appendix detail": "dd0cdf63730712ee",
+        "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
+        "Appendix detail > Tables behind the figures > Phase transitions": "95312265a6fbc269",
+        "Appendix detail > Tables behind the figures > Why programs stop": "47edf7da1af5aa45",
+        "Appendix detail > Tables behind the figures > Why efficacy failed": "56a7c651a4c93ee8",
+        "Appendix detail > Tables behind the figures > By disease area and modality": "b46d2e0e3814f71a",
+        "Appendix detail > Tables behind the figures > Relative success": "81e3c25ff70ce589",
+        "Appendix detail > Tables behind the figures > Genetic dose–response": "e69f362c82f77c40",
+        "Appendix detail > Tables behind the figures > Relative success by disease area": "9db0936682a59652",
+        "Appendix detail > Tables behind the figures > What each line adds once the others are known": "d1e6a2bd4f0c96ff",
+        "Appendix detail > Tables behind the figures > Does the evidence predict which programs reach approval?": "5b54047a531136b7",
+        "Appendix detail > Tables behind the figures > Confirmatory hypotheses": "6d57a5019f640722",
+        "Appendix detail > Tables behind the figures > Which evidence translates: the registered screen": "728605f656424b08",
+        "Appendix detail > Tables behind the figures > By endpoint": "1d2b6fd00d71c3bb",
+        "Appendix detail > Tables behind the figures > Which kinds of evidence predict, and whether being more specific helps": "1b53420474e0ec9b",
+        "Appendix detail > Sources in detail": "fc2096a550735a39",
+        "Appendix detail > Sources in detail > ClinicalTrials.gov API v2": "1deee718138f9e7a",
+        "Appendix detail > Sources in detail > PubMed E-utilities": "a1585f11b0addafd",
+        "Appendix detail > Sources in detail > Drugs@FDA data files": "fb20d9e97d093fbb",
+        "Appendix detail > Sources in detail > FDA approval letters (CDER)": "c52bb1eb4b22ac8d",
+        "Appendix detail > Sources in detail > openFDA drug labels": "e20de51bd8d56eae",
+        "Appendix detail > Sources in detail > CBER biologics approvals": "8f6f4a1c1cdfb033",
+        "Appendix detail > Sources in detail > FDA Global Substance Registration System (UNII)": "b8506d822bb5be8f",
+        "Appendix detail > Sources in detail > MONDO disease ontology": "adfcb88f2206bc4e",
+        "Appendix detail > Sources in detail > EFO": "3fdffa272affa0eb",
+        "Appendix detail > Sources in detail > Mammalian Phenotype ontology": "bdc80bc175a2b0ea",
+        "Appendix detail > Sources in detail > Gene symbols and identifiers": "23c3b507e948cbde",
+        "Appendix detail > Sources in detail > ChEMBL mechanisms of action": "22b733c0c8e12323",
+        "Appendix detail > Sources in detail > ChEMBL bioactivities": "4b0ea1cd5b2e62ee",
+        "Appendix detail > Sources in detail > gnomAD constraint": "cf57c685e9c3074d",
+        "Appendix detail > Sources in detail > DepMap gene essentiality": "723636d566db8080",
+        "Appendix detail > Sources in detail > Open Targets Platform: associations": "01913571386a147f",
+        "Appendix detail > Sources in detail > Open Targets Platform: evidence": "f14a54349250b901"
+      }
+    }
+  },
+  "figures": {
+    "report/output/figures/efficacy_attribution.png": {
+      "hash": "8801c2c5e72a0287",
+      "blob": "blob/7c78f7ff-f6f4",
+      "published": "blob/ac6e5c0a-620d"
+    },
+    "report/output/figures/loa_by_area.png": {
+      "hash": "236041fbf67bff7b",
+      "blob": "blob/e57bf006-aa23",
+      "published": "blob/e57bf006-aa23"
+    },
+    "report/output/figures/loa_by_modality.png": {
+      "hash": "b2d8216449296f67",
+      "blob": "blob/2aca6d70-45ba",
+      "published": "blob/2aca6d70-45ba"
+    },
+    "report/output/figures/genetic_dose_response.png": {
+      "hash": "a7eeba70c6a549e7",
+      "blob": "blob/c07bc51a-50c9",
+      "published": "blob/c07bc51a-50c9"
+    },
+    "report/output/figures/s3_specificity.png": {
+      "hash": "51ddb70803f1346e",
+      "blob": "blob/666cb2ed-b80c",
+      "published": "blob/666cb2ed-b80c"
+    },
+    "report/output/figures/s3_evidence_map.png": {
+      "hash": "dc7c864b8910ddfa",
+      "blob": "blob/9aa74004-a74b",
+      "published": "blob/9aa74004-a74b"
+    },
+    "report/output/figures/s3_endpoints.png": {
+      "hash": "c34afce9bfdc20b4",
+      "blob": "blob/8eca39be-1adc",
+      "published": "blob/8eca39be-1adc"
+    },
+    "report/output/figures/stop_subcauses.png": {
+      "hash": "258dcfa244e05d33",
+      "blob": "blob/086db45c-8054",
+      "published": "blob/c6f12529-7a00"
+    },
+    "report/output/figures/stop_causes_registered_vs_traced.png": {
+      "hash": "7b605c9d14f37ba7",
+      "blob": "blob/b5fad3cf-41e7",
+      "published": "blob/d777be11-ef85"
+    },
+    "report/output/figures/genetics_by_area.png": {
+      "hash": "556a7a1dd495ec84",
+      "blob": "blob/e2fc24cc-4dcc",
+      "published": "blob/e2fc24cc-4dcc"
+    },
+    "report/output/figures/history.png": {
+      "hash": "e3607251702dd4ef",
+      "blob": "blob/76b1b2e8-4916",
+      "published": "blob/76b1b2e8-4916"
+    },
+    "report/output/figures/phase_funnel.png": {
+      "hash": "efdaec38cec734f7",
+      "blob": "blob/a758d209-ba2a",
+      "published": "blob/a758d209-ba2a"
+    },
+    "report/output/figures/evidence_translates.png": {
+      "hash": "3cf11b4a6c907683",
+      "blob": "blob/54f688d0-a3e7",
+      "published": "blob/54f688d0-a3e7"
+    },
+    "report/output/figures/prediction.png": {
+      "hash": "f390867ad6dba70d",
+      "blob": "blob/bbee8bdb-9120",
+      "published": "blob/bbee8bdb-9120"
+    },
+    "report/output/figures/s3_hypotheses.png": {
+      "hash": "3457e801339377cd",
+      "blob": "blob/0e98db8b-5bb8",
+      "published": "blob/0e98db8b-5bb8"
+    }
   }
- },
- "figures": {
-  "report/output/figures/efficacy_attribution.png": {
-   "hash": "b93c555be3d31765",
-   "blob": "blob/ac6e5c0a-620d",
-   "published": "blob/ac6e5c0a-620d"
-  },
-  "report/output/figures/loa_by_area.png": {
-   "hash": "c02e62e6c725fada",
-   "blob": "blob/121fd9dd-684b",
-   "published": "blob/121fd9dd-684b"
-  },
-  "report/output/figures/loa_by_modality.png": {
-   "hash": "e43adfbd633b8c49",
-   "blob": "blob/94e19ada-d742",
-   "published": "blob/94e19ada-d742"
-  },
-  "report/output/figures/genetic_dose_response.png": {
-   "hash": "c267c08002fe2cb5",
-   "blob": "blob/506f5465-947c",
-   "published": "blob/506f5465-947c"
-  },
-  "report/output/figures/s3_specificity.png": {
-   "hash": "f8a00218600ad715",
-   "blob": "blob/c30587e5-e9ce",
-   "published": "blob/c30587e5-e9ce"
-  },
-  "report/output/figures/s3_evidence_map.png": {
-   "hash": "0314c32579a14d0b",
-   "blob": "blob/12149d8d-77d4",
-   "published": "blob/12149d8d-77d4"
-  },
-  "report/output/figures/s3_endpoints.png": {
-   "hash": "ef845d818eabbafc",
-   "blob": "blob/f0ff317b-4ec8",
-   "published": "blob/f0ff317b-4ec8"
-  },
-  "report/output/figures/stop_subcauses.png": {
-   "hash": "8029e57f38bec6e5",
-   "blob": "blob/c6f12529-7a00",
-   "published": "blob/c6f12529-7a00"
-  },
-  "report/output/figures/stop_causes_registered_vs_traced.png": {
-   "hash": "b4ff3570c07fdb52",
-   "blob": "blob/d777be11-ef85",
-   "published": "blob/d777be11-ef85"
-  },
-  "report/output/figures/genetics_by_area.png": {
-   "hash": "ee756464a4550823",
-   "blob": "blob/0328acd4-588c",
-   "published": "blob/0328acd4-588c"
-  },
-  "report/output/figures/history.png": {
-   "hash": "e3607251702dd4ef",
-   "blob": "blob/76b1b2e8-4916",
-   "published": "blob/76b1b2e8-4916"
-  },
-  "report/output/figures/phase_funnel.png": {
-   "hash": "96b55081ff41e11d",
-   "blob": "blob/d9391acd-8ea4",
-   "published": "blob/d9391acd-8ea4"
-  },
-  "report/output/figures/evidence_translates.png": {
-   "hash": "ebb8cfb46cacb792",
-   "blob": "blob/324d54e2-f31d",
-   "published": "blob/324d54e2-f31d"
-  },
-  "report/output/figures/prediction.png": {
-   "hash": "0698702abdeffdad",
-   "blob": "blob/3e87bd00-9d0d",
-   "published": "blob/3e87bd00-9d0d"
-  },
-  "report/output/figures/s3_hypotheses.png": {
-   "hash": "3caaa412e06a1590",
-   "blob": "blob/69ec3bcd-52e0",
-   "published": "blob/69ec3bcd-52e0"
-  }
- }
 }
