@@ -15,7 +15,7 @@ For development programs that entered a phase in 2008–2019 and were developed 
 
 ### Phase transitions
 
-{{TRANSITIONS_TABLE}}
+![Share of Phase 1 entrants still in development at each phase, all programs and those developed in the US, against BIO 2011–2020](report/output/figures/phase_funnel.png)
 
 {{SECTION1_STOP_CAUSES}}
 

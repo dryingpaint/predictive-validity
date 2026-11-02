@@ -12,6 +12,10 @@ Every case picked by the rule protocol, checked by agents against primary source
 
 The numbers each figure in the main tab draws, with the columns the figures leave out.
 
+### Phase transitions
+
+{{TRANSITIONS_TABLE}}
+
 ### Why programs stop
 
 Cause of each Phase 2 and 3 stop as registered and after tracing.
@@ -38,7 +42,27 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 {{DOSE_TABLE}}
 
-### Which evidence translates
+### What each line adds once the others are known
+
+{{JOINT_TABLE}}
+
+### Does the evidence predict which programs reach approval?
+
+{{PREDICTION_TABLE}}
+
+Change in held-out AUC when each line is removed from the full model:
+
+{{ABLATION_TABLE}}
+
+### Confirmatory hypotheses
+
+{{S3_HYPOTHESES_TABLE}}
+
+### Which evidence translates: the registered screen
+
+Every rule the plan registered, each against programs without it, before the rules were grouped by kind.
+
+![Phase 2 programs, 2008–2019: each registered rule against programs without it](report/output/figures/s3_evidence_map.png)
 
 {{S3_MAP_TABLE}}
 
@@ -51,5 +75,9 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 {{S3_TYPES_TABLE}}
 
 {{S3_REFINEMENTS_TABLE}}
+
+### Verified case studies
+
+{{S3_CASES_TABLE}}
 
 {{APPENDIX_SOURCES}}

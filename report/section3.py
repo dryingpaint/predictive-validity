@@ -2,8 +2,8 @@
 
     python -m report.section3
 
-Cohort C2: programs on a human protein target entering Phase 2 from 2015-01-01
-to 2020-10-20; outcome S4 = advanced (own Phase 3 start, or FDA approval for the
+Cohort C2: programs on a human protein target entering Phase 2 in 2008-2019
+(report.windows.SECTION1); outcome S4 = advanced (own Phase 3 start, or FDA approval for the
 disease) within four years of entry. C1 and C3 are the same for Phase 1 and
 Phase 3. Evidence comes from Open Targets evidence rows (preclin.ot_evidence),
 each dated, frozen at the year before entry, and matched to the program's
@@ -11,12 +11,12 @@ disease on MONDO: G3 is the same term, a subtype, or Lin >= 0.8; G2 a disease at
 Lin 0.5-0.8; G1 germline evidence only for unrelated diseases. Risk ratios come
 from modified Poisson models clustered by primary-target set and adjusted for
 disease area, modality, entity novelty, entry period and target precedent.
-Trials T: industry randomised Phase 2/3 trials since 2010 whose governing primary
+Trials T: industry randomised Phase 2/3 trials started in 2008-2019 whose governing primary
 is an efficacy endpoint (preclin.trial_endpoint) with a readable primary result
 (preclin.trial_outcome); outcome NOT MET (mixed counts as not met).
 
 Writes report/output/section3/: numbers.json (read by report.render and
-report.figures), evidence_map.csv, endpoint_classes.csv, rules.csv, cases.csv
+report.figures), evidence_map.csv, evidence_types.csv, refinements.csv, hindsight.csv, endpoint_classes.csv, rules.csv, cases.csv
 (the programs the case audit in report/audits/section3_cases.json checks), and
 programs.csv and trials.csv (every cohort row and trial with its features, for
 audits of the analysis).
@@ -36,7 +36,7 @@ from statsmodels.discrete.conditional_models import ConditionalLogit
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
-from report.windows import SECTION3, SECTION3_TRIALS_FROM
+from report.windows import SECTION1, SECTION1_PERIODS
 
 OUT = os.path.join(frame.REPO, "report", "output", "section3")
 CASE_AUDIT = os.path.join(frame.REPO, "report", "audits", "section3_cases.json")
@@ -44,8 +44,8 @@ ENDPOINT_AUDIT = os.path.join(frame.REPO, "report", "audits", "endpoint_audit.js
 BIOLOGY_CODES = ("F2", "F3", "F4", "F5")  # failures that test the evidence's biological claim
 HORIZON_YEARS = 4.0
 FDAAA_START = date(2017, 1, 18)
-ERA_BINS, ERA_LABELS = [2014, 2016, 2018, 2020], ["2015-16", "2017-18", "2019-20"]
-TRIAL_ERA_BINS, TRIAL_ERA_LABELS = [SECTION3_TRIALS_FROM.year - 1, 2014, 2018, np.inf], ["2010-14", "2015-18", "2019+"]
+ERA_BINS = [SECTION1_PERIODS[0][0].year - 1, *(end.year for _, end in SECTION1_PERIODS)]
+ERA_LABELS = [f"{start.year}-{end.year % 100:02d}" for start, end in SECTION1_PERIODS]
 N_BOOT = 1000
 N_PERMUTATIONS = 200
 MIN_TARGETS = 15  # distinct exposed target sets below which no risk ratio is fitted
@@ -314,6 +314,8 @@ class Evidence:
                                                                   or (inc and on("somatic", "lof_risk")))),
             "expression_up": float(on("expression", "up")),
             **liab, "liability": float(any(liab.values())),
+            "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
+            "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
             "precedent": float(self.precedent(moiety_id, entry)),
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
@@ -332,8 +334,8 @@ class Evidence:
 
 
 def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date) -> pd.DataFrame:
-    """Phase entries in SECTION3 (skipped phases excluded) with the outcome S4."""
-    rows = phase_rows(progs, trials, snap, window=SECTION3)
+    """Phase entries in SECTION1 (skipped phases excluded) with the outcome S4."""
+    rows = phase_rows(progs, trials, snap, window=SECTION1)
     rows = rows[~rows.credited].copy()
     rows["s4"] = ((rows.event == "advanced") & (rows.years <= HORIZON_YEARS)).astype(float)
     return rows
@@ -484,13 +486,13 @@ def efficacy_endpoints() -> pd.DataFrame:
 
 def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame, endpoints: pd.DataFrame,
                 ev: Evidence) -> pd.DataFrame:
-    """One row per randomised industry Phase 2/3 efficacy trial started since SECTION3_TRIALS_FROM with a
+    """One row per randomised industry Phase 2/3 efficacy trial started in SECTION1 with a
     readable primary result, with the G3 status (as of the year before its start) of the programs
     it tests."""
     t = endpoints.merge(outcomes.loc[outcomes.primary_endpoint.isin(["met", "not_met", "mixed"]),
                                      ["nct_id", "primary_endpoint", "results_source"]], on="nct_id")
     links = trials[(trials.attach == "disease") & trials.phase.isin([2, 3])
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
+                   & pd.to_datetime(trials.start_date).between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))]
     links = links[["program_id", "nct_id", "phase", "start_date", "primary_completion_date", "us_site"]] \
         .merge(t[["nct_id"]], on="nct_id")
     p = progs.set_index("program_id")
@@ -518,7 +520,7 @@ def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFram
     x["not_met_strict"] = x.primary_endpoint.eq("not_met").astype(float)
     x["proximity"] = x.endpoint_class.map(PROXIMITY)
     x["phase3"] = (x.phase == 3).astype(float)
-    x["era"] = pd.cut(pd.to_datetime(x.start_date).dt.year, TRIAL_ERA_BINS, labels=TRIAL_ERA_LABELS).astype(str)
+    x["era"] = pd.cut(pd.to_datetime(x.start_date).dt.year, ERA_BINS, labels=ERA_LABELS).astype(str)
     x["fdaaa"] = (x.results_source.eq("registry") & x.us_site
                   & (pd.to_datetime(x.primary_completion_date) >= pd.Timestamp(FDAAA_START)))
     return x
@@ -531,7 +533,7 @@ def unlabelled_with_results(endpoints: pd.DataFrame, outcomes: pd.DataFrame, tri
     links = trials[trials.program_id.isin(programs) & (trials.attach == "disease") & trials.phase.isin([2, 3])
                    & trials.has_results
                    & trials.overall_status.isin(frame.ACTIVE)
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
+                   & pd.to_datetime(trials.start_date).between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))]
     return int(links[links.nct_id.isin(endpoints.nct_id) & ~links.nct_id.isin(outcomes.nct_id)].nct_id.nunique())
 
 
@@ -625,6 +627,12 @@ EVIDENCE_TYPES = {
     "liability": ("Target liability", lambda d: d.liability > 0, "all"),
 }
 BENCHMARK = ("Approved drug on the target, related disease", lambda d: d.b1 > 0, "all")
+# Lines first published in 2019 (Project Score, DepMap's common-essential list), so no program in the
+# window could have them before entry: scored on today's data instead, as hindsight, outside the Holm family.
+HINDSIGHT = {
+    "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr_untimed > 0, "all"),
+    "pan_essential": ("Essential in most cell lines", lambda d: d.pan_essential_untimed > 0, "all"),
+}
 # A more specific version of one evidence type, compared only with the rest of that type:
 # (label, parent type, refinement, regime, in the committed plan)
 REFINEMENTS = {
@@ -678,6 +686,16 @@ def evidence_types(c2: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     refined = pd.DataFrame(refined)
     refined["holm_p"] = refined["refinement"].map(holm(dict(zip(refined["refinement"], refined["p"]))))
     return types, refined
+
+
+def hindsight(c2: pd.DataFrame) -> pd.DataFrame:
+    """Each HINDSIGHT line, scored on today's data, against Phase 2 programs without it, adjusted."""
+    out = []
+    for key, (label, exposure, regime) in HINDSIGHT.items():
+        d = in_regime(c2, regime)
+        out.append({"line": key, "label": label, "regime": regime,
+                    **estimate(d.assign(x=exposure(d).astype(float)), "s4", "x")})
+    return pd.DataFrame(out)
 
 
 def rules(c2: pd.DataFrame, rng: np.random.Generator) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -823,7 +841,7 @@ def main() -> None:
     ev = Evidence(progs)
     rows = entries(progs, trials, snap)
     d = cohorts(rows, ev)
-    fm = failure_modes(phase_rows(progs, trials, snap, window=SECTION3), progs, trials, outcomes)
+    fm = failure_modes(phase_rows(progs, trials, snap, window=SECTION1), progs, trials, outcomes)
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason", "nct_id"]].rename(columns={"nct_id": "reason_nct"}),
                                on=["program_id", "phase"], how="left"))
     d["endpoint_stratum"] = d.program_id.map(program_endpoint(trials, endpoints, d[d.phase == 2])) \
@@ -834,7 +852,7 @@ def main() -> None:
     # or no resolved human protein target, so they have no evidence features.
     outside = rows.assign(why=np.where(rows.program_id.map(ev.disease).isna(), "no_disease",
                                        np.where(~rows.moiety_id.isin(ev.ent.index), "no_protein_target", None)))
-    n: dict = {"window": {"start": str(SECTION3[0]), "end": str(SECTION3[1])},
+    n: dict = {"window": {"start": str(SECTION1[0]), "end": str(SECTION1[1])},
                "excluded": {w: {"programs": int(len(g)), "s4": float(g.s4.mean())}
                             for w, g in outside[outside.phase == 2].groupby("why")},
                "c2": summary(c2)}
@@ -932,8 +950,11 @@ def main() -> None:
     types, refined = evidence_types(c2)
     types.to_csv(os.path.join(OUT, "evidence_types.csv"), index=False)
     refined.to_csv(os.path.join(OUT, "refinements.csv"), index=False)
+    late = hindsight(c2)
+    late.to_csv(os.path.join(OUT, "hindsight.csv"), index=False)
     n["types"] = {r["type"]: r for r in types.to_dict("records")}
     n["refinements"] = {r["refinement"]: r for r in refined.to_dict("records")}
+    n["hindsight"] = {r["line"]: r for r in late.to_dict("records")}
     n["types_family"] = int(types.loc[types["type"] != "benchmark", "p"].notna().sum())
     n["refinements_family"] = int(refined.p.notna().sum())
     rule_table, exposed = rules(c2, np.random.default_rng(SEED))

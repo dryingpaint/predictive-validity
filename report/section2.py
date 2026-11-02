@@ -3,7 +3,7 @@
     python -m report.section2
 
 Unit: the Section 1 phase cohorts (development programs = molecular entity x
-development indication, entering a phase in 2015-2025), restricted to entities acting on
+development indication, entering a phase in 2008-2019, report.windows.SECTION1), restricted to entities acting on
 human protein targets. Each program carries evidence about its entity's
 primary targets *for its disease*: Open Targets associations (26.09) whose
 disease matches the program's disease on MONDO (same term, a subtype, or Lin
@@ -60,7 +60,7 @@ from sklearn.preprocessing import StandardScaler
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import N_BOOT, SEED, boot_rates, loa, phase_rows, resolved_counts
-from report.windows import RECENT, SECTION2_PREDICT
+from report.windows import SECTION1, SECTION1_PERIODS, SECTION2_PREDICT
 
 OUT = os.path.join(frame.REPO, "report", "output", "section2")
 NAME_AUDIT = os.path.join(frame.REPO, "report", "audits", "chembl_name_matches.json")  # hand check of name matches
@@ -239,6 +239,9 @@ def dose_response(rows: pd.DataFrame, feature: str) -> pd.DataFrame:
     return pd.DataFrame(out)
 
 
+PERIOD_BINS = [SECTION1_PERIODS[0][0].year - 1, *(end.year for _, end in SECTION1_PERIODS)]
+
+
 def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
     """Per-phase relative risks of advancing from one Poisson model holding every
     feature in `features` (each adjusted for the others and for area, modality,
@@ -248,7 +251,7 @@ def poisson_rr(rows: pd.DataFrame, features: list[str]) -> list[dict]:
     for ph in (1, 2, 3):
         r = rows[(rows.phase == ph) & rows.event.isin(["advanced", "suspended"])].copy()
         r["y"] = (r.event == "advanced").astype(int)
-        r["period"] = pd.cut(r.entry_year, [2014, 2017, 2020, 2025]).astype(str)
+        r["period"] = pd.cut(r.entry_year, PERIOD_BINS).astype(str)
         present = [f for f in features if (r[f] > 0).sum() >= MIN_PROGRAMS_RR and (r[f] > 0).nunique() == 2]
         if not present:
             continue
@@ -386,7 +389,7 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap, window=RECENT)
+    rows = phase_rows(progs, trials, snap, window=SECTION1)
     ev = target_evidence(rows, progs)
     data = rows.merge(ev, on=["program_id", "phase"])
     data.to_csv(os.path.join(OUT, "phase_rows_with_evidence.csv"), index=False)

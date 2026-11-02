@@ -10,7 +10,7 @@ Each program aimed at a human protein is scored for the evidence its targets had
 
 *Relative success* is the LOA of programs with the evidence divided by the LOA of programs without it (Nelson et al. 2015; Minikel et al. 2024).
 
-![Relative success by evidence line](report/output/figures/relative_success_by_evidence.png)
+The figure in Section 3 ("Which evidence translates") sets relative success for each line beside the Phase 2 result for the same evidence.
 
 {{SECTION2_RS}}
 
@@ -20,9 +20,9 @@ Each program aimed at a human protein is scored for the evidence its targets had
 
 ### What each line adds once the others are known
 
-Programs with genetic evidence differ from programs without it in disease area, modality and era, and the evidence lines overlap. The table gives, for each phase, the relative risk of advancing for programs with each line, with the other lines, disease area, modality, novelty and entry period held fixed.
+Programs with genetic evidence differ from programs without it in disease area, modality and era, and the evidence lines overlap. The figure gives, for each phase, the relative risk of advancing for programs with each line, with the other lines, disease area, modality, novelty and entry period held fixed.
 
-{{JOINT_TABLE}}
+![Relative risk of advancing at each phase, with the other lines, disease area, modality, novelty and entry period held fixed](report/output/figures/joint_by_phase.png)
 
 {{SECTION2_JOINT}}
 
@@ -42,10 +42,6 @@ Programs with genetic evidence differ from programs without it in disease area, 
 
 We followed programs that entered Phase 1 in 2008–2016 for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved) and asked whether adding the evidence lines to what is known about disease area, modality, novelty and entry year improves the prediction of approval, on targets the model had not seen.
 
-{{PREDICTION_TABLE}}
-
-Change in held-out AUC when each line is removed from the full model:
-
-{{ABLATION_TABLE}}
+![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
 
 {{SECTION2_PREDICTION}}
