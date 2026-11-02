@@ -3,7 +3,7 @@
     python -m pipeline.fda fetch     # Drugs@FDA, openFDA labels, approval letters -> .cache/fda
     python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
-    python -m pipeline.fda link      # LLM: each application's active ingredients -> preclin.moiety
+    python -m pipeline.fda link      # LLM: each application's principal active ingredients -> preclin.moiety
     python -m pipeline.fda load-cber # CBER approval letters (.cache/cber/letters_index.jsonl) -> preclin.fda_*
 
 CBER-regulated biologics (vaccines, blood and plasma products, cell and gene
@@ -310,7 +310,11 @@ def extract(_args) -> None:
 
 INGREDIENT_SYSTEM = """You resolve the active ingredients of an FDA-approved product to molecular entities.
 
-Return every active entity in the product. For each give its international nonproprietary name (INN) or USAN in lower case (e.g. "metformin", "insulin glargine", "trastuzumab deruxtecan", "axicabtagene ciloleucel"), with salts, esters used only as salt forms, hydrates, strengths and formulations stripped ("METFORMIN HYDROCHLORIDE" -> "metformin", "ATAZANAVIR SULFATE" -> "atazanavir"). Keep a prodrug or ester that has its own INN as that INN (e.g. "tenofovir alafenamide", "valacyclovir").
+Return every ingredient listed as active in the product. For each give its international nonproprietary name (INN) or USAN in lower case (e.g. "metformin", "insulin glargine", "trastuzumab deruxtecan", "axicabtagene ciloleucel"), with salts, counter-ions, esters used only as salt forms, hydrates, strengths and formulations stripped ("METFORMIN HYDROCHLORIDE" -> "metformin", "ATAZANAVIR SULFATE" -> "atazanavir", "SODIUM PICOSULFATE" -> "picosulfate"). Keep a prodrug or ester that has its own INN as that INN (e.g. "tenofovir alafenamide", "valacyclovir"). An inorganic salt that is itself the active ingredient keeps its name ("sodium bicarbonate", "magnesium oxide").
+
+Give each ingredient a role:
+- principal: an ingredient the product is given for, whose effect is the product's use (in a bowel preparation, its laxatives; in an electrolyte replacement or oral rehydration product, the electrolytes themselves).
+- electrolyte_or_vehicle: an electrolyte, buffer, osmotic agent or diluent that the label lists as active only because it makes up the solution around a principal ingredient (the sodium, calcium and magnesium salts of a peritoneal dialysis solution built on icodextrin or dextrose; the electrolytes added to a polyethylene glycol bowel preparation).
 
 For a biologic with a four-letter FDA suffix, use the core name without the suffix and say whether the product is a biosimilar or interchangeable biosimilar of an earlier reference product (biosimilar_of = the reference product's core name), or the originator (biosimilar_of = null). Mixtures without a single defined entity (e.g. allergenic extracts, plasma pools, multivitamins) use kind = mixture with the components you can name."""
 
@@ -320,8 +324,9 @@ INGREDIENT_SCHEMA = {
         "kind": {"type": "string", "enum": ["single", "combination", "mixture"]},
         "components": {"type": "array", "items": {
             "type": "object",
-            "properties": {"name": {"type": "string"}, "biosimilar_of": {"type": ["string", "null"]}},
-            "required": ["name", "biosimilar_of"], "additionalProperties": False}},
+            "properties": {"name": {"type": "string"}, "biosimilar_of": {"type": ["string", "null"]},
+                           "role": {"type": "string", "enum": ["principal", "electrolyte_or_vehicle"]}},
+            "required": ["name", "biosimilar_of", "role"], "additionalProperties": False}},
     },
     "required": ["kind", "components"],
     "additionalProperties": False,
@@ -333,8 +338,15 @@ def render_ingredient(p: dict) -> str:
             f"Active ingredient field(s): {' | '.join(p['ingredients'])}")
 
 
+def principals(out: dict) -> list[dict]:
+    """The components an application links to: its principal ingredients, a biosimilar named by
+    its reference product."""
+    comps = [{**c, "name": c["biosimilar_of"] or c["name"]} for c in out["components"] if c["role"] == "principal"]
+    return [c for c in comps if moiety_key(c["name"])]
+
+
 INGREDIENT_TASK = llm.Task(
-    name="fda_application_moiety", prompt_version="v1", schema_version="v1",
+    name="fda_application_moiety", prompt_version="v2", schema_version="v2",
     system=INGREDIENT_SYSTEM, schema=INGREDIENT_SCHEMA, render=render_ingredient,
     subject_type="fda_application", model="claude-opus-5-5", effort="low", max_tokens=2000)
 
@@ -439,11 +451,10 @@ def link(_args) -> None:
     run_id = llm.run(INGREDIENT_TASK, items)
     links, names = [], {}
     for appl_no, decision_id, out in llm.decisions(run_id):
-        for comp in out["components"]:
+        for comp in principals(out):
             key = moiety_key(comp["name"])
-            if key:
-                names.setdefault(key, comp["name"])
-                links.append((appl_no, key, comp["biosimilar_of"], decision_id))
+            names.setdefault(key, comp["name"])
+            links.append((appl_no, key, comp["biosimilar_of"], decision_id))
     with llm.connect() as conn, conn.cursor() as cur:
         ids = entity_ids(cur, names)
         cur.execute("DELETE FROM preclin.fda_application_moiety")
