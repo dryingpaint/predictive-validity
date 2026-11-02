@@ -2,8 +2,8 @@
 
     python -m report.section3
 
-Cohort C2: programs on a human protein target entering Phase 2 from 2015-01-01
-to 2020-10-20; outcome S4 = advanced (own Phase 3 start, or FDA approval for the
+Cohort C2: programs on a human protein target entering Phase 2 in 2008-2019
+(report.windows.SECTION1); outcome S4 = advanced (own Phase 3 start, or FDA approval for the
 disease) within four years of entry. C1 and C3 are the same for Phase 1 and
 Phase 3. Evidence comes from Open Targets evidence rows (preclin.ot_evidence),
 each dated, frozen at the year before entry, and matched to the program's
@@ -11,13 +11,12 @@ disease on MONDO: G3 is the same term, a subtype, or Lin >= 0.8; G2 a disease at
 Lin 0.5-0.8; G1 germline evidence only for unrelated diseases. Risk ratios come
 from modified Poisson models clustered by primary-target set and adjusted for
 disease area, modality, entity novelty, entry period and target precedent.
-Trials T: industry randomised Phase 2/3 trials since 2010 whose governing primary
+Trials T: industry randomised Phase 2/3 trials started in 2008-2019 whose governing primary
 is an efficacy endpoint (preclin.trial_endpoint) with a readable primary result
 (preclin.trial_outcome); outcome NOT MET (mixed counts as not met).
 
 Writes report/output/section3/: numbers.json (read by report.render and
-report.figures), evidence_map.csv, endpoint_classes.csv, rules.csv, cases.csv
-(the programs the case audit in report/audits/section3_cases.json checks), and
+report.figures), evidence_map.csv, evidence_types.csv, refinements.csv, hindsight.csv, endpoint_classes.csv, rules.csv, and
 programs.csv and trials.csv (every cohort row and trial with its features, for
 audits of the analysis).
 """
@@ -36,16 +35,14 @@ from statsmodels.discrete.conditional_models import ConditionalLogit
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
-from report.windows import SECTION3, SECTION3_TRIALS_FROM
+from report.windows import SECTION1, SECTION1_PERIODS
 
 OUT = os.path.join(frame.REPO, "report", "output", "section3")
-CASE_AUDIT = os.path.join(frame.REPO, "report", "audits", "section3_cases.json")
 ENDPOINT_AUDIT = os.path.join(frame.REPO, "report", "audits", "endpoint_audit.json")
-BIOLOGY_CODES = ("F2", "F3", "F4", "F5")  # failures that test the evidence's biological claim
 HORIZON_YEARS = 4.0
 FDAAA_START = date(2017, 1, 18)
-ERA_BINS, ERA_LABELS = [2014, 2016, 2018, 2020], ["2015-16", "2017-18", "2019-20"]
-TRIAL_ERA_BINS, TRIAL_ERA_LABELS = [SECTION3_TRIALS_FROM.year - 1, 2014, 2018, np.inf], ["2010-14", "2015-18", "2019+"]
+ERA_BINS = [SECTION1_PERIODS[0][0].year - 1, *(end.year for _, end in SECTION1_PERIODS)]
+ERA_LABELS = [f"{start.year}-{end.year % 100:02d}" for start, end in SECTION1_PERIODS]
 N_BOOT = 1000
 N_PERMUTATIONS = 200
 MIN_TARGETS = 15  # distinct exposed target sets below which no risk ratio is fitted
@@ -314,6 +311,8 @@ class Evidence:
                                                                   or (inc and on("somatic", "lof_risk")))),
             "expression_up": float(on("expression", "up")),
             **liab, "liability": float(any(liab.values())),
+            "crispr_untimed": float("crispr" in first and first["crispr"][TIERS.index("any")] <= NEVER),
+            "pan_essential_untimed": float(frame.essential_as_of(self.essential, e.genes, NEVER)),
             "precedent": float(self.precedent(moiety_id, entry)),
             "b1": float(any(m in related and when < entry for g in e.genes for m, when in self.approved.get(g, ()))),
         }
@@ -332,8 +331,8 @@ class Evidence:
 
 
 def entries(progs: pd.DataFrame, trials: pd.DataFrame, snap: date) -> pd.DataFrame:
-    """Phase entries in SECTION3 (skipped phases excluded) with the outcome S4."""
-    rows = phase_rows(progs, trials, snap, window=SECTION3)
+    """Phase entries in SECTION1 (skipped phases excluded) with the outcome S4."""
+    rows = phase_rows(progs, trials, snap, window=SECTION1)
     rows = rows[~rows.credited].copy()
     rows["s4"] = ((rows.event == "advanced") & (rows.years <= HORIZON_YEARS)).astype(float)
     return rows
@@ -484,13 +483,13 @@ def efficacy_endpoints() -> pd.DataFrame:
 
 def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame, endpoints: pd.DataFrame,
                 ev: Evidence) -> pd.DataFrame:
-    """One row per randomised industry Phase 2/3 efficacy trial started since SECTION3_TRIALS_FROM with a
+    """One row per randomised industry Phase 2/3 efficacy trial started in SECTION1 with a
     readable primary result, with the G3 status (as of the year before its start) of the programs
     it tests."""
     t = endpoints.merge(outcomes.loc[outcomes.primary_endpoint.isin(["met", "not_met", "mixed"]),
                                      ["nct_id", "primary_endpoint", "results_source"]], on="nct_id")
     links = trials[(trials.attach == "disease") & trials.phase.isin([2, 3])
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
+                   & pd.to_datetime(trials.start_date).between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))]
     links = links[["program_id", "nct_id", "phase", "start_date", "primary_completion_date", "us_site"]] \
         .merge(t[["nct_id"]], on="nct_id")
     p = progs.set_index("program_id")
@@ -518,7 +517,7 @@ def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFram
     x["not_met_strict"] = x.primary_endpoint.eq("not_met").astype(float)
     x["proximity"] = x.endpoint_class.map(PROXIMITY)
     x["phase3"] = (x.phase == 3).astype(float)
-    x["era"] = pd.cut(pd.to_datetime(x.start_date).dt.year, TRIAL_ERA_BINS, labels=TRIAL_ERA_LABELS).astype(str)
+    x["era"] = pd.cut(pd.to_datetime(x.start_date).dt.year, ERA_BINS, labels=ERA_LABELS).astype(str)
     x["fdaaa"] = (x.results_source.eq("registry") & x.us_site
                   & (pd.to_datetime(x.primary_completion_date) >= pd.Timestamp(FDAAA_START)))
     return x
@@ -531,7 +530,7 @@ def unlabelled_with_results(endpoints: pd.DataFrame, outcomes: pd.DataFrame, tri
     links = trials[trials.program_id.isin(programs) & (trials.attach == "disease") & trials.phase.isin([2, 3])
                    & trials.has_results
                    & trials.overall_status.isin(frame.ACTIVE)
-                   & (pd.to_datetime(trials.start_date) >= pd.Timestamp(SECTION3_TRIALS_FROM))]
+                   & pd.to_datetime(trials.start_date).between(pd.Timestamp(SECTION1[0]), pd.Timestamp(SECTION1[1]))]
     return int(links[links.nct_id.isin(endpoints.nct_id) & ~links.nct_id.isin(outcomes.nct_id)].nct_id.nunique())
 
 
@@ -608,9 +607,6 @@ DISCOVERY_SHARE = 0.6  # share of target sets in the discovery half
 DISCOVERY_FLOOR = 1.3  # the discovery risk ratio's 90% lower bound must exceed this
 CONFIRM_RR = 1.2  # the held-out risk ratio, and the risk ratio without the most influential target, must reach this
 MIN_SPLIT_TARGETS = 5  # exposed target sets below which a half gets no estimate
-INFLUENTIAL_TARGETS, CASES_PER_INFLUENTIAL = 3, 2
-CASES_RANDOM = 4  # successes and failures drawn per rule
-CASES_EFFICACY = 6  # programs stopped for efficacy after a missed randomised trial, drawn per rule
 
 
 # Kinds of evidence a sponsor could have before Phase 2: (label, exposure, regime). The benchmark is
@@ -625,6 +621,12 @@ EVIDENCE_TYPES = {
     "liability": ("Target liability", lambda d: d.liability > 0, "all"),
 }
 BENCHMARK = ("Approved drug on the target, related disease", lambda d: d.b1 > 0, "all")
+# Lines first published in 2019 (Project Score, DepMap's common-essential list), so no program in the
+# window could have them before entry: scored on today's data instead, as hindsight, outside the Holm family.
+HINDSIGHT = {
+    "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr_untimed > 0, "all"),
+    "pan_essential": ("Essential in most cell lines", lambda d: d.pan_essential_untimed > 0, "all"),
+}
 # A more specific version of one evidence type, compared only with the rest of that type:
 # (label, parent type, refinement, regime, in the committed plan)
 REFINEMENTS = {
@@ -680,7 +682,17 @@ def evidence_types(c2: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     return types, refined
 
 
-def rules(c2: pd.DataFrame, rng: np.random.Generator) -> tuple[pd.DataFrame, pd.DataFrame]:
+def hindsight(c2: pd.DataFrame) -> pd.DataFrame:
+    """Each HINDSIGHT line, scored on today's data, against Phase 2 programs without it, adjusted."""
+    out = []
+    for key, (label, exposure, regime) in HINDSIGHT.items():
+        d = in_regime(c2, regime)
+        out.append({"line": key, "label": label, "regime": regime,
+                    **estimate(d.assign(x=exposure(d).astype(float)), "s4", "x")})
+    return pd.DataFrame(out)
+
+
+def rules(c2: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
     """Rule screen on a split of target sets: a rule is predictive when its discovery risk
     ratio's 90% bootstrap lower bound exceeds DISCOVERY_FLOOR, its held-out risk ratio reaches
     CONFIRM_RR with a one-sided 95% lower bound above 1, and the full-sample risk ratio still
@@ -688,7 +700,7 @@ def rules(c2: pd.DataFrame, rng: np.random.Generator) -> tuple[pd.DataFrame, pd.
     the rule's regime; the adjusted one is reported beside them."""
     targets = np.array(sorted(c2.target.unique()))
     discovery = set(targets[rng.random(len(targets)) < DISCOVERY_SHARE])
-    out, exposed = [], []
+    out = []
     for key, (label, rule, regime, registered) in RULES.items():
         d = c2 if regime == "all" else c2[c2.regime == regime]
         d = d.assign(rule=rule(d).astype(float))
@@ -709,33 +721,7 @@ def rules(c2: pd.DataFrame, rng: np.random.Generator) -> tuple[pd.DataFrame, pd.
                                  and row.get("confirmation_rr", 0) >= CONFIRM_RR and row.get("confirmation_lo90", 0) > 1
                                  and (row["rr_without_most_influential"] or 0) >= CONFIRM_RR)
         out.append(row)
-        exposed.append(d[d.rule > 0].assign(rule_key=key, influential=d.target.isin(
-            [t for t, _ in infl[:INFLUENTIAL_TARGETS]])))
-    return pd.DataFrame(out), pd.concat(exposed, ignore_index=True)
-
-
-def pick_cases(rule_table: pd.DataFrame, exposed: pd.DataFrame, missed: set[str],
-               rng: np.random.Generator) -> pd.DataFrame:
-    """Cases for each rule that is predictive, or whose adjusted risk ratio's lower bound is
-    above 1 (marked as short of the bar): CASES_RANDOM successes and suspended programs at
-    random, up to CASES_PER_INFLUENTIAL programs of each of the INFLUENTIAL_TARGETS most
-    influential targets, and up to CASES_EFFICACY of the programs that stopped for efficacy
-    after a randomised trial missed its primary endpoint (`missed`). The plan asks for every
-    such program; the cap keeps verification to a size agents can check against primary
-    sources."""
-    out = []
-    for r in rule_table[rule_table.predictive | (rule_table.adj_lo > 1)].itertuples():
-        e = exposed[exposed.rule_key == r.rule]
-        succ, fail = e[e.s4 > 0], e[(e.s4 == 0) & (e.event == "suspended")]
-        stopped = e[e.reason.isin(EFFICACY) & e.reason_nct.isin(missed)]
-        out.append(pd.concat([
-            succ.iloc[rng.permutation(len(succ))[:CASES_RANDOM]].assign(why="random success"),
-            fail.iloc[rng.permutation(len(fail))[:CASES_RANDOM]].assign(why="random failure"),
-            e[e.influential].sort_values(["target", "s4", "program_id"], ascending=[True, False, True])
-             .groupby("target").head(CASES_PER_INFLUENTIAL).assign(why="influential target"),
-            stopped.iloc[rng.permutation(len(stopped))[:CASES_EFFICACY]].assign(why="primary endpoint missed"),
-        ]).drop_duplicates("program_id").assign(status="predictive" if r.predictive else "short of the bar"))
-    return pd.concat(out, ignore_index=True)
+    return pd.DataFrame(out)
 
 
 def permutation_null(com: pd.DataFrame, ev: Evidence, observed: float, rng: np.random.Generator) -> dict:
@@ -752,35 +738,6 @@ def permutation_null(com: pd.DataFrame, ev: Evidence, observed: float, rng: np.r
     ok = np.array(rrs)[np.isfinite(rrs)]
     return {"observed": observed, "null_median": float(np.median(ok)), "null_95": float(np.percentile(ok, 95)),
             "p_one_sided": float((np.sum(ok >= observed) + 1) / (len(ok) + 1)), "n_permutations": int(len(ok))}
-
-
-def case_key(rule: str, moiety_id: int, mondo_id: str, entry) -> str:
-    """A case is a rule's program, named by entity, disease and Phase 2 entry date, which survive a
-    rebuild of dev_program (program ids do not); a changed entry date makes it a new case."""
-    return f"{rule}:{int(moiety_id)}:{mondo_id}:{pd.Timestamp(entry).date().isoformat()}"
-
-
-def case_audit(cases: pd.DataFrame) -> dict:
-    """Agreement of the agent-verified case studies (CASE_AUDIT) with the pipeline: the outcome
-    within four years, the evidence claim and its date, and the failure codes, over the picked
-    cases the audit covers with the pipeline outcome it was checked against. Picked cases it does
-    not cover, or covers against an outcome that has since changed, are listed as pending
-    (report.cases); report.render tabulates the audit by rule."""
-    a = pd.DataFrame(json.load(open(CASE_AUDIT)))
-    picked = {case_key(r, m, d, e): int(s4 > 0)
-              for r, m, d, e, s4 in zip(cases.rule_key, cases.moiety_id, cases.mondo_id, cases.entry, cases.s4)}
-    a = a[a.case_id.map(picked).eq(a.pipeline_s4.astype(int))]
-    pending = sorted(set(picked) - set(a.case_id))
-    prog = a.drop_duplicates("program_id")
-    failed = prog[prog.advanced_within_4y == "no"]
-    return {"cases": int(len(a)), "programs": int(len(prog)), "pending": pending,
-            "outcome_correct": int((prog.pipeline_correct == "yes").sum()),
-            "outcome_wrong": int((prog.pipeline_correct == "no").sum()),
-            "claim_supported": int(a.claim_supported.eq("yes").sum()),
-            "claim_partial": int(a.claim_supported.eq("partial").sum()),
-            "claim_not_supported": int(a.claim_supported.eq("no").sum()),
-            "failed_programs": int(len(failed)),
-            "biology_failures": int(failed.failure_code.isin(BIOLOGY_CODES).sum())}
 
 
 def endpoint_audit() -> dict:
@@ -823,7 +780,7 @@ def main() -> None:
     ev = Evidence(progs)
     rows = entries(progs, trials, snap)
     d = cohorts(rows, ev)
-    fm = failure_modes(phase_rows(progs, trials, snap, window=SECTION3), progs, trials, outcomes)
+    fm = failure_modes(phase_rows(progs, trials, snap, window=SECTION1), progs, trials, outcomes)
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason", "nct_id"]].rename(columns={"nct_id": "reason_nct"}),
                                on=["program_id", "phase"], how="left"))
     d["endpoint_stratum"] = d.program_id.map(program_endpoint(trials, endpoints, d[d.phase == 2])) \
@@ -834,7 +791,7 @@ def main() -> None:
     # or no resolved human protein target, so they have no evidence features.
     outside = rows.assign(why=np.where(rows.program_id.map(ev.disease).isna(), "no_disease",
                                        np.where(~rows.moiety_id.isin(ev.ent.index), "no_protein_target", None)))
-    n: dict = {"window": {"start": str(SECTION3[0]), "end": str(SECTION3[1])},
+    n: dict = {"window": {"start": str(SECTION1[0]), "end": str(SECTION1[1])},
                "excluded": {w: {"programs": int(len(g)), "s4": float(g.s4.mean())}
                             for w, g in outside[outside.phase == 2].groupby("why")},
                "c2": summary(c2)}
@@ -928,33 +885,20 @@ def main() -> None:
                      "with_any_evidence": float(evidence.mean()), "with_b1": float((succ.b1 > 0).mean()),
                      "neither": float((~evidence & (succ.b1 == 0)).mean())}
 
-    # The split and the case draws get their own generators, so they do not move with the analyses above.
+    # The split gets its own generator, so it does not move with the analyses above.
     types, refined = evidence_types(c2)
     types.to_csv(os.path.join(OUT, "evidence_types.csv"), index=False)
     refined.to_csv(os.path.join(OUT, "refinements.csv"), index=False)
+    late = hindsight(c2)
+    late.to_csv(os.path.join(OUT, "hindsight.csv"), index=False)
     n["types"] = {r["type"]: r for r in types.to_dict("records")}
     n["refinements"] = {r["refinement"]: r for r in refined.to_dict("records")}
+    n["hindsight"] = {r["line"]: r for r in late.to_dict("records")}
     n["types_family"] = int(types.loc[types["type"] != "benchmark", "p"].notna().sum())
     n["refinements_family"] = int(refined.p.notna().sum())
-    rule_table, exposed = rules(c2, np.random.default_rng(SEED))
+    rule_table = rules(c2, np.random.default_rng(SEED))
     rule_table.to_csv(os.path.join(OUT, "rules.csv"), index=False)
     n["rules"] = {r["rule"]: r for r in rule_table.to_dict("records")}
-    missed = set(frame.query("""SELECT o.nct_id FROM preclin.trial_outcome o JOIN preclin.ctgov_study s USING (nct_id)
-                                 WHERE o.primary_endpoint IN ('not_met', 'mixed')
-                                   AND s.allocation = 'RANDOMIZED'""").nct_id)
-    cases = pick_cases(rule_table, exposed, missed, np.random.default_rng(SEED + 1))
-    names = frame.query("SELECT moiety_id, name FROM preclin.moiety").set_index("moiety_id").name
-    labels = frame.query("SELECT term_id, label FROM preclin.ontology_term WHERE ontology = 'MONDO'") \
-                  .set_index("term_id").label
-    cases = cases.assign(entity=cases.moiety_id.map(names), disease=cases.mondo_id.map(labels),
-                         registered=cases.rule_key.map({k: v[3] for k, v in RULES.items()}))
-    cases["case_id"] = [case_key(r, m, d, e) for r, m, d, e in
-                        zip(cases.rule_key, cases.moiety_id, cases.mondo_id, cases.entry)]
-    cases[["case_id", "rule_key", "registered", "status", "why", "program_id", "moiety_id", "entity", "target", "sign", "disease", "mondo_id",
-           "entry", "event", "years", "s4", "reason", "reason_nct", "g3", "gwas", "gwas_strong", "mendelian",
-           "somatic_concordant", "mgi", "reactome", "b1", "mechanism", "mouse_direction"]] \
-        .to_csv(os.path.join(OUT, "cases.csv"), index=False)
-    n["case_audit"] = case_audit(cases)
     d.drop(columns=["classes"]).to_csv(os.path.join(OUT, "programs.csv"), index=False)
     tf.to_csv(os.path.join(OUT, "trials.csv"), index=False)
     with open(os.path.join(OUT, "numbers.json"), "w") as f:

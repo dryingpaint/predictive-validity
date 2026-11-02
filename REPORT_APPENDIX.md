@@ -2,91 +2,249 @@
 
 <!-- Rendered by `python -m report` into REPORT_APPENDIX.md, the doc's "Appendix detail" tab. -->
 
-## Section 3 case studies
+## Tables behind the figures
 
-Every case picked by the rule protocol, checked by agents against primary sources: one agent established each program's outcome without seeing its evidence, another checked the evidence claim without seeing the outcome, a second agent coded each failure independently, and a third adjudicated any disagreement with the pipeline or between agents.
+The numbers each figure in the main tab draws, with the columns the figures leave out.
 
-| Rule | Drug (target, action) | Disease | Phase 2 entry | Evidence claim: verdict; earliest source | Outcome (verified) | Failure |
+### Phase transitions
+
+| Transition | All programs (95% CI) | Developed in the US (95% CI) | BIO 2011–2020 |
+| :---- | :---- | :---- | :---- |
+| Phase 1 → Phase 2 | 54.8% (53.0–56.6), n=6,566 | 57.1% (54.6–59.5), n=4,140 | 52.0% |
+| Phase 2 → Phase 3 | 28.4% (26.9–29.7), n=6,278 | 31.3% (29.7–33.1), n=4,033 | 28.9% |
+| Phase 3 → Approval | 34.9% (32.5–37.4), n=2,155 | 50.0% (47.0–52.9), n=1,423 | 52.4% |
+| **Phase 1 → Approval (LOA)** | **5.4%** (4.9–6.0) | **8.9%** (8.0–9.9) | **7.9%** (novel drugs 6.8%) |
+
+### Why programs stop
+
+Cause of each Phase 2 and 3 stop as registered and after tracing.
+
+| Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
+| :---- | :---- | :---- | :---- |
+| Efficacy or exposure (PK, dose, formulation) | 28% (1,665) | 39% (2,318) | 44% (2,566) |
+| Safety | 1% (68) | 3% (167) | 3% (174) |
+| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (280) | 13% (763) | 21% (1,259) |
+| Operational (enrollment, sites, supply, regulatory) | 5% (290) | 6% (330) | 6% (359) |
+| Positive readout, not yet advanced | 11% (631) | 20% (1,155) | 21% (1,213) |
+| Unknown | 50% (2,964) | 15% (907) | 1% (64) |
+| Did not actually stop | 0% (0) | 4% (216) | 4% (221) |
+
+### Why efficacy failed
+
+Efficacy and exposure stops by what the evidence shows about target engagement, by phase.
+
+| What the evidence shows | Phase 2 | Phase 3 | Phase 2 and 3 | Outside oncology |
+| :---- | :---- | :---- | :---- | :---- |
+| Not engaged: exposure or engagement too low, or another drug on the target worked | 10% (169) | 11% (58) | 10% (227) | 9% (156) |
+| Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (783) | 49% (248) | 47% (1,031) | 44% (728) |
+| Trial design, population or endpoint, mechanism not in question | 6% (106) | 10% (50) | 7% (156) | 8% (131) |
+| On-target toxicity offset efficacy | 0% (7) | 0% (2) | 0% (9) | 0% (2) |
+| No engagement data: no human evidence of engagement either way | 38% (640) | 30% (152) | 36% (792) | 38% (633) |
+| **Not engaged, of failures whose mechanism was tested** | **18%** (15–21) | **19%** (15–24) | **18%** (16–21) | **18%** (15–21) |
+| Programs (entities) | 1,705 (1,301) | 510 (433) | 2,215 (1,603) | 1,650 (1,265) |
+
+### By disease area and modality
+
+| Disease area | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
+| :---- | :---- | :---- | :---- | :---- |
+| Hematology | 18.4% (12.8–25.2) | 212 | 22.9% (14.8–32.8) | 23.9% |
+| Metabolic | 10.2% (6.7–14.2) | 285 | 19.0% (13.1–26.5) | 15.5% |
+| Oncology | 9.8% (7.8–11.9) | 1,856 | 12.4% (9.7–15.3) | 5.3% |
+| Infectious disease | 8.6% (6.3–11.0) | 686 | 17.0% (13.0–21.3) | 13.2% |
+| Autoimmune | 7.5% (5.1–10.1) | 523 | 10.2% (6.8–13.9) | 10.7% |
+| Allergy | 6.8% (3.0–11.8) | 141 | 12.7% (4.6–22.4) | 10.3% |
+| Neurology | 6.5% (5.0–8.2) | 754 | 10.3% (7.9–12.8) | 5.9% |
+| Endocrine | 6.3% (3.7–9.4) | 350 | 12.2% (7.3–17.7) | 6.6% |
+| Psychiatry | 6.1% (3.5–9.0) | 320 | 8.5% (5.0–12.5) | 7.3% |
+| Respiratory | 4.6% (2.5–6.8) | 377 | 9.1% (5.3–13.0) | 7.5% |
+| Ophthalmology | 4.3% (2.4–6.5) | 330 | 6.4% (3.6–9.9) | 11.9% |
+| Other | 3.8% (2.6–5.3) | 785 | 8.1% (5.7–10.9) | 13.0% |
+| Urology | 3.8% (0.9–8.0) | 84 | 6.0% (1.4–12.6) | 3.6% |
+| Gastroenterology | 3.0% (1.5–4.8) | 333 | 7.5% (3.9–11.8) | 8.3% |
+| Cardiovascular | 2.7% (1.5–4.2) | 341 | 5.5% (3.0–8.9) | 4.8% |
+
+| Modality | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
+| :---- | :---- | :---- | :---- | :---- |
+| Monoclonal antibody | 12.8% (9.6–16.1) | 840 | 15.0% (11.1–19.5) | 12.1% |
+| Antibody–drug conjugate | 8.9% (3.5–15.2) | 147 | 8.2% (2.9–14.6) | 10.8% |
+| Protein | 5.8% (3.9–7.8) | 461 | 8.9% (5.9–12.7) | 9.4% |
+| Small molecule | 5.3% (4.6–6.0) | 4,194 | 8.7% (7.5–9.9) | 7.5% |
+| Gene therapy | 4.8% (1.6–8.9) | 114 | 6.1% (2.1–10.7) | 10.0% |
+| Peptide | 4.6% (2.6–7.2) | 276 | 6.6% (3.7–10.8) | 8.0% |
+| Antisense oligonucleotide | 4.5% (1.2–9.9) | 92 | 6.0% (1.6–14.7) | 5.2% |
+| Other cell therapy | 0.7% (0.1–1.5) | 274 | 2.0% (0.3–4.7) | – |
+| Microbiome or live biotherapeutic | 0.4% (0.0–2.4) | 46 | – | – |
+| Other | 0.1% (0.0–0.4) | 301 | 0.4% (0.0–1.7) | – |
+
+### Relative success
+
+| Evidence line | Programs with it | LOA with / without | Relative success (95% CI) |
+| :---- | :---- | :---- | :---- |
+| Rare-variant or Mendelian genetics | 710 | 24.6% / 7.6% | 3.23 (2.41–4.24) |
+| Any human genetics | 909 | 23.0% / 7.4% | 3.08 (2.32–4.04) |
+| Disease pathway (Reactome) | 179 | 21.8% / 8.6% | 2.55 (1.48–3.85) |
+| Somatic cancer driver | 1,196 | 19.8% / 7.9% | 2.52 (1.70–3.44) |
+| GWAS | 265 | 16.5% / 8.6% | 1.91 (1.14–2.89) |
+| Mouse model | 1,699 | 12.2% / 7.9% | 1.54 (1.16–1.98) |
+| Expressed differently in the disease | 1,013 | 9.9% / 8.7% | 1.13 (0.75–1.58) |
+| **Target liabilities** (not specific to the disease) |  |  |  |
+| Intolerant of loss of function | 1,992 | 8.6% / 8.9% | 0.96 (0.65–1.41) |
+| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
+| Very potent at the target (10 nM or better) | 1,312 | 11.9% / 8.3% | 1.42 (0.99–1.94) |
+| Potent at the target (100 nM or better) | 1,812 | 10.2% / 8.5% | 1.20 (0.86–1.63) |
+| Potency at the target measured | 2,180 | 8.7% / 8.8% | 0.99 (0.72–1.32) |
+| At least 100-fold selective over measured off-targets | 355 | 8.7% / 8.8% | 0.99 (0.47–1.75) |
+| Functional potency measured in cells | 539 | 6.4% / 9.0% | 0.72 (0.43–1.11) |
+
+### Genetic dose–response
+
+| Genetic association score before entry (Open Targets, 0–1) | Programs | Targets | LOA (95% CI) |
+| :---- | :---- | :---- | :---- |
+| 0 (no genetic support) | 8,158 | 1,279 | 7.4% (6.1–9.2) |
+| up to 0.61 (lowest third) | 395 | 238 | 16.3% (11.1–22.4) |
+| 0.61–0.89 (middle third) | 249 | 139 | 24.7% (15.4–34.0) |
+| above 0.89 (highest third) | 285 | 148 | 30.2% (23.1–38.1) |
+
+### Relative success by disease area
+
+| Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| Any human genetics | 2.54 (1.37–4.19), n=320 | 1.87 (0.87–3.29), n=140 | –, n=98 | 2.57 (1.25–4.51), n=130 | 4.40 (2.70–7.50), n=160 | –, n=61 | 0.52 (6 groups) |
+| GWAS | –, n=68 | –, n=81 | –, n=48 | –, n=28 | –, n=40 | –, n=0 | 0.92 (3 groups) |
+| Rare-variant or Mendelian genetics | 2.70 (1.43–4.41), n=274 | –, n=61 | –, n=60 | 2.57 (1.28–4.43), n=114 | 4.34 (2.60–7.51), n=140 | –, n=61 | 0.51 (6 groups) |
+| Somatic cancer driver | 2.43 (1.36–4.44), n=1,176 | –, n=3 | –, n=6 | –, n=1 | –, n=8 | –, n=2 | – |
+| Mouse model | 1.16 (0.61–1.91), n=456 | 1.82 (1.08–3.05), n=244 | 1.16 (0.49–2.25), n=198 | 1.71 (0.95–2.92), n=270 | 1.73 (1.04–2.85), n=433 | –, n=98 | 0.82 (6 groups) |
+| Expressed differently in the disease | 1.11 (0.63–1.84), n=739 | 0.53 (0.10–1.04), n=166 | –, n=35 | –, n=65 | –, n=8 | –, n=0 | 0.05 (3 groups) |
+| Potent at the target (100 nM or better) | 1.19 (0.65–2.12), n=918 | 1.52 (0.78–2.63), n=202 | 2.04 (1.01–3.57), n=252 | 0.68 (0.30–1.24), n=251 | 1.03 (0.53–1.77), n=163 | –, n=26 | 0.57 (5 groups) |
+
+### What each line adds once the others are known
+
+| Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |
+| :---- | :---- | :---- | :---- |
+| GWAS | 1.09 (0.99–1.20) | 1.18 (0.90–1.54) | 1.02 (0.71–1.48) |
+| Rare-variant or Mendelian genetics | 1.06 (0.97–1.16) | 1.51 (1.27–1.79) | 1.54 (1.27–1.86) |
+| Somatic cancer driver | 1.08 (0.98–1.19) | 1.34 (1.05–1.71) | 1.11 (0.87–1.43) |
+| Mouse model | 0.97 (0.91–1.04) | 1.13 (0.99–1.30) | 1.09 (0.92–1.28) |
+| Expressed differently in the disease | 0.95 (0.88–1.03) | 0.84 (0.68–1.03) | 0.89 (0.69–1.13) |
+| Disease pathway (Reactome) | 1.10 (1.00–1.22) | 0.87 (0.61–1.23) | 1.12 (0.85–1.48) |
+| **Target liabilities** (not specific to the disease) |  |  |  |
+| Intolerant of loss of function | 0.95 (0.87–1.04) | 1.05 (0.90–1.23) | 1.04 (0.83–1.30) |
+| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
+| Potency at the target measured | 0.84 (0.67–1.05) | 0.87 (0.64–1.18) | 0.87 (0.59–1.29) |
+| Potent at the target (100 nM or better) | 1.17 (0.92–1.47) | 1.32 (0.96–1.82) | 1.58 (1.06–2.37) |
+| Functional potency measured in cells | 0.76 (0.59–0.97) | 0.93 (0.73–1.18) | 0.96 (0.70–1.32) |
+| At least 100-fold selective over measured off-targets | 0.89 (0.69–1.14) | 0.99 (0.69–1.42) | 1.08 (0.82–1.42) |
+
+### Does the evidence predict which programs reach approval?
+
+| Validation | Features | AUC (95% CI) | PR-AUC (base rate) | Programs (approved) |
+| :---- | :---- | :---- | :---- | :---- |
+| Held-out target sets | Area, modality, novelty, year | 0.605 (0.540–0.668) | 0.098 (0.050) | 3,185 (159) |
+| Temporal (later entrants held out) | Area, modality, novelty, year | 0.620 (0.545–0.691) | 0.105 (0.056) | 1,603 (89) |
+| Held-out target sets | … plus all evidence lines | 0.641 (0.580–0.705) | 0.118 (0.050) | 3,185 (159) |
+| Temporal (later entrants held out) | … plus all evidence lines | 0.637 (0.565–0.719) | 0.125 (0.056) | 1,603 (89) |
+| Held-out target sets | Evidence lines only | 0.622 (0.542–0.703) | 0.092 (0.050) | 3,185 (159) |
+| Temporal (later entrants held out) | Evidence lines only | 0.623 (0.555–0.693) | 0.105 (0.056) | 1,603 (89) |
+
+Change in held-out AUC when each line is removed from the full model:
+
+| Evidence removed | AUC change (95% CI) |
+| :---- | :---- |
+| Any human genetics | -0.025 (-0.047 to -0.005) |
+| Rare-variant or Mendelian genetics | -0.025 (-0.048 to -0.005) |
+| Expressed differently in the disease | -0.007 (-0.022 to +0.010) |
+| Mouse model | +0.002 (-0.000 to +0.004) |
+| Intolerant of loss of function | +0.002 (-0.002 to +0.006) |
+| Somatic cancer driver | +0.002 (-0.015 to +0.019) |
+
+### Confirmatory hypotheses
+
+| Hypothesis | Measure | Estimate (95% CI) | p | Holm p | Result |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Outside oncology: genetics for the disease vs no germline genetics on the target, advancing within 4 years of Phase 2 | risk ratio | 1.74 (1.20–2.53) | 0.004 | 0.022 | supported |
+| Same target in different diseases: genetics for the disease vs not (conditional logit) | odds ratio | 3.17 (2.10–4.78) | < 0.001 | < 0.001 | supported |
+| Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 1.08 (0.81–1.45) | 0.584 | 0.983 | not supported |
+| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.23 (0.91–1.67) | 0.183 | 0.733 | not supported |
+| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.28 (0.83–1.97) | 0.270 | 0.809 | not supported |
+| Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 1.19 (0.73–1.94) | 0.492 | 0.983 | not supported |
+| Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.46 (1.05–2.04) | 0.026 | 0.128 | not supported |
+
+### Which evidence translates: the registered screen
+
+Every rule the plan registered, each against programs without it, before the rules were grouped by kind.
+
+![Phase 2 programs, 2008–2019: each registered rule against programs without it](report/output/figures/s3_evidence_map.png)
+
+| Evidence for the disease, known before Phase 2 | Programs (targets) | Advanced: with / without | Share of all that advanced | Risk ratio, all (95% CI) | Risk ratio, non-oncology | Risk ratio, oncology |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Mendelian evidence for a non-hereditary disease | dorzagliatin (GCK) | type 2 diabetes mellitus | 2015-09-01 | yes; Froguel P et al. Close linkage of glucokinase locus on chromosome 7p to early-onset non-insulin-dependent diabetes mellitus. Nature 1992;356:162-164; Vionnet N… (1992) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | valiltramiprosate (APP (other)) | Alzheimer disease | 2020-09-30 | yes; Goate A et al., 'Segregation of a missense mutation in the amyloid precursor protein gene with familial Alzheimer's disease', Nature 1991 Feb… (1991) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | insulin efsitora alfa (INSR) | type 2 diabetes mellitus | 2018-11-15 | yes; Kadowaki T et al., 'Two mutant alleles of the insulin receptor gene in a patient with extreme insulin resistance', Science 1988 (PMID 2834824) - INSR… (1988) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | padsevonil (GABRA1+SV2A+SV2B+SV2C) | epilepsy | 2015-07-01 | yes; Cossette P et al. Mutation of GABRA1 in an autosomal dominant form of juvenile myoclonic epilepsy. Nat Genet 2002;31:184-189 (GABRA1 A322D; OMIM 611136 EJM5… (2002) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | cevidoplenib (SYK) | rheumatoid arthritis | 2019-03-20 | no; Wang L et al., Gain-of-function variants in SYK cause immune dysregulation and systemic inflammation in humans and mice, Nat Genet 53:500-510 (closest… (2021) | did not advance | wrong population |
-| Mendelian evidence for a non-hereditary disease | rocacetrapib (CETP) | hyperlipidemia | 2017-03-23 | partial; Brown ML, Inazu A, et al. Molecular basis of lipid transfer protein deficiency in a family with increased high-density lipoproteins. Nature 1989;342:448-51… (1989) | did not advance | unknown |
-| Mendelian evidence for a non-hereditary disease | globalagliatin (GCK) | type 2 diabetes mellitus | 2019-12-10 | yes; Froguel P et al. 'Close linkage of glucokinase locus on chromosome 7p to early-onset non-insulin-dependent diabetes mellitus.' Nature 1992;356:162-164 (PMID… (1992) | did not advance | unknown |
-| Mendelian evidence for a non-hereditary disease | eneboparatide (PTH1R) | hypoparathyroidism | 2020-09-07 | no; None found for PTH1R-hypoparathyroidism. PTH1R Mendelian disease links are Blomstrand chondrodysplasia (LoF, Jobert 1998), Jansen metaphyseal chondrodysplasia… (2021) | advanced (pipeline wrong) | – |
-| Mendelian evidence for a non-hereditary disease | donanemab (APP (depleter)) | Alzheimer disease | 2017-12-18 | yes; Goate A et al., 'Segregation of a missense mutation in the amyloid precursor protein gene with familial Alzheimer's disease', Nature 1991 Feb 21;349:704-6… (1991) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | somapacitan (GHR) | pituitary dwarfism | 2016-03-31 | yes; Godowski PJ et al., 'Characterization of the human growth hormone receptor gene and demonstration of a partial gene deletion in two patients with Laron-type… (1989) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | mavacamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2016-08-01 | yes; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. "A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | aficamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2020-01-10 | yes; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. "A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | zagotenemab (MAPT) | Alzheimer disease | 2018-04-30 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705 (includes R406W, a… (1998) | did not advance | engaged, disease did not respond |
-| Mendelian evidence for a non-hereditary disease | asp-8302 (CHRM3 (positive_modulator)) | urinary bladder disorder | 2018-11-20 | yes; Weber S et al., "Muscarinic Acetylcholine Receptor M3 Mutation Causes Urinary Bladder Disease and a Prune-Belly-like Syndrome", Am J Hum Genet 2011 Nov… (2011) | did not advance | wrong population |
-| Mendelian evidence for a non-hereditary disease | semorinemab (MAPT) | Alzheimer disease | 2017-10-04 | partial; Hutton M et al., 'Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17', Nature 1998 (PMID 9641683); also Poorkaj… (1998) | did not advance | engaged, disease did not respond |
-| Mendelian evidence for a non-hereditary disease | RO7123520 (CDH11 (binder_neutralizer), TNF (binder_neutralizer)) | rheumatoid arthritis | 2016-12-22 | no; Balding J et al., "Cytokine gene polymorphisms: association with psoriatic arthritis susceptibility and severity", Arthritis Rheum 2003;48(5):1408-13, PMID… (2003) | did not advance | engagement not shown |
-| Mendelian evidence for a non-hereditary disease | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | partial; Jeunemaitre X, Soubrier F, ... Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct 2;71(1):169-80 (PMID… (1992) | did not advance | engaged, disease did not respond |
-| Mendelian evidence for a non-hereditary disease | TOL-3021 (INS (other)) | type 1 diabetes mellitus | 2019-06-17 | partial; Stoy J et al., "Insulin gene mutations as a cause of permanent neonatal diabetes", PNAS 2007;104(38):15040-4 (PMID 17855560). It is the earliest publication… (2007) | did not advance | engaged, disease did not respond |
-| Reactome pathway | elexacaftor (CFTR) | cystic fibrosis | 2017-01-23 | yes; Reactome pathway R-HSA-5678895 'Defective CFTR causes cystic fibrosis' (disease: cystic fibrosis; reaction R-HSA-5678822 'Defective CFTR does not transport… (2015) | advanced | – |
-| Reactome pathway | cipaglucosidase alfa (GAA) | glycogen storage disease II | 2016-04-01 | yes; Reactome pathway R-HSA-5357609 'Glycogen storage disease type II (GAA)' (disease-annotated: glycogen storage disease II), first released 2015-09-22 (Reactome… (2015) | advanced | – |
-| Reactome pathway | valoctocogene roxaparvovec (F8) | hemophilia A | 2015-09-28 | no; Reactome pathway R-HSA-9662001 'Defective factor VIII causes hemophilia A' (disease: factor VIII deficiency) and its reactions (R-HSA-9672397 Defective F8… (2020) | advanced | – |
-| Reactome pathway | bamocaftor (CFTR) | cystic fibrosis | 2017-08-08 | yes; Reactome R-HSA-5678895 'Defective CFTR causes cystic fibrosis' (releaseDate 2015-06-17) (2015) | advanced | – |
-| Reactome pathway | efzofitimod (NRP1) | COVID-19 | 2020-06-04 | no; Reactome v74 (Sept 2020) first released the SARS-CoV-2 Infection pathway; NRP1 appears only in later SARS-CoV-2 spike cleavage/endocytosis reactions… (2020) | did not advance | commercial |
-| Reactome pathway | OCTA12 (F8) | hemophilia A | 2019-07-03 | no; Reactome pathway R-HSA-9662001 'Defective factor VIII causes hemophilia A' (with child pathways R-HSA-9672397 Defective F8 secretion, R-HSA-9672391 cleavage by… (2020) | did not advance | off-target toxicity |
-| Reactome pathway | sar-125844 (MET) | cancer | 2015-11-01 | partial; Reactome R-HSA-2219530 'Constitutive Signaling by Aberrant PI3K in Cancer' (released 2012-09-18; disease: cancer) includes MET only as one of the activated… (2012) | did not advance | unknown |
-| Reactome pathway | MRT5005 (CFTR) | cystic fibrosis | 2018-05-10 | yes; Reactome pathway R-HSA-5678895 'Defective CFTR causes cystic fibrosis' (disease tag: cystic fibrosis), first released 2015-06-17 (2015) | did not advance | engagement not shown |
-| Reactome pathway | donanemab (APP) | Alzheimer disease | 2017-12-18 | yes; Reactome pathway R-HSA-8862803 'Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models' with APP reactions R-HSA-8870710… (2016) | advanced | – |
-| Reactome pathway | valiltramiprosate (APP) | Alzheimer disease | 2020-09-30 | yes; Reactome pathway R-HSA-8862803 'Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models' (disease: Alzheimer's disease)… (2016) | advanced | – |
-| Reactome pathway | miglustat (GAA+UGCG) | glycogen storage disease II | 2016-04-01 | yes; Reactome pathway R-HSA-5357609 'Glycogen storage disease type II (GAA)' (disease: glycogen storage disease II), containing reaction R-HSA-9036729 'Defective… (2015) | advanced | – |
-| Reactome pathway | pabinafusp alfa (IDS) | mucopolysaccharidosis type 2 | 2017-03-30 | yes; Reactome R-HSA-2206296 'MPS II - Hunter syndrome' (releaseDate 2012-09-18) (2012) | advanced | – |
-| Reactome pathway | tividenofusp alfa (IDS) | mucopolysaccharidosis type 2 | 2020-07-16 | yes; Reactome R-HSA-2206296 'MPS II - Hunter syndrome (HS-GAG degradation)', released 18 Sept 2012 (defective IDS disease reaction) (2012) | advanced | – |
-| Reactome pathway | DFV890 (NLRP3) | COVID-19 | 2020-05-27 | no; Reactome reactions 'SARS-CoV-2 N binds NLRP3' (R-HSA-9757097) and 'SARS-CoV-2 3a induces potassium efflux' (R-HSA-9730521) within 'SARS-CoV-2… (2022) | did not advance | engaged, disease did not respond |
-| Reactome pathway | derazantinib (FGFR1+FGFR2+FGFR3) | gastric adenocarcinoma | 2020-10-06 | yes; Reactome R-HSA-2023837 'Signaling by FGFR2 amplification mutants' and parent R-HSA-5655253 'Signaling by FGFR2 in disease' (release date 2012-06-12): FGFR2… (2012) | did not advance | engaged, disease did not respond |
-| Reactome pathway | afuresertib (AKT1+AKT2+AKT3) | ovarian cancer | 2020-07-07 | partial; Reactome pathways R-HSA-2219528 'PI3K/AKT Signaling in Cancer' and R-HSA-5674400 'Constitutive Signaling by AKT1 E17K in Cancer' (plus reaction R-HSA-2400010… (2012) | did not advance | engaged, disease did not respond |
-| Reactome pathway | dilpacimab (DLL4+VEGFA) | cancer | 2018-03-20 | partial; Reactome 'Signaling by NOTCH1 in Cancer' sub-pathways, e.g. R-HSA-2894862 'Constitutive Signaling by NOTCH1 HD+PEST Domain Mutants' with reactions… (2012) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | fuzuloparib (PARP1, PARP2) | malignant pancreatic neoplasm | 2020-01-21 | yes; Olaparib (Lynparza tablets, AstraZeneca), NDA 208558 (supplemental approval), approved 2019-12-27 as maintenance treatment of adults with germline BRCA-mutated… (2019) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | dasiglucagon (GCGR) | type 1 diabetes mellitus | 2016-11-01 | yes; Glucagon (Eli Lilly), NDA 012122, approved 1960-11-14 (NME), for severe hypoglycemia (insulin reactions) in patients with diabetes. The rDNA Lilly Glucagon for… (1960) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | vepdegestrant (ESR1) | breast cancer | 2019-09-22 | yes; Tamoxifen citrate (Nolvadex), NDA 017970 (ICI, now AstraZeneca), original approval 1977-12-30, for breast cancer (metastatic breast cancer). A closer match by… (1977) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | anbenitamab (ERBB2) | breast cancer | 2019-12-31 | yes; FDA approval of trastuzumab (Herceptin, BLA 103792) for HER2-overexpressing metastatic breast cancer, 25 Sep 1998 (1998) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | cerdulatinib (JAK1, JAK3, SYK, TYK2) | vitiligo | 2019-09-27 | partial; Jakafi (ruxolitinib phosphate, a JAK1/JAK2 inhibitor), NDA 202192, approved 2011-11-16 for intermediate- or high-risk myelofibrosis (2011) | did not advance | commercial |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | avadomide (CRBN) | B-cell chronic lymphocytic leukemia | 2015-07-27 | yes; Lenalidomide (Revlimid), NDA 021880 supplement S-034, approved 2013-06-05 for relapsed/progressive mantle cell lymphoma after two prior therapies including… (2013) | did not advance | commercial |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | pegadricase (UOX) | purine metabolism disease | 2016-10-01 | yes; Krystexxa (pegloticase, Savient), BLA 125293, approved 2010-09-14, for chronic gout in adults refractory to conventional therapy (2010) | advanced (pipeline wrong) | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | pruxelutamide (AR) | prostate cancer | 2019-05-30 | yes; Flutamide (EULEXIN, Schering), NDA 018554, approved 1989-01-27 (new molecular entity) for metastatic prostate cancer, given with an LHRH agonist; later… (1989) | advanced (pipeline wrong) | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; FDA accelerated approval of IRESSA (gefitinib), NDA 21-399, AstraZeneca, 5 May 2003, for locally advanced or metastatic NSCLC after failure of platinum-based… (2003) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; FDA accelerated approval letter, NDA 21-399, IRESSA (gefitinib, an EGFR tyrosine kinase inhibitor), to AstraZeneca, signed 5/5/03. It covers monotherapy for… (2003) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | zanidatamab (ERBB2 (inhibitor)) | biliary tract cancer | 2020-10-01 | partial; FDA supplemental BLA approval letter, Herceptin (trastuzumab) BLA 103792/5250, October 20, 2010, approving trastuzumab for HER2-overexpressing metastatic… (2010) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | trastuzumab deruxtecan (ERBB2 (binder_neutralizer)) | gastric cancer | 2019-11-26 | yes; FDA supplemental BLA approval letter STN 103792/5250, Herceptin (trastuzumab, Genentech), dated October 20, 2010. It approved Herceptin for HER2-overexpressing… (2010) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | ovarian cancer | 2015-03-23 | yes; FDA accelerated approval of Lynparza (olaparib, AstraZeneca), NDA 206162, approval letter dated 12/19/2014: monotherapy for deleterious or suspected… (2014) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | niraparib (PARP1 (inhibitor), PARP2 (inhibitor)) | prostate cancer | 2016-08-31 | partial; FDA accelerated approval of Lynparza (olaparib) capsules, NDA 206162, AstraZeneca, signed 12/19/2014. Indication: monotherapy for deleterious germline… (2014) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | trazodone (HTR2A, SLC6A4) | diabetic neuropathy | 2017-05-16 | yes; Cymbalta (duloxetine HCl, Eli Lilly), NDA 021733, approved 2004-09-03 (Lilly announced it 2004-09-07) for the management of diabetic peripheral neuropathic… (2004) | did not advance | trial design |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | OPC-64005 (SLC6A2, SLC6A3, SLC6A4) | major depressive disorder | 2020-03-03 | yes; Desipramine (Norpramin), NDA 014399, original approval 1964-11-20, for depression (a tricyclic that blocks norepinephrine reuptake, SLC6A2). A cleaner… (1964) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | ramucirumab (KDR) | synovial sarcoma | 2020-03-04 | yes; Pazopanib (Votrient), NDA 022465 supplement S-010, approved 2012-04-26 for advanced soft tissue sarcoma in patients who had received prior chemotherapy.… (2012) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | sabizabulin (TUBB) | adult acute respiratory distress syndrome | 2020-06-18 | partial; Oncovin (vincristine sulfate, Eli Lilly), NDA 014103, approved 1963-07-10, oncology (acute leukemia); a beta-tubulin binder that inhibits polymerization.… (1963) | advanced (pipeline wrong) | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | samotolisib (MTOR+PIK3CA+PIK3CB+PIK3CD+PIK3CG) | pancreatic ductal adenocarcinoma | 2017-01-12 | partial; FDA approval of everolimus (Afinitor, NDA 022334 supplement) for progressive pancreatic neuroendocrine tumours, May 2011 (2011) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | min-117 (HTR1A+SLC6A4) | major depressive disorder | 2018-03-30 | yes; FDA approval of fluoxetine (Prozac, NDA 018936), a SLC6A4 (SERT) inhibitor, for major depressive disorder, 1987-12-29; many later SSRIs/SNRIs and vilazodone… (1987) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | ask-120067 (EGFR) | non-small cell lung carcinoma | 2017-11-30 | partial; Bell DW et al. 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR.' Nat Genet 2005;37:1315-1316 (PMID… (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | cipaglucosidase alfa (GAA) | glycogen storage disease II | 2016-04-01 | yes; Hermans MM et al., Biochem Biophys Res Commun 1991, 'Identification of a point mutation in the human lysosomal alpha-glucosidase gene causing infantile… (1990) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | pyrotinib (EGFR+ERBB2) | non-small cell lung carcinoma | 2016-10-20 | partial; Bell DW et al., 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR', Nat Genet 2005 (PMID 16258541) (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | firmonertinib (EGFR) | non-small cell lung carcinoma | 2018-04-30 | yes; Bell DW et al. 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR', Nat Genet 2005;37:1315-1316 (PMID… (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | mavelertinib (EGFR) | non-small cell lung carcinoma | 2015-05-14 | partial; Bell DW et al., 'Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR', Nat Genet 2005;37:1315-1316 (PMID… (2005) | did not advance | commercial |
-| Germline mechanism concordant with the drug (added after the plan) | vupanorsen (ANGPTL3) | hyperlipidemia | 2020-09-28 | yes; Romeo S et al., 'Rare loss-of-function mutations in ANGPTL family members contribute to plasma triglyceride levels in humans', J Clin Invest 2009;119:70-79… (2009) | did not advance | off-target toxicity |
-| Germline mechanism concordant with the drug (added after the plan) | VX-152 (CFTR) | cystic fibrosis | 2016-11-01 | yes; Riordan JR et al., Identification of the cystic fibrosis gene: cloning and characterization of complementary DNA, Science 245:1066-73 (with Rommens et al. and… (1989) | did not advance | commercial |
-| Germline mechanism concordant with the drug (added after the plan) | OCTA12 (F8) | hemophilia A | 2019-07-03 | yes; Gitschier J et al. Characterization of the human factor VIII gene. Nature 1984;312:326-30, and Gitschier J et al. Detection and sequence of mutations in the… (1985) | did not advance | off-target toxicity |
-| Germline mechanism concordant with the drug (added after the plan) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; Bell DW et al., "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR", Nat Genet 2005;37(12):1315-6 (PMID… (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | rezivertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-08-16 | yes; Bell DW, ..., Haber DA. "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR." Nat Genet… (2005) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | pabinafusp alfa (IDS) | mucopolysaccharidosis type 2 | 2017-03-30 | yes; Wilson PJ et al. Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA. PNAS 1990;87:8531-8535 (PMID 2122463), preceded… (1990) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | tividenofusp alfa (IDS) | mucopolysaccharidosis type 2 | 2020-07-16 | yes; Wilson PJ et al., PNAS 1990;87:8531-8535, 'Hunter syndrome: isolation of an iduronate-2-sulfatase cDNA clone and analysis of patient DNA' (germline IDS gene… (1990) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | mavacamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2016-08-01 | partial; Geisterfer-Lowrance AA, Kass S, Tanigawa G, Vosberg HP, McKenna W, Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta… (1990) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | aficamten (MYH7 (inhibitor)) | hypertrophic cardiomyopathy | 2020-01-10 | yes; Geisterfer-Lowrance AA, ..., Seidman CE, Seidman JG. 'A molecular basis for familial hypertrophic cardiomyopathy: a beta cardiac myosin heavy chain gene… (1990) | advanced | – |
-| Germline mechanism concordant with the drug (added after the plan) | PF-06687234 (IL10RA (agonist)) | ulcerative colitis | 2017-12-20 | partial; Glocker EO et al. "Inflammatory bowel disease and mutations affecting the interleukin-10 receptor." N Engl J Med 2009;361(21):2033-45, PMID 19890111. It… (2009) | did not advance | engagement not shown |
-| Germline mechanism concordant with the drug (added after the plan) | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | yes; Jeunemaitre X, Soubrier F, Kotelevtsev YV, Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct… (1992) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | asp-8302 (CHRM3) | urinary bladder disorder | 2018-11-20 | yes; Weber S et al. Muscarinic acetylcholine receptor M3 mutation causes urinary bladder disease and a prune-belly-like syndrome. Am J Hum Genet 2011;89:668-674… (2011) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | cinpanemab (SNCA) | Parkinson disease | 2018-01-10 | yes; Polymeropoulos MH et al. 'Mutation in the alpha-synuclein gene identified in families with Parkinson's disease.' Science 1997;276:2045-2047 (PMID 9197268… (1997) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | semorinemab (MAPT) | Alzheimer disease | 2017-10-04 | partial; Hutton M et al. Association of missense and 5'-splice-site mutations in tau with the inherited dementia FTDP-17. Nature 1998;393:702-705… (1998) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | ngm-621 (C3) | dry age related macular degeneration | 2020-07-22 | yes; Yates JR et al., N Engl J Med 2007, 'Complement C3 variant and the risk of age-related macular degeneration' (PMID 17634448). C3 R102G (rs2230199) risk allele… (2007) | did not advance | engaged, disease did not respond |
+| Germline genetics for the disease | 510 (232) | 28% / 13% | 20% | 1.94 (1.55–2.41) | 1.56 (1.16–2.11) | 2.18 (1.52–3.11) |
+| GWAS, any locus-to-gene score | 143 (76) | 21% / 15% | 4% | 1.35 (0.93–1.96) | 1.43 (0.86–2.38) | 1.56 (0.91–2.67) |
+| GWAS, locus-to-gene score ≥ 0.8 | 59 (36) | 17% / 15% | 1% | 1.04 (0.59–1.83) | 1.11 (0.54–2.28) | – |
+| GWAS, best score 0.5–0.8 | 37 (20) | 16% / 15% | 1% | 0.98 (0.48–2.02) | – | – |
+| GWAS, best score below 0.5 | 47 (30) | 30% / 15% | 2% | 2.02 (1.16–3.52) | 2.14 (1.10–4.18) | – |
+| Mendelian or ClinVar pathogenic | 394 (176) | 29% / 14% | 17% | 2.00 (1.57–2.54) | 1.62 (1.18–2.22) | 2.09 (1.40–3.13) |
+| Mendelian, top-tier curation | 241 (118) | 31% / 14% | 11% | 2.21 (1.64–2.98) | 1.69 (1.16–2.46) | 2.66 (1.65–4.31) |
+| Somatic cancer driver | 535 (129) | 22% / 14% | 17% | 1.63 (1.21–2.19) | – | 1.60 (1.16–2.20) |
+| Somatic driver, direction matches the drug | 408 (90) | 21% / 14% | 13% | 1.53 (1.11–2.11) | – | 1.46 (1.05–2.04) |
+| Mouse model (literature) | 943 (413) | 20% / 14% | 28% | 1.43 (1.16–1.76) | 1.47 (1.18–1.85) | 1.26 (0.77–2.05) |
+| Mouse model, top-quartile phenotype match | 574 (278) | 21% / 14% | 18% | 1.41 (1.15–1.73) | 1.42 (1.10–1.83) | 1.23 (0.80–1.90) |
+| Expressed differently in the disease | 520 (262) | 16% / 15% | 12% | 1.02 (0.70–1.47) | 0.53 (0.27–1.03) | 1.24 (0.83–1.86) |
+| Disease pathway (Reactome) | 106 (41) | 23% / 15% | 3% | 1.39 (0.91–2.11) | – | 0.54 (0.15–2.04) |
+| **Clinical precedent** |  |  |  |  |  |  |
+| Approved drug on the target, related disease | 1,234 (342) | 25% / 11% | 45% | 2.13 (1.73–2.62) | 1.93 (1.53–2.44) | 2.42 (1.48–3.94) |
+| Approved drug on the target, any disease | 2,624 (530) | 18% / 12% | 67% | 1.61 (1.34–1.93) | 1.57 (1.26–1.97) | 1.70 (1.22–2.36) |
+| **Target liabilities** (not specific to the disease) |  |  |  |  |  |  |
+| Essential in most cell lines | 0 (0) | – / 15% | 0% | – | – | – |
+| Intolerant of loss of function | 894 (211) | 15% / 15% | 19% | 1.02 (0.80–1.30) | 1.17 (0.90–1.53) | 0.85 (0.56–1.29) |
+| Mouse knockout dies before weaning | 2,239 (519) | 15% / 15% | 48% | 0.98 (0.81–1.19) | 0.89 (0.73–1.10) | 1.00 (0.69–1.47) |
+
+### By endpoint
+
+| Class of the governing primary endpoint | Trials | Missed primary endpoint | Trials with genetics for the disease | Missed: with / without genetics | Risk ratio of a miss, all readable trials (95% CI) | Risk ratio, registry-posted results (FDAAA era) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| Target engagement | 29 | 28% | 13 | 15% / 38% | – | – |
+| Exploratory biomarker | 271 | 69% | 27 | 81% / 68% | 1.19 (0.90–1.57) | – |
+| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,353 | 23% | 193 | 18% / 24% | 1.00 (0.69–1.44) | 0.45 (0.22–0.90) |
+| Objective physiology (6MWD, visual acuity, weight…) | 448 | 50% | 75 | 41% / 51% | 0.93 (0.66–1.30) | 0.98 (0.64–1.53) |
+| Clinician-rated scale or responder index | 1,299 | 55% | 177 | 47% / 56% | 0.81 (0.65–1.01) | 0.84 (0.66–1.06) |
+| Patient-reported outcome | 661 | 51% | 8 | 50% / 51% | – | – |
+| Disease events (relapses, exacerbations…) | 338 | 41% | 52 | 40% / 41% | 0.90 (0.57–1.42) | – |
+| Hard outcome (death, MI, stroke…) | 151 | 52% | 12 | 50% / 52% | – | – |
+| Tumour response | 151 | 65% | 32 | 62% / 66% | 0.99 (0.73–1.34) | – |
+| Progression-free survival | 492 | 60% | 97 | 53% / 62% | 1.04 (0.85–1.28) | 1.08 (0.78–1.48) |
+| Overall survival | 232 | 69% | 25 | 56% / 71% | 0.79 (0.52–1.19) | – |
+
+### Which kinds of evidence predict, and whether being more specific helps
+
+| Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Germline genetics for the disease | All | 510 (232) | 28% / 13% | 1.94 (1.55–2.41) | < 0.001 |
+| Animal model of the disease | All | 949 (417) | 20% / 14% | 1.43 (1.17–1.76) | 0.003 |
+| Somatic driver for the tumour | Oncology | 528 (127) | 22% / 12% | 1.60 (1.16–2.20) | 0.018 |
+| CRISPR screen in cells | All | 0 (0) | – / 15% | too few programs (0) to test | – |
+| Expressed differently in the disease | All | 520 (262) | 16% / 15% | 1.02 (0.70–1.47) | 1.000 |
+| Disease pathway (Reactome) | All | 106 (41) | 23% / 15% | 1.39 (0.91–2.11) | 0.385 |
+| Target liability | All | 2,404 (559) | 15% / 15% | 1.02 (0.84–1.25) | 1.000 |
+| **Benchmark** (clinical precedent, not preclinical evidence) |  |  |  |  |  |
+| Approved drug on the target, related disease | All | 1,234 (342) | 25% / 11% | 2.13 (1.73–2.62) | – |
+
+| More specific version | Within programs with | Programs | Advanced: with / rest of the type | Adjusted risk ratio (95% CI) | Holm-corrected p |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| GWAS with locus-to-gene ≥ 0.8 | Germline genetics for the disease | 59 of 510 | 17% / 29% | 0.69 (0.37–1.27) | 1.000 |
+| Mendelian evidence in a non-hereditary disease | Germline genetics for the disease | 114 of 201 | 26% / 21% | 1.13 (0.58–2.20) | 1.000 |
+| GWAS and rare-variant evidence together | Germline genetics for the disease | 27 of 510 | 11% / 29% | 0.39 (0.16–0.97) | 0.424 |
+| Drug raises function or replaces the gene, hereditary disease | Germline genetics for the disease | 95 of 147 | 32% / 19% | 1.74 (0.78–3.86) | 1.000 |
+| Genetics points the same way as the drug (added after the plan) | Germline genetics for the disease | 251 of 510 | 28% / 27% | 1.06 (0.71–1.60) | 1.000 |
+| Protective loss of function + drug that lowers function (added after the plan) | Germline genetics for the disease | 30 of 510 | 17% / 28% | too few to test | – |
+| Close phenotype match (top quartile) | Animal model of the disease | 575 of 949 | 21% / 19% | 1.06 (0.73–1.56) | 1.000 |
+| Mouse model points the same way as the drug (added after the plan) | Animal model of the disease | 334 of 949 | 22% / 19% | 1.02 (0.74–1.39) | 1.000 |
+| Driver matches the drug (activated oncogene + inhibitor) | Somatic driver for the tumour | 394 of 528 | 22% / 20% | 1.06 (0.57–1.94) | 1.000 |
+| Expression up + drug that lowers function | Expressed differently in the disease | 247 of 520 | 14% / 17% | 0.87 (0.46–1.64) | 1.000 |
+| Liability + drug that lowers function | Target liability | 1,791 of 2,404 | 15% / 16% | 1.04 (0.79–1.38) | 1.000 |
 
 ## Sources in detail
 
-Each entry gives who compiles the source and from what, what the pipeline keeps, the shape of the raw response, and a real record from the cached download, trimmed to the fields used.
+Each entry gives who compiles the source and from what, what this analysis takes from it, the shape of the raw response, and a real record from the cached download, trimmed to the fields used.
 
 ### ClinicalTrials.gov API v2
 
@@ -111,7 +269,7 @@ Each entry gives who compiles the source and from what, what the pipeline keeps,
 *Queried at run time; each run is recorded with its date and a hash of what it returned · `esearch.fcgi?db=pubmed&term=NCT…[si]`, then `efetch.fcgi?retmode=xml`*
 
 **Compiled by.** NCBI indexes citations from publishers and MEDLINE. A trial registration number named in an article is recorded in its data-bank list and is searchable as a secondary identifier.
-**We use.** We look up only completed industry Phase 2/3 trials, started from 2010, that posted no results. A paper links to a trial when the registry lists it as a RESULT or DERIVED reference, or when PubMed lists the NCT number. This links 2,284 trials. For each paper we keep title, first author, journal, year, DOI and abstract, and the abstracts feed the outcome classifier.
+**We use.** We look up only completed industry Phase 2/3 trials, started from 2008, that posted no results. A paper links to a trial when the registry lists it as a RESULT or DERIVED reference, or when PubMed lists the NCT number. This links 2,284 trials. For each paper we keep title, first author, journal, year, DOI and abstract, and the abstracts feed the outcome classifier.
 **Shape.** `<PubmedArticle><MedlineCitation><PMID/><Article><Journal/><ArticleTitle/><Abstract/><DataBankList><DataBank><AccessionNumber/></DataBank></DataBankList></Article></MedlineCitation><PubmedData><ArticleIdList><ArticleId IdType="doi"/></ArticleIdList></PubmedData></PubmedArticle>`
 
 ```text
