@@ -1,6 +1,7 @@
 """ClinicalTrials.gov snapshot -> preclin.ctgov_study.
 
-    python -m pipeline.ctgov fetch   # every interventional study with a DRUG or BIOLOGICAL intervention
+    python -m pipeline.ctgov fetch   # every interventional study with a DRUG, BIOLOGICAL, GENETIC or
+                                     # COMBINATION_PRODUCT intervention
     python -m pipeline.ctgov load    # cached pages -> preclin.ctgov_study (one row per NCT id)
 
 The snapshot covers all sponsors and all dates so that a molecule's full
@@ -28,7 +29,8 @@ from pipeline import llm
 
 CACHE = os.path.join(llm.REPO, ".cache", "ctgov")
 API = "https://clinicaltrials.gov/api/v2/studies"
-QUERY = "AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL)"
+QUERY = ("AREA[StudyType]INTERVENTIONAL AND "
+         "AREA[InterventionType](DRUG OR BIOLOGICAL OR GENETIC OR COMBINATION_PRODUCT)")
 STARTED_STATUSES = ("COMPLETED", "TERMINATED", "SUSPENDED")  # statuses a study reaches only once it has started
 
 

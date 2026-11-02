@@ -195,6 +195,7 @@ purpose:
 - other: anything else (e.g. an observational protocol registered as interventional, a diagnostic or imaging use, an expanded-access program).
 
 development_conditions: for indication_development and multi_indication, the listed conditions the trial develops the drug for, copied exactly as listed (leave out listed conditions that only describe the population, such as "Healthy"); otherwise an empty list.
+title_disease: for indication_development, when the title (or official title) says the trial treats a disease that is not listed and the listed conditions it develops the drug for are only complications or manifestations of that disease (e.g. acute respiratory distress syndrome listed for a trial of COVID-19 patients), that disease's standard name (e.g. "COVID-19"); otherwise null. Leave it null when a listed condition is itself the disease being developed, or when the complication is the indication the sponsor develops the drug for in its own right.
 Judge from the design, not from words alone: a Phase 1 in patients with one named disease that tests efficacy is indication_development; a Phase 3 bioequivalence study is product_support."""
 
 PURPOSE_SCHEMA = {
@@ -203,9 +204,10 @@ PURPOSE_SCHEMA = {
         "purpose": {"type": "string", "enum": ["indication_development", "multi_indication", "early_development",
                                                "product_support", "other"]},
         "development_conditions": {"type": "array", "items": {"type": "string"}},
+        "title_disease": {"type": ["string", "null"]},
         "rationale": {"type": "string"},
     },
-    "required": ["purpose", "development_conditions", "rationale"],
+    "required": ["purpose", "development_conditions", "title_disease", "rationale"],
     "additionalProperties": False,
 }
 
@@ -228,9 +230,11 @@ def validate_purpose(p: dict, out: dict) -> None:
     extra = set(out["development_conditions"]) - set(p["conditions"])
     if extra:
         raise ValueError(f"development_conditions not among listed conditions: {sorted(extra)[:3]}")
+    if out["title_disease"] and out["purpose"] != "indication_development":
+        raise ValueError("title_disease is given only for indication_development")
 
 
-PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v2", schema_version="v1", system=PURPOSE_SYSTEM,
+PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v3", schema_version="v2", system=PURPOSE_SYSTEM,
                         schema=PURPOSE_SCHEMA, render=render_purpose, validate=validate_purpose,
                         subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
 
@@ -358,10 +362,11 @@ def purposes(_args) -> None:
     run_id = llm.run(PURPOSE_TASK, items)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_purpose")
-        cur.execute("""INSERT INTO preclin.trial_purpose (nct_id, purpose, development_conditions, llm_decision_id)
+        cur.execute("""INSERT INTO preclin.trial_purpose (nct_id, purpose, development_conditions, title_disease,
+                                                         llm_decision_id)
                        SELECT subject_key, parsed_output->>'purpose',
                               ARRAY(SELECT jsonb_array_elements_text(parsed_output->'development_conditions')),
-                              llm_decision_id
+                              parsed_output->>'title_disease', llm_decision_id
                        FROM pv_evidence.llm_decision WHERE decision_run_id = %s AND validation_status = 'validated'""",
                     (str(run_id),))
         conn.commit()
@@ -371,6 +376,8 @@ def purposes(_args) -> None:
 INDICATION_SYSTEM = """You group the diseases a drug (molecular entity) has been tested in into development indications: the units a sponsor runs and reports as separate development programs, as industry trackers such as Biomedtracker record them.
 
 Put a disease together with its subtypes, stages, lines of therapy, biomarker groups and settings when they are the same indication for development (prostate cancer, castration-resistant prostate carcinoma, metastatic prostate carcinoma and prostate adenocarcinoma are one indication; non-small cell lung carcinoma with squamous and non-squamous NSCLC; type 2 diabetes mellitus with its complications studied as glycaemic control). Keep apart diseases that are separate indications even when one ontology term contains the other: different cancer types or lymphoma subtypes (diffuse large B-cell vs follicular lymphoma), type 1 vs type 2 diabetes, Crohn's disease vs ulcerative colitis, a complication developed as its own indication (diabetic kidney disease vs type 2 diabetes; diabetic macular edema vs diabetes). A generic grouping term the trials used for a basket (cancer, solid tumor, neoplasm) is its own group.
+
+Diseases listed together in one of the drug's trials are often one indication described two ways: a disease and its defining abnormality or cause (gout and hyperuricemia), or a disease and a complication the trial treats within it. Group them when they are one indication for development; keep them apart when the trial studies them as separate indications (a basket of tumor types, or two diseases the drug is developed for). A disease shown as the nearest broader term for listed conditions stands for those conditions: judge it by them, not by the broader term's name.
 
 Every disease belongs to exactly one group. The representative of a group is the member that names the indication, usually the broadest member that is still a single indication. Write members and representatives as the MONDO ids exactly as listed (e.g. "MONDO:0008315"), never as names."""
 
@@ -385,9 +392,14 @@ INDICATION_SCHEMA = {
 }
 
 
+MAX_COLISTED = 12  # diseases shown as listed in a trial with each disease; basket trials list dozens
+
+
 def render_indications(p: dict) -> str:
     lines = "\n".join(f"- {d['mondo_id']}: {d['label']} ({d['n_trials']} trials, phases {d['phases']}"
-                       + (f"; subtype of {', '.join(d['within'])}" if d["within"] else "") + ")"
+                       + (f"; nearest broader term for: {'; '.join(d['broader_for'])}" if d["broader_for"] else "")
+                       + (f"; subtype of {', '.join(d['within'])}" if d["within"] else "")
+                       + (f"; listed in a trial with {', '.join(d['with'])}" if d["with"] else "") + ")"
                        for d in p["diseases"])
     return f"Entity: {p['entity']}\n\nDiseases (answer with these MONDO ids):\n{lines}"
 
@@ -402,7 +414,7 @@ def validate_indications(p: dict, out: dict) -> None:
             raise ValueError(f"representative {g['representative']} not a member")
 
 
-INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v2", schema_version="v1",
+INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v3", schema_version="v1",
                            system=INDICATION_SYSTEM, schema=INDICATION_SCHEMA, render=render_indications,
                            validate=validate_indications, subject_type="moiety", model="claude-opus-5-5",
                            effort="medium", max_tokens=32000)
@@ -410,11 +422,13 @@ INDICATION_TASK = llm.Task(name="entity_indication_groups", prompt_version="v2",
 
 def indications(_args) -> None:
     """Group each entity's diseases into development indications (entities with
-    two or more diseases, one of which contains another)."""
+    two or more diseases, one of which contains another or which are listed in
+    one of its trials together)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
-            SELECT sm.moiety_id, m.name, i.mondo_id, t.label, count(DISTINCT sm.nct_id),
-                   array_agg(DISTINCT s.phases[array_upper(s.phases, 1)])
+            SELECT sm.moiety_id, m.name, i.mondo_id, t.label, array_agg(DISTINCT sm.nct_id),
+                   array_agg(DISTINCT s.phases[array_upper(s.phases, 1)]),
+                   coalesce(array_agg(DISTINCT i.display_name) FILTER (WHERE i.mondo_match = 'broader'), '{}')
             FROM preclin.ctgov_study_moiety sm JOIN preclin.moiety m USING (moiety_id)
             JOIN preclin.ctgov_study s USING (nct_id)
             JOIN preclin.ctgov_study_indication si USING (nct_id) JOIN preclin.indication i USING (indication_id)
@@ -426,16 +440,21 @@ def indications(_args) -> None:
         ancestors = mondo_ancestors(cur)
     by_entity = defaultdict(list)
     names = {}
-    for mid, name, mondo, label, n, phases in rows:
+    trials_of = {}
+    for mid, name, mondo, label, ncts, phases, broader_for in rows:
         names[mid] = name
-        by_entity[mid].append({"mondo_id": mondo, "label": label, "n_trials": n,
-                               "phases": ", ".join(sorted(p for p in phases if p))})
+        trials_of[(mid, mondo)] = set(ncts)
+        by_entity[mid].append({"mondo_id": mondo, "label": label, "n_trials": len(ncts),
+                               "phases": ", ".join(sorted(p for p in phases if p)),
+                               "broader_for": sorted(broader_for)[:5]})
     items = {}
     for mid, ds in by_entity.items():
         ids = {d["mondo_id"] for d in ds}
         for d in ds:
             d["within"] = sorted(ids & ancestors[d["mondo_id"]])
-        if any(d["within"] for d in ds):
+            d["with"] = sorted(o for o in ids - {d["mondo_id"]}
+                               if trials_of[(mid, o)] & trials_of[(mid, d["mondo_id"])])[:MAX_COLISTED]
+        if any(d["within"] or d["with"] for d in ds):
             items[str(mid)] = {"entity": names[mid], "diseases": sorted(ds, key=lambda d: d["mondo_id"])}
     run_id = llm.run(INDICATION_TASK, items)
     out = [(int(mid), m, g["representative"], did) for mid, did, o in llm.decisions(run_id)
@@ -453,6 +472,100 @@ ACTIVE_STATUSES = {"RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATI
 PHASE_NUM = {"EARLY_PHASE1": 1, "PHASE1": 1, "PHASE2": 2, "PHASE3": 3}
 
 
+def trial_disease_sets(conditions: list[tuple], purpose: dict, title_disease: dict) -> tuple[dict, dict, set]:
+    """What each trial counts for, from its listed conditions (nct, mondo_id, mondo_match, name, spellings).
+    Returns trial -> its MONDO diseases; trial -> those of them mapped only to a broader term while another
+    is mapped exactly (they attach without starting a program); and the trials with a counted condition
+    that has no MONDO term. An early-development trial counts for none of its conditions, and an
+    indication-development trial only for those it develops the drug for (purpose: trial -> (purpose,
+    development conditions)). A trial in title_disease (trial -> MONDO id) counts for that disease alone:
+    its listed conditions are complications of it."""
+    exact, trial_other = defaultdict(dict), set()
+    for nct, mondo, match, name, spellings in conditions:
+        p, developed = purpose.get(nct, ("indication_development", set()))
+        if p == "early_development" or (developed and not developed & {name, *spellings}):
+            continue  # a condition the trial does not develop the drug for
+        if mondo:
+            exact[nct][mondo] = exact[nct].get(mondo, False) or match == "exact"
+        else:
+            trial_other.add(nct)
+    for nct, mondo in title_disease.items():
+        if purpose.get(nct, ("",))[0] != "early_development":
+            exact[nct] = {mondo: True}
+            trial_other.discard(nct)
+    trial_diseases = {nct: set(ds) for nct, ds in exact.items()}
+    demoted = {nct: {d for d, e in ds.items() if not e} for nct, ds in exact.items()
+               if any(ds.values()) and not all(ds.values())}
+    return trial_diseases, demoted, trial_other
+
+
+def entry_programs(first: dict, start: date) -> set:
+    """Programs a shared trial starting on `start` can mark entry for: those
+    already under way and the one(s) begun next after it."""
+    later = [f for f in first.values() if f > start]
+    nxt = min(later, default=None)
+    return {k for k, f in first.items() if f <= start or f == nxt}
+
+
+def assemble_programs(by_moiety: dict, trials: dict, trial_diseases: dict, demoted: dict, trial_other: set,
+                      baskets: set, indication: dict, ancestors: dict) -> dict:
+    """(moiety, mondo or None) -> {nct: (attach, marks_entry)} for each entity's investigational trials
+    (`by_moiety`). trial_diseases: trial -> the MONDO diseases it counts for; demoted: trial -> those of
+    them mapped only to a broader term while another of the trial's diseases is mapped exactly, which
+    attach to the programs they name or contain as broader_condition without starting one; trials:
+    trial -> its "start" date; indication: (moiety, disease) -> the disease representing its group."""
+    programs = {}
+    for mid, ncts in by_moiety.items():
+        direct = defaultdict(set)
+        no_disease, other_condition, basket, broader = [], [], [], []
+        for nct in ncts:
+            if nct in baskets:
+                basket.append(nct)
+            elif trial_diseases.get(nct):
+                for d in trial_diseases[nct] - demoted.get(nct, set()):
+                    direct[indication.get((mid, d), d)].add(nct)
+                if demoted.get(nct):
+                    broader.append(nct)
+            elif nct in trial_other:
+                other_condition.append(nct)
+            else:
+                no_disease.append(nct)
+        specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
+        first = {(mid, d): min(trials[n]["start"] for n in direct[d]) for d in specific}
+        for d in sorted(specific):
+            programs[(mid, d)] = dict.fromkeys(sorted(direct[d]), ("disease", True))
+        for d in sorted(set(direct) - specific):
+            covered = {k: f for k, f in first.items() if d in ancestors[k[1]]}
+            for nct in direct[d]:
+                lead = entry_programs(covered, trials[nct]["start"])
+                for key in covered:
+                    programs[key].setdefault(nct, ("broader_condition", key in lead))
+        for nct in broader:
+            reps = {indication.get((mid, d), d) for d in demoted[nct]}
+            covered = {k: f for k, f in first.items() if k[1] in reps or reps & ancestors[k[1]]}
+            lead = entry_programs(covered, trials[nct]["start"])
+            for key in covered:
+                programs[key].setdefault(nct, ("broader_condition", key in lead))
+        if other_condition:
+            programs[(mid, None)] = dict.fromkeys(other_condition, ("non_disease_condition", True))
+            first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
+        for nct in basket:  # shared by the programs of the diseases it lists, else the unspecified program
+            listed = {k for k in first if any(indication.get((mid, d), d) == k[1] or d in ancestors[k[1]]
+                                              for d in trial_diseases.get(nct, ()))}
+            lead = entry_programs({k: first[k] for k in listed}, trials[nct]["start"])
+            for key in listed:
+                programs[key].setdefault(nct, ("basket", key in lead))
+            if not lead:
+                programs.setdefault((mid, None), {})[nct] = ("basket", True)
+        targets = [k for k in programs if k[0] == mid] or [(mid, None)]
+        for nct in no_disease:
+            lead = entry_programs({k: first[k] for k in targets if k in first}, trials[nct]["start"]) \
+                if first else set(targets)
+            for key in targets:
+                programs.setdefault(key, {}).setdefault(nct, ("no_disease", key in lead))
+    return programs
+
+
 def build(_args) -> None:
     """(molecular entity, indication) programs from investigational trials. An
     indication is the MONDO disease representing a group of the entity's diseases
@@ -465,6 +578,9 @@ def build(_args) -> None:
     programs instead of forming its own; a trial without a disease
     (healthy volunteers, or none listed) attaches to every program of the
     entity, or forms the entity's disease-unspecified program when it has none.
+    A condition mapped only to a broader MONDO term (indication.mondo_match) in a
+    trial that also lists an exactly mapped disease attaches as broader_condition
+    to the programs its term names or contains, and starts none of its own.
     A trial whose conditions are only symptoms, procedures or other conditions
     without a MONDO term (pain, contraception) attaches only to that
     unspecified program. Any condition with a MONDO term counts as a disease. Such a shared
@@ -474,8 +590,9 @@ def build(_args) -> None:
 
     Industry trials follow their purpose (preclin.trial_purpose): product-support
     and other trials are left out; an indication-development trial counts for the
-    conditions it develops the drug for; an early-development trial is shared like
-    a healthy-volunteer trial; a multi-indication basket is shared by the programs
+    conditions it develops the drug for, or for the disease its title names when
+    those conditions are only complications of it (title_disease); an
+    early-development trial is shared like a healthy-volunteer trial; a multi-indication basket is shared by the programs
     of the diseases it lists (marking entry for those under way or begun next), and
     belongs to the entity's unspecified program when none of them qualifies.
 
@@ -506,73 +623,26 @@ def build(_args) -> None:
         for nct, mid in cur.fetchall():
             if nct in trials:
                 by_moiety[mid].append(nct)
-        cur.execute("""SELECT si.nct_id, i.mondo_id, i.display_name, coalesce(i.ct_gov_conditions, '{}')
+        cur.execute("""SELECT si.nct_id, i.mondo_id, i.mondo_match, i.display_name, coalesce(i.ct_gov_conditions, '{}')
                        FROM preclin.ctgov_study_indication si JOIN preclin.indication i USING (indication_id)
                        WHERE i.indication_kind IS DISTINCT FROM 'healthy_volunteers'""")
-        trial_diseases, trial_other = defaultdict(set), set()
-        for nct, mondo, name, spellings in cur.fetchall():
-            p, developed = purpose.get(nct, ("indication_development", set()))
-            if p == "early_development" or (developed and not developed & {name, *spellings}):
-                continue  # a condition the trial does not develop the drug for
-            if mondo:
-                trial_diseases[nct].add(mondo)
-            else:
-                trial_other.add(nct)
+        conditions = cur.fetchall()
+        # The disease a trial's title names when its listed conditions are only complications of it, by its
+        # condition string (norm) in preclin.indication.
+        cur.execute("""SELECT tp.nct_id, i.mondo_id FROM preclin.trial_purpose tp
+                       JOIN preclin.indication i
+                         ON i.normalized_name = regexp_replace(lower(tp.title_disease), '[^a-z0-9]', '', 'g')
+                       WHERE i.mondo_id IS NOT NULL""")
+        title_disease = dict(cur.fetchall())
+        trial_diseases, demoted, trial_other = trial_disease_sets(conditions, purpose, title_disease)
         baskets = {nct for nct, (p, _) in purpose.items() if p == "multi_indication"}
         cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
         indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
         ancestors = mondo_ancestors(cur)
 
     snap = date.fromisoformat(snapshot)
-
-    def entry_programs(first: dict, start: date) -> set:
-        """Programs a shared trial starting on `start` can mark entry for: those
-        already under way and the one(s) begun next after it."""
-        later = [f for f in first.values() if f > start]
-        nxt = min(later, default=None)
-        return {k for k, f in first.items() if f <= start or f == nxt}
-
-    programs = {}   # (moiety, mondo) -> {nct: (attach, marks_entry)}
-    for mid, ncts in by_moiety.items():
-        direct = defaultdict(set)
-        no_disease, other_condition, basket = [], [], []
-        for nct in ncts:
-            if nct in baskets:
-                basket.append(nct)
-            elif trial_diseases[nct]:
-                for d in trial_diseases[nct]:
-                    direct[indication.get((mid, d), d)].add(nct)
-            elif nct in trial_other:
-                other_condition.append(nct)
-            else:
-                no_disease.append(nct)
-        specific = {d for d in direct if not any(d in ancestors[o] for o in direct if o != d)}
-        first = {(mid, d): min(trials[n]["start"] for n in direct[d]) for d in specific}
-        for d in sorted(specific):
-            programs[(mid, d)] = dict.fromkeys(sorted(direct[d]), ("disease", True))
-        for d in sorted(set(direct) - specific):
-            covered = {k: f for k, f in first.items() if d in ancestors[k[1]]}
-            for nct in direct[d]:
-                lead = entry_programs(covered, trials[nct]["start"])
-                for key in covered:
-                    programs[key].setdefault(nct, ("broader_condition", key in lead))
-        if other_condition:
-            programs[(mid, None)] = dict.fromkeys(other_condition, ("non_disease_condition", True))
-            first[(mid, None)] = min(trials[n]["start"] for n in other_condition)
-        for nct in basket:  # shared by the programs of the diseases it lists, else the unspecified program
-            listed = {k for k in first if any(indication.get((mid, d), d) == k[1] or d in ancestors[k[1]]
-                                              for d in trial_diseases[nct])}
-            lead = entry_programs({k: first[k] for k in listed}, trials[nct]["start"])
-            for key in listed:
-                programs[key].setdefault(nct, ("basket", key in lead))
-            if not lead:
-                programs.setdefault((mid, None), {})[nct] = ("basket", True)
-        targets = [k for k in programs if k[0] == mid] or [(mid, None)]
-        for nct in no_disease:
-            lead = entry_programs({k: first[k] for k in targets if k in first}, trials[nct]["start"]) \
-                if first else set(targets)
-            for key in targets:
-                programs.setdefault(key, {}).setdefault(nct, ("no_disease", key in lead))
+    programs = assemble_programs(by_moiety, trials, trial_diseases, demoted, trial_other, baskets, indication,
+                                 ancestors)
 
     # Which trials can start a phase (preclin.trial_phase_role). A Phase 2 or 3 trial that would set a
     # program's phase start is judged when it could be an extension (open-label, not randomised) or
