@@ -12,7 +12,7 @@
   "engagement": [
    {
     "year": 2004,
-    "status": "cause",
+    "status": "untested",
     "note": "Brain occupancy measured directly by PET in healthy volunteers: ≥90% at ≥100 mg/day.",
     "src": "https://doi.org/10.1016/j.biopsych.2004.02.007",
     "srcLabel": "Bergström 2004",
@@ -25,7 +25,7 @@
   "efficacy": [
    {
     "year": 1998,
-    "status": "pheno",
+    "status": "other",
     "note": "Guinea-pig vocalisation and gerbil foot-tapping; fluoxetine increased tapping.",
     "src": "https://doi.org/10.1126/science.281.5383.1640",
     "srcLabel": "Kramer 1998",
@@ -33,7 +33,7 @@
    },
    {
     "year": 2006,
-    "status": "misled",
+    "status": "contra",
     "note": "Five Phase 3s at ~90% occupancy failed while paroxetine worked.",
     "src": "https://doi.org/10.1016/j.biopsych.2005.07.013",
     "srcLabel": "Keller 2006",

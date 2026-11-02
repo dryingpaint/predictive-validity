@@ -12,7 +12,7 @@
   "engagement": [
    {
     "year": 1996,
-    "status": "cause",
+    "status": "untested",
     "note": "Imatinib cut BCR-ABL colonies from patients 92–98% and spared normal ones.",
     "src": "https://doi.org/10.1038/nm0596-561",
     "srcLabel": "Druker 1996",
@@ -20,7 +20,7 @@
    },
    {
     "year": 2001,
-    "status": "cal",
+    "status": "same",
     "note": "53 of 54 patients had complete hematologic responses at ≥300 mg/day.",
     "src": "https://doi.org/10.1056/NEJM200104053441401",
     "srcLabel": "Druker 2001",
@@ -32,7 +32,7 @@
   "dose": [
    {
     "year": 2004,
-    "status": "cause",
+    "status": "untested",
     "note": "Trough at 350 mg exceeded the cellular IC50, but ≥400 mg came from clinical white-cell response.",
     "src": "https://doi.org/10.1200/jco.2004.03.050",
     "srcLabel": "Peng 2004",
@@ -44,7 +44,7 @@
   "efficacy": [
    {
     "year": 1996,
-    "status": "cause",
+    "status": "untested",
     "note": "Cells driven by the human fusion oncogene.",
     "src": "https://doi.org/10.1038/nm0596-561",
     "srcLabel": "Druker 1996",
@@ -52,13 +52,21 @@
    },
    {
     "year": 2003,
-    "status": "cal",
+    "status": "same",
     "note": "IRIS confirmed cytogenetic response; the mutagenesis screen recovered all major patient resistance mutations.",
     "src": "https://doi.org/10.1016/S0092-8674(03)00190-9",
     "srcLabel": "Azam 2003",
-    "short": "Screen recovers patients' mutations",
+    "short": "Screen recovers patients' mutations"
+   },
+   {
+    "year": 2009,
+    "status": "neg",
+    "note": "Patients whose mutations had high cellular IC50 to nilotinib (Y253H, E255K/V, F359C/V) reached no complete cytogenetic response, as the cells predicted.",
+    "short": "Cells predicted which patients would not respond",
+    "src": "https://doi.org/10.1200/jco.2009.21.8230",
+    "srcLabel": "Hughes 2009",
     "model": "Ba/F3 cells with human BCR-ABL",
-    "reason": "Recovered patients' resistance mutations"
+    "reason": "Also predicted which patients would fail"
    }
   ],
   "safety": []

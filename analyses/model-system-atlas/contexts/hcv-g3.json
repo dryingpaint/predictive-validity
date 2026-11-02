@@ -14,7 +14,7 @@
   "efficacy": [
    {
     "year": 2002,
-    "status": "cause",
+    "status": "untested",
     "note": "The standard replicon was genotype 1b (Con1), not genotype 3.",
     "src": "https://doi.org/10.1128/JVI.76.24.13001-13014.2002",
     "srcLabel": "Blight 2002",
@@ -22,7 +22,7 @@
    },
    {
     "year": 2013,
-    "status": "misled",
+    "status": "contra",
     "note": "Sofosbuvir-ribavirin cured 56% in genotype 3 vs 97% in genotype 2; genotype 1b replicons did not foresee it.",
     "src": "https://doi.org/10.1056/NEJMoa1214853",
     "srcLabel": "Lawitz 2013",

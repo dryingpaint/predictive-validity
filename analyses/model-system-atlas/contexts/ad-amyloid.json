@@ -12,7 +12,7 @@
   "engagement": [
    {
     "year": 1997,
-    "status": "cause",
+    "status": "untested",
     "note": "APP-overexpressing mice grow plaque, so they can show plaque clearance.",
     "src": "https://doi.org/10.1097/00005072-199709000-00002",
     "srcLabel": "Irizarry 1997",
@@ -25,7 +25,7 @@
   "efficacy": [
    {
     "year": 1997,
-    "status": "pheno",
+    "status": "untested",
     "note": "The same mice lost no neurons: a model of plaque, not of the disease.",
     "src": "https://doi.org/10.1097/00005072-199709000-00002",
     "srcLabel": "Irizarry 1997",
@@ -33,7 +33,7 @@
    },
    {
     "year": 2013,
-    "status": "misled",
+    "status": "contra",
     "note": "Semagacestat worsened function; BACE inhibitors later failed despite lowering Aβ.",
     "src": "https://doi.org/10.1056/NEJMoa1210951",
     "srcLabel": "Doody 2013",
@@ -45,7 +45,7 @@
   "safety": [
    {
     "year": 2019,
-    "status": "misled",
+    "status": "contra",
     "note": "BACE inhibitors caused reversible cognitive worsening that safety work in four species missed.",
     "src": "https://doi.org/10.1056/NEJMoa1812840",
     "srcLabel": "Egan 2019",

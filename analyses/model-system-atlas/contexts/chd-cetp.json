@@ -14,7 +14,7 @@
   "efficacy": [
    {
     "year": 2000,
-    "status": "pheno",
+    "status": "untested",
     "note": "A CETP inhibitor raised HDL and slowed atherosclerosis in rabbits; the biomarker moved, causality untested.",
     "src": "https://doi.org/10.1038/35018119",
     "srcLabel": "Okamoto 2000",
@@ -22,7 +22,7 @@
    },
    {
     "year": 2007,
-    "status": "misled",
+    "status": "contra",
     "note": "Torcetrapib raised HDL 72% and deaths (HR 1.58); later CETP inhibitors also failed on HDL.",
     "src": "https://doi.org/10.1056/NEJMoa0706628",
     "srcLabel": "Barter 2007",
@@ -34,7 +34,7 @@
   "safety": [
    {
     "year": 2007,
-    "status": "misled",
+    "status": "contra",
     "note": "Torcetrapib raised aldosterone and blood pressure, unflagged before ILLUMINATE.",
     "src": "https://doi.org/10.1056/NEJMoa0706628",
     "srcLabel": "Barter 2007",

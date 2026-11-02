@@ -24,14 +24,13 @@ DECISIONS = [("engagement", "Target engagement"), ("dose", "Dose"), ("efficacy",
 QUESTIONS = {"engagement": "Does the drug hit its target?", "dose": "How much drug is needed?",
              "efficacy": "Will the disease respond?", "safety": "Will people be harmed?"}
 STATUS = {
-    "cal": ("#00707d", "Calibrated against clinical outcomes"),
-    "cause": ("#11a9b3", "Carries the human cause, not calibrated"),
-    "pheno": ("#d6982a", "Phenotype only"),
-    "misled": ("#c63d26", "Misled in this context"),
-    "none": ("#ebedeb", "No model, or not assessed"),
+    "neg": ("#0b5f69", "Matched patients, including a known failure"),
+    "same": ("#3d9ea6", "Matched patients, same mechanism"),
+    "other": ("#a9d6d9", "Matched patients, other mechanism only"),
+    "untested": ("#e6e8e6", "Never compared with patients"),
+    "contra": ("#c63d26", "Contradicted by patients"),
 }
 TILE, TILE_EMPTY = "#f1f3f1", "#f8f9f8"
-SHORT = {"cal": "calibrated", "cause": "cause", "pheno": "phenotype", "misled": "misled", "none": "none"}
 INK, MUTED, RULE = "#1b2321", "#5c6763", "#c4cbc7"
 
 
@@ -45,7 +44,7 @@ def load():
 
 def spans(history):
     """(start, end, status) runs covering YEAR0..YEAR1+1 for one cell."""
-    out, cur, start = [], "none", YEAR0
+    out, cur, start = [], "untested", YEAR0
     for h in sorted(history, key=lambda h: h["year"]):
         y = max(h["year"], YEAR0)
         if y > start:
