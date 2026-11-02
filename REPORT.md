@@ -49,7 +49,7 @@ Over the past century, drug development moved from natural observation and pheno
 
 ## Industry failure modes
 
-For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 8.9% (95% CI 8.0%–9.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 5.4%. Most programs stop without a stated reason: of 8,867 programs that stopped, 46% left no stated reason and no posted or published result, and 23% record an efficacy, safety or pharmacokinetic reason.
+For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 8.9% (95% CI 8.0%–9.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 5.4%. Once each stop is traced to its cause, efficacy or exposure explains 42% of Phase 2 and 3 stops and sponsor decisions 21%.
 
 ### How programs are counted
 
@@ -103,34 +103,6 @@ Two features of the registry bear on these trends.
 
 
 ### Why programs stop
-
-Each suspended program takes one reason from the industry trials of the phase it stopped in, in this order: an efficacy reason stated by the sponsor, a primary endpoint missed in posted or published results, a safety signal, a pharmacokinetic or formulation problem, an explicit business or strategic reason, a bare "sponsor decision", an enrollment, operational or regulatory reason, a positive primary readout without advancement, another stated reason, posted results with no stated reason or readable endpoint, and finally neither a reason nor a result.
-
-| Reason | Phase 1 | Phase 2 | Phase 3 |
-| :---- | :---- | :---- | :---- |
-| PK, dose or formulation | 1% (40) | 0% (17) | 0% (1) |
-| business or strategic (explicit) | 8% (238) | 5% (222) | 3% (46) |
-| completed, no results posted, no reason stated | 57% (1,690) | 27% (1,228) | 23% (320) |
-| efficacy: primary endpoint not met | 0% (10) | 22% (975) | 21% (293) |
-| efficacy: stated | 2% (70) | 5% (241) | 10% (137) |
-| enrollment, operational or regulatory | 2% (66) | 5% (227) | 3% (49) |
-| other stated reason | 0% (14) | 0% (16) | 1% (12) |
-| positive readout, not advanced | 0% (11) | 10% (448) | 19% (273) |
-| results posted, no reason stated, endpoint not assessable | 13% (390) | 11% (506) | 5% (64) |
-| safety | 3% (77) | 3% (114) | 4% (51) |
-| sponsor decision, unspecified | 3% (83) | 2% (101) | 1% (21) |
-| stopped, no reason stated | 9% (280) | 9% (401) | 10% (135) |
-
-![Why suspended programs stopped](report/output/figures/failure_modes_by_phase.png)
-
-The registry rarely says why a program stopped. In Phase 1, 66% of stopped programs left neither a stated reason nor a result, which is expected: Phase 1 trials seldom post results and companies seldom explain pausing early assets. In Phase 2 and Phase 3 the share without a reason falls to 36% and 32%. Efficacy is the recorded reason for 27% of programs that stopped in Phase 2 and 31% of those that stopped in Phase 3: the sponsor said so, or the posted or published primary endpoint was missed. Safety accounts for 3% and 4%: among Phase 2 and Phase 3 stops with an efficacy or safety reason, safety is 9% and 11%, against about 32% in Harrison (2016), whose 2013–2015 failures with a disclosed reason were 24% safety and 52% efficacy. Either registry records under-report safety stops, or company disclosures over-represent them.
-
-At the level of individual trials, the 4,390 industry trials started in 2008–2019 that stopped early or were withdrawn with a reason give: an explicit business, portfolio or competitive reason 27%, a bare "sponsor decision" 13%, efficacy 18%, enrollment or operations 19% and safety 7%. The draft's single 44% "commercial or strategic" category mixed these two kinds of statement; a "sponsor decision" with no reason may or may not hide an efficacy result, and the record cannot tell. No study has measured how often a stated business reason hides an efficacy or safety failure. Where a registry gives a reason it mostly agrees with the trial's publication (53 of 57 in [Alturki et al. 2017](https://doi.org/10.1016/j.jclinepi.2016.08.011)); the usual gap is a missing reason. Analysts who also read company filings, press releases and regulator records attribute 57% of drug failures in pivotal trials to efficacy, 17% to safety and 22% to commercial reasons ([Hwang et al. 2016](https://doi.org/10.1001/jamainternmed.2016.6008)), so the efficacy and safety shares here are a floor.
-
-Finally, 19% of Phase 3 programs that stopped short of FDA approval had met their primary endpoint. In a sample we read, most of them were approved outside the US (Japan, China, Korea, Russia) or received a complete response letter from the FDA: a positive Phase 3 readout is necessary but not sufficient for US approval.
-
-
-### Why the stops the registry does not explain happened
 
 For 2,961 of the 5,898 Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
 
@@ -648,6 +620,32 @@ Variants of the not-engaged share:
 | All traced entries 2008-2025 | 2,681 | 1,500 | 17% (15–19) | 36% |
 
 **Checks.** A second model, given the same bundles and asked the pillar questions one at a time before choosing a category, relabelled a seeded random sample of 150 programs (136 with a validated label from both): it agreed on the not-engaged / engaged / other split for 69% (κ = 0.48) and on whether the target was engaged for 79%. Separately, agents with web access researched a seeded random sample of 66 programs from scratch (publications, conference reports, company releases), without the pipeline's labels (65 also have a pipeline label): they agreed on the three-way split for 82% (κ = 0.67) and on the group for 86% of the programs the pipeline decided; they never called engaged a program the pipeline called not engaged, or the reverse (0 contradictions). Of the 16 adjudicated programs whose bundle held no engagement data, the web search and the outside researchers both decided 4 and agreed on 75% of them; the search never decided one the researchers could not, and the researchers decided 2 that the search left open (1 of them not engaged). On their own, they found 5 failures to engage among 36 programs whose mechanism they could judge (14%). The pre-registered construct checks, on data the labels do not use, point one way or nowhere. Programs whose exposure or engagement was shown too low had germline genetic support for the disease more often than those engaged without benefit (13% against 7%, p = 0.04, 111 programs shown not engaged), as expected if engaged failures more often test a target the disease does not depend on. The two groups did not differ in whether other drugs on their target failed (52% against 55%) or advanced (48% against 50%) in the disease. A check added after the plan asked whether drugs that failed to engage were simply weaker, using the drug's potency at its primary target from laboratory assays published by the year before phase entry (ChEMBL; Section 2 describes the measurements). The data do not show it: 20% of programs shown not engaged and 23% of those engaged without benefit had such a measurement; among them the median best potency was 7.99 against 8.22 on the negative-log scale (p = 0.16, Mann–Whitney), and 94% against 87% reached 100 nM or better (p = 0.70). Only 18 not-engaged programs had a measurement, so a modest difference could be missed; but most drugs that failed to engage in patients had been potent in the assay, which points to exposure, dose or tissue access rather than a weak molecule.
+
+**What the registry records.** Each suspended program takes one reason from the industry trials of the phase it stopped in, in this order: an efficacy reason stated by the sponsor, a primary endpoint missed in posted or published results, a safety signal, a pharmacokinetic or formulation problem, an explicit business or strategic reason, a bare "sponsor decision", an enrollment, operational or regulatory reason, a positive primary readout without advancement, another stated reason, posted results with no stated reason or readable endpoint, and finally neither a reason nor a result.
+
+| Reason | Phase 1 | Phase 2 | Phase 3 |
+| :---- | :---- | :---- | :---- |
+| PK, dose or formulation | 1% (40) | 0% (17) | 0% (1) |
+| business or strategic (explicit) | 8% (238) | 5% (222) | 3% (46) |
+| completed, no results posted, no reason stated | 57% (1,690) | 27% (1,228) | 23% (320) |
+| efficacy: primary endpoint not met | 0% (10) | 22% (975) | 21% (293) |
+| efficacy: stated | 2% (70) | 5% (241) | 10% (137) |
+| enrollment, operational or regulatory | 2% (66) | 5% (227) | 3% (49) |
+| other stated reason | 0% (14) | 0% (16) | 1% (12) |
+| positive readout, not advanced | 0% (11) | 10% (448) | 19% (273) |
+| results posted, no reason stated, endpoint not assessable | 13% (390) | 11% (506) | 5% (64) |
+| safety | 3% (77) | 3% (114) | 4% (51) |
+| sponsor decision, unspecified | 3% (83) | 2% (101) | 1% (21) |
+| stopped, no reason stated | 9% (280) | 9% (401) | 10% (135) |
+
+![Phase 1, 2 and 3 stops among 2008–2019 entries, excluding programs whose development continued: the cause the ClinicalTrials.gov reason gives (efficacy and PK, dose or formulation as efficacy or exposure; business and bare sponsor decisions as sponsor decision; other stated reasons and no reason as unknown), and the cause after tracing, counting likely causes](report/output/figures/stop_causes_registered_vs_traced.png)
+
+The registry rarely says why a program stopped. In Phase 1, 66% of stopped programs left neither a stated reason nor a result, which is expected: Phase 1 trials seldom post results and companies seldom explain pausing early assets. In Phase 2 and Phase 3 the share without a reason falls to 36% and 32%. Efficacy is the recorded reason for 27% of programs that stopped in Phase 2 and 31% of those that stopped in Phase 3: the sponsor said so, or the posted or published primary endpoint was missed. Safety accounts for 3% and 4%: among Phase 2 and Phase 3 stops with an efficacy or safety reason, safety is 9% and 11%, against about 32% in Harrison (2016), whose 2013–2015 failures with a disclosed reason were 24% safety and 52% efficacy. Either registry records under-report safety stops, or company disclosures over-represent them.
+
+At the level of individual trials, the 4,390 industry trials started in 2008–2019 that stopped early or were withdrawn with a reason give: an explicit business, portfolio or competitive reason 27%, a bare "sponsor decision" 13%, efficacy 18%, enrollment or operations 19% and safety 7%. The draft's single 44% "commercial or strategic" category mixed these two kinds of statement; a "sponsor decision" with no reason may or may not hide an efficacy result, and the record cannot tell. No study has measured how often a stated business reason hides an efficacy or safety failure. Where a registry gives a reason it mostly agrees with the trial's publication (53 of 57 in [Alturki et al. 2017](https://doi.org/10.1016/j.jclinepi.2016.08.011)); the usual gap is a missing reason. Analysts who also read company filings, press releases and regulator records attribute 57% of drug failures in pivotal trials to efficacy, 17% to safety and 22% to commercial reasons ([Hwang et al. 2016](https://doi.org/10.1001/jamainternmed.2016.6008)), so the efficacy and safety shares here are a floor.
+
+Finally, 19% of Phase 3 programs that stopped short of FDA approval had met their primary endpoint. In a sample we read, most of them were approved outside the US (Japan, China, Korea, Russia) or received a complete response letter from the FDA: a positive Phase 3 readout is necessary but not sufficient for US approval.
+
 
 
 ### How the evidence is scored and modelled (Section 2)

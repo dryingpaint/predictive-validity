@@ -22,28 +22,12 @@ from report import bio, frame
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, s3_types, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
-from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output")
 FIG = os.path.join(OUT, "figures")
 
 INK, INK2, MUTED = "#0b0b0b", "#52514e", "#8a8984"
 GRID, BAR, ACCENT = "#e4e3df", "#c3c2b7", "#2a78d6"
-REASON_FAMILY = {
-    "efficacy: stated": "Efficacy (stated or measured)",
-    "efficacy: primary endpoint not met": "Efficacy (stated or measured)",
-    "safety": "Safety, PK or formulation", "PK, dose or formulation": "Safety, PK or formulation",
-    "business or strategic (explicit)": "Business or strategy (explicit)",
-    "sponsor decision, unspecified": "Sponsor decision, no reason",
-    "enrollment, operational or regulatory": "Enrollment, operational, regulatory",
-    "positive readout, not advanced": "Positive readout, not advanced",
-    "other stated reason": "Other stated reason",
-    "results posted, no reason stated, endpoint not assessable": "No reason, results posted",
-    "completed, no results posted, no reason stated": "No reason, no results",
-    "stopped, no reason stated": "No reason, no results",
-}
-
-
 def style(ax):
     for side in ("top", "right", "left"):
         ax.spines[side].set_visible(False)
@@ -92,49 +76,55 @@ def stacked(ax, y, segments, height=0.62, gap=0.004):
         start += w
 
 
-FAMILY_COLORS = {  # stacking order; hues follow SHOWN_COLORS so a cause looks the same in every stop figure
-    "Efficacy (stated or measured)": EFFICACY, "Safety, PK or formulation": "#f77f00",
-    "Business or strategy (explicit)": "#1d6f66", "Sponsor decision, no reason": "#2a9d8f",
-    "Enrollment, operational, regulatory": "#277da1", "Positive readout, not advanced": "#6a4c93",
-    "Other stated reason": "#8a8984", "No reason, results posted": "#d6d4cc", "No reason, no results": "#e8e6e0",
+REGISTERED = {  # each registry reason (report.section1.REASON_ORDER) as the cause bar's category
+    "efficacy: stated": "efficacy", "efficacy: primary endpoint not met": "efficacy",
+    "PK, dose or formulation": "efficacy", "safety": "safety",
+    "business or strategic (explicit)": "sponsor_decision", "sponsor decision, unspecified": "sponsor_decision",
+    "enrollment, operational or regulatory": "operational", "positive readout, not advanced": "positive_not_advanced",
+    "other stated reason": "unknown", "results posted, no reason stated, endpoint not assessable": "unknown",
+    "completed, no results posted, no reason stated": "unknown", "stopped, no reason stated": "unknown",
 }
-UNSTATED = {"No reason, results posted", "No reason, no results"}
 
 
-def failure_modes():
-    """Why suspended programs stopped: one 100% bar per phase, unstated reasons hatched."""
-    progs = pd.read_csv(os.path.join(OUT, "section1", "failure_modes_programs.csv"))
-    progs["family"] = progs.reason.map(REASON_FAMILY)
-    tab = progs.pivot_table(index="phase", columns="family", values="program_id", aggfunc="count", fill_value=0)
-    share = tab.div(tab.sum(axis=1), axis=0)
-    years = f"{SECTION1[0].year}–{SECTION1[1].year}"
+def registered_vs_traced():
+    """Per phase, the same stopped programs by the cause their registry reason gives and by the cause after tracing."""
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
+    traced = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
+    entry = pd.to_datetime(traced.phase_entry).dt.year
+    stopped = traced[entry.between(n["window"]["from"], n["window"]["to"]) & traced.shown.notna()]
+    stopped = stopped.assign(registered=stopped.registry_reason.map(REGISTERED))
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
     rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
           "hatch.color": "white", "hatch.linewidth": 1.4}
     with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10.5, 3.75))
-        fig.subplots_adjust(left=0.13, right=0.97, top=0.78, bottom=0.03)
+        fig, ax = plt.subplots(figsize=(10.5, 5.0))
+        fig.subplots_adjust(left=0.2, right=0.97, top=0.82, bottom=0.02)
         ax.set_xlim(0, 1)
-        ax.set_ylim(-1.75, 2.45)
+        ax.set_ylim(0.15, 8.0)
         ax.axis("off")
-        fig.text(0.03, 0.965, "Why suspended programs stopped", fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.875, f"Programs that stopped, phase entries {years}; the reason comes from their industry trials",
+        fig.text(0.03, 0.975, "Stop causes as registered and after tracing", fontsize=16, fontweight="demibold",
+                 color=INK, va="top")
+        fig.text(0.03, 0.92, f"Industry programs that stopped, phase entries {n['window']['from']}–{n['window']['to']}: "
+                 "the reason on ClinicalTrials.gov, and the cause once each stop was traced",
                  fontsize=10.5, color=MUTED, va="top")
-        for k, ph in enumerate(sorted(share.index)):
-            y = 2 - k * 0.95
-            stacked(ax, y, [(float(share.at[ph, f]) if f in share.columns else 0.0, col, f in UNSTATED)
-                            for f, col in FAMILY_COLORS.items()], height=0.66)
-            ax.text(-0.02, y + 0.03, f"Phase {ph}", ha="right", va="bottom", fontsize=10.5, color=INK,
+        for k, phase in enumerate((1, 2, 3)):
+            p = stopped[stopped.phase.eq(phase)]
+            top = 7.4 - k * 2.25
+            for j, (col, label) in enumerate((("registered", "As registered"), ("shown", "After tracing"))):
+                y = top - j * 0.82
+                stacked(ax, y, [(float((p[col] == c).mean()), color, c == "unknown") for c, color in SHOWN_COLORS.items()],
+                        height=0.62)
+                ax.text(-0.015, y, label, ha="right", va="center", fontsize=8.5, color=INK2)
+            ax.text(-0.135, top - 0.38, f"Phase {phase}", ha="right", va="bottom", fontsize=10.5, color=INK,
                     fontweight="demibold")
-            ax.text(-0.02, y - 0.02, f"{int(tab.loc[ph].sum()):,} programs", ha="right", va="top", fontsize=7.5,
-                    color=MUTED)
+            ax.text(-0.135, top - 0.43, f"{len(p):,} programs", ha="right", va="top", fontsize=7.5, color=MUTED)
         ax.legend(handles=[matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                    hatch="////" if f in UNSTATED else None, label=f)
-                           for f, col in FAMILY_COLORS.items()],
+                                                    hatch="////" if c == "unknown" else None, label=SHOWN[c])
+                           for c, col in SHOWN_COLORS.items()],
                   frameon=False, fontsize=8.5, loc="upper left", handlelength=1.0, handleheight=1.0,
-                  columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=3, bbox_to_anchor=(-0.12, 0.31))
-        save(fig, "failure_modes_by_phase")
+                  columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=3, bbox_to_anchor=(-0.215, 0.1))
+        save(fig, "stop_causes_registered_vs_traced")
 
 
 def efficacy_attribution():
@@ -406,7 +396,6 @@ def s3_evidence_types():
 
 
 def main():
-    failure_modes()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
@@ -416,6 +405,7 @@ def main():
         efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
         stop_subcauses()
+        registered_vs_traced()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
         s3_specificity()
