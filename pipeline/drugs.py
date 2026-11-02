@@ -518,7 +518,7 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
                                  aliases = v.aliases, unii = v.unii, unii_decision_id = v.did
                                FROM (VALUES %s) AS v(moiety_id, key, name, codes, aliases, unii, did)
                                WHERE m.moiety_id = v.moiety_id""", renames,
-                       template="(%s, %s, %s, %s::text[], %s::text[], %s, %s)")
+                       template="(%s, %s, %s, %s::text[], %s::text[], %s, %s::bigint)")
         conn.commit()
     print(f"groups={len(groups)} entities merged away={len(mapping)}")
 
