@@ -5,99 +5,50 @@
 
 ## Introduction
 
-The number of new drugs approved per billion dollars of inflation-adjusted R&D spending halved roughly every nine years from 1950 to 2010, an ~80-fold fall ([Scannell et al. 2012](https://doi.org/10.1038/nrd3681)); the decline has flattened since about 2010 ([Ringel et al. 2020](https://doi.org/10.1038/d41573-020-00059-3)). Only 7.9% of drug development programs (drug–indication pairs) that enter Phase 1 reach FDA approval, and 6.8% for novel drugs ([Thomas et al. 2021, BIO](https://go.bio.org/rs/490-EHZ-999/images/ClinicalDevelopmentSuccessRates2011_2020.pdf)). More than nine in ten programs that enter the clinic never reach approval, and we can see little of why.
+The number of new drugs approved per billion dollars of R&D spending halved roughly every nine years from 1950 to 2010 ([Scannell et al. 2012](https://doi.org/10.1038/nrd3681)), and has flattened since ([Ringel et al. 2020](https://doi.org/10.1038/d41573-020-00059-3)). Only 7.9% of programs that enter Phase 1 reach FDA approval ([Thomas et al. 2021, BIO](https://go.bio.org/rs/490-EHZ-999/images/ClinicalDevelopmentSuccessRates2011_2020.pdf)), and we can see little of why the rest fail.
 
-Existing analyses offer a few data points:
+Scannell and colleagues called the decline Eroom's Law and blamed, among other causes, an overestimate of how much molecular biology and high-throughput screening raise the chance that a molecule works in patients. [Scannell and Bosley (2016)](https://doi.org/10.1371/journal.pone.0147215) then showed that a model's *predictive validity*, how well its output tracks the clinical outcome, matters far more than its throughput. Some evidence types have been measured: genetic support makes a target–indication pair about 2.6 times as likely to go from Phase 1 to launch ([Minikel et al. 2024](https://doi.org/10.1038/s41586-024-07316-0); [Nelson et al. 2015](https://doi.org/10.1038/ng.3314)), and AstraZeneca's "5Rs" review of its own pipeline raised its success rate from 4% to 19% ([Cook et al. 2014](https://doi.org/10.1038/nrd4309); [Morgan et al. 2018](https://doi.org/10.1038/nrd.2017.244)). Most of the evidence that drug programs rest on has never been scored this way.
 
-* Nelson et al. (2015) estimated that human genetic support could roughly double the chance of success in clinical development ([Nelson et al. 2015](https://doi.org/10.1038/ng.3314)). With a decade more genetic data, target–indication pairs with genetic support were 2.6 times as likely to progress from Phase 1 to launch ([Minikel et al. 2024](https://doi.org/10.1038/s41586-024-07316-0)).
-* Of 174 Phase 2 and Phase 3 failures in 2013–2015 whose sponsors gave a reason, 52% were for efficacy and 24% for safety ([Harrison 2016](https://doi.org/10.1038/nrd.2016.184)).
-* A review of AstraZeneca's 2005–2010 pipeline distilled five technical determinants of success, the "5Rs": right target, tissue, safety, patient and commercial potential ([Cook et al. 2014](https://doi.org/10.1038/nrd4309)). After the company adopted the framework, its success rate from candidate nomination to Phase 3 completion rose from 4% to 19% ([Morgan et al. 2018](https://doi.org/10.1038/nrd.2017.244)).
+This report scores it from primary records. Every interventional drug or biological study on ClinicalTrials.gov (227,130 studies, snapshot of 2026-10-20) was resolved to the molecular entities it tests and the MONDO diseases it treats, and joined to every FDA approval we could document (Drugs@FDA, 6,569 approved uses read from approval letters, labels, and 177 CBER biologics applications). The unit is a *development program*: one molecular entity developed for one indication. Every program that entered a phase in 2008–2019 is counted.
 
-Scannell and colleagues called the decline Eroom's Law (Moore's Law backwards) and attributed it to four causes ([Scannell et al. 2012](https://doi.org/10.1038/nrd3681)):
+1. **Industry failure modes:** how often programs advance at each phase and why they stop.
+2. **Predictive power of preclinical evidence:** how much each kind of evidence known before a phase changes the chance of approval.
+3. **What translates to the clinic:** which evidence predicted that a Phase 2 program would advance, and whether more specific versions did better.
 
-1. **"Better than the Beatles":** each new drug must beat a growing catalogue of cheap, effective generics.
-2. **The cautious regulator:** the bar for safety and evidence keeps rising.
-3. **"Throw money at it":** the tendency to add people and money to R&D.
-4. **The "basic research–brute force" bias:** overestimating how much molecular biology and high-throughput screening raise the chance that a molecule works in the clinic.
-
-[Scannell and Bosley (2016)](https://doi.org/10.1371/journal.pone.0147215) later used decision theory to show that a model's *predictive validity*, meaning how well its output tracks the clinical outcome, matters far more than its throughput, and proposed that a fall in the predictive validity of the industry's screening and disease models explains much of the decline.
-
-This report rebuilds both questions from primary records. We took every interventional drug or biological study on ClinicalTrials.gov (222,915 studies, snapshot of 2026-10-20), resolved each intervention to the molecular entity it contains and each condition to a MONDO disease, and joined them to every FDA approval we could document: Drugs@FDA applications, 6,529 approved uses read from 2008–2026 approval letters, current labels, and 177 CBER biologics applications rebuilt from the agency's yearly pages and letters. The unit throughout is a *development program*: one molecular entity developed for one indication. An entity counts toward a program only in trials where it is the investigational agent, not a comparator or background therapy.
-
-The report has three parts:
-
-1. **Industry failure modes.** Phase transitions, likelihood of approval (LOA) and the reasons programs stop, for programs that entered each phase in 2008–2019: an updated companion to BIO's *Clinical Development Success Rates 2011–2020*.
-2. **Predictive power of preclinical evidence.** For programs aimed at a human protein target, whether the target had human genetic, somatic, animal-model, expression, pathway or cell-screen evidence for the program's disease, and how potent and selective the drug itself had measured in laboratory assays, all as known before the program entered the phase, and how much each changes the chance of approval.
-3. **What translates to the clinic.** Which kinds of evidence predicted that a Phase 2 program would advance, and whether a stronger, more specific or direction-matched version of each did better; on which trial endpoints the advantage shows; with verified case studies.
-
-Every classification in this analysis was made by an LLM reading the source record and recorded with its prompt and input. The main labels were checked against an independent re-derivation of a seeded sample; modality, disease area and targets were not audited (Appendix).
+Every classification was made by an LLM reading the source record, and the main labels were checked against an independent re-derivation of a seeded sample (Appendix).
 
 
 ## A history of drug development
 
 Over the past century, drug development moved from natural observation and phenotypic screening to target-based and genetically grounded hypotheses. Each era narrowed the unit of the biological hypothesis, from a whole-organism effect to a target in a specific patient context.
 
-| Period | Technological developments | Biological hypothesis | Examples |
-| :---- | :---- | :---- | :---- |
-| Pre-1900 to 1930s | Observation, natural products, physiology | Therapeutic effect or organismal phenotype | Morphine, quinine, digitalis, aspirin |
-| 1900s–1960s | Quantitative pharmacology and biochemistry | Receptor activity, enzyme, metabolic pathway | Sulfonamides, receptor theory, enzyme inhibitors |
-| 1950s–1980s | Systematic medicinal chemistry | Desired pharmacological mechanism | β-blockers, H2 antagonists, antimetabolites |
-| 1970s–1990s | Recombinant DNA and molecular cloning | Named gene and protein | Recombinant insulin, cloned GPCRs, channels, kinases |
-| 1990s–2000s | Genomics, HTS, automation | Target plus compound library | Imatinib and kinase programs, genomic target portfolios |
-| 2000s–2010s | Human genetics and functional genomics | Target–disease association | GWAS, RNAi, CRISPR, dependency maps |
-| 2010s–present | Multimodal evidence integration and predictive modeling | Target–indication–mechanism–patient context | Open Targets, gnomAD, single-cell perturbation, AlphaFold |
+![Eras of drug discovery: the technology of each era and the unit of its biological hypothesis](report/output/figures/history.png)
 
 ## Industry failure modes
 
-For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 8.9% (95% CI 8.0%–9.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 5.4%. Once each stop is traced to its cause, efficacy or exposure explains 42% of Phase 2 and 3 stops and sponsor decisions 21%.
+For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 8.9% (95% CI 8.0%–9.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 5.4%. Once each stop is traced to its cause, efficacy or exposure explains 44% of Phase 2 and 3 stops and sponsor decisions 21%.
 
 ### How programs are counted
 
-* **Trial:** a registered interventional study listing Early Phase 1 to Phase 3. A Phase 1/2 trial counts as Phase 2 and a Phase 2/3 trial as Phase 3. Withdrawn trials never enrolled and are left out.
-* **Molecular entity:** the active substance, whatever its brand, sponsor code, dose or salt, resolved to its FDA UNII substance where one exists. Biosimilars fold into their reference entity.
-* **Disease:** the MONDO term for the condition the trial treats, without line, stage, biomarker or age qualifiers.
-* **Program:** one entity developed for one indication. An indication groups the entity's MONDO diseases the way a sponsor runs them as programs (prostate cancer with castration-resistant and metastatic prostate carcinoma; diffuse large B-cell and follicular lymphoma kept apart), decided by an LLM for each entity. An entity belongs to a program only in trials where it is the investigational agent, not a comparator or background therapy. Each industry trial's purpose is classified first: bioequivalence, formulation, food-effect, interaction and other product-support studies (10,770 trials) belong to no program; a first-in-human study or a basket across several diseases counts as Phase 1 only for the program the sponsor pursued next.
-* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor) or the FDA approved the entity for the disease. A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement. A program is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-10-20); otherwise it is still running and *censored*. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
-* **Approval:** FDA approval of the entity for the program's disease, a subtype or population of it, or a broader approved class that includes it, judged from the dated approval letters, original-approval dates and labels of every application of the entity (CDER and CBER).
-
-13,490 programs of 7,123 individual drugs entered at least one phase in 2008–2019. Entries end in 2019 so that every program has had at least six years to advance or stop before the snapshot; registration of industry trials became mandatory in the US in late 2007, so the window starts in 2008.
-
-### Phase transitions
-
-| Transition | All programs (95% CI) | Developed in the US (95% CI) | BIO 2011–2020 |
-| :---- | :---- | :---- | :---- |
-| Phase 1 → Phase 2 | 54.8% (53.0–56.6), n=6,565 | 57.0% (54.6–59.5), n=4,139 | 52.0% |
-| Phase 2 → Phase 3 | 28.4% (26.9–29.6), n=6,277 | 31.3% (29.7–33.1), n=4,032 | 28.9% |
-| Phase 3 → Approval | 34.9% (32.5–37.4), n=2,155 | 50.0% (47.0–52.9), n=1,423 | 52.4% |
-| **Phase 1 → Approval (LOA)** | **5.4%** (4.9–6.0) | **8.9%** (8.0–9.9) | **7.9%** (novel drugs 6.8%) |
+13,490 programs of 7,123 individual drugs entered at least one phase in 2008–2019. Entries end in 2019 so that every program has had at least six years to advance or stop before the snapshot; registration of industry trials became mandatory in the US in late 2007, so the window starts in 2008. A program is one molecular entity developed for one indication; it enters a phase when its first industry trial of that phase starts, and *advances* when a later-phase trial in the disease starts or the FDA approves it for the disease. As in BIO's report, each phase's success rate is advanced ÷ (advanced + stopped), and LOA is their product. The full counting rules are in the appendix.
 
 ### Why programs stop
 
-For 2,961 of the 5,898 Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
+For 3,111 of the 5,898 Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
 
-| Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
-| :---- | :---- | :---- | :---- |
-| Efficacy or exposure (PK, dose, formulation) | 28% (1,664) | 38% (2,249) | 42% (2,488) |
-| Safety | 3% (165) | 4% (252) | 4% (258) |
-| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (268) | 12% (736) | 21% (1,229) |
-| Operational (enrollment, sites, supply, regulatory) | 5% (276) | 5% (316) | 6% (345) |
-| Positive readout, not yet advanced | 12% (721) | 21% (1,266) | 22% (1,323) |
-| Unknown | 48% (2,804) | 15% (894) | 1% (65) |
-| Did not actually stop | 0% (0) | 3% (185) | 3% (190) |
+A sourced cause was found for 71% of the traced programs (2,204), and a likely cause for 98%. The biggest changes from the registry's picture:
 
-A sourced cause was found for 70% of the traced programs (2,067), and a likely cause for 98%. The biggest changes from the registry's picture:
+* **Many quiet stops were not failures.** A positive readout that was not taken further in the disease (approval outside the US, a stalled partnership, a move to another formulation) was the sourced cause for 598 traced programs, and 214 had not stopped at all: development continued under another registry, region, name or combination. Section 1's suspension rule, which reads only ClinicalTrials.gov, counts these as stops, so its failure rates are somewhat high.
+* **Efficacy is under-recorded.** Efficacy or exposure was the sourced cause of 737 traced programs, usually from published results or a company statement the registry never carried, raising efficacy or exposure from 28% of all Phase 2/3 stops as registered to 39% sourced (44% counting likely causes).
+* **Sponsor decisions are the rest.** Portfolio, commercial and partner decisions, acquisitions, mergers, lost funding and closures account for 21% of all stops counting likely causes. Safety stays rare (3%).
 
-* **Many quiet stops were not failures.** A positive readout that was not taken further in the disease (approval outside the US, a stalled partnership, a move to another formulation) was the sourced cause for 618 traced programs, and 185 had not stopped at all: development continued under another registry, region, name or combination. Section 1's suspension rule, which reads only ClinicalTrials.gov, counts these as stops, so its failure rates are somewhat high.
-* **Efficacy is under-recorded.** Efficacy or exposure was the sourced cause of 669 traced programs, usually from published results or a company statement the registry never carried, raising efficacy or exposure from 28% of all Phase 2/3 stops as registered to 38% sourced (42% counting likely causes).
-* **Sponsor decisions are the rest.** Portfolio, commercial and partner decisions, acquisitions, mergers, lost funding and closures account for 21% of all stops counting likely causes. Safety stays rare (4%).
-
-**Within each cause.** Where the sponsor decided, the sources most often name portfolio prioritisation (28%) or the company running out of money or closing (16%); 30% say no more than "business reasons". Operational stops are mostly slow enrollment (71%). 53% of safety stops do not say what the harm was. Most positive readouts that went no further give no reason (82%); otherwise the drug was approved outside the US (10%) or the sponsor chose not to go on, for the same reasons as other sponsor decisions (8%), each as a share of all positive readouts. Of the stops no source explains, 35% had a sponsor that started no later trial, and in 35% the drug was dropped while its sponsor carried on.
+**Within each cause.** Where the sponsor decided, the sources most often name portfolio prioritisation (25%) or the company running out of money or closing (16%); 33% say no more than "business reasons". Operational stops are mostly slow enrollment (71%). 26% of safety stops do not say what the harm was. Most positive readouts that went no further give no reason (79%); otherwise the drug was approved outside the US (10%) or the sponsor chose not to go on, for the same reasons as other sponsor decisions (9%), each as a share of all positive readouts. Of the stops no source explains, 35% had a sponsor that started no later trial, and in 35% the drug was dropped while its sponsor carried on.
 
 ![Each cause of Phase 2 and 3 stops, phase entries 2008–2019, broken down by subcause. Subcauses are what the sponsor's stated reason or the traced source says; "not stated" means it says no more than the cause. For stops no source explains (unknown), the breakdown is what the drug and its sponsor did next, not a reason](report/output/figures/stop_subcauses.png)
 
-**Over time.** Counting sourced and likely causes, and leaving out programs that turned out not to have stopped, efficacy or exposure was the cause of 46% of stops among programs entering in 2008–2011, 43% in 2012–2015 and 42% in 2016–2019; sponsor decisions 20%, 22% and 23%, and a positive readout not yet advanced 22%, 25% and 23%. Among entries from 2015 to 2025 (4,112 stops, many later programs still running), the shares are 38% efficacy or exposure, 26% sponsor decision and 24% positive readouts.
+**Over time.** Counting sourced and likely causes, and leaving out programs that turned out not to have stopped, efficacy or exposure was the cause of 48% of stops among programs entering in 2008–2011, 44% in 2012–2015 and 43% in 2016–2019; sponsor decisions 20%, 23% and 23%, and a positive readout not yet advanced 20%, 23% and 21%. Among entries from 2015 to 2025 (4,112 stops, many later programs still running), the shares are 40% efficacy or exposure, 26% sponsor decision and 22% positive readouts.
 
-**Phase 1.** Phase 1 stops were classified the same way (2,969 programs entering 2008–2019). As registered, 83% give no usable reason, since Phase 1 trials seldom post results and companies seldom explain pausing early assets. Tracing found a sourced cause for 59% of those and a likely cause for 94%. Counting both, efficacy or exposure was the cause of 20% of Phase 1 stops, safety 9%, sponsor decisions 45%, operational 6% and a positive readout not yet advanced 15%; 5% stay unknown.
+**Phase 1.** Phase 1 stops were classified the same way (2,969 programs entering 2008–2019). As registered, 83% give no usable reason, since Phase 1 trials seldom post results and companies seldom explain pausing early assets. Tracing found a sourced cause for 59% of those and a likely cause for 95%. Counting both, efficacy or exposure was the cause of 20% of Phase 1 stops, safety 9%, sponsor decisions 46%, operational 6% and a positive readout not yet advanced 12%; 5% stay unknown.
 
 Tested on stops whose reason is known, the classifier often read safety stops as efficacy, so the efficacy share after tracing is an upper estimate and safety is likely under-counted.
 
@@ -105,16 +56,6 @@ Tested on stops whose reason is known, the classifier often read safety stops as
 ### Why efficacy failed: the target was not engaged, or it was the wrong target
 
 Efficacy fails in one of two ways: the drug never engaged its target in patients, so the hypothesis went untested, or it engaged and the disease did not respond. For every program entering Phase 1, 2 or 3 in 2008–2019 that stopped for efficacy or exposure (PK, dose or formulation), 387 in Phase 1 and 2,215 in Phase 2 or 3, an LLM read the trials, results, papers and, where those were silent, the web, and judged whether the drug reached and engaged its target in humans at the doses tested. The method and its checks are in the appendix.
-
-| What the evidence shows | Phase 2 | Phase 3 | Phase 2 and 3 | Outside oncology |
-| :---- | :---- | :---- | :---- | :---- |
-| Not engaged: exposure or engagement too low, or another drug on the target worked | 10% (169) | 11% (58) | 10% (227) | 9% (156) |
-| Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (783) | 49% (248) | 47% (1,031) | 44% (728) |
-| Trial design, population or endpoint, mechanism not in question | 6% (106) | 10% (50) | 7% (156) | 8% (131) |
-| On-target toxicity offset efficacy | 0% (7) | 0% (2) | 0% (9) | 0% (2) |
-| No engagement data: no human evidence of engagement either way | 38% (640) | 30% (152) | 36% (792) | 38% (633) |
-| **Not engaged, of failures whose mechanism was tested** | **18%** (15–21) | **19%** (15–24) | **18%** (16–21) | **18%** (15–21) |
-| Programs (entities) | 1,705 (1,301) | 510 (433) | 2,215 (1,603) | 1,650 (1,265) |
 
 ![Top: Phase 1, 2 and 3 stops by cause, phase entries 2008–2019, excluding programs whose development continued; where no source states the cause, the model's likely cause is counted. Safety is a floor: sponsors rarely state it, a missed endpoint takes precedence over a safety signal, and the tracing recognised fewer than half of known safety stops. Sponsor decision is the least reliable cause. Positive readouts include programs whose primary endpoints were only partly met. Bottom: the programs of each phase stopped for efficacy or exposure with a sourced cause (likely-only causes are not broken down), by what the evidence shows about target engagement. Phase 1 trials rarely test efficacy, so its efficacy stops are mostly early patient cohorts and dose-finding readouts](report/output/figures/efficacy_attribution.png)
 
@@ -134,37 +75,6 @@ The answer to "was the target wrong, or was it never hit?" is therefore: where a
 
 ### By disease area and modality
 
-| Disease area | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
-| :---- | :---- | :---- | :---- | :---- |
-| Hematology | 18.4% (12.8–25.2) | 212 | 22.9% (14.8–32.8) | 23.9% |
-| Metabolic | 10.2% (6.7–14.2) | 285 | 19.0% (13.1–26.5) | 15.5% |
-| Oncology | 9.8% (7.8–11.9) | 1,856 | 12.4% (9.7–15.3) | 5.3% |
-| Infectious disease | 8.6% (6.3–11.0) | 686 | 17.0% (13.0–21.3) | 13.2% |
-| Autoimmune | 7.5% (5.1–10.0) | 523 | 10.1% (6.6–13.9) | 10.7% |
-| Allergy | 6.8% (3.0–11.8) | 141 | 12.7% (4.6–22.4) | 10.3% |
-| Neurology | 6.5% (5.0–8.2) | 754 | 10.3% (7.9–12.8) | 5.9% |
-| Endocrine | 6.3% (3.7–9.4) | 350 | 12.2% (7.3–17.7) | 6.6% |
-| Psychiatry | 6.1% (3.5–9.0) | 320 | 8.5% (5.0–12.5) | 7.3% |
-| Respiratory | 4.6% (2.5–6.8) | 377 | 9.1% (5.3–13.0) | 7.5% |
-| Ophthalmology | 4.3% (2.4–6.5) | 330 | 6.4% (3.6–9.9) | 11.9% |
-| Other | 3.8% (2.6–5.3) | 785 | 8.1% (5.7–10.9) | 13.0% |
-| Urology | 3.8% (0.9–8.0) | 84 | 6.0% (1.4–12.6) | 3.6% |
-| Gastroenterology | 3.0% (1.5–4.8) | 333 | 7.5% (3.9–11.8) | 8.3% |
-| Cardiovascular | 2.7% (1.5–4.2) | 341 | 5.5% (3.0–8.9) | 4.8% |
-
-| Modality | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
-| :---- | :---- | :---- | :---- | :---- |
-| Monoclonal antibody | 12.8% (9.6–16.1) | 840 | 15.0% (11.1–19.5) | 12.1% |
-| Antibody–drug conjugate | 8.9% (3.5–15.2) | 147 | 8.2% (2.9–14.6) | 10.8% |
-| Protein | 5.8% (3.9–7.8) | 461 | 8.9% (5.9–12.7) | 9.4% |
-| Small molecule | 5.3% (4.6–6.0) | 4,194 | 8.7% (7.5–9.8) | 7.5% |
-| Gene therapy | 4.8% (1.6–8.9) | 114 | 6.1% (2.1–10.7) | 10.0% |
-| Peptide | 4.6% (2.6–7.2) | 276 | 6.6% (3.7–10.8) | 8.0% |
-| Antisense oligonucleotide | 4.5% (1.2–9.9) | 92 | 6.0% (1.6–14.7) | 5.2% |
-| Other cell therapy | 0.7% (0.1–1.5) | 274 | 2.0% (0.3–4.7) | – |
-| Microbiome or live biotherapeutic | 0.4% (0.0–2.4) | 46 | – | – |
-| Other | 0.1% (0.0–0.4) | 301 | 0.4% (0.0–1.7) | – |
-
 ![Likelihood of approval by disease area](report/output/figures/loa_by_area.png)
 
 ![Likelihood of approval by modality](report/output/figures/loa_by_modality.png)
@@ -175,328 +85,116 @@ Disease areas rank differently from BIO's: the rank correlation with BIO's LOA a
 
 ## Predictive power of preclinical evidence
 
-Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before they entered the phase reached FDA approval 2.96 times as often as programs without it (30.1% against 10.2%; 95% CI 2.28–3.83), the likelihood rises with the strength of the evidence, and the association holds at every phase after accounting for disease area, modality, novelty and era. Somatic driver and mouse-model evidence carry weaker signals. Cancer cell-line CRISPR screens single out the same validated oncology targets as somatic drivers and add nothing once those are known, and a target essential in most cell lines, judged by what DepMap had published before entry, is not a clear liability. The drug's own laboratory pharmacology, measured before entry for 45% of small-molecule programs and 0% of antibody programs, carries one signal: measured drugs at 100 nM or better at their target reached approval 2.68 times as often as weaker measured drugs, while functional measurement in cells and selectivity did not help. Yet as a predictor of which individual programs will be approved, the evidence lines raise discrimination only modestly over disease area and modality (held-out AUC 0.605 to 0.641), because most programs have none of them.
+Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before entering the phase reached approval 3.08 times as often (23% against 7%; 95% CI 2.32–4.04), more often the stronger the evidence, and at every phase once disease area, modality, novelty and era are accounted for. Somatic drivers and mouse models carry weaker signals, and a drug potent at its target does better than a weak one. But because most programs have none of this evidence, it predicts which individual programs will be approved only modestly (held-out AUC 0.605 without it, 0.641 with it).
 
 
 ### Evidence lines
 
-Each program aimed at a human protein is scored for the evidence its targets had **for the program's disease**, **as of the year before it entered the phase**, from Open Targets: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens in human cells, plus two properties of the target itself (essential in most cells; intolerant of loss of function). A third group describes the drug rather than its target or disease: its potency, functional activity in cells and selectivity, as measured in laboratory assays published before entry and collected in ChEMBL. How each line is dated and matched to the program's disease is in the appendix. Vaccines, cell and gene therapies and other entities without a single human protein target fall outside this analysis, so its programs reach approval more often than the Section 1 cohort as a whole. Of the 10,169 programs on 1,467 targets scored, 15.2% of Phase 1 entrants had human genetic evidence for their disease at entry.
+Each program on a human protein target is scored for the evidence its targets had **for the program's disease, as of the year before it entered the phase**: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens (from Open Targets); two properties of the target itself (essential in most cells, intolerant of loss of function); and the drug's own potency and selectivity in laboratory assays (ChEMBL). Of the 9,021 programs scored, 9% of Phase 1 entrants had human genetic evidence for their disease. Dating and matching rules are in the appendix.
 
 ### Relative success
 
-*Relative success* is the LOA of programs with the evidence divided by the LOA of programs without it (Nelson et al. 2015; Minikel et al. 2024).
+*Relative success* is the LOA of programs with the evidence divided by the LOA of programs without it (Nelson et al. 2015; Minikel et al. 2024); the figure in Section 3 shows it for every line.
 
-| Evidence line | Programs with it | LOA with / without | Relative success (95% CI) |
-| :---- | :---- | :---- | :---- |
-| CRISPR knockout screen in cancer cell lines | 182 | 51.1% / 12.6% | 4.05 (2.57–5.89) |
-| Any human genetics | 1,740 | 30.1% / 10.2% | 2.96 (2.28–3.83) |
-| Rare-variant or Mendelian genetics | 1,130 | 32.1% / 11.0% | 2.93 (2.24–3.77) |
-| Somatic cancer driver | 1,646 | 26.8% / 11.3% | 2.37 (1.68–3.25) |
-| GWAS | 851 | 26.2% / 11.9% | 2.20 (1.54–2.98) |
-| Disease pathway (Reactome) | 206 | 24.7% / 12.6% | 1.95 (1.09–3.05) |
-| Mouse model | 2,040 | 16.3% / 11.9% | 1.37 (1.02–1.80) |
-| Expressed differently in the disease | 1,560 | 16.6% / 12.4% | 1.34 (0.93–1.83) |
-| **Target liabilities** (not specific to the disease) |  |  |  |
-| Intolerant of loss of function | 1,976 | 12.2% / 13.1% | 0.93 (0.62–1.37) |
-| Essential in most cell lines | 330 | 8.7% / 12.9% | 0.67 (0.09–1.91) |
-| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Very potent at the target (10 nM or better) | 1,516 | 13.6% / 12.5% | 1.09 (0.76–1.46) |
-| Potent at the target (100 nM or better) | 2,042 | 13.3% / 12.4% | 1.07 (0.76–1.43) |
-| Potency at the target measured | 2,455 | 11.4% / 12.9% | 0.88 (0.63–1.15) |
-| At least 100-fold selective over measured off-targets | 389 | 8.5% / 13.0% | 0.66 (0.34–1.11) |
-| Functional potency measured in cells | 565 | 7.1% / 13.2% | 0.54 (0.29–0.89) |
+Rare-variant and Mendelian evidence (3.23×) is stronger than GWAS (1.91×), as Minikel et al. (2024) found. Somatic drivers (2.52×), mouse phenotypes (1.54×) and Reactome pathways (2.55×, 179 programs) also go with success; expression in the disease does not clearly (1.13×), and loss-of-function-intolerant targets carry no penalty (0.96×).
 
-![Relative success by evidence line](report/output/figures/relative_success_by_evidence.png)
+CRISPR screens and DepMap's essential-gene list were first published in 2019, so no program in the window could have used them. With hindsight, on today's data, screen hits reach approval 2.83 times as often (mostly oncology targets already validated) and essential targets 0.35 times as often, much of it from targets found essential after their programs had failed.
 
-Rare-variant and Mendelian evidence (2.93×) and GWAS evidence (2.20×) both carry the genetic signal, in line with Minikel et al. (2024), who found 2.6× from Phase 1 to launch with Mendelian evidence stronger than GWAS. Somatic driver evidence (2.37×), mouse phenotypes (1.37×) and Reactome pathways (1.95×, from only 206 programs) also associate with success; differential expression in the disease does not clearly (1.34×, interval spanning 1). CRISPR knockout screens in cancer cell lines show the largest ratio (4.05×, 2.57–5.89, 182 programs), but they mostly flag targets oncology had already validated (EGFR, ERBB2, ESR1, KRAS, CDK4 and CDK6), 98% of them also somatic drivers for the cancer; they add nothing once the other lines are in the model (below). Only Project Score pairs listed since its 2019 release count before 2024. The neuron screens matched too few programs (16) to estimate.
-
-Target liabilities, properties of the target rather than evidence for the disease, carry little. Loss-of-function-intolerant targets show no penalty (0.93×). Targets on DepMap's common-essential list before entry reach approval less often (0.67×, 0.09–1.91), but the interval is wide: the list was first published in 2019, so only the 330 programs that entered a phase from 2020 can carry the flag. Judged by today's list instead, as earlier drafts did, the penalty looks firm (0.45×, 0.17–0.83): much of it comes from targets found essential after their programs had started, mostly oncology small molecules aimed at machinery every cell needs (mTOR, tubulin, topoisomerases, histone deacetylases, WEE1 and ATR, BET proteins).
-
-Two checks bear on whether this reflects foresight rather than hindsight. Evidence is taken as it stood the year before the program entered the phase, each item dated by when it became known, so later discoveries do not count. Counting all evidence known by 2026 instead weakens the genetic relative success to 2.47×: what was known in advance is more telling than what was found afterwards. And restricting matches to diseases similar to the program's (Lin ≥ 0.8, Minikel's criterion, without the subtype rule) gives 2.98×.
+The result is not hindsight. Counting all evidence known by 2026 instead of before entry weakens genetic relative success to 2.16×, and restricting matches to closely similar diseases (Minikel's criterion) gives 3.10×.
 
 
 ### Genetic dose–response
-
-| Genetic association score before entry (Open Targets, 0–1) | Programs | Targets | LOA (95% CI) |
-| :---- | :---- | :---- | :---- |
-| 0 (no genetic support) | 8,491 | 1,310 | 10.2% (8.2–12.7) |
-| up to 0.61 (lowest third) | 680 | 346 | 18.1% (12.5–24.3) |
-| 0.61–0.88 (middle third) | 539 | 204 | 40.2% (29.8–49.4) |
-| above 0.88 (highest third) | 596 | 241 | 37.3% (29.7–45.6) |
 
 ![Likelihood of approval by strength of human genetic support](report/output/figures/genetic_dose_response.png)
 
 ### What each line adds once the others are known
 
-Programs with genetic evidence differ from programs without it in disease area, modality and era, and the evidence lines overlap. The table gives, for each phase, the relative risk of advancing for programs with each line, with the other lines, disease area, modality, novelty and entry period held fixed.
+The evidence lines overlap, so the figure holds the other lines, disease area, modality, novelty and entry period fixed and shows what each line adds at each phase.
 
-| Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |
-| :---- | :---- | :---- | :---- |
-| GWAS | 1.07 (1.00–1.15) | 1.55 (1.33–1.80) | 1.00 (0.75–1.34) |
-| Rare-variant or Mendelian genetics | 1.12 (1.03–1.21) | 1.35 (1.16–1.58) | 1.52 (1.27–1.81) |
-| Somatic cancer driver | 1.03 (0.92–1.14) | 1.10 (0.89–1.37) | 1.06 (0.84–1.35) |
-| Mouse model | 0.92 (0.85–0.98) | 0.98 (0.86–1.12) | 0.98 (0.83–1.15) |
-| Expressed differently in the disease | 0.95 (0.88–1.03) | 1.01 (0.85–1.21) | 0.90 (0.74–1.10) |
-| Disease pathway (Reactome) | 1.10 (0.97–1.24) | 0.97 (0.73–1.28) | 1.07 (0.78–1.47) |
-| CRISPR knockout screen in cancer cell lines | 0.91 (0.75–1.10) | 0.99 (0.78–1.26) | – |
-| **Target liabilities** (not specific to the disease) |  |  |  |
-| Essential in most cell lines | 1.07 (0.91–1.26) | 1.14 (0.85–1.53) | – |
-| Intolerant of loss of function | 0.91 (0.80–1.03) | 1.13 (0.96–1.32) | 1.00 (0.83–1.22) |
-| **Drug pharmacology** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Potency at the target measured | 0.70 (0.52–0.95) | 0.92 (0.70–1.20) | 1.16 (0.79–1.70) |
-| Potent at the target (100 nM or better) | 1.47 (1.06–2.03) | 1.26 (0.95–1.68) | 1.33 (0.92–1.93) |
-| Functional potency measured in cells | 0.68 (0.47–0.98) | 0.89 (0.70–1.13) | 0.92 (0.68–1.24) |
-| At least 100-fold selective over measured off-targets | 0.85 (0.65–1.13) | 0.87 (0.65–1.16) | 0.89 (0.67–1.19) |
+![Relative risk of advancing at each phase, with the other lines, disease area, modality, novelty and entry period held fixed](report/output/figures/joint_by_phase.png)
 
-One evidence line at a time, with the same adjustments, human genetic evidence raises the chance of advancing by 1.10× in Phase 1, 1.62× in Phase 2 and 1.41× in Phase 3: the effect sits where efficacy is first tested. In the joint model, GWAS and rare-variant evidence each keep an independent effect at Phase 2, rare-variant evidence also at Phase 3 and GWAS a small one at Phase 1, and essentiality across cell lines shows no penalty at any phase (1.14 at Phase 2, 0.85–1.53). Cancer cell-line screens, 1.30× at Phase 2 on their own, fall to 0.99× beside the somatic and genetic evidence on the same targets; somatic, mouse-model, expression and pathway evidence also lose their association once genetics and the covariates are in the model, consistent with their univariate signal riding along with genetic support and with disease area.
+Held against the others, rare-variant and Mendelian evidence keeps an independent effect at Phase 2 (1.51×) and Phase 3 (1.54×), where efficacy is tested, and somatic drivers at Phase 2 (1.34×). GWAS, mouse-model, expression and pathway evidence add little once genetics is known: their own signal mostly rides along with genetic support and disease area.
 
 
 ### By disease area
 
-| Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Any human genetics | 2.10 (1.30–3.10), n=553 | 1.82 (0.88–3.35), n=291 | 6.82 (3.83–11.87), n=225 | 3.44 (1.58–6.16), n=247 | 2.97 (1.86–4.82), n=356 | –, n=68 | 0.03 (6 groups) |
-| GWAS | 1.35 (0.39–2.42), n=178 | 1.72 (0.59–3.53), n=224 | 5.60 (2.30–9.99), n=132 | –, n=97 | 2.67 (1.36–5.05), n=212 | –, n=8 | 0.11 (5 groups) |
-| Rare-variant or Mendelian genetics | 2.32 (1.46–3.37), n=445 | –, n=85 | 4.61 (2.12–9.14), n=113 | 3.56 (1.70–6.17), n=195 | 2.03 (1.29–3.27), n=228 | –, n=64 | 0.30 (6 groups) |
-| Somatic cancer driver | 1.74 (1.09–3.07), n=1,575 | –, n=4 | –, n=15 | –, n=12 | –, n=38 | –, n=2 | – |
-| Mouse model | 0.66 (0.28–1.14), n=571 | 1.51 (0.88–2.40), n=283 | 1.05 (0.49–1.95), n=212 | 1.66 (0.89–3.10), n=351 | 1.57 (0.96–2.69), n=494 | 1.48 (0.67–3.51), n=129 | 0.28 (6 groups) |
-| Expressed differently in the disease | 1.04 (0.66–1.55), n=1,120 | 0.99 (0.34–1.98), n=274 | –, n=70 | –, n=83 | –, n=12 | –, n=1 | 0.41 (4 groups) |
-| Potent at the target (100 nM or better) | 1.18 (0.71–1.95), n=996 | 1.02 (0.50–1.91), n=240 | 2.05 (1.09–3.72), n=309 | 0.63 (0.28–1.19), n=292 | 1.09 (0.59–1.92), n=165 | –, n=40 | 0.26 (5 groups) |
-
 ![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
 
-Human genetic evidence predicts approval in every group of disease areas where it can be measured, but not equally: whether its effect at Phase 2 differs between groups gives p = 0.03. It is strongest in the smaller areas pooled as "other" (ophthalmology, infectious disease, urology and the diseases outside the named areas, mostly kidney, skin and rare hereditary disorders), where programs with it reached approval 6.82 times as often (28.4% against 4.2%), and in neuroscience (3.44, carried by rare-variant evidence at 3.56). It is about threefold in cardiometabolic and endocrine diseases (2.97), twofold in oncology (2.10), and weakest in immunology and inflammation (1.82, 0.88–3.35), where most of the evidence is GWAS. Hematology has too few programs with genetic evidence (68) to estimate.
+Human genetic evidence predicts approval in every area group with enough programs to measure it, and its effect does not differ measurably between them (p = 0.52 for the difference at Phase 2). It is largest in cardiometabolic and endocrine diseases (4.40×, 26% against 6%), about 2.5-fold in oncology (2.54×) and neuroscience (2.57×), and least clear in immunology and inflammation (1.87×, 0.87–3.29), where much of the evidence is GWAS. Hematology and the other areas have too few genetically supported programs to estimate. Leaving out any one group keeps the pooled relative success between 2.90 and 3.33.
 
-No other line's effect measurably differs between groups. In oncology, a somatic driver gives 1.74 (1.09–3.07). A potent drug gives 2.05 in the "other" group and 0.63 in neuroscience, but the groups do not differ beyond chance (p = 0.26). Leaving out any one group moves the pooled relative success of human genetics between 2.46 and 3.57; it is lowest without the "other" group, so no single area carries the pooled result.
+Somatic drivers give 2.43× in oncology. Mouse models help in cardiometabolic disease (1.73×) and immunology (1.82×) but not in oncology (1.16×). Expression in the disease is the one line whose effect differs between groups (p = 0.05), going the wrong way in immunology (0.53×); with three groups tested and a borderline p, this is a lead, not a finding.
 
 
 ### The drug's own pharmacology
 
-The lines above concern the target and the disease. The drug-pharmacology lines concern the molecule: how strongly it acts on its primary target in laboratory assays (the concentration giving half its maximal effect, or its binding affinity), whether that was measured as a functional response in living cells, and how much more strongly it acts on its target than on any other human protein tested. Each measurement counts from the year of the paper, patent or dataset that reported it, as of the year before phase entry; the definitions are in the appendix.
+The drug's laboratory potency, functional activity in cells and selectivity were measured before entry for 24% of programs, nearly all small molecules (37% of them); ChEMBL holds almost no measurements for antibodies or other proteins. Measured drugs were usually potent (83% at 100 nM or better).
 
-Coverage is thin and lopsided. 24% of the programs scored had any such measurement at their primary target before a phase entry: 45% of small-molecule programs and 16% of peptide programs, but 0% of antibody and 0% of other protein programs, because ChEMBL's curated measurements come from medicinal chemistry papers and patents about small molecules. Where a drug was measured, it was usually potent: the median best potency was 8.39 on the negative-log scale (4.07 nM), and 83% of measured programs reached 100 nM or better. Off-target measurements existed for 69% of measured programs, and 22% of those were at least 100-fold selective.
-
-A line carried by fewer than 100 programs is not estimated; all five drug lines clear that bar. Having a measurement at all says nothing about success (0.88×, 0.63–1.15). Potency does, a little, once the comparison is kept among drugs that were measured: those at 100 nM or better reached approval 2.68 times as often as the 417 measured programs whose drug was weaker (1.55–5.26); against all programs, measured or not, the ratio is 1.07× and the interval spans 1. In the joint model, with the disease evidence, disease area, modality, novelty and era held fixed, a potent drug advanced more often at every phase (1.47 at Phase 1, 1.06–2.03; 1.26 at Phase 2, 0.95–1.68; 1.33 at Phase 3, 0.92–1.93). Raising the bar to 10 nM separates measured programs less sharply (1.59×, 1.04–2.53). Selectivity of 100-fold or more shows no association (0.66×, 0.34–1.11), and neither does it at any phase in the joint model. Functional potency measured in cells goes the wrong way (0.54×, 0.29–0.89; 0.68 at Phase 1 in the joint model, 0.47–0.98), a pattern these data cannot explain; a cell-based readout is no sign that a program will do better. Counting every measurement published by 2026 instead of before entry gives 1.19× for potency against all programs.
-
-These lines measure the molecule, not whether its target matters in the disease, and they come with a bias of their own: drugs that look promising attract more papers, and potency is published mostly for small molecules from medicinal chemistry programs, so a measurement is partly a marker of a well-studied, novel-chemistry program. Weak measured drugs are a small group of 417 programs, and the clearest reading is that a drug well short of 100 nM at its intended target rarely reaches approval, not that more potency beyond that point helps.
+Among measured drugs, those at 100 nM or better reached approval 2.57 times as often as the 373 weaker ones (1.52–5.08), and potency still helps at Phase 3 once the disease evidence is held fixed (1.58×). Selectivity shows no association (0.99×), and a functional readout in cells, if anything, goes with worse odds (0.72×). The fair reading is that a drug well short of 100 nM at its target rarely succeeds, not that more potency helps; and because promising drugs attract more papers, a measurement is partly a marker of a well-studied program.
 
 
 ### Does the evidence predict which programs reach approval?
 
-We followed programs that entered Phase 1 in 2008–2016 for ten years (3,185 programs, 159 approved) and asked whether adding the evidence lines to what is known about disease area, modality, novelty and entry year improves the prediction of approval, on targets the model had not seen.
+Programs that entered Phase 1 in 2008–2016 were followed for ten years (3,185 programs, 159 approved), and models were tested on targets they had not seen.
 
-| Validation | Features | AUC (95% CI) | PR-AUC (base rate) | Programs (approved) |
-| :---- | :---- | :---- | :---- | :---- |
-| Held-out target sets | Area, modality, novelty, year | 0.605 (0.540–0.668) | 0.098 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | Area, modality, novelty, year | 0.620 (0.545–0.691) | 0.105 (0.056) | 1,603 (89) |
-| Held-out target sets | … plus all evidence lines | 0.641 (0.580–0.705) | 0.118 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | … plus all evidence lines | 0.637 (0.565–0.719) | 0.125 (0.056) | 1,603 (89) |
-| Held-out target sets | Evidence lines only | 0.622 (0.542–0.703) | 0.092 (0.050) | 3,185 (159) |
-| Temporal (2013–2016) | Evidence lines only | 0.623 (0.555–0.693) | 0.105 (0.056) | 1,603 (89) |
+![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
 
-Change in held-out AUC when each line is removed from the full model:
-
-| Evidence removed | AUC change (95% CI) |
-| :---- | :---- |
-| Any human genetics | -0.025 (-0.047 to -0.005) |
-| Rare-variant or Mendelian genetics | -0.025 (-0.048 to -0.005) |
-| Expressed differently in the disease | -0.007 (-0.022 to +0.010) |
-| Mouse model | +0.002 (-0.000 to +0.004) |
-| Intolerant of loss of function | +0.002 (-0.002 to +0.006) |
-| Somatic cancer driver | +0.002 (-0.015 to +0.019) |
-
-A model on disease area, modality, novelty and entry year alone ranks programs at an AUC of 0.605 on held-out target sets; adding the evidence lines raises it to 0.641 (95% CI 0.580–0.705), and the temporal split agrees (0.620 without, 0.637 with). Human genetics carries most of the gain: removing it lowers the held-out AUC by 0.025 (95% CI 0.005–0.047), and no other line's removal measurably lowers it. GWAS evidence covered too few of the 2008–2016 entrants to be modelled, so genetics here means rare-variant and Mendelian evidence; CRISPR screens and DepMap essentiality were not published before 2019, so none of these entrants carries them. Discrimination stays modest all the same, and that does not contradict the relative success: genetic support multiplies the chance of approval by about 2.96 for the minority of programs that have it (15% of Phase 1 entrants, fewer among the 2008–2016 entrants this model follows), but says nothing about the majority, so it can sort only a small slice of programs.
+Disease area, modality, novelty and entry year alone give a held-out AUC of 0.605; adding the evidence lines raises it to 0.641 (0.580–0.705), and a split by entry year agrees. Human genetics carries the gain (removing it costs 0.025). This is consistent with the relative success: genetic support roughly triples the chance of approval for the 9% of programs that have it, but says nothing about the rest.
 
 
 
 ## What translates to the clinic
 
-Human genetic evidence for the program's own disease is the one kind of preclinical evidence that consistently carried over into Phase 2. Outside oncology, programs whose target had germline genetic evidence for the disease before they entered Phase 2 reached Phase 3 or approval within four years 2.34 times as often as programs whose target had no germline genetic evidence at all (27% against 11%), and the advantage shrinks as the evidence moves to a related disease (20%) or to unrelated diseases only (16%). The same target does better in the diseases its genetics points to than in its other diseases (odds ratio 3.00), and the effect holds after accounting for an approved drug on the target. The advantage shows in efficacy: genetically supported programs stopped for efficacy less often (business and operational stops fell about as much), and their trials missed the primary endpoint less often on regulatory surrogates and clinician-rated scales; on patient-reported, exploratory-biomarker and event endpoints the difference was small or absent. Somatic drivers in oncology and Reactome pathway evidence carried weaker signals, literature mouse models a marginal one and differential expression none, and a mouse model whose direction matched the drug's did not predict Phase 2 success. Whether the direction of the genetic effect matters could not be tested, because almost no program went against an established mechanism. Grouped by kind, germline genetics is the only preclinical evidence that predicts after correcting for the number of kinds tested, and no more specific version of any kind (stronger GWAS, Mendelian evidence, genetics or a mouse model pointing the drug's way) does better than the rest of its kind; an approved drug on the same target for a related disease predicts more strongly still. Genetic support covered only 24% of the programs that advanced.
+Human genetic evidence for the program's own disease is the preclinical evidence that most clearly carried over into Phase 2. Outside oncology, programs with it advanced 1.74 times as often as programs whose target had no germline genetics (24% against 11%); the advantage fades as the evidence moves to related or unrelated diseases, and the same target does better in the diseases its genetics points to (odds ratio 3.17). Somatic drivers in oncology and animal models also predict, though animal models mostly through their overlap with genetic support. No more specific version of any kind (stronger GWAS, Mendelian evidence, genetics or a mouse model pointing the drug's way) beats the rest of its kind, and an approved drug on the target for a related disease predicts more strongly than any preclinical evidence. Genetic support covered only 20% of the programs that advanced.
 
 
 ### Design
 
-The cohort is programs on a human protein target that entered Phase 2 from 2015-01-01 to 2020-10-20 (2,519 programs on 883 primary-target sets), each followed for four years: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years (17.5% did). The analysis plan was committed before any of these analyses touched outcomes; departures from it are marked below. How evidence was dated and matched, the regimes, the models and the trial-level analysis are in the appendix.
+The cohort is the 4,596 programs on a human protein target that entered Phase 2 in 2008–2019. A program *advanced* if a Phase 3 trial of its own started, or the FDA approved it, within four years (15% did). Phase 2 is the first test of efficacy in patients, so it is where the evidence's claim about the disease is first put to the test. The analysis plan was registered before any outcome was examined; it named 2015–2020 entries, and the cohort was widened to the report's window so that every section describes the same programs. Other departures are marked; methods and robustness checks are in the appendix.
 
 ### Confirmatory hypotheses
 
-| Hypothesis | Measure | Estimate (95% CI) | p | Holm p | Result |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| Outside oncology: genetics for the disease vs no germline genetics on the target, advancing within 4 years of Phase 2 | risk ratio | 2.34 (1.33–4.14) | 0.003 | 0.020 | supported |
-| Same target in different diseases: genetics for the disease vs not (conditional logit) | odds ratio | 3.00 (1.78–5.03) | < 0.001 | < 0.001 | supported |
-| Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 0.97 (0.69–1.37) | 0.871 | 1.000 | not supported |
-| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.35 (1.09–1.69) | 0.007 | 0.036 | supported |
-| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 0.99 (0.58–1.69) | 0.975 | 1.000 | not supported |
-| Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.91 (0.46–1.78) | 0.945 | 1.000 | not supported |
-| Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.12 (0.72–1.75) | 0.610 | 1.000 | not supported |
+![The pre-registered hypotheses](report/output/figures/s3_hypotheses.png)
 
 ![Specificity of the genetic evidence](report/output/figures/s3_specificity.png)
 
-Two of the seven hypotheses hold after correction for multiple testing.
+Two of the seven registered hypotheses hold after correction for multiple testing: genetics for the disease predicts advancing outside oncology (risk ratio 1.74, 1.20–2.53; only evidence for the disease itself, not a related or unrelated one, differs from none), and it does so within a target, across the 70 targets developed in several diseases (odds ratio 3.17, 2.10–4.78), so the signal is not only that some targets are better than others.
 
-* **Genetics for the disease, overall and within a target (supported).** Outside oncology, Phase 2 programs advanced within four years at 11% with no germline genetic evidence on the target (172 programs), 16% with evidence only for unrelated diseases (1,006), 20% with evidence for a related disease (146) and 27% with evidence for the disease itself (153); only the last differs from none once disease area, modality, novelty, period and target precedent are accounted for. Among the 52 targets developed in several diseases with and without genetic support and with different outcomes (380 programs), the diseases with support advanced more often (odds ratio 3.00, 1.78–5.03): the signal is not only that some targets are better than others.
-* **Direction of effect, as Open Targets labels it (not supported).** Open Targets' direction-of-effect fields follow each variant's predicted consequence, so a few truncating ClinVar variants make gain-of-function disease genes such as PCSK9, MYH7 and TTR read as loss of function, and inhibitors of them as discordant. The test is reported as registered; the direction analysis below replaces those fields.
-* **Proximal against distal endpoints (supported in the registered analysis; not robust).** In trials with registry-posted results, genetic support lowered the chance of missing the primary endpoint most on proximal endpoints (risk ratio 0.58, 0.44–0.76), and the effect weakened by a factor of 1.35 per step towards distal endpoints (p = 0.007; 0.036 after Holm correction). The registered test survives correction, but the pattern does not hold across all readable trials (1.07, p = 0.513) or with mixed results counted as met (1.27).
-* **Efficacy stops against business stops (not supported).** Genetic support lowered efficacy stops (risk ratio 0.71, 0.53–0.96), but business and operational stops fell by a similar factor (ratio of the two 0.99, 0.58–1.69), so the data cannot say that it acts on efficacy alone. Safety stops were no rarer (1.14, 0.58–2.24), nor were stops for pharmacokinetic, formulation or operational reasons, the plan's negative control (0.70, 0.34–1.44).
-* **Target liabilities and safety stops (not supported).** Targets that are pan-essential, intolerant of loss of function, or lethal when knocked out in mice did not stop for safety more often (0.91, 0.46–1.78). Safety is the recorded reason for fewer than 2% of programs, so registries see little of it.
-* **Somatic drivers that match the drug (not supported).** In oncology, a somatic driver whose direction matches the drug's (an activated oncogene and an inhibitor) did not raise the chance of advancing (1.12, 0.72–1.75).
-
-**Checks on the genetics result.** Swapping each program's disease for another program's in the same disease area, 200 times, gives a median risk ratio for genetics for the disease of 1.78 against the observed 2.34 (95th percentile 2.31; p = 0.040). Part of the contrast with targets that have no germline genetics therefore reflects whether a target has been studied genetically at all; matching the disease adds to it. At Phase 1, where efficacy is rarely tested, the same contrast is 1.12 (0.89–1.41). Against all other programs rather than those with no germline genetics on the target, genetic support gives 1.74 outside oncology, and 1.59 (1.13–2.21) after adjusting for an approved drug on the target for a related disease; on targets with no approved drug at all, genetic support gives 1.27 (0.80–2.02, all disease areas). Leaving out the most influential target set (PDE4A+PDE4B+PDE4C+PDE4D) gives 2.21. Leaving out each of the 5 largest target classes in turn gives 1.97 to 2.56; the lowest, without the "gpcr" class, has an interval of 1.01–3.86, so the estimate leans on that class.
-
-**Who is in the cohort.** The cohort is Phase 2 programs with a disease and a single resolved human protein target. Left out are 258 programs with no disease (healthy-volunteer, basket or symptom trials; 6% advanced) and 736 without a single human protein target (8%), so the cohort's base rate is higher than Section 1's.
+The other five are not supported. Open Targets' direction-of-effect fields could not test direction (they mislabel gain-of-function genes such as PCSK9 and MYH7; see "Direction of effect"). Genetic support lowered efficacy stops (0.65) but business stops by about as much. Its effect did not clearly weaken from proximal to distal endpoints. Target liabilities did not predict safety stops, which are under 2% of programs. A somatic driver matching the drug went with advancing (1.46) but not beyond chance across seven tests.
 
 
 ### Which evidence translates
 
-| Evidence for the disease, known before Phase 2 | Programs (targets) | Advanced: with / without | Share of all that advanced | Risk ratio, all (95% CI) | Risk ratio, non-oncology | Risk ratio, oncology |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Germline genetics for the disease | 368 (194) | 29% / 16% | 24% | 1.83 (1.44–2.32) | 1.74 (1.24–2.43) | 1.98 (1.28–3.07) |
-| GWAS, any locus-to-gene score | 149 (84) | 26% / 17% | 9% | 1.52 (1.10–2.10) | 1.71 (1.14–2.57) | 1.70 (0.88–3.27) |
-| GWAS, locus-to-gene score ≥ 0.8 | 68 (41) | 25% / 17% | 4% | 1.38 (0.90–2.13) | 1.44 (0.89–2.35) | – |
-| GWAS, best score 0.5–0.8 | 37 (24) | 16% / 18% | 1% | 0.95 (0.47–1.91) | – | – |
-| GWAS, best score below 0.5 | 44 (27) | 34% / 17% | 3% | 2.11 (1.29–3.46) | 2.37 (1.36–4.13) | – |
-| Mendelian or ClinVar pathogenic | 245 (131) | 29% / 16% | 16% | 1.75 (1.30–2.35) | 1.71 (1.11–2.62) | 1.76 (1.02–3.03) |
-| Mendelian, top-tier curation | 158 (89) | 32% / 17% | 11% | 2.10 (1.46–3.03) | 1.81 (1.04–3.13) | – |
-| Somatic cancer driver | 333 (103) | 23% / 17% | 17% | 1.42 (0.99–2.03) | – | 1.48 (1.02–2.14) |
-| Somatic driver, direction matches the drug | 226 (70) | 21% / 17% | 11% | 1.17 (0.77–1.77) | – | 1.12 (0.72–1.75) |
-| Mouse model (literature) | 498 (281) | 23% / 16% | 26% | 1.29 (1.00–1.68) | 1.30 (0.97–1.72) | 1.16 (0.60–2.24) |
-| Mouse model, top-quartile phenotype match | 308 (184) | 22% / 17% | 15% | 1.15 (0.89–1.49) | 1.08 (0.77–1.51) | 0.95 (0.55–1.64) |
-| Expressed differently in the disease | 358 (198) | 18% / 17% | 15% | 1.05 (0.70–1.58) | 0.66 (0.35–1.22) | 1.33 (0.84–2.10) |
-| Disease pathway (Reactome) | 66 (32) | 27% / 17% | 4% | 1.50 (1.00–2.25) | – | – |
-| **Clinical precedent** |  |  |  |  |  |  |
-| Approved drug on the target, related disease | 763 (269) | 29% / 12% | 50% | 2.18 (1.65–2.88) | 2.16 (1.58–2.95) | 2.05 (1.11–3.78) |
-| Approved drug on the target, any disease | 1,557 (439) | 21% / 13% | 72% | 1.85 (1.48–2.32) | 1.68 (1.26–2.24) | 2.28 (1.50–3.47) |
-| **Target liabilities** (not specific to the disease) |  |  |  |  |  |  |
-| Essential in most cell lines | 22 (19) | 14% / 18% | 1% | 0.96 (0.32–2.89) | – | – |
-| Intolerant of loss of function | 464 (160) | 17% / 18% | 18% | 1.00 (0.76–1.32) | 1.26 (0.89–1.78) | 0.82 (0.54–1.25) |
-| Mouse knockout dies before weaning | 1,178 (411) | 17% / 18% | 47% | 0.98 (0.79–1.21) | 0.96 (0.72–1.26) | 0.97 (0.67–1.41) |
+The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but several are narrower versions of others, so they are grouped by kind of evidence: each kind is tested against programs without it (Holm-corrected across the 6 kinds), and each narrower version against the rest of its kind. An approved drug on the target for a related disease is shown as a benchmark. The figure sets each kind beside its relative success in reaching approval (Section 2).
 
-![Evidence map](report/output/figures/s3_evidence_map.png)
+![Each kind of evidence and its narrower versions: relative success in reaching approval from any phase (left), and the adjusted risk ratio of advancing from Phase 2 within four years (right)](report/output/figures/evidence_translates.png)
 
-* **Human genetics.** Mendelian and ClinVar evidence for the disease (1.75; top-tier curation 2.10) and GWAS (1.52) both carry the signal. Within GWAS, the locus-to-gene score did not grade it: the best score at 0.8 or above gives 1.38, 0.5–0.8 gives 0.95 and below 0.5 gives 2.11, each from a few dozen programs. Most GWAS rows in Open Targets are on measurement traits (LDL cholesterol, blood pressure, body-mass index) with no MONDO disease; they count as germline evidence on the target but cannot match a disease, so genetics for the disease is undercounted when it was found through a trait. Gene burden results start in 2019, too late for these cohorts.
-* **Somatic drivers.** In oncology, a somatic driver for the tumour raised the chance of advancing (1.48, 1.02–2.14); requiring the driver's direction to match the drug's did not sharpen it (1.12). Germline genetics for the tumour type was the stronger signal (1.98), carried by well-validated targets such as EGFR, ERBB2 and ESR1.
-* **Mouse models.** Literature-curated (MGI) mouse models of the disease gave 1.29 (1.00–1.68), and a top-quartile phenotype match 1.15. Each MGI model is dated by its first paper, and each knockout from the IMPC consortia by the first IMPC data release with calls for it (2015 at the earliest).
-* **Expression and pathways.** Differential expression in the disease carried nothing (1.05; outside oncology 0.66). Reactome pathway evidence gave 1.50 from 66 programs, most of them in hereditary diseases, which Reactome curates. CRISPR-screen evidence matched only 5 programs before entry: Project Score was first released in 2019, when most of this cohort had already entered Phase 2.
-* **Clinical precedent.** An FDA-approved drug on the target for a related disease (Lin similarity ≥ 0.5) was the strongest single predictor (2.18) and was present for 50% of the programs that advanced.
-* **Target liabilities.** Essentiality across cell lines could be known only for the 22 programs that entered Phase 2 in 2020, after DepMap first published its common-essential list, too few to judge (0.96, 0.32–2.89); loss-of-function intolerance (1.00) and lethality of the mouse knockout (0.98) made no difference.
+**Three kinds of preclinical evidence predict.** Phase 2 programs whose target had germline genetic evidence for the disease advanced 1.94 times as often as programs without it (1.55–2.41; Holm-corrected p < 0.001). Somatic drivers in oncology (1.60, 1.16–2.20) and animal models of the disease (1.43, 1.17–1.76) also survive the correction, with smaller effects. Animal models predict largely because they sit on genetically supported targets: holding the other lines fixed, mouse-model evidence adds little (Section 2). Reactome pathways (1.39) point the same way but do not survive the correction, and expression (1.02) and target liabilities (1.02) carry nothing. The benchmark is stronger than any preclinical kind (2.13, 1.73–2.62).
 
-**What the evidence leaves out.** Of the 442 Phase 2 programs that advanced, 24% had germline genetics for the disease, 48% had any of the disease-specific evidence families, and 30% had neither such evidence nor an approved drug on the target for a related disease.
+**Being more specific does not help.** No narrower version beats the rest of its kind: not strong GWAS evidence (0.69), Mendelian evidence (1.13) or genetics pointing the drug's way (1.06) within germline genetics, nor a close phenotype match (1.06) or a mouse model pointing the drug's way (1.02) within animal models, nor a driver matching the drug within somatic drivers (1.06).
+
+**Known only after entry.** CRISPR screens and DepMap's essential-gene list date from 2019, too late for this cohort; with hindsight, a screen hit went with advancing (1.93) and an essential target with not advancing (0.56).
 
 
 ### By endpoint
 
-| Class of the governing primary endpoint | Trials | Missed primary endpoint | Trials with genetics for the disease | Missed: with / without genetics | Risk ratio of a miss, all readable trials (95% CI) | Risk ratio, registry-posted results (FDAAA era) |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Target engagement | 35 | 26% | 17 | 18% / 33% | – | – |
-| Exploratory biomarker | 272 | 68% | 33 | 70% / 67% | 1.06 (0.80–1.42) | – |
-| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,329 | 24% | 284 | 13% / 27% | 0.68 (0.47–0.98) | 0.45 (0.32–0.63) |
-| Objective physiology (6MWD, visual acuity, weight…) | 546 | 45% | 105 | 33% / 48% | 0.86 (0.63–1.17) | 0.84 (0.56–1.28) |
-| Clinician-rated scale or responder index | 1,444 | 55% | 245 | 42% / 57% | 0.73 (0.60–0.89) | 0.76 (0.61–0.95) |
-| Patient-reported outcome | 642 | 56% | 17 | 59% / 56% | 1.24 (0.88–1.73) | – |
-| Disease events (relapses, exacerbations…) | 365 | 44% | 57 | 40% / 45% | 0.90 (0.60–1.33) | 0.94 (0.61–1.45) |
-| Hard outcome (death, MI, stroke…) | 184 | 63% | 19 | 53% / 64% | – | – |
-| Tumour response | 168 | 67% | 35 | 57% / 70% | 0.86 (0.62–1.19) | 0.72 (0.46–1.11) |
-| Progression-free survival | 447 | 61% | 91 | 53% / 63% | 1.09 (0.88–1.36) | 1.05 (0.79–1.39) |
-| Overall survival | 219 | 68% | 22 | 50% / 70% | – | – |
-
 ![Endpoint classes](report/output/figures/s3_endpoints.png)
 
-Across 5,674 randomised industry efficacy trials, 48% missed their governing primary endpoint. Regulatory surrogates were missed least (24%); outside oncology, exploratory biomarkers (68%) and hard outcomes (63%) were missed most, and oncology's response and survival endpoints as often.
+Across 5,441 randomised industry efficacy trials, 47% missed their governing primary endpoint. Regulatory surrogates were missed least (23%); outside oncology, exploratory biomarkers (69%) and hard outcomes (52%) were missed most, and oncology's response and survival endpoints as often.
 
-Genetic support for the disease lowered the chance of a miss most on regulatory surrogates (risk ratio 0.68; 0.45 in trials with registry-posted results since FDAAA) and on clinician-rated scales (0.73). Objective physiology (0.86) and disease events (0.90) point the same way with intervals spanning 1; exploratory biomarkers (1.06), patient-reported outcomes (1.24, only 17 genetically supported trials) and oncology's response and progression endpoints show no benefit. Too few genetically supported trials had hard-outcome or overall-survival primaries to estimate. One reading is that genetic support predicts most reliably that a drug will move the measures nearest its biology, often the trait through which the genetics was found (LDL cholesterol, urate, glycaemia), and less reliably that it will change what patients feel or how often events happen.
-
-At the program level, classifying each Phase 2 program by the endpoint of its first randomised Phase 2 efficacy trial (started within a year of entry and before it advanced), genetic support gives 1.32 (0.76–2.28; 296 programs) where that endpoint was proximal and 1.40 (0.83–2.36; 624) where it was intermediate; distal-endpoint and oncology programs had too few genetically supported targets to estimate.
-
-The endpoint classifier read each trial's registered primary outcomes without the drug. In an audit of 40 trials stratified by class, it picked the governing outcome correctly in 40 and the class in 39. Not knowing the drug, it cannot apply the codebook's drug-specific rules: FEV1 is a regulatory surrogate only for bronchodilators, and target engagement means the drug's own target. Trials still in follow-up that have posted results have no outcome label yet and are not counted (168, against 5,674 in the analysis).
+In trials with registry-posted results since FDAAA, genetic support for the disease lowered the chance of missing a regulatory surrogate (risk ratio 0.45), but across all readable trials, including those whose result was read from a paper, it did not (1.00). Clinician-rated scales (0.81, 0.65–1.01), objective physiology (0.93) and disease events (0.90) point towards fewer misses with intervals reaching 1; exploratory biomarkers (1.19) and oncology's response and progression endpoints show no benefit. The endpoint a trial is judged on does not, on this evidence, decide whether genetic support helps.
 
 
 ### Direction of effect
 
-A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it, and harm or do nothing when loss of function causes it. Open Targets' direction fields cannot test this: they label each variant from its predicted consequence, so the few truncating ClinVar variants listed for PCSK9 in hypercholesterolaemia, MYH7 in hypertrophic cardiomyopathy or TTR in amyloidosis make these gain-of-function diseases read as loss of function; their many pathogenic missense variants carry no direction at all.
-
-We therefore had an LLM state, for every target and disease with germline evidence, without being told any drug, whether disease-causing variants lower or raise the gene's function, whether protective variants are known, and the year each was first shown for that disease. Where Gene2Phenotype records an absent gene product, the label was loss of function in 55 of 58 pairs and gain of function in 0. A spot check of an earlier version of the labels found somatic cancer mutations counted as germline and some years taken from another disease; the final prompt rules out both.
-
-Sponsors almost never develop against an established mechanism. Of the Phase 2 programs with genetic support, 189 acted in the direction the genetics favoured, 6 against it, and 111 had genetics without an established direction by entry. Concordant programs advanced at 29% and undirected ones at 26%: once there is genetic support, knowing its direction did not pick winners among the programs sponsors chose to run, and the discordant group is too small to show whether going against the genetics fails. Protective loss of function plus a drug that lowers function, the PCSK9 pattern, covered 36 Phase 2 programs on 16 targets, which advanced as often as others (1.03, 0.56–1.92).
-
-Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.33 (0.97–1.83) against programs with no oriented model, a model pointing the other way 1.20, and nothing once genetic support is accounted for (1.02). Among Phase 3 programs a concordant model went with approval within four years (2.38, 1.54–3.69), one of many comparisons made after the plan.
-
-
-### Which kinds of evidence predict, and whether being more specific helps
-
-The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but they are not fifteen ideas: several are narrower versions of another (every program with a mouse model pointing the drug's way also has a mouse model of the disease), so a flat screen counts the same programs more than once. The rules are therefore grouped by the kind of evidence behind them. Each kind is tested once against programs without it, with a Holm correction across the 6 preclinical kinds that could be tested; the benchmark, an approved drug on the target for a related disease, is shown beside them but is clinical precedent, not preclinical evidence. Each more specific version is then tested only against the rest of its own kind, with a Holm correction across the 10 that could be tested. This grouping departs from the plan; the registered screen is in the appendix.
-
-| Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| Germline genetics for the disease | All | 368 (194) | 29% / 16% | 1.83 (1.44–2.32) | < 0.001 |
-| Animal model of the disease | All | 505 (285) | 23% / 16% | 1.29 (1.00–1.67) | 0.192 |
-| Somatic driver for the tumour | Oncology | 326 (102) | 23% / 14% | 1.48 (1.02–2.14) | 0.184 |
-| CRISPR screen in cells | All | 5 (4) | 40% / 18% | too few programs (5) to test | – |
-| Expressed differently in the disease | All | 358 (198) | 18% / 17% | 1.05 (0.70–1.58) | 1.000 |
-| Disease pathway (Reactome) | All | 66 (32) | 27% / 17% | 1.50 (1.00–2.25) | 0.192 |
-| Target liability | All | 1,251 (436) | 18% / 17% | 1.03 (0.83–1.28) | 1.000 |
-| **Benchmark** (clinical precedent, not preclinical evidence) |  |  |  |  |  |
-| Approved drug on the target, related disease | All | 763 (269) | 29% / 12% | 2.18 (1.65–2.88) | – |
-
-| More specific version | Within programs with | Programs | Advanced: with / rest of the type | Adjusted risk ratio (95% CI) | Holm-corrected p |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| GWAS with locus-to-gene ≥ 0.8 | Germline genetics for the disease | 68 of 368 | 25% / 30% | 1.10 (0.67–1.80) | 1.000 |
-| Mendelian evidence in a non-hereditary disease | Germline genetics for the disease | 57 of 153 | 32% / 25% | 1.12 (0.63–1.98) | 1.000 |
-| GWAS and rare-variant evidence together | Germline genetics for the disease | 26 of 368 | 15% / 30% | 0.56 (0.24–1.28) | 1.000 |
-| Drug raises function or replaces the gene, hereditary disease | Germline genetics for the disease | 75 of 116 | 25% / 24% | 1.08 (0.61–1.90) | 1.000 |
-| Genetics points the same way as the drug (added after the plan) | Germline genetics for the disease | 189 of 368 | 29% / 29% | 1.05 (0.68–1.62) | 1.000 |
-| Protective loss of function + drug that lowers function (added after the plan) | Germline genetics for the disease | 30 of 368 | 17% / 30% | too few to test | – |
-| Close phenotype match (top quartile) | Animal model of the disease | 309 of 505 | 22% / 24% | 0.86 (0.57–1.32) | 1.000 |
-| Mouse model points the same way as the drug (added after the plan) | Animal model of the disease | 178 of 505 | 24% / 22% | 1.05 (0.74–1.50) | 1.000 |
-| Driver matches the drug (activated oncogene + inhibitor) | Somatic driver for the tumour | 215 of 326 | 22% / 24% | 0.75 (0.45–1.27) | 1.000 |
-| Expression up + drug that lowers function | Expressed differently in the disease | 177 of 358 | 18% / 18% | 0.97 (0.50–1.91) | 1.000 |
-| Liability + drug that lowers function | Target liability | 902 of 1,251 | 18% / 17% | 1.20 (0.85–1.68) | 1.000 |
-
-![Kinds of evidence and their more specific versions](report/output/figures/s3_evidence_types.png)
-
-**Germline genetics is the one kind of preclinical evidence that predicts.** Phase 2 programs whose target had germline genetic evidence for the disease advanced 1.83 times as often as programs without it (1.44–2.32; Holm-corrected p < 0.001). Animal models (1.29), somatic drivers in oncology (1.48) and Reactome pathways (1.50) point the same way, but none survives the correction; expression (1.05) and target liabilities (1.03) carry nothing. Cell screens could not be tested: Project Score was first released in 2019, and only 5 programs in this cohort had a screen before entry. The benchmark is stronger than any preclinical kind (2.18, 1.65–2.88).
-
-**Being more specific does not help.** No narrower version beats the rest of its own kind. Among programs with germline genetics, strong GWAS evidence (1.10), Mendelian evidence in a non-hereditary disease (1.12) and genetics pointing the same way as the drug (1.05) advanced about as often as the rest. Among programs with an animal model, a close phenotype match (0.86) or a model pointing the drug's way (1.05) added nothing, nor did a somatic driver matching the drug among oncology programs with a driver (0.75). Protective loss of function plus an inhibitor covered 30 programs, too few targets to test. The rules that looked best in the registered screen did so because they sit inside germline genetics, not because their extra condition adds anything.
-
-
-### Verified case studies
-
-We checked 75 cases on 62 programs, picked at random for the rules that held up best, against registry records, company filings, papers and FDA documents; the protocol is in the appendix.
-
-The recorded outcome was right for 58 of 62 programs. In each of the 4 errors the program advanced but was recorded as stopped: Phase 3 trials registered under another condition (sabizabulin's COVID-19 trial in patients at risk of ARDS; pegadricase's gout trials, against a program mapped to purine metabolism disease), Phase 3 trials run in China and never registered on ClinicalTrials.gov (pruxelutamide), and a Phase 3 not linked to the program (eneboparatide's CALYPSO). The evidence claim held for 49 of 75 cases and partly for 19 more (usually because the source matched a broader or neighbouring disease, or the earliest paper predated the row's date), and failed for 7. Of the 30 programs that did not advance, 16 failed for reasons that test the evidence's biology: engagement without benefit, the wrong population, a surrogate that did not carry over, or on-target toxicity; the rest stopped because exposure or engagement was never shown, on trial design, off-target toxicity or commercial grounds, which say nothing about whether the evidence was right, and a few are still progressing or unexplained.
-
-| Rule | Cases | Advanced within 4 years (verified) | Evidence claim verified | Evidence published before entry | Why the others stopped |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| Mendelian evidence for a non-hereditary disease | 18 | 9 | 15 (5 partly) | 16 | engaged, disease did not respond: 4, wrong population: 2, unknown: 2, engagement not shown: 1 |
-| Reactome pathway | 17 | 9 | 13 (3 partly) | 13 | engaged, disease did not respond: 4, commercial: 1, off-target toxicity: 1, unknown: 1, engagement not shown: 1 |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | 20 | 13 | 20 (5 partly) | 20 | engaged, disease did not respond: 4, commercial: 2, trial design: 1 |
-| Germline mechanism concordant with the drug (added after the plan) | 20 | 10 | 20 (6 partly) | 20 | engaged, disease did not respond: 5, commercial: 2, off-target toxicity: 2, engagement not shown: 1 |
-
-**When the model worked.** The clearest successes pair germline genetics that points in one direction with a drug that pushes the other way, in a disease defined close to that genetics.
-
-* *Cardiac myosin inhibitors in hypertrophic cardiomyopathy*. Dominant missense mutations in *MYH7* that raise myosin activity were known to cause the disease from 1990. Mavacamten entered Phase 2 in 2016, started its pivotal Phase 3 (EXPLORER-HCM) in May 2018 and was approved in April 2022 for obstructive HCM ([label](https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/214998s000lbl.pdf)); aficamten followed the same path to approval.
-* *APOL1 in kidney disease*. The G1 and G2 variants of *APOL1*, toxic gain of function, were linked to FSGS and kidney failure in people of African ancestry in 2010. Inaxaplin, an APOL1 channel inhibitor, cut proteinuria by about half in a Phase 2a restricted to carriers of two risk variants and moved into an adaptive Phase 2/3 (AMPLITUDE) in 2022 ([NEJM 2023](https://pubmed.ncbi.nlm.nih.gov/36920755/)).
-* *Amyloid in Alzheimer's disease*. Mendelian *APP* mutations underlie the amyloid hypothesis; donanemab, which clears plaque, advanced to Phase 3 and approval.
-* *Clinical precedent*. The benchmark's successes are next-in-class drugs on validated targets: third-generation EGFR inhibitors in lung cancer, HER2 antibodies and conjugates in biliary, gastric and breast cancer, and a PARP inhibitor moving from ovarian into prostate cancer.
-
-**When it did not.** The verified failures show where the same kind of evidence stops predicting:
-
-* *The target was hit and the disease did not move*. Evazarsen, an antisense drug against angiotensinogen, whose common variants were linked to essential hypertension in 1992, lowered plasma angiotensinogen by 55–67% in every trial but did not lower blood pressure in its Phase 2b (NCT04714320). Galegenimab inhibited HtrA1, the gene at one of the two strongest GWAS loci for age-related macular degeneration, but geographic atrophy grew no slower, slightly faster, than on sham (NCT03972709).
-* *Protective genetics, the right direction, and still no benefit*. Loss-of-function *TYK2* variants protect against Crohn's disease, and the TYK2 inhibitor deucravacitinib, approved for psoriasis, missed both co-primary endpoints in Crohn's disease (LATTICE-CD, NCT03599622), with no dose response.
-* *The molecule, not the target*. NGM621, an anti-C3 antibody for geographic atrophy, a disease in which gain-of-function *C3* variants raise risk, missed its primary endpoint (NCT04465955), while another C3 inhibitor, pegcetacoplan, was approved for the same disease.
-* *The evidence was an artefact.* The GWAS evidence linking *CXCR2* to palmoplantar pustulosis came from a pleiotropy meta-analysis that Open Targets mapped to psoriasis at the study level; the locus carries no psoriasis signal in the paper itself. Vimnerixin, the CXCR2 antagonist, was stopped for hepatic safety findings.
-* *Commercial stops after positive trials*. Several programs met their Phase 2 endpoints and stopped for portfolio reasons: brepocitinib in psoriasis and Crohn's disease, olamkicept in ulcerative colitis, dalcinonacog alfa in haemophilia B. They count as failures of the outcome, not of the evidence.
-
-Every case, with its verdict and sources, is in the Appendix detail tab.
+A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it. To test this, an LLM labelled each target–disease pair, without being told any drug, with the direction of its disease-causing and protective variants. Sponsors almost never develop against an established mechanism: of the Phase 2 programs with genetic support, 251 acted in the direction the genetics favoured and 8 against it. Concordant programs advanced no more often than those whose genetics had no established direction (28% against 27%), and mouse models pointing the drug's way added nothing once genetics was known.
 
 
 ### What this means
 
-* **Disease-specific human genetics is the evidence that carries over.** It is specific (it fades as the evidence moves away from the disease), it holds within a target, it does not come from hindsight, and it adds to clinical precedent. Its size, about twice the chance of reaching Phase 3 within four years, is in line with published estimates of what genetic support does for clinical success.
-* **It is a filter, not a forecast.** Even with it, about two in three Phase 2 programs did not advance within four years, and most programs that did advance had no such evidence. Making the evidence more specific (stronger, Mendelian, or pointing the drug's way) did not pick better programs among those that already had it.
-* **It predicts efficacy where efficacy is measured close to the biology.** The advantage is clearest on regulatory surrogates and clinician scales and is not demonstrable on patient-reported outcomes or exploratory biomarkers; trials with hard-outcome primaries were too few to judge.
-* **Other preclinical evidence adds less at Phase 2.** Somatic drivers in oncology and Reactome pathways carry weaker signals than germline genetics, literature mouse models a marginal one and differential expression none; neither the mouse model's direction nor the somatic driver's direction sharpens them.
-* **Direction cannot be learned from what sponsors ran.** Programs against an established genetic mechanism barely exist, so the data cannot show the cost of getting direction wrong, only that knowing the direction does not separate winners among the programs that were run.
-* **Registries do not see target safety.** Genetic and mouse liabilities did not predict safety stops, which are rarely recorded as such.
+* **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3.
+* **It is a filter, not a forecast.** Nearly three in four genetically supported Phase 2 programs still did not advance, most programs that advanced had no such evidence, and sharper versions of the evidence did not pick better programs.
+* **Other preclinical evidence adds less.** Somatic drivers help in oncology; animal models help mostly by riding along with genetics; expression and pathways add nothing reliable.
+* **Some questions cannot be answered from what sponsors ran.** Almost no program went against an established genetic mechanism, and registries rarely record safety as the reason a program stopped.
 
 
 
@@ -519,9 +217,9 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 
 | Source | What it gives | Version |
 | :---- | :---- | :---- |
-| ClinicalTrials.gov API v2 | Every interventional drug or biological study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot 2026-10-20 (222,915 studies) |
+| ClinicalTrials.gov API v2 | Every interventional drug or biological study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot 2026-10-20 (227,130 studies) |
 | PubMed | Results papers linked to completed trials without posted results (registry RESULT/DERIVED references and the NCT secondary identifier) | Retrieved 2026-10-20 |
-| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 6,529 approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
+| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 6,569 approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
 | CBER yearly approval pages, product pages and letters | 177 biologics applications (vaccines, blood products, cell and gene therapies) and their 2015–2025 approval actions, verified by an independent second enumeration | Retrieved October 2026 |
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
 | MONDO | Disease ontology and hierarchy | 2026-10-06 |
@@ -534,34 +232,47 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 | ChEMBL bioactivities | Potency, affinity and selectivity measurements of each entity's molecules, dated by the year of the paper, patent or dataset that reported them | 37 (138,229 measurements) |
 
-Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
+Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the tables behind the main tab's figures are in the Appendix detail tab.
+
+### How programs are counted
+
+* **Trial:** a registered interventional study listing Early Phase 1 to Phase 3. A Phase 1/2 trial counts as Phase 2 and a Phase 2/3 trial as Phase 3. Withdrawn trials never enrolled and are left out.
+* **Molecular entity:** the active substance, whatever its brand, sponsor code, dose or salt, resolved to its FDA UNII substance where one exists. Biosimilars fold into their reference entity.
+* **Disease:** the MONDO term for the condition the trial treats, without line, stage, biomarker or age qualifiers.
+* **Program:** one entity developed for one indication. An indication groups the entity's MONDO diseases the way a sponsor runs them as programs (prostate cancer with castration-resistant and metastatic prostate carcinoma; diffuse large B-cell and follicular lymphoma kept apart), decided by an LLM for each entity. An entity belongs to a program only in trials where it is the investigational agent, not a comparator or background therapy. Each industry trial's purpose is classified first: bioequivalence, formulation, food-effect, interaction and other product-support studies (10,770 trials) belong to no program; a first-in-human study or a basket across several diseases counts as Phase 1 only for the program the sponsor pursued next.
+* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor) or the FDA approved the entity for the disease. A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement. A program is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-10-20); otherwise it is still running and *censored*. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
+* **Approval:** FDA approval of the entity for the program's disease, a subtype or population of it, or a broader approved class that includes it, judged from the dated approval letters, original-approval dates and labels of every application of the entity (CDER and CBER).
+
+### Phase transitions
+
+![Share of Phase 1 entrants still in development at each phase, all programs and those developed in the US, against BIO 2011–2020](report/output/figures/phase_funnel.png)
 
 ### How LOA moves with each definition
 
 | Cohort or definition | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) |
 | :---- | :---- | :---- | :---- | :---- |
 | All programs | 54.8% | 28.4% | 34.9% | 5.4% (4.9–6.0) |
-| Programs with a US-sited industry trial in the phase | 57.0% | 31.3% | 50.0% | 8.9% (8.0–9.9) |
-| Entity not yet FDA-approved at phase entry | 54.5% | 26.9% | 35.8% | 5.3% (4.6–5.9) |
+| Programs with a US-sited industry trial in the phase | 57.1% | 31.3% | 50.0% | 8.9% (8.0–9.9) |
+| Entity not yet FDA-approved at phase entry | 54.6% | 27.0% | 35.8% | 5.3% (4.6–5.9) |
 | Entity already FDA-approved for another disease | 55.8% | 37.9% | 32.5% | 6.9% (5.4–8.7) |
 | Suspension lag 12 months | 53.9% | 27.7% | 34.2% | 5.1% (4.6–5.7) |
 | Suspension lag 18 months | 54.2% | 28.0% | 34.6% | 5.2% (4.7–5.8) |
 | Suspension lag 36 months | 56.0% | 29.2% | 36.2% | 5.9% (5.3–6.6) |
-| Uncertain approvals counted as approved | 54.8% | 28.4% | 35.0% | 5.4% (4.9–6.1) |
+| Uncertain approvals counted as approved | 54.8% | 28.4% | 35.0% | 5.5% (4.9–6.1) |
 | Shared trials mark entry for every program of the entity | 74.2% | 44.6% | 33.4% | 11.0% (9.4–12.8) |
-| Including vaccines | 53.3% | 27.9% | 32.6% | 4.8% (4.3–5.4) |
-| Phase entry 2015-2025 (many programs still running) | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
-| Phase entry 2015-2025, developed in the US | 54.4% | 33.8% | 53.1% | 9.8% (8.7–10.9) |
+| Including vaccines | 53.4% | 27.9% | 32.6% | 4.9% (4.3–5.4) |
+| Phase entry 2015-2025 (many programs still running) | 54.6% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
+| Phase entry 2015-2025, developed in the US | 54.4% | 33.9% | 53.1% | 9.8% (8.6–11.0) |
 
 ### Change over time
 
-Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.1% of the time; those that entered in 2016–2019, 6.9% (7.3% and 10.0% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 25.0% to 30.7% and Phase 3 from 28.4% to 42.4% (44.2% to 55.9% for US-developed programs), while Phase 1 success fell slightly, from 57.6% to 52.7%.
+Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.1% of the time; those that entered in 2016–2019, 6.9% (7.3% and 10.0% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 25.0% to 30.7% and Phase 3 from 28.4% to 42.4% (44.2% to 55.9% for US-developed programs), while Phase 1 success fell slightly, from 57.6% to 52.8%.
 
 | Phase entry | Entities | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) | US-developed: Phase 3 → approval | US-developed: LOA (95% CI) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | 2008–2011 | 2,756 | 57.6% | 25.0% | 28.4% | 4.1% (3.5–4.9) | 44.2% | 7.3% (6.0–8.7) |
 | 2012–2015 | 2,884 | 54.8% | 29.4% | 33.4% | 5.4% (4.4–6.5) | 47.9% | 9.3% (7.7–11.1) |
-| 2016–2019 | 3,645 | 52.7% | 30.7% | 42.4% | 6.9% (5.9–7.9) | 55.9% | 10.0% (8.4–11.6) |
+| 2016–2019 | 3,645 | 52.8% | 30.7% | 42.4% | 6.9% (5.9–7.9) | 55.9% | 10.0% (8.4–11.6) |
 
 Two features of the registry bear on these trends.
 
@@ -580,7 +291,7 @@ Two features of the registry bear on these trends.
 | 2015 | 55% (10%) | 31% (9%) | 38% (13%) |
 | 2016 | 52% (9%) | 30% (10%) | 45% (16%) |
 | 2017 | 58% (9%) | 32% (12%) | 43% (22%) |
-| 2018 | 49% (13%) | 28% (19%) | 37% (30%) |
+| 2018 | 50% (13%) | 28% (19%) | 37% (30%) |
 | 2019 | 51% (16%) | 33% (18%) | 45% (32%) |
 
 
@@ -611,11 +322,11 @@ Two labels were also re-decided rather than re-derived. Trial purposes and roles
 
 **Tracing the stops the registry does not explain.** Every Phase 1, 2 and 3 program that entered from 2008 to 2025 and stopped was traced (7,570 Phase 2 and 3 programs, 4,075 Phase 1); the report's figures use the 2008–2019 entries. Where the registry gives no usable reason, a model read the program's trials (records, posted results, linked papers) and signals of what happened next: whether the drug went on in other diseases, whether its sponsor started any trial afterwards, and whether drugs on the same target stopped at the same time. It then searched the web for company releases, SEC filings, pipeline updates, conference reports and trade news, with ClinicalTrials.gov excluded. It named a cause only where a source supported it, citing only pages its own searches returned, and separately gave a *likely* cause, its best inference from context, where no source says.
 
-**How well the tracing does.** The same procedure was run on 141 stops whose registry does state a reason, drawn at random across causes, with the reason removed and ClinicalTrials.gov blocked. It named a sourced cause for 79% of them, and that cause matched the registry's for 65% (κ = 0.55); the likely cause matched for 59% (κ = 0.48). Accuracy differs by cause. Efficacy or exposure stops were recognised 62% of the time, and only 77% of the stops it called efficacy or exposure were such stops in the registry: safety stops were often read as efficacy (companies announce both as an unfavourable benefit–risk), and sponsor decisions and operational stops were confused with each other (79% and 46% recognised). The efficacy share after tracing is therefore an upper estimate, and safety is likely under-counted. The registry's stated reason is itself an imperfect reference, since a stated business reason can hide a failed readout. Stops with a stated reason are probably also easier to trace, so accuracy on the unexplained stops is likely lower. One independent check holds: of programs traced to an acquisition, merger, lost funding or closure, 67% had a sponsor that started no trial afterwards, against 26% of those traced to efficacy.
+**How well the tracing does.** The same procedure was run on 133 stops whose registry does state a reason, drawn at random across causes, with the reason removed and ClinicalTrials.gov blocked. It named a sourced cause for 77% of them, and that cause matched the registry's for 69% (κ = 0.61); the likely cause matched for 62% (κ = 0.52). Accuracy differs by cause. Efficacy or exposure stops were recognised 62% of the time, and only 83% of the stops it called efficacy or exposure were such stops in the registry: safety stops were often read as efficacy (companies announce both as an unfavourable benefit–risk), and sponsor decisions and operational stops were confused with each other (76% and 44% recognised). The efficacy share after tracing is therefore an upper estimate, and safety is likely under-counted. The registry's stated reason is itself an imperfect reference, since a stated business reason can hide a failed readout. Stops with a stated reason are probably also easier to trace, so accuracy on the unexplained stops is likely lower. One independent check holds: of programs traced to an acquisition, merger, lost funding or closure, 65% had a sponsor that started no trial afterwards, against 26% of those traced to efficacy.
 
 **Subcauses.** A second pass, without web search, read each safety, sponsor-decision, operational and positive-readout stop's stated reason or traced source and named the subcause it states or directly implies, or "not stated" where it says no more than the cause. A stop with no traced cause is described by what happened next, from the registry: whether its sponsor started any later trial, and whether the drug was approved or continued in another disease.
 
-**Classifying efficacy failures.** The cohort is every Phase 2 and 3 program that entered in 2008–2019 and stopped for efficacy or for PK, dose or formulation: as the registry records it (1,587 efficacy, 16 PK), or as traced with a source from the stops the registry does not explain (589 efficacy, 23 PK). An exposure failure is the same biology as a failure to engage, so PK stops are broken down here rather than counted apart. For each of the 2,215 programs the model would label (34 more, mostly gene and cell therapies and live biotherapeutics, were refused), an LLM read an evidence bundle: the failed trial's record, posted results and papers, the drug's other trials and their outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts on the drug's human pharmacology and on the drug in that disease. It judged, for humans and at the doses tested, the three pillars of [Morgan et al. 2012](https://doi.org/10.1016/j.drudis.2011.12.020): exposure at the site of action, binding or engagement of the target, and the expected pathway effect. Engagement could also be inferred when the drug worked in another disease through the same target and tissue compartment at a comparable dose. It then said why efficacy failed, using only the bundle and citing the sources it used. The categories and checks were fixed before any program was labelled. Where the bundle held no human evidence of engagement (40% of programs), a second pass, added after the first results, gave the same model the same bundle and the web: it searched full-text papers, conference reports, FDA and EMA reviews and company releases for human pharmacology, and could cite only pages its own searches returned. It decided 181 of the 857 programs it searched; the figures below use those labels.
+**Classifying efficacy failures.** The cohort is every Phase 2 and 3 program that entered in 2008–2019 and stopped for efficacy or for PK, dose or formulation: as the registry records it (1,587 efficacy, 16 PK), or as traced with a source from the stops the registry does not explain (589 efficacy, 23 PK). An exposure failure is the same biology as a failure to engage, so PK stops are broken down here rather than counted apart. For each of the 2,215 programs the model would label (102 more, mostly gene and cell therapies and live biotherapeutics, were refused), an LLM read an evidence bundle: the failed trial's record, posted results and papers, the drug's other trials and their outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts on the drug's human pharmacology and on the drug in that disease. It judged, for humans and at the doses tested, the three pillars of [Morgan et al. 2012](https://doi.org/10.1016/j.drudis.2011.12.020): exposure at the site of action, binding or engagement of the target, and the expected pathway effect. Engagement could also be inferred when the drug worked in another disease through the same target and tissue compartment at a comparable dose. It then said why efficacy failed, using only the bundle and citing the sources it used. The categories and checks were fixed before any program was labelled. Where the bundle held no human evidence of engagement (40% of programs), a second pass, added after the first results, gave the same model the same bundle and the web: it searched full-text papers, conference reports, FDA and EMA reviews and company releases for human pharmacology, and could cite only pages its own searches returned. It decided 181 of the 857 programs it searched; the figures below use those labels.
 
 Variants of the not-engaged share:
 
@@ -646,16 +357,16 @@ Variants of the not-engaged share:
 | :---- | :---- | :---- | :---- |
 | PK, dose or formulation | 1% (40) | 0% (17) | 0% (1) |
 | business or strategic (explicit) | 8% (238) | 5% (222) | 3% (46) |
-| completed, no results posted, no reason stated | 57% (1,690) | 27% (1,228) | 23% (320) |
+| completed, no results posted, no reason stated | 57% (1,690) | 27% (1,227) | 23% (320) |
 | efficacy: primary endpoint not met | 0% (10) | 22% (975) | 21% (293) |
 | efficacy: stated | 2% (70) | 5% (241) | 10% (137) |
 | enrollment, operational or regulatory | 2% (66) | 5% (227) | 3% (49) |
 | other stated reason | 0% (14) | 0% (16) | 1% (12) |
 | positive readout, not advanced | 0% (11) | 10% (448) | 19% (273) |
-| results posted, no reason stated, endpoint not assessable | 13% (390) | 11% (506) | 5% (64) |
+| results posted, no reason stated, endpoint not assessable | 13% (390) | 11% (507) | 5% (64) |
 | safety | 3% (77) | 3% (114) | 4% (51) |
 | sponsor decision, unspecified | 3% (83) | 2% (101) | 1% (21) |
-| stopped, no reason stated | 9% (280) | 9% (401) | 10% (135) |
+| stopped, no reason stated | 9% (279) | 9% (401) | 10% (135) |
 
 ![Phase 1, 2 and 3 stops among 2008–2019 entries, excluding programs whose development continued: the cause the ClinicalTrials.gov reason gives (efficacy and PK, dose or formulation as efficacy or exposure; business and bare sponsor decisions as sponsor decision; other stated reasons and no reason as unknown), and the cause after tracing, counting likely causes](report/output/figures/stop_causes_registered_vs_traced.png)
 
@@ -711,40 +422,59 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 
 **Adjusted relative risks.** The joint table comes from one modified Poisson model per phase containing every evidence line together with disease area, modality, entity novelty and entry period, with standard errors clustered by primary-target set.
 
-**Prediction.** Programs entering Phase 1 in 2008–2016 were followed for ten years, with the Open Targets evidence lines and novelty taken as of entry (loss-of-function constraint comes from the current gnomAD release). Logistic models were fitted on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out primary-target sets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by primary-target set and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on 2013–2016). In the line-removal table, human genetics means GWAS and rare-variant evidence removed together; lines carried by fewer than 100 programs are not modelled; intervals are a paired bootstrap over target sets.
+**Prediction.** Programs entering Phase 1 in 2008–2016 were followed for ten years, the one analysis outside the report's 2008–2019 window, since approval often takes longer than the six years every 2008–2019 entrant has had, with the Open Targets evidence lines and novelty taken as of entry (loss-of-function constraint comes from the current gnomAD release). Logistic models were fitted on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out primary-target sets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by primary-target set and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on later ones). Following 2008–2019 entrants for six years instead (4,699 programs, only 79 approved within the horizon) gives a held-out AUC of 0.532 without the evidence lines and 0.624 with them: the same modest gain, carried by human genetics. In the line-removal table, human genetics means GWAS and rare-variant evidence removed together; lines carried by fewer than 100 programs are not modelled; intervals are a paired bootstrap over target sets.
 
 
 ### Design of the translation analysis (Section 3)
 
-* **Cohort and outcome.** Programs on a human protein target that entered Phase 2 from 2015-01-01 to 2020-10-20 (2,519 programs on 883 primary-target sets). Each has at least four years of follow-up before the 24-month inactivity cutoff, so the outcome needs no inferred suspension: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years of entering Phase 2 (17.5% did). The same is done for Phase 1 entrants (a negative control: genetics should matter little for safety and dosing studies) and Phase 3 entrants (approval within four years).
+* **Cohort and outcome.** Programs on a human protein target that entered Phase 2 from 2008-01-01 to 2019-12-31 (4,596 programs on 1,158 primary-target sets). Each has at least four years of follow-up before the 24-month inactivity cutoff, so the outcome needs no inferred suspension: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years of entering Phase 2 (15.0% did). The same is done for Phase 1 entrants (a negative control: genetics should matter little for safety and dosing studies) and Phase 3 entrants (approval within four years).
 * **Evidence.** Every Open Targets 26.09 evidence row for the program's primary targets, each dated by the year it became known (ClinVar records by their creation, IMPC knockouts by their first data release, otherwise the row's own publication), frozen at the year before entry and matched to the program's disease on MONDO: the same term, a subtype, or Lin similarity ≥ 0.8 (*genetics for the disease*); a disease at Lin 0.5–0.8 only (*genetics for a related disease*); germline evidence only for unrelated diseases; or none. Evidence is split by family and strength (the best GWAS locus-to-gene score, ≥ 0.8, 0.5–0.8 or below; ClinVar pathogenic with multiple submitters or expert review, ClinGen or Gene2Phenotype definitive or strong, PanelApp green; mouse phenotype match in the top quartile), and mouse models are split into IMPC high-throughput knockouts and literature-curated MGI models.
 * **Regimes.** Oncology; *hereditary* (the disease is a MONDO hereditary disease and the target has curated Mendelian evidence for it); and every other disease (*non-oncology*, the regime of the headline hypothesis).
 * **Models.** Modified Poisson regression (risk ratios) with standard errors clustered by primary-target set, adjusted for disease area, modality, entity novelty, entry period and target precedent (an FDA-approved entity on the target before entry). The seven confirmatory hypotheses are Holm-corrected together.
-* **Trials.** Randomised industry Phase 2/3 trials since 2010 whose governing primary endpoint measures efficacy and whose result is readable (5,674 trials; an LLM classified each trial's governing primary endpoint from its registry entry, without the drug's name). Outcome: primary endpoint not met (a mixed result counts as not met).
+* **Trials.** Randomised industry Phase 2/3 trials started in 2008–2019 whose governing primary endpoint measures efficacy and whose result is readable (5,441 trials; an LLM classified each trial's governing primary endpoint from its registry entry, without the drug's name). Outcome: primary endpoint not met (a mixed result counts as not met).
 
 **Registered rule screen.** The plan tested fifteen rules on their own, each against all other programs, with a split of target sets in place of a correction for multiple testing. Because the rules overlap and the split halves the data, the body of the report groups them by kind of evidence instead (a change from the plan). The registered screen, as run: target sets were split 60/40 at random; a rule counts as *particularly predictive* when, on the discovery targets, its risk ratio's 90% bootstrap lower bound is above 1.3, and, on the held-out targets, its risk ratio is at least 1.2 with a one-sided 95% lower bound above 1, and it stays at least 1.2 without its most influential target.
 
 | Rule applied at Phase 2 entry | Regime | Programs (targets) | Advanced | Share of all that advanced | Adjusted risk ratio (95% CI) | Risk ratio, discovery targets (90% CI) | Risk ratio, held-out targets (90% CI) | Meets the bar |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | Protective loss-of-function burden + drug that lowers function | All | 0 (0) | – | 0% | – | – | – | not testable |
-| Mendelian evidence + drug that raises function or replaces the gene | Hereditary | 75 (37) | 25% | 66% | 1.08 (0.61–1.90) | 1.59 (0.95–4.00) | 0.50 (0.18–1.15) | no |
-| Mendelian evidence for a non-hereditary disease | Non-oncology | 57 (44) | 32% | 7% | 1.71 (1.11–2.62) | 1.80 (1.01–2.70) | 2.09 (0.92–3.41) | no |
-| GWAS, locus-to-gene ≥ 0.8 | All | 68 (41) | 25% | 4% | 1.38 (0.90–2.13) | 1.10 (0.60–1.60) | 1.86 (0.99–2.75) | no |
-| GWAS and rare-variant evidence for the same disease | All | 26 (17) | 15% | 1% | 0.78 (0.35–1.72) | 1.08 (0.37–1.80) | none advanced | no |
-| Somatic driver matching the drug + drug that lowers function | Oncology | 215 (67) | 22% | 29% | 1.14 (0.73–1.78) | 1.69 (0.87–3.13) | 0.89 (0.50–1.51) | no |
-| IMPC knockout matching the disease, top quartile | All | 9 (5) | 33% | 1% | – | – | – | no |
-| Literature mouse model of the disease | All | 498 (281) | 23% | 26% | 1.29 (1.00–1.68) | 1.59 (1.19–2.09) | 1.18 (0.86–1.56) | no |
-| Expression up in disease + drug that lowers function | All | 177 (104) | 18% | 7% | 1.00 (0.63–1.58) | 1.18 (0.70–1.66) | 0.88 (0.35–1.62) | no |
-| Reactome pathway | All | 66 (32) | 27% | 4% | 1.50 (1.00–2.25) | 1.21 (0.75–1.77) | 2.51 (1.29–4.03) | no |
-| Target liability + drug that lowers function | All | 902 (316) | 18% | 37% | 1.08 (0.86–1.37) | 1.13 (0.85–1.47) | 0.98 (0.70–1.33) | no |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | All | 763 (269) | 29% | 50% | 2.18 (1.65–2.88) | 2.43 (1.95–3.03) | 2.20 (1.72–2.91) | **predictive** |
-| Protective loss of function + drug that lowers function (added after the plan) | All | 36 (16) | 19% | 2% | 1.03 (0.56–1.92) | 1.78 (0.73–3.47) | 0.57 (0.00–1.05) | no |
-| Germline mechanism concordant with the drug (added after the plan) | All | 189 (97) | 29% | 12% | 1.79 (1.28–2.51) | 1.87 (1.29–2.57) | 1.42 (0.91–1.98) | no |
-| Mouse model direction concordant with the drug (added after the plan) | All | 178 (111) | 24% | 10% | 1.29 (0.95–1.75) | 1.72 (1.24–2.32) | 0.92 (0.59–1.30) | no |
+| Mendelian evidence + drug that raises function or replaces the gene | Hereditary | 95 (49) | 32% | 75% | 1.74 (0.78–3.86) | 1.96 (1.10–4.13) | 1.22 (0.63–3.27) | no |
+| Mendelian evidence for a non-hereditary disease | Non-oncology | 114 (65) | 26% | 7% | 1.62 (1.18–2.22) | 1.48 (0.87–2.11) | 3.09 (1.84–4.45) | no |
+| GWAS, locus-to-gene ≥ 0.8 | All | 59 (36) | 17% | 1% | 1.04 (0.59–1.83) | 0.54 (0.00–1.11) | 1.71 (0.88–2.55) | no |
+| GWAS and rare-variant evidence for the same disease | All | 27 (16) | 11% | 0% | 0.65 (0.28–1.51) | 0.74 (0.00–1.48) | 0.76 (0.00–1.44) | no |
+| Somatic driver matching the drug + drug that lowers function | Oncology | 394 (87) | 22% | 35% | 1.49 (1.07–2.09) | 1.63 (1.08–2.44) | 2.88 (1.51–5.22) | no |
+| IMPC knockout matching the disease, top quartile | All | 17 (7) | 18% | 0% | – | 0.97 (0.00–1.38) | – | no |
+| Literature mouse model of the disease | All | 943 (413) | 20% | 28% | 1.43 (1.16–1.76) | 1.57 (1.24–1.98) | 1.38 (1.06–1.81) | no |
+| Expression up in disease + drug that lowers function | All | 247 (130) | 14% | 5% | 0.90 (0.59–1.37) | 0.71 (0.44–1.06) | 1.41 (0.70–2.12) | no |
+| Reactome pathway | All | 106 (41) | 23% | 3% | 1.39 (0.91–2.11) | 1.10 (0.58–1.72) | 2.38 (1.56–3.92) | no |
+| Target liability + drug that lowers function | All | 1,791 (420) | 15% | 38% | 1.02 (0.83–1.26) | 0.98 (0.77–1.22) | 0.97 (0.74–1.29) | no |
+| Approved drug on the target, related disease (Lin ≥ 0.5) | All | 1,234 (342) | 25% | 45% | 2.13 (1.73–2.62) | 2.10 (1.80–2.46) | 2.37 (1.81–3.07) | **predictive** |
+| Protective loss of function + drug that lowers function (added after the plan) | All | 47 (19) | 19% | 1% | 1.17 (0.68–2.02) | 1.31 (0.45–2.23) | 1.32 (0.49–2.44) | no |
+| Germline mechanism concordant with the drug (added after the plan) | All | 251 (122) | 28% | 10% | 1.93 (1.41–2.64) | 1.98 (1.30–2.65) | 2.06 (1.43–2.84) | **predictive** |
+| Mouse model direction concordant with the drug (added after the plan) | All | 334 (152) | 22% | 11% | 1.41 (1.10–1.81) | 1.59 (1.20–2.03) | 1.44 (0.87–2.05) | no |
 
-Only the benchmark met the registered bar (held-out risk ratio 2.20); Mendelian evidence for a non-hereditary disease came closest (held-out 2.09, discovery lower bound 1.01).
+Of the registered rules only the benchmark met the bar (held-out risk ratio 2.37); a germline mechanism concordant with the drug, added after the plan, also met it (held-out 2.06). Mendelian evidence for a non-hereditary disease came closest among the registered rules (held-out 3.09, discovery lower bound 0.87).
 
-**Case studies.** The plan's protocol picked cases for the benchmark, the only rule that met the bar, and, beyond the plan, for every rule whose adjusted risk ratio's lower bound is above 1 (Mendelian evidence for a non-hereditary disease, GWAS with locus-to-gene ≥ 0.8, Reactome pathway evidence and a germline mechanism concordant with the drug): four successes and four failures at random, up to two programs of each of the three most influential targets, and up to six programs that stopped after a randomised trial missed its primary endpoint (the plan asked for all such programs; the cap keeps every case checkable against primary sources). For each program one agent established the outcome from registry records, company filings, papers and FDA documents without seeing the evidence, another checked the evidence claim without seeing the outcome, a second coder classified each failure independently, and a third agent adjudicated any disagreement.
+**Case studies.** An earlier version of this analysis, on 2015–2020 Phase 2 entries, checked 75 cases on 62 programs picked for the best-performing rules against registry records, filings, papers and FDA documents, one agent establishing the outcome without seeing the evidence and another checking the evidence without seeing the outcome. The recorded outcome was right for 58 of 62 programs (each error a program recorded as stopped that had advanced, through a Phase 3 registered under another condition, run only in China, or not linked to the program); the evidence claim held for 49 of 75 cases and partly for 19; and of the 30 programs that did not advance, 16 failed for reasons that test the evidence's biology. The report's case studies are now the historical cases in the main text.
+
+**Checks on the genetics result.** Swapping each program's disease for another program's in the same disease area, 200 times, gives a median risk ratio for genetics for the disease of 1.44 against the observed 1.74 (95th percentile 1.75; p = 0.060). Much of the contrast with targets that have no germline genetics therefore reflects whether a target has been studied genetically at all; matching the disease adds to it, though the observed value sits at the edge of what shuffled diseases give. At Phase 1, where efficacy is rarely tested, the same contrast is 1.12 (0.95–1.33). Against all other programs rather than those with no germline genetics on the target, genetic support gives 1.56 outside oncology, and 1.45 (1.07–1.96) after adjusting for an approved drug on the target for a related disease; on targets with no approved drug at all, genetic support gives 1.57 (1.10–2.25, all disease areas). Leaving out the most influential target set (IL23A) gives 1.65. Leaving out each of the 5 largest target classes in turn gives 1.63 to 1.78; the lowest, without the "other protein" class, has an interval of 0.98–2.69, so the estimate leans on that class.
+
+**Who is in the cohort.** The cohort is Phase 2 programs with a disease and a single resolved human protein target. Left out are 392 programs with no disease (healthy-volunteer, basket or symptom trials; 6% advanced) and 1,452 without a single human protein target (9%), so the cohort's base rate is higher than Section 1's.
+
+**Each evidence family.**
+
+* **Human genetics.** Mendelian and ClinVar evidence for the disease (2.00; top-tier curation 2.21) and GWAS (1.35) both carry the signal. Within GWAS, the locus-to-gene score did not grade it: the best score at 0.8 or above gives 1.04, 0.5–0.8 gives 0.98 and below 0.5 gives 2.02, each from a few dozen programs. Most GWAS rows in Open Targets are on measurement traits (LDL cholesterol, blood pressure, body-mass index) with no MONDO disease; they count as germline evidence on the target but cannot match a disease, so genetics for the disease is undercounted when it was found through a trait. Gene burden results start in 2019, too late for these cohorts.
+* **Somatic drivers.** In oncology, a somatic driver for the tumour raised the chance of advancing (1.60, 1.16–2.20); requiring the driver's direction to match the drug's did not sharpen it (1.46). Germline genetics for the tumour type was the stronger signal (2.18), carried by well-validated targets such as EGFR, ERBB2 and ESR1.
+* **Mouse models.** Literature-curated (MGI) mouse models of the disease gave 1.43 (1.16–1.76), and a top-quartile phenotype match 1.41. Each MGI model is dated by its first paper, and each knockout from the IMPC consortia by the first IMPC data release with calls for it (2015 at the earliest).
+* **Expression and pathways.** Differential expression in the disease carried nothing (1.02; outside oncology 0.53). Reactome pathway evidence gave 1.39 from 106 programs, most of them in hereditary diseases, which Reactome curates.
+* **Clinical precedent.** An FDA-approved drug on the target for a related disease (Lin similarity ≥ 0.5) was the strongest single predictor (2.13) and was present for 45% of the programs that advanced.
+* **Target liabilities.** Loss-of-function intolerance (1.02) and lethality of the mouse knockout (0.98) made no difference. Essentiality across cell lines could not be known before entry for any program in the window (above).
+
+**What the evidence leaves out.** Of the 689 Phase 2 programs that advanced, 20% had germline genetics for the disease, 46% had any of the disease-specific evidence families, and 35% had neither such evidence nor an approved drug on the target for a related disease.
+
+**Direction of effect.** A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it, and harm or do nothing when loss of function causes it. Open Targets' direction fields cannot test this: they label each variant from its predicted consequence, so the few truncating ClinVar variants listed for PCSK9 in hypercholesterolaemia, MYH7 in hypertrophic cardiomyopathy or TTR in amyloidosis make these gain-of-function diseases read as loss of function; their many pathogenic missense variants carry no direction at all. We therefore had an LLM state, for every target and disease with germline evidence, without being told any drug, whether disease-causing variants lower or raise the gene's function, whether protective variants are known, and the year each was first shown for that disease. Where Gene2Phenotype records an absent gene product, the label was loss of function in 55 of 58 pairs and gain of function in 0. A spot check of an earlier version of the labels found somatic cancer mutations counted as germline and some years taken from another disease; the final prompt rules out both. Sponsors almost never develop against an established mechanism. Of the Phase 2 programs with genetic support, 251 acted in the direction the genetics favoured, 8 against it, and 167 had genetics without an established direction by entry. Concordant programs advanced at 28% and undirected ones at 27%: once there is genetic support, knowing its direction did not pick winners among the programs sponsors chose to run, and the discordant group is too small to show whether going against the genetics fails. Protective loss of function plus a drug that lowers function, the PCSK9 pattern, covered 47 Phase 2 programs on 19 targets, which advanced as often as others (1.17, 0.68–2.02). Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.44 (1.11–1.86) against programs with no oriented model, a model pointing the other way 1.38, and nothing once genetic support is accounted for (1.12). Among Phase 3 programs a concordant model went with approval within four years (1.79, 1.22–2.63), one of many comparisons made after the plan.
+
+**Endpoints at the program level.** At the program level, classifying each Phase 2 program by the endpoint of its first randomised Phase 2 efficacy trial (started within a year of entry and before it advanced), genetic support gives 2.10 (1.39–3.17; 686 programs) where that endpoint was proximal and 1.44 (0.85–2.42; 1,270) where it was intermediate; distal-endpoint and oncology programs had too few genetically supported targets to estimate. The endpoint classifier read each trial's registered primary outcomes without the drug. In an audit of 40 trials stratified by class, it picked the governing outcome correctly in 40 and the class in 39. Not knowing the drug, it cannot apply the codebook's drug-specific rules: FEV1 is a regulatory surrogate only for bronchodilators, and target engagement means the drug's own target. Trials still in follow-up that have posted results have no outcome label yet and are not counted (78, against 5,441 in the analysis).
 
 
 ### Limitations

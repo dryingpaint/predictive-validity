@@ -2,8 +2,6 @@
 
 For {{stop_causes.inferred.programs|int}} of the {{stop_causes.stops|int}} Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
 
-{{STOP_CAUSE_TABLE}}
-
 A sourced cause was found for {{stop_causes.inferred.resolved|pct0}} of the traced programs ({{stop_causes.inferred.resolved_n|int}}), and a likely cause for {{stop_causes.inferred.likely_resolved|pct0}}. The biggest changes from the registry's picture:
 
 * **Many quiet stops were not failures.** A positive readout that was not taken further in the disease (approval outside the US, a stalled partnership, a move to another formulation) was the sourced cause for {{stop_causes.inferred.cause.positive_not_advanced|int}} traced programs, and {{stop_causes.inferred.cause.not_stopped|int}} had not stopped at all: development continued under another registry, region, name or combination. Section 1's suspension rule, which reads only ClinicalTrials.gov, counts these as stops, so its failure rates are somewhat high.

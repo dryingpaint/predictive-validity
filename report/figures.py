@@ -236,26 +236,6 @@ def loa_bars(csv, title, name, ref):
     save(fig, name)
 
 
-def relative_success():
-    df = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).dropna(subset=["rs"]).sort_values("rs")
-    fig, ax = plt.subplots(figsize=(7, 0.42 * len(df) + 1))
-    y = np.arange(len(df))
-    genetic = df.feature.str.startswith("genetic")
-    ax.barh(y, np.log2(df.rs), height=0.55, color=[ACCENT if g else BAR for g in genetic])
-    ax.errorbar(np.log2(df.rs), y, xerr=[np.log2(df.rs) - np.log2(df.rs_lo), np.log2(df.rs_hi) - np.log2(df.rs)],
-                fmt="none", ecolor=INK2, elinewidth=1, capsize=0)
-    ax.axvline(0, color=INK2, linewidth=1)
-    for yi, (v, n) in enumerate(zip(df.rs, df.n_with)):
-        ax.text(max(np.log2(df.rs_hi.iloc[yi]), 0) + 0.05, yi, f"{v:.2f}× (n={n:,})", va="center",
-                color=INK2, fontsize=8)
-    ticks = [0.25, 0.5, 1, 2, 4]
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.set_yticks(y, df.label, color=INK, fontsize=9)
-    style(ax)
-    ax.set_title("Relative success: LOA with the evidence ÷ LOA without it (95% CI)", loc="left", color=INK, fontsize=10)
-    save(fig, "relative_success_by_evidence")
-
-
 def genetics_by_area():
     df = pd.read_csv(os.path.join(OUT, "section2", "relative_success_by_area.csv"))
     df = df[df.feature.eq("genetic_any")].dropna(subset=["rs"]).sort_values("rs")
@@ -335,7 +315,7 @@ def s3_evidence_map():
     ax.set_xlabel("Risk ratio of reaching Phase 3 or approval within 4 years of Phase 2 entry, "
                   "adjusted; bars: 95% CI", color=INK2, fontsize=8)
     style(ax)
-    ax.set_title("Phase 2 programs, 2015–2020: evidence for the disease as of the year before entry",
+    ax.set_title("Phase 2 programs, 2008–2019: evidence for the disease as of the year before entry",
                  loc="left", color=INK, fontsize=10, pad=24)
     save(fig, "s3_evidence_map")
 
@@ -360,7 +340,7 @@ def s3_endpoints():
     ax.set_xlabel("Primary endpoint not met (%): grey, no germline genetics for the disease; blue, with it",
                   color=INK2, fontsize=8)
     style(ax)
-    ax.set_title("Randomised industry Phase 2/3 efficacy trials since 2010, by primary endpoint",
+    ax.set_title("Randomised industry Phase 2/3 efficacy trials started 2008–2019, by primary endpoint",
                  loc="left", color=INK, fontsize=10, pad=24)
     save(fig, "s3_endpoints")
 
@@ -387,46 +367,325 @@ def s3_specificity():
     save(fig, "s3_specificity")
 
 
-def s3_evidence_types():
-    """Adjusted risk ratios: each kind of evidence against programs without it, then each more specific
-    version against the rest of its kind; blue where the Holm-corrected p is below 0.05."""
+# One row per kind of evidence, then its narrower versions. Each row names its Section 2 relative-success
+# feature (report.section2.FEATURES) and its Section 3 kind (evidence_types.csv) or refinement (refinements.csv).
+EVIDENCE_ROWS = [  # (label, family, Section 2 feature, Section 3 kind or refinement, narrower version)
+    ("Germline genetics for the disease", "Human genetics", "genetic_any", "germline", False),
+    ("GWAS", "Human genetics", "genetic_gwas", None, True),
+    ("Rare-variant or Mendelian", "Human genetics", "genetic_rare", None, True),
+    ("GWAS with locus-to-gene ≥ 0.8", "Human genetics", None, "gwas_strong", True),
+    ("Mendelian, non-hereditary disease", "Human genetics", None, "mendelian_nonhereditary", True),
+    ("GWAS and rare-variant together", "Human genetics", None, "allelic_series", True),
+    ("Drug raises function, hereditary disease", "Human genetics", None, "hereditary_activator", True),
+    ("Genetics points the drug's way", "Human genetics", None, "mechanism_concordant", True),
+    ("Somatic driver for the tumour", "Somatic", "somatic", "somatic", False),
+    ("Driver matches the drug", "Somatic", None, "somatic_matching", True),
+    ("Animal model of the disease", "Mouse", "animal_model", "animal", False),
+    ("Close phenotype match", "Mouse", None, "animal_close", True),
+    ("Mouse model points the drug's way", "Mouse", None, "animal_direction", True),
+    ("Expressed differently in the disease", "Expression and pathways", "rna_expression", "expression", False),
+    ("Expression up + drug that lowers function", "Expression and pathways", None, "expression_inhibitor", True),
+    ("Disease pathway (Reactome)", "Expression and pathways", "affected_pathway", "pathway", False),
+    ("Target liability", "Target liability", None, "liability", False),
+    ("Intolerant of loss of function", "Target liability", "constrained", None, True),
+    ("Liability + drug that lowers function", "Target liability", None, "liability_inhibitor", True),
+    ("Drug potent at the target (≤ 100 nM)", "Drug pharmacology", "assay_potent", None, False),
+    ("Very potent (≤ 10 nM)", "Drug pharmacology", "assay_very_potent", None, True),
+    ("Functional potency measured in cells", "Drug pharmacology", "assay_cell_functional", None, True),
+    ("≥ 100-fold selective over off-targets", "Drug pharmacology", "assay_selective", None, True),
+    ("Approved drug on the target, related disease", "Clinical precedent", None, "benchmark", False),
+]
+FAMILY_COLORS = {**S3_GROUP_COLORS, "Drug pharmacology": "#b04a8f"}
+# Lines first published in 2019, which no program in the window could have had before entry: scored on
+# today's data (Section 2 relative_success_untimed.csv, Section 3 hindsight.csv) and drawn dashed.
+HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_line_screen_untimed", "cell_screen"),
+                  ("Essential in most cell lines", "Target liability", "pan_essential_untimed", "pan_essential")]
+
+
+def evidence_translates():
+    """Each kind of evidence and its narrower versions, two ways: relative success to approval from every
+    phase (Section 2), and the adjusted risk ratio of advancing from Phase 2 (Section 3). A filled dot is a
+    95% interval clear of 1 on the left and a Holm-corrected p below 0.05 on the right."""
+    rs = pd.concat([pd.read_csv(os.path.join(OUT, "section2", f)) for f in
+                    ("relative_success.csv", "relative_success_untimed.csv")]).set_index("feature")
     types, refined = s3_types()
-    types = types[types.rr.notna()]
-    refined = refined[refined.rr.notna()]
-    rows = [(r.label, r.rr, r.lo, r.hi, r.type == "benchmark" or r.holm_p < 0.05, r.type == "benchmark")
-            for r in types.itertuples()]
-    rows += [(f"{r.label}{'' if r.registered else ' (added after the plan)'}", r.rr, r.lo, r.hi, r.holm_p < 0.05, False)
-             for r in refined.itertuples()]
-    fig, ax = plt.subplots(figsize=(8.5, 0.32 * len(rows) + 1.6))
-    n_types = len(types)
-    for i, (label, rr, lo, hi, strong, bench) in enumerate(rows):
-        y = len(rows) - 1 - i - (0.8 if i >= n_types else 0)
-        color = INK2 if bench else ACCENT if strong else BAR
-        ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 5))], [y, y], color=color, linewidth=2)
-        ax.plot(np.log2(rr), y, "o", color=color, markersize=6, markeredgecolor="white")
-    labels = [r[0] for r in rows]
-    ys = [len(rows) - 1 - i - (0.8 if i >= n_types else 0) for i in range(len(rows))]
-    ax.axvline(0, color=INK2, linewidth=1)
+    s3 = pd.concat([types.set_index("type"), refined.set_index("refinement")])
+    s3.loc["benchmark", "holm_p"] = s3.at["benchmark", "p"]
+    late = pd.read_csv(os.path.join(OUT, "section3", "hindsight.csv")).set_index("line")
+    rows = []  # (label, family, narrow, left, right, Section 3 row, hindsight)
+    for label, family, f2, f3, narrow in EVIDENCE_ROWS:
+        left = rs.loc[f2] if f2 and pd.notna(rs.at[f2, "rs"]) else None
+        right = s3.loc[f3] if f3 and pd.notna(s3.at[f3, "rr"]) else None
+        if left is not None or right is not None:
+            rows.append((label, family, narrow, left, right, s3.loc[f3] if f3 else None, False))
+    for label, family, f2, f3 in HINDSIGHT_ROWS:
+        left = rs.loc[f2] if pd.notna(rs.at[f2, "rs"]) else None
+        right = late.loc[f3] if pd.notna(late.at[f3, "rr"]) else None
+        rows.append((label, family, False, left, right, late.loc[f3], True))
+    first_late = next(i for i, r in enumerate(rows) if r[6])
+    ys, y = [], 0.0
+    for i, r in enumerate(rows):
+        y -= 1 if i == 0 or r[2] or (r[6] and i != first_late) else 2.3 if i == first_late else 1.5
+        ys.append(y)
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13, 0.34 * len(rows) + 1.8), sharey=True,
+                                 gridspec_kw={"wspace": 0.08})
+    lim = (np.log2(0.2), np.log2(7))
+
+    def dot(ax, yi, est, lo, hi, color, filled, dashed=False):
+        ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 7))], [yi, yi], color=color, linewidth=2,
+                solid_capstyle="round", linestyle=(0, (2, 1.5)) if dashed else "-")
+        ax.plot(np.log2(est), yi, "o", markersize=6, color=color, markeredgewidth=1.5,
+                markerfacecolor=color if filled else "white", markeredgecolor=color)
+
+    for yi, (label, family, narrow, left, right, kind, late_row) in zip(ys, rows):
+        color = MUTED if late_row else FAMILY_COLORS[family]
+        if left is not None:
+            dot(a1, yi, left.rs, left.rs_lo, left.rs_hi, color, left.rs_lo > 1 or left.rs_hi < 1, late_row)
+            a2.text(np.log2(7) + 0.35, yi, f"{int(left.n_with):,}", va="center", ha="right", color=INK2, fontsize=8)
+            a2.text(np.log2(7) + 1.45, yi, f"{left.loa_with:.0%} / {left.loa_without:.0%}", va="center",
+                    ha="right", color=INK2, fontsize=8)
+        if right is not None:
+            dot(a2, yi, right.rr, right.lo, right.hi, color, (right.p if late_row else right.holm_p) < 0.05, late_row)
+        if kind is not None:
+            a2.text(np.log2(7) + 2.15, yi, f"{int(kind.n):,}", va="center", ha="right", color=INK2, fontsize=8)
+            a2.text(np.log2(7) + 3.25, yi, f"{kind.ppv:.0%} / {kind.rate_without:.0%}", va="center", ha="right",
+                    color=INK2, fontsize=8)
+    top = ys[0] + 0.7
+    for x, head in ((0.35, "Programs"), (1.45, "Approved:\nwith / without"), (2.15, "Programs"),
+                    (3.25, "Advanced:\nwith / without")):
+        a2.text(np.log2(7) + x, top, head, ha="right", va="bottom", color=INK2, fontsize=8)
     ticks = [0.25, 0.5, 1, 2, 4]
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.set_yticks(ys, labels, color=INK, fontsize=8)
-    ax.text(np.log2(0.21), len(rows) - 0.4, "Kind of evidence, against programs without it", color=INK2, fontsize=8)
-    ax.text(np.log2(0.21), len(rows) - n_types - 1.2, "More specific version, against the rest of its kind",
-            color=INK2, fontsize=8)
-    ax.set_xlabel("Adjusted risk ratio of advancing within 4 years of Phase 2 (95% CI); blue: Holm-corrected "
-                  "p < 0.05; dark grey: the benchmark", color=INK2, fontsize=8)
+    for ax, title, xlabel in (
+            (a1, "Reaching approval, from any phase", "Relative success: approval with ÷ without (95% CI)"),
+            (a2, "Advancing from Phase 2 within 4 years", "Adjusted risk ratio (95% CI)")):
+        ax.axvline(0, color=INK2, linewidth=1)
+        ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+        ax.set_xlim(*lim)
+        ax.set_xlabel(xlabel, color=INK2, fontsize=8)
+        ax.set_title(title, loc="left", color=INK, fontsize=9)
+        style(ax)
+    a1.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=8.5)
+    a1.tick_params(axis="y", pad=215)
+    for t, (_, _, narrow, *_, late_row) in zip(a1.get_yticklabels(), rows):
+        t.set_horizontalalignment("left")
+        t.set_color(INK2 if narrow or late_row else INK)
+    a1.text(-0.62, ys[first_late] + 0.95, "Known only after entry: first published in 2019, scored on today's data",
+            transform=a1.get_yaxis_transform(), color=INK2, fontsize=8, style="italic")
+    a1.set_ylim(ys[-1] - 0.7, top + 0.9)
+    fig.suptitle("Programs entering a phase in 2008–2019, by evidence known the year before entry. Indented: "
+                 "a narrower version (right panel: against the rest of its kind). Filled: interval clear of 1 "
+                 "(right: Holm-corrected p < 0.05)", x=0.01, ha="left", y=0.935, color=INK2, fontsize=8)
+    save(fig, "evidence_translates")
+
+
+# Eras of drug discovery: (from, to, technology, unit of the biological hypothesis, examples).
+ERAS = [
+    (1820, 1935, "Observation, natural products, physiology", "Therapeutic effect or organismal phenotype",
+     "Morphine, quinine, digitalis, aspirin"),
+    (1900, 1965, "Quantitative pharmacology and biochemistry", "Receptor activity, enzyme, metabolic pathway",
+     "Sulfonamides, receptor theory, enzyme inhibitors"),
+    (1950, 1985, "Systematic medicinal chemistry", "Desired pharmacological mechanism",
+     "β-blockers, H2 antagonists, antimetabolites"),
+    (1970, 1995, "Recombinant DNA and molecular cloning", "Named gene and protein",
+     "Recombinant insulin, cloned GPCRs, channels, kinases"),
+    (1990, 2005, "Genomics, HTS, automation", "Target plus compound library",
+     "Imatinib and kinase programs, genomic target portfolios"),
+    (2000, 2015, "Human genetics and functional genomics", "Target–disease association",
+     "GWAS, RNAi, CRISPR, dependency maps"),
+    (2010, 2026, "Multimodal evidence and predictive modelling", "Target–indication–mechanism–patient context",
+     "Open Targets, gnomAD, single-cell perturbation, AlphaFold"),
+]
+
+
+def history():
+    fig, ax = plt.subplots(figsize=(10, 5.6))
+    shades = plt.get_cmap("Blues")(np.linspace(0.3, 0.85, len(ERAS)))
+    for i, ((start, end, tech, unit, examples), shade) in enumerate(zip(ERAS, shades)):
+        y = len(ERAS) - 1 - i
+        ax.barh(y, end - start, left=start, height=0.5, color=shade)
+        ax.text(end + 3, y + 0.25, tech, va="center", fontsize=8, fontweight="bold", color=INK)
+        ax.text(end + 3, y, unit, va="center", fontsize=8, color=INK, style="italic")
+        ax.text(end + 3, y - 0.25, examples, va="center", fontsize=7, color=INK2)
+    ax.set_xlim(1820, 2140)
+    ax.set_xticks(range(1850, 2030, 25))
+    ax.set_yticks([])
+    ax.set_ylim(-0.6, len(ERAS) - 0.4)
     style(ax)
-    ax.set_title("Which kinds of preclinical evidence predict, and whether being more specific helps",
-                 loc="left", color=INK, fontsize=10)
-    save(fig, "s3_evidence_types")
+    ax.set_title("Each era narrowed the unit of the biological hypothesis (in italics)", loc="left", color=INK,
+                 fontsize=10)
+    save(fig, "history")
+
+
+def phase_funnel():
+    """Share of Phase 1 entrants still in development at each later phase, from the product of the
+    transition rates; the label on each step is that transition's rate."""
+    o = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv")).set_index("label")
+    cohorts = {"all programs": ("All programs", ACCENT),
+               "programs with a US-sited industry trial in the phase": ("Developed in the US", "#1baf7a")}
+    stages = ["Phase 1", "Phase 2", "Phase 3", "Approval"]
+    fig, ax = plt.subplots(figsize=(7.5, 3.4))
+    x = np.arange(len(stages))
+    bio_steps = [bio.TRANSITIONS[ph] / 100 for ph in (1, 2, 3)]
+    ax.plot(x, 100 * np.cumprod([1, *bio_steps]), "_", color=INK, markersize=16, markeredgewidth=2,
+            label="BIO 2011–2020")
+    for key, (name, color) in cohorts.items():
+        steps = [o.at[key, f"ph{ph}_rate"] for ph in (1, 2, 3)]
+        y = 100 * np.cumprod([1, *steps])
+        ax.plot(x, y, "-o", color=color, linewidth=2, markersize=6, markeredgecolor="white", label=name)
+        below = color != ACCENT
+        for xi, (a, b, r) in enumerate(zip(y[:-1], y[1:], steps)):
+            ax.text(xi + 0.5, (a + b) / 2 + (-9 if below else 9), f"{r:.0%}", ha="center",
+                    va="center", color=color, fontsize=8)
+        ax.text(x[-1] + 0.12, y[-1] + (4 if below else -4), f"{y[-1]:.1f}%", va="center", color=color,
+                fontsize=9, fontweight="bold")
+    ax.set_xticks(x, stages, color=INK)
+    ax.set_ylim(0, 105)
+    ax.set_xlim(-0.2, len(stages) - 0.55)
+    ax.set_ylabel("Share of Phase 1 entrants (%)", color=INK2, fontsize=8)
+    ax.legend(frameon=False, fontsize=8, loc="upper right")
+    style(ax)
+    ax.grid(axis="y", color=GRID, linewidth=1)
+    ax.grid(axis="x", visible=False)
+    ax.set_title("Programs entering a phase in 2008–2019: share still in development at each phase; "
+                 "each step's label is its transition rate", loc="left", color=INK, fontsize=9)
+    save(fig, "phase_funnel")
+
+
+FEATURE_FAMILY = {"genetic_any": "Human genetics", "genetic_gwas": "Human genetics", "genetic_rare": "Human genetics",
+                  "somatic": "Somatic", "animal_model": "Mouse", "rna_expression": "Expression and pathways",
+                  "affected_pathway": "Expression and pathways", "cell_line_screen": "Expression and pathways",
+                  "neuron_screen": "Expression and pathways", "pan_essential": "Target liability",
+                  "constrained": "Target liability"}
+
+
+def forest(ax, rows, lim=(0.25, 4)):
+    """Dot and 95% interval per (y, estimate, lo, hi, color, filled) on a log2 axis with a line at 1."""
+    for y, est, lo, hi, color, filled in rows:
+        ax.plot([np.log2(max(lo, lim[0])), np.log2(min(hi, lim[1]))], [y, y], color=color, linewidth=2,
+                solid_capstyle="round")
+        ax.plot(np.log2(est), y, "o", markersize=6, color=color, markeredgewidth=1.5,
+                markerfacecolor=color if filled else "white", markeredgecolor=color)
+    ax.axvline(0, color=INK2, linewidth=1)
+    ticks = [t for t in (0.25, 0.5, 1, 2, 4) if lim[0] <= t <= lim[1]]
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.set_xlim(np.log2(lim[0]), np.log2(lim[1]))
+    style(ax)
+
+
+def joint_by_phase():
+    df = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
+    labels = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").label
+    features = [f for f in labels.index if f in set(df.feature)]
+    fig, axes = plt.subplots(1, 3, figsize=(11, 0.34 * len(features) + 1.3), sharey=True,
+                             gridspec_kw={"wspace": 0.06})
+    for ax, (ph, title) in zip(axes, [(1, "Phase 1 → 2"), (2, "Phase 2 → 3"), (3, "Phase 3 → approval")]):
+        d = df[df.phase == ph].set_index("feature")
+        forest(ax, [(-i, d.at[f, "rr"], d.at[f, "rr_lo"], d.at[f, "rr_hi"],
+                     FAMILY_COLORS[FEATURE_FAMILY.get(f, "Drug pharmacology")],
+                     d.at[f, "rr_lo"] > 1 or d.at[f, "rr_hi"] < 1)
+                    for i, f in enumerate(features) if f in d.index], lim=(0.5, 2.5))
+        ax.set_title(title, loc="left", color=INK, fontsize=9)
+    axes[0].set_yticks([-i for i in range(len(features))], [labels[f] for f in features], color=INK, fontsize=8.5)
+    axes[1].set_xlabel("Relative risk of advancing, holding the other lines, area, modality, novelty and period "
+                       "fixed (95% CI); filled: interval clear of 1", color=INK2, fontsize=8)
+    save(fig, "joint_by_phase")
+
+
+def prediction():
+    m = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
+    ab = pd.read_csv(os.path.join(OUT, "section2", "prediction_ablation.csv")).sort_values("auc_drop")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(10, 2.9), gridspec_kw={"width_ratios": [1, 1.1], "wspace": 0.9})
+    names = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus the evidence lines",
+             "evidence": "Evidence lines only"}
+    colors = {"covariates": BAR, "covariates+evidence": ACCENT, "evidence": INK2}
+    ticks, labels, y = [], [], 0
+    n2 = json.load(open(os.path.join(OUT, "section2", "numbers.json")))
+    later = f"Later programs held out ({n2['prediction_split_year'] + 1}–{n2['prediction_window'][1]})"
+    for split, title in (("grouped_cv", "Targets held out"), ("temporal", later)):
+        d = m[m.split == split].set_index("features")
+        labels.append(title)
+        ticks.append(y)
+        y -= 1
+        for f in names:
+            if f in d.index:
+                r = d.loc[f]
+                a1.plot([r.auc_lo, r.auc_hi], [y, y], color=colors[f], linewidth=2)
+                a1.plot(r.auc, y, "o", color=colors[f], markersize=6, markeredgecolor="white")
+                ticks.append(y)
+                labels.append("    " + names[f])
+                y -= 1
+        y -= 0.4
+    a1.axvline(0.5, color=INK2, linewidth=1)
+    a1.set_yticks(ticks, labels, fontsize=8, color=INK)
+    for t, lab in zip(a1.get_yticklabels(), labels):
+        t.set_fontweight("normal" if lab.startswith(" ") else "bold")
+        t.set_horizontalalignment("left")
+    a1.tick_params(axis="y", pad=150)
+    a1.set_xlim(0.45, 0.75)
+    a1.set_xlabel("Held-out AUC (95% CI); 0.5 = chance", color=INK2, fontsize=8)
+    a1.set_title("How well approval is predicted", loc="left", color=INK, fontsize=9)
+    style(a1)
+    yy = np.arange(len(ab))
+    a2.plot([-ab.drop_hi, -ab.drop_lo], [yy, yy], color=ACCENT, linewidth=2)
+    a2.plot(-ab.auc_drop, yy, "o", color=ACCENT, markersize=6, markeredgecolor="white")
+    a2.axvline(0, color=INK2, linewidth=1)
+    a2.set_yticks(yy, ab.label, fontsize=8, color=INK)
+    a2.set_xlabel("Change in AUC when the line is removed (95% CI)", color=INK2, fontsize=8)
+    a2.set_title("What each line contributes", loc="left", color=INK, fontsize=9)
+    style(a2)
+    fig.suptitle(f"Programs entering Phase 1 in {n2['prediction_window'][0]}–{n2['prediction_window'][1]}, approval within "
+                 f"{n2['prediction_years']} years", x=0.01, y=1.04, ha="left",
+                 color=INK2, fontsize=8)
+    save(fig, "prediction")
+
+
+HYPOTHESES = [  # (key, short label, path to its estimate in section3/numbers.json, ratio field)
+    ("H1", "Genetics for the disease vs none, outside oncology", ("h1", "g3"), "rr"),
+    ("H2", "Same target: diseases its genetics points to vs its other diseases", ("h2",), "or"),
+    ("H3", "Genetics and drug point the same way (per step)", ("h3", "trend"), "rr"),
+    ("H4", "Genetics' effect on missed endpoints, per step from proximal to distal", ("h4", "fdaaa",
+                                                                                     "interaction_per_step"), "rr"),
+    ("H5", "Genetics lowers efficacy failure more than business failure", ("h5", "ratio_f_bizops_vs_f_efficacy"),
+     "rr"),
+    ("H6", "Target liability raises safety failure, outside oncology", ("h6", "safety"), "rr"),
+    ("H7", "Oncology: somatic driver matching the drug", ("h7",), "rr"),
+]
+MEASURES = {"H1": "risk ratio", "H2": "odds ratio", "H3": "risk ratio", "H4": "ratio of risk ratios",
+            "H5": "ratio of risk ratios", "H6": "risk ratio", "H7": "risk ratio"}
+
+
+def s3_hypotheses():
+    n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
+    rows, labels = [], []
+    for i, (h, label, path, field) in enumerate(HYPOTHESES):
+        r = n
+        for k in path:
+            r = r[k]
+        holm_p = n["holm"].get(h, 1)
+        rows.append((-i, r[field], r["lo"], r["hi"], ACCENT if holm_p < 0.05 else BAR, holm_p < 0.05))
+        labels.append(f"{h}  {label}")
+    fig, ax = plt.subplots(figsize=(9, 0.4 * len(rows) + 1.1))
+    forest(ax, rows, lim=(0.25, 8))
+    ax.set_xticks(np.log2([0.25, 0.5, 1, 2, 4, 8]), ["0.25×", "0.5×", "1×", "2×", "4×", "8×"])
+    for y, *_ in rows:
+        h = HYPOTHESES[-y][0]
+        ax.text(np.log2(8) + 0.15, y, MEASURES[h], va="center", color=INK2, fontsize=8)
+    ax.set_yticks([r[0] for r in rows], labels, color=INK, fontsize=8.5)
+    ax.set_xlabel("Estimate (95% CI); blue: supported after Holm correction across the seven", color=INK2,
+                  fontsize=8)
+    ax.set_title("The pre-registered hypotheses", loc="left", color=INK, fontsize=10)
+    save(fig, "s3_hypotheses")
 
 
 def main():
+    history()
+    phase_funnel()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
-        relative_success()
         dose_response()
+        joint_by_phase()
+        prediction()
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
     if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
@@ -438,7 +697,8 @@ def main():
         s3_evidence_map()
         s3_specificity()
         s3_endpoints()
-        s3_evidence_types()
+        evidence_translates()
+        s3_hypotheses()
 
 
 if __name__ == "__main__":

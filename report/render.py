@@ -19,7 +19,6 @@ import pandas as pd
 
 from report import bio, frame
 from report.section2 import DRUG, LIABILITIES
-from report.section3 import CASE_AUDIT
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
 
@@ -203,7 +202,7 @@ def chembl_match_table() -> str:
 
 def prediction_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
-    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (2013–2016)"}
+    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (later entrants held out)"}
     features = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus all evidence lines",
                 "evidence": "Evidence lines only"}
     df = df.assign(**{"Validation": df.split.map(splits), "Features": df.features.map(features),
@@ -445,62 +444,6 @@ def s3_rules_table() -> str:
                                              "Risk ratio, held-out targets (90% CI)", "Meets the bar"]))
 
 
-FAILURE_NAMES = {"F1": "engagement not shown", "F2": "engaged, disease did not respond", "F3": "wrong population",
-                 "F4": "surrogate did not carry over", "F5": "on-target toxicity", "F6": "off-target toxicity",
-                 "F7": "trial design", "F8": "commercial", "unknown": "unknown"}
-SOURCE_CHARS = 160  # length of the evidence source shown in a case card
-
-
-def failure_label(advanced: str, code: str) -> str:
-    if advanced == "yes":
-        return "–"
-    if code == "not_a_failure":
-        return "still progressing"
-    return FAILURE_NAMES[code]
-
-
-def s3_case_audit() -> pd.DataFrame:
-    """The verified cases among those Section 3 picked, in the order it picked them."""
-    a = pd.DataFrame(json.load(open(CASE_AUDIT))).set_index("case_id")
-    picked = pd.read_csv(os.path.join(OUT, "section3", "cases.csv")).case_id
-    return a.loc[[c for c in picked if c in a.index]].reset_index()
-
-
-def s3_cases_table() -> str:
-    a, rules = s3_case_audit(), s3_rules()
-    rows = []
-    for rule, g in a.groupby("rule", sort=False):
-        failed = g[g.advanced_within_4y == "no"]
-        codes = pd.Series([failure_label("no", c) for c in failed.failure_code]).value_counts()
-        rows.append([rule_name(rules.loc[rule]), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
-                     f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
-                     f"partly)", f"{(g.predates_entry == 'yes').sum()}",
-                     ", ".join(f"{c}: {k}" for c, k in codes.items()) or "–"])
-    return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
-                                             "Evidence claim verified", "Evidence published before entry",
-                                             "Why the others stopped"]))
-
-
-def shorten(text: str, limit: int) -> str:
-    """`text` cut at the last word boundary before `limit` characters, with an ellipsis."""
-    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
-
-
-def s3_case_cards() -> str:
-    rows = []
-    rules = s3_rules()
-    for r in s3_case_audit().itertuples():
-        source = shorten(r.evidence_source or "", SOURCE_CHARS) + (f" ({r.evidence_year})" if r.evidence_year else "")
-        outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
-        rows.append([rule_name(rules.loc[r.rule]), f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
-                     f"{r.claim_supported}; {source}",
-                     outcome + ("" if r.pipeline_correct == "yes" else " (recorded outcome wrong)"),
-                     failure_label(r.advanced_within_4y, r.failure_code)])
-    return table(pd.DataFrame(rows, columns=["Rule", "Drug (target, action)", "Disease", "Phase 2 entry",
-                                             "Evidence claim: verdict; earliest source", "Outcome (verified)",
-                                             "Failure"]))
-
-
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
           "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
@@ -510,8 +453,8 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "AREA_RS_TABLE": area_rs_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,
-          "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table, "S3_CASES_TABLE": s3_cases_table,
-          "S3_CASE_CARDS": s3_case_cards, "ATTRIBUTION_TABLE": attribution_table,
+          "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table,
+          "ATTRIBUTION_TABLE": attribution_table,
           "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
 
 
