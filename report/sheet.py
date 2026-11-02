@@ -89,25 +89,42 @@ TABS = {  # column aliases are the sheet's headers, written for readers rather t
         ORDER BY 1, 3, 4"""),
 }
 
+CATEGORIES = ("Kind", "Modality", "Target kind", "Disease area", "Approved for", "Phases", "Status", "Purpose",
+              "Execution", "Stop reason", "Primary endpoint", "Safety signal", "Endpoint purpose", "Endpoint class",
+              "Cause", "Subcause", "Detail")  # columns of category codes, written as words
+WORDS = {"car t": "CAR-T", "mrna": "mRNA", "sirna rnai": "siRNA / RNAi", "covid19": "COVID-19", "covid 19": "COVID-19",
+         "antibody drug conjugate": "Antibody\u2013drug conjugate", "pk pd or formulation": "PK, PD or formulation",
+         "pk pd dose": "PK, PD or dose", "fda declined": "FDA declined", "approved outside us": "Approved outside the US",
+         "none": "No approval"}  # written verbatim
+
 COLUMNS = {  # README entries for columns whose meaning is not plain from the header
-    "Kind": "diseases: disease, symptom_or_sign, procedure_or_state, healthy_volunteers or other; "
-            "drugs: drug, combination, vaccine, placebo_or_vehicle, non_drug or unclear",
+    "Kind": "diseases: disease, symptom or sign, procedure or state, healthy volunteers or other; "
+            "drugs: drug, combination, vaccine, placebo or vehicle, non drug or unclear",
     "Match": "exact: the term names the condition; broader: the nearest containing term, as MONDO has none",
     "Roles": "investigational (what the trial develops) or background (a partner or standard therapy)",
     "UNII": "the FDA Global Substance Registration System's unique ingredient identifier",
-    "Target kind": "human_protein, pathogen, no_single_target or unknown",
+    "Target kind": "human protein, pathogen, no single target or unknown",
     "Primary targets": "HGNC symbol (the drug's action on it)",
     "Approved": "FDA approval of the entity for the disease, a subtype of it or a class containing it: yes, no or uncertain",
-    "Approved for": "whether the approval is for the disease itself, a subtype of it or a class containing it",
-    "Purpose": "indication_development, early_development, product_support or other",
+    "Approved for": "same disease, subtype or subpopulation, broader (a class containing the disease) or no approval",
+    "Purpose": "indication development, early development, multi indication, product support or other",
     "Disease in title": "the disease the title says the trial treats when its listed conditions are complications of it",
-    "Primary endpoint": "met, not_met, mixed, not_assessable or no_results",
-    "Endpoint class": "B1 target engagement to B9 infection cure, O1-O3 oncology endpoints, or not_efficacy",
-    "Cause": "efficacy (with exposure), safety, sponsor_decision, operational, positive_not_advanced, unknown, "
-             "not_stopped or not_a_program",
+    "Primary endpoint": "met, not met, mixed, not assessable or no results",
+    "Endpoint class": "B1 target engagement to B9 infection cure, O1-O3 oncology endpoints, or not efficacy",
+    "Cause": "efficacy (with exposure), safety, sponsor decision, operational, positive not advanced, unknown "
+             "or not stopped",
     "Subcause": "the reason within the cause (for efficacy, whether the target was engaged)",
     "Traced": "true where the cause comes from tracing beyond the registry (company releases, filings, news)",
 }
+
+
+def words(code: str) -> str:
+    """A category code as a reader would write it: underscores to spaces, phases numbered, initial capital."""
+    parts = []
+    for c in code.split(", "):
+        c = c.lower().replace("_", " ").replace("phase", "phase ").replace("  ", " ")
+        parts.append(WORDS.get(c, c[:1].upper() + c[1:]))
+    return ", ".join(parts)
 
 
 def cell(v):
@@ -172,6 +189,9 @@ def write(s: AuthorizedSession, tabs: dict[str, list[list]]) -> None:
 def main() -> None:
     frame.hold_snapshot()
     tabs = {name: frame.query(sql) for name, (_, sql) in TABS.items()}
+    for df in tabs.values():
+        for c in df.columns.intersection(CATEGORIES):
+            df[c] = df[c].map(lambda v: words(v) if isinstance(v, str) else v)
     values = {"README": readme(tabs)}
     values |= {name: [list(df.columns)] + [[cell(v) for v in row] for row in df.itertuples(index=False)]
                for name, df in tabs.items()}
