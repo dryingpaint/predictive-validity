@@ -12,7 +12,6 @@ Every entry is numbered on its bar and listed with its note and source below the
 import glob
 import json
 import os
-import textwrap
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch, Rectangle
@@ -27,6 +26,7 @@ STATUS = {
     "misled": ("#c63d26", "Misled in this context"),
     "none": ("#ebedeb", "No model, or not assessed"),
 }
+SHORT = {"cal": "calibrated", "cause": "cause", "pheno": "phenotype", "misled": "misled", "none": "none"}
 INK, MUTED, RULE = "#1b2321", "#5c6763", "#c4cbc7"
 
 
@@ -67,10 +67,22 @@ def main():
             for h in sorted(item["cells"].get(key, []), key=lambda h: h["year"]):
                 notes.append((len(notes) + 1, item, title, h))
                 cell_nums.setdefault((id(item), key), []).append(len(notes))
-    half = (len(notes) + 1) // 2
-    cols = [[_note_lines(*nt) for nt in notes[:half]], [_note_lines(*nt) for nt in notes[half:]]]
-    line_h = 0.118
-    notes_h = 0.45 + line_h * max(sum(len(x) for x in c) + 0.35 * len(c) for c in cols)
+    # Notes grouped by context, in three columns.
+    blocks, cur = [], None
+    for num, item, title, h in notes:
+        if item is not cur:
+            blocks.append([f"{item['disease']}, {item['population']}"])
+            cur = item
+        blocks[-1].append(f"{num}  {h['year']} {SHORT[h['status']]}: {h['short']} ({h.get('srcLabel', 'source')})")
+    ncol = 3
+    target = sum(len(b) for b in blocks) / ncol
+    cols, acc = [[]], 0
+    for blk in blocks:
+        if acc >= target and len(cols) < ncol:
+            cols.append([]); acc = 0
+        cols[-1].append(blk); acc += len(blk)
+    line_h = 0.122
+    notes_h = 0.42 + line_h * max(sum(len(b) + 0.4 for b in c) for c in cols)
 
     n = len(layout)
     row_h, head_h, foot_h = 0.36, 2.1, 0.55
@@ -131,14 +143,16 @@ def main():
 
     notes_top = head_h + matrix_h + 0.35
     fig.add_artist(plt.Line2D([0.012, 0.988], [y(notes_top), y(notes_top)], color=RULE, lw=0.8))
-    fig.text(0.012, y(notes_top + 0.12), "Notes: what changed each cell, and the source", fontsize=10, fontweight="bold", color=INK, va="top")
-    for c, x0 in zip(cols, (0.012, 0.505)):
-        cursor = notes_top + 0.45
-        for lines in c:
-            for k, line in enumerate(lines):
-                fig.text(x0 + (0 if k == 0 else 0.018), y(cursor), line, fontsize=6.9, color=INK if k == 0 else MUTED, va="top")
+    fig.text(0.012, y(notes_top + 0.12), "Notes", fontsize=10, fontweight="bold", color=INK, va="top")
+    for c, x0 in zip(cols, (0.012, 0.34, 0.668)):
+        cursor = notes_top + 0.42
+        for blk in c:
+            fig.text(x0, y(cursor), blk[0], fontsize=7.4, fontweight="bold", color=INK, va="top")
+            cursor += line_h
+            for line in blk[1:]:
+                fig.text(x0 + 0.008, y(cursor), line, fontsize=7, color=MUTED, va="top")
                 cursor += line_h
-            cursor += 0.35 * line_h
+            cursor += 0.4 * line_h
 
     fig.text(0.012, y(fig_h - 0.12),
              "Each bar runs 1985–2026; a white notch marks a change of status, and the bold numbers at the bar's end point to the notes.\n"
@@ -147,13 +161,6 @@ def main():
     out = os.path.join(HERE, "atlas.png")
     fig.savefig(out, facecolor="white")
     print(out)
-
-
-def _note_lines(num, item, decision, h):
-    """The note for one status change, wrapped for a half-width column."""
-    head = f"{num}. {item['disease']}, {item['population']} · {decision} · {h['year']}: {STATUS[h['status']][1]}"
-    body = f"{h['note']} ({h.get('srcLabel', 'source')})"
-    return textwrap.wrap(head, 118) + textwrap.wrap(body, 112)
 
 
 if __name__ == "__main__":

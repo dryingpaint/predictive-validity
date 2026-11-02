@@ -14,14 +14,16 @@
     "status": "cause",
     "note": "Neutropenic mouse infection models measure bacterial killing of the same pathogen.",
     "src": "https://doi.org/10.1128/aac.42.9.2375",
-    "srcLabel": "Andes & Craig 1998"
+    "srcLabel": "Andes & Craig 1998",
+    "short": "Mouse models kill the same pathogen"
    },
    {
     "year": 2001,
     "status": "cal",
     "note": "Animal exposure targets (free AUC/MIC 25–34) agreed with the clinical microbiological breakpoint (33.7).",
     "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
-    "srcLabel": "Ambrose 2001"
+    "srcLabel": "Ambrose 2001",
+    "short": "Animal and patient targets agree"
    }
   ],
   "dose": [
@@ -30,14 +32,16 @@
     "status": "cause",
     "note": "Mouse thigh data supported amoxicillin breakpoints for pneumococcus.",
     "src": "https://doi.org/10.1128/aac.42.9.2375",
-    "srcLabel": "Andes & Craig 1998"
+    "srcLabel": "Andes & Craig 1998",
+    "short": "Mouse data set amoxicillin breakpoints"
    },
    {
     "year": 2001,
     "status": "cal",
     "note": "Animal and patient exposure targets agreed for fluoroquinolones; EMA later based dose selection on nonclinical targets.",
     "src": "https://doi.org/10.1128/aac.45.10.2793-2797.2001",
-    "srcLabel": "Ambrose 2001"
+    "srcLabel": "Ambrose 2001",
+    "short": "Targets agree; EMA doses from them"
    }
   ],
   "efficacy": [
@@ -46,7 +50,8 @@
     "status": "cause",
     "note": "Killing carries over, but cure also depends on the host (neutropenic model; albumin strongly predicted tigecycline success).",
     "src": "https://doi.org/10.1128/aac.01615-10",
-    "srcLabel": "Bhavnani 2012"
+    "srcLabel": "Bhavnani 2012",
+    "short": "Cure also depends on the host"
    }
   ],
   "safety": []

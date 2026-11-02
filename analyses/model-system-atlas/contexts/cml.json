@@ -14,14 +14,16 @@
     "status": "cause",
     "note": "Imatinib cut BCR-ABL colonies from patients 92–98% and spared normal ones.",
     "src": "https://doi.org/10.1038/nm0596-561",
-    "srcLabel": "Druker 1996"
+    "srcLabel": "Druker 1996",
+    "short": "Kills BCR-ABL cells, spares normal"
    },
    {
     "year": 2001,
     "status": "cal",
     "note": "53 of 54 patients had complete hematologic responses at ≥300 mg/day.",
     "src": "https://doi.org/10.1056/NEJM200104053441401",
-    "srcLabel": "Druker 2001"
+    "srcLabel": "Druker 2001",
+    "short": "53 of 54 complete responses"
    }
   ],
   "dose": [
@@ -30,7 +32,8 @@
     "status": "cause",
     "note": "Trough at 350 mg exceeded the cellular IC50, but ≥400 mg came from clinical white-cell response.",
     "src": "https://doi.org/10.1200/jco.2004.03.050",
-    "srcLabel": "Peng 2004"
+    "srcLabel": "Peng 2004",
+    "short": "Trough > IC50; dose set clinically"
    }
   ],
   "efficacy": [
@@ -39,14 +42,16 @@
     "status": "cause",
     "note": "Cells driven by the human fusion oncogene.",
     "src": "https://doi.org/10.1038/nm0596-561",
-    "srcLabel": "Druker 1996"
+    "srcLabel": "Druker 1996",
+    "short": "Cells carry the human oncogene"
    },
    {
     "year": 2003,
     "status": "cal",
     "note": "IRIS confirmed cytogenetic response; the mutagenesis screen recovered all major patient resistance mutations.",
     "src": "https://doi.org/10.1016/S0092-8674(03)00190-9",
-    "srcLabel": "Azam 2003"
+    "srcLabel": "Azam 2003",
+    "short": "IRIS confirms; screen recovers patient mutations"
    }
   ],
   "safety": []

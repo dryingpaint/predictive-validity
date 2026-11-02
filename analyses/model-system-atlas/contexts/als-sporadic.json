@@ -16,14 +16,16 @@
     "status": "pheno",
     "note": "Benefit in SOD1 mice, whose cause ~98% of patients do not share.",
     "src": "https://doi.org/10.1006/nbdi.2002.0487",
-    "srcLabel": "Kriz 2002"
+    "srcLabel": "Kriz 2002",
+    "short": "Works in SOD1 mice; ~98% of patients lack SOD1"
    },
    {
     "year": 2007,
     "status": "misled",
     "note": "Minocycline sped decline in a Phase 3 of 412 patients; a rigorous retest found no drug extended mouse survival.",
     "src": "https://doi.org/10.1016/S1474-4422(07)70270-3",
-    "srcLabel": "Gordon 2007"
+    "srcLabel": "Gordon 2007",
+    "short": "Minocycline harms; retest finds noise"
    }
   ],
   "safety": []

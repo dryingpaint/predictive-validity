@@ -14,14 +14,16 @@
     "status": "cause",
     "note": "The replicon copies HCV's own genome in a human hepatoma line.",
     "src": "https://doi.org/10.1126/science.285.5424.110",
-    "srcLabel": "Lohmann 1999"
+    "srcLabel": "Lohmann 1999",
+    "short": "Replicon copies HCV's genome in human cells"
    },
    {
     "year": 2000,
     "status": "cal",
     "note": "Interferon-α, an approved drug, stopped replication in the replicon.",
     "src": "https://doi.org/10.1126/science.290.5498.1972",
-    "srcLabel": "Blight 2000"
+    "srcLabel": "Blight 2000",
+    "short": "Reproduces interferon-α's known effect"
    }
   ],
   "dose": [
@@ -30,7 +32,8 @@
     "status": "cause",
     "note": "A viral-kinetics model predicted 3-day viral-load drops from replicon potency for one drug class, not another.",
     "src": "https://doi.org/10.1128/AAC.06283-11",
-    "srcLabel": "Reddy 2012"
+    "srcLabel": "Reddy 2012",
+    "short": "Predicts 3-day viral drop for one drug class"
    }
   ],
   "efficacy": [
@@ -39,14 +42,16 @@
     "status": "cause",
     "note": "Replicon read-out is viral RNA, measured in patients' plasma too; cure is not measurable in the dish.",
     "src": "https://doi.org/10.1126/science.285.5424.110",
-    "srcLabel": "Lohmann 1999"
+    "srcLabel": "Lohmann 1999",
+    "short": "Viral RNA read in dish and plasma"
    },
    {
     "year": 2010,
     "status": "cal",
     "note": "Daclatasvir's picomolar replicon potency matched a 3.3 log10 viral-load drop after one dose; clinical resistance sat at replicon-identified positions.",
     "src": "https://doi.org/10.1038/nature08960",
-    "srcLabel": "Gao 2010"
+    "srcLabel": "Gao 2010",
+    "short": "Potency matched 3.3-log drop; resistance foreseen"
    }
   ],
   "safety": [
@@ -55,7 +60,8 @@
     "status": "misled",
     "note": "The replicon has no safety read-out; ciluprevir's heart toxicity appeared in monkeys only after human proof of concept.",
     "src": "https://doi.org/10.1177/0192623311398276",
-    "srcLabel": "Stoltz 2011"
+    "srcLabel": "Stoltz 2011",
+    "short": "Missed ciluprevir's heart toxicity"
    }
   ]
  },

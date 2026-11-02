@@ -14,7 +14,8 @@
     "status": "cause",
     "note": "Brain occupancy measured directly by PET in healthy volunteers: ≥90% at ≥100 mg/day.",
     "src": "https://doi.org/10.1016/j.biopsych.2004.02.007",
-    "srcLabel": "Bergström 2004"
+    "srcLabel": "Bergström 2004",
+    "short": "PET: ≥90% brain occupancy in volunteers"
    }
   ],
   "dose": [],
@@ -24,14 +25,16 @@
     "status": "pheno",
     "note": "Guinea-pig vocalisation and gerbil foot-tapping; fluoxetine increased tapping.",
     "src": "https://doi.org/10.1126/science.281.5383.1640",
-    "srcLabel": "Kramer 1998"
+    "srcLabel": "Kramer 1998",
+    "short": "Gerbil and guinea-pig behaviour models"
    },
    {
     "year": 2006,
     "status": "misled",
     "note": "Five Phase 3s at ~90% occupancy failed while paroxetine worked.",
     "src": "https://doi.org/10.1016/j.biopsych.2005.07.013",
-    "srcLabel": "Keller 2006"
+    "srcLabel": "Keller 2006",
+    "short": "Five Phase 3s fail at ~90% occupancy"
    }
   ],
   "safety": []

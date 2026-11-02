@@ -14,14 +14,16 @@
     "status": "cause",
     "note": "Ivacaftor raised chloride secretion ~10-fold in bronchial cells from CF patients.",
     "src": "https://doi.org/10.1073/pnas.0904709106",
-    "srcLabel": "Van Goor 2009"
+    "srcLabel": "Van Goor 2009",
+    "short": "Ivacaftor raised chloride ~10× in patient cells"
    },
    {
     "year": 2011,
     "status": "cal",
     "note": "Sweat chloride, the clinical read-out of the same channel, fell 48 mmol/L in STRIVE.",
     "src": "https://doi.org/10.1056/NEJMoa1105185",
-    "srcLabel": "Ramsey 2011"
+    "srcLabel": "Ramsey 2011",
+    "short": "Sweat chloride fell 48 mmol/L in STRIVE"
    }
   ],
   "dose": [
@@ -30,7 +32,8 @@
     "status": "cause",
     "note": "Cell assays carry the patient variant but predict who responds, not how much; the label says the in-vitro gain does not correlate with clinical response.",
     "src": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0ab0c9f8-3eee-4e0f-9f3f-c1e16aaffe25",
-    "srcLabel": "Kalydeco label"
+    "srcLabel": "Kalydeco label",
+    "short": "Predicts who responds, not how much"
    }
   ],
   "efficacy": [
@@ -39,14 +42,16 @@
     "status": "cause",
     "note": "Rat thyroid (FRT) cells engineered with each human CFTR mutation.",
     "src": "https://doi.org/10.1073/pnas.0904709106",
-    "srcLabel": "Van Goor 2009"
+    "srcLabel": "Van Goor 2009",
+    "short": "Rat cells engineered with each CFTR mutation"
    },
    {
     "year": 2017,
     "status": "cal",
     "note": "FDA added 23 mutations to ivacaftor's label on cell-assay data, with no new trial.",
     "src": "https://doi.org/10.1513/AnnalsATS.201708-668PS",
-    "srcLabel": "Durmowicz 2018"
+    "srcLabel": "Durmowicz 2018",
+    "short": "FDA adds 23 mutations on cell data alone"
    }
   ],
   "safety": []
