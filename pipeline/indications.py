@@ -129,13 +129,18 @@ def trial_context(starts_titles: list[tuple]) -> dict:
 
 
 def validate(p: dict, out: dict) -> None:
-    cands = {c["mondo_id"]: c for c in p["candidates"]}
-    if out["mondo_id"] and out["mondo_id"] not in cands:
+    if out["mondo_id"] and out["mondo_id"] not in {c["mondo_id"] for c in p["candidates"]}:
         raise ValueError(f"mondo_id {out['mondo_id']} not among candidates")
-    if out["mondo_id"] and out.get("kind", "disease") != "disease":
-        names = {moiety_key(n) for n in [cands[out["mondo_id"]]["label"], *cands[out["mondo_id"]]["synonyms"]]}
-        if not names & {moiety_key(n) for n in [p["name"], *p["variants"]]}:
-            raise ValueError(f"kind {out['kind']} carries {out['mondo_id']}, which does not name the condition")
+
+
+def kept_term(p: dict, out: dict) -> str | None:
+    """The decision's MONDO term as stored: a condition that is not a disease keeps a term only when
+    the term's label or a synonym is the condition itself."""
+    if not out["mondo_id"] or out["kind"] == "disease":
+        return out["mondo_id"]
+    term = next(c for c in p["candidates"] if c["mondo_id"] == out["mondo_id"])
+    named = {moiety_key(n) for n in [term["label"], *term["synonyms"]]}
+    return out["mondo_id"] if named & {moiety_key(n) for n in [p["name"], *p["variants"]]} else None
 
 
 TASK = llm.Task(name="indication_mondo", prompt_version="v4", schema_version="v1", system=SYSTEM,
@@ -192,7 +197,7 @@ def map_indications(_args) -> None:
     items = {str(r[0]): {"name": r[1], "variants": [v for v in r[2] if v != r[1]],
                          "trials": trial_context(trials[r[0]]), "candidates": c}
              for r, c in zip(rows, index.search([r[1] for r in rows]))}
-    final = {k: (did, d) for k, did, d in llm.decisions(llm.run(TASK, items))}
+    final = {k: (did, {**d, "mondo_id": kept_term(items[k], d)}) for k, did, d in llm.decisions(llm.run(TASK, items))}
 
     retry = {k: d for k, (_, d) in final.items() if not d["mondo_id"] and d["kind"] == "disease" and d["retry_queries"]}
     match = {k: "exact" for k, (_, d) in final.items() if d["mondo_id"]}
@@ -202,7 +207,7 @@ def map_indications(_args) -> None:
         items[k] = {**items[k], "candidates": list(merged.values())[:3 * N_CANDIDATES]}
     if retry:
         for k, did, d in llm.decisions(llm.run(TASK, {k: items[k] for k in retry})):
-            final[k] = did, d
+            final[k] = did, {**d, "mondo_id": kept_term(items[k], d)}
             if d["mondo_id"]:
                 match[k] = "exact"
 
