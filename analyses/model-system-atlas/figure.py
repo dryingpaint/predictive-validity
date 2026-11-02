@@ -47,6 +47,8 @@ def spans(history):
     out, cur, start = [], "untested", YEAR0
     for h in sorted(history, key=lambda h: h["year"]):
         y = max(h["year"], YEAR0)
+        if h["status"] == cur:
+            continue
         if y > start:
             out.append((start, y, cur))
         cur, start = h["status"], y
@@ -71,10 +73,10 @@ def main():
     label_w, gap = 0.235, 0.008
     col_w = (1 - label_w - 0.012 - gap * 3) / 4
 
-    fig.text(0.012, fy(0.3), "Where preclinical models predict, and since when", fontsize=17, fontweight="bold", color=INK, va="top")
+    fig.text(0.012, fy(0.3), "Which preclinical models have matched patients, and since when", fontsize=17, fontweight="bold", color=INK, va="top")
     fig.text(0.012, fy(0.66),
-             "For each disease, patient group and drug class: the best preclinical model for each question, why it has its status, "
-             "and how that status changed from 1985 to 2026.",
+             "For each disease, patient group and drug class: the best preclinical model for each question, its track record against "
+             "patient results, and how that changed from 1985 to 2026.",
              fontsize=9.3, color=MUTED, va="top")
     handles = [Patch(facecolor=c, edgecolor="none", label=l) for k, (c, l) in STATUS.items()]
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.008, fy(0.9)), ncol=5, frameon=False,
@@ -114,8 +116,8 @@ def main():
             sy, sh = t1 - 0.17, 0.1
             for a, b, st in spans(hist):
                 ax.add_patch(Rectangle((yx(a), sy), yx(b) - yx(a), sh, facecolor=STATUS[st][0], edgecolor="none"))
-            for e in hist[:-1]:
-                ax.plot([yx(e["year"])] * 2, [sy - 0.03, sy + sh + 0.03], color=TILE, lw=1.2)
+            for a, _, st in spans(hist)[1:]:
+                ax.plot([yx(a)] * 2, [sy - 0.03, sy + sh + 0.03], color=TILE, lw=1.2)
         top += h
 
     for key, ax in axes:
