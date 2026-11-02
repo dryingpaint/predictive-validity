@@ -8,7 +8,8 @@ Condition strings enter preclin.indication through pipeline.programs register.
 Candidates come from the pinned MONDO release in preclin.ontology_term:
 character n-gram and word TF-IDF retrieval (hits interleaved) over labels and
 exact synonyms. The LLM picks the term naming the disease itself, leaving
-population qualifiers (line, stage, biomarker, age) aside, or reports that none
+population qualifiers (line, stage, biomarker, age) aside, reading the string as
+the trials that list it use it (their start years and a few titles), or reports that none
 fits and proposes standard disease names; a second retrieval round runs on
 those names. A disease still
 without a term gets the most specific MONDO term that contains it (its nearest
@@ -18,6 +19,7 @@ indication.mondo_match records which kind of match each mapping is.
 from __future__ import annotations
 
 import argparse
+from collections import defaultdict
 
 from psycopg2.extras import execute_values
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -26,6 +28,7 @@ from sklearn.neighbors import NearestNeighbors
 from pipeline import llm
 
 N_CANDIDATES = 20
+TITLES_SHOWN = 3  # sample trial titles shown with each condition string
 
 
 class MondoIndex:
@@ -71,6 +74,8 @@ SYSTEM = """You map a clinical-trial condition to the MONDO disease ontology.
 
 Pick the single MONDO term that names the disease or condition being treated, at the level a drug-development program would call its indication (e.g. "non-small cell lung carcinoma", "ovarian cancer", "type 2 diabetes mellitus", "atopic dermatitis"). Leave out population qualifiers: line of therapy, relapsed/refractory status, biomarker or mutation subgroup, stage, severity, age group, setting (adjuvant, maintenance). Those belong to the patient subset, not the disease. Prefer the specific disease over a broad grouping when the condition names it; prefer the grouping when the condition itself is broad (e.g. "solid tumors" -> a malignant-neoplasm term).
 
+Read the condition as the trials listed with it use it: their start years and sample titles show what the sponsor meant by the string. SARS or SARS-CoV wording (severe acute respiratory syndrome, SARS-associated coronavirus, SARS pneumonia) in trials that started in 2020 or later means COVID-19 (MONDO:0100096), the disease caused by SARS-CoV-2, unless the trials are clearly about the 2003 SARS coronavirus; when those trials are mostly from 2020 on and no candidate is COVID-19, set mondo_id to null and give "COVID-19" as a retry name.
+
 Choose only from the candidate list. If no candidate names the core disease, set mondo_id to null and give up to three standard disease names likely to match a MONDO label, for a second search.
 
 kind: disease (a disease, disorder, infection, injury or cancer), symptom_or_sign (e.g. pain, nausea, pruritus), procedure_or_state (e.g. anesthesia, surgery, transplantation, contraception, imaging, pregnancy), healthy_volunteers (healthy subjects, PK/bioequivalence/drug-interaction studies), or other (e.g. a trial acronym or a drug name given as the condition). mondo_id stays null for anything other than a disease unless a candidate names it exactly."""
@@ -94,8 +99,26 @@ def render(p: dict) -> str:
     cand = "\n".join(
         f"- {c['mondo_id']} | {c['label']} | is_a: {c['parents']} | synonyms: {', '.join(c['synonyms'])}"
         + (f" | {c['definition']}" if c["definition"] else "") for c in p["candidates"])
-    return (f"Condition: {p['name']}\nOther spellings: {'; '.join(p['variants'][:6]) or 'none'}\n\n"
+    t = p["trials"]
+    years = (f"{t['first_year']}–{t['last_year']} (median {t['median_year']})" if t["first_year"] is not None
+             else "no start dates")
+    titles = "\n".join(f"- {x}" for x in t["titles"])
+    return (f"Condition: {p['name']}\nOther spellings: {'; '.join(p['variants'][:6]) or 'none'}\n"
+            f"Trials listing it: {t['n']}, started {years}\nSample trial titles:\n{titles or '- (none)'}\n\n"
             f"MONDO candidates:\n{cand or '(none retrieved)'}")
+
+
+def trial_context(starts_titles: list[tuple]) -> dict:
+    """The trials listing one condition string, as (start date or None, title) pairs: how many,
+    their range and median start year, and TITLES_SHOWN titles spread over their start order."""
+    dated = sorted(((d, title or "") for d, title in starts_titles if d is not None))
+    ordered = dated + sorted((None, title or "") for d, title in starts_titles if d is None)
+    years = [d.year for d, _ in dated]
+    n = len(ordered)
+    picks = sorted({min(n - 1, (2 * k + 1) * n // (2 * TITLES_SHOWN)) for k in range(TITLES_SHOWN)}) if n else []
+    return {"n": n, "first_year": years[0] if years else None, "last_year": years[-1] if years else None,
+            "median_year": years[len(years) // 2] if years else None,
+            "titles": [ordered[i][1] for i in picks if ordered[i][1]]}
 
 
 def validate(p: dict, out: dict) -> None:
@@ -103,12 +126,14 @@ def validate(p: dict, out: dict) -> None:
         raise ValueError(f"mondo_id {out['mondo_id']} not among candidates")
 
 
-TASK = llm.Task(name="indication_mondo", prompt_version="v2", schema_version="v1", system=SYSTEM,
+TASK = llm.Task(name="indication_mondo", prompt_version="v3", schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="indication",
                 effort="medium", max_tokens=3000)
 
 
 BROADER_SYSTEM = """You map a clinical-trial condition that is a disease to the MONDO disease ontology. An earlier pass found no MONDO term naming it exactly.
+
+Read the condition as the trials listed with it use it: their start years and sample titles show what the sponsor meant by the string.
 
 Pick from the candidate list:
 - match "exact": a candidate names the condition's core disease itself (by label, synonym or definition), leaving population qualifiers (line of therapy, stage, biomarker, age, setting) aside. Example: "metastatic malignant neoplasm in the rectum" -> rectal cancer.
@@ -137,7 +162,7 @@ def validate_broader(p: dict, out: dict) -> None:
         raise ValueError("match 'none' requires mondo_id null, and only then")
 
 
-BROADER_TASK = llm.Task(name="indication_mondo_broader", prompt_version="v1", schema_version="v1",
+BROADER_TASK = llm.Task(name="indication_mondo_broader", prompt_version="v2", schema_version="v1",
                         system=BROADER_SYSTEM, schema=BROADER_SCHEMA, render=render_broader,
                         validate=validate_broader, subject_type="indication", effort="medium", max_tokens=3000)
 
@@ -147,7 +172,13 @@ def map_indications(_args) -> None:
         index = MondoIndex(cur)
         cur.execute("SELECT indication_id, display_name, coalesce(ct_gov_conditions, '{}') FROM preclin.indication")
         rows = cur.fetchall()
-    items = {str(r[0]): {"name": r[1], "variants": [v for v in r[2] if v != r[1]], "candidates": c}
+        cur.execute("""SELECT si.indication_id, s.start_date, s.brief_title FROM preclin.ctgov_study_indication si
+                       JOIN preclin.ctgov_study s USING (nct_id)""")
+        trials = defaultdict(list)
+        for iid, start, title in cur.fetchall():
+            trials[iid].append((start, title))
+    items = {str(r[0]): {"name": r[1], "variants": [v for v in r[2] if v != r[1]],
+                         "trials": trial_context(trials[r[0]]), "candidates": c}
              for r, c in zip(rows, index.search([r[1] for r in rows]))}
     final = {k: (did, d) for k, did, d in llm.decisions(llm.run(TASK, items))}
 
