@@ -5,10 +5,14 @@
     python -m pipeline.targets mouse       # LLM: mouse model vs disease, per model -> preclin.mouse_model_relation
 
 resolve: the LLM sees the entity's names, modality, every ChEMBL mechanism record
-of the parent molecule of any of its intervention names (pipeline.chembl), and
-trial titles. Every returned symbol must name a human protein in public.targets,
-by its catalogue symbol or by an HGNC approved, previous or alias symbol of its
-gene (pipeline.hgnc), so TDGF1 resolves to CRIPTO and CD20 to MS4A1.
+of the parent molecule of any of its intervention names (pipeline.chembl), the
+diseases of its industry programs, and trial titles. An entity acting through a
+different target in different diseases (miglustat: UGCG in Gaucher disease, the
+co-administered GAA it stabilises in Pompe disease) carries every such target;
+the table is per entity, so each program sees all of them. Every returned
+symbol must name a human protein in public.targets, by its catalogue symbol or
+by an HGNC approved, previous or alias symbol of its gene (pipeline.hgnc), so
+TDGF1 resolves to CRIPTO and CD20 to MS4A1.
 Entities acting on pathogens, or without a defined molecular target, are
 recorded as such and get no target rows; entities without an industry trial,
 or whose decision failed, keep no target kind.
@@ -46,7 +50,8 @@ from pipeline.opentargets import CLINVAR_PATHOGENIC, GERMLINE_DATASOURCES
 SYSTEM = """You give the molecular target(s) through which a drug acts, as human gene symbols (HGNC).
 
 - targets: the human proteins the drug binds or modulates to produce its therapeutic effect. Mark primary=true for the target(s) that define its mechanism (e.g. PCSK9 for evolocumab; the two arms of a bispecific; each receptor of a multi-receptor agonist such as GLP1R and GIPR for tirzepatide). Add secondary targets only when well established and pharmacologically relevant (e.g. multi-kinase inhibitors), with primary=false.
-- For protein-replacement therapies and gene therapies, the target is the replaced or delivered gene product (e.g. F8 for factor VIII; SMN1 for onasemnogene). For CAR-T and other engineered cells, the antigen (e.g. CD19). For antisense/siRNA, the transcript's gene (e.g. TTR). For antibody-drug conjugates, the antigen. For radioligands, the binding target.
+- For protein-replacement therapies and gene therapies, the target is the replaced or delivered gene product (e.g. F8 for factor VIII; SMN1 for onasemnogene). replacement means the drug is that gene product itself. A drug that binds another protein to stabilise or protect it (a pharmacological chaperone given with an enzyme replacement therapy; a carrier fragment of one protein that prolongs another's half-life) has the protein it stabilises as its target, action other, and is not a replacement of either.
+- A drug developed in several diseases can act through a different target in each (an enzyme it inhibits in one disease, a protein it stabilises in another): list the target of each disease's mechanism, primary=true for each. The diseases the drug is developed for are listed. For CAR-T and other engineered cells, the antigen (e.g. CD19). For antisense/siRNA, the transcript's gene (e.g. TTR). For antibody-drug conjugates, the antigen. For radioligands, the binding target.
 - action: inhibitor, antagonist, agonist, partial_agonist, inverse_agonist, activator, positive_modulator, negative_modulator, blocker, opener, degrader, binder_neutralizer (antibody neutralizing a ligand or blocking a receptor), depleter (cell-depleting antibody or cell therapy), replacement, gene_expression_reduction, gene_expression_increase, other.
 - target_kind: human_protein when targets are listed; pathogen when the drug acts on a microbe or virus (antibiotics, antivirals, antifungals, antiparasitics, most vaccines); no_single_target for agents without a defined molecular target (e.g. nutritional products, many chemotherapy combinations given as one name, cell therapies without engineered specificity, plasma); unknown when you cannot tell (e.g. an unfamiliar code name with uninformative trial context).
 Use the ChEMBL mechanism records when present; correct them only if clearly wrong. Never guess a target for an unrecognised code name."""
@@ -78,7 +83,7 @@ def render(p: dict) -> str:
     mech = "\n".join(f"- {m}" for m in p["chembl"]) or "(none)"
     return (f"Drug: {p['name']}\nCode names: {', '.join(p['codes']) or 'none'}\nModality: {p['modality'] or 'unknown'}\n"
             f"Intervention strings: {'; '.join(p['strings'])}\nChEMBL mechanism records:\n{mech}\n"
-            f"Trial titles: {' | '.join(p['titles'])}")
+            f"Developed for: {'; '.join(p['diseases']) or 'no named disease'}\nTrial titles: {' | '.join(p['titles'])}")
 
 
 # Symbol -> public.targets id for every human protein, under its catalogue symbol and under the
@@ -111,7 +116,7 @@ def validate(p: dict, out: dict) -> None:
         raise ValueError("human_protein without targets")
 
 
-TASK = llm.Task(name="moiety_targets", prompt_version="v1", schema_version="v1", system=SYSTEM, schema=SCHEMA,
+TASK = llm.Task(name="moiety_targets", prompt_version="v2", schema_version="v1", system=SYSTEM, schema=SCHEMA,
                 render=render, validate=validate, subject_type="moiety", model="claude-opus-5-5",
                 effort="medium", max_tokens=2000)
 
@@ -138,14 +143,17 @@ def resolve(_args) -> None:
                       SELECT c.brief_title, max(c.start_date) AS latest FROM preclin.ctgov_study_moiety sm
                       JOIN preclin.ctgov_study c USING (nct_id)
                       WHERE sm.moiety_id = m.moiety_id AND sm.role = 'investigational' GROUP BY c.brief_title
-                      ORDER BY latest DESC NULLS LAST, c.brief_title LIMIT 3) t)
+                      ORDER BY latest DESC NULLS LAST, c.brief_title LIMIT 3) t),
+                   (SELECT array_agg(DISTINCT o.label ORDER BY o.label) FROM preclin.dev_program p
+                    JOIN preclin.ontology_term o ON o.ontology = 'MONDO' AND o.term_id = p.mondo_id
+                    WHERE p.moiety_id = m.moiety_id AND p.n_industry_trials > 0)
             FROM preclin.moiety m
             WHERE EXISTS (SELECT 1 FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id
                           AND p.n_industry_trials > 0)""")
         items = {str(mid): {"name": name, "codes": codes or [], "modality": modality,
                             "strings": sorted(strings or [])[:8], "chembl": sorted(chembl[mid]),
-                            "titles": titles or []}
-                 for mid, name, codes, modality, strings, titles in cur.fetchall()}
+                            "titles": titles or [], "diseases": diseases or []}
+                 for mid, name, codes, modality, strings, titles, diseases in cur.fetchall()}
     run_id = llm.run(TASK, items)
     rows, kinds = [], []
     for mid, did, out in llm.decisions(run_id):
