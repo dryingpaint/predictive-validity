@@ -1,0 +1,74 @@
+{
+ "sample": {
+  "positive_not_advanced": 24,
+  "sponsor_decision": 17,
+  "safety": 10,
+  "operational": 4
+ },
+ "seed": 11,
+ "causes": {
+  "operational": {
+   "n": 4,
+   "support": {
+    "not_found": 2,
+    "likely": 1,
+    "stated": 1
+   },
+   "subcauses": {
+    "other_stated": 2
+   },
+   "other_reasons": [
+    "sponsor pivoted away to a next-generation BCMA CAR-T program",
+    "sponsor transitioned patients to next-generation CD19 CAR-T (CTX112)"
+   ]
+  },
+  "positive_not_advanced": {
+   "n": 24,
+   "support": {
+    "likely": 13,
+    "not_found": 8,
+    "stated": 3
+   },
+   "subcauses": {
+    "portfolio_prioritisation": 5,
+    "approved_outside_us": 5,
+    "funding_or_closure": 4,
+    "replaced_by_successor": 1,
+    "other_stated": 1
+   },
+   "other_reasons": [
+    "approved in the US as IHEEZO using this cataract trial as pivotal data"
+   ]
+  },
+  "safety": {
+   "n": 10,
+   "support": {
+    "stated": 9,
+    "not_found": 1
+   },
+   "subcauses": {
+    "harm_mechanism_not_stated": 7,
+    "off_target_toxicity": 1,
+    "on_target_toxicity": 1
+   },
+   "other_reasons": []
+  },
+  "sponsor_decision": {
+   "n": 17,
+   "support": {
+    "likely": 9,
+    "stated": 4,
+    "not_found": 4
+   },
+   "subcauses": {
+    "portfolio_prioritisation": 10,
+    "other_stated": 1,
+    "funding_or_closure": 1,
+    "commercial_or_competitive": 1
+   },
+   "other_reasons": [
+    "interim efficacy results failed, no backup combination"
+   ]
+  }
+ }
+}
