@@ -461,9 +461,10 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
     """Merge each group (members, preferred name, UNII, member -> UNII decision) into one
     entity: the member already named by the preferred name, else the one with a UNII
     that is not a formulation substance, a UNII, and the most intervention names,
-    in that order. Intervention-name (drug_moiety), trial
-    (ctgov_study_moiety), FDA-application, target and development-indication
-    (program_indication) links move to the survivor; the development programs of
+    in that order. Rows of every table that references an entity (intervention
+    names, trials, FDA applications, targets, development indications, stops,
+    literature searches, ChEMBL parents) move to the survivor, keeping the
+    survivor's own on a conflict; the development programs of
     the merged entities and of the survivor are deleted for pipeline.programs build
     to rebuild. The survivor takes the preferred name unless another entity holds
     it, and keeps every other name as an alias."""
@@ -496,8 +497,10 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
                             dids.get(winner) if unii else ent[winner][5]))
         cur.execute("CREATE TEMP TABLE merge_map (loser int PRIMARY KEY, winner int NOT NULL) ON COMMIT DROP")
         execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
-        for table in ("drug_moiety", "fda_application_moiety", "ctgov_study_moiety", "moiety_target",
-                      "program_indication"):
+        cur.execute("""SELECT DISTINCT c.conrelid::regclass::text FROM pg_constraint c
+                       WHERE c.contype = 'f' AND c.confrelid = 'preclin.moiety'::regclass
+                         AND c.conrelid <> 'preclin.dev_program'::regclass""")
+        for table in sorted(t.removeprefix("preclin.") for t, in cur.fetchall()):
             cur.execute("""SELECT string_agg(quote_ident(column_name), ', ' ORDER BY ordinal_position),
                                   string_agg('t.' || quote_ident(column_name), ', ' ORDER BY ordinal_position)
                            FROM information_schema.columns
