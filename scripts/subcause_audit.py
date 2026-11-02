@@ -12,7 +12,7 @@ contradicts the cause. The decisions are kept for a hand review of the first pas
 
 The search mode draws SEARCH_SAMPLE stops per cause that the text pass leaves without a subcause, runs the
 stop_subcause_search task on them, and writes to report/audits/subcause_search_pilot.json how often it finds a stated
-or likely subcause and which, with the decisions kept for a hand review.
+or likely subcause and which, which other causes its sources give, with the decisions kept for a hand review.
 """
 from __future__ import annotations
 
@@ -109,12 +109,14 @@ def search() -> None:
     bundles = search_items([r for r in rows if r[0] in picked])
     found = {k: o for k, _, o in llm.decisions(llm.run(SEARCH_TASK, bundles))}
     d = pd.DataFrame([{"key": k, "drug": bundles[k]["drug"], "disease": bundles[k]["disease"],
-                       "cause": bundles[k]["cause"], "subcause": o["subcause"], "support": o["support"],
+                       "cause": bundles[k]["cause"], "cause_found": o["cause_found"],
+                       "subcause": o["subcause"], "support": o["support"],
                        "other": o["other_reason"], "quote": o["quote"], "sources": " ".join(o["sources"]),
                        "rationale": o["rationale"]} for k, o in found.items()])
     d.to_csv(SEARCH_REVIEW, index=False)
     pilot = {"sample": {c: int((d.cause == c).sum()) for c in SEARCH_SAMPLE}, "seed": SEED, "causes": {
         cause: {"n": int(len(g)), "support": g.support.value_counts().to_dict(),
+                "cause_found": g.loc[g.cause_found != cause, "cause_found"].value_counts().to_dict(),
                 "subcauses": g[g.support != "not_found"].subcause.value_counts().to_dict(),
                 "other_reasons": sorted(g.loc[g.subcause == "other_stated", "other"].tolist())}
         for cause, g in d.groupby("cause")}}
