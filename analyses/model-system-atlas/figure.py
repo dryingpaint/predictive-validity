@@ -6,11 +6,13 @@ available preclinical model in every year from 1985 to 2026.
 Reads one JSON file per context from contexts/ and writes atlas.png beside this file. Each context
 file holds `cells`: for each decision, a list of {year, status, note, src} entries, each the year the
 best model reached that status. A cell's status in a year is that of the latest entry at or before it.
+Every entry is numbered on its bar and listed with its note and source below the matrix.
 """
 
 import glob
 import json
 import os
+import textwrap
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch, Rectangle
@@ -56,25 +58,39 @@ def main():
             layout.append(("area", r["area"]))
         layout.append(("ctx", r))
 
-    row_h = 0.36
-    fig_h = 2.1 + row_h * len(layout)
-    fig = plt.figure(figsize=(13.5, fig_h), dpi=200)
-    top = 1 - 1.9 / fig_h
-    bottom = 0.55 / fig_h
-    label_w = 0.31
-    gap = 0.012
-    panel_w = (1 - label_w - 0.02 - gap * 3) / 4
-
-    fig.text(0.012, 1 - 0.32 / fig_h, "Where preclinical models predict, and since when", fontsize=17, fontweight="bold", color=INK, va="top")
-    fig.text(0.012, 1 - 0.68 / fig_h,
-             "Best available model for each context of use (disease × the patients its cause defines × mechanism) and decision, by year. "
-             "Hand-curated seed of 15 contexts; every status change cites a source.",
-             fontsize=9.5, color=MUTED, va="top")
-    handles = [Patch(facecolor=c, edgecolor="none", label=l) for c, l in STATUS.values()]
-    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.008, 1 - 0.92 / fig_h), ncol=5, frameon=False,
-               fontsize=9, handlelength=1.4, handleheight=1.0, columnspacing=1.6, labelcolor=INK)
+    # Number every status change, row by row and decision by decision; the notes block lists them.
+    notes, cell_nums = [], {}
+    for kind, item in layout:
+        if kind == "area":
+            continue
+        for key, title in DECISIONS:
+            for h in sorted(item["cells"].get(key, []), key=lambda h: h["year"]):
+                notes.append((len(notes) + 1, item, title, h))
+                cell_nums.setdefault((id(item), key), []).append(len(notes))
+    half = (len(notes) + 1) // 2
+    cols = [[_note_lines(*nt) for nt in notes[:half]], [_note_lines(*nt) for nt in notes[half:]]]
+    line_h = 0.118
+    notes_h = 0.45 + line_h * max(sum(len(x) for x in c) + 0.35 * len(c) for c in cols)
 
     n = len(layout)
+    row_h, head_h, foot_h = 0.36, 2.1, 0.55
+    matrix_h = row_h * n
+    fig_h = head_h + matrix_h + 0.35 + notes_h + foot_h
+    fig = plt.figure(figsize=(13.5, fig_h), dpi=200)
+    y = lambda inches_from_top: 1 - inches_from_top / fig_h
+    top, bottom = y(head_h), y(head_h + matrix_h)
+    label_w, gap = 0.31, 0.012
+    panel_w = (1 - label_w - 0.02 - gap * 3) / 4
+
+    fig.text(0.012, y(0.32), "Where preclinical models predict, and since when", fontsize=17, fontweight="bold", color=INK, va="top")
+    fig.text(0.012, y(0.68),
+             "Best available model for each context of use (disease × the patients its cause defines × mechanism) and decision, by year.\n"
+             "Hand-curated seed of 15 contexts; every status change is numbered and cited in the notes below.",
+             fontsize=9.5, color=MUTED, va="top", linespacing=1.4)
+    handles = [Patch(facecolor=c, edgecolor="none", label=l) for c, l in STATUS.values()]
+    fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.008, y(1.12)), ncol=5, frameon=False,
+               fontsize=9, handlelength=1.4, handleheight=1.0, columnspacing=1.6, labelcolor=INK)
+
     for j, (key, title) in enumerate(DECISIONS):
         left = label_w + j * (panel_w + gap)
         ax = fig.add_axes([left, bottom, panel_w, top - bottom])
@@ -90,11 +106,17 @@ def main():
         for i, (kind, item) in enumerate(layout):
             if kind == "area":
                 continue
-            for a, b, st in spans(item["cells"].get(key, [])):
+            runs = spans(item["cells"].get(key, []))
+            for a, b, st in runs:
                 ax.add_patch(Rectangle((a, i + 0.14), b - a, 0.72, facecolor=STATUS[st][0], edgecolor="none", zorder=2))
             for h in item["cells"].get(key, []):
                 if YEAR0 < h["year"] <= YEAR1:
                     ax.add_patch(Rectangle((h["year"] - 0.15, i + 0.14), 0.3, 0.72, facecolor="white", edgecolor="none", zorder=4))
+            nums = cell_nums.get((id(item), key))
+            if nums:
+                ink = INK if runs[-1][2] == "none" else "white"
+                ax.text(YEAR1 + 0.5, i + 0.52, ",".join(map(str, nums)), fontsize=7.2, fontweight="bold", color=ink,
+                        ha="right", va="center", zorder=5)
 
     lab = fig.add_axes([0.0, bottom, label_w - 0.008, top - bottom])
     lab.set_xlim(0, 1)
@@ -107,13 +129,31 @@ def main():
         lab.text(0.07, i + 0.42, f"{item['disease']}, {item['population']}", fontsize=8.6, color=INK, va="center")
         lab.text(0.07, i + 0.80, item["mechanism"], fontsize=7.2, color=MUTED, va="center")
 
-    fig.text(0.012, 0.18 / fig_h,
-             "A white notch marks the year a cell's status changed. Status is a judgement per context; sources and notes are in contexts/*.json. "
-             "Program counts and approval rates per context come later from the Predictive Validity database.",
-             fontsize=7.8, color=MUTED, va="bottom")
+    notes_top = head_h + matrix_h + 0.35
+    fig.add_artist(plt.Line2D([0.012, 0.988], [y(notes_top), y(notes_top)], color=RULE, lw=0.8))
+    fig.text(0.012, y(notes_top + 0.12), "Notes: what changed each cell, and the source", fontsize=10, fontweight="bold", color=INK, va="top")
+    for c, x0 in zip(cols, (0.012, 0.505)):
+        cursor = notes_top + 0.45
+        for lines in c:
+            for k, line in enumerate(lines):
+                fig.text(x0 + (0 if k == 0 else 0.018), y(cursor), line, fontsize=6.9, color=INK if k == 0 else MUTED, va="top")
+                cursor += line_h
+            cursor += 0.35 * line_h
+
+    fig.text(0.012, y(fig_h - 0.12),
+             "Each bar runs 1985–2026; a white notch marks a change of status, and the bold numbers at the bar's end point to the notes.\n"
+             "Status is a judgement under the rules in issue #76. Program counts and approval rates per context come later from the Predictive Validity database.",
+             fontsize=7.6, color=MUTED, va="bottom", linespacing=1.4)
     out = os.path.join(HERE, "atlas.png")
     fig.savefig(out, facecolor="white")
     print(out)
+
+
+def _note_lines(num, item, decision, h):
+    """The note for one status change, wrapped for a half-width column."""
+    head = f"{num}. {item['disease']}, {item['population']} · {decision} · {h['year']}: {STATUS[h['status']][1]}"
+    body = f"{h['note']} ({h.get('srcLabel', 'source')})"
+    return textwrap.wrap(head, 118) + textwrap.wrap(body, 112)
 
 
 if __name__ == "__main__":
