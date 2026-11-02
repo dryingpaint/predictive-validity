@@ -45,6 +45,14 @@ def test_a_biosimilar_is_named_by_its_reference_product():
     assert components(out, text, {"mepolizumab"})[0]["name"] == "mepolizumab"
 
 
+def test_a_vaccine_or_a_study_number_does_not_replace_a_name():
+    vaccine = {"kind": "vaccine", "components": [comp("measles, mumps, rubella and varicella vaccine (live)", ["208136"])]}
+    assert components(vaccine, "Priorix-Tetra, study 208136", set())[0]["name"] == \
+        "measles, mumps, rubella and varicella vaccine (live)"
+    drug = {"kind": "drug", "components": [comp("genakumab", ["208136"])]}
+    assert components(drug, "Trial 208136 of an anti-IL-1 antibody", set())[0]["name"] == "genakumab"
+
+
 def test_a_placebo_records_no_components():
     assert components({"kind": "placebo_or_vehicle", "components": [comp("TAK-418")]}, "TAK-418 Placebo", set()) == []
 

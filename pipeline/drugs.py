@@ -117,8 +117,9 @@ def components(out: dict, text: str, registered: set[str]) -> list[dict]:
     """The active components a decision records, given the rendered input it read (text) and the
     keys of registered UNII names among its component names. A code name is kept when it has no
     question mark and the input mentions it. A biosimilar is named by its reference product. A
-    nonproprietary name that neither the input nor a registered UNII name carries is replaced by
-    the component's first kept code."""
+    drug's nonproprietary name that neither the input nor a registered UNII name carries is
+    replaced by the component's first kept code shaped like a sponsor code (a vaccine keeps its
+    descriptive name, and a study number is no code)."""
     if out["kind"] not in ("drug", "combination", "vaccine"):
         return []
     seen, words = moiety_key(text), word_keys(text)
@@ -126,8 +127,10 @@ def components(out: dict, text: str, registered: set[str]) -> list[dict]:
     for c in out["components"]:
         codes = [x for x in c["code_names"] if "?" not in x and moiety_key(x) in words]
         name = c["biosimilar_of"] or c["name"]
-        if codes and moiety_key(name) not in seen and moiety_key(name) not in registered:
-            name = codes[0]
+        sponsor_codes = [x for x in codes if is_code(moiety_key(x))]
+        if (sponsor_codes and out["kind"] != "vaccine" and moiety_key(name) not in seen
+                and moiety_key(name) not in registered):
+            name = sponsor_codes[0]
         if moiety_key(name):
             comps.append({"name": name, "codes": codes, "role": c["role"], "biosimilar_of": c["biosimilar_of"]})
     return comps
