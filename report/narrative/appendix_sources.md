@@ -1,6 +1,6 @@
 ## Sources in detail
 
-Each entry gives who compiles the source and from what, what the pipeline keeps, the shape of the raw response, and a real record from the cached download, trimmed to the fields used.
+Each entry gives who compiles the source and from what, what this analysis takes from it, the shape of the raw response, and a real record from the cached download, trimmed to the fields used.
 
 ### ClinicalTrials.gov API v2
 

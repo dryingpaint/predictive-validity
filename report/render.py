@@ -477,7 +477,7 @@ def s3_case_cards() -> str:
         outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
         rows.append([rule_name(rules.loc[r.rule]), f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
                      f"{r.claim_supported}; {source}",
-                     outcome + ("" if r.pipeline_correct == "yes" else " (pipeline wrong)"),
+                     outcome + ("" if r.pipeline_correct == "yes" else " (recorded outcome wrong)"),
                      failure_label(r.advanced_within_4y, r.failure_code)])
     return table(pd.DataFrame(rows, columns=["Rule", "Drug (target, action)", "Disease", "Phase 2 entry",
                                              "Evidence claim: verdict; earliest source", "Outcome (verified)",
