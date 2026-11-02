@@ -43,6 +43,9 @@ API_FAILURE_LIMIT = 0.2  # share of a direct run's calls failing at the API (e.g
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
 DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
+# A batch that has finished no request this long after it was created is cancelled and its requests are
+# sent to the Messages API directly: the batch queue sometimes holds a batch untouched for hours.
+STALL_SECONDS = 45 * 60
 
 
 def canonical_json(value: Any) -> str:
@@ -438,7 +441,16 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
 
     while pending:
         time.sleep(POLL_SECONDS)
-        ended = [b for b in pending if _api(api.messages.batches.retrieve, b).processing_status == "ended"]
+        status = {b: _api(api.messages.batches.retrieve, b) for b in pending}
+        for batch_id in [b for b, st in status.items() if stalled(st, datetime.now(timezone.utc))]:
+            _api(api.messages.batches.cancel, batch_id)
+            keys = [key for (b, _), key in custom_ids.items() if b == batch_id]
+            print(f"[{task.name}] batch {batch_id} stalled; sending its {len(keys)} requests directly", flush=True)
+            _run_concurrent(api, run_id, task, items, keys)
+            pending.remove(batch_id)
+            manifest.pop(batch_id, None)
+            _write_manifest(task, manifest)
+        ended = [b for b in pending if status[b].processing_status == "ended"]
         for batch_id in ended:
             rows, n_ok, n_bad = [], 0, 0
             for result in _api(lambda b: list(api.messages.batches.results(b)), batch_id):
@@ -455,6 +467,14 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             manifest.pop(batch_id, None)
             _write_manifest(task, manifest)
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
+
+
+def stalled(batch, now: datetime) -> bool:
+    """Whether a batch is still in progress STALL_SECONDS after it was created with no request finished."""
+    if batch.processing_status != "in_progress" or (now - batch.created_at).total_seconds() <= STALL_SECONDS:
+        return False
+    counts = batch.request_counts
+    return counts.succeeded + counts.errored + counts.canceled + counts.expired == 0
 
 
 def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:

@@ -1,6 +1,7 @@
 """A batch run that stops before collecting its batches is resumed, not resubmitted."""
 import json
 import uuid
+from datetime import datetime, timedelta, timezone
 from types import SimpleNamespace
 
 import pytest
@@ -74,3 +75,20 @@ def test_changed_input_is_resubmitted(stored, monkeypatch):
     llm._run_batches(SimpleNamespace(messages=SimpleNamespace(batches=second)), uuid.uuid4(), TASK, changed, list(changed))
     assert second.created == ["b0"]
     assert json.loads(stored[0][5])["key"] == "trial 1, revised"
+
+
+def batch_status(status, age_minutes, finished):
+    created = datetime(2026, 11, 2, 12, 0, tzinfo=timezone.utc)
+    counts = SimpleNamespace(succeeded=finished, errored=0, canceled=0, expired=0)
+    return SimpleNamespace(processing_status=status, created_at=created, request_counts=counts), \
+        created + timedelta(minutes=age_minutes)
+
+
+def test_a_batch_untouched_past_the_stall_limit_is_stalled():
+    assert llm.stalled(*batch_status("in_progress", llm.STALL_SECONDS / 60 + 1, 0))
+
+
+def test_a_young_batch_or_one_making_progress_or_ended_is_not_stalled():
+    assert not llm.stalled(*batch_status("in_progress", llm.STALL_SECONDS / 60 - 1, 0))
+    assert not llm.stalled(*batch_status("in_progress", llm.STALL_SECONDS / 60 + 1, 3))
+    assert not llm.stalled(*batch_status("ended", llm.STALL_SECONDS / 60 + 1, 0))
