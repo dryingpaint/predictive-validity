@@ -26,6 +26,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 
 from pipeline import llm
+from pipeline.drugs import moiety_key
 
 N_CANDIDATES = 20
 TITLES_SHOWN = 3  # sample trial titles shown with each condition string
@@ -72,13 +73,19 @@ class MondoIndex:
 
 SYSTEM = """You map a clinical-trial condition to the MONDO disease ontology.
 
-Pick the single MONDO term that names the disease or condition being treated, at the level a drug-development program would call its indication (e.g. "non-small cell lung carcinoma", "ovarian cancer", "type 2 diabetes mellitus", "atopic dermatitis"). Leave out population qualifiers: line of therapy, relapsed/refractory status, biomarker or mutation subgroup, stage, severity, age group, setting (adjuvant, maintenance). Those belong to the patient subset, not the disease. Prefer the specific disease over a broad grouping when the condition names it; prefer the grouping when the condition itself is broad (e.g. "solid tumors" -> a malignant-neoplasm term).
+Pick the single MONDO term that names the disease or condition being treated, at the level a drug-development program would call its indication (e.g. "non-small cell lung carcinoma", "ovarian cancer", "type 2 diabetes mellitus", "atopic dermatitis"). Leave out population qualifiers: line of therapy, relapsed/refractory status, biomarker or mutation subgroup, stage, severity, age group, setting (adjuvant, maintenance). Those belong to the patient subset, not the disease, even when MONDO has a term for the subtype they define (HER2-negative breast cancer -> breast carcinoma; IDH-wildtype glioblastoma -> glioblastoma). Prefer the specific disease over a broad grouping when the condition names it; prefer the grouping when the condition itself is broad (e.g. "solid tumors" -> a malignant-neoplasm term).
 
 Read the condition as the trials listed with it use it: their start years and sample titles show what the sponsor meant by the string. SARS or SARS-CoV wording (severe acute respiratory syndrome, SARS-associated coronavirus, SARS pneumonia) in trials that started in 2020 or later means COVID-19 (MONDO:0100096), the disease caused by SARS-CoV-2, unless the trials are clearly about the 2003 SARS coronavirus; when those trials are mostly from 2020 on and no candidate is COVID-19, set mondo_id to null and give "COVID-19" as a retry name.
 
+The trials tell you which meaning of the string its sponsors intended; they never supply a disease the string does not name. A string that names only a biomarker, gene or mutation, lab value, drug, mechanism, line of therapy or other qualifier, treatment strategy, outcome measure, specialty or procedure gets mondo_id null, even when every trial title names one disease (e.g. "EGFR Mutations", "Cetuximab", "Relapsed and Refractory", "Congenital", "Previously Irradiated").
+
+Use of, cessation of, withdrawal from or dependence on a substance is a disease when the trials treat it: map the substance's dependence term ("smoking cessation" -> nicotine dependence). When the trials measure the substance's consumption as an outcome (opioid use after surgery), it is procedure_or_state.
+
+A string naming a disease alongside healthy volunteers ("ALS (healthy volunteers)") maps that disease, kind disease. A vaccine or immunization string naming a pathogen maps the infection it prevents. An episode or crisis of one disease that has no MONDO term of its own maps that disease ("vaso-occlusive crisis" -> sickle cell disease).
+
 Choose only from the candidate list. If no candidate names the core disease, set mondo_id to null and give up to three standard disease names likely to match a MONDO label, for a second search.
 
-kind: disease (a disease, disorder, infection, injury or cancer), symptom_or_sign (e.g. pain, nausea, pruritus), procedure_or_state (e.g. anesthesia, surgery, transplantation, contraception, imaging, pregnancy), healthy_volunteers (healthy subjects, PK/bioequivalence/drug-interaction studies), or other (e.g. a trial acronym or a drug name given as the condition). mondo_id stays null for anything other than a disease unless a candidate names it exactly."""
+kind: disease (a disease, disorder, infection, injury or cancer), symptom_or_sign (e.g. pain, nausea, pruritus), procedure_or_state (e.g. anesthesia, surgery, transplantation, contraception, imaging, pregnancy), healthy_volunteers (healthy subjects, PK/bioequivalence/drug-interaction studies), or other (e.g. a trial acronym or a drug name given as the condition). mondo_id stays null for anything other than a disease unless a candidate's label or synonym is the condition itself."""
 
 SCHEMA = {
     "type": "object",
@@ -122,11 +129,16 @@ def trial_context(starts_titles: list[tuple]) -> dict:
 
 
 def validate(p: dict, out: dict) -> None:
-    if out["mondo_id"] and out["mondo_id"] not in {c["mondo_id"] for c in p["candidates"]}:
+    cands = {c["mondo_id"]: c for c in p["candidates"]}
+    if out["mondo_id"] and out["mondo_id"] not in cands:
         raise ValueError(f"mondo_id {out['mondo_id']} not among candidates")
+    if out["mondo_id"] and out.get("kind", "disease") != "disease":
+        names = {moiety_key(n) for n in [cands[out["mondo_id"]]["label"], *cands[out["mondo_id"]]["synonyms"]]}
+        if not names & {moiety_key(n) for n in [p["name"], *p["variants"]]}:
+            raise ValueError(f"kind {out['kind']} carries {out['mondo_id']}, which does not name the condition")
 
 
-TASK = llm.Task(name="indication_mondo", prompt_version="v3", schema_version="v1", system=SYSTEM,
+TASK = llm.Task(name="indication_mondo", prompt_version="v4", schema_version="v1", system=SYSTEM,
                 schema=SCHEMA, render=render, validate=validate, subject_type="indication",
                 effort="medium", max_tokens=3000)
 
@@ -138,7 +150,7 @@ Read the condition as the trials listed with it use it: their start years and sa
 Pick from the candidate list:
 - match "exact": a candidate names the condition's core disease itself (by label, synonym or definition), leaving population qualifiers (line of therapy, stage, biomarker, age, setting) aside. Example: "metastatic malignant neoplasm in the rectum" -> rectal cancer.
 - match "broader": no candidate names it, so pick the most specific candidate whose meaning contains the condition: its nearest parent disease or grouping (e.g. "melasma" -> hyperpigmentation of the skin; "contrast-induced nephropathy" -> acute kidney injury; "finger injuries" -> injury). Prefer the narrowest candidate that still contains the whole condition.
-- match "none" with mondo_id null: no candidate contains the condition, or the condition is not a disease."""
+- match "none" with mondo_id null: only when no candidate contains the condition at all, or the condition is not a disease. For a disease, look up the is_a parents shown and pick the narrowest container (e.g. "chronic subdural hematoma" -> its nearest containing intracranial hemorrhage or nervous system disorder). Never pick MONDO:0000001 (disease) or another root grouping that names no body system or disease class."""
 
 BROADER_SCHEMA = {
     "type": "object",
@@ -162,7 +174,7 @@ def validate_broader(p: dict, out: dict) -> None:
         raise ValueError("match 'none' requires mondo_id null, and only then")
 
 
-BROADER_TASK = llm.Task(name="indication_mondo_broader", prompt_version="v2", schema_version="v1",
+BROADER_TASK = llm.Task(name="indication_mondo_broader", prompt_version="v3", schema_version="v1",
                         system=BROADER_SYSTEM, schema=BROADER_SCHEMA, render=render_broader,
                         validate=validate_broader, subject_type="indication", effort="medium", max_tokens=3000)
 
@@ -198,8 +210,10 @@ def map_indications(_args) -> None:
     broader_items = {}
     for k, d in unmapped.items():
         pool = items[k]["candidates"] + [c for q in index.search([d["core_disease"]]) for c in q]
+        # Two levels of parents, so a condition with no term of its own reaches a containing grouping.
         parents = [index.terms[p] for c in pool for p in index.parents.get(c["mondo_id"], []) if p in index.terms]
-        merged = {c["mondo_id"]: c for c in pool + parents}
+        grandparents = [index.terms[g] for c in parents for g in index.parents.get(c["mondo_id"], []) if g in index.terms]
+        merged = {c["mondo_id"]: c for c in pool + parents + grandparents if c["mondo_id"] != "MONDO:0000001"}
         broader_items[k] = {**items[k], "core_disease": d["core_disease"], "candidates": list(merged.values())[:100]}
     if broader_items:
         for k, did, d in llm.decisions(llm.run(BROADER_TASK, broader_items)):
