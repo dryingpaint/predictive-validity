@@ -4,9 +4,9 @@
 
 Tabs: diseases (condition string -> MONDO disease), drugs (intervention string -> molecular entities),
 entities (UNII substance, modality, targets), programs (entity x disease: phase entries, approval,
-disease area), trials (purpose, outcome, endpoint class) and stops (cause, subcause, detail), each row
-carrying the id of the LLM decision behind it (pv_evidence.llm_decision). A README tab says what each
-column means. All tabs come from one database snapshot.
+disease area), trials (purpose, outcome, endpoint class) and stops (cause, subcause, detail). A README tab
+says what each column means. All tabs come from one database snapshot. The sheet is for readers outside
+the codebase: headers are plain English and nothing names a table, schema or module.
 
 The sheet (SHEET_ID) belongs to the report's owner and is shared with the service account SERVICE_ACCOUNT
 as an editor. The writer impersonates that account with the caller's application-default credentials,
@@ -29,80 +29,84 @@ SERVICE_ACCOUNT = f"pv-sheets-writer@{PROJECT}.iam.gserviceaccount.com"
 API = f"https://sheets.googleapis.com/v4/spreadsheets/{SHEET_ID}"
 ROWS_PER_WRITE = 20000
 
-TABS = {
+TABS = {  # column aliases are the sheet's headers, written for readers rather than for the schema
     "diseases": ("One row per ClinicalTrials.gov condition string.", """
-        SELECT i.display_name AS condition, count(si.nct_id) AS trials, i.indication_kind AS kind,
-               i.mondo_id, i.mondo_label, i.mondo_match, i.mondo_decision_id AS decision_id
+        SELECT i.display_name AS "Condition", count(si.nct_id) AS "Trials", i.indication_kind AS "Kind",
+               i.mondo_id AS "MONDO ID", i.mondo_label AS "MONDO disease", i.mondo_match AS "Match"
         FROM preclin.indication i LEFT JOIN preclin.ctgov_study_indication si USING (indication_id)
-        GROUP BY i.indication_id ORDER BY trials DESC, condition"""),
+        GROUP BY i.indication_id ORDER BY 2 DESC, 1"""),
     "drugs": ("One row per intervention string with the entities it resolves to.", """
-        SELECT d.display_name AS intervention, d.entity_kind AS kind,
-               string_agg(m.name, '; ' ORDER BY m.name) AS entities,
-               string_agg(DISTINCT dm.role, '; ') AS roles,
-               string_agg(DISTINCT dm.biosimilar_of, '; ') AS biosimilar_of,
-               (SELECT count(*) FROM preclin.ctgov_study_drug sd WHERE sd.drug_id = d.drug_id) AS trials,
-               d.moiety_decision_id AS decision_id
+        SELECT d.display_name AS "Intervention", d.entity_kind AS "Kind",
+               string_agg(m.name, '; ' ORDER BY m.name) AS "Entities",
+               string_agg(DISTINCT dm.role, '; ') AS "Roles",
+               string_agg(DISTINCT dm.biosimilar_of, '; ') AS "Biosimilar of",
+               (SELECT count(*) FROM preclin.ctgov_study_drug sd WHERE sd.drug_id = d.drug_id) AS "Trials"
         FROM preclin.drug d LEFT JOIN preclin.drug_moiety dm USING (drug_id) LEFT JOIN preclin.moiety m USING (moiety_id)
-        GROUP BY d.drug_id ORDER BY trials DESC, intervention"""),
+        GROUP BY d.drug_id ORDER BY 6 DESC, 1"""),
     "entities": ("One row per molecular entity linked to an intervention or an FDA application.", """
-        SELECT m.moiety_id AS entity_id, m.name AS entity, m.unii, s.display_name AS unii_substance,
-               array_to_string(m.code_names, '; ') AS code_names, m.modality, m.target_kind,
+        SELECT m.name AS "Entity", m.unii AS "UNII", s.display_name AS "UNII substance",
+               array_to_string(m.code_names, '; ') AS "Code names", m.modality AS "Modality",
+               m.target_kind AS "Target kind",
                (SELECT string_agg(t.symbol || ' (' || mt.action || ')', '; ' ORDER BY t.symbol)
                 FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
-                WHERE mt.moiety_id = m.moiety_id AND mt.is_primary) AS primary_targets,
-               (SELECT count(*) FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id) AS programs,
-               m.unii_decision_id, m.modality_decision_id, m.target_decision_id
+                WHERE mt.moiety_id = m.moiety_id AND mt.is_primary) AS "Primary targets",
+               (SELECT count(*) FROM preclin.dev_program p WHERE p.moiety_id = m.moiety_id) AS "Programs"
         FROM preclin.moiety m LEFT JOIN preclin.unii_substance s USING (unii)
         WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm WHERE dm.moiety_id = m.moiety_id)
            OR EXISTS (SELECT 1 FROM preclin.fda_application_moiety f WHERE f.moiety_id = m.moiety_id)
-        ORDER BY programs DESC, entity"""),
+        ORDER BY 8 DESC, 1"""),
     "programs": ("One row per development program: one entity developed for one disease.", """
-        SELECT p.program_id, m.name AS entity, p.mondo_id, o.label AS disease, b.bio_area AS disease_area,
-               p.ph1_start, p.ph2_start, p.ph3_start, p.highest_phase, p.n_trials, p.n_industry_trials,
-               array_to_string(p.lead_sponsors, '; ') AS lead_sponsors, p.last_activity, p.n_active_trials,
-               a.approved, a.first_approval_date, a.relation AS approval_relation, a.llm_decision_id AS approval_decision_id
+        SELECT m.name AS "Entity", p.mondo_id AS "MONDO ID", o.label AS "Disease", b.bio_area AS "Disease area",
+               p.ph1_start AS "Phase 1 start", p.ph2_start AS "Phase 2 start", p.ph3_start AS "Phase 3 start",
+               p.highest_phase AS "Highest phase", p.n_trials AS "Trials", p.n_industry_trials AS "Industry trials",
+               array_to_string(p.lead_sponsors, '; ') AS "Lead sponsors", p.last_activity AS "Last activity",
+               p.n_active_trials AS "Active trials", a.approved AS "Approved",
+               a.first_approval_date AS "First approval", a.relation AS "Approved for"
         FROM preclin.dev_program p JOIN preclin.moiety m USING (moiety_id)
         LEFT JOIN preclin.ontology_term o ON o.term_id = p.mondo_id
         LEFT JOIN preclin.mondo_bio_area b ON b.mondo_id = p.mondo_id
         LEFT JOIN preclin.dev_program_approval a USING (program_id)
-        ORDER BY entity, disease"""),
+        ORDER BY 1, 3"""),
     "trials": ("One row per trial with a purpose, outcome or endpoint label.", """
-        SELECT s.nct_id, s.brief_title, array_to_string(s.phases, ', ') AS phases, s.overall_status,
-               s.lead_sponsor, s.start_date, tp.purpose, tp.title_disease,
-               o.execution, o.stop_reason, o.primary_endpoint, o.safety_signal, o.efficacy_failure,
-               e.purpose AS endpoint_purpose, e.endpoint_class,
-               tp.llm_decision_id AS purpose_decision_id, o.llm_decision_id AS outcome_decision_id,
-               e.llm_decision_id AS endpoint_decision_id
+        SELECT s.nct_id AS "NCT ID", s.brief_title AS "Title", array_to_string(s.phases, ', ') AS "Phases",
+               s.overall_status AS "Status", s.lead_sponsor AS "Lead sponsor", s.start_date AS "Start",
+               tp.purpose AS "Purpose", tp.title_disease AS "Disease in title",
+               o.execution AS "Execution", o.stop_reason AS "Stop reason", o.primary_endpoint AS "Primary endpoint",
+               o.safety_signal AS "Safety signal", o.efficacy_failure AS "Efficacy failure",
+               e.purpose AS "Endpoint purpose", e.endpoint_class AS "Endpoint class"
         FROM preclin.ctgov_study s
         LEFT JOIN preclin.trial_purpose tp USING (nct_id) LEFT JOIN preclin.trial_outcome o USING (nct_id)
         LEFT JOIN preclin.trial_endpoint e USING (nct_id)
         WHERE tp.nct_id IS NOT NULL OR o.nct_id IS NOT NULL OR e.nct_id IS NOT NULL
         ORDER BY s.start_date DESC NULLS LAST, s.nct_id"""),
     "stops": ("One row per program phase that stopped: why development did not go on.", """
-        SELECT m.name AS entity, st.mondo_id, o.label AS disease, st.phase, st.registry_reason, st.cause,
-               st.subcause, st.detail, st.traced, st.explanation, array_to_string(st.sources, ' ') AS sources
+        SELECT m.name AS "Entity", st.mondo_id AS "MONDO ID", o.label AS "Disease", st.phase AS "Phase",
+               st.registry_reason AS "Registry reason", st.cause AS "Cause", st.subcause AS "Subcause",
+               st.detail AS "Detail", st.traced AS "Traced", st.explanation AS "Explanation",
+               array_to_string(st.sources, ' ') AS "Sources"
         FROM preclin.stop st JOIN preclin.moiety m USING (moiety_id)
         LEFT JOIN preclin.ontology_term o ON o.term_id = st.mondo_id
-        ORDER BY entity, disease, st.phase"""),
+        ORDER BY 1, 3, 4"""),
 }
 
-COLUMNS = {  # README entries for columns whose meaning is not plain from the name
-    "kind": "diseases: disease, symptom_or_sign, procedure_or_state, healthy_volunteers or other; "
+COLUMNS = {  # README entries for columns whose meaning is not plain from the header
+    "Kind": "diseases: disease, symptom_or_sign, procedure_or_state, healthy_volunteers or other; "
             "drugs: drug, combination, vaccine, placebo_or_vehicle, non_drug or unclear",
-    "mondo_match": "exact: the term names the condition; broader: the nearest containing term, as MONDO has none",
-    "roles": "investigational (what the trial develops) or background (a partner or standard therapy)",
-    "target_kind": "human_protein, pathogen, no_single_target or unknown",
-    "primary_targets": "HGNC symbol (the drug's action on it)",
-    "approved": "FDA approval of the entity for the disease, a subtype of it or a class containing it: yes, no or uncertain",
-    "purpose": "trials: indication_development, early_development, product_support or other",
-    "title_disease": "the disease the title says the trial treats when its listed conditions are complications of it",
-    "primary_endpoint": "met, not_met, mixed, not_assessable or no_results",
-    "endpoint_class": "B1 target engagement to B9 infection cure, O1-O3 oncology endpoints, or not_efficacy",
-    "cause": "efficacy (with exposure), safety, sponsor_decision, operational, positive_not_advanced, unknown, "
+    "Match": "exact: the term names the condition; broader: the nearest containing term, as MONDO has none",
+    "Roles": "investigational (what the trial develops) or background (a partner or standard therapy)",
+    "UNII": "the FDA Global Substance Registration System's unique ingredient identifier",
+    "Target kind": "human_protein, pathogen, no_single_target or unknown",
+    "Primary targets": "HGNC symbol (the drug's action on it)",
+    "Approved": "FDA approval of the entity for the disease, a subtype of it or a class containing it: yes, no or uncertain",
+    "Approved for": "whether the approval is for the disease itself, a subtype of it or a class containing it",
+    "Purpose": "indication_development, early_development, product_support or other",
+    "Disease in title": "the disease the title says the trial treats when its listed conditions are complications of it",
+    "Primary endpoint": "met, not_met, mixed, not_assessable or no_results",
+    "Endpoint class": "B1 target engagement to B9 infection cure, O1-O3 oncology endpoints, or not_efficacy",
+    "Cause": "efficacy (with exposure), safety, sponsor_decision, operational, positive_not_advanced, unknown, "
              "not_stopped or not_a_program",
-    "subcause": "the reason within the cause (for efficacy, whether the target was engaged)",
-    "traced": "true where the cause comes from tracing beyond the registry (company releases, filings, news)",
-    "decision_id": "pv_evidence.llm_decision row of the LLM call behind the label (also *_decision_id)",
+    "Subcause": "the reason within the cause (for efficacy, whether the target was engaged)",
+    "Traced": "true where the cause comes from tracing beyond the registry (company releases, filings, news)",
 }
 
 
@@ -119,7 +123,8 @@ def cell(v):
 
 def readme(tabs: dict[str, pd.DataFrame]) -> list[list]:
     rows = [["Predictive validity: every classification, one tab per kind"],
-            [f"Database snapshot read {date.today().isoformat()} by python -m report.sheet; rebuilt at each report publish."],
+            [f"Data as of {date.today().isoformat()}; refreshed with each report update. Every label was made by "
+             "an LLM reading the source record."],
             [], ["tab", "rows", "what one row is"]]
     rows += [[name, len(df), TABS[name][0]] for name, df in tabs.items()]
     rows += [[], ["column", "meaning"]] + [[k, v] for k, v in COLUMNS.items()]
