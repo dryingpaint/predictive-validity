@@ -380,7 +380,7 @@ EVIDENCE_ROWS = [  # (label, family, Section 2 feature, Section 3 kind or refine
     ("Genetics points the drug's way", "Human genetics", None, "mechanism_concordant", True),
     ("Somatic driver for the tumour", "Somatic", "somatic", "somatic", False),
     ("Driver matches the drug", "Somatic", None, "somatic_matching", True),
-    ("Animal model of the disease", "Mouse", "animal_model", "animal", False),
+    ("Mouse model of the disease", "Mouse", "animal_model", "animal", False),
     ("Close phenotype match", "Mouse", None, "animal_close", True),
     ("Mouse model points the drug's way", "Mouse", None, "animal_direction", True),
     ("Expressed differently in the disease", "Expression and pathways", "rna_expression", "expression", False),

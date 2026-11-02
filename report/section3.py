@@ -613,7 +613,7 @@ MIN_SPLIT_TARGETS = 5  # exposed target sets below which a half gets no estimate
 # clinical precedent, not preclinical evidence, and sits outside the Holm family.
 EVIDENCE_TYPES = {
     "germline": ("Germline genetics for the disease", lambda d: d.g3 > 0, "all"),
-    "animal": ("Animal model of the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
+    "animal": ("Mouse model of the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
     "somatic": ("Somatic driver for the tumour", lambda d: d.somatic > 0, "ONC"),
     "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr > 0, "all"),
     "expression": ("Expressed differently in the disease", lambda d: d.expression > 0, "all"),
