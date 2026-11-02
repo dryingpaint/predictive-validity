@@ -9,7 +9,7 @@ The number of new drugs approved per billion dollars of R&D spending halved roug
 
 Scannell and colleagues called the decline Eroom's Law and blamed, among other causes, an overestimate of how much molecular biology and high-throughput screening raise the chance that a molecule works in patients. [Scannell and Bosley (2016)](https://doi.org/10.1371/journal.pone.0147215) then showed that a model's *predictive validity*, how well its output tracks the clinical outcome, matters far more than its throughput. Some evidence types have been measured: genetic support makes a target–indication pair about 2.6 times as likely to go from Phase 1 to launch ([Minikel et al. 2024](https://doi.org/10.1038/s41586-024-07316-0); [Nelson et al. 2015](https://doi.org/10.1038/ng.3314)), and AstraZeneca's "5Rs" review of its own pipeline raised its success rate from 4% to 19% ([Cook et al. 2014](https://doi.org/10.1038/nrd4309); [Morgan et al. 2018](https://doi.org/10.1038/nrd.2017.244)). Most of the evidence that drug programs rest on has never been scored this way.
 
-This report scores it from primary records. Every interventional drug or biological study on ClinicalTrials.gov (227,130 studies, snapshot of 2026-10-20) was resolved to the molecular entities it tests and the MONDO diseases it treats, and joined to every FDA approval we could document (Drugs@FDA, 6,529 approved uses read from approval letters, labels, and 177 CBER biologics applications). The unit is a *development program*: one molecular entity developed for one indication. Every program that entered a phase in 2008–2019 is counted.
+This report scores it from primary records. Every interventional drug or biological study on ClinicalTrials.gov (227,130 studies, snapshot of 2026-10-20) was resolved to the molecular entities it tests and the MONDO diseases it treats, and joined to every FDA approval we could document (Drugs@FDA, 6,569 approved uses read from approval letters, labels, and 177 CBER biologics applications). The unit is a *development program*: one molecular entity developed for one indication. Every program that entered a phase in 2008–2019 is counted.
 
 1. **Industry failure modes:** how often programs advance at each phase and why they stop.
 2. **Predictive power of preclinical evidence:** how much each kind of evidence known before a phase changes the chance of approval.
@@ -184,11 +184,6 @@ In trials with registry-posted results since FDAAA, genetic support for the dise
 A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it. To test this, an LLM labelled each target–disease pair, without being told any drug, with the direction of its disease-causing and protective variants. Sponsors almost never develop against an established mechanism: of the Phase 2 programs with genetic support, 251 acted in the direction the genetics favoured and 8 against it. Concordant programs advanced no more often than those whose genetics had no established direction (28% against 27%), and mouse models pointing the drug's way added nothing once genetics was known.
 
 
-### Verified case studies
-
-*Pending: case studies checked against primary sources for the 2008–2019 cohort. The cases verified for the earlier 2015–2020 cohort are summarised in the appendix.*
-
-
 ### What this means
 
 * **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3.
@@ -219,7 +214,7 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | :---- | :---- | :---- |
 | ClinicalTrials.gov API v2 | Every interventional drug or biological study: phases, status, dates, sponsor, arms, interventions, conditions, sites, why stopped, posted results | Snapshot 2026-10-20 (227,130 studies) |
 | PubMed | Results papers linked to completed trials without posted results (registry RESULT/DERIVED references and the NCT secondary identifier) | Retrieved 2026-10-20 |
-| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 6,529 approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
+| Drugs@FDA, FDA approval letters, openFDA labels | NDA/BLA applications, submissions and action dates; 6,569 approved uses read from 2008–2026 approval letters; current Indications and Usage text | Retrieved October 2026 |
 | CBER yearly approval pages, product pages and letters | 177 biologics applications (vaccines, blood products, cell and gene therapies) and their 2015–2025 approval actions, verified by an independent second enumeration | Retrieved October 2026 |
 | FDA Global Substance Registration System | UNII substance identifiers and every registered name (official, common, code, brand) | 2026-08-04 |
 | MONDO | Disease ontology and hierarchy | 2026-10-06 |
@@ -232,7 +227,7 @@ The cases below each looked strong on mechanism, cell and animal evidence, and f
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 | ChEMBL bioactivities | Potency, affinity and selectivity measurements of each entity's molecules, dated by the year of the paper, patent or dataset that reported them | 37 (138,229 measurements) |
 
-Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
+Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the tables behind the main tab's figures are in the Appendix detail tab.
 
 ### How programs are counted
 
@@ -453,7 +448,7 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 
 Of the registered rules only the benchmark met the bar (held-out risk ratio 2.37); a germline mechanism concordant with the drug, added after the plan, also met it (held-out 2.06). Mendelian evidence for a non-hereditary disease came closest among the registered rules (held-out 3.09, discovery lower bound 0.87).
 
-**Case studies.** For the 2008–2019 cohort, cases are picked for the rules that met the bar and, beyond the plan, for every rule whose adjusted risk ratio's lower bound is above 1: three successes and three failures at random, one program of each of the three most influential targets, and up to two programs that stopped after a randomised trial missed its primary endpoint (the plan asked for more; the smaller sample keeps six rules' cases checkable). They await verification. For the earlier 2015–2020 cohort, agents verified 75 cases on 62 programs against registry records, filings, papers and FDA documents, one establishing the outcome without seeing the evidence and another checking the evidence without seeing the outcome: the recorded outcome was right for 58 of 62 programs (each error a program recorded as stopped that had advanced, through a Phase 3 registered under another condition, run only in China, or not linked to the program); the evidence claim held for 49 of 75 cases and partly for 19; and of the 30 programs that did not advance, 16 failed for reasons that test the evidence's biology.
+**Case studies.** An earlier version of this analysis, on 2015–2020 Phase 2 entries, checked 75 cases on 62 programs picked for the best-performing rules against registry records, filings, papers and FDA documents, one agent establishing the outcome without seeing the evidence and another checking the evidence without seeing the outcome. The recorded outcome was right for 58 of 62 programs (each error a program recorded as stopped that had advanced, through a Phase 3 registered under another condition, run only in China, or not linked to the program); the evidence claim held for 49 of 75 cases and partly for 19; and of the 30 programs that did not advance, 16 failed for reasons that test the evidence's biology. The report's case studies are now the historical cases in the main text.
 
 **Checks on the genetics result.** Swapping each program's disease for another program's in the same disease area, 200 times, gives a median risk ratio for genetics for the disease of 1.44 against the observed 1.74 (95th percentile 1.75; p = 0.060). Much of the contrast with targets that have no germline genetics therefore reflects whether a target has been studied genetically at all; matching the disease adds to it, though the observed value sits at the edge of what shuffled diseases give. At Phase 1, where efficacy is rarely tested, the same contrast is 1.12 (0.95–1.33). Against all other programs rather than those with no germline genetics on the target, genetic support gives 1.56 outside oncology, and 1.45 (1.07–1.96) after adjusting for an approved drug on the target for a related disease; on targets with no approved drug at all, genetic support gives 1.57 (1.10–2.25, all disease areas). Leaving out the most influential target set (IL23A) gives 1.65. Leaving out each of the 5 largest target classes in turn gives 1.63 to 1.78; the lowest, without the "other protein" class, has an interval of 0.98–2.69, so the estimate leans on that class.
 

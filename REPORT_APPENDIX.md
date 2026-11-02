@@ -2,19 +2,6 @@
 
 <!-- Rendered by `python -m report` into REPORT_APPENDIX.md, the doc's "Appendix detail" tab. -->
 
-## Section 3 case studies
-
-Every case picked by the rule protocol, checked by agents against primary sources: one agent established each program's outcome without seeing its evidence, another checked the evidence claim without seeing the outcome, a second agent coded each failure independently, and a third adjudicated any disagreement with our recorded labels or between agents.
-
-| Rule | Drug (target, action) | Disease | Phase 2 entry | Evidence claim: verdict; earliest source | Outcome (verified) | Failure |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Mendelian evidence for a non-hereditary disease | insulin efsitora alfa (INSR) | type 2 diabetes mellitus | 2018-11-15 | yes; Kadowaki T et al., 'Two mutant alleles of the insulin receptor gene in a patient with extreme insulin resistance', Science 1988 (PMID 2834824) - INSR… (1988) | advanced | – |
-| Mendelian evidence for a non-hereditary disease | RO7123520 (CDH11 (binder_neutralizer), TNF (binder_neutralizer)) | rheumatoid arthritis | 2016-12-22 | no; Balding J et al., "Cytokine gene polymorphisms: association with psoriatic arthritis susceptibility and severity", Arthritis Rheum 2003;48(5):1408-13, PMID… (2003) | did not advance | engagement not shown |
-| Mendelian evidence for a non-hereditary disease | evazarsen (AGT (gene_expression_reduction)) | hypertensive disorder | 2019-01-03 | partial; Jeunemaitre X, Soubrier F, ... Lifton RP, ... Lalouel JM. "Molecular basis of human hypertension: role of angiotensinogen." Cell 1992 Oct 2;71(1):169-80 (PMID… (1992) | did not advance | engaged, disease did not respond |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; FDA accelerated approval of IRESSA (gefitinib), NDA 21-399, AstraZeneca, 5 May 2003, for locally advanced or metastatic NSCLC after failure of platinum-based… (2003) | advanced | – |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | min-117 (HTR1A+SLC6A4) | major depressive disorder | 2018-03-30 | yes; FDA approval of fluoxetine (Prozac, NDA 018936), a SLC6A4 (SERT) inhibitor, for major depressive disorder, 1987-12-29; many later SSRIs/SNRIs and vilazodone… (1987) | did not advance | engaged, disease did not respond |
-| Germline mechanism concordant with the drug (added after the plan) | aumolertinib (EGFR (inhibitor)) | non-small cell lung carcinoma | 2017-05-08 | yes; Bell DW et al., "Inherited susceptibility to lung cancer may be associated with the T790M drug resistance mutation in EGFR", Nat Genet 2005;37(12):1315-6 (PMID… (2005) | advanced | – |
-
 ## Tables behind the figures
 
 The numbers each figure in the main tab draws, with the columns the figures leave out.
@@ -242,14 +229,6 @@ Every rule the plan registered, each against programs without it, before the rul
 | Driver matches the drug (activated oncogene + inhibitor) | Somatic driver for the tumour | 394 of 528 | 22% / 20% | 1.06 (0.57–1.94) | 1.000 |
 | Expression up + drug that lowers function | Expressed differently in the disease | 247 of 520 | 14% / 17% | 0.87 (0.46–1.64) | 1.000 |
 | Liability + drug that lowers function | Target liability | 1,791 of 2,404 | 15% / 16% | 1.04 (0.79–1.38) | 1.000 |
-
-### Verified case studies
-
-| Rule | Cases | Advanced within 4 years (verified) | Evidence claim verified | Evidence published before entry | Why the others stopped |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-| Mendelian evidence for a non-hereditary disease | 3 | 1 | 2 (1 partly) | 3 | engagement not shown: 1, engaged, disease did not respond: 1 |
-| Approved drug on the target, related disease (Lin ≥ 0.5) | 2 | 1 | 2 (0 partly) | 2 | engaged, disease did not respond: 1 |
-| Germline mechanism concordant with the drug (added after the plan) | 1 | 1 | 1 (0 partly) | 1 | – |
 
 ## Sources in detail
 

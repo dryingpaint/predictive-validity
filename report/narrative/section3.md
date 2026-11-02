@@ -32,8 +32,6 @@ The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but se
 
 {{SECTION3_DIRECTION}}
 
-{{SECTION3_CASES}}
-
 ### What this means
 
 {{SECTION3_MEANING}}

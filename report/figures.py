@@ -677,39 +677,6 @@ def s3_hypotheses():
     save(fig, "s3_hypotheses")
 
 
-def s3_cases():
-    """Each rule's verified cases: advanced, stopped for a reason that tests the evidence's biology, stopped
-    for another reason, or still progressing or unexplained."""
-    from report.render import s3_case_audit, s3_rules, rule_name
-    from report.section3 import BIOLOGY_CODES
-    a, rules = s3_case_audit(), s3_rules()
-    parts = [("Advanced", ACCENT), ("Stopped: tests the biology", "#d62828"),
-             ("Stopped: says nothing about the biology", "#f5b3b3"), ("Progressing or unexplained", "#e8e6e0")]
-    groups = list(a.groupby("rule", sort=False))
-    fig, ax = plt.subplots(figsize=(9, 0.55 * len(groups) + 1.2))
-    for i, (rule, g) in enumerate(groups):
-        failed = g[g.advanced_within_4y == "no"]
-        counts = [(g.advanced_within_4y == "yes").sum(), failed.failure_code.isin(BIOLOGY_CODES).sum(),
-                  (~failed.failure_code.isin([*BIOLOGY_CODES, "unknown", "not_a_failure"])).sum(),
-                  failed.failure_code.isin(["unknown", "not_a_failure"]).sum()]
-        left = 0
-        for k, (name, color) in zip(counts, parts):
-            ax.barh(-i, k, left=left, height=0.6, color=color, label=name if i == 0 else None)
-            if k:
-                ax.text(left + k / 2, -i, str(k), ha="center", va="center", fontsize=8,
-                        color="white" if dark(color) else INK2)
-            left += k
-        held = g.claim_supported.isin(["yes", "partial"]).sum()
-        ax.text(left + 0.4, -i, f"evidence claim held in {held} of {len(g)}", va="center", color=INK2, fontsize=8)
-    ax.set_yticks([-i for i in range(len(groups))], [rule_name(rules.loc[r]) for r, _ in groups], color=INK,
-                  fontsize=8.5)
-    ax.set_xlabel("Verified cases", color=INK2, fontsize=8)
-    ax.legend(frameon=False, fontsize=8, ncol=4, loc="lower left", bbox_to_anchor=(0, 1.0))
-    ax.set_xlim(0, max(len(g) for _, g in groups) + 9)
-    style(ax)
-    save(fig, "s3_cases")
-
-
 def main():
     history()
     phase_funnel()
@@ -732,7 +699,6 @@ def main():
         s3_endpoints()
         evidence_translates()
         s3_hypotheses()
-        s3_cases()
 
 
 if __name__ == "__main__":

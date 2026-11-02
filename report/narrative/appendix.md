@@ -19,7 +19,7 @@
 | ChEMBL | Drug mechanisms of action, as hints for target assignment | 37 |
 | ChEMBL bioactivities | Potency, affinity and selectivity measurements of each entity's molecules, dated by the year of the paper, patent or dataset that reported them | 37 ({{section2.drug.release.n_activities|int}} measurements) |
 
-Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the full Section 3 case table are in the Appendix detail tab.
+Per-source detail (who compiles each source, what this analysis takes from it, raw response shape and a sample record) and the tables behind the main tab's figures are in the Appendix detail tab.
 
 ### How programs are counted
 
