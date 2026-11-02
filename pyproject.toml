@@ -25,7 +25,10 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8.3"]
+dev = [
+    "modal>=1.4",
+    "pytest>=8.3",
+]
 
 [tool.uv]
 package = false

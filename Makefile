@@ -71,7 +71,8 @@ labels:
 	$(RUN) pipeline.outcomes endpoints
 
 # Open Targets associations, the year each evidence item became known where its own date is
-# missing or a later revision (ClinVar record creation, IMPC releases, study dates), the evidence rows
+# missing or a later revision (ClinVar record creation, IMPC releases, study dates, the first Open Targets
+# release listing a Project Score pair), the evidence rows
 # dated by it with their yearly series, then the germline mechanism of each target in each program
 # disease and the orientation of each mouse model, both decided without the drug. Last, why each Phase 2/3
 # program stopped and, for stops for efficacy or exposure, whether the drug engaged its target: stop causes
@@ -84,6 +85,7 @@ evidence:
 	$(RUN) pipeline.evidence_dates clinvar
 	$(RUN) pipeline.evidence_dates impc
 	$(RUN) pipeline.evidence_dates studies
+	$(RUN) pipeline.evidence_dates projectscore
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.targets mechanism
