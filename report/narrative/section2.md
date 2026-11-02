@@ -10,15 +10,11 @@ Each program aimed at a human protein is scored for the evidence its targets had
 
 *Relative success* is the LOA of programs with the evidence divided by the LOA of programs without it (Nelson et al. 2015; Minikel et al. 2024).
 
-{{RS_TABLE}}
-
 ![Relative success by evidence line](report/output/figures/relative_success_by_evidence.png)
 
 {{SECTION2_RS}}
 
 ### Genetic dose–response
-
-{{DOSE_TABLE}}
 
 ![Likelihood of approval by strength of human genetic support](report/output/figures/genetic_dose_response.png)
 

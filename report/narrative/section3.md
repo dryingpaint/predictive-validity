@@ -16,15 +16,11 @@ The cohort is programs on a human protein target that entered Phase 2 from {{sec
 
 ### Which evidence translates
 
-{{S3_MAP_TABLE}}
-
 ![Evidence map](report/output/figures/s3_evidence_map.png)
 
 {{SECTION3_MAP}}
 
 ### By endpoint
-
-{{S3_ENDPOINT_TABLE}}
 
 ![Endpoint classes](report/output/figures/s3_endpoints.png)
 
@@ -37,10 +33,6 @@ The cohort is programs on a human protein target that entered Phase 2 from {{sec
 ### Which kinds of evidence predict, and whether being more specific helps
 
 The plan registered fifteen rules a sponsor could apply at Phase 2 entry, but they are not fifteen ideas: several are narrower versions of another (every program with a mouse model pointing the drug's way also has a mouse model of the disease), so a flat screen counts the same programs more than once. The rules are therefore grouped by the kind of evidence behind them. Each kind is tested once against programs without it, with a Holm correction across the {{section3.types_family|int}} preclinical kinds that could be tested; the benchmark, an approved drug on the target for a related disease, is shown beside them but is clinical precedent, not preclinical evidence. Each more specific version is then tested only against the rest of its own kind, with a Holm correction across the {{section3.refinements_family|int}} that could be tested. This grouping departs from the plan; the registered screen is in the appendix.
-
-{{S3_TYPES_TABLE}}
-
-{{S3_REFINEMENTS_TABLE}}
 
 ![Kinds of evidence and their more specific versions](report/output/figures/s3_evidence_types.png)
 

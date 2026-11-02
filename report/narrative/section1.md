@@ -23,10 +23,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 
 ### By disease area and modality
 
-{{AREA_TABLE}}
-
-{{MODALITY_TABLE}}
-
 ![Likelihood of approval by disease area](report/output/figures/loa_by_area.png)
 
 ![Likelihood of approval by modality](report/output/figures/loa_by_modality.png)
