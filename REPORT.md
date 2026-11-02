@@ -71,37 +71,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 | Phase 3 → Approval | 34.9% (32.5–37.4), n=2,155 | 50.0% (47.0–52.9), n=1,423 | 52.4% |
 | **Phase 1 → Approval (LOA)** | **5.4%** (4.9–6.0) | **8.9%** (8.0–9.9) | **7.9%** (novel drugs 6.8%) |
 
-### Change over time
-
-Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.1% of the time; those that entered in 2016–2019, 6.9% (7.3% and 10.0% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 25.0% to 30.7% and Phase 3 from 28.4% to 42.4% (44.2% to 55.9% for US-developed programs), while Phase 1 success fell slightly, from 57.6% to 52.7%.
-
-| Phase entry | Entities | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) | US-developed: Phase 3 → approval | US-developed: LOA (95% CI) |
-| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| 2008–2011 | 2,756 | 57.6% | 25.0% | 28.4% | 4.1% (3.5–4.9) | 44.2% | 7.3% (6.0–8.7) |
-| 2012–2015 | 2,884 | 54.8% | 29.4% | 33.4% | 5.4% (4.4–6.5) | 47.9% | 9.3% (7.7–11.1) |
-| 2016–2019 | 3,645 | 52.7% | 30.7% | 42.4% | 6.9% (5.9–7.9) | 55.9% | 10.0% (8.4–11.6) |
-
-Two features of the registry bear on these trends.
-
-* **Phase 1 registration grew more complete.** US law has required registration of Phase 2 and 3 trials since late 2007 but exempts Phase 1, and journals require it only for trials that are published. Industry Phase 1 registrations grew through the window, partly because more programs were run and partly because more were registered. Programs that fail in an unregistered Phase 1 never enter the count, so the earlier Phase 1 rates may be the more flattering, and the slight fall in Phase 1 success may reflect registration rather than development.
-* **Later entrants have had less time.** A program that entered a phase in 2008 has had eighteen years to resolve; one that entered in 2019, under seven. The share of programs still running rises in the latest years, most in Phase 3 (in parentheses below), so those years' rates rest on the programs that resolved first.
-
-| Phase entry year | Phase 1 → 2 (share still running) | Phase 2 → 3 (share still running) | Phase 3 → approval (share still running) |
-| :---- | :---- | :---- | :---- |
-| 2008 | 56% (4%) | 23% (3%) | 25% (9%) |
-| 2009 | 61% (5%) | 26% (2%) | 33% (6%) |
-| 2010 | 59% (5%) | 25% (5%) | 25% (11%) |
-| 2011 | 54% (6%) | 26% (3%) | 31% (11%) |
-| 2012 | 52% (6%) | 26% (6%) | 35% (9%) |
-| 2013 | 53% (5%) | 28% (6%) | 25% (11%) |
-| 2014 | 59% (2%) | 32% (5%) | 36% (10%) |
-| 2015 | 55% (10%) | 31% (9%) | 38% (13%) |
-| 2016 | 52% (9%) | 30% (10%) | 45% (16%) |
-| 2017 | 58% (9%) | 32% (12%) | 43% (22%) |
-| 2018 | 49% (13%) | 28% (19%) | 37% (30%) |
-| 2019 | 51% (16%) | 33% (18%) | 45% (32%) |
-
-
 ### Why programs stop
 
 For 2,961 of the 5,898 Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, or an efficacy reason that the reading of efficacy failures below found wrong. We classified each of these with an LLM that read the program's trials and searched the web for company releases, filings and news. It named a cause only where a source stated or showed it, and otherwise gave its best guess, the *likely* cause. The method and how well it does on stops whose reason is known are in the appendix.
@@ -564,6 +533,37 @@ Per-source detail (who compiles each source, what the pipeline keeps, raw respon
 | Including vaccines | 53.3% | 27.9% | 32.6% | 4.8% (4.3–5.4) |
 | Phase entry 2015-2025 (many programs still running) | 54.5% | 33.8% | 38.1% | 7.0% (6.2–7.8) |
 | Phase entry 2015-2025, developed in the US | 54.4% | 33.8% | 53.1% | 9.8% (8.7–10.9) |
+
+### Change over time
+
+Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.1% of the time; those that entered in 2016–2019, 6.9% (7.3% and 10.0% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 25.0% to 30.7% and Phase 3 from 28.4% to 42.4% (44.2% to 55.9% for US-developed programs), while Phase 1 success fell slightly, from 57.6% to 52.7%.
+
+| Phase entry | Entities | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) | US-developed: Phase 3 → approval | US-developed: LOA (95% CI) |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+| 2008–2011 | 2,756 | 57.6% | 25.0% | 28.4% | 4.1% (3.5–4.9) | 44.2% | 7.3% (6.0–8.7) |
+| 2012–2015 | 2,884 | 54.8% | 29.4% | 33.4% | 5.4% (4.4–6.5) | 47.9% | 9.3% (7.7–11.1) |
+| 2016–2019 | 3,645 | 52.7% | 30.7% | 42.4% | 6.9% (5.9–7.9) | 55.9% | 10.0% (8.4–11.6) |
+
+Two features of the registry bear on these trends.
+
+* **Phase 1 registration grew more complete.** US law has required registration of Phase 2 and 3 trials since late 2007 but exempts Phase 1, and journals require it only for trials that are published. Industry Phase 1 registrations grew through the window, partly because more programs were run and partly because more were registered. Programs that fail in an unregistered Phase 1 never enter the count, so the earlier Phase 1 rates may be the more flattering, and the slight fall in Phase 1 success may reflect registration rather than development.
+* **Later entrants have had less time.** A program that entered a phase in 2008 has had eighteen years to resolve; one that entered in 2019, under seven. The share of programs still running rises in the latest years, most in Phase 3 (in parentheses below), so those years' rates rest on the programs that resolved first.
+
+| Phase entry year | Phase 1 → 2 (share still running) | Phase 2 → 3 (share still running) | Phase 3 → approval (share still running) |
+| :---- | :---- | :---- | :---- |
+| 2008 | 56% (4%) | 23% (3%) | 25% (9%) |
+| 2009 | 61% (5%) | 26% (2%) | 33% (6%) |
+| 2010 | 59% (5%) | 25% (5%) | 25% (11%) |
+| 2011 | 54% (6%) | 26% (3%) | 31% (11%) |
+| 2012 | 52% (6%) | 26% (6%) | 35% (9%) |
+| 2013 | 53% (5%) | 28% (6%) | 25% (11%) |
+| 2014 | 59% (2%) | 32% (5%) | 36% (10%) |
+| 2015 | 55% (10%) | 31% (9%) | 38% (13%) |
+| 2016 | 52% (9%) | 30% (10%) | 45% (16%) |
+| 2017 | 58% (9%) | 32% (12%) | 43% (22%) |
+| 2018 | 49% (13%) | 28% (19%) | 37% (30%) |
+| 2019 | 51% (16%) | 33% (18%) | 45% (32%) |
+
 
 ### How each label was made, and how good it is
 
