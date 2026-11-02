@@ -196,6 +196,7 @@ purpose:
 
 development_conditions: for indication_development and multi_indication, the listed conditions the trial develops the drug for, copied exactly as listed (leave out listed conditions that only describe the population, such as "Healthy"); otherwise an empty list.
 title_disease: for indication_development, when the title (or official title) says the trial treats a disease that is not listed and the listed conditions it develops the drug for are only complications or manifestations of that disease (e.g. acute respiratory distress syndrome listed for a trial of COVID-19 patients), that disease's standard name (e.g. "COVID-19"); otherwise null. Leave it null when a listed condition is itself the disease being developed, or when the complication is the indication the sponsor develops the drug for in its own right.
+misread_conditions: listed conditions whose mapped disease (shown in brackets) is not what this trial treats under that condition, read with its title and summary: an abbreviation or wording that means a different disease in this trial (e.g. "AS" mapped to ankylosing spondylitis in a trial of aortic stenosis), or a disease the condition names only as the population in which the trial treats a symptom (e.g. "itch in liver disease" mapped to liver disease). For each, the condition copied exactly as listed and its meaning in this trial as a standard name (e.g. "aortic stenosis", "pruritus"). Otherwise an empty list. A condition mapped to a broader or narrower term for the disease the trial means is not misread.
 Judge from the design, not from words alone: a Phase 1 in patients with one named disease that tests efficacy is indication_development; a Phase 3 bioequivalence study is product_support."""
 
 PURPOSE_SCHEMA = {
@@ -205,15 +206,20 @@ PURPOSE_SCHEMA = {
                                                "product_support", "other"]},
         "development_conditions": {"type": "array", "items": {"type": "string"}},
         "title_disease": {"type": ["string", "null"]},
+        "misread_conditions": {"type": "array", "items": {
+            "type": "object",
+            "properties": {"condition": {"type": "string"}, "meaning": {"type": "string"}},
+            "required": ["condition", "meaning"], "additionalProperties": False}},
         "rationale": {"type": "string"},
     },
-    "required": ["purpose", "development_conditions", "title_disease", "rationale"],
+    "required": ["purpose", "development_conditions", "title_disease", "misread_conditions", "rationale"],
     "additionalProperties": False,
 }
 
 
 def render_purpose(p: dict) -> str:
-    conditions = "\n".join(f"- {c}" for c in p["conditions"])  # one per line: a condition can contain commas
+    conditions = "\n".join(f"- {c} [{'mapped to ' + p['mapped'][c] if p['mapped'].get(c) else 'no disease term'}]"
+                           for c in p["conditions"])  # one per line: a condition can contain commas
     arms = "\n".join(f"- [{a.get('type')}] {a.get('label')}: {(a.get('description') or '')[:200]}" for a in p["arms"][:8])
     ivs = "\n".join(f"- {i.get('name')} [{i.get('type')}]: {(i.get('description') or '')[:200]}"
                      for i in p["interventions"][:8])
@@ -221,7 +227,7 @@ def render_purpose(p: dict) -> str:
             f"Sponsor: {p['sponsor']}; phases: {', '.join(p['phases'])}; status: {p['status']}; start: {p['start']}; "
             f"enrollment: {p['enrollment']}; healthy volunteers accepted: {p['healthy_volunteers']}; "
             f"primary purpose: {p['primary_purpose']}\n"
-            f"Listed conditions, one per line:\n{conditions or '(none)'}\n"
+            f"Listed conditions, one per line, with the MONDO disease each is mapped to:\n{conditions or '(none)'}\n"
             f"Interventions:\n{ivs or '(none)'}\nArms:\n{arms or '(none)'}\n"
             f"Brief summary: {p['summary'] or '(none)'}")
 
@@ -232,9 +238,12 @@ def validate_purpose(p: dict, out: dict) -> None:
         raise ValueError(f"development_conditions not among listed conditions: {sorted(extra)[:3]}")
     if out["title_disease"] and out["purpose"] != "indication_development":
         raise ValueError("title_disease is given only for indication_development")
+    unmapped = [m["condition"] for m in out["misread_conditions"] if not p["mapped"].get(m["condition"])]
+    if unmapped:
+        raise ValueError(f"misread_conditions not among the listed conditions with a mapped disease: {unmapped[:3]}")
 
 
-PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v3", schema_version="v2", system=PURPOSE_SYSTEM,
+PURPOSE_TASK = llm.Task(name="trial_purpose", prompt_version="v4", schema_version="v3", system=PURPOSE_SYSTEM,
                         schema=PURPOSE_SCHEMA, render=render_purpose, validate=validate_purpose,
                         subject_type="trial", model="claude-opus-5-5", effort="low", max_tokens=1500)
 
@@ -345,7 +354,8 @@ def judge_phase_roles(ncts: set[str]) -> None:
 
 
 def purposes(_args) -> None:
-    """Purpose of every in-scope industry trial with an investigational entity."""
+    """Purpose of every in-scope industry trial with an investigational entity, read with the MONDO disease
+    each listed condition is mapped to (pipeline.indications map runs first)."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT s.nct_id, s.brief_title, s.official_title, s.lead_sponsor, s.phases, s.overall_status,
@@ -359,14 +369,20 @@ def purposes(_args) -> None:
                         "status": r[5], "start": str(r[6]), "enrollment": r[7], "healthy_volunteers": r[8],
                         "primary_purpose": r[9], "conditions": r[10] or [], "interventions": r[11] or [],
                         "arms": r[12] or [], "summary": r[13]} for r in cur.fetchall()}
+        cur.execute("""SELECT normalized_name, mondo_label || CASE WHEN mondo_match = 'broader'
+                                                              THEN ' (nearest broader term)' ELSE '' END
+                       FROM preclin.indication WHERE mondo_id IS NOT NULL""")
+        label = dict(cur.fetchall())
+    for p in items.values():
+        p["mapped"] = {c: label.get(norm(c)) for c in p["conditions"]}
     run_id = llm.run(PURPOSE_TASK, items)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.trial_purpose")
         cur.execute("""INSERT INTO preclin.trial_purpose (nct_id, purpose, development_conditions, title_disease,
-                                                         llm_decision_id)
+                                                         misread_conditions, llm_decision_id)
                        SELECT subject_key, parsed_output->>'purpose',
                               ARRAY(SELECT jsonb_array_elements_text(parsed_output->'development_conditions')),
-                              parsed_output->>'title_disease', llm_decision_id
+                              parsed_output->>'title_disease', parsed_output->'misread_conditions', llm_decision_id
                        FROM pv_evidence.llm_decision WHERE decision_run_id = %s AND validation_status = 'validated'""",
                     (str(run_id),))
         conn.commit()
@@ -472,19 +488,24 @@ ACTIVE_STATUSES = {"RECRUITING", "ACTIVE_NOT_RECRUITING", "ENROLLING_BY_INVITATI
 PHASE_NUM = {"EARLY_PHASE1": 1, "PHASE1": 1, "PHASE2": 2, "PHASE3": 3}
 
 
-def trial_disease_sets(conditions: list[tuple], purpose: dict, title_disease: dict) -> tuple[dict, dict, set]:
-    """What each trial counts for, from its listed conditions (nct, mondo_id, mondo_match, name, spellings).
+def trial_disease_sets(conditions: list[tuple], purpose: dict, title_disease: dict,
+                       misread: dict) -> tuple[dict, dict, set]:
+    """What each trial counts for, from its listed conditions (nct, mondo_id, mondo_match, name).
     Returns trial -> its MONDO diseases; trial -> those of them mapped only to a broader term while another
     is mapped exactly (they attach without starting a program); and the trials with a counted condition
-    that has no MONDO term. An early-development trial counts for none of its conditions, and an
-    indication-development trial only for those it develops the drug for (purpose: trial -> (purpose,
-    development conditions)). A trial in title_disease (trial -> MONDO id) counts for that disease alone:
-    its listed conditions are complications of it."""
+    that has no MONDO term. Condition strings compare by norm, as they are registered. An early-development
+    trial counts for none of its conditions, and an indication-development trial only for those it
+    develops the drug for (purpose: trial -> (purpose, development conditions)). misread: trial -> {norm of
+    a listed condition: (mondo_id, mondo_match) of what the trial means by it, or (None, None) when that
+    has no MONDO term}, replacing the condition's own mapping in that trial. A trial in title_disease
+    (trial -> MONDO id) counts for that disease alone: its listed conditions are complications of it."""
     exact, trial_other = defaultdict(dict), set()
-    for nct, mondo, match, name, spellings in conditions:
+    for nct, mondo, match, name in conditions:
         p, developed = purpose.get(nct, ("indication_development", set()))
-        if p == "early_development" or (developed and not developed & {name, *spellings}):
+        key = norm(name)
+        if p == "early_development" or (developed and key not in {norm(c) for c in developed}):
             continue  # a condition the trial does not develop the drug for
+        mondo, match = misread.get(nct, {}).get(key, (mondo, match))
         if mondo:
             exact[nct][mondo] = exact[nct].get(mondo, False) or match == "exact"
         else:
@@ -591,7 +612,11 @@ def build(_args) -> None:
     Industry trials follow their purpose (preclin.trial_purpose): product-support
     and other trials are left out; an indication-development trial counts for the
     conditions it develops the drug for, or for the disease its title names when
-    those conditions are only complications of it (title_disease); an
+    those conditions are only complications of it (title_disease); a listed
+    condition whose mapped disease is not what the trial means by it (an
+    abbreviation for another disease, or a symptom's population; misread_conditions)
+    counts as the condition string its meaning names, or as a condition without a
+    MONDO term when no mapped string names it; an
     early-development trial is shared like a healthy-volunteer trial; a multi-indication basket is shared by the programs
     of the diseases it lists (marking entry for those under way or begun next), and
     belongs to the entity's unspecified program when none of them qualifies.
@@ -623,7 +648,7 @@ def build(_args) -> None:
         for nct, mid in cur.fetchall():
             if nct in trials:
                 by_moiety[mid].append(nct)
-        cur.execute("""SELECT si.nct_id, i.mondo_id, i.mondo_match, i.display_name, coalesce(i.ct_gov_conditions, '{}')
+        cur.execute("""SELECT si.nct_id, i.mondo_id, i.mondo_match, i.display_name
                        FROM preclin.ctgov_study_indication si JOIN preclin.indication i USING (indication_id)
                        WHERE i.indication_kind IS DISTINCT FROM 'healthy_volunteers'""")
         conditions = cur.fetchall()
@@ -634,7 +659,17 @@ def build(_args) -> None:
                          ON i.normalized_name = regexp_replace(lower(tp.title_disease), '[^a-z0-9]', '', 'g')
                        WHERE i.mondo_id IS NOT NULL""")
         title_disease = dict(cur.fetchall())
-        trial_diseases, demoted, trial_other = trial_disease_sets(conditions, purpose, title_disease)
+        # What a trial means by a listed condition whose mapped disease it does not treat, by the meaning's
+        # condition string (norm) in preclin.indication; a meaning with no mapped string has no MONDO term.
+        cur.execute("""SELECT tp.nct_id, m->>'condition', i.mondo_id, i.mondo_match FROM preclin.trial_purpose tp
+                       CROSS JOIN LATERAL jsonb_array_elements(tp.misread_conditions) m
+                       LEFT JOIN preclin.indication i
+                         ON i.normalized_name = regexp_replace(lower(m->>'meaning'), '[^a-z0-9]', '', 'g')
+                        AND i.mondo_id IS NOT NULL""")
+        misread = defaultdict(dict)
+        for nct, condition, mondo, match in cur.fetchall():
+            misread[nct][norm(condition)] = (mondo, match)
+        trial_diseases, demoted, trial_other = trial_disease_sets(conditions, purpose, title_disease, misread)
         baskets = {nct for nct, (p, _) in purpose.items() if p == "multi_indication"}
         cur.execute("SELECT moiety_id, mondo_id, indication_mondo FROM preclin.program_indication")
         indication = {(mid, d): rep for mid, d, rep in cur.fetchall()}
