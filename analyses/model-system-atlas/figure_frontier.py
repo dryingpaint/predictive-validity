@@ -1,5 +1,5 @@
-"""Draw the model-system frontier: for each context and question, how far the best model's track record
-reached by 1995, 2005, 2015 and 2026. Rows are contexts; the line joining them is the frontier.
+"""Draw the model-system frontier as radial charts: one per question, one spoke per context, and the
+best model's track record as distance from the centre, outlined for 1995, 2005, 2015 and 2026.
 
     .venv/bin/python analyses/model-system-atlas/figure_frontier.py
 
@@ -9,85 +9,74 @@ Reads the same contexts/*.json as figure.py and writes frontier.png beside this 
 import os
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 from figure import DECISIONS, QUESTIONS, load, spans
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LEVEL = {"contra": -1, "untested": 0, "other": 1, "same": 2, "neg": 3}
-TICKS = [(-1, "Contra-\ndicted"), (0, "Never\ncompared"), (1, "Other\nmechanism"), (2, "Same\nmechanism"), (3, "Incl. a\nfailure")]
-YEARS = [(1995, "#d4e7e8"), (2005, "#9ccacd"), (2015, "#4f9fa6"), (2026, "#0b5f69")]
-INK, MUTED, RULE, RED = "#1b2321", "#5c6763", "#c4cbc7", "#c63d26"
+RADIUS = {"contra": 0.5, "untested": 1.5, "other": 2.5, "same": 3.5, "neg": 4.5}
+RINGS = [(0.5, "Contradicted"), (1.5, "Never compared"), (2.5, "Other mechanism"), (3.5, "Same mechanism"), (4.5, "Incl. a failure")]
+YEARS = [(1995, "#cfe4e6", 1.2), (2005, "#93c6ca", 1.3), (2015, "#4b9ca3", 1.5), (2026, "#0b5f69", 2.4)]
+INK, MUTED, RULE, RED, FILL = "#1b2321", "#5c6763", "#d3d8d5", "#c63d26", "#e3f0f1"
 
 
-def level_at(history, year):
-    lv = 0
+def radius_at(history, year):
+    r = RADIUS["untested"]
     for a, _, st in spans(history):
         if a <= year:
-            lv = LEVEL[st]
-    return lv
+            r = RADIUS[st]
+    return r
 
 
 def main():
     rows = load()
-    layout, areas = [], []
-    for r in rows:
-        if not areas or areas[-1][0] != r["area"]:
-            areas.append((r["area"], len(layout)))
-        layout.append(r)
-    n = len(layout)
-    row_h, head_h, foot_h = 0.42, 2.25, 0.55
-    fig_h = head_h + row_h * n + foot_h
-    fig = plt.figure(figsize=(14.5, fig_h), dpi=200)
-    fy = lambda inches: 1 - inches / fig_h
-    label_w, gap = 0.25, 0.02
-    col_w = (1 - label_w - 0.015 - gap * 3) / 4
-    bottom, height = fy(head_h + row_h * n), row_h * n / fig_h
+    n = len(rows)
+    theta = np.pi / 2 - np.linspace(0, 2 * np.pi, n, endpoint=False)  # clockwise from 12 o'clock
+    W, H = 14, 12.6
+    fig = plt.figure(figsize=(W, H), dpi=200)
+    fig.text(0.03, 0.975, "The jagged frontier of preclinical prediction", fontsize=19, fontweight="bold", color=INK, va="top")
+    fig.text(0.03, 0.947, "Each spoke is a context (disease, patient group, drug class). Distance from the centre is how far its best model's "
+             "track record against patients had got;\noutlines show 1995, 2005, 2015 and 2026. Red dots: contradicted by patients.",
+             fontsize=10, color=MUTED, va="top", linespacing=1.4)
+    for k, (yr, c, lw) in enumerate(YEARS):
+        x = 0.03 + k * 0.085
+        fig.add_artist(plt.Line2D([x, x + 0.025], [0.898, 0.898], color=c, lw=lw + 0.6))
+        fig.text(x + 0.03, 0.898, str(yr), fontsize=10, color=INK, va="center")
 
-    fig.text(0.012, fy(0.3), "The jagged frontier of preclinical prediction", fontsize=17, fontweight="bold", color=INK, va="top")
-    fig.text(0.012, fy(0.66), "How far each context's best model had got against patient results by 1995, 2005, 2015 and 2026. "
-             "Further right = a stronger track record; red = contradicted by patients.", fontsize=9.5, color=MUTED, va="top")
-    for k, (yr, c) in enumerate(YEARS):
-        fig.add_artist(plt.Line2D([0.012 + k * 0.075, 0.032 + k * 0.075], [fy(1.08), fy(1.08)], color=c, lw=2.2 if yr == 2026 else 1.4))
-        fig.text(0.036 + k * 0.075, fy(1.08), str(yr), fontsize=9.5, color=INK, va="center")
-
-    for j, (key, title) in enumerate(DECISIONS):
-        ax = fig.add_axes([label_w + j * (col_w + gap), bottom, col_w, height])
-        ax.set_ylim(n - 0.5, -0.5)
-        ax.set_xlim(-1.5, 3.4)
+    spots = [(0.115, 0.455), (0.615, 0.455), (0.115, 0.045), (0.615, 0.045)]
+    circle = np.linspace(0, 2 * np.pi, 361)
+    for (key, title), (x0, y0) in zip(DECISIONS, spots):
+        ax = fig.add_axes([x0, y0, 0.27, 0.36], projection="polar")
+        cy, rfrac = y0 + 0.18, 0.27 * W / 2 / H
+        ax.set_ylim(0, 4.8)
         ax.set_yticks([])
-        ax.set_xticks([t for t, _ in TICKS])
-        ax.set_xticklabels([l for _, l in TICKS], fontsize=6.4, color=MUTED)
-        ax.xaxis.tick_top()
-        ax.tick_params(axis="x", length=0, pad=3)
-        for s in ax.spines.values():
-            s.set_visible(False)
-        for t in range(0, 4):
-            ax.axvline(t, color=RULE, lw=0.5, zorder=1)
-        for _, start in areas[1:]:
-            ax.axhline(start - 0.5, color=RULE, lw=0.6, zorder=1)
-        for yr, c in YEARS:
-            xs = [level_at(r["cells"].get(key, []), yr) for r in layout]
-            px, py = [], []
-            for i, x in enumerate(xs):
-                px += [x, x]; py += [i - 0.5, i + 0.5]
-                if yr == 2026:
-                    lo, hi = (min(x, 0), max(x, 0))
-                    ax.add_patch(plt.Rectangle((lo, i - 0.5), hi - lo, 1, facecolor="#e3f0f1" if x > 0 else "#f6d9d3", edgecolor="none", zorder=1))
-            ax.plot(px, py, color=c, lw=2.2 if yr == 2026 else 1.4, zorder=3 + (yr == 2026), solid_joinstyle="miter")
-        fig.text(label_w + j * (col_w + gap), fy(head_h - 0.62), title, fontsize=10.5, fontweight="bold", color=INK, va="bottom")
-        fig.text(label_w + j * (col_w + gap), fy(head_h - 0.47), QUESTIONS[key], fontsize=8.2, color=MUTED, va="bottom")
+        ax.set_xticks([])
+        ax.spines["polar"].set_visible(False)
+        ax.grid(False)
+        for r, label in RINGS:
+            ax.plot(circle, [r] * len(circle), color=RED if r == 0.5 else RULE, lw=0.7, alpha=0.5 if r == 0.5 else 1, zorder=0)
+            ax.text(np.pi / 2 - 0.035, r + 0.06, label, fontsize=6, color=MUTED, ha="left", va="bottom", zorder=7)
+        for t in theta:
+            ax.plot([t, t], [0, 4.6], color=RULE, lw=0.5, zorder=0)
+        closed = np.append(theta, theta[0])
+        for yr, c, lw in YEARS:
+            rs = np.array([radius_at(r["cells"].get(key, []), yr) for r in rows])
+            rc = np.append(rs, rs[0])
+            if yr == 2026:
+                ax.fill(closed, rc, color=FILL, zorder=1)
+            ax.plot(closed, rc, color=c, lw=lw, zorder=3 + (yr == 2026), solid_joinstyle="round")
+        for t, r in zip(theta, rows):
+            if radius_at(r["cells"].get(key, []), 2026) == RADIUS["contra"]:
+                ax.plot(t, RADIUS["contra"], "o", ms=6.5, color=RED, zorder=6, mec="white", mew=0.8)
+            c = np.cos(t)
+            ha = "left" if c > 0.15 else ("right" if c < -0.15 else "center")
+            ax.text(t, 5.05, r["label"], fontsize=7.4, color=INK, ha=ha, va="center")
+        fig.text(x0 + 0.135, cy + rfrac + 0.05, title, fontsize=12.5, fontweight="bold", color=INK, ha="center", va="bottom")
+        fig.text(x0 + 0.135, cy + rfrac + 0.045, QUESTIONS[key], fontsize=9, color=MUTED, ha="center", va="top")
 
-    lab = fig.add_axes([0, bottom, label_w - 0.01, height])
-    lab.set_xlim(0, 1); lab.set_ylim(n - 0.5, -0.5); lab.axis("off")
-    for area, start in areas:
-        lab.text(0.05, start - 0.18, area.upper(), fontsize=6.6, color=MUTED, va="bottom", fontweight="bold")
-    for i, r in enumerate(layout):
-        lab.text(0.05, i + 0.12, f"{r['disease']}, {r['population']}", fontsize=7.8, color=INK, va="center")
-
-    fig.text(0.012, fy(fig_h - 0.14),
-             "Rows are grouped by disease area; the frontier's shape depends on that order, and the track-record levels are ranked, not equally spaced.\n"
-             "Hand-curated seed of 15 contexts, not a sample. The model, reason and source behind each point are in the companion tile figure and contexts/*.json.",
-             fontsize=7.6, color=MUTED, va="bottom", linespacing=1.4)
+    fig.text(0.03, 0.008, "Spokes run clockwise from the top in the report's disease-area order; the outline's shape depends on that order, and the rings are "
+             "ranked, not equally spaced.\nHand-curated seed of 15 contexts, not a sample. Model, reason and source for each point: companion tile figure "
+             "and contexts/*.json.", fontsize=7.8, color=MUTED, va="bottom", linespacing=1.4)
     out = os.path.join(HERE, "frontier.png")
     fig.savefig(out, facecolor="white")
     print(out)
