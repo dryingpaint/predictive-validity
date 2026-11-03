@@ -1,6 +1,6 @@
 # How the stop-cause and efficacy-failure figure is built
 
-Figure: `report/output/figures/efficacy_attribution.png`. Code: `pipeline/outcomes.py` (registry
+Figure: `report/output/figures/stop_causes_by_phase.png`. Code: `pipeline/outcomes.py` (registry
 classification), `report/section1.py` (stops and their registry reason), `pipeline/stops.py` (the shared
 definitions: cohort, final labels, which label settles which cause, the names of causes and subcauses),
 `pipeline/stop_causes.py` (tracing, and `assemble`, which writes `preclin.stop`), `pipeline/attribution.py`
@@ -51,7 +51,7 @@ sponsor decision, with acquisitions, mergers, lost funding and closures among it
 
 **Subcauses.** A second, cheaper pass (no web search) reads each safety, sponsor-decision, operational and
 positive-readout stop's explanation (the trial's stated reason, the traced source quote or the model's reasoning) and
-names the subcause it states or directly implies, or not stated: safety: on target toxicity, off target toxicity, tolerability, preclinical toxicity, clinical hold, not stated; sponsor decision: portfolio prioritisation, commercial or competitive, partner exit, acquisition or merger, funding or closure, replaced by successor, not stated; operational: enrollment, site or supply, covid 19, regulatory, not stated; positive not advanced: approved outside us, fda declined, portfolio prioritisation, commercial or competitive, partner exit, acquisition or merger, funding or closure, replaced by successor, not stated.
+names the subcause it states or directly implies, or not stated: safety: on target toxicity, off target toxicity, animal toxicology, harm mechanism not stated, other stated, not stated; sponsor decision: acquisition or merger, funding or closure, partner exit, replaced by successor, regulatory burden, commercial or competitive, portfolio prioritisation, other stated, not stated; operational: covid 19, regulatory, trial redesigned, enrollment, site or supply, other stated, not stated; positive not advanced: regulator declined, acquisition or merger, funding or closure, partner exit, replaced by successor, regulatory burden, commercial or competitive, portfolio prioritisation, approved outside us, other stated, not stated.
 The same pass rewrites explanations that used the efficacy labeller's failure codes in plain words.
 
 ### Categories, with examples
@@ -67,12 +67,12 @@ The same pass rewrites explanations that used the efficacy labeller's failure co
 | Did not actually stop (removed) | Development continued under another registry, region, name or combination | HS-20004 (noiiglutide) in type 2 diabetes went on to Phase 3 ([NCT06649773](https://clinicaltrials.gov/study/NCT06649773)); T89 in acute mountain sickness went on to a pivotal Phase 3 ([NCT04993729](https://clinicaltrials.gov/study/NCT04993729)) |
 | Unknown (likely cause counted) | No source states a cause; the likely cause is the model's inference | DMT210 in atopic dermatitis: no results announced and both indications ended together → likely efficacy; icosapent in COVID-19: enrollment fell as vaccines spread, no results → likely operational |
 
-**Known weaknesses.** On 147 stops whose registry reason is known, run with the reason hidden, the traced cause
-matched 63% of the time (κ = 0.52). Efficacy or exposure stops were recognised
-77% of the time, but only 69% of the stops it called efficacy were, and
-safety stops were recognised 48% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
+**Known weaknesses.** On 137 stops whose registry reason is known, run with the reason hidden, the traced cause
+matched 68% of the time (κ = 0.57). Efficacy or exposure stops were recognised
+77% of the time, but only 79% of the stops it called efficacy were, and
+safety stops were recognised 64% of the time, so efficacy is an upper estimate and **safety is a floor** (sponsors also rarely state safety, and
 a missed endpoint takes precedence over a safety signal). **Sponsor decision** is the least reliable category: the
-model's sponsor-decision calls were right 47% of the time, often confused with operational. "Positive readout" includes programs
+model's sponsor-decision calls were right 49% of the time, often confused with operational. "Positive readout" includes programs
 whose primary endpoints were only partly met, and some recently quiet ones may still advance.
 
 ## Bottom bar: why efficacy failed

@@ -21,13 +21,14 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 | Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
 | :---- | :---- | :---- | :---- |
-| Efficacy or exposure (PK, dose, formulation) | 29% (1,590) | 39% (2,157) | 44% (2,398) |
-| Safety | 3% (160) | 4% (238) | 5% (247) |
-| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (257) | 12% (672) | 20% (1,123) |
-| Operational (enrollment, sites, supply, regulatory) | 5% (273) | 6% (310) | 6% (331) |
-| Positive readout, not yet advanced | 12% (640) | 21% (1,145) | 22% (1,178) |
-| Unknown | 47% (2,559) | 15% (812) | 1% (51) |
-| Did not actually stop | 0% (0) | 3% (145) | 3% (151) |
+| Efficacy or exposure (PK, dose, formulation) | 29% (1,591) | 41% (2,252) | 46% (2,498) |
+| Safety | 1% (68) | 4% (196) | 4% (205) |
+| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (270) | 12% (637) | 20% (1,095) |
+| Operational (enrollment, sites, supply, regulatory) | 5% (285) | 6% (318) | 6% (339) |
+| Positive readout, not yet advanced | 10% (537) | 17% (944) | 18% (977) |
+| Unknown | 50% (2,728) | 15% (825) | 1% (52) |
+| Did not actually stop | 0% (0) | 4% (246) | 5% (252) |
+| Not a development program | 0% (0) | 1% (61) | 1% (61) |
 
 ### Why efficacy failed
 
@@ -35,13 +36,13 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 | What the evidence shows | Phase 2 | Phase 3 | Phase 2 and 3 | Outside oncology |
 | :---- | :---- | :---- | :---- | :---- |
-| Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (182) | 11% (50) | 11% (232) | 10% (155) |
-| Engaged, no benefit: target or mechanism wrong for the disease as tested | 45% (747) | 49% (231) | 46% (978) | 44% (694) |
-| Trial design, population or endpoint, mechanism not in question | 6% (98) | 10% (47) | 7% (145) | 8% (125) |
-| On-target toxicity offset efficacy | 1% (10) | 0% (1) | 1% (11) | 0% (2) |
-| No engagement data: no human evidence of engagement either way | 37% (607) | 31% (147) | 36% (754) | 38% (602) |
-| **Not engaged, of failures whose mechanism was tested** | **20%** (17–23) | **18%** (13–23) | **19%** (17–22) | **18%** (15–21) |
-| Programs (entities) | 1,644 (1,282) | 476 (423) | 2,120 (1,591) | 1,578 (1,257) |
+| Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (188) | 10% (50) | 11% (238) | 10% (160) |
+| Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (774) | 49% (236) | 46% (1,010) | 44% (719) |
+| Trial design, population or endpoint, mechanism not in question | 6% (99) | 10% (47) | 7% (146) | 8% (126) |
+| On-target toxicity offset efficacy | 1% (11) | 0% (1) | 1% (12) | 0% (3) |
+| No engagement data: no human evidence of engagement either way | 37% (618) | 31% (148) | 35% (766) | 38% (612) |
+| **Not engaged, of failures whose mechanism was tested** | **20%** (17–22) | **17%** (13–22) | **19%** (17–21) | **18%** (15–21) |
+| Programs (entities) | 1,691 (1,311) | 482 (427) | 2,173 (1,621) | 1,621 (1,283) |
 
 ### By disease area and modality
 
@@ -165,8 +166,8 @@ Change in held-out AUC when each line is removed from the full model:
 | Same target in different diseases: genetics for the disease vs not (conditional logit) | odds ratio | 3.02 (1.99–4.58) | < 0.001 | < 0.001 | supported |
 | Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 1.16 (0.85–1.59) | 0.359 | 1.000 | not supported |
 | Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.12 (0.84–1.49) | 0.458 | 1.000 | not supported |
-| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.21 (0.78–1.89) | 0.398 | 1.000 | not supported |
-| Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 1.20 (0.76–1.88) | 0.443 | 1.000 | not supported |
+| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.19 (0.77–1.85) | 0.432 | 1.000 | not supported |
+| Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.89 (0.48–1.65) | 0.968 | 1.000 | not supported |
 | Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.54 (1.11–2.14) | 0.010 | 0.062 | not supported |
 
 ### Which evidence translates: the registered screen
@@ -211,7 +212,7 @@ Every rule the plan registered, each against programs without it, before the rul
 | Disease events (relapses, exacerbations…) | 339 | 42% | 51 | 39% / 42% | 0.87 (0.56–1.35) | – |
 | Hard outcome (death, MI, stroke…) | 161 | 53% | 11 | 55% / 53% | – | – |
 | Tumour response | 153 | 63% | 33 | 61% / 63% | 1.02 (0.72–1.44) | – |
-| Progression-free survival | 535 | 59% | 104 | 52% / 61% | 1.04 (0.86–1.25) | 1.04 (0.76–1.42) |
+| Progression-free survival | 535 | 59% | 104 | 52% / 61% | 1.03 (0.86–1.24) | 1.04 (0.76–1.42) |
 | Overall survival | 243 | 69% | 26 | 54% / 71% | 0.74 (0.52–1.05) | – |
 
 ### Which kinds of evidence predict, and whether being more specific helps

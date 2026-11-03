@@ -102,6 +102,14 @@ def validation() -> dict:
                                  for c, g in v.groupby("likely") if c != "unknown"}}
 
 
+def subcause_audit() -> dict:
+    """Agreement of the two independent subcause passes in scripts.subcause_audit, over all causes."""
+    audit = json.load(open(os.path.join(frame.REPO, "report", "audits", "subcause_audit.json")))
+    causes = audit["causes"].values()
+    return {"stops": sum(c["n"] for c in causes), "kappa_min": min(c["kappa"] for c in causes),
+            "kappa_max": max(c["kappa"] for c in causes), "agree_min": min(c["agree"] for c in causes)}
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     traced = load()
@@ -145,12 +153,14 @@ def main() -> None:
                                "shown": distribution(stopped(x), "shown", list(SHOWN)),
                                "not_a_stop": {c: int((x.cause == c).sum()) for c in NOT_A_STOP}}
                       for p in (1, 2, 3)},
+         "likely_only": {c: float((d.shown.eq(c) & d.cause.ne(c)).sum() / max(d.shown.eq(c).sum(), 1))
+                         for c in SUBCAUSES},
          "named": {c: {"share": float(g.subcause.ne("not_stated").mean()),
                        "stated": float(g.subcause_support.eq("stated").mean()),
                        "likely": float(g.subcause_support.eq("likely").mean())}
                    for c, g in d.groupby("cause") if c in SUBCAUSES},
          "positive_discontinued": float(d[d.cause.eq("positive_not_advanced")].subcause.isin(DISCONTINUED).mean()),
-         "validation": validation()}
+         "validation": validation(), "subcause_audit": subcause_audit()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)
 
