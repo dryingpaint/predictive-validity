@@ -1,7 +1,8 @@
-# Rules v2: walkthrough sheet
+# Rules v3: decision record
 
-Companion to `RULES_V2_PROPOSAL.md`. One block per decision, in the order to take them. Each block ends with a
-`Decision:` line to fill in as we go. Numbers are from the finished run (71 contexts, 284 cells, 166 scored).
+Companion to `RULES_V3_PROPOSAL.md`. One block per decision: the question, the cases that raised it, the
+proposed rule, the alternative, and the decision taken on 2026-11-02. Numbers are from the finished run (71
+contexts, 284 cells, 166 scored). Decisions marked open are still under review.
 
 ---
 
@@ -12,9 +13,8 @@ prediction was compared with patients. In practice the drafters mostly found a m
 paper and put them side by side.
 
 **Context.** Trial papers almost never look back at the animal data; the comparison lives in the reader's
-head. 79 of the 166 coloured cells are such pairings, and so are both of Melissa's own seed contexts
-(cf-cftr pairs Van Goor 2009 with Ramsey 2011; ad-amyloid pairs Irizarry 1997 with Doody 2013). Panel C of
-the summary shows paired cells land on matched/contradicted at similar rates to stated ones for
+head. 79 of the 166 coloured cells are such pairings, and so are both seed contexts
+(cf-cftr pairs Van Goor 2009 with Ramsey 2011; ad-amyloid pairs Irizarry 1997 with Doody 2013). In `matrix_cells.csv` paired cells land on matched/contradicted at similar rates to stated ones for
 engagement and efficacy, so the distinction is provenance, not a different answer.
 
 **Recommend.** Allow pairing. Record `comparison_stated` true/false on every entry and draw paired cells
@@ -23,7 +23,7 @@ hatched. A trial paper that merely cites the model paper is a pairing, not a sta
 **Alternative.** Strict reading: 79 cells and the two seeds go grey; the atlas becomes a map of who
 bothered to write the comparison down.
 
-**Decision (SG, 2026-11-02):** Agreed. Allow pairing; record `comparison_stated`; draw paired cells hatched.
+**Decision:** Allow pairing. Record `comparison_stated`; draw paired cells hatched.
 
 ---
 
@@ -45,7 +45,7 @@ side scores at low confidence.
 
 **Alternative.** Stop at tier 3 and accept that unpublished failures stay invisible.
 
-**Decision (SG, 2026-11-02):** Tiers 1–3 in. Tiers 4–5 → Melissa. SG leans no, but notes a press release is sometimes the only source that says *why* a trial failed.
+**Decision:** Tiers 1–3 admitted. Tiers 4–5 open, leaning no; a press release is sometimes the only source that says why a trial failed.
 
 ---
 
@@ -65,7 +65,7 @@ of the trial population.
 
 **Alternative.** Patients only, everywhere: engagement loses a quarter of its matches.
 
-**Decision (SG, 2026-11-02):** Healthy volunteers count for engagement and for dose. A later patient PK or occupancy source enters as its own dated entry and overrides. (Today 1 of 22 scored dose entries rests on volunteers.)
+**Decision:** Healthy volunteers count for engagement and dose. A later patient PK or occupancy source enters as its own dated entry and overrides. Today 1 of 22 scored dose entries rests on volunteers (influenza challenge).
 
 ---
 
@@ -91,7 +91,7 @@ missed its responder threshold while eosinophils fell 60 %).
 
 **Alternative.** Dose = "sufficient": one efficacy failure then counts twice, in two cells.
 
-**Decision (SG, 2026-11-02):** Dose is tied to efficacy: a drug that reached the model's exposure, did not work and was abandoned is a model failure, counted once. Rule: (1) exposure not reached → dose `contra`, efficacy `untested`; (2) reached and worked → both `same`; (3) reached, failed, abandoned → efficacy `contra`, dose `contra` with `derived_from: efficacy`, hatched, excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (model's target too low, magnitude recorded), efficacy `contra` → `same`. Efficacy = primary endpoint or named PoC gate. Safety = askable silence, agreed. Under this rule 7 of the 66 dose cells become derived and 3 stay independent dose failures.
+**Decision:** Dose is tied to efficacy so one failure is counted once: (1) exposure target never reached → dose `contra`, efficacy `untested`; (2) reached and worked → both `same`; (3) reached, failed, abandoned → efficacy `contra`, dose `contra` with `derived_from: efficacy`, hatched, excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. Efficacy = primary endpoint or named proof-of-concept gate. Safety = askable silence. Under this rule 7 of the 66 dose cells become derived and 3 stay independent dose failures.
 
 ---
 
@@ -109,7 +109,7 @@ brolucizumab in 2019. About six safety cells turn on this.
 
 **Alternative.** `same` with `source_calls_it: over_predicted`; the model is credited for caution.
 
-**Decision (SG, 2026-11-02):** Agreed. A predicted harm that never came is a wrong prediction: `contra`, `magnitude: opposite`.
+**Decision:** A predicted harm that never came is a wrong prediction: `contra`, `magnitude: opposite`.
 
 ---
 
@@ -130,7 +130,7 @@ drug's `same` for the same model.
 
 **Alternative.** Sticky: simpler strips, redder atlas, and the model-replacement story is lost.
 
-**Decision (SG, 2026-11-02):** Agreed, tentatively. Flag for Melissa.
+**Decision:** `contra` is per model and per time point, recoverable on a model change or an attenuation source. Open for review.
 
 ---
 
@@ -149,7 +149,7 @@ allowed.
 
 **Alternative.** Print year only, as the seed contexts do; simplest, and wrong in about a third of cases.
 
-**Decision (SG, 2026-11-02):** Agreed, simplified form: the entry's year is the earliest date the comparison was public (registry, epub, label or print); all dates recorded.
+**Decision:** The entry's year is the earliest date the comparison was public (registry, epub, label or print); all dates recorded.
 
 ---
 
@@ -169,7 +169,7 @@ model was relied on and is drawn lighter; `untested` means a model exists and wa
 
 **Alternative.** Animals only; the chamber-vs-field miss for CRTH2 antagonists disappears.
 
-**Decision (SG, 2026-11-02):** Any system the class relied on, labelled. Cousin-drug proxies allowed and flagged (`product_in_model: false`; the dogs did not see the drug). Human challenge and other non-animal systems in scope with `model_kind`. No model relied on = blank cell, drawn lighter, distinct from `untested`.
+**Decision:** Any system the class relied on counts, labelled. Sibling-drug proxies allowed and flagged (`product_in_model: false`). Human challenge and other non-animal systems in scope with `model_kind`. No model relied on = blank cell, drawn lighter, distinct from `untested`.
 
 ---
 
@@ -187,7 +187,7 @@ Status follows the surrogate; the figure overlays a marker when the outcome was 
 
 **Alternative.** Score outcome failure as `contra`; then the model is blamed for a prediction it never made.
 
-**Decision (SG, 2026-11-02):** Agreed. Add `outcome_tested`; status follows the surrogate; marker when the outcome trial was negative.
+**Decision:** Add `outcome_tested`. Status follows the surrogate; the figure marks a negative outcome trial.
 
 ---
 
@@ -206,7 +206,7 @@ recapitulated the 2004 sensitising-mutation result in the same paper. Drafters s
 **Alternative.** Allow `same` from the first prospective prediction the post-hoc model then makes
 (HF/SGLT2 pig model → EMPA-TROPISM).
 
-**Decision (SG, 2026-11-02):** SG's suggestion, flagged for Melissa to decide: a model built after the clinic knew the answer is not used. Kept in the JSON as `retrodiction: true` for traceability, drawn and counted as nothing. A new prospective prediction such a model later makes enters as a fresh entry from its own date.
+**Decision:** A model built after the clinic knew the answer is not used. It stays in the JSON as `retrodiction: true` for traceability and is drawn and counted as nothing. A new prospective prediction such a model later makes enters as a fresh entry from its own date. Open for review.
 
 ---
 
@@ -226,7 +226,7 @@ is `same` + `source_calls_it: partial`. Right hazard, wrong incidence stays `sam
 
 **Alternative.** Source-stated magnitude only; most cells stay direction-only forever.
 
-**Decision (SG, 2026-11-02):** Agreed. Magnitude bins, checker-computed; partial agreement stays `same` with `source_calls_it: partial`.
+**Decision:** Magnitude bins, checker-computed with `magnitude_basis`; partial agreement is `same` with `source_calls_it: partial`.
 
 ---
 
@@ -248,7 +248,7 @@ Repurposed classes get a second, flagged context rather than vanishing under the
 
 **Alternative.** Let drafters define the class; consistency with the DB join is lost.
 
-**Decision (SG, 2026-11-02):** → Melissa, with the recommendation as written.
+**Decision:** As recommended. Open for review.
 
 ---
 
@@ -267,7 +267,7 @@ pharmacology cells and another molecule on the same platform for safety.
 
 **Alternative.** Retrospective `neg`; the status then rewards hindsight.
 
-**Decision (SG, 2026-11-02):** Agreed, and → Melissa: `neg` is earned by what the model data showed, not by what the sponsor said about them, judged against a stated effect-size threshold per class with the number recorded; prospective flag not required. Cross-class evidence (`other`) set aside rather than used to colour this class's cell.
+**Decision:** `neg` is earned by what the model data showed, not by what the sponsor said about them: the model's effect size fell below a stated threshold for the class, with the number recorded; no prospective flag required. Cross-class evidence is set aside rather than used to colour this class's cell. Open for review.
 
 ---
 
@@ -283,11 +283,11 @@ FDA has ever granted is one model (GAO-22-105248). It is not a published model-v
 
 **Alternative.** Treat it as `same`; it then outranks evidence it did not produce.
 
-**Decision (SG, 2026-11-02):** Agreed. Flag, not colour.
+**Decision:** A flag, not a colour.
 
 ---
 
-## 15. Engagement evidence kind (new, from this afternoon)
+## 15. Engagement evidence kind (added after the run)
 
 **Question.** "Hits the target" covers direct measurement (occupancy, free target, ex-vivo blockade) and
 inference from a downstream biomarker. Should the atlas tell them apart?
@@ -303,7 +303,7 @@ predictor.
 
 **Alternative.** Leave the column as is and say "engagement" means pharmacology showed up.
 
-**Decision (SG, 2026-11-02):** Agreed as a descriptive tag; the kind of engagement evidence did not separate outcomes. Melissa wants that result in the report: see `ENGAGEMENT_KIND_RESULT.md` (engagement_kind_result.py).
+**Decision:** Add `readout_tier` as a descriptive field. The kind of engagement readout did not separate classes that advanced from classes that did not (`ENGAGEMENT_KIND_RESULT.md`).
 
 ---
 

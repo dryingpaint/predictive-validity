@@ -1,9 +1,8 @@
 # The kind of engagement evidence did not separate classes that advanced from classes that did not
 
-_Report-ready block for Melissa (requested 2026-11-02). Numbers from `engagement_kind_result.py` →
-`engagement_kind_result.md`; the join is `engagement_experiment.csv`. Suggested home: Section 3, after
-"Being more specific does not help", which is the same shape of result; or the atlas section when #76 is
-written up._
+_Block for the report. Numbers from `engagement_kind_result.py`; the joined data are
+`engagement_experiment.csv`. Suggested home: Section 3, after "Being more specific does not help", which is
+the same shape of result._
 
 ## Block
 
@@ -45,17 +44,18 @@ Tests (two-sided Fisher): direct vs inferred p = 0.20 at Phase 2, 1.00 at Phase 
 
 The tier was assigned by one reader from the drafted entry's `model`, `quote` and `note` fields after the
 run, without new research, and one tier per class even where its programs' evidence differed
-(`engagement_tier.py`, the `TIER` table). Class membership and outcomes are the atlas join
+(`engagement_kind_result.py`, the `TIER` table). Class membership and outcomes are the atlas join
 (`lists.py`: strict `phase_rows` cohort, industry entry, novel entity, 2008–2019), with each program's
 first Phase 2 and Phase 3 entry and its resolved event (advanced or suspended; censored programs
 excluded) from `engagement_outcomes.py`. Phase 2 advancement is a sponsor decision, not an efficacy
 test; the result says nothing about whether the drug worked.
 
-## What not to write
+## Scope of the claim
 
-- Not "the kind of engagement evidence does not matter". The interval allows a 20-point difference.
-- Not "engagement evidence predicts advancement" from the any-vs-none row; it is survivorship.
-- Not a per-program result; it is 71 classes and the tier is a class-level label.
+- The result supports "no detectable difference", not "the kind does not matter": the interval allows a
+  20-point difference.
+- The any-vs-none row is survivorship, not evidence that engagement evidence predicts advancement.
+- The unit is the class (71) and the tier is a class-level label, not a per-program result.
 
 ## Rules consequence (§15)
 

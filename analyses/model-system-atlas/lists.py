@@ -122,7 +122,7 @@ def main() -> None:
 #   - pathogen-target and other unresolved entities have no moiety_target rows; their class
 #     comes from ChEMBL mechanism text (preclin.chembl_mechanism via chembl_moiety) when present;
 #   - the class with the largest weighted program count wins; class_basis records which path.
-# Decided 2026-11-02 (Stephen): follow the DB rule; hand overrides only where nothing resolves.
+# Follow the DB rule; hand overrides only where nothing resolves.
 # ---------------------------------------------------------------------------
 ACTION_PHRASE = {
     "inhibitor": "{t} inhibitors", "antagonist": "{t} antagonists", "agonist": "{t} agonists",

@@ -1,8 +1,8 @@
-# Rules v2 proposal for the model-system atlas (issue #76, "agree the track-record rules")
+# Rules v3 proposal for the model-system atlas (issue #76, "agree the track-record rules")
 
 Drafted 2026-11-02 from the 70-context run (drafter + checker agents under `DRAFTER_BRIEF.md` v2 and
 `CHECKER_BRIEF.md`). The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fifteen
-decisions below. Each gives the rule I recommend, the questions it settles, and what it moves in the
+decisions below. Each gives the proposed rule, the questions it settles, and what it moves in the
 current drafts (numbers from `matrix.py` over the finished run: 71 contexts, 284 cells, 166 of them scored
 `same`/`contra`/`neg`). Nothing here is applied yet; the
 drafts record the facts needed to re-score under either answer.
@@ -11,18 +11,17 @@ The one-line version: **keep the five statuses, loosen rule 1 to admit juxtaposi
 types, define the four cells sharply, make `contra` per model and per time point, and add six fields
 so the figure can show what the colours now hide.**
 
-**Status after the walkthrough with Stephen (2026-11-02, `RULES_WALKTHROUGH.md`).** Stephen has made a
-call on all fifteen; every one is Melissa's to overrule. `DRAFTER_BRIEF_v3.md` is the brief written to these
-calls. The five where Stephen explicitly wants her view:
+**Status (2026-11-02).** Ten decisions are proposed as written; five are open for review. `DECISIONS.md`
+records each decision with the cases behind it; `DRAFTER_BRIEF_v3.md` is the brief written to them.
 
-| decision | Stephen's call | wants Melissa's view |
-|---|---|---|
-| 1, 3, 4, 5, 7, 8, 9, 11, 14, 15 | as written below | no, but overrule freely |
-| 2 sources | tiers 1–3 in; tiers 4–5 (meta-analysis, press/SEC) leaning no | yes |
-| 6 `contra` recoverable | agree, tentatively | yes |
-| 10 post-hoc models | excluded outright (stronger than the original recommendation) | yes |
-| 12 class boundaries | recommendation as written | yes |
-| 13 `neg` / `other` | `neg` by what the model data showed; cross-class evidence set aside | yes |
+| decision | status |
+|---|---|
+| 1, 3, 4, 5, 7, 8, 9, 11, 14, 15 | proposed as written |
+| 2 sources | tiers 1–3 proposed; tiers 4–5 (meta-analysis, press/SEC) open, leaning no |
+| 6 `contra` recoverable | proposed; open |
+| 10 post-hoc models | excluded outright; open |
+| 12 class boundaries | proposed as written; open |
+| 13 `neg` / `other` | `neg` by what the model data showed, cross-class evidence set aside; open |
 
 ## 1. A comparison may be stated by the source or made by the drafter
 
@@ -32,8 +31,8 @@ comparison, or (b) one primary model source and one primary patient source that 
 and whose results report the readout is (a) only if it draws the comparison in its own words; a bare
 citation of the model paper is (b).
 
-**Why.** Read strictly, rule 1 greys 79 of the 166 scored cells and both of Melissa's seed contexts (cf-cftr pairs Van Goor 2009 with Ramsey 2011;
-ad-amyloid pairs Irizarry 1997 with Doody 2013). Panel C of `summary.png` shows juxtaposed cells
+**Why.** Read strictly, rule 1 greys 79 of the 166 scored cells and both seed contexts (cf-cftr pairs Van Goor 2009 with Ramsey 2011;
+ad-amyloid pairs Irizarry 1997 with Doody 2013). `matrix_cells.csv` shows juxtaposed cells
 land on `same`/`contra` at rates similar to stated ones for engagement and efficacy, so the tier is a
 provenance mark, not a different answer.
 
@@ -110,7 +109,7 @@ powered for the predicted incidence (#130).
 Over-predicted liability (dog heart-rate effect below the clinical dose, ~1 bpm in humans) is the
 same family: `same` + `magnitude: off_by_>5x`, `direction: conservative` (#142).
 
-**Alternative if Melissa prefers.** Score these `same` with `source_calls_it: over_predicted`; the
+**Alternative.** Score these `same` with `source_calls_it: over_predicted`; the
 difference is ~6 safety cells.
 
 ## 6. `contra` is per model and per time point
@@ -162,7 +161,7 @@ figure overlays a marker when `outcome_tested` is negative (#97, #105, #119, #10
 Scannell point and the one thing the five colours cannot show: SHPT/EVOLVE, HF/ASCEND-HF,
 PBC/COBALT all read green today.
 
-## 10. Post-hoc models are not used (Stephen's version, for Melissa)
+## 10. Post-hoc models are not used (open)
 
 **Rule.** A model result that post-dates and is motivated by the patient result is not used at all: the
 entry stays in the JSON as `retrodiction: true` for traceability and is drawn and counted as nothing (#5,
@@ -202,7 +201,7 @@ reported with their program count so the reader can see how little of the indica
 
 ## 13. `neg` and `other`
 
-**Rule (Stephen's version, for Melissa).** `neg` is earned by what the model data showed, not by what the
+**Rule (open).** `neg` is earned by what the model data showed, not by what the
 sponsor said about them: the model's own effect size fell below a stated threshold for the class, with
 the number recorded (BMS-641988's xenografts judged against the class's usual bar, not against the
 sponsor's press release); no prospective flag required (#49). The model is the system, not the cell line
@@ -228,8 +227,8 @@ load, acid, cGMP) or `downstream` (a biomarker or physiology further down the pa
 solid, the other two hatched, and the column's headline is reported both ways (61 % "pharmacology showed
 up", ~21 % "engagement shown directly"). The tier is descriptive: the kind of readout did not separate
 classes that advanced from classes that did not (Phase 2 → 3 advancement 42 % direct vs 51 % inferred,
-difference −10 points, −23 to +4, p = 0.20; `ENGAGEMENT_KIND_RESULT.md`, which Melissa wants in the
-report, with the caveat that the interval allows a 20-point difference).
+difference −10 points, −23 to +4, p = 0.20; `ENGAGEMENT_KIND_RESULT.md`, written up for the report; the
+interval allows a 20-point difference).
 
 ## Schema v3 additions
 
@@ -261,7 +260,7 @@ report, with the caveat that the interval allows a 20-point difference).
 4. Empty-vs-`untested` from decision 8.
 5. The schema v3 fields above, with `confidence` as an enum.
 6. A "do not" list: no `contra` from juxtaposition alone when the source attributes the failure to
-   untested conditions; no post-hoc model at all (decision 10, if Melissa agrees); no press-release
+   untested conditions; no post-hoc model at all (decision 10, open); no press-release
    model-side evidence.
 7. The dose tie from decision 4: the four cases as a table, `derived_from` on case 3.
 8. `readout_tier` on every engagement entry (decision 15), assigned by the drafter from the readout it

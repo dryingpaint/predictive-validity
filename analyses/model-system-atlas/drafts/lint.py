@@ -21,7 +21,7 @@ KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", 
 def main():
     extra, issues = Counter(), []
     for p in sorted(glob.glob(os.path.join(HERE, "*.json"))):
-        if p.endswith((".check.json", ".hand.json")):
+        if p.endswith(".check.json"):
             continue
         d = json.load(open(p)); cid = os.path.basename(p)[:-5]
         for k in ("order", "area", "disease", "mondo_id", "population", "mechanism", "label", "cells"):

@@ -1,8 +1,7 @@
 # Drafter brief v3 (proposed) — model-system atlas context (issue dryingpaint/predictive-validity#76)
 
-v3 (2026-11-02): the rules as Stephen called them in `RULES_WALKTHROUGH.md`, pending Melissa's review; she
-can overrule any of them, and the brief changes where she does. v2 is kept as `DRAFTER_BRIEF.md` for the
-record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
+v3 (2026-11-02): written to the decisions in `DECISIONS.md` and `RULES_V3_PROPOSAL.md`; decisions marked
+open there may still change. v2 is kept as `DRAFTER_BRIEF.md` for the record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
 
 You are drafting ONE entry for an atlas of preclinical models with a **track record**: predictions that
 were compared with what happened in patients. Repo: ~/code/predictive-validity (branch atlas-named-contexts).
@@ -26,7 +25,7 @@ papers, the FDA/EMA pharmacology review. Three cases that are all in scope:
   data): the cell is an **empty list**, which the figure draws blank. `untested` means a model existed
   and nobody compared it. Keep the two apart.
 A model built after the clinic already knew the answer is **not a model**: record it with
-`retrodiction: true` and `status: null` so the checker can see it, but it earns nothing (pending Melissa).
+`retrodiction: true` and `status: null` so the checker can see it, but it earns nothing (decision 10, open).
 
 ## Four questions, each gets its own cell (v3 definitions)
 - **engagement**: did the PD readout the model used move in dosed humans? Record `readout_tier`:
@@ -60,8 +59,8 @@ A model built after the clinic already knew the answer is **not a model**: recor
 |---|---|---|
 | untested | Never compared | a model exists and was used for this class, but no admissible comparison of its prediction with patient results |
 | same | Matched | a comparison shows the model's prediction agreed with patient results for ≥1 drug of this class, in direction; record how far off in `magnitude`; partial agreement is `same` + `source_calls_it: "partial"` |
-| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar (record the number in `judgement`) and that drug failed in patients. Judged on what the data showed, not on what the sponsor said about them (pending Melissa) |
-| other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored (pending Melissa) |
+| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar (record the number in `judgement`) and that drug failed in patients. Judged on what the data showed, not on what the sponsor said about them (decision 13, open) |
+| other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored (decision 13, open) |
 | contra | Contradicted | the model predicted wrongly for a drug in this context. Per model and per time point: a later entry may recover the cell when a different model took over (`model_change: true`) or a primary source reports the contradiction attenuated. One drug's `contra` still beats another drug's `same` on the same model |
 
 ## Evidence rules (v3)
@@ -71,7 +70,7 @@ A model built after the clinic already knew the answer is **not a model**: recor
    merely cites the model paper is a pairing, not a statement.
 2. **Admissible sources, in tiers** (`source_tier`): 1 peer-reviewed paper with DOI or PMID; 2 regulator
    document (FDA review or label, EMA EPAR, Health Canada, AdCom briefing or transcript); 3 registry results
-   record. Tiers 4 (meta-analysis) and 5 (press release or SEC filing) are pending Melissa; if admitted they
+   record. Tiers 4 (meta-analysis) and 5 (press release or SEC filing) are open (decision 2); if admitted they
    are patient-side only, never model-side, and the entry carries `trial_unreported: true`. Reviews may
    point you to a source but are not one. "Data not shown" scores at low confidence.
 3. Every entry carries `quote`: the sentence (≤40 words, verbatim) from the source that supports the

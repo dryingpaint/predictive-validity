@@ -3,8 +3,8 @@
     .venv/bin/python analyses/model-system-atlas/render_pilot.py [--raw]
 
 Reads drafts/*.json (skipping *.check.json), applies each draft's checker corrections
-(entries with verdict "corrected" carrying proposed_status / proposed_year) unless --raw, keeps
-*.hand.json rows as "(hand draft)" for side-by-side comparison, and writes drafts/atlas_pilot.png.
+(entries with verdict "corrected" carrying proposed_status / proposed_year) unless --raw, and writes
+drafts/pilot_render/atlas.png.
 """
 import glob
 import json
@@ -53,15 +53,10 @@ def load_pilot(raw: bool = False) -> list[dict]:
         if path.endswith(".check.json"):
             continue
         row = json.load(open(path))
-        if path.endswith(".hand.json"):
-            row["label"] = row.get("label", row["disease"]) + " (hand draft)"
-            row["population"] = row.get("population", "") + " — hand draft"
-            row["order"] = row.get("order", 0) + 0.5
-        else:
-            check_path = path[:-5] + ".check.json"
-            if not raw and os.path.exists(check_path):
-                row = apply_check(row, json.load(open(check_path)))
-                row["label"] = row.get("label", row["disease"]) + " ✓"
+        check_path = path[:-5] + ".check.json"
+        if not raw and os.path.exists(check_path):
+            row = apply_check(row, json.load(open(check_path)))
+            row["label"] = row.get("label", row["disease"]) + " ✓"
         rows.append(row)
     return sorted(rows, key=lambda r: r["order"])
 

@@ -23,7 +23,7 @@ FACTS = ["subjects", "comparison_stated", "product_in_model", "model_filed", "ma
 def load():
     rows = []
     for path in sorted(glob.glob(os.path.join(HERE, "*.json"))):
-        if path.endswith((".check.json", ".hand.json")):
+        if path.endswith(".check.json"):
             continue
         draft = json.load(open(path))
         cp = path[:-5] + ".check.json"
