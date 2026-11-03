@@ -37,12 +37,18 @@ A model built after the clinic already knew the answer is **not a model**: recor
 
   | what happened | dose | efficacy |
   |---|---|---|
-  | target never reached in humans (PK, tolerability) | `contra` | `untested` |
+  | target never reached in humans (PK) | `contra` | `untested` |
+  | never reached because of toxicity; the model stated the effective exposure was tolerated (decision 16, open) | `contra` with `blocked_by: "toxicity"` | `untested` |
+  | never reached because of toxicity; no stated margin (decision 16, open) | `untested` | `untested` |
   | reached, drug worked | `same` | `same` |
   | reached, failed, abandoned | `contra` with `derived_from: "efficacy"` | `contra` |
   | reached, failed, a higher dose later worked | `contra` (target too low; record `magnitude`) | `contra`, then `same` |
 
   Healthy-volunteer PK counts; a later patient PK/occupancy source is its own dated entry.
+  Decision 16 (open) scores the toxic end of the window: a stated tolerability margin (NOAEL, MTD, a
+  tolerated dose at or above the effective one) that held is `same`; toxicity at or below the effective
+  exposure is `contra` with `blocked_by: "toxicity"`, an independent dose failure. Count the harm once:
+  here when the model predicted it but misplaced the margin, in safety when it did not predict it.
 - **efficacy**: did the trial's **primary endpoint** respond as predicted? When the sponsor pre-specified a
   secondary as the proof-of-concept gate, that endpoint governs, with `endpoint_role: "poc_gate"`;
   otherwise `"primary"`. Patients of the context's disease only. A biomarker-unselected trial counts for a
@@ -98,7 +104,7 @@ Record with null when unknown. They do not change your status call; they let the
 off_by_>5x | direction_only | null | opposite) · `magnitude_basis` (the quantity it is computed on) ·
 `source_calls_it` (match | miss | scaling | partial | unresolved | over_predicted) · `population` ·
 `model_first_use_year` · `confidence` (high | medium | low, enum) · `confidence_note` (free text) ·
-engagement only: `readout_tier` · dose only: `derived_from` · efficacy only: `endpoint_role`,
+engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by` (decision 16, open) · efficacy only: `endpoint_role`,
 `outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status).
 Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial.
 

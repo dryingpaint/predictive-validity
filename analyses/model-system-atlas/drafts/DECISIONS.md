@@ -1,8 +1,9 @@
 # Rules v3: decision record
 
 Companion to `RULES_V3_PROPOSAL.md`. One block per decision: the question, the cases that raised it, the
-proposed rule, the alternative, and the decision taken on 2026-11-02. Numbers are from the finished run (71
-contexts, 284 cells, 166 scored). Decisions marked open are still under review.
+proposed rule, the alternative, and the decision taken on 2026-11-02; decision 16 was added in review on
+2026-11-03. Numbers are from the finished run (71 contexts, 284 cells, 166 scored). Decisions marked open
+are still under review.
 
 ---
 
@@ -307,10 +308,45 @@ predictor.
 
 ---
 
+## 16. The toxic end of the dose window (added in review)
+
+**Question.** A dose prediction has two ends: the lowest exposure the model says is enough, and the
+highest exposure a patient tolerates. Decision 4 scores the floor. Does the atlas score the ceiling?
+
+**Context.** Today it does not. A harm goes to safety as "was the harm predicted", not "was the dose at
+which it appears predicted"; a stated NOAEL or MTD margin is `untested` with `source_calls_it: scaling`
+(#50, #99, #118); a target blocked by toxicity is dose `untested` (#22). Of the 102 dose entries in the
+run, 91 are about exposure or occupancy and 10 mention a ceiling at all. Three are window cases, each
+scored a different way for want of a rule: CD-NP in heart failure (dogs tolerated 50 ng/kg/min, the
+human MTD was 17.5; dose `contra` as a "judgement call", `untested` under #22); TAK-063 in schizophrenia
+(rat catalepsy only at ~10× the efficacious dose, EPS in patients at a dose with no efficacy; safety
+`contra`, though the rat had flagged the harm); secukinumab in psoriasis (clinical dose 1/10 of the
+cynomolgus NOAEL, lymphocytes held; dose `same`, against the scaling rule). The FLT3 differentiation
+syndrome is a harm the xenograft never showed and stays in safety.
+
+**Recommend.** Score the ceiling the way safety scores harms: a stated prediction counts both ways,
+silence is `untested`. When a model source states that the effective exposure is tolerated (a NOAEL or
+MTD margin, or a tolerated dose at or above the effective one): patients dosed to target → dose `same`;
+toxicity at or below the effective exposure → dose `contra` with `blocked_by: toxicity`, an independent
+dose failure, never `derived_from: efficacy`; efficacy `untested` when the drug was never tested at an
+effective exposure (decision 4, case 1). No stated margin → `untested`, as now. The harm that closes the
+window is counted once: in safety when the model did not predict it, in dose when it predicted the harm
+but misplaced the margin. The flooding concern behind the scaling rule does not arise: one entry in 71
+contexts records a margin checked against patients, because drafters write one down only when a source
+discusses it. The survivorship bias is the floor's already: every approved drug reached a sufficient
+exposure.
+
+**Alternative.** Keep the ceiling out of the dose cell: a tox-species margin is regulatory scaling, not
+a model prediction, and the harm itself is already scored in safety.
+
+**Decision:** Proposed 2026-11-03, open for review. On re-score it changes three cells: CD-NP's dose `contra` becomes rule-based, TAK-063's window failure moves from safety to dose, secukinumab's dose `same` becomes consistent with the rule.
+
+---
+
 ## Schema v3, if all of the above are accepted
 
 `source_tier`, `trial_unreported`, `model_kind`, `model_change`, `outcome_tested`, `retrodiction`,
-`imported_from`, `patient_trials`, `regulatory_reliance`, `readout_tier`; `magnitude` gains null/opposite;
+`imported_from`, `patient_trials`, `regulatory_reliance`, `readout_tier`, `blocked_by`; `magnitude` gains null/opposite;
 `source_calls_it` gains partial/unresolved/over_predicted; `confidence` becomes an enum with a separate
 `confidence_note`. Every one of these can be filled from the existing drafts without new research except
 `outcome_tested`, which needs one lookup per efficacy cell.

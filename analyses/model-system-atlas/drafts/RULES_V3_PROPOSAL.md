@@ -2,7 +2,7 @@
 
 Drafted 2026-11-02 from the 70-context run (drafter + checker agents under `DRAFTER_BRIEF.md` v2 and
 `CHECKER_BRIEF.md`). The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fifteen
-decisions below. Each gives the proposed rule, the questions it settles, and what it moves in the
+decisions below; a sixteenth was added in review. Each gives the proposed rule, the questions it settles, and what it moves in the
 current drafts (numbers from `matrix.py` over the finished run: 71 contexts, 284 cells, 166 of them scored
 `same`/`contra`/`neg`). Nothing here is applied yet; the
 drafts record the facts needed to re-score under either answer.
@@ -11,7 +11,8 @@ The one-line version: **keep the five statuses, loosen rule 1 to admit juxtaposi
 types, define the four cells sharply, make `contra` per model and per time point, and add six fields
 so the figure can show what the colours now hide.**
 
-**Status (2026-11-02).** Ten decisions are proposed as written; five are open for review. `DECISIONS.md`
+**Status (2026-11-02).** Ten decisions are proposed as written; five are open for review; a sixteenth,
+added 2026-11-03, is open. `DECISIONS.md`
 records each decision with the cases behind it; `DRAFTER_BRIEF_v3.md` is the brief written to them.
 
 | decision | status |
@@ -22,6 +23,7 @@ records each decision with the cases behind it; `DRAFTER_BRIEF_v3.md` is the bri
 | 10 post-hoc models | excluded outright; open |
 | 12 class boundaries | proposed as written; open |
 | 13 `neg` / `other` | `neg` by what the model data showed, cross-class evidence set aside; open |
+| 16 dose window | added 2026-11-03: score the toxic end of the dose window when the model stated a margin; open |
 
 ## 1. A comparison may be stated by the source or made by the drafter
 
@@ -78,7 +80,7 @@ recorded), #84, #88.
 | cell | question the cell answers | not this cell |
 |---|---|---|
 | engagement | did the **PD readout** the model used move in humans (occupancy, biomarker, sweat chloride)? | genotype-stratified response (efficacy, #20); target binding without a readout; the drug working by another mechanism is noted, not scored (#28) |
-| dose | was the model's exposure / occupancy / regimen target **reached, and sufficient** in humans (#2, #93, #123)? Tied to efficacy so one failure is counted once: (1) target never reached → dose `contra`, efficacy `untested`; (2) reached and the drug worked → both `same`; (3) reached, failed, abandoned → efficacy `contra` and dose `contra` with `derived_from: efficacy`, hatched and excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. A regimen prediction (half-life → once daily) counts (#91). An FDA NOAEL-margin statement, a post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable is `untested` with `source_calls_it: scaling` (#50, #99, #118). Toxicity-blocked targets are `untested` (#22). Gene therapy: expression per vector dose, not specific activity (#107) | a derived dose `contra` is never a second failure |
+| dose | was the model's exposure / occupancy / regimen target **reached, and sufficient** in humans (#2, #93, #123)? Tied to efficacy so one failure is counted once: (1) target never reached → dose `contra`, efficacy `untested`; (2) reached and the drug worked → both `same`; (3) reached, failed, abandoned → efficacy `contra` and dose `contra` with `derived_from: efficacy`, hatched and excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. A regimen prediction (half-life → once daily) counts (#91). An FDA NOAEL-margin statement, a post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable is `untested` with `source_calls_it: scaling` (#50, #99, #118). Toxicity-blocked targets are `untested` (#22); decision 16 (open) would score a stated margin and a toxicity block as the ceiling of the window. Gene therapy: expression per vector dose, not specific activity (#107) | a derived dose `contra` is never a second failure |
 | efficacy | did the **trial's primary endpoint** respond as predicted (#64)? When the sponsor pre-specified a secondary as the proof-of-concept gate that translates the model's readout (TPV for "involution"), that endpoint governs, with `endpoint_role: poc_gate` (#144). Missed primary + significant secondary is `untested` unless the source's own conclusion calls it a match (#32). A trial the authors disclaim as an efficacy test (#57) and an active-comparator ranking failure (#80) are `untested`. "Failed" = the predicted effect was absent or reversed, not that development stopped (#53) | surrogate-vs-outcome: see decision 9 |
 | safety | did the model's **stated prediction** hold, or was its **askable silence** contradicted (#13, #54, #89)? Silence is `contra` only if the harm was measurable in the model species at the time. A sponsor-dismissed animal signal that patients confirmed is `same` (#23). A regulator's retrospective reconciliation counts as stated (#79). A pre-signal finding in another frame is `untested` with a note (#87) | mechanism-attribution sentences that name no species or study (#111) |
 
@@ -230,6 +232,38 @@ classes that advanced from classes that did not (Phase 2 → 3 advancement 42 % 
 difference −10 points, −23 to +4, p = 0.20; `ENGAGEMENT_KIND_RESULT.md`, written up for the report; the
 interval allows a 20-point difference).
 
+## 16. The toxic end of the dose window (added in review)
+
+**Rule.** The dose cell scores both ends of the window. The floor is decision 4. The ceiling is scored
+as safety scores harms: a stated prediction counts both ways, silence is `untested`. When a model source
+states that the effective exposure is tolerated (a NOAEL or MTD margin, or a tolerated dose at or above
+the effective one) and patients were dosed to target, dose is `same`; when toxicity appeared at or below
+the effective exposure, dose is `contra` with `blocked_by: toxicity`. No stated margin: `untested`, as
+now. A window `contra` is an independent dose failure, never `derived_from: efficacy`; efficacy is
+`untested` when the drug was never tested at an effective exposure (decision 4, case 1). The harm that
+closes the window is counted once: in safety when the model did not predict it, in dose when it
+predicted the harm but misplaced the margin.
+
+**Why.** A dose prediction has two numbers and the atlas scores one. A dog can predict hypotension and
+be wrong by 3× about the infusion rate at which it starts; safety credits the first and nothing scores
+the second. In the run, 91 of 102 dose entries are about exposure or occupancy and 10 mention a
+ceiling; the three real window cases were each scored differently for want of a rule (CD-NP in heart
+failure: dose `contra` by judgement call, `untested` under #22; TAK-063 in schizophrenia: safety
+`contra` although the rat flagged the harm; secukinumab in psoriasis: dose `same` against the scaling
+rule).
+
+**Impact.** Three cells on re-score: CD-NP's dose `contra` becomes rule-based, TAK-063's window failure
+moves from safety to dose, secukinumab's dose `same` becomes consistent. The flooding concern behind
+the scaling rule does not arise in practice: one entry in 71 contexts records a margin checked against
+patients. Survivorship is the floor's already: every approved drug reached a sufficient exposure.
+
+**Settles** #22 (a toxicity block is scored when a margin was stated) and narrows #50, #99, #118 (a
+stated margin is a prediction; a post-hoc PK/PD justification or a bridge the regulator calls
+non-translatable stays `scaling`).
+
+**Open.** Whether a tox-species margin is a model prediction the atlas should score, or regulatory
+arithmetic it should ignore.
+
 ## Schema v3 additions
 
 | field | where | values |
@@ -246,6 +280,7 @@ interval allows a 20-point difference).
 | `readout_tier` | engagement entry | direct / proximal / downstream (decision 15) |
 | `derived_from` | dose entry | `efficacy` when the dose `contra` is the efficacy failure seen from the dose cell (decision 4) |
 | `endpoint_role` | efficacy entry | primary / poc_gate (decision 4) |
+| `blocked_by` | dose entry | `toxicity` when toxicity at or below the effective exposure closed the window (decision 16, open) |
 | `confidence` | entry | enum high / medium / low; free text moves to `confidence_note` (drafters stuffed ~60 notes into it) |
 
 `magnitude` gains `null` and `opposite`; `source_calls_it` gains `partial`, `unresolved`,
@@ -267,6 +302,8 @@ interval allows a 20-point difference).
    quotes.
 9. Healthy-volunteer dose and engagement entries record `subjects`; a patient PK/occupancy source is a
    separate dated entry (decision 3).
+10. The dose ceiling from decision 16 (open): a stated tolerability margin scored both ways,
+    `blocked_by: toxicity` on a toxicity block.
 
 ## Production note: FDA review PDFs
 
