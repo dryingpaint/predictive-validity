@@ -50,7 +50,7 @@ def main():
     d["pulled_at"] = date.today().isoformat()
     cols = ["key", "program_id", "mondo_id", "disease", "phase", "moiety_id", "drug", "modality", "targets", "actions",
             "llm_decision_id", "primary_code", "bundle_code", "searched", "exposure", "engagement", "pathway",
-            "engagement_in_disease", "engagement_before_index", "confidence", "rationale", "sources",
+            "engagement_in_disease", "engagement_before_index", "dose_limited", "confidence", "rationale", "sources",
             "content_sha", "pulled_at"]
     d = d[cols].sort_values("key")
     d.to_csv(os.path.join(HERE, "labels.csv"), index=False)

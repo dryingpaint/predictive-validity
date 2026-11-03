@@ -46,8 +46,8 @@ one only when nothing fits.
 |---|---|---|
 | 1 | `pull.py`: current labels with drug, primary targets, hash. `extract.py`: delta, batches, merge, vocabulary. Run the extraction on every row with a human-data verdict | done 2026-11-02: 2,067 rows extracted, `readouts.csv`; result in `RESULTS_STEP1.md` |
 | 2 | Cross-check the extraction against the 44 atlas engagement cells (PR #81, `readout_tier`) where the drug class overlaps | not started |
-| 3 | Anchor research, re-scoped 2026-11-02 (below): only the measured-engaged programs whose readout does not by itself show the target was hit | scoped, not started: `step3_scope.csv`, 440 programs, 309 names, 187 targets |
-| 4 | Join and ask: how many "engaged" verdicts rest on a pathway-only readout; whether those programs sit in "engaged, disease did not respond" (F2) more often than anchored ones; the not-engaged share of the report under "anchored engagement only" as a new appendix variant | not started |
+| 3 | Anchor research on the 256 readout families behind the 440 indirect verdicts | done 2026-11-03: `anchors.csv` (prior drug 121, genetics 64, direct assay 11, pathway only 60) |
+| 4 | Join and the report's not-engaged share under stricter readings | done 2026-11-03: `analysis.py`, `RESULTS_STEP4.md`; 19 % → 25 % (measured only) → 28 % (direct or anchored before entry) → 34 % (direct only) |
 
 ## Step 3, re-scoped
 
