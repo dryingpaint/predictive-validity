@@ -397,6 +397,9 @@ HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_li
                   ("Essential in most cell lines", "Target liability", "pan_essential_untimed", "pan_essential")]
 
 
+LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
+
+
 def evidence_translates():
     """Each kind of evidence and its narrower versions, three ways: relative success to approval from any
     phase; the adjusted risk ratio of advancing from Phase 2 within four years; and the relative risk of
@@ -426,58 +429,51 @@ def evidence_translates():
     for i, r in enumerate(rows):
         y -= 1 if i == 0 or r[2] or (r[7] and i != first_late) else 2.3 if i == first_late else 1.5
         ys.append(y)
-    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(16, 0.34 * len(rows) + 1.8), sharey=True,
-                                     gridspec_kw={"wspace": 0.08})
+    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(12, 0.42 * len(rows) + 2.2), sharey=True,
+                                     gridspec_kw={"wspace": 0.1})
     lim = (np.log2(0.2), np.log2(7))
 
     def dot(ax, yi, est, lo, hi, color, filled, dashed=False):
         ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 7))], [yi, yi], color=color, linewidth=2,
                 solid_capstyle="round", linestyle=(0, (2, 1.5)) if dashed else "-")
-        ax.plot(np.log2(est), yi, "o", markersize=6, color=color, markeredgewidth=1.5,
+        ax.plot(np.log2(est), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
                 markerfacecolor=color if filled else "white", markeredgecolor=color)
-
-    def column(x, yi, text):
-        a3.text(np.log2(7) + x, yi, text, va="center", ha="right", color=INK2, fontsize=8)
 
     for yi, (label, family, narrow, left, mid, held, kind, late_row) in zip(ys, rows):
         color = MUTED if late_row else FAMILY_COLORS[family]
         if left is not None:
             dot(a1, yi, left.rs, left.rs_lo, left.rs_hi, color, left.rs_lo > 1 or left.rs_hi < 1, late_row)
-            column(0.35, yi, f"{int(left.n_with):,}")
-            column(1.45, yi, f"{left.loa_with:.0%} / {left.loa_without:.0%}")
         if mid is not None:
             dot(a2, yi, mid.rr, mid.lo, mid.hi, color, (mid.p if late_row else mid.holm_p) < 0.05, late_row)
         if held is not None:
             dot(a3, yi, held.rr, held.rr_lo, held.rr_hi, color, held.rr_lo > 1 or held.rr_hi < 1)
-        if kind is not None:
-            column(2.15, yi, f"{int(kind.n):,}")
-            column(3.25, yi, f"{kind.ppv:.0%} / {kind.rate_without:.0%}")
     top = ys[0] + 0.7
-    for x, head in ((0.35, "Programs"), (1.45, "Approved:\nwith / without"), (2.15, "Phase 2\nprograms"),
-                    (3.25, "Advanced:\nwith / without")):
-        a3.text(np.log2(7) + x, top, head, ha="right", va="bottom", color=INK2, fontsize=8)
     ticks = [0.25, 0.5, 1, 2, 4]
     for ax, title, xlabel in (
-            (a1, "Reaching approval, from any phase", "Relative success: approval with ÷ without (95% CI)"),
-            (a2, "Advancing from Phase 2 within 4 years", "Adjusted risk ratio (95% CI)"),
-            (a3, "Advancing from Phase 2, other lines held fixed", "Relative risk, all lines in one model (95% CI)")):
+            (a1, "Reaching approval,\nfrom any phase", "Relative success: approval with ÷ without (95% CI)"),
+            (a2, "Advancing from Phase 2\nwithin 4 years", "Adjusted risk ratio (95% CI)"),
+            (a3, "Advancing from Phase 2,\nother lines held fixed", "Relative risk, all lines in one model (95% CI)")):
         ax.axvline(0, color=INK2, linewidth=1)
         ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
         ax.set_xlim(*lim)
-        ax.set_xlabel(xlabel, color=INK2, fontsize=8)
-        ax.set_title(title, loc="left", color=INK, fontsize=9)
+        ax.set_xlabel(xlabel, color=INK2, fontsize=10)
+        ax.set_title(title, loc="left", color=INK, fontsize=11.5, wrap=True)
+        ax.tick_params(axis="x", labelsize=10)
         style(ax)
-    a1.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=8.5)
-    a1.tick_params(axis="y", pad=215)
+    a1.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=11)
+    a1.tick_params(axis="y", pad=LABEL_PAD)
     for t, (_, _, narrow, *_, late_row) in zip(a1.get_yticklabels(), rows):
         t.set_horizontalalignment("left")
         t.set_color(INK2 if narrow or late_row else INK)
-    a1.text(-0.62, ys[first_late] + 0.95, "Known only after entry: first published in 2019, scored on today's data",
-            transform=a1.get_yaxis_transform(), color=INK2, fontsize=8, style="italic")
+    label_x = -LABEL_PAD / 72 / (fig.get_figwidth() * a1.get_position().width)  # the labels' left edge, in a1's axes
+    a1.text(label_x, ys[first_late] + 0.95,
+            "Known only after entry: first published in 2019, scored on today's data",
+            transform=a1.get_yaxis_transform(), color=INK2, fontsize=10, style="italic")
     a1.set_ylim(ys[-1] - 0.7, top + 0.9)
-    fig.suptitle("Programs entering a phase in 2008–2019, by evidence known the year before entry. Indented: a "
-                 "narrower version (middle panel: against the rest of its kind). Filled: interval clear of 1 "
-                 "(middle panel: Holm-corrected p < 0.05)", x=0.01, ha="left", y=0.935, color=INK2, fontsize=8)
+    a1.text(label_x, top + 3.2, "Programs entering a phase in 2008–2019, by evidence known the year before entry.\n"
+            "Indented: a narrower version (middle panel: against the rest of its kind). Filled: interval clear of 1\n"
+            "(middle panel: Holm-corrected p < 0.05). Counts are in the appendix.",
+            transform=a1.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
     save(fig, "evidence_translates")
 
 
