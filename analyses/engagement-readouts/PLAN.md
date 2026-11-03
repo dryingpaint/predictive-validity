@@ -46,8 +46,27 @@ one only when nothing fits.
 |---|---|---|
 | 1 | `pull.py`: current labels with drug, primary targets, hash. `extract.py`: delta, batches, merge, vocabulary. Run the extraction on every row with a human-data verdict | done 2026-11-02: 2,067 rows extracted, `readouts.csv`; result in `RESULTS_STEP1.md` |
 | 2 | Cross-check the extraction against the 44 atlas engagement cells (PR #81, `readout_tier`) where the drug class overlaps | not started |
-| 3 | `anchors.csv`: for each (target, readout) pair, how the readout was tied to the target in humans (direct_assay / genetics / prior_drug / pathway_only), with the earliest year and source; agent brief like the atlas drafter brief | not started; first job is collapsing the 1,326 names to one per target × readout family (about 700 targets) |
+| 3 | Anchor research, re-scoped 2026-11-02 (below): only the measured-engaged programs whose readout does not by itself show the target was hit | scoped, not started: `step3_scope.csv`, 440 programs, 309 names, 187 targets |
 | 4 | Join and ask: how many "engaged" verdicts rest on a pathway-only readout; whether those programs sit in "engaged, disease did not respond" (F2) more often than anchored ones; the not-engaged share of the report under "anchored engagement only" as a new appendix variant | not started |
+
+## Step 3, re-scoped
+
+Two thirds of the measured-engaged verdicts rest on a direct measurement (occupancy, or a product only this
+target makes) and need no anchor. The research covers the rest: `extract.py scope` → `step3_scope.csv`,
+440 of 1,260 programs (259 downstream markers, 143 non-specific or unsure target products, 15 non-specific
+occupancy-type readouts, 23 with no usable readout), 309 canonical names over 187 first targets, 57 without
+a DB target.
+
+1. Collapse the 309 names to one per target × readout family by hand (synonyms, wrong first-symbol
+   prefixes); expect 200–250 families. The collapse goes in `vocabulary.csv` as `family`.
+2. One lookup per family, agent brief like the atlas drafter brief, ≤ 15 sources: how was this readout
+   tied to this target in humans, and when. `anchor` ∈ direct_assay (an occupancy or activity study related
+   the marker to the target in people) / genetics (carriers of a variant in the target show the marker) /
+   prior_drug (an earlier drug of the same mechanism moved it, with its own direct evidence) /
+   pathway_only (the link rests on preclinical or in-vitro biology) / unknown; `anchor_year`,
+   `anchor_source`, `anchor_quote`; `other_movers` (what else moves the marker). Registry and PubMed
+   lookups mandatory; no reading of other families (independence).
+3. Join back by family; then step 4.
 
 ## Schemas
 
@@ -61,8 +80,9 @@ one only when nothing fits.
 `subjects`, `inference_basis` (measured / other_disease / class / none), `specific_to_target`,
 `readout_canonical`, `quote`, `note`, `extracted_by`, `extracted_at`.
 
-`anchors.csv` (layer 2): `target`, `readout_canonical`, `anchor` (direct_assay / genetics / prior_drug /
-pathway_only / unknown), `anchor_year`, `anchor_source`, `anchor_quote`, `specific_to_target`, `note`.
+`anchors.csv` (layer 2, one row per family): `family`, `target`, `readout_canonical` (members, `;`-joined), `anchor`
+(direct_assay / genetics / prior_drug / pathway_only / unknown), `anchor_year`, `anchor_source`, `anchor_quote`,
+`other_movers`, `note`.
 
 ## Known gaps after the pull
 

@@ -4,6 +4,7 @@ the extractor, the merge back, and the vocabulary.
     .venv/bin/python analyses/engagement-readouts/extract.py todo [--batch 80]   # batches/todo_NN.csv
     .venv/bin/python analyses/engagement-readouts/extract.py merge               # batches/done_NN.csv -> readouts.csv
     .venv/bin/python analyses/engagement-readouts/extract.py vocab               # vocabulary.csv + counts
+    .venv/bin/python analyses/engagement-readouts/extract.py scope               # step3_scope.csv
 
 Rows are keyed by content_sha (pull.py), so a re-pull after the labels change re-queues only the rows
 whose rationale changed. Verdicts with no human data are never queued.
@@ -157,9 +158,31 @@ def vocab() -> None:
     print(f"\ntop 25 canonical names:\n{v.sort_values('n', ascending=False).head(25)[['readout_canonical', 'n', 'kind_majority', 'conflict']].to_string(index=False)}")
 
 
+def scope() -> None:
+    """Step 3 scope: the measured-engaged programs whose readout does not by itself show the target was hit
+    (a downstream marker, a non-specific or unsure target product, no readout), written to step3_scope.csv
+    with their canonical names, so the anchor research starts from a file."""
+    r = cache()
+    labels = pd.read_csv(LABELS, dtype=str).fillna("")
+    d = r.merge(labels[["content_sha", "key", "drug", "targets", "disease", "engagement", "primary_code",
+                        "engagement_in_disease", "engagement_before_index"]], on=["content_sha", "key"])
+    a = d[d.engagement == "adequate"]
+    needs = a[(a.readout_kind == "downstream_marker")
+              | ((a.readout_kind == "target_product") & (a.specific_to_target != "yes"))
+              | ((a.readout_kind == "occupancy") & (a.specific_to_target == "no"))
+              | a.readout_kind.isin(["none", "exposure_only", "clinical_response"])]
+    needs = needs.sort_values(["targets", "readout_canonical"])
+    needs.to_csv(os.path.join(HERE, "step3_scope.csv"), index=False)
+    fam = needs[needs.readout_canonical != ""].readout_canonical
+    print(f"step3_scope.csv: {len(needs)} of {len(a)} measured-engaged programs need an anchor; "
+          f"{fam.nunique()} canonical names over {needs.targets.str.split(';').str[0].replace('', 'no target').nunique()} first targets; "
+          f"{int((needs.targets == '').sum())} without a DB target")
+    print(needs.readout_kind.value_counts().to_string())
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["todo", "merge", "vocab"])
+    ap.add_argument("cmd", choices=["todo", "merge", "vocab", "scope"])
     ap.add_argument("--batch", type=int, default=80)
     a = ap.parse_args()
-    {"todo": lambda: todo(a.batch), "merge": merge, "vocab": vocab}[a.cmd]()
+    {"todo": lambda: todo(a.batch), "merge": merge, "vocab": vocab, "scope": scope}[a.cmd]()
