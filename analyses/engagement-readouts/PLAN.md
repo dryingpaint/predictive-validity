@@ -92,12 +92,12 @@ a DB target.
 - 438 stops have no MONDO label in `preclin.indication`; the extractor sees the MONDO id only.
 - `batches/` is not tracked: `readouts.csv` is the record and names the batch each row came from.
 
-## Out of scope, and questions for Melissa
+## Out of scope, and open questions
 
 - Nothing writes to the DB (#70). The production form of layer 1 is a `pipeline/llm.py` Task whose
-  subject is her attribution row, so her re-runs produce our delta automatically; that port waits on the
-  DB-write question already in PR #81.
-- The labels moved today (a run completed 2026-11-02 21:52 UTC). `labels.csv` records the decision ids it
+  subject is the attribution row, so re-runs of the labels produce the delta automatically; that port
+  waits on the DB-write question in PR #81.
+- The labels moved on 2026-11-02 (a run completed 21:52 UTC). `labels.csv` records the decision ids it
   was pulled from; any number quoted from this directory should name that pull.
 - Whether "inferred_adequate" (engaged because the drug worked elsewhere) should be split out of
-  "engaged" in the report's headline once the readouts are known.
+  "engaged" in the report's headline now that the readouts are known.
