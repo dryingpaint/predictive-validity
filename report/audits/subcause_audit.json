@@ -1,0 +1,165 @@
+{
+ "sample": {
+  "safety": 35,
+  "sponsor_decision": 45,
+  "operational": 20,
+  "positive_not_advanced": 50
+ },
+ "seed": 11,
+ "causes": {
+  "operational": {
+   "n": 20,
+   "agree": 0.85,
+   "kappa": 0.6739130434782608,
+   "not_stated": 0.0,
+   "other_stated": 0.0,
+   "other_reasons": [],
+   "splits": [
+    {
+     "pair": [
+      "other_stated",
+      "trial_redesigned"
+     ],
+     "n": 2
+    },
+    {
+     "pair": [
+      "covid_19",
+      "enrollment"
+     ],
+     "n": 1
+    }
+   ],
+   "contradicted": 0.0,
+   "contradicted_by_route": {
+    "registry": 0.0,
+    "traced": 0.0
+   },
+   "text_causes": {},
+   "first_pass": {
+    "enrollment": 15,
+    "trial_redesigned": 3,
+    "covid_19": 1,
+    "site_or_supply": 1
+   }
+  },
+  "positive_not_advanced": {
+   "n": 50,
+   "agree": 0.98,
+   "kappa": 0.9158249158249158,
+   "not_stated": 0.86,
+   "other_stated": 0.02,
+   "other_reasons": [
+    "higher toxicity and deaths despite efficacy"
+   ],
+   "splits": [
+    {
+     "pair": [
+      "not_stated",
+      "other_stated"
+     ],
+     "n": 1
+    }
+   ],
+   "contradicted": 0.08,
+   "contradicted_by_route": {
+    "registry": 0.08,
+    "traced": 0.08
+   },
+   "text_causes": {
+    "not_a_program": 3,
+    "not_stopped": 1
+   },
+   "first_pass": {
+    "not_stated": 43,
+    "portfolio_prioritisation": 3,
+    "replaced_by_successor": 2,
+    "approved_outside_us": 1,
+    "other_stated": 1
+   }
+  },
+  "safety": {
+   "n": 35,
+   "agree": 0.9428571428571428,
+   "kappa": 0.8981077147016011,
+   "not_stated": 0.2571428571428571,
+   "other_stated": 0.0,
+   "other_reasons": [],
+   "splits": [
+    {
+     "pair": [
+      "harm_mechanism_not_stated",
+      "not_stated"
+     ],
+     "n": 1
+    },
+    {
+     "pair": [
+      "harm_mechanism_not_stated",
+      "off_target_toxicity"
+     ],
+     "n": 1
+    }
+   ],
+   "contradicted": 0.0,
+   "contradicted_by_route": {
+    "registry": 0.0,
+    "traced": 0.0
+   },
+   "text_causes": {},
+   "first_pass": {
+    "harm_mechanism_not_stated": 21,
+    "not_stated": 9,
+    "animal_toxicology": 5
+   }
+  },
+  "sponsor_decision": {
+   "n": 45,
+   "agree": 0.9333333333333333,
+   "kappa": 0.9081007488087134,
+   "not_stated": 0.4666666666666667,
+   "other_stated": 0.0,
+   "other_reasons": [],
+   "splits": [
+    {
+     "pair": [
+      "funding_or_closure",
+      "not_stated"
+     ],
+     "n": 1
+    },
+    {
+     "pair": [
+      "commercial_or_competitive",
+      "not_stated"
+     ],
+     "n": 1
+    },
+    {
+     "pair": [
+      "funding_or_closure",
+      "partner_exit"
+     ],
+     "n": 1
+    }
+   ],
+   "contradicted": 0.044444444444444446,
+   "contradicted_by_route": {
+    "registry": 0.045454545454545456,
+    "traced": 0.043478260869565216
+   },
+   "text_causes": {
+    "positive_not_advanced": 2
+   },
+   "first_pass": {
+    "not_stated": 21,
+    "portfolio_prioritisation": 10,
+    "commercial_or_competitive": 5,
+    "funding_or_closure": 4,
+    "acquisition_or_merger": 2,
+    "partner_exit": 2,
+    "replaced_by_successor": 1
+   }
+  }
+ }
+}

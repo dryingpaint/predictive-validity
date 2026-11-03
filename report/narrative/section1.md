@@ -1,6 +1,6 @@
 ## Industry failure modes
 
-For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is {{section1.us_site.loa|pct}} (95% CI {{section1.us_site.loa_lo|pct}}–{{section1.us_site.loa_hi|pct}}), against BIO's {{bio.loa}} for 2011–2020 ({{bio.loa_novel}} for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is {{section1.overall.loa|pct}}. Once each stop is traced to its cause, efficacy or exposure explains {{stop_causes.likely.efficacy.share|pct0}} of Phase 2 and 3 stops and sponsor decisions {{stop_causes.likely.sponsor_decision.share|pct0}}.
+For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is {{section1.us_site.loa|pct}} (95% CI {{section1.us_site.loa_lo|pct}}–{{section1.us_site.loa_hi|pct}}), against BIO's {{bio.loa}} for 2011–2020 ({{bio.loa_novel}} for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is {{section1.overall.loa|pct}}. Once each stop is traced to its cause, efficacy or exposure explains {{stop_causes.shown.efficacy.share|pct0}} of Phase 2 and 3 stops and sponsor decisions {{stop_causes.shown.sponsor_decision.share|pct0}}.
 
 ### How programs are counted
 

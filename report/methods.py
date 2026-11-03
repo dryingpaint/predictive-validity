@@ -35,7 +35,7 @@ def main() -> None:
     r, j = n["rederivation"], n["adjudication"]
     doc = f"""# How the stop-cause and efficacy-failure figure is built
 
-Figure: `report/output/figures/efficacy_attribution.png`. Code: `pipeline/outcomes.py` (registry
+Figure: `report/output/figures/stop_causes_by_phase.png`. Code: `pipeline/outcomes.py` (registry
 classification), `report/section1.py` (stops and their registry reason), `pipeline/stops.py` (the shared
 definitions: cohort, final labels, which label settles which cause, the names of causes and subcauses),
 `pipeline/stop_causes.py` (tracing, and `assemble`, which writes `preclin.stop`), `pipeline/attribution.py`

@@ -55,6 +55,10 @@ SHOWN_COLORS = {  # report.stop_causes.SHOWN, in stacking order; spectrum order,
 }
 
 
+RC = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
+      "hatch.color": "white", "hatch.linewidth": 1.4}
+
+
 def dark(color: str) -> bool:
     """Whether white text reads better than dark text on this fill."""
     r, g, b = (int(color[i:i + 2], 16) / 255 for i in (1, 3, 5))
@@ -82,6 +86,7 @@ REGISTERED = {  # each registry reason (report.section1.REASON_ORDER) as the cau
     "business or strategic (explicit)": "sponsor_decision", "sponsor decision, unspecified": "sponsor_decision",
     "enrollment, operational or regulatory": "operational", "positive readout, not advanced": "positive_not_advanced",
     "other stated reason": "unknown", "results posted, no reason stated, endpoint not assessable": "unknown",
+    "results posted, mixed primary endpoint": "unknown",
     "completed, no results posted, no reason stated": "unknown", "stopped, no reason stated": "unknown",
 }
 
@@ -95,9 +100,7 @@ def registered_vs_traced():
     stopped = stopped.assign(registered=stopped.registry_reason.map(REGISTERED))
 
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
-    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
-          "hatch.color": "white", "hatch.linewidth": 1.4}
-    with plt.rc_context(rc):
+    with plt.rc_context(RC):
         fig, ax = plt.subplots(figsize=(10.5, 5.0))
         fig.subplots_adjust(left=0.2, right=0.97, top=0.82, bottom=0.02)
         ax.set_xlim(0, 1)
@@ -127,94 +130,86 @@ def registered_vs_traced():
         save(fig, "stop_causes_registered_vs_traced")
 
 
-def efficacy_attribution():
-    """Why programs stop, and why efficacy failed, by phase: one bar per phase in each part."""
-    n = json.load(open(os.path.join(OUT, "attribution", "numbers.json")))
-    traced = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
-    entry = pd.to_datetime(traced.phase_entry).dt.year
-    in_window = traced[entry.between(n["window"]["from"], n["window"]["to"])]
-    years = f"{n['window']['from']}–{n['window']['to']}"
-    efficacy_of = {1: n["phase1"], 2: n["by_phase"]["2"], 3: n["by_phase"]["3"]}
-    stops, failures = [], []
-    for phase in (1, 2, 3):
-        shown = in_window[in_window.phase.eq(phase)].shown.dropna()
-        stops.append((f"Phase {phase}", f"{len(shown):,} programs",
-                      [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()]))
-        e = efficacy_of[phase]
-        failures.append((f"Phase {phase}", f"{e['programs']:,} programs",
-                         [(e["subcauses"][g]["share"], col, g == "no_engagement_data") for g, col in ATTRIBUTION_COLORS.items()]))
-
-    logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)  # demibold falls back silently
-    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9,
-          "hatch.color": "white", "hatch.linewidth": 1.4}
-    with plt.rc_context(rc):
-        fig, ax = plt.subplots(figsize=(10.5, 6.4))
-        fig.subplots_adjust(left=0.13, right=0.97, top=0.865, bottom=0.02)
-        ax.set_xlim(0, 1)
-        ax.set_ylim(2.2, 11)
-        ax.axis("off")
-        fig.text(0.03, 0.975, "Why Phase 1, 2 and 3 programs stop", fontsize=16, fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 0.922, f"Industry programs that stopped, phase entries {years}", fontsize=10.5, color=MUTED, va="top")
-        for header, top, rows in (("ALL STOPS, BY CAUSE", 10.9, stops), ("WHY EFFICACY FAILED", 6.4, failures)):
-            ax.text(0, top, header, fontsize=7.5, color=MUTED, fontweight="demibold")
-            for k, (label, sub, segments) in enumerate(rows):
-                y = top - 0.65 - k * 0.95
-                stacked(ax, y, segments, height=0.66)
-                ax.text(-0.02, y + 0.03, label, ha="right", va="bottom", fontsize=10.5, color=INK, fontweight="demibold")
-                ax.text(-0.02, y - 0.02, sub, ha="right", va="top", fontsize=7.5, color=MUTED)
-
-        legend = dict(frameon=False, fontsize=8.5, loc="upper left", handlelength=1.0, handleheight=1.0,
-                      columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=3)
-        cause_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                  hatch="////" if c == "unknown" else None, label=SHOWN[c])
-                         for c, col in SHOWN_COLORS.items()]
-        ax.add_artist(ax.legend(handles=cause_handles, bbox_to_anchor=(-0.12, 0.645), **legend))
-        eff_handles = [matplotlib.patches.Patch(facecolor=col, edgecolor="white",
-                                                hatch="////" if g == "no_engagement_data" else None,
-                                                label=SUBCAUSE_LABELS[g][1])
-                       for g, col in ATTRIBUTION_COLORS.items()]
-        ax.legend(handles=eff_handles, bbox_to_anchor=(-0.12, 0.135), **legend)
-        save(fig, "efficacy_attribution")
+BROKEN_DOWN = ("efficacy", "sponsor_decision", "safety", "operational", "positive_not_advanced")
+EFFICACY_PARTS = [*ATTRIBUTION_COLORS, "not_attributed"]  # why efficacy failed, from the efficacy attribution
+GRAY_PARTS = ("not_stated", "no_engagement_data", "not_attributed")
+LIKELY_ONLY = "cause_likely"  # a stop whose cause is the model's likely cause has no subcause
+LIGHT = "#d9d7d1"
 
 
-def stop_subcauses():
-    """Each cause of Phase 2 and 3 stops broken down by subcause, one panel per cause in its color from the cause bar;
-    not stated in gray. Shares are of all the cause's stops, including the few with no subcause."""
+def stop_causes_by_phase():
+    """Why Phase 1, 2 and 3 programs stop: each phase's stops by cause (sourced or likely), then each cause's stops by
+    subcause in one panel per phase (for efficacy, what the evidence shows about target engagement), solid where the
+    text or a source states the subcause and pale where the search finds it only likely. Every panel sums to its
+    segment of the cause bar."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))
-    panels = [(c, n["subcauses"][c], n["subcause_programs"][c]) for c in ("sponsor_decision", "safety", "operational", "positive_not_advanced",
-                                                "unknown") if c in n["subcauses"]]
-    sizes = [len(BREAKDOWN[c]) for c, _, _ in panels]
+    d = pd.read_csv(os.path.join(OUT, "stop_causes", "programs.csv"))
+    d = d[pd.to_datetime(d.phase_entry).dt.year.between(n["window"]["from"], n["window"]["to"]) & d.shown.notna()]
+    d = d.assign(part=d.subcause.where(d.cause.eq(d.shown), LIKELY_ONLY),
+                 likely=d.get("subcause_support", pd.Series(index=d.index, dtype=object)).eq("likely"))
+    orders = {"efficacy": [x for x in [*EFFICACY_PARTS, LIKELY_ONLY] if d[d.shown.eq("efficacy")].part.eq(x).any()]}
+    for c in BROKEN_DOWN[1:]:
+        share = d[d.shown.eq(c)].part.value_counts()
+        named = [x for x in BREAKDOWN[c] if x not in ("other_stated", "not_stated")]
+        orders[c] = [x for x in sorted(named, key=lambda x: -share.get(x, 0)) + ["other_stated", "not_stated", LIKELY_ONLY]
+                     if share.get(x, 0)]  # a subcause no stop of the cause has is left out
+    names = {**SUBCAUSE_NAMES, **{k: v[1] for k, v in SUBCAUSE_LABELS.items()}, "not_attributed": "Not attributed",
+             LIKELY_ONLY: "Cause likely, not sourced"}
+    sizes = [len(orders[c]) for c in BROKEN_DOWN]
     logging.getLogger("matplotlib.font_manager").setLevel(logging.ERROR)
-    rc = {"font.family": ["Avenir Next", "Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"], "font.size": 9}
-    with plt.rc_context(rc):
-        fig, axes = plt.subplots(len(panels), 1, figsize=(8.6, 0.24 * sum(sizes) + 0.42 * len(panels) + 1.0),
-                                 gridspec_kw={"height_ratios": sizes, "hspace": 0.5})
-        fig.subplots_adjust(left=0.3, right=0.9, top=1 - 1.05 / fig.get_figheight(), bottom=0.02)
-        fig.text(0.03, 1 - 0.18 / fig.get_figheight(), "What each cause breaks down into", fontsize=14,
-                 fontweight="demibold", color=INK, va="top")
-        fig.text(0.03, 1 - 0.46 / fig.get_figheight(),
-                 f"Phase 2 and 3 industry programs that stopped, phase entries {n['window']['from']}–{n['window']['to']}",
-                 fontsize=9.5, color=MUTED, va="top")
-        for ax, (cause, dist, total) in zip(axes, panels):
-            order = [x for x in BREAKDOWN[cause] if x != "not_stated"]
-            order = sorted(order, key=lambda x: -dist[x]["share"]) + (["not_stated"] if "not_stated" in dist else [])
-            y = np.arange(len(order))[::-1]
-            color = SHOWN_COLORS[cause] if cause != "unknown" else "#a8a59c"
-            for yi, x in zip(y, order):
-                w = dist[x]["share"]
-                ax.add_patch(matplotlib.patches.Rectangle((0, yi - 0.34), w, 0.68, linewidth=0,
-                                                          facecolor="#d9d7d1" if x == "not_stated" else color))
-                ax.text(w + 0.008, yi, f"{w:.0%}  ({dist[x]['n']:,})", va="center", fontsize=8.5, color=INK2)
-            ax.set_yticks(y, [SUBCAUSE_NAMES[x] for x in order], fontsize=9, color=INK2)
-            ax.set_xlim(0, 1)
-            ax.set_ylim(-0.6, len(order) - 0.4)
-            ax.tick_params(length=0)
-            ax.set_xticks([])
-            for side in ax.spines.values():
-                side.set_visible(False)
-            ax.set_title(f"{SHOWN[cause].upper()} · {total:,} programs", loc="left", fontsize=7.5, color=MUTED,
-                         fontweight="demibold", x=-0.36)
-        save(fig, "stop_subcauses")
+    with plt.rc_context(RC):
+        fig = plt.figure(figsize=(11, 3.6 + 0.25 * sum(sizes) + 0.45 * len(BROKEN_DOWN)))
+        h = fig.get_figheight()
+        fig.text(0.03, 0.985, "Why Phase 1, 2 and 3 programs stop", fontsize=16, fontweight="demibold", color=INK,
+                 va="top")
+        fig.text(0.03, 0.985 - 0.32 / h, f"Industry programs that stopped, phase entries {n['window']['from']}–"
+                 f"{n['window']['to']}: the cause of each stop, and what each cause breaks down into",
+                 fontsize=10, color=MUTED, va="top")
+        top_h = 2.3 / h
+        ax = fig.add_axes([0.16, 1 - 0.75 / h - top_h, 0.8, top_h])
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0.5, 3.0)
+        ax.axis("off")
+        for k, phase in enumerate((1, 2, 3)):
+            shown = d[d.phase.eq(phase)].shown
+            y = 2.5 - k * 0.9
+            stacked(ax, y, [(float((shown == c).mean()), col, c == "unknown") for c, col in SHOWN_COLORS.items()])
+            ax.text(-0.02, y + 0.03, f"Phase {phase}", ha="right", va="bottom", fontsize=10.5, color=INK,
+                    fontweight="demibold")
+            ax.text(-0.02, y - 0.02, f"{len(shown):,} programs", ha="right", va="top", fontsize=7.5, color=MUTED)
+        ax.legend(handles=[matplotlib.patches.Patch(facecolor=col, edgecolor="white",
+                                                    hatch="////" if c == "unknown" else None, label=SHOWN[c])
+                           for c, col in SHOWN_COLORS.items()],
+                  frameon=False, fontsize=8.5, loc="upper left", handlelength=1.0, handleheight=1.0,
+                  columnspacing=1.4, labelspacing=0.5, labelcolor=INK2, ncol=6, bbox_to_anchor=(-0.02, -0.02))
+        grid = fig.add_gridspec(len(BROKEN_DOWN), 3, left=0.27, right=0.98, top=1 - 1.95 / h - top_h, bottom=0.02,
+                                height_ratios=sizes, hspace=0.45, wspace=0.18)
+        for i, cause in enumerate(BROKEN_DOWN):
+            order = orders[cause]
+            for j, phase in enumerate((1, 2, 3)):
+                g = d[d.shown.eq(cause) & d.phase.eq(phase)]
+                ax = fig.add_subplot(grid[i, j])
+                y = np.arange(len(order))[::-1]
+                for yi, x in zip(y, order):
+                    part = g[g.part.eq(x)]
+                    w, w_likely = len(part) / max(len(g), 1), part.likely.sum() / max(len(g), 1)
+                    gray = x in (*GRAY_PARTS, LIKELY_ONLY)
+                    ax.add_patch(matplotlib.patches.Rectangle((0, yi - 0.34), w - w_likely, 0.68, linewidth=0,
+                                                              facecolor=LIGHT if gray else SHOWN_COLORS[cause]))
+                    ax.add_patch(matplotlib.patches.Rectangle((w - w_likely, yi - 0.34), w_likely, 0.68, linewidth=0,
+                                                              facecolor=SHOWN_COLORS[cause], alpha=0.35))
+                    ax.text(w + 0.02, yi, f"{w:.0%}  ({len(part):,})", va="center", fontsize=8, color=INK2)
+                ax.set_yticks(y, [names[x] for x in order] if j == 0 else [""] * len(order), fontsize=8.5,
+                              color=INK2)
+                ax.set_xlim(0, 1.25)
+                ax.set_ylim(-0.6, len(order) - 0.4)
+                ax.tick_params(length=0)
+                ax.set_xticks([])
+                for side in ax.spines.values():
+                    side.set_visible(False)
+                ax.set_title((f"{SHOWN[cause].upper()}\n" if j == 0 else "\n") + f"PHASE {phase} · {len(g):,} programs",
+                             loc="left", fontsize=8, color=MUTED, fontweight="demibold")
+        save(fig, "stop_causes_by_phase")
 
 
 def loa_bars(csv, title, name, ref):
@@ -670,10 +665,8 @@ def main():
         prediction()
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
-    if os.path.exists(os.path.join(OUT, "attribution", "numbers.json")):
-        efficacy_attribution()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
-        stop_subcauses()
+        stop_causes_by_phase()
         registered_vs_traced()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
         s3_evidence_map()
