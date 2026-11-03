@@ -1,0 +1,72 @@
+context,mondo_id,drug_class,n_programs_in_class,ph2_entrants,ph2_advanced,ph2_suspended,ph2_censored,ph3_entrants,ph3_advanced,ph3_suspended,ph2_adv_rate_resolved,ph3_adv_rate_resolved,engagement,tier,efficacy,safety,dose
+asthma--ptgdr2-antagonists,MONDO:0004979,PTGDR2 antagonists,10,10,1,9,0,1,0,1,0.1,0.0,same,direct,contra,untested,untested
+chronic-obstructive-pulmonary-disease--chrm3-antagonists,MONDO:0005002,CHRM3 antagonists,9,8,1,7,0,2,2,0,0.12,1.0,same,downstream,same,same,untested
+cystic-fibrosis--cftr-positive-modulators,MONDO:0009061,CFTR positive modulators,16,14,5,9,0,4,3,1,0.36,0.75,same,downstream,same,untested,untested
+idiopathic-pulmonary-fibrosis--anti-il13-antibodies,MONDO:0800504,anti-IL13 antibodies,3,3,0,3,0,0,0,0,0.0,0.0,same,downstream,contra,untested,untested
+hepatitis-c-virus-infection--hepatitis-c-virus-serine-protea,MONDO:0005231,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",15,13,10,3,0,12,7,5,0.77,0.58,same,proximal,same,contra,contra
+hiv-infectious-disease--human-immunodeficiency-virus-type-1-,MONDO:0005109,Human immunodeficiency virus type 1 integrase inhibitor,4,3,3,0,0,4,4,0,1.0,1.0,same,proximal,same,contra,same
+influenza--hemagglutinin-inhibitor,MONDO:0005812,Hemagglutinin inhibitor,3,2,0,2,0,0,0,0,0.0,0.0,contra,contra,contra,untested,same
+chronic-hepatitis-b-virus-infection--core-antigen-inhibitor,MONDO:0005366,Core antigen inhibitor,1,1,0,1,0,0,0,0,0.0,0.0,same,proximal,same,contra,same
+non-small-cell-lung-carcinoma--egfr-inhibitors,MONDO:0005233,EGFR inhibitors,30,23,16,5,2,11,3,3,0.76,0.5,same,downstream,neg,untested,contra
+breast-cancer--erbb2-inhibitors,MONDO:0007254,ERBB2 inhibitors,22,9,5,3,1,8,4,1,0.62,0.8,same,direct,same,contra,same
+prostate-cancer--ar-antagonists,MONDO:0008315,AR antagonists,14,10,4,6,0,6,3,1,0.4,0.75,same,downstream,neg,neg,same
+colorectal-cancer--anti-egfr-antibodies,MONDO:0005575,anti-EGFR antibodies,6,5,0,5,0,0,0,0,0.0,0.0,untested,none,same,untested,untested
+acute-myeloid-leukemia--flt3-inhibitors,MONDO:0018874,FLT3 inhibitors,18,9,4,4,1,3,2,0,0.5,1.0,same,direct,untested,contra,contra
+hepatocellular-carcinoma--anti-pdcd1-antibodies,MONDO:0007256,anti-PDCD1 antibodies,8,5,2,1,2,4,0,0,0.67,0.0,untested,none,untested,contra,untested
+plasma-cell-myeloma--tnfrsf17-directed-depleters,MONDO:0009693,TNFRSF17-directed depleters,21,9,2,4,3,1,1,0,0.33,1.0,same,downstream,contra,contra,same
+malignant-pancreatic-neoplasm--map2k1-inhibitors,MONDO:0009831,MAP2K1 inhibitors,3,3,1,2,0,0,0,0,0.33,0.0,same,direct,contra,untested,
+ovarian-cancer--parp1-inhibitors,MONDO:0008170,PARP1 inhibitors,10,7,5,1,1,8,3,0,0.83,1.0,same,direct,same,same,same
+melanoma--braf-inhibitors,MONDO:0005105,BRAF inhibitors,6,3,3,0,0,3,3,0,1.0,1.0,same,direct,same,contra,same
+glioblastoma--tubb-inhibitors,MONDO:0018177,TUBB inhibitors,3,2,0,2,0,0,0,0,0.0,0.0,untested,none,contra,,same
+myelodysplastic-syndrome--cd33-directed-depleters,MONDO:0018881,CD33-directed depleters,4,2,0,2,0,0,0,0,0.0,0.0,contra,contra,untested,untested,untested
+gastric-cancer--erbb2-inhibitors,MONDO:0001056,ERBB2 inhibitors,7,4,3,1,0,2,0,0,0.75,0.0,untested,none,contra,same,untested
+small-cell-lung-carcinoma--anti-pdcd1-antibodies,MONDO:0008433,anti-PDCD1 antibodies,6,3,2,1,0,2,0,0,0.67,0.0,untested,none,untested,contra,untested
+follicular-lymphoma--cd19-directed-depleters,MONDO:0018906,CD19-directed depleters,7,3,2,0,1,0,0,0,1.0,0.0,same,downstream,same,contra,untested
+heart-failure--npr1-agonists,MONDO:0005252,NPR1 agonists,3,2,0,2,0,1,0,1,0.0,0.0,same,proximal,same,same,untested
+hypertensive-disorder--agtr1-antagonists,MONDO:0005044,AGTR1 antagonists,3,2,2,0,0,2,0,1,1.0,0.0,same,direct,same,same,same
+atrial-fibrillation--kcna5-blockers,MONDO:0004981,KCNA5 blockers,3,2,0,2,0,0,0,0,0.0,0.0,contra,contra,contra,same,untested
+coronary-artery-disorder--p2ry12-antagonists,MONDO:0005010,P2RY12 antagonists,2,2,0,2,0,0,0,0,0.0,0.0,same,direct,same,contra,untested
+alzheimer-disease--anti-mapt-antibodies,MONDO:0004975,anti-MAPT antibodies,7,4,0,4,0,0,0,0,0.0,0.0,same,direct,contra,untested,untested
+parkinson-disease--anti-snca-antibodies,MONDO:0005180,anti-SNCA antibodies,2,2,1,1,0,0,0,0,0.5,0.0,untested,none,contra,untested,untested
+diabetic-neuropathy--anti-ngf-antibodies,MONDO:0006626,anti-NGF antibodies,3,3,0,3,0,0,0,0,0.0,0.0,untested,none,untested,untested,
+migraine-disorder--calcrl-antagonists,MONDO:0005277,CALCRL antagonists,6,4,2,2,0,4,4,0,0.5,1.0,same,direct,same,same,same
+major-depressive-disorder--grin2b-antagonists,MONDO:0002009,GRIN2B antagonists,4,4,1,3,0,1,1,0,0.25,1.0,same,downstream,contra,untested,untested
+schizophrenia--pde10a-inhibitors,MONDO:0005090,PDE10A inhibitors,7,5,0,5,0,0,0,0,0.0,0.0,untested,none,contra,contra,contra
+attention-deficit-hyperactivity-disorder--slc6a2-inhibitors,MONDO:0007743,SLC6A2 inhibitors,7,5,3,2,0,5,3,2,0.6,0.6,same,downstream,untested,same,untested
+insomnia--hcrtr2-antagonists,MONDO:0013600,HCRTR2 antagonists,8,7,5,2,0,4,3,1,0.71,0.75,same,downstream,same,same,same
+rheumatoid-arthritis--btk-inhibitors,MONDO:0008383,BTK inhibitors,10,9,0,9,0,0,0,0,0.0,0.0,same,direct,contra,untested,same
+psoriasis--anti-il17a-antibodies,MONDO:0005083,anti-IL17A antibodies,8,6,2,3,1,2,1,0,0.4,1.0,same,downstream,untested,contra,untested
+ulcerative-colitis--s1pr1-agonists,MONDO:0005101,S1PR1 agonists,3,3,2,1,0,2,2,0,0.67,1.0,same,downstream,same,contra,untested
+crohn-disease--jak1-inhibitors,MONDO:0005011,JAK1 inhibitors,5,4,1,3,0,2,1,1,0.25,0.5,untested,none,untested,,
+sickle-cell-disease--hbb-replacement-gene-therapy,MONDO:0011382,HBB replacement / gene therapy,2,2,1,1,0,0,0,0,0.5,0.0,same,proximal,same,contra,untested
+hemophilia-a--f8-replacement-gene-therapy,MONDO:0010602,F8 replacement / gene therapy,18,9,5,2,2,12,7,3,0.71,0.7,same,proximal,contra,same,untested
+hemophilia-b--f9-replacement-gene-therapy,MONDO:0010604,F9 replacement / gene therapy,12,7,2,4,1,6,4,2,0.33,0.67,same,proximal,same,contra,untested
+paroxysmal-nocturnal-hemoglobinuria--anti-c5-antibodies,MONDO:0100244,anti-C5 antibodies,4,4,3,1,0,1,1,0,0.75,1.0,same,direct,same,same,same
+type-2-diabetes-mellitus--glp1r-agonists,MONDO:0005148,GLP1R agonists,30,19,6,13,0,8,5,2,0.32,0.71,same,proximal,same,contra,same
+type-1-diabetes-mellitus--slc5a2-inhibitors,MONDO:0005147,SLC5A2 inhibitors,6,5,4,1,0,2,0,1,0.8,0.0,same,downstream,same,contra,untested
+endometriosis--gnrhr-antagonists,MONDO:0005133,GNRHR antagonists,4,3,2,1,0,3,2,0,0.67,1.0,untested,none,untested,untested,untested
+secondary-hyperparathyroidism--casr-positive-modulators,MONDO:0006964,CASR positive modulators,4,4,3,1,0,3,1,1,0.75,0.5,same,downstream,same,same,untested
+hyperlipidemia--cetp-inhibitors,MONDO:0021187,CETP inhibitors,4,3,1,2,0,2,0,2,0.33,0.0,same,direct,contra,contra,untested
+obesity-disorder--glp1r-agonists,MONDO:0011122,GLP1R agonists,10,4,2,2,0,2,2,0,0.5,1.0,same,downstream,untested,untested,untested
+hypertriglyceridemia--apoc3-antisense-sirna,MONDO:0005347,APOC3 antisense / siRNA,3,2,2,0,0,1,0,1,1.0,0.0,same,direct,same,same,same
+prader-willi-syndrome--cnr1-negative-modulators,MONDO:0008300,CNR1 negative modulators,1,1,0,1,0,0,0,0,0.0,0.0,untested,none,untested,untested,untested
+metabolic-dysfunction-associated-steatoh--nr1h4-agonists,MONDO:0007027,NR1H4 agonists,6,4,0,2,2,1,0,0,0.0,0.0,untested,none,contra,contra,untested
+irritable-bowel-syndrome--tph1-inhibitors,MONDO:0005052,TPH1 inhibitors,2,2,0,2,0,0,0,0,0.0,0.0,same,proximal,untested,untested,untested
+primary-biliary-cholangitis--nr1h4-agonists,MONDO:0005388,NR1H4 agonists,4,3,0,2,1,1,1,0,0.0,1.0,same,downstream,same,contra,untested
+gastroesophageal-reflux-disease--atp4a-blockers,MONDO:0007186,ATP4A blockers,3,3,2,1,0,2,0,0,0.67,0.0,same,proximal,same,contra,untested
+dry-eye-syndrome--anti-tnf-antibodies,MONDO:0006733,anti-TNF antibodies,3,3,2,1,0,1,0,0,0.67,0.0,untested,none,contra,same,same
+age-related-macular-degeneration--anti-vegfa-antibodies,MONDO:0005150,anti-VEGFA antibodies,3,2,2,0,0,2,2,0,1.0,1.0,same,downstream,same,contra,same
+diabetic-macular-edema--anti-vegfa-antibodies,MONDO:0004728,anti-VEGFA antibodies,6,4,3,1,0,4,3,1,0.75,0.75,untested,none,untested,untested,untested
+open-angle-glaucoma--adora2a-agonists,MONDO:0005338,ADORA2A agonists,2,2,0,2,0,0,0,0,0.0,0.0,untested,none,same,untested,untested
+atopic-eczema--nr3c1-agonists,MONDO:0004980,NR3C1 agonists,5,4,0,4,0,1,0,1,0.0,0.0,untested,none,same,same,untested
+osteoarthritis--ntrk1-inhibitors,MONDO:0005178,NTRK1 inhibitors,4,4,0,4,0,0,0,0,0.0,0.0,untested,none,contra,untested,contra
+acne--unknown,MONDO:0011438,Unknown,1,1,1,0,0,1,1,0,1.0,1.0,untested,none,untested,untested,
+diabetic-kidney-disease--nr3c2-antagonists,MONDO:0005016,NR3C2 antagonists,4,3,1,2,0,1,1,0,0.33,1.0,untested,none,same,contra,untested
+allergic-rhinitis--ptgdr2-antagonists,MONDO:0011786,PTGDR2 antagonists,4,4,1,3,0,1,0,1,0.25,0.0,same,direct,same,,untested
+atopic-conjunctivitis--nr3c1-agonists,MONDO:0005642,NR3C1 agonists,2,2,0,2,0,0,0,0,0.0,0.0,untested,none,same,untested,untested
+eosinophilic-esophagitis--anti-il13-antibodies,MONDO:0005361,anti-IL13 antibodies,1,1,1,0,0,0,0,0,1.0,0.0,same,downstream,same,,
+overactive-bladder--adrb3-agonists,MONDO:0006624,ADRB3 agonists,3,2,2,0,0,3,2,1,1.0,0.67,untested,none,same,same,untested
+interstitial-cystitis--anti-ngf-antibodies,MONDO:0018301,anti-NGF antibodies,3,3,0,3,0,0,0,0,0.0,0.0,untested,none,contra,untested,untested
+benign-prostatic-hyperplasia--esr2-agonists,MONDO:0010811,ESR2 agonists,2,2,0,2,0,0,0,0,0.0,0.0,untested,none,contra,untested,untested
+premature-ejaculation--oxtr-antagonists,MONDO:0001780,OXTR antagonists,2,1,0,1,0,0,0,0,0.0,0.0,untested,none,contra,,untested
+hf-sglt2,MONDO:0005252,SGLT2 inhibitors,0,0,0,0,0,0,0,0,0.0,0.0,untested,none,untested,,untested

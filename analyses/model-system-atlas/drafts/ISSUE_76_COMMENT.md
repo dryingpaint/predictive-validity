@@ -1,4 +1,4 @@
-# Model-system atlas: 70 named contexts drafted and checked, rules v2 proposal (#76)
+# Model-system atlas: 70 named contexts drafted and checked, rules v3 proposed for review (#76)
 
 _Numbers from `matrix.py` over the finished run (71 contexts: the 70 named + the HF/SGLT2 pilot kept as the
 repurposed-class example, rule question #24)._
@@ -14,11 +14,14 @@ repurposed-class example, rule question #24)._
 | `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md` | the two agent briefs (v2 adds rule-agnostic fact fields so every cell can be re-scored when the rules change) |
 | `drafts/<id>.json`, `drafts/<id>.check.json` | 70 drafted contexts and their checker verdicts; `manifest.csv` tracks status |
 | `drafts/RULE_QUESTIONS.md` | 151 cases the current rules did not decide, each with the context it bit and a proposed answer |
-| `drafts/RULES_V2_PROPOSAL.md` | the 151 questions collapsed into 14 decisions + a schema v3; the thing to agree on |
+| `drafts/RULES_V2_PROPOSAL.md` | the 151 questions collapsed into 15 decisions + a schema v3; the thing to agree on |
 | `drafts/matrix.py` → `matrix_entries.csv`, `matrix_cells.csv` | one row per entry / per cell, drafter and checker status side by side, all fact fields |
 | `drafts/summary_figure.py` → `summary.png` | status by question, drafter vs checker, stated vs juxtaposed, by area |
 | `drafts/render_pilot.py` → `drafts/pilot_render/atlas.png` | all 70 through `figure.py` with checker corrections applied |
 | `drafts/lint.py` | schema check (empty cells, same-status entries, unknown keys) |
+| `drafts/RULES_WALKTHROUGH.md` | the 15 decisions as Stephen called them, 2026-11-02 |
+| `drafts/DRAFTER_BRIEF_v3.md` | proposed v3 brief written to those calls (v2 kept as the record of this run) |
+| `drafts/engagement_kind_result.py` → `ENGAGEMENT_KIND_RESULT.md` | does the kind of engagement readout (direct / product / downstream) track the class's later Phase 2 → 3 advancement in the DB; report-ready block |
 
 Nothing was written to the DB (#70 is open); `lists.py` is read-only.
 
@@ -77,8 +80,15 @@ Across 71 contexts and 284 cells after the checker pass:
 
 ## What I'd like from you
 
-- Read `RULES_V2_PROPOSAL.md` and mark each of the 14 decisions agree / change. Decisions 1, 4, 6
-  and 9 move the most cells.
+- Stephen has made a call on all 15 decisions (`RULES_WALKTHROUGH.md`; status table at the top of
+  `RULES_V2_PROPOSAL.md`), and `DRAFTER_BRIEF_v3.md` is the brief written to those calls. Every one of
+  them is yours to overrule. The five he explicitly wants your view on: 2 (admit meta-analyses and
+  press/SEC filings as patient-side sources?), 6 (`contra` recoverable when the best model changes?),
+  10 (post-hoc models excluded outright), 12 (class boundaries, as written), 13 (`neg` judged by what
+  the model data showed; cross-class evidence set aside).
+- The engagement-readout result (`ENGAGEMENT_KIND_RESULT.md`) is written in the report's register with
+  the table and the caveats; the claim it supports is "no detectable difference", not "the kind does
+  not matter", since the interval runs from 23 points worse to 4 better.
 - Say which cohort the join uses.
 - Whether writes to `pv_evidence.llm_decision` are acceptable during #70, so the two briefs can be
   ported into `pipeline/llm.py` `Task`s and the κ re-draft (30 contexts under v2 rules) runs through

@@ -1,7 +1,7 @@
 # Rules v2 proposal for the model-system atlas (issue #76, "agree the track-record rules")
 
 Drafted 2026-11-02 from the 70-context run (drafter + checker agents under `DRAFTER_BRIEF.md` v2 and
-`CHECKER_BRIEF.md`). The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fourteen
+`CHECKER_BRIEF.md`). The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fifteen
 decisions below. Each gives the rule I recommend, the questions it settles, and what it moves in the
 current drafts (numbers from `matrix.py` over the finished run: 71 contexts, 284 cells, 166 of them scored
 `same`/`contra`/`neg`). Nothing here is applied yet; the
@@ -10,6 +10,19 @@ drafts record the facts needed to re-score under either answer.
 The one-line version: **keep the five statuses, loosen rule 1 to admit juxtaposition and more source
 types, define the four cells sharply, make `contra` per model and per time point, and add six fields
 so the figure can show what the colours now hide.**
+
+**Status after the walkthrough with Stephen (2026-11-02, `RULES_WALKTHROUGH.md`).** Stephen has made a
+call on all fifteen; every one is Melissa's to overrule. `DRAFTER_BRIEF_v3.md` is the brief written to these
+calls. The five where Stephen explicitly wants her view:
+
+| decision | Stephen's call | wants Melissa's view |
+|---|---|---|
+| 1, 3, 4, 5, 7, 8, 9, 11, 14, 15 | as written below | no, but overrule freely |
+| 2 sources | tiers 1–3 in; tiers 4–5 (meta-analysis, press/SEC) leaning no | yes |
+| 6 `contra` recoverable | agree, tentatively | yes |
+| 10 post-hoc models | excluded outright (stronger than the original recommendation) | yes |
+| 12 class boundaries | recommendation as written | yes |
+| 13 `neg` / `other` | `neg` by what the model data showed; cross-class evidence set aside | yes |
 
 ## 1. A comparison may be stated by the source or made by the drafter
 
@@ -51,7 +64,8 @@ EU-first product loses its filed-model and safety-prediction facts.
 ## 3. Who counts as "patients"
 
 **Rule.** Engagement and dose accept healthy-volunteer PD/PK/occupancy studies (`subjects` records
-it). Efficacy requires patients of the context's disease. Safety accepts either. Biomarker-unselected
+it). Efficacy requires patients of the context's disease. Safety accepts either. A later patient PK or
+occupancy source enters as its own dated entry and overrides the volunteer entry. Biomarker-unselected
 trials count for a biomarker-labelled context when the biomarker's prevalence in the trial
 population is ≥ 80 % (#43). A human physiology study of the endogenous ligand before any drug exists
 is not a comparison for the class (#85).
@@ -65,9 +79,13 @@ recorded), #84, #88.
 | cell | question the cell answers | not this cell |
 |---|---|---|
 | engagement | did the **PD readout** the model used move in humans (occupancy, biomarker, sweat chloride)? | genotype-stratified response (efficacy, #20); target binding without a readout; the drug working by another mechanism is noted, not scored (#28) |
-| dose | was the model's exposure / occupancy / regimen target **reached** in humans (#2, #93, #123)? A regimen prediction (half-life → once daily) counts (#91). An FDA NOAEL-margin statement, a post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable is `untested` with `source_calls_it: scaling` (#50, #99, #118). Toxicity-blocked targets are `untested` (#22). Gene therapy: expression per vector dose, not specific activity (#107) | engaged-but-inert belongs to efficacy |
+| dose | was the model's exposure / occupancy / regimen target **reached, and sufficient** in humans (#2, #93, #123)? Tied to efficacy so one failure is counted once: (1) target never reached → dose `contra`, efficacy `untested`; (2) reached and the drug worked → both `same`; (3) reached, failed, abandoned → efficacy `contra` and dose `contra` with `derived_from: efficacy`, hatched and excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. A regimen prediction (half-life → once daily) counts (#91). An FDA NOAEL-margin statement, a post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable is `untested` with `source_calls_it: scaling` (#50, #99, #118). Toxicity-blocked targets are `untested` (#22). Gene therapy: expression per vector dose, not specific activity (#107) | a derived dose `contra` is never a second failure |
 | efficacy | did the **trial's primary endpoint** respond as predicted (#64)? When the sponsor pre-specified a secondary as the proof-of-concept gate that translates the model's readout (TPV for "involution"), that endpoint governs, with `endpoint_role: poc_gate` (#144). Missed primary + significant secondary is `untested` unless the source's own conclusion calls it a match (#32). A trial the authors disclaim as an efficacy test (#57) and an active-comparator ranking failure (#80) are `untested`. "Failed" = the predicted effect was absent or reversed, not that development stopped (#53) | surrogate-vs-outcome: see decision 9 |
 | safety | did the model's **stated prediction** hold, or was its **askable silence** contradicted (#13, #54, #89)? Silence is `contra` only if the harm was measurable in the model species at the time. A sponsor-dismissed animal signal that patients confirmed is `same` (#23). A regulator's retrospective reconciliation counts as stated (#79). A pre-signal finding in another frame is `untested` with a note (#87) | mechanism-attribution sentences that name no species or study (#111) |
+
+**Impact of the dose tie.** Of the 66 dose cells with an efficacy cell, 7 become derived (5 `same` → derived
+`contra`, 2 already double-counted) and 3 stay independent dose failures (FLT3/AML exposure never reached;
+HCV protease and EGFR scaling wrong while the drugs worked).
 
 **Also:** `contra` requires the model's own prediction to have failed; a failure the source attributes
 to conditions the model never tested is `untested` (#35, #72). A weak animal signal the source claims
@@ -144,11 +162,16 @@ figure overlays a marker when `outcome_tested` is negative (#97, #105, #119, #10
 Scannell point and the one thing the five colours cannot show: SHPT/EVOLVE, HF/ASCEND-HF,
 PBC/COBALT all read green today.
 
-## 10. Retrodiction and post-hoc models never earn `same`
+## 10. Post-hoc models are not used (Stephen's version, for Melissa)
 
-**Rule.** A model result that post-dates and is motivated by the patient result is not a prediction;
-it can earn `contra` if it fails, otherwise `untested` with `retrodiction: true` (#5, #11, #49,
-#106, #50). A non-significant trend in a terminated trial is not a patient result.
+**Rule.** A model result that post-dates and is motivated by the patient result is not used at all: the
+entry stays in the JSON as `retrodiction: true` for traceability and is drawn and counted as nothing (#5,
+#11, #49, #106, #50). A new prospective prediction such a model later makes enters as a fresh entry from
+its own date (HF/SGLT2 pig model → EMPA-TROPISM). A non-significant trend in a terminated trial is not a
+patient result.
+
+**Alternative (original recommendation).** Keep the entry: it can earn `contra` if it fails, otherwise
+`untested` with `retrodiction: true`.
 
 ## 11. Magnitude and partial agreement
 
@@ -179,16 +202,34 @@ reported with their program count so the reader can see how little of the indica
 
 ## 13. `neg` and `other`
 
-**Rule.** `neg` needs a prospective flag: a source that read the model as negative before the drug
-failed (#49); the model is the system, not the cell line (#48); the failure must be in this context's
-population (#21). `other` means another pharmacological mechanism for the three pharmacology cells and
-another molecule on the same platform for safety (#115).
+**Rule (Stephen's version, for Melissa).** `neg` is earned by what the model data showed, not by what the
+sponsor said about them: the model's own effect size fell below a stated threshold for the class, with
+the number recorded (BMS-641988's xenografts judged against the class's usual bar, not against the
+sponsor's press release); no prospective flag required (#49). The model is the system, not the cell line
+(#48); the failure must be in this context's population (#21). Cross-class evidence is set aside rather
+than used to colour this class's cell, so `other` is rare: another molecule on the same platform for
+safety only (#115).
+
+**Alternative (original recommendation).** `neg` needs a prospective flag, a source that read the model
+as negative before the drug failed; otherwise the status rewards hindsight. `other` admits another
+pharmacological mechanism for the three pharmacology cells.
 
 ## 14. Regulatory reliance is a flag, not a status
 
 **Rule.** FDA/EMA accepting model data in lieu of a trial (Kalydeco in-vitro label expansion) sets
 `regulatory_reliance: true` on the context; it does not change a cell's colour (#40). AMQP has
 qualified one animal model ever, so this flag will be rare and worth showing.
+
+## 15. Engagement readout tier (added after the run)
+
+**Rule.** Every engagement entry carries `readout_tier`: `direct` (occupancy, free target, ex-vivo
+blockade of a stimulus in dosed humans), `proximal` (the target's own product: transgene protein, viral
+load, acid, cGMP) or `downstream` (a biomarker or physiology further down the pathway). Direct is drawn
+solid, the other two hatched, and the column's headline is reported both ways (61 % "pharmacology showed
+up", ~21 % "engagement shown directly"). The tier is descriptive: the kind of readout did not separate
+classes that advanced from classes that did not (Phase 2 → 3 advancement 42 % direct vs 51 % inferred,
+difference −10 points, −23 to +4, p = 0.20; `ENGAGEMENT_KIND_RESULT.md`, which Melissa wants in the
+report, with the caveat that the interval allows a 20-point difference).
 
 ## Schema v3 additions
 
@@ -203,6 +244,9 @@ qualified one animal model ever, so this flag will be rare and worth showing.
 | `imported_from` | entry | MONDO id of the indication the comparison was made in |
 | `patient_trials` | entry | list of {nct, registry_date, doi, quote} that change no status |
 | `regulatory_reliance` | context | bool |
+| `readout_tier` | engagement entry | direct / proximal / downstream (decision 15) |
+| `derived_from` | dose entry | `efficacy` when the dose `contra` is the efficacy failure seen from the dose cell (decision 4) |
+| `endpoint_role` | efficacy entry | primary / poc_gate (decision 4) |
 | `confidence` | entry | enum high / medium / low; free text moves to `confidence_note` (drafters stuffed ~60 notes into it) |
 
 `magnitude` gains `null` and `opposite`; `source_calls_it` gains `partial`, `unresolved`,
@@ -217,7 +261,13 @@ qualified one animal model ever, so this flag will be rare and worth showing.
 4. Empty-vs-`untested` from decision 8.
 5. The schema v3 fields above, with `confidence` as an enum.
 6. A "do not" list: no `contra` from juxtaposition alone when the source attributes the failure to
-   untested conditions; no `same` for retrodiction; no press-release model-side evidence.
+   untested conditions; no post-hoc model at all (decision 10, if Melissa agrees); no press-release
+   model-side evidence.
+7. The dose tie from decision 4: the four cases as a table, `derived_from` on case 3.
+8. `readout_tier` on every engagement entry (decision 15), assigned by the drafter from the readout it
+   quotes.
+9. Healthy-volunteer dose and engagement entries record `subjects`; a patient PK/occupancy source is a
+   separate dated entry (decision 3).
 
 ## Production note: FDA review PDFs
 
