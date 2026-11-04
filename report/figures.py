@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 from report import bio, frame
-from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, s3_types, stratum_name
+from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
 
@@ -362,118 +362,79 @@ def s3_specificity():
     save(fig, "s3_specificity")
 
 
-# One row per kind of evidence, then its narrower versions. Each row names its Section 2 relative-success
-# feature (report.section2.FEATURES) and its Section 3 kind (evidence_types.csv) or refinement (refinements.csv).
-EVIDENCE_ROWS = [  # (label, family, Section 2 feature, Section 3 kind or refinement, narrower version)
-    ("Germline genetics for the disease", "Human genetics", "genetic_any", "germline", False),
-    ("GWAS", "Human genetics", "genetic_gwas", None, True),
-    ("Rare-variant or Mendelian", "Human genetics", "genetic_rare", None, True),
-    ("GWAS with locus-to-gene ≥ 0.8", "Human genetics", None, "gwas_strong", True),
-    ("Mendelian, non-hereditary disease", "Human genetics", None, "mendelian_nonhereditary", True),
-    ("GWAS and rare-variant together", "Human genetics", None, "allelic_series", True),
-    ("Drug raises function, hereditary disease", "Human genetics", None, "hereditary_activator", True),
-    ("Genetics points the drug's way", "Human genetics", None, "mechanism_concordant", True),
-    ("Somatic driver for the tumour", "Somatic", "somatic", "somatic", False),
-    ("Driver matches the drug", "Somatic", None, "somatic_matching", True),
-    ("Mouse model of the disease", "Mouse", "animal_model", "animal", False),
-    ("Close phenotype match", "Mouse", None, "animal_close", True),
-    ("Mouse model points the drug's way", "Mouse", None, "animal_direction", True),
-    ("Expressed differently in the disease", "Expression and pathways", "rna_expression", "expression", False),
-    ("Expression up + drug that lowers function", "Expression and pathways", None, "expression_inhibitor", True),
-    ("Disease pathway (Reactome)", "Expression and pathways", "affected_pathway", "pathway", False),
-    ("Target liability", "Target liability", None, "liability", False),
-    ("Intolerant of loss of function", "Target liability", "constrained", None, True),
-    ("Liability + drug that lowers function", "Target liability", None, "liability_inhibitor", True),
-    ("Drug potent at the target (≤ 100 nM)", "Drug pharmacology", "assay_potent", None, False),
-    ("Very potent (≤ 10 nM)", "Drug pharmacology", "assay_very_potent", None, True),
-    ("Functional potency measured in cells", "Drug pharmacology", "assay_cell_functional", None, True),
-    ("≥ 100-fold selective over off-targets", "Drug pharmacology", "assay_selective", None, True),
-    ("Approved drug on the target, related disease", "Clinical precedent", None, "benchmark", False),
+# One row per kind of evidence, then its narrower versions, each naming its Section 2 relative-success feature
+# (report.section2.FEATURES).
+EVIDENCE_ROWS = [  # (label, family, Section 2 feature, narrower version)
+    ("Germline genetics for the disease", "Human genetics", "genetic_any", False),
+    ("GWAS", "Human genetics", "genetic_gwas", True),
+    ("Rare-variant or Mendelian", "Human genetics", "genetic_rare", True),
+    ("Somatic driver for the tumour", "Somatic", "somatic", False),
+    ("Mouse model of the disease", "Mouse", "animal_model", False),
+    ("Expressed differently in the disease", "Expression and pathways", "rna_expression", False),
+    ("Disease pathway (Reactome)", "Expression and pathways", "affected_pathway", False),
+    ("Intolerant of loss of function", "Target liability", "constrained", False),
+    ("Drug potent at the target (≤ 100 nM)", "Drug pharmacology", "assay_potent", False),
+    ("Very potent (≤ 10 nM)", "Drug pharmacology", "assay_very_potent", True),
+    ("Functional potency measured in cells", "Drug pharmacology", "assay_cell_functional", True),
+    ("≥ 100-fold selective over off-targets", "Drug pharmacology", "assay_selective", True),
 ]
 FAMILY_COLORS = {**S3_GROUP_COLORS, "Drug pharmacology": "#b04a8f"}
 # Lines first published in 2019, which no program in the window could have had before entry: scored on
-# today's data (Section 2 relative_success_untimed.csv, Section 3 hindsight.csv) and drawn dashed.
-HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_line_screen_untimed", "cell_screen"),
-                  ("Essential in most cell lines", "Target liability", "pan_essential_untimed", "pan_essential")]
+# today's data (Section 2 relative_success_untimed.csv) and drawn dashed.
+HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_line_screen_untimed"),
+                  ("Essential in most cell lines", "Target liability", "pan_essential_untimed")]
 
 
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
 
 
 def evidence_translates():
-    """Each kind of evidence and its narrower versions, three ways: relative success to approval from any
-    phase; the adjusted risk ratio of advancing from Phase 2 within four years; and the relative risk of
-    advancing from Phase 2 with the other evidence lines held fixed (Section 2's joint model). A filled
-    dot is a 95% interval clear of 1 (middle panel: a Holm-corrected p below 0.05)."""
+    """Relative success to approval from any phase for each kind of evidence and its narrower versions; a filled
+    dot is a 95% interval clear of 1. Evidence known only after entry is drawn dashed, below the rest."""
     rs = pd.concat([pd.read_csv(os.path.join(OUT, "section2", f)) for f in
                     ("relative_success.csv", "relative_success_untimed.csv")]).set_index("feature")
-    joint = pd.read_csv(os.path.join(OUT, "section2", "joint_rr_by_phase.csv"))
-    joint = joint[joint.phase == 2].set_index("feature")
-    types, refined = s3_types()
-    s3 = pd.concat([types.set_index("type"), refined.set_index("refinement")])
-    s3.loc["benchmark", "holm_p"] = s3.at["benchmark", "p"]
-    late = pd.read_csv(os.path.join(OUT, "section3", "hindsight.csv")).set_index("line")
-    rows = []  # (label, family, narrow, approval, Phase 2, Phase 2 held fixed, Section 3 row, hindsight)
-    for label, family, f2, f3, narrow in EVIDENCE_ROWS:
-        left = rs.loc[f2] if f2 and pd.notna(rs.at[f2, "rs"]) else None
-        mid = s3.loc[f3] if f3 and pd.notna(s3.at[f3, "rr"]) else None
-        held = joint.loc[f2] if f2 in joint.index else None
-        if left is not None or mid is not None:
-            rows.append((label, family, narrow, left, mid, held, s3.loc[f3] if f3 else None, False))
-    for label, family, f2, f3 in HINDSIGHT_ROWS:
-        left = rs.loc[f2] if pd.notna(rs.at[f2, "rs"]) else None
-        mid = late.loc[f3] if pd.notna(late.at[f3, "rr"]) else None
-        rows.append((label, family, False, left, mid, None, late.loc[f3], True))
-    first_late = next(i for i, r in enumerate(rows) if r[7])
+    rows = []  # (label, family, narrow, relative success row, known only after entry)
+    for label, family, f2, narrow in EVIDENCE_ROWS:
+        if pd.notna(rs.at[f2, "rs"]):
+            rows.append((label, family, narrow, rs.loc[f2], False))
+    for label, family, f2 in HINDSIGHT_ROWS:
+        if pd.notna(rs.at[f2, "rs"]):
+            rows.append((label, family, False, rs.loc[f2], True))
+    first_late = next(i for i, r in enumerate(rows) if r[4])
     ys, y = [], 0.0
     for i, r in enumerate(rows):
-        y -= 1 if i == 0 or r[2] or (r[7] and i != first_late) else 2.3 if i == first_late else 1.5
+        y -= 1 if i == 0 or r[2] or (r[4] and i != first_late) else 2.3 if i == first_late else 1.5
         ys.append(y)
-    fig, (a1, a2, a3) = plt.subplots(1, 3, figsize=(12, 0.42 * len(rows) + 2.2), sharey=True,
-                                     gridspec_kw={"wspace": 0.1})
-    lim = (np.log2(0.2), np.log2(7))
-
-    def dot(ax, yi, est, lo, hi, color, filled, dashed=False):
-        ax.plot([np.log2(max(lo, 0.2)), np.log2(min(hi, 7))], [yi, yi], color=color, linewidth=2,
-                solid_capstyle="round", linestyle=(0, (2, 1.5)) if dashed else "-")
-        ax.plot(np.log2(est), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
-                markerfacecolor=color if filled else "white", markeredgecolor=color)
-
-    for yi, (label, family, narrow, left, mid, held, kind, late_row) in zip(ys, rows):
-        color = MUTED if late_row else FAMILY_COLORS[family]
-        if left is not None:
-            dot(a1, yi, left.rs, left.rs_lo, left.rs_hi, color, left.rs_lo > 1 or left.rs_hi < 1, late_row)
-        if mid is not None:
-            dot(a2, yi, mid.rr, mid.lo, mid.hi, color, (mid.p if late_row else mid.holm_p) < 0.05, late_row)
-        if held is not None:
-            dot(a3, yi, held.rr, held.rr_lo, held.rr_hi, color, held.rr_lo > 1 or held.rr_hi < 1)
-    top = ys[0] + 0.7
+    fig, ax = plt.subplots(figsize=(10, 0.42 * len(rows) + 2.2))
+    lim = (np.log2(0.2), np.log2(5))
+    for yi, (label, family, narrow, r, late) in zip(ys, rows):
+        color = MUTED if late else FAMILY_COLORS[family]
+        ax.plot([np.log2(max(r.rs_lo, 0.2)), np.log2(min(r.rs_hi, 5))], [yi, yi], color=color, linewidth=2,
+                solid_capstyle="round", linestyle=(0, (2, 1.5)) if late else "-")
+        clear = r.rs_lo > 1 or r.rs_hi < 1
+        ax.plot(np.log2(r.rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
+                markerfacecolor=color if clear else "white", markeredgecolor=color)
+        ax.text(np.log2(5) + 0.1, yi, f"{r.rs:.2f}×", va="center", color=INK2, fontsize=10)
     ticks = [0.25, 0.5, 1, 2, 4]
-    for ax, title, xlabel in (
-            (a1, "Reaching approval,\nfrom any phase", "Relative success: approval with ÷ without (95% CI)"),
-            (a2, "Advancing from Phase 2\nwithin 4 years", "Adjusted risk ratio (95% CI)"),
-            (a3, "Advancing from Phase 2,\nother lines held fixed", "Relative risk, all lines in one model (95% CI)")):
-        ax.axvline(0, color=INK2, linewidth=1)
-        ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-        ax.set_xlim(*lim)
-        ax.set_xlabel(xlabel, color=INK2, fontsize=10)
-        ax.set_title(title, loc="left", color=INK, fontsize=11.5, wrap=True)
-        ax.tick_params(axis="x", labelsize=10)
-        style(ax)
-    a1.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=11)
-    a1.tick_params(axis="y", pad=LABEL_PAD)
-    for t, (_, _, narrow, *_, late_row) in zip(a1.get_yticklabels(), rows):
+    ax.axvline(0, color=INK2, linewidth=1)
+    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+    ax.tick_params(axis="x", labelsize=10)
+    ax.set_xlim(*lim)
+    ax.set_xlabel("Relative success: likelihood of approval with the evidence ÷ without it (95% CI)", color=INK2,
+                  fontsize=10)
+    style(ax)
+    ax.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=11)
+    ax.tick_params(axis="y", pad=LABEL_PAD)
+    for t, (_, _, narrow, _, late) in zip(ax.get_yticklabels(), rows):
         t.set_horizontalalignment("left")
-        t.set_color(INK2 if narrow or late_row else INK)
-    label_x = -LABEL_PAD / 72 / (fig.get_figwidth() * a1.get_position().width)  # the labels' left edge, in a1's axes
-    a1.text(label_x, ys[first_late] + 0.95,
-            "Known only after entry: first published in 2019, scored on today's data",
-            transform=a1.get_yaxis_transform(), color=INK2, fontsize=10, style="italic")
-    a1.set_ylim(ys[-1] - 0.7, top + 0.9)
-    a1.text(label_x, top + 3.2, "Programs entering a phase in 2008–2019, by evidence known the year before entry.\n"
-            "Indented: a narrower version (middle panel: against the rest of its kind). Filled: interval clear of 1\n"
-            "(middle panel: Holm-corrected p < 0.05). Counts are in the appendix.",
-            transform=a1.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
+        t.set_color(INK2 if narrow or late else INK)
+    label_x = -LABEL_PAD / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes
+    ax.text(label_x, ys[first_late] + 0.95, "Known only after entry: first published in 2019, scored on today's data",
+            transform=ax.get_yaxis_transform(), color=INK2, fontsize=10, style="italic")
+    top = ys[0] + 0.7
+    ax.set_ylim(ys[-1] - 0.7, top + 0.4)
+    ax.text(label_x, top + 1.2, "Reaching approval from any phase, programs entering a phase in 2008–2019, by evidence known\n"
+            "the year before entry. Indented: a narrower version. Filled: 95% interval clear of 1. Counts are in the appendix.", transform=ax.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
     save(fig, "evidence_translates")
 
 

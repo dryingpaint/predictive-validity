@@ -10,7 +10,7 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 ### Which evidence predicts
 
-![Each kind of evidence and its narrower versions: relative success in reaching approval (left), the adjusted risk ratio of advancing from Phase 2 within four years (middle), and the same with the other evidence lines held fixed (right)](report/output/figures/evidence_translates.png)
+![Relative success in reaching approval for each kind of preclinical evidence and its narrower versions](report/output/figures/evidence_translates.png)
 
 {{SECTION2_RS}}
 
