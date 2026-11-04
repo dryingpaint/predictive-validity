@@ -155,6 +155,8 @@ def main() -> None:
                       for p in (1, 2, 3)},
          "likely_only": {c: float((d.shown.eq(c) & d.cause.ne(c)).sum() / max(d.shown.eq(c).sum(), 1))
                          for c in SUBCAUSES},
+         "sourced": {c: float((d.shown.eq(c) & d.cause.eq(c)).sum() / max(d.shown.eq(c).sum(), 1))
+                     for c in SUBCAUSES},
          "named": {c: {"share": float(g.subcause.ne("not_stated").mean()),
                        "stated": float(g.subcause_support.eq("stated").mean()),
                        "likely": float(g.subcause_support.eq("likely").mean())}

@@ -25,28 +25,47 @@ Over the past century, drug development moved from natural observation and pheno
 
 ## Industry failure modes
 
-For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 9.7% (95% CI 8.7%–10.9%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 6.3%. Once each stop is traced to its cause, efficacy or exposure explains 48% of Phase 2 and 3 stops and sponsor decisions 21%.
+For development programs that entered a phase in 2008–2019 and were developed in the US, the likelihood of FDA approval from Phase 1 is 10.6% (95% CI 9.5%–11.7%), against BIO's 7.9% for 2011–2020 (6.8% for novel drugs). Across all industry programs registered on ClinicalTrials.gov, including those run only outside the US, it is 7.2%. Once each stop is traced to its cause, efficacy or exposure explains 48% of Phase 2 and 3 stops and sponsor decisions 21%.
 
 ### How programs are counted
 
-12,750 programs of 7,060 individual drugs entered at least one phase in 2008–2019. Entries end in 2019 so that every program has had at least six years to advance or stop before the snapshot; registration of industry trials became mandatory in the US in late 2007, so the window starts in 2008. A program is one molecular entity developed for one indication; it enters a phase when its first industry trial of that phase starts, and *advances* when a later-phase trial in the disease starts or the FDA approves it for the disease. As in BIO's report, each phase's success rate is advanced ÷ (advanced + stopped), and LOA is their product. The full counting rules are in the appendix.
+12,629 programs of 7,034 individual drugs entered at least one phase in 2008–2019. Entries end in 2019 so that every program has had at least six years to advance or stop before the snapshot; registration of industry trials became mandatory in the US in late 2007, so the window starts in 2008. A program is one molecular entity developed for one indication; it enters a phase when its first industry trial of that phase starts, and *advances* when a later-phase trial in the disease starts or the FDA approves it for the disease. A program the registry shows as stopped but that tracing found had gone on counts as advancing when a later-phase trial started elsewhere, and as still running when its development went on recently. As in BIO's report, each phase's success rate is advanced ÷ (advanced + stopped), and LOA is their product. The full counting rules are in the appendix.
 
 ### Why programs stop
 
 For 2,993 of the 5,479 Phase 2 and 3 stops among 2008–2019 entries, the registry gives no usable reason: none at all, only "sponsor decision", an unspecified "other" reason, a mixed primary endpoint, or an efficacy reason that the reading of efficacy failures below found wrong. An LLM traced each of these through the program's trials and a web search of company releases, filings and news. It found a sourced cause for 72% and a likely cause for 98%. How it works, and how well it does on stops whose reason is known, is in the appendix.
 
-**Some recorded stops were not stops.** 366 Phase 2 and 3 programs had not stopped: development went on under another registry, region, name or combination, or the FDA approved the drug for the disease. 72 more were never development programs, but academic studies that used an approved drug as a research tool, or drug-interaction and dosing studies. Both are left out of the shares below. Section 1's rates, which read only ClinicalTrials.gov, count them as stops, so they run somewhat high.
+**Some recorded stops were not stops.** Tracing found that 366 Phase 2 and 3 programs the registry shows as stopped had carried on: under another registry, region, name or combination, or through FDA approval for the disease. Another 72 were never development programs: academic studies using an approved drug as a research tool, or drug-interaction and dosing studies. The cause shares in this section leave all of them out, and the success rates above count what tracing found: a later phase as advancing, development still under way as still running, and non-programs not at all. Read from ClinicalTrials.gov alone, counting them all as stops, the likelihood of approval would be 6.3% across all programs rather than 7.2%, and 9.7% for programs developed in the US rather than 10.6%.
 
 **Efficacy is the main reason programs stop in Phases 2 and 3.** Counting sourced and likely causes, efficacy or exposure ended 49% of Phase 2 stops and 48% of Phase 3 stops, against 29% of Phase 2 and 3 stops as the registry records them. Sponsor decisions are the next largest cause in Phase 2 (24%) and the largest in Phase 1 (47%). In Phase 3, 31% of stops followed a positive readout. Safety is rare once only stops whose sponsor gives a safety reason count: 4% in Phase 2 and 4% in Phase 3.
 
 **What each cause breaks down into.** Shares are of Phase 2 and 3 stops whose cause is sourced.
 
-* **Sponsor decisions** most often put other programs first (34%) or followed the sponsor running out of money or closing (20%); a partner leaving (11%) and commercial or competitive reasons (11%) come next, and 11% say no more than "business reasons". For 42% of all sponsor-decision stops the cause itself is only likely, so they have no subcause.
-* **Positive readouts that went no further** mostly did so for the sponsor's own reasons (59% in all), chiefly putting other programs first (26%). In 23% the drug was approved outside the US, and in 3% a regulator declined it; 13% give no reason. For 38% the reason is likely rather than stated by a source.
-* **Safety stops** were mostly harms seen in patients whose mechanism no source states (72%). Off-target toxicity (14%), animal toxicology findings (7%) and on-target toxicity (6%) are the rest.
-* **Operational stops** are mostly slow enrollment (73%), then COVID-19 (9%) and trials redesigned or replaced (6%).
-* **Efficacy failures** are broken down in the next section, by whether the drug engaged its target.
-* **Stops no source explains**: 35% had a sponsor that started no later trial, and in 35% the drug was dropped while its sponsor carried on.
+* **Sponsor decisions**: a source names the decision for 58% of these stops; the other 42% are the likely cause where no source gives one, and have no subcause. Where a source gives it, by subcause:
+    * Other programs put first: 34%
+    * Sponsor ran out of money or closed: 20%
+    * Partner left: 11%
+    * Commercial or competitive reasons: 11%
+    * Only "business reasons" given: 11%
+* **Positive readouts that went no further**, by subcause:
+    * Sponsor's own reasons: 59% in all, chiefly other programs put first (26%)
+    * Approved outside the US: 23%
+    * Regulator declined it: 3%
+    * No reason given: 13%
+    * 38% have a likely rather than a sourced reason
+* **Safety stops**, by subcause:
+    * Harms in patients, mechanism not stated: 72%
+    * Off-target toxicity: 14%
+    * Animal toxicology findings: 7%
+    * On-target toxicity: 6%
+* **Operational stops**, by subcause:
+    * Slow enrollment: 73%
+    * COVID-19: 9%
+    * Trials redesigned or replaced: 6%
+* **Efficacy failures**: broken down in the next section, by whether the drug engaged its target
+* **Stops no source explains**, by signal:
+    * Sponsor started no later trial: 35%
+    * Drug dropped while its sponsor carried on: 35%
 
 ![Top: Phase 1, 2 and 3 stops by cause, phase entries 2008–2019, leaving out programs that did not actually stop or were not development programs; where no source states the cause, the likely cause is counted. Below: each cause broken down by subcause, one panel per phase. Solid: the stop's own text or a source states the subcause; pale: the search found it likely but no source says it; "not stated": the sources say no more than the cause; "cause likely, not sourced": the cause itself is only likely, so it has no subcause. For efficacy, the panels show what the evidence says about target engagement; programs whose efficacy failure was not attributed are those without an efficacy label](report/output/figures/stop_causes_by_phase.png)
 
@@ -74,7 +93,7 @@ The efficacy panels of the figure above break these failures down by phase. Wher
 
 ![Likelihood of approval by modality](report/output/figures/loa_by_modality.png)
 
-Disease areas rank differently from BIO's: the rank correlation with BIO's LOA across the 15 areas is 0.47 for all programs and 0.42 for US-developed ones. Across all programs, hematology, oncology and metabolic programs reach approval most often (19.3%, 11.7% and 9.7%), and cardiovascular, gastroenterology and urology programs least (3.6%, 3.0% and 2.5%). Among US-developed programs, endocrine (14.0%) and oncology programs (13.9%) come out far above BIO's 6.6% and 5.3%; for oncology, the window takes in the wave of immunotherapy and antibody–drug conjugate approvals, and an approval in a cancer subtype counts for the program's cancer. Ophthalmology (6.5%) falls well below BIO's 11.9%. Among modalities, monoclonal antibodies and antibody–drug conjugates reach approval most often across all programs (14.1% and 11.7%), and among the classes BIO also reports, antisense oligonucleotides (3.7%), peptides (4.3%) and gene therapies (5.9%) least. RNA interference and CAR-T, near the top of BIO's ordering, have too few entities resolved in Phase 3 here (most of their approvals came straight from Phase 2) to estimate. Across the 7 classes both estimate, the modality ordering agrees with BIO's (rank correlation 0.82).
+Disease areas rank differently from BIO's: the rank correlation with BIO's LOA across the 15 areas is 0.44 for all programs and 0.47 for US-developed ones. Across all programs, hematology, oncology and metabolic programs reach approval most often (21.0%, 12.6% and 11.2%), and cardiovascular, gastroenterology and urology programs least (4.1%, 3.4% and 3.4%). Among US-developed programs, endocrine (14.8%) and oncology programs (14.8%) come out far above BIO's 6.6% and 5.3%; for oncology, the window takes in the wave of immunotherapy and antibody–drug conjugate approvals, and an approval in a cancer subtype counts for the program's cancer. Ophthalmology (7.9%) falls well below BIO's 11.9%. Among modalities, monoclonal antibodies and antibody–drug conjugates reach approval most often across all programs (14.8% and 12.0%), and among the classes BIO also reports, antisense oligonucleotides (4.0%), peptides (5.0%) and gene therapies (6.8%) least. RNA interference and CAR-T, near the top of BIO's ordering, have too few entities resolved in Phase 3 here (most of their approvals came straight from Phase 2) to estimate. Across the 7 classes both estimate, the modality ordering agrees with BIO's (rank correlation 0.82).
 
 
 
@@ -214,7 +233,7 @@ Per-source detail (who compiles each source, what this analysis takes from it, r
 * **Molecular entity:** the active substance, whatever its brand, sponsor code, dose or salt, resolved to its FDA UNII substance where one exists. Biosimilars fold into their reference entity.
 * **Disease:** the MONDO term for the condition the trial treats, without line, stage, biomarker or age qualifiers.
 * **Program:** one entity developed for one indication. An indication groups the entity's MONDO diseases the way a sponsor runs them as programs (prostate cancer with castration-resistant and metastatic prostate carcinoma; diffuse large B-cell and follicular lymphoma kept apart), decided by an LLM for each entity. An entity belongs to a program only in trials where it is the investigational agent, not a comparator or background therapy. Each industry trial's purpose is classified first: bioequivalence, formulation, food-effect, interaction and other product-support studies (10,652 trials) belong to no program; a first-in-human study or a basket across several diseases counts as Phase 1 only for the program the sponsor pursued next.
-* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor) or the FDA approved the entity for the disease. A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement. A program is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-11-02); otherwise it is still running and *censored*. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
+* **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor) or the FDA approved the entity for the disease. A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement. A program is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within 24 months of the snapshot (2026-11-02); otherwise it is still running and *censored*. A suspended program that stop tracing found had gone on (appendix on stops) instead advanced, if a later-phase trial started anywhere by the snapshot, or is censored, if its development went on within 24 months of it; one that was never a development program, but an academic study using an approved drug as a research tool or a drug-interaction or dosing study, is left out. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
 * **Approval:** FDA approval of the entity for the program's disease, a subtype or population of it, or a broader approved class that includes it, judged from the dated approval letters, original-approval dates and labels of every application of the entity (CDER and CBER).
 
 ### Phase transitions
@@ -225,28 +244,30 @@ Per-source detail (who compiles each source, what this analysis takes from it, r
 
 | Cohort or definition | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) |
 | :---- | :---- | :---- | :---- | :---- |
-| All programs | 54.7% | 29.3% | 39.2% | 6.3% (5.6–7.0) |
-| Programs with a US-sited industry trial in the phase | 56.7% | 32.1% | 53.3% | 9.7% (8.7–10.9) |
-| Entity not yet FDA-approved at phase entry | 54.1% | 27.8% | 38.8% | 5.8% (5.2–6.5) |
-| Entity already FDA-approved for another disease | 57.6% | 39.5% | 40.4% | 9.2% (7.0–12.1) |
-| Suspension lag 12 months | 53.9% | 28.6% | 38.3% | 5.9% (5.3–6.6) |
-| Suspension lag 18 months | 54.1% | 28.9% | 38.7% | 6.0% (5.4–6.8) |
-| Suspension lag 36 months | 56.1% | 30.0% | 40.5% | 6.8% (6.1–7.6) |
-| Uncertain approvals counted as approved | 54.7% | 29.3% | 39.2% | 6.3% (5.6–7.0) |
-| Shared trials mark entry for every program of the entity | 73.0% | 42.6% | 42.2% | 13.1% (11.4–14.9) |
-| Including vaccines | 53.3% | 28.8% | 37.1% | 5.7% (5.1–6.3) |
-| Phase entry 2015-2025 (many programs still running) | 54.5% | 35.4% | 41.2% | 7.9% (7.1–8.8) |
-| Phase entry 2015-2025, developed in the US | 54.1% | 36.0% | 55.7% | 10.9% (9.6–12.1) |
+| All programs | 57.6% | 30.9% | 40.2% | 7.2% (6.4–7.9) |
+| Programs with a US-sited industry trial in the phase | 59.0% | 33.0% | 54.2% | 10.6% (9.5–11.7) |
+| Entity not yet FDA-approved at phase entry | 56.9% | 29.4% | 39.7% | 6.6% (6.0–7.3) |
+| Entity already FDA-approved for another disease | 61.6% | 42.1% | 42.0% | 10.9% (8.5–14.0) |
+| Suspension lag 12 months | 56.6% | 30.1% | 39.1% | 6.7% (6.0–7.4) |
+| Suspension lag 18 months | 56.9% | 30.4% | 39.7% | 6.9% (6.1–7.6) |
+| Suspension lag 36 months | 59.0% | 31.7% | 41.6% | 7.8% (6.9–8.6) |
+| Uncertain approvals counted as approved | 57.6% | 30.9% | 40.2% | 7.2% (6.4–8.0) |
+| Shared trials mark entry for every program of the entity | 74.6% | 43.9% | 43.2% | 14.1% (12.3–16.1) |
+| Including vaccines | 56.0% | 30.4% | 38.1% | 6.5% (5.9–7.2) |
+| Phase entry 2015-2025 (many programs still running) | 58.5% | 37.9% | 42.4% | 9.4% (8.4–10.4) |
+| Phase entry 2015-2025, developed in the US | 56.9% | 37.3% | 56.3% | 11.9% (10.7–13.3) |
+| Registry only: stops tracing found had not stopped counted as stops | 54.7% | 29.3% | 39.2% | 6.3% (5.6–7.0) |
+| Registry only, developed in the US | 56.7% | 32.1% | 53.3% | 9.7% (8.7–10.9) |
 
 ### Change over time
 
-Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 4.9% of the time; those that entered in 2016–2019, 7.9% (8.0% and 11.1% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 26.2% to 32.1% and Phase 3 from 32.7% to 46.5% (48.3% to 58.7% for US-developed programs), while Phase 1 success fell slightly, from 57.3% to 52.9%.
+Success rose across the window. Programs that entered a phase in 2008–2011 reached approval from Phase 1 5.5% of the time; those that entered in 2016–2019, 9.3% (8.8% and 12.1% for US-developed programs). The gain came in the later phases: Phase 2 success rose from 27.2% to 34.6% and Phase 3 from 33.9% to 47.7% (49.6% to 59.4% for US-developed programs), while Phase 1 success fell slightly, from 59.8% to 56.2%.
 
 | Phase entry | Entities | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval | LOA (95% CI) | US-developed: Phase 3 → approval | US-developed: LOA (95% CI) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| 2008–2011 | 2,722 | 57.3% | 26.2% | 32.7% | 4.9% (4.1–5.9) | 48.3% | 8.0% (6.8–9.4) |
-| 2012–2015 | 2,837 | 54.5% | 29.3% | 37.4% | 6.0% (4.9–7.1) | 51.1% | 9.8% (8.1–11.9) |
-| 2016–2019 | 3,615 | 52.9% | 32.1% | 46.5% | 7.9% (6.9–9.1) | 58.7% | 11.1% (9.4–12.8) |
+| 2008–2011 | 2,705 | 59.8% | 27.2% | 33.9% | 5.5% (4.6–6.5) | 49.6% | 8.8% (7.3–10.3) |
+| 2012–2015 | 2,822 | 57.5% | 30.8% | 38.1% | 6.7% (5.7–7.9) | 51.9% | 10.6% (8.9–12.6) |
+| 2016–2019 | 3,601 | 56.2% | 34.6% | 47.7% | 9.3% (8.1–10.6) | 59.4% | 12.1% (10.2–14.0) |
 
 Two features of the registry bear on these trends.
 
@@ -255,18 +276,18 @@ Two features of the registry bear on these trends.
 
 | Phase entry year | Phase 1 → 2 (share still running) | Phase 2 → 3 (share still running) | Phase 3 → approval (share still running) |
 | :---- | :---- | :---- | :---- |
-| 2008 | 56% (4%) | 25% (3%) | 31% (10%) |
-| 2009 | 57% (2%) | 26% (2%) | 35% (6%) |
-| 2010 | 59% (6%) | 26% (5%) | 27% (11%) |
-| 2011 | 57% (4%) | 28% (3%) | 37% (11%) |
-| 2012 | 53% (6%) | 26% (5%) | 34% (10%) |
-| 2013 | 53% (5%) | 28% (6%) | 34% (13%) |
-| 2014 | 57% (3%) | 30% (6%) | 40% (13%) |
-| 2015 | 54% (7%) | 33% (8%) | 41% (15%) |
-| 2016 | 52% (7%) | 32% (11%) | 51% (15%) |
-| 2017 | 61% (9%) | 33% (13%) | 47% (24%) |
-| 2018 | 49% (11%) | 29% (19%) | 41% (28%) |
-| 2019 | 51% (16%) | 34% (19%) | 47% (34%) |
+| 2008 | 59% (5%) | 25% (3%) | 32% (11%) |
+| 2009 | 60% (2%) | 27% (3%) | 37% (6%) |
+| 2010 | 62% (6%) | 27% (5%) | 29% (14%) |
+| 2011 | 59% (4%) | 30% (4%) | 38% (11%) |
+| 2012 | 56% (6%) | 27% (5%) | 35% (11%) |
+| 2013 | 55% (6%) | 29% (6%) | 35% (14%) |
+| 2014 | 60% (3%) | 32% (7%) | 41% (14%) |
+| 2015 | 58% (8%) | 35% (9%) | 41% (15%) |
+| 2016 | 55% (8%) | 35% (12%) | 52% (15%) |
+| 2017 | 64% (9%) | 35% (14%) | 48% (26%) |
+| 2018 | 53% (12%) | 31% (20%) | 42% (30%) |
+| 2019 | 54% (17%) | 37% (21%) | 49% (35%) |
 
 
 ### How each label was made, and how good it is
@@ -300,6 +321,8 @@ Three labels were also compared with the decisions their revised prompts replace
 **How well the tracing does.** The same procedure was run on 137 stops whose registry does state a reason, drawn at random across causes, with the reason removed and ClinicalTrials.gov blocked. It named a sourced cause for 83% of them, and that cause matched the registry's for 68% (κ = 0.57); the likely cause matched for 61% (κ = 0.49). Accuracy differs by cause. Efficacy or exposure stops were recognised 77% of the time, and only 79% of the stops it called efficacy or exposure were such stops in the registry: safety stops were often read as efficacy (companies announce both as an unfavourable benefit–risk), and sponsor decisions and operational stops were confused with each other (63% and 33% recognised). The efficacy share after tracing is therefore an upper estimate, and safety is likely under-counted. The registry's stated reason is itself an imperfect reference, since a stated business reason can hide a failed readout. Stops with a stated reason are probably also easier to trace, so accuracy on the unexplained stops is likely lower. One independent check holds: of programs traced to an acquisition, merger, lost funding or closure, 59% had a sponsor that started no trial afterwards, against 25% of those traced to efficacy.
 
 **Subcauses.** Each cause has one list of subcauses, ordered so that where more than one applies the first listed wins, with "other" for a specific reason no listed subcause covers and "not stated" where the sources say no more than the cause. A first pass, without web search, read each safety, sponsor-decision, operational and positive-readout stop's stated reason or traced source, named the subcause it states or directly implies, and named the cause the text itself gives. Where that differs, the stop moves to the text's cause: to efficacy, safety or a positive readout; from operational to a sponsor decision when the money ran out; to "did not actually stop" when development went on or the FDA approved the drug; and, for a positive readout, to "not a development program" when no one was developing the drug for the disease. A safety stop never becomes a positive readout. A second pass searched the web for every stop the first left without a subcause, chose from the same list and checked the cause the same way; it marks a subcause *stated* where a source says it and *likely* where the sources make it probable without saying so. Two independent runs of the first pass over a seeded sample of 150 stops agreed on 85% or more of each cause's stops (Cohen's κ 0.67 to 0.92). A stop with no traced cause is described by what happened next, from the registry: whether its sponsor started any later trial, and whether the drug was approved or continued in another disease.
+
+**Stops that did not stop.** For every stop moved to "did not actually stop", a further pass with web search, ClinicalTrials.gov included, found the furthest the program got afterwards: FDA approval for the disease, a later-phase trial started anywhere, development still under way in the same phase (a trial, a licensing deal or a filing), or no evidence that it went on, each with its date and sources. Section 1's rates count a program whose later-phase trial started by the snapshot as advancing, one whose development went on within 24 months of the snapshot as still running, and one with no such evidence as stopped; programs that were never development programs leave the cohort. Approvals this pass reports count only as development going on: a review of all 34 found device approvals, approvals of another drug and approvals for a different indication among them, so approvals come only from the audited approval judgement. Of the 2008–2019 phase entries this moves 192 to advancing and 91 to still running, and removes 131.
 
 **Classifying efficacy failures.** The cohort is every Phase 2 and 3 program that entered in 2008–2019 and stopped for efficacy or for PK, dose or formulation: as the registry records it (1,522 efficacy, 17 PK), or as traced with a source from the stops the registry does not explain (611 efficacy, 23 PK). An exposure failure is the same biology as a failure to engage, so PK stops are broken down here rather than counted apart. For each of the 2,173 programs the model would label (49 more, mostly gene and cell therapies and live biotherapeutics, were refused), an LLM read an evidence bundle: the failed trial's record, posted results and papers, the drug's other trials and their outcomes, results posted by its Phase 1 trials, its FDA approvals, other drugs on the same target in the same or a related disease, and PubMed abstracts on the drug's human pharmacology and on the drug in that disease. It judged, for humans and at the doses tested, the three pillars of [Morgan et al. 2012](https://doi.org/10.1016/j.drudis.2011.12.020): exposure at the site of action, binding or engagement of the target, and the expected pathway effect. Engagement could also be inferred when the drug worked in another disease through the same target and tissue compartment at a comparable dose. It then said why efficacy failed, using only the bundle and citing the sources it used. The categories and checks were fixed before any program was labelled. Where the bundle held no human evidence of engagement (40% of programs), a second pass, added after the first results, gave the same model the same bundle and the web: it searched full-text papers, conference reports, FDA and EMA reviews and company releases for human pharmacology, and could cite only pages its own searches returned. It decided 188 of the 837 programs it searched; the figures below use those labels.
 

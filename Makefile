@@ -101,6 +101,7 @@ evidence:
 	$(RUN) pipeline.attribution search
 	$(RUN) pipeline.stop_causes infer
 	$(RUN) pipeline.stop_causes assemble
+	$(RUN) pipeline.stop_causes continued
 
 report:
 	$(RUN) report
