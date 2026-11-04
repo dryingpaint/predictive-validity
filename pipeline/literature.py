@@ -339,78 +339,116 @@ def found(e: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def gate(args) -> None:
-    """Recall, agreement and coverage of the pilot against the blind reference set; writes GATE."""
-    e = pilot_entries()
-    f = found(e)
-    ref = []
-    for i in range(1, 5):
-        with open(os.path.join(args.reference, f"reference_part{i}_result.json")) as fh:
-            ref += json.load(fh)
-    ref_rows = reference_rows(ref, e)
-    k_ = {}
+def agreement() -> dict[str, dict]:
+    """Kind -> agreement of the screening model with the check model on the check sample."""
+    out = {}
     with llm.connect() as conn, conn.cursor() as cur:
-        for name, kinds in (("literature_animal_disease", ("qualifies",)),
-                            ("literature_drug_pharmacology", ("animal_healthy", "human_engagement"))):
-            cur.execute("""SELECT DISTINCT ON (d.subject_key, d.task) d.subject_key, d.task, d.parsed_output
-                           FROM pv_evidence.llm_decision d WHERE d.task IN (%s, %s) AND d.validation_status = 'validated'
-                           ORDER BY d.subject_key, d.task, d.created_at DESC""", (name, name + "_check"))
-            by = {}
-            for key, tname, out in cur.fetchall():
-                by.setdefault(key, {})[tname] = out
-            pairs = {k: v for k, v in by.items() if len(v) == 2}
-            for field in kinds:
-                kind = "animal_disease" if field == "qualifies" else field
-                a = [v[name][field] for v in pairs.values()]
-                b = [v[name + "_check"][field] for v in pairs.values()]
-                k_[kind] = {"pairs": len(a), "kappa": kappa(a, b), "agreement": float(np.mean(np.array(a) == np.array(b))) if a else None,
-                            "positives_main": int(sum(a)), "positives_check": int(sum(b))}
-    result = {"gates": GATES, "kinds": {}}
-    for kind in KINDS:
-        fr = f[(f.kind == kind)]
-        ref_k = ref_rows[ref_rows.kind == kind]
-        on_ref = fr.merge(e[e.reference_set][["moiety_id", "mondo_id", "phase"]], on=["moiety_id", "mondo_id", "phase"])
-        got = {(r.moiety_id, r.mondo_id, r.phase): set(r.pmids) for r in on_ref.itertuples()}
-        studies = ref_k.dropna(subset=["pmid"])
-        hit = [p in got.get((m, d, ph), set()) for m, d, ph, p in zip(studies.moiety_id, studies.mondo_id, studies.phase, studies.pmid)]
-        n_all = len(ref_k)
-        none_entries = set(on_ref[["moiety_id", "mondo_id", "phase"]].itertuples(index=False, name=None)) - \
-            set(ref_k[["moiety_id", "mondo_id", "phase"]].itertuples(index=False, name=None))
-        ph2 = fr[fr.phase == 2]
-        cov = float((ph2.pmids.str.len() > 0).mean()) if len(ph2) else None
-        recall = float(np.sum(hit) / n_all) if n_all else None
-        recall_pm = float(np.mean(hit)) if len(hit) else None
-        kap = k_.get(kind, {}).get("kappa")
-        result["kinds"][kind] = {
-            "reference_studies": n_all, "reference_studies_in_pubmed": len(studies),
-            "recall": recall, "recall_pubmed_indexed": recall_pm,
-            "reference_entries": int(ref_k[["moiety_id", "mondo_id", "phase"]].drop_duplicates().shape[0]),
-            "agreement_on_reference_none": float(np.mean([not got.get(x) for x in none_entries])) if none_entries else None,
-            "pipeline_entries_with_any": int((fr.pmids.str.len() > 0).sum()), "entries": len(fr),
-            "phase2_coverage": cov, "check": k_.get(kind),
-            "passes": bool(recall is not None and recall >= GATES["recall"] and kap is not None and kap >= GATES["kappa"]
-                           and cov is not None and cov >= GATES["phase2_coverage"])}
-    with open(GATE, "w") as fh:
-        json.dump(result, fh, indent=2, default=float)
-    print(json.dumps(result, indent=2, default=float))
+        for name, fields in (("literature_animal_disease", ("qualifies",)),
+                             ("literature_drug_pharmacology", ("animal_healthy", "human_engagement"))):
+            cur.execute("""SELECT DISTINCT ON (subject_key, task) subject_key, task, parsed_output
+                           FROM pv_evidence.llm_decision WHERE task IN (%s, %s) AND validation_status = 'validated'
+                           ORDER BY subject_key, task, created_at DESC""", (name, name + "_check"))
+            by: dict = {}
+            for key, tname, out_ in cur.fetchall():
+                by.setdefault(key, {})[tname] = out_
+            pairs = [v for v in by.values() if len(v) == 2]
+            for field in fields:
+                a = [v[name][field] for v in pairs]
+                b = [v[name + "_check"][field] for v in pairs]
+                out["animal_disease" if field == "qualifies" else field] = {
+                    "pairs": len(a), "kappa": kappa(a, b),
+                    "agreement": float(np.mean(np.array(a) == np.array(b))) if a else None,
+                    "positives_screen": int(sum(a)), "positives_check": int(sum(b))}
+    return out
 
 
 def reference_rows(ref: list[dict], e: pd.DataFrame) -> pd.DataFrame:
     """One row per qualifying study the reference agents listed: entry, kind, PMID (None when the study
-    is not in PubMed), year. Studies after the entry's cutoff year are dropped."""
+    is not in PubMed) and venue. Studies dated after the entry's cutoff year are dropped."""
     cut = {(int(r.moiety_id), r.mondo_id, int(r.phase)): int(r.cutoff_year) for r in e.itertuples()}
     rows = []
     for entry in ref:
         key = (int(entry["moiety_id"]), entry["mondo_id"], int(entry["phase"]))
-        for kind in KINDS:
-            for s in entry.get(kind, []) or []:
-                year = s.get("year")
-                if year is not None and int(year) > cut[key]:
-                    continue
-                pmid = str(s["pmid"]) if s.get("pmid") else None
-                rows.append({"moiety_id": key[0], "mondo_id": key[1], "phase": key[2], "kind": kind,
-                             "pmid": pmid, "year": year})
-    return pd.DataFrame(rows, columns=["moiety_id", "mondo_id", "phase", "kind", "pmid", "year"])
+        for s in entry.get("studies") or []:
+            if s.get("kind") not in KINDS or (s.get("year") is not None and int(s["year"]) > cut[key]):
+                continue
+            if s["kind"] == "human_engagement" and key[2] < 2:
+                continue
+            rows.append({"moiety_id": key[0], "mondo_id": key[1], "phase": key[2], "kind": s["kind"],
+                         "pmid": str(s["pmid"]) if s.get("pmid") else None, "venue": s.get("venue")})
+    return pd.DataFrame(rows, columns=["moiety_id", "mondo_id", "phase", "kind", "pmid", "venue"])
+
+
+def misses(rk: pd.DataFrame, e: pd.DataFrame) -> dict[str, int]:
+    """Why each PubMed-indexed reference study of one kind was or was not found: screened in, screened
+    out, kept but not screened, matched by the search but ranked below the HITS kept, or not matched."""
+    cut = {(r.moiety_id, r.mondo_id, r.phase): int(r.cutoff_year) for r in e.itertuples()}
+    out: dict[str, int] = {}
+    with llm.connect() as conn, conn.cursor() as cur:
+        for r in rk.dropna(subset=["pmid"]).itertuples():
+            d = r.mondo_id if r.kind == "animal_disease" else ""
+            y = cut[(r.moiety_id, r.mondo_id, r.phase)]
+            cur.execute("""SELECT s.query, h.pmid IS NOT NULL, c.qualifies FROM preclin.literature_search s
+                           LEFT JOIN preclin.literature_hit h ON h.moiety_id = s.moiety_id AND h.mondo_id = s.mondo_id
+                                AND h.kind = s.kind AND h.cutoff_year = s.cutoff_year AND h.pmid = %s
+                           LEFT JOIN preclin.literature_screen c ON c.moiety_id = s.moiety_id
+                                AND c.mondo_id = s.mondo_id AND c.kind = s.kind AND c.pmid = %s
+                           WHERE s.moiety_id = %s AND s.mondo_id = %s AND s.kind = %s AND s.cutoff_year = %s""",
+                        (r.pmid, r.pmid, int(r.moiety_id), d, r.kind, y))
+            row = cur.fetchone()
+            if row is None:
+                why = "not_searched"
+            elif row[1]:
+                why = "unscreened" if row[2] is None else "screened_in" if row[2] else "screened_out"
+            else:
+                root = ET.fromstring(eutils("esearch", term=f"({row[0]}) AND {r.pmid}[uid]", retmax="0"))
+                why = "ranked_below_kept" if int(root.findtext("Count") or 0) else "not_matched_by_query"
+            out[why] = out.get(why, 0) + 1
+    return out
+
+
+def gate(args) -> None:
+    """Recall, agreement and coverage of the pilot against the blind reference set; writes GATE."""
+    e = pilot_entries()
+    f = found(e)
+    ref: list[dict] = []
+    for i in range(1, 5):
+        with open(os.path.join(args.reference, f"reference_part{i}_result.json")) as fh:
+            ref += json.load(fh)
+    rr = reference_rows(ref, e)
+    keys = ["moiety_id", "mondo_id", "phase"]
+    on_ref = f.merge(e[e.reference_set][keys], on=keys)
+    agree = agreement()
+    result: dict = {"gates": GATES, "reference_entries": len(ref), "kinds": {}}
+    for kind in KINDS:
+        got = {(r.moiety_id, r.mondo_id, r.phase): set(r.pmids) for r in on_ref[on_ref.kind == kind].itertuples()}
+        rk = rr[rr.kind == kind]
+        hit = [p is not None and p in got.get((m, d, ph), set())
+               for m, d, ph, p in zip(rk.moiety_id, rk.mondo_id, rk.phase, rk.pmid)]
+        in_pm = rk.pmid.notna().to_numpy()
+        with_ref = set(rk[keys].itertuples(index=False, name=None))
+        none_ref = [k for k in got if k not in with_ref]
+        entry_recall = [bool(got.get(k)) for k in with_ref]
+        fk = f[f.kind == kind]
+        ph2 = fk[fk.phase == 2]
+        recall = float(np.mean(hit)) if hit else None
+        cov = float((ph2.pmids.str.len() > 0).mean()) if len(ph2) else None
+        kap = agree.get(kind, {}).get("kappa")
+        result["kinds"][kind] = {
+            "reference_studies": len(rk), "reference_studies_in_pubmed": int(in_pm.sum()),
+            "reference_studies_by_venue": rk.venue.fillna("unknown").value_counts().to_dict(),
+            "recall": recall,
+            "recall_pubmed_indexed": float(np.mean(np.array(hit)[in_pm])) if in_pm.any() else None,
+            "reference_entries_with_study": len(with_ref), "entries_judged": len(got),
+            "entry_recall": float(np.mean(entry_recall)) if entry_recall else None,
+            "pipeline_none_when_reference_none": float(np.mean([not got[k] for k in none_ref])) if none_ref else None,
+            "pilot_entries": len(fk), "pilot_entries_with_any": int((fk.pmids.str.len() > 0).sum()),
+            "phase2_coverage": cov, "check": agree.get(kind), "pubmed_reference_studies": misses(rk, e),
+            "passes": bool(recall is not None and recall >= GATES["recall"] and kap is not None
+                           and kap >= GATES["kappa"] and cov is not None and cov >= GATES["phase2_coverage"])}
+    with open(GATE, "w") as fh:
+        json.dump(result, fh, indent=2)
+    print(json.dumps(result, indent=2))
 
 
 def main() -> None:
