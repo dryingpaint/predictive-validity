@@ -97,3 +97,24 @@ def test_an_entry_is_biomarker_selected_by_the_trials_that_opened_its_phase():
     out = biomarker_selected(rows, TRIALS, SELECTED)
     assert out.tolist()[:2] == [0.0, 1.0]  # a later selected trial does not count; any opening trial does
     assert pd.isna(out.iloc[2])  # no labelled industry trial opened the phase
+
+
+def test_long_form_keeps_each_applicable_non_null_value_once():
+    from report.evidence_lines import long_form, registry
+    d = pd.DataFrame({
+        "moiety_id": [1, 2, 3], "mondo_id": ["MONDO:A", None, "MONDO:B"], "phase": [2, 1, 3],
+        "has_target_disease": [True, False, True], "modality": ["small_molecule", "small_molecule", "protein"],
+        "regime": ["COM", "COM", "ONC"], "bio_area": ["metabolic", None, "oncology"], "entry_year": [2012, 2009, 2016],
+        "g3": [1.0, 2.0, None], "potent_100nm": [0.0, 1.0, 1.0], "biomarker_selected": [1.0, 0.0, None]})
+    out = long_form(d, registry())
+    got = set(map(tuple, out[["moiety_id", "mondo_id", "phase", "line_key", "value"]].itertuples(index=False)))
+    assert got == {(1, "MONDO:A", 2, "g3", 1.0),  # entry 2 has no target and disease, so g3 does not apply to it
+                   (1, "MONDO:A", 2, "potent_100nm", 0.0), (2, "", 1, "potent_100nm", 1.0)}  # entry 3 is no small molecule
+    assert not out.line_key.eq("biomarker_selected").any()  # the adjustment is stored on the entry
+
+
+def test_every_registry_line_has_a_unique_key():
+    from report.evidence_lines import registry
+    reg = registry()
+    assert reg.line_key.is_unique and set(reg.level) <= {"category", "subcategory", "descriptive", "adjustment",
+                                                          "measurement"}

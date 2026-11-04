@@ -104,3 +104,4 @@ evidence:
 
 report:
 	$(RUN) report
+	$(RUN) report.evidence_lines store

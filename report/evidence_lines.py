@@ -1,6 +1,7 @@
 """The evidence-line dataset of the 2026-11-03 plan amendment (report/translation_plan.md).
 
-    python -m report.evidence_lines
+    python -m report.evidence_lines         # write the CSVs
+    python -m report.evidence_lines store   # also replace the dataset in Postgres
 
 One row per US-developed phase entry in 2008-2019 (report.section1.phase_rows with a US-sited
 industry trial in the phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase), with
@@ -14,16 +15,26 @@ in coverage but do not make up their category.
 Writes report/output/evidence_lines/: entries.csv, and coverage.csv with each line's eligible
 and exposed entries, distinct exposed targets and exposed share by phase. No line is compared
 with an outcome here.
+
+`store` writes the same dataset to preclin.evidence_line (the registry), preclin.evidence_entry (one
+row per entry, without outcomes) and preclin.evidence_entry_line (each non-null value in long form),
+recorded in preclin.evidence_line_build. Report modules otherwise only read; this one writes because
+the compiled dataset is what other sessions and analyses query, and it should not have to be rebuilt
+from code to be read.
 """
 from __future__ import annotations
 
 import os
+import sys
+import uuid
 from collections import defaultdict
 from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
+from psycopg2.extras import execute_values
 
+from pipeline import llm
 from report import frame
 from report.section3 import RELATED, Evidence, cohorts, entries
 
@@ -256,6 +267,73 @@ def coverage(d: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+MEASUREMENTS = [  # raw values behind the molecule lines, stored alongside them
+    Line("Best potency at the primary target (pChEMBL)", "assay_best", "small_molecule"),
+    Line("Selectivity margin over the best off-target (log units)", "assay_margin", "small_molecule"),
+]
+ENTRY_COLUMNS = ["entry_date", "entry_year", "regime", "bio_area", "modality", "novel", "target", "has_target_disease",
+                 "biomarker_selected"]
+
+
+def slug(label: str) -> str:
+    return "_".join("".join(c if c.isalnum() else " " for c in label.lower()).split())
+
+
+def registry() -> pd.DataFrame:
+    """One row per line in display order: line_key, category, level, label, applies, status."""
+    rows = []
+    for cat, (line, subs) in CATEGORIES.items():
+        rows.append((line, cat, "category"))
+        rows += [(s, cat, "descriptive" if s.descriptive else "subcategory") for s in subs]
+    rows += [(a, "adjustment", "adjustment") for a in ADJUSTMENTS]
+    rows += [(m, "molecule", "measurement") for m in MEASUREMENTS]
+    return pd.DataFrame([{"line_key": ln.column or slug(ln.label), "position": i, "category": cat, "level": level,
+                          "label": ln.label, "applies": ln.applies, "status": ln.status}
+                         for i, (ln, cat, level) in enumerate(rows)])
+
+
+def long_form(d: pd.DataFrame, reg: pd.DataFrame) -> pd.DataFrame:
+    """Each entry's non-null value on each line with values, masked to the entries the line applies to.
+    The adjustment lives on preclin.evidence_entry, so it is not repeated here."""
+    keyed = d.assign(mondo_id=d.mondo_id.fillna(""))
+    parts = []
+    for r in reg[reg.level.ne("adjustment") & reg.line_key.isin(d.columns)].itertuples():
+        v = keyed[r.line_key].astype(float).where(APPLIES[r.applies](keyed))
+        part = keyed.loc[v.notna(), ["moiety_id", "mondo_id", "phase"]].assign(line_key=r.line_key, value=v[v.notna()])
+        parts.append(part)
+    return pd.concat(parts, ignore_index=True)
+
+
+def store(d: pd.DataFrame) -> str:
+    """Replace the dataset in Postgres in one transaction; returns the build id."""
+    reg = registry()
+    lines_long = long_form(d, reg)
+    e = d.assign(mondo_id=d.mondo_id.fillna(""), entry_date=pd.to_datetime(d.entry_date).dt.date,
+                 biomarker_selected=d.biomarker_selected.map({1.0: True, 0.0: False}))
+    build_id = str(uuid.uuid4())
+    nul = lambda v: None if pd.isna(v) else v.item() if hasattr(v, "item") else v  # noqa: E731  numpy scalars
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.evidence_entry_line")
+        cur.execute("DELETE FROM preclin.evidence_entry")
+        cur.execute("DELETE FROM preclin.evidence_line")
+        cur.execute("""INSERT INTO preclin.evidence_line_build (build_id, code_commit, snapshot, n_entries)
+                       VALUES (%s, %s, %s, %s)""", (build_id, llm.git_commit(), frame.snapshot(), len(e)))
+        execute_values(cur, """INSERT INTO preclin.evidence_line (line_key, position, category, level, label, applies,
+                                                                  status, build_id) VALUES %s""",
+                       [(*r, build_id) for r in reg.itertuples(index=False)])
+        execute_values(cur, f"""INSERT INTO preclin.evidence_entry (moiety_id, mondo_id, phase, {", ".join(ENTRY_COLUMNS)},
+                                                                    build_id) VALUES %s""",
+                       [(int(r.moiety_id), r.mondo_id, int(r.phase), *(nul(getattr(r, c)) for c in ENTRY_COLUMNS),
+                         build_id) for r in e.itertuples()], page_size=2000)
+        execute_values(cur, """INSERT INTO preclin.evidence_entry_line (moiety_id, mondo_id, phase, line_key, value)
+                               VALUES %s""",
+                       [(int(r.moiety_id), r.mondo_id, int(r.phase), r.line_key, float(r.value))
+                        for r in lines_long.itertuples()], page_size=5000)
+        conn.commit()
+    print(f"stored build {build_id}: {len(reg)} lines, {len(e)} entries, {len(lines_long)} values")
+    return build_id
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     d = build()
@@ -264,6 +342,8 @@ def main() -> None:
     cov.to_csv(os.path.join(OUT, "coverage.csv"), index=False)
     print(f"entries {len(d)}; with a target and a disease {int(d.has_target_disease.sum())}")
     print(cov.drop(columns=["applies"]).to_string(index=False))
+    if sys.argv[1:] == ["store"]:
+        store(d)
 
 
 if __name__ == "__main__":
