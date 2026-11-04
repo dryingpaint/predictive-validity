@@ -91,7 +91,7 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 ### Which evidence predicts
 
-![Each kind of evidence and its narrower versions: relative success in reaching approval (left), the adjusted risk ratio of advancing from Phase 2 within four years (middle), and the same with the other evidence lines held fixed (right)](report/output/figures/evidence_translates.png)
+![Relative success in reaching approval for each kind of preclinical evidence and its narrower versions](report/output/figures/evidence_translates.png)
 
 **Human genetics predicts at every step.** Programs with genetic evidence for their disease reached approval 2.65 times as often (1.95–3.48), rare-variant and Mendelian evidence (2.75×) more than GWAS (1.75×), as Minikel et al. (2024) found. At Phase 2 it is the strongest preclinical predictor (1.90×; Holm-corrected p < 0.001), and rare-variant evidence keeps an independent effect with every other line held fixed (1.51×). The effect sits where efficacy is tested: genetics adds little at Phase 1 and about 1.5-fold at Phase 2 and Phase 3 (appendix).
 
