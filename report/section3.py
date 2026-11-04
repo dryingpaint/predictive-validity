@@ -25,6 +25,7 @@ from __future__ import annotations
 import json
 import os
 from collections import defaultdict
+from functools import cache
 from datetime import date
 
 import numpy as np
@@ -92,6 +93,7 @@ LABELS = {  # evidence map rows, in display order (report.render and report.figu
 MAP_FEATURES = list(LABELS)
 
 
+@cache  # one scan of the evidence table per build; every Evidence reads the same index
 def evidence_index() -> tuple[dict, dict]:
     """gene -> family -> MONDO term -> first year of each tier in TIERS; and gene -> first
     year of germline evidence for any trait, including measurement traits with no MONDO
@@ -104,7 +106,7 @@ def evidence_index() -> tuple[dict, dict]:
     when evidence is not frozen."""
     q75 = float(frame.query("""SELECT percentile_cont(0.75) WITHIN GROUP (ORDER BY resource_score) AS q
                                FROM preclin.ot_evidence WHERE datasource = 'impc'""").q.iloc[0])
-    g = frame.query_paged("""
+    g = frame.query("""
         WITH e AS (
             SELECT target_ensembl AS ens, disease_id, resource_score, confidence,
                    direction_on_target AS dot, direction_on_trait AS dtr, (detail->>'log2FoldChangeValue')::float AS lfc,
@@ -136,7 +138,7 @@ def evidence_index() -> tuple[dict, dict]:
                min(y) FILTER (WHERE counts AND dot = 'GoF' AND dtr = 'risk') AS y_gof_risk,
                min(y) FILTER (WHERE dot = 'GoF' AND dtr = 'protect') AS y_gof_protect,
                min(y) FILTER (WHERE lfc > 0) AS y_up
-        FROM e GROUP BY 1, 2, 3""", "ens", {"never": NEVER, "q75": q75})
+        FROM e GROUP BY 1, 2, 3""", {"never": NEVER, "q75": q75})
     g["family"] = g.source.map(FAMILY)
     germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
     mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")
@@ -500,14 +502,16 @@ def trial_frame(progs: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFram
             continue
         first, start = p.at[r.program_id, "moiety_first_fda_approval"], pd.Timestamp(r.start_date)
         area, modality = p.at[r.program_id, "bio_area"], p.at[r.program_id, "modality"]
-        rows.append({"nct_id": r.nct_id, "phase": r.phase, "target": ev.ent.at[mid, "target"],
+        rows.append({"nct_id": r.nct_id, "program_id": r.program_id, "phase": r.phase, "target": ev.ent.at[mid, "target"],
                      "g3": ev.levels(mid, d, start.year - 1)[0],
                      "bio_area": area if pd.notna(area) else "unmapped",
                      "modality": modality if pd.notna(modality) else "unknown",
                      "novel": pd.isna(first) or pd.Timestamp(first) > start, "precedent": ev.precedent(mid, start),
                      "start_date": r.start_date, "primary_completion_date": r.primary_completion_date,
                      "us_site": r.us_site})
-    x = pd.DataFrame(rows).sort_values(["nct_id", "g3"], ascending=[True, False]).groupby("nct_id").agg(
+    # A trial testing several programs takes its attributes from the one with the strongest genetics, the lowest
+    # program id breaking ties, so the choice does not depend on the order the rows were read in.
+    x = pd.DataFrame(rows).sort_values(["nct_id", "g3", "program_id"], ascending=[True, False, True]).groupby("nct_id").agg(
         phase=("phase", "max"), target=("target", lambda s: "|".join(sorted(set(s)))), g3=("g3", "max"),
         bio_area=("bio_area", "first"), modality=("modality", "first"), novel=("novel", "all"),
         precedent=("precedent", "any"), start_date=("start_date", "first"),
