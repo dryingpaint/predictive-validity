@@ -17,6 +17,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches
 import numpy as np
 import pandas as pd
+from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
@@ -341,24 +342,32 @@ def s3_endpoints():
 
 
 def s3_specificity():
+    """Share of Phase 2 programs advancing within four years by where the target's germline genetic evidence lay,
+    outside and inside oncology, with 95% Wilson intervals."""
     n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
     names = {"g0": "None (G0)", "g1": "Unrelated diseases only (G1)", "g2": "Related disease only (G2)",
              "g3": "The program's disease (G3)"}
-    fig, axes = plt.subplots(1, 2, figsize=(9, 2.6), sharex=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 3.4), sharex=True, gridspec_kw={"wspace": 0.08})
     for ax, lv, title in zip(axes, (n["h1"], n["levels_onc"]), ("Non-oncology", "Oncology")):
-        rows = [(k, lv[k]["ppv"], lv[k].get("rr")) for k in ("g0", "g1", "g2", "g3")]
+        rows = [(k, lv[k]["ppv"], lv[k]["n"], lv[k].get("rr")) for k in ("g0", "g1", "g2", "g3")]
         y = np.arange(len(rows))[::-1]
-        ax.barh(y, [100 * v for _, v, _ in rows], height=0.6, color=[BAR, BAR, BAR, ACCENT])
-        for yi, (k, v, rr) in zip(y, rows):
-            ax.text(100 * v + 0.8, yi, f"{v:.0%}" + ("" if rr is None else f"  ({rr:.2f}× G0)"), va="center",
-                    color=INK2, fontsize=8)
-        ax.set_yticks(y, [names[k] for k, _, _ in rows], color=INK, fontsize=8)
-        ax.set_title(title, loc="left", color=INK, fontsize=9)
-        ax.set_xlim(0, 50)
+        lo, hi = np.array([proportion_confint(round(v * m), m, method="wilson") for _, v, m, _ in rows]).T
+        ax.barh(y, [100 * v for _, v, _, _ in rows], height=0.6, color=[BAR, BAR, BAR, ACCENT])
+        ax.errorbar([100 * v for _, v, _, _ in rows], y, xerr=[100 * (np.array([v for _, v, _, _ in rows]) - lo),
+                                                              100 * (hi - np.array([v for _, v, _, _ in rows]))],
+                    fmt="none", ecolor=INK2, elinewidth=1.2, capsize=0)
+        for yi, (k, v, m, rr), h in zip(y, rows, hi):
+            ax.text(100 * h + 1, yi, f"{v:.0%}" + ("" if rr is None else f"  ({rr:.2f}× G0)"), va="center",
+                    color=INK2, fontsize=10)
+        ax.set_yticks(y, [f"{names[k]}, {m:,}" for k, _, m, _ in rows], color=INK, fontsize=10.5)
+        ax.set_title(title, loc="left", color=INK, fontsize=11.5)
+        ax.set_xlim(0, 60)
+        ax.tick_params(axis="x", labelsize=10)
         style(ax)
     axes[1].set_yticklabels([])
+    axes[1].tick_params(axis="y", length=0)
     fig.suptitle("Phase 2 programs advancing within 4 years, by where the target's germline genetic evidence lay "
-                 "before entry", x=0.01, y=1.06, ha="left", color=INK, fontsize=10)
+                 "before entry (%, 95% interval; label: programs)", x=0.01, y=1.04, ha="left", color=INK2, fontsize=10.5)
     save(fig, "s3_specificity")
 
 
