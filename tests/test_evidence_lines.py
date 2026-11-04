@@ -2,7 +2,8 @@ import math
 
 import pandas as pd
 
-from report.evidence_lines import biomarker_selected, stale_inputs, earlier_failure, failures_by_gene, molecule_lines
+from report.evidence_lines import (biomarker_selected, cell_dependency, earlier_failure, failures_by_gene,
+                                    molecule_lines, stale_inputs)
 
 RELATED = frozenset({"MONDO:A", "MONDO:A1"})
 FAILED = pd.DataFrame([
@@ -148,7 +149,7 @@ def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_i
 
 def test_only_lines_scored_on_part_of_their_category_are_reported_alone():
     from report.evidence_lines import reported_alone
-    assert reported_alone() == {"brain_penetrant", "earlier_failure"}
+    assert reported_alone() == {"brain_penetrant", "cell_dependency", "earlier_failure"}
 
 
 STORED = {"snapshot": "2026-11-02", "dev_program_approval": [21628, 3360783], "moiety_property": 93}
@@ -165,3 +166,36 @@ def test_a_rewritten_label_table_or_new_input_makes_a_store_stale():
 
 def test_a_store_made_before_fingerprinting_is_stale_on_every_input():
     assert stale_inputs({}, STORED) == sorted(STORED)
+
+
+LINES = {"L1": ("MONDO:LUAD", 2014), "L2": ("MONDO:LUAD", 2014), "L3": ("MONDO:LUAD", 2017),
+         "L4": ("MONDO:LUAD", 2017), "L5": ("MONDO:AML", 2014)}
+LUNG = frozenset({"MONDO:LUAD"})
+
+
+def test_a_target_two_lines_and_a_fifth_of_its_type_depend_on_is_a_dependency():
+    dep = {("G1", "L1"): 2014, ("G1", "L2"): 2014}
+    assert cell_dependency(["G1"], LUNG, 2015, LINES, dep, {}) == 1.0
+
+
+def test_one_dependent_line_or_too_small_a_share_is_not_a_dependency():
+    assert cell_dependency(["G1"], LUNG, 2015, LINES, {("G1", "L1"): 2014}, {}) == 0.0
+    many = {line: ("MONDO:LUAD", 2014) for line in (f"X{i}" for i in range(11))}
+    assert cell_dependency(["G1"], LUNG, 2015, many, {("G1", "X0"): 2014, ("G1", "X1"): 2014}, {}) == 0.0
+
+
+def test_screens_published_after_the_cutoff_do_not_count():
+    dep = {("G1", "L3"): 2017, ("G1", "L4"): 2017}
+    assert cell_dependency(["G1"], LUNG, 2016, LINES, dep, {}) == 0.0
+    assert cell_dependency(["G1"], LUNG, 2017, LINES, dep, {}) == 1.0
+
+
+def test_no_screened_line_of_the_type_is_unknown_not_absent():
+    assert pd.isna(cell_dependency(["G1"], frozenset({"MONDO:GBM"}), 2018, LINES, {}, {}))
+    assert pd.isna(cell_dependency(["G1"], LUNG, 2013, LINES, {}, {}))
+
+
+def test_a_common_essential_gene_of_that_year_does_not_count():
+    dep = {("G1", line): 2014 for line in ("L1", "L2", "L3", "L4")}
+    assert cell_dependency(["G1"], LUNG, 2019, LINES, dep, {2019: {"G1"}}) == 0.0
+    assert cell_dependency(["G1"], LUNG, 2018, LINES, dep, {2019: {"G1"}}) == 1.0
