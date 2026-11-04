@@ -89,9 +89,10 @@ JOINT_DRUG = ("assay_measured", "assay_potent", "assay_cell_functional", "assay_
 FEATURES = [*EVIDENCE, *LIABILITIES, *DRUG]
 LABELS = {
     "genetic_any": "Any human genetics", "genetic_gwas": "GWAS",
-    "genetic_rare": "Rare-variant or Mendelian genetics", "somatic": "Somatic cancer driver",
-    "animal_model": "Mouse model of the disease", "rna_expression": "Expressed differently in the disease",
-    "affected_pathway": "Disease pathway (Reactome)", "cell_line_screen": "CRISPR knockout screen in cancer cell lines",
+    "genetic_rare": "Rare-variant or Mendelian genetics", "somatic": "Gene recurrently mutated in this cancer",
+    "animal_model": "Genetically altered mouse model of the disease",
+    "rna_expression": "Target's RNA level changed in diseased tissue",
+    "affected_pathway": "Curated disease mechanism (Reactome)", "cell_line_screen": "CRISPR knockout screen in cancer cell lines",
     "neuron_screen": "CRISPR screen in stem-cell-derived neurons",
     "constrained": "Intolerant of loss of function", "pan_essential": "Essential in most cell lines",
     "assay_measured": "Potency at the target measured", "assay_potent": "Potent at the target (100 nM or better)",

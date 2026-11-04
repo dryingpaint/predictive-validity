@@ -4,7 +4,8 @@
     python -m report.evidence_lines store   # also replace the dataset in Postgres
 
 One row per US-developed phase entry in 2008-2019 (report.section1.phase_rows with a US-sited
-industry trial in the phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase), with
+industry trial in the phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase) and carrying the
+program_id of the current program build for joins within one run, with
 every category and subcategory of CATEGORIES frozen at the year before entry, and the outcome
 columns event and s4. Target-level lines come from report.section3.Evidence and are null for
 entries without a single resolved human protein target and a disease; molecule lines from ChEMBL
@@ -36,7 +37,7 @@ from psycopg2.extras import execute_values
 
 from pipeline import llm
 from report import frame
-from report.section3 import RELATED, Evidence, cohorts, entries
+from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, entries
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
 LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
@@ -89,7 +90,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("RNA raised, with a drug that lowers function", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "target"), [
-        Line("Genetically altered animals with the disease's phenotype", "altered_animal", "target"),
+        Line("Genetically altered mouse model of the disease", "altered_animal", "target"),
         Line("Literature-curated mouse model (MGI)", "mgi", "target"),
         Line("Systematic knockout screen (IMPC)", "impc", "target"),
         Line("Close phenotype match (top quartile)", "animal_close", "target"),
@@ -227,8 +228,10 @@ def build() -> pd.DataFrame:
     d["biomarker_selected"] = biomarker_selected(
         d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
-    keep = ["moiety_id", "mondo_id", "phase", "entry_date", "entry_year", "regime", "bio_area", "modality", "novel",
-            "target", "sign", "event", "s4", "has_target_disease", "assay_best", "assay_margin",
+    d["era"] = pd.cut(d.entry_year, ERA_BINS, labels=ERA_LABELS).astype(str)
+    keep = ["moiety_id", "mondo_id", "phase", "program_id", "entry_date", "entry_year", "era", "regime", "bio_area",
+            "modality", "novel", "precedent", "target", "sign", "event", "s4", "has_target_disease", "assay_best",
+            "assay_margin",
             *(ln.column for ln in lines() if ln.column)]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 

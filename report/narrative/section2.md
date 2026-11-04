@@ -4,13 +4,13 @@
 
 ### Evidence and design
 
-Each program on a human protein target is scored for the evidence its targets had **for the program's disease, as of the year before it entered the phase**: human germline genetics (GWAS and rare-variant), somatic cancer drivers, mouse models, expression in the disease, pathways and CRISPR screens (from Open Targets); two properties of the target itself (essential in most cells, intolerant of loss of function); and the drug's own potency and selectivity in laboratory assays (ChEMBL). {{section2.evidence_coverage_ph1.genetic_any|pct0}} of Phase 1 entrants had human genetic evidence for their disease.
+Evidence is grouped by the experimental system that produced it: **human genetics**, **tumour genetics**, **human diseased tissue**, **animal studies**, **cell studies**, **the molecule itself** and **early human pharmacology**. Two more kinds are kept apart because neither says the drug will work: the target's **safety risk**, and **clinical precedent**, what earlier drugs on the target did, which serves as the benchmark. Each program is scored for the evidence known **for its disease, as of the year before it entered the phase**. {{section2.evidence_coverage_ph1.genetic_any|pct0}} of Phase 1 entrants had human genetic evidence for their disease.
 
-Two outcomes are measured on programs entering a phase in 2008–2019. *Relative success* is the likelihood of approval with the evidence divided by that without it, across all {{section2.n_programs|int}} programs (Nelson et al. 2015; Minikel et al. 2024). The second is whether a Phase 2 program advanced to Phase 3 or approval within four years ({{section3.c2.s4|pct0}} of {{section3.c2.programs|int}} did): Phase 2 is the first test of efficacy in patients, so it is where the evidence's claim about the disease is first put to the test. The Phase 2 analysis was registered before any outcome was examined; it named 2015–2020 entries and was widened to the report's window. Dating, matching, models and robustness checks are in the appendix.
+Two outcomes are measured on programs entering a phase in 2008–2019. *Relative success* is the likelihood of approval with the evidence divided by that without it (Nelson et al. 2015; Minikel et al. 2024). The second is whether a Phase 2 program advanced to Phase 3 or approval within four years: Phase 2 is the first test of efficacy in patients, so it is where the evidence's claim about the disease is first put to the test. The category chart and its figures cover the {{evidence_analysis.cohort.programs|int}} programs developed in the US ({{evidence_analysis.cohort.entries|int}} phase entries); the analyses that follow it cover all {{section2.n_programs|int}} programs, of which {{section3.c2.programs|int}} entered Phase 2 and {{section3.c2.s4|pct0}} advanced. The Phase 2 hypotheses, and the lines and hypotheses the categories added, were registered before their outcomes were examined. Dating, matching, models and robustness checks are in the appendix.
 
 ### Which evidence predicts
 
-![Relative success in reaching approval for each kind of preclinical evidence and its narrower versions](report/output/figures/evidence_translates.png)
+![Relative success in reaching approval for each evidence category and its subcategories, US-developed programs](report/output/figures/evidence_translates.png)
 
 {{SECTION2_RS}}
 
