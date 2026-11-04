@@ -219,3 +219,21 @@ is at least 80%, a second model agrees with the screen at κ ≥ 0.6, and at lea
 8% of Phase 2 entries carry it; otherwise it is reported as descriptive.
 Full-text search is not used: none of about 25 full-text-only hits checked was
 a study of the drug in the disease.
+
+**Second literature attempt, 2026-11-04.** The first version failed the gate on
+retrieval (recall 22–25%), not screening (κ 0.59–0.95, and no study reported where
+the reference found none); its results are in `report/audits/literature_gate.md`.
+One second version is allowed, fixed here before it runs:
+
+- Retrieval by the drug's names alone, with no disease, species or kind terms.
+  The names are the INN, code names, FDA substance-registry names, and PubChem
+  and ChEMBL synonyms. Searches cover publications up to the year before entry,
+  excluding reviews, and keep up to 200 results per drug in PubMed relevance
+  order. The LLM screen decides the kind, and for animal models which disease
+  is modelled. A screened model counts for an entry when its disease is the
+  entry's disease or within Lin ≥ 0.5 of it.
+- It is scored only against a fresh blind reference set: entries 101–200 of
+  `report/audits/literature_pilot_sample.csv`, researched by new agents under
+  the same instructions, with no access to either version's results. The gates
+  are unchanged. A line that fails stays descriptive, and no third version is
+  run.
