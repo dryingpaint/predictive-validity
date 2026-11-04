@@ -44,6 +44,9 @@ from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, en
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
 LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
 FAILURES_FROM = 2011  # first entry year whose lookback lies wholly in the era of registered results
+# A target is a dependency in a tumour type when at least this many, and this share, of the type's cell lines
+# screened by the cutoff depend on it (the 2026-11-04 comprehensiveness amendment).
+DEPENDENT_LINES, DEPENDENT_SHARE = 2, 0.2
 SELECTIVE_MARGIN = 1.0  # log units of primary over best off-target potency: 10-fold
 POTENT_100NM, POTENT_10NM = 7.0, 8.0  # best pChEMBL at the primary target: the line, and a descriptive extra
 BRAIN = ("neurology", "psychiatry")  # the bio_area values whose programs are scored for brain penetrance
@@ -104,6 +107,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     ]),
     "cell": (Line("Cell studies", "cat_cell", "target"), [
         Line("CRISPR screen in cells", "crispr", "target"),
+        Line("Dependency in cancer cell lines of this type (RNAi and CRISPR screens)", "cell_dependency", "ONC"),
         Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
     ]),
     "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [
@@ -164,6 +168,36 @@ def earlier_failure(by_gene: dict, moiety_id, genes, related: frozenset, entry: 
                for g in genes for mid, d, ended in by_gene.get(g, ()))
 
 
+def cell_dependency(genes, related: frozenset, year: int, lines: dict, dep_year: dict, essential: dict) -> float:
+    """1 when a gene of `genes` is a dependency in the tumour type, as the screens public by the end of `year`
+    show; 0 when lines of the type were screened and none of the genes is; NaN when no line of the type was.
+    `lines`: cell line -> (MONDO term, year its first screen became public); `dep_year`: (gene, line) -> year
+    its dependency on the gene became public. Genes on that year's common-essential list do not count."""
+    typed = [line for line, (mondo, first) in lines.items() if mondo in related and first <= year]
+    if not typed:
+        return np.nan
+    for g in genes:
+        if frame.essential_as_of(essential, [g], year):
+            continue
+        n = sum(1 for line in typed if dep_year.get((g, line), 9999) <= year)
+        if n >= DEPENDENT_LINES and n >= DEPENDENT_SHARE * len(typed):
+            return 1.0
+    return 0.0
+
+
+def cell_screens() -> tuple[dict, dict]:
+    """The dependency screens: cell line -> (MONDO term, first public year), and (Ensembl gene, cell line) ->
+    the year its dependency became public."""
+    s = frame.query("""SELECT c.depmap_id, c.mondo_id, min(s.public_year) AS year FROM preclin.cell_line c
+                       JOIN preclin.cell_screen s USING (depmap_id) WHERE c.mondo_id IS NOT NULL GROUP BY 1, 2""")
+    d = frame.query("""SELECT g.ensembl_id, d.depmap_id, min(s.public_year) AS year
+                       FROM preclin.cell_dependency d JOIN preclin.cell_screen s USING (depmap_id, dataset)
+                       JOIN preclin.hgnc_gene g ON g.entrez_id = d.entrez_id
+                       WHERE g.ensembl_id IS NOT NULL GROUP BY 1, 2""")
+    return ({r.depmap_id: (r.mondo_id, int(r.year)) for r in s.itertuples()},
+            {(r.ensembl_id, r.depmap_id): int(r.year) for r in d.itertuples()})
+
+
 def molecule_lines(assays: pd.DataFrame, primary: set[str], year: int) -> dict:
     """Potency and selectivity of one entity known by the end of `year`: selectivity is undefined
     (NaN) unless both the primary target and an off-target were measured."""
@@ -203,6 +237,14 @@ def build() -> pd.DataFrame:
         earlier_failure(by_gene, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED),
                         pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
         index=d.index, dtype=object).map({True: 1.0, False: 0.0})
+
+    lines_by, dep_year = cell_screens()
+    essential = frame.common_essentials()
+    onc = APPLIES["ONC"](d)
+    d["cell_dependency"] = pd.Series([
+        cell_dependency(ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED), r.entry_year - 1,
+                        lines_by, dep_year, essential) if o else np.nan for r, o in zip(d.itertuples(), onc)],
+        index=d.index, dtype=float)
 
     symbols = frame.query("""SELECT mt.moiety_id, t.symbol FROM preclin.moiety_target mt
                              JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""") \
@@ -342,8 +384,9 @@ RELEASE_TABLES = ("chembl_activity", "moiety_property")
 def input_fingerprint() -> dict:
     """What the dataset reads beyond the programs build: the programs snapshot; rows and latest decision of each LLM
     label table (a rewrite of approvals or targets changes them, though not the snapshot); the latest source
-    release behind the ChEMBL potencies and computed properties; and the rows of preclin.cell_dependency once it
-    exists."""
+    release behind the ChEMBL potencies and computed properties; and, once they exist, the rows of
+    preclin.cell_dependency and the latest lineage decision of preclin.cell_line (a remapped lineage moves lines
+    between tumour types)."""
     fp: dict = {"snapshot": str(frame.snapshot())}
     for table in LABEL_TABLES:
         r = frame.query(f"SELECT count(*) AS n, max(llm_decision_id) AS last FROM preclin.{table}").iloc[0]
@@ -352,7 +395,9 @@ def input_fingerprint() -> dict:
         last = frame.query(f"SELECT max(source_release_id) AS last FROM preclin.{table}").iloc[0]["last"]
         fp[table] = None if pd.isna(last) else int(last)
     if frame.query("SELECT to_regclass('preclin.cell_dependency') IS NOT NULL AS present").iloc[0]["present"]:
-        fp["cell_dependency"] = int(frame.query("SELECT count(*) AS n FROM preclin.cell_dependency").iloc[0]["n"])
+        r = frame.query("""SELECT (SELECT count(*) FROM preclin.cell_dependency) AS n,
+                                  (SELECT max(llm_decision_id) FROM preclin.cell_line) AS last""").iloc[0]
+        fp["cell_dependency"] = [int(r.n), None if pd.isna(r["last"]) else int(r["last"])]
     return fp
 
 

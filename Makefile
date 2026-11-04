@@ -19,7 +19,8 @@ migrate:
 
 # Raw sources: ClinicalTrials.gov snapshot and results papers, FDA approvals (CDER + CBER) and
 # the uses each approval letter states, UNII substance names, HGNC genes, ChEMBL mechanisms of action,
-# DepMap common-essential genes, ontologies.
+# DepMap common-essential genes, ontologies. (Cell-line dependency screens load in `evidence`: their lineage
+# mapping needs the ontologies.)
 sources:
 	$(RUN) pipeline.ctgov fetch
 	$(RUN) pipeline.ctgov load
@@ -90,6 +91,8 @@ evidence:
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.chembl activities
 	$(RUN) pipeline.pubchem properties
+	$(RUN) pipeline.depmap dependencies
+	$(RUN) pipeline.depmap lineages
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse
 	$(RUN) pipeline.stop_causes signals
