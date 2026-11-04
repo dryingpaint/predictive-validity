@@ -149,7 +149,7 @@ def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_i
 
 def test_only_lines_scored_on_part_of_their_category_are_reported_alone():
     from report.evidence_lines import reported_alone
-    assert reported_alone() == {"brain_penetrant", "cell_dependency", "earlier_failure"}
+    assert reported_alone() == {"brain_penetrant", "earlier_failure"}
 
 
 STORED = {"snapshot": "2026-11-02", "dev_program_approval": [21628, 3360783], "moiety_property": 93}
