@@ -47,6 +47,7 @@ FAILURES_FROM = 2011  # first entry year whose lookback lies wholly in the era o
 # A target is a dependency in a tumour type when at least this many, and this share, of the type's cell lines
 # screened by the cutoff depend on it (the 2026-11-04 comprehensiveness amendment).
 DEPENDENT_LINES, DEPENDENT_SHARE = 2, 0.2
+CELL_SCREENS_FROM = 2015  # first entry year whose year-before cutoff has published dependency screens (Cowley 2014)
 SELECTIVE_MARGIN = 1.0  # log units of primary over best off-target potency: 10-fold
 POTENT_100NM, POTENT_10NM = 7.0, 8.0  # best pChEMBL at the primary target: the line, and a descriptive extra
 BRAIN = ("neurology", "psychiatry")  # the bio_area values whose programs are scored for brain penetrance
@@ -74,8 +75,9 @@ APPLIES = {
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
     "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
+    "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
 }
-WITHIN = {"small_molecule_profiled": "small_molecule"}  # an APPLIES key whose entries all lie in another's
+WITHIN = {"small_molecule_profiled": "small_molecule", "onc_screened": "target"}  # an APPLIES key whose entries all lie in another's
 
 # Category -> (category line, subcategories), efficacy categories grouped by the experimental system that
 # produced the evidence. A category line is rolled up from its subcategories (category_columns).
@@ -105,9 +107,9 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("The drug in an animal model of the disease", None, "all", LITERATURE),
         Line("The drug's pharmacology in healthy animals", None, "all", LITERATURE),
     ]),
-    "cell": (Line("Cell studies", "cat_cell", "target"), [
+    "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
         Line("CRISPR screen in cells", "crispr", "target"),
-        Line("Dependency in cancer cell lines of this type (RNAi and CRISPR screens)", "cell_dependency", "ONC"),
+        Line("Dependency in cancer cell lines of this type (RNAi and CRISPR screens)", "cell_dependency", "onc_screened"),
         Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
     ]),
     "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [

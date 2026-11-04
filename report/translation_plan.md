@@ -290,3 +290,10 @@ pulled or any outcome is looked at.
   Lin ≥ 0.5, by the same MONDO neighbourhood as the other lines. Genes on DepMap's
   common-essential list of the same year are excluded, so the line marks selective dependency.
   The CRISPR line first published in 2019 (Project Score) stays a hindsight line.
+
+**Cell studies scope, 2026-11-04.** Fixed before the dependency line was compared with any outcome. Cell-line
+evidence for a disease exists only in oncology, and the earliest dependency screens were published in 2014, so
+the Cell studies category and its dependency subcategory are scored on oncology entries from 2015 on. Both its
+lines are known for every one of those entries, so the category means the same thing across its scope. The
+dependency scores are DEMETER2 and CERES reprocessings (2018–19) of screens published 2014–2017: the screen data
+existed before entry, but the exact scores were computed later.
