@@ -20,6 +20,7 @@ import pandas as pd
 from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
+from report.evidence_lines import reported_alone
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
@@ -417,8 +418,9 @@ def evidence_translates():
     ax.set_xlabel("Relative success: likelihood of approval with the evidence ÷ without it (95% CI)", color=INK2,
                   fontsize=10)
     style(ax)
+    alone = reported_alone()
     labels = [("      " if r.level != "category" else "") + r.label.replace(", on today's data (hindsight)", ", hindsight")
-              for r in lines.itertuples()]
+              + (" †" if r.column in alone else "") for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     ax.tick_params(axis="y", pad=LABEL_PAD)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
@@ -434,7 +436,8 @@ def evidence_translates():
     ax.set_ylim(ys[-1] - 0.7, top + 0.4)
     ax.text(label_x, top + 1.2, "Reaching approval from any phase, US-developed programs entering a phase in 2008–2019, "
             "by evidence\nknown the year before entry. Bold: a category; indented: its subcategories. Filled: 95% "
-            "interval clear of 1.\nDashed: first published in 2019, scored on today's data. Counts are in the appendix.",
+            "interval clear of 1.\nDashed: first published in 2019, scored on today's data. †: covers only part of its "
+            "category's\nprograms, so it is reported alone and not counted in the category. Counts are in the appendix.",
             transform=ax.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
     save(fig, "evidence_translates")
 

@@ -144,3 +144,8 @@ def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_i
     out = category_columns(d)
     assert out.cat_molecule[0] == 0.0  # brain penetrance is scored for neurology and psychiatry only
     assert out.cat_precedent[1] == 0.0  # earlier failures are scored for 2011+ entries only
+
+
+def test_only_lines_scored_on_part_of_their_category_are_reported_alone():
+    from report.evidence_lines import reported_alone
+    assert reported_alone() == {"brain_penetrant", "earlier_failure"}
