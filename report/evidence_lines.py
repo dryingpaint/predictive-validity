@@ -65,13 +65,15 @@ APPLIES = {
     "target": lambda d: d.has_target_disease,
     "ONC": lambda d: d.has_target_disease & d.regime.eq("ONC"),
     "small_molecule": lambda d: d.modality.eq("small_molecule"),
+    "small_molecule_profiled": lambda d: d.modality.eq("small_molecule") & d.drug_like.notna(),
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
     "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
 }
+WITHIN = {"small_molecule_profiled": "small_molecule"}  # an APPLIES key whose entries all lie in another's
 
-# Category -> (category line, subcategories). The category line is exposed when any subcategory is;
-# efficacy categories are grouped by the experimental system that produced the evidence.
+# Category -> (category line, subcategories), efficacy categories grouped by the experimental system that
+# produced the evidence. A category line is rolled up from its subcategories (category_columns).
 CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     "human_genetics": (Line("Human genetics", "cat_human_genetics", "target"), [
         Line("Germline genetics for the disease", "g3", "target"),
@@ -102,7 +104,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("CRISPR screen in cells", "crispr", "target"),
         Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
     ]),
-    "molecule": (Line("The molecule", "cat_molecule", "small_molecule"), [
+    "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [
         Line("Potency at the primary target, 100 nM or better", "potent_100nm", "small_molecule"),
         Line("Potency at the primary target, 10 nM or better", "potent_10nm", "small_molecule", descriptive=True),
         Line("At least 10-fold selective over measured off-targets", "selective", "small_molecule"),
@@ -221,10 +223,7 @@ def build() -> pd.DataFrame:
     d["animal_close"] = flag((d.mgi_strong > 0) | (d.impc_strong > 0))
     d["animal_concordant"] = flag(d.mouse_direction.eq("concordant"))
     d["approved_unrelated_only"] = flag((d.precedent > 0) & ~(d.b1 > 0))
-    for cat, (line, subs) in CATEGORIES.items():
-        cols = [s.column for s in subs if s.column and not s.descriptive]
-        if line.column and line.column.startswith("cat_"):
-            d[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d))
+    d = d.join(category_columns(d))
     d["biomarker_selected"] = biomarker_selected(
         d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
@@ -234,6 +233,22 @@ def build() -> pd.DataFrame:
             "assay_margin",
             *(ln.column for ln in lines() if ln.column)]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
+
+
+def category_columns(d: pd.DataFrame) -> pd.DataFrame:
+    """Each category line: 1 when any of its subcategories is, 0 when none is, among the entries the category
+    applies to. Only subcategories scored on all of those entries (the same APPLIES key, or the one WITHIN names)
+    make it up, so a category means the same thing across its scope: a line scored on later entries or on some
+    disease areas only stays out. An entry on which none of them is known is null rather than 0."""
+    out = {}
+    for line, subs in CATEGORIES.values():
+        if not (line.column and line.column.startswith("cat_")):
+            continue
+        cols = [s.column for s in subs if s.column and not s.descriptive
+                and s.applies in (line.applies, WITHIN.get(line.applies))]
+        known = d[cols].notna().any(axis=1)
+        out[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d) & known)
+    return pd.DataFrame(out, index=d.index)
 
 
 def biomarker_selected(rows: pd.DataFrame, trials: pd.DataFrame, sel: pd.DataFrame) -> pd.Series:

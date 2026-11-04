@@ -118,3 +118,29 @@ def test_every_registry_line_has_a_unique_key():
     reg = registry()
     assert reg.line_key.is_unique and set(reg.level) <= {"category", "subcategory", "descriptive", "adjustment",
                                                           "measurement"}
+
+
+from report.evidence_lines import category_columns, lines  # noqa: E402
+
+
+def entries(*rows: dict) -> pd.DataFrame:
+    """Entries with every line column null unless a row sets it."""
+    base = {"modality": "small_molecule", "bio_area": "oncology", "regime": "ONC", "phase": 2, "entry_year": 2015,
+            "has_target_disease": True, **{ln.column: math.nan for ln in lines() if ln.column}}
+    return pd.DataFrame([{**base, **r} for r in rows])
+
+
+def test_a_molecule_with_no_known_properties_is_not_counted_as_lacking_the_molecule_evidence():
+    d = entries({"potent_100nm": 0.0, "drug_like": math.nan},   # nothing known about the structure
+                {"potent_100nm": 0.0, "drug_like": 0.0},        # known, and neither potent nor drug-like
+                {"potent_100nm": 1.0, "drug_like": 0.0})
+    assert category_columns(d).cat_molecule.tolist()[1:] == [0.0, 1.0]
+    assert math.isnan(category_columns(d).cat_molecule[0])
+
+
+def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_it_up():
+    d = entries({"bio_area": "psychiatry", "potent_100nm": 0.0, "drug_like": 0.0, "brain_penetrant": 1.0},
+                {"b1": 0.0, "approved_unrelated_only": 0.0, "earlier_failure": 1.0})
+    out = category_columns(d)
+    assert out.cat_molecule[0] == 0.0  # brain penetrance is scored for neurology and psychiatry only
+    assert out.cat_precedent[1] == 0.0  # earlier failures are scored for 2011+ entries only
