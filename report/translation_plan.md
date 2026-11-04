@@ -237,3 +237,28 @@ One second version is allowed, fixed here before it runs:
   the same instructions, with no access to either version's results. The gates
   are unchanged. A line that fails stays descriptive, and no third version is
   run.
+
+**Comprehensiveness amendment, 2026-11-04.** The user asked for every new line to be as
+comprehensive as public data allows. Two changes are fixed here before any data for them is
+pulled or any outcome is looked at.
+
+- **Literature lines, third attempt (user-directed).** This overrides the stop rule above, which
+  allowed no third version. Any line that passes is labelled in the report as passing on a
+  third, user-directed attempt, not as a clean confirmation. Retrieval is by every name of the
+  drug, as in version 2, but with no cap on abstracts per drug. It also adds abstracts outside
+  MEDLINE (preprints and conference abstracts indexed by Europe PMC) up to the year before
+  entry. The screen and the disease matching are as in version 2. The attempt is scored only
+  against a new blind reference set: entries 201–300 of
+  `report/audits/literature_pilot_sample.csv`, researched under the same instructions by agents
+  with no access to any version's results. The gates are unchanged. A line that fails stays
+  descriptive, with no further attempt.
+- **Cell studies before 2019 (oncology).** A new subcategory: the target is a dependency in
+  cancer cell lines of the program's tumour type, in genome-wide RNAi or CRISPR screens
+  published before entry. The sources are the DEMETER2 combined RNAi scores (Achilles,
+  Project DRIVE, Marcotte breast screens) and the Avana CRISPR screens. Each screen's cell
+  lines are dated by the year their source paper was published. A gene is a dependency in a
+  tumour type when its score is −0.5 or lower in at least two screened cell lines of that type
+  and in at least 20% of them. Cell-line lineages are matched to the program's disease within
+  Lin ≥ 0.5, by the same MONDO neighbourhood as the other lines. Genes on DepMap's
+  common-essential list of the same year are excluded, so the line marks selective dependency.
+  The CRISPR line first published in 2019 (Project Score) stays a hindsight line.
