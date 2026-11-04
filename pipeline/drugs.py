@@ -39,8 +39,9 @@ wrote next to another drug ("Canakinumab (AIN457)", AIN457 being secukinumab) la
 entity. The codes pass reviews every code that more than one entity carries, or that the FDA
 substance registry assigns to a substance other than the entity's own (or a salt, parent or
 sibling form of it): an LLM reads the registry entries, each holder's names and substance, and
-the intervention strings that wrote the code; a second model checks every removal, and a code leaves an
-entity only when both say it names another entity.
+the intervention strings that wrote the code; a second model checks every removal. A code leaves an
+entity only when both say it names another entity and the registry assigns it to a substance unrelated to the
+entity's own: an unconfirmed reading leaves the code where it is.
 """
 from __future__ import annotations
 
@@ -738,6 +739,16 @@ def agreed_verdicts(first: dict[str, dict[int, bool]], second: dict[str, dict[in
     return {k: {m: owns or second.get(k, {}).get(m, True) for m, owns in vs.items()} for k, vs in first.items()}
 
 
+def registry_unconfirmed(verdicts: dict[str, dict[int, bool]], unii_of: dict[int, str | None],
+                         registered: dict[str, set[str]], parents: dict[str, set[str]]) -> dict[str, set[int]]:
+    """Holders a verdict would strip of a code that the FDA substance registry does not place on a substance
+    unrelated to them (the registry does not know the code, or it names the holder's own substance or a form of
+    it); those keep the code."""
+    return {k: {m for m, owns in vs.items() if not owns and not (
+        registered.get(k) and not any(related_substances(unii_of.get(m), u, parents) for u in registered[k]))}
+            for k, vs in verdicts.items()}
+
+
 def owned_codes(codes: dict[int, list[str]], keys: dict[int, str], verdicts: dict[str, dict[int, bool]]) -> dict[int, list[str]]:
     """Each entity's codes without those a verdict says it does not own; an entity keeps a code that is its own name."""
     return {m: [c for c in cs if verdicts.get(moiety_key(c), {}).get(m, True) or moiety_key(c) == keys[m]]
@@ -800,6 +811,9 @@ def codes(args) -> None:
     verdicts = agreed_verdicts(first, second)
     dropped = sum(not v for k, vs in first.items() for v in vs.values()) - sum(not v for vs in verdicts.values()
                                                                              for v in vs.values())
+    unconfirmed = registry_unconfirmed(verdicts, {m: e[4] for m, e in ents.items()},
+                                       {k: set(r) for k, r in registry.items()}, parents)
+    verdicts = {k: {m: owns or m in unconfirmed.get(k, set()) for m, owns in vs.items()} for k, vs in verdicts.items()}
     new = owned_codes({m: list(e[2]) for m, e in ents.items()}, {m: e[0] for m, e in ents.items()}, verdicts)
     removed = [(m, c) for m, e in ents.items() for c in e[2] if c not in new[m]]
     print(f"codes reviewed={len(items)} holder verdicts={sum(reasons.values())} by reason={dict(reasons)} "
@@ -807,7 +821,11 @@ def codes(args) -> None:
           f"codes removed={len(removed)} from entities={len({m for m, _ in removed})}")
     if args.dry_run:
         out = {"reviewed_codes": len(items), "verdicts_by_reason": dict(reasons), "second_model_checks": len(disputed),
-               "removals_not_confirmed": dropped, "removed": len(removed),
+               "removals_not_confirmed": dropped,
+               "kept_without_registry_confirmation": [{"moiety_id": m, "entity": ents[m][1], "code": c}
+                                                      for k, ms in unconfirmed.items() for m in sorted(ms)
+                                                      for c in ents[m][2] if moiety_key(c) == k],
+               "removed": len(removed),
                "entities_changed": len({m for m, _ in removed}),
                "removed_pairs": [{"moiety_id": m, "entity": ents[m][1], "code": c,
                                   "owner": [ents[o][1] for o, v in verdicts[moiety_key(c)].items() if v],

@@ -159,3 +159,13 @@ def test_a_code_leaves_an_entity_only_when_both_models_say_it_is_another_entitys
     first = {"ain457": {1: False, 2: True}, "yh22162": {3: False}, "st067": {4: False}}
     second = {"ain457": {1: False, 2: True}, "yh22162": {3: True}}  # st067: the check failed validation
     assert agreed_verdicts(first, second) == {"ain457": {1: False, 2: True}, "yh22162": {3: True}, "st067": {4: True}}
+
+
+def test_a_removal_needs_the_registry_to_place_the_code_on_an_unrelated_substance():
+    from pipeline.drugs import registry_unconfirmed
+    verdicts = {"ain457": {1: False, 2: True}, "scb01a": {3: False}, "u34865": {4: False}, "fx006": {5: False}}
+    unii_of = {1: "CANAK", 2: "SECUK", 3: "FOSLI", 4: "HALOB", 5: "TRIAMSALT"}
+    registered = {"ain457": {"SECUK"}, "u34865": {"DIFLO"}, "fx006": {"TRIAM"}}  # scb01a: unknown to the registry
+    parents = {"TRIAMSALT": {"TRIAM"}}
+    assert registry_unconfirmed(verdicts, unii_of, registered, parents) == {
+        "ain457": set(), "scb01a": {3}, "u34865": set(), "fx006": {5}}
