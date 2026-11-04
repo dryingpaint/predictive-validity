@@ -1,0 +1,1326 @@
+readout_canonical,n,kinds,kind_majority,kind_final,conflict,specific_majority,example_readout,drugs
+HSP90AA1:hsp70_induction,8,target_product:6;downstream_marker:2,target_product,,True,yes,Hsp70 induction in PBMCs,ganetespib;kw-2478;onalespib;xl-888
+PIK3CA:pakt_inhibition,4,downstream_marker:3;target_product:1,downstream_marker,,True,no,pAKT inhibition in uveal melanoma patients,alpelisib;pictilisib;sonolisib
+DRD2:pet_occupancy,12,occupancy:12,occupancy,,False,yes,D2/D3 receptor occupancy by PET in PD patients,aripiprazole;brexpiprazole;lumateperone;lurasidone;osu-6162;perphenazine 4-aminobutyrate
+HRH3:pet_occupancy,12,occupancy:12,occupancy,,False,yes,brain H3 receptor occupancy by [11C]MK-8278 PET (>80%),azd-5213;enerisant;gsk-239512;lml-134;mk-0249;pitolisant
+IL1B:total_il1b_complex,12,occupancy:12,occupancy,,False,yes,total IL-1b complex rise in gout and SJIA,canakinumab
+GRM5:pet_occupancy,10,occupancy:10,occupancy,,False,yes,mGlu5 occupancy estimated from PET-plasma relationship,azd-2066;basimglurant;dipraglurant;mavoglurant
+CD40:b_cell_occupancy,9,occupancy:9,occupancy,,False,yes,complete CD40 engagement in Graves patients,bleselumab;iscalimab
+HDAC1:pbmc_lysine_acetylation,9,target_product:9,target_product,,False,yes,acetylated lysine in PBMCs,entinostat
+PIK3CA:skin_ps6,9,downstream_marker:9,downstream_marker,,False,no,"skin pS6, FDG-PET, C-peptide, glucose changes",buparlisib;serabelisib
+CYP2D6:alzheimer_agitation_efficacy,8,clinical_response:8,clinical_response,,False,no,clinical efficacy in Alzheimer's agitation (DM/quinidine),quinidine
+IL12B:clinical_efficacy,8,clinical_response:8,clinical_response,,False,no,pivotal endpoints in psoriasis,ustekinumab
+IL2RA:treg_expansion,8,downstream_marker:8,downstream_marker,,False,no,selective CD25bright Treg expansion (12–17-fold),efavaleukin alfa;melredableukin alfa;pt-101 (mutant il-2 fc fusion protein);rezpegaldesleukin
+PTGS1:platelet_thromboxane_suppression,8,target_product:8,target_product,,False,yes,platelet COX-1 engagement and thromboxane suppression,aspirin
+BTK:pbmc_occupancy,7,occupancy:7,occupancy,,False,yes,BTK occupancy in PBMCs,evobrutinib;rilzabrutinib
+CD274:clinical_efficacy,7,clinical_response:7,clinical_response,,False,no,efficacy endpoints met in other tumours,atezolizumab;durvalumab
+CD47:occupancy,7,occupancy:7,occupancy,,False,yes,~100% CD47 occupancy at 30 mg/kg,magrolimab
+HDAC1:histone_acetylation,7,target_product:7,target_product,,False,yes,"histone acetylation rise in blood, tissue and blasts",belinostat;panobinostat
+BTK:occupancy,6,occupancy:6,occupancy,,False,yes,BTK occupancy (100% after single 10 mg),branebrutinib;fenebrutinib;poseltinib;tirabrutinib
+BTK:peripheral_b_cell_occupancy,6,occupancy:6,occupancy,,False,yes,peripheral B-cell BTK occupancy (~99% HV; 95-97% trough CLL),acalabrutinib
+ENG:plasma_cd105,6,occupancy:6,occupancy,,False,yes,plasma CD105 reduction with VEGF induction,carotuximab
+FCGRT:total_igg,6,target_product:6,target_product,,False,unsure,total IgG fall,efgartigimod alfa;nipocalimab;rozanolixizumab
+IL2RB:tumor_il2_pathway_signature,6,downstream_marker:6,downstream_marker,,False,no,IL2 receptor pathway engagement in tumour biopsies,bempegaldesleukin
+P2RX3:atp_cough_challenge,6,occupancy:6,occupancy,,False,unsure,ATP-evoked cough threshold in chronic cough,gefapixant
+ANGPT1:dce_mri_ktrans,5,downstream_marker:5,downstream_marker,,False,no,DCE-MRI Ktrans reduction,trebananib
+BTK:efficacy_other_indication,5,clinical_response:5,clinical_response,,False,no,efficacy at 560 mg in mantle cell lymphoma and cGVHD,ibrutinib
+C5:free_c5,5,occupancy:5,occupancy,,False,yes,serum free C5 reduction in GBS patients,eculizumab;ravulizumab
+FGFR1:tumour_pfgfr,5,target_product:5,target_product,,False,yes,tumour pFGFR inhibition,dovitinib
+IL17A:bd2_normalization,5,downstream_marker:5,downstream_marker,,False,no,BD-2 normalization in psoriasis,secukinumab
+LILRA4:pdc_depletion,5,downstream_marker:5,downstream_marker,,False,no,pDC depletion in blood and cutaneous lupus skin,daxdilimab
+MAPK11:phsp27_blood,5,target_product:5,target_product,,False,yes,blood pHSP27 reduction after 15 mg,losmapimod
+MET:circulating_hgf,5,target_product:5,target_product,,False,yes,circulating HGF rise,onartuzumab
+MET:tumor_pmet,5,target_product:5,target_product,,False,yes,tumour biopsy phospho-MET reduction,tivantinib
+MMP9:free_plasma_mmp9,5,occupancy:5,occupancy,,False,yes,free MMP9 in plasma (undetectable),andecaliximab
+PDE10A:pet_occupancy,5,occupancy:5,occupancy,,False,yes,striatal PDE10A occupancy by [11C]T-773 PET,balipodect;elpipodect;gemlapodect;mardepodect
+PDE9A:csf_cgmp,5,target_product:5,target_product,,False,no,CSF cGMP rise in DLB/PDD patients,edelinontrine;irsenontrine;osoresnontrine
+PIK3CD:sputum_pip3,5,target_product:5,target_product,,False,yes,sputum PIP3 reduction,CHF6523;gsk-2292767;nemiralisib
+SMO:gli1_suppression,5,target_product:5,target_product,,False,yes,GLI1 down-modulation in skin and mCRPC tumors; GLI1/UGT1A in AML,sonidegib;vismodegib
+TNNC2:muscle_force_frequency_response,5,downstream_marker:5,downstream_marker,,False,no,nerve-stimulated muscle force-frequency response,reldesemtiv
+BRD2:circulating_mcp1,4,downstream_marker:4,downstream_marker,,False,no,circulating MCP-1 reduction,molibresib
+BRD4:hexim1_modulation,4,target_product:4,target_product,,False,unsure,HEXIM1 pharmacodynamic modulation in patient samples,alobresib;amredobresib
+CD274:pdl1_occupancy,4,occupancy:4,occupancy,,False,yes,peripheral PD-L1 saturation,BMS-986189;bintrafusp alfa;socazolimab
+CD274:peripheral_target_occupancy,4,occupancy:4,occupancy,,False,yes,peripheral PD-L1 target occupancy,avelumab
+CD38:cd38pos_cell_depletion,4,occupancy:4,occupancy,,False,yes,"CD38+ T, NK and myeloid cell depletion in prostate tumours",daratumumab;isatuximab
+CSF1R:plasma_csf1,4,target_product:4,target_product,,False,yes,plasma CSF1 rise,pexidartinib
+CSF2:gmcsf_complex_ratio,4,occupancy:4,occupancy,,False,yes,GM-CSF drug-target complex ratio in RA,otilimab
+EGLN1:plasma_epo,4,target_product:4,target_product,,False,yes,"dose-dependent EPO, VEGF and reticulocyte rises",daprodustat
+EREG:pkpd_modelled_engagement,4,occupancy:4,occupancy,,False,yes,PK/PD-modelled epiregulin target engagement (92%),fepixnebart
+GABRA1:bis_qeeg_pd,4,downstream_marker:4,downstream_marker,,False,no,dose-dependent CNS PD effects (BIS/qEEG) in healthy volunteers,ganaxolone
+GSK3B:bipolar_efficacy,4,clinical_response:4,clinical_response,,False,no,FDA-approved efficacy in bipolar disorder,lithium carbonate
+HTR6:pet_occupancy,4,occupancy:4,occupancy,,False,yes,striatal 5-HT6 receptor PET occupancy,idalopirdine;intepirdine;sam-760
+IGF1:igf_bioactivity,4,occupancy:4,occupancy,,False,yes,IGF bioactivity almost undetectable,xentuzumab
+IGF1R:pbmc_receptor_phosphorylation,4,target_product:4,target_product,,False,yes,IGF1R/IR phosphorylation inhibition in PBMCs,linsitinib
+IGF1R:receptor_downregulation,4,occupancy:4,occupancy,,False,yes,granulocyte and prostate tumour IGF-1R downregulation,figitumumab
+IL17A:clinical_efficacy,4,clinical_response:4,clinical_response,,False,no,"efficacy in AS, psoriasis and PsA",secukinumab
+IL33:ex_vivo_ifng_blockade,4,occupancy:4,occupancy,,False,yes,ex vivo whole-blood IL-33-driven IFN-gamma release blockade,etokimab
+IL5RA:eosinophil_depletion,4,downstream_marker:4,downstream_marker,,False,no,blood and tissue eosinophil depletion,benralizumab
+JAK1:whole_blood_pstat3,4,occupancy:4,occupancy,,False,yes,whole-blood pSTAT3 inhibition tracking plasma levels,ruxolitinib
+KEAP1:pbmc_nqo1_mrna,4,downstream_marker:4,downstream_marker,,False,unsure,NQO1 mRNA induction in PBMCs,bardoxolone methyl
+MAP2K1:perk_suppression,4,target_product:4,target_product,,False,unsure,pERK suppression in PBMCs (not sustained at capped dose),pimasertib
+MAP2K1:tissue_perk,4,target_product:4,target_product,,False,yes,tumor and skin pERK/DUSP6 suppression,binimetinib;selumetinib
+MAP3K5:hepatic_phospho_p38,4,target_product:4,target_product,,False,unsure,hepatic phospho-p38 reduction in NASH,selonsertib
+MDM2:mic1_induction,4,downstream_marker:4,downstream_marker,,False,unsure,exposure-dependent MIC-1 induction (p53 activation),RO6839921;idasanutlin
+MTOR:tumor_ps6,4,target_product:4,target_product,,False,unsure,tumour pS6 modulation in NSCLC window study,everolimus
+P2RY12:platelet_inhibition,4,occupancy:4,occupancy,,False,yes,platelet inhibition (platelet reactivity assays),act-281959;prasugrel;ticagrelor
+PIK3CA:tumour_pakt_ps6,4,target_product:4,target_product,,False,unsure,tumour pAKT/pS6 reduction,buparlisib;pilaralisib
+PPARA:serum_triglycerides_hdl,4,downstream_marker:4,downstream_marker,,False,no,triglyceride fall and HDL rise in prediabetic patients,elafibranor
+PTGDR2:sputum_eosinophils,4,downstream_marker:4,downstream_marker,,False,no,sputum eosinophil reduction (~3.5-fold),fevipiprant
+PTGIR:platelet_camp,4,target_product:4,target_product,,False,unsure,platelet cAMP rise and aggregation inhibition,beraprost;iloprost
+S1PR1:lymphocyte_reduction,4,downstream_marker:4,downstream_marker,,False,no,B- and T-cell reductions in Crohn patients and MS,ozanimod;siponimod
+SIGLEC8:tissue_eosinophil_depletion,4,downstream_marker:4,downstream_marker,,False,no,tissue eosinophil depletion in eosinophilic GI disease,lirentelimab
+SLC6A2:pet_occupancy,4,occupancy:4,occupancy,,False,yes,NET and DAT/SERT occupancy by PET,ampreloxetine;centanafadine
+SLC6A3:narcolepsy_osa_approval,4,clinical_response:4,clinical_response,,False,no,FDA approval for narcolepsy and OSA,modafinil
+SLC6A9:pet_occupancy,4,occupancy:4,occupancy,,False,yes,brain GlyT1 occupancy by PET (Emax ~92%),bitopertin;pf-03463275
+SSTR1:gh_suppression,4,target_product:4,target_product,,False,yes,dose-dependent GH suppression (79-96%),pasireotide
+TACR1:central_nk1_blockade,4,occupancy:4,occupancy,,False,yes,full central NK1 blockade (title only),orvepitant
+TNFSF13B:b_cell_lowering,4,downstream_marker:4,downstream_marker,,False,no,"B-cell and immunoglobulin changes (SLE, RA)",tabalumab
+TRPA1:cinnamaldehyde_dermal_blood_flow,4,occupancy:4,occupancy,,False,yes,cinnamaldehyde-evoked dermal blood flow inhibition,ly-3526318
+TUBB1:approval_other_cancers,4,clinical_response:4,clinical_response,,False,no,approval in other cancers via tubulin,paclitaxel
+VKORC1:vitk_dependent_factors,4,target_product:4,target_product,,False,yes,"vitamin K-dependent factors II, VII, IX, X lowered",tecarfarin
+BACE1:csf_abeta,3,target_product:3,target_product,,False,yes,CSF Aβ1-42 reduction (~73%),PF-05297909;lanabecestat;ly-3202626
+BRD2:monocyte_cd11b,3,target_product:3,target_product,,False,unsure,blood monocyte CD11b fall,ro-6870810
+BTK:blood_btk_occupancy,3,occupancy:3,occupancy,,False,yes,peripheral B-cell BTK occupancy,acalabrutinib;remibrutinib;zanubrutinib
+C5AR1:ex_vivo_c5a_cd11b_blockade,3,occupancy:3,occupancy,,False,yes,ex vivo blockade of C5a-induced neutrophil CD11b upregulation,avacopan
+CACNA2D1:cns_indication_efficacy,3,clinical_response:3,clinical_response,,False,no,"efficacy endpoints met in CNS indications (epilepsy, fibromyalgia, PHN)",pregabalin
+CALCA:clinical_efficacy,3,clinical_response:3,clinical_response,,False,no,migraine pivotal endpoints met,eptinezumab;fremanezumab
+CASP3:serum_caspase_ck18_biomarkers,3,target_product:3,target_product,,False,yes,caspase-cleaved keratin M30 fall,emricasan
+CCR2:plasma_mcp1_rise,3,target_product:3,target_product,,False,unsure,dose-dependent plasma MCP-1 rise indicating CCR2 blockade,cenicriviroc
+CCR4:treg_depletion,3,occupancy:3,occupancy,,False,yes,peripheral CCR4+ effector Treg depletion,mogamulizumab
+CD3E:il6_tnf_crs,3,downstream_marker:3,downstream_marker,,False,no,transient IL-6/TNF rise and CRS; sustained engagement not achieved,RO7293583
+CD40:receptor_occupancy,3,occupancy:3,occupancy,,False,yes,>90% CD40 receptor occupancy,ABBV-428;BI 655064
+CD80:cd86_occupancy,3,occupancy:3,occupancy,,False,yes,CD86 occupancy measurable in humans,abatacept
+CRBN:approved_efficacy_other_cancer,3,clinical_response:3,clinical_response,,False,no,FDA approvals in MCL/FL/MZL/MDS; met CLL endpoint,lenalidomide
+CSF1R:serum_csf1_rise,3,target_product:3,target_product,,False,yes,serum MCSF rise after therapy,cabiralizumab
+CTLA4:icos_tcell_cd8_proliferation,3,downstream_marker:3,downstream_marker,,False,no,"ICOS+ T-cell increase, TCR broadening, CD8 proliferation",tremelimumab
+CX3CL1:serum_total_fractalkine,3,occupancy:3,occupancy,,False,yes,rise in serum total fractalkine,quetmolimab
+CYP46A1:pet_occupancy,3,occupancy:3,occupancy,,False,yes,CH24H brain PET occupancy in healthy volunteers,soticlestat
+DEFERIPRONE:brain_iron_r2_mri,3,occupancy:3,occupancy,,False,yes,substantia nigra iron on R2* MRI,deferiprone
+DLL4:blood_notch_gene_signature,3,downstream_marker:3,downstream_marker,,False,no,Notch-signaling and angiogenesis gene modulation in peripheral blood,demcizumab
+DNMT1:global_dna_hypomethylation,3,target_product:3,target_product,,False,yes,global DNA hypomethylation in MDS/AML patients,azacitidine
+EGFR:tumour_target_inhibition,3,target_product:3,target_product,,False,unsure,tumour target inhibition on pharmacodynamic biopsies,duligotuzumab
+ERBB3:pet_tumour_occupancy,3,occupancy:3,occupancy,,False,yes,tumour HER3 receptor occupancy by [64Cu]-patritumab PET,patritumab
+F10:anti_xa_activity,3,occupancy:3,occupancy,,False,yes,anti-Xa inhibition in humans,rivaroxaban
+FAAH:pet_brain_occupancy,3,occupancy:3,occupancy,,False,yes,brain FAAH occupancy by PET,jnj-42165279
+FGFR1:svegfr2_lowering,3,downstream_marker:3,downstream_marker,,False,unsure,soluble VEGFR2 and CD117+ progenitor fall; DCE-MRI tumour blood flow,nintedanib
+GABRA2:pet_occupancy,3,occupancy:3,occupancy,,False,yes,[11C]flumazenil PET GABAA receptor occupancy,azd-7325;darigabat
+GHR:igf1,3,target_product:3,target_product,,False,yes,dose-dependent IGF-I increase,somavaratan
+GLS:platelet_gls_inhibition,3,occupancy:3,occupancy,,False,yes,GLS inhibition in platelets and tumour,telaglenastat
+GUCY1A1:haemodynamic_effects,3,downstream_marker:3,downstream_marker,,False,no,dose-dependent falls in PVR and PAP,riociguat
+GUCY1A1:plasma_cgmp,3,target_product:3,target_product,,False,unsure,plasma cGMP rise and blood pressure fall,avenciguat;praliciguat
+HCRTR1:insomnia_polysomnography,3,downstream_marker:3,downstream_marker,,False,no,polysomnography endpoints in primary insomnia at 10 mg,filorexant
+HRH4:exvivo_eosinophil_shape_change,3,occupancy:3,occupancy,,False,yes,ex vivo histamine-induced eosinophil shape change blockade,toreforant
+HSD11B1:urinary_thf_the_ratio,3,target_product:3,target_product,,False,yes,urinary THF/THE ratio fall,RO5093151;emestedastat
+HSP90AA1:tumour_client_protein_depletion,3,target_product:3,target_product,,False,yes,tumour client-protein depletion,luminespib
+HTR2A:pet_occupancy,3,occupancy:3,occupancy,,False,yes,"brain 5-HT2A receptor occupancy by PET, near-saturated at 10-20 mg",landipirdine;pimavanserin
+HTR4:gi_transit_acceleration,3,downstream_marker:3,downstream_marker,,False,no,faster GI/colonic transit and gastric emptying,velusetrag
+HYALURONIDASEHUMANRECOMBINANT:sc_dispersion,3,downstream_marker:3,downstream_marker,,False,unsure,SC dispersion and infusion flow rates,hyaluronidase (human recombinant)
+IDO1:kynurenine,3,target_product:3,target_product,,False,yes,kynurenine fall with linrodostat plus nivolumab,linrodostat
+IGF1R:neutrophil_occupancy,3,occupancy:3,occupancy,,False,yes,neutrophil IGF-1R occupancy,ganitumab
+IGHE:free_ige,3,occupancy:3,occupancy,,False,yes,free IgE and basophil FcεRI suppression in atopic subjects,ligelizumab
+IL13:serum_total_il13,3,occupancy:3,occupancy,,False,yes,serum total IL-13 (drug–IL-13 complex),GSK679586;MEDI7836;anrukinzumab
+IL17A:psoriasis_pasi_efficacy,3,clinical_response:3,clinical_response,,False,no,dose-dependent clinical efficacy in psoriasis (PASI),cjm-112
+IL18:drug_bound_il18,3,occupancy:3,occupancy,,False,yes,IL18-drug complexes and total IL-18 in plasma,aletekitug
+IL1RL2:gpp_efficacy,3,clinical_response:3,clinical_response,,False,no,Phase 3 and Phase 2 endpoints met in GPP,imsidolimab
+IL1RL2:skin_il36_pathway_signature,3,downstream_marker:3,downstream_marker,,False,no,IL-36 pathway signature suppression in GPP skin,spesolimab
+IL22RA1:reg3a_induction,3,downstream_marker:3,downstream_marker,,False,unsure,REG3A serum biomarker and colonic IL-22-responsive gene induction,efmarodocokin alfa
+IL23A:il17_pathway_suppression,3,downstream_marker:3,downstream_marker,,False,no,IL-23/IL-17 pathway suppression in psoriasis,risankizumab
+IL33:total_il33,3,occupancy:3,occupancy,,False,yes,rise in total IL-33 (target binding),itepekimab;tozorakimab
+IL6:crp_suppression,3,downstream_marker:3,downstream_marker,,False,no,CRP suppression below 1 mg/L,pacibekitug;siltuximab
+IL6R:receptor_occupancy,3,occupancy:3,occupancy,,False,yes,modelled IL-6Rα receptor occupancy in RA,sarilumab
+IL7R:tcell_cycling_cd4_cd8_expansion,3,downstream_marker:3,downstream_marker,,False,no,"T-cell cycling, bcl-2 upregulation, CD4+/CD8+ expansion",interleukin-7 human recombinant
+KIF11:biopsy_phh3_mitotic_arrest,3,downstream_marker:3,downstream_marker,,False,no,phosphohistone H3 increase in tumour and skin biopsies,litronesib
+MAPK14:ex_vivo_lps_cytokine_inhibition,3,occupancy:3,occupancy,,False,no,"ex vivo LPS-induced TNF, IL-1β and PGE2 inhibition",emprumapimod
+MDM2:serum_mic1,3,downstream_marker:3,downstream_marker,,False,no,serum MIC-1 rise (p53 activation),sulanemadlin
+MPO:mpo_activity_inhibition,3,occupancy:3,occupancy,,False,yes,MPO activity inhibition in HFpEF patients and healthy volunteers,mitiperstat
+MS4A1:bcell_depletion,3,target_product:3,target_product,,False,yes,B-cell depletion in blood and salivary gland,obinutuzumab;ofatumumab;rituximab
+MTOR:pakt_platelets,3,target_product:3,target_product,,False,yes,pAKT suppression (>=90%) in platelet-rich plasma,apitolisib
+NGF:free_ngf_suppression,3,occupancy:3,occupancy,,False,yes,modeled free-NGF suppression,tanezumab
+NR3C1:ibd_clinical_efficacy,3,clinical_response:3,clinical_response,,False,no,efficacy endpoints in Crohn's disease and colitis,budesonide
+OPRM1:bowel_function_index,3,clinical_response:3,clinical_response,,False,no,Bowel Function Index superiority of OXN vs oxycodone PR,naloxone
+OPRM1:buprenorphine_challenge_blockade,3,occupancy:3,occupancy,,False,yes,blockade of buprenorphine pupillometric and subjective effects,samidorphan
+PARP1:tumour_par_inhibition,3,target_product:3,target_product,,False,yes,PAR inhibition in tumor biopsies,veliparib
+PDCD1:receptor_occupancy,3,occupancy:3,occupancy,,False,yes,PD-1 receptor occupancy,MEDI0680;rosnilimab;spartalizumab
+PIK3CA:tumor_pathway_modulation,3,downstream_marker:3,downstream_marker,,False,unsure,tumor engagement and pathway effects in breast cancer,alpelisib
+POSOLEUCEL:vst_persistence,3,downstream_marker:3,downstream_marker,,False,no,infused VST persistence; circulating BK-specific T-cell rise,posoleucel
+POTASSIUMBITARTRATE:vaginal_ph_reduction,3,target_product:3,target_product,,False,yes,vaginal pH fall of 0.5-0.76 units over 6-12 h,potassium bitartrate
+PPARD:target_gene_induction,3,target_product:3,target_product,,False,yes,upregulation of six PPARδ target genes,bocidelpar
+PTGDR2:exvivo_eosinophil_shape_change,3,occupancy:3,occupancy,,False,yes,ex vivo PGD2-induced eosinophil shape change blockade,GB001;azd-1981
+RIPK1:blood_target_engagement,3,occupancy:3,occupancy,,False,yes,blood RIPK1 target engagement,gsk-2982772
+RIPK1:ps166_ripk1,3,target_product:3,target_product,,False,yes,pS166-RIPK1 reduction,eclitasertib
+ROCK2:ex_vivo_il17_il21_suppression,3,occupancy:3,occupancy,,False,no,ex vivo IL-17/IL-21 suppression in healthy volunteers,belumosudil
+SLC10A2:serum_bile_acids,3,target_product:3,target_product,,False,yes,serum bile acid lowering in PSC and ALGS/PFIC,maralixibat
+SLC18A2:efficacy_other_indication,3,clinical_response:3,clinical_response,,False,no,efficacy in HD chorea and tardive dyskinesia,deutetrabenazine;valbenazine
+STS:sts_inhibition,3,occupancy:3,occupancy,,False,yes,STS inhibition in PBMCs,irosustat
+TACR1:pruritus_response,3,clinical_response:3,clinical_response,,False,no,pruritus endpoints in chronic pruritus and psoriatic itch,serlopitant
+TACR3:lh_testosterone_suppression,3,target_product:3,target_product,,False,unsure,LH and testosterone reduction in healthy men,SJX-653;pavinetant
+TIGIT:t_cell_receptor_occupancy,3,occupancy:3,occupancy,,False,yes,TIGIT receptor occupancy on blood T cells,ociperlimab
+TNFRSF10B:dr5_occupancy_monocytes,3,occupancy:3,occupancy,,False,yes,DR5 receptor occupancy on monocytes,conatumumab
+TRPV4:ex_vivo_whole_blood_blockade,3,occupancy:3,occupancy,,False,yes,ex vivo whole-blood endothelial TRPV4 blockade (≥85%),gsk-2798745
+TUBA1A:vascular_disruption_biomarkers,3,downstream_marker:3,downstream_marker,,False,no,"vascular-disruption biomarkers (CEC, VEGF, MMP-9) post-infusion",ombrabulin
+TYK2:ex_vivo_il12_ifn_signalling,3,occupancy:3,occupancy,,False,yes,inhibition of IL-12/IL-23 and type I IFN signalling,deucravacitinib
+TYK2:pstat1_inhibition,3,occupancy:3,occupancy,,False,unsure,pSTAT1 suppression and type I IFN gene/SIGLEC1 reduction,envudeucitinib
+ACVR2A:lean_mass_gain,2,downstream_marker:2,downstream_marker,,False,no,lean mass and thigh muscle volume gains,bimagrumab
+ADRA2A:ocular_hyperemia_redness_efficacy,2,clinical_response:2,clinical_response,,False,no,redness endpoint met in ocular hyperemia,brimonidine
+AGTR1:plasma_renin_angii_rise,2,target_product:2,target_product,,False,no,renin and angiotensin II rise,valsartan
+AKT1:pakt_inhibition,2,target_product:2,target_product,,False,yes,direct Akt inhibition in patient cells (not seen),perifosine
+ANGPT2:plasma_free_ang2_vegfa,2,occupancy:2,occupancy,,False,yes,reduced free plasma VEGF-A and Ang-2,vanucizumab
+ANGPT2:total_ang2_rise,2,occupancy:2,occupancy,,False,yes,total plasma Ang2 rise after antibody dosing,zansecimab
+ANGPTL3:plasma_angptl3_level,2,occupancy:2,occupancy,,False,yes,dose-dependent plasma ANGPTL3 lowering,vupanorsen
+AOC3:plasma_vap1_inhibition,2,occupancy:2,occupancy,,False,yes,plasma VAP-1 inhibition,ASP8232;TERN-201
+APEX1:serum_ref1,2,occupancy:2,occupancy,,False,yes,reduced serum Ref-1,erenapurstat
+APOA1:cholesterol_efflux,2,target_product:2,target_product,,False,unsure,cholesterol efflux capacity / cholesterol mobilisation into HDL,CER-001
+APOA1:plasma_apoa1,2,occupancy:2,occupancy,,False,yes,plasma apoA-I rise (dose-proportional),MDCO-216;apolipoprotein a-i
+APP:csf_abeta,2,occupancy:2,occupancy,,False,yes,CSF Aβ biomarkers (no dose response),ponezumab
+APP:csf_abeta42,2,target_product:2,target_product,,False,unsure,CSF Aβx-42,scyllo-inositol
+ARG1:plasma_arginine,2,target_product:2,target_product,,False,yes,plasma arginine depletion,pegzilarginase
+ARG1:plasma_arginine_depletion,2,target_product:2,target_product,,False,yes,plasma arginine depletion to quantification limit,bct-100
+ATP1A1:wart_hpv_load,2,downstream_marker:2,downstream_marker,,False,no,HPV load and wart diameter reduction in cutaneous warts,digoxin
+AURKA:plasma_svegfr2,2,downstream_marker:2,downstream_marker,,False,unsure,plasma soluble VEGFR2 fall,enmd-981693
+AURKA:skin_mitotic_index_spindle_defects,2,downstream_marker:2,downstream_marker,,False,unsure,skin mitotic index and tumour spindle/chromosome alignment defects,alisertib
+AXL:axl_mer_inhibition,2,occupancy:2,occupancy,,False,yes,near-maximal Axl/Mer inhibition,tamnorzatinib
+BACE1:csf_abeta_reduction,2,target_product:2,target_product,,False,yes,"CSF Abeta40, Abeta42 and sAPPbeta reduction",elenbecestat;verubecestat
+BIRC2:ciap1_suppression_pbmc_tumour,2,occupancy:2,occupancy,,False,yes,cIAP1 suppression and apoptosis in PBMCs and tumor,birinapant
+BIRC5:tumor_survivin_knockdown,2,occupancy:2,occupancy,,False,yes,tumor survivin mRNA/protein knockdown (~20%),gataparsen
+BMP10:tumor_blood_flow,2,downstream_marker:2,downstream_marker,,False,no,tumor blood flow fall and HHT-like telangiectasia,dalantercept
+BRAF:approved_efficacy_other_cancer,2,clinical_response:2,clinical_response,,False,no,FDA approval in another malignancy at same dose,sorafenib
+BRD9:brd9_degradation,2,occupancy:2,occupancy,,False,yes,BRD9 degradation in patients,sendegobresib
+C5:c5a_neutralization,2,occupancy:2,occupancy,,False,yes,C5a neutralization in sepsis and COVID-19 patients,vilobelimab
+C9ORF72:poly_gp,2,target_product:2,target_product,,False,yes,poly(GP) reduction,WVE-004
+CCL2:free_ccl2,2,occupancy:2,occupancy,,False,yes,"free CCL2 suppression (transient, rebound above baseline)",carlumab
+CCR5:hiv_efficacy,2,clinical_response:2,clinical_response,,False,no,HIV efficacy endpoint (VICTOR-E1),vicriviroc
+CD19:b_cell_depletion,2,occupancy:2,occupancy,,False,yes,B-cell depletion in MS and SSc,inebilizumab
+CD28:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,CD28 receptor occupancy,lulizumab pegol
+CD33:t_cell_activation,2,downstream_marker:2,downstream_marker,,False,no,T-cell activation (suggested engagement),JNJ-67571244
+CD38:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,CD38 receptor occupancy in myeloma,isatuximab;mezagitamab
+CD3E:cd3_occupancy,2,occupancy:2,occupancy,,False,yes,CD3ε occupancy with TCR downmodulation,otelixizumab
+CD4:cell_surface_cd4_downmodulation,2,occupancy:2,occupancy,,False,yes,cell-surface CD4 downmodulation,tregalizumab
+CDH17:plasma_caspase_3_7,2,downstream_marker:2,downstream_marker,,False,no,plasma caspase 3/7 activation (≥2-fold),BI 905711
+CDK7:surrogate_tissue_occupancy,2,occupancy:2,occupancy,,False,yes,CDK7 target occupancy in skin and peripheral blood,LY3405105
+CETP:plasma_cetp_activity_inhibition,2,occupancy:2,occupancy,,False,yes,plasma CETP activity inhibition 83-95%,evacetrapib
+CFTR:plasma_fviii_fix_activity,2,target_product:2,target_product,,False,yes,plasma FVIII/FIX activity response at Day 14 (0/10),ataluren
+CHEK1:gamma_h2ax,2,downstream_marker:2,downstream_marker,,False,no,blood γ-H2AX rise,prexasertib
+CHRNA4:brain_nachr_occupancy,2,occupancy:2,occupancy,,False,yes,brain uptake and nAChR occupancy in smokers,nicotine
+CHRNA4:pet_occupancy,2,occupancy:2,occupancy,,False,yes,alpha4beta2 nAChR occupancy by PET,azd-1446 free base;varenicline
+CHRNA7:qeeg_nicotine_shift,2,downstream_marker:2,downstream_marker,,False,unsure,qEEG nicotine-shift assay in healthy volunteers,soclenicant
+CIPROFLOXACIN:sputum_bacterial_load,2,target_product:2,target_product,,False,no,sputum bacterial load reduction (2.37 log10 CFU/g),ciprofloxacin
+CLU:tumour_clusterin_knockdown,2,occupancy:2,occupancy,,False,yes,tumor clusterin expression knockdown >90%,custirsen
+COL1A1:injected_tissue_histology,2,target_product:2,target_product,,False,unsure,histologic change in injected tissue,collagenase clostridium histolyticum
+CPB2:plasma_tafia_activity,2,occupancy:2,occupancy,,False,yes,plasma TAFIa activity fall (healthy subjects),ds-1040
+CRBN:efficacy_other_indication,2,clinical_response:2,clinical_response,,False,no,PFS efficacy at 4 mg in myeloma,pomalidomide
+CRP:hs_crp_knockdown,2,occupancy:2,occupancy,,False,yes,hs-CRP lowering (target knockdown),ISIS-CRPRx
+CSF1R:csf1r_phosphorylation_inhibition,2,target_product:2,target_product,,False,yes,>80% inhibition of CSF-1R phosphorylation in cHL patients,edicotinib
+CSF2:total_gmcsf,2,occupancy:2,occupancy,,False,yes,rising total GM-CSF levels (ligand capture),gimsilumab;namilumab
+CSF3R:neutrophil_count,2,downstream_marker:2,downstream_marker,,False,no,dose-dependent ANC rise and CD34+ mobilization,filgrastim
+CTSS:lip10_accumulation,2,target_product:2,target_product,,False,yes,dose-dependent Lip10 accumulation,petesicatib
+CXCR1:blood_neutrophil_count,2,downstream_marker:2,downstream_marker,,False,no,dose-related neutropenia in COPD,navarixin
+CXCR2:neutrophil_reduction,2,downstream_marker:2,downstream_marker,,False,no,"sputum, blood and bronchial-tissue neutrophil reduction",azd-5069
+CXCR4:hspc_mobilization,2,downstream_marker:2,downstream_marker,,False,no,HSPC mobilization and leukocytosis,balixafortide
+CXCR4:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,CXCR4 receptor occupancy in AML (incomplete),ly-2510924
+DAO:pet_occupancy,2,occupancy:2,occupancy,,False,yes,brain DAO occupancy by PET (tracer VT fall),luvadaxistat
+DDC:levodopa_auc,2,target_product:2,target_product,,False,no,levodopa AUC rise with carbidopa in healthy volunteers,carbidopa
+DGAT1:fasting_tg,2,target_product:2,target_product,,False,no,fasting TG reduction in HTG/FCS patients,pradigastat
+DGAT1:postprandial_tg,2,target_product:2,target_product,,False,no,postprandial triglyceride suppression,pradigastat
+DHFR:clinical_efficacy,2,clinical_response:2,clinical_response,,False,no,response endpoints in PTCL,pralatrexate
+DHFR:nsclc_mesothelioma_approval,2,clinical_response:2,clinical_response,,False,no,approved efficacy in NSCLC and mesothelioma,pemetrexed
+DHODH:lymphocyte_dhodh_activity,2,occupancy:2,occupancy,,False,yes,lymphocyte DHODH activity,brequinar
+DHODH:nfl_lowering,2,downstream_marker:2,downstream_marker,,False,no,dose-dependent NfL lowering in RRMS,vidofludimus
+DPP4:plasma_dpp4_inhibition,2,occupancy:2,occupancy,,False,yes,plasma DPP-4 inhibition >80% over 24 h,evogliptin;omarigliptin
+DRD1:pet_occupancy,2,occupancy:2,occupancy,,False,yes,basal ganglia D1 PET occupancy,Lu AF35700;ecopipam
+EDNRA:uacr_ckd,2,downstream_marker:2,downstream_marker,,False,no,UACR endpoint in CKD,zibotentan
+EGFR:plasma_soluble_egfr,2,occupancy:2,occupancy,,False,unsure,plasma soluble-EGFR change in HNSCC,cetuximab
+EGFR:receptor_downmodulation,2,occupancy:2,occupancy,,False,yes,EGFR downmodulation (pharmacodynamic studies),modotuximab
+EGFR:tumor_egfr_cell_depletion,2,downstream_marker:2,downstream_marker,,False,unsure,EGFR-expressing tumor cell reduction in HNSCC biopsies,imgatuzumab
+EGFR:tumour_egfr_downmodulation,2,occupancy:2,occupancy,,False,yes,tumour EGFR downmodulation,futuximab
+ENPP2:plasma_lpa,2,target_product:2,target_product,,False,yes,plasma LPA C18:2 reduction,ziritaxestat
+ERYASPASE:plasma_asparaginase_activity,2,occupancy:2,occupancy,,False,yes,plasma asparaginase activity >100 U/L (ALL),eryaspase
+EXEPORFINIUMCHLORIDE:nasal_saureus_cfu,2,target_product:2,target_product,,False,no,nasal S. aureus log CFU reduction,exeporfinium chloride
+EZH2:h3k27me3,2,target_product:2,target_product,,False,yes,H3K27me3 reduction in PBMCs and circulating tumor cells,lirametostat
+F10:fxa_activity,2,occupancy:2,occupancy,,False,yes,"FXa activity lowered, PT/aPTT prolonged in healthy volunteers",darexaban
+F11:fxia_inhibition,2,occupancy:2,occupancy,,False,yes,plasma FXIa inhibition,asundexian
+FAAH:enzyme_inhibition_blood,2,occupancy:2,occupancy,,False,yes,dose-dependent FAAH inhibition with plasma anandamide rise,ASP3652
+FAP:nk_cd8_expansion,2,downstream_marker:2,downstream_marker,,False,no,peripheral NK and CD8 T-cell expansion,simlukafusp alfa
+FGA:surgical_hemostasis_efficacy,2,clinical_response:2,clinical_response,,False,no,hemostasis endpoints met in surgical trials,human thrombin
+FGFR1:fgf19_23_rise,2,target_product:2,target_product,,False,unsure,FGF19/23 rise and CEC/CEP decrease,lenvatinib
+FGFR1:phosphate_fgf19,2,downstream_marker:2,downstream_marker,,False,unsure,phosphate and FGF19 changes in Phase 1 solid tumours,derazantinib
+FGFR4:liver_fat_reduction,2,downstream_marker:2,downstream_marker,,False,no,liver-fat reduction in NASH (FGF19-pathway effect),aldafermin
+FN1:vma_resolution,2,clinical_response:2,clinical_response,,False,no,VMA-resolution endpoints in pivotal trials,ocriplasmin
+FUT8:glycoprotein_fucosylation,2,target_product:2,target_product,,False,yes,inhibition of glycoprotein fucosylation,2-fluorofucose
+GABRA1:eeg_low_beta,2,downstream_marker:2,downstream_marker,,False,no,EEG low-beta increase in healthy volunteers,zuranolone
+GABRA4:slow_wave_eeg,2,downstream_marker:2,downstream_marker,,False,no,slow-wave EEG/MEG activity in healthy humans,gaboxadol
+GABRA5:pet_occupancy,2,occupancy:2,occupancy,,False,yes,GABAA-alpha5 receptor occupancy by [11C]Ro15-4513 PET,basmisanil
+GDF15:free_serum_gdf15,2,occupancy:2,occupancy,,False,yes,free serum GDF15 suppression (transient),AZD8853
+GHR:igf1_rise,2,target_product:2,target_product,,False,yes,IGF-I rise (SDS),somatropin pegol
+GHSR:gh_cortisol_prolactin_rise,2,target_product:2,target_product,,False,no,"GH, cortisol and prolactin rise",relamorelin
+GHSR:gh_release,2,target_product:2,target_product,,False,yes,growth hormone release,ipamorelin;lenomorelin
+GHSR:phase1_pd_unspecified,2,downstream_marker:2,downstream_marker,,False,unsure,unspecified Phase 1 pharmacodynamic receptor activity,ulimorelin
+GLP1R:hba1c,2,downstream_marker:2,downstream_marker,,False,no,HbA1c endpoints in T2D,albiglutide
+GPR119:plasma_pyy,2,target_product:2,target_product,,False,unsure,plasma total PYY rise (~5-fold),gsk-1292263
+GPR139:amphetamine_dopamine_release_pet,2,downstream_marker:2,downstream_marker,,False,no,attenuation of amphetamine-induced striatal dopamine release (PHNO PET),zelatriazin
+GPR84:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,GPR84 receptor occupancy,glpg-1205
+GRIA1:efficacy_other_indication,2,clinical_response:2,clinical_response,,False,no,pivotal efficacy in partial-onset and PGTC seizures,perampanel
+GRIA1:photoparoxysmal_response_suppression,2,downstream_marker:2,downstream_marker,,False,no,suppression of photoparoxysmal response,selurampanel
+GRIN2B:brain_glx_mrs,2,downstream_marker:2,downstream_marker,,False,no,dACC and posterior insula Glx/tCr reduction by MRS,nyx-2925
+GSPT1:gspt1_degradation,2,occupancy:2,occupancy,,False,yes,GSPT1 degradation in T cells and blasts,eragidomide
+GUCY1A1:neonatal_pphn_efficacy,2,clinical_response:2,clinical_response,,False,no,efficacy endpoint met in neonatal pulmonary hypertension,nitric oxide
+HCAR2:nefa_suppression,2,target_product:2,target_product,,False,no,plasma NEFA suppression,gsk-256073
+HCRTR2:polysomnography_insomnia,2,downstream_marker:2,downstream_marker,,False,no,polysomnography endpoints in insomnia,seltorexant
+HGF:total_hgf_rise,2,occupancy:2,occupancy,,False,yes,total HGF rise (binding marker) in CRPC arms,rilotumumab
+HRH1:histamine_wheal_flare_suppression,2,occupancy:2,occupancy,,False,yes,histamine wheal-and-flare suppression (oral drug),bepotastine
+HRH4:imetit_eosinophil_shape_change,2,occupancy:2,occupancy,,False,yes,ex vivo blockade of imetit-induced eosinophil shape change,LEO 152020
+HSD11B1:adipose_enzyme_inhibition,2,occupancy:2,occupancy,,False,yes,adipose tissue 11β-HSD1 inhibition,bi-135585;bi-187004
+HTR1A:sert_pet_occupancy,2,occupancy:2,occupancy,,False,yes,"SERT occupancy by PET: 2% at 2.5 mg, 97% at 60 mg",vortioxetine
+HTT:csf_mhtt,2,occupancy:2,occupancy,,False,yes,CSF mutant huntingtin (mHTT) lowering,lexanersen;rovanersen
+HUMANIMMUNOGLOBULING:cardiac_b19v_load,2,target_product:2,target_product,,False,yes,endomyocardial B19V viral load reduction,human immunoglobulin g
+ICOS:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,maximal ICOS receptor occupancy,feladilimab
+IDO1:plasma_kynurenine,2,target_product:2,target_product,,False,yes,plasma kynurenine (no sustained reduction),M4112;epacadostat
+IFNAR1:isg_induction,2,downstream_marker:2,downstream_marker,,False,unsure,"neopterin, MX1 and 2'5'OAS induction",interferon beta-1a
+IGF1:circulating_igf_suppression,2,occupancy:2,occupancy,,False,yes,circulating IGF-I and IGF-II suppression,dusigitumab
+IGF1R:granulocyte_igf1r_downregulation,2,occupancy:2,occupancy,,False,yes,IGF-1R downregulation on granulocytes,picropodophyllin
+IGF1R:serum_igf1_igfbp3_rise,2,target_product:2,target_product,,False,yes,serum IGF-1 and IGFBP-3 feedback rise,cixutumumab
+IGF1R:tumor_igf1r_level,2,occupancy:2,occupancy,,False,yes,paired tumor biopsy IGF-1R reduction,dalotuzumab
+IL13:clinical_efficacy,2,clinical_response:2,clinical_response,,False,no,atopic dermatitis pivotal endpoints met,tralokinumab
+IL17RA:leukocyte_receptor_occupancy,2,occupancy:2,occupancy,,False,yes,IL-17RA receptor occupancy on circulating leukocytes,brodalumab
+IL1A:hscrp,2,downstream_marker:2,downstream_marker,,False,no,hsCRP lowering in STEMI,goflikicept
+IL1B:crp,2,downstream_marker:2,downstream_marker,,False,no,CRP reduction,gevokizumab
+IL1R1:blood_neutrophils,2,downstream_marker:2,downstream_marker,,False,no,blood neutrophil reduction,MEDI8968
+IL23A:serum_il17_il22,2,downstream_marker:2,downstream_marker,,False,no,IL-17A/F and IL-22 reductions in psoriasis,guselkumab
+IL2RA:peripheral_treg_depletion,2,downstream_marker:2,downstream_marker,,False,unsure,peripheral Treg depletion,vopikitug
+IL2RB:nk_cd8_expansion,2,downstream_marker:2,downstream_marker,,False,no,NK and CD8+ T-cell expansion and activation,nemvaleukin alfa;nogapendekin alfa inbakicept
+IL5RA:tissue_eosinophils,2,downstream_marker:2,downstream_marker,,False,no,esophageal eosinophil depletion (histologic remission),benralizumab
+IL6:hs_crp_suppression,2,downstream_marker:2,downstream_marker,,False,no,hs-CRP fall in dialysis trial,clazakizumab
+IL6:ra_clinical_response,2,clinical_response:2,clinical_response,,False,no,pivotal RA endpoints met at 50 mg,sirukumab
+IMEXON:plasma_cystine,2,target_product:2,target_product,,False,unsure,plasma cystine fall (thiol depletion),imexon
+INHBA:muscle_volume,2,downstream_marker:2,downstream_marker,,False,no,muscle volume increase (TMV) in injected muscle,efmitermant alfa
+ITGA4:integrin_saturation,2,occupancy:2,occupancy,,False,yes,alpha4-integrin saturation in MS patients,natalizumab
+ITGB7:b7_receptor_occupancy,2,occupancy:2,occupancy,,False,yes,β7 receptor occupancy,etrolizumab
+JAK1:clinical_response_mf_crs,2,clinical_response:2,clinical_response,,False,no,primary endpoints met in myelofibrosis and CRS prevention,itacitinib
+JAK1:pasi75_psoriasis,2,clinical_response:2,clinical_response,,False,no,PASI75 response in psoriasis,solcitinib
+JAK1:pstat1_inhibition,2,occupancy:2,occupancy,,False,unsure,IL-6/pSTAT1 whole-blood inhibition (maximal at 200 mg),filgotinib
+K-757:gut_hormone_release,2,target_product:2,target_product,,False,no,"gut hormone (GLP-1, PYY, CCK, oxyntomodulin) rise",K-757
+KCNJ11:inotropic_hemodynamic_effect,2,downstream_marker:2,downstream_marker,,False,no,positive inotropic effect; dose-related heart-rate rise,levosimendan
+KCNJ1:sbp_lowering,2,clinical_response:2,clinical_response,,False,no,24h systolic blood pressure lowering in hypertension,mk-7145
+KDR:serum_vegfa_rise,2,target_product:2,target_product,,False,yes,serum VEGF-A rise (receptor blockade),ramucirumab
+KIF11:monopolar_spindles_pbmc,2,target_product:2,target_product,,False,yes,monopolar spindles in blood mononuclear cells,filanesib
+KISS1R:serum_testosterone,2,target_product:2,target_product,,False,no,serum testosterone rise after single bolus,tak-448
+KLRK1:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,full peripheral NKG2D receptor occupancy,tesnatilimab
+LTA4H:ltb4_production_inhibition,2,target_product:2,target_product,,False,yes,>90% LTB4 production inhibition in blood and skin blister cells,lys-006
+LTA:serum_cxcl13,2,downstream_marker:2,downstream_marker,,False,no,serum CXCL13 reduction,pateclizumab
+MAOB:pet_inhibition,2,occupancy:2,occupancy,,False,yes,brain MAO-B inhibition by PET (~80-90%),sembragiline
+MAPK14:p_hsp27_inhibition,2,target_product:2,target_product,,False,unsure,trough exposure vs IC80 for p-HSP27 (MK2 substrate),zunsemetinib
+MAPT:csf_free_tau,2,occupancy:2,occupancy,,False,yes,CSF free tau reduction,tilavonemab
+MAPT:csf_unbound_n_terminal_tau,2,occupancy:2,occupancy,,False,yes,CSF unbound N-terminal tau suppression,gosuranemab
+MET:nsclc_response,2,clinical_response:2,clinical_response,,False,no,response rate in MET-altered NSCLC,capmatinib
+MK-1942:mglur2_pet_occupancy,2,occupancy:2,occupancy,,False,yes,mGluR2 occupancy by PET,MK-1942
+MKNK1:tumour_peif4e_s209_reduction,2,target_product:2,target_product,,False,yes,tumour eIF4E S209 phosphorylation reduction,tomivosertib
+MME:plasma_cgmp_rise,2,downstream_marker:2,downstream_marker,,False,no,dose-dependent plasma cGMP rise,sacubitril
+MSTN:appendicular_lean_body_mass,2,downstream_marker:2,downstream_marker,,False,no,appendicular lean body mass (aLBM) in older fallers,landogrozumab
+MTNR1A:sleep_latency,2,downstream_marker:2,downstream_marker,,False,no,sleep-latency reduction and sedation,ramelteon
+MTOR:target_inhibition_fih,2,occupancy:2,occupancy,,False,unsure,>=90% target inhibition (first-in-human),samotolisib
+MTOR:tissue_pi3k_mtor_signalling,2,target_product:2,target_product,,False,yes,"PI3K/mTOR pathway inhibition in skin, hair, tumor (unquantified)",voxtalisib
+NFE2L2:pbmc_target_gene_induction,2,target_product:2,target_product,,False,yes,Nrf2 target-gene induction in PBMCs,omaveloxolone
+NFE2L2:skin_nqo1,2,target_product:2,target_product,,False,yes,skin biopsy NQO1 protein induction,omaveloxolone
+NOTCH2:notch_gene_signature,2,downstream_marker:2,downstream_marker,,False,unsure,regulation of Notch and stem-cell gene signaling,tarextumab
+NPR1:plasma_urine_cgmp,2,target_product:2,target_product,,False,no,plasma and urine cGMP rise,XXB750
+NR1H4:fgf19_c4,2,target_product:2,target_product,,False,yes,FGF19 rise and C4 fall,ASC42;tropifexor
+NR3C1:cortisol_suppression,2,target_product:2,target_product,,False,yes,dose-related 24-h cortisol suppression,azd-5423;velsecorat
+NR3C1:ocular_inflammation_efficacy,2,clinical_response:2,clinical_response,,False,no,clinician-scale efficacy in uveitis and post-surgical inflammation,difluprednate;prednisolone
+OLR1:free_soluble_lox1,2,occupancy:2,occupancy,,False,yes,free soluble LOX-1 suppression,golocdacimab
+OMEGA-3-CARBOXYLICACIDS:triglyceride_lowering,2,downstream_marker:2,downstream_marker,,False,no,triglyceride lowering in hypertriglyceridemia,omega-3-carboxylic acids
+OPRM1:miosis,2,downstream_marker:2,downstream_marker,,False,unsure,opioid miosis in patients,axomadol;tramadol
+OPRM1:pain_efficacy_other_indications,2,clinical_response:2,clinical_response,,False,no,pain endpoints met in chronic low back and postoperative pain,oxycodone
+OPRM1:pet_occupancy,2,occupancy:2,occupancy,,False,yes,central μ-opioid receptor occupancy by PET (87–100%),gsk-1521498;nalmefene
+P2RX3:cough_frequency_efficacy,2,clinical_response:2,clinical_response,,False,no,chronic cough efficacy endpoint met at same doses,eliapixant
+PCSK9:ldl_c,2,downstream_marker:2,downstream_marker,,False,no,LDL-C endpoint in HeFH,bococizumab;lerodalcibep
+PDCD1:clinical_efficacy,2,clinical_response:2,clinical_response,,False,no,FDA approvals via PD-1 blockade in many cancers,nivolumab;retifanlimab
+PDE3A:tumor_complex_formation,2,occupancy:2,occupancy,,False,yes,PDE3A-SLFN12 complex formation in tumor (never measured),bay-2666605
+PDE5A:pulmonary_artery_pressure,2,downstream_marker:2,downstream_marker,,False,no,pulmonary artery pressure reduction,sildenafil
+PDGFRA:clinical_efficacy,2,clinical_response:2,clinical_response,,False,no,STS phase 2 endpoint met,olaratumab
+PDGFRA:plasma_pdgf_aa,2,target_product:2,target_product,,False,yes,plasma PDGF-AA rise (indirect occupancy readout),tovetumab
+PIK3CD:efficacy_other_indication,2,clinical_response:2,clinical_response,,False,no,efficacy at 150 mg BID in iNHL and CLL,idelalisib
+PLA2G7:lppla2_activity,2,occupancy:2,occupancy,,False,yes,plasma and plaque Lp-PLA2 activity inhibition,darapladib
+POTASSIUMNITRATE:dentin_hypersensitivity_efficacy,2,clinical_response:2,clinical_response,,False,no,efficacy endpoints in dentin hypersensitivity,potassium nitrate
+PPARA:serum_triglycerides,2,downstream_marker:2,downstream_marker,,False,no,serum triglyceride lowering endpoints in hypertriglyceridemia,pemafibrate
+PPARG:hba1c,2,downstream_marker:2,downstream_marker,,False,no,HbA1c endpoints met in type 2 diabetes,pioglitazone
+PPARG:plasma_adiponectin,2,target_product:2,target_product,,False,unsure,plasma adiponectin rise at all doses,efatutazone
+PRKCB:blood_pkcb_inhibition,2,occupancy:2,occupancy,,False,yes,PBMC PKC-beta inhibition pharmacodynamic assays,enzastaurin
+PSEN1:csf_abeta,2,target_product:2,target_product,,False,yes,CSF Aβ40/42 and CNS Aβ production,avagacestat;semagacestat
+PSMB5:proteasome_inhibition,2,occupancy:2,occupancy,,False,yes,proteasome inhibition up to 85% at 15 mg/m2,carfilzomib
+PTGIR:digital_blood_flow,2,downstream_marker:2,downstream_marker,,False,no,digital blood flow increase by local iontophoresis,treprostinil
+PTGS2:cox2_activity,2,occupancy:2,occupancy,,False,yes,in vivo COX-2 activity lowered,celecoxib
+PTGS2:urinary_pge_m,2,target_product:2,target_product,,False,yes,urinary PGE-M,apricoxib
+RPE65:erg_rod_recovery_suppression,2,downstream_marker:2,downstream_marker,,False,unsure,ERG suppression of rod recovery after photobleach,emixustat
+RT001:rbc_membrane_d2la,2,exposure_only:2,exposure_only,,False,unsure,RBC-membrane D2-LA/D2-AA incorporation at steady state,RT001
+S1PR1:lymphocyte_count,2,downstream_marker:2,downstream_marker,,False,no,blood lymphocyte lowering linked to fingolimod-P levels,amiselimod;fingolimod
+S1PR1:peripheral_lymphocyte_count,2,downstream_marker:2,downstream_marker,,False,no,peripheral lymphocyte reduction,etrasimod
+SCN5A:qtc_shortening,2,downstream_marker:2,downstream_marker,,False,no,QTcF shortening in LQT3 patients,eleclazine
+SCN5A:sensory_threshold_anesthesia,2,downstream_marker:2,downstream_marker,,False,no,raised sensory thresholds / anesthesia in index arms,benzocaine
+SCNN1A:nasal_potential_difference,2,occupancy:2,occupancy,,False,yes,nasal ENaC inhibition by nasal potential difference,AZD5634
+SERPINH1:liver_hsp47_knockdown,2,occupancy:2,occupancy,,False,yes,liver biopsy HSP47 mRNA and protein knockdown,ND-L02-s0201
+SIK2:ex_vivo_tnfa_il10_shift,2,occupancy:2,occupancy,,False,no,ex vivo blood TNFα fall and IL-10 rise,glpg-3970
+SLC22A12:urinary_urate_excretion,2,target_product:2,target_product,,False,yes,urinary urate excretion and serum urate lowering,verinurad
+SLC6A2:pet_sert_dat_occupancy,2,occupancy:2,occupancy,,False,yes,SERT and DAT occupancy by PET,liafensine
+SLC6A3:pet_occupancy,2,occupancy:2,occupancy,,False,yes,striatal DAT occupancy by PET,armodafinil
+SMO:gli1_expression,2,downstream_marker:2,downstream_marker,,False,yes,GLI1 mRNA/protein in myelofibrosis patients,patidegib
+SNAP25:clinical_efficacy,2,clinical_response:2,clinical_response,,False,no,"efficacy in cervical dystonia, CP and glabellar lines",botulinum toxin type a;prabotulinumtoxin a
+SSTR4:dpnp_pain_response,2,clinical_response:2,clinical_response,,False,no,primary pain endpoint in diabetic neuropathic pain,mazisotine
+SYK:efficacy_other_indication,2,clinical_response:2,clinical_response,,False,no,efficacy in ITP and RA with exposure-response,fostamatinib
+TAAR1:panss_schizophrenia,2,clinical_response:2,clinical_response,,False,no,schizophrenia Phase 2 efficacy endpoint met,ulotaront
+TACR1:central_receptor_blockade,2,occupancy:2,occupancy,,False,yes,full central NK1 receptor blockade,orvepitant
+TACR1:pet_occupancy,2,occupancy:2,occupancy,,False,yes,brain NK1 receptor occupancy by PET,tradipitant
+TEMOZOLOMIDE:glioblastoma_approval,2,clinical_response:2,clinical_response,,False,no,FDA approval for glioblastoma,temozolomide
+TERT:telomerase_activity,2,occupancy:2,occupancy,,False,yes,intratumoral and PBMC telomerase inhibition,imetelstat
+TGFB1:circulating_tgfb_complexes,2,occupancy:2,occupancy,,False,yes,circulating TGF-β/NIS793 complexes and depleted active TGF-β,nisevokitug
+TGFBR1:pbmc_psmad2_reduction,2,target_product:2,target_product,,False,yes,exposure-related pSMAD2 reduction in PBMCs,galunisertib
+TLR2:plasma_cytokine_rise,2,target_product:2,target_product,,False,no,dose-dependent plasma cytokine rise,CBLB612
+TLR7:skin_il6_mxa_induction,2,downstream_marker:2,downstream_marker,,False,no,skin IL-6 and MxA induction after challenge,imiquimod
+TLR8:plasma_cytokine_induction,2,target_product:2,target_product,,False,no,"plasma TLR8-driven cytokine rise (G-CSF, MCP-1, MIP-1β, TNFα)",motolimod
+TMPRSS6:serum_hepcidin,2,target_product:2,target_product,,False,no,serum hepcidin rise,divesiran;sapablursen
+TNFRSF4:receptor_occupancy,2,occupancy:2,occupancy,,False,yes,OX40 receptor occupancy,INCAGN01949;bms-986178
+TNFSF13:baff_atacicept_complex,2,occupancy:2,occupancy,,False,yes,BAFF–atacicept complex formation,atacicept
+TOP1:tumor_top1_level,2,occupancy:2,occupancy,,False,yes,tumor TOP1 decrease in biopsies,davamotecan pegadexamer
+TPH1:5hiaa,2,target_product:2,target_product,,False,yes,plasma and urinary 5-HIAA,LX1033;lx-1031
+TPH1:urinary_5hiaa,2,target_product:2,target_product,,False,yes,urinary 5-HIAA fall in carcinoid syndrome,telotristat ethyl
+TRPV1:core_body_temperature,2,downstream_marker:2,downstream_marker,,False,unsure,dose-related rise in core body temperature,XEN-D0501
+TRPV1:heat_pain_threshold,2,downstream_marker:2,downstream_marker,,False,unsure,oesophageal heat-pain threshold rise,azd-1386
+TRPV1:postsurgical_pain_response,2,clinical_response:2,clinical_response,,False,no,primary pain endpoint met in bunionectomy,vocacapsaicin
+TSLP:eosinophils_feno,2,downstream_marker:2,downstream_marker,,False,no,eosinophils and FeNO lowering in asthma/CRSwNP,tezepelumab
+TUBB:dce_mri_tumour_blood_flow,2,downstream_marker:2,downstream_marker,,False,no,tumour blood flow reduction by DCE-MRI,fosbretabulin
+TUBB:tumor_microtubule_bundling,2,target_product:2,target_product,,False,yes,tumour microtubule bundling in prostate cancer biopsies,cabazitaxel
+XDH:serum_urate,2,target_product:2,target_product,,False,yes,serum and urinary urate lowering,allopurinol;febuxostat
+AAK1:dpnp_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,primary pain endpoint in diabetic peripheral neuropathic pain,pilavapadin
+ABAT:platelet_gaba_t_activity,1,occupancy:1,occupancy,,False,yes,platelet GABA-T inhibition,vigabatrin
+ABL1:bcr_abl_substrate_phosphorylation,1,target_product:1,target_product,,False,yes,BCR-ABL1 substrate phosphorylation inhibition (partial),rebastinib
+ABL1:cml_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy endpoints in CML at 400 mg BID,nilotinib
+ABL1:dfsp_hes_approval,1,clinical_response:1,clinical_response,,False,no,"approval for PDGFR-driven diseases (DFSP, HES)",imatinib
+ABL1:platelet_sfk_phosphorylation,1,target_product:1,target_product,,False,yes,reduced SFK phosphorylation in patient platelets,dasatinib
+ACE:plasma_ace_inhibition,1,occupancy:1,occupancy,,False,yes,plasma ACE inhibition (~87.5%),perindopril
+ACETYLCYSTEINE:glutathione_rise,1,target_product:1,target_product,,False,unsure,glutathione raised in patients,acetylcysteine
+ACETYLCYSTEINE:sputum_viscosity,1,downstream_marker:1,downstream_marker,,False,no,sputum-viscosity endpoint met in respiratory tract disease,acetylcysteine
+ACHE:alzheimer_approval,1,clinical_response:1,clinical_response,,False,no,FDA approval in Alzheimer disease,donepezil
+ACVR1:mf_il6_allele_burden,1,downstream_marker:1,downstream_marker,,False,no,IL-6 decline and JAK2V617F allele-burden reduction in MF,momelotinib
+ACVR1:mf_pivotal_response,1,clinical_response:1,clinical_response,,False,no,pivotal endpoints in myelofibrosis,momelotinib
+ACVR1:plasma_concentration_tbk1_threshold,1,exposure_only:1,exposure_only,,False,unsure,plasma concentrations below TBK1-inhibiting level,momelotinib
+ADAM9:none,1,none:1,none,,False,unsure,,izeltabart tapatansine
+ADAMTS5:serum_args_aggrecan,1,target_product:1,target_product,,False,yes,circulating ARGS-aggrecan neoepitope reduction,aldumastat
+ADEFOVIR:hbv_dna,1,target_product:1,target_product,,False,no,HBV DNA decline,adefovir
+ADORA1:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,FDA approval for hepatic veno-occlusive disease,defibrotide sodium
+ADORA1:heart_rate_renal_effects,1,downstream_marker:1,downstream_marker,,False,no,"dose-dependent heart rate and eGFR fall, creatinine rise",neladenoson bialanate
+ADORA2A:pd_efficacy_adjunct,1,clinical_response:1,clinical_response,,False,no,Phase 2b adjunct PD trial met primary endpoint,sipagladenant
+ADORA2A:tumor_adenosine_signature,1,downstream_marker:1,downstream_marker,,False,no,intratumoral adenosine signaling and blood immune gene signatures,imaradenant
+ADRA1A:mydriasis_reversal,1,clinical_response:1,clinical_response,,False,no,reversal of mydriasis and presbyopia endpoints (topical),phentolamine
+ADRA2A:ga_lesion_growth_efficacy,1,clinical_response:1,clinical_response,,False,no,GA lesion-growth endpoint met (same implant),brimonidine
+ADRA2C:pet_occupancy,1,occupancy:1,occupancy,,False,yes,dose-related α2C-AR occupancy by PET,orm-12741
+ADRABETADEX:24s_hydroxycholesterol,1,target_product:1,target_product,,False,unsure,serum and CSF 24(S)-hydroxycholesterol rise,adrabetadex
+ADRB1:ex_vivo_autoantibody_neutralization,1,occupancy:1,occupancy,,False,yes,ex vivo anti-β1-AR autoantibody neutralization,COR-1
+ADRB1:exercise_tachycardia_blunting,1,occupancy:1,occupancy,,False,unsure,blunted exercise tachycardia and lowered exercise PEFR,bucindolol
+ADRB1:heart_rate_reduction,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent heart rate reduction,metoprolol
+ADRB1:isoprenaline_dose_ratio,1,occupancy:1,occupancy,,False,yes,isoprenaline dose-ratio and exercise heart-rate blockade,nadolol
+ADRB2:systemic_beta2_effects,1,downstream_marker:1,downstream_marker,,False,unsure,"beta2-mediated systemic effects: heart rate, hypokalemia, tremor",bedoradrine
+ADRB3:oab_pivotal_response,1,clinical_response:1,clinical_response,,False,no,pivotal endpoints in overactive bladder,vibegron
+AGT:plasma_agt,1,occupancy:1,occupancy,,False,yes,plasma AGT lowering (54% and 67%),evazarsen
+AGTR1:renin_dependent_bp_lowering,1,downstream_marker:1,downstream_marker,,False,no,renin-dependent blood pressure lowering in sodium-restricted volunteers,trv-120027
+AHR:rrms_relapse_mri,1,clinical_response:1,clinical_response,,False,no,relapse rate and MRI activity in relapsing MS,laquinimod
+AKR1C3:serum_androgens,1,target_product:1,target_product,,False,no,serum androgen substrates and products of AKR1C3,asp-9521
+AKT1:skin_biopsy_s6_reduction,1,target_product:1,target_product,,False,unsure,reduced S6 in skin biopsies,LY2780301
+AKT1:tumor_phospho_akt,1,target_product:1,target_product,,False,yes,biopsy phospho-AKT changes,uprosertib
+AKT1:tumor_ppras40_pgsk3b,1,target_product:1,target_product,,False,yes,tumor pPRAS40 and pGSK3b falls in breast cancer,capivasertib
+AKT1:tumour_pakt,1,target_product:1,target_product,,False,yes,tumour p-AKT decrease,triciribine
+AL-794:viral_load,1,target_product:1,target_product,,False,no,influenza viral load reduction (challenge study),AL-794
+ALB:plasma_albumin_level,1,occupancy:1,occupancy,,False,yes,plasma albumin rise with exchange (target replacement),albumin human
+ALG-010133:serum_hbsag,1,target_product:1,target_product,,False,no,serum HBsAg reduction (none meaningful),ALG-010133
+ALOX5AP:ex_vivo_ltb4_inhibition,1,occupancy:1,occupancy,,False,yes,ex vivo LTB4 production inhibition,atuliflapon
+ALOX5AP:ltb4_lte4,1,target_product:1,target_product,,False,yes,sputum LTB4 and urine LTE4 suppression in asthmatics,fiboflapon
+ALPI:plasma_ap_activity,1,occupancy:1,occupancy,,False,yes,circulating alkaline phosphatase activity,ilofotase alfa
+ALS-002158:hcv_rna,1,target_product:1,target_product,,False,no,HCV RNA decline,ALS-002158
+ALXN1840:plasma_ncc,1,occupancy:1,occupancy,,False,yes,plasma non-ceruloplasmin copper via copper-albumin complex formation,
+AMENAMEVIR:viral_shedding,1,target_product:1,target_product,,False,yes,viral shedding related to time above 200 ng/mL,amenamevir
+AMPHOTERICINB:fungal_clearance,1,target_product:1,target_product,,False,no,vaginal fungal clearance rate,amphotericin b
+ANGPT2:peripheral_ang2_binding,1,occupancy:1,occupancy,,False,yes,peripheral Ang2 binding accumulation,medi-3617
+ANGPTL3:ldl_c,1,downstream_marker:1,downstream_marker,,False,no,LDL-C endpoint in HoFH,evinacumab
+ANHYDROUSCITRICACID:vaginal_ph,1,target_product:1,target_product,,False,yes,vaginal pH lowering,anhydrous citric acid
+ANTI-SARS-COV-2IMMUNEGLOBULINHUMAN:nasopharyngeal_viral_load,1,target_product:1,target_product,,False,no,nasopharyngeal viral load,anti-SARS-CoV-2 immune globulin (human)
+AOC3:plasma_aoc3_activity,1,occupancy:1,occupancy,,False,yes,plasma AOC3 inhibition (~97%),pxs-4728a
+AOC3:plasma_enzyme_activity,1,occupancy:1,occupancy,,False,yes,plasma AOC3 activity,pxs-4728a
+APCS:circulating_pentraxin2,1,occupancy:1,occupancy,,False,yes,circulating pentraxin-2 level (target replacement),zinpentraxin alfa
+APEX1:ap_site_binding,1,occupancy:1,occupancy,,False,yes,TRC102 binding to AP sites (PD assay),methoxyamine
+APP:amyloid_pet,1,occupancy:1,occupancy,,False,yes,amyloid PET (no decline),crenezumab
+APP:amyloid_tau_pet,1,occupancy:1,occupancy,,False,yes,amyloid and tau PET: no plaque or tau reduction,NPT088
+APP:plasma_abeta_suppression,1,occupancy:1,occupancy,,False,yes,plasma soluble Aβ40/42 suppression,ly-2599666
+APP:plasma_free_abeta,1,occupancy:1,occupancy,,False,yes,free plasma Aβ reduction,GSK933776
+AR:clinical_benefit_rate,1,clinical_response:1,clinical_response,,False,no,clinical benefit rate in ER+/AR+ breast cancer,enobosarm
+AR:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,overall survival efficacy in prostate cancer at 160 mg,enzalutamide
+AR:psa50_response,1,downstream_marker:1,downstream_marker,,False,no,PSA50 response consistent with AR-signalling inhibition,galeterone
+AR:psa_suppression,1,target_product:1,target_product,,False,yes,PSA suppression (Phase 1),opk-88004
+AR:serum_testosterone,1,target_product:1,target_product,,False,no,testosterone fall (qualitative CYP17A1 engagement),odm-204
+AR:shbg_hdl_lowering,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent lowering of SHBG and HDL,gsk-2881078
+ARAF:pd_effect_unspecified,1,target_product:1,target_product,,False,unsure,predicted pharmacodynamic effects (unspecified) not observed,ly-3009120
+ATM:patm_total_atm_ratio,1,target_product:1,target_product,,False,yes,phosphorylated/total ATM ratio vs dose,M3541
+ATP4A:acid_reflux,1,target_product:1,target_product,,False,no,normalization of acid reflux,omeprazole
+ATP4A:gastric_ph,1,target_product:1,target_product,,False,no,gastric acid suppression (24h intragastric pH),rabeprazole
+ATUZAGINSTAT:kgp_activity_probe,1,occupancy:1,occupancy,,False,yes,lysine-gingipain (Kgp) inhibition by activity-based probe,atuzaginstat
+ATXN2:csf_atxn2_protein,1,occupancy:1,occupancy,,False,yes,CSF ATXN2 protein reduction,BIIB105
+AURKA:mek_aurora_pd_markers,1,target_product:1,target_product,,False,unsure,markers of MEK/Aurora kinase inhibition,bi-847325
+AURKA:tumor_biopsy_proliferation_mvd,1,downstream_marker:1,downstream_marker,,False,no,"tumor biopsy proliferation, microvessel density, p53/p73",enmd-981693
+AVPR1A:csf_level_estimated_occupancy,1,exposure_only:1,exposure_only,,False,unsure,CSF drug levels with estimated ~90% central V1a occupancy,ro-5028442
+AVPR1A:norepinephrine_sparing_vasopressor_response,1,downstream_marker:1,downstream_marker,,False,no,MAP maintained with reduced norepinephrine requirement,selepressin
+AVPR1A:serum_sodium_osmolality,1,downstream_marker:1,downstream_marker,,False,no,serum sodium and plasma osmolality rise (aquaretic signature),pecavaptan
+AVPR2:efficacy_nocturia_enuresis_cdi,1,clinical_response:1,clinical_response,,False,no,"efficacy endpoints in nocturia, enuresis and CDI",desmopressin
+AXL:p_axl_inhibition,1,target_product:1,target_product,,False,yes,complete p-AXL inhibition in AML leukaemia cells,bemcentinib
+AXL:tumor_axl_protein,1,occupancy:1,occupancy,,False,yes,reduced tumour AXL protein,tilvestamab
+AXL:vegfa_svegfr2,1,downstream_marker:1,downstream_marker,,False,no,VEGF-A and soluble VEGFR2 changes with drug concentration,sitravatinib
+AZTREONAM:sputum_bacterial_density,1,target_product:1,target_product,,False,no,sputum bacterial density reduction in CF,aztreonam
+BALAPIRAVIR:dengue_viremia,1,target_product:1,target_product,,False,no,dengue viremia (unchanged),balapiravir
+BCL2:lymphocyte_platelet_decrease,1,downstream_marker:1,downstream_marker,,False,no,lymphocyte and platelet decreases (BCL2-targeted effect),rosomidnar
+BCL2:peripheral_blood_bcl2_pd,1,occupancy:1,occupancy,,False,yes,peripheral-blood BCL-2 pharmacodynamic changes,venetoclax
+BDKRB2:bradykinin_challenge_blockade,1,occupancy:1,occupancy,,False,yes,blockade of B2-mediated vascular effects,icatibant
+BEMNIFOSBUVIR:viral_load,1,target_product:1,target_product,,False,yes,nasopharyngeal viral RNA reduction,bemnifosbuvir
+BERLIMATOXUMAB:ex_vivo_toxin_neutralization,1,occupancy:1,occupancy,,False,yes,ex vivo serum toxin-neutralizing potency,berlimatoxumab
+BERSACAPAVIR:hbv_dna_rna,1,target_product:1,target_product,,False,no,HBV DNA and RNA decline,bersacapavir
+BIRC2:ciap1_degradation,1,occupancy:1,occupancy,,False,yes,"cIAP1 protein degradation in blood, skin and tumor",lcl-161
+BIRC2:ciap1_reduction,1,occupancy:1,occupancy,,False,yes,cIAP1 reduction in PBMCs and tumor biopsies,"propanamide, n-(5-(2-(2-methoxy-3-pyridinyl)-7-methylimidazo(1,2-a)pyridin-3-yl)-6-(2-(1-methyl-6-isoquinolinyl)ethynyl)-2-pyridinyl)-2-(methylamino)-, (2s)-"
+BLAUTIX:breath_hydrogen,1,target_product:1,target_product,,False,no,lactulose breath hydrogen fall,Blautix
+BMS-955176:hiv1_rna_decline,1,target_product:1,target_product,,False,no,plasma HIV-1 RNA decline (~1.3 log10),bms-955176
+BRAF:efficacy_other_cancers,1,clinical_response:1,clinical_response,,False,no,efficacy in HCC and thyroid cancer,donafenib
+BRD2:apoa1_hdl,1,downstream_marker:1,downstream_marker,,False,no,plasma apoA-I and HDL rise,apabetalone
+BRD2:bet_target_gene_suppression,1,target_product:1,target_product,,False,unsure,BET-dependent transcript changes in paired tumor biopsies,zen-3694
+BRD2:hexim1_ccr1,1,target_product:1,target_product,,False,yes,whole-blood HEXIM1 rise and CCR1 fall,FT-1101
+BRD4:pk_exposure,1,exposure_only:1,exposure_only,,False,unsure,sustained target inhibition limited by PK variability and dose cap,INCB054329
+BRINCIDOFOVIR:cmv_dnaemia,1,target_product:1,target_product,,False,yes,CMV DNAemia suppression on treatment,brincidofovir
+BSG:viral_load,1,target_product:1,target_product,,False,no,viral load reduction in DEFLECT,meplazumab
+BST1:unspecified_engagement_claim,1,none:1,none,,False,unsure,,MEN1112
+BTK:btk_occupancy,1,occupancy:1,occupancy,,False,yes,near-100% BTK occupancy,TAS5315
+BTK:cd69_expression_inhibition,1,downstream_marker:1,downstream_marker,,False,no,inhibition of CD69 expression (BTK-dependent pathway readout),bms-986142
+BTK:pbtk_inhibition,1,target_product:1,target_product,,False,yes,pBTK inhibition in healthy volunteers,vecabrutinib
+BTK:peripheral_occupancy,1,occupancy:1,occupancy,,False,yes,peripheral BTK occupancy (median 83%),spebrutinib
+BTLA:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,BTLA receptor occupancy on B and T cells,venanprubart
+C16G2:s_mutans_counts,1,target_product:1,target_product,,False,yes,salivary and plaque S. mutans counts (no fall),c16g2
+C1QA:serum_c1q_inhibition,1,occupancy:1,occupancy,,False,yes,serum C1q inhibition/saturation,tanruprubart
+C1S:classical_pathway_activity,1,occupancy:1,occupancy,,False,yes,"classical complement pathway activity (Wieslab CP, CH50)",riliprubart
+C5:complement_activity_suppression,1,occupancy:1,occupancy,,False,yes,total and alternative complement activity suppression,tesidolumab
+C5:gmg_pivotal_response,1,clinical_response:1,clinical_response,,False,no,pivotal endpoint in generalized myasthenia gravis,zilucoplan
+C5:plasma_c5_protein,1,occupancy:1,occupancy,,False,yes,plasma C5 protein reduction >90%,cemdisiran
+C5:pnh_ldh,1,downstream_marker:1,downstream_marker,,False,no,LDH lowering in treatment-naive PNH,zilucoplan
+C5:terminal_complement_inhibition,1,occupancy:1,occupancy,,False,yes,complete terminal complement inhibition,eculizumab
+CACNA1C:sidbp_lowering,1,clinical_response:1,clinical_response,,False,no,sitting diastolic blood pressure (vascular Ca-channel blockade),act-280778
+CACNA2D1:neuropathic_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,neuropathic pain endpoints met at 15 mg BID,mirogabalin
+CALCA:capsaicin_dermal_blood_flow,1,occupancy:1,occupancy,,False,yes,inhibition of capsaicin-induced dermal blood flow,galcanezumab
+CALCIUMCARBONATE:esophageal_acid_exposure,1,target_product:1,target_product,,False,no,esophageal acid exposure,calcium carbonate
+CALCR:glucose_bone_resorption,1,downstream_marker:1,downstream_marker,,False,no,glucose control and lowered bone resorption in healthy men,kbp-042
+CALCRL:capsaicin_dermal_blood_flow,1,occupancy:1,occupancy,,False,yes,capsaicin-induced dermal blood flow inhibition,erenumab
+CALCRL:cgrp_response_blockade,1,occupancy:1,occupancy,,False,yes,inhibition of CGRP responses at therapeutic concentrations,rimegepant
+CAPN1:csf_sbdp145,1,target_product:1,target_product,,False,yes,"CSF SBDP-145 (calpain product), never shown",alicapistat
+CASR:plasma_pth_pulse,1,target_product:1,target_product,,False,yes,transient plasma PTH pulses,encaleret
+CC-92252:treg_expansion,1,downstream_marker:1,downstream_marker,,False,no,"Treg expansion (selective but modest, ≤2-fold)",CC-92252
+CCKBR:pentagastrin_response_blockade,1,occupancy:1,occupancy,,False,yes,abolition of pentagastrin responses,netazepide
+CCR1:plasma_ccr1_ligands,1,target_product:1,target_product,,False,yes,plasma CCR1 ligand rise in treated arms,bms-817399
+CCR2:ex_vivo_ccl2_perk_blockade,1,occupancy:1,occupancy,,False,yes,CCL2-induced pERK suppression in blood monocytes,pf-4136309
+CCR2:free_ccr2_monocytes,1,occupancy:1,occupancy,,False,yes,free CCR2 on CD14+ monocytes,plozalizumab
+CCR2:monocyte_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,ex vivo CCR2 occupancy on blood monocytes,azd-2423
+CCR2:plasma_ccl2_rise,1,target_product:1,target_product,,False,yes,dose-dependent plasma CCL2 rise,azd-2423
+CCR4:proviral_load,1,occupancy:1,occupancy,,False,yes,HTLV-1 proviral load fall (CCR4+ infected-cell depletion),mogamulizumab
+CCR4:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,CCR4 surface receptor occupancy (~80%),zelnecirnon
+CCR4:tarc_actin_polymerisation_occupancy,1,occupancy:1,occupancy,,False,yes,CCR4 occupancy by TARC-induced actin polymerisation assay,gsk-2239633
+CCR5:ex_vivo_ccr5_internalization_blockade,1,occupancy:1,occupancy,,False,yes,ex vivo inhibition of MIP-1β-stimulated CCR5 internalization,azd-5672
+CD19:b_cell_binding,1,occupancy:1,occupancy,,False,yes,binding to >90% of available B cells,prv-3279
+CD19:clinical_orr,1,clinical_response:1,clinical_response,,False,no,ORR endpoint met in DLBCL,coltuximab ravtansine
+CD19:mrd_negative_cr,1,clinical_response:1,clinical_response,,False,no,MRD-negative CR/CRi (elimination of CD19/CD22+ blasts),AUTO3
+CD200R1:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,CD200R receptor occupancy (level unstated),ucenprubart
+CD274:nk_cd8_expansion,1,downstream_marker:1,downstream_marker,,False,no,"peripheral NK and CD8 T-cell expansion, Ki67 peak",KD033
+CD274:ox40_cell_egress_ki67,1,downstream_marker:1,downstream_marker,,False,no,CD4+OX40+ cell egress and Ki67+ memory cells,SL-279252
+CD274:pdl1_cd47_occupancy,1,occupancy:1,occupancy,,False,yes,PD-L1 (>95%) and CD47 (>70%) occupancy in blood,PF-07257876
+CD274:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,PD-L1 receptor occupancy in sepsis patients,bms-936559
+CD28:target_saturation,1,occupancy:1,occupancy,,False,yes,complete or near-complete target saturation,acazicolcept
+CD28:tcell_activation_cytokines,1,downstream_marker:1,downstream_marker,,False,no,serum proinflammatory cytokines and PBMC T-cell activation markers,SAR443216
+CD33:mdsc_depletion,1,target_product:1,target_product,,False,unsure,MDSC depletion (MDSC numbers did not fall),bi-836858
+CD37:spect_tumor_uptake,1,occupancy:1,occupancy,,False,yes,tumor uptake on SPECT/CT dosimetry,lilotomab
+CD3E:psa_decline,1,downstream_marker:1,downstream_marker,,False,no,transient PSA declines (weak T-cell redirection),JNJ-63898081
+CD3E:t_cell_activation,1,downstream_marker:1,downstream_marker,,False,no,T-cell activation and expansion in peripheral blood and bone marrow,RO7283420
+CD3E:tumor_target_engagement,1,occupancy:1,occupancy,,False,yes,tumor P-cadherin engagement / T-cell killing (never shown),pf-06671008
+CD3E:zr89_immunopet_uptake,1,occupancy:1,occupancy,,False,yes,"89Zr-labelled drug PET uptake (lymphoid tissue, tumor)",MEDI-565
+CD40:bcell_costimulatory_upregulation,1,downstream_marker:1,downstream_marker,,False,unsure,B-cell costimulatory marker upregulation and depletion,selicrelumab
+CD40:gut_biopsy_target_engagement,1,occupancy:1,occupancy,,False,unsure,gut-biopsy target engagement plus ICAM1/plasma-cell modulation,ravagalimab
+CD40:radiolabeled_tumour_uptake,1,occupancy:1,occupancy,,False,unsure,radiolabeled drug uptake into tumours,RO7300490
+CD40LG:ra_sjogrens_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy endpoints in RA and Sjogren's,dazodalibep
+CD44:zr89_pet_tumour_targeting,1,occupancy:1,occupancy,,False,yes,89Zr-RG7356 PET tumour targeting,ro-5429083
+CD47:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,complete CD47 occupancy (>=85%),evorpacept
+CD70:cd70_lymphocyte_depletion,1,downstream_marker:1,downstream_marker,,False,unsure,depletion of CD70-positive peripheral lymphocytes,vorsetuzumab mafodotin
+CD74:b_cell_depletion,1,downstream_marker:1,downstream_marker,,False,no,B-cell depletion (median 34%),milatuzumab
+CD80:anti_dsdna_complement,1,downstream_marker:1,downstream_marker,,False,no,"anti-dsDNA, C3, C4 and proteinuria improvement in LN",abatacept
+CD80:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy endpoints in PsA and JIA,abatacept
+CD80:immunoglobulins_cell_subsets,1,downstream_marker:1,downstream_marker,,False,no,"IgG, IgA, IgM-RF and pathogenic cell subsets lowered",abatacept
+CDA:decitabine_bioavailability,1,target_product:1,target_product,,False,yes,oral decitabine bioavailability (CDA inhibition),tetrahydrouridine
+CDK1:blood_mcl1_suppression,1,downstream_marker:1,downstream_marker,,False,no,Mcl-1 suppression and PARP cleavage in blood cells,dinaciclib
+CDK1:skin_cdk_activity_markers,1,target_product:1,target_product,,False,unsure,markers of CDK activity in skin biopsies,at-7519
+CDK4:hspc_g1_arrest,1,target_product:1,target_product,,False,yes,HSPC G1 arrest in bone marrow aspirates,trilaciclib
+CDK4:tissue_pd_effects,1,target_product:1,target_product,,False,unsure,pharmacodynamic effects in tumors and keratinocytes at MTD,abemaciclib
+CEACAM5:cd8_nk_expansion,1,downstream_marker:1,downstream_marker,,False,no,CD8 T-cell and NK expansion in blood,cergutuzumab amunaleukin
+CEFTAROLINEFOSAMIL:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,approved efficacy in pneumonia and skin infection,ceftaroline fosamil
+CFB:plasma_factor_b,1,occupancy:1,occupancy,,False,yes,plasma factor B lowering (63–69%),sefaxersen
+CFB:plasma_factor_b_saturation,1,occupancy:1,occupancy,,False,yes,"plasma factor B saturation (Wieslab, Bb, sC5b-9)",iptacopan
+CFD:alternative_pathway_activity,1,occupancy:1,occupancy,,False,unsure,alternative-pathway complement activity suppression >98%,pelecopan
+CFD:alternative_pathway_inhibition,1,occupancy:1,occupancy,,False,unsure,alternative pathway inhibition in C3G patients,danicopan
+CFD:ap_hemolytic_activity,1,occupancy:1,occupancy,,False,no,serum alternative pathway hemolytic activity (<10%),vemircopan
+CFD:intravascular_hemolysis_control,1,downstream_marker:1,downstream_marker,,False,no,"control of intravascular hemolysis (breakthrough IVH, LDH excursions)",vemircopan
+CFD:vitreous_target_engagement_model,1,occupancy:1,occupancy,,False,yes,model-predicted near-complete vitreous CFD target engagement,lampalizumab
+CFP:alternative_pathway_inhibition,1,occupancy:1,occupancy,,False,unsure,complete alternative pathway inhibition (<1% of baseline),tarperprumig
+CFTR:granulocyte_mpo_index,1,downstream_marker:1,downstream_marker,,False,unsure,"granulocyte MPO index drop (modest), peripheral CFTR marker",glpg-2737
+CFTR:nasal_epithelial_cftr_protein,1,target_product:1,target_product,,False,yes,nasal epithelial CFTR protein increase,ataluren
+CFTR:plasma_mma,1,target_product:1,target_product,,False,unsure,"plasma methylmalonic acid (rose, not fell)",ataluren
+CHEK1:clinical_pfs,1,clinical_response:1,clinical_response,,False,no,randomized PFS endpoint met in NSCLC,rabusertib
+CHRM1:cognitive_composite,1,clinical_response:1,clinical_response,,False,no,cognitive composite improvement in PD at index dose,tak-071
+CHRM1:scopolamine_reversal_qeeg,1,downstream_marker:1,downstream_marker,,False,no,scopolamine-induced cognitive impairment reversal and qEEG change,mk-7622
+CHRM2:cystometric_capacity,1,downstream_marker:1,downstream_marker,,False,no,cystometric capacity increase (pediatric neurogenic bladder),fesoterodine
+CHRM3:fev1_bronchodilation,1,downstream_marker:1,downstream_marker,,False,no,FEV1 endpoints met in asthma and COPD,tiotropium
+CHRM3:salivary_flow,1,downstream_marker:1,downstream_marker,,False,no,salivary flow preservation,pilocarpine
+CHRM3:salivary_secretion,1,downstream_marker:1,downstream_marker,,False,unsure,M3-mediated salivary secretion increase,asp-8302
+CHRM3:trough_fev1,1,clinical_response:1,clinical_response,,False,no,trough FEV1 bronchodilation in COPD,darotropium
+CITRULLINE:plasma_arginine,1,target_product:1,target_product,,False,unsure,plasma arginine and NO metabolite rise,citrulline
+CLEC12A:target_mediated_clearance,1,exposure_only:1,exposure_only,,False,unsure,rapid target-mediated clearance (indirect),dcll-9718s
+CLP:fecal_sodium,1,target_product:1,target_product,,False,yes,fecal sodium excretion,CLP
+CMV-SPECIFICT-CELLS:cmv_dna_reduction,1,target_product:1,target_product,,False,yes,in vivo CMV T-cell expansion with CMV DNA reduction,CMV-specific T-cells
+CNM-AU8:brain_nad_nadh_mrs,1,downstream_marker:1,downstream_marker,,False,unsure,brain NAD+/NADH ratio by 31P-MRS,CNM-Au8
+CNR1:cns_cannabinoid_effects,1,downstream_marker:1,downstream_marker,,False,unsure,"CNS cannabinoid effects ('high', 'sedated') in healthy volunteers",art-2713
+CNR1:ms_spasticity_nrs,1,clinical_response:1,clinical_response,,False,no,spasticity NRS endpoint in MS,cannabidiol
+CNR1:ms_spasticity_nrs_efficacy,1,clinical_response:1,clinical_response,,False,no,spasticity NRS endpoint met in multiple sclerosis,dronabinol
+CNR1:weight_loss_obesity,1,clinical_response:1,clinical_response,,False,no,weight loss in metabolic syndrome and obesity,monlunabant
+CNR2:lesional_skin_cb2r_cytokine_panel,1,downstream_marker:1,downstream_marker,,False,no,"lesional skin CB2R, IL-31, IFN-γ, IFN-β downregulation",lenabasum
+CNTF:mactel_ez_efficacy,1,clinical_response:1,clinical_response,,False,no,ellipsoid zone endpoint efficacy in MacTel,ciliary neurotrophic factor
+COLISTIMETHATESODIUM:exacerbation_rate_reduction,1,clinical_response:1,clinical_response,,False,no,exacerbation-rate reduction in twin trial PROMIS-I,colistimethate sodium
+COMT:comt_inhibition,1,occupancy:1,occupancy,,False,yes,COMT inhibition and raised levodopa exposure,entacapone
+CPT1B:myocardial_pcr_atp,1,downstream_marker:1,downstream_marker,,False,no,"myocardial PCr/ATP, diastolic filling, peak VO2",perhexiline
+CRBN:immune_markers_mdsc,1,downstream_marker:1,downstream_marker,,False,no,"cytokine shifts, anti-prostate antibodies, reduced MDSCs",lenalidomide
+CRBN:plasma_pk_dose_cap,1,exposure_only:1,exposure_only,,False,unsure,plasma PK; MTD-capped lenalidomide dose,lenalidomide
+CRHR1:dex_crf_challenge_blockade,1,occupancy:1,occupancy,,False,yes,blockade of hormonal stress response on dex-CRF test,verucerfont
+CSF1:circulating_csf1_ligand,1,occupancy:1,occupancy,,False,yes,circulating CSF1 ligand engagement,lacnotuzumab
+CSF1R:csf1_stimulated_monocyte_perk,1,occupancy:1,occupancy,,False,yes,CSF-1-stimulated monocyte pERK inhibition,ARRY-382
+CSF1R:flt3_phosphorylation_inhibition,1,target_product:1,target_product,,False,no,inhibition of FLT3 phosphorylation by trough plasma,pexidartinib
+CSF1R:plasma_csf1_rise,1,occupancy:1,occupancy,,False,yes,plasma CSF-1 rise and monocyte subset reduction,sotuletinib
+CSF1R:serum_csf1_il34,1,target_product:1,target_product,,False,yes,serum CSF-1 and IL-34 rise,LY3022855
+CSF1R:serum_csf1_rise_cd16_monocytes,1,target_product:1,target_product,,False,unsure,CSF-1 rise and CD16+ monocyte fall in RA patients,edicotinib
+CSF2:ex_vivo_pstat5_blockade,1,occupancy:1,occupancy,,False,yes,ex vivo GM-CSF-triggered pSTAT5 blockade,plonmarlimab
+CSF2:melanoma_efficacy,1,clinical_response:1,clinical_response,,False,no,melanoma approval of the same intralesional virus,talimogene laherparepvec
+CSF2:ra_clinical_response,1,clinical_response:1,clinical_response,,False,no,DAS28-CRP endpoint met in RA,namilumab
+CSF2RA:apap_dlco_efficacy,1,clinical_response:1,clinical_response,,False,no,DLCO primary endpoint met in aPAP (IMPALA-2),molgramostim
+CSF2RA:innate_immune_markers,1,downstream_marker:1,downstream_marker,,False,no,innate immune marker changes in Alzheimer's patients,sargramostim
+CSF2RA:modelled_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,modelled >90% receptor occupancy,mavrilimumab
+CSF2RA:serum_ccl17,1,downstream_marker:1,downstream_marker,,False,no,serum CCL17 rise in COVID-19 patients,sargramostim
+CSF2RA:wbc_rise,1,downstream_marker:1,downstream_marker,,False,no,dose-related rise in white blood cells,molgramostim
+CSF3R:neutrophil_response,1,downstream_marker:1,downstream_marker,,False,no,agranulocytosis duration / neutrophil response vs rhG-CSF,rHSA/GCSF
+CTLA4:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA approvals via CTLA4 blockade in several cancers,ipilimumab
+CTLA4:immune_activation,1,downstream_marker:1,downstream_marker,,False,no,pharmacodynamic immune activation with dual blockade,ipilimumab
+CTSK:serum_ctx1,1,target_product:1,target_product,,False,unsure,serum CTX-I reduction (up to 79%),miv-711
+CXCL10:plasma_cxcl10_neutralisation,1,occupancy:1,occupancy,,False,yes,sustained CXCL10 neutralisation in blood,NI-0801
+CXCR1:il8_neutrophil_migration_blockade,1,occupancy:1,occupancy,,False,yes,IL-8-induced neutrophil migration inhibition,navarixin
+CXCR2:exvivo_neutrophil_cd11b,1,occupancy:1,occupancy,,False,yes,ex vivo CXCL1-induced neutrophil CD11b inhibition (50–72%),danirixin
+CXCR2:plasma_conc_vs_ic50,1,exposure_only:1,exposure_only,,False,unsure,plasma concentration above CXCR2 IC50 (~4 h),elubrixin
+CXCR4:cd34_mobilization,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent CD34+ cell mobilization,plerixafor
+CYP11B1:plasma_aldosterone,1,target_product:1,target_product,,False,yes,plasma aldosterone fall in primary aldosteronism,osilodrostat
+CYP11B1:plasma_cortisol,1,target_product:1,target_product,,False,yes,plasma cortisol lowering; ACTH and 11-deoxycortisol rise,metyrapone
+CYP17A1:serum_androgens,1,target_product:1,target_product,,False,yes,serum testosterone and DHEAS suppression,abiraterone
+CYP19A1:serum_estradiol_suppression,1,target_product:1,target_product,,False,no,estradiol suppression (~87%) at approved breast-cancer dose,anastrozole
+CYP19A1:serum_testosterone,1,target_product:1,target_product,,False,no,serum testosterone normalisation in hypogonadal men,leflutrozole
+CYP2D6:plasma_dextromethorphan,1,target_product:1,target_product,,False,unsure,"plasma dextromethorphan Cmax, dose-dependent rise",quinidine
+DAPTOMYCIN:approved_efficacy_skin_infection,1,clinical_response:1,clinical_response,,False,no,FDA approval for Gram-positive/MRSA skin infections,daptomycin
+DEFERITAZOLE:liver_iron_concentration,1,downstream_marker:1,downstream_marker,,False,no,"liver iron concentration (LIC) change, weak",deferitazole
+DELAFLOXACIN:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,efficacy in skin infection and pneumonia,delafloxacin
+DELEOBUVIR:hcv_viral_load_reduction,1,target_product:1,target_product,,False,no,dose-dependent HCV viral load reduction,deleobuvir
+DEUPIRFENIDONE:ipf_fvc_decline,1,clinical_response:1,clinical_response,,False,no,FVC decline slowed in IPF,deupirfenidone
+DEVEXTINETUG:plasma_meth_auc,1,occupancy:1,occupancy,,False,yes,plasma METH AUC and Cmax rise after challenge,devextinetug
+DEXPRAMIPEXOLE:eosinophil_depletion,1,downstream_marker:1,downstream_marker,,False,no,blood and nasal polyp tissue eosinophil depletion,dexpramipexole
+DF289:otitis_media_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical endpoints met in pediatric acute otitis media,DF289
+DHFR:neutropenia,1,downstream_marker:1,downstream_marker,,False,no,dose-related neutropenia (marrow action),pemetrexed
+DHODH:dihydroorotate,1,target_product:1,target_product,,False,yes,raised dihydroorotate levels,RP7214
+DHODH:serum_dihydroorotate,1,target_product:1,target_product,,False,yes,serum dihydroorotate rise (DHODH substrate),emvododstat
+DINUTUXIMAB:gd2_adcc_cdc,1,occupancy:1,occupancy,,False,yes,GD2-specific ADCC/CDC in neuroblastoma patients,dinutuximab
+DKK1:modelled_free_dkk1,1,exposure_only:1,exposure_only,,False,no,modelled free DKK1 fall with dose (not measured),sirexatamab
+DKK1:total_dkk1_capture,1,occupancy:1,occupancy,,False,yes,maximal plateaued capture of total DKK1,bhq-880
+DLL4:binding_biomarker,1,occupancy:1,occupancy,,False,unsure,biomarker evidence of binding to VEGF and DLL4,dilpacimab
+DMD:muscle_dystrophin_expression,1,target_product:1,target_product,,False,yes,dystrophin detected in muscle biopsies,drisapersen
+DNMT1:dna_demethylation,1,target_product:1,target_product,,False,yes,"LINE-1 and promoter demethylation (PBMCs, tumor biopsies)",guadecitabine
+DNMT1:dnmt1_downregulation,1,occupancy:1,occupancy,,False,yes,DNMT1 downregulation in healthy volunteers,decitabine
+DOT1L:h3k79_methylation,1,target_product:1,target_product,,False,yes,H3K79 methylation reduction in leukemia patients,pinometostat
+DPP4:soluble_cd26_dppiv,1,occupancy:1,occupancy,,False,yes,sCD26/DPPIV assay CD26 modulation,YS110
+DPYD:plasma_uracil,1,target_product:1,target_product,,False,yes,plasma uracil rise (DPD inhibition surrogate),gimeracil
+DRD1:sleep_latency,1,downstream_marker:1,downstream_marker,,False,no,increased sleep latency in volunteers (translational biomarker),mevidalen
+DRD2:csf_hva,1,downstream_marker:1,downstream_marker,,False,unsure,CSF HVA reduction,piribedil
+DRD2:gh_igf1_suppression,1,target_product:1,target_product,,False,no,GH and IGF-1 suppression in acromegaly,onzigolide
+DRD2:prolactin_rise,1,target_product:1,target_product,,False,yes,serum prolactin rise,trazpiroben
+DRD2:serum_prolactin,1,target_product:1,target_product,,False,yes,serum prolactin (unchanged),quinagolide
+DRD2:serum_prolactin_rise,1,target_product:1,target_product,,False,yes,hyperprolactinemia,domperidone
+EDNRA:et1_displacement,1,occupancy:1,occupancy,,False,yes,ET-receptor binding with ET-1 displacement,bosentan
+EDNRA:et1_forearm_vasoconstriction_block,1,occupancy:1,occupancy,,False,yes,blockade of ET-1-induced forearm vasoconstriction,zibotentan
+EDNRA:plasma_et1_rise,1,target_product:1,target_product,,False,yes,raised plasma ET-1 consistent with receptor blockade,macitentan
+EDNRA:pulmonary_haemodynamics,1,downstream_marker:1,downstream_marker,,False,no,PAH efficacy with lung haemodynamic effects,ambrisentan
+EDNRA:pvr_lowering,1,downstream_marker:1,downstream_marker,,False,no,concentration-dependent PVR lowering,macitentan
+EGFL7:circulating_progenitor_cells,1,downstream_marker:1,downstream_marker,,False,unsure,dose-dependent fall in circulating EGFL7-expressing progenitor cells,parsatuzumab
+EGFR:approved_efficacy_other_cancer,1,clinical_response:1,clinical_response,,False,no,FDA approval in NSCLC and pancreatic cancer,erlotinib
+EGFR:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy and approval in medullary thyroid cancer,vandetanib
+EGFR:efficacy_other_cancer,1,clinical_response:1,clinical_response,,False,no,efficacy endpoints in HER2+ breast cancer and NSCLC,pyrotinib
+EGFR:histone_h3_acetylation,1,target_product:1,target_product,,False,yes,"histone H3 acetylation in skin, PBMC and tumor biopsies",cudc-101
+EGFR:nsclc_pfs,1,clinical_response:1,clinical_response,,False,no,PFS endpoints in NSCLC,dacomitinib
+EGFR:on_target_toxicity,1,downstream_marker:1,downstream_marker,,False,unsure,on-target skin toxicity and hypomagnesaemia,tomuzotuximab
+EGFR:pathway_pd_biomarkers,1,downstream_marker:1,downstream_marker,,False,unsure,EGFR- and VEGFR-pathway pharmacodynamic biomarkers,bms-690514
+EGFR:soluble_egfr_met_depletion,1,occupancy:1,occupancy,,False,yes,soluble EGFR and MET depletion,amivantamab
+EGFR:vegfr2_phosphorylation,1,target_product:1,target_product,,False,yes,VEGFR2 phosphorylation in paired tumour biopsies,vandetanib
+EGLN1:serum_epo_hepcidin,1,target_product:1,target_product,,False,unsure,endogenous EPO rise and hepcidin fall,roxadustat
+EGLN1:unquantified_pd,1,exposure_only:1,exposure_only,,False,unsure,unquantified exploratory PD target engagement; colonic drug levels,GB004
+EIF4E:blood_eif4e_mrna,1,occupancy:1,occupancy,,False,yes,eIF4E mRNA knockdown in peripheral blood,ISIS 183750
+ELAMIPRETIDE:lv_volume_reduction,1,downstream_marker:1,downstream_marker,,False,no,acute LV volume reductions tracking concentration,elamipretide
+ELANE:blood_hne_activity,1,occupancy:1,occupancy,,False,yes,blood HNE activity after zymosan challenge,bay-85-8501
+ELANE:elf_functional_aat,1,occupancy:1,occupancy,,False,yes,functional AAT in lung lining fluid (AATD patients),.alpha.1-proteinase inhibitor human
+ELANE:exvivo_blood_ne_inhibition,1,occupancy:1,occupancy,,False,yes,ex vivo zymosan-stimulated NE inhibition,alvelestat
+ELANE:sputum_ne_activity,1,occupancy:1,occupancy,,False,yes,sputum neutrophil elastase activity (unchanged),alvelestat
+EMTRICITABINE:hbv_dna,1,target_product:1,target_product,,False,no,HBV DNA suppression (-3.3 log10),emtricitabine
+ENPEP:bp_lowering_hypertension,1,clinical_response:1,clinical_response,,False,no,BP-lowering primary endpoint met in hypertension,firibastat
+ENTPD1:cd39_occupancy,1,occupancy:1,occupancy,,False,yes,full CD39 occupancy over dosing interval,perenostobart
+ENUZOVIMAB:serum_neutralization_titre,1,occupancy:1,occupancy,,False,yes,serum pseudovirus neutralization titres (ex vivo),enuzovimab
+EPAS1:hif2_complex_dissociation,1,occupancy:1,occupancy,,False,yes,HIF-2 complex dissociation in metastases,pt-2385
+EPETRABOROLE:microbiological_failure,1,target_product:1,target_product,,False,no,on-therapy resistance emergence with microbiological failure,epetraborole
+EPHA2:zr89_pet_tumour_uptake,1,occupancy:1,occupancy,,False,yes,89Zr-DS-8895a PET tumour uptake,DS-8895a
+ERAVACYCLINE:ciai_clinical_cure,1,clinical_response:1,clinical_response,,False,no,cIAI clinical cure,eravacycline
+ERBB2:her2_specific_immune_response,1,target_product:1,target_product,,False,yes,"HER2-specific T-cell, ELISPOT and antibody responses",lapuleucel-t
+ERBB3:immunopet_tumour_uptake,1,occupancy:1,occupancy,,False,yes,tumour uptake by immuno-PET,GSK2849330
+ERBB3:orr_nrg1_fusion,1,clinical_response:1,clinical_response,,False,no,objective response rate in NRG1-fusion tumours (CRESTONE),seribantumab
+ERBB3:orr_other_cancers,1,clinical_response:1,clinical_response,,False,no,responses (ORR) in NSCLC and breast cancer,patritumab deruxtecan
+ERBB3:tumor_perbb3,1,target_product:1,target_product,,False,yes,tumor pErbB3 reduction (>=50% in 58%),cdx-3379
+ERBB3:tumor_phospho_her3,1,target_product:1,target_product,,False,unsure,phospho-HER3 down-modulation in paired tumour samples,elgemtumab
+ERBB3:tumour_her3_downregulation,1,occupancy:1,occupancy,,False,yes,membranous HER3 downregulation in tumour biopsies,lumretuzumab
+EREG:total_ligand_level,1,occupancy:1,occupancy,,False,yes,epiregulin and TGF-alpha level rise (ligand capture),fepixnebart
+ERYASPASE:all_response,1,clinical_response:1,clinical_response,,False,no,clinical responses in ALL,eryaspase
+ESR1:approval_other_indication,1,clinical_response:1,clinical_response,,False,no,FDA approval in ductal carcinoma in situ,tamoxifen
+ESR1:estrogenic_activity_biomarker,1,downstream_marker:1,downstream_marker,,False,unsure,unnamed estrogenic activity biomarker,VERU-944
+ESR1:fes_pet,1,occupancy:1,occupancy,,False,yes,FES-PET uptake reduction (>90%),gdc-0927
+ESR1:fsh_lh_suppression,1,downstream_marker:1,downstream_marker,,False,no,FSH/LH and bone-marker suppression,estradiol valerate
+ESR1:lh_testosterone_rise,1,target_product:1,target_product,,False,no,LH and testosterone rise,enclomiphene
+ESR1:tumour_er_hscore,1,occupancy:1,occupancy,,False,yes,tumour ER H-score reduction (presurgical window),azd-9496
+ESR1:vasomotor_contraception_efficacy,1,clinical_response:1,clinical_response,,False,no,pivotal vasomotor-symptom and contraception endpoints,estetrol anhydrous
+EZH2:pbmc_h3k27me3,1,occupancy:1,occupancy,,False,yes,PBMC H3K27me3 (no change),gsk-2816126
+F10:anti_fxa_activity,1,occupancy:1,occupancy,,False,yes,plasma anti-FXa activity,otamixaban
+F11:plasma_fxi_activity,1,occupancy:1,occupancy,,False,yes,plasma FXI activity reduction,osocimab
+F11:tka_vte_prevention_efficacy,1,clinical_response:1,clinical_response,,False,no,VTE prevention efficacy in knee arthroplasty,osocimab
+F12:fxiia_kallikrein_activity,1,occupancy:1,occupancy,,False,yes,FXIIa-mediated kallikrein activity suppression and aPTT prolongation,garadacimab
+F13A1:bleeding_prevention_fxiii_deficiency,1,clinical_response:1,clinical_response,,False,no,bleeding-prevention endpoint in congenital FXIII deficiency,catridecacog
+F2:act_aptt_prolongation,1,occupancy:1,occupancy,,False,no,ACT/aPTT prolongation in volunteers,bivalirudin
+F2:thrombin_inhibition_pd,1,occupancy:1,occupancy,,False,unsure,pharmacodynamic stopping criteria for thrombin inhibition met,azd-8165
+F3:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,cervical cancer efficacy endpoints,tisotumab vedotin
+F3:pt_prolongation,1,occupancy:1,occupancy,,False,no,PT prolongation and ETP reduction,anpocogin
+FAAH:brain_pet_activity,1,occupancy:1,occupancy,,False,yes,brain FAAH activity reduction by PET,redafamdastat
+FAAH:leukocyte_faah_inhibition,1,occupancy:1,occupancy,,False,yes,leukocyte FAAH inhibition >97% in healthy volunteers,redafamdastat
+FAAH:trough_faah_inhibition,1,occupancy:1,occupancy,,False,yes,complete FAAH inhibition at 25 mg trough (not achieved),jnj-42165279
+FAMCICLOVIR:herpes_antiviral_efficacy,1,clinical_response:1,clinical_response,,False,no,approved antiviral efficacy against herpes viruses,famciclovir
+FASEDIENOL:sad_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy in social anxiety disorder,fasedienol
+FCGR3A:soluble_cd30,1,occupancy:1,occupancy,,False,unsure,soluble CD30 decrease and NK-cell activation in HL,acimtamig
+FCRL5:plasma_cell_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,flow cytometry receptor occupancy on blood plasma cells (partial),RG7598
+FDPS:bone_resorption_markers,1,downstream_marker:1,downstream_marker,,False,no,bone-resorption markers fell dose-dependently,zoledronic acid
+FDPS:monocyte_modulation,1,downstream_marker:1,downstream_marker,,False,no,monocyte behavior modulation in PCI patients,alendronic acid
+FDPS:twin_trial_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,twin Phase 3 pain endpoint met (same disease),neridronic acid
+FERRICCARBOXYMALTOSE:serum_iron_indices,1,target_product:1,target_product,,False,yes,"iron indices (ferritin, TSAT) improved versus placebo",ferric carboxymaltose
+FERRICDERISOMALTOSE:serum_iron_indices,1,target_product:1,target_product,,False,yes,iron repletion (ferritin normalisation) in IBD patients,ferric derisomaltose
+FFAR1:gut_hormone_release,1,target_product:1,target_product,,False,no,"gut hormone (GLP-1, PYY, oxyntomodulin) rise with K-757",K-833
+FFAR2:exvivo_neutrophil_cd11b,1,occupancy:1,occupancy,,False,yes,ex vivo acetate-stimulated neutrophil CD11b activation inhibition,glpg-0974
+FGA:fibrin_clot_lysis,1,target_product:1,target_product,,False,yes,fibrin clot lysis (thrombolysis of hemodialysis grafts),fibrinolysin (human)
+FGA:hemostasis_efficacy,1,clinical_response:1,clinical_response,,False,no,hemostasis superiority endpoints (same formulation),fibrinogen human
+FGFR1:adiponectin,1,target_product:1,target_product,,False,no,adiponectin rise (FGF21-receptor PD marker),pegbelfermin
+FGFR1:adiponectin_bhb,1,downstream_marker:1,downstream_marker,,False,no,"adiponectin and beta-hydroxybutyrate rise, lipid/insulin/weight changes",ly-2405319
+FGFR1:dce_mri_vascularity,1,downstream_marker:1,downstream_marker,,False,no,DCE-MRI fall in tumor vascularity and permeability,brivanib
+FGFR1:hepatic_fat_fraction,1,downstream_marker:1,downstream_marker,,False,no,hepatic fat reduction in NASH,pegbelfermin
+FGFR1:hyperphosphatemia,1,downstream_marker:1,downstream_marker,,False,unsure,hyperphosphatemia in SDH-deficient GIST patients,rogaratinib
+FGFR1:serum_phosphate,1,downstream_marker:1,downstream_marker,,False,no,serum phosphate rise,fexagratinib
+FGFR4:c4_bile_acid_fgf19,1,downstream_marker:1,downstream_marker,,False,unsure,"C4, total bile acid and circulating FGF19 rise",roblitinib
+FGFR4:serum_c4,1,downstream_marker:1,downstream_marker,,False,unsure,serum C4 lowering (hepatic CYP7A1 activity marker),aldafermin
+FILIBUVIR:hcv_rna_decline,1,target_product:1,target_product,,False,yes,HCV RNA decline (viral load),filibuvir
+FLT1:hypertension,1,downstream_marker:1,downstream_marker,,False,no,grade 3/4 hypertension in phase 2,linifanib
+FLT1:plasma_svegfr2,1,downstream_marker:1,downstream_marker,,False,unsure,plasma soluble VEGFR2 reduction,cediranib
+FLT1:plasma_vegfa_svegfr2,1,occupancy:1,occupancy,,False,yes,plasma sVEGFR-2 fall and VEGF-A rise,tivozanib
+FLT1:svegfr2_lowering,1,downstream_marker:1,downstream_marker,,False,unsure,exposure-dependent sVEGFR2 lowering; DCE-MRI Ktrans fall,axitinib
+FLT1:wamd_bcva_response,1,clinical_response:1,clinical_response,,False,no,BCVA endpoint met vs aflibercept in wAMD,vorolanib
+FLT3:plasma_inhibitory_assay,1,occupancy:1,occupancy,,False,yes,FLT3 inhibition by plasma inhibitory assay (>=90%),mivavotinib
+FLUBENTYLOSIN:worm_wolbachia_depletion,1,target_product:1,target_product,,False,yes,Wolbachia depletion in live female worms,flubentylosin
+FLUORIDEION:enamel_smh_recovery,1,downstream_marker:1,downstream_marker,,False,no,in situ enamel surface microhardness (SMH) recovery,fluoride ion
+FOSFOMYCIN:tracheal_culture_positivity,1,target_product:1,target_product,,False,no,fewer positive tracheal cultures on Days 3 and 7,fosfomycin
+FOSRIBNICOTINAMIDE:blood_nad,1,target_product:1,target_product,,False,yes,blood NAD+ and NAD+ metabolites rise,fosribnicotinamide
+FPR2:leukocyte_receptor_internalization,1,occupancy:1,occupancy,,False,yes,FPR2/ALX receptor internalization on leukocytes,act-389949
+FRENESLERBART:allergen_neutralization,1,occupancy:1,occupancy,,False,yes,Fel d 1 allergen neutralization in serum and nasal fluid,freneslerbart
+FYN:tumour_src_activity,1,occupancy:1,occupancy,,False,yes,tumour biopsy Src activity,saracatinib
+GABBR1:eeg_gamma_suppression,1,downstream_marker:1,downstream_marker,,False,no,EEG gamma suppression in fragile X patients,baclofen
+GABBR1:slow_wave_sleep_gh,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent slow-wave sleep increases and GH release,ASP8062
+GABRA1:allopregnanolone_challenge_blockade,1,occupancy:1,occupancy,,False,unsure,blockade of allopregnanolone-induced sedation and eye-movement slowing,sepranolone
+GABRA1:benzodiazepine_reversal,1,clinical_response:1,clinical_response,,False,yes,benzodiazepine reversal (approved use),flumazenil
+GABRA1:cns_effects,1,downstream_marker:1,downstream_marker,,False,no,"CNS effects in healthy volunteers (memory impairment, ERP changes)",oxazepam
+GABRA1:eeg_beta_power,1,downstream_marker:1,downstream_marker,,False,no,EEG beta power PK/PD relationship in ET patients,sage-324
+GABRA1:pet_occupancy,1,occupancy:1,occupancy,,False,yes,SV2A and GABAA PET occupancy in healthy volunteers,padsevonil
+GABRA1:seizure_cluster_efficacy,1,clinical_response:1,clinical_response,,False,no,seizure-cluster efficacy of intranasal midazolam,midazolam
+GAS6:serum_gas6,1,occupancy:1,occupancy,,False,yes,serum GAS6 below limit of detection,batiraxcept
+GCGR:blood_glucose,1,target_product:1,target_product,,False,no,blood glucose rise after dosing,glucagon
+GCGR:fasting_glucose_hba1c,1,downstream_marker:1,downstream_marker,,False,no,fasting glucose and HbA1c reductions,isis-449884
+GCGR:plasma_glucagon_rise,1,target_product:1,target_product,,False,yes,compensatory plasma glucagon rise,adomeglivant
+GCK:glucose_hba1c,1,downstream_marker:1,downstream_marker,,False,no,glucose and HbA1c lowering in T2D,mk-0941
+GCK:insulin_secretion,1,target_product:1,target_product,,False,no,dose-dependent insulin secretion,azd-1656
+GEDIVUMAB:nasopharyngeal_viral_load,1,target_product:1,target_product,,False,no,nasopharyngeal influenza viral AUC reduction (98%),gedivumab
+GILDEURETINOL:none,1,none:1,none,,False,unsure,,gildeuretinol
+GLATIRAMERACETATE:th2_tcell_polarization,1,downstream_marker:1,downstream_marker,,False,no,Th2-polarized T-cell responses in MS patients,glatiramer acetate
+GLP1R:mixed_meal_glucose_auc,1,downstream_marker:1,downstream_marker,,False,no,mixed-meal glucose AUC (GLP-1 arm) did not drop,MEDI4166
+GLP1R:weight_loss,1,clinical_response:1,clinical_response,,False,no,weight loss endpoints in obesity,liraglutide
+GNRHR:ctc_drug_internalization,1,occupancy:1,occupancy,,False,unsure,receptor-mediated drug internalization in circulating tumor cells,zoptarelin doxorubicin
+GNRHR:plasma_lh_suppression,1,target_product:1,target_product,,False,yes,plasma LH suppression >90% in RA patients,opigolix
+GNRHR:serum_lh,1,target_product:1,target_product,,False,yes,LH AUC suppression in PCOS patients,elagolix
+GNRHR:testosterone_castration,1,target_product:1,target_product,,False,no,"castrate testosterone (<50 ng/dL) by day 28, not achieved",VERU-100
+GONTIVIMAB:rsv_viral_load,1,target_product:1,target_product,,False,no,time to RSV viral load below quantification limit,gontivimab
+GP6:collagen_platelet_aggregation,1,occupancy:1,occupancy,,False,yes,inhibition of collagen-induced platelet aggregation,glenzocimab
+GPA33:tumour_antibody_binding_ihc,1,occupancy:1,occupancy,,False,yes,KRN330 bound to tumour on CRC biopsy IHC,krn-330
+GPASIT:basophil_activation_ige_tregs,1,downstream_marker:1,downstream_marker,,False,no,"basophil activation, IgE, Th2/Tfh, Treg/IgG4 changes",gpASIT+
+GPC3:i124_pet_tumour_localization,1,occupancy:1,occupancy,,False,yes,I-124 codrituzumab PET tumour localization,codrituzumab
+GPR119:insulin_secretion,1,target_product:1,target_product,,False,no,insulin secretion and disposition index in T2DM,firuglipel
+GREMUBAMAB:serum_ex_vivo_functional_activity,1,occupancy:1,occupancy,,False,yes,serum ex vivo anti-PcrV cytotoxicity and Psl opsonophagocytic killing,gremubamab
+GRIN1:anesthetic_efficacy,1,clinical_response:1,clinical_response,,False,no,anesthetic efficacy (propofol-sparing endpoint),xenon
+GRIN1:eeg_40hz_assr,1,downstream_marker:1,downstream_marker,,False,no,40 Hz ASSR NMDAR engagement (only at 1440 mg),av-101
+GRIN1:ketamine_challenge_eeg_fmri,1,downstream_marker:1,downstream_marker,,False,unsure,ketamine-challenge EEG and fMRI shift in healthy volunteers,dalzanemdor
+GRIN1:meg_gamma_power,1,downstream_marker:1,downstream_marker,,False,no,MEG gamma power increase in MDD,ketamine
+GRIN1:none,1,none:1,none,,False,unsure,,dalzanemdor
+GRIN2B:trd_madrs_response,1,clinical_response:1,clinical_response,,False,no,24h MADRS response at same IV dose in TRD,onfasprodil
+GRM2:ketamine_pharmacobold,1,downstream_marker:1,downstream_marker,,False,no,ketamine pharmacoBOLD signal suppression,pomaglumetad
+GRM2:ketamine_phmri_bold,1,downstream_marker:1,downstream_marker,,False,no,ketamine pharmacoBOLD challenge (not suppressed at trial doses),pomaglumetad methionil
+GRM2:pet_tracer_binding,1,occupancy:1,occupancy,,False,no,brain PET tracer binding,jnj-42491293 c-11
+GS-6620:hcv_rna,1,target_product:1,target_product,,False,no,HCV RNA response,gs-6620
+GSK-2838232:hiv_rna_decline,1,target_product:1,target_product,,False,no,HIV-1 RNA decline,gsk-2838232
+GSK3732394:cd4_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,trough CD4 receptor occupancy,GSK3732394
+GSK3A:beta_catenin_level,1,target_product:1,target_product,,False,unsure,beta-catenin levels,ly-2090314
+GUCY1A1:nt_probnp,1,downstream_marker:1,downstream_marker,,False,no,exposure-dependent NT-proBNP fall in HFrEF,vericiguat
+GUCY2C:dose_capped_rp2d,1,exposure_only:1,exposure_only,,False,unsure,plasma exposure; RP2D capped by DLTs far below active dose,tak-164
+HAMP:serum_iron_tsat,1,downstream_marker:1,downstream_marker,,False,no,serum iron and transferrin saturation rise,ly-2787106
+HAVCR2:modeled_target_engagement,1,occupancy:1,occupancy,,False,yes,modeled 100% TIM-3 target engagement,ly-3321367
+HAVCR2:soluble_tim3_occupancy,1,occupancy:1,occupancy,,False,yes,total sTIM-3 plateau and modelled marrow TIM-3 occupancy >95%,sabatolimab
+HBEGF:serum_free_hbegf,1,occupancy:1,occupancy,,False,yes,serum free HB-EGF suppression,khk-2866
+HCRTR1:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,human orexin-receptor occupancy thresholds,suvorexant
+HCRTR2:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,MWT gains in NT1,oveporexton
+HDAC1:blood_histone_acetylation,1,target_product:1,target_product,,False,yes,blood histone acetylation in ALS patients,sodium phenylbutyrate
+HDAC1:blood_histone_h3_acetylation,1,target_product:1,target_product,,False,yes,acetylated histone H3 in blood cells,fimepinostat
+HDAC1:dmd_muscle_histology,1,downstream_marker:1,downstream_marker,,False,no,muscle histology improvement in DMD,givinostat
+HDAC1:hdac_inhibition_h4ac,1,occupancy:1,occupancy,,False,yes,HDAC inhibition and H4 acetylation,resminostat
+HDAC1:histone_h3_acetylation,1,target_product:1,target_product,,False,yes,lymphocyte histone H3 acetylation,romidepsin
+HDAC1:histone_h4_acetylation,1,target_product:1,target_product,,False,yes,histone H4 hyperacetylation in SMA patients,valproic acid
+HDAC1:pbmc_histone_acetylation,1,target_product:1,target_product,,False,yes,PBMC histone H3 acetylation,pracinostat
+HDAC1:tumour_acetylated_tubulin,1,target_product:1,target_product,,False,yes,acetylated tubulin in serial tumour biopsies,quisinostat
+HDAC1:tumour_histone_acetylation,1,target_product:1,target_product,,False,yes,tumour histone acetylation,entinostat
+HDAC1:wbc_hdac_inhibition,1,occupancy:1,occupancy,,False,yes,HDAC inhibition in peripheral WBCs,mocetinostat
+HDAC6:blood_acetylated_tubulin,1,occupancy:1,occupancy,,False,yes,acetylated α-tubulin in blood cells,ricolinostat
+HDAC6:tubulin_acetylation,1,occupancy:1,occupancy,,False,yes,tubulin and histone acetylation in blood cells (HDAC6 substrate),citarinostat
+HELIUM:airway_resistance_work_of_breathing,1,target_product:1,target_product,,False,no,"lower airway resistance, intrinsic PEEP, trapped gas, work of breathing",helium
+HISTAMINEGLUTARIMIDE:serum_ccl2_cxcl10,1,downstream_marker:1,downstream_marker,,False,no,serum CCL2 and CXCL10 fall,histamine glutarimide
+HRH1:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,approval in allergic rhinitis and common cold,chlorphenamine
+HRH1:histamine_wheal_suppression,1,occupancy:1,occupancy,,False,yes,histamine wheal suppression (~50%),loratadine
+HRH4:ex_vivo_eosinophil_shape_change,1,occupancy:1,occupancy,,False,yes,histamine-induced eosinophil shape change inhibition,jnj-39758979
+HSD11B1:adipose_11bhsd1_activity,1,occupancy:1,occupancy,,False,yes,adipose tissue 11beta-HSD1 activity,azd-8329
+HSD11B1:cortisol_cortisone_ratio,1,target_product:1,target_product,,False,yes,systemic 11β-HSD1 activity via cortisol/cortisone metabolite ratios,azd-4017
+HSD11B1:csf_d4cortisol_product,1,target_product:1,target_product,,False,yes,CSF D4-cortisol tracer HSD-1 product absent,abt-384
+HSD11B1:tissue_enzyme_inhibition,1,occupancy:1,occupancy,,False,yes,hepatic and adipose HSD-1 enzyme inhibition,clofutriben
+HSF1:npc_efficacy,1,clinical_response:1,clinical_response,,False,no,primary endpoint in Niemann-Pick C,arimoclomol
+HSPA5:circulating_myeloma_cell_binding,1,occupancy:1,occupancy,,False,yes,PAT-SM6 binding to circulating myeloma cells,PAT-SM6
+HTR1A:anxiety_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA approval for anxiety via 5-HT1A,buspirone
+HTR1B:modelled_occupancy,1,occupancy:1,occupancy,,False,yes,modelled 5-HT1B/1D occupancy,zolmitriptan
+HTR2A:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,pain endpoints met in fibromyalgia,cyclobenzaprine
+HTR2B:adhd_caars_efficacy,1,clinical_response:1,clinical_response,,False,no,CAARS endpoint met in adult ADHD,metadoxine
+HTR3A:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,CINV efficacy endpoints,granisetron
+HTR4:gi_transit,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent GI transit acceleration in gastroparesis patients,felcisetrag
+HTRA1:aqueous_cleaved_dkk3,1,target_product:1,target_product,,False,yes,aqueous humor cleaved DKK3 (HtrA1 substrate),galegenimab
+HU3S193:radiolabelled_tumor_uptake,1,occupancy:1,occupancy,,False,yes,111In-hu3S193 tumor lesion targeting (imaging),hu3S193
+HUMANUMBILICALCORDBLOODDERIVEDMESENCHYMALSTEMCELLS:csf_abeta_tau,1,downstream_marker:1,downstream_marker,,False,no,"CSF amyloid-beta, p-tau and t-tau lowering",human umbilical cord blood derived mesenchymal stem cells
+ICOSLG:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,ICOSL receptor occupancy,rozibafusp alfa
+ICOSLG:target_occupancy,1,occupancy:1,occupancy,,False,yes,maximal target occupancy of ICOSL in SLE patients,prezalumab
+IFNA1:ifn_gene_signature,1,downstream_marker:1,downstream_marker,,False,no,IFN-regulated gene expression suppression,rontalizumab
+IFNAR1:innate_immune_biomarkers,1,downstream_marker:1,downstream_marker,,False,no,innate immunity biomarkers in blood and sputum,interferon beta-1a
+IFNAR1:oas_neopterin_induction,1,target_product:1,target_product,,False,yes,serum 2'-5'OAS or neopterin induction,interferon alfa
+IFNG:cxcl10_reduction,1,downstream_marker:1,downstream_marker,,False,no,CXCL10 reduction and IFN-γ blockade signature,AMG 811
+IFNGR1:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA approval in osteopetrosis,interferon gamma-1b
+IFNLR1:hbv_dna,1,target_product:1,target_product,,False,no,HBV-DNA and qHBsAg decline,peginterferon lambda-1a
+IFNLR1:hcv_rna,1,target_product:1,target_product,,False,no,dose-related HCV-RNA decline,peginterferon lambda-1a
+IGF1R:serum_igf1,1,target_product:1,target_product,,False,unsure,serum IGF-1 rise,teprotumumab
+IGHE:serum_free_ige,1,occupancy:1,occupancy,,False,yes,serum free IgE suppression,medi-4212
+IGHE:serum_total_ige,1,occupancy:1,occupancy,,False,yes,serum total and allergen-specific IgE lowering (30-40%),quilizumab
+IL10RA:none,1,none:1,none,,False,unsure,,ilodecakin
+IL10RA:serum_ifng_il18_granzyme_b,1,downstream_marker:1,downstream_marker,,False,no,"serum IFN-γ, IL-18, granzyme B rise and CD8 expansion",pegilodecakin
+IL10RA:tumour_cd8_pstat3,1,target_product:1,target_product,,False,no,phospho-STAT3+ CD8 T cells inside tumours,pegilodecakin
+IL12RB1:serum_ifng_rise,1,target_product:1,target_product,,False,no,"IFNγ rise, NK/NKT activation, tumor-infiltrating lymphocytes",immunocytokine nhs-il12
+IL13:bronchial_ccl26_serpinb2_feno,1,downstream_marker:1,downstream_marker,,False,no,"bronchial FeNO, CCL26 and SERPINB2 fall in asthma",lebrikizumab
+IL13:fev1,1,downstream_marker:1,downstream_marker,,False,no,FEV1 dose-response in asthma,tralokinumab
+IL13:pd_biomarkers_unnamed,1,downstream_marker:1,downstream_marker,,False,unsure,pharmacodynamic biomarkers (unnamed) in IPF patients,lebrikizumab
+IL13:serum_periostin_ccl13_ccl17,1,downstream_marker:1,downstream_marker,,False,no,"serum periostin, CCL13, CCL17 and IgE reductions",lebrikizumab
+IL13:serum_tarc_ccl17,1,target_product:1,target_product,,False,no,serum TARC (CCL17) lowering,romilkimab
+IL13:tissue_eosinophils_transcripts,1,downstream_marker:1,downstream_marker,,False,no,tissue eosinophils and disease transcripts in EoE,dectrekumab
+IL15:blood_eosinophils,1,downstream_marker:1,downstream_marker,,False,no,blood eosinophil reduction,varokibart
+IL17A:bronchial_il17_gene_signature,1,downstream_marker:1,downstream_marker,,False,no,IL-17A pathway gene expression in bronchial brushings,CNTO 6785
+IL17A:total_tnf_il17a,1,occupancy:1,occupancy,,False,yes,total TNF and IL-17A rise; target-complex profiles,JNJ-61178104
+IL17C:total_serum_il17c,1,occupancy:1,occupancy,,False,yes,total serum IL-17C rise (indirect binding evidence),MOR106
+IL18:crp_il6_reduction,1,downstream_marker:1,downstream_marker,,False,no,CRP and IL-6 reduction in COVID-19 patients,arumakimig
+IL1A:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,gout-flare prevention endpoints in gout patients,rilonacept
+IL1A:exvivo_skin_il6_il8_suppression,1,occupancy:1,occupancy,,False,unsure,ex vivo skin biopsy IL-6/IL-8 suppression,bermekimab
+IL1A:lbm_symptom_composite_crc,1,clinical_response:1,clinical_response,,False,no,lean-body-mass and symptom composite in refractory CRC,bermekimab
+IL1A:serum_il1_levels,1,occupancy:1,occupancy,,False,yes,serum IL-1α/β reduction,lutikizumab
+IL1B:serum_il1b,1,occupancy:1,occupancy,,False,unsure,serum IL-1β and SAA fall in gout patients,diacerein
+IL1RL1:asthma_exacerbation_efficacy,1,clinical_response:1,clinical_response,,False,no,exacerbation reduction in severe asthma and COPD,astegolimab
+IL1RL1:pd_biomarkers_unspecified,1,downstream_marker:1,downstream_marker,,False,unsure,unspecified biomarkers showing pharmacological activity in patients,astegolimab
+IL1RL2:ex_vivo_whole_blood_occupancy,1,occupancy:1,occupancy,,False,yes,peripheral IL-36R occupancy by ex vivo whole-blood assay,spesolimab
+IL21:ex_vivo_il21_pstat3,1,occupancy:1,occupancy,,False,yes,IL-21-induced pSTAT3 suppression,avizakimab
+IL21:total_il21_rise,1,occupancy:1,occupancy,,False,yes,total IL-21 (free plus antibody-bound) rise,nnc0114-0006
+IL21R:b_cell_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,IL-21R occupancy on circulating B cells (maximal),ATR-107
+IL2RA:none,1,none:1,none,,False,unsure,,camidanlumab tesirine
+IL2RB:lymphocyte_redistribution,1,downstream_marker:1,downstream_marker,,False,no,transient lymphocyte redistribution (lymphopenia),balekafusp alfa
+IL2RB:nk_cd8_activation,1,downstream_marker:1,downstream_marker,,False,no,NK-cell and CD8+ T-cell activation,nanrilkefusp alfa
+IL33:il33_signaling_inhibition,1,occupancy:1,occupancy,,False,yes,>95% IL-33 signaling inhibition in DKD patients,tozorakimab
+IL3RA:cd123_saturation_monocytes,1,occupancy:1,occupancy,,False,yes,CD123 saturation on monocytes,talacotuzumab
+IL4R:serum_ige_tarc,1,downstream_marker:1,downstream_marker,,False,no,total IgE and TARC lowering,dupilumab
+IL5:blood_eosinophils,1,downstream_marker:1,downstream_marker,,False,no,blood eosinophil suppression,mepolizumab
+IL5:tissue_eosinophils,1,downstream_marker:1,downstream_marker,,False,no,peak esophageal eosinophil count,reslizumab
+IL6:circulating_il6_sequestration,1,occupancy:1,occupancy,,False,yes,sequestration of circulating IL-6,sirukumab
+IL6:crp,1,downstream_marker:1,downstream_marker,,False,no,CRP fall,olokizumab
+IL6R:serum_sil6r,1,occupancy:1,occupancy,,False,yes,sIL-6R rise,vobarilizumab
+IL6R:sil6r,1,occupancy:1,occupancy,,False,yes,sIL-6R/CRP and neutrophil pharmacodynamic effects,tocilizumab
+IL7R:lymphocyte_expansion,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent CD8+/CD4+ T-cell and lymphocyte expansion,efineptakin alfa
+IL7R:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,IL-7 receptor occupancy (>95%),GSK2618960
+IMA101:tcr_avidity,1,occupancy:1,occupancy,,False,yes,TCR avidity for target-pHLA (low in products),IMA101
+IMM-124E:serum_lps,1,occupancy:1,occupancy,,False,no,serum LPS lowering (target-ligand),IMM-124E
+INHBA:serum_fsh,1,target_product:1,target_product,,False,no,serum FSH fall,stm-434
+INS:granzyme_b_cd4_expansion,1,downstream_marker:1,downstream_marker,,False,unsure,Granzyme B+ CD4 T cell expansion,imcy-0098
+INS:plasma_c_peptide,1,exposure_only:1,exposure_only,,False,unsure,plasma C-peptide level (ligand replacement),cbx-129801
+INS:proinsulin_reactive_cd8,1,downstream_marker:1,downstream_marker,,False,unsure,proinsulin-reactive CD8+ T-cell frequency fell selectively,TOL-3021
+INSR:clamp_glucose_infusion_rate,1,downstream_marker:1,downstream_marker,,False,unsure,glucose infusion rate rise under clamp,mk-2640
+INSR:fasting_plasma_glucose,1,downstream_marker:1,downstream_marker,,False,no,fasting plasma glucose lowering,insulin 338
+INSR:postprandial_glucose,1,downstream_marker:1,downstream_marker,,False,no,"postprandial glucose drop (13–18%, modest)",insulin tregopil
+IPH-2101:kir2d_occupancy,1,occupancy:1,occupancy,,False,yes,KIR2D receptor occupancy,iph-2101
+IRAK4:blood_ifn_gene_signature,1,downstream_marker:1,downstream_marker,,False,no,whole-blood interferon gene signature drop,zimlovisertib
+IRAK4:modelled_occupancy,1,exposure_only:1,exposure_only,,False,no,PK-model projected ~80% IRAK4 occupancy,zabedosertib
+ISIS-426115:tissue_gccr_knockdown,1,occupancy:1,occupancy,,False,yes,GCCR knockdown in liver and fat tissue,isis-426115
+ITGA4:a4b7_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,α4β7 receptor occupancy (EC50 0.01 µg/mL),abrilumab
+ITGA4:blood_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,peripheral blood receptor occupancy (partial),PTG-100
+ITGA5:monocyte_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,monocyte α5β1 receptor occupancy,mint-1526a
+ITGA9:target_saturation,1,occupancy:1,occupancy,,False,unsure,target saturation (implied; measurement not shown),ASP5094
+ITGAL:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,efficacy of 5% ophthalmic solution in dry eye,lifitegrast
+ITGAM:aba_dependent_binding,1,occupancy:1,occupancy,,False,unsure,ABA-dependent binding to CR3 on neutrophils/monocytes,odetiglucan
+ITGAV:serum_ctx,1,downstream_marker:1,downstream_marker,,False,no,serum CTX fall at every dose,glpg-0187
+IVERMECTIN:demodex_density,1,target_product:1,target_product,,False,no,Demodex density lowered in rosacea skin,ivermectin
+JAK1:blood_pstat5,1,occupancy:1,occupancy,,False,yes,peripheral pSTAT5 inhibition in transplant patients,tofacitinib
+JAK1:blood_pstat5_inhibition,1,target_product:1,target_product,,False,yes,JAK/pSTAT5 inhibition in healthy volunteers,peficitinib
+JAK1:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical efficacy in chronic hand eczema and atopic dermatitis,delgocitinib
+JAK1:colonic_local_target_engagement,1,occupancy:1,occupancy,,False,unsure,"qualitative colonic 'local target engagement' claim, unquantified",izencitinib
+JAK1:conjunctival_hla_dr,1,downstream_marker:1,downstream_marker,,False,no,conjunctival HLA-DR expression fall (67-71% of baseline),tofacitinib
+JAK1:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,"efficacy of same cream in atopic dermatitis, vitiligo, psoriasis",ruxolitinib
+JAK1:gut_pstat3,1,target_product:1,target_product,,False,unsure,gut biopsy pSTAT-3 reduction,JNJ-64251330
+JAK1:hand_eczema_response,1,clinical_response:1,clinical_response,,False,no,primary endpoint met in chronic hand eczema at 80 mg,gusacitinib
+JAK1:il6_stimulated_pstat3,1,occupancy:1,occupancy,,False,yes,IL-6-stimulated pSTAT3 inhibition,INCB052793
+JAK1:ip10_hscrp,1,downstream_marker:1,downstream_marker,,False,no,IP-10 and hsCRP fall in psoriasis patients,brepocitinib
+JAK1:pstat_inhibition,1,target_product:1,target_product,,False,no,pSTAT reduction in asthma patients,TD-8236
+JAK2:jak2_signaling_inhibition,1,occupancy:1,occupancy,,False,yes,JAK2 signaling inhibition at all doses,pacritinib
+JAK2:mpn_response_rate,1,clinical_response:1,clinical_response,,False,no,Phase 2 response rates in JAK2 V617F PV and ET,gandotinib
+JNJ-73763989:serum_hbsag,1,target_product:1,target_product,,False,yes,serum HBsAg reduction (>=2 log10),JNJ-73763989
+KCNA1:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,pivotal efficacy in LEMS at comparable titrated doses,amifampridine
+KCNA1:rns_decrement_improvement,1,downstream_marker:1,downstream_marker,,False,no,RNS decrement improvement in AChR-MG,amifampridine
+KCNJ1:urinary_sodium_excretion,1,downstream_marker:1,downstream_marker,,False,no,day-1 urinary sodium excretion (natriuresis),mk-7145
+KCNN4:rbc_hemolysis_markers,1,downstream_marker:1,downstream_marker,,False,no,hemoglobin rise and red-cell destruction markers,senicapoc
+KDM1A:cd11b_cd71_differentiation,1,downstream_marker:1,downstream_marker,,False,no,CD11b+ rise and CD71+ fall (differentiation markers),gsk-2879552
+KDM1A:exposure_below_engagement_threshold,1,exposure_only:1,exposure_only,,False,unsure,exposure tied to preclinical target engagement not reached,gsk-2879552
+KDM1A:pbmc_target_binding,1,occupancy:1,occupancy,,False,yes,KDM1A target binding in PBMCs,vafidemstat
+KDR:svegfr2_fall,1,occupancy:1,occupancy,,False,yes,VEGF-A/PlGF rise and sVEGFR-2 fall in ovarian patients,ramucirumab
+KHK:fructose_metabolism_markers,1,target_product:1,target_product,,False,unsure,fructose-metabolism markers (effect size unreported),pf-06835919
+KIF11:pbmc_monoaster_formation,1,target_product:1,target_product,,False,yes,monoaster formation in PBMCs,azd-4877
+KIT:clinical_response,1,clinical_response:1,clinical_response,,False,no,KIT-driven clinical endpoints in mastocytosis and GIST,masitinib
+KIT:serum_scf_rise,1,occupancy:1,occupancy,,False,unsure,serum SCF threefold rise and marrow HSPC depletion (62%),briquilimab
+KLKB1:plasma_exposure_vs_ec50,1,exposure_only:1,exposure_only,,False,no,plasma concentrations only at kallikrein EC50 (partial inhibition),avoralstat
+KLKB1:plasma_kallikrein_inhibition,1,occupancy:1,occupancy,,False,yes,plasma kallikrein inhibition,lanadelumab
+KLRC1:nkg2a_saturation,1,occupancy:1,occupancy,,False,yes,NKG2A saturation; none shown at capped 2 mg/kg,monalizumab
+LACTICACIDUNSPECIFIEDFORM:mri_disc_fibrosis,1,downstream_marker:1,downstream_marker,,False,unsure,MRI changes consistent with nucleus pulposus fibrosis,"lactic acid, unspecified form"
+LACTICACIDUNSPECIFIEDFORM:vaginal_ph,1,target_product:1,target_product,,False,yes,vaginal pH lowering,"lactic acid, unspecified form"
+LAG3:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,PFS in melanoma,relatlimab
+LAG3:lag3_cell_depletion,1,downstream_marker:1,downstream_marker,,False,unsure,LAG-3+ cell depletion in colonic mucosa (not achieved),GSK2831781
+LAG3:soluble_lag3,1,occupancy:1,occupancy,,False,yes,soluble LAG-3 in patient blood,ieramilimab
+LANCL2:mucosal_treg_il10,1,downstream_marker:1,downstream_marker,,False,no,"mucosal Treg/IL-10 cell increase, TNF myeloid fall, calprotectin normalization",omilancor
+LCAT:cholesteryl_ester,1,target_product:1,target_product,,False,yes,cholesteryl ester (LCAT product) and HDL-C rise,recombinant human lecithin:cholesterol acyltransferase
+LEVOFLOXACIN:sputum_pa_density,1,target_product:1,target_product,,False,no,sputum P. aeruginosa density fall,levofloxacin
+LGALS3:bal_macrophage_gal3,1,occupancy:1,occupancy,,False,yes,Gal-3 expression on BAL alveolar macrophages,olitigaltin
+LILRB2:target_engagement_unspecified,1,occupancy:1,occupancy,,False,unsure,"dose-related target engagement, method not stated",MK-4830
+LINVENCORVIR:hbv_dna_decline,1,target_product:1,target_product,,False,no,antiviral activity on HBV DNA,linvencorvir
+LIRILUMAB:kir_occupancy,1,occupancy:1,occupancy,,False,yes,KIR occupancy >95%,lirilumab
+LOMIBUVIR:hcv_rna,1,target_product:1,target_product,,False,no,plasma HCV RNA reduction,lomibuvir
+LRP5:tumor_axin2_expression,1,downstream_marker:1,downstream_marker,,False,no,tumour biopsy Axin2 expression decrease,BI 905677
+LRRK2:ps935_prab10,1,target_product:1,target_product,,False,yes,LRRK2 inhibition (pS935/pT73 Rab10),dnl-201
+LTA4H:ex_vivo_whole_blood_ltb4,1,occupancy:1,occupancy,,False,yes,ex vivo stimulated whole-blood LTB4 production,jnj-40929837
+LUMICITABINE:rsv_viral_load,1,target_product:1,target_product,,False,no,RSV viral load AUC reduction in challenge study,lumicitabine
+MAGNESIUMHYDROXIDE:esophagitis_approval,1,clinical_response:1,clinical_response,,False,no,FDA approval for esophagitis,magnesium hydroxide
+MANNITOL:mucus_clearance,1,downstream_marker:1,downstream_marker,,False,no,mucus clearance improvement in non-CF bronchiectasis,mannitol
+MAOA:pet_enzyme_inhibition,1,occupancy:1,occupancy,,False,yes,brain MAO-A inhibition by [11C]clorgyline PET,cx-157
+MAOB:blood_mao_b_inhibition,1,occupancy:1,occupancy,,False,yes,plasma MAO-B inhibition (ED50 87.5 µg/kg/day),safinamide
+MAOB:pet_occupancy,1,occupancy:1,occupancy,,False,yes,brain MAO-B blockade by 11C-deprenyl PET,rasagiline
+MAP2K1:ex_vivo_cytokine_blockade,1,occupancy:1,occupancy,,False,no,ex vivo IL-1b and TNFa blockade in healthy volunteers,binimetinib
+MAP2K1:pbmc_perk_inhibition,1,occupancy:1,occupancy,,False,yes,PBMC pERK inhibition (46–97%),tak-733
+MAP2K1:tumor_perk,1,target_product:1,target_product,,False,yes,tumor pERK reduction,refametinib
+MAP3K8:ex_vivo_lps_perk_inhibition,1,occupancy:1,occupancy,,False,unsure,inhibition of LPS-stimulated pERK (75-80% at 24 h),tilpisertib
+MAPK14:csf_tau_ptau,1,downstream_marker:1,downstream_marker,,False,no,CSF total tau and p-tau181 lowering,neflamapimod
+MAPK14:ex_vivo_lps_tnfa_inhibition,1,occupancy:1,occupancy,,False,no,ex vivo LPS-induced TNFα inhibition in whole blood,acumapimod
+MAPK14:lps_sputum_tnfa,1,downstream_marker:1,downstream_marker,,False,no,sputum TNF-alpha after LPS challenge,azd-7624
+MAPK14:pbmc_mapkapk2_phosphorylation,1,occupancy:1,occupancy,,False,yes,PBMC p38-induced MAPKAP-K2 phosphorylation inhibition,ralimetinib
+MAPKAPK2:pbmc_mk2_binding,1,occupancy:1,occupancy,,False,yes,MK2 binding in PBMCs,gamcemetinib
+MAPT:plasma_tau,1,occupancy:1,occupancy,,False,yes,dose-dependent rise in plasma tau,zagotenemab
+MAPT:plasma_total_tau,1,occupancy:1,occupancy,,False,yes,plasma total tau rise and CSF soluble tau fall,semorinemab
+MASP2:lectin_pathway_inhibition,1,occupancy:1,occupancy,,False,yes,lectin pathway inhibition,narsoplimab
+MC1R:skin_melanin_density,1,downstream_marker:1,downstream_marker,,False,unsure,skin melanin density increase,dersimelagon
+MDM2:gdf15_induction,1,downstream_marker:1,downstream_marker,,False,no,GDF-15 induction (p53-pathway marker),siremadlin
+MDM2:none,1,none:1,none,,False,unsure,,milademetan
+MDM2:p53_stabilization,1,target_product:1,target_product,,False,yes,p53 stabilization in leukemic cells,ro-5045337
+MEROPENEM:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,non-inferiority endpoint met in cUTI/AP,meropenem
+MET:orr_met_amplified_tumours,1,clinical_response:1,clinical_response,,False,no,ORR in MET-amplified tumours at the same dose,amg-337
+MET:soluble_shed_met_rise,1,occupancy:1,occupancy,,False,yes,rise in soluble shed MET,glesatinib
+MEVONLERBART:allergen_neutralization,1,occupancy:1,occupancy,,False,yes,allergen-neutralizing capacity in serum and nasal fluid,mevonlerbart
+MGLL:pet_occupancy,1,occupancy:1,occupancy,,False,yes,brain MGLL PET engagement,elcubragistat
+MIF:tumour_target_occupancy,1,occupancy:1,occupancy,,False,yes,oxMIF target occupancy in tumour biopsies,imalumab
+MINOCYCLINE:plasma_mmp9_activity,1,occupancy:1,occupancy,,False,unsure,plasma MMP-9 activity in FXS patients,minocycline
+MIR155:lesion_target_gene_derepression,1,target_product:1,target_product,,False,yes,de-repression of miR-155 target genes in skin lesions,cobomarsen
+MIR29B1:skin_target_gene_expression,1,target_product:1,target_product,,False,unsure,skin miR-29b target gene (collagen) expression,remlarsen
+MK-5757:pet_occupancy,1,occupancy:1,occupancy,,False,yes,brain [18F]MK-0911 PET tracer displacement (ORL1 occupancy),mk-5757
+MLNR:gastric_emptying,1,downstream_marker:1,downstream_marker,,False,no,gastric emptying acceleration,camicinal
+MOGAT2:dicarboxylic_acid_18_1,1,target_product:1,target_product,,False,unsure,dicarboxylic acid (18:1) rise,s-309309
+MOSNODENVIR:viral_rna,1,target_product:1,target_product,,False,no,antiviral activity on viral RNA (human challenge),mosnodenvir
+MPL:platelet_count,1,downstream_marker:1,downstream_marker,,False,no,platelet response at 0.5-1.0 mg in ITP,lusutrombopag
+MPO:peripheral_mpo_activity,1,occupancy:1,occupancy,,False,yes,peripheral MPO-specific activity change vs exposure,verdiperstat
+MS4A1:b_cell_depletion,1,target_product:1,target_product,,False,unsure,dose-dependent CD19+ B-cell depletion,tru-015
+MSLN:serum_ca125,1,target_product:1,target_product,,False,unsure,serum CA-125 rise,amatuximab
+MSTN:free_myostatin,1,occupancy:1,occupancy,,False,yes,free myostatin suppression,taldefgrobep alfa
+MSTN:myostatin_coverage,1,occupancy:1,occupancy,,False,yes,total myostatin coverage >90% by PK/PD modelling in DMD,domagrozumab
+MSTN:total_gdf8_target_saturation,1,occupancy:1,occupancy,,False,yes,total GDF8 (myostatin) indicating saturating target engagement,trevogrumab
+MTNR1A:melatonin_cortisol_rhythm_entrainment,1,downstream_marker:1,downstream_marker,,False,no,entrainment by melatonin and cortisol rhythms,tasimelteon
+MTOR:other_indication_efficacy,1,clinical_response:1,clinical_response,,False,no,"approved efficacy in transplant, LAM, TSC; scaffold late lumen loss",sirolimus
+MTOR:pakt_pip3_inhibition,1,target_product:1,target_product,,False,yes,pAKT and PIP3 inhibition in blood and lung (IPF),omipalisib
+MTOR:pbmc_mtor_target_inhibition,1,target_product:1,target_product,,False,unsure,PBMC mTOR target inhibition,ridaforolimus
+MTOR:pbmc_p70s6k,1,target_product:1,target_product,,False,yes,p70S6K (mTOR signalling) inhibition in PBMCs,sirolimus
+MTOR:platelet_phospho_akt,1,occupancy:1,occupancy,,False,yes,platelet phospho-AKT reduction (up to 89%),DS-3078a
+MTOR:ps6_s6k_inhibition,1,target_product:1,target_product,,False,yes,PBMC p70S6K and tumour pS6 inhibition,temsirolimus
+MTOR:tumour_ps6_p4ebp1_pakt,1,target_product:1,target_product,,False,yes,"tumour p-S6, p4EBP1 and pAKT in paired biopsies",vistusertib
+MUC5AC:111in_tumour_uptake_imaging,1,occupancy:1,occupancy,,False,yes,111In-hPAM4 tumour uptake on imaging,yttrium y-90 clivatuzumab tetraxetan
+MYC:tumor_myc_mrna_knockdown,1,occupancy:1,occupancy,,False,yes,tumour biopsy MYC mRNA knockdown,DCR-MYC
+NAE1:tumor_nedd8_adduct,1,occupancy:1,occupancy,,False,yes,pevonedistat-NEDD8 adduct in tumor biopsies,pevonedistat
+NCBP1:uc_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical efficacy endpoints met in ulcerative colitis,obefazimod
+NFKB1:nfkb_regulated_gene_expression,1,target_product:1,target_product,,False,unsure,reduced NF-kB-regulated gene levels,edasalonexent
+NGF:oa_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,pain endpoints met in osteoarthritis,fasinumab
+NGF:pain_response,1,clinical_response:1,clinical_response,,False,no,dose-response efficacy in diabetic neuropathic pain,fulranumab
+NGF:postmortem_ngf_expression_spread,1,target_product:1,target_product,,False,yes,postmortem NGF transgene expression reaching target neurons,CERE-110
+NLRP3:exvivo_il1b_release_inhibition,1,occupancy:1,occupancy,,False,yes,ex-vivo IL-1β release inhibition (~90%),DFV890
+NOD2:serum_ifng_induction,1,downstream_marker:1,downstream_marker,,False,no,serum IFN-γ and IFN-γ-associated proteins,MIS416
+NOTCH1:unspecified_pd_effects,1,downstream_marker:1,downstream_marker,,False,unsure,unspecified pharmacodynamic effects in blood and tumour,brontictuzumab
+NPR1:plasma_cgmp,1,target_product:1,target_product,,False,unsure,plasma cGMP rise (NPR1 second messenger),ularitide
+NQO1:pef_percent_predicted,1,clinical_response:1,clinical_response,,False,no,PEF%p endpoint met in steroid-naive DMD (DELOS),idebenone
+NR1H4:fgf19_induction,1,target_product:1,target_product,,False,yes,FGF19 rise and C4/bile acid suppression,cilofexor
+NR1H4:liver_fat_reduction,1,downstream_marker:1,downstream_marker,,False,no,"NASH primary endpoint: liver fat, enzyme and cT1 improvements",vonafexor
+NR3C1:acc_clearance,1,clinical_response:1,clinical_response,,False,no,anterior chamber cell clearance matching active comparator,dexamethasone phosphate
+NR3C1:anterior_chamber_cell_clearing,1,downstream_marker:1,downstream_marker,,False,no,post-surgical anterior chamber cell clearing,difluprednate
+NR3C1:anterior_chamber_inflammation,1,clinical_response:1,clinical_response,,False,no,anterior-chamber inflammation endpoint after cataract surgery,betamethasone
+NR3C1:asthma_feno_fev1,1,downstream_marker:1,downstream_marker,,False,no,"AMP challenge, exhaled NO and FEV1 in asthma",beclomethasone dipropionate
+NR3C1:bcva_uveitic_me,1,clinical_response:1,clinical_response,,False,no,BCVA benefit in uveitic macular edema,triamcinolone acetonide
+NR3C1:exvivo_whole_blood_tnf_inhibition,1,occupancy:1,occupancy,,False,no,ex vivo whole-blood TNF-alpha inhibition,mizacorat
+NR3C1:gr_target_genes,1,target_product:1,target_product,,False,yes,expression change in 8 validated GR target genes,exicorilant
+NR3C1:knee_oa_pain_response,1,clinical_response:1,clinical_response,,False,no,WOMAC knee pain relief through week 24,triamcinolone hexacetonide
+NR3C1:olanzapine_weight_gain_block,1,downstream_marker:1,downstream_marker,,False,no,attenuation of olanzapine-induced weight gain and insulin/HOMA-IR rises,miricorilant
+NR3C1:otic_eczema_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy endpoint met in otic eczema,DF277
+NR3C1:prednisone_challenge_blockade,1,occupancy:1,occupancy,,False,yes,GR antagonism by blockade of prednisone effects,relacorilant
+NR3C1:psoriasis_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical endpoints met in plaque psoriasis (same foam),122-0551
+NR3C2:fludrocortisone_urinary_na_k,1,target_product:1,target_product,,False,yes,fludrocortisone-induced urinary Na/K ratio fall blunted,apararenone
+NR3C2:serum_potassium,1,downstream_marker:1,downstream_marker,,False,no,serum potassium rise consistent with MR blockade,ocedurenone
+NT5E:free_soluble_cd73,1,occupancy:1,occupancy,,False,yes,free soluble CD73 decrease,oleclumab
+NTRK1:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,corneal healing endpoints in neurotrophic keratitis,cenegermin
+NTRK1:neurotrophic_keratopathy_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA-approved efficacy in neurotrophic keratopathy (cenegermin),nerve growth factor
+NVXT:nail_culture_negativity,1,target_product:1,target_product,,False,yes,negative nail fungal culture,NVXT
+OBELDESIVIR:viral_load,1,target_product:1,target_product,,False,yes,viral RNA and infectious titer reduction,obeldesivir
+ODC1:mucosal_putrescine,1,target_product:1,target_product,,False,yes,colorectal mucosal putrescine (ODC product) fall,eflornithine
+OMIGANAN:hpv_load,1,target_product:1,target_product,,False,no,HPV load reduction,omiganan
+OMIGANAN:skin_antimicrobial_biomarkers,1,target_product:1,target_product,,False,no,antimicrobial/antifungal effect on skin biomarkers,omiganan
+OMIGANAN:skin_cfu_reduction,1,target_product:1,target_product,,False,no,skin bacterial CFU reduction,omiganan
+OMIGANAN:skin_microbiota_s_aureus,1,target_product:1,target_product,,False,no,lesional skin microbiota shift / S. aureus reduction,omiganan
+OPRK1:itch_efficacy,1,clinical_response:1,clinical_response,,False,no,primary itch endpoint in uremic pruritus,nalbuphine
+OPRK1:pet_occupancy,1,occupancy:1,occupancy,,False,yes,KOR occupancy by PET,aticaprant
+OPRK1:uremic_pruritus_itch_response,1,clinical_response:1,clinical_response,,False,no,itch endpoints in uremic/CKD pruritus,difelikefalin
+OPRL1:facial_recognition_negative_bias,1,downstream_marker:1,downstream_marker,,False,no,facial-recognition negative bias reduction in earlier MDD trial,ly-2940094
+OPRL1:mdd_clinical_response,1,clinical_response:1,clinical_response,,False,no,positive MDD proof-of-concept at 40 mg,ly-2940094
+OPRL1:miosis,1,downstream_marker:1,downstream_marker,,False,no,miosis in healthy volunteers,cebranopadol
+OPRL1:pet_occupancy,1,occupancy:1,occupancy,,False,yes,NOP receptor occupancy by [11C]NOP-1A PET,ly-2940094
+OPRM1:approved_efficacy_dpn,1,clinical_response:1,clinical_response,,False,no,primary endpoint met in painful diabetic neuropathy; approval,tapentadol
+OPRM1:pupillary_miosis,1,downstream_marker:1,downstream_marker,,False,unsure,pupillary miosis and delayed Drug Liking,oxycodegol
+OPRM1:pupillometry,1,downstream_marker:1,downstream_marker,,False,unsure,pupillometry and respiratory depression in healthy volunteers,oxycodone
+ORAI1:ex_vivo_il2_release_inhibition,1,occupancy:1,occupancy,,False,no,"ex vivo IL-2 release inhibition (~55–57%, partial)",zegocractin
+OSM:modelled_engagement,1,exposure_only:1,exposure_only,,False,no,modelled target engagement in serum and skin blister fluid,gsk-2330811
+OTESECONAZOLE:onychomycosis_cure,1,clinical_response:1,clinical_response,,False,no,complete cure in toenail onychomycosis,oteseconazole
+OXTR:approved_obstetric_efficacy,1,clinical_response:1,clinical_response,,False,no,approved efficacy in dystocia/postpartum indications,oxytocin
+OXTR:gastric_emptying,1,downstream_marker:1,downstream_marker,,False,no,gastric emptying change in diabetic gastroparesis,oxytocin
+P2RX3:cough_frequency_response,1,clinical_response:1,clinical_response,,False,no,cough frequency reduction in SOOTHE (chronic cough),camlipixant
+P2RX7:exvivo_il1b_release_blockade,1,occupancy:1,occupancy,,False,unsure,ex vivo whole-blood IL-1beta release blockade vs trough levels,ce-224535
+PAGIBAXIMAB:exvivo_opsonophagocytic_killing,1,occupancy:1,occupancy,,False,unsure,ex vivo opsonophagocytic killing of S. epidermidis (88-95%),pagibaximab
+PARP1:blood_cell_parp_inhibition,1,occupancy:1,occupancy,,False,yes,PARP inhibition in blood cells (>50-80%),iniparib
+PARP1:parp_enzyme_inhibition,1,occupancy:1,occupancy,,False,yes,concentration-dependent PARP inhibition,2x-121
+PARP1:parp_inhibition_pbl_tumor,1,occupancy:1,occupancy,,False,yes,~90% PARP inhibition in PBLs and tumor tissue,rucaparib
+PARP1:pd_parp_inhibition,1,occupancy:1,occupancy,,False,yes,pharmacodynamic PARP inhibition (assay unspecified),cep-9722
+PARP1:tumor_response_other_cancer,1,clinical_response:1,clinical_response,,False,no,response endpoints in ovarian and BRCA-mutated breast cancer,pamiparib
+PDE4A:claudication_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA approval for claudication via same mechanism,pentoxifylline
+PDE4A:lesional_skin_biomarkers,1,downstream_marker:1,downstream_marker,,False,no,lesional biomarker normalization in atopic dermatitis,crisaborole
+PDE4A:tnfa_inhibition,1,downstream_marker:1,downstream_marker,,False,no,"partial, transient TNFα inhibition in healthy subjects",apremilast
+PDE4B:dermal_camp,1,target_product:1,target_product,,False,yes,dermal cAMP rise in skin explants,leo-39652
+PDE4B:psoriasis_pasi_efficacy,1,clinical_response:1,clinical_response,,False,no,PASI efficacy in psoriasis,orismilast
+PDE4B:psoriasis_plaque_test_efficacy,1,clinical_response:1,clinical_response,,False,no,clinician-scale efficacy (TCS) in psoriasis plaque test,leo-29102
+PDE5A:mpap_pvri,1,downstream_marker:1,downstream_marker,,False,no,mPAP and PVRI lowering after single 50 mg dose,udenafil
+PDE5A:pah_approval,1,clinical_response:1,clinical_response,,False,no,FDA approval in pulmonary hypertension (efficacy),sildenafil
+PDE5A:pasp,1,downstream_marker:1,downstream_marker,,False,no,PASP lowering in COPD patients (uncontrolled),udenafil
+PDE5A:plasma_cgmp,1,target_product:1,target_product,,False,unsure,plasma cGMP rise (hypertension trial),pf-00489791
+PDE5A:uacr,1,downstream_marker:1,downstream_marker,,False,no,UACR reduction in diabetic nephropathy,pf-00489791
+PEXIGANAN:bacterial_eradication,1,target_product:1,target_product,,False,no,bacterial eradication in wound (not above vehicle),pexiganan
+PGF:free_vegf,1,occupancy:1,occupancy,,False,yes,plasma free-VEGF lowering,aflibercept
+PGF:nvi_regression,1,downstream_marker:1,downstream_marker,,False,no,NVI regression in NVG case series,aflibercept
+PGF:serum_vegf_suppression,1,occupancy:1,occupancy,,False,yes,serum VEGF fall after injection,conbercept
+PGR:ovulation_inhibition,1,downstream_marker:1,downstream_marker,,False,no,"ovulation inhibition, estradiol suppression, endometrial thinning",dienogest
+PHLEUMPRATENSEPOLLENALLERGENEXTRACT:specific_igg4_ige,1,downstream_marker:1,downstream_marker,,False,yes,allergen-specific IgG1/IgG4 rise and IgE fall,phleum pratense pollen allergen extract
+PHOSPHATIDYLCHOLINE:mucus_pc_content,1,exposure_only:1,exposure_only,,False,unsure,rectal mucus phosphatidylcholine restoration,phosphatidylcholine
+PIK3CB:plasma_exposure,1,exposure_only:1,exposure_only,,False,unsure,plasma exposure not sustained above preclinical active levels,sar-260301
+PIK3CB:target_inhibition_tumour,1,target_product:1,target_product,,False,unsure,target inhibition in plasma and tumour tissue,azd-8186
+PIK3CB:tissue_pakt,1,target_product:1,target_product,,False,yes,phospho/total AKT reduction in tumor and surrogate tissue,gsk-2636771
+PIK3CD:apds_naive_b_cells,1,downstream_marker:1,downstream_marker,,False,no,naive B cells and lymphoproliferation endpoints in APDS,leniolisib
+PIK3CD:tumor_pakt,1,target_product:1,target_product,,False,no,phospho-AKT inhibition in CLL tumor cells,duvelisib
+PIKFYVE:plasma_sgpnmb,1,downstream_marker:1,downstream_marker,,False,unsure,plasma sGPNMB rise,apilimod
+PIM1:4ebp1_phosphorylation,1,target_product:1,target_product,,False,unsure,PIM2 expression and 4E-BP1 phosphorylation in AML patients,uzansertib
+PIM1:unspecified_pd,1,downstream_marker:1,downstream_marker,,False,unsure,unspecified pharmacodynamic biological activity,azd-1208
+PIMODIVIR:influenza_viral_load,1,target_product:1,target_product,,False,no,influenza viral load reduction,pimodivir
+PKLR:rbc_2_3_dpg,1,target_product:1,target_product,,False,yes,"RBC 2,3-DPG lowering",etavopivat
+PLA2G10:plasma_spla2_iia,1,occupancy:1,occupancy,,False,yes,sPLA2-IIA lowering (~82%),varespladib methyl
+PLA2G7:plasma_lp_pla2_activity,1,occupancy:1,occupancy,,False,yes,plasma Lp-PLA2 activity inhibition (85.6% trough),gsk-2647544
+PLAT:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical/physiological endpoints in stroke and PE,alteplase
+PLAZOMICIN:microbiological_response,1,target_product:1,target_product,,False,yes,microbiological response in CARE patients,plazomicin
+PLUTAVIMAB:variant_neutralization,1,clinical_response:1,clinical_response,,False,no,trial stopped: drops not working on new variants,plutavimab
+POLYVALENTMECHANICALBACTERIALLYSATE:t_cell_subsets,1,downstream_marker:1,downstream_marker,,False,no,"peripheral T-cell subset changes (T, Treg, CD8+, NK)",polyvalent mechanical bacterial lysate
+POSACONAZOLE:tcruzi_pcr_parasite_load,1,target_product:1,target_product,,False,no,T. cruzi PCR negativity on treatment,posaconazole
+POTASSIUMSULFATE:bowel_cleansing_success,1,clinical_response:1,clinical_response,,False,no,bowel cleansing success in prior trials,potassium sulfate
+POVIDONE-IODINE:bacterial_eradication,1,target_product:1,target_product,,False,no,bacterial eradication at day 5,povidone-iodine
+POVIDONE-IODINE:salivary_cariogenic_microbiome,1,target_product:1,target_product,,False,no,shift in cariogenic salivary microbiome,povidone-iodine
+PP1131:bacterial_burden,1,target_product:1,target_product,,False,no,bacterial burden decline,PP1131
+PPARA:plasma_adiponectin,1,target_product:1,target_product,,False,unsure,plasma adiponectin (and HbA1c/lipid) changes,aleglitazar
+PPARD:muscle_fatty_acid_gene_upregulation,1,target_product:1,target_product,,False,unsure,muscle fatty-acid-metabolism transcript upregulation,mavodelpar
+PPARD:pbc_alp,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent ALP reduction in PBC,seladelpar
+PPARD:pbc_efficacy,1,clinical_response:1,clinical_response,,False,no,PBC efficacy endpoints,seladelpar
+PPARD:target_gene_upregulation,1,target_product:1,target_product,,False,unsure,upregulation of six PPARδ target genes,ASP1128
+PPARG:adiponectin,1,target_product:1,target_product,,False,no,adiponectin rise,leriglitazone
+PPARG:serum_urate,1,target_product:1,target_product,,False,no,serum urate lowering (only 12.5-16.5% monotherapy),arhalofenate
+PPARG:uc_efficacy,1,clinical_response:1,clinical_response,,False,no,"efficacy in ulcerative colitis (approval, met endpoints)",mesalamine
+PPAT:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,approvals in transplantation and rheumatic disorders,azathioprine
+PPIF:cyclophilin_binding_blood,1,occupancy:1,occupancy,,False,yes,cyclophilin binding in blood,cyclosporine
+PPIF:dry_eye_efficacy,1,clinical_response:1,clinical_response,,False,no,FDA-approved efficacy in dry eye (topical emulsion),cyclosporine
+PPP3CA:calcineurin_activity,1,occupancy:1,occupancy,,False,yes,dose-related calcineurin inhibition in blood,voclosporin
+PPP3CA:clinical_efficacy_twin_trial,1,clinical_response:1,clinical_response,,False,no,twin Phase 3 IGA success in atopic eczema,IDP-124
+PRESATOVIR:rsv_viral_load,1,target_product:1,target_product,,False,no,RSV viral load reduction in challenge study,presatovir
+PRKCA:exvivo_il2_mrna_inhibition,1,occupancy:1,occupancy,,False,no,ex vivo lymphocyte IL-2 mRNA inhibition (90% at 400 mg),sotrastaurin
+PRKDC:pbmc_p_dna_pk,1,target_product:1,target_product,,False,yes,PBMC p-DNA-PK reduction (not measured in rectal cancer),peposertib
+PRLR:serum_prolactin_rise,1,target_product:1,target_product,,False,yes,serum prolactin rise (PRLR blockade),LFA102
+PSEN1:blood_hes1_suppression,1,downstream_marker:1,downstream_marker,,False,no,Notch marker HES1 suppression in whole blood,osugacestat
+PSEN1:plasma_abeta,1,target_product:1,target_product,,False,yes,plasma Aβ inhibition (~80%),crenigacestat
+PSMB5:tumor_response_rate,1,clinical_response:1,clinical_response,,False,no,response rate / approval in myeloma and MCL,bortezomib
+PSMB8:immunoproteasome_inhibition,1,occupancy:1,occupancy,,False,yes,selective immunoproteasome inhibition,zetomipzomib
+PTGDR2:allergic_rhinitis_response,1,clinical_response:1,clinical_response,,False,no,Phase 2 allergic rhinitis endpoint at 1000 mg BID,setipiprant
+PTGDR2:ex_vivo_eosinophil_shape_change,1,occupancy:1,occupancy,,False,yes,ex vivo PGD2-induced eosinophil shape change,bi-671800
+PTGDR2:ex_vivo_pgd2_eosinophil_shape_change,1,occupancy:1,occupancy,,False,yes,ex vivo PGD2-induced eosinophil shape change,timapiprant
+PTGDR2:exvivo_eosinophil_cd11b,1,occupancy:1,occupancy,,False,yes,ex vivo PGD2-induced eosinophil CD11b inhibition,MK-1029
+PTGDR2:late_asthmatic_response,1,downstream_marker:1,downstream_marker,,False,no,late asthmatic response and airway hyperresponsiveness in allergic asthmatics,setipiprant
+PTGDR2:sar_symptom_score,1,clinical_response:1,clinical_response,,False,no,dose-related DNSS improvement in Phase 2 SAR trial,setipiprant
+PTGDR2:trough_fev1,1,clinical_response:1,clinical_response,,False,no,trough FEV1 dose contrast across trials,bi-671800
+PTGDR2:whole_blood_crth2_blockade,1,occupancy:1,occupancy,,False,yes,whole-blood CRTH2 blockade (>90% Emax),act-774312
+PTGDR:ex_vivo_whole_blood_pgd2_blockade,1,occupancy:1,occupancy,,False,yes,ex vivo whole-blood PGD2 response blockade (DP and CRTH2),vidupiprant
+PTGER3:iop_lowering,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent IOP lowering,sepetaprost
+PTGES:exvivo_pge2_synthesis_inhibition,1,occupancy:1,occupancy,,False,no,ex vivo LPS-stimulated PGE2 synthesis inhibition (91-97%),LY3023703
+PTGES:mpges1_activity_inhibition,1,occupancy:1,occupancy,,False,yes,full mPGES-1 activity inhibition in SSc patients,vipoglanstat
+PTGFR:eyelash_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy endpoints met in eyelash and eyebrow follicles,bimatoprost
+PTGIR:ph_efficacy,1,clinical_response:1,clinical_response,,False,no,approval for PH due to lung disease (inhaled),treprostinil
+PTGIR:prostacyclin_associated_aes,1,downstream_marker:1,downstream_marker,,False,no,prostacyclin-associated AEs in 91.7% (on-target pharmacology),selexipag
+PTGIR:pvr_cardiac_index,1,downstream_marker:1,downstream_marker,,False,no,PVR and cardiac index improvement in CTEPH,selexipag
+PTGS1:analgesic_efficacy,1,clinical_response:1,clinical_response,,False,no,"analgesic efficacy endpoints met (dental pain, with pregabalin)",paracetamol
+PTGS1:approved_topical_efficacy_oa,1,clinical_response:1,clinical_response,,False,no,topical FDA approval for knee OA and injury,methyl salicylate
+PTGS1:cox_inhibition,1,occupancy:1,occupancy,,False,yes,COX-2 ~71% and COX-1 ~89% inhibition,ibuprofen
+PTGS1:dental_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,dental pain endpoints met elsewhere,ibuprofen
+PTGS1:eicosanoids_txb2,1,target_product:1,target_product,,False,yes,systemic eicosanoids and TxB2,sulindac
+PTGS1:ocular_inflammation_efficacy,1,clinical_response:1,clinical_response,,False,no,ocular inflammation endpoints after cataract surgery,bromfenac
+PTH1R:serum_calcium,1,target_product:1,target_product,,False,no,transient serum calcium rise,teriparatide
+PTPN11:perk_inhibition,1,downstream_marker:1,downstream_marker,,False,no,pERK fall in blood cells and paired tumor biopsies,vociprotafib
+QPCT:csf_qc_inhibition,1,occupancy:1,occupancy,,False,yes,CSF QC target occupancy (estimated 55-94%),varoglutamstat
+RADIUMRA-223DICHLORIDE:bone_alp,1,downstream_marker:1,downstream_marker,,False,no,bone-ALP decline,radium ra-223 dichloride
+RAFIVIRUMAB:serum_rvna,1,occupancy:1,occupancy,,False,unsure,serum rabies virus neutralizing activity (RVNA),rafivirumab
+RARA:dhrs3_induction,1,target_product:1,target_product,,False,yes,DHRS3 induction (direct RAR-alpha target gene),tamibarotene
+RARG:acne_pivotal_response,1,clinical_response:1,clinical_response,,False,no,pivotal acne endpoints,trifarotene
+RARG:fop_heterotopic_ossification,1,clinical_response:1,clinical_response,,False,no,reduced new heterotopic ossification in FOP,palovarotene
+RELOXALIASE:urinary_oxalate,1,target_product:1,target_product,,False,unsure,urinary oxalate lowering,reloxaliase
+REN:plasma_renin_activity,1,occupancy:1,occupancy,,False,yes,"plasma renin activity, Ang I/II suppression",aliskiren
+RGMA:csf_free_rgma,1,occupancy:1,occupancy,,False,yes,CSF free RGMa reduction (>40%),elezanumab
+RIDINILAZOLE:fecal_clostridia,1,target_product:1,target_product,,False,no,faecal total clostridia fell below detection,ridinilazole
+RIFAMYCIN:travelers_diarrhea_response,1,clinical_response:1,clinical_response,,False,no,treatment endpoint in traveler's diarrhea,rifamycin
+RIFAXIMIN:methane_eradication,1,target_product:1,target_product,,False,no,methane eradication,rifaximin
+RIPK1:unspecified,1,none:1,none,,False,unsure,,oditrasertib
+RITONAVIR:docetaxel_auc_boost,1,target_product:1,target_product,,False,unsure,docetaxel AUC raised to IV levels (boosting),ritonavir
+RNASE1:serum_rnase_activity,1,occupancy:1,occupancy,,False,yes,serum catalytic RNase activity and whole-blood RNA digestion,rslv-132
+RO7062931:serum_hbsag,1,target_product:1,target_product,,False,unsure,"HBsAg reduction (partial, ~0.5 log10)",RO7062931
+ROCAPULDENCEL-T:immune_response,1,downstream_marker:1,downstream_marker,,False,no,immune responses detected in treated mRCC patients,rocapuldencel-t
+ROCK1:outflow_facility_increase,1,downstream_marker:1,downstream_marker,,False,no,outflow facility increase (glaucoma); CCT reduction (later Fuchs trial),netarsudil
+RORC:il17_inhibition,1,target_product:1,target_product,,False,no,IL-17 inhibition tracking drug levels,AUR101
+RORC:pasi_response,1,clinical_response:1,clinical_response,,False,no,dose-dependent PASI75 efficacy in psoriasis,BI 730357
+ROVAFOVIRETALAFENAMIDE:viral_load,1,target_product:1,target_product,,False,yes,HIV viral load reduction,rovafovir etalafenamide
+ROVUNAPTABIN:gpcr_autoantibody_neutralisation,1,occupancy:1,occupancy,,False,yes,functional GPCR autoantibody neutralisation,rovunaptabin
+RP-G28:bifidogenic_response,1,target_product:1,target_product,,False,no,bifidogenic response (Bifidobacterium increase),RP-G28
+RSPO3:serum_bone_turnover_markers,1,downstream_marker:1,downstream_marker,,False,no,"serum bone-turnover markers (B-CTX, P1NP), SOST and DKK1",rosmantuzumab
+RTN4:muscle_nogo_a_colocalization,1,occupancy:1,occupancy,,False,yes,co-localization with Nogo-A in skeletal muscle,ozanezumab
+RXFP1:renal_hemodynamic_pd_effects,1,downstream_marker:1,downstream_marker,,False,no,"eGFR and renal plasma flow rise, PCWP fall",serelaxin
+RXRA:tsh_suppression,1,target_product:1,target_product,,False,no,TSH suppression in healthy subjects,bexarotene
+RYR1:approval_other_indication,1,clinical_response:1,clinical_response,,False,no,FDA approval in another indication via RYR1 blockade,dantrolene
+S100A9:rpfs_mcrpc,1,clinical_response:1,clinical_response,,False,no,radiographic PFS benefit in mCRPC,tasquinimod
+S1PR1:mri_lesion_activity,1,downstream_marker:1,downstream_marker,,False,no,reduced slowly expanding lesions on MRI in PPMS,fingolimod
+S1PR1:peripheral_lymphocytes,1,downstream_marker:1,downstream_marker,,False,no,peripheral lymphocyte count reduction,mocravimod
+SB623:tbi_fmms_efficacy,1,clinical_response:1,clinical_response,,False,no,FMMS primary endpoint in TBI,
+SCN10A:local_anaesthetic_pain_relief,1,clinical_response:1,clinical_response,,False,no,approved efficacy in postherpetic neuralgia (local anaesthesia),lidocaine
+SCN1A:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,epilepsy efficacy via same sodium channels,phenytoin
+SCN1A:epilepsy_efficacy,1,clinical_response:1,clinical_response,,False,no,"efficacy endpoints in epilepsy (LGS, partial seizures)",rufinamide
+SCN1A:pr_prolongation,1,downstream_marker:1,downstream_marker,,False,no,PR interval prolongation as functional channel block,eslicarbazepine acetate
+SCN1A:serum_sodium,1,downstream_marker:1,downstream_marker,,False,no,serum sodium and seizure response tracking exposure,eslicarbazepine acetate
+SCN4A:postoperative_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,placebo-controlled post-hemorrhoidectomy pain endpoint met,bupivacaine
+SCN5A:hba1c,1,downstream_marker:1,downstream_marker,,False,no,"HbA1c endpoints met in T2DM (monotherapy, glimepiride add-on)",ranolazine
+SCTR:mrcp_duct_secretion,1,downstream_marker:1,downstream_marker,,False,unsure,pancreatic duct detection on MRCP (secretin-stimulated secretion),secretin human
+SELP:p_selectin_inhibition,1,occupancy:1,occupancy,,False,yes,P-selectin inhibition in SCD patients,crizanlizumab
+SELP:soluble_pselectin_occupancy,1,occupancy:1,occupancy,,False,yes,soluble P-selectin occupancy,inclacumab
+SEMA4D:cellular_saturation,1,occupancy:1,occupancy,,False,yes,peripheral cellular SEMA4D saturation,pepinemab
+SERPINC1:anti_xa_activity,1,occupancy:1,occupancy,,False,unsure,anti-Xa activity in human blood,fondaparinux
+SERPINC1:clinical_dic_recovery,1,clinical_response:1,clinical_response,,False,no,DIC recovery with rhAT-gamma,antithrombin gamma
+SERPINC1:clinical_vte_prevention,1,clinical_response:1,clinical_response,,False,no,"VTE prevention efficacy vs placebo (cancer, hip fracture)",semuloparin
+SERPINC1:plasma_anti_xa,1,occupancy:1,occupancy,,False,yes,plasma anti-Xa and anti-IIa activity,dalteparin
+SERPING1:plasma_functional_c1inh,1,occupancy:1,occupancy,,False,yes,plasma functional C1-INH rise in HAE patients,human c1-esterase inhibitor
+SF3B1:blood_splicing_markers,1,target_product:1,target_product,,False,yes,peripheral blood splicing markers (aberrant TMEM14C),h3b-8800
+SFTPB:fio2_improvement,1,downstream_marker:1,downstream_marker,,False,no,"rapid, sustained FiO2 improvement",CHF5633
+SGSH:csf_heparan_sulfate,1,target_product:1,target_product,,False,yes,CSF heparan sulfate reduction,olenasufligene relduparvovec
+SIMARAVIBART:serum_neutralizing_titers,1,occupancy:1,occupancy,,False,yes,serum neutralizing titers against alpha–delta,simaravibart
+SIRPA:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,receptor occupancy in NHL patients (highly variable),epacmarstobart
+SLC10A1:plasma_bile_acids,1,target_product:1,target_product,,False,unsure,total bile acid rise,bulevirtide
+SLC10A2:fecal_bile_acid_excretion,1,target_product:1,target_product,,False,unsure,fecal bile acid excretion rise,volixibat
+SLC22A6:furosemide_renal_clearance,1,target_product:1,target_product,,False,yes,furosemide renal clearance reduction,probenecid
+SLC34A2:ca125_decline,1,downstream_marker:1,downstream_marker,,False,no,CA-125 declines ≥50% in PROC patients,lifastuzumab vedotin
+SLC3A2:cd98_receptor_occupancy,1,occupancy:1,occupancy,,False,yes,trough CD98 receptor occupancy (>90%),ign-523
+SLC40A1:serum_iron,1,target_product:1,target_product,,False,no,"serum iron, transferrin saturation and hepcidin rise",LY2928057
+SLC40A1:serum_iron_tsat,1,target_product:1,target_product,,False,unsure,serum iron and transferrin saturation fall,rusfertide
+SLC5A1:glucose_absorption,1,target_product:1,target_product,,False,unsure,reduced glucose absorption,licogliflozin
+SLC5A2:urinary_glucose_excretion,1,target_product:1,target_product,,False,yes,dose-related glucosuria,dapagliflozin
+SLC6A2:csf_dhpg,1,target_product:1,target_product,,False,yes,CSF DHPG reduction (NET-inhibition biomarker),edivoxetine
+SLC6A2:dat_pet_occupancy,1,occupancy:1,occupancy,,False,yes,trough DAT occupancy by PET,dasotraline
+SLC6A2:mwt_ess_response,1,clinical_response:1,clinical_response,,False,no,MWT/ESS endpoints in narcolepsy and OSA,solriamfetol
+SLC6A2:putamen_dat_occupancy,1,occupancy:1,occupancy,,False,yes,putamen DAT occupancy,methylphenidate
+SLC6A2:striatal_dat_pet_occupancy,1,occupancy:1,occupancy,,False,yes,striatal DAT occupancy by PET,tesofensine
+SLC6A2:sympathomimetic_effects,1,downstream_marker:1,downstream_marker,,False,no,pulse rise and sympathomimetic effects,lisdexamfetamine
+SLC6A4:ptsd_efficacy,1,clinical_response:1,clinical_response,,False,no,pivotal CNS efficacy endpoints in PTSD,midomafetamine
+SLC6A9:csf_glycine,1,target_product:1,target_product,,False,yes,CSF glycine rise (~50% at 10 mg),iclepertin
+SMAD7:smad7_knockdown,1,occupancy:1,occupancy,,False,yes,SMAD7 knockdown (in vitro only for phase 3 batches),mongersen
+SMO:skin_gli1,1,target_product:1,target_product,,False,yes,skin GLI1 downregulation,glasdegib
+SNAP25:muscle_paralysis_mwave,1,downstream_marker:1,downstream_marker,,False,no,M-wave muscle paralysis in healthy volunteers,botulinum toxin type a
+SNCA:plasma_drug_asyn_complex,1,occupancy:1,occupancy,,False,yes,plasma drug/α-syn complex saturation,cinpanemab
+SOD1:plasma_free_copper_ncc,1,occupancy:1,occupancy,,False,yes,non-ceruloplasmin copper (NCC) normalization,tiomolibdic acid
+SODIUMBICARBONATE:serum_bicarbonate_ph,1,target_product:1,target_product,,False,no,systemic bicarbonate and pH rise,sodium bicarbonate
+SODIUMCHLORITE:monocyte_cd16,1,downstream_marker:1,downstream_marker,,False,no,dose-dependent fall in monocyte CD16,sodium chlorite
+SOLITHROMYCIN:culture_cure,1,target_product:1,target_product,,False,no,100% culture cure in phase 2 gonorrhea,solithromycin
+SONEPCIZUMAB:total_s1p,1,occupancy:1,occupancy,,False,yes,S1P concentrations rising on therapy,sonepcizumab
+SOST:p1np_ctx_bone_turnover,1,downstream_marker:1,downstream_marker,,False,no,P1NP rise and CTX fall,romosozumab
+SPAM1:tumour_qmri,1,downstream_marker:1,downstream_marker,,False,unsure,"tumour qMRI ADC/T1, perfusion and permeability changes",pegvorhyaluronidase alfa
+SPHK2:plasma_s1p,1,target_product:1,target_product,,False,no,plasma S1P lowering (SK2 product) in solid tumours,opaganib
+STING1:plasma_5hiaa,1,downstream_marker:1,downstream_marker,,False,no,plasma 5-HIAA rise (116-204%),vadimezan
+STING1:systemic_cytokine_tcell_expansion,1,downstream_marker:1,downstream_marker,,False,no,systemic cytokine rise and T-cell clonal expansion,adu-s100
+STING1:tumor_biopsy_rna_immune_infiltrate,1,downstream_marker:1,downstream_marker,,False,no,tumor biopsy RNA and immune-infiltrate changes (none),adu-s100
+STS:endometrial_sts_activity,1,occupancy:1,occupancy,,False,yes,endometrial STS enzyme activity,estradiol sulfamate
+SULOPENEM:uuti_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,clinical efficacy in uncomplicated UTI trials,sulopenem
+SUNPG1622:approved_efficacy_psoriasis,1,clinical_response:1,clinical_response,,False,no,approval for plaque psoriasis,SUNPG1622
+SUPTAVUMAB:rsv_f_epitope_binding,1,occupancy:1,occupancy,,False,yes,binding to circulating RSV-B F protein (epitope substitution abolished),suptavumab
+SUROTOMYCIN:clostridial_gut_counts,1,target_product:1,target_product,,False,no,clostridial gut counts fall,surotomycin
+SV2A:pet_occupancy,1,occupancy:1,occupancy,,False,yes,SV2A occupancy by [11C]-UCB-J PET,plosaracetam
+SYK:acr20_response,1,clinical_response:1,clinical_response,,False,no,ACR20 response in sister RA trial,mk-8457
+SYK:blood_psyk_inhibition,1,target_product:1,target_product,,False,yes,"pSYK inhibition (>70% peak, >50% trough)",entospletinib
+TAURURSODIOL:csf_ad_biomarkers,1,downstream_marker:1,downstream_marker,,False,no,"CSF p-tau181, tau, neurogranin, FABP3, YKL-40 changes",taurursodiol
+TBXA2R:exvivo_u46619_platelet_aggregation,1,occupancy:1,occupancy,,False,yes,ex vivo U46619-induced platelet aggregation blockade,ifetroban
+TBXA2R:platelet_aggregation_inhibition,1,occupancy:1,occupancy,,False,no,complete platelet aggregation inhibition,ser-150
+TENOFOVIR:hbv_dna,1,target_product:1,target_product,,False,unsure,HBV DNA lowering in HDV-coinfected patients,tenofovir
+TGFB1:plasma_tgfb1,1,occupancy:1,occupancy,,False,yes,plasma TGFβ1 suppression,avid-200
+TGFB1:skin_tgfb_gene_signature,1,downstream_marker:1,downstream_marker,,False,no,"TGF-β-regulated skin gene expression (THBS1, SERPINE1, CTGF)",fresolimumab
+THBD:prothrombinase_inhibition,1,target_product:1,target_product,,False,unsure,prothrombinase inhibition (protein C activation),thrombomodulin alfa
+TIGIT:nsclc_orr_pfs_efficacy,1,clinical_response:1,clinical_response,,False,no,ORR/PFS benefit with atezolizumab in NSCLC,tiragolumab
+TIXAGEVIMAB:serum_neutralising_titre,1,occupancy:1,occupancy,,False,yes,serum neutralising titres above convalescent levels,tixagevimab
+TLR3:colonic_tlr3_expression,1,occupancy:1,occupancy,,False,unsure,colonic TLR3 expression downregulation (non-significant),PRV-300
+TLR4:cytokine_response,1,downstream_marker:1,downstream_marker,,False,no,"dose-dependent cytokine, chemokine and immune-cell changes",gsk-1795091
+TLR4:lps_challenge_blockade,1,occupancy:1,occupancy,,False,unsure,blockade of ex vivo and in vivo LPS-induced cytokine release and CRP,paridiprubart
+TLR4:vaccine_immune_response,1,downstream_marker:1,downstream_marker,,False,no,NY-ESO-1 antibody and T-cell responses to CMB305,lapretolimod
+TLR7:exvivo_cytokine_inhibition,1,occupancy:1,occupancy,,False,yes,inhibition of ex vivo TLR7/8-stimulated cytokines,enpatoran
+TLR7:exvivo_tlr_cytokine_induction_blockade,1,occupancy:1,occupancy,,False,yes,ex vivo inhibition of TLR7/8/9-driven cytokine induction in blood cells,bazlitoran
+TLR7:interferon_cytokine_induction,1,downstream_marker:1,downstream_marker,,False,no,"CXCL10, TNFα, IL-6, IFNγ induction in AR patients",azd-8848
+TLR7:ip10_induction,1,downstream_marker:1,downstream_marker,,False,no,local and systemic IP-10 increases (IFN-pathway readout),gsk-2245035
+TLR7:serum_ifn_alpha_isg15,1,target_product:1,target_product,,False,unsure,ISG15 induction (transient); serum IFN-α absent,vesatolimod
+TLR7:skin_ifn_mx_induction,1,downstream_marker:1,downstream_marker,,False,no,skin IFN-alpha and Mx mRNA induction,resiquimod
+TLR9:blood_cytokine_induction,1,target_product:1,target_product,,False,no,"blood IL-12, IL-6 and IFN-alpha responses",emd-1201081
+TLR9:interferon_response_induction,1,downstream_marker:1,downstream_marker,,False,no,lung interferon response induction,AZD1419
+TLR9:ip10_monocyte_activation,1,downstream_marker:1,downstream_marker,,False,no,monocyte activation and IP-10 production,lefitolimod
+TLR9:monocyte_activation_ip10,1,downstream_marker:1,downstream_marker,,False,no,monocyte activation and IP-10 induction in SCLC,lefitolimod
+TLR9:mucosal_il10_treg_il17_cells,1,downstream_marker:1,downstream_marker,,False,no,"mucosal IL10+ cells, Tregs up and IL17+ cells down",cobitolimod
+TLR9:serum_cxcl10,1,downstream_marker:1,downstream_marker,,False,no,serum CXCL10 fold change,vidutolimod
+TNC:radiolabelled_tumor_uptake,1,occupancy:1,occupancy,,False,yes,131I-tenatumomab tumour uptake (negligible),tenatumomab
+TNF:blood_transcriptomic_signature,1,downstream_marker:1,downstream_marker,,False,no,whole-blood transcriptomic treatment-associated gene changes,golimumab
+TNF:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,"clinical endpoints met in RA, peripheral and axial SpA, ERA",adalimumab
+TNF:lesional_inflammatory_markers,1,downstream_marker:1,downstream_marker,,False,no,"lesional K16, Ki67, epidermal thickness, cytokine mRNA reductions",DLX105
+TNF:serum_tnf_suppression,1,occupancy:1,occupancy,,False,yes,serum TNF-α suppression to near-undetectable levels,"anti-tnf-.alpha (ovine, fab)"
+TNF:tissue_phosphoprotein_inhibition,1,downstream_marker:1,downstream_marker,,False,no,tissue phosphoprotein fall only ~50% in UC biopsies,V565
+TNFRSF10B:plasma_cck18,1,downstream_marker:1,downstream_marker,,False,no,"plasma cCK18 rise, ctDNA fall, PERCIST responses",GEN1029
+TNFRSF10B:radiolabeled_tumour_uptake,1,occupancy:1,occupancy,,False,yes,111In-labelled antibody tumour uptake on imaging,tigatuzumab
+TNFRSF18:ex_vivo_il2_release,1,occupancy:1,occupancy,,False,no,ex vivo IL-2 release target-engagement marker,gwn-323
+TNFRSF18:receptor_occupancy,1,occupancy:1,occupancy,,False,yes,GITR occupancy in peripheral blood and tumor biopsies,AMG 228
+TNFRSF18:t_cell_gitr_occupancy,1,occupancy:1,occupancy,,False,yes,GITR availability on circulating T cells,MK-4166
+TNFRSF18:t_nk_cell_activation,1,downstream_marker:1,downstream_marker,,False,no,peripheral T- and NK-cell proliferation/activation and cytokines,bms-986156
+TNFRSF1A:bal_free_soluble_tnfr1,1,occupancy:1,occupancy,,False,yes,BAL free soluble TNFR1,GSK2862277
+TNFRSF4:ox40_cell_depletion,1,target_product:1,target_product,,False,unsure,elimination of OX40+ cells in colon biopsies,rocatinlimab
+TNFRSF9:circulating_biomarkers,1,downstream_marker:1,downstream_marker,,False,unsure,circulating biomarkers of 4-1BB engagement (unnamed),utomilumab
+TNFSF12:serum_tweak,1,occupancy:1,occupancy,,False,yes,soluble serum TWEAK below quantitation,BIIB023
+TNFSF13:free_april,1,occupancy:1,occupancy,,False,yes,"free APRIL fall (AUEC, dose-dependent)",zigakibart
+TNFSF13B:bcell_count,1,downstream_marker:1,downstream_marker,,False,no,B-cell reductions in SLE patients,belimumab
+TNFSF14:covid_ali_efficacy,1,clinical_response:1,clinical_response,,False,no,primary endpoint met in COVID-19 pneumonia/acute lung injury,quisovalimab
+TNFSF15:free_tl1a,1,occupancy:1,occupancy,,False,yes,free TL1A in blood fell and stayed down,duvakitug
+TNFSF4:tumor_ox40l_protein,1,target_product:1,target_product,,False,yes,OX40L protein in on-treatment tumor biopsies,mRNA-2416
+TNNC2:calf_muscle_performance,1,downstream_marker:1,downstream_marker,,False,no,claudicating calf-muscle performance vs dose and concentration,tirasemtiv
+TNNC2:muscle_function_mvv_handgrip,1,downstream_marker:1,downstream_marker,,False,no,"maximum voluntary ventilation, handgrip endurance, SVC decline",tirasemtiv
+TOP2A:bnhl_antitumor_response,1,clinical_response:1,clinical_response,,False,no,antitumor activity in relapsed aggressive B-NHL/DLBCL,pixantrone
+TOP2A:sarcoma_clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,PFS endpoint met in soft tissue sarcoma,aldoxorubicin
+TP53:p53_target_gene_induction,1,target_product:1,target_product,,False,unsure,p53 target-gene upregulation in tumor cells,eprenetapopt
+TPH1:plasma_urinary_5hiaa_reduction,1,target_product:1,target_product,,False,unsure,plasma and urinary 5-HIAA reduction,rodatristat ethyl
+TPSAB1:active_tryptase_bronchial,1,occupancy:1,occupancy,,False,yes,bronchial active tryptase suppression,MTPS9579A
+TRICAPRILIN:serum_bhb,1,target_product:1,target_product,,False,unsure,serum β-hydroxybutyrate (ketone body) formation,tricaprilin
+TRIHEPTANOIN:eeg_spike_wave,1,downstream_marker:1,downstream_marker,,False,no,EEG spike-wave reduction in G1D patients,triheptanoin
+TRPM8:cold_pressor_pain,1,downstream_marker:1,downstream_marker,,False,no,cold pressor test cold-pain reversal,pf-05105679
+TRPV1:capsaicin_challenge_blockade,1,occupancy:1,occupancy,,False,yes,capsaicin-provoked nasal symptom blockade (2-4-fold potency shift),sb-705498
+TRPV1:none,1,none:1,none,,False,unsure,,azd-1386
+TRPV1:ocular_pain_efficacy,1,clinical_response:1,clinical_response,,False,no,primary pain endpoint in acute post-PRK ocular pain,libvatrep
+TSPO:pet_occupancy,1,occupancy:1,occupancy,,False,yes,dose-dependent brain TSPO occupancy by PET,ono-2952
+TUBB:clinical_response_breast_pfs,1,clinical_response:1,clinical_response,,False,no,PFS endpoint met in breast cancer,vinflunine
+TUBB:covid19_mortality_benefit,1,clinical_response:1,clinical_response,,False,no,Phase 3 mortality benefit in hospitalized COVID-19,sabizabulin
+TUBB:intracranial_response_brain_mets,1,clinical_response:1,clinical_response,,False,no,intracranial responses in breast cancer brain metastases,paclitaxel trevatide
+TUBB:microtubule_bundling,1,target_product:1,target_product,,False,yes,microtubule bundling in PBMCs and tumor cells,eribulin
+TUBB:neutropenia,1,downstream_marker:1,downstream_marker,,False,no,exposure-related neutropenia (on-target antimitotic effect),vinflunine
+TXN:plasma_trx1,1,occupancy:1,occupancy,,False,yes,plasma Trx-1 lowering,px-12
+TYK2:ifna_challenge_gene_suppression,1,occupancy:1,occupancy,,False,unsure,suppression of TYK2-mediated genes after ex vivo IFNα challenge,cenacitinib
+TYK2:pasi_response,1,clinical_response:1,clinical_response,,False,no,PASI90 efficacy in psoriasis at same dose,ropsacitinib
+TYMP:efficacy_other_indication,1,clinical_response:1,clinical_response,,False,no,TAS-102 overall-survival efficacy in colorectal and gastric cancer,tipiracil
+TYMS:gastric_cancer_os_efficacy,1,clinical_response:1,clinical_response,,False,no,pivotal OS endpoint met by tegafur regimen in gastric cancer,tegafur
+TYMS:neutropenia,1,downstream_marker:1,downstream_marker,,False,no,neutropenia tracking AUC (pharmacodynamic marker),trifluridine
+TYMS:ts_activity_modulation,1,occupancy:1,occupancy,,False,yes,TS-activity modulation in solid tumors,capecitabine
+UGCG:csf_gl1,1,target_product:1,target_product,,False,yes,CSF GL-1 lowering (72–74%),venglustat
+UGCG:plasma_gl1,1,target_product:1,target_product,,False,yes,plasma glucosylceramide (GL-1) lowering,venglustat
+UPRIFOSBUVIR:hcv_rna,1,target_product:1,target_product,,False,no,HCV RNA reduction,uprifosbuvir
+UTRN:muscle_utrophin,1,occupancy:1,occupancy,,False,yes,muscle biopsy utrophin increase (transient),ezutromid
+UTS2R:pk_predicted_occupancy,1,exposure_only:1,exposure_only,,False,unsure,PK-predicted UT receptor occupancy (plasma concentration),gsk-1440115
+VANCOMYCIN:sputum_mrsa_density,1,target_product:1,target_product,,False,no,sputum MRSA density in CF patients,vancomycin
+VC-01:functional_engraftment,1,exposure_only:1,exposure_only,,False,unsure,functional product engraftment,VC-01
+VDR:serum_pth_suppression,1,target_product:1,target_product,,False,no,calcitriol rise and PTH suppression (SHPT),calcifediol
+VEBICORVIR:hbv_dna_pgrna,1,target_product:1,target_product,,False,no,HBV DNA and pgRNA reductions over ETV,vebicorvir
+VEGFA:clinical_efficacy,1,clinical_response:1,clinical_response,,False,no,efficacy in VEGF-A-driven retinal disease,ranibizumab
+VEGFA:csft_oct,1,downstream_marker:1,downstream_marker,,False,no,CSFT reduction in AMD,brolucizumab
+VEGFA:free_vegfa,1,occupancy:1,occupancy,,False,yes,free VEGF-A lowering in humans,bevacizumab
+VEGFA:npdr_drss_efficacy,1,clinical_response:1,clinical_response,,False,no,sham-controlled DRSS endpoint met in NPDR,tarcocimab tedromer
+VORICONAZOLE:antifungal_approval,1,clinical_response:1,clinical_response,,False,no,FDA approval for candidiasis and fusariosis,voriconazole
+VWF:vwf_rco_activity,1,occupancy:1,occupancy,,False,yes,VWF:RCo activity suppression,caplacizumab
+WEE1:pcdk1_tissue,1,target_product:1,target_product,,False,yes,pCDK1 reduction in skin and pY15-Cdk fall in tumour biopsies,adavosertib
+XIAP:blood_mrna_knockdown,1,occupancy:1,occupancy,,False,yes,XIAP mRNA suppression in blood cells (only 21%),aeg-35156
+XPO1:nuclear_cargo_retention,1,target_product:1,target_product,,False,yes,nuclear retention of XPO1 cargos in tumour biopsies,selinexor
+XPO1:target_occupancy,1,occupancy:1,occupancy,,False,yes,XPO1 target occupancy at 60 mg,selinexor
