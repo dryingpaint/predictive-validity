@@ -252,6 +252,11 @@ pulled or any outcome is looked at.
   `report/audits/literature_pilot_sample.csv`, researched under the same instructions by agents
   with no access to any version's results. The gates are unchanged. A line that fails stays
   descriptive, with no further attempt.
+  Addendum, same day, before the pilot ran, at the user's direction: retrieval also uses Firecrawl's
+  research index. That means semantic search over about 43M PubMed, bioRxiv and medRxiv abstracts, by the
+  drug's names and by the drug with each kind of evidence, plus citation-graph expansion from hits
+  already found, kept to publications up to the year before entry. Hits pass through the same screen.
+  The pilot reports Firecrawl credits per entry; a full-cohort run waits for the user to approve its cost.
 - **Cell studies before 2019 (oncology).** A new subcategory: the target is a dependency in
   cancer cell lines of the program's tumour type, in genome-wide RNAi or CRISPR screens
   published before entry. The sources are the DEMETER2 combined RNAi scores (Achilles,
