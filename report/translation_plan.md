@@ -164,11 +164,14 @@ from claims about the drug.
 5. **Cell studies.** CRISPR screens in cancer cells; first published 2019, so
    scored on current data as hindsight only.
 6. **The molecule** (small molecules). Potency on the primary target (best
-   pChEMBL ≥ 8, ChEMBL documents dated before entry); selectivity (primary-target
+   pChEMBL ≥ 7, i.e. 100 nM or better, the threshold the report already uses;
+   ChEMBL documents dated before entry); selectivity (primary-target
    potency at least 1 log unit above the best off-target potency, among drugs
    measured on both); drug-likeness (at most one Rule-of-5 violation) and, for
    neurology and psychiatry programs, brain-penetrance properties (TPSA < 90,
-   MW < 450, H-bond donors ≤ 3), from PubChem computed properties.
+   MW < 450, H-bond donors ≤ 3), from PubChem computed properties. The potency
+   threshold was corrected on 2026-11-04, before any outcome was tested: it first
+   read pChEMBL ≥ 8, which is 10 nM, while the stated intent was 100 nM.
 7. **Early human pharmacology** (Phase 2 and 3 entries). Target engagement
    measured in people before entry (pilot).
 
