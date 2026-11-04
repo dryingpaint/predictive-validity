@@ -29,7 +29,7 @@ import os
 import pandas as pd
 
 from report import frame
-from report.evidence_lines import ADJUSTMENTS, APPLIES, CATEGORIES, build
+from report.evidence_lines import ADJUSTMENTS, APPLIES, CATEGORIES, build, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable
@@ -134,6 +134,9 @@ def literature_gate() -> dict:
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
+    if changed := stale():  # the analysis builds its own rows; the stored copy others query should match them
+        print(f"[evidence_analysis] warning: the stored evidence dataset is stale ({', '.join(changed)}); "
+              "run python -m report.evidence_lines store", flush=True)
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)

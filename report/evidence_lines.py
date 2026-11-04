@@ -2,6 +2,7 @@
 
     python -m report.evidence_lines         # write the CSVs
     python -m report.evidence_lines store   # also replace the dataset in Postgres
+    python -m report.evidence_lines check   # exit 1, naming what changed, when the stored dataset is stale
 
 One row per US-developed phase entry in 2008-2019 (report.section1.phase_rows with a US-sited
 industry trial in the phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase) and carrying the
@@ -19,7 +20,8 @@ with an outcome here.
 
 `store` writes the same dataset to preclin.evidence_line (the registry), preclin.evidence_entry (one
 row per entry, without outcomes) and preclin.evidence_entry_line (each non-null value in long form),
-recorded in preclin.evidence_line_build. Report modules otherwise only read; this one writes because
+recorded in preclin.evidence_line_build with a fingerprint of its inputs (input_fingerprint), which `check`
+compares with the inputs now. Report modules otherwise only read; this one writes because
 the compiled dataset is what other sessions and analyses query, and it should not have to be rebuilt
 from code to be read.
 """
@@ -33,7 +35,7 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-from psycopg2.extras import execute_values
+from psycopg2.extras import Json, execute_values
 
 from pipeline import llm
 from report import frame
@@ -333,20 +335,55 @@ def long_form(d: pd.DataFrame, reg: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
+LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_outcome", "trial_biomarker_selection")
+RELEASE_TABLES = ("chembl_activity", "moiety_property")
+
+
+def input_fingerprint() -> dict:
+    """What the dataset reads beyond the programs build: the programs snapshot; rows and latest decision of each LLM
+    label table (a rewrite of approvals or targets changes them, though not the snapshot); the latest source
+    release behind the ChEMBL potencies and computed properties; and the rows of preclin.cell_dependency once it
+    exists."""
+    fp: dict = {"snapshot": str(frame.snapshot())}
+    for table in LABEL_TABLES:
+        r = frame.query(f"SELECT count(*) AS n, max(llm_decision_id) AS last FROM preclin.{table}").iloc[0]
+        fp[table] = [int(r.n), None if pd.isna(r["last"]) else int(r["last"])]
+    for table in RELEASE_TABLES:
+        last = frame.query(f"SELECT max(source_release_id) AS last FROM preclin.{table}").iloc[0]["last"]
+        fp[table] = None if pd.isna(last) else int(last)
+    if frame.query("SELECT to_regclass('preclin.cell_dependency') IS NOT NULL AS present").iloc[0]["present"]:
+        fp["cell_dependency"] = int(frame.query("SELECT count(*) AS n FROM preclin.cell_dependency").iloc[0]["n"])
+    return fp
+
+
+def stale_inputs(stored: dict, current: dict) -> list[str]:
+    """Inputs whose fingerprint differs between the stored dataset and now, or that only one of them has."""
+    return sorted(k for k in stored.keys() | current.keys() if stored.get(k) != current.get(k))
+
+
+def stale() -> list[str]:
+    """What changed since the stored dataset was built; ["no stored dataset"] when there is none."""
+    last = frame.query("SELECT inputs FROM preclin.evidence_line_build ORDER BY built_at DESC LIMIT 1")
+    if last.empty:
+        return ["no stored dataset"]
+    return stale_inputs(last.iloc[0]["inputs"], input_fingerprint())
+
+
 def store(d: pd.DataFrame) -> str:
     """Replace the dataset in Postgres in one transaction; returns the build id."""
     reg = registry()
     lines_long = long_form(d, reg)
     e = d.assign(mondo_id=d.mondo_id.fillna(""), entry_date=pd.to_datetime(d.entry_date).dt.date,
                  biomarker_selected=d.biomarker_selected.map({1.0: True, 0.0: False}))
-    build_id = str(uuid.uuid4())
+    build_id, fingerprint = str(uuid.uuid4()), input_fingerprint()
     nul = lambda v: None if pd.isna(v) else v.item() if hasattr(v, "item") else v  # noqa: E731  numpy scalars
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.evidence_entry_line")
         cur.execute("DELETE FROM preclin.evidence_entry")
         cur.execute("DELETE FROM preclin.evidence_line")
-        cur.execute("""INSERT INTO preclin.evidence_line_build (build_id, code_commit, snapshot, n_entries)
-                       VALUES (%s, %s, %s, %s)""", (build_id, llm.git_commit(), frame.snapshot(), len(e)))
+        cur.execute("""INSERT INTO preclin.evidence_line_build (build_id, code_commit, snapshot, n_entries, inputs)
+                       VALUES (%s, %s, %s, %s, %s)""",
+                    (build_id, llm.git_commit(), frame.snapshot(), len(e), Json(fingerprint)))
         execute_values(cur, """INSERT INTO preclin.evidence_line (line_key, position, category, level, label, applies,
                                                                   status, build_id) VALUES %s""",
                        [(*r, build_id) for r in reg.itertuples(index=False)])
@@ -364,6 +401,11 @@ def store(d: pd.DataFrame) -> str:
 
 
 def main() -> None:
+    if sys.argv[1:] == ["check"]:
+        changed = stale()
+        print("stored evidence dataset is current" if not changed else
+              f"stored evidence dataset is stale: {', '.join(changed)} changed; run python -m report.evidence_lines store")
+        sys.exit(1 if changed else 0)
     os.makedirs(OUT, exist_ok=True)
     d = build()
     d.to_csv(os.path.join(OUT, "entries.csv"), index=False)

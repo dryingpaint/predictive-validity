@@ -2,7 +2,7 @@ import math
 
 import pandas as pd
 
-from report.evidence_lines import biomarker_selected, earlier_failure, failures_by_gene, molecule_lines
+from report.evidence_lines import biomarker_selected, stale_inputs, earlier_failure, failures_by_gene, molecule_lines
 
 RELATED = frozenset({"MONDO:A", "MONDO:A1"})
 FAILED = pd.DataFrame([
@@ -149,3 +149,19 @@ def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_i
 def test_only_lines_scored_on_part_of_their_category_are_reported_alone():
     from report.evidence_lines import reported_alone
     assert reported_alone() == {"brain_penetrant", "earlier_failure"}
+
+
+STORED = {"snapshot": "2026-11-02", "dev_program_approval": [21628, 3360783], "moiety_property": 93}
+
+
+def test_a_store_is_current_when_its_inputs_are_unchanged():
+    assert stale_inputs(STORED, dict(STORED)) == []
+
+
+def test_a_rewritten_label_table_or_new_input_makes_a_store_stale():
+    now = {**STORED, "dev_program_approval": [21700, 3700000], "cell_dependency": 120000}
+    assert stale_inputs(STORED, now) == ["cell_dependency", "dev_program_approval"]
+
+
+def test_a_store_made_before_fingerprinting_is_stale_on_every_input():
+    assert stale_inputs({}, STORED) == sorted(STORED)
