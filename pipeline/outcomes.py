@@ -4,6 +4,8 @@
     python -m pipeline.outcomes publications   # PubMed results papers for completed trials without posted results
     python -m pipeline.outcomes classify   # LLM: execution, stop reason and primary-endpoint outcome per trial
     python -m pipeline.outcomes endpoints  # LLM: the kind of endpoint each Phase 2/3 trial's primary measures
+    python -m pipeline.outcomes biomarkers  # LLM: whether each phase-starting trial enrols by a molecular biomarker
+    python -m pipeline.outcomes biomarkers-check  # the same on a seeded sample with another model
 
 The results summary keeps, for every primary outcome measure, the
 measured values per group and every statistical comparison (p-value, method,
@@ -21,6 +23,7 @@ import time
 import xml.etree.ElementTree as ET
 from datetime import date
 
+import numpy as np
 import requests
 from psycopg2.extras import Json, execute_values
 
@@ -425,6 +428,134 @@ def endpoints(_args) -> None:
     print(f"trials={len(items)} classified={len(rows)}")
 
 
+BIOMARKER_FROM, BIOMARKER_TO = date(2008, 1, 1), date(2019, 12, 31)  # start dates of the trials labelled
+ELIGIBILITY_CHARS = 8000
+BIOMARKER_KINDS = ["germline_variant", "somatic_mutation", "expression", "signature", "other_molecular"]
+BIOMARKER_CHECK_SAMPLE = 100
+BIOMARKER_CHECK_SEED = 20261104
+BIOMARKER_CHECK_OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                   "report", "audits", "biomarker_selection_check.json")
+
+BIOMARKER_SYSTEM = """You read a clinical trial's registry record and decide whether the trial restricts enrolment to patients selected by a molecular biomarker.
+
+A biomarker requirement is an inclusion criterion (or an exclusion criterion that leaves only marker-positive or marker-negative patients) on a measured molecular marker of the patient or their disease:
+- germline_variant: an inherited variant or genotype (BRCA1/2 germline mutation, HLA-B*57:01, a CFTR genotype, a named mutation causing a hereditary disease when the trial requires it to be confirmed);
+- somatic_mutation: an acquired mutation, fusion, amplification or rearrangement in the tumour or diseased tissue (EGFR exon 19 deletion, ALK fusion, BRAF V600E, KRAS G12C, FLT3-ITD, HER2 amplification by ISH);
+- expression: a protein or RNA level in tissue or blood used to select patients (PD-L1 ≥ 1%, HER2 IHC 3+, ER/PR-positive, CD20-positive or CD33-positive disease);
+- signature: a multi-gene or multi-analyte score (Oncotype DX recurrence score, a gene-expression classifier, MSI-high or tumour mutational burden);
+- other_molecular: any other measured molecular marker (a specific antibody or autoantibody, a metabolite or enzyme deficiency demonstrated by assay, a pathogen genotype or resistance mutation).
+
+Not a biomarker selection:
+- a clinical diagnosis or histology, even when made with tests (type 2 diabetes, adenocarcinoma, multiple myeloma, chronic hepatitis C);
+- disease stage, severity, scores or prior treatment;
+- ordinary laboratory thresholds and safety labs (HbA1c, LDL cholesterol, eGFR, blood counts, liver enzymes, eosinophil counts, viral load);
+- a biomarker that is only measured, stratified on or explored, not required for entry;
+- marker status used only to exclude a small subgroup while everyone else is eligible (e.g. "no known EGFR mutation" in an all-comers lung cancer trial).
+
+When the requirement depends on the disease's definition (a trial in "HER2-positive breast cancer", "Philadelphia chromosome-positive ALL", "CD19-positive lymphoma"), it is a biomarker selection.
+
+Return selected, and when selected the biomarker as the record writes it, its kind, and a quote of the record text stating the requirement, copied exactly. When not selected, return kind "none" and nulls for biomarker and quote."""
+
+BIOMARKER_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "selected": {"type": "boolean"},
+        "biomarker": {"type": ["string", "null"]},
+        "kind": {"type": "string", "enum": BIOMARKER_KINDS + ["none"]},
+        "quote": {"type": ["string", "null"]},
+    },
+    "required": ["selected", "biomarker", "kind", "quote"],
+    "additionalProperties": False,
+}
+
+
+def render_biomarker(p: dict) -> str:
+    return (f"Title: {p['title']}\nConditions: {'; '.join(p['conditions'])}\n\nBrief summary:\n{p['summary']}\n\n"
+            f"Eligibility criteria:\n{p['eligibility']}")
+
+
+def squash(text: str) -> str:
+    return " ".join(text.lower().split())
+
+
+def validate_biomarker(p: dict, out: dict) -> None:
+    filled = [out["biomarker"] is not None, out["kind"] != "none", out["quote"] is not None]
+    if out["selected"] != all(filled) or any(filled) != all(filled):
+        raise ValueError(f"selected={out['selected']} with biomarker/kind/quote filled={filled}")
+    if out["selected"] and squash(out["quote"]) not in squash(" ".join([p["title"], *p["conditions"], p["summary"],
+                                                                       p["eligibility"]])):
+        raise ValueError(f"quote not in the record: {out['quote'][:120]}")
+
+
+BIOMARKER_TASK = llm.Task(name="trial_biomarker_selection", prompt_version="v1", schema_version="v1",
+                          system=BIOMARKER_SYSTEM, schema=BIOMARKER_SCHEMA, render=render_biomarker,
+                          validate=validate_biomarker, subject_type="trial", model="claude-opus-5-5", effort="low",
+                          max_tokens=1500)
+BIOMARKER_CHECK_TASK = llm.Task(name="trial_biomarker_selection_check", prompt_version="v1", schema_version="v1",
+                                system=BIOMARKER_SYSTEM, schema=BIOMARKER_SCHEMA, render=render_biomarker,
+                                validate=validate_biomarker, subject_type="trial", model="claude-sonnet-5",
+                                effort="medium", max_tokens=1500)
+
+
+def biomarker_items() -> dict[str, dict]:
+    """Industry trials that start a phase of a development program (dev_program_trial.starts_phase) and began
+    in BIOMARKER_FROM..BIOMARKER_TO, the first trials of the phase entries the evidence analyses use."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""
+            SELECT s.nct_id, s.brief_title, s.conditions, s.brief_summary, s.eligibility_criteria
+            FROM preclin.ctgov_study s
+            WHERE s.lead_sponsor_class = 'INDUSTRY' AND s.start_date BETWEEN %s AND %s
+              AND EXISTS (SELECT 1 FROM preclin.dev_program_trial dt WHERE dt.nct_id = s.nct_id AND dt.starts_phase)""",
+                    (BIOMARKER_FROM, BIOMARKER_TO))
+        return {r[0]: {"title": r[1] or "", "conditions": r[2] or [], "summary": (r[3] or "")[:ELIGIBILITY_CHARS],
+                       "eligibility": (r[4] or "(not registered)")[:ELIGIBILITY_CHARS]} for r in cur.fetchall()}
+
+
+def biomarkers(args) -> None:
+    """Label every trial of biomarker_items; with --limit, label a seeded sample of that size and print it."""
+    items = biomarker_items()
+    if args.limit:
+        keys = np.random.default_rng(BIOMARKER_CHECK_SEED).choice(sorted(items), size=args.limit, replace=False)
+        run_id = llm.run(BIOMARKER_TASK, {k: items[k] for k in keys})
+        for nct, _, o in llm.decisions(run_id):
+            print(nct, json.dumps(o))
+        return
+    run_id = llm.run(BIOMARKER_TASK, items)
+    rows = [(nct, o["selected"], o["biomarker"], None if o["kind"] == "none" else o["kind"], o["quote"], did)
+            for nct, did, o in llm.decisions(run_id)]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("DELETE FROM preclin.trial_biomarker_selection")
+        execute_values(cur, """INSERT INTO preclin.trial_biomarker_selection
+                                 (nct_id, selected, biomarker, kind, quote, llm_decision_id) VALUES %s""", rows,
+                       page_size=5000)
+        conn.commit()
+    print(f"trials={len(items)} labelled={len(rows)} selected={sum(r[1] for r in rows)}")
+
+
+def biomarkers_check(_args) -> None:
+    """Label a seeded sample of BIOMARKER_CHECK_SAMPLE trials again with BIOMARKER_CHECK_TASK (another model) and
+    write agreement, Cohen's kappa and every disagreement to BIOMARKER_CHECK_OUT."""
+    items = biomarker_items()
+    keys = np.random.default_rng(BIOMARKER_CHECK_SEED + 1).choice(sorted(items), size=BIOMARKER_CHECK_SAMPLE,
+                                                                  replace=False)
+    first = {k: o for k, (_, o) in llm.current_decisions(BIOMARKER_TASK, {k: items[k] for k in keys}).items()}
+    run_id = llm.run(BIOMARKER_CHECK_TASK, {k: items[k] for k in first})
+    second = {k: o for k, _, o in llm.decisions(run_id)}
+    both = sorted(set(first) & set(second))
+    a = np.array([first[k]["selected"] for k in both])
+    b = np.array([second[k]["selected"] for k in both])
+    po = float((a == b).mean())
+    pe = float(a.mean() * b.mean() + (1 - a.mean()) * (1 - b.mean()))
+    out = {"sample": len(both), "model": BIOMARKER_TASK.model, "check_model": BIOMARKER_CHECK_TASK.model,
+           "selected_first": int(a.sum()), "selected_check": int(b.sum()), "agreement": po,
+           "kappa": (po - pe) / (1 - pe) if pe < 1 else None,
+           "disagreements": [{"nct_id": k, "first": first[k], "check": second[k]} for k in both
+                             if first[k]["selected"] != second[k]["selected"]]}
+    with open(BIOMARKER_CHECK_OUT, "w") as f:
+        json.dump(out, f, indent=1)
+    print(json.dumps({k: v for k, v in out.items() if k != "disagreements"}), f"disagreements={len(out['disagreements'])}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -432,6 +563,10 @@ def main() -> None:
     sub.add_parser("publications").set_defaults(fn=publications)
     sub.add_parser("classify").set_defaults(fn=classify)
     sub.add_parser("endpoints").set_defaults(fn=endpoints)
+    p = sub.add_parser("biomarkers")
+    p.add_argument("--limit", type=int, default=0, help="label only a seeded sample of this size and print it")
+    p.set_defaults(fn=biomarkers)
+    sub.add_parser("biomarkers-check").set_defaults(fn=biomarkers_check)
     args = parser.parse_args()
     args.fn(args)
 
