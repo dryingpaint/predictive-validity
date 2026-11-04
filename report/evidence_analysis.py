@@ -8,8 +8,9 @@ subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to
   relative_success), on the entries' BIO-style phase rows, skipped phases counted as successes with the
   features of the entry that skipped them;
 - the adjusted risk ratio of S4 among Phase 2 entries (report.section3: modified Poisson, errors clustered
-  by primary-target set, adjusted for disease area, modality, entry period, novelty and target precedent; an
-  entry with no resolved target is its own cluster and has no precedent),
+  by primary-target set, adjusted for disease area, modality, entry period, novelty and target precedent, the
+  last left out for the clinical-precedent lines, which it would adjust for themselves; an entry with no
+  resolved target is its own cluster and has no precedent),
   again with biomarker-selected enrolment added as a sensitivity;
 - for efficacy categories, the adjusted risk ratio of an efficacy stop among Phase 2 and 3 entries; for
   safety risk, of a safety stop among Phase 1-3 entries.
@@ -72,10 +73,11 @@ def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> d
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
     c2 = x[x.phase == 2]
+    base = tuple(c for c in COVARS if not (cat == "precedent" and c == "precedent"))  # not the exposure itself
     for prefix, part, outcome, covars in (
-            ("s4", c2, "s4", COVARS),
+            ("s4", c2, "s4", base),
             ("s4_biomarker", c2.assign(biomarker_selected=c2.biomarker_selected.fillna(0)), "s4",
-             (*COVARS, "biomarker_selected")),
+             (*base, "biomarker_selected")) if cat != "adjustment" else (None,) * 4,  # it is the exposure there
             ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if cat not in NOT_EFFICACY else (None,) * 4,
             ("safety_stop", x, "f_safety", COVARS_23) if cat == "safety_risk" else (None,) * 4):
         if prefix is None:

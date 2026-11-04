@@ -187,6 +187,29 @@ Kept apart from the efficacy categories:
   trial-level results are sparse before 2008, and a lookback reaching before
   them makes the line rise with entry year.
 
+**Category roll-up, corrected 2026-11-04.** The plan does not say how a
+category is formed from its subcategories. The first build counted an entry as
+having a category when any subcategory was present and as lacking it otherwise.
+That treated "not known" as "absent", against the subcategories' own null
+definitions, and it let a subcategory scored on only part of a category's
+entries define the category there. It was corrected before the category
+results were published, after the first estimates had been seen, because the
+molecule category (2.74×) exceeded every one of its subcategories (0.86–1.59×):
+582 of the 1,283 small-molecule entries counted as lacking it had no known
+structure and no measurement at all. The corrected rule:
+- A category is formed only from subcategories scored on all of its entries.
+  Brain-penetrant properties (neurology and psychiatry only) and the earlier
+  failed trial (2011–2019 entries only) are reported alone.
+- The molecule category covers small molecules with known computed properties.
+- An entry on which none of a category's subcategories is known is null,
+  not 0.
+
+The other five categories are unchanged entry for entry. The corrected precedent
+category, an approved drug on the target for any disease, is the same variable
+as the target-precedent covariate of the Phase 2 model, so the precedent lines
+are no longer adjusted for it. Before this, they had been adjusted for
+themselves.
+
 **New confirmatory hypotheses (Holm-corrected together, α = 0.05).**
 
 - **N1.** Among small molecules measured on the primary target and an off
