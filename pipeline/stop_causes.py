@@ -5,6 +5,8 @@
     python -m pipeline.stop_causes validate   # the same on a seeded sample of stated stops, reason hidden
     python -m pipeline.stop_causes describe   # LLM: subcause of each stop, and explanations without codes
     python -m pipeline.stop_causes assemble   # final cause of every stop, and why efficacy failed -> preclin.stop
+    python -m pipeline.stop_causes continued  # LLM with web search: what each stop that did not stop went on to
+                                              #   -> preclin.stop_continuation
 
 Section 1 gives each suspended program one reason from its own trials. For 40% of Phase 2/3
 stops no reason is stated; a bare "sponsor decision" or an unspecified "other" reason says little
@@ -785,6 +787,122 @@ def assemble(_args) -> None:
     print(pd.Series([f"{r[4]} / {r[5] or '-'}" for r in out]).value_counts().sort_index().to_string())
 
 
+CONTINUATIONS = ["fda_approved", "later_phase", "active", "no_evidence"]
+CONTINUED_SYSTEM = """You find out what a drug development program did after its registry trials went quiet. A program is one drug developed for one disease. Its trials in the phase given stopped or ended without a later-phase trial in the registry, and an earlier reading of the sources judged that development of the drug in this disease went on anyway. You are given that reading, its sources, the program's trials and the drug's other programs.
+
+Search the web, ClinicalTrials.gov included, for what happened to this drug in this disease after the phase began: FDA approval, trials of a later phase anywhere (other registries such as ChiCTR, the EU registers or jRCT; trials under another name or in combination), regulatory filings, licensing deals, pipeline updates and company releases. Use at most a handful of searches.
+
+outcome, the furthest the sources show the program got:
+- fda_approved: the FDA approved the drug for this disease, a subtype or population of it, or a class containing it. Approval by another regulator, an over-the-counter product launch, or an approval for another disease is not this.
+- later_phase: a trial of a later phase than the one given, in this disease, started (not only planned or registered). phase_reached is the highest such phase, 2 or 3; it is null for every other outcome.
+- active: development of this drug in this disease went on in the same phase (a trial ran or started, the drug was licensed for this disease, a filing was made or is pending) without a later phase starting.
+- no_evidence: the sources do not show this drug's development in this disease going on; for example only a successor drug or another disease went on, or a plan was announced and nothing followed.
+date: for fda_approved the approval date, for later_phase the start of the first later-phase trial, for active the date of the latest dated sign of development; as YYYY-MM-DD, YYYY-MM or YYYY. Empty for no_evidence.
+outside_us: for later_phase and active, true when the development the sources show ran only outside the United States; null otherwise.
+Quote the decisive sentence in quote. Cite only URLs your searches returned, and NCT ids and PMIDs from the input. Prefer no_evidence to an outcome no source supports. rationale: at most 60 words."""
+CONTINUED_SCHEMA = {
+    "type": "object",
+    "properties": {"outcome": {"type": "string", "enum": CONTINUATIONS},
+                   "phase_reached": {"type": ["integer", "null"]}, "date": {"type": "string"},
+                   "outside_us": {"type": ["boolean", "null"]}, "quote": {"type": "string"},
+                   "sources": {"type": "array", "items": {"type": "string"}}, "rationale": {"type": "string"}},
+    "required": ["outcome", "phase_reached", "date", "outside_us", "quote", "sources", "rationale"],
+    "additionalProperties": False,
+}
+DATE = re.compile(r"^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$")
+
+
+def continued_on(text: str):
+    """A continuation date as a date: day 1 where only the month is given, January 1 where only the year."""
+    y, m, d = DATE.match(text.strip()).groups()
+    return pd.Timestamp(int(y), int(m or 1), int(d or 1)).date()
+
+
+def validate_continued(p: dict, out: dict) -> None:
+    o = out["outcome"]
+    if (o == "later_phase") != (out["phase_reached"] is not None):
+        raise ValueError("phase_reached is given exactly when the outcome is later_phase")
+    if o == "later_phase" and not p["phase"] < out["phase_reached"] <= 3:
+        raise ValueError(f"phase {out['phase_reached']} is not later than {p['phase']}")
+    if o == "no_evidence":
+        if out["date"].strip():
+            raise ValueError("a date with no_evidence")
+        return
+    if not DATE.match(out["date"].strip()):
+        raise ValueError(f"date {out['date']!r} is not YYYY-MM-DD, YYYY-MM or YYYY")
+    continued_on(out["date"])
+    if not (out["quote"].strip() and out["sources"]):
+        raise ValueError(f"{o} without a quote and a source")
+    allowed = {t["nct_id"] for t in p["trials"]} | {f"PMID:{a['pmid']}" for a in p["papers"]}
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", []) + p["earlier_sources"]}  # the earlier
+    # reading's sources were retrieved by its own searches
+    unknown = [x for x in out["sources"] if x not in allowed and llm.norm_url(x) not in retrieved
+               and not re.fullmatch(r"NCT\d{8}", x)]  # a registry id its searches found
+    if unknown:
+        raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
+
+
+CONTINUED_TASK = llm.Task(name="stop_continuation", prompt_version="v2", schema_version="v1",
+                          system=CONTINUED_SYSTEM, schema=CONTINUED_SCHEMA, subject_type="program_phase",
+                          validate=validate_continued,
+                          render=lambda p: f"Phase entered: {p['entry']}\nWhy the earlier reading judged it had "
+                                           f"not stopped: {p['explanation'] or '(no text)'}\nIts sources: "
+                                           f"{' '.join(p['earlier_sources']) or '(none)'}\n\n{render(p)}",
+                          model="claude-sonnet-5", effort="medium", max_tokens=16000,
+                          tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 6},
+                                 {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 3}])
+CONTINUED_METHOD = "stop_continuation@v1"
+CONTINUED_DESCRIPTION = f"""For every stop preclin.stop records as not_stopped (development of the drug in the
+disease went on, or it was approved there), an LLM ({CONTINUED_TASK.model}, effort {CONTINUED_TASK.effort}, web
+search with ClinicalTrials.gov allowed) reads the reading that judged it, its sources, the program's trials in the
+phase and the drug's other programs, and states the furthest the sources show the program got: FDA approval for the
+disease, a later-phase trial started anywhere, development still active in the same phase, or no evidence it went
+on, with the date of that event and whether it ran only outside the US. Validation rejects a later phase that is
+not later, a missing or malformed date, an outcome without a quote and a source, and URLs its searches did not
+return. report.section1 counts a program whose later phase started by the snapshot as advanced and one active,
+or reported approved, within the suspension lag as still running; approvals themselves come only from the approval
+judgement."""
+
+
+def continued_items() -> dict[str, dict]:
+    """The bundle of every not_stopped stop, with the reading that judged it and that reading's sources."""
+    held = frame.query("SELECT moiety_id, mondo_id, phase, explanation, sources FROM preclin.stop "
+                       "WHERE cause = 'not_stopped'")
+    held["key"] = keys(held.assign(mondo_id=held.mondo_id.replace("", None)))
+    held = held.set_index("key")
+    modes = stops()[0]
+    modes = modes[modes.key.isin(held.index)]
+    entry = dict(zip(modes.key, modes.entry))
+    return {k: {**p, "entry": str(pd.Timestamp(entry[k]).date()), "explanation": text(held.at[k, "explanation"]),
+                "earlier_sources": list(held.at[k, "sources"])}
+            for k, p in bundles(modes, load_signals()).items()}
+
+
+def continued(_args) -> None:
+    items = continued_items()
+    run_id = llm.run(CONTINUED_TASK, items)
+    print(f"{CONTINUED_TASK.name}: items={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+    decided = llm.current_decisions(CONTINUED_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        mid = llm.record_method(cur, CONTINUED_METHOD, "What stops that did not stop went on to",
+                                CONTINUED_DESCRIPTION, ["preclin.stop", "preclin.stop_signal",
+                                                        f"pv_evidence.llm_decision ({CONTINUED_TASK.name})"],
+                                {"task": CONTINUED_TASK.name, "model": CONTINUED_TASK.model})
+        out = []
+        for key, (decision_id, o) in decided.items():
+            moiety, mondo, phase = key.split("|")
+            out.append((int(moiety), mondo, int(phase), o["outcome"], o["phase_reached"],
+                        continued_on(o["date"]) if o["outcome"] != "no_evidence" else None,
+                        o["outside_us"] if o["outcome"] in ("later_phase", "active") else None,
+                        first_text(o["quote"], o["rationale"]), o["sources"], int(decision_id), mid))
+        cur.execute("DELETE FROM preclin.stop_continuation")
+        execute_values(cur, """INSERT INTO preclin.stop_continuation (moiety_id, mondo_id, phase, outcome,
+                                 phase_reached, on_date, outside_us, explanation, sources, decision_id, method_id)
+                               VALUES %s""", out)
+        conn.commit()
+    print(pd.Series([r[3] for r in out]).value_counts().to_string())
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -795,6 +913,7 @@ def main() -> None:
     p.add_argument("--text-only", action="store_true", help="skip the search-based pass")
     p.set_defaults(fn=describe)
     sub.add_parser("assemble").set_defaults(fn=assemble)
+    sub.add_parser("continued").set_defaults(fn=continued)
     args = parser.parse_args()
     args.fn(args)
 

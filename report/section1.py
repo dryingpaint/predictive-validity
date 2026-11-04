@@ -180,6 +180,41 @@ def rates(rows: pd.DataFrame) -> pd.DataFrame:
     return c[["advanced", "suspended", "censored", "rate"]]
 
 
+def traced(rows: pd.DataFrame, progs: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS) -> pd.DataFrame:
+    """The phase rows with what tracing found about the suspensions (preclin.stop, preclin.stop_continuation): a
+    program that was not a development program in the phase leaves the cohort; one whose later-phase trial
+    started by the snapshot advanced, with the phases it skipped credited; one whose development went on within
+    lag_months of the snapshot is still running. An FDA approval the tracing reports counts only as development
+    going on: approvals come from the audited approval judgement (preclin.dev_program_approval) alone. The tracing
+    reads the registry-only rows (pipeline.stops.stops), so this applies on top of phase_rows rather than inside
+    it."""
+    found = frame.query("""SELECT s.moiety_id, s.mondo_id, s.phase, s.cause, c.outcome, c.phase_reached, c.on_date
+                           FROM preclin.stop s LEFT JOIN preclin.stop_continuation c USING (moiety_id, mondo_id, phase)
+                           WHERE s.cause IN ('not_stopped', 'not_a_program')""")
+    found = {(int(r.moiety_id), r.mondo_id, int(r.phase)): r for r in found.itertuples()}
+    disease = rows.program_id.map(progs.set_index("program_id").mondo_id).fillna("")
+    cutoff = pd.Timestamp(snap) - pd.DateOffset(months=lag_months)
+    out = []
+    for r, mondo in zip(rows.to_dict(orient="records"), disease):
+        f = found.get((int(r["moiety_id"]), mondo, int(r["phase"]))) if r["event"] == "suspended" else None
+        if f is None:
+            out.append(r)
+            continue
+        if f.cause == "not_a_program":
+            continue
+        on = pd.Timestamp(f.on_date) if pd.notna(f.on_date) else None
+        if f.outcome == "later_phase" and on is not None and r["entry"] <= on <= pd.Timestamp(snap):
+            r = {**r, "event": "advanced", "event_date": on, "years": max((on - r["entry"]).days, 0) / 365.25}
+            out.append(r)
+            out += [{**r, "phase": q, "credited": True} for q in range(r["phase"] + 1, int(f.phase_reached))]
+        elif f.outcome in ("active", "fda_approved") and on is not None and on > cutoff:
+            out.append({**r, "event": "censored", "event_date": pd.Timestamp(snap),
+                        "years": max((pd.Timestamp(snap) - r["entry"]).days, 0) / 365.25})
+        else:
+            out.append(r)
+    return pd.DataFrame(out, columns=rows.columns)
+
+
 def loa(rows: pd.DataFrame) -> float:
     """Likelihood of approval from Phase 1: the product of the BIO-style phase rates."""
     rate = rates(rows).rate
@@ -415,6 +450,9 @@ def main() -> None:
     recent = phase_rows(progs, trials, snap, window=RECENT)
     results.append(summarize(recent, "phase entry 2015-2025 (many programs still running)"))
     results.append(summarize(recent[recent.us_site], "phase entry 2015-2025, developed in the US"))
+    corrected = traced(rows, progs, snap)
+    results.append(summarize(corrected, "stops tracing found had not stopped counted as advanced or running"))
+    results.append(summarize(corrected[corrected.us_site], "the same, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     for column, name, skip in (("bio_area", "area", "unmapped"), ("modality", "modality", "unknown")):
@@ -469,7 +507,14 @@ def main() -> None:
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "with_vaccines": results[9], "recent": results[10],
-               "recent_us": results[11], "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
+               "recent_us": results[11], "traced": results[12], "traced_us": results[13],
+               "traced_changes": {"left_out": int(len(rows[~rows.credited]) - len(corrected[~corrected.credited])),
+                                  "approvals_reported": int(frame.query(
+                                      "SELECT count(*) AS n FROM preclin.stop_continuation "
+                                      "WHERE outcome = 'fda_approved'").n.iloc[0]),
+                                  **{e: int(n) for e, n in corrected[~corrected.credited].event.value_counts().sub(
+                                      rows[~rows.credited].event.value_counts(), fill_value=0).items()}},
+               "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
                "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
