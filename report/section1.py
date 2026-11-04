@@ -432,27 +432,26 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap, window=SECTION1)
+    registry = phase_rows(progs, trials, snap, window=SECTION1)
+    rows = traced(registry, progs, snap)
     rows.to_csv(os.path.join(OUT, "phase_cohort_rows.csv"), index=False)
+    cohort = lambda lag=LAG_MONTHS, window=SECTION1, **kw: traced(
+        phase_rows(progs, trials, snap, lag_months=lag, window=window, **kw), progs, snap, lag_months=lag)
 
     results = [summarize(rows, "all programs")]
     results.append(summarize(rows[rows.us_site], "programs with a US-sited industry trial in the phase"))
     results.append(summarize(rows[rows.novel], "entity not yet FDA-approved at phase entry"))
     results.append(summarize(rows[~rows.novel], "entity already FDA-approved for another disease"))
     for lag in (12, 18, 36):
-        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag, window=SECTION1),
-                                 f"suspension lag {lag} months"))
-    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True, window=SECTION1),
-                             "uncertain approvals counted as approved"))
-    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True, window=SECTION1),
-                             "shared trials mark entry for every program of the entity"))
-    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True, window=SECTION1), "including vaccines"))
-    recent = phase_rows(progs, trials, snap, window=RECENT)
+        results.append(summarize(cohort(lag), f"suspension lag {lag} months"))
+    results.append(summarize(cohort(uncertain_as_approved=True), "uncertain approvals counted as approved"))
+    results.append(summarize(cohort(shared_entry=True), "shared trials mark entry for every program of the entity"))
+    results.append(summarize(cohort(vaccines=True), "including vaccines"))
+    recent = cohort(window=RECENT)
     results.append(summarize(recent, "phase entry 2015-2025 (many programs still running)"))
     results.append(summarize(recent[recent.us_site], "phase entry 2015-2025, developed in the US"))
-    corrected = traced(rows, progs, snap)
-    results.append(summarize(corrected, "stops tracing found had not stopped counted as advanced or running"))
-    results.append(summarize(corrected[corrected.us_site], "the same, developed in the US"))
+    results.append(summarize(registry, "registry only: stops tracing found had not stopped counted as stops"))
+    results.append(summarize(registry[registry.us_site], "registry only, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     for column, name, skip in (("bio_area", "area", "unmapped"), ("modality", "modality", "unknown")):
@@ -470,7 +469,7 @@ def main() -> None:
     periods.to_csv(os.path.join(OUT, "loa_by_period.csv"), index=False)
     by_year(rows).to_csv(os.path.join(OUT, "rates_by_entry_year.csv"), index=False)
 
-    modes = failure_modes(rows, progs, trials, frame.trial_outcomes())
+    modes = failure_modes(registry, progs, trials, frame.trial_outcomes())  # what the registry records
     modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
     tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count", fill_value=0)
     tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))
@@ -507,13 +506,13 @@ def main() -> None:
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "with_vaccines": results[9], "recent": results[10],
-               "recent_us": results[11], "traced": results[12], "traced_us": results[13],
-               "traced_changes": {"left_out": int(len(rows[~rows.credited]) - len(corrected[~corrected.credited])),
+               "recent_us": results[11], "registry": results[12], "registry_us": results[13],
+               "traced_changes": {"left_out": int(len(registry[~registry.credited]) - len(rows[~rows.credited])),
                                   "approvals_reported": int(frame.query(
                                       "SELECT count(*) AS n FROM preclin.stop_continuation "
                                       "WHERE outcome = 'fda_approved'").n.iloc[0]),
-                                  **{e: int(n) for e, n in corrected[~corrected.credited].event.value_counts().sub(
-                                      rows[~rows.credited].event.value_counts(), fill_value=0).items()}},
+                                  **{e: int(n) for e, n in rows[~rows.credited].event.value_counts().sub(
+                                      registry[~registry.credited].event.value_counts(), fill_value=0).items()}},
                "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
                "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
