@@ -235,6 +235,18 @@ def build() -> pd.DataFrame:
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 
 
+def in_category(line: Line, sub: Line) -> bool:
+    """Whether a subcategory makes up its category: it has a column, is not descriptive, and is scored on every
+    entry the category applies to."""
+    return bool(sub.column) and not sub.descriptive and sub.applies in (line.applies, WITHIN.get(line.applies))
+
+
+def reported_alone() -> set[str]:
+    """Columns of the subcategories that stay out of their category because they cover only part of its entries."""
+    return {s.column for line, subs in CATEGORIES.values() for s in subs
+            if s.column and not s.descriptive and not in_category(line, s)}
+
+
 def category_columns(d: pd.DataFrame) -> pd.DataFrame:
     """Each category line: 1 when any of its subcategories is, 0 when none is, among the entries the category
     applies to. Only subcategories scored on all of those entries (the same APPLIES key, or the one WITHIN names)
@@ -244,8 +256,7 @@ def category_columns(d: pd.DataFrame) -> pd.DataFrame:
     for line, subs in CATEGORIES.values():
         if not (line.column and line.column.startswith("cat_")):
             continue
-        cols = [s.column for s in subs if s.column and not s.descriptive
-                and s.applies in (line.applies, WITHIN.get(line.applies))]
+        cols = [s.column for s in subs if in_category(line, s)]
         known = d[cols].notna().any(axis=1)
         out[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d) & known)
     return pd.DataFrame(out, index=d.index)
