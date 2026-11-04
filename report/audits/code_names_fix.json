@@ -1,0 +1,856 @@
+{
+ "what": "Codes on preclin.moiety.code_names that belong to another entity (pipeline.drugs codes, dry run of 2026-11-04 against the shared DB). Reviewed: codes carried by more than one entity or registered (FDA UNII) to a substance unrelated to the holder. Claude Opus 5.5 decided each code; Claude Sonnet 5 re-read every proposed removal, and a code is removed only when both say it names another entity.",
+ "reviewed_codes": 1233,
+ "verdicts_by_reason": {
+  "the_entity_itself": 562,
+  "combination_containing_it": 1123,
+  "a_form_of_the_entity": 179,
+  "code_of_another_entity": 134,
+  "sponsor_reused_code": 218,
+  "unclear": 24
+ },
+ "second_model_checks": 129,
+ "removals_not_confirmed": 51,
+ "removed": 84,
+ "entities_changed": 74,
+ "known_cases": {
+  "AIN457 (secukinumab) off canakinumab": "removed",
+  "TC-5619 (bradanicline) off nelonicline": "removed",
+  "GS-5423 (teropavimab) off lenacapavir": "removed",
+  "TQ-B3101 (unecritinib) off crizotinib": "removed",
+  "GW876008 (emicerfont) off verucerfont": "removed",
+  "R1503 (pamapimod) off rontalizumab": "removed",
+  "PRX004 (coramitug) off birtamimab": "removed",
+  "GSK4381562 (remzistotug) off nelistotug": "removed"
+ },
+ "first_model_only_errors_caught_by_check": [
+  "YH22162 kept on hydrochlorothiazide (a telmisartan/amlodipine/HCTZ combination)",
+  "ST-067 kept on efbalropendekin alfa",
+  "SCF248 kept on OpSCF",
+  "MF59C.1 kept on the MF59-adjuvanted vaccine"
+ ],
+ "hand_check": {
+  "sample": "30 confirmed removals drawn with numpy default_rng(20261105)",
+  "correct": 25,
+  "likely_wrong": 1,
+  "unverifiable_from_the_evidence": 4,
+  "likely_wrong_cases": [
+   "SCB01A off foslinanib: foslinanib is SCB01A, a duplicate entity the same-entity pass did not merge"
+  ],
+  "unverifiable_cases": [
+   "AL-46383A off dexamethasone",
+   "u34865 off ulobetasol",
+   "BMS-564717 off brivanib",
+   "IONIS-AGT-LRx off tonlamarsen"
+  ]
+ },
+ "routing": {
+  "this step rewrites": "preclin.moiety.code_names only; drug_moiety and ctgov_study_moiety are untouched",
+  "next canonicalize": "3 intervention names linked by exact match lose their unique key and go to the LLM: AOC 1044 (now on delpacibart braxlosiran; AOC 1044 is delpacibart zotadirsen), amg949 (now on cdx-1140), AMG 420 (now on pavurutamab); 4 trials",
+  "existing misrouting found": "intervention strings routed to an entity that does not own the code they name are listed under removed_pairs[].strings_routed_here (e.g. 'GW876008' -> verucerfont, 'E6005 0.05%' -> difamilast, 'SH-1028 tablets' -> rezivertinib); their LLM decisions are reused, so they need a re-decision to move"
+ },
+ "removed_pairs": [
+  {
+   "moiety_id": 100,
+   "entity": "dexamethasone",
+   "code": "AL-46383A",
+   "owner": [],
+   "strings_routed_here": [
+    "AL-46383A Ophthalmic Solution"
+   ]
+  },
+  {
+   "moiety_id": 556,
+   "entity": "floxuridine",
+   "code": "LY01616",
+   "owner": [
+    "irinotecan"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 734,
+   "entity": "povidone-iodine",
+   "code": "AL-46383A",
+   "owner": [],
+   "strings_routed_here": [
+    "AL-46383A Ophthalmic Solution"
+   ]
+  },
+  {
+   "moiety_id": 944,
+   "entity": "ulobetasol",
+   "code": "u34865",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 1013,
+   "entity": "risperidone",
+   "code": "j2794d",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 1068,
+   "entity": "estrogens, conjugated",
+   "code": "GSK232802",
+   "owner": [
+    "gsk-232802"
+   ],
+   "strings_routed_here": [
+    "Premarin [listed as: GSK232802]"
+   ]
+  },
+  {
+   "moiety_id": 1165,
+   "entity": "telmisartan",
+   "code": "CKD-330",
+   "owner": [
+    "amlodipine",
+    "candesartan cilexetil",
+    "candesartan",
+    "CKD-330"
+   ],
+   "strings_routed_here": [
+    "CKD-330"
+   ]
+  },
+  {
+   "moiety_id": 1231,
+   "entity": "rosiglitazone",
+   "code": "STR001",
+   "owner": [],
+   "strings_routed_here": [
+    "STR001-IT and STR001-ER"
+   ]
+  },
+  {
+   "moiety_id": 1236,
+   "entity": "insulin glargine",
+   "code": "INS068",
+   "owner": [
+    "INS068"
+   ],
+   "strings_routed_here": [
+    "HR17031 injection \uff1bINS068 injection\uff1bSHR20004 injection"
+   ]
+  },
+  {
+   "moiety_id": 1483,
+   "entity": "rivaroxaban",
+   "code": "AD-109",
+   "owner": [
+    "atomoxetine",
+    "aroxybutynin"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 1612,
+   "entity": "pegfilgrastim",
+   "code": "HHPG-19K",
+   "owner": [
+    "mecapegfilgrastim"
+   ],
+   "strings_routed_here": [
+    "Pegylated rhG-CSF: 100\u00b5g/kg [listed as: HHPG-19K 100\u00b5g/kg]"
+   ]
+  },
+  {
+   "moiety_id": 1671,
+   "entity": "canakinumab",
+   "code": "AIN457",
+   "owner": [
+    "secukinumab"
+   ],
+   "strings_routed_here": [
+    "Canakinumab (AIN457)"
+   ]
+  },
+  {
+   "moiety_id": 1739,
+   "entity": "crizotinib",
+   "code": "TQ-B3101",
+   "owner": [
+    "unecritinib"
+   ],
+   "strings_routed_here": [
+    "TQ-B3101 capsule"
+   ]
+  },
+  {
+   "moiety_id": 2131,
+   "entity": "lenacapavir",
+   "code": "GS-5423",
+   "owner": [
+    "teropavimab"
+   ],
+   "strings_routed_here": [
+    "Lenacapavir Tablet [listed as: GS-5423]"
+   ]
+  },
+  {
+   "moiety_id": 2823,
+   "entity": "rontalizumab",
+   "code": "PRO95780",
+   "owner": [
+    "drozitumab"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 2823,
+   "entity": "rontalizumab",
+   "code": "R1503",
+   "owner": [
+    "pamapimod"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 2862,
+   "entity": "brivanib",
+   "code": "BMS-564717",
+   "owner": [
+    "ixabepilone"
+   ],
+   "strings_routed_here": [
+    "Brivanib + Cetuximab [listed as: BMS-564717]"
+   ]
+  },
+  {
+   "moiety_id": 3151,
+   "entity": "nadofaragene firadenovec",
+   "code": "SCH 209702",
+   "owner": [],
+   "strings_routed_here": [
+    "SCH 721015 with SCH 209702"
+   ]
+  },
+  {
+   "moiety_id": 4406,
+   "entity": "lomvastomig",
+   "code": "RG6139",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 4415,
+   "entity": "tulisokibart",
+   "code": "PF-06480605",
+   "owner": [
+    "afimkibart"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 4452,
+   "entity": "siplizumab",
+   "code": "VEL-101",
+   "owner": [
+    "pegrizeprument"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 4653,
+   "entity": "glepaglutide",
+   "code": "FE203799",
+   "owner": [
+    "apraglutide"
+   ],
+   "strings_routed_here": [
+    "fe203799"
+   ]
+  },
+  {
+   "moiety_id": 4798,
+   "entity": "cdx-1140",
+   "code": "AMG 949",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 5360,
+   "entity": "vunakizumab",
+   "code": "GR1501",
+   "owner": [
+    "xeligekimab"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 5396,
+   "entity": "trastuzumab botidotin",
+   "code": "FS-1502",
+   "owner": [
+    "trastuzumab mafodotin"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 5396,
+   "entity": "trastuzumab botidotin",
+   "code": "LCB14-0110",
+   "owner": [
+    "trastuzumab mafodotin"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 5582,
+   "entity": "phleum pratense pollen allergen extract",
+   "code": "rPhleum",
+   "owner": [
+    "rPhleum"
+   ],
+   "strings_routed_here": [
+    "DEPIGOID phleum [listed as: Depigoid (R) Phleum]"
+   ]
+  },
+  {
+   "moiety_id": 5724,
+   "entity": "meningococcal group A, C, W-135 and Y conjugate vaccine",
+   "code": "GSK134612",
+   "owner": [
+    "meningococcal group A, C, W-135 and Y conjugate vaccine (tetanus toxoid conjugate)"
+   ],
+   "strings_routed_here": [
+    "GSK Biologicals' Meningococcal vaccine GSK134612 (Nimenrix)",
+    "Meningococcal vaccine GSK134612"
+   ]
+  },
+  {
+   "moiety_id": 5724,
+   "entity": "meningococcal group A, C, W-135 and Y conjugate vaccine",
+   "code": "MenACWY-TT",
+   "owner": [
+    "meningococcal group A, C, W-135 and Y conjugate vaccine (tetanus toxoid conjugate)"
+   ],
+   "strings_routed_here": [
+    "Meningococcal vaccine GSK134612 [listed as: MenACWY-TT]"
+   ]
+  },
+  {
+   "moiety_id": 6532,
+   "entity": "adipiplon",
+   "code": "TPA023B",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 6533,
+   "entity": "delpacibart braxlosiran",
+   "code": "AOC 1044",
+   "owner": [],
+   "strings_routed_here": [
+    "AOC 1044"
+   ]
+  },
+  {
+   "moiety_id": 6567,
+   "entity": "azasetron",
+   "code": "SENS-401",
+   "owner": [
+    "arazasetron"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 6806,
+   "entity": "tonlamarsen",
+   "code": "AZD8601?",
+   "owner": [
+    "AZD8601"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 6806,
+   "entity": "tonlamarsen",
+   "code": "IONIS-AGT-LRx",
+   "owner": [
+    "evazarsen"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 6994,
+   "entity": "dcll-9718s",
+   "code": "RG6179",
+   "owner": [
+    "vamikibart"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7407,
+   "entity": "verucerfont",
+   "code": "GW876008",
+   "owner": [
+    "emicerfont"
+   ],
+   "strings_routed_here": [
+    "GW876008",
+    "GW876008 200mcg",
+    "GW876008 20mcg",
+    "GW876008 [listed as: GW876008 Oral Contraceptive]"
+   ]
+  },
+  {
+   "moiety_id": 7512,
+   "entity": "velusetrag",
+   "code": "TAK-954",
+   "owner": [],
+   "strings_routed_here": [
+    "TAK-954",
+    "[14C]-TAK-954"
+   ]
+  },
+  {
+   "moiety_id": 7529,
+   "entity": "birtamimab",
+   "code": "PRX004",
+   "owner": [
+    "coramitug"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7700,
+   "entity": "onercept",
+   "code": "RO-45-2081",
+   "owner": [
+    "lenercept"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7700,
+   "entity": "onercept",
+   "code": "Ro 45-2081",
+   "owner": [
+    "lenercept"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7726,
+   "entity": "bleselumab",
+   "code": "AMR-001",
+   "owner": [
+    "AMR-001"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7765,
+   "entity": "clenoliximab",
+   "code": "SB-210396",
+   "owner": [
+    "keliximab"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7769,
+   "entity": "seridopidine",
+   "code": "ACR325",
+   "owner": [
+    "ordopidine"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 7961,
+   "entity": "antihemophilic factor human",
+   "code": "SCT800",
+   "owner": [
+    "omfiloctocog alfa"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8122,
+   "entity": "inclacumab",
+   "code": "GBT021601",
+   "owner": [
+    "osivelotor"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8122,
+   "entity": "inclacumab",
+   "code": "GBT601",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8265,
+   "entity": "cantuzumab ravtansine",
+   "code": "SB-408075",
+   "owner": [
+    "lorvotuzumab mertansine"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8265,
+   "entity": "cantuzumab ravtansine",
+   "code": "huC242-DM1",
+   "owner": [
+    "lorvotuzumab mertansine"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8274,
+   "entity": "samatasvir",
+   "code": "IDX184",
+   "owner": [
+    "idx-184"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8289,
+   "entity": "cintredekin besudotox",
+   "code": "NBI-3001",
+   "owner": [
+    "bizaxofusp"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8397,
+   "entity": "uprosertib",
+   "code": "GSK2110183",
+   "owner": [
+    "afuresertib"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8512,
+   "entity": "pateclizumab",
+   "code": "RG4934",
+   "owner": [
+    "perakizumab"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8515,
+   "entity": "nelonicline",
+   "code": "TC-5619",
+   "owner": [
+    "bradanicline"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 8744,
+   "entity": "teneliximab",
+   "code": "BMS-224818",
+   "owner": [],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 9269,
+   "entity": "eclitasertib",
+   "code": "SAR443820",
+   "owner": [
+    "oditrasertib"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 9469,
+   "entity": "nelistotug",
+   "code": "GSK4381562",
+   "owner": [
+    "remzistotug"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 9732,
+   "entity": "rabies virus strain kissling antigen (propiolactone inactivated)",
+   "code": "VRVg",
+   "owner": [
+    "VRVg"
+   ],
+   "strings_routed_here": [
+    "Purified Vero Rabies Vaccine (VRVg)",
+    "Purified Vero Rabies Vaccine (VRVg) - Serum Free",
+    "Purified Vero Rabies Vaccine Serum Free (VRVg)"
+   ]
+  },
+  {
+   "moiety_id": 9902,
+   "entity": "dorocubicel",
+   "code": "UM171",
+   "owner": [],
+   "strings_routed_here": [
+    "ECT-001-CB (UM171-Expanded Cord Blood Transplant)"
+   ]
+  },
+  {
+   "moiety_id": 10560,
+   "entity": "pavurutamab",
+   "code": "AMG 420",
+   "owner": [],
+   "strings_routed_here": [
+    "AMG 420"
+   ]
+  },
+  {
+   "moiety_id": 10601,
+   "entity": "pcs-499",
+   "code": "HT-100",
+   "owner": [
+    "halofuginone"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 10779,
+   "entity": "enicepatide",
+   "code": "RO7790121",
+   "owner": [
+    "afimkibart"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 11056,
+   "entity": "emlenoflast",
+   "code": "IZD334",
+   "owner": [
+    "selnoflast"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 12030,
+   "entity": "gemlapodect",
+   "code": "TAK-063",
+   "owner": [
+    "balipodect"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 12127,
+   "entity": "ACTR707",
+   "code": "ACTR087",
+   "owner": [
+    "ACTR087"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 13243,
+   "entity": "tadnersen",
+   "code": "ION363?",
+   "owner": [
+    "ulefnersen"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 13317,
+   "entity": "xeligekimab",
+   "code": "608",
+   "owner": [
+    "gumokimab"
+   ],
+   "strings_routed_here": [
+    "608 Q4W"
+   ]
+  },
+  {
+   "moiety_id": 14392,
+   "entity": "foslinanib",
+   "code": "SCB01A",
+   "owner": [
+    "SCB01A"
+   ],
+   "strings_routed_here": [
+    "SCB01A"
+   ]
+  },
+  {
+   "moiety_id": 27480,
+   "entity": "MK-8266",
+   "code": "MK-8226",
+   "owner": [],
+   "strings_routed_here": [
+    "MK-8226 BID, 1 mg"
+   ]
+  },
+  {
+   "moiety_id": 29110,
+   "entity": "SNUG01",
+   "code": "SG001",
+   "owner": [
+    "enlonstobart"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 30002,
+   "entity": "becocalcidiol",
+   "code": "CTA018",
+   "owner": [
+    "lunacalcipol"
+   ],
+   "strings_routed_here": [
+    "CTA018 cream"
+   ]
+  },
+  {
+   "moiety_id": 30474,
+   "entity": "sergliflozin etabonate",
+   "code": "GSK189075",
+   "owner": [
+    "remogliflozin etabonate"
+   ],
+   "strings_routed_here": [
+    "GW869682 oral tablets [listed as: GSK189075 oral tablets]"
+   ]
+  },
+  {
+   "moiety_id": 30474,
+   "entity": "sergliflozin etabonate",
+   "code": "GSK189075A",
+   "owner": [],
+   "strings_routed_here": [
+    "GSK189075A"
+   ]
+  },
+  {
+   "moiety_id": 30538,
+   "entity": "MF59-adjuvanted H5N1 influenza vaccine",
+   "code": "1557484A",
+   "owner": [
+    "influenza A (H5N1) vaccine",
+    "influenza A (H5N1) monovalent vaccine, adjuvanted (AS03)"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 30538,
+   "entity": "MF59-adjuvanted H5N1 influenza vaccine",
+   "code": "GSK1557484A",
+   "owner": [
+    "GSK1557484A",
+    "influenza A (H5N1) monovalent vaccine, adjuvanted (AS03)",
+    "influenza A (H5N1) vaccine"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 31071,
+   "entity": "DTaP-IPV-HepB-PRP-T vaccine",
+   "code": "Infanrix hexa",
+   "owner": [
+    "Infanrix hexa"
+   ],
+   "strings_routed_here": [
+    "DTaP- IPV-Hep B-PRP~T + Prevenar + Rotarix + Infanrix hexa vaccine",
+    "Infanrix hexa + Prevenar + Rotarix vaccine"
+   ]
+  },
+  {
+   "moiety_id": 31852,
+   "entity": "follitropin epsilon",
+   "code": "r-hFSH",
+   "owner": [
+    "follitropin alfa"
+   ],
+   "strings_routed_here": [
+    "Follicle Stimulating Hormone [listed as: buserelin, r-hFSH, HCG]",
+    "Follicle Stimulating Hormone [listed as: buserelin, r-hFSH, r-hLH]"
+   ]
+  },
+  {
+   "moiety_id": 32127,
+   "entity": "linvemastat",
+   "code": "FP-025",
+   "owner": [
+    "aderamastat"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 34157,
+   "entity": "golexanolone",
+   "code": "UC1010",
+   "owner": [
+    "sepranolone"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 34302,
+   "entity": "V3-MOMMO",
+   "code": "V3-OVA",
+   "owner": [
+    "V3-OVA"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 34638,
+   "entity": "irafamdastat",
+   "code": "BMS-986489",
+   "owner": [
+    "nivolumab",
+    "atigotatug"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 34638,
+   "entity": "irafamdastat",
+   "code": "CC-90001",
+   "owner": [
+    "cc-90001"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 35911,
+   "entity": "valtorcitabine",
+   "code": "ACH-126,443",
+   "owner": [
+    "elvucitabine"
+   ],
+   "strings_routed_here": []
+  },
+  {
+   "moiety_id": 40036,
+   "entity": "nalotimagene carmaleucel",
+   "code": "AdV-tk",
+   "owner": [
+    "aglatimagene besadenovec"
+   ],
+   "strings_routed_here": [
+    "HSV-Tk [listed as: AdV-tk gene therapy]"
+   ]
+  },
+  {
+   "moiety_id": 40064,
+   "entity": "H5N1 non-adjuvanted split virus vaccine (A/Vietnam/1194/2004)",
+   "code": "GSK1562902A",
+   "owner": [
+    "GSK1562902A",
+    "H5N1 adjuvanted split virus vaccine"
+   ],
+   "strings_routed_here": []
+  }
+ ]
+}

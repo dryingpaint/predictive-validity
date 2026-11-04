@@ -2,6 +2,7 @@
 
     python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
     python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities that are the same
+    python -m pipeline.drugs codes          # keep each sponsor code only on the entity it belongs to
     python -m pipeline.drugs modality       # modality class of every entity with a development program
 
 Trial intervention strings name the same molecule many ways ("Keytruda",
@@ -32,10 +33,19 @@ merges entities UNII does not connect (salt and parent registered separately, a
 formulation substance and its active moiety, vaccines and other products without
 a UNII) when every LLM decision that saw the pair agrees, naming the merged
 entity by the product's nonproprietary name.
+
+An entity's code names are the sponsor codes its intervention strings wrote, so a code a trial
+wrote next to another drug ("Canakinumab (AIN457)", AIN457 being secukinumab) lands on the wrong
+entity. The codes pass reviews every code that more than one entity carries, or that the FDA
+substance registry assigns to a substance other than the entity's own (or a salt, parent or
+sibling form of it): an LLM reads the registry entries, each holder's names and substance, and
+the intervention strings that wrote the code; a second model checks every removal, and a code leaves an
+entity only when both say it names another entity.
 """
 from __future__ import annotations
 
 import argparse
+import os
 import re
 from collections import Counter, defaultdict
 
@@ -646,6 +656,174 @@ def same_entities() -> None:
     print(f"same-entity checks={len(items)} groups={sum(len(g) > 1 for g in groups.values())}")
 
 
+CODES_SYSTEM = """You decide which drug entities a sponsor code belongs to.
+
+A code (a sponsor's development code such as "AIN457" or "MK-3475", or a short label written beside a drug in a trial) has been recorded on one or more drug entities from clinical-trial intervention strings. You get the code; the substances the FDA substance registry lists under that name; and each entity carrying it, with its other names, its registered substance, and the intervention strings and trials that wrote the code.
+
+For each entity, decide whether the code is that entity's own:
+- the_entity_itself: the code is this entity's development or product code.
+- a_form_of_the_entity: the code names a salt, ester, formulation, conjugate or labelled form of this entity, or a precursor code of the same product.
+- combination_containing_it: the code names a combination product or regimen that contains this entity (each component keeps the code).
+- sponsor_reused_code: another product carries the same code in the registry, but this entity's own trials use the code for this entity (sponsors reuse short codes).
+- code_of_another_entity: the code names a different product; this entity carries it only because an intervention string paired them (a typo, a combination listed drug by drug, a partner drug in the same arm).
+- unclear: the evidence does not settle it.
+
+owns is false only for code_of_another_entity; every other reason keeps the code."""
+
+CODES_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "holders": {"type": "array", "items": {"type": "object", "properties": {
+            "moiety_id": {"type": "integer"}, "owns": {"type": "boolean"},
+            "reason": {"type": "string", "enum": ["the_entity_itself", "a_form_of_the_entity", "combination_containing_it",
+                                                  "sponsor_reused_code", "code_of_another_entity", "unclear"]}},
+            "required": ["moiety_id", "owns", "reason"], "additionalProperties": False}},
+        "rationale": {"type": "string"},
+    },
+    "required": ["holders", "rationale"],
+    "additionalProperties": False,
+}
+CODE_STRINGS = 4  # intervention strings shown per holder
+CODE_REGISTERED = 5  # registry substances shown per code
+CODES_AUDIT = "report/audits/code_names_fix.json"
+
+
+def render_codes(p: dict) -> str:
+    reg = "\n".join(f"- {r['display_name']} ({r['type']}; registered as \"{r['as']}\")" for r in p["registry"]) or "- none"
+    hold = []
+    for h in p["holders"]:
+        strings = "\n".join(f"    - \"{s['string']}\" in {s['nct']} ({s['sponsor']}): {s['title']}" for s in h["strings"])
+        hold.append(f"- {h['moiety_id']}: {h['name']}" + (f" (also: {'; '.join(h['other_names'])})" if h["other_names"] else "")
+                    + f" | registered substance: {h['substance'] or 'none'}"
+                    + (f"\n  intervention strings that wrote the code:\n{strings}" if strings else ""))
+    return f"Code: {p['code']}\n\nFDA substance registry entries under this name:\n{reg}\n\nEntities carrying it:\n" + "\n".join(hold)
+
+
+def validate_codes(p: dict, out: dict) -> None:
+    ids = [h["moiety_id"] for h in out["holders"]]
+    if sorted(ids) != sorted(h["moiety_id"] for h in p["holders"]):
+        raise ValueError(f"holders {sorted(ids)} are not the entities given")
+    if any(h["owns"] != (h["reason"] != "code_of_another_entity") for h in out["holders"]):
+        raise ValueError("owns must be false exactly for code_of_another_entity")
+
+
+CODES_TASK = llm.Task(name="moiety_code_owner", prompt_version="v1", schema_version="v1", system=CODES_SYSTEM,
+                      schema=CODES_SCHEMA, render=render_codes, validate=validate_codes, subject_type="code",
+                      model="claude-opus-5-5", effort="medium", max_tokens=2000)
+# A code leaves an entity only when a second model, reading the same evidence, agrees it is another entity's.
+CODES_CHECK_TASK = llm.Task(name="moiety_code_owner_check", prompt_version="v1", schema_version="v1",
+                            system=CODES_SYSTEM, schema=CODES_SCHEMA, render=render_codes, validate=validate_codes,
+                            subject_type="code", model="claude-sonnet-5", effort="medium", max_tokens=2000)
+
+
+def related_substances(a: str | None, b: str, parents: dict[str, set[str]]) -> bool:
+    """Whether substance b is a, its parent, its salt or form, or a sibling form sharing a parent."""
+    if a is None:
+        return False
+    pa, pb = parents.get(a, set()), parents.get(b, set())
+    return a == b or b in pa or a in pb or bool(pa & pb)
+
+
+def review_keys(holders: dict[str, set[int]], unii_of: dict[int, str | None], registered: dict[str, set[str]],
+                parents: dict[str, set[str]]) -> set[str]:
+    """Code keys to review: carried by more than one entity, or registered to a substance that is not the
+    holder's own (or a related form of it), including a holder with no substance of its own."""
+    return {k for k, ms in holders.items()
+            if len(ms) > 1 or any(not any(related_substances(unii_of.get(m), u, parents) for u in registered.get(k, ()))
+                                  for m in ms if registered.get(k))}
+
+
+def agreed_verdicts(first: dict[str, dict[int, bool]], second: dict[str, dict[int, bool]]) -> dict[str, dict[int, bool]]:
+    """An entity does not own a code only when both decisions say so; a code the second model did not decide stays."""
+    return {k: {m: owns or second.get(k, {}).get(m, True) for m, owns in vs.items()} for k, vs in first.items()}
+
+
+def owned_codes(codes: dict[int, list[str]], keys: dict[int, str], verdicts: dict[str, dict[int, bool]]) -> dict[int, list[str]]:
+    """Each entity's codes without those a verdict says it does not own; an entity keeps a code that is its own name."""
+    return {m: [c for c in cs if verdicts.get(moiety_key(c), {}).get(m, True) or moiety_key(c) == keys[m]]
+            for m, cs in codes.items()}
+
+
+def codes(args) -> None:
+    """Keep each code name only on the entities it belongs to (CODES_TASK over review_keys, each removal confirmed by
+    CODES_CHECK_TASK); with --dry-run,
+    write the audit (CODES_AUDIT), with the intervention strings routed to an entity that does not own the code
+    they name, and leave moiety as is."""
+    import json
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT m.moiety_id, m.moiety_key, m.name, m.code_names, m.aliases, m.unii,
+                              s.display_name || ' (' || coalesce(s.substance_type, '?') || ')'
+                       FROM preclin.moiety m LEFT JOIN preclin.unii_substance s USING (unii)""")
+        ents = {r[0]: r[1:] for r in cur.fetchall()}
+        cur.execute("SELECT unii, array_agg(parent_unii) FROM preclin.unii_parent GROUP BY 1")
+        parents = {u: set(ps) for u, ps in cur.fetchall()}
+        holders = defaultdict(set)
+        for m, (_, _, cs, *_) in ents.items():
+            for c in cs:
+                if moiety_key(c):
+                    holders[moiety_key(c)].add(m)
+        cur.execute("""SELECT n.name_key, n.unii, n.name, n.name_type, s.display_name, s.substance_type
+                       FROM preclin.unii_name n JOIN preclin.unii_substance s USING (unii) WHERE n.name_key = ANY(%s)""",
+                    (sorted(holders),))
+        registry = defaultdict(dict)
+        for k, u, name, ntype, display, stype in cur.fetchall():
+            registry[k].setdefault(u, {"display_name": display, "type": stype or "?", "as": f"{name} [{ntype}]"})
+        keys = review_keys(holders, {m: e[4] for m, e in ents.items()}, {k: set(r) for k, r in registry.items()}, parents)
+        mids = sorted({m for k in keys for m in holders[k]})
+        cur.execute("""SELECT dm.moiety_id, d.display_name, coalesce(d.synonyms, '{}'), sd.nct_id, c.lead_sponsor,
+                              c.brief_title
+                       FROM preclin.drug_moiety dm JOIN preclin.drug d USING (drug_id)
+                       JOIN LATERAL (SELECT nct_id FROM preclin.ctgov_study_drug x WHERE x.drug_id = d.drug_id
+                                     ORDER BY nct_id LIMIT 1) sd ON true
+                       JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = ANY(%s)""", (mids,))
+        strings = defaultdict(list)
+        for m, display, synonyms, nct, sponsor, title in cur.fetchall():
+            for text in [display, *synonyms]:  # the intervention name, then the names its registration lists
+                strings[m].append({"string": display if text == display else f"{display} [listed as: {text}]",
+                                   "words": word_keys(text), "nct": nct, "sponsor": sponsor or "?", "title": title or ""})
+    items = {}
+    for k in sorted(keys):
+        hs = sorted(holders[k])
+        written = sorted({c for m in hs for c in ents[m][2] if moiety_key(c) == k})
+        items[k] = {"code": " / ".join(written),
+                    "registry": sorted(registry.get(k, {}).values(), key=lambda r: r["display_name"])[:CODE_REGISTERED],
+                    "holders": [{"moiety_id": m, "name": ents[m][1], "other_names": sorted(set(ents[m][3]))[:6],
+                                 "substance": ents[m][5],
+                                 "strings": [{x: s[x] for x in ("string", "nct", "sponsor", "title")}
+                                             for s in strings[m] if k in s["words"]][:CODE_STRINGS]} for m in hs]}
+    decided = llm.decisions(llm.run(CODES_TASK, items))
+    first = {k: {h["moiety_id"]: h["owns"] for h in out["holders"]} for k, _, out in decided}
+    reasons = Counter(h["reason"] for _, _, out in decided for h in out["holders"])
+    disputed = {k: items[k] for k, v in first.items() if not all(v.values())}
+    second = {k: {h["moiety_id"]: h["owns"] for h in out["holders"]}
+              for k, _, out in llm.decisions(llm.run(CODES_CHECK_TASK, disputed))}
+    verdicts = agreed_verdicts(first, second)
+    dropped = sum(not v for k, vs in first.items() for v in vs.values()) - sum(not v for vs in verdicts.values()
+                                                                             for v in vs.values())
+    new = owned_codes({m: list(e[2]) for m, e in ents.items()}, {m: e[0] for m, e in ents.items()}, verdicts)
+    removed = [(m, c) for m, e in ents.items() for c in e[2] if c not in new[m]]
+    print(f"codes reviewed={len(items)} holder verdicts={sum(reasons.values())} by reason={dict(reasons)} "
+          f"second-model checks={len(disputed)} removals the check did not confirm={dropped} "
+          f"codes removed={len(removed)} from entities={len({m for m, _ in removed})}")
+    if args.dry_run:
+        out = {"reviewed_codes": len(items), "verdicts_by_reason": dict(reasons), "second_model_checks": len(disputed),
+               "removals_not_confirmed": dropped, "removed": len(removed),
+               "entities_changed": len({m for m, _ in removed}),
+               "removed_pairs": [{"moiety_id": m, "entity": ents[m][1], "code": c,
+                                  "owner": [ents[o][1] for o, v in verdicts[moiety_key(c)].items() if v],
+                                  "strings_routed_here": sorted({x["string"] for x in strings[m]
+                                                                 if moiety_key(c) in x["words"]})[:CODE_STRINGS]}
+                                 for m, c in sorted(removed)]}
+        with open(os.path.join(llm.REPO, CODES_AUDIT), "w") as f:
+            json.dump(out, f, indent=1)
+        return
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """UPDATE preclin.moiety m SET code_names = v.codes
+            FROM (VALUES %s) AS v(moiety_id, codes) WHERE m.moiety_id = v.moiety_id""",
+                       [(m, new[m]) for m in sorted({m for m, _ in removed})], template="(%s, %s::text[])")
+        conn.commit()
+
+
 MODALITIES = ["small_molecule", "peptide", "protein", "monoclonal_antibody", "multispecific_antibody",
               "antibody_drug_conjugate", "radioligand", "sirna_rnai", "antisense_oligonucleotide",
               "other_oligonucleotide", "mrna", "gene_therapy", "car_t", "other_cell_therapy", "vaccine",
@@ -728,6 +906,9 @@ def main() -> None:
     sub.add_parser("canonicalize").set_defaults(fn=canonicalize)
     sub.add_parser("unii").set_defaults(fn=unii)
     sub.add_parser("modality").set_defaults(fn=modality)
+    p = sub.add_parser("codes")
+    p.add_argument("--dry-run", action="store_true", help="write the audit and leave preclin.moiety as is")
+    p.set_defaults(fn=codes)
     args = parser.parse_args()
     args.fn(args)
 
