@@ -28,7 +28,13 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 {{MODALITY_TABLE}}
 
-### Relative success
+### Evidence by category
+
+Every category and subcategory on US-developed programs, as the main tab's evidence chart draws them.
+
+{{CATEGORIES_TABLE}}
+
+### Relative success, all programs
 
 {{RS_TABLE}}
 
@@ -55,6 +61,10 @@ Change in held-out AUC when each line is removed from the full model:
 ### Confirmatory hypotheses
 
 {{S3_HYPOTHESES_TABLE}}
+
+Added by the plan amendment, on US-developed programs:
+
+{{AMENDMENT_HYPOTHESES_TABLE}}
 
 ### Which evidence translates: the registered screen
 

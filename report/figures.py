@@ -275,14 +275,18 @@ def dose_response():
     save(fig, "genetic_dose_response")
 
 
-S3_GROUP = {"g3": "Human genetics", "gwas": "Human genetics", "gwas_strong": "Human genetics",
-            "gwas_mid": "Human genetics", "gwas_weak": "Human genetics", "mendelian": "Human genetics",
-            "mendelian_strong": "Human genetics", "somatic": "Somatic", "somatic_concordant": "Somatic",
-            "mgi": "Mouse", "mgi_strong": "Mouse", "expression": "Expression and pathways",
-            "reactome": "Expression and pathways", "b1": "Clinical precedent", "precedent": "Clinical precedent",
-            "pan_essential": "Target liability", "constrained": "Target liability", "ko_lethal": "Target liability"}
-S3_GROUP_COLORS = {"Human genetics": "#2a78d6", "Somatic": "#eb6834", "Mouse": "#1baf7a",
-                   "Expression and pathways": "#eda100", "Clinical precedent": "#4a3aa7", "Target liability": "#6b6a65"}
+# Evidence categories of the plan amendment (report.evidence_lines.CATEGORIES), in its order: efficacy
+# evidence by the system that produced it, then safety risk and the clinical-precedent benchmark apart.
+CATEGORY_COLORS = {"human_genetics": "#2a78d6", "tumour_genetics": "#eb6834", "diseased_tissue": "#eda100",
+                   "animal": "#1baf7a", "cell": "#8a8984", "molecule": "#b04a8f", "early_human": "#0f8f9a",
+                   "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
+# Section 3 evidence-map rows by the category whose colour they take
+S3_GROUP = {"g3": "human_genetics", "gwas": "human_genetics", "gwas_strong": "human_genetics",
+            "gwas_mid": "human_genetics", "gwas_weak": "human_genetics", "mendelian": "human_genetics",
+            "mendelian_strong": "human_genetics", "somatic": "tumour_genetics", "somatic_concordant": "tumour_genetics",
+            "mgi": "animal", "mgi_strong": "animal", "expression": "diseased_tissue", "reactome": "human_genetics",
+            "b1": "precedent", "precedent": "precedent", "pan_essential": "safety_risk", "constrained": "safety_risk",
+            "ko_lethal": "safety_risk"}
 MIN_G3_TRIALS = 10  # endpoint classes with fewer genetically supported trials are left out of the figure
 
 
@@ -294,7 +298,7 @@ def s3_evidence_map():
     for i, f in enumerate(rows):
         y = len(rows) - 1 - i
         r = df.loc[f]
-        color = S3_GROUP_COLORS[S3_GROUP[f]]
+        color = CATEGORY_COLORS[S3_GROUP[f]]
         ax.plot([np.log2(r.lo), np.log2(r.hi)], [y, y], color=color, linewidth=2, solid_capstyle="round")
         ax.plot(np.log2(r.rr), y, "o", color=color, markersize=6, markeredgecolor="white", markeredgewidth=1)
         ax.text(3.15, y, f"{int(r.n):,}", va="center", ha="right", color=INK2, fontsize=8)
@@ -371,59 +375,40 @@ def s3_specificity():
     save(fig, "s3_specificity")
 
 
-# One row per kind of evidence, then its narrower versions, each naming its Section 2 relative-success feature
-# (report.section2.FEATURES).
-EVIDENCE_ROWS = [  # (label, family, Section 2 feature, narrower version)
-    ("Germline genetics for the disease", "Human genetics", "genetic_any", False),
-    ("GWAS", "Human genetics", "genetic_gwas", True),
-    ("Rare-variant or Mendelian", "Human genetics", "genetic_rare", True),
-    ("Somatic driver for the tumour", "Somatic", "somatic", False),
-    ("Mouse model of the disease", "Mouse", "animal_model", False),
-    ("Expressed differently in the disease", "Expression and pathways", "rna_expression", False),
-    ("Disease pathway (Reactome)", "Expression and pathways", "affected_pathway", False),
-    ("Intolerant of loss of function", "Target liability", "constrained", False),
-    ("Drug potent at the target (≤ 100 nM)", "Drug pharmacology", "assay_potent", False),
-    ("Very potent (≤ 10 nM)", "Drug pharmacology", "assay_very_potent", True),
-    ("Functional potency measured in cells", "Drug pharmacology", "assay_cell_functional", True),
-    ("≥ 100-fold selective over off-targets", "Drug pharmacology", "assay_selective", True),
-]
-FAMILY_COLORS = {**S3_GROUP_COLORS, "Drug pharmacology": "#b04a8f"}
-# Lines first published in 2019, which no program in the window could have had before entry: scored on
-# today's data (Section 2 relative_success_untimed.csv) and drawn dashed.
-HINDSIGHT_ROWS = [("CRISPR screen in cells", "Expression and pathways", "cell_line_screen_untimed"),
-                  ("Essential in most cell lines", "Target liability", "pan_essential_untimed")]
-
-
+BLOCK_HEADERS = {"safety_risk": "Not efficacy evidence: whether acting on the target is likely to harm",
+                 "precedent": "Benchmark: what earlier drugs on the target did"}
+LITERATURE_NOTE = "descriptive: retrieval failed the quality gate"
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
 
 
 def evidence_translates():
-    """Relative success to approval from any phase for each kind of evidence and its narrower versions; a filled
-    dot is a 95% interval clear of 1. Evidence known only after entry is drawn dashed, below the rest."""
-    rs = pd.concat([pd.read_csv(os.path.join(OUT, "section2", f)) for f in
-                    ("relative_success.csv", "relative_success_untimed.csv")]).set_index("feature")
-    rows = []  # (label, family, narrow, relative success row, known only after entry)
-    for label, family, f2, narrow in EVIDENCE_ROWS:
-        if pd.notna(rs.at[f2, "rs"]):
-            rows.append((label, family, narrow, rs.loc[f2], False))
-    for label, family, f2 in HINDSIGHT_ROWS:
-        if pd.notna(rs.at[f2, "rs"]):
-            rows.append((label, family, False, rs.loc[f2], True))
-    first_late = next(i for i, r in enumerate(rows) if r[4])
-    ys, y = [], 0.0
-    for i, r in enumerate(rows):
-        y -= 1 if i == 0 or r[2] or (r[4] and i != first_late) else 2.3 if i == first_late else 1.5
+    """Relative success to approval from any phase for each evidence category and its subcategories, on
+    US-developed programs; a filled dot is a 95% interval clear of 1. Lines known only after entry are drawn
+    dashed; lines too rare to estimate, or whose literature retrieval failed its gate, are listed without one."""
+    lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
+    lines = lines[lines.category.isin(CATEGORY_COLORS)
+                  & (lines.level.ne("descriptive") | lines.column.fillna("").str.endswith("_untimed"))]
+    ys, y, prev = [], 0.0, None
+    for i, r in enumerate(lines.itertuples()):
+        if i:
+            y -= 2.6 if r.category in BLOCK_HEADERS and r.category != prev else 1.5 if r.level == "category" else 1
+        prev = r.category
         ys.append(y)
-    fig, ax = plt.subplots(figsize=(10, 0.42 * len(rows) + 2.2))
+    fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 2.6))
     lim = (np.log2(0.2), np.log2(5))
-    for yi, (label, family, narrow, r, late) in zip(ys, rows):
-        color = MUTED if late else FAMILY_COLORS[family]
-        ax.plot([np.log2(max(r.rs_lo, 0.2)), np.log2(min(r.rs_hi, 5))], [yi, yi], color=color, linewidth=2,
+    for yi, r in zip(ys, lines.itertuples()):
+        color, late = CATEGORY_COLORS[r.category], str(r.column).endswith("_untimed")
+        if pd.isna(r.column) or not r.estimated:
+            note = LITERATURE_NOTE if pd.isna(r.column) else "none known before entry: first published in 2019" \
+                if r.exposed == 0 else f"too rare to estimate ({int(r.exposed):,} entries)"
+            ax.text(lim[0] + 0.05, yi, note, va="center", color=INK2, fontsize=9, style="italic")
+            continue
+        ax.plot([np.log2(max(r.rs_rs_lo, 0.2)), np.log2(min(r.rs_rs_hi, 5))], [yi, yi], color=color, linewidth=2,
                 solid_capstyle="round", linestyle=(0, (2, 1.5)) if late else "-")
-        clear = r.rs_lo > 1 or r.rs_hi < 1
-        ax.plot(np.log2(r.rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
+        clear = r.rs_rs_lo > 1 or r.rs_rs_hi < 1
+        ax.plot(np.log2(r.rs_rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
                 markerfacecolor=color if clear else "white", markeredgecolor=color)
-        ax.text(np.log2(5) + 0.1, yi, f"{r.rs:.2f}×", va="center", color=INK2, fontsize=10)
+        ax.text(np.log2(5) + 0.1, yi, f"{r.rs_rs:.2f}×", va="center", color=INK2, fontsize=10)
     ticks = [0.25, 0.5, 1, 2, 4]
     ax.axvline(0, color=INK2, linewidth=1)
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
@@ -432,18 +417,25 @@ def evidence_translates():
     ax.set_xlabel("Relative success: likelihood of approval with the evidence ÷ without it (95% CI)", color=INK2,
                   fontsize=10)
     style(ax)
-    ax.set_yticks(ys, [("      " if narrow else "") + label for label, _, narrow, *_ in rows], color=INK, fontsize=11)
+    labels = [("      " if r.level != "category" else "") + r.label.replace(", on today's data (hindsight)", ", hindsight")
+              for r in lines.itertuples()]
+    ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     ax.tick_params(axis="y", pad=LABEL_PAD)
-    for t, (_, _, narrow, _, late) in zip(ax.get_yticklabels(), rows):
+    for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
         t.set_horizontalalignment("left")
-        t.set_color(INK2 if narrow or late else INK)
+        t.set_color(INK if r.level == "category" else INK2)
+        t.set_fontweight("bold" if r.level == "category" else "normal")
     label_x = -LABEL_PAD / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes
-    ax.text(label_x, ys[first_late] + 0.95, "Known only after entry: first published in 2019, scored on today's data",
-            transform=ax.get_yaxis_transform(), color=INK2, fontsize=10, style="italic")
+    for cat, header in BLOCK_HEADERS.items():
+        first = next(yi for yi, r in zip(ys, lines.itertuples()) if r.category == cat)
+        ax.text(label_x, first + 1.1, header, transform=ax.get_yaxis_transform(), color=INK2, fontsize=10,
+                style="italic")
     top = ys[0] + 0.7
     ax.set_ylim(ys[-1] - 0.7, top + 0.4)
-    ax.text(label_x, top + 1.2, "Reaching approval from any phase, programs entering a phase in 2008–2019, by evidence known\n"
-            "the year before entry. Indented: a narrower version. Filled: 95% interval clear of 1. Counts are in the appendix.", transform=ax.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
+    ax.text(label_x, top + 1.2, "Reaching approval from any phase, US-developed programs entering a phase in 2008–2019, "
+            "by evidence\nknown the year before entry. Bold: a category; indented: its subcategories. Filled: 95% "
+            "interval clear of 1.\nDashed: first published in 2019, scored on today's data. Counts are in the appendix.",
+            transform=ax.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
     save(fig, "evidence_translates")
 
 
@@ -591,16 +583,18 @@ HYPOTHESES = [  # (key, short label, path to its estimate in section3/numbers.js
                                                                                      "interaction_per_step"), "rr"),
     ("H5", "Genetics lowers efficacy failure more than business failure", ("h5", "ratio_f_bizops_vs_f_efficacy"),
      "rr"),
-    ("H6", "Target liability raises safety failure, outside oncology", ("h6", "safety"), "rr"),
-    ("H7", "Oncology: somatic driver matching the drug", ("h7",), "rr"),
+    ("H6", "Safety risk of the target raises safety failure, outside oncology", ("h6", "safety"), "rr"),
+    ("H7", "Oncology: mutation in the cancer matching the drug", ("h7",), "rr"),
 ]
 MEASURES = {"H1": "risk ratio", "H2": "odds ratio", "H3": "risk ratio", "H4": "ratio of risk ratios",
             "H5": "ratio of risk ratios", "H6": "risk ratio", "H7": "risk ratio"}
 
 
 def s3_hypotheses():
+    """The seven registered hypotheses and, as a second family Holm-corrected on its own, N1-N3 of the
+    plan amendment (US-developed programs); N2's two claims are drawn as two rows sharing its Holm p."""
     n = json.load(open(os.path.join(OUT, "section3", "numbers.json")))
-    rows, labels = [], []
+    rows, labels, measures = [], [], []
     for i, (h, label, path, field) in enumerate(HYPOTHESES):
         r = n
         for k in path:
@@ -608,17 +602,41 @@ def s3_hypotheses():
         holm_p = n["holm"].get(h, 1)
         rows.append((-i, r[field], r["lo"], r["hi"], ACCENT if holm_p < 0.05 else BAR, holm_p < 0.05))
         labels.append(f"{h}  {label}")
-    fig, ax = plt.subplots(figsize=(9, 0.4 * len(rows) + 1.1))
+        measures.append(MEASURES[h])
+    amendment = os.path.join(OUT, "evidence_analysis", "numbers.json")
+    first_n = None
+    if os.path.exists(amendment):
+        a = json.load(open(amendment))
+        y = rows[-1][0] - 1.8
+        first_n = y
+        for h, label, r in amendment_hypotheses(a):
+            if r.get("rr") is None:
+                continue
+            ok = a["holm"].get(h, 1) < 0.05
+            rows.append((y, r["rr"], r["lo"], r["hi"], ACCENT if ok else BAR, ok))
+            labels.append(f"{h}  {label}")
+            measures.append("risk ratio")
+            y -= 1
+    fig, ax = plt.subplots(figsize=(9, 0.4 * len(rows) + 1.6))
     forest(ax, rows, lim=(0.25, 8))
     ax.set_xticks(np.log2([0.25, 0.5, 1, 2, 4, 8]), ["0.25×", "0.5×", "1×", "2×", "4×", "8×"])
-    for y, *_ in rows:
-        h = HYPOTHESES[-y][0]
-        ax.text(np.log2(8) + 0.15, y, MEASURES[h], va="center", color=INK2, fontsize=8)
+    for (y, *_), m in zip(rows, measures):
+        ax.text(np.log2(8) + 0.15, y, m, va="center", color=INK2, fontsize=8)
     ax.set_yticks([r[0] for r in rows], labels, color=INK, fontsize=8.5)
-    ax.set_xlabel("Estimate (95% CI); blue: supported after Holm correction across the seven", color=INK2,
+    if first_n is not None:
+        ax.text(np.log2(0.25), first_n + 0.75, "Added by the plan amendment before outcomes were seen: "
+                "US-developed programs, Holm-corrected across the three", color=INK2, fontsize=8, style="italic")
+    ax.set_xlabel("Estimate (95% CI); blue: supported after Holm correction within its family", color=INK2,
                   fontsize=8)
     ax.set_title("The pre-registered hypotheses", loc="left", color=INK, fontsize=10)
     save(fig, "s3_hypotheses")
+
+
+def amendment_hypotheses(a: dict) -> list[tuple[str, str, dict]]:
+    return [("N1", "Small molecules: at least 10-fold selective", a["N1"]),
+            ("N2", "Small molecules: drug-like (at most one Rule-of-5 violation)", a["N2"]["drug_like"]),
+            ("N2", "Neurology and psychiatry: brain-penetrant properties", a["N2"]["brain_penetrant"]),
+            ("N3", "Outside oncology: potent (100 nM), genetics and drug-likeness held fixed", a["N3"])]
 
 
 def main():
@@ -638,8 +656,9 @@ def main():
         s3_evidence_map()
         s3_specificity()
         s3_endpoints()
-        evidence_translates()
         s3_hypotheses()
+    if os.path.exists(os.path.join(OUT, "evidence_analysis", "lines.csv")):
+        evidence_translates()
 
 
 if __name__ == "__main__":

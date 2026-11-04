@@ -11,10 +11,10 @@ from __future__ import annotations
 import sys
 import time
 
-from report import (attribution, figures, frame, methods, quality, render, section1, section2, section3,
-                    stop_causes)
+from report import (attribution, evidence_analysis, figures, frame, methods, quality, render, section1, section2,
+                    section3, stop_causes)
 
-STEPS = [section1, section2, section3, attribution, stop_causes, methods, quality, figures, render]
+STEPS = [section1, section2, section3, evidence_analysis, attribution, stop_causes, methods, quality, figures, render]
 
 
 def main() -> None:

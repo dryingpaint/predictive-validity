@@ -58,6 +58,8 @@ Three labels were also compared with the decisions their revised prompts replace
 
 {{APPENDIX_SECTION3}}
 
+{{APPENDIX_CATEGORIES}}
+
 ### Limitations
 
 * **Registry programs are not Biomedtracker programs.** BIO counts transitions that analysts record for programs companies disclose; this report counts programs from registered trials. Trials registered only outside ClinicalTrials.gov (ChiCTR, EU CTR, CTIS) are missing, so programs developed there look suspended. Restricting to programs with a US site removes most of the difference.

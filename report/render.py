@@ -165,8 +165,8 @@ def attribution_sensitivity_table() -> str:
     return table(out)
 
 
-GROUPS = [("**Target liabilities** (not specific to the disease)", LIABILITIES),
-          ("**Drug pharmacology** (assays of the drug itself, not evidence for the disease)", DRUG)]
+GROUPS = [("**Safety risk of the target** (not specific to the disease)", LIABILITIES),
+          ("**The molecule** (assays of the drug itself, not evidence for the disease)", DRUG)]
 
 
 def evidence_groups(df: pd.DataFrame, features: pd.Series) -> pd.DataFrame:
@@ -187,6 +187,53 @@ def rs_table() -> str:
                       "Relative success (95% CI)": [f"{r:.2f} ({lo:.2f}–{hi:.2f})"
                                                     for r, lo, hi in zip(df.rs, df.rs_lo, df.rs_hi)]})
     return table(evidence_groups(df.iloc[:, -4:], df.feature))
+
+
+def ratio_cell(r, prefix: str) -> str:
+    """'1.23 (1.01–1.50)' for one estimate of a lines.csv row; '–' when not estimated."""
+    v = r.get(f"{prefix}_rr")
+    return "–" if v is None or pd.isna(v) else f"{v:.2f} ({r[f'{prefix}_lo']:.2f}–{r[f'{prefix}_hi']:.2f})"
+
+
+def categories_table() -> str:
+    """Every evidence category and subcategory of the plan amendment on US-developed programs."""
+    df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
+    out = []
+    for r in df.to_dict("records"):
+        name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
+            + (" (descriptive)" if r["level"] == "descriptive" else "")
+        if pd.isna(r.get("column")):
+            out.append([name, "–", "–", "Descriptive: literature retrieval failed the quality gate", "–", "–", "–"])
+            continue
+        exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
+        if not r["estimated"]:
+            out.append([name, exposed, f"{int(r['targets']):,}", "Too rare to estimate", "–", "–", "–"])
+            continue
+        stop = ratio_cell(r, "safety_stop") + " (safety)" if r["category"] == "safety_risk" \
+            else ratio_cell(r, "efficacy_stop") if "efficacy_stop_rr" in r else "–"
+        out.append([name, exposed, f"{int(r['targets']):,}",
+                     f"{r['rs_rs']:.2f} ({r['rs_rs_lo']:.2f}–{r['rs_rs_hi']:.2f})" if pd.notna(r.get("rs_rs")) else "–",
+                     ratio_cell(r, "s4"), ratio_cell(r, "s4_biomarker"), stop])
+    return table(pd.DataFrame(out, columns=[
+        "Evidence", "Entries with it / eligible", "Targets", "Relative success to approval (95% CI)",
+        "Advancing from Phase 2, adjusted RR", "Same, biomarker enrolment held fixed", "Efficacy stop, adjusted RR"]))
+
+
+def amendment_hypotheses_table() -> str:
+    a = json.load(open(os.path.join(OUT, "evidence_analysis", "numbers.json")))
+    rows = [("N1", "Small molecules measured on the primary target and an off-target: at least 10-fold selective "
+                   "raises advancing from Phase 2", a["N1"], a["holm"].get("N1")),
+            ("N2", "Small molecules: at most one Rule-of-5 violation raises advancing", a["N2"]["drug_like"],
+             a["holm"].get("N2")),
+            ("N2", "Neurology and psychiatry: brain-penetrant properties raise advancing", a["N2"]["brain_penetrant"],
+             a["holm"].get("N2")),
+            ("N3", "Outside oncology, small molecules: potency of 100 nM or better raises advancing, human genetics "
+                   "and drug-likeness held fixed", a["N3"], a["holm"].get("N3"))]
+    out = [[h, text, f"{int(r['n']):,} ({int(r['n_targets']):,} targets)" if r.get("n") is not None else "–",
+            rr_ci(r), p_value(r.get("p")), p_value(hp),
+            "supported" if hp is not None and hp < 0.05 else "not supported"] for h, text, r, hp in rows]
+    return table(pd.DataFrame(out, columns=["Hypothesis", "Claim", "Exposed entries", "Risk ratio (95% CI)", "p",
+                                            "Holm p", "Result"]))
 
 
 def chembl_match_table() -> str:
@@ -311,9 +358,9 @@ def s3_hypotheses_table() -> str:
         ("H5", "Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3)",
          "ratio of risk ratios", rr_ci(n["h5"]["ratio_f_bizops_vs_f_efficacy"]),
          n["h5"]["ratio_f_bizops_vs_f_efficacy"].get("p")),
-        ("H6", "Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases "
+        ("H6", "Outside oncology, the target's safety risk raises safety failure, and more than efficacy failure (Phases "
                "1–3; intersection-union test)", "risk ratio, safety failure", rr_ci(n["h6"]["safety"]), n["h6"]["p"]),
-        ("H7", "Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2",
+        ("H7", "Oncology: a gene recurrently mutated in the cancer whose mutation matches the drug, advancing within 4 years of Phase 2",
          "risk ratio", rr_ci(n["h7"]), n["h7"].get("p")),
     ]
     out = [[text, measure, est, p_value(p), p_value(n["holm"].get(h)),
@@ -340,7 +387,7 @@ def s3_map_table() -> str:
             "Share of all that advanced", "Risk ratio, all (95% CI)", "Risk ratio, non-oncology",
             "Risk ratio, oncology"]
     df = pd.DataFrame(rows, columns=cols)
-    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Target liabilities** (not specific to the disease)"}
+    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
     out = []
     for f, row in zip(S3_MAP_ROWS, df.values.tolist()):
         if f in groups:
@@ -456,7 +503,8 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,
           "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table,
           "ATTRIBUTION_TABLE": attribution_table,
-          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
+          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
+          "CATEGORIES_TABLE": categories_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
 
 
 def flatten(d, prefix=""):
@@ -486,7 +534,7 @@ TABS = [("REPORT.template.md", "REPORT.md"), ("APPENDIX.template.md", "REPORT_AP
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "section3", "attribution", "stop_causes", "quality"):
+    for section in ("section1", "section2", "section3", "evidence_analysis", "attribution", "stop_causes", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)
