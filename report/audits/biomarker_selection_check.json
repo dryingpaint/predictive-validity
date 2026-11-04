@@ -1,0 +1,56 @@
+{
+ "sample": 100,
+ "model": "claude-opus-5-5",
+ "check_model": "claude-sonnet-5",
+ "selected_first": 16,
+ "selected_check": 17,
+ "agreement": 0.97,
+ "kappa": 0.8911465892597967,
+ "disagreements": [
+  {
+   "nct_id": "NCT00658632",
+   "first": {
+    "kind": "none",
+    "quote": null,
+    "selected": false,
+    "biomarker": null
+   },
+   "check": {
+    "kind": "other_molecular",
+    "quote": "Subjects who are H. pylori negative based on a screening test.",
+    "selected": true,
+    "biomarker": "H. pylori"
+   }
+  },
+  {
+   "nct_id": "NCT01155700",
+   "first": {
+    "kind": "other_molecular",
+    "quote": "Body weight and serum total IgE level within the dosing table range; body weight of 20 to 150 kg and serum total IgE levels of 30 to 1300 IU/mL",
+    "selected": true,
+    "biomarker": "serum total IgE levels of 30 to 1300 IU/mL"
+   },
+   "check": {
+    "kind": "none",
+    "quote": null,
+    "selected": false,
+    "biomarker": null
+   }
+  },
+  {
+   "nct_id": "NCT02976038",
+   "first": {
+    "kind": "none",
+    "quote": null,
+    "selected": false,
+    "biomarker": null
+   },
+   "check": {
+    "kind": "germline_variant",
+    "quote": "Open-Label Extension Trial to Characterize the Long-term Safety and Tolerability of Elamipretide in Subjects With Genetically Confirmed Primary Mitochondrial Myopathy (PMM)",
+    "selected": true,
+    "biomarker": "genetically confirmed Primary Mitochondrial Myopathy"
+   }
+  }
+ ]
+}

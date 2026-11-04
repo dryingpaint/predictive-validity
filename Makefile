@@ -69,6 +69,7 @@ labels:
 	$(RUN) pipeline.outcomes classify
 	$(RUN) pipeline.targets resolve
 	$(RUN) pipeline.outcomes endpoints
+	$(RUN) pipeline.outcomes biomarkers
 
 # Open Targets associations, the year each evidence item became known where its own date is
 # missing or a later revision (ClinVar record creation, IMPC releases, study dates, the first Open Targets
