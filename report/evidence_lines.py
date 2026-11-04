@@ -111,7 +111,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Earlier failed trial on the target, related disease, within 3 years", "earlier_failure", "from_2011"),
     ]),
 }
-ADJUSTMENTS = [Line("Biomarker-selected enrollment", None, "all", "117 trial biomarker selection")]
+ADJUSTMENTS = [Line("Biomarker-selected enrollment", "biomarker_selected", "all")]
 
 
 def failed_trials() -> pd.DataFrame:
@@ -211,11 +211,23 @@ def build() -> pd.DataFrame:
         cols = [s.column for s in subs if s.column and not s.descriptive]
         if line.column and line.column.startswith("cat_"):
             d[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d))
+    d["biomarker_selected"] = biomarker_selected(
+        d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
     keep = ["moiety_id", "mondo_id", "phase", "entry_date", "entry_year", "regime", "bio_area", "modality", "novel",
             "target", "sign", "event", "s4", "has_target_disease", "assay_best", "assay_margin",
             *(ln.column for ln in lines() if ln.column)]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
+
+
+def biomarker_selected(rows: pd.DataFrame, trials: pd.DataFrame, sel: pd.DataFrame) -> pd.Series:
+    """1 when an industry trial that opened the entry's phase on the entry date restricts enrolment by a
+    molecular biomarker, 0 when such trials were labelled and none does, null when none was labelled."""
+    opening = trials[trials.industry & trials.starts_phase][["program_id", "nct_id", "phase", "start_date"]]
+    opening = opening.assign(start_date=pd.to_datetime(opening.start_date)).merge(sel, on="nct_id")
+    keyed = rows[["program_id", "phase", "entry"]].assign(entry=pd.to_datetime(rows.entry), _row=rows.index)
+    m = keyed.merge(opening, left_on=["program_id", "phase", "entry"], right_on=["program_id", "phase", "start_date"])
+    return m.groupby("_row").selected.any().astype(float).reindex(rows.index)
 
 
 def lines() -> list[Line]:
@@ -224,8 +236,10 @@ def lines() -> list[Line]:
 
 def coverage(d: pd.DataFrame) -> pd.DataFrame:
     rows = []
-    for cat, (line, subs) in CATEGORIES.items():
-        for level, ln in [("category", line), *(("descriptive" if s.descriptive else "subcategory", s) for s in subs)]:
+    groups = [(cat, [("category", line), *(("descriptive" if s.descriptive else "subcategory", s) for s in subs)])
+              for cat, (line, subs) in CATEGORIES.items()] + [("adjustment", [("adjustment", a) for a in ADJUSTMENTS])]
+    for cat, members in groups:
+        for level, ln in members:
             row = {"category": cat, "level": level, "line": ln.label, "column": ln.column, "applies": ln.applies,
                    "pending": ln.pending}
             if ln.column:
