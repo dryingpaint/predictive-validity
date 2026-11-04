@@ -130,3 +130,81 @@ efficacy with a readable not-met randomised trial. Each case is checked by
 agents against primary sources (evidence dated before entry; outcome in the
 registry, publications and FDA letters), and failures are coded F1 (exposure
 or engagement never shown) to F8 (commercial).
+
+## Amendment, 2026-11-03: evidence categories and new lines
+
+Committed before any line below was computed against an outcome. Coverage
+counts were measured on the cohort without outcomes. The results for human
+genetics, tumour genetics, diseased tissue, genetically altered animals,
+target liability and potency are already reported, so regrouping them is not
+blind and their category estimates are not new confirmations.
+
+**Cohort.** Entries with a US-sited industry trial in the phase, entering
+2008–2019 (10,012 entries; 7,372 with a single resolved human protein target
+and a disease). Outcome S4 as above; the safety-risk category is tested against
+safety stops, and every efficacy category is also reported against efficacy
+stops. Evidence is frozen at the year before entry.
+
+**Categories.** Efficacy evidence is grouped by the experimental system that
+produced it; within a category, subcategories separate claims about the target
+from claims about the drug.
+
+1. **Human genetics.** Rare-variant and Mendelian; GWAS; both together;
+   direction concordant with the drug; curated disease mechanism (Reactome,
+   which shares 81% of its 188 entries with germline genetics for the disease).
+2. **Tumour genetics** (ONC). Recurrently mutated in this cancer; mutation
+   concordant with the drug.
+3. **Human diseased tissue.** RNA level changed (Expression Atlas,
+   |log2FC| ≥ 1.1); raised, with a drug that decreases function.
+4. **Animal studies.** Genetically altered animals (MGI curated, IMPC screen,
+   PhenoDigm top quartile, direction concordant); the drug in an animal model of
+   the disease (pilot); the drug's pharmacology in healthy animals (pilot).
+   Animal toxicology is unpublished before entry and is not used: FDA reviews of
+   it exist only for approved drugs.
+5. **Cell studies.** CRISPR screens in cancer cells; first published 2019, so
+   scored on current data as hindsight only.
+6. **The molecule** (small molecules). Potency on the primary target (best
+   pChEMBL ≥ 8, ChEMBL documents dated before entry); selectivity (primary-target
+   potency at least 1 log unit above the best off-target potency, among drugs
+   measured on both); drug-likeness (at most one Rule-of-5 violation) and, for
+   neurology and psychiatry programs, brain-penetrance properties (TPSA < 90,
+   MW < 450, H-bond donors ≤ 3), from PubChem computed properties.
+7. **Early human pharmacology** (Phase 2 and 3 entries). Target engagement
+   measured in people before entry (pilot).
+
+Kept apart from the efficacy categories:
+
+- **Safety risk.** Loss-of-function intolerance, mouse knockout lethal,
+  essential in most cell lines (hindsight only). Tested against safety stops.
+- **Clinical precedent** (benchmark, outside every Holm family). An approved
+  drug on the target for a related disease (B1); for an unrelated disease only;
+  an earlier Phase 2/3 trial of another drug on the target in a related disease
+  (Lin ≥ 0.5) that missed its primary endpoint or stopped for futility, ending
+  within 3 years before entry. The last is scored for 2011–2019 entries only:
+  trial-level results are sparse before 2008, and a lookback reaching before
+  them makes the line rise with entry year.
+
+**New confirmatory hypotheses (Holm-corrected together, α = 0.05).**
+
+- **N1.** Among small molecules measured on the primary target and an off
+  target, selectivity of at least 10-fold raises S4.
+- **N2.** Among small molecules, at most one Rule-of-5 violation raises S4;
+  among neurology and psychiatry programs, the brain-penetrance properties
+  raise S4.
+- **N3.** Outside oncology, the molecule category (any of potency, selectivity,
+  drug-likeness) raises S4 with human genetics held fixed.
+
+Category-level estimates for categories 1–6 are reported on this cohort with
+their intervals and are not tested. A category or subcategory with fewer than
+15 distinct exposed targets or 100 exposed entries is described, not estimated.
+
+**Pilot gates.** The literature lines (drug in an animal model of the disease,
+drug in healthy animals, human target engagement) run first on 300 seeded
+entries: PubMed abstracts searched by every registered name of the drug and the
+disease's synonyms and subtypes, each hit screened by an LLM. Agents with web
+access, blind to those results, list every qualifying study for 100 of the
+entries. A line enters the analysis only if retrieval recall against that list
+is at least 80%, a second model agrees with the screen at κ ≥ 0.6, and at least
+8% of Phase 2 entries carry it; otherwise it is reported as descriptive.
+Full-text search is not used: none of about 25 full-text-only hits checked was
+a study of the drug in the disease.
