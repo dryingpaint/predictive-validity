@@ -42,9 +42,11 @@ class Line:
     label: str  # plain English, as the report shows it
     column: str | None  # entries.csv column; None while its source table is still being built
     applies: str = "all"  # entries the line is scored on (APPLIES)
-    pending: str = ""  # the migration that will supply a line with no column yet
+    status: str = ""  # why a line has no column
     descriptive: bool = False  # shown in coverage but not part of its category
 
+
+LITERATURE = "descriptive: failed the literature gate twice (report/audits/literature_gate.md)"
 
 APPLIES = {
     "all": lambda d: d.index == d.index,
@@ -81,8 +83,8 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Systematic knockout screen (IMPC)", "impc", "target"),
         Line("Close phenotype match (top quartile)", "animal_close", "target"),
         Line("Altered animal points the same way as the drug", "animal_concordant", "target"),
-        Line("The drug in an animal model of the disease", None, "all", "119 literature screens (pilot)"),
-        Line("The drug's pharmacology in healthy animals", None, "all", "119 literature screens (pilot)"),
+        Line("The drug in an animal model of the disease", None, "all", LITERATURE),
+        Line("The drug's pharmacology in healthy animals", None, "all", LITERATURE),
     ]),
     "cell": (Line("Cell studies", "cat_cell", "target"), [
         Line("CRISPR screen in cells", "crispr", "target"),
@@ -95,8 +97,8 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Drug-like (at most one Rule-of-5 violation)", "drug_like", "small_molecule"),
         Line("Brain-penetrant properties (neurology and psychiatry)", "brain_penetrant", "brain"),
     ]),
-    "early_human": (Line("Early human pharmacology", None, "phase_2_3", "119 literature screens (pilot)"), [
-        Line("Target engagement measured in people", None, "phase_2_3", "119 literature screens (pilot)"),
+    "early_human": (Line("Early human pharmacology", None, "phase_2_3", LITERATURE), [
+        Line("Target engagement measured in people", None, "phase_2_3", LITERATURE),
     ]),
     "safety_risk": (Line("Safety risk", "liability", "target"), [
         Line("Intolerant of loss of function", "constrained", "target"),
@@ -241,7 +243,7 @@ def coverage(d: pd.DataFrame) -> pd.DataFrame:
     for cat, members in groups:
         for level, ln in members:
             row = {"category": cat, "level": level, "line": ln.label, "column": ln.column, "applies": ln.applies,
-                   "pending": ln.pending}
+                   "status": ln.status}
             if ln.column:
                 v = d[ln.column].where(APPLIES[ln.applies](d))
                 elig, exp = v.notna(), v.fillna(0) > 0
