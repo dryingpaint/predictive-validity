@@ -1,19 +1,27 @@
 """PubMed evidence about the drug itself, as known the year before a phase entry.
 
-    python -m pipeline.literature search [--entries pilot|cohort] [--kinds ...]   # PubMed searches and hits
-    python -m pipeline.literature screen [--entries pilot|cohort] [--kinds ...]   # LLM: does each abstract report it
-    python -m pipeline.literature check                                            # second model on a seeded sample
-    python -m pipeline.literature gate --reference DIR                             # pilot against the blind reference
+    python -m pipeline.literature search [--entries pilot|cohort]    # one PubMed search per drug, by its names
+    python -m pipeline.literature screen [--entries pilot|cohort]    # LLM: what each abstract reports about the drug
+    python -m pipeline.literature diseases                          # LLM: MONDO term of each modelled disease
+    python -m pipeline.literature check                             # second model on a seeded pilot sample
+    python -m pipeline.literature gate --reference PREFIX --rows A-B [--label NAME]   # pilot against a blind reference
 
-Three kinds of evidence, each searched in titles and abstracts up to the year before entry, reviews excluded:
-animal_disease (the drug tested for efficacy in an animal model of the program disease or a subtype),
-animal_healthy (the drug's pharmacokinetics, pharmacodynamics or exposure in healthy animals) and
-human_engagement (target engagement or a pharmacodynamic biomarker measured in people; Phase 2 and 3
-entries only). A drug is searched by its name, code names and FDA substance-registry names; a disease by
-its MONDO label, synonyms and direct subtypes. An LLM reads each abstract kept and decides whether it
-reports the drug itself in that kind of study. The entries are the US-sited phase entries of 2008-2019
-(cohort) or a seeded sample of 300 of them (pilot, report/audits/literature_pilot_sample.csv); a kind is
-run on the cohort only once the pilot passes the gates of the plan amendment (report/translation_plan.md).
+Three kinds of evidence: animal_disease (the drug tested for efficacy in an animal model of the program disease,
+a subtype or a disease within Lin 0.5 of it), animal_healthy (the drug's pharmacokinetics, pharmacodynamics or
+exposure in healthy animals) and human_engagement (target engagement or a pharmacodynamic biomarker measured in
+people; Phase 2 and 3 entries only).
+
+Each drug is searched once, in PubMed titles and abstracts, by its names alone: INN, code names, ChEMBL and
+PubChem synonyms, and FDA substance-registry names, with no disease, species or kind terms. The search runs
+to the latest cutoff of the drug's entries (the year before entry), excludes reviews and keeps up to HITS results
+in relevance order; an entry counts only abstracts published by its own cutoff. An LLM reads each abstract once
+and decides every kind, naming the diseases any animal model models; a second LLM step maps each modelled disease
+to MONDO among retrieved candidates, as pipeline.indications maps trial conditions.
+
+The entries are the US-sited phase entries of 2008-2019 (cohort) or a seeded sample of 300 of them (pilot,
+report/audits/literature_pilot_sample.csv). This is the second version, fixed in report/translation_plan.md
+before it ran; version 1 searched by drug, disease and kind terms, and its rows stay in preclin.literature_search,
+literature_hit and literature_screen. A kind runs on the cohort only once the pilot passes the plan's gates.
 """
 from __future__ import annotations
 
@@ -25,62 +33,77 @@ import xml.etree.ElementTree as ET
 
 import numpy as np
 import pandas as pd
+import requests
 from psycopg2.extras import execute_values
 
 from pipeline import llm
-from pipeline.attribution import NOT_REVIEWS, PHARMACOLOGY_TERMS, efetch
+from pipeline.attribution import NOT_REVIEWS, efetch
+from pipeline.chembl import IDS_PER_CALL, PAGE, get as chembl_get
+from pipeline.indications import N_CANDIDATES, MondoIndex
 from pipeline.outcomes import eutils
 
 KINDS = ("animal_disease", "animal_healthy", "human_engagement")
 PILOT = os.path.join(llm.REPO, "report", "audits", "literature_pilot_sample.csv")
 GATE = os.path.join(llm.REPO, "report", "audits", "literature_gate.json")
-HITS = 20  # abstracts kept per search, PubMed relevance order
-MAX_DRUG_NAMES = 15
-MAX_DISEASE_NAMES = 25
-CHECK_PER_KIND = 50
+HITS = 200  # abstracts kept per drug, PubMed relevance order
+MAX_DRUG_NAMES = 50
+MAX_NAME_CHARS = 30
+MAX_NAME_WORDS = 4
+CIDS_PER_CALL = 100
+PUBCHEM_SYNONYMS = 20  # PubChem lists the most used synonyms first; vendor catalogue codes follow
+CHECK_PER_KIND = 50  # half screened in, half screened out, per kind
 CHECK_SEED = 20261104
+RELATED = 0.5  # Lin similarity within which a modelled disease counts for the entry's disease
 GATES = {"recall": 0.80, "kappa": 0.60, "phase2_coverage": 0.08}
-METHOD = "literature_evidence@v1"
+METHOD = "literature_evidence@v2"
+PUG = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/synonyms/JSON"
 
-ANIMAL_TERMS = ('(mice[tiab] OR mouse[tiab] OR murine[tiab] OR rat[tiab] OR rats[tiab] OR "in vivo"[tiab] OR '
-                'xenograft*[tiab] OR monkey*[tiab] OR primate*[tiab] OR dog[tiab] OR dogs[tiab] OR rabbit*[tiab] OR '
-                'pigs[tiab] OR minipig*[tiab] OR "animal model"[tiab] OR "animal models"[tiab])')
-EXPOSURE_TERMS = ('(pharmacokinetic*[tiab] OR pharmacodynamic*[tiab] OR bioavailability[tiab] OR exposure[tiab] OR '
-                  '"tissue distribution"[tiab] OR "brain penetration"[tiab] OR "blood-brain barrier"[tiab] OR '
-                  'occupancy[tiab] OR "target engagement"[tiab] OR biomarker*[tiab])')
-HUMAN_TERMS = '(humans[mh] OR patients[tiab] OR volunteers[tiab] OR subjects[tiab])'
-ENGAGEMENT_TERMS = f'({PHARMACOLOGY_TERMS} OR biomarker*[tiab] OR "receptor occupancy"[tiab])'
+# Synonyms that are database or registry identifiers, not names a paper would use for the drug.
+IDENTIFIER = re.compile(
+    r"^(\d{2,7}-\d{2}-\d|\d{3}-\d{3}-\d|[A-Z]\d{2}[A-Z]{2}\d{2}|Q\d+|[CD]\d{5}|DB\d{5}|C\d+H\d+\S*"
+    r"|(CHEMBL|SCHEMBL|CHEBI|DTXSID|DTXCID|MFCD|RefChem|UNII|NCGC|AKOS|ZINC|BDBM|HMS|SMR|MLS|KBio|Tox21|CCRIS|HSDB"
+    r"|EINECS|BRD|GTPL|BCP|EN300|STK|SPECTRUM|Prestwick|BSPBio|nchembio|Pharmakon|Kinome|GLXC|SDCCG|CAS-|cid_|orb\d"
+    r"|DEA NO|WHO \d|AS-|HY-|CS-|SR-|AC-|AB\d|CU-\d|EX-A\d|BS-\d|s\d).*"
+    r"|(compound|cpd|example|drug|molecule)\s*\d+[a-z]?)$",
+    re.IGNORECASE)
+UNII_CODE = re.compile(r"^(?=.*\d)(?=.*[A-Z])[A-Z0-9]{10}$")
 
 
 def clean(name: str) -> str:
-    return re.sub(r"\s*\[[^\]]*\]$", "", name).replace('"', "").strip()
+    """A name without a trailing bracketed qualifier ("ALVOCIDIB [INN]", "Iressa (TN)") or quotes."""
+    return re.sub(r"\s*[\[(][^\])]*[\])]$", "", name).replace('"', "").strip()
 
 
-def drug_names(name: str, codes: list[str], registry: list[str]) -> list[str]:
-    """The entity's name, code names and registry names: a name with a digit must have at least five
-    letters or digits (ASA, TF2 match unrelated words), any other at least four characters."""
+def usable(name: str) -> bool:
+    """A name a paper could use for the drug: not a systematic or bracketed chemical name, not a database
+    identifier, at most MAX_NAME_CHARS characters and MAX_NAME_WORDS words; a name with a digit has at least
+    five letters or digits (ASA, TF2 match unrelated words), any other at least four characters."""
+    if len(name) < 4 or len(name) > MAX_NAME_CHARS or len(name.split()) > MAX_NAME_WORDS:
+        return False
+    if any(c in name for c in "()[]{},;^") or IDENTIFIER.match(name) or UNII_CODE.match(name):
+        return False
+    return not (re.search(r"\d", name) and len(re.sub(r"\W", "", name)) < 5)
+
+
+def drug_names(*groups: list[str]) -> list[str]:
+    """Usable names from each group in order (INN, code names, ChEMBL, PubChem, then the substance registry, which
+    lists every biosimilar and formulation code), case-insensitively distinct, at most MAX_DRUG_NAMES."""
     out: list[str] = []
-    for n in map(clean, [name, *codes, *registry]):
-        if len(n) < 4 or (re.search(r"\d", n) and len(re.sub(r"\W", "", n)) < 5):
-            continue
-        if n.lower() not in {o.lower() for o in out}:
+    for n in (clean(x) for g in groups for x in g):
+        if usable(n) and n.lower() not in {o.lower() for o in out}:
             out.append(n)
     return out[:MAX_DRUG_NAMES]
 
 
-def tiab(names: list[str]) -> str:
-    return "(" + " OR ".join(f'"{n}"[tiab]' for n in names) + ")"
-
-
-def queries(drug: list[str], disease: list[str], cutoff: int) -> dict[str, str]:
-    before = f'("1900"[dp] : "{cutoff}"[dp])'
-    return {"animal_disease": f"{tiab(drug)} AND {tiab(disease)} AND {ANIMAL_TERMS} AND {before} {NOT_REVIEWS}",
-            "animal_healthy": f"{tiab(drug)} AND {ANIMAL_TERMS} AND {EXPOSURE_TERMS} AND {before} {NOT_REVIEWS}",
-            "human_engagement": f"{tiab(drug)} AND {ENGAGEMENT_TERMS} AND {HUMAN_TERMS} AND {before} {NOT_REVIEWS}"}
+def query(names: list[str], cutoff: int) -> str:
+    return (f'({" OR ".join(f"{chr(34)}{n}{chr(34)}[tiab]" for n in names)}) AND ("1900"[dp] : "{cutoff}"[dp]) '
+            f"{NOT_REVIEWS}")
 
 
 def pilot_entries() -> pd.DataFrame:
-    return pd.read_csv(PILOT)[["moiety_id", "mondo_id", "phase", "entry_date", "evidence_cutoff_year", "reference_set"]] \
+    s = pd.read_csv(PILOT)
+    return s.assign(row=np.arange(1, len(s) + 1))[["moiety_id", "mondo_id", "phase", "entry_date",
+                                                   "evidence_cutoff_year", "reference_set", "row"]] \
         .rename(columns={"evidence_cutoff_year": "cutoff_year"})
 
 
@@ -104,61 +127,77 @@ def entries(which: str) -> pd.DataFrame:
     return pilot_entries() if which == "pilot" else cohort_entries()
 
 
-def searches(e: pd.DataFrame, kinds: tuple[str, ...]) -> list[tuple[int, str, str, int]]:
-    """(entity, disease or '', kind, cutoff year) of each search the entries need."""
-    out = set()
-    for r in e.itertuples(index=False):
-        for k in kinds:
-            if k == "animal_disease":
-                out.add((int(r.moiety_id), r.mondo_id, k, int(r.cutoff_year)))
-            elif k == "animal_healthy" or r.phase >= 2:
-                out.add((int(r.moiety_id), "", k, int(r.cutoff_year)))
-    return sorted(out)
+def drug_cutoffs(e: pd.DataFrame) -> dict[int, int]:
+    """Entity -> the latest cutoff year of its entries: the one search it needs."""
+    return {int(m): int(y) for m, y in e.groupby("moiety_id").cutoff_year.max().items()}
 
 
-def names_of(cur, moieties: list[int], diseases: list[str]) -> tuple[dict, dict]:
-    cur.execute("""SELECT m.moiety_id, m.name, m.code_names,
-                          coalesce(array_agg(n.name) FILTER (WHERE n.name IS NOT NULL), '{}')
+def pubchem_synonyms(cids: list[str]) -> dict[str, list[str]]:
+    out: dict[str, list[str]] = {}
+    for i in range(0, len(cids), CIDS_PER_CALL):
+        r = requests.post(PUG, data={"cid": ",".join(cids[i:i + CIDS_PER_CALL])}, timeout=180)
+        if r.status_code == 404:
+            continue
+        r.raise_for_status()
+        for info in r.json()["InformationList"]["Information"]:
+            out[str(info["CID"])] = (info.get("Synonym") or [])[:PUBCHEM_SYNONYMS]
+    return out
+
+
+def chembl_synonyms(ids: list[str]) -> dict[str, list[str]]:
+    out: dict[str, list[str]] = {}
+    for i in range(0, len(ids), IDS_PER_CALL):
+        page = chembl_get("molecule.json", limit=PAGE, molecule_chembl_id__in=",".join(ids[i:i + IDS_PER_CALL]),
+                          only="molecule_chembl_id,pref_name,molecule_synonyms")
+        for m in page["molecules"]:
+            out[m["molecule_chembl_id"]] = [m["pref_name"]] * bool(m.get("pref_name")) + \
+                [s["molecule_synonym"] for s in m.get("molecule_synonyms") or []]
+    return out
+
+
+def names_of(cur, moieties: list[int]) -> dict[int, list[str]]:
+    cur.execute("""SELECT m.moiety_id, m.name, m.code_names, u.pubchem_cid,
+                          coalesce(array_agg(DISTINCT n.name) FILTER (WHERE n.name IS NOT NULL), '{}'),
+                          coalesce(array_agg(DISTINCT cm.parent_chembl_id) FILTER (WHERE cm.parent_chembl_id IS NOT NULL), '{}')
                    FROM preclin.moiety m
+                   LEFT JOIN preclin.unii_substance u ON u.unii = m.unii
                    LEFT JOIN preclin.unii_name n ON n.unii = m.unii AND n.name_type IN ('cn', 'cd', 'of')
-                   WHERE m.moiety_id = ANY(%s) GROUP BY 1, 2, 3""", (moieties,))
-    drugs = {m: drug_names(n, list(c or []), sorted(r)) for m, n, c, r in cur.fetchall()}
-    cur.execute("""SELECT t.term_id, t.label, t.synonyms,
-                          coalesce(array_agg(k.label ORDER BY k.label) FILTER (WHERE k.label IS NOT NULL), '{}')
-                   FROM preclin.ontology_term t
-                   LEFT JOIN preclin.ontology_is_a i ON i.ontology = 'MONDO' AND i.parent_id = t.term_id
-                   LEFT JOIN preclin.ontology_term k ON k.term_id = i.child_id AND NOT k.is_obsolete
-                   WHERE t.term_id = ANY(%s) GROUP BY 1, 2, 3""", (diseases,))
-    dis = {}
-    for d, label, syn, kids in cur.fetchall():
-        names = [n.replace('"', "") for n in [label, *(syn or []), *kids] if len(n) >= 4]
-        dis[d] = {"label": label, "names": list(dict.fromkeys(names))[:MAX_DISEASE_NAMES]}
-    return drugs, dis
+                   LEFT JOIN preclin.chembl_moiety cm ON cm.moiety_id = m.moiety_id
+                   WHERE m.moiety_id = ANY(%s) GROUP BY 1, 2, 3, 4""", (moieties,))
+    rows = cur.fetchall()
+    pubchem = pubchem_synonyms(sorted({c for *_, c, _, _ in rows if c}, key=int))
+    chembl = chembl_synonyms(sorted({x for *_, ids in rows for x in ids}))
+    out = {}
+    for m, name, codes, cid, reg, ids in rows:
+        own = [name, *(codes or []), *reg, *(pubchem.get(cid, []) if cid else [])]
+        known = {clean(n).lower() for n in own}
+        # A ChEMBL parent counts only when one of its names is already the entity's: a few parents are
+        # matched to the wrong entity, and their synonyms would search for another drug.
+        same = [s for x in ids if known & {clean(n).lower() for n in chembl.get(x, [])} for s in chembl[x]]
+        out[m] = drug_names([name], list(codes or []), same, pubchem.get(cid, []) if cid else [], sorted(reg))
+    return out
 
 
 def search(args) -> None:
-    """Run each search the entries need that has not been run; store its hits and their abstracts."""
-    kinds = tuple(args.kinds)
-    e = entries(args.entries)
-    need = searches(e, kinds)
+    """Run each drug search the entries need that has not been run; store its hits and their abstracts."""
+    cut = drug_cutoffs(entries(args.entries))
     with llm.connect() as conn, conn.cursor() as cur:
-        llm.record_method(cur, METHOD, "PubMed evidence about the drug before phase entry", __doc__,
-                          ["PubMed", "preclin.moiety", "preclin.unii_name", "preclin.ontology_term"],
-                          {"hits": HITS, "animal_terms": ANIMAL_TERMS, "exposure_terms": EXPOSURE_TERMS,
-                           "engagement_terms": ENGAGEMENT_TERMS, "human_terms": HUMAN_TERMS, "exclude": NOT_REVIEWS})
-        drugs, dis = names_of(cur, sorted({m for m, *_ in need}), sorted({d for _, d, *_ in need if d}))
-        cur.execute("SELECT moiety_id, mondo_id, kind, cutoff_year FROM preclin.literature_search")
+        llm.record_method(cur, METHOD, "PubMed evidence about the drug before phase entry (version 2)", __doc__,
+                          ["PubMed", "PubChem", "ChEMBL", "preclin.moiety", "preclin.unii_name", "preclin.ontology_term"],
+                          {"hits": HITS, "max_names": MAX_DRUG_NAMES, "exclude": NOT_REVIEWS, "related_lin": RELATED})
+        cur.execute("SELECT moiety_id, cutoff_year FROM preclin.literature_drug_search")
         done = set(cur.fetchall())
+        todo = sorted((m, y) for m, y in cut.items() if (m, y) not in done)
+        names = names_of(cur, [m for m, _ in todo])
         conn.commit()
-    todo = [s for s in need if s not in done and drugs.get(s[0]) and (not s[1] or s[1] in dis)]
-    print(f"searches={len(need)} to run={len(todo)}", flush=True)
-    for start in range(0, len(todo), 50):
-        chunk = todo[start:start + 50]
+    todo = [(m, y) for m, y in todo if names.get(m)]
+    print(f"drugs={len(cut)} to search={len(todo)}", flush=True)
+    for start in range(0, len(todo), 25):
         found = []
-        for m, d, k, y in chunk:
-            q = queries(drugs[m], dis[d]["names"] if d else [], y)[k]
+        for m, y in todo[start:start + 25]:
+            q = query(names[m], y)
             root = ET.fromstring(eutils("esearch", term=q, retmax=str(HITS), sort="relevance"))
-            found.append((m, d, k, y, q, int(root.findtext("Count") or 0), [x.text for x in root.iter("Id")]))
+            found.append((m, y, names[m], q, int(root.findtext("Count") or 0), [x.text for x in root.iter("Id")]))
         pmids = sorted({p for *_, ids in found for p in ids})
         with llm.connect() as conn, conn.cursor() as cur:
             cur.execute("SELECT pmid FROM public.publications WHERE pmid = ANY(%s)", (pmids,))
@@ -168,144 +207,176 @@ def search(args) -> None:
                 execute_values(cur, """INSERT INTO public.publications (pmid, title, authors, journal, year, doi, abstract)
                                        VALUES %s ON CONFLICT (pmid) DO NOTHING""", papers)
             stored = have | {p[0] for p in papers}
-            execute_values(cur, """INSERT INTO preclin.literature_search
-                                     (moiety_id, mondo_id, kind, cutoff_year, query, n_hits) VALUES %s
-                                   ON CONFLICT (moiety_id, mondo_id, kind, cutoff_year) DO NOTHING""",
-                           [(m, d, k, y, q, n) for m, d, k, y, q, n, _ in found])
-            hits = [(m, d, k, y, p, rank) for m, d, k, y, _, _, ids in found
-                    for rank, p in enumerate(ids, 1) if p in stored]
+            execute_values(cur, """INSERT INTO preclin.literature_drug_search (moiety_id, cutoff_year, names, query, n_hits)
+                                   VALUES %s ON CONFLICT (moiety_id, cutoff_year) DO NOTHING""",
+                           [(m, y, n, q, c) for m, y, n, q, c, _ in found])
+            hits = [(m, y, p, rank) for m, y, _, _, _, ids in found for rank, p in enumerate(ids, 1) if p in stored]
             if hits:
-                execute_values(cur, """INSERT INTO preclin.literature_hit (moiety_id, mondo_id, kind, cutoff_year, pmid, rank)
+                execute_values(cur, """INSERT INTO preclin.literature_drug_hit (moiety_id, cutoff_year, pmid, rank)
                                        VALUES %s ON CONFLICT DO NOTHING""", hits)
             conn.commit()
-        print(f"searched {start + len(chunk)}/{len(todo)} new papers={len(papers)}", flush=True)
+        print(f"searched {start + len(found)}/{len(todo)} new papers={len(papers)}", flush=True)
 
 
-DISEASE_SYSTEM = """You read one PubMed abstract and decide whether it reports a specific drug tested for efficacy in an animal model of a specific disease.
+SYSTEM = """You read one PubMed abstract about a specific drug and decide what it reports about THIS drug (under any of the names given; a different drug with the same target does not count).
 
-Answer qualifies = true only when the abstract reports an experiment in which THIS drug (under any of the names given) was given to animals that model THIS disease or one of its subtypes (induced, genetic or xenograft models, in vivo), and an efficacy outcome of the drug was measured. It does not qualify when: the drug is only mentioned or compared; another drug was tested; the work is only in cells or tissue in vitro; the animals do not model this disease; the abstract is a review; or the subjects are people.
+original_data: true when the abstract reports new experimental or clinical results involving this drug (not a review, commentary, guideline or protocol).
 
-Give the species (empty if none), the model in a few words in `detail` (empty if none), and the sentence that decides it in `quote` (empty if none). Judge only from the abstract."""
-DISEASE_SCHEMA = {"type": "object", "additionalProperties": False,
-                  "properties": {"qualifies": {"type": "boolean"}, "species": {"type": "string"},
-                                 "detail": {"type": "string"}, "quote": {"type": "string"}},
-                  "required": ["qualifies", "species", "detail", "quote"]}
+animal_disease: true when this drug was given in vivo to animals that model a human disease (induced, genetic, transgenic or xenograft models; behavioural models of a psychiatric or neurological disease count) and an efficacy outcome of the drug was measured. List in modelled_diseases each human disease the models stand for, as a standard disease name (e.g. "non-small cell lung carcinoma" for an A549 xenograft, "major depressive disorder" for a forced-swim test, "rheumatoid arthritis" for collagen-induced arthritis); empty unless animal_disease. In vitro work, healthy animals and people do not count.
 
-DRUG_SYSTEM = """You read one PubMed abstract about a specific drug and decide two things.
+animal_healthy: true when this drug was given to animals that do not model a disease (healthy or naive animals) and its pharmacokinetics, absorption, distribution (tissue or brain exposure, transport), metabolism or excretion, or a pharmacodynamic effect on its target or pathway was measured. Toxicology alone, in vitro work and disease models do not count.
 
-animal_healthy: true when the abstract reports THIS drug (under any of the names given) given to animals that do not model a disease (healthy or naive animals) and measures its pharmacokinetics, tissue or brain exposure, or a pharmacodynamic effect on its target or pathway. Toxicology alone, in vitro work, other drugs and reviews do not qualify.
+human_engagement: true when, in people (healthy volunteers or patients), a measurement shows whether this drug engaged its target or moved a pharmacodynamic biomarker of its mechanism: receptor occupancy (e.g. PET), target enzyme inhibition, target protein or ligand lowered, transcript knockdown, or a downstream biomarker of the target's pathway. Pharmacokinetics alone, clinical efficacy or safety alone, and animal or in vitro work do not count.
 
-human_engagement: true when the abstract reports, in people (healthy volunteers or patients), a measurement showing whether THIS drug engaged its target or moved a pharmacodynamic biomarker of its mechanism: receptor occupancy (e.g. PET), target enzyme inhibition, target protein or ligand lowered, transcript knockdown, or a downstream biomarker of the target's pathway. Pharmacokinetics alone, clinical efficacy or safety alone, and animal or in vitro work do not qualify.
+Give the species of the deciding study (human, mouse, rat, ...; empty if no kind is true), what was measured in a few words in detail, and the sentence that decides it in quote, copied exactly (empty if no kind is true). Judge only from the abstract."""
 
-Give the species of the study that decided either (human, mouse, rat, ...; empty if neither qualifies), what was measured in a few words in `detail`, and the deciding sentence in `quote` (empty if neither). Judge only from the abstract."""
-DRUG_SCHEMA = {"type": "object", "additionalProperties": False,
-               "properties": {"animal_healthy": {"type": "boolean"}, "human_engagement": {"type": "boolean"},
-                              "species": {"type": "string"}, "detail": {"type": "string"}, "quote": {"type": "string"}},
-               "required": ["animal_healthy", "human_engagement", "species", "detail", "quote"]}
+SCHEMA = {"type": "object", "additionalProperties": False,
+          "properties": {"original_data": {"type": "boolean"}, "animal_disease": {"type": "boolean"},
+                         "modelled_diseases": {"type": "array", "items": {"type": "string"}},
+                         "animal_healthy": {"type": "boolean"}, "human_engagement": {"type": "boolean"},
+                         "species": {"type": "string"}, "detail": {"type": "string"}, "quote": {"type": "string"}},
+          "required": ["original_data", "animal_disease", "modelled_diseases", "animal_healthy", "human_engagement",
+                       "species", "detail", "quote"]}
 
 
 def render(p: dict) -> str:
     lines = [f"Drug: {'; '.join(p['drug_names'])}"]
     if p.get("targets"):
         lines.append(f"Its targets: {p['targets']}")
-    if p.get("disease"):
-        lines.append(f"Disease: {p['disease']} (also: {'; '.join(p['disease_names'][:12])})")
     lines += ["", f"PMID {p['pmid']} ({p.get('year') or 'year unknown'}). {p['title']}", "", p["abstract"] or "(no abstract)"]
     return "\n".join(lines)
 
 
-def validate_quote(p: dict, out: dict) -> None:
+def validate(p: dict, out: dict) -> None:
+    if bool(out["modelled_diseases"]) != out["animal_disease"]:
+        raise ValueError("modelled_diseases must be listed exactly when animal_disease is true")
     q = re.sub(r"\s+", " ", out["quote"]).strip().lower()
     text = re.sub(r"\s+", " ", f"{p['title']} {p['abstract'] or ''}").lower()
     if q and q[:60] not in text:
         raise ValueError("quote is not in the abstract")
 
 
-def task(kind: str, model: str = "claude-sonnet-5", suffix: str = "") -> llm.Task:
-    disease = kind == "animal_disease"
-    return llm.Task(name=("literature_animal_disease" if disease else "literature_drug_pharmacology") + suffix,
-                    prompt_version="v1", schema_version="v1", system=DISEASE_SYSTEM if disease else DRUG_SYSTEM,
-                    schema=DISEASE_SCHEMA if disease else DRUG_SCHEMA, render=render, validate=validate_quote,
-                    subject_type="moiety_disease_pmid" if disease else "moiety_pmid", model=model,
+def task(model: str = "claude-sonnet-5", suffix: str = "") -> llm.Task:
+    return llm.Task(name="literature_drug_screen" + suffix, prompt_version="v1", schema_version="v1", system=SYSTEM,
+                    schema=SCHEMA, render=render, validate=validate, subject_type="moiety_pmid", model=model,
                     effort="low", max_tokens=2000)
 
 
-def screen_items(e: pd.DataFrame, kinds: tuple[str, ...]) -> dict[str, dict[str, dict]]:
-    """Task name -> subject key -> payload, for every hit of the entries' searches."""
-    need = searches(e, kinds)
+def screen_items(e: pd.DataFrame) -> dict[str, dict]:
+    """Subject key (entity|pmid) -> payload, for every hit of the entries' drug searches."""
+    cut = drug_cutoffs(e)
     with llm.connect() as conn, conn.cursor() as cur:
-        drugs, dis = names_of(cur, sorted({m for m, *_ in need}), sorted({d for _, d, *_ in need if d}))
+        cur.execute("SELECT moiety_id, names FROM preclin.literature_drug_search WHERE moiety_id = ANY(%s)", (sorted(cut),))
+        names = {m: n for m, n in cur.fetchall()}
         cur.execute("""SELECT mt.moiety_id, string_agg(DISTINCT t.symbol || ' (' || mt.action || ')', ', ')
                        FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
-                       WHERE mt.is_primary AND mt.moiety_id = ANY(%s) GROUP BY 1""", (sorted(drugs),))
+                       WHERE mt.is_primary AND mt.moiety_id = ANY(%s) GROUP BY 1""", (sorted(cut),))
         targets = dict(cur.fetchall())
-        cur.execute("CREATE TEMP TABLE want (moiety_id int, mondo_id text, kind text, cutoff_year int) ON COMMIT DROP")
-        execute_values(cur, "INSERT INTO want VALUES %s", need)
-        cur.execute("""SELECT h.moiety_id, h.mondo_id, h.kind, h.pmid, p.title, p.abstract, p.year
-                       FROM preclin.literature_hit h JOIN want USING (moiety_id, mondo_id, kind, cutoff_year)
-                       JOIN public.publications p USING (pmid)""")
+        cur.execute("CREATE TEMP TABLE want (moiety_id int, cutoff_year int) ON COMMIT DROP")
+        execute_values(cur, "INSERT INTO want VALUES %s", list(cut.items()))
+        cur.execute("""SELECT h.moiety_id, h.pmid, p.title, p.abstract, p.year FROM preclin.literature_drug_hit h
+                       JOIN want USING (moiety_id, cutoff_year) JOIN public.publications p USING (pmid)""")
         rows = cur.fetchall()
-    out: dict[str, dict[str, dict]] = {}
-    for m, d, k, pmid, title, abstract, year in rows:
-        t = task(k)
-        p = {"drug_names": drugs[m], "targets": targets.get(m, ""), "pmid": pmid, "title": title or "",
-             "abstract": abstract, "year": year}
-        if k == "animal_disease":
-            p |= {"disease": dis[d]["label"], "disease_names": dis[d]["names"]}
-        out.setdefault(t.name, {})[f"{m}|{d}|{pmid}" if d else f"{m}|{pmid}"] = p
-    return out
-
-
-def store_screens(t: llm.Task, decided: list[tuple[str, int, dict]]) -> None:
-    rows = []
-    for key, decision_id, out in decided:
-        parts = key.split("|")
-        m, d, pmid = (int(parts[0]), parts[1], parts[2]) if len(parts) == 3 else (int(parts[0]), "", parts[1])
-        verdicts = {"animal_disease": out["qualifies"]} if t.name.startswith("literature_animal_disease") else \
-            {"animal_healthy": out["animal_healthy"], "human_engagement": out["human_engagement"]}
-        rows += [(m, d, pmid, k, v, out["species"] or None, out["detail"] or None, out["quote"] or None, decision_id)
-                 for k, v in verdicts.items()]
-    with llm.connect() as conn, conn.cursor() as cur:
-        execute_values(cur, """INSERT INTO preclin.literature_screen
-                                 (moiety_id, mondo_id, pmid, kind, qualifies, species, detail, quote, llm_decision_id)
-                               VALUES %s ON CONFLICT (moiety_id, mondo_id, pmid, kind) DO UPDATE SET
-                                 qualifies = EXCLUDED.qualifies, species = EXCLUDED.species, detail = EXCLUDED.detail,
-                                 quote = EXCLUDED.quote, llm_decision_id = EXCLUDED.llm_decision_id""", rows)
-        conn.commit()
+    return {f"{m}|{pmid}": {"drug_names": names[m], "targets": targets.get(m, ""), "pmid": pmid, "title": title or "",
+                            "abstract": abstract, "year": year} for m, pmid, title, abstract, year in rows}
 
 
 def screen(args) -> None:
-    """Screen every hit of the entries' searches; earlier decisions on the same abstract are reused."""
-    kinds = tuple(args.kinds)
-    for name, items in screen_items(entries(args.entries), kinds).items():
-        t = task("animal_disease" if name == "literature_animal_disease" else "animal_healthy")
-        run_id = llm.run(t, items)
-        decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
-        store_screens(t, decided)
-        print(f"{name}: abstracts={len(items)} decided={len(decided)} run={run_id}", flush=True)
+    """Screen every hit of the entries' drug searches; an earlier decision on the same input is reused."""
+    items = screen_items(entries(args.entries))
+    run_id = llm.run(task(), items)
+    decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+    rows = [(int(k.split("|")[0]), k.split("|")[1], o["original_data"], o["animal_disease"], o["modelled_diseases"],
+             o["animal_healthy"], o["human_engagement"], o["species"] or None, o["detail"] or None, o["quote"] or None, did)
+            for k, did, o in decided]
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """INSERT INTO preclin.literature_drug_screen (moiety_id, pmid, original_data, animal_disease,
+                                 modelled_diseases, animal_healthy, human_engagement, species, detail, quote, llm_decision_id)
+                               VALUES %s ON CONFLICT (moiety_id, pmid) DO UPDATE SET
+                                 original_data = EXCLUDED.original_data, animal_disease = EXCLUDED.animal_disease,
+                                 modelled_diseases = EXCLUDED.modelled_diseases, animal_healthy = EXCLUDED.animal_healthy,
+                                 human_engagement = EXCLUDED.human_engagement, species = EXCLUDED.species,
+                                 detail = EXCLUDED.detail, quote = EXCLUDED.quote,
+                                 llm_decision_id = EXCLUDED.llm_decision_id""", rows, page_size=5000)
+        conn.commit()
+    print(f"abstracts={len(items)} decided={len(decided)} run={run_id}", flush=True)
+
+
+DISEASE_SYSTEM = """You map the human disease an animal model was said to model to the MONDO disease ontology.
+
+Pick from the candidate list:
+- match "exact": a candidate names the disease itself (by label, synonym or definition).
+- match "broader": no candidate names it, so pick the most specific candidate whose meaning contains it: its nearest parent disease or grouping (e.g. "chemotherapy-induced neuropathic pain" -> a peripheral neuropathy term). Prefer the narrowest candidate that still contains the whole disease.
+- match "none" with mondo_id null: when no candidate contains it, or the text is not a human disease (a symptom alone, a physiological state, a procedure). Never pick MONDO:0000001 (disease) or another root grouping that names no body system or disease class."""
+
+DISEASE_SCHEMA = {"type": "object", "additionalProperties": False,
+                  "properties": {"match": {"type": "string", "enum": ["exact", "broader", "none"]},
+                                 "mondo_id": {"type": ["string", "null"]}, "rationale": {"type": "string"}},
+                  "required": ["match", "mondo_id", "rationale"]}
+
+
+def render_disease(p: dict) -> str:
+    cand = "\n".join(f"- {c['mondo_id']} | {c['label']} | is_a: {c['parents']} | synonyms: {', '.join(c['synonyms'])}"
+                     + (f" | {c['definition']}" if c["definition"] else "") for c in p["candidates"])
+    return f"Disease the model stands for: {p['name']}\n\nMONDO candidates:\n{cand or '(none retrieved)'}"
+
+
+def validate_disease(p: dict, out: dict) -> None:
+    if out["mondo_id"] and out["mondo_id"] not in {c["mondo_id"] for c in p["candidates"]}:
+        raise ValueError(f"mondo_id {out['mondo_id']} not among candidates")
+    if (out["match"] == "none") != (out["mondo_id"] is None):
+        raise ValueError("match 'none' requires mondo_id null, and only then")
+
+
+DISEASE_TASK = llm.Task(name="literature_model_disease_mondo", prompt_version="v1", schema_version="v1",
+                        system=DISEASE_SYSTEM, schema=DISEASE_SCHEMA, render=render_disease, validate=validate_disease,
+                        subject_type="modelled_disease", model="claude-sonnet-5", effort="low", max_tokens=1500)
+
+
+def diseases(_args) -> None:
+    """Map every modelled disease named by a screen and not yet mapped; candidates are retrieved terms, their
+    parents and grandparents, as pipeline.indications offers for a condition with no term of its own."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT d FROM preclin.literature_drug_screen, unnest(modelled_diseases) d
+                       WHERE d NOT IN (SELECT modelled_disease FROM preclin.literature_model_disease)""")
+        todo = sorted(r[0] for r in cur.fetchall())
+        index = MondoIndex(cur)
+    items = {}
+    for name, pool in zip(todo, index.search(todo) if todo else []):
+        parents = [index.terms[p] for c in pool for p in index.parents.get(c["mondo_id"], []) if p in index.terms]
+        grand = [index.terms[g] for c in parents for g in index.parents.get(c["mondo_id"], []) if g in index.terms]
+        merged = {c["mondo_id"]: c for c in pool + parents + grand if c["mondo_id"] != "MONDO:0000001"}
+        items[name] = {"name": name, "candidates": list(merged.values())[:3 * N_CANDIDATES]}
+    if not items:
+        print("modelled diseases to map=0")
+        return
+    decided = llm.decisions(llm.run(DISEASE_TASK, items))
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """INSERT INTO preclin.literature_model_disease (modelled_disease, mondo_id, match, llm_decision_id)
+                               VALUES %s ON CONFLICT (modelled_disease) DO UPDATE SET mondo_id = EXCLUDED.mondo_id,
+                                 match = EXCLUDED.match, llm_decision_id = EXCLUDED.llm_decision_id""",
+                       [(k, o["mondo_id"], o["match"], did) for k, did, o in decided if o and "error" not in o])
+        conn.commit()
+    print(f"modelled diseases={len(items)} mapped={sum(1 for _, _, o in decided if o and o.get('mondo_id'))}")
 
 
 def check(_args) -> None:
-    """A second model relabels a seeded sample of CHECK_PER_KIND screened abstracts per kind of the pilot."""
-    items = screen_items(pilot_entries(), KINDS)
-    rng = np.random.default_rng(CHECK_SEED)
+    """A second model relabels, per kind, a seeded CHECK_PER_KIND pilot abstracts: half that the screen put in
+    that kind, half that it left out (fewer when a side has fewer)."""
+    items = screen_items(pilot_entries())
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT DISTINCT ON (moiety_id, mondo_id, pmid) moiety_id, mondo_id, pmid, kind
-                       FROM preclin.literature_hit ORDER BY moiety_id, mondo_id, pmid, kind""")
-        kind_of = {(f"{m}|{d}|{p}" if d else f"{m}|{p}"): k for m, d, p, k in cur.fetchall()}
-    for name, its in items.items():
-        keys = sorted(its)
-        if name == "literature_drug_pharmacology":
-            picked = []
-            for k in ("animal_healthy", "human_engagement"):
-                pool = [x for x in keys if kind_of.get(x) == k]
-                picked += [pool[i] for i in rng.choice(len(pool), min(CHECK_PER_KIND, len(pool)), replace=False)]
-        else:
-            picked = [keys[i] for i in rng.choice(len(keys), min(CHECK_PER_KIND, len(keys)), replace=False)]
-        t = task("animal_disease" if name == "literature_animal_disease" else "animal_healthy",
-                 model="claude-opus-5-5", suffix="_check")
-        run_id = llm.run(t, {k: its[k] for k in picked})
-        print(f"{t.name}: sample={len(picked)} decided={len(llm.decisions(run_id))} run={run_id}", flush=True)
+        cur.execute("""SELECT moiety_id || '|' || pmid, animal_disease, animal_healthy, human_engagement
+                       FROM preclin.literature_drug_screen""")
+        verdict = {k: dict(zip(KINDS, v)) for k, *v in cur.fetchall()}
+    rng = np.random.default_rng(CHECK_SEED)
+    keys = sorted(k for k in items if k in verdict)
+    picked: set[str] = set()
+    for kind in KINDS:
+        for side in (True, False):
+            pool = [k for k in keys if verdict[k][kind] is side]
+            picked |= {pool[i] for i in rng.choice(len(pool), min(CHECK_PER_KIND // 2, len(pool)), replace=False)}
+    run_id = llm.run(task(model="claude-opus-5-5", suffix="_check"), {k: items[k] for k in sorted(picked)})
+    print(f"check sample={len(picked)} decided={len(llm.decisions(run_id))} run={run_id}", flush=True)
 
 
 def kappa(a: list[bool], b: list[bool]) -> float | None:
@@ -317,49 +388,76 @@ def kappa(a: list[bool], b: list[bool]) -> float | None:
     return None if pe == 1 else (po - pe) / (1 - pe)
 
 
-def found(e: pd.DataFrame) -> pd.DataFrame:
-    """Entry x kind: the qualifying abstracts dated no later than the cutoff."""
+def agreement() -> dict[str, dict]:
+    """Kind -> agreement of the screen with the check model on the check sample, and the sample's make-up."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT h.moiety_id, h.mondo_id, h.kind, h.cutoff_year, h.pmid, p.year
-                       FROM preclin.literature_hit h JOIN public.publications p USING (pmid)
-                       JOIN preclin.literature_screen s ON s.moiety_id = h.moiety_id AND s.mondo_id = h.mondo_id
-                            AND s.pmid = h.pmid AND s.kind = h.kind
-                       WHERE s.qualifies""")
-        q = pd.DataFrame(cur.fetchall(), columns=["moiety_id", "mondo_id", "kind", "cutoff_year", "pmid", "year"])
-    rows = []
+        cur.execute("""SELECT DISTINCT ON (subject_key, task) subject_key, task, parsed_output
+                       FROM pv_evidence.llm_decision
+                       WHERE task IN ('literature_drug_screen', 'literature_drug_screen_check')
+                         AND validation_status = 'validated'
+                       ORDER BY subject_key, task, created_at DESC""")
+        by: dict = {}
+        for key, tname, out_ in cur.fetchall():
+            by.setdefault(key, {})[tname] = out_
+    pairs = [v for v in by.values() if len(v) == 2]
+    out = {}
+    for kind in KINDS:
+        a = [v["literature_drug_screen"][kind] for v in pairs]
+        b = [v["literature_drug_screen_check"][kind] for v in pairs]
+        out[kind] = {"pairs": len(a), "kappa": kappa(a, b),
+                     "agreement": float(np.mean(np.array(a) == np.array(b))) if a else None,
+                     "positives_screen": int(sum(a)), "positives_check": int(sum(b))}
+    return out
+
+
+def entry_matches(e: pd.DataFrame, q: pd.DataFrame, related) -> list[set[str]]:
+    """For each entry and kind, the qualifying abstracts dated by its cutoff (q: entity, pmid, year, kind,
+    mondo_id of a modelled disease for animal_disease). related(d) is the set of MONDO terms counting for d."""
+    by = {m: g for m, g in q.groupby("moiety_id")}
+    empty = q.iloc[:0]
+    out = []
     for r in e.itertuples(index=False):
+        g = by.get(r.moiety_id, empty)
+        g = g[g.year.isna() | (g.year <= r.cutoff_year)]
+        rel = related(r.mondo_id)
         for k in KINDS:
             if k == "human_engagement" and r.phase < 2:
                 continue
-            d = r.mondo_id if k == "animal_disease" else ""
-            g = q[(q.moiety_id == r.moiety_id) & (q.mondo_id == d) & (q.kind == k) & (q.cutoff_year == r.cutoff_year)
-                  & (q.year.isna() | (q.year <= r.cutoff_year))]
-            rows.append({"moiety_id": r.moiety_id, "mondo_id": r.mondo_id, "phase": r.phase, "kind": k,
-                         "pmids": sorted(set(g.pmid))})
-    return pd.DataFrame(rows)
-
-
-def agreement() -> dict[str, dict]:
-    """Kind -> agreement of the screening model with the check model on the check sample."""
-    out = {}
-    with llm.connect() as conn, conn.cursor() as cur:
-        for name, fields in (("literature_animal_disease", ("qualifies",)),
-                             ("literature_drug_pharmacology", ("animal_healthy", "human_engagement"))):
-            cur.execute("""SELECT DISTINCT ON (subject_key, task) subject_key, task, parsed_output
-                           FROM pv_evidence.llm_decision WHERE task IN (%s, %s) AND validation_status = 'validated'
-                           ORDER BY subject_key, task, created_at DESC""", (name, name + "_check"))
-            by: dict = {}
-            for key, tname, out_ in cur.fetchall():
-                by.setdefault(key, {})[tname] = out_
-            pairs = [v for v in by.values() if len(v) == 2]
-            for field in fields:
-                a = [v[name][field] for v in pairs]
-                b = [v[name + "_check"][field] for v in pairs]
-                out["animal_disease" if field == "qualifies" else field] = {
-                    "pairs": len(a), "kappa": kappa(a, b),
-                    "agreement": float(np.mean(np.array(a) == np.array(b))) if a else None,
-                    "positives_screen": int(sum(a)), "positives_check": int(sum(b))}
+            gk = g[g.kind == k]
+            if k == "animal_disease":
+                gk = gk[gk.mondo_id.isin(rel)]
+            out.append({"moiety_id": r.moiety_id, "mondo_id": r.mondo_id, "phase": r.phase, "kind": k,
+                        "pmids": sorted(set(gk.pmid))})
     return out
+
+
+def qualifying() -> pd.DataFrame:
+    """Entity, PMID, publication year, kind and (for animal models) mapped MONDO term of every qualifying screen."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT s.moiety_id, s.pmid, p.year, 'animal_disease', md.mondo_id
+                       FROM preclin.literature_drug_screen s JOIN public.publications p USING (pmid)
+                       CROSS JOIN unnest(s.modelled_diseases) d
+                       JOIN preclin.literature_model_disease md ON md.modelled_disease = d
+                       WHERE s.animal_disease AND md.mondo_id IS NOT NULL
+                       UNION ALL
+                       SELECT s.moiety_id, s.pmid, p.year, k.kind, NULL
+                       FROM preclin.literature_drug_screen s JOIN public.publications p USING (pmid)
+                       CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
+                                                  ('human_engagement', s.human_engagement)) k(kind, ok)
+                       WHERE k.ok""")
+        return pd.DataFrame(cur.fetchall(), columns=["moiety_id", "pmid", "year", "kind", "mondo_id"])
+
+
+def related_terms():
+    from report.disease_match import Mondo
+    from report.section3 import Neighbourhood
+    nb = Neighbourhood(Mondo())
+    return lambda d: nb.terms(d, RELATED)
+
+
+def found(e: pd.DataFrame) -> pd.DataFrame:
+    """Entry x kind: the qualifying abstracts dated no later than the cutoff."""
+    return pd.DataFrame(entry_matches(e, qualifying(), related_terms()))
 
 
 def reference_rows(ref: list[dict], e: pd.DataFrame) -> pd.DataFrame:
@@ -379,27 +477,34 @@ def reference_rows(ref: list[dict], e: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["moiety_id", "mondo_id", "phase", "kind", "pmid", "venue"])
 
 
-def misses(rk: pd.DataFrame, e: pd.DataFrame) -> dict[str, int]:
-    """Why each PubMed-indexed reference study of one kind was or was not found: screened in, screened
-    out, kept but not screened, matched by the search but ranked below the HITS kept, or not matched."""
-    cut = {(r.moiety_id, r.mondo_id, r.phase): int(r.cutoff_year) for r in e.itertuples()}
+def misses(rk: pd.DataFrame, related) -> dict[str, int]:
+    """Why each PubMed-indexed reference study of one kind was or was not found: found; screened in but
+    its modelled disease mapped outside the entry's (animal_disease); screened out; kept but not screened;
+    matched by the drug search but ranked below the HITS kept; or not matched by it."""
     out: dict[str, int] = {}
     with llm.connect() as conn, conn.cursor() as cur:
         for r in rk.dropna(subset=["pmid"]).itertuples():
-            d = r.mondo_id if r.kind == "animal_disease" else ""
-            y = cut[(r.moiety_id, r.mondo_id, r.phase)]
-            cur.execute("""SELECT s.query, h.pmid IS NOT NULL, c.qualifies FROM preclin.literature_search s
-                           LEFT JOIN preclin.literature_hit h ON h.moiety_id = s.moiety_id AND h.mondo_id = s.mondo_id
-                                AND h.kind = s.kind AND h.cutoff_year = s.cutoff_year AND h.pmid = %s
-                           LEFT JOIN preclin.literature_screen c ON c.moiety_id = s.moiety_id
-                                AND c.mondo_id = s.mondo_id AND c.kind = s.kind AND c.pmid = %s
-                           WHERE s.moiety_id = %s AND s.mondo_id = %s AND s.kind = %s AND s.cutoff_year = %s""",
-                        (r.pmid, r.pmid, int(r.moiety_id), d, r.kind, y))
+            cur.execute("""SELECT s.query, h.pmid IS NOT NULL, c.animal_disease, c.animal_healthy, c.human_engagement,
+                                  (SELECT array_agg(md.mondo_id) FROM unnest(c.modelled_diseases) d
+                                   JOIN preclin.literature_model_disease md ON md.modelled_disease = d)
+                           FROM preclin.literature_drug_search s
+                           LEFT JOIN preclin.literature_drug_hit h ON h.moiety_id = s.moiety_id
+                                AND h.cutoff_year = s.cutoff_year AND h.pmid = %s
+                           LEFT JOIN preclin.literature_drug_screen c ON c.moiety_id = s.moiety_id AND c.pmid = %s
+                           WHERE s.moiety_id = %s""", (r.pmid, r.pmid, int(r.moiety_id)))
             row = cur.fetchone()
             if row is None:
                 why = "not_searched"
             elif row[1]:
-                why = "unscreened" if row[2] is None else "screened_in" if row[2] else "screened_out"
+                verdict = dict(zip(KINDS, row[2:5]))
+                if verdict[r.kind] is None:
+                    why = "unscreened"
+                elif not verdict[r.kind]:
+                    why = "screened_out"
+                elif r.kind == "animal_disease" and not set(row[5] or []) & related(r.mondo_id):
+                    why = "screened_in_other_disease"
+                else:
+                    why = "found"
             else:
                 root = ET.fromstring(eutils("esearch", term=f"({row[0]}) AND {r.pmid}[uid]", retmax="0"))
                 why = "ranked_below_kept" if int(root.findtext("Count") or 0) else "not_matched_by_query"
@@ -407,19 +512,12 @@ def misses(rk: pd.DataFrame, e: pd.DataFrame) -> dict[str, int]:
     return out
 
 
-def gate(args) -> None:
-    """Recall, agreement and coverage of the pilot against the blind reference set; writes GATE."""
-    e = pilot_entries()
-    f = found(e)
-    ref: list[dict] = []
-    for i in range(1, 5):
-        with open(os.path.join(args.reference, f"reference_part{i}_result.json")) as fh:
-            ref += json.load(fh)
+def evaluate(e: pd.DataFrame, ref: list[dict], f: pd.DataFrame, agree: dict, related) -> dict:
+    """Recall, agreement and coverage of one set of pilot entries against its blind reference."""
     rr = reference_rows(ref, e)
     keys = ["moiety_id", "mondo_id", "phase"]
-    on_ref = f.merge(e[e.reference_set][keys], on=keys)
-    agree = agreement()
-    result: dict = {"gates": GATES, "reference_entries": len(ref), "kinds": {}}
+    on_ref = f.merge(e[keys], on=keys)
+    result: dict = {"reference_entries": len(ref), "kinds": {}}
     for kind in KINDS:
         got = {(r.moiety_id, r.mondo_id, r.phase): set(r.pmids) for r in on_ref[on_ref.kind == kind].itertuples()}
         rk = rr[rr.kind == kind]
@@ -429,11 +527,7 @@ def gate(args) -> None:
         with_ref = set(rk[keys].itertuples(index=False, name=None))
         none_ref = [k for k in got if k not in with_ref]
         entry_recall = [bool(got.get(k)) for k in with_ref]
-        fk = f[f.kind == kind]
-        ph2 = fk[fk.phase == 2]
         recall = float(np.mean(hit)) if hit else None
-        cov = float((ph2.pmids.str.len() > 0).mean()) if len(ph2) else None
-        kap = agree.get(kind, {}).get("kappa")
         result["kinds"][kind] = {
             "reference_studies": len(rk), "reference_studies_in_pubmed": int(in_pm.sum()),
             "reference_studies_by_venue": rk.venue.fillna("unknown").value_counts().to_dict(),
@@ -442,12 +536,41 @@ def gate(args) -> None:
             "reference_entries_with_study": len(with_ref), "entries_judged": len(got),
             "entry_recall": float(np.mean(entry_recall)) if entry_recall else None,
             "pipeline_none_when_reference_none": float(np.mean([not got[k] for k in none_ref])) if none_ref else None,
-            "pilot_entries": len(fk), "pilot_entries_with_any": int((fk.pmids.str.len() > 0).sum()),
-            "phase2_coverage": cov, "check": agree.get(kind), "pubmed_reference_studies": misses(rk, e),
-            "passes": bool(recall is not None and recall >= GATES["recall"] and kap is not None
-                           and kap >= GATES["kappa"] and cov is not None and cov >= GATES["phase2_coverage"])}
+            "pubmed_reference_studies": misses(rk, related), "check": agree.get(kind)}
+    return result
+
+
+def gate(args) -> None:
+    """Score the pilot rows --rows against the reference files <PREFIX>{1..4}_result.json; record it in GATE
+    under --label, with Phase 2 coverage over all 300 pilot entries and the plan's gates applied."""
+    e = pilot_entries()
+    lo, hi = map(int, args.rows.split("-"))
+    rows_e = e[e.row.between(lo, hi)]
+    ref: list[dict] = []
+    for i in range(1, 5):
+        with open(f"{args.reference}{i}_result.json") as fh:
+            ref += json.load(fh)
+    related = related_terms()
+    f = pd.DataFrame(entry_matches(e, qualifying(), related))
+    agree = agreement()
+    result = evaluate(rows_e, ref, f, agree, related) | {"rows": args.rows, "reference": args.reference}
+    for kind in KINDS:
+        fk = f[(f.kind == kind) & (f.phase == 2)]
+        cov = float((fk.pmids.str.len() > 0).mean()) if len(fk) else None
+        k = result["kinds"][kind]
+        k["pilot_entries_with_any"] = int((f[f.kind == kind].pmids.str.len() > 0).sum())
+        k["pilot_entries"] = int((f.kind == kind).sum())
+        k["phase2_coverage"] = cov
+        kap = (agree.get(kind) or {}).get("kappa")
+        k["passes"] = bool(k["recall"] is not None and k["recall"] >= GATES["recall"] and kap is not None
+                           and kap >= GATES["kappa"] and cov is not None and cov >= GATES["phase2_coverage"])
+    with open(GATE) as fh:
+        record = json.load(fh)
+    if "v1" not in record:
+        record = {"v1": record}
+    record[args.label] = {"gates": GATES, **result}
     with open(GATE, "w") as fh:
-        json.dump(result, fh, indent=2)
+        json.dump(record, fh, indent=2)
     print(json.dumps(result, indent=2))
 
 
@@ -457,11 +580,13 @@ def main() -> None:
     for name, fn in (("search", search), ("screen", screen)):
         p = sub.add_parser(name)
         p.add_argument("--entries", choices=("pilot", "cohort"), default="cohort")
-        p.add_argument("--kinds", nargs="+", choices=KINDS, default=list(KINDS))
         p.set_defaults(fn=fn)
+    sub.add_parser("diseases").set_defaults(fn=diseases)
     sub.add_parser("check").set_defaults(fn=check)
     g = sub.add_parser("gate")
-    g.add_argument("--reference", required=True, help="directory holding reference_part{1..4}_result.json")
+    g.add_argument("--reference", required=True, help="path prefix of the four reference files, before {1..4}_result.json")
+    g.add_argument("--rows", required=True, help="pilot sample rows scored, e.g. 101-200")
+    g.add_argument("--label", default="v2", help="key of this evaluation in the gate record")
     g.set_defaults(fn=gate)
     args = parser.parse_args()
     args.fn(args)

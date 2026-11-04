@@ -1,0 +1,46 @@
+import pandas as pd
+
+from pipeline.literature import drug_names, entry_matches
+
+
+def test_drug_names_keep_names_a_paper_would_use_and_drop_identifiers():
+    names = drug_names(["alvocidib"], ["L86-8275", "TF2"], ["FLAVOPIRIDOL"],
+                       ["Alvocidib [INN]", "146426-40-6", "CHEMBL428690", "45AD6X575G", "compound 3",
+                        "2-(2-chlorophenyl)-5,7-dihydroxy-8-[(3S,4R)-3-hydroxy-1-methylpiperidin-4-yl]chromen-4-one",
+                        "orb1685546", "Q4063441"], [])
+    assert names == ["alvocidib", "L86-8275", "FLAVOPIRIDOL"]
+
+
+def test_drug_names_are_distinct_ignoring_case_and_capped():
+    many = [f"ABC-{i:04d}" for i in range(80)]
+    names = drug_names(["Drugmab"], ["DRUGMAB"], many)
+    assert names[0] == "Drugmab" and "DRUGMAB" not in names and len(names) == 50
+
+
+QUALIFYING = pd.DataFrame([
+    {"moiety_id": 1, "pmid": "10", "year": 2010, "kind": "animal_disease", "mondo_id": "MONDO:A1"},
+    {"moiety_id": 1, "pmid": "11", "year": 2010, "kind": "animal_disease", "mondo_id": "MONDO:B"},
+    {"moiety_id": 1, "pmid": "12", "year": 2016, "kind": "animal_healthy", "mondo_id": None},
+    {"moiety_id": 1, "pmid": "13", "year": 2012, "kind": "human_engagement", "mondo_id": None},
+])
+RELATED = {"MONDO:A": {"MONDO:A", "MONDO:A1"}}
+
+
+def matched(entries):
+    out = entry_matches(pd.DataFrame(entries), QUALIFYING, lambda d: RELATED.get(d, {d}))
+    return {(r["phase"], r["kind"]): r["pmids"] for r in out}
+
+
+def test_an_animal_model_counts_only_for_a_related_disease():
+    got = matched([{"moiety_id": 1, "mondo_id": "MONDO:A", "phase": 2, "cutoff_year": 2015}])
+    assert got[(2, "animal_disease")] == ["10"]
+
+
+def test_an_entry_counts_only_abstracts_published_by_its_cutoff():
+    got = matched([{"moiety_id": 1, "mondo_id": "MONDO:A", "phase": 2, "cutoff_year": 2011}])
+    assert got[(2, "animal_healthy")] == [] and got[(2, "human_engagement")] == []
+
+
+def test_human_engagement_is_judged_for_phase_2_and_3_entries_only():
+    got = matched([{"moiety_id": 1, "mondo_id": "MONDO:A", "phase": 1, "cutoff_year": 2018}])
+    assert (1, "human_engagement") not in got and got[(1, "animal_healthy")] == ["12"]
