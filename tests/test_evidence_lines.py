@@ -2,7 +2,7 @@ import math
 
 import pandas as pd
 
-from report.evidence_lines import earlier_failure, failures_by_gene, molecule_lines
+from report.evidence_lines import biomarker_selected, earlier_failure, failures_by_gene, molecule_lines
 
 RELATED = frozenset({"MONDO:A", "MONDO:A1"})
 FAILED = pd.DataFrame([
@@ -78,3 +78,22 @@ def test_brain_penetrance_is_scored_only_for_neurology_and_psychiatry_small_mole
     assert r.brain_penetrant.iloc[0] == 1.0
     assert r.brain_penetrant.iloc[1] == 0.0  # MW 520
     assert r.brain_penetrant.iloc[2:].isna().all()  # oncology; antibody; no properties
+
+
+TRIALS = pd.DataFrame([
+    {"program_id": 1, "nct_id": "NCT1", "phase": 2, "start_date": "2012-03-01", "industry": True, "starts_phase": True},
+    {"program_id": 1, "nct_id": "NCT2", "phase": 2, "start_date": "2013-01-01", "industry": True, "starts_phase": True},
+    {"program_id": 2, "nct_id": "NCT3", "phase": 2, "start_date": "2014-05-01", "industry": True, "starts_phase": True},
+    {"program_id": 2, "nct_id": "NCT4", "phase": 2, "start_date": "2014-05-01", "industry": True, "starts_phase": True},
+    {"program_id": 3, "nct_id": "NCT5", "phase": 1, "start_date": "2015-01-01", "industry": False, "starts_phase": True},
+])
+SELECTED = pd.DataFrame({"nct_id": ["NCT1", "NCT2", "NCT3", "NCT4", "NCT5"],
+                         "selected": [False, True, False, True, True]})
+
+
+def test_an_entry_is_biomarker_selected_by_the_trials_that_opened_its_phase():
+    rows = pd.DataFrame({"program_id": [1, 2, 3], "phase": [2, 2, 1],
+                         "entry": ["2012-03-01", "2014-05-01", "2015-01-01"]})
+    out = biomarker_selected(rows, TRIALS, SELECTED)
+    assert out.tolist()[:2] == [0.0, 1.0]  # a later selected trial does not count; any opening trial does
+    assert pd.isna(out.iloc[2])  # no labelled industry trial opened the phase
