@@ -67,17 +67,6 @@ def query(sql: str, params=None) -> pd.DataFrame:
             time.sleep(30 * (attempt + 1))
 
 
-PAGES = 24  # a large frame is read in parts, so a dropped link costs one part, not the frame
-
-
-def query_paged(sql: str, key: str, params: dict | None = None) -> pd.DataFrame:
-    """`sql` read in PAGES parts split by a hash of its output column `key`, each its own retried
-    query; named %(...)s parameters of `sql` go in `params`."""
-    part = f"SELECT * FROM ({sql}) q WHERE mod(abs(hashtext(({key})::text)), %(pages)s) = %(page)s"
-    return pd.concat([query(part, {**(params or {}), "pages": PAGES, "page": page}) for page in range(PAGES)],
-                     ignore_index=True)
-
-
 def loaded_once(load):
     """Load a frame on first use and hand each caller its own copy."""
     frames = {}
@@ -171,20 +160,22 @@ def programs() -> pd.DataFrame:
 @loaded_once
 def program_trials() -> pd.DataFrame:
     """Every trial attached to a program, with its sponsor class, status and dates."""
-    return query_paged("""
+    return query("""
         SELECT dt.program_id, dt.nct_id, dt.phase, dt.attach, dt.marks_entry, dt.starts_phase,
                s.lead_sponsor_class = 'INDUSTRY' AS industry,
                s.overall_status, s.start_date, s.start_date_type, s.last_update_posted,
                s.primary_completion_date, s.completion_date,
                'United States' = ANY(coalesce(s.countries, '{}')) AS us_site, s.has_results
-        FROM preclin.dev_program_trial dt JOIN preclin.ctgov_study s USING (nct_id)""", "program_id")
+        FROM preclin.dev_program_trial dt JOIN preclin.ctgov_study s USING (nct_id)
+        ORDER BY dt.program_id, dt.nct_id, dt.phase""")
 
 
 @loaded_once
 def trial_outcomes() -> pd.DataFrame:
     """Classified trial outcomes; results_source says whether the endpoint was
     judged from registry-posted results or from a results paper's abstract."""
-    return query_paged("""
+    return query("""
         SELECT o.*, CASE d.task WHEN 'trial_outcome_from_publication' THEN 'publication'
                                 ELSE 'registry' END AS results_source
-        FROM preclin.trial_outcome o JOIN pv_evidence.llm_decision d USING (llm_decision_id)""", "llm_decision_id")
+        FROM preclin.trial_outcome o JOIN pv_evidence.llm_decision d USING (llm_decision_id)
+        ORDER BY o.nct_id""")
