@@ -88,6 +88,7 @@ evidence:
 	$(RUN) pipeline.evidence_dates projectscore
 	$(RUN) pipeline.opentargets evidence
 	$(RUN) pipeline.chembl activities
+	$(RUN) pipeline.pubchem properties
 	$(RUN) pipeline.targets mechanism
 	$(RUN) pipeline.targets mouse
 	$(RUN) pipeline.stop_causes signals
