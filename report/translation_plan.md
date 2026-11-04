@@ -194,8 +194,16 @@ Kept apart from the efficacy categories:
 - **N2.** Among small molecules, at most one Rule-of-5 violation raises S4;
   among neurology and psychiatry programs, the brain-penetrance properties
   raise S4.
-- **N3.** Outside oncology, the molecule category (any of potency, selectivity,
-  drug-likeness) raises S4 with human genetics held fixed.
+- **N3.** Outside oncology, among small molecules, potency of 100 nM or better
+  on the primary target raises S4 with human genetics and drug-likeness held
+  fixed. Potency's unadjusted effect is already reported; this tests whether it
+  holds independently of genetics.
+
+N3 was narrowed on 2026-11-04, before any outcome was tested. As first written
+it tested the whole molecule category, but drug-likeness alone passes 84% of
+small-molecule entries, so the category covered 79% of them and would have
+measured drug-likeness rather than the drug's pharmacology. Drug-likeness keeps
+its own test in N2.
 
 Category-level estimates for categories 1–6 are reported on this cohort with
 their intervals and are not tested. A category or subcategory with fewer than
