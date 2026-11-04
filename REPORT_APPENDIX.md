@@ -107,7 +107,7 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | Cell studies | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
 | · CRISPR screen in cells | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
 | · CRISPR screen in cells, on today's data (hindsight) (descriptive) | 372 / 7,372 | 100 | 1.98 (1.13–2.89) | 1.70 (1.18–2.43) | 1.59 (1.10–2.29) | 0.97 (0.70–1.36) |
-| The molecule | 4,856 / 6,139 | 1,302 | 2.74 (2.02–3.90) | 1.34 (1.00–1.79) | 1.32 (0.99–1.76) | 1.14 (0.95–1.38) |
+| The molecule | 4,856 / 5,557 | 1,302 | 0.96 (0.70–1.37) | 0.88 (0.66–1.20) | 0.88 (0.65–1.19) | 0.97 (0.78–1.21) |
 | · Potency at the primary target, 100 nM or better | 1,388 / 6,139 | 358 | 1.59 (1.16–2.12) | 1.07 (0.81–1.42) | 1.05 (0.79–1.39) | 1.10 (0.92–1.31) |
 | · Potency at the primary target, 10 nM or better (descriptive) | 1,025 / 6,139 | 263 | 1.98 (1.37–2.73) | 1.22 (0.90–1.65) | 1.19 (0.88–1.62) | 0.99 (0.81–1.20) |
 | · At least 10-fold selective over measured off-targets | 579 / 1,119 | 163 | 1.31 (0.72–2.36) | 1.00 (0.65–1.55) | 1.01 (0.65–1.55) | 0.97 (0.69–1.37) |
@@ -120,10 +120,10 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · Mouse knockout dies before weaning | 3,718 / 7,372 | 581 | 0.95 (0.69–1.36) | 1.08 (0.87–1.32) | 1.07 (0.87–1.31) | 1.13 (0.61–2.12) (safety) |
 | · Essential in most cell lines | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
 | · Essential in most cell lines, on today's data (hindsight) (descriptive) | 674 / 7,372 | 99 | 0.42 (0.15–0.72) | 0.60 (0.37–0.96) | 0.60 (0.37–0.97) | 0.92 (0.28–3.02) (safety) |
-| Clinical precedent (benchmark) | 4,493 / 7,372 | 661 | 1.54 (1.20–2.01) | 1.63 (1.03–2.59) | 1.63 (1.03–2.59) | – |
-| · Approved drug on the target, related disease | 2,161 / 7,372 | 417 | 1.92 (1.50–2.38) | 1.88 (1.51–2.35) | 1.86 (1.49–2.32) | – |
-| · Approved drug on the target, unrelated disease only | 2,102 / 7,372 | 428 | 0.76 (0.58–0.96) | 0.53 (0.43–0.66) | 0.54 (0.43–0.67) | – |
-| · Earlier failed trial on the target, related disease, within 3 years | 1,680 / 5,788 | 388 | 1.58 (1.22–2.00) | 1.37 (1.08–1.75) | 1.35 (1.06–1.72) | – |
+| Clinical precedent (benchmark) | 4,263 / 7,372 | 599 | 1.49 (1.16–1.93) | 1.40 (1.15–1.72) | 1.40 (1.14–1.71) | – |
+| · Approved drug on the target, related disease | 2,161 / 7,372 | 417 | 1.92 (1.50–2.38) | 1.84 (1.57–2.17) | 1.83 (1.55–2.15) | – |
+| · Approved drug on the target, unrelated disease only | 2,102 / 7,372 | 428 | 0.76 (0.58–0.96) | 0.71 (0.57–0.88) | 0.71 (0.57–0.89) | – |
+| · Earlier failed trial on the target, related disease, within 3 years | 1,680 / 5,788 | 388 | 1.58 (1.22–2.00) | 1.50 (1.21–1.87) | 1.48 (1.19–1.84) | – |
 | Biomarker-selected enrollment | 1,878 / 10,011 | 838 | 1.74 (1.34–2.19) | 1.23 (1.02–1.49) | – | 0.92 (0.78–1.09) |
 
 ### Relative success, all programs
@@ -214,7 +214,7 @@ Change in held-out AUC when each line is removed from the full model:
 | Outside oncology: genetics for the disease vs no germline genetics on the target, advancing within 4 years of Phase 2 | risk ratio | 1.52 (1.06–2.18) | 0.021 | 0.107 | not supported |
 | Same target in different diseases: genetics for the disease vs not (conditional logit) | odds ratio | 3.02 (1.99–4.58) | < 0.001 | < 0.001 | supported |
 | Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 1.16 (0.85–1.59) | 0.359 | 1.000 | not supported |
-| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.12 (0.84–1.49) | 0.458 | 1.000 | not supported |
+| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.11 (0.83–1.48) | 0.491 | 1.000 | not supported |
 | Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.19 (0.77–1.85) | 0.432 | 1.000 | not supported |
 | Outside oncology, the target's safety risk raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.89 (0.48–1.65) | 0.968 | 1.000 | not supported |
 | Oncology: a gene recurrently mutated in the cancer whose mutation matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.54 (1.11–2.14) | 0.010 | 0.062 | not supported |
@@ -262,16 +262,16 @@ Every rule the plan registered, each against programs without it, before the rul
 | Class of the governing primary endpoint | Trials | Missed primary endpoint | Trials with genetics for the disease | Missed: with / without genetics | Risk ratio of a miss, all readable trials (95% CI) | Risk ratio, registry-posted results (FDAAA era) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | Target engagement | 62 | 29% | 21 | 33% / 27% | 0.99 (0.39–2.52) | – |
-| Exploratory biomarker | 261 | 69% | 24 | 79% / 68% | 1.16 (0.88–1.52) | – |
-| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,369 | 22% | 212 | 17% / 23% | 1.06 (0.71–1.60) | 0.57 (0.27–1.21) |
+| Exploratory biomarker | 261 | 69% | 24 | 79% / 68% | 1.15 (0.88–1.51) | – |
+| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,369 | 22% | 212 | 17% / 23% | 1.08 (0.72–1.62) | 0.59 (0.28–1.24) |
 | Objective physiology (6MWD, visual acuity, weight…) | 451 | 53% | 80 | 45% / 55% | 0.98 (0.69–1.39) | 1.06 (0.75–1.49) |
-| Clinician-rated scale or responder index | 1,309 | 55% | 170 | 47% / 56% | 0.83 (0.66–1.03) | 0.87 (0.69–1.11) |
+| Clinician-rated scale or responder index | 1,309 | 55% | 170 | 47% / 56% | 0.83 (0.66–1.04) | 0.87 (0.69–1.11) |
 | Patient-reported outcome | 664 | 51% | 7 | 57% / 51% | – | – |
 | Disease events (relapses, exacerbations…) | 339 | 42% | 51 | 39% / 42% | 0.87 (0.56–1.35) | – |
 | Hard outcome (death, MI, stroke…) | 161 | 53% | 11 | 55% / 53% | – | – |
-| Tumour response | 153 | 63% | 33 | 61% / 63% | 1.02 (0.72–1.44) | – |
-| Progression-free survival | 535 | 59% | 104 | 52% / 61% | 1.04 (0.86–1.25) | 1.04 (0.76–1.42) |
-| Overall survival | 243 | 69% | 26 | 54% / 71% | 0.74 (0.52–1.05) | – |
+| Tumour response | 153 | 63% | 33 | 61% / 63% | 1.03 (0.72–1.47) | – |
+| Progression-free survival | 535 | 59% | 104 | 52% / 61% | 1.04 (0.86–1.26) | 1.06 (0.77–1.45) |
+| Overall survival | 243 | 69% | 26 | 54% / 71% | 0.74 (0.52–1.04) | – |
 
 ### Which kinds of evidence predict, and whether being more specific helps
 
