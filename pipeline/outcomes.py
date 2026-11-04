@@ -475,7 +475,8 @@ def render_biomarker(p: dict) -> str:
 
 
 def squash(text: str) -> str:
-    return " ".join(text.lower().split())
+    """Lower case, single spaces and no backslashes: the registry escapes brackets (\\[) that a quote may drop."""
+    return " ".join(text.replace("\\", "").lower().split())
 
 
 def validate_biomarker(p: dict, out: dict) -> None:
