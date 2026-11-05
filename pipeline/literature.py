@@ -42,11 +42,11 @@ import pandas as pd
 import requests
 from psycopg2.extras import execute_values
 
-from pipeline import llm
+from pipeline import llm, throttle
 from pipeline.attribution import NOT_REVIEWS, efetch
 from pipeline.chembl import IDS_PER_CALL, PAGE, get as chembl_get
 from pipeline.indications import N_CANDIDATES, MondoIndex
-from pipeline.outcomes import EUTILS, eutils
+from pipeline.outcomes import EUTILS, NCBI_PER_SECOND, eutils
 
 KINDS = ("animal_disease", "animal_healthy", "human_engagement")
 PILOT = os.path.join(llm.REPO, "report", "audits", "literature_pilot_sample.csv")
@@ -58,12 +58,14 @@ EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST"
 EPMC_PAGE = 1000
 RETRIES, BACKOFF_FIRST, BACKOFF_MAX = 5, 2, 60
 OUTAGE_WAIT = 300  # seconds to wait when every remaining drug has failed, i.e. the search services are down  # per-request retry of a search service, seconds
-ESEARCH_RECHECK = 600  # seconds between checks of whether PubMed's esearch is answering again
+ESEARCH_RECHECK = 60  # seconds between checks of whether PubMed's esearch is answering again
+EPMC_PER_SECOND = 4  # Europe PMC requests a second across every worker on the machine
 NAME_CHUNK = 50  # drugs whose names are looked up together
 CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
 FIRECRAWL_LIMIT = 550  # calls to Firecrawl's research index on the pilot (the user approves any cohort run)
 FIRECRAWL_WORKERS = 2  # concurrent calls: the account's parallel job limit
-FIRECRAWL_BACKOFF_MAX = 1800  # seconds: the longest wait after a rate-limited call before trying again
+FIRECRAWL_BACKOFF_MAX = 120  # seconds: the longest wait after a rate-limited call before trying again
+FIRECRAWL_PER_SECOND = 0.2  # Firecrawl research calls a second, so a run paces itself under the plan's rate limit
 FIRECRAWL_RESULTS = 20  # results per call; 40 times out
 MAX_DRUG_NAMES = 50
 MAX_NAME_CHARS = 30
@@ -162,6 +164,7 @@ def esearch_up() -> bool:
     """Whether PubMed's esearch answers, rechecked every ESEARCH_RECHECK seconds while it does not."""
     if _esearch["up"] or time.time() - _esearch["checked"] >= ESEARCH_RECHECK:
         try:
+            throttle.wait("ncbi", NCBI_PER_SECOND)
             r = requests.post(f"{EUTILS}/esearch.fcgi", data={"db": "pubmed", "term": "aspirin", "retmax": "0"},
                               timeout=30)
             _esearch["up"] = r.ok
@@ -218,6 +221,7 @@ def request(method: str, url: str, log=print, **kw) -> requests.Response:
     rng = np.random.default_rng()
     for attempt in range(RETRIES):
         try:
+            throttle.wait("europepmc", EPMC_PER_SECOND)
             r = requests.request(method, url, timeout=180, **kw)
             if r.ok:
                 return r
@@ -293,6 +297,15 @@ def survivors(ids: list[int]) -> dict[int, int]:
             x = merged[x]
         out[m] = x
     return out
+
+
+def live_survivor(m: int) -> int | None:
+    """The entity a drug's rows are stored under now: itself, or the survivor it was merged into while a worker ran;
+    None when neither exists any more."""
+    to = survivors([m])[m]
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT 1 FROM preclin.moiety WHERE moiety_id = %s", (to,))
+        return to if cur.fetchone() else None
 
 
 def cohort_drugs() -> dict[int, int]:
@@ -417,12 +430,16 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
                     log(f"every queued drug failed; waiting {OUTAGE_WAIT}s for the services to return")
                     time.sleep(OUTAGE_WAIT)
                 continue
+            to = live_survivor(m)
+            if to is None:
+                log(f"skipped moiety={m}: merged away with no surviving entity")
+                continue
             with llm.connect() as conn, conn.cursor() as cur:
                 store_records(cur, records)
                 execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
                                        VALUES %s ON CONFLICT DO NOTHING""",
-                               [(m, y, "pubmed", names[m], pq, pn), (m, y, "europepmc", names[m], eq, en)])
-                store_hits(cur, [(m, y, "pubmed", p) for p in pmids] + [(m, y, "europepmc", r[0]) for r in records])
+                               [(to, y, "pubmed", names[m], pq, pn), (to, y, "europepmc", names[m], eq, en)])
+                store_hits(cur, [(to, y, "pubmed", p) for p in pmids] + [(to, y, "europepmc", r[0]) for r in records])
                 conn.commit()
             log(f"searched moiety={m} pubmed={len(pmids)}/{pn} europepmc={len(records)}")
 
@@ -563,7 +580,7 @@ def firecrawl(args) -> None:
     if args.entries == "pilot":
         calls = calls[:max(FIRECRAWL_LIMIT - used, 0)]
     print(f"firecrawl {args.mode} ({args.entries}): calls={len(calls)} credits={firecrawl_credits()}", flush=True)
-    state = {"done": 0, "failed": 0, "stop": None, "wait": 60}
+    state = {"done": 0, "failed": 0, "stop": None, "wait": 30}
 
     def one(call: tuple[int, str, int]) -> None:
         m, d, y = call
@@ -578,8 +595,9 @@ def firecrawl(args) -> None:
                    "--mode", "similar", "--limit", str(FIRECRAWL_RESULTS)]
         while state["stop"] is None:
             try:
+                throttle.wait("firecrawl", FIRECRAWL_PER_SECOND)
                 results = firecrawl_cli(cli)
-                state["wait"] = 60
+                state["wait"] = 30
                 break
             except FirecrawlError as err:
                 if err.out_of_credits:
@@ -598,10 +616,14 @@ def firecrawl(args) -> None:
         got = firecrawl_ids(results, cut[m])
         external = resolve_external([k for k in got if not k[0].isdigit()])
         record_ids = sorted({k if k.isdigit() else external[k] for k, _ in got if k.isdigit() or k in external})
+        to = live_survivor(m)
+        if to is None:
+            print(f"firecrawl skipped moiety={m}: merged away with no surviving entity", flush=True)
+            return
         with llm.connect() as conn, conn.cursor() as cur:
             cur.execute("""INSERT INTO preclin.literature_v3_firecrawl (moiety_id, mondo_id, cutoff_year, mode, query, n_results)
-                           VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING""", (m, d, y, args.mode, q, len(results)))
-            store_hits(cur, [(m, cut[m], "firecrawl", r) for r in record_ids])
+                           VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING""", (to, d, y, args.mode, q, len(results)))
+            store_hits(cur, [(to, cut[m], "firecrawl", r) for r in record_ids])
             conn.commit()
         state["done"] += 1
         if state["done"] % 50 == 0:

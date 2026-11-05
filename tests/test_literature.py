@@ -103,3 +103,13 @@ def test_a_rate_limited_firecrawl_call_raises_and_is_not_an_empty_result(monkeyp
         assert e.rate_limited and not e.out_of_credits
     else:
         raise AssertionError("a failed call must raise, not return no results")
+
+
+def test_the_throttle_spaces_requests_from_separate_callers(tmp_path, monkeypatch):
+    import time
+    from pipeline import throttle
+    monkeypatch.setattr(throttle, "DIR", str(tmp_path))
+    start = time.time()
+    for _ in range(5):
+        throttle.wait("svc", 20)
+    assert time.time() - start >= 4 / 20 - 0.01
