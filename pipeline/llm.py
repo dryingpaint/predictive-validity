@@ -195,6 +195,18 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str,
     return reused
 
 
+def _storable(value: Any) -> Any:
+    """value with NUL characters removed from every string: Postgres text and jsonb cannot hold them, and a
+    retrieved abstract occasionally carries one. Hashes are taken from the original value."""
+    if isinstance(value, str):
+        return value.replace("\x00", "")
+    if isinstance(value, dict):
+        return {k: _storable(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_storable(v) for v in value]
+    return value
+
+
 def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
          parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
          error: str | None = None, prior_id: int | None = None, params: dict[str, Any] | None = None) -> tuple:
@@ -202,9 +214,9 @@ def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: 
     one copies and the model parameters it was made with."""
     canonical = parsed if parsed is not None else {"error": error}
     return (str(run_id), task.name, task.subject_type, key,
-            sha256_text(canonical_json(payload)), raw, Json(canonical),
-            sha256_text(raw), Json(canonical), sha256_text(canonical_json(canonical)),
-            prior_id, "unchanged" if prior_id else "not_compared", Json(payload), request_id,
+            sha256_text(canonical_json(payload)), _storable(raw), Json(_storable(canonical)),
+            sha256_text(raw), Json(_storable(canonical)), sha256_text(canonical_json(canonical)),
+            prior_id, "unchanged" if prior_id else "not_compared", Json(_storable(payload)), request_id,
             Json(params or {"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
             Json(usage), "invalid" if error else "validated", Json([error] if error else []))
 
