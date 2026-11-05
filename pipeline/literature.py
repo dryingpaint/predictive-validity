@@ -60,6 +60,8 @@ RETRIES, BACKOFF_FIRST, BACKOFF_MAX = 5, 2, 60
 OUTAGE_WAIT = 300  # seconds to wait when every remaining drug has failed, i.e. the search services are down  # per-request retry of a search service, seconds
 ESEARCH_RECHECK = 60  # seconds between checks of whether PubMed's esearch is answering again
 EPMC_PER_SECOND = 4  # Europe PMC requests a second across every worker on the machine
+PROGRESS_EVERY = 10_000  # records between progress lines of one drug's search
+LARGE_DRUG = 100_000  # records above which a drug waits for approval before its prefilter is paid for
 NAME_CHUNK = 50  # drugs whose names are looked up together
 CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
 FIRECRAWL_LIMIT = 550  # calls to Firecrawl's research index on the pilot (the user approves any cohort run)
@@ -186,7 +188,10 @@ def medline_ids(names: list[str], cutoff: int, log=print) -> tuple[str, int, lis
     while True:
         page = epmc_post(q, cursor, result_type="idlist", log=log)
         total = int(page.get("hitCount") or 0)
+        before = len(ids)
         ids += [r["pmid"] for r in page.get("resultList", {}).get("result", []) if r.get("pmid")]
+        if len(ids) // PROGRESS_EVERY > before // PROGRESS_EVERY:
+            log(f"MEDLINE search: {len(ids)}/{total} ids")
         nxt = page.get("nextCursorMark")
         if not nxt or nxt == cursor or len(ids) >= total:
             return q, total, sorted(set(ids), key=int)
@@ -254,7 +259,10 @@ def epmc_records(names: list[str], cutoff: int, log=print) -> tuple[str, int, li
     while True:
         page = epmc_post(q, cursor, log=log)
         total = int(page.get("hitCount") or 0)
+        before = len(out)
         out += [epmc_record(r) for r in page.get("resultList", {}).get("result", [])]
+        if len(out) // PROGRESS_EVERY > before // PROGRESS_EVERY:
+            log(f"Europe PMC search: {len(out)}/{total} records")
         nxt = page.get("nextCursorMark")
         if not nxt or nxt == cursor or len(out) >= total:
             return q, total, out
@@ -419,9 +427,11 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
         for m, y in chunk:
             if not names.get(m):
                 continue
+            dlog = lambda msg, m=m: log(f"moiety={m} {msg}")  # noqa: E731
+            dlog(f"searching ({names[m][0]})")
             try:
-                pq, pn, pmids = medline_search(names[m], y, log)
-                eq, en, records = epmc_records(names[m], y, log)
+                pq, pn, pmids = medline_search(names[m], y, dlog)
+                eq, en, records = epmc_records(names[m], y, dlog)
             except SourceDown as e:
                 tries[m] = tries.get(m, 0) + 1
                 log(f"requeued moiety={m} (failure {tries[m]}): {e}")
@@ -852,6 +862,14 @@ def run_cohort(args) -> None:
         cur.execute("SELECT DISTINCT moiety_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)", (sorted(cut),))
         screened = {r[0] for r in cur.fetchall()}
     todo = {m: y for m, y in cut.items() if m not in screened and sizes.get(m)}
+    large = {m: sizes[m] for m in todo if sizes[m] > LARGE_DRUG and m not in args.allow_large}
+    if large:
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("SELECT moiety_id, name FROM preclin.moiety WHERE moiety_id = ANY(%s)", (sorted(large),))
+            name = dict(cur.fetchall())
+        for m, n in sorted(large.items(), key=lambda x: -x[1]):
+            log(f"HELD for approval (over {LARGE_DRUG} records): moiety={m} {name.get(m)} records={n}")
+        todo = {m: y for m, y in todo.items() if m not in large}
     groups = chunks(todo, sizes)
     log(f"to screen: drugs={len(todo)} records={sum(sizes.get(m, 0) for m in todo)} chunks={len(groups)}")
     for i, g in enumerate(groups, 1):
@@ -1216,6 +1234,8 @@ def main() -> None:
     rc.add_argument("--workers", type=int, required=True)
     rc.add_argument("--log", required=True)
     rc.add_argument("--skip-pilot", action="store_true", help="leave the pilot's drugs to the pilot screen")
+    rc.add_argument("--allow-large", type=int, nargs="*", default=[],
+                    help=f"drugs with over {LARGE_DRUG} records whose prefilter the user approved")
     rc.set_defaults(fn=run_cohort)
     fc = sub.add_parser("firecrawl")
     fc.add_argument("--mode", choices=("search", "related"), required=True)
