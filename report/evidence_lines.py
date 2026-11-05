@@ -2,6 +2,7 @@
 
     python -m report.evidence_lines         # write the CSVs
     python -m report.evidence_lines store   # also replace the dataset in Postgres
+    python -m report.evidence_lines check   # exit 1, naming what changed, when the stored dataset is stale
 
 One row per US-developed phase entry in 2008-2019 (report.section1.phase_rows with a US-sited
 industry trial in the phase, skipped phases excluded), keyed by (moiety_id, mondo_id, phase) and carrying the
@@ -19,7 +20,8 @@ with an outcome here.
 
 `store` writes the same dataset to preclin.evidence_line (the registry), preclin.evidence_entry (one
 row per entry, without outcomes) and preclin.evidence_entry_line (each non-null value in long form),
-recorded in preclin.evidence_line_build. Report modules otherwise only read; this one writes because
+recorded in preclin.evidence_line_build with a fingerprint of its inputs (input_fingerprint), which `check`
+compares with the inputs now. Report modules otherwise only read; this one writes because
 the compiled dataset is what other sessions and analyses query, and it should not have to be rebuilt
 from code to be read.
 """
@@ -33,7 +35,7 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-from psycopg2.extras import execute_values
+from psycopg2.extras import Json, execute_values
 
 from pipeline import llm
 from report import frame
@@ -42,6 +44,10 @@ from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, en
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_lines")
 LOOKBACK_YEARS = 3  # earlier failed trials on the target count when they ended this long before entry
 FAILURES_FROM = 2011  # first entry year whose lookback lies wholly in the era of registered results
+# A target is a dependency in a tumour type when at least this many, and this share, of the type's cell lines
+# screened by the cutoff depend on it (the 2026-11-04 comprehensiveness amendment).
+DEPENDENT_LINES, DEPENDENT_SHARE = 2, 0.2
+CELL_SCREENS_FROM = 2015  # first entry year whose year-before cutoff has published dependency screens (Cowley 2014)
 SELECTIVE_MARGIN = 1.0  # log units of primary over best off-target potency: 10-fold
 POTENT_100NM, POTENT_10NM = 7.0, 8.0  # best pChEMBL at the primary target: the line, and a descriptive extra
 BRAIN = ("neurology", "psychiatry")  # the bio_area values whose programs are scored for brain penetrance
@@ -56,6 +62,7 @@ class Line:
     applies: str = "all"  # entries the line is scored on (APPLIES)
     status: str = ""  # why a line has no column
     descriptive: bool = False  # shown in coverage but not part of its category
+    key: str | None = None  # the registry key of a line with no column, fixed so that rewording the label keeps it
 
 
 LITERATURE = "descriptive: failed the literature gate twice (report/audits/literature_gate.md)"
@@ -65,67 +72,148 @@ APPLIES = {
     "target": lambda d: d.has_target_disease,
     "ONC": lambda d: d.has_target_disease & d.regime.eq("ONC"),
     "small_molecule": lambda d: d.modality.eq("small_molecule"),
+    "small_molecule_profiled": lambda d: d.modality.eq("small_molecule") & d.drug_like.notna(),
     "brain": lambda d: d.modality.eq("small_molecule") & d.bio_area.isin(BRAIN),
     "phase_2_3": lambda d: d.phase.ge(2),
     "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
+    "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
 }
+WITHIN = {"small_molecule_profiled": "small_molecule", "onc_screened": "target"}  # an APPLIES key whose entries all lie in another's
 
-# Category -> (category line, subcategories). The category line is exposed when any subcategory is;
-# efficacy categories are grouped by the experimental system that produced the evidence.
+# Category -> (category line, subcategories), efficacy categories grouped by the experimental system that
+# produced the evidence. A category line is rolled up from its subcategories (category_columns).
 CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     "human_genetics": (Line("Human genetics", "cat_human_genetics", "target"), [
-        Line("Germline genetics for the disease", "g3", "target"),
-        Line("Rare-variant or Mendelian", "rare_variant", "target"),
-        Line("GWAS", "gwas", "target"),
-        Line("GWAS and rare-variant evidence together", "allelic_series", "target"),
-        Line("Genetics points the same way as the drug", "genetics_concordant", "target"),
-        Line("Curated disease mechanism (Reactome)", "reactome", "target"),
+        Line("Inherited variants linked to the disease", "g3", "target"),
+        Line("Rare inherited variants, including single-gene disease", "rare_variant", "target"),
+        Line("Common variants (genome-wide association studies)", "gwas", "target"),
+        Line("Both common and rare variants", "allelic_series", "target"),
+        Line("Genetics agrees with the drug's direction", "genetics_concordant", "target"),
+        Line("A curated pathway shows a disease mutation disrupting the target", "reactome", "target"),
     ]),
     "tumour_genetics": (Line("Tumour genetics", "cat_tumour_genetics", "ONC"), [
         Line("Gene recurrently mutated in this cancer", "somatic", "ONC"),
-        Line("Mutation matches the drug", "somatic_concordant", "ONC"),
+        Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
     ]),
     "diseased_tissue": (Line("Human diseased tissue", "cat_diseased_tissue", "target"), [
-        Line("Target's RNA level changed in diseased tissue", "expression", "target"),
-        Line("RNA raised, with a drug that lowers function", "expression_up_inhibitor", "target"),
+        Line("The gene's RNA level differs in diseased tissue", "expression", "target"),
+        Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "target"), [
-        Line("Genetically altered mouse model of the disease", "altered_animal", "target"),
-        Line("Literature-curated mouse model (MGI)", "mgi", "target"),
-        Line("Systematic knockout screen (IMPC)", "impc", "target"),
-        Line("Close phenotype match (top quartile)", "animal_close", "target"),
-        Line("Altered animal points the same way as the drug", "animal_concordant", "target"),
-        Line("The drug in an animal model of the disease", None, "all", LITERATURE),
-        Line("The drug's pharmacology in healthy animals", None, "all", LITERATURE),
+        Line("Mice with the gene altered show the disease", "altered_animal", "target"),
+        Line("Mouse model from published studies", "mgi", "target"),
+        Line("Mouse knockout from a large-scale screen", "impc", "target"),
+        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
+        Line("Mouse result agrees with the drug's direction", "animal_concordant", "target"),
+        Line("The drug in an animal model of the disease", None, "all", LITERATURE,
+             key="the_drug_in_an_animal_model_of_the_disease"),
+        Line("The drug tested in healthy animals", None, "all", LITERATURE,
+             key="the_drug_s_pharmacology_in_healthy_animals"),
     ]),
-    "cell": (Line("Cell studies", "cat_cell", "target"), [
-        Line("CRISPR screen in cells", "crispr", "target"),
-        Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
+    "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
+        Line("Gene-knockout screens in human cells", "crispr", "target"),
+        Line("Cancer cells of this type need the gene to grow", "cell_dependency", "onc_screened"),
+        Line("Gene-knockout screens in human cells, with hindsight", "crispr_untimed", "target", descriptive=True),
     ]),
-    "molecule": (Line("The molecule", "cat_molecule", "small_molecule"), [
-        Line("Potency at the primary target, 100 nM or better", "potent_100nm", "small_molecule"),
-        Line("Potency at the primary target, 10 nM or better", "potent_10nm", "small_molecule", descriptive=True),
-        Line("At least 10-fold selective over measured off-targets", "selective", "small_molecule"),
-        Line("Drug-like (at most one Rule-of-5 violation)", "drug_like", "small_molecule"),
-        Line("Brain-penetrant properties (neurology and psychiatry)", "brain_penetrant", "brain"),
+    "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [
+        Line("Drug binds its target strongly (100 nM or better)", "potent_100nm", "small_molecule"),
+        Line("Drug binds its target very strongly (10 nM or better)", "potent_10nm", "small_molecule",
+             descriptive=True),
+        Line("Drug binds its target 10× more strongly than other proteins tested", "selective", "small_molecule"),
+        Line("Drug-like size and chemistry", "drug_like", "small_molecule"),
+        Line("Chemistry suited to entering the brain (brain diseases)", "brain_penetrant", "brain"),
     ]),
-    "early_human": (Line("Early human pharmacology", None, "phase_2_3", LITERATURE), [
-        Line("Target engagement measured in people", None, "phase_2_3", LITERATURE),
+    "early_human": (Line("Early studies of the drug in people", None, "phase_2_3", LITERATURE,
+                         key="early_human_pharmacology"), [
+        Line("Drug shown to act on its target in people", None, "phase_2_3", LITERATURE,
+             key="target_engagement_measured_in_people"),
     ]),
     "safety_risk": (Line("Safety risk", "liability", "target"), [
-        Line("Intolerant of loss of function", "constrained", "target"),
-        Line("Mouse knockout dies before weaning", "ko_lethal", "target"),
-        Line("Essential in most cell lines", "pan_essential", "target"),
-        Line("Essential in most cell lines, on today's data (hindsight)", "pan_essential_untimed", "target",
+        Line("People rarely carry broken copies of the gene", "constrained", "target"),
+        Line("Mice without the gene die young", "ko_lethal", "target"),
+        Line("Most human cell types need the gene", "pan_essential", "target"),
+        Line("Most human cell types need the gene, with hindsight", "pan_essential_untimed", "target",
              descriptive=True),
     ]),
-    "precedent": (Line("Clinical precedent (benchmark)", "cat_precedent", "target"), [
-        Line("Approved drug on the target, related disease", "b1", "target"),
-        Line("Approved drug on the target, unrelated disease only", "approved_unrelated_only", "target"),
-        Line("Earlier failed trial on the target, related disease, within 3 years", "earlier_failure", "from_2011"),
+    "precedent": (Line("Earlier drugs on the same target", "cat_precedent", "target"), [
+        Line("A drug on the target already approved for a related disease", "b1", "target"),
+        Line("A drug on the target approved only for unrelated diseases", "approved_unrelated_only", "target"),
+        Line("Another drug on the target failed in a related disease in the last 3 years", "earlier_failure",
+             "from_2011"),
     ]),
 }
-ADJUSTMENTS = [Line("Biomarker-selected enrollment", "biomarker_selected", "all")]
+ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
+
+# The evidence chart's grouping (exploratory, added 2026-11-05; report/translation_plan.md): one question per area, its
+# tiers mutually exclusive. The registered CATEGORIES above stay the confirmatory grouping and the appendix table's.
+AREAS: dict[str, tuple[Line, list[Line]]] = {
+    "human_genetics": (Line("Human genetics: inherited variants link the target to the disease", "g3", "target"), [
+        Line("Rare variants only", "tier_rare_only", "target"),
+        Line("Common variants only (genome-wide association studies)", "tier_common_only", "target"),
+        Line("Both rare and common variants", "allelic_series", "target"),
+    ]),
+    "pathway": (Line("Curated pathways: a disease mutation is shown disrupting the target's pathway", "reactome",
+                     "target"), []),
+    "tumour_genetics": (Line("Tumour genetics: the gene is recurrently mutated in this cancer", "somatic", "ONC"), [
+        Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
+        Line("It does not, or its effect is unknown", "tier_mutation_other", "ONC"),
+    ]),
+    "diseased_tissue": (Line("Diseased tissue: the gene's RNA level differs in diseased tissue", "expression",
+                             "target"), []),
+    "animal": (Line("Mouse models: mice with the gene altered show the disease", "altered_animal", "target"), [
+        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
+        Line("Looser match", "tier_mouse_loose", "target"),
+    ]),
+    "molecule": (Line("The drug: its binding to the target was measured before entry", "area_measured",
+                      "small_molecule"), [
+        Line("Binds strongly (100 nM or better) and selectively", "tier_strong_selective", "small_molecule"),
+        Line("Binds strongly, selectivity not shown", "tier_strong_only", "small_molecule"),
+        Line("Binds more weakly than 100 nM", "tier_weaker", "small_molecule"),
+    ]),
+    "safety_risk": (Line("Target safety risk", "liability", "target"), [
+        Line("Only: people rarely carry broken copies of the gene", "tier_constrained_only", "target"),
+        Line("Only: mice without the gene die young", "tier_lethal_only", "target"),
+        Line("Both", "tier_constrained_and_lethal", "target"),
+    ]),
+    "precedent": (Line("Earlier drugs on the same target", "cat_precedent", "target"), [
+        Line("Approved for a related disease", "b1", "target"),
+        Line("Approved only for unrelated diseases", "approved_unrelated_only", "target"),
+        Line("No approval, but another drug failed in a related disease in the last 3 years", "tier_failure_only",
+             "from_2011"),
+    ]),
+}
+
+
+def area_lines() -> list[Line]:
+    return [ln for line, tiers in AREAS.values() for ln in (line, *tiers)]
+
+
+def area_alone() -> set[str]:
+    """Columns of the area tiers scored on fewer entries than their area, which the chart marks."""
+    return {t.column for line, tiers in AREAS.values() for t in tiers if t.applies != line.applies}
+
+
+def area_columns(d: pd.DataFrame) -> pd.DataFrame:
+    """The columns AREAS adds to the entries: each tier that no line already gives, so that an area's tiers are
+    mutually exclusive, and the areas no line already gives. Null outside the entries a line applies to."""
+    t = d.has_target_disease
+    flag = lambda s, scope=t: s.astype(float).where(scope)  # noqa: E731
+    rare, common, potent = d.rare_variant.gt(0), d.gwas.gt(0), d.potent_100nm.gt(0)
+    measured, small = d.assay_best.notna(), APPLIES["small_molecule"](d)
+    return pd.DataFrame({
+        "tier_rare_only": flag(rare & ~common),
+        "tier_common_only": flag(common & ~rare),
+        "tier_mutation_other": flag(d.somatic.gt(0) & ~d.somatic_concordant.gt(0), APPLIES["ONC"](d)),
+        "tier_mouse_loose": flag(d.altered_animal.gt(0) & ~d.animal_close.gt(0)),
+        "area_measured": flag(measured, small),
+        "tier_strong_selective": flag(potent & d.selective.gt(0), small),
+        "tier_strong_only": flag(potent & ~d.selective.gt(0), small),
+        "tier_weaker": flag(measured & ~potent, small),
+        "tier_constrained_only": flag(d.constrained.gt(0) & ~d.ko_lethal.gt(0)),
+        "tier_lethal_only": flag(d.ko_lethal.gt(0) & ~d.constrained.gt(0)),
+        "tier_constrained_and_lethal": flag(d.constrained.gt(0) & d.ko_lethal.gt(0)),
+        "tier_failure_only": flag(d.earlier_failure.gt(0) & ~d.precedent.gt(0), APPLIES["from_2011"](d)),
+    }, index=d.index)
 
 
 def failed_trials() -> pd.DataFrame:
@@ -158,6 +246,36 @@ def earlier_failure(by_gene: dict, moiety_id, genes, related: frozenset, entry: 
     start = entry - pd.DateOffset(years=LOOKBACK_YEARS)
     return any(mid != moiety_id and d in related and start <= ended < entry
                for g in genes for mid, d, ended in by_gene.get(g, ()))
+
+
+def cell_dependency(genes, related: frozenset, year: int, lines: dict, dep_year: dict, essential: dict) -> float:
+    """1 when a gene of `genes` is a dependency in the tumour type, as the screens public by the end of `year`
+    show; 0 when lines of the type were screened and none of the genes is; NaN when no line of the type was.
+    `lines`: cell line -> (MONDO term, year its first screen became public); `dep_year`: (gene, line) -> year
+    its dependency on the gene became public. Genes on that year's common-essential list do not count."""
+    typed = [line for line, (mondo, first) in lines.items() if mondo in related and first <= year]
+    if not typed:
+        return np.nan
+    for g in genes:
+        if frame.essential_as_of(essential, [g], year):
+            continue
+        n = sum(1 for line in typed if dep_year.get((g, line), 9999) <= year)
+        if n >= DEPENDENT_LINES and n >= DEPENDENT_SHARE * len(typed):
+            return 1.0
+    return 0.0
+
+
+def cell_screens() -> tuple[dict, dict]:
+    """The dependency screens: cell line -> (MONDO term, first public year), and (Ensembl gene, cell line) ->
+    the year its dependency became public."""
+    s = frame.query("""SELECT c.depmap_id, c.mondo_id, min(s.public_year) AS year FROM preclin.cell_line c
+                       JOIN preclin.cell_screen s USING (depmap_id) WHERE c.mondo_id IS NOT NULL GROUP BY 1, 2""")
+    d = frame.query("""SELECT g.ensembl_id, d.depmap_id, min(s.public_year) AS year
+                       FROM preclin.cell_dependency d JOIN preclin.cell_screen s USING (depmap_id, dataset)
+                       JOIN preclin.hgnc_gene g ON g.entrez_id = d.entrez_id
+                       WHERE g.ensembl_id IS NOT NULL GROUP BY 1, 2""")
+    return ({r.depmap_id: (r.mondo_id, int(r.year)) for r in s.itertuples()},
+            {(r.ensembl_id, r.depmap_id): int(r.year) for r in d.itertuples()})
 
 
 def molecule_lines(assays: pd.DataFrame, primary: set[str], year: int) -> dict:
@@ -200,6 +318,14 @@ def build() -> pd.DataFrame:
                         pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
         index=d.index, dtype=object).map({True: 1.0, False: 0.0})
 
+    lines_by, dep_year = cell_screens()
+    essential = frame.common_essentials()
+    onc = APPLIES["ONC"](d)
+    d["cell_dependency"] = pd.Series([
+        cell_dependency(ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED), r.entry_year - 1,
+                        lines_by, dep_year, essential) if o else np.nan for r, o in zip(d.itertuples(), onc)],
+        index=d.index, dtype=float)
+
     symbols = frame.query("""SELECT mt.moiety_id, t.symbol FROM preclin.moiety_target mt
                              JOIN public.targets t ON t.id = mt.target_id WHERE mt.is_primary""") \
         .groupby("moiety_id").symbol.apply(set)
@@ -221,10 +347,8 @@ def build() -> pd.DataFrame:
     d["animal_close"] = flag((d.mgi_strong > 0) | (d.impc_strong > 0))
     d["animal_concordant"] = flag(d.mouse_direction.eq("concordant"))
     d["approved_unrelated_only"] = flag((d.precedent > 0) & ~(d.b1 > 0))
-    for cat, (line, subs) in CATEGORIES.items():
-        cols = [s.column for s in subs if s.column and not s.descriptive]
-        if line.column and line.column.startswith("cat_"):
-            d[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d))
+    d = d.join(category_columns(d))
+    d = d.join(area_columns(d))
     d["biomarker_selected"] = biomarker_selected(
         d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
@@ -232,8 +356,29 @@ def build() -> pd.DataFrame:
     keep = ["moiety_id", "mondo_id", "phase", "program_id", "entry_date", "entry_year", "era", "regime", "bio_area",
             "modality", "novel", "precedent", "target", "sign", "event", "s4", "has_target_disease", "assay_best",
             "assay_margin",
-            *(ln.column for ln in lines() if ln.column)]
+            *(ln.column for ln in lines() if ln.column), *(ln.column for ln in area_lines())]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
+
+
+def in_category(line: Line, sub: Line) -> bool:
+    """Whether a subcategory makes up its category: it has a column, is not descriptive, and is scored on every
+    entry the category applies to."""
+    return bool(sub.column) and not sub.descriptive and sub.applies in (line.applies, WITHIN.get(line.applies))
+
+
+def category_columns(d: pd.DataFrame) -> pd.DataFrame:
+    """Each category line: 1 when any of its subcategories is, 0 when none is, among the entries the category
+    applies to. Only subcategories scored on all of those entries (the same APPLIES key, or the one WITHIN names)
+    make it up, so a category means the same thing across its scope: a line scored on later entries or on some
+    disease areas only stays out. An entry on which none of them is known is null rather than 0."""
+    out = {}
+    for line, subs in CATEGORIES.values():
+        if not (line.column and line.column.startswith("cat_")):
+            continue
+        cols = [s.column for s in subs if in_category(line, s)]
+        known = d[cols].notna().any(axis=1)
+        out[line.column] = d[cols].gt(0).any(axis=1).astype(float).where(APPLIES[line.applies](d) & known)
+    return pd.DataFrame(out, index=d.index)
 
 
 def biomarker_selected(rows: pd.DataFrame, trials: pd.DataFrame, sel: pd.DataFrame) -> pd.Series:
@@ -290,7 +435,8 @@ def registry() -> pd.DataFrame:
         rows += [(s, cat, "descriptive" if s.descriptive else "subcategory") for s in subs]
     rows += [(a, "adjustment", "adjustment") for a in ADJUSTMENTS]
     rows += [(m, "molecule", "measurement") for m in MEASUREMENTS]
-    return pd.DataFrame([{"line_key": ln.column or slug(ln.label), "position": i, "category": cat, "level": level,
+    return pd.DataFrame([{"line_key": ln.column or ln.key or slug(ln.label), "position": i, "category": cat,
+                          "level": level,
                           "label": ln.label, "applies": ln.applies, "status": ln.status}
                          for i, (ln, cat, level) in enumerate(rows)])
 
@@ -307,20 +453,58 @@ def long_form(d: pd.DataFrame, reg: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(parts, ignore_index=True)
 
 
+LABEL_TABLES = ("dev_program_approval", "moiety_target", "trial_outcome", "trial_biomarker_selection")
+RELEASE_TABLES = ("chembl_activity", "moiety_property")
+
+
+def input_fingerprint() -> dict:
+    """What the dataset reads beyond the programs build: the programs snapshot; rows and latest decision of each LLM
+    label table (a rewrite of approvals or targets changes them, though not the snapshot); the latest source
+    release behind the ChEMBL potencies and computed properties; and, once they exist, the rows of
+    preclin.cell_dependency and the latest lineage decision of preclin.cell_line (a remapped lineage moves lines
+    between tumour types)."""
+    fp: dict = {"snapshot": str(frame.snapshot())}
+    for table in LABEL_TABLES:
+        r = frame.query(f"SELECT count(*) AS n, max(llm_decision_id) AS last FROM preclin.{table}").iloc[0]
+        fp[table] = [int(r.n), None if pd.isna(r["last"]) else int(r["last"])]
+    for table in RELEASE_TABLES:
+        last = frame.query(f"SELECT max(source_release_id) AS last FROM preclin.{table}").iloc[0]["last"]
+        fp[table] = None if pd.isna(last) else int(last)
+    if frame.query("SELECT to_regclass('preclin.cell_dependency') IS NOT NULL AS present").iloc[0]["present"]:
+        r = frame.query("""SELECT (SELECT count(*) FROM preclin.cell_dependency) AS n,
+                                  (SELECT max(llm_decision_id) FROM preclin.cell_line) AS last""").iloc[0]
+        fp["cell_dependency"] = [int(r.n), None if pd.isna(r["last"]) else int(r["last"])]
+    return fp
+
+
+def stale_inputs(stored: dict, current: dict) -> list[str]:
+    """Inputs whose fingerprint differs between the stored dataset and now, or that only one of them has."""
+    return sorted(k for k in stored.keys() | current.keys() if stored.get(k) != current.get(k))
+
+
+def stale() -> list[str]:
+    """What changed since the stored dataset was built; ["no stored dataset"] when there is none."""
+    last = frame.query("SELECT inputs FROM preclin.evidence_line_build ORDER BY built_at DESC LIMIT 1")
+    if last.empty:
+        return ["no stored dataset"]
+    return stale_inputs(last.iloc[0]["inputs"], input_fingerprint())
+
+
 def store(d: pd.DataFrame) -> str:
     """Replace the dataset in Postgres in one transaction; returns the build id."""
     reg = registry()
     lines_long = long_form(d, reg)
     e = d.assign(mondo_id=d.mondo_id.fillna(""), entry_date=pd.to_datetime(d.entry_date).dt.date,
                  biomarker_selected=d.biomarker_selected.map({1.0: True, 0.0: False}))
-    build_id = str(uuid.uuid4())
+    build_id, fingerprint = str(uuid.uuid4()), input_fingerprint()
     nul = lambda v: None if pd.isna(v) else v.item() if hasattr(v, "item") else v  # noqa: E731  numpy scalars
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.evidence_entry_line")
         cur.execute("DELETE FROM preclin.evidence_entry")
         cur.execute("DELETE FROM preclin.evidence_line")
-        cur.execute("""INSERT INTO preclin.evidence_line_build (build_id, code_commit, snapshot, n_entries)
-                       VALUES (%s, %s, %s, %s)""", (build_id, llm.git_commit(), frame.snapshot(), len(e)))
+        cur.execute("""INSERT INTO preclin.evidence_line_build (build_id, code_commit, snapshot, n_entries, inputs)
+                       VALUES (%s, %s, %s, %s, %s)""",
+                    (build_id, llm.git_commit(), frame.snapshot(), len(e), Json(fingerprint)))
         execute_values(cur, """INSERT INTO preclin.evidence_line (line_key, position, category, level, label, applies,
                                                                   status, build_id) VALUES %s""",
                        [(*r, build_id) for r in reg.itertuples(index=False)])
@@ -338,6 +522,11 @@ def store(d: pd.DataFrame) -> str:
 
 
 def main() -> None:
+    if sys.argv[1:] == ["check"]:
+        changed = stale()
+        print("stored evidence dataset is current" if not changed else
+              f"stored evidence dataset is stale: {', '.join(changed)} changed; run python -m report.evidence_lines store")
+        sys.exit(1 if changed else 0)
     os.makedirs(OUT, exist_ok=True)
     d = build()
     d.to_csv(os.path.join(OUT, "entries.csv"), index=False)

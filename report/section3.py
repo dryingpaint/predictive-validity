@@ -78,17 +78,28 @@ STRATUM = {**PROXIMITY, "B9_infection_cure": "infection", "O1_tumor_response": "
 TREND = {"proximal": 0, "intermediate": 1, "distal": 2}
 EFFICACY = ("efficacy: stated", "efficacy: primary endpoint not met")
 LABELS = {  # evidence map rows, in display order (report.render and report.figures read them from evidence_map.csv)
-    "g3": "Germline genetics for the disease", "gwas": "GWAS, any locus-to-gene score",
-    "gwas_strong": "GWAS, locus-to-gene score ≥ 0.8", "gwas_mid": "GWAS, best score 0.5–0.8",
-    "gwas_weak": "GWAS, best score below 0.5", "burden": "Gene burden (exome)",
-    "mendelian": "Mendelian or ClinVar pathogenic", "mendelian_strong": "Mendelian, top-tier curation",
-    "somatic": "Gene recurrently mutated in this cancer", "somatic_concordant": "Mutation matches the drug",
-    "impc": "Mouse knockout (IMPC)", "mgi": "Mouse model (literature)",
-    "mgi_strong": "Mouse model, top-quartile phenotype match", "expression": "Target's RNA level changed in diseased tissue",
-    "reactome": "Curated disease mechanism (Reactome)", "crispr": "CRISPR screen (cancer cell lines or neurons)", "b1": "Approved drug on the target, related disease",
-    "precedent": "Approved drug on the target, any disease", "liability": "Any target liability",
-    "pan_essential": "Essential in most cell lines", "constrained": "Intolerant of loss of function",
-    "ko_lethal": "Mouse knockout dies before weaning",
+    "g3": "Inherited variants linked to the disease",
+    "gwas": "Common variants, any strength of link to the gene",
+    "gwas_strong": "Common variants, strongly linked to the gene",
+    "gwas_mid": "Common variants, moderately linked to the gene",
+    "gwas_weak": "Common variants, weakly linked to the gene",
+    "burden": "Rare variants pooled across the gene",
+    "mendelian": "Single-gene disease or a known disease-causing variant",
+    "mendelian_strong": "Single-gene disease, best-established",
+    "somatic": "Gene recurrently mutated in this cancer",
+    "somatic_concordant": "The mutation's effect matches the drug's action",
+    "impc": "Mouse knockout from a large-scale screen",
+    "mgi": "Mouse model from published studies",
+    "mgi_strong": "Mouse symptoms closely match the disease",
+    "expression": "The gene's RNA level differs in diseased tissue",
+    "reactome": "A curated pathway shows a disease mutation disrupting the target",
+    "crispr": "Gene-knockout screen in cancer cells or neurons",
+    "b1": "A drug on the target already approved for a related disease",
+    "precedent": "A drug on the target already approved, any disease",
+    "liability": "Any safety risk of the target",
+    "pan_essential": "Most human cell types need the gene",
+    "constrained": "People rarely carry broken copies of the gene",
+    "ko_lethal": "Mice without the gene die young",
 }
 MAP_FEATURES = list(LABELS)
 
@@ -584,28 +595,28 @@ def influence(d: pd.DataFrame, col: str, rr) -> list[tuple[str, float]]:
 
 
 RULES = {  # key: (label, rule, regime, in the committed plan)
-    "M1": ("Protective loss-of-function burden + drug that lowers function",
+    "M1": ("Broken copies of the gene protect, and the drug blocks it",
            lambda d: (d.burden_lof_protect > 0) & d.sign.eq("decrease"), "all", True),
-    "M2": ("Mendelian evidence + drug that raises function or replaces the gene",
+    "M2": ("Single-gene disease, and the drug restores the gene",
            lambda d: d.sign.eq("increase"), "DD", True),
-    "M3": ("Mendelian evidence for a non-hereditary disease", lambda d: d.mendelian > 0, "COM", True),
-    "M4": ("GWAS, locus-to-gene ≥ 0.8", lambda d: d.gwas_strong > 0, "all", True),
-    "M5": ("GWAS and rare-variant evidence for the same disease",
+    "M3": ("Single-gene evidence for a common disease", lambda d: d.mendelian > 0, "COM", True),
+    "M4": ("Common variants strongly linked to the gene", lambda d: d.gwas_strong > 0, "all", True),
+    "M5": ("Both common and rare variants for the same disease",
            lambda d: (d.gwas > 0) & ((d.burden > 0) | (d.mendelian > 0)), "all", True),
-    "M6": ("Mutation matching the drug + drug that lowers function",
+    "M6": ("Mutation matches the drug, and the drug blocks the target",
            lambda d: (d.somatic_concordant > 0) & d.sign.eq("decrease"), "ONC", True),
-    "M7": ("IMPC knockout matching the disease, top quartile", lambda d: d.impc_strong > 0, "all", True),
-    "M8": ("Literature-curated mouse model of the disease", lambda d: d.mgi > 0, "all", True),
-    "M9": ("Expression up in disease + drug that lowers function",
+    "M7": ("Mouse knockout closely matching the disease", lambda d: d.impc_strong > 0, "all", True),
+    "M8": ("Mouse model of the disease from published studies", lambda d: d.mgi > 0, "all", True),
+    "M9": ("Target more active in disease, and the drug blocks it",
            lambda d: (d.expression_up > 0) & d.sign.eq("decrease"), "all", True),
-    "M10": ("Reactome pathway", lambda d: d.reactome > 0, "all", True),
-    "M11": ("Safety risk of the target + drug that lowers function",
+    "M10": ("A curated pathway shows a disease mutation disrupting the target", lambda d: d.reactome > 0, "all", True),
+    "M11": ("Safety risk of the target, and the drug blocks it",
             lambda d: (d.liability > 0) & d.sign.eq("decrease"), "all", True),
-    "B1": ("Approved drug on the target, related disease (Lin ≥ 0.5)", lambda d: d.b1 > 0, "all", True),
-    "P1": ("Protective loss of function + drug that lowers function",
+    "B1": ("A drug on the target already approved for a related disease", lambda d: d.b1 > 0, "all", True),
+    "P1": ("Broken copies of the gene protect, and the drug blocks it",
            lambda d: (d.lof_protective > 0) & d.sign.eq("decrease"), "all", False),
-    "P2": ("Germline mechanism concordant with the drug", lambda d: d.mechanism.eq("concordant"), "all", False),
-    "P3": ("Mouse model direction concordant with the drug", lambda d: d.mouse_direction.eq("concordant"), "all", False),
+    "P2": ("Genetics agrees with the drug's direction", lambda d: d.mechanism.eq("concordant"), "all", False),
+    "P3": ("Mouse result agrees with the drug's direction", lambda d: d.mouse_direction.eq("concordant"), "all", False),
 }
 DISCOVERY_SHARE = 0.6  # share of target sets in the discovery half
 DISCOVERY_FLOOR = 1.3  # the discovery risk ratio's 90% lower bound must exceed this
@@ -616,20 +627,20 @@ MIN_SPLIT_TARGETS = 5  # exposed target sets below which a half gets no estimate
 # Kinds of evidence a sponsor could have before Phase 2: (label, exposure, regime). The benchmark is
 # clinical precedent, not preclinical evidence, and sits outside the Holm family.
 EVIDENCE_TYPES = {
-    "germline": ("Germline genetics for the disease", lambda d: d.g3 > 0, "all"),
-    "animal": ("Genetically altered mouse model of the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
+    "germline": ("Inherited variants linked to the disease", lambda d: d.g3 > 0, "all"),
+    "animal": ("Mice with the gene altered show the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
     "somatic": ("Gene recurrently mutated in this cancer", lambda d: d.somatic > 0, "ONC"),
-    "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr > 0, "all"),
-    "expression": ("Target's RNA level changed in diseased tissue", lambda d: d.expression > 0, "all"),
-    "pathway": ("Curated disease mechanism (Reactome)", lambda d: d.reactome > 0, "all"),
+    "cell_screen": ("Gene-knockout screens in human cells", lambda d: d.crispr > 0, "all"),
+    "expression": ("The gene's RNA level differs in diseased tissue", lambda d: d.expression > 0, "all"),
+    "pathway": ("A curated pathway shows a disease mutation disrupting the target", lambda d: d.reactome > 0, "all"),
     "liability": ("Safety risk of the target", lambda d: d.liability > 0, "all"),
 }
-BENCHMARK = ("Approved drug on the target, related disease", lambda d: d.b1 > 0, "all")
+BENCHMARK = ("A drug on the target already approved for a related disease", lambda d: d.b1 > 0, "all")
 # Lines first published in 2019 (Project Score, DepMap's common-essential list), so no program in the
 # window could have them before entry: scored on today's data instead, as hindsight, outside the Holm family.
 HINDSIGHT = {
-    "cell_screen": ("CRISPR screen in cells", lambda d: d.crispr_untimed > 0, "all"),
-    "pan_essential": ("Essential in most cell lines", lambda d: d.pan_essential_untimed > 0, "all"),
+    "cell_screen": ("Gene-knockout screens in human cells", lambda d: d.crispr_untimed > 0, "all"),
+    "pan_essential": ("Most human cell types need the gene", lambda d: d.pan_essential_untimed > 0, "all"),
 }
 # A more specific version of one evidence type, compared only with the rest of that type:
 # (label, parent type, refinement, regime, in the committed plan)
@@ -637,15 +648,15 @@ REFINEMENTS = {
     "gwas_strong": ("GWAS with locus-to-gene ≥ 0.8", "germline", lambda d: d.gwas_strong > 0, "all", True),
     "mendelian_nonhereditary": ("Mendelian evidence in a non-hereditary disease", "germline",
                                 lambda d: d.mendelian > 0, "COM", True),
-    "allelic_series": ("GWAS and rare-variant evidence together", "germline",
+    "allelic_series": ("Both common and rare variants", "germline",
                        lambda d: (d.gwas > 0) & ((d.burden > 0) | (d.mendelian > 0)), "all", True),
     "hereditary_activator": ("Drug raises function or replaces the gene, hereditary disease", "germline",
                              lambda d: d.sign.eq("increase"), "DD", True),
-    "mechanism_concordant": ("Genetics points the same way as the drug", "germline",
+    "mechanism_concordant": ("Genetics agrees with the drug's direction", "germline",
                              lambda d: d.mechanism.eq("concordant"), "all", False),
-    "protective_inhibitor": ("Protective loss of function + drug that lowers function", "germline",
+    "protective_inhibitor": ("Broken copies of the gene protect, and the drug blocks it", "germline",
                              lambda d: (d.lof_protective > 0) & d.sign.eq("decrease"), "all", False),
-    "animal_close": ("Close phenotype match (top quartile)", "animal",
+    "animal_close": ("Mouse symptoms closely match the disease", "animal",
                      lambda d: (d.mgi_strong > 0) | (d.impc_strong > 0), "all", True),
     "animal_direction": ("Mouse model points the same way as the drug", "animal",
                          lambda d: d.mouse_direction.eq("concordant"), "all", False),

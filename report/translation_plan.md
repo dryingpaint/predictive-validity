@@ -187,6 +187,41 @@ Kept apart from the efficacy categories:
   trial-level results are sparse before 2008, and a lookback reaching before
   them makes the line rise with entry year.
 
+**Category roll-up, corrected 2026-11-04.** The plan does not say how a
+category is formed from its subcategories. The first build counted an entry as
+having a category when any subcategory was present and as lacking it otherwise.
+That treated "not known" as "absent", against the subcategories' own null
+definitions, and it let a subcategory scored on only part of a category's
+entries define the category there. It was corrected before the category
+results were published, after the first estimates had been seen, because the
+molecule category (2.74×) exceeded every one of its subcategories (0.86–1.59×):
+582 of the 1,283 small-molecule entries counted as lacking it had no known
+structure and no measurement at all. The corrected rule:
+- A category is formed only from subcategories scored on all of its entries.
+  Brain-penetrant properties (neurology and psychiatry only) and the earlier
+  failed trial (2011–2019 entries only) are reported alone.
+- The molecule category covers small molecules with known computed properties.
+- An entry on which none of a category's subcategories is known is null,
+  not 0.
+
+The other five categories are unchanged entry for entry. The corrected precedent
+category, an approved drug on the target for any disease, is the same variable
+as the target-precedent covariate of the Phase 2 model, so the precedent lines
+are no longer adjusted for it. Before this, they had been adjusted for
+themselves.
+
+**Display areas, added 2026-11-05 (exploratory).** After the category results had been seen, the
+evidence chart was regrouped for readability into areas that each answer one question, with mutually
+exclusive groups of programs inside each: human genetics (rare variants only, common only, both),
+curated pathways (a disease mutation shown disrupting the target's pathway), tumour genetics
+(mutation matches the drug, or not), diseased tissue (RNA level changed), mouse models (close symptom
+match, looser), the drug
+(strong and selective, strong only, weaker), target safety risk (constraint only, knockout lethality
+only, both) and earlier drugs on the target (approved for a related disease, for unrelated diseases
+only, a failure with no approval). Because the grouping was chosen knowing the results, its estimates
+are exploratory. Cancer-cell dependency is left off the chart, its interval too wide to read. The categories above remain the registered analysis, the appendix table reports
+them, and N1-N3 are unchanged.
+
 **New confirmatory hypotheses (Holm-corrected together, α = 0.05).**
 
 - **N1.** Among small molecules measured on the primary target and an off
@@ -268,6 +303,12 @@ pulled or any outcome is looked at.
   common-essential list of the same year are excluded, so the line marks selective dependency.
   The CRISPR line first published in 2019 (Project Score) stays a hindsight line.
 
+**Cell studies scope, 2026-11-04.** Fixed before the dependency line was compared with any outcome. Cell-line
+evidence for a disease exists only in oncology, and the earliest dependency screens were published in 2014, so
+the Cell studies category and its dependency subcategory are scored on oncology entries from 2015 on. Both its
+lines are known for every one of those entries, so the category means the same thing across its scope. The
+dependency scores are DEMETER2 and CERES reprocessings (2018–19) of screens published 2014–2017: the screen data
+existed before entry, but the exact scores were computed later.
 **Name vetting, 2026-11-05, added after the third attempt's pilot gate.** The cohort search showed that the
 synonyms taken from PubChem and ChEMBL included common words, generic class and protein names, and other drugs'
 names (for spinosad "Success", "Justice" and "Tracer"; for elinzanetant "Compound A"; for colestipol "POLY" and

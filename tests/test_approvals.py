@@ -91,3 +91,14 @@ def test_supplements_without_a_read_use_are_listed_and_admitted_as_first_approva
     with pytest.raises(ValueError, match="not an event date"):
         validate(p, {"decisions": [decision, {**decision, "mondo_id": "MONDO:0006639", "approved": "yes",
                                               "first_approval": "2022-02-10"}]})
+
+
+def test_an_original_approval_the_payload_does_not_record_may_predate_its_first_action():
+    p = {"events": [{"date": "2016-04-14", "appl": "BLA 125549"}], "supplements": [], "originals": [],
+         "diseases": [{"mondo_id": "MONDO:1"}]}
+    validate(p, {"decisions": [{"mondo_id": "MONDO:1", "first_approval": "2014-10-29", "approved": "yes"}]})
+    with pytest.raises(ValueError):  # after the first listed action: not an original approval
+        validate(p, {"decisions": [{"mondo_id": "MONDO:1", "first_approval": "2017-01-02", "approved": "yes"}]})
+    recorded = {**p, "originals": [("BLA 125549", "2016-04-14")]}
+    with pytest.raises(ValueError):  # the original is recorded, so only listed dates count
+        validate(recorded, {"decisions": [{"mondo_id": "MONDO:1", "first_approval": "2014-10-29", "approved": "yes"}]})

@@ -5,6 +5,8 @@ from pipeline.drugs import (
     disagreements,
     nonproprietary_name,
     render,
+    merged_names,
+    substance_groups,
 )
 from pipeline.fda import principals
 
@@ -125,3 +127,131 @@ def test_an_application_links_only_its_principal_ingredients():
     biosimilar = {"kind": "single", "components": [{"name": "adalimumab-atto", "biosimilar_of": "adalimumab",
                                                     "role": "principal"}]}
     assert [c["name"] for c in principals(biosimilar)] == ["adalimumab"]
+
+
+def test_a_code_is_reviewed_when_shared_or_registered_to_an_unrelated_substance():
+    from pipeline.drugs import review_keys
+    holders = {"ain457": {1, 2}, "acz885": {1}, "ym022": {3}, "r13672": {4}, "fx006": {5}}
+    unii_of = {1: "CANAK", 2: "SECUK", 3: "NETAZ", 4: "HALOP", 5: "TRIAM"}
+    registered = {"ain457": {"SECUK"}, "acz885": {"CANAK"}, "ym022": {"YM022REC"}, "r13672": {"HALDEC"},
+                  "fx006": {"TAFAM"}}
+    parents = {"HALDEC": {"HALOP"}}  # haloperidol decanoate is a form of haloperidol
+    assert review_keys(holders, unii_of, registered, parents) == {"ain457", "ym022", "fx006"}
+
+
+def test_an_entity_loses_only_the_codes_a_verdict_says_it_does_not_own():
+    from pipeline.drugs import owned_codes
+    codes = {1: ["ACZ885", "AIN457"], 2: ["AIN457", "AIN-457"], 3: ["GW876008"]}
+    keys = {1: "canakinumab", 2: "secukinumab", 3: "gw876008"}
+    verdicts = {"ain457": {1: False, 2: True}, "gw876008": {3: False}}
+    # every spelling of the code goes; an entity named by its code keeps it whatever the verdict
+    assert owned_codes(codes, keys, verdicts) == {1: ["ACZ885"], 2: ["AIN457", "AIN-457"], 3: ["GW876008"]}
+
+
+def test_a_salt_parent_or_sibling_form_counts_as_the_same_substance():
+    from pipeline.drugs import related_substances
+    parents = {"SALT": {"BASE"}, "ESTER": {"BASE"}}
+    assert related_substances("BASE", "SALT", parents) and related_substances("SALT", "BASE", parents)
+    assert related_substances("SALT", "ESTER", parents) and not related_substances("BASE", "OTHER", parents)
+    assert not related_substances(None, "BASE", parents)
+
+
+def test_a_code_leaves_an_entity_only_when_both_models_say_it_is_another_entitys():
+    from pipeline.drugs import agreed_verdicts
+    first = {"ain457": {1: False, 2: True}, "yh22162": {3: False}, "st067": {4: False}}
+    second = {"ain457": {1: False, 2: True}, "yh22162": {3: True}}  # st067: the check failed validation
+    assert agreed_verdicts(first, second) == {"ain457": {1: False, 2: True}, "yh22162": {3: True}, "st067": {4: True}}
+
+
+def test_a_removal_needs_the_registry_to_place_the_code_on_an_unrelated_substance():
+    from pipeline.drugs import registry_unconfirmed
+    verdicts = {"ain457": {1: False, 2: True}, "scb01a": {3: False}, "u34865": {4: False}, "fx006": {5: False}}
+    unii_of = {1: "CANAK", 2: "SECUK", 3: "FOSLI", 4: "HALOB", 5: "TRIAMSALT"}
+    registered = {"ain457": {"SECUK"}, "u34865": {"DIFLO"}, "fx006": {"TRIAM"}}  # scb01a: unknown to the registry
+    parents = {"TRIAMSALT": {"TRIAM"}}
+    assert registry_unconfirmed(verdicts, unii_of, registered, parents) == {
+        "ain457": set(), "scb01a": {3}, "u34865": set(), "fx006": {5}}
+
+
+def test_a_name_whose_decision_gives_another_entitys_code_is_stale():
+    from pipeline.drugs import stale
+    owners = {"canakinumab": 1, "acz885": 1, "secukinumab": 2, "ain457": 2, "verucerfont": 3, "emicerfont": 4,
+              "gw876008": 4}
+    resolved = {"a": ("drug", [{"name": "canakinumab", "codes": ["AIN457"], "biosimilar_of": None}]),
+                "b": ("drug", [{"name": "canakinumab", "codes": ["ACZ885"], "biosimilar_of": None}]),
+                "c": ("drug", [{"name": "verucerfont", "codes": ["GW876008"], "biosimilar_of": None}]),
+                "d": ("drug", [{"name": "new entity", "codes": ["GW876008"], "biosimilar_of": None}])}
+    assert stale(resolved, owners) == {"a", "c"}  # a component no entity holds yet is not judged
+
+
+def test_merges_copy_parents_before_children_and_delete_in_reverse():
+    from pipeline.drugs import parents_first
+    tables = ["evidence_entry_line", "evidence_entry", "literature_hit", "literature_search", "stop"]
+    fks = [("evidence_entry_line", "evidence_entry"), ("literature_hit", "literature_search"), ("stop", "moiety")]
+    order = parents_first(tables, fks)
+    assert order.index("evidence_entry") < order.index("evidence_entry_line")
+    assert order.index("literature_search") < order.index("literature_hit") and set(order) == set(tables)
+
+
+def test_only_the_same_substance_or_a_form_of_it_may_join_another_entitys_substance():
+    from pipeline.drugs import MERGE_SCHEMA, merge_allowed
+    relations = {1: "same_substance", 2: "salt_or_form", 3: "class_or_family", 4: "combination_or_mixture",
+                 5: "different_form", 6: "different_substance"}
+    assert set(MERGE_SCHEMA["properties"]["relation"]["enum"]) == set(relations.values())
+    assert merge_allowed(relations) == {1, 2}
+
+
+def test_the_merge_check_shows_the_entity_and_the_substance_it_would_become():
+    from pipeline.drugs import render_merge
+    text = render_merge({"entity": {"name": "penicillin", "codes": [], "aliases": [], "strings": ["Penicillin"],
+                                    "trials": [{"title": "Penicillin for syphilis", "sponsor": "X"}]},
+                         "substance": {"unii": "Q42T66VG0C", "display_name": "PENICILLIN G", "substance_type": "chemical",
+                                       "holder": "benzylpenicillin"}})
+    assert "Entity: penicillin" in text and "PENICILLIN G" in text and "benzylpenicillin" in text
+    assert "Candidate substances" not in text
+
+
+def test_merges_move_every_column_a_foreign_key_ties_to_an_entity_whatever_its_name():
+    from pipeline.drugs import entity_columns
+    fks = [("preclin.drug_moiety", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.atlas_pair", "preclin.moiety", ["same_entity_as"], ["moiety_id"]),
+           ("preclin.evidence_entry", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.evidence_entry_line", "preclin.evidence_entry", ["moiety_id", "mondo_id", "phase"],
+            ["moiety_id", "mondo_id", "phase"]),
+           ("preclin.dev_program", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.trial_outcome", "preclin.ctgov_study", ["nct_id"], ["nct_id"])]
+    assert entity_columns(fks) == {"preclin.drug_moiety": ["moiety_id"], "preclin.atlas_pair": ["same_entity_as"],
+                                   "preclin.evidence_entry": ["moiety_id"], "preclin.evidence_entry_line": ["moiety_id"]}
+
+
+def test_an_entity_resolved_in_a_scoped_run_joins_the_entity_already_holding_its_substance():
+    # 41916 (new, scoped) resolves to the UNII 13338 already holds; 13338 was not re-resolved in this run.
+    groups = substance_groups({41916: "9B7N7Y96MK"}, {"9B7N7Y96MK": 13338})
+    assert sorted(groups["9B7N7Y96MK"]) == [13338, 41916]
+
+
+def test_a_holder_resolved_in_the_same_run_follows_its_own_decision():
+    # In a full run the holder was re-resolved to another substance, so it is not pulled into its old one's group.
+    groups = substance_groups({41916: "U1", 13338: "U2"}, {"U1": 13338})
+    assert groups["U1"] == [41916] and groups["U2"] == [13338]
+
+
+def test_an_entity_alone_on_its_substance_stays_alone():
+    assert substance_groups({41917: "U3"}, {}) == {"U3": [41917]}
+
+
+def test_undoing_a_same_entity_merge_drops_the_merged_entitys_names_from_the_survivor():
+    payload = {"entity": {"moiety_id": 13338, "name": "menc strain c11 adipic conjugate", "unii": "9B7N7Y96MK",
+                          "other_names": []},
+               "candidates": [{"moiety_id": 36058, "name": "meningococcal group c oligosaccharide crm197 conjugate",
+                               "other_names": ["menc crm197"]},
+                              {"moiety_id": 36059, "name": "meningococcal group y conjugate", "other_names": []}]}
+    survivor, names, unii = merged_names("moiety_same_entity", payload, {"same": [36058]}, alive={13338, 36059})
+    assert survivor == 13338 and unii == "9B7N7Y96MK"
+    assert names == ["meningococcal group c oligosaccharide crm197 conjugate", "menc crm197"]
+
+
+def test_undoing_a_unii_merge_names_the_merged_entity_and_its_substance():
+    payload = {"name": "zuraprep", "codes": ["ZP-1"], "aliases": []}
+    survivor, names, unii = merged_names("moiety_unii", payload, {"unii": "ND2M416302"}, alive=set())
+    assert survivor is None and names == ["zuraprep", "ZP-1"] and unii == "ND2M416302"

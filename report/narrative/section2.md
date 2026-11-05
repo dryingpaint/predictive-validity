@@ -10,7 +10,9 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 ### Which evidence predicts
 
-![Relative success in reaching approval for each evidence category and its subcategories, US-developed programs](report/output/figures/evidence_translates.png)
+![Relative success in reaching approval for each area of evidence and its mutually exclusive groups, US-developed programs](report/output/figures/evidence_translates.png)
+
+*How often US-developed programs that entered a phase in 2008–2019 went on to FDA approval when the evidence was known the year before they entered, relative to programs without it: 2× means twice as often. n: programs with the evidence. Bold: an area of evidence, each answering one question; indented: groups of its programs that do not overlap, so each program with the evidence sits in exactly one. Filled dot: the whole 95% range sits on one side of 1×, so the difference is unlikely to be chance. Arrowhead: the range runs past the edge of the chart. †: scored only for 2011–2019 entries, so it is not part of its area. The registered categories, every line tried and the counts are in the appendix.*
 
 {{SECTION2_RS}}
 

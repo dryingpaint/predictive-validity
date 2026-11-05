@@ -203,7 +203,7 @@ def categories_table() -> str:
         name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
             + (" (descriptive)" if r["level"] == "descriptive" else "")
         if pd.isna(r.get("column")):
-            out.append([name, "–", "–", "Descriptive: literature retrieval failed the quality gate", "–", "–", "–"])
+            out.append([name, "–", "–", "Not measured: the literature search missed too many studies", "–", "–", "–"])
             continue
         exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
         if not r["estimated"]:
@@ -387,7 +387,8 @@ def s3_map_table() -> str:
             "Share of all that advanced", "Risk ratio, all (95% CI)", "Risk ratio, non-oncology",
             "Risk ratio, oncology"]
     df = pd.DataFrame(rows, columns=cols)
-    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
+    groups = {"b1": "**Earlier drugs on the same target**",
+              "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
     out = []
     for f, row in zip(S3_MAP_ROWS, df.values.tolist()):
         if f in groups:

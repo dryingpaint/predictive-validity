@@ -8,8 +8,9 @@ subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to
   relative_success), on the entries' BIO-style phase rows, skipped phases counted as successes with the
   features of the entry that skipped them;
 - the adjusted risk ratio of S4 among Phase 2 entries (report.section3: modified Poisson, errors clustered
-  by primary-target set, adjusted for disease area, modality, entry period, novelty and target precedent; an
-  entry with no resolved target is its own cluster and has no precedent),
+  by primary-target set, adjusted for disease area, modality, entry period, novelty and target precedent, the
+  last left out for the clinical-precedent lines, which it would adjust for themselves; an entry with no
+  resolved target is its own cluster and has no precedent),
   again with biomarker-selected enrolment added as a sensitivity;
 - for efficacy categories, the adjusted risk ratio of an efficacy stop among Phase 2 and 3 entries; for
   safety risk, of a safety stop among Phase 1-3 entries.
@@ -17,7 +18,8 @@ A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target 
 estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
 N1-N3 are tested as the plan words them and Holm-corrected together.
 
-Writes report/output/evidence_analysis/: lines.csv and numbers.json, which also carries the literature
+Writes report/output/evidence_analysis/: lines.csv (the registered categories), areas.csv (the same estimates for
+the chart's areas and their mutually exclusive tiers, AREAS) and numbers.json, which also carries the literature
 gate results (report/audits/literature_gate.json) that leave the literature lines descriptive.
 """
 from __future__ import annotations
@@ -28,7 +30,7 @@ import os
 import pandas as pd
 
 from report import frame
-from report.evidence_lines import ADJUSTMENTS, APPLIES, CATEGORIES, build
+from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, build, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable
@@ -72,10 +74,11 @@ def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> d
     rs = relative_success(lr.merge(keys, on=["program_id", "entry_date"]), "x")
     row |= {f"rs_{k}": rs[k] for k in ("rs", "rs_lo", "rs_hi", "loa_with", "loa_without")}
     c2 = x[x.phase == 2]
+    base = tuple(c for c in COVARS if not (cat == "precedent" and c == "precedent"))  # not the exposure itself
     for prefix, part, outcome, covars in (
-            ("s4", c2, "s4", COVARS),
+            ("s4", c2, "s4", base),
             ("s4_biomarker", c2.assign(biomarker_selected=c2.biomarker_selected.fillna(0)), "s4",
-             (*COVARS, "biomarker_selected")),
+             (*base, "biomarker_selected")) if cat != "adjustment" else (None,) * 4,  # it is the exposure there
             ("efficacy_stop", x[x.phase >= 2], "f_efficacy", COVARS_23) if cat not in NOT_EFFICACY else (None,) * 4,
             ("safety_stop", x, "f_safety", COVARS_23) if cat == "safety_risk" else (None,) * 4):
         if prefix is None:
@@ -102,7 +105,8 @@ def hypotheses(d: pd.DataFrame) -> dict:
 
 
 def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    """The lines table and numbers from the evidence-line dataset, the phase rows and the failure modes."""
+    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS) and numbers from
+    the evidence-line dataset, the phase rows and the failure modes."""
     d = d.assign(precedent=d.precedent.fillna(0),  # no resolved target: no approved drug known on it
                  target=d.target.fillna("entity " + d.moiety_id.astype(str)))  # and it is its own cluster
     d = cause_outcomes(d.merge(fm[["program_id", "phase", "reason"]], on=["program_id", "phase"], how="left"))
@@ -112,6 +116,8 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
         out.append(line_row(cat, "category", line, d, lr))
         out += [line_row(cat, "descriptive" if s.descriptive else "subcategory", s, d, lr) for s in subs]
     out += [line_row("adjustment", "adjustment", a, d, lr) for a in ADJUSTMENTS]
+    areas = [line_row(area, level, ln, d, lr) for area, (line, tiers) in AREAS.items()
+             for level, ln in (("area", line), *(("tier", t) for t in tiers))]
     c2 = d[d.phase == 2]
     n = {"cohort": {"entries": int(len(d)), "programs": int(d.program_id.nunique()),
                     "with_target_disease": int(d.has_target_disease.sum()), "phase2": int(len(c2)),
@@ -120,7 +126,7 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
          "lines": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in out if r.get("column")},
          "literature_gate": literature_gate(),
          **hypotheses(d)}
-    return pd.DataFrame(out), n
+    return pd.DataFrame(out), pd.DataFrame(areas), n
 
 
 def literature_gate() -> dict:
@@ -132,11 +138,15 @@ def literature_gate() -> dict:
 
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
+    if changed := stale():  # the analysis builds its own rows; the stored copy others query should match them
+        print(f"[evidence_analysis] warning: the stored evidence dataset is stale ({', '.join(changed)}); "
+              "run python -m report.evidence_lines store", flush=True)
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes))
+    lines, areas, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes))
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
+    areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(jsonable(n), f, indent=1)
 
