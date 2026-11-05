@@ -1,0 +1,43 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/ovarian-cancer-parp1-2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kinders 2008 (PMID 18980982) resolves; quote verbatim in abstract. Veliparib is a member; opening untested at model_first_use_year correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kummar 2009 (PMID 19364967, epub 2009-04) resolves; quote verbatim. Same PAR ELISA design as the Kinders model; proximal readout; mixed advanced cancers acceptable for engagement. Pairing correctly marked comparison_stated false."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Jones 2009 (PMID 19873981) quote verbatim. model_filed true confirmed: the 2017 niraparib review cites BRCA1/2-deficient xenografts and HRD PDX models."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundle 208447 MultidisciplineR clin-pharm (p.10-22); the review also states >=50% PBMC PARP inhibition from 80 mg. Target reached, NOVA positive -> same; margin_stated false is right (no nonclinical margin stated)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Jones 2009 quote verbatim in abstract; BRCA-selective cell killing and BRCA1-deficient xenograft activity; opening untested correct."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mirza 2016 (PMID 27717299, epub 2016-10-07) quote verbatim; NCT01847274 results first posted 2019-05-01 and gBRCA PFS is a registered primary outcome. Should add ARIEL4 OS detriment as outcome_tested (see missing)."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in 209115 review; next sentence says patients' ALT/AST rises were absent in animals. same+partial is defensible under the partial clause, but a strict silence-contradicted reading gives contra; raised as rule question."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; BP +13-20% at 1 mg/kg = 0.7x unbound Cmax; label grade 3-4 hypertension 9% vs 2%. Status fine, but model_change: true is misused (no preceding contra); should be false."}
+ ],
+ "missing": [
+  "ARIEL4 (rucaparib vs chemotherapy, BRCA-mutant relapsed ovarian; NCT02855944, results posted 2022-02-11): primary invPFS met (Kristeleit, Lancet Oncol 2022), but final OS 19.4 vs 25.4 months (Lancet Oncol 2025, PIIS1470-2045(24)00674-0); FDA treatment indication voluntarily withdrawn June 2022. Status stays same on the primary endpoint, but efficacy should carry this as a patient_trials item / outcome_tested: negative.",
+  "NOVA final OS (gBRCA HR ~0.85, not significant; non-gBRCA OS detriment) led to the 2022 restriction of niraparib 2L maintenance to gBRCA; relevant to outcome_tested, not to the PFS-based status.",
+  "Stenoparib (2X-121, member) phase 2 NCT03878849 in platinum-resistant ovarian cancer, DRP-selected not BRCA-selected; sponsor press releases only (Allarity 2025), positive in tone, outside the BRCA/HRD population; no failure to add."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: when an FDA review says animal findings were 'consistent with' the dose-limiting harms but explicitly notes a common patient harm the species could have shown (rucaparib ALT/AST, 74% incidence) was absent, is that same + partial or contra (silence contradicted)?",
+  "Efficacy: does outcome_tested apply when the trial primary endpoint (PFS) is met but later OS shows detriment (ARIEL4) — i.e. is PFS a 'surrogate the model predicted' in oncology, and should an OS detriment ever move an efficacy cell?",
+  "model_change: is it meaningful on an entry that follows a same (not contra) entry with a different model, or should lint reject model_change: true unless the previous entry is contra?"
+ ]
+}

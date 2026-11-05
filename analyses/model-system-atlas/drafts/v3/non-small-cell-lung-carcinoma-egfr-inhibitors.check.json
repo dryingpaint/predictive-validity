@@ -1,0 +1,36 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-egfr-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Cross 2014 (PMID 24893891, epub 2014-06-03) abstract quote verbatim. Opening untested fine; AURA opened 2013-03-04, so model_first_use_year 2013 would be a slightly better proxy."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Thress 2017 (PMID 28751247, epub 2017-07-24) abstract quote verbatim; full text not open. Abstract gives no pEGFR effect size, so direction_only/medium is right. AURA results posted 2016-10-06 confirmed."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PharmR quote verbatim. Grepped PharmR/ClinPharmR/MedR and Cross 2014 full text (PMC4315625): no stated human efficacious exposure; dog tolerated 0.48x human AUC, so no margin. model_id reuses the xenograft slug although model text names rat/dog tox."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Abstract quote verbatim. Cross 2014 also shows two 20 mg AURA responders as proof of principle (comparison stated), but anecdotal, not a primary endpoint, so untested in 2014 stands."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Janne 2015 (PMID 25923549, 2015-04) quote verbatim; NCT01802632 results first posted 2016-10-06. Paired same is right for the osimertinib model. EXCLAIM-2 quote verbatim (PMID 39879577). See missing/rule questions on other members' models."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PharmR quote verbatim; 2013 proxy from AURA start date (2013-03-04) is sound."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PharmR quote verbatim; the review states hERG IC50 above clinical free drug and clean dog telemetry, then clinical QTc, so comparison_stated is right. Mobocertinib MultidisciplineR 'discrepancy ... unknown' sentence verified. Caveat: dog telemetry reached only ~0.5x human AUC."}
+ ],
+ "missing": [
+  "Naquotinib (ASP8273, class member): Phase 3 SOLAR (NCT02588261, first-line EGFR-activating-mutation NSCLC vs erlotinib/gefitinib, primary PFS by IRR) terminated May 2017 on IDMC futility/benefit-risk; registry results posted 2019-02-12; Astellas press release May 2017 (e.g. fiercebiotech.com/biotech/astellas-scraps-nsclc-program-after-look-at-phase-3-data). Its own xenograft model (Hirano et al. 2015, Oncotarget; DOI not verified) predicted activity. This is outside the draft's stated population (T790M or exon 20) only because the draft narrowed it.",
+  "Mobocertinib: an efficacy entry on its own exon 20 model (Gonzalvez 2021 Cancer Discov, Ba/F3/PDX) paired with EXCLAIM-2 (PMID 39879577, 2025; HR 1.04, crossed futility) is only noted in patient_trials, not scored; NCT04129502 has no posted results (completed 2026-09-22). Takeda withdrew the drug in 2023 (press release, tier 5).",
+  "Osimertinib FLAURA (first-line sensitising EGFR, NEJM 2018, 10.1056/NEJMoa1713137) is the class's main efficacy datum for the same xenograft system (PC9 Ex19del models in Cross 2014) and is absent because the population excludes first line.",
+  "Rociletinib: FDA ODAC April 2016 and complete response letter June 2016 after confirmed ORR fell to about 30% from the 59% reported earlier; hyperglycaemia in patients. Not scored; at minimum belongs in patient_trials or a note.",
+  "Olmutinib: Boehringer Ingelheim returned rights in 2016 after fatal toxic epidermal necrolysis/SJS; a safety datum for another member on its own tox package, not recorded."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "The cell shows the BEST model's status. When a different member drug's own model (mobocertinib exon 20 Ba/F3/PDX; naquotinib xenografts) fails in its Phase 3, must that model get its own scored entries in the same cell, or only a note? The rules say 'one drug's contra beats another's same on the same model' but are silent on other models within one class.",
+  "Population when the tile gives none and members span first-line sensitising, T790M-acquired and exon 20 insertion settings: one context (EGFR-mutant) or one per biomarker? The drafter's T790M-or-exon20 choice excludes FLAURA and SOLAR.",
+  "EXCLAIM-2 / SOLAR failed against an active comparator while the drug's activity (ORR ~30%) matched the model's prediction of regression. Is failing to beat an active comparator, which no model tested, contra or untested ('conditions the model never tested')?",
+  "Rociletinib: regulatory rejection because unconfirmed responses overstated ORR, with no failed pre-specified primary endpoint. Is that an efficacy contra, a partial same, or unscored?"
+ ]
+}

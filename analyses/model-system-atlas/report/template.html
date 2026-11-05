@@ -219,7 +219,7 @@ function render() {
   const atlas = document.getElementById("atlas");
   let html = `<svg width="0" height="0" style="position:absolute"><defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="5" height="5" fill="var(--same)"></rect><rect width="1.6" height="5" fill="var(--hatch)"></rect></pattern></defs></svg>`;
   html += `<div class="arow head"><div>Disease · mechanism<br><span class="axis" style="justify-content:flex-start">programs · share of indication</span></div>` +
-    Q.map(([, n, sub]) => `<div class="q"><b>${n}</b>${sub}<div class="axis"><span>${Y0}</span><span>2000</span><span>${Y1}</span></div></div>`).join("") + `</div>`;
+    Q.map(([, n, sub]) => `<div class="q"><b>${n}</b>${sub}<div class="axis"><span>${Y0}</span><span>2006</span><span>${Y1}</span></div></div>`).join("") + `</div>`;
   let area = null;
   tiles.forEach((t, i) => {
     if (t.area !== area) { area = t.area; html += `<div class="area-h">${esc(area)}</div>`; }
@@ -261,7 +261,8 @@ function render() {
   sel.onchange = draw; document.getElementById("show").onchange = draw; draw();
 
   const ag = d.agreement;
-  document.getElementById("agree-p").textContent = ag.cells ? `Agreement: the drafter and checker agreed on the latest status of ${ag.agree} of ${ag.cells} cells (κ ${ag.kappa?.toFixed(2)}). In the first run under the v2 rules the checker overturned 19% of cells.` : "";
+  document.getElementById("agree-p").textContent = (ag.cells ? `Agreement: the drafter and checker agreed on the latest status of ${ag.agree} of ${ag.cells} cells (κ ${ag.kappa?.toFixed(2)}). In the first run under the v2 rules the checker overturned 19% of cells. ` : "") +
+    (d.open ? `The checkers raised ${d.open.rule_questions} rule questions the v3 rules do not yet decide, and found ${d.open.missed} comparisons the drafts left out; they are listed in drafts/v3/RULE_QUESTIONS_v3.md and change no stored status.` : "");
 }
 
 function Counter(xs) { const c = {}; xs.forEach(x => c[x] = (c[x] || 0) + 1); return c; }

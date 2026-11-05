@@ -1,0 +1,36 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hyperlipidemia-cetp-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Cao 2011 (PMID 21957197, JLR, epub 2011-09-25) read in full via PMC3220285; quote verbatim in abstract. Transgenic hCETP/apoAI mouse ex-vivo CETP inhibition is the class's PD model; untested opening correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Suico 2014 (PMID 24961753) quote verbatim; plasma CETP activity in dosed HVs = mouse readout, direct. Teramoto 2014 (PMID 24786356, epub 2014-04-02) reports CETP activity -50 to -95% in Japanese patients, slightly earlier, same year; no change."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Full text states the margin: ZDF-rat MAP unchanged at 142-fold exposure multiple, 'will not likely induce blood pressure increases in humans'. model_id is the mouse slug though the margin rests on rats; consider a combined slug."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Suico: 91% CETP inhibition at 600 mg, no 24-h ABPM change; target reached and drug moved the surrogate, so same holds even without decision 16. Margin published 2011, after the MAD was run (published 2014); see rule question."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Same Cao 2011 quote, verbatim. Mouse work preceded phase 1 (paper says compound already in phase II), so not a retrodiction despite 2011 publication."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Nicholls 2011 (PMID 22089718; NCT01105975, results posted 2018-03-22 matches registry_date) co-primary HDL-C/LDL-C in dyslipidaemic patients; quote verbatim. ACCELERATE NCT01687998 results 2018-05-16, HR 1.01 verified; outcome_tested negative correct."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Stated prediction of no torcetrapib-like BP/aldosterone liability confirmed in Cao full text (rat MAP, H295R CYP11B1/B2)."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Suico conclusion sentence verbatim. ACCELERATE +1.2 mmHg SBP (NEJM text, not re-read beyond abstract) could justify a 2017 same entry with source_calls_it partial, imported_from high-risk CVD; no status change."}
+ ],
+ "missing": [
+  "Lilly press release 2015-10-12 announcing discontinuation of evacetrapib after ACCELERATE futility (tier 5, investor.lilly.com; page returned 403, not opened) dates the outcome failure to 2015, earlier than the NEJM 2017 / registry 2018 dates in patient_trials.",
+  "Rocacetrapib (CKD-519): Choi 2019 (https://doi.org/10.3390/pharmaceutics11070336, abstract) animal allometric PK/PD model predicted a 25 mg efficacious dose with a 'huge difference' from observed phase 1 bioavailability; published after phase 1 (Kim 2016, https://doi.org/10.2147/DDDT.S120387), so likely retrodiction/contra on a different model of a member drug. Drafter noted it in judgement but scored nothing; best-model rule keeps cell same.",
+  "Teramoto 2014 (PMID 24786356, Europe PMC abstract) gives patient CETP-activity engagement data in April 2014, ahead of Suico (June 2014).",
+  "DRL-17822 patient_trials quote is a paraphrase of the NCT01388816 results table, not a verbatim sentence; numbers (3.2/84.2/122.1/160.6%) verified."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Decision 16 margin_stated: does a margin count as 'stated before the trial' when the model data were generated pre-IND but first published (Cao 2011) after the human MAD that tested it was run, and before that MAD was published (2014)?",
+  "The same rat BP / exposure-multiple datum scores both dose (margin_stated same) and safety (same). 'Count the harm once' covers a harm that occurred; is double scoring allowed when no harm occurred?",
+  "Best-model rule vs member-specific dose models: should a different model's dose miss for another member (rocacetrapib PK/PD allometry, Choi 2019) appear as its own entry, and is a model published after phase 1 data a retrodiction even if it set the FIH dose?"
+ ]
+}

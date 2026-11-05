@@ -7,3 +7,5 @@ You are a checker for the model-system atlas. Work in /Users/melissadu/Documents
 
 Constraints: no git commands; DB read-only; budget ≤ 30 tool calls, about 20 minutes.
 Reply with the verdict path, a one-line verdict per cell, and the rule questions.
+
+If any tool call is denied, rate-limited or hangs, do not retry it: move on with the sources you have and say what you could not verify. Stop and write your file by 20 minutes at the latest.

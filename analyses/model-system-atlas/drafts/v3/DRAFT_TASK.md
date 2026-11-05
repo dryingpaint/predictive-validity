@@ -15,3 +15,5 @@ Constraints:
 - Budget ≤ 40 tool calls; finish within about 30 minutes. Abstract-level reading is fine; say when you used it.
 
 Reply as the brief asks: the file path, the 4-row table, every judgement call, and anything you could not verify.
+
+If any tool call is denied, rate-limited or hangs, do not retry it: move on with the sources you have and say what you could not verify. Stop and write your file by 20 minutes at the latest.

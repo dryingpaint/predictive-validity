@@ -1,0 +1,43 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/acute-myeloid-leukemia-flt3-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Zarrinkar 2009 (PMID 19654408) resolves; quote verbatim in abstract. Opening untested at model's first use is correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Cortes 2013 JCO (PMID 24002496) quote verbatim; PIA is a direct readout. NCT00462761 results first posted 2020-04-24, matches registry_date."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Same Zarrinkar 2009 abstract; untested opening is correct."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Abstract gives MTD 200 mg/day, DLT grade 3 QT, complete PIA inhibition. 'Reached, drug worked' gives same; margin_stated false is correct since no model source stated a margin."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Zarrinkar 2009 quote verbatim; untested opening correct."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "QuANTUM-R (PMID 31175001): OS primary, quote verbatim; NCT02039726 results posted 2020-01-27. ADMIRAL patient_trials quote verbatim (NEJM). Earlier 2018 'same' exists; see missing."},
+  {"cell": "efficacy", "index": 3, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "proposed_status": "contra", "proposed_year": 2020, "rule": "Evidence rule 6 (dating: earliest public date) with tier 5 rule 2",
+   "note": "Wang 2022 quote verbatim; Ueno 2019 abstract does predict combo>either alone in xenografts and names unfit patients. Contra holds, but Astellas announced OS futility 2020-12-21 (tier 5); year should be 2020."}
+  ,
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote found verbatim in bundled Xospata multidisciplinary review; dog telemetry to 100 mg/kg showed no ECG effect, hERG IC50 16 uM. 2013 proxy year stated."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Label PRES quote verbatim (5.1); review gives QTcF >500 ms in 1.7% at 120 mg, QT-related deaths, PRES AESI 3%. Clean dog ECG and rat CNS screen make silence a scoreable miss."}
+ ],
+ "missing": [
+  "Efficacy, earlier 'same' in 2018: Cortes 2018 Lancet Oncol quizartinib single-arm phase 2 (doi:10.1016/S1470-2045(18)30240-7, epub 2018-05-31; NCT00989261), co-primary endpoints CRc and CR. The FDA Xospata review (Nov 2018, in bundle) also approved gilteritinib on ADMIRAL's co-primary CR/CRh. The strip's first 'same' should be 2018, not 2019.",
+  "LACEWING sponsor release: Astellas 2020-12-21, 'did not meet endpoint of overall survival' (https://newsroom.astellas.com/2020-12-21-Astellas-Reports-XOSPATA-R-gilteritinib-in-Combination-with-Azacitidine-Did-Not-Meet-Endpoint-of-Overall-Survival-in-Newly-Diagnosed-FLT3-Mutation-Positive-Acute-Myeloid-Leukemia-Patients-Ineligible-for-Intensive-Induction-Chemotherapy); dates the contra to 2020.",
+  "MORPHO (gilteritinib post-HCT maintenance, NCT02997202): missed primary RFS (HR 0.68, p=0.0518); Astellas topline release 2023-03-09; Levis JCO 2024 doi:10.1200/JCO.23.02474. Post-transplant maintenance was not modelled, so it is a patient_trials/untested note with no status change, but it is a Phase 3 failure the draft does not show.",
+  "QuANTUM-R regulatory reading: FDA ODAC (May 2019) and a complete response letter (June 2019) questioned the robustness of the OS result; quizartinib was not approved in the US until 2023. The 2019 entry does not record this tier-2 view.",
+  "Crenolanib (a class member) is absent: phase 3 NCT03250338 in relapsed/refractory FLT3-mutated AML was reportedly presented at ASH 2025 (benefit reported in NPM1/FLT3 co-mutated patients), and ARO-021 (NCT03258931) vs midostaurin is completed. Not verified here; the drafter should check primary-endpoint results. AKN-028 is also not mentioned."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "LACEWING opened in 2016; the model paper that predicted the combination (Ueno 2019) was published in April 2019, before readout but after the trial started. Does a model published mid-trial count as 'the system the class relied on', and as prospective?",
+  "When the same drug works as monotherapy (same) but fails in a combination regimen (contra), does 'one drug's contra beats another's same' make the whole efficacy cell contra, or is a combination a separate prediction?",
+  "Dose table: in LACEWING, gilteritinib exposure was at target (troughs equal to monotherapy) and the regimen failed and was abandoned. Should dose get 'contra, derived_from: efficacy' even though the monotherapy dose worked?",
+  "Safety: quizartinib entered humans around 2007 on a rat and monkey package whose QT prediction matched (public in 2023). Is a different tox species package the same model_id ('rat-dog-glp-tox'), or a model_change that could lift the gilteritinib contra?",
+  "Can a single-arm trial's response-rate primary endpoint (quizartinib phase 2, 2018) score efficacy 'same', or only a randomised primary endpoint?"
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/cystic-fibrosis-cftr-correctors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 21976485 (PNAS, epub 2011-10-05). Quote verbatim in abstract (truncated mid-sentence). Opening untested at 2009 matches NCT00865904 start; HBE is the system the class relied on."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 21825083, epub 2011-08-08, print 2012. Quote verbatim. NCT00865904 results 2015-08-28 (estimated). Sweat moved, nasal PD and rectal maturation did not: same + partial is right. Pairing, correctly comparison_stated false."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SEC 6-K exh 99.1 quote verbatim; PK 'did not impact the exposure', so not a PK miss. de Wilde 2019 (PMC6521598) full text shows 'further increase in Cl current' with the same triple in HBE. Add-on design attributes the null to GLPG2737."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "EC50 81 nM verbatim. No source compares the cell EC50 with human free exposure; untested opening is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR 206038 l.826-832: rat NOAEL '3- or 7-fold', dog 2-fold, verbatim. Wainwright quote verbatim (PMID 25981758). Margin is published only in the 2015 NDA review, after Phase 3; see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Van Goor abstract; 'a level associated with mild CF' is the stated prediction of benefit. Untested opening fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Primary FEV1 met (2.6-4.0 points, P<0.001); NCT01807923 results 2015-08-31. FDA PharmR l.1244-1246 is a tier-2 stated comparison calling translation 'limited'; source_calls_it could be over_predicted. Mono FEV1 decline was never a primary endpoint."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR l.435 verbatim; rat plethysmography clean at 250-1000 mg/kg (l.1909). Not scoring respiratory events is defensible. Lumacaftor liver-related SAEs (label 5.2) not discussed; see missing."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2025,
+   "rule": "12",
+   "note": "Quote and IntegratedR margin verified. But the fatal liver cases are on Trikafta, not vanzacaftor; the label attributes liver injury to the combination products, not to a class drug (#70). Alyftrek's own LFT rises lack a placebo arm.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 12 (#70): the label attributes fatal liver injury to Trikafta, a combination without vanzacaftor, not to a class drug. Decision 16: a predicted organ with misplaced margin belongs in dose, never safety contra."
+  }
+ ],
+ "missing": [
+  "Elexacaftor tox (NDA 212273 MultidisciplineR p.43): rat target organs stomach/testes, no liver; dog only hepatocellular hypertrophy (non-adverse). Trikafta 2019 label 5.1 'Elevated transaminases have been observed in patients with CF treated with TRIKAFTA', later liver failure. Candidate safety entry for model elexacaftor-rat-dog-tox, subject to the same #70 attribution question as safety 2.",
+  "Lumacaftor liver: Orkambi 2015 label 5.2/6.1, 'Three patients who received ORKAMBI had liver-related serious adverse reactions ... compared to none in the placebo group', rats and dogs silent on liver (PharmR l.435). Weak because transaminase rates were similar to placebo; the draft should at least note it in safety 1.",
+  "Galicaftor HBE model side exists (Wang 2018 J Med Chem, doi 10.1021/acs.jmedchem.7b01339) for the NCT04853368 FEV1 miss (cohort 2 vs placebo 0.9, p=0.402, verified on CT.gov). The draft says no model prediction was found; the judgement should cite this paper and say why it is not scored (combination with non-member correctors).",
+  "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride primary met, no posted results) is a same-drug match on the same HBE model; it belongs in the engagement judgement (it is mentioned) but could be its own dated tier-5 entry before the 2019 contra."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Decision 16 / checker brief: does a tox margin first published in the NDA review (after Phase 3) count as 'stated before the trial' when the studies themselves were in the IND before Phase 3 (model_filed true)?",
+  "Decision 16 says a harm the model predicted with a misplaced margin is counted in dose, but its dose contra row is for a target never reached. Where does a predicted-organ, misplaced-margin harm go when patients reached target and the harm was not dose-limiting (vanzacaftor liver)? Safety contra, safety same, or dose contra?",
+  "#70 for fixed-dose combinations whose components are all class members or the shared backbone (Trikafta, Alyftrek): can a label harm attributed to the combination anchor a contra for the corrector's tox model?",
+  "Same drug, two combinations, opposite engagement results on the same model (GLPG2737: FALCON null, PELICAN positive). Decision 6 says one drug's contra beats another drug's same; it does not say how one drug's mixed record is resolved."
+ ]
+}

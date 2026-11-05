@@ -1,0 +1,35 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/migraine-disorder-cgrp-receptor-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Salvatore 2010 (PMID 20065019) abstract has the quote verbatim; rhesus CIDV EC50/EC90 0.8/7 nM. FDA ubrogepant PharmR calls CIDV an 'animal efficacy model', so model_filed=true holds."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "near", "status_supported": true,
+   "note": "Li 2015 (PMC4415719) full text: 'EC50 of ~1.6 nM', EC90 14 nM; quote matches apart from small-caps units. It says CIDV was 'first established and validated in the rhesus monkey', so the pairing is right. Moore 2020 abstract confirms ubrogepant rhesus 3.2 vs human 2.6 nM."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "untested is right, but fix fields: Li 2015 shows the MK-3207 dose target came from human healthy-volunteer CIDV PK/PD (EC90 14 nM) calibrated on telcagepant phase 3, not rhesus 7 nM. Set model_kind human_challenge and correct the note."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in Li 2015. Li predicted 20 mg with a 40-100 mg plateau. Hewitt 2011 added 200 mg for 'insufficient efficacy' at 20-100 mg, and only 200 mg was significant. contra fits that dose-table row. Li says CIs overlap from 10 mg up. model_kind should be human_challenge (see dose 1)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Quote verbatim in the Salvatore 2010 abstract. FDA PharmR (NDA 211765) lists monkey CIDV among 'animal efficacy models' for ubrogepant."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Hewitt 2011 abstract: primary endpoint 2-h pain freedom, and the dose-response trend quote is verbatim. NCT00712725 results were first posted 2010-11-22 (type ESTIMATED). patient_trials quotes for MD-02 (SumR) and rimegepant 75 mg (212728 bundle) are verified. BI 44370 quote not checked."},
+  {"cell": "safety", "index": 1, "verdict": "unverified", "source_resolves": false, "quote_found": "not_found", "status_supported": true,
+   "note": "The Fierce Biotech URL returned 403, so I could not see the quote. Smith 2020 abstract independently confirms MK-3207 was discontinued over DILI concerns. No MK-3207 animal toxicology is public, so untested is reasonable. A citable copy of the 2009 Merck release is needed."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "SumR quote verbatim. PharmR quote verbatim: 'no ALT elevations were predicted for any of the protocols tested'. Smith 2020 full text says DILIsym predicted liver safety 'before the clinical trial was conducted', so it is prospective. model_change=true is unneeded (prior entry untested) but harmless."}
+ ],
+ "missing": [
+  "Smith 2020 (doi 10.1093/toxsci/kfaa093, PMC8312697): 'DILIsym successfully modeled liver toxicity for telcagepant and MK-3207 at the dosing regimens used in clinical trials'. This is a 2020 retrodiction for member MK-3207. The draft mentions it only in a judgement, with no retro entry (see rule question).",
+  "BI 44370 discontinuation: secondary reviews (e.g. PMC4392770) attribute it to liver toxicity and/or oral formulation difficulty. No primary source (press release or registry) was found. If confirmed, it is a second member liver signal for the safety cell. At minimum the safety note should mention it.",
+  "Ubrogepant dose: Voss 2016 phase 2b (doi 10.1177/0333102416653233) found 1 and 10 mg ineffective and 25/50/100 mg effective. Moore 2020 gives human CIDV EC50 2.6 nM. If a CIDV-based ubrogepant dose prediction exists (e.g. the exposure-response paper 'Making Better Dose Decisions...'), it is a second member's dose comparison. The FDA ClinPharmR bundle has no CIDV dose rationale."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Retrodiction vs prospective on the same model: DILIsym retro-modeled MK-3207 (published 2020) in the same paper that reports the prospective ubrogepant match (2019 FDA, 2020 paper). Should the cell carry a separate retro entry for the MK-3207 member, or does the prospective same subsume it? Decision 10 does not say how a retro and a same of the same date and model order on the strip.",
+  "Dose-table row 'reached, failed, a higher dose later worked': does the higher dose have to be shown superior to the predicted dose? For MK-3207, 200 mg alone was significant, but CIs overlapped from 10 mg up, and the same trial met its primary endpoint on a pooled dose-response trend. The table also implies efficacy contra-then-same, while the draft keeps efficacy same because the primary was met in the same trial. Which applies?",
+  "Should a dose model built in human healthy volunteers (human CIDV calibrated on a non-member's phase 3 data) count as the same model_id/system as the rhesus CIDV used for engagement and efficacy, given that the brief scopes 'the model' to the preclinical system the class relied on?"
+ ]
+}

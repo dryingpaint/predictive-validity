@@ -1,0 +1,37 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/gastroesophageal-reflux-disease-atp4a-blockers.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": "evidence rule 6",
+   "note": "Takahashi & Take JPET (PMID 29180359), RaQualia; epub 2017-11-27, received 2017-07. Quote verbatim in abstract. Opening untested at first published use is correct; dog work predates phase 1 though published after it."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": "engagement definition; evidence rule 1",
+   "note": "Han 2019 APT (PMID 31437865), epub 2019-08-22, healthy volunteers; quote verbatim. Acid in dog and human = proximal; paired, comparison_stated false correct. Sunwoo 2020 and 2018 abstracts match the judgement's figures."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": "dose definition; decision 16",
+   "note": "Quote verbatim. Model gives an oral mg/kg, no exposure target or stated margin; no source compares it with human 50 mg. Untested is defensible (see rule question)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": "decision 10",
+   "note": "Kim 2019 JPET (PMID 30894456), CJ HealthCare authors; received 2018-11-12, epub 2019-03-20, i.e. after the Korean phase 3 (NCT03006874, 2016-17) and approval. Run date unpublished; retrodiction cannot be shown, so prospective treatment stands but is a rule question."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "rule": "efficacy definition; evidence rule 1",
+   "note": "Lee 2019 full text (PMC6594096): primary endpoint healing by wk 8, quote verbatim. Its 'nonclinical studies' cite ref 14 = Takahashi 2018 (dog), not Kim 2019, so pairing with comparison_stated false is right. Rat 15x potency edge not seen; source_calls_it 'partial' arguable, status unchanged."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "rule": "check item 4; decision 10",
+   "note": "Choi 2025 JNM (PMC12241910) quote verbatim. Status untested stands, but this rat study was run after tegoprazan's 2018 approval and is not what the class relied on; the relied-on tox package is unpublished. Model/first-use year arguably wrong."}
+ ],
+ "missing": [
+  "No unreported failure found: Sebela press release 2025-04-23 (biospace.com/press-releases/sebela-pharmaceuticals-announces-positive-topline-results-from-phase-3-triumph-program-of-tegoprazan-in-gerd) reports all primary endpoints met in TRIUMpH EE and NERD; could be added to patient_trials (tier 5), no status change.",
+  "Fexuprazan phase III EE head-to-head (Jeong 2024, J Clin Med, doi:10.3390/jcm13113262) is RETRACTED; correctly absent, worth a note so it is not re-added.",
+  "Tegoprazan Korean NERD phase 3 and TRIUMpH NERD (GERD patients) are additional efficacy patient_trials; no status change."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Efficacy: when the only published disease model (Kim 2019 rat GERD) was submitted after the phase 3 finished and after approval, and its run date is unpublished, is it prospective or `retrodiction: true` (retro rather than same)? The rules key on run date, which no source gives.",
+  "Safety: if the class relied on an unpublished regulatory tox package and the only public animal safety study was run post-approval, should the cell stay `untested` on the unpublished package (model_first_use_year pre-clinic, unknown) or be built on the post-approval study as the draft does? And is that study then a retrodiction of the comparable-AE phase 3 data?",
+  "Dose: does a model that states only an effective oral mg/kg (no exposure or occupancy target) count as stating a dose target, so that 'reached, drug worked' gives `same`, or does it stay `untested` as drafted?"
+ ]
+}

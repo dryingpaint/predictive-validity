@@ -1,0 +1,41 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/interstitial-cystitis-anti-ngf-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DOI resolves to Dmitrieva 1997 (PMID 9145801); quote verbatim in abstract. No IC trial (Evans 2011, NCT00999518, NCT01060254, EudraCT 2016-004138-12) reports an NGF/PD readout; untested holds. Abstract-level."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim (trkA-IgG 1 mg/kg). Cystitis models dosed sibling sequestrants only; no stated human exposure target or margin, so untested. See rule question on dose-efficacy coupling."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in Dmitrieva 1997 abstract; Hu 2005 (PMID 15711368, REN1820 CYP cystitis) also verified. Correct model family; product_in_model false right."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Evans 2011 (PMID 21420111, epub 2011-03-21) quote verbatim; primary endpoint pain; NCT00601484 results posted 2021-05-13, -1.36 [-2.203,-0.510]. Micturition frequency, the cystometric analogue, did not move; source_calls_it 'partial' would be defensible."},
+  {"cell": "efficacy", "index": 3, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "AAC briefing (Feb 2012, Pfizer, FDA-hosted) quote verbatim (chronic visceral pain section). NCT00999518 (A4091035, n=205) caveat: 'terminated due to lack of efficacy of all doses ... interim analysis'; posted 2021-08-03. Fulranumab IC trial did report results (see missing)."},
+  {"cell": "safety", "index": 1, "verdict": "corrected",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "untested", "proposed_year": 2008,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year, proxy allowed)",
+   "note": "Quote verbatim in Evans 2011. Status untested is right, but the draft itself sets model_first_use_year 2008 (proxy) and rule 6 opens the cell there; the 2011 date should move to 2008."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed",
+   "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Both quotes verbatim (sec 7.1 and the joint-safety discussion); briefing confirms FDA put IC studies on hold 16 Jul 2010. Tier 2 (AdCom briefing), imported_from OA correct; on-target harm a rodent could show (LaBranche 2017)."}
+ ],
+ "missing": [
+  "Wang H et al. 2017, BMC Urol 17:2, doi:10.1186/s12894-016-0193-z (PMID 28056917, epub 2017-01-05): fulranumab 9 mg SC in IC/BPS (NCT01060254, n=31), primary endpoint LS mean difference -0.2 [-1.52, 1.10], not significant; no joint-related SAE. The draft says this trial ended 'with no results'; it belongs in efficacy entry 3's patient_trials (no status change: underpowered, already contra) and the note should be corrected.",
+  "ASP6294 is a PEGylated Fab' (MAbs 2023, PMID 36458900, doi:10.1080/19420862.2022.2149055); the EU CTR record 2016-004138-12 (first posted 2020-02-08, women only, P=0.591, -0.2 [90% CI -0.84, 0.43]) confirms the draft's patient_trials quote and shows the female subgroup Nickel 2016 flagged was not confirmed prospectively."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose table row 'reached, failed, abandoned -> dose contra, derived_from efficacy' (and 'reached, worked -> same'): does it apply when no model ever stated an exposure target for any member drug? The draft keeps dose untested while efficacy goes same then contra; the rules do not say whether 'target reached' can be scored without a stated target.",
+  "Engagement: can a model's functional readout (cystometric voiding frequency in CYP cystitis) count as a downstream PD readout when the human trial measured its counterpart (micturition frequency, unchanged in Evans 2011)? If yes, engagement would be contra 2011 at readout_tier downstream; the draft scored it as a symptom endpoint.",
+  "Dating of efficacy entry 3: could not open the ClinicalTrials.gov history for NCT00999518 (API returned non-JSON). If the termination-for-interim-analysis text was public before Feb 2012, the year should be earlier; the rules do not say whether a registry termination reason without results counts as a public comparison."
+ ]
+}

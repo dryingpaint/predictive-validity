@@ -8,6 +8,7 @@ report/template.html, with the data embedded. --interim labels the page as drawn
 that was mid-rebuild.
 """
 import argparse
+import glob
 import json
 import os
 import sys
@@ -93,6 +94,9 @@ def load() -> dict:
             cq = [x for x in recs if x["question"] == q]
             if cq and any(x.get("verdict") for x in cq):
                 pairs.append((latest(cq, lambda e: e["status"]), latest(cq, checked_status)))
+            for x in cq:  # a checker's corrected year stands when the status is unchanged
+                if x.get("verdict") == "corrected" and x.get("proposed_year") and x["final"] == x["status"]:
+                    x["year"] = int(x["proposed_year"])
             cells[q] = [{"modality": x["modality"], "seq": x["seq"], "year": x["year"], "status": x["final"],
                          "drafted": x["status"], "model": x["model"], "model_id": x["model_id"], "src": x["src"],
                          "src_label": x["src_label"], "quote": x["quote"], "tier": x["source_tier"],
@@ -132,6 +136,9 @@ def main() -> None:
     a = ap.parse_args()
     data = load()
     data["interim"] = a.interim
+    checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "v3", "*.check.json"))]
+    data["open"] = {"rule_questions": sum(len(c.get("rule_questions") or []) for c in checks),
+                    "missed": sum(len(c.get("missing") or []) for c in checks)}
     tpl = open(os.path.join(HERE, "report", "template.html")).read()
     out = os.path.join(HERE, "report", "atlas.html")
     open(out, "w").write(tpl.replace("/*__DATA__*/null", json.dumps(data, default=str)))
