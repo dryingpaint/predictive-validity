@@ -83,6 +83,12 @@ def documents(appl_no: str, appl_type: str) -> list[tuple[str, str]]:
             if not m or (flags and flags.get(m.group(1)[0].lower() + m.group(1)[1:], "1") == "0"):
                 continue
             docs.append((KINDS[m.group(1).lower()], urllib.parse.urljoin(toc, urllib.parse.quote(name))))
+        base = re.search(r'pdfBaseName\s*=\s*"(\w+)"', page)  # 2020+ pages name no file: base + flag suffix
+        listed = {k for k, _ in docs}
+        for key, on in (flags.items() if base else ()):
+            kind = KINDS.get(key.lower())
+            if on == "1" and kind and kind not in listed:
+                docs.append((kind, urllib.parse.urljoin(toc, f"{base.group(1)}{kind}.pdf")))
     return docs
 
 
