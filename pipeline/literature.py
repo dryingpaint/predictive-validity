@@ -62,6 +62,8 @@ ESEARCH_RECHECK = 600  # seconds between checks of whether PubMed's esearch is a
 NAME_CHUNK = 50  # drugs whose names are looked up together
 CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
 FIRECRAWL_LIMIT = 550  # calls to Firecrawl's research index on the pilot (the user approves any cohort run)
+FIRECRAWL_WORKERS = 2  # concurrent calls: the account's parallel job limit
+FIRECRAWL_BACKOFF_MAX = 1800  # seconds: the longest wait after a rate-limited call before trying again
 FIRECRAWL_RESULTS = 20  # results per call; 40 times out
 MAX_DRUG_NAMES = 50
 MAX_NAME_CHARS = 30
@@ -430,22 +432,36 @@ def search(args) -> None:
     search_drugs(drug_cutoffs(entries(args.entries)) if args.entries == "pilot" else cohort_drugs())
 
 
+class FirecrawlError(RuntimeError):
+    """A Firecrawl call that failed; rate_limited is True for HTTP 429, out_of_credits for a billing refusal."""
+    def __init__(self, message: str):
+        super().__init__(message)
+        self.rate_limited = "429" in message
+        self.out_of_credits = "402" in message or "credit" in message.lower()
+
+
 def firecrawl_cli(args: list[str]) -> list[dict]:
-    """One call to Firecrawl's research index through its CLI; a failed call (a 504) is retried twice."""
+    """One call to Firecrawl's research index through its CLI. A timeout or a 5xx is retried twice; any other
+    failure raises FirecrawlError, so a failed call is never stored as an empty result."""
     import subprocess
     import tempfile
+    err = ""
     for attempt in range(3):
         with tempfile.NamedTemporaryFile(suffix=".json") as f:
             try:
                 r = subprocess.run(["firecrawl", "research", *args, "--json", "-o", f.name], capture_output=True,
                                    text=True, timeout=300)
             except subprocess.TimeoutExpired:
+                err = "timeout after 300 s"
                 continue
             if r.returncode == 0:
                 with open(f.name) as fh:
                     return json.load(fh).get("results") or []
+            err = (r.stderr or r.stdout).strip().splitlines()[-1] if (r.stderr or r.stdout).strip() else f"exit {r.returncode}"
+            if not re.search(r"status code 5\d\d", err):
+                raise FirecrawlError(err)
         time.sleep(15 * (attempt + 1))
-    return []
+    raise FirecrawlError(err)
 
 
 def firecrawl_query(names: list[str], disease: str) -> str:
@@ -516,10 +532,12 @@ def firecrawl_entries(which: str) -> pd.DataFrame:
 
 
 def firecrawl(args) -> None:
-    """Firecrawl's research index. --mode search runs one semantic search per entry not yet searched (a drug is
-    searched once its names are stored); --mode related expands, per drug, from its first qualifying screened record.
-    The pilot is capped at FIRECRAWL_LIMIT calls; a cohort run stops when the account has under 10 credits left,
-    and resumes where it stopped."""
+    """Firecrawl's research index. --mode search runs one semantic search per entry not yet searched, by the drug's
+    names (computed for drugs not yet searched in PubMed); --mode related expands, per drug, from its first
+    qualifying screened record. The pilot is capped at FIRECRAWL_LIMIT calls; a cohort run keeps going until every
+    entry is searched or the account refuses a call for credits. Rate-limited calls wait and retry; a failed call
+    is not recorded, so a later run searches it again."""
+    from concurrent.futures import ThreadPoolExecutor
     e = firecrawl_entries(args.entries)
     cut = {int(m): int(y) for m, y in e.groupby("moiety_id").cutoff_year.max().items()}
     with llm.connect() as conn, conn.cursor() as cur:
@@ -534,6 +552,9 @@ def firecrawl(args) -> None:
         cur.execute("""SELECT DISTINCT ON (moiety_id) moiety_id, record_id FROM preclin.literature_v3_screen
                        WHERE animal_disease OR animal_healthy OR human_engagement ORDER BY moiety_id, record_id""")
         seeds = dict(cur.fetchall())
+    missing = sorted(set(cut) - set(names))
+    for start in range(0, len(missing), NAME_CHUNK):
+        names.update(names_of(missing[start:start + NAME_CHUNK]))
     if args.mode == "search":
         calls = [(int(r.moiety_id), r.mondo_id, int(r.cutoff_year)) for r in e.itertuples()
                  if (int(r.moiety_id), r.mondo_id, "search") not in done and names.get(int(r.moiety_id))]
@@ -542,21 +563,38 @@ def firecrawl(args) -> None:
     if args.entries == "pilot":
         calls = calls[:max(FIRECRAWL_LIMIT - used, 0)]
     print(f"firecrawl {args.mode} ({args.entries}): calls={len(calls)} credits={firecrawl_credits()}", flush=True)
-    for i, (m, d, y) in enumerate(calls, 1):
-        if args.entries == "cohort" and i % 100 == 1:
-            left = firecrawl_credits()
-            if left is not None and left < 10:
-                print(f"firecrawl paused: {left} credits left, {len(calls) - i + 1} calls to go", flush=True)
-                return
+    state = {"done": 0, "failed": 0, "stop": None, "wait": 60}
+
+    def one(call: tuple[int, str, int]) -> None:
+        m, d, y = call
         if args.mode == "search":
             q = firecrawl_query(names[m], label.get(d, "the diseases it treats"))
-            results = firecrawl_cli(["search-papers", q, "--limit", str(FIRECRAWL_RESULTS), "--to", f"{y}-12-31"])
+            cli = ["search-papers", q, "--limit", str(FIRECRAWL_RESULTS), "--to", f"{y}-12-31"]
         else:
             seed = seeds[m]
             q = f"{'pmid:' + seed if seed.isdigit() else seed} | similar | {names[m][0]}"
-            results = firecrawl_cli(["related-papers", f"pmid:{seed}" if seed.isdigit() else seed, "--intent",
-                                     f"{names[m][0]}: preclinical efficacy, animal pharmacology or human target engagement",
-                                     "--mode", "similar", "--limit", str(FIRECRAWL_RESULTS)])
+            cli = ["related-papers", f"pmid:{seed}" if seed.isdigit() else seed, "--intent",
+                   f"{names[m][0]}: preclinical efficacy, animal pharmacology or human target engagement",
+                   "--mode", "similar", "--limit", str(FIRECRAWL_RESULTS)]
+        while state["stop"] is None:
+            try:
+                results = firecrawl_cli(cli)
+                state["wait"] = 60
+                break
+            except FirecrawlError as err:
+                if err.out_of_credits:
+                    state["stop"] = f"out of credits: {err} (credits={firecrawl_credits()})"
+                    return
+                if not err.rate_limited:
+                    state["failed"] += 1
+                    print(f"firecrawl failed moiety={m} mondo={d}: {err}", flush=True)
+                    return
+                wait = state["wait"]
+                state["wait"] = min(FIRECRAWL_BACKOFF_MAX, wait * 2)
+                print(f"firecrawl rate-limited (429); waiting {wait}s", flush=True)
+                time.sleep(wait)
+        else:
+            return
         got = firecrawl_ids(results, cut[m])
         external = resolve_external([k for k in got if not k[0].isdigit()])
         record_ids = sorted({k if k.isdigit() else external[k] for k, _ in got if k.isdigit() or k in external})
@@ -565,9 +603,15 @@ def firecrawl(args) -> None:
                            VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING""", (m, d, y, args.mode, q, len(results)))
             store_hits(cur, [(m, cut[m], "firecrawl", r) for r in record_ids])
             conn.commit()
-        if i % 100 == 0 or i == len(calls):
-            print(f"firecrawl {args.mode} {i}/{len(calls)}", flush=True)
+        state["done"] += 1
+        if state["done"] % 50 == 0:
+            print(f"firecrawl {args.mode} {state['done']}/{len(calls)} failed={state['failed']} "
+                  f"credits={firecrawl_credits()}", flush=True)
 
+    with ThreadPoolExecutor(FIRECRAWL_WORKERS) as pool:
+        list(pool.map(one, calls))
+    print(f"firecrawl {args.mode} finished: {state['done']}/{len(calls)} failed={state['failed']}"
+          + (f"; STOPPED, {state['stop']}" if state["stop"] else ""), flush=True)
 
 SYSTEM = """You read one PubMed abstract about a specific drug and decide what it reports about THIS drug (under any of the names given; a different drug with the same target does not count).
 

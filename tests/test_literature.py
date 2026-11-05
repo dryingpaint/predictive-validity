@@ -90,3 +90,16 @@ def test_a_search_request_succeeds_after_a_transient_failure(monkeypatch):
     monkeypatch.setattr(requests, "request", lambda *a, **k: next(responses))
     monkeypatch.setattr(literature.time, "sleep", lambda s: None)
     assert literature.request("GET", "https://example.org/search", lambda m: None).ok
+
+
+def test_a_rate_limited_firecrawl_call_raises_and_is_not_an_empty_result(monkeypatch):
+    import subprocess
+    from pipeline import literature
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: subprocess.CompletedProcess(
+        a, 1, "", "Error: Request failed with status code 429"))
+    try:
+        literature.firecrawl_cli(["search-papers", "q"])
+    except literature.FirecrawlError as e:
+        assert e.rate_limited and not e.out_of_credits
+    else:
+        raise AssertionError("a failed call must raise, not return no results")
