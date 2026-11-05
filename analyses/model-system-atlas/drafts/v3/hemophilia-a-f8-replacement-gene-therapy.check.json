@@ -1,0 +1,382 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hemophilia-a-f8-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 12893764, epub 2003-07-31; quote verbatim in the abstract. Sibling AAV2 vector; untested opening entry is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Konkle abstract carries the quote verbatim; Chhabra (model_src) abstract quote verbatim; NCT03205163 results posted 2019-12-02. Proximal readout, drafter pairing; same holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in PMC9018415 full text; sponsor states the animal comparison; NCT02576795 results 2025-04-10. The same paper reports no ER stress in patient hepatocytes, which the draft never scores (see missing)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Scallan abstract, quote verbatim; opening untested entry for the gene-therapy strip."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote, 380% and the ALT sentence all verbatim in PMC5835117. Roctavian SBRA: mouse mortality at >=6.53e13 vg/kg, a 1.09x margin over 6e13. 'Reached, worked' fits; the 6e12/2e13 escalation start was not a mouse-set target."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 32078672; quote verbatim in the abstract (PMC7180082 full text returned HTTP 500). Opening protein entry."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote near-verbatim (elided at the semicolon) in the abstract; NCT03205163 results 2019-12-02. Margin basis is misattributed: SBRA monkeys had ADA and one death; the held margin is the rat NOAEL 750 IU/kg (15x). Status unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the abstract; opening mouse-track entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 12738670, epub 2003-05-08; quote verbatim in the abstract. The Roctavian SBRA names no dog or canine study, so model_filed false is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 21081906, epub 2010-11-16; quote verbatim in the abstract. Abstract also states no long-term FVIII immune response in any dog (an unscored safety prediction, see missing)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "4",
+   "note": "Quote verified in PMC8672712; elision fair. The miss is multiyear durability, not a primary endpoint or PoC gate (NCT02576795 FVIII >=5 IU/dL and NCT03370913 ABR/FVIII wk 49-52 all met). Decision 4 gives same + source_calls_it partial; durability needs a rule.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 4: efficacy scores the trial's primary endpoint; 270-201 FVIII and GENEr8-1 week 49-52 FVIII/ABR were met, durability was neither primary nor poc_gate. Decision 11: partial agreement is same with source_calls_it partial. Decision 6 #3 needs a primary-endpoint contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the abstract; NCT03370913 results 2023-11-28 (registry primary is ABR change, NEJM primary FVIII change at wk 49-52; both met). Bunting 2018 pairing verified."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the abstract; NCT04161495 results 2023-05-24."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract and PMC11780198); model_src PMID 40123744 (online 2025-01-28) states 'long-term and stable FVIII expression' in tolerant hFVIII mice; NCT03370172 results 2025-09-11, primary AEs only, so poc_gate is the drafter's reading. Contra stands; see rule questions 2 and 4."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in PMC5835117; SBRA confirms mouse mortality and cardiac findings only at >=6.53e13 vg/kg and monkeys at 1.58e13/5.44e13 vg/kg with APTT prolongation, no ALT."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rangarajan abstract quote verbatim (online 2017-12-09; Bunting 2017-12-14). Macaques measured ALT/AST and showed none; askable silence contradicted (decision 4). Whether a capsid T-cell hepatitis is askable of an NHP is rule question 2."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the Roctavian SBRA (2023-06-29) clinical safety section; 87% immunosuppression also there; NCT03370913 results 2023-11-28. Strengthens the 2017 contra."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2023,
+   "rule": "4",
+   "note": "Quote verbatim. Same SBRA gives the patient side ('FVIII Inhibitor antibody development was not detected') and a held margin (rat NOAEL 750 IU/kg, 15x). Decisions 1 and 4 give same; decision 5 on the monkey ADA gives contra, never untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "RULE QUESTION: is a xenogeneic monkey ADA finding on a human protein a decision-5 harm prediction (contra, P-CAB precedent) or a species artefact (untested)? The held rat NOAEL null (decision 4 #58) gives same; rules rank neither."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "PMID 35821634, epub 2022-07-12; quote verbatim in abstract. Untested opening entry on a retrodiction track is not wrong, but it carries retrodiction:false on a model built after the clinic; see rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Same paper; quote verbatim. Abstract says FVIII decline 'has plagued clinical trials' and the mouse was built to reproduce it: retro, never same (decision 10). Year 2022 = epub. Mouse, not NHP.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 31193016, epub 2019-04-11; quote verbatim. BMN 270 at 6e13 vg/kg in AAV5-antibody-positive macaques, Cmax -74.8%. Run before the 270-203 patient result (2025), so prospective; patient-level untested opening is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov NCT03520712: terminated (early rollover), n=3, results posted 2025-08-22; secondary outcome 1/3 >=5 IU/dL at week 26, 2/3 below. Quote is the outcome-measure title. Direction matches the NHP; counts only, see rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 28056565, epub 2017-01-05; quote verbatim in abstract. Member's own model, opening entry; no tier 1-5 patient source exists. Untested is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 29890905 (2018); quote verbatim. NCT03588299 completed 2026-09-15, hasResults false (checked 2026-11-05); patient FVIII only in conference abstracts, so untested stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 34652966, epub 2021-12-08, print 2022 Apr; quote verbatim; year 2021 correct under decision 7. No posted patient PK/FVIII, so untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 12738670, epub 2003-05-08; quote verbatim in abstract. Opening untested at the dog track's first AAV use; no patient comparison in 2003.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 21081906, epub 2010-11-16; quote verbatim. Stated no-inhibitor prediction (1/9 transient) recorded before any F8 gene-therapy member was dosed; untested with strengthens is fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 29224506, epub 2017-12-09; 'No neutralizing antibodies to factor VIII were detected' verbatim in abstract. Dog prediction (2010) predates dosing, so prospective same, direction_only; n=9, 52 weeks as noted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "SBRA dated 2023-06-29; quote verbatim (safety section), which also states 'No subjects developed an inhibitor to FVIII'. SBRA integration data are NHP only ('no indication of clonal expansion'), so the dog's clonal-expansion half is untested in patients; no-tumour half holds. same/strengthens acceptable, low confidence.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 27738645, epub 2016-09-28; quote verbatim in abstract. Conditional harm prediction (>200% FVIII); untested opening is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 32775496, epub 2020-07-09; quote verbatim. Motivation is promoter strength, not a patient result, so prospective; the no-ER-stress-at-HLP prediction stays untested until the 2022 biopsies.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 35411075, epub 2022-04-11; quote verbatim in abstract. Full text cites the mouse UPR studies as the reason ER stress was examined, so comparison_stated could be true; prospective same, direction_only, conditional half untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 34652966; quote verbatim in abstract. NCT03588299 hasResults false (completed 2026-09-15); untested is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Mouse unfolded-protein-response / ER-stress prediction for high FVIII expression (Lange 2016, doi:10.1038/mtm.2016.64, PMID 27738645: transient UPR activation at >200% FVIII after AAV in hemophilia A mice) versus patient biopsies in Fong 2022 (doi:10.1038/s41591-022-01751-0: 'no endoplasmic reticulum stress was detected in hepatocytes expressing hFVIII-SQ protein') — a safety comparison on the mouse track that the draft never scores (decision 5 contra/opposite, or same if only BioMarin's own mice are the track).",
+  "Dog on-target safety prediction: no long-term FVIII inhibitor after liver gene transfer (Sabatino 2011, doi:10.1038/mt.2010.240: 'no long-term immune response to FVIII was observed in any of the dogs (1/9 dogs had a transient inhibitor)'; also Finn 2010, doi:10.1182/blood-2010-06-288001) versus no FVIII inhibitors in GENEr8-1 (Roctavian SBRA, https://www.fda.gov/media/170455/download) — a pooled on-target safety entry on the dog track; the drafter noted it as 'uncompared in print' but v3 rule 1 allows the pairing.",
+  "Dog genotoxicity prediction: clonal expansion of AAV-transduced hepatocytes in 5/6 dogs at 10 years (Nguyen 2021, doi:10.1038/s41587-020-0741-7, PMID 33199875) versus NHP integration analysis showing no clonal expansion (Roctavian SBRA nonclinical section) and no hepatic tumours reported in patients to date — the dog track has no safety entry at all.",
+  "Post-clinic nonhuman-primate models of AAV-FVIII expression loss (IL-15 blockade + rapamycin rescue of 'multifactorial loss of factor VIII'), pointed to by the review doi:10.1177/20406207251406537 (Ther Adv Hematol, 2026) — a candidate retrodiction track (decision 10, status retro) that the draft does not carry; primary paper not resolved within budget.",
+  "Peboctocogene camaparvovec (BAY 2599023 / DTX201, Bayer/Ultragenyx, AAVhu37; WHO INN proposed list 124) is a tile member with no entry and no model named; its phase 1/2 (NCT03588299) and preclinical model were not searched by the drafter.",
+  "Regulator action on the durability miss: FDA Complete Response Letter for valoctocogene, August 2020, requesting two-year GENEr8-1 data (BioMarin press release, tier 5), and BioMarin's 2025 withdrawal of Roctavian from the US market (https://www.bleeding.org/news/biomarin-pulls-roctavian-hemophilia-a-gene-therapy-from-us-market) — neither changes a status but both belong in the efficacy note.",
+  "Member-drug program stops with no model comparison, worth a note: Pfizer ceased giroctocogene development despite AFFINE meeting its primary endpoint (Sangamo press release, https://investor.sangamo.com/news-releases/news-release-details/sangamo-therapeutics-regain-full-rights-hemophilia-gene-therapy); Roche withdrew the SPK-8011 phase 3 (https://www.fiercebiotech.com/biotech/roche-mothballs-another-hemophilia-gene-therapy-under-spark-it-plans-debut-new-hematologic) and discontinued SPK-8016.",
+  "Kistner 2024 (doi:10.1038/s41434-023-00423-z, PMID 37833563, epub 2023-10-13): cynomolgus macaques given AAVrh10-hFVIII under prophylactic prednisolone, rapamycin or combinations (Ultragenyx/Penn); prednisolone alone raised hFVIII but 'this was not sustained upon taper'. The drafter set it aside as a sibling capsid asking a regimen question, but decision 8 allows proxies (product_in_model: false) and the dose cell scores regimen predictions, with GENEr8-3 prophylactic corticosteroids (NCT04323098, results 2024-04-04) as the patient test; candidate dose/engagement track, retro if motivated by the GENEr8-1 steroid data."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Where is a durability failure scored when every primary endpoint and PoC gate was met? Valoctocogene lost ~50% FVIII from year 1 to 2 and giroctocogene fell 42.6% to 25.4%, yet ABR stayed down; decision 4 (efficacy = primary endpoint) cannot hold the dog-track miss, and engagement asks only whether the readout moved. Efficacy #4 turns on this.",
+  "Does the checker-brief bar 'result attributed to conditions the model never tested' extend to a mechanism the species cannot mount — capsid-directed T-cell hepatitis in tolerant hFVIII-transgenic mice or in macaques? If yes, efficacy #7 (BAX 888) and safety #2 (ALT rise) become untested; if no, both contra stand.",
+  "Decision 5: is a model harm that the sponsor and regulator attribute to xenogeneic immunogenicity (monkey anti-drug antibodies, acquired hemophilia, one death on efanesoctocog alfa) a 'predicted harm that never came' (contra, opposite) or not a stated human prediction (same)? Safety #4 turns on this; untested seems wrong either way.",
+  "Is a secondary FVIII-activity endpoint in a phase 1/2 gene-therapy dose-escalation trial whose registry primary is adverse events only (NCT03370172, NCT03003533) a 'pre-specified proof-of-concept gate' by default, or must the sponsor name it as the decision point in a source?",
+  "Decision 16: does a mouse toxicology margin of 1.09x (mortality at 6.53e13 vg/kg against a 6e13 vg/kg clinical dose) count as a stated margin that held (dose #2, margin_stated true)?",
+  "A platform harm (AAV capsid hepatotoxicity with ALT rise) was already shown in hemophilia B AAV2 patients (Manno 2006) and missed by dogs and macaques before any F8 member was dosed: does `other` (same platform) open the gene-therapy safety strip in 2006, or is cross-class evidence set aside under decision 13 and the strip opens at 2017 as drafted?",
+  "Does a retrodiction track need an opening untested entry (engagement #4, same source and year as the retro entry), and if so should it carry retrodiction: true when lint only allows retro/contra on retrodiction entries?",
+  "Is a 3-patient terminated descriptive study reporting registry counts only on a secondary outcome (NCT03520712, 1/3 FVIII >=5 IU/dL at week 26) a patient result for an engagement `same` (engagement #7), given decision 10's 'a non-significant trend in a terminated trial is not a patient result'?"
+ ]
+}

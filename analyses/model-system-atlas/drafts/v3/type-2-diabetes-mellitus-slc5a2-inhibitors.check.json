@@ -1,0 +1,292 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-slc5a2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener; product_in_model false",
+   "note": "DOI resolves to Rossetti JCI 1987 (PMID 3571496); quote verbatim in abstract. Untested opener is right. But a 90%-pancreatectomized SD rat is not the ZDF rat it shares model_id t2dm-rodent-diabetic with (rule question 1)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "paired comparison; healthy volunteers count for engagement",
+   "note": "Sha 2011 (PMID 21457428) quote verbatim in abstract; model_src Liang 2012 (PMID 22355316, epub 2012-02-15) abstract gives ZDF RTG 415 to 94 mg/dL and 4-week HbA1c. DD10318/DD10319 are in the PharmR, so model_filed true. Year 2012 and proximal tier are right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "Same Rossetti 1987 source; quote verbatim in abstract. Opener only, nothing scores."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 16 (reached, drug worked = same)",
+   "note": "PharmR quote verbatim; ClinPharm RTG-plateau sentence verbatim; NCT01081834 results posted 2013-06-03 (CT.gov). Caveat: FDA identified no rat NOAEL (hyperostosis and Leydig tumours below 1x MRHD) and the 5-7x margin was first stated in the 2013 review; margin_stated rests on rule question 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "Rossetti 1987 again; quote verbatim in abstract. Opener only."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested: model existed, nobody compared",
+   "note": "Santer JASN 2003 (PMID 14569097); quote verbatim in abstract. Human-genetic track opener is right; model_filed false confirmed, no 2013 review text mentions renal glucosuria."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same on primary endpoint; paired comparison",
+   "note": "Stenlof DOM 2013 (PMID 23279307, epub 2013-01-24); quote verbatim in abstract; CT.gov primary = HbA1c week 26, results posted 2013-06-03. Liang 2012 abstract has the ZDF 4-week HbA1c fall. CANVAS quote verbatim (PMID 28605608). Same stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (retrodiction = retro)",
+   "note": "Katzmann CPT 2021 (PMID 33405238, epub 2021-02-01); quote verbatim in abstract. Abstract only: it does not set trial numbers beside the score, so comparison_stated true is unverified; general-population MR as the model side is rule question 3. Retro is right if admitted."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same, second member strengthens",
+   "note": "Integrated review quote verbatim; its p.25 states db/db and ZDF HbA1c fell at exposures equivalent to the clinical dose (checked). Zhang 2011 (PMID 21215314) is the db/db EGT1442 paper. -0.4% is not a class failure, so no neg."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "Santer 2003 quote verbatim in abstract; FRG track opener; model_filed false confirmed across all 2013 review texts."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested: no admissible comparison",
+   "note": "Zhang Pharmacol Res 2011 (PMID 21215314, epub 2011-01-05); quote verbatim in abstract. Untested-by-choice is defensible: a 14-carrier series set against AE rates is a pairing the drafter declined; a 'no hypoglycaemia' same would be arguable (rule question 5)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety: predicted harm that never appeared = contra, opposite; decision 13",
+   "note": "All quotes verbatim in PharmR (bone, 'clinically relevant exposure', Leydig 'no safety margin') and MedR ('not been reported thus far'). Rat urinary ketones and 3 phase-3 DKA cases confirmed in text. Note the adrenal 5-7x margin held, a correct call inside the same entry."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "contra strengthened; paired comparison",
+   "note": "Bilezikian JCEM (PMID 26580234, epub 2015-11-18); quote verbatim in abstract; NCT01106651 results posted 2013-05-29 (CT.gov); Watts 2016 (PMID 26580237) 4.0% vs 2.6% fractures confirmed. Human BMD loss opposes rat accretion; contra stands."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2023,
+   "rule": "status table: contra = the model predicted wrongly for a drug; one drug's contra still beats another drug's same on the same track; decision 13",
+   "note": "Quote verbatim, but the same review's labeling text says bexagliflozin's own 2-year SD-rat and CD-1-mouse studies had no neoplastic findings up to 54x/135x clinical exposure. This member's rat predicted no tumours and none appeared: same (low confidence, short exposure) or untested; the track stays contra on canagliflozin. product_in_model true is wrong for the Leydig prediction.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 8: bexagliflozin relied on its own 2-year rat/mouse studies, 'no neoplastic findings' at 54x/135x (review verified). Decision 4 #58: stated null held, same. Decision 5 #130 bars contra ('few events limits interpretability'). Track stays contra on canagliflozin (decision 6)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener; product_in_model false",
+   "note": "DOI resolves to Jurczak Diabetes 2011 (PMID 21357472, print 2011-03-01, no epub); quote verbatim in abstract. Opener only; the 2013 canagliflozin PharmR has no knockout/Sweet Pee text (grep), so model_filed false holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "paired comparison; healthy volunteers count; decision 10 (model precedes the public result)",
+   "note": "Sha 2011 quote verbatim (abstract; PMID 21457428, print 2011-07, no epub). Jurczak print 2011-03 precedes it: prospective by publication. The FIH is NCT01177150 (run 2006-11 to 2007-04, posted 2010-08-06, no results), so registry_date is fillable; see rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "DOI resolves to Kalgutkar DMD 2011 (PMID 21690265, epub 2011-06-20); quote verbatim in abstract. Opener only. model_filed true rests on the drafter's grep of the 63 MB 2017 PharmR, not re-downloaded here (bundle holds only the 209803 label).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "dose cell definition (reached AND enough); RULES section 4 tie (2) 'reached and the drug worked = same'",
+   "note": "Quote verbatim; comparison_stated true holds. FIH NCT00989079 ran 2009-10 to 2009-12, no results. 'Reached' is 2011; 'enough' only at VERTIS MONO (Terra 2017, doi 10.1111/dom.12888, epub 2017-02-22), so date the same 2017, as the canagliflozin dose entry is dated at its label.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "DOI resolves to Ly JASN 2011 (PMID 21209254, print 2011-01-01, no epub); quote verbatim in abstract. Opener; product_in_model false right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same on primary endpoint; paired comparison; prospective (decision 10 not triggered)",
+   "note": "Stenlof quote verbatim (PMID 23279307, epub 2013-01-24); Jurczak db/db sentence verbatim; CANVAS quote verbatim (PMID 28605608). NCT01081834 first posted 2010-03-05, primary completed 2011-08, results 2013-06-03: the 2011-03 knockout precedes even sponsor knowledge. Direction only; same stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "Ly 2011 'Our model suggests...' sentence verbatim in abstract; print 2011-01-01. Opener only; the four-harm prediction is the model's own.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 11: partial agreement = same + source_calls_it partial",
+   "note": "Label sentence verbatim (line 203); 3.2/10.4/11.4% genital mycotic, UTI 4.0/5.9/4.3%, dose-dependent volume depletion all in the label; SumR CV death 0.65 (0.34-1.24), MACE 0.98 confirmed. Mortality miss is the counter-reading (rule question).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested opener",
+   "note": "DOI resolves to Thrailkill Bone 2016 (PMID 26211996, epub 2015-07-23); quote verbatim in abstract. Opener; product_in_model true, model_filed false right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (retrodiction = retro, never same)",
+   "note": "Quote verbatim in abstract. Label fracture 14.2/18.7/17.6 per 1000 PY (line 358) precedes the 2015-07-23 epub; NCT01106651 results posted 2013-05-29: run after the result was known, so retro not same; year 2015 right. Direction only fits: clearest effect in control mice.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Canagliflozin in DBA/2J diabetic and control male mice (10 weeks, microCT): increased bone resorption and trabecular loss, the human direction, published after the 2013 FDA reviews had noted BMD loss and fractures and before Bilezikian/Watts. A retrodiction (retro) on a new mouse-bone track, not the SD-rat 2-year tox system. Thrailkill et al., Bone 2016;82:101-107, doi 10.1016/j.bone.2015.07.025, PMID 26211996, epub 2015-07-23.",
+  "Sglt2-knockout mouse (HFD and db/db backgrounds): prevented hyperglycaemia and preserved beta-cell function, a prospective 2011 genetic-animal model of the mechanism with no drug; no track in the draft. Jurczak et al., Diabetes 2011;60:890-898, doi 10.2337/db10-1328, PMID 21357472.",
+  "Ertugliflozin, a listed member, has no entry in any cell. The combined FDA pharmacology review (NDA 209803/209805/209806, 2017) exists at https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/209803,209805,209806Orig1s000PharmR.pdf (the bundle's single-NDA URLs 404) and, per its indexed text, reports glucosuria and kidney alterations in rats and dogs at clinical exposure; FDA rate-limited this session so it was not read. Its label (bundle 209803s000lbl.txt) carries 5.5 Lower Limb Amputation at approval.",
+  "Tofogliflozin, a listed member: its own rodent model paper (db/db mice and diabetic rats) could strengthen the rodent track and date a second prospective member before 2023. Suzuki et al., J Pharmacol Exp Ther 2012, doi 10.1124/jpet.112.191593, PMID 22410641.",
+  "Canagliflozin lower-limb amputation: FDA boxed warning 2017 from CANVAS, removed 2020-08-26 (https://www.fda.gov/drugs/drug-safety-and-availability/fda-removes-boxed-warning-about-risk-leg-and-foot-amputations-diabetes-medicine-canagliflozin). An unpredicted harm absent from the safety narrative; no species could show it, so no status change, but the 2013 safety note should carry it beside DKA.",
+  "Rat euglycaemic-ketoacidosis retrodiction (dehydration plus insulinopenia with an SGLT2 inhibitor in healthy and T2DM rats), Perry et al., Nat Commun 2019, doi 10.1038/s41467-019-08466-w. Run with dapagliflozin, which is not on this tile's member list, so it does not score here; flag for the T1DM tile or a class-level note.",
+  "Enavogliflozin, a listed member: no rodent-efficacy source found by Europe PMC title search (only a PK/tissue-distribution paper, PMID 35745783); the Korean approval dossier was not searched. Not verified.",
+  "Sha 2011 phase 1 registry: NCT01177150 (canagliflozin first-in-human, healthy men; start 2006-11, primary completion 2007-04, first posted 2010-08-06, no results) fills the null registry_date on engagement 4 (checker, CT.gov API v2).",
+  "Ertugliflozin human ADME paper (DMD 2013, Miao et al., doi 10.1124/dmd.112.049551) reportedly gives oral clearance within 1.5-fold of the allometric prediction: a within_2x magnitude for dose 4 instead of null. Seen only in a search snippet; not verified.",
+  "Vallon et al. 2011 JASN Sglt2-/- mouse (PMID 20616166, doi 10.1681/asn.2010030246, epub 2010-07-08, print 2011-01): the same Slc5a2-null system, public six months before Ly 2011 (print 2011-01-01) and Jurczak 2011; the slc5a2-null-mouse opener and model_first_use_year should move to 2010 (Europe PMC, checked)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Track granularity: does a family of rodent hyperglycaemia models (90%-pancreatectomized SD rat, ZDF rat, db/db mouse) count as one model_id, as the draft's t2dm-rodent-diabetic does, or is each strain its own track?",
+  "Decision 16 timing and ownership: a 5-7x margin first stated in the 2013 NDA pharmacology review (2-year carcinogenicity completed during phase 3), while FDA identified no chronic-tox NOAEL (hyperostosis and Leydig tumours below 1x MRHD): does it satisfy 'the model stated the effective exposure was tolerated' for margin_stated true? And which track owns a dose entry whose efficacy exposure comes from the ZDF rat and whose margin comes from SD-rat toxicology?",
+  "Human-genetic retrodiction in a general population (UK Biobank Mendelian randomization, mostly non-diabetic) set against T2DM trials: does 'patients of the context's disease only' bind the model side, or only the patient side?",
+  "Cross-member pairing on one track: may a prediction the model made for member A (canagliflozin rat Leydig tumours) be scored against member B's patients (bexagliflozin) when member B's own run of the same model made no such prediction?",
+  "A model that names the right organ with the wrong direction (rat bone accretion and hypercalciuria; human BMD loss and fractures, found by the bone monitoring the rat prompted): contra with magnitude opposite, as drafted, or same with source_calls_it partial? And may a 14-carrier human LoF phenotype ('glucosuria without hypoglycemia') be paired against trial hypoglycaemia rates as a same?",
+  "Decision 10 'known': does a patient result count as known from the sponsor's run (canagliflozin FIH NCT01177150 completed 2007-04) or from publication (Sha 2011-07)? The Sglt2-null engagement pairing is prospective only on the latter; and does a non-member's public UGE result (dapagliflozin, 2009) make a 2011 knockout a class retrodiction?",
+  "Safety partial agreement across sources: Ly 2011 named four harms; infection and volume depletion held, weight loss stands in for malnutrition, mortality did not. Decision 11 'partial' is written for one source's readouts; is a drafter-assigned partial admissible when the label never cites the model, or does the mortality miss make it contra?",
+  "Dose 'same' dating: when healthy-volunteer PK is reached years before efficacy is shown (ertugliflozin 2011 vs 2017), is the entry dated at the PK or at the first primary-endpoint success?"
+ ],
+ "could_not_verify": [
+  "Ertugliflozin combined FDA pharmacology review (2017): accessdata returned an excessive-requests apology page twice; not retried.",
+  "Katzmann 2021 and Bilezikian 2016 full texts: abstract only; quotes verbatim in the abstracts.",
+  "Ertugliflozin label 13.1 carcinogenicity text: the local grep tooling rejected the pattern; not re-run."
+ ]
+}

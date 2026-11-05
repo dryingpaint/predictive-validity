@@ -1,0 +1,223 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-pan-her-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "DOI resolves to Hickinson 2010 Clin Cancer Res (tier 1); quote verbatim. Full text read: the only breast xenograft is HER2-amplified BT474c. No patient erbB-phosphorylation readout exists for sapitinib; untested stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "DOI resolves to Kim 2012 Anticancer Drugs (abstract only; six cell lines, no xenograft in this paper). Quote verbatim. Kim 2018 poziotinib phase 1 (10.4143/crt.2017.303) reports no target-phosphorylation readout either; untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Quote verbatim. Hickinson 2010 states no exposure target. The AZD8931 phase 1 (Tjulandin 2014, 10.1007/s10637-013-9963-6, epub 2013-04-16; MTD 240 mg bid, DLTs rash and diarrhoea) was not read by the draft but changes nothing: untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim. Neither Kim 2012 nor Cha 2012 (10.1002/ijc.26276) states a tolerated effective exposure, so poziotinib's toxicity-limited dosing (phase 1 MTD 24/18 mg, DLT diarrhoea) has no margin to score; untested holds and the harm sits in safety."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Ma 2017 (epub 2017-05-12) quote verbatim; 400 mg reached and later won. Caveat: margin_stated rests on Li 2017's abstract phrase 'sufficiently safety windows in animals', public 2017-01-21, after the phase 1 began; see rule question 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Quote verbatim. Full text: the HER2-non-overexpressing xenografts are LoVo, FaDu and PC-9, not breast; the breast model (BT474c) is HER2-amplified. The HER2-low breast prediction is the conclusion sentence, not a breast result. Untested at 2010 stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Quote verbatim (abstract). Cell lines only; no patient comparison existed in 2012. Untested stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2014,
+   "rule": "12",
+   "note": "Johnston 2016 quote verbatim; NCT01151215 results 2014-05-08 (PFS HR 1.37, 1.16) confirmed. But the context is HER2-positive and MINT is a sibling population (no HER2 criterion anywhere): decision 12 transfers it for safety only. Contra holds only under Unselected.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 12: MINT (HR+ HER2-low/negative) is a sibling population of the HER2-positive context, transferable for safety only; decision 13 #21 requires the failure in-population; decision 3 efficacy needs context patients. Model exists, never compared in-population: untested (decision 8)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "7",
+   "note": "Ma 2019 quote verbatim (epub 2019-08-20). Park 2018 (10.1002/ijc.31651, PubMed 2018-07-07; NCT02418689, PFS primary 4.04 months, 'meaningful activity') is this track's earlier public primary-endpoint match, for the very drug Kim 2012 modelled; the first same should be dated 2018."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "12",
+   "note": "Quote verbatim; Hickinson 2010 full text silent on tolerability. Mice show EGFR-TKI diarrhoea; MINT (diarrhoea 40/51 vs 12 %, rash 32/48 vs 12 %) transfers for safety under decision 12. Track B scores identical silence contra; add 2014 contra.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Decision 4: askable silence contradicted. Dosed mice can show EGFR-TKI diarrhoea and skin harm (the draft's own Track B safety#3 scores identical silence contra); MINT transfers for safety under decision 12 with imported_from. Contra, 2014."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Quote verbatim. Cell lines cannot show GI harm, so silence is not a miss; untested at 2012 stands."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Ma 2017 quote verbatim. The call hinges on Li 2017's animal toxicology, paywalled (ScienceDirect preview only; no open copy). If rat/dog studies showed diarrhoea, the harm was predicted, the margin held (480 vs 400 mg), and this is same."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "DOI resolves to Morrison 2014 BCRT (epub 2014-02-20, PMC4030601). Quote verbatim in the published abstract (author manuscript carries none); body read. Xenograft PD readout is tumour pHER2/pMAPK/pAKT; no sapitinib trial reported one. Untested stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Quote verbatim (abstract). Methods confirm 100 mg/kg daily oral gavage with no plasma exposure, PK or tolerability margin; MINT 20/40 mg bid cannot be compared to a model target. Untested stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Quote verbatim (abstract); body confirms growth delay with Tam or Ful, no regression. The endocrine-resistant prediction was never trialled in endocrine-resistant patients; opening untested at 2014 stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2014,
+   "rule": "12",
+   "note": "Quote verbatim. Paper cites MINT as 'recently reported' (ref 46, JCO 2013): post hoc, so retro not same. But MINT is a sibling population of the HER2-positive context; efficacy #3 was adjudicated untested on that basis, so untested here too.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Quote verbatim (abstract). Full text contains no weight, tolerability, toxicity, diarrhoea or adverse-event term; mice dosed 100 mg/kg daily to 1000 mm3. Model silent; opening untested stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Johnston 2016 abstract quote verbatim (non-breaking spaces only); NCT01151215 results 2014-05-08, after Morrison epub 2014-02-20. Weeks of daily gavage could show diarrhoea or weight loss: askable silence contradicted, contra holds. Set imported_from (MINT, sibling population, decision 12).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Morrison 2014, BCRT 10.1007/s10549-014-2878-x (epub 2014-02-20): ER+/HER2-negative MCF7 tamoxifen-resistant xenografts, AZD8931 + tamoxifen/fulvestrant delayed growth. This, not Hickinson 2010's panel, is the model behind MINT (AZD8931 + anastrozole, endocrine-naive). No track; paired with NCT01151215 results (2014-05-08, PFS HR 1.37/1.16) it is contra, prospective (published before the result).",
+  "THYME, NCT00900627 (tier 3, results posted 2014-09-29): phase II PFS, AZD8931 + weekly paclitaxel vs paclitaxel in 'advanced breast cancer with low HER2 expression', HR 1.08 (95 % CI 0.76-1.52, p = 0.679); ORR OR 2.02 (p = 0.026). The direct HER2-low test of Hickinson 2010's pitch; the draft lists it with no result or quote. No peer-reviewed publication found on Europe PMC.",
+  "Kim 2018, Cancer Res Treat 10.4143/crt.2017.303 (epub 2017-08-29): poziotinib phase 1, MTD 24 mg/day intermittent and 18 mg/day continuous, DLT grade 3 diarrhoea; 5 of 7 partial responses were HER2-amplified breast cancer. The poziotinib arm of track B has no dose entry and no PD readout; this is the source for both.",
+  "Tjulandin 2014, Invest New Drugs 10.1007/s10637-013-9963-6 (epub 2013-04-16): AZD8931 phase 1 (NCT00637039), MTD 240 mg bid, DLTs grade 3 rash and grade 3-4 diarrhoea, exposure proportional to 160 mg. Track A's dose and safety cells cite no human PK or tolerability source.",
+  "Hickinson 2010 full text (read): xenograft panel is BT474c (HER2-amplified breast), Calu-3, LoVo, FaDu, PC-9. The draft's track-A model description should say the breast model was HER2-amplified and the HER2-non-overexpressing models were non-breast.",
+  "No patient-derived organoid or PDX comparison for any member in breast cancer was found (Europe PMC: pyrotinib + organoid/patient-derived + breast; the only PDX-style hit, 10.1002/ctm2.148, is gastric). No regulator document for pyrotinib is public (NMPA conditional approval 2018 on the Ma 2019 phase 2); nothing to add."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "The tile gives no population; the drafter set 'HER2-positive', which turns the sapitinib trials (MINT: no HER2 criterion in the registry, 'hormone-sensitive' in the abstract; THYME: HER2-low) into sibling-population comparisons that decision 12 transfers for safety only. Who fixes the population when the tile has none, and may one context carry a patient-level HER2-low prediction beside a HER2-positive class-level track?",
+  "Does a single-arm phase 2 whose primary endpoint (PFS) has no prespecified bar count as 'the primary endpoint responded as predicted' (Park 2018, poziotinib, PFS 4.04 months, authors call it meaningful activity), so that it dates the track's first same? The draft excluded the phase 1 (Ma 2017, ORR 50 %) because its primary was MTD, which the rules support; the single-arm phase 2 case is undecided.",
+  "Decision 16: does a model source published after the trial began but before the comparison was public (Li 2017, 2017-01-21; the pyrotinib phase 1 ran 2013-2016 and was published 2017-05-12) count as a margin 'stated before the trial'? The checker brief flags margin_stated with no pre-trial model statement; the drafter brief dates by what was public at the entry's date.",
+  "When a model source asserts 'sufficient safety windows in animals' but its animal data are unreadable, is the assertion scored as silence (safety contra when the harm appears) or as a stated margin that held (dose same, safety same)? The draft scores it both ways at once (dose 3 margin_stated true; safety 3 silence contradicted).",
+  "A patient-level prediction tested by the model only in other tissues (Hickinson 2010: HER2-non-overexpressing LoVo, FaDu, PC-9; the breast model was HER2-amplified) and paired with a breast HER2-low trial: is that 'a condition the model never tested' (untested) or a tested class-level prediction (contra)?",
+  "Models track (er-pos-tamres-mcf7-xenograft, efficacy #6): a stated post-hoc comparison (decision 10 retro) whose patient arm is a sibling population of the context (MINT, HR+ HER2-non-amplified, in a HER2-positive tile). Does decision 12's safety-only transfer override decision 10, making it untested, as efficacy #3 was adjudicated, or does a patient-level track carry its own population so retro stands?"
+ ]
+}

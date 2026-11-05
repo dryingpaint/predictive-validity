@@ -1,0 +1,328 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mu 2012 (PMC3266413) resolves; quote verbatim in full text. Paper names Ambrx PEG30-Q108, never BMS-986036; identity inference is reasonable and flagged by the draft."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Charles 2019 (PMC6587787) full text. Its stated comparison cites native-FGF21 papers (refs 6 Kharitonenkov 2007 monkeys, 20 Xu 2009, 21 Coskun 2008 mice), not Mu 2012: model_src mismatch. Partial match -> same per v3; see rule question 3."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Stanislaus 2017 (PMID 28324011) resolves; quote verbatim in abstract; paywalled."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "rule": "evidence rule 6 (year = earliest public comparison); one entry per change of status",
+   "note": "Rosenstock 2023 quote verbatim (abstract). But the monkey track's own drug, efruxifermin, already reproduced the adiponectin/lipid PD in T2D patients in Kaufman 2020 (10.1016/j.xcrm.2020.100057, pairing with Stanislaus 2017): track turns same in 2020."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mu 2012 abstract sentence verbatim; no exposure target or margin stated."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sanyal 2019 (PMID 30554783) quote verbatim in abstract; NCT02413372 results posted 2020-01-28 confirmed. 'Reached, drug worked' applied with no model exposure target; see rule question 2."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Charles 2019 ref 8 is the Krupinski 2016 AASLD abstract (Hepatology 64 Suppl 1), no DOI/PMID, not openable. Congress abstract is not a rule-2 tier; model_src_tier 1 is wrong. Untested is safe. Rule question 1."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "FALCON 1 (PMID 37088457) quote verbatim in abstract; NCT03486899 results 2022-09-09 confirmed; no pegbelfermin phase 3 registered. Same model-side admissibility caveat as dose 3 (rule question 1)."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Stanislaus 2017 abstract quote verbatim; no human target stated at abstract level."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "evidence rule 6 (dating) and the dose table row 'reached, drug worked'",
+   "note": "ENLIVEN (PMID 37356033) quote verbatim; NCT04929483 results 2026-01-06 confirmed. Same track already scores BALANCED 2021 (Harrison 2021, efruxifermin, liver-fat primary met at reached doses) in efficacy; dose should turn same in 2021, not 2023."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mu 2012 full-text sentence verbatim; db/db steatosis prediction only."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sanyal 2019 abstract quote verbatim; registry primary = MRI-PDFF change at week 16 (confirmed); endpoint_role primary correct; year 2018 (epub 2018-12-13) correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Stanislaus 2017 abstract quote verbatim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Harrison 2021 (PMID 34239138) abstract quote verbatim; NCT03976401 results 2022-08-04 not re-checked. Pairing is loose: Stanislaus abstract lists only 'metabolic parameters', liver fat in monkeys unconfirmed at abstract level."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Charles 2019 sentence verbatim and its ref 8 is the 2016 congress abstract; the model side itself cannot be opened and is not a rule-2 tier. Rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "FALCON 1 quote verbatim (abstract); all four patient_trials quotes verbatim in abstracts and all registry dates confirmed via CT.gov API. Contra holds only if the congress-abstract model side is admissible (rule question 1)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wei 2012 (PMID 22315431) abstract quote verbatim; native FGF21, product_in_model false correctly set."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Charles 2019 full text: sentence is DXA BMD at femoral neck/hip/spine, 'data not shown'. NCT02413372 registry (2020-01-28) shows femoral-neck -2.79% (10 mg QD) vs -0.11% placebo, SD 4.3, untested: low confidence is right."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kaufman 2020 (PMC7659583) full text: quote verbatim; the paper itself sets DIO-mouse bone loss (ref 26) beside pegbelfermin BMD, so comparison_stated true holds; it also cites a DIO-mouse rhFGF21 study with no bone loss (ref 27)."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CPT 2023 (PMID 37696614) abstract quote verbatim; abstract says simulations 'provide the rationale for dose selection' for ENLIVEN, so 2021 proxy first-use (ENLIVEN start 2021-06-04, CT.gov) holds. Paywalled; abstract only.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NEJM abstract quote verbatim. Model fitted to NCT04048135 (primary completion 2020-08-28) and chose ENLIVEN's 30 mg QW/44 mg Q2W before the trial, so prospective, not retro; both arms met fibrosis primary. Registry results date 2026-01-06 confirmed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same CPT 2023 abstract, quote verbatim. HFF >=30% at 30 mg QW is the model's own readout; 2021 proxy year consistent with ENLIVEN start. Abstract only.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NEJM abstract quote verbatim; fibrosis primary met at 30 mg QW (26%) and 44 mg Q2W (27%). Prediction preceded the result, so same. ENLIVEN HFF responder data not retrievable (PMC full text unavailable); direction_only stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Toxicol Appl Pharmacol 2021 (PMID 34364948, online 2021-08-06) abstract quote verbatim; 0.7-2.2x human AUC at 20 mg QW margin stated. Abstract only; no GI or clinical-sign data in it.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kaufman 2020 full text (PMC7659583) quote verbatim. Retro is right: monkey doses benchmarked to the 20 mg QW dose fixed after phase 2a, and the 12-week (NCT02097277, completed 2015-09) and 16-week (NCT02413372, 2017-01) BMD data predate any plausible 1-year study; run dates unverifiable (paywalled).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tillman 2022 (PMC9306736) full text read; quote verbatim in abstract. Studies at Charles River, undated; no NOAEL/margin stated, so no dose entry is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract and conclusions). Retro holds: the efruxifermin phase 1 MAD is Amgen's NCT01856881 (2013-03 to 2015-03, terminated, no results posted), years before Akero's rat tox; draft note that Kaufman cites no CT.gov record is wrong, but registry_date null still stands (no results posted).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Frayling 2018 (PMC5912948) abstract quote verbatim; full text also reports three protein-truncating FGF21 variants from exome data, so the combined model name is supported. Year 2018 correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kaufman 2020 full text quote verbatim; the source explicitly states the comparison. Frayling 2018 was not motivated by AKR-001 and the phase 1 BP data (NCT01856881, 2013-15) were unpublished until 2020, so same rather than retro under decision 10; see rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Li 2017 JBMR (PMID 27505721) abstract quote verbatim; online 2016-09-09, print 2017 as recorded. rhFGF21 proxy, product_in_model false, is allowed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "7 (dating: earliest date the comparison was public; decision 1 allows a drafter-made comparison)",
+   "note": "Kaufman 2020 quote verbatim and ref 27 (Li 2017) sits beside the pegbelfermin BMD sentence; same holds. Year should be 2018: the identical 12-week BMD datum dates the Wei track's safety 2 to 2018 (Charles, Obesity, epub 2018; registry 2019-05-09), and a drafter-made comparison with Li 2016 was possible then.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Member-drug monkey bone model with a stated margin: pegbelfermin 1-year skeletally-mature cynomolgus study (Toxicol Appl Pharmacol 2021, doi 10.1016/j.taap.2021.115673, PMID 34364948) at 0.7-2.2x human AUC (20 mg QW) found no bone effects and states 'low potential for negative effects on bone quality in adult humans'. A second bone track (margin_stated true); retro vs same depends on when the study was run (rule question 4).",
+  "Member-drug rat BP/sympathetic model: efruxifermin 4/26-week Sprague Dawley tox (Br J Pharmacol 2022, doi 10.1111/bph.15725, PMID 34773249) states 'absence of an increase in sympathetic tone in rats mirrors the unchanged salivary cortisol and systemic blood pressure following efruxifermin treatment in humans' (Kaufman 2020 PK-PD). Stated comparison, published after the human data: retro. Rats also ate more, matching the increased-appetite AE.",
+  "Human-genetic model on blood pressure: Kaufman 2020 (doi 10.1016/j.xcrm.2020.100057) compares the absence of a BP effect of efruxifermin with FGF21 loss-of-function variant carriers having higher BP (its ref 28); model_kind human_genetic, no track.",
+  "Monkey-track safety silence: tremor (Kaufman 2020: product-related withdrawals for tremor at 140 mg QW efruxifermin) and GI AEs (diarrhoea/nausea, the class's commonest harm) are harms a cynomolgus monkey could show; Stanislaus 2017 / Rosenstock 2023 say nothing. No safety entry exists on the obese-diabetic-cyno-monkey track; the pegbelfermin 1-year monkey paper (clinical observations, food intake) could settle whether monkeys predicted GI effects.",
+  "Later mouse bone model that reversed Wei 2012: Kaufman 2020 ref 27, a DIO-mouse rhFGF21 study finding no bone loss (likely Li et al., J Bone Miner Res 2017, Amgen); a separate track or a retrodiction on the bone question, absent from the draft.",
+  "Pegozafermin phase 1b/2a in NASH patients (Loomba, Lancet Gastroenterol Hepatol 2022, doi 10.1016/s2468-1253(22)00347-8, NCT04048135, epub 2022-12-12): MASH-patient adiponectin/liver-fat PD for the monkey track one year before ENLIVEN; dates the subjects=patients engagement datum earlier than the healthy-volunteer SAD.",
+  "Non-member FGF21 analogues with tier-1 stated monkey-to-human comparisons: PF-05231023 (Talukdar 2016, doi 10.1016/j.cmet.2016.02.001; raised BP/heart rate in one human study) and LY2405319 (Gaich 2013, doi 10.1016/j.cmet.2013.08.005). Outside the member list, so not scored; see rule question 5.",
+  "Could not verify: no phase 3 topline for SYNCHRONY Histology (efruxifermin) or ENLIGHTEN-Fibrosis (pegozafermin; 89bio guides 1H 2027) was found by web search as of 2026-11-05; no BMS press release on pegbelfermin discontinuation was checked beyond the registry (no phase 3 registered)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is a congress abstract (Hepatology 2016;64 Suppl 1:749A, no DOI/PMID), reached only through a trial paper's citing sentence, an admissible model side? Rule 2 lists no such tier. If not, the nash-fibrosis-mouse track has no model source and the class's fibrosis endpoint (FALCON 1/2 failed, HARMONY and ENLIVEN met) has no track at all.",
+  "When the model stated no exposure target or tolerability margin, does the dose table's 'reached, drug worked' / 'reached, failed' row still apply (as the draft does for dose 2, 4 and 6), or is dose 'untested' because there was no prediction to reach?",
+  "One stated comparison that half matches (triglycerides, adiponectin) and half contradicts (glucose, insulin, weight) on the model's own readouts, with the source framing it as a contrast: v3 says partial -> same + source_calls_it partial. Confirm that is intended when the quoted sentence states the contradiction.",
+  "A member-drug toxicology study run before but published after the human result (pegbelfermin 1-year monkey bone, 2021 vs BMD known 2018-2019): retro or same? Decision 10 keys on when the model was 'built or run', which a publication date does not show.",
+  "Non-member drugs of the same mechanism (PF-05231023, LY2405319) carry tier-1 monkey-to-human comparisons including a BP/heart-rate harm. Are they set aside entirely, or does safety's 'other' (same platform) admit them?",
+  "Dating across comparison kinds on one track: can a pairing (comparison_stated false, Kaufman 2020) set the year of a track's 'same' earlier than a later stated comparison (Rosenstock 2023), or does the stated one govern the date?",
+  "Independent human-genetic model (Frayling 2018) published after a sponsor-internal, unpublished patient result (Amgen AKR-001 MAD NCT01856881, 2013-2015, no results posted; published Kaufman 2020): decision 10 needs 'post-dates and is motivated by', so scored same, not retro. Confirm that unpublished sponsor data do not make a later independent model a retrodiction."
+ ]
+}

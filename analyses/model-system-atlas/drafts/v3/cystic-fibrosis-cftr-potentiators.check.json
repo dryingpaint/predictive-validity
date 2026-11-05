@@ -1,0 +1,265 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/cystic-fibrosis-cftr-potentiators.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "PNAS 2009 abstract (Europe PMC): quote verbatim (Cl- rendering aside). Ivacaftor is not a tile member, so untested opening proxy is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "J Med Chem 2018-01-10 abstract: quote verbatim. Untested is right. Gees 2018 (open access) shows the assay was YFP halide in recombinant cells and GLPG1837 was also run in primary CF lung cells; see missing."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "J Cyst Fibros 2019-05-27 abstract: quote and 97.7/68.7/42.5 mmol/L verbatim; NCT02707562 first posted 2016-03-14, primary = safety, no results. Direction held; superiority over ivacaftor did not, so source_calls_it 'partial' would fit."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "rule": "6 (dating)",
+   "note": "Lancet Respir Med epub 2025-01-02, quote verbatim; same is right. But the 2024-12-20 label carries both sides (12.1 HBE; 14 sweat chloride -8.4 and -2.8 mmol/L), which the draft itself uses to date efficacy 4 as 2024. Same year for both."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "J Cyst Fibros epub 2026-06-16, 62 PDIO lines, quote verbatim; run after SKYLINE so retro is right. Form: src and model_src are the same DOI with comparison_stated false (patient side should be Keating 2025), and the organoid track has no 2016 opening entry."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Same Van Goor 2009 abstract sentence; non-member proxy opening, untested is right."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Label section 12.1 sentence found verbatim in the bundle; review confirms 250 mg QD came from phase 2 dose-ranging vs IVA 150 mg Q12h. No model exposure target, so untested is the right call, not same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Van Goor 2009 closing sentence verbatim in abstract; untested proxy opening is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Registry confirms SAPHIRA1 primary outcomes were safety measures, so GLPG1837 cannot score efficacy; untested is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Grand 2021 quote verbatim; Kazani 2021 abstract confirms LCI2.5 primary and class III/IV response; NCT02190604 results 2017-07-19, Part 3 primary LCI. Same holds for the primary. F508del-homozygous arm null after the model potentiated F508del: partial at least; see rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Quote verbatim in Integrated Review (bundle); 'greater activity for the triple ... compared to the mono- and dual-components' confirmed; NCT05033080/NCT05076149 results 2024-06-10/13. Same, direction only, is defensible; see rule question 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Quote verbatim; 42 subjects with 23 non-F508del variants, 259 FRT variants incl. 31 new, and the label's 10%-of-normal threshold all confirmed. Patient-level same at medium confidence is right. FRT track lacks its 2012 opening entry."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "",
+   "note": "Quote verbatim; Table 46 and 'rates of AEs related to cataracts were similar between treatment arms' confirmed; juvenile tox bridged to NDA 203188. Sibling-drug dosing (product_in_model false) is allowed; low confidence fits a harm with unestablished causality."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PubMed 28785019 (Sci Rep, epub 2017-08-07) abstract: quote verbatim; HNE Ussing with VX-770 acute, lumacaftor/tezacaftor correctors, 8 patients, no tile member. Opening untested, patient level, right."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PubMed 41765052 (Respir Med, epub 2026-02-27) abstract: quote verbatim; 45% vs 67% WT confirmed; SKYLINE result stated as background, so retro (decision 10). Both dish arms used IVA: the swap tested is the corrector, potentiator held constant; proxy flagged."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "3, 11",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PubMed 42243036 (J Cyst Fibros, epub 2026-06-04) abstract: quote verbatim. Full text paywalled (two scrapes); prospectivity rests on the title/abstract framing ('ex vivo prediction' then clinical assessment). n=1 compassionate use; same + partial is defensible at low confidence."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Pranke 2017 abstract: quote verbatim; the 8 patients had ivacaftor, lumacaftor or tezacaftor, no member. No member-drug trial primary endpoint vs HNE; CHOICES ran on organoids. Untested through 2026 is right."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "14",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Bundle label 2024-12-20 section 12.3 table footnote, verbatim (line 1115). PBPK-only predictions for moderate CYP3A inhibitors/inducers and children 6-11; no observed comparison public at the label. Untested with regulatory reliance flagged is right."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Bundle Integrated Review 14.5.2, quote verbatim; Table 170 titled 'Used in Model Development and Validation, Study 006' (P/O 0.93/1.00/1.31/1.01), Table 171 AUCinf ratio 12.4 predicted vs 11.1 observed. Study 445-006 was healthy adults, May-Jul 2018, so reproduced known data: retro, within_2x, 2025 right."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PubMed 28611092 (JPET, epub 2017-06-13) abstract: quote verbatim; CYP-mediated in-vitro stability (DV 3.8, DV/K 2.2), no human number predicted. Full text paywalled. Opening untested right; same-year model entry first (#30)."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "3, 4 (#91)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Same abstract: quote verbatim; six healthy volunteers, 15.9-h half-life read by the authors as once daily. Healthy-volunteer PK admissible for dose (rule 3); regimen prediction counts (#91). In vitro preceded the crossover, so same, direction only, is right."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2022,
+   "rule": "7 (dating)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Review section 2 quote verbatim (line 2059); 'predicted to provide exposure similar' at line 10556 is clinical PK, not the in-vitro model, as the draft says. Same holds. But the entry records registry_date 2022-01-25 (NCT03911713 results posted, confirmed on CT.gov), the earliest admissible source for the once-daily regimen matching IVA q12h on ppFEV1; rule 7 takes the earliest, so 2022 not 2024."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PubMed 42343021 (Pharm Res, epub 2026-06-24) abstract: quote verbatim. Human clearance is from the healthy-male ADME study (doi 10.1124/dmd.124.001751, Europe PMC 2024-11-15); scaling published 19 months later and framed as validating the scalars, so retro is right. Full text not open."
+  }
+ ],
+ "missing": [
+  "Prospective organoid-guided patient-level track with member drug dirocaftor: HIT-CF CHOICES, NCT06468527 (acronym CHOICES; sponsor Kors van der Ent; phase 2b placebo-controlled crossover; 41 adults selected from the HIT-CF Organoid Study; primary ppFEV1; completed 2025-06-26; no results posted). Results reported only in HIT-CF/CF Europe press material (https://www.cf-europe.eu/hit-cf-choices-cftr-modulator-trial/: lung function changes from -12% to +22% ppFEV1 'along with matching improvements in sweat chloride') and FirstWord (https://firstwordpharma.com/story/6326317: 'clinical effect proportional to in-vitro' organoid response). Tier 5 patient side, trial_unreported true; the model side (HIT-CF organoid screen) needs a tier 1-3 source not located within budget. The draft's judgement cites the wrong NCT: NCT03500263 is Proteostasis's own safety study, not CHOICES. This prospective entry on cf-intestinal-organoid-fis would precede the Kroes 2026 retrodiction.",
+  "GLPG1837 on the HBE track before SAPHIRA1: Gees et al. 2018, Front Pharmacol, doi 10.3389/fphar.2018.01221 (open access, 2018-10-26): 'The observed activities in YFP halide assays translated well to primary cells derived from CF lungs when measured using Trans-epithelial clamp circuit (TECC).' Patient-derived primary airway cells with a member drug, so cf-hbe-ussing carries a GLPG1837 prediction (engagement, paired with Davies 2019) that the draft places only on the recombinant-assay track; it also settles the draft's open question that Van der Plas 2018 was a recombinant YFP assay.",
+  "Checked and not missing: navocaftor (NCT03969888 results 2023-06-28; monotherapy ppFEV1 -2.2 vs -2.2 placebo, sweat chloride -8.9 vs -2.1 confirmed) has no admissible model source on Europe PMC; ORIGIN-1 organoid-guided N-of-1 trial (doi 10.1186/s13063-026-09789-y) tests ETI only, outside the member list."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "One trial, two genotype arms predicted by the same assay: icenticaftor met the LCI2.5 primary in class III/IV but showed 'no significant efficacy' in F508del homozygotes although the model potentiated F508del CFTR (Grand 2021). Is the track same with source_calls_it partial, contra (a wrong prediction beats a right one on the same track), or untested for that arm because the model tested recombinant F508del potentiation, not F508del epithelia as monotherapy?",
+  "Does a label whose section 12.1 (HBE) and section 14 (sweat chloride, ppFEV1) carry the two sides in separate sections count as comparison_stated and set the year under rule 6, or only a document that puts them side by side? The draft dates efficacy 4 by the 2024 label and engagement 4 by the 2025 paper for the same trial.",
+  "A model prediction of 'greater activity' than the comparator regimens (HBE Ussing) answered by a non-inferiority primary endpoint with superiority only on a secondary (sweat chloride): is that same direction_only or source_calls_it over_predicted? Rules define over_predicted only as a source call.",
+  "A prospective, member-drug, patient-level comparison known only from a consortium press release (CHOICES) whose model side is an unpublished organoid study: with no tier 1-3 model_src available, is the entry inadmissible, untested with the release noted, or tier 5 with model_src_tier null?",
+  "Tracks whose model_first_use_year precedes their first entry (FRT 2012, organoids 2016) pass lint; should the opening untested entry be mandatory per track rather than per cell?"
+ ]
+}
