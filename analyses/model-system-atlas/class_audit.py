@@ -22,10 +22,10 @@ off-class member carries its own verified target (e.g. "JAK (pan)"), so it falls
 class rather than the selective one (a dual member whose verified target is the class target, such as
 netarsudil, ROCK plus NET, stays in); a member with no molecular target (lubricants, barriers,
 photosensitisers) or an undisclosed one forms no class. Members FDA-approved before their Phase 2
-entry are dropped (not novel). Classes rank by the furthest phase any member reached in the
-indication (4 = FDA-approved for it), then by distinct entities, then by entities at that phase;
-a class needs MIN_PROGRAMS entities, else the next class is taken, else the indication has no
-qualifying class.
+entry are dropped (not novel). Classes rank by distinct entities, then by the furthest phase any
+member reached in the indication (4 = FDA-approved for it), then by entities at that phase; volume
+ranks first so the atlas does not prefer classes that succeeded. A class needs MIN_PROGRAMS
+entities, else the next class is taken, else the indication has no qualifying class.
 """
 import importlib.util
 import os
@@ -40,7 +40,7 @@ from report import frame, section1  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")
 REVIEWS = os.path.join(OUT, "reviews.csv")
-MIN_PROGRAMS = 3
+MIN_PROGRAMS = 2
 
 _spec = importlib.util.spec_from_file_location("atlas_lists", os.path.join(HERE, "lists.py"))
 lists = importlib.util.module_from_spec(_spec)
@@ -183,14 +183,14 @@ def class_label(target: str, action: str, group: str) -> str:
 
 
 def ranked_classes(g: pd.DataFrame) -> pd.DataFrame:
-    """Classes of one indication's members, by furthest phase then program count."""
+    """Classes of one indication's members, by program count then furthest phase."""
     top = g.furthest_phase_reached == g.groupby(["c_target", "c_action", "c_group"]).furthest_phase_reached.transform("max")
     return (g.assign(at_top=g.entity.where(top))
             .groupby(["c_target", "c_action", "c_group"])
             .agg(furthest=("furthest_phase_reached", "max"), n=("entity", "nunique"), n_top=("at_top", "nunique"),
                  ex=("drug", lambda d: "; ".join(sorted(set(d))[:6])),
                  sel=("selectivity", lambda s: "; ".join(sorted(set(s.dropna())))))
-            .reset_index().sort_values(["furthest", "n", "n_top", "c_target"], ascending=[False, False, False, True]))
+            .reset_index().sort_values(["n", "furthest", "n_top", "c_target"], ascending=[False, False, False, True]))
 
 
 def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -222,7 +222,7 @@ def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tup
                           .assign(proposed_rank=rank))
         w = ok.iloc[0]
         nxt = ok.iloc[1] if len(ok) > 1 else None
-        skipped = ranked[(ranked.n < MIN_PROGRAMS) & (ranked.furthest > w.furthest)]
+        skipped = ranked[(ranked.n < MIN_PROGRAMS) & (ranked.n > w.n)]
         out.append({**base, "class": class_label(w.c_target, w.c_action, w.c_group), "class_programs": int(w.n),
                     "class_basis": "proposed_rule", "example_entities": w.ex, "modality_group": w.c_group,
                     "selectivity_note": w.sel, "furthest_phase": int(w.furthest),

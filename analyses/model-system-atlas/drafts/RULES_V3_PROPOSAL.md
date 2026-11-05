@@ -22,7 +22,7 @@ that declares `"schema": 3`.
 | 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
 | 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
 | 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
-| 12 class boundaries | decided, revised: (target, action, modality group) from a reviewed class table; furthest phase, then programs, ≥ 3 |
+| 12 class boundaries | decided, revised: (target, action, modality group) from a reviewed class table; most programs, then furthest phase, ≥ 2 |
 | 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
 | 16 dose window | decided: the dose cell scores the toxic ceiling when the model stated a margin |
 
@@ -200,7 +200,8 @@ the bins are too coarse to carry the surrogate-outcome story, hence decision 9.
 `lists/class_audit/` (verified target, action, selectivity, modality, novelty at entry, with a
 source per row). A member not selective for the class target leaves it or forms its own class;
 dual-mechanism drugs are out unless the table puts them in (#33, #78). The indication's class is the
-one whose members reached the furthest phase, then the most programs, with at least 3 programs. A
+one with the most programs, then the furthest phase reached, with at least 2 programs: volume first,
+so the atlas does not prefer the classes that succeeded. A
 class with no patient comparison stays all-`untested` with a note; the drafter may not widen it to a
 sibling target (#124, glaucoma: every patient datum is the A1 agonist trabodenoson, not the A2A
 class). Because the unit carries the modality, each tile is one modality (CAR-T, ADC and naked
