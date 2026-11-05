@@ -109,7 +109,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     ]),
     "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
         Line("CRISPR screen in cells", "crispr", "target"),
-        Line("Dependency in cancer cell lines of this type (RNAi and CRISPR screens)", "cell_dependency", "onc_screened"),
+        Line("Dependency in this cancer's cell lines (RNAi, CRISPR)", "cell_dependency", "onc_screened"),
         Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
     ]),
     "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [

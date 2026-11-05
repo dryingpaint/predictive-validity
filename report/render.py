@@ -203,7 +203,7 @@ def categories_table() -> str:
         name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
             + (" (descriptive)" if r["level"] == "descriptive" else "")
         if pd.isna(r.get("column")):
-            out.append([name, "–", "–", "Descriptive: literature retrieval failed the quality gate", "–", "–", "–"])
+            out.append([name, "–", "–", "Not measured: the literature search missed too many studies", "–", "–", "–"])
             continue
         exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
         if not r["estimated"]:
