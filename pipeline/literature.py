@@ -855,6 +855,9 @@ def run_cohort(args) -> None:
         cut = {m: y for m, y in cut.items() if m not in pilot}
     log(f"cohort drugs for this worker={len(cut)}")
     search_drugs(cut, log)
+    if args.search_only:
+        log("worker done (search only)")
+        return
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT moiety_id, count(DISTINCT record_id) FROM preclin.literature_v3_hit
                        WHERE moiety_id = ANY(%s) GROUP BY 1""", (sorted(cut),))
@@ -1234,6 +1237,7 @@ def main() -> None:
     rc.add_argument("--workers", type=int, required=True)
     rc.add_argument("--log", required=True)
     rc.add_argument("--skip-pilot", action="store_true", help="leave the pilot's drugs to the pilot screen")
+    rc.add_argument("--search-only", action="store_true", help="search, and leave the prefilter and screen for a later run")
     rc.add_argument("--allow-large", type=int, nargs="*", default=[],
                     help=f"drugs with over {LARGE_DRUG} records whose prefilter the user approved")
     rc.set_defaults(fn=run_cohort)
