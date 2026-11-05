@@ -37,7 +37,7 @@ import numpy as np
 import pandas as pd
 from psycopg2.extras import Json, execute_values
 
-from pipeline import llm
+from pipeline import literature, llm
 from report import frame
 from report.section3 import ERA_BINS, ERA_LABELS, RELATED, Evidence, cohorts, entries
 
@@ -65,7 +65,19 @@ class Line:
     key: str | None = None  # the registry key of a line with no column, fixed so that rewording the label keeps it
 
 
-LITERATURE = "descriptive: failed the literature gate twice (report/audits/literature_gate.md)"
+LITERATURE_GATE = "v3_vetted2_rescreen"  # the gate scoring of the retrieval the literature lines are built from
+
+
+def literature_note(kind: str, exploratory: bool) -> str:
+    """The plain-English caveat of a literature line, with its retrieval recall from the gate record."""
+    import json
+    with open(literature.GATE) as fh:
+        k = json.load(fh)[LITERATURE_GATE]["kinds"][kind]
+    recall = f"the search found {k['recall']:.1%} of the studies a hand search found ({k['recall_pubmed_indexed']:.0%} of " \
+             "those indexed in PubMed)"
+    return ("exploratory: " if exploratory else "measured with incomplete retrieval: ") + recall
+
+
 
 APPLIES = {
     "all": lambda d: d.index == d.index,
@@ -77,6 +89,7 @@ APPLIES = {
     "phase_2_3": lambda d: d.phase.ge(2),
     "from_2011": lambda d: d.has_target_disease & d.entry_year.ge(FAILURES_FROM),
     "onc_screened": lambda d: d.has_target_disease & d.regime.eq("ONC") & d.entry_year.ge(CELL_SCREENS_FROM),
+    "disease": lambda d: d.mondo_id.fillna("").ne(""),
 }
 WITHIN = {"small_molecule_profiled": "small_molecule", "onc_screened": "target"}  # an APPLIES key whose entries all lie in another's
 
@@ -105,10 +118,10 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Mouse knockout from a large-scale screen", "impc", "target"),
         Line("Mouse symptoms closely match the disease", "animal_close", "target"),
         Line("Mouse result agrees with the drug's direction", "animal_concordant", "target"),
-        Line("The drug in an animal model of the disease", None, "all", LITERATURE,
-             key="the_drug_in_an_animal_model_of_the_disease"),
-        Line("The drug tested in healthy animals", None, "all", LITERATURE,
-             key="the_drug_s_pharmacology_in_healthy_animals"),
+        Line("The drug in an animal model of the disease", "lit_animal_disease", "disease",
+             literature_note("animal_disease", exploratory=True), key="the_drug_in_an_animal_model_of_the_disease"),
+        Line("The drug tested in healthy animals", "lit_animal_healthy", "all",
+             literature_note("animal_healthy", exploratory=False), key="the_drug_s_pharmacology_in_healthy_animals"),
     ]),
     "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
         Line("Gene-knockout screens in human cells", "crispr", "target"),
@@ -123,10 +136,10 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Drug-like size and chemistry", "drug_like", "small_molecule"),
         Line("Chemistry suited to entering the brain (brain diseases)", "brain_penetrant", "brain"),
     ]),
-    "early_human": (Line("Early studies of the drug in people", None, "phase_2_3", LITERATURE,
-                         key="early_human_pharmacology"), [
-        Line("Drug shown to act on its target in people", None, "phase_2_3", LITERATURE,
-             key="target_engagement_measured_in_people"),
+    "early_human": (Line("Early studies of the drug in people", None, "phase_2_3",
+                         literature_note("human_engagement", exploratory=False), key="early_human_pharmacology"), [
+        Line("Drug shown to act on its target in people", "lit_human_engagement", "phase_2_3",
+             literature_note("human_engagement", exploratory=False), key="target_engagement_measured_in_people"),
     ]),
     "safety_risk": (Line("Safety risk", "liability", "target"), [
         Line("People rarely carry broken copies of the gene", "constrained", "target"),
@@ -299,6 +312,46 @@ def property_lines(d: pd.DataFrame, props: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame({"drug_like": drug_like, "brain_penetrant": brain}, index=d.index)
 
 
+def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, set[int], dict[int, int]]:
+    """The qualifying literature screens, the drugs whose retrieval is screened (screen or prefilter rows, or
+    nothing retrieved), and each entity's surviving entity."""
+    q = literature.qualifying()
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT s.moiety_id FROM preclin.literature_v3_search s GROUP BY 1
+                       HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_v3_hit h WHERE h.moiety_id = s.moiety_id)
+                       UNION SELECT moiety_id FROM preclin.literature_v3_screen
+                       UNION SELECT moiety_id FROM preclin.literature_v3_prefilter""")
+        screened = {r[0] for r in cur.fetchall()}
+    return q, screened, literature.survivors(moieties)
+
+
+def literature_columns(d: pd.DataFrame, related, q: pd.DataFrame, screened: set[int], to: dict[int, int]) -> pd.DataFrame:
+    """The three literature lines of each entry, from the version 3 screens of the drug's published abstracts:
+    1 when a qualifying study was published by the year before entry (for an animal model, of the entry's disease
+    or a disease `related(mondo_id)` returns), 0 when the drug's retrieval was screened and none was, null when it
+    has not been searched and screened (or, for engagement, the entry is not Phase 2 or 3). A record with no known
+    year cannot be shown to precede entry and does not count."""
+    q = q[q.year.notna()]
+    by: dict = defaultdict(list)
+    for m, year, kind, mondo in zip(q.moiety_id, q.year.astype(int), q.kind, q.mondo_id):
+        by[(int(m), kind)].append((year, mondo))
+    out: dict[str, list] = {"lit_animal_disease": [], "lit_animal_healthy": [], "lit_human_engagement": []}
+    for r in d.itertuples():
+        m, cut = to.get(int(r.moiety_id), int(r.moiety_id)), int(r.entry_year) - 1
+        if m not in screened:
+            for v in out.values():
+                v.append(np.nan)
+            continue
+        disease = r.mondo_id if isinstance(r.mondo_id, str) and r.mondo_id else None
+        near = related(disease) if disease else frozenset()
+        out["lit_animal_disease"].append(
+            float(any(y <= cut and t in near for y, t in by[(m, "animal_disease")])) if disease else np.nan)
+        out["lit_animal_healthy"].append(float(any(y <= cut for y, _ in by[(m, "animal_healthy")])))
+        out["lit_human_engagement"].append(
+            float(any(y <= cut for y, _ in by[(m, "human_engagement")])) if r.phase >= 2 else np.nan)
+    return pd.DataFrame(out, index=d.index)
+
+
 def build() -> pd.DataFrame:
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
@@ -317,6 +370,9 @@ def build() -> pd.DataFrame:
         earlier_failure(by_gene, r.moiety_id, ev.ent.at[r.moiety_id, "genes"], ev.nb.terms(r.mondo_id, RELATED),
                         pd.Timestamp(r.entry)) if r.has_target_disease else None for r in d.itertuples()],
         index=d.index, dtype=object).map({True: 1.0, False: 0.0})
+
+    d = d.join(literature_columns(d, lambda m: ev.nb.terms(m, RELATED),
+                                  *literature_inputs(sorted({int(m) for m in d.moiety_id}))))
 
     lines_by, dep_year = cell_screens()
     essential = frame.common_essentials()
