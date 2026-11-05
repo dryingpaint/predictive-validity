@@ -432,7 +432,8 @@ BIOLOGIC = {"monoclonal_antibody", "protein", "peptide", "other_cell_therapy", "
             "multispecific_antibody", "car_t", "microbiome_or_live_biotherapeutic", "other", "mrna"}  # modalities vetted by v2
 
 
-PRODUCT_NAMES_ONLY = {1233: "alcohol (dehydrated alcohol injection)", 1164: "nitric oxide (inhaled)"}
+PRODUCT_NAMES_ONLY = {1233: "alcohol (dehydrated alcohol injection)", 1164: "nitric oxide (inhaled)",
+                      31983: "ademetionine (S-adenosylmethionine)"}
 # Drugs whose INN is an endogenous or ubiquitous molecule: their molecule names denote the substance in general, so
 # they are searched by product names and development codes only (the vet's documented exception).
 PRODUCT_CLAUSE = """

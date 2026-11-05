@@ -3572,7 +3572,8 @@
   "rule": "Drugs whose INN is an endogenous or ubiquitous molecule are searched by product names and development or registry codes only; the molecule's own names denote the substance in general (literature.PRODUCT_NAMES_ONLY, vet task literature_name_vet_product).",
   "drugs": {
    "1233": "alcohol (dehydrated alcohol injection)",
-   "1164": "nitric oxide (inhaled)"
+   "1164": "nitric oxide (inhaled)",
+   "31983": "ademetionine (S-adenosylmethionine)"
   }
  }
 }
