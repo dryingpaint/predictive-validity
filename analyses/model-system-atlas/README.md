@@ -34,6 +34,7 @@ unit (a build, a document, a tile) so a re-run is safe. Nothing else writes.
 | `drafts/v3/route_store.py` → `drafts/track_store.py` | `atlas_register`, `atlas_track_entry` | a lint-clean `<slug>.json` whose verdicts are settled | — | `atlas_track_entry`, `atlas_track_verdict`: the tile is replaced |
 | `report_page.py` | `atlas_build`, `atlas_indication`, `atlas_mechanism`, `atlas_register`, `atlas_track_entry`, `atlas_track_verdict` | `report/template.html` | `report/atlas.html` (ignored) | — |
 | `glance.py`, `glance_nature.py` | `atlas_track_entry`, `atlas_track_verdict` | `drafts/v3/tiles.json`, `drafts/v3/short_labels.json` | `glance.csv`; `atlas_glance.png`, `.svg`, `.pdf` | — |
+| `burden.py` | — | `lists/who_ghe_2021_global_dalys.csv` (WHO Global Health Estimates 2021, global DALYs by cause); `lists/named_contexts.csv` | `lists/burden.csv`: each tracked disease's WHO cause, match grade, 2021 DALYs and rank | — |
 | `indications.py` | `dev_program_trial`, `ctgov_study_indication`, `indication`, `ontology_ancestor`; the cohort frames | `lists/named_indications.csv` | `lists/indications.csv`, `indications_by_disease.csv`; `disease_indications.png`, `.svg` | — |
 
 Secrets: `DATABASE_URL` and `FIRECRAWL_API_KEY` live in `.env`, which is ignored. The source PDFs and texts are
@@ -74,6 +75,7 @@ Open calls are listed in PR #81: whether the headline follows the main model or 
 | `lists.py` → `lists/` | the context list from the DB: diseases ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
 | `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every disease) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
 | `indications.py` → `lists/indications.csv`, `lists/indications_by_disease.csv`, `disease_indications.png` | each named disease's programs and the indications (stage, subtype, line of therapy) those programs were tested in, from the trials' condition rows; read-only |
+| `burden.py` → `lists/burden.csv` | the 48 tracked diseases mapped by hand to WHO Global Health Estimates causes with a match grade (exact, broader, shared, none) and ranked by global DALYs in 2021; the ordering for the main-paper cut and for the drafting waves |
 | `glance.py` → `glance.csv` | the atlas at a glance, as data: one headline per drafted cell under decision 6 (`report_page.headline`, adjudicated statuses), with the year, the model, the reason on a failure, and the dissenting track when another model contradicted; read-only |
 | `glance_nature.py` → `atlas_glance.png`, `.svg`, `.pdf`, `atlas_glance_caption.md` | the figure: 183 × 245 mm, Helvetica 5–8 pt, the Capable palette; labels that do not fit a cell are shortened by hand in `drafts/v3/short_labels.json`, never cut; the caption file carries the title and definitions |
 | `drafts/track_store.py`, `drafts/v3/route_store.py` | store a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile; `route_store.py` stores every tile whose verdicts are settled and lists the ones waiting for adjudication |
@@ -102,6 +104,7 @@ uv sync
 .venv/bin/python analyses/model-system-atlas/report_page.py
 .venv/bin/python analyses/model-system-atlas/glance.py && .venv/bin/python analyses/model-system-atlas/glance_nature.py
 .venv/bin/python analyses/model-system-atlas/indications.py
+.venv/bin/python analyses/model-system-atlas/burden.py                            # WHO DALYs per tracked disease
 uv run pytest tests/test_atlas_glance.py tests/test_atlas_indications.py
 ```
 
