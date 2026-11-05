@@ -1,0 +1,36 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-cdk4-6-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "DOI resolves to Fry 2004 Mol Cancer Ther (PMID 15542782); quote verbatim in abstract; Colo-205 xenograft, palbociclib. Untested opening at first use is correct."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Patnaik 2016 Cancer Discov (PMID 27217383, epub 2016-05-23); quote verbatim. Phospho-Rb proximal; pairing with Tate 2014 is admissible. NCT01394016 results posted 2024-09-19 confirmed."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Tate 2014 Clin Cancer Res (PMID 24850847); quote verbatim. Minor: palbociclib PharmR lists its own xenograft PK/PD modeling report (RR 764-04338), so model_first_use_year could be earlier; status unaffected."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Tate 2018 Clin Pharmacokinet (PMID 28540640, PMC5814509); quote verbatim in full text conclusion. Target reached, drug worked: same, margin_stated false correct. Epub 2017 plausible (Europe PMC lists 2018-03)."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Finn 2009 Breast Cancer Res (PMID 19874578); quote verbatim. FDA palbociclib PharmR says cell-line and ER+ xenograft data supported enrolling ER+/HER2- patients, so this is the relied-on model."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "PALOMA-1 Lancet Oncol (PMID 25524798, epub 2014-12-16); quote verbatim in Interpretation. Primary PFS; NCT00721409 results 2015-03-19 confirmed. But see missing: adjuvant palbociclib failures (PALLAS, PENELOPE-B)."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote found verbatim in bundled 207103 PharmR text (continues: 'at clinically relevant exposures')."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in bundled Ibrance 2015 label. Paired with PharmR; neutropenia matches marrow prediction: same."},
+  {"cell": "safety", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in bundled 208716 Multidiscipline review; FDA states the comparison. Rats/dogs can show transaminase rises, so silence is a miss: contra stands and outranks palbociclib's same."}
+ ],
+ "missing": [
+  "Efficacy: PALLAS (palbociclib + adjuvant endocrine therapy, HR+/HER2- early breast cancer) failed its primary iDFS endpoint. Pfizer press release 2020-05-29 (tier 5); Mayer et al. Lancet Oncol 2021, doi:10.1016/S1470-2045(20)30642-2 (PMID 33460574, epub 2021-01-15); NCT02513394 results 2022-04-13. Candidate contra for the cell-line model unless the adjuvant setting counts as a condition the model never tested (see rule question).",
+  "Efficacy: PENELOPE-B (palbociclib, residual high-risk HR+/HER2- early breast cancer) negative for iDFS. Loibl et al. J Clin Oncol 2021, doi:10.1200/JCO.20.03639 (PMID 33793299); NCT01864746 results 2023-12-12.",
+  "Safety: ribociclib dog telemetry predicted QTc prolongation at patient-level exposure, 'consistent with QTc prolongation observed clinically' (FDA 209092 Multidiscipline review, 2017; comparison stated). A same for the class that the draft omits; status unchanged, because abemaciclib's contra outranks it. Not checked: whether ribociclib animal studies were silent on its labelled hepatobiliary toxicity (a possible second contra)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a negative adjuvant (early-disease) trial count against a model that only predicted antiproliferative sensitivity in advanced-disease cell lines? Under the brief it is either untested (a condition the model never tested) or contra (one drug's contra beats another's same, even though abemaciclib in monarchE and ribociclib in NATALEE succeeded). The context population ('HR-positive, HER2-negative') does not exclude early disease.",
+  "model_kind has no in_vitro value; the draft uses ex_vivo for an established cell-line panel. Should in_vitro be added, or should ex_vivo be reserved for patient-derived material?"
+ ]
+}

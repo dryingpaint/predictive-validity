@@ -1,0 +1,49 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-gck-activators.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Grimsby 2003 (PMID 12869762) resolves; quote verbatim in abstract. Opener untested with non-member compound, product_in_model false: fine."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Meininger 2011 (PMID 21994424) quote verbatim; Eiki 2011 model_src (PMID 21937665) reports MK-0941 lowering glucose in mice/dogs, -48% OGTT AUC. Downstream glucose readout moved in patients: same holds."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Quote verbatim. Note text cites MK-0941 16-day/4-day data, which is Eiki 2011, not the cited Grimsby 2003; tidy the note, status fine."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Kiyosue 2013 (PMID 23522182) quote verbatim; NCT01152385 results first posted 2012-08-27 confirmed. Reached-failed-abandoned row, derived_from efficacy. No AZD1656 exposure target exists, so low confidence is right."},
+  {"cell": "dose", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Zhang 2013 (PMID 23263772) quote verbatim; NCT01024244 terminated 'due to nonclinical safety findings', results 2011-10-26. Model was fitted to patient MAD data, not preclinical; flip from contra rests on that. See rule question."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Opener; quote verbatim."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Abstract confirms primary endpoint was A1C at Week 14 and was met; non-sustained by week 30 correctly kept partial. AZD1656 metformin patient_trial (PMID 23464532, NCT01020123 results 2012-11-26) quote verbatim."},
+  {"cell": "efficacy", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Kiyosue quote verbatim; primary 4-month HbA1c not significant (p=0.30). Baker 2014 (PMID 24772484) 'in marked contrast to clinical findings' confirmed. Contra beats MK-0941 same."},
+  {"cell": "efficacy", "index": 4, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Vella 2019 (PMID 30651321) quote verbatim; status same under model_change is defensible. Fix fields: model_first_use_year should predate 2019 (genetic rationale guided TTP399 design); dorzagliatin is dual-acting, so its Phase 3s do not test a hepatoselective genetics model."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Opener; quote verbatim. But see missing: MK-0941 2011 triglyceride rise against a rodent model silent on lipids."},
+  {"cell": "safety", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "proposed_status": "retro", "proposed_year": 2012, "rule": "evidence rule 6 (dating)",
+   "note": "Retro status is right (De Ceuninck postdates Meininger). But the year should be 2012: Crossref shows the BJP paper online 2012 (record created 2012-08-28, published-online 2012-12-20), not 2013."},
+  {"cell": "safety", "index": 3, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2023, "rule": "evidence rule 6 (dating)",
+   "note": "Liang 2024 quote verbatim. An earlier tier-4 meta-analysis (Frontiers Endocrinol 2023, doi 10.3389/fendo.2023.1175198) already showed GKA-raised triglycerides (WMD +0.322 mmol/L, P=0.001). The flip is blocked if the missing 2011 contra is added."}
+ ],
+ "missing": [
+  "safety 2011: MK-0941 raised triglycerides (and hypoglycaemia) in patients (Meininger 2011, doi 10.2337/dc11-1200), while the rodent model of record (Eiki 2011) was silent on lipids that rodents can show (De Ceuninck 2013). Arguably contra (silence contradicted), which would keep later rodent-model safety entries from flipping to same.",
+  "dose 2011: MK-0941 dose reached and the Week-14 primary met (Meininger 2011): the 'reached, drug worked' row gives dose same in 2011 before the AZD1656 contra.",
+  "efficacy patient_trials: PF-04991532 (hepatoselective member) met the 12-week HbA1c primary in NCT01336738 (450 and 750 mg vs placebo, p=0.0017 and 0.0003; results posted 2013-08-06) and NCT01338870 (results 2013-04-23). No status change.",
+  "efficacy patient_trials: PF-04937319 (nerigliatin) met the 12-week HbA1c primary at 100 mg (-0.45 to -0.47%) in two studies, Amin 2015 doi 10.1111/dom.12474. No status change.",
+  "safety: LY2599506 Phase 2s (NCT01024244, NCT01029795) were terminated for 'nonclinical safety findings'. The model flagged a harm before patients showed it, and nobody compared it in patients, so it is not scored but is worth a note.",
+  "safety: Baker 2014 (doi 10.1111/bph.12504) is a rodent model that showed no triglyceride rise, against the patient hyperlipidaemia signal. It is a second rodent result that conflicts with De Ceuninck."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose: does a semi-mechanistic model fitted to the drug's own patient MAD data (LY2599506 GIG model) count as a 'model' with model_change: true that can turn a contra cell back to same? It is a human-to-human extrapolation, not a preclinical system, and its trials stopped before efficacy was fully shown.",
+  "Safety: when a model's only public sources are pharmacology papers (no tox review, no NDA), is their silence on a harm the species can show (rodent triglycerides) enough to score contra when patients show it?",
+  "Efficacy: can a human-genetic rationale for a hepatoselective drug (TTP399) count as the model for later, non-hepatoselective members (dorzagliatin), or is it a separate model_id limited to the drugs designed from it?",
+  "Dating: TTP399 Phase 2 results were presented in 2016 (ADA), before Vella 2019. Does a conference abstract or press release set the entry year under rule 6?"
+ ]
+}

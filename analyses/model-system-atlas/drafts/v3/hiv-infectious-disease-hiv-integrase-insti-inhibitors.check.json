@@ -1,0 +1,40 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hiv-infectious-disease-hiv-integrase-insti-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Kobayashi AAC epub 2010-11-29, quote verbatim in abstract. Opening proxy acceptable; Min 2010 AAC (10.1128/AAC.00842-09, epub 2009-11-02) already reports 'potent in vitro anti-HIV activity', so 2009 was available."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Min 2011 AIDS (PMID 21716073) quote verbatim; viral load proximal tier correct. Registry NCT00708110 results first posted 2013-10-30, matches."},
+  {"cell": "dose", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "proposed_status": "untested", "proposed_year": 2009, "rule": "Evidence rule 6 (dating: cell opens at model_first_use_year)",
+   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009."},
+  {"cell": "dose", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2011, "rule": "Evidence rule 6 (dating) with dose table row 'reached, drug worked'; healthy-volunteer PK counts",
+   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Quote is the abstract's first sentence, verbatim. Exclusion of SHIV-macaque PrEP models from treatment context is reasonable. 2009 opening also available (Min 2010)."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "SPRING-1 epub 2011-10-20, primary endpoint week-16 <50 copies; quote verbatim. NCT00951015 results posted 2013-11-11, matches. No member efficacy failure found."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Label 2013 (bundle) quote verbatim; rabbit 0.4x exposure confirmed; PharmR states no teratogenicity in rats/rabbits."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule."},
+  {"cell": "safety", "index": 3, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "proposed_status": "same", "proposed_year": 2025, "rule": "Decision 6(b) (patient_signal_reversed) with evidence rule 6 dating",
+   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025."}
+ ],
+ "missing": [
+  "Min 2010 AAC 10.1128/AAC.00842-09 (epub 2009-11-02): 'C(tau) with a 50-mg dose was 1.6 microg/ml, approximately 25-fold higher than the protein-adjusted 90% inhibitory concentration (0.064 microg/ml)': healthy-volunteer dose comparison the draft omits; moves dose dating earlier.",
+  "Zash et al. AIDS 2025, 10.1097/QAD.0000000000004326: earliest peer-reviewed report of the Tsepamo NTD signal attenuating (0.10% vs 0.11%).",
+  "Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When the first public patient signal is a tier 1 letter with no abstract (Zash 2018) and a tier 2 regulator communication exists but could not be retrieved, should the contra be dated to the first public signal (2018) or the first quotable source (2019)?",
+  "For dose 'reached, drug worked', is the entry dated when both halves are public (HV PK reaching target 2009 + first efficacy 2011) via pairing, or does it need a source that states trough vs target and response together (FDA review 2013)?",
+  "Class-wide harms not tested against tox packages (INSTI weight gain, DTG creatinine/OCT2, neuropsychiatric AEs): does rodent silence on weight gain count as a miss the species could have shown?"
+ ]
+}

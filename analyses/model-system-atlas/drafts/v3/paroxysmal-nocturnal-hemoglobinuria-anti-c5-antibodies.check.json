@@ -1,0 +1,41 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Fukuzawa 2017 (PMID 28439081, PMC5430875) full text: quote verbatim. Opener untested before patient data is right; crovalimab is a member."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in bundle BLA 761108 review; model side 'no pharmacologic inhibition ... in sera from 4 nonhuman primates and 5 non-primate species' also verbatim. Registry 2019-02-12 confirmed for NCT02946463. Free C5 is direct tier."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in Fukuzawa full text; the monkey regimen was IV load then SC every two weeks at 2 mg/kg. Opener untested is right."},
+  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Both quotes verbatim in BLA 761108 review; human t1/2 49.7 d confirmed. Status same holds. Fields: model_change true with no preceding contra misuses the flag; magnitude could be within_2x (mouse >3x vs human ~4.4x half-life ratio)."},
+  {"cell": "dose", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Röth 2020 quote verbatim in abstract (full text not retrievable). FDA 761388 'above approximately 100 μg/mL' verbatim. Fukuzawa's 'much lower trough' claim missed; see rule question. model_change true is wrong: same model_id as entry 1. Note 'weekly' understates: up to every-4-week SC."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Same Fukuzawa sentence; untested opener fine. No PNH animal model exists, so the human-serum lysis assay is the system relied on."},
+  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim in BLA 761108 review; co-primaries (transfusion avoidance, LDH normalization) met non-inferiority. No member failed in PNH. patient_trials NCT04434092 quote is from the FDA 761388 review, not doi 10.1002/ajh.27412; fix the citation."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "NCT02946463 eligibility criterion 5 verbatim; start 2016-12-12, so year 2016 is right."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Quote verbatim; review adds 'No meningococcal infection/sepsis was reported in the Phase 3 studies.' BB5.1 surrogate toxicology confirmed; not scoring the mouse's silence is right because it cannot show Neisseria susceptibility."},
+  {"cell": "safety", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
+   "note": "Abstract quote verbatim ('As expected...'). Could not see the full-text 'As predicted'/supplemental Fig 2 sentences. FDA 761388 has a Type III hypersensitivity section, so the harm is real. model_change true is misused because no contra precedes it; this is a separate harm."}
+ ],
+ "missing": [
+  "Pozelimab + cemdisiran (ACCESS-1, NCT05133531; Regeneron press release and Lancet 2026) was positive against ravulizumab in PNH. The combination includes an siRNA, so it is optional in patient_trials and does not change status. Source: https://pmlive.com/pharma_news/regeneron-shares-positive-late-stage-results-for-poze-cemdi-in-rare-blood-disorder-pnh/",
+  "Tesidolumab: Novartis stopped development in favour of iptacopan, a strategic choice and not an efficacy failure. Worth a note so it is not read as a failure. Source: NCT02534909 / Novartis trial results.",
+  "Pozelimab's FDA review in the bundle (BLA 761339) is for CHAPLE disease, not PNH. It cannot serve as a PNH source, and the draft correctly does not use it."
+ ],
+ "overall": "accept_with_corrections",
+ "corrections_fields_only": "No status changes. Field fixes: model_change on dose 2, dose 3 and safety 3; NCT04434092 patient_trials doi/quote mismatch; dose 3 note's dosing frequency.",
+ "rule_questions": [
+  "Dose: the monkey-based paper claimed a recycling antibody needs 'a much lower trough' than the ~99 µg/mL a conventional antibody needs, yet patients needed ~100 µg/mL. The regimen still worked. Is a wrong qualitative exposure claim with a working regimen 'same' with magnitude opposite or unquantified, or 'contra' (target too low)? Decision 16 and the dose table do not cover this case.",
+  "Efficacy for a follow-on member (ravulizumab) rested on non-inferiority to a non-member (eculizumab) plus an engagement assay. Does that count as an efficacy model, or as 'no disease model relied on' (empty list)? It is close to the cross-indication case but sits in the same indication.",
+  "model_change: is it meant only for turning a cell back after a contra, or also for any switch of model between entries? The draft uses it for both, and lint does not check it.",
+  "Safety cell with two distinct harms (meningococcal infection; DTDC hypersensitivity), each predicted by a different model: should these be separate entries scored independently, or one entry per change of best-model status as now?"
+ ]
+}

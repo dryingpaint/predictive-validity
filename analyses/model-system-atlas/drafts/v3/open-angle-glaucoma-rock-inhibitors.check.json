@@ -1,0 +1,42 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/open-angle-glaucoma-rock-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": null,
+   "note": "Wang (PMID 25535688) abstract quote verbatim. PharmR confirms primary pharmacology reviewed under initial IND filed 3-7-2012. Minor: epub_year should be 2013 (Crossref DOI deposited 2013-07-16, ahead-of-print DOI), not null."},
+  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": null,
+   "note": "Kazemi (PMID 29469601, epub 2018-02-22) quote verbatim; 11 healthy volunteers. +22% vs monkey +53% facility; aqueous flow -15% P=0.08 trend. same/partial, off_by_2-5x, downstream all hold."},
+  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": null,
+   "note": "Quote verbatim. Wang used a single 0.04% dose; once-daily dosing is from Lin 2017, not Wang, so the note slightly overstates the source. epub_year should be 2013."},
+  {"cell": "dose", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2014, "rule": "Evidence rule 6 (dating)",
+   "note": "Status ok: ClinPharmR quote on CS201 0.02% vs 0.04% verified; NCT01731002 results 2018-04-17 verified. Year: monkey paper was online 2013 (Crossref created 2013-07-16), trial epub 2014-09-27, so pairing public 2014, not 2015."},
+  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
+   "status_supported": true, "rule": null,
+   "note": "Conclusion sentence verbatim. Normotensive monkey/rabbit IOP is the system the NDA relied on (PharmR primary pharmacology). epub_year should be 2013."},
+  {"cell": "efficacy", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "proposed_status": "same", "proposed_year": 2014, "rule": "Evidence rule 6 (dating)",
+   "note": "Bacharach primary endpoint (mean diurnal IOP day 28) responded; quote verbatim. Year 2014 as for dose 2. patient_trials quotes are from FDA MedR/SumR, not the cited Serle DOI; registry dates 2018-04-06 verified."},
+  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "rule": null,
+   "note": "PharmR quote verbatim (bundle text). Opener at 2012 untested is fine; the reviewer also states NOAEL margins of 8x (monkey) and 2x (rabbit)."},
+  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
+   "status_supported": true, "rule": null,
+   "note": "PharmR quote verbatim; reviewer links hyperemia to vasodilation and haze to verticillata ('possible'). Label: hyperemia 53%, verticillata ~20%. Lin 2017 (epub 2017-06-13) hyperemia statement verified, so 2017 holds; FDA review posting date unverified."}
+ ],
+ "missing": [
+  "ATS907 had public model data: Hsu & Kengatharan, ARVO 2011, 'Safety and Efficacy of a Novel Topical Rho Kinase Inhibitor ATS907 in Normotensive Cynomolgus Monkeys' (https://iovs.arvojournals.org/article.aspx?articleid=2360870): single-dose IOP -3.7/-4.65 mmHg vs -2.43 latanoprost, plus a rabbit abstract. The draft's note says 'no public model data' for ATS907; this is wrong. The Phase 2 failure (NCT01520116 status unknown, NCT01668524 no results) is known only from the Wang & Chang 2014 review, so it is not scorable without a tier 1-5 patient source. If one is found, ATS907 would be a contra on a normotensive-monkey IOP model.",
+  "DE-104 Phase 2 trials NCT00650338, NCT00657579, NCT00656240, NCT00868894 are registered with no posted results. The discontinuation for a missed primary endpoint (late 2010) appears only in the review; no Santen tier 5 document was found in budget, and no DE-104 model data was found."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "ROCKET-1 (Study 301) failed its primary endpoint, which was non-inferiority of mean IOP to timolol, although IOP fell significantly. The model predicted IOP lowering with no comparator margin. Does an active-comparator NI primary that fails while the absolute endpoint responds count as an efficacy 'contra', or is it untested for the model? The draft kept it as a status-neutral patient_trial.",
+  "Decision 16 margin_stated: the 2017 PharmR states NOAEL margins of 8x/2x for the chronic studies but a corneal-haze NOEL margin of 1. Is margin_stated judged on the NOAEL or on the most sensitive finding? Neither margin was shown to be public before Phase 2. Status 'same' holds either way.",
+  "When the system relied on is an IOP-lowering model in normotensive animals, should a failed sibling-member drug with model data only in a conference abstract (ATS907 ARVO 2011) be admissible on the model side (tier 1 needs DOI/PMID)?"
+ ]
+}

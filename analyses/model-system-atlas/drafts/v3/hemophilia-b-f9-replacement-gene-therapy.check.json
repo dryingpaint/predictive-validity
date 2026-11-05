@@ -1,0 +1,154 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hemophilia-b-f9-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Metzner 2009 (PMID 19806248) abstract has the quote verbatim; opening untested entry for rodent PK model is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Santagostino 2012 (PMID 22859609) quote verbatim in abstract; Nolte 2012 states dog/monkey PK and defers to clinic, so prospective. Phase 1 registry_date (NCT01233440) still not looked up; no status effect."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in George 2017 full text (PMC6029626 HTML), citing refs 13/24. BAX 335 expression loss is a mouse-model (different system) miss; best-model rule keeps same, but see rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nolte 2012 aPTT quote verbatim in abstract (PMID 22726310). Untested opener correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Santagostino 2016 trough quote verbatim in abstract (PMID 26755710). Dogs gave no explicit human regimen target, so direction_only same is a fair 'reached, drug worked' call."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Crudele 2015 (PMID 25568350) quote verbatim. model_filed: true is doubtful: the SBRA names an AAVRh74var-cFIX-R338L surrogate in juvenile dogs, not Crudele's AAV8 vector."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "George 2017 33.7% quote verbatim. Same direction holds. FDA's filed model was the Rh74var surrogate dog (SBRA, 5e11-5e12 vg/kg), arguably a better model_src than Crudele AAV8; status unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Metzner 2009 tail-tip quote verbatim in abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Santagostino 2016 AsBR quote verbatim in abstract; AsBR is the trial's primary efficacy endpoint per abstract framing. Pairing with acute-bleeding mouse model is direction only; acceptable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "'The primary efficacy endpoint in this study was met.' verbatim in PMC8359950; primary endpoint is FIX >=12%. Dog paper (Oct 2020) predates the Phase 2b and describes pre-Phase 1/2 work, so not retro. Dogs reached normal, patients mild range: over-predicted magnitude, direction holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA (fda.gov/media/178688, 25 Apr 2024) has both quotes verbatim and the surrogate-dog model. Pfizer topline press release 29 Dec 2022 (BusinessWire) reported the primary endpoint met, but the model side was public only in 2024, so year 2024 stands."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Crudele 2015 mouse thrombogenicity quote verbatim in abstract. Untested opener correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "George 2017 intro sentence verbatim (fragment of a longer sentence) and results 'no development of factor IX inhibitors, no thrombosis' verbatim. Setting aside capsid-directed transaminase rises is backed by George's 'lack of animal models' sentence."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nichols 2020 (PMC7592742) quote matches the abstract/results; untested opener correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mahlangu 2021 thrombogenicity quote verbatim in abstract. Transient early rises make this partial; source_calls_it 'partial' would fit better. ADA set-aside is reasonable."
+  }
+ ],
+ "missing": [
+  "DTX101 (AAVrh10-hFIX, a class member): Phase 1/2 101HEMB01 missed its primary endpoint (peak FIX >=20 IU/dL at week 6; median 7 and 10 IU/dL) and the program was dropped (Dimension press release Nov 2017; Blood Adv 2025, PMID 40197980, PMC12197983). The paper names no preclinical model; if Dimension's NHP/mouse data predicted >=20%, efficacy and gene-therapy dose take a contra (2017, tier 5 then tier 1). Not entered in the draft at all, not even in patient_trials.",
+  "AskBio009/BAX 335 (Konkle 2021, PMID 33067633): FIX not sustained beyond 5-11 weeks in 7 of 8 patients; first public in Baxalta 2015-2016 releases and ASH abstracts. Only mentioned in judgement/patient_trials; a dated engagement/dose entry against its own preclinical model (Monahan 2015 mice/NHP) would show the miss even if the best-model rule leaves the cell at same.",
+  "verbrinacogene setparvovec (FLT180a, Chowdary 2022 NEJM 10.1056/NEJMoa2119913): needed glucocorticoids +/- tacrolimus, one AV-fistula thrombosis at FIX 260%; development paused 2022 (Freeline). Its preclinical (NHP) model was not read by the drafter or by me.",
+  "AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Best-model rule vs class members on different models: when one member (BAX 335, mouse model) is contradicted and another (fidanacogene, dog model) matches in the same cell and same year range, the cell shows only the dog's same. Should a different member's contra on a different model of the same kind (AAV8 FIX-Padua, liver) be shown?",
+  "Two dog systems for fidanacogene: Crudele 2015 AAV8-cFIX-Padua (cited by George 2017) vs the AAVRh74var-cFIX-R338L surrogate FDA reviewed. Are these one model_id (same species, transgene, route) or two, and which is 'the model the class relied on' for dose?",
+  "Year of a pairing whose patient side was public first by press release (Dec 2022) and model side only in the SBRA (Apr 2024): rule 6 does not say whether the year is the later of the two dates."
+ ]
+}
