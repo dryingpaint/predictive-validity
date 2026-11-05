@@ -44,6 +44,7 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 |---|---|
 | `lists.py` → `lists/` | the context list from the DB: diseases ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
 | `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every disease) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
+| `indications.py` → `lists/indications.csv`, `lists/indications_by_disease.csv`, `disease_indications.png` | each named disease's programs and the indications (stage, subtype, line of therapy) those programs were tested in, from the trials' condition rows; read-only |
 | `drafts/track_store.py` | stores a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile |
 | `drafts/<id>.json`, `drafts/<id>.check.json` | 70 drafted contexts and their checker verdicts; `manifest.csv` tracks them |
 | `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md` | the agent briefs used for the run (v2) |
