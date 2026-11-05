@@ -1,0 +1,206 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hepatocellular-carcinoma-vegfr-multikinase-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundle 203085 PharmR (report A58231). Survival-only readout, no PD marker; untested is right. Review summary says Balb/c, study section C3H/HeN, as the draft notes."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Title W-20130793 verbatim in 206947 PharmR; Matsuki 2018 (PMC6010799, full text) confirms MVD/pFRS2 readouts. Study number implies 2013 run, so model_first_use_year could be 2013. See rule question on Finn 2021 FGF19/FGF23 PD."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim. I searched 203085 PharmR and ClinPharmR: no mouse exposure at 10 mg/kg is stated against the 160 mg exposure, so untested in 2012 holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim title; 206947 PharmR has no xenograft exposure comparison for HCC. Untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kissel 2017 (PMC5739799) full text: 10 mg/kg 'lead to exposures in the range of the respective human dose of 160 mg/day'; RESORCE worked at 160 mg. Same, dated 2017 (first public statement of the match). Not a retrodiction: the H129 arm is the 2012-filed study."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; review gives 50% survival to day 35 vs 27 and about -8% body weight, as the draft states."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim title only; result not in the review. Untested, low confidence is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Bruix 2017 online 2016-12-06 (Europe PMC); quote matches abstract (my fetch truncated after 'p<', median figures not re-seen). NCT01774344 results posted 2017-06-05 confirmed. OS primary; same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kissel 2017 epub 2017-11-06, after RESORCE; authors frame the PDX panel as explaining the trial. Retro correct. See missing: Tai 2014 gives this track a prospective regorafenib xenograft prediction before RESORCE."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kudo 2018 quote verbatim in abstract; NCT01761266 results posted 2018-09-25 confirmed. Matsuki 2018 full text predicted lenvatinib greater than sorafenib in PLC/PRF/5 and PDX; trial met non-inferiority only, so source_calls_it should be over_predicted or partial, status same stands."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim in 206947 PharmR (study S03016 reviewed April 2005). Proxy opening at model_first_use_year is allowed."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; reviewer pairs animal liver enzyme rises with the clinical boxed hepatotoxicity. MONDO:0005575 = colorectal cancer confirmed (OLS). Same with comparison_stated holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; MONDO:0002108 = thyroid cancer confirmed (OLS). Same holds. I did not audit every unpredicted harm (hand-foot skin reaction, proteinuria) against the species that could show it."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4, 7 (#112), 10",
+   "note": "PMC5575539 full text: section 'Assessment of Lenvatinib Starting Dose for Phase 3 Studies' picks 12/8 mg by weight from Study 202 plus phase 1 popPK. REFLECT (start 2013) used it, so proxy 2013 opening and untested hold; pre-trial, not post-hoc.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4 (case 2), 16",
+   "note": "Kudo 2018 quote verbatim in abstract (PMID 29433850, print 2018-03). Model regimen given, OS non-inferior: same. margin_stated true fits decision 16 (AUC 2430 ng.h/mL, 57.8 kg ceiling stated pre-trial); REFLECT exposure or early dose-modification by weight not seen.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 8",
+   "note": "Quote verbatim in abstract (PMID 33288659, epub 2020-12-07; full text paywalled). Mouse screen with no patient test: untested 2020, patient level. Hydrodynamic transposon delivery not verified from Methods.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3 (#31), 8, 10",
+   "note": "Quote verbatim in abstract; paper itself links FGF19 screen to ST6GAL1-high patients (comparison_stated). Retrospective cohort counts (#31). No prior patient result on tumour FGF19 and lenvatinib, so not retro; cohort size and HR unseen (paywalled).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 8",
+   "note": "Quote verbatim in abstract (PMID 36036881, epub 2022-08-29). No patient comparison: untested. Earlier opening checked: Li 2019 JCI Insight PLC organoids (PMC6413833, 129 drugs) names sorafenib only, no lenvatinib or regorafenib in text; supplement unread.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "7 (#113, #127), 12 (no widening)",
+   "note": "Quote verbatim in abstract (PMID 38593780). Full text unread: cell.com and ScienceDirect 403 to curl, WebFetch and fc.py; no PMC, preprint or repository copy (OpenAlex, Europe PMC, Unpaywall). Whether lenvatinib was compared with patient response stays unknown; untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Tai WT et al. 2014 Clin Cancer Res, doi:10.1158/1078-0432.CCR-14-0725 (epub 2014-09-23): regorafenib 20 and 40 mg/kg/d inhibited PLC5 (PLC/PRF/5) HCC xenografts in mice, published before RESORCE. A tier-1 prospective prediction on the hcc-human-xenograft-immunodeficient-mouse track that pairs with Bruix 2017 as 'same' (2016) for regorafenib; the draft's xenograft track has only the Eisai title (2015) and the Kissel retrodiction (2017). Its 20-40 mg/kg dose is 2-4x the exposure-matched 10 mg/kg, relevant to the dose cell.",
+  "Patient-derived liver-cancer organoid biobank compared with patient response, lenvatinib among the seven drugs: Cancer Cell 2024, doi:10.1016/j.ccell.2024.03.004 (399 organoids from 144 patients; 'reliable for drug sensitivity screening, as evidenced by both in vivo models and patient response'; lenvatinib-response signatures). Also Ji et al. 2023 Sci Transl Med, doi:10.1126/scitranslmed.adg3358 (LICOB; lenvatinib + temsirolimus validated in organoids and PDX). A patient-level ex_vivo track with no entry; abstract-level reading, the direct organoid-vs-patient lenvatinib comparison needs the full text.",
+  "FGF19-driven HCC as a patient-level prediction of lenvatinib benefit: Matsuki 2018 (Hep3B2.1-7 FGF19 xenograft, selective) and Myojin et al. 2021 Clin Cancer Res, doi:10.1158/1078-0432.CCR-20-3382 (mouse model with diverse drivers: lenvatinib selectively eliminated FGF19-expressing tumours; serum/tumour FGF19 and ST6GAL1 associated with OS in lenvatinib-treated patients). The draft has no prediction_level 'patient' entry for this.",
+  "Finn RS et al. 2021 Clin Cancer Res, doi:10.1158/1078-0432.CCR-20-4219 (REFLECT PD biomarkers): lenvatinib, not sorafenib, raised serum FGF19 and FGF23 in patients at all time points, responders more than non-responders. The draft cites REFLECT biomarker work in a judgement but gives no source; it is the patient side of an FGFR-axis engagement comparison (downstream readout) that the engagement cell leaves untested.",
+  "Not checked for budget: the FDA regorafenib HCC sNDA review (2017) and lenvatinib HCC sNDA review (2018) and the EMA Lenvima HCC variation report, which may state the model-to-clinic comparison at tier 2 earlier than Kissel/Matsuki."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Member list: the class table gives catequentinib, donafenib, lenvatinib, regorafenib only. Brivanib (Huynh 2008 CCR doi:10.1158/1078-0432.CCR-08-0509, 5/6 HCC PDX inhibited; BRISK-FL and BRISK-PS failed), sunitinib (SUN1170 failed) and linifanib (LiGHT failed) are VEGFR multikinase inhibitors with model-vs-patient comparisons in HCC. Under the no-widening rule they score nothing, so the context shows two matches and no failure; is that the intended record for this mechanism?",
+  "A filed pre-trial experiment whose results are first published after the trial (Eisai study W-20130793 in Matsuki 2018, written after REFLECT): the draft scores it 'same' because the model was run before the clinic knew the answer. Decision 10 speaks of models built or run after; does a post-trial publication of a pre-trial result count as prospective, and should the date be the filing or the publication?",
+  "Engagement readout concordance: the model's PD readout was tumour pFRS2/pErk (FGFR blockade); patients showed serum FGF19/FGF23 rise (Finn 2021), a different quantity on the same axis. Does 'the PD readout the model used' admit a downstream readout_tier entry for a pathway-concordant but different analyte, or must the analyte itself match?",
+  "A model that predicts superiority over an active comparator (lenvatinib > sorafenib in Matsuki 2018) when the trial meets non-inferiority only on the primary endpoint and superiority on secondaries: is that 'same' + over_predicted, or 'same' + partial?",
+  "Models pass: Yang 2024 (efficacy 9) is a second untested entry on the organoid track after Cell Oncol 2022 with strengthens: true, but it is not a 'second miss' (#127); decision 7 would fold it into the 2022 entry's note or patient_trials unless the full text turns it into same or contra for lenvatinib."
+ ]
+}

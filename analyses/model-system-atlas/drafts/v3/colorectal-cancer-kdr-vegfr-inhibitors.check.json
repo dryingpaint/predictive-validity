@@ -1,0 +1,185 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/colorectal-cancer-kdr-vegfr-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (cell opens at model_first_use_year, untested)",
+   "note": "Nakamura 2006 (PMID 16982756) resolves; quote verbatim in abstract. Opening untested entry at 2006 is right; readout_tier null acceptable for an opener."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "v3 engagement definition (PD readout the model used moved in dosed humans; any dosed humans count; readout_tier downstream) and evidence rule 6 (earliest public comparison)",
+   "note": "Sun 2014 quote verbatim, but the track is not untested: Eskens 2011 (doi 10.1158/1078-0432.CCR-11-0411, PMID 21976547) reports 'Dynamic contrast-enhanced MRI indicated reduction in tumor perfusion' and dose-dependent sVEGFR-2 decrease, the DCE-MRI readout Nakamura 2006 predicted. Insert a 2011 same entry (model_src Nakamura 2006, comparison_stated false, readout_tier downstream, subjects patients with advanced solid tumours).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 4 engagement: Nakamura 2006 reports rat DCE-MRI and names it the clinical readout; Eskens 2011 shows DCE-MRI perfusion reduction and dose-dependent sVEGFR-2 fall in dosed patients, CRC enrolled. Decision 1(b) pairing, decision 7 year 2011. same."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6",
+   "note": "Nakamura 2006 quote verbatim in abstract; FDA 212904 review confirms HT29/SW620/COLO205 nude-mouse studies 951-25/06/05 and EMA EPAR 2017 adds the 14-model nude-rat panel (LoVo regression at 1 mg/kg). No human exposure target stated; untested opener holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 dose table row 'reached, drug worked' = same; decision 16 not applied (no stated margin)",
+   "note": "Sun 2014 (PMC4622458) abstract carries the quote verbatim; comparison_stated true is right (source compares human MTD PK to the mouse >85% pVEGFR2 threshold). margin_stated false consistent with the 2023 FDA review (dog findings at 0.12 mg/kg, no NOAEL above effective dose). same at 2014 supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6",
+   "note": "Opening untested entry; quote verbatim; FDA 212904 review lists the colon xenograft studies the judgement cites."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 efficacy definition (primary endpoint, placebo-controlled, unselected mCRC)",
+   "note": "Xu 2017 (PMID 28103904, epub 2017-01-19) PFS and OS quotes verbatim in abstract; HT-29 activity from 0.77 mg/kg verbatim in FDA 217564 review. Registry dates confirmed on CT.gov: NCT02196688 results 2019-08-13, NCT04322539 2023-09-14, NCT01478594 2015-04-03, NCT02314819 none. Two patient_trials quotes (FRESCO, FRESCO-2) are FDA-review sentences, not text of the cited JAMA/Lancet DOIs (status-neutral; fix attribution). BATON-CRC exclusion is defensible but is a rule question (below)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (proxy opener)",
+   "note": "Gu 2014 (PMID 24817647) quote verbatim in abstract. Proxy opener acceptable; note the tivozanib rat/monkey safety-pharmacology package predates 2014 (EMA EPAR 2017 lists it), so model_first_use_year 2014 is late for the track but no public date was found."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "evidence rule 6 (year = earliest date the comparison was public) and rule 8 (EMA EPAR must be fetched)",
+   "note": "FDA 212904 quotes verbatim (monkey 3 mg/kg BP rise; 454/1008 = 45% hypertension; 39-fold HED, though the same review elsewhere says 43-fold). Status same holds, but the EMA Fotivda EPAR (EMA/CHMP/437168/2017, 22 Jun 2017) already states 'Safety pharmacology findings demonstrated an increase in blood pressure (see discussion on Clinical Safety)' against 48% hypertension in study 301: re-date to 2017, src = EPAR, comparison_stated true."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 safety definition (silence contradicted on a harm the species could have shown); 'one drug's contra beats another drug's same on the same track'",
+   "note": "Quote verbatim in FDA 217564 review (single-dose beagle CV study to 0.34 mg/kg); FRESCO-2 hypertension 14% vs 1% verbatim; no 'blood pressure' hit in the review's nonclinical section, so the package was silent as the draft says. contra supported under the species-capability rule; whether a single-dose 6-h telemetry design counts as 'silence' and whether monkey and dog telemetry share one track are rule questions. Earlier public model side (2018 NMPA review) not checked."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (opener untested at first public use)",
+   "note": "Quote verbatim in bundled 217564 Multidiscipline review (PBPK section). Simcyp V20 used, so 2021-2023 build window holds; 2023 proxy year acceptable. Untested opener, class level, correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "note": "Quote verbatim (review Q2). Table 76: rifampin Sim 0.34/Obs 0.35, itraconazole 1.18/1.1 as stated. Itraconazole refined fmCYP3A4, rifampin verified it, both results known before finalisation: retro, not same. Efavirenz prediction stays untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (opener)",
+   "note": "Full text via fc.py scrape of PMC4622458 (Europe PMC XML HTTP 500). Quote verbatim; Fig. 6B legend compares combination vs single agent, so a fruquintinib-alone arm existed in colon PDX COL1T0117P4. Untested 2014 correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "decision 10 (prospective, model 2014 precedes 2017 result)",
+   "note": "Xu 2017 J Hematol Oncol, first published 2017-01-19, PMID 28103904; PFS and OS quotes verbatim in abstract. PDX (2014) predates phase II, so same, not retro. Single-agent PDX TGI is figure-only; direction_only magnitude appropriate.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "do-not-widen (member outside class is not a comparison)",
+   "note": "PMC13168235, npj Precis Oncol, published 2026-03-19, DOI matches. Tivozanib in 42-drug panel confirmed. Anti-VEGFR clinic comparison used ID1, ID5, ID12, all FOLFIRI+bevacizumab, n=3: no member-drug patient, so untested, not contra.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "do-not-widen (member outside class is not a comparison)",
+   "note": "PMC13400167, Cell Rep Med, published 2026-06-17, DOI matches. Apatinib and fruquintinib dosed on P15 chips; 86.36% accuracy (22 patients) is for FOLFOX+bevacizumab; P15 drug-matched case is regorafenib. Untested correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Human PD readout for tivozanib: Eskens et al. 2011, Clin Cancer Res, doi 10.1158/1078-0432.CCR-11-0411 (PMID 21976547) — 'Dynamic contrast-enhanced MRI indicated reduction in tumor perfusion'; plasma VEGF-A up and sVEGFR-2 down dose-dependently. Matches Nakamura 2006's rat DCE-MRI/pVEGFR2 prediction; the draft says it could not locate this. Engagement should carry a 2011 same entry (readout_tier downstream).",
+  "EMA Fotivda EPAR, EMA/CHMP/437168/2017 (22 Jun 2017, https://www.ema.europa.eu/en/documents/assessment-report/fotivda-epar-public-assessment-report_en.pdf): regulator-stated safety-pharmacology-to-clinic blood-pressure comparison (model side rats/monkeys; 48% hypertension AEs in study 301), the tier-2 record four years before the FDA 2021 review; also the 14-model nude-rat xenograft panel (Study PRT/02149.1) with LoVo colon carcinoma regression at 1 mg/kg, and phase I DCE-MRI/sVEGFR2 text. Should replace the FDA 2021 review as src for safety entry 2 and be cited on the tivozanib xenograft track.",
+  "Rivoceranib (apatinib) CRC xenografts, model side for the member drug the draft left unmodelled: LoVo colon xenograft vessel-normalisation study, Acta Pharmacol Sin 2019, doi 10.1038/s41401-018-0058-y (PMID 29977004); and Onco Targets Ther 2020, doi 10.2147/OTT.S266549 (PMID 33154652), apatinib CRC xenograft via VEGFR2/beta-catenin. Both sit on the crc-xenograft-rodent track; patient side is single-arm only (Oncologist 2019 doi 10.1634/theoncologist.2019-0164; Clin Colorectal Cancer 2018 pilot doi 10.1016/j.clcc.2018.02.011), so the rivoceranib arm stays untested, but the model should be listed, not described as 'no CRC-specific preclinical model found'.",
+  "Sun 2014 abstract states fruquintinib was tested in 'a panel of tumor xenograft and patient derive[d] xenograft models in mouse'. If any PDX was colorectal, PDX is a second system with no track. Full text could not be retrieved (Europe PMC fullTextXML HTTP 500; NCBI efetch returned abstract only); unverified.",
+  "Searched (Europe PMC, title/abstract) for patient-derived organoids or ex-vivo patient cells compared with response for fruquintinib/rivoceranib/tivozanib in CRC: none found. No randomized rivoceranib CRC trial found (only single-arm/pilot and meta-analyses); no press-release failure beyond BATON-CRC found. FRUQUITAS (TAS-102 +/- fruquintinib, phase III) is ongoing, design paper only."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Active same-pathway comparator: BATON-CRC (tivozanib+mFOLFOX6 not superior to bevacizumab+mFOLFOX6 on PFS, 2016). The xenograft predicted activity vs vehicle; the trial tested superiority over a VEGF-pathway comparator. Is non-superiority to an active comparator of the same pathway scorable as efficacy contra, or is it 'conditions the model never tested' (untested)? The drafter chose not to score it; the v3 rules do not decide this explicitly.",
+  "Safety track identity: do species-specific safety-pharmacology studies run for different member drugs (cynomolgus telemetry for tivozanib, beagle telemetry for fruquintinib) belong to one 'tox-rodent-nonrodent' track, so that fruquintinib's contra overrides tivozanib's same, or is each species/drug package its own system?",
+  "Design-limited silence: a single-dose, 6-hour dog telemetry study cannot show hypertension that develops over days to weeks. The v3 safety rule keys only on whether the species could show the harm. Should a study design that could not show it count as contradicted silence (contra) or as untested?",
+  "Engagement across indications: the tivozanib DCE-MRI/sVEGFR2 readout comes from a phase I in advanced solid tumours, not CRC. Since healthy volunteers count for engagement, any dosed humans presumably count; confirm that engagement entries from other-indication patients need no imported_from.",
+  "Quote attribution inside patient_trials: when the quoted sentence comes from an FDA review rather than the DOI listed, should the entry carry the review URL as its source? Status-neutral, but lint does not catch it."
+ ]
+}

@@ -1,0 +1,209 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/gastric-cancer-parp1-2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 5",
+   "note": "DOI resolves to Kubota 2014 Cell Cycle (PMID 24841718, PMC4111704, tier 1); quote verbatim in abstract. No PD read in Study 39/GOLD, so untested holds. Full text IS on PMC, contrary to confidence_note."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table / decision 16",
+   "note": "Same source, verbatim. Cell-line viability stated no exposure target or margin, so untested is defensible; but AZ's 2016 press release blames 'a low dose and in combination' for GOLD, see rule question 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (model_first_use_year)",
+   "note": "Opening untested entry at the first public model paper (epub 2014-05-19); quote verbatim in abstract. Registry NCT01063517 first posted 2010-02-05 with ATM-negative PFS co-primary, as the draft says."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy: primary endpoint governs",
+   "note": "Bang 2015 JCO (PMID 26282658), abstract only; quote verbatim. Registry results 2015-04-30 and co-primary PFS (overall, ATM-negative) confirmed on CT.gov; both missed, OS secondary hit. contra + partial supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "evidence rule 6 (earliest public date) with rule 2 (tier 5 press release; tier 1 paper still sets status)",
+   "note": "GOLD abstract (PMID 29103871, epub 2017-11-02) quote verbatim; registry 2018-11-07 confirmed. But AstraZeneca press release 2016-05-18 already reported OS miss in both co-primary populations: year should be 2016 if tier 5 dates."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2021,
+   "rule": "evidence rule 6 with rule 2 (tier 5); track admissibility is rule question 2",
+   "note": "Ciardiello 2023 (PMID 37260158) quote verbatim; registry 2023-09-21 confirmed. BeiGene press release 2021-06-04 (ASCO 2021 poster) gave the full PFS miss (HR 0.799, p=0.1428) two years earlier. Cross-indication track itself is a rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety: stated prediction held; imported_from",
+   "note": "Quote verbatim at sources/206162/206162Orig1s000PharmR.txt line 104; '2-4% of clinical exposures' for rat/dog cytopenias confirmed at lines 484 and 4434. Imported from ovarian correctly flagged."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety: on-target harm, same (not other)",
+   "note": "GOLD abstract AE sentence verbatim (30% vs 23% neutropenia). 2017 stands: the 2016 press release said only that AE incidence was 'similar', so the neutropenia excess was first public in the paper."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 5; rule 6 (model_first_use_year)",
+   "note": "Hegan 2010 PNAS (PMID 20133863, epub 2010-01-19, tier 1); quote verbatim in abstract. NCI10066 read no hypoxia/RAD51 PD, so untested holds. Prospective (2010 vs trial 2017+), class level correct; model_kind ex_vivo is the enum's gap, not an error.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 5; rule 6",
+   "note": "Petrelli 2023 Cancer Res (PMID 37129948, PMC10183806, received 2022-09-26, issue 2023-05-01); quote verbatim in abstract. RAD51-foci/HRD readouts never read in PARPi-treated gastric patients: untested. Not a retrodiction; patient level correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table / decision 16 (no stated exposure target -> untested)",
+   "note": "Same Hegan 2010 source, verbatim. In-vitro hypoxic-cell toxicity stated no exposure or occupancy target; RP2D in Cecchini 2023 was full 300 mg BID (confirmed in full text). Untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table / decision 16",
+   "note": "Same Petrelli 2023 source, verbatim. Xenotrials and GR50 assays (olaparib, rucaparib, niraparib) set no human exposure target; no PK comparison in any gastric PARPi patient. Untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 6 (opening entry at model_first_use_year)",
+   "note": "Opening untested entry at Hegan 2010 (abstract verbatim). First PARPi use of the hypoxia-HRD system; Chan 2010 (PMID 20924112) is the same system and correctly folded. prediction_level class is right: the prediction is anti-angiogenic + PARPi in HR-proficient tumours.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy: primary endpoint governs; decision 13 (data, not the authors' reading)",
+   "note": "Cecchini 2023 BJC (PMID 38135713, epub 2023-12-22; registry results 2025-06-04): both quotes and the go-rule sentence verbatim in full text. Phase 2 primary ORR; HRD-negative bar >=4 missed with 1 counted (3 responders unsequenced). Authors claim activity vs historical ramucirumab, so partial. contra stands; keep medium confidence.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 6; decision 10 (not a retrodiction)",
+   "note": "Opening untested entry at Petrelli 2023, abstract verbatim; olaparib dosed in BRCA2-LOH PDXs (product_in_model true). No PARPi result in BRCA2-selected gastric patients existed in 2023 (GOLD/Study 39 unselected), so prospective, not retro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "checker pitfall 1 (trial conditions the model never tested -> untested); evidence rules 1-3; decision 13",
+   "note": "Hayashi 2024 (PMID 39590127) quote verbatim, but its 'randomised trial' section reproduces Study 39 (Bang 2015, cited as its ref 27): same 100 mg BID + paclitaxel regimen, 50% enrichment, median OS 13.1 vs 8.3 and 8.2 months, HRs 0.57/0.36 vs 0.56/0.35, arm counts 76+65 != 132, no registry. That cohort was unselected/ATM-stratified, not BRCA2-LOH, and is already contra on the ATM track. Not a test of the PDX prediction: untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested (decision 4, #43). Full text read: 'randomised' cohort is Study 39's data (regimen, 50% enrichment, OS 13.1/8.3/8.2, Bang 2015 = ref 27), ATM-stratified, not BRCA2-LOH, already contra on the ATM track. Karakaya 2026 (n=1) becomes the track's only same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same (direction_only), decision 11; prospective vs 2023 model",
+   "note": "Karakaya 2026 Front Oncol (PMID 42022316, epub 2026-04-07) case report; quote verbatim in abstract; germline BRCA2 c.2945del + somatic LOH, olaparib third line after platinum-nivolumab and paclitaxel-ramucirumab, confirmed in full text. If efficacy 8 falls to untested this n=1 becomes the track's only same, so strengthens -> status-setting at low confidence.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Olaparib + ramucirumab NCI10066 (Br J Cancer 2023-12-22, doi:10.1038/s41416-023-02534-1, PMID 38135713; NCT03008278, results posted 2025-06-04): the trial paper's own preclinical model (tumour hypoxia induces HRD, sensitising to PARPi) compared with patients, single-arm phase 1/2, ORR 6/43 (14%) at RP2D 300 mg BID, HRD-mutant subgroup non-significant. A member drug's own model with no track.",
+  "Rucaparib, the third class member, is absent from the draft: NCT03995017 (rucaparib + ramucirumab +/- nivolumab, phase 1/2, n=34, completed 2022-10-19, no results posted, status UNKNOWN). Nothing scoreable, but 'finding nothing is a finding' and the note should say so.",
+  "AstraZeneca press release 2016-05-18 'AstraZeneca provides top-line results from Lynparza GOLD trial in advanced gastric cancer' (tier 5): OS miss in overall and ATM-negative populations public 18 months before the Lancet Oncol epub; sponsor attributes it to 'a low dose and in combination with chemotherapy'. https://www.astrazeneca.com/media-centre/press-releases/2016/astrazeneca-provides-top-line-results-from-lynparza-gold-trial-in-advanced-gastric-cancer-1805206.html",
+  "BeiGene press release 2021-06-04 (BusinessWire 20210604005079, ASCO 2021 poster) reporting PARALLEL 303 PFS miss (HR 0.799, p=0.1428) and that the study was launched as a phase 3 (planned ~540) and closed at 136 for slow enrolment and a change in standard of care; tier 5, two years before the 2023 paper.",
+  "MEDIOLA gastric cohort (olaparib + durvalumab, ASCO GI 2019 abstract, doi:10.1200/JCO.2019.37.4_suppl.140, ORR 10%, n=39): conference abstract only, not an admissible tier; listed so the drafter knows it was looked at. Changes no status.",
+  "Searched and not found: any gastric patient-derived organoid or PDX compared with patient response for a PARP inhibitor (Europe PMC title search 2014-2026: 11 hits, all cell-line mechanistic; the 2026 PDO-PDX concordance paper PMID 42674710 is chemotherapy only). The cell-line track is therefore the only gastric model track; the draft is right not to add one."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dating with tier 5: evidence rule 6 names registry posting, online publication, label or print as the dates that set `year`, but rule 2 says a phase 3 failure known from a press release must be found. When a sponsor press release reports the primary-endpoint miss 18 months (GOLD, 2016-05-18) or 24 months (PARALLEL 303, 2021-06-04) before the tier-1 paper, does `year` follow the press release while the tier-1 paper sets the status, or the first tier 1-3 record? Both corrections above turn on this.",
+  "Cross-indication inference as a track: pamiparib entered gastric cancer with no disease model (rationale = PARPi approvals elsewhere + HR-gene mutation frequency). The brief says 'no disease model relied on -> empty list', yet `model_kind` offers `cross_indication`. Is a cross-indication inference a scoreable track (contra on the PARALLEL 303 miss, as drafted), or should the pamiparib miss be left out of the figure / recorded only as a patient trial? The draft itself invites the reviewer to drop it.",
+  "Dose/efficacy coupling when the model stated no exposure target: the only model is in-vitro viability; the clinical regimen was 100 mg BID with paclitaxel (a third of the monotherapy dose, neutropenia-limited) and the sponsor's 2016 press release attributes the GOLD miss to 'a low dose and in combination with chemotherapy'. Does the coupling row 'never reached because of toxicity; no stated margin -> untested/untested' apply (which would also make efficacy untested), or does efficacy stay contra because the trial was the direct prospective test of the model's ATM prediction and no model source set a target? Decision 13 (data, not the sponsor's reading) and the checker rule on 'conditions the model never tested' pull in opposite directions."
+ ]
+}
