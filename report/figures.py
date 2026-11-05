@@ -378,8 +378,16 @@ def s3_specificity():
 
 BLOCK_HEADERS = {"safety_risk": "Not efficacy evidence: whether acting on the target is likely to harm",
                  "precedent": "Benchmark: what earlier drugs on the target did"}
-LITERATURE_NOTE = "descriptive: retrieval failed the quality gate"
+LITERATURE_NOTE = "not measured: the literature search missed too many studies"
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
+
+
+def label_pad(fig, ax) -> float:
+    """Points between left-aligned y labels and the plot: LABEL_PAD, or the widest label plus a margin when a label
+    would otherwise run into the plot."""
+    renderer = fig.canvas.get_renderer()
+    widest = max((t.get_window_extent(renderer).width for t in ax.get_yticklabels()), default=0) * 72 / fig.dpi
+    return max(LABEL_PAD, widest + 12)
 
 
 def evidence_translates():
@@ -422,12 +430,13 @@ def evidence_translates():
     labels = [("      " if r.level != "category" else "") + r.label.replace(", on today's data (hindsight)", ", hindsight")
               + (" †" if r.column in alone else "") for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
-    ax.tick_params(axis="y", pad=LABEL_PAD)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
         t.set_horizontalalignment("left")
         t.set_color(INK if r.level == "category" else INK2)
         t.set_fontweight("bold" if r.level == "category" else "normal")
-    label_x = -LABEL_PAD / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes
+    pad = label_pad(fig, ax)
+    ax.tick_params(axis="y", pad=pad)
+    label_x = -pad / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes
     for cat, header in BLOCK_HEADERS.items():
         first = next(yi for yi, r in zip(ys, lines.itertuples()) if r.category == cat)
         ax.text(label_x, first + 1.1, header, transform=ax.get_yaxis_transform(), color=INK2, fontsize=10,
