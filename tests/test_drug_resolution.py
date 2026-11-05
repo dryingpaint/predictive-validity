@@ -169,3 +169,54 @@ def test_a_removal_needs_the_registry_to_place_the_code_on_an_unrelated_substanc
     parents = {"TRIAMSALT": {"TRIAM"}}
     assert registry_unconfirmed(verdicts, unii_of, registered, parents) == {
         "ain457": set(), "scb01a": {3}, "u34865": set(), "fx006": {5}}
+
+
+def test_a_name_whose_decision_gives_another_entitys_code_is_stale():
+    from pipeline.drugs import stale
+    owners = {"canakinumab": 1, "acz885": 1, "secukinumab": 2, "ain457": 2, "verucerfont": 3, "emicerfont": 4,
+              "gw876008": 4}
+    resolved = {"a": ("drug", [{"name": "canakinumab", "codes": ["AIN457"], "biosimilar_of": None}]),
+                "b": ("drug", [{"name": "canakinumab", "codes": ["ACZ885"], "biosimilar_of": None}]),
+                "c": ("drug", [{"name": "verucerfont", "codes": ["GW876008"], "biosimilar_of": None}]),
+                "d": ("drug", [{"name": "new entity", "codes": ["GW876008"], "biosimilar_of": None}])}
+    assert stale(resolved, owners) == {"a", "c"}  # a component no entity holds yet is not judged
+
+
+def test_merges_copy_parents_before_children_and_delete_in_reverse():
+    from pipeline.drugs import parents_first
+    tables = ["evidence_entry_line", "evidence_entry", "literature_hit", "literature_search", "stop"]
+    fks = [("evidence_entry_line", "evidence_entry"), ("literature_hit", "literature_search"), ("stop", "moiety")]
+    order = parents_first(tables, fks)
+    assert order.index("evidence_entry") < order.index("evidence_entry_line")
+    assert order.index("literature_search") < order.index("literature_hit") and set(order) == set(tables)
+
+
+def test_only_the_same_substance_or_a_form_of_it_may_join_another_entitys_substance():
+    from pipeline.drugs import MERGE_SCHEMA, merge_allowed
+    relations = {1: "same_substance", 2: "salt_or_form", 3: "class_or_family", 4: "combination_or_mixture",
+                 5: "different_form", 6: "different_substance"}
+    assert set(MERGE_SCHEMA["properties"]["relation"]["enum"]) == set(relations.values())
+    assert merge_allowed(relations) == {1, 2}
+
+
+def test_the_merge_check_shows_the_entity_and_the_substance_it_would_become():
+    from pipeline.drugs import render_merge
+    text = render_merge({"entity": {"name": "penicillin", "codes": [], "aliases": [], "strings": ["Penicillin"],
+                                    "trials": [{"title": "Penicillin for syphilis", "sponsor": "X"}]},
+                         "substance": {"unii": "Q42T66VG0C", "display_name": "PENICILLIN G", "substance_type": "chemical",
+                                       "holder": "benzylpenicillin"}})
+    assert "Entity: penicillin" in text and "PENICILLIN G" in text and "benzylpenicillin" in text
+    assert "Candidate substances" not in text
+
+
+def test_merges_move_every_column_a_foreign_key_ties_to_an_entity_whatever_its_name():
+    from pipeline.drugs import entity_columns
+    fks = [("preclin.drug_moiety", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.atlas_pair", "preclin.moiety", ["same_entity_as"], ["moiety_id"]),
+           ("preclin.evidence_entry", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.evidence_entry_line", "preclin.evidence_entry", ["moiety_id", "mondo_id", "phase"],
+            ["moiety_id", "mondo_id", "phase"]),
+           ("preclin.dev_program", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.trial_outcome", "preclin.ctgov_study", ["nct_id"], ["nct_id"])]
+    assert entity_columns(fks) == {"preclin.drug_moiety": ["moiety_id"], "preclin.atlas_pair": ["same_entity_as"],
+                                   "preclin.evidence_entry": ["moiety_id"], "preclin.evidence_entry_line": ["moiety_id"]}
