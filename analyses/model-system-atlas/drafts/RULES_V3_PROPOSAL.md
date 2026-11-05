@@ -201,9 +201,9 @@ reviewed per-drug class table in `lists/class_audit/` (verified target, action, 
 novelty at entry, with a source per row). A member not selective for the mechanism's target forms its
 own mechanism ("JAK (pan)", multichannel blockers); dual-mechanism drugs are out unless the table puts
 them in (#33, #78). Every mechanism of every named indication is registered, counted across
-modalities (`preclin.atlas_register`: 1,661 indication × mechanism rows on the 2026-11-05 audit); a
-mechanism with at least 3 programs is **tracked**, a tile whose model track record is drafted (118
-tiles in 47 indications). Phase is never a criterion, so what is tracked does not depend on whether
+modalities (`preclin.atlas_register`: 1,693 indication × mechanism rows on the published 2026-11-05 build); a
+mechanism with at least 3 programs is **tracked**, a tile whose model track record is drafted (119
+tiles in 48 indications). Phase is never a criterion, so what is tracked does not depend on whether
 a mechanism succeeded. Single-program and two-program mechanisms are covered by the random program
 sample, which carries the atlas's statistics.
 

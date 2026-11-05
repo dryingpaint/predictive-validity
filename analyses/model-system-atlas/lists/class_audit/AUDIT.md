@@ -9,10 +9,7 @@ a DOI or a PubMed query. Outputs: `class_members.csv` (one row per program, revi
 `db_issue`), `register.csv` (every indication × mechanism) and the tracked tiles,
 `lists/named_contexts.csv`.
 
-**The database changed during the audit.** Between runs on 2026-11-04 another session removed
-every `dev_program` row for relugolix and cannabidiol, and they are still absent at the last run
-(2026-11-05). Their reviews stay in `reviews.csv`. With relugolix, endometriosis would have 3 GnRH
-antagonists and a tracked tile; Prader-Willi has none either way. Re-run the script once that write lands.
+**Drawn on the published identity rebuild.** The interim draw ran while the identity rebuild had removed the programs of merged entities (relugolix and cannabidiol among them). The register was redrawn on 2026-11-05 on the published build (programs build 2cc25092); no reviewed moiety was a merge loser in `preclin.moiety_merge`, so `reviews.csv` needed no remap.
 
 ## 1. Where the database disagrees with the review
 
@@ -77,23 +74,24 @@ least 3 distinct novel Phase 2 programs is tracked** and gets a tile in `lists/n
 already succeeded, which is the outcome the atlas tests. There is no single winner per indication,
 and so no tie-breaks.
 
-**Result: 1,661 register rows (`register.csv`); 118 tracked tiles in 47 of 71
-indications (27 with more than one); 24 indications have no tracked tile.**
-32 tiles are the mechanism the earlier single-winner rule would have picked.
+**Result (redrawn 2026-11-05 on the published identity rebuild, programs build 2cc25092): 1,693 register rows (`register.csv`); 119 tracked tiles in 48 of 71
+indications (27 with more than one); 23 indications have no tracked tile.**
+33 tiles are the mechanism the earlier single-winner rule would have picked. Against the interim draw, endometriosis gains a tile (GnRH antagonists, 3) now that relugolix's programs are back.
 
-| indication | novel Phase 2 programs | tiles | tracked mechanisms (programs, modalities when more than one) |
+| indication | Phase 2 programs | tiles | tracked mechanisms (programs, modalities when more than one) |
 |---|---|---|---|
 | allergic disease | 7 | 1 | allergen (immunotherapy) (5, other/peptide) |
 | allergic rhinitis | 39 | 2 | allergen (immunotherapy) (8, other/peptide/protein); PTGDR2 antagonists (4) |
 | Crohn disease | 36 | 1 | anti-IL23A antibodies (3) |
-| psoriasis | 80 | 5 | RORC inverse agonists (4); anti-IL17A antibodies (4, antibody/protein); JAK1 inhibitors (3); PDE4 inhibitors (3); anti-IL23A antibodies (3) |
+| psoriasis | 78 | 5 | RORC inverse agonists (4); anti-IL17A antibodies (4, antibody/protein); JAK1 inhibitors (3); PDE4 inhibitors (3); anti-IL23A antibodies (3) |
 | rheumatoid arthritis | 96 | 3 | BTK inhibitors (8); SYK inhibitors (3); anti-CSF2 antibodies (3) |
 | ulcerative colitis | 70 | 1 | S1PR1 agonists (3) |
+| endometriosis | 13 | 1 | GNRHR antagonists (3) |
 | secondary hyperparathyroidism | 6 | 1 | CASR positive modulators (4, peptide/small molecule) |
 | type 1 diabetes mellitus | 31 | 1 | SLC5A2 inhibitors (4) |
-| type 2 diabetes mellitus | 126 | 10 | GLP1R agonists (12, peptide/protein/small molecule); GCK activators (9); HSD11B1 inhibitors (8); DPP4 inhibitors (7); INSR agonists (6); GCGR/GLP1R agonists (5); SLC5A2 inhibitors (5); GCGR antagonists (4, antibody/small molecule); GPR119 agonists (4); CCR2 antagonists (3) |
+| type 2 diabetes mellitus | 125 | 10 | GLP1R agonists (12, peptide/protein/small molecule); GCK activators (9); HSD11B1 inhibitors (8); DPP4 inhibitors (7); INSR agonists (6); GCGR/GLP1R agonists (5); SLC5A2 inhibitors (5); GCGR antagonists (4, antibody/small molecule); GPR119 agonists (4); CCR2 antagonists (3) |
 | gastroesophageal reflux disease | 11 | 1 | ATP4A blockers (3) |
-| metabolic dysfunction-associated steatohepatitis | 75 | 2 | NR1H4 agonists (4); FGF21 analogue (FGFR1c/KLB) agonists (3) |
+| metabolic dysfunction-associated steatohepatitis | 76 | 2 | NR1H4 agonists (4); FGF21 analogue (FGFR1c/KLB) agonists (3) |
 | primary biliary cholangitis | 15 | 1 | NR1H4 agonists (3) |
 | hemophilia A | 15 | 1 | F8 replacement / gene therapy (8, gene therapy/protein) |
 | hemophilia B | 10 | 1 | F9 replacement / gene therapy (7, gene therapy/protein) |
@@ -104,14 +102,14 @@ indications (27 with more than one); 24 indications have no tracked tile.**
 | hyperlipidemia | 33 | 2 | CETP inhibitors (3); HCAR2 agonists (3) |
 | Alzheimer disease | 76 | 5 | BACE1 inhibitors (4); anti-MAPT antibodies (4); HRH3 antagonists (3); HTR6 antagonists (3); anti-APP antibodies (3) |
 | migraine disorder | 29 | 2 | CGRP receptor antagonists (4); anti-CALCA/CALCB (CGRP ligand) antibodies (3) |
-| acute myeloid leukemia | 78 | 2 | FLT3 inhibitors (4); CD33-directed depleters (3, ADC/antibody/cell therapy) |
+| acute myeloid leukemia | 79 | 2 | FLT3 inhibitors (4); CD33-directed depleters (3, ADC/antibody/cell therapy) |
 | breast cancer | 129 | 9 | CDK4/6 inhibitors (6); ESR1 degrader (5); HSP90AA1/HSP90AB1 inhibitors (5); PI3K/MTOR inhibitors (5); anti-IGF1R antibodies (4); PARP1/2 inhibitors (3); PI3K (pan) inhibitors (3); PIK3CA inhibitors (3); pan-HER inhibitors (3) |
 | colorectal cancer | 88 | 3 | KDR (VEGFR) inhibitors (3); VEGFR multikinase inhibitors (3); anti-EGFR antibodies (3) |
 | follicular lymphoma | 34 | 2 | CD19-directed depleters (3); PIK3CD inhibitors (3) |
 | gastric cancer | 40 | 2 | PARP1/2 inhibitors (3); anti-ERBB2 antibodies (3) |
 | hepatocellular carcinoma | 73 | 4 | VEGFR multikinase inhibitors (4); anti-PDCD1 antibodies (4); KDR (VEGFR) inhibitors (3); anti-CD274 antibodies (3) |
-| malignant pancreatic neoplasm | 73 | 1 | MAP2K1/2 inhibitors (3) |
-| melanoma | 51 | 2 | BRAF inhibitors (3); anti-PDCD1 antibodies (3) |
+| malignant pancreatic neoplasm | 74 | 1 | MAP2K1/2 inhibitors (3) |
+| melanoma | 52 | 2 | BRAF inhibitors (3); anti-PDCD1 antibodies (3) |
 | myelodysplastic syndrome | 44 | 1 | HDAC (pan) inhibitors (3) |
 | non-small cell lung carcinoma | 191 | 9 | EGFR inhibitors (18); ALK inhibitors (6); MET inhibitors (5); anti-IGF1R antibodies (4); anti-PDCD1 antibodies (4); pan-HER inhibitors (4); HSP90AA1/HSP90AB1 inhibitors (3); VEGFR multikinase inhibitors (3); anti-CTLA4 antibodies (3) |
 | ovarian cancer | 58 | 1 | PARP1/2 inhibitors (6) |
@@ -127,11 +125,11 @@ indications (27 with more than one); 24 indications have no tracked tile.**
 | insomnia | 11 | 1 | HCRTR1/2 antagonists (6) |
 | schizophrenia | 45 | 3 | PDE10A inhibitors (5); SLC6A9 inhibitors (4); CHRNA7 agonists (3) |
 | asthma | 84 | 4 | PTGDR2 antagonists (9); ADRB2 agonists (4); NR3C1 agonists (4); anti-IL13 antibodies (4) |
-| chronic obstructive pulmonary disease | 47 | 3 | CHRM3 antagonists (6); ADRB2 agonists (4); MAPK14 inhibitors (4) |
+| chronic obstructive pulmonary disease | 46 | 3 | CHRM3 antagonists (6); ADRB2 agonists (4); MAPK14 inhibitors (4) |
 | cystic fibrosis | 43 | 2 | CFTR correctors (10); CFTR potentiators (5) |
 | interstitial cystitis | 10 | 1 | anti-NGF antibodies (3) |
 
-**No tracked tile (24):** atopic conjunctivitis, eosinophilic esophagitis, atrial fibrillation, coronary artery disorder, heart failure, hypertensive disorder, endometriosis, irritable bowel syndrome, sickle cell disease, influenza, Prader-Willi syndrome, hypertriglyceridemia, obesity disorder, Parkinson disease, diabetic neuropathy, glioblastoma, age-related macular degeneration, acne, attention deficit-hyperactivity disorder, major depressive disorder, idiopathic pulmonary fibrosis, benign prostatic hyperplasia, overactive bladder, premature ejaculation. Their mechanisms stay in the register with fewer
+**No tracked tile (23):** atopic conjunctivitis, eosinophilic esophagitis, heart failure, hypertensive disorder, atrial fibrillation, coronary artery disorder, irritable bowel syndrome, sickle cell disease, influenza, obesity disorder, hypertriglyceridemia, Prader-Willi syndrome, Parkinson disease, diabetic neuropathy, glioblastoma, age-related macular degeneration, acne, major depressive disorder, attention deficit-hyperactivity disorder, idiopathic pulmonary fibrosis, overactive bladder, benign prostatic hyperplasia, premature ejaculation.
 than 3 programs each.
 
 ## 4. Recommended DB fixes (not applied)
