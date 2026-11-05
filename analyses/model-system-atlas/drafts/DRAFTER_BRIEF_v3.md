@@ -1,7 +1,7 @@
 # Drafter brief v3 (proposed) — model-system atlas context (issue dryingpaint/predictive-validity#76)
 
-v3 (2026-11-02): written to the decisions in `DECISIONS.md` and `RULES_V3_PROPOSAL.md`; decisions marked
-open there may still change. v2 is kept as `DRAFTER_BRIEF.md` for the record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
+v3 (2026-11-04): written to the decisions in `DECISIONS.md` and `RULES_V3_PROPOSAL.md`, all sixteen taken.
+`drafts/lint.py` checks every field below on a draft that declares `"schema": 3`. v2 is kept as `DRAFTER_BRIEF.md` for the record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
 
 You are drafting ONE entry for an atlas of preclinical models with a **track record**: predictions that
 were compared with what happened in patients. Repo: ~/code/predictive-validity (branch atlas-named-contexts).
@@ -11,9 +11,11 @@ house style for a finished entry (one success, one failure). Do not read any oth
 ## The unit
 A **context** = disease (MONDO) × patient population (genotype / biomarker / pathogen, else "Unselected")
 × drug class. Validity belongs to the context, not the model: the same mouse can be right for one drug
-class and wrong for another. **v3:** the drug class is the DB's (target, action) label you are given. Do
-not widen it: if every patient datum is for a sibling target (A1 agonist when the class is A2A), the
-context stays `untested` with a note.
+class and wrong for another. **v3:** the drug class is the (target, action, modality group) you are given,
+with its member drugs from the reviewed class table; only those drugs score. Do not widen it: if every
+patient datum is for a sibling target (A1 agonist when the class is A2A) or a non-selective drug outside
+the member list, the context stays `untested` with a note. Copy the given `modality_group` and
+`class_share` into the output.
 
 ## What "the model" is (v3)
 The model is whatever system the class actually relied on to go into patients: the pivotal preclinical
@@ -24,8 +26,10 @@ papers, the FDA/EMA pharmacology review. Three cases that are all in scope:
 - no disease model was relied on at all (the class went straight to patients on another indication's
   data): the cell is an **empty list**, which the figure draws blank. `untested` means a model existed
   and nobody compared it. Keep the two apart.
-A model built after the clinic already knew the answer is **not a model**: record it with
-`retrodiction: true` and `status: null` so the checker can see it, but it earns nothing (decision 10, open).
+A model built or run after the clinic already knew the answer is a **retrodiction**: record it with
+`retrodiction: true`. If it reproduced the human data its status is `retro`, never `same`; if it failed to
+reproduce them, `contra`. Its first prospective prediction afterwards is a fresh entry scored as usual
+(decision 10).
 
 ## Four questions, each gets its own cell (v3 definitions)
 - **engagement**: did the PD readout the model used move in dosed humans? Record `readout_tier`:
@@ -38,14 +42,15 @@ A model built after the clinic already knew the answer is **not a model**: recor
   | what happened | dose | efficacy |
   |---|---|---|
   | target never reached in humans (PK) | `contra` | `untested` |
-  | never reached because of toxicity; the model stated the effective exposure was tolerated (decision 16, open) | `contra` with `blocked_by: "toxicity"` | `untested` |
-  | never reached because of toxicity; no stated margin (decision 16, open) | `untested` | `untested` |
+  | the model stated the effective exposure was tolerated, and patients were dosed to target without that toxicity (decision 16) | `same` with `margin_stated: true` | as the trial showed |
+  | never reached because of toxicity; the model stated the effective exposure was tolerated (decision 16) | `contra` with `blocked_by: "toxicity"`, `margin_stated: true` | `untested` |
+  | never reached because of toxicity; no stated margin | `untested` | `untested` |
   | reached, drug worked | `same` | `same` |
   | reached, failed, abandoned | `contra` with `derived_from: "efficacy"` | `contra` |
   | reached, failed, a higher dose later worked | `contra` (target too low; record `magnitude`) | `contra`, then `same` |
 
   Healthy-volunteer PK counts; a later patient PK/occupancy source is its own dated entry.
-  Decision 16 (open) scores the toxic end of the window: a stated tolerability margin (NOAEL, MTD, a
+  Decision 16 scores the toxic end of the window: a stated tolerability margin (NOAEL, MTD, a
   tolerated dose at or above the effective one) that held is `same`; toxicity at or below the effective
   exposure is `contra` with `blocked_by: "toxicity"`, an independent dose failure. Count the harm once:
   here when the model predicted it but misplaced the margin, in safety when it did not predict it.
@@ -65,9 +70,10 @@ A model built after the clinic already knew the answer is **not a model**: recor
 |---|---|---|
 | untested | Never compared | a model exists and was used for this class, but no admissible comparison of its prediction with patient results |
 | same | Matched | a comparison shows the model's prediction agreed with patient results for ≥1 drug of this class, in direction; record how far off in `magnitude`; partial agreement is `same` + `source_calls_it: "partial"` |
-| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar (record the number in `judgement`) and that drug failed in patients. Judged on what the data showed, not on what the sponsor said about them (decision 13, open) |
-| other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored (decision 13, open) |
-| contra | Contradicted | the model predicted wrongly for a drug in this context. Per model and per time point: a later entry may recover the cell when a different model took over (`model_change: true`) or a primary source reports the contradiction attenuated. One drug's `contra` still beats another drug's `same` on the same model |
+| neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar and that drug failed in patients. Record the model's number in `effect_size` and the bar in `class_threshold`. Judged on what the data showed, not on what the sponsor said about them (decision 13) |
+| other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored (decision 13) |
+| contra | Contradicted | the model predicted wrongly for a drug in this context. A failed model stays failed. A later entry may turn the cell back only when (a) a different model took over and its prediction held (`model_change: true`), or (b) a tier 1–4 source shows the early patient signal attenuated to background, so the model was right (`patient_signal_reversed: true`). One drug's `contra` still beats another drug's `same` on the same model |
+| retro | Reproduces the known result | a retrodiction (`retrodiction: true`) that reproduced the human data; drawn with its own mark and counted apart from `same` (decision 10) |
 
 ## Evidence rules (v3)
 1. **Two kinds of comparison.** Either the source itself puts model and patient results side by side
@@ -76,9 +82,12 @@ A model built after the clinic already knew the answer is **not a model**: recor
    merely cites the model paper is a pairing, not a statement.
 2. **Admissible sources, in tiers** (`source_tier`): 1 peer-reviewed paper with DOI or PMID; 2 regulator
    document (FDA review or label, EMA EPAR, Health Canada, AdCom briefing or transcript); 3 registry results
-   record. Tiers 4 (meta-analysis) and 5 (press release or SEC filing) are open (decision 2); if admitted they
-   are patient-side only, never model-side, and the entry carries `trial_unreported: true`. Reviews may
-   point you to a source but are not one. "Data not shown" scores at low confidence.
+   record; 4 meta-analysis of patient trials; 5 sponsor press release or SEC filing. Use every one of them
+   to get what happened in the trials right: a Phase 3 failure known only from a press release must be
+   found. Tiers 4–5 are patient-side only: name the model side in `model_src` with `model_src_tier` 1–3. A
+   tier 5 entry carries `trial_unreported: true`. Where a higher-tier record of the same trial exists it
+   sets the status. Reviews may point you to a source but are not one. "Data not shown" scores at low
+   confidence. A paired comparison (`comparison_stated: false`) also names its model side in `model_src`.
 3. Every entry carries `quote`: the sentence (≤40 words, verbatim) from the source that supports the
    status. If you cannot quote it, the status is `untested`.
 4. Verify every DOI resolves to the paper you mean (PubMed tools or WebFetch). Never invent a citation.
@@ -89,7 +98,7 @@ A model built after the clinic already knew the answer is **not a model**: recor
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
    existed before it was tested.
 7. Do NOT use approval status or later knowledge to decide a status; use what was known at the entry's date.
-8. **FDA review PDFs.** WebFetch fails above 10 MB. Use the local cache if one is given, else
+8. **FDA review PDFs.** WebFetch fails above 10 MB. Use the source bundle if one is given, else
    `curl -L -o review.pdf <url> && pdftotext review.pdf -` and search the text. `model_filed` is the field
    that depends on this; do not leave it null because the PDF was large.
 9. Budget: ≤20 sources, ≤40 tool calls. Abstract-level reading is acceptable; say so. The registry lookup
@@ -97,23 +106,27 @@ A model built after the clinic already knew the answer is **not a model**: recor
 
 ## Fields on every entry (schema v3)
 Record with null when unknown. They do not change your status call; they let the status be recomputed.
-`subjects` (patients | healthy_volunteers | mixed) · `comparison_stated` · `source_tier` (1–5) ·
-`trial_unreported` · `epub_year` · `print_year` · `registry_date` · `model_filed` · `product_in_model` ·
+`model_id` (a short slug for the system, e.g. `hemb-dog-chapel-hill`; the same system keeps the same slug
+in every entry and cell, a different system gets a new one) · `subjects` (patients | healthy_volunteers | mixed) · `comparison_stated` · `source_tier` (1–5) ·
+`model_src` · `model_src_tier` (1–3) · `trial_unreported` · `patient_signal_reversed` · `epub_year` · `print_year` · `registry_date` · `model_filed` · `product_in_model` ·
 `model_kind` (animal | human_challenge | ex_vivo | in_silico | human_genetic | cross_indication) ·
 `model_change` · `retrodiction` · `imported_from` (MONDO id) · `magnitude` (within_2x | off_by_2-5x |
 off_by_>5x | direction_only | null | opposite) · `magnitude_basis` (the quantity it is computed on) ·
 `source_calls_it` (match | miss | scaling | partial | unresolved | over_predicted) · `population` ·
 `model_first_use_year` · `confidence` (high | medium | low, enum) · `confidence_note` (free text) ·
-engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by` (decision 16, open) · efficacy only: `endpoint_role`,
+engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by`, `margin_stated` · `neg` only:
+`effect_size`, `class_threshold` · efficacy only: `endpoint_role`,
 `outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status).
-Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial.
+Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial;
+`modality_group` and `class_share` as given.
 
 ## Output: write ONE file, then report
 Write JSON to the path given below, exactly this shape (extra keys are ours; the figure ignores them):
 {
- "order": <int>, "area": "<Area>", "disease": "<name>", "mondo_id": "MONDO:...",
+ "schema": 3, "order": <int>, "area": "<Area>", "disease": "<name>", "mondo_id": "MONDO:...",
  "population": "<...>", "mechanism": "<drug class>", "note": "<1 sentence on the context>",
  "programs": null, "loa": null, "label": "<short tile label>", "regulatory_reliance": false,
+ "modality_group": "<as given>", "class_share": <as given>,
  "cells": {
   "engagement": [ {"year": 2009, "status": "untested", "model": "<model>", "note": "<≤25 words>",
                    "short": "<≤8 words>", "src": "https://doi.org/...", "srcLabel": "Author Year",

@@ -11,19 +11,20 @@ The one-line version: **keep the five statuses, loosen rule 1 to admit juxtaposi
 types, define the four cells sharply, make `contra` per model and per time point, and add six fields
 so the figure can show what the colours now hide.**
 
-**Status (2026-11-02).** Ten decisions are proposed as written; five are open for review; a sixteenth,
-added 2026-11-03, is open. `DECISIONS.md`
-records each decision with the cases behind it; `DRAFTER_BRIEF_v3.md` is the brief written to them.
+**Status (2026-11-04).** Ten decisions are proposed as written; the six that were open were decided on
+2026-11-04. `DECISIONS.md` records each decision with the cases behind it; `DRAFTER_BRIEF_v3.md` and
+`CHECKER_BRIEF_v3.md` are the briefs written to them, and `lint.py` enforces their fields on any draft
+that declares `"schema": 3`.
 
 | decision | status |
 |---|---|
 | 1, 3, 4, 5, 7, 8, 9, 11, 14, 15 | proposed as written |
-| 2 sources | tiers 1–3 proposed; tiers 4–5 (meta-analysis, press/SEC) open, leaning no |
-| 6 `contra` recoverable | proposed; open |
-| 10 post-hoc models | excluded outright; open |
-| 12 class boundaries | proposed as written; open |
-| 13 `neg` / `other` | `neg` by what the model data showed, cross-class evidence set aside; open |
-| 16 dose window | added 2026-11-03: score the toxic end of the dose window when the model stated a margin; open |
+| 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
+| 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
+| 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
+| 12 class boundaries | decided, revised: (target, action, modality group) from a reviewed class table; furthest phase, then programs, ≥ 3 |
+| 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
+| 16 dose window | decided: the dose cell scores the toxic ceiling when the model stated a margin |
 
 ## 1. A comparison may be stated by the source or made by the drafter
 
@@ -49,9 +50,12 @@ provenance mark, not a different answer.
    year, not the consolidated-document year;
 3. registry results record (ClinicalTrials.gov, EU-CTR) with posted outcome data (#9, #44);
 4. meta-analysis of patient RCTs, for the patient side only (#67);
-5. sponsor press release or SEC filing, for the patient side only, never for the model side, and
-   only when no tier 1–4 record exists (#92, #94, #114). Such a cell carries `trial_unreported: true`
-   so its colour is visibly provisional.
+5. sponsor press release or SEC filing, for the patient side only, never for the model side (#92,
+   #94, #114). Such a cell carries `trial_unreported: true` so its colour is visibly provisional.
+
+A tier 4–5 entry names its model side in `model_src` with `model_src_tier` 1–3. Where a higher-tier
+record of the same trial exists it sets the status; the lower tier may still supply why the trial
+failed.
 
 A quote whose model side is "data not shown" or whose clinical side is conference-only scores with
 `confidence: low` (#36, #38). An OCR-read quote from a scanned FDA review must attach the transcript
@@ -80,7 +84,7 @@ recorded), #84, #88.
 | cell | question the cell answers | not this cell |
 |---|---|---|
 | engagement | did the **PD readout** the model used move in humans (occupancy, biomarker, sweat chloride)? | genotype-stratified response (efficacy, #20); target binding without a readout; the drug working by another mechanism is noted, not scored (#28) |
-| dose | was the model's exposure / occupancy / regimen target **reached, and sufficient** in humans (#2, #93, #123)? Tied to efficacy so one failure is counted once: (1) target never reached → dose `contra`, efficacy `untested`; (2) reached and the drug worked → both `same`; (3) reached, failed, abandoned → efficacy `contra` and dose `contra` with `derived_from: efficacy`, hatched and excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. A regimen prediction (half-life → once daily) counts (#91). An FDA NOAEL-margin statement, a post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable is `untested` with `source_calls_it: scaling` (#50, #99, #118). Toxicity-blocked targets are `untested` (#22); decision 16 (open) would score a stated margin and a toxicity block as the ceiling of the window. Gene therapy: expression per vector dose, not specific activity (#107) | a derived dose `contra` is never a second failure |
+| dose | was the model's exposure / occupancy / regimen target **reached, and sufficient** in humans (#2, #93, #123)? Tied to efficacy so one failure is counted once: (1) target never reached → dose `contra`, efficacy `untested`; (2) reached and the drug worked → both `same`; (3) reached, failed, abandoned → efficacy `contra` and dose `contra` with `derived_from: efficacy`, hatched and excluded from the dose count; (4) reached, failed, a higher dose later worked → dose `contra` (target too low, magnitude recorded), efficacy `contra` → `same`. A regimen prediction (half-life → once daily) counts (#91). A post-hoc PK/PD justification, or a regulator's bridge it calls non-translatable, is `untested` with `source_calls_it: scaling` (#50, #99, #118). A stated NOAEL or MTD margin is the ceiling of the window and is scored under decision 16; a toxicity block with no stated margin is `untested` (#22). Gene therapy: expression per vector dose, not specific activity (#107) | a derived dose `contra` is never a second failure |
 | efficacy | did the **trial's primary endpoint** respond as predicted (#64)? When the sponsor pre-specified a secondary as the proof-of-concept gate that translates the model's readout (TPV for "involution"), that endpoint governs, with `endpoint_role: poc_gate` (#144). Missed primary + significant secondary is `untested` unless the source's own conclusion calls it a match (#32). A trial the authors disclaim as an efficacy test (#57) and an active-comparator ranking failure (#80) are `untested`. "Failed" = the predicted effect was absent or reversed, not that development stopped (#53) | surrogate-vs-outcome: see decision 9 |
 | safety | did the model's **stated prediction** hold, or was its **askable silence** contradicted (#13, #54, #89)? Silence is `contra` only if the harm was measurable in the model species at the time. A sponsor-dismissed animal signal that patients confirmed is `same` (#23). A regulator's retrospective reconciliation counts as stated (#79). A pre-signal finding in another frame is `untested` with a note (#87) | mechanism-attribution sentences that name no species or study (#111) |
 
@@ -114,13 +118,18 @@ same family: `same` + `magnitude: off_by_>5x`, `direction: conservative` (#142).
 **Alternative.** Score these `same` with `source_calls_it: over_predicted`; the
 difference is ~6 safety cells.
 
-## 6. `contra` is per model and per time point
+## 6. A failed model stays failed; the cell shows the best model
 
-**Rule.** `contra` overrides matched statuses **for the model that made the wrong prediction**. A
-later entry may move the cell back to `same` when (a) a different best model took over and its
-prediction held (entry carries `model_change: true`; #12, #52, #83), or (b) a primary source reports
-that the contradiction attenuated (#27, #66, #96). Without such a source the strip stays red. One
-drug's `contra` overrides another drug's `same` in the same class and model (#3).
+**Rule.** Each model keeps its own record, and `contra` is permanent in it. The cell shows the best
+model available at each date, so a later entry may move the cell from `contra` to a matched status in
+exactly two ways:
+(a) a different model took over and its prediction held: `model_change: true`, drawn as a handover,
+the newer model beating the older one (#12, #52, #83);
+(b) the model was right and the early patient signal was not: a tier 1–4 source reports the signal
+attenuated to background, and the entry carries `patient_signal_reversed: true` (dolutegravir NTD,
+#27, #66, #96). The red interval stays, because it is what was believed then.
+Without either the strip stays red. One drug's `contra` overrides another drug's `same` in the same
+class and model (#3). `matrix.py` writes the per-model record to `matrix_models.csv`.
 
 **Impact.** Haemophilia B, NSCLC/EGFR dose, GBM, AML, FL, CRC and the HF renal cell all currently
 show a recovery; under "sticky `contra`" they stay red from the first miss.
@@ -163,16 +172,17 @@ figure overlays a marker when `outcome_tested` is negative (#97, #105, #119, #10
 Scannell point and the one thing the five colours cannot show: SHPT/EVOLVE, HF/ASCEND-HF,
 PBC/COBALT all read green today.
 
-## 10. Post-hoc models are not used (open)
+## 10. Post-hoc models are tracked as retrodictions
 
-**Rule.** A model result that post-dates and is motivated by the patient result is not used at all: the
-entry stays in the JSON as `retrodiction: true` for traceability and is drawn and counted as nothing (#5,
-#11, #49, #106, #50). A new prospective prediction such a model later makes enters as a fresh entry from
-its own date (HF/SGLT2 pig model → EMPA-TROPISM). A non-significant trend in a terminated trial is not a
-patient result.
+**Rule.** A model result that post-dates and is motivated by the patient result carries
+`retrodiction: true` (#5, #11, #49, #106, #50). If it reproduces the human data it takes the sixth
+status, `retro` ("reproduces the known result"): drawn with its own mark, never green, and counted
+apart from prospective matches. A model that cannot reproduce the human data is `contra`. Its first
+prospective prediction afterwards is a fresh entry scored the usual way (HF/SGLT2 pig model →
+EMPA-TROPISM). A non-significant trend in a terminated trial is not a patient result.
 
-**Alternative (original recommendation).** Keep the entry: it can earn `contra` if it fails, otherwise
-`untested` with `retrodiction: true`.
+**Why.** A model that fully reproduces the human data is the model the next drug of the class should
+use, so the atlas tracks it; counting it green would let hindsight pass for prediction.
 
 ## 11. Magnitude and partial agreement
 
@@ -186,11 +196,15 @@ the bins are too coarse to carry the surrogate-outcome story, hence decision 9.
 
 ## 12. Class and context boundaries
 
-**Rule.** Class = the DB (target, action) label; dual-mechanism drugs are out unless the DB puts them
-in (#33, #78). A DB class with no patient comparison stays all-`untested` with a note; the drafter
-may not widen it to a sibling target (#124, glaucoma: the DB says ADORA2A, every patient datum is
-the A1 agonist trabodenoson). Modality (CAR-T / ADC / naked antibody) splits the safety and dose cells but shares
-efficacy (#55, #62). A sibling-class surrogate dosed in the model (anti-PD-L1 for an anti-PD-1 class)
+**Rule.** Class = (target, action, modality group), read from the reviewed per-drug class table in
+`lists/class_audit/` (verified target, action, selectivity, modality, novelty at entry, with a
+source per row). A member not selective for the class target leaves it or forms its own class;
+dual-mechanism drugs are out unless the table puts them in (#33, #78). The indication's class is the
+one whose members reached the furthest phase, then the most programs, with at least 3 programs. A
+class with no patient comparison stays all-`untested` with a note; the drafter may not widen it to a
+sibling target (#124, glaucoma: every patient datum is the A1 agonist trabodenoson, not the A2A
+class). Because the unit carries the modality, each tile is one modality (CAR-T, ADC and naked
+antibody are separate tiles) and the efficacy evidence they share is cited in each (#55, #62). A sibling-class surrogate dosed in the model (anti-PD-L1 for an anti-PD-1 class)
 scores `other` (#69). Combination-arm events anchor a `contra` only if the source attributes them to
 the class drug (#70). Cross-indication or sibling-population comparisons (T2D trials for an obesity context, HFrEF for
 DKD) transfer only for safety, symmetrically, with `imported_from` set and a different dose noted
@@ -203,9 +217,9 @@ reported with their program count so the reader can see how little of the indica
 
 ## 13. `neg` and `other`
 
-**Rule (open).** `neg` is earned by what the model data showed, not by what the
-sponsor said about them: the model's own effect size fell below a stated threshold for the class, with
-the number recorded (BMS-641988's xenografts judged against the class's usual bar, not against the
+**Rule.** `neg` is earned by what the model data showed, not by what the
+sponsor said about them: the model's own effect size (`effect_size`) fell below a stated threshold for
+the class (`class_threshold`) (BMS-641988's xenografts judged against the class's usual bar, not against the
 sponsor's press release); no prospective flag required (#49). The model is the system, not the cell line
 (#48); the failure must be in this context's population (#21). Cross-class evidence is set aside rather
 than used to colour this class's cell, so `other` is rare: another molecule on the same platform for
@@ -261,26 +275,33 @@ patients. Survivorship is the floor's already: every approved drug reached a suf
 stated margin is a prediction; a post-hoc PK/PD justification or a bridge the regulator calls
 non-translatable stays `scaling`).
 
-**Open.** Whether a tox-species margin is a model prediction the atlas should score, or regulatory
-arithmetic it should ignore.
+**Decided 2026-11-04.** The atlas scores it: the question is whether any model gives the toxic
+ceiling. A ceiling entry carries `margin_stated: true`.
 
 ## Schema v3 additions
 
 | field | where | values |
 |---|---|---|
 | `source_tier` | entry | 1–5 per decision 2 |
-| `trial_unreported` | entry | bool |
+| `model_src`, `model_src_tier` | entry | the model-side source of a paired comparison and its tier (1–3); required when `comparison_stated` is false or `source_tier` ≥ 4 |
+| `trial_unreported` | entry | bool; true on every tier 5 entry |
+| `patient_signal_reversed` | entry | bool (decision 6b) |
+| `effect_size`, `class_threshold` | `neg` entry | the model's number and the class bar it fell below (decision 13) |
+| `margin_stated` | dose entry | bool; true on a ceiling entry (decision 16) |
+| `modality_group` | context | small_molecule / antibody / adc / cell_therapy / gene_therapy / oligo / peptide / other (decision 12) |
+| `class_share` | context | the class's programs over the indication's (decision 12) |
 | `model_kind` | entry | animal / human_challenge / ex_vivo / in_silico / human_genetic / cross_indication |
+| `model_id` | entry | stable slug per model system, so the per-model record of decision 6 groups correctly |
 | `model_change` | entry | bool (new best model, same or different status) |
 | `outcome_tested` | efficacy cell | null / positive / negative / negative_confounded |
-| `retrodiction` | entry | bool |
+| `retrodiction` | entry | bool; `status: retro` when it matched (decision 10) |
 | `imported_from` | entry | MONDO id of the indication the comparison was made in |
 | `patient_trials` | entry | list of {nct, registry_date, doi, quote} that change no status |
 | `regulatory_reliance` | context | bool |
 | `readout_tier` | engagement entry | direct / proximal / downstream (decision 15) |
 | `derived_from` | dose entry | `efficacy` when the dose `contra` is the efficacy failure seen from the dose cell (decision 4) |
 | `endpoint_role` | efficacy entry | primary / poc_gate (decision 4) |
-| `blocked_by` | dose entry | `toxicity` when toxicity at or below the effective exposure closed the window (decision 16, open) |
+| `blocked_by` | dose entry | `toxicity` when toxicity at or below the effective exposure closed the window (decision 16) |
 | `confidence` | entry | enum high / medium / low; free text moves to `confidence_note` (drafters stuffed ~60 notes into it) |
 
 `magnitude` gains `null` and `opposite`; `source_calls_it` gains `partial`, `unresolved`,
@@ -295,15 +316,16 @@ arithmetic it should ignore.
 4. Empty-vs-`untested` from decision 8.
 5. The schema v3 fields above, with `confidence` as an enum.
 6. A "do not" list: no `contra` from juxtaposition alone when the source attributes the failure to
-   untested conditions; no post-hoc model at all (decision 10, open); no press-release
+   untested conditions; no green for a post-hoc model (it is `retro`, decision 10); no press-release
    model-side evidence.
 7. The dose tie from decision 4: the four cases as a table, `derived_from` on case 3.
 8. `readout_tier` on every engagement entry (decision 15), assigned by the drafter from the readout it
    quotes.
 9. Healthy-volunteer dose and engagement entries record `subjects`; a patient PK/occupancy source is a
    separate dated entry (decision 3).
-10. The dose ceiling from decision 16 (open): a stated tolerability margin scored both ways,
+10. The dose ceiling from decision 16: a stated tolerability margin scored both ways,
     `blocked_by: toxicity` on a toxicity block.
+11. `"schema": 3` at the top of every draft, so `lint.py` holds it to the v3 fields.
 
 ## Production note: FDA review PDFs
 

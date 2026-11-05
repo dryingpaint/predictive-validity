@@ -2,8 +2,8 @@
 
 Companion to `RULES_V3_PROPOSAL.md`. One block per decision: the question, the cases that raised it, the
 proposed rule, the alternative, and the decision taken on 2026-11-02; decision 16 was added in review on
-2026-11-03. Numbers are from the finished run (71 contexts, 284 cells, 166 scored). Decisions marked open
-are still under review.
+2026-11-03. Numbers are from the finished run (71 contexts, 284 cells, 166 scored). The six open decisions
+(2, 6, 10, 12, 13, 16) were taken on 2026-11-04.
 
 ---
 
@@ -46,7 +46,7 @@ side scores at low confidence.
 
 **Alternative.** Stop at tier 3 and accept that unpublished failures stay invisible.
 
-**Decision:** Tiers 1–3 admitted. Tiers 4–5 open, leaning no; a press release is sometimes the only source that says why a trial failed.
+**Decision (2026-11-04):** All five tiers admitted: the atlas uses every source that gives an accurate picture of what happened in the trials. Tiers 4–5 are patient-side only, and the model side of such an entry is a tier 1–3 source named in `model_src`. Where a higher-tier record of the same trial exists it sets the status and the lower tier may add the reason for the failure. A cell resting on a press release or SEC filing carries `trial_unreported: true`.
 
 ---
 
@@ -131,7 +131,7 @@ drug's `same` for the same model.
 
 **Alternative.** Sticky: simpler strips, redder atlas, and the model-replacement story is lost.
 
-**Decision:** `contra` is per model and per time point, recoverable on a model change or an attenuation source. Open for review.
+**Decision (2026-11-04):** Two records. Each model keeps its own record, and a model that failed stays failed: a red-to-green change on a model change (`model_change: true`) is the newer model beating the older one, drawn as a handover; the cell shows the best model available at each date. An attenuation is the reverse case: the model was right and the early patient signal was not, so the later entry carries `patient_signal_reversed: true` from a tier 1–4 source and the model is credited as matched from that date; the red interval stays, because it is what was believed then. `matrix.py` writes the per-model record (`matrix_models.csv`).
 
 ---
 
@@ -207,7 +207,7 @@ recapitulated the 2004 sensitising-mutation result in the same paper. Drafters s
 **Alternative.** Allow `same` from the first prospective prediction the post-hoc model then makes
 (HF/SGLT2 pig model → EMPA-TROPISM).
 
-**Decision:** A model built after the clinic knew the answer is not used. It stays in the JSON as `retrodiction: true` for traceability and is drawn and counted as nothing. A new prospective prediction such a model later makes enters as a fresh entry from its own date. Open for review.
+**Decision (2026-11-04):** A model that reproduces the human data after the fact is tracked: it is the model the next drug of the class should use. A retrodiction that matched takes its own status, `retro` ("reproduces the known result"), drawn with its own mark and counted apart from prospective matches; one that failed to reproduce the human data is `contra`. Its first prospective prediction afterwards enters as a fresh entry scored the usual way (HF/SGLT2 pig model → EMPA-TROPISM).
 
 ---
 
@@ -249,7 +249,7 @@ Repurposed classes get a second, flagged context rather than vanishing under the
 
 **Alternative.** Let drafters define the class; consistency with the DB join is lost.
 
-**Decision:** As recommended. Open for review.
+**Decision (2026-11-04), revised:** The class unit is (target, action, modality group), read from a reviewed per-drug class table rather than computed on the fly (`lists/class_audit/`): each member has a verified target, action, selectivity, modality and novelty at entry. A drug not selective for the class target (esketamine in a GluN2B class, ritlecitinib in a BTK class) leaves the class or forms its own. Because the unit carries the modality, a tile is one modality and the safety/dose split follows. The indication's class is the one whose members reached the furthest phase, then the most programs, with at least 3 programs. The rest of the recommendation stands: no widening to a sibling target, cross-indication comparisons transfer for safety only with `imported_from`, repurposed classes get a flagged second context, and each tile prints its share of the indication's programs. Contexts are regenerated from the audited table before any re-draft.
 
 ---
 
@@ -268,7 +268,7 @@ pharmacology cells and another molecule on the same platform for safety.
 
 **Alternative.** Retrospective `neg`; the status then rewards hindsight.
 
-**Decision:** `neg` is earned by what the model data showed, not by what the sponsor said about them: the model's effect size fell below a stated threshold for the class, with the number recorded; no prospective flag required. Cross-class evidence is set aside rather than used to colour this class's cell. Open for review.
+**Decision (2026-11-04):** `neg` is earned by what the model data showed, not by what the sponsor said about them: the model's effect size (`effect_size`) fell below a stated threshold for the class (`class_threshold`); no prospective flag required. Cross-class evidence is set aside rather than used to colour this class's cell.
 
 ---
 
@@ -339,14 +339,16 @@ exposure.
 **Alternative.** Keep the ceiling out of the dose cell: a tox-species margin is regulatory scaling, not
 a model prediction, and the harm itself is already scored in safety.
 
-**Decision:** Proposed 2026-11-03, open for review. On re-score it changes three cells: CD-NP's dose `contra` becomes rule-based, TAK-063's window failure moves from safety to dose, secukinumab's dose `same` becomes consistent with the rule.
+**Decision (2026-11-04):** As recommended: the atlas assesses whether any model gives the toxic ceiling. A ceiling entry records `margin_stated: true`. On re-score it changes three cells: CD-NP's dose `contra` becomes rule-based, TAK-063's window failure moves from safety to dose, secukinumab's dose `same` becomes consistent with the rule.
 
 ---
 
-## Schema v3, if all of the above are accepted
+## Schema v3
 
-`source_tier`, `trial_unreported`, `model_kind`, `model_change`, `outcome_tested`, `retrodiction`,
-`imported_from`, `patient_trials`, `regulatory_reliance`, `readout_tier`, `blocked_by`; `magnitude` gains null/opposite;
+`source_tier`, `model_src`, `model_src_tier`, `trial_unreported`, `model_kind`, `model_change`,
+`patient_signal_reversed`, `outcome_tested`, `retrodiction`, `effect_size`, `class_threshold`, `imported_from`,
+`patient_trials`, `regulatory_reliance`, `readout_tier`, `blocked_by`, `margin_stated`; a sixth status `retro`;
+a context-level `modality_group` and `class_share`; `magnitude` gains null/opposite;
 `source_calls_it` gains partial/unresolved/over_predicted; `confidence` becomes an enum with a separate
 `confidence_note`. Every one of these can be filled from the existing drafts without new research except
 `outcome_tested`, which needs one lookup per efficacy cell.

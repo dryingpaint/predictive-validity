@@ -4,7 +4,9 @@
 
 Writes drafts/matrix_entries.csv (one row per strip entry, draft and checked status side by
 side) and drafts/matrix_cells.csv (one row per context x question, latest status), then prints
-the summary tables used for the #76 write-up. Read-only over drafts/; never touches contexts/.
+the summary tables used for the #76 write-up. Also writes drafts/matrix_models.csv, the per-model
+record of decision 6: one row per context x question x model, where a model that failed stays failed
+and `superseded_by` names the model that took the cell over. Read-only over drafts/; never touches contexts/.
 """
 import csv
 import glob
@@ -14,10 +16,11 @@ from collections import Counter, defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 QUESTIONS = ["engagement", "dose", "efficacy", "safety"]
-STATUSES = ["same", "other", "neg", "contra", "untested"]
+STATUSES = ["same", "other", "neg", "contra", "retro", "untested"]
 FACTS = ["subjects", "comparison_stated", "product_in_model", "model_filed", "magnitude",
          "source_calls_it", "confidence", "registry_date", "epub_year", "print_year",
-         "model_first_use_year", "population"]
+         "model_first_use_year", "population", "source_tier", "model_change", "patient_signal_reversed",
+         "retrodiction"]
 
 
 def load():
@@ -52,6 +55,28 @@ def verdict_map(check):
     return m
 
 
+def model_record(entries: list[dict]) -> list[dict]:
+    """One row per context x question x model over the checked statuses, in strip order."""
+    out = []
+    by_cell = defaultdict(list)
+    for r in entries:
+        if not r["dropped"]:
+            by_cell[(r["context"], r["question"])].append(r)
+    for (cid, q), strip in by_cell.items():
+        order = list(dict.fromkeys(r["model"] for r in strip))
+        for k, m in enumerate(order):
+            rs = [r for r in strip if r["model"] == m]
+            sts = [r["status_checked"] for r in rs]
+            out.append({
+                "context": cid, "question": q, "model": m,
+                "first_year": rs[0]["year_checked"], "last_year": rs[-1]["year_checked"],
+                "statuses": ">".join(sts), "ever_contra": "contra" in sts,
+                "record": "contra" if "contra" in sts and not any(r.get("patient_signal_reversed") for r in rs) else sts[-1],
+                "superseded_by": order[k + 1] if k + 1 < len(order) else None,
+            })
+    return out
+
+
 def main():
     rows = load()
     entries, cells = [], []
@@ -79,7 +104,7 @@ def main():
                     "status_checked": "dropped" if dropped else checked_status,
                     "year_checked": checked_year, "dropped": dropped,
                     "quote_found": v.get("quote_found"), "source_resolves": v.get("source_resolves"),
-                    "model": e.get("model"), "srcLabel": e.get("srcLabel"), "src": e.get("src"),
+                    "model": e.get("model_id") or e.get("model"), "srcLabel": e.get("srcLabel"), "src": e.get("src"),
                 }
                 for f in FACTS:
                     rec[f] = e.get(f)
@@ -105,7 +130,8 @@ def main():
                 "latest_magnitude": strip[-1].get("magnitude") if strip else None,
                 "overall": (c or {}).get("overall"),
             })
-    for name, data in (("matrix_entries.csv", entries), ("matrix_cells.csv", cells)):
+    models = model_record(entries)
+    for name, data in (("matrix_entries.csv", entries), ("matrix_cells.csv", cells), ("matrix_models.csv", models)):
         with open(os.path.join(HERE, name), "w", newline="") as f:
             w = csv.DictWriter(f, fieldnames=list(data[0].keys()))
             w.writeheader(); w.writerows(data)
