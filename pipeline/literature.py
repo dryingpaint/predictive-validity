@@ -83,6 +83,7 @@ CHECK_SEED = 20261104
 RELATED = 0.5  # Lin similarity within which a modelled disease counts for the entry's disease
 GATES = {"recall": 0.80, "kappa": 0.60, "phase2_coverage": 0.08}
 METHOD = "literature_evidence@v3"
+REFUSAL_MODEL = "claude-opus-5-5"  # screens again the records the screen model refuses
 PUG = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/synonyms/JSON"
 
 # Synonyms that are database or registry identifiers, not names a paper would use for the drug.
@@ -431,8 +432,17 @@ BIOLOGIC = {"monoclonal_antibody", "protein", "peptide", "other_cell_therapy", "
             "multispecific_antibody", "car_t", "microbiome_or_live_biotherapeutic", "other", "mrna"}  # modalities vetted by v2
 
 
+PRODUCT_NAMES_ONLY = {1233: "alcohol (dehydrated alcohol injection)", 1164: "nitric oxide (inhaled)"}
+# Drugs whose INN is an endogenous or ubiquitous molecule: their molecule names denote the substance in general, so
+# they are searched by product names and development codes only (the vet's documented exception).
+PRODUCT_CLAUSE = """
+
+This drug's name is also the name of an endogenous or ubiquitous molecule, so papers using the molecule's name are almost all about the molecule in general, not this drug product. Keep ONLY its brand or product names and its development or registry codes; drop every chemical or common name of the molecule itself."""
+
+
 def vet_task(model: str = "claude-sonnet-5", suffix: str = "", version: str = "v2") -> llm.Task:
-    return llm.Task(name="literature_name_vet" + suffix, prompt_version=version, schema_version="v1", system=VET_SYSTEM,
+    return llm.Task(name="literature_name_vet" + suffix, prompt_version=version, schema_version="v1",
+                    system=VET_SYSTEM + (PRODUCT_CLAUSE if suffix == "_product" else ""),
                     schema=VET_SCHEMA, render=render_vet, validate=validate_vet, subject_type="moiety", model=model,
                     effort="low", max_tokens=2000)
 
@@ -457,11 +467,14 @@ def vetted_names(moieties: list[int], log=print) -> dict[int, list[str]]:
         candidates.update(names_of(moieties[start:start + NAME_CHUNK]))
     items = vet_payloads(moieties, candidates)
     decided: dict = {}
-    for version, part in (("v2", {k: v for k, v in items.items() if v["modality"] in BIOLOGIC}),
-                          ("v1", {k: v for k, v in items.items() if v["modality"] not in BIOLOGIC})):
+    product = {k: v for k, v in items.items() if int(k) in PRODUCT_NAMES_ONLY}
+    for version, suffix, part in (
+            ("v2", "", {k: v for k, v in items.items() if v["modality"] in BIOLOGIC and k not in product}),
+            ("v1", "", {k: v for k, v in items.items() if v["modality"] not in BIOLOGIC and k not in product}),
+            ("v1", "_product", product)):
         if not part:
             continue
-        t = vet_task(version=version)  # v2 (the biologic-name clause) applies to biologics; small molecules keep v1
+        t = vet_task(suffix=suffix, version=version)  # v2 (the biologic-name clause) applies to biologics
         got = llm.current_decisions(t, part)
         if len(got) < len(part):
             llm.run(t, {k: v for k, v in part.items() if k not in got})
@@ -897,14 +910,11 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
     return {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, have[r]) for m, r in keep}
 
 
-def screen_drugs(cut: dict[int, int], log=print) -> int:
-    """Prefilter and screen the drugs' records and store the screens; returns the records screened. Decisions are
-    reused on the same input, so a rerun after an interruption only pays for what was not decided."""
-    items = screen_items(cut, log)
-    run_id = llm.run(task(), items)
-    decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+def store_screens(decided: list[tuple[str, int, dict]]) -> None:
+    """Store screen decisions (subject key entity|record); an entity merged while the run was out stores under its
+    survivor, and one that no longer exists is dropped."""
     to = survivors(sorted({int(k.split("|")[0]) for k, _, _ in decided}))
-    with llm.connect() as conn, conn.cursor() as cur:  # an entity merged while the run was out stores under its survivor
+    with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT moiety_id FROM preclin.moiety WHERE moiety_id = ANY(%s)", (sorted(set(to.values())),))
         live = {r[0] for r in cur.fetchall()}
     rows = list({(to[int(k.split("|")[0])], k.split("|", 1)[1]): (
@@ -921,8 +931,48 @@ def screen_drugs(cut: dict[int, int], log=print) -> int:
                                  detail = EXCLUDED.detail, quote = EXCLUDED.quote,
                                  llm_decision_id = EXCLUDED.llm_decision_id""", rows, page_size=5000)
         conn.commit()
+
+
+def refused_keys(run_id) -> list[str]:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT subject_key FROM pv_evidence.llm_decision WHERE decision_run_id = %s
+                       AND validation_detail::text LIKE '%%refusal%%'""", (str(run_id),))
+        return [r[0] for r in cur.fetchall()]
+
+
+def screen_drugs(cut: dict[int, int], log=print) -> int:
+    """Prefilter and screen the drugs' records and store the screens; returns the records screened. Decisions are
+    reused on the same input, so a rerun after an interruption only pays for what was not decided. Records the
+    screen model refuses are screened again by REFUSAL_MODEL under its own task name."""
+    items = screen_items(cut, log)
+    run_id = llm.run(task(), items)
+    decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+    refused = [k for k in refused_keys(run_id) if k in items]
+    if refused:
+        again = llm.run(task(REFUSAL_MODEL, "_refusal"), {k: items[k] for k in refused})
+        retried = [x for x in llm.decisions(again) if x[2] and "error" not in x[2]]
+        log(f"refused by the screen={len(refused)} decided on rescreen={len(retried)}")
+        decided += retried
+    store_screens(decided)
     log(f"records screened={len(items)} decided={len(decided)} run={run_id}")
     return len(items)
+
+
+def rescreen_refusals(_args) -> None:
+    """Screen again, with REFUSAL_MODEL, every record whose only screen decision is a refusal (pilot and cohort)."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_payload
+                       FROM pv_evidence.llm_decision d
+                       WHERE d.task = %s AND d.validation_detail::text LIKE '%%refusal%%'
+                         AND NOT EXISTS (SELECT 1 FROM pv_evidence.llm_decision v WHERE v.subject_key = d.subject_key
+                                         AND v.task IN (%s, %s) AND v.validation_status = 'validated')
+                       ORDER BY d.subject_key, d.created_at DESC""",
+                    (task().name, task().name, task(REFUSAL_MODEL, "_refusal").name))
+        items = dict(cur.fetchall())
+    run_id = llm.run(task(REFUSAL_MODEL, "_refusal"), items)
+    decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+    store_screens(decided)
+    print(f"refused records={len(items)} decided={len(decided)} still refused={len(refused_keys(run_id))} run={run_id}")
 
 
 def screen(args) -> None:
@@ -1378,6 +1428,7 @@ def main() -> None:
     vt.add_argument("--entries", choices=("pilot", "cohort", "all"), default="all")
     vt.set_defaults(fn=vet)
     sub.add_parser("vet-check").set_defaults(fn=vet_check)
+    sub.add_parser("rescreen-refusals").set_defaults(fn=rescreen_refusals)
     sub.add_parser("check").set_defaults(fn=check)
     sub.add_parser("prefilter-check").set_defaults(fn=prefilter_check)
     rc = sub.add_parser("run-cohort")
