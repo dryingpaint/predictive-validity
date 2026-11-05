@@ -53,7 +53,6 @@ import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import average_precision_score, roc_auc_score
 from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -323,6 +322,19 @@ def resample_targets(groups: np.ndarray, y: np.ndarray, rng: np.random.Generator
             yield m
 
 
+def auc_ap(y: np.ndarray, p: np.ndarray) -> tuple[float, float]:
+    """ROC AUC and average precision of scores p for binary outcomes y, as sklearn's roc_auc_score and
+    average_precision_score compute them (ties share a threshold), in one sort; the bootstraps call it
+    tens of thousands of times."""
+    order = np.argsort(-p, kind="mergesort")
+    y, p = y[order], p[order]
+    last = np.r_[np.flatnonzero(np.diff(p)), len(p) - 1]  # the last row of each distinct score
+    tps = np.cumsum(y)[last]
+    fps = last + 1 - tps
+    tpr, fpr = np.r_[0, tps] / tps[-1], np.r_[0, fps] / fps[-1]
+    return float(np.trapezoid(tpr, fpr)), float(np.sum(np.diff(tpr) * tps / (tps + fps)))
+
+
 def temporal_split_year(window: tuple[date, date]) -> int:
     return (window[0].year + window[1].year) // 2
 
@@ -376,9 +388,8 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[da
     metrics = []
     for (split, name), (idx, p) in preds.items():
         y = d.y.to_numpy()[idx]
-        auc, ap = roc_auc_score(y, p), average_precision_score(y, p)
-        draws = np.array([(roc_auc_score(y[m], p[m]), average_precision_score(y[m], p[m]))
-                          for m in resample_targets(groups[idx], y, rng)])
+        auc, ap = auc_ap(y, p)
+        draws = np.array([auc_ap(y[m], p[m]) for m in resample_targets(groups[idx], y, rng)])
         metrics.append({"split": split, "features": name, "n": len(idx), "n_positive": int(y.sum()),
                         "auc": auc, "auc_lo": np.percentile(draws[:, 0], 2.5), "auc_hi": np.percentile(draws[:, 0], 97.5),
                         "pr_auc": ap, "pr_lo": np.percentile(draws[:, 1], 2.5), "pr_hi": np.percentile(draws[:, 1], 97.5),
@@ -388,8 +399,8 @@ def prediction(progs: pd.DataFrame, trials: pd.DataFrame, snap, window: tuple[da
     ablation = []
     for f in [f for f in FEATURES if f in ablations]:
         reduced = preds[("grouped_cv", f"covariates+evidence-{f}")][1]
-        delta = roc_auc_score(y, full) - roc_auc_score(y, reduced)
-        diffs = [roc_auc_score(y[m], full[m]) - roc_auc_score(y[m], reduced[m])
+        delta = auc_ap(y, full)[0] - auc_ap(y, reduced)[0]
+        diffs = [auc_ap(y[m], full[m])[0] - auc_ap(y[m], reduced[m])[0]
                  for m in resample_targets(groups, y, rng)]
         ablation.append({"feature": f, "label": LABELS[f], "auc_drop": delta,
                          "drop_lo": float(np.percentile(diffs, 2.5)), "drop_hi": float(np.percentile(diffs, 97.5))})

@@ -35,12 +35,20 @@ def mondo_tables() -> tuple[dict, dict]:
 
 
 class Mondo:
+    _lin: dict = {}  # (a, b) -> Lin similarity; every Mondo shares mondo_tables, so one memo serves them all
+
     def __init__(self):
         self.ancestors, self.ic = mondo_tables()
 
     def lin(self, a: str, b: str) -> float:
         if a == b:
             return 1.0
+        key = (a, b) if a < b else (b, a)
+        if key not in Mondo._lin:
+            Mondo._lin[key] = self._lin_uncached(a, b)
+        return Mondo._lin[key]
+
+    def _lin_uncached(self, a: str, b: str) -> float:
         common = (self.ancestors[a] | {a}) & (self.ancestors[b] | {b})
         if not common:
             return 0.0

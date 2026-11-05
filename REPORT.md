@@ -152,15 +152,6 @@ Human genetic evidence goes with approval in every area group with enough progra
 A gene recurrently mutated in the cancer gives 1.98× in oncology. Genetically altered mouse models go with approval in neuroscience (1.77×), lean the same way in cardiometabolic disease (1.54×) and immunology (1.61×), and do not in oncology (1.00×). A change in the target's RNA level in diseased tissue is the one line whose effect differs between groups (p = 0.01), going the wrong way in immunology (0.37×); with several lines and groups tested, this is a lead, not a finding.
 
 
-### By endpoint
-
-![Endpoint classes](report/output/figures/s3_endpoints.png)
-
-Across 5,590 randomised industry efficacy trials, 47% missed their governing primary endpoint. Regulatory surrogates were missed least (22%); outside oncology, exploratory biomarkers (69%) and clinician-rated scales (55%) were missed most, and oncology's response and survival endpoints as often.
-
-Genetic support for the disease did not measurably change the chance of missing any class of endpoint. For regulatory surrogates the risk ratio is 0.58 (0.28–1.23) in trials with registry-posted results since FDAAA and 1.07 (0.71–1.60) across all readable trials, including those read from papers; clinician-rated scales (0.83), objective physiology (0.98), disease events (0.90) and oncology's response and progression endpoints all have intervals spanning 1. So these trials cannot tie the advantage genetically supported programs show in advancing to any one kind of endpoint.
-
-
 ### The drug's own pharmacology
 
 The drug's own laboratory pharmacology is measured for small molecules only: the bioactivity database holds no potency measurements for antibodies, and the affinities published for them are almost all 100 nM or better, so a threshold would not separate them. Of 6,091 US-developed small-molecule entries, 1,390 had a published potency of 100 nM or better at the primary target before entry. They reached approval 1.57 times as often (1.14–2.08; 1.96× at 10 nM or better), but did not advance from Phase 2 more often with disease area, modality, novelty and precedent held fixed (1.08×, 0.82–1.43), and outside oncology potency adds nothing once human genetics and drug-likeness are known (1.01×). At least 10-fold selectivity over the off-targets measured (1.27×), drug-like properties (0.99×) and, in neurology and psychiatry, properties that let a molecule cross into the brain (0.86×) show no association with approval.
@@ -168,19 +159,10 @@ The drug's own laboratory pharmacology is measured for small molecules only: the
 The fair reading is that a drug well short of 100 nM at its target rarely succeeds, not that more potency helps; and because promising drugs attract more papers, a measurement is partly a marker of a well-studied program. The category as a whole, among small molecules whose structure is known, shows nothing (0.95×): nearly all of them are drug-like, so the category is mostly drug-likeness.
 
 
-### Can the evidence pick individual programs?
-
-Programs that entered Phase 1 in 2008–2016 were followed for ten years (3,000 programs, 181 approved), and models were tested on targets they had not seen.
-
-![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
-
-Disease area, modality, novelty and entry year alone give a held-out AUC of 0.593; adding the evidence lines raises it to 0.633 (0.584–0.688), and a split by entry year agrees. Human genetics carries the gain (removing it costs 0.029). This is consistent with the relative success: genetic support more than doubles the chance of approval for the 10% of programs that have it, but says nothing about the rest.
-
-
 ### What this means
 
 * **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3.
-* **It is a filter, not a forecast.** Nearly three in four genetically supported Phase 2 programs still did not advance, most programs that advanced had no such evidence, and sharper versions of the evidence did not pick better programs.
+* **It is a filter, not a forecast.** Nearly three in four genetically supported Phase 2 programs still did not advance, most programs that advanced had no such evidence, and sharper versions of the evidence did not pick better programs. Added to disease area, modality, novelty and entry year, the evidence raises the held-out AUC for predicting approval only from 0.59 to 0.63 (appendix).
 * **No kind of endpoint shows it clearly.** Genetically supported trials missed regulatory surrogates less often in trials with posted results, but the interval spans no effect; on clinical scales, events and survival the difference is small or not demonstrable.
 * **Other preclinical evidence adds less.** Tumour genetics helps in oncology; genetically altered mouse models help mostly by riding along with genetics; RNA changes in diseased tissue, curated disease mechanisms and the drug's own potency, selectivity and drug-likeness add nothing reliable.
 * **Some questions cannot be answered from what sponsors ran.** Almost no program went against an established genetic mechanism, and registries rarely record safety as the reason a program stopped.
@@ -423,6 +405,15 @@ Sources that encode clinical outcomes or literature co-mention (ChEMBL clinical 
 **Prediction.** Programs entering Phase 1 in 2008–2016 were followed for ten years, the one analysis outside the report's 2008–2019 window, since approval often takes longer than the six years every 2008–2019 entrant has had, with the Open Targets evidence lines and novelty taken as of entry (loss-of-function constraint comes from the current gnomAD release). Logistic models were fitted on disease area, modality, novelty and entry year alone, and with the evidence lines added. Performance is measured on held-out primary-target sets (out-of-fold predictions averaged over 20 repetitions of 5-fold cross-validation grouped by primary-target set and stratified by outcome; a single split moves the AUC by several points) and on a temporal split (trained on 2008–2012 entries, tested on later ones). Following 2008–2019 entrants for six years instead (4,421 programs, only 103 approved within the horizon) gives a held-out AUC of 0.556 without the evidence lines and 0.629 with them: a larger but still modest gain, carried by human genetics. In the line-removal table, human genetics means GWAS and rare-variant evidence removed together; lines carried by fewer than 100 programs are not modelled; intervals are a paired bootstrap over target sets.
 
 
+### Can the evidence pick individual programs?
+
+Programs that entered Phase 1 in 2008–2016 were followed for ten years (3,000 programs, 181 approved), and models were tested on targets they had not seen.
+
+![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
+
+Disease area, modality, novelty and entry year alone give a held-out AUC of 0.593; adding the evidence lines raises it to 0.633 (0.584–0.688), and a split by entry year agrees. Human genetics carries the gain (removing it costs 0.029). This is consistent with the relative success: genetic support more than doubles the chance of approval for the 10% of programs that have it, but says nothing about the rest.
+
+
 ### Design of the Phase 2 analysis
 
 * **Cohort and outcome.** Programs on a human protein target that entered Phase 2 from 2008-01-01 to 2019-12-31 (4,550 programs on 1,210 primary-target sets). Each has at least four years of follow-up before the 24-month inactivity cutoff, so the outcome needs no inferred suspension: a program *advanced* if a Phase 3 trial of its own started, or the FDA approved it for the disease, within four years of entering Phase 2 (15.5% did). The same is done for Phase 1 entrants (a negative control: genetics should matter little for safety and dosing studies) and Phase 3 entrants (approval within four years).
@@ -473,6 +464,15 @@ Of the registered rules only the benchmark met the bar (held-out risk ratio 1.87
 **Direction of effect.** A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it, and harm or do nothing when loss of function causes it. Open Targets' direction fields cannot test this: they label each variant from its predicted consequence, so the few truncating ClinVar variants listed for PCSK9 in hypercholesterolaemia, MYH7 in hypertrophic cardiomyopathy or TTR in amyloidosis make these gain-of-function diseases read as loss of function; their many pathogenic missense variants carry no direction at all. We therefore had an LLM state, for every target and disease with germline evidence, without being told any drug, whether disease-causing variants lower or raise the gene's function, whether protective variants are known, and the year each was first shown for that disease. Where Gene2Phenotype records an absent gene product, the label was loss of function in 63 of 66 pairs and gain of function in 0. A spot check of an earlier version of the labels found somatic cancer mutations counted as germline and some years taken from another disease; the final prompt rules out both. Sponsors almost never develop against an established mechanism. Of the Phase 2 programs with genetic support, 270 acted in the direction the genetics favoured, 10 against it, and 165 had genetics without an established direction by entry. Concordant programs advanced at 28% and undirected ones at 27%: once there is genetic support, knowing its direction did not pick winners among the programs sponsors chose to run, and the discordant group is too small to show whether going against the genetics fails. Protective loss of function plus a drug that lowers function, the PCSK9 pattern, covered 48 Phase 2 programs on 22 targets, which advanced as often as others (0.87, 0.43–1.79). Mouse models were treated the same way: for each model, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.55 (1.21–2.00) against programs with no oriented model, a model pointing the other way 1.23, and nothing once genetic support is accounted for (1.21). Among Phase 3 programs a concordant model went with approval within four years (1.53, 1.03–2.29), one of many comparisons made after the plan.
 
 **Endpoints at the program level.** At the program level, classifying each Phase 2 program by the endpoint of its first randomised Phase 2 efficacy trial (started within a year of entry and before it advanced), genetic support gives 2.19 (1.45–3.28; 638 programs) where that endpoint was proximal and 1.20 (0.72–2.00; 1,233) where it was intermediate; distal-endpoint and oncology programs had too few genetically supported targets to estimate. The endpoint classifier read each trial's registered primary outcomes and the targets of its investigational drug, but not the drug's name. In an audit of 43 trials stratified by class, it picked the governing outcome correctly in 43 and the class in 43. Knowing the targets, it counts target engagement only for the drug's own target; not knowing the drug, it cannot apply rules that depend on its class, such as FEV1 counting as a regulatory surrogate only for bronchodilators. Trials still in follow-up that have posted results have no outcome label yet and are not counted (90, against 5,590 in the analysis).
+
+
+### By endpoint
+
+![Endpoint classes](report/output/figures/s3_endpoints.png)
+
+Across 5,590 randomised industry efficacy trials, 47% missed their governing primary endpoint. Regulatory surrogates were missed least (22%); outside oncology, exploratory biomarkers (69%) and clinician-rated scales (55%) were missed most, and oncology's response and survival endpoints as often.
+
+Genetic support for the disease did not measurably change the chance of missing any class of endpoint. For regulatory surrogates the risk ratio is 0.58 (0.28–1.23) in trials with registry-posted results since FDAAA and 1.07 (0.71–1.60) across all readable trials, including those read from papers; clinician-rated scales (0.83), objective physiology (0.98), disease events (0.90) and oncology's response and progression endpoints all have intervals spanning 1. So these trials cannot tie the advantage genetically supported programs show in advancing to any one kind of endpoint.
 
 
 ### Evidence categories

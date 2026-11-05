@@ -202,12 +202,17 @@ MOUSE_FAVOURS = {("reduced_function", "mimics_disease"): "increase", ("increased
                  ("reduced_function", "opposes_disease"): "decrease", ("increased_function", "mimics_disease"): "decrease"}
 
 
+@cache  # one neighbourhood per build, so every Evidence reuses the terms already swept
+def neighbourhood() -> Neighbourhood:
+    return Neighbourhood(Mondo())
+
+
 class Evidence:
     """Evidence features of a program (its entity's primary targets x its disease) as of a cutoff year."""
 
     def __init__(self, progs: pd.DataFrame):
-        self.mondo = Mondo()
-        self.nb = Neighbourhood(self.mondo)
+        self.nb = neighbourhood()
+        self.mondo = self.nb.mondo
         self.idx, self.germline_first = evidence_index()
         t = frame.query("""
             SELECT mt.moiety_id, t.symbol, t.ensembl_id AS ens, mt.action, t.target_class

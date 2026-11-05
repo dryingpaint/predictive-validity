@@ -70,6 +70,21 @@ def query(sql: str, params=None) -> pd.DataFrame:
             time.sleep(30 * (attempt + 1))
 
 
+def held_once(load):
+    """Run a loader once per argument set while the process holds a snapshot (a report build), so the
+    build's repeat calls share one result; outside a build every call reads afresh."""
+    results = {}
+
+    def get(*args):
+        if not _hold:
+            return load(*args)
+        if args not in results:
+            results[args] = load(*args)
+        return results[args].copy()
+    get.__doc__ = load.__doc__
+    return get
+
+
 def loaded_once(load):
     """Load a frame on first use and hand each caller its own copy."""
     frames = {}

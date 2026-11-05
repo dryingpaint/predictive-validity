@@ -36,23 +36,9 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 {{SECTION2_AREA}}
 
-### By endpoint
-
-![Endpoint classes](report/output/figures/s3_endpoints.png)
-
-{{SECTION3_ENDPOINTS}}
-
 ### The drug's own pharmacology
 
 {{SECTION2_DRUG}}
-
-### Can the evidence pick individual programs?
-
-Programs that entered Phase 1 in 2008–2016 were followed for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), and models were tested on targets they had not seen.
-
-![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
-
-{{SECTION2_PREDICTION}}
 
 ### What this means
 

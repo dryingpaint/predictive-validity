@@ -52,7 +52,21 @@ Three labels were also compared with the decisions their revised prompts replace
 
 {{APPENDIX_SECTION2}}
 
+### Can the evidence pick individual programs?
+
+Programs that entered Phase 1 in 2008–2016 were followed for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), and models were tested on targets they had not seen.
+
+![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
+
+{{SECTION2_PREDICTION}}
+
 {{APPENDIX_SECTION3}}
+
+### By endpoint
+
+![Endpoint classes](report/output/figures/s3_endpoints.png)
+
+{{SECTION3_ENDPOINTS}}
 
 {{APPENDIX_CATEGORIES}}
 
