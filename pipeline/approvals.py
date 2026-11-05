@@ -114,15 +114,27 @@ def render(p: dict) -> str:
             f"Program trials:\n{trials or '(none)'}\n\nDiseases to judge:\n{diseases}")
 
 
+def unrecorded_original_before(p: dict) -> str | None:
+    """The latest date an unrecorded original approval can carry: the first listed action of an application whose
+    original approval the payload does not give (a CBER biologic first approved before its actions were read)."""
+    first = {}
+    for x in (*p["events"], *p["supplements"]):
+        first[x["appl"]] = min(first.get(x["appl"], x["date"]), x["date"])
+    recorded = {a for a, _ in p["originals"]}
+    return max((d for a, d in first.items() if a not in recorded), default=None)
+
+
 def validate(p: dict, out: dict) -> None:
     want = sorted(d["mondo_id"] for d in p["diseases"])
     got = sorted(d["mondo_id"] for d in out["decisions"])
     if got != want:
         raise ValueError(f"decisions cover {got[:5]}..., expected {want[:5]}...")
     allowed = allowed_dates(p)
+    unrecorded = unrecorded_original_before(p)
     for d in out["decisions"]:
         fa = d["first_approval"]
-        if fa not in allowed:
+        known_original = unrecorded and re.fullmatch(r"\d{4}-\d{2}-\d{2}", fa) and fa < unrecorded
+        if fa not in allowed and not known_original:  # known_original: before an unrecorded original's first action
             raise ValueError(f"{d['mondo_id']}: first_approval {fa} not an event date or basis")
         if (d["approved"] == "no") != (fa == "none") and d["approved"] != "uncertain":
             raise ValueError(f"{d['mondo_id']}: first_approval {fa} with approved={d['approved']}")
