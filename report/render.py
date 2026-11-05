@@ -387,7 +387,8 @@ def s3_map_table() -> str:
             "Share of all that advanced", "Risk ratio, all (95% CI)", "Risk ratio, non-oncology",
             "Risk ratio, oncology"]
     df = pd.DataFrame(rows, columns=cols)
-    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
+    groups = {"b1": "**Earlier drugs on the same target**",
+              "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
     out = []
     for f, row in zip(S3_MAP_ROWS, df.values.tolist()):
         if f in groups:
