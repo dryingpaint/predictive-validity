@@ -101,9 +101,18 @@ def render(p: dict) -> str:
         for t in p["trials"])
     siblings = "\n".join(f"- {s['name']}: {s['kind']}; {', '.join(s['components']) or 'no components'}"
                          for s in p.get("siblings", []))
+    registry = "\n".join(f"- {r['code']}: {r['substance']}" for r in p.get("registered_codes", []))
     return (f"Intervention name: {p['name']}\nOther names recorded: {', '.join(p['synonyms']) or 'none'}\n"
             f"ChEMBL id recorded: {p['chembl_id'] or 'none'}\n\nTrials using it:\n{trials or '(none)'}"
-            + (f"\n\nOther strings carrying the same sponsor code, as resolved:\n{siblings}" if siblings else ""))
+            + (f"\n\nOther strings carrying the same sponsor code, as resolved:\n{siblings}" if siblings else "")
+            + (f"\n\nSponsor codes in these names that the FDA substance registry assigns to a substance:\n{registry}"
+               if registry else ""))
+
+
+def mentioned(p: dict) -> str:
+    """The input text whose words a kept code name must appear in: the rendering without the registry's
+    readings, which the input itself did not write."""
+    return render({k: v for k, v in p.items() if k != "registered_codes"})
 
 
 TASK = llm.Task(name="drug_moiety", prompt_version="v2", schema_version="v1", system=SYSTEM,
@@ -215,7 +224,28 @@ def decide(items: dict[str, dict], reuse_by: str = "input") -> dict[str, tuple[i
     decided = llm.decisions(llm.run(TASK, items, reuse_by=reuse_by))
     registered = registered_keys({moiety_key(c["biosimilar_of"] or c["name"]) for _, _, out in decided
                                   for c in out["components"]})
-    return {k: (did, out["kind"], components(out, render(items[k]), registered)) for k, did, out in decided}
+    return {k: (did, out["kind"], components(out, mentioned(items[k]), registered)) for k, did, out in decided}
+
+
+def stale(resolved: dict[str, tuple[str, list[dict]]], owners: dict[str, int]) -> set[str]:
+    """Strings whose decision gives a component a sponsor code that another entity alone now holds (owners: name
+    key -> the one entity it identifies, after pipeline.drugs codes kept each code only on its owner)."""
+    return {k for k, (_, comps) in resolved.items() for c in comps
+            if (a := owners.get(moiety_key(c["biosimilar_of"] or c["name"])))
+            and any(is_code(moiety_key(x)) and owners.get(moiety_key(x), a) != a for x in c["codes"])}
+
+
+def registered_codes(cur, texts: dict[str, str]) -> dict[str, list[dict]]:
+    """For each string key, the sponsor codes its text carries as words that the FDA substance registry assigns,
+    with the substance's display name."""
+    words = {k: {w for w in word_keys(t) if is_code(w) and len(w) >= CODE_MIN} for k, t in texts.items()}
+    cur.execute("""SELECT n.name_key, n.name, s.display_name FROM preclin.unii_name n JOIN preclin.unii_substance s
+                   USING (unii) WHERE n.name_type = 'cd' AND n.name_key = ANY(%s)""",
+                (sorted(set().union(*words.values())) if words else [],))
+    reg = defaultdict(set)
+    for key, name, display in cur.fetchall():
+        reg[key].add((name, display))
+    return {k: [{"code": n, "substance": d} for w in sorted(ws) for n, d in sorted(reg.get(w, ()))] for k, ws in words.items()}
 
 
 def canonicalize(_args) -> None:
@@ -226,7 +256,9 @@ def canonicalize(_args) -> None:
     (resolved_via <> 'ctgov_snapshot') or that appear in an industry-sponsored
     snapshot trial, each with up to three of its CT.gov snapshot trials. Names
     whose shared sponsor code the decisions resolve differently are decided
-    again with the other names' resolutions (disagreements)."""
+    again with the other names' resolutions (disagreements). Names whose decision gives an entity a code
+    another entity alone holds (stale, after pipeline.drugs codes) are decided again, shown the codes the
+    FDA substance registry assigns."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id, normalized_name, "
                     "resolved_via FROM preclin.drug")
@@ -265,6 +297,12 @@ def canonicalize(_args) -> None:
                                                         for s in sibs]}
                            for k, sibs in again.items()})
     with llm.connect() as conn, conn.cursor() as cur:
+        owners = entity_keys(cur)
+        redo = sorted(stale({k: (kind, comps) for k, (_, kind, comps) in decided.items()}, owners))
+        codes_in = registered_codes(cur, {k: " ".join([items[k]["name"], *items[k]["synonyms"]]) for k in redo})
+    if redo:
+        decided |= decide({k: {**items[k], "registered_codes": codes_in[k]} for k in redo})
+    with llm.connect() as conn, conn.cursor() as cur:
         moieties: dict[str, dict] = {}
         links = []
         kinds = []
@@ -292,7 +330,7 @@ def canonicalize(_args) -> None:
             FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""",
                        kinds + [(did, "drug", None) for did in exact], template="(%s, %s, %s::bigint)")
         conn.commit()
-    print(f"llm items={len(items)} decided={len(decided)} decided again={len(again)} "
+    print(f"llm items={len(items)} decided={len(decided)} decided again={len(again)} stale redecided={len(redo)} "
           f"exact-name links={len(exact)} moieties={len(moieties)} links={len(links)}")
 
 
