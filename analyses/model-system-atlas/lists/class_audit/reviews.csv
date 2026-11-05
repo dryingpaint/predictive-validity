@@ -1,0 +1,594 @@
+same_entity_as,moiety_id,drug,verified_target,verified_action,selectivity,modality_group,verified_first_fda_approval,novel_override,evidence,review_note
+,32485,OPA-6566,ADORA2A,agonist,selective,small molecule,,,https://www.otsuka.co.jp/en/company/newsreleases/2010/20100927_1.html,
+,7411,evodenoson,ADORA2A,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1950651/,
+,6978,abediterol,ADRB2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039530/,LABA
+,7322,azd-3199,ADRB2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545103/,LABA
+,7921,pf-00610355,ADRB2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1240967/,LABA
+,1776,vilanterol,ADRB2,agonist,selective,small molecule,2013-05-10,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1084173/,LABA
+,7811,ritobegron,ADRB3,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107773/,
+,2036,vibegron,ADRB3,agonist,selective,small molecule,2020-12-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107826/,
+,5324,fimasartan,AGTR1,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1951143/,approved in Korea only
+,35889,unecritinib,ALK/ROS1/MET,inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=unecritinib,"crizotinib derivative, ALK/ROS1/MET multikinase"
+,2352,faricimab,ANGPT2/VEGFA,binder_neutralizer,dual,antibody,2022-01-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297750/,bispecific
+,2199,olezarsen,APOC3,gene_expression_reduction,selective,oligo,2024-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650438/,
+,6351,volanesorsen,APOC3,gene_expression_reduction,selective,oligo,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650438/,EU approval only
+,8394,crenezumab,APP,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743004/,anti-amyloid-beta
+,2369,lecanemab,APP,binder_neutralizer,selective,antibody,2023-01-06,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833321/,anti-amyloid-beta protofibril
+,8203,ponezumab,APP,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743058/,anti-amyloid-beta
+,1961,apalutamide,AR,antagonist,selective,small molecule,2018-02-14,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3183409/,
+,27580,chromanol,AR,antagonist,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=APC-100+prostate,"APC-100: vitamin E chromanol, antioxidant with weak anti-androgen activity"
+,2006,darolutamide,AR,antagonist,selective,small molecule,2019-07-30,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297185/,
+,8975,hydroxyflutamide,AR,antagonist,selective,small molecule,1989-01-27,False,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=018554,"active metabolite of flutamide (Eulexin, NDA 018554, 1989): not novel; DB has no FDA link"
+,4449,pruxelutamide,AR,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594417/,proxalutamide
+,4556,rezvilutamide,AR,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650276/,
+,12064,trc-253,AR,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=JNJ-63576253,"JNJ-63576253, AR F877L antagonist"
+,6955,revaprazan,ATP4A,blocker,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=revaprazan,potassium-competitive acid blocker
+,5570,fexuprazan,ATP4A,blocker,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594445/,potassium-competitive acid blocker
+,5048,tegoprazan,ATP4A,blocker,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297583/,potassium-competitive acid blocker
+,5336,ibcasertib,VEGFR/AURK multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5095033/,chiauranib: VEGFR/Aurora B/CSF1R
+,1989,gilteritinib,FLT3,inhibitor,selective,small molecule,2018-11-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301622/,FLT3/AXL; FLT3 is the indication target
+,7956,ningetinib,MET/AXL/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3984441/,
+,14384,zanzalintinib,VEGFR/MET/TAM multikinase,inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=zanzalintinib+XL092,
+,6074,atabecestat,BACE1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3916243/,
+,7603,elenbecestat,BACE1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4204869/,
+,27239,ly-2886721,BACE1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=LY2886721,
+,13209,ly-3202626,BACE1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=LY3202626,
+,2122,ritlecitinib,JAK3/TEC,inhibitor,dual,small molecule,2023-06-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4085457/,covalent JAK3/TEC-family; not a BTK-selective or JAK1 inhibitor
+,1743,dabrafenib,BRAF,inhibitor,selective,small molecule,2013-05-29,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2028663/,
+,1959,encorafenib,BRAF,inhibitor,selective,small molecule,2018-06-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301612/,
+,1735,vemurafenib,BRAF,inhibitor,selective,small molecule,2011-08-17,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1229517/,
+,1749,regorafenib,VEGFR multikinase,inhibitor,pan,small molecule,2012-09-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1946170/,
+,4782,donafenib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1336/,deuterated sorafenib
+,7668,bms-908662,BRAF/RAF1,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545027/,XL281 pan-RAF
+,11561,TAS5315,BTK,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=TAS5315,
+,1952,acalabrutinib,BTK,inhibitor,selective,small molecule,2017-10-31,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707348/,
+,7909,bms-986142,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3900554/,
+,5470,elsubrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594348/,
+,7659,evobrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545193/,
+,8742,fenebrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4065122/,
+,8727,poseltinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4163691/,
+,27467,spebrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301625/,
+,5566,abivertinib,EGFR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297865/,mutant EGFR + BTK; EGFR is the NSCLC target
+,2394,crovalimab,C5,binder_neutralizer,selective,antibody,2024-06-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594316/,
+,2384,pozelimab,C5,binder_neutralizer,selective,antibody,2023-08-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298086/,
+,2306,ravulizumab,C5,binder_neutralizer,selective,antibody,2018-12-21,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989986/,
+,4721,tesidolumab,C5,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298012/,
+,39244,ADO09,AMYR/INSR co-formulation,agonist,dual,protein,,False,https://pubmed.ncbi.nlm.nih.gov/?term=ADO09+pramlintide,pramlintide (approved 2005) + insulin A21G (glargine metabolite M1): no new active moiety
+,27044,bi-44370,CGRP receptor,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3334624/,
+,8098,mk-3207,CGRP receptor,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1910936/,
+,2025,rimegepant,CGRP receptor,antagonist,selective,small molecule,2020-02-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2178422/,
+,1992,ubrogepant,CGRP receptor,antagonist,selective,small molecule,2019-12-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2364638/,
+,8080,asp-7991,CASR,positive_modulator,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545100/,
+,1890,etelcalcetide,CASR,positive_modulator,selective,peptide,2017-02-07,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545184/,
+,4834,evocalcet,CASR,positive_modulator,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297621/,
+,5847,upacicalcet,CASR,positive_modulator,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=upacicalcet,
+,8550,ilacirnon,CCR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2178573/,
+,11234,propagermanium,CCR2,antagonist,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=propagermanium+CCR2,"organogermanium; indirect CCR2 signalling inhibitor, not a receptor antagonist"
+,5172,bms-813160,CCR2/CCR5,antagonist,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594419/,
+,4167,axicabtagene ciloleucel,CD19,depleter,selective,cell therapy,2017-10-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989989/,CAR-T
+,4039,lisocabtagene maraleucel,CD19,depleter,selective,cell therapy,2021-02-05,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297236/,CAR-T
+,13091,relmacabtagene autoleucel,CD19,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=relmacabtagene,CAR-T
+,5280,bi-836858,CD33,depleter,selective,antibody,,,https://haematologica.org/article/view/haematol.2021.280500,Fc-engineered IgG1 (ADCC)
+,12416,vadastuximab talirine,CD33,depleter,selective,ADC,,,https://pubmed.ncbi.nlm.nih.gov/?term=vadastuximab+talirine,PBD ADC
+,5245,atirmociclib,CDK4,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=atirmociclib+PF-07220060,CDK4-selective (spares CDK6)
+,1911,abemaciclib,CDK4/6,inhibitor,selective,small molecule,2017-09-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301610/,
+,4494,dalpiciclib,CDK4/6,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=dalpiciclib,
+,6560,lerociclib,CDK4/6,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=lerociclib,
+,1855,palbociclib,CDK4/6,inhibitor,selective,small molecule,2015-02-03,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL189963/,
+,1918,ribociclib,CDK4/6,inhibitor,selective,small molecule,2017-03-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545110/,
+,2071,trilaciclib,CDK4/6,inhibitor,selective,small molecule,2021-02-12,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3894860/,used for myeloprotection
+,29454,drl-17822,CETP,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=DRL-17822,
+,7532,evacetrapib,CETP,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2017179/,
+,4363,rocacetrapib,CETP,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297601/,CKD-519
+,4705,VX-152,CFTR,corrector,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=VX-152+corrector,corrector
+,4998,bamocaftor,CFTR,corrector,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297849/,VX-659 corrector
+,2200,deutivacaftor,CFTR,potentiator,selective,small molecule,2024-12-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2010601/,deuterated ivacaftor; potentiator
+,10132,dirocaftor,CFTR,potentiator,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=PTI-808,PTI-808 potentiator
+,2012,elexacaftor,CFTR,corrector,selective,small molecule,2019-10-21,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298128/,
+,8706,galicaftor,CFTR,corrector,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4101487/,ABBV-2222 corrector
+,9932,glpg-1837,CFTR,potentiator,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GLPG1837,potentiator
+,9165,glpg-2737,CFTR,corrector,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GLPG2737,corrector
+,5621,icenticaftor,CFTR,potentiator,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650318/,QBW251 potentiator
+,5498,navocaftor,CFTR,potentiator,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4802150/,ABBV-3067 potentiator
+,5274,nesolicaftor,CFTR,amplifier,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=PTI-428+amplifier,PTI-428 amplifier
+,5181,olacaftor,CFTR,corrector,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297649/,VX-440 corrector
+,1958,tezacaftor,CFTR,corrector,selective,small molecule,2018-02-12,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3544914/,
+,2201,vanzacaftor,CFTR,corrector,selective,small molecule,2024-12-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5314934/,
+,8355,AZD8683,CHRM3,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545222/,LAMA
+,39973,CHF5992,CHRM3,antagonist,selective,small molecule,,,https://clinicaltrials.gov/study/NCT01584505,identity undisclosed; DB target not independently verified
+,27296,QAX028,CHRM3,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=QAX028,LAMA
+,6203,TRN-157,CHRM3,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=TRN-157,LAMA
+,30895,azd-9164,CHRM3,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1921904/,LAMA
+,33039,pf-03635659,CHRM3,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=PF-03635659,LAMA
+,1964,revefenacin,CHRM3,antagonist,selective,small molecule,2018-11-09,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833319/,
+,1775,umeclidinium,CHRM3,antagonist,selective,small molecule,2013-12-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1187833/,
+,35112,"mequitazine, (r)-",HRH1,antagonist,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=mequitazine,antihistamine enantiomer (racemate marketed ex-US); anticholinergic is secondary
+,1956,cannabidiol,multi-target (mechanism unresolved),other,off-class,small molecule,2018-06-25,,https://doi.org/10.1111/bph.13250,CB1 negative allosteric modulation is weak and not the accepted mechanism; Epidiolex approved 2018-06-25
+,14374,NMS-03592088,FLT3/KIT/CSF1R,inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=NMS-03592088,
+,7412,lenzilumab,CSF2,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707325/,
+,8567,namilumab,CSF2,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743044/,
+,6731,otilimab,CSF2,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2109433/,
+,6793,ODM-104,COMT,inhibitor,selective,small molecule,,,https://www.orionpharma.com/newsroom/all-news/releases/press-releases/2012/orion-receives-positive-phase-ii-study-results-of-a-new-levodopa-product-for-parkinsons-disease/,COMT inhibitor given with levodopa/carbidopa; DB dopamine-agonist target is wrong
+,27220,XP21279,dopamine precursor (levodopa prodrug),replacement,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=XP21279+levodopa+prodrug,levodopa prodrug; not a receptor agonist
+,11210,KDT-3594,DRD2/DRD3,agonist,selective,small molecule,,,https://clinicaltrials.gov/study/NCT03845387,"matsupexole, D2/D3 agonist"
+,1932,lumateperone,HTR2A/DRD2,antagonist,pan,small molecule,2019-12-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3306803/,multireceptor antipsychotic
+,33541,pipamperone,HTR2A/DRD4,antagonist,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=pipamperone,"marketed in Europe since 1960s, never FDA-approved"
+,8894,ask-120067,EGFR,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=limertinib+ASK120067,3rd-generation
+,4431,aumolertinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4761468/,
+,9288,befotertinib,EGFR,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=befotertinib,
+,29009,firmonertinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297258/,
+,6382,futuximab,EGFR,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2109388/,Sym004 component
+,8199,imgatuzumab,EGFR,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2109389/,
+,2208,lazertinib,EGFR,inhibitor,selective,small molecule,2024-08-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4558324/,
+,7568,mavelertinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989970/,
+,2113,mobocertinib,EGFR,inhibitor,selective,small molecule,2021-09-15,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650319/,exon 20
+6382,8464,modotuximab,EGFR,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989988/,Sym004 component
+,7399,naquotinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3663929/,
+,7699,nazartinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3787344/,
+,8092,olmutinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3786343/,
+,1877,osimertinib,EGFR,inhibitor,selective,small molecule,2015-11-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3353410/,
+,31901,pruvonertinib,EGFR,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=pruvonertinib,
+,10182,rezivertinib,EGFR,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=rezivertinib,
+,7820,rociletinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545308/,
+,2235,sunvozertinib,EGFR,inhibitor,selective,small molecule,2025-07-02,,https://pubmed.ncbi.nlm.nih.gov/?term=sunvozertinib+DZD9008,EGFR exon 20; DB ChEMBL mechanism (CD274 binding agent) is a mis-mapped ChEMBL id
+,5167,zipalertinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650281/,
+,8714,zorifertinib,EGFR,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3623290/,
+,6305,poziotinib,pan-HER,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545154/,EGFR/HER2/HER4
+,5992,pyrotinib,pan-HER,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3647420/,irreversible EGFR/HER2/HER4
+,5074,tarloxotinib,pan-HER,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297661/,hypoxia-activated pan-HER prodrug
+,7398,tesevatinib,EGFR/HER2/VEGFR/SRC multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3544983/,
+,8267,sapitinib,pan-HER,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2408045/,
+,1988,dacomitinib,pan-HER,inhibitor,pan,small molecule,2018-09-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2110732/,
+,8393,bms-690514,pan-HER/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545396/,
+,5988,duligotuzumab,EGFR/ERBB3,binder_neutralizer,dual,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137345/,dual-action Fab
+,5388,anbenitamab,ERBB2,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594568/,KN026 biparatopic HER2 antibody
+,4422,disitamab vedotin,ERBB2,depleter,selective,ADC,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5095273/,HER2 ADC (MMAE)
+,2327,margetuximab,ERBB2,binder_neutralizer,selective,antibody,2020-12-16,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2364649/,Fc-engineered HER2 antibody
+,2046,tucatinib,ERBB2,inhibitor,selective,small molecule,2020-04-17,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989868/,HER2-selective TKI
+,4220,equol,ESR2,agonist,selective,small molecule,,,https://clinicaltrials.gov/study/NCT00962390,S-equol (AUS-131); also binds DHT
+,3807,erteberel,ESR2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL278703/,LY500307
+,10384,BAX 888,F8,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=BAX+888+hemophilia+A,AAV8 FVIII
+,40351,SPK-8016,F8,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=SPK-8016,AAV FVIII
+,33220,dirloctocogene samoparvovec,F8,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=SPK-8011,SPK-8011 AAV FVIII
+,5257,efanesoctocog alfa,F8,replacement,selective,protein,2023-02-22,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5095275/,
+,5258,giroctocogene fitelparvovec,F8,replacement,selective,gene therapy,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298194/,
+,34999,peboctocogene camaparvovec,F8,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=DTX201,AAV FVIII
+,8124,simoctocog alfa,F8,replacement,selective,protein,2015-09-04,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108319/,Nuwiq
+,3808,valoctocogene roxaparvovec,F8,replacement,selective,gene therapy,2023-06-29,,https://www.fda.gov/vaccines-blood-biologics/roctavian,DB ChEMBL mechanism (F9 protein / PTGS inhibitor) comes from a mis-mapped ChEMBL id
+,5641,human coagulation factor viii/von willebrand factor complex,F8/VWF,replacement,selective,protein,2009-12-04,False,https://www.fda.gov/vaccines-blood-biologics/approved-blood-products/wilate,"plasma-derived FVIII/VWF (Wilate approved 2009; Humate-P 1986): not novel, DB has no FDA link"
+,40326,AAV5-hFIX,F9,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=AMT-060,AMT-060
+,28758,AskBio009,F9,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=BAX+335,BAX 335
+,40274,DTX101,F9,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=DTX101,
+,4937,albutrepenonacog alfa,F9,replacement,selective,protein,2016-03-04,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5315076/,
+,9718,dalcinonacog alfa,F9,replacement,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=dalcinonacog+alfa,subcutaneous FIX variant
+,3539,fidanacogene elaparvovec,F9,replacement,selective,gene therapy,2024-04-25,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3990034/,
+,12344,verbrinacogene setparvovec,F9,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=FLT180a,FLT180a
+,3548,dovitinib,FGFR/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL522892/,
+,1824,nintedanib,FGFR/VEGFR/PDGFR multikinase,inhibitor,pan,small molecule,2014-10-15,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL502835/,
+,7797,lucitanib,FGFR/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2220486/,
+,1851,lenvatinib,VEGFR multikinase,inhibitor,pan,small molecule,2015-02-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1289601/,
+,2862,brivanib,FGFR/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL377300/,parent of brivanib alaninate (separate moiety in DB)
+2862,3505,brivanib alaninate,FGFR/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL270995/,prodrug of brivanib; duplicate moiety
+,5232,efruxifermin,FGF21 analogue (FGFR1c/KLB),agonist,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=efruxifermin,
+,4388,pegbelfermin,FGF21 analogue (FGFR1c/KLB),agonist,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297578/,
+,7237,pegozafermin,FGF21 analogue (FGFR1c/KLB),agonist,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=pegozafermin,
+,5052,aldafermin,FGF19 analogue (FGFR4/KLB),agonist,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298055/,
+,1729,axitinib,KDR (VEGFR),inhibitor,selective,small molecule,2012-01-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1289926/,VEGFR1-3 selective
+,2172,fruquintinib,KDR (VEGFR),inhibitor,selective,small molecule,2023-11-08,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4303214/,VEGFR1-3 selective
+,2032,tivozanib,KDR (VEGFR),inhibitor,selective,small molecule,2021-03-10,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1289494/,VEGFR1-3 selective
+,27200,linifanib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL223360/,VEGFR/PDGFR
+,4750,vorolanib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545401/,VEGFR/PDGFR
+,5134,akn-028,FLT3,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4790100/,FLT3/KIT
+,2159,quizartinib,FLT3,inhibitor,selective,small molecule,2023-07-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL576982/,
+,7378,ruserontinib,FLT3/EGFR/ABL multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3678958/,SKLB1028
+,8187,crenolanib,FLT3,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105728/,type I FLT3 (also PDGFR)
+,13488,dapolsertib,PIM/FLT3,inhibitor,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=MEN1703+SEL24,MEN1703
+,5105,mivavotinib,SYK/FLT3,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3979920/,TAK-659
+,33478,tuspetinib,SYK/FLT3/JAK multikinase,inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=tuspetinib+HM43239,
+,34651,catequentinib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4303201/,anlotinib
+,7774,telatinib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2079588/,
+,12168,MK-8521,GCGR/GLP1R,agonist,dual,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=MK-8521,
+,7598,SAR425899,GCGR/GLP1R,agonist,dual,peptide,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545269/,
+,4436,cotadutide,GCGR/GLP1R,agonist,dual,peptide,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297630/,
+,4429,efinopegdutide,GCGR/GLP1R,agonist,dual,peptide,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297576/,
+,7980,pegapamodutide,GCGR/GLP1R,agonist,dual,peptide,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3990012/,OPK88003
+,27127,NNC0090-2746,GIPR/GLP1R,agonist,dual,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=NNC0090-2746,
+,2125,tirzepatide,GIPR/GLP1R,agonist,dual,peptide,2022-05-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297839/,
+,13838,CJC-1134-PC,GLP1R,agonist,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=CJC-1134-PC,exendin-4/albumin conjugate
+,9903,HS-20004,GLP1R,agonist,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=HS-20004,
+,29046,LY2428757,GLP1R,agonist,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=LY2428757,PEG-GLP-1
+,35025,TTP054,GLP1R,agonist,selective,small molecule,,,https://www.biospace.com/vtv-therapeutics-announces-positive-topline-results-from-phase-2-study-of-ttp273-in-type-2-diabetes,oral small molecule
+,11722,TTP273,GLP1R,agonist,selective,small molecule,,,https://www.biospace.com/vtv-therapeutics-announces-positive-topline-results-from-phase-2-study-of-ttp273-in-type-2-diabetes,oral small molecule
+,33801,YH14617,GLP1R,agonist,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=YH14617,
+,5691,danuglipron,GLP1R,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4518483/,
+,1688,dulaglutide,GLP1R,agonist,selective,protein,2014-09-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108027/,GLP-1-Fc fusion
+,4872,efpeglenatide,GLP1R,agonist,selective,peptide,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650470/,
+,33129,froniglutide,GLP1R,agonist,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=PB1023,PB1023 GLP-1/ELP fusion
+,8985,pegloxenatide,GLP1R,agonist,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=polyethylene+glycol+loxenatide,
+,1941,semaglutide,GLP1R,agonist,selective,peptide,2017-12-05,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108724/,
+,8374,linzagolix,GNRHR,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3668014/,
+,7818,opigolix,GNRHR,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989969/,
+,2082,relugolix,GNRHR,antagonist,selective,small molecule,2020-12-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1800159/,
+,1985,esketamine,NMDA channel (non-selective),blocker,pan,small molecule,2019-03-05,False,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL395091/,"S-enantiomer of racemic ketamine (FDA 1970); open-channel NMDA blocker, not GluN2B-selective"
+,32769,evt-101,GRIN2B,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545350/,GluN2B negative allosteric modulator
+,8688,rislenemdaz,GRIN2B,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2068839/,GluN2B negative allosteric modulator
+,2584,betibeglogene autotemcel,HBB,replacement,selective,gene therapy,2022-08-17,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594311/,ex vivo lentiviral HSC gene therapy
+,3008,lovotibeglogene autotemcel,HBB,replacement,selective,gene therapy,2023-12-08,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650269/,ex vivo lentiviral HSC gene therapy
+,30414,gsk-256073,HCAR2,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK256073,
+,28605,mk-1903,HCAR2,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=MK-1903,
+,8062,sch-900271,HCAR2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2036958/,
+,2099,daridorexant,HCRTR1/2,antagonist,selective,small molecule,2022-01-07,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297590/,dual orexin receptor antagonist
+,5369,fazamorexant,HCRTR1/2,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=fazamorexant,DORA
+,7704,filorexant,HCRTR1/2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107822/,DORA
+,2005,lemborexant,HCRTR1/2,antagonist,selective,small molecule,2019-12-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545367/,DORA
+,1789,suvorexant,HCRTR1/2,antagonist,selective,small molecule,2014-08-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1083659/,DORA
+,4598,vornorexant,HCRTR1/2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650522/,DORA
+,6007,seltorexant,HCRTR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3597971/,OX2R-selective
+,6020,ivaltinostat,HDAC (pan),inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=CG-745+ivaltinostat,
+,1806,panobinostat,HDAC (pan),inhibitor,pan,small molecule,2015-02-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL483254/,
+,12555,pracinostat,HDAC (pan),inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=pracinostat,
+,29894,gsk-835726,HRH1,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK835726,
+,9938,norketotifen,HRH1,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=norketotifen,ketotifen metabolite; separate moiety
+,7902,gsk-1004723,HRH1/HRH3,antagonist,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1767164/,
+,5038,roluperidone,HTR2A/SIGMAR2,antagonist,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=roluperidone+MIN-101,
+,5446,cendakimab,IL13,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297864/,
+,2376,lebrikizumab,IL13,binder_neutralizer,selective,antibody,2024-09-13,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743035/,
+,2344,tralokinumab,IL13,binder_neutralizer,selective,antibody,2021-12-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743081/,
+,4331,romilkimab,IL4/IL13,binder_neutralizer,dual,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298097/,bispecific
+,1700,ixekizumab,IL17A,binder_neutralizer,selective,antibody,2016-03-22,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743034/,
+,5368,izokibep,IL17A,binder_neutralizer,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297686/,Affibody
+,4887,netakimab,IL17A,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=netakimab,
+,5360,vunakizumab,IL17A,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298102/,
+,5211,sonelokimab,IL17A/IL17F,binder_neutralizer,dual,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298023/,nanobody
+,29886,COVA322,IL17A/TNF,binder_neutralizer,dual,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=COVA322,bispecific
+,8544,brazikumab,IL23A,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833372/,p19
+,2372,mirikizumab,IL23A,binder_neutralizer,selective,antibody,2023-10-26,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3990014/,p19
+,2304,risankizumab,IL23A,binder_neutralizer,selective,antibody,2019-04-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3990029/,p19
+,1760,insulin degludec,INSR,agonist,selective,protein,2015-09-25,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107869/,
+,8243,insulin peglispro,INSR,agonist,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108569/,
+,31594,proinsulin human,proinsulin antigen (immune tolerance),other,off-class,other,,,https://doi.org/10.1126/scitranslmed.3006103,"most likely BHT-3021 proinsulin DNA vaccine: antigen-specific immunotherapy, not an insulin-receptor agonist (identity inferred)"
+,7328,INCB47986,JAK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545225/,
+,2060,abrocitinib,JAK1,inhibitor,selective,small molecule,2022-01-14,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3655081/,
+,5279,filgotinib,JAK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301607/,
+,7930,itacitinib,JAK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3622820/,
+,5373,ivarmacitinib,JAK1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=SHR0302+ivarmacitinib,
+,1996,upadacitinib,JAK1,inhibitor,selective,small molecule,2019-08-16,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3622821/,
+,1866,baricitinib,JAK1/JAK2,inhibitor,dual,small molecule,2018-05-31,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105759/,
+,4737,gusacitinib,JAK (pan)/SYK,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594275/,
+,2214,delgocitinib,JAK (pan),inhibitor,pan,small molecule,2025-07-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297507/,
+,8232,peficitinib,JAK (pan),inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137308/,
+,10932,ifidancitinib,JAK1/JAK3,inhibitor,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ATI-502,
+,1757,tofacitinib,JAK (pan),inhibitor,pan,small molecule,2012-11-06,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL221959/,"JAK1/3 > JAK2; treated as pan-JAK, not JAK1-selective"
+,2242,brepocitinib,TYK2/JAK1,inhibitor,dual,small molecule,2026-08-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297477/,
+,29273,BMS-914392,KCNJ3/KCNJ5 (IKACh),blocker,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/26462707/,"IKACh blocker, not Kv1.5: DB target wrong"
+,30391,bms-919373,KCNA5,blocker,selective,small molecule,,,https://www.medkoo.com/products/8691,IKur/Kv1.5
+,5640,rivoceranib,KDR (VEGFR),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3186534/,"apatinib, VEGFR2-selective"
+,4772,famitinib,VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1278146/,
+,1771,cabozantinib,MET/VEGFR multikinase,inhibitor,pan,small molecule,2012-11-29,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105717/,
+,8454,golvatinib,MET/VEGFR multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039525/,
+,12257,pimasertib,MAP2K1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107832/,MEK1/2
+,8574,refametinib,MAP2K1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1236682/,MEK1/2
+,1779,trametinib,MAP2K1/2,inhibitor,selective,small molecule,2013-05-29,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2103875/,MEK1/2
+,8405,FX005,MAPK14,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545216/,p38 alpha
+,10110,emprumapimod,MAPK14,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1088750/,ARRY-797
+,4232,pha-797804,MAPK14,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1088751/,
+,7971,gosuranemab,MAPT,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3990042/,
+,5679,semorinemab,MAPT,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298093/,
+,5300,tilavonemab,MAPT,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297860/,
+,4405,zagotenemab,MAPT,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298021/,
+,2052,capmatinib,MET,inhibitor,selective,small molecule,2020-05-06,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3188267/,
+,7608,glesatinib,MET/AXL multikinase,inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989914/,
+,9168,gumarontinib,MET,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=gumarontinib,
+,4394,sar-125844,MET,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4461070/,
+,8451,savolitinib,MET,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3334567/,
+,2067,tepotinib,MET,inhibitor,selective,small molecule,2021-02-03,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3402762/,
+,8023,tivantinib,tubulin (MET claimed),inhibitor,off-class,small molecule,,,https://doi.org/10.1158/0008-5472.CAN-12-3256,cytotoxicity is MET-independent microtubule disruption
+,5555,bimiralisib,PI3K/MTOR,inhibitor,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=bimiralisib+PQR309,
+,27225,apitolisib,PI3K/MTOR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1922094/,
+,7492,dactolisib,PI3K/MTOR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1879463/,
+,7777,paxalisib,PI3K/MTOR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3813842/,
+,8206,pf-04691502,PI3K/MTOR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1234354/,
+,8223,voxtalisib,PI3K/MTOR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545366/,
+,6546,ASP6294,NGF,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=ASP6294,
+,4545,fulranumab,NGF,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743023/,
+,7609,tanezumab,NGF,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108567/,
+,11387,MEDI7352,NGF/TNF,binder_neutralizer,dual,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=MEDI7352,bispecific
+,35474,JNJ-39588146,CRHR2,agonist,selective,peptide,,,https://www.guidetopharmacology.org/GRAC/LigandDisplayForward?ligandId=928,"human stresscopin (urocortin 3), CRF2 agonist: DB NPR1 target wrong"
+,9408,cenderitide,NPR1/NPR2,agonist,dual,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=cenderitide+CD-NP,chimeric natriuretic peptide
+,4780,cilofexor,NR1H4,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297613/,
+,5207,edp-305,NR1H4,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=EDP-305,
+,4727,tropifexor,NR1H4,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298169/,
+,5065,vonafexor,NR1H4,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=vonafexor+EYP001,
+,32448,AL-38583,NR3C1,agonist,selective,small molecule,,,https://clinicaltrials.gov/study/NCT01001091,structure undisclosed; dexamethasone-controlled; GR target not independently confirmed
+,31123,Product 0405,NR3C1,agonist,selective,small molecule,,False,https://clinicaltrials.gov/study/NCT01232543,"undisclosed topical from generic maker Fougera with adrenal-suppression study: a corticosteroid formulation, not a novel entity"
+,28113,gw-870086,NR3C1,agonist,selective,small molecule,,,https://doi.org/10.1016/j.bmcl.2013.04.030,dissociated steroidal GR agonist
+,7640,mapracorat,NR3C1,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2103876/,SEGRA
+,7918,apararenone,NR3C2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2181929/,
+,8686,esaxerenone,NR3C2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545393/,
+,2114,finerenone,NR3C2,antagonist,selective,small molecule,2021-07-09,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2181927/,
+,13198,ONO-4474,NTRK (pan-Trk),inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ONO-4474,pan-Trk
+,14136,VM902A,NTRK1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=VM902A,
+,10678,asp-7962,NTRK1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ASP7962,
+,8707,gz-389988,NTRK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3673452/,
+,7055,cligosiban,OXTR,antagonist,selective,small molecule,,,https://drugs.ncats.io/drug/D361S17AIF,
+,4439,selatogrel,P2RY12,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297589/,reversible
+,9485,sumecigrel,P2RY12,antagonist,selective,small molecule,,,https://www.prnewswire.com/news-releases/key-milestone-achieved-nda-for-sumecigrel-capsule-an-antiplatelet-innovative-drug-by-vcare-pharmatech-officially-accepted-302811826.html,prodrug of the clopidogrel active metabolite (irreversible)
+,27685,iniparib,none (not a PARP inhibitor),other,no target,small molecule,,,https://doi.org/10.1158/1078-0432.CCR-12-1662,does not inhibit PARP; nonselective cysteine modifier
+,8320,2x-121,PARP1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3644587/,"stenoparib, also tankyrase"
+,13489,fuzuloparib,PARP1/2,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=fuzuloparib,
+,1896,niraparib,PARP1/2,inhibitor,selective,small molecule,2017-03-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1094636/,
+,1832,olaparib,PARP1/2,inhibitor,selective,small molecule,2014-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL521686/,
+,8580,pamiparib,PARP1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4112930/,
+,1919,rucaparib,PARP1/2,inhibitor,selective,small molecule,2016-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1173055/,
+,4568,senaparib,PARP1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4802152/,
+,1994,talazoparib,PARP1/2,inhibitor,selective,small molecule,2018-10-16,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137320/,
+,3364,veliparib,PARP1/2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL506871/,
+,4621,camrelizumab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297715/,
+,1703,nivolumab,PDCD1,binder_neutralizer,selective,antibody,2014-12-22,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108738/,
+,2366,penpulimab,PDCD1,binder_neutralizer,selective,antibody,2025-04-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297571/,
+,8022,pidilizumab,DLL1 (PD-1 claimed),binder_neutralizer,off-class,antibody,,,https://pubmed.ncbi.nlm.nih.gov/33559526/,primary target DLL1; FDA partial hold 2016 over target uncertainty
+,26898,prolgolimab,PDCD1,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=prolgolimab,
+,5542,pucotenlimab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650472/,
+,4490,serplulimab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594550/,
+,4980,spartalizumab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297831/,
+,2363,toripalimab,PDCD1,binder_neutralizer,selective,antibody,2023-10-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297843/,
+,6322,Lu AF11167,PDE10A,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=Lu+AF11167,
+,29108,OMS824,PDE10A,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=OMS824,
+,6277,balipodect,PDE10A,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989972/,
+,9512,elpipodect,PDE10A,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=MK-8189,MK-8189
+,3673,mardepodect,PDE10A,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL562318/,
+,1863,crisaborole,PDE4,inhibitor,selective,small molecule,2016-12-14,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL484785/,
+,2224,difamilast,PDE4,inhibitor,selective,small molecule,2026-02-12,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989967/,PDE4B-preferring
+,32929,an-2898,PDE4,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=AN2898,
+,30582,DRM02,PDE4,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=DRM02,
+,28723,leo-29102,PDE4,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=LEO+29102,
+,1681,aflibercept,VEGFA,binder_neutralizer,selective,protein,2011-11-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1742982/,"VEGF trap (also PlGF, VEGF-B)"
+,7480,conbercept,VEGFA,binder_neutralizer,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108313/,VEGF trap
+,2019,alpelisib,PIK3CA,inhibitor,selective,small molecule,2019-05-24,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2396661/,
+,2219,inavolisib,PIK3CA,inhibitor,selective,small molecule,2024-10-10,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650215/,
+,8147,taselisib,PIK3CA,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2387080/,"beta-sparing, alpha-preferring"
+,6703,buparlisib,PI3K (pan),inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2017974/,
+,6299,pilaralisib,PI3K (pan),inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3360203/,
+,3825,pictilisib,PI3K (pan),inhibitor,pan,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL521851/,
+,1827,idelalisib,PIK3CD,inhibitor,selective,small molecule,2014-07-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2216870/,
+,10988,linperlisib,PIK3CD,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=linperlisib,
+,5044,zandelisib,PIK3CD,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650214/,
+,7737,onvansertib,PLK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1738758/,
+,12900,rigosertib,RAS-RBD / tubulin (PLK1 claimed),other,off-class,small molecule,,,https://doi.org/10.1016/j.cell.2016.03.028,not a direct PLK1 inhibitor
+,7688,volasertib,PLK1,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1233528/,
+,30201,delanzomib,PSMB5,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=delanzomib,proteasome
+,1897,ixazomib,PSMB5,inhibitor,selective,small molecule,2015-11-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2141296/,proteasome
+,7799,oprozomib,PSMB5,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2103884/,proteasome
+,28320,ADC3680B,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545343/,
+,8831,GB001,PTGDR2,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GB001+DP2,small molecule (DB modality 'peptide' is wrong)
+,8087,MK-1029,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545031/,
+,4746,arry-502,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5314403/,
+,8033,azd-1981,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1914489/,
+,30011,bi-671800,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL551813/,
+,8738,fevipiprant,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137332/,
+,8664,qav-680,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2442750/,
+,7696,setipiprant,PTGDR2,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2386081/,
+,7964,vidupiprant,PTGDR/PTGDR2,antagonist,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1951575/,AMG 853 DP1/DP2
+,27624,ATS907,ROCK,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ATS907,
+,7658,DE-104,ROCK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545153/,
+,1886,netarsudil,ROCK,inhibitor,dual,small molecule,2017-12-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594250/,ROCK + norepinephrine transporter
+,2153,etrasimod,S1PR1,agonist,selective,small molecule,2023-10-12,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3358920/,S1P1/4/5 functional antagonist
+,8132,mocravimod,S1PR1,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2137148/,
+,1942,ozanimod,S1PR1,agonist,selective,small molecule,2020-03-25,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707247/,S1P1/5
+,4346,licogliflozin,SGLT1/2,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297625/,
+,2138,sotagliflozin,SGLT1/2,inhibitor,dual,small molecule,2023-05-26,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039507/,
+,2073,bexagliflozin,SLC5A2,inhibitor,selective,small molecule,2023-01-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1808388/,
+,1777,canagliflozin,SLC5A2,inhibitor,selective,small molecule,2013-03-29,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2048484/,
+,1733,dapagliflozin,SLC5A2,inhibitor,selective,small molecule,2014-01-08,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL429910/,
+,1790,empagliflozin,SLC5A2,inhibitor,selective,small molecule,2014-08-01,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107830/,
+,5382,enavogliflozin,SLC5A2,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=enavogliflozin,
+,1944,ertugliflozin,SLC5A2,inhibitor,selective,small molecule,2017-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1770248/,
+,5118,ipragliflozin,SLC5A2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2018096/,
+,8471,remogliflozin etabonate,SLC5A2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2028665/,
+,9598,tofogliflozin,SLC5A2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2110731/,
+,4470,ampreloxetine,SLC6A2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297646/,
+,2001,viloxazine,SLC6A2,inhibitor,selective,small molecule,2021-04-02,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL306700/,marketed ex-US since 1970s; first FDA 2021
+,6699,dasotraline,SLC6A2/SLC6A3,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301595/,DAT/NET
+,10793,OPC-64005,SLC6A2/3/4 (triple),inhibitor,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=OPC-64005,
+,2187,centanafadine,SLC6A2/3/4 (triple),inhibitor,pan,small molecule,2026-07-24,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301621/,
+,29018,AMG 747,SLC6A9,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=AMG+747,GlyT1
+,2702,bitopertin,SLC6A9,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1171829/,GlyT1
+,5344,iclepertin,SLC6A9,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=iclepertin+BI+425809,GlyT1
+,3074,pf-03463275,SLC6A9,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL563251/,GlyT1
+,8177,cinpanemab,SNCA,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833330/,
+,4467,prasinezumab,SNCA,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298077/,
+,27945,ESBA105,TNF,binder_neutralizer,selective,antibody,,,https://clinicaltrials.gov/study/NCT00671619,scFv
+,11947,licaminlimab,TNF,binder_neutralizer,selective,antibody,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC9271287/,scFv
+,6194,tanfanercept,TNF,binder_neutralizer,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=tanfanercept+HL036,TNFR1 fragment
+,14254,AUTO2,TNFRSF17/TNFRSF13B,depleter,dual,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=AUTO2+APRIL+CAR,APRIL-based CAR (BCMA+TACI)
+,26857,BCMA CAR-NK 92 cells,TNFRSF17,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=BCMA+CAR-NK-92,
+,28481,BCMA CAR-T cells,TNFRSF17,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=BCMA+CAR-T,generic entity name; may pool several products
+,12248,P-BCMA-101,TNFRSF17,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=P-BCMA-101,
+,2406,belantamab mafodotin,TNFRSF17,depleter,selective,ADC,2020-08-05,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298209/,first FDA approval 2020-08-05 (withdrawn 2022); DB date 2025 is the re-approval
+,3795,idecabtagene vicleucel,TNFRSF17,depleter,selective,cell therapy,2021-03-26,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298199/,
+,11605,orvacabtagene autoleucel,TNFRSF17,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=orvacabtagene,
+,31251,zevorcabtagene autoleucel,TNFRSF17,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=zevorcabtagene,
+,29272,LX1033,TPH1,inhibitor,selective,small molecule,,,https://clinicaltrials.gov/study/NCT01494233,peripheral TPH inhibitor
+,33651,lx-1031,TPH1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/21684281/,peripheral TPH inhibitor
+,4036,lexibulin,tubulin,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL552212/,polymerisation inhibitor
+,3348,verubulin,tubulin,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL492399/,polymerisation inhibitor
+,2098,deucravacitinib,TYK2,inhibitor,selective,small molecule,2022-09-09,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4596392/,allosteric (JH2)
+,4702,ropsacitinib,TYK2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4459585/,
+,4515,abicipar pegol,VEGFA,binder_neutralizer,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297684/,DARPin
+,2315,brolucizumab,VEGFA,binder_neutralizer,selective,antibody,2019-10-07,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707357/,scFv
+,34669,AC-150,unknown,,,small molecule,,,,undisclosed
+,6383,AD17002,mucosal adjuvant (LT toxin derivative),other,no target,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=AD17002+LTh%28alphaK%29,immunomodulator
+,13818,AGN-223575,unknown,,,small molecule,,,,undisclosed
+,32269,AL-53817,unknown,,,small molecule,,,https://clinicaltrials.gov/study/NCT02079649,undisclosed; dexamethasone-controlled
+,32446,AL-78843,unknown,,,small molecule,,,https://clinicaltrials.gov/study/NCT02079649,undisclosed; dexamethasone-controlled
+,29690,ALS-002200,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=VX-135+ALS-2200,VX-135
+,12368,ARB-001467,HBV RNA,gene_expression_reduction,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=ARB-1467,siRNA
+,31308,ASP4901,unknown,,,small molecule,,,,undisclosed
+,5906,BLI1100-1,unknown,,,small molecule,,,,undisclosed
+,39261,BLI1100-2,unknown,,,small molecule,,,,undisclosed
+,39262,BLI1100-3,unknown,,,small molecule,,,,undisclosed
+,39263,BLI1100-4,unknown,,,small molecule,,,,undisclosed
+,33086,BZF961,unknown,,,small molecule,,,,"HCV direct-acting antiviral, target not confirmed"
+,11715,CAM-101,unknown,,,other,,,,undisclosed
+,13447,CDI-31244,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=CDI-31244,
+,29232,Cal-1,CCR5 + HIV gp41 (gene-modified cells),gene_expression_reduction,dual,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=Cal-1+C46+CCR5,
+,28833,Cat-PAD,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=Cat-PAD,Fel d 1 T-cell epitope peptides
+,34815,DE-110,unknown,,,small molecule,,,,undisclosed
+,9895,DMT310,unknown,,,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=DMT310,"Spongilla lacustris powder, multi-mechanism"
+,28228,DP/MG/14-1,allergen (immunotherapy),tolerance_induction,selective,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=allergoid,allergen preparation (identity inferred from name)
+,12717,Grass-SPIRE,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=Grass-SPIRE,
+,35378,HDM-SPIRE,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=HDM-SPIRE,
+,30713,IDP-107,unknown,,,small molecule,,,,undisclosed
+,9996,K-161,unknown,,,small molecule,,,,undisclosed
+,35739,KL7016,unknown,,,small molecule,,,,undisclosed
+,32050,KLS-0611,unknown,,,small molecule,,,,undisclosed
+,30476,MTC896,unknown,,,small molecule,,,,undisclosed
+,28374,NOV-205,unknown,,,peptide,,,,"glutathione/inosine immunomodulator, target unknown"
+,6945,Nasapaque,physical barrier,other,no target,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=nasal+barrier+powder,"nasal barrier, no molecular target"
+,32343,OSIRIS,unknown,,,other,,,,undisclosed
+,29888,PHN121,unknown,,,other,,,,undisclosed
+,30892,QL-007,unknown,,,small molecule,,,,undisclosed
+,32004,REP 2055,HBsAg release (NAP),inhibitor,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=REP+2139+nucleic+acid+polymer,nucleic acid polymer
+,13822,REP 2139,HBsAg release (NAP),inhibitor,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=REP+2139+nucleic+acid+polymer,nucleic acid polymer
+,13509,REP 2165,HBsAg release (NAP),inhibitor,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=REP+2165,nucleic acid polymer
+,29733,Ragweed-SPIRE,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=Ragweed-SPIRE,
+,8891,SA001,unknown,,,small molecule,,,,undisclosed
+,31109,SB-728-T,CCR5 (gene editing),gene_expression_reduction,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=SB-728-T,ZFN-modified T cells
+,32979,SB-728mR-T,CCR5 (gene editing),gene_expression_reduction,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=SB-728mR-T,ZFN-modified T cells
+,33556,SCH 900538,unknown,,,small molecule,,,,undisclosed
+,7075,SJP-0132,unknown,,,small molecule,,,,undisclosed
+,10215,SJP002,unknown,,,small molecule,,,,undisclosed
+,35735,SPARC1102,unknown,,,small molecule,,,,undisclosed
+,34980,SPARC1203,unknown,,,small molecule,,,,undisclosed
+,35724,SPARC1310,unknown,,,small molecule,,,,undisclosed
+,34588,Salsola kali pollen allergen extract,allergen (immunotherapy),tolerance_induction,selective,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=Salsola+kali+immunotherapy,
+,35499,T1210,unknown,,,small molecule,,,,undisclosed
+,11530,T8,unknown,,,small molecule,,,,undisclosed
+,10316,TD-6450,HCV NS5A,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=TD-6450,
+,34558,TT-034,HCV RNA,gene_expression_reduction,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=TT-034,shRNA gene therapy
+35378,32349,ToleroMune HDM,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=HDM-SPIRE,
+29733,32468,ToleroMune Ragweed,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=Ragweed-SPIRE,
+,9433,UHE-101,unknown,,,small molecule,,,,undisclosed
+,34778,VB-1953,bacterial target (antibacterial),inhibitor,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=VB-1953,antibacterial for resistant C. acnes
+,34950,WC3055,unknown,,,small molecule,,,,undisclosed
+,33859,XG-104,unknown,,,small molecule,,,,undisclosed
+,34219,Ze 339,unknown,,,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=Ze+339+butterbur,"butterbur extract, multi-mechanism"
+,7554,abt-072,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4076467/,
+,10654,amlisimod,unknown,,,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=SDP-4+silk,silk-derived protein (SDP-4)
+,8614,asunaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105735/,
+,28943,auriclosene,antimicrobial (oxidant),other,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=NVC-422,N-chlorotaurine analogue
+,4084,azvudine,HIV RT (NRTI),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL519846/,
+,8538,beclabuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4105584/,
+,5186,bemnifosbuvir,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=AT-527,
+,2171,berdazimer free acid,nitric oxide release,other,no target,small molecule,2024-01-05,,https://pubmed.ncbi.nlm.nih.gov/?term=berdazimer,NO donor; approved 2024 for molluscum
+,1951,bictegravir,HIV integrase (INSTI),inhibitor,selective,small molecule,2018-02-07,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3989866/,
+,9893,birch pollen allergen extract,allergen (immunotherapy),tolerance_induction,selective,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=birch+pollen+immunotherapy,
+,8593,bms-955176,HIV maturation (Gag),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3827379/,
+,21950,bms-986094,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1209734/,INX-189
+,2030,cabotegravir,HIV integrase (INSTI),inhibitor,selective,small molecule,2021-01-21,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2403238/,
+,1822,carbon dioxide,unknown,,,other,2013-07-05,False,https://pubmed.ncbi.nlm.nih.gov/?term=nasal+carbon+dioxide+allergic+rhinitis,medical gas long approved; not novel
+,34650,cat allergen extract,allergen (immunotherapy),tolerance_induction,selective,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=cat+allergen+immunotherapy,
+,6776,censavudine,HIV RT (NRTI),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL124363/,
+,6911,cinhyaluronate sodium,lubricant,other,no target,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=cinhyaluronate,tear substitute
+,1849,daclatasvir,HCV NS5A,inhibitor,selective,small molecule,2015-07-24,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2023898/,
+,3943,danoprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL258734/,
+,1844,dasabuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,2014-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137312/,
+,1797,dolutegravir,HIV integrase (INSTI),inhibitor,selective,small molecule,2013-08-12,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1229211/,
+,1969,doravirine,HIV RT (NNRTI),inhibitor,selective,small molecule,2018-08-30,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2364608/,
+,1887,elbasvir,HCV NS5A,inhibitor,selective,small molecule,2016-01-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039514/,
+,4456,elebsiran,HBV RNA,gene_expression_reduction,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=VIR-2218,siRNA
+,9100,elsulfavirine,HIV RT (NNRTI),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=elsulfavirine,
+,8407,faldaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1241348/,
+,3145,filibuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL490672/,
+,4417,fipravirimat,HIV maturation (Gag),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK3640254,
+,27424,fosdevirine,HIV RT (NNRTI),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=fosdevirine,
+,2034,fostemsavir,HIV gp120 attachment,inhibitor,selective,small molecule,2020-07-02,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301594/,
+,33101,freneslerbart,allergen Fel d 1,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=REGN1908+REGN1909,anti-Fel d 1 antibody
+,5521,gedivumab,influenza HA stem,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4298040/,
+,1929,glecaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,2017-08-03,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545363/,
+,11636,gpASIT+,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=gpASIT%2B,
+,1888,grazoprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,2016-01-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2063090/,
+,7626,gs-9256,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1956820/,
+,27388,gsk-2336805,HCV NS5A,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK2336805,
+,6189,gsk-2838232,HIV maturation (Gag),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK2838232,
+,11441,hdmASIT+,allergen (immunotherapy),tolerance_induction,selective,peptide,,,https://pubmed.ncbi.nlm.nih.gov/?term=hdmASIT,
+,34466,hydroxypropyl guar galactomannan,lubricant,other,no target,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=hydroxypropyl+guar+dry+eye,tear substitute
+,27178,idx-184,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=IDX184,
+,2156,islatravir,HIV RT (NRTTI),inhibitor,selective,small molecule,2026-04-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL517231/,translocation inhibitor
+,30726,jnj-17166864,unknown,,,small molecule,,,,undisclosed
+,30535,lafuvitug,HIV Env (bnAb),binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=3BNC117,3BNC117
+,1825,ledipasvir,HCV NS5A,inhibitor,selective,small molecule,2014-10-10,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2374220/,
+,30523,lemuteporfin,photodynamic,other,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=lemuteporfin,photosensitiser
+,8169,lomibuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039503/,VX-222
+,9858,manganese(iii)meso-tetrakis(n-ethylpyridinium-2-yl) porphyrin chloride,SOD mimetic,other,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=MnTE-2-PyP,redox modulator
+,30140,metacavir,HBV polymerase (nucleoside),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=metacavir,
+,33102,mevonlerbart,allergen Fel d 1,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=REGN1908+REGN1909,anti-Fel d 1 antibody
+,4972,morphothiadine,HBV core (CAM),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=GLS4,GLS4
+,8450,narlaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1255891/,
+,5339,nitrosomonas eutropha d23,unknown,,,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=Nitrosomonas+eutropha+B244,live ammonia-oxidising bacterium
+,1845,ombitasvir,HCV NS5A,inhibitor,selective,small molecule,2014-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3127326/,
+,1846,paritaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,2014-12-19,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3391662/,
+,2148,perfluorohexyloctane,lubricant,other,no target,small molecule,2023-05-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5314588/,evaporation barrier
+,1930,pibrentasvir,HCV NS5A,inhibitor,selective,small molecule,2017-08-03,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545123/,
+,7641,psi-352938,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2160007/,
+,27868,rBet v 1,allergen (immunotherapy),tolerance_induction,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=recombinant+Bet+v+1+immunotherapy,
+,7447,radalbuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3121539/,
+,8009,ravidasvir,HCV NS5A,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3121849/,
+,27187,recoflavone,unknown,,,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=DA-6034,"flavonoid mucin secretagogue, target unknown"
+,5415,reproxalap,RASP (aldehyde trap),inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=reproxalap,reactive aldehyde species sequestrant
+,5250,rovafovir etalafenamide,HIV RT (NRTI),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594257/,GS-9131
+,5187,ruzasvir,HCV NS5A,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3971095/,
+,1934,sarecycline,bacterial 30S ribosome,inhibitor,selective,small molecule,2018-10-01,,https://www.accessdata.fda.gov/drugsatfda_docs/label/2018/209521s000lbl.pdf,"narrow-spectrum tetracycline (Seysara, approved 2018-10-01)"
+,3460,setrobuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1076263/,
+,1804,simeprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,2013-11-22,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL501849/,
+,5998,skq-1 ion,mitochondrial antioxidant,other,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=SkQ1+dry+eye,
+,1792,sofosbuvir,HCV NS5B (nucleotide),inhibitor,selective,small molecule,2013-12-06,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1259059/,
+,8576,sovaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105750/,
+,7931,tegobuvir,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1957287/,
+,29403,tetrachlorodecaoxide,unknown,,,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=WF10,chlorite-based immunomodulator
+,27970,tmc-310911,HIV protease,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=TMC310911,
+,8184,tmc-647055,HCV NS5B (non-nucleoside),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2043025/,
+,29457,tomligisiran,HBV RNA,gene_expression_reduction,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=JNJ-3989,JNJ-73763989 siRNA
+,9766,topsalysin,PSA-activated pore-forming toxin,other,off-class,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=PRX302+topsalysin,PRX302
+,30372,tree pollen allergen extract,allergen (immunotherapy),tolerance_induction,selective,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=tree+pollen+immunotherapy,
+,5744,trehalose,lubricant,other,no target,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=trehalose+dry+eye,osmoprotectant tear substitute
+,8095,uprifosbuvir,HCV NS5B (nucleotide),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833371/,
+,4848,vaniprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4525964/,
+,5633,vebicorvir,HBV core (CAM),inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650324/,
+,8219,vedroprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2013174/,
+,1891,velpatasvir,HCV NS5A,inhibitor,selective,small molecule,2016-06-28,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545062/,
+,4626,vis-410,influenza HA stem,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594613/,
+,1921,voxilaprevir,HCV NS3/4A protease,inhibitor,selective,small molecule,2017-07-18,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707372/,
+,34750,xanthan gum,lubricant,other,no target,other,,,https://pubmed.ncbi.nlm.nih.gov/?term=xanthan+gum+dry+eye,tear substitute
+,8758,zalutumumab,EGFR,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2107861/,
+,35182,ly-2525623,IL23A,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=LY2525623,anti-p19
+,2289,tildrakizumab,IL23A,binder_neutralizer,selective,antibody,2018-03-20,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2108681/,anti-p19
+,34083,EX1000,INSR,agonist,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=EX1000+insulin,identity not confirmed; DB target kept
+,9079,insulin 338,INSR,agonist,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=oral+insulin+338,oral basal insulin analogue
+,2399,insulin efsitora alfa,INSR,agonist,selective,protein,2026-09-23,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL5095357/,once-weekly basal insulin
+,2381,insulin icodec,INSR,agonist,selective,protein,2026-03-26,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594581/,once-weekly basal insulin
+,2312,eptinezumab,CALCA/CALCB (CGRP ligand),binder_neutralizer,selective,antibody,2020-02-21,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3833320/,
+,2297,fremanezumab,CALCA/CALCB (CGRP ligand),binder_neutralizer,selective,antibody,2018-09-14,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297756/,
+,2287,galcanezumab,CALCA/CALCB (CGRP ligand),binder_neutralizer,selective,antibody,2018-09-27,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707328/,
+,4708,ZN-c5,ESR1,degrader,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ZN-c5,oral SERD
+,5235,amcenestrant,ESR1,degrader,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4475463/,oral SERD
+,8519,brilanestrant,ESR1,degrader,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3581693/,oral SERD
+,4810,giredestrant,ESR1,degrader,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650316/,oral SERD
+,2234,vepdegestrant,ESR1,degrader,selective,small molecule,2026-05-01,,https://pubmed.ncbi.nlm.nih.gov/?term=vepdegestrant+ARV-471,PROTAC ER degrader
+,1684,pertuzumab,ERBB2,binder_neutralizer,selective,antibody,2012-06-08,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2007641/,HER2 dimerisation-blocking antibody
+,10596,benmelstobart,CD274,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=benmelstobart+TQB2450,
+,2291,durvalumab,CD274,binder_neutralizer,selective,antibody,2017-05-01,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301587/,
+,5686,sugemalimab,CD274,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594535/,
+,28167,vonsetamig,TNFRSF17,depleter,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=vonsetamig,BCMAxCD3 T-cell engager
+,7462,galeterone,CYP17A1/AR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105738/,
+,11058,odm-204,CYP17A1/AR,inhibitor,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ODM-204,
+,6963,seviteronel,CYP17A1/AR,inhibitor,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3264610/,
+,4738,etokimab,IL33,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297580/,
+,4488,itepekimab,IL33,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594594/,
+,4347,torudokimab,IL33,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650487/,
+,4595,tozorakimab,IL33,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=tozorakimab+MEDI3506,
+,5361,deudextromethorphan,SIGMAR1/NMDA/SERT (dextromethorphan-like),other,off-class,small molecule,,,https://doi.org/10.1016/j.pbb.2016.07.001,"deuterated dextromethorphan (AVP-786, given with quinidine): weak non-selective NMDA channel blocker, sigma-1 agonist, SERT/NET inhibitor"
+,29608,GSK679586,IL13,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=GSK679586,
+,7959,dectrekumab,IL13,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2109465/,
+,9750,AZD2115,ADRB2/CHRM3 (MABA),agonist,dual,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=AZD2115,muscarinic antagonist/beta2 agonist
+,4359,navafenterol,ADRB2/CHRM3 (MABA),agonist,dual,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297483/,muscarinic antagonist/beta2 agonist
