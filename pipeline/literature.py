@@ -792,10 +792,10 @@ def validate(p: dict, out: dict) -> None:
         raise ValueError("quote is not in the abstract")
 
 
-def task(model: str = "claude-sonnet-5", suffix: str = "") -> llm.Task:
+def task(model: str = "claude-sonnet-5", suffix: str = "", max_tokens: int = 2000) -> llm.Task:
     return llm.Task(name="literature_drug_screen" + suffix, prompt_version="v1", schema_version="v1", system=SYSTEM,
                     schema=SCHEMA, render=render, validate=validate, subject_type="moiety_pmid", model=model,
-                    effort="low", max_tokens=2000)
+                    effort="low", max_tokens=max_tokens)
 
 
 PREFILTER_SYSTEM = """You skim one abstract to decide whether it could report original data about a specific drug (under any of the names given; a different drug does not count) of any of these kinds: the drug tested for efficacy in an animal model of a disease; its pharmacokinetics, distribution or pharmacodynamics in animals; or its target engagement or a pharmacodynamic biomarker measured in people. possibly is false only when the abstract clearly reports none of these about this drug (it is about another drug or substance, the drug is only mentioned, or it reports only chemistry, in vitro work, clinical outcomes or epidemiology). When unsure, answer true."""
@@ -957,6 +957,66 @@ def screen_drugs(cut: dict[int, int], log=print) -> int:
     store_screens(decided)
     log(f"records screened={len(items)} decided={len(decided)} run={run_id}")
     return len(items)
+
+
+SWEEP_MAX_TOKENS = 4000  # the screen's token limit on the sweep, for decisions cut off at the usual limit
+
+
+def failed(task_names: list[str], ok_names: list[str]) -> dict[str, tuple[dict, str]]:
+    """Subject key -> (input payload, failure) of every subject whose latest decision under task_names failed
+    validation and that has no validated decision under ok_names."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_payload, d.validation_status,
+                              d.validation_detail::text
+                       FROM pv_evidence.llm_decision d WHERE d.task = ANY(%s)
+                       ORDER BY d.subject_key, d.created_at DESC""", (task_names,))
+        latest = {k: (p, st, det) for k, p, st, det in cur.fetchall()}
+        cur.execute("""SELECT DISTINCT subject_key FROM pv_evidence.llm_decision
+                       WHERE task = ANY(%s) AND validation_status = 'validated'""", (ok_names,))
+        ok = {r[0] for r in cur.fetchall()}
+    return {k: (p, det) for k, (p, st, det) in latest.items() if st != "validated" and k not in ok}
+
+
+def sweep(_args) -> None:
+    """Decide again every cohort and pilot record whose latest prefilter or screen decision failed (an errored batch,
+    a cut-off answer, a quote not found in the abstract, a refusal). Prefilter failures are run again; screen
+    failures are run again by the screen at SWEEP_MAX_TOKENS, refusals go straight to REFUSAL_MODEL, and anything
+    still failing after one retry goes to REFUSAL_MODEL too. Run once every cohort worker has finished."""
+    pre = failed([PREFILTER_TASK.name], [PREFILTER_TASK.name])
+    if pre:
+        run_id = llm.run(PREFILTER_TASK, {k: p for k, (p, _) in pre.items()})
+        decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+        with llm.connect() as conn, conn.cursor() as cur:
+            execute_values(cur, """INSERT INTO preclin.literature_v3_prefilter (moiety_id, record_id, possibly, llm_decision_id)
+                                   VALUES %s ON CONFLICT (moiety_id, record_id) DO UPDATE SET possibly = EXCLUDED.possibly,
+                                     llm_decision_id = EXCLUDED.llm_decision_id""",
+                           [(int(k.split("|")[0]), k.split("|", 1)[1], o["possibly"], did) for k, did, o in decided],
+                           page_size=5000)
+            conn.commit()
+        print(f"prefilter failures={len(pre)} decided={len(decided)}", flush=True)
+        cut = {**cohort_drugs(), **drug_cutoffs(entries("pilot"))}
+        affected = {m: cut[m] for m in {int(k.split("|")[0]) for k, _, o in decided if o["possibly"]} if m in cut}
+        if affected:  # records the prefilter now passes still need the screen; screen_drugs reads only unscreened ones
+            screen_drugs(affected)
+    screen_names = [task().name, task(REFUSAL_MODEL, "_refusal").name]
+    bad = failed([task().name], screen_names)
+    refused = {k: p for k, (p, det) in bad.items() if "refusal" in det}
+    rest = {k: p for k, (p, det) in bad.items() if "refusal" not in det}
+    decided: list = []
+    if rest:
+        run_id = llm.run(task(max_tokens=SWEEP_MAX_TOKENS), rest)
+        got = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+        decided += got
+        done = {k for k, _, _ in got}
+        refused.update({k: p for k, p in rest.items() if k not in done})
+        print(f"screen failures retried={len(rest)} decided={len(got)}", flush=True)
+    if refused:
+        run_id = llm.run(task(REFUSAL_MODEL, "_refusal", SWEEP_MAX_TOKENS), refused)
+        got = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
+        decided += got
+        print(f"to {REFUSAL_MODEL}={len(refused)} decided={len(got)} still failing={len(refused) - len(got)}", flush=True)
+    store_screens(decided)
+    print(f"sweep stored={len(decided)}", flush=True)
 
 
 def rescreen_refusals(_args) -> None:
@@ -1430,6 +1490,7 @@ def main() -> None:
     vt.set_defaults(fn=vet)
     sub.add_parser("vet-check").set_defaults(fn=vet_check)
     sub.add_parser("rescreen-refusals").set_defaults(fn=rescreen_refusals)
+    sub.add_parser("sweep").set_defaults(fn=sweep)
     sub.add_parser("check").set_defaults(fn=check)
     sub.add_parser("prefilter-check").set_defaults(fn=prefilter_check)
     rc = sub.add_parser("run-cohort")
