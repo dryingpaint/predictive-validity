@@ -497,7 +497,8 @@ def unii(_args) -> None:
     """Resolve every entity to its UNII substance, merge entities that
     resolved to the same one into a single entity named by the substance's
     nonproprietary name (nonproprietary_name), run the same-entity pass
-    (same_entities), and drop the entities nothing references (drop_unreferenced)."""
+    (same_entities; with --named-pairs, also entities named by another's code or alias, merged when the registry or
+    ChEMBL agrees). Merged-away entities are deleted by merge_groups; no other entity is."""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""
             SELECT m.moiety_id, m.name, m.code_names, m.aliases,
@@ -524,8 +525,7 @@ def unii(_args) -> None:
         groups[u].append(mid)
     merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items()])
     print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
-    same_entities()
-    drop_unreferenced()
+    same_entities(named=getattr(_args, "named_pairs", False))
 
 
 def delete_unreferenced(cur, among: set[int] | None = None) -> int:
@@ -542,12 +542,6 @@ def delete_unreferenced(cur, among: set[int] | None = None) -> int:
     else:
         cur.execute(f"DELETE FROM preclin.moiety m WHERE m.moiety_id = ANY(%s) AND {unreferenced}", (sorted(among),))
     return cur.rowcount
-
-
-def drop_unreferenced() -> None:
-    with llm.connect() as conn, conn.cursor() as cur:
-        print(f"unreferenced entities dropped={delete_unreferenced(cur)}")
-        conn.commit()
 
 
 def parents_first(tables: list[str], fks: list[tuple[str, str]]) -> list[str]:
@@ -715,7 +709,7 @@ def confirmed_same(cur, pairs: set[tuple[int, int]]) -> dict[tuple[int, int], st
 SAME_AUDIT = "report/audits/entity_merges.json"
 
 
-def same_entities(dry_run: bool = False) -> None:
+def same_entities(dry_run: bool = False, named: bool = True) -> None:
     """Merge entities that are the same active entity under names UNII does not
     connect (salt and parent registered separately, a formulation substance and
     its active moiety, vaccines and other products without a UNII). Candidates
@@ -756,7 +750,7 @@ def same_entities(dry_run: bool = False) -> None:
             items[str(e["moiety_id"])] = {"entity": e, "candidates": cands}
     by_id = {e["moiety_id"]: e for e in ents}
     with llm.connect() as conn, conn.cursor() as cur:
-        pairs = {(a, b) for a, b in named_pairs(cur) if a in by_id and b in by_id}
+        pairs = {(a, b) for a, b in named_pairs(cur) if a in by_id and b in by_id} if named else set()
         sources = confirmed_same(cur, pairs)
     partners = defaultdict(set)
     for a, b in pairs:
@@ -765,7 +759,7 @@ def same_entities(dry_run: bool = False) -> None:
                    for a, bs in partners.items()}
     decided = llm.decisions(llm.run(SAME_TASK, items))
     named_said = {int(k.split("|")[0]): (set(out["same"]), out["rationale"])
-                  for k, _, out in llm.decisions(llm.run(SAME_TASK, named_items))}
+                  for k, _, out in llm.decisions(llm.run(SAME_TASK, named_items))} if named_items else {}
     named_merges = {(a, b): sources[(a, b)] for a, b in pairs
                     if b in named_said.get(a, (set(), ""))[0] and (a, b) in sources}
     said = {int(k): set(out["same"]) for k, _, out in decided}
@@ -1087,11 +1081,14 @@ def main() -> None:
                    help="resolve names as if entities numbered from this id did not exist, and delete those left "
                         "unreferenced: undoes the entities a withdrawn run created")
     c.set_defaults(fn=canonicalize)
-    sub.add_parser("unii").set_defaults(fn=unii)
+    u = sub.add_parser("unii")
+    u.add_argument("--named-pairs", action="store_true",
+                   help="also merge entities named by another's code or alias when the registry or ChEMBL agrees")
+    u.set_defaults(fn=unii)
     sub.add_parser("modality").set_defaults(fn=modality)
     q = sub.add_parser("same")
     q.add_argument("--dry-run", action="store_true", help="write the merge audit and merge nothing")
-    q.set_defaults(fn=lambda a: same_entities(a.dry_run))
+    q.set_defaults(fn=lambda a: same_entities(a.dry_run, named=True))
     p = sub.add_parser("codes")
     p.add_argument("--dry-run", action="store_true", help="write the audit and leave preclin.moiety as is")
     p.set_defaults(fn=codes)
