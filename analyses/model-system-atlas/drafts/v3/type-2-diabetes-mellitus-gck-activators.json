@@ -43,7 +43,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -52,7 +51,8 @@
     "population": "Unselected",
     "model_first_use_year": 2003,
     "readout_tier": null,
-    "judgement": "Class model opened at the first GKA rodent paper; the compound is a non-member sibling."
+    "judgement": "Class model opened at the first GKA rodent paper; the compound is a non-member sibling.",
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -81,7 +81,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -89,10 +88,10 @@
     "source_calls_it": "partial",
     "population": "Insulin-treated T2D",
     "model_first_use_year": 2003,
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2014,
@@ -122,7 +121,6 @@
     "confidence": "medium",
     "confidence_note": "Opening year is a proxy: the first-in-patient study it was built for (NCT02077452) started March 2014.",
     "judgement": "Opener dated to the first-in-patient study the projection was made for, not to the 2016 publication.",
-    "parallel": true,
     "model_id": "sinogliatin-translational-pkpd",
     "model": "Translational PK/PD model for sinogliatin (dorzagliatin), scaled from healthy-volunteer data and another GKA's patient data",
     "model_kind": "in_silico",
@@ -130,7 +128,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2016,
@@ -161,7 +158,6 @@
     "confidence": "low",
     "confidence_note": "Abstract only (Clin Pharmacokinet, paywalled). That the projection was fixed before the 2014 first-in-patient data were seen is the paper's learn-research-confirm framing, not verified; NCT02077452 has no posted results.",
     "judgement": "Scored as a prospective projection (same), not retro, on the paper's framing; if the projection postdated the FIP data it would be retro.",
-    "parallel": true,
     "model_id": "sinogliatin-translational-pkpd",
     "model": "Translational PK/PD model for sinogliatin (dorzagliatin), scaled from healthy-volunteer data and another GKA's patient data",
     "model_kind": "in_silico",
@@ -195,7 +191,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -206,7 +201,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "judgement": "Opening entry for the rodent model's dose basis."
+    "judgement": "Opening entry for the rodent model's dose basis.",
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -233,7 +229,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -244,7 +239,8 @@
     "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
-    "judgement": "Dose follows efficacy (reached, failed, abandoned). Year is the NCT01152385 results posting, before the paper."
+    "judgement": "Dose follows efficacy (reached, failed, abandoned). Year is the NCT01152385 results posting, before the paper.",
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -273,7 +269,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "in_silico",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -283,10 +278,10 @@
     "model_first_use_year": 2012,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2014,
@@ -318,7 +313,6 @@
     "confidence": "medium",
     "confidence_note": "Opening year is a proxy (first-in-patient study start, March 2014).",
     "judgement": "Opener at the first-in-patient study.",
-    "parallel": true,
     "model_id": "sinogliatin-translational-pkpd",
     "model": "Translational PK/PD model for sinogliatin (dorzagliatin), scaled from healthy-volunteer data and another GKA's patient data",
     "model_kind": "in_silico",
@@ -326,7 +320,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2016,
@@ -359,7 +352,6 @@
     "confidence": "low",
     "confidence_note": "Abstract only. Whether this model, rather than the Phase 1b data alone, set the Phase 2 doses (NCT02561338) is not verified.",
     "judgement": "Reached-and-worked row: the model's projected regimen response was met in patients, so dose same; prospective status rests on the paper's framing.",
-    "parallel": true,
     "model_id": "sinogliatin-translational-pkpd",
     "model": "Translational PK/PD model for sinogliatin (dorzagliatin), scaled from healthy-volunteer data and another GKA's patient data",
     "model_kind": "in_silico",
@@ -393,7 +385,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -404,7 +395,8 @@
     "endpoint_role": null,
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "Opening entry."
+    "judgement": "Opening entry.",
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -431,7 +423,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -449,7 +440,8 @@
       "quote": "Addition of AZD1656 (individually titrated) to metformin gave significant improvements in glycaemic control up to 4 months, although efficacy diminished over time."
      }
     ],
-    "judgement": "Primary endpoint governs, so the week-14 win is same; the 30-week loss is recorded as partial, not scored."
+    "judgement": "Primary endpoint governs, so the week-14 win is same; the 30-week loss is recorded as partial, not scored.",
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -476,7 +468,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -487,7 +478,8 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "judgement": "One drug's contra beats MK-0941's same on the same rodent model. Baker 2014 is a retrodiction that also failed (contra) and confirms the call; not entered separately to avoid a repeat status."
+    "judgement": "One drug's contra beats MK-0941's same on the same rodent model. Baker 2014 is a retrodiction that also failed (contra) and confirms the call; not entered separately to avoid a repeat status.",
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -516,7 +508,6 @@
     "model_filed": null,
     "product_in_model": null,
     "model_kind": "human_genetic",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -539,10 +530,10 @@
       "doi": "https://doi.org/10.1038/s41591-022-01803-5",
       "quote": "In patients with T2D who experienced inadequate glycemic control with metformin alone, dorzagliatin resulted in effective glycemic control with good tolerability and safety profile"
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2025,
@@ -573,7 +564,6 @@
     "confidence": "medium",
     "confidence_note": "First use dated to this paper.",
     "judgement": "Opener.",
-    "parallel": true,
     "model_id": "human-islet-perifusion-gka",
     "model": "Human islet perifusion with enzyme kinetics and structural modelling (dorzagliatin vs MK-0941)",
     "model_kind": "ex_vivo",
@@ -581,7 +571,6 @@
     "model_first_use_year": 2025
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2025,
@@ -613,7 +602,6 @@
     "confidence": "low",
     "confidence_note": "Abstract only. The paper explains success vs failure mechanistically; it does not reproduce MK-0941's loss of effect over time, so only the dorzagliatin half is scored. Patient side: Zhu 2022 SEED, online 2022-05-12. Patient side: https://doi.org/10.1038/s41591-022-01802-6.",
     "judgement": "Islet model run after dorzagliatin's Phase 3 primaries were public, so retro; comparison_stated true because the paper frames itself as explaining the clinical success.",
-    "parallel": true,
     "model_id": "human-islet-perifusion-gka",
     "model": "Human islet perifusion with enzyme kinetics and structural modelling (dorzagliatin vs MK-0941)",
     "model_kind": "ex_vivo",
@@ -647,7 +635,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -655,7 +642,8 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2003,
-    "judgement": "Opening entry."
+    "judgement": "Opening entry.",
+    "prediction_level": "class"
    },
    {
     "year": 2013,
@@ -682,7 +670,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": true,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -690,7 +677,8 @@
     "source_calls_it": "match",
     "population": "Insulin-treated T2D",
     "model_first_use_year": 2003,
-    "judgement": "De Ceuninck (print 2013) postdates the MK-0941 triglyceride signal (2011), so it is a retrodiction. Hypoglycaemia and blood pressure not scored: no model statement found."
+    "judgement": "De Ceuninck (print 2013) postdates the MK-0941 triglyceride signal (2011), so it is a retrodiction. Hypoglycaemia and blood pressure not scored: no model statement found.",
+    "prediction_level": "class"
    },
    {
     "year": 2024,
@@ -719,17 +707,16 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "hyperlipidaemia odds ratio vs rodent plasma/hepatic triglycerides",
     "source_calls_it": "partial",
     "population": "T2D",
-    "model_first_use_year": 2003
+    "model_first_use_year": 2003,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2025,
@@ -758,7 +745,6 @@
     "confidence": "medium",
     "confidence_note": "First use dated to this paper; earlier human-islet GKA work exists but was not searched for a member-drug comparison.",
     "judgement": "Opener; the system was run on member drugs only after their trials.",
-    "parallel": true,
     "model_id": "human-islet-perifusion-gka",
     "model": "Human islet perifusion with enzyme kinetics and structural modelling (dorzagliatin vs MK-0941)",
     "model_kind": "ex_vivo",
@@ -766,7 +752,6 @@
     "model_first_use_year": 2025
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2025,
@@ -796,7 +781,6 @@
     "confidence": "medium",
     "confidence_note": "Abstract only. The abstract calls MK-0941 'unsuccessful' but does not itself name hypoglycaemia; the pairing with Meininger 2011 (MK-0941 increased hypoglycaemia) is ours, hence comparison_stated false. Patient side: https://doi.org/10.2337/dc11-1200.",
     "judgement": "Run 14 years after MK-0941's hypoglycaemia was public, so retro, not same.",
-    "parallel": true,
     "model_id": "human-islet-perifusion-gka",
     "model": "Human islet perifusion with enzyme kinetics and structural modelling (dorzagliatin vs MK-0941)",
     "model_kind": "ex_vivo",
@@ -804,7 +788,6 @@
     "model_first_use_year": 2025
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2024,
@@ -833,7 +816,6 @@
     "confidence": "high",
     "confidence_note": null,
     "judgement": "Opener; run after GKA trials had shown raised triglycerides.",
-    "parallel": true,
     "model_id": "gck-gckr-drug-target-mr",
     "model": "Drug-target Mendelian randomization with GCK (direct activation) and GCKR (GK-GKRP disruption) variants",
     "model_kind": "human_genetic",
@@ -841,7 +823,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2024,
@@ -871,7 +852,6 @@
     "confidence": "low",
     "confidence_note": "Abstract only. The authors attribute the trial hypertriglyceridaemia to GK-GKRP disruption (their GCKR proxy, which did predict it) rather than to GK activation; which member drugs disrupt GKRP is not established, so the call depends on reading the GCK proxy as the class proxy. Patient side: https://doi.org/10.3389/fendo.2023.1175198.",
     "judgement": "Scored on the GCK proxy, the paper's stand-in for the class mechanism: it predicted no dyslipidaemia, patients on GKAs showed it, and a retrodiction that fails is contra. The GCKR arm would score retro under the authors' reading.",
-    "parallel": true,
     "model_id": "gck-gckr-drug-target-mr",
     "model": "Drug-target Mendelian randomization with GCK (direct activation) and GCKR (GK-GKRP disruption) variants",
     "model_kind": "human_genetic",

@@ -22,6 +22,7 @@ from report import frame  # noqa: E402
 
 QUESTIONS = ["engagement", "dose", "efficacy", "safety"]
 STATUSES = ["same", "neg", "other", "contra", "retro", "untested"]
+HEADLINE = ["same", "neg", "other", "contra"]  # statuses a prospective track can set the headline with, best first
 
 
 def final_status(r) -> str:
@@ -45,24 +46,25 @@ def kappa(pairs: list[tuple[str, str]]) -> float | None:
     return round((po - pe) / (1 - pe), 3) if pe < 1 else 1.0
 
 
-def latest(entries: list[dict], key) -> str | None:
-    """A cell's status in its last year: the last entry of each modality strip, worst first when they differ."""
-    if not entries:
-        return None
+def headline(entries: list[dict], key) -> str | None:
+    """A cell's headline: the best latest status among its tracks (one per model_id) that predicted before the
+    patient result; untested when none did. A retrodiction is shown on its track but never sets the headline."""
     last = {}
     for e in sorted(entries, key=lambda e: (e["year"], e["seq"])):
         s = key(e)
         if s != "drop":
-            last[e["modality"]] = s
-    order = ["contra", "neg", "same", "other", "retro", "untested"]
-    return min(last.values(), key=order.index) if last else None
+            last[e["model_id"]] = s
+    if not last:
+        return None
+    tested = [s for s in last.values() if s in HEADLINE]
+    return min(tested, key=HEADLINE.index) if tested else "untested"
 
 
 def load() -> dict:
     build = frame.query("SELECT snapshot, n_register, n_tracked, built_at FROM preclin.atlas_build ORDER BY built_at DESC LIMIT 1")
     ents = frame.query("""
         SELECT e.mondo_id, e.mechanism_key, e.question, e.modality, e.seq, e.year, e.status, e.model_id, e.model, e.src,
-               e.src_label, e.quote, e.source_tier, e.comparison_stated, e.retrodiction, e.model_change,
+               e.src_label, e.quote, e.source_tier, e.comparison_stated, e.retrodiction,
                e.patient_signal_reversed, e.confidence, e.fields, v.verdict, v.quote_found, v.proposed_status,
                v.proposed_year, v.rule, v.note AS check_note, v.adjudicated_status, v.adjudication_note
         FROM preclin.atlas_track_entry e
@@ -92,15 +94,18 @@ def load() -> dict:
         cells = {}
         for q in QUESTIONS:
             cq = [x for x in recs if x["question"] == q]
-            if cq and any(x.get("verdict") for x in cq):
-                pairs.append((latest(cq, lambda e: e["status"]), latest(cq, checked_status)))
+            for mod in {x["modality"] for x in cq}:
+                cell = [x for x in cq if x["modality"] == mod]
+                if any(x.get("verdict") for x in cell):
+                    pairs.append((headline(cell, lambda e: e["status"]), headline(cell, checked_status)))
             for x in cq:  # a checker's corrected year stands when the status is unchanged
                 if x.get("verdict") == "corrected" and x.get("proposed_year") and x["final"] == x["status"]:
                     x["year"] = int(x["proposed_year"])
             cells[q] = [{"modality": x["modality"], "seq": x["seq"], "year": x["year"], "status": x["final"],
                          "drafted": x["status"], "model": x["model"], "model_id": x["model_id"], "src": x["src"],
                          "src_label": x["src_label"], "quote": x["quote"], "tier": x["source_tier"],
-                         "stated": x["comparison_stated"], "retro": x["retrodiction"], "handover": x["model_change"],
+                         "stated": x["comparison_stated"], "retro": x["retrodiction"],
+                         "level": x["fields"].get("prediction_level"),
                          "reversed": x["patient_signal_reversed"], "confidence": x["confidence"],
                          "note": x["fields"].get("note"), "short": x["fields"].get("short"),
                          "judgement": x["fields"].get("judgement"), "verdict": x.get("verdict"),

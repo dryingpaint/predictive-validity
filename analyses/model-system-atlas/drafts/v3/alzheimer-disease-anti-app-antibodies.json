@@ -33,7 +33,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -51,7 +50,8 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.0695-06.2006",
     "srcLabel": "Wilcock 2006",
     "quote": "Both groups receiving anti-Abeta antibodies showed significant reductions in total Abeta immunochemistry and Congo red.",
-    "judgement": "Opening entry: the first published in-vivo model behind a member (ponezumab = humanized 2H6)."
+    "judgement": "Opening entry: the first published in-vivo model behind a member (ponezumab = humanized 2H6).",
+    "prediction_level": "class"
    },
    {
     "model_id": "tg2576-2h6",
@@ -68,7 +68,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "null",
@@ -87,7 +86,8 @@
     "srcLabel": "Landen 2017b",
     "quote": "Plasma Aβ increased dose dependently with ponezumab, but CSF biomarkers, brain amyloid burden, cognition, and function were not affected.",
     "readout_tier": "proximal",
-    "judgement": "Paired comparison: Wilcock's brain-amyloid readout set against the PIB-PET substudy. Plaque is the aggregated product of the target, so proximal. Crenezumab's BLAZE PET (Salloway 2018) also showed no significant amyloid fall."
+    "judgement": "Paired comparison: Wilcock's brain-amyloid readout set against the PIB-PET substudy. Plaque is the aggregated product of the target, so proximal. Crenezumab's BLAZE PET (Salloway 2018) also showed no significant amyloid fall.",
+    "prediction_level": "class"
    },
    {
     "model_id": "tg-arcswe-mab158",
@@ -104,7 +104,6 @@
     "model_filed": "BLA 761269 pharmacology review, Study AD-TR-007: 18 weeks of mAb158 cut brain protofibrils 80% with no change in insoluble Aβ or plaques",
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -124,10 +123,10 @@
     "quote": "At 18 months, 10-mg/kg biweekly lecanemab reduced brain amyloid (-0.306 SUVr units) while showing a drug-placebo difference in favor of active treatment by 27% and 30% on ADCOMS",
     "readout_tier": "proximal",
     "reason": "Model missed plaque clearance in patients",
-    "judgement": "The model's main readout, brain protofibrils, was not measured in patients; scored on its secondary readout, insoluble Aβ, which the model said would not move and which fell. magnitude left null: model null vs a large patient effect is neither within-x nor opposite."
+    "judgement": "The model's main readout, brain protofibrils, was not measured in patients; scored on its secondary readout, insoluble Aβ, which the model said would not move and which fell. magnitude left null: model null vs a large patient effect is neither within-x nor opposite.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -157,7 +156,6 @@
     "srcLabel": "Madrasi 2021",
     "quote": "To understand why, we developed a quantitative systems pharmacology (QSP) model for seven therapeutics: aducanumab, crenezumab, solanezumab, bapineuzumab, elenbecestat, verubecestat, and semagacestat.",
     "judgement": "Opening entry at first use; the model was built after crenezumab's PET results were public.",
-    "parallel": true,
     "model_id": "qsp-applied-biomath-abeta",
     "model": "Applied BioMath QSP model of Aβ production, aggregation and antibody clearance",
     "model_kind": "in_silico",
@@ -165,7 +163,6 @@
     "model_first_use_year": 2021
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -196,7 +193,6 @@
     "quote": "Crenezumab and solanezumab were predicted to have < 5% plaque decrease from baseline after 200 weeks of treatment.",
     "reason": "Calibrated after BLAZE; reproduces flat PET",
     "judgement": "Retrodiction: the model was calibrated to observed PET data including crenezumab's (Salloway 2018 BLAZE: florbetapir primary not met), so 'retro', not 'same'. The paper says only aducanumab's 1-3 mg/kg titration was predicted a priori; aducanumab is not a member.",
-    "parallel": true,
     "model_id": "qsp-applied-biomath-abeta",
     "model": "Applied BioMath QSP model of Aβ production, aggregation and antibody clearance",
     "model_kind": "in_silico",
@@ -220,7 +216,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -238,7 +233,8 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.4742-11.2012",
     "srcLabel": "Adolfsson 2012",
     "quote": "Furthermore, MABT-mediated amyloid plaque removal was demonstrated using in vivo live imaging in hAPP((V717I))/PS1 transgenic mice.",
-    "judgement": "Opened on crenezumab's model, the only member with a dose that failed and was then raised; no member published a model-derived human exposure target."
+    "judgement": "Opened on crenezumab's model, the only member with a dose that failed and was then raised; no member published a model-derived human exposure target.",
+    "prediction_level": "class"
    },
    {
     "model_id": "happ-ps1-mabt",
@@ -255,7 +251,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -275,7 +270,8 @@
     "srcLabel": "Cummings 2018",
     "quote": "Together with the safety profile for crenezumab, these data support the exploration of crenezumab treatment at even higher doses in patients with early AD.",
     "reason": "Dose reached, drug failed, abandoned",
-    "judgement": "Row 'reached, failed, abandoned': ABBY dosed as planned and failed; CREAD at 60 mg/kg stopped for futility in Jan 2019 (Genentech release; NCT02670083 results posted 2020-07-16), so the higher dose never worked. Low confidence because no model-stated exposure target exists."
+    "judgement": "Row 'reached, failed, abandoned': ABBY dosed as planned and failed; CREAD at 60 mg/kg stopped for futility in Jan 2019 (Genentech release; NCT02670083 results posted 2020-07-16), so the higher dose never worked. Low confidence because no model-stated exposure target exists.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -294,7 +290,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -312,7 +307,8 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.0695-06.2006",
     "srcLabel": "Wilcock 2006",
     "quote": "APP transgenic mice receiving either anti-Abeta (2H6) or deglycosylated anti-Abeta (de-2H6) showed significant improvement in radial arm water maze performance compared with mice receiving a control antibody.",
-    "judgement": "Opening entry on the earliest member model with a cognitive readout."
+    "judgement": "Opening entry on the earliest member model with a cognitive readout.",
+    "prediction_level": "class"
    },
    {
     "model_id": "happ-ps1-mabt",
@@ -329,7 +325,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "null",
@@ -363,7 +358,8 @@
       "quote": "Genentech to discontinue Phase III CREAD 1 and 2 clinical studies of crenezumab in early Alzheimer's disease (press release, 29 Jan 2019; title-level only)"
      }
     ],
-    "judgement": "Adolfsson's model showed plaque removal, not cognition; scored as the class's efficacy prediction for crenezumab. Ponezumab's phase 2 had a safety primary, so it sits in patient_trials, not as the scoring entry."
+    "judgement": "Adolfsson's model showed plaque removal, not cognition; scored as the class's efficacy prediction for crenezumab. Ponezumab's phase 2 had a safety primary, so it sits in patient_trials, not as the scoring entry.",
+    "prediction_level": "class"
    },
    {
     "model_id": "tg-arcswe-mab158",
@@ -380,7 +376,6 @@
     "model_filed": "BLA 761269 pharmacology review, Study W-20100159: mAb158 3-12 mg/kg for 18 weeks did not improve contextual or cued fear conditioning in APPArcSwe mice",
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -409,10 +404,10 @@
       "quote": "BAN2401-G000-201 did not meet the 12-month primary endpoint."
      }
     ],
-    "judgement": "Scored the mouse's null behavioural result as a prediction of no benefit; low confidence because the tests may have had no deficit to rescue. Study 201 missed a Bayesian 80% gate at 12 months while favouring drug, then favoured drug at 18 months; not scored as agreeing with the mouse null."
+    "judgement": "Scored the mouse's null behavioural result as a prediction of no benefit; low confidence because the tests may have had no deficit to rescue. Study 201 missed a Bayesian 80% gate at 12 months while favouring drug, then favoured drug at 18 months; not scored as agreeing with the mouse null.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -443,7 +438,6 @@
     "srcLabel": "Söderberg 2022",
     "quote": "We have characterized the binding properties of lecanemab, aducanumab, and gantenerumab to different Aβ species with inhibition ELISA, immunodepletion, and surface plasmon resonance.",
     "judgement": "Opening entry at first use of this assay panel; run after Study 201's 18-month results were public.",
-    "parallel": true,
     "model_id": "abeta-species-binding-invitro",
     "model": "In-vitro binding to Aβ monomers, protofibrils and fibrils (inhibition ELISA, immunodepletion, SPR)",
     "model_kind": "ex_vivo",
@@ -451,7 +445,6 @@
     "model_first_use_year": 2022
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -483,7 +476,6 @@
     "quote": "Lecanemab’s preferential and strong binding to Aβ protofibrils may explain the difference in clinical efficacy and lower ARIA-E frequency as compared to aducanumab and gantenerumab.",
     "reason": "Post-hoc binding account of 201 result",
     "judgement": "Retrodiction: epub 17 Oct 2022, after Study 201 (Swanson 2021) and Clarity AD's topline; the comparator antibodies are outside the member list, so only lecanemab's own efficacy is scored. model_kind ex_vivo is the nearest enum value for a cell-free in-vitro binding assay.",
-    "parallel": true,
     "model_id": "abeta-species-binding-invitro",
     "model": "In-vitro binding to Aβ monomers, protofibrils and fibrils (inhibition ELISA, immunodepletion, SPR)",
     "model_kind": "ex_vivo",
@@ -507,7 +499,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -525,7 +516,8 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.0695-06.2006",
     "srcLabel": "Wilcock 2006",
     "quote": "Significantly fewer vascular amyloid deposits and microhemorrhages were observed in mice administered the de-2H6 antibody compared with those receiving unmodified 2H6 antibody.",
-    "judgement": "Opening entry: mice with vascular amyloid can show microhemorrhage, so the species could show the harm."
+    "judgement": "Opening entry: mice with vascular amyloid can show microhemorrhage, so the species could show the harm.",
+    "prediction_level": "class"
    },
    {
     "model_id": "happ-ps1-mabt",
@@ -542,7 +534,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -560,7 +551,8 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.4742-11.2012",
     "srcLabel": "Adolfsson 2012",
     "quote": "Data from a phase I clinical trial testing MABT is consistent with this hypothesis, showing no signs of vasogenic edema, even in ApoE4 carriers.",
-    "judgement": "The prediction rests on in-vitro microglial assays (p38MAPK, TNFα), recorded as ex_vivo, the nearest model_kind; the source states the comparison itself."
+    "judgement": "The prediction rests on in-vitro microglial assays (p38MAPK, TNFα), recorded as ex_vivo, the nearest model_kind; the source states the comparison itself.",
+    "prediction_level": "class"
    },
    {
     "model_id": "tg2576-2h6",
@@ -577,7 +569,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -596,10 +587,10 @@
     "srcLabel": "Landen 2017a",
     "quote": "Most common adverse events were fall (16.7% ponezumab, 21.4% placebo), headache (13.8%, 21.4%), and cerebral microhemorrhage (13.8%, 19.6%).",
     "reason": "Effector-reduced antibodies spared microhemorrhage",
-    "judgement": "An in-vivo model taking over from crenezumab's in-vitro one (model_change). Lecanemab, a full-effector IgG1, gave ARIA-E 12.6% in Clarity AD, consistent with the same model, but no microhemorrhage model was run for it (FDA waived it in 2014), so it is not scored."
+    "judgement": "An in-vivo model taking over from crenezumab's in-vitro one (model_change). Lecanemab, a full-effector IgG1, gave ARIA-E 12.6% in Clarity AD, consistent with the same model, but no microhemorrhage model was run for it (FDA waived it in 2014), so it is not scored.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -628,7 +619,6 @@
     "srcLabel": "Söderberg 2024",
     "quote": "We investigated therapeutic Aβ antibody binding to cerebral amyloid angiopathy (CAA) fibrils isolated from human leptomeningeal tissue to study whether this related to the ARIA-E frequencies previously reported by clinical trials.",
     "judgement": "Opening entry at first use; every ARIA-E rate it is compared with was already published.",
-    "parallel": true,
     "model_id": "caa-fibril-binding-human",
     "model": "Antibody binding to CAA Aβ fibrils isolated from human leptomeningeal tissue",
     "model_kind": "ex_vivo",
@@ -636,7 +626,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -666,7 +655,6 @@
     "quote": "Lecanemab showed a low binding to CAA fibrils, consistent with its relatively low ARIA-E frequency of 12.6%, while aducanumab, bapineuzumab, and gantenerumab all showed higher binding to CAA fibrils and substantially higher ARIA-E frequencies (25-35%).",
     "reason": "Reproduces ARIA-E rank order post hoc",
     "judgement": "Retrodiction (Clarity AD ARIA-E 12.6% published 2022). Scored as reproducing the human ranking; it does not predict lecanemab's absolute ARIA-E excess over placebo.",
-    "parallel": true,
     "model_id": "caa-fibril-binding-human",
     "model": "Antibody binding to CAA Aβ fibrils isolated from human leptomeningeal tissue",
     "model_kind": "ex_vivo",
@@ -674,7 +662,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -703,7 +690,6 @@
     "srcLabel": "FDA PharmR 2023",
     "quote": "Microhemorrhage studies were conducted in mice dosed with mAb158 based on the concern for lecanemab-induced cerebral hemorrhage.",
     "judgement": "Opening entry; 2009 is the study-number year (W-2009xxxx), a proxy for first use.",
-    "parallel": true,
     "model_id": "tg2576-mab158",
     "model": "Tg2576 mice given mAb158, lecanemab's murine version",
     "model_kind": "animal",
@@ -711,7 +697,6 @@
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -740,7 +725,6 @@
     "srcLabel": "Leqembi label Jan 2023",
     "quote": "ARIA-H was observed in 6% (10/161) of patients treated with LEQEMBI compared with 5% (12/245) of patients on placebo.",
     "judgement": "Pairing within the January 2023 FDA package: SumR states the mouse null (no mAb158-related microhemorrhage in Tg2576 or APPArcSwe); the label gives Study 201's ARIA-H. ARIA-E is not a histological readout in mice, so only microhemorrhage is scored.",
-    "parallel": true,
     "model_id": "tg2576-mab158",
     "model": "Tg2576 mice given mAb158, lecanemab's murine version",
     "model_kind": "animal",
@@ -748,7 +732,6 @@
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -778,7 +761,6 @@
     "quote": "ARIA-H was observed in 17% (152/898) of patients treated with LEQEMBI compared with 9% (80/897) of patients on placebo.",
     "reason": "Mouse silent; Clarity AD doubled ARIA-H",
     "judgement": "Microhemorrhage is a harm mice can show (intact 2H6 caused it), so the model's silence is contradicted. The label adds there was no increase in isolated ARIA-H, so the excess travels with ARIA-E, which mice cannot show; scored contra at medium confidence. magnitude null: model null vs a ~2x patient excess.",
-    "parallel": true,
     "model_id": "tg2576-mab158",
     "model": "Tg2576 mice given mAb158, lecanemab's murine version",
     "model_kind": "animal",

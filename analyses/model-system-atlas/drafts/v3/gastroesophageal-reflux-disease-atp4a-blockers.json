@@ -44,14 +44,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -80,7 +80,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -88,10 +87,10 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2017,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2022,
@@ -121,7 +120,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "readout_tier": null,
-    "parallel": true,
     "model_id": "pbpk-pd-tegoprazan-simcyp",
     "model": "SimCYP PBPK model of tegoprazan and M1 with an intragastric-pH PD model",
     "model_kind": "in_silico",
@@ -129,7 +127,6 @@
     "model_first_use_year": 2022
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2022,
@@ -160,7 +157,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "readout_tier": "proximal",
-    "parallel": true,
     "model_id": "pbpk-pd-tegoprazan-simcyp",
     "model": "SimCYP PBPK model of tegoprazan and M1 with an intragastric-pH PD model",
     "model_kind": "in_silico",
@@ -168,7 +164,6 @@
     "model_first_use_year": 2022
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2021,
@@ -198,7 +193,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "readout_tier": null,
-    "parallel": true,
     "model_id": "pbpk-pkpd-fexuprazan",
     "model": "Fexuprazan PBPK (rat partition coefficients, allometric scaling) and one-compartment PK models driving an intragastric-pH PD model",
     "model_kind": "in_silico",
@@ -206,7 +200,6 @@
     "model_first_use_year": 2021
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2022,
@@ -237,7 +230,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "readout_tier": "proximal",
-    "parallel": true,
     "model_id": "pbpk-pkpd-fexuprazan",
     "model": "Fexuprazan PBPK (rat partition coefficients, allometric scaling) and one-compartment PK models driving an intragastric-pH PD model",
     "model_kind": "in_silico",
@@ -245,7 +237,6 @@
     "model_first_use_year": 2021
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2024,
@@ -275,7 +266,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "readout_tier": null,
-    "parallel": true,
     "model_id": "ai-pbpk-pd-pcab",
     "model": "AI-PBPK/PD platform (machine-learned ADME, calibrated on vonoprazan) predicting intragastric pH from structure",
     "model_kind": "in_silico",
@@ -283,7 +273,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2024,
@@ -314,7 +303,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "readout_tier": "proximal",
-    "parallel": true,
     "model_id": "ai-pbpk-pd-pcab",
     "model": "AI-PBPK/PD platform (machine-learned ADME, calibrated on vonoprazan) predicting intragastric pH from structure",
     "model_kind": "in_silico",
@@ -322,7 +310,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2026,
@@ -352,7 +339,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "readout_tier": null,
-    "parallel": true,
     "model_id": "multilevel-poppkpd-pcab",
     "model": "Semi-mechanistic multi-level population PK/PD model of P-CABs (food, circadian pH, pH-dependent absorption)",
     "model_kind": "in_silico",
@@ -360,7 +346,6 @@
     "model_first_use_year": 2026
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2026,
@@ -391,7 +376,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "readout_tier": "proximal",
-    "parallel": true,
     "model_id": "multilevel-poppkpd-pcab",
     "model": "Semi-mechanistic multi-level population PK/PD model of P-CABs (food, circadian pH, pH-dependent absorption)",
     "model_kind": "in_silico",
@@ -427,7 +411,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -437,7 +420,8 @@
     "model_first_use_year": 2017,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -467,7 +451,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -476,7 +459,8 @@
     "population": "Unselected",
     "model_first_use_year": 2019,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -505,7 +489,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -535,7 +518,8 @@
       "src": "https://ddw.digitellinc.com/p/s/tegoprazan-100mg-demonstrates-superior-and-faster-healing-of-erosive-esophagitis-and-heartburn-relief-versus-lansoprazole-results-from-the-phase-3-triumph-study-14083",
       "quote": "Tegoprazan met the primary endpoint, demonstrating non-inferiority to lansoprazole for complete healing by week 8 in all patients (84.6% vs 78.0%, p<0.0001)."
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -566,14 +550,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2025
+    "model_first_use_year": 2025,
+    "prediction_level": "class"
    }
   ]
  }

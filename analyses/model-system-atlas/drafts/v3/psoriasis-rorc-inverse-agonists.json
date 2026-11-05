@@ -33,7 +33,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -50,7 +49,8 @@
     "src": "https://doi.org/10.1371/journal.pone.0147979",
     "srcLabel": "Smith 2016",
     "quote": "Finally, target engagement by this small molecule was confirmed in ex vivo lesional psoriatic skin.",
-    "judgement": "Model is the human skin explant assay GSK built to show topical delivery and target engagement before the clinic."
+    "judgement": "Model is the human skin explant assay GSK built to show topical delivery and target engagement before the clinic.",
+    "prediction_level": "class"
    },
    {
     "model_id": "gsk-srica-human-skin",
@@ -67,7 +67,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "null",
     "magnitude_basis": "IL-17-pathway transcripts in 4%-treated vs vehicle plaque biopsies",
@@ -85,7 +84,8 @@
     "src": "https://www.jidonline.org/article/S0022-202X(17)30447-5/fulltext",
     "srcLabel": "GSK SID abstract 2017",
     "quote": "No meaningful changes in IL-17 related biomarkers or psoriasis disease signature were detected.",
-    "judgement": "Explant assay predicted the ointment would reach and suppress IL-17 in skin; patient biopsies did not move. Readout tier proximal: IL-17 transcripts are RORγt's own transcriptional product. Paired by me (abstract does not cite Smith 2016)."
+    "judgement": "Explant assay predicted the ointment would reach and suppress IL-17 in skin; patient biopsies did not move. Readout tier proximal: IL-17 transcripts are RORγt's own transcriptional product. Paired by me (abstract does not cite Smith 2016).",
+    "prediction_level": "class"
    },
    {
     "model_id": "human-whole-blood-il17-vtp",
@@ -102,7 +102,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "ex vivo whole-blood IL-17 inhibition vs the assay IC90",
@@ -121,7 +120,8 @@
     "srcLabel": "AGN-242428 protocol (NCT03339999)",
     "quote": "provided a plasma exposure that was ≥ IC90 for inhibition of IL-17 secretion in an ex vivo whole blood assay of IL-17 secretion, and this inhibition was sustained over a full 24 hours duration with chronic dosing.",
     "reason": "Whole-blood IL-17 blocked in humans",
-    "judgement": "Different model from the 2017 failure (blood ex vivo assay, not topical skin explant), so model_change. AGN-242428 is VTP-43742 under Allergan (protocol: 'formerly Vitae Pharmaceuticals compound VTP-43742'); pooled as one drug."
+    "judgement": "Different model from the 2017 failure (blood ex vivo assay, not topical skin explant), so model_change. AGN-242428 is VTP-43742 under Allergan (protocol: 'formerly Vitae Pharmaceuticals compound VTP-43742'); pooled as one drug.",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -140,7 +140,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -157,7 +156,8 @@
     "src": "https://doi.org/10.1371/journal.pone.0147979",
     "srcLabel": "Smith 2016",
     "quote": "Skin biopsy sections were first exposed to GSK2981278 in a simple ointment at approximately half-log increments between 0.001% and 4% strengths.",
-    "judgement": "The GSK plaque test and NCT03004846 measured plasma, not skin, exposure; whether the topical target was reached is unknown, so GSK2981278 adds no dose comparison."
+    "judgement": "The GSK plaque test and NCT03004846 measured plasma, not skin, exposure; whether the topical target was reached is unknown, so GSK2981278 adds no dose comparison.",
+    "prediction_level": "class"
    },
    {
     "model_id": "human-whole-blood-il17-vtp",
@@ -174,7 +174,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "plasma exposure vs whole-blood IL-17 IC90",
@@ -193,7 +192,8 @@
     "quote": "Administration for 28 days to patients with psoriasis resulted in an improvement in disease as measured by percent change from baseline in PASI scores.",
     "margin_stated": false,
     "reason": "IC90 exposure reached, PASI improved",
-    "judgement": "No nonclinical tolerability margin is public, so decision 16 margin_stated is false. BI 730357 is consistent and adds no status change: Ooi 2023 (doi:10.1002/psp4.12948) puts the PASI plateau above 2000 nmol/L against a 140 nM whole-blood IC50 (Harcken 2021)."
+    "judgement": "No nonclinical tolerability margin is public, so decision 16 margin_stated is false. BI 730357 is consistent and adds no status change: Ooi 2023 (doi:10.1002/psp4.12948) puts the PASI plateau above 2000 nmol/L against a 140 nM whole-blood IC50 (Harcken 2021).",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -212,7 +212,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -229,7 +228,8 @@
     "src": "https://doi.org/10.1371/journal.pone.0147979",
     "srcLabel": "Smith 2016",
     "quote": "Mice exposed to GSK2981278 exhibited reduced skin redness and scaling, as well as decreased hyperplasia, as evidenced by a 23% reduction in epidermal thickness when compared to the placebo + IMQ-treated group",
-    "judgement": "GSK paired the mouse with the human skin explant; the mouse carries the efficacy prediction."
+    "judgement": "GSK paired the mouse with the human skin explant; the mouse carries the efficacy prediction.",
+    "prediction_level": "class"
    },
    {
     "model_id": "gsk-imq-mouse",
@@ -246,7 +246,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "null",
     "magnitude_basis": "AUC change in sonographic infiltrate thickness vs vehicle",
@@ -272,7 +271,8 @@
       "quote": "Mean Percent Change From Baseline in Psoriasis Area and Severity Index (PASI) Score: Part A"
      }
     ],
-    "judgement": "Scored as efficacy contra rather than a dose failure: the model package (Smith 2016) explicitly claimed topical delivery into human skin, so the miss belongs to the model. NCT03004846 open-label 4% ointment: PASI +4.3% at day 57 (n=8); Part B never enrolled."
+    "judgement": "Scored as efficacy contra rather than a dose failure: the model package (Smith 2016) explicitly claimed topical delivery into human skin, so the miss belongs to the model. NCT03004846 open-label 4% ointment: PASI +4.3% at day 57 (n=8); Part B never enrolled.",
+    "prediction_level": "class"
    },
    {
     "model_id": "il23-minicircle-mouse-bi",
@@ -289,7 +289,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "mouse skin IL-17A mRNA inhibition up to 109% and S100a8/9 up to 95% vs PASI75 30% (Imax 0.56 in Ooi 2023)",
@@ -323,7 +322,8 @@
      }
     ],
     "reason": "Primary met, moderate effect",
-    "judgement": "Direction matched, so same; the mouse's near-total IL-17 suppression over-promised a biologic-like effect (source_calls_it partial). VTP-43742 2016 Phase 2a (press release only, no published model side) and the terminated AGN-242428 trial are listed in patient_trials."
+    "judgement": "Direction matched, so same; the mouse's near-total IL-17 suppression over-promised a biologic-like effect (source_calls_it partial). VTP-43742 2016 Phase 2a (press release only, no published model side) and the terminated AGN-242428 trial are listed in patient_trials.",
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -342,7 +342,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -360,7 +359,8 @@
     "srcLabel": "AGN-242428 protocol (NCT03339999)",
     "quote": "Summaries and detailed results of individual studies and assays included in the nonclinical investigational program are included in the investigator's brochure (IB).",
     "reason": "No public nonclinical safety data",
-    "judgement": "Thymic lymphoma in RORγ-null mice is the known on-target concern but no trial was long enough to test it; the liver signal cannot be scored without the sponsor's tox findings."
+    "judgement": "Thymic lymphoma in RORγ-null mice is the known on-target concern but no trial was long enough to test it; the liver signal cannot be scored without the sponsor's tox findings.",
+    "prediction_level": "class"
    }
   ]
  }

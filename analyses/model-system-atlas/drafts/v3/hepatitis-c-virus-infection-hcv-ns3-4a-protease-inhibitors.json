@@ -32,7 +32,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -50,7 +49,8 @@
     "short": "Replicon EC50 8 nM",
     "src": "https://doi.org/10.1128/AAC.01058-08",
     "srcLabel": "Lin 2009",
-    "quote": "TMC435350 inhibited HCV replication in a cellular assay (subgenomic 1b replicon) with a half-maximal effective concentration (EC(50)) of 8 nM and a selectivity index of 5,875."
+    "quote": "TMC435350 inhibited HCV replication in a cellular assay (subgenomic 1b replicon) with a half-maximal effective concentration (EC(50)) of 8 nM and a selectivity index of 5,875.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -66,7 +66,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -87,10 +86,10 @@
     "quote": "Plasma HCV-RNA levels dropped rapidly in all patients, with a median maximal reduction of 3.9-log(10) IU/mL and a median of 6 days to maximal reduction.",
     "readout_tier": "proximal",
     "reason": "Viral load fell as replicon predicted",
-    "judgement": "Paired by me (Lin 2009 replicon, Reesink 2010 patients); viral RNA is the target's own product, so proximal tier. Replicon also predicted the genotype 3 gap, which held in patients (Moreno 2012, doi:10.1016/j.jhep.2011.12.033: 'No antiviral activity was evident for genotype 3'); not entered as a separate same-status entry."
+    "judgement": "Paired by me (Lin 2009 replicon, Reesink 2010 patients); viral RNA is the target's own product, so proximal tier. Replicon also predicted the genotype 3 gap, which held in patients (Moreno 2012, doi:10.1016/j.jhep.2011.12.033: 'No antiviral activity was evident for genotype 3'); not entered as a separate same-status entry.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2010,
@@ -120,7 +119,6 @@
     "population": "HCV genotype 1 (unselected for NS3 polymorphisms)",
     "readout_tier": "proximal",
     "judgement": "Opening entry at the first published chimpanzee use with a member drug (vaniprevir, epub 2010-11-29). model_filed false: no chimpanzee data found in the US review bundle (vaniprevir was not filed in the US).",
-    "parallel": true,
     "model_id": "hcv-chimpanzee",
     "model": "Chronically HCV-infected chimpanzee (genotype 1a/1b)",
     "model_kind": "animal",
@@ -128,7 +126,6 @@
     "model_first_use_year": 2010
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2013,
@@ -159,7 +156,6 @@
     "readout_tier": "proximal",
     "reason": "Patient viral load fell as in chimps",
     "judgement": "Paired by me (Olsen 2011 chimpanzee, Lawitz 2013 patients). The grazoprevir pair agrees within 2x on the log scale and changes no status: chimps 4-5 log10 at 1 mg/kg bid for 7 days (Summa 2012, doi:10.1128/AAC.00324-12) vs patients 4.74 log10 at 100 mg qd GT1 (NCT00998985, results posted 2016-03-02; Clin Ther 2018, doi:10.1016/j.clinthera.2018.03.002). Chimps carried only GT1, so they could not show grazoprevir's GT3 gap (2.64 log10).",
-    "parallel": true,
     "model_id": "hcv-chimpanzee",
     "model": "Chronically HCV-infected chimpanzee (genotype 1a/1b)",
     "model_kind": "animal",
@@ -182,7 +178,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -200,7 +195,8 @@
     "short": "Rat exposure above replicon EC99",
     "src": "https://doi.org/10.1128/AAC.01058-08",
     "srcLabel": "Lin 2009",
-    "quote": "Compound concentrations detected in both plasma and liver at 8 h postdosing were above the EC(99) value measured in the replicon."
+    "quote": "Compound concentrations detected in both plasma and liver at 8 h postdosing were above the EC(99) value measured in the replicon.",
+    "prediction_level": "class"
    },
    {
     "subjects": "mixed",
@@ -216,7 +212,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -237,7 +232,8 @@
     "quote": "Once daily TMC435 given orally was generally safe and well tolerated and demonstrated potent antiviral activity.",
     "margin_stated": null,
     "reason": "Target dose reached and active",
-    "judgement": "Scored same under the 'reached, drug worked' row: the regimen carried in at the rat-PK/replicon target produced the predicted response, and the drug later worked in Phase 3. Not margin_stated: the abstract states no NOAEL. Glecaprevir's review (209394 PharmR) states a 70x NOAEL margin at 300 mg, which held; not entered separately to avoid a same-status repeat. Reddy 2012 (doi:10.1128/AAC.06283-11, 14 PIs) found plasma trough/protein-shifted EC50 did not rank-order 3-day viral declines without liver-to-plasma ratios; a retrospective magnitude analysis, not scored."
+    "judgement": "Scored same under the 'reached, drug worked' row: the regimen carried in at the rat-PK/replicon target produced the predicted response, and the drug later worked in Phase 3. Not margin_stated: the abstract states no NOAEL. Glecaprevir's review (209394 PharmR) states a 70x NOAEL margin at 300 mg, which held; not entered separately to avoid a same-status repeat. Reddy 2012 (doi:10.1128/AAC.06283-11, 14 PIs) found plasma trough/protein-shifted EC50 did not rank-order 3-day viral declines without liver-to-plasma ratios; a retrospective magnitude analysis, not scored.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -255,7 +251,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -273,7 +268,8 @@
     "short": "Replicon: synergy with interferon",
     "src": "https://doi.org/10.1128/AAC.01058-08",
     "srcLabel": "Lin 2009",
-    "quote": "The compound was synergistic with alpha interferon and an NS5B inhibitor in the replicon model and additive with ribavirin."
+    "quote": "The compound was synergistic with alpha interferon and an NS5B inhibitor in the replicon model and additive with ribavirin.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -289,7 +285,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -319,10 +314,10 @@
      }
     ],
     "reason": "SVR rose; Q80K loss as predicted",
-    "judgement": "comparison_stated true because the label ties the clinical Q80K loss to its microbiology section (12.4) that gives the replicon fold change. Year is the label (Nov 2013), before QUEST-1 results posted (2014-06-04). No member failed on efficacy in patients (faldaprevir stopped commercially; sovaprevir for safety), so not neg."
+    "judgement": "comparison_stated true because the label ties the clinical Q80K loss to its microbiology section (12.4) that gives the replicon fold change. Year is the label (Nov 2013), before QUEST-1 results posted (2014-06-04). No member failed on efficacy in patients (faldaprevir stopped commercially; sovaprevir for safety), so not neg.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2015,
@@ -354,7 +349,6 @@
     "outcome_tested": null,
     "patient_trials": [],
     "judgement": "Patient-level prediction: which patients (those carrying protease-inhibitor resistance from a prior simeprevir failure) will not respond to an asunaprevir regimen. model_first_use_year 2015 is a proxy: the first member-drug use found; the mouse was used with telaprevir earlier. The paper says the patient effect was not yet known, so the prediction is prospective.",
-    "parallel": true,
     "model_id": "hcv-human-hepatocyte-chimeric-mouse",
     "model": "Human hepatocyte chimeric mouse (uPA/SCID) infected with patient HCV genotype 1b",
     "model_kind": "animal",
@@ -362,7 +356,6 @@
     "model_first_use_year": 2015
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2016,
@@ -395,7 +388,6 @@
     "patient_trials": [],
     "reason": "Prior PI failure predicted poor response",
     "judgement": "comparison_stated true: the same paper reports the patient cohort and chimeric mice infected with those patients' sera. retrodiction false because the status rests on the 2015 mouse prediction, made before this patient result; the 2016 mouse arm itself ran after the patients failed and is not scored separately. Endpoint is the cohort's virological response (SVR) to the regimen, not a pre-specified trial endpoint.",
-    "parallel": true,
     "model_id": "hcv-human-hepatocyte-chimeric-mouse",
     "model": "Human hepatocyte chimeric mouse (uPA/SCID) infected with patient HCV genotype 1b",
     "model_kind": "animal",
@@ -418,7 +410,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -436,7 +427,8 @@
     "short": "Dog heart, rat testis flags",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/label/2013/205123s000lbledt.pdf",
     "srcLabel": "Olysio label 2013",
-    "quote": "Cardiovascular toxicity consisting of acute endocardial and myocardial necrosis restricted to the left ventricular subendocardial area was seen in 2 out of 6 animals in a 2-week oral dog toxicity study"
+    "quote": "Cardiovascular toxicity consisting of acute endocardial and myocardial necrosis restricted to the left ventricular subendocardial area was seen in 2 out of 6 animals in a 2-week oral dog toxicity study",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -452,7 +444,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "off_by_>5x",
@@ -472,7 +463,8 @@
     "srcLabel": "FDA Zepatier review 2016",
     "quote": "The main target organs of toxicity identified following oral GZR administration were the liver and gallbladder (mice and dogs), with related hepatobiliary findings also observed in clinical trials.",
     "reason": "Hepatobiliary harm predicted in kind",
-    "judgement": "Same in kind, stated by FDA. The margin was misplaced (toxic dose >=74x in animals; ALT >5xULN in 1% of patients at clinical exposure) but the dose was not blocked, so it stays in safety rather than dose (decision 16). Hepatic decompensation in Child-Pugh B/C cirrhosis (class-wide FDA warnings) is not scored: healthy animals cannot show it."
+    "judgement": "Same in kind, stated by FDA. The margin was misplaced (toxic dose >=74x in animals; ALT >5xULN in 1% of patients at clinical exposure) but the dose was not blocked, so it stays in safety rather than dose (decision 16). Hepatic decompensation in Child-Pugh B/C cirrhosis (class-wide FDA warnings) is not scored: healthy animals cannot show it.",
+    "prediction_level": "class"
    }
   ]
  }

@@ -2,8 +2,9 @@
 
     .venv/bin/python analyses/model-system-atlas/drafts/lint.py [draft.json ...]
 
-Every draft: empty cells (no model relied on), consecutive same-status entries (best-model changes
-that figure.py collapses), unknown keys, unsorted years, missing `reason` on the latest entry.
+Every draft: empty cells (no model relied on), consecutive same-status entries on one track, unknown
+keys, unsorted years. A track is one model system's entries in a cell (its `model_id`; v2 drafts have one
+track per cell), kept apart per modality where a multi-modality tile splits dose and safety.
 A draft that declares `"schema": 3` is also held to the v3 rules (`RULES_V3_PROPOSAL.md`): the v3
 fields are present, and each status carries the fields its decision requires.
 """
@@ -23,11 +24,11 @@ KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", 
 
 STAT_V3 = STAT | {"retro"}
 MATCHED = {"same", "neg", "other", "retro"}
-KEYS_V3 = KEYS | {"strengthens", "parallel", "prediction_level", "modality", "model_id", "source_tier", "model_src", "model_src_tier", "trial_unreported", "patient_signal_reversed",
-                  "model_kind", "model_change", "retrodiction", "imported_from", "magnitude_basis",
+KEYS_V3 = KEYS | {"strengthens", "prediction_level", "modality", "model_id", "source_tier", "model_src", "model_src_tier", "trial_unreported", "patient_signal_reversed",
+                  "model_kind", "retrodiction", "imported_from", "magnitude_basis",
                   "confidence_note", "readout_tier", "derived_from", "blocked_by", "margin_stated",
                   "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
-REQUIRED_V3 = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "model_change", "retrodiction",
+REQUIRED_V3 = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "retrodiction",
                "confidence", "magnitude", "source_calls_it")
 ENUM_V3 = {
     "confidence": {"high", "medium", "low"},
@@ -48,7 +49,7 @@ MODALITY = {"small molecule", "antibody", "ADC", "protein", "peptide", "oligo", 
 
 
 def v3_entry(q: str, e: dict, prev: dict | None) -> list[str]:
-    """The v3 rules one entry breaks, given the entry before it in the same cell."""
+    """The v3 rules one entry breaks, given the entry before it on the same track."""
     out = [f"v3 field missing: {k}" for k in REQUIRED_V3 if k not in e]
     out += [f"v3 {k}={e[k]!r} not in enum" for k, allowed in ENUM_V3.items() if k in e and e[k] not in allowed]
     out += [f"{k} only belongs on {cell}" for k, cell in ONLY_IN.items() if e.get(k) not in (None, False) and q != cell]
@@ -76,11 +77,9 @@ def v3_entry(q: str, e: dict, prev: dict | None) -> list[str]:
         out.append("a toxicity block is never derived_from efficacy (decision 16)")
     if q == "engagement" and s not in ("untested", None) and "readout_tier" not in e:
         out.append("engagement entry without readout_tier (decision 15)")
-    if prev and e.get("model_change") is True and e.get("model_id") == prev.get("model_id"):
-        out.append("model_change with the same model_id (decision 6)")
     if prev and prev.get("status") == "contra" and s in MATCHED:
-        if not (e.get("model_change") is True or e.get("patient_signal_reversed") is True):
-            out.append("contra -> matched without model_change or patient_signal_reversed (decision 6)")
+        if e.get("patient_signal_reversed") is not True:
+            out.append("contra -> matched on one track without patient_signal_reversed (decision 6)")
         if e.get("patient_signal_reversed") is True and tier not in (1, 2, 3, 4):
             out.append("patient_signal_reversed needs a tier 1-4 source (decision 6)")
     return out
@@ -106,11 +105,8 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
         split = v3 and isinstance(d.get("modality_groups"), list) and len(d["modality_groups"]) > 1
 
         def track(e: dict):
-            """The strip an entry belongs to: a parallel model's own track, else the best-model strip
-            (one per modality in a split cell)."""
-            if e.get("parallel"):
-                return ("parallel", e.get("modality"), e.get("model_id"), e.get("prediction_level"))
-            return ("best", e.get("modality") if split and q in ("dose", "safety") else None, None)
+            """The track an entry belongs to: its model system, per modality in a split cell."""
+            return (e.get("modality") if split and q in ("dose", "safety") else None, e.get("model_id"))
 
         for q in QUESTIONS:
             strip = d.get("cells", {}).get(q)
@@ -123,8 +119,6 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             last: dict = {}
             for i, e in enumerate(strip, 1):
                 prev = last.get(track(e))
-                if e.get("parallel") and not e.get("model_id"):
-                    issues.append((cid, q, f"entry {i}: parallel entry without model_id"))
                 if v3 and e.get("modality") is not None and e["modality"] not in (d.get("modality_groups") or []):
                     issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups (decision 12)"))
                 if split and q == "dose" and e.get("modality") is None:
@@ -133,19 +127,16 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                     issues.append((cid, q, f"bad status {e.get('status')!r}"))
                 if not isinstance(e.get("year"), int):
                     issues.append((cid, q, f"year not int: {e.get('year')!r}"))
-                if prev and e.get("status") == prev.get("status") and not (v3 and (e.get("model_change") or e.get("strengthens"))):
-                    issues.append((cid, q, f"same-status entry {i} ({e['status']}): model change or strengthening"))
+                if prev and e.get("status") == prev.get("status") and not (v3 and e.get("strengthens")):
+                    issues.append((cid, q, f"same-status entry {i} ({e['status']}) on one track without strengthens"))
                 if v3:
                     issues += [(cid, q, f"entry {i}: {m}") for m in v3_entry(q, e, prev)]
                 last[track(e)] = e
                 extra.update(k for k in e if k not in (KEYS_V3 if v3 else KEYS))
-            best = [e for e in strip if not e.get("parallel")]
-            if best and "reason" not in best[-1]:
-                issues.append((cid, q, "latest entry lacks reason"))
             for key in {track(e) for e in strip}:
                 ys = [e.get("year") for e in strip if track(e) == key]
                 if sorted(y for y in ys if isinstance(y, int)) != ys:
-                    issues.append((cid, q, "years not sorted" + (f" {key[1:]}" if key != ("best", None, None) else "")))
+                    issues.append((cid, q, "years not sorted" + (f" {key}" if key != (None, None) else "")))
     return extra, issues
 
 

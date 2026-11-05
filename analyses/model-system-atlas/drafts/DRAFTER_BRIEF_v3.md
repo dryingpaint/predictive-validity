@@ -26,9 +26,9 @@ Start by listing **every model system that has been compared with patients for t
 the one the class went into patients on. Search the pivotal preclinical papers and FDA/EMA reviews, and
 also "<class or member> + <model type> + predicts / correlates with clinical response", regulator
 reliance (label expansions on in-vitro data), and patient-level uses (patient-derived organoids or cells
-used to choose who gets treated). The system the class relied on to go into patients is the cell's main
-strip. Every other model system with a comparison gets its own **parallel track**: its entries carry
-`parallel: true` and their own `model_id`, and are scored by the same rules within that track. Every entry
+used to choose who gets treated). Each model system is a **track**: its entries share one `model_id`
+and are scored by the same rules within that track. The system the class went into patients on is one
+track among them. Every entry
 records `prediction_level`: `class` (does the drug class work) or `patient` (does the model pick which
 patients or genotypes respond). Three cases that are all in scope:
 - the animals were dosed with a sibling drug, not this one: allowed, `product_in_model: false`;
@@ -76,14 +76,14 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
   predicted harm that never appeared in patients is a wrong prediction: `contra`, `magnitude: "opposite"`.
   Safety comparisons made in another indication or population transfer, flagged `imported_from`.
 
-## Status of the BEST model in the context, as of a year (one entry per change of status)
+## Status of one track, as of a year (one entry per change of status on that track)
 | key | status | rule (v3) |
 |---|---|---|
 | untested | Never compared | a model exists and was used for this class, but no admissible comparison of its prediction with patient results |
 | same | Matched | a comparison shows the model's prediction agreed with patient results for ≥1 drug of this class, in direction; record how far off in `magnitude`; partial agreement is `same` + `source_calls_it: "partial"` |
 | neg | Matched, incl. a known failure | `same`, AND the model's own data for a drug of this class fell below the class's usual effect bar and that drug failed in patients. Record the model's number in `effect_size` and the bar in `class_threshold`. Judged on what the data showed, not on what the sponsor said about them (decision 13) |
 | other | Matched, same platform only | safety only: another molecule on the same platform showed the same harm. Evidence from another drug class is set aside, not scored (decision 13) |
-| contra | Contradicted | the model predicted wrongly for a drug in this context. A failed model stays failed. A later entry may turn the cell back only when (a) a different model took over and its prediction held (`model_change: true`), or (b) a tier 1–4 source shows the early patient signal attenuated to background, so the model was right (`patient_signal_reversed: true`). One drug's `contra` still beats another drug's `same` on the same model |
+| contra | Contradicted | the model predicted wrongly for a drug in this context. A failed model stays failed on its track; a newer model that did better is its own track. A later entry turns the track back only when a tier 1–4 source shows the early patient signal attenuated to background, so the model was right (`patient_signal_reversed: true`). One drug's `contra` still beats another drug's `same` on the same track |
 | retro | Reproduces the known result | a retrodiction (`retrodiction: true`) that reproduced the human data; drawn with its own mark and counted apart from `same` (decision 10) |
 
 ## Evidence rules (v3)
@@ -125,7 +125,7 @@ Record with null when unknown. They do not change your status call; they let the
 in every entry and cell, a different system gets a new one) · `subjects` (patients | healthy_volunteers | mixed) · `comparison_stated` · `source_tier` (1–5) ·
 `model_src` · `model_src_tier` (1–3) · `trial_unreported` · `patient_signal_reversed` · `epub_year` · `print_year` · `registry_date` · `model_filed` · `product_in_model` ·
 `model_kind` (animal | human_challenge | ex_vivo | in_silico | human_genetic | cross_indication) ·
-`model_change` · `retrodiction` · `imported_from` (MONDO id) · `magnitude` (within_2x | off_by_2-5x |
+`retrodiction` · `imported_from` (MONDO id) · `magnitude` (within_2x | off_by_2-5x |
 off_by_>5x | direction_only | null | opposite) · `magnitude_basis` (the quantity it is computed on) ·
 `source_calls_it` (match | miss | scaling | partial | unresolved | over_predicted) · `population` ·
 `model_first_use_year` · `confidence` (high | medium | low, enum) · `confidence_note` (free text) ·

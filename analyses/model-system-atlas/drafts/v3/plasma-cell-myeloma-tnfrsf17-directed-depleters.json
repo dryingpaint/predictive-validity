@@ -34,7 +34,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -51,7 +50,8 @@
     "short": "Anti-BCMA CAR clears mouse xenografts",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-2422",
     "srcLabel": "Carpenter 2013",
-    "quote": "The anti-BCMA-CAR-transduced T cells exhibited BCMA-specific functions including cytokine production, proliferation, cytotoxicity, and in vivo tumor eradication."
+    "quote": "The anti-BCMA-CAR-transduced T cells exhibited BCMA-specific functions including cytokine production, proliferation, cytotoxicity, and in vivo tumor eradication.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -67,7 +67,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "depletion of BCMA+ marrow plasma cells (flow cytometry)",
@@ -87,7 +86,8 @@
     "srcLabel": "Ali 2016",
     "quote": "After treatment, bone marrow plasma cells became undetectable by flow cytometry, and the patient's MM entered a stringent complete remission that lasted for 17 weeks before relapse.",
     "reason": "Plasma cells cleared as model said",
-    "judgement": "Readout taken as loss of the BCMA-bearing cell, scored downstream because no occupancy or free-target assay was the model's readout. Paired by me: Ali cites but does not compare with the xenograft. Soluble-BCMA elimination after ide-cel (FDA Abecma SBRA 2021) is later and not compared with any model either."
+    "judgement": "Readout taken as loss of the BCMA-bearing cell, scored downstream because no occupancy or free-target assay was the model's readout. Paired by me: Ali cites but does not compare with the xenograft. Soluble-BCMA elimination after ide-cel (FDA Abecma SBRA 2021) is later and not compared with any model either.",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -105,7 +105,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -125,7 +124,8 @@
     "srcLabel": "FDA Abecma SBRA 2021",
     "quote": "intravenous administration of ABECMA demonstrated dose-dependent anti-tumor activity and improved survival compared to control mice.",
     "reason": "No dose target to compare",
-    "judgement": "Dated at model first use (Carpenter 2013) with the FDA summary as the source that names the filed model. Teclistamab's ex vivo EC90 dose model (v2 lead) dropped: teclistamab is not a member of this tile."
+    "judgement": "Dated at model first use (Carpenter 2013) with the FDA summary as the source that names the filed model. Teclistamab's ex vivo EC90 dose model (v2 lead) dropped: teclistamab is not a member of this tile.",
+    "prediction_level": "class"
    },
    {
     "subjects": null,
@@ -141,7 +141,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -161,10 +160,10 @@
     "srcLabel": "Tai 2014",
     "quote": "Importantly, J6M0-mcMMAF rapidly eliminates myeloma cells in subcutaneous and disseminated mouse models, and mice remain tumor-free up to 3.5 months.",
     "reason": "No exposure target stated",
-    "judgement": "No source states a xenograft exposure target or a tolerated-margin claim for the effective dose, so decision 16 does not apply; the corneal harm is counted once, in safety. DREAMM-1 (Trudel 2018, doi:10.1016/S1470-2045(18)30576-X) primary endpoints were MTD and RP2D. Vonsetamig (antibody) has no myeloma dose data found."
+    "judgement": "No source states a xenograft exposure target or a tolerated-margin claim for the effective dose, so decision 16 does not apply; the corneal harm is counted once, in safety. DREAMM-1 (Trudel 2018, doi:10.1016/S1470-2045(18)30576-X) primary endpoints were MTD and RP2D. Vonsetamig (antibody) has no myeloma dose data found.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -194,14 +193,12 @@
     "model_filed": null,
     "magnitude": null,
     "magnitude_basis": null,
-    "parallel": true,
     "model_id": "belamaf-sim-framework-poppk-kva",
     "model": "Belantamab PopPK + M-protein tumour-growth + keratopathy Markov simulation framework",
     "model_kind": "in_silico",
     "model_first_use_year": 2026
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -232,7 +229,6 @@
     "model_filed": null,
     "magnitude": "within_2x",
     "magnitude_basis": "simulated vs observed VGPR+ rate and grade>=3 ophthalmic exam finding rate (87.5% vs 76.5%; 77.2% vs 82.5%)",
-    "parallel": true,
     "model_id": "belamaf-sim-framework-poppk-kva",
     "model": "Belantamab PopPK + M-protein tumour-growth + keratopathy Markov simulation framework",
     "model_kind": "in_silico",
@@ -254,7 +250,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -271,7 +266,8 @@
     "short": "CAR-T eradicates mouse xenografts",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-2422",
     "srcLabel": "Carpenter 2013",
-    "quote": "The anti-BCMA-CAR-transduced T cells exhibited BCMA-specific functions including cytokine production, proliferation, cytotoxicity, and in vivo tumor eradication."
+    "quote": "The anti-BCMA-CAR-transduced T cells exhibited BCMA-specific functions including cytokine production, proliferation, cytotoxicity, and in vivo tumor eradication.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -287,7 +283,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "xenograft tumour-free survival vs patient overall response rate",
@@ -321,10 +316,10 @@
       "quote": "Final analysis results from DREAMM-3, a phase 3 study of belantamab mafodotin versus pomalidomide plus dexamethasone in patients with relapsed/refractory multiple myeloma."
      }
     ],
-    "judgement": "The first trial of a member drug whose primary endpoint was efficacy; earlier CAR-BCMA phase 1s (Ali 2016, Raje 2019) had safety primaries. Pooled across modalities: ide-cel KarMMa (ORR 73%, primary met) agrees with the CAR-T xenograft. DREAMM-3 missed PFS superiority over pomalidomide-dexamethasone, an active comparator the xenograft never addressed, so it is not scored contra; its result is known to me from the registry posting and press coverage, not read in full here."
+    "judgement": "The first trial of a member drug whose primary endpoint was efficacy; earlier CAR-BCMA phase 1s (Ali 2016, Raje 2019) had safety primaries. Pooled across modalities: ide-cel KarMMa (ORR 73%, primary met) agrees with the CAR-T xenograft. DREAMM-3 missed PFS superiority over pomalidomide-dexamethasone, an active comparator the xenograft never addressed, so it is not scored contra; its result is known to me from the registry posting and press coverage, not read in full here.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -354,14 +349,12 @@
     "magnitude": null,
     "magnitude_basis": null,
     "endpoint_role": null,
-    "parallel": true,
     "model_id": "bb2121-bcma-density-cell-panel",
     "model": "bb2121 CAR T cytotoxicity against cell lines of quantified BCMA density (in vitro)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2018
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -392,7 +385,6 @@
     "magnitude": "direction_only",
     "magnitude_basis": "ORR by screening tumour BCMA <50% vs >=50% at 450x10^6 CAR+ T cells (100% vs 91%)",
     "endpoint_role": null,
-    "parallel": true,
     "model_id": "bb2121-bcma-density-cell-panel",
     "model": "bb2121 CAR T cytotoxicity against cell lines of quantified BCMA density (in vitro)",
     "model_kind": "ex_vivo",
@@ -414,7 +406,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -433,7 +424,8 @@
     "srcLabel": "FDA Abecma SBRA 2021",
     "quote": "No ABECMA-related adverse findings were reported in these studies.",
     "reason": "Mouse could not show CRS",
-    "judgement": "v2 scored this contra; under v3 a mouse that cannot show cytokine release is not wrong by staying silent. CRS (84%) and neurotoxicity (18%) in KarMMa are on-target, so pooled with no modality."
+    "judgement": "v2 scored this contra; under v3 a mouse that cannot show cytokine release is not wrong by staying silent. CRS (84%) and neurotoxicity (18%) in KarMMa are on-target, so pooled with no modality.",
+    "prediction_level": "class"
    },
    {
     "subjects": null,
@@ -449,7 +441,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -467,7 +458,8 @@
     "short": "Rat and rabbit corneal necrosis",
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2020/761158Orig1s000MultidisciplineR.pdf",
     "srcLabel": "FDA Blenrep review 2020",
-    "quote": "Belantamab mafodotin increased mitoses of corneal epithelial cells with bilateral single cell necrosis in rats."
+    "quote": "Belantamab mafodotin increased mitoses of corneal epithelial cells with bilateral single cell necrosis in rats.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -483,7 +475,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "corneal epithelial injury: minimal non-adverse in rats vs 44% severe keratopathy",
@@ -503,7 +494,8 @@
     "srcLabel": "FDA Blenrep review 2020",
     "quote": "Keratopathy was the most frequently reported toxicity with belantamab mafodotin, with an overall incidence of 71%, and 44% of patients experiencing at least one episode of severe keratopathy at the 2.5 mg/kg dose level.",
     "reason": "Corneal harm predicted, severity not",
-    "judgement": "Scored same in direction (harm predicted, harm seen) rather than contra: severity misjudged gives direction_only. Platform harm (MMAF; drug does not bind rat BCMA), so split to ADC. Dated to the review, the first public record of the animal finding; patient keratopathy was public from DREAMM-1 (2018)."
+    "judgement": "Scored same in direction (harm predicted, harm seen) rather than contra: severity misjudged gives direction_only. Platform harm (MMAF; drug does not bind rat BCMA), so split to ADC. Dated to the review, the first public record of the animal finding; patient keratopathy was public from DREAMM-1 (2018).",
+    "prediction_level": "class"
    }
   ]
  }

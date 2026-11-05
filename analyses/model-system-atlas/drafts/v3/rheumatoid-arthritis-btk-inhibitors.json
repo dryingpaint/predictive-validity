@@ -43,14 +43,14 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
     "year": 2013,
@@ -79,7 +79,6 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "readout_tier": "direct",
@@ -87,7 +86,8 @@
     "magnitude_basis": "fraction of circulating BTK occupied",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -116,13 +116,13 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
     "year": 2020,
@@ -150,7 +150,6 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "derived_from": null,
     "blocked_by": null,
@@ -159,7 +158,8 @@
     "magnitude_basis": "plasma concentration relative to the rat-CIA IC70",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
     "year": 2022,
@@ -188,7 +188,6 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "derived_from": "efficacy",
     "blocked_by": null,
@@ -197,7 +196,8 @@
     "magnitude_basis": "DAS28-CRP change vs placebo at the model-sufficient occupancy",
     "source_calls_it": "miss",
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -226,13 +226,13 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -261,7 +261,6 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "endpoint_role": "primary",
     "outcome_tested": null,
@@ -313,7 +312,8 @@
       "doi": "10.1136/ard-2022-223759",
       "quote": "The primary endpoint was not achieved."
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -344,17 +344,16 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2017,
@@ -384,14 +383,12 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Relapsed mantle cell lymphoma / CLL (imported)",
-    "parallel": true,
     "model_id": "human-platelet-aggregometry-acala-vs-ibru",
     "model": "Human platelet aggregometry and humanized-mouse thrombus formation (acalabrutinib vs ibrutinib)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2017
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2021,
@@ -422,7 +419,6 @@
     "magnitude_basis": "any-grade bleeding incidence, acalabrutinib vs ibrutinib",
     "source_calls_it": "partial",
     "population": "Previously treated CLL with del(17p) or del(11q) (imported)",
-    "parallel": true,
     "model_id": "human-platelet-aggregometry-acala-vs-ibru",
     "model": "Human platelet aggregometry and humanized-mouse thrombus formation (acalabrutinib vs ibrutinib)",
     "model_kind": "ex_vivo",

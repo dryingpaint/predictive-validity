@@ -42,7 +42,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -52,7 +51,8 @@
     "model_first_use_year": 2012,
     "year": 2012,
     "status": "untested",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "prediction_level": "class"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
@@ -78,7 +78,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "off_by_2-5x",
@@ -89,10 +88,10 @@
     "year": 2018,
     "status": "same",
     "reason": "Outflow facility rose in humans",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -123,14 +122,12 @@
     "srcLabel": "Kiel 2015",
     "quote": "Three hours after AR-13324 dosing, IOP was reduced by 39%±7% (P<0.001) and EVP decreased by 35%±4% (P<0.05); after vehicle dosing, IOP was reduced by 24%±4% (P<0.05) and EVP increased by 25%±5% (P<0.05).",
     "judgement": "Opens at the paper's online date (2015-03); the human aqueous-dynamics study NCT02406287 started 2015-04, so the prediction was prospective.",
-    "parallel": true,
     "model_id": "rabbit-evp-dutch-belted-netarsudil",
     "model": "Dutch Belted rabbit, invasive episcleral venous pressure, topical netarsudil 0.04%",
     "model_kind": "animal",
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -162,14 +159,12 @@
     "quote": "Diurnal episcleral venous pressure (EVP) in netarsudil-treated eyes decreased from 7.9 ± 1.2 mmHg to 7.2 ± 1.8 (-10%; P = 0.01).",
     "reason": "EVP fell in humans, smaller",
     "judgement": "Paired by me: Kazemi does not cite the rabbit data in the abstract. Within-eye fall significant, between-eye difference not, hence partial. 35% vs 10% is 3.5-fold.",
-    "parallel": true,
     "model_id": "rabbit-evp-dutch-belted-netarsudil",
     "model": "Dutch Belted rabbit, invasive episcleral venous pressure, topical netarsudil 0.04%",
     "model_kind": "animal",
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -200,14 +195,12 @@
     "srcLabel": "Ren 2016",
     "quote": "Perfusion with netarsudil-M1 significantly increased C when compared to baseline (51%, P < 0.01) and to paired controls (102%, P < 0.01), as well as significantly increased PEFL in both IW (P < 0.05) and ESVs (P < 0.01).",
     "judgement": "Human tissue but not a dosed person, so a model (ex_vivo). Published 2016-11, before human outflow-facility data were public (NCT02406287 completed 2016-04, no posted results, published 2018), so prospective as far as public record shows.",
-    "parallel": true,
     "model_id": "human-enucleated-eye-perfusion-netarsudil",
     "model": "Perfused enucleated human donor eyes, netarsudil-M1 0.3 μM",
     "model_kind": "ex_vivo",
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -239,14 +232,12 @@
     "quote": "In netarsudil-treated eyes, diurnal outflow facility increased from 0.27 ± 0.10 μL/min/mmHg to 0.33 ± 0.11 μL/min/mmHg (+22%; P = 0.02) after 7 days of treatment.",
     "reason": "Outflow facility rose in humans",
     "judgement": "Paired by me. Ex-vivo dosing was the active metabolite at a fixed perfusate concentration, so the dose link is loose; 51% vs 22% is 2.3-fold. Kept to engagement: the system made no IOP or dose prediction for patients.",
-    "parallel": true,
     "model_id": "human-enucleated-eye-perfusion-netarsudil",
     "model": "Perfused enucleated human donor eyes, netarsudil-M1 0.3 μM",
     "model_kind": "ex_vivo",
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -277,14 +268,12 @@
     "srcLabel": "Li 2016",
     "quote": "These changes occurred in conjunction with increased outflow facility, increased speckle variance intensity of outflow vessels, increased tracer deposition in conventional outflow tissues and decreased intraocular pressure.",
     "judgement": "Opens at the online date (2016-04). Sponsor co-authored mechanism study, run after the Phase 3 IOP results but before human outflow data, so not a retrodiction for engagement.",
-    "parallel": true,
     "model_id": "mouse-oct-outflow-netarsudil",
     "model": "Living mouse eye, OCT of conventional outflow tissue, topical netarsudil",
     "model_kind": "animal",
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -316,7 +305,6 @@
     "quote": "In netarsudil-treated eyes, diurnal outflow facility increased from 0.27 ± 0.10 μL/min/mmHg to 0.33 ± 0.11 μL/min/mmHg (+22%; P = 0.02) after 7 days of treatment.",
     "reason": "Outflow facility rose in humans",
     "judgement": "Paired by me. Only the facility readout has a human counterpart; the OCT canal readouts were never measured in dosed patients that I found.",
-    "parallel": true,
     "model_id": "mouse-oct-outflow-netarsudil",
     "model": "Living mouse eye, OCT of conventional outflow tissue, topical netarsudil",
     "model_kind": "animal",
@@ -348,7 +336,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -360,7 +347,8 @@
     "status": "untested",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "prediction_level": "class"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
@@ -386,7 +374,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -399,7 +386,8 @@
     "reason": "Effective concentration reached in patients",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -427,7 +415,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -439,7 +426,8 @@
     "status": "untested",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "prediction_level": "class"
    },
    {
     "model": "Normotensive monkey eye, topical netarsudil 0.04%",
@@ -465,7 +453,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -491,10 +478,10 @@
       "doi": "10.1016/j.ajo.2017.11.019",
       "quote": "Study 302 achieved success in its primary endpoint and demonstrated that netarsudil was non-inferior to timolol in patients with a baseline IOP < 25 mmHg."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -527,14 +514,12 @@
     "srcLabel": "Mamidipaka 2026",
     "quote": "Variants within the Rho/ROCK signaling pathway, including loci at ARHGEF12 and ROCK1P1, were identified based on prior genome-wide association analyses",
     "judgement": "Opens at the GWAS year, when the genotype became available as a candidate patient selector for ROCK inhibitors.",
-    "parallel": true,
     "model_id": "arhgef12-genotype-netarsudil",
     "model": "ARHGEF12 rs11824032 risk genotype (African-ancestry POAG GWAS) as predictor of netarsudil response",
     "model_kind": "human_genetic",
     "prediction_level": "patient"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -568,7 +553,6 @@
     "quote": "ARHGEF12 variant carriers did not show a statistically significant difference in treatment response assessed by IOP; however, given the small sample size, particularly among homozygous carriers, and concurrent use of multiple glaucoma medications, these findings should be interpreted cautiously",
     "reason": "No response difference by genotype",
     "judgement": "Stated comparison: the paper tests the genotype's prediction against patient IOP response. Scored contra because the source says the genotype 'does not strongly predict' response; low confidence because the null is underpowered and exploratory. Netarsudil was already approved, but the patient-level answer was not known, so not a retrodiction.",
-    "parallel": true,
     "model_id": "arhgef12-genotype-netarsudil",
     "model": "ARHGEF12 rs11824032 risk genotype (African-ancestry POAG GWAS) as predictor of netarsudil response",
     "model_kind": "human_genetic",
@@ -600,7 +584,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -609,7 +592,8 @@
     "population": "Unselected",
     "model_first_use_year": 2012,
     "year": 2012,
-    "status": "untested"
+    "status": "untested",
+    "prediction_level": "class"
    },
    {
     "model": "Monkey 9-month topical ocular toxicology",
@@ -635,7 +619,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -645,7 +628,8 @@
     "model_first_use_year": 2012,
     "year": 2017,
     "status": "same",
-    "reason": "Hyperemia and corneal deposits both predicted"
+    "reason": "Hyperemia and corneal deposits both predicted",
+    "prediction_level": "class"
    }
   ]
  }

@@ -32,7 +32,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -49,7 +48,8 @@
     "src": "https://doi.org/10.1021/acs.jmedchem.7b00907",
     "srcLabel": "Tully 2017",
     "quote": "Potent in vivo activity was demonstrated in rodent PD models by measuring the induction of FXR target genes in various tissues.",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
     "subjects": "healthy_volunteers",
@@ -65,7 +65,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "FGF19 (human) vs Fgf15/Shp mRNA (rodent) direction",
@@ -85,7 +84,8 @@
     "readout_tier": "proximal",
     "model_first_use_year": 2017,
     "reason": "FGF19/C4 moved as in rodents",
-    "judgement": "Paired: Badman cites rodent target engagement but does not set the numbers side by side, so comparison_stated is false. FGF19 is the product of an FXR target gene, scored proximal. The same markers moved in patients: FLIGHT-FXR (FGF19 up, C4 down at week 6), cilofexor phase 2 (C4 and primary bile acids down, Patel 2020, doi:10.1002/hep.31205)."
+    "judgement": "Paired: Badman cites rodent target engagement but does not set the numbers side by side, so comparison_stated is false. FGF19 is the product of an FXR target gene, scored proximal. The same markers moved in patients: FLIGHT-FXR (FGF19 up, C4 down at week 6), cilofexor phase 2 (C4 and primary bile acids down, Patel 2020, doi:10.1002/hep.31205).",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -103,7 +103,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -122,7 +121,8 @@
     "quote": "The efficacy of tropifexor at <1 mg/kg doses was superior to that of OCA at 25 mg/kg in the liver in both NASH models.",
     "model_first_use_year": 2019,
     "reason": "No model exposure target stated",
-    "judgement": "FLIGHT-FXR chose 10-90 ug 'based on preclinical results, safety and pharmacological activity' and escalated to 140-200 ug on a human exposure-response analysis (AUC > 40 ng*h/mL), not on a model target. Cilofexor: rat efficacy at 10-30 mg/kg (Schwabl 2021) but ATLAS used 30 mg, the dose that barely moved liver fat in Patel 2020 (-1.8% vs +1.9%); no exposure multiple published. EDP-305 (30 mg/kg rodents vs 1-2.5 mg) and vonafexor likewise unmapped. No stated tolerability margin, so decision 16 does not apply."
+    "judgement": "FLIGHT-FXR chose 10-90 ug 'based on preclinical results, safety and pharmacological activity' and escalated to 140-200 ug on a human exposure-response analysis (AUC > 40 ng*h/mL), not on a model target. Cilofexor: rat efficacy at 10-30 mg/kg (Schwabl 2021) but ATLAS used 30 mg, the dose that barely moved liver fat in Patel 2020 (-1.8% vs +1.9%); no exposure multiple published. EDP-305 (30 mg/kg rodents vs 1-2.5 mg) and vonafexor likewise unmapped. No stated tolerability margin, so decision 16 does not apply.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -140,7 +140,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -157,7 +156,8 @@
     "src": "https://doi.org/10.1002/hep4.1193",
     "srcLabel": "Erstad 2018",
     "quote": "High-dose EDP-305 (30 mg/kg) reduced liver fibrosis in both the BDL and CDAHFD models as measured by collagen proportional area, hydroxyproline analysis, and fibrogenic gene expression (all P < 0.05).",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -173,7 +173,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "null",
     "magnitude_basis": "≥1-stage fibrosis improvement, cilofexor vs placebo",
@@ -193,7 +192,8 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "model_first_use_year": 2018,
-    "judgement": "Year 2021 because the sponsor-coauthored rat paper (Gilead/Phenex; Schwabl 2021, epub 2021-01-09) became public after ATLAS results (registry 2020-12-03, Loomba epub 2020-11). Not marked a retrodiction: the rat work was a development study by the sponsors and nothing shows it was run after ATLAS read out; a re-scorer treating publication date as run date would make it retrodiction contra, same status. ATLAS used 30 mg, weak on liver fat in Patel 2020, so dose may share the blame; the dose cell stays untested for want of a stated target. Population F3-F4 (56% cirrhosis) matches the rat's portal-hypertensive stage."
+    "judgement": "Year 2021 because the sponsor-coauthored rat paper (Gilead/Phenex; Schwabl 2021, epub 2021-01-09) became public after ATLAS results (registry 2020-12-03, Loomba epub 2020-11). Not marked a retrodiction: the rat work was a development study by the sponsors and nothing shows it was run after ATLAS read out; a re-scorer treating publication date as run date would make it retrodiction contra, same status. ATLAS used 30 mg, weak on liver fat in Patel 2020, so dose may share the blame; the dose cell stays untested for want of a stated target. Population F3-F4 (56% cirrhosis) matches the rat's portal-hypertensive stage.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -209,7 +209,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "hepatic fat fraction and ALT change vs placebo",
@@ -244,7 +243,8 @@
       "quote": "In Part B, there was a significant reduction in least-square mean (SE) absolute change in LFC from baseline to Week 12 for VONA-100QD (-6.3% [0.9]) and VONA-200QD (-5.4% [0.9]), vs. placebo (-2.3% [0.9], p = 0.002 and 0.012, respectively)."
      }
     ],
-    "judgement": "Different model from the failed cilofexor rat (model_change true). The primary endpoints were week-12 ALT, AST and liver fat; ALT and fat fell, AST did not, so source_calls_it partial. The same mice also predicted fibrosis reversal ('tropifexor reversed established fibrosis'), and Part C's 48-week histology (secondary) showed no gain over placebo; recorded as outcome_tested negative because histology is the regulatory endpoint, not a clinical outcome, a judgement call. The trial paper cites 'treatment efficacy in animal models of NASH' without a side-by-side, so comparison_stated is false. EDP-305 (ARGON-1, ALT primary; rodent ALT -62% in MCD mice, An 2020) and vonafexor (LIVIFY, liver fat primary; no published vonafexor NASH model found) also matched on short-term surrogates."
+    "judgement": "Different model from the failed cilofexor rat (model_change true). The primary endpoints were week-12 ALT, AST and liver fat; ALT and fat fell, AST did not, so source_calls_it partial. The same mice also predicted fibrosis reversal ('tropifexor reversed established fibrosis'), and Part C's 48-week histology (secondary) showed no gain over placebo; recorded as outcome_tested negative because histology is the regulatory endpoint, not a clinical outcome, a judgement call. The trial paper cites 'treatment efficacy in animal models of NASH' without a side-by-side, so comparison_stated is false. EDP-305 (ARGON-1, ALT primary; rodent ALT -62% in MCD mice, An 2020) and vonafexor (LIVIFY, liver fat primary; no published vonafexor NASH model found) also matched on short-term surrogates.",
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -262,7 +262,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -279,7 +278,8 @@
     "src": "https://doi.org/10.1002/hep4.1368",
     "srcLabel": "Hernandez 2019",
     "quote": "Although cholesterol levels were down‐regulated with tropifexor, no effect was observed with OCA.",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -295,7 +295,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "opposite",
     "magnitude_basis": "plasma LDL/total cholesterol direction",
@@ -314,10 +313,10 @@
     "quote": "Tropifexor treatment was associated with an overall trend of increase in low-density lipoprotein cholesterol (LDL-C) and decrease in high-density lipoprotein cholesterol (HDL-C) levels (Extended Data Fig. 2)",
     "model_first_use_year": 2019,
     "reason": "Cholesterol direction reversed in patients",
-    "judgement": "The mice showed lower plasma cholesterol; patients showed higher LDL and lower HDL, so contra with magnitude opposite. Hernandez already flagged the STAM model as unfit for human cholesterol effects (using obeticholic acid, a non-member), which is why this is a pairing and not stated. Healthy volunteers dosed 2 weeks showed no lipid change (Badman 2020); vonafexor also raised LDL (LIVIFY). Pruritus, the class's dose-limiting harm (tropifexor 52-69%, EDP-305 50.9%, cilofexor 14%, vonafexor 18%), is not scored: no member's rodent studies measured scratching, and Hernandez's 'may reduce side effects' for GPBAR1-sparing agonists was a hypothesis, not model data."
+    "judgement": "The mice showed lower plasma cholesterol; patients showed higher LDL and lower HDL, so contra with magnitude opposite. Hernandez already flagged the STAM model as unfit for human cholesterol effects (using obeticholic acid, a non-member), which is why this is a pairing and not stated. Healthy volunteers dosed 2 weeks showed no lipid change (Badman 2020); vonafexor also raised LDL (LIVIFY). Pruritus, the class's dose-limiting harm (tropifexor 52-69%, EDP-305 50.9%, cilofexor 14%, vonafexor 18%), is not scored: no member's rodent studies measured scratching, and Hernandez's 'may reduce side effects' for GPBAR1-sparing agonists was a hypothesis, not model data.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -350,11 +349,9 @@
     "src": "https://doi.org/10.1194/jlr.M081935",
     "srcLabel": "Papazyan 2018",
     "quote": "Treatment with two clinically relevant nonsteroidal FXR agonists elicited similar lipoprotein and hepatic changes in chimeric mice, suggesting that the increase in circulating LDL-C is a class effect of FXR activation.",
-    "judgement": "Intercept-run model built to reproduce obeticholic acid's human LDL rise (a retrodiction for OCA, which is not a member); for the member drugs it was a prospective class prediction made before their patient lipid data.",
-    "parallel": true
+    "judgement": "Intercept-run model built to reproduce obeticholic acid's human LDL rise (a retrodiction for OCA, which is not a member); for the member drugs it was a prospective class prediction made before their patient lipid data."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -387,11 +384,9 @@
     "src": "https://doi.org/10.1038/s41591-022-02200-8",
     "srcLabel": "Sanyal 2023",
     "quote": "Tropifexor treatment was associated with an overall trend of increase in low-density lipoprotein cholesterol (LDL-C) and decrease in high-density lipoprotein cholesterol (HDL-C) levels (Extended Data Fig. 2)",
-    "judgement": "Paired: Sanyal does not cite the PXB study. Same direction for the drug dosed in the mice (INT-2228). Vonafexor (LIVIFY) also raised LDL in patients.",
-    "parallel": true
+    "judgement": "Paired: Sanyal does not cite the PXB study. Same direction for the drug dosed in the mice (INT-2228). Vonafexor (LIVIFY) also raised LDL in patients."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -425,11 +420,9 @@
     "srcLabel": "Younis 2023",
     "quote": "No clinically relevant changes in 12‐lead ECGs, lipids (total cholesterol, high‐density lipoprotein [HDL], low‐density lipoprotein [LDL], and triglycerides) or vital signs",
     "reason": "Cilofexor did not raise LDL",
-    "judgement": "One drug's contra beats another's same on the same model: the mice predicted an LDL rise for INT-2231 (cilofexor) and humans showed none. Healthy volunteers, up to 14 days; the mouse dose may exceed human hepatic exposure of an intestine-biased agonist, so a dose mismatch may explain it. Quote is the opening clause of the sentence.",
-    "parallel": true
+    "judgement": "One drug's contra beats another's same on the same model: the mice predicted an LDL rise for INT-2231 (cilofexor) and humans showed none. Healthy volunteers, up to 14 days; the mouse dose may exceed human hepatic exposure of an intestine-biased agonist, so a dose mismatch may explain it. Quote is the opening clause of the sentence."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -462,11 +455,9 @@
     "src": "https://doi.org/10.1124/jpet.123.001900",
     "srcLabel": "Hollenback 2024",
     "quote": "These data guided development of a high fat diet mouse model to screen FXR agonists based on ALT and cholesterol changes. Cilofexor was identified to elicit only minor changes in these parameters.",
-    "judgement": "Calibrated on a non-member (Px-102) human result, which is a retrodiction for Px-102 and not scored; for cilofexor it was a prospective selection.",
-    "parallel": true
+    "judgement": "Calibrated on a non-member (Px-102) human result, which is a retrodiction for Px-102 and not scored; for cilofexor it was a prospective selection."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -500,8 +491,7 @@
     "srcLabel": "Hollenback 2024",
     "quote": "Cilofexor demonstrated antisteatotic and antifibrotic efficacy in rodent models and antisteatotic efficacy in a monkey model, with the anticipated PD and a manageable safety profile in human phase I studies.",
     "reason": "Minor ALT/lipid change held in humans",
-    "judgement": "Stated comparison by the sponsor, dated to its 2024 publication since the model was not public earlier. Not a retrodiction for cilofexor: the screen preceded human dosing. One volunteer had an ALT rise leading to discontinuation in Younis 2023, an isolated case; ALT was not raised in NASH patients (ALT fell, Patel 2020 abstract).",
-    "parallel": true
+    "judgement": "Stated comparison by the sponsor, dated to its 2024 publication since the model was not public earlier. Not a retrodiction for cilofexor: the screen preceded human dosing. One volunteer had an ALT rise leading to discontinuation in Younis 2023, an isolated case; ALT was not raised in NASH patients (ALT fell, Patel 2020 abstract)."
    }
   ]
  }

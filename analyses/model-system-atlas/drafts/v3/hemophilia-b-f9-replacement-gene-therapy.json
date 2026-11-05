@@ -33,7 +33,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -51,7 +50,8 @@
     "srcLabel": "Metzner 2009",
     "quote": "Furthermore, in-vivo recovery, terminal half-life and the AUC of rIX-FPs in rats and rabbits as determined by FIX antigen measurements were significantly increased compared to rFIX (BeneFIX).",
     "model_first_use_year": 2009,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -67,7 +67,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "within_2x",
     "magnitude_basis": "fold prolongation of FIX persistence vs comparator FIX: dogs ~3.2× (antigen >0.05 IU/mL, 7.3 vs 2.3 days), patients >5× (half-life)",
@@ -86,7 +85,8 @@
     "quote": "In the 50-IU/kg cohort (13 subjects), the mean half-life of rIX-FP was 92 hours, more than 5 times longer than the subjects' previous FIX product.",
     "model_first_use_year": 2009,
     "readout_tier": "proximal",
-    "judgement": "Paired by me: Nolte 2012 states the dog/monkey PK and that 'Clinical studies will test whether the improved kinetics result in a significant half-life extension in patients'; Santagostino 2012 (same month) reports it. Phase 1 registry record not looked up."
+    "judgement": "Paired by me: Nolte 2012 states the dog/monkey PK and that 'Clinical studies will test whether the improved kinetics result in a significant half-life extension in patients'; Santagostino 2012 (same month) reports it. Phase 1 registry record not looked up.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -102,7 +102,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "FIX-Padua specific activity (activity/antigen)",
@@ -122,10 +121,10 @@
     "model_first_use_year": 2015,
     "readout_tier": "proximal",
     "reason": "FIX-Padua expression matched dogs",
-    "judgement": "Kept the cell at same although BAX 335 (AskBio009) lost expression in 7 of 8 patients by 5-11 weeks (Konkle 2021, epub 2020) after FIX-null mice at 4e11 vg/kg held >50% FIX for 42 weeks (Monahan 2015): that is a different model (mouse) and the status is the best model's; Konkle states 'animal models of liver-directed AAV gene therapy do not predict or reproduce the cell-mediated immune response directed against AAV'. model_change true: a dog FIX-Padua model replaces the rIX-FP PK model and the comparison is now stated."
+    "judgement": "Kept the cell at same although BAX 335 (AskBio009) lost expression in 7 of 8 patients by 5-11 weeks (Konkle 2021, epub 2020) after FIX-null mice at 4e11 vg/kg held >50% FIX for 42 weeks (Monahan 2015): that is a different model (mouse) and the status is the best model's; Konkle states 'animal models of liver-directed AAV gene therapy do not predict or reproduce the cell-mediated immune response directed against AAV'. model_change true: a dog FIX-Padua model replaces the rIX-FP PK model and the comparison is now stated.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -160,11 +159,9 @@
     "short": "Mice: dose-linear, durable FIX-Padua expression",
     "src": "https://doi.org/10.1089/hum.2014.106",
     "srcLabel": "Monahan 2015",
-    "quote": "The scAAV8.FIXR338L vector produced greater than 6-fold increased FIX specific activity compared with wild-type FIX and demonstrated linear dose responses from doses that produced 2-500% FIX activity",
-    "parallel": true
+    "quote": "The scAAV8.FIXR338L vector produced greater than 6-fold increased FIX specific activity compared with wild-type FIX and demonstrated linear dose responses from doses that produced 2-500% FIX activity"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -200,11 +197,9 @@
     "src": "https://doi.org/10.1182/blood.2019004625",
     "srcLabel": "Konkle 2021",
     "reason": "expression not sustained in patients",
-    "quote": "One participant achieved sustained therapeutic FIX activity of ∼20%, without bleeding or replacement therapy, for 4 years; in others, FIX activity was not sustained beyond 5 to 11 weeks.",
-    "parallel": true
+    "quote": "One participant achieved sustained therapeutic FIX activity of ∼20%, without bleeding or replacement therapy, for 4 years; in others, FIX activity was not sustained beyond 5 to 11 weeks."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -239,11 +234,9 @@
     "short": "NHP: do AAV5 NABs block expression?",
     "src": "https://doi.org/10.1016/j.omtm.2019.05.009",
     "srcLabel": "Majowicz 2019",
-    "quote": "Further studies in non-human primates (NHPs) showed that AAV5 transduction efficacy was similar following AMT-060 treatment, irrespective of the pre-existing anti-AAV5 NABs titers.",
-    "parallel": true
+    "quote": "Further studies in non-human primates (NHPs) showed that AAV5 transduction efficacy was similar following AMT-060 treatment, irrespective of the pre-existing anti-AAV5 NABs titers."
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -279,8 +272,7 @@
     "src": "https://doi.org/10.1016/j.omtm.2019.05.009",
     "srcLabel": "Majowicz 2019",
     "reason": "reproduced known patient result",
-    "quote": "We show that therapeutic efficacy of AAV5-mediated gene therapy was achieved in humans with pre-existing anti-AAV5 NABs titers up to 340. Whereas in NHPs circulating human factor IX (hFIX) protein was achieved, at a level therapeutic in humans",
-    "parallel": true
+    "quote": "We show that therapeutic efficacy of AAV5-mediated gene therapy was achieved in humans with pre-existing anti-AAV5 NABs titers up to 340. Whereas in NHPs circulating human factor IX (hFIX) protein was achieved, at a level therapeutic in humans"
    }
   ],
   "dose": [
@@ -298,7 +290,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -316,7 +307,8 @@
     "src": "https://doi.org/10.1111/j.1538-7836.2012.04826.x",
     "srcLabel": "Nolte 2012",
     "quote": "Prolonged PDs of rIX-FP were demonstrated with APTT<60 s sustained around four times longer with rIX-FP (5.9 days) than rFIX (1.5 days).",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -332,7 +324,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "dosing interval supported (dog aPTT <60 s for 5.9 days vs human weekly trough 20%)",
@@ -352,7 +343,8 @@
     "quote": "Patients maintained a mean trough of 20 and 12 IU/dL FIX activity on prophylaxis with rIX-FP 40 IU/kg weekly and 75 IU/kg every 2 weeks, respectively.",
     "model_first_use_year": 2009,
     "reason": "Weekly regimen reached target in patients",
-    "judgement": "Paired by me; the dose rule row 'reached, drug worked' applies (primary AsBR endpoint met). Registry date is NCT01496274's results posting (marked ESTIMATED in the API)."
+    "judgement": "Paired by me; the dose rule row 'reached, drug worked' applies (primary AsBR endpoint met). Registry date is NCT01496274's results posting (marked ESTIMATED in the API).",
+    "prediction_level": "class"
    },
    {
     "subjects": null,
@@ -368,7 +360,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -386,7 +377,8 @@
     "src": "https://doi.org/10.1182/blood-2014-07-588194",
     "srcLabel": "Crudele 2015",
     "quote": "Two naïve HB dogs showed sustained expression of FIX-Padua with an 8- to 12-fold increased specific activity reaching 25% to 40% activity without antibody formation to FIX.",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -402,7 +394,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "FIX activity reached; vector doses not comparable across capsids (dog AAV8 vs human AAV-Spark100)",
@@ -422,7 +413,8 @@
     "quote": "Vector-derived factor IX coagulant activity was sustained in all the participants, with a mean (±SD) steady-state factor IX coagulant activity of 33.7±18.5% (range, 14 to 81).",
     "model_first_use_year": 2015,
     "reason": "Target FIX level reached in patients",
-    "judgement": "Paired: George 2017 cites Crudele 2015 but the stated agreement is about specific activity (engagement), not the dose. Patients reached the dogs' FIX range at a lower vector dose on a different capsid, so magnitude is direction only. Not scored: FDA's NHP toxicology (2-10× the clinical dose, no test-article findings; SBRA 2024) as a decision-16 margin, because patients reached the dose but 62% needed glucocorticoids for transaminase rises, so 'dosed without that toxicity' does not cleanly hold."
+    "judgement": "Paired: George 2017 cites Crudele 2015 but the stated agreement is about specific activity (engagement), not the dose. Patients reached the dogs' FIX range at a lower vector dose on a different capsid, so magnitude is direction only. Not scored: FDA's NHP toxicology (2-10× the clinical dose, no test-article findings; SBRA 2024) as a decision-16 margin, because patients reached the dose but 62% needed glucocorticoids for transaminase rises, so 'dosed without that toxicity' does not cleanly hold.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -440,7 +432,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -457,7 +448,8 @@
     "src": "https://doi.org/10.1160/th09-04-0255",
     "srcLabel": "Metzner 2009",
     "quote": "The efficacy in reducing bleeding time was shown in FIX(-/-) mice by a tail tip bleeding model.",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -473,7 +465,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "bleeding reduction",
@@ -493,7 +484,8 @@
     "model_first_use_year": 2009,
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "judgement": "Paired by me; Santagostino 2016 cites preclinical PK/PD only in general terms."
+    "judgement": "Paired by me; Santagostino 2016 cites preclinical PK/PD only in general terms.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -509,7 +501,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "steady-state FIX activity (dogs: to normal at 300 IU/kg; patients: mild range at 100 IU/kg)",
@@ -528,7 +519,8 @@
     "quote": "The primary efficacy endpoint in this study was met.",
     "model_first_use_year": 2020,
     "endpoint_role": "primary",
-    "judgement": "The Phase 2b primary endpoint is a FIX level, so it governs efficacy even though it reads like exposure. Dog quote: 'reaching a steady-state activity sufficient to correct severe hemophilia to normal, after four days'. Not a retrodiction: the dog work preceded the clinic ('facilitated the initiation ... of the Phase 1/2 subcutaneous dosing study'). model_change: dog SC model replaces the mouse bleeding model."
+    "judgement": "The Phase 2b primary endpoint is a FIX level, so it governs efficacy even though it reads like exposure. Dog quote: 'reaching a steady-state activity sufficient to correct severe hemophilia to normal, after four days'. Not a retrodiction: the dog work preceded the clinic ('facilitated the initiation ... of the Phase 1/2 subcutaneous dosing study'). model_change: dog SC model replaces the mouse bleeding model.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -544,7 +536,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "bleeding (dogs: none; patients: ABR 4.42 to 1.28)",
@@ -584,7 +575,8 @@
       "doi": "https://doi.org/10.1056/NEJMoa2119913",
       "quote": "Sustained factor IX levels in the normal range were observed with low doses of FLT180a but necessitated immunosuppression with glucocorticoids with or without tacrolimus."
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -602,7 +594,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -620,7 +611,8 @@
     "src": "https://doi.org/10.1182/blood-2014-07-588194",
     "srcLabel": "Crudele 2015",
     "quote": "Provocative studies in mice showed that FIX-Padua exhibits similar immunogenicity and thrombogenicity compared with FIX wild type.",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -636,7 +628,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "inhibitor and thrombosis incidence",
@@ -656,7 +647,8 @@
     "quote": "Although the long-term expression of factor IX–R338L in canine models of hemophilia and preliminary data regarding short-term expression in a previous clinical trial did not show inhibitor formation or evidence of thrombosis",
     "model_first_use_year": 2015,
     "reason": "No inhibitor or thrombosis, as dogs showed",
-    "judgement": "Capsid-directed transaminase rises (2 of 10 here; 62% needing glucocorticoids in BENEGENE-2) are set aside as a harm the species could not show: George 2017 states 'the lack of animal models that recapitulate the human cellular immune response to the AAV capsid' and Konkle 2021 says the same. FDA's NHP toxicology (SBRA 2024) found no test-article findings at 2-10× the dose. Not scored: arteriovenous-fistula thrombosis in the FLT180a patient with 260% FIX (Chowdary 2022), whose preclinical model I could not read; BENEGENE-2 had no thrombotic events."
+    "judgement": "Capsid-directed transaminase rises (2 of 10 here; 62% needing glucocorticoids in BENEGENE-2) are set aside as a harm the species could not show: George 2017 states 'the lack of animal models that recapitulate the human cellular immune response to the AAV capsid' and Konkle 2021 says the same. FDA's NHP toxicology (SBRA 2024) found no test-article findings at 2-10× the dose. Not scored: arteriovenous-fistula thrombosis in the FLT180a patient with 260% FIX (Chowdary 2022), whose preclinical model I could not read; BENEGENE-2 had no thrombotic events.",
+    "prediction_level": "class"
    },
    {
     "subjects": null,
@@ -672,7 +664,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -690,7 +681,8 @@
     "src": "https://doi.org/10.1371/journal.pone.0240896",
     "srcLabel": "Nichols 2020",
     "quote": "There were no treatment-emergent, clinically significant adverse events, and no abnormal hematology, chemistry, or pro-coagulant laboratory abnormalities throughout this study.",
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -706,7 +698,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "pro-coagulant markers (F1+2, D-dimer)",
@@ -726,10 +717,10 @@
     "quote": "Thrombogenicity markers remained normal throughout prophylactic injections or showed some initial increases followed by decreases with continued dosing.",
     "model_first_use_year": 2020,
     "reason": "Thrombogenicity markers held, as dogs showed",
-    "judgement": "Paired by me. Anti-drug antibodies (2 non-neutralizing here; neutralizing in 2 Phase 1/2 patients, You 2021) are set aside: a human protein in dogs cannot predict human immunogenicity."
+    "judgement": "Paired by me. Anti-drug antibodies (2 non-neutralizing here; neutralizing in 2 Phase 1/2 patients, You 2021) are set aside: a human protein in dogs cannot predict human immunogenicity.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -763,11 +754,9 @@
     "short": "Mice: no thrombosis, no FIX inhibitors",
     "src": "https://doi.org/10.1089/hum.2014.106",
     "srcLabel": "Monahan 2015",
-    "quote": "Necropsy of FIX(-/-) mice 8-10 months after vector delivery revealed no microvascular or macrovascular thrombosis in mice expressing FIXR338L (plasma FIX activity, 100-500%).",
-    "parallel": true
+    "quote": "Necropsy of FIX(-/-) mice 8-10 months after vector delivery revealed no microvascular or macrovascular thrombosis in mice expressing FIXR338L (plasma FIX activity, 100-500%)."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -802,11 +791,9 @@
     "src": "https://doi.org/10.1182/blood.2019004625",
     "srcLabel": "Konkle 2021",
     "reason": "predicted absent harms stayed absent",
-    "quote": "No clinical thrombosis, inhibitors, or other FIX Padua-directed immunity was reported.",
-    "parallel": true
+    "quote": "No clinical thrombosis, inhibitors, or other FIX Padua-directed immunity was reported."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -840,11 +827,9 @@
     "short": "NHP: supraphysiologic FIX, no thrombosis",
     "src": "https://www.fda.gov/media/178688/download",
     "srcLabel": "FDA SBRA Beqvez 2024",
-    "quote": "No test article-related adverse findings were observed in this study, including any findings of thrombosis by microscopic histopathology.",
-    "parallel": true
+    "quote": "No test article-related adverse findings were observed in this study, including any findings of thrombosis by microscopic histopathology."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -879,8 +864,7 @@
     "src": "https://www.fda.gov/media/178688/download",
     "srcLabel": "FDA SBRA Beqvez 2024",
     "reason": "predicted absent thrombosis held",
-    "quote": "There were no infusions reactions, malignancy, inhibitors to FIX, thromboembolic events or deaths reported in either trial.",
-    "parallel": true
+    "quote": "There were no infusions reactions, malignancy, inhibitors to FIX, thromboembolic events or deaths reported in either trial."
    }
   ]
  }

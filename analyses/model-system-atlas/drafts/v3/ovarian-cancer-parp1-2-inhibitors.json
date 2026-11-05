@@ -43,7 +43,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -51,7 +50,8 @@
     "source_calls_it": null,
     "population": "Unselected solid tumours (model)",
     "model_first_use_year": 2008,
-    "readout_tier": null
+    "readout_tier": null,
+    "prediction_level": "class"
    },
    {
     "year": 2009,
@@ -80,7 +80,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -88,7 +87,8 @@
     "source_calls_it": null,
     "population": "Advanced solid tumours and lymphoma",
     "model_first_use_year": 2008,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -117,7 +117,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -127,7 +126,8 @@
     "model_first_use_year": 2009,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
     "year": 2017,
@@ -156,7 +156,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -166,10 +165,10 @@
     "model_first_use_year": 2009,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2018,
@@ -201,7 +200,6 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "parallel": true,
     "model_id": "niraparib-isd-model",
     "model": "Decision-tree / exposure-safety model of NOVA patients (niraparib individualized starting dose)",
     "model_kind": "in_silico",
@@ -209,7 +207,6 @@
     "model_first_use_year": 2018
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2021,
@@ -242,7 +239,6 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
-    "parallel": true,
     "model_id": "niraparib-isd-model",
     "model": "Decision-tree / exposure-safety model of NOVA patients (niraparib individualized starting dose)",
     "model_kind": "in_silico",
@@ -276,7 +272,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -285,7 +280,8 @@
     "population": "BRCA-mutant / HRD",
     "model_first_use_year": 2009,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -314,7 +310,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -331,7 +326,8 @@
       "doi": "10.1056/NEJMoa1611310",
       "quote": "The primary end point was progression-free survival."
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -361,14 +357,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "target organs (marrow, GI) in animals vs adverse reactions in patients",
     "source_calls_it": "partial",
     "population": "Recurrent ovarian cancer, BRCA-mutant",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "prediction_level": "class"
    },
    {
     "year": 2017,
@@ -397,14 +393,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
     "magnitude_basis": "unbound Cmax at first BP rise vs clinical unbound Cmax",
     "source_calls_it": "match",
     "population": "Platinum-sensitive recurrent ovarian cancer",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "prediction_level": "class"
    }
   ]
  }

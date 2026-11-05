@@ -43,14 +43,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2008,
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -79,17 +79,16 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "striatal PDE10A occupancy versus dose",
     "source_calls_it": null,
     "population": "Healthy male volunteers",
     "model_first_use_year": 2008,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2013,
@@ -119,7 +118,6 @@
     "source_calls_it": null,
     "population": "Healthy men (planned)",
     "readout_tier": "downstream",
-    "parallel": true,
     "model_id": "tak063-ketamine-phmri-eeg-rat-monkey",
     "model": "Rat and monkey ketamine-challenge phMRI/EEG reversal",
     "model_kind": "animal",
@@ -127,7 +125,6 @@
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2019,
@@ -158,7 +155,6 @@
     "source_calls_it": "match",
     "population": "Healthy men aged 18-45",
     "readout_tier": "downstream",
-    "parallel": true,
     "model_id": "tak063-ketamine-phmri-eeg-rat-monkey",
     "model": "Rat and monkey ketamine-challenge phMRI/EEG reversal",
     "model_kind": "animal",
@@ -192,7 +188,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -201,7 +196,8 @@
     "model_first_use_year": 2008,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -230,7 +226,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": "plasma exposure versus rodent-predicted efficacious range",
@@ -239,7 +234,8 @@
     "model_first_use_year": 2008,
     "derived_from": "efficacy",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -268,7 +264,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -276,7 +271,8 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -305,7 +301,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "null",
     "magnitude_basis": "PANSS total change versus placebo at week 12",
@@ -345,10 +340,10 @@
       "doi": "https://doi.org/10.1097/jcp.0000000000002152",
       "quote": "These findings suggest that PDE10A inhibition does not have antipsychotic effects at the doses tested."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2013,
@@ -379,7 +374,6 @@
     "population": "Healthy men aged 18-45",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "parallel": true,
     "model_id": "tak063-ketamine-challenge-healthy-human",
     "model": "Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)",
     "model_kind": "human_challenge",
@@ -387,7 +381,6 @@
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2017,
@@ -420,7 +413,6 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "parallel": true,
     "model_id": "tak063-ketamine-challenge-healthy-human",
     "model": "Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)",
     "model_kind": "human_challenge",
@@ -454,14 +446,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "prediction_level": "class"
    },
    {
     "year": 2017,
@@ -490,14 +482,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "extrapyramidal adverse-event incidence versus placebo",
     "source_calls_it": null,
     "population": "Acute exacerbation of schizophrenia",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "prediction_level": "class"
    }
   ]
  }

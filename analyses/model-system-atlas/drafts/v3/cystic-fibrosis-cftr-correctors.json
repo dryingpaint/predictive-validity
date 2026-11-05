@@ -32,7 +32,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -52,7 +51,8 @@
     "srcLabel": "Van Goor 2011",
     "quote": "VX-809 improved F508del-CFTR processing in the endoplasmic reticulum and enhanced chloride secretion to approximately 14% of non-CF human bronchial epithelial cells (EC(50), 81 ± 19 nM), a level associated with mild CF",
     "readout_tier": "proximal",
-    "judgement": "Year 2009 is the proxy for first use. The FDA pharmacology review says these HBE data were in the IND. Abstract-level reading."
+    "judgement": "Year 2009 is the proxy for first use. The FDA pharmacology review says these HBE data were in the IND. Abstract-level reading.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -68,7 +68,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -88,7 +87,8 @@
     "srcLabel": "Clancy 2012",
     "quote": "VX-809 reduced elevated sweat chloride values in a dose-dependent manner (p=0.0013) that was statistically significant in the 100 and 200 mg dose groups.",
     "readout_tier": "proximal",
-    "judgement": "This is a pairing, not a stated comparison: the trial abstract only cites the in-vitro work. Scored 'same' with source_calls_it 'partial' because sweat moved and nasal epithelium did not. Keating 2018 (NEJM, HBE and Phase 2 in one paper, elexacaftor) repeats the match, so it is not a new entry."
+    "judgement": "This is a pairing, not a stated comparison: the trial abstract only cites the in-vitro work. Scored 'same' with source_calls_it 'partial' because sweat moved and nasal epithelium did not. Keating 2018 (NEJM, HBE and Phase 2 in one paper, elexacaftor) repeats the match, so it is not a new entry.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -104,7 +104,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "null",
@@ -125,10 +124,10 @@
     "quote": "Subsequent two-week treatment with the triple combination (GLPG2451, GLPG2222 and GLPG2737) did not result in additional enhancement of CFTR activity.",
     "readout_tier": "proximal",
     "reason": "Third corrector's HBE gain absent in patients",
-    "judgement": "Judgement call. The model side is de Wilde 2019 (Front Pharmacol, full text): in F508del/F508del HBE cells, the triple GLPG2222+GLPG2737+GLPG2451 gave 'further increase in Cl current' over the duals. Year 2019 is when both sides were public. GLPG2737 and galicaftor are both members. PELICAN's positive result for GLPG2737 is weaker than this miss of the specific additive prediction, and the rules let one contra stand. Elexacaftor's later match ran on the same HBE model, so it cannot reopen the cell."
+    "judgement": "Judgement call. The model side is de Wilde 2019 (Front Pharmacol, full text): in F508del/F508del HBE cells, the triple GLPG2222+GLPG2737+GLPG2451 gave 'further increase in Cl current' over the duals. Year 2019 is when both sides were public. GLPG2737 and galicaftor are both members. PELICAN's positive result for GLPG2737 is weaker than this miss of the specific additive prediction, and the rules let one contra stand. Elexacaftor's later match ran on the same HBE model, so it cannot reopen the cell.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -163,11 +162,9 @@
     "src": "https://doi.org/10.1038/nm.3201",
     "srcLabel": "Dekkers 2013",
     "quote": "Function of the CFTR F508del mutant protein is restored by incubation at low temperature, as well as by CFTR-restoring compounds.",
-    "judgement": "Retrodiction: the organoid assay was first run in 2013, after lumacaftor's sweat-chloride result was public (Clancy 2011 epub), so 'retro', not 'same'.",
-    "parallel": true
+    "judgement": "Retrodiction: the organoid assay was first run in 2013, after lumacaftor's sweat-chloride result was public (Clancy 2011 epub), so 'retro', not 'same'."
    },
    {
-    "model_change": false,
     "retrodiction": null,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -202,11 +199,9 @@
     "src": "https://doi.org/10.1016/j.celrep.2019.01.068",
     "srcLabel": "Berkers 2019",
     "quote": "The in vitro organoid responses correlated with both change in pulmonary response and change in sweat chloride concentration.",
-    "judgement": "Kept as patient-level. It rests partly on ivacaftor monotherapy, which is not a member; if the lumacaftor/ivacaftor subset alone does not correlate, this entry should be dropped. retrodiction left null: whether organoids were measured before treatment outcomes were known is not stated in the abstract.",
-    "parallel": true
+    "judgement": "Kept as patient-level. It rests partly on ivacaftor monotherapy, which is not a member; if the lumacaftor/ivacaftor subset alone does not correlate, this entry should be dropped. retrodiction left null: whether organoids were measured before treatment outcomes were known is not stated in the abstract."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -241,11 +236,9 @@
     "short": "FRT defines responsive genotypes",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210491Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2018",
-    "quote": "in vitro testing (mutations that responded with chloride transport < 10% of wild-type CFTR in the FRT cell Ussing Chamber assay)",
-    "parallel": true
+    "quote": "in vitro testing (mutations that responded with chloride transport < 10% of wild-type CFTR in the FRT cell Ussing Chamber assay)"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -281,8 +274,7 @@
     "src": "https://doi.org/10.1093/ajrccm/aamaf001",
     "srcLabel": "Castellani 2026",
     "quote": "secondary endpoints of sweat chloride (-28.3 mmol/L [95% CI: -32.1, -24.5 mmol/L; P < .0001])",
-    "judgement": "Prospective: participants were enrolled because FRT called their variant responsive (CT.gov). Population is outside the tile's F508del population.",
-    "parallel": true
+    "judgement": "Prospective: participants were enrolled because FRT called their variant responsive (CT.gov). Population is outside the tile's F508del population."
    }
   ],
   "dose": [
@@ -300,7 +292,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -319,7 +310,8 @@
     "src": "https://doi.org/10.1073/pnas.1105787108",
     "srcLabel": "Van Goor 2011",
     "quote": "VX-809 improved F508del-CFTR processing in the endoplasmic reticulum and enhanced chloride secretion to approximately 14% of non-CF human bronchial epithelial cells (EC(50), 81 ± 19 nM), a level associated with mild CF",
-    "judgement": "Untested: no source compares the cell potency target with human exposure."
+    "judgement": "Untested: no source compares the cell potency target with human exposure.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -335,7 +327,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -356,7 +347,8 @@
     "quote": "The incidence of adverse events was generally similar in the lumacaftor-ivacaftor and placebo groups.",
     "margin_stated": true,
     "reason": "Stated tox margin held in Phase 3",
-    "judgement": "Decision 16. FDA pharmacology review: 'The No Observed Adverse Effect Level (NOAEL) in the 6-month rat study provided a 3- or 7-fold safety margin compared to the proposed clinical dose on an exposure basis'. Dog NOAEL 2-fold. Lumacaftor's respiratory events (label 5.3) are discussed under safety. Vanzacaftor's rat liver finding at >20× MRHD is scored in safety, because patients reached the target dose and the harm was not dose-limiting."
+    "judgement": "Decision 16. FDA pharmacology review: 'The No Observed Adverse Effect Level (NOAEL) in the 6-month rat study provided a 3- or 7-fold safety margin compared to the proposed clinical dose on an exposure basis'. Dog NOAEL 2-fold. Lumacaftor's respiratory events (label 5.3) are discussed under safety. Vanzacaftor's rat liver finding at >20× MRHD is scored in safety, because patients reached the target dose and the harm was not dose-limiting.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -374,7 +366,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -392,7 +383,8 @@
     "short": "Cell rescue read as mild-CF level",
     "src": "https://doi.org/10.1073/pnas.1105787108",
     "srcLabel": "Van Goor 2011",
-    "quote": "VX-809 improved F508del-CFTR processing in the endoplasmic reticulum and enhanced chloride secretion to approximately 14% of non-CF human bronchial epithelial cells (EC(50), 81 ± 19 nM), a level associated with mild CF"
+    "quote": "VX-809 improved F508del-CFTR processing in the endoplasmic reticulum and enhanced chloride secretion to approximately 14% of non-CF human bronchial epithelial cells (EC(50), 81 ± 19 nM), a level associated with mild CF",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -408,7 +400,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -450,10 +441,10 @@
       "quote": "Strategic considerations"
      }
     ],
-    "judgement": "Judgement call. The FDA reviewer adds '(e.g., lumacaftor has a robust in vitro effect but decreased pulmonary function in CF patients)'. Lumacaftor alone was never tested on a primary efficacy endpoint: Clancy 2012's primary was safety, and Boyle 2014's was sweat chloride on the combination. So the monotherapy miss is recorded here and not scored as contra; a stricter reading would make this cell contra in 2015. Elexacaftor (Keating 2018, Middleton 2019) matched on the same model. Galicaftor+navocaftor+ABBV-119/576 (NCT04853368) missed FEV1 against placebo in cohort 2 (difference 0.9, p=0.40) and was terminated. It is not scored because no published model prediction for that combination was found."
+    "judgement": "Judgement call. The FDA reviewer adds '(e.g., lumacaftor has a robust in vitro effect but decreased pulmonary function in CF patients)'. Lumacaftor alone was never tested on a primary efficacy endpoint: Clancy 2012's primary was safety, and Boyle 2014's was sweat chloride on the combination. So the monotherapy miss is recorded here and not scored as contra; a stricter reading would make this cell contra in 2015. Elexacaftor (Keating 2018, Middleton 2019) matched on the same model. Galicaftor+navocaftor+ABBV-119/576 (NCT04853368) missed FEV1 against placebo in cohort 2 (difference 0.9, p=0.40) and was terminated. It is not scored because no published model prediction for that combination was found.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -486,11 +477,9 @@
     "short": "Organoid FIS assay published",
     "src": "https://doi.org/10.1038/nm.3201",
     "srcLabel": "Dekkers 2013",
-    "quote": "Function of the CFTR F508del mutant protein is restored by incubation at low temperature, as well as by CFTR-restoring compounds.",
-    "parallel": true
+    "quote": "Function of the CFTR F508del mutant protein is restored by incubation at low temperature, as well as by CFTR-restoring compounds."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -526,11 +515,9 @@
     "src": "https://doi.org/10.1056/NEJMoa1409547",
     "srcLabel": "Wainwright 2015",
     "quote": "the difference between active treatment and placebo with respect to the mean absolute improvement in the percentage of predicted FEV1 ranged from 2.6 to 4.0 percentage points (P<0.001)",
-    "judgement": "Judgement call: scored as a pairing because the organoid lumacaftor data (2013) preceded the Phase 3 readout (2014 topline, 2015 paper), so it is not a retrodiction for FEV1.",
-    "parallel": true
+    "judgement": "Judgement call: scored as a pairing because the organoid lumacaftor data (2013) preceded the Phase 3 readout (2014 topline, 2015 paper), so it is not a retrodiction for FEV1."
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -565,11 +552,9 @@
     "src": "https://doi.org/10.1126/scitranslmed.aad8278",
     "srcLabel": "Dekkers 2016",
     "quote": "In vitro drug responses in rectal organoids positively correlated with published outcome data from clinical trials with VX-809 and VX-770",
-    "judgement": "Retrodiction: compared against trial results already published. Patient-level because it ranks genotypes, not whether the class works.",
-    "parallel": true
+    "judgement": "Retrodiction: compared against trial results already published. Patient-level because it ranks genotypes, not whether the class works."
    },
    {
-    "model_change": false,
     "retrodiction": null,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -604,11 +589,9 @@
     "src": "https://doi.org/10.1016/j.celrep.2019.01.068",
     "srcLabel": "Berkers 2019",
     "quote": "The in vitro organoid responses correlated with both change in pulmonary response and change in sweat chloride concentration.",
-    "judgement": "Same caveats as the engagement entry. Kept because it is the stated individual-level comparison the HIT-CF programme was built on.",
-    "parallel": true
+    "judgement": "Same caveats as the engagement entry. Kept because it is the stated individual-level comparison the HIT-CF programme was built on."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -642,11 +625,9 @@
     "short": "FRT 10% rule set before trials",
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210491Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2018",
-    "quote": "in vitro testing (mutations that responded with chloride transport < 10% of wild-type CFTR in the FRT cell Ussing Chamber assay)",
-    "parallel": true
+    "quote": "in vitro testing (mutations that responded with chloride transport < 10% of wild-type CFTR in the FRT cell Ussing Chamber assay)"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -682,11 +663,9 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210491Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2018",
     "quote": "for the 508del mutation (for which IVA alone does not provide clinical benefit), the in vitro results for IVA did not meet the 10% threshold while they just met the 10% threshold for the TEZ/IVA combination",
-    "judgement": "Retrodiction: FDA describes checking 'consistency of in vitro assay findings with clinical efficacy data' already in hand. The review also says the assay does not predict whether tezacaftor adds benefit over ivacaftor.",
-    "parallel": true
+    "judgement": "Retrodiction: FDA describes checking 'consistency of in vitro assay findings with clinical efficacy data' already in hand. The review also says the assay does not predict whether tezacaftor adds benefit over ivacaftor."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -723,11 +702,9 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210491Orig1s000SumR.pdf",
     "srcLabel": "FDA summary review 2018",
     "quote": "for mutation groups for which there are positive clinical data, the TEZ/IVA combination in vitro result met or exceeded the 10% threshold and those that did not meet the 10% threshold failed to demonstrate clinical efficacy",
-    "judgement": "Patient-level same, called 'partial' because the residual-function responders are also ivacaftor-responsive, so that half rests on the potentiator; the Study 107 negative rests on the tezacaftor combination. regulatory_reliance true: the 2018 Symdeko label extends to mutations 'based on in vitro data'.",
-    "parallel": true
+    "judgement": "Patient-level same, called 'partial' because the residual-function responders are also ivacaftor-responsive, so that half rests on the potentiator; the Study 107 negative rests on the tezacaftor combination. regulatory_reliance true: the 2018 Symdeko label extends to mutations 'based on in vitro data'."
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -764,11 +741,9 @@
     "srcLabel": "Trikafta label 2020 (S-002)",
     "quote": "For individual mutations, the magnitude of the net change over baseline in CFTR-mediated chloride transport in vitro is not correlated with the magnitude of clinical response.",
     "judgement": "Not a new status: the cell is already 'same' from 2018. Recorded for regulatory_reliance and because it is the regulator's own statement about elexacaftor. 'partial' because only the threshold, not the magnitude, predicts.",
-    "strengthens": true,
-    "parallel": true
+    "strengthens": true
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -814,8 +789,7 @@
      }
     ],
     "judgement": "The first prospective randomised test of FRT-only genotype selection: the trial ran after the 2020 label relied on FRT. Population lies outside the tile's F508del population.",
-    "strengthens": true,
-    "parallel": true
+    "strengthens": true
    }
   ],
   "safety": [
@@ -833,7 +807,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -852,7 +825,8 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/0206038Orig1s000PharmR.pdf",
     "srcLabel": "FDA pharm review 2015",
     "quote": "There were no relevant target organs of toxicity identified in rats.",
-    "judgement": "Lumacaftor's respiratory events in patients (chest tightness, dyspnoea; label 5.3) went unpredicted by clean rat plethysmography at 250–1000 mg/kg. Not scored: the events concentrate in patients with low FEV1, a CF-airway harm a healthy rat could not show."
+    "judgement": "Lumacaftor's respiratory events in patients (chest tightness, dyspnoea; label 5.3) went unpredicted by clean rat plethysmography at 250–1000 mg/kg. Not scored: the events concentrate in patients with low FEV1, a CF-airway harm a healthy rat could not show.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -868,7 +842,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "off_by_>5x",
@@ -888,7 +861,8 @@
     "srcLabel": "Alyftrek label 2024",
     "quote": "Cases of serious and potentially fatal drug-induced liver injury and liver failure have been reported with a drug that contains the same or similar active ingredients as ALYFTREK.",
     "reason": "Rat liver margin >20×; patients injured at 1×",
-    "judgement": "Judgement call. FDA integrated review: rat target organs were 'stomach (erosion/ulcers) and liver (hepatocellular vacuolar degeneration, multifocal hepatocellular necrosis) at exposures greater than 20 times (males) and 60 times (females)' MRHD; dogs clean to 100×. The model named the organ but misplaced the margin. It is scored here, not in dose, because the target dose was reached and the harm was not dose-limiting. Year 2025 is the public date of the review. The earlier elexacaftor case (Trikafta 2019 LFT warning, no animal liver signal seen on a grep of NDA 212273) was not verified in full."
+    "judgement": "Judgement call. FDA integrated review: rat target organs were 'stomach (erosion/ulcers) and liver (hepatocellular vacuolar degeneration, multifocal hepatocellular necrosis) at exposures greater than 20 times (males) and 60 times (females)' MRHD; dogs clean to 100×. The model named the organ but misplaced the margin. It is scored here, not in dose, because the target dose was reached and the harm was not dose-limiting. Year 2025 is the public date of the review. The earlier elexacaftor case (Trikafta 2019 LFT warning, no animal liver signal seen on a grep of NDA 212273) was not verified in full.",
+    "prediction_level": "class"
    }
   ]
  }

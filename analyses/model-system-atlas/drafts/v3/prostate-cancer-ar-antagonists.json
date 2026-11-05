@@ -34,7 +34,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -52,7 +51,8 @@
     "quote": "In a clinically valid murine xenograft model of human CRPC, ARN-509 showed greater efficacy than MDV3100.",
     "note": "Apalutamide (ARN-509) suppressed AR-driven luciferase reporter activity in castrate LNCaP/AR xenografts.",
     "short": "Mouse AR-reporter activity suppressed",
-    "readout_tier": "proximal"
+    "readout_tier": "proximal",
+    "prediction_level": "class"
    },
    {
     "model_id": "lncap-ar-castrate-xenograft-mouse",
@@ -70,7 +70,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -89,7 +88,8 @@
     "srcLabel": "Rathkopf 2013",
     "quote": "Prostate-specific antigen declines at 12 weeks (≥ 50% reduction from baseline) were observed in 46.7% of patients.",
     "readout_tier": "proximal",
-    "reason": "AR output fell in patients too"
+    "reason": "AR output fell in patients too",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -109,7 +109,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -129,7 +128,8 @@
     "short": "Mouse set 30 mg/kg, AUC ~160 target",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "prediction_level": "class"
    },
    {
     "model_id": "lncap-ar-castrate-xenograft-mouse",
@@ -147,7 +147,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -168,7 +167,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
-    "reason": "Dose reached, tolerated, and it worked"
+    "reason": "Dose reached, tolerated, and it worked",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -188,7 +188,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -205,7 +204,8 @@
     "srcLabel": "Clegg 2012",
     "quote": "In a clinically valid murine xenograft model of human CRPC, ARN-509 showed greater efficacy than MDV3100.",
     "note": "Apalutamide regressed castrate LNCaP/AR xenografts (8 of 10 >50% at 10 mg/kg), outperforming MDV3100.",
-    "short": "Castrate xenografts regressed"
+    "short": "Castrate xenografts regressed",
+    "prediction_level": "class"
    },
    {
     "model_id": "lncap-ar-castrate-xenograft-mouse",
@@ -223,7 +223,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -263,10 +262,10 @@
       "doi": "10.1016/S1470-2045(14)70240-2",
       "quote": "11 (29%) patients in the 200 mg group, 13 (33%) in the 400 mg group, and 11 (33%) in the 1400 mg group had a PSA response at 12 weeks."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -296,14 +295,12 @@
     "src": "https://doi.org/10.1038/srep12007",
     "srcLabel": "Moilanen 2015",
     "quote": "In addition, ODM-201 reduces the growth of AR-overexpressing VCaP prostate cancer cells both in vitro and in a castration-resistant VCaP xenograft model.",
-    "parallel": true,
     "model_id": "vcap-crpc-xenograft-mouse",
     "model": "VCaP xenografts in castrated mice (darolutamide)",
     "model_kind": "animal",
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -350,14 +347,12 @@
       "quote": "the median metastasis-free survival was 40.4 months with darolutamide, as compared with 18.4 months with placebo"
      }
     ],
-    "parallel": true,
     "model_id": "vcap-crpc-xenograft-mouse",
     "model": "VCaP xenografts in castrated mice (darolutamide)",
     "model_kind": "animal",
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -387,14 +382,12 @@
     "src": "https://doi.org/10.1158/2159-8290.CD-13-0226",
     "srcLabel": "Joseph 2013",
     "quote": "AR F876L is sufficient to confer resistance to ARN-509 and enzalutamide in in vitro and in vivo models of castration-resistant prostate cancer (CRPC).",
-    "parallel": true,
     "model_id": "arn509-resistant-cell-lines-f876l",
     "model": "ARN-509/enzalutamide-resistant cell lines and AR F876L xenografts",
     "model_kind": "animal",
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -426,14 +419,12 @@
     "quote": "Importantly, the AR F876L mutant is detected in plasma DNA from ARN-509-treated patients with progressive CRPC.",
     "endpoint_role": "primary",
     "reason": "Predicted mutation found at progression",
-    "parallel": true,
     "model_id": "arn509-resistant-cell-lines-f876l",
     "model": "ARN-509/enzalutamide-resistant cell lines and AR F876L xenografts",
     "model_kind": "animal",
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -463,7 +454,6 @@
     "src": "https://doi.org/10.1016/j.ejca.2020.04.013",
     "srcLabel": "Zhou 2020",
     "quote": "The efficacy of GT0918 was investigated in a castration-resistant xenograft model.",
-    "parallel": true,
     "model_id": "gt0918-crpc-xenograft-mouse",
     "model": "Castration-resistant xenografts (proxalutamide, GT0918)",
     "model_kind": "animal",
@@ -487,7 +477,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -505,10 +494,10 @@
     "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/210951Orig1s000MultidisciplineR.pdf",
     "srcLabel": "FDA review NDA 210951",
     "quote": "Seizures occurred in some patients administered apalutamide in clinical trials, consistent with labeled adverse reactions with other androgen receptor inhibitors.",
-    "reason": "Seizure signal held in patients"
+    "reason": "Seizure signal held in patients",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -538,14 +527,12 @@
     "src": "https://doi.org/10.1038/srep12007",
     "srcLabel": "Moilanen 2015",
     "quote": "In contrast to other antiandrogens, ODM-201 shows negligible brain penetrance and does not increase serum testosterone levels in mice.",
-    "parallel": true,
     "model_id": "mouse-brain-penetration-rat-dog-tox",
     "model": "Mouse brain:plasma distribution with rat and dog CNS toxicology (darolutamide)",
     "model_kind": "animal",
     "model_first_use_year": 2015
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -576,7 +563,6 @@
     "srcLabel": "FDA review NDA 212099",
     "quote": "In pre-clinical and clinical trials of darolutamide, there was no indication of increased seizure potential which may be attributed to its structure and low penetration of the blood brain barrier.",
     "reason": "Predicted no seizure excess; none seen",
-    "parallel": true,
     "model_id": "mouse-brain-penetration-rat-dog-tox",
     "model": "Mouse brain:plasma distribution with rat and dog CNS toxicology (darolutamide)",
     "model_kind": "animal",

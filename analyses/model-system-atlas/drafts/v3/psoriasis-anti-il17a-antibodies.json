@@ -45,14 +45,14 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -81,7 +81,6 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -89,10 +88,10 @@
     "source_calls_it": "match",
     "readout_tier": "downstream",
     "population": "Unselected",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -121,7 +120,6 @@
     "srcLabel": "FDA Taltz pharmacology review 2015",
     "quote": "Ixekizumab administration decreased hIL-17 induced KC secretion in C57BL/6NHsd mice (Report bTDR08).",
     "judgement": "Opened at the IND date as the proxy for first use, as the draft does for the other filed ixekizumab studies. Izokibep was later run in the same challenge model (Klint 2023).",
-    "parallel": true,
     "model_id": "mouse-hil17a-kc-challenge",
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
@@ -129,7 +127,6 @@
     "model_first_use_year": 2007
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -160,7 +157,6 @@
     "reason": "CXCL1 fell in patients as in mice",
     "judgement": "A pairing: the mouse result became public only in the 2015 FDA review (posted 2016), so the entry is dated 2016. Mouse readout is induced plasma KC; human readout is lesional CXCL1 mRNA, the same chemokine but a different compartment and no exogenous challenge, so downstream, not direct.",
     "readout_tier": "downstream",
-    "parallel": true,
     "model_id": "mouse-hil17a-kc-challenge",
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
@@ -196,7 +192,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -204,7 +199,8 @@
     "source_calls_it": null,
     "margin_stated": true,
     "population": "Unselected",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -234,7 +230,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -242,10 +237,10 @@
     "source_calls_it": null,
     "margin_stated": true,
     "population": "Unselected",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -276,7 +271,6 @@
     "quote": "due to the formation of local abscess and systemic sequelae that were considered as adverse event (AE) in one female administered 40 mg/kg/week, the NOAEL was determined to be 20 mg/kg/week",
     "judgement": "A separate track from the draft's cyno-tox-ixekizumab because dose is split by modality and this is the protein (Affibody) member's own study.",
     "margin_stated": true,
-    "parallel": true,
     "model_id": "cyno-tox-izokibep",
     "model": "Cynomolgus monkey repeat-dose toxicology of izokibep (only cross-reactive species)",
     "model_kind": "animal",
@@ -284,7 +278,6 @@
     "model_first_use_year": 2015
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -316,7 +309,6 @@
     "reason": "NOAEL margin held; dose reached",
     "judgement": "Paired by me: the effective dose (80-160 mg every 2 weeks, Phase 2) sits about 6-fold under the monkey NOAEL's human equivalent per week. The monkey's limiting harm was an injection-site abscess; patients had only mild injection-site reactions, so no toxicity block. AFFIRM-35 (NCT03591887) has no registry results.",
     "margin_stated": true,
-    "parallel": true,
     "model_id": "cyno-tox-izokibep",
     "model": "Cynomolgus monkey repeat-dose toxicology of izokibep (only cross-reactive species)",
     "model_kind": "animal",
@@ -351,14 +343,14 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -387,7 +379,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -410,10 +401,10 @@
      }
     ],
     "population": "Unselected",
-    "model_first_use_year": 2007
+    "model_first_use_year": 2007,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -442,7 +433,6 @@
     "srcLabel": "Klint 2023",
     "quote": "On an mg/kg basis, izokibep provided 30- and 50-fold superior efficacy in reducing KC secretion relative to ixekizumab and secukinumab, respectively.",
     "judgement": "The paper calls its in-vitro and in-vivo work 'preclinical psoriasis models' and claims superior efficacy, so the model made a psoriasis efficacy prediction for izokibep, which ixekizumab's filing did not.",
-    "parallel": true,
     "model_id": "mouse-hil17a-kc-challenge",
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
@@ -450,7 +440,6 @@
     "model_first_use_year": 2007
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -483,7 +472,6 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "patient_trials": [],
-    "parallel": true,
     "model_id": "mouse-hil17a-kc-challenge",
     "model": "Mice injected with human IL-17A, plasma KC (CXCL1) readout",
     "model_kind": "animal",
@@ -518,14 +506,14 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "human_genetic",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    },
    {
     "year": 2016,
@@ -554,14 +542,14 @@
     "model_filed": false,
     "product_in_model": false,
     "model_kind": "human_genetic",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "Candida infection incidence, 12-week pooled induction",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    }
   ]
  }

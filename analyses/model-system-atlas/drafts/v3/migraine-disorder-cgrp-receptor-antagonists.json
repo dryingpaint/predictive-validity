@@ -44,14 +44,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    },
    {
     "year": 2014,
@@ -81,14 +81,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
     "magnitude_basis": "plasma EC50 / EC90 for CIDV inhibition, human vs rhesus (1.6 vs 0.8 nM; 14 vs 7 nM)",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -121,14 +121,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    },
    {
     "year": 2014,
@@ -160,17 +160,16 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "off_by_2-5x",
     "magnitude_basis": "dose with clear 2-h pain freedom (200 mg) vs predicted plateau 40-100 mg (10x vs the 20 mg target)",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -204,11 +203,9 @@
     "model": "Human isolated coronary, cerebral and middle meningeal arteries (ex vivo CGRP relaxation and vasoconstriction)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2019,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -242,8 +239,7 @@
     "model": "Human isolated coronary, cerebral and middle meningeal arteries (ex vivo CGRP relaxation and vasoconstriction)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2019,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -274,14 +270,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    },
    {
     "year": 2010,
@@ -332,17 +328,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "primary endpoint direction (2-h pain freedom)",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -378,11 +373,9 @@
     "model": "Rat sumatriptan-primed two-hit medication-overuse headache model (stress / NO-donor allodynia)",
     "model_kind": "animal",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -416,11 +409,9 @@
     "model": "Primate CGRP-induced facial blood flow (rimegepant / BMS-927711)",
     "model_kind": "animal",
     "model_first_use_year": 2012,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -456,8 +447,7 @@
     "model": "Primate CGRP-induced facial blood flow (rimegepant / BMS-927711)",
     "model_kind": "animal",
     "model_first_use_year": 2012,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -487,14 +477,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": null
+    "model_first_use_year": null,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -523,17 +513,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "in_silico",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "proportion with ALT > 3x ULN, predicted 0% vs observed no excess over placebo",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -567,11 +556,9 @@
     "model": "Human isolated coronary, cerebral and middle meningeal arteries (ex vivo CGRP relaxation and vasoconstriction)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2019,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -605,11 +592,9 @@
     "model": "Human isolated coronary, cerebral and middle meningeal arteries (ex vivo CGRP relaxation and vasoconstriction)",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2019,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -643,11 +628,9 @@
     "model": "Mouse transient middle cerebral artery occlusion (gepant pretreatment)",
     "model_kind": "animal",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -681,11 +664,9 @@
     "model": "Mouse transient middle cerebral artery occlusion (gepant pretreatment)",
     "model_kind": "animal",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -719,11 +700,9 @@
     "model": "Rat in vivo liver bioactivation transcriptional response assay (BA-LRA)",
     "model_kind": "animal",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -757,11 +736,9 @@
     "model": "Rat HepatoPac micropatterned hepatocyte co-culture, reactive-metabolite transcriptional response",
     "model_kind": "ex_vivo",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -795,11 +772,9 @@
     "model": "Rat sumatriptan-primed two-hit medication-overuse headache model (stress / NO-donor allodynia)",
     "model_kind": "animal",
     "model_first_use_year": 2020,
-    "prediction_level": "class",
-    "parallel": true
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2020,
@@ -833,7 +808,6 @@
     "population": "Unselected",
     "model_first_use_year": null,
     "reason": "Animal toxicology silent; patients showed liver injury",
-    "parallel": true,
     "prediction_level": "class"
    }
   ]

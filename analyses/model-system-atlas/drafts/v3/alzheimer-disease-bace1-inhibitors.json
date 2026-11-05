@@ -33,7 +33,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -51,7 +50,8 @@
     "short": "Mice and dogs: CSF/brain Aβ falls",
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
-    "quote": "The in vivo pharmacology properties of LY2886721 were initially tested in the PDAPP mouse, a transgenic mouse expressing a mini-gene for human APP harboring an APP V717F mutation"
+    "quote": "The in vivo pharmacology properties of LY2886721 were initially tested in the PDAPP mouse, a transgenic mouse expressing a mini-gene for human APP harboring an APP V717F mutation",
+    "prediction_level": "class"
    },
    {
     "model_id": "pdapp-mouse-beagle-csf-abeta",
@@ -68,7 +68,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -88,7 +87,8 @@
     "srcLabel": "May 2015",
     "quote": "Similar potent and persistent amyloid β lowering was observed in plasma and lumbar CSF when single and multiple doses of LY2886721 were administered to healthy human subjects.",
     "readout_tier": "proximal",
-    "reason": "Human CSF Aβ fell as in dogs"
+    "reason": "Human CSF Aβ fell as in dogs",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -107,7 +107,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -125,7 +124,8 @@
     "short": "Dog CSF PK/PD sets human dose",
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
-    "quote": "Central pharmacology studies were conducted in a cannulated beagle dog model established at MPI Research."
+    "quote": "Central pharmacology studies were conducted in a cannulated beagle dog model established at MPI Research.",
+    "prediction_level": "class"
    },
    {
     "model_id": "beagle-csf-pkpd",
@@ -142,7 +142,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -160,7 +159,8 @@
     "short": "Target CSF lowering reached",
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
-    "quote": "Similar potent and persistent amyloid β lowering was observed in plasma and lumbar CSF when single and multiple doses of LY2886721 were administered to healthy human subjects."
+    "quote": "Similar potent and persistent amyloid β lowering was observed in plasma and lumbar CSF when single and multiple doses of LY2886721 were administered to healthy human subjects.",
+    "prediction_level": "class"
    },
    {
     "model_id": "beagle-csf-pkpd",
@@ -177,7 +177,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "opposite",
@@ -197,7 +196,8 @@
     "srcLabel": "Henley 2019",
     "quote": "At month 6, the difference between the 25-mg group and the placebo group was −1.12 (95% CI, −1.68 to −0.56; P<0.001)",
     "derived_from": "efficacy",
-    "reason": "Target reached, trials failed"
+    "reason": "Target reached, trials failed",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -216,7 +216,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -234,7 +233,8 @@
     "short": "APP mice: Aβ, not disease",
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
-    "quote": "The in vivo pharmacology properties of LY2886721 were initially tested in the PDAPP mouse, a transgenic mouse expressing a mini-gene for human APP harboring an APP V717F mutation"
+    "quote": "The in vivo pharmacology properties of LY2886721 were initially tested in the PDAPP mouse, a transgenic mouse expressing a mini-gene for human APP harboring an APP V717F mutation",
+    "prediction_level": "class"
    },
    {
     "model_id": "pdapp-mouse",
@@ -251,7 +251,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "opposite",
@@ -292,10 +291,10 @@
       "doi": "10.3233/ADR-210296",
       "quote": "LY3202626 treatment did not result in a clinically significant change in cerebral tau burden as measured by flortaucipir nor in change of functional or cognitive decline compared to placebo."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -324,7 +323,6 @@
     "src": "https://doi.org/10.1038/nature11283",
     "srcLabel": "Jonsson 2012",
     "quote": "The strong protective effect of the A673T substitution against Alzheimer's disease provides proof of principle for the hypothesis that reducing the β-cleavage of APP may protect against the disease.",
-    "parallel": true,
     "model_id": "app-a673t-icelandic-carriers",
     "model": "APP A673T protective variant carriers (Icelandic genetics)",
     "model_kind": "human_genetic",
@@ -332,7 +330,6 @@
     "model_first_use_year": 2012
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -372,7 +369,6 @@
       "quote": "LY3202626 treatment did not result in a clinically significant change in cerebral tau burden as measured by flortaucipir nor in change of functional or cognitive decline compared to placebo."
      }
     ],
-    "parallel": true,
     "model_id": "app-a673t-icelandic-carriers",
     "model": "APP A673T protective variant carriers (Icelandic genetics)",
     "model_kind": "human_genetic",
@@ -396,7 +392,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -414,7 +409,8 @@
     "short": "Tox clean at pharmacologic doses",
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
-    "quote": "This robust pharmacology, coupled with a nonclinical toxicology profile without adverse retinal epithelial pathology at pharmacologic doses (as seen previously with LY2811376), led to the advancement of LY2886721 into early phase clinical trials."
+    "quote": "This robust pharmacology, coupled with a nonclinical toxicology profile without adverse retinal epithelial pathology at pharmacologic doses (as seen previously with LY2811376), led to the advancement of LY2886721 into early phase clinical trials.",
+    "prediction_level": "class"
    },
    {
     "model_id": "ly2886721-nonclinical-tox",
@@ -431,7 +427,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -450,10 +445,10 @@
     "src": "https://doi.org/10.1523/JNEUROSCI.4129-14.2015",
     "srcLabel": "May 2015",
     "quote": "Despite the setbacks from unanticipated nonclinical toxicology and clinical AEs experienced with LY2811376 and LY2886721, respectively, which led to the eventual termination of these molecules, the promise of BACE1 inhibitors to test the amyloid hypothesis remains strong.",
-    "reason": "Missed LY2886721 liver injury"
+    "reason": "Missed LY2886721 liver injury",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -482,7 +477,6 @@
     "src": "https://doi.org/10.1016/j.biopsych.2014.10.013",
     "srcLabel": "Filser 2015",
     "quote": "Described structural and functional changes were associated with cognitive deficits as revealed in behavioral tests.",
-    "parallel": true,
     "model_id": "wt-mouse-chronic-bace1i-synaptic",
     "model": "Wild-type mice chronically dosed with BACE1 inhibitors (spines, LTP, behaviour)",
     "model_kind": "animal",
@@ -490,7 +484,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -520,7 +513,6 @@
     "srcLabel": "Henley 2019",
     "quote": "At month 6, the difference between the 25-mg group and the placebo group was −1.12 (95% CI, −1.68 to −0.56; P<0.001)",
     "reason": "Predicted cognitive harm appeared",
-    "parallel": true,
     "model_id": "wt-mouse-chronic-bace1i-synaptic",
     "model": "Wild-type mice chronically dosed with BACE1 inhibitors (spines, LTP, behaviour)",
     "model_kind": "animal",
@@ -528,7 +520,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -557,7 +548,6 @@
     "src": "https://doi.org/10.1021/acs.chemrestox.4c00262",
     "srcLabel": "2024 Chem Res Toxicol",
     "quote": "the objectives of this study were to (i) generate DIAT-responsive T-cell clones from HLA-genotyped drug-naive donors, (ii) characterize pathways of DIAT-specific T-cell activation, and (iii) assess HLA allele restriction of the DIAT-specific T-cell response.",
-    "parallel": true,
     "model_id": "atabecestat-diat-hla-tcell-clones",
     "model": "DIAT-specific T-cell clones from HLA-typed drug-naive donors",
     "model_kind": "ex_vivo",
@@ -565,7 +555,6 @@
     "model_first_use_year": 2024
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -595,7 +584,6 @@
     "srcLabel": "2024 Chem Res Toxicol",
     "quote": "DIAT-specific T-cell responses displayed HLA-DRB1*12:01, HLA-DRB1*13:02, and HLA-DRB1*15:01 restriction.",
     "reason": "Reproduces patients' HLA restriction",
-    "parallel": true,
     "model_id": "atabecestat-diat-hla-tcell-clones",
     "model": "DIAT-specific T-cell clones from HLA-typed drug-naive donors",
     "model_kind": "ex_vivo",

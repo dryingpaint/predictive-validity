@@ -133,6 +133,8 @@ drug's `same` for the same model.
 
 **Decision (2026-11-04):** Two records. Each model keeps its own record, and a model that failed stays failed: a red-to-green change on a model change (`model_change: true`) is the newer model beating the older one, drawn as a handover; the cell shows the best model available at each date. An attenuation is the reverse case: the model was right and the early patient signal was not, so the later entry carries `patient_signal_reversed: true` from a tier 1–4 source and the model is credited as matched from that date; the red interval stays, because it is what was believed then. `matrix.py` writes the per-model record (`matrix_models.csv`).
 
+**Revised (2026-11-05):** No main strip and no handover. Every model system is its own track (`model_id`), and the cell headline is computed: at each date, the best latest status among tracks that predicted before the patient result; untested when none did; a retrodiction never sets it. `model_change` is dropped (migration 135).
+
 ---
 
 ## 7. Dating an entry
@@ -345,7 +347,7 @@ a model prediction, and the harm itself is already scored in safety.
 
 ## Schema v3
 
-`source_tier`, `model_src`, `model_src_tier`, `trial_unreported`, `model_kind`, `model_change`,
+`source_tier`, `model_src`, `model_src_tier`, `trial_unreported`, `model_kind`,
 `patient_signal_reversed`, `outcome_tested`, `retrodiction`, `effect_size`, `class_threshold`, `imported_from`,
 `patient_trials`, `regulatory_reliance`, `readout_tier`, `blocked_by`, `margin_stated`; a sixth status `retro`;
 a context-level `modality_groups` and `class_share`, and `modality` on split dose and safety entries; `magnitude` gains null/opposite;

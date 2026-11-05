@@ -161,20 +161,30 @@ const ORDER = ["same", "neg", "other", "retro", "contra", "untested"];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fill = s => s === "neg" ? "url(#hatch)" : `var(--${s})`;
 
-function latest(entries) {
+// The headline entry of a cell up to a year: each track's (model_id's) latest entry, the best of those that
+// predicted before the patient result (report_page.py HEADLINE); an untested entry when none did.
+const HEADLINE = ["same", "neg", "other", "contra"];
+function headlineEntry(entries, upTo = Infinity) {
   const last = {};
-  [...entries].sort((a, b) => a.year - b.year || a.seq - b.seq).forEach(e => { last[e.modality] = e.status; });
-  const rank = ["contra", "neg", "same", "other", "retro", "untested"];
+  [...entries].filter(e => e.year <= upTo).sort((a, b) => a.year - b.year || a.seq - b.seq)
+    .forEach(e => { last[e.model_id] = e; });
   const v = Object.values(last);
-  return v.length ? v.sort((a, b) => rank.indexOf(a) - rank.indexOf(b))[0] : null;
+  if (!v.length) return null;
+  const tested = v.filter(e => HEADLINE.includes(e.status)).sort((a, b) => HEADLINE.indexOf(a.status) - HEADLINE.indexOf(b.status));
+  return tested[0] || { ...v[v.length - 1], status: "untested" };
 }
+function latest(entries) { return headlineEntry(entries)?.status ?? null; }
 
 function spans(entries) {
-  const s = [...entries].sort((a, b) => a.year - b.year || a.seq - b.seq);
+  const years = [...new Set(entries.map(e => e.year))].sort((a, b) => a - b);
   const out = [];
-  s.forEach((e, i) => {
-    const start = Math.max(e.year, Y0), end = i + 1 < s.length ? Math.max(s[i + 1].year, Y0) : Y1 + 1;
-    if (end > start) out.push({ start, end, e });
+  years.forEach((y, i) => {
+    const e = headlineEntry(entries, y);
+    const start = Math.max(y, Y0), end = i + 1 < years.length ? Math.max(years[i + 1], Y0) : Y1 + 1;
+    const prev = out[out.length - 1];
+    if (end <= start) return;
+    if (prev && prev.e.status === e.status && prev.e.model_id === e.model_id) prev.end = end;
+    else out.push({ start, end, e });
   });
   return out;
 }
@@ -183,7 +193,7 @@ function strip(entries, cls) {
   const W = 1000, x = y => (y - Y0) / (Y1 + 1 - Y0) * W;
   const segs = spans(entries).map(({ start, end, e }) =>
     `<rect x="${x(start).toFixed(1)}" y="0" width="${Math.max(x(end) - x(start) - 2, 1).toFixed(1)}" height="100%" rx="2" fill="${fill(e.status)}"
-      data-tip="${esc(`${start}–${end - 1 >= Y1 ? "now" : end - 1} · ${LABEL[e.status]}${e.modality ? " · " + e.modality : ""}<br>${esc(e.model)}${e.handover ? "<br><i>new model took over</i>" : ""}${e.reversed ? "<br><i>patient signal faded</i>" : ""}`)}"></rect>`).join("");
+      data-tip="${esc(`${start}–${end - 1 >= Y1 ? "now" : end - 1} · ${LABEL[e.status]}${e.modality ? " · " + e.modality : ""}<br>${esc(e.model)}${e.reversed ? "<br><i>patient signal faded</i>" : ""}`)}"></rect>`).join("");
   return `<svg class="${cls || ""}" viewBox="0 0 ${W} 10" preserveAspectRatio="none" role="img" aria-label="${esc(entries.map(e => e.year + " " + LABEL[e.status]).join("; "))}">${segs}</svg>`;
 }
 
@@ -273,7 +283,7 @@ function detail(t) {
     if (!c.length) return `<div><h3>${name}</h3><p class="vd">No model was relied on for this question.</p></div>`;
     return `<div><h3>${name}</h3><div class="scroll"><table><thead><tr><th>Year</th><th>Status</th><th>Model</th><th>Evidence</th><th>Check</th></tr></thead><tbody>` +
       c.map(e => `<tr><td class="yr">${e.year}${e.modality ? `<br><span class="vd">${esc(e.modality)}</span>` : ""}</td>
-        <td><span class="chip ${e.status}">${LABEL[e.status].split(":")[0]}</span>${e.handover ? '<div class="vd">new model took over</div>' : ""}${e.reversed ? '<div class="vd">patient signal faded</div>' : ""}</td>
+        <td><span class="chip ${e.status}">${LABEL[e.status].split(":")[0]}</span>${e.reversed ? '<div class="vd">patient signal faded</div>' : ""}</td>
         <td>${esc(e.model)}</td>
         <td>${esc(e.note || "")}${e.quote ? `<div class="q-quote">“${esc(e.quote)}”</div>` : ""}${e.src ? `<div><a href="${esc(e.src)}" target="_blank" rel="noopener">${esc(e.src_label || "source")}</a>${e.tier ? ` <span class="vd">tier ${e.tier}${e.stated === false ? ", paired" : ""}</span>` : ""}</div>` : ""}</td>
         <td class="vd ${e.verdict === "corrected" ? "corrected" : ""}">${e.verdict ? esc(e.verdict) : "not checked"}${e.verdict === "corrected" ? `: checker said ${esc(e.proposed)}${e.adjudicated ? `; adjudicated ${esc(e.adjudicated)}` : ""}` : ""}${e.check_note ? `<div>${esc(e.check_note)}</div>` : ""}</td></tr>`).join("") +

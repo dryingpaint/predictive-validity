@@ -21,7 +21,6 @@
  "cells": {
   "engagement": [
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -52,10 +51,10 @@
     "source_tier": 1,
     "epub_year": 2010,
     "print_year": 2010,
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -89,12 +88,12 @@
     "print_year": 2011,
     "model_first_use_year": 2010,
     "reason": "Insulin rose glucose-dependently in humans",
-    "judgement": "Insulin secretion is downstream of receptor cAMP; no member has a direct occupancy readout. Healthy-volunteer data count for engagement. Paired by the drafter (same sponsor, no side-by-side statement)."
+    "judgement": "Insulin secretion is downstream of receptor cAMP; no member has a direct occupancy readout. Healthy-volunteer data count for engagement. Paired by the drafter (same sponsor, no side-by-side statement).",
+    "prediction_level": "class"
    }
   ],
   "dose": [
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -126,10 +125,10 @@
     "source_tier": 1,
     "epub_year": 2015,
     "print_year": 2015,
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -163,10 +162,10 @@
     "print_year": 2017,
     "model_first_use_year": 2015,
     "reason": "Once-weekly regimen held in patients",
-    "judgement": "The model's target was a once-weekly regimen; the half-life was underpredicted 3.6x in the conservative direction, so the regimen held and is scored same, with the miss recorded in magnitude. FDA pharmacology review (209637) states minipig pharmacology was filed."
+    "judgement": "The model's target was a once-weekly regimen; the half-life was underpredicted 3.6x in the conservative direction, so the regimen held and is scored same, with the miss recorded in magnitude. FDA pharmacology review (209637) states minipig pharmacology was filed.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -198,10 +197,10 @@
     "source_tier": 1,
     "epub_year": 2010,
     "print_year": 2010,
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "healthy_volunteers",
     "comparison_stated": false,
@@ -235,10 +234,10 @@
     "print_year": 2011,
     "model_first_use_year": 2010,
     "reason": "Once-weekly regimen held in humans",
-    "judgement": "Half-life ratio straddles 2x (1.9-2.5x); recorded as off_by_2-5x. The regimen prediction held and patients were dosed to it with efficacy, so same rather than contra."
+    "judgement": "Half-life ratio straddles 2x (1.9-2.5x); recorded as off_by_2-5x. The regimen prediction held and patients were dosed to it with efficacy, so same rather than contra.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -270,10 +269,10 @@
     "source_tier": 1,
     "epub_year": 2021,
     "print_year": 2021,
-    "model_first_use_year": 2020
+    "model_first_use_year": 2020,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -307,10 +306,10 @@
     "print_year": 2023,
     "model_first_use_year": 2020,
     "reason": "Oral exposure reached glycaemic efficacy",
-    "judgement": "No numeric exposure target from the mouse could be found at abstract level, so magnitude is direction_only. The 2025 discontinuation (liver injury, obesity programme) is a safety question, not dose, and was not scored (no model source on hepatic silence found)."
+    "judgement": "No numeric exposure target from the mouse could be found at abstract level, so magnitude is direction_only. The 2025 discontinuation (liver injury, obesity programme) is a safety question, not dose, and was not scored (no model source on hepatic silence found).",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -340,7 +339,6 @@
     "note": "Dog tablets: oral bioavailability 0.2-1.4%, highest with 300 mg SNAC; set the SNAC amount taken into humans.",
     "short": "Dogs pick 300 mg SNAC, BA 0.2-1.4%",
     "judgement": "Opener dated to first use (before FIH), not to the review's publication.",
-    "parallel": true,
     "model_id": "sema-oral-snac-dog-pk",
     "model": "Beagle dog oral bioavailability of semaglutide/SNAC tablets",
     "model_kind": "animal",
@@ -348,7 +346,6 @@
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -379,7 +376,6 @@
     "short": "300 mg SNAC optimal in humans too",
     "reason": "Dog SNAC ratio and BA held",
     "judgement": "Same: both the formulation choice and the bioavailability range carried to humans. Paired by us (model side FDA review, patient side the FIH paper).",
-    "parallel": true,
     "model_id": "sema-oral-snac-dog-pk",
     "model": "Beagle dog oral bioavailability of semaglutide/SNAC tablets",
     "model_kind": "animal",
@@ -389,7 +385,6 @@
   ],
   "efficacy": [
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -420,10 +415,10 @@
     "source_tier": 1,
     "epub_year": 2010,
     "print_year": 2010,
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -472,10 +467,10 @@
       "quote": "For all danuglipron doses, HbA1c and FPG were statistically significantly reduced at week 16 vs placebo"
      }
     ],
-    "judgement": "Same, not neg: no member with model data is known to have missed its HbA1c primary endpoint (dulaglutide, semaglutide SUSTAIN 1, danuglipron phase 2b all positive). Outcome trial positive: SUSTAIN-6 (Marso 2016, doi:10.1056/NEJMoa1607141) cut MACE with semaglutide. Discontinued members (LY2428757, TTP054, TTP273, CJC-1134-PC, YH14617) were not checked for HbA1c failures within budget."
+    "judgement": "Same, not neg: no member with model data is known to have missed its HbA1c primary endpoint (dulaglutide, semaglutide SUSTAIN 1, danuglipron phase 2b all positive). Outcome trial positive: SUSTAIN-6 (Marso 2016, doi:10.1056/NEJMoa1607141) cut MACE with semaglutide. Discontinued members (LY2428757, TTP054, TTP273, CJC-1134-PC, YH14617) were not checked for HbA1c failures within budget.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -504,7 +499,6 @@
     "note": "Exome and genotyping in ~52,000 people tested a GLP1R missense variant as a proxy for receptor agonism.",
     "short": "GLP1R variant as genetic agonist proxy",
     "judgement": "Opener at first use; the same paper already compares it with known trial effects (next entry).",
-    "parallel": true,
     "model_id": "glp1r-ala316thr-genetics",
     "model": "GLP1R Ala316Thr carriers (human genetics)",
     "model_kind": "human_genetic",
@@ -512,7 +506,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -544,7 +537,6 @@
     "short": "Variant lowers glucose like the drugs",
     "reason": "Reproduces known glucose lowering",
     "judgement": "Retro, not same: the genetic proxy was run after member drugs had lowered HbA1c in trials.",
-    "parallel": true,
     "model_id": "glp1r-ala316thr-genetics",
     "model": "GLP1R Ala316Thr carriers (human genetics)",
     "model_kind": "human_genetic",
@@ -552,7 +544,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -581,7 +572,6 @@
     "note": "88 genotyped volunteers on GLP-1 infusion: Ser168 carriers had ~15% lower beta-cell responsivity, predicting weaker drug response.",
     "short": "Ser168 carriers respond less to GLP-1",
     "judgement": "Opener: a genotype-level prediction of which patients respond less to GLP-1-based therapy.",
-    "parallel": true,
     "model_id": "glp1r-gly168ser-clamp",
     "model": "GLP1R Gly168Ser genotype, GLP-1 infusion clamp in healthy volunteers",
     "model_kind": "human_challenge",
@@ -589,7 +579,6 @@
     "model_first_use_year": 2010
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -620,7 +609,6 @@
     "short": "Ser168 blunts HbA1c response slightly",
     "reason": "Genotype direction held, small effect",
     "judgement": "Same at patient level on direction; low confidence because the member share of the pooled estimate is unknown. Epub Dec 2022 per Lancet DE online-first, print Jan 2023; dated to print as the epub date was not verified.",
-    "parallel": true,
     "model_id": "glp1r-gly168ser-clamp",
     "model": "GLP1R Gly168Ser genotype, GLP-1 infusion clamp in healthy volunteers",
     "model_kind": "human_challenge",
@@ -630,7 +618,6 @@
   ],
   "safety": [
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": null,
     "comparison_stated": false,
@@ -661,10 +648,10 @@
     "source_tier": 2,
     "epub_year": 2014,
     "print_year": 2014,
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "subjects": "patients",
     "comparison_stated": false,
@@ -697,10 +684,10 @@
     "print_year": 2024,
     "model_first_use_year": 2014,
     "reason": "Rodent C-cell tumours absent in patients",
-    "judgement": "Predicted harm not seen in patients scored contra/opposite per the brief. Alternative reading: untested, since MTC is rare and slow and the cohort is dominated by non-member liraglutide. Dissent exists (Bezin 2023, French case-control, not re-verified). Danuglipron's 2025 liver injury (obesity programme, tier 5) was not entered: no model source stating hepatic silence was found."
+    "judgement": "Predicted harm not seen in patients scored contra/opposite per the brief. Alternative reading: untested, since MTC is rare and slow and the cohort is dominated by non-member liraglutide. Dissent exists (Bezin 2023, French case-control, not re-verified). Danuglipron's 2025 liver injury (obesity programme, tier 5) was not entered: no model source stating hepatic silence was found.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -729,7 +716,6 @@
     "note": "Monkeys dosed at ~474x clinical AUC for a year showed no C-cell proliferation or calcitonin rise, unlike rats.",
     "short": "No C-cell effect in monkeys at 474x AUC",
     "judgement": "Opener: the sponsor ran the monkey study to argue humans respond like monkeys, not rats; a stated prediction of no human C-cell signal.",
-    "parallel": true,
     "model_id": "glp1ra-cyno-thyroid-ccell",
     "model": "1-year cynomolgus thyroid C-cell study (dulaglutide)",
     "model_kind": "animal",
@@ -737,7 +723,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -767,7 +752,6 @@
     "short": "No mean calcitonin rise in patients",
     "reason": "Patients matched monkeys, not rats",
     "judgement": "Same, partial: mean calcitonin flat matches the monkey silence, but the reviewer notes numerically more >35 pg/ml outliers on drug. Paired by us across two documents of the same BLA.",
-    "parallel": true,
     "model_id": "glp1ra-cyno-thyroid-ccell",
     "model": "1-year cynomolgus thyroid C-cell study (dulaglutide)",
     "model_kind": "animal",
@@ -775,7 +759,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "mixed",
@@ -804,7 +787,6 @@
     "note": "Variant carriers had less coronary heart disease: a prediction of no cardiovascular harm, possibly benefit.",
     "short": "Genetics predicts no CV harm",
     "judgement": "A stated cardiovascular-safety prediction, published June 2016 before any member drug's outcome trial.",
-    "parallel": true,
     "model_id": "glp1r-ala316thr-genetics",
     "model": "GLP1R Ala316Thr carriers (human genetics)",
     "model_kind": "human_genetic",
@@ -812,7 +794,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -842,7 +823,6 @@
     "short": "No CV harm; MACE fell on semaglutide",
     "reason": "CV benefit held in SUSTAIN-6",
     "judgement": "Same, not retro: for the members the outcome trial followed the genetic prediction. Whether a SUSTAIN-6 topline was public before June 2016 was not checked.",
-    "parallel": true,
     "model_id": "glp1r-ala316thr-genetics",
     "model": "GLP1R Ala316Thr carriers (human genetics)",
     "model_kind": "human_genetic",

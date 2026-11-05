@@ -17,8 +17,8 @@ For EVERY entry in every cell:
      tested (should be `untested`);
    - efficacy scored on a secondary endpoint without `endpoint_role: poc_gate`;
    - a retrodiction scored `same` (should be `retro`), or a prospective model marked `retrodiction`;
-   - a `contra` → matched move whose `model_change` is really the same system renamed (same `model_id`
-     in substance), or whose `patient_signal_reversed` source does not show attenuation to background;
+   - one system split across two `model_id`s, or two systems sharing one; a `contra` → matched move on a
+     track whose `patient_signal_reversed` source does not show attenuation to background;
    - `neg` whose `effect_size` is the sponsor's reading rather than the model's number, or whose
      `class_threshold` is not a bar the class's own successful drugs cleared;
    - a dose ceiling (`margin_stated`) where no model source stated the margin before the trial;

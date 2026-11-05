@@ -22,7 +22,7 @@ from psycopg2.extras import Json, execute_values  # noqa: E402
 
 QUESTIONS = ("engagement", "dose", "efficacy", "safety")
 COLUMNS = ("year", "status", "model_id", "model", "src", "srcLabel", "quote", "source_tier", "comparison_stated",
-           "retrodiction", "model_change", "patient_signal_reversed", "confidence")
+           "retrodiction", "patient_signal_reversed", "confidence")
 
 
 def rows(d: dict) -> list[tuple]:
@@ -51,9 +51,9 @@ def store(path: str, drafted_by: str, cur) -> int:
     cur.execute("DELETE FROM preclin.atlas_track_entry WHERE mondo_id = %s AND mechanism_key = %s", key)
     execute_values(cur, """INSERT INTO preclin.atlas_track_entry (mondo_id, mechanism_key, question, modality, seq,
                                year, status, model_id, model, src, src_label, quote, source_tier, comparison_stated,
-                               retrodiction, model_change, patient_signal_reversed, confidence, fields, drafted_by)
+                               retrodiction, patient_signal_reversed, confidence, fields, drafted_by)
                             VALUES %s""",
-                   [(*key, q, mod, seq, *(e.get(c) if c not in ("retrodiction", "model_change", "patient_signal_reversed")
+                   [(*key, q, mod, seq, *(e.get(c) if c not in ("retrodiction", "patient_signal_reversed")
                                           else bool(e.get(c)) for c in COLUMNS),
                      Json({k: v for k, v in e.items() if k not in COLUMNS and k != "modality"}), drafted_by)
                     for q, mod, seq, _, e in entries])

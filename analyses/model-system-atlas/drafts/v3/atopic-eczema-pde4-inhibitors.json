@@ -32,7 +32,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -52,7 +51,8 @@
     "src": "https://doi.org/10.1016/j.bmcl.2009.03.007",
     "srcLabel": "Akama 2009",
     "quote": "A series of phenoxy benzoxaboroles were synthesized and screened for their inhibitory activity against PDE4 and cytokine release.",
-    "judgement": "Model opens at the 2008 IND (proxy) with the 2009 paper as its first public record."
+    "judgement": "Model opens at the 2008 IND (proxy) with the 2009 paper as its first public record.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -68,7 +68,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -90,7 +89,8 @@
     "quote": "Crisaborole significantly modulated key AD biomarkers versus vehicle, including TH2 and TH17/TH22 pathways and epidermal hyperplasia/proliferation.",
     "readout_tier": "downstream",
     "reason": "Skin cytokine pathways fell in patients",
-    "judgement": "Scored downstream: lesional cytokine mRNA is further down than PDE4/cAMP, and a different tissue from the PBMC assay. No cAMP or PDE4 activity was measured in patients."
+    "judgement": "Scored downstream: lesional cytokine mRNA is further down than PDE4/cAMP, and a different tissue from the PBMC assay. No cAMP or PDE4 activity was measured in patients.",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -108,7 +108,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -128,7 +127,8 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/207695Orig1s000PharmR.pdf",
     "srcLabel": "FDA PharmR 2016",
     "quote": "In 3-month minipig dermal study (vehicle, 0.5%, 2%, and 5% crisaborole ointment B) with one-month recovery period, two daily applications did not produce any systemic toxicity at NOAEL of 5 percent.",
-    "judgement": "The class's dose model is taken as the toxic-end margin (decision 16): no efficacy-model exposure target was set; Phase 3 strength (2%) came from patient dose-ranging (AN2728-AD-204)."
+    "judgement": "The class's dose model is taken as the toxic-end margin (decision 16): no efficacy-model exposure target was set; Phase 3 strength (2%) came from patient dose-ranging (AN2728-AD-204).",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -144,7 +144,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "within_2x",
@@ -168,7 +167,8 @@
     "derived_from": null,
     "blocked_by": null,
     "reason": "Tolerated margin held at 2% dose",
-    "judgement": "Scored same with margin_stated: the model stated a tolerated exposure at about the clinical one and patients were dosed to it without systemic toxicity; efficacy at that dose was positive."
+    "judgement": "Scored same with margin_stated: the model stated a tolerated exposure at about the clinical one and patients were dosed to it without systemic toxicity; efficacy at that dose was positive.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -186,7 +186,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -206,7 +205,8 @@
     "src": "https://doi.org/10.1016/j.bmcl.2009.03.007",
     "srcLabel": "Akama 2009",
     "quote": "5-(4-Cyanophenoxy)-2,3-dihydro-1-hydroxy-2,1-benzoxaborole (AN2728) showed potent activity both in vitro and in vivo.",
-    "judgement": "Model identified from the FDA pharmacology review, which names only this in vivo efficacy model."
+    "judgement": "Model identified from the FDA pharmacology review, which names only this in vivo efficacy model.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -222,7 +222,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -271,10 +270,10 @@
       "doi": null,
       "quote": "A Safety and Efficacy of DRM02 in Subjects With Atopic Dermatitis"
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -308,11 +307,9 @@
     "short": "Mouse contact dermatitis carried LEO 29102",
     "quote": "This effort culminated in identification of LEO 29102 (20), a potent, selective, and soft-drug PDE4 inhibitor with properties suitable for patient-friendly formulations giving efficient drug delivery to the skin.",
     "judgement": "Separate system from crisaborole's phorbol-ester ear edema: a hapten allergic model used by LEO for its own candidate.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -348,11 +345,9 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "judgement": "Pairing: the registry's ANOVA p-values (0.27, 0.83, 0.08, 0.16, 0.14) set the status, not the sponsor's 2014 'clinically relevant efficacy' claim, which gave no primary-endpoint result (rule 7: the 2014 claim is not an admissible comparison). Active control pimecrolimus separated (p=0.04), so the trial could detect an effect.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -386,11 +381,9 @@
     "short": "Mouse chronic contact dermatitis model",
     "quote": "Difamilast showed efficacy in a mouse model of chronic contact dermatitis.",
     "judgement": "Separate from LEO's acute allergic model: repeated hapten challenges, Otsuka protocol.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -426,11 +419,9 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "judgement": "Dated 2023, when the model data were first public beside the trials. Scored prospective, not retro, because the FDA review files it as the primary pharmacology model; the paper's crisaborole comparator arm may be later, which I could not date.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -464,11 +455,9 @@
     "short": "Explant skin PK/cAMP readout",
     "quote": "To investigate the difference in clinical efficacy in AD patients between two topical PDE4 inhibitors using dermal open flow microperfusion and cAMP as a pharmacodynamic read-out in fresh human skin explants.",
     "judgement": "Opening entry at the model's first use, which came after both trials.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -504,11 +493,9 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "judgement": "A retrodiction. The authors call it a match because they read LEO 29102 as clinically active. Against the registry primary (no dose significant, best p=0.08) it fails to reproduce the result, so contra. A near-miss trend could make this arguable; low confidence.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -542,11 +529,9 @@
     "short": "Oxazolone mouse model, run post-approval",
     "quote": "In this study, we addressed this unsolved issue by analyzing the action of difamilast, a novel phosphodiesterase 4 inhibitor, on an oxazolone-induced skin allergic inflammation commonly used as a mouse model of atopic dermatitis.",
     "judgement": "Run after difamilast's 2021 Japanese approval.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -582,11 +567,9 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "judgement": "Takahashi (difamilast) and Calama (crisaborole) treated as one system: repeated oxazolone challenge on mouse ear. Earliest public comparison sets the year.",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -620,11 +603,9 @@
     "short": "MC903 mouse model, run post-approval",
     "quote": "Therefore, we evaluated the effects of difamilast on pruritus, dermatitis, and skin barrier dysfunction in MC903-induced AD model mice.",
     "judgement": "Run after approval in Japan (2021).",
-    "parallel": true,
     "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -660,7 +641,6 @@
     "endpoint_role": "primary",
     "outcome_tested": null,
     "judgement": "Stated comparison: the paper opens on clinical efficacy and reproduces it in mice; retro since run after the trials.",
-    "parallel": true,
     "prediction_level": "class"
    }
   ],
@@ -679,7 +659,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -699,7 +678,8 @@
     "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/207695Orig1s000PharmR.pdf",
     "srcLabel": "FDA PharmR 2016",
     "quote": "In primary ocular and skin irritation assays in rabbits, 2% AN2728 ointment was tested as a mild to moderate irritant.",
-    "judgement": "Start year proxied."
+    "judgement": "Start year proxied.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -715,7 +695,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -736,7 +715,8 @@
     "srcLabel": "Eucrisa label 2016",
     "quote": "The most common side effect of EUCRISA is application site pain, such as burning or stinging.",
     "reason": "Local irritation predicted; pain seen",
-    "judgement": "Partial: rabbits graded erythema/edema, patients mainly reported burning or stinging. Label contact urticaria not scored against the negative LLNA, which tests delayed-type sensitization only."
+    "judgement": "Partial: rabbits graded erythema/edema, patients mainly reported burning or stinging. Label contact urticaria not scored against the negative LLNA, which tests delayed-type sensitization only.",
+    "prediction_level": "class"
    }
   ]
  }

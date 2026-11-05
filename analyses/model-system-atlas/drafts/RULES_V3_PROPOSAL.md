@@ -20,7 +20,7 @@ that declares `"schema": 3`.
 |---|---|
 | 1, 3, 4, 5, 7, 8, 9, 11, 14, 15 | proposed as written |
 | 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
-| 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
+| 6 `contra` recoverable | decided: a failed model stays failed on its own track; a newer model that beats it is a second track, and the cell headline follows the best prospective track; an attenuated patient signal credits the model |
 | 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
 | 12 class boundaries | decided, revised: every mechanism (target, action) of every disease registered from a reviewed class table; ≥ 3 programs across modalities tracked; dose and platform safety split by modality; stored in `preclin.atlas_*` (migration 133) |
 | 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
@@ -118,18 +118,14 @@ same family: `same` + `magnitude: off_by_>5x`, `direction: conservative` (#142).
 **Alternative.** Score these `same` with `source_calls_it: over_predicted`; the
 difference is ~6 safety cells.
 
-## 6. A failed model stays failed; the cell shows the best model
+## 6. A failed model stays failed; the cell headline follows the best prospective track
 
-**Rule.** Each model keeps its own record, and `contra` is permanent in it. The cell shows the best
-model available at each date, so a later entry may move the cell from `contra` to a matched status in
-exactly two ways:
-(a) a different model took over and its prediction held: `model_change: true`, drawn as a handover,
-the newer model beating the older one (#12, #52, #83);
-(b) the model was right and the early patient signal was not: a tier 1–4 source reports the signal
-attenuated to background, and the entry carries `patient_signal_reversed: true` (dolutegravir NTD,
-#27, #66, #96). The red interval stays, because it is what was believed then.
-Without either the strip stays red. One drug's `contra` overrides another drug's `same` in the same
-class and model (#3). `matrix.py` writes the per-model record to `matrix_models.csv`.
+**Rule.** Each model system is its own track, and `contra` is permanent on it. A track turns from
+`contra` to a matched status only when the model was right and the early patient signal was not: a tier
+1–4 source reports the signal attenuated to background, and the entry carries
+`patient_signal_reversed: true` (dolutegravir NTD, #27, #66, #96). The red interval stays, because it is
+what was believed then. A newer model that beats a failed one is a second track (#12, #52, #83), and
+the cell's headline is computed from its tracks: at each date, the best latest status among tracks that predicted before the patient result (matched over contradicted); untested when none did. A retrodiction is drawn on its track and never sets the headline. One drug's `contra` overrides another drug's `same` on the same track (#3).
 
 **Impact.** Haemophilia B, NSCLC/EGFR dose, GBM, AML, FL, CRC and the HF renal cell all currently
 show a recovery; under "sticky `contra`" they stay red from the first miss.
@@ -140,7 +136,7 @@ show a recovery; under "sticky `contra`" they stay red from the first miss.
 or the year of the earliest admissible source that makes the comparison, label included (#8, #9,
 #81, #129, #131). All three are recorded, so the strip can be redrawn under any convention. A model
 introduced mid-cell opens at its first class use, proxy allowed (#112). Same-year collisions get the
-model entry first (#30). A new entry is written only on a status change or a best-model change;
+model entry first (#30). A new entry is written only on a status change on its track;
 trial facts that change nothing go in `patient_trials` (#113), except a second miss that removes the
 first miss's excuse, which may be entered with `strengthens: true` (#127).
 
@@ -151,12 +147,12 @@ order under registry dating.
 ## 8. What "the model" is
 
 **Rule.** Every model system compared with patients for the class is tracked. The system the class
-actually relied on for that question (pivotal papers, filed package) is the cell's main strip; every other
-system with a comparison (patient-derived organoids or cells, a regulator's in-vitro basis for a label
-expansion, a later animal model, a member drug's own model) is a parallel track with `parallel: true`, its
-own `model_id`, and the same rules applied within the track. Every entry records `prediction_level`:
-`class` (does the class work) or `patient` (does the model pick which patients or genotypes respond). Which
-track a cell's headline status follows is open (call #1). Drafting starts by listing the model systems; the
+actually relied on for that question (pivotal papers, filed package) and every other system with a
+comparison (patient-derived organoids or cells, a regulator's in-vitro basis for a label expansion, a
+later animal model, a member drug's own model) are each a track: the entries with one `model_id`, scored
+by the same rules within the track. Every entry records `prediction_level`:
+`class` (does the class work) or `patient` (does the model pick which patients or genotypes respond). The cell
+headline is computed from the tracks (decision 6). Drafting starts by listing the model systems; the
 checker hunts for missed ones. Added 2026-11-05 after the CF tile was found to omit the rectal-organoid
 swelling assay and the FRT basis of the Trikafta label expansion. Proxies are allowed with `product_in_model: false` (#16, #34; 14 scored cells rest
 on them, 8 `same`, 6 `contra`). When sponsors relied on different models, the entry names the one the
@@ -311,7 +307,6 @@ ceiling. A ceiling entry carries `margin_stated: true`.
 | `class_share` | context | the class's programs over the disease's (decision 12) |
 | `model_kind` | entry | animal / human_challenge / ex_vivo / in_silico / human_genetic / cross_indication |
 | `model_id` | entry | stable slug per model system, so the per-model record of decision 6 groups correctly |
-| `model_change` | entry | bool (new best model, same or different status) |
 | `outcome_tested` | efficacy cell | null / positive / negative / negative_confounded |
 | `retrodiction` | entry | bool; `status: retro` when it matched (decision 10) |
 | `imported_from` | entry | MONDO id of the disease the comparison was made in |

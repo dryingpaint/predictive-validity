@@ -4,7 +4,7 @@
 
 A tile is settled when every corrected verdict either keeps the drafter's status or carries an
 adjudicated_status. Settled tiles are stored with drafts/track_store.py, which replaces the tile, so a
-re-run after new parallel tracks or verdicts is safe. With no slugs, every tile with a <slug>.check.json
+re-run after new tracks or verdicts is safe. With no slugs, every tile with a <slug>.check.json
 is routed.
 """
 import glob

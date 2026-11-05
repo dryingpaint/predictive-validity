@@ -43,14 +43,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR-mutant NSCLC models",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "prediction_level": "class"
    },
    {
     "year": 2017,
@@ -80,14 +80,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour phospho-EGFR after dosing, xenograft vs patient biopsy",
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -118,7 +118,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
@@ -128,10 +127,10 @@
     "model_first_use_year": 2014,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -160,7 +159,6 @@
     "srcLabel": "Ballard 2016",
     "quote": "Under positron emission tomography micro-dosing conditions, [11C]osimertinib showed markedly greater exposure in the cynomolgus monkey brain than [11C]rociletinib and [11C]gefitinib.",
     "judgement": "Opens the brain-exposure track at the model's publication; brain exposure, not systemic PK, is this system's dose target.",
-    "parallel": true,
     "model_id": "egfrm-brain-met-mouse-nhp-pet",
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
@@ -168,7 +166,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -198,7 +195,6 @@
     "quote": "This study in healthy volunteers shows that 11C-osimertinib penetrates the intact blood-brain barrier.",
     "reason": "Human brain exposure as predicted",
     "judgement": "Brain exposure placed in dose (was the model's exposure reached). Dated to the healthy-volunteer PET (epub April 2019), the first public human comparison; ODIN-BM 2023 changes no status.",
-    "parallel": true,
     "model_id": "egfrm-brain-met-mouse-nhp-pet",
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
@@ -232,14 +228,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR-mutant NSCLC models",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "prediction_level": "class"
    },
    {
     "year": 2015,
@@ -284,17 +280,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour regression in mice vs objective response rate in patients",
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -324,7 +319,6 @@
     "quote": "Osimertinib demonstrated greater penetration of the mouse blood-brain barrier than gefitinib, rociletinib (CO-1686), or afatinib, and at clinically relevant doses induced sustained tumor regression in an EGFRm PC9 mouse brain metastases model",
     "endpoint_role": null,
     "judgement": "Case reports in the same paper are not scored: no trial endpoint.",
-    "parallel": true,
     "model_id": "egfrm-brain-met-mouse-nhp-pet",
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
@@ -332,7 +326,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -372,7 +365,6 @@
     ],
     "reason": "CNS response as predicted",
     "judgement": "Population: BLOOM's LM cohort is EGFR-sensitising-mutant after TKI, mostly not T790M-selected, so it sits at the edge of the draft's T790M/exon 20 population; kept because the tile's class is all EGFR inhibitors and the draft's narrowing is an open rule question. Paired, not stated: BLOOM does not cite the mouse result as a prediction.",
-    "parallel": true,
     "model_id": "egfrm-brain-met-mouse-nhp-pet",
     "model": "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET",
     "model_kind": "animal",
@@ -380,7 +372,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -410,7 +401,6 @@
     "quote": "Mobocertinib inhibited viability of various EGFRex20ins-driven cell lines more potently than approved EGFR TKIs and demonstrated in vivo antitumor efficacy in patient-derived xenografts and murine orthotopic models.",
     "endpoint_role": null,
     "judgement": "Opening year is the first-in-human start, since the model must have preceded it.",
-    "parallel": true,
     "model_id": "egfr-ex20ins-bafs-pdx",
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
@@ -418,7 +408,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -457,7 +446,6 @@
     ],
     "reason": null,
     "judgement": "A single-arm ORR of 28% against xenograft regression is direction-only agreement; scored same because the primary endpoint was met.",
-    "parallel": true,
     "model_id": "egfr-ex20ins-bafs-pdx",
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
@@ -465,7 +453,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -496,7 +483,6 @@
     "endpoint_role": "primary",
     "reason": "Phase 3 failed vs chemotherapy",
     "judgement": "Scored contra per the dose/efficacy table (reached, failed, abandoned). The models never tested an active comparator, which the checker raised as an open rule question; if the ruling is 'untested', this entry changes. Year may move to 2023 once the press release is verified.",
-    "parallel": true,
     "model_id": "egfr-ex20ins-bafs-pdx",
     "model": "EGFR exon 20 insertion Ba/F3 lines, patient-derived xenografts and orthotopic mice (mobocertinib)",
     "model_kind": "animal",
@@ -504,7 +490,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -534,7 +519,6 @@
     "quote": "In vivo, we also observed that NSCLC patient-derived xenografts (PDXs) containing G719A mutations were resistant to the third-generation TKI osimertinib, but most sensitive to the second-generation TKI poziotinib",
     "endpoint_role": null,
     "judgement": "Model and patient comparison appear in the same paper; opening entry marks the model.",
-    "parallel": true,
     "model_id": "egfr-bafs-structure-groups",
     "model": "Ba/F3 panel of 76 EGFR mutants grouped by structure (classical-like, T790M-like, Ex20ins-L, PACC), with PDX",
     "model_kind": "animal",
@@ -542,7 +526,6 @@
     "model_first_use_year": 2021
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -573,7 +556,6 @@
     "endpoint_role": null,
     "reason": "Reproduces retrospective patient outcomes",
     "judgement": "Retrodiction: the TTF data are from treated patients whose outcomes predated the Ba/F3 grouping, and the paper says the groups 'retrospectively predict' outcomes. PACC lies outside the draft's T790M/exon 20 population; kept because the class is all EGFR inhibitors and population is an open rule question. model_kind 'animal' for murine Ba/F3 cells plus PDX; no in-vitro enum exists.",
-    "parallel": true,
     "model_id": "egfr-bafs-structure-groups",
     "model": "Ba/F3 panel of 76 EGFR mutants grouped by structure (classical-like, T790M-like, Ex20ins-L, PACC), with PDX",
     "model_kind": "animal",
@@ -581,7 +563,6 @@
     "model_first_use_year": 2021
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -611,7 +592,6 @@
     "quote": "In the osimertinib cohort, osimertinib was selected as the next-line treatment for 12 patients ( Figure 3 C), and the sensitivity of osimertinib was tested on 15 LCOs generated from these patients ( Figure 3 D).",
     "endpoint_role": null,
     "judgement": "First use dated to the publication; the study's own enrolment dates were not checked.",
-    "parallel": true,
     "model_id": "lung-cancer-organoid-dst",
     "model": "Patient-derived lung cancer organoids from malignant effusions, drug sensitivity test",
     "model_kind": "ex_vivo",
@@ -619,7 +599,6 @@
     "model_first_use_year": 2023
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -650,7 +629,6 @@
     "endpoint_role": null,
     "reason": "Per-patient organoid call matched",
     "judgement": "Patient-level: the organoid did not choose treatment, but its call was compared with each patient's response. Not marked retro because organoids were derived at progression before the next-line osimertinib was given.",
-    "parallel": true,
     "model_id": "lung-cancer-organoid-dst",
     "model": "Patient-derived lung cancer organoids from malignant effusions, drug sensitivity test",
     "model_kind": "ex_vivo",
@@ -684,14 +662,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "prediction_level": "class"
    },
    {
     "year": 2015,
@@ -720,14 +698,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "QTc effect: none predicted vs median +14 ms at 80 mg and label warning",
     "source_calls_it": "miss",
     "population": "EGFR T790M-positive, TKI-pretreated NSCLC",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "prediction_level": "class"
    }
   ]
  }

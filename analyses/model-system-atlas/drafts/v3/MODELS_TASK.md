@@ -11,7 +11,7 @@ You are filling a gap in one tile of the model-system atlas: model systems that 
    - each member drug's own model where it differs from the draft's.
    Skip systems the draft already tracks (same `model_id` or the same system).
 3. For each missing system with at least one comparison, write schema-3 entries for the cells it bears on:
-   - `parallel: true`, its own `model_id`;
+   - its own `model_id`;
    - `prediction_level` (`class` or `patient`);
    - an opening `untested` entry at its first use, then a status per change.
    Follow every field and status rule in the brief: source tier, a verbatim quote of ≤40 words, dating, `comparison_stated`, and `retro` for a model run after the patient result was known.

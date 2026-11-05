@@ -1,9 +1,9 @@
-"""Merge a tile's added model systems (<slug>.models.json) into its draft as parallel tracks.
+"""Merge a tile's listed model systems (<slug>.models.json) into its draft, one track per model system.
 
     .venv/bin/python analyses/model-system-atlas/drafts/v3/merge_models.py <slug> [--check]
 
-Each added model's entries are appended to their cells with `parallel: true` and the model's `model_id`,
-`model` and `model_kind` filled in where the entry leaves them out. Entries already in the draft keep their
+Each listed model's entries are appended to their cells with the model's `model_id`, `model`, `model_kind`,
+`prediction_level` and `model_first_use_year` filled in where the entry leaves them out. Entries already in the draft keep their
 positions, so the indices in <slug>.check.json still point at them. With --check the merged draft is linted
 in a temporary file and nothing is written; without it the merged draft replaces <slug>.json, after which
 the added entries carry their own checker verdicts.
@@ -16,7 +16,7 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LINT = os.path.join(HERE, "..", "lint.py")
-DEFAULTS = {"model_change": False, "retrodiction": False, "patient_signal_reversed": False}
+DEFAULTS = {"retrodiction": False, "patient_signal_reversed": False}
 
 
 def merged(slug: str) -> dict:
@@ -26,7 +26,7 @@ def merged(slug: str) -> dict:
     for m in added:
         for q, entries in (m.get("cells") or {}).items():
             for e in entries:
-                e = {**DEFAULTS, **e, "parallel": True}
+                e = {**DEFAULTS, **e}
                 e.setdefault("model_id", m["model_id"])
                 e.setdefault("model", m.get("model"))
                 e.setdefault("model_kind", m.get("model_kind"))
@@ -48,8 +48,8 @@ def main() -> None:
             print(r.stdout.strip())
         return
     json.dump(d, open(os.path.join(HERE, f"{slug}.json"), "w"), indent=1, ensure_ascii=False)
-    n = sum(1 for s in d["cells"].values() for e in s if e.get("parallel"))
-    print(f"{slug}: {n} parallel entries merged")
+    n = len({(q, e.get("model_id")) for q, s in d["cells"].items() for e in s})
+    print(f"{slug}: {n} tracks")
 
 
 if __name__ == "__main__":

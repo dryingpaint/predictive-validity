@@ -20,7 +20,6 @@
   "engagement": [
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -51,11 +50,11 @@
     "epub_year": 2004,
     "print_year": 2004,
     "model_first_use_year": 2004,
-    "judgement": "Opening entry: fingolimod is not a member, so product_in_model false; it dates the blood-lymphocyte readout in a colitis model."
+    "judgement": "Opening entry: fingolimod is not a member, so product_in_model false; it dates the blood-lymphocyte readout in a colitis model.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -88,13 +87,13 @@
     "epub_year": 2016,
     "print_year": 2016,
     "model_first_use_year": 2004,
-    "judgement": "Paired: Scott 2016 (epub 2016-04-28): '0.6 mg·kg−1 RPC1063 reduced the number of lymphocytes by 51%'. Neither paper states the comparison. Lymphocyte count scored downstream (physiology after S1P1 internalisation, not occupancy). Healthy volunteers agree (Tran 2017: median 65-68% fall at 1-1.5 mg); etrasimod UC patients ~50% (FDA review 216956)."
+    "judgement": "Paired: Scott 2016 (epub 2016-04-28): '0.6 mg·kg−1 RPC1063 reduced the number of lymphocytes by 51%'. Neither paper states the comparison. Lymphocyte count scored downstream (physiology after S1P1 internalisation, not occupancy). Healthy volunteers agree (Tran 2017: median 65-68% fall at 1-1.5 mg); etrasimod UC patients ~50% (FDA review 216956).",
+    "prediction_level": "class"
    }
   ],
   "dose": [
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -125,11 +124,11 @@
     "epub_year": 2016,
     "print_year": 2016,
     "model_first_use_year": 2016,
-    "judgement": "Regimen prediction counted as a dose target (the brief lists 'regimen'). No rodent exposure or EC50 projected to a human dose in the abstract."
+    "judgement": "Regimen prediction counted as a dose target (the brief lists 'regimen'). No rodent exposure or EC50 projected to a human dose in the abstract.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -160,11 +159,11 @@
     "epub_year": 2017,
     "print_year": 2017,
     "model_first_use_year": 2016,
-    "judgement": "Reached and worked (1 mg QD, TOUCHSTONE 2016) so same; the human PK is dated to the FIH paper (epub 2017-08-07). FIH trial registration not found in the abstract; registry_date null."
+    "judgement": "Reached and worked (1 mg QD, TOUCHSTONE 2016) so same; the human PK is dated to the FIH paper (epub 2017-08-07). FIH trial registration not found in the abstract; registry_date null.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": true,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -197,13 +196,13 @@
     "epub_year": 2023,
     "print_year": 2023,
     "model_first_use_year": 2016,
-    "judgement": "Decision 16 entry: a stated margin that held is same, margin_stated true; a different system from rodent PK, so model_change. The same review says the mouse transfer-colitis effect 'generally occurred at ≥ 3 mg/kg/day (approximately 2.4-fold the clinical dose of 2 mg/day, based on HED)': patients responded below the model's HED target, an over-prediction of about 2.4x not scored because the review does not call it one and HED scaling is crude. Model rat/dog tox start year unknown; 2016 used as a proxy."
+    "judgement": "Decision 16 entry: a stated margin that held is same, margin_stated true; a different system from rodent PK, so model_change. The same review says the mouse transfer-colitis effect 'generally occurred at ≥ 3 mg/kg/day (approximately 2.4-fold the clinical dose of 2 mg/day, based on HED)': patients responded below the model's HED target, an over-prediction of about 2.4x not scored because the review does not call it one and HED scaling is crude. Model rat/dog tox start year unknown; 2016 used as a proxy.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -234,11 +233,11 @@
     "epub_year": 2004,
     "print_year": 2004,
     "model_first_use_year": 2004,
-    "judgement": "Song 2008 (doi 10.1124/jpet.106.119172, epub 2007-09-26): 'KRP-203 significantly inhibits ongoing IL-10(-/-) colitis'. Mocravimod's UC phase 2 NCT01375179 terminated at 27 patients with no results and no reason posted, so the IL-10-/- model was never compared for a member drug."
+    "judgement": "Song 2008 (doi 10.1124/jpet.106.119172, epub 2007-09-26): 'KRP-203 significantly inhibits ongoing IL-10(-/-) colitis'. Mocravimod's UC phase 2 NCT01375179 terminated at 27 patients with no results and no reason posted, so the IL-10-/- model was never compared for a member drug.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -304,13 +303,13 @@
       "doi": null,
       "quote": "TERMINATED"
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -341,11 +340,11 @@
     "epub_year": 2004,
     "print_year": 2004,
     "model_first_use_year": 2004,
-    "judgement": "The class's S1P3-sparing design rested on this; Scott 2016 claims selectivity 'could result in improved safety outcomes in the clinic'."
+    "judgement": "The class's S1P3-sparing design rested on this; Scott 2016 claims selectivity 'could result in improved safety outcomes in the clinic'.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": false,
     "retrodiction": false,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -376,11 +375,11 @@
     "epub_year": 2017,
     "print_year": 2017,
     "model_first_use_year": 2004,
-    "judgement": "v3 drops the v2 2012 entry: siponimod (Gergely 2012) is not a member. First member datum is ozanimod FIH (epub 2017-08-07). The FDA ozanimod review (2020) later states it: 'Early literature suggests that these effects were modulated by S1P3, but later literature ... suggests involvement of other S1P subtypes, including S1P1.' Etrasimod dog telemetry was also silent (NOEL 350 mg/kg) while healthy subjects fell up to 19.4 bpm."
+    "judgement": "v3 drops the v2 2012 entry: siponimod (Gergely 2012) is not a member. First member datum is ozanimod FIH (epub 2017-08-07). The FDA ozanimod review (2020) later states it: 'Early literature suggests that these effects were modulated by S1P3, but later literature ... suggests involvement of other S1P subtypes, including S1P1.' Etrasimod dog telemetry was also silent (NOEL 350 mg/kg) while healthy subjects fell up to 19.4 bpm.",
+    "prediction_level": "class"
    },
    {
     "population": "Unselected",
-    "model_change": true,
     "retrodiction": true,
     "trial_unreported": false,
     "patient_signal_reversed": false,
@@ -412,10 +411,10 @@
     "epub_year": 2023,
     "print_year": 2023,
     "model_first_use_year": 2023,
-    "judgement": "Scored retro, not same: run after first-dose bradycardia was known for the class. Review: HR fell -3.3 to -19.4 bpm in healthy subjects and -7.3 to -9.4 bpm in UC patients after the first 2 mg dose. Not the amiselimod GIRK work (not a member)."
+    "judgement": "Scored retro, not same: run after first-dose bradycardia was known for the class. Review: HR fell -3.3 to -19.4 bpm in healthy subjects and -7.3 to -9.4 bpm in UC patients after the first 2 mg dose. Not the amiselimod GIRK work (not a member).",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -444,7 +443,6 @@
     "quote": "Heart rate decreased by 20% and the R-R interval increased by 37% at the highest dose given and persisted for 24 hours after dosing.",
     "confidence": "medium",
     "judgement": "Opener at a proxy first-use year; the study is only public through the 2020 review.",
-    "parallel": true,
     "model_id": "monkey-cv-safety-ozanimod",
     "model": "Cynomolgus monkey cardiovascular safety study (ozanimod)",
     "model_kind": "animal",
@@ -452,7 +450,6 @@
     "model_first_use_year": 2012
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -482,7 +479,6 @@
     "confidence": "medium",
     "reason": "Heart rate matched; blood pressure opposite",
     "judgement": "Scored same with source_calls_it partial: heart rate matched in direction (the class's main first-dose harm), blood pressure went the other way. Unlike the S1P3-KO mouse, the filed system predicted ozanimod's bradycardia. Imported from MS.",
-    "parallel": true,
     "model_id": "monkey-cv-safety-ozanimod",
     "model": "Cynomolgus monkey cardiovascular safety study (ozanimod)",
     "model_kind": "animal",
@@ -490,7 +486,6 @@
     "model_first_use_year": 2012
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -519,7 +514,6 @@
     "quote": "A single oral dose of etrasimod did not produce acute CNS or clinically relevant respiratory effects in rats (NOELs: 350 mg/kg/day) or cardiovascular effects in dogs (NOEL: 350 mg/kg/day).",
     "confidence": "medium",
     "judgement": "Opener at a proxy year; public only through the 2023 review.",
-    "parallel": true,
     "model_id": "dog-cv-telemetry-etrasimod",
     "model": "Dog cardiovascular safety pharmacology (etrasimod)",
     "model_kind": "animal",
@@ -527,7 +521,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -557,7 +550,6 @@
     "confidence": "medium",
     "reason": "Dog silent on class bradycardia",
     "judgement": "Contra: silence on a harm a dog's heart can show (dogs have atrial GIRK channels), at a NOEL far above clinical exposure. Paired within the review, so comparison_stated false. The review credits the human atrial myocyte assay (already in the draft) for the mechanism.",
-    "parallel": true,
     "model_id": "dog-cv-telemetry-etrasimod",
     "model": "Dog cardiovascular safety pharmacology (etrasimod)",
     "model_kind": "animal",
@@ -565,7 +557,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -594,7 +585,6 @@
     "quote": "In a standard battery of nonclinical safety pharmacology studies, etrasimod had no significant effects on hERG channel current in vitro, cardiovascular function in dogs, CNS parameters in rats, or respiratory function in rats.",
     "confidence": "medium",
     "judgement": "Opener at a proxy year.",
-    "parallel": true,
     "model_id": "herg-in-vitro-etrasimod",
     "model": "hERG current assay in vitro (etrasimod)",
     "model_kind": "ex_vivo",
@@ -602,7 +592,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -632,7 +621,6 @@
     "confidence": "low",
     "reason": "hERG call held in the TQT study",
     "judgement": "Off-target safety, single modality so no modality field. Paired within the review (comparison_stated false). Ozanimod's TQT (metabolite CC112273) was also negative but no ozanimod hERG datum was in the bundle.",
-    "parallel": true,
     "model_id": "herg-in-vitro-etrasimod",
     "model": "hERG current assay in vitro (etrasimod)",
     "model_kind": "ex_vivo",
@@ -640,7 +628,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -669,7 +656,6 @@
     "quote": "The lung was a prominent target of ozanimod in rat and monkey.",
     "confidence": "medium",
     "judgement": "Opener at a proxy year; public only through the 2020 review.",
-    "parallel": true,
     "model_id": "rat-monkey-tox-ozanimod-lung",
     "model": "Rat and monkey repeat-dose toxicology, lung (ozanimod)",
     "model_kind": "animal",
@@ -677,7 +663,6 @@
     "model_first_use_year": 2012
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "population": "Unselected",
@@ -707,7 +692,6 @@
     "confidence": "low",
     "reason": "Animal lung target; patient FEV1 fell",
     "judgement": "Paired within the same NDA (MS); direction only. Etrasimod's rat lung histiocytosis and its UC-1 FEV1 decline are the same pattern but belong to the draft's rat-dog-tox-etrasimod system, so not added here.",
-    "parallel": true,
     "model_id": "rat-monkey-tox-ozanimod-lung",
     "model": "Rat and monkey repeat-dose toxicology, lung (ozanimod)",
     "model_kind": "animal",

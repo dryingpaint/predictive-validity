@@ -43,14 +43,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
     "year": 2018,
@@ -79,7 +79,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -87,10 +86,10 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2017,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -119,7 +118,6 @@
     "srcLabel": "Fukuzawa 2017",
     "quote": "Consistent with previous reports, eculizumab was unable to neutralize the activity of C5 R885H, whereas SKY59 neutralized this C5 variant with a similar dose-response compared to C5 WT",
     "readout_tier": "direct",
-    "parallel": true,
     "model_id": "c5-r885h-variant-hemolysis-assay",
     "model": "In-vitro hemolysis assay with recombinant C5 R885H variant (picks eculizumab-resistant genotype patients)",
     "model_kind": "ex_vivo",
@@ -127,7 +125,6 @@
     "model_first_use_year": 2017
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -158,7 +155,6 @@
     "reason": "Variant assay picked responders correctly",
     "judgement": "Patient-level prediction: the assay says which genotype responds. Paired by me with the COMPOSER subanalysis (comparison_stated false). The FDA 2024 review notes one of six COMMODORE 1 C5-polymorphism patients discontinued for lack of efficacy after week 24, without genotype-level hemolysis data, so I keep same but flag it. Year may move to 2018 if the ASH abstract is quotable.",
     "readout_tier": "direct",
-    "parallel": true,
     "model_id": "c5-r885h-variant-hemolysis-assay",
     "model": "In-vitro hemolysis assay with recombinant C5 R885H variant (picks eculizumab-resistant genotype patients)",
     "model_kind": "ex_vivo",
@@ -192,14 +188,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
     "year": 2018,
@@ -227,14 +223,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "duration of C5 blockade relative to eculizumab",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2018
+    "model_first_use_year": 2018,
+    "prediction_level": "class"
    },
    {
     "year": 2020,
@@ -263,17 +259,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "subcutaneous dosing interval sustaining complete blockade",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -302,7 +297,6 @@
     "srcLabel": "FDA ravulizumab review 2018",
     "quote": "The Phase 3 body weight‐based dosing regimen was determined based on modeling and simulation analyses of data at the end of Phase 2.",
     "margin_stated": null,
-    "parallel": true,
     "model_id": "ravulizumab-poppk-pd-eop2",
     "model": "Population PK/PD (free C5, LDH) model-based simulation of Phase 1/2 data (ravulizumab)",
     "model_kind": "in_silico",
@@ -310,7 +304,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -341,7 +334,6 @@
     "reason": "Model-chosen regimen reached target in Phase 3",
     "judgement": "In-silico model fitted to human Phase 1/2 data, run before Phase 3, so prospective, not a retrodiction. The review states the model's target and the Phase 3 result together (comparison_stated true). Efficacy is scored on the main strip, so this track is dose only.",
     "margin_stated": null,
-    "parallel": true,
     "model_id": "ravulizumab-poppk-pd-eop2",
     "model": "Population PK/PD (free C5, LDH) model-based simulation of Phase 1/2 data (ravulizumab)",
     "model_kind": "in_silico",
@@ -349,7 +341,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -378,7 +369,6 @@
     "srcLabel": "FDA crovalimab review 2024",
     "quote": "A Model Informed Drug Development meeting request was submitted on March 14, 2019, and subsequently granted, to obtain feedback from the Agency on the modeling approach to support crovalimab dose selection",
     "margin_stated": null,
-    "parallel": true,
     "model_id": "crovalimab-poppk-dtdc-midd",
     "model": "Population PK and drug-target-drug-complex model simulations for Phase 3 dose selection (crovalimab)",
     "model_kind": "in_silico",
@@ -386,7 +376,6 @@
     "model_first_use_year": 2019
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -417,7 +406,6 @@
     "reason": "Phase 3 exposures matched simulated target attainment",
     "judgement": "Paired by me: the paper reports the Phase-3-planning simulations ('Simulations were conducted to confirm the adequacy of the dose and dosing regimen ... for the Phase III studies') and the observed attainment, but does not set the pre-trial prediction against the result. Kept apart from the draft's cyno-c5-pkpd track, which scored the same 100 µg/mL target from COMPOSER.",
     "margin_stated": null,
-    "parallel": true,
     "model_id": "crovalimab-poppk-dtdc-midd",
     "model": "Population PK and drug-target-drug-complex model simulations for Phase 3 dose selection (crovalimab)",
     "model_kind": "in_silico",
@@ -451,14 +439,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2017
+    "model_first_use_year": 2017,
+    "prediction_level": "class"
    },
    {
     "year": 2018,
@@ -487,7 +475,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
@@ -522,7 +509,8 @@
       "doi": "10.1002/ajh.27412",
       "quote": "Overall, the persuasive results make reliance on a single, adequate, and well-controlled study, with confirmatory evidence from relevant pharmacodynamic/mechanistic data, appropriate to support approval in this rare, serious, and life-threatening disease."
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -551,14 +539,14 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "human_genetic",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "prediction_level": "class"
    },
    {
     "year": 2018,
@@ -586,14 +574,14 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "human_genetic",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "occurrence of meningococcal infection",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2016
+    "model_first_use_year": 2016,
+    "prediction_level": "class"
    },
    {
     "year": 2020,
@@ -622,14 +610,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": true,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "complex formation and hypersensitivity on switching",
     "source_calls_it": "match",
     "population": "Unselected",
-    "model_first_use_year": 2019
+    "model_first_use_year": 2019,
+    "prediction_level": "class"
    }
   ]
  }

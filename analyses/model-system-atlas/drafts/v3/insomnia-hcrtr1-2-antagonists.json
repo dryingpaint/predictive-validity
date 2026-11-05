@@ -32,7 +32,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -50,7 +49,8 @@
     "src": "https://doi.org/10.1038/nm1544",
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "Here we report that in rats, dogs and humans, somnolence is induced by pharmacological blockade of both orexin OX(1) and OX(2) receptors.",
-    "judgement": "The rat/dog sleep-EEG model opens with almorexant, which is not a member of this class, so product_in_model is false and the paper's healthy-volunteer arm cannot score; the model itself is the one Merck reused for suvorexant (Winrow 2011)."
+    "judgement": "The rat/dog sleep-EEG model opens with almorexant, which is not a member of this class, so product_in_model is false and the paper's healthy-volunteer arm cannot score; the model itself is the one Merck reused for suvorexant (Winrow 2011).",
+    "prediction_level": "class"
    },
    {
     "subjects": "healthy_volunteers",
@@ -66,7 +66,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "PSG sleep efficiency/WASO vs animal active-wake time",
@@ -86,7 +85,8 @@
     "quote": "Statistically significant sleep-promoting effects were observed with all doses of suvorexant compared to placebo.",
     "reason": "Human PSG sleep moved as animal EEG did",
     "judgement": "No human orexin-receptor PET tracer exists, so the engagement readout is the one the model used: EEG-defined sleep after a dose (downstream). I paired Winrow 2011 (suvorexant in rat, dog, rhesus, the EEG package the FDA pharmacology review lists) with the healthy-volunteer PSG study rather than with Herring 2012 (patients, Nov 2012), to keep engagement apart from the efficacy endpoint; dated by Sun 2013. Partial: animals showed more slow-wave/delta sleep, but Sun found no significant effect on EEG delta power.",
-    "readout_tier": "downstream"
+    "readout_tier": "downstream",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -104,7 +104,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -122,7 +121,8 @@
     "src": "https://doi.org/10.3109/01677063.2011.566953",
     "srcLabel": "Winrow 2011",
     "quote": "Examination of Suvorexant in radioligand binding assays using tissue from transgenic rats expressing the human OX(2)R found nearly full receptor occupancy (>90%) at plasma exposures of 1.1 μM.",
-    "judgement": "The 0.4 uM C4h target 'based on preclinical EEG data' is stated in the FDA clinical-pharmacology review, not in Winrow 2011; Winrow is the first public use of the suvorexant dose model."
+    "judgement": "The 0.4 uM C4h target 'based on preclinical EEG data' is stated in the FDA clinical-pharmacology review, not in Winrow 2011; Winrow is the first public use of the suvorexant dose model.",
+    "prediction_level": "class"
    },
    {
     "subjects": "mixed",
@@ -138,7 +138,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "off_by_2-5x",
     "magnitude_basis": "lowest effective dose (10 mg) vs lowest dose reaching the preclinical C4h target (40 mg)",
@@ -157,7 +156,8 @@
     "srcLabel": "FDA ClinPharm review 2014",
     "quote": "The target concentration for C4hr on day 14 was attained at doses ranging from 40 mg to 100 mg (attainment of the target is based on the lower bound of the CI)",
     "judgement": "Scored same under the table row 'reached, drug worked': Phase 3 dosed 40 mg (30 mg elderly) to the target and it worked. But the FDA summary review found suvorexant 'effective ... at doses of 10 mg, 15 mg, 20 mg, 30 mg, 40 mg, and 80 mg' and the driving studies found 15 mg 'the only suvorexant dose, which did not cause next-day impairment', so the sponsor withdrew 30/40 mg. The model over-stated the needed exposure (~4x by dose, 10 vs 40 mg), and that overshoot is what the FDA cut. A re-scorer who reads the next-day impairment at the target dose as decision 16 toxicity could make this contra; I did not, because the model stated no tolerability margin for next-day effects. Gotter 2013 (rat 65% occupancy scaled to 0.33 uM) is a post-Phase-2b revision and is not used.",
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -173,7 +173,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": "dog NOAEL Cmax/AUC vs human Cmax/AUC at 50 mg (3x margin)",
@@ -193,10 +192,10 @@
     "quote": "Although the safety margin is relatively small, no cataplexy was observed at the MRHD in phase 3 and long-term extension clinical studies.",
     "reason": "Stated tolerability margin held in patients",
     "judgement": "Decision 16 entry: the dog study stated a tolerated exposure (NOAEL 20 mg/kg/day, 3x the 50 mg MRHD by Cmax and AUC) and patients were dosed to 50 mg without that toxicity; cataplexy-like reactions appeared only at a supratherapeutic 200 mg. A different model from the suvorexant PK target, hence model_change. The FDA review puts both sides together, so comparison_stated is true.",
-    "margin_stated": true
+    "margin_stated": true,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -228,7 +227,6 @@
     "blocked_by": null,
     "margin_stated": false,
     "judgement": "Occupancy threshold calibrated on sibling drugs' clinical data, but the daridorexant dose was predicted before its own trials, so prospective. Treiber also reports the SAD in healthy subjects 'largely confirmed' the PK predictions; that does not test whether the dose was enough.",
-    "parallel": true,
     "model_id": "daridorexant-pbpk-pd-ox2-occupancy",
     "model": "PBPK-PD model of brain OX2 receptor occupancy (daridorexant, 65% occupancy threshold)",
     "model_kind": "in_silico",
@@ -236,7 +234,6 @@
     "model_first_use_year": 2015
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -269,7 +266,6 @@
     "margin_stated": false,
     "reason": "Predicted dose effective in Phase 3",
     "judgement": "Paired, not stated. 25 mg reached and worked, 10 mg did not, 50 mg did more: the predicted active dose sat at the low effective end, within 2x.",
-    "parallel": true,
     "model_id": "daridorexant-pbpk-pd-ox2-occupancy",
     "model": "PBPK-PD model of brain OX2 receptor occupancy (daridorexant, 65% occupancy threshold)",
     "model_kind": "in_silico",
@@ -292,7 +288,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -311,7 +306,8 @@
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "When administered orally during the active period of the circadian cycle, a dual antagonist increased, in rats, electrophysiological indices of both non-REM and, particularly, REM sleep, in contrast to GABA(A) receptor modulators",
     "judgement": "Almorexant is not a member, so product_in_model is false and its 2012 insomnia trial (Hoever 2012) does not score. Suvorexant entered the same model in Winrow 2011.",
-    "endpoint_role": null
+    "endpoint_role": null,
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -327,7 +323,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "PSG sleep efficiency vs animal active-wake time",
@@ -362,7 +357,8 @@
       "doi": null,
       "quote": null
      }
-    ]
+    ],
+    "prediction_level": "class"
    }
   ],
   "safety": [
@@ -380,7 +376,6 @@
     "model_filed": true,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -398,7 +393,8 @@
     "src": "https://doi.org/10.1038/nm1544",
     "srcLabel": "Brisbare-Roch 2007",
     "quote": "No signs of cataplexy were observed, in contrast to the rodent, dog or human narcolepsy syndromes.",
-    "judgement": "Sibling drug (almorexant, non-member), so product_in_model is false and nothing scores until a member's animal and patient data meet."
+    "judgement": "Sibling drug (almorexant, non-member), so product_in_model is false and nothing scores until a member's animal and patient data meet.",
+    "prediction_level": "class"
    },
    {
     "subjects": "patients",
@@ -414,7 +410,6 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": true,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "presence of cataplexy-like events at high dose",
@@ -434,10 +429,10 @@
     "quote": "I conclude that the episode was clearly cataplexy-like, as brief leg weakness occurring when laughing is classic for cataplexy in narcoleptics",
     "reason": "Dog cataplexy signal recurred in patients",
     "judgement": "The review sets the nonclinical finding ('nonclinical studies suggested a theoretical safety concern for cataplexy') beside the patient cases, so comparison_stated is true. The sponsor's adjudication found no confirmed cataplexy; the CDTL overruled that for one patient and listed others at 40-80 mg, and the label (5.6) warns of dose-related cataplexy-like symptoms. Daridorexant (2022) and lemborexant (2019, one adjudicated event; mouse chocolate-cataplexy model) agree. Next-day impairment, the harm behind the FDA dose cut, was not tested in the animal package; I score it under dose, not here.",
-    "imported_from": null
+    "imported_from": null,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -466,7 +461,6 @@
     "srcLabel": "FDA pharmacology review 2014",
     "quote": "Abuse liability of MK-4305 administered intravenously: Assessment of the relative reinforcing efficacy in Rhesus monkeys maintained to self-administer methohexital.",
     "judgement": "Standard nonclinical abuse-liability package, a separate system from the sleep EEG and cataplexy models in the draft.",
-    "parallel": true,
     "model_id": "rhesus-rat-abuse-liability-battery",
     "model": "Rhesus IV self-administration, rat zolpidem drug discrimination and rat withdrawal (abuse liability battery)",
     "model_kind": "animal",
@@ -474,7 +468,6 @@
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -504,7 +497,6 @@
     "quote": "suvorexant in all tested doses (40 mg, 80 mg, and 150 mg) showed greater abuse potential than placebo in recreational polydrug users.",
     "reason": "Animals missed human drug liking",
     "judgement": "Model silent on a harm the species battery is built to show (reinforcement); the human abuse potential trial found liking like zolpidem, so contra. The human side is healthy recreational users, the regulator's standard population for this harm.",
-    "parallel": true,
     "model_id": "rhesus-rat-abuse-liability-battery",
     "model": "Rhesus IV self-administration, rat zolpidem drug discrimination and rat withdrawal (abuse liability battery)",
     "model_kind": "animal",
@@ -512,7 +504,6 @@
     "model_first_use_year": 2009
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -541,7 +532,6 @@
     "srcLabel": "FDA lemborexant review 2019",
     "quote": "Co-administration of lemborexant (10 and 30 mg/kg) with chocolate statistically significantly increased the time spent in cataplexy in WT mice.",
     "judgement": "Different species and trigger from the draft's suvorexant dog food-enrichment model, so a parallel track.",
-    "parallel": true,
     "model_id": "mouse-chocolate-cataplexy",
     "model": "Mouse emotion-induced (chocolate) cataplexy, wild-type vs preproorexin knockout (lemborexant)",
     "model_kind": "animal",
@@ -549,7 +539,6 @@
     "model_first_use_year": 2014
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "trial_unreported": false,
@@ -579,7 +568,6 @@
     "quote": "Symptoms similar to mild cataplexy can occur with DAYVIGO. Such symptoms can include periods of leg weakness lasting from seconds to a few minutes",
     "reason": "Mild cataplexy-like symptoms in patients",
     "judgement": "Paired: the review and label hold the mouse study and the patient events in separate sections. Predicted harm appeared only weakly and unadjudicated, so same with partial, not contra.",
-    "parallel": true,
     "model_id": "mouse-chocolate-cataplexy",
     "model": "Mouse emotion-induced (chocolate) cataplexy, wild-type vs preproorexin knockout (lemborexant)",
     "model_kind": "animal",

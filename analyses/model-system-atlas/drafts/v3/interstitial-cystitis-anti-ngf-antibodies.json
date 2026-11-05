@@ -45,14 +45,14 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 1997,
-    "readout_tier": null
+    "readout_tier": null,
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -83,7 +83,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -92,7 +91,8 @@
     "model_first_use_year": 1997,
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -122,7 +122,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
@@ -130,7 +129,8 @@
     "population": "Unselected",
     "model_first_use_year": 1997,
     "endpoint_role": null,
-    "outcome_tested": null
+    "outcome_tested": null,
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -158,7 +158,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "sign of change in bladder pain / hyper-reflexia vs control",
@@ -166,7 +165,8 @@
     "population": "Unselected",
     "model_first_use_year": 1997,
     "endpoint_role": "primary",
-    "outcome_tested": null
+    "outcome_tested": null,
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -195,7 +195,6 @@
     "model_filed": null,
     "product_in_model": false,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "sign of change in bladder pain vs placebo",
@@ -223,10 +222,10 @@
       "doi": "https://doi.org/10.1016/j.juro.2015.10.178",
       "quote": "Women with interstitial cystitis/bladder pain syndrome and patients with symptoms suggesting the concomitant presence of nonurological associated somatic syndromes were more likely to experience significant pain reduction with tanezumab than with placebo therapy."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -257,7 +256,6 @@
     "judgement": "ASP6294 went into IC patients on Astellas's own arthritis pain models, not the draft's NGF-sequestration cystitis models, so it is its own track; prediction is class-level analgesia.",
     "endpoint_role": null,
     "outcome_tested": null,
-    "parallel": true,
     "model_id": "asp6294-arthritis-rodent",
     "model": "ASP6294 (PEG-Fab') vs anti-NGF IgG in adjuvant-arthritis mice and MIA-arthritis rats",
     "model_kind": "animal",
@@ -265,7 +263,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -297,7 +294,6 @@
     "judgement": "Paired by us: Koya 2023 reports only that ASP6294 was well tolerated in IC/BPS, not the efficacy miss. Not a retrodiction: the rodent work selected the candidate before the trial, though published after it. Dated 2022, when both sides were public.",
     "endpoint_role": "primary",
     "outcome_tested": null,
-    "parallel": true,
     "model_id": "asp6294-arthritis-rodent",
     "model": "ASP6294 (PEG-Fab') vs anti-NGF IgG in adjuvant-arthritis mice and MIA-arthritis rats",
     "model_kind": "animal",
@@ -332,14 +328,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "prediction_level": "class"
    },
    {
     "year": 2012,
@@ -368,17 +364,16 @@
     "model_filed": "Tanezumab or murine MuMAb911 in primate, rat and mouse for up to 6 months; hip and stifle histology, micro-CT, bone biomarkers: no adverse bone or joint change.",
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": "MONDO:0005178",
     "magnitude": "direction_only",
     "magnitude_basis": "presence vs absence of joint destruction",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -407,7 +402,6 @@
     "srcLabel": "Koya 2023",
     "quote": "While the anti-NGF IgG promoted edema over time, the anti-NGF PEGylated Fab' did not.",
     "judgement": "A different safety system from the draft's three-species toxicology: an IgG-vs-Fab' joint-edema comparison in arthritic rats, designed against the class's RPOA signal.",
-    "parallel": true,
     "model_id": "asp6294-arthritis-rodent",
     "model": "ASP6294 (PEG-Fab') vs anti-NGF IgG in adjuvant-arthritis mice and MIA-arthritis rats",
     "model_kind": "animal",
@@ -415,7 +409,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -445,7 +438,6 @@
     "quote": "Phase 1 and Phase 2a clinical studies of anti-NGF Fab’-PEG (ASP6294) have been completed, and ASP6294 was well-tolerated and safe in healthy subjects and subjects with bladder pain syndrome/interstitial cystitis.",
     "reason": "No harm seen; trial too small for RPOA",
     "judgement": "Scored same because the model's stated prediction (lower adverse-effect risk than IgG) was not contradicted, but the comparison has little power to contradict it; hence low confidence.",
-    "parallel": true,
     "model_id": "asp6294-arthritis-rodent",
     "model": "ASP6294 (PEG-Fab') vs anti-NGF IgG in adjuvant-arthritis mice and MIA-arthritis rats",
     "model_kind": "animal",
@@ -453,7 +445,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -482,7 +473,6 @@
     "srcLabel": "LaBranche 2017",
     "quote": "To investigate whether the effects of nerve growth factor (NGF) inhibition with tanezumab on rats with medial meniscal tear (MMT) effectively model rapidly progressive osteoarthritis (RPOA) observed in clinical trials.",
     "judgement": "Opening entry for a model run after the clinical joint harm was known (2010 hold).",
-    "parallel": true,
     "model_id": "rat-mmt-tanezumab-rpoa",
     "model": "Rat medial meniscal tear model dosed with tanezumab",
     "model_kind": "animal",
@@ -490,7 +480,6 @@
     "model_first_use_year": 2016
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -520,7 +509,6 @@
     "quote": "This model failed to replicate the hypotrophic bone response observed in tanezumab-treated patients with RPOA.",
     "reason": "Post-hoc rat model, partial match",
     "judgement": "Retrodiction: RPOA in OA trials was known from 2010. Reproduced cartilage damage (more severe with prophylactic tanezumab) but not the bone phenotype, so retro with source_calls_it partial. Safety imported from OA (MONDO:0005178).",
-    "parallel": true,
     "model_id": "rat-mmt-tanezumab-rpoa",
     "model": "Rat medial meniscal tear model dosed with tanezumab",
     "model_kind": "animal",

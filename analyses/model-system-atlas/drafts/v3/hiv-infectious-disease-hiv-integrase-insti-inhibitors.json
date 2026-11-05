@@ -43,14 +43,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "Strip opens at the first public cell-culture paper for a member drug (epub Nov 2010); the drug had entered patients in 2008 (NCT00708110), so 2010 is a proxy. Raltegravir/elvitegravir work is not used: not members."
+    "judgement": "Strip opens at the first public cell-culture paper for a member drug (epub Nov 2010); the drug had entered patients in 2008 (NCT00708110), so 2010 is a proxy. Raltegravir/elvitegravir work is not used: not members.",
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -79,14 +79,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "viral-load decline vs in-vitro replication inhibition",
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "Viral load is the target's own product (proximal tier). Paired by me: the monotherapy abstract does not set out the cell data. Bictegravir (Gallant 2017, 10.1097/QAI.0000000000001306, 1.45-2.43 log10) and cabotegravir (Spreen 2013, 10.1310/hct1405-192) monotherapy studies agree and change no status."
+    "judgement": "Viral load is the target's own product (proximal tier). Paired by me: the monotherapy abstract does not set out the cell data. Bictegravir (Gallant 2017, 10.1097/QAI.0000000000001306, 1.45-2.43 log10) and cabotegravir (Spreen 2013, 10.1310/hct1405-192) monotherapy studies agree and change no status.",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -115,14 +115,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "The PA-IC90 of 0.064 ug/mL is taken from the FDA clinical pharmacology review; the paper's abstract gives PA-EC50 only."
+    "judgement": "The PA-IC90 of 0.064 ug/mL is taken from the FDA clinical pharmacology review; the paper's abstract gives PA-EC50 only.",
+    "prediction_level": "class"
    },
    {
     "year": 2013,
@@ -151,14 +151,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "trough / PA-IC90 inhibitory quotient vs virologic response",
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "'Reached, drug worked' row. direction_only because the target did not tell doses apart: SPRING-1 found 10, 25 and 50 mg equally effective at week 48, and 50 mg was chosen for interaction and adherence headroom. The 50 mg BID dose for INSTI-resistant virus belongs to a resistant population and is not scored. Bictegravir (paIQ95 ~20 at 75 mg, FDA multidiscipline review 210251) and cabotegravir LA (4x PA-IC90 target, FLAIR/ATLAS) followed the same yardstick with no dose failure in treatment. The cabotegravir 800 mg Q12W PrEP regimen missing 4x PA-IC90 (FDA 215499 review) was in HIV-negative people and was an error of human PK projection, so it is not scored."
+    "judgement": "'Reached, drug worked' row. direction_only because the target did not tell doses apart: SPRING-1 found 10, 25 and 50 mg equally effective at week 48, and 50 mg was chosen for interaction and adherence headroom. The 50 mg BID dose for INSTI-resistant virus belongs to a resistant population and is not scored. Bictegravir (paIQ95 ~20 at 75 mg, FDA multidiscipline review 210251) and cabotegravir LA (4x PA-IC90 target, FLAIR/ATLAS) followed the same yardstick with no dose failure in treatment. The cabotegravir 800 mg Q12W PrEP regimen missing 4x PA-IC90 (FDA 215499 review) was in HIV-negative people and was an error of human PK projection, so it is not scored.",
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -187,14 +187,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "The SHIV-macaque challenge models (Andrews 2014; Markowitz 2015) were relied on for cabotegravir PrEP in HIV-negative people, not for treating patients of this disease, so they are excluded."
+    "judgement": "The SHIV-macaque challenge models (Andrews 2014; Markowitz 2015) were relied on for cabotegravir PrEP in HIV-negative people, not for treating patients of this disease, so they are excluded.",
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -238,17 +238,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "ex_vivo",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "virologic suppression vs in-vitro antiviral potency",
     "source_calls_it": "match",
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "judgement": "Earliest member-drug trial with a primary virologic endpoint (Phase 2b, epub Oct 2011). Bictegravir (Trial 1489) and cabotegravir LA (FLAIR) Phase 3 trials agree and are listed as patient_trials. No member failed for efficacy, so neg is not available."
+    "judgement": "Earliest member-drug trial with a primary virologic endpoint (Phase 2b, epub Oct 2011). Bictegravir (Trial 1489) and cabotegravir LA (FLAIR) Phase 3 trials agree and are listed as patient_trials. No member failed for efficacy, so neg is not available.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2010,
@@ -280,7 +279,6 @@
     "source_calls_it": null,
     "population": "Raltegravir/elvitegravir-resistant HIV-1",
     "judgement": "A distinct use of the cell-culture platform: the mutant panel predicts which resistance genotypes still respond, so it is a patient-level track apart from the draft's wild-type potency track. The FDA review (MedR 2013) discusses these in-vitro mutant data.",
-    "parallel": true,
     "model_id": "hiv-insti-resistant-mutant-phenotype",
     "model": "In-vitro susceptibility of INSTI-resistant HIV-1 (site-directed mutant clones, fold-change)",
     "model_kind": "ex_vivo",
@@ -288,7 +286,6 @@
     "model_first_use_year": 2010
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2012,
@@ -328,7 +325,6 @@
     "source_calls_it": "match",
     "population": "Raltegravir/elvitegravir-resistant HIV-1",
     "judgement": "comparison_stated true: the VIKING abstract sets the in-vitro limited cross-resistance beside the clinical response. VIKING-3 (2014) and the FDA medical review (2013: 'As expected, response was influenced by fold change susceptibility to DTG') confirm the per-phenotype gradient (72% <3-fold, 22% >=10-fold), so the status holds. The Q148+>=2 secondary pathway responded poorly; the panel's G140S/Q148H double mutant (2.6-fold) did not show how bad the triple-mutant pathway would be, which I treat as magnitude, not direction.",
-    "parallel": true,
     "model_id": "hiv-insti-resistant-mutant-phenotype",
     "model": "In-vitro susceptibility of INSTI-resistant HIV-1 (site-directed mutant clones, fold-change)",
     "model_kind": "ex_vivo",
@@ -362,14 +358,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "judgement": "The FDA pharmacology review (204790Orig1s000PharmR) gives the rat embryo-fetal NOAEL as 1000 mg/kg/day. Bictegravir and cabotegravir reproductive packages were also clean and have no human counter-signal."
+    "judgement": "The FDA pharmacology review (204790Orig1s000PharmR) gives the rat embryo-fetal NOAEL as 1000 mg/kg/day. Bictegravir and cabotegravir reproductive packages were also clean and have no human counter-signal.",
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -396,14 +392,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "NTD prevalence difference vs no teratogenicity in rats",
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "judgement": "Rats can show neural-tube defects, so the silence counts as a miss. The signal was first public in a 2018 NEJM letter (Zash 2018, 10.1056/NEJMc1807653) that I could not quote, so the entry is dated to the 2019 full report."
+    "judgement": "Rats can show neural-tube defects, so the silence counts as a miss. The signal was first public in a 2018 NEJM letter (Zash 2018, 10.1056/NEJMc1807653) that I could not quote, so the entry is dated to the 2019 full report.",
+    "prediction_level": "class"
    },
    {
     "year": 2026,
@@ -431,17 +427,16 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "NTD prevalence difference (-0.02%) vs no teratogenicity in rats",
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "judgement": "Rule (b) of decision 6: a tier 1 source from the same surveillance shows the early signal attenuated to background. Kourtis 2023 (10.1016/S2352-3018(23)00108-X, US claims) also found no NTD increase earlier, but in another population, so it does not show this signal attenuating. Other class harms (INSTI weight gain, DTG creatinine rise from OCT2 inhibition) were not checked against the tox packages."
+    "judgement": "Rule (b) of decision 6: a tier 1 source from the same surveillance shows the early signal attenuated to background. Kourtis 2023 (10.1016/S2352-3018(23)00108-X, US claims) also found no NTD increase earlier, but in another population, so it does not show this signal attenuating. Other class harms (INSTI weight gain, DTG creatinine rise from OCT2 inhibition) were not checked against the tox packages.",
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2013,
@@ -470,7 +465,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "judgement": "First-use year is a proxy: the in-vitro OCT2 data were first public with Koteff 2013 and the 2013 filing.",
-    "parallel": true,
     "model_id": "dtg-oct2-transporter-in-vitro",
     "model": "In-vitro renal OCT2 transporter inhibition assay",
     "model_kind": "ex_vivo",
@@ -478,7 +472,6 @@
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2013,
@@ -508,7 +501,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "judgement": "The creatinine rise itself was seen in trials before the OCT2 explanation was proposed (ClinPharmR: 'The applicant hypothesized'), but what the model predicted that was not yet known, no true loss of filtration, was tested prospectively with iohexol, so retrodiction false. Healthy volunteers; the FDA medical review reached the same conclusion for patients in the Phase 3 trials. Bictegravir and cabotegravir carry the same OCT2/MATE1 creatinine labelling, not checked here.",
-    "parallel": true,
     "model_id": "dtg-oct2-transporter-in-vitro",
     "model": "In-vitro renal OCT2 transporter inhibition assay",
     "model_kind": "ex_vivo",
@@ -516,7 +508,6 @@
     "model_first_use_year": 2013
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2020,
@@ -545,7 +536,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "judgement": "Opening entry marking when the model existed. Academic (NIH-funded) model run after the 2018-2019 Tsepamo reports, so every scored comparison on this track is a retrodiction.",
-    "parallel": true,
     "model_id": "mouse-periconception-dtg-therapeutic",
     "model": "Pregnant C57BL/6J mice dosed from conception at therapeutic DTG exposure",
     "model_kind": "animal",
@@ -553,7 +543,6 @@
     "model_first_use_year": 2020
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": false,
     "year": 2020,
@@ -582,7 +571,6 @@
     "source_calls_it": "match",
     "population": "Unselected",
     "judgement": "Reproduced the human signal known at the time, so retro, not same. GSK's letter (Romach 2021, 10.1016/j.ebiom.2021.103335) disputes the study; not scored.",
-    "parallel": true,
     "model_id": "mouse-periconception-dtg-therapeutic",
     "model": "Pregnant C57BL/6J mice dosed from conception at therapeutic DTG exposure",
     "model_kind": "animal",
@@ -590,7 +578,6 @@
     "model_first_use_year": 2020
    },
    {
-    "model_change": false,
     "retrodiction": true,
     "patient_signal_reversed": true,
     "year": 2025,
@@ -620,7 +607,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "judgement": "A predicted harm that did not appear in patients is a wrong prediction (contra, opposite). The same group's 2025 mouse comparison (Mohan, 10.1093/infdis/jiaf362) found NTDs with every INSTI including bictegravir and cabotegravir, with no human counter-signal; that does not change the status. Kept retrodiction true because the model was never run ahead of the human data.",
-    "parallel": true,
     "model_id": "mouse-periconception-dtg-therapeutic",
     "model": "Pregnant C57BL/6J mice dosed from conception at therapeutic DTG exposure",
     "model_kind": "animal",

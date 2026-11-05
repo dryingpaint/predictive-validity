@@ -43,13 +43,13 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    },
    {
     "year": 2014,
@@ -78,14 +78,14 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "plasma CETP activity inhibition",
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "readout_tier": "direct"
+    "readout_tier": "direct",
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -114,13 +114,13 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    },
    {
     "year": 2014,
@@ -149,17 +149,16 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "CETP inhibition at dose; BP at tolerated exposure",
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "margin_stated": true
+    "margin_stated": true,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -189,13 +188,11 @@
     "quote": "The predicted PK/PD profile and parameters were used to simulate the human PK/PD profiles for different dose levels, and based on the simulation result, the appropriate efficacious dose was estimated as 25 mg in a 60 kg human.",
     "confidence": "medium",
     "confidence_note": "Full text read (PMC6680430). Year 2014 is a proxy: the first-in-human study NCT02156544 started 2014-06 at 25 mg, the predicted dose; the model's own date is not stated.",
-    "parallel": true,
     "model_id": "ckd519-allometric-pkpd",
     "model": "Animal allometric PK/PD model (hamster, rat, monkey PK + in-vitro potency), rocacetrapib",
     "model_kind": "in_silico"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "healthy_volunteers",
@@ -227,7 +224,6 @@
     "confidence_note": "Full text read; the authors give phase 1 data only as figures (FIH unpublished at submission). Human side is the single-ascending-dose study (Kim 2016, https://doi.org/10.2147/DDDT.S120387; NCT02156544, no results posted).",
     "reason": "Bioavailability mispredicted over 5-fold",
     "judgement": "Dose table row 'target never reached (PK)': at the model's 25 mg the exposure target was missed because absorption was overpredicted, so contra; efficacy for rocacetrapib stays untested (phase 2 NCT02977065 completed 2018 with no results posted). Kim 2020 (https://doi.org/10.3390/pharmaceutics12060573), a population model built on human data, recommended 200-400 mg for proof of concept, 8-16x the animal prediction. Not marked retrodiction: the model was built to choose the first-in-human dose and that study began at 25 mg, though its write-up followed the phase 1 data. Main-strip dose status (evacetrapib, same) is untouched; this is a separate track.",
-    "parallel": true,
     "model_id": "ckd519-allometric-pkpd",
     "model": "Animal allometric PK/PD model (hamster, rat, monkey PK + in-vitro potency), rocacetrapib",
     "model_kind": "in_silico"
@@ -259,13 +255,13 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    },
    {
     "year": 2011,
@@ -294,7 +290,6 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "HDL-C percent change",
@@ -316,10 +311,10 @@
       "doi": null,
       "quote": "DRL-17822 phase 2 in type II hyperlipidaemia, primary endpoint percent change in HDL-C at 28 days: placebo 3.2%, 50 mg 84.2%, 150 mg 122.1%, 300 mg 160.6% (registry results table)."
      }
-    ]
+    ],
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": null,
@@ -349,13 +344,11 @@
     "quote": "Three CETP genotypes that are associated with moderate inhibition of CETP activity (and, therefore, modestly higher HDL-C levels) show weakly inverse associations with coronary risk.",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (Europe PMC, PMID 18560005). Human CETP deficiency was described earlier (late 1980s); 2008 is a proxy for first use as a model of inhibition.",
-    "parallel": true,
     "model_id": "cetp-lof-human-genetics",
     "model": "Human CETP loss-of-function genotypes (common variants, truncating variants)",
     "model_kind": "human_genetic"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "subjects": "patients",
@@ -397,7 +390,6 @@
       "quote": "Although the cholesteryl ester transfer protein inhibitor evacetrapib had favorable effects on established lipid biomarkers, treatment with evacetrapib did not result in a lower rate of cardiovascular events than placebo among patients with high-risk vascular disease."
      }
     ],
-    "parallel": true,
     "model_id": "cetp-lof-human-genetics",
     "model": "Human CETP loss-of-function genotypes (common variants, truncating variants)",
     "model_kind": "human_genetic"
@@ -429,13 +421,13 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    },
    {
     "year": 2014,
@@ -464,13 +456,13 @@
     "model_filed": null,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "magnitude": "direction_only",
     "magnitude_basis": "24-h ambulatory systolic/diastolic BP",
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "prediction_level": "class"
    }
   ]
  }

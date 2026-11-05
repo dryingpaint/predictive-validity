@@ -43,14 +43,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "year": 2013,
@@ -80,14 +80,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "phospho-FLT3 inhibition, cells/xenograft vs patient-plasma PIA",
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    }
   ],
   "dose": [
@@ -116,14 +116,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "year": 2013,
@@ -153,14 +153,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "phospho-FLT3 inhibition at tolerated dose",
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -189,14 +189,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "year": 2019,
@@ -234,14 +234,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "tumour regression/survival in mice vs overall survival in patients",
     "source_calls_it": null,
     "population": "FLT3-ITD relapsed/refractory",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
     "year": 2022,
@@ -273,17 +273,16 @@
     "model_filed": false,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "null",
     "magnitude_basis": "combination over azacitidine alone: xenograft tumour volume vs patient overall survival",
     "source_calls_it": null,
     "population": "FLT3-mutated, unfit for intensive chemotherapy",
-    "model_first_use_year": 2009
+    "model_first_use_year": 2009,
+    "prediction_level": "class"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2012,
@@ -318,11 +317,9 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "FLT3-ITD AML, relapsed/refractory on quizartinib",
-    "parallel": true
+    "population": "FLT3-ITD AML, relapsed/refractory on quizartinib"
    },
    {
-    "model_change": false,
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2012,
@@ -372,8 +369,7 @@
       "doi": "10.1038/s41467-018-08263-x",
       "quote": "Unlike other FLT3 inhibitors, crenolanib does not induce FLT3 secondary mutations, and mutations of the FLT3 gatekeeper residue are infrequent."
      }
-    ],
-    "parallel": true
+    ]
    }
   ],
   "safety": [
@@ -402,14 +398,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "FLT3-mutated",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "prediction_level": "class"
    },
    {
     "year": 2018,
@@ -438,14 +434,14 @@
     "model_filed": true,
     "product_in_model": true,
     "model_kind": "animal",
-    "model_change": false,
     "retrodiction": false,
     "imported_from": null,
     "magnitude": "direction_only",
     "magnitude_basis": "presence of CNS and QT harm",
     "source_calls_it": null,
     "population": "FLT3-mutated relapsed/refractory",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "prediction_level": "class"
    }
   ]
  }
