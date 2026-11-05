@@ -22,7 +22,7 @@ that declares `"schema": 3`.
 | 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
 | 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
 | 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
-| 12 class boundaries | decided, revised: every mechanism (target, action) of every indication registered from a reviewed class table; ≥ 3 programs across modalities tracked; dose and platform safety split by modality; stored in `preclin.atlas_*` (migration 133) |
+| 12 class boundaries | decided, revised: every mechanism (target, action) of every disease registered from a reviewed class table; ≥ 3 programs across modalities tracked; dose and platform safety split by modality; stored in `preclin.atlas_*` (migration 133) |
 | 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
 | 16 dose window | decided: the dose cell scores the toxic ceiling when the model stated a margin |
 
@@ -203,14 +203,14 @@ the bins are too coarse to carry the surrogate-outcome story, hence decision 9.
 
 ## 12. Class and context boundaries
 
-**Rule.** A tile is indication (× population) × **mechanism**: (target, action), read from the
+**Rule.** A tile is disease (× population) × **mechanism**: (target, action), read from the
 reviewed per-drug class table in `lists/class_audit/` (verified target, action, selectivity, modality,
 novelty at entry, with a source per row). A member not selective for the mechanism's target forms its
 own mechanism ("JAK (pan)", multichannel blockers); dual-mechanism drugs are out unless the table puts
-them in (#33, #78). Every mechanism of every named indication is registered, counted across
-modalities (`preclin.atlas_register`: 1,693 indication × mechanism rows on the published 2026-11-05 build); a
+them in (#33, #78). Every mechanism of every named disease is registered, counted across
+modalities (`preclin.atlas_register`: 1,693 disease × mechanism rows on the published 2026-11-05 build); a
 mechanism with at least 3 programs is **tracked**, a tile whose model track record is drafted (119
-tiles in 48 indications). Phase is never a criterion, so what is tracked does not depend on whether
+tiles in 48 diseases). Phase is never a criterion, so what is tracked does not depend on whether
 a mechanism succeeded. Single-program and two-program mechanisms are covered by the random program
 sample, which carries the atlas's statistics.
 
@@ -230,8 +230,8 @@ DKD) transfer only for safety, symmetrically, with `imported_from` set and a dif
 class is prescribed by; trial enrolment goes in the note (#45). Duplicate contexts across MONDO
 terms are merged to the DB term (#103). Repurposed classes get a second, flagged context per
 indication rather than vanishing under the novel-entity filter (#24); thin-plurality classes are
-reported with `class_share`, their programs over the indication's, so the reader can see how little
-of the indication they cover (#25).
+reported with `class_share`, their programs over the disease's, so the reader can see how little
+of the disease they cover (#25).
 
 ## 13. `neg` and `other`
 
@@ -308,13 +308,13 @@ ceiling. A ceiling entry carries `margin_stated: true`.
 | `margin_stated` | dose entry | bool; true on a ceiling entry (decision 16) |
 | `modality_groups` | context | the tile's modalities: small molecule / antibody / ADC / protein / peptide / oligo / cell therapy / gene therapy / other (decision 12) |
 | `modality` | dose and safety entry | the sub-strip an entry belongs to when the tile has more than one modality (decision 12) |
-| `class_share` | context | the class's programs over the indication's (decision 12) |
+| `class_share` | context | the class's programs over the disease's (decision 12) |
 | `model_kind` | entry | animal / human_challenge / ex_vivo / in_silico / human_genetic / cross_indication |
 | `model_id` | entry | stable slug per model system, so the per-model record of decision 6 groups correctly |
 | `model_change` | entry | bool (new best model, same or different status) |
 | `outcome_tested` | efficacy cell | null / positive / negative / negative_confounded |
 | `retrodiction` | entry | bool; `status: retro` when it matched (decision 10) |
-| `imported_from` | entry | MONDO id of the indication the comparison was made in |
+| `imported_from` | entry | MONDO id of the disease the comparison was made in |
 | `patient_trials` | entry | list of {nct, registry_date, doi, quote} that change no status |
 | `regulatory_reliance` | context | bool |
 | `readout_tier` | engagement entry | direct / proximal / downstream (decision 15) |

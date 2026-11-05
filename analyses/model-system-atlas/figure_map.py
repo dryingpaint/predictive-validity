@@ -87,9 +87,9 @@ def main():
     W, H = 15, 10.5
     fig = plt.figure(figsize=(W, H + 1.9), dpi=200)
     fig.text(0.012, 0.985, "How much of the pipeline rests on a model that has matched patients", fontsize=17, fontweight="bold", color=INK, va="top")
-    fig.text(0.012, 0.955, f"Programs entering Phase 2 in 2008–2019 ({grand:,}), one box per indication sized by programs, coloured by the efficacy track record "
-             "of its most-developed drug class's best model.\nEach area's remaining indications form one box, filled from a random sample of programs. "
-             f"Named indications cover {shown / grand:.0%} of entries.", fontsize=9.5, color=MUTED, va="top", linespacing=1.4)
+    fig.text(0.012, 0.955, f"Programs entering Phase 2 in 2008–2019 ({grand:,}), one box per disease sized by programs, coloured by the efficacy track record "
+             "of its most-developed drug class's best model.\nEach area's remaining diseases form one box, filled from a random sample of programs. "
+             f"Named diseases cover {shown / grand:.0%} of entries.", fontsize=9.5, color=MUTED, va="top", linespacing=1.4)
     handles = [Patch(facecolor=c, edgecolor="none", label=l) for c, l in TRACK.values()]
     handles.append(Patch(facecolor=TODO, edgecolor="#c4cbc7", label="Not yet researched"))
     fig.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.008, 0.915), ncol=6, frameon=False, fontsize=8.6,
@@ -109,7 +109,7 @@ def main():
         for (n, ind), (x, y, w, h) in zip(items, squarify([t[0] for t in items], ax0 + pad, ay0 + head + pad, aw - 2 * pad, ah - head - 2 * pad)):
             if ind is None:
                 ax.add_patch(Rectangle((x, y), w, h, facecolor=TODO, edgecolor="white", lw=1.2, hatch="////"))
-                label, sub, ink = f"{len_rest(a)} other indications", f"{n:,} programs · from sample", MUTED
+                label, sub, ink = f"{len_rest(a)} other diseases", f"{n:,} programs · from sample", MUTED
             else:
                 st = status.get(ind["mondo_id"])
                 face = TRACK[st[0]][0] if st else TODO

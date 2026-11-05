@@ -130,7 +130,7 @@ select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid 
   </section>
 
   <section aria-labelledby="h-reg">
-    <h2 id="h-reg">Every mechanism, every indication</h2>
+    <h2 id="h-reg">Every mechanism, every disease</h2>
     <p class="lede" id="reg-lede"></p>
     <div class="reg-controls">
       <label for="area">Area</label>
@@ -143,7 +143,7 @@ select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid 
 
   <section aria-labelledby="h-m" class="method">
     <h2 id="h-m" style="color:var(--ink)">How this was made</h2>
-    <p>Indications are the most-developed diseases of each therapeutic area by Phase 2 entrants of 2008–2019. Each novel Phase 2 program counts toward one mechanism: its verified target and action, pooled across modalities, from a hand review of every drug that decides a tracked mechanism. A mechanism with at least three programs in an indication is tracked; its track record is drafted by one agent, re-checked source by source by a second, and disagreements are settled by a third under the written rules (rules v3).</p>
+    <p>The diseases are the most-developed of each therapeutic area by Phase 2 entrants of 2008–2019. Each novel Phase 2 program counts toward one mechanism: its verified target and action, pooled across modalities, from a hand review of every drug that decides a tracked mechanism. A mechanism with at least three programs in an indication is tracked; its track record is drafted by one agent, re-checked source by source by a second, and disagreements are settled by a third under the written rules (rules v3).</p>
     <p>A cell is <b>matched</b> when a published comparison shows the model's prediction held in patients, <b>contradicted</b> when it failed, and <b>never compared</b> when the model was used but nobody compared it. A <b>retrodiction</b> reproduced a result patients had already shown. A failed model stays failed in its own record; a cell turns back to matched only when a different model took over, or when the early patient signal itself faded.</p>
     <p id="agree-p"></p>
   </section>
@@ -197,7 +197,7 @@ function render() {
   const cells = tiles.flatMap(t => Q.map(([q]) => t.cells[q] || []).filter(c => c.length));
   const compared = cells.filter(c => latest(c) !== "untested").length;
   const st = [
-    [d.build.n_register?.toLocaleString() ?? "—", "indication × mechanism pairs registered"],
+    [d.build.n_register?.toLocaleString() ?? "—", "disease × mechanism pairs registered"],
     [d.build.n_tracked ?? "—", "tracked: 3+ programs"],
     [tiles.length, "track records drafted and checked"],
     [cells.length ? Math.round(100 * compared / cells.length) + "%" : "—", "of drafted cells ever compared with patients"],
@@ -218,7 +218,7 @@ function render() {
   // Atlas
   const atlas = document.getElementById("atlas");
   let html = `<svg width="0" height="0" style="position:absolute"><defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="5" height="5" fill="var(--same)"></rect><rect width="1.6" height="5" fill="var(--hatch)"></rect></pattern></defs></svg>`;
-  html += `<div class="arow head"><div>Disease · mechanism<br><span class="axis" style="justify-content:flex-start">programs · share of indication</span></div>` +
+  html += `<div class="arow head"><div>Disease · mechanism<br><span class="axis" style="justify-content:flex-start">programs · share of disease</span></div>` +
     Q.map(([, n, sub]) => `<div class="q"><b>${n}</b>${sub}<div class="axis"><span>${Y0}</span><span>2006</span><span>${Y1}</span></div></div>`).join("") + `</div>`;
   let area = null;
   tiles.forEach((t, i) => {
@@ -246,7 +246,7 @@ function render() {
   const sel = document.getElementById("area");
   sel.innerHTML = `<option value="">All areas</option>` + areas.map(a => `<option>${esc(a)}</option>`).join("");
   const nInd = d.register.length, nTr = d.register.filter(r => r.mechanisms.some(m => m.tracked)).length;
-  document.getElementById("reg-lede").textContent = `${nInd} indications, ${d.build.n_register?.toLocaleString()} mechanisms between them. ${nTr} indications have at least one mechanism with three or more programs; in the other ${nInd - nTr}, no mechanism was tried three times. Bold = tracked; a dot marks a drafted track record. Bar length is the mechanism's programs.`;
+  document.getElementById("reg-lede").textContent = `${nInd} diseases, ${d.build.n_register?.toLocaleString()} mechanisms between them. ${nTr} indications have at least one mechanism with three or more programs; in the other ${nInd - nTr}, no mechanism was tried three times. Bold = tracked; a dot marks a drafted track record. Bar length is the mechanism's programs.`;
   const draw = () => {
     const a = sel.value, all = document.getElementById("show").value === "all";
     const max = Math.max(...d.register.flatMap(r => r.mechanisms.map(m => m.n)));
@@ -254,7 +254,7 @@ function render() {
       const tr = r.mechanisms.filter(m => m.tracked), shown = all ? r.mechanisms : tr;
       const rest = r.mechanisms.length - shown.length;
       return `<div class="ind"><div class="ind-h"><b>${esc(r.disease)}</b><span>${r.n_programs} Phase 2 programs · ${r.mechanisms.length} mechanisms · ${tr.length} tracked</span></div>` +
-        (shown.length ? `<div class="mechs">${shown.map(m => `<div class="mech" title="${esc(m.label)}: ${m.n} programs, ${Math.round(m.share * 100)}% of the indication${m.furthest ? ", furthest phase " + m.furthest : ""}"><span class="lab ${m.tracked ? "tr" : ""}">${esc(m.label)}</span><span class="mbar"><i class="${m.tracked ? "tr" : ""}" style="width:${100 * m.n / max}%"></i></span><span class="n">${m.drafted ? '<span class="dot" title="track record drafted"></span>' : m.n}</span></div>`).join("")}</div>` : `<span class="more">No mechanism has three programs.</span>`) +
+        (shown.length ? `<div class="mechs">${shown.map(m => `<div class="mech" title="${esc(m.label)}: ${m.n} programs, ${Math.round(m.share * 100)}% of the disease${m.furthest ? ", furthest phase " + m.furthest : ""}"><span class="lab ${m.tracked ? "tr" : ""}">${esc(m.label)}</span><span class="mbar"><i class="${m.tracked ? "tr" : ""}" style="width:${100 * m.n / max}%"></i></span><span class="n">${m.drafted ? '<span class="dot" title="track record drafted"></span>' : m.n}</span></div>`).join("")}</div>` : `<span class="more">No mechanism has three programs.</span>`) +
         (rest ? `<span class="more">and ${rest} more mechanisms with one or two programs</span>` : "") + `</div>`;
     }).join("");
   };

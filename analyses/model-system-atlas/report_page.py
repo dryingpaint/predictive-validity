@@ -142,7 +142,7 @@ def main() -> None:
     tpl = open(os.path.join(HERE, "report", "template.html")).read()
     out = os.path.join(HERE, "report", "atlas.html")
     open(out, "w").write(tpl.replace("/*__DATA__*/null", json.dumps(data, default=str)))
-    print(f"wrote {out}: {len(data['tiles'])} tiles, {len(data['register'])} indications, agreement {data['agreement']}")
+    print(f"wrote {out}: {len(data['tiles'])} tiles, {len(data['register'])} diseases, agreement {data['agreement']}")
 
 
 if __name__ == "__main__":
