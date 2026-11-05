@@ -89,14 +89,14 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Common variants (genome-wide association studies)", "gwas", "target"),
         Line("Both common and rare variants", "allelic_series", "target"),
         Line("Genetics agrees with the drug's direction", "genetics_concordant", "target"),
-        Line("Target in a known disease pathway", "reactome", "target"),
+        Line("A curated pathway shows a disease mutation disrupting the target", "reactome", "target"),
     ]),
     "tumour_genetics": (Line("Tumour genetics", "cat_tumour_genetics", "ONC"), [
         Line("Gene recurrently mutated in this cancer", "somatic", "ONC"),
         Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
     ]),
     "diseased_tissue": (Line("Human diseased tissue", "cat_diseased_tissue", "target"), [
-        Line("Target gene's activity changed in diseased tissue", "expression", "target"),
+        Line("The gene's RNA level differs in diseased tissue", "expression", "target"),
         Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "target"), [
@@ -143,6 +143,77 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     ]),
 }
 ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
+
+# The evidence chart's grouping (exploratory, added 2026-11-05; report/translation_plan.md): one question per area, its
+# tiers mutually exclusive. The registered CATEGORIES above stay the confirmatory grouping and the appendix table's.
+AREAS: dict[str, tuple[Line, list[Line]]] = {
+    "human_genetics": (Line("Human genetics: inherited variants link the target to the disease", "g3", "target"), [
+        Line("Rare variants only", "tier_rare_only", "target"),
+        Line("Common variants only (genome-wide association studies)", "tier_common_only", "target"),
+        Line("Both rare and common variants", "allelic_series", "target"),
+    ]),
+    "pathway": (Line("Curated pathways: a disease mutation is shown disrupting the target's pathway", "reactome",
+                     "target"), []),
+    "tumour_genetics": (Line("Tumour genetics: the gene is recurrently mutated in this cancer", "somatic", "ONC"), [
+        Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
+        Line("It does not, or its effect is unknown", "tier_mutation_other", "ONC"),
+    ]),
+    "diseased_tissue": (Line("Diseased tissue: the gene's RNA level differs in diseased tissue", "expression",
+                             "target"), []),
+    "animal": (Line("Mouse models: mice with the gene altered show the disease", "altered_animal", "target"), [
+        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
+        Line("Looser match", "tier_mouse_loose", "target"),
+    ]),
+    "molecule": (Line("The drug: its binding to the target was measured before entry", "area_measured",
+                      "small_molecule"), [
+        Line("Binds strongly (100 nM or better) and selectively", "tier_strong_selective", "small_molecule"),
+        Line("Binds strongly, selectivity not shown", "tier_strong_only", "small_molecule"),
+        Line("Binds more weakly than 100 nM", "tier_weaker", "small_molecule"),
+    ]),
+    "safety_risk": (Line("Target safety risk", "liability", "target"), [
+        Line("Only: people rarely carry broken copies of the gene", "tier_constrained_only", "target"),
+        Line("Only: mice without the gene die young", "tier_lethal_only", "target"),
+        Line("Both", "tier_constrained_and_lethal", "target"),
+    ]),
+    "precedent": (Line("Earlier drugs on the same target", "cat_precedent", "target"), [
+        Line("Approved for a related disease", "b1", "target"),
+        Line("Approved only for unrelated diseases", "approved_unrelated_only", "target"),
+        Line("No approval, but another drug failed in a related disease in the last 3 years", "tier_failure_only",
+             "from_2011"),
+    ]),
+}
+
+
+def area_lines() -> list[Line]:
+    return [ln for line, tiers in AREAS.values() for ln in (line, *tiers)]
+
+
+def area_alone() -> set[str]:
+    """Columns of the area tiers scored on fewer entries than their area, which the chart marks."""
+    return {t.column for line, tiers in AREAS.values() for t in tiers if t.applies != line.applies}
+
+
+def area_columns(d: pd.DataFrame) -> pd.DataFrame:
+    """The columns AREAS adds to the entries: each tier that no line already gives, so that an area's tiers are
+    mutually exclusive, and the areas no line already gives. Null outside the entries a line applies to."""
+    t = d.has_target_disease
+    flag = lambda s, scope=t: s.astype(float).where(scope)  # noqa: E731
+    rare, common, potent = d.rare_variant.gt(0), d.gwas.gt(0), d.potent_100nm.gt(0)
+    measured, small = d.assay_best.notna(), APPLIES["small_molecule"](d)
+    return pd.DataFrame({
+        "tier_rare_only": flag(rare & ~common),
+        "tier_common_only": flag(common & ~rare),
+        "tier_mutation_other": flag(d.somatic.gt(0) & ~d.somatic_concordant.gt(0), APPLIES["ONC"](d)),
+        "tier_mouse_loose": flag(d.altered_animal.gt(0) & ~d.animal_close.gt(0)),
+        "area_measured": flag(measured, small),
+        "tier_strong_selective": flag(potent & d.selective.gt(0), small),
+        "tier_strong_only": flag(potent & ~d.selective.gt(0), small),
+        "tier_weaker": flag(measured & ~potent, small),
+        "tier_constrained_only": flag(d.constrained.gt(0) & ~d.ko_lethal.gt(0)),
+        "tier_lethal_only": flag(d.ko_lethal.gt(0) & ~d.constrained.gt(0)),
+        "tier_constrained_and_lethal": flag(d.constrained.gt(0) & d.ko_lethal.gt(0)),
+        "tier_failure_only": flag(d.earlier_failure.gt(0) & ~d.precedent.gt(0), APPLIES["from_2011"](d)),
+    }, index=d.index)
 
 
 def failed_trials() -> pd.DataFrame:
@@ -277,6 +348,7 @@ def build() -> pd.DataFrame:
     d["animal_concordant"] = flag(d.mouse_direction.eq("concordant"))
     d["approved_unrelated_only"] = flag((d.precedent > 0) & ~(d.b1 > 0))
     d = d.join(category_columns(d))
+    d = d.join(area_columns(d))
     d["biomarker_selected"] = biomarker_selected(
         d, trials, frame.query("SELECT nct_id, selected FROM preclin.trial_biomarker_selection"))
     d["entry_date"] = pd.to_datetime(d.entry).dt.date
@@ -284,7 +356,7 @@ def build() -> pd.DataFrame:
     keep = ["moiety_id", "mondo_id", "phase", "program_id", "entry_date", "entry_year", "era", "regime", "bio_area",
             "modality", "novel", "precedent", "target", "sign", "event", "s4", "has_target_disease", "assay_best",
             "assay_margin",
-            *(ln.column for ln in lines() if ln.column)]
+            *(ln.column for ln in lines() if ln.column), *(ln.column for ln in area_lines())]
     return d[list(dict.fromkeys(keep))].sort_values(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 
 
@@ -292,12 +364,6 @@ def in_category(line: Line, sub: Line) -> bool:
     """Whether a subcategory makes up its category: it has a column, is not descriptive, and is scored on every
     entry the category applies to."""
     return bool(sub.column) and not sub.descriptive and sub.applies in (line.applies, WITHIN.get(line.applies))
-
-
-def reported_alone() -> set[str]:
-    """Columns of the subcategories that stay out of their category because they cover only part of its entries."""
-    return {s.column for line, subs in CATEGORIES.values() for s in subs
-            if s.column and not s.descriptive and not in_category(line, s)}
 
 
 def category_columns(d: pd.DataFrame) -> pd.DataFrame:

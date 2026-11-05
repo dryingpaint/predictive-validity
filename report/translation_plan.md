@@ -210,6 +210,18 @@ as the target-precedent covariate of the Phase 2 model, so the precedent lines
 are no longer adjusted for it. Before this, they had been adjusted for
 themselves.
 
+**Display areas, added 2026-11-05 (exploratory).** After the category results had been seen, the
+evidence chart was regrouped for readability into areas that each answer one question, with mutually
+exclusive groups of programs inside each: human genetics (rare variants only, common only, both),
+curated pathways (a disease mutation shown disrupting the target's pathway), tumour genetics
+(mutation matches the drug, or not), diseased tissue (RNA level changed), mouse models (close symptom
+match, looser), the drug
+(strong and selective, strong only, weaker), target safety risk (constraint only, knockout lethality
+only, both) and earlier drugs on the target (approved for a related disease, for unrelated diseases
+only, a failure with no approval). Because the grouping was chosen knowing the results, its estimates
+are exploratory. Cancer-cell dependency is left off the chart, its interval too wide to read. The categories above remain the registered analysis, the appendix table reports
+them, and N1-N3 are unchanged.
+
 **New confirmatory hypotheses (Holm-corrected together, α = 0.05).**
 
 - **N1.** Among small molecules measured on the primary target and an off
