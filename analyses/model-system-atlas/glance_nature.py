@@ -9,6 +9,7 @@ question; the mark is the status, the bold year is when it was earned, then the 
 retrodiction carries its reason. Text is 5–7 pt Helvetica, lines 0.25–0.5 pt, fonts embedded editable.
 Writes atlas_glance.png (300 dpi), .svg and .pdf beside this file. Read-only.
 """
+import json
 import os
 import sys
 
@@ -16,14 +17,14 @@ import matplotlib
 import pandas as pd
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.font_manager import FontProperties  # noqa: E402
-from matplotlib.patches import FancyBboxPatch, Rectangle  # noqa: E402
-from matplotlib.textpath import TextPath  # noqa: E402
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+from matplotlib.patches import FancyBboxPatch, Rectangle
+from matplotlib.textpath import TextPath
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from glance import QUESTIONS, SHORT, cells, load  # noqa: E402
+from glance import QUESTIONS, SHORT, cells, load
 
 # capable-plots: INK, CAPABLE (muted blue), PLACEBO (muted grey), VIBRANT coral and violet
 INK, CAPABLE, PLACEBO = "#1a1a1a", "#83a9bc", "#b2b8b8"
@@ -32,79 +33,16 @@ STATUS = {"same": (CAPABLE, "Matched"), "contra": ("#F0563D", "Contradicted"), "
           "untested": ("#e2e5e5", "Never compared")}
 AREA = {"infectious_disease": "Infectious disease", "other": "Other"}
 AREA_SHORT = {"Infectious disease": "Infectious", "Metabolic": "Metab.", "Ophthalmology": "Ophth.", "Gastroenterology": "GI", "Hematology": "Hemat."}
-RC = {"hatch.linewidth": 0.6, "font.family": ["Helvetica", "Arial", "DejaVu Sans"], "svg.fonttype": "none", "pdf.fonttype": 42, "ps.fonttype": 42,
+RC = {"svg.hashsalt": "atlas", "hatch.linewidth": 0.6, "font.family": ["Helvetica", "Arial", "DejaVu Sans"], "svg.fonttype": "none", "pdf.fonttype": 42, "ps.fonttype": 42,
       "figure.facecolor": "white", "savefig.facecolor": "white", "text.color": INK}
 
 W, H = 7.2, 9.65  # 183 × 245 mm
 
 # Model names that do not fit their cell, shortened by hand; nothing is cut with an ellipsis
-MODEL_SHORT = {
-    "Human atrial cardiomyocyte IKACh (GIRK) patch clamp": "Human atrial myocytes",
-    "2-year rat carcinogenicity bioassay": "2-year rat carcinogenicity",
-    "tg-ArcSwe mice given mAb158, lecanemab's murine version": "tg-ArcSwe mice, mAb158",
-    "hAPP(V717I)/PS1 mice and microglia assays with crenezumab": "hAPP/PS1 mice, crenezumab",
-    "Rat, mouse and monkey GLP toxicology (MK-3207)": "Rat, mouse, monkey GLP tox",
-    "Rhesus CIDV exposure target, translated to human CIDV PK/PD": "Rhesus CIDV PK/PD target",
-    "MV4-11 xenografts, gilteritinib plus azacitidine": "MV4-11 AML xenografts",
-    "hERG assay with rat and dog toxicology and dog cardiovascular telemetry": "hERG, rat and dog tox, dog telemetry",
-    "Rodent antipsychotic-like dose and occupancy": "Rodent occupancy dosing",
-    "Patient F508del bronchial cells (Ussing chamber)": "Patient F508del airway cells",
-    "Rat and dog toxicology (vanzacaftor)": "Rat and dog tox (vanzacaftor)",
-    "Human eosinophil DP2 potency scaled to human exposure": "Eosinophil DP2 potency",
-    "Mouse chronic asthma with rhinovirus exacerbation, on corticosteroid": "Asthma mice on steroid",
-    "Chemical cystitis in rats/mice with NGF sequestration": "Rodent chemical cystitis",
-    "Primate, rat and mouse toxicology with bone and joint histology": "Primate and rodent joint tox",
-    "Primary human keratinocytes stimulated with IL-17 and TNF (synergistic gene set)": "Human keratinocytes stimulated with IL-17 and TNF",
-    "Cynomolgus monkey repeat-dose toxicology (only cross-reactive species)": "Cynomolgus repeat-dose toxicology",
-    "Psoriasis patients' blood cells ex vivo (IL-17-secreting cells, sponsor report bTDR80)": "Psoriasis patients' blood cells ex vivo",
-    "People with inborn errors of IL-17 immunity (IL-17RA, IL-17F deficiency)": "People with inborn errors of IL-17 immunity",
-    "Human whole-blood ex vivo IL-17 secretion assay (IC90 target), VTP-43742/AGN-242428": "Human whole-blood IL-17 secretion assay",
-    "Histamine- and pentagastrin-stimulated gastric acid secretion in dogs": "Stimulated gastric acid secretion in dogs",
-    "Rat reflux-oesophagitis model (esophageal injury and acid secretion), vs esomeprazole": "Rat reflux oesophagitis vs esomeprazole",
-    "Rat 1-4 week repeat dosing: gastrin, gastric emptying, small-intestinal microbiota": "Rat repeat dosing: gastrin, emptying, microbiota",
-    "Hemophilia B dogs given liver-directed AAV8-canine FIX-Padua (R338L)": "Hemophilia B dogs, AAV8 canine FIX-Padua",
-    "Juvenile hemophilia B dogs given the canine surrogate AAVRh74var-cFIX-R338L": "Juvenile hemophilia B dogs, canine surrogate vector",
-    "Cynomolgus monkey PK/PD (crovalimab cross-reacts with monkey C5)": "Cynomolgus PK/PD (crovalimab)",
-    "In-vitro complement hemolysis assay in human serum (no animal model of PNH)": "Complement hemolysis assay in human serum",
-    "In-vitro drug-target-drug complex formation (crovalimab + eculizumab + human C5)": "Drug–target–drug complex assay, human C5",
-    "Human CETP/apoA-I transgenic mouse; rat blood pressure": "CETP/apoA-I mouse; rat blood pressure",
-    "Aged APP transgenic mice given 2H6, ponezumab's murine parent": "Aged APP mice given 2H6 (ponezumab parent)",
-    "Abemaciclib xenograft PK/PD model (phospho-Rb to tumour growth)": "Abemaciclib xenograft PK/PD (pRb to growth)",
-    "T790M/sensitising-mutant NSCLC cells, xenografts and transgenic mice": "T790M/sensitising-mutant NSCLC cells and mice",
-    "Human tumour cells and xenografts treated with h7C10 (dalotuzumab)": "Tumour cells and xenografts given h7C10",
-    "BCMA+ human myeloma xenografts in immunodeficient (NSG) mice, CAR-T": "BCMA+ myeloma xenografts in NSG mice, CAR-T",
-    "BCMA+ human myeloma xenografts in immunodeficient mice, ADC": "BCMA+ myeloma xenografts in mice, ADC",
-    "Dog repeat dosing with food-enrichment cataplexy trigger (suvorexant)": "Dog repeat dosing, cataplexy trigger (suvorexant)",
-    "Cynomolgus monkeys given AAVRh74var-hFIX-Padua (fidanacogene predecessor), GLP toxicology": "Cynomolgus GLP tox, fidanacogene predecessor",
-    "In-vitro hemolysis assay with recombinant C5 R885H variant (picks eculizumab-resistant genotype patients)": "Hemolysis assay with C5 R885H variant",
-    "APP A673T protective variant carriers (Icelandic genetics)": "A673T variant carriers",
-    "EGFR-mutant PC9 mouse brain-metastasis model with cynomolgus [11C]osimertinib microdose PET": "PC9 brain-metastasis mice; monkey osimertinib PET",
-    "Cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab": "Cynomolgus repeat-dose tox (R1507)",
-    "Decision-tree / exposure-safety model of NOVA patients (niraparib individualized starting dose)": "NOVA exposure–safety model (niraparib)",
-    "Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)": "Ketamine challenge",
-    "Inhaled allergen challenge in mild atopic asthmatics (late asthmatic response)": "Allergen challenge",
-    "ASP6294 (PEG-Fab') vs anti-NGF IgG in adjuvant-arthritis mice and MIA-arthritis rats": "ASP6294 vs anti-NGF IgG in arthritic rodents",
-    "High-fat-diet mouse ALT/cholesterol screen (Px-102-calibrated)": "High-fat-diet mouse ALT/cholesterol screen",
-    "Human CETP loss-of-function genotypes (common variants, truncating variants)": "Human CETP loss-of-function genotypes",
-    "Wild-type mice chronically dosed with BACE1 inhibitors (spines, LTP, behaviour)": "Mice chronically dosed with BACE1 inhibitors",
-    "Mouse transient middle cerebral artery occlusion (gepant pretreatment)": "Mouse MCAO stroke, gepant pretreatment",
-    "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)": "Ba/F3 FLT3-ITD resistance screen",
-    "Patient-derived lung cancer organoids from malignant effusions, drug sensitivity test": "Patient-derived lung cancer organoids",
-    "Mouse emotion-induced (chocolate) cataplexy, wild-type vs preproorexin knockout (lemborexant)": "Mouse emotion-induced cataplexy (lemborexant)",
-    "Fischer rat thyroid cells expressing CFTR variants (Ussing chamber)": "FRT cells expressing CFTR variants",
-}
-DISSENT_SHORT = {"Human NTD signal gone; mouse harm unconfirmed": "Mouse NTD; human signal gone",
-                 "CNS exposure reached; response failed": "Brain exposure OK, no response",
-                 "Engagement in explant; primary failed": "Explant engaged; primary failed",
-                 "Clarity AD: excess microbleeds missed": "Excess microbleeds missed",
-                 "Human exposure far below prediction": "Exposure far below prediction",
-                 "Brain-metastasis trial misses iORR": "Brain-metastasis trial missed",
-                 "No IL-17 biomarker change in treated plaques": "No IL-17 change in plaques",
-                 "S1P3-sparing ozanimod still slows the heart": "Ozanimod still slows the heart",
-                 "Cilofexor: no lipid change in humans": "Cilofexor: no lipid change",
-                 "Animal tox silent on MK-3207 liver injury": "Animal tox missed MK-3207 liver",
-                 "Gilteritinib + azacitidine: no survival gain": "Combination: no survival gain",
-                 "Third corrector added nothing in patients": "Third corrector added nothing"}
+LABELS = os.path.join(HERE, "drafts", "v3", "short_labels.json")
+with open(LABELS) as _f:
+    _labels = json.load(_f)
+MODEL_SHORT, DISSENT_SHORT = _labels["model"], _labels["dissent"]  # hand-shortened; see the file's _comment
 CUT = []  # strings that still needed an ellipsis; printed at the end so none ships unnoticed
 ROW = 0.27
 
@@ -152,7 +90,7 @@ def draw(df: pd.DataFrame, out: str) -> None:
     ax.set_xlim(0, W)
     ax.set_ylim(H, 0)
     ax.axis("off")
-    T = dict(va="center", color=INK)
+    T = {"va": "center", "color": INK}
 
     # ── panel a: the verdict by question ───────────────────────────────────────────
     ax.text(0.08, 0.2, "a", fontsize=8, fontweight="bold", **T)
@@ -202,7 +140,7 @@ def draw(df: pd.DataFrame, out: str) -> None:
     y = top + 0.26
     ax.plot([area_x, W - 0.06], [y, y], color=RULE_AREA, linewidth=0.5)
     mark, pad = 0.095, 0.05
-    text_x = lambda i: cell_x[i] + mark + pad  # noqa: E731
+    text_x = lambda i: cell_x[i] + mark + pad
     text_w = cell_w - mark - pad - 0.02
     for a in order:
         g = tiles[tiles.area == a]
@@ -256,9 +194,10 @@ def draw(df: pd.DataFrame, out: str) -> None:
             name = AREA_SHORT.get(name, name)
         ax.text(area_x - 0.02, (ya + y) / 2, name, fontsize=5, color=MUTED, rotation=90, ha="center", va="center")
         ax.plot([label_x, W - 0.06], [y, y], color=RULE_AREA, linewidth=0.5)
-    fig.savefig(out + ".png", dpi=300)
-    fig.savefig(out + ".svg")
-    fig.savefig(out + ".pdf")
+    meta = {"Date": None}  # no timestamp, so a re-render of the same data is byte-identical
+    fig.savefig(out + ".png", dpi=300, metadata=meta)
+    fig.savefig(out + ".svg", metadata=meta)
+    fig.savefig(out + ".pdf", metadata={"CreationDate": None, "ModDate": None})
     plt.close(fig)
     print(f"rows end at {y:.2f} in of {H} in; {len(CUT)} strings cut" + ("".join("\n  " + c for c in CUT)))
 

@@ -20,7 +20,6 @@ lists/named_indications.csv. Read-only. Writes lists/indications.csv (one row pe
 indication), lists/indications_by_disease.csv, and disease_indications.png / .svg beside this file.
 """
 import os
-import re
 import sys
 from collections import Counter
 
@@ -28,15 +27,17 @@ import matplotlib
 import pandas as pd
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-from matplotlib.lines import Line2D  # noqa: E402
-from matplotlib.ticker import NullLocator  # noqa: E402
+matplotlib.rcParams["svg.hashsalt"] = "atlas"  # stable ids, so a re-render of the same data is byte-identical
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+from matplotlib.ticker import NullLocator
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..")))
-from lists import DROP, MERGE, PHASE, WINDOW  # noqa: E402
-from report import frame, section1  # noqa: E402
+from lists import DROP, MERGE, PHASE, WINDOW
+
+from report import frame, section1
 
 LISTS = os.path.join(HERE, "lists")
 INK, MUTED, RULE, BAND = "#1b2321", "#5c6763", "#c4cbc7", "#f3f5f4"
@@ -152,8 +153,9 @@ def classify(x: pd.DataFrame, named: pd.DataFrame) -> pd.DataFrame:
     x["stage"], x["subset"], x["line"] = stage, subset, line
     # a subtype's display spelling: the commonest original casing of each lower-cased key
     spell = {}
-    for k, g in x[x.patient_subset.notna()].assign(k=subset).dropna(subset=["k"]).groupby("k"):
-        spell[k] = Counter(g.patient_subset.str.strip()).most_common(1)[0][0]
+    spelled = pd.DataFrame({"k": subset, "orig": x.patient_subset.str.strip()}).dropna()
+    for k, g in spelled.groupby("k"):
+        spell[k] = Counter(g.orig).most_common(1)[0][0]
     for key, _ in SUBSET_WORDS:
         spell.setdefault(key.lower(), key)
     x["subset_label"] = x.subset.map(spell)
@@ -208,7 +210,7 @@ def draw(per: pd.DataFrame, by: pd.DataFrame, snap: str, share_name: float, out:
     TOP, BOTTOM, W = 1.72, 0.74, 12.6
     fig_h = TOP + col_h + BOTTOM
     fig = plt.figure(figsize=(W, fig_h), dpi=200)
-    fy = lambda inches: 1 - inches / fig_h  # noqa: E731
+    fy = lambda inches: 1 - inches / fig_h
 
     n_ind = int(by.n_indications.sum())
     fig.text(0.012, fy(0.28), "Seventy-one diseases, their programs, and the indications those programs were tested in",
@@ -290,8 +292,8 @@ def draw(per: pd.DataFrame, by: pd.DataFrame, snap: str, share_name: float, out:
              f"Database snapshot {snap}.\nCondition rows read from the condition name rather than the classifier: {share_name:.0%} "
              f"(lists/indications.csv records how many programs each indication owes to that reading).",
              fontsize=7.2, color=MUTED, va="bottom", linespacing=1.4)
-    fig.savefig(out + ".png", facecolor="white")
-    fig.savefig(out + ".svg", facecolor="white")
+    fig.savefig(out + ".png", facecolor="white", metadata={"Date": None})
+    fig.savefig(out + ".svg", facecolor="white", metadata={"Date": None})
     plt.close(fig)
 
 
