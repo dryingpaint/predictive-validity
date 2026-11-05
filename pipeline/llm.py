@@ -252,9 +252,10 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
     try:
         with connect() as conn, conn.cursor() as cur:
             reused = _reusable(cur, task, items, reuse_by)
-            _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage,
-                                prior_id=decision_id, params=params)
-                           for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()])
+        copies = [_row(run_id, task, key, items[key], raw, parsed, request_id, usage, prior_id=decision_id, params=params)
+                  for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()]
+        for start in range(0, len(copies), 2000):  # each batch on its own connection, replayed through a dropped link
+            _store(copies[start:start + 2000])
         todo = [k for k in items if k not in reused]
         print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
         if len(todo) <= DIRECT_MAX or task.tools:
