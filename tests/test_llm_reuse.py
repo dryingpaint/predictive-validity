@@ -87,3 +87,15 @@ def test_cleanup_keeps_an_entity_referenced_only_by_an_fda_application(cur):
     assert delete_unreferenced(cur, {fda_only, orphan}) == 1
     cur.execute("SELECT moiety_id FROM preclin.moiety WHERE moiety_id IN (%s, %s)", (fda_only, orphan))
     assert [r[0] for r in cur.fetchall()] == [fda_only]
+
+
+@pytest.mark.db
+def test_names_resolve_past_entities_being_rebuilt(cur):
+    from pipeline.drugs import entity_ids
+    cur.execute("""INSERT INTO preclin.moiety (moiety_key, name, code_names) VALUES ('zzestablished', 'zz established',
+                   '{ZZ-101}') RETURNING moiety_id""")
+    old = cur.fetchone()[0]
+    cur.execute("INSERT INTO preclin.moiety (moiety_key, name) VALUES ('zz101', 'ZZ-101') RETURNING moiety_id")
+    new = cur.fetchone()[0]
+    assert entity_ids(cur, {"zz101": "ZZ-101"})["zz101"] == new  # ambiguous: the entity named ZZ-101
+    assert entity_ids(cur, {"zz101": "ZZ-101"}, before=new)["zz101"] == old  # as if the later one did not exist

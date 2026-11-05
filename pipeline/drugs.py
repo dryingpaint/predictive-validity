@@ -187,15 +187,17 @@ def disagreements(names: dict[str, str], resolved: dict[str, tuple[str, list[dic
     return {k: list(dict.fromkeys(sibs))[:SIBLINGS] for k, sibs in flagged.items()}
 
 
-def entity_keys(cur, resolved: bool = False) -> dict[str, int]:
+def entity_keys(cur, resolved: bool = False, before: int | None = None) -> dict[str, int]:
     """Every name key that identifies exactly one entity (with resolved, one resolved to a UNII
-    substance): its own key, a code name without a question mark or an alias."""
+    substance; with before, one numbered below it, as if later entities did not exist): its own key,
+    a code name without a question mark or an alias."""
     cur.execute("""SELECT k, min(moiety_id) FROM (
                      SELECT moiety_key AS k, moiety_id FROM preclin.moiety WHERE unii IS NOT NULL OR NOT %(r)s
                      UNION SELECT regexp_replace(lower(c), '[^a-z0-9]', '', 'g'), moiety_id
                      FROM preclin.moiety, unnest(code_names || aliases) c
                      WHERE (unii IS NOT NULL OR NOT %(r)s) AND strpos(c, '?') = 0) x
-                   WHERE k <> '' GROUP BY k HAVING count(DISTINCT moiety_id) = 1""", {"r": resolved})
+                   WHERE k <> '' AND moiety_id < coalesce(%(b)s, 2147483647)
+                   GROUP BY k HAVING count(DISTINCT moiety_id) = 1""", {"r": resolved, "b": before})
     return dict(cur.fetchall())
 
 
@@ -206,10 +208,10 @@ def registered_keys(keys: set[str]) -> set[str]:
         return {k for k, in cur.fetchall()}
 
 
-def entity_ids(cur, names: dict[str, str]) -> dict[str, int]:
-    """moiety_id for each name key: the entity it already identifies, else a
-    new entity with that name."""
-    known = entity_keys(cur)
+def entity_ids(cur, names: dict[str, str], before: int | None = None) -> dict[str, int]:
+    """moiety_id for each name key: the entity it already identifies (with before, among the entities numbered
+    below it), else the entity named by that key, else a new entity with that name."""
+    known = entity_keys(cur, before=before)
     new = [(k, n) for k, n in names.items() if k not in known]
     if new:
         execute_values(cur, """INSERT INTO preclin.moiety (moiety_key, name) VALUES %s
@@ -250,7 +252,7 @@ def registered_codes(cur, texts: dict[str, str]) -> dict[str, list[dict]]:
     return {k: [{"code": n, "substance": d} for w in sorted(ws) for n, d in sorted(reg.get(w, ()))] for k, ws in words.items()}
 
 
-def canonicalize(_args) -> None:
+def canonicalize(args) -> None:
     """Resolve intervention names. A name with no earlier validated decision
     that is exactly the name, code name or alias of an entity resolved to a UNII
     substance (ignoring case and punctuation) is linked directly. The LLM reads
@@ -258,7 +260,8 @@ def canonicalize(_args) -> None:
     (resolved_via <> 'ctgov_snapshot') or that appear in an industry-sponsored
     snapshot trial, each with up to three of its CT.gov snapshot trials. Names
     whose shared sponsor code the decisions resolve differently are decided
-    again with the other names' resolutions (disagreements). Names whose decision gives an entity a code
+    again with the other names' resolutions (disagreements). With --rebuild-entities-from, names resolve as
+    if the entities numbered from that id did not exist, and those left unreferenced are deleted. Names whose decision gives an entity a code
     another entity alone holds (stale, after pipeline.drugs codes) are decided again, shown the codes the
     FDA substance registry assigns."""
     with llm.connect() as conn, conn.cursor() as cur:
@@ -319,7 +322,8 @@ def canonicalize(_args) -> None:
         linked_before = {m for m, in cur.fetchall()}
         cur.execute("SELECT max(moiety_id) FROM preclin.moiety")
         last_id = cur.fetchone()[0] or 0
-        ids = entity_ids(cur, {k: m["name"] for k, m in moieties.items()})
+        rebuild = getattr(args, "rebuild_entities_from", None)
+        ids = entity_ids(cur, {k: m["name"] for k, m in moieties.items()}, before=rebuild)
         codes = {}
         for k, m in moieties.items():
             codes.setdefault(ids[k], set()).update(m["codes"])
@@ -337,7 +341,12 @@ def canonicalize(_args) -> None:
                        kinds + [(did, "drug", None) for did in exact], template="(%s, %s, %s::bigint)")
         # an entity this run unlinked or created, and that nothing references, goes with the links that held it
         linked_now = set(ids.values()) | set(exact.values())
-        dropped = delete_unreferenced(cur, (linked_before - linked_now) | {m for m in ids.values() if m > last_id})
+        rebuilt = set()
+        if rebuild is not None:
+            cur.execute("SELECT moiety_id FROM preclin.moiety WHERE moiety_id >= %s", (rebuild,))
+            rebuilt = {m for m, in cur.fetchall()}
+        dropped = delete_unreferenced(cur, (linked_before - linked_now) | {m for m in ids.values() if m > last_id}
+                                      | rebuilt)
         conn.commit()
     print(f"llm items={len(items)} decided={len(decided)} decided again={len(again)} stale redecided={len(redo)} "
           f"exact-name links={len(exact)} moieties={len(moieties)} links={len(links)} unreferenced entities dropped={dropped}")
@@ -1073,7 +1082,11 @@ def modality(_args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("canonicalize").set_defaults(fn=canonicalize)
+    c = sub.add_parser("canonicalize")
+    c.add_argument("--rebuild-entities-from", type=int, metavar="MOIETY_ID",
+                   help="resolve names as if entities numbered from this id did not exist, and delete those left "
+                        "unreferenced: undoes the entities a withdrawn run created")
+    c.set_defaults(fn=canonicalize)
     sub.add_parser("unii").set_defaults(fn=unii)
     sub.add_parser("modality").set_defaults(fn=modality)
     q = sub.add_parser("same")
