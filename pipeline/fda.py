@@ -43,7 +43,8 @@ from psycopg2.extras import execute_values
 from pypdf import PdfReader
 
 from pipeline import llm
-from pipeline.drugs import entity_ids, moiety_key
+from pipeline import drugs
+from pipeline.drugs import entity_ids, entity_keys, moiety_key
 
 CACHE = os.path.join(llm.REPO, ".cache", "fda")
 DRUGSFDA_URL = "https://www.fda.gov/media/89850/download"
@@ -601,8 +602,10 @@ def link(_args) -> None:
             names.setdefault(key, comp["name"])
             links.append((appl_no, key, comp["biosimilar_of"], decision_id))
     with llm.connect() as conn, conn.cursor() as cur:
+        known = entity_keys(cur)
         ids = entity_ids(cur, names)  # an ingredient no entity carries yet becomes one
         conn.commit()
+    created = {ids[k] for k in names if k not in known}
     rows = [(appl, ids[k], bio, did) for appl, k, bio, did in links]
     linked = defaultdict(set)
     for appl, mid, *_ in rows:
@@ -623,6 +626,9 @@ def link(_args) -> None:
         conn.commit()
     print(f"applications={len(items)} links={len(links)} moieties={len(names)} product matches={len(products)} "
           f"trial-entity matches={len(trial_entities)} (named applications not in preclin.fda_application: {unlisted})")
+    if created:  # resolved now, so an ingredient entity created here is never left without its substance
+        print(f"resolving {len(created)} entities this run created")
+        drugs.unii(argparse.Namespace(named_pairs=False), only=created)
 
 
 CBER_INDEXES = {  # file in .cache/cber -> (release name, product_no prefix, whether it overrides an application
