@@ -47,6 +47,7 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 | `drafts/DRAFTER_BRIEF_v3.md`, `drafts/CHECKER_BRIEF_v3.md` | the briefs written to those decisions; the checker brief adds adjudication |
 | `drafts/matrix.py` → `matrix_entries.csv`, `matrix_cells.csv`, `matrix_models.csv` | one row per entry, per cell and per model: drafter and checker status, all fact fields, each model's own record (decision 6) |
 | `drafts/lint.py` | schema check on the drafts; v3 rules on drafts that declare `"schema": 3` |
+| `fetch_sources.py` → `sources/manifest.csv` | the drafters' source bundle: each class member's FDA review package as text (OCR for scanned PDFs); the PDFs and text under `sources/<appl_no>/` are not committed |
 | `render_pilot.py` → `drafts/pilot_render/atlas.png` (not committed) | all drafts through `figure.py` with checker corrections applied |
 | `drafts/engagement_outcomes.py` → `context_outcomes.csv` | Phase 2 and Phase 3 advancement of each context's class, from the DB |
 | `drafts/engagement_kind_result.py` → `engagement_experiment.csv`, `ENGAGEMENT_KIND_RESULT.md` | whether the kind of engagement readout tracks the class's advancement |
@@ -61,6 +62,7 @@ uv sync
 .venv/bin/python analyses/model-system-atlas/render_pilot.py
 .venv/bin/python analyses/model-system-atlas/drafts/engagement_outcomes.py    # read-only
 .venv/bin/python analyses/model-system-atlas/drafts/engagement_kind_result.py
+.venv/bin/python analyses/model-system-atlas/fetch_sources.py MEMBERS.csv          # context,moiety_id; read-only; hours with OCR
 ```
 
 Drafts stay in `drafts/`, never in `contexts/`. Nothing here writes to the DB.

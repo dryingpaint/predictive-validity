@@ -98,7 +98,11 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
    existed before it was tested.
 7. Do NOT use approval status or later knowledge to decide a status; use what was known at the entry's date.
-8. **FDA review PDFs.** WebFetch fails above 10 MB. Use the source bundle if one is given, else
+8. **FDA review PDFs.** WebFetch fails above 10 MB. Start from the source bundle: the rows of
+   `analyses/model-system-atlas/sources/manifest.csv` for your context list each class member's FDA review
+   package (non-clinical, medical, clinical pharmacology, summary reviews and label) as text in `txt`, OCRed
+   where the PDF was scanned; grep them. The FDA review URL is the `url` column, which is what `src` cites.
+   For a document not in the bundle (EMA EPAR, CBER review, AdCom transcript),
    `curl -L -o review.pdf <url> && pdftotext review.pdf -` and search the text. `model_filed` is the field
    that depends on this; do not leave it null because the PDF was large.
 9. Budget: ≤20 sources, ≤40 tool calls. Abstract-level reading is acceptable; say so. The registry lookup
