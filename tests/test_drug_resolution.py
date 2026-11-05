@@ -125,3 +125,47 @@ def test_an_application_links_only_its_principal_ingredients():
     biosimilar = {"kind": "single", "components": [{"name": "adalimumab-atto", "biosimilar_of": "adalimumab",
                                                     "role": "principal"}]}
     assert [c["name"] for c in principals(biosimilar)] == ["adalimumab"]
+
+
+def test_a_code_is_reviewed_when_shared_or_registered_to_an_unrelated_substance():
+    from pipeline.drugs import review_keys
+    holders = {"ain457": {1, 2}, "acz885": {1}, "ym022": {3}, "r13672": {4}, "fx006": {5}}
+    unii_of = {1: "CANAK", 2: "SECUK", 3: "NETAZ", 4: "HALOP", 5: "TRIAM"}
+    registered = {"ain457": {"SECUK"}, "acz885": {"CANAK"}, "ym022": {"YM022REC"}, "r13672": {"HALDEC"},
+                  "fx006": {"TAFAM"}}
+    parents = {"HALDEC": {"HALOP"}}  # haloperidol decanoate is a form of haloperidol
+    assert review_keys(holders, unii_of, registered, parents) == {"ain457", "ym022", "fx006"}
+
+
+def test_an_entity_loses_only_the_codes_a_verdict_says_it_does_not_own():
+    from pipeline.drugs import owned_codes
+    codes = {1: ["ACZ885", "AIN457"], 2: ["AIN457", "AIN-457"], 3: ["GW876008"]}
+    keys = {1: "canakinumab", 2: "secukinumab", 3: "gw876008"}
+    verdicts = {"ain457": {1: False, 2: True}, "gw876008": {3: False}}
+    # every spelling of the code goes; an entity named by its code keeps it whatever the verdict
+    assert owned_codes(codes, keys, verdicts) == {1: ["ACZ885"], 2: ["AIN457", "AIN-457"], 3: ["GW876008"]}
+
+
+def test_a_salt_parent_or_sibling_form_counts_as_the_same_substance():
+    from pipeline.drugs import related_substances
+    parents = {"SALT": {"BASE"}, "ESTER": {"BASE"}}
+    assert related_substances("BASE", "SALT", parents) and related_substances("SALT", "BASE", parents)
+    assert related_substances("SALT", "ESTER", parents) and not related_substances("BASE", "OTHER", parents)
+    assert not related_substances(None, "BASE", parents)
+
+
+def test_a_code_leaves_an_entity_only_when_both_models_say_it_is_another_entitys():
+    from pipeline.drugs import agreed_verdicts
+    first = {"ain457": {1: False, 2: True}, "yh22162": {3: False}, "st067": {4: False}}
+    second = {"ain457": {1: False, 2: True}, "yh22162": {3: True}}  # st067: the check failed validation
+    assert agreed_verdicts(first, second) == {"ain457": {1: False, 2: True}, "yh22162": {3: True}, "st067": {4: True}}
+
+
+def test_a_removal_needs_the_registry_to_place_the_code_on_an_unrelated_substance():
+    from pipeline.drugs import registry_unconfirmed
+    verdicts = {"ain457": {1: False, 2: True}, "scb01a": {3: False}, "u34865": {4: False}, "fx006": {5: False}}
+    unii_of = {1: "CANAK", 2: "SECUK", 3: "FOSLI", 4: "HALOB", 5: "TRIAMSALT"}
+    registered = {"ain457": {"SECUK"}, "u34865": {"DIFLO"}, "fx006": {"TRIAM"}}  # scb01a: unknown to the registry
+    parents = {"TRIAMSALT": {"TRIAM"}}
+    assert registry_unconfirmed(verdicts, unii_of, registered, parents) == {
+        "ain457": set(), "scb01a": {3}, "u34865": set(), "fx006": {5}}

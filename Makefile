@@ -52,6 +52,7 @@ identity:
 	$(RUN) pipeline.drugs canonicalize
 	$(RUN) pipeline.fda link
 	$(RUN) pipeline.drugs unii
+	$(RUN) pipeline.drugs codes
 
 # Programs: entity role and purpose of each trial, each entity's diseases grouped into indications,
 # then (entity, indication) programs.
