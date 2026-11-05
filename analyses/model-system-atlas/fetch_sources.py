@@ -18,12 +18,12 @@ themselves; this is why `model_filed` was null on 193 of 523 entries in the v2 r
 """
 import csv
 import hashlib
+import http.client
 import json
 import os
 import re
 import subprocess
 import sys
-import http.client
 import tempfile
 import urllib.error
 import urllib.parse
@@ -33,13 +33,14 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..")))
 
-from pipeline import llm  # noqa: E402
-from psycopg2.extras import execute_values  # noqa: E402
-from report import frame  # noqa: E402
+from psycopg2.extras import execute_values
+
+from pipeline import llm
+from report import frame
 
 OUT = os.path.join(HERE, "sources")
 OPENFDA = "https://api.fda.gov/drug/drugsfda.json?search=application_number:{}"
-REVIEWS = re.compile(r"(PharmR|MedR|ClinPharmR|MultidisciplineR|IntegratedR|SumR|CrossR|StatR|ODMemo)", re.I)
+REVIEWS = re.compile(r"(PharmR|MedR|ClinPharmR|MultidisciplineR|IntegratedR|SumR|CrossR|StatR|ODMemo)", re.IGNORECASE)
 UA = {"User-Agent": "Mozilla/5.0 (predictive-validity atlas source bundle)"}
 
 
@@ -80,7 +81,7 @@ def documents(appl_no: str, appl_type: str) -> list[tuple[str, str]]:
         except Exception:
             continue
         flags = dict(re.findall(r"(\w+):\s*([01])\s*,", page))
-        for name in sorted(set(re.findall(r"[\w\-. ]+?\.pdf", page, re.I))):
+        for name in sorted(set(re.findall(r"[\w\-. ]+?\.pdf", page, re.IGNORECASE))):
             name = name.strip().lstrip("/")
             m = REVIEWS.search(name)
             if appl_no.lstrip("0") not in name:  # the TOC's script also holds bare template names
@@ -105,7 +106,7 @@ def ocr(pdf: str, txt: str) -> None:
         pages = []
         for png in sorted(os.listdir(tmp), key=lambda n: int(re.sub(r"\D", "", n) or 0)):
             r = subprocess.run(["tesseract", os.path.join(tmp, png), "-", "--psm", "1"], capture_output=True,
-                               text=True, timeout=600)
+                               text=True, timeout=600, check=False)
             pages.append(r.stdout)
     open(txt, "w").write("\f".join(pages))
 

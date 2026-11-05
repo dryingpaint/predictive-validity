@@ -30,7 +30,7 @@ import pandas as pd
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, REPO)
-from report import frame, section1  # noqa: E402
+from report import frame, section1
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists")

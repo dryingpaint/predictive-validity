@@ -11,9 +11,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 def main() -> None:
     out = ["# Rule questions and missed comparisons from the v3 re-draft", "",
-           "Collected from each tile's checker verdict (`<slug>.check.json`). A rule question is a case the v3 rules did "
-           "not decide; a missed comparison is evidence the checker found that the draft left out. Neither changed a "
-           "stored status: those went through adjudication.", ""]
+           ("Collected from each tile's checker verdict (`<slug>.check.json`). A rule question is a case the v3 rules did "
+            "not decide; a missed comparison is evidence the checker found that the draft left out. Neither changed a "
+           "stored status: those went through adjudication."), ""]
     nq = nm = 0
     for p in sorted(glob.glob(os.path.join(HERE, "*.check.json"))):
         c = json.load(open(p))

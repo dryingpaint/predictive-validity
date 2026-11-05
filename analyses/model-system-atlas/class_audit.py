@@ -41,8 +41,8 @@ from psycopg2.extras import execute_values
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, REPO)
-from pipeline import llm  # noqa: E402
-from report import frame, section1  # noqa: E402
+from pipeline import llm
+from report import frame, section1
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")

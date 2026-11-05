@@ -44,7 +44,7 @@ def main() -> None:
         with tempfile.TemporaryDirectory() as tmp:
             p = os.path.join(tmp, f"{slug}.json")
             json.dump(d, open(p, "w"), indent=1)
-            r = subprocess.run([sys.executable, LINT, p], capture_output=True, text=True)
+            r = subprocess.run([sys.executable, LINT, p], capture_output=True, text=True, check=False)
             print(r.stdout.strip())
         return
     json.dump(d, open(os.path.join(HERE, f"{slug}.json"), "w"), indent=1, ensure_ascii=False)

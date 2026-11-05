@@ -43,7 +43,7 @@ def main() -> None:
             print("ADJUDICATE", slug, pending)
             continue
         r = subprocess.run([sys.executable, STORE, os.path.join(HERE, f"{slug}.json"), "--drafted-by", DRAFTED_BY],
-                           capture_output=True, text=True)
+                           capture_output=True, text=True, check=False)
         tail = [line for line in (r.stdout + r.stderr).splitlines() if "RuntimeWarn" not in line and line.strip()]
         print("STORE" if r.returncode == 0 else "FAILED", slug, "|", tail[-1] if tail else "")
 

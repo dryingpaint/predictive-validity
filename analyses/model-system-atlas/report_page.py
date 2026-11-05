@@ -10,6 +10,7 @@ that was mid-rebuild.
 import argparse
 import glob
 import json
+import math
 import os
 import sys
 from collections import Counter
@@ -18,7 +19,7 @@ from datetime import date
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..")))
 
-from report import frame  # noqa: E402
+from report import frame
 
 QUESTIONS = ["engagement", "dose", "efficacy", "safety"]
 STATUSES = ["same", "neg", "other", "contra", "retro", "untested"]
@@ -89,7 +90,7 @@ def load() -> dict:
             for k, v in list(x.items()):
                 if v is not None and hasattr(v, "item"):
                     x[k] = v.item()
-                elif isinstance(v, float) and v != v:
+                elif isinstance(v, float) and math.isnan(v):
                     x[k] = None
         cells = {}
         for q in QUESTIONS:

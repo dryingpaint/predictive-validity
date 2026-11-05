@@ -12,9 +12,8 @@ import json
 import os
 
 import matplotlib.pyplot as plt
-from matplotlib.patches import Patch, Rectangle
-
 from figure import load, spans
+from matplotlib.patches import Patch, Rectangle
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 TRACK = {
