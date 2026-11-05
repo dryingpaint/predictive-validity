@@ -164,13 +164,14 @@ def store(rows: list[dict]) -> None:
         text = open(os.path.join(HERE, r["txt"]), errors="replace").read().replace("\x00", "")
         values.append((appl_no, filename, r["kind"], r["url"], hashlib.sha256(open(pdf, "rb").read()).hexdigest(),
                        int(r["bytes"]), bool(r["ocr"]), text))
-    with llm.connect() as conn, conn.cursor() as cur:
-        execute_values(cur, """INSERT INTO preclin.atlas_source_document (appl_no, filename, kind, url, sha256, n_bytes,
-                                   ocr, text) VALUES %s
-                               ON CONFLICT (appl_no, filename) DO UPDATE SET kind = EXCLUDED.kind, url = EXCLUDED.url,
-                                   sha256 = EXCLUDED.sha256, n_bytes = EXCLUDED.n_bytes, ocr = EXCLUDED.ocr,
-                                   text = EXCLUDED.text, fetched_at = now()""", values, page_size=20)
-        conn.commit()
+    for i in range(0, len(values), 10):  # small transactions: one large insert outlives the connection
+        with llm.connect() as conn, conn.cursor() as cur:
+            execute_values(cur, """INSERT INTO preclin.atlas_source_document (appl_no, filename, kind, url, sha256,
+                                       n_bytes, ocr, text) VALUES %s
+                                   ON CONFLICT (appl_no, filename) DO UPDATE SET kind = EXCLUDED.kind, url = EXCLUDED.url,
+                                       sha256 = EXCLUDED.sha256, n_bytes = EXCLUDED.n_bytes, ocr = EXCLUDED.ocr,
+                                       text = EXCLUDED.text, fetched_at = now()""", values[i:i + 10])
+            conn.commit()
     print(f"stored {len(values)} documents in preclin.atlas_source_document")
 
 
