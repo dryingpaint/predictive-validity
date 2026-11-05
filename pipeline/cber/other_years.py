@@ -35,7 +35,7 @@ CLASSES = ["vaccine", "cell_therapy", "gene_therapy", "blood_plasma_product", "a
 SYSTEM = f"""You classify one row of an FDA CBER yearly approval list: a biologics license application (BLA) approval or a BLA supplement approval.
 
 category, for an original BLA: original_bla (a therapeutic or preventive biologic: vaccine, plasma protein, cell or gene therapy, allergenic extract, antitoxin and the like); diagnostic_device (a test kit, blood grouping reagent or other in vitro diagnostic licensed as a biologic); blood_establishment (Source Plasma, whole blood or blood components licensed to a collection establishment); further_manufacturing (an intermediate licensed only for further manufacture).
-category, for a supplement: new_indication (a new disease or use); indication_revision (an existing indication narrowed, broadened in wording or otherwise changed); population_expansion (a new age group or population for an existing use); dosing_regimen (a new dose, schedule or route for an existing use); accelerated_to_traditional; new_formulation_clinical (a new formulation or presentation approved on clinical data); clinical_data_labeling (new clinical data added to the label without a new use); cmc_manufacturing (manufacturing, facility, process or presentation changes); diagnostic_device; blood_establishment; strain_or_formula_update (the annual influenza strain change or an equivalent formula update).
+category, for a supplement: new_indication (a new disease or use); indication_revision (an existing indication narrowed, broadened in wording or otherwise changed); population_expansion (a new age group or population for an existing use); dosing_regimen (a new dose, schedule or route for an existing use); accelerated_to_traditional; new_formulation_clinical (a new formulation or presentation approved on clinical data); clinical_data_labeling (new clinical data added to the label without a new use); cmc_manufacturing (manufacturing, facility, process or presentation changes); diagnostic_device; blood_establishment; strain_or_formula_update (the annual influenza strain change or an equivalent formula update). A supplement that adds strains or serotypes, such as a quadrivalent formulation of a trivalent vaccine, is new_formulation_clinical, not strain_or_formula_update.
 For an in-scope row (an original_bla, or a supplement in {', '.join(sorted(IN_SCOPE_SUPPL))}): brand (the trade name as listed), proper_name (the nonproprietary proper name, without the brand) and product_class ({', '.join(CLASSES)}). Otherwise give them empty, with product_class other_biologic. Judge only from the row."""
 SCHEMA = {
     "type": "object",
@@ -55,7 +55,7 @@ def validate(p: dict, out: dict) -> None:
         raise ValueError("an in-scope row without a brand or proper name")
 
 
-TASK = llm.Task(name="cber_listing_scope", prompt_version="v1", schema_version="v1", system=SYSTEM, schema=SCHEMA,
+TASK = llm.Task(name="cber_listing_scope", prompt_version="v2", schema_version="v1", system=SYSTEM, schema=SCHEMA,
                 render=lambda p: (f"List: {'BLA approvals' if p['kind'] == 'BLA' else 'BLA supplement approvals'} "
                                   f"{p['year']}\nProduct: {p['name']}\nIndication or change: {p['indication'] or '-'}\n"
                                   f"STN: {p['stn']}\nManufacturer: {p['manufacturer'] or '-'}"),
