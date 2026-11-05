@@ -189,3 +189,21 @@ def test_merges_copy_parents_before_children_and_delete_in_reverse():
     order = parents_first(tables, fks)
     assert order.index("evidence_entry") < order.index("evidence_entry_line")
     assert order.index("literature_search") < order.index("literature_hit") and set(order) == set(tables)
+
+
+def test_only_the_same_substance_or_a_form_of_it_may_join_another_entitys_substance():
+    from pipeline.drugs import MERGE_SCHEMA, merge_allowed
+    relations = {1: "same_substance", 2: "salt_or_form", 3: "class_or_family", 4: "combination_or_mixture",
+                 5: "different_form", 6: "different_substance"}
+    assert set(MERGE_SCHEMA["properties"]["relation"]["enum"]) == set(relations.values())
+    assert merge_allowed(relations) == {1, 2}
+
+
+def test_the_merge_check_shows_the_entity_and_the_substance_it_would_become():
+    from pipeline.drugs import render_merge
+    text = render_merge({"entity": {"name": "penicillin", "codes": [], "aliases": [], "strings": ["Penicillin"],
+                                    "trials": [{"title": "Penicillin for syphilis", "sponsor": "X"}]},
+                         "substance": {"unii": "Q42T66VG0C", "display_name": "PENICILLIN G", "substance_type": "chemical",
+                                       "holder": "benzylpenicillin"}})
+    assert "Entity: penicillin" in text and "PENICILLIN G" in text and "benzylpenicillin" in text
+    assert "Candidate substances" not in text

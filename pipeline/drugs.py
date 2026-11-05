@@ -3,6 +3,7 @@
     python -m pipeline.drugs canonicalize   # intervention names -> molecular entities
     python -m pipeline.drugs unii           # entity -> FDA UNII substance; merge entities that are the same
     python -m pipeline.drugs codes          # keep each sponsor code only on the entity it belongs to
+    python -m pipeline.drugs split ID...    # undo the UNII merges made by these moiety_unii decisions
     python -m pipeline.drugs same --dry-run # the same-entity pass of unii, auditing its merges without making them
     python -m pipeline.drugs modality       # modality class of every entity with a development program
 
@@ -403,6 +404,46 @@ UNII_TASK = llm.Task(name="moiety_unii", prompt_version="v2", schema_version="v1
                      model="claude-opus-5-5", effort="medium", max_tokens=1500)
 
 
+MERGE_SYSTEM = """You check a proposed merge of a drug entity from clinical trials into a registered substance (FDA UNII) that another entity already holds.
+
+You get the entity (its name, code names, other names, the intervention strings and trials that name it) and the substance it would become. Say how the entity relates to that substance:
+- same_substance: the entity is exactly this substance, under any name or code.
+- salt_or_form: the entity is a salt, hydrate, ester, crystal form or formulation of this substance, or this substance is a salt or form of the entity, and the entity names no other active ingredient.
+- class_or_family: the entity's name is a drug class, a group of drugs or a protein family with several members (a name that covers many products, not one of them), whatever its trials used.
+- combination_or_mixture: the entity is a product or regimen with active ingredients beyond this substance.
+- different_form: the entity and the substance differ in a way that makes them different products: radiolabelled versus unlabelled, a conjugate versus its antibody, a different species' version of a protein.
+- different_substance: the entity is a different substance.
+Only same_substance and salt_or_form allow the merge."""
+
+MERGE_SCHEMA = {
+    "type": "object",
+    "properties": {"relation": {"type": "string", "enum": ["same_substance", "salt_or_form", "class_or_family",
+                                                          "combination_or_mixture", "different_form",
+                                                          "different_substance"]},
+                   "rationale": {"type": "string"}},
+    "required": ["relation", "rationale"],
+    "additionalProperties": False,
+}
+MERGE_ALLOWED = {"same_substance", "salt_or_form"}
+
+
+def render_merge(p: dict) -> str:
+    e = p["entity"]
+    return (render_unii({**e, "candidates": []}).split("\n\nCandidate substances:")[0]
+            + f"\n\nProposed substance: UNII {p['substance']['unii']} | {p['substance']['display_name']} | "
+              f"{p['substance']['substance_type'] or '?'} | held by the entity '{p['substance']['holder']}'")
+
+
+MERGE_TASK = llm.Task(name="moiety_unii_merge_check", prompt_version="v1", schema_version="v1", system=MERGE_SYSTEM,
+                      schema=MERGE_SCHEMA, render=render_merge, subject_type="moiety", model="claude-opus-5-5",
+                      effort="medium", max_tokens=1000)
+
+
+def merge_allowed(relations: dict[int, str]) -> set[int]:
+    """The entities a merge check lets join another entity's substance."""
+    return {m for m, r in relations.items() if r in MERGE_ALLOWED}
+
+
 def is_code(key: str) -> bool:
     """Whether a name key has the shape of a sponsor code: letters and digits."""
     return bool(re.search(r"[a-z]", key) and re.search(r"[0-9]", key))
@@ -528,9 +569,59 @@ def unii(_args) -> None:
     groups = defaultdict(list)
     for mid, (u, _) in chosen.items():
         groups[u].append(mid)
-    merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items()])
+    # An entity joins another's substance only when the merge check finds it is that substance or a form of it.
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, unii FROM preclin.moiety WHERE unii = ANY(%s)", (sorted(groups),))
+        holder = {}
+        for m, u in cur.fetchall():
+            holder.setdefault(u, m)
+        cur.execute("SELECT unii, display_name, substance_type FROM preclin.unii_substance WHERE unii = ANY(%s)",
+                    (sorted(groups),))
+        subst = {u: (d, t) for u, d, t in cur.fetchall()}
+        cur.execute("SELECT moiety_id, name FROM preclin.moiety WHERE moiety_id = ANY(%s)", (sorted(holder.values()),))
+        holder_name = dict(cur.fetchall())
+    joining = {m: u for u, mids in groups.items() if len(mids) > 1 for m in mids if m != holder.get(u, min(mids))}
+    checks = {str(m): {"entity": {k: v for k, v in items[str(m)].items() if k != "candidates"},
+                       "substance": {"unii": u, "display_name": subst[u][0], "substance_type": subst[u][1],
+                                     "holder": holder_name.get(holder.get(u), "")}}
+              for m, u in joining.items() if str(m) in items}
+    relation = {int(k): out["relation"] for k, _, out in llm.decisions(llm.run(MERGE_TASK, checks))} if checks else {}
+    allowed = merge_allowed(relation)
+    held = {m for m in joining if m not in allowed}
+    groups = {u: [m for m in mids if m not in held] for u, mids in groups.items()}
+    print(f"merge checks={len(checks)} held back={len(held)} by relation={dict(Counter(relation[m] for m in held if m in relation))}")
+    merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items() if mids])
     print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
     same_entities(named=getattr(_args, "named_pairs", False))
+
+
+def split(args) -> None:
+    """Undo the UNII merges made by the given moiety_unii decisions: the survivor holding the decision's substance
+    loses the merged entity's name and codes from its aliases and code names (all but those the substance registry
+    gives the survivor's own substance), so the next canonicalize resolves the merged entity's strings to an entity
+    of its own again. The decisions' runs are not retracted: the merged entity returns under a new id."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT llm_decision_id, input_payload, parsed_output->>'unii' FROM pv_evidence.llm_decision
+                       WHERE llm_decision_id = ANY(%s) AND task = %s""", (args.decisions, UNII_TASK.name))
+        rows = cur.fetchall()
+        if len(rows) != len(set(args.decisions)):
+            raise ValueError("not every id is a moiety_unii decision")
+        cur.execute("SELECT unii, array_agg(parent_unii) FROM preclin.unii_parent GROUP BY 1")
+        parents = {u: set(ps) for u, ps in cur.fetchall()}
+        for did, payload, u in rows:
+            names = [payload["name"], *payload["codes"], *payload["aliases"]]
+            cur.execute("SELECT DISTINCT name_key, unii FROM preclin.unii_name WHERE name_key = ANY(%s)",
+                        ([moiety_key(n) for n in names],))
+            own = {k for k, x in cur.fetchall() if related_substances(u, x, parents)}
+            drop = {moiety_key(n) for n in names} - own
+            cur.execute("""UPDATE preclin.moiety SET
+                             aliases = ARRAY(SELECT a FROM unnest(aliases) a
+                                             WHERE NOT regexp_replace(lower(a), '[^a-z0-9]', '', 'g') = ANY(%s)),
+                             code_names = ARRAY(SELECT c FROM unnest(code_names) c
+                                                WHERE NOT regexp_replace(lower(c), '[^a-z0-9]', '', 'g') = ANY(%s))
+                           WHERE unii = %s RETURNING moiety_id, name""", (sorted(drop), sorted(drop), u))
+            print(f"decision {did}: '{payload['name']}' split from {cur.fetchall()} (names dropped: {sorted(drop)})")
+        conn.commit()
 
 
 def delete_unreferenced(cur, among: set[int] | None = None) -> int:
@@ -1088,6 +1179,9 @@ def main() -> None:
     c.add_argument("--decide", type=int, nargs="*", metavar="DRUG_ID",
                    help="intervention names to decide even when outside the LLM scope (one that lost its exact link)")
     c.set_defaults(fn=canonicalize)
+    sp = sub.add_parser("split", help="undo the UNII merges made by moiety_unii decisions")
+    sp.add_argument("decisions", type=int, nargs="+", metavar="LLM_DECISION_ID")
+    sp.set_defaults(fn=split)
     u = sub.add_parser("unii")
     u.add_argument("--named-pairs", action="store_true",
                    help="also merge entities named by another's code or alias when the registry or ChEMBL agrees")
