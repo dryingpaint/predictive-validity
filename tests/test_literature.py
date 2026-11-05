@@ -60,3 +60,33 @@ def test_a_europe_pmc_record_is_keyed_by_its_source_and_id():
     rec = epmc_record({"source": "PPR", "id": "PPR42", "title": "T", "abstractText": "A", "pubYear": "2016",
                        "doi": "10.1101/x"})
     assert rec == ("PPR:PPR42", "PPR", "T", "A", 2016, "10.1101/x")
+
+
+def test_a_search_request_retries_then_reports_the_service_down(monkeypatch):
+    import requests
+    from pipeline import literature
+    calls, logged = [], []
+
+    class Resp:
+        ok, status_code, text = False, 503, "Search service is temporarily unavailable"
+
+    monkeypatch.setattr(requests, "request", lambda *a, **k: calls.append(1) or Resp())
+    monkeypatch.setattr(literature.time, "sleep", lambda s: None)
+    try:
+        literature.request("POST", "https://example.org/search", logged.append)
+    except literature.SourceDown as e:
+        assert "503" in str(e)
+    else:
+        raise AssertionError("expected SourceDown")
+    assert len(calls) == literature.RETRIES and len(logged) == literature.RETRIES
+    assert all("HTTP 503" in line for line in logged)
+
+
+def test_a_search_request_succeeds_after_a_transient_failure(monkeypatch):
+    import requests
+    from pipeline import literature
+    responses = iter([type("R", (), {"ok": False, "status_code": 503, "text": ""})(),
+                      type("R", (), {"ok": True, "status_code": 200, "text": "{}"})()])
+    monkeypatch.setattr(requests, "request", lambda *a, **k: next(responses))
+    monkeypatch.setattr(literature.time, "sleep", lambda s: None)
+    assert literature.request("GET", "https://example.org/search", lambda m: None).ok

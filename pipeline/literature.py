@@ -56,6 +56,8 @@ PREFILTER_ABOVE = 3000  # records per drug above which a cheap model reads each 
 PREFILTER_CHECK = 1000  # seeded large-literature records given the full screen to measure the prefilter's recall
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST"
 EPMC_PAGE = 1000
+RETRIES, BACKOFF_FIRST, BACKOFF_MAX = 5, 2, 60
+OUTAGE_WAIT = 300  # seconds to wait when every remaining drug has failed, i.e. the search services are down  # per-request retry of a search service, seconds
 ESEARCH_RECHECK = 600  # seconds between checks of whether PubMed's esearch is answering again
 NAME_CHUNK = 50  # drugs whose names are looked up together
 CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
@@ -173,11 +175,11 @@ def medline_query(names: list[str], cutoff: int) -> str:
             'AND SRC:MED AND NOT PUB_TYPE:"review"')
 
 
-def medline_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
+def medline_ids(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[str]]:
     """The Europe PMC MEDLINE query, its hit count and every PMID it returns (cursor-paged, no cap)."""
     q, ids, cursor = medline_query(names, cutoff), [], "*"
     while True:
-        page = epmc_post(q, cursor, result_type="idlist")
+        page = epmc_post(q, cursor, result_type="idlist", log=log)
         total = int(page.get("hitCount") or 0)
         ids += [r["pmid"] for r in page.get("resultList", {}).get("result", []) if r.get("pmid")]
         nxt = page.get("nextCursorMark")
@@ -186,15 +188,16 @@ def medline_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
         cursor = nxt
 
 
-def medline_search(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
+def medline_search(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[str]]:
     """PubMed ids for a drug: PubMed's esearch, or the same search on Europe PMC's MEDLINE records while esearch
     is down. The stored query shows which served it."""
     if esearch_up():
         try:
             return pubmed_ids(names, cutoff)
-        except RuntimeError:
+        except RuntimeError as e:
+            log(f"esearch failed, using Europe PMC MEDLINE: {e}")
             _esearch.update(up=False, checked=time.time())
-    return medline_ids(names, cutoff)
+    return medline_ids(names, cutoff, log)
 
 
 def epmc_query(names: list[str], cutoff: int) -> str:
@@ -203,16 +206,33 @@ def epmc_query(names: list[str], cutoff: int) -> str:
             'AND NOT SRC:MED AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
 
 
-def epmc_post(query: str, cursor: str = "*", page: int = EPMC_PAGE, result_type: str = "core") -> dict:
-    for attempt in range(6):
+class SourceDown(RuntimeError):
+    """A search service failed every retry of one request."""
+
+
+def request(method: str, url: str, log=print, **kw) -> requests.Response:
+    """One HTTP request retried RETRIES times with exponential backoff and jitter; each failure is logged with its
+    status (or exception) and URL, so an outage, a bad query and rate limiting can be told apart."""
+    rng = np.random.default_rng()
+    for attempt in range(RETRIES):
         try:
-            r = requests.post(EPMC, data={"query": query, "format": "json", "resultType": result_type,
-                                          "pageSize": page, "cursorMark": cursor}, timeout=180)
-            r.raise_for_status()
-            return r.json()
-        except requests.RequestException:
-            time.sleep(10 * (attempt + 1))
-    raise RuntimeError("Europe PMC search failed")
+            r = requests.request(method, url, timeout=180, **kw)
+            if r.ok:
+                return r
+            why = f"HTTP {r.status_code} {r.text[:120]!r}"
+            if r.status_code == 400:
+                raise SourceDown(f"{url}: {why}")
+        except requests.RequestException as e:
+            why = type(e).__name__
+        wait = min(BACKOFF_MAX, BACKOFF_FIRST * 2 ** attempt) * rng.uniform(0.5, 1.5)
+        log(f"retry {attempt + 1}/{RETRIES} in {wait:.0f}s: {why} {url}")
+        time.sleep(wait)
+    raise SourceDown(f"{url}: {why}")
+
+
+def epmc_post(query: str, cursor: str = "*", page: int = EPMC_PAGE, result_type: str = "core", log=print) -> dict:
+    return request("POST", EPMC, log, data={"query": query, "format": "json", "resultType": result_type,
+                                            "pageSize": page, "cursorMark": cursor}).json()
 
 
 def epmc_record(r: dict) -> tuple:
@@ -221,12 +241,12 @@ def epmc_record(r: dict) -> tuple:
             int(year) if year and str(year).isdigit() else None, r.get("doi"))
 
 
-def epmc_records(names: list[str], cutoff: int) -> tuple[str, int, list[tuple]]:
+def epmc_records(names: list[str], cutoff: int, log=print) -> tuple[str, int, list[tuple]]:
     """The query, its hit count and every record (record_id, source, title, abstract, year, doi) it returns."""
     q = epmc_query(names, cutoff)
     out, cursor, total = [], "*", 0
     while True:
-        page = epmc_post(q, cursor)
+        page = epmc_post(q, cursor, log=log)
         total = int(page.get("hitCount") or 0)
         out += [epmc_record(r) for r in page.get("resultList", {}).get("result", [])]
         nxt = page.get("nextCursorMark")
@@ -377,14 +397,24 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
         conn.commit()
     todo = sorted((m, y) for m, y in cut.items() if (m, y) not in done)
     log(f"search: drugs={len(cut)} to search={len(todo)}")
-    for start in range(0, len(todo), NAME_CHUNK):
-        chunk = todo[start:start + NAME_CHUNK]
+    queue, tries = list(todo), {}
+    while queue:
+        chunk, queue = queue[:NAME_CHUNK], queue[NAME_CHUNK:]
         names = names_of([m for m, _ in chunk])
         for m, y in chunk:
             if not names.get(m):
                 continue
-            pq, pn, pmids = medline_search(names[m], y)
-            eq, en, records = epmc_records(names[m], y)
+            try:
+                pq, pn, pmids = medline_search(names[m], y, log)
+                eq, en, records = epmc_records(names[m], y, log)
+            except SourceDown as e:
+                tries[m] = tries.get(m, 0) + 1
+                log(f"requeued moiety={m} (failure {tries[m]}): {e}")
+                queue.append((m, y))
+                if all(tries.get(x, 0) > 0 for x, _ in queue):
+                    log(f"every queued drug failed; waiting {OUTAGE_WAIT}s for the services to return")
+                    time.sleep(OUTAGE_WAIT)
+                continue
             with llm.connect() as conn, conn.cursor() as cur:
                 store_records(cur, records)
                 execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
