@@ -1,0 +1,254 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-dpp4-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; untested holds. model_filed should be true: the April 2012 PMDA Tenelia review (tier 2) reports the Wistar plasma DPP-4 and Zucker OGTT/carbohydrate studies (4.2.1.1-10 to -12)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim (epub 2012-07-29; rat paper 2012-09-26, so 2012 holds). Rat GLP-1/DPP-4 readouts moved the same way in patients; proximal tier right. Same supported."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Trial quote verbatim; Biftu 2014 abstract gives no animal DPP-4 number (model side abstract-only). Omarigliptin's filed model side is the 2015 Marizev PMDA review (tier 2). Strengthens, same holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Abstract verbatim; untested holds. A stated margin exists on this track: the 2012 PMDA review gives monkey NOAEL 30 mg/kg/day (13-25x clinical AUC) and QTc NOEL 17x unbound Cmax (decision 16)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "7, 2, 16",
+   "note": "Quote verbatim, NCT date confirmed. But the April 2012 PMDA review (tier 2) already pairs rat ED50/Zucker data, the 10-40 mg dose-response and a stated monkey NOAEL that held (no QTc at 40 mg): year 2012, margin_stated true."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "rule": "8",
+   "note": "Quote verbatim; same holds. Model_id wrong: the once-weekly regimen was projected from dog/monkey PK allometry (Biftu 2014), not the rodent OGTT system; split into its own track. Marizev PMDA review 2015 is the tier-2 record."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; untested holds; model_filed true (PMDA review 4.2.1.1-10/-11 carry the Zucker OGTT and two-week studies)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "7, 2",
+   "note": "Quote verbatim, primary endpoint HbA1c, registry date confirmed. The Phase 2 dose-ranging and Phase 3 HbA1c results sit beside the Zucker data in the April 2012 PMDA review (tier 2), which sets year 2012; status same unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; NCT01217073 results 2015-10-29 confirmed; all five patient_trials quotes verbatim and NCTs match registry titles (Gao 2025 abstract does cite NCT04556851). Strengthens, same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8, 10",
+   "note": "Quote verbatim (epub 2023-11-12). Prospective under decision 10: built on SAD data to waive Phase 2b before NCT04556851/NCT04564872 completed (Jan 2022). Scope of a human-data PopPK/PD-MBMA model is a rule question; MBMA inputs are non-member gliptins' trials."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Quote verbatim; same holds only if human-data C-QTc models are in scope (rule question). The filing's QT basis was hERG plus dog telemetry (QTc only at 215x unbound Cmax) against the 175 mg TQT (dQTcP 3.66 ms): animal-track same, 2015."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "5, 6",
+   "note": "Quote verbatim but untested is wrong. The 2012 PMDA Tenelia review (tier 2) states monkey necrotic skin lesions (NOAEL 13-25x) and no serious necrotic dermatosis in trials, 'unique only to monkeys': predicted harm absent, contra/opposite; QTc same on this track.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 8: the monkey necrotic dermatosis belongs to the cynomolgus system, carried once on cyno-repeat-dose-skin-tox (safety index 4, contra 2012, decision 5). Yeh 2021's rat/dog/mouse package compares no harm with patients: untested; no species-specific contra here (decision 6)."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim (epub 2014-04-02, tier 1); opening untested holds, first use 2014. If the paywalled ACS text pairs the allometric projection with Phase 1 weekly PK, the track's same would date 2014 (decision 7).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (dose rationale, p.10); rat MRT 11 h and dog t1/2 22 h sit beside human alpha 33-50 h, beta 140 h, 87.5% trough inhibition; P020 HbA1c positive. Decision 4 case 2: regimen reached and sufficient, same 2015 holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2026,
+   "rule": "10",
+   "note": "Abstract verbatim, but Gou 2026 (received 2025-09-09) first discloses the allometric projection after Phase 3 (Gao 2025) and approval, and benchmarks it against the published human half-life ('as previously reported'). Retrodiction: retro, retrodiction true, drop strengthens.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: Gou 2026 first discloses the allometric projection after Phase 3 and benchmarks it against the known clinical regimen; the atlas dates by source (decision 7), so no prospective prediction exists. retro, retrodiction true; headline unchanged (decision 6)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (52-week monkey, 4.2.3.2-8); 13-week 100 mg/kg skin signs, NOAEL 30 mg/kg = 13.0-14.2x (wk 13) and 14.2-24.7x (wk 52) AUC confirmed. Opening untested 2012 holds; review dated 2012-04-05.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5, 8",
+   "note": "Quote verbatim (4.(iii).B.(3).2), p.75); 'unique only to monkeys' at 3.(iii).B.(3), PMDA accepted. Decision 5: predicted harm absent, regulator calls it species-specific: contra, opposite, 2012. Single track for this finding; see double_count_resolution.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (3.(i).B.(2)); hERG IC50 3.45 uM = 15x, monkey telemetry NOEL 10 mg/kg = 17x unbound Cmax, dog 1/2/7 mg/kg i.v. confirmed. Opening untested 2012 holds; distinct system from the in-silico C-QTc track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim; TQT 4.(ii).A.(6): Cmax 499.7 vs 2259 ng/mL (4.5x), ddQTcI 3.9 [0.2, 7.6] and 9.3 [5.6, 13.0] ms. Stated harm occurred at supratherapeutic exposure: same, off_by_2-5x, 2012; counted once, no dose-ceiling entry (decision 16).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (P010; review 2015-08-18); hERG IC20 76.9x and dog telemetry NOEL 40.8x confirmed. Stated null prediction held at 7x dose: same. No status change; strengthens follows tile convention, decision 7 would file it under patient_trials.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Regulator packages for two members are public and were not used: teneligliptin PMDA Review Report, English, 5 April 2012 (https://www.pmda.go.jp/files/000153594.pdf; filed 2011-08-26) and omarigliptin (Marizev) PMDA review, Japanese, 2015 (https://www.pmda.go.jp/drugs/2015/P20151007002/170050000_22700AMX01014000_A100_2.pdf). Both are tier 2, carry the rodent OGTT/plasma DPP-4 data (model_filed: true for rodent-dpp4-ogtt), the human PK/PD and HbA1c results, and the nonclinical tox vs clinical safety discussions. Every model_filed: null and the 'review documents not retrieved' confidence notes should be redone from them.",
+  "Cynomolgus necrotic-skin-lesion / DPP-8-9 cutaneous toxicity model (animal-tox track): teneligliptin PMDA review 3.(iii).A.(2).5)-(2).6) and 3.(iii).B.(3): necrotic dermatosis at 100 mg/kg/day (13 wk) and 75 mg/kg/day (52 wk), NOAEL 30 mg/kg/day = 13-25x clinical AUC; applicant and PMDA: 'no clear increase was observed in the incidence of serious necrotic dermatosis or other skin-related adverse drug reactions in clinical studies of teneligliptin ... skin cutaneous toxicity is most likely to be unique only to monkeys' (p. 27). Decision 5 canonical case (regulator calls the finding species-specific) -> contra, magnitude opposite, 2012. Mechanism source cited there: the Januvia package / Lankas et al. 2005 Diabetes doi:10.2337/diabetes.54.10.2988 (rat/dog DPP-8/9 toxicity syndrome) — the selectivity model every member was designed against; no track.",
+  "hERG + dog/monkey telemetry QT model vs thorough-QT (animal-tox track, two members): teneligliptin review 3.(i).B.(2): hERG IC50 3.45 uM (15x unbound Cmax at 40 mg), monkey QTc prolongation at 30 mg/kg (NOEL 10 mg/kg = 17x), dog i.v. 7 mg/kg; 'in the Thorough QT/QTc study, QTc interval prolongation was observed only time points near tmax after administration of teneligliptin 160 mg, and no clinically significant QTc interval prolongation was observed at 40 mg' -> predicted harm appeared at supratherapeutic dose: same (direction), 2012, comparison_stated true, and a dose-ceiling same with margin_stated true (decision 16). Omarigliptin Marizev review: hERG IC50 105 uM (IC20 30 uM = 76.9x unbound Cmax), dog telemetry QT/QTc prolongation only at 75 mg/kg (NOEL 10 mg/kg = 40.8x), TQT P010 25 mg + 175 mg: max placebo-corrected dQTcP 3.66 ms [90% CI 1.56, 5.76] -> same, 2015. The draft credits QT only to the in-silico C-QTc model (Krishna 2016).",
+  "Patient-side label harms the draft does not show (tier 2, PMDA 'Summary of investigation results'): teneligliptin 2014-10-21 hepatic dysfunction + interstitial pneumonia added to Clinically Significant Adverse Reactions (https://www.pmda.go.jp/files/000153316.pdf; 6 + 6 cases, 3 + 4 causality not excluded); teneligliptin 2016-11-22 pemphigoid (https://www.pmda.go.jp/files/000215042.pdf; 15 class cases over 3 FY); omarigliptin 2018-04-19 pemphigoid (https://www.pmda.go.jp/files/000223960.pdf; 8 cases, 3 causality not excluded). Possible model side for ILD: rat lung phospholipidosis discussed at ~20x margin in the teneligliptin review 3.(iii).B.(2); for pemphigoid the animals were silent (omarigliptin review: no skin/eye histopathology in 9-month dog at 788x or 3-month monkey at 48x) — see rule questions.",
+  "Monkey PK-PD -> biweekly regimen for cofrogliptin (member's own model, dose track): Gou et al., Front Pharmacol, epub 2026-01-05, doi:10.3389/fphar.2025.1702101: 'following a single oral dose of 10 mg/kg cofrogliptin, monkeys exhibited sustained DPP-4 inhibition of approximately 80% through day 14' and allometric scaling 'align[s] with its clinical dosing frequency'; patient side NCT04556851 / Gao 2025 doi:10.1111/dom.16014 (Q2W, HbA1c -0.63%/-0.59%). The drafter dropped it because it 'appeared after the Phase 3 read out'; that is not a v3 rule (year = public date, decision 7) unless it is a retrodiction (decision 10) — rule question.",
+  "Patient PK/PD for prusogliptin (engagement, patients, 2025): Liu et al. Clin Pharmacokinet doi:10.1007/s40262-025-01501-8, NCT05146869 (no results posted): 'maximum inhibitory efficacy of DPP-4 increased with higher dose levels ranging from 62.1 to 89.4%' with model side Yeh 2021 doi:10.1016/j.lfs.2021.119574 (rat/dog/diabetic-mouse plasma DPP-4 inhibition). Mentioned in a judgement only; it is a dated patient-subjects entry under decision 3 and should be on the strip.",
+  "Zhang 2020, J Med Chem, doi:10.1021/acs.jmedchem.0c00374 (epub 2020-06-12): the cofrogliptin (HSK7653) discovery paper Gou 2026 cites for the once-every-2-weeks regimen; the prospective model-side source for a cofrogliptin entry on nonrodent-pk-allometry (patient side Bai 2023 / Gao 2025, NCT04556851) dated before the Phase 3, if its animal PK states the interval. Gou 2026 itself is a retrodiction (CHECKER_BRIEF_v3 / models)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Are clinical-pharmacology models built on human Phase 1 data (cofrogliptin PopPK/PD + MBMA for HbA1c, Cui 2024; omarigliptin and cofrogliptin C-QTc models) atlas model systems under model_kind in_silico, or out of scope? If in scope, the MBMA's inputs are published trials of non-member gliptins (sitagliptin etc.): is that a model (tier 1 model side) or a meta-analysis of patient trials (tier 4, patient side only, decision 2)?",
+  "Decision 5 and a different harm in the same organ: the monkey necrotic dermatosis was predicted and did not occur (regulator: 'unique only to monkeys' -> contra), yet pemphigoid entered the teneligliptin (2016) and omarigliptin (2018) labels. Does a skin harm of another pathology count as the prediction holding (same), and is animal silence on an autoimmune blistering disease a 'harm the species could have shown' (contra) or not (untested)?",
+  "Decision 16 vs safety for a predicted harm at a misplaced margin: teneligliptin's hERG/monkey model put QTc prolongation at >=15-17x unbound exposure; humans showed it at 160 mg (4x the 40 mg maximum, which was clean). The rule says count once: is this a safety same (predicted, occurred), a dose-ceiling same with margin_stated true (effective exposure tolerated), or a dose contra for the margin being ~4x too wide?",
+  "Decision 10 and late-published preclinical packages: cofrogliptin's monkey PK-PD/allometric prediction of biweekly dosing was published 2026-01-05, after the Phase 3 (completed 2022-01), but the studies are IND-enabling pharmacology run before the clinic. Dated at publication as a prospective same (decision 7), or retrodiction/retro because the paper's comparison post-dates the patient result?",
+  "comparison_stated for regulator reviews: a PMDA review presents the sponsor's rodent OGTT data and the HbA1c trials in one document but explicitly juxtaposes model and patient only for QTc and skin. Is a review comparison_stated: true for every cell it covers, or only where the reviewer draws the comparison?",
+  "Same-mechanism non-members as model-side evidence: the regulator's cutaneous-toxicity comparison for teneligliptin rests on vildagliptin/saxagliptin monkey data and the Januvia DPP-8/9 package. Decision 13 sets cross-class evidence aside; is a sibling drug of the same mechanism outside the member list 'class' evidence (product_in_model: false, allowed) or set aside?"
+ ],
+ "could_not_verify": [
+  "Full texts of Fukuda-Tsuru 2012, Eto 2012, Kadowaki 2013, Krishna 2016, Cui 2024, Yeh 2021 and Biftu 2014 (paywalled); all quotes checked against Europe PMC abstracts only.",
+  "The Japanese Marizev review was read via pdftotext; the thorough-QT figure (dQTcP 3.66 ms [1.56, 5.76]) and dog telemetry margins are from its text, not an English translation.",
+  "Teneligliptin 4-week study (Eto 2012) and omarigliptin Phase 1 (Krishna 2016) registry records: not searched beyond the draft's statement that none exist.",
+  "Exposure (not dose) multiple at which the teneligliptin TQT prolongation appeared; the 4x figure is a dose ratio (160 vs 40 mg)."
+ ],
+ "double_count_resolution": "Monkey necrotic dermatosis is carried on cyno-repeat-dose-skin-tox only (safety index 4, contra 2012, decision 5). The adjudicated correction on safety index 2 (animal-tox-package, untested 2021 -> contra 2012) rests on the same PMDA 2012 monkey data, which is not the system that model_id names (rat/dog/mouse, Yeh 2021); applying it would split one system across two model_ids (decision 8, checker-brief failure list) and make a species-specific contra permanent on the generic track (decision 6). Merge: keep safety index 2 as drafted (untested, 2021; model_filed true per the earlier verdict) and treat its adjudicated contra as re-keyed to safety index 4, not as a second entry. Likewise re-key dose index 3 (Krishna 2016) to nonrodent-pk-allometry as the earlier dose-3 verdict proposed, rather than duplicating it; and dose index 6 enters as retro, which never sets the headline (decision 10). (CHECKER_BRIEF_v3 / models)"
+}

@@ -1,0 +1,279 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-insr-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Bundle 203313 PharmR lines 2457-2459: study 6UIR050902-100 Mar-2006 LYD pig clamp; quote verbatim across a line break. Opening untested at the 2006 proxy date is per rule 7."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "PMID 24089512, Diabetes 2014, epub 2013-10-02; quote verbatim in abstract. Opening untested for the Lilly conscious-dog hepatic-balance clamp track; a distinct system from the Novo pig clamp, correctly split."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "2",
+   "note": "PMID 27723228; quote verbatim. Dog hepato-preference held in human clamps (healthy men, T1D). Source is a sponsor overview; rule 2 prefers the primary clamp paper (Mudaliar 2016, dom.12753) as src; status unchanged."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "7",
+   "note": "PMID 34413118, quote verbatim. Same holds but dates to 2012: degludec's human clamp profile (Heise 2012, PMID 22594461; FDA 2015 SumR 'relatively flat at steady state') already matched the pig clamp. FDA 2026 SumR: icodec peak day 2, nadir day 7."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Same bundle quote (PharmR 2457-2459). Opening untested at the 2006 proxy date."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "7",
+   "note": "761326 PharmR lines 95-96 verbatim; 173/61 h = 2.8x, bin correct. But degludec's once-daily target was reached and compared by 2015 (FDA ClinPharmR line 2831 human t1/2 18-19 h; PharmR rat t1/2 ~25 h; SumR 705-708), so the first same predates icodec."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Same bundle quote (PharmR 2457-2459). Opening untested at the 2006 proxy date."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "7",
+   "note": "PMID 23043166; quote verbatim; registry 2015-11-13 confirmed; all five patient_trials registry dates match CT.gov. Earlier T2D HbA1c comparison exists: phase 2 Zinman 2011 (PMID 21396703, NCT00611884, degludec OD similar to glargine), so year 2011."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "PharmR line 2543 verbatim (9.2% mitogenic potency vs human insulin; studies 205402-206632 undated in the review). Opening untested with the 2009 proxy."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Label lines 1095-1097 verbatim. Untested acceptable; note the same 2015 package's no-neoplasm-imbalance finding could equally open this track as same before the 2017 contra."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "SumR line 456 verbatim; the listed events (lines 451-455) include neoplasm-related AEs. Same on a predicted absence (#58: the assays made the null a prediction). Efsitora's 2026 numerical malignancy excess is unscored; see rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "PMID 27349219 (epub 2016-08-12), quote verbatim; model_src PMID 28421968 abstract reports standard clinical/morphological pathology with no liver finding; Cusi 2016 (PMID 27723227) confirms ALT +7 IU/L, higher LFC. Contra holds. Year 2017 vs epub 2016: see rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "PMID 27026683 (JPET, epub 2016-03-29); quote verbatim in abstract. Opening untested on the new STZ-rat track at the 2016 publication proxy (#112); IND-enabling characterisation, not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3",
+   "note": "PMID 24504686 (epub 2014-02-13); quote verbatim. Healthy-volunteer clamp admissible for engagement (decision 3); direction only. Trial predates the rat paper: dating falls under the open rule question on pairings whose model side published later.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "PMID 36541037 (epub 2023-01-09); quote verbatim. Model_src PMID 35840338 (epub 2022-07-15, filed study DBT213) prospective; rat >=1 week vs human >=5 days fasting-glucose fall, direction only. No registry results for the phase 1; 2023 stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Same Owens 2016 abstract, quote verbatim; opening untested at the 2016 proxy. Rat states duration longer than lispro, no half-life or margin, so no magnitude.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Sinha 2014 quote verbatim; t1/2 24.4-45.5 h, flat profile. Rule 4 case 2 (#91 regimen): once-daily reached, IMAGINE 2 primary met (NCT01435616 results 2018-04-13 verified). No stated margin, so the ceiling is untested (decision 16); same stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2022,
+   "rule": "7",
+   "note": "Heise 2023 quote verbatim; off_by_2-5x verified (rat ~120 h, FDA 82-147 h; human ~17 d, IntegratedR line 1260). Entry carries registry_date 2022-11-02 (NCT04450394, verified), the earliest recorded date and the one the track's efficacy entry uses; rule 7 dates it 2022.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Owens 2016 quote verbatim; opening untested. Same source as engagement 5 and dose 3, correctly one model_id.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "PMID 27349219 (epub 2016-08-12); quote verbatim; HbA1c primary non-inferior (margin 0.4%), endpoint_role primary. Registry 2018-04-13 verified. Rat published before the trial paper and trial started 2011-11, so prospective, not retro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "PMID 36944059; quote verbatim; HbA1c primary. Year 2022 by NCT04450394 results 2022-11-02 (verified), after Moyers 2022 (2022-07-15). QWINT-2 patient_trials quote verbatim in NEJM abstract (PMID 39254740), registry 2025-05-16 verified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Owens 2016 quote verbatim; single-dose PK/PD paper states no harm prediction, so opening untested is right. Mitogenicity correctly left to insulin-mitogenicity-cells.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4 (safety row; #35, #72) with decision 12 import",
+   "note": "PMID 39270686; quote verbatim. Import from T1D is allowed (decision 12), but both sources attribute the excess to dose initiation/titration of a slowly adjustable insulin vs a titrated daily comparator (Lancet interpretation; IntegratedR 692-695, 824-827), conditions a single-dose rat never tested, so #35/#72 give untested with note. Normoglycaemic repeat-dose rats/dogs did show hypoglycaemia with mortality (IntegratedR 3518-3523): the harm belongs as a #23 same on rat-dog-chronic-tox, not a contra here.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35, #72): Lancet and FDA IntegratedR 692-695, 824-827 attribute the severe-hypoglycaemia excess to initiation/titration against a daily comparator, conditions the single-dose STZ rat never tested, so untested not contra; the harm belongs on rat-dog-chronic-tox (#23)."
+  }
+ ],
+ "missing": [
+  "Degludec three-times-weekly regimen: FDA 2015 SumR (bundle 203313 SumR lines 705-712) says the protracted flat profile 'led to Novo Nordisk's evaluation of ... three times a week (3TW) dosing' and 3TW 'is not being pursued'; both phase 3 trials failed non-inferiority (Zinman 2013, Lancet Diabetes Endocrinol, doi:10.1016/S2213-8587(13)70013-5, PMID 24622318; ETD 0.34% and 0.26%, more hypoglycaemia). Absent from dose, efficacy and patient_trials; candidate dose contra (regimen target too low, rule 4 row 7 / #91) dated 2013 on the novo-pig-clamp-rat-dog-pk track.",
+  "Efsitora's own model system (Lilly STZ-diabetic rat: single SC dose gives normoglycaemia for at least 1 week; in-vitro IR/IGF-1R and SAOS-2/H4IIE proliferation; Moyers 2022 JPET doi:10.1124/jpet.122.001105, PMID 35840338; FDA 761408 IntegratedR 2026, bundle lines 1125-1127 and 9719-9723, human t1/2 ~17 days line 1260) is mentioned only in the dose judgement; under decision 8 it is a separate track (e.g. lilly-stz-rat-weekly) with its own engagement/dose/efficacy entries (QWINT-2, NCT05362058, registry 2025-05-16).",
+  "Icodec's selection model (dog intravenous half-life screen with rat SC potency; Kjeldsen 2021 J Med Chem doi:10.1021/acs.jmedchem.1c00257, PMID 33944562) is cited only in the dose judgement; FDA 761326 PharmR line 92 also names diabetic rats and normoglycaemic dogs/pigs with unexplained cross-species potency differences (rat 50% of HI, dog/pig ~2x glargine, lines 93-94, 332-333).",
+  "Safety, hypoglycaemia on the Novo track (no safety entry exists for it): the pig clamp / sponsor claim of 'close to even distribution' of glucose lowering is contradicted by FDA 761326 SumR 2026 (bundle lines 184-186: 'peak glycemic response on day 2 and nadir on day 7 post-injection, resulting in higher level 2/3 hypoglycemia rates on days 2-4'; lines 442-443 'Rates of level 2/3 hypoglycemia were generally higher with insulin icodec'), an on-target harm measurable in normoglycaemic animals (761326 PharmR line 366). The 2024-07-10 CRL for T1D on 'an increased risk of hypoglycemia ... unfavorable benefit-risk' (SumR lines 211-216, ONWARDS 6) is importable with imported_from MONDO:0005147.",
+  "Safety, degludec hypoglycaemia: FDA 2015 SumR lines 707-709 states the flat profile 'might enable true once-daily coverage with a lower risk of hypoglycemia', a stated prediction that BEGIN Once Long met (Zinman 2012 abstract: lower nocturnal hypoglycaemia) and DEVOTE later confirmed; a candidate safety same on the pig-clamp track, currently absent.",
+  "Efsitora T1D safety (QWINT-5): severe hypoglycaemia 0.14 vs 0.04 events/patient-year vs degludec (Lilly press release 2024-09-10, https://investor.lilly.com/node/51336; Lancet, Sept 2024), importable with imported_from MONDO:0005147 and trial_unreported if only the release is cited; and the efsitora numerical malignancy excess (761408 IntegratedR lines 714-715, 812-821) on the mitogenicity track, recorded in judgement but not entered.",
+  "EX1000 is identifiable: a Novo Nordisk investigational insulin formulation tested in two 2008-09 phase 2 T2D trials in Brazil (NCT00698802 vs biphasic human insulin, NCT00660374 vs NPH; 8-week HbA1c primary), no results posted (https://clinicaltrials.gov/study/NCT00698802). It still scores nothing, but the context note 'could not be identified' should say this.",
+  "Efsitora hypoglycaemia on the rat-dog-chronic-tox track (no efsitora entry exists there): FDA 761408 IntegratedR lines 3518-3523 state repeat-dose findings 'were limited to exaggerated pharmacology (hypoglycemia) and its secondary effects in normoglycemic animals, including mortality and moribundity' (sponsor-dismissed animal signal); T1D patients confirmed severe hypoglycaemia 10% vs 3% (Bergenstal 2024, doi:10.1016/S0140-6736(24)01804-X, PMID 39270686; label 5.2 limitation of use). Candidate safety same under #23 dated 2024 with imported_from MONDO:0005147, which is where the harm should be counted once rather than as a contra on the STZ-rat track (CHECKER_BRIEF_v3 / models)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Regimen extension failure: when a model's protracted profile predicted both the filed once-daily regimen (worked, 2011-12) and an exploratory three-times-weekly regimen (failed phase 3 non-inferiority, 2013), is the dose cell contra on that track (rule 4 row 7 / #91, sticky under decision 6), or does the filed regimen govern with the 3TW failure recorded in patient_trials?",
+  "Dating a pairing whose model side was published after the trial (Davies 2016 epub Aug 2016; Byrd 2017 toxicology Jan 2017): is year the trial's epub year as rule 7 reads literally, or the year the pairing first became possible (2017, as drafted)?",
+  "A sponsor-authored overview that itself states the model-vs-human comparison (Jacober 2016): admissible as a comparison_stated source, or a review under rule 2 that must be replaced by the primary clamp paper, turning the entry into a pairing?",
+  "A predicted absence of harm (reduced in-vitro mitogenicity) met by a numerical malignancy excess the regulator attributes to pre-existing disease (efsitora, 1.4% vs 1.0%): does the regulator's attribution keep the track same, or is that drug untested with source_calls_it: unresolved?",
+  "Engagement in a clamp-readout class: the draft accepts T1D-patient clamps as dosed humans for the Lilly dog track (2016) but dates the Novo track's same to a T2D clamp (2021) rather than the 2012 T1D degludec clamps; the brief admits healthy volunteers but does not say whether patients of another disease count for engagement.",
+  "Single-dose PD model vs regimen-dependent on-target harm: when a PD model's own readout (blood glucose) is the harm's channel but the harm patients showed is an excess vs a titrated daily comparator that regulator and trial authors attribute to initiation/titration, is the model's silence 'askable' (safety contra, harm measurable in the species) or is it a failure under conditions the model never tested (#35, #72, untested)? Raised on the STZ-rat efsitora QWINT-5 entry (CHECKER_BRIEF_v3 / models)."
+ ]
+}
