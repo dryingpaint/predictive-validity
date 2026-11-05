@@ -18,7 +18,7 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 from pipeline import llm
-from pipeline.stop_causes import VALIDATE_METHOD
+from pipeline.stop_causes import NOT_A_STOP, VALIDATE_METHOD
 from pipeline.stops import CAUSE, CAUSES, COMPANY_ENDED, DISCONTINUED, FATES, REGISTRY_CAUSE, SUBCAUSES, keys
 from report import frame
 from report.windows import RECENT, SECTION1, SECTION1_PERIODS
@@ -30,7 +30,7 @@ CAUSE_LABELS = {"efficacy": "Efficacy or exposure (PK, dose, formulation)", "saf
                 "sponsor_decision": "Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure)",
                 "operational": "Operational (enrollment, sites, supply, regulatory)",
                 "positive_not_advanced": "Positive readout, not yet advanced", "unknown": "Unknown",
-                "not_stopped": "Did not actually stop"}
+                "not_stopped": "Did not actually stop", "not_a_program": "Not a development program"}
 SHOWN = {"efficacy": CAUSE_LABELS["efficacy"], "safety": "Safety", "sponsor_decision": "Sponsor decision",
          "operational": "Operational", "positive_not_advanced": CAUSE_LABELS["positive_not_advanced"],
          "unknown": "Unknown"}  # the figure's categories; a program that did not stop is left out
@@ -39,12 +39,14 @@ SHOWN = {"efficacy": CAUSE_LABELS["efficacy"], "safety": "Safety", "sponsor_deci
 BREAKDOWN = {**SUBCAUSES, "unknown": FATES}  # the causes broken down by subcause, and their subcauses in order
 SUBCAUSE_NAMES = {
     "on_target_toxicity": "On-target toxicity", "off_target_toxicity": "Off-target toxicity",
-    "tolerability": "Tolerability", "preclinical_toxicity": "Preclinical toxicity", "clinical_hold": "Clinical hold",
+    "animal_toxicology": "Animal toxicology finding", "harm_mechanism_not_stated": "Harm in patients, mechanism not stated",
+    "regulatory_burden": "Regulator asked for more trials", "other_stated": "Other stated reason",
     "portfolio_prioritisation": "Portfolio prioritisation", "commercial_or_competitive": "Commercial or competitive",
     "partner_exit": "Partner exit or none found", "acquisition_or_merger": "Acquisition or merger",
     "funding_or_closure": "Funding or closure", "enrollment": "Enrollment", "site_or_supply": "Sites or supply",
-    "covid_19": "COVID-19", "regulatory": "Regulatory (not safety)", "approved_outside_us": "Approved outside the US",
-    "fda_declined": "FDA declined (complete response)", "replaced_by_successor": "Replaced by a successor",
+    "trial_redesigned": "Trial redesigned or replaced",
+    "covid_19": "COVID-19", "regulatory": "Regulatory hold on the trial", "approved_outside_us": "Approved outside the US",
+    "regulator_declined": "Regulator declined approval", "replaced_by_successor": "Replaced by a successor",
     "sponsor_went_quiet": "Sponsor started no later trial", "drug_approved_elsewhere": "Drug approved in another disease",
     "drug_continued_elsewhere": "Drug continued in other diseases", "drug_dropped": "Drug dropped, sponsor active",
     "not_stated": "Not stated",
@@ -59,7 +61,8 @@ def load() -> pd.DataFrame:
     d["headline"] = within(d, SECTION1) & d.phase.isin(MAIN_PHASES)
     d["recorded_cause"] = d.registry_reason.map(REGISTRY_CAUSE).map(CAUSE).fillna("unknown")
     d["likely"] = d.guess.where(d.cause.eq("unknown") & d.guess.notna(), d.cause)
-    d["shown"] = d.likely.where(d.likely.ne("not_stopped"))
+    d["shown"] = d.likely.where(~d.likely.isin(NOT_A_STOP))
+    d["subcause"] = d.subcause.where(~d.cause.isin(list(SUBCAUSES)) | d.subcause.notna(), "not_stated")
     return d
 
 
@@ -99,6 +102,14 @@ def validation() -> dict:
                                  for c, g in v.groupby("likely") if c != "unknown"}}
 
 
+def subcause_audit() -> dict:
+    """Agreement of the two independent subcause passes in scripts.subcause_audit, over all causes."""
+    audit = json.load(open(os.path.join(frame.REPO, "report", "audits", "subcause_audit.json")))
+    causes = audit["causes"].values()
+    return {"stops": sum(c["n"] for c in causes), "kappa_min": min(c["kappa"] for c in causes),
+            "kappa_max": max(c["kappa"] for c in causes), "agree_min": min(c["agree"] for c in causes)}
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     traced = load()
@@ -135,8 +146,23 @@ def main() -> None:
                                   ("company_event", infer[infer.subcause.isin(COMPANY_ENDED)])]},
          "subcauses": {c: distribution(g, "subcause", BREAKDOWN[c]) for c, g in d.groupby("cause") if c in BREAKDOWN},
          "subcause_programs": {c: int(len(g)) for c, g in d.groupby("cause") if c in BREAKDOWN},
+         "subcause_support": {c: g.subcause_support.value_counts().reindex(["stated", "likely"], fill_value=0)
+                              .astype(int).to_dict() for c, g in d.groupby("cause") if c in SUBCAUSES},
+         "not_a_stop": {c: int((main.cause == c).sum()) for c in NOT_A_STOP},
+         "by_phase": {str(p): {"stops": int(len(stopped(x := traced[within(traced, SECTION1) & traced.phase.eq(p)]))),
+                               "shown": distribution(stopped(x), "shown", list(SHOWN)),
+                               "not_a_stop": {c: int((x.cause == c).sum()) for c in NOT_A_STOP}}
+                      for p in (1, 2, 3)},
+         "likely_only": {c: float((d.shown.eq(c) & d.cause.ne(c)).sum() / max(d.shown.eq(c).sum(), 1))
+                         for c in SUBCAUSES},
+         "sourced": {c: float((d.shown.eq(c) & d.cause.eq(c)).sum() / max(d.shown.eq(c).sum(), 1))
+                     for c in SUBCAUSES},
+         "named": {c: {"share": float(g.subcause.ne("not_stated").mean()),
+                       "stated": float(g.subcause_support.eq("stated").mean()),
+                       "likely": float(g.subcause_support.eq("likely").mean())}
+                   for c, g in d.groupby("cause") if c in SUBCAUSES},
          "positive_discontinued": float(d[d.cause.eq("positive_not_advanced")].subcause.isin(DISCONTINUED).mean()),
-         "validation": validation()}
+         "validation": validation(), "subcause_audit": subcause_audit()}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(n, f, indent=1, default=jsonable)
 

@@ -16,7 +16,7 @@ def synthetic_rows(seed: int = 0) -> pd.DataFrame:
             for phase in (1, 2, 3):
                 p = min(0.9, 0.2 * (effect if genetic and phase == 2 else 1.0)) if phase == 2 else 0.6
                 rows.append({"program_id": f"{area}-{i}", "phase": phase, "target": target, "bio_area": area,
-                             "modality": "small_molecule", "novel": int(i % 2), "entry_year": 2015 + i % 10,
+                             "modality": "small_molecule", "novel": int(i % 2), "entry_year": 2008 + i % 12,
                              "event": "advanced" if rng.random() < p else "suspended",
                              **{f: 0.0 for f in AREA_LINES}, "genetic_any": float(genetic)})
     return pd.DataFrame(rows)

@@ -1,6 +1,7 @@
 """ClinicalTrials.gov snapshot -> preclin.ctgov_study.
 
-    python -m pipeline.ctgov fetch   # every interventional study with a DRUG or BIOLOGICAL intervention
+    python -m pipeline.ctgov fetch   # every interventional study with a DRUG, BIOLOGICAL, GENETIC or
+                                     # COMBINATION_PRODUCT intervention
     python -m pipeline.ctgov load    # cached pages -> preclin.ctgov_study (one row per NCT id)
 
 The snapshot covers all sponsors and all dates so that a molecule's full
@@ -28,7 +29,8 @@ from pipeline import llm
 
 CACHE = os.path.join(llm.REPO, ".cache", "ctgov")
 API = "https://clinicaltrials.gov/api/v2/studies"
-QUERY = "AREA[StudyType]INTERVENTIONAL AND AREA[InterventionType](DRUG OR BIOLOGICAL)"
+QUERY = ("AREA[StudyType]INTERVENTIONAL AND "
+         "AREA[InterventionType](DRUG OR BIOLOGICAL OR GENETIC OR COMBINATION_PRODUCT)")
 STARTED_STATUSES = ("COMPLETED", "TERMINATED", "SUSPENDED")  # statuses a study reaches only once it has started
 
 
@@ -80,7 +82,7 @@ COLUMNS = ("nct_id", "brief_title", "official_title", "overall_status", "why_sto
            "results_first_posted", "has_results", "lead_sponsor", "lead_sponsor_class", "collaborators",
            "enrollment", "allocation", "intervention_model", "masking", "primary_purpose",
            "healthy_volunteers", "conditions", "keywords", "interventions", "arm_groups", "references_",
-           "countries", "brief_summary", "primary_outcomes", "source_release_id")
+           "countries", "brief_summary", "primary_outcomes", "eligibility_criteria", "source_release_id")
 UPSERT = (f"INSERT INTO preclin.ctgov_study ({', '.join(COLUMNS)}) VALUES %s ON CONFLICT (nct_id) DO UPDATE SET "
           + ", ".join(f"{c} = EXCLUDED.{c}" for c in COLUMNS[1:]))
 
@@ -116,7 +118,7 @@ def row(study: dict, release: int) -> tuple:
         Json(arms.get("interventions") or []), Json(arms.get("armGroups") or []),
         Json(refs.get("references") or []), sorted({l["country"] for l in locations if l.get("country")}),
         (p.get("descriptionModule") or {}).get("briefSummary"),
-        Json((p.get("outcomesModule") or {}).get("primaryOutcomes") or []), release,
+        Json((p.get("outcomesModule") or {}).get("primaryOutcomes") or []), elig.get("eligibilityCriteria"), release,
     )
 
 
@@ -137,7 +139,18 @@ def load(_args) -> None:
             execute_values(cur, UPSERT, [row(s, release) for s in studies], page_size=1000)
             n += len(studies)
             conn.commit()
-    print(f"loaded {n} studies from {snap}")
+        # The table holds this snapshot only: a study the registry no longer returns leaves, with the rows other
+        # tables derived from it (pipeline.programs register and later steps rebuild those tables).
+        cur.execute("SELECT nct_id FROM preclin.ctgov_study WHERE source_release_id <> %s", (release,))
+        gone = [r[0] for r in cur.fetchall()]
+        if gone:
+            cur.execute("""SELECT DISTINCT conrelid::regclass::text FROM pg_constraint
+                           WHERE contype = 'f' AND confrelid = 'preclin.ctgov_study'::regclass""")
+            for table, in cur.fetchall():
+                cur.execute(f"DELETE FROM {table} WHERE nct_id = ANY(%s)", (gone,))
+            cur.execute("DELETE FROM preclin.ctgov_study WHERE nct_id = ANY(%s)", (gone,))
+            conn.commit()
+    print(f"loaded {n} studies from {snap}; removed {len(gone)} the snapshot no longer has")
 
 
 def main() -> None:

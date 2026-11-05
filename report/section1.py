@@ -180,6 +180,41 @@ def rates(rows: pd.DataFrame) -> pd.DataFrame:
     return c[["advanced", "suspended", "censored", "rate"]]
 
 
+def traced(rows: pd.DataFrame, progs: pd.DataFrame, snap: date, lag_months: int = LAG_MONTHS) -> pd.DataFrame:
+    """The phase rows with what tracing found about the suspensions (preclin.stop, preclin.stop_continuation): a
+    program that was not a development program in the phase leaves the cohort; one whose later-phase trial
+    started by the snapshot advanced, with the phases it skipped credited; one whose development went on within
+    lag_months of the snapshot is still running. An FDA approval the tracing reports counts only as development
+    going on: approvals come from the audited approval judgement (preclin.dev_program_approval) alone. The tracing
+    reads the registry-only rows (pipeline.stops.stops), so this applies on top of phase_rows rather than inside
+    it."""
+    found = frame.query("""SELECT s.moiety_id, s.mondo_id, s.phase, s.cause, c.outcome, c.phase_reached, c.on_date
+                           FROM preclin.stop s LEFT JOIN preclin.stop_continuation c USING (moiety_id, mondo_id, phase)
+                           WHERE s.cause IN ('not_stopped', 'not_a_program')""")
+    found = {(int(r.moiety_id), r.mondo_id, int(r.phase)): r for r in found.itertuples()}
+    disease = rows.program_id.map(progs.set_index("program_id").mondo_id).fillna("")
+    cutoff = pd.Timestamp(snap) - pd.DateOffset(months=lag_months)
+    out = []
+    for r, mondo in zip(rows.to_dict(orient="records"), disease):
+        f = found.get((int(r["moiety_id"]), mondo, int(r["phase"]))) if r["event"] == "suspended" else None
+        if f is None:
+            out.append(r)
+            continue
+        if f.cause == "not_a_program":
+            continue
+        on = pd.Timestamp(f.on_date) if pd.notna(f.on_date) else None
+        if f.outcome == "later_phase" and on is not None and r["entry"] <= on <= pd.Timestamp(snap):
+            r = {**r, "event": "advanced", "event_date": on, "years": max((on - r["entry"]).days, 0) / 365.25}
+            out.append(r)
+            out += [{**r, "phase": q, "credited": True} for q in range(r["phase"] + 1, int(f.phase_reached))]
+        elif f.outcome in ("active", "fda_approved") and on is not None and on > cutoff:
+            out.append({**r, "event": "censored", "event_date": pd.Timestamp(snap),
+                        "years": max((pd.Timestamp(snap) - r["entry"]).days, 0) / 365.25})
+        else:
+            out.append(r)
+    return pd.DataFrame(out, columns=rows.columns)
+
+
 def loa(rows: pd.DataFrame) -> float:
     """Likelihood of approval from Phase 1: the product of the BIO-style phase rates."""
     rate = rates(rows).rate
@@ -260,6 +295,7 @@ REASON_ORDER = [
     ("business or strategic (explicit)", "business"), ("sponsor decision, unspecified", "unspecified"),
     ("enrollment, operational or regulatory", "operational"),
     ("positive readout, not advanced", "positive_readout"), ("other stated reason", "other"),
+    ("results posted, mixed primary endpoint", "results_unread"),
     ("results posted, no reason stated, endpoint not assessable", "results_unread"),
     ("completed, no results posted, no reason stated", "unexplained"),
     ("stopped, no reason stated", "unexplained"),
@@ -269,8 +305,10 @@ OPERATIONAL = {"enrollment_feasibility", "operational_or_site", "regulatory", "m
 
 
 def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
-    """Reason one trial of the stopping phase gives; a trial with no outcome row or
-    no stated reason falls into a "no reason stated" category, split by whether it
+    """Reason one trial of the stopping phase gives. Safety counts only when the sponsor states it (an adverse-event
+    excess in posted results is not the reason a sponsor gave), and a positive readout needs a met primary endpoint or
+    stated early success; a mixed primary endpoint with no stated reason is left for tracing. A trial with no outcome
+    row or no stated reason falls into a "no reason stated" category, split by whether it
     posted results."""
     unstated = ("results posted, no reason stated, endpoint not assessable" if has_results
                 else "completed, no results posted, no reason stated" if status == "COMPLETED"
@@ -281,7 +319,7 @@ def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
         return "efficacy: stated"
     if o.efficacy_failure or o.primary_endpoint == "not_met":
         return "efficacy: primary endpoint not met"
-    if o.stop_reason == "safety_tolerability" or o.safety_signal == "notable":
+    if o.stop_reason == "safety_tolerability":
         return "safety"
     if o.stop_reason == "pk_pd_or_formulation":
         return "PK, dose or formulation"
@@ -291,10 +329,12 @@ def trial_reason(o: pd.Series | None, status: str, has_results: bool) -> str:
         return "sponsor decision, unspecified"
     if o.stop_reason in OPERATIONAL:
         return "enrollment, operational or regulatory"
-    if o.primary_endpoint in ("met", "mixed") or o.stop_reason == "objectives_met_or_early_success":
+    if o.primary_endpoint == "met" or o.stop_reason == "objectives_met_or_early_success":
         return "positive readout, not advanced"
     if o.stop_reason == "other":
         return "other stated reason"
+    if o.primary_endpoint == "mixed":
+        return "results posted, mixed primary endpoint"
     return unstated
 
 
@@ -392,24 +432,26 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
     progs, trials = frame.programs(), frame.program_trials()
-    rows = phase_rows(progs, trials, snap, window=SECTION1)
+    registry = phase_rows(progs, trials, snap, window=SECTION1)
+    rows = traced(registry, progs, snap)
     rows.to_csv(os.path.join(OUT, "phase_cohort_rows.csv"), index=False)
+    cohort = lambda lag=LAG_MONTHS, window=SECTION1, **kw: traced(
+        phase_rows(progs, trials, snap, lag_months=lag, window=window, **kw), progs, snap, lag_months=lag)
 
     results = [summarize(rows, "all programs")]
     results.append(summarize(rows[rows.us_site], "programs with a US-sited industry trial in the phase"))
     results.append(summarize(rows[rows.novel], "entity not yet FDA-approved at phase entry"))
     results.append(summarize(rows[~rows.novel], "entity already FDA-approved for another disease"))
     for lag in (12, 18, 36):
-        results.append(summarize(phase_rows(progs, trials, snap, lag_months=lag, window=SECTION1),
-                                 f"suspension lag {lag} months"))
-    results.append(summarize(phase_rows(progs, trials, snap, uncertain_as_approved=True, window=SECTION1),
-                             "uncertain approvals counted as approved"))
-    results.append(summarize(phase_rows(progs, trials, snap, shared_entry=True, window=SECTION1),
-                             "shared trials mark entry for every program of the entity"))
-    results.append(summarize(phase_rows(progs, trials, snap, vaccines=True, window=SECTION1), "including vaccines"))
-    recent = phase_rows(progs, trials, snap, window=RECENT)
+        results.append(summarize(cohort(lag), f"suspension lag {lag} months"))
+    results.append(summarize(cohort(uncertain_as_approved=True), "uncertain approvals counted as approved"))
+    results.append(summarize(cohort(shared_entry=True), "shared trials mark entry for every program of the entity"))
+    results.append(summarize(cohort(vaccines=True), "including vaccines"))
+    recent = cohort(window=RECENT)
     results.append(summarize(recent, "phase entry 2015-2025 (many programs still running)"))
     results.append(summarize(recent[recent.us_site], "phase entry 2015-2025, developed in the US"))
+    results.append(summarize(registry, "registry only: stops tracing found had not stopped counted as stops"))
+    results.append(summarize(registry[registry.us_site], "registry only, developed in the US"))
     pd.DataFrame(results).to_csv(os.path.join(OUT, "loa_overall.csv"), index=False)
 
     for column, name, skip in (("bio_area", "area", "unmapped"), ("modality", "modality", "unknown")):
@@ -427,7 +469,7 @@ def main() -> None:
     periods.to_csv(os.path.join(OUT, "loa_by_period.csv"), index=False)
     by_year(rows).to_csv(os.path.join(OUT, "rates_by_entry_year.csv"), index=False)
 
-    modes = failure_modes(rows, progs, trials, frame.trial_outcomes())
+    modes = failure_modes(registry, progs, trials, frame.trial_outcomes())  # what the registry records
     modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
     tab = modes.pivot_table(index="reason", columns="phase", values="program_id", aggfunc="count", fill_value=0)
     tab.to_csv(os.path.join(OUT, "failure_modes_by_phase.csv"))
@@ -464,7 +506,14 @@ def main() -> None:
                "novel": results[2], "not_novel": results[3],
                "lag": {r["label"].split()[-2]: r for r in results[4:7]}, "uncertain_as_approved": results[7],
                "shared_entry": results[8], "with_vaccines": results[9], "recent": results[10],
-               "recent_us": results[11], "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
+               "recent_us": results[11], "registry": results[12], "registry_us": results[13],
+               "traced_changes": {"left_out": int(len(registry[~registry.credited]) - len(rows[~rows.credited])),
+                                  "approvals_reported": int(frame.query(
+                                      "SELECT count(*) AS n FROM preclin.stop_continuation "
+                                      "WHERE outcome = 'fda_approved'").n.iloc[0]),
+                                  **{e: int(n) for e, n in rows[~rows.credited].event.value_counts().sub(
+                                      registry[~registry.credited].event.value_counts(), fill_value=0).items()}},
+               "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
                "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)

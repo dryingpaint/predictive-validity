@@ -23,7 +23,8 @@ EFFICACY_REASONS = ("efficacy: stated", "efficacy: primary endpoint not met")
 PK_REASON = "PK, dose or formulation"
 POSITIVE = "positive readout, not advanced"
 UNSTATED = ("completed, no results posted, no reason stated", "stopped, no reason stated",
-            "results posted, no reason stated, endpoint not assessable", "sponsor decision, unspecified",
+            "results posted, no reason stated, endpoint not assessable", "results posted, mixed primary endpoint",
+            "sponsor decision, unspecified",
             "other stated reason")
 REGISTRY_CAUSE = {**{r: "efficacy" for r in EFFICACY_REASONS}, "safety": "safety", PK_REASON: "pk_formulation",
                   "business or strategic (explicit)": "business_strategic",
@@ -36,7 +37,7 @@ CAUSE = {"efficacy": "efficacy", "pk_formulation": "efficacy", "safety": "safety
          "business_strategic": "sponsor_decision", "company_event": "sponsor_decision", "operational": "operational",
          "positive_not_advanced": "positive_not_advanced", "development_continued": "not_stopped",
          "unknown": "unknown"}
-CAUSES = list(dict.fromkeys(CAUSE.values()))
+CAUSES = [*dict.fromkeys(CAUSE.values()), "not_a_program"]  # with the one the subcause step finds in a stop's text
 CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes that settle a stop's cause
 # Why efficacy failed, by attribution code. F3 and F4 count as engaged without benefit only when engagement was
 # shown or inferred, otherwise as trial design (subcause()). The other codes are not efficacy failures: F6 settles
@@ -44,18 +45,21 @@ CODE_CAUSE = {"F6": "safety", "F8": "sponsor_decision"}  # attribution codes tha
 SUBCAUSE = {"F1a": "not_engaged", "F1b": "not_engaged", "F2": "engaged_no_benefit", "F3": "engaged_no_benefit",
             "F4": "engaged_no_benefit", "F5": "toxicity_offset", "F7": "trial_design", "U": "no_engagement_data"}
 EFFICACY_SUBCAUSES = ["not_engaged", "engaged_no_benefit", "trial_design", "toxicity_offset", "no_engagement_data"]
-# The subcauses of the other causes, chosen by pipeline.stop_causes describe from what the stop's explanation says;
-# not_stated where it says no more than the cause. A stop the efficacy label settles as safety is off_target_toxicity.
-# A sponsor decision and a positive readout that went no further share the reasons development did not go on
-# (DISCONTINUED); a positive readout may also have been approved outside the US or declined by the FDA.
-DISCONTINUED = ["portfolio_prioritisation", "commercial_or_competitive", "partner_exit", "acquisition_or_merger",
-                "funding_or_closure", "replaced_by_successor"]
+# The subcauses of the other causes, chosen by pipeline.stop_causes describe from what the stop's explanation says.
+# Each list answers one question and is in order of precedence: where several apply, the first listed wins, so the
+# most direct cause is named. other_stated keeps a stated reason no listed subcause fits; not_stated is for text that
+# says no more than the cause. A stop the efficacy label settles as safety is off_target_toxicity. A sponsor decision
+# and a positive readout that went no further share the reasons development did not go on (DISCONTINUED); for a
+# positive readout an FDA refusal comes first and approval outside the US counts only when no other reason is given.
+DISCONTINUED = ["acquisition_or_merger", "funding_or_closure", "partner_exit", "replaced_by_successor",
+                "regulatory_burden", "commercial_or_competitive", "portfolio_prioritisation"]
 SUBCAUSES = {
-    "safety": ["on_target_toxicity", "off_target_toxicity", "tolerability", "preclinical_toxicity", "clinical_hold",
-               "not_stated"],
-    "sponsor_decision": [*DISCONTINUED, "not_stated"],
-    "operational": ["enrollment", "site_or_supply", "covid_19", "regulatory", "not_stated"],
-    "positive_not_advanced": ["approved_outside_us", "fda_declined", *DISCONTINUED, "not_stated"],
+    "safety": ["on_target_toxicity", "off_target_toxicity", "animal_toxicology", "harm_mechanism_not_stated",
+               "other_stated", "not_stated"],
+    "sponsor_decision": [*DISCONTINUED, "other_stated", "not_stated"],
+    "operational": ["covid_19", "regulatory", "trial_redesigned", "enrollment", "site_or_supply", "other_stated",
+                    "not_stated"],
+    "positive_not_advanced": ["regulator_declined", *DISCONTINUED, "approved_outside_us", "other_stated", "not_stated"],
 }
 COMPANY_ENDED = ("acquisition_or_merger", "funding_or_closure")
 DETAIL = {"F1b": "other_drug_on_target_worked", "F3": "wrong_population", "F4": "wrong_endpoint_or_timing",

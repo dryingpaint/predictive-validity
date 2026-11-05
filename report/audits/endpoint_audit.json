@@ -1,365 +1,392 @@
 {
- "description": "Seeded sample (numpy default_rng(20261021)) of 40 trials from report/output/section3/trials.csv, stratified by endpoint class (4 each from B3-B6, 3 from each other class), judged by a review agent against the codebook in pipeline/outcomes.py ENDPOINT_SYSTEM from the registered primary outcomes, the conditions and the classifier's stated rationale.",
+ "description": "Seeded sample (numpy default_rng(20261102), python -m scripts.audit_samples) of 43 trials stratified by stored endpoint class (4 each from B3-B6, 3 from each other class) after the 2026-11-02 rebuild, in which the classifier sees the investigational drugs' targets; judged by a review agent against the codebook in pipeline/outcomes.py ENDPOINT_SYSTEM from the registered primary outcomes and, for target engagement, the drug's targets.",
  "trials": [
   {
-   "nct_id": "NCT02170025",
-   "stored_class": "B1_target_engagement",
-   "governing_index": 1,
-   "governing_index_correct": true,
-   "class_correct": false,
-   "correct_class": "B2_exploratory_biomarker",
-   "note": "Sweat chloride is not riociguat's target or pathway; under the codebook it is an exploratory biomarker."
-  },
-  {
-   "nct_id": "NCT04564833",
+   "nct_id": "NCT03392974",
    "stored_class": "B1_target_engagement",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B1_target_engagement",
-   "note": null
+   "note": "Valoctocogene roxaparvovec delivers F8; FVIII activity is the target's own product, so B1."
   },
   {
-   "nct_id": "NCT04221451",
+   "nct_id": "NCT04588298",
    "stored_class": "B1_target_engagement",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B1_target_engagement",
-   "note": "CSF GM2 for venglustat: target engagement or exploratory biomarker"
+   "note": "Camizestrant is an ESR1 degrader; ER protein expression in tumour is target knockdown, so B1."
   },
   {
-   "nct_id": "NCT01357850",
+   "nct_id": "NCT01856218",
+   "stored_class": "B1_target_engagement",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "B1_target_engagement",
+   "note": "Vestronidase alfa replaces GUSB; urinary GAG is that enzyme's substrate, a direct pathway readout (B1; B3 arguable since uGAG supported the MPS VII approval); first-listed uGAG outcome governs."
+  },
+  {
+   "nct_id": "NCT01082640",
    "stored_class": "B2_exploratory_biomarker",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B2_exploratory_biomarker",
-   "note": null
+   "note": "Febuxostat targets XDH; serum creatinine in renal impairment is a disease measure, not the XDH readout (uric acid), and not an accepted surrogate here, so B2."
   },
   {
-   "nct_id": "NCT01428453",
+   "nct_id": "NCT01955694",
    "stored_class": "B2_exploratory_biomarker",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B2_exploratory_biomarker",
-   "note": null
+   "note": "Finerenone targets NR3C2; NT-proBNP in heart failure is a non-surrogate disease biomarker, so B2."
   },
   {
-   "nct_id": "NCT04269408",
+   "nct_id": "NCT02729025",
    "stored_class": "B2_exploratory_biomarker",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B2_exploratory_biomarker",
-   "note": null
+   "note": "Evolocumab targets PCSK9; arterial FDG-PET inflammation is an exploratory imaging biomarker, not a PCSK9/LDL readout, so B2."
   },
   {
-   "nct_id": "NCT01143246",
+   "nct_id": "NCT05620355",
    "stored_class": "B3_regulatory_surrogate",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B3_regulatory_surrogate",
-   "note": null
+   "note": "MBL responder by alkaline hematin (<80 mL and >=50% reduction) is the endpoint FDA approved GnRH antagonists for fibroid bleeding on, so B3 (B4 also defensible)."
   },
   {
-   "nct_id": "NCT01709864",
+   "nct_id": "NCT06050226",
    "stored_class": "B3_regulatory_surrogate",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B3_regulatory_surrogate",
-   "note": null
+   "note": "Factor B inhibitor in PNH; haemoglobin rise without transfusion is the accepted anaemia surrogate (not a complement-activity readout), so B3."
   },
   {
-   "nct_id": "NCT04166773",
+   "nct_id": "NCT01052779",
    "stored_class": "B3_regulatory_surrogate",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B3_regulatory_surrogate",
-   "note": null
+   "note": "Ferumoxytol in iron-deficiency anaemia; change in haemoglobin is the accepted surrogate, so B3; first of two haemoglobin primaries governs."
   },
   {
-   "nct_id": "NCT02652819",
+   "nct_id": "NCT03156842",
    "stored_class": "B3_regulatory_surrogate",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B3_regulatory_surrogate",
-   "note": null
+   "note": "LDL-C is listed first with no hierarchy, so it governs; the codebook names LDL-C as B3 (even though rosuvastatin's HMGCR pathway leads to it)."
   },
   {
-   "nct_id": "NCT04236440",
+   "nct_id": "NCT05182476",
    "stored_class": "B4_objective_physiological",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B4_objective_physiological",
-   "note": null
+   "note": "Luvadaxistat (DAO inhibitor); BACS composite is a performance-based cognitive battery, so B4 is defensible, though the codebook's ADAS-Cog example would put cognitive tests in B5."
   },
   {
-   "nct_id": "NCT03938545",
+   "nct_id": "NCT04963231",
    "stored_class": "B4_objective_physiological",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B4_objective_physiological",
-   "note": null
+   "note": "Setmelanotide (MC4R agonist); >=5% BMI reduction is body weight, which the codebook places in B4."
   },
   {
-   "nct_id": "NCT01794208",
+   "nct_id": "NCT06693843",
    "stored_class": "B4_objective_physiological",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B4_objective_physiological",
-   "note": "follicle count: objective physiology or regulatory surrogate"
+   "note": "Percent body-weight change is the only efficacy primary (the rest are OLE safety), so index 1 and B4 per the codebook."
   },
   {
-   "nct_id": "NCT03715998",
+   "nct_id": "NCT00999908",
    "stored_class": "B4_objective_physiological",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B4_objective_physiological",
-   "note": null
+   "note": "Indacaterol in COPD; peak inspiratory capacity is spirometry but not the accepted FEV1 surrogate, so B4."
   },
   {
-   "nct_id": "NCT05149313",
+   "nct_id": "NCT01137526",
    "stored_class": "B5_clinician_scale",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B5_clinician_scale",
-   "note": null
+   "note": "ADAS-Cog total score is listed in B5."
   },
   {
-   "nct_id": "NCT04162769",
+   "nct_id": "NCT01396447",
    "stored_class": "B5_clinician_scale",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B5_clinician_scale",
-   "note": null
+   "note": "MADRS is a clinician-rated scale, B5."
   },
   {
-   "nct_id": "NCT01727726",
+   "nct_id": "NCT02292537",
    "stored_class": "B5_clinician_scale",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B5_clinician_scale",
-   "note": null
+   "note": "HFMSE is a clinician-administered motor function scale, B5 (nusinersen's SMN2 target not measured)."
   },
   {
-   "nct_id": "NCT01810380",
+   "nct_id": "NCT01237977",
    "stored_class": "B5_clinician_scale",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B5_clinician_scale",
-   "note": null
+   "note": "Investigator live assessment of glabellar line severity is a clinician-rated scale, B5."
   },
   {
-   "nct_id": "NCT02655224",
+   "nct_id": "NCT01318226",
    "stored_class": "B6_patient_reported",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B6_patient_reported",
-   "note": null
+   "note": "Two pain primaries with no hierarchy; first listed (SPID-6 on patient NRS) governs, B6."
   },
   {
-   "nct_id": "NCT04788511",
+   "nct_id": "NCT00892203",
    "stored_class": "B6_patient_reported",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B6_patient_reported",
-   "note": null
+   "note": "Patient-rated migraine pain reduction at 2 h, B6."
   },
   {
-   "nct_id": "NCT01453725",
+   "nct_id": "NCT00929877",
    "stored_class": "B6_patient_reported",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B6_patient_reported",
-   "note": "ASAS20: patient-reported or clinician composite"
+   "note": "TOTPAR is a sum of patient pain-relief ratings, B6."
   },
   {
-   "nct_id": "NCT03002974",
+   "nct_id": "NCT07328022",
    "stored_class": "B6_patient_reported",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B6_patient_reported",
-   "note": null
+   "note": "Pain VAS on movement is the efficacy primary (the second is AEs), B6."
   },
   {
-   "nct_id": "NCT02238483",
+   "nct_id": "NCT05056935",
    "stored_class": "B7_disease_events",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B7_disease_events",
-   "note": null
+   "note": "LB1148 (oral tranexamic acid) in post-operative ileus; time to GI-2 recovery is a time-to-event clinical milestone, B7 defensible (the codebook has no recovery-milestone class; B6 could be argued)."
   },
   {
-   "nct_id": "NCT01080131",
+   "nct_id": "NCT05143957",
    "stored_class": "B7_disease_events",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B7_disease_events",
-   "note": null
+   "note": "Sapablursen (TMPRSS6 knockdown) in PV; phlebotomy frequency is a disease-event rate, not a TMPRSS6/hepcidin readout, so B7."
   },
   {
-   "nct_id": "NCT03927157",
+   "nct_id": "NCT06266546",
    "stored_class": "B7_disease_events",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B7_disease_events",
-   "note": null
+   "note": "Major haemorrhage after an endobronchial procedure is a bleeding event, B7."
   },
   {
-   "nct_id": "NCT03315143",
+   "nct_id": "NCT07293065",
    "stored_class": "B8_hard_outcome",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B8_hard_outcome",
-   "note": null
+   "note": "Incidence of confirmed herpes zoster in a vaccine prevention trial is incident disease, B8."
   },
   {
-   "nct_id": "NCT03766581",
+   "nct_id": "NCT00721760",
    "stored_class": "B8_hard_outcome",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B8_hard_outcome",
-   "note": null
+   "note": "VTE or all-cause death composite includes death, B8."
   },
   {
-   "nct_id": "NCT01145560",
+   "nct_id": "NCT04957719",
    "stored_class": "B8_hard_outcome",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B8_hard_outcome",
-   "note": "ventilator-free days: hard outcome under the composite-with-death rule"
+   "note": "Worst-outcome ordinal scale led by death in AMI is the primary efficacy measure and includes death, B8; second primary is bleeding safety."
   },
   {
-   "nct_id": "NCT03357614",
+   "nct_id": "NCT02671500",
    "stored_class": "B9_infection_cure",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B9_infection_cure",
-   "note": null
+   "note": "SVR12 is virologic cure of HCV, B9 (B3 viral-load surrogate is the equivalent alternative under the codebook)."
   },
   {
-   "nct_id": "NCT03317223",
+   "nct_id": "NCT01323244",
    "stored_class": "B9_infection_cure",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B9_infection_cure",
-   "note": null
+   "note": "Sustained viral response in HCV is virologic cure, B9 (equivalently B3)."
   },
   {
-   "nct_id": "NCT01980095",
+   "nct_id": "NCT06835361",
    "stored_class": "B9_infection_cure",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "B9_infection_cure",
-   "note": null
+   "note": "Clinical and microbiological recovery from vulvovaginal candidiasis, B9."
   },
   {
-   "nct_id": "NCT02282020",
+   "nct_id": "NCT06702605",
    "stored_class": "O1_tumor_response",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O1_tumor_response",
-   "note": null
+   "note": "IRC-assessed ORR, O1."
   },
   {
-   "nct_id": "NCT03578367",
+   "nct_id": "NCT05733611",
    "stored_class": "O1_tumor_response",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O1_tumor_response",
-   "note": null
+   "note": "ORR, O1."
   },
   {
-   "nct_id": "NCT03280563",
+   "nct_id": "NCT05050006",
    "stored_class": "O1_tumor_response",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O1_tumor_response",
-   "note": null
+   "note": "ORR per modified RECIST, O1."
   },
   {
-   "nct_id": "NCT01605396",
+   "nct_id": "NCT07218809",
    "stored_class": "O2_progression_free",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O2_progression_free",
-   "note": null
+   "note": "PFS, O2."
   },
   {
-   "nct_id": "NCT03084939",
+   "nct_id": "NCT00796445",
    "stored_class": "O2_progression_free",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O2_progression_free",
-   "note": null
+   "note": "DFS at final analysis (first of two DFS timepoints), O2."
   },
   {
-   "nct_id": "NCT02314117",
+   "nct_id": "NCT07023289",
    "stored_class": "O2_progression_free",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O2_progression_free",
-   "note": null
+   "note": "DFS events, O2."
   },
   {
-   "nct_id": "NCT02106546",
+   "nct_id": "NCT00673049",
    "stored_class": "O3_overall_survival",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O3_overall_survival",
-   "note": null
+   "note": "Overall survival, O3."
   },
   {
-   "nct_id": "NCT03941093",
+   "nct_id": "NCT02013167",
    "stored_class": "O3_overall_survival",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O3_overall_survival",
-   "note": null
+   "note": "Overall survival, O3."
   },
   {
-   "nct_id": "NCT02753127",
+   "nct_id": "NCT01147939",
    "stored_class": "O3_overall_survival",
    "governing_index": 1,
    "governing_index_correct": true,
    "class_correct": true,
    "correct_class": "O3_overall_survival",
-   "note": null
+   "note": "Overall survival, O3."
+  },
+  {
+   "nct_id": "NCT03432364",
+   "stored_class": "not_efficacy",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "not_efficacy",
+   "note": "AEs/SAEs as the only primary, safety_tolerability, not_efficacy."
+  },
+  {
+   "nct_id": "NCT04711135",
+   "stored_class": "not_efficacy",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "not_efficacy",
+   "note": "Absorbed radiation dose in organs is dosimetry, pk_pd_dose, not_efficacy."
+  },
+  {
+   "nct_id": "NCT06175767",
+   "stored_class": "not_efficacy",
+   "governing_index": 1,
+   "governing_index_correct": true,
+   "class_correct": true,
+   "correct_class": "not_efficacy",
+   "note": "All twelve primaries are safety measures; TEAE incidence governs, not_efficacy."
   }
  ]
 }

@@ -19,7 +19,6 @@ import pandas as pd
 
 from report import bio, frame
 from report.section2 import DRUG, LIABILITIES
-from report.section3 import CASE_AUDIT
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import CAUSE_LABELS
 
@@ -166,8 +165,8 @@ def attribution_sensitivity_table() -> str:
     return table(out)
 
 
-GROUPS = [("**Target liabilities** (not specific to the disease)", LIABILITIES),
-          ("**Drug pharmacology** (assays of the drug itself, not evidence for the disease)", DRUG)]
+GROUPS = [("**Safety risk of the target** (not specific to the disease)", LIABILITIES),
+          ("**The molecule** (assays of the drug itself, not evidence for the disease)", DRUG)]
 
 
 def evidence_groups(df: pd.DataFrame, features: pd.Series) -> pd.DataFrame:
@@ -190,6 +189,53 @@ def rs_table() -> str:
     return table(evidence_groups(df.iloc[:, -4:], df.feature))
 
 
+def ratio_cell(r, prefix: str) -> str:
+    """'1.23 (1.01–1.50)' for one estimate of a lines.csv row; '–' when not estimated."""
+    v = r.get(f"{prefix}_rr")
+    return "–" if v is None or pd.isna(v) else f"{v:.2f} ({r[f'{prefix}_lo']:.2f}–{r[f'{prefix}_hi']:.2f})"
+
+
+def categories_table() -> str:
+    """Every evidence category and subcategory of the plan amendment on US-developed programs."""
+    df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
+    out = []
+    for r in df.to_dict("records"):
+        name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
+            + (" (descriptive)" if r["level"] == "descriptive" else "")
+        if pd.isna(r.get("column")):
+            out.append([name, "–", "–", "Not measured: the literature search missed too many studies", "–", "–", "–"])
+            continue
+        exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
+        if not r["estimated"]:
+            out.append([name, exposed, f"{int(r['targets']):,}", "Too rare to estimate", "–", "–", "–"])
+            continue
+        stop = ratio_cell(r, "safety_stop") + " (safety)" if r["category"] == "safety_risk" \
+            else ratio_cell(r, "efficacy_stop") if "efficacy_stop_rr" in r else "–"
+        out.append([name, exposed, f"{int(r['targets']):,}",
+                     f"{r['rs_rs']:.2f} ({r['rs_rs_lo']:.2f}–{r['rs_rs_hi']:.2f})" if pd.notna(r.get("rs_rs")) else "–",
+                     ratio_cell(r, "s4"), ratio_cell(r, "s4_biomarker"), stop])
+    return table(pd.DataFrame(out, columns=[
+        "Evidence", "Entries with it / eligible", "Targets", "Relative success to approval (95% CI)",
+        "Advancing from Phase 2, adjusted RR", "Same, biomarker enrolment held fixed", "Efficacy stop, adjusted RR"]))
+
+
+def amendment_hypotheses_table() -> str:
+    a = json.load(open(os.path.join(OUT, "evidence_analysis", "numbers.json")))
+    rows = [("N1", "Small molecules measured on the primary target and an off-target: at least 10-fold selective "
+                   "raises advancing from Phase 2", a["N1"], a["holm"].get("N1")),
+            ("N2", "Small molecules: at most one Rule-of-5 violation raises advancing", a["N2"]["drug_like"],
+             a["holm"].get("N2")),
+            ("N2", "Neurology and psychiatry: brain-penetrant properties raise advancing", a["N2"]["brain_penetrant"],
+             a["holm"].get("N2")),
+            ("N3", "Outside oncology, small molecules: potency of 100 nM or better raises advancing, human genetics "
+                   "and drug-likeness held fixed", a["N3"], a["holm"].get("N3"))]
+    out = [[h, text, f"{int(r['n']):,} ({int(r['n_targets']):,} targets)" if r.get("n") is not None else "–",
+            rr_ci(r), p_value(r.get("p")), p_value(hp),
+            "supported" if hp is not None and hp < 0.05 else "not supported"] for h, text, r, hp in rows]
+    return table(pd.DataFrame(out, columns=["Hypothesis", "Claim", "Exposed entries", "Risk ratio (95% CI)", "p",
+                                            "Holm p", "Result"]))
+
+
 def chembl_match_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "chembl_match_by_modality.csv"))
     out = pd.DataFrame({"Modality": df.modality.map(stratum_name),
@@ -203,7 +249,7 @@ def chembl_match_table() -> str:
 
 def prediction_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section2", "prediction_metrics.csv"))
-    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (2013–2016)"}
+    splits = {"grouped_cv": "Held-out target sets", "temporal": "Temporal (later entrants held out)"}
     features = {"covariates": "Area, modality, novelty, year", "covariates+evidence": "… plus all evidence lines",
                 "evidence": "Evidence lines only"}
     df = df.assign(**{"Validation": df.split.map(splits), "Features": df.features.map(features),
@@ -264,12 +310,13 @@ QUALITY_ROWS = [
     ("label_audit", "drug_moiety", "Intervention name → molecular entities"),
     ("label_audit", "fda_application_moiety", "FDA application → molecular entities"),
     ("label_audit", "fda_letter_approved_uses", "Approval letter → approved uses"),
+    ("label_audit", "fda_supplement_document_approved_uses", "Supplement label or review → approved uses (no letter)"),
     ("outcome_audit", "stop_reason", "Trial stop reason"),
     ("outcome_audit", "primary_endpoint", "Primary endpoint met / not met (posted results)"),
     ("publication_audit", "primary_endpoint", "Primary endpoint met / not met (results papers)"),
-    ("approval_audit", "yes_dated.approved", "Approval (sampled as approved, dated 2015 or later)"),
-    ("approval_audit", "yes_dated.date", "Approval date (sampled as approved, dated 2015 or later)"),
-    ("approval_audit", "yes_pre2015.approved", "Approval (sampled as approved before 2015)"),
+    ("approval_audit", "yes_dated.approved", "Approval (sampled as approved, dated from 2008)"),
+    ("approval_audit", "yes_dated.date", "Approval date (sampled as approved, dated from 2008)"),
+    ("approval_audit", "yes_before_letters.approved", "Approval (sampled as approved before 2008)"),
     ("approval_audit", "no_entity_appr.approved", "Approval (sampled as not approved, Phase 2+ programs)"),
     ("approval_audit", "uncertain.approved", "Approval (sampled as uncertain)"),
 ]
@@ -311,9 +358,9 @@ def s3_hypotheses_table() -> str:
         ("H5", "Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3)",
          "ratio of risk ratios", rr_ci(n["h5"]["ratio_f_bizops_vs_f_efficacy"]),
          n["h5"]["ratio_f_bizops_vs_f_efficacy"].get("p")),
-        ("H6", "Outside oncology, target liability raises safety failure, and more than efficacy failure (Phases "
+        ("H6", "Outside oncology, the target's safety risk raises safety failure, and more than efficacy failure (Phases "
                "1–3; intersection-union test)", "risk ratio, safety failure", rr_ci(n["h6"]["safety"]), n["h6"]["p"]),
-        ("H7", "Oncology: a somatic driver whose direction matches the drug, advancing within 4 years of Phase 2",
+        ("H7", "Oncology: a gene recurrently mutated in the cancer whose mutation matches the drug, advancing within 4 years of Phase 2",
          "risk ratio", rr_ci(n["h7"]), n["h7"].get("p")),
     ]
     out = [[text, measure, est, p_value(p), p_value(n["holm"].get(h)),
@@ -340,7 +387,8 @@ def s3_map_table() -> str:
             "Share of all that advanced", "Risk ratio, all (95% CI)", "Risk ratio, non-oncology",
             "Risk ratio, oncology"]
     df = pd.DataFrame(rows, columns=cols)
-    groups = {"b1": "**Clinical precedent**", "pan_essential": "**Target liabilities** (not specific to the disease)"}
+    groups = {"b1": "**Earlier drugs on the same target**",
+              "pan_essential": "**Safety risk of the target** (not specific to the disease)"}
     out = []
     for f, row in zip(S3_MAP_ROWS, df.values.tolist()):
         if f in groups:
@@ -445,62 +493,6 @@ def s3_rules_table() -> str:
                                              "Risk ratio, held-out targets (90% CI)", "Meets the bar"]))
 
 
-FAILURE_NAMES = {"F1": "engagement not shown", "F2": "engaged, disease did not respond", "F3": "wrong population",
-                 "F4": "surrogate did not carry over", "F5": "on-target toxicity", "F6": "off-target toxicity",
-                 "F7": "trial design", "F8": "commercial", "unknown": "unknown"}
-SOURCE_CHARS = 160  # length of the evidence source shown in a case card
-
-
-def failure_label(advanced: str, code: str) -> str:
-    if advanced == "yes":
-        return "–"
-    if code == "not_a_failure":
-        return "still progressing"
-    return FAILURE_NAMES[code]
-
-
-def s3_case_audit() -> pd.DataFrame:
-    """The verified cases among those Section 3 picked, in the order it picked them."""
-    a = pd.DataFrame(json.load(open(CASE_AUDIT))).set_index("case_id")
-    picked = pd.read_csv(os.path.join(OUT, "section3", "cases.csv")).case_id
-    return a.loc[[c for c in picked if c in a.index]].reset_index()
-
-
-def s3_cases_table() -> str:
-    a, rules = s3_case_audit(), s3_rules()
-    rows = []
-    for rule, g in a.groupby("rule", sort=False):
-        failed = g[g.advanced_within_4y == "no"]
-        codes = pd.Series([failure_label("no", c) for c in failed.failure_code]).value_counts()
-        rows.append([rule_name(rules.loc[rule]), f"{len(g)}", f"{(g.advanced_within_4y == 'yes').sum()}",
-                     f"{g.claim_supported.isin(['yes', 'partial']).sum()} ({(g.claim_supported == 'partial').sum()} "
-                     f"partly)", f"{(g.predates_entry == 'yes').sum()}",
-                     ", ".join(f"{c}: {k}" for c, k in codes.items()) or "–"])
-    return table(pd.DataFrame(rows, columns=["Rule", "Cases", "Advanced within 4 years (verified)",
-                                             "Evidence claim verified", "Evidence published before entry",
-                                             "Why the others stopped"]))
-
-
-def shorten(text: str, limit: int) -> str:
-    """`text` cut at the last word boundary before `limit` characters, with an ellipsis."""
-    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
-
-
-def s3_case_cards() -> str:
-    rows = []
-    rules = s3_rules()
-    for r in s3_case_audit().itertuples():
-        source = shorten(r.evidence_source or "", SOURCE_CHARS) + (f" ({r.evidence_year})" if r.evidence_year else "")
-        outcome = {"yes": "advanced", "no": "did not advance"}.get(r.advanced_within_4y, "unclear")
-        rows.append([rule_name(rules.loc[r.rule]), f"{r.entity} ({', '.join(r.targets)})", r.disease, r.phase2_entry,
-                     f"{r.claim_supported}; {source}",
-                     outcome + ("" if r.pipeline_correct == "yes" else " (recorded outcome wrong)"),
-                     failure_label(r.advanced_within_4y, r.failure_code)])
-    return table(pd.DataFrame(rows, columns=["Rule", "Drug (target, action)", "Disease", "Phase 2 entry",
-                                             "Evidence claim: verdict; earliest source", "Outcome (verified)",
-                                             "Failure"]))
-
-
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
           "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
@@ -510,9 +502,10 @@ TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivi
           "AREA_RS_TABLE": area_rs_table,
           "QUALITY_TABLE": quality_table, "S3_HYPOTHESES_TABLE": s3_hypotheses_table, "S3_MAP_TABLE": s3_map_table,
           "S3_ENDPOINT_TABLE": s3_endpoint_table, "S3_RULES_TABLE": s3_rules_table,
-          "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table, "S3_CASES_TABLE": s3_cases_table,
-          "S3_CASE_CARDS": s3_case_cards, "ATTRIBUTION_TABLE": attribution_table,
-          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table}
+          "S3_TYPES_TABLE": s3_types_table, "S3_REFINEMENTS_TABLE": s3_refinements_table,
+          "ATTRIBUTION_TABLE": attribution_table,
+          "ATTRIBUTION_SENSITIVITY_TABLE": attribution_sensitivity_table, "STOP_CAUSE_TABLE": stop_cause_table,
+          "CATEGORIES_TABLE": categories_table, "AMENDMENT_HYPOTHESES_TABLE": amendment_hypotheses_table}
 
 
 def flatten(d, prefix=""):
@@ -542,7 +535,7 @@ TABS = [("REPORT.template.md", "REPORT.md"), ("APPENDIX.template.md", "REPORT_AP
 
 def main() -> None:
     numbers = dict(BIO)
-    for section in ("section1", "section2", "section3", "attribution", "stop_causes", "quality"):
+    for section in ("section1", "section2", "section3", "evidence_analysis", "attribution", "stop_causes", "quality"):
         numbers.update(flatten(json.load(open(os.path.join(OUT, section, "numbers.json"))), section + "."))
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float, sort_keys=True)

@@ -32,10 +32,6 @@ tables the report reads.
 Run `.venv/bin/python -m report`. It reads one database snapshot and writes `report/output/`,
 `REPORT.md` and `REPORT_APPENDIX.md`. It exits non-zero:
 
-- when Section 3 picked cases its audit lacks. Run `.venv/bin/python -m report.cases pending`, check
-  each case with agents following `report/audits/case_protocol.md` (evidence and outcome agents for every
-  case; a second coder for each failure; an adjudicator where the codes differ), save their JSON answers
-  in one directory, run `.venv/bin/python -m report.cases merge <dir>`, and build again;
 - when the link dropped and the build read two snapshots: build again;
 - when a placeholder is left unfilled: fix the template.
 
@@ -76,6 +72,9 @@ Run `.venv/bin/python -m report.doc plan`. It writes `report/output/doc_plan.jso
   ask in the thread.
 
 ## 5. Record and open the PR
+
+First run `.venv/bin/python -m report.sheet`, which rewrites the classifications Google Sheet (every
+disease, drug, entity, program, trial and stop label, one tab each) from the same database.
 
 1. Run `.venv/bin/python -m report.doc published REPORT.md=<last rev> REPORT_APPENDIX.md=<last rev>`
    with each tab's revision from your last ack on it.

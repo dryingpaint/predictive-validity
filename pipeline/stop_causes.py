@@ -5,6 +5,8 @@
     python -m pipeline.stop_causes validate   # the same on a seeded sample of stated stops, reason hidden
     python -m pipeline.stop_causes describe   # LLM: subcause of each stop, and explanations without codes
     python -m pipeline.stop_causes assemble   # final cause of every stop, and why efficacy failed -> preclin.stop
+    python -m pipeline.stop_causes continued  # LLM with web search: what each stop that did not stop went on to
+                                              #   -> preclin.stop_continuation
 
 Section 1 gives each suspended program one reason from its own trials. For 40% of Phase 2/3
 stops no reason is stated; a bare "sponsor decision" or an unspecified "other" reason says little
@@ -383,7 +385,8 @@ def validate_run(_args) -> None:
     print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
 
 
-ASSEMBLE_METHOD = "stop_cause_assembly@v3"
+ASSEMBLE_METHOD = "stop_cause_assembly@v4"
+DESCRIBE_METHOD = "stop_description@v3"
 ASSEMBLE_DESCRIPTION = f"""Why every stop Section 1 counts happened, one row per (entity, disease, phase) in
 preclin.stop. A stated registry reason is kept and mapped to a cause ({'; '.join(f'{k} -> {CAUSE[v]}' for k, v in
 REGISTRY_CAUSE.items())}). A stop for efficacy or exposure whose final efficacy-attribution label (the web-search
@@ -392,12 +395,15 @@ efficacy stop labelled F9 and a positive readout whose index trial's primary end
 take the inferred cause, as does an unstated, bare sponsor-decision or unspecified other reason; the inferred cause
 maps to preclin.stop's vocabulary ({'; '.join(f'{k} -> {v}' for k, v in CAUSE.items() if k != v)}), and is unknown
 where no source states it, with the model's likely cause as the guess. If inference produced no validated decision
-the cause is unknown with no guess. Subcause: for an efficacy stop, why efficacy failed from its label (F9 coded by
+the cause is unknown with no guess. Where {DESCRIBE_METHOD}'s reading of a stop's own text says development of the
+drug in the disease went on or it was approved there, the cause is not_stopped; where it says no one was developing
+the drug for the disease and the cause is positive_not_advanced, it is not_a_program; neither has a subcause.
+Subcause: for an efficacy stop, why efficacy failed from its label (F9 coded by
 its pillars; not_attributed without a label); off_target_toxicity for a stop the label settles as safety; for
-safety, sponsor decision, operational and positive-readout stops, the stop_description@v2 subcause; for an unknown
+safety, sponsor decision, operational and positive-readout stops, the {DESCRIBE_METHOD} subcause; for an unknown
 cause, what the drug and sponsor did next
 (preclin.stop_signal). Explanation: the label's rationale where it gives the subcause, else the source quote or the
-model's basis (in stop_description@v2's plain wording where it used failure codes), else what the trial that
+model's basis (in {DESCRIBE_METHOD}'s plain wording where it used failure codes), else what the trial that
 gave Section 1 its reason states (its stated reason for stopping, else
 the result Section 1 read), with the trial in the sources. Traced: the cause did not come straight from the registry (no usable reason, or the label overturned
 it)."""
@@ -434,7 +440,9 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
     explanation = first_text(label["quote"], label["rationale"]) if explains else \
         first_text(o["quote"], o["likely_basis"], o["rationale"]) if o else None
     from_trial = explanation is None and first_text(trial["stated"]) is not None
-    return {"cause": cause, "subcause": None if pd.isna(sub) else sub, "detail": None if pd.isna(det) else det,
+    return {"cause": cause, "subcause": None if pd.isna(sub) else sub,
+            "subcause_support": "stated" if cause == "safety" and sub else None,
+            "detail": None if pd.isna(det) else det,
             "guess": None if guess == "unknown" else guess,
             "explanation": first_text(trial["stated"]) if from_trial else explanation,
             "sources": list(dict.fromkeys((o["sources"] if o else []) + (list(label["sources"]) if explains else [])
@@ -444,7 +452,7 @@ def stop_row(reason: str, settle: str | None, inferred: dict | None, label: dict
             "traced": settle is not None}
 
 
-COLUMNS = ["cause", "subcause", "detail", "guess", "explanation", "sources", "decision_ids", "traced"]
+COLUMNS = ["cause", "subcause", "subcause_support", "detail", "guess", "explanation", "sources", "decision_ids", "traced"]
 
 
 def stop_rows() -> list[tuple]:
@@ -473,31 +481,49 @@ def stop_rows() -> list[tuple]:
 
 
 SUBCAUSE_MEANING = {
-    "on_target_toxicity": "harm that follows from hitting the target itself (the mechanism's expected toxicity)",
-    "off_target_toxicity": "harm from the molecule rather than the target (off-target binding, metabolites, the formulation)",
-    "tolerability": "side effects patients would not tolerate, without a stated mechanism",
-    "preclinical_toxicity": "a finding in animal or laboratory toxicology studies",
-    "clinical_hold": "a regulator's clinical hold or a safety board's recommendation to stop",
-    "portfolio_prioritisation": "the sponsor chose to put its resources into other programs",
-    "commercial_or_competitive": "the market, pricing, reimbursement or a competing drug made it not worth pursuing",
+    "on_target_toxicity": "the text ties the harm to the drug's mechanism, to hitting its target",
+    "off_target_toxicity": "the text ties the harm to the molecule rather than the target (off-target binding, "
+                           "metabolites, the formulation)",
+    "animal_toxicology": "a toxicity finding in animal or laboratory studies stopped it, with no mechanism stated (a "
+                         "need for more preclinical work that names no toxicity is not_stated)",
+    "harm_mechanism_not_stated": "harm or a safety signal seen in people in a trial, named or not (liver injury, deaths, "
+                                 "side effects patients would not tolerate, an unfavourable benefit-risk), with no "
+                                 "mechanism stated",
+    "acquisition_or_merger": "the sponsor was acquired or merged and the program was dropped",
+    "funding_or_closure": "the sponsor or the trial ran out of money (including a grant that ended), or the sponsor "
+                          "wound down, went bankrupt or closed",
     "partner_exit": "a licensing or development partner ended the deal or handed the rights back, or the sponsor was "
                     "looking for a partner to take it forward and none did",
-    "acquisition_or_merger": "the sponsor was acquired or merged and the program was dropped",
-    "funding_or_closure": "the sponsor ran out of money, wound down, went bankrupt or closed",
-    "enrollment": "patients could not be recruited or retained fast enough",
-    "site_or_supply": "trial sites, drug supply, manufacturing for the trial or other logistics",
-    "covid_19": "the COVID-19 pandemic disrupted the trial",
-    "regulatory": "a regulatory or procedural requirement or hold not about safety",
     "replaced_by_successor": "development moved to another formulation, dose form, combination or follow-on drug",
-    "approved_outside_us": "the drug was approved, or filed, outside the United States",
-    "fda_declined": "the FDA declined to approve it (a complete response letter)",
-    "not_stated": "the text gives no more detail than the cause",
+    "regulatory_burden": "a regulator required further trials or data and the sponsor did not go on",
+    "commercial_or_competitive": "the market, pricing, reimbursement, a competing drug, a change in the standard of care "
+                                 "or a change in the clinical landscape made it not worth pursuing",
+    "portfolio_prioritisation": "the text says the sponsor chose to put its resources into other programs, areas or "
+                                "indications",
+    "covid_19": "the COVID-19 pandemic disrupted the trial",
+    "regulatory": "a regulatory or procedural requirement or hold, not about safety, stopped the trial itself",
+    "trial_redesigned": "the trial was stopped to be redesigned or replaced by another trial of the same drug, or "
+                        "its design could not answer the question",
+    "enrollment": "patients could not be recruited or retained fast enough",
+    "site_or_supply": "running the trial: sites, investigators or staff, drug supply, manufacturing for the trial, "
+                      "trial procedures or measurements, delays, or other logistics",
+    "regulator_declined": "a regulator (the FDA, the EMA, China's NMPA or another) declined to approve it",
+    "approved_outside_us": "the drug was approved, or filed, outside the United States, and no other reason is given",
+    "other_stated": "the text gives a specific reason that none of the listed subcauses covers, each read broadly",
+    "not_stated": "the text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', "
+                  "'business' or 'administrative reasons', or a safety concern without saying whether it was seen in "
+                  "people or animals",
 }
+TEXT_CAUSES = ["efficacy", "safety", "sponsor_decision", "operational", "positive_not_advanced", "not_stopped", "not_a_program",
+               "unclear"]
+NOT_A_STOP = ("not_stopped", "not_a_program")
 SUBCAUSE_SYSTEM = f"""You read why a drug development program stopped and name the subcause. The cause is already decided and is given; so is the text it rests on (the sponsor's stated reason, a quote from a source, a posted result, or an analyst's reasoning).
 
-Choose the one subcause, from the list for the given cause, that the text states or directly implies. Use not_stated when the text says no more than the cause. For a positive readout that went no further, name why development did not go on after the good result. Judge only from the text; do not use what you know about the drug or the company.
+Choose the one subcause, from the list for the given cause, that the text states or directly implies. Each list is in order of precedence: if more than one subcause applies, choose the one listed first. For a positive readout that went no further, name why development did not go on after the good result. Use other_stated, with the reason in a few words in other_reason, when the text gives a specific reason none of the listed subcauses fits; use not_stated when the text says no more than the cause. Judge only from the text; do not use what you know about the drug, its target or the company. In particular, call a harm on-target or off-target only when the text itself says which.
 
-Subcauses for each cause:
+Then check the cause against the text. text_cause is the cause the text itself gives for the stop, which may be the given cause or another one (for example a safety cause whose text says the stop was a business decision with no safety concern); not_stopped when the text says this drug's development in this disease is continuing, or the drug was approved for it (a placebo-controlled trial stopped because the drug had been approved), and not when it is a successor or another drug that goes on; not_a_program when the text says no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); unclear when the text gives no reason of its own. A business or regulatory reason for not going on after a positive readout is that readout's subcause, so its text_cause is positive_not_advanced. A stop because the money ran out, the trial's grant included, is sponsor_decision. A regulator declining approval after a positive readout is that readout's subcause, not efficacy. A safety endpoint met, or a stop with no safety concern, is not safety; and a harm the text reports keeps a stop's safety cause even when the drug also worked.
+
+Subcauses for each cause, in order of precedence:
 {chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
 
 What each subcause means:
@@ -506,8 +532,9 @@ What each subcause means:
 basis: the words in the text the subcause rests on, or empty for not_stated."""
 SUBCAUSE_SCHEMA = {
     "type": "object",
-    "properties": {"subcause": {"type": "string", "enum": list(SUBCAUSE_MEANING)}, "basis": {"type": "string"}},
-    "required": ["subcause", "basis"],
+    "properties": {"subcause": {"type": "string", "enum": list(SUBCAUSE_MEANING)}, "other_reason": {"type": "string"},
+                   "basis": {"type": "string"}, "text_cause": {"type": "string", "enum": TEXT_CAUSES}},
+    "required": ["subcause", "other_reason", "basis", "text_cause"],
     "additionalProperties": False,
 }
 
@@ -515,9 +542,11 @@ SUBCAUSE_SCHEMA = {
 def validate_subcause(p: dict, out: dict) -> None:
     if out["subcause"] not in SUBCAUSES[p["cause"]]:
         raise ValueError(f"subcause {out['subcause']} is not one of {p['cause']}'s")
+    if (out["subcause"] == "other_stated") != bool(out["other_reason"].strip()):
+        raise ValueError("other_reason is given exactly when the subcause is other_stated")
 
 
-SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v2", schema_version="v1", system=SUBCAUSE_SYSTEM,
+SUBCAUSE_TASK = llm.Task(name="stop_subcause", prompt_version="v11", schema_version="v3", system=SUBCAUSE_SYSTEM,
                          schema=SUBCAUSE_SCHEMA, subject_type="program_phase", validate=validate_subcause,
                          render=lambda p: f"Cause: {p['cause']}\nRegistry reason: {p['registry_reason']}\n\n"
                                           f"Text:\n{p['explanation']}",
@@ -563,35 +592,179 @@ def describe_items(rows: list[tuple]) -> tuple[dict, dict]:
     return sub, plain
 
 
-DESCRIBE_METHOD = "stop_description@v2"
+RECAST = ("efficacy", "safety", "positive_not_advanced")  # the causes a stop's own text moves it to
+
+
+def text_cause(cause: str, said: dict) -> str | None:
+    """The cause a stop takes from its own text in place of the one it has, or None to keep it: no stop where the
+    text says so (a non-program only from a positive readout's text, the one cause scripts.subcause_audit found them
+    in), a sponsor decision for an operational stop whose text gives one, and efficacy, safety or a positive readout
+    where the text gives that instead, except that a safety stop never becomes a positive readout."""
+    t = said["text_cause"]
+    if t == "not_stopped" or (t == "not_a_program" and cause == "positive_not_advanced"):
+        return t
+    if t == "sponsor_decision" and cause == "operational":  # the money ran out, or the sponsor chose to stop
+        return t
+    if cause == "safety" and t == "positive_not_advanced":  # a harm the text reports outranks a good readout
+        return None
+    return t if t in RECAST and t != cause else None
+
+
+def recast_items(sub: dict, decided: dict) -> dict:
+    """The stops whose text moves them to a cause with subcauses, to be decided again under that cause."""
+    return {k: {**sub[k], "cause": t} for k, (_, said) in decided.items()
+            if (t := text_cause(sub[k]["cause"], said)) in SUBCAUSES}
+
+
+def apply_text(rows: list[tuple], sub: dict, recast: dict) -> None:
+    """Set each row's subcause from the stop_subcause decisions on its text, moving it to the cause the text gives
+    where text_cause says to (subcause decided again under that cause, not_attributed for efficacy)."""
+    for key, *_, row in rows:
+        if key not in sub:
+            continue
+        moved = text_cause(row["cause"], sub[key][1])
+        if moved is None:
+            row.update(subcause=sub[key][1]["subcause"], subcause_support="stated")
+        else:
+            row.update(cause=moved, guess=None, traced=True, subcause_support="stated" if key in recast else None,
+                       subcause="not_attributed" if moved == "efficacy" else
+                       recast[key][1]["subcause"] if key in recast else None)
+            if key in recast:
+                row["decision_ids"].append(int(recast[key][0]))
+        if row["subcause"] == "not_stated":
+            row["subcause_support"] = None
+        row["decision_ids"].append(int(sub[key][0]))
+
+
+SEARCH_SYSTEM = f"""You find out why a drug development program stopped, in more detail than its cause. A program is one drug developed for one disease; it stopped in the phase given. Its cause is already decided and is given, with the text it rests on, which says no more than the cause. You are given the program's trials in that phase (records, posted results, linked papers) and the drug's other programs.
+
+Search the web for what happened: company press releases, quarterly and annual reports and SEC filings (10-K, 10-Q, 20-F, 8-K), pipeline updates, investor presentations, conference abstracts, publications, regulators' decisions and trade news. Search for the drug's name and code names with the disease and the sponsor. ClinicalTrials.gov is not available to search. Use at most a handful of searches; stop when you have the answer or the trail is cold.
+
+Choose the one subcause, from the list for the given cause, that the sources give. Each list is in order of precedence: if more than one applies, choose the one listed first. For a positive readout, name why development did not go on after the good result. Use other_stated, with the reason in a few words in other_reason, only for a specific reason none of the listed subcauses covers, each read broadly. Call a harm on-target or off-target only when a source says which.
+
+support: stated when a source gives the reason for this drug (quote its decisive sentence in quote); likely when the sources make a subcause the likely reason without saying it (for example the sponsor was acquired and its pipeline cut, the drug was approved in this disease outside the United States, or the sponsor's later pipeline puts other programs first), with what it rests on in rationale; not_found, with subcause not_stated, when the sources give nothing more. Prefer not_found to a subcause no source supports. Cite only URLs your searches returned, and NCT ids and PMIDs from the input.
+
+cause_found: the cause the sources give for the stop. It is the given cause when they agree with it or say nothing else. It is efficacy, safety or positive_not_advanced when the sources give that instead (choose the subcause from that cause's list; for efficacy use not_stated), and sponsor_decision when the given cause is operational and the sources give a sponsor's decision or money running out (choose from sponsor_decision's list). It is not_stopped when development of the drug in this disease went on or the FDA approved the drug for it (an approval elsewhere is approved_outside_us), and not_a_program when no one was developing the drug for this disease (an academic or investigator study using it as a research tool, a drug-interaction or dosing study of an approved drug); the subcause is then not_stated. Otherwise keep the given cause and choose from its list. A regulator declining approval after a positive readout is that readout's subcause, not efficacy; a harm the sources report keeps a safety stop's cause even when the drug also worked.
+
+Subcauses for each cause, in order of precedence:
+{chr(10).join(f"- {c}: {', '.join(v)}" for c, v in SUBCAUSES.items())}
+
+What each subcause means:
+{chr(10).join(f"- {k}: {v}" for k, v in SUBCAUSE_MEANING.items())}
+
+rationale: at most 60 words."""
+SEARCH_SCHEMA = {
+    "type": "object",
+    "properties": {"subcause": {"type": "string", "enum": list(SUBCAUSE_MEANING)}, "other_reason": {"type": "string"},
+                   "support": {"type": "string", "enum": ["stated", "likely", "not_found"]},
+                   "quote": {"type": "string"}, "sources": {"type": "array", "items": {"type": "string"}},
+                   "rationale": {"type": "string"},
+                   "cause_found": {"type": "string", "enum": [c for c in TEXT_CAUSES if c != "unclear"]}},
+    "required": ["subcause", "other_reason", "support", "quote", "sources", "rationale", "cause_found"],
+    "additionalProperties": False,
+}
+
+
+def search_cause(cause: str, out: dict) -> str:
+    """The cause a stop takes from the search pass: the cause its sources give where text_cause allows the move."""
+    return text_cause(cause, {"text_cause": out["cause_found"]}) or cause
+
+
+def validate_search(p: dict, out: dict) -> None:
+    cause = search_cause(p["cause"], out)
+    if out["subcause"] not in SUBCAUSES.get(cause, ["not_stated"]):
+        raise ValueError(f"subcause {out['subcause']} is not one of {cause}'s")
+    if (out["subcause"] == "other_stated") != bool(out["other_reason"].strip()):
+        raise ValueError("other_reason is given exactly when the subcause is other_stated")
+    if out["support"] == "not_found" and out["subcause"] != "not_stated":
+        raise ValueError(f"not_found with subcause {out['subcause']}")
+    if out["support"] == "stated" and not (out["quote"].strip() and out["sources"]):
+        raise ValueError("a stated subcause without a quote and a source")
+    allowed = {t["nct_id"] for t in p["trials"]} | {f"PMID:{a['pmid']}" for a in p["papers"]}
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    unknown = [x for x in out["sources"] if x not in allowed and llm.norm_url(x) not in retrieved
+               and not set(re.findall(r"NCT\d{8}", x)) & allowed]  # a registry link to an input trial
+    if unknown:
+        raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
+
+
+SEARCH_TASK = llm.Task(name="stop_subcause_search", prompt_version="v3", schema_version="v2", system=SEARCH_SYSTEM,
+                       schema=SEARCH_SCHEMA, subject_type="program_phase", validate=validate_search,
+                       render=lambda p: f"Cause: {p['cause']}\nWhat the cause rests on: {p['explanation'] or '(nothing)'}"
+                                        f"\n\n{render(p)}",
+                       model="claude-sonnet-5", effort="medium", max_tokens=16000, tools=TOOLS)
+
+
+def search_items(rows: list[tuple]) -> dict[str, dict]:
+    """The bundle of every stop, after the text pass, whose cause has subcauses and whose text names none."""
+    open_ = {key: row for key, *_, row in rows
+             if row["cause"] in SUBCAUSES and row["subcause"] in (None, "not_stated")}
+    modes = stops()[0]
+    items = bundles(modes[modes.key.isin(open_)], load_signals())
+    return {k: {**p, "cause": open_[k]["cause"], "explanation": open_[k]["explanation"]} for k, p in items.items()}
+
+
+def apply_search(rows: list[tuple], found: dict) -> None:
+    """Set the subcause of each stop the search pass found one for, with what it rests on."""
+    for key, *_, row in rows:
+        out = found[key][1] if key in found else None
+        cause = search_cause(row["cause"], out) if out else row["cause"]
+        if out and (cause != row["cause"] or out["subcause"] != "not_stated"):
+            if cause != row["cause"]:
+                row.update(cause=cause, guess=None, traced=True)
+            named = cause in SUBCAUSES and out["subcause"] != "not_stated"
+            row.update(subcause=out["subcause"] if cause in SUBCAUSES else
+                       "not_attributed" if cause == "efficacy" else None,
+                       subcause_support=out["support"] if named else None,
+                       explanation=first_text(out["quote"], out["rationale"]),
+                       sources=list(dict.fromkeys(row["sources"] + out["sources"])))
+            row["decision_ids"].append(int(found[key][0]))
+
+
 DESCRIBE_DESCRIPTION = f"""Two passes over the rows stop_cause_assembly writes, without web search (model
 {SUBCAUSE_TASK.model}, effort {SUBCAUSE_TASK.effort}). {SUBCAUSE_TASK.name}: for every stop whose cause is
 {', '.join(SUBCAUSES)} and whose subcause the efficacy label does not set, the model reads the cause, the registry
 reason and the explanation (the trial's stated reason, the traced source quote or the model's reasoning) and picks
-the subcause the text states or directly implies from the cause's list, not_stated where it says no more; validation
-rejects a subcause outside the cause's list. {PLAIN_TASK.name}: every explanation that uses an efficacy-attribution
+the subcause the text states or directly implies from the cause's list, which is in order of precedence (the first
+that applies), other_stated with the reason where the text gives one no listed subcause covers, not_stated where it
+says no more; it judges only from the text, calling a harm on- or off-target only where the text says which. It also
+names the cause the text itself gives, which may differ from the stop's: not_stopped where the drug's development in
+the disease went on or it was approved there, not_a_program where no one was developing it for the disease.
+Validation rejects a subcause outside the cause's list, and other_stated without its reason or a reason without
+other_stated. scripts.subcause_audit checks the lists on a seeded sample of 150 stops decided twice. {PLAIN_TASK.name}: every explanation that uses an efficacy-attribution
 failure code is reworded with the code's meaning; validation rejects a rewording that keeps a code or drops a trial
 id, PMID or URL. The original text stays in the decision it came from."""
 
 
-def describe(_args) -> None:
+def describe(args) -> None:
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, DESCRIBE_METHOD, "Subcause and plain explanation of each stop", DESCRIBE_DESCRIPTION,
                           ["stop_cause_assembly rows (pipeline.stop_causes.stop_rows)"],
                           {"subcause_task": SUBCAUSE_TASK.name, "plain_task": PLAIN_TASK.name,
                            "model": SUBCAUSE_TASK.model, "subcauses": SUBCAUSES})
         conn.commit()
-    sub, plain = describe_items(stop_rows())
+    rows = stop_rows()
+    sub, plain = describe_items(rows)
     for task, items in ((SUBCAUSE_TASK, sub), (PLAIN_TASK, plain)):
         run_id = llm.run(task, items)
         print(f"{task.name}: items={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+    decided = llm.current_decisions(SUBCAUSE_TASK, sub)
+    recast = recast_items(sub, decided)
+    run_id = llm.run(SUBCAUSE_TASK, recast)
+    print(f"{SUBCAUSE_TASK.name} under the text's cause: items={len(recast)} decided={len(llm.decisions(run_id))}")
+    if args.text_only:
+        return
+    apply_text(rows, decided, llm.current_decisions(SUBCAUSE_TASK, recast))
+    items = search_items(rows)
+    run_id = llm.run(SEARCH_TASK, items)
+    print(f"{SEARCH_TASK.name}: items={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
 
 
 def assemble(_args) -> None:
     rows = stop_rows()
-    sub, plain = describe_items(rows)
-    sub, plain = llm.current_decisions(SUBCAUSE_TASK, sub), llm.current_decisions(PLAIN_TASK, plain)
-    out = []
+    items, plain = describe_items(rows)
+    sub, plain = llm.current_decisions(SUBCAUSE_TASK, items), llm.current_decisions(PLAIN_TASK, plain)
+    recast = llm.current_decisions(SUBCAUSE_TASK, recast_items(items, sub))
     with llm.connect() as conn, conn.cursor() as cur:
         mid = llm.record_method(cur, ASSEMBLE_METHOD, "Why each program stopped", ASSEMBLE_DESCRIPTION,
                                 ["report.section1.failure_modes", "preclin.stop_signal",
@@ -599,19 +772,135 @@ def assemble(_args) -> None:
                                  f"{SUBCAUSE_TASK.name}, {PLAIN_TASK.name})"],
                                 {"registry_cause": REGISTRY_CAUSE, "cause": CAUSE, "code_cause": CODE_CAUSE,
                                  "unstated": list(UNSTATED), "subcauses": SUBCAUSES})
-        for key, moiety, mondo, phase, reason, row in rows:
-            if key in sub:
-                row["subcause"] = sub[key][1]["subcause"]
-                row["decision_ids"].append(int(sub[key][0]))
+        for key, *_, row in rows:
             if key in plain:
                 row["explanation"] = plain[key][1]["text"]
                 row["decision_ids"].append(int(plain[key][0]))
-            out.append((moiety, mondo, phase, reason, *(row[c] for c in COLUMNS), mid))
+        apply_text(rows, sub, recast)
+        apply_search(rows, llm.current_decisions(SEARCH_TASK, search_items(rows)))
+        out = [(moiety, mondo, phase, reason, *(row[c] for c in COLUMNS), mid)
+               for key, moiety, mondo, phase, reason, row in rows]
         cur.execute("DELETE FROM preclin.stop")
         execute_values(cur, f"""INSERT INTO preclin.stop (moiety_id, mondo_id, phase, registry_reason,
                                   {', '.join(COLUMNS)}, method_id) VALUES %s""", out)
         conn.commit()
     print(pd.Series([f"{r[4]} / {r[5] or '-'}" for r in out]).value_counts().sort_index().to_string())
+
+
+CONTINUATIONS = ["fda_approved", "later_phase", "active", "no_evidence"]
+CONTINUED_SYSTEM = """You find out what a drug development program did after its registry trials went quiet. A program is one drug developed for one disease. Its trials in the phase given stopped or ended without a later-phase trial in the registry, and an earlier reading of the sources judged that development of the drug in this disease went on anyway. You are given that reading, its sources, the program's trials and the drug's other programs.
+
+Search the web, ClinicalTrials.gov included, for what happened to this drug in this disease after the phase began: FDA approval, trials of a later phase anywhere (other registries such as ChiCTR, the EU registers or jRCT; trials under another name or in combination), regulatory filings, licensing deals, pipeline updates and company releases. Use at most a handful of searches.
+
+outcome, the furthest the sources show the program got:
+- fda_approved: the FDA approved the drug for this disease, a subtype or population of it, or a class containing it. Approval by another regulator, an over-the-counter product launch, or an approval for another disease is not this.
+- later_phase: a trial of a later phase than the one given, in this disease, started (not only planned or registered). phase_reached is the highest such phase, 2 or 3; it is null for every other outcome.
+- active: development of this drug in this disease went on in the same phase (a trial ran or started, the drug was licensed for this disease, a filing was made or is pending) without a later phase starting.
+- no_evidence: the sources do not show this drug's development in this disease going on; for example only a successor drug or another disease went on, or a plan was announced and nothing followed.
+date: for fda_approved the approval date, for later_phase the start of the first later-phase trial, for active the date of the latest dated sign of development; as YYYY-MM-DD, YYYY-MM or YYYY. Empty for no_evidence.
+outside_us: for later_phase and active, true when the development the sources show ran only outside the United States; null otherwise.
+Quote the decisive sentence in quote. Cite only URLs your searches returned, and NCT ids and PMIDs from the input. Prefer no_evidence to an outcome no source supports. rationale: at most 60 words."""
+CONTINUED_SCHEMA = {
+    "type": "object",
+    "properties": {"outcome": {"type": "string", "enum": CONTINUATIONS},
+                   "phase_reached": {"type": ["integer", "null"]}, "date": {"type": "string"},
+                   "outside_us": {"type": ["boolean", "null"]}, "quote": {"type": "string"},
+                   "sources": {"type": "array", "items": {"type": "string"}}, "rationale": {"type": "string"}},
+    "required": ["outcome", "phase_reached", "date", "outside_us", "quote", "sources", "rationale"],
+    "additionalProperties": False,
+}
+DATE = re.compile(r"^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?$")
+
+
+def continued_on(text: str):
+    """A continuation date as a date: day 1 where only the month is given, January 1 where only the year."""
+    y, m, d = DATE.match(text.strip()).groups()
+    return pd.Timestamp(int(y), int(m or 1), int(d or 1)).date()
+
+
+def validate_continued(p: dict, out: dict) -> None:
+    o = out["outcome"]
+    if (o == "later_phase") != (out["phase_reached"] is not None):
+        raise ValueError("phase_reached is given exactly when the outcome is later_phase")
+    if o == "later_phase" and not p["phase"] < out["phase_reached"] <= 3:
+        raise ValueError(f"phase {out['phase_reached']} is not later than {p['phase']}")
+    if o == "no_evidence":
+        if out["date"].strip():
+            raise ValueError("a date with no_evidence")
+        return
+    if not DATE.match(out["date"].strip()):
+        raise ValueError(f"date {out['date']!r} is not YYYY-MM-DD, YYYY-MM or YYYY")
+    continued_on(out["date"])
+    if not (out["quote"].strip() and out["sources"]):
+        raise ValueError(f"{o} without a quote and a source")
+    allowed = {t["nct_id"] for t in p["trials"]} | {f"PMID:{a['pmid']}" for a in p["papers"]}
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", []) + p["earlier_sources"]}  # the earlier
+    # reading's sources were retrieved by its own searches
+    unknown = [x for x in out["sources"] if x not in allowed and llm.norm_url(x) not in retrieved
+               and not re.fullmatch(r"NCT\d{8}", x)]  # a registry id its searches found
+    if unknown:
+        raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
+
+
+CONTINUED_TASK = llm.Task(name="stop_continuation", prompt_version="v2", schema_version="v1",
+                          system=CONTINUED_SYSTEM, schema=CONTINUED_SCHEMA, subject_type="program_phase",
+                          validate=validate_continued,
+                          render=lambda p: f"Phase entered: {p['entry']}\nWhy the earlier reading judged it had "
+                                           f"not stopped: {p['explanation'] or '(no text)'}\nIts sources: "
+                                           f"{' '.join(p['earlier_sources']) or '(none)'}\n\n{render(p)}",
+                          model="claude-sonnet-5", effort="medium", max_tokens=16000,
+                          tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 6},
+                                 {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 3}])
+CONTINUED_METHOD = "stop_continuation@v1"
+CONTINUED_DESCRIPTION = f"""For every stop preclin.stop records as not_stopped (development of the drug in the
+disease went on, or it was approved there), an LLM ({CONTINUED_TASK.model}, effort {CONTINUED_TASK.effort}, web
+search with ClinicalTrials.gov allowed) reads the reading that judged it, its sources, the program's trials in the
+phase and the drug's other programs, and states the furthest the sources show the program got: FDA approval for the
+disease, a later-phase trial started anywhere, development still active in the same phase, or no evidence it went
+on, with the date of that event and whether it ran only outside the US. Validation rejects a later phase that is
+not later, a missing or malformed date, an outcome without a quote and a source, and URLs its searches did not
+return. report.section1 counts a program whose later phase started by the snapshot as advanced and one active,
+or reported approved, within the suspension lag as still running; approvals themselves come only from the approval
+judgement."""
+
+
+def continued_items() -> dict[str, dict]:
+    """The bundle of every not_stopped stop, with the reading that judged it and that reading's sources."""
+    held = frame.query("SELECT moiety_id, mondo_id, phase, explanation, sources FROM preclin.stop "
+                       "WHERE cause = 'not_stopped'")
+    held["key"] = keys(held.assign(mondo_id=held.mondo_id.replace("", None)))
+    held = held.set_index("key")
+    modes = stops()[0]
+    modes = modes[modes.key.isin(held.index)]
+    entry = dict(zip(modes.key, modes.entry))
+    return {k: {**p, "entry": str(pd.Timestamp(entry[k]).date()), "explanation": text(held.at[k, "explanation"]),
+                "earlier_sources": list(held.at[k, "sources"])}
+            for k, p in bundles(modes, load_signals()).items()}
+
+
+def continued(_args) -> None:
+    items = continued_items()
+    run_id = llm.run(CONTINUED_TASK, items)
+    print(f"{CONTINUED_TASK.name}: items={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+    decided = llm.current_decisions(CONTINUED_TASK, items)
+    with llm.connect() as conn, conn.cursor() as cur:
+        mid = llm.record_method(cur, CONTINUED_METHOD, "What stops that did not stop went on to",
+                                CONTINUED_DESCRIPTION, ["preclin.stop", "preclin.stop_signal",
+                                                        f"pv_evidence.llm_decision ({CONTINUED_TASK.name})"],
+                                {"task": CONTINUED_TASK.name, "model": CONTINUED_TASK.model})
+        out = []
+        for key, (decision_id, o) in decided.items():
+            moiety, mondo, phase = key.split("|")
+            out.append((int(moiety), mondo, int(phase), o["outcome"], o["phase_reached"],
+                        continued_on(o["date"]) if o["outcome"] != "no_evidence" else None,
+                        o["outside_us"] if o["outcome"] in ("later_phase", "active") else None,
+                        first_text(o["quote"], o["rationale"]), o["sources"], int(decision_id), mid))
+        cur.execute("DELETE FROM preclin.stop_continuation")
+        execute_values(cur, """INSERT INTO preclin.stop_continuation (moiety_id, mondo_id, phase, outcome,
+                                 phase_reached, on_date, outside_us, explanation, sources, decision_id, method_id)
+                               VALUES %s""", out)
+        conn.commit()
+    print(pd.Series([r[3] for r in out]).value_counts().to_string())
 
 
 def main() -> None:
@@ -620,8 +909,11 @@ def main() -> None:
     sub.add_parser("signals").set_defaults(fn=signals)
     sub.add_parser("infer").set_defaults(fn=infer)
     sub.add_parser("validate").set_defaults(fn=validate_run)
-    sub.add_parser("describe").set_defaults(fn=describe)
+    p = sub.add_parser("describe")
+    p.add_argument("--text-only", action="store_true", help="skip the search-based pass")
+    p.set_defaults(fn=describe)
     sub.add_parser("assemble").set_defaults(fn=assemble)
+    sub.add_parser("continued").set_defaults(fn=continued)
     args = parser.parse_args()
     args.fn(args)
 

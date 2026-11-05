@@ -39,10 +39,14 @@ BATCH_SIZE = 2000
 POLL_SECONDS = 60
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))  # concurrent Messages calls of a direct run
 STREAM_ATTEMPTS = 3  # the SDK retries opening a request, not a stream that drops partway
+STREAM_SECONDS = 900  # a stream's keep-alive pings defeat the read timeout, so one turn gets this long in all
 API_FAILURE_LIMIT = 0.2  # share of a direct run's calls failing at the API (e.g. credit exhausted) that stops it
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
 DIRECT_MAX = int(os.environ.get("LLM_DIRECT_MAX", "100"))
+# A batch that has finished no request this long after it was created is cancelled and its requests are
+# sent to the Messages API directly: the batch queue sometimes holds a batch untouched for hours.
+STALL_SECONDS = 45 * 60
 
 
 def canonical_json(value: Any) -> str:
@@ -144,28 +148,40 @@ class Task:
         )
 
 
-def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
+def own_input(payload: dict[str, Any], context: tuple[str, ...]) -> dict[str, Any]:
+    """The payload without its context keys: what a decision is about, as opposed to what it was shown beside it."""
+    return {k: v for k, v in payload.items() if k not in context}
+
+
+def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str,
+              context: tuple[str, ...] = ()) -> dict[str, tuple]:
     """subject_key -> (raw_response, parsed_output, provider_request_id, usage,
     llm_decision_id, model_parameters) of validated decisions from earlier runs
-    of this task and prompt version: with reuse_by='input' the latest one per
-    subject whose input hash equals the current payload's hash; with
+    of this task and prompt version, retracted runs aside: with reuse_by='input' the latest one per
+    subject whose input hash equals the current payload's hash, or, given context keys, whose payload
+    carried those keys and otherwise equals the current one (own_input), whatever the context said; with
     reuse_by='subject' the latest one per subject whatever its input. A decision
     that fails the task's validation against today's data is not reused."""
     keys = list(items)
     hashes = [sha256_text(canonical_json(items[k])) for k in keys]
+    owns = [canonical_json(own_input(items[k], context)) if context else "" for k in keys]
     cur.execute(
         """
         SELECT DISTINCT ON (d.subject_key) d.subject_key, d.raw_response, d.parsed_output,
                d.provider_request_id, d.usage, d.llm_decision_id, d.model_parameters
-        FROM unnest(%s::text[], %s::text[]) AS w(subject_key, input_sha256)
+        FROM unnest(%s::text[], %s::text[], %s::text[]) AS w(subject_key, input_sha256, own)
         JOIN pv_evidence.llm_decision d ON d.subject_key = w.subject_key
-             AND (%s = 'subject' OR d.input_sha256 = w.input_sha256)
+             AND (%s = 'subject'
+                  OR (cardinality(%s::text[]) = 0 AND d.input_sha256 = w.input_sha256)
+                  OR (cardinality(%s::text[]) > 0 AND d.input_payload ?& %s::text[]
+                      AND (d.input_payload - %s::text[]) = w.own::jsonb))
         JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
         WHERE d.task = %s AND d.subject_type = %s AND r.prompt_version = %s
-          AND r.output_schema_version = %s AND d.validation_status = 'validated'
+          AND r.output_schema_version = %s AND d.validation_status = 'validated' AND r.status <> 'retracted'
         ORDER BY d.subject_key, d.created_at DESC
         """,
-        (keys, hashes, reuse_by, task.name, task.subject_type, task.prompt_version, task.schema_version),
+        (keys, hashes, owns, reuse_by, list(context), list(context), list(context), list(context),
+         task.name, task.subject_type, task.prompt_version, task.schema_version),
     )
     reused = {}
     for key, *row in cur.fetchall():
@@ -222,11 +238,13 @@ def _store(rows: list[tuple]) -> None:
             conn.close()
 
 
-def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input") -> uuid.UUID:
+def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input",
+        context: tuple[str, ...] = ()) -> uuid.UUID:
     """Decide every item (subject_key -> payload). Returns the run id; the
     run's decisions cover every key, reused or new. reuse_by='subject' keeps
     earlier decisions when only incidental payload details (e.g. the order of
-    context rows) changed. A run that stops on an error is marked failed."""
+    context rows) changed; context names payload keys whose change alone does not call for a new
+    decision (_reusable). A run that stops on an error is marked failed."""
     api = anthropic.Anthropic(max_retries=8)
     run_id = uuid.uuid4()
     with connect() as conn, conn.cursor() as cur:
@@ -248,10 +266,11 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
     status = "failed"
     try:
         with connect() as conn, conn.cursor() as cur:
-            reused = _reusable(cur, task, items, reuse_by)
-            _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage,
-                                prior_id=decision_id, params=params)
-                           for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()])
+            reused = _reusable(cur, task, items, reuse_by, context)
+        copies = [_row(run_id, task, key, items[key], raw, parsed, request_id, usage, prior_id=decision_id, params=params)
+                  for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()]
+        for start in range(0, len(copies), 2000):  # each batch on its own connection, replayed through a dropped link
+            _store(copies[start:start + 2000])
         todo = [k for k in items if k not in reused]
         print(f"[{task.name}] run={run_id} items={len(items)} reused={len(reused)} new={len(todo)}", flush=True)
         if len(todo) <= DIRECT_MAX or task.tools:
@@ -264,6 +283,19 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
             cur.execute("UPDATE pv_evidence.llm_decision_run SET status=%s, completed_at=%s "
                         "WHERE decision_run_id=%s", (status, datetime.now(timezone.utc), str(run_id)))
     return run_id
+
+
+def retract(run_id: str, reason: str) -> None:
+    """Withdraw a completed run: its decisions stay as the record, and no later run reuses them, so each of its
+    subjects falls back to the decision it had before."""
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute("""UPDATE pv_evidence.llm_decision_run
+                       SET status = 'retracted', parameters = parameters || %s
+                       WHERE decision_run_id = %s AND status = 'completed'""",
+                    (Json({"retracted": {"reason": reason, "at": datetime.now(timezone.utc).isoformat()}}), run_id))
+        if cur.rowcount != 1:
+            raise ValueError(f"run {run_id} is not a completed run")
+        conn.commit()
 
 
 MAX_CONTINUATIONS = 4  # resumptions of a turn the server paused while running its tools
@@ -280,13 +312,17 @@ def latest_decisions(task: str, prompt_version: str) -> pd.DataFrame:
     """The latest validated decision of each subject for a task version, held-out subjects (|heldout) aside:
     key, llm_decision_id, parsed_output."""
     with connect() as conn, conn.cursor() as cur:
-        cur.execute("""
-            SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
-            FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-            WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-              AND d.subject_key NOT LIKE '%%|heldout'
-            ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
-        return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
+        return _latest(cur, task, prompt_version)
+
+
+def _latest(cur, task: str, prompt_version: str) -> pd.DataFrame:
+    cur.execute("""
+        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
+        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
+        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
+          AND r.status <> 'retracted' AND d.subject_key NOT LIKE '%%|heldout'
+        ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
+    return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
 
 
 def retrieved_urls(content) -> list[str]:
@@ -313,7 +349,11 @@ def _complete(api, task: Task, payload: dict[str, Any]):
     content, usage = [], {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0,
                           "web_search_requests": 0, "web_fetch_requests": 0}
     for _ in range(MAX_CONTINUATIONS + 1):
+        started = time.monotonic()
         with api.messages.stream(**params) as stream:  # streamed: no cap on max_tokens
+            for _event in stream:
+                if time.monotonic() - started > STREAM_SECONDS:
+                    raise TimeoutError(f"no final message after {STREAM_SECONDS}s")
             msg = stream.get_final_message()
         content += msg.content
         usage["input_tokens"] += msg.usage.input_tokens
@@ -359,7 +399,7 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
             except httpx2.TransportError as exc:
                 if attempt == STREAM_ATTEMPTS - 1:
                     return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
-            except anthropic.APIError as exc:
+            except (anthropic.APIError, TimeoutError) as exc:
                 return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
     n_ok = n_bad = n_api = 0
@@ -438,7 +478,23 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
 
     while pending:
         time.sleep(POLL_SECONDS)
-        ended = [b for b in pending if _api(api.messages.batches.retrieve, b).processing_status == "ended"]
+        status = {b: _api(api.messages.batches.retrieve, b) for b in pending}
+        for batch_id in [b for b, st in status.items() if stalled(st, datetime.now(timezone.utc))]:
+            # Re-read just before cancelling: sending earlier stalled batches directly takes minutes, and a
+            # batch that finished meanwhile is collected below on a later poll instead.
+            if not stalled(_api(api.messages.batches.retrieve, batch_id), datetime.now(timezone.utc)):
+                continue
+            try:
+                _api(api.messages.batches.cancel, batch_id)
+            except anthropic.BadRequestError:  # it finished between the read and the cancel
+                continue
+            keys = [key for (b, _), key in custom_ids.items() if b == batch_id]
+            print(f"[{task.name}] batch {batch_id} stalled; sending its {len(keys)} requests directly", flush=True)
+            _run_concurrent(api, run_id, task, items, keys)
+            pending.remove(batch_id)
+            manifest.pop(batch_id, None)
+            _write_manifest(task, manifest)
+        ended = [b for b in pending if b in status and status[b].processing_status == "ended"]
         for batch_id in ended:
             rows, n_ok, n_bad = [], 0, 0
             for result in _api(lambda b: list(api.messages.batches.results(b)), batch_id):
@@ -457,6 +513,14 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 
+def stalled(batch, now: datetime) -> bool:
+    """Whether a batch is still in progress STALL_SECONDS after it was created with no request finished."""
+    if batch.processing_status != "in_progress" or (now - batch.created_at).total_seconds() <= STALL_SECONDS:
+        return False
+    counts = batch.request_counts
+    return counts.succeeded + counts.errored + counts.canceled + counts.expired == 0
+
+
 def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:
     """(subject_key, llm_decision_id, parsed_output) for every validated decision of a run."""
     with connect() as conn, conn.cursor() as cur:
@@ -464,3 +528,18 @@ def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:
                     "WHERE decision_run_id = %s AND validation_status = 'validated' ORDER BY subject_key",
                     (str(run_id),))
         return cur.fetchall()
+
+
+def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser(description="LLM decision runs: python -m pipeline.llm retract <run id> --reason ...")
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    r = sub.add_parser("retract")
+    r.add_argument("run_id")
+    r.add_argument("--reason", required=True)
+    args = parser.parse_args()
+    retract(args.run_id, args.reason)
+
+
+if __name__ == "__main__":
+    main()

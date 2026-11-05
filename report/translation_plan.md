@@ -130,3 +130,182 @@ efficacy with a readable not-met randomised trial. Each case is checked by
 agents against primary sources (evidence dated before entry; outcome in the
 registry, publications and FDA letters), and failures are coded F1 (exposure
 or engagement never shown) to F8 (commercial).
+
+## Amendment, 2026-11-03: evidence categories and new lines
+
+Committed before any line below was computed against an outcome. Coverage
+counts were measured on the cohort without outcomes. The results for human
+genetics, tumour genetics, diseased tissue, genetically altered animals,
+target liability and potency are already reported, so regrouping them is not
+blind and their category estimates are not new confirmations.
+
+**Cohort.** Entries with a US-sited industry trial in the phase, entering
+2008–2019 (10,012 entries; 7,372 with a single resolved human protein target
+and a disease). Outcome S4 as above; the safety-risk category is tested against
+safety stops, and every efficacy category is also reported against efficacy
+stops. Evidence is frozen at the year before entry.
+
+**Categories.** Efficacy evidence is grouped by the experimental system that
+produced it; within a category, subcategories separate claims about the target
+from claims about the drug.
+
+1. **Human genetics.** Rare-variant and Mendelian; GWAS; both together;
+   direction concordant with the drug; curated disease mechanism (Reactome,
+   which shares 81% of its 188 entries with germline genetics for the disease).
+2. **Tumour genetics** (ONC). Recurrently mutated in this cancer; mutation
+   concordant with the drug.
+3. **Human diseased tissue.** RNA level changed (Expression Atlas,
+   |log2FC| ≥ 1.1); raised, with a drug that decreases function.
+4. **Animal studies.** Genetically altered animals (MGI curated, IMPC screen,
+   PhenoDigm top quartile, direction concordant); the drug in an animal model of
+   the disease (pilot); the drug's pharmacology in healthy animals (pilot).
+   Animal toxicology is unpublished before entry and is not used: FDA reviews of
+   it exist only for approved drugs.
+5. **Cell studies.** CRISPR screens in cancer cells; first published 2019, so
+   scored on current data as hindsight only.
+6. **The molecule** (small molecules). Potency on the primary target (best
+   pChEMBL ≥ 7, i.e. 100 nM or better, the threshold the report already uses;
+   ChEMBL documents dated before entry); selectivity (primary-target
+   potency at least 1 log unit above the best off-target potency, among drugs
+   measured on both); drug-likeness (at most one Rule-of-5 violation) and, for
+   neurology and psychiatry programs, brain-penetrance properties (TPSA < 90,
+   MW < 450, H-bond donors ≤ 3), from PubChem computed properties. The potency
+   threshold was corrected on 2026-11-04, before any outcome was tested: it first
+   read pChEMBL ≥ 8, which is 10 nM, while the stated intent was 100 nM.
+7. **Early human pharmacology** (Phase 2 and 3 entries). Target engagement
+   measured in people before entry (pilot).
+
+Kept apart from the efficacy categories:
+
+- **Safety risk.** Loss-of-function intolerance, mouse knockout lethal,
+  essential in most cell lines (hindsight only). Tested against safety stops.
+- **Clinical precedent** (benchmark, outside every Holm family). An approved
+  drug on the target for a related disease (B1); for an unrelated disease only;
+  an earlier Phase 2/3 trial of another drug on the target in a related disease
+  (Lin ≥ 0.5) that missed its primary endpoint or stopped for futility, ending
+  within 3 years before entry. The last is scored for 2011–2019 entries only:
+  trial-level results are sparse before 2008, and a lookback reaching before
+  them makes the line rise with entry year.
+
+**Category roll-up, corrected 2026-11-04.** The plan does not say how a
+category is formed from its subcategories. The first build counted an entry as
+having a category when any subcategory was present and as lacking it otherwise.
+That treated "not known" as "absent", against the subcategories' own null
+definitions, and it let a subcategory scored on only part of a category's
+entries define the category there. It was corrected before the category
+results were published, after the first estimates had been seen, because the
+molecule category (2.74×) exceeded every one of its subcategories (0.86–1.59×):
+582 of the 1,283 small-molecule entries counted as lacking it had no known
+structure and no measurement at all. The corrected rule:
+- A category is formed only from subcategories scored on all of its entries.
+  Brain-penetrant properties (neurology and psychiatry only) and the earlier
+  failed trial (2011–2019 entries only) are reported alone.
+- The molecule category covers small molecules with known computed properties.
+- An entry on which none of a category's subcategories is known is null,
+  not 0.
+
+The other five categories are unchanged entry for entry. The corrected precedent
+category, an approved drug on the target for any disease, is the same variable
+as the target-precedent covariate of the Phase 2 model, so the precedent lines
+are no longer adjusted for it. Before this, they had been adjusted for
+themselves.
+
+**Display areas, added 2026-11-05 (exploratory).** After the category results had been seen, the
+evidence chart was regrouped for readability into areas that each answer one question, with mutually
+exclusive groups of programs inside each: human genetics (rare variants only, common only, both),
+curated pathways (a disease mutation shown disrupting the target's pathway), tumour genetics
+(mutation matches the drug, or not), diseased tissue (RNA level changed), mouse models (close symptom
+match, looser), the drug
+(strong and selective, strong only, weaker), target safety risk (constraint only, knockout lethality
+only, both) and earlier drugs on the target (approved for a related disease, for unrelated diseases
+only, a failure with no approval). Because the grouping was chosen knowing the results, its estimates
+are exploratory. Cancer-cell dependency is left off the chart, its interval too wide to read. The categories above remain the registered analysis, the appendix table reports
+them, and N1-N3 are unchanged.
+
+**New confirmatory hypotheses (Holm-corrected together, α = 0.05).**
+
+- **N1.** Among small molecules measured on the primary target and an off
+  target, selectivity of at least 10-fold raises S4.
+- **N2.** Among small molecules, at most one Rule-of-5 violation raises S4;
+  among neurology and psychiatry programs, the brain-penetrance properties
+  raise S4.
+- **N3.** Outside oncology, among small molecules, potency of 100 nM or better
+  on the primary target raises S4 with human genetics and drug-likeness held
+  fixed. Potency's unadjusted effect is already reported; this tests whether it
+  holds independently of genetics.
+
+N3 was narrowed on 2026-11-04, before any outcome was tested. As first written
+it tested the whole molecule category, but drug-likeness alone passes 84% of
+small-molecule entries, so the category covered 79% of them and would have
+measured drug-likeness rather than the drug's pharmacology. Drug-likeness keeps
+its own test in N2.
+
+Category-level estimates for categories 1–6 are reported on this cohort with
+their intervals and are not tested. A category or subcategory with fewer than
+15 distinct exposed targets or 100 exposed entries is described, not estimated.
+
+**Pilot gates.** The literature lines (drug in an animal model of the disease,
+drug in healthy animals, human target engagement) run first on 300 seeded
+entries: PubMed abstracts searched by every registered name of the drug and the
+disease's synonyms and subtypes, each hit screened by an LLM. Agents with web
+access, blind to those results, list every qualifying study for 100 of the
+entries. A line enters the analysis only if retrieval recall against that list
+is at least 80%, a second model agrees with the screen at κ ≥ 0.6, and at least
+8% of Phase 2 entries carry it; otherwise it is reported as descriptive.
+Full-text search is not used: none of about 25 full-text-only hits checked was
+a study of the drug in the disease.
+
+**Second literature attempt, 2026-11-04.** The first version failed the gate on
+retrieval (recall 22–25%), not screening (κ 0.59–0.95, and no study reported where
+the reference found none); its results are in `report/audits/literature_gate.md`.
+One second version is allowed, fixed here before it runs:
+
+- Retrieval by the drug's names alone, with no disease, species or kind terms.
+  The names are the INN, code names, FDA substance-registry names, and PubChem
+  and ChEMBL synonyms. Searches cover publications up to the year before entry,
+  excluding reviews, and keep up to 200 results per drug in PubMed relevance
+  order. The LLM screen decides the kind, and for animal models which disease
+  is modelled. A screened model counts for an entry when its disease is the
+  entry's disease or within Lin ≥ 0.5 of it.
+- It is scored only against a fresh blind reference set: entries 101–200 of
+  `report/audits/literature_pilot_sample.csv`, researched by new agents under
+  the same instructions, with no access to either version's results. The gates
+  are unchanged. A line that fails stays descriptive, and no third version is
+  run.
+
+**Comprehensiveness amendment, 2026-11-04.** The user asked for every new line to be as
+comprehensive as public data allows. Two changes are fixed here before any data for them is
+pulled or any outcome is looked at.
+
+- **Literature lines, third attempt (user-directed).** This overrides the stop rule above, which
+  allowed no third version. Any line that passes is labelled in the report as passing on a
+  third, user-directed attempt, not as a clean confirmation. Retrieval is by every name of the
+  drug, as in version 2, but with no cap on abstracts per drug. It also adds abstracts outside
+  MEDLINE (preprints and conference abstracts indexed by Europe PMC) up to the year before
+  entry. The screen and the disease matching are as in version 2. The attempt is scored only
+  against a new blind reference set: entries 201–300 of
+  `report/audits/literature_pilot_sample.csv`, researched under the same instructions by agents
+  with no access to any version's results. The gates are unchanged. A line that fails stays
+  descriptive, with no further attempt.
+  Addendum, same day, before the pilot ran, at the user's direction: retrieval also uses Firecrawl's
+  research index. That means semantic search over about 43M PubMed, bioRxiv and medRxiv abstracts, by the
+  drug's names and by the drug with each kind of evidence, plus citation-graph expansion from hits
+  already found, kept to publications up to the year before entry. Hits pass through the same screen.
+  The pilot reports Firecrawl credits per entry; a full-cohort run waits for the user to approve its cost.
+- **Cell studies before 2019 (oncology).** A new subcategory: the target is a dependency in
+  cancer cell lines of the program's tumour type, in genome-wide RNAi or CRISPR screens
+  published before entry. The sources are the DEMETER2 combined RNAi scores (Achilles,
+  Project DRIVE, Marcotte breast screens) and the Avana CRISPR screens. Each screen's cell
+  lines are dated by the year their source paper was published. A gene is a dependency in a
+  tumour type when its score is −0.5 or lower in at least two screened cell lines of that type
+  and in at least 20% of them. Cell-line lineages are matched to the program's disease within
+  Lin ≥ 0.5, by the same MONDO neighbourhood as the other lines. Genes on DepMap's
+  common-essential list of the same year are excluded, so the line marks selective dependency.
+  The CRISPR line first published in 2019 (Project Score) stays a hindsight line.
+
+**Cell studies scope, 2026-11-04.** Fixed before the dependency line was compared with any outcome. Cell-line
+evidence for a disease exists only in oncology, and the earliest dependency screens were published in 2014, so
+the Cell studies category and its dependency subcategory are scored on oncology entries from 2015 on. Both its
+lines are known for every one of those entries, so the category means the same thing across its scope. The
+dependency scores are DEMETER2 and CERES reprocessings (2018–19) of screens published 2014–2017: the screen data
+existed before entry, but the exact scores were computed later.

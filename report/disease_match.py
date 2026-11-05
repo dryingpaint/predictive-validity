@@ -11,26 +11,32 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
+from functools import cache
 
 from report import frame
 
 SIMILARITY_THRESHOLD = 0.8
 
 
+@cache  # loaded once per build; every Mondo shares the tables, which callers only read
+def mondo_tables() -> tuple[dict, dict]:
+    anc = frame.query("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'")
+    ancestors = defaultdict(set)
+    for t, a in anc.itertuples(index=False):
+        ancestors[t].add(a)
+    terms = frame.query("SELECT term_id FROM preclin.ontology_term WHERE ontology = 'MONDO' AND NOT is_obsolete")
+    n_desc = defaultdict(int)
+    for t, ancs in ancestors.items():
+        for a in ancs:
+            n_desc[a] += 1
+    n = len(terms)
+    ic = {t: 1 - math.log(1 + n_desc.get(t, 0)) / math.log(n) for t in terms.term_id}
+    return ancestors, ic
+
+
 class Mondo:
     def __init__(self):
-        anc = frame.query_paged("SELECT term_id, ancestor_id FROM preclin.ontology_ancestor WHERE ontology = 'MONDO'",
-                                "term_id")
-        self.ancestors = defaultdict(set)
-        for t, a in anc.itertuples(index=False):
-            self.ancestors[t].add(a)
-        terms = frame.query("SELECT term_id FROM preclin.ontology_term WHERE ontology = 'MONDO' AND NOT is_obsolete")
-        n_desc = defaultdict(int)
-        for t, ancs in self.ancestors.items():
-            for a in ancs:
-                n_desc[a] += 1
-        n = len(terms)
-        self.ic = {t: 1 - math.log(1 + n_desc.get(t, 0)) / math.log(n) for t in terms.term_id}
+        self.ancestors, self.ic = mondo_tables()
 
     def lin(self, a: str, b: str) -> float:
         if a == b:
