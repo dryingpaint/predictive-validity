@@ -377,7 +377,6 @@ def s3_specificity():
 
 
 BLOCK_HEADERS = {"precedent": "For comparison: whether earlier drugs on the same target had already succeeded"}
-LITERATURE_NOTE = "not measured: our search found too few of the studies"
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
 
 
@@ -392,10 +391,11 @@ def label_pad(fig, ax) -> float:
 def evidence_translates():
     """Relative success to approval from any phase for each evidence category and its subcategories, on
     US-developed programs; a filled dot is a 95% interval clear of 1. Lines known only after entry are drawn
-    dashed; lines too rare to estimate, or whose literature retrieval failed its gate, are listed without one. An
-    interval that runs past the axis ends in an arrowhead at its edge."""
+    dashed. Only lines with an estimate are drawn: the ones too rare to estimate, first available after entry or
+    whose literature retrieval failed its gate stay in the appendix table. An interval that runs past the axis ends
+    in an arrowhead at its edge."""
     lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
-    lines = lines[lines.category.isin(CATEGORY_COLORS)
+    lines = lines[lines.category.isin(CATEGORY_COLORS) & lines.estimated.eq(True)
                   & (lines.level.ne("descriptive") | lines.column.fillna("").str.endswith("_untimed"))]
     ys, y, prev = [], 0.0, None
     for i, r in enumerate(lines.itertuples()):
@@ -407,11 +407,6 @@ def evidence_translates():
     lim = (np.log2(0.2), np.log2(5))
     for yi, r in zip(ys, lines.itertuples()):
         color, late = CATEGORY_COLORS[r.category], str(r.column).endswith("_untimed")
-        if pd.isna(r.column) or not r.estimated:
-            note = LITERATURE_NOTE if pd.isna(r.column) else "not measured: these data first appeared in 2019" \
-                if r.exposed == 0 else f"too few programs to measure ({int(r.exposed):,})"
-            ax.text(lim[0] + 0.05, yi, note, va="center", color=INK2, fontsize=9, style="italic")
-            continue
         ax.plot([np.log2(max(r.rs_rs_lo, 0.2)), np.log2(min(r.rs_rs_hi, 5))], [yi, yi], color=color, linewidth=2,
                 solid_capstyle="round", linestyle=(0, (2, 1.5)) if late else "-")
         for end, beyond, mark in ((lim[0], r.rs_rs_lo < 0.2, "<"), (lim[1], r.rs_rs_hi > 5, ">")):
