@@ -5,6 +5,7 @@ from pipeline.drugs import (
     disagreements,
     nonproprietary_name,
     render,
+    merged_names,
     substance_groups,
 )
 from pipeline.fda import principals
@@ -237,3 +238,20 @@ def test_a_holder_resolved_in_the_same_run_follows_its_own_decision():
 
 def test_an_entity_alone_on_its_substance_stays_alone():
     assert substance_groups({41917: "U3"}, {}) == {"U3": [41917]}
+
+
+def test_undoing_a_same_entity_merge_drops_the_merged_entitys_names_from_the_survivor():
+    payload = {"entity": {"moiety_id": 13338, "name": "menc strain c11 adipic conjugate", "unii": "9B7N7Y96MK",
+                          "other_names": []},
+               "candidates": [{"moiety_id": 36058, "name": "meningococcal group c oligosaccharide crm197 conjugate",
+                               "other_names": ["menc crm197"]},
+                              {"moiety_id": 36059, "name": "meningococcal group y conjugate", "other_names": []}]}
+    survivor, names, unii = merged_names("moiety_same_entity", payload, {"same": [36058]}, alive={13338, 36059})
+    assert survivor == 13338 and unii == "9B7N7Y96MK"
+    assert names == ["meningococcal group c oligosaccharide crm197 conjugate", "menc crm197"]
+
+
+def test_undoing_a_unii_merge_names_the_merged_entity_and_its_substance():
+    payload = {"name": "zuraprep", "codes": ["ZP-1"], "aliases": []}
+    survivor, names, unii = merged_names("moiety_unii", payload, {"unii": "ND2M416302"}, alive=set())
+    assert survivor is None and names == ["zuraprep", "ZP-1"] and unii == "ND2M416302"

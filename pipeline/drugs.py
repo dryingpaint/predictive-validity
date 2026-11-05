@@ -500,10 +500,21 @@ def unii_items(cur, entities: list[tuple], parents: dict[str, list[str]]) -> dic
     for key, u, name in cur.fetchall():
         by_code.setdefault(key, {}).setdefault(u, []).append(name[:160])
     by_code = {k: v for k, v in by_code.items() if len(v) <= CODE_WORD_MAX}
+    # Substances the registry names as a component of a product an entity's FDA application lists
+    # ("<brand> component ..."): the components of multi-antigen vaccines have no name of their own to match.
+    brand_keys = {mid: [k for k in dict.fromkeys(map(moiety_key, fda_names)) if k]
+                  for mid, _, _, _, _, fda_names in entities}
+    cur.execute("""SELECT k.key, n.unii, n.name FROM preclin.unii_name n
+                   JOIN unnest(%s::text[]) k(key) ON lower(n.name) LIKE k.key || ' component %%'""",
+                (sorted({k for ks in brand_keys.values() for k in ks}),))
+    by_brand = {}
+    for key, u, name in cur.fetchall():
+        by_brand.setdefault(key, {}).setdefault(u, []).append(name)
     matched = {}
     for mid, ks in keys.items():
         found = [hit for k in ks for hit in by_key.get(k, {}).items()]
         found += [hit for k in code_keys[mid] for hit in by_code.get(k, {}).items()]
+        found += [hit for k in brand_keys.get(mid, []) for hit in by_brand.get(k, {}).items()]
         if found:
             matched[mid] = candidate_uniis(found, parents)
     uniis = sorted({u for c in matched.values() for u in c})
@@ -609,32 +620,50 @@ def unii(_args, only: set[int] | None = None) -> None:
     same_entities(named=getattr(_args, "named_pairs", False))
 
 
+def merged_names(task: str, payload: dict, out: dict, alive: set[int]) -> tuple[int | None, list[str], str | None]:
+    """For a merge decision: (the surviving entity, the names of the entities merged into it, the survivor's
+    substance as the decision gives it). A moiety_unii decision merged its subject into the holder of its UNII
+    (the survivor is found by that UNII); a moiety_same_entity decision merged its subject and the candidates it
+    called the same, and the survivor is whichever of them still exists."""
+    if task == UNII_TASK.name:
+        return None, [payload["name"], *payload["codes"], *payload["aliases"]], out.get("unii")
+    members = [payload["entity"]] + [c for c in payload["candidates"] if c["moiety_id"] in out.get("same", [])]
+    survivor = next((m["moiety_id"] for m in members if m["moiety_id"] in alive), None)
+    names = [n for m in members if m["moiety_id"] != survivor for n in [m["name"], *m.get("other_names", [])]]
+    unii = next((m.get("unii") for m in members if m["moiety_id"] == survivor), None)
+    return survivor, names, unii
+
+
 def split(args) -> None:
-    """Undo the UNII merges made by the given moiety_unii decisions: the survivor holding the decision's substance
-    loses the merged entity's name and codes from its aliases and code names (all but those the substance registry
-    gives the survivor's own substance), so the next canonicalize resolves the merged entity's strings to an entity
-    of its own again. The decisions' runs are not retracted: the merged entity returns under a new id."""
+    """Undo the merges made by the given moiety_unii or moiety_same_entity decisions: the surviving entity loses
+    the merged entities' names and codes from its aliases and code names (all but those the substance registry gives
+    the survivor's own substance), so the next canonicalize resolves the merged entities' strings to an entity of
+    their own again. The decisions' runs are not retracted: a merged entity returns under a new id."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT llm_decision_id, input_payload, parsed_output->>'unii' FROM pv_evidence.llm_decision
-                       WHERE llm_decision_id = ANY(%s) AND task = %s""", (args.decisions, UNII_TASK.name))
+        cur.execute("""SELECT llm_decision_id, task, input_payload, parsed_output FROM pv_evidence.llm_decision
+                       WHERE llm_decision_id = ANY(%s) AND task = ANY(%s)""",
+                    (args.decisions, [UNII_TASK.name, SAME_TASK.name]))
         rows = cur.fetchall()
         if len(rows) != len(set(args.decisions)):
-            raise ValueError("not every id is a moiety_unii decision")
+            raise ValueError("not every id is a moiety_unii or moiety_same_entity decision")
         cur.execute("SELECT unii, array_agg(parent_unii) FROM preclin.unii_parent GROUP BY 1")
         parents = {u: set(ps) for u, ps in cur.fetchall()}
-        for did, payload, u in rows:
-            names = [payload["name"], *payload["codes"], *payload["aliases"]]
+        cur.execute("SELECT moiety_id FROM preclin.moiety")
+        alive = {m for m, in cur.fetchall()}
+        for did, task, payload, out in rows:
+            survivor, names, u = merged_names(task, payload, out, alive)
             cur.execute("SELECT DISTINCT name_key, unii FROM preclin.unii_name WHERE name_key = ANY(%s)",
                         ([moiety_key(n) for n in names],))
-            own = {k for k, x in cur.fetchall() if related_substances(u, x, parents)}
+            own = {k for k, x in cur.fetchall() if u and related_substances(u, x, parents)}
             drop = {moiety_key(n) for n in names} - own
             cur.execute("""UPDATE preclin.moiety SET
                              aliases = ARRAY(SELECT a FROM unnest(aliases) a
                                              WHERE NOT regexp_replace(lower(a), '[^a-z0-9]', '', 'g') = ANY(%s)),
                              code_names = ARRAY(SELECT c FROM unnest(code_names) c
                                                 WHERE NOT regexp_replace(lower(c), '[^a-z0-9]', '', 'g') = ANY(%s))
-                           WHERE unii = %s RETURNING moiety_id, name""", (sorted(drop), sorted(drop), u))
-            print(f"decision {did}: '{payload['name']}' split from {cur.fetchall()} (names dropped: {sorted(drop)})")
+                           WHERE (%s::int IS NOT NULL AND moiety_id = %s) OR (%s::int IS NULL AND unii = %s)
+                           RETURNING moiety_id, name""", (sorted(drop), sorted(drop), survivor, survivor, survivor, u))
+            print(f"decision {did} ({task}): split from {cur.fetchall()} (names dropped: {sorted(drop)})")
         conn.commit()
 
 
@@ -1220,7 +1249,7 @@ def main() -> None:
     c.add_argument("--decide", type=int, nargs="*", metavar="DRUG_ID",
                    help="intervention names to decide even when outside the LLM scope (one that lost its exact link)")
     c.set_defaults(fn=canonicalize)
-    sp = sub.add_parser("split", help="undo the UNII merges made by moiety_unii decisions")
+    sp = sub.add_parser("split", help="undo the merges made by moiety_unii or moiety_same_entity decisions")
     sp.add_argument("decisions", type=int, nargs="+", metavar="LLM_DECISION_ID")
     sp.set_defaults(fn=split)
     u = sub.add_parser("unii")
