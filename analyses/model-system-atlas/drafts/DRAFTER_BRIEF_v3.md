@@ -4,7 +4,7 @@ v3 (2026-11-04): written to the decisions in `DECISIONS.md` and `RULES_V3_PROPOS
 `drafts/lint.py` checks every field below on a draft that declares `"schema": 3`. v2 is kept as `DRAFTER_BRIEF.md` for the record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
 
 You are drafting ONE entry for an atlas of preclinical models with a **track record**: predictions that
-were compared with what happened in patients. Repo: ~/code/predictive-validity (branch atlas-named-contexts).
+were compared with what happened in patients. Repo: /Users/melissadu/Documents/projects/capable/predictive-validity-atlas-v3 (branch atlas-named-contexts).
 Read `analyses/model-system-atlas/contexts/cf-cftr.json` and `contexts/ad-amyloid.json` first: they are the
 house style for a finished entry (one success, one failure). Do not read any other draft.
 
