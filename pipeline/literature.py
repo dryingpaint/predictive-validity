@@ -60,6 +60,7 @@ PREFILTER_CHECK = 1000  # seeded large-literature records given the full screen 
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST"
 EPMC_PAGE = 1000
 RETRIES, BACKOFF_FIRST, BACKOFF_MAX = 5, 2, 60
+REQUEUE_WAIT = 180  # seconds before a requeued drug is searched again
 OUTAGE_WAIT = 300  # seconds to wait when every remaining drug has failed, i.e. the search services are down  # per-request retry of a search service, seconds
 ESEARCH_RECHECK = 60  # seconds between checks of whether PubMed's esearch is answering again
 EPMC_PER_SECOND = 2  # Europe PMC requests a second across every worker on the machine
@@ -492,10 +493,15 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
     todo = sorted((m, y) for m, y in cut.items() if names.get(m) and stored.get((m, y)) != names[m])
     log(f"search: drugs={len(cut)} to search={len(todo)} "
         f"(re-search with vetted names: {sum((m, y) in stored for m, y in todo)})")
-    queue, tries = list(todo), {}
+    queue, tries, retry_at = list(todo), {}, {}
     while queue:
         chunk, queue = queue[:NAME_CHUNK], queue[NAME_CHUNK:]
         for m, y in chunk:
+            if retry_at.get(m, 0) > time.time():  # a requeued drug waits REQUEUE_WAIT before its retry
+                queue.append((m, y))
+                if all(retry_at.get(x, 0) > time.time() for x, _ in queue):
+                    time.sleep(max(1.0, min(retry_at.get(x, 0) for x, _ in queue) - time.time()))
+                continue
             if not names.get(m):
                 continue
             dlog = lambda msg, m=m: log(f"moiety={m} {msg}")  # noqa: E731
@@ -503,8 +509,9 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
             try:
                 pq, pn, pmids = medline_search(names[m], y, dlog)
                 eq, en, records = epmc_records(names[m], y, dlog)
-            except SourceDown as e:
+            except (SourceDown, RuntimeError, requests.RequestException) as e:
                 tries[m] = tries.get(m, 0) + 1
+                retry_at[m] = time.time() + REQUEUE_WAIT
                 log(f"requeued moiety={m} (failure {tries[m]}): {e}")
                 queue.append((m, y))
                 if all(tries.get(x, 0) > 0 for x, _ in queue):
@@ -866,12 +873,14 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
             cur.execute("SELECT pmid FROM public.publications WHERE pmid = ANY(%s)", (passed,))
             stored = {r[0] for r in cur.fetchall()}
         have.update(fetch_papers([p for p in passed if p not in stored], store=True))
-    with llm.connect() as conn, conn.cursor() as cur:  # a record screened out stays out when a drug's names are vetted
-        cur.execute("""SELECT moiety_id || '|' || record_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)
-                       AND NOT (animal_disease OR animal_healthy OR human_engagement)""", (sorted(cut),))
-        negative = {r[0] for r in cur.fetchall()}
+    with llm.connect() as conn, conn.cursor() as cur:  # a record already screened keeps its decision when names are vetted:
+        # the vetted search still retrieves it only if it names the drug by a kept name, and records it no longer
+        # retrieves drop out of every match
+        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)",
+                    (sorted(cut),))
+        screened = {r[0] for r in cur.fetchall()}
     keep = [(m, r) for m, r in zip(recs.moiety_id, recs.record_id)
-            if r in have and m in names and (m not in large or possibly.get(f"{m}|{r}")) and f"{m}|{r}" not in negative]
+            if r in have and m in names and (m not in large or possibly.get(f"{m}|{r}")) and f"{m}|{r}" not in screened]
     return {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, have[r]) for m, r in keep}
 
 
