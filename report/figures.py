@@ -482,42 +482,6 @@ def history():
     save(fig, "history")
 
 
-def phase_funnel():
-    """Share of Phase 1 entrants still in development at each later phase, from the product of the
-    transition rates; the label on each step is that transition's rate."""
-    o = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv")).set_index("label")
-    cohorts = {"all programs": ("All programs", ACCENT),
-               "programs with a US-sited industry trial in the phase": ("Developed in the US", "#1baf7a")}
-    stages = ["Phase 1", "Phase 2", "Phase 3", "Approval"]
-    fig, ax = plt.subplots(figsize=(7.5, 3.4))
-    x = np.arange(len(stages))
-    bio_steps = [bio.TRANSITIONS[ph] / 100 for ph in (1, 2, 3)]
-    ax.plot(x, 100 * np.cumprod([1, *bio_steps]), "_", color=INK, markersize=16, markeredgewidth=2,
-            label="BIO 2011–2020")
-    for key, (name, color) in cohorts.items():
-        steps = [o.at[key, f"ph{ph}_rate"] for ph in (1, 2, 3)]
-        y = 100 * np.cumprod([1, *steps])
-        ax.plot(x, y, "-o", color=color, linewidth=2, markersize=6, markeredgecolor="white", label=name)
-        below = color != ACCENT
-        for xi, (a, b, r) in enumerate(zip(y[:-1], y[1:], steps)):
-            ax.text(xi + 0.5, (a + b) / 2 + (-9 if below else 9), f"{r:.0%}", ha="center",
-                    va="center", color=color, fontsize=8)
-        ax.text(x[-1] + 0.12, y[-1] + (4 if below else -4), f"{y[-1]:.1f}%", va="center", color=color,
-                fontsize=9, fontweight="bold")
-    ax.set_xticks(x, stages, color=INK)
-    ax.set_ylim(0, 105)
-    ax.set_xlim(-0.2, len(stages) - 0.55)
-    ax.set_ylabel("Share of Phase 1 entrants (%)", color=INK2, fontsize=8)
-    ax.legend(frameon=False, fontsize=8, loc="upper right")
-    style(ax)
-    ax.grid(axis="y", color=GRID, linewidth=1)
-    ax.grid(axis="x", visible=False)
-    ax.set_title("Programs entering a phase in 2008–2019: share still in development at each phase; "
-                 "each step's label is its transition rate", loc="left", color=INK, fontsize=9)
-    save(fig, "phase_funnel")
-
-
-
 def forest(ax, rows, lim=(0.25, 4)):
     """Dot and 95% interval per (y, estimate, lo, hi, color, filled) on a log2 axis with a line at 1."""
     for y, est, lo, hi, color, filled in rows:
@@ -646,7 +610,6 @@ def amendment_hypotheses(a: dict) -> list[tuple[str, str, dict]]:
 
 def main():
     history()
-    phase_funnel()
     loa_bars("loa_by_area.csv", "Likelihood of approval by disease area", "loa_by_area", bio.AREA_LOA)
     loa_bars("loa_by_modality.csv", "Likelihood of approval by modality", "loa_by_modality", bio.MODALITY_LOA)
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
