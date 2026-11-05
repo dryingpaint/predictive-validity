@@ -169,3 +169,23 @@ def test_a_removal_needs_the_registry_to_place_the_code_on_an_unrelated_substanc
     parents = {"TRIAMSALT": {"TRIAM"}}
     assert registry_unconfirmed(verdicts, unii_of, registered, parents) == {
         "ain457": set(), "scb01a": {3}, "u34865": set(), "fx006": {5}}
+
+
+def test_a_name_whose_decision_gives_another_entitys_code_is_stale():
+    from pipeline.drugs import stale
+    owners = {"canakinumab": 1, "acz885": 1, "secukinumab": 2, "ain457": 2, "verucerfont": 3, "emicerfont": 4,
+              "gw876008": 4}
+    resolved = {"a": ("drug", [{"name": "canakinumab", "codes": ["AIN457"], "biosimilar_of": None}]),
+                "b": ("drug", [{"name": "canakinumab", "codes": ["ACZ885"], "biosimilar_of": None}]),
+                "c": ("drug", [{"name": "verucerfont", "codes": ["GW876008"], "biosimilar_of": None}]),
+                "d": ("drug", [{"name": "new entity", "codes": ["GW876008"], "biosimilar_of": None}])}
+    assert stale(resolved, owners) == {"a", "c"}  # a component no entity holds yet is not judged
+
+
+def test_merges_copy_parents_before_children_and_delete_in_reverse():
+    from pipeline.drugs import parents_first
+    tables = ["evidence_entry_line", "evidence_entry", "literature_hit", "literature_search", "stop"]
+    fks = [("evidence_entry_line", "evidence_entry"), ("literature_hit", "literature_search"), ("stop", "moiety")]
+    order = parents_first(tables, fks)
+    assert order.index("evidence_entry") < order.index("evidence_entry_line")
+    assert order.index("literature_search") < order.index("literature_hit") and set(order) == set(tables)
