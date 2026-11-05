@@ -1,4 +1,4 @@
-You are filling a gap in one tile of the model-system atlas: model systems that were compared with patients but have no track in the draft. Work in /Users/melissadu/Documents/projects/capable/predictive-validity-atlas-v3 and run Python as `.venv/bin/python` from there.
+You are filling a gap in one tile of the model-system atlas: model systems that were compared with patients but have no track in the draft. Work in the repository root your task names (the directory holding `pyproject.toml`) and run Python as `.venv/bin/python` from there. Where a brief names another clone's path, use that root instead.
 
 1. Read `analyses/model-system-atlas/drafts/DRAFTER_BRIEF_v3.md` (especially "What the model is"). Then read the tile's draft `analyses/model-system-atlas/drafts/v3/<slug>.json`, its checker verdicts `<slug>.check.json` (the `missing` list is a lead), and its spec in `drafts/v3/tiles.json`. Do not edit any of those files.
 2. List every model system that has been compared with patient results for this class's member drugs. Search:
@@ -19,7 +19,7 @@ You are filling a gap in one tile of the model-system atlas: model systems that 
 5. Check the entries by merging them in memory and linting: `.venv/bin/python analyses/model-system-atlas/drafts/v3/merge_models.py <slug> --check`. Fix every finding.
 
 Constraints:
-- Do NOT use any Firecrawl tool. Use PubMed or Europe PMC (WebFetch or curl), WebSearch, curl + pdftotext, and the FDA text bundle.
+- Use PubMed or Europe PMC (WebFetch or curl), WebSearch, curl + pdftotext, and the FDA text bundle. When WebFetch is refused or WebSearch is exhausted, use `.venv/bin/python analyses/model-system-atlas/fc.py scrape <url>` or `fc.py search "<query>"` (Firecrawl through the key in `.env`; prints markdown or hits). Do not use any Firecrawl MCP tool or the browser tools.
 - No git commands; the DB is read-only.
 - Budget: 30 tool calls, about 20 minutes. If a tool is denied, rate-limited or hangs, do not retry it: move on and say what you could not verify.
 
