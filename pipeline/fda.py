@@ -3,7 +3,8 @@
     python -m pipeline.fda fetch     # Drugs@FDA, openFDA labels, approval letters -> .cache/fda
     python -m pipeline.fda load      # cached files -> preclin.fda_application/_product/_submission/_letter/_label
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
-    python -m pipeline.fda link      # LLM: each application's principal active ingredients -> preclin.moiety
+    python -m pipeline.fda link      # LLM: each application's principal active ingredients -> preclin.moiety;
+                                     #   then each Phase 3 entity still unlinked -> its application (web search)
     python -m pipeline.fda load-cber # CBER approval letters (.cache/cber/letters_index.jsonl) -> preclin.fda_*
 
 CBER-regulated biologics (vaccines, blood and plasma products, cell and gene
@@ -28,10 +29,12 @@ import glob
 import hashlib
 import json
 import os
+import re
 import subprocess
 import tempfile
 import time
 import zipfile
+from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 
 import requests
@@ -447,34 +450,33 @@ PRODUCT_TASK = llm.Task(name="fda_application_trial_entity", prompt_version="v1"
                         effort="medium", max_tokens=2000)
 
 
-def match_products(cur, apps: dict) -> list[tuple]:
-    """Links (appl_no, moiety_id, decision) from applications none of whose
-    entities appears in a trial to the trial entities that are the same product."""
+def match_products(apps: dict, linked: dict[str, set[int]]) -> list[tuple]:
+    """Links (appl_no, moiety_id, decision) from applications none of whose entities (linked: appl_no ->
+    moiety_ids) appears in a trial to the trial entities that are the same product."""
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.neighbors import NearestNeighbors
-    cur.execute("""SELECT m.moiety_id, m.name, m.code_names || m.aliases,
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT m.moiety_id, m.name, m.code_names || m.aliases,
                           (SELECT c.brief_title FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
                            JOIN preclin.ctgov_study c USING (nct_id) WHERE dm.moiety_id = m.moiety_id
                            ORDER BY c.start_date DESC NULLS LAST, c.nct_id LIMIT 1)
                    FROM preclin.moiety m
                    WHERE EXISTS (SELECT 1 FROM preclin.drug_moiety dm JOIN preclin.ctgov_study_drug sd USING (drug_id)
                                  WHERE dm.moiety_id = m.moiety_id)""")
-    entities = cur.fetchall()
-    in_trials = {e[0] for e in entities}
-    cur.execute("SELECT appl_no, array_agg(moiety_id) FROM preclin.fda_application_moiety GROUP BY 1")
-    linked = dict(cur.fetchall())
-    todo = [a for a in apps if not set(linked.get(a, [])) & in_trials]
-    if not todo:
-        return []
+        entities = cur.fetchall()
+        in_trials = {e[0] for e in entities}
+        todo = [a for a in apps if not linked.get(a, set()) & in_trials]
+        if not todo:
+            return []
+        cur.execute("""SELECT sl.appl_no, string_agg(DISTINCT u.indication_as_written, '; ')
+                       FROM preclin.fda_submission_letter sl JOIN preclin.fda_approved_use u USING (letter_sha256)
+                       WHERE sl.appl_no = ANY(%s) GROUP BY 1""", (todo,))
+        uses = dict(cur.fetchall())
     texts = [" ".join([name, *others]).lower() for _, name, others, _ in entities]
     vec = TfidfVectorizer(analyzer="char_wb", ngram_range=(3, 4), sublinear_tf=True)
     nn = NearestNeighbors(n_neighbors=PRODUCT_CANDIDATES, metric="cosine").fit(vec.fit_transform(texts))
     queries = [" ".join(apps[a]["brands"] + apps[a]["ingredients"]).lower() for a in todo]
     _, idx = nn.kneighbors(vec.transform(queries))
-    cur.execute("""SELECT sl.appl_no, string_agg(DISTINCT u.indication_as_written, '; ')
-                   FROM preclin.fda_submission_letter sl JOIN preclin.fda_approved_use u USING (letter_sha256)
-                   WHERE sl.appl_no = ANY(%s) GROUP BY 1""", (todo,))
-    uses = dict(cur.fetchall())
     items = {}
     for a, row in zip(todo, idx):
         items[a] = {**apps[a], "uses": (uses.get(a) or "")[:1500],
@@ -483,6 +485,88 @@ def match_products(cur, apps: dict) -> list[tuple]:
                                    for i in row]}
     run_id = llm.run(PRODUCT_TASK, items)
     return [(a, mid, did) for a, did, out in llm.decisions(run_id) for mid in out["same_product"]]
+
+
+TRIAL_ENTITY_SYSTEM = """You find out whether a drug from clinical trials was approved by the U.S. FDA, under any name.
+
+The entity was resolved from ClinicalTrials.gov intervention names, so its name may be a sponsor code, a descriptive name or a brand rather than the name on the FDA application. Search the web (Drugs@FDA, FDA approval letters and announcements, DailyMed, the Purple Book, company releases) for an approved NDA or BLA whose active ingredient is this same entity: the same active moiety in any salt or formulation, or the same biologic, vaccine, cell or gene therapy. A different molecule on the same target, a biosimilar of it, another strain composition, a successor product, a device, or a combination product of which this entity is only one part does not count. An approval for any disease counts. Search before answering, and use at most a handful of searches.
+
+applications: each such NDA or BLA with appl_type, appl_no (the application number's digits only, e.g. 204153), brand and approval_year; empty when there is none. sources: URLs your searches returned that show each application. rationale: at most 60 words."""
+TRIAL_ENTITY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "applications": {"type": "array", "items": {
+            "type": "object",
+            "properties": {"appl_type": {"type": "string", "enum": ["NDA", "BLA"]}, "appl_no": {"type": "string"},
+                           "brand": {"type": "string"}, "approval_year": {"type": ["integer", "null"]}},
+            "required": ["appl_type", "appl_no", "brand", "approval_year"], "additionalProperties": False}},
+        "sources": {"type": "array", "items": {"type": "string"}},
+        "rationale": {"type": "string"},
+    },
+    "required": ["applications", "sources", "rationale"],
+    "additionalProperties": False,
+}
+
+
+def render_trial_entity(p: dict) -> str:
+    return (f"Entity: {p['name']}\nOther names and codes: {', '.join(p['other_names']) or '-'}\n"
+            f"Modality: {p['modality']}\nSponsors: {', '.join(p['sponsors']) or '-'}\n"
+            f"Diseases it reached Phase 3 in: {', '.join(p['diseases']) or '-'}\nA trial: {p['trial'] or '-'}")
+
+
+def validate_trial_entity(p: dict, out: dict) -> None:
+    bad = [a["appl_no"] for a in out["applications"] if not re.fullmatch(r"\d{5,6}", a["appl_no"])]
+    if bad:
+        raise ValueError(f"application numbers are not 5-6 digits: {bad}")
+    if out["applications"] and not out["sources"]:
+        raise ValueError("applications without a source")
+    if not out.get("retrieved_urls"):
+        raise ValueError("no search returned anything, so no answer either way")
+    retrieved = {llm.norm_url(u) for u in out.get("retrieved_urls", [])}
+    unknown = [u for u in out["sources"] if llm.norm_url(u) not in retrieved]
+    if unknown:
+        raise ValueError(f"cites sources it did not retrieve: {unknown[:3]}")
+
+
+TRIAL_ENTITY_TASK = llm.Task(
+    name="trial_entity_fda_application", prompt_version="v2", schema_version="v1", system=TRIAL_ENTITY_SYSTEM,
+    schema=TRIAL_ENTITY_SCHEMA, render=render_trial_entity, validate=validate_trial_entity,
+    subject_type="moiety", model="claude-sonnet-5", effort="medium", max_tokens=16000,
+    tools=[{"type": "web_search_20260209", "name": "web_search", "max_uses": 5},
+           {"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 2}])
+
+
+def trial_entity_items(cur, linked: set[int]) -> dict[str, dict]:
+    """Every entity with a Phase 3 program that is not the sole ingredient of an FDA application (linked)."""
+    cur.execute("""
+        SELECT m.moiety_id, m.name, m.code_names || m.aliases, coalesce(m.modality, 'unknown'),
+               array_agg(DISTINCT o.label) FILTER (WHERE p.highest_phase >= 3 AND o.label IS NOT NULL),
+               (SELECT array_agg(DISTINCT s.lead_sponsor) FROM preclin.dev_program_trial dt
+                JOIN preclin.dev_program p2 USING (program_id) JOIN preclin.ctgov_study s USING (nct_id)
+                WHERE p2.moiety_id = m.moiety_id AND s.lead_sponsor IS NOT NULL),
+               (SELECT s.brief_title FROM preclin.dev_program_trial dt JOIN preclin.dev_program p2 USING (program_id)
+                JOIN preclin.ctgov_study s USING (nct_id) WHERE p2.moiety_id = m.moiety_id
+                ORDER BY dt.phase DESC, s.start_date DESC NULLS LAST, s.nct_id LIMIT 1)
+        FROM preclin.moiety m JOIN preclin.dev_program p USING (moiety_id)
+        LEFT JOIN preclin.ontology_term o ON o.term_id = p.mondo_id
+        GROUP BY m.moiety_id HAVING max(p.highest_phase) >= 3""")
+    return {str(mid): {"name": name, "other_names": sorted(set(others))[:8], "modality": modality,
+                       "diseases": sorted(diseases or [])[:6], "sponsors": sorted(sponsors or [])[:5], "trial": trial}
+            for mid, name, others, modality, diseases, sponsors, trial in cur.fetchall() if mid not in linked}
+
+
+def match_trial_entities(linked: set[int]) -> tuple[list[tuple], int]:
+    """Links (appl_no, moiety_id, decision) from each entity with a Phase 3 program that is not the sole ingredient of
+    an application (linked: the moiety_ids that are) to the applications the web shows are the same product, kept only where the
+    application is in preclin.fda_application; and how many named applications are not there."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        items = trial_entity_items(cur, linked)
+        cur.execute("SELECT appl_no FROM preclin.fda_application")
+        known = {a for (a,) in cur.fetchall()}
+    run_id = llm.run(TRIAL_ENTITY_TASK, items)
+    named = [(a["appl_no"].zfill(6), int(mid), did) for mid, did, out in llm.decisions(run_id)
+             for a in out["applications"]]
+    return [n for n in named if n[0] in known], sum(n[0] not in known for n in named)
 
 
 def link(_args) -> None:
@@ -516,17 +600,28 @@ def link(_args) -> None:
             names.setdefault(key, comp["name"])
             links.append((appl_no, key, comp["biosimilar_of"], decision_id))
     with llm.connect() as conn, conn.cursor() as cur:
-        ids = entity_ids(cur, names)
+        ids = entity_ids(cur, names)  # an ingredient no entity carries yet becomes one
+        conn.commit()
+    rows = [(appl, ids[k], bio, did) for appl, k, bio, did in links]
+    linked = defaultdict(set)
+    for appl, mid, *_ in rows:
+        linked[appl].add(mid)
+    # The matching passes run LLM calls for minutes; no transaction is held open across them.
+    products = match_products({a: {**it, "center": centers[a]} for a, it in items.items()}, linked)
+    # Searched too: an entity linked only by a product match (which chooses among name-similar candidates and can
+    # drop a product when they shift) or only as one ingredient of combinations (its own approval is not among them).
+    trial_entities, unlisted = match_trial_entities({m for ms in linked.values() if len(ms) == 1 for m in ms})
+    with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM preclin.fda_application_moiety")
         execute_values(cur, """INSERT INTO preclin.fda_application_moiety
-              (appl_no, moiety_id, biosimilar_of, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""",
-                       [(appl, ids[k], bio, did) for appl, k, bio, did in links])
-        products = match_products(cur, {a: {**it, "center": centers[a]} for a, it in items.items()})
-        if products:
-            execute_values(cur, """INSERT INTO preclin.fda_application_moiety (appl_no, moiety_id, llm_decision_id)
-                                   VALUES %s ON CONFLICT DO NOTHING""", products)
+              (appl_no, moiety_id, biosimilar_of, llm_decision_id) VALUES %s ON CONFLICT DO NOTHING""", rows)
+        for found in (products, trial_entities):
+            if found:
+                execute_values(cur, """INSERT INTO preclin.fda_application_moiety (appl_no, moiety_id, llm_decision_id)
+                                       VALUES %s ON CONFLICT DO NOTHING""", found)
         conn.commit()
-    print(f"applications={len(items)} links={len(links)} moieties={len(names)} product matches={len(products)}")
+    print(f"applications={len(items)} links={len(links)} moieties={len(names)} product matches={len(products)} "
+          f"trial-entity matches={len(trial_entities)} (named applications not in preclin.fda_application: {unlisted})")
 
 
 def load_cber(_args) -> None:

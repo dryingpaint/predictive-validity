@@ -40,10 +40,10 @@ def connection():
         _conn = psycopg2.connect(os.environ.get("DATABASE_URL_RO") or os.environ["DATABASE_URL"],
                                  keepalives=1, keepalives_idle=30, keepalives_interval=10, keepalives_count=3)
         _conn.set_session(isolation_level="REPEATABLE READ", readonly=True)
+        snapshots_read += 1
         if _hold:  # the build's one transaction sits idle while it computes; the server ends idle ones at 5 min
             with _conn.cursor() as cur:
                 cur.execute("SET LOCAL idle_in_transaction_session_timeout = 0")
-        snapshots_read += 1
     return _conn
 
 

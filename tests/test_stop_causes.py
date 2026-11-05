@@ -84,9 +84,9 @@ def test_describe_asks_for_the_subcauses_and_rewordings_a_stop_needs():
 
 
 def test_a_subcause_must_belong_to_its_cause():
-    validate_subcause({"cause": "operational"}, {"subcause": "enrollment", "basis": "slow accrual"})
+    validate_subcause({"cause": "operational"}, {"subcause": "enrollment", "other_reason": "", "basis": "slow accrual"})
     with pytest.raises(ValueError):
-        validate_subcause({"cause": "operational"}, {"subcause": "funding_or_closure", "basis": ""})
+        validate_subcause({"cause": "operational"}, {"subcause": "funding_or_closure", "other_reason": "", "basis": ""})
 
 
 @pytest.mark.parametrize("text", ["Engagement unknown (secondary F1a).", "Engaged, no benefit (PMID:1)."])

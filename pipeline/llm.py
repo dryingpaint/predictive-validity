@@ -39,6 +39,7 @@ BATCH_SIZE = 2000
 POLL_SECONDS = 60
 WORKERS = int(os.environ.get("LLM_WORKERS", "24"))  # concurrent Messages calls of a direct run
 STREAM_ATTEMPTS = 3  # the SDK retries opening a request, not a stream that drops partway
+STREAM_SECONDS = 900  # a stream's keep-alive pings defeat the read timeout, so one turn gets this long in all
 API_FAILURE_LIMIT = 0.2  # share of a direct run's calls failing at the API (e.g. credit exhausted) that stops it
 # Runs with at most this many new items call the Messages API directly
 # instead of waiting in the batch queue (which can sit for hours).
@@ -316,7 +317,11 @@ def _complete(api, task: Task, payload: dict[str, Any]):
     content, usage = [], {"input_tokens": 0, "output_tokens": 0, "cache_read_input_tokens": 0,
                           "web_search_requests": 0, "web_fetch_requests": 0}
     for _ in range(MAX_CONTINUATIONS + 1):
+        started = time.monotonic()
         with api.messages.stream(**params) as stream:  # streamed: no cap on max_tokens
+            for _event in stream:
+                if time.monotonic() - started > STREAM_SECONDS:
+                    raise TimeoutError(f"no final message after {STREAM_SECONDS}s")
             msg = stream.get_final_message()
         content += msg.content
         usage["input_tokens"] += msg.usage.input_tokens
@@ -362,7 +367,7 @@ def _run_concurrent(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[st
             except httpx2.TransportError as exc:
                 if attempt == STREAM_ATTEMPTS - 1:
                     return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
-            except anthropic.APIError as exc:
+            except (anthropic.APIError, TimeoutError) as exc:
                 return key, "", "", None, f"{type(exc).__name__}: {exc}", {}
 
     n_ok = n_bad = n_api = 0

@@ -10,10 +10,10 @@ The numbers each figure in the main tab draws, with the columns the figures leav
 
 | Transition | All programs (95% CI) | Developed in the US (95% CI) | BIO 2011–2020 |
 | :---- | :---- | :---- | :---- |
-| Phase 1 → Phase 2 | 57.6% (55.7–59.4), n=6,173 | 59.0% (56.5–61.2), n=3,902 | 52.0% |
-| Phase 2 → Phase 3 | 30.9% (29.5–32.2), n=5,981 | 33.0% (31.4–34.7), n=3,900 | 28.9% |
-| Phase 3 → Approval | 40.2% (37.3–43.0), n=1,933 | 54.2% (51.0–57.3), n=1,354 | 52.4% |
-| **Phase 1 → Approval (LOA)** | **7.2%** (6.4–7.9) | **10.6%** (9.5–11.7) | **7.9%** (novel drugs 6.8%) |
+| Phase 1 → Phase 2 | 57.6% (55.8–59.4), n=6,168 | 59.0% (56.3–61.4), n=3,900 | 52.0% |
+| Phase 2 → Phase 3 | 30.9% (29.5–32.3), n=5,971 | 33.0% (31.3–34.8), n=3,895 | 28.9% |
+| Phase 3 → Approval | 41.4% (38.6–44.2), n=1,919 | 55.2% (52.1–58.2), n=1,354 | 52.4% |
+| **Phase 1 → Approval (LOA)** | **7.4%** (6.6–8.1) | **10.7%** (9.6–11.9) | **7.9%** (novel drugs 6.8%) |
 
 ### Why programs stop
 
@@ -21,14 +21,14 @@ Cause of each Phase 2 and 3 stop as registered and after tracing.
 
 | Cause of the stop | As registered | After tracing: sourced | After tracing: sourced or likely |
 | :---- | :---- | :---- | :---- |
-| Efficacy or exposure (PK, dose, formulation) | 29% (1,591) | 41% (2,252) | 46% (2,498) |
+| Efficacy or exposure (PK, dose, formulation) | 29% (1,589) | 41% (2,251) | 46% (2,497) |
 | Safety | 1% (68) | 4% (196) | 4% (205) |
-| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (270) | 12% (637) | 20% (1,095) |
-| Operational (enrollment, sites, supply, regulatory) | 5% (285) | 6% (318) | 6% (339) |
-| Positive readout, not yet advanced | 10% (537) | 17% (944) | 18% (977) |
-| Unknown | 50% (2,728) | 15% (825) | 1% (52) |
-| Did not actually stop | 0% (0) | 4% (246) | 5% (252) |
-| Not a development program | 0% (0) | 1% (61) | 1% (61) |
+| Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure) | 5% (270) | 12% (637) | 20% (1,096) |
+| Operational (enrollment, sites, supply, regulatory) | 5% (283) | 6% (317) | 6% (338) |
+| Positive readout, not yet advanced | 10% (522) | 17% (926) | 18% (958) |
+| Unknown | 50% (2,712) | 15% (821) | 1% (48) |
+| Did not actually stop | 0% (0) | 4% (238) | 4% (244) |
+| Not a development program | 0% (0) | 1% (58) | 1% (58) |
 
 ### Why efficacy failed
 
@@ -36,45 +36,45 @@ Efficacy and exposure stops by what the evidence shows about target engagement, 
 
 | What the evidence shows | Phase 2 | Phase 3 | Phase 2 and 3 | Outside oncology |
 | :---- | :---- | :---- | :---- | :---- |
-| Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (188) | 10% (50) | 11% (238) | 10% (160) |
-| Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (774) | 49% (236) | 46% (1,010) | 44% (719) |
-| Trial design, population or endpoint, mechanism not in question | 6% (99) | 10% (47) | 7% (146) | 8% (126) |
+| Not engaged: exposure or engagement too low, or another drug on the target worked | 11% (188) | 10% (50) | 11% (238) | 10% (157) |
+| Engaged, no benefit: target or mechanism wrong for the disease as tested | 46% (784) | 49% (235) | 47% (1,019) | 44% (724) |
+| Trial design, population or endpoint, mechanism not in question | 6% (100) | 9% (45) | 7% (145) | 8% (125) |
 | On-target toxicity offset efficacy | 1% (11) | 0% (1) | 1% (12) | 0% (3) |
-| No engagement data: no human evidence of engagement either way | 37% (618) | 31% (148) | 35% (766) | 38% (612) |
-| **Not engaged, of failures whose mechanism was tested** | **20%** (17–22) | **17%** (13–22) | **19%** (17–21) | **18%** (15–21) |
-| Programs (entities) | 1,691 (1,311) | 482 (427) | 2,173 (1,621) | 1,621 (1,283) |
+| No engagement data: no human evidence of engagement either way | 36% (621) | 31% (151) | 35% (772) | 38% (619) |
+| **Not engaged, of failures whose mechanism was tested** | **19%** (17–22) | **18%** (13–22) | **19%** (17–22) | **18%** (15–21) |
+| Programs (entities) | 1,705 (1,320) | 482 (426) | 2,187 (1,627) | 1,629 (1,286) |
 
 ### By disease area and modality
 
 | Disease area | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
 | :---- | :---- | :---- | :---- | :---- |
-| Hematology | 21.0% (14.7–27.6) | 228 | 26.3% (17.9–35.2) | 23.9% |
-| Oncology | 12.6% (10.1–15.3) | 1,804 | 14.8% (11.7–18.1) | 5.3% |
-| Metabolic | 11.2% (7.3–15.8) | 276 | 18.3% (12.2–25.5) | 15.5% |
-| Allergy | 10.0% (4.5–16.9) | 126 | 17.8% (6.3–30.2) | 10.3% |
-| Infectious disease | 10.0% (7.5–12.7) | 650 | 18.4% (14.2–23.0) | 13.2% |
-| Autoimmune | 8.8% (6.1–11.8) | 512 | 11.1% (7.7–14.7) | 10.7% |
-| Endocrine | 8.3% (5.0–11.8) | 320 | 14.8% (9.3–20.8) | 6.6% |
+| Hematology | 22.0% (15.3–29.0) | 226 | 27.3% (18.3–36.5) | 23.9% |
+| Allergy | 12.8% (6.5–20.5) | 125 | 22.1% (9.8–35.3) | 10.3% |
+| Oncology | 12.7% (10.1–15.3) | 1,804 | 14.8% (11.8–18.1) | 5.3% |
+| Metabolic | 12.0% (8.1–16.6) | 271 | 18.4% (11.4–25.6) | 15.5% |
+| Infectious disease | 10.5% (8.1–13.1) | 648 | 19.1% (14.9–23.6) | 13.2% |
+| Autoimmune | 9.1% (6.4–12.0) | 511 | 11.5% (7.9–15.5) | 10.7% |
+| Endocrine | 8.4% (5.0–12.2) | 319 | 14.8% (9.3–20.8) | 6.6% |
 | Neurology | 8.2% (6.3–10.3) | 751 | 11.5% (8.9–14.6) | 5.9% |
-| Psychiatry | 7.8% (4.6–11.1) | 309 | 10.3% (6.5–14.7) | 7.3% |
-| Ophthalmology | 7.2% (4.5–10.5) | 319 | 7.9% (4.8–11.8) | 11.9% |
-| Respiratory | 6.1% (3.6–9.0) | 349 | 10.8% (6.2–15.3) | 7.5% |
-| Other | 5.6% (3.8–7.3) | 727 | 10.5% (7.6–13.8) | 13.0% |
-| Cardiovascular | 4.1% (2.1–6.4) | 314 | 7.1% (3.5–11.2) | 4.8% |
+| Psychiatry | 7.9% (4.7–11.3) | 309 | 10.5% (6.6–15.0) | 7.3% |
+| Ophthalmology | 7.6% (4.7–10.8) | 320 | 8.6% (5.3–12.6) | 11.9% |
+| Respiratory | 6.2% (3.5–9.2) | 347 | 10.8% (6.1–16.1) | 7.5% |
+| Other | 5.6% (4.0–7.5) | 724 | 10.5% (7.6–13.8) | 13.0% |
+| Cardiovascular | 3.9% (2.0–6.1) | 311 | 6.7% (3.6–10.8) | 4.8% |
 | Urology | 3.4% (0.7–7.3) | 78 | – | 3.6% |
-| Gastroenterology | 3.4% (1.6–5.5) | 318 | 8.1% (4.3–12.9) | 8.3% |
+| Gastroenterology | 3.4% (1.7–5.5) | 317 | 8.1% (4.3–12.9) | 8.3% |
 
 | Modality | All programs, LOA (95% CI) | Entities | Developed in the US, LOA (95% CI) | BIO 2011–2020 |
 | :---- | :---- | :---- | :---- | :---- |
 | Monoclonal antibody | 14.8% (11.2–18.8) | 836 | 16.6% (12.3–21.0) | 12.1% |
 | Antibody–drug conjugate | 12.0% (5.6–19.1) | 148 | 12.1% (5.3–19.9) | 10.8% |
-| Protein | 7.9% (5.6–10.6) | 466 | 10.3% (7.0–13.9) | 9.4% |
-| Small molecule | 6.9% (6.1–7.9) | 4,118 | 10.2% (8.9–11.3) | 7.5% |
+| Protein | 8.2% (5.8–10.9) | 464 | 10.5% (7.2–14.1) | 9.4% |
+| Small molecule | 7.1% (6.3–8.1) | 4,107 | 10.4% (9.1–11.7) | 7.5% |
 | Gene therapy | 6.8% (2.5–12.5) | 143 | 7.9% (3.1–13.9) | 10.0% |
 | Peptide | 5.0% (2.6–7.9) | 276 | 7.7% (3.9–12.4) | 8.0% |
 | Antisense oligonucleotide | 4.0% (1.0–9.0) | 91 | 5.5% (1.5–12.4) | 5.2% |
 | Other cell therapy | 2.0% (0.6–4.0) | 269 | 4.0% (1.4–8.7) | – |
-| Other | 0.5% (0.1–1.1) | 273 | 1.2% (0.0–3.5) | – |
+| Other | 0.8% (0.3–1.7) | 273 | 2.3% (0.5–5.5) | – |
 | Microbiome or live biotherapeutic | 0.4% (0.0–3.4) | 43 | – | – |
 
 ### Evidence by category
@@ -83,150 +83,151 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 
 | Evidence | Entries with it / eligible | Targets | Relative success to approval (95% CI) | Advancing from Phase 2, adjusted RR | Same, biomarker enrolment held fixed | Efficacy stop, adjusted RR |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Human genetics | 910 / 7,372 | 293 | 2.32 (1.78–3.01) | 1.71 (1.37–2.13) | 1.66 (1.33–2.07) | 0.70 (0.53–0.91) |
-| · Germline genetics for the disease | 874 / 7,372 | 282 | 2.44 (1.88–3.16) | 1.79 (1.43–2.24) | 1.74 (1.40–2.18) | 0.66 (0.50–0.87) |
-| · Rare-variant or Mendelian | 687 / 7,372 | 220 | 2.50 (1.85–3.25) | 1.92 (1.51–2.45) | 1.87 (1.46–2.39) | 0.56 (0.39–0.80) |
-| · GWAS | 232 / 7,372 | 93 | 1.64 (1.09–2.29) | 1.01 (0.63–1.59) | 1.02 (0.65–1.60) | 1.09 (0.79–1.50) |
-| · GWAS and rare-variant evidence together | 45 / 7,372 | 22 | Too rare to estimate | – | – | – |
-| · Genetics points the same way as the drug | 428 / 7,372 | 144 | 2.37 (1.81–3.10) | 1.74 (1.27–2.37) | 1.67 (1.22–2.28) | 0.52 (0.32–0.84) |
-| · Curated disease mechanism (Reactome) | 188 / 7,372 | 56 | 1.71 (0.92–2.59) | 1.32 (0.91–1.91) | 1.24 (0.86–1.78) | 0.71 (0.35–1.47) |
-| Tumour genetics | 1,058 / 3,546 | 161 | 2.00 (1.15–3.63) | 1.55 (1.08–2.22) | 1.47 (1.02–2.13) | 0.85 (0.64–1.13) |
-| · Gene recurrently mutated in this cancer | 1,058 / 3,546 | 161 | 2.00 (1.15–3.63) | 1.55 (1.08–2.22) | 1.47 (1.02–2.13) | 0.85 (0.64–1.13) |
-| · Mutation matches the drug | 744 / 3,546 | 109 | 1.76 (1.02–3.15) | 1.45 (1.01–2.08) | 1.36 (0.94–1.96) | 0.86 (0.61–1.20) |
-| Human diseased tissue | 896 / 7,372 | 323 | 0.91 (0.60–1.29) | 0.95 (0.65–1.39) | 0.90 (0.63–1.30) | 1.21 (0.98–1.49) |
-| · Target's RNA level changed in diseased tissue | 896 / 7,372 | 323 | 0.91 (0.60–1.29) | 0.95 (0.65–1.39) | 0.90 (0.63–1.30) | 1.21 (0.98–1.49) |
-| · RNA raised, with a drug that lowers function | 414 / 7,372 | 158 | 0.64 (0.31–1.05) | 0.79 (0.46–1.37) | 0.77 (0.45–1.32) | 1.39 (1.07–1.81) |
-| Animal studies | 1,491 / 7,372 | 456 | 1.41 (1.09–1.82) | 1.35 (1.09–1.66) | 1.32 (1.08–1.63) | 0.83 (0.69–1.01) |
-| · Genetically altered mouse model of the disease | 1,491 / 7,372 | 456 | 1.41 (1.09–1.82) | 1.35 (1.09–1.66) | 1.32 (1.08–1.63) | 0.83 (0.69–1.01) |
-| · Literature-curated mouse model (MGI) | 1,483 / 7,372 | 452 | 1.42 (1.09–1.83) | 1.34 (1.09–1.66) | 1.32 (1.07–1.62) | 0.83 (0.69–1.01) |
-| · Systematic knockout screen (IMPC) | 40 / 7,372 | 16 | Too rare to estimate | – | – | – |
-| · Close phenotype match (top quartile) | 869 / 7,372 | 312 | 1.44 (1.08–1.91) | 1.43 (1.15–1.79) | 1.41 (1.13–1.75) | 0.77 (0.61–0.97) |
-| · Altered animal points the same way as the drug | 484 / 7,372 | 179 | 1.78 (1.30–2.37) | 1.38 (1.04–1.83) | 1.36 (1.02–1.80) | 0.56 (0.40–0.80) |
+| Human genetics | 907 / 7,364 | 293 | 2.35 (1.80–3.01) | 1.72 (1.38–2.14) | 1.67 (1.34–2.08) | 0.70 (0.53–0.91) |
+| · Germline genetics for the disease | 871 / 7,364 | 282 | 2.47 (1.88–3.16) | 1.80 (1.44–2.25) | 1.75 (1.40–2.18) | 0.66 (0.50–0.87) |
+| · Rare-variant or Mendelian | 684 / 7,364 | 220 | 2.55 (1.89–3.31) | 1.93 (1.52–2.45) | 1.87 (1.46–2.39) | 0.56 (0.39–0.80) |
+| · GWAS | 232 / 7,364 | 93 | 1.63 (1.03–2.25) | 1.01 (0.64–1.60) | 1.03 (0.66–1.61) | 1.09 (0.79–1.49) |
+| · GWAS and rare-variant evidence together | 45 / 7,364 | 22 | Too rare to estimate | – | – | – |
+| · Genetics points the same way as the drug | 425 / 7,364 | 144 | 2.43 (1.83–3.18) | 1.74 (1.28–2.38) | 1.67 (1.22–2.29) | 0.52 (0.32–0.84) |
+| · Curated disease mechanism (Reactome) | 185 / 7,364 | 56 | 1.82 (0.88–2.69) | 1.32 (0.91–1.90) | 1.24 (0.86–1.78) | 0.72 (0.35–1.48) |
+| Tumour genetics | 1,058 / 3,546 | 161 | 2.00 (1.15–3.59) | 1.55 (1.08–2.22) | 1.47 (1.02–2.13) | 0.85 (0.64–1.14) |
+| · Gene recurrently mutated in this cancer | 1,058 / 3,546 | 161 | 2.00 (1.15–3.59) | 1.55 (1.08–2.22) | 1.47 (1.02–2.13) | 0.85 (0.64–1.14) |
+| · Mutation matches the drug | 744 / 3,546 | 109 | 1.76 (1.02–3.14) | 1.45 (1.01–2.08) | 1.36 (0.94–1.96) | 0.86 (0.61–1.20) |
+| Human diseased tissue | 896 / 7,364 | 323 | 0.90 (0.57–1.27) | 0.96 (0.66–1.39) | 0.91 (0.63–1.30) | 1.21 (0.99–1.49) |
+| · Target's RNA level changed in diseased tissue | 896 / 7,364 | 323 | 0.90 (0.57–1.27) | 0.96 (0.66–1.39) | 0.91 (0.63–1.30) | 1.21 (0.99–1.49) |
+| · RNA raised, with a drug that lowers function | 414 / 7,364 | 158 | 0.63 (0.29–1.04) | 0.80 (0.46–1.38) | 0.78 (0.45–1.33) | 1.39 (1.07–1.81) |
+| Animal studies | 1,489 / 7,364 | 456 | 1.42 (1.09–1.83) | 1.35 (1.09–1.66) | 1.33 (1.08–1.63) | 0.83 (0.69–1.01) |
+| · Genetically altered mouse model of the disease | 1,489 / 7,364 | 456 | 1.42 (1.09–1.83) | 1.35 (1.09–1.66) | 1.33 (1.08–1.63) | 0.83 (0.69–1.01) |
+| · Literature-curated mouse model (MGI) | 1,481 / 7,364 | 452 | 1.42 (1.10–1.84) | 1.34 (1.09–1.66) | 1.32 (1.07–1.63) | 0.83 (0.69–1.01) |
+| · Systematic knockout screen (IMPC) | 40 / 7,364 | 16 | Too rare to estimate | – | – | – |
+| · Close phenotype match (top quartile) | 869 / 7,364 | 312 | 1.44 (1.10–1.87) | 1.43 (1.15–1.79) | 1.41 (1.13–1.76) | 0.77 (0.61–0.97) |
+| · Altered animal points the same way as the drug | 484 / 7,364 | 179 | 1.77 (1.27–2.38) | 1.38 (1.04–1.84) | 1.36 (1.02–1.80) | 0.56 (0.40–0.79) |
 | · The drug in an animal model of the disease | – | – | Descriptive: literature retrieval failed the quality gate | – | – | – |
 | · The drug's pharmacology in healthy animals | – | – | Descriptive: literature retrieval failed the quality gate | – | – | – |
-| Cell studies | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
-| · CRISPR screen in cells | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
-| · CRISPR screen in cells, on today's data (hindsight) (descriptive) | 372 / 7,372 | 100 | 1.98 (1.13–2.89) | 1.70 (1.18–2.43) | 1.59 (1.10–2.29) | 0.97 (0.70–1.36) |
-| The molecule | 4,856 / 5,557 | 1,302 | 0.96 (0.70–1.37) | 0.88 (0.66–1.20) | 0.88 (0.65–1.19) | 0.97 (0.78–1.21) |
-| · Potency at the primary target, 100 nM or better | 1,388 / 6,139 | 358 | 1.59 (1.16–2.12) | 1.07 (0.81–1.42) | 1.05 (0.79–1.39) | 1.10 (0.92–1.31) |
-| · Potency at the primary target, 10 nM or better (descriptive) | 1,025 / 6,139 | 263 | 1.98 (1.37–2.73) | 1.22 (0.90–1.65) | 1.19 (0.88–1.62) | 0.99 (0.81–1.20) |
-| · At least 10-fold selective over measured off-targets | 579 / 1,119 | 163 | 1.31 (0.72–2.36) | 1.00 (0.65–1.55) | 1.01 (0.65–1.55) | 0.97 (0.69–1.37) |
-| · Drug-like (at most one Rule-of-5 violation) | 4,686 / 5,557 | 1,269 | 1.01 (0.73–1.40) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.74–1.08) |
-| · Brain-penetrant properties (neurology and psychiatry) | 544 / 811 | 194 | 0.86 (0.49–1.68) | 1.47 (0.80–2.71) | 1.44 (0.78–2.66) | 0.90 (0.70–1.16) |
+| Cell studies | 237 / 1,799 | 62 | 0.54 (0.16–1.24) | 0.55 (0.25–1.23) | 0.56 (0.25–1.26) | 0.54 (0.27–1.08) |
+| · CRISPR screen in cells | 0 / 7,364 | 0 | Too rare to estimate | – | – | – |
+| · Dependency in cancer cell lines of this type (RNAi and CRISPR screens) | 237 / 1,757 | 62 | 0.54 (0.13–1.28) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.12) |
+| · CRISPR screen in cells, on today's data (hindsight) (descriptive) | 372 / 7,364 | 100 | 1.97 (1.05–2.94) | 1.69 (1.18–2.43) | 1.58 (1.09–2.28) | 0.98 (0.70–1.37) |
+| The molecule | 4,853 / 5,554 | 1,300 | 0.96 (0.72–1.32) | 0.88 (0.65–1.19) | 0.88 (0.65–1.19) | 0.97 (0.78–1.20) |
+| · Potency at the primary target, 100 nM or better | 1,387 / 6,134 | 357 | 1.54 (1.12–2.03) | 1.07 (0.81–1.42) | 1.05 (0.79–1.39) | 1.11 (0.93–1.32) |
+| · Potency at the primary target, 10 nM or better (descriptive) | 1,024 / 6,134 | 262 | 1.92 (1.30–2.61) | 1.22 (0.90–1.64) | 1.19 (0.88–1.62) | 0.99 (0.81–1.21) |
+| · At least 10-fold selective over measured off-targets | 578 / 1,118 | 162 | 1.30 (0.70–2.42) | 1.00 (0.65–1.55) | 1.01 (0.65–1.55) | 0.98 (0.70–1.37) |
+| · Drug-like (at most one Rule-of-5 violation) | 4,683 / 5,554 | 1,267 | 1.00 (0.73–1.34) | 0.93 (0.71–1.22) | 0.93 (0.71–1.22) | 0.89 (0.74–1.08) |
+| · Brain-penetrant properties (neurology and psychiatry) | 544 / 811 | 194 | 0.86 (0.49–1.68) | 1.46 (0.79–2.70) | 1.43 (0.78–2.65) | 0.91 (0.71–1.17) |
 | Early human pharmacology | – | – | Descriptive: literature retrieval failed the quality gate | – | – | – |
 | · Target engagement measured in people | – | – | Descriptive: literature retrieval failed the quality gate | – | – | – |
-| Safety risk | 4,021 / 7,372 | 628 | 0.94 (0.68–1.35) | 1.12 (0.91–1.38) | 1.11 (0.90–1.37) | 0.99 (0.52–1.91) (safety) |
-| · Intolerant of loss of function | 1,626 / 7,372 | 241 | 0.83 (0.58–1.16) | 1.01 (0.78–1.30) | 1.02 (0.79–1.31) | 0.65 (0.25–1.69) (safety) |
-| · Mouse knockout dies before weaning | 3,718 / 7,372 | 581 | 0.95 (0.69–1.36) | 1.08 (0.87–1.32) | 1.07 (0.87–1.31) | 1.13 (0.61–2.12) (safety) |
-| · Essential in most cell lines | 0 / 7,372 | 0 | Too rare to estimate | – | – | – |
-| · Essential in most cell lines, on today's data (hindsight) (descriptive) | 674 / 7,372 | 99 | 0.42 (0.15–0.72) | 0.60 (0.37–0.96) | 0.60 (0.37–0.97) | 0.92 (0.28–3.02) (safety) |
-| Clinical precedent (benchmark) | 4,263 / 7,372 | 599 | 1.49 (1.16–1.93) | 1.40 (1.15–1.72) | 1.40 (1.14–1.71) | – |
-| · Approved drug on the target, related disease | 2,161 / 7,372 | 417 | 1.92 (1.50–2.38) | 1.84 (1.57–2.17) | 1.83 (1.55–2.15) | – |
-| · Approved drug on the target, unrelated disease only | 2,102 / 7,372 | 428 | 0.76 (0.58–0.96) | 0.71 (0.57–0.88) | 0.71 (0.57–0.89) | – |
-| · Earlier failed trial on the target, related disease, within 3 years | 1,680 / 5,788 | 388 | 1.58 (1.22–2.00) | 1.50 (1.21–1.87) | 1.48 (1.19–1.84) | – |
-| Biomarker-selected enrollment | 1,878 / 10,011 | 838 | 1.74 (1.34–2.19) | 1.23 (1.02–1.49) | – | 0.92 (0.78–1.09) |
+| Safety risk | 4,014 / 7,364 | 628 | 0.96 (0.69–1.33) | 1.11 (0.90–1.37) | 1.10 (0.90–1.36) | 1.00 (0.52–1.92) (safety) |
+| · Intolerant of loss of function | 1,622 / 7,364 | 241 | 0.84 (0.58–1.16) | 0.99 (0.77–1.29) | 1.01 (0.78–1.30) | 0.66 (0.26–1.72) (safety) |
+| · Mouse knockout dies before weaning | 3,711 / 7,364 | 581 | 0.97 (0.70–1.34) | 1.07 (0.87–1.32) | 1.06 (0.86–1.30) | 1.14 (0.61–2.14) (safety) |
+| · Essential in most cell lines | 0 / 7,364 | 0 | Too rare to estimate | – | – | – |
+| · Essential in most cell lines, on today's data (hindsight) (descriptive) | 674 / 7,364 | 99 | 0.42 (0.17–0.77) | 0.60 (0.37–0.97) | 0.60 (0.37–0.97) | 0.92 (0.28–3.01) (safety) |
+| Clinical precedent (benchmark) | 4,275 / 7,364 | 603 | 1.51 (1.16–1.95) | 1.41 (1.15–1.73) | 1.41 (1.15–1.72) | – |
+| · Approved drug on the target, related disease | 2,171 / 7,364 | 424 | 1.95 (1.53–2.45) | 1.85 (1.57–2.18) | 1.83 (1.56–2.16) | – |
+| · Approved drug on the target, unrelated disease only | 2,104 / 7,364 | 429 | 0.75 (0.59–0.96) | 0.70 (0.57–0.88) | 0.71 (0.57–0.88) | – |
+| · Earlier failed trial on the target, related disease, within 3 years | 1,677 / 5,783 | 388 | 1.58 (1.23–2.02) | 1.50 (1.20–1.86) | 1.47 (1.18–1.84) | – |
+| Biomarker-selected enrollment | 1,878 / 10,003 | 838 | 1.71 (1.33–2.14) | 1.24 (1.02–1.49) | – | 0.92 (0.78–1.09) |
 
 ### Relative success, all programs
 
 | Evidence line | Programs with it | LOA with / without | Relative success (95% CI) |
 | :---- | :---- | :---- | :---- |
-| Rare-variant or Mendelian genetics | 739 | 24.2% / 8.8% | 2.75 (2.02–3.65) |
-| Any human genetics | 932 | 22.8% / 8.6% | 2.65 (1.95–3.48) |
-| Gene recurrently mutated in this cancer | 1,180 | 21.1% / 9.0% | 2.35 (1.62–3.19) |
-| Curated disease mechanism (Reactome) | 191 | 19.2% / 9.8% | 1.96 (1.09–3.00) |
-| GWAS | 258 | 17.2% / 9.8% | 1.75 (1.11–2.55) |
-| Genetically altered mouse model of the disease | 1,665 | 13.1% / 9.2% | 1.42 (1.08–1.88) |
-| Target's RNA level changed in diseased tissue | 1,046 | 10.6% / 10.0% | 1.07 (0.69–1.51) |
+| Rare-variant or Mendelian genetics | 737 | 24.8% / 8.9% | 2.80 (2.05–3.72) |
+| Any human genetics | 929 | 23.4% / 8.7% | 2.70 (1.98–3.52) |
+| Gene recurrently mutated in this cancer | 1,180 | 21.1% / 9.1% | 2.32 (1.60–3.14) |
+| Curated disease mechanism (Reactome) | 189 | 20.8% / 9.9% | 2.10 (1.18–3.14) |
+| GWAS | 257 | 17.6% / 10.0% | 1.77 (1.13–2.56) |
+| Genetically altered mouse model of the disease | 1,657 | 13.4% / 9.3% | 1.45 (1.10–1.92) |
+| Target's RNA level changed in diseased tissue | 1,046 | 10.6% / 10.1% | 1.05 (0.68–1.48) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
-| Intolerant of loss of function | 1,817 | 8.7% / 10.4% | 0.83 (0.57–1.22) |
+| Intolerant of loss of function | 1,810 | 8.9% / 10.5% | 0.84 (0.59–1.21) |
 | **The molecule** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Very potent at the target (10 nM or better) | 1,204 | 12.9% / 9.6% | 1.34 (0.92–1.90) |
-| At least 100-fold selective over measured off-targets | 320 | 13.2% / 9.9% | 1.33 (0.66–2.25) |
-| Potent at the target (100 nM or better) | 1,651 | 11.0% / 9.8% | 1.12 (0.80–1.55) |
-| Potency at the target measured | 1,973 | 9.9% / 10.0% | 0.99 (0.74–1.33) |
-| Functional potency measured in cells | 455 | 7.4% / 10.2% | 0.73 (0.44–1.12) |
+| Very potent at the target (10 nM or better) | 1,203 | 12.8% / 9.7% | 1.32 (0.89–1.88) |
+| At least 100-fold selective over measured off-targets | 319 | 13.0% / 10.1% | 1.29 (0.63–2.20) |
+| Potent at the target (100 nM or better) | 1,650 | 10.9% / 9.9% | 1.10 (0.79–1.52) |
+| Potency at the target measured | 1,971 | 9.9% / 10.2% | 0.97 (0.71–1.30) |
+| Functional potency measured in cells | 455 | 7.4% / 10.3% | 0.72 (0.43–1.10) |
 
 ### Genetic dose–response
 
 | Genetic association score before entry (Open Targets, 0–1) | Programs | Targets | LOA (95% CI) |
 | :---- | :---- | :---- | :---- |
-| 0 (no genetic support) | 7,639 | 1,262 | 8.6% (7.0–10.7) |
-| up to 0.61 (lowest third) | 382 | 220 | 16.6% (10.7–22.8) |
-| 0.61–0.92 (middle third) | 297 | 144 | 22.4% (14.8–30.5) |
-| above 0.92 (highest third) | 270 | 138 | 30.5% (24.1–37.0) |
+| 0 (no genetic support) | 7,626 | 1,262 | 8.7% (7.0–10.8) |
+| up to 0.61 (lowest third) | 381 | 219 | 16.9% (10.9–23.0) |
+| 0.61–0.91 (middle third) | 268 | 138 | 23.0% (15.3–31.7) |
+| above 0.91 (highest third) | 298 | 149 | 30.7% (24.3–38.2) |
 
 ### Relative success by disease area
 
 | Evidence line | Oncology | Immunology and inflammation | Other | Neuroscience | Cardiometabolic and endocrine | Hematology | Differs between groups, Phase 2 (p) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Any human genetics | 1.96 (1.03–3.46), n=328 | 1.55 (0.71–2.60), n=139 | –, n=93 | 3.13 (1.66–5.27), n=135 | 3.31 (2.01–5.74), n=159 | –, n=78 | 0.53 (6 groups) |
-| GWAS | –, n=67 | –, n=80 | –, n=48 | –, n=28 | –, n=35 | –, n=0 | 0.76 (3 groups) |
-| Rare-variant or Mendelian genetics | 2.13 (1.07–3.74), n=284 | –, n=62 | –, n=54 | 3.03 (1.49–5.14), n=121 | 3.30 (1.95–5.59), n=140 | –, n=78 | 0.74 (6 groups) |
-| Gene recurrently mutated in this cancer | 2.02 (1.15–3.82), n=1,161 | –, n=4 | –, n=5 | –, n=1 | –, n=7 | –, n=2 | – |
-| Genetically altered mouse model of the disease | 0.97 (0.53–1.65), n=470 | 1.63 (0.92–2.68), n=234 | 1.56 (0.69–2.89), n=178 | 1.78 (1.02–2.88), n=273 | 1.48 (0.92–2.51), n=408 | 1.38 (0.76–3.27), n=102 | 0.45 (6 groups) |
-| Target's RNA level changed in diseased tissue | 1.03 (0.61–1.72), n=766 | 0.37 (0.06–0.77), n=169 | –, n=30 | –, n=71 | –, n=10 | –, n=0 | 0.01 (3 groups) |
-| Potent at the target (100 nM or better) | 0.98 (0.51–1.72), n=855 | 1.49 (0.77–2.49), n=194 | 1.78 (0.92–3.13), n=211 | 0.78 (0.40–1.32), n=236 | 1.28 (0.61–2.24), n=139 | –, n=16 | 0.34 (5 groups) |
+| Any human genetics | 1.95 (1.03–3.42), n=328 | 1.52 (0.70–2.56), n=139 | –, n=93 | 3.13 (1.66–5.27), n=135 | 3.41 (2.03–6.04), n=158 | –, n=76 | 0.51 (6 groups) |
+| GWAS | –, n=67 | –, n=80 | –, n=48 | –, n=28 | –, n=34 | –, n=0 | 0.78 (3 groups) |
+| Rare-variant or Mendelian genetics | 2.11 (1.06–3.74), n=284 | –, n=62 | –, n=54 | 3.02 (1.49–5.14), n=121 | 3.30 (1.95–5.57), n=140 | –, n=76 | 0.71 (6 groups) |
+| Gene recurrently mutated in this cancer | 2.00 (1.13–3.77), n=1,161 | –, n=4 | –, n=5 | –, n=1 | –, n=7 | –, n=2 | – |
+| Genetically altered mouse model of the disease | 0.96 (0.53–1.65), n=470 | 1.64 (0.92–2.66), n=232 | 1.58 (0.69–3.00), n=177 | 1.77 (1.02–2.88), n=273 | 1.54 (0.95–2.56), n=404 | 1.50 (0.82–3.65), n=101 | 0.47 (6 groups) |
+| Target's RNA level changed in diseased tissue | 1.02 (0.60–1.71), n=766 | 0.36 (0.06–0.75), n=169 | –, n=30 | –, n=71 | –, n=10 | –, n=0 | 0.01 (3 groups) |
+| Potent at the target (100 nM or better) | 0.97 (0.50–1.69), n=855 | 1.46 (0.75–2.42), n=194 | 1.75 (0.91–3.09), n=211 | 0.78 (0.40–1.32), n=236 | 1.22 (0.58–2.19), n=138 | –, n=16 | 0.32 (5 groups) |
 
 ### What each line adds once the others are known
 
 | Evidence | Phase 1 → 2 | Phase 2 → 3 | Phase 3 → approval |
 | :---- | :---- | :---- | :---- |
-| GWAS | 1.05 (0.94–1.17) | 1.09 (0.84–1.41) | 1.13 (0.83–1.55) |
-| Rare-variant or Mendelian genetics | 1.03 (0.94–1.13) | 1.51 (1.29–1.77) | 1.43 (1.17–1.74) |
-| Gene recurrently mutated in this cancer | 1.12 (1.00–1.24) | 1.31 (1.04–1.65) | 1.09 (0.87–1.37) |
-| Genetically altered mouse model of the disease | 0.98 (0.92–1.04) | 1.13 (0.99–1.28) | 1.07 (0.90–1.27) |
-| Target's RNA level changed in diseased tissue | 0.95 (0.87–1.03) | 0.85 (0.69–1.05) | 0.83 (0.65–1.05) |
-| Curated disease mechanism (Reactome) | 1.09 (0.98–1.21) | 0.81 (0.59–1.11) | 1.05 (0.82–1.35) |
+| GWAS | 1.05 (0.94–1.17) | 1.09 (0.84–1.41) | 1.16 (0.85–1.57) |
+| Rare-variant or Mendelian genetics | 1.03 (0.94–1.13) | 1.51 (1.29–1.77) | 1.41 (1.16–1.72) |
+| Gene recurrently mutated in this cancer | 1.11 (1.00–1.24) | 1.31 (1.04–1.65) | 1.07 (0.85–1.35) |
+| Genetically altered mouse model of the disease | 0.98 (0.92–1.04) | 1.13 (0.99–1.28) | 1.07 (0.90–1.28) |
+| Target's RNA level changed in diseased tissue | 0.95 (0.87–1.03) | 0.85 (0.69–1.05) | 0.82 (0.65–1.04) |
+| Curated disease mechanism (Reactome) | 1.08 (0.97–1.20) | 0.79 (0.57–1.09) | 1.15 (0.91–1.45) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
-| Intolerant of loss of function | 0.90 (0.82–0.99) | 1.03 (0.87–1.22) | 0.94 (0.75–1.17) |
+| Intolerant of loss of function | 0.90 (0.82–0.99) | 1.03 (0.87–1.21) | 0.96 (0.77–1.19) |
 | **The molecule** (assays of the drug itself, not evidence for the disease) |  |  |  |
-| Potency at the target measured | 0.81 (0.64–1.02) | 0.90 (0.68–1.18) | 1.15 (0.81–1.63) |
-| Potent at the target (100 nM or better) | 1.15 (0.90–1.47) | 1.23 (0.90–1.67) | 1.13 (0.80–1.60) |
-| Functional potency measured in cells | 0.85 (0.65–1.10) | 0.88 (0.70–1.12) | 0.96 (0.72–1.28) |
-| At least 100-fold selective over measured off-targets | 1.10 (0.89–1.36) | 1.15 (0.85–1.57) | 1.11 (0.84–1.48) |
+| Potency at the target measured | 0.81 (0.64–1.02) | 0.88 (0.67–1.17) | 1.14 (0.80–1.61) |
+| Potent at the target (100 nM or better) | 1.16 (0.91–1.48) | 1.25 (0.91–1.70) | 1.12 (0.79–1.60) |
+| Functional potency measured in cells | 0.85 (0.65–1.10) | 0.89 (0.70–1.12) | 0.97 (0.73–1.29) |
+| At least 100-fold selective over measured off-targets | 1.10 (0.89–1.36) | 1.15 (0.85–1.57) | 1.09 (0.82–1.46) |
 
 ### Does the evidence predict which programs reach approval?
 
 | Validation | Features | AUC (95% CI) | PR-AUC (base rate) | Programs (approved) |
 | :---- | :---- | :---- | :---- | :---- |
-| Held-out target sets | Area, modality, novelty, year | 0.585 (0.524–0.646) | 0.112 (0.059) | 2,990 (175) |
-| Temporal (later entrants held out) | Area, modality, novelty, year | 0.626 (0.549–0.709) | 0.122 (0.064) | 1,529 (98) |
-| Held-out target sets | … plus all evidence lines | 0.622 (0.572–0.676) | 0.117 (0.059) | 2,990 (175) |
-| Temporal (later entrants held out) | … plus all evidence lines | 0.640 (0.574–0.724) | 0.127 (0.064) | 1,529 (98) |
-| Held-out target sets | Evidence lines only | 0.573 (0.489–0.651) | 0.089 (0.059) | 2,990 (175) |
-| Temporal (later entrants held out) | Evidence lines only | 0.618 (0.549–0.691) | 0.111 (0.064) | 1,529 (98) |
+| Held-out target sets | Area, modality, novelty, year | 0.584 (0.527–0.643) | 0.107 (0.059) | 2,989 (177) |
+| Temporal (later entrants held out) | Area, modality, novelty, year | 0.628 (0.553–0.709) | 0.127 (0.065) | 1,529 (99) |
+| Held-out target sets | … plus all evidence lines | 0.629 (0.578–0.682) | 0.120 (0.059) | 2,989 (177) |
+| Temporal (later entrants held out) | … plus all evidence lines | 0.640 (0.575–0.725) | 0.130 (0.065) | 1,529 (99) |
+| Held-out target sets | Evidence lines only | 0.597 (0.512–0.675) | 0.096 (0.059) | 2,989 (177) |
+| Temporal (later entrants held out) | Evidence lines only | 0.617 (0.549–0.691) | 0.111 (0.065) | 1,529 (99) |
 
 Change in held-out AUC when each line is removed from the full model:
 
 | Evidence removed | AUC change (95% CI) |
 | :---- | :---- |
-| Any human genetics | -0.029 (-0.049 to -0.005) |
-| Rare-variant or Mendelian genetics | -0.029 (-0.051 to -0.005) |
-| Gene recurrently mutated in this cancer | -0.003 (-0.031 to +0.027) |
-| Target's RNA level changed in diseased tissue | -0.002 (-0.021 to +0.026) |
-| Intolerant of loss of function | -0.001 (-0.010 to +0.009) |
-| Genetically altered mouse model of the disease | -0.000 (-0.005 to +0.005) |
+| Any human genetics | -0.031 (-0.052 to -0.007) |
+| Rare-variant or Mendelian genetics | -0.031 (-0.055 to -0.007) |
+| Gene recurrently mutated in this cancer | -0.004 (-0.033 to +0.026) |
+| Intolerant of loss of function | -0.003 (-0.012 to +0.007) |
+| Genetically altered mouse model of the disease | -0.001 (-0.005 to +0.003) |
+| Target's RNA level changed in diseased tissue | -0.000 (-0.019 to +0.028) |
 
 ### Confirmatory hypotheses
 
 | Hypothesis | Measure | Estimate (95% CI) | p | Holm p | Result |
 | :---- | :---- | :---- | :---- | :---- | :---- |
-| Outside oncology: genetics for the disease vs no germline genetics on the target, advancing within 4 years of Phase 2 | risk ratio | 1.52 (1.06–2.18) | 0.021 | 0.107 | not supported |
+| Outside oncology: genetics for the disease vs no germline genetics on the target, advancing within 4 years of Phase 2 | risk ratio | 1.53 (1.07–2.20) | 0.019 | 0.096 | not supported |
 | Same target in different diseases: genetics for the disease vs not (conditional logit) | odds ratio | 3.02 (1.99–4.58) | < 0.001 | < 0.001 | supported |
 | Direction of genetic effect vs drug action (Open Targets direction fields): discordant < undirected < concordant | risk ratio per step | 1.16 (0.85–1.59) | 0.359 | 1.000 | not supported |
-| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.11 (0.83–1.48) | 0.491 | 1.000 | not supported |
-| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.19 (0.77–1.85) | 0.432 | 1.000 | not supported |
-| Outside oncology, the target's safety risk raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.89 (0.48–1.65) | 0.968 | 1.000 | not supported |
-| Oncology: a gene recurrently mutated in the cancer whose mutation matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.54 (1.11–2.14) | 0.010 | 0.062 | not supported |
+| Trials outside oncology: how the effect of genetics on missing the primary endpoint changes per step from proximal to distal endpoints (registry-posted results, FDAAA era) | ratio of risk ratios | 1.11 (0.83–1.48) | 0.494 | 1.000 | not supported |
+| Genetics for the disease lowers efficacy failure more than business or operational failure (Phases 2 and 3) | ratio of risk ratios | 1.18 (0.76–1.85) | 0.464 | 1.000 | not supported |
+| Outside oncology, the target's safety risk raises safety failure, and more than efficacy failure (Phases 1–3; intersection-union test) | risk ratio, safety failure | 0.90 (0.48–1.67) | 0.952 | 1.000 | not supported |
+| Oncology: a gene recurrently mutated in the cancer whose mutation matches the drug, advancing within 4 years of Phase 2 | risk ratio | 1.54 (1.11–2.14) | 0.010 | 0.063 | not supported |
 
 Added by the plan amendment, on US-developed programs:
 
 | Hypothesis | Claim | Exposed entries | Risk ratio (95% CI) | p | Holm p | Result |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | N1 | Small molecules measured on the primary target and an off-target: at least 10-fold selective raises advancing from Phase 2 | 199 (111 targets) | 1.00 (0.65–1.55) | 0.988 | 1.000 | not supported |
-| N2 | Small molecules: at most one Rule-of-5 violation raises advancing | 1,897 (799 targets) | 0.93 (0.71–1.23) | 0.626 | 1.000 | not supported |
-| N2 | Neurology and psychiatry: brain-penetrant properties raise advancing | 262 (136 targets) | 1.47 (0.80–2.71) | 0.219 | 1.000 | not supported |
-| N3 | Outside oncology, small molecules: potency of 100 nM or better raises advancing, human genetics and drug-likeness held fixed | 272 (145 targets) | 1.00 (0.73–1.38) | 0.986 | 1.000 | not supported |
+| N2 | Small molecules: at most one Rule-of-5 violation raises advancing | 1,897 (799 targets) | 0.93 (0.71–1.22) | 0.622 | 1.000 | not supported |
+| N2 | Neurology and psychiatry: brain-penetrant properties raise advancing | 262 (136 targets) | 1.46 (0.79–2.70) | 0.223 | 1.000 | not supported |
+| N3 | Outside oncology, small molecules: potency of 100 nM or better raises advancing, human genetics and drug-likeness held fixed | 272 (145 targets) | 1.00 (0.73–1.38) | 0.979 | 1.000 | not supported |
 
 ### Which evidence translates: the registered screen
 
@@ -236,36 +237,36 @@ Every rule the plan registered, each against programs without it, before the rul
 
 | Evidence for the disease, known before Phase 2 | Programs (targets) | Advanced: with / without | Share of all that advanced | Risk ratio, all (95% CI) | Risk ratio, non-oncology | Risk ratio, oncology |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
-| Germline genetics for the disease | 526 (238) | 28% / 14% | 21% | 1.90 (1.54–2.33) | 1.46 (1.09–1.95) | 2.29 (1.64–3.18) |
-| GWAS, any locus-to-gene score | 138 (75) | 20% / 16% | 4% | 1.23 (0.84–1.79) | 1.29 (0.78–2.15) | 1.58 (0.94–2.65) |
-| GWAS, locus-to-gene score ≥ 0.8 | 59 (37) | 14% / 16% | 1% | 0.81 (0.43–1.53) | 0.82 (0.36–1.85) | – |
+| Germline genetics for the disease | 526 (238) | 28% / 14% | 21% | 1.90 (1.54–2.34) | 1.46 (1.09–1.96) | 2.28 (1.64–3.18) |
+| GWAS, any locus-to-gene score | 138 (75) | 20% / 16% | 4% | 1.23 (0.84–1.80) | 1.30 (0.78–2.16) | 1.58 (0.94–2.65) |
+| GWAS, locus-to-gene score ≥ 0.8 | 59 (37) | 14% / 16% | 1% | 0.82 (0.43–1.54) | 0.82 (0.36–1.86) | – |
 | GWAS, best score 0.5–0.8 | 35 (20) | 17% / 16% | 1% | 1.01 (0.46–2.22) | – | – |
-| GWAS, best score below 0.5 | 44 (28) | 32% / 16% | 2% | 1.91 (1.14–3.18) | 2.09 (1.17–3.73) | – |
-| Mendelian or ClinVar pathogenic | 414 (184) | 29% / 14% | 17% | 1.98 (1.57–2.49) | 1.50 (1.08–2.09) | 2.20 (1.54–3.14) |
-| Mendelian, top-tier curation | 260 (121) | 32% / 15% | 12% | 2.25 (1.72–2.94) | 1.57 (1.07–2.30) | 3.09 (2.16–4.42) |
-| Gene recurrently mutated in this cancer | 539 (132) | 22% / 15% | 17% | 1.66 (1.23–2.22) | – | 1.61 (1.16–2.24) |
+| GWAS, best score below 0.5 | 44 (28) | 32% / 16% | 2% | 1.92 (1.15–3.20) | 2.10 (1.18–3.76) | – |
+| Mendelian or ClinVar pathogenic | 414 (184) | 29% / 14% | 17% | 1.98 (1.57–2.49) | 1.50 (1.07–2.09) | 2.20 (1.54–3.14) |
+| Mendelian, top-tier curation | 260 (121) | 32% / 15% | 12% | 2.25 (1.71–2.94) | 1.57 (1.07–2.30) | 3.09 (2.16–4.42) |
+| Gene recurrently mutated in this cancer | 539 (132) | 22% / 15% | 17% | 1.66 (1.24–2.22) | – | 1.61 (1.16–2.23) |
 | Mutation matches the drug | 397 (91) | 22% / 15% | 12% | 1.61 (1.19–2.18) | – | 1.54 (1.11–2.14) |
-| Mouse model (literature) | 928 (422) | 22% / 14% | 28% | 1.46 (1.20–1.79) | 1.48 (1.20–1.83) | 1.30 (0.80–2.10) |
-| Mouse model, top-quartile phenotype match | 563 (277) | 23% / 15% | 18% | 1.50 (1.24–1.81) | 1.56 (1.23–1.98) | 1.23 (0.83–1.83) |
-| Target's RNA level changed in diseased tissue | 524 (262) | 17% / 16% | 12% | 1.05 (0.73–1.50) | 0.57 (0.32–1.01) | 1.23 (0.82–1.84) |
+| Mouse model (literature) | 927 (422) | 22% / 14% | 28% | 1.47 (1.20–1.79) | 1.49 (1.20–1.84) | 1.29 (0.80–2.10) |
+| Mouse model, top-quartile phenotype match | 562 (277) | 23% / 15% | 18% | 1.51 (1.25–1.82) | 1.57 (1.24–1.99) | 1.23 (0.83–1.83) |
+| Target's RNA level changed in diseased tissue | 524 (262) | 17% / 16% | 12% | 1.05 (0.74–1.51) | 0.57 (0.32–1.01) | 1.23 (0.82–1.84) |
 | Curated disease mechanism (Reactome) | 118 (42) | 23% / 16% | 4% | 1.27 (0.89–1.82) | – | – |
 | **Clinical precedent** |  |  |  |  |  |  |
-| Approved drug on the target, related disease | 1,270 (365) | 26% / 12% | 46% | 2.12 (1.76–2.57) | 1.94 (1.54–2.43) | 2.47 (1.58–3.86) |
-| Approved drug on the target, any disease | 2,588 (565) | 19% / 12% | 67% | 1.60 (1.33–1.92) | 1.51 (1.21–1.90) | 1.71 (1.23–2.38) |
+| Approved drug on the target, related disease | 1,274 (369) | 25% / 12% | 46% | 2.12 (1.75–2.56) | 1.93 (1.54–2.43) | 2.46 (1.57–3.84) |
+| Approved drug on the target, any disease | 2,595 (569) | 18% / 12% | 68% | 1.60 (1.33–1.93) | 1.52 (1.21–1.91) | 1.71 (1.23–2.38) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |  |  |  |
 | Essential in most cell lines | 0 (0) | – / 16% | 0% | – | – | – |
-| Intolerant of loss of function | 885 (220) | 15% / 16% | 19% | 1.00 (0.79–1.26) | 1.19 (0.92–1.53) | 0.81 (0.54–1.22) |
-| Mouse knockout dies before weaning | 2,204 (543) | 16% / 16% | 49% | 1.00 (0.83–1.22) | 0.88 (0.72–1.08) | 1.13 (0.76–1.66) |
+| Intolerant of loss of function | 883 (220) | 15% / 16% | 19% | 0.99 (0.78–1.26) | 1.18 (0.91–1.52) | 0.81 (0.54–1.22) |
+| Mouse knockout dies before weaning | 2,202 (543) | 16% / 16% | 49% | 1.00 (0.83–1.21) | 0.88 (0.72–1.07) | 1.13 (0.76–1.65) |
 
 ### By endpoint
 
 | Class of the governing primary endpoint | Trials | Missed primary endpoint | Trials with genetics for the disease | Missed: with / without genetics | Risk ratio of a miss, all readable trials (95% CI) | Risk ratio, registry-posted results (FDAAA era) |
 | :---- | :---- | :---- | :---- | :---- | :---- | :---- |
 | Target engagement | 62 | 29% | 21 | 33% / 27% | 0.99 (0.39–2.52) | – |
-| Exploratory biomarker | 261 | 69% | 24 | 79% / 68% | 1.15 (0.88–1.51) | – |
-| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,369 | 22% | 212 | 17% / 23% | 1.08 (0.72–1.62) | 0.59 (0.28–1.24) |
-| Objective physiology (6MWD, visual acuity, weight…) | 451 | 53% | 80 | 45% / 55% | 0.98 (0.69–1.39) | 1.06 (0.75–1.49) |
-| Clinician-rated scale or responder index | 1,309 | 55% | 170 | 47% / 56% | 0.83 (0.66–1.04) | 0.87 (0.69–1.11) |
+| Exploratory biomarker | 261 | 69% | 24 | 79% / 68% | 1.16 (0.88–1.52) | – |
+| Regulatory surrogate (LDL-C, HbA1c, viral load…) | 1,369 | 22% | 212 | 17% / 23% | 1.07 (0.71–1.61) | 0.59 (0.28–1.24) |
+| Objective physiology (6MWD, visual acuity, weight…) | 451 | 53% | 80 | 45% / 55% | 0.98 (0.69–1.39) | 1.07 (0.76–1.51) |
+| Clinician-rated scale or responder index | 1,309 | 55% | 170 | 47% / 56% | 0.82 (0.66–1.03) | 0.87 (0.69–1.11) |
 | Patient-reported outcome | 664 | 51% | 7 | 57% / 51% | – | – |
 | Disease events (relapses, exacerbations…) | 339 | 42% | 51 | 39% / 42% | 0.87 (0.56–1.35) | – |
 | Hard outcome (death, MI, stroke…) | 161 | 53% | 11 | 55% / 53% | – | – |
@@ -277,15 +278,15 @@ Every rule the plan registered, each against programs without it, before the rul
 
 | Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
 | :---- | :---- | :---- | :---- | :---- | :---- |
-| Germline genetics for the disease | All | 526 (238) | 28% / 14% | 1.90 (1.54–2.33) | < 0.001 |
-| Genetically altered mouse model of the disease | All | 934 (427) | 22% / 14% | 1.46 (1.20–1.78) | < 0.001 |
-| Gene recurrently mutated in this cancer | Oncology | 533 (131) | 22% / 13% | 1.61 (1.16–2.24) | 0.019 |
+| Germline genetics for the disease | All | 526 (238) | 28% / 14% | 1.90 (1.54–2.34) | < 0.001 |
+| Genetically altered mouse model of the disease | All | 933 (427) | 22% / 14% | 1.47 (1.20–1.79) | < 0.001 |
+| Gene recurrently mutated in this cancer | Oncology | 533 (131) | 22% / 13% | 1.61 (1.16–2.23) | 0.019 |
 | CRISPR screen in cells | All | 0 (0) | – / 16% | too few programs (0) to test | – |
-| Target's RNA level changed in diseased tissue | All | 524 (262) | 17% / 16% | 1.05 (0.73–1.50) | 1.000 |
-| Curated disease mechanism (Reactome) | All | 118 (42) | 23% / 16% | 1.27 (0.89–1.82) | 0.540 |
-| Safety risk of the target | All | 2,358 (583) | 16% / 16% | 1.01 (0.83–1.23) | 1.000 |
+| Target's RNA level changed in diseased tissue | All | 524 (262) | 17% / 16% | 1.05 (0.74–1.51) | 1.000 |
+| Curated disease mechanism (Reactome) | All | 118 (42) | 23% / 16% | 1.27 (0.89–1.82) | 0.555 |
+| Safety risk of the target | All | 2,356 (583) | 16% / 16% | 1.01 (0.83–1.23) | 1.000 |
 | **Benchmark** (clinical precedent, not preclinical evidence) |  |  |  |  |  |
-| Approved drug on the target, related disease | All | 1,270 (365) | 26% / 12% | 2.12 (1.76–2.57) | – |
+| Approved drug on the target, related disease | All | 1,274 (369) | 25% / 12% | 2.12 (1.75–2.56) | – |
 
 | More specific version | Within programs with | Programs | Advanced: with / rest of the type | Adjusted risk ratio (95% CI) | Holm-corrected p |
 | :---- | :---- | :---- | :---- | :---- | :---- |
@@ -295,11 +296,11 @@ Every rule the plan registered, each against programs without it, before the rul
 | Drug raises function or replaces the gene, hereditary disease | Germline genetics for the disease | 110 of 166 | 32% / 20% | 1.82 (0.84–3.93) | 1.000 |
 | Genetics points the same way as the drug (added after the plan) | Germline genetics for the disease | 265 of 526 | 29% / 28% | 1.12 (0.77–1.63) | 1.000 |
 | Protective loss of function + drug that lowers function (added after the plan) | Germline genetics for the disease | 30 of 526 | 13% / 29% | too few to test | – |
-| Close phenotype match (top quartile) | Genetically altered mouse model of the disease | 564 of 934 | 23% / 19% | 1.16 (0.81–1.68) | 1.000 |
-| Mouse model points the same way as the drug (added after the plan) | Genetically altered mouse model of the disease | 328 of 934 | 23% / 20% | 1.10 (0.81–1.48) | 1.000 |
+| Close phenotype match (top quartile) | Genetically altered mouse model of the disease | 563 of 933 | 23% / 19% | 1.16 (0.81–1.68) | 1.000 |
+| Mouse model points the same way as the drug (added after the plan) | Genetically altered mouse model of the disease | 328 of 933 | 23% / 20% | 1.10 (0.81–1.48) | 1.000 |
 | Driver matches the drug (activated oncogene + inhibitor) | Gene recurrently mutated in this cancer | 385 of 533 | 23% / 21% | 1.00 (0.63–1.59) | 1.000 |
-| Expression up + drug that lowers function | Target's RNA level changed in diseased tissue | 247 of 524 | 15% / 18% | 0.94 (0.53–1.68) | 1.000 |
-| Liability + drug that lowers function | Safety risk of the target | 1,717 of 2,358 | 15% / 17% | 1.03 (0.79–1.34) | 1.000 |
+| Expression up + drug that lowers function | Target's RNA level changed in diseased tissue | 247 of 524 | 15% / 18% | 0.94 (0.53–1.67) | 1.000 |
+| Liability + drug that lowers function | Safety risk of the target | 1,717 of 2,356 | 15% / 17% | 1.04 (0.79–1.36) | 1.000 |
 
 ## Sources in detail
 
