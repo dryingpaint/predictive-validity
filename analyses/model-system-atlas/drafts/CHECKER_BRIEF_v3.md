@@ -25,8 +25,11 @@ For EVERY entry in every cell:
    - a member drug outside the class you were given (another target, a non-selective drug, another
      modality).
 4. Confirm `model` is the system the class relied on for that question, not a better one in principle.
-5. Search for what the draft missed: in particular a press release, SEC filing or EMA/AdCom document
-   reporting a failure the draft does not show.
+5. Search for what the draft missed: a press release, SEC filing or EMA/AdCom document reporting a
+   failure the draft does not show, and **any model system compared with patients for this class that has
+   no track** (patient-derived organoids or cells, a regulator's in-vitro basis for a label expansion, a
+   later or better animal model, a member drug's own model). List each missed model in `missing` with a
+   source.
 
 Do not rewrite the draft. Write a verdict file at the path given below:
 {

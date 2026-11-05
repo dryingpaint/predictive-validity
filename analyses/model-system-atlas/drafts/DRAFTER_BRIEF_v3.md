@@ -22,8 +22,15 @@ safety (an on-target harm stays pooled): give each such entry `modality`, one of
 `modality_groups`, and keep each modality's entries in year order.
 
 ## What "the model" is (v3)
-The model is whatever system the class actually relied on to go into patients: the pivotal preclinical
-papers, the FDA/EMA pharmacology review. Three cases that are all in scope:
+Start by listing **every model system that has been compared with patients for this class**, not only
+the one the class went into patients on. Search the pivotal preclinical papers and FDA/EMA reviews, and
+also "<class or member> + <model type> + predicts / correlates with clinical response", regulator
+reliance (label expansions on in-vitro data), and patient-level uses (patient-derived organoids or cells
+used to choose who gets treated). The system the class relied on to go into patients is the cell's main
+strip. Every other model system with a comparison gets its own **parallel track**: its entries carry
+`parallel: true` and their own `model_id`, and are scored by the same rules within that track. Every entry
+records `prediction_level`: `class` (does the drug class work) or `patient` (does the model pick which
+patients or genotypes respond). Three cases that are all in scope:
 - the animals were dosed with a sibling drug, not this one: allowed, `product_in_model: false`;
 - the system was not an animal (allergen challenge chamber, UVB evoked pain, patient ex-vivo cells, people
   with a loss-of-function genotype): allowed, with `model_kind`;

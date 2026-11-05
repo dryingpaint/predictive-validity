@@ -150,8 +150,15 @@ order under registry dating.
 
 ## 8. What "the model" is
 
-**Rule.** The model is the system the class actually relied on for that question (pivotal papers,
-filed package). Proxies are allowed with `product_in_model: false` (#16, #34; 14 scored cells rest
+**Rule.** Every model system compared with patients for the class is tracked. The system the class
+actually relied on for that question (pivotal papers, filed package) is the cell's main strip; every other
+system with a comparison (patient-derived organoids or cells, a regulator's in-vitro basis for a label
+expansion, a later animal model, a member drug's own model) is a parallel track with `parallel: true`, its
+own `model_id`, and the same rules applied within the track. Every entry records `prediction_level`:
+`class` (does the class work) or `patient` (does the model pick which patients or genotypes respond). Which
+track a cell's headline status follows is open (call #1). Drafting starts by listing the model systems; the
+checker hunts for missed ones. Added 2026-11-05 after the CF tile was found to omit the rectal-organoid
+swelling assay and the FRT basis of the Trikafta label expansion. Proxies are allowed with `product_in_model: false` (#16, #34; 14 scored cells rest
 on them, 8 `same`, 6 `contra`). When sponsors relied on different models, the entry names the one the
 scored drug relied on and the other goes in the note (#39, #68, #98). A class that entered with no
 indication-specific model opens on the filed cross-indication model, `model_kind: cross_indication`

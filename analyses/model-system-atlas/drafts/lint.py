@@ -23,7 +23,7 @@ KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", 
 
 STAT_V3 = STAT | {"retro"}
 MATCHED = {"same", "neg", "other", "retro"}
-KEYS_V3 = KEYS | {"modality", "model_id", "source_tier", "model_src", "model_src_tier", "trial_unreported", "patient_signal_reversed",
+KEYS_V3 = KEYS | {"strengthens", "parallel", "prediction_level", "modality", "model_id", "source_tier", "model_src", "model_src_tier", "trial_unreported", "patient_signal_reversed",
                   "model_kind", "model_change", "retrodiction", "imported_from", "magnitude_basis",
                   "confidence_note", "readout_tier", "derived_from", "blocked_by", "margin_stated",
                   "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
@@ -40,6 +40,7 @@ ENUM_V3 = {
     "blocked_by": {"toxicity", None},
     "endpoint_role": {"primary", "poc_gate", None},
     "outcome_tested": {None, "positive", "negative", "negative_confounded"},
+    "prediction_level": {"class", "patient", None},
 }
 ONLY_IN = {"readout_tier": "engagement", "derived_from": "dose", "blocked_by": "dose", "margin_stated": "dose",
            "endpoint_role": "efficacy", "outcome_tested": "efficacy", "imported_from": "safety"}
@@ -103,6 +104,14 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             if not isinstance(d.get("class_share"), (int, float)):
                 issues.append((cid, "top-level", "class_share missing (decision 12)"))
         split = v3 and isinstance(d.get("modality_groups"), list) and len(d["modality_groups"]) > 1
+
+        def track(e: dict):
+            """The strip an entry belongs to: a parallel model's own track, else the best-model strip
+            (one per modality in a split cell)."""
+            if e.get("parallel"):
+                return ("parallel", e.get("modality"), e.get("model_id"), e.get("prediction_level"))
+            return ("best", e.get("modality") if split and q in ("dose", "safety") else None, None)
+
         for q in QUESTIONS:
             strip = d.get("cells", {}).get(q)
             if strip is None:
@@ -111,10 +120,11 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             if not strip:
                 issues.append((cid, q, "empty cell (no model relied on)"))
                 continue
-            prev, last = None, {}
+            last: dict = {}
             for i, e in enumerate(strip, 1):
-                if split and q in ("dose", "safety") and e.get("modality") is not None:
-                    prev = last.get(e["modality"])  # a split cell is a strip per modality
+                prev = last.get(track(e))
+                if e.get("parallel") and not e.get("model_id"):
+                    issues.append((cid, q, f"entry {i}: parallel entry without model_id"))
                 if v3 and e.get("modality") is not None and e["modality"] not in (d.get("modality_groups") or []):
                     issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups (decision 12)"))
                 if split and q == "dose" and e.get("modality") is None:
@@ -123,20 +133,19 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
                     issues.append((cid, q, f"bad status {e.get('status')!r}"))
                 if not isinstance(e.get("year"), int):
                     issues.append((cid, q, f"year not int: {e.get('year')!r}"))
-                if prev and e.get("status") == prev.get("status") and not (v3 and e.get("model_change")):
+                if prev and e.get("status") == prev.get("status") and not (v3 and (e.get("model_change") or e.get("strengthens"))):
                     issues.append((cid, q, f"same-status entry {i} ({e['status']}): model change or strengthening"))
                 if v3:
                     issues += [(cid, q, f"entry {i}: {m}") for m in v3_entry(q, e, prev)]
-                prev = e
-                if e.get("modality") is not None:
-                    last[e["modality"]] = e
+                last[track(e)] = e
                 extra.update(k for k in e if k not in (KEYS_V3 if v3 else KEYS))
-            if "reason" not in strip[-1]:
+            best = [e for e in strip if not e.get("parallel")]
+            if best and "reason" not in best[-1]:
                 issues.append((cid, q, "latest entry lacks reason"))
-            for mod in {e.get("modality") for e in strip} if split else {None}:
-                ys = [e.get("year") for e in strip if not split or e.get("modality") == mod]
+            for key in {track(e) for e in strip}:
+                ys = [e.get("year") for e in strip if track(e) == key]
                 if sorted(y for y in ys if isinstance(y, int)) != ys:
-                    issues.append((cid, q, "years not sorted" + (f" ({mod})" if mod else "")))
+                    issues.append((cid, q, "years not sorted" + (f" {key[1:]}" if key != ("best", None, None) else "")))
     return extra, issues
 
 
