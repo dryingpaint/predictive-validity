@@ -36,6 +36,7 @@ sources:
 	$(RUN) pipeline.cber.find_missing
 	$(RUN) pipeline.cber.find_missing2
 	$(RUN) pipeline.cber.assemble
+	$(RUN) pipeline.cber.other_years
 	$(RUN) pipeline.fda load-cber
 	$(RUN) pipeline.fda extract
 	$(RUN) pipeline.unii load
@@ -50,6 +51,9 @@ identity:
 	$(RUN) pipeline.programs register
 	$(RUN) pipeline.indications map
 	$(RUN) pipeline.drugs canonicalize
+	$(RUN) pipeline.fda link
+	$(RUN) pipeline.fda unlisted
+	$(RUN) pipeline.fda extract
 	$(RUN) pipeline.fda link
 	$(RUN) pipeline.drugs unii
 	$(RUN) pipeline.drugs codes
