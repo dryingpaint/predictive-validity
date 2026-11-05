@@ -49,6 +49,8 @@ and the rule questions.
 
 A corrected entry is not applied by either side. Every `corrected` verdict, with the drafter's status, the
 checker's proposal and the `rule` it cites, goes to the adjudication queue (`matrix_entries.csv` rows where
-`status_draft` ≠ `status_checked`). A third agent, given both and the cited rule, decides; a case it cannot
-decide from the rules becomes a rule question, not a judgement call. Agreement between drafter and checker
+`status_draft` ≠ `status_checked`). A third agent, given both and the cited rule, decides and writes
+`adjudicated_status` and `adjudication_note` into that verdict; a case it cannot decide from the rules becomes
+a rule question, not a judgement call. `drafts/track_store.py` then stores the draft and its verdicts in
+`preclin.atlas_track_entry` and `atlas_track_verdict`. Agreement between drafter and checker
 on the latest cell status, before adjudication, is the κ the re-draft reports.

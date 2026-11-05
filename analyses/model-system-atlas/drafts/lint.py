@@ -95,6 +95,8 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             if k not in d:
                 issues.append((cid, "top-level", f"missing {k}"))
         if v3:
+            if not d.get("mechanism_key"):
+                issues.append((cid, "top-level", "mechanism_key missing (the tile's key in preclin.atlas_register)"))
             groups = d.get("modality_groups")
             if not isinstance(groups, list) or not groups or not set(groups) <= MODALITY:
                 issues.append((cid, "top-level", f"modality_groups {groups!r} (decision 12)"))

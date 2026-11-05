@@ -22,7 +22,7 @@ that declares `"schema": 3`.
 | 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
 | 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
 | 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
-| 12 class boundaries | decided, revised: mechanism (target, action) from a reviewed class table, most programs across modalities, ≥ 3, ties each a tile; dose and platform safety split by modality |
+| 12 class boundaries | decided, revised: every mechanism (target, action) of every indication registered from a reviewed class table; ≥ 3 programs across modalities tracked; dose and platform safety split by modality; stored in `preclin.atlas_*` (migration 133) |
 | 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
 | 16 dose window | decided: the dose cell scores the toxic ceiling when the model stated a margin |
 
@@ -200,11 +200,12 @@ the bins are too coarse to carry the surrogate-outcome story, hence decision 9.
 reviewed per-drug class table in `lists/class_audit/` (verified target, action, selectivity, modality,
 novelty at entry, with a source per row). A member not selective for the mechanism's target forms its
 own mechanism ("JAK (pan)", multichannel blockers); dual-mechanism drugs are out unless the table puts
-them in (#33, #78). The indication's mechanism is the one with the most programs counted across
-modalities, at least 3; phase is never a criterion, so the choice does not depend on whether a
-mechanism succeeded. Mechanisms tied on count each get a tile; an indication with no mechanism of 3
-programs is blank (24 of 71 on the 2026-11-04 audit), and the random program sample, not the named
-tiles, carries the atlas's statistics.
+them in (#33, #78). Every mechanism of every named indication is registered, counted across
+modalities (`preclin.atlas_register`: 1,661 indication × mechanism rows on the 2026-11-05 audit); a
+mechanism with at least 3 programs is **tracked**, a tile whose model track record is drafted (118
+tiles in 47 indications). Phase is never a criterion, so what is tracked does not depend on whether
+a mechanism succeeded. Single-program and two-program mechanisms are covered by the random program
+sample, which carries the atlas's statistics.
 
 Each cell pools at the level its prediction depends on. Efficacy and engagement pool the whole
 mechanism: the model tests the biology, whatever the modality. Dose is split by modality: PK scaling

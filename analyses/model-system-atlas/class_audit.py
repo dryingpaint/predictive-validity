@@ -1,17 +1,19 @@
 """Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table (decision 12).
 
-    .venv/bin/python analyses/model-system-atlas/class_audit.py
+    .venv/bin/python analyses/model-system-atlas/class_audit.py          # files only
+    .venv/bin/python analyses/model-system-atlas/class_audit.py store    # and the database (migration 133)
 
-Read-only. Rebuilds the cohort lists.py uses (novel Phase 2 entrants 2008-2019 in the 71 named
+Without `store` it only reads. Rebuilds the cohort lists.py uses (novel Phase 2 entrants 2008-2019 in the 71 named
 indications, lists/named_indications.csv) on today's database and writes lists/named_contexts.csv,
-one row per tile (an indication with no qualifying mechanism has one blank row), and under
-lists/class_audit/:
+one row per tracked tile, and under lists/class_audit/:
 
   class_members.csv     one row per (named indication, novel Phase 2 program): the database's
                         target, action, ChEMBL mechanism, modality, novelty, first FDA approval and
                         furthest phase, joined to the hand review in reviews.csv (verified target,
                         action, selectivity, modality group, first FDA approval, evidence) and a
                         disagrees_with_db flag;
+  register.csv          every mechanism in every named indication, counted across modalities,
+                        tracked when it has MIN_PROGRAMS programs (named_contexts.csv is the tracked rows);
   AUDIT.md              where the database disagrees with the review, and the rule's result.
 named_contexts_v2.csv is the list the v2 drafts were written against; each tile records the v2
 class it replaces.
@@ -25,19 +27,21 @@ tile (`modality_groups` lists them). A non-selective or off-class member carries
 target (e.g. "JAK (pan)"), so it falls into its own mechanism (a dual member whose verified target is
 the mechanism's target, such as netarsudil, ROCK plus NET, stays in); a member with no molecular
 target (lubricants, barriers, photosensitisers) or an undisclosed one forms none. Members
-FDA-approved before their Phase 2 entry are dropped (not novel). The indication's mechanism is the
-one with the most distinct entities, at least MIN_PROGRAMS; phase is never a criterion, so the
-choice does not depend on success. Mechanisms tied on count each get a tile; with none qualifying
-the indication is blank.
+FDA-approved before their Phase 2 entry are dropped (not novel). Every mechanism of every
+indication is registered; one with at least MIN_PROGRAMS distinct entities is tracked, a tile whose
+model track record is drafted. Phase is never a criterion, so tracking does not depend on success.
 """
 import importlib.util
 import os
 import sys
+import uuid
 
 import pandas as pd
+from psycopg2.extras import execute_values
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, REPO)
+from pipeline import llm  # noqa: E402
 from report import frame, section1  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -184,56 +188,41 @@ def reviewed(m: pd.DataFrame) -> pd.DataFrame:
 def class_label(target: str, action: str) -> str:
     return ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
 
-def ranked_classes(g: pd.DataFrame) -> pd.DataFrame:
-    """Mechanisms of one indication's members, counted across modalities, by program count. Phase is
-    reported, never ranked on, so the choice does not depend on whether a mechanism succeeded."""
-    return (g.groupby(["c_target", "c_action"])
-            .agg(furthest=("furthest_phase_reached", "max"), n=("entity", "nunique"),
-                 groups=("c_group", lambda x: ";".join(sorted(set(x.dropna())))),
-                 ex=("drug", lambda d: "; ".join(sorted(set(d))[:6])),
-                 sel=("selectivity", lambda s: "; ".join(sorted(set(s.dropna())))))
-            .reset_index().sort_values(["n", "c_target"], ascending=[False, True]))
-
-def tiles(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Decision 12 over reviewed members (database fields where a member is unreviewed), and the
-    members with the mechanism each is counted in. Mechanisms tied on count each get a tile."""
-    unresolved = (m.db_target.isna() & m.chembl_mechanism.isna()).groupby(m.mondo_id_named).mean()
+def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Every mechanism in every named indication (decision 12): one row per indication x mechanism,
+    counted across modalities and tracked when it has MIN_PROGRAMS programs; and the members, each
+    with its mechanism_key or the reason it is in none."""
     m = m.copy()
+    unresolved = (m.db_target.isna() & m.chembl_mechanism.isna()).groupby(m.mondo_id_named).mean()
     m["c_target"] = m.verified_target.fillna(m.db_target)
     m["c_target"] = m.c_target.where(m.selectivity.ne("off-class"), m.c_target + " (off-class)")
     m["c_action"] = m.verified_action.fillna(m.db_action)
     m["c_group"] = m.modality_group.fillna(m.modality_group_db)
-    m = m[m.novel_verified.ne(False) & m.c_target.notna() & m.c_target.ne("unknown") & m.selectivity.ne("no target")]
-    out, chosen = [], []
-    for r in named.itertuples():
-        g = m[m.mondo_id_named == r.mondo_id]
-        ranked = ranked_classes(g)
-        ok = ranked[ranked.n >= MIN_PROGRAMS]
-        base = {"area": r.area, "mondo_id": r.mondo_id, "label": r.label, "n_programs": int(r.n),
-                "share_unresolved": round(float(unresolved.get(r.mondo_id, 1.0)), 2)}
-        if not len(ok):
-            top = ranked.iloc[0] if len(ranked) else None
-            out.append({**base, "class": "no qualifying class", "class_programs": 0, "class_share": 0.0,
-                        "class_basis": "proposed_rule", "example_entities": "", "modality_groups": "",
-                        "selectivity_note": "", "furthest_phase": None, "tile": 1, "runner_up": "",
-                        "reason": f"no mechanism reaches {MIN_PROGRAMS} programs"
-                                  + (f"; largest is {class_label(top.c_target, top.c_action)} ({top.n})" if top is not None else "")})
-            continue
-        winners = ok[ok.n == ok.n.iloc[0]]
-        rest = ok[ok.n < ok.n.iloc[0]]
-        nxt = rest.iloc[0] if len(rest) else None
-        for tile, w in enumerate(winners.itertuples(), 1):
-            chosen.append(g[(g.c_target == w.c_target) & (g.c_action == w.c_action)].assign(proposed_rank=1))
-            out.append({**base, "class": class_label(w.c_target, w.c_action), "class_programs": int(w.n),
-                        "class_share": round(w.n / r.n, 3), "class_basis": "proposed_rule", "example_entities": w.ex,
-                        "modality_groups": w.groups, "selectivity_note": w.sel, "furthest_phase": int(w.furthest),
-                        "tile": tile,
-                        "runner_up": f"{class_label(nxt.c_target, nxt.c_action)} ({nxt.n})" if nxt is not None else "",
-                        "reason": f"tied with {len(winners) - 1} other mechanism(s) on {int(w.n)} programs; each gets a tile"
-                                  if len(winners) > 1 else ""})
-        if nxt is not None:
-            chosen.append(g[(g.c_target == nxt.c_target) & (g.c_action == nxt.c_action)].assign(proposed_rank=2))
-    return pd.DataFrame(out), pd.concat(chosen)
+    m["excluded"] = None
+    m.loc[m.c_target.isna(), "excluded"] = "no_target"
+    m.loc[m.c_target.eq("unknown"), "excluded"] = "undisclosed"
+    m.loc[m.selectivity.eq("no target"), "excluded"] = "no_target"
+    m.loc[m.novel_verified.eq(False), "excluded"] = "not_novel"
+    m["mechanism_key"] = (m.c_target + "|" + m.c_action.fillna("")).where(m.excluded.isna())
+    n_ind = named.set_index("mondo_id").n
+    reg = (m[m.mechanism_key.notna()]
+           .groupby(["mondo_id_named", "mechanism_key", "c_target", "c_action"])
+           .agg(n=("entity", "nunique"), furthest=("furthest_phase_reached", "max"),
+                groups=("c_group", lambda x: ";".join(sorted(set(x.dropna())))),
+                ex=("drug", lambda d: "; ".join(sorted(set(d))[:6])),
+                sel=("selectivity", lambda x: "; ".join(sorted(set(x.dropna())))))
+           .reset_index())
+    reg["mechanism"] = [class_label(t, a) for t, a in zip(reg.c_target, reg.c_action)]
+    reg["share"] = (reg.n / reg.mondo_id_named.map(n_ind)).round(3)
+    reg["tracked"] = reg.n >= MIN_PROGRAMS
+    reg["share_unresolved"] = reg.mondo_id_named.map(unresolved).round(2)
+    reg = reg.merge(named[["mondo_id", "label", "area", "n"]].rename(columns={"mondo_id": "mondo_id_named", "n": "n_indication"}),
+                    on="mondo_id_named")
+    reg = reg.sort_values(["area", "label", "n", "mechanism"], ascending=[True, True, False, True])
+    m["tracked"] = m.mechanism_key.map(reg.groupby("mechanism_key").tracked.any()).fillna(False) & \
+        m.set_index(["mondo_id_named", "mechanism_key"]).index.isin(
+            reg[reg.tracked].set_index(["mondo_id_named", "mechanism_key"]).index)
+    return reg, m
 
 def current_members(m: pd.DataFrame) -> pd.Series:
     """Whether each member counted toward its indication's class in the v2 list."""
@@ -251,35 +240,104 @@ def current_members(m: pd.DataFrame) -> pd.Series:
     return in_class
 
 
+def _nul(v):
+    """None for a missing value, a plain Python scalar otherwise (psycopg2 does not adapt numpy types)."""
+    if v is None or (not isinstance(v, (list, str)) and pd.isna(v)):
+        return None
+    return v.item() if hasattr(v, "item") else v
+
+
+def store(m: pd.DataFrame, reg: pd.DataFrame, named: pd.DataFrame) -> str:
+    """Replace the atlas build tables in one transaction (migration 133); returns the build id."""
+    rv = pd.read_csv(REVIEWS, dtype={"verified_first_fda_approval": str, "novel_override": object})
+    rv = rv[rv.moiety_id.notna()]
+    placed = m[m.mechanism_key.notna()]
+    mech = placed.drop_duplicates("mechanism_key")[["mechanism_key", "c_target", "c_action"]]
+    build_id = str(uuid.uuid4())
+    with llm.connect() as conn, conn.cursor() as cur:
+        method = llm.record_method(
+            cur, "atlas_class_register@v1", "Atlas class register",
+            "Every mechanism (verified target, action; across modalities) of every named indication, from the "
+            "novel Phase 2 entrants of 2008-2019 and a hand review of the entities; tracked when it has "
+            "min_programs distinct entities (decision 12).",
+            ["preclin.dev_program", "preclin.moiety_target", "preclin.chembl_mechanism",
+             "analyses/model-system-atlas/lists/class_audit/reviews.csv"],
+            {"window": [str(w) for w in lists.WINDOW], "phase": lists.PHASE, "min_programs": MIN_PROGRAMS})
+        for t in ("atlas_member", "atlas_mechanism", "atlas_moiety_review", "atlas_indication"):
+            cur.execute(f"DELETE FROM preclin.{t}")
+        cur.execute("""INSERT INTO preclin.atlas_build (build_id, code_commit, snapshot, min_programs, n_members,
+                                                        n_register, n_tracked, method_id)
+                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+                    (build_id, llm.git_commit(), frame.snapshot(), MIN_PROGRAMS, len(m), len(reg),
+                     int(reg.tracked.sum()), method))
+        execute_values(cur, """INSERT INTO preclin.atlas_indication (mondo_id, label, area, area_rank, n_programs,
+                                                                     merged_from, build_id) VALUES %s""",
+                       [(r.mondo_id, r.label, r.area, int(r.rank), int(r.n),
+                         [x for x in str(r.merged_from).split(";") if x and x != "nan"], build_id)
+                        for r in named.itertuples()])
+        execute_values(cur, """INSERT INTO preclin.atlas_moiety_review (moiety_id, same_entity_as, target_label, action,
+                                   selectivity, modality_group, first_fda_approval, novel_override, evidence, note,
+                                   build_id) VALUES %s""",
+                       [(int(r.moiety_id), _nul(r.same_entity_as) and int(r.same_entity_as), r.verified_target,
+                         _nul(r.verified_action), _nul(r.selectivity), _nul(r.modality_group),
+                         _nul(r.verified_first_fda_approval), {"True": True, "False": False}.get(str(r.novel_override)),
+                         r.evidence, _nul(r.review_note), build_id) for r in rv.itertuples()])
+        execute_values(cur, """INSERT INTO preclin.atlas_mechanism (mechanism_key, target_label, action, label, build_id)
+                               VALUES %s""",
+                       [(r.mechanism_key, r.c_target, r.c_action, class_label(r.c_target, r.c_action), build_id)
+                        for r in mech.itertuples()])
+        execute_values(cur, """INSERT INTO preclin.atlas_member (moiety_id, mondo_id, program_mondo_id, entity_id,
+                                   mechanism_key, excluded, modality_group, entry_date, furthest_phase, reviewed,
+                                   build_id) VALUES %s""",
+                       [(int(r.moiety_id), r.mondo_id_named, r.program_mondo_id, int(r.entity), _nul(r.mechanism_key),
+                         _nul(r.excluded), r.c_group, pd.Timestamp(r.entry).date(), _nul(r.furthest_phase_reached),
+                         bool(r.reviewed), build_id) for r in m.itertuples()], page_size=2000)
+        cur.execute("SELECT count(*), count(*) FILTER (WHERE tracked) FROM preclin.atlas_register")
+        n_reg, n_tracked = cur.fetchone()
+        if (n_reg, n_tracked) != (len(reg), int(reg.tracked.sum())):
+            raise RuntimeError(f"register view gives {n_reg}/{n_tracked}, the draw {len(reg)}/{int(reg.tracked.sum())}")
+        conn.commit()
+    print(f"stored build {build_id}: {len(named)} indications, {len(rv)} reviews, {len(mech)} mechanisms, "
+          f"{len(m)} members; register {n_reg}, tracked {n_tracked}")
+    return build_id
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     ent, named, progs = cohort()
     m = reviewed(members(ent, named, progs))
-    m["in_current_class"] = current_members(m)
-    prop, chosen = tiles(m, named)
-    rank = chosen.set_index("program_id").proposed_rank
-    m["proposed_class_rank"] = m.program_id.map(rank)
+    m["in_v2_class"] = current_members(m)
+    reg, m = register(m, named)
     cols = ["mondo_id_named", "indication", "area", "program_id", "program_mondo_id", "moiety_id", "drug", "code_names",
             "db_target", "db_action", "n_primary", "chembl_mechanism", "modality", "modality_group_db", "novel_flag",
             "first_approval_date", "entry_year", "approved_this_indication", "furthest_phase_reached",
-            "in_current_class", "proposed_class_rank", "same_entity_as",
+            "in_v2_class", "mechanism_key", "excluded", "tracked", "same_entity_as",
             "verified_target", "verified_action", "selectivity", "modality_group", "verified_first_fda_approval",
             "novel_verified", "evidence", "disagrees_with_db", "db_issue", "review_note"]
     m[cols].rename(columns={"mondo_id_named": "mondo_id"}).to_csv(os.path.join(OUT, "class_members.csv"), index=False)
-    prop["v2_class"] = prop.mondo_id.map(pd.read_csv(V2).set_index("mondo_id")["class"])
-    prop["changed_from_v2"] = prop["class"] != prop.v2_class
-    prop[["area", "mondo_id", "label", "n_programs", "tile", "class", "class_programs", "class_share", "modality_groups",
-          "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "reason", "runner_up",
-          "v2_class", "changed_from_v2"]].to_csv(CONTEXTS, index=False)
-    need = m[(m.in_current_class | m.proposed_class_rank.notna()) & ~m.reviewed]
+    out = reg.rename(columns={"mondo_id_named": "mondo_id", "n_indication": "n_programs", "n": "class_programs",
+                              "mechanism": "class", "groups": "modality_groups", "sel": "selectivity_note",
+                              "furthest": "furthest_phase", "ex": "example_entities", "share": "class_share"})
+    v2 = pd.read_csv(V2).set_index("mondo_id")["class"]
+    out["v2_class"] = out.mondo_id.map(v2)
+    out["is_v2_class"] = out["class"] == out.v2_class
+    keep = ["area", "mondo_id", "label", "n_programs", "mechanism_key", "class", "class_programs", "class_share",
+            "modality_groups", "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "tracked",
+            "v2_class", "is_v2_class"]
+    out[keep].to_csv(os.path.join(OUT, "register.csv"), index=False)
+    out[out.tracked][[k for k in keep if k != "tracked"]].to_csv(CONTEXTS, index=False)
+    need = m[(m.in_v2_class | m.tracked) & ~m.reviewed]
+    t = out[out.tracked]
     print(f"{len(m)} member rows, {int(m.reviewed.sum())} reviewed, {int(m.disagrees_with_db.eq(True).sum())} disagree; "
-          f"{int(prop['class'].ne('no qualifying class').sum())} tiles over {prop.mondo_id.nunique()} indications, "
-          f"{int(prop['class'].eq('no qualifying class').sum())} blank; "
-          f"{int(prop.changed_from_v2.sum())} rows differ from the v2 list; "
+          f"register {len(out)} indication x mechanism rows; tracked {len(t)} tiles in {t.mondo_id.nunique()} of "
+          f"{len(named)} indications ({int(t.is_v2_class.sum())} are a v2 class); "
           f"{need.moiety_id.nunique()} in-scope moieties unreviewed")
     if len(need):
         print(need[["indication", "moiety_id", "drug", "db_target", "db_action", "modality", "chembl_mechanism"]].to_string())
-
+    if sys.argv[1:] == ["store"]:
+        if len(need):
+            raise SystemExit("not stored: in-scope entities are unreviewed")
+        store(m, reg, named)
 
 if __name__ == "__main__":
     main()

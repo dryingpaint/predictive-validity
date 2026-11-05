@@ -38,7 +38,9 @@ approvals (`preclin.fda_*`), molecular entities (`preclin.moiety`, `preclin.drug
 `preclin.trial_publication`, `preclin.moiety_target`, `preclin.gene_disease_mechanism`,
 `preclin.mouse_model_relation`), Open Targets evidence (`preclin.ot_*`,
 `preclin.evidence_known_year`, `preclin.clinvar_accession_calibration`), and reference genes
-(`preclin.hgnc_gene`, `preclin.depmap_common_essential`, `preclin.chembl_*`). Source releases are
+(`preclin.hgnc_gene`, `preclin.depmap_common_essential`, `preclin.chembl_*`). The model-system atlas
+(`analyses/model-system-atlas/`) keeps its register, track records and FDA review text in
+`preclin.atlas_*` (migration 133). Source releases are
 recorded in `preclin.evidence_source_release` and every LLM decision in
 `pv_evidence.llm_decision` (with its run in `pv_evidence.llm_decision_run`).
 

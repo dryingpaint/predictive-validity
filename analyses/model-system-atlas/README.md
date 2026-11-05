@@ -16,7 +16,7 @@ were open were decided on 2026-11-04:
 | 2 sources | admit meta-analyses, press releases or SEC filings as patient-side sources? | Yes: every source that gives an accurate picture of what happened in the trials. Tiers 4–5 are patient-side only, the model side is a tier 1–3 `model_src`, and a press-release cell carries `trial_unreported` |
 | 6 `contra` recoverable | can a `contra` recover when a different model takes over, or a later source attenuates it? | A failed model stays failed in its own record (`matrix_models.csv`). The cell shows the best model at each date, so a newer model that beats the old one turns it green with a handover mark. An attenuated patient signal (dolutegravir) means the model was right: the red interval stays as what was believed, then the model is credited |
 | 10 post-hoc models | a model built after the clinic knew the answer: excluded outright, or kept as `untested`? | Neither: tracked. A retrodiction that reproduces the human data takes its own status, `retro`, drawn with its own mark and counted apart from prospective matches; one that fails to reproduce them is `contra` |
-| 12 class boundaries | the DB label governs, no widening; modality splits safety and dose, shares efficacy | A tile is indication × mechanism (target, action) from a reviewed per-drug class table (`lists/class_audit/`), non-selective members out, chosen by most programs counted across modalities, at least 3, ties each a tile (62 tiles in 47 indications; 24 blank). Efficacy and engagement pool the mechanism; dose and platform safety split by modality. Ranking by furthest phase (prefers successes) and modality-defined classes (fragments mechanisms) were run and rejected |
+| 12 class boundaries | the DB label governs, no widening; modality splits safety and dose, shares efficacy | Every mechanism (target, action) of every indication is registered from a reviewed per-drug class table, 1,661 rows; a mechanism with ≥ 3 programs counted across modalities is tracked and drafted (118 tiles in 47 indications). Efficacy and engagement pool the mechanism; dose and platform safety split by modality. Stored in `preclin.atlas_*` (migration 133) |
 | 13 `neg` / `other` | `neg` judged on what the model data showed, not the sponsor's reading; cross-class evidence set aside | As proposed, with the model's number in `effect_size` and the class bar in `class_threshold` |
 | 16 dose window | score the toxic end of the dose window when the model stated a margin, or keep dose as the effective-exposure floor only? | Score it: the atlas asks whether any model gives the toxic ceiling (`margin_stated`, `blocked_by: toxicity`) |
 
@@ -40,7 +40,8 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 | path | contents |
 |---|---|
 | `lists.py` → `lists/` | the context list from the DB: indications ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
-| `class_audit.py` → `lists/named_contexts.csv`, `lists/class_audit/` | each indication's tile(s) under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
+| `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every indication) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
+| `drafts/track_store.py` | stores a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile |
 | `drafts/<id>.json`, `drafts/<id>.check.json` | 70 drafted contexts and their checker verdicts; `manifest.csv` tracks them |
 | `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md` | the agent briefs used for the run (v2) |
 | `drafts/RULE_QUESTIONS.md` | 151 cases the v2 rules did not decide |
@@ -48,7 +49,7 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 | `drafts/DRAFTER_BRIEF_v3.md`, `drafts/CHECKER_BRIEF_v3.md` | the briefs written to those decisions; the checker brief adds adjudication |
 | `drafts/matrix.py` → `matrix_entries.csv`, `matrix_cells.csv`, `matrix_models.csv` | one row per entry, per cell and per model: drafter and checker status, all fact fields, each model's own record (decision 6) |
 | `drafts/lint.py` | schema check on the drafts; v3 rules on drafts that declare `"schema": 3` |
-| `fetch_sources.py` → `sources/manifest.csv` | the drafters' source bundle: each class member's FDA review package as text (OCR for scanned PDFs); the PDFs and text under `sources/<appl_no>/` are not committed |
+| `fetch_sources.py` → `sources/manifest.csv`, `preclin.atlas_source_document` | the drafters' source bundle: the FDA review package of each tracked mechanism's approved members as text (OCR for scanned PDFs); `store` writes the text to the DB; the PDFs under `sources/<appl_no>/` are not committed |
 | `render_pilot.py` → `drafts/pilot_render/atlas.png` (not committed) | all drafts through `figure.py` with checker corrections applied |
 | `drafts/engagement_outcomes.py` → `context_outcomes.csv` | Phase 2 and Phase 3 advancement of each context's class, from the DB |
 | `drafts/engagement_kind_result.py` → `engagement_experiment.csv`, `ENGAGEMENT_KIND_RESULT.md` | whether the kind of engagement readout tracks the class's advancement |
@@ -58,13 +59,13 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 ```
 uv sync
 .venv/bin/python analyses/model-system-atlas/lists.py                         # DATABASE_URL in .env; read-only
-.venv/bin/python analyses/model-system-atlas/class_audit.py                   # the tiles; read-only
+.venv/bin/python analyses/model-system-atlas/class_audit.py [store]           # register and tiles; store writes preclin.atlas_*
 .venv/bin/python analyses/model-system-atlas/drafts/matrix.py
 .venv/bin/python analyses/model-system-atlas/drafts/lint.py
 .venv/bin/python analyses/model-system-atlas/render_pilot.py
 .venv/bin/python analyses/model-system-atlas/drafts/engagement_outcomes.py    # read-only
 .venv/bin/python analyses/model-system-atlas/drafts/engagement_kind_result.py
-.venv/bin/python analyses/model-system-atlas/fetch_sources.py MEMBERS.csv          # context,moiety_id; read-only; hours with OCR
+.venv/bin/python analyses/model-system-atlas/fetch_sources.py [store]         # tracked members from preclin.atlas_register; hours with OCR
 ```
 
-Drafts stay in `drafts/`, never in `contexts/`. Nothing here writes to the DB.
+Drafts stay in `drafts/`, never in `contexts/`. Only the three `store` commands write to the DB, each to its own `preclin.atlas_*` tables (migration 133).

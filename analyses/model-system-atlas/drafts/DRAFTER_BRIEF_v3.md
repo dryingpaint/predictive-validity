@@ -15,7 +15,8 @@ class and wrong for another. **v3:** the drug class is the mechanism (target, ac
 with its member drugs from the reviewed class table; only those drugs score. Do not widen it: if every
 patient datum is for a sibling target (A1 agonist when the class is A2A) or a non-selective drug outside
 the member list, the context stays `untested` with a note. Copy the given `modality_groups` and
-`class_share` into the output. Efficacy and engagement pool every modality of the mechanism. When the
+`class_share`, and the tile's `mechanism_key` (its key in `preclin.atlas_register`), into the output.
+Efficacy and engagement pool every modality of the mechanism. When the
 tile has more than one modality, dose is split by modality and so are platform or off-target harms in
 safety (an on-target harm stays pooled): give each such entry `modality`, one of the tile's
 `modality_groups`, and keep each modality's entries in year order.
@@ -130,7 +131,7 @@ Context-level: `regulatory_reliance: true` when a regulator accepted model data 
 ## Output: write ONE file, then report
 Write JSON to the path given below, exactly this shape (extra keys are ours; the figure ignores them):
 {
- "schema": 3, "order": <int>, "area": "<Area>", "disease": "<name>", "mondo_id": "MONDO:...",
+ "schema": 3, "mechanism_key": "<as given>", "order": <int>, "area": "<Area>", "disease": "<name>", "mondo_id": "MONDO:...",
  "population": "<...>", "mechanism": "<drug class>", "note": "<1 sentence on the context>",
  "programs": null, "loa": null, "label": "<short tile label>", "regulatory_reliance": false,
  "modality_groups": [<as given>], "class_share": <as given>,

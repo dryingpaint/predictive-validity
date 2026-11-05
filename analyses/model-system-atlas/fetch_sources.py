@@ -1,20 +1,23 @@
-"""Source bundle for the atlas drafters: each class member's FDA review package as text.
+"""Source bundle for the atlas drafters: each tracked mechanism's members' FDA review packages as text.
 
-    .venv/bin/python analyses/model-system-atlas/fetch_sources.py MEMBERS.csv
+    .venv/bin/python analyses/model-system-atlas/fetch_sources.py          # files only
+    .venv/bin/python analyses/model-system-atlas/fetch_sources.py store    # and preclin.atlas_source_document
 
-MEMBERS.csv has columns `context` and `moiety_id` (the members of each context's class). For every
-member with an original NDA or BLA in Drugs@FDA (preclin.fda_application_moiety, read-only), the
+The members are the entities of the tracked mechanisms in preclin.atlas_register (class_audit.py store
+writes them). For every member with an original NDA or BLA in Drugs@FDA (preclin.fda_application_moiety, read-only), the
 openFDA drugsfda record gives the review table of contents; the review PDFs listed there (non-clinical,
 medical, clinical pharmacology, multidiscipline/integrated, summary, cross-discipline, statistics,
 office director memo) and the original label are downloaded and converted with pdftotext; a scanned
 PDF (pre-2012 packages mostly are) is OCRed page by page with pdftoppm and tesseract.
 
 Writes sources/<appl_no>/<file>.pdf and .txt (not committed) and sources/manifest.csv, one row per
-context x document, which the drafter brief points at. Agents cannot read review PDFs above 10 MB
+tile x document, which the drafter brief points at; `store` also upserts each document's text into
+preclin.atlas_source_document (migration 133). Agents cannot read review PDFs above 10 MB
 themselves; this is why `model_filed` was null on 193 of 523 entries in the v2 run. CBER products
 (gene and cell therapies) are not in openFDA drugsfda and get a row with `error: not_in_openfda`.
 """
 import csv
+import hashlib
 import json
 import os
 import re
@@ -30,6 +33,8 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..")))
 
+from pipeline import llm  # noqa: E402
+from psycopg2.extras import execute_values  # noqa: E402
 from report import frame  # noqa: E402
 
 OUT = os.path.join(HERE, "sources")
@@ -136,8 +141,41 @@ def fetch(appl_no: str, url: str) -> dict:
     return row
 
 
-def main(members_csv: str) -> None:
-    members = list(csv.DictReader(open(members_csv)))
+def tracked_members() -> list[dict]:
+    """(context, moiety_id) for each entity of a tracked mechanism; context is "<indication> / <mechanism>"."""
+    df = frame.query("""SELECT i.label || ' / ' || mc.label AS context, m.entity_id AS moiety_id
+                        FROM preclin.atlas_register r
+                        JOIN preclin.atlas_member m USING (mondo_id, mechanism_key)
+                        JOIN preclin.atlas_indication i USING (mondo_id)
+                        JOIN preclin.atlas_mechanism mc USING (mechanism_key)
+                        WHERE r.tracked GROUP BY 1, 2 ORDER BY 1, 2""")
+    return df.to_dict("records")
+
+
+def store(rows: list[dict]) -> None:
+    """Upsert every document fetched as text into preclin.atlas_source_document."""
+    docs = {}
+    for r in rows:
+        if r.get("txt") and not r.get("error"):
+            docs[(r["appl_no"], os.path.basename(r["pdf"]))] = r
+    values = []
+    for (appl_no, filename), r in docs.items():
+        pdf = os.path.join(HERE, r["pdf"])
+        text = open(os.path.join(HERE, r["txt"]), errors="replace").read().replace("\x00", "")
+        values.append((appl_no, filename, r["kind"], r["url"], hashlib.sha256(open(pdf, "rb").read()).hexdigest(),
+                       int(r["bytes"]), bool(r["ocr"]), text))
+    with llm.connect() as conn, conn.cursor() as cur:
+        execute_values(cur, """INSERT INTO preclin.atlas_source_document (appl_no, filename, kind, url, sha256, n_bytes,
+                                   ocr, text) VALUES %s
+                               ON CONFLICT (appl_no, filename) DO UPDATE SET kind = EXCLUDED.kind, url = EXCLUDED.url,
+                                   sha256 = EXCLUDED.sha256, n_bytes = EXCLUDED.n_bytes, ocr = EXCLUDED.ocr,
+                                   text = EXCLUDED.text, fetched_at = now()""", values, page_size=20)
+        conn.commit()
+    print(f"stored {len(values)} documents in preclin.atlas_source_document")
+
+
+def main(store_documents: bool) -> None:
+    members = tracked_members()
     ids = sorted({int(float(m["moiety_id"])) for m in members if m.get("moiety_id")})
     appl = frame.query("""SELECT am.moiety_id, a.appl_no, a.appl_type, a.center
                           FROM preclin.fda_application_moiety am
@@ -170,7 +208,9 @@ def main(members_csv: str) -> None:
         w.writerows({k: r.get(k) for k in fields} for r in rows)
     ok = sum(1 for r in rows if r.get("txt") and not r.get("error"))
     print(f"{len(rows)} rows, {ok} documents as text, {len(rows) - ok} with an error; sources/manifest.csv")
+    if store_documents:
+        store(rows)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1:] == ["store"])
