@@ -5,7 +5,8 @@
     python -m pipeline.fda extract   # LLM: approved uses stated in each letter -> preclin.fda_approved_use
     python -m pipeline.fda link      # LLM: each application's principal active ingredients -> preclin.moiety;
                                      #   then each Phase 3 entity still unlinked -> its application (web search)
-    python -m pipeline.fda load-cber # CBER approval letters (.cache/cber/letters_index.jsonl) -> preclin.fda_*
+    python -m pipeline.fda load-cber # CBER approvals (.cache/cber/letters_index*.jsonl) -> preclin.fda_*
+    python -m pipeline.fda unlisted  # applications link named that no FDA list carries -> their FDA letters
 
 CBER-regulated biologics (vaccines, blood and plasma products, cell and gene
 therapies) are not in Drugs@FDA; their original approvals and supplements come
@@ -624,8 +625,23 @@ def link(_args) -> None:
           f"trial-entity matches={len(trial_entities)} (named applications not in preclin.fda_application: {unlisted})")
 
 
+CBER_INDEXES = {  # file in .cache/cber -> (release name, product_no prefix, whether it overrides an application
+    # already loaded): 2015-2025 owns an application it lists; the other years only add the ones they alone list
+    "letters_index.jsonl": ("fda_cber_approvals", "cber", True),  # pipeline.cber
+    "letters_index_other.jsonl": ("fda_cber_approvals_other_years", "cbo", False),  # pipeline.cber.other_years
+}
+
+
 def load_cber(_args) -> None:
-    path = os.path.join(llm.REPO, ".cache", "cber", "letters_index.jsonl")
+    """Load every CBER index present; each file is its own release, and its product numbers carry its own prefix
+    so that loading one file never overwrites products another loaded."""
+    for name, (release_name, prefix, owns) in CBER_INDEXES.items():
+        path = os.path.join(llm.REPO, ".cache", "cber", name)
+        if os.path.exists(path):
+            load_cber_index(path, release_name, prefix, owns)
+
+
+def load_cber_index(path: str, release_name: str, prefix: str, owns: bool) -> None:
     records = [json.loads(line) for line in open(path)]
     sha = llm.sha256_file(path)
     apps, products, subs, letters, links = {}, set(), {}, {}, {}
@@ -643,32 +659,104 @@ def load_cber(_args) -> None:
         letters[doc_sha] = (doc_sha, text.replace("\x00", ""), int(r.get("n_bytes") or len(text.encode())))
         links[key + (r["url"],)] = (*key, r["url"], r.get("doc_date") or None, doc_sha, r.get("error"), "letter")
     with llm.connect() as conn, conn.cursor() as cur:
-        release = llm.register_release(cur, "fda_cber_approvals", records and max(r["approval_date"] for r in records),
+        release = llm.register_release(cur, release_name, records and max(r["approval_date"] for r in records),
                                        "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber/"
                                        "biological-approvals-year", sha, {"n_records": len(records)})
         execute_values(cur, """INSERT INTO preclin.fda_application (appl_no, appl_type, center, sponsor_name,
                                  source_release_id) VALUES %s
-            ON CONFLICT (appl_no) DO UPDATE SET center = 'CBER', sponsor_name = EXCLUDED.sponsor_name,
-              source_release_id = EXCLUDED.source_release_id""",
+            ON CONFLICT (appl_no) DO """ + ("""UPDATE SET center = 'CBER', sponsor_name = EXCLUDED.sponsor_name,
+              source_release_id = EXCLUDED.source_release_id""" if owns else "NOTHING"),
                        [(a, "BLA", "CBER", sp, release) for a, sp in apps.items()])
         execute_values(cur, """INSERT INTO preclin.fda_product (appl_no, product_no, drug_name, active_ingredient)
             VALUES %s ON CONFLICT (appl_no, product_no) DO UPDATE SET drug_name = EXCLUDED.drug_name,
               active_ingredient = EXCLUDED.active_ingredient""",
-                       [(a, f"cber{i}", brand, proper) for i, (a, brand, proper) in enumerate(sorted(products))])
+                       [(a, f"{prefix}{i}", brand, proper) for i, (a, brand, proper) in enumerate(sorted(products))])
         execute_values(cur, """INSERT INTO preclin.fda_submission (appl_no, submission_type, submission_no, status,
                                  status_date, submission_class) VALUES %s
             ON CONFLICT (appl_no, submission_type, submission_no) DO UPDATE SET status_date = EXCLUDED.status_date""",
                        [(*k, "AP", d, "CBER") for k, d in subs.items()])
         write_letters(cur, list(letters.values()), list(links.values()))
         conn.commit()
-    print(f"CBER applications={len(apps)} submissions={len(subs)} documents={len(letters)}")
+    print(f"{os.path.basename(path)}: CBER applications={len(apps)} submissions={len(subs)} documents={len(letters)}")
+
+
+UNLISTED_LETTER = "https://www.accessdata.fda.gov/drugsatfda_docs/appletter/{year}/{appl}Orig1s000ltr.pdf"
+SIGNED = re.compile(r"/s/\s*[A-Z][A-Z .,'-]+?\s+(\d{2})/(\d{2})/(\d{4})")  # a CDER letter's e-signature and its date
+
+
+def signed_on(text: str) -> str | None:
+    """The date of a CDER letter: its last electronic signature (the letterhead carries none)."""
+    m = list(SIGNED.finditer(re.sub(r"\s+", " ", text)))
+    return f"{m[-1].group(3)}-{m[-1].group(1)}-{m[-1].group(2)}" if m else None
+
+
+def unlisted_letter(appl: str, year: int) -> tuple[str, str] | None:
+    """(url, text) of the original approval letter FDA hosts for an application, looked for in its approval
+    year and the years either side; None when there is none."""
+    os.makedirs(os.path.join(CACHE, "unlisted"), exist_ok=True)
+    for y in (year, year + 1, year - 1):
+        url = UNLISTED_LETTER.format(year=y, appl=appl)
+        path = os.path.join(CACHE, "unlisted", f"{appl}_{y}.pdf")
+        if not os.path.exists(path):
+            r = requests.get(url, timeout=60, headers={"User-Agent": "Mozilla/5.0"})
+            if r.status_code != 200 or not r.content.startswith(b"%PDF"):
+                continue
+            with open(path, "wb") as f:
+                f.write(r.content)
+        return url, pdf_text(path)
+    return None
+
+
+def unlisted(_args) -> None:
+    """Applications the trial-entity pass named that no FDA list carries (Drugs@FDA drops some withdrawn
+    products, e.g. Belviq and Pepaxto): each is added from the original approval letter FDA still hosts,
+    dated by the letter's e-signature, its product named by the brand and the proper name the letter gives."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT DISTINCT lpad(x->>'appl_no', 6, '0'), x->>'appl_type', x->>'brand',
+                              (x->>'approval_year')::int
+                       FROM pv_evidence.llm_decision d, jsonb_array_elements(d.parsed_output->'applications') x
+                       WHERE d.task = %s AND d.validation_status = 'validated'
+                         AND (x->>'approval_year')::int >= %s
+                         AND NOT EXISTS (SELECT 1 FROM preclin.fda_application a
+                                         WHERE a.appl_no = lpad(x->>'appl_no', 6, '0'))""",
+                    (TRIAL_ENTITY_TASK.name, int(LETTERS_FROM[:4])))
+        named = cur.fetchall()
+    found = {}
+    for appl, appl_type, brand, year in named:
+        got = unlisted_letter(appl, year)
+        if got and appl not in found:
+            url, text = got
+            proper = re.search(rf"{re.escape(brand)}\s*(?:\(|,)\s*([^)\n,]+)", text, re.I) if brand else None
+            found[appl] = (appl_type, brand, proper.group(1).strip() if proper else brand, url, text,
+                           signed_on(text))
+    if not found:
+        print(f"named={len(named)} letters found=0")
+        return
+    with llm.connect() as conn, conn.cursor() as cur:
+        release = llm.register_release(cur, "fda_unlisted_letters", max(f[5] or "" for f in found.values()),
+                                       UNLISTED_LETTER, llm.sha256_text("".join(sorted(found))),
+                                       {"applications": sorted(found)})
+        execute_values(cur, """INSERT INTO preclin.fda_application (appl_no, appl_type, center, sponsor_name,
+                                 source_release_id) VALUES %s ON CONFLICT (appl_no) DO NOTHING""",
+                       [(a, t, "CDER", None, release) for a, (t, *_) in found.items()])
+        execute_values(cur, """INSERT INTO preclin.fda_product (appl_no, product_no, drug_name, active_ingredient)
+                               VALUES %s ON CONFLICT (appl_no, product_no) DO NOTHING""",
+                       [(a, "unlisted1", b, p) for a, (_, b, p, *_) in found.items()])
+        execute_values(cur, """INSERT INTO preclin.fda_submission (appl_no, submission_type, submission_no, status,
+                                 status_date, submission_class) VALUES %s ON CONFLICT DO NOTHING""",
+                       [(a, "ORIG", "1", "AP", d, None) for a, (*_, d) in found.items() if d])
+        docs = {a: hashlib.sha256(t.encode()).hexdigest() for a, (_, _, _, _, t, _) in found.items()}
+        write_letters(cur, [(docs[a], t, len(t.encode())) for a, (_, _, _, _, t, _) in found.items()],
+                      [(a, "ORIG", "1", u, d, docs[a], None, "letter") for a, (_, _, _, u, _, d) in found.items()])
+        conn.commit()
+    print(f"named={len(named)} letters found={len(found)}: {sorted(found)}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in [("fetch", fetch), ("load", load), ("extract", extract), ("link", link),
-                     ("load-cber", load_cber)]:
+                     ("load-cber", load_cber), ("unlisted", unlisted)]:
         sub.add_parser(name).set_defaults(fn=fn)
     args = parser.parse_args()
     args.fn(args)
