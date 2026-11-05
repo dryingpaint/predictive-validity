@@ -51,6 +51,9 @@ from pipeline.outcomes import EUTILS, NCBI_PER_SECOND, eutils
 KINDS = ("animal_disease", "animal_healthy", "human_engagement")
 PILOT = os.path.join(llm.REPO, "report", "audits", "literature_pilot_sample.csv")
 GATE = os.path.join(llm.REPO, "report", "audits", "literature_gate.json")
+VET_AUDIT = os.path.join(llm.REPO, "report", "audits", "literature_name_vet.json")
+VET_CHECK = 100  # drugs a second model re-vets
+VET_CASES = (1484, 2223, 607, 5006, 4424, 5326)  # spinosad, elinzanetant, colestipol, albumin human, bevifimod, acumapimod
 ESEARCH_MAX = 9999  # PubMed returns at most this many ids per search; larger sets are split by date
 PREFILTER_ABOVE = 3000  # records per drug above which a cheap model reads each record first
 PREFILTER_CHECK = 1000  # seeded large-literature records given the full screen to measure the prefilter's recall
@@ -394,6 +397,66 @@ def names_from(rows: list[tuple]) -> dict[int, list[str]]:
     return out
 
 
+VET_SYSTEM = """You vet the names used to search the literature for one drug. A search returns every paper that mentions any of the names, so a name must pick out THIS drug and nothing else.
+
+Keep a name only when a paper using it is almost certainly about this drug: its nonproprietary name and its salts, its development codes, its brand names, and spelling variants of these.
+
+Drop: common English words (Success, Justice, Tracer, Conserve); generic chemical, class or protein names that also denote other things (Compound A, Protein A, Albumin, Bovine serum albumin, POLY, Alcohol when the drug is a specific alcohol product); names of other drugs, including other drugs' brand names and combination products whose other ingredient makes the name about something else; the parent, precursor or metabolite of the drug when it is a different molecule; and names so short or generic that most papers using them are about something else.
+
+When unsure, drop the name. Always keep at least one name. Return the names to keep, copied exactly from the candidates."""
+
+VET_SCHEMA = {"type": "object", "additionalProperties": False,
+              "properties": {"keep": {"type": "array", "items": {"type": "string"}}}, "required": ["keep"]}
+
+
+def render_vet(p: dict) -> str:
+    lines = [f"Drug (nonproprietary or registry name): {p['name']}", f"Substance registry name: {p.get('unii_name') or 'none'}",
+             f"Modality: {p.get('modality') or 'unknown'}", f"Primary targets: {p.get('targets') or 'unknown'}",
+             "", "Candidate names:"] + [f"- {n}" for n in p["candidates"]]
+    return "\n".join(lines)
+
+
+def validate_vet(p: dict, out: dict) -> None:
+    if not out["keep"]:
+        raise ValueError("keep at least one name")
+    extra = [n for n in out["keep"] if n not in p["candidates"]]
+    if extra:
+        raise ValueError(f"names not among the candidates: {extra[:3]}")
+
+
+def vet_task(model: str = "claude-sonnet-5", suffix: str = "") -> llm.Task:
+    return llm.Task(name="literature_name_vet" + suffix, prompt_version="v1", schema_version="v1", system=VET_SYSTEM,
+                    schema=VET_SCHEMA, render=render_vet, validate=validate_vet, subject_type="moiety", model=model,
+                    effort="low", max_tokens=2000)
+
+
+def vet_payloads(moieties: list[int], candidates: dict[int, list[str]]) -> dict[str, dict]:
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT m.moiety_id, m.name, m.modality, u.display_name,
+                              (SELECT string_agg(DISTINCT t.symbol, ', ') FROM preclin.moiety_target mt
+                               JOIN public.targets t ON t.id = mt.target_id WHERE mt.moiety_id = m.moiety_id AND mt.is_primary)
+                       FROM preclin.moiety m LEFT JOIN preclin.unii_substance u ON u.unii = m.unii
+                       WHERE m.moiety_id = ANY(%s)""", (moieties,))
+        rows = cur.fetchall()
+    return {str(m): {"name": name, "modality": modality, "unii_name": unii, "targets": targets,
+                     "candidates": candidates[m]} for m, name, modality, unii, targets in rows if candidates.get(m)}
+
+
+def vetted_names(moieties: list[int], log=print) -> dict[int, list[str]]:
+    """The searchable names of each entity kept by the name vet (VET task, decisions reused on the same
+    candidates); an entity whose vet failed validation is left out."""
+    candidates: dict[int, list[str]] = {}
+    for start in range(0, len(moieties), NAME_CHUNK):
+        candidates.update(names_of(moieties[start:start + NAME_CHUNK]))
+    items = vet_payloads(moieties, candidates)
+    decided = llm.current_decisions(vet_task(), items)
+    if len(decided) < len(items):
+        llm.run(vet_task(), {k: v for k, v in items.items() if k not in decided})
+        decided = llm.current_decisions(vet_task(), items)
+    log(f"name vet: entities={len(items)} vetted={len(decided)}")
+    return {int(k): out["keep"] for k, (_, out) in decided.items()}
+
+
 def store_records(cur, records: list[tuple]) -> None:
     if records:
         execute_values(cur, """INSERT INTO preclin.literature_record (record_id, source, title, abstract, year, doi)
@@ -415,15 +478,17 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
                            "preclin.unii_name", "preclin.ontology_term"],
                           {"prefilter_above": PREFILTER_ABOVE, "max_names": MAX_DRUG_NAMES, "exclude": NOT_REVIEWS,
                            "related_lin": RELATED, "firecrawl_limit": FIRECRAWL_LIMIT})
-        cur.execute("SELECT moiety_id, cutoff_year FROM preclin.literature_v3_search GROUP BY 1, 2 HAVING count(*) = 2")
-        done = set(cur.fetchall())
+        cur.execute("""SELECT moiety_id, cutoff_year, min(names) FROM preclin.literature_v3_search
+                       GROUP BY 1, 2 HAVING count(*) = 2 AND count(DISTINCT names) = 1""")
+        stored = {(m, y): n for m, y, n in cur.fetchall()}
         conn.commit()
-    todo = sorted((m, y) for m, y in cut.items() if (m, y) not in done)
-    log(f"search: drugs={len(cut)} to search={len(todo)}")
+    names = vetted_names(sorted(cut), log)
+    todo = sorted((m, y) for m, y in cut.items() if names.get(m) and stored.get((m, y)) != names[m])
+    log(f"search: drugs={len(cut)} to search={len(todo)} "
+        f"(re-search with vetted names: {sum((m, y) in stored for m, y in todo)})")
     queue, tries = list(todo), {}
     while queue:
         chunk, queue = queue[:NAME_CHUNK], queue[NAME_CHUNK:]
-        names = names_of([m for m, _ in chunk])
         for m, y in chunk:
             if not names.get(m):
                 continue
@@ -446,6 +511,10 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
                 continue
             with llm.connect() as conn, conn.cursor() as cur:
                 store_records(cur, records)
+                # a search by vetted names replaces the drug's earlier PubMed and Europe PMC retrieval
+                cur.execute("""DELETE FROM preclin.literature_v3_hit WHERE moiety_id = %s AND cutoff_year = %s
+                               AND source IN ('pubmed', 'europepmc')""", (to, y))
+                cur.execute("DELETE FROM preclin.literature_v3_search WHERE moiety_id = %s AND cutoff_year = %s", (to, y))
                 execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
                                        VALUES %s ON CONFLICT DO NOTHING""",
                                [(to, y, "pubmed", names[m], pq, pn), (to, y, "europepmc", names[m], eq, en)])
@@ -791,8 +860,12 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
             cur.execute("SELECT pmid FROM public.publications WHERE pmid = ANY(%s)", (passed,))
             stored = {r[0] for r in cur.fetchall()}
         have.update(fetch_papers([p for p in passed if p not in stored], store=True))
+    with llm.connect() as conn, conn.cursor() as cur:  # a record screened out stays out when a drug's names are vetted
+        cur.execute("""SELECT moiety_id || '|' || record_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)
+                       AND NOT (animal_disease OR animal_healthy OR human_engagement)""", (sorted(cut),))
+        negative = {r[0] for r in cur.fetchall()}
     keep = [(m, r) for m, r in zip(recs.moiety_id, recs.record_id)
-            if r in have and m in names and (m not in large or possibly.get(f"{m}|{r}"))]
+            if r in have and m in names and (m not in large or possibly.get(f"{m}|{r}")) and f"{m}|{r}" not in negative]
     return {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, have[r]) for m, r in keep}
 
 
@@ -1054,8 +1127,8 @@ RECORD_YEAR = """(SELECT year FROM public.publications WHERE pmid = s.record_id
 def qualifying(without: str | None = None) -> pd.DataFrame:
     """Entity, record, publication year, kind and (for animal models) mapped MONDO term of every qualifying screen;
     without a source, the records only that source retrieved are left out."""
-    only = "" if not without else f"""AND EXISTS (SELECT 1 FROM preclin.literature_v3_hit h WHERE h.moiety_id = s.moiety_id
-                                       AND h.record_id = s.record_id AND h.source <> '{without}')"""
+    only = f"""AND EXISTS (SELECT 1 FROM preclin.literature_v3_hit h WHERE h.moiety_id = s.moiety_id
+                           AND h.record_id = s.record_id{f" AND h.source <> '{without}'" if without else ""})"""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute(f"""SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, 'animal_disease', md.mondo_id
                         FROM preclin.literature_v3_screen s CROSS JOIN unnest(s.modelled_diseases) d
@@ -1222,6 +1295,49 @@ def gate(args) -> None:
     print(json.dumps(result, indent=2))
 
 
+def vet(args) -> None:
+    """Vet the names of every drug of the entries (pilot, cohort or both)."""
+    cut = {} if args.entries == "pilot" else dict(cohort_drugs())
+    if args.entries in ("pilot", "all"):
+        cut.update(drug_cutoffs(entries("pilot")))
+    vetted_names(sorted(cut))
+
+
+def vet_check(_args) -> None:
+    """A second model re-vets a seeded sample of VET_CHECK drugs, plus the hand-checked cases; writes agreement
+    and every disagreement to VET_AUDIT."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT subject_key FROM pv_evidence.llm_decision WHERE task = %s AND validation_status = 'valid'",
+                    (vet_task().name,))
+        keys = sorted({r[0] for r in cur.fetchall()}, key=int)
+    rng = np.random.default_rng(CHECK_SEED)
+    sample = sorted(set(rng.choice(keys, size=min(VET_CHECK, len(keys)), replace=False).tolist()) | set(map(str, VET_CASES)),
+                    key=int)
+    moieties = [int(k) for k in sample]
+    candidates: dict[int, list[str]] = {}
+    for start in range(0, len(moieties), NAME_CHUNK):
+        candidates.update(names_of(moieties[start:start + NAME_CHUNK]))
+    items = vet_payloads(moieties, candidates)
+    first = llm.current_decisions(vet_task(), items)
+    llm.run(vet_task("claude-opus-5-5", "_check"), items)
+    second = llm.current_decisions(vet_task("claude-opus-5-5", "_check"), items)
+    rows, agree = [], 0
+    for k in items:
+        if k not in first or k not in second:
+            continue
+        a, b = set(first[k][1]["keep"]), set(second[k][1]["keep"])
+        same = a == b
+        agree += same
+        rows.append({"moiety_id": int(k), "name": items[k]["name"], "candidates": items[k]["candidates"],
+                     "kept": sorted(a), "check_kept": sorted(b), "same": same,
+                     "jaccard": len(a & b) / len(a | b) if a | b else 1.0, "hand_case": int(k) in VET_CASES})
+    out = {"drugs": len(rows), "identical": agree, "mean_jaccard": float(np.mean([r["jaccard"] for r in rows])),
+           "rows": rows}
+    with open(VET_AUDIT, "w") as fh:
+        json.dump(out, fh, indent=1)
+    print(f"vet check: drugs={len(rows)} identical={agree} mean_jaccard={out['mean_jaccard']:.3f}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -1230,6 +1346,10 @@ def main() -> None:
         p.add_argument("--entries", choices=("pilot", "cohort"), default="cohort")
         p.set_defaults(fn=fn)
     sub.add_parser("diseases").set_defaults(fn=diseases)
+    vt = sub.add_parser("vet")
+    vt.add_argument("--entries", choices=("pilot", "cohort", "all"), default="all")
+    vt.set_defaults(fn=vet)
+    sub.add_parser("vet-check").set_defaults(fn=vet_check)
     sub.add_parser("check").set_defaults(fn=check)
     sub.add_parser("prefilter-check").set_defaults(fn=prefilter_check)
     rc = sub.add_parser("run-cohort")

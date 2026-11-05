@@ -267,3 +267,17 @@ pulled or any outcome is looked at.
   Lin ≥ 0.5, by the same MONDO neighbourhood as the other lines. Genes on DepMap's
   common-essential list of the same year are excluded, so the line marks selective dependency.
   The CRISPR line first published in 2019 (Project Score) stays a hindsight line.
+
+**Name vetting, 2026-11-05, added after the third attempt's pilot gate.** The cohort search showed that the
+synonyms taken from PubChem and ChEMBL included common words, generic class and protein names, and other drugs'
+names (for spinosad "Success", "Justice" and "Tracer"; for elinzanetant "Compound A"; for colestipol "POLY" and
+reserpine brand names; for albumin human "Bovine serum albumin"), so retrieval pulled in tens to hundreds of
+thousands of unrelated records. An LLM now vets each drug's candidate names before searching, given its
+nonproprietary and registry names, modality and targets, and keeps only names that unambiguously denote the drug;
+a second model re-vets a seeded sample. Drugs whose vetted names differ are searched again. Records the screen
+already read as reporting none of the three kinds stay out; records it read as qualifying, and new records, are
+screened again under the vetted names. The gate is re-scored on rows 201–300 against the same blind reference
+set with the same metrics, and both the pre- and post-vetting results are reported. A drug still returning more
+than 100,000 records is held from the paid prefilter until approved. The reference set's files, lost from
+temporary storage, were rebuilt from the reference agents' recorded steps; re-scoring the pre-vetting pipeline
+against them reproduces the recorded gate (one healthy-animal reference study more: 149 against 148).
