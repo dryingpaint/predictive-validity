@@ -1313,7 +1313,7 @@ def vet_check(_args) -> None:
     """A second model re-vets a seeded sample of VET_CHECK drugs, plus the hand-checked cases; writes agreement
     and every disagreement to VET_AUDIT."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT subject_key FROM pv_evidence.llm_decision WHERE task = %s AND validation_status = 'valid'",
+        cur.execute("SELECT subject_key FROM pv_evidence.llm_decision WHERE task = %s AND validation_status = 'validated'",
                     (vet_task().name,))
         keys = sorted({r[0] for r in cur.fetchall()}, key=int)
     rng = np.random.default_rng(CHECK_SEED)
