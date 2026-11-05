@@ -1,5 +1,8 @@
 # The kind of engagement evidence did not separate classes that advanced from classes that did not
 
+> Computed on the v2 run (70 contexts). Its inputs, the v2 drafts and `matrix_cells.csv` / `context_outcomes.csv`, and the scripts `engagement_outcomes.py` / `engagement_kind_result.py` were removed from the tree on 2026-11-05 and are in git history at 4d478a3. Kept because decisions 15 and 8 cite it.
+
+
 _Block for the report. Numbers from `engagement_kind_result.py`; the joined data are
 `engagement_experiment.csv`. Suggested home: Section 3, after "Being more specific does not help", which is
 the same shape of result._
