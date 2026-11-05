@@ -112,7 +112,7 @@ ALIAS = {  # family words in verified-target labels -> gene symbols, for compari
 }
 NOT_GENES = {"HIV", "HCV", "HBV", "RNA", "RT", "NAP", "CAM", "MABA", "NRTI", "NNRTI", "NRTTI", "INSTI", "HA", "RAS", "RBD",
              "PSA", "SOD", "RASP", "IKACH", "SERT", "PD", "LT", "HBSAG", "BNAB", "ENV", "GAG"}
-ACTION_PHRASE = {**lists.ACTION_PHRASE, "corrector": "{t} correctors", "potentiator": "{t} potentiators",
+ACTION_PHRASE = {**lists.ACTION_PHRASE, "inverse_agonist": "{t} inverse agonists", "corrector": "{t} correctors", "potentiator": "{t} potentiators",
                  "amplifier": "{t} amplifiers", "tolerance_induction": "{t}", "other": "{t}"}
 
 

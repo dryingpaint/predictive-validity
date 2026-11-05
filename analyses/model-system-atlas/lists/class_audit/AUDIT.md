@@ -1,7 +1,7 @@
 # Drug-class audit of the named contexts (PR #81)
 
 `class_audit.py` rebuilds the lists.py cohort (novel Phase 2 entrants 2008–2019 in the 71 named
-indications, 2,635 programs) and joins it to a hand review (`reviews.csv`, 590 moieties: every
+indications, 2,634 programs) and joins it to a hand review (`reviews.csv`, 632 moieties: every
 member of each currently chosen class, both top classes under the proposed rule, and every
 unresolved-target program in allergic disease, allergic rhinitis, atopic conjunctivitis, acne,
 chronic HBV, HIV, HCV, BPH and dry eye). Each review row cites ChEMBL, an FDA or registry page,
@@ -9,13 +9,13 @@ a DOI or a PubMed query. Outputs: `class_members.csv` (one row per program, revi
 `db_issue`), `current_on_db.csv` (lists.classes() on today's DB) and `proposed_contexts.csv`.
 
 **The database changed during the audit.** Between runs on 2026-11-04 another session removed
-every `dev_program` row for relugolix and cannabidiol. The files reflect the last run (23:20 PST).
-With relugolix back, endometriosis keeps "GNRHR antagonists" (3 entities, phase 4). Re-run the
-script after that write lands.
+every `dev_program` row for relugolix and cannabidiol, and they are still absent at the last run
+(2026-11-05). Their reviews stay in `reviews.csv`. Endometriosis still qualifies with 2 GnRH
+antagonists; Prader-Willi has no class either way. Re-run the script once that write lands.
 
 ## 1. Where the database disagrees with the review
 
-Of 549 reviewed moieties with a disclosed mechanism, **21 disagree with the DB** on target,
+Of 591 reviewed moieties with a disclosed mechanism, **21 disagree with the DB** on target,
 action, modality or novelty (`disagrees_with_db`). Another 102 have no DB target at all
 (pathogen targets, allergen immunotherapies, siRNAs), and 41 have an undisclosed mechanism.
 
@@ -60,60 +60,81 @@ products that have no link of their own (the five not-novel moieties above). Bri
 brivanib alaninate, and futuximab and modotuximab (both Sym004), are also duplicate entities.
 `reviews.csv` folds them with `same_entity_as`.
 
-## 3. Contexts that change under the proposed rule (54 of 71)
+## 3. The selection rule and what changes (43 of 71 contexts)
 
-Proposed rule: class = (verified target, action, modality group). Off-class, pan and
-no-target members are excluded. Classes rank by furthest phase, then entity count, with at
-least 3 entities required.
+Rule: class = (verified target, action, modality group). Off-class and no-target members are
+excluded, pan members form their own class, and duplicate moieties count once
+(`same_entity_as`). Classes rank by **distinct entities first**, then by furthest phase reached
+in the indication, then by entities at that phase. A class needs **at least 2 entities**.
 
-**Same class, narrowed or relabelled (13).** In each case members of another modality or
-target were removed, or the class was renamed:
+Count comes first because ranking by furthest phase favoured classes that had already succeeded
+(an approved member wins), which biases a "most-developed class" toward the successes the
+atlas is meant to test. The minimum of 2 keeps small indications in the atlas while still
+rejecting a class of one.
 
-- T2D: GLP-1R peptides. Dual agonists, small molecules and Fc fusions are split out.
-- Hemophilia A and B: AAV gene therapy. Recombinant factor proteins are a separate class.
-- HCV: "HCV NS3/4A protease inhibitors". The label has no comma; the file is properly quoted.
-- HIV: "HIV integrase (INSTI)". It ties with NNRTIs on phase 4 and is ahead on members
-  approved for HIV.
-- Migraine: the CGRP receptor (CALCRL+RAMP1). The ligand antibodies are a separate class.
+The 42 moieties that came into scope under this rule (GCK and HSD11B1 in T2D, RORγt in
+psoriasis, CTLA-4 in SCLC, CRF1/V1b in MDD, factor D, IDH1, AKT, TLR3, COMT, NGF, EP1 and
+multichannel blockers) were reviewed. All are novel at entry:
+
+- ipilimumab entered SCLC in 2008-02, before its 2011-03 approval;
+- opicapone entered Parkinson's in 2009, before its 2020 approval;
+- cenegermin entered dry eye in 2014, before its 2018 approval;
+- ivosidenib entered AML in 2016-06, before its 2018-07 approval.
+
+The DB's "nerve growth factor" (NCT03019627) is Dompé's cenegermin, a duplicate moiety now
+folded. Rintatolimod's ChEMBL id is the one shared with imatinib. No other DB disagreement.
+
+**Same class, narrowed or relabelled (15).** Other modalities or targets were removed, or the
+class was renamed:
+
+- Relabelled by modality: sickle cell (gene therapy), hemophilia A and B (AAV gene
+  therapy; recombinant factor protein is the runner-up), obesity (GLP-1R peptides) and
+  hypertriglyceridemia (APOC3 oligos).
+- HCV: "HCV NS3/4A protease inhibitors"; the label has no comma.
+- HIV: "HIV integrase (INSTI)".
+- Migraine: the CGRP receptor.
+- Myeloma: BCMA cell therapies.
 - Pancreatic cancer: MEK1/2.
-- Ovarian cancer: PARP1/2. Iniparib is dropped.
-- Myeloma: BCMA cell therapies. The belantamab ADC, the vonsetamig T-cell engager and dual
-  AUTO2 are excluded.
-- Follicular lymphoma: CD19 CAR-T. The CD19 ADC denintuzumab mafodotin is coded with action
-  `other`, so it never joined the class; there is no mix today.
-- DME: VEGF-trap proteins. Faricimab (dual) and brolucizumab (scFv) are excluded.
-- Insomnia: dual orexin antagonists. Seltorexant (OX2-selective) is excluded.
-- Cystic fibrosis: CFTR correctors, split from potentiators.
+- Ovarian cancer: PARP1/2.
+- Follicular lymphoma: CD19 CAR-T.
+- DME: VEGF-trap proteins.
+- Insomnia: dual orexin antagonists.
+- Cystic fibrosis: CFTR correctors.
 
-**A different class, mostly because furthest phase now ranks first (17):**
+**A different class (21):**
 
-- Allergic disease: unresolved → peptide allergen immunotherapy.
-- RA: BTK (8, phase 2) → anti-GM-CSF antibodies (3, phase 3).
-- Crohn: JAK1 → anti-IL-23p19. Only 2 selective JAK1 members are left.
-- MASH: FXR (phase 2) → FGF21 analogues (phase 3).
-- Alzheimer: anti-tau → anti-amyloid. Lecanemab is approved.
-- Breast: ERBB2 → CDK4/6. ERBB2 splits by modality and pan-HER.
-- Prostate: AR → PARP1/2. Losing chromanol and hydroxyflutamide leaves AR tied at 5; PARP has
-  more approved members.
-- CRC: anti-EGFR antibodies → VEGFR-selective TKIs. Fruquintinib is approved.
-- HCC: anti-PD-1 → VEGFR multikinase inhibitors. Pidilizumab is excluded.
-- MDS: CD33 (2 entities) → pan-HDAC.
-- Gastric: ERBB2 mixed → HER2 antibodies only. It ties with PARP1/2.
-- Glaucoma: A2A → ROCK. Netarsudil is approved.
-- Eczema: NR3C1 → PDE4. Crisaborole is approved; mometasone is not novel.
-- OA: TrkA → p38α. It ties with TrkA; ONO-4474 (pan-Trk) is excluded.
-- Schizophrenia: PDE10A (phase 2) → GlyT1 (phase 3).
-- Chronic HBV: core → HBV siRNA. It ties with nucleic-acid polymers, all from one sponsor.
-- Endometriosis: no class. This is the DB-flux artefact described at the top.
+- Allergic disease: unresolved → peptide allergen immunotherapy (3).
+- Psoriasis: IL-17A antibodies (3) → RORγt inverse agonists (4). The label reads "RORC
+  inverse_agonist" because lists.ACTION_PHRASE has no phrase for that action.
+- Crohn: JAK1 → anti-IL-23p19 (3). Tofacitinib and brepocitinib are excluded, leaving 2 JAK1.
+- AF: Kv1.5 → multichannel blockers (2). BMS-914392 is an I_KACh blocker, so Kv1.5 has 1 entity.
+- T2D: GLP-1R → GCK activators (9 vs 7 GLP-1R peptides, once co-agonists, small molecules
+  and Fc fusions split out). HSD11B1 is second with 8.
+- Influenza: HA → TLR3 agonists (2). Tied with HA-stem antibodies; broken alphabetically.
+- Chronic HBV: core → HBV siRNA (3). Tied with nucleic-acid polymers.
+- Alzheimer: anti-tau → BACE1 (4, phase 3). Ties anti-tau on count; wins on phase.
+- Parkinson: anti-α-syn → COMT inhibitors (2, phase 4 with opicapone).
+- Breast: ERBB2 → CDK4/6 (6).
+- Prostate: AR → PARP1/2. Both have 5; PARP has more approved members.
+- CRC: anti-EGFR antibodies → VEGFR-selective TKIs (3).
+- HCC: anti-PD-1 → VEGFR multikinase (4, phase 4). Ties PD-1 at 4.
+- Glioblastoma: tubulin → PI3K/mTOR (2, phase 3).
+- MDS: CD33 → pan-HDAC (3).
+- Gastric: ERBB2 mixed → HER2 antibodies (3). Tied with PARP1/2.
+- Dry eye: anti-TNF → glucocorticoid agonists (2). Tied with anti-TNF; one member, AL-38583,
+  is undisclosed.
+- Glaucoma: A2A → ROCK (3).
+- Atopic eczema: NR3C1 → PDE4 (5). Mometasone is not novel.
+- Osteoarthritis: TrkA → p38α (3). Tied with TrkA.
+- MDD: GluN2B → V1b antagonists (2). Tied with CRF1; esketamine and deudextromethorphan are
+  excluded.
 
-**No qualifying class, fewer than 3 entities (24):** atopic conjunctivitis, EoE, heart failure,
-hypertension, AF (BMS-914392 is not Kv1.5), CAD, IBS, sickle cell, influenza, obesity, HTG,
-Prader-Willi, Parkinson (ODM-104 and XP21279 are off-class), diabetic neuropathy, glioblastoma,
-dry eye (lubricants have no target), AMD, acne, MDD (esketamine and deudextromethorphan are
-excluded), ADHD, IPF, OAB, BPH and premature ejaculation.
+**No qualifying class (7):** eosinophilic esophagitis, heart failure, hypertension,
+Prader-Willi, AMD, acne and premature ejaculation. In each, every class has one entity.
 
-Allergic rhinitis keeps PTGDR2, but only on the alphabetical tie-break against peptide allergen
-immunotherapy (4 vs 4, both phase 3).
+**Unchanged (28),** e.g. RA (BTK, 8), MASH (FXR, 4), schizophrenia (PDE10A, 5), asthma, COPD,
+NSCLC and AML. Allergic rhinitis keeps PTGDR2 only on the alphabetical tie-break against peptide
+allergen immunotherapy (4 each, phase 3). Ties broken alphabetically are flagged in `reason`.
 
 ## 4. Recommended DB fixes (not applied)
 
