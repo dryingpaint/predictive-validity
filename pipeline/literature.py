@@ -56,6 +56,8 @@ PREFILTER_ABOVE = 3000  # records per drug above which a cheap model reads each 
 PREFILTER_CHECK = 1000  # seeded large-literature records given the full screen to measure the prefilter's recall
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST"
 EPMC_PAGE = 1000
+NAME_CHUNK = 50  # drugs whose names are looked up together
+CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
 FIRECRAWL_LIMIT = 550  # calls to Firecrawl's research index on the pilot (the user approves any cohort run)
 FIRECRAWL_RESULTS = 20  # results per call; 40 times out
 MAX_DRUG_NAMES = 50
@@ -209,6 +211,34 @@ def cohort_entries() -> pd.DataFrame:
         .drop_duplicates(["moiety_id", "mondo_id", "phase"]).reset_index(drop=True)
 
 
+def survivors(ids: list[int]) -> dict[int, int]:
+    """Entity -> the entity it now is, following preclin.moiety_merge chains."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT loser_id, survivor_id FROM preclin.moiety_merge WHERE cause <> 'reversed' ORDER BY merged_at")
+        merged = dict(cur.fetchall())
+    out = {}
+    for m in ids:
+        seen, x = set(), m
+        while x in merged and x not in seen:
+            seen.add(x)
+            x = merged[x]
+        out[m] = x
+    return out
+
+
+def cohort_drugs() -> dict[int, int]:
+    """Entity -> latest cutoff year (year before entry) over the stored evidence entries
+    (preclin.evidence_entry, the US-sited phase entries of 2008-2019), merged entities resolved to survivors."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, max(entry_year) - 1 FROM preclin.evidence_entry GROUP BY 1")
+        rows = cur.fetchall()
+    to = survivors([m for m, _ in rows])
+    out: dict[int, int] = {}
+    for m, y in rows:
+        out[to[m]] = max(out.get(to[m], 0), int(y))
+    return out
+
+
 def entries(which: str) -> pd.DataFrame:
     return pilot_entries() if which == "pilot" else cohort_entries()
 
@@ -241,7 +271,14 @@ def chembl_synonyms(ids: list[str]) -> dict[str, list[str]]:
     return out
 
 
-def names_of(cur, moieties: list[int]) -> dict[int, list[str]]:
+def names_of(moieties: list[int]) -> dict[int, list[str]]:
+    """Searchable names of each entity; the database read ends before PubChem and ChEMBL are called."""
+    with llm.connect() as conn, conn.cursor() as cur:
+        rows = name_rows(cur, moieties)
+    return names_from(rows)
+
+
+def name_rows(cur, moieties: list[int]) -> list[tuple]:
     cur.execute("""SELECT m.moiety_id, m.name, m.code_names, u.pubchem_cid,
                           coalesce(array_agg(DISTINCT n.name) FILTER (WHERE n.name IS NOT NULL), '{}'),
                           coalesce(array_agg(DISTINCT cm.parent_chembl_id) FILTER (WHERE cm.parent_chembl_id IS NOT NULL), '{}')
@@ -250,7 +287,10 @@ def names_of(cur, moieties: list[int]) -> dict[int, list[str]]:
                    LEFT JOIN preclin.unii_name n ON n.unii = m.unii AND n.name_type IN ('cn', 'cd', 'of')
                    LEFT JOIN preclin.chembl_moiety cm ON cm.moiety_id = m.moiety_id
                    WHERE m.moiety_id = ANY(%s) GROUP BY 1, 2, 3, 4""", (moieties,))
-    rows = cur.fetchall()
+    return cur.fetchall()
+
+
+def names_from(rows: list[tuple]) -> dict[int, list[str]]:
     pubchem = pubchem_synonyms(sorted({c for *_, c, _, _ in rows if c}, key=int))
     chembl = chembl_synonyms(sorted({x for *_, ids in rows for x in ids}))
     out = {}
@@ -276,10 +316,9 @@ def store_hits(cur, hits: list[tuple]) -> None:
                                VALUES %s ON CONFLICT DO NOTHING""", hits, page_size=5000)
 
 
-def search(args) -> None:
-    """Run each drug's PubMed and Europe PMC searches the entries need that have not been run; store every hit
-    (PubMed abstracts are fetched by the screen, so a large literature is not stored before its prefilter)."""
-    cut = drug_cutoffs(entries(args.entries))
+def search_drugs(cut: dict[int, int], log=print) -> None:
+    """PubMed and Europe PMC searches for each drug at its cutoff not yet searched; each drug's results are
+    committed before the next, so an interrupted run resumes where it stopped."""
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, METHOD, "Published evidence about the drug before phase entry (version 3)", __doc__,
                           ["PubMed", "Europe PMC", "Firecrawl research index", "PubChem", "ChEMBL", "preclin.moiety",
@@ -288,22 +327,30 @@ def search(args) -> None:
                            "related_lin": RELATED, "firecrawl_limit": FIRECRAWL_LIMIT})
         cur.execute("SELECT moiety_id, cutoff_year FROM preclin.literature_v3_search GROUP BY 1, 2 HAVING count(*) = 2")
         done = set(cur.fetchall())
-        todo = sorted((m, y) for m, y in cut.items() if (m, y) not in done)
-        names = names_of(cur, [m for m, _ in todo])
         conn.commit()
-    todo = [(m, y) for m, y in todo if names.get(m)]
-    print(f"drugs={len(cut)} to search={len(todo)}", flush=True)
-    for i, (m, y) in enumerate(todo, 1):
-        pq, pn, pmids = pubmed_ids(names[m], y)
-        eq, en, records = epmc_records(names[m], y)
-        with llm.connect() as conn, conn.cursor() as cur:
-            store_records(cur, records)
-            execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
-                                   VALUES %s ON CONFLICT DO NOTHING""",
-                           [(m, y, "pubmed", names[m], pq, pn), (m, y, "europepmc", names[m], eq, en)])
-            store_hits(cur, [(m, y, "pubmed", p) for p in pmids] + [(m, y, "europepmc", r[0]) for r in records])
-            conn.commit()
-        print(f"searched {i}/{len(todo)} moiety={m} pubmed={len(pmids)}/{pn} europepmc={len(records)}", flush=True)
+    todo = sorted((m, y) for m, y in cut.items() if (m, y) not in done)
+    log(f"search: drugs={len(cut)} to search={len(todo)}")
+    for start in range(0, len(todo), NAME_CHUNK):
+        chunk = todo[start:start + NAME_CHUNK]
+        names = names_of([m for m, _ in chunk])
+        for m, y in chunk:
+            if not names.get(m):
+                continue
+            pq, pn, pmids = pubmed_ids(names[m], y)
+            eq, en, records = epmc_records(names[m], y)
+            with llm.connect() as conn, conn.cursor() as cur:
+                store_records(cur, records)
+                execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
+                                       VALUES %s ON CONFLICT DO NOTHING""",
+                               [(m, y, "pubmed", names[m], pq, pn), (m, y, "europepmc", names[m], eq, en)])
+                store_hits(cur, [(m, y, "pubmed", p) for p in pmids] + [(m, y, "europepmc", r[0]) for r in records])
+                conn.commit()
+            log(f"searched moiety={m} pubmed={len(pmids)}/{pn} europepmc={len(records)}")
+
+
+def search(args) -> None:
+    """Search the drugs of the entries (pilot or cohort)."""
+    search_drugs(drug_cutoffs(entries(args.entries)) if args.entries == "pilot" else cohort_drugs())
 
 
 def firecrawl_cli(args: list[str]) -> list[dict]:
@@ -312,7 +359,11 @@ def firecrawl_cli(args: list[str]) -> list[dict]:
     import tempfile
     for attempt in range(3):
         with tempfile.NamedTemporaryFile(suffix=".json") as f:
-            r = subprocess.run(["firecrawl", "research", *args, "--json", "-o", f.name], capture_output=True, text=True)
+            try:
+                r = subprocess.run(["firecrawl", "research", *args, "--json", "-o", f.name], capture_output=True,
+                                   text=True, timeout=300)
+            except subprocess.TimeoutExpired:
+                continue
             if r.returncode == 0:
                 with open(f.name) as fh:
                     return json.load(fh).get("results") or []
@@ -365,17 +416,41 @@ def resolve_external(keys: list[tuple[str, str | None]]) -> dict[str, str]:
     return out
 
 
+def firecrawl_credits() -> int | None:
+    import subprocess
+    try:
+        r = subprocess.run(["firecrawl", "credit-usage", "--json"], capture_output=True, text=True, timeout=60)
+        return int(json.loads(r.stdout)["data"]["remainingCredits"])
+    except (subprocess.TimeoutExpired, ValueError, KeyError):
+        return None
+
+
+def firecrawl_entries(which: str) -> pd.DataFrame:
+    """Entries to search in Firecrawl: the pilot sample, or the stored cohort entries with merged entities
+    resolved to survivors."""
+    if which == "pilot":
+        return pilot_entries()
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("SELECT moiety_id, mondo_id, max(entry_year) - 1 FROM preclin.evidence_entry GROUP BY 1, 2")
+        rows = cur.fetchall()
+    to = survivors([m for m, _, _ in rows])
+    e = pd.DataFrame([(to[m], d, y) for m, d, y in rows], columns=["moiety_id", "mondo_id", "cutoff_year"])
+    return e.groupby(["moiety_id", "mondo_id"], as_index=False).cutoff_year.max()
+
+
 def firecrawl(args) -> None:
-    """Pilot only: Firecrawl's research index, within FIRECRAWL_LIMIT calls. --mode search runs one semantic search
-    per entry not yet searched; --mode related expands, per drug, from its first qualifying screened record."""
-    e = entries("pilot")
-    cut = drug_cutoffs(e)
+    """Firecrawl's research index. --mode search runs one semantic search per entry not yet searched (a drug is
+    searched once its names are stored); --mode related expands, per drug, from its first qualifying screened record.
+    The pilot is capped at FIRECRAWL_LIMIT calls; a cohort run stops when the account has under 10 credits left,
+    and resumes where it stopped."""
+    e = firecrawl_entries(args.entries)
+    cut = {int(m): int(y) for m, y in e.groupby("moiety_id").cutoff_year.max().items()}
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT count(*) FROM preclin.literature_v3_firecrawl")
         used = cur.fetchone()[0]
         cur.execute("SELECT moiety_id, mondo_id, mode FROM preclin.literature_v3_firecrawl")
         done = set(cur.fetchall())
-        cur.execute("SELECT moiety_id, names FROM preclin.literature_v3_search WHERE source = 'pubmed'")
+        cur.execute("SELECT DISTINCT ON (moiety_id) moiety_id, names FROM preclin.literature_v3_search WHERE source = 'pubmed'")
         names = dict(cur.fetchall())
         cur.execute("SELECT term_id, label FROM preclin.ontology_term WHERE term_id = ANY(%s)", (sorted(set(e.mondo_id)),))
         label = dict(cur.fetchall())
@@ -387,11 +462,17 @@ def firecrawl(args) -> None:
                  if (int(r.moiety_id), r.mondo_id, "search") not in done and names.get(int(r.moiety_id))]
     else:
         calls = [(m, "", cut[m]) for m in sorted(seeds) if m in cut and (m, "", "related") not in done]
-    calls = calls[:max(FIRECRAWL_LIMIT - used, 0)]
-    print(f"firecrawl {args.mode}: calls={len(calls)} used before={used} limit={FIRECRAWL_LIMIT}", flush=True)
+    if args.entries == "pilot":
+        calls = calls[:max(FIRECRAWL_LIMIT - used, 0)]
+    print(f"firecrawl {args.mode} ({args.entries}): calls={len(calls)} credits={firecrawl_credits()}", flush=True)
     for i, (m, d, y) in enumerate(calls, 1):
+        if args.entries == "cohort" and i % 100 == 1:
+            left = firecrawl_credits()
+            if left is not None and left < 10:
+                print(f"firecrawl paused: {left} credits left, {len(calls) - i + 1} calls to go", flush=True)
+                return
         if args.mode == "search":
-            q = firecrawl_query(names[m], label.get(d, d))
+            q = firecrawl_query(names[m], label.get(d, "the diseases it treats"))
             results = firecrawl_cli(["search-papers", q, "--limit", str(FIRECRAWL_RESULTS), "--to", f"{y}-12-31"])
         else:
             seed = seeds[m]
@@ -407,7 +488,7 @@ def firecrawl(args) -> None:
                            VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING""", (m, d, y, args.mode, q, len(results)))
             store_hits(cur, [(m, cut[m], "firecrawl", r) for r in record_ids])
             conn.commit()
-        if i % 25 == 0 or i == len(calls):
+        if i % 100 == 0 or i == len(calls):
             print(f"firecrawl {args.mode} {i}/{len(calls)}", flush=True)
 
 
@@ -517,10 +598,10 @@ def drug_context(cut: dict[int, int]) -> tuple[dict, dict]:
     return names, targets
 
 
-def screen_items(e: pd.DataFrame) -> dict[str, dict]:
-    """Subject key (entity|record) -> screen payload for every record that reaches the screen: all records of a drug
-    with at most PREFILTER_ABOVE, else those the prefilter reads as possibly. Runs the prefilter where needed."""
-    cut = drug_cutoffs(e)
+def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
+    """Subject key (entity|record) -> screen payload for every record of the drugs (entity -> cutoff) that reaches
+    the screen: all records of a drug with at most PREFILTER_ABOVE, else those the prefilter reads as possibly.
+    Runs the prefilter where needed."""
     names, targets = drug_context(cut)
     recs = drug_records(cut)
     size = recs.groupby("moiety_id").size()
@@ -528,9 +609,8 @@ def screen_items(e: pd.DataFrame) -> dict[str, dict]:
     have = stored_papers(sorted(set(recs.record_id)))
     small_missing = sorted({r for m, r in zip(recs.moiety_id, recs.record_id) if m not in large and r not in have
                             and r.isdigit()}, key=int)
-    print(f"drugs={len(cut)} records={len(recs)} large drugs={len(large)} "
-          f"large-drug records={int(size[size > PREFILTER_ABOVE].sum())} small-drug pmids to fetch={len(small_missing)}",
-          flush=True)
+    log(f"drugs={len(cut)} records={len(recs)} large drugs={len(large)} "
+        f"large-drug records={int(size[size > PREFILTER_ABOVE].sum())} small-drug pmids to fetch={len(small_missing)}")
     have.update(fetch_papers(small_missing, store=True))
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("SELECT moiety_id || '|' || record_id, possibly FROM preclin.literature_v3_prefilter")
@@ -563,15 +643,20 @@ def screen_items(e: pd.DataFrame) -> dict[str, dict]:
     return {f"{m}|{r}": payload(names[m], targets.get(m, ""), r, have[r]) for m, r in keep}
 
 
-def screen(args) -> None:
-    """Screen every record that reaches the screen; an earlier decision on the same input (version 2's on the same
-    PubMed abstract) is reused."""
-    items = screen_items(entries(args.entries))
+def screen_drugs(cut: dict[int, int], log=print) -> int:
+    """Prefilter and screen the drugs' records and store the screens; returns the records screened. Decisions are
+    reused on the same input, so a rerun after an interruption only pays for what was not decided."""
+    items = screen_items(cut, log)
     run_id = llm.run(task(), items)
     decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
-    rows = [(int(k.split("|")[0]), k.split("|", 1)[1], o["original_data"], o["animal_disease"], o["modelled_diseases"],
-             o["animal_healthy"], o["human_engagement"], o["species"] or None, o["detail"] or None, o["quote"] or None, did)
-            for k, did, o in decided]
+    to = survivors(sorted({int(k.split("|")[0]) for k, _, _ in decided}))
+    with llm.connect() as conn, conn.cursor() as cur:  # an entity merged while the run was out stores under its survivor
+        cur.execute("SELECT moiety_id FROM preclin.moiety WHERE moiety_id = ANY(%s)", (sorted(set(to.values())),))
+        live = {r[0] for r in cur.fetchall()}
+    rows = list({(to[int(k.split("|")[0])], k.split("|", 1)[1]): (
+        to[int(k.split("|")[0])], k.split("|", 1)[1], o["original_data"], o["animal_disease"], o["modelled_diseases"],
+        o["animal_healthy"], o["human_engagement"], o["species"] or None, o["detail"] or None, o["quote"] or None, did)
+        for k, did, o in decided if to[int(k.split("|")[0])] in live}.values())
     with llm.connect() as conn, conn.cursor() as cur:
         execute_values(cur, """INSERT INTO preclin.literature_v3_screen (moiety_id, record_id, original_data, animal_disease,
                                  modelled_diseases, animal_healthy, human_engagement, species, detail, quote, llm_decision_id)
@@ -582,7 +667,54 @@ def screen(args) -> None:
                                  detail = EXCLUDED.detail, quote = EXCLUDED.quote,
                                  llm_decision_id = EXCLUDED.llm_decision_id""", rows, page_size=5000)
         conn.commit()
-    print(f"records screened={len(items)} decided={len(decided)} run={run_id}", flush=True)
+    log(f"records screened={len(items)} decided={len(decided)} run={run_id}")
+    return len(items)
+
+
+def screen(args) -> None:
+    """Screen every record of the pilot's drugs that reaches the screen."""
+    screen_drugs(drug_cutoffs(entries(args.entries)) if args.entries == "pilot" else cohort_drugs())
+
+
+def chunks(cut: dict[int, int], sizes: dict[int, int]) -> list[dict[int, int]]:
+    """The drugs split into groups of about CHUNK_RECORDS retrieved records (a drug is never split)."""
+    out, cur, n = [], {}, 0
+    for m in sorted(cut, key=lambda x: (-sizes.get(x, 0), x)):
+        if cur and n + sizes.get(m, 0) > CHUNK_RECORDS:
+            out.append(cur)
+            cur, n = {}, 0
+        cur[m] = cut[m]
+        n += sizes.get(m, 0)
+    return out + ([cur] if cur else [])
+
+
+def run_cohort(args) -> None:
+    """One worker of the cohort run: search, then prefilter and screen in chunks, the drugs with
+    moiety_id % workers == worker. Progress goes to --log; every step resumes from what is stored."""
+    def log(msg: str) -> None:
+        line = f"{time.strftime('%Y-%m-%d %H:%M:%S')} [w{args.worker}] {msg}"
+        print(line, flush=True)
+        with open(args.log, "a") as fh:
+            fh.write(line + "\n")
+    cut = {m: y for m, y in cohort_drugs().items() if m % args.workers == args.worker}
+    if args.skip_pilot:  # the pilot screen decides these; a worker deciding them too would pay twice
+        pilot = set(pilot_entries().moiety_id.astype(int))
+        cut = {m: y for m, y in cut.items() if m not in pilot}
+    log(f"cohort drugs for this worker={len(cut)}")
+    search_drugs(cut, log)
+    with llm.connect() as conn, conn.cursor() as cur:
+        cur.execute("""SELECT moiety_id, count(DISTINCT record_id) FROM preclin.literature_v3_hit
+                       WHERE moiety_id = ANY(%s) GROUP BY 1""", (sorted(cut),))
+        sizes = dict(cur.fetchall())
+        cur.execute("SELECT DISTINCT moiety_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)", (sorted(cut),))
+        screened = {r[0] for r in cur.fetchall()}
+    todo = {m: y for m, y in cut.items() if m not in screened and sizes.get(m)}
+    groups = chunks(todo, sizes)
+    log(f"to screen: drugs={len(todo)} records={sum(sizes.get(m, 0) for m in todo)} chunks={len(groups)}")
+    for i, g in enumerate(groups, 1):
+        n = screen_drugs(g, log)
+        log(f"chunk {i}/{len(groups)} done: drugs={len(g)} screened={n}")
+    log("worker done")
 
 
 def prefilter_check(_args) -> None:
@@ -593,7 +725,7 @@ def prefilter_check(_args) -> None:
         pre = cur.fetchall()
     rng = np.random.default_rng(CHECK_SEED)
     pick = [pre[i] for i in sorted(rng.choice(len(pre), min(PREFILTER_CHECK, len(pre)), replace=False))]
-    cut = {m: y for m, y in drug_cutoffs(pilot_entries()).items()}
+    cut = drug_cutoffs(pilot_entries())
     names, targets = drug_context(cut)
     have = stored_papers([r for _, r, _ in pick])
     have.update(fetch_papers(sorted({r for _, r, _ in pick if r not in have and r.isdigit()}, key=int), store=False))
@@ -936,8 +1068,15 @@ def main() -> None:
     sub.add_parser("diseases").set_defaults(fn=diseases)
     sub.add_parser("check").set_defaults(fn=check)
     sub.add_parser("prefilter-check").set_defaults(fn=prefilter_check)
+    rc = sub.add_parser("run-cohort")
+    rc.add_argument("--worker", type=int, required=True)
+    rc.add_argument("--workers", type=int, required=True)
+    rc.add_argument("--log", required=True)
+    rc.add_argument("--skip-pilot", action="store_true", help="leave the pilot's drugs to the pilot screen")
+    rc.set_defaults(fn=run_cohort)
     fc = sub.add_parser("firecrawl")
     fc.add_argument("--mode", choices=("search", "related"), required=True)
+    fc.add_argument("--entries", choices=("pilot", "cohort"), default="pilot")
     fc.set_defaults(fn=firecrawl)
     g = sub.add_parser("gate")
     g.add_argument("--reference", required=True, help="path prefix of the four reference files, before {1..4}_result.json")
