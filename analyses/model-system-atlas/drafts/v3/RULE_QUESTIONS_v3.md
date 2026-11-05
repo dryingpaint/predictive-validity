@@ -2,7 +2,7 @@
 
 Collected from each tile's checker verdict (`<slug>.check.json`). A rule question is a case the v3 rules did not decide; a missed comparison is evidence the checker found that the draft left out. Neither changed a stored status: those went through adjudication.
 
-99 rule questions and 97 missed comparisons across the checked tiles.
+119 rule questions and 123 missed comparisons across the checked tiles.
 
 ## acute-myeloid-leukemia-flt3-inhibitors
 
@@ -13,6 +13,7 @@ Rule questions:
 - Dose table: in LACEWING, gilteritinib exposure was at target (troughs equal to monotherapy) and the regimen failed and was abandoned. Should dose get 'contra, derived_from: efficacy' even though the monotherapy dose worked?
 - Safety: quizartinib entered humans around 2007 on a rat and monkey package whose QT prediction matched (public in 2023). Is a different tox species package the same model_id ('rat-dog-glp-tox'), or a model_change that could lift the gilteritinib contra?
 - Can a single-arm trial's response-rate primary endpoint (quizartinib phase 2, 2018) score efficacy 'same', or only a randomised primary endpoint?
+- A patient-level resistance-genotype prediction (which kinase-domain mutations emerge at relapse) is filed under efficacy with endpoint_role 'primary', but relapse genotype is not any trial's primary endpoint. Does decision 4's primary-endpoint rule apply to prediction_level 'patient' tracks, or do they need their own endpoint_role value?
 
 Missed comparisons:
 
@@ -21,6 +22,7 @@ Missed comparisons:
 - MORPHO (gilteritinib post-HCT maintenance, NCT02997202): missed primary RFS (HR 0.68, p=0.0518); Astellas topline release 2023-03-09; Levis JCO 2024 doi:10.1200/JCO.23.02474. Post-transplant maintenance was not modelled, so it is a patient_trials/untested note with no status change, but it is a Phase 3 failure the draft does not show.
 - QuANTUM-R regulatory reading: FDA ODAC (May 2019) and a complete response letter (June 2019) questioned the robustness of the OS result; quizartinib was not approved in the US until 2023. The 2019 entry does not record this tier-2 view.
 - Crenolanib (a class member) is absent: phase 3 NCT03250338 in relapsed/refractory FLT3-mutated AML was reportedly presented at ASH 2025 (benefit reported in NPM1/FLT3 co-mutated patients), and ARO-021 (NCT03258931) vs midostaurin is completed. Not verified here; the drafter should check primary-endpoint results. AKN-028 is also not mentioned.
+- Gilteritinib in-vitro activity against FLT3-TKD (Ba/F3 D835Y), the basis for enrolling and labelling FLT3-TKD patients, has no patient-level track. The FDA Xospata multidisciplinary review (NDA 211349, 2018, in bundle) reports CR/CRh 0/18 in TKD vs 35/161 in ITD in the pooled interim analysis and issued PMR-3 (>=30 TKD patients) and PMC-1 (in-vitro sensitivity of other non-ITD mutations). Candidate 2018 patient-level untested/contra entry; ADMIRAL's later TKD subgroup should be checked before scoring.
 
 ## alzheimer-disease-anti-app-antibodies
 
@@ -44,6 +46,7 @@ Rule questions:
 - Can a dose 'contra derived_from efficacy' be paired across sibling drugs when the model that set the exposure target (Lilly dogs, LY2886721) never set the failed drug's dose? Atabecestat doses came from its own human CSF PK/PD. And when the failed trial (EARLY) was stopped for toxicity while the efficacy readout was interim, which dose-table row applies?
 - Does a later safety prediction made from a non-model heuristic (low daily dose lowers idiosyncratic DILI risk, LY3202626) count as model_change and let the safety cell turn back, or is it out of scope because it is not a model system?
 - The opening year for unpublished preclinical work is proxied to a member's Phase 2 start (2012). Should it be the first-in-human date (LY2886721 Phase 1, about 2011) instead?
+- Efficacy 4 (A673T genetics vs atabecestat): A673T lowers beta-cleavage of APP only, while drug BACE1 inhibition also blocks other substrates (e.g. SEZ6), the likely cause of cognitive worsening. Is that a 'condition the model never tested' (#35/#72 -> untested) when no trial source attributes it so? Kept contra.
 
 Missed comparisons:
 
@@ -65,6 +68,8 @@ Missed comparisons:
 - Efficacy/dose dating: Novartis press releases of October 2019 (ZEAL-1/2 missed FEV1 primary) and 2019-12-16 (LUSTER missed, development stopped), https://www.novartis.com/news/media-releases/novartis-provides-update-luster-phase-iii-studies-patients-uncontrolled-gina-45-asthma. ZEAL-1 (NCT03215758, results 2020-02-12) is also absent from patient_trials.
 - Efficacy patient_trials: ADC3680B (PTR-36, Pulmagen/Teijin) positive phase II on morning PEF in mild-moderate asthma (press release, e.g. https://www.biospace.com/positive-phase-ii-in-eosinophilic-asthma-for-b-pulmagen-b-teijin-pharma). Date and whether mPEF was the primary are not verified.
 - Engagement: ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract, https://publications.ersnet.org/content/erj/44/suppl58/4836). Conference abstract only, not read; possible downstream entry.
+- Efficacy, human-allergen-challenge-lar track: OC000459 (timapiprant) reduced the LAR AUC 25.4% (95% CI 5.1-45.6%) (Singh 2013 Eur Respir J, PMID 22496329, epub 2012-04-10; NCT01056692, started 2006-02) and its own trials met pre-BD FEV1 primaries (Barnes 2012 Clin Exp Allergy, 28-day, NCT01057927; Pettipher 2014 Allergy, PMID 24866478: 25 mg QD P=0.028). A product_in_model 'same' entry dated 2012 precedes the AZD1981 contra.
+- Efficacy, human-allergen-challenge-lar track: setipiprant's own proof-of-concept FEV1 trial in partly controlled asthma (NCT01225315, 2010-11 to 2012-02) has no posted results; a same-drug pairing for the challenge model, trial_unreported.
 
 ## atopic-eczema-pde4-inhibitors
 
@@ -73,12 +78,15 @@ Rule questions:
 - When several class members went in on different efficacy models (crisaborole: TPA ear edema; LEO 29102: mouse allergic contact dermatitis, failed primary; difamilast: chronic contact dermatitis), must the cell record every model's track as its own entries, or only the best model's? The rule 'one drug's contra beats another drug's same on the same model' does not say what happens across models within one cell.
 - Decision 16 margin_stated: the minipig NOAEL (5% ointment, above the 2% clinical strength) was filed under the IND before Phase 3, but the AUC-based margin (about 1x) was first stated in the 2016 NDA review using patient PK. Does a pre-trial NOAEL at a higher strength count as a stated margin, or does the margin need to be expressed in exposure before the trial?
 - Does a sponsor's own optimistic reading in a tier-1 paper (Felding 2014: 'clinically relevant efficacy') hold the status until the registry posts a failed primary (2019), per rule 7 (what was known at the date)?
+- An ex-vivo explant measuring free drug and tissue cAMP (Eirefelt 2020) is a PK/engagement readout; should its comparison with a failed efficacy primary be scored in the efficacy cell (as drafted, contra) or in the dose/engagement cells?
 
 Missed comparisons:
 
 - LEO 29102 (member): Phase 2 NCT01037881 primary endpoint (EASI change) not significant vs vehicle for any dose (p=0.27, 0.83, 0.08, 0.16), results posted 2019-10-14. Model = mouse topical allergic contact dermatitis (Felding 2014, doi:10.1021/jm500378a, which called the efficacy 'clinically relevant'). This is a contra for a second model_id (mouse-acd) dated 2019, currently buried in patient_trials with no status. It does not lower the crisaborole model's cell under the best-model rule, but it should be recorded.
 - DRM02 (member): Dermira 10-K filed March 2015 (sec.gov/Archives/edgar/data/1557883/000104746915002713/a2223853z10-k.htm): 'Initial efficacy data in proof-of-concept clinical trials indicated that DRM02 gel was not more effective than vehicle-only gel'. Tier 5 failure (NCT01993420, no posted results). Its model side was not found, so it scores untested or is set aside, but the note should say it failed rather than 'stopped'.
 - Difamilast (member): its FDA multidiscipline review (NDA 219474) names a mouse chronic contact dermatitis model; the Japanese Phase 2/3 primary IGA endpoints were met. A same entry for a separate model_id; the cell status does not change.
+- LEO 39652 (topical PDE4 soft drug, LEO): Phase 2 in mild-moderate AD NCT02219633 (2014-07 to 2015-01, no posted results); Eirefelt 2020 (doi:10.1007/s11095-020-02962-1) states its 'lack of clinical efficacy' in AD patients. Not listed as a class member; the explant track's retro reproduction of its failure has no entry.
+- Difamilast psychological-stress idiopathic dermatitis mouse model: JID 2022 abstract 576 (jidonline.org/article/S0022-202X(22)01026-0), run after Japanese approval; a further retro track if conference abstracts are admissible.
 
 ## breast-cancer-cdk4-6-inhibitors
 
@@ -86,6 +94,8 @@ Rule questions:
 
 - Does a negative adjuvant (early-disease) trial count against a model that only predicted antiproliferative sensitivity in advanced-disease cell lines? Under the brief it is either untested (a condition the model never tested) or contra (one drug's contra beats another's same, even though abemaciclib in monarchE and ribociclib in NATALEE succeeded). The context population ('HR-positive, HER2-negative') does not exclude early disease.
 - model_kind has no in_vitro value; the draft uses ex_vivo for an established cell-line panel. Should in_vitro be added, or should ex_vivo be reserved for patient-derived material?
+- Efficacy/dose parallel track rodent-brain-penetration-abema: does a rat intracranial glioblastoma survival model count as testing breast-cancer brain metastasis response, or is the breast brain-met trial a condition the model never tested (untested)?
+- Safety track dog-cv-telemetry (palbociclib): when an FDA review duplicates text across a pre-FIH study and a later study run after patient QT data were public, which date governs retrodiction?
 
 Missed comparisons:
 
@@ -108,6 +118,7 @@ Missed comparisons:
 - Lumacaftor liver: Orkambi 2015 label 5.2/6.1, 'Three patients who received ORKAMBI had liver-related serious adverse reactions ... compared to none in the placebo group', rats and dogs silent on liver (PharmR l.435). Weak because transaminase rates were similar to placebo; the draft should at least note it in safety 1.
 - Galicaftor HBE model side exists (Wang 2018 J Med Chem, doi 10.1021/acs.jmedchem.7b01339) for the NCT04853368 FEV1 miss (cohort 2 vs placebo 0.9, p=0.402, verified on CT.gov). The draft says no model prediction was found; the judgement should cite this paper and say why it is not scored (combination with non-member correctors).
 - PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride primary met, no posted results) is a same-drug match on the same HBE model; it belongs in the engagement judgement (it is mentioned) but could be its own dated tier-5 entry before the 2019 contra.
+- Patient nasal epithelial cell cultures (HNE): Pranke 2017 Sci Rep, doi 10.1038/s41598-017-07504-1 (PMID 28785019), 'Correction of CFTR function in nasal epithelial cells ... predicts improvement of respiratory function by CFTR modulators' (lumacaftor/ivacaftor); later Thorax 2026 doi 10.1136/thorax-2025-223153 on sequential modulators. No parallel track in the draft.
 
 ## gastroesophageal-reflux-disease-atp4a-blockers
 
@@ -122,6 +133,7 @@ Missed comparisons:
 - No unreported failure found: Sebela press release 2025-04-23 (biospace.com/press-releases/sebela-pharmaceuticals-announces-positive-topline-results-from-phase-3-triumph-program-of-tegoprazan-in-gerd) reports all primary endpoints met in TRIUMpH EE and NERD; could be added to patient_trials (tier 5), no status change.
 - Fexuprazan phase III EE head-to-head (Jeong 2024, J Clin Med, doi:10.3390/jcm13113262) is RETRACTED; correctly absent, worth a note so it is not re-added.
 - Tegoprazan Korean NERD phase 3 and TRIUMpH NERD (GERD patients) are additional efficacy patient_trials; no status change.
+- Zastaprazan (JP-1366; Korean approval 2024 for erosive oesophagitis) is a Korean P-CAB the tile does not list; its only model found is a GERD-patient popPK model (doi:10.1002/psp4.13228, 2024) that describes exposure, not acid or healing, so no track needed unless zastaprazan is added to the class.
 
 ## hemophilia-b-f9-replacement-gene-therapy
 
@@ -137,6 +149,7 @@ Missed comparisons:
 - AskBio009/BAX 335 (Konkle 2021, PMID 33067633): FIX not sustained beyond 5-11 weeks in 7 of 8 patients; first public in Baxalta 2015-2016 releases and ASH abstracts. Only mentioned in judgement/patient_trials; a dated engagement/dose entry against its own preclinical model (Monahan 2015 mice/NHP) would show the miss even if the best-model rule leaves the cell at same.
 - verbrinacogene setparvovec (FLT180a, Chowdary 2022 NEJM 10.1056/NEJMoa2119913): needed glucocorticoids +/- tacrolimus, one AV-fistula thrombosis at FIX 260%; development paused 2022 (Freeline). Its preclinical (NHP) model was not read by the drafter or by me.
 - AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy).
+- Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section).
 
 ## hepatitis-c-virus-infection-hcv-ns3-4a-protease-inhibitors
 
@@ -145,6 +158,7 @@ Rule questions:
 - Dose table 'reached, drug worked': does a phase 1 viral-load response count as 'worked', so the entry is dated at phase 1, or must the efficacy primary endpoint have read out first? Also, can a dose entry be 'same' when the source never reports exposure against the model's numeric target (EC99)?
 - Q80K: the replicon fold change was measured on baseline clinical isolates at the same time as the phase 3 trials. Is this a prospective model prediction or a retrodiction (retro)?
 - Hepatotoxicity seen only under a drug interaction (sovaprevir with atazanavir/r in healthy volunteers; paritaprevir with ethinyl estradiol): no rule says whether a DDI-driven harm the animals were never dosed under counts as the model's silence being contradicted or as untested.
+- Models check: a routine preclinical model (HCV chimpanzee monotherapy) whose run date is unstated and whose first record (2010) post-dates a public patient result (AASLD 2008), but which was not motivated by it. Rule 10 requires both 'post-dates' and 'motivated by'; scored retro here on the record date.
 
 Missed comparisons:
 
@@ -165,6 +179,8 @@ Missed comparisons:
 - Min 2010 AAC 10.1128/AAC.00842-09 (epub 2009-11-02): 'C(tau) with a 50-mg dose was 1.6 microg/ml, approximately 25-fold higher than the protein-adjusted 90% inhibitory concentration (0.064 microg/ml)': healthy-volunteer dose comparison the draft omits; moves dose dating earlier.
 - Zash et al. AIDS 2025, 10.1097/QAD.0000000000004326: earliest peer-reviewed report of the Tsepamo NTD signal attenuating (0.10% vs 0.11%).
 - Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry.
+- Zebrafish embryo DTG developmental-toxicity model (Cabrera et al. AIDS 2019, 10.1097/QAD.0000000000002289; Cabrera 2026 DMM 10.1242/dmm.052632): folate-receptor antagonism and NTD-type defects set against the Tsepamo signal; no track.
+- Second mouse NTD model, SWV/Fnn and other strains dosed with DTG (Tukeman et al. AIDS 2024, 10.1097/QAD.0000000000003639; Gelineau-van Waes 2023 Front Cell Dev Biol 10.3389/fcell.2023.1175917): DTG-induced NTDs, folate-responsive; a separate model system from the C57BL/6J therapeutic-dose track.
 
 ## hyperlipidemia-cetp-inhibitors
 
@@ -180,6 +196,7 @@ Missed comparisons:
 - Rocacetrapib (CKD-519): Choi 2019 (https://doi.org/10.3390/pharmaceutics11070336, abstract) animal allometric PK/PD model predicted a 25 mg efficacious dose with a 'huge difference' from observed phase 1 bioavailability; published after phase 1 (Kim 2016, https://doi.org/10.2147/DDDT.S120387), so likely retrodiction/contra on a different model of a member drug. Drafter noted it in judgement but scored nothing; best-model rule keeps cell same.
 - Teramoto 2014 (PMID 24786356, Europe PMC abstract) gives patient CETP-activity engagement data in April 2014, ahead of Suico (June 2014).
 - DRL-17822 patient_trials quote is a paraphrase of the NCT01388816 results table, not a verbatim sentence; numbers (3.2/84.2/122.1/160.6%) verified.
+- Prospective pairing for the human-genetics track: Brown 1989 (https://doi.org/10.1038/342448a0) / Inazu 1990 (https://doi.org/10.1056/NEJM199011013231803) CETP deficiency raises HDL-C, confirmed in patients by de Grooth 2002 JTT-705/dalcetrapib phase 2 (https://doi.org/10.1161/01.CIR.0000015857.31889.7B): first class-level same, 2002.
 
 ## insomnia-hcrtr1-2-antagonists
 
@@ -188,6 +205,7 @@ Rule questions:
 - Suvorexant next-day impairment was the harm behind the FDA dose cut, and the animal package never tested it. The drafter left it unscored under dose. Decision 16 puts an unpredicted harm in safety, so does model silence on next-day or residual sedation count as a harm the species could have shown (safety contra)? Or is it human-PK carryover (half-life), outside what the model could show?
 - A dose cell mixes an efficacy-exposure target model (suvorexant C4h) with a decision 16 tolerability-margin model (daridorexant dog NOAEL). Should model_change: true be set when the cell was not contra, given the rule defines model_change only for turning a contra back?
 - Dose entry 2: the effective-exposure target is published only in the FDA review that also holds the patient comparison, and Winrow 2011 is cited as model_src. Is this comparison_stated true (regulator states both sides) or false (a pairing)?
+- Safety 5-6: the lemborexant mouse cataplexy study (W-20140712, mid-2014) ran when suvorexant's cataplexy-like events in patients were already known (2013 AdCom, 2014 label). At prediction_level class, is a member's model run after a sibling's patient result a retrodiction, or prospective because its own drug's patients were untested?
 
 Missed comparisons:
 
@@ -195,6 +213,7 @@ Missed comparisons:
 - Filorexant Phase 2 insomnia was positive at all doses (Connor 2016, doi:10.1093/ijnp/pyw022), and Merck dropped it without an insomnia failure. The draft names this only in a judgement, which is correct; no failure was missed.
 - Lemborexant FDA multidiscipline review 2019 (Figure 1: lemborexant cataplexy in wild-type vs orexin-KO mice) is a separate member-drug safety model with a patient comparison. It agrees, so no status change, but it could be a dated safety entry.
 - Fazamorexant Phase 3 (NCT05525637) is reported positive only on secondary aggregators. No failure was found for any member in a press release or SEC filing.
+- Lemborexant's and daridorexant's own nonclinical abuse-liability studies vs their human abuse potential trials (FDA 212028 multidiscipline review 2019: 'Nonclinical findings were less suggestive of abuse liability'; daridorexant NDA 214985 review 2022, HAP vs zolpidem): further entries in the rhesus-rat-abuse-liability-battery track, both C-IV.
 
 ## interstitial-cystitis-anti-ngf-antibodies
 
@@ -223,6 +242,8 @@ Missed comparisons:
 - Cilofexor rat model first public as Reiberger et al. 2016 Z Gastroenterol abstract 'The non-steroidal FXR agonists PX20606 and GS-9674 improve liver fibrosis and portal hypertension in rodent models...' (doi:10.1055/s-0036-1583977); sets model_first_use_year and rules out retrodiction for efficacy entry 2.
 - EDP-305 ARGON-2 (NCT04378010, histology phase 2b) stopped after the 12-week interim; Enanta press release 2021-10-04 (businesswire.com/news/home/20211004005192) calls it a strategic decision to prioritize combinations, not safety. Tier 5; belongs in patient_trials, changes no status (development stop is not 'failed', decision 4).
 - Cilofexor phase 2 in non-cirrhotic NASH (NCT02854605, results 2019-01-29; Patel 2020 doi:10.1002/hep.31205): primary endpoint safety only; liver-fat fall was secondary. Could be a patient_trials row; does not change status.
+- PXB humanized-mouse track, tropifexor healthy volunteers: Papazyan 2018 (doi:10.1194/jlr.M081935) cites Badman 2016 LJN452 first-in-human abstract (Hepatology 64:16A) as reportedly lipid-neutral over <=2 weeks; the mouse LDL rise contradicts that known HV result (retrodiction, contra 2018) before FLIGHT-FXR's patient LDL rise.
+- PXB track, cilofexor in NASH patients: Patel 2020 phase 2 (doi:10.1002/hep.31205, NCT02854605, 24 weeks) reportedly no LDL/HDL change vs placebo; would give a patient-population contra in 2020 on top of the HV contra (full text paywalled; registry results posted 2019-01-29 could confirm lipid tables).
 
 ## migraine-disorder-cgrp-receptor-antagonists
 
@@ -231,12 +252,14 @@ Rule questions:
 - Retrodiction vs prospective on the same model: DILIsym retro-modeled MK-3207 (published 2020) in the same paper that reports the prospective ubrogepant match (2019 FDA, 2020 paper). Should the cell carry a separate retro entry for the MK-3207 member, or does the prospective same subsume it? Decision 10 does not say how a retro and a same of the same date and model order on the strip.
 - Dose-table row 'reached, failed, a higher dose later worked': does the higher dose have to be shown superior to the predicted dose? For MK-3207, 200 mg alone was significant, but CIs overlapped from 10 mg up, and the same trial met its primary endpoint on a pooled dose-response trend. The table also implies efficacy contra-then-same, while the draft keeps efficacy same because the primary was met in the same trial. Which applies?
 - Should a dose model built in human healthy volunteers (human CIDV calibrated on a non-member's phase 3 data) count as the same model_id/system as the rhesus CIDV used for engagement and efficacy, given that the brief scopes 'the model' to the preclinical system the class relied on?
+- MK-3207 GLP toxicology: Monroe 2020 reads three species as silent on liver, but a 1-month dog study showed slight periportal vacuolation and <4X ALT/AST at 17X, attributed to body-weight loss. Is that a sponsor-dismissed animal signal that patients confirmed (same, #23) or askable silence contradicted (contra)? The paper's own reading is silence.
 
 Missed comparisons:
 
 - Smith 2020 (doi 10.1093/toxsci/kfaa093, PMC8312697): 'DILIsym successfully modeled liver toxicity for telcagepant and MK-3207 at the dosing regimens used in clinical trials'. This is a 2020 retrodiction for member MK-3207. The draft mentions it only in a judgement, with no retro entry (see rule question).
 - BI 44370 discontinuation: secondary reviews (e.g. PMC4392770) attribute it to liver toxicity and/or oral formulation difficulty. No primary source (press release or registry) was found. If confirmed, it is a second member liver signal for the safety cell. At minimum the safety note should mention it.
 - Ubrogepant dose: Voss 2016 phase 2b (doi 10.1177/0333102416653233) found 1 and 10 mg ineffective and 25/50/100 mg effective. Moore 2020 gives human CIDV EC50 2.6 nM. If a CIDV-based ubrogepant dose prediction exists (e.g. the exposure-response paper 'Making Better Dose Decisions...'), it is a second member's dose comparison. The FDA ClinPharmR bundle has no CIDV dose rationale.
+- MK-3207 GLP toxicology, 2020 contra on model_id mk3207-glp-tox: Monroe 2020 (doi 10.1093/toxsci/kfaa088, PMC7553701, Table 1 and text) states MK-3207 'was dosed for 9 months in NHP at ... exposures exceeding 4-fold', rat and mouse 6-month margins 'exceeded 30-fold and 14-fold', 'No liver safety signals of concern were noted', and concludes such molecules 'present no evidence of liver safety concerns in 3 species of conventional animal toxicology studies ... and still provoke liver signals' in the clinic (phase 2 ALT>3x ULN 42% at >500 mg, Hy's law case). Comparison stated (comparison_stated true, tier 1); prospective model (run before the clinical signal), so contra, year 2020. Caveat: a 1-month dog study at 17X showed slight periportal vacuolation with <4X ALT/AST, attributed to excessive body-weight loss (see rule question).
 
 ## non-small-cell-lung-carcinoma-anti-igf1r-antibodies
 
@@ -252,6 +275,7 @@ Missed comparisons:
 - safety: contra entry, model = cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab (Roche reports Jul-Aug 2005, up to 39 weeks; product_in_model true), source FDA BLA 761143 Pharmacology/Toxicology review (http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf, tier 2, comparison_stated true). Quote (11.4): 'the monkey model predicted the clinical reduced weight gain/weight loss and decreased serum ALP, but not the clinical infusion reactions, exacerbation of inflammatory bowel disease, or hyperglycemia.' Executive summary: 'The monkey toxicology studies did not predict these effects.' Patient harm is in TED patients, so imported_from the thyroid eye disease MONDO id; hyperglycemia is on-target (IGF1R/IR) and also seen with cixutumumab in NSCLC (Novello 2017 9.4% vs 1.2%; E3508). Year = review posting (approval Jan 2020; file under nda/2021). Monkeys can show hyperglycemia, so this is a scored miss, not silence a species could not show.
 - efficacy (candidate competing model): Gong et al. 2009 PLoS One, doi:10.1371/journal.pone.0007273 (PMID 19806209), a member-drug (R1507) NSCLC model: in 22 NSCLC lines only 5 were moderately sensitive, linked to high total IGF-1R, i.e. it predicted little benefit in unselected NSCLC. Published Oct 2009, before the Ramalingam result (Oct 2011). Not the model the draft scored; recorded so the adjudicator can decide whether it, not A549/h7C10, is the 'best model' for the R1507 trial.
 - No press release, SEC filing or EMA document found reporting an additional member-drug NSCLC failure; figitumumab's NSCLC phase 3 failures are outside the member list (figitumumab is not a member) and correctly absent.
+- efficacy (parallel track r1507-nsclc-cell-line-panel): likely 2011 contra, patient side Habben et al. J Clin Oncol 29:15_suppl 7584 (doi:10.1200/jco.2011.29.15_suppl.7584, NO21160 R1507+erlotinib): search-engine text of the abstract reads 'No significant impact on treatment was observed when the PFS rates of patient subgroups defined by other biomarkers, including IGF1R level, were compared'; abstract body 403 on ascopubs and absent from Europe PMC/Crossref, so it needs a verbatim read before entry.
 
 ## non-small-cell-lung-carcinoma-egfr-inhibitors
 
@@ -261,6 +285,8 @@ Rule questions:
 - Population when the tile gives none and members span first-line sensitising, T790M-acquired and exon 20 insertion settings: one context (EGFR-mutant) or one per biomarker? The drafter's T790M-or-exon20 choice excludes FLAURA and SOLAR.
 - EXCLAIM-2 / SOLAR failed against an active comparator while the drug's activity (ORR ~30%) matched the model's prediction of regression. Is failing to beat an active comparator, which no model tested, contra or untested ('conditions the model never tested')?
 - Rociletinib: regulatory rejection because unconfirmed responses overstated ORR, with no failed pre-specified primary endpoint. Is that an efficacy contra, a partial same, or unscored?
+- Brain-metastasis pairing: a parenchymal brain-metastasis mouse model paired with a leptomeningeal-only trial at twice the label dose (BLOOM). Is LM disease 'a condition the model never tested' (untested) or the same CNS-activity question (same)?
+- Organoid studies whose enrolment keeps only patients with response evaluations 'consistent with' the organoid test: is a selection-filtered cohort admissible as same, or should it score at most low-confidence same / untested?
 
 Missed comparisons:
 
@@ -269,6 +295,9 @@ Missed comparisons:
 - Osimertinib FLAURA (first-line sensitising EGFR, NEJM 2018, 10.1056/NEJMoa1713137) is the class's main efficacy datum for the same xenograft system (PC9 Ex19del models in Cross 2014) and is absent because the population excludes first line.
 - Rociletinib: FDA ODAC April 2016 and complete response letter June 2016 after confirmed ORR fell to about 30% from the 59% reported earlier; hyperglycaemia in patients. Not scored; at minimum belongs in patient_trials or a note.
 - Olmutinib: Boehringer Ingelheim returned rights in 2016 after fatal toxic epidermal necrolysis/SJS; a safety datum for another member on its own tox package, not recorded.
+- Brain-metastasis model track: AURA3 CNS analysis (Wu et al., J Clin Oncol 2018, osimertinib vs platinum-pemetrexed in T790M NSCLC with CNS metastases; CNS ORR 70% vs 31%; DOI 10.1200/JCO.2018.77.9363 not verified here) is the randomised CNS comparison for the PC9 brain-metastasis model; secondary/subgroup endpoint, so at most a note unless marked poc_gate.
+- Brain-metastasis dose track: BLOOM osimertinib LM cohort first reported at ASCO 2016 (Yang et al., JCO 34:15_suppl 9002), before Ballard 2016 epub; meeting abstract, not an admissible tier, recorded for dating only.
+- Organoid track: Hu et al. 2021 Nat Commun (PMID 33972544, doi 10.1038/s41467-021-22676-1) compared lung-cancer-organoid TKI responses with patient outcomes, but for gefitinib/afatinib (outside this tile's third-gen/exon 20 class); not a track here, noted so the organoid system is not mistaken as first compared in 2023 across EGFR TKIs.
 
 ## open-angle-glaucoma-rock-inhibitors
 
@@ -277,11 +306,14 @@ Rule questions:
 - ROCKET-1 (Study 301) failed its primary endpoint, which was non-inferiority of mean IOP to timolol, although IOP fell significantly. The model predicted IOP lowering with no comparator margin. Does an active-comparator NI primary that fails while the absolute endpoint responds count as an efficacy 'contra', or is it untested for the model? The draft kept it as a status-neutral patient_trial.
 - Decision 16 margin_stated: the 2017 PharmR states NOAEL margins of 8x/2x for the chronic studies but a corneal-haze NOEL margin of 1. Is margin_stated judged on the NOAEL or on the most sensitive finding? Neither margin was shown to be public before Phase 2. Status 'same' holds either way.
 - When the system relied on is an IOP-lowering model in normotensive animals, should a failed sibling-member drug with model data only in a conference abstract (ATS907 ARVO 2011) be admissible on the model side (tier 1 needs DOI/PMID)?
+- efficacy 4: an undirected genotype hypothesis ('may influence response') meets an underpowered null (aOR 1.31, CI 0.42-4.10). Is that a failed prediction (contra) or no patient result (untested)? The rules decide neither undirected predictions nor underpowered nulls outside terminated trials.
 
 Missed comparisons:
 
 - ATS907 had public model data: Hsu & Kengatharan, ARVO 2011, 'Safety and Efficacy of a Novel Topical Rho Kinase Inhibitor ATS907 in Normotensive Cynomolgus Monkeys' (https://iovs.arvojournals.org/article.aspx?articleid=2360870): single-dose IOP -3.7/-4.65 mmHg vs -2.43 latanoprost, plus a rabbit abstract. The draft's note says 'no public model data' for ATS907; this is wrong. The Phase 2 failure (NCT01520116 status unknown, NCT01668524 no results) is known only from the Wang & Chang 2014 review, so it is not scorable without a tier 1-5 patient source. If one is found, ATS907 would be a contra on a normotensive-monkey IOP model.
 - DE-104 Phase 2 trials NCT00650338, NCT00657579, NCT00656240, NCT00868894 are registered with no posted results. The discontinuation for a missed primary endpoint (late 2010) appears only in the review; no Santen tier 5 document was found in budget, and no DE-104 model data was found.
+- Ripasudil (K-115, Kowa; approved Japan 2014) is a ROCK inhibitor for POAG/OHT with its own rabbit/monkey IOP models (e.g. Isobe 2014, Curr Eye Res) and Japanese patient trials (Tanihara 2013, Am J Ophthalmol); no track if it is in the class. Not verified in budget.
+- AR-12286 (Aerie's earlier ROCK inhibitor) had monkey IOP data and a Phase 2 patient trial (Williams 2011, Am J Ophthalmol) before netarsudil; a member drug's own model with no track. Not verified in budget.
 
 ## ovarian-cancer-parp1-2-inhibitors
 
@@ -311,6 +343,7 @@ Missed comparisons:
 - Pozelimab + cemdisiran (ACCESS-1, NCT05133531; Regeneron press release and Lancet 2026) was positive against ravulizumab in PNH. The combination includes an siRNA, so it is optional in patient_trials and does not change status. Source: https://pmlive.com/pharma_news/regeneron-shares-positive-late-stage-results-for-poze-cemdi-in-rare-blood-disorder-pnh/
 - Tesidolumab: Novartis stopped development in favour of iptacopan, a strategic choice and not an efficacy failure. Worth a note so it is not read as a failure. Source: NCT02534909 / Novartis trial results.
 - Pozelimab's FDA review in the bundle (BLA 761339) is for CHAPLE disease, not PNH. It cannot serve as a PNH source, and the draft correctly does not use it.
+- COMMODORE 1 C5-polymorphism cohort (FDA crovalimab integrated review 2024, BLA 761388): one subject 'discontinued the study treatment on or after 24 weeks of treatment due to lack of efficacy'. It is a later patient result for the c5-r885h-variant-hemolysis-assay track and has no entry of its own. The cohort's genotype-level hemolysis data should be sought before it is scored.
 
 ## plasma-cell-myeloma-tnfrsf17-directed-depleters
 
@@ -320,6 +353,8 @@ Rule questions:
 - Efficacy: a confirmatory phase 3 vs an active comparator that misses (DREAMM-3) while single-agent activity is reproduced: is the comparator 'a condition the model never tested' (untested) or a primary-endpoint miss (contra)? The rule list names untested only when the trial source attributes the result to untested conditions; GSK attributed it to nothing.
 - Engagement: may a phase 1 whose primary endpoint is safety supply the engagement entry when its readout (marrow plasma-cell clearance) is effectively the efficacy readout of the xenograft?
 - Class-level post-marketing harms (CAR-T T-cell malignancy boxed warning) shared with CD19 products: score in this context or import?
+- Efficacy index 4 (ide-cel response by tumour BCMA level): a patient-selection prediction scored on a phase 1 subgroup of a secondary end point (ORR; primary was safety) with endpoint_role null. Should such patient-level selection entries require endpoint_role poc_gate, or are they exempt from the secondary-endpoint rule?
+- Dating when the patient result (ASH 2017 abstract) is public before the model's first publication (Friedman 2018) but the model data were filed pre-trial: may the opening untested entry be dated earlier than its publication to keep the strip ordered?
 
 Missed comparisons:
 
@@ -333,12 +368,14 @@ Rule questions:
 - Safety: when the filed animal toxicity (dog convulsions at a Cmax at or near the human Cmax) predicts a harm at clinical exposure and patients show it at 0.2%, is that 'same' in direction, or does the magnitude need to be recorded as over_predicted?
 - Rule 6 opener: when the model's first use (2010 dog study) became public only in the same document that carries the comparison (2018 FDA review), is an untested opener at model_first_use_year still required? The draft skipped it and lint did not flag it.
 - Population mismatch for a member drug on its own model: if a castration-resistant (NHA-naive) xenograft is paired with a post-abiraterone phase 3 failure (proxalutamide), is the cell untested under 'conditions the model never tested', or contra?
+- Patient-level parallel tracks (efficacy 6): when the model predicts a resistance mutation and the patient datum is an exploratory cfDNA finding in progressing patients (not a trial endpoint, no carrier vs non-carrier comparison), does it count as an admissible 'primary' efficacy comparison, or should it be untested?
 
 Missed comparisons:
 
 - Proxalutamide (pruxelutamide, a class member) has an in-vivo model: Zhou 2020 Eur J Cancer, doi:10.1016/j.ejca.2020.04.013 (PMID 32460179), 'The efficacy of GT0918 was investigated in a castration-resistant xenograft model' plus phase 1 (PSA>=50% in 2/16). The draft's claim that its preclinical work is cell lines only is wrong. Kintor announced (Sept 2020 IDMC; tier 5, e.g. Kintor 2020 interim results, en.kintor.com.cn/news/131.html) that the 2L+ mCRPC phase 3 missed interim rPFS. It needs its own model_id entry in efficacy: probably untested (model never tested post-abiraterone/docetaxel disease), otherwise contra. The trial population was not verified.
 - Darolutamide's own model (castration-resistant VCaP xenograft; FDA review NDA 212099, lines ~1364-1378) is only mentioned in a judgement. As a different system, it should get its own model_id entries (efficacy vs ARADES NCT01317641 / ARAMIS; safety, where mouse brain:plasma was low and ARAMIS seizures were 0.2% in both arms).
 - Rezvilutamide (SHR3680): CHART phase 3 in high-volume mHSPC was positive, but no published in-vivo model was found, so no entry is needed. TRC-253 (JNJ-63576253): preclinical xenografts in Branch 2021 MCT (doi:10.1158/1535-7163.MCT-20-0510); the phase 1/2a primary endpoint was DLT, so it is unscored, as the draft says.
+- Enzalutamide's own F876L resistance models: Korpal 2013 Cancer Discov (doi:10.1158/2159-8290.CD-13-0142, PMID 23842682; resistant LNCaP-derived lines) and Balbas 2013 eLife (doi:10.7554/eLife.00499; mutagenesis screen) predicted F876L resistance; Azad 2015 Clin Cancer Res (doi:10.1158/1078-0432.CCR-14-2666) reported F876L in cfDNA of an enzalutamide-progressing patient and AR aberrations predicting lower PSA response. They could join the arn509-resistant-cell-lines-f876l track (product_in_model per drug) if enzalutamide is a member.
 
 ## psoriasis-anti-il17a-antibodies
 
@@ -346,6 +383,7 @@ Rule questions:
 
 - Dose, decision 16: the 9-month cynomolgus NOAEL existed in the IND before Phase 3, but the only public statement of the margin is the 2015 FDA review, written after the trials. Does 'a model source stated the margin before the trial' mean the sponsor's filed data (model_filed: true) or a public source dated before the trial?
 - Safety, IBD: Puel 2011 says IL-17A/F are 'otherwise largely redundant', which predicts no other harm, but the label warns of new or worse Crohn's disease and UC (0.1%/0.2% vs 0%). The rules don't say whether a small human genetic cohort 'could have shown' a harm this rare. If it could, the silence contradicts the label (contra); if not, it is no miss. The drafter took the second reading and did not score it.
+- Efficacy, magnitude: when the model's claim is relative potency (izokibep 30-fold more effective per mg/kg than ixekizumab) and patients needed the same mg dose, should magnitude be scored on dose (off_by_>5x) rather than left direction_only on PASI 90?
 
 Missed comparisons:
 
@@ -384,12 +422,14 @@ Rule questions:
 - Does a peer-reviewed congress abstract with a DOI (journal supplement poster) count as tier 1 for dating, or only as 'data not shown' with low confidence? It decides whether efficacy contra here is 2012 or 2016.
 - When a cell's first sourced entry (2014) comes after model_first_use_year (2008), should the opening untested entry be backdated to model_first_use_year with an earlier source, or does lint accept the gap?
 - A conclusion that a model 'refutes the hypothesis' in a trial paper that names the preclinical rationale: is that comparison_stated true, or a pairing under evidence rule 1?
+- The TAK-063 healthy-volunteer ketamine challenge (run 2013-14) was prospective for TAK-063 but run after a class member (PF-02545920) had failed in patients (2012), while prediction_level is 'class'. Is a class-level model run after another member's failure a retrodiction? Here status is contra either way.
 
 Missed comparisons:
 
 - DeMartinis et al. 2012, 'Results of a phase 2A proof-of-concept trial with a PDE10A inhibitor in the treatment of acute exacerbation of schizophrenia', SIRS Poster #212, Schizophrenia Research (April 2012), doi 10.1016/s0920-9964(12)70783-1: PF-02545920 monotherapy not superior to placebo. This dates efficacy contra to 2012, and reportedly says PK suggested striatal engagement like that in the preclinical models (possibly dose contra 2012 as well). I saw only the title/Crossref record and a search snippet.
 - OMS824 (member): Omeros suspended its PDE10 trials in Oct 2015 after a rat high-dose toxicology finding (Omeros press release 2015, https://www.prnewswire.com/news-releases/omeros-provides-update-on-pde10-inhibitor-program-322137646.html; 10-K FY2015). This is not a patient comparison, so it does not score, but the draft does not mention it.
 - Lu AF11167 NCT03793712 (stopped for futility, completion 2020-08-20, no results posted): the draft lists it with registry_date null. A Lundbeck disclosure could date it, but it does not change the status.
+- Roche RG7203 (PDE10A inhibitor) reward-processing fMRI/MID model in healthy volunteers, then tested in chronic schizophrenia patients where reward-processing improvement was absent: Schizophr Bull 2018 suppl abstract S43, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5888501/ (search snippet only; also summarised in Frontiers Neurosci 2020, doi 10.3389/fnins.2020.600178). A human-model parallel track for the efficacy (negative symptoms) question, likely contra; RG7203 membership in the class needs confirming.
 
 ## type-2-diabetes-mellitus-gck-activators
 
@@ -399,6 +439,8 @@ Rule questions:
 - Safety: when a model's only public sources are pharmacology papers (no tox review, no NDA), is their silence on a harm the species can show (rodent triglycerides) enough to score contra when patients show it?
 - Efficacy: can a human-genetic rationale for a hepatoselective drug (TTP399) count as the model for later, non-hepatoselective members (dorzagliatin), or is it a separate model_id limited to the drugs designed from it?
 - Dating: TTP399 Phase 2 results were presented in 2016 (ADA), before Vella 2019. Does a conference abstract or press release set the entry year under rule 6?
+- Model-informed drug development papers (Liu 2017 sinogliatin PK/PD) published after the first-in-patient data, claiming a learn-research-confirm projection: without a dated pre-trial record of the projection, does the default fall to retro (checker) or to the paper's framing (drafter)?
+- Two-arm drug-target MR (GCK vs GCKR proxies) under one model_id: when one arm reproduces the class harm and the other contradicts it, which arm is the class proxy? Safety 7 scores the GCK arm contra on dorzagliatin's TG rise.
 
 Missed comparisons:
 
@@ -416,12 +458,14 @@ Rule questions:
 - Rule 5/12: when the only human null for an on-target class harm is a pooled cohort in which non-member drugs (here liraglutide) dominate, does it count for the member class at all, or only for the member share, and how is that share recorded?
 - Rule 7: when the patient source (Kapitza, Jan 2015) predates the publication of the model source (Lau, Sept 2015) but the model was used prospectively before the clinic, is the paired entry dated to the later publication, or to the patient source with the model's use year as proxy?
 - Safety silence: a single tier-5 liver-injury case in another indication (obesity), which the sponsor says sits at class-background rates. Is that a contradicted silence, or does it need a tier 1-4 patient source before it can be scored?
+- Ala316Thr genetics (safety 5/6): the analysis was done before, but first published after, the SUSTAIN-6 topline press release (2016-04-28). Decision 10 requires post-dating AND being motivated by the patient result; does first-public date alone make it retro? Scored same here.
 
 Missed comparisons:
 
 - Dose (semaglutide, peptide): earlier patient PK source Kapitza 2015, J Clin Pharmacol, doi:10.1002/jcph.443 (PMID 25475122), and phase 2 dose-finding Nauck 2016 Diabetes Care doi:10.2337/dc15-0165 (epub 2015-09-10); either dates the semaglutide dose comparison to 2015 instead of the 2017 label.
 - Safety (danuglipron, small molecule, imported_from obesity): Pfizer 2025-04-14 discontinuation after one case of possible drug-induced liver injury in an obesity dose-optimisation study (tier 5; e.g. https://www.cnbc.com/2025/04/14/pfizer-scraps-daily-weight-loss-pill-danuglipron.html). Pfizer says overall liver-enzyme rates matched approved GLP-1 RAs; scorable only if a tier 1-3 tox source states hepatic silence, otherwise untested at most.
 - No missed efficacy failures found for other members: TTP273 phase 2 positive (vTv 2017, placebo-subtracted HbA1c -0.86/-0.71%), CJC-1134-PC phase 2 HbA1c fell vs placebo (NCT00638716/NCT00674466), efpeglenatide AMPLITUDE programme positive; LY2428757 discontinuation reason not found.
+- Safety (semaglutide): SUSTAIN-6 headline press release 2016-04-28 (https://www.globenewswire.com/news-release/2016/4/28/1600310/0/en/semaglutide-significantly-reduces-the-risk-of-major-adverse-cardiovascular-events-in-the-sustain-6-trial.html) predates Scott 2016 publication (2016-06-01); the safety 6 confidence_note should record it.
 
 ## ulcerative-colitis-s1pr1-agonists
 
@@ -432,6 +476,7 @@ Rule questions:
 - Can a retro entry (safety 3, model_change true) follow a contra and be drawn as the cell's latest status, or does a contra stand until a prospective prediction holds?
 - When the drafter's chosen model (S1P3-KO mouse, a design rationale in the literature) differs from the filed safety system (cynomolgus CV study), which one is 'the model the class relied on' for the safety cell, and do both get entries?
 - Scott 2016 was received Aug 2015, after the TOUCHSTONE topline (Oct 2014 press release), but the mouse colitis experiments probably predate the trial. Is a model paper published after the patient result a retrodiction when the experiments were run earlier?
+- Prediction_level class: ozanimod's monkey CV study (c.2012) and etrasimod's hERG/tox ran before their own patients but after fingolimod's class bradycardia was known (2006+). Is a filed product-specific study run after the class result a retrodiction at prediction_level class? Scored here as prospective (same) because it was not motivated by the patient result.
 
 Missed comparisons:
 
@@ -439,3 +484,4 @@ Missed comparisons:
 - Safety, contra for etrasimod, 2023: dog CV safety pharmacology was silent (NOEL 350 mg/kg/day, FDA 216956 review) but patients' heart rate fell up to 19.4 bpm. The drafter mentions this only in a judgement. It is a different model (dog telemetry) and should be its own entry.
 - Efficacy patient_trials: NCT02447302 (etrasimod OASIS) has no DOI; Sandborn 2020 Gastroenterology doi 10.1053/j.gastro.2019.10.035. No change to status.
 - Searched for unreported UC failures of a member drug: none found. Ozanimod and etrasimod met their UC primary endpoints; mocravimod's UC phase 2 was terminated with no reason or results.
+- Safety, parallel track for the dog-silence gap: conscious guinea-pig telemetry (ponesimod, product_in_model false, non-member proxy) reproduced S1P1 first-dose HR fall and AV delay that rats and dogs did not; Bolli et al. 2013 PLoS One doi 10.1371/journal.pone.0074285 (PMID 24069292), compared with healthy-volunteer ponesimod data. No UC-patient comparison found, so at most an untested/retro note.

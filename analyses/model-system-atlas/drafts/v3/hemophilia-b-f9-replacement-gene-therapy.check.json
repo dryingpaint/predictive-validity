@@ -137,13 +137,94 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "note": "Mahlangu 2021 thrombogenicity quote verbatim in abstract. Transient early rises make this partial; source_calls_it 'partial' would fit better. ADA set-aside is reasonable."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Monahan 2015 (PMID 25419787) abstract has the quote verbatim; PubMed entry 2014-11-25 (online ahead of editing) supports year 2014. Opening untested, class level, correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Konkle (PMID 33067633, PubMed 2020-10-17) quote verbatim. Same vector dosed in mice held expression 8-10 months; patients lost it by 5-11 weeks, so contra, not untested. Year may be 2015 (ISTH 2015 / Baxalta release), unverified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Majowicz 2019 (PMC6586596) full text: quote verbatim; NAB-stratified NHP analysis first public here. Opening untested, patient level, fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text: 'Pre-treatment serum samples of 14 NHPs were re-analyzed' after the AMT-060 patient re-test found NAB+ responders, so retro (not same) is right; patient level correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Monahan 2015 abstract: necropsy quote verbatim (no thrombosis at FIX 100-500%, no FIX antibodies). Opening untested, year 2014 per PubMed entry.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Konkle abstract quote verbatim; no thrombosis/inhibitors in 8 patients as mice predicted. Prospective (mice 2014, trial after), so same not retro. Weak test (patient FIX 32-58%), as noted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA SBRA Beqvez (STN 125786) quote verbatim; NHP GLP tox with predecessor AAVRh74var-hFIX-Padua at 1-5e12 vg/kg, FIX 2-4x normal, no thrombosis. product_in_model false and proxy year 2015 fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim: no thromboembolic events or FIX inhibitors in either trial. NHP data first public in the 2024 SBRA, so year 2024 correct; prospective, same, class level.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
   }
  ],
  "missing": [
   "DTX101 (AAVrh10-hFIX, a class member): Phase 1/2 101HEMB01 missed its primary endpoint (peak FIX >=20 IU/dL at week 6; median 7 and 10 IU/dL) and the program was dropped (Dimension press release Nov 2017; Blood Adv 2025, PMID 40197980, PMC12197983). The paper names no preclinical model; if Dimension's NHP/mouse data predicted >=20%, efficacy and gene-therapy dose take a contra (2017, tier 5 then tier 1). Not entered in the draft at all, not even in patient_trials.",
   "AskBio009/BAX 335 (Konkle 2021, PMID 33067633): FIX not sustained beyond 5-11 weeks in 7 of 8 patients; first public in Baxalta 2015-2016 releases and ASH abstracts. Only mentioned in judgement/patient_trials; a dated engagement/dose entry against its own preclinical model (Monahan 2015 mice/NHP) would show the miss even if the best-model rule leaves the cell at same.",
   "verbrinacogene setparvovec (FLT180a, Chowdary 2022 NEJM 10.1056/NEJMoa2119913): needed glucocorticoids +/- tacrolimus, one AV-fistula thrombosis at FIX 260%; development paused 2022 (Freeline). Its preclinical (NHP) model was not read by the drafter or by me.",
-  "AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy)."
+  "AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy).",
+  "Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

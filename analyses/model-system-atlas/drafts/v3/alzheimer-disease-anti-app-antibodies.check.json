@@ -107,6 +107,96 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "note": "Landen 2017a quote verbatim; registry date confirmed. The judgement wrongly says no microhemorrhage model was run for lecanemab: PharmR/SumR show mAb158 studies in Tg2576 and APPArcSwe were run despite the 2014 waiver (see missing)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Madrasi 2021 (PMID 33938131, PMC8478725 full text) quote verbatim. Opening untested entry at 2021 first use; class level, crenezumab in model. Model calibrated post hoc to published PET data.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC8478725. Paper: model calibrated to 'observed PD including Aβ plaque changes measured by PET'; only aducanumab 1-3 mg/kg was 'a priori'. BLAZE PET (Cummings/Salloway 2018, PMC6146627) preceded it, so retro is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Söderberg 2022 (PMID 36253511, PMC10119362) quote verbatim in abstract and full text. Epub 17 Oct 2022. Opening untested entry; ex_vivo for a cell-free binding assay accepted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC10119362 full text. Epub 17 Oct 2022, after Study 201 (2018/2021) and Clarity AD topline (27 Sep 2022): retro, not same. Hedged 'may explain' and comparators are non-members; low confidence fits.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Söderberg 2024 (PMID 38740836) quote verbatim in abstract. Opening untested entry at 2024 first use; every ARIA-E rate compared was already published.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; crenezumab 'negligible CAA fibril binding' with no ARIA-E also stated. All ARIA-E rates (Clarity AD 12.6%, 2022) predate it: retro correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR p.27 quote verbatim. W-20090278 and W-20100295 are short-term protofibril studies, not the microhemorrhage studies, but they do date first Tg2576-mAb158 use to ~2009; model_filed wording should say so. Untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label (Jan 2023) ARIA-H 6% vs 5% verbatim; PharmR/SumR: no mAb158 microhemorrhage in Tg2576 (4 months, to 50 mg/kg/week). Same holds, assuming the mouse study preceded Study 201 readout; its run date is not stated in the review, only its 2023 publication.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jul 2023 label (s001) quote verbatim: ARIA-H 17% (152/898) vs 9% (80/897); label adds no increase in isolated ARIA-H. Mouse null from SumR line 347. Contra at medium confidence holds; excess riding with ARIA-E is a caveat, not a reversal.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
   }
  ],
  "missing": [

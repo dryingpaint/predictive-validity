@@ -4,24 +4,168 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "DOI resolves to Fry 2004 Mol Cancer Ther (PMID 15542782); quote verbatim in abstract; Colo-205 xenograft, palbociclib. Untested opening at first use is correct."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Patnaik 2016 Cancer Discov (PMID 27217383, epub 2016-05-23); quote verbatim. Phospho-Rb proximal; pairing with Tate 2014 is admissible. NCT01394016 results posted 2024-09-19 confirmed."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Tate 2014 Clin Cancer Res (PMID 24850847); quote verbatim. Minor: palbociclib PharmR lists its own xenograft PK/PD modeling report (RR 764-04338), so model_first_use_year could be earlier; status unaffected."},
-  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Tate 2018 Clin Pharmacokinet (PMID 28540640, PMC5814509); quote verbatim in full text conclusion. Target reached, drug worked: same, margin_stated false correct. Epub 2017 plausible (Europe PMC lists 2018-03)."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Finn 2009 Breast Cancer Res (PMID 19874578); quote verbatim. FDA palbociclib PharmR says cell-line and ER+ xenograft data supported enrolling ER+/HER2- patients, so this is the relied-on model."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "PALOMA-1 Lancet Oncol (PMID 25524798, epub 2014-12-16); quote verbatim in Interpretation. Primary PFS; NCT00721409 results 2015-03-19 confirmed. But see missing: adjuvant palbociclib failures (PALLAS, PENELOPE-B)."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Quote found verbatim in bundled 207103 PharmR text (continues: 'at clinically relevant exposures')."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Quote verbatim in bundled Ibrance 2015 label. Paired with PharmR; neutropenia matches marrow prediction: same."},
-  {"cell": "safety", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Quote verbatim in bundled 208716 Multidiscipline review; FDA states the comparison. Rats/dogs can show transaminase rises, so silence is a miss: contra stands and outranks palbociclib's same."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Fry 2004 Mol Cancer Ther (PMID 15542782); quote verbatim in abstract; Colo-205 xenograft, palbociclib. Untested opening at first use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Patnaik 2016 Cancer Discov (PMID 27217383, epub 2016-05-23); quote verbatim. Phospho-Rb proximal; pairing with Tate 2014 is admissible. NCT01394016 results posted 2024-09-19 confirmed."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tate 2014 Clin Cancer Res (PMID 24850847); quote verbatim. Minor: palbociclib PharmR lists its own xenograft PK/PD modeling report (RR 764-04338), so model_first_use_year could be earlier; status unaffected."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tate 2018 Clin Pharmacokinet (PMID 28540640, PMC5814509); quote verbatim in full text conclusion. Target reached, drug worked: same, margin_stated false correct. Epub 2017 plausible (Europe PMC lists 2018-03)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Finn 2009 Breast Cancer Res (PMID 19874578); quote verbatim. FDA palbociclib PharmR says cell-line and ER+ xenograft data supported enrolling ER+/HER2- patients, so this is the relied-on model."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PALOMA-1 Lancet Oncol (PMID 25524798, epub 2014-12-16); quote verbatim in Interpretation. Primary PFS; NCT00721409 results 2015-03-19 confirmed. But see missing: adjuvant palbociclib failures (PALLAS, PENELOPE-B)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found verbatim in bundled 207103 PharmR text (continues: 'at clinically relevant exposures')."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled Ibrance 2015 label. Paired with PharmR; neutropenia matches marrow prediction: same."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled 208716 Multidiscipline review; FDA states the comparison. Rats/dogs can show transaminase rises, so silence is a miss: contra stands and outranks palbociclib's same."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Raub 2015 (PMID 26149830, epub 2015-07-06) abstract has the quote verbatim. Rodent Kp,uu above CDK4/6 Ki; opening untested at first use, class level.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tolaney 2020 (PMID 32694159) abstract: cohort D unbound brain-met levels 96x/19x IC50, quote verbatim. Target reached, iORR failed, indication not pursued: contra derived_from efficacy per dose table. Model prospective (2015 vs results 2019).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Raub 2015 abstract. Model is U87MG glioblastoma in rats (survival), not breast cancer; drafter notes this. Untested opening at 2015 is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tolaney 2020 abstract: 'This study did not meet its primary endpoint' verbatim; iORR 5.2% cohort A. Primary endpoint, prospective. Caveat: rodent readout was survival in glioma, not regression in breast brain mets (see rule question).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PharmR p.64). Draft calls 13GR248 undated; review dates it 2013-09-13. Quote sits under RR 745-03696 (Ann Arbor, ~2003) whose text duplicates 13GR248's; 2004 proxy defensible, attribution ambiguous.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": null,
+   "rule": "10",
+   "note": "ClinPharmR quote verbatim (184 pts, studies 1001-1003). Patient QTc null was public by 2010-11 (Shaik ASCPT 2010; Schwartz 2011 PMC3111206). If the dog QTc came from 13GR248 (started 2013-09) it is retro, not same; if RR 745-03696 (~2003), same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled 209092 Multidiscipline review (lines 1222-3); dog QTc onset AUC 21125 vs patient 23800 ng*h/mL. Stated comparison by FDA; same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hu 2016 (PMID 26631614, epub 2015-12-02) abstract quote verbatim; abstract itself states neutropenia was already dose-limiting in humans, so retrodiction -> retro is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
  ],
  "missing": [
   "Efficacy: PALLAS (palbociclib + adjuvant endocrine therapy, HR+/HER2- early breast cancer) failed its primary iDFS endpoint. Pfizer press release 2020-05-29 (tier 5); Mayer et al. Lancet Oncol 2021, doi:10.1016/S1470-2045(20)30642-2 (PMID 33460574, epub 2021-01-15); NCT02513394 results 2022-04-13. Candidate contra for the cell-line model unless the adjuvant setting counts as a condition the model never tested (see rule question).",
@@ -31,6 +175,8 @@
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Does a negative adjuvant (early-disease) trial count against a model that only predicted antiproliferative sensitivity in advanced-disease cell lines? Under the brief it is either untested (a condition the model never tested) or contra (one drug's contra beats another's same, even though abemaciclib in monarchE and ribociclib in NATALEE succeeded). The context population ('HR-positive, HER2-negative') does not exclude early disease.",
-  "model_kind has no in_vitro value; the draft uses ex_vivo for an established cell-line panel. Should in_vitro be added, or should ex_vivo be reserved for patient-derived material?"
+  "model_kind has no in_vitro value; the draft uses ex_vivo for an established cell-line panel. Should in_vitro be added, or should ex_vivo be reserved for patient-derived material?",
+  "Efficacy/dose parallel track rodent-brain-penetration-abema: does a rat intracranial glioblastoma survival model count as testing breast-cancer brain metastasis response, or is the breast brain-met trial a condition the model never tested (untested)?",
+  "Safety track dog-cv-telemetry (palbociclib): when an FDA review duplicates text across a pre-FIH study and a later study run after patient QT data were public, which date governs retrodiction?"
  ]
 }

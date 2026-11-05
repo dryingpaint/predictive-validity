@@ -96,13 +96,41 @@
    "status_supported": true,
    "rule": "",
    "note": "Quote verbatim. The manifest lists no NDA/BLA for any member. Moss 2022 confirms the GB001 60 mg liver-injury risk. Untested is defensible with no public tox. model_kind 'animal' is odd for an in-vitro selectivity panel."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2006,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "NCT01343407 title verbatim, start 2011-04-19. But a member used the model earlier: OC000459 bronchial allergen challenge NCT01056692 started 2006-02 (LAR primary; Singh 2013 ERJ, PMID 22496329). Opening entry and model_first_use_year should be 2006.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 6 (dating) / decision 10 (prospective, not retro)",
+   "note": "Bateman 2018 quote verbatim; Diamant 2014 abstract confirms setipiprant LAR study. Not retro: challenges ran 2006-2011, before AZD1981 read out. OC000459 cut LAR 25.4% (epub 2012-04-10), so the model side was public before AZD1981's 2013-09-10 posting: date 2013. Track lacks an earlier OC000459 'same' (see missing).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
   }
  ],
  "missing": [
   "Efficacy: ARRY-502 (member) phase 2 met its pre-bronchodilator FEV1 primary, +3.9% vs placebo at 200 mg BID, P=0.02, announced July 2013 (Array BioPharma FY2013 10-K, https://www.sec.gov/Archives/edgar/data/1100412/000110041213000025/arraybiopharma6301310k.htm; tier 5, trial_unreported true). This 'same' precedes AZD1981's 2013-09-10 contra; the cell still ends 2013 contra.",
   "Efficacy/dose dating: Novartis press releases of October 2019 (ZEAL-1/2 missed FEV1 primary) and 2019-12-16 (LUSTER missed, development stopped), https://www.novartis.com/news/media-releases/novartis-provides-update-luster-phase-iii-studies-patients-uncontrolled-gina-45-asthma. ZEAL-1 (NCT03215758, results 2020-02-12) is also absent from patient_trials.",
   "Efficacy patient_trials: ADC3680B (PTR-36, Pulmagen/Teijin) positive phase II on morning PEF in mild-moderate asthma (press release, e.g. https://www.biospace.com/positive-phase-ii-in-eosinophilic-asthma-for-b-pulmagen-b-teijin-pharma). Date and whether mPEF was the primary are not verified.",
-  "Engagement: ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract, https://publications.ersnet.org/content/erj/44/suppl58/4836). Conference abstract only, not read; possible downstream entry."
+  "Engagement: ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract, https://publications.ersnet.org/content/erj/44/suppl58/4836). Conference abstract only, not read; possible downstream entry.",
+  "Efficacy, human-allergen-challenge-lar track: OC000459 (timapiprant) reduced the LAR AUC 25.4% (95% CI 5.1-45.6%) (Singh 2013 Eur Respir J, PMID 22496329, epub 2012-04-10; NCT01056692, started 2006-02) and its own trials met pre-BD FEV1 primaries (Barnes 2012 Clin Exp Allergy, 28-day, NCT01057927; Pettipher 2014 Allergy, PMID 24866478: 25 mg QD P=0.028). A product_in_model 'same' entry dated 2012 precedes the AZD1981 contra.",
+  "Efficacy, human-allergen-challenge-lar track: setipiprant's own proof-of-concept FEV1 trial in partly controlled asthma (NCT01225315, 2010-11 to 2012-02) has no posted results; a same-drug pairing for the challenge model, trial_unreported."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

@@ -4,35 +4,160 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "DOI resolves to Brisbare-Roch 2007 (PMID 17259994); quote verbatim in abstract. Almorexant is not a member, so untested is right. Cosmetic: source_calls_it 'match' on an untested opener; null would be cleaner."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Sun 2013 (PMID 23372274, epub 2013-02-01) quote verbatim; Winrow 2011 (PMID 21473737) shows suvorexant sleep promotion in rat, dog and rhesus. Downstream readout, partial (no delta-power effect) as the abstract states."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Winrow 2011 quote (>90% hOX2R occupancy at 1.1 uM) verbatim in abstract. Untested opener is correct; the 0.4 uM target itself is not in Winrow, as the judgement says."},
-  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "ClinPharmR (bundle) has the quote and 'C4hr above 0.4 uM (based on preclinical EEG data)'. Target reached at 40 mg, which worked (Herring 2012); efficacy down to 10 mg makes off_by_2-5x fair. No pre-trial next-day margin, so same not contra."},
-  {"cell": "dose", "index": 3, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "IntegratedR (bundle): 13-week dog cataplexy NOAEL 20 mg/kg/day, 3-fold margin at 50 mg MRHD, no cataplexy in Phase 3. Decision 16 same with margin_stated fits. Fill model_first_use_year (13-week dog study precedes Phase 3, ~2017). Did not find the 200 mg claim."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote verbatim in Brisbare-Roch 2007 abstract. Sibling drug, untested opener correct."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Herring 2012 (PMID 23197752, epub 2012-11-28) coprimary sleep efficiency quote verbatim. registry_date 2014-11-14 matches NCT00792298 results posting; Phase 3 NCT01097616/629 posted 2014-09-01. No member failed an insomnia primary, so not neg."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote verbatim in abstract; almorexant is not a member, so untested is right."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "MedR quote verbatim; PharmR/label 13.2 has dog food-enrichment cataplexy at 30 mg/kg, and MedR says 'nonclinical studies suggested a theoretical safety concern for cataplexy'. Same/partial is supported. model_change true is harmless because the prior status was untested."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Brisbare-Roch 2007 (PMID 17259994); quote verbatim in abstract. Almorexant is not a member, so untested is right. Cosmetic: source_calls_it 'match' on an untested opener; null would be cleaner."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sun 2013 (PMID 23372274, epub 2013-02-01) quote verbatim; Winrow 2011 (PMID 21473737) shows suvorexant sleep promotion in rat, dog and rhesus. Downstream readout, partial (no delta-power effect) as the abstract states."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Winrow 2011 quote (>90% hOX2R occupancy at 1.1 uM) verbatim in abstract. Untested opener is correct; the 0.4 uM target itself is not in Winrow, as the judgement says."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinPharmR (bundle) has the quote and 'C4hr above 0.4 uM (based on preclinical EEG data)'. Target reached at 40 mg, which worked (Herring 2012); efficacy down to 10 mg makes off_by_2-5x fair. No pre-trial next-day margin, so same not contra."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "IntegratedR (bundle): 13-week dog cataplexy NOAEL 20 mg/kg/day, 3-fold margin at 50 mg MRHD, no cataplexy in Phase 3. Decision 16 same with margin_stated fits. Fill model_first_use_year (13-week dog study precedes Phase 3, ~2017). Did not find the 200 mg claim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Brisbare-Roch 2007 abstract. Sibling drug, untested opener correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Herring 2012 (PMID 23197752, epub 2012-11-28) coprimary sleep efficiency quote verbatim. registry_date 2014-11-14 matches NCT00792298 results posting; Phase 3 NCT01097616/629 posted 2014-09-01. No member failed an insomnia primary, so not neg."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; almorexant is not a member, so untested is right."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "MedR quote verbatim; PharmR/label 13.2 has dog food-enrichment cataplexy at 30 mg/kg, and MedR says 'nonclinical studies suggested a theoretical safety concern for cataplexy'. Same/partial is supported. model_change true is harmless because the prior status was untested."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Treiber 2017 (PMID 28663311, epub 2017-06-29) quote verbatim in abstract. Model chose ACT-541468 and its dose before FIH, so prospective; threshold calibrated on sibling clinical data is allowed. Untested opener, class level, correct."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Mignot 2022 (PMID 35065036) quote verbatim; 10 mg failed WASO/LPS, 25 mg met both in study 1 and WASO only in study 2. Model predates patient data, so same not retro; within_2x fair. Phase 2 (2020) is an earlier comparison if year should be first readout."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PharmR (bundle) lists TT089003/004/005 with the quoted title. Results are not in the bundle; Born 2017 (PMID 28279667) gives them: no withdrawal, incomplete zolpidem generalization, no reinforcement in rhesus. Untested opener correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "MedR quote verbatim beside sponsor's 'lack of nonclinical evidence of abuse potential'. Born 2017 (doi:10.1016/j.yrtph.2017.03.006) states animals predicted low abuse yet C-IV followed the HAP study; a better model_src. Battery prospective; contra supported."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Multidiscipline review (bundle) has the quote verbatim and study W-20140712 (WT vs preproorexin KO mice). Untested opener correct."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Label 5.x quote verbatim; review gives cataplexy-related terms 1.5% PBO vs 2.7-3.0% LEM and 'similar in all groups', one unadjudicated case. Mouse study (2014) preceded lemborexant Phase 3, so same/partial, direction_only, holds."
+  }
  ],
  "missing": [
   "Vornorexant Phase 3 (Japan) met its primary sSL endpoint with no narcolepsy-related signs (Sleep 2025, PMID 41001841, https://pubmed.ncbi.nlm.nih.gov/41001841/): this agrees with the draft and changes no status. It could be added to efficacy patient_trials.",
   "Filorexant Phase 2 insomnia was positive at all doses (Connor 2016, doi:10.1093/ijnp/pyw022), and Merck dropped it without an insomnia failure. The draft names this only in a judgement, which is correct; no failure was missed.",
   "Lemborexant FDA multidiscipline review 2019 (Figure 1: lemborexant cataplexy in wild-type vs orexin-KO mice) is a separate member-drug safety model with a patient comparison. It agrees, so no status change, but it could be a dated safety entry.",
-  "Fazamorexant Phase 3 (NCT05525637) is reported positive only on secondary aggregators. No failure was found for any member in a press release or SEC filing."
+  "Fazamorexant Phase 3 (NCT05525637) is reported positive only on secondary aggregators. No failure was found for any member in a press release or SEC filing.",
+  "Lemborexant's and daridorexant's own nonclinical abuse-liability studies vs their human abuse potential trials (FDA 212028 multidiscipline review 2019: 'Nonclinical findings were less suggestive of abuse liability'; daridorexant NDA 214985 review 2022, HAP vs zolpidem): further entries in the rhesus-rat-abuse-liability-battery track, both C-IV."
  ],
  "overall": "accept",
  "rule_questions": [
   "Suvorexant next-day impairment was the harm behind the FDA dose cut, and the animal package never tested it. The drafter left it unscored under dose. Decision 16 puts an unpredicted harm in safety, so does model silence on next-day or residual sedation count as a harm the species could have shown (safety contra)? Or is it human-PK carryover (half-life), outside what the model could show?",
   "A dose cell mixes an efficacy-exposure target model (suvorexant C4h) with a decision 16 tolerability-margin model (daridorexant dog NOAEL). Should model_change: true be set when the cell was not contra, given the rule defines model_change only for turning a contra back?",
-  "Dose entry 2: the effective-exposure target is published only in the FDA review that also holds the patient comparison, and Winrow 2011 is cited as model_src. Is this comparison_stated true (regulator states both sides) or false (a pairing)?"
+  "Dose entry 2: the effective-exposure target is published only in the FDA review that also holds the patient comparison, and Winrow 2011 is cited as model_src. Is this comparison_stated true (regulator states both sides) or false (a pairing)?",
+  "Safety 5-6: the lemborexant mouse cataplexy study (W-20140712, mid-2014) ran when suvorexant's cataplexy-like events in patients were already known (2013 AdCom, 2014 label). At prediction_level class, is a member's model run after a sibling's patient result a retrodiction, or prospective because its own drug's patients were untested?"
  ]
 }

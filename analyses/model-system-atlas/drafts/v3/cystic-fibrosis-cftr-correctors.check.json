@@ -89,13 +89,159 @@
    "note": "Quote and IntegratedR margin verified. But the fatal liver cases are on Trikafta, not vanzacaftor; the label attributes liver injury to the combination products, not to a class drug (#70). Alyftrek's own LFT rises lack a placebo arm.",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 12 (#70): the label attributes fatal liver injury to Trikafta, a combination without vanzacaftor, not to a class drug. Decision 16: a predicted organ with misplaced margin belongs in dose, never safety contra."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Dekkers 2013 abstract quote verbatim (PMID 23727931). Organoid assay first run 2013, after Clancy 2012 (epub 2011) and Vertex's 2012 Phase 2 sweat-chloride data: retro, class level is right. VX-809 use from full text not re-seen.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": null,
+   "note": "Berkers 2019 abstract quote verbatim (PMID 30759382). Full text 403 again. Abstract says the assay 'can prospectively select' and some rare-mutation patients got off-label drug on organoid response, so retrodiction likely false; lumacaftor/ivacaftor share and within-arm correlation still unverified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled 210491 SumR (Study 107 selection rule). FRT was used to select Study 107 patients with no comparison yet; untested 2015 holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Castellani 2026 abstract quote verbatim (PMID 41738096). 445-124 enrolled only FRT-responsive non-F508del variants, so prospective; sweat chloride -28.3 is the engagement readout. Same, patient level, 2024 (registry) holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Dekkers 2013 abstract quote verbatim. Organoids made no stated efficacy prediction; untested 2013 is an acceptable placeholder, but see efficacy 4: lumacaftor/ivacaftor FEV1 benefit was already public in 2012.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "10",
+   "note": "Wainwright 2015 quote verbatim. But Vertex's May/June 2012 Phase 2 releases already reported FEV1 +8.5 points vs placebo in F508del homozygotes on VX-809+ivacaftor, before Dekkers 2013. Class-level answer was known when organoids were first run: retro, not same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decisions 10 and 4: the 2012 Phase 2 (Boyle 2014, PMID 24973281) missed its sweat-chloride primary in cohorts 2/3; FEV1 +5.6 was secondary, so no efficacy patient result preceded Dekkers 2013, which the trial did not motivate."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Dekkers 2016 STM abstract quote verbatim (PMID 27334259): correlation with 'published outcome data' is a retrodiction; retro, patient level holds. Pooled with ivacaftor genotype groups, as noted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": null,
+   "note": "Berkers 2019 quote verbatim but abstract only. FEV1 changes are observational on-label/off-label responses, not a trial primary endpoint, and the lumacaftor/ivacaftor subset correlation is unverified; if it does not hold alone, drop the entry.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same SumR selection-rule quote, verbatim. Untested 2015 for the FRT track with a tezacaftor combination holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in 210491 SumR. FDA checked 'consistency of in vitro assay findings with clinical efficacy data' for the modified TEZ/IVA assay submitted after EVOLVE/EXPAND: retro, class level holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2018,
+   "rule": "10",
+   "note": "Quote verbatim, but it is the same NDA-time consistency check as efficacy 8: the modified TEZ/IVA assay was run for the NDA after Studies 106/107/108 read out. Study 107's FRT rule defined minimal function, not a TEZ/IVA failure prediction. Retro, not same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: SumR describes an NDA-time 'consistency' check of the modified TEZ/IVA FRT assay against Studies 106/107/108 already read out; Study 107's FRT rule defined minimal function, not predicted failure. Duplicates efficacy 8."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "10",
+   "note": "Quote verbatim in 212273s002 label (fetched). The ≥10% call 'predictive or reasonably expected to predict' rests on trials already read out; no patient outcome for the 177 added variants existed in 2020. Regulatory reliance, scored retro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decisions 10 and 14: the label's FRT-vs-clinical-response statement rests on trials already read out; the 177 added variants had no patient outcome until 445-124 (efficacy 11). Regulatory reliance is a flag, not a status."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Castellani 2026 abstract quote verbatim; primary ppFEV1 +9.2 in FRT-selected variants. Prospective, so same, patient level, 2024. With efficacy 9 and 10 retro, this is the FRT track's first prospective same (decision 10).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
   }
  ],
  "missing": [
   "Elexacaftor tox (NDA 212273 MultidisciplineR p.43): rat target organs stomach/testes, no liver; dog only hepatocellular hypertrophy (non-adverse). Trikafta 2019 label 5.1 'Elevated transaminases have been observed in patients with CF treated with TRIKAFTA', later liver failure. Candidate safety entry for model elexacaftor-rat-dog-tox, subject to the same #70 attribution question as safety 2.",
   "Lumacaftor liver: Orkambi 2015 label 5.2/6.1, 'Three patients who received ORKAMBI had liver-related serious adverse reactions ... compared to none in the placebo group', rats and dogs silent on liver (PharmR l.435). Weak because transaminase rates were similar to placebo; the draft should at least note it in safety 1.",
   "Galicaftor HBE model side exists (Wang 2018 J Med Chem, doi 10.1021/acs.jmedchem.7b01339) for the NCT04853368 FEV1 miss (cohort 2 vs placebo 0.9, p=0.402, verified on CT.gov). The draft says no model prediction was found; the judgement should cite this paper and say why it is not scored (combination with non-member correctors).",
-  "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride primary met, no posted results) is a same-drug match on the same HBE model; it belongs in the engagement judgement (it is mentioned) but could be its own dated tier-5 entry before the 2019 contra."
+  "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride primary met, no posted results) is a same-drug match on the same HBE model; it belongs in the engagement judgement (it is mentioned) but could be its own dated tier-5 entry before the 2019 contra.",
+  "Patient nasal epithelial cell cultures (HNE): Pranke 2017 Sci Rep, doi 10.1038/s41598-017-07504-1 (PMID 28785019), 'Correction of CFTR function in nasal epithelial cells ... predicts improvement of respiratory function by CFTR modulators' (lumacaftor/ivacaftor); later Thorax 2026 doi 10.1136/thorax-2025-223153 on sequential modulators. No parallel track in the draft."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

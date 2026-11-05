@@ -4,29 +4,152 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "evidence rule 6",
-   "note": "Takahashi & Take JPET (PMID 29180359), RaQualia; epub 2017-11-27, received 2017-07. Quote verbatim in abstract. Opening untested at first published use is correct; dog work predates phase 1 though published after it."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "engagement definition; evidence rule 1",
-   "note": "Han 2019 APT (PMID 31437865), epub 2019-08-22, healthy volunteers; quote verbatim. Acid in dog and human = proximal; paired, comparison_stated false correct. Sunwoo 2020 and 2018 abstracts match the judgement's figures."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "dose definition; decision 16",
-   "note": "Quote verbatim. Model gives an oral mg/kg, no exposure target or stated margin; no source compares it with human 50 mg. Untested is defensible (see rule question)."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "decision 10",
-   "note": "Kim 2019 JPET (PMID 30894456), CJ HealthCare authors; received 2018-11-12, epub 2019-03-20, i.e. after the Korean phase 3 (NCT03006874, 2016-17) and approval. Run date unpublished; retrodiction cannot be shown, so prospective treatment stands but is a rule question."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
-   "status_supported": true, "rule": "efficacy definition; evidence rule 1",
-   "note": "Lee 2019 full text (PMC6594096): primary endpoint healing by wk 8, quote verbatim. Its 'nonclinical studies' cite ref 14 = Takahashi 2018 (dog), not Kim 2019, so pairing with comparison_stated false is right. Rat 15x potency edge not seen; source_calls_it 'partial' arguable, status unchanged."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
-   "status_supported": true, "rule": "check item 4; decision 10",
-   "note": "Choi 2025 JNM (PMC12241910) quote verbatim. Status untested stands, but this rat study was run after tegoprazan's 2018 approval and is not what the class relied on; the relied-on tox package is unpublished. Model/first-use year arguably wrong."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "evidence rule 6",
+   "note": "Takahashi & Take JPET (PMID 29180359), RaQualia; epub 2017-11-27, received 2017-07. Quote verbatim in abstract. Opening untested at first published use is correct; dog work predates phase 1 though published after it."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "engagement definition; evidence rule 1",
+   "note": "Han 2019 APT (PMID 31437865), epub 2019-08-22, healthy volunteers; quote verbatim. Acid in dog and human = proximal; paired, comparison_stated false correct. Sunwoo 2020 and 2018 abstracts match the judgement's figures."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose definition; decision 16",
+   "note": "Quote verbatim. Model gives an oral mg/kg, no exposure target or stated margin; no source compares it with human 50 mg. Untested is defensible (see rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "decision 10",
+   "note": "Kim 2019 JPET (PMID 30894456), CJ HealthCare authors; received 2018-11-12, epub 2019-03-20, i.e. after the Korean phase 3 (NCT03006874, 2016-17) and approval. Run date unpublished; retrodiction cannot be shown, so prospective treatment stands but is a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy definition; evidence rule 1",
+   "note": "Lee 2019 full text (PMC6594096): primary endpoint healing by wk 8, quote verbatim. Its 'nonclinical studies' cite ref 14 = Takahashi 2018 (dog), not Kim 2019, so pairing with comparison_stated false is right. Rat 15x potency edge not seen; source_calls_it 'partial' arguable, status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "check item 4; decision 10",
+   "note": "Choi 2025 JNM (PMC12241910) quote verbatim. Status untested stands, but this rat study was run after tegoprazan's 2018 approval and is not what the class relied on; the relied-on tox package is unpublished. Model/first-use year arguably wrong."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jeong 2022 full text (PMC9230797, epub 2022-06-18): abstract sentence verbatim. Opening untested at first use, in_silico, prediction_level class correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; Table 6 gives 48.9 obs vs 49.6 pred (50 mg) and 70.4 vs 63.0 (day 7, 100 mg); observed from Han 2019 [15]. Caco-2 and Kp optimized to clinical data, so retro is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Jeong 2021 abstract (Europe PMC, epub 2021-05-29): quote verbatim. PK-only model, no pH readout; untested opening entry and year 2021 fine. Full text not reopened.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kim MS 2022 full text (PMC9230547, epub 2022-06-03): quote verbatim. PD kin/Imax/IC50 estimated from digitized phase 1 pH data, so retro. Proposed BID regimen untested in patients; no dose entry correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wu 2024 full text (PMC10904617, epub 2024-02-16): quote verbatim. Opening untested; class level. Note the five case-study P-CABs exclude tegoprazan and fexuprazan; only revaprazan is a member.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim: revaprazan 200 mg predicted 57.1% vs 42.2% observed (Kim 2010, public), onset 4 h vs <=2 h. Revaprazan was the verification compound, so retro, not same; within 2x.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jung 2026 full text (PMC12823312, epub 2026-01-15): quote verbatim. Opening untested; year 2026 correct (received 2025, published 2026).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; fitted to the literature pH it is compared with, so retro. Table 3 does give numbers (day 7 pH>=4 HTR tegoprazan 50 mg 60.7% vs reported 52-68%; fexuprazan 40 mg 69.6% vs 55-70%): magnitude could be within_2x rather than direction_only; status unchanged.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
  ],
  "missing": [
   "No unreported failure found: Sebela press release 2025-04-23 (biospace.com/press-releases/sebela-pharmaceuticals-announces-positive-topline-results-from-phase-3-triumph-program-of-tegoprazan-in-gerd) reports all primary endpoints met in TRIUMpH EE and NERD; could be added to patient_trials (tier 5), no status change.",
   "Fexuprazan phase III EE head-to-head (Jeong 2024, J Clin Med, doi:10.3390/jcm13113262) is RETRACTED; correctly absent, worth a note so it is not re-added.",
-  "Tegoprazan Korean NERD phase 3 and TRIUMpH NERD (GERD patients) are additional efficacy patient_trials; no status change."
+  "Tegoprazan Korean NERD phase 3 and TRIUMpH NERD (GERD patients) are additional efficacy patient_trials; no status change.",
+  "Zastaprazan (JP-1366; Korean approval 2024 for erosive oesophagitis) is a Korean P-CAB the tile does not list; its only model found is a GERD-patient popPK model (doi:10.1002/psp4.13228, 2024) that describes exposure, not acid or healing, so no track needed unless zastaprazan is added to the class."
  ],
  "overall": "accept",
  "rule_questions": [

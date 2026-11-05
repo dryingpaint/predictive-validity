@@ -1,36 +1,144 @@
 {
- "draft": "analyses/model-system-atlas/drafts/v3/hepatitis-c-virus-infection-hcv-ns3-4a-protease-inhibitors.json",
- "index_base": 1,
- "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
- "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "DOI resolves to Lin 2009 AAC (PMID 19171797, epub 2009-01). Quote verbatim in abstract. Untested opener fine; model_first_use_year 2009 is a late proxy (replicon used for the class well before simeprevir)."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Reesink 2010 Gastroenterology (PMID 19852962, epub 2009-10). Quote verbatim. Viral RNA proximal tier correct. Minor: note says 'within 5 days'; abstract gives median 6 days to maximal reduction (5 days dosing). n=6 patients."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote verbatim in Lin 2009 abstract; rat plasma/liver above replicon EC99 is the stated exposure target."},
-  {"cell": "dose", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": false,
-   "proposed_status": "same", "proposed_year": 2013, "rule": "dose table row 'reached, drug worked'; evidence rule 7",
-   "note": "Quote verbatim, but abstract shows no exposure vs EC99, and 'drug worked' was only a 5-day viral decline in 2009; efficacy known from Olysio label 2013. Alternative: glecaprevir 70x NOAEL (209394 PharmR, verbatim) as margin_stated same, 2017."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote verbatim in Lin 2009 abstract; replicon combination prediction, untested opener."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Bundle label: QUEST pooled SVR12 80% (419/521) vs 50% (132/264); Q80K 58% vs 84%; replicon Q80K FC 11 in 12.4; 5.1 cross-refs 12.4. NCT01289782 results posted 2014-06-04 confirmed. An earlier member 'same' exists (see missing)."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Label 13.2 quote verbatim; 28x dog and 0.2x rat testes figures verified in 13.1/13.2."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "208261 PharmR quote verbatim; FDA states the match (comparison_stated true). No hepatobiliary effect at >=3x clinical exposure verified; label 5.1: ALT elevation in 1% of subjects. Paritaprevir review (biliary target organ) does not contradict."}
- ],
- "missing": [
-  "Efficacy: vaniprevir phase II (Manns 2012 Hepatology, doi:10.1002/hep.25743, epub 2012-07-17): primary endpoint RVR 68.8-83.3% vs 5.6% placebo (P<0.001). An earlier member 'same' (paired with vaniprevir replicon data), so the efficacy cell turns 'same' in 2012, not 2013.",
-  "Dose: glecaprevir 6-month rat NOAEL gives a 70x exposure margin at 300 mg (209394 PharmR: 'This provides an exposure margin of 70X'), which held in patients. This is a margin_stated 'same' (2017) and could carry the dose cell if dose entry 2 is not accepted.",
-  "Safety (no status change expected): FDA clinical hold on sovaprevir, June 2013, for grade 3-4 ALT elevations in a healthy-volunteer DDI study with atazanavir/ritonavir (Achillion 10-K, https://www.sec.gov/Archives/edgar/data/1070336/000119312514089075/d645073d10k.htm; https://www.fiercepharma.com/regulatory/fda-slaps-a-clinical-hold-on-achillion-hep-c-drug). The harm came from conditions the model never tested, so 'untested'; the draft's judgement should mention it."
- ],
- "overall": "accept_with_corrections",
- "rule_questions": [
-  "Dose table 'reached, drug worked': does a phase 1 viral-load response count as 'worked', so the entry is dated at phase 1, or must the efficacy primary endpoint have read out first? Also, can a dose entry be 'same' when the source never reports exposure against the model's numeric target (EC99)?",
-  "Q80K: the replicon fold change was measured on baseline clinical isolates at the same time as the phase 3 trials. Is this a prospective model prediction or a retrodiction (retro)?",
-  "Hepatotoxicity seen only under a drug interaction (sovaprevir with atazanavir/r in healthy volunteers; paritaprevir with ethinyl estradiol): no rule says whether a DDI-driven harm the animals were never dosed under counts as the model's silence being contradicted or as untested."
- ]
+  "draft": "analyses/model-system-atlas/drafts/v3/hepatitis-c-virus-infection-hcv-ns3-4a-protease-inhibitors.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "DOI resolves to Lin 2009 AAC (PMID 19171797, epub 2009-01). Quote verbatim in abstract. Untested opener fine; model_first_use_year 2009 is a late proxy (replicon used for the class well before simeprevir)."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Reesink 2010 Gastroenterology (PMID 19852962, epub 2009-10). Quote verbatim. Viral RNA proximal tier correct. Minor: note says 'within 5 days'; abstract gives median 6 days to maximal reduction (5 days dosing). n=6 patients."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim in Lin 2009 abstract; rat plasma/liver above replicon EC99 is the stated exposure target."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "same",
+      "proposed_year": 2013,
+      "rule": "dose table row 'reached, drug worked'; evidence rule 7",
+      "note": "Quote verbatim, but abstract shows no exposure vs EC99, and 'drug worked' was only a 5-day viral decline in 2009; efficacy known from Olysio label 2013. Alternative: glecaprevir 70x NOAEL (209394 PharmR, verbatim) as margin_stated same, 2017."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim in Lin 2009 abstract; replicon combination prediction, untested opener."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Bundle label: QUEST pooled SVR12 80% (419/521) vs 50% (132/264); Q80K 58% vs 84%; replicon Q80K FC 11 in 12.4; 5.1 cross-refs 12.4. NCT01289782 results posted 2014-06-04 confirmed. An earlier member 'same' exists (see missing)."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Label 13.2 quote verbatim; 28x dog and 0.2x rat testes figures verified in 13.1/13.2."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "208261 PharmR quote verbatim; FDA states the match (comparison_stated true). No hepatobiliary effect at >=3x clinical exposure verified; label 5.1: ALT elevation in 1% of subjects. Paritaprevir review (biliary target organ) does not contradict."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "proposed_year": 2010,
+      "rule": "10",
+      "checked_by": "CHECKER_BRIEF_v3 / models",
+      "note": "Quote verbatim (PMC3028818 full text): chimps fell >5 log10 at 5 mg/kg bid x7d. But vaniprevir patient monotherapy (4.6 log10 day 8, 700 mg bid) was public at AASLD Oct 2008 (natap.org/2008/AASLD/AASLD_09.htm); 'no patient comparison yet' is false in 2010.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "RULE QUESTION: decision 10 requires a model result that post-dates AND is motivated by the patient result. Olsen 2010 chimp work post-dates vaniprevir patient data (AASLD 2008) but targets combination cure; does post-dating alone make it retro?"
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "retro",
+      "rule": "10",
+      "checked_by": "CHECKER_BRIEF_v3 / models",
+      "note": "Lawitz 2013 quote verbatim in abstract; direction matches (chimp >5 vs patient 1.8-4.6 log10, full text quantifies chimp side). Patient result public 2008, chimp record first 2010 (Liverton 2010 has only uninfected-chimp PK), so no prospective prediction is on record: retro.",
+      "adjudicated_status": "same",
+      "adjudication_note": "RULE QUESTION: decision 10 requires a model result that post-dates AND is motivated by the patient result. Olsen 2010 chimp work post-dates vaniprevir patient data (AASLD 2008) but targets combination cure; does post-dating alone make it retro?"
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF_v3 / models",
+      "note": "Kan 2015 (PMID 26562322, epub 2015-11-12) quote verbatim in abstract; untested correct. Europe PMC search found no patient report of DCV+ASV response after simeprevir failure before Nov 2015 (first: Kan 2016; Hepatol Res Mar 2016, n=5)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF_v3 / models",
+      "note": "Kan 2016 (PMID 27651415) quote verbatim in abstract; post-dates the 2015 mouse prediction, so same, not retro. The 2016 mouse arm is post hoc and correctly unscored. Caveat: retrospective single-centre cohort, not a trial primary endpoint."
+    }
+  ],
+  "missing": [
+    "Efficacy: vaniprevir phase II (Manns 2012 Hepatology, doi:10.1002/hep.25743, epub 2012-07-17): primary endpoint RVR 68.8-83.3% vs 5.6% placebo (P<0.001). An earlier member 'same' (paired with vaniprevir replicon data), so the efficacy cell turns 'same' in 2012, not 2013.",
+    "Dose: glecaprevir 6-month rat NOAEL gives a 70x exposure margin at 300 mg (209394 PharmR: 'This provides an exposure margin of 70X'), which held in patients. This is a margin_stated 'same' (2017) and could carry the dose cell if dose entry 2 is not accepted.",
+    "Safety (no status change expected): FDA clinical hold on sovaprevir, June 2013, for grade 3-4 ALT elevations in a healthy-volunteer DDI study with atazanavir/ritonavir (Achillion 10-K, https://www.sec.gov/Archives/edgar/data/1070336/000119312514089075/d645073d10k.htm; https://www.fiercepharma.com/regulatory/fda-slaps-a-clinical-hold-on-achillion-hep-c-drug). The harm came from conditions the model never tested, so 'untested'; the draft's judgement should mention it."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Dose table 'reached, drug worked': does a phase 1 viral-load response count as 'worked', so the entry is dated at phase 1, or must the efficacy primary endpoint have read out first? Also, can a dose entry be 'same' when the source never reports exposure against the model's numeric target (EC99)?",
+    "Q80K: the replicon fold change was measured on baseline clinical isolates at the same time as the phase 3 trials. Is this a prospective model prediction or a retrodiction (retro)?",
+    "Hepatotoxicity seen only under a drug interaction (sovaprevir with atazanavir/r in healthy volunteers; paritaprevir with ethinyl estradiol): no rule says whether a DDI-driven harm the animals were never dosed under counts as the model's silence being contradicted or as untested.",
+    "Models check: a routine preclinical model (HCV chimpanzee monotherapy) whose run date is unstated and whose first record (2010) post-dates a public patient result (AASLD 2008), but which was not motivated by it. Rule 10 requires both 'post-dates' and 'motivated by'; scored retro here on the record date."
+  ]
 }

@@ -4,29 +4,105 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "evidence rule 6",
-   "note": "DOI resolves to Goetsch 2005 Int J Cancer (PMID 15386423); quote verbatim in abstract. h7C10 is dalotuzumab's parent, a member. Opening untested at 2005 is correct."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "engagement definition (readout_tier)",
-   "note": "Atzori 2011 CCR (PMID 21810918), dalotuzumab phase I, paired tumour biopsies; quote verbatim. Mixed solid tumours acceptable for engagement. 'direct' is defensible (tumour receptor and phospho-signalling); total IGF-1R fall is downregulation, arguably proximal."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "dose table row 'no stated margin'; evidence rule 6",
-   "note": "Weickhardt 2012 JTO (PMID 22237261) quote verbatim. Untested holds: no model-stated exposure target or margin. But a year-2005 entry cites a 2012 source; the opening entry should cite Goetsch 2005. Other trials dosed members fully, so 'never reached' framing overstates."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "evidence rule 6",
-   "note": "Goetsch 2005 abstract: A549 xenograft, h7C10 plus vinorelbine or anti-EGFR antibody 225 almost completely inhibited growth; quote verbatim."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim",
-   "status_supported": true, "rule": "efficacy definition (primary endpoint); contra",
-   "note": "Ramalingam 2011 JCO (PMID 22025157, PMC5320944) primary end point 12-week PFS rate, null; quote verbatim. Registry dates 2021-01-05, 2018-06-12, 2016-09-08 match ClinicalTrials.gov. Novello and E3508 quotes verbatim. Partner drugs differ from model (see rule question)."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only",
-   "status_supported": true, "rule": "checker item 4 (model relied on); evidence rule 6",
-   "note": "Novello quote verbatim. Untested at 2005 is fine, but the safety model the class relied on was the cynomolgus GLP toxicology of R1507/teprotumumab (reports 2005), not A549 xenografts; and a 2005 entry cites a 2016 source. A later contra is missing (see missing)."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "evidence rule 6",
+   "note": "DOI resolves to Goetsch 2005 Int J Cancer (PMID 15386423); quote verbatim in abstract. h7C10 is dalotuzumab's parent, a member. Opening untested at 2005 is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "engagement definition (readout_tier)",
+   "note": "Atzori 2011 CCR (PMID 21810918), dalotuzumab phase I, paired tumour biopsies; quote verbatim. Mixed solid tumours acceptable for engagement. 'direct' is defensible (tumour receptor and phospho-signalling); total IGF-1R fall is downregulation, arguably proximal."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose table row 'no stated margin'; evidence rule 6",
+   "note": "Weickhardt 2012 JTO (PMID 22237261) quote verbatim. Untested holds: no model-stated exposure target or margin. But a year-2005 entry cites a 2012 source; the opening entry should cite Goetsch 2005. Other trials dosed members fully, so 'never reached' framing overstates."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "evidence rule 6",
+   "note": "Goetsch 2005 abstract: A549 xenograft, h7C10 plus vinorelbine or anti-EGFR antibody 225 almost completely inhibited growth; quote verbatim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy definition (primary endpoint); contra",
+   "note": "Ramalingam 2011 JCO (PMID 22025157, PMC5320944) primary end point 12-week PFS rate, null; quote verbatim. Registry dates 2021-01-05, 2018-06-12, 2016-09-08 match ClinicalTrials.gov. Novello and E3508 quotes verbatim. Partner drugs differ from model (see rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "checker item 4 (model relied on); evidence rule 6",
+   "note": "Novello quote verbatim. Untested at 2005 is fine, but the safety model the class relied on was the cynomolgus GLP toxicology of R1507/teprotumumab (reports 2005), not A549 xenografts; and a 2005 entry cites a 2016 source. A later contra is missing (see missing)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "evidence rule 3 (no quote, untested); rule 8 parallel track",
+   "note": "Gong 2009 PLoS One (PMID 19806209, Oct 2009) quote verbatim in abstract. Prospective (before 2011 trial readout), prediction_level patient correct. Habben 2011 abstract still 403; search snippet suggests IGF1R-level subgroups null, so a 2011 contra likely follows once quotable.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 7 (opens at model_first_use_year)",
+   "note": "PharmR (bundle txt) lists study 6131-477 with this title verbatim; initiation November 3, 2004, report preface 10/31/2005. Opening untested at 2004, class level, product_in_model true all hold.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 7 dating; retrodiction rule",
+   "note": "Quote verbatim in PharmR 11.4; exec summary: 'did not predict these effects'. Monkey studies 2004-05 preceded clinical hyperglycemia, so contra not retro. Review signed Dec 2019/Jan 2020; 2021 posting year unverified, 2020 defensible.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
  ],
  "missing": [
   "safety: contra entry, model = cynomolgus monkey repeat-dose toxicology of R1507/teprotumumab (Roche reports Jul-Aug 2005, up to 39 weeks; product_in_model true), source FDA BLA 761143 Pharmacology/Toxicology review (http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/761143Orig1s000PharmR.pdf, tier 2, comparison_stated true). Quote (11.4): 'the monkey model predicted the clinical reduced weight gain/weight loss and decreased serum ALP, but not the clinical infusion reactions, exacerbation of inflammatory bowel disease, or hyperglycemia.' Executive summary: 'The monkey toxicology studies did not predict these effects.' Patient harm is in TED patients, so imported_from the thyroid eye disease MONDO id; hyperglycemia is on-target (IGF1R/IR) and also seen with cixutumumab in NSCLC (Novello 2017 9.4% vs 1.2%; E3508). Year = review posting (approval Jan 2020; file under nda/2021). Monkeys can show hyperglycemia, so this is a scored miss, not silence a species could not show.",
   "efficacy (candidate competing model): Gong et al. 2009 PLoS One, doi:10.1371/journal.pone.0007273 (PMID 19806209), a member-drug (R1507) NSCLC model: in 22 NSCLC lines only 5 were moderately sensitive, linked to high total IGF-1R, i.e. it predicted little benefit in unselected NSCLC. Published Oct 2009, before the Ramalingam result (Oct 2011). Not the model the draft scored; recorded so the adjudicator can decide whether it, not A549/h7C10, is the 'best model' for the R1507 trial.",
-  "No press release, SEC filing or EMA document found reporting an additional member-drug NSCLC failure; figitumumab's NSCLC phase 3 failures are outside the member list (figitumumab is not a member) and correctly absent."
+  "No press release, SEC filing or EMA document found reporting an additional member-drug NSCLC failure; figitumumab's NSCLC phase 3 failures are outside the member list (figitumumab is not a member) and correctly absent.",
+  "efficacy (parallel track r1507-nsclc-cell-line-panel): likely 2011 contra, patient side Habben et al. J Clin Oncol 29:15_suppl 7584 (doi:10.1200/jco.2011.29.15_suppl.7584, NO21160 R1507+erlotinib): search-engine text of the abstract reads 'No significant impact on treatment was observed when the PFS rates of patient subgroups defined by other biomarkers, including IGF1R level, were compared'; abstract body 403 on ascopubs and absent from Europe PMC/Crossref, so it needs a verbatim read before entry."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

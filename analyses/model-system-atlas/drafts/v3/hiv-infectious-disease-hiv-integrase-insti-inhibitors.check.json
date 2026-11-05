@@ -4,32 +4,179 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Kobayashi AAC epub 2010-11-29, quote verbatim in abstract. Opening proxy acceptable; Min 2010 AAC (10.1128/AAC.00842-09, epub 2009-11-02) already reports 'potent in vitro anti-HIV activity', so 2009 was available."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Min 2011 AIDS (PMID 21716073) quote verbatim; viral load proximal tier correct. Registry NCT00708110 results first posted 2013-10-30, matches."},
-  {"cell": "dose", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "proposed_status": "untested", "proposed_year": 2009, "rule": "Evidence rule 6 (dating: cell opens at model_first_use_year)",
-   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009."},
-  {"cell": "dose", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "proposed_status": "same", "proposed_year": 2011, "rule": "Evidence rule 6 (dating) with dose table row 'reached, drug worked'; healthy-volunteer PK counts",
-   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote is the abstract's first sentence, verbatim. Exclusion of SHIV-macaque PrEP models from treatment context is reasonable. 2009 opening also available (Min 2010)."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "SPRING-1 epub 2011-10-20, primary endpoint week-16 <50 copies; quote verbatim. NCT00951015 results posted 2013-11-11, matches. No member efficacy failure found."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Label 2013 (bundle) quote verbatim; rabbit 0.4x exposure confirmed; PharmR states no teratogenicity in rats/rabbits."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule."},
-  {"cell": "safety", "index": 3, "verdict": "corrected", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "proposed_status": "same", "proposed_year": 2025, "rule": "Decision 6(b) (patient_signal_reversed) with evidence rule 6 dating",
-   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kobayashi AAC epub 2010-11-29, quote verbatim in abstract. Opening proxy acceptable; Min 2010 AAC (10.1128/AAC.00842-09, epub 2009-11-02) already reports 'potent in vitro anti-HIV activity', so 2009 was available."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Min 2011 AIDS (PMID 21716073) quote verbatim; viral load proximal tier correct. Registry NCT00708110 results first posted 2013-10-30, matches."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "Evidence rule 6 (dating: cell opens at model_first_use_year)",
+   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "Evidence rule 6 (dating) with dose table row 'reached, drug worked'; healthy-volunteer PK counts",
+   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote is the abstract's first sentence, verbatim. Exclusion of SHIV-macaque PrEP models from treatment context is reasonable. 2009 opening also available (Min 2010)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "SPRING-1 epub 2011-10-20, primary endpoint week-16 <50 copies; quote verbatim. NCT00951015 results posted 2013-11-11, matches. No member efficacy failure found."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label 2013 (bundle) quote verbatim; rabbit 0.4x exposure confirmed; PharmR states no teratogenicity in rats/rabbits."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2025,
+   "rule": "Decision 6(b) (patient_signal_reversed) with evidence rule 6 dating",
+   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kobayashi AAC (PMID 21115794) epub 2010-11-29; quote verbatim in abstract. Opening untested at 2010 is right; patient level fits (panel predicts which genotypes respond). MedR confirms FDA weighed fold-change.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Eron VIKING (PMID 23225901) epub 2012-12-07, quote verbatim. Mutant panel predated the trial, so prospective: same, not retro. MedR: 'As expected, response was influenced by fold change susceptibility to DTG' (verbatim). registry_date belongs to VIKING-3; harmless.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating: earliest public date)",
+   "note": "ClinPharmR quote verbatim (bundle). But Koteff BJCP (PMID 22905856), which cites the in-vitro OCT2 data, was accepted 2012-08-11 and online 2012-08-22; open at 2012, model_first_use_year 2012.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (dating: epub_year)",
+   "note": "Quote verbatim in abstract. Iohexol GFR test was prospective for the model's new claim (no true GFR loss), so same, not retro. Online 2012-08-22 (print 2013): year and epub_year 2012.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mohan EBioMedicine (PMID 33341441) epub 2020-12-18; quote verbatim. Opening untested at 2020 correct; NIH-funded, model_filed false right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Model run after the 2018-2019 Tsepamo signal and matched it: retro, not same (decision 10). Five NTDs, all 1x-DTG, confirmed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Brummel AIDS (PMID 40880283) epub 2025-08-26, quote verbatim; contra/opposite holds. But the final Tsepamo data came after the 2020 model, so this is its first prospective test: retrodiction should be false; patient_signal_reversed is the turn-back flag, set false.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
  ],
  "missing": [
   "Min 2010 AAC 10.1128/AAC.00842-09 (epub 2009-11-02): 'C(tau) with a 50-mg dose was 1.6 microg/ml, approximately 25-fold higher than the protein-adjusted 90% inhibitory concentration (0.064 microg/ml)': healthy-volunteer dose comparison the draft omits; moves dose dating earlier.",
   "Zash et al. AIDS 2025, 10.1097/QAD.0000000000004326: earliest peer-reviewed report of the Tsepamo NTD signal attenuating (0.10% vs 0.11%).",
-  "Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry."
+  "Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry.",
+  "Zebrafish embryo DTG developmental-toxicity model (Cabrera et al. AIDS 2019, 10.1097/QAD.0000000000002289; Cabrera 2026 DMM 10.1242/dmm.052632): folate-receptor antagonism and NTD-type defects set against the Tsepamo signal; no track.",
+  "Second mouse NTD model, SWV/Fnn and other strains dosed with DTG (Tukeman et al. AIDS 2024, 10.1097/QAD.0000000000003639; Gelineau-van Waes 2023 Front Cell Dev Biol 10.3389/fcell.2023.1175917): DTG-induced NTDs, folate-responsive; a separate model system from the C57BL/6J therapeutic-dose track."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

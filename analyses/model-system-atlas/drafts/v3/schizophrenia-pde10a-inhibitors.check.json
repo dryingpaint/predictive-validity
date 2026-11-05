@@ -3,41 +3,148 @@
  "index_base": 1,
  "checked_by": "CHECKER_BRIEF_v3",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "proposed_status": "untested", "proposed_year": 2008, "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Suzuki 2015 (PMID 25525190, epub 2014-12) quote verbatim. Status fine, but the cell opens at 2014 while model_first_use_year is 2008 (Schmidt 2008, MP-10/TP-10 striatal readouts). Open at 2008."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "Suzuki 2015 (PMID 25525190, epub 2014-12) quote verbatim. Status fine, but the cell opens at 2014 while model_first_use_year is 2008 (Schmidt 2008, MP-10/TP-10 striatal readouts). Open at 2008."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "rule": "engagement definition (healthy volunteers count; readout_tier direct)",
-   "note": "Takano 2016 (PMID 27423256) quote verbatim; dose-dependent putamen occupancy in healthy men. Model readout was cAMP/cGMP, human readout occupancy; judgement states this. Same is defensible."},
-  {"cell": "dose", "index": 1, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "proposed_status": "untested", "proposed_year": 2008, "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Quote verbatim in Suzuki 2015 abstract (exceeds 40 words only via MK-801 chemical name). Same opening-year issue: Pfizer set PF-02545920 exposures from 2008 rodent work; open at 2008."},
-  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Takano 2016 (PMID 27423256) quote verbatim; dose-dependent putamen occupancy in healthy men. Model readout was cAMP/cGMP, human readout occupancy; judgement states this. Same is defensible."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "Quote verbatim in Suzuki 2015 abstract (exceeds 40 words only via MK-801 chemical name). Same opening-year issue: Pfizer set PF-02545920 exposures from 2008 rodent work; open at 2008."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "rule": "dose table row 'reached, failed, abandoned'",
-   "note": "DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread)."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "rule": "Evidence rule 6",
-   "note": "Schmidt 2008 (PMID 18287214, 2008-02) quote verbatim; abstract does not name the behavioural screens, as the draft says."},
-  {"cell": "efficacy", "index": 2, "verdict": "corrected", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "proposed_status": "contra", "proposed_year": 2012, "rule": "Evidence rule 6 (earliest public date)",
-   "note": "Quote verbatim; NCT01939548 results 2016-08-22 confirmed. But the monotherapy failure (NCT01175135, completed 2011-08) was public April 2012: DeMartinis et al., SIRS Poster #212, Schizophr Res, doi 10.1016/s0920-9964(12)70783-1. Title/Crossref seen; abstract text not read."}
- ,
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Schmidt 2008 (PMID 18287214, 2008-02) quote verbatim; abstract does not name the behavioural screens, as the draft says."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "Evidence rule 6 (earliest public date)",
+   "note": "Quote verbatim; NCT01939548 results 2016-08-22 confirmed. But the monotherapy failure (NCT01175135, completed 2011-08) was public April 2012: DeMartinis et al., SIRS Poster #212, Schizophr Res, doi 10.1016/s0920-9964(12)70783-1. Title/Crossref seen; abstract text not read."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "rule": "safety definition",
-   "note": "Suzuki 2015 quote verbatim; prolactin/glucose flat to 3 mg/kg and weak catalepsy, concluding 'superior safety and tolerability'. Opening year could be 2008 as for the other cells."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
+   "note": "Suzuki 2015 quote verbatim; prolactin/glucose flat to 3 mg/kg and weak catalepsy, concluding 'superior safety and tolerability'. Opening year could be 2008 as for the other cells."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
    "rule": "safety definition (model's stated prediction did not hold)",
-   "note": "Macek 2019 (PMID 30190165) quote verbatim; NCT02477020 results 2017-09-29 confirmed; Walling 2019 dystonia 6/74 vs 3/74 verified. Contra is a call, since the rat did show weak catalepsy; I agree with it."}
+   "note": "Macek 2019 (PMID 30190165) quote verbatim; NCT02477020 results 2017-09-29 confirmed; Walling 2019 dystonia 6/74 vs 3/74 verified. Contra is a call, since the rat did show weak catalepsy; I agree with it."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year, proxy allowed)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Macek 2020 (PMID 32598478, PMC7689203) full text: quote verbatim in Discussion; Table 1 Go criterion 'Confirm findings from rats and monkeys... ketamine-induced fMRI BOLD effects', set prospectively. Tomimatsu 2016 (PMID 27725212) abstract confirms rat/monkey readouts. 2013 proxy fine; prospective."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "engagement definition (healthy volunteers count; readout_tier downstream); Evidence rule 6",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Yurgelun-Todd (PMID 31773211) epub 2019-11-26, quote verbatim in abstract. Animal work preceded the human study, so prospective, not retro. Macek 2020 also states human gamma-power attenuation 'as in rats and monkeys'. 2017 registry pairing possible but unstated."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "CT.gov API: brief title matches quote verbatim; first posted 2013-07-04, start 2013-08, completed 2014-08, results 2017-01-12. Prospective for TAK-063; PF-02545920 monotherapy failure (SIRS 2012) predates it, which does not change untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose/efficacy table 'reached, failed, abandoned'; Evidence rule 1 (pairing)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Macek 2019 (PMID 30190165) quote verbatim (abstract). NCT02477020 results first posted 2017-09-29 confirmed. Macek 2020 says all Go criteria met and phase 1 'showed some consistent evidence of antipsychotic activity'. Pairing, contra holds; 2017 correct."
+  }
  ],
  "missing": [
   "DeMartinis et al. 2012, 'Results of a phase 2A proof-of-concept trial with a PDE10A inhibitor in the treatment of acute exacerbation of schizophrenia', SIRS Poster #212, Schizophrenia Research (April 2012), doi 10.1016/s0920-9964(12)70783-1: PF-02545920 monotherapy not superior to placebo. This dates efficacy contra to 2012, and reportedly says PK suggested striatal engagement like that in the preclinical models (possibly dose contra 2012 as well). I saw only the title/Crossref record and a search snippet.",
   "OMS824 (member): Omeros suspended its PDE10 trials in Oct 2015 after a rat high-dose toxicology finding (Omeros press release 2015, https://www.prnewswire.com/news-releases/omeros-provides-update-on-pde10-inhibitor-program-322137646.html; 10-K FY2015). This is not a patient comparison, so it does not score, but the draft does not mention it.",
-  "Lu AF11167 NCT03793712 (stopped for futility, completion 2020-08-20, no results posted): the draft lists it with registry_date null. A Lundbeck disclosure could date it, but it does not change the status."
+  "Lu AF11167 NCT03793712 (stopped for futility, completion 2020-08-20, no results posted): the draft lists it with registry_date null. A Lundbeck disclosure could date it, but it does not change the status.",
+  "Roche RG7203 (PDE10A inhibitor) reward-processing fMRI/MID model in healthy volunteers, then tested in chronic schizophrenia patients where reward-processing improvement was absent: Schizophr Bull 2018 suppl abstract S43, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5888501/ (search snippet only; also summarised in Frontiers Neurosci 2020, doi 10.3389/fnins.2020.600178). A human-model parallel track for the efficacy (negative symptoms) question, likely contra; RG7203 membership in the class needs confirming."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Does a peer-reviewed congress abstract with a DOI (journal supplement poster) count as tier 1 for dating, or only as 'data not shown' with low confidence? It decides whether efficacy contra here is 2012 or 2016.",
   "When a cell's first sourced entry (2014) comes after model_first_use_year (2008), should the opening untested entry be backdated to model_first_use_year with an earlier source, or does lint accept the gap?",
-  "A conclusion that a model 'refutes the hypothesis' in a trial paper that names the preclinical rationale: is that comparison_stated true, or a pairing under evidence rule 1?"
+  "A conclusion that a model 'refutes the hypothesis' in a trial paper that names the preclinical rationale: is that comparison_stated true, or a pairing under evidence rule 1?",
+  "The TAK-063 healthy-volunteer ketamine challenge (run 2013-14) was prospective for TAK-063 but run after a class member (PF-02545920) had failed in patients (2012), while prediction_level is 'class'. Is a class-level model run after another member's failure a retrodiction? Here status is contra either way."
  ]
 }

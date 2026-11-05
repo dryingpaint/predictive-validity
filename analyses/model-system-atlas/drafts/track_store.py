@@ -70,7 +70,8 @@ def store(path: str, drafted_by: str, cur) -> int:
                                    adjudicated_status, adjudication_note, checked_by) VALUES %s""",
                        [(*key, v["cell"], mod, seq, v["verdict"], v.get("source_resolves"), v.get("quote_found"),
                          v.get("proposed_status"), v.get("proposed_year"), v.get("rule"), v.get("note"),
-                         v.get("adjudicated_status"), v.get("adjudication_note"), c.get("checked_by", "CHECKER_BRIEF_v3"))
+                         v.get("adjudicated_status"), v.get("adjudication_note"),
+                         v.get("checked_by") or c.get("checked_by", "CHECKER_BRIEF_v3"))
                         for v, (mod, seq) in verdicts])
         n_verdicts = len(verdicts)
     print(f"{os.path.basename(path)}: {len(entries)} entries, {n_verdicts} verdicts -> {key}")

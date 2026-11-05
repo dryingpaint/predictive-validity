@@ -4,32 +4,194 @@
  "checked_by": "CHECKER_BRIEF_v3",
  "lint": "0 findings",
  "entries": [
-  {"cell": "engagement", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "DOI resolves to Akama 2009 (PMID 19303290); quote verbatim in abstract. PBMC LPS/PHA/ConA cytokine assays confirmed in FDA PharmR. Opening untested is correct."},
-  {"cell": "engagement", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Bissonnette 2019 (PMID 31419544, epub 2019-08-13; NCT03233529 results 2019-08-13). Quote verbatim. Pairing of PBMC cytokine release with lesional Th2/Th17 transcripts; downstream tier is right."},
-  {"cell": "dose", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Quote verbatim in PharmR. 3-month minipig study was reviewed under the IND before the 6-month rat study (initiated 2012-06-19), so a 2011 proxy is plausible."},
-  {"cell": "dose", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Quote verbatim; minipig AUCs 1,080-1,450 ng·h/mL. NOAEL 5% (above 2% clinical strength) existed pre-Phase 3; the AUC margin itself is stated only in the 2016 review, after the trials. See rule question."},
-  {"cell": "efficacy", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Quote verbatim in Akama abstract; PharmR names mouse phorbol ester ear edema with 74% inhibition by clinical formulation, the only in vivo efficacy model in the review."},
-  {"cell": "efficacy", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "abstract_only", "status_supported": true,
-   "note": "Paller 2016 (PMID 27417017, epub 2016-07-11) quote verbatim; label table matches 32.8/25.4/31.4/18.0. Primary endpoint. LEO 29102 indeed went in on mouse allergic contact dermatitis, difamilast on mouse chronic contact dermatitis, so neither lands on this model."},
-  {"cell": "safety", "index": 1, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Rabbit irritation and negative LLNA quotes verbatim in PharmR. 2010 proxy reasonable."},
-  {"cell": "safety", "index": 2, "verdict": "confirmed", "source_resolves": true, "quote_found": "verbatim", "status_supported": true,
-   "note": "Label line 436 verbatim (patient information). Application-site pain is the common adverse reaction; partial is fair since rabbits graded erythema/edema."}
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Akama 2009 (PMID 19303290); quote verbatim in abstract. PBMC LPS/PHA/ConA cytokine assays confirmed in FDA PharmR. Opening untested is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Bissonnette 2019 (PMID 31419544, epub 2019-08-13; NCT03233529 results 2019-08-13). Quote verbatim. Pairing of PBMC cytokine release with lesional Th2/Th17 transcripts; downstream tier is right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR. 3-month minipig study was reviewed under the IND before the 6-month rat study (initiated 2012-06-19), so a 2011 proxy is plausible."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; minipig AUCs 1,080-1,450 ng·h/mL. NOAEL 5% (above 2% clinical strength) existed pre-Phase 3; the AUC margin itself is stated only in the 2016 review, after the trials. See rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Akama abstract; PharmR names mouse phorbol ester ear edema with 74% inhibition by clinical formulation, the only in vivo efficacy model in the review."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Paller 2016 (PMID 27417017, epub 2016-07-11) quote verbatim; label table matches 32.8/25.4/31.4/18.0. Primary endpoint. LEO 29102 indeed went in on mouse allergic contact dermatitis, difamilast on mouse chronic contact dermatitis, so neither lands on this model."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Rabbit irritation and negative LLNA quotes verbatim in PharmR. 2010 proxy reasonable."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label line 436 verbatim (patient information). Application-site pain is the common adverse reaction; partial is fair since rabbits graded erythema/edema."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Felding 2014 (PMID 24984230) quote verbatim in abstract; abstract does not name the mouse ACD model, so the model identity rests on full text. Opening untested at 2009 Phase 2 start proxy is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CT.gov API re-read: NCT01037881 primary EASI LOCF, p=0.27/0.83/0.08/0.16/0.14 vs vehicle, Elidel p=0.04; results first posted 2019-10-14. Model predated trial, so prospective contra, not retro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in local NDA 219474 MultidisciplineR (line 1710). OPA-15406 protocols on CT.gov (e.g. NCT02914548) summarise the mouse chronic contact hypersensitivity data, so pre-trial use and the 2012 proxy hold.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hiyama 2023 (PMID 37041087) quote verbatim. Model was run before the trials (summarised in OPA-15406 protocols, filed as primary pharmacology), so prospective same, not retro. Crisaborole comparator arm undated but does not change difamilast's pairing.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Eirefelt 2020 (PMID 33188482) Purpose sentence verbatim. Explant first used 2020, after both LEO trials; untested opening is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim. Retrodiction (registry primary posted 2019-10, paper 2020-11). Explant reproduced LEO 39652's failure but implied LEO 29102 efficacy against a failed primary; per retro rule a failed reproduction is contra. Low confidence fair.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Takahashi 2023 (PMID 37827277, epub 2023-10-11) quote verbatim. Run after 2021 Japanese approval; untested opening fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim. Post-approval run reproducing known efficacy: retro, not same (decision 10). Calama 2024 crisaborole oxazolone grouped under same model_id is reasonable.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kirima 2025 (PMID 40381393) quote verbatim. Post-approval MC903 model; untested opening fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim; paper opens on known clinical efficacy and reproduces it in MC903 mice after approval: retro (decision 10).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
  ],
  "missing": [
   "LEO 29102 (member): Phase 2 NCT01037881 primary endpoint (EASI change) not significant vs vehicle for any dose (p=0.27, 0.83, 0.08, 0.16), results posted 2019-10-14. Model = mouse topical allergic contact dermatitis (Felding 2014, doi:10.1021/jm500378a, which called the efficacy 'clinically relevant'). This is a contra for a second model_id (mouse-acd) dated 2019, currently buried in patient_trials with no status. It does not lower the crisaborole model's cell under the best-model rule, but it should be recorded.",
   "DRM02 (member): Dermira 10-K filed March 2015 (sec.gov/Archives/edgar/data/1557883/000104746915002713/a2223853z10-k.htm): 'Initial efficacy data in proof-of-concept clinical trials indicated that DRM02 gel was not more effective than vehicle-only gel'. Tier 5 failure (NCT01993420, no posted results). Its model side was not found, so it scores untested or is set aside, but the note should say it failed rather than 'stopped'.",
-  "Difamilast (member): its FDA multidiscipline review (NDA 219474) names a mouse chronic contact dermatitis model; the Japanese Phase 2/3 primary IGA endpoints were met. A same entry for a separate model_id; the cell status does not change."
+  "Difamilast (member): its FDA multidiscipline review (NDA 219474) names a mouse chronic contact dermatitis model; the Japanese Phase 2/3 primary IGA endpoints were met. A same entry for a separate model_id; the cell status does not change.",
+  "LEO 39652 (topical PDE4 soft drug, LEO): Phase 2 in mild-moderate AD NCT02219633 (2014-07 to 2015-01, no posted results); Eirefelt 2020 (doi:10.1007/s11095-020-02962-1) states its 'lack of clinical efficacy' in AD patients. Not listed as a class member; the explant track's retro reproduction of its failure has no entry.",
+  "Difamilast psychological-stress idiopathic dermatitis mouse model: JID 2022 abstract 576 (jidonline.org/article/S0022-202X(22)01026-0), run after Japanese approval; a further retro track if conference abstracts are admissible."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "When several class members went in on different efficacy models (crisaborole: TPA ear edema; LEO 29102: mouse allergic contact dermatitis, failed primary; difamilast: chronic contact dermatitis), must the cell record every model's track as its own entries, or only the best model's? The rule 'one drug's contra beats another drug's same on the same model' does not say what happens across models within one cell.",
   "Decision 16 margin_stated: the minipig NOAEL (5% ointment, above the 2% clinical strength) was filed under the IND before Phase 3, but the AUC-based margin (about 1x) was first stated in the 2016 NDA review using patient PK. Does a pre-trial NOAEL at a higher strength count as a stated margin, or does the margin need to be expressed in exposure before the trial?",
-  "Does a sponsor's own optimistic reading in a tier-1 paper (Felding 2014: 'clinically relevant efficacy') hold the status until the registry posts a failed primary (2019), per rule 7 (what was known at the date)?"
+  "Does a sponsor's own optimistic reading in a tier-1 paper (Felding 2014: 'clinically relevant efficacy') hold the status until the registry posts a failed primary (2019), per rule 7 (what was known at the date)?",
+  "An ex-vivo explant measuring free drug and tissue cAMP (Eirefelt 2020) is a PK/engagement readout; should its comparison with a failed efficacy primary be scored in the efficacy cell (as drafted, contra) or in the dose/engagement cells?"
  ]
 }
