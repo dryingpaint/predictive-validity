@@ -20,7 +20,7 @@ import pandas as pd
 from statsmodels.stats.proportion import proportion_confint
 
 from report import bio, frame
-from report.evidence_lines import reported_alone
+from report.evidence_lines import area_alone
 from report.render import S3_ENDPOINTS, S3_MAP_ROWS, band_label, stratum_name
 from report.attribution import SUBCAUSE_LABELS
 from report.stop_causes import BREAKDOWN, SHOWN, SUBCAUSE_NAMES
@@ -279,6 +279,7 @@ def dose_response():
 # Evidence categories of the plan amendment (report.evidence_lines.CATEGORIES), in its order: efficacy
 # evidence by the system that produced it, then safety risk and the clinical-precedent benchmark apart.
 CATEGORY_COLORS = {"human_genetics": "#2a78d6", "tumour_genetics": "#eb6834", "diseased_tissue": "#eda100",
+                   "pathway": "#7fb0e8",
                    "animal": "#1baf7a", "cell": "#8a8984", "molecule": "#b04a8f", "early_human": "#0f8f9a",
                    "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
 # Section 3 evidence-map rows by the category whose colour they take
@@ -389,26 +390,24 @@ def label_pad(fig, ax) -> float:
 
 
 def evidence_translates():
-    """Relative success to approval from any phase for each evidence category and its subcategories, on
-    US-developed programs; a filled dot is a 95% interval clear of 1. Lines known only after entry are drawn
-    dashed. Only lines with an estimate are drawn: the ones too rare to estimate, first available after entry or
-    whose literature retrieval failed its gate stay in the appendix table. An interval that runs past the axis ends
-    in an arrowhead at its edge."""
-    lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
-    lines = lines[lines.category.isin(CATEGORY_COLORS) & lines.estimated.eq(True)
-                  & (lines.level.ne("descriptive") | lines.column.fillna("").str.endswith("_untimed"))]
+    """Relative success to approval from any phase for each evidence area (report.evidence_lines.AREAS) and its
+    mutually exclusive tiers, on US-developed programs; a filled dot is a 95% interval clear of 1. Only lines with an
+    estimate are drawn; the registered categories, with every line tried, are in the appendix table. An interval
+    that runs past the axis ends in an arrowhead at its edge."""
+    lines = pd.read_csv(os.path.join(OUT, "evidence_analysis", "areas.csv"))
+    lines = lines[lines.category.isin(CATEGORY_COLORS) & lines.estimated.eq(True)]
     ys, y, prev = [], 0.0, None
     for i, r in enumerate(lines.itertuples()):
         if i:
-            y -= 2.6 if r.category in BLOCK_HEADERS and r.category != prev else 1.5 if r.level == "category" else 1
+            y -= 2.6 if r.category in BLOCK_HEADERS and r.category != prev else 1.5 if r.level == "area" else 1
         prev = r.category
         ys.append(y)
     fig, ax = plt.subplots(figsize=(10, 0.4 * len(ys) + 2.6))
     lim = (np.log2(0.2), np.log2(5))
     for yi, r in zip(ys, lines.itertuples()):
-        color, late = CATEGORY_COLORS[r.category], str(r.column).endswith("_untimed")
+        color = CATEGORY_COLORS[r.category]
         ax.plot([np.log2(max(r.rs_rs_lo, 0.2)), np.log2(min(r.rs_rs_hi, 5))], [yi, yi], color=color, linewidth=2,
-                solid_capstyle="round", linestyle=(0, (2, 1.5)) if late else "-")
+                solid_capstyle="round")
         for end, beyond, mark in ((lim[0], r.rs_rs_lo < 0.2, "<"), (lim[1], r.rs_rs_hi > 5, ">")):
             if beyond:  # the interval runs past the axis: an arrowhead at the edge says so
                 ax.plot(end, yi, mark, markersize=7, color=color, clip_on=False)
@@ -416,6 +415,7 @@ def evidence_translates():
         ax.plot(np.log2(r.rs_rs), yi, "o", markersize=7, color=color, markeredgewidth=1.5,
                 markerfacecolor=color if clear else "white", markeredgecolor=color)
         ax.text(np.log2(5) + 0.1, yi, f"{r.rs_rs:.2f}×", va="center", color=INK2, fontsize=10)
+        ax.text(np.log2(5) + 0.85, yi, f"n={r.exposed:,.0f}", va="center", color=INK2, fontsize=10)
     ticks = [0.25, 0.5, 1, 2, 4]
     ax.axvline(0, color=INK2, linewidth=1)
     ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
@@ -424,14 +424,14 @@ def evidence_translates():
     ax.set_xlabel("How often programs with the evidence reached approval, relative to those without (95% range)",
                   color=INK2, fontsize=10)
     style(ax)
-    alone = reported_alone()
-    labels = [("      " if r.level != "category" else "") + r.label
+    alone = area_alone()
+    labels = [("      " if r.level != "area" else "") + r.label
               + (" †" if r.column in alone else "") for r in lines.itertuples()]
     ax.set_yticks(ys, labels, color=INK, fontsize=10.5)
     for t, r in zip(ax.get_yticklabels(), lines.itertuples()):
         t.set_horizontalalignment("left")
-        t.set_color(INK if r.level == "category" else INK2)
-        t.set_fontweight("bold" if r.level == "category" else "normal")
+        t.set_color(INK if r.level == "area" else INK2)
+        t.set_fontweight("bold" if r.level == "area" else "normal")
     pad = label_pad(fig, ax)
     ax.tick_params(axis="y", pad=pad)
     label_x = -pad / 72 / (fig.get_figwidth() * ax.get_position().width)  # the labels' left edge, in axes

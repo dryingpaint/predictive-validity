@@ -2,8 +2,8 @@ import math
 
 import pandas as pd
 
-from report.evidence_lines import (biomarker_selected, cell_dependency, earlier_failure, failures_by_gene,
-                                    molecule_lines, stale_inputs)
+from report.evidence_lines import (AREAS, area_alone, area_columns, biomarker_selected, cell_dependency,
+                                    earlier_failure, failures_by_gene, molecule_lines, stale_inputs)
 
 RELATED = frozenset({"MONDO:A", "MONDO:A1"})
 FAILED = pd.DataFrame([
@@ -147,11 +147,6 @@ def test_a_subcategory_scored_on_fewer_entries_than_its_category_does_not_make_i
     assert out.cat_precedent[1] == 0.0  # earlier failures are scored for 2011+ entries only
 
 
-def test_only_lines_scored_on_part_of_their_category_are_reported_alone():
-    from report.evidence_lines import reported_alone
-    assert reported_alone() == {"brain_penetrant", "earlier_failure"}
-
-
 STORED = {"snapshot": "2026-11-02", "dev_program_approval": [21628, 3360783], "moiety_property": 93}
 
 
@@ -199,3 +194,20 @@ def test_a_common_essential_gene_of_that_year_does_not_count():
     dep = {("G1", line): 2014 for line in ("L1", "L2", "L3", "L4")}
     assert cell_dependency(["G1"], LUNG, 2019, LINES, dep, {2019: {"G1"}}) == 0.0
     assert cell_dependency(["G1"], LUNG, 2018, LINES, dep, {2019: {"G1"}}) == 1.0
+
+
+def test_an_areas_tiers_are_mutually_exclusive_and_make_up_the_area():
+    d = entries({"rare_variant": 1.0, "gwas": 0.0, "g3": 1.0}, {"rare_variant": 0.0, "gwas": 1.0, "g3": 1.0},
+                {"rare_variant": 1.0, "gwas": 1.0, "g3": 1.0, "allelic_series": 1.0},
+                {"rare_variant": 0.0, "gwas": 0.0, "g3": 0.0})
+    for col in ("somatic", "somatic_concordant", "expression", "reactome", "altered_animal", "animal_close",
+                "potent_100nm", "selective", "constrained", "ko_lethal", "earlier_failure", "precedent"):
+        d[col] = d[col].fillna(0.0) if col in d else 0.0
+    d["assay_best"] = math.nan
+    out = d.join(area_columns(d))
+    tiers = [t.column for t in AREAS["human_genetics"][1]]
+    assert out[tiers].sum(axis=1).tolist() == [1, 1, 1, 0]  # each linked entry in exactly one tier, unlinked in none
+
+
+def test_only_a_tier_scored_on_fewer_entries_than_its_area_is_marked():
+    assert area_alone() == {"tier_failure_only"}
