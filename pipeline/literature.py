@@ -46,7 +46,7 @@ from pipeline import llm
 from pipeline.attribution import NOT_REVIEWS, efetch
 from pipeline.chembl import IDS_PER_CALL, PAGE, get as chembl_get
 from pipeline.indications import N_CANDIDATES, MondoIndex
-from pipeline.outcomes import eutils
+from pipeline.outcomes import EUTILS, eutils
 
 KINDS = ("animal_disease", "animal_healthy", "human_engagement")
 PILOT = os.path.join(llm.REPO, "report", "audits", "literature_pilot_sample.csv")
@@ -56,6 +56,7 @@ PREFILTER_ABOVE = 3000  # records per drug above which a cheap model reads each 
 PREFILTER_CHECK = 1000  # seeded large-literature records given the full screen to measure the prefilter's recall
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/searchPOST"
 EPMC_PAGE = 1000
+ESEARCH_RECHECK = 600  # seconds between checks of whether PubMed's esearch is answering again
 NAME_CHUNK = 50  # drugs whose names are looked up together
 CHUNK_RECORDS = 60000  # records a cohort worker prefilters and screens together
 FIRECRAWL_LIMIT = 550  # calls to Firecrawl's research index on the pilot (the user approves any cohort run)
@@ -150,16 +151,62 @@ def pubmed_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
     return full, total, sorted(set(ids), key=int)
 
 
+_esearch = {"up": True, "checked": 0.0}
+
+
+def esearch_up() -> bool:
+    """Whether PubMed's esearch answers, rechecked every ESEARCH_RECHECK seconds while it does not."""
+    if _esearch["up"] or time.time() - _esearch["checked"] >= ESEARCH_RECHECK:
+        try:
+            r = requests.post(f"{EUTILS}/esearch.fcgi", data={"db": "pubmed", "term": "aspirin", "retmax": "0"},
+                              timeout=30)
+            _esearch["up"] = r.ok
+        except requests.RequestException:
+            _esearch["up"] = False
+        _esearch["checked"] = time.time()
+    return _esearch["up"]
+
+
+def medline_query(names: list[str], cutoff: int) -> str:
+    """The PubMed search run on Europe PMC's MEDLINE records (SRC:MED), for when PubMed's esearch is down."""
+    return (f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)}) AND PUB_YEAR:[1900 TO {cutoff}] '
+            'AND SRC:MED AND NOT PUB_TYPE:"review"')
+
+
+def medline_ids(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
+    """The Europe PMC MEDLINE query, its hit count and every PMID it returns (cursor-paged, no cap)."""
+    q, ids, cursor = medline_query(names, cutoff), [], "*"
+    while True:
+        page = epmc_post(q, cursor, result_type="idlist")
+        total = int(page.get("hitCount") or 0)
+        ids += [r["pmid"] for r in page.get("resultList", {}).get("result", []) if r.get("pmid")]
+        nxt = page.get("nextCursorMark")
+        if not nxt or nxt == cursor or len(ids) >= total:
+            return q, total, sorted(set(ids), key=int)
+        cursor = nxt
+
+
+def medline_search(names: list[str], cutoff: int) -> tuple[str, int, list[str]]:
+    """PubMed ids for a drug: PubMed's esearch, or the same search on Europe PMC's MEDLINE records while esearch
+    is down. The stored query shows which served it."""
+    if esearch_up():
+        try:
+            return pubmed_ids(names, cutoff)
+        except RuntimeError:
+            _esearch.update(up=False, checked=time.time())
+    return medline_ids(names, cutoff)
+
+
 def epmc_query(names: list[str], cutoff: int) -> str:
     """Europe PMC titles and abstracts outside MEDLINE (whose records the PubMed search covers), with an abstract."""
     return (f'({" OR ".join(f"TITLE_ABS:{chr(34)}{n}{chr(34)}" for n in names)}) AND PUB_YEAR:[1900 TO {cutoff}] '
             'AND NOT SRC:MED AND HAS_ABSTRACT:Y AND NOT PUB_TYPE:"review"')
 
 
-def epmc_post(query: str, cursor: str = "*", page: int = EPMC_PAGE) -> dict:
+def epmc_post(query: str, cursor: str = "*", page: int = EPMC_PAGE, result_type: str = "core") -> dict:
     for attempt in range(6):
         try:
-            r = requests.post(EPMC, data={"query": query, "format": "json", "resultType": "core",
+            r = requests.post(EPMC, data={"query": query, "format": "json", "resultType": result_type,
                                           "pageSize": page, "cursorMark": cursor}, timeout=180)
             r.raise_for_status()
             return r.json()
@@ -336,7 +383,7 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
         for m, y in chunk:
             if not names.get(m):
                 continue
-            pq, pn, pmids = pubmed_ids(names[m], y)
+            pq, pn, pmids = medline_search(names[m], y)
             eq, en, records = epmc_records(names[m], y)
             with llm.connect() as conn, conn.cursor() as cur:
                 store_records(cur, records)
