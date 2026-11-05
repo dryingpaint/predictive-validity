@@ -22,7 +22,7 @@ that declares `"schema": 3`.
 | 2 sources | decided: all five tiers; 4–5 patient-side only, `trial_unreported` on press/SEC |
 | 6 `contra` recoverable | decided: a failed model stays failed in its own record; the cell shows the best model, with a handover; an attenuated patient signal credits the model |
 | 10 post-hoc models | decided: tracked as `retro`, drawn with its own mark, counted apart |
-| 12 class boundaries | decided, revised: (target, action, modality group) from a reviewed class table; most programs, then furthest phase, ≥ 2 |
+| 12 class boundaries | decided, revised: mechanism (target, action) from a reviewed class table, most programs across modalities, ≥ 3, ties each a tile; dose and platform safety split by modality |
 | 13 `neg` / `other` | decided: `neg` by what the model data showed, with `effect_size` and `class_threshold` |
 | 16 dose window | decided: the dose cell scores the toxic ceiling when the model stated a margin |
 
@@ -196,16 +196,25 @@ the bins are too coarse to carry the surrogate-outcome story, hence decision 9.
 
 ## 12. Class and context boundaries
 
-**Rule.** Class = (target, action, modality group), read from the reviewed per-drug class table in
-`lists/class_audit/` (verified target, action, selectivity, modality, novelty at entry, with a
-source per row). A member not selective for the class target leaves it or forms its own class;
-dual-mechanism drugs are out unless the table puts them in (#33, #78). The indication's class is the
-one with the most programs, then the furthest phase reached, with at least 2 programs: volume first,
-so the atlas does not prefer the classes that succeeded. A
+**Rule.** A tile is indication (× population) × **mechanism**: (target, action), read from the
+reviewed per-drug class table in `lists/class_audit/` (verified target, action, selectivity, modality,
+novelty at entry, with a source per row). A member not selective for the mechanism's target forms its
+own mechanism ("JAK (pan)", multichannel blockers); dual-mechanism drugs are out unless the table puts
+them in (#33, #78). The indication's mechanism is the one with the most programs counted across
+modalities, at least 3; phase is never a criterion, so the choice does not depend on whether a
+mechanism succeeded. Mechanisms tied on count each get a tile; an indication with no mechanism of 3
+programs is blank (24 of 71 on the 2026-11-04 audit), and the random program sample, not the named
+tiles, carries the atlas's statistics.
+
+Each cell pools at the level its prediction depends on. Efficacy and engagement pool the whole
+mechanism: the model tests the biology, whatever the modality. Dose is split by modality: PK scaling
+for an antibody and for a small molecule are different predictions. Safety is split by where the harm
+comes from: an on-target harm pools the mechanism, a platform or off-target harm (antisense platelet
+effects, CAR-T cytokine release) sits in its modality's sub-strip. Entries in a split cell carry
+`modality`; the tile lists its modalities in `modality_groups` (#55, #62). A
 class with no patient comparison stays all-`untested` with a note; the drafter may not widen it to a
 sibling target (#124, glaucoma: every patient datum is the A1 agonist trabodenoson, not the A2A
-class). Because the unit carries the modality, each tile is one modality (CAR-T, ADC and naked
-antibody are separate tiles) and the efficacy evidence they share is cited in each (#55, #62). A sibling-class surrogate dosed in the model (anti-PD-L1 for an anti-PD-1 class)
+class). A sibling-class surrogate dosed in the model (anti-PD-L1 for an anti-PD-1 class)
 scores `other` (#69). Combination-arm events anchor a `contra` only if the source attributes them to
 the class drug (#70). Cross-indication or sibling-population comparisons (T2D trials for an obesity context, HFrEF for
 DKD) transfer only for safety, symmetrically, with `imported_from` set and a different dose noted
@@ -213,8 +222,8 @@ DKD) transfer only for safety, symmetrically, with `imported_from` set and a dif
 class is prescribed by; trial enrolment goes in the note (#45). Duplicate contexts across MONDO
 terms are merged to the DB term (#103). Repurposed classes get a second, flagged context per
 indication rather than vanishing under the novel-entity filter (#24); thin-plurality classes are
-reported with their program count so the reader can see how little of the indication they cover
-(#25).
+reported with `class_share`, their programs over the indication's, so the reader can see how little
+of the indication they cover (#25).
 
 ## 13. `neg` and `other`
 
@@ -289,7 +298,8 @@ ceiling. A ceiling entry carries `margin_stated: true`.
 | `patient_signal_reversed` | entry | bool (decision 6b) |
 | `effect_size`, `class_threshold` | `neg` entry | the model's number and the class bar it fell below (decision 13) |
 | `margin_stated` | dose entry | bool; true on a ceiling entry (decision 16) |
-| `modality_group` | context | small_molecule / antibody / adc / cell_therapy / gene_therapy / oligo / peptide / other (decision 12) |
+| `modality_groups` | context | the tile's modalities: small molecule / antibody / ADC / protein / peptide / oligo / cell therapy / gene therapy / other (decision 12) |
+| `modality` | dose and safety entry | the sub-strip an entry belongs to when the tile has more than one modality (decision 12) |
 | `class_share` | context | the class's programs over the indication's (decision 12) |
 | `model_kind` | entry | animal / human_challenge / ex_vivo / in_silico / human_genetic / cross_indication |
 | `model_id` | entry | stable slug per model system, so the per-model record of decision 6 groups correctly |

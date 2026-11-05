@@ -17,15 +17,16 @@ indications) on today's database and writes, under lists/class_audit/:
 reviews.csv is the hand-curated input, one row per moiety (same_entity_as folds a duplicate
 moiety into the entity it repeats); a moiety absent from it falls back to the database's fields.
 
-Proposed rule. Class unit = (verified target, verified action, modality group). A non-selective or
-off-class member carries its own verified target (e.g. "JAK (pan)"), so it falls into its own
-class rather than the selective one (a dual member whose verified target is the class target, such as
-netarsudil, ROCK plus NET, stays in); a member with no molecular target (lubricants, barriers,
-photosensitisers) or an undisclosed one forms no class. Members FDA-approved before their Phase 2
-entry are dropped (not novel). Classes rank by distinct entities, then by the furthest phase any
-member reached in the indication (4 = FDA-approved for it), then by entities at that phase; volume
-ranks first so the atlas does not prefer classes that succeeded. A class needs MIN_PROGRAMS
-entities, else the next class is taken, else the indication has no qualifying class.
+Proposed rule (decision 12). The tile's unit is the mechanism, (verified target, verified action),
+counted across modalities; modality only splits the dose and platform-safety sub-strips inside a
+tile (`modality_groups` lists them). A non-selective or off-class member carries its own verified
+target (e.g. "JAK (pan)"), so it falls into its own mechanism (a dual member whose verified target is
+the mechanism's target, such as netarsudil, ROCK plus NET, stays in); a member with no molecular
+target (lubricants, barriers, photosensitisers) or an undisclosed one forms none. Members
+FDA-approved before their Phase 2 entry are dropped (not novel). The indication's mechanism is the
+one with the most distinct entities, at least MIN_PROGRAMS; phase is never a criterion, so the
+choice does not depend on success. Mechanisms tied on count each get a tile; with none qualifying
+the indication is blank.
 """
 import importlib.util
 import os
@@ -40,7 +41,7 @@ from report import frame, section1  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")
 REVIEWS = os.path.join(OUT, "reviews.csv")
-MIN_PROGRAMS = 2
+MIN_PROGRAMS = 3
 
 _spec = importlib.util.spec_from_file_location("atlas_lists", os.path.join(HERE, "lists.py"))
 lists = importlib.util.module_from_spec(_spec)
@@ -176,26 +177,22 @@ def reviewed(m: pd.DataFrame) -> pd.DataFrame:
     return m
 
 
-def class_label(target: str, action: str, group: str) -> str:
-    base = ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
-    plain = (group == "small molecule" and "antibod" not in base) or (group == "antibody" and "antibod" in base)
-    return base if plain else f"{base} ({group})"
-
+def class_label(target: str, action: str) -> str:
+    return ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
 
 def ranked_classes(g: pd.DataFrame) -> pd.DataFrame:
-    """Classes of one indication's members, by program count then furthest phase."""
-    top = g.furthest_phase_reached == g.groupby(["c_target", "c_action", "c_group"]).furthest_phase_reached.transform("max")
-    return (g.assign(at_top=g.entity.where(top))
-            .groupby(["c_target", "c_action", "c_group"])
-            .agg(furthest=("furthest_phase_reached", "max"), n=("entity", "nunique"), n_top=("at_top", "nunique"),
+    """Mechanisms of one indication's members, counted across modalities, by program count. Phase is
+    reported, never ranked on, so the choice does not depend on whether a mechanism succeeded."""
+    return (g.groupby(["c_target", "c_action"])
+            .agg(furthest=("furthest_phase_reached", "max"), n=("entity", "nunique"),
+                 groups=("c_group", lambda x: ";".join(sorted(set(x.dropna())))),
                  ex=("drug", lambda d: "; ".join(sorted(set(d))[:6])),
                  sel=("selectivity", lambda s: "; ".join(sorted(set(s.dropna())))))
-            .reset_index().sort_values(["n", "furthest", "n_top", "c_target"], ascending=[False, False, False, True]))
-
+            .reset_index().sort_values(["n", "c_target"], ascending=[False, True]))
 
 def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     """The proposed rule over reviewed members (database fields where a member is unreviewed), and the
-    members with the class each is counted in."""
+    members with the mechanism each is counted in. Mechanisms tied on program count each get a tile."""
     m = m.copy()
     m["c_target"] = m.verified_target.fillna(m.db_target)
     m["c_target"] = m.c_target.where(m.selectivity.ne("off-class"), m.c_target + " (off-class)")
@@ -212,28 +209,27 @@ def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tup
                 "share_unresolved": cur.at[r.mondo_id, "share_unresolved"]}
         if not len(ok):
             top = ranked.iloc[0] if len(ranked) else None
-            out.append({**base, "class": "no qualifying class", "class_programs": 0, "class_basis": "proposed_rule",
-                        "example_entities": "", "modality_group": "", "selectivity_note": "", "furthest_phase": None,
-                        "runner_up": "", "reason": f"no class reaches {MIN_PROGRAMS} programs" + (
-                            f"; top-ranked is {class_label(top.c_target, top.c_action, top.c_group)} ({top.n})" if top is not None else "")})
+            out.append({**base, "class": "no qualifying class", "class_programs": 0, "class_share": 0.0,
+                        "class_basis": "proposed_rule", "example_entities": "", "modality_groups": "",
+                        "selectivity_note": "", "furthest_phase": None, "tile": 1, "runner_up": "",
+                        "reason": f"no mechanism reaches {MIN_PROGRAMS} programs"
+                                  + (f"; largest is {class_label(top.c_target, top.c_action)} ({top.n})" if top is not None else "")})
             continue
-        for rank, w in enumerate(ok.head(2).itertuples(), 1):
-            chosen.append(g[(g.c_target == w.c_target) & (g.c_action == w.c_action) & (g.c_group == w.c_group)]
-                          .assign(proposed_rank=rank))
-        w = ok.iloc[0]
-        nxt = ok.iloc[1] if len(ok) > 1 else None
-        skipped = ranked[(ranked.n < MIN_PROGRAMS) & (ranked.n > w.n)]
-        out.append({**base, "class": class_label(w.c_target, w.c_action, w.c_group), "class_programs": int(w.n),
-                    "class_basis": "proposed_rule", "example_entities": w.ex, "modality_group": w.c_group,
-                    "selectivity_note": w.sel, "furthest_phase": int(w.furthest),
-                    "runner_up": f"{class_label(nxt.c_target, nxt.c_action, nxt.c_group)} ({nxt.n}, phase {int(nxt.furthest)})"
-                                 if nxt is not None else "",
-                    "reason": "; ".join([f"skipped {class_label(s.c_target, s.c_action, s.c_group)} ({s.n} programs, phase {int(s.furthest)})"
-                                         for s in skipped.head(2).itertuples()]
-                                        + (["tie with runner-up on phase, entities and entities at that phase; broken alphabetically"]
-                                           if nxt is not None and (nxt.furthest, nxt.n, nxt.n_top) == (w.furthest, w.n, w.n_top) else []))})
+        winners = ok[ok.n == ok.n.iloc[0]]
+        rest = ok[ok.n < ok.n.iloc[0]]
+        nxt = rest.iloc[0] if len(rest) else None
+        for tile, w in enumerate(winners.itertuples(), 1):
+            chosen.append(g[(g.c_target == w.c_target) & (g.c_action == w.c_action)].assign(proposed_rank=1))
+            out.append({**base, "class": class_label(w.c_target, w.c_action), "class_programs": int(w.n),
+                        "class_share": round(w.n / r.n, 3), "class_basis": "proposed_rule", "example_entities": w.ex,
+                        "modality_groups": w.groups, "selectivity_note": w.sel, "furthest_phase": int(w.furthest),
+                        "tile": tile,
+                        "runner_up": f"{class_label(nxt.c_target, nxt.c_action)} ({nxt.n})" if nxt is not None else "",
+                        "reason": f"tied with {len(winners) - 1} other mechanism(s) on {int(w.n)} programs; each gets a tile"
+                                  if len(winners) > 1 else ""})
+        if nxt is not None:
+            chosen.append(g[(g.c_target == nxt.c_target) & (g.c_action == nxt.c_action)].assign(proposed_rank=2))
     return pd.DataFrame(out), pd.concat(chosen)
-
 
 def current_members(m: pd.DataFrame) -> pd.Series:
     """Whether each member counts toward its indication's class in the committed named_contexts.csv."""
@@ -271,12 +267,13 @@ def main() -> None:
     committed = pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv")).set_index("mondo_id")
     prop["current_class"] = prop.mondo_id.map(committed["class"])
     prop["changed_from_current"] = prop["class"] != prop.current_class
-    prop[list(pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv"), nrows=0).columns) + ["modality_group", "selectivity_note", "furthest_phase",
-                                                   "changed_from_current", "reason", "runner_up", "current_class"]] \
+    prop[list(pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv"), nrows=0).columns) + ["class_share", "tile", "modality_groups", "selectivity_note",
+                                                   "furthest_phase", "changed_from_current", "reason", "runner_up", "current_class"]] \
         .to_csv(os.path.join(OUT, "proposed_contexts.csv"), index=False)
     need = m[(m.in_current_class | m.proposed_class_rank.notna()) & ~m.reviewed]
     print(f"{len(m)} member rows, {int(m.reviewed.sum())} reviewed, {int(m.disagrees_with_db.eq(True).sum())} disagree; "
-          f"{int(prop.changed_from_current.sum())} of {len(prop)} contexts change; "
+          f"{len(prop)} tiles over {prop.mondo_id.nunique()} indications, {int(prop['class'].eq('no qualifying class').sum())} blank; "
+          f"{int(prop.changed_from_current.sum())} tiles differ from named_contexts.csv; "
           f"{need.moiety_id.nunique()} in-scope moieties unreviewed")
     if len(need):
         print(need[["indication", "moiety_id", "drug", "db_target", "db_action", "modality", "chembl_mechanism"]].to_string())

@@ -2,7 +2,7 @@
 
 `class_audit.py` rebuilds the lists.py cohort (novel Phase 2 entrants 2008–2019 in the 71 named
 indications, 2,634 programs) and joins it to a hand review (`reviews.csv`, 632 moieties: every
-member of each currently chosen class, both top classes under the proposed rule, and every
+member of each currently chosen class, the top two mechanisms under the proposed rule, and every
 unresolved-target program in allergic disease, allergic rhinitis, atopic conjunctivitis, acne,
 chronic HBV, HIV, HCV, BPH and dry eye). Each review row cites ChEMBL, an FDA or registry page,
 a DOI or a PubMed query. Outputs: `class_members.csv` (one row per program, review columns plus
@@ -60,81 +60,77 @@ products that have no link of their own (the five not-novel moieties above). Bri
 brivanib alaninate, and futuximab and modotuximab (both Sym004), are also duplicate entities.
 `reviews.csv` folds them with `same_entity_as`.
 
-## 3. The selection rule and what changes (43 of 71 contexts)
+## 3. The selection rule and what it gives
 
-Rule: class = (verified target, action, modality group). Off-class and no-target members are
-excluded, pan members form their own class, and duplicate moieties count once
-(`same_entity_as`). Classes rank by **distinct entities first**, then by furthest phase reached
-in the indication, then by entities at that phase. A class needs **at least 2 entities**.
+Rule (decision 12): a tile is indication × **mechanism**, (verified target, action), counted across
+modalities. Off-class and no-target members are excluded, non-selective members form their own
+mechanism, and duplicate moieties count once (`same_entity_as`). The indication's mechanism is the
+one with the most distinct entities, **at least 3**; phase is never a criterion. Mechanisms tied on
+count each get a tile. Modality does not define the tile: it splits the dose cell and the
+platform-safety sub-strip inside it (`modality_groups`).
 
-Count comes first because ranking by furthest phase favoured classes that had already succeeded
-(an approved member wins), which biases a "most-developed class" toward the successes the
-atlas is meant to test. The minimum of 2 keeps small indications in the atlas while still
-rejecting a class of one.
+Two alternatives were run and rejected. Ranking by furthest phase first prefers the classes that had
+already succeeded (RA showed the anti-GM-CSF antibodies, 3 programs, over the BTK inhibitors, 8).
+Putting modality in the unit fragments mechanisms (T2D fell to glucokinase activators once the
+GLP-1R agonists split into peptides, small molecules and Fc fusions). A floor of 2 leaves 7
+indications blank but gives 98 tiles, up to 7 in one indication (MDD); the floor of 3 was chosen and
+the blanks accepted: no mechanism dominated those indications, and the random program sample, not
+the named tiles, carries the statistics.
 
-The 42 moieties that came into scope under this rule (GCK and HSD11B1 in T2D, RORγt in
-psoriasis, CTLA-4 in SCLC, CRF1/V1b in MDD, factor D, IDH1, AKT, TLR3, COMT, NGF, EP1 and
-multichannel blockers) were reviewed. All are novel at entry:
+**Result: 62 tiles in 47 indications (12 with tied mechanisms); 24 indications blank.**
 
-- ipilimumab entered SCLC in 2008-02, before its 2011-03 approval;
-- opicapone entered Parkinson's in 2009, before its 2020 approval;
-- cenegermin entered dry eye in 2014, before its 2018 approval;
-- ivosidenib entered AML in 2016-06, before its 2018-07 approval.
+| indication | novel Phase 2 programs | tile(s): mechanism (programs, modalities when more than one) |
+|---|---|---|
+| allergic disease | 7 | allergen (immunotherapy) (5, other/peptide) |
+| allergic rhinitis | 39 | allergen (immunotherapy) (8, other/peptide/protein) |
+| Crohn disease | 36 | anti-IL23A antibodies (3) |
+| psoriasis | 80 | anti-IL17A antibodies (4, antibody/protein); RORC inverse agonists (4) |
+| rheumatoid arthritis | 96 | BTK inhibitors (8) |
+| ulcerative colitis | 70 | S1PR1 agonists (3) |
+| secondary hyperparathyroidism | 6 | CASR positive modulators (4, peptide/small molecule) |
+| type 1 diabetes mellitus | 31 | SLC5A2 inhibitors (4) |
+| type 2 diabetes mellitus | 126 | GLP1R agonists (12, peptide/protein/small molecule) |
+| gastroesophageal reflux disease | 11 | ATP4A blockers (3) |
+| metabolic dysfunction-associated steatohepatitis | 75 | NR1H4 agonists (4) |
+| primary biliary cholangitis | 15 | NR1H4 agonists (3) |
+| hemophilia A | 15 | F8 replacement / gene therapy (8, gene therapy/protein) |
+| hemophilia B | 10 | F9 replacement / gene therapy (7, gene therapy/protein) |
+| paroxysmal nocturnal hemoglobinuria | 9 | anti-C5 antibodies (4) |
+| HIV infectious disease | 32 | HIV RT (NNRTI) inhibitors (3); HIV RT (NRTI) inhibitors (3); HIV integrase (INSTI) inhibitors (3); HIV maturation (Gag) inhibitors (3) |
+| chronic hepatitis B virus infection | 18 | HBV RNA antisense / siRNA (3); HBsAg release (NAP) inhibitors (3) |
+| hepatitis C virus infection | 52 | HCV NS3/4A protease inhibitors (13) |
+| hyperlipidemia | 33 | CETP inhibitors (3); HCAR2 agonists (3) |
+| Alzheimer disease | 76 | BACE1 inhibitors (4); anti-MAPT antibodies (4) |
+| migraine disorder | 29 | CGRP receptor antagonists (4) |
+| acute myeloid leukemia | 78 | FLT3 inhibitors (4) |
+| breast cancer | 129 | CDK4/6 inhibitors (6) |
+| colorectal cancer | 88 | anti-EGFR antibodies (3); KDR (VEGFR) inhibitors (3); VEGFR multikinase inhibitors (3) |
+| follicular lymphoma | 34 | CD19-directed depleters (3); PIK3CD inhibitors (3) |
+| gastric cancer | 40 | anti-ERBB2 antibodies (3); PARP1/2 inhibitors (3) |
+| hepatocellular carcinoma | 73 | anti-PDCD1 antibodies (4); VEGFR multikinase inhibitors (4) |
+| malignant pancreatic neoplasm | 73 | MAP2K1/2 inhibitors (3) |
+| melanoma | 51 | BRAF inhibitors (3); anti-PDCD1 antibodies (3) |
+| myelodysplastic syndrome | 44 | HDAC (pan) inhibitors (3) |
+| non-small cell lung carcinoma | 191 | EGFR inhibitors (18) |
+| ovarian cancer | 58 | PARP1/2 inhibitors (6) |
+| plasma cell myeloma | 73 | TNFRSF17-directed depleters (8, ADC/antibody/cell therapy) |
+| prostate cancer | 91 | AR antagonists (5); PARP1/2 inhibitors (5) |
+| small cell lung carcinoma | 39 | anti-PDCD1 antibodies (3) |
+| diabetic macular edema | 21 | anti-VEGFA antibodies (3) |
+| dry eye syndrome | 51 | anti-TNF antibodies (3, antibody/protein) |
+| open-angle glaucoma | 20 | ROCK inhibitors (3) |
+| atopic eczema | 81 | PDE4 inhibitors (5) |
+| diabetic kidney disease | 26 | NR3C2 antagonists (3) |
+| osteoarthritis | 65 | MAPK14 inhibitors (3); NTRK1 inhibitors (3) |
+| insomnia | 11 | HCRTR1/2 antagonists (6) |
+| schizophrenia | 45 | PDE10A inhibitors (5) |
+| asthma | 84 | PTGDR2 antagonists (9) |
+| chronic obstructive pulmonary disease | 47 | CHRM3 antagonists (6) |
+| cystic fibrosis | 43 | CFTR correctors (8) |
+| interstitial cystitis | 10 | anti-NGF antibodies (3) |
 
-The DB's "nerve growth factor" (NCT03019627) is Dompé's cenegermin, a duplicate moiety now
-folded. Rintatolimod's ChEMBL id is the one shared with imatinib. No other DB disagreement.
-
-**Same class, narrowed or relabelled (15).** Other modalities or targets were removed, or the
-class was renamed:
-
-- Relabelled by modality: sickle cell (gene therapy), hemophilia A and B (AAV gene
-  therapy; recombinant factor protein is the runner-up), obesity (GLP-1R peptides) and
-  hypertriglyceridemia (APOC3 oligos).
-- HCV: "HCV NS3/4A protease inhibitors"; the label has no comma.
-- HIV: "HIV integrase (INSTI)".
-- Migraine: the CGRP receptor.
-- Myeloma: BCMA cell therapies.
-- Pancreatic cancer: MEK1/2.
-- Ovarian cancer: PARP1/2.
-- Follicular lymphoma: CD19 CAR-T.
-- DME: VEGF-trap proteins.
-- Insomnia: dual orexin antagonists.
-- Cystic fibrosis: CFTR correctors.
-
-**A different class (21):**
-
-- Allergic disease: unresolved → peptide allergen immunotherapy (3).
-- Psoriasis: IL-17A antibodies (3) → RORγt inverse agonists (4). The label reads "RORC
-  inverse_agonist" because lists.ACTION_PHRASE has no phrase for that action.
-- Crohn: JAK1 → anti-IL-23p19 (3). Tofacitinib and brepocitinib are excluded, leaving 2 JAK1.
-- AF: Kv1.5 → multichannel blockers (2). BMS-914392 is an I_KACh blocker, so Kv1.5 has 1 entity.
-- T2D: GLP-1R → GCK activators (9 vs 7 GLP-1R peptides, once co-agonists, small molecules
-  and Fc fusions split out). HSD11B1 is second with 8.
-- Influenza: HA → TLR3 agonists (2). Tied with HA-stem antibodies; broken alphabetically.
-- Chronic HBV: core → HBV siRNA (3). Tied with nucleic-acid polymers.
-- Alzheimer: anti-tau → BACE1 (4, phase 3). Ties anti-tau on count; wins on phase.
-- Parkinson: anti-α-syn → COMT inhibitors (2, phase 4 with opicapone).
-- Breast: ERBB2 → CDK4/6 (6).
-- Prostate: AR → PARP1/2. Both have 5; PARP has more approved members.
-- CRC: anti-EGFR antibodies → VEGFR-selective TKIs (3).
-- HCC: anti-PD-1 → VEGFR multikinase (4, phase 4). Ties PD-1 at 4.
-- Glioblastoma: tubulin → PI3K/mTOR (2, phase 3).
-- MDS: CD33 → pan-HDAC (3).
-- Gastric: ERBB2 mixed → HER2 antibodies (3). Tied with PARP1/2.
-- Dry eye: anti-TNF → glucocorticoid agonists (2). Tied with anti-TNF; one member, AL-38583,
-  is undisclosed.
-- Glaucoma: A2A → ROCK (3).
-- Atopic eczema: NR3C1 → PDE4 (5). Mometasone is not novel.
-- Osteoarthritis: TrkA → p38α (3). Tied with TrkA.
-- MDD: GluN2B → V1b antagonists (2). Tied with CRF1; esketamine and deudextromethorphan are
-  excluded.
-
-**No qualifying class (7):** eosinophilic esophagitis, heart failure, hypertension,
-Prader-Willi, AMD, acne and premature ejaculation. In each, every class has one entity.
-
-**Unchanged (28),** e.g. RA (BTK, 8), MASH (FXR, 4), schizophrenia (PDE10A, 5), asthma, COPD,
-NSCLC and AML. Allergic rhinitis keeps PTGDR2 only on the alphabetical tie-break against peptide
-allergen immunotherapy (4 each, phase 3). Ties broken alphabetically are flagged in `reason`.
+**Blank (24):** atopic conjunctivitis, eosinophilic esophagitis, heart failure, hypertensive disorder, atrial fibrillation, coronary artery disorder, endometriosis, irritable bowel syndrome, sickle cell disease, influenza, obesity disorder, hypertriglyceridemia, Prader-Willi syndrome, Parkinson disease, diabetic neuropathy, glioblastoma, age-related macular degeneration, acne, major depressive disorder, attention deficit-hyperactivity disorder, idiopathic pulmonary fibrosis, overactive bladder, benign prostatic hyperplasia, premature ejaculation. Each has no mechanism with 3 programs; `reason`
+names the largest.
 
 ## 4. Recommended DB fixes (not applied)
 

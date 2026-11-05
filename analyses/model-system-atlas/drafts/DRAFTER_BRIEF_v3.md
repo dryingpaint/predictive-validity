@@ -11,11 +11,14 @@ house style for a finished entry (one success, one failure). Do not read any oth
 ## The unit
 A **context** = disease (MONDO) × patient population (genotype / biomarker / pathogen, else "Unselected")
 × drug class. Validity belongs to the context, not the model: the same mouse can be right for one drug
-class and wrong for another. **v3:** the drug class is the (target, action, modality group) you are given,
+class and wrong for another. **v3:** the drug class is the mechanism (target, action) you are given,
 with its member drugs from the reviewed class table; only those drugs score. Do not widen it: if every
 patient datum is for a sibling target (A1 agonist when the class is A2A) or a non-selective drug outside
-the member list, the context stays `untested` with a note. Copy the given `modality_group` and
-`class_share` into the output.
+the member list, the context stays `untested` with a note. Copy the given `modality_groups` and
+`class_share` into the output. Efficacy and engagement pool every modality of the mechanism. When the
+tile has more than one modality, dose is split by modality and so are platform or off-target harms in
+safety (an on-target harm stays pooled): give each such entry `modality`, one of the tile's
+`modality_groups`, and keep each modality's entries in year order.
 
 ## What "the model" is (v3)
 The model is whatever system the class actually relied on to go into patients: the pivotal preclinical
@@ -122,7 +125,7 @@ engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by`, `mar
 `effect_size`, `class_threshold` · efficacy only: `endpoint_role`,
 `outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status).
 Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial;
-`modality_group` and `class_share` as given.
+`modality_groups` (list) and `class_share` as given.
 
 ## Output: write ONE file, then report
 Write JSON to the path given below, exactly this shape (extra keys are ours; the figure ignores them):
@@ -130,7 +133,7 @@ Write JSON to the path given below, exactly this shape (extra keys are ours; the
  "schema": 3, "order": <int>, "area": "<Area>", "disease": "<name>", "mondo_id": "MONDO:...",
  "population": "<...>", "mechanism": "<drug class>", "note": "<1 sentence on the context>",
  "programs": null, "loa": null, "label": "<short tile label>", "regulatory_reliance": false,
- "modality_group": "<as given>", "class_share": <as given>,
+ "modality_groups": [<as given>], "class_share": <as given>,
  "cells": {
   "engagement": [ {"year": 2009, "status": "untested", "model": "<model>", "note": "<≤25 words>",
                    "short": "<≤8 words>", "src": "https://doi.org/...", "srcLabel": "Author Year",

@@ -249,7 +249,7 @@ Repurposed classes get a second, flagged context rather than vanishing under the
 
 **Alternative.** Let drafters define the class; consistency with the DB join is lost.
 
-**Decision (2026-11-04), revised:** The class unit is (target, action, modality group), read from a reviewed per-drug class table rather than computed on the fly (`lists/class_audit/`): each member has a verified target, action, selectivity, modality and novelty at entry. A drug not selective for the class target (esketamine in a GluN2B class, ritlecitinib in a BTK class) leaves the class or forms its own. Because the unit carries the modality, a tile is one modality and the safety/dose split follows. The indication's class is the one with the most programs, then the furthest phase reached, with at least 2 programs; ranking by furthest phase first was tried and rejected because it prefers the classes that succeeded (RA would show the anti-GM-CSF antibodies, 3 programs, over the BTK inhibitors, 8). The rest of the recommendation stands: no widening to a sibling target, cross-indication comparisons transfer for safety only with `imported_from`, repurposed classes get a flagged second context, and each tile prints its share of the indication's programs. Contexts are regenerated from the audited table before any re-draft.
+**Decision (2026-11-04), revised:** A tile is indication × mechanism, (target, action), from a reviewed per-drug class table (`lists/class_audit/`): each member has a verified target, action, selectivity, modality and novelty at entry, and a drug not selective for the target (esketamine in a GluN2B class, ritlecitinib in a BTK class) forms its own mechanism. The mechanism is the one with the most programs counted across modalities, at least 3; ties each get a tile; with none the indication is blank (24 of 71). Two alternatives were run and rejected: ranking by furthest phase first prefers the classes that succeeded (RA would show the anti-GM-CSF antibodies, 3 programs, over the BTK inhibitors, 8), and putting modality in the unit fragments mechanisms (T2D fell to glucokinase activators once GLP-1R agonists split into peptides and small molecules). Efficacy and engagement pool the mechanism; dose splits by modality; safety splits on-target harms (pooled) from platform harms (per modality). The rest of the recommendation stands: no widening to a sibling target, cross-indication comparisons transfer for safety only with `imported_from`, repurposed classes get a flagged second context, each tile prints `class_share`, and the statistics come from the random program sample.
 
 ---
 
@@ -348,7 +348,7 @@ a model prediction, and the harm itself is already scored in safety.
 `source_tier`, `model_src`, `model_src_tier`, `trial_unreported`, `model_kind`, `model_change`,
 `patient_signal_reversed`, `outcome_tested`, `retrodiction`, `effect_size`, `class_threshold`, `imported_from`,
 `patient_trials`, `regulatory_reliance`, `readout_tier`, `blocked_by`, `margin_stated`; a sixth status `retro`;
-a context-level `modality_group` and `class_share`; `magnitude` gains null/opposite;
+a context-level `modality_groups` and `class_share`, and `modality` on split dose and safety entries; `magnitude` gains null/opposite;
 `source_calls_it` gains partial/unresolved/over_predicted; `confidence` becomes an enum with a separate
 `confidence_note`. Every one of these can be filled from the existing drafts without new research except
 `outcome_tested`, which needs one lookup per efficacy cell.
