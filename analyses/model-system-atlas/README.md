@@ -1,12 +1,44 @@
 # Model-system atlas (issue #76)
 
-For each disease × drug class, whether the preclinical model the class relied on predicted what happened
-in patients, on four questions (engagement, dose, efficacy, safety), as a dated strip of statuses.
-`contexts/`, `figure.py` and `atlas.png` are the prototype from `atlas-prototype`. Everything else is the
-first full run on 70 named contexts and the rules proposal that came out of it.
+For each disease × mechanism, whether the preclinical models the drug class relied on predicted what happened in
+patients, on four questions (target engagement, dose, efficacy, safety), judged entry by entry from published
+comparisons and stored as dated tracks.
 
 A disease is a MONDO id. The database calls it an indication (`preclin.atlas_indication`, keyed by `mondo_id`);
-prose and figures say disease.
+prose and figures say disease. A **tile** is one mechanism (target, action) in one disease, tracked when at least
+three programs entered Phase 2 for it in 2008–2019. Every model system compared with patients for the class is a
+**track**; a cell's **headline** is the best latest status among its tracks that predicted before the patient
+result, never compared when none did, and a retrodiction never sets it (decision 6).
+
+## State (2026-11-05)
+
+- Register: 1,693 disease × mechanism rows; 119 tracked tiles in 48 of the 71 diseases (atlas build 428a6a37).
+- Rules v3: 16 decisions, all taken (`drafts/DECISIONS.md`); `drafts/lint.py` enforces them on any draft with `"schema": 3`.
+- Drafted under v3 and stored: 30 tiles, 456 entries, 191 tracks (κ 0.93 drafter–checker). The other 89 are in `drafts/v3/tiles.json` (orders 31–119) and are being drafted in waves through the same five passes.
+- Figures: `atlas_glance.*` (the verdict per cell, journal format) and `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
+- The v2 run (70 contexts), its matrices and the pilot renders were removed from the tree on 2026-11-05; they are in git history at 4d478a3. `contexts/` and `figure.py` stay because `figure_map.py` draws from them.
+
+## Data in, data out
+
+Everything reads the database through `report.frame.query`, which is read-only. Four commands write, each to its
+own `preclin.atlas_*` tables (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`), and each replaces its own
+unit (a build, a document, a tile) so a re-run is safe. Nothing else writes.
+
+| step | reads: database | reads: files, web | writes: files | writes: database |
+|---|---|---|---|---|
+| `lists.py` | `dev_program`, `ontology_term`; the program and trial frames of `report.frame` under `report.section1.phase_rows` | — | `lists/named_indications.csv`, `volumes.json`, `sample.csv`, `swing_seats.csv`, `provenance.json` | — |
+| `class_audit.py [store]` | `dev_program`, `moiety`, `moiety_target`, `chembl_moiety`, `chembl_mechanism`, `atlas_register` | `lists/named_indications.csv`; `lists/class_audit/reviews.csv`, the hand-reviewed class table | `lists/class_audit/register.csv`, `class_members.csv`, `AUDIT.md`; `lists/named_contexts.csv` | `store`: `atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism`, `atlas_member` (view `atlas_register`) |
+| `fetch_sources.py [store]` | `atlas_register`, `atlas_indication`, `atlas_mechanism`, `atlas_member`, `fda_application`, `fda_application_moiety` | openFDA `drugsfda`; the review PDFs and label on accessdata.fda.gov (pdftotext, OCR for scanned ones) | `sources/manifest.csv`; `sources/<appl_no>/*.pdf`, `*.txt` (ignored) | `store`: `atlas_source_document` |
+| the agent passes: drafter, checker, adjudicator, model sweep, sweep checker (`drafts/v3/*_TASK.md`) | SELECT only | `sources/` texts; PubMed and Europe PMC; WebSearch; Firecrawl through `fc.py` (key in `.env`); `drafts/v3/tiles.json`; the briefs | `drafts/v3/<slug>.json`, `.check.json`, `.models.json` | — |
+| `drafts/v3/merge_models.py`, `collect_questions.py` | — | `drafts/v3/` | the merged `<slug>.json`; `RULE_QUESTIONS_v3.md` | — |
+| `drafts/v3/route_store.py` → `drafts/track_store.py` | `atlas_register`, `atlas_track_entry` | a lint-clean `<slug>.json` whose verdicts are settled | — | `atlas_track_entry`, `atlas_track_verdict`: the tile is replaced |
+| `report_page.py` | `atlas_build`, `atlas_indication`, `atlas_mechanism`, `atlas_register`, `atlas_track_entry`, `atlas_track_verdict` | `report/template.html` | `report/atlas.html` (ignored) | — |
+| `glance.py`, `glance_nature.py` | `atlas_track_entry`, `atlas_track_verdict` | `drafts/v3/tiles.json`, `drafts/v3/short_labels.json` | `glance.csv`; `atlas_glance.png`, `.svg`, `.pdf` | — |
+| `indications.py` | `dev_program_trial`, `ctgov_study_indication`, `indication`, `ontology_ancestor`; the cohort frames | `lists/named_indications.csv` | `lists/indications.csv`, `indications_by_disease.csv`; `disease_indications.png`, `.svg` | — |
+
+Secrets: `DATABASE_URL` and `FIRECRAWL_API_KEY` live in `.env`, which is ignored. The source PDFs and texts are
+ignored too; `fetch_sources.py store` keeps the texts in `atlas_source_document`, from which a fresh clone can
+materialise them.
 
 ## What needs a decision
 
@@ -30,13 +62,10 @@ Three choices sit outside the rules:
 | choice | question |
 |---|---|
 | cohort | join the atlas to the issue's simple `ph2_start` count or the report's strict `phase_rows` cohort? 53 of 64 diseases agree; `lists/swing_seats.csv` has the rest. The 70 contexts here follow the strict list |
-| class share | print each tile's share of the disease's programs, so a reader sees how much of the disease it covers (decision 12) |
-| DB writes | the κ re-draft (30 contexts under v3) through `pipeline/` needs writes to `pv_evidence.llm_decision` while #70 is open |
+| class share | done: every tile carries `class_share` (its programs over the disease's) in `drafts/v3/tiles.json`, the register and the report page |
+| DB writes | only the writers in *Data in, data out* below touch the database, all into `preclin.atlas_*`; issue #70 (the rebuild) is still open, so a rebuild re-runs `class_audit.py store` and the tile stores |
 
-Next: audit the class table and regenerate the contexts from it, pre-fetch each context's source bundle,
-run the κ re-draft under `DRAFTER_BRIEF_v3.md` and `CHECKER_BRIEF_v3.md` with adjudication, then regenerate
-the strips with `render_pilot.py`.
-The figure layout in `figure.py` is untouched until the rules are agreed.
+Open calls are listed in PR #81: whether the headline follows the main model or all tracks (the figures follow decision 6: all tracks), where patient-level tracks are shown, how a model published after a public result but not prompted by it is scored, the cohort, and the rule questions in `drafts/v3/RULE_QUESTIONS_v3.md`.
 
 ## Layout
 
@@ -45,33 +74,35 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 | `lists.py` → `lists/` | the context list from the DB: diseases ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
 | `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every disease) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
 | `indications.py` → `lists/indications.csv`, `lists/indications_by_disease.csv`, `disease_indications.png` | each named disease's programs and the indications (stage, subtype, line of therapy) those programs were tested in, from the trials' condition rows; read-only |
-| `glance.py` → `glance.csv`, `glance.png` | the atlas at a glance: one headline per drafted cell under decision 6 (`report_page.headline`, adjudicated statuses), with the year, the model, the reason on a failure, and the dissenting track when another model contradicted; read-only |
-| `glance_nature.py` → `atlas_glance.png`, `.svg`, `.pdf`, `atlas_glance_caption.md` | the same as a journal figure: 183 × 245 mm, Helvetica 5–8 pt, the Capable palette, model names shortened by hand in `MODEL_SHORT`; the caption file carries the title and definitions |
-| `drafts/track_store.py` | stores a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile |
-| `drafts/<id>.json`, `drafts/<id>.check.json` | 70 drafted contexts and their checker verdicts; `manifest.csv` tracks them |
-| `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md` | the agent briefs used for the run (v2) |
+| `glance.py` → `glance.csv` | the atlas at a glance, as data: one headline per drafted cell under decision 6 (`report_page.headline`, adjudicated statuses), with the year, the model, the reason on a failure, and the dissenting track when another model contradicted; read-only |
+| `glance_nature.py` → `atlas_glance.png`, `.svg`, `.pdf`, `atlas_glance_caption.md` | the figure: 183 × 245 mm, Helvetica 5–8 pt, the Capable palette; labels that do not fit a cell are shortened by hand in `drafts/v3/short_labels.json`, never cut; the caption file carries the title and definitions |
+| `drafts/track_store.py`, `drafts/v3/route_store.py` | store a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile; `route_store.py` stores every tile whose verdicts are settled and lists the ones waiting for adjudication |
+| `drafts/v3/tiles.json`, `drafts/v3/*_TASK.md`, `merge_models.py`, `collect_questions.py` | the 119 tile specs (members, modality groups, class share, the v2 lead), the five agent task prompts, the model-sweep merge, and the rule-question collector |
+| `fc.py` | `scrape <url>` and `search "<query>"` through Firecrawl, the agents' fallback when WebFetch is refused or the search budget is spent |
+| `tests/test_atlas_glance.py`, `tests/test_atlas_indications.py` (repo `tests/`) | the headline rule, dissent and label wrapping; the stage and subtype reading of condition rows; synthetic inputs, no database |
+| `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md`, `drafts/ENGAGEMENT_KIND_RESULT.md` | the v2 run's briefs and its one result that the decisions cite; the run itself is in git history (4d478a3) |
 | `drafts/RULE_QUESTIONS.md` | 151 cases the v2 rules did not decide |
 | `drafts/RULES_V3_PROPOSAL.md`, `drafts/DECISIONS.md` | the questions collapsed into 16 decisions with a schema v3, and the decision record |
 | `drafts/DRAFTER_BRIEF_v3.md`, `drafts/CHECKER_BRIEF_v3.md` | the briefs written to those decisions; the checker brief adds adjudication |
-| `drafts/matrix.py` → `matrix_entries.csv`, `matrix_cells.csv`, `matrix_models.csv` | one row per entry, per cell and per model: drafter and checker status, all fact fields, each model's own record (decision 6) |
 | `drafts/lint.py` | schema check on the drafts; v3 rules on drafts that declare `"schema": 3` |
 | `fetch_sources.py` → `sources/manifest.csv`, `preclin.atlas_source_document` | the drafters' source bundle: the FDA review package of each tracked mechanism's approved members as text (OCR for scanned PDFs); `store` writes the text to the DB; the PDFs under `sources/<appl_no>/` are not committed |
-| `render_pilot.py` → `drafts/pilot_render/atlas.png` (not committed) | all drafts through `figure.py` with checker corrections applied |
-| `drafts/engagement_outcomes.py` → `context_outcomes.csv` | Phase 2 and Phase 3 advancement of each context's class, from the DB |
-| `drafts/engagement_kind_result.py` → `engagement_experiment.csv`, `ENGAGEMENT_KIND_RESULT.md` | whether the kind of engagement readout tracks the class's advancement |
 
 ## Running
 
 ```
 uv sync
-.venv/bin/python analyses/model-system-atlas/lists.py                         # DATABASE_URL in .env; read-only
-.venv/bin/python analyses/model-system-atlas/class_audit.py [store]           # register and tiles; store writes preclin.atlas_*
-.venv/bin/python analyses/model-system-atlas/drafts/matrix.py
-.venv/bin/python analyses/model-system-atlas/drafts/lint.py
-.venv/bin/python analyses/model-system-atlas/render_pilot.py
-.venv/bin/python analyses/model-system-atlas/drafts/engagement_outcomes.py    # read-only
-.venv/bin/python analyses/model-system-atlas/drafts/engagement_kind_result.py
-.venv/bin/python analyses/model-system-atlas/fetch_sources.py [store]         # tracked members from preclin.atlas_register; hours with OCR
+.venv/bin/python analyses/model-system-atlas/lists.py                              # read-only
+.venv/bin/python analyses/model-system-atlas/class_audit.py [store]                # register and tiles; store writes preclin.atlas_*
+.venv/bin/python analyses/model-system-atlas/fetch_sources.py [store]              # FDA review texts; hours with OCR; store writes atlas_source_document
+# per tile, the five agent passes in drafts/v3/{DRAFT,CHECK,ADJ,MODELS,MODELS_CHECK}_TASK.md, then:
+.venv/bin/python analyses/model-system-atlas/drafts/v3/merge_models.py <slug>
+.venv/bin/python analyses/model-system-atlas/drafts/lint.py analyses/model-system-atlas/drafts/v3/<slug>.json
+.venv/bin/python analyses/model-system-atlas/drafts/v3/route_store.py [slug ...]   # writes atlas_track_entry / atlas_track_verdict
+.venv/bin/python analyses/model-system-atlas/drafts/v3/collect_questions.py
+.venv/bin/python analyses/model-system-atlas/report_page.py
+.venv/bin/python analyses/model-system-atlas/glance.py && .venv/bin/python analyses/model-system-atlas/glance_nature.py
+.venv/bin/python analyses/model-system-atlas/indications.py
+uv run pytest tests/test_atlas_glance.py tests/test_atlas_indications.py
 ```
 
-Drafts stay in `drafts/`, never in `contexts/`. Only the three `store` commands write to the DB, each to its own `preclin.atlas_*` tables (migration 133).
+Drafts stay in `drafts/v3/`, never in `contexts/`. The only database writers are the ones in *Data in, data out*.
