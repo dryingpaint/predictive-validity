@@ -207,3 +207,16 @@ def test_the_merge_check_shows_the_entity_and_the_substance_it_would_become():
                                        "holder": "benzylpenicillin"}})
     assert "Entity: penicillin" in text and "PENICILLIN G" in text and "benzylpenicillin" in text
     assert "Candidate substances" not in text
+
+
+def test_merges_move_every_column_a_foreign_key_ties_to_an_entity_whatever_its_name():
+    from pipeline.drugs import entity_columns
+    fks = [("preclin.drug_moiety", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.atlas_pair", "preclin.moiety", ["same_entity_as"], ["moiety_id"]),
+           ("preclin.evidence_entry", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.evidence_entry_line", "preclin.evidence_entry", ["moiety_id", "mondo_id", "phase"],
+            ["moiety_id", "mondo_id", "phase"]),
+           ("preclin.dev_program", "preclin.moiety", ["moiety_id"], ["moiety_id"]),
+           ("preclin.trial_outcome", "preclin.ctgov_study", ["nct_id"], ["nct_id"])]
+    assert entity_columns(fks) == {"preclin.drug_moiety": ["moiety_id"], "preclin.atlas_pair": ["same_entity_as"],
+                                   "preclin.evidence_entry": ["moiety_id"], "preclin.evidence_entry_line": ["moiety_id"]}

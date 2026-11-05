@@ -590,7 +590,7 @@ def unii(_args) -> None:
     held = {m for m in joining if m not in allowed}
     groups = {u: [m for m in mids if m not in held] for u, mids in groups.items()}
     print(f"merge checks={len(checks)} held back={len(held)} by relation={dict(Counter(relation[m] for m in held if m in relation))}")
-    merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items() if mids])
+    merge_groups([(mids, preferred[u], u, {m: chosen[m][1] for m in mids}) for u, mids in groups.items() if mids], "unii")
     print(f"entities={len(entities)} with candidates={len(items)} resolved={len(chosen)}")
     same_entities(named=getattr(_args, "named_pairs", False))
 
@@ -640,6 +640,25 @@ def delete_unreferenced(cur, among: set[int] | None = None) -> int:
     return cur.rowcount
 
 
+def entity_columns(fks: list[tuple[str, str, list[str], list[str]]]) -> dict[str, list[str]]:
+    """table -> its columns holding an entity id, from foreign keys (table, referenced table, columns, referenced
+    columns): every column referencing preclin.moiety, and every column of a child table that a foreign key ties to
+    such a column of its parent. preclin.dev_program is left out: merge_groups deletes the merged programs."""
+    moves: dict[str, list[str]] = defaultdict(list)
+    for t, ft, cs, _ in fks:
+        if ft == "preclin.moiety" and t != "preclin.dev_program":
+            moves[t] += [c for c in cs if c not in moves[t]]
+    changed = True
+    while changed:
+        changed = False
+        for t, ft, cs, fs in fks:
+            for c, f in zip(cs, fs):
+                if f in moves.get(ft, []) and t != "preclin.dev_program" and c not in moves[t]:
+                    moves[t].append(c)
+                    changed = True
+    return dict(moves)
+
+
 def parents_first(tables: list[str], fks: list[tuple[str, str]]) -> list[str]:
     """The tables ordered so that a table another of them references (child, parent) comes before it."""
     deps = {t: {p for c, p in fks if c == t and p in tables and p != t} for t in tables}
@@ -652,7 +671,7 @@ def parents_first(tables: list[str], fks: list[tuple[str, str]]) -> list[str]:
     return out
 
 
-def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int, int]]]) -> None:
+def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int, int]]], cause: str) -> None:
     """Merge each group (members, preferred name, UNII, member -> UNII decision) into one
     entity: the member already named by the preferred name, else the one with a UNII
     that is not a formulation substance, a UNII, and the most intervention names,
@@ -691,28 +710,36 @@ def merge_groups(groups: list[tuple[list[int], str | None, str | None, dict[int,
             renames.append((winner, key, name, codes, sorted(names - {name}), unii or ent[winner][4],
                             dids.get(winner) if unii else ent[winner][5]))
         cur.execute("CREATE TEMP TABLE merge_map (loser int PRIMARY KEY, winner int NOT NULL) ON COMMIT DROP")
-        execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
-        cur.execute("""SELECT c.table_name FROM information_schema.columns c
-                       JOIN information_schema.tables t USING (table_schema, table_name)
-                       WHERE c.table_schema = 'preclin' AND c.column_name = 'moiety_id' AND t.table_type = 'BASE TABLE'
-                         AND c.table_name NOT IN ('moiety', 'dev_program')""")
-        tables = [t for t, in cur.fetchall()]
-        cur.execute("""SELECT conrelid::regclass::text, confrelid::regclass::text FROM pg_constraint
-                       WHERE contype = 'f' AND connamespace = 'preclin'::regnamespace""")
-        tables = parents_first(tables, [(c.removeprefix("preclin."), p.removeprefix("preclin.")) for c, p in cur.fetchall()])
+        if mapping:  # groups of one only take their substance and name below
+            execute_values(cur, "INSERT INTO merge_map VALUES %s", mapping)
+            decision = {m: did for _, _, _, dids in groups for m, did in dids.items()}
+            execute_values(cur, """INSERT INTO preclin.moiety_merge (loser_id, loser_name, survivor_id, cause,
+                                     llm_decision_id) VALUES %s""",
+                           [(lo, ent[lo][1], wi, cause, decision.get(lo)) for lo, wi in mapping])
+        cur.execute("""SELECT c.conrelid::regclass::text, c.confrelid::regclass::text,
+                              array_agg(a.attname ORDER BY k.ord), array_agg(f.attname ORDER BY k.ord)
+                       FROM pg_constraint c
+                       CROSS JOIN LATERAL unnest(c.conkey, c.confkey) WITH ORDINALITY k(col, fcol, ord)
+                       JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = k.col
+                       JOIN pg_attribute f ON f.attrelid = c.confrelid AND f.attnum = k.fcol
+                       WHERE c.contype = 'f' GROUP BY c.oid, 1, 2""")
+        fks = [(t, ft, list(cs), list(fs)) for t, ft, cs, fs in cur.fetchall()]
+        moves = entity_columns(fks)
+        tables = parents_first(sorted(moves), [(t, ft) for t, ft, _, _ in fks])
         for table in tables:  # copy every row keyed on a loser to its winner, parents before their children
-            cur.execute("""SELECT string_agg(quote_ident(column_name), ', ' ORDER BY ordinal_position),
-                                  string_agg('t.' || quote_ident(column_name), ', ' ORDER BY ordinal_position)
-                           FROM information_schema.columns
-                           WHERE table_schema = 'preclin' AND table_name = %s AND column_name <> 'moiety_id'""",
-                        (table,))
-            cols, t_cols = cur.fetchone()
-            cur.execute(f"""INSERT INTO preclin.{table} (moiety_id, {cols})
-                            SELECT mm.winner, {t_cols}
-                            FROM preclin.{table} t JOIN merge_map mm ON mm.loser = t.moiety_id
-                            ON CONFLICT DO NOTHING""")
+            for col in moves[table]:
+                cur.execute("""SELECT string_agg(quote_ident(column_name), ', ' ORDER BY ordinal_position),
+                                      string_agg(CASE WHEN column_name = %s THEN 'mm.winner'
+                                                      ELSE 't.' || quote_ident(column_name) END, ', '
+                                                 ORDER BY ordinal_position)
+                               FROM information_schema.columns
+                               WHERE table_schema || '.' || table_name = %s""", (col, table))
+                cols, picks = cur.fetchone()
+                cur.execute(f"""INSERT INTO {table} ({cols}) SELECT {picks}
+                                FROM {table} t JOIN merge_map mm ON mm.loser = t.{col} ON CONFLICT DO NOTHING""")
         for table in reversed(tables):  # then remove the losers' rows, children before their parents
-            cur.execute(f"DELETE FROM preclin.{table} t USING merge_map mm WHERE t.moiety_id = mm.loser")
+            for col in moves[table]:
+                cur.execute(f"DELETE FROM {table} t USING merge_map mm WHERE t.{col} = mm.loser")
         cur.execute("DELETE FROM preclin.dev_program p USING merge_map mm WHERE p.moiety_id IN (mm.loser, mm.winner)")
         cur.execute("DELETE FROM preclin.moiety m USING merge_map mm WHERE m.moiety_id = mm.loser")
         execute_values(cur, """UPDATE preclin.moiety m SET moiety_key = v.key, name = v.name, code_names = v.codes,
@@ -905,7 +932,7 @@ def same_entities(dry_run: bool = False, named: bool = True) -> None:
     print(f"same-entity checks={len(items)} named pairs={len(pairs)} confirmed={len(sources)} "
           f"named merges={len(named_merges)} groups={len(merges)}")
     if not dry_run:
-        merge_groups(merges)
+        merge_groups(merges, "same_entity")
 
 
 CODES_SYSTEM = """You decide which drug entities a sponsor code belongs to.
