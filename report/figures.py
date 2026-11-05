@@ -377,7 +377,7 @@ def s3_specificity():
 
 
 BLOCK_HEADERS = {"precedent": "For comparison: whether earlier drugs on the same target had already succeeded"}
-LITERATURE_NOTE = "not measured: the literature search missed too many studies"
+LITERATURE_NOTE = "not measured: our search found too few of the studies"
 LABEL_PAD = 300  # points between the evidence labels, left-aligned, and the first panel
 
 

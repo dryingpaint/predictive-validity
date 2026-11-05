@@ -135,7 +135,7 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Most human cell types need the gene, with hindsight", "pan_essential_untimed", "target",
              descriptive=True),
     ]),
-    "precedent": (Line("Earlier drugs on the same target (for comparison)", "cat_precedent", "target"), [
+    "precedent": (Line("Earlier drugs on the same target", "cat_precedent", "target"), [
         Line("A drug on the target already approved for a related disease", "b1", "target"),
         Line("A drug on the target approved only for unrelated diseases", "approved_unrelated_only", "target"),
         Line("Another drug on the target failed in a related disease in the last 3 years", "earlier_failure",
