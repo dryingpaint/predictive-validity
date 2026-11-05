@@ -10,6 +10,7 @@ parsed output and usage with the run's prompt, schema and code commit.
 """
 from __future__ import annotations
 
+import fcntl
 import hashlib
 import json
 import os
@@ -405,12 +406,21 @@ def _read_manifest(task: Task) -> dict[str, dict[str, list[str]]]:
     return json.load(open(path)) if os.path.exists(path) else {}
 
 
-def _write_manifest(task: Task, manifest: dict[str, dict[str, list[str]]]) -> None:
+def _update_manifest(task: Task, batch_id: str, entry: dict[str, list[str]] | None) -> None:
+    """Record one submitted batch (entry) or drop one (None). Several processes run the same task at once, so
+    each change is a read-modify-write of the file under an exclusive lock, never a rewrite of a stale copy."""
     os.makedirs(BATCH_MANIFESTS, exist_ok=True)
-    tmp = _manifest_path(task) + ".tmp"
-    with open(tmp, "w") as f:
-        json.dump(manifest, f)
-    os.replace(tmp, _manifest_path(task))
+    with open(_manifest_path(task) + ".lock", "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        manifest = _read_manifest(task)
+        if entry is None:
+            manifest.pop(batch_id, None)
+        else:
+            manifest[batch_id] = entry
+        tmp = f"{_manifest_path(task)}.{os.getpid()}.tmp"
+        with open(tmp, "w") as f:
+            json.dump(manifest, f)
+        os.replace(tmp, _manifest_path(task))
 
 
 def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str]) -> None:
@@ -435,7 +445,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
                     for i, key in enumerate(chunk)]
         batch = _api(api.messages.batches.create, requests=requests)
         manifest[batch.id] = {f"r{start + i}": [key, shas[key]] for i, key in enumerate(chunk)}
-        _write_manifest(task, manifest)
+        _update_manifest(task, batch.id, manifest[batch.id])
         custom_ids.update({(batch.id, f"r{start + i}"): key for i, key in enumerate(chunk)})
         pending.append(batch.id)
         print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
@@ -457,7 +467,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             _run_concurrent(api, run_id, task, items, keys)
             pending.remove(batch_id)
             manifest.pop(batch_id, None)
-            _write_manifest(task, manifest)
+            _update_manifest(task, batch_id, None)
         ended = [b for b in pending if b in status and status[b].processing_status == "ended"]
         for batch_id in ended:
             rows, n_ok, n_bad = [], 0, 0
@@ -473,7 +483,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             _store(rows)
             pending.remove(batch_id)
             manifest.pop(batch_id, None)
-            _write_manifest(task, manifest)
+            _update_manifest(task, batch_id, None)
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 
