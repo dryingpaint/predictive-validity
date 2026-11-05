@@ -47,7 +47,20 @@
   "entities_sharing_a_lowercase_name": 0,
   "entity_pairs_where_one_is_named_by_the_others_code_or_alias": 213,
   "of_which_the_named_one_has_no_unii": 191,
-  "note": "Candidates only (some are biosimilars or combinations); no entity was merged."
+  "note": "Candidates only (some are biosimilars or combinations); no entity was merged.",
+  "agatolimod": {
+   "moiety_ids": [
+    6803,
+    36102,
+    41170
+   ],
+   "names": [
+    "agatolimod (UNII 5V336PV3HG; codes CpG 7909, PF-3512676, ProMune)",
+    "agatolimod sodium (UNII I4Z5C8FM6H, its salt)",
+    "cpg 7909 (no UNII)"
+   ],
+   "note": "one compound as three entities; FDA application 125761 (Cyfendus) links to 41170 'cpg 7909', not agatolimod. Not merged here."
+  }
  },
  "routing_upper_bound": {
   "what": "Intervention strings routed to an entity that loses a code the string carries. An upper bound on misrouting: a string can carry a removed code and still be routed correctly (\"Canakinumab (AIN457)\" in NCT02911857 is a canakinumab trial with a typo). This step rewrites moiety.code_names only; drug_moiety and ctgov_study_moiety are untouched.",
@@ -936,5 +949,26 @@
     "HSV-Tk [listed as: AdV-tk gene therapy]"
    ]
   }
- ]
+ ],
+ "write": {
+  "run": "2026-11-04, after predictive-validity-94's fda link committed",
+  "codes_before": 25607,
+  "codes_after": 25547,
+  "removed": 60,
+  "verified": {
+   "canakinumab": [
+    "ACZ885",
+    "ACZ885D",
+    "GNR-086"
+   ],
+   "foslinanib": [
+    "CVM-1118",
+    "SCB01A",
+    "TRX-818"
+   ],
+   "nelonicline": [
+    "ABT-126"
+   ]
+  }
+ }
 }
