@@ -178,7 +178,9 @@
    "proposed_year": 2014,
    "rule": "12",
    "note": "Quote verbatim. Paper cites MINT as 'recently reported' (ref 46, JCO 2013): post hoc, so retro not same. But MINT is a sibling population of the HER2-positive context; efficacy #3 was adjudicated untested on that basis, so untested here too.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 12 (with 3): MINT is a sibling population; efficacy does not transfer, only safety. Decision 10 cannot score a retro on an inadmissible patient side; follows efficacy #3 (first pass). Model never tested in-population: untested (decision 8)."
   },
   {
    "cell": "safety",

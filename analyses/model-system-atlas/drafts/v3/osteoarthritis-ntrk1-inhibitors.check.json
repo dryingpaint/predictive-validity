@@ -120,7 +120,9 @@
    "proposed_year": 2019,
    "rule": "4",
    "note": "Watt 2019 full text read; quote verbatim, no reference attached. Watt floats 'more complete and longer-lasting blockade' as the gap and unbound trough fell below IC50: a lifelong complete loss was never produced, so a failure attributed to conditions the model never tested is untested (decision 4), collapsing into the 1996 entry.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35): Watt attributes the gap to blockade degree and duration (source_calls_it scaling), conditions a lifelong complete loss never tested; dose #2 stands unresolved, so 'reached' is unshown. Untested; track stays at Indo 1996."
   },
   {
    "cell": "efficacy",
@@ -144,7 +146,9 @@
    "proposed_year": 2019,
    "rule": "4",
    "note": "Same Watt sentence, verbatim, with no citation, so the TrkA-null identity is inferred (Indo 1996 supports it). A lethal developmental null never tested a 4-week partial inhibitor; Watt's blockade-degree explanation makes this untested, not contra (decision 4).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35): same Watt sentence as efficacy #4; failure attributed to blockade degree/duration (scaling), conditions a lethal developmental null never tested, and the model identity is only inferred. Untested; track stays at Smeyne 1994."
   },
   {
    "cell": "efficacy",
@@ -168,7 +172,9 @@
    "proposed_year": 2019,
    "rule": "4",
    "note": "Quote verbatim (Watt ref 7). Watt uses the knockout only to reject the mAb-completeness excuse and leaves the failure unexplained; the draft's own source_calls_it 'unresolved' maps to untested (decision 4, #90). The knockout tested acute exogenous-NGF hyperalgesia, never a partial TrkA inhibitor in chronic OA pain.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: decision 4: is a receptor-sufficiency knockout's prediction tested when a selective inhibitor fails, the source rejects the excuse, leaves it unexplained, and exposure adequacy is unresolved (dose #2, RQ1)? #90 covers unresolvable readouts, not unexplained failures."
   },
   {
    "cell": "efficacy",
@@ -212,7 +218,8 @@
    "status_supported": true,
    "rule": "8",
    "note": "Krupka full text read; quote verbatim (IJIR 67.3% vs 0%, onset within hours, hsCRP >=2-fold). Contra under decision 4 holds, but the identical Flannery-to-Krupka pairing was already adjudicated contra on rat-mia-knee-oa safety index 2; one comparison now sits on two tracks and one must go (decision 8).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudication_note": "Decision 8: keep the Flannery 2015 → Krupka 2019 IJIR contra here; naive-knee IA biocompatibility is this system, not rat MIA OA. Count it once: rat-mia-knee-oa safety #2 (first-pass contra) should revert to the drafted untested."
   }
  ],
  "missing": [
