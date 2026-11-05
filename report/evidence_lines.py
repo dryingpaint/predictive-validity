@@ -62,6 +62,7 @@ class Line:
     applies: str = "all"  # entries the line is scored on (APPLIES)
     status: str = ""  # why a line has no column
     descriptive: bool = False  # shown in coverage but not part of its category
+    key: str | None = None  # the registry key of a line with no column, fixed so that rewording the label keeps it
 
 
 LITERATURE = "descriptive: failed the literature gate twice (report/audits/literature_gate.md)"
@@ -83,59 +84,65 @@ WITHIN = {"small_molecule_profiled": "small_molecule", "onc_screened": "target"}
 # produced the evidence. A category line is rolled up from its subcategories (category_columns).
 CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
     "human_genetics": (Line("Human genetics", "cat_human_genetics", "target"), [
-        Line("Germline genetics for the disease", "g3", "target"),
-        Line("Rare-variant or Mendelian", "rare_variant", "target"),
-        Line("GWAS", "gwas", "target"),
-        Line("GWAS and rare-variant evidence together", "allelic_series", "target"),
-        Line("Genetics points the same way as the drug", "genetics_concordant", "target"),
-        Line("Curated disease mechanism (Reactome)", "reactome", "target"),
+        Line("Inherited variants linked to the disease", "g3", "target"),
+        Line("Rare inherited variants, including single-gene disease", "rare_variant", "target"),
+        Line("Common variants (genome-wide association studies)", "gwas", "target"),
+        Line("Both common and rare variants", "allelic_series", "target"),
+        Line("Genetics agrees with the drug's direction", "genetics_concordant", "target"),
+        Line("Target in a known disease pathway", "reactome", "target"),
     ]),
     "tumour_genetics": (Line("Tumour genetics", "cat_tumour_genetics", "ONC"), [
         Line("Gene recurrently mutated in this cancer", "somatic", "ONC"),
-        Line("Mutation matches the drug", "somatic_concordant", "ONC"),
+        Line("The mutation's effect matches the drug's action", "somatic_concordant", "ONC"),
     ]),
     "diseased_tissue": (Line("Human diseased tissue", "cat_diseased_tissue", "target"), [
-        Line("Target's RNA level changed in diseased tissue", "expression", "target"),
-        Line("RNA raised, with a drug that lowers function", "expression_up_inhibitor", "target"),
+        Line("Target gene's activity changed in diseased tissue", "expression", "target"),
+        Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "target"), [
-        Line("Genetically altered mouse model of the disease", "altered_animal", "target"),
-        Line("Literature-curated mouse model (MGI)", "mgi", "target"),
-        Line("Systematic knockout screen (IMPC)", "impc", "target"),
-        Line("Close phenotype match (top quartile)", "animal_close", "target"),
-        Line("Altered animal points the same way as the drug", "animal_concordant", "target"),
-        Line("The drug in an animal model of the disease", None, "all", LITERATURE),
-        Line("The drug's pharmacology in healthy animals", None, "all", LITERATURE),
+        Line("Mice with the gene altered show the disease", "altered_animal", "target"),
+        Line("Mouse model from published studies", "mgi", "target"),
+        Line("Mouse knockout from a large-scale screen", "impc", "target"),
+        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
+        Line("Mouse result agrees with the drug's direction", "animal_concordant", "target"),
+        Line("The drug in an animal model of the disease", None, "all", LITERATURE,
+             key="the_drug_in_an_animal_model_of_the_disease"),
+        Line("The drug tested in healthy animals", None, "all", LITERATURE,
+             key="the_drug_s_pharmacology_in_healthy_animals"),
     ]),
     "cell": (Line("Cell studies", "cat_cell", "onc_screened"), [
-        Line("CRISPR screen in cells", "crispr", "target"),
-        Line("Dependency in this cancer's cell lines (RNAi, CRISPR)", "cell_dependency", "onc_screened"),
-        Line("CRISPR screen in cells, on today's data (hindsight)", "crispr_untimed", "target", descriptive=True),
+        Line("Gene-knockout screens in human cells", "crispr", "target"),
+        Line("Cancer cells of this type need the gene to grow", "cell_dependency", "onc_screened"),
+        Line("Gene-knockout screens in human cells, with hindsight", "crispr_untimed", "target", descriptive=True),
     ]),
     "molecule": (Line("The molecule", "cat_molecule", "small_molecule_profiled"), [
-        Line("Potency at the primary target, 100 nM or better", "potent_100nm", "small_molecule"),
-        Line("Potency at the primary target, 10 nM or better", "potent_10nm", "small_molecule", descriptive=True),
-        Line("At least 10-fold selective over measured off-targets", "selective", "small_molecule"),
-        Line("Drug-like (at most one Rule-of-5 violation)", "drug_like", "small_molecule"),
-        Line("Brain-penetrant properties (neurology and psychiatry)", "brain_penetrant", "brain"),
+        Line("Drug binds its target strongly (100 nM or better)", "potent_100nm", "small_molecule"),
+        Line("Drug binds its target very strongly (10 nM or better)", "potent_10nm", "small_molecule",
+             descriptive=True),
+        Line("Drug binds its target 10× more strongly than other proteins tested", "selective", "small_molecule"),
+        Line("Drug-like size and chemistry", "drug_like", "small_molecule"),
+        Line("Chemistry suited to entering the brain (brain diseases)", "brain_penetrant", "brain"),
     ]),
-    "early_human": (Line("Early human pharmacology", None, "phase_2_3", LITERATURE), [
-        Line("Target engagement measured in people", None, "phase_2_3", LITERATURE),
+    "early_human": (Line("Early studies of the drug in people", None, "phase_2_3", LITERATURE,
+                         key="early_human_pharmacology"), [
+        Line("Drug shown to act on its target in people", None, "phase_2_3", LITERATURE,
+             key="target_engagement_measured_in_people"),
     ]),
     "safety_risk": (Line("Safety risk", "liability", "target"), [
-        Line("Intolerant of loss of function", "constrained", "target"),
-        Line("Mouse knockout dies before weaning", "ko_lethal", "target"),
-        Line("Essential in most cell lines", "pan_essential", "target"),
-        Line("Essential in most cell lines, on today's data (hindsight)", "pan_essential_untimed", "target",
+        Line("People rarely carry broken copies of the gene", "constrained", "target"),
+        Line("Mice without the gene die young", "ko_lethal", "target"),
+        Line("Most human cell types need the gene", "pan_essential", "target"),
+        Line("Most human cell types need the gene, with hindsight", "pan_essential_untimed", "target",
              descriptive=True),
     ]),
-    "precedent": (Line("Clinical precedent (benchmark)", "cat_precedent", "target"), [
-        Line("Approved drug on the target, related disease", "b1", "target"),
-        Line("Approved drug on the target, unrelated disease only", "approved_unrelated_only", "target"),
-        Line("Earlier failed trial on the target, related disease, within 3 years", "earlier_failure", "from_2011"),
+    "precedent": (Line("Earlier drugs on the same target (for comparison)", "cat_precedent", "target"), [
+        Line("A drug on the target already approved for a related disease", "b1", "target"),
+        Line("A drug on the target approved only for unrelated diseases", "approved_unrelated_only", "target"),
+        Line("Another drug on the target failed in a related disease in the last 3 years", "earlier_failure",
+             "from_2011"),
     ]),
 }
-ADJUSTMENTS = [Line("Biomarker-selected enrollment", "biomarker_selected", "all")]
+ADJUSTMENTS = [Line("Trial enrolled patients selected by a biomarker", "biomarker_selected", "all")]
 
 
 def failed_trials() -> pd.DataFrame:
@@ -362,7 +369,8 @@ def registry() -> pd.DataFrame:
         rows += [(s, cat, "descriptive" if s.descriptive else "subcategory") for s in subs]
     rows += [(a, "adjustment", "adjustment") for a in ADJUSTMENTS]
     rows += [(m, "molecule", "measurement") for m in MEASUREMENTS]
-    return pd.DataFrame([{"line_key": ln.column or slug(ln.label), "position": i, "category": cat, "level": level,
+    return pd.DataFrame([{"line_key": ln.column or ln.key or slug(ln.label), "position": i, "category": cat,
+                          "level": level,
                           "label": ln.label, "applies": ln.applies, "status": ln.status}
                          for i, (ln, cat, level) in enumerate(rows)])
 
