@@ -15,7 +15,7 @@ result, never compared when none did, and a retrodiction never sets it (decision
 - Register: 1,693 disease × mechanism rows; 119 tracked tiles in 48 of the 71 diseases (atlas build 428a6a37).
 - Rules v3: 16 decisions, all taken (`drafts/DECISIONS.md`); `drafts/lint.py` enforces them on any draft with `"schema": 3`.
 - Drafted under v3 and stored: 30 tiles, 456 entries, 191 tracks (κ 0.93 drafter–checker). The other 89 are in `drafts/v3/tiles.json` (orders 31–119) and are being drafted in waves through the same five passes.
-- Figures: `atlas_glance.*` (the verdict per cell, journal format) and `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
+- Figures: `atlas_glance_main.*` (the top 15 diseases by burden, one tile each) and `atlas_glance_supplement*.*` (every drafted tile), both journal format; `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
 - The v2 run (70 contexts), its matrices and the pilot renders were removed from the tree on 2026-11-05; they are in git history at 4d478a3. `contexts/` and `figure.py` stay because `figure_map.py` draws from them.
 
 ## Data in, data out
@@ -33,7 +33,7 @@ unit (a build, a document, a tile) so a re-run is safe. Nothing else writes.
 | `drafts/v3/merge_models.py`, `collect_questions.py` | — | `drafts/v3/` | the merged `<slug>.json`; `RULE_QUESTIONS_v3.md` | — |
 | `drafts/v3/route_store.py` → `drafts/track_store.py` | `atlas_register`, `atlas_track_entry` | a lint-clean `<slug>.json` whose verdicts are settled | — | `atlas_track_entry`, `atlas_track_verdict`: the tile is replaced |
 | `report_page.py` | `atlas_build`, `atlas_indication`, `atlas_mechanism`, `atlas_register`, `atlas_track_entry`, `atlas_track_verdict` | `report/template.html` | `report/atlas.html` (ignored) | — |
-| `glance.py`, `glance_nature.py` | `atlas_track_entry`, `atlas_track_verdict` | `drafts/v3/tiles.json`, `drafts/v3/short_labels.json` | `glance.csv`; `atlas_glance.png`, `.svg`, `.pdf` | — |
+| `glance.py`, `glance_nature.py` | `atlas_track_entry`, `atlas_track_verdict` | `drafts/v3/tiles.json`, `drafts/v3/short_labels.json`, `lists/burden.csv` | `glance.csv`; `atlas_glance_main.*`, `atlas_glance_supplement*.*` | — |
 | `burden.py` | — | `lists/who_ghe_2021_global_dalys.csv` (WHO Global Health Estimates 2021, global DALYs by cause); `lists/named_contexts.csv` | `lists/burden.csv`: each tracked disease's WHO cause, match grade, 2021 DALYs and rank | — |
 | `indications.py` | `dev_program_trial`, `ctgov_study_indication`, `indication`, `ontology_ancestor`; the cohort frames | `lists/named_indications.csv` | `lists/indications.csv`, `indications_by_disease.csv`; `disease_indications.png`, `.svg` | — |
 
@@ -77,7 +77,7 @@ Open calls are listed in PR #81: whether the headline follows the main model or 
 | `indications.py` → `lists/indications.csv`, `lists/indications_by_disease.csv`, `disease_indications.png` | each named disease's programs and the indications (stage, subtype, line of therapy) those programs were tested in, from the trials' condition rows; read-only |
 | `burden.py` → `lists/burden.csv` | the 48 tracked diseases mapped by hand to WHO Global Health Estimates causes with a match grade (exact, broader, shared, none) and ranked by global DALYs in 2021; the ordering for the main-paper cut and for the drafting waves |
 | `glance.py` → `glance.csv` | the atlas at a glance, as data: one headline per drafted cell under decision 6 (`report_page.headline`, adjudicated statuses), with the year, the model, the reason on a failure, and the dissenting track when another model contradicted; read-only |
-| `glance_nature.py` → `atlas_glance.png`, `.svg`, `.pdf`, `atlas_glance_caption.md` | the figure: 183 × 245 mm, Helvetica 5–8 pt, the Capable palette; labels that do not fit a cell are shortened by hand in `drafts/v3/short_labels.json`, never cut; the caption file carries the title and definitions |
+| `glance_nature.py main` → `atlas_glance_main.*`; `glance_nature.py supplement` → `atlas_glance_supplement*.*`; `atlas_glance_caption.md` | the figures: 183 mm wide, Helvetica 5–8 pt, the Capable palette. Main: the top 15 diseases by WHO 2021 DALYs, one tile each (most programs). Supplement: every drafted tile, paginated, diseases by DALY rank then by area. Panel a is over every drafted tile on both. Labels that do not fit a cell are shortened by hand in `drafts/v3/short_labels.json`, never cut; the caption file carries both captions |
 | `drafts/track_store.py`, `drafts/v3/route_store.py` | store a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile; `route_store.py` stores every tile whose verdicts are settled and lists the ones waiting for adjudication |
 | `drafts/v3/tiles.json`, `drafts/v3/*_TASK.md`, `merge_models.py`, `collect_questions.py` | the 119 tile specs (members, modality groups, class share, the v2 lead), the five agent task prompts, the model-sweep merge, and the rule-question collector |
 | `fc.py` | `scrape <url>` and `search "<query>"` through Firecrawl, the agents' fallback when WebFetch is refused or the search budget is spent |
@@ -102,7 +102,8 @@ uv sync
 .venv/bin/python analyses/model-system-atlas/drafts/v3/route_store.py [slug ...]   # writes atlas_track_entry / atlas_track_verdict
 .venv/bin/python analyses/model-system-atlas/drafts/v3/collect_questions.py
 .venv/bin/python analyses/model-system-atlas/report_page.py
-.venv/bin/python analyses/model-system-atlas/glance.py && .venv/bin/python analyses/model-system-atlas/glance_nature.py
+.venv/bin/python analyses/model-system-atlas/glance.py
+.venv/bin/python analyses/model-system-atlas/glance_nature.py main && .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement
 .venv/bin/python analyses/model-system-atlas/indications.py
 .venv/bin/python analyses/model-system-atlas/burden.py                            # WHO DALYs per tracked disease
 uv run pytest tests/test_atlas_glance.py tests/test_atlas_indications.py

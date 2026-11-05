@@ -69,3 +69,23 @@ def test_wrap_never_cuts_what_fits_and_records_what_it_cuts():
     assert len(lines) == 2 and lines[-1].endswith("…")
     assert glance_nature.CUT == ["a long model name that needs several lines of text"]
     assert glance_nature.wrap("", 5, 1.0, 2) == [""]
+
+
+def test_order_tiles_main_cut_is_one_tile_per_ranked_disease_with_the_most_programs(tmp_path, monkeypatch):
+    burden = pd.DataFrame([{"mondo_id": "MONDO:T2D", "rank": 1}, {"mondo_id": "MONDO:COPD", "rank": 2}, {"mondo_id": "MONDO:CF", "rank": None}])
+    (tmp_path / "lists").mkdir()
+    burden.to_csv(tmp_path / "lists" / "burden.csv", index=False)
+    monkeypatch.setattr(glance_nature, "HERE", str(tmp_path))
+    tiles = pd.DataFrame([
+        {"slug": "t2d-a", "area": "endocrine", "mondo_id": "MONDO:T2D", "disease": "type 2 diabetes mellitus", "mechanism": "A", "programs": 3},
+        {"slug": "t2d-b", "area": "endocrine", "mondo_id": "MONDO:T2D", "disease": "type 2 diabetes mellitus", "mechanism": "B", "programs": 12},
+        {"slug": "copd-c", "area": "respiratory", "mondo_id": "MONDO:COPD", "disease": "COPD", "mechanism": "C", "programs": 6},
+        {"slug": "cf-d", "area": "respiratory", "mondo_id": "MONDO:CF", "disease": "cystic fibrosis", "mechanism": "D", "programs": 10},
+    ])
+    df = pd.concat([tiles.assign(question=q) for q in ("engagement", "dose", "efficacy", "safety")])
+    main = glance_nature.order_tiles(df, "burden", top=15, one_per_disease=True)
+    assert list(main.slug) == ["t2d-b", "copd-c"] and list(main.group) == ["#1", "#2"]
+    supplement = glance_nature.order_tiles(df, "burden")
+    assert list(supplement.slug) == ["t2d-b", "t2d-a", "copd-c", "cf-d"] and list(supplement.group) == ["#1", "#1", "#2", "Respiratory"]
+    by_area = glance_nature.order_tiles(df, "area")
+    assert list(by_area.group) == ["Endocrine", "Endocrine", "Respiratory", "Respiratory"]

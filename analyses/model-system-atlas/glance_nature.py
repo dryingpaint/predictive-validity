@@ -1,7 +1,12 @@
-"""The atlas at a glance as a journal figure: a full-page, double-column (183 × 247 mm) version of glance.py in
-the Nature Portfolio format, with the Capable house palette (issue #76).
+"""The atlas at a glance as a journal figure, double-column (183 mm) in the Nature Portfolio format with the
+Capable house palette (issue #76).
 
-    .venv/bin/python analyses/model-system-atlas/glance_nature.py
+    .venv/bin/python analyses/model-system-atlas/glance_nature.py main          # atlas_glance_main.*
+    .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement    # atlas_glance_supplement_p*.*
+
+main: the top 15 diseases by global DALYs in 2021 (lists/burden.csv), one tile each, the mechanism with the most
+programs. supplement: every drafted tile, diseases in DALY order then the rest by area, paginated. Panel a (the
+verdict by question) is over every drafted tile on both.
 
 Same data and headline rule as glance.py (imported from it). No in-figure title: the caption in
 atlas_glance_caption.md carries it. Panel a: the verdict by question. Panel b: one row per tile, one cell per
@@ -32,7 +37,10 @@ MUTED, RULE, RULE_AREA = "#6b7372", "#dcdfdf", "#9aa1a1"
 STATUS = {"same": (CAPABLE, "Matched"), "contra": ("#F0563D", "Contradicted"), "retro": ("#7C5CFC", "Retrodiction only"),
           "untested": ("#e2e5e5", "Never compared")}
 AREA = {"infectious_disease": "Infectious disease", "other": "Other"}
-AREA_SHORT = {"Infectious disease": "Infectious", "Metabolic": "Metab.", "Ophthalmology": "Ophth.", "Gastroenterology": "GI", "Hematology": "Hemat."}
+# gutter labels for groups too short to carry the full name (a one-row group is 0.27 in)
+AREA_SHORT = {"Infectious disease": "Inf.", "Metabolic": "Met.", "Ophthalmology": "Oph.", "Gastroenterology": "GI", "Hematology": "Hem.",
+              "Psychiatry": "Psy.", "Respiratory": "Resp.", "Urology": "Uro.", "Autoimmune": "Aut.", "Endocrine": "End.", "Neurology": "Neu.",
+              "Oncology": "Onc.", "Allergy": "All.", "Other": "Oth."}
 RC = {"svg.hashsalt": "atlas", "hatch.linewidth": 0.6, "font.family": ["Helvetica", "Arial", "DejaVu Sans"], "svg.fonttype": "none", "pdf.fonttype": 42, "ps.fonttype": 42,
       "figure.facecolor": "white", "savefig.facecolor": "white", "text.color": INK}
 
@@ -81,21 +89,77 @@ def wrap(s: str, size: float, max_w: float, max_lines: int, first_w: float | Non
     return lines
 
 
-def draw(df: pd.DataFrame, out: str) -> None:
-    plt.rcParams.update(RC)
-    tiles = df.drop_duplicates("slug").sort_values(["area", "disease", "mechanism"])
-    order = sorted(set(tiles.area), key=lambda a: (a == "other", a))
-    fig = plt.figure(figsize=(W, H), dpi=300)
-    ax = fig.add_axes([0, 0, 1, 1])
-    ax.set_xlim(0, W)
-    ax.set_ylim(H, 0)
-    ax.axis("off")
-    T = {"va": "center", "color": INK}
+PAGE_ROWS_FIRST, PAGE_ROWS_NEXT = 30, 33  # rows that fit under panel a, and on a page with only the column header
 
-    # ── panel a: the verdict by question ───────────────────────────────────────────
+
+def order_tiles(df: pd.DataFrame, order: str, top: int | None = None, one_per_disease: bool = False) -> pd.DataFrame:
+    """One row per tile. `area`: grouped by area, then disease and mechanism. `burden`: diseases by WHO DALY rank
+    (lists/burden.csv), tiles within a disease by programs; the top N diseases when `top` is set; one tile per
+    disease, the mechanism with the most programs, when `one_per_disease`; diseases without a rank follow, by area."""
+    tiles = df.drop_duplicates("slug").copy()
+    tiles["area_name"] = tiles.area.map(lambda a: AREA.get(a, a.capitalize()))
+    tiles["area_order"] = tiles.area.map(lambda a: (a == "other", a))
+    if order == "area":
+        tiles["group"] = tiles.area_name
+        return tiles.sort_values(["area_order", "disease", "mechanism"]).drop(columns=["area_order", "area_name"])
+    burden = pd.read_csv(os.path.join(HERE, "lists", "burden.csv")).dropna(subset=["rank"])
+    rank = dict(zip(burden.mondo_id, burden["rank"].astype(int)))
+    tiles["rank"] = tiles.mondo_id.map(rank)
+    tiles = tiles.sort_values(["rank", "programs", "mechanism"], ascending=[True, False, True], na_position="last")
+    if one_per_disease:
+        tiles = tiles.drop_duplicates("mondo_id")
+    ranked = tiles[tiles["rank"].notna()]
+    if top:
+        ranked = ranked[ranked["rank"] <= top]
+    ranked = ranked.assign(group=ranked["rank"].map(lambda r: f"#{int(r)}"))
+    rest = tiles[tiles["rank"].isna()].sort_values(["area_order", "disease", "mechanism"]).assign(group=lambda t: t.area_name)
+    out = ranked if top else pd.concat([ranked, rest])
+    return out.drop(columns=["area_order", "area_name"])
+
+
+def draw(df: pd.DataFrame, out: str, order: str = "area", top: int | None = None, one_per_disease: bool = False, note: str = "") -> list[str]:
+    """Panel a over every drafted tile; panel b over the ordered selection, paginated. Returns the files written."""
+    plt.rcParams.update(RC)
+    tiles = order_tiles(df, order, top, one_per_disease)
+    n_all = df.slug.nunique()
+    pages, start = [], 0
+    while start < len(tiles):
+        n = PAGE_ROWS_FIRST if not pages else PAGE_ROWS_NEXT
+        pages.append(tiles.iloc[start:start + n])
+        start += n
+    written = []
+    for pi, page in enumerate(pages):
+        first = pi == 0
+        H_page = H if len(pages) > 1 else min(H, (1.46 if first else 0.62) + ROW * len(page) + 0.12)
+        fig = plt.figure(figsize=(W, H_page), dpi=300)
+        ax = fig.add_axes([0, 0, 1, 1])
+        ax.set_xlim(0, W)
+        ax.set_ylim(H_page, 0)
+        ax.axis("off")
+        T = {"va": "center", "color": INK}
+        if first:
+            draw_verdict(ax, df, n_all, T)
+            if note:
+                ax.text(0.08, 1.1, note, fontsize=5.5, color=MUTED, va="center")
+        top_y = 1.2 if first else 0.2
+        ax.text(0.08, top_y, "b" if first else "", fontsize=8, fontweight="bold", **T)
+        if len(pages) > 1:
+            ax.text(W - 0.08, top_y, f"page {pi + 1} of {len(pages)}", fontsize=5.5, color=MUTED, ha="right", va="center")
+        draw_rows(ax, df, page, top_y, T)
+        suffix = f"_p{pi + 1}" if len(pages) > 1 else ""
+        meta = {"Date": None}  # no timestamp, so a re-render of the same data is byte-identical
+        fig.savefig(out + suffix + ".png", dpi=300, metadata=meta)
+        fig.savefig(out + suffix + ".svg", metadata=meta)
+        fig.savefig(out + suffix + ".pdf", metadata={"CreationDate": None, "ModDate": None})
+        plt.close(fig)
+        written.append(out + suffix)
+    return written
+
+
+def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
+    """Panel a: the verdict by question over every drafted tile, with the legend."""
     ax.text(0.08, 0.2, "a", fontsize=8, fontweight="bold", **T)
     bx0, bw, by0, bh, bgap = 1.2, 3.75, 0.3, 0.115, 0.05
-    n_tiles = len(tiles)
     for i, (q, title, _) in enumerate(QUESTIONS):
         y = by0 + i * (bh + bgap)
         ax.text(bx0 - 0.08, y + bh / 2, title, fontsize=6, ha="right", **T)
@@ -112,7 +176,7 @@ def draw(df: pd.DataFrame, out: str) -> None:
             if w > 0.16:
                 ax.text(bx0 + x + w / 2, y + bh / 2, str(n), fontsize=5.5, ha="center", **T)
             x += w
-    ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} tiles", fontsize=5, color=MUTED, va="center")
+    ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} drafted tiles", fontsize=5, color=MUTED, va="center")
     lx, ly = 5.35, by0 + 0.01
     items = [("same", False, "Matched"), ("contra", False, "Contradicted"), ("contra", True, "Contradicted through efficacy (dose)"),
              ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
@@ -129,9 +193,9 @@ def draw(df: pd.DataFrame, out: str) -> None:
     ax.add_patch(Rectangle((lx + 0.025, yy + 0.025), 0.05, 0.05, facecolor="white", edgecolor=INK, linewidth=0.5))
     ax.text(lx + 0.16, yy + 0.05, "Surrogate matched, outcome trial negative", fontsize=5.5, **T)
 
-    # ── panel b: the tiles ─────────────────────────────────────────────────────────
-    top = 1.2
-    ax.text(0.08, top, "b", fontsize=8, fontweight="bold", **T)
+
+def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) -> None:
+    """Panel b on one page: the column header, then one row per tile, grouped in the gutter by `group`."""
     area_x, label_x, label_w = 0.1, 0.34, 1.36
     cell_x = [1.78 + i * 1.36 for i in range(4)]
     cell_w = 1.3
@@ -140,12 +204,12 @@ def draw(df: pd.DataFrame, out: str) -> None:
     y = top + 0.26
     ax.plot([area_x, W - 0.06], [y, y], color=RULE_AREA, linewidth=0.5)
     mark, pad = 0.095, 0.05
-    text_x = lambda i: cell_x[i] + mark + pad
+    text_x = lambda i: cell_x[i] + mark + pad  # noqa: E731
     text_w = cell_w - mark - pad - 0.02
-    for a in order:
-        g = tiles[tiles.area == a]
+    for g in tiles.group.unique():
+        rows = tiles[tiles.group == g]
         ya = y
-        for k, t in enumerate(g.itertuples()):
+        for k, t in enumerate(rows.itertuples()):
             y0 = y
             if k:
                 ax.plot([label_x, W - 0.06], [y0, y0], color=RULE, linewidth=0.25)
@@ -187,25 +251,33 @@ def draw(df: pd.DataFrame, out: str) -> None:
                         note = DISSENT_SHORT.get(c.dissent, c.dissent)
                     ax.text(text_x(i) + 0.075, y0 + L[j], wrap(note, 5, text_w - 0.075, 1)[0], fontsize=5, **T)
             y += ROW
-        # area: a vertical label and a bracket spanning its rows
-        ax.plot([area_x + 0.05, area_x + 0.05], [ya + 0.03, y - 0.03], color=RULE_AREA, linewidth=0.5)
-        name = AREA.get(a, a.capitalize())
-        if width_in(name, 5) > (y - ya) - 0.08:
+        name = str(g)
+        if width_in(name, 5) > (y - ya) - 0.06:
             name = AREA_SHORT.get(name, name)
+        ax.plot([area_x + 0.05, area_x + 0.05], [ya + 0.03, y - 0.03], color=RULE_AREA, linewidth=0.5)
         ax.text(area_x - 0.02, (ya + y) / 2, name, fontsize=5, color=MUTED, rotation=90, ha="center", va="center")
         ax.plot([label_x, W - 0.06], [y, y], color=RULE_AREA, linewidth=0.5)
-    meta = {"Date": None}  # no timestamp, so a re-render of the same data is byte-identical
-    fig.savefig(out + ".png", dpi=300, metadata=meta)
-    fig.savefig(out + ".svg", metadata=meta)
-    fig.savefig(out + ".pdf", metadata={"CreationDate": None, "ModDate": None})
-    plt.close(fig)
-    print(f"rows end at {y:.2f} in of {H} in; {len(CUT)} strings cut" + ("".join("\n  " + c for c in CUT)))
 
 
 def main() -> None:
+    import argparse
+
+    p = argparse.ArgumentParser(description="The atlas at a glance as a journal figure: the main cut or the full supplement.")
+    p.add_argument("figure", choices=["main", "supplement"],
+                   help="main: the top 15 diseases by WHO 2021 DALYs, one tile each (the mechanism with the most programs); "
+                        "supplement: every drafted tile, diseases by DALY rank, then those without a WHO cause by area")
+    p.add_argument("--top", type=int, default=15, help="main: how many diseases")
+    a = p.parse_args()
     e, tiles = load()
     df = cells(e, tiles)
-    draw(df, os.path.join(HERE, "atlas_glance"))
+    if a.figure == "main":
+        note = (f"Panel b: the top {a.top} diseases by global DALYs in 2021 (WHO Global Health Estimates), "
+                "each with the mechanism that had the most programs; drafted tiles only.")
+        written = draw(df, os.path.join(HERE, "atlas_glance_main"), order="burden", top=a.top, one_per_disease=True, note=note)
+    else:
+        note = "Panel b: every drafted tile; diseases by global DALYs in 2021 (WHO Global Health Estimates), then those without a WHO cause by area."
+        written = draw(df, os.path.join(HERE, "atlas_glance_supplement"), order="burden", note=note)
+    print(f"{len(written)} page(s): " + ", ".join(os.path.basename(w) for w in written) + f"; {len(CUT)} strings cut" + "".join("\n  " + c for c in CUT))
 
 
 if __name__ == "__main__":

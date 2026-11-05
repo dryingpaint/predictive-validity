@@ -84,7 +84,7 @@ def cells(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
             st, pick, last = h if h else (None, {}, {})
             contra = [x for x in last.values() if x["final"] == "contra"] if st in MATCHED else []
             dissent = max(contra, key=lambda x: (x["year"], x["seq"])) if contra else None
-            rows.append({"slug": t.slug, "area": t.area, "disease": t.disease, "mechanism": t.mechanism, "programs": t.class_programs,
+            rows.append({"slug": t.slug, "area": t.area, "mondo_id": t.mondo_id, "disease": t.disease, "mechanism": t.mechanism, "programs": t.class_programs,
                          "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model": pick.get("model"),
                          "short": pick.get("short"), "tracks": len(last), "other_tracks": max(len(last) - 1, 0),
                          "derived": pick.get("fields", {}).get("derived_from"), "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
