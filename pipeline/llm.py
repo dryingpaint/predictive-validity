@@ -129,7 +129,7 @@ class Task:
     subject_type: str
     validate: Callable[[dict[str, Any], dict[str, Any]], None] | None = None
     model: str = MODEL
-    effort: str = "medium"
+    effort: str | None = "medium"  # None for a model that takes no effort setting (Haiku 4.5)
     max_tokens: int = 8000
     # Server tools (web search, web fetch) the model may call; a task with tools runs direct calls
     # only, resumes paused turns up to MAX_CONTINUATIONS times, and records every URL it retrieved.
@@ -141,7 +141,7 @@ class Task:
             model=self.model,
             max_tokens=self.max_tokens,
             system=[{"type": "text", "text": self.system, "cache_control": {"type": "ephemeral"}}],
-            output_config={"effort": self.effort,
+            output_config={**({"effort": self.effort} if self.effort else {}),
                            "format": {"type": "json_schema", "schema": self.schema}},
             messages=[{"role": "user", "content": self.render(payload)}],
         )

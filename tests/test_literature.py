@@ -44,3 +44,19 @@ def test_an_entry_counts_only_abstracts_published_by_its_cutoff():
 def test_human_engagement_is_judged_for_phase_2_and_3_entries_only():
     got = matched([{"moiety_id": 1, "mondo_id": "MONDO:A", "phase": 1, "cutoff_year": 2018}])
     assert (1, "human_engagement") not in got and got[(1, "animal_healthy")] == ["12"]
+
+
+def test_firecrawl_results_after_the_cutoff_are_dropped_and_ids_prefer_pmid():
+    from pipeline.literature import firecrawl_ids
+    results = [{"ids": {"pmid": ["123"], "doi": ["10.1/a"]}, "createdDate": "2010-05-01"},
+               {"ids": {"pmcid": ["PMC9"]}, "createdDate": "2011-01-01"},
+               {"ids": {"doi": ["10.1101/b"]}, "createdDate": "2009-02-02"},
+               {"ids": {"pmid": ["456"]}, "createdDate": "2013-01-01"}]
+    assert firecrawl_ids(results, 2011) == [("123", "10.1/a"), ("PMC:PMC9", None), ("DOI:10.1101/b", "10.1101/b")]
+
+
+def test_a_europe_pmc_record_is_keyed_by_its_source_and_id():
+    from pipeline.literature import epmc_record
+    rec = epmc_record({"source": "PPR", "id": "PPR42", "title": "T", "abstractText": "A", "pubYear": "2016",
+                       "doi": "10.1101/x"})
+    assert rec == ("PPR:PPR42", "PPR", "T", "A", 2016, "10.1101/x")

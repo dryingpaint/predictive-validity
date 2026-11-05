@@ -127,7 +127,7 @@ def literature_gate() -> dict:
     """Recall of each literature version and kind against its blind reference set, and the gates."""
     g = json.load(open(LITERATURE_GATE))
     return {v: {"gates": g[v]["gates"], **{k: {f: r[f] for f in ("recall", "recall_pubmed_indexed", "passes")}
-                                           for k, r in g[v]["kinds"].items()}} for v in ("v1", "v2")}
+                                           for k, r in g[v]["kinds"].items()}} for v in ("v1", "v2", "v3") if v in g}
 
 
 def main() -> None:
