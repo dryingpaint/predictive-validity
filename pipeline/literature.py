@@ -454,7 +454,13 @@ def vetted_names(moieties: list[int], log=print) -> dict[int, list[str]]:
         llm.run(vet_task(), {k: v for k, v in items.items() if k not in decided})
         decided = llm.current_decisions(vet_task(), items)
     log(f"name vet: entities={len(items)} vetted={len(decided)}")
-    return {int(k): out["keep"] for k, (_, out) in decided.items()}
+    out = {int(k): o["keep"] for k, (_, o) in decided.items()}
+    rest = [m for m in moieties if m not in out]
+    if rest:  # a drug the vet could not decide is searched by its own name and registered codes only
+        with llm.connect() as conn, conn.cursor() as cur:
+            cur.execute("SELECT moiety_id, name, code_names FROM preclin.moiety WHERE moiety_id = ANY(%s)", (rest,))
+            out.update({m: drug_names([name], list(codes or [])) for m, name, codes in cur.fetchall()})
+    return out
 
 
 def store_records(cur, records: list[tuple]) -> None:
