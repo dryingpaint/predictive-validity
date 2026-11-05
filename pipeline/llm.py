@@ -148,28 +148,40 @@ class Task:
         )
 
 
-def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str) -> dict[str, tuple]:
+def own_input(payload: dict[str, Any], context: tuple[str, ...]) -> dict[str, Any]:
+    """The payload without its context keys: what a decision is about, as opposed to what it was shown beside it."""
+    return {k: v for k, v in payload.items() if k not in context}
+
+
+def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str,
+              context: tuple[str, ...] = ()) -> dict[str, tuple]:
     """subject_key -> (raw_response, parsed_output, provider_request_id, usage,
     llm_decision_id, model_parameters) of validated decisions from earlier runs
-    of this task and prompt version: with reuse_by='input' the latest one per
-    subject whose input hash equals the current payload's hash; with
+    of this task and prompt version, retracted runs aside: with reuse_by='input' the latest one per
+    subject whose input hash equals the current payload's hash, or, given context keys, whose payload
+    carried those keys and otherwise equals the current one (own_input), whatever the context said; with
     reuse_by='subject' the latest one per subject whatever its input. A decision
     that fails the task's validation against today's data is not reused."""
     keys = list(items)
     hashes = [sha256_text(canonical_json(items[k])) for k in keys]
+    owns = [canonical_json(own_input(items[k], context)) for k in keys]
     cur.execute(
         """
         SELECT DISTINCT ON (d.subject_key) d.subject_key, d.raw_response, d.parsed_output,
                d.provider_request_id, d.usage, d.llm_decision_id, d.model_parameters
-        FROM unnest(%s::text[], %s::text[]) AS w(subject_key, input_sha256)
+        FROM unnest(%s::text[], %s::text[], %s::text[]) AS w(subject_key, input_sha256, own)
         JOIN pv_evidence.llm_decision d ON d.subject_key = w.subject_key
-             AND (%s = 'subject' OR d.input_sha256 = w.input_sha256)
+             AND (%s = 'subject'
+                  OR (cardinality(%s::text[]) = 0 AND d.input_sha256 = w.input_sha256)
+                  OR (cardinality(%s::text[]) > 0 AND d.input_payload ?& %s::text[]
+                      AND (d.input_payload - %s::text[]) = w.own::jsonb))
         JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
         WHERE d.task = %s AND d.subject_type = %s AND r.prompt_version = %s
-          AND r.output_schema_version = %s AND d.validation_status = 'validated'
+          AND r.output_schema_version = %s AND d.validation_status = 'validated' AND r.status <> 'retracted'
         ORDER BY d.subject_key, d.created_at DESC
         """,
-        (keys, hashes, reuse_by, task.name, task.subject_type, task.prompt_version, task.schema_version),
+        (keys, hashes, owns, reuse_by, list(context), list(context), list(context), list(context),
+         task.name, task.subject_type, task.prompt_version, task.schema_version),
     )
     reused = {}
     for key, *row in cur.fetchall():
@@ -226,11 +238,13 @@ def _store(rows: list[tuple]) -> None:
             conn.close()
 
 
-def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input") -> uuid.UUID:
+def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input",
+        context: tuple[str, ...] = ()) -> uuid.UUID:
     """Decide every item (subject_key -> payload). Returns the run id; the
     run's decisions cover every key, reused or new. reuse_by='subject' keeps
     earlier decisions when only incidental payload details (e.g. the order of
-    context rows) changed. A run that stops on an error is marked failed."""
+    context rows) changed; context names payload keys whose change alone does not call for a new
+    decision (_reusable). A run that stops on an error is marked failed."""
     api = anthropic.Anthropic(max_retries=8)
     run_id = uuid.uuid4()
     with connect() as conn, conn.cursor() as cur:
@@ -252,7 +266,7 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
     status = "failed"
     try:
         with connect() as conn, conn.cursor() as cur:
-            reused = _reusable(cur, task, items, reuse_by)
+            reused = _reusable(cur, task, items, reuse_by, context)
             _insert(conn, [_row(run_id, task, key, items[key], raw, parsed, request_id, usage,
                                 prior_id=decision_id, params=params)
                            for key, (raw, parsed, request_id, usage, decision_id, params) in reused.items()])
@@ -270,6 +284,19 @@ def run(task: Task, items: dict[str, dict[str, Any]], *, reuse_by: str = "input"
     return run_id
 
 
+def retract(run_id: str, reason: str) -> None:
+    """Withdraw a completed run: its decisions stay as the record, and no later run reuses them, so each of its
+    subjects falls back to the decision it had before."""
+    with connect() as conn, conn.cursor() as cur:
+        cur.execute("""UPDATE pv_evidence.llm_decision_run
+                       SET status = 'retracted', parameters = parameters || %s
+                       WHERE decision_run_id = %s AND status = 'completed'""",
+                    (Json({"retracted": {"reason": reason, "at": datetime.now(timezone.utc).isoformat()}}), run_id))
+        if cur.rowcount != 1:
+            raise ValueError(f"run {run_id} is not a completed run")
+        conn.commit()
+
+
 MAX_CONTINUATIONS = 4  # resumptions of a turn the server paused while running its tools
 
 
@@ -284,13 +311,17 @@ def latest_decisions(task: str, prompt_version: str) -> pd.DataFrame:
     """The latest validated decision of each subject for a task version, held-out subjects (|heldout) aside:
     key, llm_decision_id, parsed_output."""
     with connect() as conn, conn.cursor() as cur:
-        cur.execute("""
-            SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
-            FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
-            WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
-              AND d.subject_key NOT LIKE '%%|heldout'
-            ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
-        return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
+        return _latest(cur, task, prompt_version)
+
+
+def _latest(cur, task: str, prompt_version: str) -> pd.DataFrame:
+    cur.execute("""
+        SELECT DISTINCT ON (d.subject_key) d.subject_key, d.llm_decision_id, d.parsed_output
+        FROM pv_evidence.llm_decision d JOIN pv_evidence.llm_decision_run r USING (decision_run_id)
+        WHERE d.task = %s AND r.prompt_version = %s AND d.validation_status = 'validated'
+          AND r.status <> 'retracted' AND d.subject_key NOT LIKE '%%|heldout'
+        ORDER BY d.subject_key, d.created_at DESC""", (task, prompt_version))
+    return pd.DataFrame(cur.fetchall(), columns=["key", "llm_decision_id", "parsed_output"])
 
 
 def retrieved_urls(content) -> list[str]:
@@ -496,3 +527,18 @@ def decisions(run_id: uuid.UUID) -> list[tuple[str, int, dict[str, Any]]]:
                     "WHERE decision_run_id = %s AND validation_status = 'validated' ORDER BY subject_key",
                     (str(run_id),))
         return cur.fetchall()
+
+
+def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser(description="LLM decision runs: python -m pipeline.llm retract <run id> --reason ...")
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    r = sub.add_parser("retract")
+    r.add_argument("run_id")
+    r.add_argument("--reason", required=True)
+    args = parser.parse_args()
+    retract(args.run_id, args.reason)
+
+
+if __name__ == "__main__":
+    main()

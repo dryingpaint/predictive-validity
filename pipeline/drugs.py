@@ -220,9 +220,10 @@ def entity_ids(cur, names: dict[str, str]) -> dict[str, int]:
     return {k: known[k] for k in names}
 
 
-def decide(items: dict[str, dict], reuse_by: str = "input") -> dict[str, tuple[int, str, list[dict]]]:
+def decide(items: dict[str, dict], reuse_by: str = "input",
+           context: tuple[str, ...] = ()) -> dict[str, tuple[int, str, list[dict]]]:
     """subject key -> (decision id, kind, recorded components) for every validated decision."""
-    decided = llm.decisions(llm.run(TASK, items, reuse_by=reuse_by))
+    decided = llm.decisions(llm.run(TASK, items, reuse_by=reuse_by, context=context))
     registered = registered_keys({moiety_key(c["biosimilar_of"] or c["name"]) for _, _, out in decided
                                   for c in out["components"]})
     return {k: (did, out["kind"], components(out, mentioned(items[k]), registered)) for k, did, out in decided}
@@ -292,11 +293,11 @@ def canonicalize(_args) -> None:
     decided = decide(items, reuse_by="subject")
     again = disagreements({k: items[k]["name"] for k in decided}, {k: (kind, comps) for k, (_, kind, comps)
                                                                    in decided.items()})
-    if again:
+    if again:  # a name decided again keeps that decision while its own input stands, whatever its siblings now say
         decided |= decide({k: {**items[k], "siblings": [{"name": items[s]["name"], "kind": decided[s][1],
                                                          "components": [c["name"] for c in decided[s][2]]}
                                                         for s in sibs]}
-                           for k, sibs in again.items()})
+                           for k, sibs in again.items()}, context=("siblings",))
     with llm.connect() as conn, conn.cursor() as cur:
         owners = entity_keys(cur)
         redo = sorted(stale({k: (kind, comps) for k, (_, kind, comps) in decided.items()}, owners))
@@ -330,9 +331,10 @@ def canonicalize(_args) -> None:
         execute_values(cur, """UPDATE preclin.drug d SET entity_kind = v.kind, moiety_decision_id = v.did
             FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""",
                        kinds + [(did, "drug", None) for did in exact], template="(%s, %s, %s::bigint)")
+        dropped = delete_unreferenced(cur)  # entities a name no longer resolves to go with the links that held them
         conn.commit()
     print(f"llm items={len(items)} decided={len(decided)} decided again={len(again)} stale redecided={len(redo)} "
-          f"exact-name links={len(exact)} moieties={len(moieties)} links={len(links)}")
+          f"exact-name links={len(exact)} moieties={len(moieties)} links={len(links)} unreferenced entities dropped={dropped}")
 
 
 UNII_SYSTEM = """You decide which registered substance (FDA UNII) a drug entity from clinical trials is.
@@ -511,16 +513,20 @@ def unii(_args) -> None:
     drop_unreferenced()
 
 
+def delete_unreferenced(cur) -> int:
+    """Delete the entities no table references any longer (names a later canonicalize resolves elsewhere leave
+    their old entity behind); the number deleted."""
+    cur.execute("""SELECT DISTINCT c.conrelid::regclass::text FROM pg_constraint c
+                   WHERE c.contype = 'f' AND c.confrelid = 'preclin.moiety'::regclass""")
+    unreferenced = " AND ".join(f"NOT EXISTS (SELECT 1 FROM {t} r WHERE r.moiety_id = m.moiety_id)"
+                                for t, in cur.fetchall())
+    cur.execute(f"DELETE FROM preclin.moiety m WHERE {unreferenced}")
+    return cur.rowcount
+
+
 def drop_unreferenced() -> None:
-    """Delete the entities no table references any longer: names a later canonicalize resolves
-    elsewhere leave their old entity behind."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT DISTINCT c.conrelid::regclass::text FROM pg_constraint c
-                       WHERE c.contype = 'f' AND c.confrelid = 'preclin.moiety'::regclass""")
-        unreferenced = " AND ".join(f"NOT EXISTS (SELECT 1 FROM {t} r WHERE r.moiety_id = m.moiety_id)"
-                                    for t, in cur.fetchall())
-        cur.execute(f"DELETE FROM preclin.moiety m WHERE {unreferenced}")
-        print(f"unreferenced entities dropped={cur.rowcount}")
+        print(f"unreferenced entities dropped={delete_unreferenced(cur)}")
         conn.commit()
 
 
