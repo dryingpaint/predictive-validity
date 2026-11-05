@@ -41,7 +41,7 @@ def style(ax):
 
 def save(fig, name):
     os.makedirs(FIG, exist_ok=True)
-    for ext in ("png", "svg"):
+    for ext in ("png", "svg", "pdf"):  # the PNG is what the doc embeds; SVG and PDF are the full-resolution copies
         fig.savefig(os.path.join(FIG, f"{name}.{ext}"), dpi=200, bbox_inches="tight")
     plt.close(fig)
 
@@ -434,11 +434,6 @@ def evidence_translates():
                 style="italic")
     top = ys[0] + 0.7
     ax.set_ylim(ys[-1] - 0.7, top + 0.4)
-    ax.text(label_x, top + 1.2, "Reaching approval from any phase, US-developed programs entering a phase in 2008–2019, "
-            "by evidence\nknown the year before entry. Bold: a category; indented: its subcategories. Filled: 95% "
-            "interval clear of 1.\nDashed: first published in 2019, scored on today's data. †: covers only part of its "
-            "category's\nprograms, so it is reported alone and not counted in the category. Counts are in the appendix.",
-            transform=ax.get_yaxis_transform(), va="bottom", color=INK2, fontsize=10)
     save(fig, "evidence_translates")
 
 

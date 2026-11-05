@@ -12,6 +12,8 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 ![Relative success in reaching approval for each evidence category and its subcategories, US-developed programs](report/output/figures/evidence_translates.png)
 
+*Reaching approval from any phase, US-developed programs entering a phase in 2008–2019, by evidence known the year before entry. Bold: a category; indented: its subcategories. Filled: 95% interval clear of 1. Dashed: first published in 2019, scored on today's data. †: covers only part of its category's programs, so it is reported alone. Counts are in the appendix.*
+
 {{SECTION2_RS}}
 
 ### Does stronger or more specific evidence help?
