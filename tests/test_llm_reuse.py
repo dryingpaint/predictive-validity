@@ -71,3 +71,19 @@ def test_without_retraction_input_reuse_still_takes_the_latest_matching_decision
     decision(cur, "retracted", "s4", {"name": "y"}, {"v": "withdrawn"}, 0)
     assert llm._reusable(cur, TASK, {"s4": {"name": "y"}}, "input")["s4"][1] == {"v": "newer"}  # falls back
     assert "s5" not in llm._reusable(cur, TASK, {"s5": {"name": "never"}}, "input")  # decided fresh
+
+
+@pytest.mark.db
+def test_cleanup_keeps_an_entity_referenced_only_by_an_fda_application(cur):
+    from pipeline.drugs import delete_unreferenced
+    cur.execute("SELECT appl_no FROM preclin.fda_application LIMIT 1")
+    appl = cur.fetchone()[0]
+    cur.execute("""INSERT INTO preclin.moiety (moiety_key, name) VALUES ('zztestfdaonly', 'zz test fda only'),
+                   ('zztestorphan', 'zz test orphan') RETURNING moiety_id""")
+    fda_only, orphan = (r[0] for r in cur.fetchall())
+    cur.execute("SELECT llm_decision_id FROM pv_evidence.llm_decision LIMIT 1")
+    cur.execute("INSERT INTO preclin.fda_application_moiety (appl_no, moiety_id, llm_decision_id) VALUES (%s, %s, %s)",
+                (appl, fda_only, cur.fetchone()[0]))
+    assert delete_unreferenced(cur, {fda_only, orphan}) == 1
+    cur.execute("SELECT moiety_id FROM preclin.moiety WHERE moiety_id IN (%s, %s)", (fda_only, orphan))
+    assert [r[0] for r in cur.fetchall()] == [fda_only]

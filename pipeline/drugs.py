@@ -315,6 +315,10 @@ def canonicalize(_args) -> None:
                 m = moieties.setdefault(key, {"name": comp["name"], "codes": set()})
                 m["codes"].update(comp["codes"])
                 links.append((int(drug_id), key, comp["role"], comp["biosimilar_of"], decision_id))
+        cur.execute("SELECT DISTINCT moiety_id FROM preclin.drug_moiety")
+        linked_before = {m for m, in cur.fetchall()}
+        cur.execute("SELECT max(moiety_id) FROM preclin.moiety")
+        last_id = cur.fetchone()[0] or 0
         ids = entity_ids(cur, {k: m["name"] for k, m in moieties.items()})
         codes = {}
         for k, m in moieties.items():
@@ -331,7 +335,9 @@ def canonicalize(_args) -> None:
         execute_values(cur, """UPDATE preclin.drug d SET entity_kind = v.kind, moiety_decision_id = v.did
             FROM (VALUES %s) AS v(drug_id, kind, did) WHERE d.drug_id = v.drug_id""",
                        kinds + [(did, "drug", None) for did in exact], template="(%s, %s, %s::bigint)")
-        dropped = delete_unreferenced(cur)  # entities a name no longer resolves to go with the links that held them
+        # an entity this run unlinked or created, and that nothing references, goes with the links that held it
+        linked_now = set(ids.values()) | set(exact.values())
+        dropped = delete_unreferenced(cur, (linked_before - linked_now) | {m for m in ids.values() if m > last_id})
         conn.commit()
     print(f"llm items={len(items)} decided={len(decided)} decided again={len(again)} stale redecided={len(redo)} "
           f"exact-name links={len(exact)} moieties={len(moieties)} links={len(links)} unreferenced entities dropped={dropped}")
@@ -513,14 +519,19 @@ def unii(_args) -> None:
     drop_unreferenced()
 
 
-def delete_unreferenced(cur) -> int:
-    """Delete the entities no table references any longer (names a later canonicalize resolves elsewhere leave
-    their old entity behind); the number deleted."""
-    cur.execute("""SELECT DISTINCT c.conrelid::regclass::text FROM pg_constraint c
+def delete_unreferenced(cur, among: set[int] | None = None) -> int:
+    """Delete the entities (of `among`, when given) that no foreign key to preclin.moiety references, enumerated
+    from pg_constraint at the time: names a later canonicalize resolves elsewhere leave their old entity behind.
+    The number deleted."""
+    cur.execute("""SELECT c.conrelid::regclass::text, a.attname FROM pg_constraint c
+                   JOIN pg_attribute a ON a.attrelid = c.conrelid AND a.attnum = c.conkey[1]
                    WHERE c.contype = 'f' AND c.confrelid = 'preclin.moiety'::regclass""")
-    unreferenced = " AND ".join(f"NOT EXISTS (SELECT 1 FROM {t} r WHERE r.moiety_id = m.moiety_id)"
-                                for t, in cur.fetchall())
-    cur.execute(f"DELETE FROM preclin.moiety m WHERE {unreferenced}")
+    unreferenced = " AND ".join(f"NOT EXISTS (SELECT 1 FROM {t} r WHERE r.{col} = m.moiety_id)"
+                                for t, col in cur.fetchall())
+    if among is None:
+        cur.execute(f"DELETE FROM preclin.moiety m WHERE {unreferenced}")
+    else:
+        cur.execute(f"DELETE FROM preclin.moiety m WHERE m.moiety_id = ANY(%s) AND {unreferenced}", (sorted(among),))
     return cur.rowcount
 
 

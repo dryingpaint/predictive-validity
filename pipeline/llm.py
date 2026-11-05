@@ -164,7 +164,7 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str,
     that fails the task's validation against today's data is not reused."""
     keys = list(items)
     hashes = [sha256_text(canonical_json(items[k])) for k in keys]
-    owns = [canonical_json(own_input(items[k], context)) for k in keys]
+    owns = [canonical_json(own_input(items[k], context)) if context else "" for k in keys]
     cur.execute(
         """
         SELECT DISTINCT ON (d.subject_key) d.subject_key, d.raw_response, d.parsed_output,
