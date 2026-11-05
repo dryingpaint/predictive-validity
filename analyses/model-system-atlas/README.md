@@ -39,7 +39,8 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 
 | path | contents |
 |---|---|
-| `lists.py` → `lists/` | the context list from the DB: indications ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), the most-developed novel drug class per indication, a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
+| `lists.py` → `lists/` | the context list from the DB: indications ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
+| `class_audit.py` → `lists/named_contexts.csv`, `lists/class_audit/` | each indication's tile(s) under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
 | `drafts/<id>.json`, `drafts/<id>.check.json` | 70 drafted contexts and their checker verdicts; `manifest.csv` tracks them |
 | `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md` | the agent briefs used for the run (v2) |
 | `drafts/RULE_QUESTIONS.md` | 151 cases the v2 rules did not decide |
@@ -57,6 +58,7 @@ The figure layout in `figure.py` is untouched until the rules are agreed.
 ```
 uv sync
 .venv/bin/python analyses/model-system-atlas/lists.py                         # DATABASE_URL in .env; read-only
+.venv/bin/python analyses/model-system-atlas/class_audit.py                   # the tiles; read-only
 .venv/bin/python analyses/model-system-atlas/drafts/matrix.py
 .venv/bin/python analyses/model-system-atlas/drafts/lint.py
 .venv/bin/python analyses/model-system-atlas/render_pilot.py

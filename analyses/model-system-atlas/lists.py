@@ -18,7 +18,8 @@ Long tail: SAMPLE_N programs drawn without replacement, seed SEED, from entries 
 not a named indication.
 
 Writes lists/named_indications.csv, lists/volumes.json (shape of volumes_pre_rebuild.json) and
-lists/sample.csv, and prints the issue's table for comparison. Read-only.
+lists/sample.csv, and prints the issue's table for comparison. Read-only. Each named indication's
+mechanism (its tile) is drawn by class_audit.py into lists/named_contexts.csv.
 """
 import json
 import os
@@ -90,7 +91,6 @@ def main() -> None:
     named_df.to_csv(os.path.join(OUT, "named_indications.csv"), index=False)
     json.dump(areas, open(os.path.join(OUT, "volumes.json"), "w"), indent=1)
 
-    classes(ent, named_df).to_csv(os.path.join(OUT, "named_contexts.csv"), index=False)
 
     tail = ent[~ent.disease.isin(set(named_df.mondo_id))]
     sample = tail.sample(n=min(SAMPLE_N, len(tail)), random_state=SEED)[["program_id", "moiety_id", "mondo_id", "disease", "bio_area", "modality", "entry_year"]]
@@ -112,70 +112,15 @@ def main() -> None:
 
 
 
-# ---------------------------------------------------------------------------
-# Most-developed drug class per named indication (issue #76: "each is assessed for its
-# most-developed drug class"). Deterministic from the database:
-#   - cohort as above, restricted to entities that were NOVEL at Phase 2 entry (not yet
-#     FDA-approved for anything), so reformulations of marketed drugs do not define a class;
-#   - class = (primary target symbol, action) from preclin.moiety_target; a program with k
-#     primary targets contributes 1/k to each, so multikinase inhibitors do not dominate;
-#   - pathogen-target and other unresolved entities have no moiety_target rows; their class
-#     comes from ChEMBL mechanism text (preclin.chembl_mechanism via chembl_moiety) when present;
-#   - the class with the largest weighted program count wins; class_basis records which path.
-# Follow the DB rule; hand overrides only where nothing resolves.
-# ---------------------------------------------------------------------------
+# Label for a (target, action) mechanism, e.g. "BTK inhibitors".
 ACTION_PHRASE = {
     "inhibitor": "{t} inhibitors", "antagonist": "{t} antagonists", "agonist": "{t} agonists",
     "binder_neutralizer": "anti-{t} antibodies", "depleter": "{t}-directed depleters",
     "replacement": "{t} replacement / gene therapy", "positive_modulator": "{t} positive modulators",
     "negative_modulator": "{t} negative modulators", "gene_expression_reduction": "{t} antisense / siRNA",
     "gene_expression_increase": "{t} gene therapy", "blocker": "{t} blockers", "activator": "{t} activators",
-    "opener": "{t} openers", "other": "{t}-targeted agents",
+    "opener": "{t} openers", "inverse_agonist": "{t} inverse agonists", "other": "{t}-targeted agents",
 }
-OVERRIDE = {  # mondo_id -> class label, used only when no target or mechanism resolves for the plurality
-}
-
-
-def classes(ent: pd.DataFrame, named: pd.DataFrame) -> pd.DataFrame:
-    """One row per named indication: the most-developed drug class, its weighted program
-    count, example entities, and how the class was resolved."""
-    mt = frame.query("""SELECT mt.moiety_id, t.symbol, mt.action,
-                               count(*) OVER (PARTITION BY mt.moiety_id) AS n_primary
-                        FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
-                        WHERE mt.is_primary""")
-    mech = frame.query("""SELECT DISTINCT ON (x.moiety_id) x.moiety_id, cm.mechanism_of_action AS mech
-                          FROM preclin.chembl_moiety x JOIN preclin.chembl_mechanism cm
-                            ON cm.parent_chembl_id = x.parent_chembl_id
-                          WHERE cm.mechanism_of_action IS NOT NULL ORDER BY x.moiety_id, cm.mec_id""")
-    names = frame.query("SELECT moiety_id, name, modality FROM preclin.moiety").set_index("moiety_id")
-    e = ent[ent.novel].merge(mt, on="moiety_id", how="left").merge(mech, on="moiety_id", how="left")
-    e["weight"] = 1 / e.n_primary.fillna(1)
-    e["cls"] = e.apply(lambda r: f"target|{r.symbol}|{r.action}" if pd.notna(r.symbol)
-                       else (f"chembl|{r.mech}" if pd.notna(r.mech) else None), axis=1)
-    out = []
-    for r in named.itertuples():
-        g = e[e.disease == r.mondo_id]
-        ranked = g.dropna(subset=["cls"]).groupby("cls").weight.sum().sort_values(ascending=False)
-        if r.mondo_id in OVERRIDE:
-            label, basis, n, ex = OVERRIDE[r.mondo_id], "override", 0, ""
-        elif len(ranked):
-            cls = ranked.index[0]
-            kind, val = cls.split("|", 1)
-            if kind == "chembl":
-                label, basis = val, "chembl_mechanism"
-            else:
-                t, a = val.split("|")
-                label, basis = ACTION_PHRASE.get(a, "{t} " + a).format(t=t), "target_action"
-            n = float(ranked.iloc[0])
-            ex = "; ".join(names.name[m] for m in g[g.cls == cls].moiety_id.drop_duplicates().head(5) if m in names.index)
-        else:
-            label, basis, n, ex = "(unresolved)", "unresolved", 0, ""
-        out.append({"area": r.area, "mondo_id": r.mondo_id, "label": r.label, "n_programs": int(r.n),
-                    "class": label, "class_programs": round(n, 1), "class_basis": basis,
-                    "share_unresolved": round(float(g.cls.isna().mean()) if len(g) else 1.0, 2),
-                    "example_entities": ex})
-    return pd.DataFrame(out)
-
 
 if __name__ == "__main__":
     main()

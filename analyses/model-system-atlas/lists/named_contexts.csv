@@ -1,72 +1,87 @@
-area,mondo_id,label,n_programs,class,class_programs,class_basis,share_unresolved,example_entities
-allergy,MONDO:0011786,allergic rhinitis,39,PTGDR2 antagonists,4.0,target_action,0.46,setipiprant; qav-680; fevipiprant; bi-671800
-allergy,MONDO:0005642,atopic conjunctivitis,15,NR3C1 agonists,2.0,target_action,0.36,mapracorat; AL-38583
-allergy,MONDO:0005271,allergic disease,7,(unresolved),0.0,unresolved,1.0,
-allergy,MONDO:0005361,eosinophilic esophagitis,5,anti-IL13 antibodies,1.0,target_action,0.0,cendakimab
-autoimmune,MONDO:0008383,rheumatoid arthritis,96,BTK inhibitors,8.2,target_action,0.05,acalabrutinib; ritlecitinib; elsubrutinib; evobrutinib; bms-986142
-autoimmune,MONDO:0005083,psoriasis,80,anti-IL17A antibodies,5.0,target_action,0.11,ixekizumab; netakimab; sonelokimab; vunakizumab; izokibep
-autoimmune,MONDO:0005101,ulcerative colitis,70,S1PR1 agonists,2.5,target_action,0.09,ozanimod; etrasimod; mocravimod
-autoimmune,MONDO:0005011,Crohn disease,36,JAK1 inhibitors,3.0,target_action,0.11,tofacitinib; brepocitinib; filgotinib; ivarmacitinib
-cardiovascular,MONDO:0005252,heart failure,22,NPR1 agonists,1.5,target_action,0.24,cenderitide; JNJ-39588146
-cardiovascular,MONDO:0005044,hypertensive disorder,20,AGTR1 antagonists,2.0,target_action,0.14,fimasartan; candesartan
-cardiovascular,MONDO:0004981,atrial fibrillation,16,KCNA5 blockers,2.0,target_action,0.11,BMS-914392; bms-919373
-cardiovascular,MONDO:0005010,coronary artery disorder,14,P2RY12 antagonists,2.0,target_action,0.13,selatogrel; sumecigrel
-endocrine,MONDO:0005148,type 2 diabetes mellitus,126,GLP1R agonists,15.5,target_action,0.11,dulaglutide; semaglutide; tirzepatide; efinopegdutide; cotadutide
-endocrine,MONDO:0005147,type 1 diabetes mellitus,31,SLC5A2 inhibitors,4.5,target_action,0.19,dapagliflozin; empagliflozin; sotagliflozin; ipragliflozin; remogliflozin etabonate
-endocrine,MONDO:0005133,endometriosis,13,GNRHR antagonists,3.0,target_action,0.0,relugolix; opigolix; linzagolix
-endocrine,MONDO:0006964,secondary hyperparathyroidism,6,CASR positive modulators,4.0,target_action,0.0,etelcalcetide; evocalcet; upacicalcet; asp-7991
-gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,75,NR1H4 agonists,4.0,target_action,0.16,tropifexor; cilofexor; vonafexor; edp-305
-gastroenterology,MONDO:0005052,irritable bowel syndrome,18,TPH1 inhibitors,2.0,target_action,0.17,LX1033; lx-1031
-gastroenterology,MONDO:0005388,primary biliary cholangitis,15,NR1H4 agonists,3.0,target_action,0.0,tropifexor; cilofexor; edp-305
-gastroenterology,MONDO:0007186,gastroesophageal reflux disease,11,ATP4A blockers,2.0,target_action,0.17,tegoprazan; fexuprazan; revaprazan
-hematology,MONDO:0011382,sickle cell disease,19,HBB replacement / gene therapy,2.0,target_action,0.23,betibeglogene autotemcel; lovotibeglogene autotemcel
-hematology,MONDO:0010602,hemophilia A,15,F8 replacement / gene therapy,8.5,target_action,0.0,valoctocogene roxaparvovec; efanesoctocog alfa; giroctocogene fitelparvovec; human coagulation factor viii/von willebrand factor complex; simoctocog alfa
-hematology,MONDO:0010604,hemophilia B,10,F9 replacement / gene therapy,7.0,target_action,0.0,fidanacogene elaparvovec; albutrepenonacog alfa; dalcinonacog alfa; verbrinacogene setparvovec; AskBio009
-hematology,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,9,anti-C5 antibodies,4.0,target_action,0.0,ravulizumab; pozelimab; crovalimab; tesidolumab
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,"Hepatitis C virus serine protease, NS3/NS4A inhibitor",13.0,chembl_mechanism,0.19,simeprevir; paritaprevir; grazoprevir; voxilaprevir; glecaprevir
-infectious_disease,MONDO:0005109,HIV infectious disease,32,Human immunodeficiency virus type 1 integrase inhibitor,3.0,chembl_mechanism,0.36,dolutegravir; bictegravir; cabotegravir
-infectious_disease,MONDO:0005812,influenza,20,Hemagglutinin inhibitor,2.0,chembl_mechanism,0.35,vis-410; gedivumab
-infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18,Core antigen inhibitor,1.0,chembl_mechanism,0.45,vebicorvir
-metabolic,MONDO:0021187,hyperlipidemia,33,CETP inhibitors,3.0,target_action,0.09,rocacetrapib; evacetrapib; drl-17822
-metabolic,MONDO:0011122,obesity disorder,25,GLP1R agonists,3.0,target_action,0.08,semaglutide; efinopegdutide; cotadutide; efpeglenatide
-metabolic,MONDO:0005347,hypertriglyceridemia,9,APOC3 antisense / siRNA,2.0,target_action,0.25,olezarsen; volanesorsen
-metabolic,MONDO:0008300,Prader-Willi syndrome,6,CNR1 negative modulators,1.0,target_action,0.0,cannabidiol
-neurology,MONDO:0004975,Alzheimer disease,76,anti-MAPT antibodies,4.0,target_action,0.14,zagotenemab; tilavonemab; semorinemab; gosuranemab
-neurology,MONDO:0005180,Parkinson disease,41,anti-SNCA antibodies,2.0,target_action,0.18,prasinezumab; cinpanemab
-neurology,MONDO:0006626,diabetic neuropathy,32,anti-NGF antibodies,2.5,target_action,0.18,fulranumab; tanezumab; MEDI7352
-neurology,MONDO:0005277,migraine disorder,29,CALCRL antagonists,2.0,target_action,0.12,ubrogepant; rimegepant; mk-3207; bi-44370
-oncology,MONDO:0005233,non-small cell lung carcinoma,191,EGFR inhibitors,19.5,target_action,0.04,osimertinib; dacomitinib; mobocertinib; lazertinib; sunvozertinib
-oncology,MONDO:0007254,breast cancer,129,ERBB2 inhibitors,6.0,target_action,0.02,tucatinib; margetuximab; disitamab vedotin; anbenitamab; pyrotinib
-oncology,MONDO:0008315,prostate cancer,91,AR antagonists,8.5,target_action,0.05,apalutamide; darolutamide; pruxelutamide; rezvilutamide; seviteronel
-oncology,MONDO:0005575,colorectal cancer,88,anti-EGFR antibodies,4.5,target_action,0.04,duligotuzumab; futuximab; imgatuzumab; modotuximab; zalutumumab
-oncology,MONDO:0018874,acute myeloid leukemia,78,FLT3 inhibitors,5.4,target_action,0.1,gilteritinib; quizartinib; mivavotinib; akn-028; ruserontinib
-oncology,MONDO:0007256,hepatocellular carcinoma,73,anti-PDCD1 antibodies,5.0,target_action,0.08,penpulimab; serplulimab; camrelizumab; spartalizumab; pidilizumab
-oncology,MONDO:0009693,plasma cell myeloma,73,TNFRSF17-directed depleters,8.0,target_action,0.02,belantamab mafodotin; idecabtagene vicleucel; orvacabtagene autoleucel; P-BCMA-101; AUTO2
-oncology,MONDO:0009831,malignant pancreatic neoplasm,73,MAP2K1 inhibitors,1.5,target_action,0.15,trametinib; refametinib; pimasertib
-oncology,MONDO:0008170,ovarian cancer,58,PARP1 inhibitors,4.0,target_action,0.03,niraparib; rucaparib; veliparib; senaparib; 2x-121
-oncology,MONDO:0005105,melanoma,51,BRAF inhibitors,3.0,target_action,0.09,vemurafenib; dabrafenib; encorafenib
-oncology,MONDO:0018177,glioblastoma,50,TUBB inhibitors,1.5,target_action,0.15,verubulin; lexibulin
-oncology,MONDO:0018881,myelodysplastic syndrome,44,CD33-directed depleters,2.0,target_action,0.1,bi-836858; vadastuximab talirine
-oncology,MONDO:0001056,gastric cancer,40,ERBB2 inhibitors,3.5,target_action,0.07,margetuximab; disitamab vedotin; anbenitamab; poziotinib
-oncology,MONDO:0008433,small cell lung carcinoma,39,anti-PDCD1 antibodies,3.0,target_action,0.0,nivolumab; toripalimab; camrelizumab
-oncology,MONDO:0018906,follicular lymphoma,34,CD19-directed depleters,3.0,target_action,0.0,lisocabtagene maraleucel; axicabtagene ciloleucel; relmacabtagene autoleucel
-ophthalmology,MONDO:0006733,dry eye syndrome,51,anti-TNF antibodies,3.0,target_action,0.34,tanfanercept; licaminlimab; ESBA105
-ophthalmology,MONDO:0005150,age-related macular degeneration,27,anti-VEGFA antibodies,1.5,target_action,0.27,brolucizumab; faricimab
-ophthalmology,MONDO:0004728,diabetic macular edema,21,anti-VEGFA antibodies,2.3,target_action,0.04,aflibercept; faricimab; abicipar pegol; conbercept
-ophthalmology,MONDO:0005338,open-angle glaucoma,20,ADORA2A agonists,2.0,target_action,0.13,evodenoson; OPA-6566
-other,MONDO:0004980,atopic eczema,81,NR3C1 agonists,4.0,target_action,0.22,mometasone; mapracorat; gw-870086; Product 0405
-other,MONDO:0005178,osteoarthritis,65,NTRK1 inhibitors,4.0,target_action,0.28,gz-389988; asp-7962; ONO-4474; VM902A
-other,MONDO:0011438,acne,31,Unknown,1.0,chembl_mechanism,0.5,sarecycline
-other,MONDO:0005016,diabetic kidney disease,26,NR3C2 antagonists,3.0,target_action,0.1,finerenone; apararenone; esaxerenone
-psychiatry,MONDO:0002009,major depressive disorder,61,GRIN2B antagonists,3.0,target_action,0.04,esketamine; deudextromethorphan; rislenemdaz; evt-101
-psychiatry,MONDO:0005090,schizophrenia,45,PDE10A inhibitors,5.0,target_action,0.02,mardepodect; balipodect; Lu AF11167; elpipodect; OMS824
-psychiatry,MONDO:0007743,attention deficit-hyperactivity disorder,21,SLC6A2 inhibitors,3.2,target_action,0.06,viloxazine; centanafadine; ampreloxetine; dasotraline; OPC-64005
-psychiatry,MONDO:0013600,insomnia,11,HCRTR2 antagonists,4.0,target_action,0.0,suvorexant; lemborexant; daridorexant; vornorexant; fazamorexant
-respiratory,MONDO:0004979,asthma,84,PTGDR2 antagonists,9.5,target_action,0.09,arry-502; setipiprant; vidupiprant; azd-1981; MK-1029
-respiratory,MONDO:0005002,chronic obstructive pulmonary disease,47,CHRM3 antagonists,7.0,target_action,0.09,revefenacin; navafenterol; AZD8683; AZD2115; QAX028
-respiratory,MONDO:0009061,cystic fibrosis,43,CFTR positive modulators,14.0,target_action,0.06,tezacaftor; elexacaftor; deutivacaftor; vanzacaftor; VX-152
-respiratory,MONDO:0800504,idiopathic pulmonary fibrosis,24,anti-IL13 antibodies,2.5,target_action,0.05,tralokinumab; lebrikizumab; romilkimab
-urology,MONDO:0006624,overactive bladder,11,ADRB3 agonists,2.0,target_action,0.15,vibegron; ritobegron
-urology,MONDO:0018301,interstitial cystitis,10,anti-NGF antibodies,3.0,target_action,0.12,fulranumab; ASP6294; tanezumab
-urology,MONDO:0010811,benign prostatic hyperplasia,8,ESR2 agonists,2.0,target_action,0.38,erteberel; equol
-urology,MONDO:0001780,premature ejaculation,5,OXTR antagonists,1.0,target_action,0.0,cligosiban
+area,mondo_id,label,n_programs,tile,class,class_programs,class_share,modality_groups,selectivity_note,furthest_phase,share_unresolved,example_entities,reason,runner_up,v2_class,changed_from_v2
+allergy,MONDO:0011786,allergic rhinitis,39,1,allergen (immunotherapy),8,0.205,other;peptide;protein,selective,3.0,0.53,DP/MG/14-1; Grass-SPIRE; HDM-SPIRE; Ragweed-SPIRE; Salsola kali pollen allergen extract; ToleroMune HDM,,PTGDR2 antagonists (4),PTGDR2 antagonists,True
+allergy,MONDO:0005642,atopic conjunctivitis,15,1,no qualifying class,0,0.0,,,,0.42,,no mechanism reaches 3 programs; largest is NR3C1 agonists (2),,NR3C1 agonists,True
+allergy,MONDO:0005271,allergic disease,7,1,allergen (immunotherapy),5,0.714,other;peptide,selective,3.0,1.0,Cat-PAD; ToleroMune Ragweed; cat allergen extract; hdmASIT+; tree pollen allergen extract,,,(unresolved),True
+allergy,MONDO:0005361,eosinophilic esophagitis,5,1,no qualifying class,0,0.0,,,,0.0,,no mechanism reaches 3 programs; largest is anti-IL13 antibodies (1),,anti-IL13 antibodies,True
+autoimmune,MONDO:0008383,rheumatoid arthritis,96,1,BTK inhibitors,8,0.083,small molecule,selective,2.0,0.06,TAS5315; acalabrutinib; bms-986142; elsubrutinib; evobrutinib; fenebrutinib,,anti-CSF2 antibodies (3),BTK inhibitors,False
+autoimmune,MONDO:0005083,psoriasis,80,1,anti-IL17A antibodies,4,0.05,antibody;protein,selective,4.0,0.15,ixekizumab; izokibep; netakimab; vunakizumab,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-IL23A antibodies (3),anti-IL17A antibodies,False
+autoimmune,MONDO:0005083,psoriasis,80,2,RORC inverse agonists,4,0.05,small molecule,selective,2.0,0.15,AGN-242428; BI 730357; VTP-43742; gsk-2981278,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-IL23A antibodies (3),anti-IL17A antibodies,True
+autoimmune,MONDO:0005101,ulcerative colitis,70,1,S1PR1 agonists,3,0.043,small molecule,selective,4.0,0.12,etrasimod; mocravimod; ozanimod,,,S1PR1 agonists,False
+autoimmune,MONDO:0005011,Crohn disease,36,1,anti-IL23A antibodies,3,0.083,antibody,selective,4.0,0.14,brazikumab; mirikizumab; risankizumab,,,JAK1 inhibitors,True
+cardiovascular,MONDO:0005252,heart failure,22,1,no qualifying class,0,0.0,,,,0.29,,no mechanism reaches 3 programs; largest is ADORA1 partial_agonist (1),,NPR1 agonists,True
+cardiovascular,MONDO:0005044,hypertensive disorder,20,1,no qualifying class,0,0.0,,,,0.2,,no mechanism reaches 3 programs; largest is ACLY inhibitors (1),,AGTR1 antagonists,True
+cardiovascular,MONDO:0004981,atrial fibrillation,16,1,no qualifying class,0,0.0,,,,0.15,,no mechanism reaches 3 programs; largest is CACNA1C/KCNH2/SCN5A (multichannel) blockers (2),,KCNA5 blockers,True
+cardiovascular,MONDO:0005010,coronary artery disorder,14,1,no qualifying class,0,0.0,,,,0.15,,no mechanism reaches 3 programs; largest is P2RY12 antagonists (2),,P2RY12 antagonists,True
+endocrine,MONDO:0005148,type 2 diabetes mellitus,126,1,GLP1R agonists,12,0.095,peptide;protein;small molecule,selective,4.0,0.12,CJC-1134-PC; HS-20004; LY2428757; TTP054; TTP273; YH14617,,GCK activators (9),GLP1R agonists,False
+endocrine,MONDO:0005147,type 1 diabetes mellitus,31,1,SLC5A2 inhibitors,4,0.129,small molecule,selective,3.0,0.24,dapagliflozin; empagliflozin; ipragliflozin; remogliflozin etabonate,,,SLC5A2 inhibitors,False
+endocrine,MONDO:0005133,endometriosis,13,1,no qualifying class,0,0.0,,,,0.0,,no mechanism reaches 3 programs; largest is GNRHR antagonists (2),,GNRHR antagonists,True
+endocrine,MONDO:0006964,secondary hyperparathyroidism,6,1,CASR positive modulators,4,0.667,peptide;small molecule,selective,4.0,0.0,asp-7991; etelcalcetide; evocalcet; upacicalcet,,,CASR positive modulators,False
+gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,75,1,NR1H4 agonists,4,0.053,small molecule,selective,2.0,0.22,cilofexor; edp-305; tropifexor; vonafexor,,FGF21 analogue (FGFR1c/KLB) agonists (3),NR1H4 agonists,False
+gastroenterology,MONDO:0005052,irritable bowel syndrome,18,1,no qualifying class,0,0.0,,,,0.24,,no mechanism reaches 3 programs; largest is TPH1 inhibitors (2),,TPH1 inhibitors,True
+gastroenterology,MONDO:0005388,primary biliary cholangitis,15,1,NR1H4 agonists,3,0.2,small molecule,selective,2.0,0.0,cilofexor; edp-305; tropifexor,,,NR1H4 agonists,False
+gastroenterology,MONDO:0007186,gastroesophageal reflux disease,11,1,ATP4A blockers,3,0.273,small molecule,selective,3.0,0.2,fexuprazan; revaprazan; tegoprazan,,,ATP4A blockers,False
+hematology,MONDO:0011382,sickle cell disease,19,1,no qualifying class,0,0.0,,,,0.31,,no mechanism reaches 3 programs; largest is HBB replacement / gene therapy (2),,HBB replacement / gene therapy,True
+hematology,MONDO:0010602,hemophilia A,15,1,F8 replacement / gene therapy,8,0.533,gene therapy;protein,selective,4.0,0.0,BAX 888; SPK-8016; dirloctocogene samoparvovec; efanesoctocog alfa; giroctocogene fitelparvovec; peboctocogene camaparvovec,,,F8 replacement / gene therapy,False
+hematology,MONDO:0010604,hemophilia B,10,1,F9 replacement / gene therapy,7,0.7,gene therapy;protein,selective,4.0,0.0,AAV5-hFIX; AskBio009; DTX101; albutrepenonacog alfa; dalcinonacog alfa; fidanacogene elaparvovec,,,F9 replacement / gene therapy,False
+hematology,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,9,1,anti-C5 antibodies,4,0.444,antibody,selective,4.0,0.0,crovalimab; pozelimab; ravulizumab; tesidolumab,,,anti-C5 antibodies,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,52,1,HCV NS3/4A protease inhibitors,13,0.25,small molecule,selective,4.0,0.2,asunaprevir; danoprevir; faldaprevir; glecaprevir; grazoprevir; gs-9256,,HCV NS5A inhibitors (10),"Hepatitis C virus serine protease, NS3/NS4A inhibitor",True
+infectious_disease,MONDO:0005109,HIV infectious disease,32,1,HIV RT (NNRTI) inhibitors,3,0.094,small molecule,selective,4.0,0.38,doravirine; elsulfavirine; fosdevirine,tied with 3 other mechanism(s) on 3 programs; each gets a tile,,Human immunodeficiency virus type 1 integrase inhibitor,True
+infectious_disease,MONDO:0005109,HIV infectious disease,32,2,HIV RT (NRTI) inhibitors,3,0.094,small molecule,selective,3.0,0.38,azvudine; censavudine; rovafovir etalafenamide,tied with 3 other mechanism(s) on 3 programs; each gets a tile,,Human immunodeficiency virus type 1 integrase inhibitor,True
+infectious_disease,MONDO:0005109,HIV infectious disease,32,3,HIV integrase (INSTI) inhibitors,3,0.094,small molecule,selective,4.0,0.38,bictegravir; cabotegravir; dolutegravir,tied with 3 other mechanism(s) on 3 programs; each gets a tile,,Human immunodeficiency virus type 1 integrase inhibitor,True
+infectious_disease,MONDO:0005109,HIV infectious disease,32,4,HIV maturation (Gag) inhibitors,3,0.094,small molecule,selective,2.0,0.38,bms-955176; fipravirimat; gsk-2838232,tied with 3 other mechanism(s) on 3 programs; each gets a tile,,Human immunodeficiency virus type 1 integrase inhibitor,True
+infectious_disease,MONDO:0005812,influenza,20,1,no qualifying class,0,0.0,,,,0.39,,no mechanism reaches 3 programs; largest is TLR3 agonists (2),,Hemagglutinin inhibitor,True
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18,1,HBV RNA antisense / siRNA,3,0.167,oligo,selective,2.0,0.53,ARB-001467; elebsiran; tomligisiran,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,Core antigen inhibitor,True
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,18,2,HBsAg release (NAP) inhibitors,3,0.167,oligo,selective,2.0,0.53,REP 2055; REP 2139; REP 2165,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,Core antigen inhibitor,True
+metabolic,MONDO:0021187,hyperlipidemia,33,1,CETP inhibitors,3,0.091,small molecule,selective,3.0,0.11,drl-17822; evacetrapib; rocacetrapib,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,CETP inhibitors,False
+metabolic,MONDO:0021187,hyperlipidemia,33,2,HCAR2 agonists,3,0.091,small molecule,selective,2.0,0.11,gsk-256073; mk-1903; sch-900271,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,CETP inhibitors,True
+metabolic,MONDO:0011122,obesity disorder,25,1,no qualifying class,0,0.0,,,,0.1,,no mechanism reaches 3 programs; largest is GCGR/GLP1R agonists (2),,GLP1R agonists,True
+metabolic,MONDO:0005347,hypertriglyceridemia,9,1,no qualifying class,0,0.0,,,,0.25,,no mechanism reaches 3 programs; largest is APOC3 antisense / siRNA (2),,APOC3 antisense / siRNA,True
+metabolic,MONDO:0008300,Prader-Willi syndrome,6,1,no qualifying class,0,0.0,,,,0.0,,no mechanism reaches 3 programs; largest is MC4R agonists (1),,CNR1 negative modulators,True
+neurology,MONDO:0004975,Alzheimer disease,76,1,BACE1 inhibitors,4,0.053,small molecule,selective,3.0,0.15,atabecestat; elenbecestat; ly-2886721; ly-3202626,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-APP antibodies (3),anti-MAPT antibodies,True
+neurology,MONDO:0004975,Alzheimer disease,76,2,anti-MAPT antibodies,4,0.053,antibody,selective,2.0,0.15,gosuranemab; semorinemab; tilavonemab; zagotenemab,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-APP antibodies (3),anti-MAPT antibodies,False
+neurology,MONDO:0005180,Parkinson disease,41,1,no qualifying class,0,0.0,,,,0.31,,no mechanism reaches 3 programs; largest is COMT inhibitors (2),,anti-SNCA antibodies,True
+neurology,MONDO:0006626,diabetic neuropathy,32,1,no qualifying class,0,0.0,,,,0.21,,no mechanism reaches 3 programs; largest is anti-NGF antibodies (2),,anti-NGF antibodies,True
+neurology,MONDO:0005277,migraine disorder,29,1,CGRP receptor antagonists,4,0.138,small molecule,selective,4.0,0.2,bi-44370; mk-3207; rimegepant; ubrogepant,,anti-CALCA/CALCB (CGRP ligand) antibodies (3),CALCRL antagonists,True
+oncology,MONDO:0005233,non-small cell lung carcinoma,191,1,EGFR inhibitors,18,0.094,small molecule,dual; selective,4.0,0.06,abivertinib; ask-120067; aumolertinib; befotertinib; firmonertinib; lazertinib,,MET inhibitors (5),EGFR inhibitors,False
+oncology,MONDO:0007254,breast cancer,129,1,CDK4/6 inhibitors,6,0.047,small molecule,selective,4.0,0.03,abemaciclib; dalpiciclib; lerociclib; palbociclib; ribociclib; trilaciclib,,ESR1 degrader (5),ERBB2 inhibitors,True
+oncology,MONDO:0008315,prostate cancer,91,1,AR antagonists,5,0.055,small molecule,selective,4.0,0.08,apalutamide; darolutamide; pruxelutamide; rezvilutamide; trc-253,tied with 1 other mechanism(s) on 5 programs; each gets a tile,CYP17A1/AR inhibitors (3),AR antagonists,False
+oncology,MONDO:0008315,prostate cancer,91,2,PARP1/2 inhibitors,5,0.055,small molecule,selective,4.0,0.08,fuzuloparib; niraparib; olaparib; pamiparib; talazoparib,tied with 1 other mechanism(s) on 5 programs; each gets a tile,CYP17A1/AR inhibitors (3),AR antagonists,True
+oncology,MONDO:0005575,colorectal cancer,88,1,anti-EGFR antibodies,3,0.034,antibody,selective,2.0,0.05,futuximab; imgatuzumab; modotuximab; zalutumumab,tied with 2 other mechanism(s) on 3 programs; each gets a tile,,anti-EGFR antibodies,False
+oncology,MONDO:0005575,colorectal cancer,88,2,KDR (VEGFR) inhibitors,3,0.034,small molecule,selective,4.0,0.05,fruquintinib; rivoceranib; tivozanib,tied with 2 other mechanism(s) on 3 programs; each gets a tile,,anti-EGFR antibodies,True
+oncology,MONDO:0005575,colorectal cancer,88,3,VEGFR multikinase inhibitors,3,0.034,small molecule,pan,3.0,0.05,donafenib; famitinib; linifanib,tied with 2 other mechanism(s) on 3 programs; each gets a tile,,anti-EGFR antibodies,True
+oncology,MONDO:0018874,acute myeloid leukemia,78,1,FLT3 inhibitors,4,0.051,small molecule,selective,4.0,0.15,akn-028; crenolanib; gilteritinib; quizartinib,,CD33-directed depleters (3),FLT3 inhibitors,False
+oncology,MONDO:0007256,hepatocellular carcinoma,73,1,anti-PDCD1 antibodies,4,0.055,antibody,selective,3.0,0.13,camrelizumab; penpulimab; serplulimab; spartalizumab,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-CD274 antibodies (3),anti-PDCD1 antibodies,False
+oncology,MONDO:0007256,hepatocellular carcinoma,73,2,VEGFR multikinase inhibitors,4,0.055,small molecule,pan,4.0,0.13,catequentinib; donafenib; lenvatinib; regorafenib,tied with 1 other mechanism(s) on 4 programs; each gets a tile,anti-CD274 antibodies (3),anti-PDCD1 antibodies,True
+oncology,MONDO:0009693,plasma cell myeloma,73,1,TNFRSF17-directed depleters,8,0.11,ADC;antibody;cell therapy,selective,4.0,0.03,BCMA CAR-NK 92 cells; BCMA CAR-T cells; P-BCMA-101; belantamab mafodotin; idecabtagene vicleucel; orvacabtagene autoleucel,,PSMB5 inhibitors (3),TNFRSF17-directed depleters,False
+oncology,MONDO:0009831,malignant pancreatic neoplasm,73,1,MAP2K1/2 inhibitors,3,0.041,small molecule,selective,4.0,0.19,pimasertib; refametinib; trametinib,,,MAP2K1 inhibitors,True
+oncology,MONDO:0008170,ovarian cancer,58,1,PARP1/2 inhibitors,6,0.103,small molecule,selective,4.0,0.06,2x-121; niraparib; pamiparib; rucaparib; senaparib; veliparib,,,PARP1 inhibitors,True
+oncology,MONDO:0005105,melanoma,51,1,BRAF inhibitors,3,0.059,small molecule,selective,4.0,0.13,dabrafenib; encorafenib; vemurafenib,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,BRAF inhibitors,False
+oncology,MONDO:0005105,melanoma,51,2,anti-PDCD1 antibodies,3,0.059,antibody,selective,3.0,0.13,prolgolimab; pucotenlimab; toripalimab,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,BRAF inhibitors,True
+oncology,MONDO:0018177,glioblastoma,50,1,no qualifying class,0,0.0,,,,0.23,,no mechanism reaches 3 programs; largest is PI3K/MTOR inhibitors (2),,TUBB inhibitors,True
+oncology,MONDO:0018881,myelodysplastic syndrome,44,1,HDAC (pan) inhibitors,3,0.068,small molecule,pan,3.0,0.15,ivaltinostat; panobinostat; pracinostat,,,CD33-directed depleters,True
+oncology,MONDO:0001056,gastric cancer,40,1,anti-ERBB2 antibodies,3,0.075,antibody,selective,3.0,0.11,anbenitamab; margetuximab; pertuzumab,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,ERBB2 inhibitors,True
+oncology,MONDO:0001056,gastric cancer,40,2,PARP1/2 inhibitors,3,0.075,small molecule,selective,3.0,0.11,olaparib; pamiparib; rucaparib,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,ERBB2 inhibitors,True
+oncology,MONDO:0008433,small cell lung carcinoma,39,1,anti-PDCD1 antibodies,3,0.077,antibody,selective,4.0,0.0,camrelizumab; nivolumab; toripalimab,,,anti-PDCD1 antibodies,False
+oncology,MONDO:0018906,follicular lymphoma,34,1,CD19-directed depleters,3,0.088,cell therapy,selective,4.0,0.0,axicabtagene ciloleucel; lisocabtagene maraleucel; relmacabtagene autoleucel,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,CD19-directed depleters,False
+oncology,MONDO:0018906,follicular lymphoma,34,2,PIK3CD inhibitors,3,0.088,small molecule,selective,4.0,0.0,idelalisib; linperlisib; zandelisib,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,CD19-directed depleters,True
+ophthalmology,MONDO:0006733,dry eye syndrome,51,1,anti-TNF antibodies,3,0.059,antibody;protein,selective,3.0,0.38,ESBA105; licaminlimab; tanfanercept,,,anti-TNF antibodies,False
+ophthalmology,MONDO:0005150,age-related macular degeneration,27,1,no qualifying class,0,0.0,,,,0.32,,no mechanism reaches 3 programs; largest is anti-ANGPT2/VEGFA antibodies (1),,anti-VEGFA antibodies,True
+ophthalmology,MONDO:0004728,diabetic macular edema,21,1,anti-VEGFA antibodies,3,0.143,protein,selective,4.0,0.06,abicipar pegol; aflibercept; conbercept,,,anti-VEGFA antibodies,False
+ophthalmology,MONDO:0005338,open-angle glaucoma,20,1,ROCK inhibitors,3,0.15,small molecule,dual; selective,4.0,0.21,ATS907; DE-104; netarsudil,,,ADORA2A agonists,True
+other,MONDO:0004980,atopic eczema,81,1,PDE4 inhibitors,5,0.062,small molecule,selective,4.0,0.27,DRM02; an-2898; crisaborole; difamilast; leo-29102,,anti-IL33 antibodies (4),NR3C1 agonists,True
+other,MONDO:0005178,osteoarthritis,65,1,MAPK14 inhibitors,3,0.046,small molecule,selective,2.0,0.31,FX005; emprumapimod; pha-797804,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,NTRK1 inhibitors,True
+other,MONDO:0005178,osteoarthritis,65,2,NTRK1 inhibitors,3,0.046,small molecule,selective,2.0,0.31,VM902A; asp-7962; gz-389988,tied with 1 other mechanism(s) on 3 programs; each gets a tile,,NTRK1 inhibitors,False
+other,MONDO:0011438,acne,31,1,no qualifying class,0,0.0,,,,0.54,,no mechanism reaches 3 programs; largest is ACACA;ACACB inhibitors (1),,Unknown,True
+other,MONDO:0005016,diabetic kidney disease,26,1,NR3C2 antagonists,3,0.115,small molecule,selective,4.0,0.12,apararenone; esaxerenone; finerenone,,,NR3C2 antagonists,False
+psychiatry,MONDO:0002009,major depressive disorder,61,1,no qualifying class,0,0.0,,,,0.08,,no mechanism reaches 3 programs; largest is AVPR1B antagonists (2),,GRIN2B antagonists,True
+psychiatry,MONDO:0005090,schizophrenia,45,1,PDE10A inhibitors,5,0.111,small molecule,selective,2.0,0.02,Lu AF11167; OMS824; balipodect; elpipodect; mardepodect,,SLC6A9 inhibitors (4),PDE10A inhibitors,False
+psychiatry,MONDO:0007743,attention deficit-hyperactivity disorder,21,1,no qualifying class,0,0.0,,,,0.12,,no mechanism reaches 3 programs; largest is SLC6A2 inhibitors (2),,SLC6A2 inhibitors,True
+psychiatry,MONDO:0013600,insomnia,11,1,HCRTR1/2 antagonists,6,0.545,small molecule,selective,4.0,0.0,daridorexant; fazamorexant; filorexant; lemborexant; suvorexant; vornorexant,,,HCRTR2 antagonists,True
+respiratory,MONDO:0004979,asthma,84,1,PTGDR2 antagonists,9,0.107,small molecule,selective,3.0,0.11,ADC3680B; GB001; MK-1029; arry-502; azd-1981; bi-671800,,ADRB2 agonists (4),PTGDR2 antagonists,False
+respiratory,MONDO:0005002,chronic obstructive pulmonary disease,47,1,CHRM3 antagonists,6,0.128,small molecule,selective,4.0,0.11,AZD8683; CHF5992; QAX028; azd-9164; pf-03635659; revefenacin,,ADRB2 agonists (4),CHRM3 antagonists,False
+respiratory,MONDO:0009061,cystic fibrosis,43,1,CFTR correctors,8,0.186,small molecule,selective,4.0,0.08,VX-152; bamocaftor; elexacaftor; galicaftor; glpg-2737; olacaftor,,CFTR potentiators (5),CFTR positive modulators,True
+respiratory,MONDO:0800504,idiopathic pulmonary fibrosis,24,1,no qualifying class,0,0.0,,,,0.09,,no mechanism reaches 3 programs; largest is anti-IL13 antibodies (2),,anti-IL13 antibodies,True
+urology,MONDO:0006624,overactive bladder,11,1,no qualifying class,0,0.0,,,,0.2,,no mechanism reaches 3 programs; largest is ADRB3 agonists (2),,ADRB3 agonists,True
+urology,MONDO:0018301,interstitial cystitis,10,1,anti-NGF antibodies,3,0.3,antibody,selective,2.0,0.12,ASP6294; fulranumab; tanezumab,,,anti-NGF antibodies,False
+urology,MONDO:0010811,benign prostatic hyperplasia,8,1,no qualifying class,0,0.0,,,,0.43,,no mechanism reaches 3 programs; largest is ESR2 agonists (2),,ESR2 agonists,True
+urology,MONDO:0001780,premature ejaculation,5,1,no qualifying class,0,0.0,,,,0.0,,no mechanism reaches 3 programs; largest is OXTR antagonists (1),,OXTR antagonists,True

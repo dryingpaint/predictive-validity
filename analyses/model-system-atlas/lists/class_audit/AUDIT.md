@@ -6,7 +6,7 @@ member of each currently chosen class, the top two mechanisms under the proposed
 unresolved-target program in allergic disease, allergic rhinitis, atopic conjunctivitis, acne,
 chronic HBV, HIV, HCV, BPH and dry eye). Each review row cites ChEMBL, an FDA or registry page,
 a DOI or a PubMed query. Outputs: `class_members.csv` (one row per program, review columns plus
-`db_issue`), `current_on_db.csv` (lists.classes() on today's DB) and `proposed_contexts.csv`.
+`db_issue`) and the tile list itself, `lists/named_contexts.csv` (the v2 list is `named_contexts_v2.csv`).
 
 **The database changed during the audit.** Between runs on 2026-11-04 another session removed
 every `dev_program` row for relugolix and cannabidiol, and they are still absent at the last run
@@ -53,7 +53,7 @@ an ORIG/AP FDA submission through `fda_application_moiety`. Candesartan (6975) a
 mometasone furoate (868). When named_contexts.csv was drawn (2026-11-02), the bare moieties had
 no FDA link, so they counted as novel. #109's `trial_entity_fda_application` decisions (written
 2026-11-05 00:54 UTC) linked them. Today both drop out: hypertension and eczema now resolve to
-other classes in `current_on_db.csv`.
+other classes under the v2 rule on today's DB.
 
 The same mechanism remains for salts, esters, prodrugs, metabolites, enantiomers and plasma
 products that have no link of their own (the five not-novel moieties above). Brivanib and

@@ -1,23 +1,25 @@
-"""Audit the drug-class assignment behind the named contexts (lists/named_contexts.csv, PR #81).
+"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table (decision 12).
 
     .venv/bin/python analyses/model-system-atlas/class_audit.py
 
 Read-only. Rebuilds the cohort lists.py uses (novel Phase 2 entrants 2008-2019 in the 71 named
-indications) on today's database and writes, under lists/class_audit/:
+indications, lists/named_indications.csv) on today's database and writes lists/named_contexts.csv,
+one row per tile (an indication with no qualifying mechanism has one blank row), and under
+lists/class_audit/:
 
   class_members.csv     one row per (named indication, novel Phase 2 program): the database's
                         target, action, ChEMBL mechanism, modality, novelty, first FDA approval and
                         furthest phase, joined to the hand review in reviews.csv (verified target,
                         action, selectivity, modality group, first FDA approval, evidence) and a
                         disagrees_with_db flag;
-  current_on_db.csv     lists.classes() re-run on today's database (the committed
-                        named_contexts.csv was drawn from an earlier build);
-  proposed_contexts.csv the proposed rule (below) applied to the reviewed members.
+  AUDIT.md              where the database disagrees with the review, and the rule's result.
+named_contexts_v2.csv is the list the v2 drafts were written against; each tile records the v2
+class it replaces.
 
 reviews.csv is the hand-curated input, one row per moiety (same_entity_as folds a duplicate
 moiety into the entity it repeats); a moiety absent from it falls back to the database's fields.
 
-Proposed rule (decision 12). The tile's unit is the mechanism, (verified target, verified action),
+Rule (decision 12). The tile's unit is the mechanism, (verified target, verified action),
 counted across modalities; modality only splits the dose and platform-safety sub-strips inside a
 tile (`modality_groups` lists them). A non-selective or off-class member carries its own verified
 target (e.g. "JAK (pan)"), so it falls into its own mechanism (a dual member whose verified target is
@@ -41,6 +43,8 @@ from report import frame, section1  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")
 REVIEWS = os.path.join(OUT, "reviews.csv")
+CONTEXTS = os.path.join(HERE, "lists", "named_contexts.csv")
+V2 = os.path.join(HERE, "lists", "named_contexts_v2.csv")
 MIN_PROGRAMS = 3
 
 _spec = importlib.util.spec_from_file_location("atlas_lists", os.path.join(HERE, "lists.py"))
@@ -113,7 +117,7 @@ ALIAS = {  # family words in verified-target labels -> gene symbols, for compari
 }
 NOT_GENES = {"HIV", "HCV", "HBV", "RNA", "RT", "NAP", "CAM", "MABA", "NRTI", "NNRTI", "NRTTI", "INSTI", "HA", "RAS", "RBD",
              "PSA", "SOD", "RASP", "IKACH", "SERT", "PD", "LT", "HBSAG", "BNAB", "ENV", "GAG"}
-ACTION_PHRASE = {**lists.ACTION_PHRASE, "inverse_agonist": "{t} inverse agonists", "corrector": "{t} correctors", "potentiator": "{t} potentiators",
+ACTION_PHRASE = {**lists.ACTION_PHRASE, "corrector": "{t} correctors", "potentiator": "{t} potentiators",
                  "amplifier": "{t} amplifiers", "tolerance_induction": "{t}", "other": "{t}"}
 
 
@@ -190,23 +194,23 @@ def ranked_classes(g: pd.DataFrame) -> pd.DataFrame:
                  sel=("selectivity", lambda s: "; ".join(sorted(set(s.dropna())))))
             .reset_index().sort_values(["n", "c_target"], ascending=[False, True]))
 
-def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """The proposed rule over reviewed members (database fields where a member is unreviewed), and the
-    members with the mechanism each is counted in. Mechanisms tied on program count each get a tile."""
+def tiles(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Decision 12 over reviewed members (database fields where a member is unreviewed), and the
+    members with the mechanism each is counted in. Mechanisms tied on count each get a tile."""
+    unresolved = (m.db_target.isna() & m.chembl_mechanism.isna()).groupby(m.mondo_id_named).mean()
     m = m.copy()
     m["c_target"] = m.verified_target.fillna(m.db_target)
     m["c_target"] = m.c_target.where(m.selectivity.ne("off-class"), m.c_target + " (off-class)")
     m["c_action"] = m.verified_action.fillna(m.db_action)
     m["c_group"] = m.modality_group.fillna(m.modality_group_db)
     m = m[m.novel_verified.ne(False) & m.c_target.notna() & m.c_target.ne("unknown") & m.selectivity.ne("no target")]
-    cur = current.set_index("mondo_id")
     out, chosen = [], []
     for r in named.itertuples():
         g = m[m.mondo_id_named == r.mondo_id]
         ranked = ranked_classes(g)
         ok = ranked[ranked.n >= MIN_PROGRAMS]
         base = {"area": r.area, "mondo_id": r.mondo_id, "label": r.label, "n_programs": int(r.n),
-                "share_unresolved": cur.at[r.mondo_id, "share_unresolved"]}
+                "share_unresolved": round(float(unresolved.get(r.mondo_id, 1.0)), 2)}
         if not len(ok):
             top = ranked.iloc[0] if len(ranked) else None
             out.append({**base, "class": "no qualifying class", "class_programs": 0, "class_share": 0.0,
@@ -232,8 +236,8 @@ def proposed(m: pd.DataFrame, named: pd.DataFrame, current: pd.DataFrame) -> tup
     return pd.DataFrame(out), pd.concat(chosen)
 
 def current_members(m: pd.DataFrame) -> pd.Series:
-    """Whether each member counts toward its indication's class in the committed named_contexts.csv."""
-    committed = pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv")).set_index("mondo_id")["class"]
+    """Whether each member counted toward its indication's class in the v2 list."""
+    committed = pd.read_csv(V2).set_index("mondo_id")["class"]
     want = m.mondo_id_named.map(committed)
     in_class = pd.Series(False, index=m.index)
     for i, r in m.iterrows():
@@ -250,11 +254,9 @@ def current_members(m: pd.DataFrame) -> pd.Series:
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     ent, named, progs = cohort()
-    current = lists.classes(ent, named)
-    current.to_csv(os.path.join(OUT, "current_on_db.csv"), index=False)
     m = reviewed(members(ent, named, progs))
     m["in_current_class"] = current_members(m)
-    prop, chosen = proposed(m, named, current)
+    prop, chosen = tiles(m, named)
     rank = chosen.set_index("program_id").proposed_rank
     m["proposed_class_rank"] = m.program_id.map(rank)
     cols = ["mondo_id_named", "indication", "area", "program_id", "program_mondo_id", "moiety_id", "drug", "code_names",
@@ -264,16 +266,16 @@ def main() -> None:
             "verified_target", "verified_action", "selectivity", "modality_group", "verified_first_fda_approval",
             "novel_verified", "evidence", "disagrees_with_db", "db_issue", "review_note"]
     m[cols].rename(columns={"mondo_id_named": "mondo_id"}).to_csv(os.path.join(OUT, "class_members.csv"), index=False)
-    committed = pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv")).set_index("mondo_id")
-    prop["current_class"] = prop.mondo_id.map(committed["class"])
-    prop["changed_from_current"] = prop["class"] != prop.current_class
-    prop[list(pd.read_csv(os.path.join(HERE, "lists", "named_contexts.csv"), nrows=0).columns) + ["class_share", "tile", "modality_groups", "selectivity_note",
-                                                   "furthest_phase", "changed_from_current", "reason", "runner_up", "current_class"]] \
-        .to_csv(os.path.join(OUT, "proposed_contexts.csv"), index=False)
+    prop["v2_class"] = prop.mondo_id.map(pd.read_csv(V2).set_index("mondo_id")["class"])
+    prop["changed_from_v2"] = prop["class"] != prop.v2_class
+    prop[["area", "mondo_id", "label", "n_programs", "tile", "class", "class_programs", "class_share", "modality_groups",
+          "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "reason", "runner_up",
+          "v2_class", "changed_from_v2"]].to_csv(CONTEXTS, index=False)
     need = m[(m.in_current_class | m.proposed_class_rank.notna()) & ~m.reviewed]
     print(f"{len(m)} member rows, {int(m.reviewed.sum())} reviewed, {int(m.disagrees_with_db.eq(True).sum())} disagree; "
-          f"{len(prop)} tiles over {prop.mondo_id.nunique()} indications, {int(prop['class'].eq('no qualifying class').sum())} blank; "
-          f"{int(prop.changed_from_current.sum())} tiles differ from named_contexts.csv; "
+          f"{int(prop['class'].ne('no qualifying class').sum())} tiles over {prop.mondo_id.nunique()} indications, "
+          f"{int(prop['class'].eq('no qualifying class').sum())} blank; "
+          f"{int(prop.changed_from_v2.sum())} rows differ from the v2 list; "
           f"{need.moiety_id.nunique()} in-scope moieties unreviewed")
     if len(need):
         print(need[["indication", "moiety_id", "drug", "db_target", "db_action", "modality", "chembl_mechanism"]].to_string())
