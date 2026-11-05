@@ -404,6 +404,8 @@ Keep a name only when a paper using it is almost certainly about this drug: its 
 
 Drop: common English words (Success, Justice, Tracer, Conserve); generic chemical, class or protein names that also denote other things (Compound A, Protein A, Albumin, Bovine serum albumin, POLY, Alcohol when the drug is a specific alcohol product); names of other drugs, including other drugs' brand names and combination products whose other ingredient makes the name about something else; the parent, precursor or metabolite of the drug when it is a different molecule; and names so short or generic that most papers using them are about something else.
 
+A generic or family name of a protein, cell type or other biologic is kept when the drug IS that entity, or a recombinant, purified or cell-derived version of it: "Interferon gamma" for interferon gamma-1b, "interleukin-2" or "IL-2" for aldesleukin, "MAPC" for a multipotent adult progenitor cell product. The same name is dropped for a small molecule, and for a drug that only acts on or binds that entity.
+
 When unsure, drop the name. Always keep at least one name. Return the names to keep, copied exactly from the candidates."""
 
 VET_SCHEMA = {"type": "object", "additionalProperties": False,
@@ -425,8 +427,12 @@ def validate_vet(p: dict, out: dict) -> None:
         raise ValueError(f"names not among the candidates: {extra[:3]}")
 
 
-def vet_task(model: str = "claude-sonnet-5", suffix: str = "") -> llm.Task:
-    return llm.Task(name="literature_name_vet" + suffix, prompt_version="v1", schema_version="v1", system=VET_SYSTEM,
+BIOLOGIC = {"monoclonal_antibody", "protein", "peptide", "other_cell_therapy", "antibody_drug_conjugate", "gene_therapy",
+            "multispecific_antibody", "car_t", "microbiome_or_live_biotherapeutic", "other", "mrna"}  # modalities vetted by v2
+
+
+def vet_task(model: str = "claude-sonnet-5", suffix: str = "", version: str = "v2") -> llm.Task:
+    return llm.Task(name="literature_name_vet" + suffix, prompt_version=version, schema_version="v1", system=VET_SYSTEM,
                     schema=VET_SCHEMA, render=render_vet, validate=validate_vet, subject_type="moiety", model=model,
                     effort="low", max_tokens=2000)
 
@@ -450,10 +456,17 @@ def vetted_names(moieties: list[int], log=print) -> dict[int, list[str]]:
     for start in range(0, len(moieties), NAME_CHUNK):
         candidates.update(names_of(moieties[start:start + NAME_CHUNK]))
     items = vet_payloads(moieties, candidates)
-    decided = llm.current_decisions(vet_task(), items)
-    if len(decided) < len(items):
-        llm.run(vet_task(), {k: v for k, v in items.items() if k not in decided})
-        decided = llm.current_decisions(vet_task(), items)
+    decided: dict = {}
+    for version, part in (("v2", {k: v for k, v in items.items() if v["modality"] in BIOLOGIC}),
+                          ("v1", {k: v for k, v in items.items() if v["modality"] not in BIOLOGIC})):
+        if not part:
+            continue
+        t = vet_task(version=version)  # v2 (the biologic-name clause) applies to biologics; small molecules keep v1
+        got = llm.current_decisions(t, part)
+        if len(got) < len(part):
+            llm.run(t, {k: v for k, v in part.items() if k not in got})
+            got = llm.current_decisions(t, part)
+        decided.update(got)
     log(f"name vet: entities={len(items)} vetted={len(decided)}")
     out = {int(k): o["keep"] for k, (_, o) in decided.items()}
     rest = [m for m in moieties if m not in out]
