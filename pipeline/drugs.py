@@ -260,7 +260,8 @@ def canonicalize(args) -> None:
     (resolved_via <> 'ctgov_snapshot') or that appear in an industry-sponsored
     snapshot trial, each with up to three of its CT.gov snapshot trials. Names
     whose shared sponsor code the decisions resolve differently are decided
-    again with the other names' resolutions (disagreements). With --rebuild-entities-from, names resolve as
+    again with the other names' resolutions (disagreements). A name an exact match links as the run starts that no
+    longer matches is decided like the others, as are names given with --decide. With --rebuild-entities-from, names resolve as
     if the entities numbered from that id did not exist, and those left unreferenced are deleted. Names whose decision gives an entity a code
     another entity alone holds (stale, after pipeline.drugs codes) are decided again, shown the codes the
     FDA substance registry assigns."""
@@ -268,6 +269,8 @@ def canonicalize(args) -> None:
         cur.execute("SELECT drug_id, display_name, coalesce(synonyms, '{}'), chembl_id, normalized_name, "
                     "resolved_via FROM preclin.drug")
         drugs = cur.fetchall()
+        cur.execute("SELECT drug_id FROM preclin.drug_moiety WHERE method = 'exact_name'")
+        linked_by_name = {r[0] for r in cur.fetchall()}  # strings an exact name links as this run starts
         exact_keys = entity_keys(cur, resolved=True)
         cur.execute("""SELECT DISTINCT sd.drug_id FROM preclin.ctgov_study_drug sd
                        JOIN preclin.ctgov_study s USING (nct_id) WHERE s.lead_sponsor_class = 'INDUSTRY'""")
@@ -288,7 +291,9 @@ def canonicalize(args) -> None:
         context = dict(cur.fetchall())
     exact = {did: exact_keys[nk] for did, _, _, _, nk, _ in drugs
              if did not in decided_before and nk in exact_keys}
-    in_scope = {did for did, *_, via in drugs if via != "ctgov_snapshot" or did in industry}
+    # a string an exact name once linked and no longer matches is decided rather than left unlinked
+    in_scope = ({did for did, *_, via in drugs if via != "ctgov_snapshot" or did in industry}
+                | (linked_by_name - set(exact)) | set(getattr(args, "decide", None) or []))
     items = {str(did): {"name": name, "synonyms": list(syn)[:6], "chembl_id": chembl,
                         "trials": [{**t, "interventions": t["interventions"] or []}
                                    for t in context.get(did, [])]}
@@ -1080,6 +1085,8 @@ def main() -> None:
     c.add_argument("--rebuild-entities-from", type=int, metavar="MOIETY_ID",
                    help="resolve names as if entities numbered from this id did not exist, and delete those left "
                         "unreferenced: undoes the entities a withdrawn run created")
+    c.add_argument("--decide", type=int, nargs="*", metavar="DRUG_ID",
+                   help="intervention names to decide even when outside the LLM scope (one that lost its exact link)")
     c.set_defaults(fn=canonicalize)
     u = sub.add_parser("unii")
     u.add_argument("--named-pairs", action="store_true",
