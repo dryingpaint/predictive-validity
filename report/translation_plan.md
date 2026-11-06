@@ -322,3 +322,12 @@ set with the same metrics, and both the pre- and post-vetting results are report
 than 100,000 records is held from the paid prefilter until approved. The reference set's files, lost from
 temporary storage, were rebuilt from the reference agents' recorded steps; re-scoring the pre-vetting pipeline
 against them reproduces the recorded gate (one healthy-animal reference study more: 149 against 148).
+
+**Reporting the literature lines, 2026-11-05, after the full-cohort run and before its estimates were published.**
+No kind passed the gate on the final retrieval (v3_final: recall 74%, 67% and 39%). At the user's direction the
+three lines are reported as exploratory, not left out: the evidence chart draws them in their own marked areas
+(published animal studies of the drug, with the disease-model and healthy-animal-only groups; a published study
+of target engagement in people), the main text states the result with the recall caveat, and no conclusion of
+the report rests on them. Drugs whose generic name is an endogenous molecule with no product-specific name
+(alcohol, nitric oxide, ademetionine) were searched by product names and codes only, a vetting exception recorded
+in report/audits/literature_name_vet.json.

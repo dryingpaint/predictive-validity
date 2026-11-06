@@ -183,6 +183,12 @@ AREAS: dict[str, tuple[Line, list[Line]]] = {
         Line("Binds strongly, selectivity not shown", "tier_strong_only", "small_molecule"),
         Line("Binds more weakly than 100 nM", "tier_weaker", "small_molecule"),
     ]),
+    "published_animal": (Line("Published animal studies of the drug before entry (exploratory)", "area_lit_animal", "all"), [
+        Line("In an animal model of the disease", "lit_animal_disease", "all"),
+        Line("Only in healthy animals", "tier_lit_healthy_only", "all"),
+    ]),
+    "early_human": (Line("Published study of the drug acting on its target in people (exploratory)", "lit_human_engagement",
+                         "phase_2_3"), []),
     "safety_risk": (Line("Target safety risk", "liability", "target"), [
         Line("Only: people rarely carry broken copies of the gene", "tier_constrained_only", "target"),
         Line("Only: mice without the gene die young", "tier_lethal_only", "target"),
@@ -213,6 +219,7 @@ def area_columns(d: pd.DataFrame) -> pd.DataFrame:
     flag = lambda s, scope=t: s.astype(float).where(scope)  # noqa: E731
     rare, common, potent = d.rare_variant.gt(0), d.gwas.gt(0), d.potent_100nm.gt(0)
     measured, small = d.assay_best.notna(), APPLIES["small_molecule"](d)
+    screened = d.lit_animal_healthy.notna()  # the drug's literature was retrieved and screened
     return pd.DataFrame({
         "tier_rare_only": flag(rare & ~common),
         "tier_common_only": flag(common & ~rare),
@@ -226,6 +233,8 @@ def area_columns(d: pd.DataFrame) -> pd.DataFrame:
         "tier_lethal_only": flag(d.ko_lethal.gt(0) & ~d.constrained.gt(0)),
         "tier_constrained_and_lethal": flag(d.constrained.gt(0) & d.ko_lethal.gt(0)),
         "tier_failure_only": flag(d.earlier_failure.gt(0) & ~d.precedent.gt(0), APPLIES["from_2011"](d)),
+        "area_lit_animal": flag(d.lit_animal_disease.gt(0) | d.lit_animal_healthy.gt(0), screened),
+        "tier_lit_healthy_only": flag(d.lit_animal_healthy.gt(0) & ~d.lit_animal_disease.gt(0), screened),
     }, index=d.index)
 
 
