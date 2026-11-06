@@ -61,7 +61,7 @@ having gone to the clinic. It is stated once in the figure legend and the note, 
 ## Data and definitions
 
 Input: `preclin.atlas_track_entry` ⨝ `atlas_track_verdict` via `glance.load()` (so adjudicated statuses and
-`final` are the atlas's own), `drafts/v3/tiles.json` (`furthest_phase`, `area`, `class_programs`), and the
+`final` are the atlas's own), `drafts/tiles.json` (`furthest_phase`, `area`, `class_programs`), and the
 figure's `glance.csv` for cell headlines.
 
 - **Track**: (slug, question, modality, model_id). Its outcome is the latest non-drop `final` on the track.

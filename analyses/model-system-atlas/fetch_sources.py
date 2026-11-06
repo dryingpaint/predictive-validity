@@ -13,7 +13,7 @@ PDF (pre-2012 packages mostly are) is OCRed page by page with pdftoppm and tesse
 Writes sources/<appl_no>/<file>.pdf and .txt (not committed) and sources/manifest.csv, one row per
 tile x document, which the drafter brief points at; `store` also upserts each document's text into
 preclin.atlas_source_document (migration 133). Agents cannot read review PDFs above 10 MB
-themselves; this is why `model_filed` was null on 193 of 523 entries in the v2 run. CBER products
+themselves; without it `model_filed` was null on 193 of 523 entries. CBER products
 (gene and cell therapies) are not in openFDA drugsfda and get a row with `error: not_in_openfda`.
 """
 import csv

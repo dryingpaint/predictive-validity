@@ -8,7 +8,7 @@
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py figure      # ../atlas_lessons.{png,pdf,svg}
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py all
 
-Reads the store through glance.load() (read-only; adjudicated statuses), drafts/v3/tiles.json and the hand-typed
+Reads the store through glance.load() (read-only; adjudicated statuses), drafts/tiles.json and the hand-typed
 inputs beside this file: overrides.csv (family), safety_types.csv (the 76 safety contras), dose_types.csv (the 60
 dose contras derived from efficacy). Every tile reached Phase 2, so every rate here is what a positive prediction
 was worth once the drug was in patients, never a sensitivity.

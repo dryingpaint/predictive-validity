@@ -132,8 +132,7 @@ def load() -> dict:
             "build": {"snapshot": str(b.snapshot), "n_register": int(b.n_register), "n_tracked": int(b.n_tracked)} if b is not None else {},
             "tiles": sorted(tiles, key=lambda t: (t["area"], t["disease"], t["mechanism"])),
             "register": register,
-            "agreement": {"cells": len(pairs), "agree": agree, "kappa": kappa(pairs),
-                          "v2_flip_rate": 0.19}}
+            "agreement": {"cells": len(pairs), "agree": agree, "kappa": kappa(pairs)}}
 
 
 def main() -> None:
@@ -142,7 +141,7 @@ def main() -> None:
     a = ap.parse_args()
     data = load()
     data["interim"] = a.interim
-    checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "v3", "*.check.json"))]
+    checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "*.check.json"))]
     data["open"] = {"rule_questions": sum(len(c.get("rule_questions") or []) for c in checks),
                     "missed": sum(len(c.get("missing") or []) for c in checks)}
     tpl = open(os.path.join(HERE, "report", "template.html")).read()

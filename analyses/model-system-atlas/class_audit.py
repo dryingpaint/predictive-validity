@@ -1,4 +1,4 @@
-"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table (decision 12).
+"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table.
 
     .venv/bin/python analyses/model-system-atlas/class_audit.py          # files only
     .venv/bin/python analyses/model-system-atlas/class_audit.py store    # and the database (migration 133)
@@ -15,13 +15,11 @@ one row per tracked tile, and under lists/class_audit/:
   register.csv          every mechanism in every named indication, counted across modalities,
                         tracked when it has MIN_PROGRAMS programs (named_contexts.csv is the tracked rows);
   AUDIT.md              where the database disagrees with the review, and the rule's result.
-named_contexts_v2.csv is the list the v2 drafts were written against; each tile records the v2
-class it replaces.
 
 reviews.csv is the hand-curated input, one row per moiety (same_entity_as folds a duplicate
 moiety into the entity it repeats); a moiety absent from it falls back to the database's fields.
 
-Rule (decision 12). The tile's unit is the mechanism, (verified target, verified action),
+Rule. The tile's unit is the mechanism, (verified target, verified action),
 counted across modalities; modality only splits the dose and platform-safety sub-strips inside a
 tile (`modality_groups` lists them). A non-selective or off-class member carries its own verified
 target (e.g. "JAK (pan)"), so it falls into its own mechanism (a dual member whose verified target is
@@ -48,7 +46,6 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "lists", "class_audit")
 REVIEWS = os.path.join(OUT, "reviews.csv")
 CONTEXTS = os.path.join(HERE, "lists", "named_contexts.csv")
-V2 = os.path.join(HERE, "lists", "named_contexts_v2.csv")
 MIN_PROGRAMS = 3
 
 _spec = importlib.util.spec_from_file_location("atlas_lists", os.path.join(HERE, "lists.py"))
@@ -189,7 +186,7 @@ def class_label(target: str, action: str) -> str:
     return ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
 
 def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Every mechanism in every named indication (decision 12): one row per indication x mechanism,
+    """Every mechanism in every named indication: one row per indication x mechanism,
     counted across modalities and tracked when it has MIN_PROGRAMS programs; and the members, each
     with its mechanism_key or the reason it is in none."""
     m = m.copy()
@@ -224,21 +221,6 @@ def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
             reg[reg.tracked].set_index(["mondo_id_named", "mechanism_key"]).index)
     return reg, m
 
-def current_members(m: pd.DataFrame) -> pd.Series:
-    """Whether each member counted toward its indication's class in the v2 list."""
-    committed = pd.read_csv(V2).set_index("mondo_id")["class"]
-    want = m.mondo_id_named.map(committed)
-    in_class = pd.Series(False, index=m.index)
-    for i, r in m.iterrows():
-        if pd.notna(r.db_target):
-            actions = str(r.db_action).split(";")
-            for k, t in enumerate(str(r.db_target).split(";")):
-                a = actions[k] if len(actions) > 1 else actions[0]
-                in_class[i] |= lists.ACTION_PHRASE.get(a, "{t} " + a).format(t=t) == want[i]
-        elif pd.notna(r.chembl_mechanism):
-            in_class[i] = r.chembl_mechanism.split(" | ")[0] == want[i]
-    return in_class
-
 
 def _nul(v):
     """None for a missing value, a plain Python scalar otherwise (psycopg2 does not adapt numpy types)."""
@@ -259,7 +241,7 @@ def store(m: pd.DataFrame, reg: pd.DataFrame, named: pd.DataFrame) -> str:
             cur, "atlas_class_register@v1", "Atlas class register",
             "Every mechanism (verified target, action; across modalities) of every named indication, from the "
             "novel Phase 2 entrants of 2008-2019 and a hand review of the entities; tracked when it has "
-            "min_programs distinct entities (decision 12).",
+            "min_programs distinct entities.",
             ["preclin.dev_program", "preclin.moiety_target", "preclin.chembl_mechanism",
              "analyses/model-system-atlas/lists/class_audit/reviews.csv"],
             {"window": [str(w) for w in lists.WINDOW], "phase": lists.PHASE, "min_programs": MIN_PROGRAMS})
@@ -306,31 +288,26 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     ent, named, progs = cohort()
     m = reviewed(members(ent, named, progs))
-    m["in_v2_class"] = current_members(m)
     reg, m = register(m, named)
     cols = ["mondo_id_named", "indication", "area", "program_id", "program_mondo_id", "moiety_id", "drug", "code_names",
             "db_target", "db_action", "n_primary", "chembl_mechanism", "modality", "modality_group_db", "novel_flag",
             "first_approval_date", "entry_year", "approved_this_indication", "furthest_phase_reached",
-            "in_v2_class", "mechanism_key", "excluded", "tracked", "same_entity_as",
+            "mechanism_key", "excluded", "tracked", "same_entity_as",
             "verified_target", "verified_action", "selectivity", "modality_group", "verified_first_fda_approval",
             "novel_verified", "evidence", "disagrees_with_db", "db_issue", "review_note"]
     m[cols].rename(columns={"mondo_id_named": "mondo_id"}).to_csv(os.path.join(OUT, "class_members.csv"), index=False)
     out = reg.rename(columns={"mondo_id_named": "mondo_id", "n_indication": "n_programs", "n": "class_programs",
                               "mechanism": "class", "groups": "modality_groups", "sel": "selectivity_note",
                               "furthest": "furthest_phase", "ex": "example_entities", "share": "class_share"})
-    v2 = pd.read_csv(V2).set_index("mondo_id")["class"]
-    out["v2_class"] = out.mondo_id.map(v2)
-    out["is_v2_class"] = out["class"] == out.v2_class
     keep = ["area", "mondo_id", "label", "n_programs", "mechanism_key", "class", "class_programs", "class_share",
-            "modality_groups", "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "tracked",
-            "v2_class", "is_v2_class"]
+            "modality_groups", "selectivity_note", "furthest_phase", "share_unresolved", "example_entities", "tracked"]
     out[keep].to_csv(os.path.join(OUT, "register.csv"), index=False)
     out[out.tracked][[k for k in keep if k != "tracked"]].to_csv(CONTEXTS, index=False)
-    need = m[(m.in_v2_class | m.tracked) & ~m.reviewed]
+    need = m[m.tracked & ~m.reviewed]
     t = out[out.tracked]
     print(f"{len(m)} member rows, {int(m.reviewed.sum())} reviewed, {int(m.disagrees_with_db.eq(True).sum())} disagree; "
           f"register {len(out)} indication x mechanism rows; tracked {len(t)} tiles in {t.mondo_id.nunique()} of "
-          f"{len(named)} indications ({int(t.is_v2_class.sum())} are a v2 class); "
+          f"{len(named)} indications; "
           f"{need.moiety_id.nunique()} in-scope moieties unreviewed")
     if len(need):
         print(need[["indication", "moiety_id", "drug", "db_target", "db_action", "modality", "chembl_mechanism"]].to_string())

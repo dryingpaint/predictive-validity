@@ -4,7 +4,7 @@ latest comparison, the year it earned it, the model, and the reason when it fail
     .venv/bin/python analyses/model-system-atlas/glance.py      # writes glance.csv; glance_nature.py draws it
 
 Reads preclin.atlas_track_entry with its verdicts (the adjudicated status where an adjudicator decided) and
-applies report_page.headline, the rule of decision 6: a cell's headline is the best latest status among its
+applies report_page.headline: a cell's headline is the best latest status among its
 tracks, one per model, that predicted before the patient result; untested when none did; a retrodiction never
 sets it. The entry drawn is the latest on the track that set the headline. When a cell is split by modality
 the worst strip is shown. A cell whose only tracks are retrodictions is drawn as "retrodiction only". A track
@@ -24,7 +24,7 @@ from report_page import final_status, headline
 
 from report import frame
 
-V3 = os.path.join(HERE, "drafts", "v3")
+DRAFTS = os.path.join(HERE, "drafts")
 QUESTIONS = [("engagement", "Target engagement", "Does the drug hit its target?"), ("dose", "Dose", "How much drug is needed?"),
              ("efficacy", "Efficacy", "Will the disease respond?"), ("safety", "Safety", "Will people be harmed?")]
 WORST = ["contra", "neg", "same", "other", "retro", "untested"]
@@ -44,7 +44,7 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame]:
     e["final"] = [final_status({"status": st, "adjudicated_status": adj if isinstance(adj, str) else None})
                   for st, adj in zip(e.status, e.adjudicated_status)]
     e["short"] = e.fields.map(lambda f: f.get("short"))
-    tiles = pd.DataFrame(json.load(open(os.path.join(V3, "tiles.json"))))
+    tiles = pd.DataFrame(json.load(open(os.path.join(DRAFTS, "tiles.json"))))
     stored = set(zip(e.mondo_id, e.mechanism_key))  # tiles.json also lists tiles not yet drafted
     tiles = tiles[[k in stored for k in zip(tiles.mondo_id, tiles.mechanism_key)]].reset_index(drop=True)
     return e, tiles
