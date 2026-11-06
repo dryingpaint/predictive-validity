@@ -3,7 +3,7 @@ acute-myeloid-leukemia-flt3-inhibitors,rat-dog-glp-tox,silent,cns;cardiovascular
 alzheimer-disease-anti-app-antibodies,tg2576-mab158,silent,cns,ARIA-H (microbleeds) in Clarity AD; the mice showed none
 alzheimer-disease-bace1-inhibitors,ly2886721-nonclinical-tox,silent,liver,liver enzyme elevations stopped the phase 2; tox silent
 alzheimer-disease-hrh3-antagonists,rat-safety-pharm-eeg,stated_safe,cns,rat EEG predicted no sleep disturbance; dose-dependent insomnia in patients
-atopic-eczema-hrh4-antagonists,h4-tox-rat-monkey,silent,haematological,agranulocytosis in 2 of ~30 patients; 6-month rat and 9-month monkey tox showed no haematological signal
+atopic-eczema-hrh4-antagonists,h4-tox-rat-monkey,silent,haematological;immune,agranulocytosis in 2 of ~30 patients; 6-month rat and 9-month monkey tox showed no haematological signal; immune added after coder 2
 breast-cancer-anti-igf1r-antibodies,cyno-toxicology-teprotumumab,silent,metabolic_endocrine_bone;immune,hyperglycaemia and infusion reactions / IBD flares not predicted by monkeys (FDA); imported from TED
 breast-cancer-cdk4-6-inhibitors,rat-dog-gltox,silent,liver;cardiovascular,liver-enzyme rises and thromboembolism missed; pneumonitis marrow and gut held
 breast-cancer-esr1-degrader,vepdegestrant-herg-dog-telemetry,stated_safe,cardiovascular,clean hERG and dog telemetry; patients prolonged QTcF with a label warning
@@ -27,14 +27,14 @@ follicular-lymphoma-cd19-directed-depleters,syngeneic-balbc-a20-amcd19z-car-mous
 hemophilia-a-f8-replacement-gene-therapy,hema-f8ko-mouse-nhp,silent,liver,ALT above normal in 81 % and 87 % needed immunosuppression; macaques showed no transaminase signal
 hepatitis-c-virus-infection-hcv-ns5a-inhibitors,ns5a-animal-tox,false_alarm,metabolic_endocrine_bone,rat and monkey adrenal cortical hypertrophy near clinical exposure; cortisol monitoring in patients showed nothing
 hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors,mito-tox-cellline-ind,stated_safe,cardiovascular,HepG2/CEM assay reported no mitochondrial toxicity for BMS-986094; nine patients hospitalised and one heart-failure death
-hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors,polrmt-mito-panel-retro,stated_safe,liver,the retrodiction panel rated PSI-352938 clean; it stopped for ALT elevations in QUANTUM
+hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors,polrmt-mito-panel-retro,stated_safe,liver,"kept after coder 2 (silent): the panel returned >100 uM in hepatocyte and cytotoxicity assays, a null on the endpoint; PSI-352938 stopped for ALT elevations"
 hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors,rodent-dog-monkey-tox,silent,cardiovascular,rat dog and mouse toxicology cleared BMS-986094; cardiotoxicity hospitalised 11 of 34 patients
 hepatocellular-carcinoma-anti-pdcd1-antibodies,cyno-monkey-ro,silent,immune,monkeys at 60 mg/kg for 13 weeks showed nothing; 28 % of patients had an immune-related adverse event
 hiv-infectious-disease-hiv-integrase-insti-inhibitors,mouse-periconception-dtg-therapeutic,false_alarm,other,mice reproduced the neural-tube-defect signal; with more Tsepamo births the human signal disappeared (0.10 % vs 0.11 %)
 hiv-infectious-disease-hiv-maturation-gag-inhibitors,mi-nonclinical-tox,false_alarm,gastrointestinal,animal tox predicted gastric parietal/chief-cell changes; paired week-24 gastric biopsies in DOMINO showed nothing
 hiv-infectious-disease-hiv-rt-nnrti-inhibitors,nnrti-standard-tox-species,silent,cns,delayed-onset seizures in 5 of 35 fosdevirine patients; no tox species predicted them; the monkey carried parent drug not the patients' conjugate
 insomnia-hcrtr1-2-antagonists,rhesus-rat-abuse-liability-battery,stated_safe,cns,animals showed no reinforcement or dependence; recreational users liked suvorexant as much as zolpidem (C-IV)
-interstitial-cystitis-anti-ngf-antibodies,anti-ngf-3species-tox,stated_safe,musculoskeletal,three-species bone and joint histology at large exposure multiples found nothing; rapidly progressive OA put the IC trials on hold
+interstitial-cystitis-anti-ngf-antibodies,anti-ngf-3species-tox,stated_safe,musculoskeletal,kept after coder 2 (silent): targeted bone and joint histology in three species returned a null on the exact endpoint; rapidly progressive OA put the IC trials on hold
 malignant-pancreatic-neoplasm-map2k1-2-inhibitors,tox-species-rat-dog,silent,ocular;cardiovascular,ocular toxicity (CSR RPED) unpredicted and LVEF loss only reproduced at 3-7x exposure; skin and GI held
 melanoma-anti-pdcd1-antibodies,tori-cynomolgus-monkey,silent,immune,endocrine (36 %) and skin (32 %) irAEs over five years; monkey toxicology clean
 melanoma-braf-inhibitors,rat-dog-toxicology,silent,skin,cutaneous SCC in ~29 % of patients; rat and dog columns of the FDA correlation table blank
@@ -52,11 +52,11 @@ osteoarthritis-ntrk1-inhibitors,rat-mia-knee-oa,no_comparison,musculoskeletal,tr
 osteoarthritis-ntrk1-inhibitors,rat-naive-knee-ia-tolerability,silent,musculoskeletal,rat intra-articular histology silent; injection-joint inflammatory reaction in 67 % of knees
 plasma-cell-myeloma-psmb5-inhibitors,delanzomib-mm-xenograft,stated_safe,haematological,marrow sparing predicted from normal marrow cultures; thrombocytopenia (53 % grade 3/4) was a DLT
 plasma-cell-myeloma-psmb5-inhibitors,oprozomib-rodent-dog-tolerability,stated_safe,gastrointestinal,tolerated in rodents and dogs; GI toxicity with three AE-related deaths ended the programme
-primary-biliary-cholangitis-nr1h4-agonists,mdr2-ko-mouse,silent,skin,silent on pruritus (mice can scratch); its stated prediction on the ductular reaction had no patient histology to meet
+primary-biliary-cholangitis-nr1h4-agonists,mdr2-ko-mouse,no_comparison,skin,"resolved to coder 2: the entry's reason is the untested ductular-reaction prediction; the pruritus silence is a side remark, so the track leaves the count"
 primary-biliary-cholangitis-nr1h4-agonists,pxb-humanized-liver-il31,false_alarm,skin,hepatocyte IL-31 rose in PXB mice; serum IL-31 and itch unchanged in 71 PBC patients on cilofexor
 primary-biliary-cholangitis-nr1h4-agonists,rodent-fxr-pd,silent,skin,dose-limiting pruritus (52.5 % vs 28.6 %); no rodent model showed scratching
 prostate-cancer-cyp17a1-ar-inhibitors,seviteronel-crpc-xenografts,silent,cns,concentration impairment tremor and fatigue closed the phase 2; the mice never showed CNS toxicity
-prostate-cancer-folh1-directed-depleters,human-smg-tissue-autoradiography,stated_safe,other,ex-vivo human gland autoradiography rated salivary uptake minimal; the same men's glands took SUVmax 23.5 on PET
+prostate-cancer-folh1-directed-depleters,human-smg-tissue-autoradiography,stated_safe,other,"kept after coder 2 (not_showable): the system made a prediction (minimal gland uptake) that was wrong, whatever the mechanism; the same men's glands took SUVmax 23.5 on PET"
 prostate-cancer-folh1-directed-depleters,psma-pos-neg-xenograft,not_showable,other,rodent submandibular PSMA is the lowest of all species; rodents cannot forecast xerostomia (39 % in VISION)
 prostate-cancer-parp1-2-inhibitors,pamiparib-mda-mb-436-xenograft,silent,haematological,anaemia and neutropenia; the xenograft mouse could show cytopenias and reported none
 psoriasis-jak1-inhibitors,jak1-human-whole-blood-pstat,stated_safe,haematological,whole-blood pSTAT selectivity said JAK2 would be spared; platelets reticulocytes and neutrophils fell at 200 mg bid
@@ -65,12 +65,12 @@ rheumatoid-arthritis-anti-csf2-antibodies,mouse-gmcsf-null-pap,false_alarm,respi
 rheumatoid-arthritis-syk-inhibitors,rat-aia-cia-mk8457,silent,immune,serious infections (16.3 per 100 patient-years one death) ended both trials; rat models flagged nothing
 schizophrenia-pde10a-inhibitors,rat-catalepsy-prolactin,stated_safe,cns,rat catalepsy predicted an EPS advantage over D2 antagonists; akathisia and dystonia at the clinical dose
 small-cell-lung-carcinoma-anti-pdcd1-antibodies,cyno-monkey-ro,silent,immune,fatal pneumonitis and immune-type skin pulmonary and neurologic events in SCLC; monkeys predicted none
-type-1-diabetes-mellitus-slc5a2-inhibitors,stz-rat,silent,metabolic_endocrine_bone,DKA 3-4x placebo in EASE; the STZ-rat work with the same drug plus insulin reported no ketone signal
+type-1-diabetes-mellitus-slc5a2-inhibitors,stz-rat,stated_safe,metabolic_endocrine_bone,"resolved to coder 2: the rat work with the same drug reported no ketone signal, a null on the exact endpoint; DKA 3-4x placebo in EASE"
 type-2-diabetes-mellitus-dpp4-inhibitors,cyno-repeat-dose-skin-tox,false_alarm,skin,monkey necrotic dermatosis never appeared in patients; PMDA calls it species-specific
-type-2-diabetes-mellitus-gcgr-antagonists,gcgr-ko-mouse,stated_safe,metabolic_endocrine_bone;liver,knockout lean and steatosis-resistant; six months of LY2409021 raised liver fat weight and blood pressure
+type-2-diabetes-mellitus-gcgr-antagonists,gcgr-ko-mouse,stated_safe,metabolic_endocrine_bone;liver;cardiovascular,knockout lean and steatosis-resistant; six months of LY2409021 raised liver fat weight and blood pressure; cardiovascular added after coder 2
 type-2-diabetes-mellitus-gcgr-antagonists,gcgr-mab-mouse-monkey,silent,liver;metabolic_endocrine_bone;cardiovascular,transaminase LDL-C and blood-pressure rises the 18-week mouse mAb study could have shown and did not; imported from T1D
 type-2-diabetes-mellitus-gcgr-antagonists,gcgr-sm-rodent-monkey-challenge,stated_safe,liver;metabolic_endocrine_bone,the rat package called PF-06291874 safe; it raised LDL-C and aminotransferases
-type-2-diabetes-mellitus-gcgr-glp1r-agonists,cyno-monkey,stated_safe,gastrointestinal,monkeys showed no vomiting; vomiting 17 % and nausea 35 % with cotadutide
+type-2-diabetes-mellitus-gcgr-glp1r-agonists,cyno-monkey,silent,gastrointestinal,"resolved to coder 2: absence of emesis in a 4- and 8-week tox study is a clinical observation, not a measurement of the endpoint; vomiting 17 % with cotadutide"
 type-2-diabetes-mellitus-gcgr-glp1r-agonists,dio-mouse,no_comparison,gastrointestinal;cardiovascular,mouse papers report no overt adverse effects; GI intolerance and a 7 bpm heart-rate rise in patients; no source compares
 type-2-diabetes-mellitus-gck-activators,gck-gckr-drug-target-mr,stated_safe,metabolic_endocrine_bone,genetic proxy for direct GK activation predicted no dyslipidaemia; GKA trials raised triglycerides
 type-2-diabetes-mellitus-insr-agonists,rat-dog-chronic-tox,silent,liver,52-week rat and 39-week dog studies reported no liver signal; peglispro patients kept liver fat and ran higher ALT

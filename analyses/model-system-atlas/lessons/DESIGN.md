@@ -211,6 +211,22 @@ Settled after the builder check (2026-11-06):
   (`question = dose (derived)`) in the CSV and the whole of `dose_derived.csv`.
 - `pred` is therefore: `yes` for efficacy, engagement and non-derived dose tracks (except the `neg` track,
   `no`); `safety` for safety tracks; `derived` for derived dose tracks.
+Rework after Stephen's review (2026-11-06, afternoon):
+
+- **The family ranking leaves the main figure.** A family's rate follows the classes it served (in
+  never-approved classes every large family's yes collapses), so a forest that ranks families reads as a
+  model claim and is mostly a disease claim. The forests move to `atlas_lessons_families.*`, supplementary,
+  with the by-outcome split as the control; the main figure is the two drug-level panels.
+- **Panel a (engagement held, efficacy failed)** adds rows by class outcome, prints the contradicted share
+  with a Wilson 95 % interval on every row, and the readout-tier contrast is reported with its test
+  (chi-square p = 0.35; alternative tier definition p = 0.50): a point estimate, not a claim.
+- **Panel b (safety misses)** counts each (model system, harm, type) once, because one toxicology package
+  can serve several tiles (a monkey package serves three PD-1 tiles). Track counts stay in the label.
+- **A second, blind coder** retypes the 76 safety contras from the entry text; agreement (kappa) and every
+  disagreement are reported in `robustness.md`, disagreements resolved by re-reading the entry.
+- **Sensitivity to adjudication:** every panel is recomputed on the drafters' statuses; the differences are
+  reported in `robustness.md`.
+- `lessons.py robust` writes `robustness.md` so the checks are reproducible, not asserted.
 - The store holds all 119 tiles (2,428 entries, 1,242 tracks); `model_kind` is a key of each entry's
   `fields` JSON with six values (animal, ex_vivo, in_silico, human_challenge, human_genetic,
   cross_indication); the prototype rules and their misfile list are the builder's own scratch and are

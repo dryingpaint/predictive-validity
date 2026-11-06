@@ -4,6 +4,7 @@
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py rates       # family_rates.csv, family_rates_by_outcome.csv
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py engagement  # engagement_vs_efficacy.csv, dose_derived.csv
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py safety      # safety_misses.csv
+    .venv/bin/python analyses/model-system-atlas/lessons/lessons.py robust      # robustness.md: intervals, tests, sensitivity, second coder
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py figure      # ../atlas_lessons.{png,pdf,svg}
     .venv/bin/python analyses/model-system-atlas/lessons/lessons.py all
 
@@ -38,8 +39,9 @@ HARM_CLASSES = {"immune", "liver", "cardiovascular", "metabolic_endocrine_bone",
 DOSE_REACHED = {"exposure", "occupancy", "pd_biomarker", "regimen"}
 B, SEED, MIN_TILES = 2000, 76, 4
 OUT = {k: os.path.join(HERE, f"{k}.csv") for k in ["families", "family_rates", "family_rates_by_outcome", "engagement_vs_efficacy",
-                                                    "dose_derived", "safety_misses"]}
-INPUTS = {k: os.path.join(HERE, f"{k}.csv") for k in ["overrides", "safety_types", "dose_types"]}
+                                                    "engagement_summary", "dose_derived", "safety_misses"]}
+ROBUST = os.path.join(HERE, "robustness.md")
+INPUTS = {k: os.path.join(HERE, f"{k}.csv") for k in ["overrides", "safety_types", "safety_types_coder1", "safety_types_coder2", "dose_types"]}
 
 
 # ---------------------------------------------------------------- the track table
@@ -174,6 +176,53 @@ def read_typed(path: str, kind: str) -> pd.DataFrame:
     return pd.read_csv(path, dtype=str).fillna("")
 
 
+def wilson(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson score interval for k of n; (nan, nan) when n is 0."""
+    if n == 0:
+        return float("nan"), float("nan")
+    p, d = k / n, 1 + z * z / n
+    c = (p + z * z / (2 * n)) / d
+    h = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return float(c - h), float(c + h)
+
+
+TIERS = [("direct", "Direct (occupancy, free target)"), ("proximal", "Proximal (the target's product)"), ("downstream", "Downstream biomarker")]
+
+
+def engagement_summary(h: pd.DataFrame, min_area: int = 3) -> pd.DataFrame:
+    """Among tiles whose engagement headline matched: the share with a contradicted efficacy headline, with a Wilson interval,
+    by class outcome, by the headline engagement readout's tier, and by area (areas with min_area such tiles or more)."""
+    held = h[h.engagement.isin(MATCHED)].copy()
+    held["eff"] = held.efficacy.fillna("blank").map(lambda s: "matched" if s in MATCHED else ("contradicted" if s == "contra" else "not compared"))
+    rows = []
+
+    def add(group, label, g):
+        n, k = len(g), int((g.eff == "contradicted").sum())
+        lo, hi = wilson(k, n)
+        rows.append({"group": group, "label": label, "n": n, "contradicted": k, "matched": int((g.eff == "matched").sum()),
+                     "not_compared": int((g.eff == "not compared").sum()), "share": round(k / n, 3) if n else float("nan"),
+                     "lo": round(lo, 3), "hi": round(hi, 3)})
+    add("outcome", "Class approved", held[held.approved])
+    add("outcome", "Class never approved", held[~held.approved])
+    for code, label in TIERS:
+        add("tier", label, held[held.engagement_tier == code])
+    for a, n in held.area.value_counts().items():
+        if n >= min_area:
+            add("area", a.replace("_", " ").capitalize(), held[held.area == a])
+    return pd.DataFrame(rows)
+
+
+def unique_harm_rows(s: pd.DataFrame) -> pd.DataFrame:
+    """The typed safety contras exploded to one row per harm, counted once per (model system, harm, type): a toxicology
+    package that served three tiles is one silence, not three. no_comparison rows are left out; not_showable is drawn
+    with silent."""
+    s = s[s.type.isin({"silent", "stated_safe", "false_alarm", "not_showable"})].copy()
+    s["type"] = s.type.replace({"not_showable": "silent"})
+    x = s.assign(harm=s.harm_class.str.split(";")).explode("harm").reset_index(drop=True)
+    x["harm"] = x.harm.str.strip()
+    return x.drop_duplicates(["model_id", "harm", "type"]).reset_index(drop=True)
+
+
 def cmd_safety(t: pd.DataFrame) -> pd.DataFrame:
     ty = read_typed(INPUTS["safety_types"], "safety review")
     bad = ty[~ty.type.isin(SAFETY_TYPES)]
@@ -204,9 +253,11 @@ def cmd_safety(t: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
-def headline_table(t: pd.DataFrame) -> pd.DataFrame:
-    """Per tile: each question's headline (glance.cells, decision 6), the engagement headline's readout tier and family."""
-    e, tiles = glance.load()
+def headline_table(t: pd.DataFrame, e: pd.DataFrame | None = None, tiles: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Per tile: each question's headline (glance.cells, decision 6), the engagement headline's readout tier and family.
+    Pass e and tiles to read the headlines from other statuses (the drafters' statuses in the sensitivity check)."""
+    if e is None:
+        e, tiles = glance.load()
     cells = glance.cells(e, tiles)
     wide = cells.pivot(index="slug", columns="question", values="status")
     info = tiles.set_index("slug")[["area", "furthest_phase"]]
@@ -226,6 +277,9 @@ def headline_table(t: pd.DataFrame) -> pd.DataFrame:
 def cmd_engagement(t: pd.DataFrame) -> None:
     h = headline_table(t)
     h.to_csv(OUT["engagement_vs_efficacy"], index=False)
+    es = engagement_summary(h)
+    es.to_csv(OUT["engagement_summary"], index=False)
+    print(es.to_string(index=False))
     held = h[h.engagement.isin(MATCHED)]
     eff = held.efficacy.fillna("blank").map(lambda s: "matched" if s in MATCHED else ("contradicted" if s == "contra" else "not compared"))
     print(f"tiles {len(h)}; engagement headline matched {len(held)}")
@@ -250,18 +304,116 @@ def cmd_engagement(t: pd.DataFrame) -> None:
     print(pd.crosstab(m.area, m.reached, margins=True).to_string())
 
 
+def kappa(a: pd.Series, b: pd.Series) -> float:
+    """Cohen's kappa between two codings of the same rows."""
+    po = float((a == b).mean())
+    pe = sum(float((a == k).mean()) * float((b == k).mean()) for k in set(a) | set(b))
+    return round((po - pe) / (1 - pe), 3) if pe < 1 else 1.0
+
+
+def cmd_robust(t: pd.DataFrame) -> None:
+    """The checks behind the figure, written to robustness.md: intervals and tests on the engagement panel, the same panel on
+    the drafters' statuses instead of the adjudicated ones, the duplicate safety packages, and the agreement of a second,
+    blind coder on the safety typing when safety_types_coder2.csv exists."""
+    from scipy import stats
+    lines = ["# Robustness checks (written by `lessons.py robust`)", ""]
+    e, tiles = glance.load()
+    h = headline_table(t)
+    held = h[h.engagement.isin(MATCHED)]
+    tab = pd.crosstab(h.approved, h.engagement.isin(MATCHED))
+    p_out = stats.fisher_exact(tab.values)[1]
+    lines += ["## Engagement held, by class outcome", "",
+              f"Engagement headline matched in {int(tab.loc[True, True])} of {int(tab.loc[True].sum())} approved classes and "
+              f"{int(tab.loc[False, True])} of {int(tab.loc[False].sum())} never-approved classes (Fisher p = {p_out:.2f}). "
+              f"Among the {len(held)} tiles with engagement held, efficacy was contradicted in "
+              f"{int((held[~held.approved].efficacy == 'contra').sum())} of {int((~held.approved).sum())} never-approved and "
+              f"{int((held[held.approved].efficacy == 'contra').sum())} of {int(held.approved.sum())} approved classes.", ""]
+    es = engagement_summary(h)
+    tier = es[es.group == "tier"]
+    ct = pd.crosstab(held.engagement_tier, held.efficacy == "contra").reindex([c for c, _ in TIERS]).fillna(0)
+    p_tier = stats.chi2_contingency(ct.values)[1]
+    p_direct = stats.fisher_exact(pd.crosstab(held.engagement_tier == "direct", held.efficacy == "contra").values)[1]
+    lines += ["## Efficacy contradicted among tiles with engagement held, by readout tier (Wilson 95 %)", "",
+              "| tier | contradicted / n | share | 95 % |", "|---|---|---|---|"]
+    lines += [f"| {r.label} | {r.contradicted}/{r.n} | {r.share:.2f} | {r.lo:.2f}-{r.hi:.2f} |" for r in tier.itertuples()]
+    lines += ["", f"Chi-square tier x contradicted p = {p_tier:.2f}; direct vs the rest, Fisher p = {p_direct:.2f}. "
+              "The tier is the headline engagement track's. With the best tier among a tile's matched engagement tracks instead:", ""]
+    rank = {"direct": 0, "proximal": 1, "downstream": 2}
+    best = {}
+    for s_ in held.slug:
+        tiers_ = [x for x in t[(t.slug == s_) & (t.question == "engagement") & t.matched].readout_tier.dropna() if x in rank]
+        if tiers_:
+            best[s_] = min(tiers_, key=rank.get)
+    hb = held.assign(engagement_tier=held.slug.map(best))
+    ctb = pd.crosstab(hb.engagement_tier, hb.efficacy == "contra").reindex([c for c, _ in TIERS]).fillna(0)
+    for code, label in TIERS:
+        g = hb[hb.engagement_tier == code]
+        k, n = int((g.efficacy == "contra").sum()), len(g)
+        lo, hi = wilson(k, n)
+        lines.append(f"- {label}: {k}/{n} = {k / n:.2f} ({lo:.2f}-{hi:.2f})")
+    lines += [f"- chi-square p = {stats.chi2_contingency(ctb.values)[1]:.2f}", ""]
+    cns = held.area.isin(["neurology", "psychiatry"])
+    d = held.engagement_tier == "direct"
+    lines += [f"Direct-tier tiles outside neurology and psychiatry: {int((held[d & ~cns].efficacy == 'contra').sum())} of {int((d & ~cns).sum())} contradicted; "
+              f"non-direct outside: {int((held[~d & ~cns].efficacy == 'contra').sum())} of {int((~d & ~cns).sum())}.", ""]
+    # drafter statuses
+    e2 = e.copy()
+    e2["final"] = e2.status
+    t2 = with_families(tracks(e2, tiles))
+    h2 = headline_table(t2, e2, tiles)
+    held2 = h2[h2.engagement.isin(MATCHED)]
+    sc1 = set(zip(*[t[(t.question == "safety") & (t.final == "contra")][c] for c in ("slug", "model_id")]))
+    sc2 = set(zip(*[t2[(t2.question == "safety") & (t2.final == "contra")][c] for c in ("slug", "model_id")]))
+    lines += ["## Sensitivity: the drafters' statuses instead of the adjudicated ones", "",
+              f"Engagement held in {len(held2)} tiles (adjudicated: {len(held)}); efficacy contradicted among them in "
+              f"{int((held2.efficacy == 'contra').sum())} (adjudicated: {int((held.efficacy == 'contra').sum())}). "
+              f"Compared safety contradictions: {len(sc2)} (adjudicated: {len(sc1)}), {len(sc1 & sc2)} in common.", ""]
+    # duplicates
+    sm = pd.read_csv(OUT["safety_misses"])
+    typed = sm[sm.type != "no_comparison"]
+    dup = typed.groupby("model_id").slug.nunique()
+    dup = dup[dup > 1]
+    u = unique_harm_rows(sm)
+    lines += ["## Safety packages that serve more than one tile", "",
+              f"{len(typed)} typed contradictions on {typed.model_id.nunique()} model systems; systems in more than one tile: "
+              + "; ".join(f"`{m}` ({n} tiles)" for m, n in dup.items()) + f". Harm rows: {int(typed.harm_class.str.count(';').sum() + len(typed))} by track, "
+              f"{len(u)} unique (system, harm, type); the figure counts the unique rows.", ""]
+    # second coder
+    if os.path.exists(INPUTS["safety_types_coder2"]) and os.path.exists(INPUTS["safety_types_coder1"]):
+        c1 = read_typed(INPUTS["safety_types_coder1"], "first coder")
+        c2 = read_typed(INPUTS["safety_types_coder2"], "second coder")
+        res = read_typed(INPUTS["safety_types"], "safety review").set_index(["slug", "model_id"])
+        m = c1.merge(c2, on=["slug", "model_id"], suffixes=("_1", "_2"), validate="one_to_one")
+        first = lambda col: col.str.split(";").str[0].str.strip()  # noqa: E731
+        k_type, k_harm = kappa(m.type_1, m.type_2), kappa(first(m.harm_class_1), first(m.harm_class_2))
+        agree_t, agree_h = int((m.type_1 == m.type_2).sum()), int((first(m.harm_class_1) == first(m.harm_class_2)).sum())
+        shared = int(sum(bool(set(a.split(";")) & set(b.split(";"))) for a, b in zip(m.harm_class_1, m.harm_class_2)))
+        dis = m[m.type_1 != m.type_2]
+        lines += ["## Second, blind coder on the safety typing", "",
+                  f"{len(m)} rows typed independently from the entry text (`safety_types_coder1.csv`, the first coding as written; "
+                  f"`safety_types_coder2.csv`, the blind second). Type: {agree_t} agree, kappa {k_type}. Primary harm class: {agree_h} agree, "
+                  f"kappa {k_harm}; {shared} share at least one harm class. Disagreements on type (coder 1 / coder 2 -> resolved in `safety_types.csv`):", ""]
+        lines += [f"- {r.slug} / `{r.model_id}`: {r.type_1} / {r.type_2} -> {res.loc[(r.slug, r.model_id), 'type']}" for r in dis.itertuples()]
+        lines.append("")
+    with open(ROBUST, "w") as f:
+        f.write("\n".join(lines))
+    print("\n".join(lines))
+
+
 def cmd_figure(t: pd.DataFrame) -> None:
-    from lessons_figure import draw
-    draw(pd.read_csv(OUT["family_rates"]), pd.read_csv(OUT["engagement_vs_efficacy"]), pd.read_csv(OUT["safety_misses"]),
-         os.path.join(ATLAS, "atlas_lessons"))
+    from lessons_figure import draw, draw_families
+    sm = pd.read_csv(OUT["safety_misses"])
+    draw(pd.read_csv(OUT["engagement_summary"]), unique_harm_rows(sm), int((sm.type != "no_comparison").sum()), os.path.join(ATLAS, "atlas_lessons"))
+    draw_families(pd.read_csv(OUT["family_rates"]), os.path.join(ATLAS, "atlas_lessons_families"))
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["families", "rates", "engagement", "safety", "figure", "all"])
+    ap.add_argument("command", choices=["families", "rates", "engagement", "safety", "robust", "figure", "all"])
     a = ap.parse_args()
     t = load()
-    steps = {"families": cmd_families, "rates": cmd_rates, "engagement": cmd_engagement, "safety": cmd_safety, "figure": cmd_figure}
+    steps = {"families": cmd_families, "rates": cmd_rates, "engagement": cmd_engagement, "safety": cmd_safety, "robust": cmd_robust,
+             "figure": cmd_figure}
     for name in (steps if a.command == "all" else [a.command]):
         print(f"\n### {name}")
         steps[name](t)

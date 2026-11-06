@@ -115,3 +115,39 @@ def test_safety_review_must_cover_every_compared_contra(tmp_path, monkeypatch, c
     p.write_text("slug,model_id,type,harm_class,note\na,m1,silent,nonsense,x\n")
     with pytest.raises(SystemExit):
         lessons.cmd_safety(t)
+
+
+def test_wilson_interval_and_kappa():
+    lo, hi = lessons.wilson(9, 27)
+    assert 0.18 < lo < 0.20 and 0.51 < hi < 0.53
+    assert all(np.isnan(v) for v in lessons.wilson(0, 0))
+    assert lessons.kappa(pd.Series(["a", "b", "a", "b"]), pd.Series(["a", "b", "a", "b"])) == 1.0
+    assert lessons.kappa(pd.Series(["a", "a", "b", "b"]), pd.Series(["a", "b", "a", "b"])) == 0.0
+
+
+def test_engagement_summary_groups_and_counts_contradictions():
+    h = pd.DataFrame([
+        {"slug": "a", "area": "oncology", "approved": True, "engagement": "same", "efficacy": "same", "engagement_tier": "direct"},
+        {"slug": "b", "area": "oncology", "approved": False, "engagement": "same", "efficacy": "contra", "engagement_tier": "direct"},
+        {"slug": "c", "area": "oncology", "approved": False, "engagement": "same", "efficacy": None, "engagement_tier": "proximal"},
+        {"slug": "d", "area": "neurology", "approved": False, "engagement": "contra", "efficacy": "contra", "engagement_tier": "direct"},
+    ])
+    es = lessons.engagement_summary(h, min_area=3)
+    out = es[es.group == "outcome"].set_index("label")
+    assert out.loc["Class approved", "n"] == 1 and out.loc["Class never approved", "contradicted"] == 1 and out.loc["Class never approved", "not_compared"] == 1
+    tier = es[es.group == "tier"].set_index("label")
+    assert tier.loc["Direct (occupancy, free target)", "n"] == 2 and tier.loc["Direct (occupancy, free target)", "share"] == 0.5
+    assert list(es[es.group == "area"].label) == ["Oncology"]  # neurology has one held tile, under the floor; d is not held at all
+
+
+def test_unique_harm_rows_count_a_package_once_per_harm_and_drop_no_comparison():
+    s = pd.DataFrame([
+        {"slug": "t1", "model_id": "cyno", "type": "silent", "harm_class": "immune"},
+        {"slug": "t2", "model_id": "cyno", "type": "silent", "harm_class": "immune"},
+        {"slug": "t3", "model_id": "rat", "type": "stated_safe", "harm_class": "liver;cardiovascular"},
+        {"slug": "t4", "model_id": "mouse", "type": "no_comparison", "harm_class": "skin"},
+        {"slug": "t5", "model_id": "mouse2", "type": "not_showable", "harm_class": "other"},
+    ])
+    u = lessons.unique_harm_rows(s)
+    assert len(u) == 4 and set(u.harm) == {"immune", "liver", "cardiovascular", "other"}
+    assert (u[u.model_id == "mouse2"].type == "silent").all() and "mouse" not in set(u.model_id)

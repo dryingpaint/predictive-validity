@@ -1,10 +1,10 @@
-"""The lessons figure: four panels in the atlas style (183 mm, Helvetica 5-7 pt, the Capable palette).
+"""The lessons figures in the atlas style (183 mm, Helvetica 5-7 pt, the Capable palette).
 
-a  efficacy: what a yes was worth per family (matched / compared among positive predictions), cluster-bootstrap interval,
-   pooled rate as the reference line; families with fewer than four tiles listed below a rule without an interval
-b  safety: the share of each family's safety predictions that held, same layout
-c  tiles whose engagement headline matched, by efficacy headline, split by engagement readout tier and by area
-d  the typed safety contras by harm class: silent, stated safe, false alarm
+atlas_lessons.*          a  tiles whose engagement headline matched, by efficacy headline: by class outcome, by the engagement
+                            readout's tier and by area, each with the contradicted share and its Wilson 95 % interval
+                         b  the typed safety contradictions by harm class, one count per (model system, harm, type):
+                            silent on the harm, said there would be none, false alarm
+atlas_lessons_families.* the family forests (efficacy yes-PPV and safety held), supplementary
 
 Called by lessons.py figure; draws from the CSVs beside it."""
 from __future__ import annotations
@@ -26,15 +26,13 @@ from families import SHORT  # noqa: E402
 from glance_nature import CAPABLE, INK, MUTED, RC, RULE, STATUS  # noqa: E402
 
 CONTRA, RETRO, UNTESTED = STATUS["contra"][0], STATUS["retro"][0], STATUS["untested"][0]
-W, H = 7.2, 6.6
-MATCHED = {"same", "neg", "other"}
-HARM_LABEL = {"immune": "Immune-mediated", "liver": "Liver", "cardiovascular": "Cardiovascular", "metabolic_endocrine_bone": "Metabolic / endocrine",
+HARM_LABEL = {"immune": "Immune-mediated", "liver": "Liver", "cardiovascular": "Cardiovascular", "metabolic_endocrine_bone": "Metabolic, endocrine, bone",
               "haematological": "Haematological", "gastrointestinal": "Gastrointestinal", "cns": "CNS", "skin": "Skin", "ocular": "Ocular",
               "respiratory": "Respiratory", "renal": "Renal", "musculoskeletal": "Musculoskeletal", "other": "Other"}
 TYPE_STYLE = {"silent": (CONTRA, None, "Silent on the harm"), "stated_safe": (CONTRA, "////", "Said there would be no harm"),
               "false_alarm": (RETRO, None, "False alarm")}
-EFF_STYLE = {"matched": (CAPABLE, "Efficacy matched"), "contradicted": (CONTRA, "Efficacy contradicted"), "not compared": (UNTESTED, "Efficacy never compared")}
-TIERS = [("Direct (occupancy)", "direct"), ("Proximal (product)", "proximal"), ("Downstream biomarker", "downstream")]
+EFF_STYLE = {"matched": (CAPABLE, "Efficacy matched"), "contradicted": (CONTRA, "Efficacy contradicted"), "not_compared": (UNTESTED, "Efficacy never compared")}
+GROUP_LABEL = {"outcome": "By class outcome", "tier": "By the engagement readout", "area": "By disease area (3 tiles or more)"}
 
 
 def clean(ax) -> None:
@@ -46,9 +44,82 @@ def clean(ax) -> None:
     ax.set_yticks([])
 
 
-def legend(ax, handles, labels) -> None:
-    ax.legend(handles, labels, fontsize=5, frameon=False, loc="upper left", bbox_to_anchor=(-0.62, -0.16), ncol=3, handlelength=1.2,
+def legend(ax, handles, labels, x: float) -> None:
+    ax.legend(handles, labels, fontsize=5, frameon=False, loc="upper left", bbox_to_anchor=(x, -0.14), ncol=3, handlelength=1.2,
               handletextpad=0.4, columnspacing=1.0, borderaxespad=0)
+
+
+def engagement_panel(ax, es: pd.DataFrame) -> None:
+    """One 100 % stacked bar per row of the engagement summary, grouped, the contradicted share and its interval at the right."""
+    y = 0.0
+    for group in ["outcome", "tier", "area"]:
+        ax.text(-0.02, y - 0.05, GROUP_LABEL[group], fontsize=5, color=MUTED, ha="right", va="center", style="italic")
+        y -= 0.8
+        for r in es[es.group == group].itertuples():
+            x = 0.0
+            for key, (color, _) in EFF_STYLE.items():
+                n = getattr(r, key)
+                if not n:
+                    continue
+                w = n / r.n
+                ax.add_patch(Rectangle((x, y - 0.36), w, 0.72, facecolor=color, edgecolor="white", linewidth=0.5))
+                if w > 0.07:
+                    ax.text(x + w / 2, y, str(n), fontsize=5, ha="center", va="center", color=INK if key == "not_compared" else "white")
+                x += w
+            ax.text(-0.02, y, r.label, fontsize=5.5, ha="right", va="center", color=INK)
+            ax.text(1.03, y, f"{r.contradicted}/{r.n} · {100 * r.share:.0f} % ({100 * r.lo:.0f}–{100 * r.hi:.0f})", fontsize=5, ha="left", va="center", color=MUTED)
+            y -= 1.0
+        y -= 0.3
+    ax.set_xlim(-0.02, 1.02)
+    ax.set_ylim(y + 0.6, 0.5)
+    ax.set_xticks([0, 0.5, 1])
+    ax.set_xticklabels(["0", "50 %", "100 %"])
+    n_held = int(es[es.group == "outcome"].n.sum())
+    ax.set_xlabel(f"Tiles whose engagement headline matched ({n_held} of 119)", fontsize=6, labelpad=2)
+    ax.set_title("a  Target reached, disease still unpredicted", fontsize=7, loc="left", pad=6)
+    ax.text(1.03, 0.45, "contradicted (Wilson 95 %)", fontsize=5, color=MUTED, ha="left", va="center", style="italic")
+    legend(ax, [Rectangle((0, 0), 1, 1, facecolor=c, edgecolor="white", linewidth=0.5) for c, _ in EFF_STYLE.values()], [l for _, l in EFF_STYLE.values()], -0.5)
+    clean(ax)
+
+
+def safety_panel(ax, u: pd.DataFrame, n_systems: int, n_tracks: int) -> None:
+    """Stacked counts per harm class from the unique (system, harm, type) rows."""
+    counts = u.harm.value_counts()
+    y = 0.0
+    for harm in counts.index:
+        g = u[u.harm == harm]
+        left = 0
+        for key, (color, hatch, _) in TYPE_STYLE.items():
+            n = int((g.type == key).sum())
+            if n:
+                ax.add_patch(Rectangle((left, y - 0.36), n, 0.72, facecolor=color, edgecolor="white", linewidth=0.5, hatch=hatch))
+                left += n
+        ax.text(-0.3, y, HARM_LABEL[harm], fontsize=5.5, ha="right", va="center", color=INK)
+        ax.text(left + 0.3, y, str(left), fontsize=5, ha="left", va="center", color=MUTED)
+        y -= 1.0
+    ax.set_xlim(-0.3, counts.max() + 1.5)
+    ax.set_ylim(y + 0.4, 0.5)
+    ax.set_xticks(range(0, int(counts.max()) + 1, 4))
+    ax.set_xlabel(f"Safety contradictions: {n_systems} model systems ({n_tracks} tracks), by harm", fontsize=6, labelpad=2)
+    ax.set_title("b  What the safety models missed", fontsize=7, loc="left", pad=6)
+    legend(ax, [Rectangle((0, 0), 1, 1, facecolor=c, hatch=hch, edgecolor="white", linewidth=0.5) for c, hch, _ in TYPE_STYLE.values()],
+           [l for _, _, l in TYPE_STYLE.values()], -0.52)
+    clean(ax)
+
+
+def draw(es: pd.DataFrame, u: pd.DataFrame, n_tracks: int, out: str) -> None:
+    plt.rcParams.update(RC)
+    fig = plt.figure(figsize=(7.2, 4.1))
+    ax_a = fig.add_axes([0.20, 0.17, 0.235, 0.70])
+    ax_b = fig.add_axes([0.72, 0.17, 0.24, 0.70])
+    engagement_panel(ax_a, es)
+    safety_panel(ax_b, u, u.model_id.nunique(), n_tracks)
+    fig.text(0.5, 0.012, "Every tile reached Phase 2: a model that said no and was believed is not here. Nothing here is a sensitivity. "
+             "Statuses are the atlas's adjudicated statuses.", fontsize=5, color=MUTED, ha="center", va="bottom")
+    for ext in ("png", "pdf", "svg"):
+        fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
+    plt.close(fig)
+    print(f"wrote {out}.png/.pdf/.svg")
 
 
 def forest(ax, r: pd.DataFrame, title: str, xlabel: str) -> None:
@@ -87,92 +158,16 @@ def forest(ax, r: pd.DataFrame, title: str, xlabel: str) -> None:
     clean(ax)
 
 
-def stacked(ax, rows: list[tuple[str, dict | None]], styles: dict) -> float:
-    """Horizontal 100 % stacked bars; a row whose counts are None is an italic sub-heading. Returns the lowest y used."""
-    y = 0.0
-    for name, counts in rows:
-        if counts is None:
-            ax.text(-0.02, y - 0.1, name, fontsize=5, color=MUTED, ha="right", va="center", style="italic")
-            y -= 0.75
-            continue
-        total = sum(counts.values())
-        x = 0.0
-        for key, (color, _) in styles.items():
-            n = counts.get(key, 0)
-            if not n:
-                continue
-            w = n / total
-            ax.add_patch(Rectangle((x, y - 0.36), w, 0.72, facecolor=color, edgecolor="white", linewidth=0.5))
-            if w > 0.08:
-                ax.text(x + w / 2, y, str(n), fontsize=5, ha="center", va="center", color=INK if key == "not compared" else "white")
-            x += w
-        ax.text(-0.02, y, name, fontsize=5.5, ha="right", va="center", color=INK)
-        ax.text(1.03, y, f"n = {total}", fontsize=5, ha="left", va="center", color=MUTED)
-        y -= 1.0
-    return y
-
-
-def engagement_panel(ax, h: pd.DataFrame) -> None:
-    held = h[h.engagement.isin(MATCHED)].copy()
-    held["eff"] = held.efficacy.fillna("blank").map(lambda s: "matched" if s in MATCHED else ("contradicted" if s == "contra" else "not compared"))
-    rows: list[tuple[str, dict | None]] = [("By engagement readout", None)]
-    rows += [(lab, held[held.engagement_tier == t].eff.value_counts().to_dict()) for lab, t in TIERS]
-    area_n = held.area.value_counts()
-    rows.append(("By disease area (3 tiles or more)", None))
-    rows += [(a.replace("_", " ").capitalize(), held[held.area == a].eff.value_counts().to_dict()) for a in area_n.index if area_n[a] >= 3]
-    styles = {k: (v[0], v[1]) for k, v in EFF_STYLE.items()}
-    y = stacked(ax, rows, styles)
-    ax.set_xlim(-0.02, 1.02)
-    ax.set_ylim(y + 0.4, 0.6)
-    ax.set_xticks([0, 0.5, 1])
-    ax.set_xticklabels(["0", "50 %", "100 %"])
-    ax.set_xlabel(f"Engagement matched ({len(held)} of {len(h)} tiles), by efficacy", fontsize=6, labelpad=2)
-    ax.set_title("c  Target reached, disease still unpredicted", fontsize=7, loc="left", pad=6)
-    legend(ax, [Rectangle((0, 0), 1, 1, facecolor=c, edgecolor="white", linewidth=0.5) for c, _ in EFF_STYLE.values()], [l for _, l in EFF_STYLE.values()])
-    clean(ax)
-
-
-def safety_panel(ax, s: pd.DataFrame) -> None:
-    s = s[s.type.isin({"silent", "stated_safe", "false_alarm", "not_showable"})].copy()
-    s["type"] = s.type.replace({"not_showable": "silent"})
-    x = s.assign(harm=s.harm_class.str.split(";")).explode("harm").reset_index(drop=True)
-    x["harm"] = x.harm.str.strip()
-    counts = x.harm.value_counts()
-    y = 0.0
-    for harm in counts.index:
-        g = x[x.harm == harm]
-        left = 0
-        for key, (color, hatch, _) in TYPE_STYLE.items():
-            n = int((g.type == key).sum())
-            if n:
-                ax.add_patch(Rectangle((left, y - 0.36), n, 0.72, facecolor=color, edgecolor="white", linewidth=0.5, hatch=hatch))
-                left += n
-        ax.text(-0.3, y, HARM_LABEL[harm], fontsize=5.5, ha="right", va="center", color=INK)
-        ax.text(left + 0.3, y, str(left), fontsize=5, ha="left", va="center", color=MUTED)
-        y -= 1.0
-    ax.set_xlim(-0.3, counts.max() + 1.5)
-    ax.set_ylim(y + 0.4, 0.6)
-    ax.set_xticks(range(0, int(counts.max()) + 1, 4))
-    ax.set_xlabel(f"Safety contradictions ({len(s)} tracks), by harm", fontsize=6, labelpad=2)
-    ax.set_title("d  What the safety models missed", fontsize=7, loc="left", pad=6)
-    legend(ax, [Rectangle((0, 0), 1, 1, facecolor=c, hatch=hch, edgecolor="white", linewidth=0.5) for c, hch, _ in TYPE_STYLE.values()],
-           [l for _, _, l in TYPE_STYLE.values()])
-    clean(ax)
-
-
-def draw(rates: pd.DataFrame, headlines: pd.DataFrame, safety: pd.DataFrame, out: str) -> None:
+def draw_families(rates: pd.DataFrame, out: str) -> None:
+    """Supplementary: the family forests. A family's rate follows the classes it served; the by-outcome CSV is the control."""
     plt.rcParams.update(RC)
-    fig = plt.figure(figsize=(W, H))
-    ax_a = fig.add_axes([0.245, 0.585, 0.19, 0.355])
-    ax_b = fig.add_axes([0.245, 0.085, 0.19, 0.355])
-    ax_c = fig.add_axes([0.69, 0.585, 0.20, 0.34])
-    ax_d = fig.add_axes([0.69, 0.145, 0.20, 0.295])
+    fig = plt.figure(figsize=(7.2, 4.4))
+    ax_a = fig.add_axes([0.20, 0.12, 0.19, 0.78])
+    ax_b = fig.add_axes([0.72, 0.12, 0.19, 0.78])
     forest(ax_a, rates[rates.q == "efficacy"], "a  Efficacy: what a model's yes was worth", "Share of positive efficacy predictions the trial confirmed")
-    forest(ax_b, rates[rates.q == "safety"], "b  Safety: how often the model's safety picture held", "Share of safety predictions that held in patients")
-    engagement_panel(ax_c, headlines)
-    safety_panel(ax_d, safety)
-    fig.text(0.5, 0.008, "Every tile reached Phase 2: a model that said no and was believed is not here. Rates are what a yes was worth, not a sensitivity. "
-             "Intervals: 95 % cluster bootstrap over tiles.", fontsize=5, color=MUTED, ha="center", va="bottom")
+    forest(ax_b, rates[rates.q == "safety"], "b  Safety: how often the safety picture held", "Share of safety predictions that held in patients")
+    fig.text(0.5, 0.012, "Rates follow the classes each family served (family_rates_by_outcome.csv splits them). Intervals: 95 % cluster bootstrap over tiles. "
+             "Nothing here is a sensitivity.", fontsize=5, color=MUTED, ha="center", va="bottom")
     for ext in ("png", "pdf", "svg"):
         fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
     plt.close(fig)
