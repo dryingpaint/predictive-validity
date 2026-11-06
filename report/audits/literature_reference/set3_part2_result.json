@@ -1,0 +1,877 @@
+[
+ {
+  "moiety_id": 34377,
+  "mondo_id": "MONDO:0005416",
+  "phase": 1,
+  "searched": [
+   "PubMed: \"PSC-01\"; precursor/polyclonal stem cell + knee osteoarthritis",
+   "Europe PMC: \"PSC-01\"",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Sponsor/cell product identity could not be resolved from literature APIs; no PSC-01 publications <=2018."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 13971,
+  "mondo_id": "MONDO:0008170",
+  "phase": 1,
+  "searched": [
+   "PubMed: \"SC-003\"; DPEP3 antibody drug conjugate; Stemcentrx ovarian",
+   "Europe PMC: \"SC-003\" AND ovarian; DPEP3 AND (conjugate OR antibody)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "SC-003 (Stemcentrx anti-DPEP3 PBD ADC): no preclinical publication found <=2014."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 5706,
+  "mondo_id": "MONDO:0004980",
+  "phase": 1,
+  "searched": [
+   "PubMed: \"LY3454738\"; ucenprubart; CD200R agonist antibody dermatitis",
+   "Europe PMC: \"LY3454738\" OR ucenprubart",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "No publications <=2017 under either name."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 2061,
+  "mondo_id": "MONDO:0005789",
+  "phase": 1,
+  "searched": [
+   "PubMed: (lonafarnib OR SCH 66336 OR SCH66336 OR Sarasar) AND (hepatitis OR delta OR HDV) -> 0 hits <=2010",
+   "PubMed: prenylation/farnesyltransferase inhibitor AND hepatitis delta (13 hits; in vivo HDV studies used FTI-277/FTI-2153/BZA-5B, not lonafarnib)",
+   "PubMed: lonafarnib/SCH66336 AND animal/PK terms (161 hits screened by title)",
+   "Europe PMC equivalents",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "High-performance liquid chromatographic analysis of the anti-tumor agent SCH 66336 in cynomolgus monkey plasma and evaluation of its chiral inversion in animals",
+    "year": 1999,
+    "pmid": "10379665",
+    "doi": "10.1016/s0378-4347(99)00070-5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10379665/",
+    "venue": "journal",
+    "why": "Lonafarnib plasma PK/chiral inversion in rats and cynomolgus monkeys"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "(+)-4-[2-[4-(8-Chloro-3,10-dibromo-...)]-1-piperidinecarboxamide (SCH-66336): a very potent farnesyl protein transferase inhibitor as a novel antitumor agent",
+    "year": 1998,
+    "pmid": "9822558",
+    "doi": "10.1021/jm980462b",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9822558/",
+    "venue": "journal",
+    "why": "Discovery paper reporting oral serum levels and half-lives of SCH 66336 in rodents and primates"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 2209,
+  "mondo_id": "MONDO:0010602",
+  "phase": 3,
+  "searched": [
+   "PubMed: fitusiran OR ALN-AT3 OR ALN-AT3SC OR SAR439774; antithrombin AND (siRNA OR RNAi) AND hemophilia",
+   "Europe PMC: fitusiran OR ALN-AT3",
+   "Crossref: ALN-AT3 / fitusiran antithrombin hemophilia (ASH abstracts in Blood supplements)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "An RNAi therapeutic targeting antithrombin to rebalance the coagulation system and promote hemostasis in hemophilia",
+    "year": 2015,
+    "pmid": "25849132",
+    "doi": "10.1038/nm.3847",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25849132/",
+    "venue": "journal",
+    "why": "ALN-AT3 lowers AT and improves hemostasis in hemophilia A/B mice and an inhibitor NHP model"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "An RNAi therapeutic targeting antithrombin to rebalance the coagulation system and promote hemostasis in hemophilia",
+    "year": 2015,
+    "pmid": "25849132",
+    "doi": "10.1038/nm.3847",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25849132/",
+    "venue": "journal",
+    "why": "Same paper reports AT knockdown PD/duration in wild-type mice and non-human primates"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Expanded Therapeutic Index Of Antithrombin Silencing and Correction Of Aptt In a Hemophilia A Mouse Model",
+    "year": 2013,
+    "pmid": "",
+    "doi": "10.1182/blood.v122.21.3585.3585",
+    "url": "https://doi.org/10.1182/blood.v122.21.3585.3585",
+    "venue": "conference",
+    "why": "ASH 2013 abstract: AT-targeting GalNAc siRNA (ALN-AT3) in hemophilia A mice"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "An RNAi Therapeutic Targeting Antithrombin Increases Thrombin Generation in Nonhuman Primates",
+    "year": 2012,
+    "pmid": "",
+    "doi": "10.1182/blood.v120.21.3370.3370",
+    "url": "https://doi.org/10.1182/blood.v120.21.3370.3370",
+    "venue": "conference",
+    "why": "ASH 2012 abstract: ALN-AT3 AT knockdown and thrombin generation PD in NHP"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A Subcutaneously Administered RNAi Therapeutic (ALN-AT3) Targeting Antithrombin for Treatment of Hemophilia: Interim Phase 1 Study Results in Healthy Volunteers and Patients with Hemophilia A or B",
+    "year": 2014,
+    "pmid": "",
+    "doi": "10.1182/blood.v124.21.693.693",
+    "url": "https://doi.org/10.1182/blood.v124.21.693.693",
+    "venue": "conference",
+    "why": "ASH 2014: AT lowering and thrombin generation in humans"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A Subcutaneously Administered Investigational RNAi Therapeutic (ALN-AT3) Targeting Antithrombin for Treatment of Hemophilia: Interim Weekly and Monthly Dosing Results in Patients with Hemophilia A or B",
+    "year": 2015,
+    "pmid": "",
+    "doi": "10.1182/blood.v126.23.551.551",
+    "url": "https://doi.org/10.1182/blood.v126.23.551.551",
+    "venue": "conference",
+    "why": "ASH 2015: dose-dependent AT knockdown and thrombin generation increase in patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Fitusiran, an Investigational RNAi Therapeutic Targeting Antithrombin for the Treatment of Hemophilia: Updated Results from a Phase 1 and Phase 1/2 Extension Study in Patients without Inhibitors",
+    "year": 2016,
+    "pmid": "",
+    "doi": "10.1182/blood.v128.22.1397.1397",
+    "url": "https://doi.org/10.1182/blood.v128.22.1397.1397",
+    "venue": "conference",
+    "why": "ASH 2016: AT lowering/thrombin generation in patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Fitusiran, an Investigational RNAi Therapeutic Targeting Antithrombin for the Treatment of Hemophilia: Updated Results from a Phase 1 and Phase 1/2 Extension Study in Patients with Inhibitors",
+    "year": 2016,
+    "pmid": "",
+    "doi": "10.1182/blood.v128.22.2572.2572",
+    "url": "https://doi.org/10.1182/blood.v128.22.2572.2572",
+    "venue": "conference",
+    "why": "ASH 2016: AT lowering/thrombin generation in inhibitor patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Targeting of Antithrombin in Hemophilia A or B with RNAi Therapy",
+    "year": 2017,
+    "pmid": "28691885",
+    "doi": "10.1056/NEJMoa1616569",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28691885/",
+    "venue": "journal",
+    "why": "Phase 1: dose-dependent AT reduction and increased thrombin generation in volunteers and hemophilia patients"
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 28982,
+  "mondo_id": "MONDO:0000491",
+  "phase": 2,
+  "searched": [
+   "PubMed: \"JVS-100\" OR \"ACRX-100\" OR JVS100 (0 hits)",
+   "PubMed: SDF-1/CXCL12 plasmid AND limb/hindlimb ischemia; SDF-1 plasmid AND heart failure",
+   "Europe PMC: \"JVS-100\" OR \"ACRX-100\" (only reviews)",
+   "Crossref: JVS-100 SDF-1 plasmid critical limb ischemia",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Note: Sundararaman 2011 Gene Ther (PMID 21472007) tests the pCMVe-hSDF1 plasmid (JVS-100 precursor construct) in rat ischemic heart failure - different disease, not counted. Hindlimb ischemia SDF-1 plasmid studies (e.g. 21364544, 15148275) used other constructs."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 4300,
+  "mondo_id": "MONDO:0007027",
+  "phase": 2,
+  "searched": [
+   "PubMed: nidufexor OR LMB763 OR \"LMB-763\" (<=2015: 0)",
+   "Europe PMC: nidufexor OR LMB763 (<=2015: 0)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "First disclosure (J Med Chem 2020) is after the cutoff."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 4295,
+  "mondo_id": "MONDO:0005105",
+  "phase": 1,
+  "searched": [
+   "PubMed: veledimex OR INXN-1001 OR INXN1001 OR RSL1 OR RheoSwitch (no relevant hits)",
+   "PubMed: inducible/ecdysone/activator ligand AND IL-12 AND dendritic/adenovirus AND melanoma (86 hits screened)",
+   "Europe PMC: veledimex OR INXN-1001 OR RheoSwitch OR RSL1",
+   "Crossref: RheoSwitch IL-12 / ligand PK; INXN-1001",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Mol Ther 2006 RheoSwitch abstracts (e.g. 10.1016/j.ymthe.2006.08.324 IL-2 in melanoma cells; 10.1016/j.ymthe.2006.08.389 ligand administration routes) use an unnamed RheoSwitch activator ligand; could not confirm it is veledimex (RG-115932), so not counted."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 1735,
+  "mondo_id": "MONDO:0024880",
+  "phase": 1,
+  "searched": [
+   "PubMed: vemurafenib OR PLX4032 OR PLX-4032 OR RO5185426 OR RG7204 (<=2009: 6 hits)",
+   "Europe PMC same terms",
+   "Crossref: PLX4032; PLX4032 xenograft; RG7204; RO5185426 (meeting abstracts)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "18458053 (Mol Cancer Res 2008) tested PLX4032 only in vitro; tool compound PLX4720 studies excluded as a different molecule."
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Antitumor activity of PLX4032, a novel B-Raf V600E Inhibitor (poster 569)",
+    "year": 2006,
+    "pmid": "",
+    "doi": "10.1016/s1359-6349(06)70574-2",
+    "url": "https://doi.org/10.1016/s1359-6349(06)70574-2",
+    "venue": "conference",
+    "why": "EORTC-NCI-AACR 2006 poster on PLX4032 antitumor activity in BRAF V600E tumor xenograft models"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Antitumor activity of PLX4032, a selective V600E B-Raf inhibitor, as monotherapy and in combination with capecitabine +/- bevacizumab in a colorectal cancer xenograft model (poster 591)",
+    "year": 2008,
+    "pmid": "",
+    "doi": "10.1016/s1359-6349(08)72525-4",
+    "url": "https://doi.org/10.1016/s1359-6349(08)72525-4",
+    "venue": "conference",
+    "why": "PLX4032 efficacy in BRAF V600E colorectal cancer xenografts"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 2346,
+  "mondo_id": "MONDO:0005083",
+  "phase": 2,
+  "searched": [
+   "PubMed: teplizumab OR MGA031 OR hOKT3gamma1(Ala-Ala) OR huOKT3gamma1 OR humanized OKT3 (25 hits <=2008, abstracts screened)",
+   "Europe PMC: same names",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Teplizumab does not bind rodent CD3; no psoriasis animal model or healthy-animal PK study found. Human engagement studies come from type 1 diabetes, psoriatic arthritis and renal transplant trials (CD3 modulation / T-cell PD)."
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "Phase I trial of a humanized, Fc receptor nonbinding OKT3 antibody, huOKT3gamma1(Ala-Ala) in the treatment of acute renal allograft rejection",
+    "year": 1999,
+    "pmid": "10507477",
+    "doi": "10.1097/00007890-199909150-00003",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10507477/",
+    "venue": "journal",
+    "why": "Measured CD3 modulation/T-cell changes and serum drug levels in treated patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Humanized, nonmitogenic OKT3 antibody, huOKT3 gamma(Ala-Ala): initial clinical experience",
+    "year": 1998,
+    "pmid": "9636555",
+    "doi": "10.1016/s0041-1345(98)00278-4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9636555/",
+    "venue": "journal",
+    "why": "Initial clinical PD (T-cell CD3 modulation) of the drug"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Modified anti-CD3 therapy in psoriatic arthritis: a phase I/II clinical trial",
+    "year": 2002,
+    "pmid": "12233885",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12233885/",
+    "venue": "journal",
+    "why": "hOKT3gamma1(Ala-Ala) in PsA patients with T-cell/immunologic measures"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Anti-CD3 monoclonal antibody in new-onset type 1 diabetes mellitus",
+    "year": 2002,
+    "pmid": "12037148",
+    "doi": "10.1056/NEJMoa012864",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12037148/",
+    "venue": "journal",
+    "why": "hOKT3gamma1(Ala-Ala) trial reporting T-cell (CD4:CD8) changes and immunologic PD"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Activation of human T cells by FcR nonbinding anti-CD3 mAb, hOKT3gamma1(Ala-Ala)",
+    "year": 2003,
+    "pmid": "12569167",
+    "doi": "10.1172/JCI16090",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12569167/",
+    "venue": "journal",
+    "why": "Cytokine release and IL-10+ CD4 T cells measured in treated patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A single course of anti-CD3 monoclonal antibody hOKT3gamma1(Ala-Ala) results in improvement in C-peptide responses and clinical parameters for at least 2 years after onset of type 1 diabetes",
+    "year": 2005,
+    "pmid": "15919798",
+    "doi": "10.2337/diabetes.54.6.1763",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15919798/",
+    "venue": "journal",
+    "why": "Follow-up with immunologic (CD4/CD8) PD markers in treated patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "TCR stimulation with modified anti-CD3 mAb expands CD8+ T cell population and induces CD8+CD25+ Tregs",
+    "year": 2005,
+    "pmid": "16167085",
+    "doi": "10.1172/JCI23961",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16167085/",
+    "venue": "journal",
+    "why": "CD8 activation and Foxp3 induction measured in patients during drug treatment"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 32951,
+  "mondo_id": "MONDO:0008383",
+  "phase": 2,
+  "searched": [
+   "PubMed: \"SBI-087\" OR SBI087 OR PF-05230895; SMIP AND CD20",
+   "Europe PMC: \"SBI-087\" OR SBI087",
+   "Crossref: SBI-087 CD20 SMIP (only TRU-015 abstracts, a different molecule; a 2009 cynomolgus P331S anti-CD20 SMIP abstract is unnamed and after cutoff)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 31171,
+  "mondo_id": "MONDO:0005105",
+  "phase": 1,
+  "searched": [
+   "PubMed: \"TBX-3400\" OR TBX3400",
+   "Europe PMC: same",
+   "Crossref: TBX-3400 melanoma microbiome",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 8457,
+  "mondo_id": "MONDO:0008315",
+  "phase": 2,
+  "searched": [
+   "PubMed: orteronel OR TAK-700 OR TAK700 (<=2008: 0)",
+   "Europe PMC: orteronel OR TAK-700 (0)",
+   "Crossref: TAK-700 17,20-lyase inhibitor; TAK-700 prostate cancer",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Preclinical orteronel papers (Kaku et al., 2011) are after the 2007 cutoff."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 1638,
+  "mondo_id": "MONDO:0018177",
+  "phase": 1,
+  "searched": [
+   "PubMed: IFN-gamma AND glioma/glioblastoma/astrocytoma AND xenograft/nude AND human/recombinant (33 hits screened)",
+   "PubMed: recombinant human IFN-gamma / interferon gamma-1b / Actimmune AND PK/distribution/animal terms (52 hits screened)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Old, widely used biologic: representative primary studies listed. Studies using recombinant human IFN-gamma (not murine/rat IFN-gamma) were kept; most are not specified as the Genentech gamma-1b product. Murine IFN-gamma glioma studies (e.g. C6/9L with rodent IFN) excluded as a different molecule."
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "[Antineoplastic effect of beta-IFN and gamma-IFN on malignant gliomas]",
+    "year": 1987,
+    "pmid": "3118910",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3118910/",
+    "venue": "journal",
+    "why": "Human glioma xenografts in nude mice treated with gamma-IFN"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Growth inhibition of subcutaneously transplanted human glioma by transfection-induced tumor necrosis factor-alpha and augmentation of the effect by gamma-interferon",
+    "year": 1994,
+    "pmid": "7760098",
+    "doi": "10.1007/BF01052922",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7760098/",
+    "venue": "journal",
+    "why": "IFN-gamma given i.p. to nude mice bearing s.c. human glioma"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Combination of hTERT knockdown and IFN-gamma treatment inhibited angiogenesis and tumor progression in glioblastoma",
+    "year": 2009,
+    "pmid": "19934306",
+    "doi": "10.1158/1078-0432.CCR-09-1425",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19934306/",
+    "venue": "journal",
+    "why": "IFN-gamma (with hTERT siRNA) inhibited intracerebral and s.c. human GBM (SNB-19/U251) growth in nude mice"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics of recombinant human interferon-gamma in the rhesus monkey after intravenous, intramuscular, and subcutaneous administration",
+    "year": 1988,
+    "pmid": "3129541",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3129541/",
+    "venue": "journal",
+    "why": "rhIFN-gamma PK in rhesus monkeys"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Tissue distribution of recombinant mouse interferon-gamma and recombinant human interferon-gamma in mice, rats, hamsters, and monkeys",
+    "year": 1991,
+    "pmid": "1774465",
+    "doi": "10.1089/jir.1991.11.267",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1774465/",
+    "venue": "journal",
+    "why": "rhIFN-gamma tissue distribution in several species"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Catabolic sites of human interferon-gamma",
+    "year": 1985,
+    "pmid": "3920351",
+    "doi": "10.1099/0022-1317-66-4-887",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3920351/",
+    "venue": "journal",
+    "why": "Clearance/catabolism of recombinant HuIFN-gamma in rabbits"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Comparative pathology of recombinant murine interferon-gamma in mice and recombinant human interferon-gamma in cynomolgus monkeys",
+    "year": 1993,
+    "pmid": "8458720",
+    "doi": "10.1016/b978-0-12-364935-5.50011-0",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8458720/",
+    "venue": "journal",
+    "why": "rhIFN-gamma toxicology/pathology in cynomolgus monkeys"
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 5209,
+  "mondo_id": "MONDO:0005301",
+  "phase": 1,
+  "searched": [
+   "PubMed: corubrutinib OR BIIB091 OR BIIB-091 (<=2018: 0)",
+   "Europe PMC: corubrutinib OR BIIB091 (0)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 7713,
+  "mondo_id": "MONDO:0005233",
+  "phase": 1,
+  "searched": [
+   "PubMed: pegilodecakin OR AM0010 OR AM-0010 OR LY3500518; (pegylated OR PEG) AND IL-10 AND tumor (46 hits screened)",
+   "Europe PMC: pegilodecakin OR AM0010 OR AM-0010",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Mouse tumor studies (Mumm 2011 Cancer Cell 22172723; 27622052; 27299860) used murine PEG-rMuIL-10 surrogate, so not counted; no NSCLC animal study or healthy-animal PK of PEG-rHuIL-10 found <=2016."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 5248,
+  "mondo_id": "MONDO:0005575",
+  "phase": 2,
+  "searched": [
+   "PubMed: nibrozetone OR RRx-001 OR RRx001 OR ABDNAZ OR 1-bromoacetyl-3,3-dinitroazetidine; dinitroazetidine AND cancer",
+   "Europe PMC: RRx-001 OR ABDNAZ OR dinitroazetidine",
+   "Crossref: RRx-001 tumor; ABDNAZ (AACR abstracts)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Ning 2012 Cancer Res (22589277) and AACR 2012 abstract 4371 (SCCVII, U87) report RRx-001 in non-colorectal tumor models per abstracts, so not counted as colorectal; AACR 2013 LB-86 phase 1 abstract not confirmed to report a PD biomarker."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Preclinical evaluation of the metabolism and disposition of RRx-001, a novel investigative anticancer agent",
+    "year": 2012,
+    "pmid": "22699395",
+    "doi": "10.1124/dmd.112.046755",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22699395/",
+    "venue": "journal",
+    "why": "14C-RRx-001 disposition, excretion and blood metabolites in rats"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 866,
+  "mondo_id": "MONDO:0005090",
+  "phase": 3,
+  "searched": [
+   "PubMed: (sodium benzoate OR benzoic acid)[tiab] AND schizophrenia/psychosis/MK-801/PCP/prepulse/DAAO/D-serine",
+   "PubMed: sodium benzoate AND PK/brain/hippurate AND rodent/dog/monkey (48 hits)",
+   "PubMed: sodium benzoate AND hyperammonemia/hepatic encephalopathy trials; Brusilow[au] AND benzoate",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Very old, widely used compound: representative primary studies listed. No animal schizophrenia-model study of sodium benzoate found <=2013. Lane 2013 JAMA Psychiatry (24089054) is a clinical efficacy trial without a reported PD biomarker."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Inhibitory effects of benzoate on chiral inversion and clearance of N(G)-nitro-arginine in conscious rats",
+    "year": 2007,
+    "pmid": "17172314",
+    "doi": "10.1124/dmd.106.011429",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17172314/",
+    "venue": "journal",
+    "why": "In vivo DAAO inhibition by benzoate in rats"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Sodium benzoate attenuates D-serine induced nephrotoxicity in the rat",
+    "year": 2005,
+    "pmid": "15590120",
+    "doi": "10.1016/j.tox.2004.08.008",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15590120/",
+    "venue": "journal",
+    "why": "In vivo DAAO-dependent D-serine effects blocked by benzoate in rats"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Amino acids in the rat liver and plasma and some metabolites in the liver after sodium benzoate treatment",
+    "year": 1991,
+    "pmid": "1931156",
+    "doi": "10.1016/0885-4505(91)90050-u",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1931156/",
+    "venue": "journal",
+    "why": "Metabolic pharmacology of sodium benzoate in rats"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Influence of sodium benzoate on the metabolism of o-xylene in the rat",
+    "year": 2005,
+    "pmid": "16012080",
+    "doi": "10.1080/00498250500057476",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16012080/",
+    "venue": "journal",
+    "why": "Benzoate glycine-conjugation pharmacology in rats"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Amino acid acylation: a mechanism of nitrogen excretion in inborn errors of urea synthesis",
+    "year": 1980,
+    "pmid": "6243418",
+    "doi": "10.1126/science.6243418",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6243418/",
+    "venue": "journal",
+    "why": "Benzoate-driven hippurate nitrogen excretion (PD) measured in patients"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Benzoate-induced changes in glycine and urea metabolism in patients with chronic renal failure",
+    "year": 1982,
+    "pmid": "7108765",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7108765/",
+    "venue": "journal",
+    "why": "PD effects of benzoate on glycine/urea metabolism in humans"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Sodium benzoate in the treatment of acute hepatic encephalopathy: a double-blind randomized trial",
+    "year": 1992,
+    "pmid": "1618465",
+    "doi": "10.1002/hep.1840160123",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1618465/",
+    "venue": "journal",
+    "why": "Blood ammonia lowering by sodium benzoate in patients"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 5130,
+  "mondo_id": "MONDO:0005575",
+  "phase": 2,
+  "searched": [
+   "PubMed: plocabulin OR PM060184 OR PM-060184 (5 hits <=2017)",
+   "Europe PMC: plocabulin OR PM060184",
+   "Crossref: PM060184 antitumor; plocabulin PM060184 (AACR/EORTC abstracts)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Colorectal-specific xenograft data could not be confirmed from abstracts; the xenograft-panel paper and abstracts are listed as the likeliest sources. Phase 1 abstract (EJC 2015, 10.1016/s0959-8049(16)30224-6) reports PK only, not a PD biomarker."
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "PM060184, a new tubulin binding agent with potent antitumor activity including P-glycoprotein over-expressing tumors",
+    "year": 2014,
+    "pmid": "24486569",
+    "doi": "10.1016/j.bcp.2014.01.026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24486569/",
+    "venue": "journal",
+    "why": "Antitumor activity in a panel of human tumor xenograft models (PharmaMar panel; colorectal inclusion not stated in abstract)"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "PM060184 is a new tubulin binding agent that induces strong antitumor activity in xenografted tumors (Abstract A172)",
+    "year": 2013,
+    "pmid": "",
+    "doi": "10.1158/1535-7163.targ-13-a172",
+    "url": "https://doi.org/10.1158/1535-7163.targ-13-a172",
+    "venue": "conference",
+    "why": "AACR-NCI-EORTC 2013: xenograft efficacy panel of PM060184"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "In vivo antitumor activity of PM060184 in patient-derived xenografted tumors (avatar) (Abstract 4534)",
+    "year": 2014,
+    "pmid": "",
+    "doi": "10.1158/1538-7445.am2014-4534",
+    "url": "https://doi.org/10.1158/1538-7445.am2014-4534",
+    "venue": "conference",
+    "why": "AACR 2014: PDX efficacy of PM060184 across tumor types"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Low, frequent doses of PM060184 induce remarkable in vivo antitumor activity (Abstract 55)",
+    "year": 2014,
+    "pmid": "",
+    "doi": "10.1016/s0959-8049(14)70181-9",
+    "url": "https://doi.org/10.1016/s0959-8049(14)70181-9",
+    "venue": "conference",
+    "why": "EORTC-NCI-AACR 2014: dosing-schedule xenograft efficacy"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Plasma, tissue and tumor pharmacokinetics of PM060184 in NSCL xenograft mouse model (Abstract 4654)",
+    "year": 2014,
+    "pmid": "",
+    "doi": "10.1158/1538-7445.am2014-4654",
+    "url": "https://doi.org/10.1158/1538-7445.am2014-4654",
+    "venue": "conference",
+    "why": "Plasma and tissue distribution PK of PM060184 in mice"
+   }
+  ],
+  "none_found_kinds": [
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 4433,
+  "mondo_id": "MONDO:0009831",
+  "phase": 2,
+  "searched": [
+   "PubMed: cabiralizumab OR FPA008 OR FPA-008 OR BMS-986227 (<=2016: 0)",
+   "Europe PMC: cabiralizumab OR FPA008 (only reviews; SITC 2015 abstract on murine surrogate cmFPA008)",
+   "Crossref: FPA008 CSF1R antibody; cabiralizumab; FPA008 healthy volunteers monocytes",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "cmFPA008 (anti-mouse CSF1R surrogate, SITC 2015 10.1186/2051-1426-3-s2-p351) is a different molecule, not counted. Cancer Immunol Res 2016 abstract B143 (10.1158/2326-6074.cricimteatiaacr15-b143) describes the phase 1a/1b FPA008+nivolumab study; PD data could not be confirmed. TGCT phase 1 PD abstract is 2017 (after cutoff)."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 12827,
+  "mondo_id": "MONDO:0018881",
+  "phase": 1,
+  "searched": [
+   "PubMed: anzurstobart OR CC-95251 OR CC95251 (<=2018: 0)",
+   "Europe PMC: CC-95251 OR anzurstobart (0)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 8023,
+  "mondo_id": "MONDO:0007256",
+  "phase": 1,
+  "searched": [
+   "PubMed: tivantinib OR ARQ 197 OR ARQ197 OR ARQ-197 (<=2008: 0)",
+   "Europe PMC: tivantinib OR ARQ 197 (only reviews)",
+   "Crossref: ARQ 197 c-Met inhibitor; ARQ 197 xenograft; ARQ 197 hepatocellular (only phase 1 clinical abstracts 2006-2008)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Preclinical tivantinib paper (Munshi 2010 Mol Cancer Ther) is after the cutoff."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 27260,
+  "mondo_id": "MONDO:0005016",
+  "phase": 1,
+  "searched": [
+   "PubMed: PF-03882845 OR PF03882845 OR PF 03882845 OR PF-3882845 (<=2008: 0)",
+   "Europe PMC: same (0)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Preclinical MR-antagonist papers on PF-03882845 appeared after 2008."
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 507,
+  "mondo_id": "MONDO:0005109",
+  "phase": 1,
+  "searched": [
+   "PubMed: allopurinol AND (HIV OR SIV OR Tat OR gp120 OR retrovirus) AND animal terms (no relevant hits)",
+   "PubMed: allopurinol[ti] AND PK/metabolism/distribution AND animal terms (screened)",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Very old, widely used drug: representative healthy-animal pharmacology studies listed; no HIV/SIV animal-model study found."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Formation of nucleotides of (6-14C)allopurinol and (6-14C)oxipurinol in rat tissues and effects on uridine nucleotide pools",
+    "year": 1973,
+    "pmid": "4353669",
+    "doi": "10.1016/0006-2952(73)90082-8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/4353669/",
+    "venue": "journal",
+    "why": "Tissue metabolism of radiolabelled allopurinol in rats"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Ribonucleotides of allopurinol and oxipurinol in rat tissues and their significance in purine metabolism",
+    "year": 1974,
+    "pmid": "4832590",
+    "doi": "10.1007/978-1-4757-1433-3_34",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/4832590/",
+    "venue": "journal",
+    "why": "Allopurinol tissue metabolism in rats"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics of allopurinol in Dalmatian dogs",
+    "year": 1997,
+    "pmid": "9131540",
+    "doi": "10.1046/j.1365-2885.1997.00817.x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9131540/",
+    "venue": "journal",
+    "why": "Allopurinol/oxipurinol PK in dogs"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "The effects of allopurinol on immune function in normal BALB/c and SCID mice",
+    "year": 2000,
+    "pmid": "10785551",
+    "doi": "10.1016/s0192-0561(00)00018-7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10785551/",
+    "venue": "journal",
+    "why": "Immune pharmacology of allopurinol in normal mice"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Effects of repeated allopurinol administration on rat cytochrome P450 activity",
+    "year": 2013,
+    "pmid": "23802435",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23802435/",
+    "venue": "journal",
+    "why": "In vivo drug-metabolism pharmacology of allopurinol in rats"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 8160,
+  "mondo_id": "MONDO:0005065",
+  "phase": 2,
+  "searched": [
+   "PubMed: amatuximab OR MORAb-009 OR MORAb009 (<=2007: 2 primary hits)",
+   "Europe PMC: amatuximab OR MORAb-009",
+   "Crossref: MORAb-009 mesothelin antibody",
+   "General web search was unavailable (shared web-search budget exhausted), so company posters/press releases could not be searched.",
+   "Hassan 2007 xenografts were mesothelin-expressing tumors in nude mice, not mesothelioma models, so not counted as animal_disease. JCO 2007 phase 1 abstract (10.1200/jco.2007.25.18_suppl.14041) not confirmed to report a PD/engagement measure."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Preclinical evaluation of MORAb-009, a chimeric antibody targeting tumor-associated mesothelin",
+    "year": 2007,
+    "pmid": "18088084",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18088084/",
+    "venue": "journal",
+    "why": "Includes toxicology/pharmacology of MORAb-009 in non-human primates (plus xenografts of mesothelin-expressing non-mesothelioma tumors)"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ }
+]

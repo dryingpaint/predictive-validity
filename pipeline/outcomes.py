@@ -27,7 +27,7 @@ import numpy as np
 import requests
 from psycopg2.extras import Json, execute_values
 
-from pipeline import llm
+from pipeline import llm, throttle
 from pipeline.ctgov import CACHE as CTGOV_CACHE
 
 TRIALS_FROM = date(2008, 1, 1)  # completed trials that start earlier get no outcome or endpoint label
@@ -91,14 +91,15 @@ def results(_args) -> None:
 
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+NCBI_PER_SECOND = 2.5  # NCBI allows 3 requests a second without an API key, across every process on the machine
 
 
 def eutils(endpoint: str, **params) -> str:
     for attempt in range(6):
         try:
+            throttle.wait("ncbi", NCBI_PER_SECOND)
             r = requests.post(f"{EUTILS}/{endpoint}.fcgi", data={"db": "pubmed", **params}, timeout=120)
             r.raise_for_status()
-            time.sleep(0.4)  # stay under 3 requests/second without an API key
             return r.text
         except requests.RequestException:
             time.sleep(5 * (attempt + 1))

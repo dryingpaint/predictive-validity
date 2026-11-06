@@ -319,5 +319,573 @@
     },
     "rows": "1-100",
     "reference": "/private/tmp/claude-501/-Users-melissadu-Documents-projects-capable-predictive-validity/13401fa4-c3db-4b3a-b5b9-043da7dd8340/scratchpad/reference_part"
+  },
+  "v3": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "reference_entries": 100,
+    "kinds": {
+      "animal_disease": {
+        "reference_studies": 68,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 8
+        },
+        "recall": 0.7352941176470589,
+        "recall_pubmed_indexed": 0.8333333333333334,
+        "reference_entries_with_study": 20,
+        "entries_judged": 100,
+        "entry_recall": 0.95,
+        "pipeline_none_when_reference_none": 0.5875,
+        "pubmed_reference_studies": {
+          "found": 44,
+          "screened_in_other_disease": 2,
+          "found_by_firecrawl_only": 6,
+          "not_retrieved": 5,
+          "prefiltered_out": 3
+        },
+        "check": {
+          "pairs": 279,
+          "kappa": 0.6861642294713161,
+          "agreement": 0.9032258064516129,
+          "positives_screen": 63,
+          "positives_check": 42
+        },
+        "recall_without_firecrawl": 0.6470588235294118,
+        "recall_pubmed_indexed_without_firecrawl": 0.7333333333333333,
+        "pilot_entries_with_any": 164,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5357142857142857,
+        "passes": false
+      },
+      "animal_healthy": {
+        "reference_studies": 148,
+        "reference_studies_in_pubmed": 143,
+        "reference_studies_by_venue": {
+          "journal": 143,
+          "conference": 5
+        },
+        "recall": 0.6621621621621622,
+        "recall_pubmed_indexed": 0.6853146853146853,
+        "reference_entries_with_study": 42,
+        "entries_judged": 100,
+        "entry_recall": 0.8095238095238095,
+        "pipeline_none_when_reference_none": 0.7241379310344828,
+        "pubmed_reference_studies": {
+          "found": 96,
+          "screened_out": 26,
+          "not_retrieved": 17,
+          "found_by_firecrawl_only": 2,
+          "unscreened": 2
+        },
+        "check": {
+          "pairs": 279,
+          "kappa": 0.7183003786285231,
+          "agreement": 0.9139784946236559,
+          "positives_screen": 61,
+          "positives_check": 43
+        },
+        "recall_without_firecrawl": 0.6486486486486487,
+        "recall_pubmed_indexed_without_firecrawl": 0.6713286713286714,
+        "pilot_entries_with_any": 161,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.45714285714285713,
+        "passes": false
+      },
+      "human_engagement": {
+        "reference_studies": 70,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 10
+        },
+        "recall": 0.37142857142857144,
+        "recall_pubmed_indexed": 0.43333333333333335,
+        "reference_entries_with_study": 25,
+        "entries_judged": 61,
+        "entry_recall": 0.72,
+        "pipeline_none_when_reference_none": 0.9166666666666666,
+        "pubmed_reference_studies": {
+          "screened_out": 16,
+          "found": 25,
+          "not_retrieved": 18,
+          "found_by_firecrawl_only": 1
+        },
+        "check": {
+          "pairs": 279,
+          "kappa": 0.7443494196701279,
+          "agreement": 0.9354838709677419,
+          "positives_screen": 49,
+          "positives_check": 33
+        },
+        "recall_without_firecrawl": 0.35714285714285715,
+        "recall_pubmed_indexed_without_firecrawl": 0.4166666666666667,
+        "pilot_entries_with_any": 72,
+        "pilot_entries": 185,
+        "phase2_coverage": 0.34285714285714286,
+        "passes": false
+      }
+    },
+    "rows": "201-300",
+    "reference": "/private/tmp/claude-501/-Users-melissadu-Documents-projects-capable-predictive-validity/13401fa4-c3db-4b3a-b5b9-043da7dd8340/scratchpad/reference3_part"
+  },
+  "v3_vetted": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "reference_entries": 100,
+    "kinds": {
+      "animal_disease": {
+        "reference_studies": 68,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 8
+        },
+        "recall": 0.7058823529411765,
+        "recall_pubmed_indexed": 0.8,
+        "reference_entries_with_study": 20,
+        "entries_judged": 100,
+        "entry_recall": 0.95,
+        "pipeline_none_when_reference_none": 0.5875,
+        "pubmed_reference_studies": {
+          "found": 42,
+          "screened_in_other_disease": 2,
+          "found_by_firecrawl_only": 6,
+          "screened_out": 1,
+          "not_retrieved": 6,
+          "prefiltered_out": 3
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.6864111498257841,
+          "agreement": 0.9035714285714286,
+          "positives_screen": 63,
+          "positives_check": 42
+        },
+        "recall_without_firecrawl": 0.6176470588235294,
+        "recall_pubmed_indexed_without_firecrawl": 0.7,
+        "pilot_entries_with_any": 166,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5428571428571428,
+        "passes": false
+      },
+      "animal_healthy": {
+        "reference_studies": 149,
+        "reference_studies_in_pubmed": 144,
+        "reference_studies_by_venue": {
+          "journal": 144,
+          "conference": 5
+        },
+        "recall": 0.6375838926174496,
+        "recall_pubmed_indexed": 0.6597222222222222,
+        "reference_entries_with_study": 42,
+        "entries_judged": 100,
+        "entry_recall": 0.8095238095238095,
+        "pipeline_none_when_reference_none": 0.7068965517241379,
+        "pubmed_reference_studies": {
+          "found": 93,
+          "screened_out": 26,
+          "not_retrieved": 21,
+          "found_by_firecrawl_only": 2,
+          "unscreened": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7185222417692887,
+          "agreement": 0.9142857142857143,
+          "positives_screen": 61,
+          "positives_check": 43
+        },
+        "recall_without_firecrawl": 0.6241610738255033,
+        "recall_pubmed_indexed_without_firecrawl": 0.6458333333333334,
+        "pilot_entries_with_any": 168,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.4928571428571429,
+        "passes": false
+      },
+      "human_engagement": {
+        "reference_studies": 70,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 10
+        },
+        "recall": 0.38571428571428573,
+        "recall_pubmed_indexed": 0.45,
+        "reference_entries_with_study": 25,
+        "entries_judged": 61,
+        "entry_recall": 0.76,
+        "pipeline_none_when_reference_none": 0.9166666666666666,
+        "pubmed_reference_studies": {
+          "screened_out": 18,
+          "found": 25,
+          "not_retrieved": 15,
+          "found_by_firecrawl_only": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7444996451383961,
+          "agreement": 0.9357142857142857,
+          "positives_screen": 49,
+          "positives_check": 33
+        },
+        "recall_without_firecrawl": 0.35714285714285715,
+        "recall_pubmed_indexed_without_firecrawl": 0.4166666666666667,
+        "pilot_entries_with_any": 73,
+        "pilot_entries": 185,
+        "phase2_coverage": 0.35,
+        "passes": false
+      }
+    },
+    "rows": "201-300",
+    "reference": "report/audits/literature_reference/set3_part"
+  },
+  "v3_vetted2": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "reference_entries": 100,
+    "kinds": {
+      "animal_disease": {
+        "reference_studies": 68,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 8
+        },
+        "recall": 0.7352941176470589,
+        "recall_pubmed_indexed": 0.8333333333333334,
+        "reference_entries_with_study": 20,
+        "entries_judged": 100,
+        "entry_recall": 0.95,
+        "pipeline_none_when_reference_none": 0.5875,
+        "pubmed_reference_studies": {
+          "found": 44,
+          "screened_in_other_disease": 2,
+          "found_by_firecrawl_only": 6,
+          "screened_out": 1,
+          "not_retrieved": 4,
+          "prefiltered_out": 3
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.6864111498257841,
+          "agreement": 0.9035714285714286,
+          "positives_screen": 63,
+          "positives_check": 42
+        },
+        "recall_without_firecrawl": 0.6470588235294118,
+        "recall_pubmed_indexed_without_firecrawl": 0.7333333333333333,
+        "pilot_entries_with_any": 166,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5428571428571428,
+        "passes": false
+      },
+      "animal_healthy": {
+        "reference_studies": 149,
+        "reference_studies_in_pubmed": 144,
+        "reference_studies_by_venue": {
+          "journal": 144,
+          "conference": 5
+        },
+        "recall": 0.6644295302013423,
+        "recall_pubmed_indexed": 0.6875,
+        "reference_entries_with_study": 42,
+        "entries_judged": 100,
+        "entry_recall": 0.8333333333333334,
+        "pipeline_none_when_reference_none": 0.7068965517241379,
+        "pubmed_reference_studies": {
+          "found": 97,
+          "screened_out": 26,
+          "not_retrieved": 18,
+          "found_by_firecrawl_only": 2,
+          "unscreened": 1
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7185222417692887,
+          "agreement": 0.9142857142857143,
+          "positives_screen": 61,
+          "positives_check": 43
+        },
+        "recall_without_firecrawl": 0.6510067114093959,
+        "recall_pubmed_indexed_without_firecrawl": 0.6736111111111112,
+        "pilot_entries_with_any": 169,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5,
+        "passes": false
+      },
+      "human_engagement": {
+        "reference_studies": 70,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 10
+        },
+        "recall": 0.38571428571428573,
+        "recall_pubmed_indexed": 0.45,
+        "reference_entries_with_study": 25,
+        "entries_judged": 61,
+        "entry_recall": 0.76,
+        "pipeline_none_when_reference_none": 0.9166666666666666,
+        "pubmed_reference_studies": {
+          "screened_out": 18,
+          "found": 25,
+          "not_retrieved": 15,
+          "found_by_firecrawl_only": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7444996451383961,
+          "agreement": 0.9357142857142857,
+          "positives_screen": 49,
+          "positives_check": 33
+        },
+        "recall_without_firecrawl": 0.35714285714285715,
+        "recall_pubmed_indexed_without_firecrawl": 0.4166666666666667,
+        "pilot_entries_with_any": 73,
+        "pilot_entries": 185,
+        "phase2_coverage": 0.35,
+        "passes": false
+      }
+    },
+    "rows": "201-300",
+    "reference": "report/audits/literature_reference/set3_part"
+  },
+  "v3_vetted2_rescreen": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "reference_entries": 100,
+    "kinds": {
+      "animal_disease": {
+        "reference_studies": 68,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 8
+        },
+        "recall": 0.7352941176470589,
+        "recall_pubmed_indexed": 0.8333333333333334,
+        "reference_entries_with_study": 20,
+        "entries_judged": 100,
+        "entry_recall": 0.95,
+        "pipeline_none_when_reference_none": 0.5875,
+        "pubmed_reference_studies": {
+          "found": 44,
+          "screened_in_other_disease": 2,
+          "found_by_firecrawl_only": 6,
+          "screened_out": 1,
+          "not_retrieved": 4,
+          "prefiltered_out": 3
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.6864111498257841,
+          "agreement": 0.9035714285714286,
+          "positives_screen": 63,
+          "positives_check": 42
+        },
+        "recall_without_firecrawl": 0.6470588235294118,
+        "recall_pubmed_indexed_without_firecrawl": 0.7333333333333333,
+        "pilot_entries_with_any": 166,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5428571428571428,
+        "passes": false
+      },
+      "animal_healthy": {
+        "reference_studies": 149,
+        "reference_studies_in_pubmed": 144,
+        "reference_studies_by_venue": {
+          "journal": 144,
+          "conference": 5
+        },
+        "recall": 0.6644295302013423,
+        "recall_pubmed_indexed": 0.6875,
+        "reference_entries_with_study": 42,
+        "entries_judged": 100,
+        "entry_recall": 0.8333333333333334,
+        "pipeline_none_when_reference_none": 0.7068965517241379,
+        "pubmed_reference_studies": {
+          "found": 97,
+          "screened_out": 26,
+          "not_retrieved": 18,
+          "found_by_firecrawl_only": 2,
+          "unscreened": 1
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7185222417692887,
+          "agreement": 0.9142857142857143,
+          "positives_screen": 61,
+          "positives_check": 43
+        },
+        "recall_without_firecrawl": 0.6510067114093959,
+        "recall_pubmed_indexed_without_firecrawl": 0.6736111111111112,
+        "pilot_entries_with_any": 169,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5,
+        "passes": false
+      },
+      "human_engagement": {
+        "reference_studies": 70,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 10
+        },
+        "recall": 0.38571428571428573,
+        "recall_pubmed_indexed": 0.45,
+        "reference_entries_with_study": 25,
+        "entries_judged": 61,
+        "entry_recall": 0.76,
+        "pipeline_none_when_reference_none": 0.9166666666666666,
+        "pubmed_reference_studies": {
+          "screened_out": 18,
+          "found": 25,
+          "not_retrieved": 15,
+          "found_by_firecrawl_only": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7444996451383961,
+          "agreement": 0.9357142857142857,
+          "positives_screen": 49,
+          "positives_check": 33
+        },
+        "recall_without_firecrawl": 0.35714285714285715,
+        "recall_pubmed_indexed_without_firecrawl": 0.4166666666666667,
+        "pilot_entries_with_any": 73,
+        "pilot_entries": 185,
+        "phase2_coverage": 0.35,
+        "passes": false
+      }
+    },
+    "rows": "201-300",
+    "reference": "report/audits/literature_reference/set3_part"
+  },
+  "v3_final": {
+    "gates": {
+      "recall": 0.8,
+      "kappa": 0.6,
+      "phase2_coverage": 0.08
+    },
+    "reference_entries": 100,
+    "kinds": {
+      "animal_disease": {
+        "reference_studies": 68,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 8
+        },
+        "recall": 0.7352941176470589,
+        "recall_pubmed_indexed": 0.8333333333333334,
+        "reference_entries_with_study": 20,
+        "entries_judged": 100,
+        "entry_recall": 0.95,
+        "pipeline_none_when_reference_none": 0.5875,
+        "pubmed_reference_studies": {
+          "found": 44,
+          "screened_in_other_disease": 2,
+          "found_by_firecrawl_only": 6,
+          "screened_out": 1,
+          "not_retrieved": 4,
+          "prefiltered_out": 3
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.6864111498257841,
+          "agreement": 0.9035714285714286,
+          "positives_screen": 63,
+          "positives_check": 42
+        },
+        "recall_without_firecrawl": 0.6470588235294118,
+        "recall_pubmed_indexed_without_firecrawl": 0.7333333333333333,
+        "pilot_entries_with_any": 166,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5428571428571428,
+        "passes": false
+      },
+      "animal_healthy": {
+        "reference_studies": 149,
+        "reference_studies_in_pubmed": 144,
+        "reference_studies_by_venue": {
+          "journal": 144,
+          "conference": 5
+        },
+        "recall": 0.6711409395973155,
+        "recall_pubmed_indexed": 0.6944444444444444,
+        "reference_entries_with_study": 42,
+        "entries_judged": 100,
+        "entry_recall": 0.8333333333333334,
+        "pipeline_none_when_reference_none": 0.7068965517241379,
+        "pubmed_reference_studies": {
+          "found": 98,
+          "screened_out": 26,
+          "not_retrieved": 18,
+          "found_by_firecrawl_only": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7185222417692887,
+          "agreement": 0.9142857142857143,
+          "positives_screen": 61,
+          "positives_check": 43
+        },
+        "recall_without_firecrawl": 0.6577181208053692,
+        "recall_pubmed_indexed_without_firecrawl": 0.6805555555555556,
+        "pilot_entries_with_any": 169,
+        "pilot_entries": 300,
+        "phase2_coverage": 0.5,
+        "passes": false
+      },
+      "human_engagement": {
+        "reference_studies": 70,
+        "reference_studies_in_pubmed": 60,
+        "reference_studies_by_venue": {
+          "journal": 60,
+          "conference": 10
+        },
+        "recall": 0.38571428571428573,
+        "recall_pubmed_indexed": 0.45,
+        "reference_entries_with_study": 25,
+        "entries_judged": 61,
+        "entry_recall": 0.76,
+        "pipeline_none_when_reference_none": 0.9166666666666666,
+        "pubmed_reference_studies": {
+          "screened_out": 18,
+          "found": 25,
+          "not_retrieved": 15,
+          "found_by_firecrawl_only": 2
+        },
+        "check": {
+          "pairs": 280,
+          "kappa": 0.7444996451383961,
+          "agreement": 0.9357142857142857,
+          "positives_screen": 49,
+          "positives_check": 33
+        },
+        "recall_without_firecrawl": 0.35714285714285715,
+        "recall_pubmed_indexed_without_firecrawl": 0.4166666666666667,
+        "pilot_entries_with_any": 73,
+        "pilot_entries": 185,
+        "phase2_coverage": 0.35,
+        "passes": false
+      }
+    },
+    "rows": "201-300",
+    "reference": "report/audits/literature_reference/set3_part"
   }
 }

@@ -92,3 +92,52 @@ stay descriptive: the pilot counts above, and the screens in `preclin.literature
 - Screen: 7.86M input / 1.64M output tokens, Sonnet 5.
 - Check: 0.10M / 0.02M tokens, Opus 5.5.
 - Disease mapping: 3.52M / 0.03M tokens, Sonnet 5.
+
+## Version 3 (2026-11-05): the third, user-directed attempt
+
+Fixed in `report/translation_plan.md` (#101, with a Firecrawl addendum in #102) before it ran. It overrides the plan's
+stop rule, and any kind that passes is labelled as passing on a third, user-directed attempt.
+
+**Retrieval**, per drug by its names alone, up to the year before its latest entry:
+- PubMed titles and abstracts, every hit kept, with sets over 9,999 fetched in date slices;
+- Europe PMC titles and abstracts outside MEDLINE (patents, preprints and others);
+- Firecrawl's research index, one semantic search per entry.
+
+For a drug with more than 3,000 records, Claude Haiku 4.5 read each record first and passed 25% of them. Every other
+record went to version 2's screen (Claude Sonnet 5), and Claude Opus 5.5 relabelled a check sample.
+
+**Pilot**, 300 entries and 283 drugs:
+- 601,325 drug-record pairs. Firecrawl alone found 3,832 records.
+- The prefilter read 563,697 records and passed 140,943. The screen decided 176,613 records.
+- Sonnet 5 refused 1,887 records (1.1%), mostly abstracts on interferon gamma, aldesleukin and hydrogen peroxide. They
+  stay undecided.
+
+**Scored only on a new blind reference set**: pilot rows 201–300, which agents with no access to any version
+researched. They listed 288 studies. Web search was unavailable to them, so conference and press sources are
+under-covered.
+
+| Kind | Reference studies (in PubMed) | Recall | Recall, PubMed-indexed | Without Firecrawl (overall / PubMed) | κ (pairs) | Phase 2 coverage | Passes |
+|---|---|---|---|---|---|---|---|
+| Drug in an animal model of the disease | 68 (60) | 74% | 83% | 65% / 73% | 0.69 (279) | 54% | no |
+| Drug in healthy animals | 148 (143) | 66% | 69% | 65% / 67% | 0.72 (279) | 46% | no |
+| Human target engagement (Phase 2/3) | 70 (60) | 37% | 43% | 36% / 42% | 0.74 (279) | 34% | no |
+
+**Why the PubMed-indexed reference studies were missed:**
+
+| Kind | Not retrieved | Prefiltered out | Screened out | Unscreened (refused) | Other disease | Found (Firecrawl only) |
+|---|---|---|---|---|---|---|
+| Animal model of the disease | 5 | 3 | 0 | 0 | 2 | 50 (6) |
+| Healthy animals | 17 | 0 | 26 | 2 | 0 | 98 (2) |
+| Human engagement | 18 | 0 | 16 | 0 | 0 | 26 (1) |
+
+**Result.** Taking all records by every name of the drug fixed most of the retrieval loss, and Firecrawl added 9 points
+of recall for animal models. No kind meets the registered recall of 80%. The animal-model kind reaches 83% on the
+PubMed-indexed studies but 74% overall. The remaining misses are mostly screening judgements:
+- healthy-animal and engagement studies the reference counted and the screen did not;
+- engagement under a stricter definition than the reference agents applied.
+
+**Cost** (Message Batches):
+- prefilter: 479M input / 4.5M output tokens, Haiku 4.5, about $251;
+- screen: about 181K new records, about 144M input / 27M output tokens, Sonnet 5, about $280;
+- disease mapping: about 25M tokens, about $30.
+- Firecrawl: about 0.21 credits per call after the first calls were free.

@@ -1,0 +1,947 @@
+[
+ {
+  "moiety_id": 14260,
+  "mondo_id": "MONDO:0005575",
+  "phase": 2,
+  "searched": [
+   "PubMed: CNDAC; DFP-10917; TAS-109; 2'-C-cyano-2'-deoxy-1-beta-D-arabino-pentofuranosylcytosine (full chemical name); CNDAC AND colon/colorectal/xenograft/pharmacokinetic; sapacitabine/CS-682/CYC682 (prodrug, excluded by rule), all <=2008",
+   "Europe PMC: CNDAC (non-MEDLINE sources), DFP-10917, TAS-109 <=2008",
+   "Note: prodrug sapacitabine (CS-682) and liposomal DPP-CNDAC studies excluded as precursor/derivative molecules; no CNDAC study in a colorectal model found; human CNDAC exposure only reported after sapacitabine dosing"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Antitumor activity and novel DNA-self-strand-breaking mechanism of CNDAC (1-(2-C-cyano-2-deoxy-beta-D-arabino-pentofuranosyl) cytosine) and its N4-palmitoyl derivative (CS-682).",
+    "year": 1999,
+    "pmid": "10389757",
+    "doi": "10.1002/(sici)1097-0215(19990719)82:2<226::aid-ijc13>3.0.co;2-x",
+    "why": "Reports plasma half-life of CNDAC after repeated oral dosing of CNDAC itself in mice (and oral CNDAC compared in human tumor xenograft panel; colorectal xenograft not confirmed from abstract).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10389757/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 30951,
+  "mondo_id": "MONDO:0008608",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2012: scyllo-inositol[tiab] OR scyllo-cyclohexanehexol OR ELND005 OR AZD-103/AZD103 OR scyllitol (189 hits screened); scyllo-inositol AND (Down syndrome OR trisomy OR Ts65Dn OR Ts1Cje); scyllo-inositol AND (pharmacokinetic/brain uptake/mice/rats)",
+   "Europe PMC <=2012: ELND005/scyllo-inositol AND Down/pharmacokinetic/healthy volunteers/CSF (non-MEDLINE)",
+   "No scyllo-inositol study in a Down syndrome model (Ts65Dn etc.) found <=2012; AD transgenic-mouse efficacy studies (TgCRND8, McLaurin 2006) are a different disease and not listed as animal_disease"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Properties of scyllo-inositol as a therapeutic treatment of AD-like pathology.",
+    "year": 2007,
+    "pmid": "17279347",
+    "doi": "10.1007/s00109-007-0156-7",
+    "why": "GC/MS measurement of brain and CSF scyllo-inositol concentrations after oral administration in mice (CNS exposure), incl. incorporation into phosphatidylinositol.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17279347/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Detection of increased scyllo-inositol in brain with magnetic resonance spectroscopy after dietary supplementation in Alzheimer's disease mouse models.",
+    "year": 2010,
+    "pmid": "20399219",
+    "doi": "10.1016/j.neuropharm.2010.03.011",
+    "why": "Brain (hippocampus/cortex) exposure of orally dosed scyllo-inositol measured by MRS in mice (APPxPS1 strains).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20399219/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A phase 2 randomized trial of ELND005, scyllo-inositol, in mild to moderate Alzheimer disease.",
+    "year": 2011,
+    "pmid": "21917766",
+    "doi": "10.1212/WNL.0b013e3182309fa5",
+    "why": "Measured scyllo-inositol in human CSF and brain (MRS) and a PD biomarker (CSF Abeta x-42 decrease) after ELND005 dosing.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21917766/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 131,
+  "mondo_id": "MONDO:0007243",
+  "phase": 1,
+  "searched": [
+   "PubMed <=2014: (sunitinib OR SU11248 OR SU-11248 OR SU011248) AND (Burkitt OR B-cell lymphoma OR lymphoma OR Raji OR Namalwa OR Daudi); same AND (mice OR xenograft OR model); (sunitinib OR SU11248) AND (pharmacokinetics/disposition/metabolism/brain/distribution) AND (rats/mice/monkeys/dogs) (180 hits screened); SU11248 AND Mendel[au]",
+   "Sunitinib is a widely used approved drug: animal_healthy is a representative set of primary nonclinical PK/distribution/PD studies, not exhaustive",
+   "No sunitinib study in a Burkitt lymphoma model found; the only lymphoma-titled xenograft study (PMID 23555747) used multiple myeloma xenografts. human_engagement not applicable (phase 1)"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "In vivo antitumor activity of SU11248, a novel tyrosine kinase inhibitor targeting vascular endothelial growth factor and platelet-derived growth factor receptors: determination of a pharmacokinetic/pharmacodynamic relationship.",
+    "year": 2003,
+    "pmid": "12538485",
+    "doi": "",
+    "why": "Mouse PK and target (VEGFR2/PDGFRb phosphorylation) PD relationship for SU11248.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12538485/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Hair depigmentation is a biological readout for pharmacological inhibition of KIT in mice and humans.",
+    "year": 2003,
+    "pmid": "12966161",
+    "doi": "10.1124/jpet.103.052530",
+    "why": "PD readout (KIT inhibition, hair depigmentation) of SU11248 in mice.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12966161/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Single- and multiple-dose disposition kinetics of sunitinib malate, a multitargeted receptor tyrosine kinase inhibitor: comparative plasma kinetics in non-clinical species.",
+    "year": 2009,
+    "pmid": "19169880",
+    "doi": "",
+    "why": "Plasma PK of sunitinib in mice, rats, dogs and monkeys.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19169880/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Evaluation of the safety and pharmacokinetics of the multi-targeted receptor tyrosine kinase inhibitor sunitinib during embryo-fetal development in rats and rabbits.",
+    "year": 2009,
+    "pmid": "19294680",
+    "doi": "",
+    "why": "Toxicokinetics of sunitinib in pregnant rats and rabbits.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19294680/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Brain accumulation of sunitinib is restricted by P-glycoprotein (ABCB1) and breast cancer resistance protein (ABCG2) and can be enhanced by oral elacridar and sunitinib coadministration.",
+    "year": 2012,
+    "pmid": "21351087",
+    "doi": "",
+    "why": "Brain and plasma exposure of sunitinib in wild-type and transporter-knockout mice.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21351087/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics, distribution, and metabolism of [14C]sunitinib in rats, monkeys, and humans.",
+    "year": 2012,
+    "pmid": "22180047",
+    "doi": "10.1124/dmd.111.042853",
+    "why": "Radiolabel ADME/tissue distribution of sunitinib in rats and monkeys.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22180047/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "P-glycoprotein (ABCB1) and breast cancer resistance protein (ABCG2) restrict brain accumulation of the active sunitinib metabolite N-desethyl sunitinib.",
+    "year": 2012,
+    "pmid": "22238213",
+    "doi": "",
+    "why": "Mouse plasma/brain exposure after sunitinib dosing.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22238213/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Effect of P-glycoprotein and breast cancer resistance protein inhibition on the pharmacokinetics of sunitinib in rats.",
+    "year": 2013,
+    "pmid": "23749551",
+    "doi": "10.1124/dmd.112.050286",
+    "why": "Sunitinib PK in rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23749551/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetic assessment of efflux transport in sunitinib distribution to the brain.",
+    "year": 2013,
+    "pmid": "24113148",
+    "doi": "10.1124/jpet.113.208959",
+    "why": "Brain distribution of sunitinib in mice.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24113148/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Sunitinib LC-MS/MS Assay in Mouse Plasma and Brain Tissue: Application in CNS Distribution Studies.",
+    "year": 2013,
+    "pmid": "24409000",
+    "doi": "10.1007/s10337-013-2528-1",
+    "why": "Mouse plasma and brain exposure of sunitinib.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24409000/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Contribution of plasma proteins, albumin and alpha 1-acid glycoprotein, to pharmacokinetics of a multi-targeted receptor tyrosine kinase inhibitor, sunitinib, in analbuminemic rats.",
+    "year": 2014,
+    "pmid": "24778032",
+    "doi": "",
+    "why": "Sunitinib PK in rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24778032/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Estimating the clinical risk of hypertension from VEGF signal inhibitors by a non-clinical approach using telemetered rats.",
+    "year": 2014,
+    "pmid": "24646704",
+    "doi": "10.2131/jts.39.237",
+    "why": "Cardiovascular PD (blood pressure) of sunitinib in telemetered rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24646704/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 1844,
+  "mondo_id": "MONDO:0005231",
+  "phase": 2,
+  "searched": [
+   "PubMed: dasabuvir OR ABT-333 OR ABT333 (through 2010 to catch late-indexed items; nothing primary <=2008)",
+   "Europe PMC: dasabuvir OR ABT-333 OR ABT333 <=2010 (only reviews, 2009-2010)",
+   "PubMed: Abbott benzothiadiazine/non-nucleoside NS5B series <=2010 (analogs such as A-837093 in chimpanzees are different molecules, excluded)",
+   "General web search budget for the session was exhausted before this row, so 2008 AASLD/EASL conference abstracts for ABT-333 could not be checked by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 3460,
+  "mondo_id": "MONDO:0005231",
+  "phase": 2,
+  "searched": [
+   "PubMed: ANA598 OR ANA-598 OR setrobuvir OR RO5466731 (through 2012; only reviews from 2010-2011)",
+   "Europe PMC: ANA598 OR ANA-598 OR setrobuvir <=2010 (reviews and 2010 conference proceedings only)",
+   "PubMed: Ruebsam F[au] (Anadys NS5B series, 2008-2009 BMCL papers describe analogs, none named ANA598)",
+   "General web search budget exhausted, so Anadys 2008 press releases/AASLD 2008 abstracts not checked by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 5198,
+  "mondo_id": "MONDO:0005575",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2014: imalumab OR BAX69 OR BAX-69 OR BaxB01 OR BaxG03 OR BaxM159; oxidized MIF / oxMIF; Kerschbaumer RJ[au] AND MIF; Thiele M[au] AND MIF AND antibody",
+   "Europe PMC <=2014: imalumab/BAX69/oxMIF/oxidized MIF; imalumab/BaxB01/anti-MIF antibody AND colorectal/colon",
+   "Crossref API returned HTTP 429 throughout (shared rate limit) and general web search budget was exhausted, so AACR/ASCO 2013-2014 BAX69 abstracts could not be checked",
+   "BAX69 (imalumab) is the clinical form of the fully human anti-oxMIF antibody BaxB01; the BaxB01 studies are listed as the same antibody. No colorectal model study found <=2014; prostate (PC3) xenograft efficacy is a different disease"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Human anti-macrophage migration inhibitory factor antibodies inhibit growth of human prostate cancer cells in vitro and in vivo.",
+    "year": 2013,
+    "pmid": "23619302",
+    "doi": "10.1158/1535-7163.MCT-12-0988",
+    "why": "Reports in vivo PK (half-life, volume of distribution, bioavailability) in mice of BaxB01 (the antibody developed as BAX69/imalumab), alongside PC3 prostate xenograft efficacy.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23619302/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Neutralization of macrophage migration inhibitory factor (MIF) by fully human antibodies correlates with their specificity for the beta-sheet structure of MIF.",
+    "year": 2012,
+    "pmid": "22238348",
+    "doi": "10.1074/jbc.M111.329664",
+    "why": "In vivo pharmacology of the fully human anti-MIF antibody panel (including BaxB01) in mouse sepsis and contact hypersensitivity models; target-epitope PD.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22238348/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 4785,
+  "mondo_id": "MONDO:0005148",
+  "phase": 1,
+  "searched": [
+   "PubMed: globalagliatin OR LY2608204 OR LY-2608204 OR SY-004 (through 2012): 0 hits",
+   "Europe PMC: globalagliatin OR LY2608204 OR SY-004 (through 2012): 0 hits",
+   "Web search budget exhausted; Lilly conference abstracts not checkable by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 6396,
+  "mondo_id": "MONDO:0005002",
+  "phase": 2,
+  "searched": [
+   "PubMed: nemiralisib OR GSK2269557 OR GSK-2269557 <=2013: 0 hits (through 2016: only pipeline reviews, a 2012 patent evaluation and the 2015 J Med Chem discovery paper, after cutoff)",
+   "Europe PMC: nemiralisib OR GSK2269557 OR GSK-2269557 <=2014: patent evaluation (review) only",
+   "Web search budget exhausted; ERS/ATS 2012-2013 abstracts not checkable by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 6358,
+  "mondo_id": "MONDO:0005098",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2010: MultiStem OR invimestrocel OR CNTO 0007 OR HLCM051; (multipotent adult progenitor cells OR MAPC) AND (stroke OR ischemia OR middle cerebral artery OR brain)",
+   "Europe PMC <=2010: (MultiStem OR multipotent adult progenitor) AND (stroke OR ischemic); Mays RW AND stroke",
+   "Web search budget exhausted; Athersys press releases/ISC abstracts on MultiStem in rat MCAO (2008-2010) not checkable by web search; Mays et al. 2010 J Exp Stroke Transl Med not indexed in PubMed/Europe PMC search results",
+   "Adult MAPC studies in TBI, limb ischemia and myocardial infarction are other diseases and excluded"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Transplantation of cryopreserved human bone marrow-derived multipotent adult progenitor cells for neonatal hypoxic-ischemic injury: targeting the hippocampus.",
+    "year": 2006,
+    "pmid": "16703953",
+    "doi": "10.1515/revneuro.2006.17.1-2.215",
+    "why": "Human bone-marrow MAPCs (the cell type commercialised as MultiStem) transplanted in a neonatal rat hypoxic-ischemic brain injury (perinatal stroke-type) model; behavioural and histological efficacy.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16703953/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Intravenous grafts recapitulate the neurorestoration afforded by intracerebrally delivered multipotent adult progenitor cells in neonatal hypoxic-ischemic rats.",
+    "year": 2008,
+    "pmid": "18594556",
+    "doi": "10.1038/jcbfm.2008.68",
+    "why": "IV and intracerebral MAPCs (allogeneic rat MAPCs, Athersys co-authors) improved motor/neurologic scores and reduced ischemic cell loss in neonatal rat hypoxic-ischemic model; rat-derived cells, so a species-homolog of the human product.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18594556/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pre-clinical safety testing supporting clinical use of allogeneic multipotent adult progenitor cells.",
+    "year": 2008,
+    "pmid": "18985479",
+    "doi": "10.1080/14653240802320245",
+    "why": "Single- and multiple-dose acute toxicity, clinical chemistry, haematology and immunology of MultiStem in rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18985479/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 5800,
+  "mondo_id": "MONDO:0008383",
+  "phase": 2,
+  "searched": [
+   "PubMed: lanraplenib OR GS-9876 OR GS9876 OR GS-SYK (through 2016): only a 2016 EULAR congress report, after cutoff",
+   "Europe PMC: lanraplenib OR GS-9876 (through 2016): same single item",
+   "Web search budget exhausted; Gilead ACR/EULAR 2015 abstracts not checkable by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 1694,
+  "mondo_id": "MONDO:0005011",
+  "phase": 2,
+  "searched": [
+   "PubMed: secukinumab OR AIN457 OR AIN-457 <=2008: only a LiverTox-type monograph (not primary)",
+   "Europe PMC: AIN457 OR secukinumab <=2008: reviews on Th17 biology only, no AIN457 data",
+   "No AIN457 animal (it is a fully human anti-IL-17A antibody without rodent cross-reactivity) or human PD data published <=2007"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 1828,
+  "mondo_id": "MONDO:0001356",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2011: \"ferric citrate\"[tiab] AND (iron deficiency OR anemia OR hemoglobin OR ferritin OR transferrin) (179 screened); \"ferric citrate\"[tiab] AND (rats/mice/pigs) AND (absorption/bioavailability/iron) (116 screened); \"ferric citrate\"[tiab] AND (dialysis OR CKD OR hyperphosphatemia); KRX-0502 OR Zerenex OR JTT-751 (term mapped too broadly, no specific hits)",
+   "Ferric citrate is a long-used iron salt and a standard iron source in rodent nutrition work: animal studies listed are a representative set where ferric citrate itself was given to iron-deficient/anaemic or normal animals, not exhaustive. Many 59Fe-ferric citrate tracer studies (iron kinetics probes) excluded",
+   "Web search budget exhausted; Keryx/Panion press releases not checkable"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Effects of iron replenishment on iron, calcium, phosphorus and magnesium metabolism in iron-deficient rats.",
+    "year": 1996,
+    "pmid": "8843992",
+    "doi": "",
+    "why": "Iron-deficient (anaemic) rats repleted with ferric citrate vs ferrous sulfate and ferrous ascorbate; Hb and tissue iron outcomes.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8843992/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Effect of source of iron on duodenal absorption of iron, calcium, phosphorous, magnesium, copper and zinc in rats with ferropoenic anaemia.",
+    "year": 1997,
+    "pmid": "9129253",
+    "doi": "",
+    "why": "In vivo duodenal absorption of ferric citrate iron in rats with iron-deficiency anaemia vs controls.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9129253/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Iron chelated cyclic peptide, ferrichrysin, for oral treatment of iron deficiency: solution properties and efficacy in anemic rats.",
+    "year": 2007,
+    "pmid": "17685091",
+    "doi": "",
+    "why": "Ferric citrate diet arm corrected iron-deficiency anaemia in rats (comparator arm with efficacy data).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17685091/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "New phosphate binding agents: ferric compounds.",
+    "year": 1999,
+    "pmid": "10361865",
+    "doi": "10.1681/ASN.V1061274",
+    "why": "Balance study of dietary ferric citrate in normal (and azotemic) rats: intestinal phosphate binding/absorption pharmacology.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10361865/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "An open-label, crossover study of a new phosphate-binding agent in haemodialysis patients: ferric citrate.",
+    "year": 2002,
+    "pmid": "11812877",
+    "doi": "10.1093/ndt/17.2.265",
+    "why": "PD biomarker in humans: serum phosphate lowering by ferric citrate 3 g/day in haemodialysis patients (iron indices not reported in abstract).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/11812877/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 4534,
+  "mondo_id": "MONDO:0005133",
+  "phase": 2,
+  "searched": [
+   "PubMed: MT-2990 OR MT2990 (through 2019): 0 hits",
+   "Europe PMC: MT-2990 OR MT2990 (through 2019): 0; MT-2990 OR anti-IL-33 AND endometriosis: 0",
+   "Web search budget exhausted; Mitsubishi Tanabe pipeline/press materials not checkable by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 8006,
+  "mondo_id": "MONDO:0004323",
+  "phase": 1,
+  "searched": [
+   "PubMed: BIIB023 OR BIIB-023 (through 2019): first primary report 2013 (RA phase 1 PK/PD), after the 2012 cutoff",
+   "Europe PMC: BIIB023 OR BIIB-023 (through 2019): reviews and post-2012 clinical papers only",
+   "Murine anti-TWEAK surrogate antibodies (e.g. P2D10) used in muscle-atrophy and TWEAK-knockout studies are different molecules and excluded"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 10932,
+  "mondo_id": "MONDO:0005340",
+  "phase": 2,
+  "searched": [
+   "PubMed: ifidancitinib OR ATI-502 OR ATI-50002 OR ATI50002 OR \"ATI 502\" (through 2019): 0 hits",
+   "Europe PMC: ifidancitinib OR ATI-502 OR ATI-50002 (through 2019): reviews 2018-2019 only; ATI-50001 OR ATI-50002: 0",
+   "Checked Rigel JAK compounds R348/R333 (licensed portfolio) but could not confirm either is ifidancitinib, so their transplant/psoriasis-model studies are not listed",
+   "Web search budget exhausted; Aclaris press releases/SID 2016 abstracts not checkable by web search"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 35564,
+  "mondo_id": "MONDO:0005354",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2009: NIM811 OR NIM-811 OR N-methyl-isoleucine-4-cyclosporin OR SDZ NIM 811 (57 screened)",
+   "Europe PMC not separately productive beyond PubMed set",
+   "NIM811 HCV work <=2008 is in vitro (replicon/infection assays: PMIDs 16940091, 16564500, 18591281), not counted. In vivo NIM811 studies <=2008 are efficacy studies in other diseases (liver ischemia/transplant, cholestasis, TBI, spinal cord injury, focal cerebral ischemia, melanoma), not pharmacology in healthy animals, so not listed",
+   "No HCV animal model study; no published human PD (HCV RNA decline) <=2008 found; 2008 AASLD abstract could not be checked (web search budget exhausted)"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 1978,
+  "mondo_id": "MONDO:0100338",
+  "phase": 1,
+  "searched": [
+   "PubMed: eravacycline OR TP-434 OR TP434 (through 2013)",
+   "Europe PMC: eravacycline OR TP-434 OR TP434 (through 2012)",
+   "First primary papers (J Med Chem fluorocyclines, AAC mechanism) are dated 2012 issues (J Med Chem e-published Dec 2011); 2013 AAC microbiology paper after cutoff",
+   "ICAAC 2010 poster F1-2157 and the 2010 IDrugs ICAAC conference report mention TP-434 but their in vivo content (incl. any murine pyelonephritis/UTI model) could not be verified: web search budget exhausted and Crossref rate-limited"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Fluorocyclines. 1. 7-fluoro-9-pyrrolidinoacetamido-6-demethyl-6-deoxytetracycline: a potent, broad spectrum antibacterial agent.",
+    "year": 2012,
+    "pmid": "22148514",
+    "doi": "10.1021/jm201465w",
+    "why": "Discovery paper for TP-434 (compound 17j); e-published Dec 2011 (issue 2012, borderline for the 2011 cutoff); reports in vivo evaluation (rodent PK / murine infection efficacy) per full text, not confirmable from abstract.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22148514/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 5044,
+  "mondo_id": "MONDO:0018906",
+  "phase": 2,
+  "searched": [
+   "PubMed: zandelisib OR ME-401 OR ME401 OR PWT-143 OR PWT143 (through 2019)",
+   "Europe PMC: same names (through 2019)",
+   "The ME-401 animal ADME/binding paper (Target Oncol, PMID 31506873) is 2019, after the 2018 cutoff",
+   "ASH 2017/2018 ME-401 phase 1b abstracts (Blood supplement) could not be retrieved: Crossref API rate-limited (HTTP 429) and web search budget exhausted"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "Safety, Pharmacokinetics, and Pharmacodynamics of ME-401, an Oral, Potent, and Selective Inhibitor of Phosphatidylinositol 3-Kinase P110delta, Following Single Ascending Dose Administration in Healthy Volunteers.",
+    "year": 2018,
+    "pmid": "30458930",
+    "doi": "10.1016/j.clinthera.2018.09.006",
+    "why": "First-in-human SAD study with PD (PI3Kdelta pathway inhibition, ex vivo basophil activation) and PK of ME-401 in healthy volunteers.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30458930/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 258,
+  "mondo_id": "MONDO:0008170",
+  "phase": 1,
+  "searched": [
+   "PubMed <=2010: (estradiol OR oestradiol OR 17beta-estradiol)[tiab] AND (ovarian cancer/carcinoma/tumor)[tiab] AND (xenograft/mice/mouse/rats/nude/in vivo)[tiab] (~60 screened); Spillman MA[au] AND estrogen AND ovarian; title search estrogen/estradiol AND ovarian cancer AND growth/metastasis AND mice/xenograft",
+   "PubMed <=2010: estradiol/oestradiol AND pharmacokinetics/bioavailability/disposition/distribution AND rat/monkey/mice in title (~80 screened)",
+   "Estradiol is an old, widely used hormone: animal_healthy is a representative set of primary PK/distribution studies, not exhaustive. Code names (BAY 86-4891, MK-8342B, Org 2317 etc.) are formulations/combinations and were not searched individually for animal work",
+   "Studies of ethinyl estradiol, oral contraceptives, estradiol prodrugs/esters (estradiol valerate, dipropionate, polyestradiol phosphate) and radiolabelled estradiol analogs (16alpha-iodo/fluoro) excluded as different molecules"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Endocrine characterization of a human ovarian carcinoma (BG-1) established in nude mice.",
+    "year": 1989,
+    "pmid": "2609360",
+    "doi": "10.1016/0039-128x(89)90083-4",
+    "why": "Estradiol administration reversed accelerated growth of BG-1 ovarian carcinoma xenografts in ovariectomized nude mice and up-regulated ER/PR in tumors.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2609360/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Contrasting effects of 17 beta-estradiol on the growth of human ovarian carcinoma cells in vitro and in vivo.",
+    "year": 1993,
+    "pmid": "8375930",
+    "doi": "10.1002/ijc.2910550323",
+    "why": "17beta-estradiol pellets inhibited growth of ER+ PE04 ovarian carcinoma xenografts in nude mice (no effect on ER- HOX 60).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8375930/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Growth inhibition of oestrogen receptor-positive human ovarian carcinoma by anti-oestrogens in vitro and in a xenograft model.",
+    "year": 1994,
+    "pmid": "8080688",
+    "doi": "10.1016/0959-8049(94)90545-2",
+    "why": "PE04 ovarian carcinoma xenograft model with oestrogen-stimulated growth studied against anti-oestrogens (E2 effect on xenograft growth).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8080688/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Estrous cycle modulates ovarian carcinoma growth.",
+    "year": 2009,
+    "pmid": "19383821",
+    "doi": "10.1158/1078-0432.CCR-08-2525",
+    "why": "17beta-estradiol treatment of ovariectomized mice increased HeyA8 and SKOV3ip1 ovarian cancer tumor growth 4-5 fold.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19383821/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "17beta-estradiol accelerates tumor onset and decreases survival in a transgenic mouse model of ovarian cancer.",
+    "year": 2010,
+    "pmid": "20056833",
+    "doi": "10.1210/en.2009-0602",
+    "why": "E2 accelerated tumor onset and decreased survival in tgCAG-LS-TAg transgenic ovarian cancer mice.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20056833/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Tissue-specific pathways for estrogen regulation of ovarian cancer growth and metastasis.",
+    "year": 2010,
+    "pmid": "20959477",
+    "doi": "10.1158/0008-5472.CAN-10-1238",
+    "why": "Estradiol supplementation increased ovarian cancer xenograft growth and metastasis in mice; host vs tumor ER pathways.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20959477/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics and effects of 17beta-estradiol and progesterone implants in ovariectomized rats.",
+    "year": 2005,
+    "pmid": "16326369",
+    "doi": "10.1016/j.jpain.2005.07.007",
+    "why": "Serum PK of 17beta-estradiol implants in ovariectomized rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16326369/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Tissue distribution of sex steroids: concentration of 17beta-oestradiol and cyproterone acetate in selected organs of female Wistar rats.",
+    "year": 1998,
+    "pmid": "9527645",
+    "doi": "",
+    "why": "Organ distribution of administered 17beta-oestradiol in rats.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9527645/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Percutaneous absorption of 17 beta-estradiol in ovariectomized rhesus monkeys: skin and serum pharmacokinetics.",
+    "year": 1990,
+    "pmid": "2307253",
+    "doi": "10.1016/s0015-0282(16)53358-5",
+    "why": "Skin and serum PK of 17beta-estradiol in monkeys.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2307253/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Influence of a purified diet and route of administration on the metabolism and disposition of estradiol in B6C3F1 mice.",
+    "year": 1987,
+    "pmid": "2891474",
+    "doi": "",
+    "why": "Metabolism and disposition of estradiol in mice by route.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2891474/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Transplacental pharmacokinetics and metabolism of diethylstilbestrol and 17 beta-estradiol in the pregnant rhesus monkey.",
+    "year": 1980,
+    "pmid": "6768757",
+    "doi": "10.1210/jcem-50-5-811",
+    "why": "17beta-estradiol PK and metabolism in pregnant rhesus monkeys.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6768757/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Disposition of [4-14C]oestradiol-17 beta in the isolated perfused brain of the rat.",
+    "year": 1984,
+    "pmid": "6708551",
+    "doi": "10.1016/0022-4731(84)90086-4",
+    "why": "Brain disposition of oestradiol in rat.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6708551/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 9131,
+  "mondo_id": "MONDO:0005546",
+  "phase": 2,
+  "searched": [
+   "PubMed: ASP0819 OR ASP-0819 (through 2018): 0 hits",
+   "Europe PMC: ASP0819 OR ASP-0819 (through 2018): 0 hits",
+   "Web search budget exhausted; Astellas pipeline/press not checkable"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 8268,
+  "mondo_id": "MONDO:0008433",
+  "phase": 2,
+  "searched": [
+   "PubMed: tarextumab OR OMP-59R5 OR OMP59R5 OR 59R5 (through 2018): earliest primary paper 2015 (Clin Cancer Res, Notch2/3 antagonist in xenografts incl. SCLC/pancreatic), after the 2011 cutoff",
+   "Europe PMC: tarextumab OR OMP-59R5 OR 59R5 (through 2018): nothing <=2011",
+   "OncoMed AACR 2010-2011 abstracts on anti-Notch2/3 (59R5) could not be checked: web search exhausted, Crossref rate-limited"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 497,
+  "mondo_id": "MONDO:0006615",
+  "phase": 2,
+  "searched": [
+   "PubMed <=2012: (glycopyrrolate OR glycopyrronium) AND (sweat OR hyperhidrosis OR sudomotor OR Frey syndrome OR gustatory) (58 screened)",
+   "PubMed <=2012: glycopyrrolate/glycopyrronium[ti] AND PK/disposition/sweat AND (rats/dogs/horses/mice/cats/sheep/cattle); (NVA237 OR glycopyrronium OR glycopyrrolate) AND (guinea pig/in vivo) AND (bronchoconstriction/muscarinic)",
+   "Glycopyrronium is an old, widely used anticholinergic: animal_healthy and human_engagement are representative sets, not exhaustive. Many veterinary anaesthesia co-medication studies and soft-anticholinergic analog studies excluded",
+   "No animal model of hyperhidrosis/sweat gland disorder treated with glycopyrronium found. Human sweat-reduction case reports/series in hyperhidrosis are efficacy reports; listed human_engagement items are those quantifying sweat-gland (and salivary) PD"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacological characterization of the muscarinic receptor antagonist, glycopyrrolate, in human and guinea-pig airways.",
+    "year": 1999,
+    "pmid": "10385241",
+    "doi": "10.1038/sj.bjp.0702573",
+    "why": "Muscarinic receptor pharmacology of glycopyrrolate in guinea-pig tissue (target engagement).",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10385241/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacological assessment of the duration of action of glycopyrrolate vs tiotropium and ipratropium in guinea-pig and human airways.",
+    "year": 2006,
+    "pmid": "16565730",
+    "doi": "10.1038/sj.bjp.0706724",
+    "why": "Duration of muscarinic blockade by glycopyrrolate in guinea-pig airways.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16565730/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Preclinical evaluation of long-acting muscarinic antagonists: comparison of tiotropium and investigational drugs.",
+    "year": 2009,
+    "pmid": "19478135",
+    "doi": "10.1124/jpet.109.152470",
+    "why": "In vivo bronchoprotection/antisialagogue PD of glycopyrrolate (NVA237) vs tiotropium in animals.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19478135/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "The Influence of receptor kinetics on the onset and duration of action and the therapeutic index of NVA237 and tiotropium.",
+    "year": 2012,
+    "pmid": "22854200",
+    "doi": "10.1124/jpet.112.194456",
+    "why": "In vivo PD (bronchoprotection vs systemic effects) of NVA237 (glycopyrronium) in animals.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22854200/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Dose effect and benefits of glycopyrrolate in the treatment of bradycardia in anesthetized dogs.",
+    "year": 1999,
+    "pmid": "10340093",
+    "doi": "",
+    "why": "Dose-response cardiac (antimuscarinic) PD of glycopyrrolate in dogs.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10340093/",
+    "venue": "journal"
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics of glycopyrrolate following intravenous administration in the horse.",
+    "year": 2011,
+    "pmid": "21366622",
+    "doi": "10.1111/j.1365-2885.2011.01272.x",
+    "why": "Plasma PK of glycopyrrolate in horses.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21366622/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "The relative effect of an anticholinergic drug, glycopyrrolate, on basal gastric secretion and sweat- and salivary-gland activity.",
+    "year": 1967,
+    "pmid": "6026423",
+    "doi": "10.1007/BF02233175",
+    "why": "Quantified sweat-gland activity suppression by glycopyrrolate in humans.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6026423/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Evaluation of the anticholinergic actions of glycopyrronium bromide.",
+    "year": 1978,
+    "pmid": "619938",
+    "doi": "10.1111/j.1365-2125.1978.tb01601.x",
+    "why": "Volunteer study measuring sweat-gland and salivary inhibition by i.m./i.v./oral glycopyrronium.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/619938/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Comparison of the effects of atropine and glycopyrrolate on various end-organs.",
+    "year": 1980,
+    "pmid": "7241426",
+    "doi": "",
+    "why": "Volunteer study showing selective prolonged sweat-gland and salivary effect of glycopyrrolate.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7241426/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Effect of glycopyrrolate and atropine on thermoregulation after exercise.",
+    "year": 1986,
+    "pmid": "3790405",
+    "doi": "10.1111/j.1365-2125.1986.tb02938.x",
+    "why": "Sweating/thermoregulatory PD of glycopyrrolate in humans.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3790405/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "The treatment of idiopathic hyperhidrosis by glycopyrronium bromide and tap water iontophoresis.",
+    "year": 1974,
+    "pmid": "4855129",
+    "doi": "10.1111/j.1365-2133.1974.tb06722.x",
+    "why": "Measured sweat reduction after glycopyrronium iontophoresis in hyperhidrosis.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/4855129/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A randomised controlled trial of topical glycopyrrolate, the first specific treatment for diabetic gustatory sweating.",
+    "year": 1997,
+    "pmid": "9084967",
+    "doi": "10.1007/s001250050677",
+    "why": "RCT quantifying suppression of gustatory sweating by topical glycopyrrolate.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9084967/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Topical glycopyrrolate for patients with facial hyperhidrosis.",
+    "year": 2008,
+    "pmid": "18294315",
+    "doi": "10.1111/j.1365-2133.2008.08476.x",
+    "why": "Sweat output reduction (gravimetric/visual) with topical glycopyrrolate in facial hyperhidrosis.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18294315/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Efficacy of iontophoresis with glycopyrronium bromide for treatment of primary palmar hyperhidrosis.",
+    "year": 2012,
+    "pmid": "21812834",
+    "doi": "10.1111/j.1468-3083.2011.04197.x",
+    "why": "Quantified palmar sweat reduction after glycopyrronium iontophoresis.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21812834/",
+    "venue": "journal"
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Efficacy of glycopyrrolate in primary hyperhidrosis patients.",
+    "year": 2012,
+    "pmid": "22259713",
+    "doi": "10.3344/kjp.2012.25.1.28",
+    "why": "Sweat reduction measured after oral glycopyrrolate in primary hyperhidrosis.",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22259713/",
+    "venue": "journal"
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 6385,
+  "mondo_id": "MONDO:0021187",
+  "phase": 2,
+  "searched": [
+   "PubMed: cepadacursen OR CiVi007 OR CiVi-007 OR \"CIVI 007\" (through 2018): 0 hits",
+   "Europe PMC: cepadacursen OR CiVi007 OR CiVi-007 (through 2018): 0 hits",
+   "CiVi-007 is a PCSK9 antisense oligonucleotide (licensed from Santaris/Roche LNA program); predecessor PCSK9 LNA ASOs (e.g. SPC5001) are different molecules and excluded",
+   "Web search budget exhausted; Civi Biopharma press releases not checkable"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 28472,
+  "mondo_id": "MONDO:0005090",
+  "phase": 1,
+  "searched": [
+   "PubMed: AZD8529 OR AZD-8529 (through 2018): earliest primary reports 2015 (addiction models), schizophrenia proof-of-principle trial 2016; nothing <=2007",
+   "Europe PMC: AZD8529 OR AZD-8529 (through 2018): nothing <=2007"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 29861,
+  "mondo_id": "MONDO:0018881",
+  "phase": 1,
+  "searched": [
+   "PubMed: PACTN (through 2019): 0 hits",
+   "Europe PMC: PACTN; PACTN AND (myelodysplastic OR MDS OR cell therapy); \"PACT-N\" (through 2019): only an AABB 2017 abstract supplement (Transfusion, PMID 28868734) whose relevant content could not be identified, and unrelated PACT acronyms",
+   "Product identity (cell therapy coded PACTN) could not be resolved; web search budget exhausted"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ }
+]

@@ -124,6 +124,7 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
                     "phase2_s4": float(c2.s4.mean()), "biomarker_selected": float(d.biomarker_selected.mean()),
                     "min_entries": MIN_ENTRIES, "min_targets": MIN_TARGETS},
          "lines": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in out if r.get("column")},
+         "areas": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in areas if r.get("column")},
          "literature_gate": literature_gate(),
          **hypotheses(d)}
     return pd.DataFrame(out), pd.DataFrame(areas), n
@@ -133,7 +134,7 @@ def literature_gate() -> dict:
     """Recall of each literature version and kind against its blind reference set, and the gates."""
     g = json.load(open(LITERATURE_GATE))
     return {v: {"gates": g[v]["gates"], **{k: {f: r[f] for f in ("recall", "recall_pubmed_indexed", "passes")}
-                                           for k, r in g[v]["kinds"].items()}} for v in ("v1", "v2")}
+                                           for k, r in g[v]["kinds"].items()}} for v in ("v1", "v2", "v3", "v3_final") if v in g}
 
 
 def main() -> None:
