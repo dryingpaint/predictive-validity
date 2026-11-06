@@ -1,0 +1,275 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-pi3k-mtor-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maira 2008 (MCT, PMID 18606717) resolves; quote verbatim in abstract (abstract-level only, no PMC). Opening untested entry with proximal tumour PD readout is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rodon 2018 full text (PMC6286256) checked: quote verbatim in Biomarker studies; n=3 HGC patients, pS6 down, no biomarker correlated with response. Direction-only same at low confidence holds; epub 2018-06-07."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Yu 2014 (MCT, PMID 24634413) resolves; quote verbatim in abstract. model_first_use_year 2014 is a publication proxy; XL765 dosed patients from 2007, so the strip under-states the untested span (rule question 5)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Papadopoulos 2015 (Leuk Lymphoma, PMID 25300944) resolves; quote is a verbatim leading fragment of the abstract; epub 2014-11-19 sets year 2014. One lymphoma patient; engagement admits any dosed human, so same at low confidence stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wallin 2011 (MCT, PMID 21998291) resolves; quote verbatim in abstract (abstract-level only). Opening untested entry correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Dolly 2016 (Clin Cancer Res, PMID 26787751, epub 2016-01-19) resolves; quote verbatim in abstract. PRP pAKT is surrogate tissue, model side gives no number; direction-only same at medium is fair."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maira 2008 abstract states well tolerated plus disease stasis orally, which supports margin_stated true on the opening untested entry."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "decision 16 (dose table: 'never reached because of toxicity' must be shown) and evidence rule 3 (no quote, no status)",
+   "note": "Rodon 2018 full text never compares MTD exposure (1200 mg/day sachet, 600 mg/day with trastuzumab) with the mouse effective exposure (0 hits for efficacious/preclinical exposure) and says GI DLTs were 'not mechanism-based' (absorption/precipitation). Target-not-reached is unshown; stays untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 16: contra needs toxicity shown at or below the effective exposure. Rodon 2018 never compares MTD exposure with the mouse effective exposure and calls the GI DLTs formulation-driven, not mechanism (decision 4 #35/#90). Margin untested, not contra."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Yu 2014 abstract quote verbatim; no tolerability statement, so margin_stated false is right. Opening untested entry for the voxtalisib track."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Blackwell 2015 (BCRT, PMID 26497877, epub 2015-10-24) resolves; quote verbatim in abstract (paywalled body). 'Reached, failed, abandoned' row applied with MTD standing in for an exposure target the model never stated (rule question 2)."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wallin 2011 quote verbatim. FERGI arm B (NCT01437566, PFS primary, completed 2016-04) has no results posting or publication (PubMed and web searched), so 'enough' cannot be judged; untested holds. Note cites a 2016 result inside a 2011-dated entry, harmless since status is unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2008,
+   "rule": "What the model is (v3): each model system is its own track with its own model_id",
+   "note": "Status untested stands. Eichhorn 2008 (Cancer Res, PMID 19010894) is the NKI BT474 shRNA/PIK3CA-mutant lapatinib-resistance model, not Maira's Novartis xenograft panel: needs its own model_id. Abstract only (PMC cookie-blocked); BEZ235 in vivo use unverified, so model_kind animal is unverified. patient_trials quotes verified verbatim (Rodon abstract; NCT01495247 whyStopped)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Yu 2014 abstract quote verbatim; opening untested entry for the voxtalisib track."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Blackwell 2015 quote verbatim (abstract; body paywalled). Registry NCT01082068 phase 2 primary is PFS at 3 months; abstract gives PFS6 8% and no responders in the voxtalisib arm, direction unambiguous, so contra on the primary endpoint holds; comparison_stated false correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wallin 2011 quote verbatim. NCT01437566 arm B (GDC-0980 30 mg + fulvestrant) and NCT01254526 (n=52) completed with no results posted; PubMed and Firecrawl found no apitolisib breast readout (Krop 2016 is pictilisib only). Untested correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Yuan 2011 (MCT, PMID 21750219) quote verbatim in abstract. NCT01430585 record read: terminated, results posted 2014-08-12, phase 2 Ki-67 arms never enrolled; the '09Oct2012' quote is verbatim in the detailed description (which also cites 5 pneumonitis cases in B1271004). NCT01658176 withdrawn. Untested correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Beaufils 2017 (J Med Chem, PMID 28829592) quote verbatim in abstract. NCT02723877 PIQHASSO completed 2018-10-03, no results posted; PubMed (0 hits) and Firecrawl search found no publication or press readout. Untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maira 2008 quote verbatim. Rodon 2018 full text confirms 'hyperglycemia and rash ... and pneumonitis ... were not prevalent in this study' and stomatitis near everolimus rates. Untested defensible (no harm-specific prediction); 'same, partial' is the alternative the draft already names."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wallin 2011 quote verbatim; abstract-level only (no PMC), so silence on glucose in the full text could not be checked."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Dolly 2016 quote verbatim (hyperglycaemia DLTs at 40 and 70 mg). Contra on model silence follows the v3 safety rule as written; whether an efficacy-only xenograft paper's silence on a known on-target class harm is a miss when the unpublished tox package would have predicted it is rule question 4. Low confidence appropriate."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Salphati 2012 (DMD, PMID 22696419, epub 2012-06-13) resolves; quote verbatim in abstract, body paywalled. Untested opening holds. Abstract ties plasma concentration to MCF7 stasis without pAkt, so the note's pAkt link is Moein's; first use predates FIH 2009 (rule question 5).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "note": "Moein 2024 (Drugs R D, epub 2024-05-03, PMC11315854) quote verbatim; paper calls itself retrospective, so retro not same. 61% vs 65% is within_2x; shape-not-magnitude framing (43-fold IC50, 200-fold Kmax) supports partial. Its xenograft is 786-O renal, not MCF7 (rule question 7).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 16 no-margin row (#22)",
+   "note": "Quote verbatim in abstract. Dolly 2016 abstract confirms RP2D 40 mg, MTD 50 mg, fasting-hyperglycaemia DLTs at 40 and 70 mg; Moein CL/F 0.304 L/h/kg = 5.07 mL/min/kg as stated. No tolerability margin stated, so untested, not contra with blocked_by toxicity.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in abstract. MCF7-neo/HER2 is a breast xenograft, so the stasis prediction bears on the tile; NCT01437566 arm B and NCT01254526 completed without results (verified at efficacy index 4) and 55 mg was never given, so untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Gedatolisib (PF-05212384/PKI-587), a dual PI3K/mTOR inhibitor absent from the tile's member list, has a positive phase 3 in HR+/HER2-/PIK3CA-WT advanced breast cancer (VIKTORIA-1, NCT05501886; J Clin Oncol 2026, doi 10.1200/JCO-25-02643, PFS HR 0.24 triplet) and FDA approval 14 Jul 2026 (Drugs 2026 'Gedatolisib: First Approval', doi 10.1007/s40265-026-02394-y). Its model side is Mallon 2011 Clin Cancer Res (doi 10.1158/1078-0432.CCR-10-1993): MDA-MB-361 breast xenograft regression correlating with pAkt suppression. If the class table admits it, this adds a same track to engagement, dose and efficacy and a safety track.",
+  "Patient-derived xenografts and patient-derived organoids of CDK4/6i- and ET-resistant ER+ breast cancer dosed with gedatolisib versus alpelisib (Sci Transl Med 2025, doi 10.1126/scitranslmed.adp5088): a patient-derived model system for the class with no track (retrodiction-era relative to VIKTORIA-1).",
+  "Gedatolisib breast cancer cell-line/xenograft panel versus single-node PI3K/AKT/mTOR inhibitors (NPJ Breast Cancer 2024, doi 10.1038/s41523-024-00648-0) paired with the phase 1b gedatolisib + palbociclib + ET readouts (Lancet Oncol 2025, doi 10.1016/S1470-2045(25)00236-0; Clin Cancer Res 2025, doi 10.1158/1078-0432.CCR-25-0992).",
+  "PTEN-deficient patient-derived xenografts dosed with PF-04691502 (Oncotarget 2017, doi 10.18632/oncotarget.19109) and LAR triple-negative breast PDX dosed with PI3K/mTOR inhibitors (Theranostics 2020, doi 10.7150/thno.36182): PDX systems used for the class with no patient comparison, i.e. untested tracks the draft does not open.",
+  "Dactolisib randomized phase II versus everolimus in pancreatic NET (Oncologist 2018, doi 10.1634/theoncologist.2017-0144; 'not shown to demonstrate increased efficacy ... poorer tolerability') is the only randomized readout for dactolisib and could be imported for safety (stomatitis, hyperglycaemia) on the Novartis track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Member-list completeness: gedatolisib is a dual PI3K/mTOR inhibitor with a positive phase 3 and a 2026 breast cancer approval but is not among the five members given; the drafter was told not to widen the class. Is the class table amended, and does the efficacy cell then carry a same track beside the voxtalisib contra?",
+  "Dose 'reached' when the model source states no exposure, occupancy or regimen target: is MTD attainment enough to apply the 'reached, failed, abandoned' row (voxtalisib with letrozole), or is the dose cell untested?",
+  "Decision 16 when the trial never states whether the MTD exposure met the preclinical effective exposure and attributes the dose-limiting toxicity to formulation rather than mechanism (dactolisib): is contra with blocked_by toxicity admissible, or must it stay untested?",
+  "Safety silence: when the only public model source is an efficacy xenograft paper that says nothing about a known on-target class harm (hyperglycaemia) which the sponsor's unpublished tox package would have predicted, is the model's silence a miss (contra), or is the safety model the tox species and the cell empty/untested?",
+  "model_first_use_year when the model characterisation paper post-dates first-in-human dosing (XL765: patients from 2007, Yu 2014): publication year or first documented use (e.g. AACR abstract)?",
+  "Engagement from a dosed patient in another indication (lymphoma PD for a breast context): admissible as the draft assumes, and should imported_from be recorded on engagement entries as it is on safety?",
+  "In-silico track identity (models check): Moein 2024's retrospective PK-PD-efficacy model was fit to a 786-O renal xenograft and phase 1 solid-tumour data, Salphati 2012's prospective model to an MCF7-neo/HER2 breast xenograft with allometric PK. Does a sponsor's later model of the same drug share the first model's model_id (gdc0980-genentech-translational-pkpd, as drafted), or is each fitted model its own in-silico track? Status is retro either way."
+ ]
+}
