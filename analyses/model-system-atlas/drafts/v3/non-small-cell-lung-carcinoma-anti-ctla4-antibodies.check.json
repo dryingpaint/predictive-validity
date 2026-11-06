@@ -1,0 +1,239 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-anti-ctla4-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Leach 1996 (PMID 8596936) resolves; both quotes verbatim in abstract. Rejection/re-challenge readout, no PD marker, no NSCLC comparison: untested holds. FDA PharmR p.2 confirms SA1/N, MC-38, CT-26 in hCTLA-4 transgenic mice were filed."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Curran 2010 (PMID 20160101) resolves; quote verbatim in abstract. No NSCLC tumour or blood PD readout was set beside the Teff:Treg model; Selby 2016 monkey and human-PBL cytokine readouts also uncompared. Untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim in abstract. No exposure, occupancy or regimen target stated by the mouse; untested at model first use holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim in abstract (65% vs 10%). Fixed mouse antibody amounts, no human target; untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lynch 2012 (PMID 22547592, epub 2012-04-30) resolves; quote verbatim; NCT00527735 results posted 2012-07-16 confirmed. Scored by the efficacy-tied rule although the mouse stated no target (rule question 3). Same holds under that rule."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Govindan 2017 (PMID 28854067, epub 2017-08-30) resolves; quote verbatim; NCT01285609 results 2016-06-23 confirmed. 10 mg/kg phased regimen reached, OS failed, abandoned: contra derived from efficacy holds."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "evidence rule 6 (year = earliest public date of the comparison); dose table row 'reached, drug worked'",
+   "note": "Hellmann 2019 resolves; quote verbatim; NCT02477826 results 2025-10-30 confirmed. The same 1 mg/kg q6w regimen met CheckMate 227's TMB>=10 PFS co-primary in Hellmann 2018 (10.1056/NEJMoa1801946, epub 2018-04-16): earlier public comparison. KEYNOTE-598 later reached it and failed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim in abstract. Transplanted colon carcinoma/fibrosarcoma rejected, B16 not; no lung tumour, no patient comparison: untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim in abstract. FDA PharmR confirms the 2009 Medarex MC38 PD-1 plus CTLA-4 study (930036349) was filed. Untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lynch 2012 resolves; quote verbatim; irPFS was the registered primary endpoint (NCT00527735, results 2012-07-16). Phased schedule only, P=.05: same with partial is right; Leach 1996 as model side (generic rejection model) is acceptable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Govindan 2017 resolves; quote verbatim; OS primary, registry results 2016-06-23 confirmed. Contra rather than neg is right: the mouse held no below-bar lung datum. Year 2016 from the registry posting is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "evidence rule 6 (year = earliest public date of the comparison)",
+   "note": "Hellmann 2019 resolves; quote verbatim. CheckMate 227's first positive co-primary (PFS in TMB>=10, HR 0.58, P<0.001) was public in Hellmann 2018 (10.1056/NEJMoa1801946, epub 2018-04-16); by the draft's own acceptance of biomarker-defined co-primaries, the same opens 2018 (rule question 1)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2020,
+   "rule": "status table 'contra': one drug's contra still beats another drug's same on the same track; evidence rule 2: a Phase 3 failure known only from a press release must be found",
+   "note": "Paz-Ares 2021 resolves; quote verbatim; NCT03215706 results 2020-09-16 confirmed; 9LA same holds as of 2020-09. But ipilimumab added to anti-PD-1, the dual-blockade mice's actual prediction, failed KEYNOTE-598 (halt 2020-11-10, OS HR 1.08) and S1400I (2021): track latest is contra.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Decision 6 (sticky contra, #3) with decision 4: KEYNOTE-598 (Boyer 2021, OS HR 1.08) and S1400I (Gettinger 2021) directly tested ipilimumab-adds-to-anti-PD-1 and failed their primary endpoints; a chemotherapy-comparator win cannot outrank them. New entry; RQ1/RQ2 set only the year."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tivol 1995 (PMID 7584144) resolves; quote verbatim in abstract. FDA PharmR section 9 reviews the Tivol and Waterhouse knockouts in full (two independent models). Untested at 1995 holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PharmR executive summary, 'only pharmacologically responsive test animal species'). IM578 cross-reactivity study dated 2/28/2000 confirmed in the review's study table. Untested at first monkey use holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PharmR p.3); pairing with Tivol 1995 is the drafter's, imported from melanoma, direction-only: same holds. Dating caveat: tier-1 melanoma irAE reports (Phan 2003 PNAS) predate the 2011 review; not verified within budget (rule question 6)."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim fragment (PharmR executive summary); the review itself states the comparison and the 3-fold weaker monkey affinity. Contra with comparison_stated true holds; Selby 2016 combination GI findings do not flip a contra track."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (PharmR, study 930031040 key finding, BMS-863019 surrogate). Colitis models run 2008, after melanoma enterocolitis was known; reviewer states comparability. Retro with comparison_stated true holds."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lute 2005 (PMID 16037385, epub 2005-07-21, print 2005-11) resolves; quote verbatim in abstract. Built after the melanoma irAE trial, but states no side-by-side with patients and the drafter made no pairing; Du 2018's 'failed to recapitulate' is later knowledge (rule 7). Untested at first use holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Du 2018 (PMC5939041, epub 2018-02-20) resolves; quote verbatim in abstract and full text. Results heading 'faithfully recapitulates irAE of combination therapy' and intro cite CheckMate 012 NSCLC grade 3-4 SAEs (ref 8): comparison stated, no import. Perinatal dosing days 10-19 confirmed. Retrodiction, so retro not same; year 2018 from epub holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wei 2021 (PMID 33257470, PMC8041233 author manuscript; epub 2020-11-30, print 2021-03) resolves; quote verbatim in abstract. Ctla4+/- Pdcd1-/- genotype confirmed in the manuscript. Opening untested entry at model first use (rule 6), year 2020 from epub, holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; the source states the patient comparison (organ, histology, ECG) and the patient side is pan-cancer ICI myocarditis plus an abatacept case series, so imported_from cancer is right. Built after Johnson 2016: retro, never same; no antibody dosed, product_in_model false holds. Axelrod 2022 Nature (10.1038/s41586-022-05432-3) is a later retro entry on this track, status unchanged.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "KEYNOTE-598 (NCT03302234): Phase 3, ipilimumab 1 mg/kg q6w added to pembrolizumab in PD-L1 TPS>=50% NSCLC, co-primary OS/PFS, stopped for futility (OS HR 1.08, PFS HR 1.06; grade 3-5 AE deaths 13.1% vs 7.5%). Merck halt announced 2020-11-10 (tier 5; onclive.com/view/keynote-598-trial-examining-pembrolizumab-ipilimumab-in-nsclc-stopped-for-futility); Boyer 2021 JCO 10.1200/JCO.20.03579 (PMID 33513313, epub 2021-01-29); registry results 2021-09-10. A direct test of the dual-blockade mice's combination-beats-monotherapy prediction: contra on syngeneic-mouse-dual-blockade (efficacy, and dose derived_from efficacy).",
+  "Lung-MAP S1400I (NCT02785952): Phase 3, nivolumab +/- ipilimumab 1 mg/kg q6w in previously treated squamous NSCLC (unselected), primary OS, closed for futility, OS not significantly different. Gettinger 2021 JAMA Oncol 10.1001/jamaoncol.2021.2209 (PMID 34264316, online 2021-07-16); registry results 2022-01-11. Second contra on the dual-blockade track, in an unselected population.",
+  "CheckMate 73L (NCT04026412): Phase 3, nivolumab + chemoradiation then nivolumab + ipilimumab vs chemoradiation then durvalumab in unresectable stage III NSCLC; primary PFS (Arm A vs C) not met. BMS press release 2024-05-10 (tier 5; businesswire.com/news/home/20240510499555/en); registry results 2025-07-24 (tier 3). Confounded regimen (concurrent nivolumab plus ipilimumab consolidation): a missed failure whose scoring is rule question 5.",
+  "Du 2018 Cell Res 10.1038/s41422-018-0012-z (PMID 29463898): CTLA4-humanized knock-in mice in which ipilimumab itself induced severe irAEs, worse with anti-PD-1, reducing Treg/Teff among autoreactive T cells. A safety retrodiction with product_in_model true (retro, 2018, imported from melanoma); no track in the draft.",
+  "Selby 2016 PLoS One 10.1371/journal.pone.0161779 (PMID 27610613): cynomolgus combination toxicology with dose-dependent immune-related GI inflammation absent from single-agent studies (a 2016 entry on cynomolgus-toxicology; contra track stays contra), plus human-PBL superantigen/MLR cytokine assays, an ex_vivo system with no track. Cited only inside judgements.",
+  "FDA PharmR BLA 125377 p.2 (http://www.accessdata.fda.gov/drugsatfda_docs/nda/2011/125377Orig1s000PharmR.pdf): SA1/N, MC-38 and CT-26 tumours in hCTLA-4 transgenic mice dosed with ipilimumab itself (product_in_model true), the system BMS filed, folded into the wild-type-mouse surrogate track with product_in_model false; arguably its own model_id (rule question 4).",
+  "Ji 2019 Clin Cancer Res 10.1158/1078-0432.CCR-18-4083 (PMID 31085720, online 2019-05-13): cynomolgus monkeys dosed nivolumab 20 mg/kg plus ipilimumab 15 mg/kg weekly developed myocarditis with colon, kidney, liver and endocrine infiltrates, built as an ICI-myocarditis model after the patient syndrome was known. A 2019 retro entry on the existing cynomolgus-toxicology track (same system as Selby 2016), not a new model_id; no entry in the draft. [CHECKER_BRIEF_v3 / models]",
+  "Axelrod 2022 Nature 10.1038/s41586-022-05432-3 (PMID 36385524, online 2022-11-16): the same Pdcd1-/- Ctla4+/- mice (ctla4-het-pdcd1-null-mouse track) show clonal CD8 T cells specific for alpha-myosin, with alpha-myosin-reactive T cells then found in patients with ICI myocarditis. A 2022 retro entry on the added track, status unchanged; no entry in the models file. [CHECKER_BRIEF_v3 / models]"
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Biomarker-defined co-primary populations (TMB>=10, PD-L1>=1%, PD-L1>=50%) in an Unselected context: the brief decides only the reverse case (unselected trial counts for a biomarker context at >=80%). If they count, CheckMate 227's first same is 2018 (Hellmann 2018) and KEYNOTE-598's contra is 2020; if not, the first same is 9LA 2020 and the first contra S1400I 2021.",
+  "When the model only compared the combination with each monotherapy (Curran 2010: 'more than twice as effective as either alone'), does a combination-versus-chemotherapy win (CheckMate 227, 9LA) count as same, or is combination-versus-anti-PD-1 (KEYNOTE-598, S1400I) the only admissible test of the anti-CTLA-4 contribution?",
+  "Dose when the model stated no exposure, occupancy or regimen target at all (dose entries 3-5): does the efficacy-tied table still score same/contra as drafted, or is the cell untested because nothing was carried into patients?",
+  "Track identity: wild-type mice with a hamster surrogate (Leach 1996) versus hCTLA-4 transgenic mice dosed with ipilimumab (BLA 125377) on the same tumour lines, one model_id or two? The brief says a different system gets a new slug but does not say whether the antibody or the host genotype defines the system.",
+  "A failed multi-component regimen (CheckMate 73L: concurrent nivolumab with chemoradiation plus ipilimumab consolidation vs durvalumab consolidation): does it score contra for the anti-CTLA-4 class when the class's contribution cannot be isolated from the design?",
+  "Dating a paired (comparison_stated false) safety comparison: the year of the patient-side source the drafter chose (FDA review 2011) or the earliest tier-1 patient source showing the harm (melanoma irAE reports from 2003), given rule 6 says the earliest date the comparison was public?"
+ ]
+}
