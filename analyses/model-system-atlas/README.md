@@ -15,7 +15,7 @@ result, never compared when none did, and a retrodiction never sets it (decision
 - Register: 1,693 disease × mechanism rows; 119 tracked tiles in 48 of the 71 diseases (atlas build 428a6a37).
 - Rules v3: 16 decisions, all taken (`drafts/DECISIONS.md`); `drafts/lint.py` enforces them on any draft with `"schema": 3`.
 - Drafted under v3 and stored: 30 tiles, 456 entries, 191 tracks (κ 0.93 drafter–checker). The other 89 are in `drafts/v3/tiles.json` (orders 31–119) and are being drafted in waves through the same five passes.
-- Figures: `atlas_glance_main.*` (the top 15 diseases by burden, one tile each) and `atlas_glance_supplement*.*` (every drafted tile), both journal format; `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
+- Figures. **The main paper figure is `atlas_glance_main.*`** (the top 15 diseases by burden, one tile each; PNG, PDF and SVG). `atlas_glance_supplement_p1..p4.*` (every drafted tile) is the supplementary figure. Both journal format. `atlas.png` (per-context history from `figure.py`) and `disease_indications.*` are working figures, not paper figures; `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
 - The v2 run (70 contexts), its matrices and the pilot renders were removed from the tree on 2026-11-05; they are in git history at 4d478a3. `contexts/` and `figure.py` (the per-context tile figure) stay; the treemap `figure_map.py`, `map.png` and `volumes_pre_rebuild.json` were dropped on 2026-11-06 (52823a2).
 
 ## Data in, data out
