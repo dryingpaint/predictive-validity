@@ -1,0 +1,471 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/asthma-adrb2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Aparici 2012 JPET resolves (PMID 22588259, online 2012-05-15); quote verbatim in abstract; guinea-pig t1/2 36 h, dog margin 5.6 confirmed; untested opening at first public use."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Beier 2014 resolves (PMID 25256258, online 2014-09-08); quote verbatim (abstract); FEV1 to 36 h is the downstream readout of the duration models; same supported; no NCT for this crossover found either."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Aparici 2018 resolves (PMID 29183838, online 2017-11-26); quote near-verbatim (source reads 'beta2-adrenoceptors', subscript dropped); receptor-kinetics is its own system; untested opening 2017."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); kinetics run after the 2014 asthma data and the paper itself states agreement with human onset/duration, so retro not same (decision 10); comparison_stated true correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014 resolves (PMID 24900851, PMC4027610, online 2014-02-08); quote verbatim; model predates the 2008 trial but first public 2014; untested opening. Full text not fetched (Europe PMC 500)."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bjermer 2013 resolves (PMID 23907810, online 2013-08-01); quote verbatim; NCT00736489 results posted 2014-04-03 confirmed, E22-26 co-primary met at 480/1920 ug; dating 2014 (model side public) accepted."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 11303056 resolves to Kobayashi 2001 JPET (Europe PMC also lists DOI 10.1016/s0022-3565(24)29583-5); quote verbatim; tocolytic organ bath is the only published airway model; untested opening 2001."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "decision 7 (dating: earliest public date, registry posting)",
+   "note": "Matsuda 2012 resolves (PMID 23094708, online 2012-10-25); quote verbatim (abstract). NCT00679263 posted FEV1 %pred +17.48 vs +1.85 placebo on 2011-12-15, so the comparison was public in 2011 (decision 7); same stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rossoni 2005 BJP resolves (PMID 15655502, PMC1576020); quote verbatim; Chiesi guinea-pig track opens untested 2005; earlier Tanabe TA-2005 guinea-pig airway papers (1991-1994) exist, see missing."
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "EU CTR 2006-005689-38 results (posted 2017-01-01) and ICH E3 synopsis CCD-0604-RS-0009 downloaded; quote verbatim; peak FEV1 +0.241 L p<0.001; downstream same at 2017; tier 3 correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same source and quote as engagement 1; margin 5.6 and t1/2 36 h in abstract; no human dose derived; untested opening 2012."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); related adrenergic AEs only at 10-25 ug while 5 ug bronchodilated, so the stated dog margin held: same with margin_stated true (decision 16). NCT01425801 results 2018-01-26 confirmed."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014 quote verbatim; once-daily aim only, no exposure target; untested opening 2014."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; registry posts E22-26 3.35/3.40 L (480/1920 ug) vs 3.23 placebo and 3.31 at 120 ug; regimen reached and sufficient; margin_stated false correct."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kobayashi 2001 quote verbatim; rat uterine ED30 only, no airway exposure; untested opening 2001."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); plateau at 30 ug/min with linear PK; reached and worked in stable asthma: same. NCT00679263 (2011-12-15) posts no PK/plateau data, so 2012 dating stands."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "House 2015 resolves (PMID 26324315, online 2015-08-14); quote verbatim (abstract); NCT00838591 has no posted results. Contra derived from efficacy holds only while efficacy #6 is contra; see rule question 3."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rossoni 2005 quote verbatim; picomole intratracheal doses, no human dose; untested opening 2005."
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in synopsis. EU CTR 2008-001773-15 (posted 2017-01-01) shows carmoterol 4 ug once daily held trough FEV1 +0.26 L p<0.001, so this is 'target too low': contra stays, derived_from null, magnitude off_by_2x."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same source; model reads evoked bronchoconstriction and duration only; untested opening 2012."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); trough FEV1 primary met vs placebo and salmeterol; endpoint_role primary; patient_trials NCT01425801 (results 2018-01-26) and Beier 2017 DOIs resolve; same supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014 quote verbatim; untested opening 2014; nothing on symptoms or control in the model."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; registry confirms co-primaries (Emax, E22-26, S-potassium) and results 2014-04-03; both FEV1 co-primaries met at 480/1920 ug; same supported; 2014 dating by model-side publication accepted."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kobayashi 2001 quote verbatim; organ bath has no airway challenge or exacerbation component; untested opening 2001."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract only); 3-h %FEV1 primary missed in 167 non-responders to standard therapy. Abstract does not attribute the miss to the beta2-refractory population, so contra holds under the do-not rule; NCT00683449 (results 2011-07-29) belongs in patient_trials; rule question 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rossoni 2005 quote verbatim; duration-of-protection model, nothing on disease airflow; untested opening 2005."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "decision 4 dose table ('reached, failed, a higher dose later worked': efficacy contra then same); tension with decision 6, rule question 1",
+   "note": "Quote verbatim in synopsis; 2 ug once daily missed trough FEV1 (+0.057 L NS): contra stands. EU CTR 2008-001773-15 (same posting date) shows 4 ug once daily held trough FEV1 +0.26 L p<0.001, so the dose table adds 'then same'; combination caveat in missing.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra stands. Decision 12 (#70): a combination arm counts only if the source attributes it to the class drug; CHF 5188 budesonide/carmoterol has no budesonide-alone arm, so decision 4 case 4 is not triggered; decision 6 keeps the track contra."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same source; dog margin 5.6 vs 3.3/2.2/0.3 confirmed in abstract; stated margin scored here, counted once with dose (decision 16); untested opening 2012."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); related adrenergic AEs only at 10/25 ug, 5 ug clean; direction match with the dog margin; same; single-dose exposure only, as noted."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014 names 'selectivity and safety profiling' and an 'excellent over all profile' without a named harm; Bjermer 2013 saw mild class effects and less K+ suppression than formoterol. Untested defensible, same arguable; rule question 5."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Furihata 2006 resolves (PMID 16478001, Arzneimittelforschung); quote verbatim; BP/HR effects at 10-100 ug/kg only, no QT/QTc, hERG clean; own track; untested opening 2006."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract); only a mild dose-related heart-rate rise, no ECG signal; direction match with the dog: same. NCT00679263 (2011-12-15) posts AE counts only, so 2012 dating stands."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 7965739 resolves to Voss 1994 JPET; quote verbatim; paper proposes the tissue as a model of clinical cardiac side effects; own track; untested opening 1994."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in synopsis; tachycardia 3/83 carmoterol, 3/84 formoterol, 1/85 placebo, no QTc effect, one sudden death on formoterol; direction-only same at low confidence as drafted; untested also defensible."
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "De Backer 2008 J Biomech resolves (PMID 17698073, online 2007-08-14, print 2008); quote verbatim (abstract); carmoterol only via indexed substances, as noted; in_silico opening untested 2007 holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2007,
+   "rule": "decision 10 (post-hoc models are retrodictions; a model run after the patient result was known is retro, never same)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (abstract). CFD was solved on the scans after the same patients' FEV1 was measured and the paper frames it as validating CFD against spirometry: a readout validation, not a prediction preceding the result; retrodiction true, status retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: CFD solved on dosed patients' scans after their FEV1 was known, framed as validating CFD against spirometry; reproduces the known result, so retro not same. Doubtful as a model track under decision 8 (readout validation in patients)."
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Voss 1992 Eur J Pharmacol resolves (PMID 1359974, DOI verified, Dec 1992); quote verbatim (abstract); pD2 9.29, one binding state pKd 8.2 confirmed; receptor-kinetics is its own system as the Almirall kinetics precedent; untested opening 1992."
+  },
+  {
+   "cell": "engagement",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Same EU CTR 2006-005689-38 record and identical quote string as Chiesi engagement #10 (synopsis read by the prior checker; curl here gets a 244-byte gate page, not re-read). Model 1992 predates the trial, so prospective; downstream same at 2017 consistent."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Voss 1992 quote verbatim (abstract); the only efficacy-bearing claim is 'long duration of action', no airflow or symptom endpoint; untested opening 1992."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Identical quote string to adjudicated Chiesi efficacy #8 (contra). Separate system, so the same trial scores on each track it tests (decision 6); the primary tests the duration claim itself, so #32 not triggered. No dose entry on this track (see rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Kiguchi 2002 Obstet Gynecol resolves (PMID 12220768, Sept 2002); quote verbatim (abstract, 'microg'/'K(+)' rendering); 8 ewes, stepwise 0.001-0.3 ug/kg/min confirmed; Murata 2005 (PMID 15663400) first author confirmed; untested opening 2002."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Matsuda 2012 resolves (PMID 23094708, online 2012-10-25); quote verbatim (abstract). NCT00679263 (results 2011-12-15) lists Hyperkalemia 2/11, 4/11 vs 1/6 and sinus tachycardia 1/11, no hypokalemia term, so 2012 dating stands (decision 7); prospective direction match, same."
+  }
+ ],
+ "missing": [
+  "EU CTR 2008-001773-15 (https://www.clinicaltrialsregister.eu/ctr-search/trial/2008-001773-15/results; results posted 2017-01-01, CSR 2009-07-15): CHF 5188 budesonide/carmoterol 400/4 ug once daily, single-dose 3-way crossover in 38 moderate-severe asthmatics; trough FEV1 +0.26 L vs placebo (95% CI 0.17-0.35, p<0.001), AUC12-24 +0.37 L, comparable to Symbicort bid (trough 0.05 L, p=0.170). The 'higher dose later worked' branch for the carmoterol track: owed as an efficacy `same` entry (tier 3, model_src Rossoni 2005; caveats: fixed combination, no budesonide-alone arm, single dose) and resets dose #9 to 'target too low' (magnitude off_by_2x).",
+  "ClinicalTrials.gov NCT00683449 (MediciNova acute-exacerbation dose-finding, terminated, results posted 2011-07-29, n=29): primary FEV1 %predicted change at hour 2 after albuterol/ipratropium 16.57 (240 ug) vs 3.88 placebo, 3.03/4.27/-0.82 at higher doses, no analyses posted. An earlier tier-3 acute-asthma patient record for the bedoradrine track; belongs in efficacy #6 patient_trials (direction unresolved, changes no status).",
+  "Pregnant-sheep infusion model of KUR-1246 (Kiguchi 2002 Obstet Gynecol, PMID 12220768, doi 10.1016/s0029-7844(02)02141-5; long-term sheep Kanayama 2005 BJOG, PMID 15663400): the draft's own note says hypokalaemia was a stated sheep finding, and hypokalaemia was the commonest AE in asthmatics (Matsuda 2012, verbatim in abstract). A safety track with a stated harm that held in patients, not drawn.",
+  "MediciNova dog study 'Cardiovascular effects of i.v. MN-221 (bedoradrine) administered with nebulized albuterol in dogs' (MN-221 FY08-065, CHEST 2010 poster; press release https://www.nbcnews.com/news/amp/wbna39898303): the only member-drug airway-program safety model mirroring the CL-007 design (IV drug on top of nebulised albuterol). Not peer-reviewed, so it cannot be model_src (tier 5 is patient-side only); note-only.",
+  "Tanabe TA-2005 airway models predate the Chiesi track: Kikkawa 1991 Jpn J Pharmacol PMID 1687479 (isolated guinea-pig trachea relaxation and beta2 selectivity), Voss 1992 Eur J Pharmacol PMID 1359974 (doi 10.1016/0922-4106(92)90158-r), Kikkawa 1994 Biol Pharm Bull PMID 7820105 (in vivo bronchodilating properties). Either model_first_use_year for the carmoterol guinea-pig system is 1991, or Tanabe is its own track; the draft left Voss 1992 unverified.",
+  "Residual from the prior missing list (not a new system): Kikkawa 1991 (PMID 1687479) and Kikkawa 1994 (PMID 7820105) are folded into the Chiesi guinea-pig track by the drafter's judgement, but that track's model_first_use_year still reads 2005 on existing entries; either move it to 1991 or open Tanabe as its own airway track. Europe PMC search for human isolated bronchi / airway-cell carmoterol models (11 hits, reviews only) found no further system."
+ ],
+ "could_not_verify": [
+  "EU CTR 2005-002195-15 (7-day carmoterol trial) synopsis attachment returns 'Request failed' on download, as the draft reported; its trough FEV1 Day 8 primary result is unverified.",
+  "Full texts of the paywalled papers were not read; Europe PMC full-text XML for PMC1576020 and PMC4027610 returned HTTP 500. All quotes were verified against abstracts except the four EU CTR quotes (synopsis PDF read in full).",
+  "Models check: EU CTR 2006-005689-38 results page returns a 244-byte gate page to curl (browser-agent retry not permitted); the two kinetics-track quotes are identical strings to the Chiesi-track entries the prior checker verified from the synopsis PDF and were not re-read."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Decision 6 (a failed model stays failed on its track) against the decision 4 dose table ('reached, failed, a higher dose later worked' gives efficacy contra then same): when the higher dose succeeded only inside a fixed combination with a non-class drug and no monotherapy or budesonide-alone arm (CHF 5188 400/4 ug vs placebo, EU CTR 2008-001773-15), does the efficacy track turn back to `same`, and does a combination trial count for the member drug at all?",
+  "Decision 7 lists registry posting, online publication, label and print as dating anchors. Can a tier-5 sponsor press release (MediciNova 2012, MN-221-CL-007 missed primary) set `year` to 2012 when the tier-1 record that carries the quote and status (House 2015) came three years later?",
+  "A drafter-made pairing (comparison_stated false) where the trial population is a condition the model never tested (beta2-refractory exacerbations on maximal nebulised albuterol, against a naive pregnant-rat trachea organ bath) but the trial source does not itself attribute the miss to it: does the do-not rule's 'source attributes' test leave efficacy #6 `contra`, or is the organ bath `untested` for that question?",
+  "Must the dating anchor and the quote come from the same document? NCT00679263 posted a secondary FEV1 result without statistics on 2011-12-15 (engagement #8 proposed 2011), while the plateau/PK and heart-rate quotes (dose #6, safety #5) exist only in the 2012 paper; the three entries on one track would then carry two years for one trial.",
+  "Safety when the model paper claims only an 'excellent over all profile' after unspecified 'selectivity and safety profiling' (AZD3199, Stocks 2014) and patients showed mild class effects with less potassium suppression than formoterol at matched bronchodilation: `untested` (no named harm or margin) or `same` (stated favourable profile held in direction)?",
+  "Decision 10 vs a same-experiment readout validation: the Antwerp CFD (engagement #12) is built from the dosed patients' own CT scans and read against the same patients' spirometry in one paper. Is that a model system track at all (patient-derived in-silico) or a biomarker/readout validation outside the atlas, and if a track, is it retro (proposed) or excluded?",
+  "Decision 6 lets one trial miss score on every track it tests (EU CTR 2006-005689-38 is contra on both the Chiesi guinea-pig and the Voss 1992 kinetics tracks). The headline takes the best latest status so it is unaffected, but any per-track tally counts one failure twice; should a second track of the same drug on the same trial carry a flag?",
+  "Voss 1992 states 'long duration of action' without a quantity; the kinetics track opens efficacy on it and has no dose entry. If the duration claim is a regimen prediction (decision 4, #91: half-life -> once daily), a dose entry mirroring Chiesi dose #9 ('target too low', 4 ug in CHF 5188) is owed on this track; if not, the efficacy pairing rests on a 24-h claim the 1992 source never made.",
+  "A model run in another indication (pregnant-sheep tocolysis, IV stepwise infusion) paired with asthma patients on the same drug: the cross-indication rule sets imported_from for patient comparisons made elsewhere; does a model-side indication difference need imported_from or its own flag, or only the dose note the entry carries?"
+ ]
+}
