@@ -34,8 +34,15 @@ from glance import QUESTIONS, SHORT, cells, load
 # capable-plots: INK, CAPABLE (muted blue), PLACEBO (muted grey), VIBRANT coral and violet
 INK, CAPABLE, PLACEBO = "#1a1a1a", "#83a9bc", "#b2b8b8"
 MUTED, RULE, RULE_AREA = "#6b7372", "#dcdfdf", "#9aa1a1"
-STATUS = {"same": (CAPABLE, "Matched"), "contra": ("#F0563D", "Contradicted"), "retro": ("#7C5CFC", "Retrodiction only"),
-          "untested": ("#e2e5e5", "Never compared")}
+STATUS = {"same": (CAPABLE, "Matched"), "neg": (CAPABLE, "Matched, incl. a known failure"), "other": (CAPABLE, "Matched on the platform only"),
+          "contra": ("#F0563D", "Contradicted"), "retro": ("#7C5CFC", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
+HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
+
+
+def style(status: str, derived: bool = False) -> dict:
+    """The mark's fill for a status: a hatched matched status or a derived dose contra gets white hatching."""
+    hatch = "////" if derived else HATCH.get(status)
+    return {"facecolor": STATUS[status][0], "edgecolor": "white" if hatch else "none", "linewidth": 0, "hatch": hatch}
 AREA = {"infectious_disease": "Infectious disease", "other": "Other"}
 # gutter labels for groups too short to carry the full name (a one-row group is 0.27 in)
 AREA_SHORT = {"Infectious disease": "Inf.", "Metabolic": "Met.", "Ophthalmology": "Oph.", "Gastroenterology": "GI", "Hematology": "Hem.",
@@ -165,33 +172,33 @@ def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
         ax.text(bx0 - 0.08, y + bh / 2, title, fontsize=6, ha="right", **T)
         d = df[df.question == q]
         x = 0.0
-        for st, derived in [("same", False), ("contra", False), ("contra", True), ("retro", False), ("untested", False)]:
+        for st, derived in [("same", False), ("neg", False), ("other", False), ("contra", False), ("contra", True), ("retro", False), ("untested", False)]:
             sel = (d.status == st) & ((d.derived == "efficacy") if derived else (d.derived != "efficacy"))
             n = int(sel.sum())
             if not n:
                 continue
             w = n / n_tiles * bw
-            ax.add_patch(Rectangle((bx0 + x + 0.012, y), w - 0.024, bh, facecolor=STATUS[st][0], edgecolor="white" if derived else "none",
-                                   linewidth=0, hatch="////" if derived else None))
+            ax.add_patch(Rectangle((bx0 + x + 0.012, y), w - 0.024, bh, **style(st, derived)))
             if w > 0.16:
                 ax.text(bx0 + x + w / 2, y + bh / 2, str(n), fontsize=5.5, ha="center", **T)
             x += w
     ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} drafted tiles", fontsize=5, color=MUTED, va="center")
-    lx, ly = 5.35, by0 + 0.01
-    items = [("same", False, "Matched"), ("contra", False, "Contradicted"), ("contra", True, "Contradicted through efficacy (dose)"),
-             ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
+    lx, ly = 5.35, 0.2
+    items = [("same", False, "Matched"), ("neg", False, STATUS["neg"][1]), ("other", False, STATUS["other"][1]), ("contra", False, "Contradicted"),
+             ("contra", True, "Contradicted through efficacy (dose)"), ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
     items = [it for it in items if ((df.status == it[0]) & ((df.derived == "efficacy") if it[1] else (df.derived != "efficacy"))).any()]
+    step = min(0.115, (1.02 - ly - 0.015) / (len(items) + 2))  # the legend stays above the panel-b note at y = 1.1 however many statuses occur
+    sq = min(0.1, step - 0.01)
     for i, (st, derived, label) in enumerate(items):
-        yy = ly + i * 0.115
-        ax.add_patch(FancyBboxPatch((lx, yy), 0.1, 0.1, boxstyle="round,pad=0,rounding_size=0.018", facecolor=STATUS[st][0],
-                                    edgecolor="white" if derived else "none", linewidth=0, hatch="////" if derived else None))
-        ax.text(lx + 0.16, yy + 0.05, label, fontsize=5.5, **T)
-    yy = ly + len(items) * 0.115 + 0.015
-    ax.add_patch(Rectangle((lx + 0.025, yy + 0.025), 0.05, 0.05, facecolor=STATUS["contra"][0], edgecolor="none"))
-    ax.text(lx + 0.16, yy + 0.05, "Matched, but another model contradicted", fontsize=5.5, **T)
-    yy += 0.115
-    ax.add_patch(Rectangle((lx + 0.025, yy + 0.025), 0.05, 0.05, facecolor="white", edgecolor=INK, linewidth=0.5))
-    ax.text(lx + 0.16, yy + 0.05, "Surrogate matched, outcome trial negative", fontsize=5.5, **T)
+        yy = ly + i * step
+        ax.add_patch(FancyBboxPatch((lx, yy), sq, sq, boxstyle="round,pad=0,rounding_size=0.018", **style(st, derived)))
+        ax.text(lx + 0.16, yy + sq / 2, label, fontsize=5.5, **T)
+    yy = ly + len(items) * step + 0.015
+    ax.add_patch(Rectangle((lx + sq / 4, yy + sq / 4), sq / 2, sq / 2, facecolor=STATUS["contra"][0], edgecolor="none"))
+    ax.text(lx + 0.16, yy + sq / 2, "Matched, but another model contradicted", fontsize=5.5, **T)
+    yy += step
+    ax.add_patch(Rectangle((lx + sq / 4, yy + sq / 4), sq / 2, sq / 2, facecolor="white", edgecolor=INK, linewidth=0.5))
+    ax.text(lx + 0.16, yy + sq / 2, "Surrogate matched, outcome trial negative", fontsize=5.5, **T)
 
 
 def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) -> None:
@@ -223,9 +230,7 @@ def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) ->
                     ax.text(text_x(i), y0 + 0.065, "no model relied on", fontsize=5, color=MUTED, va="center")
                     continue
                 derived = c.status == "contra" and c.derived == "efficacy"
-                ax.add_patch(FancyBboxPatch((x, y0 + 0.065 - mark / 2), mark, mark, boxstyle="round,pad=0,rounding_size=0.018",
-                                            facecolor=STATUS[c.status][0], edgecolor="white" if derived else "none", linewidth=0,
-                                            hatch="////" if derived else None))
+                ax.add_patch(FancyBboxPatch((x, y0 + 0.065 - mark / 2), mark, mark, boxstyle="round,pad=0,rounding_size=0.018", **style(c.status, derived)))
                 year = str(c.year)
                 yw = width_in(year, 5.5, "bold") + 0.045
                 L = (0.065, 0.135, 0.205)

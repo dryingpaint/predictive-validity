@@ -89,3 +89,9 @@ def test_order_tiles_main_cut_is_one_tile_per_ranked_disease_with_the_most_progr
     assert list(supplement.slug) == ["t2d-b", "t2d-a", "copd-c", "cf-d"] and list(supplement.group) == ["#1", "#1", "#2", "Respiratory"]
     by_area = glance_nature.order_tiles(df, "area")
     assert list(by_area.group) == ["Endocrine", "Endocrine", "Respiratory", "Respiratory"]
+
+
+def test_every_headline_status_the_data_can_carry_has_a_figure_style():
+    assert set(glance.WORST) <= set(glance_nature.STATUS)
+    assert glance_nature.style("neg")["hatch"] and glance_nature.style("contra", derived=True)["hatch"] == "////"
+    assert glance_nature.style("same")["hatch"] is None
