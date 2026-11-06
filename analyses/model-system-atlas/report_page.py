@@ -141,7 +141,7 @@ def main() -> None:
     a = ap.parse_args()
     data = load()
     data["interim"] = a.interim
-    checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "v3", "*.check.json"))]
+    checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "*.check.json"))]
     data["open"] = {"rule_questions": sum(len(c.get("rule_questions") or []) for c in checks),
                     "missed": sum(len(c.get("missing") or []) for c in checks)}
     tpl = open(os.path.join(HERE, "report", "template.html")).read()

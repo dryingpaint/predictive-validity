@@ -1,9 +1,9 @@
-"""Lint the tile drafts in drafts/v3/ against the v3 rules (`RULES_V3_PROPOSAL.md`, `DECISIONS.md`).
+"""Lint the tile drafts in drafts/ against the rules in `DRAFTER_BRIEF.md`.
 
     .venv/bin/python analyses/model-system-atlas/drafts/lint.py [draft.json ...]
 
-A draft declares `"schema": 3`. Findings: empty cells (no model relied on), consecutive same-status
-entries on one track, unknown keys, unsorted years, missing v3 fields, and a status without the fields
+Findings: empty cells (no model relied on), consecutive same-status
+entries on one track, unknown keys, unsorted years, missing fields, and a status without the fields
 its decision requires. A track is one model system's entries in a cell (its `model_id`), kept apart per
 modality where a multi-modality tile splits dose and safety.
 """
@@ -45,9 +45,9 @@ MODALITY = {"small molecule", "antibody", "ADC", "protein", "peptide", "oligo", 
 
 
 def rule_findings(q: str, e: dict, prev: dict | None) -> list[str]:
-    """The v3 rules one entry breaks, given the entry before it on the same track."""
-    out = [f"v3 field missing: {k}" for k in REQUIRED if k not in e]
-    out += [f"v3 {k}={e[k]!r} not in enum" for k, allowed in ENUM.items() if k in e and e[k] not in allowed]
+    """The rules one entry breaks, given the entry before it on the same track."""
+    out = [f"field missing: {k}" for k in REQUIRED if k not in e]
+    out += [f"{k}={e[k]!r} not in enum" for k, allowed in ENUM.items() if k in e and e[k] not in allowed]
     out += [f"{k} only belongs on {cell}" for k, cell in ONLY_IN.items() if e.get(k) not in (None, False) and q != cell]
     s, tier = e.get("status"), e.get("source_tier")
     if tier not in (1, 2, 3, 4, 5):
@@ -56,28 +56,28 @@ def rule_findings(q: str, e: dict, prev: dict | None) -> list[str]:
         if not e.get("model_src"):
             out.append("paired or tier 4-5 comparison without model_src")
         if e.get("model_src_tier") not in (1, 2, 3):
-            out.append("model_src_tier must be 1-3 (decision 2)")
+            out.append("model_src_tier must be 1-3")
     if tier == 5 and e.get("trial_unreported") is not True:
-        out.append("tier 5 source without trial_unreported (decision 2)")
+        out.append("tier 5 source without trial_unreported")
     if s == "retro" and e.get("retrodiction") is not True:
-        out.append("retro without retrodiction: true (decision 10)")
+        out.append("retro without retrodiction: true")
     if e.get("retrodiction") is True and s not in ("retro", "contra"):
-        out.append(f"retrodiction scored {s!r}; must be retro or contra (decision 10)")
+        out.append(f"retrodiction scored {s!r}; must be retro or contra")
     if s == "neg" and (e.get("effect_size") is None or e.get("class_threshold") is None):
-        out.append("neg without effect_size and class_threshold (decision 13)")
+        out.append("neg without effect_size and class_threshold")
     if s == "other" and q != "safety":
-        out.append("other outside safety (decision 13)")
+        out.append("other outside safety")
     if e.get("blocked_by") == "toxicity" and e.get("margin_stated") is not True:
-        out.append("blocked_by toxicity without margin_stated (decision 16)")
+        out.append("blocked_by toxicity without margin_stated")
     if e.get("blocked_by") and e.get("derived_from"):
-        out.append("a toxicity block is never derived_from efficacy (decision 16)")
+        out.append("a toxicity block is never derived_from efficacy")
     if q == "engagement" and s not in ("untested", None) and "readout_tier" not in e:
-        out.append("engagement entry without readout_tier (decision 15)")
+        out.append("engagement entry without readout_tier")
     if prev and prev.get("status") == "contra" and s in MATCHED:
         if e.get("patient_signal_reversed") is not True:
-            out.append("contra -> matched on one track without patient_signal_reversed (decision 6)")
+            out.append("contra -> matched on one track without patient_signal_reversed")
         if e.get("patient_signal_reversed") is True and tier not in (1, 2, 3, 4):
-            out.append("patient_signal_reversed needs a tier 1-4 source (decision 6)")
+            out.append("patient_signal_reversed needs a tier 1-4 source")
     return out
 
 
@@ -86,8 +86,6 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
     for p in paths:
         d = json.load(open(p))
         cid = os.path.basename(p)[:-5]
-        if d.get("schema") != 3:
-            issues.append((cid, "top-level", f"schema {d.get('schema')!r}, not 3"))
         for k in ("order", "area", "disease", "mondo_id", "population", "mechanism", "label", "cells"):
             if k not in d:
                 issues.append((cid, "top-level", f"missing {k}"))
@@ -95,9 +93,9 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             issues.append((cid, "top-level", "mechanism_key missing (the tile's key in preclin.atlas_register)"))
         groups = d.get("modality_groups")
         if not isinstance(groups, list) or not groups or not set(groups) <= MODALITY:
-            issues.append((cid, "top-level", f"modality_groups {groups!r} (decision 12)"))
+            issues.append((cid, "top-level", f"modality_groups {groups!r}"))
         if not isinstance(d.get("class_share"), (int, float)):
-            issues.append((cid, "top-level", "class_share missing (decision 12)"))
+            issues.append((cid, "top-level", "class_share missing"))
         split = isinstance(groups, list) and len(groups) > 1
 
         def track(e: dict):
@@ -116,9 +114,9 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             for i, e in enumerate(strip, 1):
                 prev = last.get(track(e))
                 if e.get("modality") is not None and e["modality"] not in (groups or []):
-                    issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups (decision 12)"))
+                    issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups"))
                 if split and q == "dose" and e.get("modality") is None:
-                    issues.append((cid, q, f"entry {i}: dose entry without modality in a multi-modality tile (decision 12)"))
+                    issues.append((cid, q, f"entry {i}: dose entry without modality in a multi-modality tile"))
                 if e.get("status") not in STAT:
                     issues.append((cid, q, f"bad status {e.get('status')!r}"))
                 if not isinstance(e.get("year"), int):
@@ -136,7 +134,7 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
 
 
 def main():
-    paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "v3", "*-*.json"))
+    paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "*-*.json"))
                                    if not p.endswith((".check.json", ".models.json")))
     extra, issues = lint(paths)
     print("unknown keys:", dict(extra))

@@ -54,7 +54,7 @@ RC = {"svg.hashsalt": "atlas", "hatch.linewidth": 0.6, "font.family": ["Helvetic
 W, H = 7.2, 9.65  # 183 × 245 mm
 
 # Model names that do not fit their cell, shortened by hand; nothing is cut with an ellipsis
-LABELS = os.path.join(HERE, "drafts", "v3", "short_labels.json")
+LABELS = os.path.join(HERE, "drafts", "short_labels.json")
 with open(LABELS) as _f:
     _labels = json.load(_f)
 MODEL_SHORT, DISSENT_SHORT, MECH_SHORT = _labels["model"], _labels["dissent"], _labels.get("mechanism", {})  # hand-shortened; see the file's _comment

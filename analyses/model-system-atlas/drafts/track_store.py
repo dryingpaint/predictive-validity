@@ -1,11 +1,11 @@
-"""Store schema-3 track records in preclin.atlas_track_entry and their verdicts in atlas_track_verdict.
+"""Store tile drafts' track records in preclin.atlas_track_entry and their verdicts in atlas_track_verdict.
 
     .venv/bin/python analyses/model-system-atlas/drafts/track_store.py DRAFT.json [...] [--drafted-by TEXT]
 
 A draft is stored only if lint.py finds nothing but empty cells in it and its (mondo_id, mechanism_key) is
 a tracked row of preclin.atlas_register. Storing a draft replaces its tile: every entry and verdict of
 that tile is deleted and rewritten in one transaction. The verdict file is the draft's sibling
-<id>.check.json (CHECKER_BRIEF_v3.md); an adjudicator's decision is its adjudicated_status.
+<id>.check.json (CHECKER_BRIEF.md); an adjudicator's decision is its adjudicated_status.
 """
 import argparse
 import json
@@ -71,7 +71,7 @@ def store(path: str, drafted_by: str, cur) -> int:
                        [(*key, v["cell"], mod, seq, v["verdict"], v.get("source_resolves"), v.get("quote_found"),
                          v.get("proposed_status"), v.get("proposed_year"), v.get("rule"), v.get("note"),
                          v.get("adjudicated_status"), v.get("adjudication_note"),
-                         v.get("checked_by") or c.get("checked_by", "CHECKER_BRIEF_v3"))
+                         v.get("checked_by") or c.get("checked_by", "CHECKER_BRIEF"))
                         for v, (mod, seq) in verdicts])
         n_verdicts = len(verdicts)
     print(f"{os.path.basename(path)}: {len(entries)} entries, {n_verdicts} verdicts -> {key}")
@@ -81,7 +81,7 @@ def store(path: str, drafted_by: str, cur) -> int:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("drafts", nargs="+")
-    ap.add_argument("--drafted-by", default="DRAFTER_BRIEF_v3")
+    ap.add_argument("--drafted-by", default="DRAFTER_BRIEF")
     a = ap.parse_args()
     with llm.connect() as conn, conn.cursor() as cur:
         for p in a.drafts:

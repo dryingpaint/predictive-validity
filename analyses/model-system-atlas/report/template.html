@@ -272,7 +272,7 @@ function render() {
 
   const ag = d.agreement;
   document.getElementById("agree-p").textContent = (ag.cells ? `Agreement: the drafter and checker agreed on the latest status of ${ag.agree} of ${ag.cells} cells (κ ${ag.kappa?.toFixed(2)}). ` : "") +
-    (d.open ? `The checkers raised ${d.open.rule_questions} rule questions the v3 rules do not yet decide, and found ${d.open.missed} comparisons the drafts left out; they are listed in drafts/v3/RULE_QUESTIONS_v3.md and change no stored status.` : "");
+    (d.open ? `The checkers raised ${d.open.rule_questions} rule questions the rules do not yet decide, and found ${d.open.missed} comparisons the drafts left out; they are listed in drafts/RULE_QUESTIONS.md and change no stored status.` : "");
 }
 
 function Counter(xs) { const c = {}; xs.forEach(x => c[x] = (c[x] || 0) + 1); return c; }

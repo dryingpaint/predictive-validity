@@ -1,4 +1,4 @@
-"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table (decision 12).
+"""Draw each named indication's tile(s), its mechanism, from a hand-reviewed class table.
 
     .venv/bin/python analyses/model-system-atlas/class_audit.py          # files only
     .venv/bin/python analyses/model-system-atlas/class_audit.py store    # and the database (migration 133)
@@ -19,7 +19,7 @@ one row per tracked tile, and under lists/class_audit/:
 reviews.csv is the hand-curated input, one row per moiety (same_entity_as folds a duplicate
 moiety into the entity it repeats); a moiety absent from it falls back to the database's fields.
 
-Rule (decision 12). The tile's unit is the mechanism, (verified target, verified action),
+Rule. The tile's unit is the mechanism, (verified target, verified action),
 counted across modalities; modality only splits the dose and platform-safety sub-strips inside a
 tile (`modality_groups` lists them). A non-selective or off-class member carries its own verified
 target (e.g. "JAK (pan)"), so it falls into its own mechanism (a dual member whose verified target is
@@ -186,7 +186,7 @@ def class_label(target: str, action: str) -> str:
     return ACTION_PHRASE.get(action, "{t} " + str(action)).format(t=target)
 
 def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Every mechanism in every named indication (decision 12): one row per indication x mechanism,
+    """Every mechanism in every named indication: one row per indication x mechanism,
     counted across modalities and tracked when it has MIN_PROGRAMS programs; and the members, each
     with its mechanism_key or the reason it is in none."""
     m = m.copy()
@@ -241,7 +241,7 @@ def store(m: pd.DataFrame, reg: pd.DataFrame, named: pd.DataFrame) -> str:
             cur, "atlas_class_register@v1", "Atlas class register",
             "Every mechanism (verified target, action; across modalities) of every named indication, from the "
             "novel Phase 2 entrants of 2008-2019 and a hand review of the entities; tracked when it has "
-            "min_programs distinct entities (decision 12).",
+            "min_programs distinct entities.",
             ["preclin.dev_program", "preclin.moiety_target", "preclin.chembl_mechanism",
              "analyses/model-system-atlas/lists/class_audit/reviews.csv"],
             {"window": [str(w) for w in lists.WINDOW], "phase": lists.PHASE, "min_programs": MIN_PROGRAMS})
