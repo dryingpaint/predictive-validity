@@ -47,6 +47,7 @@ import json
 import os
 from collections import defaultdict
 from datetime import date
+from functools import cache
 
 import numpy as np
 import pandas as pd
@@ -127,9 +128,10 @@ def score_as_of(years: list[int], scores: list[float], year: int) -> float:
     return s
 
 
-def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
-    """Evidence flags per (program, phase) row, as of the year before phase entry."""
-    mondo = Mondo()
+@cache  # read once per build; every target_evidence call uses the same tables
+def target_tables() -> tuple[pd.DataFrame, dict, pd.Series]:
+    """Primary human-protein targets of each entity; each target's Open Targets associations with their yearly
+    score series; and each target's lowest LOEUF."""
     targets = frame.query("""
         SELECT mt.moiety_id, t.symbol, t.ensembl_id
         FROM preclin.moiety_target mt JOIN public.targets t ON t.id = mt.target_id
@@ -145,6 +147,13 @@ def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
     constraint = frame.query("""SELECT t.ensembl_id, min(g.loeuf) AS loeuf
                                 FROM public.gene_constraint g JOIN public.targets t ON t.id = g.target_id
                                 GROUP BY 1""").set_index("ensembl_id").loeuf
+    return targets, by_target, constraint
+
+
+def target_evidence(rows: pd.DataFrame, progs: pd.DataFrame) -> pd.DataFrame:
+    """Evidence flags per (program, phase) row, as of the year before phase entry."""
+    mondo = Mondo()
+    targets, by_target, constraint = target_tables()
     essential = frame.common_essentials()
     measurements = frame.drug_assays()
     assays, no_assays = dict(iter(measurements.groupby("moiety_id"))), measurements.iloc[:0]

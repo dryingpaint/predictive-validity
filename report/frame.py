@@ -97,6 +97,7 @@ def loaded_once(load):
     return get
 
 
+@held_once
 def common_essentials() -> dict[int, set[str]]:
     """DepMap common-essential genes (Ensembl ids) by the year of the release that listed them."""
     lists: dict[int, set[str]] = {}
@@ -117,6 +118,7 @@ CELL_BASED = "BAO_0000219"  # BioAssay Ontology: cell-based format
 POTENT, VERY_POTENT, SELECTIVE = 7.0, 8.0, 2.0  # pChEMBL 7 = 100 nM, 8 = 10 nM; a 2-log margin is 100-fold
 
 
+@held_once
 def drug_assays() -> pd.DataFrame:
     """ChEMBL potency measurements of each entity's molecules (every form of each parent preclin.chembl_moiety
     matches to it), one row per activity: the target's genes and type, the measurement, whether the assay
