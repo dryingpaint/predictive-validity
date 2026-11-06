@@ -24,9 +24,9 @@ any animal model; a second step maps that disease to MONDO, as pipeline.indicati
 entry counts only records published by its own cutoff.
 
 The entries are the US-sited phase entries of 2008-2019 (cohort) or a seeded sample of 300 of them (pilot,
-report/audits/literature_pilot_sample.csv). Versions 1 and 2 keep their rows (preclin.literature_search, _hit,
-_screen; preclin.literature_drug_search, _hit, _screen). A kind runs on the cohort only once the pilot passes the
-plan's gates.
+report/audits/literature_pilot_sample.csv). The pilot gate results of versions 1 and 2 are archived in
+report/audits/literature_gate.json; their tables are dropped. A kind runs on the cohort only once the pilot passes
+the plan's gates.
 """
 from __future__ import annotations
 
@@ -499,7 +499,7 @@ def store_records(cur, records: list[tuple]) -> None:
 
 def store_hits(cur, hits: list[tuple]) -> None:
     if hits:
-        execute_values(cur, """INSERT INTO preclin.literature_v3_hit (moiety_id, cutoff_year, source, record_id)
+        execute_values(cur, """INSERT INTO preclin.literature_hit (moiety_id, cutoff_year, source, record_id)
                                VALUES %s ON CONFLICT DO NOTHING""", hits, page_size=5000)
 
 
@@ -512,7 +512,7 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
                            "preclin.unii_name", "preclin.ontology_term"],
                           {"prefilter_above": PREFILTER_ABOVE, "max_names": MAX_DRUG_NAMES, "exclude": NOT_REVIEWS,
                            "related_lin": RELATED, "firecrawl_limit": FIRECRAWL_LIMIT})
-        cur.execute("""SELECT moiety_id, cutoff_year, min(names) FROM preclin.literature_v3_search
+        cur.execute("""SELECT moiety_id, cutoff_year, min(names) FROM preclin.literature_search
                        GROUP BY 1, 2 HAVING count(*) = 2 AND count(DISTINCT names) = 1""")
         stored = {(m, y): n for m, y, n in cur.fetchall()}
         conn.commit()
@@ -552,10 +552,10 @@ def search_drugs(cut: dict[int, int], log=print) -> None:
             with llm.connect() as conn, conn.cursor() as cur:
                 store_records(cur, records)
                 # a search by vetted names replaces the drug's earlier PubMed and Europe PMC retrieval
-                cur.execute("""DELETE FROM preclin.literature_v3_hit WHERE moiety_id = %s AND cutoff_year = %s
+                cur.execute("""DELETE FROM preclin.literature_hit WHERE moiety_id = %s AND cutoff_year = %s
                                AND source IN ('pubmed', 'europepmc')""", (to, y))
-                cur.execute("DELETE FROM preclin.literature_v3_search WHERE moiety_id = %s AND cutoff_year = %s", (to, y))
-                execute_values(cur, """INSERT INTO preclin.literature_v3_search (moiety_id, cutoff_year, source, names, query, n_hits)
+                cur.execute("DELETE FROM preclin.literature_search WHERE moiety_id = %s AND cutoff_year = %s", (to, y))
+                execute_values(cur, """INSERT INTO preclin.literature_search (moiety_id, cutoff_year, source, names, query, n_hits)
                                        VALUES %s ON CONFLICT DO NOTHING""",
                                [(to, y, "pubmed", names[m], pq, pn), (to, y, "europepmc", names[m], eq, en)])
                 store_hits(cur, [(to, y, "pubmed", p) for p in pmids] + [(to, y, "europepmc", r[0]) for r in records])
@@ -677,15 +677,15 @@ def firecrawl(args) -> None:
     e = firecrawl_entries(args.entries)
     cut = {int(m): int(y) for m, y in e.groupby("moiety_id").cutoff_year.max().items()}
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT count(*) FROM preclin.literature_v3_firecrawl")
+        cur.execute("SELECT count(*) FROM preclin.literature_firecrawl")
         used = cur.fetchone()[0]
-        cur.execute("SELECT moiety_id, mondo_id, mode FROM preclin.literature_v3_firecrawl")
+        cur.execute("SELECT moiety_id, mondo_id, mode FROM preclin.literature_firecrawl")
         done = set(cur.fetchall())
-        cur.execute("SELECT DISTINCT ON (moiety_id) moiety_id, names FROM preclin.literature_v3_search WHERE source = 'pubmed'")
+        cur.execute("SELECT DISTINCT ON (moiety_id) moiety_id, names FROM preclin.literature_search WHERE source = 'pubmed'")
         names = dict(cur.fetchall())
         cur.execute("SELECT term_id, label FROM preclin.ontology_term WHERE term_id = ANY(%s)", (sorted(set(e.mondo_id)),))
         label = dict(cur.fetchall())
-        cur.execute("""SELECT DISTINCT ON (moiety_id) moiety_id, record_id FROM preclin.literature_v3_screen
+        cur.execute("""SELECT DISTINCT ON (moiety_id) moiety_id, record_id FROM preclin.literature_screen
                        WHERE animal_disease OR animal_healthy OR human_engagement ORDER BY moiety_id, record_id""")
         seeds = dict(cur.fetchall())
     missing = sorted(set(cut) - set(names))
@@ -740,7 +740,7 @@ def firecrawl(args) -> None:
             print(f"firecrawl skipped moiety={m}: merged away with no surviving entity", flush=True)
             return
         with llm.connect() as conn, conn.cursor() as cur:
-            cur.execute("""INSERT INTO preclin.literature_v3_firecrawl (moiety_id, mondo_id, cutoff_year, mode, query, n_results)
+            cur.execute("""INSERT INTO preclin.literature_firecrawl (moiety_id, mondo_id, cutoff_year, mode, query, n_results)
                            VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING""", (to, d, y, args.mode, q, len(results)))
             store_hits(cur, [(to, cut[m], "firecrawl", r) for r in record_ids])
             conn.commit()
@@ -814,7 +814,7 @@ def drug_records(cut: dict[int, int]) -> pd.DataFrame:
         cur.execute("CREATE TEMP TABLE want (moiety_id int, cutoff_year int) ON COMMIT DROP")
         execute_values(cur, "INSERT INTO want VALUES %s", list(cut.items()))
         cur.execute("""SELECT h.moiety_id, h.record_id, array_agg(h.source ORDER BY h.source)
-                       FROM preclin.literature_v3_hit h JOIN want USING (moiety_id, cutoff_year) GROUP BY 1, 2""")
+                       FROM preclin.literature_hit h JOIN want USING (moiety_id, cutoff_year) GROUP BY 1, 2""")
         return pd.DataFrame(cur.fetchall(), columns=["moiety_id", "record_id", "sources"])
 
 
@@ -850,7 +850,7 @@ def payload(names: list[str], targets: str, record_id: str, paper: tuple) -> dic
 
 def drug_context(cut: dict[int, int]) -> tuple[dict, dict]:
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT moiety_id, names FROM preclin.literature_v3_search WHERE source = 'pubmed' AND moiety_id = ANY(%s)",
+        cur.execute("SELECT moiety_id, names FROM preclin.literature_search WHERE source = 'pubmed' AND moiety_id = ANY(%s)",
                     (sorted(cut),))
         names = dict(cur.fetchall())
         cur.execute("""SELECT mt.moiety_id, string_agg(DISTINCT t.symbol || ' (' || mt.action || ')', ', ')
@@ -875,7 +875,7 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
         f"large-drug records={int(size[size > PREFILTER_ABOVE].sum())} small-drug pmids to fetch={len(small_missing)}")
     have.update(fetch_papers(small_missing, store=True))
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT moiety_id || '|' || record_id, possibly FROM preclin.literature_v3_prefilter")
+        cur.execute("SELECT moiety_id || '|' || record_id, possibly FROM preclin.literature_prefilter")
         possibly = dict(cur.fetchall())
     big = recs[recs.moiety_id.isin(large)]
     todo = big[~(big.moiety_id.astype(str) + "|" + big.record_id).isin(possibly)]
@@ -886,7 +886,7 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
     if pre:
         decided = [x for x in llm.decisions(llm.run(PREFILTER_TASK, pre)) if x[2] and "error" not in x[2]]
         with llm.connect() as conn, conn.cursor() as cur:
-            execute_values(cur, """INSERT INTO preclin.literature_v3_prefilter (moiety_id, record_id, possibly, llm_decision_id)
+            execute_values(cur, """INSERT INTO preclin.literature_prefilter (moiety_id, record_id, possibly, llm_decision_id)
                                    VALUES %s ON CONFLICT (moiety_id, record_id) DO UPDATE SET possibly = EXCLUDED.possibly,
                                      llm_decision_id = EXCLUDED.llm_decision_id""",
                            [(int(k.split("|")[0]), k.split("|", 1)[1], o["possibly"], did) for k, did, o in decided],
@@ -903,7 +903,7 @@ def screen_items(cut: dict[int, int], log=print) -> dict[str, dict]:
     with llm.connect() as conn, conn.cursor() as cur:  # a record already screened keeps its decision when names are vetted:
         # the vetted search still retrieves it only if it names the drug by a kept name, and records it no longer
         # retrieves drop out of every match
-        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)",
+        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_screen WHERE moiety_id = ANY(%s)",
                     (sorted(cut),))
         screened = {r[0] for r in cur.fetchall()}
     keep = [(m, r) for m, r in zip(recs.moiety_id, recs.record_id)
@@ -923,7 +923,7 @@ def store_screens(decided: list[tuple[str, int, dict]]) -> None:
         o["animal_healthy"], o["human_engagement"], o["species"] or None, o["detail"] or None, o["quote"] or None, did)
         for k, did, o in decided if to[int(k.split("|")[0])] in live}.values())
     with llm.connect() as conn, conn.cursor() as cur:
-        execute_values(cur, """INSERT INTO preclin.literature_v3_screen (moiety_id, record_id, original_data, animal_disease,
+        execute_values(cur, """INSERT INTO preclin.literature_screen (moiety_id, record_id, original_data, animal_disease,
                                  modelled_diseases, animal_healthy, human_engagement, species, detail, quote, llm_decision_id)
                                VALUES %s ON CONFLICT (moiety_id, record_id) DO UPDATE SET
                                  original_data = EXCLUDED.original_data, animal_disease = EXCLUDED.animal_disease,
@@ -990,7 +990,7 @@ def sweep(_args) -> None:
         run_id = llm.run(PREFILTER_TASK, {k: p for k, (p, _) in pre.items()})
         decided = [x for x in llm.decisions(run_id) if x[2] and "error" not in x[2]]
         with llm.connect() as conn, conn.cursor() as cur:
-            execute_values(cur, """INSERT INTO preclin.literature_v3_prefilter (moiety_id, record_id, possibly, llm_decision_id)
+            execute_values(cur, """INSERT INTO preclin.literature_prefilter (moiety_id, record_id, possibly, llm_decision_id)
                                    VALUES %s ON CONFLICT (moiety_id, record_id) DO UPDATE SET possibly = EXCLUDED.possibly,
                                      llm_decision_id = EXCLUDED.llm_decision_id""",
                            [(int(k.split("|")[0]), k.split("|", 1)[1], o["possibly"], did) for k, did, o in decided],
@@ -1074,10 +1074,10 @@ def run_cohort(args) -> None:
         log("worker done (search only)")
         return
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT moiety_id, count(DISTINCT record_id) FROM preclin.literature_v3_hit
+        cur.execute("""SELECT moiety_id, count(DISTINCT record_id) FROM preclin.literature_hit
                        WHERE moiety_id = ANY(%s) GROUP BY 1""", (sorted(cut),))
         sizes = dict(cur.fetchall())
-        cur.execute("SELECT DISTINCT moiety_id FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)", (sorted(cut),))
+        cur.execute("SELECT DISTINCT moiety_id FROM preclin.literature_screen WHERE moiety_id = ANY(%s)", (sorted(cut),))
         screened = {r[0] for r in cur.fetchall()}
     todo = {m: y for m, y in cut.items() if m not in screened and sizes.get(m)}
     large = {m: sizes[m] for m in todo if sizes[m] > LARGE_DRUG and m not in args.allow_large}
@@ -1100,7 +1100,7 @@ def prefilter_check(_args) -> None:
     """Give a seeded PREFILTER_CHECK of the prefiltered pilot records the full screen whatever the prefilter said,
     and record the prefilter's recall: the share of records the screen finds qualifying that it passed."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT moiety_id, record_id, possibly FROM preclin.literature_v3_prefilter ORDER BY 1, 2")
+        cur.execute("SELECT moiety_id, record_id, possibly FROM preclin.literature_prefilter ORDER BY 1, 2")
         pre = cur.fetchall()
     rng = np.random.default_rng(CHECK_SEED)
     pick = [pre[i] for i in sorted(rng.choice(len(pre), min(PREFILTER_CHECK, len(pre)), replace=False))]
@@ -1160,7 +1160,7 @@ def diseases(_args) -> None:
     """Map every modelled disease named by a screen and not yet mapped; candidates are retrieved terms, their
     parents and grandparents, as pipeline.indications offers for a condition with no term of its own."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT DISTINCT d FROM preclin.literature_v3_screen, unnest(modelled_diseases) d
+        cur.execute("""SELECT DISTINCT d FROM preclin.literature_screen, unnest(modelled_diseases) d
                        WHERE d NOT IN (SELECT modelled_disease FROM preclin.literature_model_disease)""")
         todo = sorted(r[0] for r in cur.fetchall())
         index = MondoIndex(cur)
@@ -1190,7 +1190,7 @@ def check(_args) -> None:
     names, targets = drug_context(cut)
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute("""SELECT moiety_id, record_id, animal_disease, animal_healthy, human_engagement
-                       FROM preclin.literature_v3_screen WHERE moiety_id = ANY(%s)""", (sorted(cut),))
+                       FROM preclin.literature_screen WHERE moiety_id = ANY(%s)""", (sorted(cut),))
         rows = cur.fetchall()
     verdict = {f"{m}|{r}": dict(zip(KINDS, v)) for m, r, *v in rows}
     rng = np.random.default_rng(CHECK_SEED)
@@ -1219,12 +1219,15 @@ def kappa(a: list[bool], b: list[bool]) -> float | None:
 def agreement() -> dict[str, dict]:
     """Kind -> agreement of the screen with the check model on the screened version 3 records both read."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_v3_screen")
+        cur.execute("SELECT moiety_id || '|' || record_id FROM preclin.literature_screen")
         screened = {r[0] for r in cur.fetchall()}
         cur.execute("""SELECT DISTINCT ON (subject_key, task) subject_key, task, parsed_output
                        FROM pv_evidence.llm_decision
                        WHERE task IN ('literature_drug_screen', 'literature_drug_screen_check')
                          AND validation_status = 'validated'
+                         AND subject_key IN (SELECT subject_key FROM pv_evidence.llm_decision
+                                             WHERE task = 'literature_drug_screen_check'
+                                               AND validation_status = 'validated')
                        ORDER BY subject_key, task, created_at DESC""")
         by: dict = {}
         for key, tname, out_ in cur.fetchall():
@@ -1269,16 +1272,16 @@ RECORD_YEAR = """(SELECT year FROM public.publications WHERE pmid = s.record_id
 def qualifying(without: str | None = None) -> pd.DataFrame:
     """Entity, record, publication year, kind and (for animal models) mapped MONDO term of every qualifying screen;
     without a source, the records only that source retrieved are left out."""
-    only = f"""AND EXISTS (SELECT 1 FROM preclin.literature_v3_hit h WHERE h.moiety_id = s.moiety_id
+    only = f"""AND EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id
                            AND h.record_id = s.record_id{f" AND h.source <> '{without}'" if without else ""})"""
     with llm.connect() as conn, conn.cursor() as cur:
         cur.execute(f"""SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, 'animal_disease', md.mondo_id
-                        FROM preclin.literature_v3_screen s CROSS JOIN unnest(s.modelled_diseases) d
+                        FROM preclin.literature_screen s CROSS JOIN unnest(s.modelled_diseases) d
                         JOIN preclin.literature_model_disease md ON md.modelled_disease = d
                         WHERE s.animal_disease AND md.mondo_id IS NOT NULL {only}
                         UNION ALL
                         SELECT s.moiety_id, s.record_id, {RECORD_YEAR}, k.kind, NULL
-                        FROM preclin.literature_v3_screen s
+                        FROM preclin.literature_screen s
                         CROSS JOIN LATERAL (VALUES ('animal_healthy', s.animal_healthy),
                                                    ('human_engagement', s.human_engagement)) k(kind, ok)
                         WHERE k.ok {only}""")
@@ -1288,7 +1291,7 @@ def qualifying(without: str | None = None) -> pd.DataFrame:
 def record_dois() -> dict[str, str]:
     """Record id -> lower-case DOI, for matching reference studies outside PubMed."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT s.record_id, lower(coalesce(p.doi, r.doi)) FROM preclin.literature_v3_screen s
+        cur.execute("""SELECT s.record_id, lower(coalesce(p.doi, r.doi)) FROM preclin.literature_screen s
                        LEFT JOIN public.publications p ON p.pmid = s.record_id
                        LEFT JOIN preclin.literature_record r ON r.record_id = s.record_id
                        WHERE coalesce(p.doi, r.doi) IS NOT NULL""")
@@ -1336,9 +1339,9 @@ def misses(rk: pd.DataFrame, related) -> dict[str, int]:
                                   c.animal_disease, c.animal_healthy, c.human_engagement,
                                   (SELECT array_agg(md.mondo_id) FROM unnest(c.modelled_diseases) d
                                    JOIN preclin.literature_model_disease md ON md.modelled_disease = d)
-                           FROM preclin.literature_v3_hit h
-                           LEFT JOIN preclin.literature_v3_prefilter f ON f.moiety_id = h.moiety_id AND f.record_id = h.record_id
-                           LEFT JOIN preclin.literature_v3_screen c ON c.moiety_id = h.moiety_id AND c.record_id = h.record_id
+                           FROM preclin.literature_hit h
+                           LEFT JOIN preclin.literature_prefilter f ON f.moiety_id = h.moiety_id AND f.record_id = h.record_id
+                           LEFT JOIN preclin.literature_screen c ON c.moiety_id = h.moiety_id AND c.record_id = h.record_id
                            WHERE h.moiety_id = %s AND h.record_id = %s
                            GROUP BY c.animal_disease, c.animal_healthy, c.human_engagement, c.modelled_diseases""",
                         (int(r.moiety_id), r.pmid))

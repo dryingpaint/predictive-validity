@@ -65,7 +65,7 @@ class Line:
     key: str | None = None  # the registry key of a line with no column, fixed so that rewording the label keeps it
 
 
-LITERATURE_GATE = "v3_vetted2_rescreen"  # the gate scoring of the retrieval the literature lines are built from
+LITERATURE_GATE = "v3_final"  # the gate scoring of the retrieval the literature lines are built from
 
 
 def literature_note(kind: str, exploratory: bool) -> str:
@@ -317,10 +317,10 @@ def literature_inputs(moieties: list[int]) -> tuple[pd.DataFrame, set[int], dict
     nothing retrieved), and each entity's surviving entity."""
     q = literature.qualifying()
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT s.moiety_id FROM preclin.literature_v3_search s GROUP BY 1
-                       HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_v3_hit h WHERE h.moiety_id = s.moiety_id)
-                       UNION SELECT moiety_id FROM preclin.literature_v3_screen
-                       UNION SELECT moiety_id FROM preclin.literature_v3_prefilter""")
+        cur.execute("""SELECT s.moiety_id FROM preclin.literature_search s GROUP BY 1
+                       HAVING NOT EXISTS (SELECT 1 FROM preclin.literature_hit h WHERE h.moiety_id = s.moiety_id)
+                       UNION SELECT moiety_id FROM preclin.literature_screen
+                       UNION SELECT moiety_id FROM preclin.literature_prefilter""")
         screened = {r[0] for r in cur.fetchall()}
     return q, screened, literature.survivors(moieties)
 
