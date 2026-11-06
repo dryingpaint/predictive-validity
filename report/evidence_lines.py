@@ -100,11 +100,11 @@ CATEGORIES: dict[str, tuple[Line, list[Line]]] = {
         Line("Target more active in disease, and the drug blocks it", "expression_up_inhibitor", "target"),
     ]),
     "animal": (Line("Animal studies", "cat_animal", "target"), [
-        Line("Mice with the gene altered show the disease", "altered_animal", "target"),
-        Line("Mouse model from published studies", "mgi", "target"),
+        Line("Mouse genetics: knocked-out or mutant mice show the disease", "altered_animal", "target"),
+        Line("Mutant mice from published studies", "mgi", "target"),
         Line("Mouse knockout from a large-scale screen", "impc", "target"),
-        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
-        Line("Mouse result agrees with the drug's direction", "animal_concordant", "target"),
+        Line("Mutant mouse phenotype closely matches the disease", "animal_close", "target"),
+        Line("Mouse genetics agrees with the drug's direction", "animal_concordant", "target"),
         Line("The drug in an animal model of the disease", None, "all", LITERATURE,
              key="the_drug_in_an_animal_model_of_the_disease"),
         Line("The drug tested in healthy animals", None, "all", LITERATURE,
@@ -160,8 +160,8 @@ AREAS: dict[str, tuple[Line, list[Line]]] = {
     ]),
     "diseased_tissue": (Line("Diseased tissue: the gene's RNA level differs in diseased tissue", "expression",
                              "target"), []),
-    "animal": (Line("Mouse models: mice with the gene altered show the disease", "altered_animal", "target"), [
-        Line("Mouse symptoms closely match the disease", "animal_close", "target"),
+    "animal": (Line("Mouse genetics: knocked-out or mutant mice show the disease", "altered_animal", "target"), [
+        Line("Mutant mouse phenotype closely matches the disease", "animal_close", "target"),
         Line("Looser match", "tier_mouse_loose", "target"),
     ]),
     "molecule": (Line("The drug: its binding to the target was measured before entry", "area_measured",

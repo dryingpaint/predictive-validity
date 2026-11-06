@@ -89,8 +89,8 @@ LABELS = {  # evidence map rows, in display order (report.render and report.figu
     "somatic": "Gene recurrently mutated in this cancer",
     "somatic_concordant": "The mutation's effect matches the drug's action",
     "impc": "Mouse knockout from a large-scale screen",
-    "mgi": "Mouse model from published studies",
-    "mgi_strong": "Mouse symptoms closely match the disease",
+    "mgi": "Mutant mice from published studies",
+    "mgi_strong": "Mutant mouse phenotype closely matches the disease",
     "expression": "The gene's RNA level differs in diseased tissue",
     "reactome": "A curated pathway shows a disease mutation disrupting the target",
     "crispr": "Gene-knockout screen in cancer cells or neurons",
@@ -611,7 +611,7 @@ RULES = {  # key: (label, rule, regime, in the committed plan)
     "M6": ("Mutation matches the drug, and the drug blocks the target",
            lambda d: (d.somatic_concordant > 0) & d.sign.eq("decrease"), "ONC", True),
     "M7": ("Mouse knockout closely matching the disease", lambda d: d.impc_strong > 0, "all", True),
-    "M8": ("Mouse model of the disease from published studies", lambda d: d.mgi > 0, "all", True),
+    "M8": ("Mutant mice from published studies show the disease", lambda d: d.mgi > 0, "all", True),
     "M9": ("Target more active in disease, and the drug blocks it",
            lambda d: (d.expression_up > 0) & d.sign.eq("decrease"), "all", True),
     "M10": ("A curated pathway shows a disease mutation disrupting the target", lambda d: d.reactome > 0, "all", True),
@@ -621,7 +621,7 @@ RULES = {  # key: (label, rule, regime, in the committed plan)
     "P1": ("Broken copies of the gene protect, and the drug blocks it",
            lambda d: (d.lof_protective > 0) & d.sign.eq("decrease"), "all", False),
     "P2": ("Genetics agrees with the drug's direction", lambda d: d.mechanism.eq("concordant"), "all", False),
-    "P3": ("Mouse result agrees with the drug's direction", lambda d: d.mouse_direction.eq("concordant"), "all", False),
+    "P3": ("Mouse genetics agrees with the drug's direction", lambda d: d.mouse_direction.eq("concordant"), "all", False),
 }
 DISCOVERY_SHARE = 0.6  # share of target sets in the discovery half
 DISCOVERY_FLOOR = 1.3  # the discovery risk ratio's 90% lower bound must exceed this
@@ -633,7 +633,7 @@ MIN_SPLIT_TARGETS = 5  # exposed target sets below which a half gets no estimate
 # clinical precedent, not preclinical evidence, and sits outside the Holm family.
 EVIDENCE_TYPES = {
     "germline": ("Inherited variants linked to the disease", lambda d: d.g3 > 0, "all"),
-    "animal": ("Mice with the gene altered show the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
+    "animal": ("Mouse genetics: knocked-out or mutant mice show the disease", lambda d: (d.mgi > 0) | (d.impc > 0), "all"),
     "somatic": ("Gene recurrently mutated in this cancer", lambda d: d.somatic > 0, "ONC"),
     "cell_screen": ("Gene-knockout screens in human cells", lambda d: d.crispr > 0, "all"),
     "expression": ("The gene's RNA level differs in diseased tissue", lambda d: d.expression > 0, "all"),
@@ -661,9 +661,9 @@ REFINEMENTS = {
                              lambda d: d.mechanism.eq("concordant"), "all", False),
     "protective_inhibitor": ("Broken copies of the gene protect, and the drug blocks it", "germline",
                              lambda d: (d.lof_protective > 0) & d.sign.eq("decrease"), "all", False),
-    "animal_close": ("Mouse symptoms closely match the disease", "animal",
+    "animal_close": ("Mutant mouse phenotype closely matches the disease", "animal",
                      lambda d: (d.mgi_strong > 0) | (d.impc_strong > 0), "all", True),
-    "animal_direction": ("Mouse model points the same way as the drug", "animal",
+    "animal_direction": ("Mouse genetics points the same way as the drug", "animal",
                          lambda d: d.mouse_direction.eq("concordant"), "all", False),
     "somatic_matching": ("Driver matches the drug (activated oncogene + inhibitor)", "somatic",
                          lambda d: (d.somatic_concordant > 0) & d.sign.eq("decrease"), "ONC", True),

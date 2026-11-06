@@ -97,11 +97,11 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · The gene's RNA level differs in diseased tissue | 907 / 7,435 | 325 | 0.89 (0.58–1.26) | 0.95 (0.65–1.38) | 0.90 (0.63–1.30) | 1.22 (0.99–1.50) |
 | · Target more active in disease, and the drug blocks it | 418 / 7,435 | 158 | 0.62 (0.28–1.07) | 0.79 (0.46–1.37) | 0.77 (0.45–1.32) | 1.38 (1.06–1.79) |
 | Animal studies | 1,504 / 7,435 | 462 | 1.44 (1.07–1.87) | 1.36 (1.10–1.68) | 1.34 (1.09–1.65) | 0.83 (0.69–1.00) |
-| · Mice with the gene altered show the disease | 1,504 / 7,435 | 462 | 1.44 (1.07–1.87) | 1.36 (1.10–1.68) | 1.34 (1.09–1.65) | 0.83 (0.69–1.00) |
-| · Mouse model from published studies | 1,496 / 7,435 | 458 | 1.44 (1.07–1.88) | 1.36 (1.10–1.68) | 1.34 (1.08–1.65) | 0.83 (0.69–1.01) |
+| · Mouse genetics: knocked-out or mutant mice show the disease | 1,504 / 7,435 | 462 | 1.44 (1.07–1.87) | 1.36 (1.10–1.68) | 1.34 (1.09–1.65) | 0.83 (0.69–1.00) |
+| · Mutant mice from published studies | 1,496 / 7,435 | 458 | 1.44 (1.07–1.88) | 1.36 (1.10–1.68) | 1.34 (1.08–1.65) | 0.83 (0.69–1.01) |
 | · Mouse knockout from a large-scale screen | 40 / 7,435 | 16 | Too rare to estimate | – | – | – |
-| · Mouse symptoms closely match the disease | 878 / 7,435 | 317 | 1.44 (1.05–1.91) | 1.44 (1.15–1.80) | 1.42 (1.14–1.77) | 0.76 (0.61–0.96) |
-| · Mouse result agrees with the drug's direction | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
+| · Mutant mouse phenotype closely matches the disease | 878 / 7,435 | 317 | 1.44 (1.05–1.91) | 1.44 (1.15–1.80) | 1.42 (1.14–1.77) | 0.76 (0.61–0.96) |
+| · Mouse genetics agrees with the drug's direction | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
 | · The drug in an animal model of the disease | – | – | Not measured: the literature search missed too many studies | – | – | – |
 | · The drug tested in healthy animals | – | – | Not measured: the literature search missed too many studies | – | – | – |
 | Cell studies | 237 / 1,824 | 62 | 0.54 (0.15–1.21) | 0.55 (0.25–1.24) | 0.56 (0.25–1.27) | 0.54 (0.27–1.09) |
@@ -136,7 +136,7 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | Gene recurrently mutated in this cancer | 1,187 | 20.7% / 9.2% | 2.25 (1.56–3.10) |
 | A curated pathway shows a disease mutation disrupting the target | 197 | 22.0% / 9.9% | 2.21 (1.16–3.32) |
 | Common variants (genome-wide association studies) | 259 | 17.1% / 10.0% | 1.70 (1.04–2.46) |
-| Mice with the gene altered show the disease | 1,679 | 13.6% / 9.3% | 1.46 (1.10–1.91) |
+| Mouse genetics: knocked-out or mutant mice show the disease | 1,679 | 13.6% / 9.3% | 1.46 (1.10–1.91) |
 | The gene's RNA level differs in diseased tissue | 1,054 | 10.5% / 10.2% | 1.03 (0.68–1.47) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
 | People rarely carry broken copies of the gene | 1,818 | 9.0% / 10.5% | 0.86 (0.56–1.24) |
@@ -164,7 +164,7 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | Common variants (genome-wide association studies) | –, n=67 | –, n=81 | –, n=47 | –, n=29 | –, n=35 | –, n=0 | 0.78 (3 groups) |
 | Rare inherited variants, including single-gene disease | 2.17 (1.11–3.68), n=285 | –, n=63 | –, n=56 | 3.10 (1.49–5.32), n=120 | 3.26 (2.02–5.75), n=143 | –, n=82 | 0.79 (6 groups) |
 | Gene recurrently mutated in this cancer | 1.98 (1.15–3.79), n=1,168 | –, n=4 | –, n=5 | –, n=1 | –, n=7 | –, n=2 | – |
-| Mice with the gene altered show the disease | 1.00 (0.56–1.75), n=471 | 1.61 (0.91–2.60), n=235 | 1.43 (0.65–2.84), n=185 | 1.77 (1.06–3.11), n=276 | 1.54 (0.98–2.44), n=408 | 1.52 (0.86–3.82), n=104 | 0.50 (6 groups) |
+| Mouse genetics: knocked-out or mutant mice show the disease | 1.00 (0.56–1.75), n=471 | 1.61 (0.91–2.60), n=235 | 1.43 (0.65–2.84), n=185 | 1.77 (1.06–3.11), n=276 | 1.54 (0.98–2.44), n=408 | 1.52 (0.86–3.82), n=104 | 0.50 (6 groups) |
 | The gene's RNA level differs in diseased tissue | 1.03 (0.61–1.71), n=769 | 0.37 (0.06–0.78), n=169 | –, n=33 | –, n=73 | –, n=10 | –, n=0 | 0.01 (4 groups) |
 | Drug binds its target strongly (100 nM or better) | 0.99 (0.50–1.76), n=849 | 1.59 (0.85–2.61), n=194 | 1.75 (0.95–3.02), n=210 | 0.81 (0.44–1.37), n=236 | 1.21 (0.53–2.11), n=139 | –, n=16 | 0.23 (5 groups) |
 
@@ -175,7 +175,7 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | Common variants (genome-wide association studies) | 1.06 (0.94–1.18) | 1.09 (0.84–1.41) | 1.13 (0.82–1.54) |
 | Rare inherited variants, including single-gene disease | 1.05 (0.96–1.14) | 1.55 (1.32–1.81) | 1.43 (1.18–1.74) |
 | Gene recurrently mutated in this cancer | 1.10 (0.99–1.22) | 1.29 (1.02–1.62) | 1.07 (0.85–1.35) |
-| Mice with the gene altered show the disease | 0.98 (0.91–1.04) | 1.14 (1.00–1.29) | 1.06 (0.89–1.25) |
+| Mouse genetics: knocked-out or mutant mice show the disease | 0.98 (0.91–1.04) | 1.14 (1.00–1.29) | 1.06 (0.89–1.25) |
 | The gene's RNA level differs in diseased tissue | 0.95 (0.87–1.04) | 0.86 (0.70–1.06) | 0.82 (0.65–1.04) |
 | A curated pathway shows a disease mutation disrupting the target | 1.11 (1.00–1.23) | 0.80 (0.59–1.10) | 1.16 (0.93–1.44) |
 | **Safety risk of the target** (not specific to the disease) |  |  |  |
@@ -204,7 +204,7 @@ Change in held-out AUC when each line is removed from the full model:
 | Any human genetics | -0.029 (-0.053 to -0.003) |
 | Rare inherited variants, including single-gene disease | -0.029 (-0.053 to -0.006) |
 | Gene recurrently mutated in this cancer | -0.005 (-0.033 to +0.021) |
-| Mice with the gene altered show the disease | -0.002 (-0.006 to +0.004) |
+| Mouse genetics: knocked-out or mutant mice show the disease | -0.002 (-0.006 to +0.004) |
 | People rarely carry broken copies of the gene | -0.001 (-0.009 to +0.009) |
 | The gene's RNA level differs in diseased tissue | +0.001 (-0.019 to +0.030) |
 
@@ -246,8 +246,8 @@ Every rule the plan registered, each against programs without it, before the rul
 | Single-gene disease, best-established | 266 (124) | 32% / 15% | 12% | 2.32 (1.79–3.02) | 1.63 (1.14–2.33) | 3.11 (2.17–4.45) |
 | Gene recurrently mutated in this cancer | 542 (133) | 22% / 15% | 17% | 1.66 (1.24–2.23) | – | 1.60 (1.15–2.22) |
 | The mutation's effect matches the drug's action | 397 (91) | 22% / 15% | 12% | 1.61 (1.19–2.18) | – | 1.52 (1.10–2.12) |
-| Mouse model from published studies | 939 (427) | 21% / 14% | 28% | 1.49 (1.22–1.82) | 1.49 (1.21–1.85) | 1.32 (0.81–2.14) |
-| Mouse symptoms closely match the disease | 568 (279) | 23% / 14% | 19% | 1.54 (1.27–1.86) | 1.59 (1.25–2.02) | 1.26 (0.85–1.86) |
+| Mutant mice from published studies | 939 (427) | 21% / 14% | 28% | 1.49 (1.22–1.82) | 1.49 (1.21–1.85) | 1.32 (0.81–2.14) |
+| Mutant mouse phenotype closely matches the disease | 568 (279) | 23% / 14% | 19% | 1.54 (1.27–1.86) | 1.59 (1.25–2.02) | 1.26 (0.85–1.86) |
 | The gene's RNA level differs in diseased tissue | 531 (264) | 17% / 15% | 12% | 1.06 (0.74–1.51) | 0.56 (0.32–1.00) | 1.24 (0.83–1.86) |
 | A curated pathway shows a disease mutation disrupting the target | 122 (44) | 22% / 15% | 4% | 1.29 (0.90–1.83) | – | – |
 | **Earlier drugs on the same target** |  |  |  |  |  |  |
@@ -279,7 +279,7 @@ Every rule the plan registered, each against programs without it, before the rul
 | Evidence before Phase 2 | Applies to | With it (targets) | Advanced: with / without | Adjusted risk ratio (95% CI) | Holm-corrected p |
 | :---- | :---- | :---- | :---- | :---- | :---- |
 | Inherited variants linked to the disease | All | 534 (243) | 28% / 14% | 1.94 (1.58–2.39) | < 0.001 |
-| Mice with the gene altered show the disease | All | 945 (432) | 21% / 14% | 1.49 (1.22–1.82) | < 0.001 |
+| Mouse genetics: knocked-out or mutant mice show the disease | All | 945 (432) | 21% / 14% | 1.49 (1.22–1.82) | < 0.001 |
 | Gene recurrently mutated in this cancer | Oncology | 536 (132) | 22% / 12% | 1.60 (1.15–2.22) | 0.020 |
 | Gene-knockout screens in human cells | All | 0 (0) | – / 16% | too few programs (0) to test | – |
 | The gene's RNA level differs in diseased tissue | All | 531 (264) | 17% / 15% | 1.06 (0.74–1.51) | 1.000 |
@@ -296,8 +296,8 @@ Every rule the plan registered, each against programs without it, before the rul
 | Drug raises function or replaces the gene, hereditary disease | Inherited variants linked to the disease | 112 of 170 | 31% / 19% | 1.89 (0.89–4.04) | 0.788 |
 | Genetics agrees with the drug's direction (added after the plan) | Inherited variants linked to the disease | 270 of 534 | 28% / 28% | 1.10 (0.76–1.60) | 1.000 |
 | Broken copies of the gene protect, and the drug blocks it (added after the plan) | Inherited variants linked to the disease | 30 of 534 | 13% / 29% | too few to test | – |
-| Mouse symptoms closely match the disease | Mice with the gene altered show the disease | 569 of 945 | 23% / 19% | 1.19 (0.82–1.72) | 1.000 |
-| Mouse model points the same way as the drug (added after the plan) | Mice with the gene altered show the disease | 334 of 945 | 23% / 20% | 1.11 (0.83–1.50) | 1.000 |
+| Mutant mouse phenotype closely matches the disease | Mouse genetics: knocked-out or mutant mice show the disease | 569 of 945 | 23% / 19% | 1.19 (0.82–1.72) | 1.000 |
+| Mouse genetics points the same way as the drug (added after the plan) | Mouse genetics: knocked-out or mutant mice show the disease | 334 of 945 | 23% / 20% | 1.11 (0.83–1.50) | 1.000 |
 | Driver matches the drug (activated oncogene + inhibitor) | Gene recurrently mutated in this cancer | 385 of 536 | 22% / 21% | 0.98 (0.62–1.57) | 1.000 |
 | Expression up + drug that lowers function | The gene's RNA level differs in diseased tissue | 250 of 531 | 15% / 18% | 0.94 (0.53–1.68) | 1.000 |
 | Liability + drug that lowers function | Safety risk of the target | 1,721 of 2,374 | 15% / 17% | 1.04 (0.79–1.38) | 1.000 |
