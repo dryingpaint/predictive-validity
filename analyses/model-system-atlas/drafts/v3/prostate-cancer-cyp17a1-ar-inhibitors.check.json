@@ -1,0 +1,378 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/prostate-cancer-cyp17a1-ar-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Handratta 2005 (PMID 15828836) resolves; 93.8% sentence verbatim in abstract. Opener on the LAPC4 track; model_first_use_year 2005 matches the paper."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Purushottamachar 2013 (PMID 23713567) resolves; CWR22rv1 sentence verbatim in abstract. 2013 paper is cell work only; xenograft follow-up is Kwegyir-Afful 2015, correctly named in judgement."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Toren 2015 resolves (epub 2014-10-28, print 2015-01); intratumoral-androgen sentence verbatim in abstract. Year 2014 = epub, consistent with rule 6."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Montgomery 2016 (epub 2015-11-02) resolves; PD sentence verbatim in abstract. Model_src Vasaitis 2008 resolves (AR down-regulation in LAPC4). Downstream PSA read-out, paired; abstract-level as declared."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maity 2016 (Sci Rep, open access) resolves; DHEA/PSA single-patient sentence verbatim in abstract; the paper itself holds model and patient data, so comparison_stated true is right. n=1, low confidence appropriate."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Peltola (epub 2018-09-05, print 2020) resolves; testosterone sentence verbatim. Oksala model_src resolves (epub 2018-02-10). Castrate patients on prednisone, so proximal read-out is a further fall; direction_only is fair. No untested opener (rule question 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Half-life sentence verbatim in Handratta abstract. Untested because no model exposure target; this reading conflicts with dose[5] on the same drug and dose (rule question 1)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Purushottamachar quote; opener on the AR-V7 track with no exposure target. Supported."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "MR49F sentence verbatim in Toren abstract. Gupta 2018 (PMID 30012563) confirms RP2D 600 mg QD set by tolerability, no DLT through 750 mg. Opener supported."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Peltola abstract verbatim: AUC rose only to 300 mg, fell on day 8, PK prevents development. Sponsor-stated PK failure with no model-stated human target (rule question 1). NCT02344017 has no results."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "v3 dose table (brief: target reached and enough); decision 16",
+   "note": "Taplin quote verbatim. Model stated no exposure target, the ground the draft uses to keep dose[1] untested for the same drug at the same 2,550 mg/d; the derived 'reached, failed, abandoned' row is inconsistent here. Rule question 1.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 scores the model's stated exposure/regimen target; Purushottamachar 2013 stated none (the draft keeps dose 2 untested on that ground), so nothing was compared: untested, as AML CD33 dose 4. Failure counted once, in efficacy (Taplin 2019)."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2020,
+   "rule": "v3 dose table toxicity row (decision 16): never reached because of toxicity, no stated margin",
+   "note": "Madan quote verbatim. No model exposure target, and patients left after a median of 2 cycles for toxicity, so the regimen was never sustained to the 12-week read; the no-margin toxicity row gives untested. Rule questions 1 and 4.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4: Toren 2015 stated no exposure target (draft keeps dose 3 untested for that), so no derived contra, as AML CD33 dose 4; decision 16: no stated margin, toxicity block untested. Failure counted in efficacy, harm in safety."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "LAPC4 sentence verbatim in Handratta abstract. Androgen-dependent model; the draft says so. Opener supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "CWR22rv1 quote verbatim. Opener for the patient-level AR-V7 track; Kwegyir-Afful 2015 full text confirms the AR-V7 depletion claim was tied to the planned phase 3 in AR-V+ patients."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Tumour-growth/PSA sentence verbatim in Toren abstract. Opener supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "ARMOR2 part 1 PSA50 48% verbatim; NCT01709734 registered primary includes PSA response, so endpoint_role primary holds; no results posted (registry_date null correct). Registry later marks the study terminated for lack of efficacy (see missing); rule 7 keeps the 2015 same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Oksala VCaP sentence verbatim. Untested follows the PK row of dose[4]; 13% PSA50 (3/23, with prednisone) correctly left as a note. Stands only while dose[4] stays contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Taplin 2019 (PMID 31542304) DMC sentence and PSA50 2/16 vs 8/19 verbatim in the PubMed abstract (Europe PMC copy truncated). Contra supported. comparison_stated true doubtful: hypothesis stated, no model data shown (question 3). 2016 vs 2019: question 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Madan 2020 (PMID 32327394) quotes verbatim; primary PSA50 at 12 weeks 1/17. Registry record is more likely NCT02130700 (17 enrolled, BID-titration + QD arms, 12-week PSA primary) than NCT02445976 (197, once-daily); neither posted results. Rule question 4."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Opener on the AR-V7 track with the Purushottamachar quote. Handratta 2005 and Vasaitis 2008 abstracts carry no tolerability statement, so the LAPC4 track rightly has no safety entry."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Toren sentence verbatim but it is an AR-axis claim, not a safety statement; the lyase-selectivity/no-steroid claim in the note is inferred. Acceptable as an untested opener."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Montgomery abstract verbatim, and adds 'no apparent mineralocorticoid excess (AME) events'; Kwegyir-Afful 'no apparent host toxicities' verbatim in abstract and full text. same + partial is within the rule; a stricter reader could call the liver-enzyme silence contra."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bardia 2018 (epub 2018-05-09) DLT sentence verbatim; imported_from MONDO:0007254 correct. Gupta 2018 (prostate, epub 2018-07-16) is an in-indication source the same year: no DLT through 750 mg but dizziness 52%, blurred vision 38%; contra holds either way (rule question 7)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Peltola 'well tolerated up to the highest evaluated dose' and Oksala 'well tolerated in both rodents and primates' both verbatim. Prednisone co-administration limits the mineralocorticoid test, as the draft says."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Madan 'closed prematurely because of the high magnitude of toxicity' verbatim; AEs concentration impairment, fatigue, tremor, nausea. Contra on unstated CNS harm supported; counted once here, consistent with dose[6] moving to untested."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rafferty 2014 (PMID 24775307, epub 2014-04-16) resolves; sentence verbatim in abstract. Untested opener, class level. Abstract says VT-464 was already in phase 2, so 2014 is the publication date of an older assay; ex_vivo stands in for in-vitro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maity 2016 (PMC5066251, epub 2016-10-17) resolves; verbatim in full text. Prospective same holds (patient dosed 2012, assay older). Enzyme numbers are cited from Rafferty (ref 8): strict reading is a pairing, model_src Rafferty 2014. Yin 2017 dispute confirmed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rafferty 2014 resolves; MES sentence verbatim in abstract. Untested opener for the adrenal harm the assay speaks to; CNS harms correctly left to the xenograft track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Maity cortisol sentence verbatim in full text (Supplementary Figure 2). Same holds for the stated harm; n=1, steroid-free 300 mg BID. Same datum as engagement[8] scored on a different question; Madan 2020 steroid-free cohort cited correctly.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Ojala 2020 (PMID 32822743, epub 2020-08-19) resolves; sentence verbatim in abstract. Untested opener sharing the year; model_first_use_year 2020 is publication, modelling preceded Peltola's PK verdict. Abstract-only, paywalled.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in abstract, which says the tools were evaluated against clinical PK of formulation T1 already in hand (Peltola epub 2018-09-05): retro with retrodiction true is right, never same. T2 prediction never dosed. 'partial' defensible; abstract also reads as match.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kwegyir-Afful 2015 (PMC4695001, Oncotarget) resolves; sentence verbatim in Discussion, citing Tokai conference reports. Untested opener accepted; whether a retrospective banked-sample subset is instead retro (decision 10) is a rule question. Patient level, ex_vivo CTCs.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Taplin 2019 (PMID 31542304, epub 2019-09-18) resolves; DMC sentence and PSA50 2/16 vs 8/19 verbatim in abstract. Contra, opposite, paired with model_src Kwegyir-Afful (resolves). 2016 tier-5 dating is question 2; assay switch Epic protein to AdnaTest mRNA raised as a rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Tokai 10-K / press release 2016-07-26 (tier 5, SEC filing text at https://ir.eledon.com/static-files/0580574b-a213-4a9b-83f1-dab0fd0e9049): DMC recommendation 2016-07-25 that ARMOR3-SV would likely miss rPFS, no safety concerns cited. The draft cites it in judgement only; under rule 2 it is a dated tier-5 contra entry (trial_unreported true) three years before Taplin 2019.",
+  "ARMOR2 AR-V7 subset (Taplin, EORTC-NCI-AACR 2014; news: https://ecancer.org/en/news/6615-galeterone-shows-activity-in-a-variant-form-of-castration-resistant-prostate-cancer): 6/7 AR-V7+ patients had PSA responses on galeterone, the patient-level prospective comparison on the CWR22Rv1 track that preceded ARMOR3-SV; conference-only, no DOI found (rule question 6).",
+  "ClinicalTrials.gov NCT01709734 (ARMOR2) status TERMINATED, whyStopped: 'terminated prematurely ... upon recommendation from the DMC. Study was stopped due to lack of efficacy' - a registry datum bearing on the LAPC4-track class-level same; no results posted.",
+  "Madan 2020 registry record: NCT02130700 (Innocrin, 17 enrolled, VT-464 BID and QD arms, 12-week PSA change primary, start 2014-04, no results) fits the paper; the draft's inferred NCT02445976 (197 enrolled, once-daily, post-enzalutamide or abiraterone) does not. Full text could not be opened (PMC bot check, Europe PMC 500) to confirm.",
+  "Seviteronel class-level patient data outside the post-enzalutamide setting: NCT02012920 and NCT02361086 (phase 1/2 in CRPC, completed, no results posted) and the Shore 2016 ASCO abstract that Bardia 2018 cites as the source of the 750 mg phase 2 dose; not used by the draft.",
+  "ODM-204 model dating: NCT02344017 started 2015-02, so the VCaP/monkey model existed by then; no public model source before Oksala (epub 2018-02-10) was found, so model_first_use_year 2018 is a publication date, not first use.",
+  "Patient-derived organoids or ex-vivo cells compared with patients for galeterone or seviteronel: none found in one WebSearch; Alyamani 2017 (10.1016/j.chembiol.2017.05.020, resolves) is patient-serum galeterone metabolism explaining the miss, not a model prediction.",
+  "ODM-204 cynomolgus-monkey / hCG-rat steroidogenesis and tolerability (Oksala 2019, doi 10.1016/j.jsbmb.2018.02.004, PMID 29438723; abstract confirmed: single oral 10-30 mg/kg dose-dependently inhibited adrenal and testicular steroid production in cynomolgus monkeys, similar in hCG-treated rats, 'well tolerated in both rodents and primates'). Checker (models) agrees with the sweep's split: engagement[6] (Peltola testosterone fall, model_src Oksala) and safety[5] rest on this system, not the VCaP xenograft, so under the one-system-one-model_id rule they belong on their own model_id (e.g. odm204-primate-steroidogenesis) with 2018 untested openers in engagement and safety, leaving odm204-vcap-xenograft with efficacy[5] and dose[4]. Not re-keyed here.",
+  "Yin 2017 (doi 10.1124/dmd.117.075317, PMID 28373265; abstract confirmed): side-by-side CYP17A1 enzymatic analysis found seviteronel showed no significant lyase selectivity. A model-side contradiction of the seviteronel-cyp17a1-lyase-selectivity track's own claim with no patient comparison, so no entry; recorded so the track's 'same' is read against a disputed model."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When the model stated no exposure or regimen target, do the derived dose rows ('reached, failed, abandoned' -> contra derived_from efficacy; 'reached, drug worked' -> same) apply at the clinically chosen dose, or does dose stay untested? The draft applies both readings to galeterone's 2,550 mg/d (dose[1] untested, dose[5] contra); if the derived rows apply, the LAPC4 track also needs a 2015 dose same it lacks, and the ODM-204 'PK never reached' contra rests on the sponsor's verdict with no model target.",
+  "Dating a failure first public in a press release / SEC filing: ARMOR3-SV futility was public 2016-07-26 (tier 5) but the draft turns the track contra in 2019 on the tier-1 paper because rule 6's date list omits press releases while rule 2 says tier-5 failures must be found. Should the track carry a 2016 tier-5 contra with trial_unreported true, with 2019 as the confirming entry?",
+  "comparison_stated for a trial paper that states the model-derived hypothesis in its own words ('galeterone ... induces AR protein degradation. We hypothesized ...') but shows no model data (Taplin 2019): statement or pairing under rule 1?",
+  "Toxicity-driven early discontinuation confounding the primary read (Madan 2020: median 2 cycles vs a 12-week PSA50 primary, 1/17): is efficacy contra on the 'reached, failed' row, or untested on the decision-16 toxicity row when no margin was stated? The draft scores contra; the checker moved dose[6] only.",
+  "model_first_use_year when the model paper postdates the trial start (ODM-204: trial start 2015-02, model paper 2018-02): open the strip at the registry start as proxy, or at the publication, and is a same-year untested opener required when model and trial papers share the year?",
+  "Conference-only patient data with no DOI (ARMOR2 AR-V7 subset, EORTC-NCI-AACR 2014; Shore 2016 ASCO seviteronel phase 1/2): are they admissible at any tier, and if not, how is a prospective patient-level comparison that only exists there recorded?",
+  "Imported safety harm when a same-year in-indication source exists (Bardia 2018 breast DLTs vs Gupta 2018 prostate: no DLT through 750 mg, dizziness 52%): which source sets the entry and does the import still need imported_from?",
+  "Retrospective biomarker subset (galeterone-ctc-ar-variant-assay efficacy[8]): the Epic Sciences CTC AR C-terminal-loss assay was run on banked ARMOR2 samples and correlated with PSA responses already known (6/7). The draft opens the track untested; decision 10 makes a model run after the clinic knew the answer a retrodiction (retro), but here the subset analysis is itself the first patient read, so it reproduces no prior human result. Opener (untested) or retro?",
+  "Assay change between hypothesis and test on one model_id: ARMOR2 used Epic Sciences CTC AR C-terminal-loss protein; ARMOR3-SV selected on the Johns Hopkins AdnaTest CTC AR-V7 mRNA assay. Are these one system (patient CTC AR-variant assays, as drafted) or two? If two, the ARMOR3-SV contra sits on a track with no opener and the Epic assay was never tested prospectively.",
+  "comparison_stated when the comparing paper restates the model result from a cited paper: Maity 2016 quotes Rafferty 2014's 10-fold lyase-over-hydroxylase enzyme selectivity (its ref 8) and reads the patient's unchanged cortisol against it; the enzyme data are not Maity's own. Statement (as drafted, engagement[8] and safety[8]) or pairing with model_src Rafferty 2014 under rule 1? Related to question 3."
+ ]
+}

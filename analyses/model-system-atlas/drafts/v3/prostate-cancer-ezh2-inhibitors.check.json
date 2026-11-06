@@ -1,0 +1,194 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/prostate-cancer-ezh2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Science 2012 resolves; quote verbatim in abstract. Proxy opener on the cell-line/xenograft track is fine; Xiao 2018 and Bai 2019 (both resolve) carry the H3K27me3 readout the later entries use."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "1",
+   "note": "Abstract resolves; quote verbatim. Background restates a growth-synergy premise citing unpublished Bradley 2018 and never draws the H3K27me3 comparison itself, so comparison_stated false; needs model_src (Xiao 2018 or Bai 2019). Same holds as a pairing."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "12",
+   "note": "Quote verbatim (n=6 biopsies). Mevrometostat is not a tile member (class table: lirametostat, tazemetostat, zeprumetostat=SHR2554); strengthens is for a second miss; model_src Ku 2017 belongs to the GEMM track. Drop; track stays same from 2019.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Decision 12: membership comes from the reviewed class table, which lists zeprumetostat as SHR2554 (Hengrui), not mevrometostat (PF-06821497); out of class, dropped. Track stays same from 2019 (lirametostat); re-admit only if the table is amended."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. The draft itself records no exposure or regimen target from any prostate model, which bears on dose entries 2 and 3."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2025,
+   "rule": "12",
+   "note": "Quote verbatim (abstract truncated after 'HR 0.51; 90'). Out-of-class drug (rule 12) and no model exposure target: 'reached' rests on H3K27me3 depletion the model never quantified. Drop; cell stays untested from 2012 pending the membership question.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Decision 12: mevrometostat is not in the reviewed class table (zeprumetostat = SHR2554), so dropped. Cell stays untested from 2012; the models stated no exposure target (decision 4), so any in-class entry would also need one."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "4",
+   "note": "Registry quote verbatim; 1200 mg BID confirmed as RP2D. A derived contra needs an efficacy contra (see efficacy 4); 'target reached' is skin-PD scaling from other tumours with no prostate PD (#50/#99). ESMO 2024 abstract re-dates to 2024.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 dose tie: a derived contra needs an efficacy contra, and efficacy 4 is now untested/unresolved. No prostate PD; 'target reached' is skin-PD scaling from other tumours (#50/#99, source_calls_it scaling). Untested, dated 2024 (ESMO 1603P)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; untested opener supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract resolves; quote verbatim. No RB1/TP53- or NE-selected member trial exists, so untested stands. The draft also uses this paper as model_src on the xenograft track: one paper serving two model_ids."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2025,
+   "rule": "12",
+   "note": "Quote verbatim (abstract truncated after 'HR 0.51; 90'). Mevrometostat is not in the reviewed member list (rule 12). In-class ProSTAR (registry 2025-10-29) posts composite 31.4 vs 17.1%, ORR 7.9 vs 5.7%, no test: unresolved, untested.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Decision 12: mevrometostat (PF-06821497) is not in the reviewed class table (zeprumetostat = SHR2554); out of class, dropped. Cell stays untested from 2017; ProSTAR (lirametostat) posts no test statistic, unresolved under #90."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "4",
+   "note": "Registry quote verbatim. Posted medians 22.1 (16.6-27.6) vs 11.1 (5.7-16.5) favour the combination, no HR or test; ESMO 2024 1603P: 'Median rPFS by BCR was 16.6 and 13.8 months'. Effect not absent: unresolved (#53, #90), dated 2024.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "#53: contra needs the effect absent or reversed; CELLO-1 rPFS 22.1 vs 11.1 months (ESMO 2024: 16.6 vs 13.8) favours the combination, no HR/test, terminated early. Data over sponsor framing (decision 13); decision 10/#90: unresolved. Dated 2024."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review in bundle; quote verbatim at txt lines 2386-2388 (4-week rat study K12004). 2013 first-in-human proxy year acceptable under decision 7."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim at lines 835-837; 822-patient pool and 734 ng.h/mL EC50 in the review; 2.8x T-LBL margin in the label; MONDO:0017387 = epithelioid sarcoma. Regulator states the comparison; same with incidence/margin magnitude holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2020,
+   "rule": "12",
+   "note": "Quote verbatim. Mevrometostat out of class (rule 12); strengthens misused; GI/marrow AEs change no status. The in-class equivalent (lirametostat low-grade diarrhoea 31%, Taplin 2019) belongs in the 2020 note. Track stays same.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Decision 12: mevrometostat is not a listed member (table: lirametostat, tazemetostat, zeprumetostat = SHR2554); dropped. Its GI/marrow AEs change no status; in-class lirametostat diarrhoea (Taplin 2019) belongs in the 2020 note. Track stays same."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2026,
+   "rule": "2",
+   "note": "DOI resolves (CCR, online 2026-08-14); quote verbatim in abstract; MONDO:0018906 = follicular lymphoma. A commentary reporting SYMPHONY-1 second-hand: cite Ipsen's March 2026 withdrawal record (tier 5) or a regulator notice. Same unchanged; strengthens misused."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Nat Commun 2018-06-19 full text (PMC6008438): quote verbatim; 4/25 CRPC-NE organoids, GSK343/GSK503 at high doses, no enzalutamide synergy. Registry: NCT03741712 terminated n=9 no results; NCT07230106/NCT07407283 exclude NE/small-cell. Prospective untested opener 2018, patient level."
+  }
+ ],
+ "missing": [
+  "zeprumetostat (SHR2554, moiety 32177) is a listed member the draft never names (its note lists mevrometostat instead): mCRPC trial NCT03741712 (SHR2554 +/- SHR3680) terminated 2019-09 at n=9 with no results posted, so no admissible comparison, but the member list must match lists/class_audit/class_members.csv.",
+  "Patient-derived organoid track: Puca et al. 2018 Nat Commun 9:2404 (doi 10.1038/s41467-018-04495-z) grew NEPC patient-derived organoids/PDX and tested EZH2 inhibition; an ex_vivo, patient-level model for the class in prostate with no patient comparison (untested track, model_kind ex_vivo).",
+  "Missed tier-1 source for the CELLO-1 phase 2 result: ESMO 2024 abstract 1603P, Ann Oncol 35 suppl (doi 10.1016/j.annonc.2024.08.1684): 'Median rPFS by BCR was 16.6 and 13.8 months for TAZ+ENZ and ENZ, respectively' (fragment via search index; full text not retrievable). Re-dates the CELLO-1 entry to 2024 under decision 7.",
+  "ProSTAR program decision, tier 5: Constellation 10-K FY2020 (sec.gov/Archives/edgar/data/1434418/000156459021007783/cnst-10k_20201231.htm): 'In June 2020, we announced that we plan to discontinue development of CPI-1205 after completion of ProSTAR' - a portfolio decision, not an efficacy verdict; belongs in patient_trials."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Membership vs register coverage: mevrometostat (PF-06821497, Pfizer; the class's only Phase 3 program, MEVPRO-1/2) is a selective EZH2 inhibitor absent from the reviewed class table (members lirametostat, tazemetostat, zeprumetostat). Decision 12 says only listed drugs score and its examples are sibling targets and non-selective drugs. Does a same-mechanism drug missing from the table score, or must the table be amended first? Four entries (engagement 3, dose 2, efficacy 3, safety 3) hinge on it.",
+  "A registry record (tier 3) stating 'the primary endpoint was not met' while posting medians that favour the drug (CELLO-1 rPFS 22.1 vs 11.1 months, 95% CIs not overlapping) with no hazard ratio or test, in a trial terminated early: contra because the sponsor's own primary criterion failed (#64), or untested with source_calls_it unresolved because the predicted effect was not absent (#53, #90) and decision 10 says a non-significant trend in a terminated trial is not a patient result? The same answer decides ProSTAR (no sponsor verdict; ORR 7.9 vs 5.7%, composite 31.4 vs 17.1%).",
+  "Decision 16 vs imported safety: the rat predicted T-LBL at >=2.8x the 800 mg BID AUC; MDS/AML/T-LBL appeared at the clinical exposure in epithelioid sarcoma and FL. Decision 16 would score a predicted harm with a misplaced margin in dose, but decision 12 lets only safety transfer across indications. Is the margin miss recorded anywhere when all of a drug's exposure data are imported?",
+  "strengthens: true is defined for a second miss (#127); the draft uses it on three matched entries (engagement 2024, safety 2025, safety 2026). Should non-status-changing matched facts in engagement and safety, which have no patient_trials list, be folded into notes, or does strengthens extend to matches?",
+  "May one paper serve as model_src on two tracks? Ku 2017's LNCaP/AR shRB1/shTP53 cells and GSK503 xenografts are used as the class-level xenograft track's model side while the same paper opens the patient-level GEMM track; the alternative is pairing the class track with Xiao 2018 or Bai 2019.",
+  "A dose cell whose models stated no exposure or regimen target: the draft treats 'concentrations sufficient to inhibit H3K27 methylation' as the target and scores 'reached' on tumour H3K27me3 depletion. Is a PD-depletion criterion a dose target under decision 4, or is such a cell untested throughout (or empty)?"
+ ]
+}

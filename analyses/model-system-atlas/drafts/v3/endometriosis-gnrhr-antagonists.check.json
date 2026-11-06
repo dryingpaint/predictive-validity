@@ -1,0 +1,271 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/endometriosis-gnrhr-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Miwa 2011 (PMID 21657270) resolves; quote verbatim in abstract. Field fix: model_filed should be true, FDA 214846 PharmR p.32 summarises the castrated-cynomolgus LH study TAK-385-00095 (0.1-3 mg/kg, LH down 48 h at 3 mg/kg)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nakata 2014 (PMID 24333551, epub 2013-12-18) resolves; quote verbatim. FDA PharmR p.32 study TAK-385-00103 confirms model_filed true."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "MacLean 2015 (PMID 26502357) resolves; quote verbatim. Europe PMC has no full-text XML for PMC4667159, so the macaque citation stays unverified as the drafter said. Healthy men count for engagement. Field fix: model_filed true (TAK-385-00095 filed)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same MacLean 2015 source; quote verbatim. Nakata abstract states prostate weight to castrate levels in male knock-in mice; castrate testosterone in men is a direction-only match."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Untested opening entry; no exposure target in Miwa 2011. Field fix: model_filed true (FDA PharmR p.32)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "FDA PharmR confirms 100 mg/kg BID effective and 30 mg/kg no-effect in female knock-in mice with no TK; a mg/kg dose without exposure is not a target. Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "FDA 214846 PharmR (posted 2021) quote verbatim; NOAEL 15 mg/kg = 26.2x for liver and menses cessation, 50 mg/kg (99x) liver toxicity. Margin stated and held at 40 mg in endometriosis (Osuga 2021, SPIRIT): decision 16 same. Source is the fibroid NDA; consider imported_from."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yselty EPAR (EMA/266814/2022, 22 Apr 2022) p.18 states the monkey Clast >~20 ug/mL threshold and p.~60 the 100% E2 <20 pg/mL at 200 mg; verbatim. Human Clast not stated, so direction_only is right."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "EPAR quote verbatim (absolute margin <1, ~3-fold free drug). Patients reached 200 mg with slight AST/ALT excess, no block. Decision 16 has no row for a stated margin <1 that patients nevertheless tolerated; same + partial is defensible, raised as a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Untested on the monkey track: LH/E2/menses are PD surrogates, no disease readout. Consistent only if the mouse track is scored the same way (see efficacy 4). Field fix: model_filed true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nakata 2014 quote verbatim; the paper names endometriosis as an indication but tests uterine weight only. Opening untested entry is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kim 2015 (PMID 26321528) resolves; quote verbatim. SKI2670 is a non-member proxy, product_in_model false. Tezuka 2023 uses renal-subcapsular autotransplantation; Kim's implant site is not stated in the abstract, pooling as one rat autotransplant system is reasonable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2020,
+   "rule": "CHECKER_BRIEF_v3 §3 bullet 1 (pairing on conditions the model never tested); DRAFTER_BRIEF_v3 efficacy definition",
+   "note": "Osuga 2021 quote verbatim (epub 2020-09-12, NCT01458301 no results). The knock-in mouse never tested lesions or pain; uterine atrophy is the same oestrogen-deprivation surrogate as the monkey E2/menses readout the drafter left untested. Score both tracks alike; if the mouse stays same, the monkey must be same too.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4: efficacy scores the trial primary as the model predicted; the knock-in mouse predicted uterine atrophy (a PD surrogate), never pain or lesions. Decision 8: one rule per track, so the mouse is untested like the monkey."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Donnez 2020 (PMID 32505383) quote verbatim; NCT02778399 results posted 2022-07-21 confirmed; EPAR p.18 rat sentence verbatim; Tezuka 2023 (PMID 37186405, received 2023-01-31) cyst-volume quote verbatim. Prospective status rests on an unknown run date (rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Osuga 2021 clause verbatim; FDA PharmR p.32 bone sentence verbatim, OVX control also null. Contra holds on a literal reading (species could show it, model data said none) but an insensitive null is a rule question. Year 2021 depends on Nakata 2014 full text not reporting bone; not checked (paywalled)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "FDA PharmR 39-week monkey summary has no bone endpoint (grep: bone only as marrow/micronucleus); menses-cessation and uterine-atrophy predictions matched. Contra on BMD silence supported."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Donnez 2020 BMD sentence verbatim. EPAR nonclinical (pp.17-30) silent on bone; liver finding stated (p.~27 'increase in serum ALT and glutamate dehydrogenase'); the judgement's 'serum liver enzyme activity' sentence was not found verbatim, near only. Contra + partial supported."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yselty EPAR EMA/266814/2022 p.18 verbatim ('supressed' sic); rat Ki 274 nM p.17. Opening untested entry on a new rat track; the rat PD study's run date is not public (existing rule question 4 applies). model_filed true is right for an MAA primary-pharmacology study.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 11",
+   "note": "EPAR p.52 quote verbatim (clinical primary pharmacology); rat side p.18 verbatim. Pairing is the drafter's: E2 fell dose-dependently in rat and in women, no rat threshold quoted, so direction_only. A filed primary-pharmacology study, not post-hoc; 2022 is the first document carrying both sides.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "rule": "RQ 93 (dose = target reached); decision 7 dating; decision 11 magnitude",
+   "note": "Quote verbatim (en-dashes normalised). Donnez 2024 full text (PMC11144970, open) states: 'E2 levels were maintained within a therapeutic range (between 20 and 60 pg/ml) ... in patients who received 75 mg linzagolix daily' (Fig. 2). Target reached prospectively at 75 mg: same 2024, direction_only (trial band 20-60 vs model 20-50; medians only in the figure).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 4 case 2: the model's E2 window was reached at 75 mg (Donnez 2024, 20-60 vs 20-50 pg/mL) and the drug worked (this track's efficacy entry 7, same/partial). Prospective under decision 10; no decision 16 block. Same, 2024."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Pohl 2022 (PMC9306723) abstract and discussion verbatim (dashes normalised); received 2021-04-13, accepted 2021-11-21, epub 2022-01-13. Paper states its goal was phase 3 dose selection and that 75 mg was the selected phase 3 dose (NCT03992846). Decision 8 admits in-silico systems; the FLT3 exposure-response exclusion is a rule question, not a rule.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10, 11",
+   "note": "ObsEva topline 2022-01-06 precedes epub 2022-01-13 by 7 days, but the manuscript was received 2021-04-13 (before primary completion 2021-10-18) and the 75 mg arm fixed 2019-06-13; decision 10 ('post-dates and motivated by') is not met, so same + partial stands (DYS 44.0% vs 23.5%, NMPP p=0.279; model gave >95% for both). Donnez 2024 cites Pohl 2022 for PK/PD only and credits the dose to EDELWEISS 1, so comparison_stated false holds. EPAR 2022 has no EDELWEISS 3 data; 2024 dating right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Flores 2025 (PMID 39393571, epub 2024-10-10, print 2025-02-01) quote verbatim in abstract. Cetrorelix only, product_in_model false; PR-stratified response to GnRH antagonism never tested in patients, so untested 2024 at patient level is right. Note the abstract also reports high-PR lesions responding 21-fold more completely to cetrorelix, so the model's stratification runs both ways.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "rule": "safety definition (stated harm prediction held); decision 7 dating; decision 11 magnitude",
+   "note": "Model: 75-125 mg keeps 24-week LS BMD loss within the -1.6% target (50 mg -0.09%, 100 mg -1.30%, abstract verbatim). Donnez 2024 full text: 'BMD loss was not clinically meaningful (<1% from baseline for the lumbar spine, femoral neck, and total hip at 24 weeks)'; abstract gives <1% in both arms. Prospective at 75 mg alone: same 2024; magnitude within_2x on LS BMD (adjudicator's call).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 4 safety: the model's stated prediction (24-week LS BMD loss within -1.6% at 75-125 mg) held in EDELWEISS 3 (<1% at 75 mg, Donnez 2024). Prospective under decision 10; decision 16 counts no window failure. Same, 2024."
+  }
+ ],
+ "field_corrections": [
+  "model_filed: null -> true on engagement 1, engagement 3, dose 1, efficacy 1 (cyno-monkey-hpg): FDA 214846 PharmR p.32 summarises study TAK-385-00095, single oral 0.1-3 mg/kg in nine castrated cynomolgus monkeys, LH suppressed to 48 h at 3 mg/kg.",
+  "Context note: 'barely rat GnRHR' is true of relugolix (rat IC50 2900 nM, FDA PharmR p.3) but not linzagolix, which suppressed LH in male rats and E2 in pro-oestrus female rats (EPAR p.18) and worked in the rat endometriosis model.",
+  "area: draft 'Endocrine' matches contexts/*.json capitalisation; tiles.json says 'endocrine'. Not changed, flagged for the template owner."
+ ],
+ "missing": [
+  "Patient-derived xenograft ('murine avatar') of human endometrioma lesions in NOD/SCID mice dosed with the GnRH antagonist cetrorelix: low-PR lesions respond more to GnRH antagonism than to MPA (F S Sci 2025, PMID 39393571, doi 10.1016/j.xfss.2024.10.004). A patient-level track for this mechanism with a non-member peptide sibling (product_in_model false, modality outside the tile); no patient comparison yet, so untested, but it is a model compared-in-principle with patients and should be listed.",
+  "Rat autotransplant track has no dose entry although Tezuka 2023 (PMID 37186405) states a model exposure target: 'The effective concentration of linzagolix, calculated as the free form of the last-observed drug concentration, was ~1 umol/L in endometriosis model rats.' Comparable to human free exposure at 200 mg (EPAR gives ~3-fold free-drug margin); at least an untested opening entry, possibly same.",
+  "Knock-in mouse reversibility prediction (Nakata 2014: gonadal function recovered within 14 days of withdrawal) matched by faster menses return on relugolix vs leuprorelin (Osuga 2022, PMID 34895700). A held prediction on the hgnrhr-knockin-mouse track; does not lift the bone contra but belongs in the record.",
+  "Nothing missed on failures: no endometriosis press-release or EMA failure for relugolix or linzagolix (EDELWEISS 2 termination already noted); opigolix/ASP1707 has no preclinical model on PubMed or Europe PMC (16 hits, all clinical or reviews), confirming the drafter's 'no public model'."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy from PD-only models: can a model with no disease readout (knock-in mouse uterine weight; monkey E2/menses) score efficacy against a pain primary endpoint, or is that scoring the oestrogen-deprivation hypothesis rather than the model? The draft scores the mouse same and the monkey untested on identical evidence; the rules decide neither.",
+  "Insensitive null as a prediction: the mouse measured bone density and found no change, but its OVX positive control also showed none (4 weeks). Is that a stated prediction of no harm (contra when patients lost BMD) or an inadmissible comparison (untested)?",
+  "Decision 16 gap: the model stated an absolute liver margin <1 at the clinical exposure (EPAR), yet patients were dosed to 200 mg with only slight LFT excess. Is dose same with source_calls_it partial/over_predicted, or contra with magnitude opposite for a misplaced margin in the conservative direction?",
+  "Retrodiction with an unknown run date: the linzagolix rat study is in the MAA primary-PD package (EPAR 2022) and was published in 2023, after the 2018 phase 2b readout; its run date is not public. Default prospective (same) or retro?",
+  "Must every track open in every cell? The rat track appears only in efficacy and the tox track only in dose/safety; lint accepts this, the brief's 'each cell opens at model_first_use_year' is ambiguous.",
+  "Which area spelling is canonical: tiles.json 'endocrine' or the contexts' capitalised 'Endocrine'?"
+ ]
+}

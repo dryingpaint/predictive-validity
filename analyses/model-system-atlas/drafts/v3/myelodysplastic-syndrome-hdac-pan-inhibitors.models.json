@@ -1,0 +1,89 @@
+{
+ "tile": "myelodysplastic-syndrome-hdac-pan-inhibitors",
+ "searched": [
+  "Read: MODELS_TASK.md, DRAFTER_BRIEF_v3.md, the draft, its .check.json (missing: [] ; rule question 4 on Jayaraman identity; checker_notes on ATF3, SLAS Discov 2024, Front Oncol 2024, ivaltinostat 19 title hits, George 2004/Giles 2006 dating), tiles.json (members ivaltinostat, panobinostat, pracinostat), lint.py field rules, merge_models.py",
+  "FDA bundle manifest.csv grep panobinostat|pracinostat|ivaltinostat|farydak|hdac: one row, Farydak label 205353 (myeloma); pracinostat and ivaltinostat have no NDA/BLA. Label txt grep myelodysplastic|allometr|simcyp|in vitro data|animal data: no MDS text, no model reliance",
+  "Europe PMC: (panobinostat OR LBH589) AND (myelodysplastic OR MDS) AND (organoid OR xenograft OR PDX OR patient-derived OR humanized OR CD34+ OR primary cells OR ex vivo) - 970 hits, top 30 reviews plus Front Oncol 2024 PDX (not panobinostat)",
+  "Europe PMC: (pracinostat OR SB939) AND (myelodysplastic OR MDS OR acute myeloid leukemia) AND (xenograft OR PDX OR patient-derived OR CD34+ OR primary OR ex vivo OR organoid) - 358 hits, reviews and PRIMULA; no MDS model",
+  "Europe PMC: (ivaltinostat OR CG200745 OR CG-200745 OR CG-745 OR CG745) AND (myelodysplastic OR MDS OR leukemia OR leukaemia OR AML) - 79 hits, reviews only",
+  "Europe PMC: members AND (myelodysplastic OR MDS) AND (in silico OR physiologically based OR PBPK OR quantitative systems pharmacology OR exposure-response OR population pharmacokinetic OR allometric) - 168 hits, none MDS-specific",
+  "Europe PMC: (panobinostat OR LBH589) AND (MDS OR AML) AND (ex vivo OR drug sensitivity OR primary samples OR patient samples OR patient-derived) AND (predict OR correlat* OR clinical response) - 1236 hits, reviews and AML functional-precision papers, no member dosed in MDS",
+  "Europe PMC: (panobinostat OR LBH589) AND (myelodysplastic OR MDS) AND (mouse OR mice OR murine OR humanized OR NSG) NOT myeloma - 471 hits, no MDS mouse model dosed with panobinostat",
+  "Europe PMC: (pracinostat OR SB939) AND (pharmacokinetic OR exposure-response OR population pharmacokinetic OR PK/PD OR allometric OR Simcyp OR in silico) - 256 hits; Jayaraman 2011 is the only human-PK prediction; In Silico Pharmacol 2021 is docking only",
+  "Europe PMC: (panobinostat OR LBH589) AND (myelodysplastic OR MDS) AND (CD34 OR bone marrow mononuclear OR primary MDS OR MDS-L OR SKM-1 OR MDS cells) - 359 hits, no MDS-cell panobinostat model",
+  "Europe PMC: (panobinostat OR LBH589 OR pracinostat OR SB939) AND (myelodysplastic OR MDS OR acute myeloid) AND (humanized OR patient-derived xenograft OR PDX OR co-clinical OR avatar) - 671 hits, Front Oncol 2024 only MDS PDX, no member dosed",
+  "Europe PMC TITLE:(pracinostat OR SB939 OR SB-939) - all 34 hits read by title: models are colorectal HCT-116 2010, tissue-acH3 PD 2011, AML MOLM-13/SET-2 2012, CML 2017, DLBCL 2021, glioma, breast, pancreatic, renal fibrosis, malaria; MDS papers are the trials",
+  "Europe PMC TITLE:(ivaltinostat OR CG200745 OR CG-200745 OR CG-745 OR CG745) - all 19 hits read by title: solid-tumour lines, rat/mouse fibrosis, hypertension and kidney models, FIH 2015, pancreatic phase 1/2 2022, CG-750 vs CG-745 PK 2024; no AML/MDS model",
+  "Europe PMC TITLE:(panobinostat OR LBH589) AND ABSTRACT:(myelodysplastic OR MDS) AND SRC:MED NOT review - 8 hits, all trials (Giles 2006, Tan 2014, Garcia-Manero 2017, Japanese phase 1 2018, others) plus GVHD and ovarian",
+  "Europe PMC TITLE:(panobinostat OR LBH589) AND TITLE:(pharmacokinetic* OR exposure-response OR population pharmacokinetic OR QTc OR model) - 38 hits: popPK 2015, PBPK DDI 2017 and 2021, NHP CSF PK (DIPG), xenograft models in other indications",
+  "Europe PMC ABSTRACT:(members) AND ABSTRACT:(myelodysplastic) AND ABSTRACT:(ex vivo OR drug sensitivity OR drug screening OR primary cells OR patient samples OR bone marrow cells OR xenograft OR PDX OR humanized OR organoid) primary papers - 3 hits: Int J Oncol 2014, Front Oncol 2024, SLAS Discov 2024",
+  "Europe PMC core records (abstracts, dates): Jayaraman 2011 (10.1124/dmd.111.041558, epub 2011-08-26), George 2004 (10.1182/blood-2004-09-3413, epub 2004-10-28), Giles 2006 (10.1158/1078-0432.CCR-06-0511, print 2006-08-01, no epub), Razak 2011 (10.1038/bjc.2011.13, epub 2011-02-01), Yong 2011 (10.1093/annonc/mdq784, epub 2011-03-08), MCT 2011 PD paper (10.1158/1535-7163.mct-11-0044), PBPK DDI 2017 (10.1124/dmd.117.076851), popPK 2015 (10.1007/s00228-015-1846-7), Int J Oncol 2014 (10.3892/ijo.2014.2555)",
+  "ClinicalTrials.gov API v2: all pracinostat/SB939 studies (16) with results dates; NCT02737462 (ivaltinostat MDS, CrystalGenomics, start 2016-06, status UNKNOWN, last update 2023-09-13, no results), NCT00504296 and NCT00741234 (pracinostat phase 1, 2007 starts, no results posted)"
+ ],
+ "added_models": [
+  {
+   "model_id": "pracinostat-allometry-simcyp-pk",
+   "model": "Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK, from mouse/rat/dog in-vivo PK and human in-vitro ADME (S*BIO, Jayaraman 2011)",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2011,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "model_id": "pracinostat-allometry-simcyp-pk",
+      "model": "Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK, from mouse/rat/dog in-vivo PK and human in-vitro ADME (S*BIO, Jayaraman 2011)",
+      "model_kind": "in_silico",
+      "prediction_level": "class",
+      "model_first_use_year": 2011,
+      "product_in_model": true,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "src": "https://doi.org/10.1124/dmd.111.041558",
+      "srcLabel": "Jayaraman 2011",
+      "source_tier": 1,
+      "epub_year": 2011,
+      "print_year": 2011,
+      "retrodiction": false,
+      "year": 2011,
+      "status": "untested",
+      "subjects": null,
+      "comparison_stated": false,
+      "model_src": null,
+      "model_src_tier": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "derived_from": null,
+      "blocked_by": null,
+      "margin_stated": false,
+      "population": "Unselected (model: mouse, rat, dog PK; human microsomes, hepatocytes, Caco-2)",
+      "quote": "The oral bioavailability was 34, 65, and ∼3% in mice, dogs, and rats, respectively.",
+      "note": "Mouse, rat and dog PK plus human in-vitro ADME fed Simcyp and allometry to predict pracinostat's human oral PK; no efficacy exposure or tolerability margin stated.",
+      "short": "Three-species PK scaled to human",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading (Drug Metab Dispos, paywalled, not in PMC). 2011 is a publication proxy: the ADME work is IND-enabling by nature and the first-in-human studies started in 2007 (NCT00741234 2007-04, NCT00504296 2007-09), but the date the Simcyp/allometric prediction was run is not public. Pracinostat never reached an NDA, so model_filed is unknown.",
+      "judgement": "Split from pracinostat-mouse-xenograft under this run's identity rule: a genuinely different system (three-species in-vivo PK and human in-vitro ADME run through Simcyp and allometry, no tumour) making a different prediction (human CL, Vss, bioavailability and the oral PK profile, not tumour growth or tumour acetylation). Same precedent as famitinib-pbpk-rat-monkey-human-pk and gdc0980-genentech-translational-pkpd in this run. The draft's dose entry 2 (Jayaraman 2011, same) sits on the xenograft model_id and is the entry this track re-keys; removing it there is the adjudicator's edit.",
+      "reason": null
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Jayaraman 2011 identity (checker rule question 4): split into its own in_silico dose track (above) because the system (mouse/rat/dog PK plus human in-vitro ADME through Simcyp and allometry) and the prediction (human oral PK) are both different from the HCT-116/MOLM-13 xenograft efficacy-PD model; the draft's dose entry 2 on pracinostat-mouse-xenograft is the one this track replaces and is left for the adjudicator to remove or re-key. No derived 2017 contra is written on the new track: the effective-exposure claim that failed belongs to the xenograft track, which already carries it.",
+  "SB939 tissue-acH3 PD paper (Mol Cancer Ther 2011, 10.1158/1535-7163.mct-11-0044, epub 2011-05-17): HCT-116 xenograft and HL-60 orthotopic SCID mice, acH3 in tumour, PBMC, marrow; same system as pracinostat-mouse-xenograft, so no new track. It is, however, a comparison_stated engagement source the draft lacks: PBMC acH3 rose dose-dependently (10-80 mg) in 30 solid-tumour phase 1 patients, r=0.97 with Cmax/AUC, and the authors state the PK/PD 'are translated from preclinical models to patients'. A 2011 same (solid-tumour subjects) before the 2017 Abaza contra on that track is the adjudicator's edit.",
+  "HL-60 cells plus trial PBMCs (Int J Oncol 2014, 10.3892/ijo.2014.2555, epub 2014-07-22): azacitidine plus panobinostat induced NUR77/p21 in HL-60 and early NUR77/p21 induction in patient PBMCs from the Tan 2014 phase Ib/II correlated with response. Same system as panobinostat-leukemia-cells (human AML cell lines, HDACi plus HMA), so no new track; it would make the existing 2014 engagement entry a stated comparison (comparison_stated true) rather than a pairing.",
+  "ATF3 as marker of pracinostat response (Mol Cancer Ther 2016, 10.1158/1535-7163.mct-15-0890): solid-tumour cell lines, no MDS patient comparison (checker finding confirmed by the 34-title pracinostat sweep).",
+  "Ex vivo synergy screen in hematologic malignancies (SLAS Discov 2024, 10.1016/j.slasd.2023.12.001): no patient-outcome comparison for a member drug, run after the MDS results were known.",
+  "MDS/AML PDX azacitidine-venetoclax resistance (Front Oncol 2024, 10.3389/fonc.2024.1414950): panobinostat is not the dosed subject; no member patient comparison.",
+  "Ivaltinostat (CG200745/CG-745): 19 title hits are prostate, NSCLC, pancreatic and cholangiocarcinoma lines, rat/mouse cardiac, kidney and lung fibrosis models, the 2015 FIH in solid tumours, the 2022 pancreatic phase 1/2 and the 2024 CG-750 oral vs IV PK study; no AML or MDS model exists and NCT02737462 (phase 1/2 with azacitidine in MDS) has no results (status UNKNOWN). No track.",
+  "Panobinostat population PK (Savelieva 2015, 10.1007/s00228-015-1846-7): nonlinear mixed-effect model fitted to 7834 samples from 581 patients in 14 trials; a description of patient data with no preclinical prediction, so not a model system compared with patients.",
+  "Panobinostat PBPK DDI model (Drug Metab Dispos 2017, 10.1124/dmd.117.076851): built on clinical PK including the ketoconazole DDI study, then used to predict rifampin and midazolam interactions in lieu of trials for the Farydak label. In silico, but it predicts DDI magnitudes rather than a dose or exposure target, was built after the clinical data (a retrodiction at best), and serves myeloma labelling; no MDS patient comparison. Any regulator reliance it represents belongs to the myeloma context, not this one.",
+  "Beat AML / FIMM-style ex-vivo drug-sensitivity panels that include panobinostat: AML cohorts; no MDS patient was dosed with a member drug and compared with an ex-vivo readout (the targeted members x myelodysplastic x ex-vivo search returned only the three papers above).",
+  "George 2004 (Blood, epub 2004-10-28: K562, MV4-11, primary CML-BC and AML cells) and Giles 2006 (Clin Cancer Res, print 2006-08-01: H3/H2B acetylation in CD34+ blasts, 13 AML, 1 MDS, 1 ALL): first use and earliest patient comparison of the system already tracked as panobinostat-leukemia-cells; the re-dating to 2004/2006 is the checker's correction on the existing track, not a new system.",
+  "Panobinostat non-human-primate CSF/plasma PK (DIPG) and mouse blood-brain-barrier PK models: other indications, no MDS comparison.",
+  "Regulator documents: only the Farydak myeloma label (205353) is in the bundle; no MDS regulator document exists for any member, and no in-vitro or model data were relied on for MDS. No human challenge or human genetic model applies to this class."
+ ]
+}
