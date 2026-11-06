@@ -1,12 +1,11 @@
-"""Schema lint for drafts/*.json against figure.py's assumptions and the drafter briefs.
+"""Lint the tile drafts in drafts/v3/ against the v3 rules (`RULES_V3_PROPOSAL.md`, `DECISIONS.md`).
 
     .venv/bin/python analyses/model-system-atlas/drafts/lint.py [draft.json ...]
 
-Every draft: empty cells (no model relied on), consecutive same-status entries on one track, unknown
-keys, unsorted years. A track is one model system's entries in a cell (its `model_id`; v2 drafts have one
-track per cell), kept apart per modality where a multi-modality tile splits dose and safety.
-A draft that declares `"schema": 3` is also held to the v3 rules (`RULES_V3_PROPOSAL.md`): the v3
-fields are present, and each status carries the fields its decision requires.
+A draft declares `"schema": 3`. Findings: empty cells (no model relied on), consecutive same-status
+entries on one track, unknown keys, unsorted years, missing v3 fields, and a status without the fields
+its decision requires. A track is one model system's entries in a cell (its `model_id`), kept apart per
+modality where a multi-modality tile splits dose and safety.
 """
 import glob
 import json
@@ -16,21 +15,18 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 QUESTIONS = ("engagement", "dose", "efficacy", "safety")
-STAT = {"same", "other", "neg", "contra", "untested"}
+STAT = {"same", "other", "neg", "contra", "untested", "retro"}
+MATCHED = {"same", "neg", "other", "retro"}
 KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", "confidence", "subjects",
         "comparison_stated", "epub_year", "print_year", "registry_date", "model_filed", "product_in_model",
         "magnitude", "source_calls_it", "population", "model_first_use_year", "judgement", "reason",
-        "patient_trials"}
-
-STAT_V3 = STAT | {"retro"}
-MATCHED = {"same", "neg", "other", "retro"}
-KEYS_V3 = KEYS | {"strengthens", "prediction_level", "modality", "model_id", "source_tier", "model_src", "model_src_tier", "trial_unreported", "patient_signal_reversed",
-                  "model_kind", "retrodiction", "imported_from", "magnitude_basis",
-                  "confidence_note", "readout_tier", "derived_from", "blocked_by", "margin_stated",
-                  "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
-REQUIRED_V3 = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "retrodiction",
-               "confidence", "magnitude", "source_calls_it")
-ENUM_V3 = {
+        "patient_trials", "strengthens", "prediction_level", "modality", "model_id", "source_tier", "model_src",
+        "model_src_tier", "trial_unreported", "patient_signal_reversed", "model_kind", "retrodiction",
+        "imported_from", "magnitude_basis", "confidence_note", "readout_tier", "derived_from", "blocked_by",
+        "margin_stated", "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
+REQUIRED = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "retrodiction",
+            "confidence", "magnitude", "source_calls_it")
+ENUM = {
     "confidence": {"high", "medium", "low"},
     "subjects": {"patients", "healthy_volunteers", "mixed", None},
     "model_kind": {"animal", "human_challenge", "ex_vivo", "in_silico", "human_genetic", "cross_indication"},
@@ -48,10 +44,10 @@ ONLY_IN = {"readout_tier": "engagement", "derived_from": "dose", "blocked_by": "
 MODALITY = {"small molecule", "antibody", "ADC", "protein", "peptide", "oligo", "cell therapy", "gene therapy", "other"}
 
 
-def v3_entry(q: str, e: dict, prev: dict | None) -> list[str]:
+def rule_findings(q: str, e: dict, prev: dict | None) -> list[str]:
     """The v3 rules one entry breaks, given the entry before it on the same track."""
-    out = [f"v3 field missing: {k}" for k in REQUIRED_V3 if k not in e]
-    out += [f"v3 {k}={e[k]!r} not in enum" for k, allowed in ENUM_V3.items() if k in e and e[k] not in allowed]
+    out = [f"v3 field missing: {k}" for k in REQUIRED if k not in e]
+    out += [f"v3 {k}={e[k]!r} not in enum" for k, allowed in ENUM.items() if k in e and e[k] not in allowed]
     out += [f"{k} only belongs on {cell}" for k, cell in ONLY_IN.items() if e.get(k) not in (None, False) and q != cell]
     s, tier = e.get("status"), e.get("source_tier")
     if tier not in (1, 2, 3, 4, 5):
@@ -90,19 +86,19 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
     for p in paths:
         d = json.load(open(p))
         cid = os.path.basename(p)[:-5]
-        v3 = d.get("schema") == 3
+        if d.get("schema") != 3:
+            issues.append((cid, "top-level", f"schema {d.get('schema')!r}, not 3"))
         for k in ("order", "area", "disease", "mondo_id", "population", "mechanism", "label", "cells"):
             if k not in d:
                 issues.append((cid, "top-level", f"missing {k}"))
-        if v3:
-            if not d.get("mechanism_key"):
-                issues.append((cid, "top-level", "mechanism_key missing (the tile's key in preclin.atlas_register)"))
-            groups = d.get("modality_groups")
-            if not isinstance(groups, list) or not groups or not set(groups) <= MODALITY:
-                issues.append((cid, "top-level", f"modality_groups {groups!r} (decision 12)"))
-            if not isinstance(d.get("class_share"), (int, float)):
-                issues.append((cid, "top-level", "class_share missing (decision 12)"))
-        split = v3 and isinstance(d.get("modality_groups"), list) and len(d["modality_groups"]) > 1
+        if not d.get("mechanism_key"):
+            issues.append((cid, "top-level", "mechanism_key missing (the tile's key in preclin.atlas_register)"))
+        groups = d.get("modality_groups")
+        if not isinstance(groups, list) or not groups or not set(groups) <= MODALITY:
+            issues.append((cid, "top-level", f"modality_groups {groups!r} (decision 12)"))
+        if not isinstance(d.get("class_share"), (int, float)):
+            issues.append((cid, "top-level", "class_share missing (decision 12)"))
+        split = isinstance(groups, list) and len(groups) > 1
 
         def track(e: dict):
             """The track an entry belongs to: its model system, per modality in a split cell."""
@@ -119,20 +115,19 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
             last: dict = {}
             for i, e in enumerate(strip, 1):
                 prev = last.get(track(e))
-                if v3 and e.get("modality") is not None and e["modality"] not in (d.get("modality_groups") or []):
+                if e.get("modality") is not None and e["modality"] not in (groups or []):
                     issues.append((cid, q, f"entry {i}: modality {e['modality']!r} not in modality_groups (decision 12)"))
                 if split and q == "dose" and e.get("modality") is None:
                     issues.append((cid, q, f"entry {i}: dose entry without modality in a multi-modality tile (decision 12)"))
-                if e.get("status") not in (STAT_V3 if v3 else STAT):
+                if e.get("status") not in STAT:
                     issues.append((cid, q, f"bad status {e.get('status')!r}"))
                 if not isinstance(e.get("year"), int):
                     issues.append((cid, q, f"year not int: {e.get('year')!r}"))
-                if prev and e.get("status") == prev.get("status") and not (v3 and e.get("strengthens")):
+                if prev and e.get("status") == prev.get("status") and not e.get("strengthens"):
                     issues.append((cid, q, f"same-status entry {i} ({e['status']}) on one track without strengthens"))
-                if v3:
-                    issues += [(cid, q, f"entry {i}: {m}") for m in v3_entry(q, e, prev)]
+                issues += [(cid, q, f"entry {i}: {m}") for m in rule_findings(q, e, prev)]
                 last[track(e)] = e
-                extra.update(k for k in e if k not in (KEYS_V3 if v3 else KEYS))
+                extra.update(k for k in e if k not in KEYS)
             for key in {track(e) for e in strip}:
                 ys = [e.get("year") for e in strip if track(e) == key]
                 if sorted(y for y in ys if isinstance(y, int)) != ys:
@@ -141,7 +136,8 @@ def lint(paths: list[str]) -> tuple[Counter, list[tuple[str, str, str]]]:
 
 
 def main():
-    paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "*.json")) if not p.endswith(".check.json"))
+    paths = sys.argv[1:] or sorted(p for p in glob.glob(os.path.join(HERE, "v3", "*-*.json"))
+                                   if not p.endswith((".check.json", ".models.json")))
     extra, issues = lint(paths)
     print("unknown keys:", dict(extra))
     for i in issues:

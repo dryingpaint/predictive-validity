@@ -1,7 +1,7 @@
 # Rules v3 proposal for the model-system atlas (issue #76, "agree the track-record rules")
 
-Drafted 2026-11-02 from the 70-context run (drafter + checker agents under `DRAFTER_BRIEF.md` v2 and
-`CHECKER_BRIEF.md`). The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fifteen
+Drafted 2026-11-02 from the 70-context run (drafter + checker agents under the v2 briefs). That run, its
+briefs and `RULE_QUESTIONS.md` are in git history at 4d478a3. The 151 rule questions in `RULE_QUESTIONS.md` collapse into the fifteen
 decisions below; a sixteenth was added in review. Each gives the proposed rule, the questions it settles, and what it moves in the
 current drafts (numbers from `matrix.py` over the finished run: 71 contexts, 284 cells, 166 of them scored
 `same`/`contra`/`neg`). Nothing here is applied yet; the

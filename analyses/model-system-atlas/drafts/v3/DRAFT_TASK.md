@@ -6,8 +6,7 @@ You are a drafter for the model-system atlas. Work in the repository root your t
    - FDA review packages for approved members are in `analyses/model-system-atlas/sources/`. Rows of `sources/manifest.csv` whose context is "<disease> / <mechanism>" list the text files; grep them.
    - Use PubMed/Europe PMC (WebFetch or curl), WebSearch, and curl + pdftotext for PDFs. When WebFetch is refused or WebSearch is exhausted, use `.venv/bin/python analyses/model-system-atlas/fc.py scrape <url>` or `fc.py search "<query>"` (Firecrawl through the key in `.env`; prints markdown or hits). Do not use any Firecrawl MCP tool or the browser tools.
    - CBER products (gene and cell therapies) are not in the bundle; use FDA CBER review memos directly.
-4. If the tile's v2_draft is set, it names an earlier draft under the v2 rules for this or a related class; the v2 drafts were removed from the tree on 2026-11-05 (last in commit 4d478a3) and your task says where a copy is. Use it as leads only: re-verify every source and re-score under v3, and check that each drug is a member.
-5. Write ONLY `analyses/model-system-atlas/drafts/v3/<slug>.json`. Then run `.venv/bin/python analyses/model-system-atlas/drafts/lint.py analyses/model-system-atlas/drafts/v3/<slug>.json` and fix every finding except "empty cell". Repeat until clean.
+4. Write ONLY `analyses/model-system-atlas/drafts/v3/<slug>.json`. Then run `.venv/bin/python analyses/model-system-atlas/drafts/lint.py analyses/model-system-atlas/drafts/v3/<slug>.json` and fix every finding except "empty cell". Repeat until clean.
 
 Constraints:
 - The DB is read-only: SELECT only.

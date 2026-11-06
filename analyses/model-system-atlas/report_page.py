@@ -132,8 +132,7 @@ def load() -> dict:
             "build": {"snapshot": str(b.snapshot), "n_register": int(b.n_register), "n_tracked": int(b.n_tracked)} if b is not None else {},
             "tiles": sorted(tiles, key=lambda t: (t["area"], t["disease"], t["mechanism"])),
             "register": register,
-            "agreement": {"cells": len(pairs), "agree": agree, "kappa": kappa(pairs),
-                          "v2_flip_rate": 0.19}}
+            "agreement": {"cells": len(pairs), "agree": agree, "kappa": kappa(pairs)}}
 
 
 def main() -> None:

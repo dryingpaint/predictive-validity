@@ -1,12 +1,13 @@
-# Drafter brief v3 (proposed) — model-system atlas context (issue dryingpaint/predictive-validity#76)
+# Drafter brief v3 — model-system atlas tile (issue dryingpaint/predictive-validity#76)
 
 v3 (2026-11-04): written to the decisions in `DECISIONS.md` and `RULES_V3_PROPOSAL.md`, all sixteen taken.
-`drafts/lint.py` checks every field below on a draft that declares `"schema": 3`. v2 is kept as `DRAFTER_BRIEF.md` for the record of the first run. Everything v2 asked for is still asked for; what changed is marked **v3**.
+`drafts/lint.py` checks every field below on a draft that declares `"schema": 3`. The rules v3 added over the first run's are marked **v3**.
 
 You are drafting ONE entry for an atlas of preclinical models with a **track record**: predictions that
-were compared with what happened in patients. Repo: /Users/melissadu/Documents/projects/capable/predictive-validity-atlas-v3 (branch atlas-named-contexts).
-Read `analyses/model-system-atlas/contexts/cf-cftr.json` and `contexts/ad-amyloid.json` first: they are the
-house style for a finished entry (one success, one failure). Do not read any other draft.
+were compared with what happened in patients. Work in the repository root your task names.
+Read `analyses/model-system-atlas/drafts/v3/cystic-fibrosis-cftr-potentiators.json` and
+`drafts/v3/alzheimer-disease-bace1-inhibitors.json` first: they are the house style for a finished entry (one
+success, one failure). Do not read any other draft.
 
 ## The unit
 A **context** = disease (MONDO) × patient population (genotype / biomarker / pathogen, else "Unselected")

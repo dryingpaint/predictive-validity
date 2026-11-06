@@ -10,13 +10,17 @@ three programs entered Phase 2 for it in 2008–2019. Every model system compare
 **track**; a cell's **headline** is the best latest status among its tracks that predicted before the patient
 result, never compared when none did, and a retrodiction never sets it (decision 6).
 
-## State (2026-11-05)
+## State
 
 - Register: 1,693 disease × mechanism rows; 119 tracked tiles in 48 of the 71 diseases (atlas build 428a6a37).
-- Rules v3: 16 decisions, all taken (`drafts/DECISIONS.md`); `drafts/lint.py` enforces them on any draft with `"schema": 3`.
-- Drafted under v3 and stored: 30 tiles, 456 entries, 191 tracks (κ 0.93 drafter–checker). The other 89 are in `drafts/v3/tiles.json` (orders 31–119) and are being drafted in waves through the same five passes.
-- Figures. **The main paper figure is `atlas_glance_main.*`** (the top 15 diseases by burden, one tile each; PNG, PDF and SVG). `atlas_glance_supplement_p1..p4.*` (every drafted tile) is the supplementary figure. Both journal format. `atlas.png` (per-context history from `figure.py`) and `disease_indications.*` are working figures, not paper figures; `disease_indications.*`; the interactive page is `report/atlas.html` from `report_page.py`.
-- The v2 run (70 contexts), its matrices and the pilot renders were removed from the tree on 2026-11-05; they are in git history at 4d478a3. `contexts/` and `figure.py` (the per-context tile figure) stay; the treemap `figure_map.py`, `map.png` and `volumes_pre_rebuild.json` were dropped on 2026-11-06 (52823a2).
+- Rules v3: 16 decisions, all taken (`drafts/DECISIONS.md`); `drafts/lint.py` enforces them on every draft.
+- All 119 tracked tiles drafted under v3 through the five passes and stored: 1,236 tracks, 2,424 entries, 476
+  cells (κ 0.86 drafter–checker on the cell headline).
+- Figures. **The main paper figure is `atlas_glance_main.*`** (the top 15 diseases by burden, one tile each; PNG,
+  PDF and SVG). `atlas_glance_supplement_p1..p4.*` (every drafted tile) is the supplementary figure. Both journal
+  format. `disease_indications.*` is a working figure, not a paper figure; the interactive page is
+  `report/atlas.html` from `report_page.py`.
+- The v2 run (70 contexts under the v2 rules and briefs) is in git history at 4d478a3.
 
 ## Data in, data out
 
@@ -56,14 +60,13 @@ were open were decided on 2026-11-04:
 | 13 `neg` / `other` | `neg` judged on what the model data showed, not the sponsor's reading; cross-class evidence set aside | As proposed, with the model's number in `effect_size` and the class bar in `class_threshold` |
 | 16 dose window | score the toxic end of the dose window when the model stated a margin, or keep dose as the effective-exposure floor only? | Score it: the atlas asks whether any model gives the toxic ceiling (`margin_stated`, `blocked_by: toxicity`) |
 
-`drafts/lint.py` holds any draft that declares `"schema": 3` to these rules.
+`drafts/lint.py` holds every draft to these rules.
 
-Three choices sit outside the rules:
+Two choices sit outside the rules:
 
 | choice | question |
 |---|---|
-| cohort | join the atlas to the issue's simple `ph2_start` count or the report's strict `phase_rows` cohort? 53 of 64 diseases agree; `lists/swing_seats.csv` has the rest. The 70 contexts here follow the strict list |
-| class share | done: every tile carries `class_share` (its programs over the disease's) in `drafts/v3/tiles.json`, the register and the report page |
+| cohort | join the atlas to the issue's simple `ph2_start` count or the report's strict `phase_rows` cohort? 53 of 64 diseases agree; `lists/swing_seats.csv` has the rest. The tiles follow the strict list |
 | DB writes | only the writers in *Data in, data out* below touch the database, all into `preclin.atlas_*`; issue #70 (the rebuild) is still open, so a rebuild re-runs `class_audit.py store` and the tile stores |
 
 Open calls are listed in PR #81: whether the headline follows the main model or all tracks (the figures follow decision 6: all tracks), where patient-level tracks are shown, how a model published after a public result but not prompted by it is scored, the cohort, and the rule questions in `drafts/v3/RULE_QUESTIONS_v3.md`.
@@ -73,20 +76,19 @@ Open calls are listed in PR #81: whether the headline follows the main model or 
 | path | contents |
 |---|---|
 | `lists.py` → `lists/` | the context list from the DB: diseases ranked by Phase 2 entrants 2008–2019 (`report.section1.phase_rows` cohort), a 200-program long-tail sample, and `swing_seats.csv` (indications that enter or leave the list between the simple and strict cohorts) |
-| `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every disease) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees. `named_contexts_v2.csv` is the list the v2 drafts were written against |
+| `class_audit.py` → `lists/class_audit/register.csv`, `lists/named_contexts.csv`, `preclin.atlas_*` | the register (every mechanism of every disease) and the tracked tiles under decision 12, from the hand-reviewed class table `lists/class_audit/reviews.csv`; `class_audit.py store` writes the build to `preclin.atlas_build`, `atlas_indication`, `atlas_moiety_review`, `atlas_mechanism` and `atlas_member` (view `atlas_register`). `AUDIT.md` lists where the DB disagrees |
 | `indications.py` → `lists/indications.csv`, `lists/indications_by_disease.csv`, `disease_indications.png` | each named disease's programs and the indications (stage, subtype, line of therapy) those programs were tested in, from the trials' condition rows; read-only |
 | `burden.py` → `lists/burden.csv` | the 48 tracked diseases mapped by hand to WHO Global Health Estimates causes with a match grade (exact, broader, shared, none) and ranked by global DALYs in 2021; the ordering for the main-paper cut and for the drafting waves |
 | `glance.py` → `glance.csv` | the atlas at a glance, as data: one headline per drafted cell under decision 6 (`report_page.headline`, adjudicated statuses), with the year, the model, the reason on a failure, and the dissenting track when another model contradicted; read-only |
 | `glance_nature.py main` → `atlas_glance_main.*`; `glance_nature.py supplement` → `atlas_glance_supplement*.*`; `atlas_glance_caption.md` | the figures: 183 mm wide, Helvetica 5–8 pt, the Capable palette. Main: the top 15 diseases by WHO 2021 DALYs, one tile each (most programs). Supplement: every drafted tile, paginated, diseases by DALY rank then by area. Panel a is over every drafted tile on both. Labels that do not fit a cell are shortened by hand in `drafts/v3/short_labels.json`, never cut; the caption file carries both captions |
 | `drafts/track_store.py`, `drafts/v3/route_store.py` | store a schema-3 draft that passes lint, and its verdicts, in `preclin.atlas_track_entry` and `atlas_track_verdict`, replacing the tile; `route_store.py` stores every tile whose verdicts are settled and lists the ones waiting for adjudication |
-| `drafts/v3/tiles.json`, `drafts/v3/*_TASK.md`, `merge_models.py`, `collect_questions.py` | the 119 tile specs (members, modality groups, class share, the v2 lead), the five agent task prompts, the model-sweep merge, and the rule-question collector |
+| `drafts/v3/tiles.json`, `drafts/v3/*_TASK.md`, `merge_models.py`, `collect_questions.py` | the 119 tile specs (members, modality groups, class share), the five agent task prompts, the model-sweep merge, and the rule-question collector |
 | `fc.py` | `scrape <url>` and `search "<query>"` through Firecrawl, the agents' fallback when WebFetch is refused or the search budget is spent |
 | `tests/test_atlas_glance.py`, `tests/test_atlas_indications.py` (repo `tests/`) | the headline rule, dissent and label wrapping; the stage and subtype reading of condition rows; synthetic inputs, no database |
-| `drafts/DRAFTER_BRIEF.md`, `drafts/CHECKER_BRIEF.md`, `drafts/ENGAGEMENT_KIND_RESULT.md` | the v2 run's briefs and its one result that the decisions cite; the run itself is in git history (4d478a3) |
-| `drafts/RULE_QUESTIONS.md` | 151 cases the v2 rules did not decide |
-| `drafts/RULES_V3_PROPOSAL.md`, `drafts/DECISIONS.md` | the questions collapsed into 16 decisions with a schema v3, and the decision record |
+| `drafts/ENGAGEMENT_KIND_RESULT.md` | the v2 run's result on engagement readouts that decision 15 cites |
+| `drafts/RULES_V3_PROPOSAL.md`, `drafts/DECISIONS.md` | the v2 run's 151 rule questions collapsed into 16 decisions with a schema v3, and the decision record |
 | `drafts/DRAFTER_BRIEF_v3.md`, `drafts/CHECKER_BRIEF_v3.md` | the briefs written to those decisions; the checker brief adds adjudication |
-| `drafts/lint.py` | schema check on the drafts; v3 rules on drafts that declare `"schema": 3` |
+| `drafts/lint.py` | the v3 schema and rules on every draft; with no arguments, every tile in `drafts/v3/` |
 | `fetch_sources.py` → `sources/manifest.csv`, `preclin.atlas_source_document` | the drafters' source bundle: the FDA review package of each tracked mechanism's approved members as text (OCR for scanned PDFs); `store` writes the text to the DB; the PDFs under `sources/<appl_no>/` are not committed |
 
 ## Running
@@ -109,4 +111,4 @@ uv sync
 uv run pytest tests/test_atlas_glance.py tests/test_atlas_indications.py
 ```
 
-Drafts stay in `drafts/v3/`, never in `contexts/`. The only database writers are the ones in *Data in, data out*.
+Drafts stay in `drafts/v3/`. The only database writers are the ones in *Data in, data out*.

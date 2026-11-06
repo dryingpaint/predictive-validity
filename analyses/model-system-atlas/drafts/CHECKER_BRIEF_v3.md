@@ -11,8 +11,8 @@ For EVERY entry in every cell:
    entry, open `model_src` as well.
 2. Confirm the `quote` appears in that source verbatim or near-verbatim (say when you saw only the
    abstract).
-3. Confirm the quote supports the `status` under the v3 rules. The failures that flipped most cells in
-   the v2 run, and the v3 rules most likely to be misapplied:
+3. Confirm the quote supports the `status` under the v3 rules. The failures that flip the most cells,
+   and the v3 rules most likely to be misapplied:
    - `same`/`contra` from a pairing whose trial source attributes the result to conditions the model never
      tested (should be `untested`);
    - efficacy scored on a secondary endpoint without `endpoint_role: poc_gate`;
