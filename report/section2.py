@@ -92,7 +92,7 @@ LABELS = {
     "genetic_gwas": "Common variants (genome-wide association studies)",
     "genetic_rare": "Rare inherited variants, including single-gene disease",
     "somatic": "Gene recurrently mutated in this cancer",
-    "animal_model": "Mice with the gene altered show the disease",
+    "animal_model": "Mouse genetics: knocked-out or mutant mice show the disease",
     "rna_expression": "The gene's RNA level differs in diseased tissue",
     "affected_pathway": "A curated pathway shows a disease mutation disrupting the target",
     "cell_line_screen": "Gene-knockout screen in cancer cells",
