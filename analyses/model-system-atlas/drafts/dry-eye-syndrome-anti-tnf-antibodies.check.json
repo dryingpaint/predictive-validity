@@ -1,0 +1,215 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/dry-eye-syndrome-anti-tnf-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5, 15",
+   "note": "PMID 24052636 resolves; quote verbatim in abstract. No human TNF-alpha readout found (Dong 2022, VELOS, Shettle carry none; Donnenfeld 2024 retracted). readout_tier: free TNF-alpha on the surface is the target itself, so 'direct' fits decision 15 better than 'proximal'."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "PMID 18757508 resolves; quote verbatim; PubMed gives epub 2008-08-29, print Feb 2009, so year 2008 is right under decision 7."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4, 11",
+   "note": "PMID 23490328 (epub 2013-03-13) resolves; quote verbatim; abstract only. Aqueous 96-359x over TNF-alpha, vitreous 5/6 undetectable: anterior half held, same/direction_only acceptable for a surface disease, partial a defensible alternative. Subjects are cataract-surgery patients; imported_from is set on the safety twin but not here."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4, 5",
+   "note": "Same Ji 2013 source. NCT02717208 (healthy Korean males, Cmax/AUC secondaries) has no posted results, verified. The mouse stated no exposure target, so dose-table case 3 cannot be applied; untested stands. VELOS-4 suspended 'Logistical issue', verified."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5",
+   "note": "Ji 2013 abstract: 'Corneal erosion and goblet cell counts were improved only with topically applied etanercept and HL036' verbatim; corneal-sign prediction, no symptom readout."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "PMID 29634381 (epub 2018-04-16) resolves; quote verbatim; HanAll authors, so a member drug's own model. Separate system (spontaneous disease, active comparator, no placebo), own model_id is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "4, 7",
+   "note": "CT.gov v2 API: ICSS LS mean diff 0.08 (-0.04, 0.21) p=0.1871; ODS 0.05 p=0.5549; results posted 2022-04-14; composite quote matches posted fields. VELOS-1 (posted 2022-01-26, ICSS p=0.2883) is the earliest public miss, same year. Dong 2022 and VELOS-3 quotes verified. Shettle 2022 exploratory corneal staining (-1.1 vs -1.4 vehicle, no stats) is consistent."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "4 (#80), 6",
+   "note": "Same registry fields verified. Dog predicted sign and Schirmer gain beyond CsA; placebo-controlled Phase 3 showed no sign effect, so #80 (active-comparator ranking) does not rescue it. VELOS-3 Schirmer is a secondary; contra holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8 (#74), 2 (#126)",
+   "note": "PMID 38416549 resolves to the retracted paper (epub 2024-02-28; retraction PMID 39225356, 2024-10-01); quote verbatim. Untested is right, but #74/#126 require retracted: true on the entry; add it. No pre-2024 public record of the genotype claim found (EDGAR search empty, no retry)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "2 (#126), 4 (#32)",
+   "note": "Release read in full via fc.py; quote verbatim. Model side is the author-withdrawn retraction, inadmissible per #126, and tier 5 cannot carry the model side; the subgroup result is a sign endpoint (ICSS Day 43) where the model predicted symptom response, with no carrier-vs-non-carrier test and no full-population primary result stated. Untested until PREDICT-1 (NCT07548632, primary = discomfort Day 29 in genotype carriers; registry says 160 estimated, draft says 176).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 2/#126 governs: #126 was decided on Donnenfeld 2024 with the retraction already post-dating RELIEF, so the tier-5 entry has no admissible model_src (decision 2). Decision 7 only sets year. Decision 8 keeps the track; #32 corroborates."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 12",
+   "note": "PMID 18757508; '25,000-fold lower' sentence verbatim; epub 2008. Platform harm (systemic TNF blockade) on the antibody sub-strip is consistent with decision 12."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4, 12",
+   "note": "Thiel 2013 abstract: serum 17/55 pre-op, 0/19 next day, TEAEs identical to placebo, verbatim. Cataract cohort import (MONDO:0005129) is the direct test of the rabbit's systemic-exposure prediction; NCT01338610 (posted 2013-04-19, serious AEs 0) posts no serum PK, so it cannot replace it."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5",
+   "note": "Lee 2018: 'No severe adverse reactions were noted in either group.' verbatim; 19 dogs on 0.2-5 mg/mL for 42 days, matches."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4, 7",
+   "note": "PMID 35192105 (epub 2022-02-22) resolves; quote verbatim. Registry AE counts verified (VELOS-2 5/318 vs 4/319; VELOS-3 0/130 vs 1/130). VELOS-1 posted 2022-01-26 with serious 0/50 per arm precedes Dong by four weeks; same year, no change."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7 (#127)",
+   "note": "PMID 35821785 resolves; quote verbatim; no rabbit mention (Shettle cites Zhu 2005 rabbit dacryoadenitis TNF-inhibitor gene as rationale). NCT01338610 serious AEs 0 verified. Strengthening entry correctly flagged."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5, 15",
+   "note": "PMC10812879 resolves; Figure 5 title verbatim. No tanfanercept-dosed human tear-cytokine readout exists; untested holds. Panel measured tear TNF itself (fell with IL-1b, IFN-g, IL-17 etc.), so readout_tier 'direct' (free target) fits decision 15 better than 'downstream'.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 8",
+   "note": "Quote verbatim (Discussion, author manuscript). Epub 2023-08-25 (Europe PMC; Crossref agrees). Paper calls itself 'the first to test it in the age-related dry eye model'; no corneal-staining, Schirmer or symptom readout in the drug arm; own track (decision 8) right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "10, 4, 6",
+   "note": "CT.gov v2: ICSS 0.08 (-0.04, 0.21) p=0.1871 posted 2022-04-14; VELOS-1 (2022-01-26, p=0.2883) and VELOS-3 (2023-10-23, p=0.764) verified. Paper says 'currently in Phase III', cites VELOS-1 only; HanAll/PRN release URLs now 404. Contra holds; the flag is a rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [],
+ "checker_notes": [
+  "No missed model system found. Nearest candidate: Zhu 2005 (doi:10.1186/1740-2557-2-6), rabbit induced autoimmune dacryoadenitis with a TNF-inhibitor transgene, cited by Shettle 2022 as the animal rationale for local TNF inhibition; a gene-therapy construct outside the class member list, never compared with patients, so not a track.",
+  "Harbour BioMed China Phase 3 NCT04633213 (completed 2022-08-07, no results posted): only a Feb 2022 HBM Holdings interim-analysis 'continue' announcement found, no topline release; a miss could not be verified or excluded.",
+  "Dong 2022 patent search (US9580490) shows HL036 was also run in carrageenan inflammation and collagen-induced arthritis models; not dry eye, not compared with patients.",
+  "Oculis release and PDF node/7941 blocked to curl and WebFetch; read through fc.py scrape. Retraction notice text (PMC12345835) returned HTTP 500 from Europe PMC, not retried; RULE_QUESTIONS #126 records it as author-requested, no error found.",
+  "The task's 'licaminlimab 2021 genotype-stratified Phase 2b' could not be found by me either; earliest public record of the TNFR1 claim remains Donnenfeld 2024 (epub 2024-02-28)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Retraction after the comparison date: Donnenfeld 2024 was admissible when the RELIEF release paired it (2024-06-10) and retracted 2024-10-01. Decision 7 (score on what was known at the entry's date) and decision 2/#126 (author-withdrawn retraction inadmissible) pull opposite ways; I applied #126 because it was decided on this paper, but the brief does not say which wins when the retraction post-dates the entry.",
+  "Patient-level (human_genetic) prediction tested in a prespecified subgroup: is the governing test the subgroup's own primary-family endpoint, or a carrier-vs-non-carrier interaction? And does a symptom-derived genotype model count as tested when the next trial reads out signs only?",
+  "May the opening untested entry of a track cite an inadmissible (retracted) paper as src purely as the model_first_use_year proxy (#74 says reliance stands, #126 says inadmissible as a source)? If yes, lint should require retracted: true on it.",
+  "Cross-indication PK as a dose source: decision 12 says other-indication comparisons transfer only for safety, yet the dose cell scores Thiel 2013 cataract-surgery patients as healthy volunteers without imported_from. Is 'otherwise healthy' surgical PK a healthy-volunteer study (admissible) or a cross-indication import (safety only)?",
+  "readout_tier for elimination of free target protein in tissue (ocular-surface TNF-alpha): 'direct' (free target) or 'proximal' (target's product)? Decision 15 lists 'free target' under direct; the draft uses proximal.",
+  "models: decision 10's text requires a result that 'post-dates AND is motivated by' the patient result; the drafter brief (line 40) and MODELS_CHECK_TASK use the temporal test alone. Kelagere 2023 post-dates the VELOS-1/2 registry postings by 16+ months but is not motivated by the miss: it calls tanfanercept 'currently in Phase III' and cites only the VELOS-1 ARVO abstract as positive. Temporal test: retrodiction true, contra (as drafted). Conjunctive text: late prospective model, contra with retrodiction false. Status, year and headline are identical either way (decision 6 bars any track that predicted after the patient result from the headline); only the mark and the tally differ. Which test governs, and is a contra retrodiction counted with prospective contras or apart like retro?",
+  "models: dating a retrodiction's comparison entry. Decision 7 takes the earliest of registry-posted year (2022) and epub year, but the comparison cannot exist before the model side (2023); the drafter used 2023. Decision 7 should say a retrodiction's comparison entry is dated no earlier than its model source.",
+  "models: flag-only disagreements (retrodiction, readout_tier) have no adjudication path, because the queue keys on status_draft != status_checked; a confirmed verdict proposing a flag change is never applied.",
+  "models: contra scored on a model whose readouts (goblet cells, tear cytokines, lacrimal foci) were never VELOS endpoints and whose stated claim is confined to 'age-related dry eye'. I hold contra at medium: decision 4 asks whether the trial primary responded as predicted, the model predicted benefit, three placebo-controlled sign/symptom primaries were null, the registry attributes the miss to nothing the model never tested (#35/#72), and the paper itself cites the unselected VELOS-1 population as support, which makes the prediction class-level. Confirm that an age-defined animal model is class-level, not a patient-level population prediction left untested by an unstratified trial."
+ ]
+}

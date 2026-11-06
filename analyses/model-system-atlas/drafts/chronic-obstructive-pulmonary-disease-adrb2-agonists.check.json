@@ -1,0 +1,426 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/chronic-obstructive-pulmonary-disease-adrb2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "J Med Chem 2010 (PMID 20462258) resolves; quote verbatim in abstract (abstract only). Opening untested entry; in vivo duration species not named in abstract, as the draft says."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Chest 2012 (PMID 22241764) resolves; quote verbatim (abstract only). NCT00606684 results posted 2013-09-17 confirmed on CT.gov. Downstream FEV1 readout moved in COPD patients: same holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "JPET online 2012-11-06 (PMID 23131596) resolves; quote verbatim (abstract only). comparison_stated rests on one abstract clause ('combined with clinical data'); acceptable but thin."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "JPET 2012 (PMID 22588259, online 2012-05-15) resolves; quote verbatim (abstract only). Opening untested entry."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "J Clin Pharmacol 2014 (PMID 24989946) resolves; quote verbatim (abstract only). Healthy volunteers count for engagement; airway conductance is downstream. No registry record found either."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "BMC Pulm Med 2016 (PMC4955259) resolves; quote verbatim in abstract and full text. NCT01425814 results 2017-04-10 confirmed. Same holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "ACS Med Chem Lett online 2014-02-08 (PMC4027610) resolves; quote verbatim. Full text read: guinea-pig i.t. histamine model, 58% bronchoprotection at 24 h. Opening year vs 2009 trial start is a rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Respir Res online 2013-06-03 (PMC3691744) resolves; quote verbatim. NCT00929708 results 2014-01-17 confirmed. Year 2014 follows rule 6 as drafted (model paper public 2014)."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "J Med Chem 2010 (PMID 20804199) resolves; quote verbatim (abstract only). Opening untested entry; NCT00783406 start 2008-10 confirmed."
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "J PK/PD online 2012-09-23 (PMID 23001588) resolves; quote verbatim (abstract only). Observed FEV1 from 690 COPD patients moved with once-daily dosing: downstream engagement holds at medium confidence."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same source and quote as engagement 1; opening untested, no human dose derived from the model."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hanania 2012 quote verbatim (abstract). Once-daily regimen reached and sufficient at 25 ug; margin_stated false is right, the GSK tissue models stated no tolerated dose."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Anoro NDA 203975 summary review is in the bundle; quote verbatim (SumR txt line 790). Tier 2, strengthens only."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Aparici 2012 quote verbatim (abstract). Dog margin 5.6 and once-daily interval stated before any trial; opening untested."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in Beier 2016 full text (not abstract). Decision 16 applied correctly: margin stated 2012, every effective dose tolerated. Volunteer palpitations at 5-50 ug overlap effective 5-10 ug; direction_only is right."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014 quote verbatim; opening untested. Same opening-year question as engagement 7."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kuna 2013 quote verbatim (abstract and full text). Once-daily reached at every dose; exposure lower than healthy-volunteer prediction confirmed in full text and Hughes 2015 (PMID 25709399)."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Glossop 2010 quote verbatim (abstract); opening untested."
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Nielsen 2012 quote verbatim (abstract). Once-daily regimen held at trough in observed COPD data; NCT00808288 never posted results (confirmed), so no registry date."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Procopiou 2010; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hanania 2012 quote verbatim. CT.gov confirms NCT00606684 primary = trough FEV1 day 29, 602 patients, results 2013-09-17. Primary met; same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Aparici 2012; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Beier 2016 quote verbatim. CT.gov confirms NCT01425814 primary = change in trough FEV1 (single dose), results 2017-04-10. Primary met; same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stocks 2014; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kuna 2013 quote verbatim. CT.gov confirms NCT00929708 primaries = FEV1 E0-4 and E24-26 at visit 5, results 2014-01-17. Both met; same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Glossop 2010; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2010,
+   "rule": "efficacy cell definition (trial primary endpoint) and evidence rule 3 (quote must support the status)",
+   "note": "Nielsen 2012 is a pooled K-PD simulation; NCT00808288 (trough FEV1 primary) never posted results. The entry's quote describes model fit, not a primary result. No admissible primary-endpoint comparison: untested.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: does a model-based meta-analysis (Nielsen 2012 K-PD, 690 patients; simulated trough-FEV1 probabilities) count as the trial's primary endpoint responding under decision 4 when NCT00808288 never reported? Tier 4 admits meta-analyses but the result is simulated."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Anoro pharmacology review in bundle; quote verbatim (PharmR txt line 12191); troponin, tachyphylaxis and FD2008/00365/00 confirmed. Opening untested; dog study dates from 2008 (rule-6 question)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Breo label in bundle; quote verbatim (label txt line 762) with 7.8 and 17.1 bpm. Predicted on-target tachycardia seen dose-dependently in humans: same. Anoro MedR 10.5/22.3 bpm figures not found by grep."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Aparici 2012; opening untested with stated dog margin 5.6."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Timmer 2014 quote verbatim (abstract). Direction match holds; note the draft's 'above 0.625-10 ug' is loose, since 5 and 10 ug were both effective and palpitation-bearing doses."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Beier 2016 quote verbatim (abstract). Single-dose tolerability at every effective dose; strengthens only."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "safety cell definition (model's stated prediction held) with imported_from transfer; evidence rule 1 (paired comparison)",
+   "note": "Stocks 2014 full text states guinea-pig plasma-potassium side effects 'no worse than formoterol'. Bjermer 2013 (PMID 23907810, NCT00736489, asthma) found less potassium suppression than formoterol at matched bronchodilation: same, imported_from MONDO:0004979.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 4 safety: Stocks 2014 full text states the guinea-pig prediction (potassium side effects 'no worse than formoterol'); Bjermer 2013 (NCT00736489, asthma) found less potassium suppression than formoterol at matched bronchodilation. Decision 12 transfers safety with imported_from."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Glossop 2010 quote verbatim (abstract). Opening untested; whether a PK design rationale is a 'model prediction' is a rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Br J Clin Pharmacol 2013 (PMID 23323609, PMC3853534) resolves; quote verbatim (abstract only). Low heart-rate effect to 280 ug matches the stated design claim; same holds if entry 7's claim counts."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Respir Med 2016 (PMID 27109822, epub 2016-04-01) resolves; quote verbatim (abstract only). Opening untested at 2016; no earlier public ADRB2 analysis for vilanterol (Anoro ClinPharmR 4.2 is CYP2D6/UMEC only).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "status table: contra = the model's own prediction failed; 'Also' #58: null-null is same only when the model made the null a prediction; decision 10 not triggered (patient-level answer unknown)",
+   "note": "Quote verbatim (abstract only). Contra holds: variants chosen for 'prior evidence of associations' predicted differential response; 1795 VI / 6075 patients on primary trough FEV1 is a discriminating null. Not same (null never predicted, #58); not retro (ROCK precedent).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "CPT PSP (PMC5869554) resolves to Hendrickx et al., epub 2017-12-27, print March 2018; quote verbatim in Introduction. AZD3199 in Tables 1-2 confirmed (guinea-pig lung IC50 895 nM). Opening untested at 2017.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in abstract. Supplement Table S5 rows verified: AZD3199 200/400/800 ug od, day 28, 24 h, 99/110/97 mL, 367/734/1468 nM, ratios 0.41/0.82/1.6, citing Kuna 2013 (2013-06-03), so retro under decision 10, never same. No S5 row names PF-00610355; Nielsen 2012 is cited for salmeterol rows.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Condreay et al. 2016, Respir Med, doi:10.1016/j.rmed.2016.03.019 (PMID 27109822): ADRB2 Arg16Gly/Gln27Glu/Thr164Ile pharmacogenetics of vilanterol 25 ug trough-FEV1 response in 17 COPD trials (N=6075, 1795 on VI): no association. A human_genetic, prediction_level patient track for a member drug with no track in the draft.",
+  "Boger & Friden 2018, CPT Pharmacometrics Syst Pharmacol, doi:10.1002/psp4.12270 (PMC5869554, online 2017-12-27): translational lung-PK model for 12 inhaled drugs including AZD3199 (and the PF-00610355 FEV1 data of Nielsen 2012), predicting human lung concentrations that correlate with published COPD trough FEV1. An in_silico retrodiction (retro) track with no entry.",
+  "Aparici et al. 2016, Eur J Pharmacol, doi:10.1016/j.ejphar.2015.11.053 (PMID 26656755): dog bronchoprotection-versus-heart-rate safety index for vilanterol 2.4 (abediterol 10.5, olodaterol 4.9) and guinea-pig bronchoprotective t1/2 18 h for vilanterol, run after vilanterol's approval. A member drug's own model, retrodiction on the dog track; not used by the draft.",
+  "Bjermer et al. 2013, Ther Adv Respir Dis, doi:10.1177/1753465813497527 (PMID 23907810; NCT00736489 results posted 2014-04-03): AZD3199 systemic effects (potassium, heart rate, QTc) versus formoterol in asthma; the patient side of the Stocks 2014 guinea-pig potassium comparison (safety 6).",
+  "Program stops the draft calls unexplained: abediterol discontinued at Phase II in AstraZeneca's February 2021 pipeline (AdisInsight 800026746) and NCT04199598 terminated 2020 'business prioritizations ... not due to safety concerns' (tier 3 registry record); PF-00610355 stopped 2011 for strategic reasons (Wikipedia only, no admissible source found); AZD3199: no source found. None is a model failure, but the registry termination reason should be cited.",
+  "Hughes et al. 2015, Drug Des Devel Ther, doi:10.2147/dddt.s66049 (PMID 25709399): AZD3199 systemic availability lower in COPD than in healthy volunteers or asthma; supports the dose-7 exposure note (optional)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 6 opening year: when the model paper postdates the first trial (AZD3199 trial start 2009 vs Stocks 2014; PF-00610355 trial 2008 vs Glossop 2010; vilanterol dog study FD2008 vs 2013 review), should model_first_use_year use the trial start as the 'proxy allowed', or the first public record as drafted?",
+  "Does a pooled model-based (K-PD) analysis of a trial's primary-endpoint data (Nielsen 2012 for NCT00808288) count as the primary-endpoint result for the efficacy cell when the trial itself never reported?",
+  "Does a medicinal-chemistry design claim resting on PK (rapid phase II clearance to minimise systemic effects, Glossop 2010) count as a model's stated safety prediction, or must the prediction come from a harm readout in a species?",
+  "When the only patient-side safety comparison for a track is in another indication (AZD3199 potassium vs formoterol in asthma) and the context's own trial reports only 'no safety concerns', does imported_from permit same on the COPD track?",
+  "For a human_genetic patient-level track (ADRB2 genotype and vilanterol response, Condreay 2016) where no genotype effect was found, is the status contra (the genotype model predicted differential response) or same (the sponsor's null hypothesis held)? The rules do not define the prediction of a pharmacogenetic analysis."
+ ]
+}

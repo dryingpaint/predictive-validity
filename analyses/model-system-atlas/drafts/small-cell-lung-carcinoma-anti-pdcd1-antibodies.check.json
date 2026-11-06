@@ -1,0 +1,251 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/small-cell-lung-carcinoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Brahmer 2010 (PMID 20516446) resolves; quote verbatim in abstract ('> 70%'). Wang 2014 model_src resolves (epub 2014-05-28). Occupancy readout moved in dosed humans: same, direct. Non-SCLC patients allowed for engagement."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "1",
+   "note": "Bundle text lines 5647-5649: quote verbatim. Regulator sets the in-vitro saturating concentration against both regimens' troughs; comparison_stated true, strengthens same. Human side is PopPK concentration, not measured occupancy, as the draft notes."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Review not fetchable by plain curl (FDA abuse page); fc.py scrape (memorandum dated 2014-12-04) carries the sentence verbatim at lines 83-84 and the 42-fold margin. Untested until SCLC dosing: supported."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Antonia 2016 (PMID 27269741, epub 2016-06-04) quote verbatim in abstract; registry 2020-03-24 confirmed. Reached-and-worked with decision 16 margin: same, margin_stated true. Rests on a 10 % single-arm ORR; low confidence appropriate."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Spigel 2021 quote verbatim; registry 2020-01-09 confirmed. Contra derived_from efficacy supported. BMS announced the OS miss 2018-10-12 (tier 5) and ESMO IO 2018 presented it: decision 7 dates the comparison 2018; status unchanged.",
+   "proposed_status": "contra",
+   "proposed_year": 2018
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Bundle line 9150: quote verbatim. In-silico PopPK regimen track, untested under the run's combination rule because EXTENTORCH added chemotherapy; NCT04012606 has no posted results (confirmed). Rule question raised; status supported as drafted."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Scrape carries 'This murine surrogate for nivolumab exhibited anti-tumor activity in multiple murine syngeneic tumors models' (line-wrapped, verbatim). RENCA/CT26 refractory passage absent from the scrape, unverified here. Untested at filing supported; pooling with toripalimab knock-in queried."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "11",
+   "note": "Quote verbatim in abstract. Primary endpoint ORR (10/98, durable) agreed in direction with surrogate single-agent activity; same with partial is defensible at low confidence. A stricter reader would wait for the randomised test; no rule compels that."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Hellmann 2018 (PMID 29731394, epub 2018-05-03) quote verbatim in abstract. Rule derived retrospectively on CheckMate 032, scored only on later trials per decision 10; untested at 2018 supported. model_kind human_genetic is a stretch (rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Spigel 2021 quote verbatim; contra on the filed track supported (randomised primary OS miss, nivolumab alone; decision 6). Comparison public 2018-10-12 via BMS press release and ESMO IO 2018 LBA: decision 7 gives 2018, status unchanged.",
+   "proposed_status": "contra",
+   "proposed_year": 2018
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "11",
+   "note": "Owonikoko 2021 (PMID 33683919) quote verbatim in abstract; registry 2019-10-22 confirmed. Prespecified 13 mut/Mb cutoff held in direction (combination significant, monotherapy trend): same, partial, comparison_stated true supported. Subgroup, not the primary analysis; medium confidence right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Hiatt 2022 (PMID 35920742) quote verbatim in PMC9844673 full text. Post-dates CheckMate 331/451 and opens from them: retrodiction, retro per decision 10. Surrogate anti-mouse PD-1, product_in_model false, own track: supported."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Nishimura 1999 (PMID 10485649) quote verbatim in abstract. 2014 label sections 8.1 and 13.2 cite PD-1 knockout mice (bundle lines 543, 680-682), so model_filed true. Untested at 1999 supported."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Lazar-Molnar 2010 (PMID 20624978) quote verbatim in abstract; label section 13.2 carries the study. Untested as drafted, but an imported TB-reactivation comparison exists (see missing) that could score this track."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Scrape (memorandum 2014-12-04) carries the sentence verbatim across two lines. Regulator-stated miss in the melanoma BLA transfers with imported_from: contra supported. magnitude 'opposite' is the enum for a predicted harm that never appeared, not a silence-miss."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Ready 2019 (PMID 30316010, epub 2018-10-10) both quotes verbatim in PMC8050700 full text; registry 2020-03-24 confirmed. Strengthens the 2014 contra with in-context monotherapy harms; dating to the monotherapy cohort is consistent with decision 12 (#70)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7/12",
+   "note": "Quote verbatim in PMC8050700. Same supported, but the knockout hit was public in 2014 from the imported melanoma datum that opens the monkey contra (FDA review, label section 8.1): open 2014 with imported_from MONDO:0005105; Ready 2019 strengthens.",
+   "proposed_status": "same",
+   "proposed_year": 2014
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12/7",
+   "note": "DOI resolves (epub 2019-06-03); quote verbatim. fc.py full text: SHR-1210 alone TGI 65 %, host only 'hPD-1 transgenic mice', strain unnamed, no 'knock-in'; identity with toripalimab's exon-2 KI unproven (bundle 4447-4464 verbatim). Untested supported; model_filed rests on 2023 filing.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7 (#30, #112)",
+   "note": "Ibruli 2024 DOI resolves (J Cancer Res Clin Oncol 150:496, epub 2024-11-14, PMC11564195); quote verbatim; RMP1-14 (BioXCell) confirmed in methods. Same-year untested opener before the comparison is what #30 and #112 prescribe; well-formed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim in PMC11564195 discussion, citing Hellmann 2018 (comparison_stated true). Model built after CheckMate 032: retro, never same; year 2024. Anti-PD-1 alone extended survival in RPM only (51.5 vs 41 d), none in RP: patient-level TMB retrodiction, direction only, supported.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "drop",
+   "rule": "13/12 (#69)",
+   "note": "Sen 2019 DOI resolves (epub 2019-02-18); quote verbatim (abstract); PMC6563834 (fc.py): 'anti-PD-L1 alone showed no anti-tumor response' in B6129F1 RPP. Sibling-target surrogate the class never relied on; decision 13 sets cross-class evidence aside and other is safety-only: drop from efficacy.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "RULE QUESTION: decision 12 (#69) scores a sibling-target surrogate (anti-PD-L1 for anti-PD-1) other; decision 13 and lint.py make other safety-only; no rule names drop. Does the track enter efficacy, and as other, untested, or not at all?"
+  }
+ ],
+ "missing": [
+  "BMS press release 2018-10-12, 'Phase 3 CheckMate -331 study does not meet primary endpoint of overall survival' (tier 5, patient side; biospace.com mirror of the BMS release) and the ESMO Immuno-Oncology 2018 LBA presentation (Reck et al., Ann Oncol 2018;29 suppl 10): the OS miss was public in 2018, before the 2020-01-09 registry posting; sets year 2018 for dose 3 / efficacy 4 under decision 7. CheckMate 451's miss was likewise announced by BMS in November 2018 (not independently verified here).",
+  "Toripalimab human-PD-1 knock-in MC38 model (FDA 761240 multidisciplinary review 2023, bundle lines 4447-4464, product-dosed, 0.3-10 mg/kg) as its own track rather than pooled under mc38-mouse-pd1-blockade with the 2014 rat-chimeric 4H2 surrogate in wild-type hosts; its only SCLC test is EXTENTORCH (Cheng 2025, PMID 39541202, PMC11565370, quote verified).",
+  "Mtb-infected PD-1 knockout track: imported patient comparison exists, tuberculosis reactivation on anti-PD-1 (Picchi et al. 2018, Clin Microbiol Infect, PMID 29269089, doi 10.1016/j.cmi.2017.12.003); under the safety transfer rule it could move the track from untested to same (imported), as the draft's own confidence_note anticipates.",
+  "Sen et al. 2019 (Cancer Discov, PMC6563834): anti-PD-L1 dosed in Rb1/Trp53/p130-derived syngeneic SCLC models, alone and with PARP/CHK1 inhibitors; a sibling-class surrogate that decision 12 (#69) says scores `other`, which the draft excluded. Taniguchi et al. 2022 (PMC9449677, WEE1 + anti-PD-L1 in SCLC GEMMs) is the same case.",
+  "2024 mismatch-repair-deficient Rb1/Trp53/Msh2 SCLC mouse (PMC11564195): higher mutational burden and improved survival on checkpoint blockade, a mouse retrodiction of the TMB rule track; whether the antibody was anti-PD-1 or anti-PD-L1 was not confirmed in this check.",
+  "PASSION located: Fan et al. 2021, J Thorac Oncol, PMID 33166719, doi 10.1016/j.jtho.2020.10.002 (epub 2020-11-06); camrelizumab plus apatinib single-arm phase 2, NCT03417895 results posted 2024-08-07 (confirmed). A combination, so no status change; belongs in patient_trials rather than 'not located'."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Combination crediting: EXTENTORCH is a placebo-controlled add-on (toripalimab + etoposide-platinum vs placebo + etoposide-platinum, PFS and OS met). Decision 12 (#70) only governs combination-arm `contra`; the HCC-run rule that a combination credits the antibody only when the model dosed the combination is not among the sixteen decisions. Does a placebo-controlled add-on isolate the class drug for `same` (dose 4 and the toripalimab efficacy datum would become same)?",
+  "Dating from tier 5: when a sponsor press release (CheckMate 331, 2018-10-12) or a DOI'd congress abstract makes a failure public before the registry posting (2020) and the paper (2021), does decision 7 set `year` from it while the tier 1/3 record sets the status, and does the entry then need trial_unreported?",
+  "Track identity: is a rat-chimeric surrogate (4H2) in wild-type syngeneic hosts one system with a product-dosed human-PD-1 knock-in MC38 model (toripalimab)? Pooling makes the 2020 sticky contra pre-empt the knock-in model's own record; splitting opens a 2023 track whose only SCLC test is a combination trial.",
+  "Decision 12 (#69) says a sibling-class surrogate dosed in the model (anti-PD-L1 for an anti-PD-1 class) scores `other`, but decision 13 and the status table make `other` safety-only. Can Sen 2019 (anti-PD-L1 in RP(P) SCLC mice) enter the efficacy cell, and with what status?",
+  "model_kind for a tumour-sequencing patient-selection rule (TMB from CheckMate 032): `human_genetic` is the nearest enum but names a germline/genotype system; no enum covers a biomarker rule derived from patients.",
+  "Imported-datum symmetry in safety: a single 2014 regulator statement in another indication establishes both the monkey's miss and the knockout's hit. The draft opened only the miss at 2014 (imported) and the hit at 2018 (in context). Should both tracks open from the same imported datum?",
+  "`magnitude: opposite` is defined for a predicted harm that never appeared; the draft uses it for a silence-miss (model silent, harm appeared). Which value is meant for silence-misses, or should magnitude be null there?",
+  "Product-dosed pooling (models check): hpd1-knockin-mc38 pools two members' products (camrelizumab, Tu 2019; toripalimab, TR003) on one track, and Tu 2019 names only 'hPD-1 transgenic mice' with no strain or supplier. If a transgenic hPD-1 host is not the exon-2 knock-in, the track's opener moves from 2019 to 2023 (first public record of TR003). Does one product-dosed track pool members, and does 'transgenic' pass as the knock-in by system type?",
+  "model_filed at the entry's date (models check): hpd1-knockin-mc38 opens in 2019 with model_filed true on the strength of a 2023 FDA review; rule 7 says use what was known at the entry's date. Is model_filed a property of the system (any later filing) or of the entry (filed by its year)?",
+  "Retrodiction openers (models check): sclc-rpm-msh2-gemm carries a same-year untested opener before its retro (entries 8-9, per #30/#112), while the sibling retrodiction track sclc-rp-syngeneic-mouse (entry 6, Hiatt 2022) carries a lone retro with no opener. Which convention applies to a track whose first class use is the retrodiction itself?"
+ ]
+}

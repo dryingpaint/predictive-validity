@@ -1,0 +1,49 @@
+area,mondo_id,disease,tiles,match,who_codes,who_causes,dalys_2021,note,rank
+endocrine,MONDO:0005148,type 2 diabetes mellitus,10,broader,800,Diabetes mellitus,89983358.4869585,Diabetes mellitus; type 2 is about nine tenths of it,1
+respiratory,MONDO:0005002,chronic obstructive pulmonary disease,3,exact,1180,Chronic obstructive pulmonary disease,68487274.696717,,2
+infectious_disease,MONDO:0005109,HIV infectious disease,4,exact,100,HIV/AIDS,42981071.8691376,,3
+oncology,MONDO:0005233,non-small cell lung carcinoma,9,broader,680,"Trachea, bronchus, lung cancers",41700232.5494462,"Trachea, bronchus, lung cancers; NSCLC is about 85% of lung cancer",4
+neurology,MONDO:0005277,migraine disorder,2,exact,990,Migraine,40248883.1888598,,5
+neurology,MONDO:0004975,Alzheimer disease,5,broader,950,Alzheimer disease and other dementias,34929356.553432,Alzheimer disease and other dementias,6
+respiratory,MONDO:0004979,asthma,4,exact,1190,Asthma,25022844.5578892,,7
+oncology,MONDO:0007254,breast cancer,9,exact,700,Breast cancer,22019335.1547352,,8
+other,MONDO:0005178,osteoarthritis,2,exact,1360,Osteoarthritis,21545470.1538527,,9
+oncology,MONDO:0005575,colorectal cancer,3,exact,650,Colon and rectum cancers,21404869.0345435,Colon and rectum cancers,10
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,2,exact,1231;661,Cirrhosis due to hepatitis B; Liver cancer secondary to hepatitis B,21316597.4941338,cirrhosis and liver cancer secondary to hepatitis B; acute hepatitis B excluded,11
+oncology,MONDO:0007256,hepatocellular carcinoma,4,broader,660,Liver cancer,19003413.20991,Liver cancer; hepatocellular carcinoma is most of it,12
+psychiatry,MONDO:0005090,schizophrenia,3,exact,850,Schizophrenia,16922307.358739,,13
+oncology,MONDO:0001056,gastric cancer,2,exact,640,Stomach cancer,15832514.8379392,Stomach cancer,14
+infectious_disease,MONDO:0005231,hepatitis C virus infection,4,exact,200;1232;662,Acute hepatitis C; Cirrhosis due to hepatitis C; Liver cancer secondary to hepatitis C,15507115.039960684,"acute hepatitis C, cirrhosis and liver cancer secondary to hepatitis C",15
+other,MONDO:0005016,diabetic kidney disease,1,exact,1272,Chronic kidney disease due to diabetes,12188592.6408685,Chronic kidney disease due to diabetes,16
+oncology,MONDO:0018874,acute myeloid leukemia,2,broader,770,Leukaemia,11728934.4699505,"Leukaemia, all types",17
+oncology,MONDO:0009831,malignant pancreatic neoplasm,1,exact,670,Pancreas cancer,10440710.9393095,Pancreas cancer,18
+gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,2,broader,1234,Other liver cirrhosis,8238381.32152592,"Other liver cirrhosis, which holds MASH among other causes",19
+oncology,MONDO:0008315,prostate cancer,5,exact,740,Prostate cancer,7950389.42886681,,20
+oncology,MONDO:0018906,follicular lymphoma,2,broader,762,Non-Hodgkin lymphoma,7418958.28745017,"Non-Hodgkin lymphoma, all subtypes",21
+oncology,MONDO:0008170,ovarian cancer,1,exact,730,Ovary cancer,5970550.01982594,Ovary cancer,22
+autoimmune,MONDO:0008383,rheumatoid arthritis,3,exact,1350,Rheumatoid arthritis,3306273.5144504,,23
+oncology,MONDO:0009693,plasma cell myeloma,2,exact,763,Multiple myeloma,2831276.50101742,Multiple myeloma,24
+oncology,MONDO:0005105,melanoma,2,exact,691,Malignant skin melanoma,1578225.76566054,Malignant skin melanoma,25
+autoimmune,MONDO:0005011,Crohn disease,1,broader,1244,Inflammatory bowel disease,1323136.94139975,"Inflammatory bowel disease, with ulcerative colitis",26
+ophthalmology,MONDO:0005338,open-angle glaucoma,1,broader,1030,Glaucoma,660697.324120249,"Glaucoma, all forms",27
+allergy,MONDO:0005271,allergic disease,1,none,,,,allergic disease has no WHO cause,
+allergy,MONDO:0011786,allergic rhinitis,2,none,,,,allergic rhinitis has no WHO cause,
+autoimmune,MONDO:0005083,psoriasis,5,none,,,,only the Skin diseases aggregate,
+autoimmune,MONDO:0005101,ulcerative colitis,1,shared,1244,Inflammatory bowel disease,1323136.94139975,"within Inflammatory bowel disease, held by Crohn disease",
+endocrine,MONDO:0005133,endometriosis,1,none,,,,only the Gynecological diseases aggregate,
+endocrine,MONDO:0006964,secondary hyperparathyroidism,1,none,,,,"a complication of chronic kidney disease, not a WHO cause",
+endocrine,MONDO:0005147,type 1 diabetes mellitus,1,shared,800,Diabetes mellitus,89983358.4869585,"within Diabetes mellitus, held by type 2 diabetes",
+gastroenterology,MONDO:0007186,gastroesophageal reflux disease,1,none,,,,only the Other digestive diseases aggregate,
+gastroenterology,MONDO:0005388,primary biliary cholangitis,1,none,,,,"inside Other liver cirrhosis, not separable",
+hematology,MONDO:0010602,hemophilia A,1,none,,,,"inside Other endocrine, blood and immune disorders",
+hematology,MONDO:0010604,hemophilia B,1,none,,,,"inside Other endocrine, blood and immune disorders",
+hematology,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,1,none,,,,inside Other haemoglobinopathies and haemolytic anaemias,
+metabolic,MONDO:0021187,hyperlipidemia,2,none,,,,"a risk factor in the WHO estimates, not a cause",
+oncology,MONDO:0018881,myelodysplastic syndrome,1,none,,,,inside Other malignant neoplasms,
+oncology,MONDO:0008433,small cell lung carcinoma,1,shared,680,"Trachea, bronchus, lung cancers",41700232.5494462,"within lung cancers, held by NSCLC",
+ophthalmology,MONDO:0004728,diabetic macular edema,1,none,,,,inside Other vision loss,
+ophthalmology,MONDO:0006733,dry eye syndrome,1,none,,,,no WHO cause,
+other,MONDO:0004980,atopic eczema,3,none,,,,only the Skin diseases aggregate,
+psychiatry,MONDO:0013600,insomnia,1,none,,,,no WHO cause,
+respiratory,MONDO:0009061,cystic fibrosis,2,none,,,,inside Other respiratory diseases,
+urology,MONDO:0018301,interstitial cystitis,1,none,,,,inside Other urinary diseases,

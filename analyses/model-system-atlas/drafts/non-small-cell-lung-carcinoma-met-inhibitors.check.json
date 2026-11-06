@@ -1,0 +1,236 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-met-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Liu 2011 (PMID 21918175, epub 2011-09-14) resolves; quote verbatim in abstract. Opening untested entry, proximal readout. Nothing to change."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "decision 7 (dating)",
+   "note": "Quote verbatim in 213591 review (applicant narrative, as drafter notes). Status same holds. Bang 2020 (10.1111/cas.14254, tier 1, epub 2019-12-30) already put model EC90 beside a patient biopsy phospho-MET result: earliest public date is 2019."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in 214096 review 'Data:' block; FDA assessment endorses it. Strengthens only, no status change. Falchook 2020 (epub 2019-12-10, tier 1) is the earlier record of the same biopsy/xenograft integration."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Liu 2011 abstract states tolerability at complete-inhibition doses; margin_stated true is right under decision 16."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (review p.70). IC95 132 ng/mL from S114 PK/PD, MTD not reached, flat exposure-efficacy all verified in the review text. Decision 16 case 2: same with margin_stated. Year 2020 stands (label 2020-05-06)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote is FDA's own assessment sentence (verbatim). MTD not reached to 1400 mg and 26-week rat at 0.04-0.13x human AUC verified. Strengthens only; tier-1 record would date it 2020 (Falchook 2019-12-10 + Paik 2020-05-29)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Liu 2011 abstract quote verbatim; opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Angevin 2017 and Egile 2015 resolve; quotes verbatim. Weak same: Egile abstract shows only gastric xenografts (no NSCLC model), trial reports no response-GCN correlation, and registry phase 2 NCT02435121 enrolled 1 patient. poc_gate on a phase 1 expansion is a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wolf 2020 quote verbatim; registry results 2024-03-20 verified; Baltschukat 2019 resolves and supports biomarker-defined activity; FDA review sentence 'These studies support ... activity in the proposed patient population' verified. Missing patient_trials: GEOMETRY-III, VISION cohort B."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (Liu 2011). Status fine, but the quote is mouse-xenograft tolerability, not the GLP rat/monkey system the model_id names (decision 8): opener belongs to met-driven-xenograft or needs a tox-package source."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wolf 2020 quote verbatim. Review verified: 'There were no adverse lung findings in nonclinical studies', organ findings 'consistent with clinical experience', 3T3 + UV-LLNA positive, 1/334 grade-1 photosensitivity. Contra rests on oedema/ILD silence; photosensitivity leg fails decision 5 (harm did occur, warning kept)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bladt 2013 (PMID 23553846) abstract quote verbatim. Same model_id mismatch as safety 1: mouse xenograft tolerability opening a rat/dog GLP track."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (review nonclinical summary). Periportal oedema, 'increased weight gain ... suggestive of edema', liver toxicity both species, pigmented-rat phototox negative all verified. same holds on its own track; whether rat/dog is a separate track from rat/monkey is a rule question (decisions 6, 8)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Bahcall 2016 PMC5140694 resolves; Significance quote verbatim. Opening untested entry at first Ba/F3 use. Capmatinib appears only as INC280 in the biochemical panel; the cell assays used savolitinib and cabozantinib."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim. NCT02143466 named; D1228V detected in the patient on savolitinib + osimertinib, then built into TPR-MET Ba/F3, which lost savolitinib sensitivity. Post-dates and is motivated by the patient result: retro holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "decision 10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim. D1228/Y1230 were patient-known before the 2019 ENU screen (Heist 2016 D1228N, Ou 2016 Y1230C on crizotinib; Bahcall 2016 D1228V on member savolitinib); Fujino 2022 tallies 17 such patients. Post-hoc reproduction: retro, retrodiction true. Fujino 2019 paywalled, so 2022 stands.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 12 pools efficacy at the mechanism, so 'patient result' is class-level, not per member. D1228V type I resistance was known on member savolitinib (Bahcall 2016) before the 2019 screen; decision 10 scores the reproduction retro, retrodiction true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Wang 2023 PMC9975107 resolves; Summary quote verbatim. Opening untested entry; 212 LCOs from 107 patients confirmed in the text."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim. P-60 combination IC50 1.32/0.71/0.25/0.24 vs osimertinib 1.82/1.15/0.25/1.30 uM, savolitinib alone 11.6/17.6; drug chosen on FISH-confirmed MET amplification, DST 'later confirmed' (prospective). Table S6: P-86 bozitinib (SD), P-105 crizotinib (PD), no member METex14 case. Thin n=1 same holds."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Hu 2025 PMC12682884 (epub 2025-11-24) resolves; quote verbatim including 'savoltinib'. Simulated ORR by dose, no patient dose test: untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (abstract). Opening untested entry; model calibrated on cell-line and xenograft data for capmatinib, tepotinib and savolitinib before any clinical comparison."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim. Virtual METex14 trials calibrated on Wolf/Paik/Drilon 2020 ORRs; savolitinib (Lu 2021) and MET-amplified capmatinib out of sample; every trial read out before the 2025 model. Retro holds; class level fits."
+  }
+ ],
+ "missing": [
+  "GEOMETRY-III (NCT04427072; ESMO 2023 abstr 1391P): the only randomised member trial in the context, capmatinib vs docetaxel 2L/3L METex14, terminated at 22/90 patients, PFS HR 0.46 (p=0.066), ORR 8/15 vs 0/6; belongs in efficacy patient_trials (no status change).",
+  "VISION cohort B (Le 2023, 10.1016/j.xcrm.2023.101280): tepotinib in high-level MET-amplified NSCLC by liquid biopsy, ORR 41.7%, halted early; the tepotinib side of the amplification prediction is absent from patient_trials.",
+  "Ai 2018 (10.1158/1535-7163.MCT-17-0368, epub 2017-12-13): gumarontinib/SCC244's own NSCLC patient-derived xenografts driven by MET aberration, 'robust antitumor activity at the well-tolerated doses'; a member drug's own model missing from the met-driven-xenograft track, pairs with GLORY (Yu 2023, ORR 66%).",
+  "Gavine 2015 (10.1016/j.molonc.2014.08.015): savolitinib's only published model is gastric-cancer PDX (3/3 cMET-dysregulated models, tumour stasis); no NSCLC model found for the Lu 2021 METex14 trial, which the track should state rather than list savolitinib as if xenograft-predicted.",
+  "Lu 2017 (10.1158/0008-5472.CAN-16-1944, epub 2017-05-18): immunocompetent mouse with the orthologous mouse METdelta14 allele, 'Met inhibition showed clinical benefit in this model', published before GEOMETRY/VISION read out; a second animal system with no track. Inhibitor not named in the abstract (the paper's patient response is to crizotinib, a non-member); untested track if a member was dosed, note-only otherwise.",
+  "Fernandes 2023 (10.1002/1878-0261.13397): CRISPR METex14/WT isogenic human lung cells in humanised-HGF knock-in mice, 'sensitising tumours to MET-TKIs'; built after the clinic knew the answer, so a retrodiction track candidate (decision 10) if a member TKI was used.",
+  "Hu 2025 (10.3389/fphar.2025.1685468, epub 2025-11-24): patient-derived organoids from 5 MET-amplified NSCLC patients combined with a QSP model to design personalised regimens; a patient-level ex-vivo system for this class. Abstract does not say whether PDO predictions were compared with those patients' outcomes; full text needed before scoring.",
+  "Estevam 2025 (10.7554/elife.101882, PMC11832172, epub 2025-02-17): Ba/F3 deep mutational scan of ~5,764 MET kinase-domain variants against 11 MET inhibitors that 'validate previously identified resistance mutations'; a retro candidate on the existing baf3-engineered-met-panel track (same system, pooled), not a new model; confirm which member drugs are in the 11-inhibitor panel from the full text.",
+  "Wang 2023 Table S6 (mmc1.pdf, read): METex14 case P-86 was treated with bozitinib (vebreltinib/PLB1001; LCO IC50 810.6, SD, scored concordant) and P-105 with crizotinib (IC50 4.95, PD, concordant); savolitinib was tested in both organoids and inactive, never given. If vebreltinib counts as a class member, P-86 is a second organoid-vs-patient comparison for the efficacy 8 note or patient_trials; otherwise the entry should say no METex14 member case exists."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety tracks: is a GLP rodent + non-rodent toxicology package one model system across member drugs (shared model_id; capmatinib's 2020 contra then stays sticky and headlines the cell under decision 6) or one system per drug/species pair as the draft chose (rat/monkey vs rat/dog), which lets tepotinib's same headline? Decision 8 does not decide; the drafter's own judgement says the split was made to avoid the sticky contra.",
+  "Does a phase 1 dose-expansion cohort whose listed objective is 'preliminary efficacy' qualify as a pre-specified proof-of-concept gate (endpoint_role: poc_gate), when the trial's primary endpoint is MTD? Efficacy entry 2 (SAR125844) depends on it; otherwise the entry is untested and the strip starts at 2020.",
+  "Decision 5 threshold: a predicted harm that appeared in 1 of 334 patients (grade 1) with the warning retained on the label: is that 'never came' (contra, magnitude opposite) or a match at lower incidence (magnitude off_by_>5x)? The capmatinib photosensitivity leg of safety entry 2 turns on it.",
+  "Within a successful drug, when the model correctly predicted that a biomarker-negative subgroup (MET GCN<10, ORR 7-12%) would not respond, is there a neg-like status at prediction_level patient, or is same + partial the ceiling? Decision 13 defines neg only for a drug that failed.",
+  "Dating of strengthens entries: decision 7 says every entry is dated to the earliest public comparison, but a strengthens entry changes no status; should the FDA-review year stand when a tier-1 paper a year earlier carries the same comparison (engagement 3, dose 3)?",
+  "Decision 10 scope for efficacy 6: the residues the 2019 Ba/F3 ENU screen named (D1228, Y1230) were already reported in patients on crizotinib (non-member, 2016-2017) and savolitinib (member, Bahcall 2016) but not yet on capmatinib or tepotinib (first reports 2020). Is 'the patient result known' judged at the class level (type I MET-TKI resistance sites, so retro) or per compared member drug (so same)?",
+  "Does rule #70 (combination-arm events anchor a contra only if the source attributes them to the class drug) apply symmetrically to same? Efficacy 8 is one real-world patient on osimertinib + savolitinib whose organoid tested the combination, whose treatment choice the source attributes to FISH rather than the DST, and whose savolitinib-alone organoid IC50 was >10 uM."
+ ]
+}

@@ -1,0 +1,233 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hiv-infectious-disease-hiv-maturation-gag-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "DOI -> Van Baelen 2009 AAC (PMID 19223634); quote verbatim in abstract (Europe PMC full text returned 500). Non-member bevirimat opens the strip as proxy, scores nothing: allowed by evidence rule 6."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "evidence rule 6 (dating: earliest public comparison) + engagement definition (viral load is listed as a proximal readout)",
+   "note": "Dicker 2019 (PMC6797179) quote verbatim. But the panel's own PD readout, viral replication, moved in dosed patients in Hwang 2017 (>=1 log10 at >=40 mg): first 'same' should be 2017, readout_tier proximal; keep 2019 resistance entry as strengthening."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Dicker 2022 AAC (PMC8765437, epub 2021-11-15) quote verbatim; Spinner 2022 confirms A364V in 4/6 at 200 mg, fold change 132; NCT03784079 results posted 2021-02-16. readout_tier 'direct' for binding-site resistance is a rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Nowicka-Sans 2016 (PMC4914680) quote verbatim ('EC 50' spacing only). Serum shift 5.4x / 86% bound confirmed in full text; untested opening entry is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hwang 2017 CID (PMC5848258) quote verbatim; plateau >=500 vs 643 ng/mL target is within 2x and the paper states the comparison. Phase 2b caveat (flat exposure-response, M184V backbone failures, Morales-Ramirez 2018) verified; see rule question 3."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Spinner 2022 (PMC9536290) quote verbatim; target = 3x PBA EC90 of R361K/V362I/L363M triple polymorph = 150 nM (110 ng/mL), PK non-proportional 140-200 mg, so direction_only is right. NCT03784079 results 2021-02-16 confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Van Baelen 2009 source/quote as engagement 1. Status fine, but the judgement's 'no animal efficacy model exists for this class' is wrong: bevirimat was efficacious in HIV-1-infected SCID-hu Thy/Liv mice (Stoddart 2007), cited by Nowicka-Sans 2016 ref 52. See missing."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hwang 2017 quotes verbatim ('log 10' spacing only); registry primary = day-11 HIV RNA change; NCT01803074 results 2019-11-25, NCT02415595 2018-09-19 and its 76-83% vs 77% quote verified. Patient-level V362I/V370A reduced-response finding (Dicker 2022) could be its own prediction_level=patient entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Joshi 2025 DOMINO (PMC12675029, epub 2025-10-17) and DYNAMIC (PMC12675015) quotes verbatim; NCT04493216 results 2023-11-18, NCT04900038 2023-12-14; whyStopped = company portfolio decision, 'not based on any safety or efficacy concerns'. model_src Dicker 2022 resolves (PBA EC90 33 nM, isolates EC50 9 nM confirmed)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Johnson 2018 (PMC5989765) quote verbatim. Draft omits that two CV findings (troponin rise, NSVT) in Study 200207 caused an FDA clinical hold, lifted after 6-month rat and 9-month dog studies; so species ARE public and the model text 'species not public' is wrong. 'same' still holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Joshi 2025 quote verbatim; EGD sub-study rationale ('translation of non-clinical toxicology findings (eg, parietal cell and chief cell changes)') and unchanged gastrin/pepsinogen I/II confirmed. contra/opposite follows the v3 safety rule, but rests on 14 on-drug biopsies at 24 weeks with no public margin: see rule question 2."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stoddart 2007 PLoS One (PMC2080775) quote verbatim in abstract and text. Non-member bevirimat proxy opener, product_in_model false, scores nothing: decision 7 (#112). CA-SP1 cleavage in infected thymocytes is a direct readout. No member found in this model.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; full text confirms plasma >2 ug/ml for 6 h after 100 mg/kg and 'achievable in humans after oral dosing'. Exposure statement is bevirimat-only, no member target: untested proxy opener under decision 7.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim ('log(10)' in abstract, 'log 10' in text); >2 log10 at 100 mg/kg per day and SP1/A1V in-vivo resistance confirmed. Untested proxy opener (decision 7, #112); withdrawing the draft's 'no animal model' claim is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hwang 2017 (PMC5848258) quote verbatim (Fig 8). Untested opener right. Caveat: Hwang is a 3-parameter sigmoid Emax fit to observed C24, no popPK/NONMEM/trial simulation, and no source says 60/120/180 mg came from the plateau; model text overstates this arm.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Morales-Ramirez 2018 (PMC6198970) quote verbatim. Week-24 primary met at all doses with flat exposure-response as the plateau implied: decision 4 case 2, direction_only. Drafter-made pairing; the paper credits the PoC study, not the Emax plateau. Year = registry 2018-09-19.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "DYNAMIC (PMC12675015) quote verbatim; popPK/exposure-response trial simulation chose the doses, >=100 mg predicted >75% max effect, 100/150 but not 200 mg cleared the prespecified threshold. Troughs reached: decision 4 case 2; 'partial' honest. Spinner 2022 EC50 ~170 ng/mL checked.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Stamatopoulos 2023 (PMC9965536) quote verbatim. Model developed, qualified and verified on the FTIH (NCT03231943), Phase 2a, food-effect (NCT04263142) and ADME data it reproduces: retrodiction, so retro never same (decision 10). Observed/predicted within 2-fold confirmed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Johnson 2018 (PMC5989765) quote verbatim (Introduction); 'preclinical evaluation indicated negligible renal excretion' and the PA-IC90 threshold confirmed. Prospective regimen prediction (CYP3A4 clearance -> RTV boosting) counts under decision 4 (#91); qualitative, low confidence. Rule question 4 stays open.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wen 2022 DMD (PMID 36153007) quote verbatim in abstract; full text paywalled. The comparison sentence is 'all consistent with low in vitro intrinsic clearance in liver microsomes and hepatocytes'; prefer it as the quote. Strengthening same; rule question 4 caveat.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Humanized mouse efficacy model, no track: HIV-1-infected SCID-hu Thy/Liv mice, oral bevirimat cut viral RNA >2 log10 at plasma concentrations 'achievable in humans' with dose-dependent CA-SP1 cleavage inhibition in thymocytes and in-vivo confirmation of the SP1/A1V resistance phenotype (Stoddart 2007, PLoS One, doi 10.1371/journal.pone.0001251, PMID 18043758; cited as ref 52 in Nowicka-Sans 2016). No member was reported in it, so it is a separate track opening 'untested' (proxy, product_in_model false), and the draft's claim that no animal efficacy model exists must be withdrawn.",
+  "Chronic animal toxicology as the track's species: Johnson 2018 (doi 10.1002/prp2.408) names 6-month rat and 9-month dog studies for GSK2838232 and an FDA clinical hold (Studies 200912/200207 terminated; resumed as Study 204953) that the draft's safety track does not record; not a new track but a dated event on mi-nonclinical-tox.",
+  "Candidate, pending rule question 4: cross-species ADME/PK prediction compared with human PK for GSK2838232 (oral bioavailability 6-40% across species, preclinical metabolite profile 'qualitatively similar' to human plasma, negligible renal excretion predicted and used to skip urine collection), Johnson 2018 doi 10.1002/prp2.408; the GSK3640254 discovery paper (Regueiro-Ren 2022, J Med Chem, doi 10.1021/acs.jmedchem.2c00879, abstract only) describes the preclinical PK profile that preceded the Phase 1 (Pene Dumitrescu 2020, doi 10.1002/prp2.671)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "readout_tier for on-treatment resistance selection at the drug's binding site (A364V at CA/SP1): 'direct', 'proximal', or not an engagement readout at all when the model's own PD readout (viral replication = viral load, listed as proximal) is available earlier?",
+  "Safety 'contra' for a predicted animal harm absent in patients: what minimum sample size and duration makes 'never appeared' a comparison rather than 'untested' (here 14 on-drug paired gastric biopsies at 24 weeks, planned Week-96 biopsies never done), and does an animal finding with no public exposure margin count as a stated prediction of harm at clinical exposure (decision 16 interaction)?",
+  "Dose table: when the exposure target was reached and the Week-24 primary was met but the regimen was abandoned for emergent NRTI-backbone resistance and GI intolerability (GSK3532795 Phase 2b, NCT02415595), does the 'reached, failed, abandoned' row apply, or does dose stay 'same' because efficacy is judged on the primary endpoint only?",
+  "Does a cross-species ADME/PK projection (bioavailability, metabolite profile, excretion route) compared with human PK count as a model-system track, or is only the exposure-target model (serum-shifted EC90) scored under dose?",
+  "Patient-level prediction on an existing track (baseline Gag V362I/V370A predicted and observed reduced response): does it require its own entry with prediction_level 'patient', or is one entry per status change per track regardless of prediction_level?",
+  "May a track that only a non-member first-generation drug (bevirimat) ever used in vivo (SCID-hu Thy/Liv mice) appear as an 'untested' track opened by proxy, or does a track need at least one member run in it to exist?"
+ ]
+}

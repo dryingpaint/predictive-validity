@@ -1,0 +1,95 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/psoriasis-rorc-inverse-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Smith 2016 PLoS One (PMID 26870941, PMC4752338) full text: quote verbatim in abstract. sRICA explant is GSK's pre-clinic engagement model; untested opener at 2016 fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "SID 2017 abstract 249 (JID) found by search; text reads 'Additionally, no meaningful changes in IL-17 related biomarkers...' (near). Biopsies of treated fields, so engagement failed where explants predicted it. Kang 2018 BJD (PMID 29150844) has no abstract; not read."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03339999 Prot_000.pdf (Amd 2, 21-Dec-2017) has the quote verbatim and 'formerly Vitae Pharmaceuticals compound VTP-43742'. Results posted 2021-04-06. Different model and drug, so model_change turn-back is allowed under decision 6."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Smith 2016. No skin exposure measured in patients (as far as abstract-level sources show), so untested is right; the topical failure is already counted once in engagement."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Protocol quote verbatim; same section says the dose was 'efficacious and to not have a liver function test (LFT) signal'. Doses redacted. Reached-and-worked = same; margin_stated false is right (no NOAEL margin public)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "IMQ mouse quote verbatim in Smith 2016 results (1% ointment, 23% epidermal thickness reduction)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "4",
+   "note": "Quote near-verbatim in SID abstract, primary endpoint confirmed (NCT02548052). But engagement (entry 2) shows IL-17 never moved in treated plaques, and the abstract attributes the null to non-penetration. Target not reached → efficacy untested; count the failure once in engagement.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4: contra needs the model's own prediction to fail; the source blames non-penetration of human plaque, which the IMQ mouse never tested. Target not reached, so efficacy untested; the miss counts once, in engagement (sRICA explant)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gooderham 2025 abstract (PMID 39848568) quote verbatim; co-primary met. Harcken 2021 (PMC7812678) shows BI 730357 in IL-23 minicircle mouse, skin IL-17A up to 109%, S100a8/9 95%. NCT03635099 results 2022-06-02. model_first_use_year null; ~2018 (pre-trial) would fit."
+  }
+ ],
+ "missing": [
+  "Engagement, VTP-43742: a peer-reviewed healthy-volunteer PK/PD paper ('Safety, tolerability, pharmacokinetics and pharmacodynamics of VTP-43742, a RORγt inhibitor, in normal healthy volunteers', ResearchGate 366800762, c. 2022-23) is a tier-1 source for the whole-blood IL-17 readout; it does not predate the 2021 registry date, so it adds no status change. Not opened.",
+  "Efficacy patient_trials: NCT03835481 (BI 730357 long-term extension) TERMINATED 'Due to company decision', results posted 2022-11-18. This was a program stop, not an efficacy failure under decision 4 ('Failed' ≠ development stopped).",
+  "Safety: NCT03339999 registry gives whyStopped 'safety reason' (verified). The draft says so, but no source says what the safety signal was."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When the topical drug fails the engagement readout in the same biopsied field, does the efficacy cell become untested (target not reached, decision 4 row 1) even though the engagement model, not a PK model, set the target? The dose table is written for exposure. The draft scored engagement and efficacy both contra, so one failure counted twice.",
+  "Engagement entry 3: the 'model' (human whole-blood ex vivo IL-17 assay) and the human readout (the same assay on dosed subjects' blood) are the same measurement. Does a human ex-vivo assay whose own readout is repeated in dosed humans count as a model prediction that can turn back a contra, or is it close to tautological?"
+ ]
+}

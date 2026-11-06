@@ -1,0 +1,142 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/osteoarthritis-mapk14-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "engagement definition; evidence rule 1 (comparison_stated)",
+   "note": "Hope 2009 (PMID 19720877, JPET 331:882, epub 2009-08-31) abstract carries the quote verbatim; rat/cyno endotoxin TNF beside dose-dependent human endotoxin TNF/IL-6. Healthy volunteers, downstream readout, same holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table (target reached, efficacy unknown)",
+   "note": "Quote verbatim in abstract. NCT01102660 completed 2011-02, no CT.gov results; EFIC F645 abstract paywalled; Pfizer 2011-11-10 pipeline lists PH-797804 for COPD only. OA result still unstated, so untested stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 6 (cell opens untested at model_first_use_year)",
+   "note": "Brown 2008 (PMID 19055838, open access, epub 2008-12-04) conclusion sentence verbatim; sibling drugs SB-203580/VX-745, product_in_model false correctly. Opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same definition (direction, >=1 member drug, primary endpoint)",
+   "note": "ACR 2012 LB abstract L1 carries the quote verbatim; primary WOMAC pain week 4 met. First public 2012-07-31 (Array PR/Reuters; Fierce 2012-08-01 notes parity with oxycodone ER). NCT01366014 has no posted results. Conference-abstract tier is a rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety definition; untested when the patient side could not show the harm",
+   "note": "S-1 (filed 2014-01-10) quote verbatim; adds cartilage damage at HED >=10 mg, none at 1-3 mg; PoC dosed 45 mg with HA-like local tolerability, no imaging. Untested defensible; model side is tier 5 (model_src_tier null)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 8 (track opens at first class use; cross_indication model_kind)",
+   "note": "DOI resolves to Inflamm Res 56 Suppl 3 S342-S477 (June 2007), the compilation holding Koch at S376-S377; body paywalled at Springer/PMC/EPMC, title verbatim in ResearchGate record. Opening untested, year 2007, class: fine. Mavers 2009 names the rodent models as CIA and adjuvant arthritis.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "decision 4 (engagement = the PD readout the model used moving in humans) and rule 1 (comparison_stated only when the source draws the comparison)",
+   "note": "Title seen only; Mavers 2009 (PMC3033497) relays Koch as two separate findings: ex-vivo LPS whole-blood PGE2/IL-1b/TNF inhibition up to 100% in dosed phase-1 subjects, and in-vivo CIA/adjuvant-arthritis activity. No rodent cytokine PD readout is described, so the RA model's readout was never compared; comparison_stated should be false. Year and class would be right if the body shows a rodent ex-vivo readout.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested (decision 4: the PD readout the model used). Body unreachable (Springer, PMC, Europe PMC, fc.py); the title states rodent RA-model activity beside human ex-vivo LPS cytokines, no rodent cytokine readout. Reverts to same if the body shows one."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 8 (track opens at first class use; proxies allowed, product_in_model false)",
+   "note": "Brown 2008 (PMID 19055838, PMC2612656, open access, epub 2008-12-04) conclusion sentence verbatim. Opening untested on the existing rat-iodoacetate track; sibling compounds SB-203580/VX-745, not a member drug. Year 2008, class.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 4 (biomarker readout) with readout_tier downstream; rule 1(b) paired comparison; rule 2 tier 5 with trial_unreported",
+   "note": "ACR 2012 LB abstract carries the COMP/CTX-I sentence verbatim (non-breaking hyphens normalised). Model readout was tibial-plateau damage (cartilage); COMP -10% is the matching cartilage marker, CTX-I -38% is bone. Direction matches, 2008 model before 2012 trial, not a retrodiction. Tier-5 treatment of the ACR abstract follows the open rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 8 (track opens at first class use; cross_indication)",
+   "note": "Same Koch 2007 title (verbatim via ResearchGate; body not retrievable). Opening untested at 2007; Mavers 2009 names CIA and adjuvant arthritis as the rodent RA models. Hope 2009 SCW/CIA for PH-797804 in the note is consistent with its abstract.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 4 (primary endpoint) with rule 1(b) pairing and decision 8 cross_indication",
+   "note": "Kivitz 2012 quote verbatim; primary WOMAC pain week 4 met (-2.4 vs -1.6, 1-sided p=0.0247, ~0.05 two-sided). RA-model activity (CIA/AIA) to OA pain is direction_only and admitted as cross_indication; the trial source attributes nothing to untested conditions. Prospective (2007 model, 2012 trial), class. Weak but supported.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "ARRY-797's own model, no track: Koch et al. 2007, 'ARRY-797, a selective, potent inhibitor of p38 active in animal models of rheumatoid arthritis, inhibits ex vivo IL-1, PGE2 and TNF production in normal human subjects', Inflamm Res 2007;56(Suppl 3):S376-S377 (abstract book doi 10.1007/BF03353884; relayed by Mavers 2009 Curr Rheumatol Rep doi 10.1007/s11926-009-0054-9: rodent CIA/adjuvant arthritis plus ex-vivo LPS whole-blood PGE2/IL-1/TNF inhibition up to 100% in dosed healthy subjects). A member-drug engagement comparison (readout_tier direct) dated 2007, two years before Hope 2009; abstract body not retrieved (ResearchGate metadata and citing text only).",
+  "Patient-side engagement on the rat-iodoacetate track, no entry: Kivitz 2012 ACR abstract L1 reports ARRY-797 cut serum COMP 10% and CTX-I 38% vs placebo at week 4 in knee-OA patients (same URL as efficacy entry 2). Brown 2008 predicted joint-degeneration inhibition; the cartilage/bone degradation biomarkers moving in patients is a downstream engagement comparison the engagement cell (currently healthy-volunteer endotoxin only) should carry as a 2012 entry.",
+  "Not a model, a sponsor record the dose/efficacy notes could cite: Pfizer pipeline PDF dated 2011-11-10 (https://cdn.pfizer.com/pfizercom/research/pipeline/2011_1110/pipeline_2011_1110.pdf) lists PH-797804 for COPD Phase 2 only, nine months after NCT01102660 completed (2011-02), so the OA indication was dropped without a stated result. It does not report the outcome, so no status changes.",
+  "No further model system for this class found (checked_by CHECKER_BRIEF_v3 / models). The only other Array ARRY-797 model abstracts are oncology: Wright/Winski et al., Blood 2006;108(11):3478 'ARRY-797 ... Inhibits LPS-Induced IL-6 and In Vivo Growth of RPMI-8226 Human Multiple Myeloma Cells' (https://ashpublications.org/blood/article/108/11/3478/128129) and Ann Oncol 2007;18 Suppl 4 xenograft abstract. The Blood LPS-IL-6 result (in vitro or in vivo not known from the title) would be ARRY-797's own model_src for the existing rat-endotoxin-tnf-pd track, paired with the Koch 2007 human ex-vivo PD; not a new system."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Conference abstracts have no tier: the ACR 2012 late-breaking abstract (Arthritis Rheum 64 Suppl 10, sponsor-authored, unreviewed, no DOI) and the EFIC 2011 abstract (Eur J Pain Suppl, has a DOI) are neither tier 1 papers nor tier 5 press releases. The draft scored the ACR abstract as tier 5 with trial_unreported true; is that the rule?",
+  "Safety: a tox-predicted harm (FX005 cartilage damage at HED >=10 mg) where the only trial (45 mg, 12 weeks, no imaging) could not detect the cartilage endpoint but could and did assess the synovitis component clinically (local tolerability HA-like). Untested as drafted, or contra/opposite for the assessable component? And if the repeat-dose tox post-dated the trial while the clinic never measured the endpoint, is it a prospective prediction, a retrodiction, or neither?",
+  "Evidence rule 2 requires a tier 1-3 model_src on a tier 4-5 entry, but the only source for FX005's rat toxicology is the SEC S-1 itself (model_src_tier null). Lint accepts it; may an untested safety entry stand on a tier-5 model side when no higher-tier model source exists?",
+  "A sponsor pipeline document silently dropping an indication after a completed, unreported trial (PH-797804 OA): is that an admissible tier-5 failure signal, or nothing until a result is stated? The dose cell's untested depends on the answer.",
+  "Dose entry 1 carries trial_unreported true on a source_tier 1 entry; the brief ties trial_unreported to tier 5. Should trial_unreported be allowed on any tier when the relevant patient trial itself is unreported?",
+  "Engagement on a cross-indication track where the human PD readout (ex-vivo LPS whole-blood cytokines in dosed volunteers, Koch 2007) was never a readout of the rodent model (CIA/adjuvant arthritis scores): is a title that lists both findings enough for comparison_stated true and same, or does decision 4 require the model itself to have used the readout (untested, with the human PD re-homed on the rat-endotoxin-tnf-pd track)? (CHECKER_BRIEF_v3 / models, engagement 3)"
+ ]
+}

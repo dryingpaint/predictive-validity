@@ -1,0 +1,120 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/rheumatoid-arthritis-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "model definition (sibling drug, product_in_model false)",
+   "note": "PNAS 2010 (PMID 20615965) resolves; quote verbatim in abstract. Ibrutinib is a sibling outside the member list, correctly product_in_model false; untested opening entry is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "engagement definition; evidence rule 1 (comparison_stated)",
+   "note": "JPET 2013 (PMID 23709115) resolves; quote verbatim. Abstract itself pairs CIA occupancy-efficacy with healthy-volunteer full occupancy for spebrutinib (a member), so comparison_stated true and same/direct hold."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "Quote verbatim in Honigberg 2010 abstract; occupancy-efficacy link is the exposure target the class used. Untested opening is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table: reached, drug worked -> same",
+   "note": "Quote verbatim in Cohen 2020 full text (PMC7496340); ref 15 there is the J Med Chem GDC-0853 paper named as model_src. Patient exposure vs IC70 not shown in the paper (Chan 2020 Pharm Res has exposure-response); medium confidence fair."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose table: reached, failed, abandoned -> contra, derived_from efficacy; one drug's contra beats another's same",
+   "note": "Fleischmann 2022 (PMID 38293957) quote verbatim; Goess 2019 abstract says occupancy correlated with rat-CIA efficacy. Registry 2021-05-03 confirmed. Spebrutinib (83% patient occupancy, ACR20 P=0.25, epub 2019-11) could date this contra to 2019; not required."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "model definition (product_in_model false)",
+   "note": "Quote verbatim in Honigberg 2010 abstract; rodent CIA is the system every member's RA programme cited (Gillooly 2017, Goess 2019, Crawford 2018, Evans 2013 checked)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "status contra; one drug's contra beats another's same; evidence rule 6 dating",
+   "note": "Conaghan 2023 quote verbatim; NCT02638948 co-primaries ACR20/ACR70, results posted 2019-05-28. Gillooly CIA 79% inhibition, not sub-threshold, so not neg. patient_trials mislabels acalabrutinib NCT02387762: DAS28-CRP wk4 was its registered primary (posted 2019-03-26); year unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety definition; evidence rule 5",
+   "note": "Schafer quote verbatim (PMC7021855). No member's RA tox prediction is compared with patients. But see missing: acalabrutinib FDA review pairs dog platelet aggregation 'Unremarkable' with 31.5% hemorrhage in MCL, an importable comparison."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (prospective, not retro); safety: stated relative prediction opens untested",
+   "note": "Quote verbatim twice in bundled NDA 210259 review (pp. 26, 33; study r2017005): LTA on healthy-volunteer and acalabrutinib/ibrutinib-treated CLL platelets plus VWF-HA1 mouse. Predates the head-to-head result, so prospective; untested, class level, ex_vivo, tier 2 hold.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (model 2017 precedes 2021 result, so same not retro); safety stated prediction held",
+   "note": "Byrd 2021 JCO full text (PMC8547923): quote verbatim; major bleeding 4.5% vs 5.3% also verbatim, so partial is right. Paper never mentions platelets, so comparison_stated false. ELEVATE-RR read out 2021, after the 2017 review: same, year 2021, class level.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Safety, imported_from mantle cell lymphoma (acalabrutinib is a member): FDA NDA 210259 Multidiscipline Review (2017, https://www.accessdata.fda.gov/drugsatfda_docs/nda/2017/210259Orig1s000MultidisciplineR.pdf, in the source bundle) reports the 91-day dog study 'Platelet Aggregation: Unremarkable' and nonclinical platelet assays showing 'fewer effects than ibrutinib', while 39/124 (31.5%) of pivotal MCL patients had hemorrhage (1 major). A paired (comparison_stated false) on-target-harm entry, likely contra (model silent on bleeding) dated 2017 if the dog is judged able to show BTK-dependent platelet dysfunction; TAS5315 bleeding in RA (Takeuchi 2023) is the in-disease echo. See rule question.",
+  "Efficacy patient_trials: NCT02387762 (acalabrutinib + MTX, Phase 2) registered primary endpoint was DAS28-CRP at week 4; registry results 2019-03-26 show 5.40 vs placebo 5.05 (no analysis posted). It is the earliest member primary-endpoint miss, not exploratory; same year as the cell's contra, so no status or year change.",
+  "Efficacy/dose: spebrutinib NCT01975610 registered primary was ACR20 at week 4 (not met, 41.7% vs 21.7%, P=0.25, Schafer 2019 epub 2019-11-13) with median patient BTK occupancy 83%: a member that reached the model's occupancy target and missed its primary endpoint in 2019, independent of the BMS-986142 dose question."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety silence and species capability: does a dog toxicology study that measured platelet aggregation as 'unremarkable' count as a model silent on a harm the species could have shown, when human BTK-inhibitor bleeding is mediated by GPVI platelet signalling whose BTK dependence differs across species (Tec compensation in rodents)? The rules do not say who decides species capability or on what evidence.",
+  "Dose for a failed drug whose dose basis is unpublished (BMS-986142, poseltinib): the dose table assumes we know whether the model's exposure target was reached. When no source states the dose basis, is the dose entry untested (draft's implicit choice) or does efficacy contra still stand without the dose check (draft scores efficacy contra on BMS-986142 regardless)?"
+ ]
+}

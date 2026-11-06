@@ -1,0 +1,159 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hiv-infectious-disease-hiv-rt-nrti-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dutschman 2004 resolves (PMID 15105115, AAC print 2004-05); quote verbatim in abstract; untested opener on the cell-culture track, product_in_model true (4'-Ed4T = censavudine). No change."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cotte 2013 resolves (PMID 23771104); quote verbatim in abstract. Viral load is a proximal readout (decision 15); decision 4 routes the GS-9131 genotype-stratified failure to efficacy, so same stands. Azvudine NMPA label adds a 2021 same (see missing)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wang 2009 resolves (PMID 19470503, epub 2009-05-26); quote verbatim; untested opener with margin_stated false, decision 16 correctly not invoked. No change."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cotte 2013 AUC sentence verbatim in abstract; a regimen prediction (triphosphate persistence to once daily) counts under decision 4 (#91); direction_only right since no numeric target. No change."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03472326 results posted 2021-01-05; quote verbatim from the limitations field; sentinel means -0.13 (SD 0.268) and -0.29 (SD 0.207) confirmed. Decision 4 case 1 or 3 both give contra; CT.gov history (2020 termination) returned 403, so 2021 stands."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cihlar 2008 resolves (PMID 18056282, epub 2007-12-03); quote verbatim; separate beagle-dog track untested because no human intracellular GS-9148-DP or PK was posted (registry lists no PK outcome). No change."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dutschman 2004 closing sentence verbatim in abstract; untested opener, cell not empty because the cell-culture package was the efficacy model. No change."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cotte 2013 conclusion verbatim; antiviral activity is one of four stated co-objectives of the Phase 2a, so endpoint_role primary is acceptable; EudraCT 2008-004810-29 ranking not read by me either. No change."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gupta 2016 resolves (PMID 26762988, Lancet HIV epub 2015-12-12); abstract names week-24 HIV-1 RNA <50 copies/mL as primary; NCT01489046 hasResults false, so registry_date null is right. Strengthening same stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2021,
+   "rule": "decision 4 (#144): sponsor-pre-specified secondary as the proof-of-concept gate carries endpoint_role poc_gate",
+   "note": "Status contra stands (predicted effect absent, decision 4 #53). But the registered primary outcome (randomized-cohort responder rate) was never populated; the sentinel-cohort viral-load changes are registered SECONDARY outcomes used as the Part 2 gate, so endpoint_role should be poc_gate."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dutschman 2004 quote verbatim; mitochondrial-toxicity track opener; Wang 2013 (PMID 24080659, epub 2013-09-30) resolves as the later model side. No change."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gupta 2016 quote verbatim. Abstract reports fat gain and smaller BMD loss; 'no lipoatrophy' is an inference from fat gain, not stated. same + partial is defensible; a 19-day mtDNA assay cannot show visceral fat, so no contradicted silence. No change."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Guha 2014 resolves (PMID 24846376, Int J Toxicol 2014-05); quote verbatim; stated predictions (dyserythropoiesis, 3/60 monkey platelet falls, no mitochondrial toxicity) read correctly. No change."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gupta 2016 SAE sentence verbatim. One drug-related thrombocytopenia in 198 against an immune-mediated 3/60 monkey finding is a thin same; anaemia (the primary predicted harm) is unreported in the abstract. Accept at low confidence; see rule question 3."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cihlar 2009 resolves (PMID 19001108, epub 2008-11-10); quote verbatim; renal-transport track untested because GS-9131 patients were dosed 14 days with no posted renal data. No change."
+  }
+ ],
+ "missing": [
+  "Azvudine NMPA package insert (阿兹夫定片说明书; conditional approval 2021-07; copy at https://file.wuxuwang.com/zhuce/ssypfiles/78da81a9010d86837acf314780c4798c%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf, holder 河南真实生物): pivotal Phase 2, 172 ART-naive HIV-1 patients, azvudine 2/3/4 mg + EFV + TDF vs 3TC + EFV + TDF, primary endpoint HIV-1 RNA <50 copies/mL at week 48, PPS 97.2% / 100% / 100% vs 97.5%; HIV-1 RNA fell 1.5-3 log10 by weeks 4-12 and -3.2 to -3.5 log10 at week 48. A regulator document reporting the azvudine patient result the draft calls unpublished: supports efficacy `same` and engagement `same` for azvudine (2021, product_in_model true, model side Wang 2014 10.1371/journal.pone.0105617); the cell headline does not change because the GS-9131 contra (2021-01-05) beats it under decision 6. The label's adverse-reaction section (dizziness 38-60%, ALT/GGT/AST rises; warnings on neutrophil count, bilirubin, AST, glucose) is also an uncompared patient safety record for the cell-culture package. Tier depends on rule question 1.",
+  "In-vitro resistance selection vs patient resistance for azvudine, on the cell-culture track: Wang 2014 (10.1371/journal.pone.0105617) selected M184I as the key azvudine mutation in culture; an AIDS 2023 letter (PMID 37930315, 10.1097/QAD.0000000000003564) reports M184I after short-term azvudine given for COVID-19 to people living with HIV. A patient-level resistance comparison with exposure in another indication (imported_from COVID-19); only the title was available to me, full text not read.",
+  "Earlier public date for the GS-9131 failure: Adis Insight gives the Phase 2 termination as 2020-04-28 and a Fierce Biotech piece reported GS-9131 quietly dropped from Gilead's HIV pipeline in favour of GS-6207; neither is an admissible tier, the CT.gov version history and the Fierce page both returned 403, and the 2020 10-Q search surfaced nothing, so 2021-01-05 stands unless a 2020 registry status change or Gilead filing (tier 5) is found."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is a China NMPA package insert (说明书) a tier-2 regulator document? Decision 2 names FDA, EMA, Health Canada and AdCom documents only; the azvudine result exists nowhere else.",
+  "When one proximal readout (plasma HIV-1 RNA) is both the engagement readout and the efficacy primary endpoint, a success scores in both cells but decision 4 routes a genotype-stratified failure to efficacy only, so the same track reads engagement `same` (censavudine 2013) and efficacy `contra` (GS-9131 2021). Is that asymmetry intended?",
+  "Does one drug-related SAE in 198 patients (thrombocytopenia, Gupta 2016) count as a predicted low-frequency animal harm appearing in patients (`same`), or is there an n or incidence floor below which the comparison is `untested`?",
+  "When the registered primary outcome was never populated (randomized cohort not enrolled) and the sponsor's stated go/no-go bar sat on a registered secondary outcome in sentinel cohorts, does the trial score on that bar as endpoint_role poc_gate (my proposal) even though the sponsor itself calls it the primary endpoint in the limitations field?",
+  "Dating: does a registry status change to Terminated with an efficacy reason (GS-9131, 2020 per Adis) make the comparison public under decision 7, or only the results posting (2021-01-05)?"
+ ]
+}

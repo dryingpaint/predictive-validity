@@ -1,0 +1,370 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hyperlipidemia-hcar2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tunaru 2003 abstract (PMID 12563315, epub 2003-02-03) verbatim; opener untested; downstream readout correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lauring abstract verbatim; same/partial supported. But Lauring states its comparison for its own humanized LDLR-/- mice (draft's separate track), so on the Tunaru track this is a pairing: comparison_stated false, model_src Tunaru."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Palani 2012 abstract verbatim (PMID 24900372, epub 2011-11-24, print 2012). PMC4025820 full text empty, as the draft says."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Pairing sound. Lauring Fig. S1 (SCH900271 preclinical summary) not checkable: supplement download denied. Tuteja 2016 review says Palani full text also carries rat FFA/TG data."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Sprecher 2015 abstract verbatim (PMID 25773497, epub 2015-03-12). model_first_use_year = publication year is a proxy; acceptable under rule 6."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; healthy-volunteer FTIH. Acute-only: NCT00903617 trough NEFA rose 26-39% vs 7% placebo at week 4 and Dobbins 2015 shows loss by week 6; a later partial entry would match the mouse track's treatment."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Opener; no exposure target stated by the knockout mouse. Verbatim."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Reached-failed-abandoned row gives contra; chronic FFA loss is a PD not PK failure, which the table has no row for (rule question 2). Status unchanged either way. comparison_stated issue as engagement 2."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; dog ED50 1 mg/kg and 10x flush window as stated."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same logic as dose 2; pairing with Palani sound; registry_date 2016-04-12 confirmed for NCT00941603."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; no exposure target stated."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry row verbatim (posted 2017-09-21) but it shows fasting trough NEFA ROSE (+26 to +39% vs +7% placebo; SDs 70-135% impossible for decreases). Note 'suppressed NEFA' is wrong; PD target not held. Contra holds under either row."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; FFA hypothesis opener."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry LDL-C row, P=0.926 and posting 2010-09-22 confirmed; co-primaries LDL-C/HDL-C confirmed. HDL-C +4.6% (P=0.013) and TG secondary -10.3% (P=0.02) moved in the predicted direction; contra rests on the niacin bar (rule question 1)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract verbatim. Second contra on the same track strengthens, not changes, status (rule question 3). Lauring's stated comparison is for its own mice; here a pairing (comparison_stated false, model_src Tunaru)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Editor's summary verbatim (science.org via fc.py); 'genetic, humanized mouse model lacking the LDL receptor' confirmed; summary says human results 'mirror' the animals, so comparison_stated holds. Retro by public date; experiment timing unknown."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; dog screen advanced SCH 900271 for dyslipidemia."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry primary confirmed: 5 mg -5.7% P<0.01, 10 mg -3.1% P=0.10, 15 mg -3.5% P=0.06, no dose-response. One arm met the primary; Tuteja 2016 reads it niacin-like at 4 weeks. Contra defensible; rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; healthy-volunteer TG lowering rightly not an efficacy comparison. comparison_stated true on an untested entry is harmless."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Futility sentence verbatim (limitations and primary description). HDL-C IS posted as a secondary: week 8 5 mg +4.2, 50 mg -1.9, 150 mg -9.1, placebo +1.1, falling at every week; magnitude_basis wrong, magnitude could be 'opposite'. Contra holds on data."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Benyo 2005 abstract verbatim (PMID 16322797, Dec 2005). Flush readout enters 2005 on the 2003 mouse; fine."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "6",
+   "note": "Registry flushing row verbatim; same supported. Earlier public: Lauring Aug 2012 (MK-1903 phase 2A AE Tables S2/S3; Offermanns Focus 10.1126/scitranslmed.3004445: 'at least MK-1903 produced a flushing response similar to that of nicotinic acid') and MK-1903 registry 2010 SOC rows."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim. Tuteja 2016 confirms the readout was dog cutaneous blood flow ('Dogs had similar FFA suppression without increasing cutaneous blood flow')."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry row verbatim. Partial defensible: comparative window claim is supported by Lauring phase 1B (10 mg vs 2 g ER-niacin, no NASTy symptoms per Tuteja 2016, unread). Absolute 'no overt flushing' failed at 10-15 mg; contra alternative, rule question 6."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; own track for the guinea-pig ear-temperature model is right."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim; healthy volunteers; comparison stated by the source."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry AE row verbatim (posted 2017-09-21); partial supported: no excess at 5/50 mg, 60% vs 24% at 150 mg (plus hot flush 1/20). The 'NEFA-effective 10 mg' anchor is T2DM evidence (Dobbins 2013), not this trial."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shen 2009 abstract verbatim (PMID 19309152, print 2009-04, no epub date); title confirms rat FFA/flush screen; sibling 2g, product_in_model false; opener untested; 2009 first-use proxy acceptable under rule 6.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract verbatim (epub 2012-04-09). Tuteja PMC4773474 confirms rat -90 % and phase 1 -90 %, ref 76 Boatman. within_2x rests on review-relayed numbers (rule question; confidence low fits). Tuteja's SCH900271 rat line cites Qin 2011, not Palani.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shen 2007 abstract verbatim (PMID 17994679, epub 2007-11-10); 'in the mouse model' confirmed. Wild-type agonist-dosed mouse is a different system from the niacin-dosed Gpr109a knockout; split right under rule 8. Opener untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry SOC rows verbatim via API (42/116 vs 8/75; 32/116 vs 2/75; posted 2010-09-22). Direction held; Tuteja Table 1 marks MK-1903 NASTy '+' and phase 1 PGD-M rose dose-linearly (via Boatman). Pairing declared. 2012 vs 2010 dating: rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shen 2009 abstract verbatim; opener untested; no human exposure target stated by the rat screen.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Boatman abstract verbatim. Case-3 row (reached, failed, abandoned) with derived_from efficacy as on dose 2/4; margin_stated false right (abstract gives no numeric margin). Acute target reached, chronic lost (Lauring): existing rule question 2; contra either way.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shen 2009 abstract verbatim; FFA-hypothesis opener untested; sibling 2g.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Boatman abstract verbatim. Registry LDL-C 0.2 (-3.9, 4.3) P=0.926, HDL-C +4.6 P=0.013, TG -10.3 P=0.02. LDL-C null fits the 'null' bin better than off_by_>5x; patient_trials[0].doi should be Lauring 2012, not Boatman. Contra on niacin bar (existing rule question 1).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shen 2007 abstract verbatim; opener untested; flush-window prediction, no member in patients.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry SOC rows verbatim. Direction held: mouse +30 % dermal blood flow (Tuteja via Boatman), patients flushed, Tuteja Table 1 NASTy '+'. Whether the mouse's window over niacin held is unread (Boatman full text, Offermanns Focus): possible same + partial.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Rat plasma FFA/TG model used by Merck and Schering for the member drugs: MK-1903 lowered plasma FFA 90% in rats (Boatman 2012, https://doi.org/10.1021/jm2010964, full text paywalled) and SCH 900271 suppressed rat FFA 70% and TG 49% at 1 h (Palani 2012 full text); both compared with the phase 1 human FFA decrease (Boatman 2012 abstract; Lauring 2012). Pointer: Tuteja & Duffy 2016, Curr Atheroscler Rep, https://doi.org/10.1007/s11883-016-0570-9. The draft has a rat track only for GSK256073.",
+  "Mouse dermal blood-flow (laser-Doppler) flush model, Merck: MK-1903 increased dermal blood flow 30% in mice (Boatman 2012 via Tuteja 2016), and in the phase 1 urinary PGD-M rose dose-linearly while MK-1903 flushed patients (Lauring 2012; Offermanns 2012 Focus, https://doi.org/10.1126/scitranslmed.3004445). An MK-1903 safety/engagement track with no entry; only niacin-in-knockout stands for the mouse.",
+  "Lauring 2012 SCH900271 phase 1B (10 mg/day vs 2 g ER-niacin vs placebo, 4 weeks, dyslipidaemic patients): HDL-C +10% vs placebo (P<0.05) and no niacin-type skin symptoms per Tuteja 2016 — an in-trial niacin comparator for both the dog flush window (safety 4) and the efficacy magnitude (efficacy 6). Not in the draft; supplement/full text not readable (science.org 403; supplement download denied).",
+  "Lauring 2012 Fig. S1 ('summary of preclinical pharmacology and pharmacokinetics' of SCH900271) and Table S2 (MK-1903 phase 2A adverse events): unchecked; could convert the dog track to comparison_stated and date the mouse flush 'same' to 2012."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Co-primary split / weak-but-real response: MK-1903 (LDL-C co-primary null, HDL-C co-primary +4.6% P=0.013, TG secondary -10.3% P=0.02) and SCH 900271 (primary LDL-C met at 5 mg P<0.01, not at 10/15 mg, no dose-response); the sponsor abandoned both and calls them misses against niacin. Is this `contra`, or `same` + partial + off_by_>5x? The dose table has no 'reached, worked weakly, abandoned' row.",
+  "Dose row when exposure was reached but the model's PD target was lost to tachyphylaxis (Lauring: chronic FFA suppression not sustainable; NCT00903617 trough NEFA rose vs placebo): 'target never reached' (efficacy untested) or 'reached-failed-abandoned' (efficacy contra)? Both give dose contra; the efficacy knock-on differs on all three tracks.",
+  "Is a second entry with the same status on one track (efficacy 3: contra after contra, a tier-1 comparison-stated source after a tier-3 registry) allowed under 'one entry per change of status'? Lint accepts it.",
+  "Dating when the earliest public comparison sits in an unreadable or unquotable source (Lauring 2012 full text for MK-1903 flushing; MK-1903 registry 2010 SOC rows 'vascular disorders' 42/116 vs 8/75 without the term 'flushing'): does rule 6 (earliest date) or rule 3 (must quote) set the year?",
+  "Track identity: Lauring 2012's stated comparison is between its own humanized LDLR-/- +/- GPR109A mice and patients; the draft makes those mice a separate retro track yet marks Lauring comparison_stated on the Tunaru knockout track. Should a stated comparison transfer between tracks of the same knockout on different backgrounds?",
+  "Two-part safety prediction (dog: 'no overt flushing to 10x the FFA ED50' failed at 10-15 mg; 'improved window vs nicotinic acid' held): same + partial, or contra because the absolute margin was misplaced? Decision 16's margin logic is written for dose, not safety.",
+  "Area casing: tiles.json gives 'metabolic', the draft writes 'Metabolic', the two house-style contexts are capitalised, and the other v3 drafts split (50 lowercase 'oncology' vs 25 'Oncology'). Which is canonical for the figure key?"
+ ]
+}

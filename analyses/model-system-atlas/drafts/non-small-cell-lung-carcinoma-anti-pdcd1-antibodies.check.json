@@ -1,0 +1,247 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 28317872 resolves (epub 2017-03-20, print 2017-05). Quote verbatim in abstract. Monkey RO readout with no patient occupancy yet: untested holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 32589350 resolves (epub 2020-06-26). Quote verbatim. Direct RO >80% from 0.3 mg/kg in patients; mixed solid tumours acceptable for engagement. NCT02915432 has no posted results (checked)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Fu 2017 abstract carries the 18-monkey PK sentence verbatim. No human target yet: untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 36206498 resolves (epub 2022-10-07, print 2023-01). Quote verbatim incl. P < .0001. Reached-and-worked rule: saturating regimen (Wei 2020) given at 240 mg q3w, PFS met. NCT03856411 no results (checked)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "761240 review p.43 verbatim; NOAEL 100 mg/kg and RO saturation at 30-100 mg/kg confirmed (p.53). Decision 16 margin held. magnitude off_by_>5x encodes the exposure multiple, not an error; cosmetic. Duplicate-status entry: see rule questions."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "761174 review p.37 verbatim incl. n=6-9/group; study ANA011.E004-RES-20150327 confirmed, so 2015 opening is sound. Surrogate RMP1-14, product_in_model false correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 33347829 resolves (epub 2020-12-18). Quote verbatim; PFS primary met. Pairing with class surrogate allowed. But judgement's 'camrelizumab has no public in-vivo model' is wrong: hPD-1-transgenic MC38 data exist (see missing). NCT03134872 no results."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 34239134 resolves (epub 2021-07-08). Quote verbatim. Platform tested only with nivolumab/pembrolizumab, non-members under this tile: untested, patient-level, holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; model side (hPD-1 KI MC38, 761240 p.49-50, Study TR003) confirmed. COSTAR Lung registry 2026-07-01, OS HR 0.96 (0.77-1.20) confirmed; failure was public in trade press July 2025 (no GSK release found). PERLA 2023-09-18 confirmed. No status change: post-PD-(L)1 re-treatment untested by model."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 10485649 resolves (1999-08). Quote verbatim. Both FDA reviews cite PD-1-deficient mice (761174 p.53 M. tuberculosis; 761240 pp.45,52). Standing prediction, untested at 1999 holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Fu 2017 closing sentence verbatim in abstract; paper reports pharmacology/PK, no toxicology, so no safety prediction to compare: untested holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "PMID 30541416 resolves (epub 2018-12-12, print 2019). Quote verbatim. Screen run after haemangiomas known: retro, not same, correct. model_kind ex_vivo for an in-vitro receptor-proteome screen: see rule questions."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "761174 review p.34 verbatim. Pairing of Nishimura autoimmunity with immune-mediated irAEs is the drafter's; comparison_stated false correct. MONDO:0002447 = endometrial carcinoma confirmed. Direction-only same holds."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "761174 p.34 verbatim; one 10 mg/kg male euthanised Day 89 for unresolved skin inflammation confirmed. Monkey findings and clinical irAE statement share one paragraph, so comparison_stated true is defensible. Partial same holds."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "761240 p.43 verbatim; FDA assessment 'no toripalimab-related adverse effects up to 100 mg/kg' (p.53); JUPITER-02 irAEs 40% (review text line 3148); MONDO:0015459 = NPC confirmed. Note: minimal infiltrates did occur in 1-2 animals of all groups incl. controls; silence is FDA's, so contra holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "761240 review text lines 4434-4438 verbatim (Study TR003, NSG + 2x10^7 allogeneic CD8 CTL). Opening entry, no patient pairing: untested holds. IND-enabling pharmacology study, prospective not retro; 2023 first public date. Tier 2 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 11; #73",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PMID 36206498 abstract verbatim (PFS primary, HR 0.49). 'Minor antitumor activity' is a weak positive, not an FDA negative call, so direction held: same direction_only under decision 11; #73 bars contra as the class did not rely on this model. source_calls_it should be null (comparison_stated false). Under-call question already queued."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "761240 text lines 4112-4113 verbatim; Studies 34885_IVHU (line 4377, nivolumab control) and TR003 (line 4398) confirmed. Opening entry, no patient test: untested holds. readout_tier downstream and tier 2 correct; prospective, 2023 first public date."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "decision 4 (#35, #72): result attributed to conditions the model never tested",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PMID 36822161 abstract verbatim. Source attributes the Ki67 rise to radiotherapy plus camrelizumab; no antibody-alone arm, comparator differs by chemotherapy, and radiotherapy alone drives homeostatic CD8 proliferation. The readout the mice showed (effector-memory proportion) did not move. PubMed sweep (12 hits) found no member-drug monotherapy Ki67 datum; Tang 2019 (PMID 30642373) reports baseline activated CD8 only.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: decision 4 states the never-tested-conditions rule for contra only (#35, #72 are failures); the checker brief extends it to same, the drafter brief does not. Does a Ki67 rise under unisolated radiotherapy co-treatment score same+partial or untested?"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "761174 text lines 2622-2625 verbatim. Opening entry, no NSCLC readout: untested holds; 2021 review year correct; tier 2. Merging dostarlimab and toripalimab popPK into one in_silico track is a drafter choice (both sponsor models fit to patient PK)."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "decision 4: post-hoc PK/PD justification is untested with source_calls_it scaling (#50, #99, #118); decision 10 alternative retro",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PMID 36206498 verbatim; popPK numbers confirmed (761240 lines 5380-5382, 5600-5607). But the simulation (TOPA-PMX-TORI-2412) is the BLA popPK fit to the 12 monotherapy studies incl. the 240 mg Q3W cohort itself, E-R files dated 06/2021, cross-study comparison a July 2020 IND submission; CHOICE-01 started on 240 mg Q3W in 2019. Regimen was not taken into the trial on the simulation: post-hoc, not same. dose 2 (cyno track) already carries reached-and-worked.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#50, #99, #118), reaffirmed by decision 16: post-hoc PK/PD justification is untested, source_calls_it scaling. The simulation (first use 2021) post-dates CHOICE-01's 2019-03 start and is fitted to that regimen's own data; the dose-specific rule, not decision 10, governs."
+  }
+ ],
+ "missing": [
+  "Camrelizumab's own in-vivo model, which the draft says does not exist: C57 human PD-1 transgenic mice bearing MC38(PD-L1) tumours, SHR-1210 3 mg/kg i.p. Q2Dx7 gave 20.40% tumour inhibition (not significant vs HIgG control); combination with apatinib 63.07%. Source: sponsor protocol for NCT03092895, section 1.5.5, https://cdn.clinicaltrials.gov/large-docs/95/NCT03092895/Prot_000.pdf (tier uncertain: sponsor document on the registry). Would be the member's own model side for CameL/CameL-sq with product_in_model true, and the weak monotherapy number is an under-call of a drug that worked.",
+  "Toripalimab's second and third in-vivo systems in its own package with no track: NSG mice bearing MC38 engrafted with allogeneic CD8+ CTLs, where toripalimab 10 mg i.p. twice weekly had only 'minor antitumor activity' (Study TR003, Figure 8), and human-PBMC-engrafted mice where toripalimab expanded effector-memory T cells (PD readout). Source: FDA BLA 761240 multidisciplinary review pp.43 and 49, https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761240Orig1s000MultidisciplineR.pdf.",
+  "Not found (one WebSearch each): any NSCLC patient-derived organoid or PBMC co-culture, humanized PDX, or other patient-level model compared with response to camrelizumab, toripalimab, dostarlimab or spartalizumab; and any member-drug Phase 3 failure in NSCLC other than COSTAR Lung (already listed). Spartalizumab's own preclinical package was not searched (budget); its NSCLC data are Phase 1b combinations only, as the draft says."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Is prior anti-PD-(L)1 progression (COSTAR Lung, dostarlimab + docetaxel, OS HR 0.96) inside this context's 'Unselected' population, or a condition the MC38 model never tested? The draft keeps efficacy `same` and lists it in patient_trials; if it is in-population, the one-contra-beats-same rule would turn the mc38 track contra in 2025/2026.",
+  "May a track carry a second entry with the same status that only adds `margin_stated: true` (dose 3, decision 16) or `product_in_model: true` (efficacy 4), given 'one entry per change of status' and `patient_trials` for non-status-changing trials? Lint accepts them.",
+  "Are wild-type MC38 with surrogate RMP1-14 (dostarlimab) and MC38 in human PD-1 knock-in mice with the product (toripalimab) one system (`mc38-mouse-pd1-blockade`) or two tracks? The draft merges them; the T-cell-engrafted NSG MC38 and camrelizumab's hPD-1-transgenic MC38 would stretch the same slug further.",
+  "Which `model_kind` fits an in-vitro receptor-proteome screen on cultured cells (safety 3)? No in_vitro enum; the draft used ex_vivo.",
+  "Should a dose entry whose patient-side PK/AUC is from another indication (dose 3: NPC programme, same 240 mg q3w regimen as CHOICE-01) carry `imported_from` as safety entries do?",
+  "What tier is a sponsor protocol document posted on ClinicalTrials.gov (the only public source for camrelizumab's own mouse data), and can it serve as `model_src` (tiers 1-3 required)?",
+  "When a member's own model under-called a drug that later worked (camrelizumab 20% TGI, not significant, then CameL positive), is that `same` direction-only, `contra` (magnitude opposite), or set aside? The `neg` rule covers only the failed-drug direction."
+ ]
+}

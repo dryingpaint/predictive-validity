@@ -1,0 +1,192 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-1-diabetes-mellitus-slc5a2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 18260618, epub 2008-02-09; quote verbatim in abstract. FDA 202293 PharmR confirms the STZ rat as the filed insulin-deficient model (0.03 and 0.1 mg/kg). Track opener; nothing to change."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 23011728, epub 2012-09-25; quote verbatim (abstract). Han 2008 model-side quote verbatim. CT.gov intervention search: only two T2D remogliflozin records, no T1D entry, so registry_date null stands. Proximal readout, direction only: same holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Cherney PMID 24334175 epub 2013-12-13; Vallon PMID 24226524 epub 2013-11-13; quotes verbatim (abstracts). NCT01392560 results 2014-06-17, GFR primary. Model epub only 30 days before trial epub (trial ended 2012-08): rule question. Vallon 2013 Sglt2-KO Akita is an earlier first use."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 25271207, epub 2014-09-30, print 2015-03; quote verbatim (abstract). NCT01498185 results 2017-02-10, primary 7-point glucose day 7. EASE-1 (NCT01969747, results 2015-04-08) later adds empagliflozin UGE; no change."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim; FDA 202293 PharmR confirms STZ-rat mg/kg response, no exposure or margin stated. EMA WS/1344 kept only 5 mg dapagliflozin on DKA, no model margin, so once-in-safety fits decision 16. Rule question: untested vs same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim. Luippold 2012 (PMID 22268612, epub 2012-02-23) abstract carries both judgement quotes verbatim: low-dose insulin plus empagliflozin matched high-dose insulin; adjunctive-to-insulin T1DM potential. Same system, one track: agreed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 28919061, epub 2017-09-14; quote verbatim (abstract). NCT02268214 results 2018-03-29, HbA1c primary. EASE-1 primary was day-7 UGE, Henry 2015 7-point glucose, Perkins GFR: 2017 dating holds. NCT02460978 2018-11-06 and NCT02897219 (no results) confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMID 30287422, epub 2018-10-04; quote verbatim (abstract). NCT02580591 results 2018-11-02, NCT02414958 2018-11-20, HbA1c week-26 primary on both. Kaku 2019 quote verbatim (PMID 31173455, epub 2019-07-11). Strengthening entry agreed."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim. My grep of 202293 PharmR: zero ketone/ketosis/ketoacidosis/hydroxybutyrate/acidosis hits, four STZ hits, confirming silence. Empagliflozin 206111 PharmR line 557: 'ketone bodies were unremarkable (data not shown)', a stated negative that strengthens the later contra. Luippold full text unverified."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract). Peters 2015 full text: dapagliflozin/empagliflozin only in reference titles, confirmed. EASE-1 and Henry 2015 report no DKA; DEPICT-1 24-wk 1%/2%/1% verbatim. EMA WS/1344 (2019-01-31): DKA 9.87/7.58/4.40 per 100 PY, 'No new non-clinical data'. Contra 2018 holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "PMID 30710078, epub 2019-02-01, open access; quote verbatim, and 'concerns have been raised about their potential to induce euglycemic ketoacidosis' verbatim, so retrodiction stands. Own track and partial call agreed. subjects 'patients' on a rat-only paper is a harmless oddity."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "PMID 22402735, epub 2012-03-08; quote verbatim (abstract). Word-bounded grep of 202293 PharmR: zero diet-induced/DIO/obese/ketone/hydroxybutyrate hits, so model_filed false holds. Own track under decision 8; opener untested agreed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4 (#23)",
+   "note": "PMID 30026335, epub 2018-07-19; quote verbatim (abstract). Henry 2015 abstract: no DKA, no ketone level (full text Cloudflare-blocked); DEPICT-1 24-wk 1/2/1 ambiguous, so 2018 holds. Drafter's pairing, direction only; rests on rule question 3.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Quote verbatim at sources/206111/206111Orig1s000PharmR.txt lines 556-557; GLP Study# RS618 (line 294), 28-day empagliflozin 3 mg/kg with or without metformin 300 mg/kg, male ZDF; no study date in the review, signed 2015-04-15. Low confidence per #36/#38; opener agreed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4 (#35/#72, #87; #58 by symmetry)",
+   "note": "PMID 30287422, quote verbatim (abstract). The null is an incidental tox-study line in obese insulin-resistant rats whose plasma insulin rose 65% on empagliflozin (review lines 548-561); insulinopenic ketogenesis was never tested and the null never framed as a prediction: untested with note.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35, #87, #58): incidental ketone null in a hyperinsulinaemic T2D rat; insulin-deficient DKA never tested, no source links the null to T1D DKA, and the T1D class never relied on the ZDF rat (#72 absent)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "PMID 31858718, epub 2020-01-21, OA full text (PMC7064984): EASE-3 'not used during model development', aim 'to confirm' the observed 2.5 mg result; retro under decision 10. Table 2: simulated -0.27/-0.29 vs -0.28, within_2x. Filing unstated; model_filed null holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Devenny 2012 (https://doi.org/10.1038/oby.2012.59, PMID 22402735, epub 2012-03-08): dapagliflozin raised fasting beta-hydroxybutyrate in diet-induced obese rats, a member-drug rodent model that showed the ketone signal before any T1D trial; the draft sets it aside in judgement. No source compares it with patients, so a candidate track only (rule question 3).",
+  "Vallon 2013 (https://doi.org/10.1152/ajprenal.00409.2012, PMID 23152292, epub 2012-11-14): Sglt2 knockout in Akita mice prevented glomerular hyperfiltration, the same system and prediction as the akita-mouse track one year earlier by genetic deletion; model_first_use_year 2013 should be 2012 (no status change).",
+  "Tahara 2014 (https://doi.org/10.1111/jphp.12223, PMID 24533859, epub 2014-02-17): ipragliflozin in STZ type 1 diabetic rats, the third member on the stz-rat track; same system, no status change, worth citing against Kaku 2019.",
+  "EMA variation assessment report WS/1344 (EMA/CHMP/213138/2019, 31 January 2019, https://www.ema.europa.eu/documents/variation-report/edistride-h-c-4161-ws-1344-epar-assessment-report-variation_en.pdf): tier-2 record of the dapagliflozin T1D DKA (9.87/7.58/4.40 per 100 patient-years for 5 mg/10 mg/placebo, long-term pool), 'No new non-clinical data have been submitted in this application', only the 5 mg dose recommended, and a post-authorisation 'Nonclinical mechanistic model studies ... Ketoacidosis' commitment. The draft says it was not obtained; it changes no status.",
+  "FDA EMDAC briefing document, 13 November 2019 (empagliflozin 2.5 mg, T1D, 14-2 vote): not retrieved (fda.gov/media/132422 returns 404); unverified, tier 2 if found; the draft cites the vote from press coverage only.",
+  "Perkins 2020 (https://doi.org/10.1111/dom.13945, PMC7064984, open access) also carries a beta-hydroxybutyrate exposure-response Emax model built on EASE-3 and qualified by predicting the EASE-2 BHB changes ('minor blood BHB level elevation ... was confirmed'): a safety-cell retrodiction on the empa-t1d-exposure-response-sim track, not drafted. [CHECKER_BRIEF_v3 / models]"
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Dose cell when the filed model gave only an mg/kg dose-response, stated no exposure, occupancy or regimen target, and the dose inherited from T2D worked: is that `untested` (no prediction to test) or `same` under the table row 'reached, drug worked'? The v3 table has no row for a model that set no target.",
+  "Prospective versus retrodiction when the model paper's online date precedes the trial paper's online date by 30 days but the trial finished 15 months earlier (Vallon 2014 epub 2013-11-13; Cherney 2014 epub 2013-12-13, NCT01392560 completed 2012-08): does 'the clinic already knew' run from trial completion, meeting presentation, or publication?",
+  "A member-drug model in a different physiological state (insulin-replete DIO rat, Devenny 2012) that showed the harm the filed insulin-deficient model missed: is it its own safety track (`same`, direction only) or set aside as a different system, as the draft did?",
+  "A regulator-imposed dose restriction on safety grounds with no model margin (EMA kept dapagliflozin 5 mg only; FDA rejected empagliflozin 2.5 mg): confirm decision 16 leaves dose `untested` and scores the harm once in safety, rather than `contra` with blocked_by toxicity.",
+  "A stated null in a filed model whose physiology precludes the harm (NDA 206111 ZDF rat: hyperinsulinaemic, plasma insulin rose on empagliflozin, 'ketone bodies were unremarkable') set against T1D DKA: `contra` as a failed stated prediction (decision 4 safety row) or `untested` as a condition the model never tested (#35/#72, #87)? #58 settles null-null but not null-in-model/harm-in-patients. [CHECKER_BRIEF_v3 / models]"
+ ]
+}

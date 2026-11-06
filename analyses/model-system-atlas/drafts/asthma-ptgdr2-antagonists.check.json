@@ -1,0 +1,141 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/asthma-ptgdr2-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Schmidt 2013 (PMID 23146091) quote verbatim in abstract. Europe PMC gives only 2013-04 print; epub 2012 inferred from accepted-article timing, plausible. QAV680 used the same human eosinophil/Th2 assays before 2009 trials, so the opening year could be earlier."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Gonem 2016 (PMID 27503237, epub 2016-08-05) quote verbatim. Sputum eosinophils were the trial's primary outcome; downstream tier is right. NCT01545726 has no posted results, as the draft says."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Quote verbatim from Schmidt 2013 conclusions. Untested opening entry for the potency-to-exposure model is fine."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Erpenbeck 2016a (PMID 27310331, epub 2016-03-28) quote verbatim. 'Enough' rests on Gonem 2016's positive primary (sputum eosinophils), not Bateman 2017; Erpenbeck 2016b missed its FEV1 primary that year. Defensible, but see the rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "Evidence rule 6 (dating) / rule 2 (tier 5 press release must be found)",
+   "note": "Status is right. Novartis press release of 2019-12-16 reported that pooled LUSTER missed and fevipiprant development stopped; it also says ZEAL-1/2 toplines came out in October 2019. The earliest public date is 2019, not the 2020 registry posting."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "Sandham 2013 (PMID 24021582, epub 2013-08-22) quote verbatim. The entry sets model_first_use_year 2009 but year 2013. The opening untested entry should sit at the model_first_use_year proxy, 2009."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Bateman 2018 (PMID 29765200) quote verbatim; primary was pre-BD FEV1. NCT01197794 results first posted 2013-09-10 (ct.gov API). Contra holds, but the draft missed ARRY-502's July 2013 positive FEV1 primary, a 'same' that came first (see missing)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Ullah 2024 (PMID 39592603, epub 2024-11-26) quote verbatim. The model was built after phase 3 and explicitly set against the human trials, so retro under decision 10 is right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "",
+   "note": "Quote verbatim. The manifest lists no NDA/BLA for any member. Moss 2022 confirms the GB001 60 mg liver-injury risk. Untested is defensible with no public tox. model_kind 'animal' is odd for an in-vitro selectivity panel."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2006,
+   "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
+   "note": "NCT01343407 title verbatim, start 2011-04-19. But a member used the model earlier: OC000459 bronchial allergen challenge NCT01056692 started 2006-02 (LAR primary; Singh 2013 ERJ, PMID 22496329). Opening entry and model_first_use_year should be 2006.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 6 (dating) / decision 10 (prospective, not retro)",
+   "note": "Bateman 2018 quote verbatim; Diamant 2014 abstract confirms setipiprant LAR study. Not retro: challenges ran 2006-2011, before AZD1981 read out. OC000459 cut LAR 25.4% (epub 2012-04-10), so the model side was public before AZD1981's 2013-09-10 posting: date 2013. Track lacks an earlier OC000459 'same' (see missing).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Efficacy: ARRY-502 (member) phase 2 met its pre-bronchodilator FEV1 primary, +3.9% vs placebo at 200 mg BID, P=0.02, announced July 2013 (Array BioPharma FY2013 10-K, https://www.sec.gov/Archives/edgar/data/1100412/000110041213000025/arraybiopharma6301310k.htm; tier 5, trial_unreported true). This 'same' precedes AZD1981's 2013-09-10 contra; the cell still ends 2013 contra.",
+  "Efficacy/dose dating: Novartis press releases of October 2019 (ZEAL-1/2 missed FEV1 primary) and 2019-12-16 (LUSTER missed, development stopped), https://www.novartis.com/news/media-releases/novartis-provides-update-luster-phase-iii-studies-patients-uncontrolled-gina-45-asthma. ZEAL-1 (NCT03215758, results 2020-02-12) is also absent from patient_trials.",
+  "Efficacy patient_trials: ADC3680B (PTR-36, Pulmagen/Teijin) positive phase II on morning PEF in mild-moderate asthma (press release, e.g. https://www.biospace.com/positive-phase-ii-in-eosinophilic-asthma-for-b-pulmagen-b-teijin-pharma). Date and whether mPEF was the primary are not verified.",
+  "Engagement: ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract, https://publications.ersnet.org/content/erj/44/suppl58/4836). Conference abstract only, not read; possible downstream entry.",
+  "Efficacy, human-allergen-challenge-lar track: OC000459 (timapiprant) reduced the LAR AUC 25.4% (95% CI 5.1-45.6%) (Singh 2013 Eur Respir J, PMID 22496329, epub 2012-04-10; NCT01056692, started 2006-02) and its own trials met pre-BD FEV1 primaries (Barnes 2012 Clin Exp Allergy, 28-day, NCT01057927; Pettipher 2014 Allergy, PMID 24866478: 25 mg QD P=0.028). A product_in_model 'same' entry dated 2012 precedes the AZD1981 contra.",
+  "Efficacy, human-allergen-challenge-lar track: setipiprant's own proof-of-concept FEV1 trial in partly controlled asthma (NCT01225315, 2010-11 to 2012-02) has no posted results; a same-drug pairing for the challenge model, trial_unreported."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose 'reached and enough': a member reached target exposure and in the same year met a biomarker primary (Gonem 2016, sputum eosinophils) but missed an FEV1 primary (Erpenbeck 2016b). Does 'drug worked' in the dose table follow any positive primary, or the efficacy cell's status, which was already contra from 2013 on another drug?",
+  "Safety: a member showed a patient harm that animals could show (GB001 hepatotoxicity) but no preclinical toxicology was ever published or filed. Is that untested, or 'silence contradicted' (contra) at low confidence?",
+  "Efficacy: the rodent model was run on QAV680, but AZD1981 (the drug that failed) could not be tested in rodent cells (Schmidt 2013) and relied on guinea pig. Is a sibling-drug model admissible for a member that could not have been run in it?"
+ ]
+}

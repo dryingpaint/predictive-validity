@@ -1,0 +1,470 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-pan-her-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "FDA review bundle quote verbatim (Fig 2B, H1975 pEGFR). No patient T790M-tumour pEGFR readout exists; Janne 2011 skin biopsies are wild-type EGFR. untested holds; 2007 opening on a 2018 proxy is allowed."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim; opening entry at first use, no human readout yet. Holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Janne 2011 abstract quote verbatim; MTD 45 mg, DLTs stomatitis/skin confirmed. Skin pEGFR is wild-type tissue, so direction_only is the right magnitude for a del19-tumour readout; same holds at class level, medium confidence."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Robichaux 2018 quote verbatim in full text (PMC5964608). No tumour phospho-readout in ZENITH20 or NCT03066206 papers; rash/diarrhoea are not the model's readout. untested holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wang 2019 abstract quote verbatim; no tumour PD readout in the 15-patient cohort or Zhou 2020. untested holds. model_kind 'animal' although the system includes organoids: cosmetic."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Estrada-Bernal 2021 quote verbatim (full text). untested holds, but model_first_use_year 2019 is wrong: the same hypoxia-activated platform dosed EGFR-mutant NSCLC at this regimen from 2015 (NCT02454842); see efficacy 9 and missing."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "FDA review quote verbatim (Fig 2A, H1975 7.5-15 mg/kg vs erlotinib). No exposure target or margin stated; untested opening holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Reckamp 2014 quote verbatim (PMC4164026); 45 mg MTD given, 0/6 T790M responders, never pursued: row 'reached, failed, abandoned' fits. The source's under-inhibition hedge would move this to row 1 only with T790M-tumour exposure data; none exists. Registry 2019-05-21 confirmed."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "FDA review quote verbatim ('sensitive dacomitinib' sic in source). No human exposure target stated; untested opening holds."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wu 2017 abstract quote verbatim; registry results 2018-10-26 confirmed. 45 mg reached, PFS HR 0.59: 'reached, drug worked'. FDA review confirms rat AUC half clinical; no model stated a margin, so margin_stated false is right; harm sits in safety 4."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Robichaux 2018 quote verbatim in full text (16 mg/day tolerable, 150 nM, >125x IC50). Stated margin recorded on the opening; untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Le 2021 abstract quote verbatim (76.7% reductions, RDI 71.5%). Stated 16 mg margin failed: contra holds under decision 16. The window was not closed (drug delivered, primary endpoint read), so blocked_by toxicity plus efficacy 6 contra double-counts; rule question 1."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wang 2019 abstract quote verbatim (PDX beat afatinib and T-DM1). No exposure target or margin stated for the lung model; untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Estrada-Bernal 2021 quote verbatim; 48 mg/kg IP weekly is the paper's stated HED of 150 mg/m2. untested opening holds; first use should be 2015 (see efficacy 9)."
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in full text (HED of the 150 mg/m2 RP2D used in NCT02449681, NCT02454842, NCT03805841). Regimen matched, 0/11 responded, programme dropped: 'reached, failed, abandoned', derived_from efficacy. ESMO LBA61 DOI not indexed by Europe PMC; registry (2023-06-28) confirms the failure."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim; T790M xenograft prediction stated. untested opening holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full sentence: 'In contrast, patients with known EGFR T790M did not respond to dacomitinib therapy despite efficacy in preclinical models.' Stated miss; primary ORR 5% failed, 0/6 T790M at MTD. contra holds; n=6 and the under-dosing hedge keep confidence medium."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim; del19 opening holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wu 2017 quote verbatim; ARCHER 1050 100% EGFR-mutant, primary PFS by IRC, registry 2018-10-26. same holds at class level. An earlier tier-1 record likely exists (Janne 2014 phase 2, first-line EGFR-mutant, unfetched): decision 7 may move the year to 2014."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Robichaux 2018 quote verbatim; stated comparison on the first 11 NCT03066206 patients (ORR 64%; registry primary endpoint ORR). Prospective: the trial started 2017-03 on the model. same holds, medium confidence as an interim cut; Elamin 2022 32% ORR quote verified."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2020,
+   "rule": "7",
+   "note": "Quote verbatim; 14.8% vs 17% null and registry 13.9% confirmed. contra holds; the year does not: Le 2025 says cohort 1 was presented at AACR 2020, and the sponsor announced the miss Dec 2019/Jan 2020. Decision 7: earliest public record."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wang 2019 abstract quote verbatim (-52.2% PDX volume). Opening holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2019,
+   "rule": "10",
+   "note": "Quote verbatim, stated comparison. NCT02535507 accrued 2015-01 to 2016-12; the PDO/PDX paper is 2019, so the cohort's responses predate the published model: a retrodiction (retro) unless the paper dates the model work earlier; abstract-only read.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: full text (PMC7360147) enrolled the 15-patient cohort July 2015-September 2016, last follow-up December 2017; the organoid/PDX work is undated and first used 2019 (model_first_use_year), so the model was run after the clinic knew the answer. Matched, so retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "7",
+   "note": "Quote verbatim; untested opening is right but four years late: Estrada-Bernal cites the same 150 mg/m2 regimen in NCT02454842 (EGFR-mutant NSCLC, start 2015-06, terminated for lack of efficacy). Track opens 2015 with a missed contra (missing 2, rule question 3)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Registry ORR table verified exactly (cohort A 0/11, B 13.6%, C 0/8), results posted 2023-06-28, primary endpoint ORR. contra holds. The 2020 date rests on ESMO LBA61, whose DOI Europe PMC does not index; I could not open it either."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 quote verbatim; xenograft paper silent on tolerability and the species comparison correctly lives on the rat/dog track. untested holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same source and reasoning as safety 1; holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "FDA review quote verbatim; GLP rat/dog toxicology predates first-in-human, 2005 proxy acceptable. Opening holds."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "FDA review quote verbatim: the reviewer pairs rat/dog epithelial atrophy, skin lesions and conjunctivitis with clinical findings at rat AUC half clinical. same/partial holds (decision 11); ILD is a 1.3% SAE in the ARCHER 1050 table, an unpredicted minor harm."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Robichaux 2018 quote verbatim (55% dose reductions, rash and diarrhoea). Decision 16 puts the predicted-but-misplaced harm on dose; untested here is consistent, contingent on rule question 1."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Wang 2019 conclusion sentence verbatim; no tolerability finding reported. Opening holds."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Zhou 2020 abstract quote verbatim (grade 3 diarrhoea 20%). Silence on a harm a daily-dosed mouse can show: contra under v3 safety definition, the same call as the breast pan-HER tile; an imported_from breast entry (Ma 2017 DLT) would agree."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Source reads 'dose limiting toxicities ... wild type EGFR' (no hyphens); otherwise verbatim. Skin-sparing prediction stated; opening holds (first use 2015, see efficacy 9)."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in full text (n=1 responder, no diarrhoea, mild rash). Prediction held in direction against poziotinib's 48.9% grade 3+ rash; same/partial at low confidence is fair. Registry AE rows not re-verified; QTc rightly not scored against a xenograft."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim (print 2007-12, not OA). Kris 2015 full text (PMC5006511): HER2-cohort end points were PR rate, OS, toxicity; no tumour PD readout. untested opening holds; readout_tier proximal is fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Engelman 2007 abstract sentence verbatim; cell potency only, no exposure target or tolerated-dose margin stated. untested opening holds; margin_stated false is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kris 2015 conclusion verbatim (full text read). 45 mg daily given (30 mg start in 5 naive); registry C1D14 Ctrough at 45 mg 74.2 ng/mL cohort B vs 76.5 cohort A, so the EGFR-cohort exposure was reached; 3 durable PRs: decision 4 case 2. same holds, tied to efficacy 12.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim; ERBB2-mutant lung cancer named as a development population. untested opening at 2007 holds. model_filed false taken from the drafter's FDA-review grep, not re-run.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "rule": "4",
+   "note": "Quote verbatim; registry 2016-06-01, cohort B 3 PR/30. same + off_by_2-5x stands: no bar existed to miss. Full text: 'exploratory study with no predefined primary end point, study outcome, or sample size... No statistical hypothesis was tested'; registry primary is cohort A PFS4 only. endpoint_role 'primary' is wrong (poc_gate or a 'none' value); responses present (two durable, one 9-bp insertion; 0/13 YVMA) and the source calls it validation (#53, decision 11). Confidence can rise to medium.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Robichaux 2021 quote verbatim (abstract and PMC8481125; received 2021-04-13, accepted 2021-08-11). Its retrospective validation is afatinib (Uncommon EGFR Database, 803 patients) and generation-pooled TTF; dacomitinib appears only as a reference. Afatinib has no row in sources/manifest.csv for this context (members 1988, 5074, 5992, 6305): non-member, untested opening holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Elamin 2022 abstract quote verbatim (first published 2022-07-01). Registry: NCT03066206 start 2017-03-17, primary ORR, no results posted. Cohort 1 responses were public at WCLC 2018 (24/44, ASCO Post 59310) and in Robichaux 2018, before the near-/far-loop split (Robichaux 2021 Ext Data Fig 6d-e, received 2021-04): retro holds, never same. Year 2022 holds: Robichaux 2021 gives no poziotinib ORR by insertion location.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Engelman 2007 abstract quote verbatim. Kris 2015 full text: diarrhoea 90% (grade 3/4 20%/3%), dermatitis 73%, one mirtazapine-interaction death; a cell line cannot show these, so silence is untested, not contra (decision 4 safety).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Dacomitinib in HER2-exon-20 NSCLC: Engelman 2007 (10.1158/0008-5472.can-07-1885) states PF00299804 inhibits 'the gefitinib-resistant oncogenic ERBB2 mutation identified in lung cancers'; Kris 2015 (10.1093/annonc/mdv186, Ann Oncol, phase 2) treated 26 HER2-exon-20 patients: 3 PR (12%, 95% CI 2-30%), 0/4 HER2-amplified, naming the cell-line models as the premise (comparison stated). A patient-level comparison for a member drug in this context's population, absent from every cell; status contested (authors call it validation; 12% ORR).",
+  "Tarloxotinib's first NSCLC test: the TH-4000 hypoxia-activated platform in EGFR-mutant models (Threshold preclinical, AACR 2015; press release https://www.biospace.com/threshold-pharmaceuticals-inc-reports-preclinical-data-suggesting-that-th-4000-may-overcome-resistance-to-conventional-egfr-tyrosine-kinase-inhibito) went into NCT02454842 (EGFR-mutant, T790M-negative NSCLC after TKI, 150 mg/m2 IV weekly, start 2015-06, TERMINATED 'Lack of efficacy', completion 2017-01, no posted results) and NCT02449681 (SCCHN, same outcome); Threshold discontinued tarloxotinib on the interim results (2016, tier 5, exact date not confirmed). Estrada-Bernal 2021 itself cites both trials at the same RP2D. A missed contra on the tarloxotinib track (or a sibling track) and model_first_use_year 2015, not 2019.",
+  "Poziotinib regulator record: FDA ODAC briefing document, 22 Sep 2022 (https://www.fda.gov/media/161676/download; NDA 215643; ZENITH20 cohort 2 ORR 27.8%, DoR 5.1 months; 9-4 vote that benefit does not outweigh risk) and the Nov 2022 complete response letter. Tier 2 and uncited; does not flip efficacy (cohort 2 met its ORR bar) but is the HER2-cohort regulator judgement and may carry a 2022 tier-2 date for the cohort-1 miss (PDF not opened).",
+  "Structure-based classification of EGFR mutations (Robichaux 2021, Nature, 10.1038/s41586-021-03898-1, PMC8481125): an in-silico structure-function model that 'retrospectively predict[s] patient outcomes following treatment with EGFR inhibitors', built on 16,715 patients and including poziotinib exon-20 data. A retrodiction track (model_kind in_silico, status retro) for the exon-20 context with no entry.",
+  "Earlier tier-1 record on the dacomitinib del19/L858R track: Janne 2014 (Lancet Oncol, ARCHER 1017 phase 2, first-line EGFR-mutant, ORR about 76%), fetched by neither drafter nor checker; under decision 7 it likely moves efficacy 4 (and the paired dose/engagement entries) from 2017 to 2014.",
+  "ZENITH20 cohort-1 earliest records, the dating sources for efficacy 6: Spectrum topline announcement (Dec 2019/Jan 2020; OncLive 2020-01-03 https://www.onclive.com/view/poziotinib-misses-primary-endpoint-in-egfr-exon-20mutant-nsclc; SEC exhibit https://www.sec.gov/Archives/edgar/data/831547/000083154720000003/a2020spectrumcorporatede.htm) and the AACR 2020 oral abstract Le 2025 names as the first presentation. EDGAR full-text search returned nothing, so the exact press-release date is unconfirmed."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Decision 16 vs decision 4: when a stated tolerability margin fails (poziotinib 16 mg: 76.7% dose reductions, RDI 71.5%) but the drug is still delivered and the primary endpoint is read and missed, is dose `contra, blocked_by: toxicity` (then efficacy must be `untested`) or `contra, derived_from: efficacy` (then efficacy `contra`)? The table has no row for a margin that fails without closing the window; the draft scores both, counting one programme twice.",
+  "Decision 4 (#53) vs the primary-endpoint rule: a registrational single-arm cohort that misses its pre-specified ORR bar with a real but small effect (ZENITH20-1: 14.8% ORR, 68.7% DCR, against a 17% null) is `contra` as a failed primary, yet #53 says 'failed' means the predicted effect was absent or reversed. Is a below-bar response `contra`, or `same` with `magnitude: off_by_>5x`?",
+  "Decision 8: one prodrug platform, one drug, one regimen, tested first in EGFR-mutant xenografts and patients (TH-4000, 2015-17, lack of efficacy) and four years later in exon-20/HER2 patient-derived xenografts and patients (RAIN-701): one track whose first prospective test already failed, or two tracks keyed on the tumour genotype panel?",
+  "Decision 7 vs decision 2: when a failure is first public in a tier-5 press release (Dec 2019/Jan 2020), then a conference abstract (2020), a tier-2 AdCom document (2022), a tier-1 paper (2025) and the registry (2026), the entry's year is the earliest, but which document is `src`: the highest tier with the early year, or the earliest record with `trial_unreported`?",
+  "Decision 10: a patient-derived model built from a trial participant's sample and published alongside that cohort's responses (pyrotinib PDO/PDX 2019; NCT02535507 accrued 2015-16): what chronology evidence makes it a retrodiction when the paper does not date the model work?",
+  "Decision 4 / #57 (models check, efficacy 12): an exploratory cohort with no predefined primary end point, outcome or hypothesis (Kris 2015 HER2 cohort) whose source calls the responses a validation: `same` + magnitude on the named response endpoint, or `untested` under #57? The schema's endpoint_role offers only primary / poc_gate; neither describes it."
+ ],
+ "could_not_verify": [
+  "ESMO 2020 LBA61 (10.1016/j.annonc.2020.08.2294): DOI not indexed by Europe PMC; not opened.",
+  "Exact date of Spectrum's ZENITH20 cohort-1 topline release (Dec 2019 vs early Jan 2020); EDGAR full-text search returned no hits.",
+  "Janne 2014 (ARCHER 1017) primary endpoint and ORR; not fetched.",
+  "FDA ODAC 2022 briefing PDF contents; not opened.",
+  "RAIN-701 registry adverse-event rows quoted in safety 9; only the outcome table was pulled.",
+  "Threshold 2016 tarloxotinib discontinuation press-release date."
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hiv-infectious-disease-hiv-rt-nnrti-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Zhou 2009 = PMID 19223643, epub 2009-02-17; quote verbatim in abstract. Opener OK. Caveat: the cell model and its first patient result were public in Idenix's Feb/Sep 2008 releases (tier 5), so model_first_use_year 2009 rests on rule question 1."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Zala 2012 = PMID 22314532, epub 2012-02-06; quote verbatim (abstract). Viral load is the proximal readout the brief names; direction matched, so same. NCT00945282 results posted 2018-11-29 confirmed. Same trial was reported in Idenix's Sep 2008 release (rule question 1)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Four-fold-over-adjusted-IC90 sentence verbatim in Zhou 2009 abstract. Target reached in healthy volunteers before efficacy was known is untested under the dose table. No NOAEL/MTD in any source read, so margin_stated false holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Emax/Ctau sentence verbatim in Zala 2012 abstract; 0.97 vs 1.8 log10 at 30 vs 100-800 mg supports reached-and-enough. The 0.6-fold figure for 30 mg is the drafter's arithmetic, not checkable from abstracts. Anderson 2015 'C24 h>19 nM' verbatim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Opener identical to engagement opener; cell culture alone is the efficacy basis in the Pifeltro label 12.4 (bundle 210806 txt lines 722-740). No humanized-mouse or RT-SHIV study of any member found by search, so one track is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim. NCT00945282 lists day-8 HIV-1 RNA change among its primary outcomes, so endpoint_role primary holds. All five patient_trials quotes and registry dates verified (2018-11-29, 2019-02-15, 2018-10-23, 2018-04-30, 2017-10-12). PubMed has no elsulfavirine patient trial."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (healthy-volunteer outcome, as the draft says). Proxy opener acceptable. Doravirine tox species beyond the label (rat, rabbit, mouse) unverifiable: Drugs@FDA posts no review for NDA 210806/210807 (TOC and MultidisciplineR all 404)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Castellino 2013 = PMID 23227887, epub 2012-12-20; quote verbatim. 'Unexpectedly' plus Margolis 2014 'without precedent' (verbatim, epub 2013-10-24) support silence-contradicted contra; seizures are a harm rodent/dog/monkey can show. FDA clinical hold was in the press Feb 2011 (rule question 1)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim in abstract. Built after the seizures, so retro not same (decision 10) is right. Whether minipigs themselves seized is not verifiable: ACS full text paywalled and web search found nothing; partial on the metabolite match is the defensible call."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Khalilieh 2018 = PMID 29723418, epub 2018-05-03, tier 1; quote verbatim in abstract (full text paywalled). Projection with no twice-daily human data until 2020: untested, prospective. 2018 label DDI table carries only the single-dose row, consistent with model_filed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Yee 2021 = PMID 32989795, epub 2020-09-28; quote verbatim in abstract. Prospective: trial 'subsequent' to model, 2018 projection and label preceded it; volunteer PK admissible for dose (decision 3). Observed BID row (N=15, AUC 1.03, C24 0.98) first in 01/2022 label, absent 10/2019, so 2020 stands; magnitude fillable from it.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Patient-level use of the same cell-culture track has no entry: Pifeltro label section 12.4 (http://www.accessdata.fda.gov/drugsatfda_docs/label/2018/210806s000lbl.pdf, bundle txt lines 736-750) sets cell-culture-selected V106A/M, F227C, Y318F beside the substitutions in DRIVE-FORWARD/DRIVE-AHEAD virologic failures (7 of 11 with >97-fold phenotypic resistance), tier 2, comparison stated, 2018; the draft notes it in a confidence_note but enters no prediction_level: patient entry.",
+  "Tier-5 patient-side sources the draft did not cite: Idenix press release, Sep 2008 (https://www.biospace.com/idenix-pharmaceuticals-inc-announces-completion-of-proof-of-concept-study-for-idx899-in-treatment-naive-hiv-infected-patients) reporting 1.78/1.78/1.84/1.87 log10 at 800/400/200/100 mg after 7 days, i.e. the Zala 2012 comparison four years earlier; and Feb 2011 press coverage of the FDA clinical hold after four seizure reports (https://newprod1.poz.com/article/hiv-gsk761-idenix-19885-4233), 22 months before Castellino. Status unchanged by either; dates depend on rule question 1.",
+  "No separate model system found: WebSearch for doravirine/elsulfavirine/VM-1500 in humanized mice or RT-SHIV macaques returned only generic model papers, and PubMed (elsulfavirine OR VM-1500 OR fosdevirine OR GSK2248761 OR IDX899) has no animal-efficacy or elsulfavirine patient-trial paper. Elsulfavirine's only regulator record is a 2017 Russian MoH registration, outside the tier-2 list (rule question 4).",
+  "Tier-2 observed record of the dor-cyp3a-induction-pk-model confirmatory trial, not cited by the dose index-4 entry: Pifeltro label s007 (01/2022, https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/210806s007lbl.pdf) Table 9, rifabutin 300 mg QD with doravirine 100 mg BID, N=15, AUC 1.03 (0.94-1.14), Cmax 0.97 (0.87-1.08), C24 0.98 (0.88-1.10); footnote 'Doravirine 100 mg BID resulted in similar pharmacokinetic values when compared to 100 mg QD without rifabutin'. Absent from the 10/2019 s003 label. Supplies the magnitude (observed C24 ratio 0.98 vs projected restoration to the QD trough) and subjects the entry leaves null; year unchanged. [CHECKER_BRIEF_v3 / models]",
+  "Candidate in-silico dose model with no track: population-PK dose bridge for adolescents 35-<45 kg, Pifeltro label 12.3 (s007 01/2022; current 07/2026 revision: 'the population pharmacokinetic model-predicted mean C24 of doravirine was comparable to that achieved in adults, whereas mean AUC0-24 and Cmax were 25% and 36% higher', IMPAACT 2014 n=54). A post-hoc exposure bridge built on the observed pediatric data, so it would score dose untested with source_calls_it: scaling (decision 4) rather than same; listed for the drafter to decide, not a missed comparison. [CHECKER_BRIEF_v3 / models]"
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Does a tier-5 sponsor press release set `year` (and `model_first_use_year`) for a comparison whose status is set by a later tier-1 paper? Rule 6 lists registry posting, online publication, label or print only. Here Idenix's Sep 2008 release reported the fosdevirine 7-day monotherapy result four years before Zala 2012, and the seizure clinical hold was public Feb 2011 vs Castellino Dec 2012; if yes, engagement/dose/efficacy `same` move to 2008 and safety `contra` to 2011, closing the 2009-2012 gap the strip draws.",
+  "`model_kind` has no in-vitro value: a cell-culture replication assay with laboratory HIV-1 strains in MT-4/MT4-GFP cells is not ex_vivo (patient cells). Which value should antiviral cell-culture models carry, or should the enum gain `in_vitro`?",
+  "When the engagement readout (viral load, proximal) is also the trial's primary endpoint, do engagement and efficacy both score `same` from the same 7-day monotherapy study, or should efficacy wait for a treatment trial with a clinical virologic endpoint (<50 copies/mL at week 48)?",
+  "Is a registration by a regulator outside the tier-2 list (elsulfavirine, Russian Ministry of Health, 2017) a tier-2 source, or inadmissible so the member stays without a tier 1-3 patient source?",
+  "dor-cyp3a-induction-pk-model joins two in-silico methods under one model_id: nonparametric superposition (Khalilieh 2018, predicts doravirine trough) and a PBPK model (Yee 2021, predicts M9) built later for the same dose adjustment; the 2022 label row tests only the superposition projection, the PBPK's M9 prediction is tested only in the Yee abstract. Decision 8 does not say whether successive in-silico methods for one dosing question are one system or two tracks. [CHECKER_BRIEF_v3 / models]"
+ ]
+}

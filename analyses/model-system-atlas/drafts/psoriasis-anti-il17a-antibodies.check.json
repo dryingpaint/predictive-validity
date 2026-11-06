@@ -1,0 +1,149 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/psoriasis-anti-il17a-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Europe PMC: PMID 21085185, epub 2010-11-18, print 2011. Quote is the abstract's last sentence verbatim. Untested opening entry at the model's first use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 22677045 epub 2012-06-05; quote verbatim in abstract. Full text (PMC BioC) confirms stated comparison: 'shown in vitro that many genes... coregulated by IL-17 and TNF... not yet been established in vivo'. Downstream tier correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR (bundle) has the NOAEL sentence verbatim and 'does not bind to mouse or rat IL-17A'. MedR confirms IND 100834 submitted Nov 1, 2007 as the year proxy."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label ISR sentence verbatim; PharmR gives MRHD 2.67 mg/kg. Margin held, patients dosed to regimen. Only public statement of the margin is the 2015 review; see rule question on 'stated before the trial'. UNCOVER-1 results posted 2016-05-27 confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR quote verbatim, following the bTDR80 description; it is the reviewer's paraphrase of the sponsor rationale. Only psoriasis-specific filed system (surrogate-antibody EAE/CIA mice otherwise). Model choice defensible, confidence medium appropriate."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 22455413, NCT01107457 (results posted 2017-07-25, confirmed on ClinicalTrials.gov). PASI 75 at wk 12 is the stated primary endpoint. Dating at 2016, when the model side became public, follows rule 6. Izokibep PASI 90 quote verbatim (PMID 37697683)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 21350122 epub 2011-02-24; quote is the abstract's last sentence verbatim. FDA clinical review cites Puel (footnote 21) for the Candida expectation, so the class did rely on it."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "MedR quote verbatim but split by a page break and footnote; it opens with the human Th17/IL-17 genetic defects, so the comparison is stated. Oral candidiasis 0.7% confirmed in MedR table; the 1.4% vs 0.5% Candida figure was not located in the label."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PharmR (bundle) lines 413-417: hIL-17 raises plasma KC in C57BL/6NHsd mice, ixekizumab decreased it (bTDR08); quote verbatim. Untested opening at the 2007 IND proxy matches the other filed ixekizumab studies."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Krueger 2012 full text (PMC3470466) has the >6-fold IL-8/CXCL1 sentence verbatim. Mouse study ran 2007, before patients, so prospective, not retro; dated 2016 when the model side became public. Downstream tier right."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Klint 2023 (PMC10187109) NOAEL sentence verbatim, with 28-day, 13-week and 26-week cyno studies. Year 2015 (EudraCT) fits the 28-day study; the 26-week study likely ran later, so confidence should be medium, not high."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Gerdes 2023 abstract (PMID 37697683) quote verbatim; 160 mg q2w is about 1 mg/kg/week, 6.5-fold under the HED. Margin first stated publicly in Klint 2023, after AFFIRM-35; same decision-16 question as dose 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Klint 2023 full text: 30- and 50-fold sentence verbatim; paper calls these 'preclinical in vitro and in vivo psoriasis models' and places them before the 2016 FIH. Prospective; 2016 proxy reasonable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Abstract: PASI 90 at wk12 is the primary endpoint; quote verbatim. Direction same. The 30-fold mg/kg potency claim missed: patients needed 80 mg q2w, the ixekizumab dose; consider magnitude off_by_>5x on dose."
+  }
+ ],
+ "missing": [
+  "No failure found for any member (ixekizumab, izokibep, netakimab, vunakizumab) in psoriasis. Positive patient trials not listed in patient_trials (they would change no status): vunakizumab Phase III (e.g. PMID 42952621, doi 10.3389/fimmu.2026.1894231) and netakimab Phase III PLANETA (citation not retrieved in budget). No press-release or SEC search was run for izokibep's later program; any failures I know of are outside psoriasis (not verified here)."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Dose, decision 16: the 9-month cynomolgus NOAEL existed in the IND before Phase 3, but the only public statement of the margin is the 2015 FDA review, written after the trials. Does 'a model source stated the margin before the trial' mean the sponsor's filed data (model_filed: true) or a public source dated before the trial?",
+  "Safety, IBD: Puel 2011 says IL-17A/F are 'otherwise largely redundant', which predicts no other harm, but the label warns of new or worse Crohn's disease and UC (0.1%/0.2% vs 0%). The rules don't say whether a small human genetic cohort 'could have shown' a harm this rare. If it could, the silence contradicts the label (contra); if not, it is no miss. The drafter took the second reading and did not score it.",
+  "Efficacy, magnitude: when the model's claim is relative potency (izokibep 30-fold more effective per mg/kg than ixekizumab) and patients needed the same mg dose, should magnitude be scored on dose (off_by_>5x) rather than left direction_only on PASI 90?"
+ ]
+}

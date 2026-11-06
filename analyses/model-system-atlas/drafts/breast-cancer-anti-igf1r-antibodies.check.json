@@ -1,0 +1,335 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-anti-igf1r-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "PubMed abstract re-read; quote verbatim. Burtrum 2003 has no DOI, the PMID record resolves. Opening untested entry at first use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract re-read; quote verbatim; epub 2011-08-02. Paired tumour biopsies, direct readout. Same holds; subjects are other-indication patients, not volunteers (rule question 5)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text (PMC4520534) re-read; quote verbatim. No dosed-patient IGF1R readout was paired; untested correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract quote verbatim. Full text (PMC5705197) names the models: MCF7 and H2122 cells in vitro and a primary NSCLC-derived xenograft LXFA629; no breast in-vivo model. Rename the track; untested stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text quote verbatim. Untested stands, but retrodiction should be true: received 2015-06-29, after the R+D vs exemestane null was shown at SABCS Dec 2013 (stated in Baselga 2017)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; no exposure target stated. Untested correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; epub 2015-03-07. The 60 ug/mL target is sponsor-set; its xenograft derivation is not in the abstract (unverified). Row 'reached, failed, abandoned' applies; contra derived from efficacy stands."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text verbatim. Resistance model with no exposure target; untested correct."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim. In-vivo model is an NSCLC PDX (see engagement 4). No margin stated, so decision 16's 'no stated margin' row gives untested; correct."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text verbatim. No exposure target; untested correct. Retrodiction flag should be true (see engagement 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; opening entry correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Registry re-read: PFS 6.0 (4.3-8.6) vs 4.9 (2.9-8.5), HR 1.04 (0.58-1.89), p=.89; results posted 2014-10-06 (estimated). Quote renders the table faithfully. HER2+ add-on is a weak test of an ER+ model; class-level contra accepted."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; epub 2015-08-31; registry 2018-06-06. All four patient_trials quotes and dates verified (NCT00699491 TRR 0, posted 2015-05-21; NCT00796107 posted 2020-11-13). Contra stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text verbatim; opening entry correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "v3 class definition (members-only) with decision 10",
+   "note": "Quote verbatim, but the 'early reports' Fagan cites are the AMG 479 (ganitumab) randomised phase 2 abstract, not a member; no member datum was public by May 2012 (R+D null first shown SABCS Dec 2013). See rule question 1.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "RULE QUESTION: decision 10 'patient result' when the only prior null is ganitumab's: same mechanism but absent from this tile's member list (decision 12; MET efficacy 6 keyed class-level, CETP efficacy 4 excluded non-members). Fagan states the comparison; retro kept."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim. Fresh prediction (result public 2015, after the May 2012 model). Same in direction holds; Gradishar found IGF-1R expression not associated with outcome, so the IGF1R-loss mechanism is unconfirmed: suggest source_calls_it partial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "neg definition / decision 13 (class_threshold must be a bar the class's successful drugs cleared)",
+   "note": "Abstract verbatim; registry 2019-03-25. Direction matches, but class_threshold is an intra-paper bar (no successful member in breast cancer) and effect_size is qualitative; Rugo's lowered-ridaforolimus confounder also hedges the null. Same, not neg.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 13 as ruled (anti-MAPT efficacy 4): neg needs a class_threshold the class's successful drugs cleared; none exists in breast cancer and the bar is Fagan's own parental-cell control. Null predicted, null observed (#58): same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim. Model is MCF7 in vitro plus an NSCLC PDX; the preclinical work underlies the 2008 phase 1, so not a retrodiction. Untested opening correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; registry 2019-03-25. Contra accepted with a caveat: Rugo attributes the null 'possibly' to lower-dose ridaforolimus (untested by the model) and Baselga's R+D vs E does not isolate dalotuzumab. See rule question 3."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "decision 10 (retrodiction)",
+   "note": "Becker (received 2015-06-29) was run after the R+D vs exemestane null (SABCS Dec 2013) and Robertson 2013; its Conclusions say 'similar to clinical trials, IGF-1R inhibition (via MK-0646) does not enhance hormonal therapy'. A stated retrodiction: retro, comparison_stated true.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: Becker (received 2015-06-29) post-dates NCT01234857's 2013-10 completion and SABCS 2013 read-out, cites the completed MK-0646/MK-8669 trials, and concludes 'similar to clinical trials' MK-0646 does not enhance hormonal therapy. Reproduces the known null: retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "decision 10 (retrodiction); neg definition",
+   "note": "Model is a retrodiction (entry 10), so the Rugo comparison is retro, not neg. NCT01605396 reportedly shown SABCS Dec 2014 (unconfirmed in the paper); if its result postdates 2016-10-20 it is the first fresh prediction and scores same, class_threshold unanchored.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: NCT01605396 primary completion 2014-02-19 precedes Becker's receipt (2015-06-29), and Becker names both completed MK-0646/MK-8669 trials; no earlier public Rugo abstract found, but the clinic knew (pan-HER efficacy 8 ruling). Not neg: bar unanchored. Duplicates entry 10."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim. No tolerability statement; mouse cross-reactivity unverified at abstract level; untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text verbatim; no tolerability content; untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract verbatim; the DLTs are clinical observations, the model is silent; untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Full text verbatim. Draft note is wrong in detail: Becker does report tolerability ('all agents ... were well tolerated, as bodyweight did not significantly differ', data not shown). Human-specific antibody, so hyperglycaemia silence is unscorable; untested stands."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bundle text verbatim (PharmR line 894, after the three-warnings sentence). Label 8/84 (10%) vs 1/87 hyperglycaemia and 8 vs 0 hearing impairment verified; approval 2020-01-21; MONDO:0001509 carries synonym 'thyroid eye disease'. Imported contra stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Registry re-read: hypothesis sentence verbatim in the brief summary; first posted 2008-09-25, start 2008-09-30, results 2017, so prospective. Opening untested at first use correct. Model-side derivation is patent-only, as the draft says.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "decision 4 'Also' clause (contra requires the model's own prediction to have failed) with decisions 11 and 13 (bar must be the model's number; direction held with a magnitude miss is same + bin); #90 as the alternative",
+   "note": "Quote faithful (80% CI); H-score is a mean, not median. 40% bar is the sponsor's, not the model's; ER+ 4/14 (13.1-49.2) cannot exclude it, TN 3/17 only at 80%. Direction held in a minority: same + direction_only, else untested/unresolved (#90).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: under decision 4, is a sponsor-set proof-of-biology threshold (GFS fall in \u226540%) the model's prediction, so the point-estimate miss (28.6%/17.6%; ER+ 80% CI spans 40%) is contra, or a sponsor bar, so same + direction_only (decision 11)?"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Brief-summary sentence verbatim; first posted 2008-09-25. NCT01220570 re-read: completed 2012-12, 63 enrolled, no results, primary is day-15 mean GFS change (PD, not response). PubMed has no report of either trial. Untested correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Ganitumab in breast cancer, same mechanism but absent from this tile's member list (it is a register member on the NSCLC tile): Robertson 2013 Lancet Oncol randomised phase 2 ganitumab + exemestane/fulvestrant, negative (doi 10.1016/S1470-2045(13)70026-3, PMID 23414585); I-SPY 2 neoadjuvant ganitumab + metformin, did not graduate (Yee 2021 npj Breast Cancer, doi 10.1038/s41523-021-00337-2, PMID 34611148, NCT01042379). Both are the human data Fagan 2012 and Becker 2016 retrodict; whether they score is rule question 1.",
+  "IGF-I gene-transcription signature (Creighton 2008 J Clin Oncol, doi 10.1200/JCO.2007.13.4429, PMID 18757322): an in-silico, MCF-7-derived patient-level model used as the primary endpoint of the dalotuzumab presurgical trial NCT00759785 (GFS decrease in 28.6% ER+ / 17.6% TN; results 2017-04-14). It is its own in_silico track (untested: no efficacy comparison), not a footnote on the MCF-7 xenograft track.",
+  "Model identity, not a missed model: Di Cosimo 2015's only in-vivo system is the primary human NSCLC-derived xenograft LXFA629 (full text PMC5705197); the breast-cancer prediction rests on MCF7 in vitro. The track name 'Merck in-vitro and xenograft models' should say so, or the in-vivo arm be marked imported from NSCLC."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Members-only vs same-mechanism: ganitumab and figitumumab are anti-IGF1R antibodies with randomised breast-cancer data, and ganitumab is a register member for IGF1R|binder_neutralizer on the NSCLC tile, yet neither is on this tile's member list. Do same-mechanism drugs missing from a tile's member list score, and can a retrodiction (Fagan 2012, Becker 2016) rest on their results?",
+  "neg for a class with no successful drug in the indication: what anchors class_threshold? The draft uses an intra-experiment bar (the same antibody in parental or sensitive cells). Is that admissible, and must effect_size be numeric?",
+  "A trial source that hedge-attributes a null to a condition the model never tested ('it is possible that lower-dose ridaforolimus ... contributed', Rugo 2017): does a hedged attribution demote contra/same to untested, or only a stated one?",
+  "Conference abstracts (SABCS 2013 for NCT01234857, reportedly SABCS 2014 for NCT01605396) are not a listed source tier, yet they make a later model a retrodiction under decision 10. Do they count for 'the clinic already knew the answer', and for rule-6 dating?",
+  "Engagement from patients of other indications (Atzori 2011, mixed solid tumours): the engagement rule admits healthy volunteers; does it admit other-disease patients without imported_from?",
+  "(models check) A registry-only proof-of-biology trial whose pre-specified bar (GFS decrease in >=40% of participants) is the sponsor's decision threshold, not a number the model stated, and whose ER+ 80% CI (13.1-49.2) spans the bar: is the point-estimate miss contra, same + direction_only (direction held in 4/14 and 3/17), or untested with source_calls_it: unresolved (#90) when the source itself makes no call? Also, prediction_level for the GFS track: the signature is a tumour classifier (patient) but its only use in NCT00759785 is a class-level PD readout."
+ ]
+}

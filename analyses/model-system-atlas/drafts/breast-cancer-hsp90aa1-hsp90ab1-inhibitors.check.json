@@ -1,0 +1,250 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-hsp90aa1-hsp90ab1-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: track opens untested at model_first_use_year",
+   "note": "Jensen 2008 (PMID 18430202, epub 2008-04-22, OA) is the luminespib BT-474 paper; quote verbatim in abstract. Opening untested entry is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 engagement: PD readout the model used moved in dosed humans; downstream tier",
+   "note": "Jhaveri 2012 (PMID 22781552, epub 2012-07-10): 25 of 28 patients breast, PBL Hsp70 rose with dose. Abstract only. Pairing to Jensen 2008 (luminespib) with product_in_model false is correctly declared."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening",
+   "note": "Quote verbatim in Jensen 2008 abstract (30 mg/kg, >1,000x GI50 for ~2 days, weekly regimen). margin_stated null is right: no NOAEL/MTD public."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "v3 dose table: the 'reached, failed' row needs the target shown reached (PK); status table untested = no admissible comparison",
+   "note": "Modi 2013 full text (PMC3646160): PK measured (retaspimycin AUC 10,003 ng h/mL), dose taken from phase 1 MTD, no comparison to any xenograft exposure, authors suspect underdosing, higher-dose studies ongoing. Reach never shown, so untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (dose; #90 unresolved): case 3 requires the exposure target shown reached. Modi 2013 reports no xenograft-exposure comparison and suspects underdosing; drafter's own source_calls_it is 'unresolved'. Untested, not derived contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening",
+   "note": "Eccles 2008 (PMID 18413753, epub 2008-04-01) quote verbatim in abstract. Leow 2009 (PMID 19671750) confirms JIMT-1 trastuzumab-resistant combination efficacy for the pooled HER2 track."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 efficacy: primary endpoint (ORR, Simon p0 11% / p1 24%) failed; one drug's contra holds the track",
+   "note": "Modi 2013 full text: 0 of 26 confirmed responses, Simon stage not passed; registry NCT00817362 terminated for limited efficacy at interim. Caveat tied to dose #2: Modi suspects underdosing, no model-vs-human exposure comparison (rule question 1)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening; dating rule 6 (epub 2004-08-27, print 2005)",
+   "note": "Eiseman 2005 (PMID 15338192) is a PK/PD paper in MDA-MB-231 xenografts; quote verbatim. Opening the TNBC track at 2004 on first member-drug use is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "v3 efficacy: scored on the trial's primary endpoint; the TNBC call is a subgroup of unreported size, and a tier-5 TNBC-cohort datum was missed",
+   "note": "Jhaveri 2014 (PMID 24512858, epub 2013-12-28) primary ORR was over 22 unselected patients. Missed: ENCHANT-1 interim (Synta SEC exhibit 2013-12-12) TNBC cohort 2 of 11 PR (18%), 5 SD. TNBC evidence is partial, not a miss.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 efficacy: scored on the trial's primary endpoint, ORR over 22 unselected patients; TNBC is a subgroup of unreported size (decision 3 #43, <80% prevalence). Tier-5 ENCHANT-1 TNBC 2/11 PR cuts against contra. Untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening",
+   "note": "Friedland 2014 (PMID 23686707, epub 2013-05-18, OA) quote verbatim. Grinshpun 2026 cites it (ref 21) as rationale, so the pairing is the trial's own, not only the drafter's."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "checker brief 3, first bullet: trial source attributes the result to conditions the model never tested",
+   "note": "Grinshpun 2026 (PMID 42873573, PMC13728916; registry 2019-01-03 confirmed) attributes the null to established endocrine resistance (ESR1 mutations, proliferative subtype) and names Whitesell 2014 as direct rationale, a model stating no antitumour effect alone. MCF-7 monotherapy never tested that.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35, #72): Grinshpun 2026 full text names Whitesell 2014 (no monotherapy effect; combination delays resistance) as rationale and attributes the null to established endocrine resistance, conditions the MCF-7 monotherapy track never tested. Untested."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening",
+   "note": "Ying 2012 (PMID 22144665, epub 2011-12-05) quote verbatim in abstract; abstract only, not OA. The stated prediction is cardiac and liver only; silent on GI."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "v3 safety: silence contradicted on a harm the species could have shown",
+   "note": "Stated prediction (no cardiac/liver) held, but the mouse was silent on diarrhoea: commonest toxicity in Jhaveri 2014, a DLT in Goldman 2013 (PMID 23530663), 97% any-grade and 20% grade 3 in Grinshpun 2026. Adjudicator may date it 2019.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: same model (Ying 2012), harm and question as NSCLC HSP90 safety 2 (kept same): is an efficacy paper's incidental no-cardiac/liver claim a safety model whose diarrhoea silence is askable (decision 4, #54 vs #89)? Resolve together."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10: retrodiction that reproduced the human data is retro, never same",
+   "note": "Zhou 2013 (PMID 24090817, epub 2013-10-01) abstract opens with the clinical visual disorders of 17-DMAG and AUY922, so retrodiction is the paper's own framing; comparison_stated true and retro are correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 8 (a member drug's own model is its own track); v3 status table untested opening; dating rule 6 (epub 2009-12-24)",
+   "note": "Oude Munnink 2010 (PMID 20036116) quote verbatim in abstract. Separate system from her2-breast-xenograft: SKOV-3 ovarian line, microPET 89Zr-trastuzumab readout, own clinical follow-up NCT01081600 (Groningen, opened 2010-02, 7 enrolled, no results). Opens 2009 by epub.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 engagement: the PD readout the model used moved in dosed humans; decision 11 partial agreement is same + source_calls_it partial",
+   "note": "Gaykema 2014 full text (Firecrawl): 5 patients, 29 lesions, mean SUVmax 9.0 to 7.8 (P=0.047), average decrease 18% (Fig 2D), heterogeneous; CT correlation on 9 lesions. Intro restates xenograft PET as rationale, no side-by-side, so comparison_stated false; 41% vs 18% is 2.3x.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening; decision 16 (a ceiling entry needs the effective exposure stated tolerated)",
+   "note": "Glaze 2005 (PMID 15986212, epub 2005-06-29) quote verbatim; abstract only (paywalled, not in PMC). Untested opening is right, but margin_stated should be false: the package names MTDs and a 1/10-MTD phase 1 start, no effective exposure.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "decision 16: no stated margin (effective exposure never named) is untested; decision 4: no exposure target was stated, so 'reached and enough' cannot be scored",
+   "note": "Jhaveri 2012 full text never cites the dog package, took weekly dosing from earlier phase 1s (the daily x5 schedule dogs tested was dropped as too toxic), bridges PK to no effective exposure; MTD set by unpredicted keratitis; no breast efficacy trial (NCT00780000, 4 patients). Fold into dose #3 patient_trials, margin_stated false.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 16: a margin is a tolerated exposure stated against an effective one; Glaze states MTDs and a safety-factor start, no effective exposure, and Jhaveri dosed to no target. Decision 4: sufficiency unscorable, no efficacy trial. Untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening; decision 8 (different regimen, readout and prediction from er-breast-xenograft); #113 trial fact that changes nothing goes in patient_trials",
+   "note": "Whitesell 2014 (PMID 25489079, epub 2014-12-08, PMC4280614) quote verbatim; abstract only. Own track: sub-growth-inhibitory ganetespib with hormone antagonists, resistance-emergence readout, not Friedland's monotherapy growth inhibition. Grinshpun 2026 cites it yet tested established resistance, so untested.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 status table: untested opening; decision 8 (different drug, species and stated predictions from ganetespib-mouse-tox and rat-retina-model)",
+   "note": "Glaze 2005 quote verbatim (abstract only). Stated prediction: GI, marrow, hepatic in both species, renal and gallbladder in dogs; silent on eye, heart and lung. Prospective, run before the first phase 1; own track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "v3 safety: a predicted harm that never appeared is contra (magnitude opposite); silence contradicted on a harm the species could have shown (dog ophthalmology is standard)",
+   "note": "Jhaveri 2012 full text: AE table shows no renal, gallbladder, hepatic or marrow toxicity (chemistry and LFTs monitored); keratitis DLT x2, blurred vision and dry eye 29%, ocular toxicity in 25/200 alvespimycin patients across trials. LV DLT confounded per authors; contra rests on keratitis and the absent predicted harms.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Alvespimycin rat/dog toxicology, Glaze 2005 (10.1007/s00280-005-1000-9, PMID 15986212, epub 2005-06-29): prospective; predicted GI, marrow, hepatic (both species), renal and gallbladder (dog), stated MTDs and a phase 1 starting dose. Breast patients (Jhaveri 2012, 10.1158/1078-0432.CCR-11-3200): DLTs were grade III LV systolic dysfunction and reversible grade III keratitis, harms a dog study could show and the model was silent on; renal/gallbladder harms never appeared. Needs its own safety (and dose, margin_stated) track.",
+  "ER-positive xenograft model of resistance emergence, Whitesell 2014 (10.1073/pnas.1421323111, PMID 25489079, epub 2014-12-08): sub-growth-inhibitory ganetespib had 'no overt anticancer activity on its own' but 'dramatically impaired the emergence of resistance to hormone antagonists' in mice. Grinshpun 2026 names it as the fulvestrant trial's direct preclinical rationale; the trial tested established resistance, so the emergence prediction is untested and the no-activity-alone statement is consistent with the null. Own track.",
+  "ENCHANT-1 (NCT01677455) interim results, Synta press release 2013-12-12 (SEC exhibit 99.1: https://www.sec.gov/Archives/edgar/data/1157601/000110465913090265/a13-26324_1ex99d1.htm): first-line ganetespib monotherapy, HER2+ cohort 3 of 4 evaluable objective responses (1 CR), TNBC cohort 2 of 11 PR (18%) and 5 SD; AEs diarrhoea, fatigue, nausea. Tier 5, trial_unreported; registry completed 2015-08 with no results. Belongs in patient_trials of the HER2 and TNBC tracks and bears on efficacy #4.",
+  "Ganetespib first-in-human phase 1, Goldman 2013 (10.1186/1471-2407-13-152, PMID 23530663, epub 2013-03-25): plasma HSP70 elevated over a week post dose (engagement, downstream, mixed solid tumours), linear PK, MTD 216 mg/m2, RP2D 200 mg/m2, DLT grade 3 diarrhoea. A patient-side dose and engagement source for the ganetespib tracks the draft does not use.",
+  "No patient-derived xenograft or organoid comparison with patient response was found for any member in breast cancer (WebSearch). Jensen 2008 ran patient-derived primary breast tumour clonogenic assays (MAXF lines) for luminespib GI50 but never compared them with patients, so no track is owed."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose: when the trial reports human PK but neither trial nor model source compares it with the model's effective exposure, and the trial itself suspects underdosing (Modi 2013), is dose 'contra derived_from efficacy' (drafter) or 'untested' (checker), and does efficacy stay 'contra' in that case?",
+  "Efficacy, patient-level track: when the model's prediction is for a subgroup (TNBC) of a trial whose primary endpoint failed over the unselected population and the subgroup size is unreported, is the subgroup scored (contra), or does the track wait for a trial with that subgroup as its primary population? Can a tier-5 interim press release (ENCHANT-1 TNBC 2/11 PR) set a 'same'/partial on that track?",
+  "Safety: when the model's stated prediction held (no cardiac or liver toxicity) but its silence was contradicted on another harm the species could show (diarrhoea), does the track net to 'contra', or does the held prediction stand as 'same' with the silence noted? The v3 safety definition asks both questions but does not say how they combine on one track.",
+  "Efficacy: the trial was designed on the model (Grinshpun 2026 cites Friedland 2014) yet attributes its null to the population's defining condition (established endocrine resistance) that the model never represented. Does the brief's 'conditions the model never tested' pattern give 'untested', or does reliance on the model for exactly this question keep 'contra'?",
+  "Dose, decision 16: is a toxicology package that states MTDs and a safety-factor phase 1 start, but names no effective exposure, a 'stated margin' (drafter: margin_stated true, same) or no margin (checker: untested)? Alvespimycin dose #4; the trial also never bridged its PK to any animal exposure."
+ ]
+}

@@ -1,0 +1,320 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-esr1-degrader.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lai 2015 (PMID 25879485, epub 2015-05-22) resolves; quote verbatim in abstract. Opening untested entry at first use of the class model is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wang 2017 (PMID 28011460, epub 2016-12-23) quote verbatim; NCT01823835 results posted 2021-06-18, so 2016 stands. FES-PET is the model's own ER readout; direction_only right since Lai 2015 gives no model number."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review lines 1751-1763: patient biopsy (-69%/-76%/-94%) and MCF7 (>94%) paragraphs adjacent, so comparison_stated holds; quote verbatim; NCT04072952 results 2026-09-29 confirmed; within_2x holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Joseph 2016 (PMID 27410477) quote verbatim. ESR1-mutant xenografts are a distinct system asking a patient-level question, so the second model_id is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bardia 2022 (PMID 35840573, epub 2022-07-15) quote verbatim; Shomali 2021 abstract confirms wild-type and Y537S models; NCT03284957 results 2025-11-24. Mixed subjects declared; Y537S ctDNA readout carries the patient-level call."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review line 1754 verbatim, in the sponsor-authored pharmacology position as the draft says; supports equal mutant/wild-type ER degradation in patients."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lai 2015 quote verbatim; abstract states the oral complete-blockade premise with no mg/kg target; opening entry fine."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wang 2017 quote verbatim; FES saturation at 600 mg, MTD not reached (Bardia 2023, PMID 36401732). The v3 dose table has no row for 'reached, tolerated, abandoned before any efficacy readout'; kept same, raised as a rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tolaney 2023 (PMID 37348019, epub 2023-06-22) quote verbatim; NCT04059484 results 2023-03-30 set the year; 'reached, failed, abandoned' row applies, failure counted once via derived_from."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Joseph 2016 quote verbatim; opening entry on the mutant track."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review lines 2198-2206 verbatim: no DLT to 700 mg, MTD not reached, >=60 mg above mouse-regression AUC. Quoted anchor is MCF7 WT, but 30 mg/kg also gave >100% TGI in ST941/HI Y537S PDX (line 1762), same target."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lai 2015 quote verbatim; opening entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Hurvitz 2023 (PMID 37657462) quote verbatim; NCT04436744 results 2023-02-02 set the year; week-2 Ki67 was the primary. outcome_tested positive now backed by Nov 2025 trade coverage of lidERA (iDFS met); Roche release not fetched, tier 5."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tolaney 2023 quote verbatim; acelERA (HR 0.81 NS, registry 2023-03-10) and AMEERA-5 futility quotes verbatim. persevERA (NCT04546009, Roche 2026-03-09, ITT PFS missed) is absent from patient_trials; add it, status unchanged."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Joseph 2016 quote verbatim; ESR1m subgroups under 80% of enrolment correctly kept out of this track."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Campone 2025 (PMID 40454645, epub 2025-05-31) quote verbatim; ESR1m PFS is a dual primary per the abstract; Gough 2024 abstract confirms WT and mutant models; NCT05654623 results 2026-02-03. Not a retrodiction."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lai 2015 quote verbatim; the abstract makes no tolerability claim, so untested rather than contra is right."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Liang 2021 (PMID 34251202, epub 2021-07-12) quote verbatim. Track opens 2021 although class rat/dog toxicology existed for GDC-0810 before 2013; rule 6 allows a proxy opening, minor."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Martin 2024 (PMID 38537155, epub 2024-03-27) quote verbatim; NCT04576455 results 2023-03-10 set the year. Thin match as declared. Giredestrant bradycardia (a SERD class signal, review line 4503) was not tested against the model's silence; raised as a rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review lines 1696-1698 verbatim; dQTcF 10.9 ms at line 1064; label 5.1 QTc warning. hERG negative to 30 uM and single-dose dog CV clean (lines 1882-1888) were contradicted; partial call defensible under count-once, pooled-track question raised."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "He 2025 (PMC12151198) resolves; quote verbatim in abstract. Untested opening at first class use of a bottom-up PBPK is right. Paper cites the first-in-human phase I/II as the 30 mg source, so subjects could read patients."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (abstract). Retro, not same: the 30 mg phase 1/2 profile (NCT04072952, started 2019) preceded the model (decision 10). Magnitude null right; the 1.75-fold is the rat model. Year 2024 stands (epub before registry results 2026-09-29)."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Rachumallu 2026 (PMID 41619699, epub 2025-12-24, print Feb 2026) resolves; quote verbatim, abstract only. Year 2025 under decision 7. Retro, partial and within_2x supported: bottom-up CL/F overpredicted at 30 mg, refined model within 2-fold at 60-360 mg."
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "FDA review lines 7794-7796 verbatim (Applicant's position). Untested opening of the sponsor Simcyp model; 2026 proxy year acceptable. Separate track from the translational PBPK is right: different build, different prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Lines 7801-7804 verbatim but cut before 'in a vast majority of cases'; Applicant-authored. FDA accepted it for CYP3A perpetrators only and rejected the BCRP use. Retro supported: verification against completed PK/DDI studies. DDI registry years (2024) not applied, see rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Chothe 2025 (PMC12641084, received 2025-04-18) resolves; quote verbatim in abstract. CT.gov: NCT05673889 completed 2023-04-19 (results 2024-08-16), NCT05652660 completed 2023-03-06 (results 2024-07-26), both healthy volunteers, so any match is retro. Untested opening right."
+  },
+  {
+   "cell": "dose",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (abstract). Results read: dabigatran Papp 'sixfold in Caco-2 and 2.6-fold in EpiIntestinal' vs clinical Cmax 2.9-fold; rosuvastatin 1.4-fold (48%) vs 11%. Healthy volunteers confirmed. Retro, match, within_2x hold. registry_date could be 2024-08-16; dating of retro entries raised."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "FDA review lines 1882-1888 verbatim; stated prediction ('unlikely to cause adverse effects on... cardiovascular', FDA agrees) opens an untested track. hERG is in vitro, so model_kind animal is approximate; ICH S7B bundling matches atlas convention."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Line 1064 verbatim; SMQ 11% vs 1% at 1065-1067; VERITAC-2 results posted 2026-02-03 (CT.gov). Contra holds: stated no-CV-effect prediction failed. Count-once (decisions 4, 16) is cross-cell; decisions 6 and 8 keep this failed system apart from the repeat-dose dog same, headline unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Basu 2026 (PMID 41512566, PMC12818056, epub 2026-01-09, print Feb 2026) resolves; quote verbatim in abstract; year 2026 right. Abstract itself says the model was built to explain clinical bradycardia, so the track is a retrodiction from its opening."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (abstract). Retro, not same, correct under decision 10; direction_only and match hold for giredestrant (positive) and amcenestrant (negative). Camizestrant/elacestrant membership not verifiable from the tile (programs null), non-load-bearing. Patient side taken from the paper."
+  }
+ ],
+ "missing": [
+  "persevERA (NCT04546009): first-line giredestrant + palbociclib vs letrozole + palbociclib, 992 patients, 'did not meet its primary objective of a statistically significant improvement in progression-free survival' with 'a numerical improvement'; Roche ad hoc release, Basel 9 March 2026, https://www.roche.com/media/releases/med-cor-2026-03-09 (tier 5, trial_unreported). Belongs in efficacy patient_trials on er-pos-wt-breast-xenograft; the track is already contra so no status changes.",
+  "Safety-pharmacology package as its own compared system: hERG negative to 30 uM (>1000x free Cmax) and a clean single-dose dog cardiovascular study at 400 mg/kg (FDA review NDA 219835 MultidisciplineR, lines 1882-1888) predicted no QT liability, yet patients showed mean dQTcF 10.9 ms (line 1064) and the label carries a 5.1 QTc warning. The draft pools this into the rat/dog repeat-dose track as same/partial; if the count-once rule does not pool it, it is a contra track.",
+  "ZN-c5: Zentalis discontinued the oral SERD in August 2022 after phase 1/2 with no randomised readout (analyst coverage https://www.benzinga.com/analyst-ratings/analyst-color/22/08/28439032/this-analyst-says-zentalis-increased-focus-on-wee1-program-is-prudent; the Zentalis 10-Q was not fetched). No comparison is lost, but the draft's claim that ZN-c5 'never produced a randomised efficacy comparison' should cite the discontinuation.",
+  "No patient-derived organoid or ex-vivo comparison with a member drug was found (web search); organoid-to-clinic concordance exists only for fulvestrant-containing regimens (e.g. PMC10979603, non-member), so no organoid track is missing."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Dose table has no row for 'exposure target reached and tolerated, drug abandoned before any efficacy readout' (GDC-0810, 2016; NCT02569801 halted by sponsor): is dose same on the exposure match alone, or untested until 'was it enough' is answered?",
+  "When one component of a filed nonclinical package (hERG negative, single-dose dog telemetry clean) predicted no QT liability and another (repeat-dose dog ECG) predicted it, and patients showed it, is the package one track scored same with source_calls_it partial (count once), or does the contradicted component form its own contra track?",
+  "Does a discovery-paper claim ('excellent in vitro and in vivo safety profiles') whose underlying rat/dog data are unpublished count as a stated model prediction for a safety same, and does an asymptomatic class AE (giredestrant bradycardia) absent from that claim count as silence contradicted on a harm the species could have shown?",
+  "A member's Phase 3 failure known only from a press release (persevERA) on a track already contra: is a patient_trials row sufficient (one entry per change of status), or must it be its own tier-5 trial_unreported entry so the failure is visible?",
+  "Dating a retrodiction (models check): decision 7 takes the earliest of registry results-posted, epub and print years, but for a retro entry the registry year precedes the model's first use (EpiIntestinal dose 12: DDI results posted 2024-08-16, model run 2025; Simcyp dose 10: DDI studies posted 2024, review 2026). Should registry dating be ignored for retro entries so the comparison never predates the model?",
+  "PK/DDI prediction tracks in the dose cell (models check): the translational PBPK, Simcyp DDI and EpiIntestinal tracks predict the drug's own or a co-medication's exposure, not whether the exposure target was reached and sufficient (decision 4). Is dose the right cell, or do such tracks need a flag so they do not enter the dose track tally?"
+ ],
+ "could_not_verify": [
+  "Roche lidERA release itself not fetched (trade coverage only, Nov 2025, iDFS primary met); outcome_tested: positive stands at tier 5.",
+  "Paywalled papers read at abstract level via Europe PMC; the draft's model-side numbers inside Shomali 2021, Gough 2024 and Liang 2021 figures were not opened.",
+  "Rat/dog ~5x AUC margin in dose entry 5 magnitude_basis not re-read in the review; not load-bearing for the status.",
+  "Models check: giredestrant HCI-013 PBPK-PD dose projection (PMID 37102506, Biopharm Drug Dispos 2023) abstract states the projected dose only relative to GDC-0927, with no number or comparison with the clinical 30 mg; full text paywalled. Drafter's exclusion stands on what is visible.",
+  "Models check: class membership of camizestrant and elacestrant not checkable from the tile (programs null; class table is in the DB, not queried). Affects only magnitude_basis of safety 8, not its retro status."
+ ]
+}

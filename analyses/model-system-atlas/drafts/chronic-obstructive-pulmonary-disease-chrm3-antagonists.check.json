@@ -1,0 +1,347 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/chronic-obstructive-pulmonary-disease-chrm3-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings (drafts/lint.py)",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 22047691 resolves; abstract is the quoted sentence. Jorup 2014 full text confirms the guinea-pig methacholine bronchoconstriction and pilocarpine-salivation therapeutic-index models for AZD9164. Untested opening is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "6",
+   "note": "Verbatim in abstract; FEV1 rise is a downstream readout of the guinea-pig model, same holds. NCT00939211 results (primary peak and 22-26 h FEV1) posted 2011-08-05 and Mete 2011 epub 2011-10-08: pairing public in 2011 (rule 6)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 23685545 resolves; verbatim in abstract. FDA PharmR study 07-134853-PH-01 (Einthoven model) and Table 17 verified in the bundle."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "6",
+   "note": "Verbatim in MedR; registry 2018-12-31 verified. But NCT02040792 results (D28 trough FEV1 met at 88-350 ug) posted 2016-12-07 and Quinn 2017 (epub 2017-10-04) showed >24 h bronchodilation: earliest public pairing is 2016 (rule 6)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Mete 2011 source and sentence as engagement 1; opening untested is right. No human dose was derived from the guinea pig."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "6",
+   "note": "Verbatim in abstract; once-daily reached, systemic effects only at 1200 ug. Jorup 2014 confirms a stated guinea-pig lung-vs-salivation therapeutic index that held, so margin_stated should be true (decision 16). Pairing public 2011 (rule 6)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Verbatim in abstract. PharmR gives lung-selectivity index 22.3 (tiotropium) vs 25.9 (revefenacin) and a 6.7-fold higher repeat-dose index, as the draft says."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "6",
+   "note": "Verbatim in ClinPharmR; margin_stated true is right under decision 16 (dry mouth 0/1/3 verified in MedR). Dose-ranging NCT02040792 results posted 2016-12-07 (350 ug no gain over 175 ug) pre-date the review (rule 6)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Mete 2011 sentence; opening untested is right. Model readouts (bronchoconstriction, duration, systemic effects) confirmed from the Mete 2013 and Jorup 2014 abstracts."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "6",
+   "note": "Verbatim in abstract; registry confirms the primary endpoints were peak and 22-26 h FEV1, both met. Pairing public 2011 (rule 6). The judgement's claim that PF-03635659 has no published model side is wrong: Glossop 2011, doi 10.1021/jm200884j."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Verbatim in abstract; model reads 24-h evoked bronchoconstriction only. Untested opening is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "6",
+   "note": "Verbatim in MedR; NCT02459080/NCT02512510 results 2018-12-31 and both Ferguson 2019 quotes verified. Phase 2b NCT02040792 (primary D28 trough FEV1 met) posted 2016-12-07, Pudi 2017 epub 2017-11-02: earliest comparison is 2016 (rule 6)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Mete 2011 sentence; the series' systemic side-effect and therapeutic-index readouts are stated in the Mete 2013 abstract. Untested opening is right."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Verbatim in abstract, which states the initial transient dose-related FEV1 fall with cough in COPD patients. A guinea-pig airway-resistance model could have shown it; Jorup 2014 says re-evaluation of preclinical data gave no explanation. Contra holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Open-access full text (PMC3976047) read. Sponsor states preclinical assessment and re-evaluation give no explanation and the M1-partial-agonist/M2 hypotheses had no preclinical support: comparison_stated true, miss. 45 healthy plus 4 COPD: mixed is right."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Verbatim in abstract; PharmR reproduces the index and notes the metabolite THRX-195518 has systemic antimuscarinic activity, as the draft says."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "6",
+   "note": "Verbatim in SumR; MedR Table 28 (22/356, 28/364, 18/335) and 12-week dry mouth 0/1/3 verified. Earliest systemic-AE comparison is NCT02040792 results 2016-12-07 / Quinn 2017 (no significant systemic antimuscarinic activity); the 52-week tiotropium partial is 2018. Partial-vs-contra is a rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Glossop 2011 (PMID 21870878, epub 2011-09-20) resolves; sentence verbatim in abstract, guinea-pig tracheal strips named. Phase 1 began 2008-09 (NCT00864786), so candidate selection on this model preceded the clinic: prospective, not retro. Opening untested right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Registry quote verbatim (primary-outcome description); results first posted 2016-02-19, trial ran 2010-01 to 2010-06. Mean difference vs placebo 0.0507/0.0788/0.0927 L (CI lower 0.0059/0.0431/0.0560), tiotropium 0.0613. Downstream FEV1 readout; 2016 is the earliest public pairing.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "PharmR quote verbatim (Appendix I, IND 119840 nonclinical review dated 2014-02-21, Reference ID 3458706; pre-IND meeting 2013-12-12). Tissue data were in the IND before NCT02040792 (start 2014-05); run date undocumented, 2014 proxy acceptable, retrodiction false defensible.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "1",
+   "note": "Hegde 2018 (PMC5927803, epub 2018-04-30, received 2017-11-16) full text read; quote verbatim (U+2010 hyphens). Human bronchus offset t1/2 >10 h stated; the paper itself sets it beside Phase 2 24-h data, so comparison_stated true. 2018 first public pairing.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Same Glossop 2011 sentence as engagement 5; opening untested right. The abstract claims once-daily potential from in vivo duration and states no exposure or tolerated-dose margin, so null margin at opening is fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Registry verified as for engagement 6. One dose held trough FEV1 above placebo at 180/580/1450 ug, so the once-daily regimen target was reached and sufficient (reached, drug worked). margin_stated false right: abstract gives a design aim, no margin.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Same PharmR sentence as engagement 7 (IND review dated 2014-02-21). Isolated tissue gives potency and offset only; opening untested with null margin is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Hegde quote verbatim in Discussion. Once-daily regimen implied by the tissue offset was reached (NCT02040792 results 2016-12-07, NCT01704404 2017-03-13). margin_stated false right; isolated bronchi state no tolerability margin, the rat antisialagogue track carries that end.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Same Glossop 2011 sentence; opening untested right. Model readouts (tracheal-strip relaxation, in vivo duration) are surrogates; no outcome trial applies.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Registry lists change from baseline trough FEV1 as a primary outcome (PK measures co-primary); all three doses beat placebo with CI lower bounds above zero, n=22 single-dose crossover. endpoint_role primary and same hold; medium confidence right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Same PharmR sentence as engagement 7; opening untested right at the 2014 proxy.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Hegde quote verbatim. Phase 2b primary (day-28 trough FEV1, NCT02040792) and both Phase 3 day-85 primaries (NCT02459080, NCT02512510, results 2018-12-31) met; endpoint_role primary. Pudi 2017 quote left null is acknowledged, not a defect.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "3",
+   "note": "Quote verbatim in abstract. NCT01033487 AE table: no serious AE on PF-03635659 arms, one (pain in extremity) on tiotropium, no dry-mouth term; single dose, n=22, no quotable sentence. Untested under rule 3 stands; registry-table safety is a rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "PF-03635659 has a published model side the draft says does not exist: Glossop 2011 J Med Chem doi 10.1021/jm200884j (guinea-pig tracheal-strip off-rate plus in vivo duration-of-action models; 'in vivo duration of action studies confirming its potential for once-daily use in humans'). Paired with NCT01033487 (results posted 2016-02-19: trough FEV1 +51/+79/+93 mL vs placebo at 180/580/1450 ug, tiotropium +61 mL) it is a second track (Pfizer guinea-pig trachea/in vivo duration) scoring same on engagement, dose and efficacy in 2016.",
+  "Human isolated bronchial tissue (ex vivo) for revefenacin has no track: Hegde 2018 Pharmacol Res Perspect doi 10.1002/prp2.400 (human bronchi, antagonism slowly reversible t1/2 >10 h) and the FDA pharmacology review ('human bronchial tissue (1 - 1000 nM TD-4208)'); label 12.1 says 'In preclinical in vitro as well as in vivo models ... The clinical relevance of these findings is unknown.' At least an untested track (model_kind ex_vivo), or paired with the 24-h trough FEV1 data.",
+  "AZD8683 on the AstraZeneca guinea-pig track is named but not scored: Mete 2013 doi 10.1016/j.bmcl.2013.09.092 ('inhibition of bronchoconstriction and duration of action, as well as systemic side effects ... assessed in guinea-pig models') pairs with NCT01205269 (results 2013-11-13, primary peak and 22-26 h FEV1) and NCT01708057 (results 2013-09-30, vs tiotropium, terminated). Both a second drug's same on the track and the open safety question of whether AZD8683 reproduced the post-dose FEV1 fall (registry AE tables).",
+  "Revefenacin patient-side sources that pre-date the 2018 FDA review and move the track's dates: NCT02040792 results 2016-12-07 (28-day, primary D28 trough FEV1 met), NCT02109172 results 2016-12-08, NCT01704404 results 2017-03-13, Quinn 2017 doi 10.1016/j.pupt.2017.10.003 (epub 2017-10-04; primary trough FEV1 day 7 met, 'no indication of significant systemic anti-muscarinic activity at any dose'), Pudi 2017 doi 10.1186/s12931-017-0647-1 (epub 2017-11-02).",
+  "QAX028 and CHF5992: no model paper found on PubMed under either code (QAX028, QAX-028, CHF5992, CHF-5992); NCT01068613 has no posted results. The draft's unscored call for both stands; the search was PubMed only.",
+  "Hegde 2018 (doi 10.1002/prp2.400) also reports rat isolated trachea (ACh antagonism, offset t1/2 13.3 h) and guinea-pig isolated trachea EFS (offset >16 h) ex-vivo models under the same 'consistent with emerging clinical data' sentence; neither has a track (the rat/dog track is in vivo). Minor: same paper and comparison, could be noted on the human-bronchus track rather than tracked."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 6 dating of a paired (comparison_stated false) entry: once the model paper is public, does a tier-3 registry results posting that carries the primary endpoint but no model comparison set the year? Drafter dated to the first paper (AZD9164 2012 not 2011; revefenacin 2018 not 2016); rule 6's text lists registry posting first.",
+  "Safety: a model's stated comparative prediction (Pulido-Rios 2013: 'improved tolerability profile compared with marketed muscarinic receptor antagonists') held against placebo but not against tiotropium over 52 weeks (5.4-7.7% vs 6.1% antimuscarinic AEs). v3 defines contra/opposite for a predicted harm that never appeared, not for a predicted reduction of harm that failed. same + partial, or contra?",
+  "Member drug AZD9164 is, by its sponsor's own description (Jorup 2014), equipotent at human M1, M2, M4 and M5. The tile lists it as a CHRM3-antagonist member so it was scored; does a listed member that is in fact non-selective stay inside the class, or does the 'non-selective drug outside the member list' exclusion extend to it?",
+  "Dose entry 2 (AZD9164): the guinea-pig lung-vs-salivation therapeutic index is a stated margin that held in patients (systemic effects only at 3x the effective dose) while the program died on an unpredicted harm scored in safety. Decision 16 seems to give margin_stated true here; confirm that a held margin is recorded even when the track's safety cell is contra on another harm.",
+  "Safety from a tier-3 registry AE table (NCT01033487: no antimuscarinic AE on PF-03635659, single dose, n=22) with no quotable sentence: does rule 3 keep it untested, or can an AE-table row serve as the quote the way an outcome-measure title does for efficacy?",
+  "Retrodiction boundary when the model's run date is undocumented: revefenacin human bronchi are first evidenced in the IND 119840 review (2014-02-21), after the sponsor's Phase 2a NCT01704404 (completed 2013-12) but before the paired NCT02040792; is 'prospective unless shown otherwise' the default?"
+ ],
+ "not_verified": [
+  "Mete 2011, Mete 2013, Bjermer 2013 and Pulido-Rios 2013 were read at abstract level only (paywalled); all quotes are verbatim in the abstracts.",
+  "Whether the NCT00939211 registry results posting (2011-08-05) displays the transient early FEV1 fall was not checked; safety entry 2's 2012 date was left as drafted.",
+  "No press release, SEC filing or EMA document was searched for AZD8683, PF-03635659, QAX028 or CHF5992 discontinuations; only PubMed and ClinicalTrials.gov."
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/psoriasis-pde4-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings (drafts/lint.py, 2026-11-05)",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Akama 2009 resolves (PMID 19303290, BMCL, online 2009-03-09); quote verbatim in abstract. PharmR lines 571-573 confirm LPS/PHA/ConA PBMC assays. No psoriasis PD comparison exists; AD biomarker work cannot import (only safety transfers). Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR bundle lines 578-582: quote is the tail of 'Seven out of eight crisaborole formulations at 5% strength ... exhibited ...', near-verbatim. Model set strength only; untested at opening holds. 2009 proxy (IND was 2008, line 389) allowed."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov API: results first posted 2017-03-07; primary 54.1 vs 2.7, P<0.001 (sign test), n=145. Quote is a field rendering. Regimen the model ranked was used and worked: same under the dose table. Year from June 2010 release confirmed."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov: 17.4 (6.4-28.3) vs 13.6 (0.0-28.0), diff 3.8 (-14.3 to 21.8), n=68, posted 2017-03-07. Mirrors efficacy per 'reached, failed, abandoned'; 10-K 2012 shows SPA agreed Nov 2011 then Phase 3 deferred, not formally abandoned. See rule questions 1-2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Akama 2009 resolves; quote verbatim in abstract (title names psoriasis). In vivo model named only in PharmR (mouse phorbol ester ear edema, 74%). Untested at the model's opening year is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Registry confirmed: NCT01029405 54.1 vs 2.7 P<0.001 (posted 2017-03-07); NCT00759161 68.6 vs 5.7 P<0.001 and NCT00755196 53.3 vs 30.0 P=0.23 (posted 2017-03-06). News-medical reprint confirms June 2010 primary P<0.001. Same, direction only, holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Registry primary confirmed (17.4 vs 13.6, CI spans zero). 8-K verbatim: '17% ... met PGA Success, while 14% ...', 'not powered'. 10-K 2012: SPA filed Nov 2011, Phase 3 'deferred' for AD. Contra defensible under decision 13; rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "note": "Felding 2014 resolves (JMC, PMID 24984230, online 2014-07-01, print 2014-07-24); quote verbatim in abstract, which names AD phase 2 only. Models used are not visible at abstract level (paywalled). Untested at track opening holds; 2014 proxy for 2009 trial allowed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov NCT00875277: posted 2019-12-11, n=24, primary TCS change vehicle -1.60 vs LEO 29102 -3.04, P<0.001 (t-test); BDP -4.96 beats LEO P<0.001. Quote is a field rendering. Same in direction holds at low confidence; plaque-test status is rule question 5."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "10-K quote verbatim; it never names psoriasis among the pooled PoC trials, and the Aug 2014 S-1 still called DRM02 preclinical. Model paper resolves (PMID 32479135, online 2020-06-01), imiquimod sentence verbatim. Contra holds whether retrodiction or prospective; rule questions 6-7."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR bundle lines 462-464 verbatim; LLNA no-sensitisation sentence precedes it. Review dates the first IND to 2008 (line 389) but does not place the rabbit study in it, so 2008 is a proxy. Untested at opening holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov AE table confirmed: contact dermatitis 4/46 vs 0/22, erythema 2/46, pruritus 2/46; NCT01029405 2% BID 3/37 and 6/37 match. 8-K: contact dermatitis 8.7%. Rabbit irritancy to application-site reactions is same, direction only; 'dermatitis contact' may be allergic."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Jardet 2020 resolves (PMC7693225, epub 2020-08-25, print 2020-10, tier 1); quote verbatim in section 3.2. NCT00875277 recorded TCS and symptom scores only, no cytokine or cAMP PD, so untested holds; 2020 is the model's first description; downstream tier correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (section 3.2, Figure 4A). Received 2019-11-11 with LEO co-authors citing the 2009 plaque win: retrodiction, retro not same (decision 10). Registry primary -3.04 vs -1.60, P<0.001 confirmed. Therapeutic arm vehicle-confounded (Figure S4); partial stands, rule question 8."
+  }
+ ],
+ "missing": [
+  "Benzoxaborole (crisaborole, compd3) Th17-cytokine models from Anacor after the psoriasis trials: cell-culture IL-23/IL-17/IL-22 release and topical compd3 suppressing PMA-induced IL-17F/IL-22/IL-23 transcription in mouse skin, with the paper itself stating the class 'has demonstrated therapeutic benefit for psoriasis ... in phase 2' (comparison_stated). A retrodiction entry (retro vs the bilateral trials, contra vs NCT01300052) on the phorbol-ester or PBMC track is owed. Dong et al. 2016 J Pharmacol Exp Ther, doi 10.1124/jpet.116.232819, PMID 27353073, online 2016-06-27; abstract level; product_in_model true in vitro, compd3 in vivo.",
+  "Crisaborole in a mouse psoriasis-like dermatitis model (dampened myeloid cells and itch), a later animal model with the member drug run after the 2011 psoriasis result, abstract asserting crisaborole 'has shown efficacy in patients with psoriasis'. Retrodiction track with no entry; adjudicator to decide retro (bilateral trials) vs contra (NCT01300052). Exp Dermatol 2023;32:e14722, doi 10.1111/exd.14722, PMID 36461082, online 2022-12-19; abstract level, inducer not stated so it may share model_id pde4-mouse-imiquimod-psoriasiform.",
+  "Not missing, checked: ClinPharmR lists '9 studies in subjects with psoriasis' (crisaborole systemic PK); a topical with no model exposure target gives nothing to compare, so no dose entry is owed. LEO 29102 skin-explant cAMP (Pharm Res 2020) and crisaborole AD biomarkers (JACI 2019) are atopic dermatitis and do not import.",
+  "[models check] Youn 2023 inducer confirmed from the PMC10066830 full text (NCBI efetch): '70 ul (62.5 mg) of imiquimod (5% Taro Pharmaceuticals) was applied to both sides of the mouse ear daily for four consecutive days', 2% crisaborole ointment 4 h after each application. So Youn 2023 (doi 10.1111/exd.14722, PMID 36461082, online 2022-12-19) is a retrodiction entry owed on the existing pde4-mouse-imiquimod-psoriasiform track, not a new model_id: year 2022, comparison_stated true ('has shown efficacy in patients with psoriasis', its reference 14 = Hashim 2020), result 'crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment', product_in_model true, retro vs the cited Hashim 2020 result; whether NCT01300052 makes it contra is the adjudicator's call. Resolves the inducer question in the earlier missing item.",
+  "[models check] Agree with the model sweep that Dong 2016 JPET (doi 10.1124/jpet.116.232819, PMID 27353073, online 2016-06-27; abstract via Europe PMC, full text 403) adds no model_id: its human monocyte/T-cell TNF-alpha/IL-23/IL-17/IL-22 release belongs on pde4-human-pbmc-cytokine-release (product_in_model true) and its topical compd3 vs PMA-induced mouse-skin cytokine transcription on pde4-mouse-phorbol-ear-edema (product_in_model false), each as a 2016 retrodiction entry with comparison_stated true ('a new topical class that has demonstrated therapeutic benefit for psoriasis and atopic dermatitis in phase 2 or phase 3 studies').",
+  "[models check] Patient trial absent from the draft's crisaborole efficacy track (no 'Hashim', '31279028' or 'intertriginous' anywhere in the draft): Hashim 2020 J Am Acad Dermatol 82:360-365 (doi 10.1016/j.jaad.2019.06.1288, PMID 31279028, online 2019-07-03; abstract read via Europe PMC), crisaborole 2% ointment BID vs vehicle 2:1 in 21 participants with intertriginous, anogenital or facial psoriasis, TLSS improvement 66% vs 9% at 4 weeks, P=.0011, single centre, not registered under crisaborole on ClinicalTrials.gov. Owed as a patient_trials row on pde4-mouse-phorbol-ear-edema (decision 7: a trial fact that changes nothing goes in patient_trials; decision 6: the 2011 contra stands), population noted as site-specific; rule question 10."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "1. Efficacy contra on NCT01300052: a sponsor-declared unpowered Phase 2b (n=68, 2:1) whose primary is numerically positive (17.4% vs 13.6%) with CI -14.3 to +21.8, followed by an agreed SPA and a 'deferred' Phase 3. Does decision 13 make a non-significant primary a failed primary (contra), or is an unpowered trial an inadmissible comparison, leaving the track same with source_calls_it unresolved?",
+  "2. Dose for a topical with no systemic exposure or occupancy target: the mouse ear-edema model ranked ointment strength only. Should the dose cell mirror efficacy through derived_from (as drafted) or be an empty list because no model stated an exposure target?",
+  "3. Year taken from a tier-5 press release or 8-K (2010, 2011) while src, status and registry_date come from a tier-3 record posted 2017-03-07. Rule 6 lists registry posting, online publication, label or print; is a tier-5 document that is not the entry's src allowed to set year?",
+  "4. Engagement for the same topical drug and the same PD readout measured in a sibling skin disease (crisaborole lesional transcriptome in AD, Bissonnette 2019; LEO 29102 skin-explant cAMP): v3 lets only safety import across indications. Should engagement import with imported_from, or stay untested as drafted?",
+  "5. Is a psoriasis micro-plaque test (NCT00875277: 24 subjects, 4 weeks, TCS on test fields, six arms) a patient trial with a primary endpoint for efficacy (as drafted for LEO 29102), or a human_challenge-type model system that cannot score efficacy on its own?",
+  "6. Retrodiction flag when the model paper post-dates the trial but the work plausibly preceded it (DRM02 Tissue Barriers 2020 vs 2013-14 trials; Felding 2014 vs the 2009 plaque test): does retrodiction follow the publication date or the date the work was done when the abstract cannot tell? Status is contra either way here; the flag and year differ.",
+  "7. A tier-5 sponsor statement that pools several indications ('proof-of-concept clinical trials ... not more effective than vehicle', psoriasis not named) with a registry record showing the psoriasis trial completed without results: admissible as the psoriasis patient side at low confidence with trial_unreported (as drafted), or untested?",
+  "8. [models check] Decision 11's partial rule is written for same ('same on the pre-specified readout with source_calls_it: partial'). Does it extend to retro? Jardet 2020 reproduced the vehicle-controlled plaque-test win only in the prophylactic regimen (main text, Figure 4A); in the therapeutic regimen the placebo cream lowered IL-17A/IL-22/IFN-gamma 'comparable to the effect by the PDE4 inhibitor cream' (Figure S4). Drafted retro + partial; the alternative is unresolved.",
+  "9. [models check] Does the opening untested entry of a model first used after the patient result was known (InflammaSkin engagement, 2020, eleven years after NCT00875277) carry retrodiction: true, or does the flag attach only to entries that make a comparison (as drafted, false)?",
+  "10. [models check] Is intertriginous/anogenital/facial psoriasis (Hashim 2020, n=21) inside the tile's population 'Unselected (mild-to-moderate plaque)'? If yes it is a patient_trials row on the contra track under decision 6; if no it is out of scope and goes in the note only. Same 2% BID regimen as NCT01300052, so the dose table's 'higher dose later worked' clause does not apply."
+ ]
+}

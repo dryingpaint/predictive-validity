@@ -1,0 +1,344 @@
+area,rank,mondo_id,label,indication,stage,subset,line,programs,programs_from_name
+allergy,1,MONDO:0011786,allergic rhinitis,general,,,,26,3
+allergy,1,MONDO:0011786,allergic rhinitis,seasonal,,seasonal,,20,0
+allergy,2,MONDO:0005642,atopic conjunctivitis,general,,,,14,1
+allergy,3,MONDO:0005271,allergic disease,general,,,,7,0
+allergy,3,MONDO:0005271,allergic disease,Cat allergy,,Cat allergy,,2,0
+allergy,4,MONDO:0005361,eosinophilic esophagitis,general,,,,5,0
+autoimmune,1,MONDO:0008383,rheumatoid arthritis,general,,,,94,0
+autoimmune,1,MONDO:0008383,rheumatoid arthritis,Seropositive,,Seropositive,,1,0
+autoimmune,1,MONDO:0008383,rheumatoid arthritis,acute,acute,,,1,1
+autoimmune,1,MONDO:0008383,rheumatoid arthritis,early · DMARD-naive · 1L,early,DMARD-naive,1L,1,0
+autoimmune,1,MONDO:0008383,rheumatoid arthritis,moderate to severe,,moderate to severe,,1,0
+autoimmune,2,MONDO:0005083,psoriasis,general,,,,78,1
+autoimmune,3,MONDO:0005101,ulcerative colitis,general,,,,66,1
+autoimmune,3,MONDO:0005101,ulcerative colitis,acute,acute,,,5,1
+autoimmune,3,MONDO:0005101,ulcerative colitis,moderate-active,,moderate-active,,1,0
+autoimmune,4,MONDO:0005011,Crohn disease,general,,,,35,0
+autoimmune,4,MONDO:0005011,Crohn disease,Fibrostenotic,,Fibrostenotic,,1,0
+autoimmune,4,MONDO:0005011,Crohn disease,Steroid-dependent,,Steroid-dependent,,1,0
+autoimmune,4,MONDO:0005011,Crohn disease,fistulizing,,fistulizing,,1,0
+cardiovascular,1,MONDO:0005252,heart failure,general,,,,22,1
+cardiovascular,1,MONDO:0005252,heart failure,acute,acute,,,4,1
+cardiovascular,2,MONDO:0005044,hypertensive disorder,general,,,,18,2
+cardiovascular,2,MONDO:0005044,hypertensive disorder,resistant,,resistant,,2,0
+cardiovascular,2,MONDO:0005044,hypertensive disorder,moderate renal impairment,,moderate renal impairment,,1,0
+cardiovascular,2,MONDO:0005044,hypertensive disorder,relapsed,relapsed,,,1,1
+cardiovascular,2,MONDO:0005044,hypertensive disorder,severe,,severe,,1,0
+cardiovascular,3,MONDO:0004981,atrial fibrillation,general,,,,16,2
+cardiovascular,3,MONDO:0004981,atrial fibrillation,paroxysmal,,paroxysmal,,1,0
+cardiovascular,4,MONDO:0005010,coronary artery disorder,general,,,,14,3
+endocrine,1,MONDO:0005148,type 2 diabetes mellitus,general,,,,125,1
+endocrine,1,MONDO:0005148,type 2 diabetes mellitus,obese,,obese,,2,0
+endocrine,1,MONDO:0005148,type 2 diabetes mellitus,poorly controlled,,poorly controlled,,1,0
+endocrine,2,MONDO:0005147,type 1 diabetes mellitus,general,,,,31,3
+endocrine,3,MONDO:0005133,endometriosis,general,,,,13,0
+endocrine,3,MONDO:0005133,endometriosis,relapsed,relapsed,,,1,1
+endocrine,4,MONDO:0006964,secondary hyperparathyroidism,general,,,,6,0
+gastroenterology,1,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,general,,,,76,2
+gastroenterology,1,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,PCOS,,PCOS,,1,0
+gastroenterology,1,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,"non-cirrhotic, fibrotic",,"non-cirrhotic, fibrotic",,1,0
+gastroenterology,2,MONDO:0005052,irritable bowel syndrome,general,,,,15,4
+gastroenterology,2,MONDO:0005052,irritable bowel syndrome,diarrhea-predominant,,diarrhea-predominant,,5,0
+gastroenterology,2,MONDO:0005052,irritable bowel syndrome,IBS-C,,IBS-C,,1,0
+gastroenterology,2,MONDO:0005052,irritable bowel syndrome,constipation-predominant,,constipation-predominant,,1,0
+gastroenterology,3,MONDO:0005388,primary biliary cholangitis,general,,,,15,0
+gastroenterology,4,MONDO:0007186,gastroesophageal reflux disease,general,,,,11,1
+hematology,1,MONDO:0011382,sickle cell disease,general,,,,19,0
+hematology,1,MONDO:0011382,sickle cell disease,Hb-SC,,Hb-SC,,1,0
+hematology,2,MONDO:0010602,hemophilia A,general,,,,13,1
+hematology,2,MONDO:0010602,hemophilia A,severe,,severe,,5,0
+hematology,2,MONDO:0010602,hemophilia A,inhibitor,,inhibitor,,4,0
+hematology,2,MONDO:0010602,hemophilia A,anti-factor VIII inhibitor,,anti-factor VIII inhibitor,,1,0
+hematology,2,MONDO:0010602,hemophilia A,inhibitor-negative,,inhibitor-negative,,1,0
+hematology,2,MONDO:0010602,hemophilia A,with inhibitors,,with inhibitors,,1,0
+hematology,3,MONDO:0010604,hemophilia B,general,,,,10,0
+hematology,3,MONDO:0010604,hemophilia B,inhibitor-positive,,inhibitor-positive,,2,0
+hematology,4,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,general,,,,9,0
+hematology,4,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,acute,acute,,,1,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,general,,,,52,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,genotype 1,,genotype 1,,9,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,acute,acute,,,5,5
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,Genotype 4,,Genotype 4,,4,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,genotype 1a,,genotype 1a,,3,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,Genotype 1b,,Genotype 1b,,2,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,HIV co-infected,,HIV co-infected,,2,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,genotype 3,,genotype 3,,2,0
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,relapsed,relapsed,,,1,1
+infectious_disease,2,MONDO:0005109,HIV infectious disease,general,,,,32,1
+infectious_disease,3,MONDO:0005812,influenza,general,,,,18,18
+infectious_disease,3,MONDO:0005812,influenza,H3N2,,H3N2,,2,2
+infectious_disease,3,MONDO:0005812,influenza,H1N1,,H1N1,,1,1
+infectious_disease,4,MONDO:0005366,chronic hepatitis B virus infection,general,,,,18,0
+metabolic,1,MONDO:0021187,hyperlipidemia,general,,,,33,3
+metabolic,1,MONDO:0021187,hyperlipidemia,heterozygous,,heterozygous,,1,0
+metabolic,2,MONDO:0011122,obesity disorder,general,,,,25,0
+metabolic,3,MONDO:0005347,hypertriglyceridemia,general,,,,9,0
+metabolic,3,MONDO:0005347,hypertriglyceridemia,severe,,severe,,1,0
+metabolic,4,MONDO:0008300,Prader-Willi syndrome,general,,,,6,0
+neurology,1,MONDO:0004975,Alzheimer disease,general,,,,73,1
+neurology,1,MONDO:0004975,Alzheimer disease,early,early,,,13,0
+neurology,1,MONDO:0004975,Alzheimer disease,advanced,advanced,,,1,0
+neurology,1,MONDO:0004975,Alzheimer disease,amyloid-positive,,amyloid-positive,,1,1
+neurology,2,MONDO:0005180,Parkinson disease,general,,,,40,2
+neurology,2,MONDO:0005180,Parkinson disease,early,early,,,2,0
+neurology,3,MONDO:0006626,diabetic neuropathy,general,,,,32,2
+neurology,4,MONDO:0005277,migraine disorder,general,,,,28,1
+neurology,4,MONDO:0005277,migraine disorder,with aura,,with aura,,4,0
+neurology,4,MONDO:0005277,migraine disorder,without aura,,without aura,,4,0
+neurology,4,MONDO:0005277,migraine disorder,acute,acute,,,2,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,general,,,,175,6
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic,metastatic,,,75,12
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,locally advanced,locally advanced,,,35,9
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced,advanced,,,34,9
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,relapsed,relapsed,,,31,18
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,non-squamous,,non-squamous,,30,9
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,EGFR+,,EGFR+,,16,10
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,squamous,,squamous,,14,3
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,early,early,,,8,8
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,ALK+,,ALK+,,5,4
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic · non-squamous,metastatic,non-squamous,,5,5
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,relapsed · non-squamous,relapsed,non-squamous,,5,5
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · non-squamous,advanced,non-squamous,,4,1
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic · EGFR+,metastatic,EGFR+,,4,4
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic · nonsquamous,metastatic,nonsquamous,,3,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,nonsquamous,,nonsquamous,,3,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,ALK+ · 1L,,ALK+,1L,2,2
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,EGFR-mutant,,EGFR-mutant,,2,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,HER2-,,HER2-,,2,2
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · EGFR+,advanced,EGFR+,,2,2
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · squamous,advanced,squamous,,2,1
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,locally advanced · EGFR T790M+,locally advanced,EGFR T790M+,,2,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,EGFR T790M,,EGFR T790M,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,EGFR-mutant · 1L,,EGFR-mutant,1L,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,KRAS G12,,KRAS G12,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · ALK+,advanced,ALK+,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · EGFR-mutant,advanced,EGFR-mutant,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · MET-mutant,advanced,MET-mutant,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,advanced · T790M+,advanced,T790M+,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,locally advanced · EGFR-mutant · 1L,locally advanced,EGFR-mutant,1L,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic · BRAF V600E,metastatic,BRAF V600E,,1,0
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,metastatic · squamous,metastatic,squamous,,1,1
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,relapsed · EGFR+,relapsed,EGFR+,,1,1
+oncology,1,MONDO:0005233,non-small cell lung carcinoma,relapsed · KRAS-mutant,relapsed,KRAS-mutant,,1,0
+oncology,2,MONDO:0007254,breast cancer,general,,,,95,0
+oncology,2,MONDO:0007254,breast cancer,metastatic,metastatic,,,84,2
+oncology,2,MONDO:0007254,breast cancer,TNBC,,TNBC,,44,3
+oncology,2,MONDO:0007254,breast cancer,locally advanced,locally advanced,,,39,14
+oncology,2,MONDO:0007254,breast cancer,relapsed,relapsed,,,32,15
+oncology,2,MONDO:0007254,breast cancer,HER2-,,HER2-,,29,5
+oncology,2,MONDO:0007254,breast cancer,HER2+,,HER2+,,28,2
+oncology,2,MONDO:0007254,breast cancer,early,early,,,28,6
+oncology,2,MONDO:0007254,breast cancer,advanced,advanced,,,20,1
+oncology,2,MONDO:0007254,breast cancer,ER+,,ER+,,18,0
+oncology,2,MONDO:0007254,breast cancer,HR+,,HR+,,13,0
+oncology,2,MONDO:0007254,breast cancer,metastatic · HER2-,metastatic,HER2-,,13,11
+oncology,2,MONDO:0007254,breast cancer,metastatic · TNBC,metastatic,TNBC,,12,9
+oncology,2,MONDO:0007254,breast cancer,male,,male,,9,0
+oncology,2,MONDO:0007254,breast cancer,metastatic · HER2+,metastatic,HER2+,,9,1
+oncology,2,MONDO:0007254,breast cancer,metastatic · HR+,metastatic,HR+,,9,6
+oncology,2,MONDO:0007254,breast cancer,ER-,,ER-,,6,0
+oncology,2,MONDO:0007254,breast cancer,advanced · HER2+,advanced,HER2+,,5,5
+oncology,2,MONDO:0007254,breast cancer,early · HER2+,early,HER2+,,5,0
+oncology,2,MONDO:0007254,breast cancer,"HR+, HER2-",,"HR+, HER2-",,4,0
+oncology,2,MONDO:0007254,breast cancer,HR+/HER2-,,HR+/HER2-,,4,0
+oncology,2,MONDO:0007254,breast cancer,PR-,,PR-,,4,0
+oncology,2,MONDO:0007254,breast cancer,"advanced · ER+, HER2-",advanced,"ER+, HER2-",,4,0
+oncology,2,MONDO:0007254,breast cancer,advanced · TNBC,advanced,TNBC,,4,2
+oncology,2,MONDO:0007254,breast cancer,metastatic · ER+,metastatic,ER+,,4,4
+oncology,2,MONDO:0007254,breast cancer,PR+,,PR+,,3,0
+oncology,2,MONDO:0007254,breast cancer,locally advanced · HER2+,locally advanced,HER2+,,3,3
+oncology,2,MONDO:0007254,breast cancer,advanced · HR+,advanced,HR+,,2,2
+oncology,2,MONDO:0007254,breast cancer,"advanced · HR+, HER2-",advanced,"HR+, HER2-",,2,0
+oncology,2,MONDO:0007254,breast cancer,ductal carcinoma,,ductal carcinoma,,2,0
+oncology,2,MONDO:0007254,breast cancer,early · adjuvant,early,,adjuvant,2,0
+oncology,2,MONDO:0007254,breast cancer,relapsed · HER2+,relapsed,HER2+,,2,2
+oncology,2,MONDO:0007254,breast cancer,relapsed · HER2-,relapsed,HER2-,,2,2
+oncology,2,MONDO:0007254,breast cancer,relapsed · HR+,relapsed,HR+,,2,2
+oncology,2,MONDO:0007254,breast cancer,HER2+/HR+,,HER2+/HR+,,1,0
+oncology,2,MONDO:0007254,breast cancer,advanced · HER2-,advanced,HER2-,,1,1
+oncology,2,MONDO:0007254,breast cancer,advanced · squamous,advanced,squamous,,1,1
+oncology,2,MONDO:0007254,breast cancer,early · HR+,early,HR+,,1,1
+oncology,2,MONDO:0007254,breast cancer,early · TNBC,early,TNBC,,1,1
+oncology,2,MONDO:0007254,breast cancer,locally advanced · HER2-,locally advanced,HER2-,,1,1
+oncology,2,MONDO:0007254,breast cancer,locally advanced · HR+,locally advanced,HR+,,1,1
+oncology,2,MONDO:0007254,breast cancer,"metastatic · ER+, HER2-",metastatic,"ER+, HER2-",,1,0
+oncology,2,MONDO:0007254,breast cancer,relapsed · TNBC,relapsed,TNBC,,1,1
+oncology,3,MONDO:0008315,prostate cancer,general,,,,64,3
+oncology,3,MONDO:0008315,prostate cancer,metastatic,metastatic,,,33,10
+oncology,3,MONDO:0008315,prostate cancer,metastatic · castration-resistant,metastatic,castration-resistant,,31,1
+oncology,3,MONDO:0008315,prostate cancer,advanced · castration-resistant,advanced,castration-resistant,,22,0
+oncology,3,MONDO:0008315,prostate cancer,relapsed,relapsed,,,20,18
+oncology,3,MONDO:0008315,prostate cancer,castration-resistant,,castration-resistant,,16,13
+oncology,3,MONDO:0008315,prostate cancer,locally advanced,locally advanced,,,9,6
+oncology,3,MONDO:0008315,prostate cancer,metastatic · hormone-sensitive,metastatic,hormone-sensitive,,8,0
+oncology,3,MONDO:0008315,prostate cancer,advanced,advanced,,,6,2
+oncology,3,MONDO:0008315,prostate cancer,high-risk,,high-risk,,5,5
+oncology,3,MONDO:0008315,prostate cancer,adenocarcinoma,,adenocarcinoma,,4,0
+oncology,3,MONDO:0008315,prostate cancer,HR+,,HR+,,3,3
+oncology,3,MONDO:0008315,prostate cancer,early,early,,,3,3
+oncology,3,MONDO:0008315,prostate cancer,advanced · androgen-resistant,advanced,androgen-resistant,,1,0
+oncology,3,MONDO:0008315,prostate cancer,advanced · metastatic castration-resistant,advanced,metastatic castration-resistant,,1,0
+oncology,3,MONDO:0008315,prostate cancer,early · castration-resistant,early,castration-resistant,,1,0
+oncology,3,MONDO:0008315,prostate cancer,metastatic · castration-sensitive · 1L,metastatic,castration-sensitive,1L,1,0
+oncology,3,MONDO:0008315,prostate cancer,relapsed · 2L,relapsed,,2L,1,0
+oncology,3,MONDO:0008315,prostate cancer,relapsed · castration-resistant,relapsed,castration-resistant,,1,0
+oncology,4,MONDO:0005575,colorectal cancer,general,,,,62,3
+oncology,4,MONDO:0005575,colorectal cancer,metastatic,metastatic,,,53,5
+oncology,4,MONDO:0005575,colorectal cancer,relapsed,relapsed,,,16,4
+oncology,4,MONDO:0005575,colorectal cancer,locally advanced,locally advanced,,,9,5
+oncology,4,MONDO:0005575,colorectal cancer,advanced,advanced,,,8,1
+oncology,4,MONDO:0005575,colorectal cancer,early,early,,,4,4
+oncology,4,MONDO:0005575,colorectal cancer,mismatch repair-proficient,,mismatch repair-proficient,,3,0
+oncology,4,MONDO:0005575,colorectal cancer,relapsed · 2L,relapsed,,2L,3,0
+oncology,4,MONDO:0005575,colorectal cancer,HER2+,,HER2+,,2,2
+oncology,4,MONDO:0005575,colorectal cancer,metastatic · BRAF V600E,metastatic,BRAF V600E,,2,0
+oncology,4,MONDO:0005575,colorectal cancer,microsatellite stable,,microsatellite stable,,2,0
+oncology,4,MONDO:0005575,colorectal cancer,BRAF V600E,,BRAF V600E,,1,0
+oncology,4,MONDO:0005575,colorectal cancer,MSS,,MSS,,1,0
+oncology,4,MONDO:0005575,colorectal cancer,RAS-mutant,,RAS-mutant,,1,0
+oncology,4,MONDO:0005575,colorectal cancer,TNBC,,TNBC,,1,0
+oncology,4,MONDO:0005575,colorectal cancer,relapsed · microsatellite stable,relapsed,microsatellite stable,,1,0
+oncology,5,MONDO:0018874,acute myeloid leukemia,general,,,,78,76
+oncology,5,MONDO:0018874,acute myeloid leukemia,relapsed,relapsed,,,29,8
+oncology,5,MONDO:0018874,acute myeloid leukemia,ambiguous lineage,,ambiguous lineage,,3,3
+oncology,5,MONDO:0018874,acute myeloid leukemia,relapsed · 2L,relapsed,,2L,3,0
+oncology,5,MONDO:0018874,acute myeloid leukemia,FLT3-mutant,,FLT3-mutant,,2,2
+oncology,5,MONDO:0018874,acute myeloid leukemia,NPM1-mutant,,NPM1-mutant,,2,2
+oncology,5,MONDO:0018874,acute myeloid leukemia,early · FLT3-mutant · 1L,early,FLT3-mutant,1L,1,0
+oncology,5,MONDO:0018874,acute myeloid leukemia,relapsed · FLT3-mutant · 3L+,relapsed,FLT3-mutant,3L+,1,0
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,general,,,,58,2
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,metastatic,metastatic,,,43,3
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,locally advanced,locally advanced,,,13,3
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,early,early,,,9,9
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,advanced,advanced,,,8,0
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,relapsed,relapsed,,,7,7
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,metastatic · adenocarcinoma,metastatic,adenocarcinoma,,1,0
+oncology,6,MONDO:0009831,malignant pancreatic neoplasm,squamous,,squamous,,1,1
+oncology,7,MONDO:0009693,plasma cell myeloma,general,,,,67,0
+oncology,7,MONDO:0009693,plasma cell myeloma,relapsed,relapsed,,,36,5
+oncology,7,MONDO:0009693,plasma cell myeloma,smoldering,,smoldering,,7,7
+oncology,7,MONDO:0009693,plasma cell myeloma,relapsed · 2L,relapsed,,2L,6,0
+oncology,7,MONDO:0009693,plasma cell myeloma,early,early,,,4,4
+oncology,7,MONDO:0009693,plasma cell myeloma,early · 1L,early,,1L,4,0
+oncology,7,MONDO:0009693,plasma cell myeloma,locally advanced,locally advanced,,,4,4
+oncology,7,MONDO:0009693,plasma cell myeloma,advanced,advanced,,,3,1
+oncology,8,MONDO:0007256,hepatocellular carcinoma,general,,,,64,2
+oncology,8,MONDO:0007256,hepatocellular carcinoma,advanced,advanced,,,31,4
+oncology,8,MONDO:0007256,hepatocellular carcinoma,locally advanced,locally advanced,,,10,4
+oncology,8,MONDO:0007256,hepatocellular carcinoma,metastatic,metastatic,,,10,5
+oncology,8,MONDO:0007256,hepatocellular carcinoma,early,early,,,3,3
+oncology,8,MONDO:0007256,hepatocellular carcinoma,relapsed,relapsed,,,3,2
+oncology,8,MONDO:0007256,hepatocellular carcinoma,relapsed · 2L,relapsed,,2L,3,0
+oncology,9,MONDO:0008170,ovarian cancer,general,,,,49,0
+oncology,9,MONDO:0008170,ovarian cancer,relapsed,relapsed,,,19,3
+oncology,9,MONDO:0008170,ovarian cancer,advanced · platinum-resistant · 2L,advanced,platinum-resistant,2L,9,0
+oncology,9,MONDO:0008170,ovarian cancer,locally advanced,locally advanced,,,8,8
+oncology,9,MONDO:0008170,ovarian cancer,advanced,advanced,,,7,5
+oncology,9,MONDO:0008170,ovarian cancer,metastatic,metastatic,,,7,3
+oncology,9,MONDO:0008170,ovarian cancer,Clear cell,,Clear cell,,4,0
+oncology,9,MONDO:0008170,ovarian cancer,serous,,serous,,3,0
+oncology,9,MONDO:0008170,ovarian cancer,high-grade serous,,high-grade serous,,2,1
+oncology,9,MONDO:0008170,ovarian cancer,Epithelial,,Epithelial,,1,0
+oncology,9,MONDO:0008170,ovarian cancer,TP53-mutant,,TP53-mutant,,1,0
+oncology,9,MONDO:0008170,ovarian cancer,advanced · high-grade,advanced,high-grade,,1,0
+oncology,9,MONDO:0008170,ovarian cancer,early,early,,,1,1
+oncology,9,MONDO:0008170,ovarian cancer,high grade,,high grade,,1,1
+oncology,9,MONDO:0008170,ovarian cancer,platinum-sensitive,,platinum-sensitive,,1,1
+oncology,9,MONDO:0008170,ovarian cancer,relapsed · 2L,relapsed,,2L,1,0
+oncology,9,MONDO:0008170,ovarian cancer,relapsed · platinum-resistant,relapsed,platinum-resistant,,1,0
+oncology,9,MONDO:0008170,ovarian cancer,relapsed · platinum-resistant · 3L+,relapsed,platinum-resistant,3L+,1,0
+oncology,9,MONDO:0008170,ovarian cancer,relapsed · platinum-sensitive,relapsed,platinum-sensitive,,1,0
+oncology,9,MONDO:0008170,ovarian cancer,squamous,,squamous,,1,1
+oncology,10,MONDO:0005105,melanoma,general,,,,44,1
+oncology,10,MONDO:0005105,melanoma,metastatic,metastatic,,,33,7
+oncology,10,MONDO:0005105,melanoma,locally advanced,locally advanced,,,20,8
+oncology,10,MONDO:0005105,melanoma,advanced,advanced,,,10,4
+oncology,10,MONDO:0005105,melanoma,relapsed,relapsed,,,5,5
+oncology,10,MONDO:0005105,melanoma,acral lentiginous,,acral lentiginous,,1,0
+oncology,10,MONDO:0005105,melanoma,cutaneous,,cutaneous,,1,0
+oncology,10,MONDO:0005105,melanoma,metastatic · BRAF V600E,metastatic,BRAF V600E,,1,0
+oncology,10,MONDO:0005105,melanoma,mucosal,,mucosal,,1,0
+oncology,11,MONDO:0018177,glioblastoma,general,,,,46,36
+oncology,11,MONDO:0018177,glioblastoma,relapsed,relapsed,,,16,3
+oncology,11,MONDO:0018177,glioblastoma,early · 1L,early,,1L,4,0
+oncology,11,MONDO:0018177,glioblastoma,IDH-wildtype,,IDH-wildtype,,2,2
+oncology,11,MONDO:0018177,glioblastoma,Giant cell,,Giant cell,,1,1
+oncology,11,MONDO:0018177,glioblastoma,supratentorial,,supratentorial,,1,1
+oncology,12,MONDO:0018881,myelodysplastic syndrome,general,,,,42,2
+oncology,12,MONDO:0018881,myelodysplastic syndrome,relapsed,relapsed,,,7,4
+oncology,12,MONDO:0018881,myelodysplastic syndrome,advanced,advanced,,,3,2
+oncology,12,MONDO:0018881,myelodysplastic syndrome,high risk,,high risk,,3,0
+oncology,12,MONDO:0018881,myelodysplastic syndrome,low-risk,,low-risk,,1,1
+oncology,12,MONDO:0018881,myelodysplastic syndrome,relapsed · refractory anemia with excess blasts,relapsed,refractory anemia with excess blasts,,1,0
+oncology,13,MONDO:0001056,gastric cancer,general,,,,35,1
+oncology,13,MONDO:0001056,gastric cancer,advanced,advanced,,,16,1
+oncology,13,MONDO:0001056,gastric cancer,metastatic,metastatic,,,13,5
+oncology,13,MONDO:0001056,gastric cancer,HER2+,,HER2+,,7,0
+oncology,13,MONDO:0001056,gastric cancer,locally advanced,locally advanced,,,7,7
+oncology,13,MONDO:0001056,gastric cancer,relapsed,relapsed,,,7,7
+oncology,13,MONDO:0001056,gastric cancer,early,early,,,3,3
+oncology,13,MONDO:0001056,gastric cancer,EBV+,,EBV+,,1,0
+oncology,13,MONDO:0001056,gastric cancer,HER2-,,HER2-,,1,1
+oncology,13,MONDO:0001056,gastric cancer,locally advanced · HER2+,locally advanced,HER2+,,1,1
+oncology,13,MONDO:0001056,gastric cancer,relapsed · 2L,relapsed,,2L,1,0
+oncology,13,MONDO:0001056,gastric cancer,squamous,,squamous,,1,0
+oncology,14,MONDO:0008433,small cell lung carcinoma,general,,,,33,2
+oncology,14,MONDO:0008433,small cell lung carcinoma,metastatic,metastatic,,,18,1
+oncology,14,MONDO:0008433,small cell lung carcinoma,relapsed,relapsed,,,11,6
+oncology,14,MONDO:0008433,small cell lung carcinoma,advanced,advanced,,,6,0
+oncology,14,MONDO:0008433,small cell lung carcinoma,locally advanced,locally advanced,,,6,1
+oncology,14,MONDO:0008433,small cell lung carcinoma,relapsed · Platinum refractory,relapsed,Platinum refractory,,5,0
+oncology,15,MONDO:0018906,follicular lymphoma,general,,,,33,1
+oncology,15,MONDO:0018906,follicular lymphoma,relapsed,relapsed,,,16,4
+oncology,15,MONDO:0018906,follicular lymphoma,locally advanced,locally advanced,,,8,8
+oncology,15,MONDO:0018906,follicular lymphoma,metastatic,metastatic,,,8,8
+oncology,15,MONDO:0018906,follicular lymphoma,early,early,,,7,7
+oncology,15,MONDO:0018906,follicular lymphoma,grade 3b,,grade 3b,,2,0
+oncology,15,MONDO:0018906,follicular lymphoma,follicular B cell,,follicular B cell,,1,0
+ophthalmology,1,MONDO:0006733,dry eye syndrome,general,,,,51,1
+ophthalmology,1,MONDO:0006733,dry eye syndrome,meibomian gland dysfunction,,meibomian gland dysfunction,,1,0
+ophthalmology,2,MONDO:0005150,age-related macular degeneration,general,,,,27,1
+ophthalmology,2,MONDO:0005150,age-related macular degeneration,dry,,dry,,3,0
+ophthalmology,2,MONDO:0005150,age-related macular degeneration,exudative,,exudative,,3,0
+ophthalmology,2,MONDO:0005150,age-related macular degeneration,neovascular,,neovascular,,3,0
+ophthalmology,2,MONDO:0005150,age-related macular degeneration,wet,,wet,,1,0
+ophthalmology,3,MONDO:0004728,diabetic macular edema,general,,,,21,2
+ophthalmology,3,MONDO:0004728,diabetic macular edema,center-involved,,center-involved,,1,0
+ophthalmology,4,MONDO:0005338,open-angle glaucoma,general,,,,20,0
+ophthalmology,4,MONDO:0005338,open-angle glaucoma,Primary open angle,,Primary open angle,,1,0
+other,1,MONDO:0004980,atopic eczema,general,,,,81,0
+other,2,MONDO:0005178,osteoarthritis,general,,,,65,1
+other,2,MONDO:0005178,osteoarthritis,erosive,,erosive,,1,0
+other,2,MONDO:0005178,osteoarthritis,primary,,primary,,1,0
+other,3,MONDO:0011438,acne,general,,,,31,0
+other,4,MONDO:0005016,diabetic kidney disease,general,,,,26,2
+psychiatry,1,MONDO:0002009,major depressive disorder,general,,,,58,1
+psychiatry,1,MONDO:0002009,major depressive disorder,treatment-resistant · 3L+,,treatment-resistant,3L+,8,0
+psychiatry,1,MONDO:0002009,major depressive disorder,treatment-resistant,,treatment-resistant,,7,0
+psychiatry,1,MONDO:0002009,major depressive disorder,relapsed,relapsed,,,5,3
+psychiatry,1,MONDO:0002009,major depressive disorder,2L,,,2L,1,0
+psychiatry,1,MONDO:0002009,major depressive disorder,acute,acute,,,1,1
+psychiatry,1,MONDO:0002009,major depressive disorder,severe,,severe,,1,0
+psychiatry,2,MONDO:0005090,schizophrenia,general,,,,44,0
+psychiatry,2,MONDO:0005090,schizophrenia,acute,acute,,,3,0
+psychiatry,2,MONDO:0005090,schizophrenia,Negative symptoms,,Negative symptoms,,1,0
+psychiatry,2,MONDO:0005090,schizophrenia,cognitive impairment,,cognitive impairment,,1,0
+psychiatry,2,MONDO:0005090,schizophrenia,comorbid cerebellar ataxia,,comorbid cerebellar ataxia,,1,0
+psychiatry,2,MONDO:0005090,schizophrenia,maintenance,,,maintenance,1,0
+psychiatry,3,MONDO:0007743,attention deficit-hyperactivity disorder,general,,,,21,2
+psychiatry,4,MONDO:0013600,insomnia,general,,,,11,3
+respiratory,1,MONDO:0004979,asthma,general,,,,82,1
+respiratory,1,MONDO:0004979,asthma,allergic,,allergic,,6,0
+respiratory,1,MONDO:0004979,asthma,eosinophilic,,eosinophilic,,4,0
+respiratory,1,MONDO:0004979,asthma,severe,,severe,,2,0
+respiratory,1,MONDO:0004979,asthma,atopic,,atopic,,1,0
+respiratory,1,MONDO:0004979,asthma,moderate to severe,,moderate to severe,,1,0
+respiratory,1,MONDO:0004979,asthma,severe uncontrolled,,severe uncontrolled,,1,0
+respiratory,2,MONDO:0005002,chronic obstructive pulmonary disease,general,,,,46,2
+respiratory,3,MONDO:0009061,cystic fibrosis,general,,,,43,0
+respiratory,4,MONDO:0800504,idiopathic pulmonary fibrosis,general,,,,24,0
+urology,1,MONDO:0006624,overactive bladder,general,,,,11,0
+urology,2,MONDO:0018301,interstitial cystitis,general,,,,10,0
+urology,3,MONDO:0010811,benign prostatic hyperplasia,general,,,,8,0
+urology,4,MONDO:0001780,premature ejaculation,general,,,,5,0

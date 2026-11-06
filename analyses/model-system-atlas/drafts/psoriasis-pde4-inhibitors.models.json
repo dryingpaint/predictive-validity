@@ -1,0 +1,120 @@
+{
+ "tile": "psoriasis-pde4-inhibitors",
+ "searched": [
+  "FDA bundle: crisaborole NDA 207695 PharmR, MedR, ClinPharmR grepped for imiquimod / IL-23 / IL-17 / psoriasis / ear edema / PBMC: only the LPS/PHA/ConA PBMC assays and the phorbol-ester ear edema already tracked; no psoriasis-specific model filed",
+  "Europe PMC: DOI:10.1124/jpet.116.232819 (Dong 2016, PMID 27353073, online 2016-06-27, print 2016-09-01; abstract only, no open full text, JPET page 403 to WebFetch)",
+  "Europe PMC: DOI:10.1111/exd.14722 (Youn 2023, PMID 36461082, online 2022-12-19, print 2023-04-01); full text read via PMC10066830 (NCBI efetch and PMC page)",
+  "Europe PMC: (crisaborole OR AN2728) AND psoriasis (541 hits, first 60 scanned)",
+  "Europe PMC: \"LEO 29102\" (18 hits, all scanned) -> Jardet 2020 InflammaSkin, PMID 32737987, full text read via PMC7693225",
+  "Europe PMC: DRM02 AND (psoriasis OR PDE4) (17 hits, all scanned)",
+  "Europe PMC: (crisaborole OR AN2728) AND (mouse OR mice OR explant OR organoid OR \"skin equivalent\" OR keratinocyte OR imiquimod OR \"ex vivo\") (461 hits, first 60 scanned)",
+  "Europe PMC: (crisaborole OR AN2728 OR \"LEO 29102\" OR DRM02) AND psoriasis AND (explant OR \"ex vivo\" OR organoid OR \"3D skin\" OR \"patient-derived\" OR \"skin equivalent\" OR \"in silico\" OR PBPK OR \"physiologically based\" OR \"quantitative systems\") (79 hits, first 40 scanned)",
+  "Europe PMC: crisaborole AND psoriasis AND (predict* OR correlat* OR translat*) AND (mouse OR model OR \"in vitro\") (251 hits, first 40 scanned)",
+  "Europe PMC: (crisaborole OR AN2728) AND (imiquimod OR psoriasiform OR \"psoriasis-like\") (104 hits, first 40 scanned)",
+  "Europe PMC: AUTH:\"Hashim PW\" AND crisaborole AND psoriasis (the patient trial Youn 2023 cites: PMID 31279028, doi 10.1016/j.jaad.2019.06.1288, online 2019-07-03)",
+  "ClinicalTrials.gov API v2: query.intr=crisaborole OR AN2728, query.cond=psoriasis (9 records: NCT00762658, NCT00763204, NCT00759161, NCT00755196, NCT01029405, NCT01258088, NCT01300052 plus two 2026 registrations; no record for the Hashim 2020 trial); NCT00875277 start 2009-04, results first posted 2019-12-11",
+  "WebSearch: crisaborole psoriasis-like dermatitis mouse model imiquimod Youn Archer 2023 (led to PMC10066830)",
+  "Searched for patient-level systems (patient-derived skin or cells, ex-vivo drug sensitivity), human challenge or genetic models (PDE4 loss-of-function), in-silico/QSP or dermal PBPK dose models for a member drug in psoriasis, and regulator reliance on model data: none found for crisaborole, DRM02 or LEO 29102"
+ ],
+ "added_models": [
+  {
+   "model_id": "pde4-human-th17-exvivo-skin-inflammaskin",
+   "model": "Human Th17-driven ex vivo skin inflammation model (InflammaSkin; LEO 29102 cream 2.5 mg/g)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2020,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "year": 2020,
+      "status": "untested",
+      "model": "Human Th17-driven ex vivo skin inflammation model (InflammaSkin; LEO 29102 cream 2.5 mg/g)",
+      "note": "The model's PD readout, IL-17A/IL-22/IFN-gamma secretion from human skin explants, was never measured in LEO 29102-treated psoriasis patients; the plaque test scored clinical signs only.",
+      "short": "Explant cytokine readout never measured in patients",
+      "src": "https://doi.org/10.1111/exd.14160",
+      "srcLabel": "Jardet 2020",
+      "quote": "Two treatments were used in this study: a gel containing 0.5 mg/g betamethasone dipropionate (BDP) and a cream containing 2.5 mg/g LEO 29102, a PDE4 inhibitor which showed efficacy in a four week psoriasis plaque study (NCT00875277).",
+      "confidence": "medium",
+      "confidence_note": "Open-access full text read (PMC7693225). The only LEO 29102 skin PD work in people (open-flow microperfusion cAMP, doi 10.1007/s11095-020-02962-1) is atopic dermatitis and does not import.",
+      "reason": "No skin-cytokine PD in LEO 29102 patients",
+      "judgement": "Opens the track at its first public use (Jardet 2020, online 2020-08-25; the model was built at Genoskin/LEO before that, publication is the proxy). The readout is secreted cytokines downstream of PDE4/cAMP. NCT00875277 (2009) and NCT01466478 (2011) recorded no lesional cytokine or cAMP measure, so there is nothing to compare.",
+      "model_id": "pde4-human-th17-exvivo-skin-inflammaskin",
+      "prediction_level": "class",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "model_kind": "ex_vivo",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "model_first_use_year": 2020,
+      "readout_tier": "downstream"
+     }
+    ],
+    "efficacy": [
+     {
+      "year": 2020,
+      "status": "retro",
+      "model": "Human Th17-driven ex vivo skin inflammation model (InflammaSkin; LEO 29102 cream 2.5 mg/g)",
+      "note": "LEO 29102 cream cut IL-17A/IL-22/IFN-gamma in Th17-activated human skin explants, published with the 2009 plaque-test result already known and cited as its clinical anchor.",
+      "short": "Human Th17 explant reproduced plaque-test win",
+      "src": "https://doi.org/10.1111/exd.14160",
+      "srcLabel": "Jardet 2020",
+      "quote": "Compared with the untreated InflammaSkin® model and placebo controls, the levels of IL-17A, IL-22 and IFN-γ were significantly inhibited by treatment with the PDE4 inhibitor applied in the prophylactic setting (Figure 4A).",
+      "confidence": "medium",
+      "confidence_note": "Open-access full text read (PMC7693225); hyphens in the cytokine names are non-breaking in the source. Prophylactic setting (drug from day 0) was significant versus placebo cream; in the therapeutic setting (day 4-6) the placebo cream itself lowered IL-17A/IL-22/IFN-gamma 'comparable to the effect by the PDE4 inhibitor cream' (Figure S4), so the vehicle-controlled therapeutic effect the plaque test showed is not reproduced. Patient side is the 24-subject micro-plaque test (registry record, posted 2019-12-11), the only psoriasis trial of LEO 29102.",
+      "reason": "Explant matched plaque test, prophylactic arm only",
+      "judgement": "Separate track by the identity rule: a different model (intact human skin with skin-resident T cells activated in situ by anti-CD3/CD28 under IL-1beta/IL-23/TGF-beta, Th17 signature and keratinocyte S100A7/K16) making a different prediction (suppression of the IL-23/IL-17 axis in human tissue) from the LEO in-vitro PDE4 potency and skin-delivery assays already tracked. Retrodiction: online 2020-08-25, eleven years after NCT00875277 (start 2009-04, results posted 2019-12-11), and the paper itself names that plaque study as LEO 29102's clinical credential, so comparison_stated is true and the status is retro, never same (decision 10). source_calls_it partial because the vehicle-controlled effect held only in the prophylactic regimen; magnitude is direction only (cytokine inhibition versus a 3.04 vs 1.60 total-clinical-score change). Rule question for the checker: whether a retrodiction whose therapeutic arm is vehicle-confounded is retro with partial, as scored, or unresolved. No crisaborole or DRM02 was run in this system.",
+      "model_id": "pde4-human-th17-exvivo-skin-inflammaskin",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "model_kind": "ex_vivo",
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "ex vivo skin IL-17A/IL-22/IFN-gamma inhibition vs plaque-test total clinical score change",
+      "source_calls_it": "partial",
+      "population": "Unselected",
+      "model_first_use_year": 2020,
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {"nct": "NCT00875277", "registry_date": "2019-12-11", "doi": null, "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."}
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Dong 2016 JPET (doi 10.1124/jpet.116.232819, PMID 27353073, online 2016-06-27, print 2016-09-01; abstract only, full text 403): same systems as two existing tracks, so no new track under the identity rule. Its cell-culture Th17 cytokine release (TNF-alpha, IL-23, IL-17, IL-22 in human monocytes/T cells) is the stimulated-PBMC system of pde4-human-pbmc-cytokine-release with more analytes; its in vivo arm (topical compd3 suppressing PMA-induced IL-13/IL-22/IL-17F/IL-23 transcription in mouse skin) is the phorbol-ester mouse-skin system of pde4-mouse-phorbol-ear-edema with a cytokine readout substituted for edema: same inducer, species and tissue, same class-level prediction. A retrodiction entry is owed on those existing tracks (year 2016, comparison_stated true, retrodiction true, product_in_model true in vitro / false in vivo (compd3)); quote for it: 'a new topical class that has demonstrated therapeutic benefit for psoriasis and atopic dermatitis in phase 2 or phase 3 studies'. It reproduces the bilateral plaque trials the sponsor called positive (NCT00759161, NCT01029405), so retro there; whether NCT01300052's missed primary makes it contra is the checker's call.",
+  "Dong 2016 mouse repeated-application skin-thinning (atrophy) model: a safety prediction ('repeated application of compd3 did not thin mouse skin', glucocorticoid comparator) with no psoriasis patient comparison; absence of atrophy cannot be quoted from the registry adverse-event tables of 4-12-week trials. No comparison, so not added.",
+  "Youn 2023 Exp Dermatol (doi 10.1111/exd.14722, PMID 36461082, online 2022-12-19, print 2023-04-01; full text read via PMC10066830): the inducer is imiquimod ('imiquimod (5% Taro Pharmaceuticals) was applied to both sides of the mouse ear daily for four consecutive days'; 2% crisaborole ointment 4 h after each application), so it is the same system as the existing pde4-mouse-imiquimod-psoriasiform track (DRM02) and the same class-level prediction; not a new track. Owed on that track as a retrodiction entry: comparison_stated true ('has shown efficacy in patients with psoriasis', reference 14), result 'crisaborole treatment significantly reduced ear thickness and epidermal thickness compared to vehicle treatment' plus reduced neutrophils, macrophages and itch; retro against the patient result the paper cites, contra against NCT01300052 is the checker's question. The patient side the paper cites is Hashim 2020 JAAD (doi 10.1016/j.jaad.2019.06.1288, PMID 31279028, online 2019-07-03): 21 patients with intertriginous, anogenital or facial psoriasis, TLSS improvement 66% vs 9% at 4 weeks, P=.0011, not registered under crisaborole on ClinicalTrials.gov. That trial is not in the draft's crisaborole efficacy track at all and may deserve a patient_trials row there.",
+  "Topical photodynamic therapy plus crisaborole in imiquimod mice (J Med Chem 2025, doi 10.1021/acs.jmedchem.5c01266): same imiquimod system, a combination with a non-member agent, no stated patient comparison; not added.",
+  "LEO 29102 human skin open-flow microperfusion cAMP (Pharm Res 2020, doi 10.1007/s11095-020-02962-1) and crisaborole lesional biomarkers (JACI 2019): atopic dermatitis; engagement does not import across diseases.",
+  "Patient-derived cells or skin, ex-vivo drug sensitivity, human challenge or genetic models, in-silico/QSP or dermal PBPK dose models, and regulator reliance on model data: none found for crisaborole, DRM02 or LEO 29102 in psoriasis (searches listed above). Apremilast and roflumilast models were not widened into this tile."
+ ]
+}

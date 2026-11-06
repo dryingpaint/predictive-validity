@@ -1,0 +1,276 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/follicular-lymphoma-pik3cd-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Lannutti 2011 resolves (PMID 20959606, epub 2010-10-19); quote verbatim in abstract. FDA PharmR has no xenograft/tumor-model/in-vivo text (0 hits) and carries the 7-FL-patient 86% pAkt sentence. Opener at first class use holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hoellenriegel 2011 resolves (PMID 21803855, epub 2011-07-29); quote verbatim, comparison stated. Dosed humans are CLL phase-1 patients with no FL PD readout; engagement has no imported_from field so it sits in notes only. Downstream tier correct; see rule question 2."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the Lannutti abstract; FDA PharmR confirms the cell EC50 of 8.9 nM and contains no animal PK/PD model. Untested opener holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in ClinPharmR (line-wrapped); '>85% on day 28' and 87% at 150 mg BID also verbatim. Reached and the drug worked: same, margin_stated false. Dose was chosen clinically; the EC90 check is FDA's post-hoc comparison (rule question 3)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in the Lannutti abstract; PharmR carries the 7-patient FL biopsy sentence verbatim and no in-vivo tumour model (0 hits). Non-empty cell with an ex-vivo opener is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Gopal 2014 resolves (PMID 24450858); quote verbatim; ORR is the primary (abstract and NCT01282424, results 2014-09-04). MedR FL 54% (39/72) verbatim. NCT01732913/926 results (2017-05-11) state 'prespecified analyses were not conducted', so outcome_tested null holds. TIDAL quote verbatim."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Okkenhaug 2002 resolves (PMID 12130661); quote verbatim; the Patton 2006 colitis-transfer sentence is verbatim. PharmR has no kinase-dead/knock-in/Treg text (0 hits), so model_filed false is right. The 2002 opener predates the class; see rule question 4."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2007,
+   "rule": "decision 7 (dating: a track opens at its first class use, proxy allowed)",
+   "note": "Quote verbatim in PharmR. 2008 is a proxy, but the same review dates rat PK (2007-08-08) and GLP rat and dog safety pharmacology (2007-10-23, 2007-11-04); the repeat-dose studies are undated. Open the rat/dog track at 2007. Status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Label quote verbatim; Lampson 2016 and the EMA Article-20 sentences verbatim. The FDA 2016-03-14 alert is archived at web.archive.org/web/20160530173933/http://www.fda.gov/drugs/drugsafety/ucm490618.htm. Pairing with Okkenhaug (tier 1) holds; same, direction_only is right."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "decision 5 (a predicted harm that did not occur is contra, magnitude opposite; conflicts with decision 11 partial)",
+   "note": "Quote verbatim; label 13.2 states cardiac and pancreatic harms 'observed in animals and not reported in patients'. Decision 5 makes a predicted harm that never appeared contra, magnitude opposite, margin notwithstanding. Headline still follows the kinase-dead track (decision 6).",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: decision 5 (predicted harm absent, contra) against decision 11 (one-source partial, same); decision 16 treats a stated margin as a prediction at the dose ceiling only. Is a supra-clinical-only finding a prediction at the clinical dose?"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Resolves (PMID 35508656, epub 2022-05-04); quote verbatim in abstract; ME-401/zandelisib absent from the text, so product_in_model false is right. Untested opener at 2022 holds; Ali 2014 (10.1038/nature13444) dosed PI-3065 tumour mice earlier but read Tregs, not colitis or regimen."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim in abstract; NCT02914938 started 2016-10, no results posted. Intermittent cohorts and TIDAL (registered 2018-12-07) were fixed, and TIDAL topline public (2021-11-30), before the mouse (2022-05-04): retro, never same, holds; margin_stated true supported."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2024,
+   "rule": "10 (first prospective prediction afterwards; Crohn's anti-IL-23 adjudication: a confirmatory trial of the retrodicted claim stays retro) and #113",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "TIDAL registered 2018-12-07, started 2019-06-25, primary analysis announced 2021-11-30 (ORR 70.3%): designed and reported before the mouse, retesting the claim dose[4] retrodicted. No fresh prediction (Crohn's MOTIVATE reading): track stays retro; TIDAL belongs in patient_trials, not a new entry.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: TIDAL (registered 2018-12-07, topline 2021-11-30) pre-dates the mouse (2022-05) and retests the claim dose[4] retrodicted; design fixed before the model, so tier-1 timing is moot (MOTIVATE precedent). TIDAL to patient_trials (#113). retro."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Resolves (PMID 31506873, 2019-10-01, open access); quote verbatim in abstract; KD 3.03e-11 M vs idelalisib 1.11e-9 M and tumour:plasma 20-30x vs ~3x confirmed. Untested opener holds; model_filed null right (no zandelisib review exists)."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim; objective 'basis of the clinical activity' is a retrodiction of the 2016-opened phase 1b: retro holds. One fact wrong: Zelenetz 2024 cites this paper for retention permitting intermittent dosing; still no TIDAL entry (post-hoc rationale, TIDAL designed 2018)."
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Resolves (PMID 30458930, epub 2018-10-26); quote verbatim in abstract; 60 mg approached 90% basophil inhibition, was forecast to hold troughs above the IC90 and chosen as the patient starting dose. NCT02521389 (2015) is an earlier proxy; 2018 acceptable."
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "4",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote near-verbatim ('IC 90' subscript). Prospective 2018 volunteer target reached at 60 mg and primary ORR 73% met: same under decision 4; margin_stated false right. Pagel 2022 abstract reports 60 mg responses without the IC90 link, so 2024 stands."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Open-access full text read; quote near-verbatim ('T reg' subscript only). Dosed-inhibitor colitis mouse is a different system from the D910A knock-in; untested opener at 2022 holds (same Ali 2014 caveat as dose[3])."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote near-verbatim (subscript); '12 out of 21' AMG319 discontinuations and idelalisib refs (Furman, Gopal, Lampson) confirmed in text. Colitis on the 2014 label precedes the mouse: retro holds; comparison stated; 'potentially related' as source_calls_it match is a hedged reading."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Resolves (PMID 30336224, epub 2018-10-16, print 2019); quote verbatim in the author manuscript (PMC6387453 via NCBI BioC). Sogkas 2018 (epub 2018-07-21) is the same system three months earlier; year 2018 unchanged either way."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim, 40 words, D910A superscripted; the following 'not a universal feature... Pik3cd-/- mice' sentence supports partial. A genotype reported after the 2014 label is retro by construction; two sepsis deaths in the kindred confirmed in text."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Resolves (PMID 30692213, epub 2019-01-28); quote verbatim in abstract; IC50 Treg 0.5 uM vs CD4 2.0 and CD8 6.5 uM confirmed. Healthy-donor T-cell system distinct from the patient B-cell track; untested opener holds."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim; 'On this background' ties the assay to idelalisib's known autoimmune toxicities, so retro holds; comparison stated. imported_from MONDO:0004948 resolves to B-cell chronic lymphocytic leukemia; registry_date null right (abstract names no trial)."
+  }
+ ],
+ "missing": [
+  "Mouse PI3Kdelta-inhibitor colitis and intermittent-dosing model: Eschweiler et al. 2022, Nature, https://doi.org/10.1038/s41586-022-04685-2 (PMID 35508656). Non-member PI3Kdelta inhibitors (AMG319, PI-3065) depleted colonic ST2 Treg cells and caused colitis in mice; intermittent dosing curbed irAEs. The paper sets this beside AMG319 patients (12/21 discontinued for irAEs), and the regimen prediction was then tested prospectively in FL by zandelisib's intermittent schedule (TIDAL NCT03768505, results 2024-02-01; grade 3-4 colitis 3%, Zelenetz 2024). Needs a dose (regimen) and a safety track, product_in_model false.",
+  "Human PIK3CD loss-of-function genotype (model_kind human_genetic, retrodiction): a patient expressing kinase-dead p110delta, J Allergy Clin Immunol, epub 2018-10-16, https://doi.org/10.1016/j.jaci.2018.10.005 (PMID 30336224); autosomal-recessive PIK3CD deficiency with immunodeficiency, autoimmune thrombocytopenia and enterocolitis, Haematologica 2019, https://doi.org/10.3324/haematol.2018.208397 (PMID 31073077). These reproduce the idelalisib colitis and infection phenotype after the clinic knew it: a retro safety track alongside the D910A mouse.",
+  "Zandelisib's own animal model: 'Absorption, Distribution, and Binding Profile of ME-401 ... in Animal Models', Target Oncol 2019, https://doi.org/10.1007/s11523-019-00668-y (PMID 31506873). A20 syngeneic mouse B-cell lymphoma with tumour concentrations 20-30x plasma persisting at 24 h and ~100x slower dissociation than idelalisib (used as the reference compound); this is the member drug's stated basis for intermittent dosing, with TIDAL as the patient side. No dose track for it.",
+  "Human regulatory T-cell ex-vivo assay with phenotyping of idelalisib-treated CLL patients: Chellappa et al. 2019, J Immunol, https://doi.org/10.4049/jimmunol.1701703 (PMID 30692213). A stated comparison (Treg IC50 0.5 uM vs CD4 Teff 2.0 uM and CD8 Teff 6.5 uM; patient Treg phenotyping 'supported our in vitro findings'). The draft cites it in a judgement but gives it no track; it is a retro ex_vivo safety track distinct from the B-cell system."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Multi-organ toxicology package where most organs matched (liver, GI, lung, lymphoid) and two predicted harms (cardiac, pancreatic) never appeared, seen in rats only at AUCs above clinical exposure with no multiple stated: decision 5 (contra, magnitude opposite, 'a conservative model is still a wrong model') and decision 11 (same + source_calls_it partial, 'one readout matched, one did not') give different answers. Which governs, and does a finding confined to supra-clinical exposure count as a stated prediction for patients at the clinical dose?",
+  "Engagement scored on another indication's patients (CLL phase-1 chemokine and pAkt PD) for an FL context with no FL-patient PD readout: safety has imported_from, engagement and dose do not. Should imported_from extend to engagement and dose, or is the FL engagement cell untested until an FL-patient readout exists?",
+  "Dose where the clinical dose was chosen from a tumour-shrinkage plateau and the regulator afterwards checked troughs against an in-vitro EC90 that pre-dated the pivotal trial: is that a reached model target (same) or a post-hoc PK/PD justification (untested, source_calls_it scaling) under decisions 4 and 16?",
+  "A genetic model that predates the drug class (D910A mouse 2002; first PI3Kdelta inhibitor ~2007): does its track open at the model's creation or at the class's first use, given decision 7 says a model introduced mid-cell opens at its first class use?",
+  "outcome_tested when the confirmatory outcome trials were run but terminated with the prespecified analyses never conducted and the indication later withdrawn: null (never run) hides this; a value such as not_conducted or negative_confounded may be needed.",
+  "[models] Decision 10 timing: Eschweiler's mouse (epub 2022-05-04) precedes the tier-1 patient record of zandelisib's intermittent cohort (Pagel, epub 2022-07-11) but follows the regimen decision (TIDAL registered 2018-12-07) and the press/conference result (TIDAL topline 2021-11-30). dose[4] scored retro and dose[5] folded into patient_trials on 'known' meaning any public record or a design fixed before the model; if 'known' means a tier-1 source, dose[4] becomes same. Which reading?"
+ ]
+}

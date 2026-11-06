@@ -1,0 +1,242 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-glp1r-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 20503261 (DMRR 2010) resolves to Glaesner; quote verbatim in abstract. Dulaglutide is a member; untested opener at 2010 is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 21251179 (epub 2011-01-19) is the dulaglutide SAD in healthy subjects; quote verbatim. Healthy-volunteer insulin secretion, downstream tier, pairing with Glaesner 2010 is sound."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 26308095 (J Med Chem, epub 2015-09-11); minipig i.v. t1/2 46.1 h quote verbatim. Minipig appears in the 209637 PharmR bundle text (9 hits)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "7",
+   "note": "Label quote verbatim (209637lbl.txt l.727); same holds. But human once-weekly PK in T2D was public earlier: Kapitza 2015 (doi:10.1002/jcph.443, epub 2015-01) 'pharmacokinetics were compatible with once-weekly dosing', HbA1c -1.1%; date when pairing with Lau (Sept 2015) became possible.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 7: status same stands; date 2015. Kapitza 2015 (PMID 25475122, T2D patients: PK 'compatible with once-weekly dosing', HbA1c -1.1%) pairs with Lau (epub Sept 2015), predating the 2017 label."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Glaesner 2010 abstract: 'Half-life in rats and cynomolgus monkeys was 1.5-2 days...' verbatim. Protein modality correct for the Fc fusion."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Barrington 2011a abstract states human t1/2 ~90 h and 'half-life that supports once-weekly dosing' verbatim. Ratio 1.9-2.5x to off_by_2-5x is defensible; same is right."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 34127852 is the danuglipron phase 1 MAD (Nat Med 2021); humanized-mouse sentence verbatim. Using a phase 1 paper as model source is acceptable since it states the model result."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (JAMA Netw Open 2023, PMID 37213102); NCT03985293 results first posted 2022-06-30, primary HbA1c, confirmed. Possible earlier date: the 2021 MAD paper may report day-28 glucose falls (full text not open; unverified)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Glaesner 2010 diabetic-mouse quote verbatim; untested opener 2010."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "EGO (PMID 21251180, epub 2011-01-19) quote verbatim; abstract does not label HbA1c primary, but it is the reported efficacy endpoint. patient_trials registry dates (NCT02054897 2018-01-23, NCT03985293 2022-06-30) confirmed; both HbA1c primary."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "125469 PharmR bundle l.265: 'increase in the incidence of thyroid C-cell adenomas at >0.5 mg/kg (≥7X clinical AUC)'; line-wrapped, near-verbatim. FDA calls human relevance unknown, not species-specific."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "5",
+   "note": "Rule 5 (#130): a human null contradicts rodent carcinogenicity only if the regulator calls it species-specific (FDA: relevance unknown) or the dataset is powered for MTC (HR 1.19, 0.37-3.86). Cohort is pooled, mostly non-member liraglutide (rule 12).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5 (#130): FDA calls human relevance unknown, not species-specific, and the cohort is unpowered for MTC (HR 1.19, 0.37-3.86), so the human null cannot contradict the rat bioassay."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Rybelsus PharmR quote verbatim; dog SNAC-ratio study AnP090703 (code dates it ~July 2009) chose 300 mg SNAC before FIH NCT01037582 (Dec 2009). Untested opener at 2009, class level, correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Granhall 2019 abstract: quote verbatim; FIH tested 150-600 mg SNAC and 300 mg chosen, as dogs had. Dog BA 0.2-1.4% (PharmR) vs human ~0.4-1%. Model pre-dated FIH, so same not retro.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Scott 2016 (PMID 27252175) abstract has the quote verbatim. Opener at first use, 2016, class level.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. Class glucose lowering was known a decade before the genetic proxy and the paper compares against it, so retro (decision 10) is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Sathananthan 2010 full text (PMC2928367): quote verbatim; Ser168 carriers ~15% lower beta-cell responsivity on GLP-1 infusion. Patient-level opener 2010 correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2022,
+   "rule": "dating (first public date)",
+   "note": "Dawed quote verbatim in abstract; same direction as 2010 clamp, prospective. MEDLINE DateCompleted 2022-12-20 confirms online-first Dec 2022: year and epub_year should be 2022, not 2023. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Trulicity PharmR quote verbatim; reviewer states sponsor's hypothesis that humans respond like monkeys not rats, so a stated prediction. Monkey study start date not given; 2014 proxy acceptable.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Trulicity MedR quote verbatim. Mean calcitonin flat vs placebo matches monkey prediction; outlier caveat recorded. Same at class level supported.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Scott 2016 abstract quote verbatim; stated CV-safety prediction. Note: SUSTAIN-6 topline press release (2016-04-28) and LEADER topline (Mar 2016) preceded publication (2016-06-01).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "SUSTAIN-6 quote verbatim. Novo announced SUSTAIN-6 MACE reduction 2016-04-28 (globenewswire), before Scott was published; but Scott's analysis was not motivated by it, so not retro under decision 10. See rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Dose (semaglutide, peptide): earlier patient PK source Kapitza 2015, J Clin Pharmacol, doi:10.1002/jcph.443 (PMID 25475122), and phase 2 dose-finding Nauck 2016 Diabetes Care doi:10.2337/dc15-0165 (epub 2015-09-10); either dates the semaglutide dose comparison to 2015 instead of the 2017 label.",
+  "Safety (danuglipron, small molecule, imported_from obesity): Pfizer 2025-04-14 discontinuation after one case of possible drug-induced liver injury in an obesity dose-optimisation study (tier 5; e.g. https://www.cnbc.com/2025/04/14/pfizer-scraps-daily-weight-loss-pill-danuglipron.html). Pfizer says overall liver-enzyme rates matched approved GLP-1 RAs; scorable only if a tier 1-3 tox source states hepatic silence, otherwise untested at most.",
+  "No missed efficacy failures found for other members: TTP273 phase 2 positive (vTv 2017, placebo-subtracted HbA1c -0.86/-0.71%), CJC-1134-PC phase 2 HbA1c fell vs placebo (NCT00638716/NCT00674466), efpeglenatide AMPLITUDE programme positive; LY2428757 discontinuation reason not found.",
+  "Safety (semaglutide): SUSTAIN-6 headline press release 2016-04-28 (https://www.globenewswire.com/news-release/2016/4/28/1600310/0/en/semaglutide-significantly-reduces-the-risk-of-major-adverse-cardiovascular-events-in-the-sustain-6-trial.html) predates Scott 2016 publication (2016-06-01); the safety 6 confidence_note should record it."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Rule 5/12: when the only human null for an on-target class harm is a pooled cohort in which non-member drugs (here liraglutide) dominate, does it count for the member class at all, or only for the member share, and how is that share recorded?",
+  "Rule 7: when the patient source (Kapitza, Jan 2015) predates the publication of the model source (Lau, Sept 2015) but the model was used prospectively before the clinic, is the paired entry dated to the later publication, or to the patient source with the model's use year as proxy?",
+  "Safety silence: a single tier-5 liver-injury case in another indication (obesity), which the sponsor says sits at class-background rates. Is that a contradicted silence, or does it need a tier 1-4 patient source before it can be scored?",
+  "Ala316Thr genetics (safety 5/6): the analysis was done before, but first published after, the SUSTAIN-6 topline press release (2016-04-28). Decision 10 requires post-dating AND being motivated by the patient result; does first-public date alone make it retro? Scored same here."
+ ]
+}

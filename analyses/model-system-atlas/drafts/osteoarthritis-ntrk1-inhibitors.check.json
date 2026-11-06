@@ -1,0 +1,247 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/osteoarthritis-ntrk1-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Nwosu resolves (PMID 26286016, epub 2015-08-18, print 2016-06); quote verbatim in abstract. Untested correct: rat pain behaviour only. The member's own rat model (Flannery 2015, OARSI, April 2015) predates it and should open the track."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Walsh 2019 full text (PMC6941477) read; quote verbatim. No member trial reported a TrkA engagement readout; GZ389988 first-in-human NCT02424942 planned synovial-fluid PK and WOMAC only, results never posted. Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in Nwosu abstract. No exposure target published for any member; AR786 30 mg/kg BID is a sibling dose. Untested stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Watt 2019 full text read: dose set on pre-clinical toxicity ceiling, 'data on file'; discussion says plasma 'well above the IC50' on total drug (unbound trough 111 nM < TrkA IC50 155 nM). Post-hoc PK/PD justification: untested stands, source_calls_it scaling."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in Nwosu abstract; tier 1, opens track. Flannery 2015 (DOI 10.1016/j.joca.2015.02.100), GZ389988's own rat MIA intra-articular study, is the member-side model source the draft said it could not locate."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Watt abstract quote verbatim; EudraCT 2014-004996-22 first results publication 20 Jun 2018 confirmed (no CT.gov results). Primary WOMAC pain missed, naproxen positive; Watt does not blame under-dosing. Contra stands; GZ389988A same (Krupka citing Flannery, comparison_stated) is subordinate."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim in Nwosu abstract. Untested opening entry correct; Flannery 2015 rat IA biocompatibility (no joint histopathology change) is the earlier member-side safety statement on this track."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "4",
+   "note": "Flannery 2015: rat IA biocompatibility showed 'nor any significant histopathologic changes in joint tissues'. Krupka 2019: injection joint inflammation 'occurred only in the GZ389988A group' (two thirds, Walsh). Askable harm the rat could show, missed: contra; src Krupka, model_src Flannery.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Decision 4: stated prediction failed. Flannery 2015 (DOI 10.1016/j.joca.2015.02.100, read): rat IA biocompatibility 'nor any significant histopathologic changes in joint tissues'; Krupka 2019: injection-joint inflammation only on GZ389988A. Contra 2019; RPOA stays untested in the note."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kigami abstract quote verbatim (paywalled). Watt full text: orthostatic challenge, neurological exam, autonomic AEs 1 vs 1, sensory disturbance n=1; prediction tested and held; confidence_note 'no autonomic testing' is wrong. src should be Watt, model_src Kigami; pre-trial GLP, not retrodiction."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Indo 1996 (PMID 8696348, Nat Genet Aug 1996) abstract read; quote verbatim. Opening entry, untested, year 1996, class level, tier 1 all correct; model predates every member, not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "4",
+   "note": "Watt 2019 full text read; quote verbatim, no reference attached. Watt floats 'more complete and longer-lasting blockade' as the gap and unbound trough fell below IC50: a lifelong complete loss was never produced, so a failure attributed to conditions the model never tested is untested (decision 4), collapsing into the 1996 entry.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35): Watt attributes the gap to blockade degree and duration (source_calls_it scaling), conditions a lifelong complete loss never tested; dose #2 stands unresolved, so 'reached' is unshown. Untested; track stays at Indo 1996."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Smeyne 1994 (PMID 8145823, Nature 17 Mar 1994) abstract read; quote verbatim. Opening entry untested, 1994, class level correct. Pain phenotype rests on Indo 1996's description of these mice, as the confidence_note says.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "4",
+   "note": "Same Watt sentence, verbatim, with no citation, so the TrkA-null identity is inferred (Indo 1996 supports it). A lethal developmental null never tested a 4-week partial inhibitor; Watt's blockade-degree explanation makes this untested, not contra (decision 4).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35): same Watt sentence as efficacy #4; failure attributed to blockade degree/duration (scaling), conditions a lethal developmental null never tested, and the model identity is only inferred. Untested; track stays at Smeyne 1994."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bergmann 1998 (PMID 9835221, Neurosci Lett 16 Oct 1998) abstract read; quote verbatim. Opening entry untested, 1998, class level correct; a mechanism model (TrkA sufficient for NGF hyperalgesia), prospective.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "4",
+   "note": "Quote verbatim (Watt ref 7). Watt uses the knockout only to reject the mAb-completeness excuse and leaves the failure unexplained; the draft's own source_calls_it 'unresolved' maps to untested (decision 4, #90). The knockout tested acute exogenous-NGF hyperalgesia, never a partial TrkA inhibitor in chronic OA pain.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: decision 4: is a receptor-sufficiency knockout's prediction tested when a selective inhibitor fails, the source rejects the excuse, leaves it unexplained, and exposure adequacy is unresolved (dose #2, RQ1)? #90 covers unresolvable readouts, not unexplained failures."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Flannery 2015 OARSI abstract (OAC 23 Suppl 2:A45-6, Crossref created 2015-04-11, open archive) read in full; quote verbatim. Untested opening entry, 2015, product_in_model true correct. Tier 1 for a congress-supplement abstract is marginal; same abstract calls GZ389988 pan-Trk/CSF1R (rule question 2).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "1",
+   "note": "Krupka 2019 full text read; quote verbatim; primary (WOMAC A1 over 4 weeks) met, one-sided alpha; 12-week miss stays in patient_trials. Model (2015) predates the trial, so same, not retro; year 2019 (Crossref 2019-07-25, no registry results). comparison_stated should be false: the intro restates the rat premise (ref 28) but the discussion never mentions the rat, a bare-citation (b) pairing.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Flannery 2015 abstract read; quote verbatim. Untested opening entry, 2015, class level correct. A stated local-tolerability prediction (no joint histopathology, no clinical-appearance effect) in naive rat knees; dose and timepoint not given.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Krupka full text read; quote verbatim (IJIR 67.3% vs 0%, onset within hours, hsCRP >=2-fold). Contra under decision 4 holds, but the identical Flannery-to-Krupka pairing was already adjudicated contra on rat-mia-knee-oa safety index 2; one comparison now sits on two tracks and one must go (decision 8).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudication_note": "Decision 8: keep the Flannery 2015 → Krupka 2019 IJIR contra here; naive-knee IA biocompatibility is this system, not rat MIA OA. Count it once: rat-mia-knee-oa safety #2 (first-pass contra) should revert to the drafted untested."
+  }
+ ],
+ "missing": [
+  "Flannery CR et al. 2015, 'Efficacy of a novel, locally delivered TrkA inhibitor in preclinical models of OA and joint pain', Osteoarthritis Cartilage 23(Suppl 2):A45-A46, DOI 10.1016/j.joca.2015.02.100 (OARSI abstract, April 2015): GZ389988's own rat MIA single-IA-injection model, rat PGPS flare model and rat IA biocompatibility study. Cited by Krupka 2019 (ref 28: 'In rat models of OA and joint pain, GZ389988 showed a significant relief of local knee pain'), so the GZ389988A efficacy pairing is comparison_stated with product_in_model true (same, subordinate to ASP7962 contra on the same track), and the rat biocompatibility silence on joint inflammation is the model side of the safety contra proposed above. The draft said this abstract could not be located.",
+  "Human NTRK1 loss-of-function (HSAN IV / congenital insensitivity to pain) as a human_genetic track: Watt 2019 (DOI 10.1016/j.joca.2019.05.029, full text) sets it beside the failed trial: 'Individuals with mutations of the TrkA receptor, either in humans or in pre-clinical models, have insensitivity to pain, suggesting that TrkA is a valid analgesic target', then attributes the gap to the degree and duration of blockade. No track in the draft; likely untested (conditions the genotype never tested) rather than contra; see rule question 3.",
+  "NGF-receptor knockout mouse (Watt 2019 ref 7): cited in the same discussion as pre-clinical evidence against the 'more complete blockade needed' explanation; a mouse genetic model placed beside the patient result with no track.",
+  "GZ389988 first-in-human study NCT02424942 (Genzyme/Sanofi, Phase 1, 28 knee-OA patients, ascending single IA doses, April 2015 to July 2016): secondary endpoints were plasma and synovial-fluid PK and WOMAC pain over 12 weeks; no results posted, no publication found. This, not NCT02845271, was the escalation study; it is the only patient-side PK source for the IA member and should be recorded on the dose/engagement cells as unreported.",
+  "ASP7962 Phase 1 healthy-volunteer studies NCT01981928 and NCT02136316 (Watt 2019 full text: single doses up to 240 mg, favourable safety; 100 mg BID was the highest dose with safety data when Phase 2 started): healthy-volunteer PK counts for the dose cell under v3; no results posted, no publication, so no status change, but the draft does not cite them.",
+  "Not searched for budget: Astellas, Sanofi and Purdue discontinuation notices (tier 5) for ASP7962, GZ389988A and VM902A; none would change a status since the tier 1 trial papers and the registry termination record already set them."
+ ],
+ "could_not_verify": [
+  "Kigami 2021 (Toxicol Lett) full text is paywalled; abstract only, so the study dates and whether a tolerated exposure margin was stated against the clinical dose were not seen.",
+  "Flannery 2015 abstract was read in full via ScienceDirect, but the OARSI abstract has no methods detail on the IA biocompatibility dose or the histology timepoint.",
+  "VM902A has no publication and no posted results; the registry record (Purdue Pharma, terminated 2016-11-22, 'Company decision', n=75) is the only source and the draft reports it correctly."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose, decision 4: when the trial paper itself states after the failure that plasma levels were 'well above the IC50 reported in pre-clinical models' (total drug), the dose was chosen on a toxicity ceiling with the pre-clinical dosing data 'on file', and the unbound trough (111 nM) fell below the in-vitro IC50 (155 nM), is this case 3 (reached, failed, abandoned: contra derived_from efficacy) or the post-hoc PK/PD clause (untested, source_calls_it scaling)? Which exposure measure, total or unbound, peak or trough, counts as 'reached'?",
+  "Class boundary, decision 12: GZ389988's own sponsor reports similar IC50s for TrkA, TrkB, TrkC and CSF1R (0.89/0.38/0.5/1.3 nM) and the editorial raises CSF1R as a contributor to its analgesia, yet the tile lists it as an NTRK1 inhibitor. Does a member stay in the class when its own sources describe it as pan-Trk/CSF1R, and is its injection-site joint inflammation an on-target harm (pooled) or a formulation harm?",
+  "Human genetic models, decision 8/4: Watt 2019 puts human NTRK1 loss-of-function (insensitivity to pain) beside the failed ASP7962 trial and attributes the gap to the completeness and duration of blockade. Is a lifelong complete loss-of-function ever an admissible model of a 4-week partial inhibitor, and if so is this pairing untested (conditions the genotype never tested) or contra?",
+  "Track identity, decision 8: Flannery's rat IA biocompatibility study used naive rat knees, while the efficacy model is rat MIA knee OA. Is a naive-joint tolerability study the same system as the rat MIA track for safety (one species, one route, one compound programme), or its own model_id?",
+  "Human genetic models, decision 4 symmetry (models check): if ASP7962's failure cannot contradict the CIPA genotype / TrkA-null tracks because a partial 4-week inhibitor never produced the genotype's condition (proposed untested), can GZ389988A's met 4-week primary confirm them? Krupka cites the genotype only in its intro (ref 25), a bare-citation (b) pairing; by the same logic that pairing should also be untested, which leaves both genetic tracks untested throughout.",
+  "Track identity, decision 8 (models check): the Flannery 2015 rat IA biocompatibility statement is now the model side of two contra entries, rat-mia-knee-oa safety index 2 (adjudicated) and rat-naive-knee-ia-tolerability safety index 5 (this check). Naive-knee tolerability is a different experiment from MIA knee OA, so the new track is the better home and the rat-MIA safety contra should revert to untested; whichever is chosen, the comparison must be counted once."
+ ]
+}

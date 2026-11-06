@@ -1,0 +1,79 @@
+{
+ "tile": "prostate-cancer-ezh2-inhibitors",
+ "searched": [
+  "FDA Tazverik multidisciplinary review (NDA 211723) text in sources/: grep PBPK / physiologically based / CYP3A inducer, prostate, xenograft, organoid / patient-derived / PDX: no prostate model, no PBPK (inducer effect 'has not been evaluated', PMC required), dose-selection xenografts are synovial sarcoma and rhabdoid lines",
+  "Europe PMC core record for DOI 10.1038/s41467-018-04495-z and full text of PMC6008438 (Puca 2018): every EZH2 sentence read, inhibitors used, enzalutamide combination, PDOX",
+  "Europe PMC: SHR2554 AND prostate; SHR2554 sorted by citations; SHR2554 AND (xenograft OR in vivo OR preclinical) NOT review; zeprumetostat",
+  "Europe PMC: \"CPI-1205\" AND prostate AND (xenograft OR enzalutamide OR castration)",
+  "Europe PMC: tazemetostat AND prostate AND (xenograft OR organoid OR patient-derived)",
+  "Europe PMC: EZH2 AND \"neuroendocrine prostate\" AND (organoid OR patient-derived xenograft OR PDX) AND (inhibitor OR GSK503 OR GSK343 OR EPZ6438); EZH2 AND prostate AND LuCaP AND (inhibitor OR GSK126 OR EPZ6438)",
+  "Europe PMC: \"N-Myc\" AND EZH2 AND \"neuroendocrine prostate cancer\" (Dardenne 2016 / Berger 2019 models)",
+  "Europe PMC: EZH2 AND inhibitor AND prostate AND (predict OR correlat) AND (clinical response OR patient response): reviews only",
+  "ClinicalTrials.gov API v2: intervention tazemetostat / EPZ-6438 / CPI-1205 / lirametostat / SHR2554 / zeprumetostat / EZH2 x condition prostate; full records of NCT03741712, NCT07230106, NCT07407283, NCT04846478 read for NE / small-cell / RB1 / TP53 selection",
+  "Firecrawl search (fc.py): SHR2554 EZH2 inhibitor prostate cancer preclinical xenograft rezvilutamide SHR3680 combination: no primary preclinical source, only trial listings and reviews",
+  "PubMed E-utilities esearch/efetch were attempted first and returned non-JSON errors; Europe PMC was used instead"
+ ],
+ "added_models": [
+  {
+   "model_id": "nepc-patient-organoid",
+   "model": "Neuroendocrine CRPC patient-derived organoids and organoid xenografts (EZH2 inhibitor)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2018,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2018,
+      "status": "untested",
+      "model_id": "nepc-patient-organoid",
+      "prediction_level": "patient",
+      "model": "Neuroendocrine CRPC patient-derived organoids and organoid xenografts (EZH2 inhibitor)",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2018,
+      "note": "Organoids from four CRPC-NE biopsies: EZH2 inhibitors GSK343/GSK503 had AR-independent single-agent activity at high doses, no synergy with enzalutamide; no NE-selected member trial.",
+      "short": "EZH2i active in CRPC-NE organoids, untested",
+      "src": "https://doi.org/10.1038/s41467-018-04495-z",
+      "srcLabel": "Puca 2018",
+      "quote": "These data suggest that EZH2 inhibition has activity in CRPC-NE and this does not require expression of the AR.",
+      "confidence": "high",
+      "confidence_note": "Full text read via Europe PMC (PMC6008438, Nat Commun 9:2404, online 2018-06-19). Tool inhibitors GSK343 and GSK503, not a member drug; organoids OWCM154/OWCM155 vs adenocarcinoma MSK-PCa3; the matched PDOX kept EZH2/H3K27me3 but no in-vivo dosing is reported.",
+      "judgement": "Separate ex_vivo, patient-level track: patient-derived CRPC-NE organoids predict AR-independent single-agent benefit in neuroendocrine CRPC with no gain from adding enzalutamide, a different system and a different prediction from the Rb1/Trp53 GEMM (restored AR sensitivity). No member trial has enrolled or stratified NE/small-cell disease: ProSTAR (NCT03480646) and CELLO-1 (NCT04179864) were unselected mCRPC; zeprumetostat's NCT03741712 terminated 2019-09-30 at n=9 with no results; NCT04846478 (tazemetostat + talazoparib) is unselected with no results; the 2025-26 Hengrui trials NCT07230106 and NCT07407283 exclude neuroendocrine or small-cell histology. The comparison was never made.",
+      "reason": "No NE-selected trial of any member",
+      "endpoint_role": null,
+      "outcome_tested": null,
+      "patient_trials": [],
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Castration-resistant, neuroendocrine (CRPC-NE)"
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Member-specific CRPC cell-line / xenograft models: lirametostat (Constellation, Bradley 2018 AACR, unpublished) and zeprumetostat/SHR2554 (no peer-reviewed prostate model found on Europe PMC or Firecrawl; Hengrui's prostate rationale appears only as SHR3680 combination trials): same system as the draft's crpc-ezh2-xenograft track, nothing published to open a member-specific track.",
+  "Pten/Rb1/Trp53 lineage-plasticity GEMM (Ku 2017) and tazemetostat rat/monkey toxicology: already tracked in the draft.",
+  "N-Myc-driven NEPC models (Dardenne 2016 Cancer Cell; Berger 2019 JCI, doi 10.1172/jci127961): GEMM and engineered human prostate cells treated with EZH2 tool inhibitors; the same NEPC-sensitivity prediction as the Puca organoid track with no patient comparison for any member, so not opened as a third untested NEPC strip. Abstracts not re-read this run.",
+  "Later PDX / organoid lineage work with tool EZH2 inhibitors (Nat Commun 2024, doi 10.1038/s41467-024-51156-5; Nat Commun 2026, doi 10.1038/s41467-026-69308-0; Cell Rep Med 2026, doi 10.1016/j.xcrm.2026.103083): mechanistic, no member drug and no patient comparison; titles only, not read.",
+  "Mevrometostat (PF-06821497) models and trials: not a member of the reviewed class table; its draft entries are being dropped by adjudication and no mevrometostat-based track was opened.",
+  "Zeprumetostat's only mCRPC trial NCT03741712 (SHR2554 +/- SHR3680): terminated 2019-09-30 at n=9, no results posted, no admissible comparison on any track; NCT07230106 (2025) and NCT07407283 (2026) pair SHR2554 or tazemetostat with rezvilutamide in adenocarcinoma only ('no features of neuroendocrine carcinoma or small cell carcinoma'), no results.",
+  "In-silico dose models: the tazemetostat skin H3K27me3 Emax model (EC50 734 ng.h/mL) is fitted to patient data, not a preclinical model, and the FDA review contains no PBPK for CYP3A inducers (effect 'has not been evaluated'); CELLO-1's 1200 mg BID with enzalutamide came from its own phase 1b. No in-silico track.",
+  "ESMO 2024 CELLO-1 abstract 1603P (doi 10.1016/j.annonc.2024.08.1684) and the Constellation FY2020 10-K ProSTAR discontinuation: both belong to the existing crpc-ezh2-xenograft track (re-dating and patient_trials) and are left to the adjudicator.",
+  "Human genetic, human challenge and ex-vivo patient-cell sensitivity-versus-response models: none found for EZH2 inhibitors in prostate cancer."
+ ]
+}
