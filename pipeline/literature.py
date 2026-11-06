@@ -966,15 +966,18 @@ def failed(task_names: list[str], ok_names: list[str]) -> dict[str, tuple[dict, 
     """Subject key -> (input payload, failure) of every subject whose latest decision under task_names failed
     validation and that has no validated decision under ok_names."""
     with llm.connect() as conn, conn.cursor() as cur:
-        cur.execute("""SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_payload, d.validation_status,
+        # Payloads are read only for subjects with a failed decision, so the scan never sorts every abstract.
+        cur.execute("""WITH bad AS (SELECT DISTINCT subject_key FROM pv_evidence.llm_decision
+                                    WHERE task = ANY(%s) AND validation_status <> 'validated')
+                       SELECT DISTINCT ON (d.subject_key) d.subject_key, d.input_payload, d.validation_status,
                               d.validation_detail::text
-                       FROM pv_evidence.llm_decision d WHERE d.task = ANY(%s)
-                       ORDER BY d.subject_key, d.created_at DESC""", (task_names,))
-        latest = {k: (p, st, det) for k, p, st, det in cur.fetchall()}
-        cur.execute("""SELECT DISTINCT subject_key FROM pv_evidence.llm_decision
-                       WHERE task = ANY(%s) AND validation_status = 'validated'""", (ok_names,))
-        ok = {r[0] for r in cur.fetchall()}
-    return {k: (p, det) for k, (p, st, det) in latest.items() if st != "validated" and k not in ok}
+                       FROM pv_evidence.llm_decision d JOIN bad USING (subject_key)
+                       WHERE d.task = ANY(%s)
+                         AND NOT EXISTS (SELECT 1 FROM pv_evidence.llm_decision v
+                                         WHERE v.task = ANY(%s) AND v.subject_key = d.subject_key
+                                           AND v.validation_status = 'validated')
+                       ORDER BY d.subject_key, d.created_at DESC""", (task_names, task_names, ok_names))
+        return {k: (p, det) for k, p, st, det in cur.fetchall() if st != "validated"}
 
 
 def sweep(_args) -> None:
