@@ -32,7 +32,7 @@ MATCHED = {"same", "neg", "other"}
 SHORT = {"metabolic dysfunction-associated steatohepatitis": "MASH", "paroxysmal nocturnal hemoglobinuria": "PNH",
          "gastroesophageal reflux disease": "GERD", "non-small cell lung carcinoma": "NSCLC",
          "hepatitis C virus infection": "hepatitis C", "HIV infectious disease": "HIV", "plasma cell myeloma": "multiple myeloma",
-         "acute myeloid leukemia": "acute myeloid leukaemia"}
+         "acute myeloid leukemia": "acute myeloid leukaemia", "chronic obstructive pulmonary disease": "COPD"}
 
 
 def load() -> tuple[pd.DataFrame, pd.DataFrame]:

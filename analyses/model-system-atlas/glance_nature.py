@@ -57,7 +57,7 @@ W, H = 7.2, 9.65  # 183 × 245 mm
 LABELS = os.path.join(HERE, "drafts", "v3", "short_labels.json")
 with open(LABELS) as _f:
     _labels = json.load(_f)
-MODEL_SHORT, DISSENT_SHORT = _labels["model"], _labels["dissent"]  # hand-shortened; see the file's _comment
+MODEL_SHORT, DISSENT_SHORT, MECH_SHORT = _labels["model"], _labels["dissent"], _labels.get("mechanism", {})  # hand-shortened; see the file's _comment
 CUT = []  # strings that still needed an ellipsis; printed at the end so none ships unnoticed
 ROW = 0.27
 
@@ -220,8 +220,9 @@ def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) ->
             y0 = y
             if k:
                 ax.plot([label_x, W - 0.06], [y0, y0], color=RULE, linewidth=0.25)
-            ax.text(label_x, y0 + 0.065, SHORT.get(t.disease, t.disease), fontsize=6, fontweight="bold", **T)
-            ax.text(label_x, y0 + 0.14, wrap(f"{t.mechanism} ({t.programs})", 5.5, label_w - 0.04, 1)[0], fontsize=5.5, **T)
+            disease = wrap(SHORT.get(t.disease, t.disease), 6, (label_w - 0.04) * 0.92, 1)[0]  # bold runs ~8 % wider than measured
+            ax.text(label_x, y0 + 0.065, disease, fontsize=6, fontweight="bold", **T)
+            ax.text(label_x, y0 + 0.14, wrap(f"{MECH_SHORT.get(t.mechanism, t.mechanism)} ({t.programs})", 5.5, label_w - 0.04, 1)[0], fontsize=5.5, **T)
             for i, (q, _, _) in enumerate(QUESTIONS):
                 c = df[(df.slug == t.slug) & (df.question == q)].iloc[0]
                 x = cell_x[i]
