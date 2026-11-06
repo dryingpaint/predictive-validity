@@ -18,6 +18,19 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 **Published studies of the drug (exploratory).** Programs whose drug had already been studied in animals in the published literature reached approval less often, not more: {{evidence_analysis.areas.area_lit_animal.rs_rs|x2}}× as often for any published animal study, and {{evidence_analysis.lines.lit_animal_disease.rs_rs|x2}}× for a study in an animal model of the disease. In Phase 2 the gap remains when disease area, modality, era, novelty and precedent are held equal ({{evidence_analysis.lines.lit_animal_disease.s4_rr|x2}}×, {{evidence_analysis.lines.lit_animal_disease.s4_lo|x2}}–{{evidence_analysis.lines.lit_animal_disease.s4_hi|x2}}). A published study showing the drug acting on its target in people made no clear difference ({{evidence_analysis.lines.lit_human_engagement.rs_rs|x2}}×). Publication is more likely a marker of who develops a drug than a cause of failure: companies rarely publish their own animal work before a trial, so a drug with a published animal record is more often one studied by academic groups, which these data cannot test directly. The searches found about three in four of the animal-model studies a blind hand search found, and fewer of the others (appendix).
 
+### What programs enter on
+
+Only {{evidence_analysis.basis.predictive|pct0}} of the {{evidence_analysis.basis.entries|int}} US-developed phase entries had any of the evidence that predicts approval: genetic support, a gene recurrently mutated in the cancer, mouse genetics resembling the disease, or a drug on the target approved for a related disease. Most of the rest still had evidence of a kind the field relies on.
+
+| What the program had before entering the phase | Share of entries |
+| :---- | :---- |
+| Evidence that predicts approval (any of the four above) | {{evidence_analysis.basis.predictive|pct0}} |
+| A published study of the drug itself (an animal model of the disease, healthy animals, or target engagement in people) | {{evidence_analysis.basis.published|pct0}} |
+| A drug on the same target approved, for any disease | {{evidence_analysis.basis.approved_any|pct0}} |
+| Binding to its target measured at 100 nM or better | {{evidence_analysis.basis.potent|pct0}} |
+
+Of the entries with no predictive evidence, {{evidence_analysis.basis.rest.published|pct0}} had a published study of the drug, which in these data goes with less success, not more, and {{evidence_analysis.basis.rest.approved_unrelated|pct0}} were on a target approved only for unrelated diseases, which also goes with less success ({{evidence_analysis.lines.approved_unrelated_only.rs_rs|x2}}×). {{evidence_analysis.basis.rest.none|pct0}} had none of the evidence measured here; they rest on the sponsor's unpublished data or reasoning from mechanism. Entering a trial requires evidence of safety, not of efficacy, and the decision to advance from Phase 2 rests on the sponsor's own trial results, which no public source shows. A line counts here only where it is known to be present.
+
 ### Does stronger or more specific evidence help?
 
 ![Likelihood of approval by strength of human genetic support](report/output/figures/genetic_dose_response.png)

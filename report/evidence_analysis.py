@@ -104,6 +104,28 @@ def hypotheses(d: pd.DataFrame) -> dict:
     return n
 
 
+# The lines the chart shows predicting approval: genetic support, a recurrent tumour mutation, a genetically altered
+# mouse model, and an approved drug on the target for a related disease.
+PREDICTIVE = ("g3", "somatic", "altered_animal", "b1")
+PUBLISHED = ("lit_animal_disease", "lit_animal_healthy", "lit_human_engagement")
+
+
+def evidence_basis(d: pd.DataFrame) -> dict:
+    """What the entries had before entry: shares of all entries with a predictive line, a published study of the
+    drug, an approved drug on the target for any disease, and potent binding; and, among entries with no predictive
+    line, the shares with a published study, an approval for unrelated diseases only, and none of these. An unknown
+    line counts as absent."""
+    has = lambda cols: d[list(cols)].fillna(0).gt(0).any(axis=1)  # noqa: E731
+    predictive, published = has(PREDICTIVE), has(PUBLISHED)
+    approved, potent = has(("cat_precedent",)), has(("potent_100nm",))
+    rest = ~predictive
+    return {"entries": int(len(d)), "predictive": float(predictive.mean()), "published": float(published.mean()),
+            "approved_any": float(approved.mean()), "potent": float(potent.mean()),
+            "rest": {"entries": int(rest.sum()), "published": float(published[rest].mean()),
+                     "approved_unrelated": float(has(("approved_unrelated_only",))[rest].mean()),
+                     "none": float((~(published | approved | potent))[rest].mean())}}
+
+
 def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """The lines table (the registered categories), the areas table (the chart's grouping, AREAS) and numbers from
     the evidence-line dataset, the phase rows and the failure modes."""
@@ -126,6 +148,7 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
          "lines": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in out if r.get("column")},
          "areas": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in areas if r.get("column")},
          "literature_gate": literature_gate(),
+         "basis": evidence_basis(d),
          **hypotheses(d)}
     return pd.DataFrame(out), pd.DataFrame(areas), n
 

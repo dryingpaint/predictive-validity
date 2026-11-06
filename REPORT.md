@@ -93,7 +93,7 @@ Disease areas rank differently from BIO's: the rank correlation with BIO's LOA a
 
 ## Predictive power of preclinical evidence
 
-Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before entering the phase reached approval 2.80 times as often (24% against 9%), and Phase 2 programs with it advanced 1.94 times as often, more so the stronger the evidence and the closer it lies to the program's own disease. Genes recurrently mutated in the cancer and mouse genetics (mice with the target gene knocked out or mutated, not drugs tested in mice) also predict, though mouse genetics mostly rides along with human genetic support; the drug's own potency, selectivity and drug-likeness add little, no sharper version of any evidence picks better programs, and an approved drug on the target for a related disease predicts as strongly as genetics. Because most programs have none of this evidence, it sorts individual programs only modestly (held-out AUC 0.593 without it, 0.633 with it).
+Human genetic evidence linking a program's target to its disease is the clearest preclinical signal of success. Programs whose target had it before entering the phase reached approval 2.80 times as often (24% against 9%), and Phase 2 programs with it advanced 1.94 times as often, more so the stronger the evidence and the closer it lies to the program's own disease. Genes recurrently mutated in the cancer and mouse genetics (mice with the target gene knocked out or mutated, not drugs tested in mice) also predict, though mouse genetics mostly rides along with human genetic support; the drug's own potency, selectivity and drug-likeness add little, no sharper version of any evidence picks better programs, and an approved drug on the target for a related disease predicts as strongly as genetics. Most programs enter on evidence that does not predict success, chiefly published animal studies of the drug and approvals on the target for unrelated diseases, and only 37% have any evidence that does, so it sorts individual programs only modestly (held-out AUC 0.593 without it, 0.633 with it).
 
 
 ### Evidence and design
@@ -122,6 +122,19 @@ Patient selection does not explain the results: holding biomarker-selected enrol
 
 
 **Published studies of the drug (exploratory).** Programs whose drug had already been studied in animals in the published literature reached approval less often, not more: 0.79× as often for any published animal study, and 0.74× for a study in an animal model of the disease. In Phase 2 the gap remains when disease area, modality, era, novelty and precedent are held equal (0.83×, 0.71–0.99). A published study showing the drug acting on its target in people made no clear difference (1.04×). Publication is more likely a marker of who develops a drug than a cause of failure: companies rarely publish their own animal work before a trial, so a drug with a published animal record is more often one studied by academic groups, which these data cannot test directly. The searches found about three in four of the animal-model studies a blind hand search found, and fewer of the others (appendix).
+
+### What programs enter on
+
+Only 37% of the 9,958 US-developed phase entries had any of the evidence that predicts approval: genetic support, a gene recurrently mutated in the cancer, mouse genetics resembling the disease, or a drug on the target approved for a related disease. Most of the rest still had evidence of a kind the field relies on.
+
+| What the program had before entering the phase | Share of entries |
+| :---- | :---- |
+| Evidence that predicts approval (any of the four above) | 37% |
+| A published study of the drug itself (an animal model of the disease, healthy animals, or target engagement in people) | 70% |
+| A drug on the same target approved, for any disease | 43% |
+| Binding to its target measured at 100 nM or better | 14% |
+
+Of the entries with no predictive evidence, 69% had a published study of the drug, which in these data goes with less success, not more, and 25% were on a target approved only for unrelated diseases, which also goes with less success (0.74×). 24% had none of the evidence measured here; they rest on the sponsor's unpublished data or reasoning from mechanism. Entering a trial requires evidence of safety, not of efficacy, and the decision to advance from Phase 2 rests on the sponsor's own trial results, which no public source shows. A line counts here only where it is known to be present.
 
 ### Does stronger or more specific evidence help?
 
