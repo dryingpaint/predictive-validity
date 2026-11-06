@@ -41,8 +41,12 @@ def style(ax):
 
 def save(fig, name):
     os.makedirs(FIG, exist_ok=True)
-    for ext in ("png", "svg", "pdf"):  # the PNG is what the doc embeds; SVG and PDF are the full-resolution copies
-        fig.savefig(os.path.join(FIG, f"{name}.{ext}"), dpi=200, bbox_inches="tight")
+    # The PNG is what the doc embeds; SVG and PDF are the full-resolution copies. No dates or random ids are
+    # written, so a figure whose data did not change is the same file.
+    stamp = {"png": {}, "svg": {"Date": None}, "pdf": {"CreationDate": None}}
+    with plt.rc_context({"svg.hashsalt": name}):
+        for ext in ("png", "svg", "pdf"):
+            fig.savefig(os.path.join(FIG, f"{name}.{ext}"), dpi=200, bbox_inches="tight", metadata=stamp[ext])
     plt.close(fig)
 
 
