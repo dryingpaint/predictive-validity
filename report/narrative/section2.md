@@ -16,6 +16,8 @@ Two outcomes are measured on programs entering a phase in 2008–2019. *Relative
 
 {{SECTION2_RS}}
 
+**Published studies of the drug (exploratory).** Programs whose drug had already been studied in animals in the published literature reached approval less often, not more: {{evidence_analysis.areas.area_lit_animal.rs_rs|x2}}× as often for any published animal study, and {{evidence_analysis.lines.lit_animal_disease.rs_rs|x2}}× for a study in an animal model of the disease. In Phase 2 the gap remains when disease area, modality, era, novelty and precedent are held equal ({{evidence_analysis.lines.lit_animal_disease.s4_rr|x2}}×, {{evidence_analysis.lines.lit_animal_disease.s4_lo|x2}}–{{evidence_analysis.lines.lit_animal_disease.s4_hi|x2}}). A published study showing the drug acting on its target in people made no clear difference ({{evidence_analysis.lines.lit_human_engagement.rs_rs|x2}}×). Publication is more likely a marker of who develops a drug than a cause of failure: companies rarely publish their own animal work before a trial, so a drug with a published animal record is more often one studied by academic groups, which these data cannot test directly. The searches found about three in four of the animal-model studies a blind hand search found, and fewer of the others (appendix).
+
 ### Does stronger or more specific evidence help?
 
 ![Likelihood of approval by strength of human genetic support](report/output/figures/genetic_dose_response.png)

@@ -1,0 +1,1507 @@
+[
+ {
+  "moiety_id": 7543,
+  "mondo_id": "MONDO:0005417",
+  "phase": 2,
+  "searched": [
+   "PubMed: nesvacumab OR REGN910 OR SAR307746 (<=2015)",
+   "Europe PMC full text: nesvacumab/REGN910/REGN 910/SAR307746 (<=2015)",
+   "Crossref: REGN910 (conference abstracts AACR/ASCO)",
+   "No ocular (CNV/OIR) study of nesvacumab found before 2016; preclinical work is in tumor models only. Web search budget exhausted, ARVO abstracts not checked."
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "A Phase I First-in-Human Study of Nesvacumab (REGN910), a Fully Human Anti-Angiopoietin-2 (Ang2) Monoclonal Antibody, in Patients with Advanced Solid Tumors",
+    "year": 2015,
+    "pmid": "26490310",
+    "doi": "10.1158/1078-0432.CCR-15-1221",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26490310/",
+    "venue": "journal",
+    "why": "Phase 1 (epub Oct 2015) reporting nesvacumab PK and Ang2 target-engagement/PD biomarkers in humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A phase I first-in-human study of REGN910 (SAR307746), a fully human and selective angiopoietin-2 (Ang2) monoclonal antibody (MAb), in patients with advanced solid tumor malignancies",
+    "year": 2013,
+    "pmid": "",
+    "doi": "10.1200/jco.2013.31.15_suppl.2517",
+    "url": "https://doi.org/10.1200/jco.2013.31.15_suppl.2517",
+    "venue": "conference",
+    "why": "ASCO 2013 abstract with human PK and Ang2 biomarker data for REGN910."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Phase 1 first-in-human (FIH) study of nesvacumab (REGN910) a fully human and selective angiopoietin-2 (Ang2) monoclonal antibody (MAb): Results from hepatocellular carcinoma (HCC) cohort",
+    "year": 2014,
+    "pmid": "",
+    "doi": "10.1200/jco.2014.32.15_suppl.2540",
+    "url": "https://doi.org/10.1200/jco.2014.32.15_suppl.2540",
+    "venue": "conference",
+    "why": "ASCO 2014 abstract with nesvacumab PK/PD in humans."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 148,
+  "mondo_id": "MONDO:0001187",
+  "phase": 3,
+  "searched": [
+   "PubMed: mitomycin[ti]/UGN-101/UGN-102/MitoGel/RTGel AND bladder/intravesical AND animal terms (<=2018), 89 hits screened",
+   "Mitomycin C is an old, widely used drug: a representative set of primary studies is listed, not an exhaustive one",
+   "UGN-102/RTGel thermogel formulation preclinical studies (swine, rat) included"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Assessment of the efficacy of repeated instillations of mitomycin C mixed with a thermosensitive hydrogel in an orthotopic rat bladder cancer model.",
+    "year": 2018,
+    "pmid": "30034540",
+    "doi": "10.1177/1756287218762064",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30034540/",
+    "venue": "journal",
+    "why": "Mitomycin in reverse-thermal hydrogel (UGN-102-type formulation) in orthotopic rat bladder cancer."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "A comparative study of the inhibiting effects of mitomycin C and polyphenolic catechins on tumor cell implantation/growth in a rat bladder tumor model.",
+    "year": 2011,
+    "pmid": "21683410",
+    "doi": "10.1016/j.juro.2011.03.125",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21683410/",
+    "venue": "journal",
+    "why": "Intravesical mitomycin efficacy in rat bladder tumor implantation model."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Enhanced antitumor effect of combination intravesical mitomycin C and bacillus Calmette-Guerin therapy in an orthotopic bladder cancer model.",
+    "year": 2011,
+    "pmid": "22870122",
+    "doi": "10.3892/ol.2010.217",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22870122/",
+    "venue": "journal",
+    "why": "Intravesical mitomycin in orthotopic murine bladder cancer."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Increased Anticancer Efficacy of Intravesical Mitomycin C Therapy when Combined with a PCNA Targeting Peptide.",
+    "year": 2014,
+    "pmid": "25500092",
+    "doi": "10.1016/j.tranon.2014.10.005",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25500092/",
+    "venue": "journal",
+    "why": "Mitomycin arm in an in vivo bladder cancer model."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Phase I clinical trial and pharmacokinetics of intravesical mitomycin C in dogs with localized transitional cell carcinoma of the urinary bladder.",
+    "year": 2010,
+    "pmid": "20695986",
+    "doi": "10.1111/j.1939-1676.2010.0569.x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20695986/",
+    "venue": "journal",
+    "why": "Intravesical mitomycin efficacy and PK in dogs with spontaneous bladder TCC."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Comparison of the efficacy of intravesical Bacillus Calmette-Guérin with thiotepa, mitomycin C, poly I:C/poly-L-lysine and cis platinum in murine bladder cancer.",
+    "year": 1984,
+    "pmid": "6418894",
+    "doi": "10.1016/s0022-5347(17)50246-3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6418894/",
+    "venue": "journal",
+    "why": "Mitomycin efficacy in murine bladder cancer."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Systemic mitomycin C versus cisplatin: comparison of antitumor activity in primary murine bladder cancer.",
+    "year": 1982,
+    "pmid": "6810530",
+    "doi": "10.1016/0090-4295(82)90348-x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6810530/",
+    "venue": "journal",
+    "why": "Systemic mitomycin efficacy in carcinogen-induced murine bladder cancer."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Effect of continuous intravesical infusion of low-concentrated mitomycin-C on bladder carcinogenesis in rats treated with N-butyl-N-4-hydroxybutyl-nitrosamine.",
+    "year": 1988,
+    "pmid": "3131548",
+    "doi": "10.1016/s0022-5347(17)42915-6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3131548/",
+    "venue": "journal",
+    "why": "Mitomycin in BBN-induced rat bladder carcinogenesis."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Morphological effects of mitomycin C administered intravesically to normal mice and mice with N-[4-(5-nitro-2-furyl)-2-thiazolyl]-formamide-induce bladder neoplasms.",
+    "year": 1980,
+    "pmid": "7356509",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7356509/",
+    "venue": "journal",
+    "why": "Intravesical mitomycin in FANFT-induced mouse bladder neoplasms."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "DNA content analysis, expression of Ki-67 and p53 in rat urothelial lesions induced by N-butyl-N-(4-hydroxybutyl) nitrosamine and treated with mitomycin C and bacillus Calmette-Guérin.",
+    "year": 2006,
+    "pmid": "16886626",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16886626/",
+    "venue": "journal",
+    "why": "Mitomycin treatment of BBN-induced rat urothelial lesions."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Intravenous siRNA Silencing of Survivin Enhances Activity of Mitomycin C in Human Bladder RT4 Xenografts.",
+    "year": 2015,
+    "pmid": "25681288",
+    "doi": "10.1016/j.juro.2015.02.036",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25681288/",
+    "venue": "journal",
+    "why": "Mitomycin arm in human bladder cancer xenografts."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Bladder tissue pharmacokinetics of intravesical mitomycin C and suramin in dogs.",
+    "year": 2010,
+    "pmid": "20625863",
+    "doi": "10.1208/s12248-010-9219-8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20625863/",
+    "venue": "journal",
+    "why": "Bladder tissue PK of intravesical mitomycin in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Bladder wall penetration of intravesical mitomycin C in dogs.",
+    "year": 1991,
+    "pmid": "1907883",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1907883/",
+    "venue": "journal",
+    "why": "Tissue distribution of intravesical mitomycin in dog bladder wall."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "A method to study drug concentration-depth profiles in tissues: mitomycin C in dog bladder wall.",
+    "year": 1991,
+    "pmid": "1902562",
+    "doi": "10.1023/a:1015827700904",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1902562/",
+    "venue": "journal",
+    "why": "Mitomycin concentration-depth profile in dog bladder."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Experimental investigations on the absorption of intravesically instilled mitomycin C in the urinary bladder of the rat.",
+    "year": 1982,
+    "pmid": "6804242",
+    "doi": "10.1159/000473508",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6804242/",
+    "venue": "journal",
+    "why": "Absorption of intravesical mitomycin in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Absorption of doxorubicin-hydrochloride and mitomycin-C after instillation into noninfected and infected bladders of dogs.",
+    "year": 1984,
+    "pmid": "6423839",
+    "doi": "10.1016/s0022-5347(17)50631-x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6423839/",
+    "venue": "journal",
+    "why": "Systemic absorption of intravesical mitomycin in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Sustained-release Formulation of Mitomycin C to the Upper Urinary Tract Using a Thermosensitive Polymer: A Preclinical Study.",
+    "year": 2017,
+    "pmid": "27720772",
+    "doi": "10.1016/j.urology.2016.09.039",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/27720772/",
+    "venue": "journal",
+    "why": "PK/dwell of mitomycin thermogel (UGN-101 formulation) in swine."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Serial retrograde instillations of sustained release formulation of mitomycin C to the upper urinary tract of the Yorkshire swine using a thermosensitive polymer: Safety and feasibility.",
+    "year": 2017,
+    "pmid": "28065395",
+    "doi": "10.1016/j.urolonc.2016.11.019",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28065395/",
+    "venue": "journal",
+    "why": "Mitomycin thermogel exposure/safety in healthy swine."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Increasing dwell time of mitomycin C in the upper tract with a reverse thermosensitive polymer.",
+    "year": 2013,
+    "pmid": "22998421",
+    "doi": "10.1089/end.2012.0211",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22998421/",
+    "venue": "journal",
+    "why": "Mitomycin dwell time with reverse thermal polymer in pigs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Kinetics of NAD(P)H:quinone oxidoreductase I (NQO1) inhibition by mitomycin C in vitro and in vivo.",
+    "year": 2003,
+    "pmid": "12649308",
+    "doi": "10.1124/jpet.103.050070",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12649308/",
+    "venue": "journal",
+    "why": "In vivo pharmacology (NQO1 inhibition) of mitomycin in animals."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "32P-analysis of DNA adducts in somatic and reproductive tissues of rats treated with the anticancer antibiotic, mitomycin C.",
+    "year": 1987,
+    "pmid": "3110608",
+    "doi": "10.1016/0027-5107(87)90043-1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3110608/",
+    "venue": "journal",
+    "why": "Tissue DNA adducts (PD) of mitomycin in rats."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Penetration of mitomycin C in human bladder.",
+    "year": 1993,
+    "pmid": "8324743",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8324743/",
+    "venue": "journal",
+    "why": "Mitomycin concentrations in human bladder tissue during intravesical therapy (target-site exposure)."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Bladder tissue uptake of mitomycin C during intravesical therapy is linear with drug concentration in urine.",
+    "year": 1998,
+    "pmid": "9516962",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9516962/",
+    "venue": "journal",
+    "why": "Human bladder tissue uptake of mitomycin vs urine concentration."
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 1749,
+  "mondo_id": "MONDO:0008977",
+  "phase": 1,
+  "searched": [
+   "PubMed: regorafenib OR BAY 73-4506 OR BAY73-4506 (<=2013), 97 hits screened",
+   "PubMed: regorafenib AND chondrosarcoma/sarcoma/bone/PK/rat/distribution/metabolism (<=2013)",
+   "Europe PMC full text: regorafenib AND chondrosarcoma (<=2013)",
+   "No chondrosarcoma model study and no healthy-animal PK/PD publication found by 2013; preclinical work (Wilhelm 2011, Abou-Elkacem 2013) is in non-chondrosarcoma tumor xenografts only"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 6305,
+  "mondo_id": "MONDO:0001056",
+  "phase": 1,
+  "searched": [
+   "PubMed: poziotinib OR HM781-36B OR HM781-36 OR NOV120101 OR NOV-1201 OR HM781 (<=2008): 0 hits",
+   "Europe PMC: same names (<=2010): 0 hits",
+   "Crossref: HM781-36B: first gastric cancer abstract is AACR-NCI-EORTC Nov 2009 (10.1158/1535-7163.targ-09-b260), after the 2008 cutoff, so excluded"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 1768,
+  "mondo_id": "MONDO:0018874",
+  "phase": 1,
+  "searched": [
+   "PubMed: homoharringtonine/omacetaxine/NSC 141633 AND animal/PK/in vivo terms (<=2007)",
+   "PubMed: homoharringtonine AND HL-60/myeloid/AML AND in vivo (<=2007)",
+   "Old natural product: in vivo antileukemic studies before 2008 use murine P388/L1210 lymphocytic leukemias or harringtonine (a different alkaloid), not AML models, so none listed as animal_disease"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetics of homoharringtonine in dogs.",
+    "year": 1988,
+    "pmid": "3349562",
+    "doi": "10.1007/BF00257360",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3349562/",
+    "venue": "journal",
+    "why": "IV HHT PK, CSF penetration and tissue distribution in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Metabolism of homoharringtonine, a cytotoxic component of the evergreen plant Cephalotaxus harringtonia.",
+    "year": 2003,
+    "pmid": "12724858",
+    "doi": "10.1046/j.1359-4117.2003.01066.x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12724858/",
+    "venue": "journal",
+    "why": "HHT PK and metabolism to HHT-acid in mice."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "[Metabolism of homoharringtonine in rats and mice].",
+    "year": 1982,
+    "pmid": "7183119",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7183119/",
+    "venue": "journal",
+    "why": "HHT metabolism in rats and mice."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 1700,
+  "mondo_id": "MONDO:0011849",
+  "phase": 3,
+  "searched": [
+   "PubMed: ixekizumab OR LY2439821 (<=2011)",
+   "Crossref: LY2439821 (<=2011)",
+   "No animal study of ixekizumab (humanized, primate-restricted anti-IL-17A) published by 2011; psoriasis biopsy PD study (Krueger 2012) and phase 2 NEJM 2012 fall after cutoff"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "LY2439821, a humanized anti-interleukin-17 monoclonal antibody, in the treatment of patients with rheumatoid arthritis: A phase I randomized, double-blind, placebo-controlled, proof-of-concept study.",
+    "year": 2010,
+    "pmid": "20131262",
+    "doi": "10.1002/art.27334",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20131262/",
+    "venue": "journal",
+    "why": "Phase 1 in RA with PK and PD biomarkers (CRP, ESR) of ixekizumab in humans."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 12225,
+  "mondo_id": "MONDO:0002146",
+  "phase": 2,
+  "searched": [
+   "PubMed: TAK-448 OR TAK 448 OR MVT-602 OR TAK448 (<=2014)",
+   "Europe PMC: TAK-448 (<=2014)",
+   "Crossref: TAK-448 kisspeptin (<=2014), found EJC Suppl 2010 abstract",
+   "No hypogonadism-model efficacy study; rat studies are pharmacology (LH/testosterone) in intact healthy males"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Chronic administration of the metastin/kisspeptin analog KISS1-305 or the investigational agent TAK-448 suppresses hypothalamic pituitary gonadal function and depletes plasma testosterone in adult male rats.",
+    "year": 2012,
+    "pmid": "23027808",
+    "doi": "10.1210/en.2012-1388",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23027808/",
+    "venue": "journal",
+    "why": "TAK-448 HPG-axis PD (LH, testosterone) in healthy male rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacologic profiles of investigational kisspeptin/metastin analogues, TAK-448 and TAK-683, in adult male rats in comparison to the GnRH analogue leuprolide.",
+    "year": 2014,
+    "pmid": "24747751",
+    "doi": "10.1016/j.ejphar.2014.03.058",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24747751/",
+    "venue": "journal",
+    "why": "TAK-448 PD profile in healthy male rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Design, synthesis, and biological evaluation of novel investigational nonapeptide KISS1R agonists with testosterone-suppressive activity.",
+    "year": 2013,
+    "pmid": "24047141",
+    "doi": "10.1021/jm401056w",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24047141/",
+    "venue": "journal",
+    "why": "Discovery paper with in vivo testosterone response to TAK-448 in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Potent and efficient testosterone suppression by chronic administration of novel metastin analogues, TAK-448 and TAK-683, in male rats",
+    "year": 2010,
+    "pmid": "",
+    "doi": "10.1016/s1359-6349(10)71058-2",
+    "url": "https://doi.org/10.1016/s1359-6349(10)71058-2",
+    "venue": "conference",
+    "why": "EORTC-NCI-AACR 2010 abstract: TAK-448 PD in healthy male rats."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Sustained exposure to the investigational Kisspeptin analog, TAK-448, down-regulates testosterone into the castration range in healthy males and in patients with prostate cancer: results from two phase 1 studies.",
+    "year": 2014,
+    "pmid": "24762108",
+    "doi": "10.1210/jc.2013-4236",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24762108/",
+    "venue": "journal",
+    "why": "LH/FSH/testosterone PD response to TAK-448 in healthy men."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 806,
+  "mondo_id": "MONDO:0011382",
+  "phase": 1,
+  "searched": [
+   "PubMed: sufentanil/ARX-F01/ARX-F02 AND sickle (<=2012): only a human case report",
+   "Europe PMC full text: sufentanil AND sickle AND mice/transgenic (<=2012): none",
+   "PubMed: sufentanil[ti] AND animal/PK terms (<=2012), 56 hits screened",
+   "Sufentanil is an old, widely used opioid: a representative set of healthy-animal pharmacology studies is listed, not an exhaustive one. No sickle cell disease animal model study found."
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Epidural and intravenous sufentanil in the rat: analgesia, opiate receptor binding, and drug concentrations in plasma and brain.",
+    "year": 1986,
+    "pmid": "3014923",
+    "doi": "10.1097/00000542-198607000-00007",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3014923/",
+    "venue": "journal",
+    "why": "Sufentanil analgesia, in vivo receptor binding and brain/plasma levels in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Opiate receptor binding-effect relationship: sufentanil and etorphine produce analgesia at the mu-site with low fractional receptor occupancy.",
+    "year": 1984,
+    "pmid": "6320962",
+    "doi": "10.1016/0006-8993(84)91264-2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6320962/",
+    "venue": "journal",
+    "why": "In vivo mu-opioid receptor occupancy vs analgesia for sufentanil in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Epidural and subcutaneous morphine, meperidine (pethidine), fentanyl and sufentanil in the rat: analgesia and other in vivo pharmacologic effects.",
+    "year": 1987,
+    "pmid": "2949676",
+    "doi": "10.1097/00000542-198702000-00013",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2949676/",
+    "venue": "journal",
+    "why": "In vivo pharmacology of sufentanil in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Comparison between epidural fentanyl, sufentanil, carfentanil, lofentanil and alfentanil in the rat: analgesia and other in vivo effects.",
+    "year": 1988,
+    "pmid": "2905988",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2905988/",
+    "venue": "journal",
+    "why": "Sufentanil in vivo analgesic pharmacology in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Ocular transmucosal absorption and toxicity of sufentanil in dogs.",
+    "year": 1998,
+    "pmid": "9428868",
+    "doi": "10.1097/00000539-199801000-00028",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9428868/",
+    "venue": "journal",
+    "why": "Transmucosal absorption PK of sufentanil in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Spinal delivery of sufentanil, alfentanil, and morphine in dogs. Physiologic and toxicologic investigations.",
+    "year": 1994,
+    "pmid": "7943841",
+    "doi": "10.1097/00000542-199410000-00017",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7943841/",
+    "venue": "journal",
+    "why": "Sufentanil pharmacology after spinal delivery in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Comparative spinal distribution and clearance kinetics of intrathecally administered morphine, fentanyl, alfentanil, and sufentanil.",
+    "year": 2000,
+    "pmid": "10719953",
+    "doi": "10.1097/00000542-200003000-00018",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10719953/",
+    "venue": "journal",
+    "why": "Sufentanil spinal distribution/clearance kinetics in pigs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "The effect of prior dural puncture on cerebrospinal fluid sufentanil concentrations in sheep after the administration of epidural sufentanil.",
+    "year": 1998,
+    "pmid": "9539604",
+    "doi": "10.1097/00000539-199804000-00022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9539604/",
+    "venue": "journal",
+    "why": "CSF sufentanil PK in sheep."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Effects of sufentanil on cerebral blood flow, cerebral blood flow velocity, and metabolism in dogs.",
+    "year": 1991,
+    "pmid": "1824670",
+    "doi": "10.1213/00000539-199102000-00006",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1824670/",
+    "venue": "journal",
+    "why": "Sufentanil PD on cerebral physiology in dogs."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Effects of sufentanil on regional cerebral glucose utilization in rats.",
+    "year": 1984,
+    "pmid": "6238553",
+    "doi": "10.1097/00000542-198411000-00016",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/6238553/",
+    "venue": "journal",
+    "why": "Sufentanil brain PD in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Antagonistic effects of naloxone and naloxonazine on sufentanil-induced antinociception and respiratory depression in rats.",
+    "year": 1999,
+    "pmid": "10506668",
+    "doi": "10.1016/s0304-3959(99)00068-8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10506668/",
+    "venue": "journal",
+    "why": "Sufentanil antinociception and respiratory PD in rats."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 5295,
+  "mondo_id": "MONDO:0005100",
+  "phase": 2,
+  "searched": [
+   "PubMed: GSK2330811 (<=2016): 0 hits",
+   "Europe PMC: GSK2330811 / GSK 2330811 (<=2017): 0 hits",
+   "Crossref: GSK2330811 oncostatin M (<=2017): no drug-specific record",
+   "Nothing published on this anti-OSM antibody before the 2017 phase 2 entry; web search budget exhausted so congress abstracts could not be checked"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 10280,
+  "mondo_id": "MONDO:0005494",
+  "phase": 1,
+  "searched": [
+   "PubMed: BMS-906024 / BMS 906024 / osugacestat / AL101 (<=2018)",
+   "Europe PMC full text: BMS-906024 AND breast/MDA-MB (<=2018); Gavai 2015 full text checked for MDA-MB-468, triple negative, pharmacokinetic, dogs",
+   "Crossref: BMS-906024 and AL101 breast/xenograft abstracts (<=2018): only lung adenocarcinoma AACR abstracts and T-ALL ASH abstract",
+   "EMBO Mol Med 2017 (Ran et al.) TNBC work is in vitro mammospheres only, so not counted"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Discovery of Clinical Candidate BMS-906024: A Potent Pan-Notch Inhibitor for the Treatment of Leukemia and Solid Tumors.",
+    "year": 2015,
+    "pmid": "26005526",
+    "doi": "10.1021/acsmedchemlett.5b00001",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26005526/",
+    "venue": "journal",
+    "why": "Discovery paper reporting BMS-906024 in vivo efficacy in solid tumor xenografts including the triple-negative breast line MDA-MB-468."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Discovery of Clinical Candidate BMS-906024: A Potent Pan-Notch Inhibitor for the Treatment of Leukemia and Solid Tumors.",
+    "year": 2015,
+    "pmid": "26005526",
+    "doi": "10.1021/acsmedchemlett.5b00001",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26005526/",
+    "venue": "journal",
+    "why": "Same paper reports preclinical pharmacokinetics of BMS-906024 (and its prodrug) across species including dogs."
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 12733,
+  "mondo_id": "MONDO:0009831",
+  "phase": 3,
+  "searched": [
+   "PubMed: CPI-613 / CPI 613 / devimistat / CPI613 (<=2017), 11 hits screened",
+   "Crossref: CPI-613 pancreatic (<=2017) for ASCO/AACR/ESMO abstracts",
+   "Human phase 1 papers (Lancet Oncol 2017, Clin Cancer Res 2014) report safety/PK/response, no target-engagement or PD biomarker; metabolism paper (Drug Metab Lett 2011) is in vitro S9, so no healthy-animal PK found"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Non-redox-active lipoate derivates disrupt cancer cell mitochondrial metabolism and are potent anticancer agents in vivo.",
+    "year": 2011,
+    "pmid": "21769686",
+    "doi": "10.1007/s00109-011-0785-8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21769686/",
+    "venue": "journal",
+    "why": "CPI-613 antitumor activity in human pancreatic cancer xenografts."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Translational assessment of mitochondrial dysfunction of pancreatic cancer from in vitro gene microarray and animal efficacy studies, to early clinical studies, via the novel tumor-specific anti-mitochondrial agent, CPI-613.",
+    "year": 2014,
+    "pmid": "25405166",
+    "doi": "10.3978/j.issn.2305-5839.2014.05.08",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25405166/",
+    "venue": "journal",
+    "why": "CPI-613 vs gemcitabine in BxPC-3 pancreatic xenografts (tumor growth and survival)."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Translational assessment of the efficacy of CPI-613 against pancreatic cancer in animal models versus patients with stage IV disease.",
+    "year": 2012,
+    "pmid": "",
+    "doi": "10.1200/jco.2012.30.15_suppl.3075",
+    "url": "https://doi.org/10.1200/jco.2012.30.15_suppl.3075",
+    "venue": "conference",
+    "why": "ASCO 2012 abstract: CPI-613 in pancreatic cancer animal models."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Abstract 3807: Regulation of pancreatic, gliosarcoma and non-small cell lung cancer via CPI-613, a novel anticancer therapeutic agent",
+    "year": 2012,
+    "pmid": "",
+    "doi": "10.1158/1538-7445.am2012-3807",
+    "url": "https://doi.org/10.1158/1538-7445.am2012-3807",
+    "venue": "conference",
+    "why": "AACR 2012 abstract on CPI-613 activity in pancreatic cancer models."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 5151,
+  "mondo_id": "MONDO:0008383",
+  "phase": 2,
+  "searched": [
+   "PubMed: TRU-015 / TRU 015 / TRU015 (<=2007)",
+   "Europe PMC: TRU-015 (<=2008)",
+   "Crossref: TRU-015 CD20 SMIP; CD20 SMIP macaque B cell depletion (<=2007)",
+   "PK/PD paper Clin Ther 2008 (PMID 19014836) is after the 2007 cutoff; 2005 ASCO xenograft abstract is lymphoma, not RA; no arthritis model or healthy-animal study found"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "Phase 1 study of TRU-015, a CD20-directed small modular immunopharmaceutical (SMIP) protein therapeutic, in subjects with rheumatoid arthritis",
+    "year": 2007,
+    "pmid": "",
+    "doi": "10.1186/ar2257",
+    "url": "https://doi.org/10.1186/ar2257",
+    "venue": "conference",
+    "why": "Phase 1 abstract reporting PK and peripheral B-cell depletion (PD) by TRU-015 in RA patients."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "TRU-015, a small modular immunopharmaceutical (SMIP) drug candidate directed against CD20, demonstrates clinical improvement in subjects with rheumatoid arthritis",
+    "year": 2007,
+    "pmid": "",
+    "doi": "10.1186/ar2258",
+    "url": "https://doi.org/10.1186/ar2258",
+    "venue": "conference",
+    "why": "Abstract with B-cell depletion data for TRU-015 in RA patients."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 14478,
+  "mondo_id": "MONDO:0009656",
+  "phase": 2,
+  "searched": [
+   "PubMed: NAGLU/MPS IIIB/Sanfilippo AND AAV/rAAV9 AND gene (<=2016)",
+   "PubMed: Fu H[au] AND MPS/NAGLU/Sanfilippo (<=2016)",
+   "Europe PMC full text: rAAV9-CMV-hNAGLU / rAAV9-hNAGLU / AAV9-NAGLU / ABO-101 (<=2016)",
+   "Earlier Fu-lab rAAV2 NAGLU vectors and other groups' AAV8/AAV5 NAGLU vectors are different products and not counted"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Correction of neurological disease of mucopolysaccharidosis IIIB in adult mice by rAAV9 trans-blood-brain barrier gene delivery.",
+    "year": 2011,
+    "pmid": "21386820",
+    "doi": "10.1038/mt.2011.34",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21386820/",
+    "venue": "journal",
+    "why": "IV rAAV9-CMV-hNAGLU in adult MPS IIIB mice: NAGLU restoration, storage correction, behaviour and survival."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Amyloidosis, synucleinopathy, and prion encephalopathy in a neuropathic lysosomal storage disease: the CNS-biomarker potential of peripheral blood.",
+    "year": 2013,
+    "pmid": "24278249",
+    "doi": "10.1371/journal.pone.0080142",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24278249/",
+    "venue": "journal",
+    "why": "Systemic rAAV9-hNAGLU in MPS IIIB mice corrected CNS storage and brain/blood molecular pathways."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "A GLP-Compliant Toxicology and Biodistribution Study: Systemic Delivery of an rAAV9 Vector for the Treatment of Mucopolysaccharidosis IIIB.",
+    "year": 2015,
+    "pmid": "26684447",
+    "doi": "10.1089/humc.2015.132",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26684447/",
+    "venue": "journal",
+    "why": "Includes non-GLP dosing of rAAV9-CMV-hNAGLU in MPS IIIB mice."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "A GLP-Compliant Toxicology and Biodistribution Study: Systemic Delivery of an rAAV9 Vector for the Treatment of Mucopolysaccharidosis IIIB.",
+    "year": 2015,
+    "pmid": "26684447",
+    "doi": "10.1089/humc.2015.132",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26684447/",
+    "venue": "journal",
+    "why": "GLP toxicology, biodistribution and NAGLU expression of rAAV9-CMV-hNAGLU in wild-type mice."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Feasibility and safety of systemic rAAV9-hNAGLU delivery for treating mucopolysaccharidosis IIIB: toxicology, biodistribution, and immunological assessments in primates.",
+    "year": 2014,
+    "pmid": "24720466",
+    "doi": "10.1089/humc.2013.208",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24720466/",
+    "venue": "journal",
+    "why": "rAAV9-CMV-hNAGLU biodistribution, NAGLU expression and immunogenicity in healthy cynomolgus monkeys."
+   }
+  ],
+  "none_found_kinds": [
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 3527,
+  "mondo_id": "MONDO:0018876",
+  "phase": 2,
+  "searched": [
+   "PubMed: KTE-X19 / brexucabtagene (<=2014): only a later LiverTox-style monograph",
+   "Crossref: KTE-X19 mantle cell lymphoma CAR (<=2015): nothing drug-specific",
+   "Preclinical/clinical work on the parent NCI FMC63-CD28 anti-CD19 CAR (and axicabtagene ciloleucel) is a parent product and does not count; no KTE-X19-specific publication before 2015"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 1631,
+  "mondo_id": "MONDO:0020283",
+  "phase": 2,
+  "searched": [
+   "PubMed: basiliximab AND uveitis/ocular/eye/retina/scleritis (<=2007): 0 hits",
+   "PubMed: SDZ CHI 621 / CHI 621 / basiliximab AND primates (<=2007): only transplant models in primates and in vitro affinity work, none in uveitis or healthy-animal PK",
+   "PubMed: basiliximab AND CD25 saturation/PD (<=2007), 22 hits",
+   "Basiliximab has been widely used since 1998: a representative set of human CD25-saturation (receptor occupancy) studies is listed"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "Prolonged action of a chimeric interleukin-2 receptor (CD25) monoclonal antibody used in cadaveric renal transplantation.",
+    "year": 1995,
+    "pmid": "7570988",
+    "doi": "10.1097/00007890-199510150-00023",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7570988/",
+    "venue": "journal",
+    "why": "Early SDZ CHI 621 study measuring CD25 saturation on circulating lymphocytes."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Pharmacokinetics and immunodynamics of chimeric IL-2 receptor monoclonal antibody SDZ CHI 621 in renal allograft recipients.",
+    "year": 1996,
+    "pmid": "8959785",
+    "doi": "10.1007/978-3-662-00818-8_9",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8959785/",
+    "venue": "journal",
+    "why": "PK and CD25 receptor saturation of basiliximab in humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Disposition of basiliximab, an interleukin-2 receptor monoclonal antibody, in recipients of mismatched cadaver renal allografts.",
+    "year": 1997,
+    "pmid": "9422405",
+    "doi": "10.1097/00007890-199712270-00012",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9422405/",
+    "venue": "journal",
+    "why": "Basiliximab disposition and CD25 saturation duration in humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Disposition and immunodynamics of basiliximab in liver allograft recipients.",
+    "year": 1998,
+    "pmid": "9695721",
+    "doi": "10.1016/S0009-9236(98)90024-8",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/9695721/",
+    "venue": "journal",
+    "why": "CD25 saturation (immunodynamics) of basiliximab in liver recipients."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Pharmacokinetics and pharmacodynamics of a chimeric interleukin-2 receptor monoclonal antibody, basiliximab, in renal transplantation: a comparison between Japanese and non-Japanese patients.",
+    "year": 2001,
+    "pmid": "11750362",
+    "doi": "10.1016/s0041-1345(01)02351-x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/11750362/",
+    "venue": "journal",
+    "why": "Basiliximab PK and CD25 saturation in humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A multicenter, open-label, pharmacokinetic/pharmacodynamic safety, and tolerability study of basiliximab (Simulect) in pediatric de novo renal transplant recipients.",
+    "year": 2002,
+    "pmid": "12394837",
+    "doi": "10.1097/00007890-200210150-00010",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12394837/",
+    "venue": "journal",
+    "why": "Basiliximab PK/PD (CD25 saturation) in children."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 7361,
+  "mondo_id": "MONDO:0013433",
+  "phase": 2,
+  "searched": [
+   "PubMed: simtuzumab / GS-6624 / AB0023 / LOXL2 antibody AND fibrosis/cholangitis (<=2012)",
+   "Europe PMC: simtuzumab / GS-6624 / AB0024 (<=2012): reviews only",
+   "Crossref: GS-6624 LOXL2; AB0024 humanized LOXL2 (<=2012): nothing",
+   "Barry-Hamilton 2010 (Nat Med) used AB0023, the murine parent antibody of simtuzumab (AB0024), in liver and lung fibrosis models; parent molecule, so not counted. No simtuzumab-specific animal or human PD data before 2013"
+  ],
+  "studies": [],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 2165,
+  "mondo_id": "MONDO:0006615",
+  "phase": 2,
+  "searched": [
+   "PubMed: sofpironium / BBI-4000 (<=2014): 0 hits",
+   "Discovered older name: sofpironium bromide is the (2R,3'R) stereoisomer of SGE (PcPOAGP_NA.Et), a Bodor soft glycopyrrolate analogue; PubMed: Bodor N[au] AND glycopyrrolate/anticholinergic/soft (<=2014), 82 hits screened",
+   "Crossref and Europe PMC: BBI-4000 / sofpironium (<=2015): nothing",
+   "No hyperhidrosis animal model study and no human PD study before 2015. Healthy-animal studies listed test SGE as 2R isomers (16259775, 16526564) or as resolved 2R3'R isomers (18444508)"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Synthesis and pharmacological effects of new, N-substituted soft anticholinergics based on glycopyrrolate.",
+    "year": 2005,
+    "pmid": "16259775",
+    "doi": "10.1211/jpp.57.11.0008",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16259775/",
+    "venue": "journal",
+    "why": "2R-SGE (sofpironium with the 3' centre unresolved): rabbit mydriasis, local action without contralateral effect, rat plasma stability."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacological effects of some newly developed soft anticholinergics and a receptor-binding QSAR study.",
+    "year": 2006,
+    "pmid": "16526564",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16526564/",
+    "venue": "journal",
+    "why": "SGE mydriatic effect and duration in rabbit eyes."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Stereoisomers of N-substituted soft anticholinergics and their zwitterionic metabolite based on glycopyrrolate--syntheses and pharmacological evaluations.",
+    "year": 2008,
+    "pmid": "18444508",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18444508/",
+    "venue": "journal",
+    "why": "Resolved SGE stereoisomers including 2R3'R-SGE (sofpironium), evaluated in vitro and by in vivo rabbit mydriasis."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 8639,
+  "mondo_id": "MONDO:0001382",
+  "phase": 2,
+  "searched": [
+   "PubMed: ifetroban / BMS-180291 / BMS 180,291 (<=2010), 58 hits screened",
+   "PubMed: ifetroban AND cirrhosis/liver/hepatorenal/renal failure/humans (<=2010)",
+   "No hepatorenal syndrome or cirrhotic renal dysfunction model found (8978360 is alcoholic liver disease without renal endpoints). No human target-engagement (ex vivo platelet TP-receptor blockade) report found; human disposition paper is PK only"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacological profile of BMS 180,291: a potent, long-acting, orally active thromboxane A2/prostaglandin endoperoxide receptor antagonist.",
+    "year": 1993,
+    "pmid": "8437108",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8437108/",
+    "venue": "journal",
+    "why": "In vivo/ex vivo TP-receptor antagonism and duration after oral ifetroban in animals."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Antiplatelet activity of the long-acting thromboxane receptor antagonist BMS 180,291 in monkeys.",
+    "year": 1992,
+    "pmid": "1301074",
+    "doi": "10.1016/0090-6980(92)90135-g",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/1301074/",
+    "venue": "journal",
+    "why": "Ex vivo platelet PD of ifetroban in monkeys."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Disposition of radiolabeled ifetroban in rats, dogs, monkeys, and humans.",
+    "year": 2000,
+    "pmid": "10901709",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10901709/",
+    "venue": "journal",
+    "why": "PK, bioavailability and metabolism of ifetroban in rats, dogs and monkeys."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Dose-related cardioprotection by ifetroban in relation to inhibition of thrombosis and ex vivo platelet function.",
+    "year": 1995,
+    "pmid": "7716179",
+    "doi": "10.1159/000139271",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/7716179/",
+    "venue": "journal",
+    "why": "Dose-related ex vivo platelet inhibition (PD) by ifetroban in animals."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 2,
+  "mondo_id": "MONDO:0005301",
+  "phase": 2,
+  "searched": [
+   "PubMed: amantadine/ADS-5102 AND multiple sclerosis/EAE/demyelination/cuprizone/fatigue (<=2014), 111 hits screened",
+   "PubMed: amantadine[ti] AND animals AND PK/brain/microdialysis/NMDA (<=2014), 157 hits; representative subset listed",
+   "PubMed: amantadine[ti] AND PET/SPECT/raclopride/TMS in humans (<=2014)",
+   "Amantadine is an old, widely used drug: a representative set of healthy-animal and human PD studies is listed, not an exhaustive one. ADS-5102 (extended-release) has no MS-specific preclinical publication before 2015"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Modulation of neurological deficits and expression of glutamate receptors during experimental autoimmune encephalomyelitis after treatment with selected antagonists of glutamate receptors.",
+    "year": 2013,
+    "pmid": "23936777",
+    "doi": "10.1155/2013/186068",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23936777/",
+    "venue": "journal",
+    "why": "Amantadine suppressed neurological deficits in rat EAE."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Effects of antagonists of glutamate receptors on pro-inflammatory cytokines in the brain cortex of rats subjected to experimental autoimmune encephalomyelitis.",
+    "year": 2013,
+    "pmid": "23746391",
+    "doi": "10.1016/j.jneuroim.2013.05.006",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23746391/",
+    "venue": "journal",
+    "why": "Amantadine treatment in rat EAE reduced neurological symptoms and cortical cytokines."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Modulation of glutamate transport and receptor binding by glutamate receptor antagonists in EAE rat brain.",
+    "year": 2014,
+    "pmid": "25426719",
+    "doi": "10.1371/journal.pone.0113954",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25426719/",
+    "venue": "journal",
+    "why": "Amantadine effects on glutamate transport in EAE rat brain."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Failure of amantadine hydrochloride to alter immune responses in the experimental allergic encephalomyelitis model of neuroautoimmune disease.",
+    "year": 1988,
+    "pmid": "3403172",
+    "doi": "10.3109/00207458808990718",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3403172/",
+    "venue": "journal",
+    "why": "Amantadine tested in EAE (negative result)."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Amantadine restores impulse conduction across demyelinated nerve segments.",
+    "year": 1987,
+    "pmid": "3499273",
+    "doi": "10.1111/j.1440-1681.1987.tb00972.x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3499273/",
+    "venue": "journal",
+    "why": "Amantadine restored conduction in demyelinated frog and rat nerve, a demyelination model."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Possible involvement of cationic-drug sensitive transport systems in the blood-to-brain influx and brain-to-blood efflux of amantadine across the blood-brain barrier.",
+    "year": 2015,
+    "pmid": "25410756",
+    "doi": "10.1002/bdd.1926",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/25410756/",
+    "venue": "journal",
+    "why": "Brain uptake/efflux of amantadine in rats (epub 2014)."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "The involvement of a Na+- and Cl--dependent transporter in the brain uptake of amantadine and rimantadine.",
+    "year": 2012,
+    "pmid": "22352408",
+    "doi": "10.1021/mp2004127",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/22352408/",
+    "venue": "journal",
+    "why": "Brain uptake of amantadine in rodents."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Involvement of the sigma 1 receptor in the modulation of dopaminergic transmission by amantadine.",
+    "year": 2004,
+    "pmid": "15090047",
+    "doi": "10.1111/j.0953-816X.2004.03297.x",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15090047/",
+    "venue": "journal",
+    "why": "In vivo dopaminergic PD of amantadine in rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Effects of amantadine and budipine on antidepressant drug-evoked changes in extracellular dopamine in the frontal cortex of freely moving rats.",
+    "year": 2006,
+    "pmid": "16996043",
+    "doi": "10.1016/j.brainres.2006.07.039",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16996043/",
+    "venue": "journal",
+    "why": "Microdialysis PD of amantadine in rat brain."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Synergistic effect of imipramine and amantadine in the forced swimming test in rats. Behavioral and pharmacokinetic studies.",
+    "year": 2004,
+    "pmid": "15156068",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15156068/",
+    "venue": "journal",
+    "why": "Amantadine brain/plasma PK in rats."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Modulation of human motor cortex excitability by single doses of amantadine.",
+    "year": 2006,
+    "pmid": "16794570",
+    "doi": "10.1038/sj.npp.1301122",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16794570/",
+    "venue": "journal",
+    "why": "TMS measure of NMDA-related cortical excitability after amantadine in healthy humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Stimulation of dopa decarboxylase activity in striatum of healthy human brain secondary to NMDA receptor antagonism with a low dose of amantadine.",
+    "year": 1999,
+    "pmid": "10529725",
+    "doi": "10.1002/(SICI)1098-2396(19991215)34:4<313::AID-SYN7>3.0.CO;2-1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/10529725/",
+    "venue": "journal",
+    "why": "FDOPA PET PD of amantadine in healthy humans."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "New perspectives on neurochemical effects of amantadine in the brain of parkinsonian patients: a PET - [(11)C]raclopride study.",
+    "year": 2002,
+    "pmid": "12373560",
+    "doi": "10.1007/s00702-002-0694-7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12373560/",
+    "venue": "journal",
+    "why": "[11C]raclopride PET of amantadine effect on D2 binding in patients."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Effects of the dopaminergic agent and NMDA receptor antagonist amantadine on cognitive function, cerebral glucose metabolism and D2 receptor availability in chronic traumatic brain injury",
+    "year": 2005,
+    "pmid": "16134735",
+    "doi": "10.1080/02699050400025059",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16134735/",
+    "venue": "journal",
+    "why": "PET D2 availability and glucose metabolism after amantadine in patients."
+   }
+  ],
+  "none_found_kinds": []
+ },
+ {
+  "moiety_id": 7757,
+  "mondo_id": "MONDO:0005249",
+  "phase": 2,
+  "searched": [
+   "PubMed: sulopenem / CP-70,429 / CP-70429 / PF-03709270 and the diastereomeric mixture CP-65,207 (<=2008)",
+   "Europe PMC and Crossref: sulopenem / CP-70,429 (<=2008)",
+   "Murine systemic infection models (8786626) are not pneumonia models and are not counted. Animal PK is published only for CP-65,207, the diastereomeric mixture that contains sulopenem; it is listed with that caveat. No human PD/target-engagement study found"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "[In vitro and in vivo activities of sulopenem compared with those of imipenem and cephalosporins].",
+    "year": 1996,
+    "pmid": "8786623",
+    "doi": "",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/8786623/",
+    "venue": "journal",
+    "why": "Sulopenem (CP-70,429) efficacy in guinea pig experimental Klebsiella pneumoniae lung infection."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "Pharmacokinetic studies in animals of a new parenteral penem CP-65,207 and its oral prodrug ester.",
+    "year": 1990,
+    "pmid": "2351614",
+    "doi": "10.7164/antibiotics.43.422",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/2351614/",
+    "venue": "journal",
+    "why": "PK in mice, rats, dogs and monkeys of CP-65,207, the diastereomeric mixture of which sulopenem is the active isomer (caveat: mixture, not pure sulopenem)."
+   }
+  ],
+  "none_found_kinds": [
+   "human_engagement"
+  ]
+ },
+ {
+  "moiety_id": 8129,
+  "mondo_id": "MONDO:0007254",
+  "phase": 2,
+  "searched": [
+   "PubMed: selicrelumab / CP-870,893 / CP-870893 / CP 870,893 / RO7009789 (<=2017), 23 hits screened",
+   "No healthy-animal PK/PD publication found (CP-870,893 does not cross-react with rodent CD40; primate tox not published)",
+   "Human PD/immune-activation studies listed are a representative set from phase 1 trials in solid tumors"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "The CD40 agonist antibody CP-870,893 enhances dendritic cell and B-cell activity and promotes anti-tumor efficacy in SCID-hu mice.",
+    "year": 2011,
+    "pmid": "21479995",
+    "doi": "10.1007/s00262-011-1014-6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21479995/",
+    "venue": "journal",
+    "why": "CP-870,893 single-dose efficacy against human breast (and other) CD40+ tumor xenografts in SCID-beige mice."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Clinical activity and immune modulation in cancer patients treated with CP-870,893, a novel CD40 agonist monoclonal antibody.",
+    "year": 2007,
+    "pmid": "17327609",
+    "doi": "10.1200/JCO.2006.08.3311",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17327609/",
+    "venue": "journal",
+    "why": "First-in-human: B-cell CD40 pathway activation markers (CD86 upregulation, B-cell depletion) and cytokines."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Immune modulation with weekly dosing of an agonist CD40 antibody in a phase I study of patients with advanced solid tumors.",
+    "year": 2010,
+    "pmid": "20855968",
+    "doi": "10.4161/cbt.10.10.13251",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/20855968/",
+    "venue": "journal",
+    "why": "Weekly dosing with B-cell activation and immune PD biomarkers."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "CD40 agonists alter tumor stroma and show efficacy against pancreatic carcinoma in mice and humans.",
+    "year": 2011,
+    "pmid": "21436454",
+    "doi": "10.1126/science.1198443",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21436454/",
+    "venue": "journal",
+    "why": "Human PD (B-cell activation, cytokines, tumor macrophage changes) after CP-870,893."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Phase I study of the CD40 agonist antibody CP-870,893 combined with carboplatin and paclitaxel in patients with advanced solid tumors.",
+    "year": 2013,
+    "pmid": "23483678",
+    "doi": "10.4161/onci.23033",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23483678/",
+    "venue": "journal",
+    "why": "PD immune markers (B-cell CD86, cytokines) with CP-870,893 in solid tumor patients."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "A phase I study of an agonist CD40 monoclonal antibody (CP-870,893) in combination with gemcitabine in patients with advanced pancreatic ductal adenocarcinoma.",
+    "year": 2013,
+    "pmid": "23983255",
+    "doi": "10.1158/1078-0432.CCR-13-1320",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/23983255/",
+    "venue": "journal",
+    "why": "Immune PD biomarkers after CP-870,893 in patients."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Serial immunomonitoring of cancer patients receiving combined antagonistic anti-CD40 and chemotherapy reveals consistent and cyclical modulation of T cell and dendritic cell parameters.",
+    "year": 2017,
+    "pmid": "28619093",
+    "doi": "10.1186/s12885-017-3403-5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/28619093/",
+    "venue": "journal",
+    "why": "Serial immune monitoring of CP-870,893 PD in patients."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 1303,
+  "mondo_id": "MONDO:0010811",
+  "phase": 3,
+  "searched": [
+   "PubMed: tadalafil/IC351/GF196960 AND prostate/bladder/LUTS/urethra (<=2008), 49 hits screened: no animal BPH/LUTS model study of tadalafil before 2009 (human prostate tissue strips in vitro only)",
+   "PubMed: tadalafil[ti]/IC351 AND animals (<=2008), 29 hits",
+   "PubMed: tadalafil[ti] AND cGMP/PD/hemodynamics in humans (<=2008)",
+   "Tadalafil was widely used by 2008 (approved for ED in 2003): a representative set of healthy-animal and human PD studies is listed"
+  ],
+  "studies": [
+   {
+    "kind": "animal_healthy",
+    "title": "Testosterone regulates PDE5 expression and in vivo responsiveness to tadalafil in rat corpus cavernosum.",
+    "year": 2005,
+    "pmid": "15716209",
+    "doi": "10.1016/j.eururo.2004.10.021",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15716209/",
+    "venue": "journal",
+    "why": "In vivo intracavernosal pressure response to tadalafil in intact and castrated rats."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "The discovery of tadalafil: a novel and highly selective PDE5 inhibitor. 2: 2,3,6,7,12,12a-hexahydropyrazino[1',2':1,6]pyrido[3,4-b]indole-1,4-dione analogues.",
+    "year": 2003,
+    "pmid": "14521415",
+    "doi": "10.1021/jm0300577",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/14521415/",
+    "venue": "journal",
+    "why": "Discovery paper including in vivo pharmacology of tadalafil in animals."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Interaction between the phosphodiesterase 5 inhibitor, tadalafil and 2 alpha-blockers, doxazosin and tamsulosin in healthy normotensive men.",
+    "year": 2004,
+    "pmid": "15540759",
+    "doi": "10.1097/01.ju.0000142687.75577.e4",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/15540759/",
+    "venue": "journal",
+    "why": "Haemodynamic (blood pressure) PD of tadalafil in healthy men."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Hemodynamic interaction study between the alpha1-blocker alfuzosin and the phosphodiesterase-5 inhibitor tadalafil in middle-aged healthy male subjects.",
+    "year": 2006,
+    "pmid": "16765179",
+    "doi": "10.1016/j.urology.2006.01.001",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/16765179/",
+    "venue": "journal",
+    "why": "Haemodynamic PD of tadalafil in healthy men."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Immediate- and late-hemodynamic coronary effects of tadalafil in men with erectile dysfunction and coronary artery disease.",
+    "year": 2008,
+    "pmid": "17703220",
+    "doi": "10.1038/sj.ijir.3901592",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17703220/",
+    "venue": "journal",
+    "why": "Coronary vasodilator PD of tadalafil in men."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "The effects of tadalafil on cold-induced vasoconstriction in patients with Raynaud's phenomenon.",
+    "year": 2007,
+    "pmid": "17301734",
+    "doi": "10.1038/sj.clpt.6100103",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/17301734/",
+    "venue": "journal",
+    "why": "Vascular PD of PDE5 inhibition by tadalafil in humans."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease"
+  ]
+ },
+ {
+  "moiety_id": 8605,
+  "mondo_id": "MONDO:0009693",
+  "phase": 2,
+  "searched": [
+   "PubMed: tabalumab / LY2127399 / LY 2127399 (<=2011): reviews only",
+   "Europe PMC: tabalumab / LY2127399 (<=2012): reviews only",
+   "Crossref: LY2127399 BAFF; LY2127399 multiple myeloma; anti-BAFF LY2127399 cynomolgus (<=2011)",
+   "No myeloma xenograft or healthy-animal study of tabalumab published by 2011; ASH abstracts not reachable without web search"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "Phase I study of LY2127399, a human anti-BAFF antibody, and bortezomib in patients with previously treated multiple myeloma.",
+    "year": 2011,
+    "pmid": "",
+    "doi": "10.1200/jco.2011.29.15_suppl.8012",
+    "url": "https://doi.org/10.1200/jco.2011.29.15_suppl.8012",
+    "venue": "conference",
+    "why": "ASCO 2011 phase 1 abstract in myeloma reporting PK and BAFF/B-cell pharmacodynamics of tabalumab."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 8938,
+  "mondo_id": "MONDO:0007147",
+  "phase": 2,
+  "searched": [
+   "PubMed/Europe PMC/Crossref: AD036 / AD-036 (<=2018-2019): no publication under the code",
+   "ClinicalTrials.gov API, NCT03845023 (Apnimed, AD036 phase 2): doses 25/5, 75/1.5, 75/5, i.e. a fixed-dose atomoxetine/oxybutynin combination",
+   "PubMed: atomoxetine AND oxybutynin (<=2019); Europe PMC: atomoxetine AND oxybutynin AND apnea/genioglossus (<=2018); Crossref ATS abstracts",
+   "Studies of atomoxetine or oxybutynin alone are not counted. No animal study of the combination found before 2019"
+  ],
+  "studies": [
+   {
+    "kind": "human_engagement",
+    "title": "The Combination of Atomoxetine and Oxybutynin Greatly Reduces Obstructive Sleep Apnea Severity. A Randomized, Placebo-controlled, Double-Blind Crossover Trial.",
+    "year": 2018,
+    "pmid": "30395486",
+    "doi": "10.1164/rccm.201808-1493OC",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30395486/",
+    "venue": "journal",
+    "why": "Epub Nov 2018: atomoxetine+oxybutynin (AD036 composition) increased genioglossus muscle responsiveness (EMG) during sleep in OSA patients, a PD/target-mechanism readout."
+   }
+  ],
+  "none_found_kinds": [
+   "animal_disease",
+   "animal_healthy"
+  ]
+ },
+ {
+  "moiety_id": 1832,
+  "mondo_id": "MONDO:0008315",
+  "phase": 3,
+  "searched": [
+   "PubMed: olaparib/AZD2281/KU-0059436 AND prostate (<=2016), 32 hits screened",
+   "Europe PMC full text: olaparib/AZD2281 AND prostate AND xenograft/in vivo AND prostate cell lines (<=2016, no reviews), 45 hits screened",
+   "PubMed: olaparib AND PAR/pharmacodynamic AND patients; olaparib AND animal PK (<=2016)",
+   "Olaparib was widely studied by 2016: prostate in vivo studies listed are those whose abstracts confirm olaparib dosing in prostate models; Schiewer 2012 (veliparib) and in vitro-only prostate papers excluded. Human PD: representative"
+  ],
+  "studies": [
+   {
+    "kind": "animal_disease",
+    "title": "Mechanistic rationale for inhibition of poly(ADP-ribose) polymerase in ETS gene fusion-positive prostate cancer.",
+    "year": 2011,
+    "pmid": "21575865",
+    "doi": "10.1016/j.ccr.2011.04.010",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/21575865/",
+    "venue": "journal",
+    "why": "Olaparib inhibited ETS-positive (VCaP) but not ETS-negative prostate cancer xenograft growth."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Targeted radiosensitization of ETS fusion-positive prostate cancer through PARP1 inhibition.",
+    "year": 2013,
+    "pmid": "24204199",
+    "doi": "10.1593/neo.131604",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24204199/",
+    "venue": "journal",
+    "why": "Olaparib radiosensitization of ERG-positive prostate cancer verified in xenografts."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Targeting poly(ADP-ribose) polymerase and the c-Myb-regulated DNA damage response pathway in castration-resistant prostate cancer.",
+    "year": 2014,
+    "pmid": "24847116",
+    "doi": "10.1126/scisignal.2005070",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24847116/",
+    "venue": "journal",
+    "why": "Olaparib combined with MYB/BRCA1/Chk1 targeting or castration in prostate cancer xenograft-bearing mice."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "Vulnerabilities of PTEN-TP53-deficient prostate cancers to compound PARP-PI3K inhibition.",
+    "year": 2014,
+    "pmid": "24866151",
+    "doi": "10.1158/2159-8290.CD-13-0230",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/24866151/",
+    "venue": "journal",
+    "why": "Olaparib plus BKM120 in Pten/Trp53-deficient genetically engineered prostate cancer mice."
+   },
+   {
+    "kind": "animal_disease",
+    "title": "In vivo studies of the PARP inhibitor, AZD-2281, in combination with fractionated radiotherapy: An exploration of the therapeutic ratio.",
+    "year": 2015,
+    "pmid": "26277432",
+    "doi": "10.1016/j.radonc.2015.08.003",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26277432/",
+    "venue": "journal",
+    "why": "Olaparib plus fractionated RT in 22Rv1 prostate cancer xenografts."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "In vivo studies of the PARP inhibitor, AZD-2281, in combination with fractionated radiotherapy: An exploration of the therapeutic ratio.",
+    "year": 2015,
+    "pmid": "26277432",
+    "doi": "10.1016/j.radonc.2015.08.003",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/26277432/",
+    "venue": "journal",
+    "why": "Normal-tissue (gut crypt) effects of olaparib with RT in mice."
+   },
+   {
+    "kind": "animal_healthy",
+    "title": "4-[3-(4-cyclopropanecarbonylpiperazine-1-carbonyl)-4-fluorobenzyl]-2H-phthalazin-1-one: a novel bioavailable inhibitor of poly(ADP-ribose) polymerase-1.",
+    "year": 2008,
+    "pmid": "18800822",
+    "doi": "10.1021/jm8001263",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/18800822/",
+    "venue": "journal",
+    "why": "Discovery paper for KU-0059436 (olaparib) reporting oral bioavailability/PK in animals."
+   },
+   {
+    "kind": "human_engagement",
+    "title": "Inhibition of poly(ADP-ribose) polymerase in tumors from BRCA mutation carriers.",
+    "year": 2009,
+    "pmid": "19553641",
+    "doi": "10.1056/NEJMoa0900212",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/19553641/",
+    "venue": "journal",
+    "why": "First-in-human: PAR inhibition in PBMCs and plucked eyebrow hair follicles / tumor (target engagement) by olaparib; included prostate cancer patients."
+   }
+  ],
+  "none_found_kinds": []
+ }
+]

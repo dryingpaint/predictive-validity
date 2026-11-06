@@ -7,7 +7,7 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 288,
+   "rev": 291,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "3458a6e501cc3b2c",
@@ -18,7 +18,7 @@
     "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "02a929c8ebc27e79",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "4c7320e4b08ddc45",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence and design": "287454dea4e70fa0",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "a332ead327dce01c",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "c21bb2184004797e",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does stronger or more specific evidence help?": "98c579fa3eb3a320",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Confirmatory hypotheses": "5e3ecf86d151f369",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "5e3092d2e6dcc855",
@@ -36,7 +36,7 @@
     "Predictive Validity in Drug Development > Appendix > Can the evidence pick individual programs?": "e8d231fb8a07a845",
     "Predictive Validity in Drug Development > Appendix > Design of the Phase 2 analysis": "2fdb4d80d835a715",
     "Predictive Validity in Drug Development > Appendix > By endpoint": "00128bcb673bdaeb",
-    "Predictive Validity in Drug Development > Appendix > Evidence categories": "53ca5107f8004468",
+    "Predictive Validity in Drug Development > Appendix > Evidence categories": "cfc22d3432a56d79",
     "Predictive Validity in Drug Development > Appendix > Limitations": "1f57acbcef0ea7af",
     "Predictive Validity in Drug Development > Sources": "5febc2382224bb54"
    }
@@ -44,7 +44,7 @@
   "REPORT_APPENDIX.md": {
    "name": "Appendix detail",
    "node": "9bf11c10-61a3",
-   "rev": 58,
+   "rev": 59,
    "sections": {
     "Appendix detail": "dd0cdf63730712ee",
     "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
@@ -52,7 +52,7 @@
     "Appendix detail > Tables behind the figures > Why programs stop": "b2355cbbf3e3001e",
     "Appendix detail > Tables behind the figures > Why efficacy failed": "91e49c049076f811",
     "Appendix detail > Tables behind the figures > By disease area and modality": "7392e55f66bd2298",
-    "Appendix detail > Tables behind the figures > Evidence by category": "63eae7a9e192e068",
+    "Appendix detail > Tables behind the figures > Evidence by category": "14d7e048aeb8abae",
     "Appendix detail > Tables behind the figures > Relative success, all programs": "ef74edf201774173",
     "Appendix detail > Tables behind the figures > Genetic dose–response": "16ecf756d004c30b",
     "Appendix detail > Tables behind the figures > Relative success by disease area": "32541e203c67adde",
@@ -130,9 +130,9 @@
    "published": "blob/76b1b2e8-4916"
   },
   "report/output/figures/evidence_translates.png": {
-   "hash": "ce9df848fd7126a5",
-   "blob": "blob/ffb7c91f-c595",
-   "published": "blob/ffb7c91f-c595"
+   "hash": "a06ecbfecd40e2af",
+   "blob": "blob/fec18e34-7db4",
+   "published": "blob/fec18e34-7db4"
   },
   "report/output/figures/prediction.png": {
    "hash": "1091decac29c988f",

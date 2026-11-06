@@ -102,8 +102,8 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · Mouse knockout from a large-scale screen | 40 / 7,435 | 16 | Too rare to estimate | – | – | – |
 | · Mouse symptoms closely match the disease | 878 / 7,435 | 317 | 1.44 (1.05–1.91) | 1.44 (1.15–1.80) | 1.42 (1.14–1.77) | 0.76 (0.61–0.96) |
 | · Mouse result agrees with the drug's direction | 489 / 7,435 | 183 | 1.84 (1.33–2.50) | 1.38 (1.04–1.85) | 1.37 (1.03–1.82) | 0.55 (0.39–0.78) |
-| · The drug in an animal model of the disease | – | – | Not measured: the literature search missed too many studies | – | – | – |
-| · The drug tested in healthy animals | – | – | Not measured: the literature search missed too many studies | – | – | – |
+| · The drug in an animal model of the disease (exploratory) | 4,655 / 8,833 | 1,535 | 0.74 (0.62–0.91) | 0.83 (0.71–0.99) | 0.83 (0.70–0.98) | 0.94 (0.84–1.05) |
+| · The drug tested in healthy animals (exploratory) | 5,375 / 9,875 | 1,911 | 0.64 (0.54–0.77) | 0.81 (0.68–0.96) | 0.81 (0.69–0.96) | 0.93 (0.82–1.06) |
 | Cell studies | 237 / 1,824 | 62 | 0.54 (0.15–1.21) | 0.55 (0.25–1.24) | 0.56 (0.25–1.27) | 0.54 (0.27–1.09) |
 | · Gene-knockout screens in human cells | 0 / 7,435 | 0 | Too rare to estimate | – | – | – |
 | · Cancer cells of this type need the gene to grow | 237 / 1,782 | 62 | 0.55 (0.16–1.38) | 0.56 (0.25–1.25) | 0.57 (0.25–1.28) | 0.55 (0.27–1.13) |
@@ -114,8 +114,8 @@ Every category and subcategory on US-developed programs, as the main tab's evide
 | · Drug binds its target 10× more strongly than other proteins tested | 579 / 1,121 | 162 | 1.27 (0.71–2.25) | 0.99 (0.64–1.53) | 1.00 (0.65–1.54) | 0.99 (0.70–1.39) |
 | · Drug-like size and chemistry | 4,654 / 5,520 | 1,266 | 0.99 (0.75–1.34) | 0.93 (0.71–1.23) | 0.94 (0.71–1.22) | 0.90 (0.75–1.08) |
 | · Chemistry suited to entering the brain (brain diseases) | 547 / 814 | 194 | 0.86 (0.48–1.65) | 1.43 (0.78–2.64) | 1.40 (0.76–2.58) | 0.91 (0.70–1.17) |
-| Early studies of the drug in people | – | – | Not measured: the literature search missed too many studies | – | – | – |
-| · Drug shown to act on its target in people | – | – | Not measured: the literature search missed too many studies | – | – | – |
+| Early studies of the drug in people (exploratory) | – | – | Only its one line, below | – | – | – |
+| · Drug shown to act on its target in people (exploratory) | 2,183 / 5,613 | 855 | 1.04 (0.87–1.26) | 1.16 (0.96–1.40) | 1.17 (0.97–1.41) | 0.98 (0.86–1.11) |
 | Safety risk | 4,045 / 7,435 | 634 | 0.98 (0.71–1.36) | 1.12 (0.90–1.38) | 1.11 (0.90–1.37) | 1.02 (0.54–1.94) (safety) |
 | · People rarely carry broken copies of the gene | 1,629 / 7,435 | 242 | 0.83 (0.59–1.16) | 0.97 (0.75–1.26) | 0.98 (0.76–1.27) | 0.62 (0.24–1.61) (safety) |
 | · Mice without the gene die young | 3,747 / 7,435 | 588 | 0.99 (0.71–1.36) | 1.08 (0.87–1.33) | 1.07 (0.87–1.31) | 1.17 (0.63–2.17) (safety) |

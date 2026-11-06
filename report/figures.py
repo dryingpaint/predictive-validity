@@ -284,7 +284,8 @@ def dose_response():
 # evidence by the system that produced it, then safety risk and the clinical-precedent benchmark apart.
 CATEGORY_COLORS = {"human_genetics": "#2a78d6", "tumour_genetics": "#eb6834", "diseased_tissue": "#eda100",
                    "pathway": "#7fb0e8",
-                   "animal": "#1baf7a", "cell": "#8a8984", "molecule": "#b04a8f", "early_human": "#0f8f9a",
+                   "animal": "#1baf7a", "published_animal": "#76c9a3", "cell": "#8a8984", "molecule": "#b04a8f",
+                   "early_human": "#0f8f9a",
                    "safety_risk": "#6b6a65", "precedent": "#4a3aa7"}
 # Section 3 evidence-map rows by the category whose colour they take
 S3_GROUP = {"g3": "human_genetics", "gwas": "human_genetics", "gwas_strong": "human_genetics",

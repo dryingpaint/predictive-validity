@@ -200,10 +200,11 @@ def categories_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "lines.csv"))
     out = []
     for r in df.to_dict("records"):
+        literature = isinstance(r.get("status"), str) and r["status"] != ""  # a line read from the published literature
         name = ("" if r["level"] in ("category", "adjustment") else "· ") + r["label"] \
-            + (" (descriptive)" if r["level"] == "descriptive" else "")
+            + (" (descriptive)" if r["level"] == "descriptive" else "") + (" (exploratory)" if literature else "")
         if pd.isna(r.get("column")):
-            out.append([name, "–", "–", "Not measured: the literature search missed too many studies", "–", "–", "–"])
+            out.append([name, "–", "–", "Only its one line, below", "–", "–", "–"])
             continue
         exposed = f"{int(r['exposed']):,} / {int(r['eligible']):,}"
         if not r["estimated"]:

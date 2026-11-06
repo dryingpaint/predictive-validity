@@ -10,6 +10,7 @@ parsed output and usage with the run's prompt, schema and code commit.
 """
 from __future__ import annotations
 
+import fcntl
 import hashlib
 import json
 import os
@@ -130,7 +131,7 @@ class Task:
     subject_type: str
     validate: Callable[[dict[str, Any], dict[str, Any]], None] | None = None
     model: str = MODEL
-    effort: str = "medium"
+    effort: str | None = "medium"  # None for a model that takes no effort setting (Haiku 4.5)
     max_tokens: int = 8000
     # Server tools (web search, web fetch) the model may call; a task with tools runs direct calls
     # only, resumes paused turns up to MAX_CONTINUATIONS times, and records every URL it retrieved.
@@ -142,7 +143,7 @@ class Task:
             model=self.model,
             max_tokens=self.max_tokens,
             system=[{"type": "text", "text": self.system, "cache_control": {"type": "ephemeral"}}],
-            output_config={"effort": self.effort,
+            output_config={**({"effort": self.effort} if self.effort else {}),
                            "format": {"type": "json_schema", "schema": self.schema}},
             messages=[{"role": "user", "content": self.render(payload)}],
         )
@@ -194,6 +195,18 @@ def _reusable(cur, task: Task, items: dict[str, dict[str, Any]], reuse_by: str,
     return reused
 
 
+def _storable(value: Any) -> Any:
+    """value with NUL characters removed from every string: Postgres text and jsonb cannot hold them, and a
+    retrieved abstract occasionally carries one. Hashes are taken from the original value."""
+    if isinstance(value, str):
+        return value.replace("\x00", "")
+    if isinstance(value, dict):
+        return {k: _storable(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_storable(v) for v in value]
+    return value
+
+
 def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: str,
          parsed: dict[str, Any] | None, request_id: str, usage: dict[str, Any],
          error: str | None = None, prior_id: int | None = None, params: dict[str, Any] | None = None) -> tuple:
@@ -201,9 +214,9 @@ def _row(run_id: uuid.UUID, task: Task, key: str, payload: dict[str, Any], raw: 
     one copies and the model parameters it was made with."""
     canonical = parsed if parsed is not None else {"error": error}
     return (str(run_id), task.name, task.subject_type, key,
-            sha256_text(canonical_json(payload)), raw, Json(canonical),
-            sha256_text(raw), Json(canonical), sha256_text(canonical_json(canonical)),
-            prior_id, "unchanged" if prior_id else "not_compared", Json(payload), request_id,
+            sha256_text(canonical_json(payload)), _storable(raw), Json(_storable(canonical)),
+            sha256_text(raw), Json(_storable(canonical)), sha256_text(canonical_json(canonical)),
+            prior_id, "unchanged" if prior_id else "not_compared", Json(_storable(payload)), request_id,
             Json(params or {"model": task.model, "effort": task.effort, "max_tokens": task.max_tokens}),
             Json(usage), "invalid" if error else "validated", Json([error] if error else []))
 
@@ -441,12 +454,21 @@ def _read_manifest(task: Task) -> dict[str, dict[str, list[str]]]:
     return json.load(open(path)) if os.path.exists(path) else {}
 
 
-def _write_manifest(task: Task, manifest: dict[str, dict[str, list[str]]]) -> None:
+def _update_manifest(task: Task, batch_id: str, entry: dict[str, list[str]] | None) -> None:
+    """Record one submitted batch (entry) or drop one (None). Several processes run the same task at once, so
+    each change is a read-modify-write of the file under an exclusive lock, never a rewrite of a stale copy."""
     os.makedirs(BATCH_MANIFESTS, exist_ok=True)
-    tmp = _manifest_path(task) + ".tmp"
-    with open(tmp, "w") as f:
-        json.dump(manifest, f)
-    os.replace(tmp, _manifest_path(task))
+    with open(_manifest_path(task) + ".lock", "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        manifest = _read_manifest(task)
+        if entry is None:
+            manifest.pop(batch_id, None)
+        else:
+            manifest[batch_id] = entry
+        tmp = f"{_manifest_path(task)}.{os.getpid()}.tmp"
+        with open(tmp, "w") as f:
+            json.dump(manifest, f)
+        os.replace(tmp, _manifest_path(task))
 
 
 def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, Any]], todo: list[str]) -> None:
@@ -471,7 +493,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
                     for i, key in enumerate(chunk)]
         batch = _api(api.messages.batches.create, requests=requests)
         manifest[batch.id] = {f"r{start + i}": [key, shas[key]] for i, key in enumerate(chunk)}
-        _write_manifest(task, manifest)
+        _update_manifest(task, batch.id, manifest[batch.id])
         custom_ids.update({(batch.id, f"r{start + i}"): key for i, key in enumerate(chunk)})
         pending.append(batch.id)
         print(f"[{task.name}] submitted batch {batch.id} ({len(chunk)} requests)", flush=True)
@@ -493,7 +515,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             _run_concurrent(api, run_id, task, items, keys)
             pending.remove(batch_id)
             manifest.pop(batch_id, None)
-            _write_manifest(task, manifest)
+            _update_manifest(task, batch_id, None)
         ended = [b for b in pending if b in status and status[b].processing_status == "ended"]
         for batch_id in ended:
             rows, n_ok, n_bad = [], 0, 0
@@ -509,7 +531,7 @@ def _run_batches(api, run_id: uuid.UUID, task: Task, items: dict[str, dict[str, 
             _store(rows)
             pending.remove(batch_id)
             manifest.pop(batch_id, None)
-            _write_manifest(task, manifest)
+            _update_manifest(task, batch_id, None)
             print(f"[{task.name}] batch {batch_id}: validated={n_ok} invalid={n_bad}", flush=True)
 
 
