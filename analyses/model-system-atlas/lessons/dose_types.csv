@@ -1,0 +1,61 @@
+slug,model_id,reached,note
+acute-myeloid-leukemia-cd33-directed-depleters,aml-xenograft-cd33-pbd-adc,regimen,phase 1 combination regimen given in CASCADE; OS worse
+allergic-disease-allergen-immunotherapy,allergen-exposure-chamber,regimen,chamber course plus an escalation given in the field phase 3
+allergic-rhinitis-allergen-immunotherapy,allergen-exposure-chamber,regimen,chamber course plus two higher regimens in the field study
+allergic-rhinitis-allergen-immunotherapy,gpasit-conjunctival-provocation-test,regimen,CPT-chosen 170 ug course given in the confirmatory phase 3
+allergic-rhinitis-ptgdr2-antagonists,setipiprant-asthma-allergen-challenge,regimen,1000 mg bid given in both field trials
+alzheimer-disease-anti-app-antibodies,happ-ps1-mabt,regimen,15 mg/kg crenezumab given; higher doses later failed too
+alzheimer-disease-anti-mapt-antibodies,tau-tg-mice-p301,pd_biomarker,CSF unbound N-terminal tau cut at every dose (the mouse ISF target)
+alzheimer-disease-bace1-inhibitors,beagle-csf-pkpd,pd_biomarker,CSF Abeta lowered ~84 % at 25 mg atabecestat
+alzheimer-disease-hrh3-antagonists,rodent-cognition-battery,exposure,ABT-288 at and above the rat-efficacious exposure
+alzheimer-disease-htr6-antagonists,nhp-pet-5ht6-occupancy,occupancy,5-HT6 receptors saturated at 30 mg
+alzheimer-disease-htr6-antagonists,rat-cognition-ort-mwm-ram,exposure,patient plasma met or exceeded rat efficacious concentrations
+asthma-adrb2-agonists,chiesi-guinea-pig-challenge-bronchoconstriction,regimen,carmoterol 2 ug once daily given; trough FEV1 not held; no higher dose tried
+asthma-adrb2-agonists,kissei-pregnant-rat-organ-bath-selectivity,exposure,bronchodilating exposure (1200 ug IV) given in acute exacerbation
+asthma-anti-il13-antibodies,cyno-antigen-challenge,pd_biomarker,IL-13 neutralised (FeNO and IgE down) at 300 mg q2w
+asthma-anti-il13-antibodies,tralo-pkpd-fev1-model,regimen,the model's near-maximal FEV1 dose (300 mg q2w) given in STRATOS
+asthma-nr3c1-agonists,amp-bronchoprovocation-ahr,regimen,1 mg once daily regimen given for 28 days
+asthma-nr3c1-agonists,rat-allergic-lung-oedema-az,regimen,top once-daily dose 720 ug given; no higher dose followed
+asthma-ptgdr2-antagonists,human-eos-th2-dp2-assays,exposure,150 and 450 mg fevipiprant at or above target exposure
+atopic-eczema-anti-il33-antibodies,il33-st2-mouse-dermatitis,occupancy,serum target saturation at 300 mg itepekimab with eosinophils lowered
+atopic-eczema-hrh4-antagonists,h4-mouse-th2-dermatitis,regimen,adriforant 3-50 mg daily (17-fold range) given
+breast-cancer-anti-igf1r-antibodies,mcf7-er-pos-xenograft,exposure,cixutumumab 60 ug/mL trough and dalotuzumab RP2D with tumour PD reached
+breast-cancer-cdk4-6-inhibitors,rodent-brain-penetration-abema,exposure,brain-metastasis tissue exposure exceeded target
+breast-cancer-esr1-degrader,er-pos-wt-breast-xenograft,occupancy,amcenestrant 400 mg set on FES-PET saturation
+breast-cancer-parp1-2-inhibitors,mx1-brca-xenograft-chemopotentiation,pd_biomarker,PD-active veliparib doses given with carboplatin in BrighTNess
+breast-cancer-pi3k-mtor-inhibitors,xl765-exelixis-xenografts,exposure,voxtalisib MTD 50 mg bid reached and taken into phase 2
+breast-cancer-pi3k-pan-inhibitors,pi3k-driven-breast-xenografts,pd_biomarker,pictilisib 340 mg above the dose where tumour pAkt fell >90 %
+chronic-obstructive-pulmonary-disease-mapk14-inhibitors,az-human-cell-lps-tnf-potency,pd_biomarker,LPS-induced sputum TNF-alpha cut 85 % at the lung-deposited dose
+chronic-obstructive-pulmonary-disease-mapk14-inhibitors,rat-endotoxin-tnf-pd,regimen,five doses 0.25-10 mg for 12 weeks given; none met Pfizer's criteria
+colorectal-cancer-anti-egfr-antibodies,ga201-adcc-orthotopic-xenograft,occupancy,1400 mg then q2w saturated clearance and engaged ADCC in KRAS-mutant tumours
+colorectal-cancer-anti-egfr-antibodies,sym004-crc-acquired-cetuximab-resistance-met-xenograft,regimen,12 mg/kg weekly and 9/6 mg/kg regimens given in phase 2
+colorectal-cancer-anti-egfr-antibodies,sym004-egfr-resistant-xenograft,exposure,12 mg/kg weekly target reached
+gastric-cancer-anti-erbb2-antibodies,pertuzumab-xenograft-exposure-target,exposure,trough above 20 ug/mL reached in JOSHUA and JACOB
+hiv-infectious-disease-hiv-rt-nrti-inhibitors,hiv-nrti-cell-culture-panel,regimen,GS-9131 60 then 180 mg once daily given in NRTI-resistant patients
+hyperlipidemia-hcar2-agonists,beagle-dog-merck,pd_biomarker,acute FFA suppression reached with SCH900271
+hyperlipidemia-hcar2-agonists,mouse-gpr109a-ko,pd_biomarker,acute FFA suppression (the model's PD target) reached
+hyperlipidemia-hcar2-agonists,rat-ffa-merck-sp,pd_biomarker,90 % FFA suppression reached with MK-1903
+hyperlipidemia-hcar2-agonists,rat-gp-nefa-gsk,pd_biomarker,NEFA suppressed at 5-150 mg GSK256073
+malignant-pancreatic-neoplasm-map2k1-2-inhibitors,pdac-xenograft-pdx,exposure,2 mg dose met the exposure target with gemcitabine
+metabolic-dysfunction-associated-steatohepatitis-fgf21-analogue-fgfr1c-klb-agonists,nash-fibrosis-mouse,regimen,pegbelfermin 10-40 mg weekly for 48 weeks given in FALCON 1
+myelodysplastic-syndrome-hdac-pan-inhibitors,panobinostat-leukemia-cells,regimen,single-agent oral panobinostat dose delivered in lower-risk MDS
+myelodysplastic-syndrome-hdac-pan-inhibitors,pracinostat-mouse-xenograft,exposure,RP2D 60 mg three times weekly delivered with azacitidine
+non-small-cell-lung-carcinoma-anti-ctla4-antibodies,syngeneic-mouse-surrogate-ctla4,regimen,10 mg/kg phased regimen given to 749 squamous NSCLC patients
+non-small-cell-lung-carcinoma-hsp90aa1-hsp90ab1-inhibitors,nsclc-xenograft-panel,exposure,luminespib RP2D exposure matched xenograft-active concentrations; ganetespib at MTD
+non-small-cell-lung-carcinoma-pan-her-inhibitors,egfr-t790m-nsclc-xenografts,exposure,dacomitinib 45 mg MTD given; T790M tumours did not respond
+non-small-cell-lung-carcinoma-pan-her-inhibitors,hypoxia-activated-exon20-xenografts-tarloxotinib,regimen,150 mg/m2 weekly regimen the model mirrored given in RAIN-701
+plasma-cell-myeloma-psmb5-inhibitors,delanzomib-mm-xenograft,exposure,delanzomib dosed to its MTD (2.1 mg/m2 weekly)
+prostate-cancer-parp1-2-inhibitors,ar-parp-crosstalk-xenografts,exposure,niraparib plus abiraterone reached monotherapy-equivalent exposure
+psoriasis-pde4-inhibitors,pde4-mouse-phorbol-ear-edema,regimen,2 % twice-daily regimen given under phase-3 conditions
+rheumatoid-arthritis-anti-csf2-antibodies,mouse-cia-scw-anti-gmcsf-22e9,pd_biomarker,weekly 90/150 mg held target engagement
+rheumatoid-arthritis-btk-inhibitors,cia-occupancy-pkpd,occupancy,BTK engagement at every elsubrutinib dose
+rheumatoid-arthritis-syk-inhibitors,rat-cia-therapeutic-lanraplenib,exposure,patient exposure matched the exposure the rat was dosed to
+schizophrenia-chrna7-agonists,az-trace-dose-cognition,regimen,0.0009-0.675 mg/day bracketed the rhesus-effective range
+schizophrenia-chrna7-agonists,rodent-schizophrenia-screens,exposure,5 and 50 mg/day above the rat-effective dose for 24 weeks
+schizophrenia-pde10a-inhibitors,pde10a-rodent-exposure-occupancy,exposure,PF-02545920 exposures inside the predicted efficacious range
+schizophrenia-slc6a9-inhibitors,human-vep-ltp-neuroplasticity,pd_biomarker,40 and 60 mg bid chosen from the LTP peak and highest occupancy
+schizophrenia-slc6a9-inhibitors,rat-csf-glycine-microdialysis,pd_biomarker,10 mg hit the CSF glycine PD target in CONNEX
+schizophrenia-slc6a9-inhibitors,rodent-occupancy-efficacy-window,occupancy,5-20 mg inside the occupancy window
+small-cell-lung-carcinoma-anti-pdcd1-antibodies,cyno-monkey-ro,exposure,nivolumab 240 mg q2w; the exposure the monkey margin covered
+type-2-diabetes-mellitus-gck-activators,gka-rodent-t2d,exposure,AZD1656 dosed to titrated exposures; glucose effect faded
+type-2-diabetes-mellitus-hsd11b1-inhibitors,dio-mouse,occupancy,>=80 % hepatic 11beta-HSD1 inhibition reached with BI 187004
