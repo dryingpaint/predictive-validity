@@ -17,7 +17,6 @@ happened in patients, on four questions (engagement, dose, efficacy, safety), st
 .venv/bin/python analyses/model-system-atlas/drafts/lint.py
 .venv/bin/python analyses/model-system-atlas/drafts/route_store.py [slug ...]
 .venv/bin/python analyses/model-system-atlas/drafts/collect_questions.py   # open rule questions
-.venv/bin/python analyses/model-system-atlas/report_page.py
 .venv/bin/python analyses/model-system-atlas/glance.py
 .venv/bin/python analyses/model-system-atlas/glance_nature.py main
 .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement
