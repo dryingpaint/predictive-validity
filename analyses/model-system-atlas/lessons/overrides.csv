@@ -1,0 +1,71 @@
+slug,model_id,family,note
+alzheimer-disease-htr6-antagonists,rat-pgp-brain-penetration,pkpd_occupancy_animal,"unbound brain/plasma ratio is a PK readout, not a behaviour model"
+hiv-infectious-disease-hiv-rt-nnrti-inhibitors,fdv-minipig-cns-imaging,pkpd_occupancy_animal,CNS disposition and MALDI imaging: a distribution study
+schizophrenia-slc6a9-inhibitors,rat-erg-oscillatory-potentials,tox_repeat_dose,retinal ERG safety readout
+hiv-infectious-disease-hiv-integrase-insti-inhibitors,hiv-cell-pa-ic90-trough,cell_line_assay,cell-culture potency as the trough target
+hiv-infectious-disease-hiv-rt-nnrti-inhibitors,hiv-nnrti-cell-culture,cell_line_assay,cell-culture potency as the trough target
+hiv-infectious-disease-hiv-rt-nrti-inhibitors,hiv-nrti-cell-culture-panel,cell_line_assay,cell-culture potency panel
+alzheimer-disease-anti-app-antibodies,abeta-species-binding-invitro,biochemical_assay,"binding assays, no cells"
+asthma-adrb2-agonists,ta2005-tight-binding-receptor-kinetics,biochemical_assay,receptor-binding kinetics
+hiv-infectious-disease-hiv-integrase-insti-inhibitors,dtg-oct2-transporter-in-vitro,biochemical_assay,transporter inhibition assay
+prostate-cancer-cyp17a1-ar-inhibitors,seviteronel-cyp17a1-lyase-selectivity,biochemical_assay,recombinant enzyme assay
+ulcerative-colitis-s1pr1-agonists,herg-in-vitro-etrasimod,biochemical_assay,hERG current assay
+asthma-adrb2-agonists,almirall-beta2-receptor-kinetics-in-vitro,biochemical_assay,receptor association-rate assay
+breast-cancer-cdk4-6-inhibitors,breast-cell-line-panel,cell_line_assay,47-line panel
+cystic-fibrosis-cftr-potentiators,human-hepatic-ivive,biochemical_assay,microsomes and recombinant enzymes scaled to PK
+cystic-fibrosis-cftr-potentiators,cftr-mutant-cell-potentiator-assay,cell_line_assay,mutant-CFTR cell assays
+gastric-cancer-parp1-2-inhibitors,hypoxia-hrd-parpi-sensitisation,cell_line_assay,hypoxic cancer cell lines
+hepatitis-c-virus-infection-hcv-ns5b-non-nucleoside-inhibitors,hcv-gt1-replicon,cell_line_assay,replicon
+hiv-infectious-disease-hiv-integrase-insti-inhibitors,hiv-cell-culture-replication,cell_line_assay,MT-4/PBMC replication assay
+hiv-infectious-disease-hiv-maturation-gag-inhibitors,hiv-gag-polymorph-cell-panel,cell_line_assay,replication in cell culture against engineered and patient-derived viruses
+hiv-infectious-disease-hiv-rt-nrti-inhibitors,nrti-mito-tox-primary-cells,cell_line_assay,"polymerase-gamma assays in CEM cells, primary cells added later"
+hiv-infectious-disease-hiv-rt-nrti-inhibitors,nrti-renal-oat1-transport,biochemical_assay,transporter cells and uptake assays
+hepatocellular-carcinoma-anti-pdcd1-antibodies,in-vitro-pd1-occupancy,cell_line_assay,occupancy titration on PD-1-expressing cells
+hepatocellular-carcinoma-anti-pdcd1-antibodies,receptor-proteome-screen,biochemical_assay,receptor-proteome binding screen
+non-small-cell-lung-carcinoma-anti-pdcd1-antibodies,receptor-proteome-screen,biochemical_assay,receptor-proteome binding screen
+migraine-disorder-cgrp-receptor-antagonists,rat-hepatopac-crm,cell_line_assay,"rat hepatocyte co-culture, not human donor cells"
+non-small-cell-lung-carcinoma-pan-her-inhibitors,her2-ex20-mutant-cells-dacomitinib,cell_line_assay,engineered lung-cancer cell models
+paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,dtdc-in-vitro,biochemical_assay,complex-formation assay
+prostate-cancer-parp1-2-inhibitors,hrr-gene-panel-cell-screen,cell_line_assay,siRNA and isogenic cell lines
+psoriasis-pde4-inhibitors,pde4-leo-soft-drug-cell-assays,cell_line_assay,enzyme and cellular assays
+type-2-diabetes-mellitus-gpr119-agonists,t2d-invitro-transporter-cyp-panel,biochemical_assay,transporter and CYP inhibition panel
+breast-cancer-parp1-2-inhibitors,2x121-drp-in-silico,expression_classifier,gene-expression drug-response predictor
+non-small-cell-lung-carcinoma-met-inhibitors,met-qsp-virtual-trial,qsp_mechanistic,QSP network model with virtual populations
+alzheimer-disease-anti-mapt-antibodies,qsp-synaptic-cleft-tau-antibody,qsp_mechanistic,mechanistic synaptic-cleft model
+type-2-diabetes-mellitus-gck-activators,sinogliatin-translational-pkpd,poppk_exposure_response,scaled from healthy-volunteer and patient data
+allergic-rhinitis-ptgdr2-antagonists,crth2-internalisation-pkpd-model,pbpk_translational,PK/PD occupancy model built before patient data
+breast-cancer-pik3ca-inhibitors,esr1-y537s-knockin-mcf7-xenograft,xenograft_cell_line,"knock-in is in the tumour cell line, the host is a plain xenograft mouse"
+follicular-lymphoma-pik3cd-inhibitors,pik3cd-d910a-kinase-dead-mouse,target_knockout,kinase-dead knock-in of the target: a genetic proxy for the drug
+insomnia-hcrtr1-2-antagonists,suvorexant-eeg-pk-target,pkpd_occupancy_animal,EEG dose-response with ex-vivo occupancy: a PK-PD target
+gastroesophageal-reflux-disease-atp4a-blockers,dog-stimulated-acid-secretion,nonrodent_disease_model,dog gastric-acid secretion model
+schizophrenia-pde10a-inhibitors,rat-catalepsy-prolactin,behaviour_cns_model,catalepsy is a behavioural safety readout
+hyperlipidemia-hcar2-agonists,mouse-dermal-bloodflow-merck,organ_pharmacology_animal,evoked dermal blood flow (flushing)
+hyperlipidemia-hcar2-agonists,gp-ear-flush-gsk,organ_pharmacology_animal,evoked ear-temperature flush
+diabetic-kidney-disease-nr3c2-antagonists,rat-tissue-distribution-equinatriuretic,pkpd_occupancy_animal,whole-body autoradiography
+hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors,guineapig-rhesus-amiodarone,tox_cv_safety_pharm,bradycardia co-dosing safety model
+alzheimer-disease-bace1-inhibitors,atabecestat-diat-hla-tcell-clones,donor_primary_human,T-cell clones from drug-naive donors
+atopic-eczema-pde4-inhibitors,human-skin-explant-dofm-camp,donor_primary_human,healthy skin explants
+hepatitis-c-virus-infection-hcv-ns5a-inhibitors,hcv-replicon-huh7,cell_line_assay,replicon with patient-derived NS5A sequences
+follicular-lymphoma-pik3cd-inhibitors,idelalisib-human-treg-ex-vivo,donor_primary_human,healthy-donor Treg assay
+paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies,c5-r885h-variant-hemolysis-assay,biochemical_assay,recombinant variant hemolysis assay
+open-angle-glaucoma-rock-inhibitors,human-enucleated-eye-perfusion-netarsudil,donor_primary_human,donor eyes
+hemophilia-a-f8-replacement-gene-therapy,hema-aavhu37-mouse-nhp,genetic_disease_model,"the knockout is the disease, not a proxy for the drug"
+hemophilia-a-f8-replacement-gene-therapy,hema-f8ko-mouse-nhp,genetic_disease_model,"the knockout is the disease, not a proxy for the drug"
+hemophilia-b-f9-replacement-gene-therapy,hemb-mouse-tailtip-rixfp,genetic_disease_model,"the knockout is the disease, not a proxy for the drug"
+hemophilia-b-f9-replacement-gene-therapy,hemb-mouse-scaav8-fixr338l,genetic_disease_model,"the knockout is the disease, not a proxy for the drug"
+hemophilia-b-f9-replacement-gene-therapy,rixfp-rodent-pk,genetic_disease_model,FIX-knockout bleeding model with rodent PK
+primary-biliary-cholangitis-nr1h4-agonists,mdr2-ko-mouse,genetic_disease_model,"Mdr2 loss is the cholangiopathy, not the drug target"
+ulcerative-colitis-s1pr1-agonists,il10ko-colitis-mouse,genetic_disease_model,"IL-10 loss is the colitis, not the drug target"
+ulcerative-colitis-s1pr1-agonists,mouse-blood-lymphocytes,genetic_disease_model,"IL-10-knockout colitis mice, lymphocyte readout"
+ulcerative-colitis-s1pr1-agonists,s1p3ko-mouse-heart-rate,target_knockout,S1P3 knockout as a genetic proxy for receptor sparing
+asthma-adrb2-agonists,almirall-guinea-pig-dog-bronchoprotection-heart-rate,organ_pharmacology_animal,"bronchoprotection-versus-heart-rate pharmacology, not a tox study"
+chronic-obstructive-pulmonary-disease-adrb2-agonists,almirall-guinea-pig-dog-bronchoprotection-heart-rate,organ_pharmacology_animal,"bronchoprotection-versus-heart-rate pharmacology, not a tox study"
+asthma-adrb2-agonists,kissei-pregnant-sheep-infusion-tocolysis,nonrodent_disease_model,instrumented pregnant-sheep tocolysis model
+psoriasis-anti-il23a-antibodies,psoriasis-xenograft-agr129,xenograft_pdx,patient psoriasis skin xenograft
+follicular-lymphoma-pik3cd-inhibitors,pik3cd-inhibitor-mouse-colitis-intermittent-dosing,inflammatory_disease_model,DSS colitis model; the B16 tumour is incidental
+alzheimer-disease-anti-app-antibodies,happ-ps1-mabt,genetic_disease_model,hAPP/PS1 transgenic mice (one entry coded ex vivo for the microglia assays)
+colorectal-cancer-anti-egfr-antibodies,sym004-egfr-resistant-xenograft,xenograft_cell_line,one dose entry mentions repeat-dose PK; the system is the xenograft
+colorectal-cancer-kdr-vegfr-inhibitors,crc-xenograft-rodent,xenograft_cell_line,an efficacy entry mentions toxicology margins; the system is the xenograft
+malignant-pancreatic-neoplasm-map2k1-2-inhibitors,pdac-xenograft-pdx,xenograft_pdx,dose and efficacy entries mention the tox margin; the system is the PDX
+type-2-diabetes-mellitus-slc5a2-inhibitors,t2dm-rodent-diabetic,metabolic_disease_model,the dose entry quotes tox margins; the system is the diabetic rodent
+psoriasis-rorc-inverse-agonists,gsk-srica-human-skin,patient_material_ex_vivo,lesional psoriatic explants beside healthy sRICA skin

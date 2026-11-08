@@ -29,6 +29,7 @@ QUESTIONS = [("engagement", "Target engagement", "Does the drug hit its target?"
              ("efficacy", "Efficacy", "Will the disease respond?"), ("safety", "Safety", "Will people be harmed?")]
 WORST = ["contra", "neg", "same", "other", "retro", "untested"]
 MATCHED = {"same", "neg", "other"}
+COMPARED = MATCHED | {"contra"}  # statuses that compared the model with patients
 SHORT = {"metabolic dysfunction-associated steatohepatitis": "MASH", "paroxysmal nocturnal hemoglobinuria": "PNH",
          "gastroesophageal reflux disease": "GERD", "non-small cell lung carcinoma": "NSCLC",
          "hepatitis C virus infection": "hepatitis C", "HIV infectious disease": "HIV", "plasma cell myeloma": "multiple myeloma",
@@ -124,7 +125,8 @@ def cells(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
             contra = [x for x in last.values() if x["final"] == "contra"] if st in MATCHED else []
             dissent = max(contra, key=lambda x: (x["year"], x["seq"])) if contra else None
             rows.append({"slug": t.slug, "area": t.area, "mondo_id": t.mondo_id, "disease": t.disease, "mechanism": t.mechanism, "programs": t.class_programs,
-                         "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model": pick.get("model"),
+                         "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model_id": pick.get("model_id"),
+                         "modality": pick.get("modality"), "model": pick.get("model"),
                          "short": pick.get("short"), "tracks": len(last), "other_tracks": max(len(last) - 1, 0),
                          "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
                          "untested_reason": pick.get("fields", {}).get("untested_reason") if st == "untested" else None,

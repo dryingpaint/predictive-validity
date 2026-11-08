@@ -3,7 +3,9 @@
 For each disease × mechanism (a tile), whether the preclinical models the drug class relied on predicted what
 happened in patients, on four questions (engagement, dose, efficacy, safety), stored as dated tracks in
 `preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`). The main paper figure is
-`atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`.
+`atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`. `lessons/` is an exploratory
+drill-down over the stored tiles (model families, engagement held against efficacy, the safety contradictions typed
+by hand; `lessons/LESSONS.md`, `lessons/robustness.md`); its figures are not paper figures.
 
 `DATABASE_URL` and `FIRECRAWL_API_KEY` live in `.env`. Only `class_audit.py store`, `fetch_sources.py store` and
 `drafts/route_store.py` (through `drafts/track_store.py`) write to the database, each replacing its own unit.
@@ -22,4 +24,5 @@ happened in patients, on four questions (engagement, dose, efficacy, safety), st
 .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement
 .venv/bin/python analyses/model-system-atlas/indications.py
 .venv/bin/python analyses/model-system-atlas/burden.py
+.venv/bin/python analyses/model-system-atlas/lessons/lessons.py all        # exploratory; read-only
 ```
