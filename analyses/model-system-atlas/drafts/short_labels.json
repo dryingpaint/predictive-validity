@@ -203,7 +203,18 @@
   "Mouse FITC Th2 dermatitis, H4R antagonists": "Mouse FITC dermatitis, H4R",
   "Dog acute atopic dermatitis (Df house-dust-mite-sensitised atopic Maltese-beagles), topical/oral JNJ 7777120 and JNJ 28307474": "Dog acute atopic dermatitis, JNJ 7777120 and JNJ 28307474",
   "Rat 6-month and monkey 9-month toxicology": "Rat, monkey 6/9-month tox",
-  "IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)": "IL-33 Tg/KO mice, MC903"
+  "IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)": "IL-33 Tg/KO mice, MC903",
+  "Single-species allometric scaling of rat pharmacokinetics to predict human clearance, volume and bioavailability (ertugliflozin, PF-04971729)": "Rat PK allometric scaling (ertugliflozin)",
+  "GastroPlus physiologically based pharmacokinetic models of famitinib in rat and monkey, scaled to predict human plasma exposure and tissue distribution (Yu 2014)": "GastroPlus PBPK of famitinib, rat and monkey",
+  "CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-CR, CACO2-CR) and SW48 xenografts treated at progression on cetuximab (Sym004)": "Resistant CRC lines",
+  "IND-era in-vitro mitochondrial toxicity assay (HepG2 / CEM cell lines: mtDNA content, cytochrome c oxidase, cytotoxicity after 14-day exposure)": "Mitochondrial toxicity assay",
+  "FGF21 rs838133 and truncating-variant carriers (UK Biobank human genetics)": "FGF21 variant carriers (UK Biobank)",
+  "Belantamab PopPK + M-protein tumour-growth + keratopathy Markov simulation framework": "Belantamab PopPK, tumour and keratopathy model",
+  "OVA-sensitised mouse allergic rhinitis (sneezing, nasal rubs, nasal obstruction)": "OVA mouse rhinitis",
+  "Mdr2-/- (Abcb4-/-) mouse cholangiopathy": "Mdr2-/- mice",
+  "Spontaneous canine keratoconjunctivitis sicca": "Canine dry eye (spontaneous)",
+  "In-vitro human hepatic metabolism (microsomes, hepatocytes, recombinant enzymes) scaled to human PK": "Human hepatic metabolism in vitro, scaled to PK",
+  "Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)": "Anti-IL-33 in DNCB mice"
  },
  "dissent": {
   "Human NTD signal gone; mouse harm unconfirmed": "Mouse NTD; human signal gone",
@@ -273,7 +284,10 @@
   "Mouse-stable BAX 888 lost in all patients": "Mouse-stable BAX 888 lost in man",
   "CheckMate 331 missed OS; indication later withdrawn": "Missed OS, indication withdrawn",
   "Fatal pneumonitis in SCLC the monkeys never showed": "Fatal pneumonitis, not in monkeys",
-  "Adriforant worked in mice, not in patients": "Adriforant: mice yes, patients no"
+  "Adriforant worked in mice, not in patients": "Adriforant: mice yes, patients no",
+  "0/11 exon-20 responses; HER2 14%": "0/11 exon-20 responses",
+  "Haematological toxicity the GEMM missed": "GEMM missed blood toxicity",
+  "ALT rise in 81%, 87% immunosuppressed": "ALT rise in 81% of patients"
  },
  "mechanism": {
   "FGF21 analogue (FGFR1c/KLB) agonists": "FGF21 analogues",

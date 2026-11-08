@@ -24,7 +24,7 @@ import pandas as pd
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-from matplotlib.patches import FancyBboxPatch, Rectangle
+from matplotlib.patches import FancyBboxPatch, Polygon, Rectangle
 from matplotlib.textpath import TextPath
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +38,12 @@ STATUS = {"same": ("#3DBB7A", "Matched"), "neg": ("#2A7BD0", "Matched, incl. a k
           "other": ("#CF9A12", "Matched on the platform only"), "contra": ("#C9362B", "Contradicted"),
           "retro": ("#E07FC0", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
 HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
+
+
+def other_model_mark(ax, x: float, y: float, s: float) -> None:
+    """The open red triangle that marks another model's contradicted track in a matched cell (y grows downward)."""
+    ax.add_patch(Polygon([(x, y + s), (x + s, y + s), (x + s / 2, y)], closed=True, facecolor="none",
+                         edgecolor=STATUS["contra"][0], linewidth=0.6))
 
 
 def style(status: str, derived: bool = False) -> dict:
@@ -146,7 +152,7 @@ def draw(df: pd.DataFrame, out: str, order: str = "area", top: int | None = None
         ax.axis("off")
         T = {"va": "center", "color": INK}
         if first:
-            draw_verdict(ax, df, n_all, T)
+            draw_verdict(ax, df, df[df.slug.isin(tiles.slug)], n_all, T)
             if note:
                 ax.text(0.08, 1.1, note, fontsize=5.5, color=MUTED, va="center")
         top_y = 1.2 if first else 0.2
@@ -164,8 +170,9 @@ def draw(df: pd.DataFrame, out: str, order: str = "area", top: int | None = None
     return written
 
 
-def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
-    """Panel a: the verdict by question over every tile, with the legend."""
+def draw_verdict(ax, df: pd.DataFrame, shown: pd.DataFrame, n_tiles: int, T: dict) -> None:
+    """Panel a: the verdict by question over every tile, with the legend; the two cell markers are listed only
+    when a cell of panel b (the shown tiles) carries them."""
     ax.text(0.08, 0.2, "a", fontsize=8, fontweight="bold", **T)
     bx0, bw, by0, bh, bgap = 1.2, 3.75, 0.3, 0.115, 0.05
     for i, (q, title, _) in enumerate(QUESTIONS):
@@ -198,11 +205,13 @@ def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
         ax.add_patch(FancyBboxPatch((lx, yy), sq, sq, boxstyle="round,pad=0,rounding_size=0.018", **style(st, derived)))
         ax.text(lx + 0.16, yy + sq / 2, label, fontsize=5.5, **T)
     yy = ly + len(items) * step + 0.015
-    ax.add_patch(Rectangle((lx + sq / 4, yy + sq / 4), sq / 2, sq / 2, facecolor=STATUS["contra"][0], edgecolor="none"))
-    ax.text(lx + 0.16, yy + sq / 2, "Matched, but another model contradicted", fontsize=5.5, **T)
-    yy += step
-    ax.add_patch(Rectangle((lx + sq / 4, yy + sq / 4), sq / 2, sq / 2, facecolor="white", edgecolor=INK, linewidth=0.5))
-    ax.text(lx + 0.16, yy + sq / 2, "Surrogate matched, outcome trial negative", fontsize=5.5, **T)
+    if shown.dissent.notna().any():
+        other_model_mark(ax, lx + sq / 4, yy + sq / 4, sq / 2)
+        ax.text(lx + 0.16, yy + sq / 2, "Matched, but another model's prediction failed", fontsize=5.5, **T)
+        yy += step
+    if (shown.outcome_tested == "negative").any():
+        ax.add_patch(Rectangle((lx + sq / 4, yy + sq / 4), sq / 2, sq / 2, facecolor="white", edgecolor=INK, linewidth=0.5))
+        ax.text(lx + 0.16, yy + sq / 2, "Matched on a surrogate; outcome trial negative", fontsize=5.5, **T)
 
 
 def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) -> None:
@@ -255,11 +264,12 @@ def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) ->
                     sq = (0.05, 0.05)
                     if c.outcome_tested == "negative":
                         ax.add_patch(Rectangle((text_x(i), y0 + L[j] - 0.025), *sq, facecolor="white", edgecolor=INK, linewidth=0.5))
-                        note = "Outcome trial negative"
+                        note, ink = "Outcome trial negative", T
                     else:
-                        ax.add_patch(Rectangle((text_x(i), y0 + L[j] - 0.025), *sq, facecolor=STATUS["contra"][0], edgecolor="none"))
+                        other_model_mark(ax, text_x(i), y0 + L[j] - 0.025, sq[0])
                         note = DISSENT_SHORT.get(c.dissent, c.dissent)
-                    ax.text(text_x(i) + 0.075, y0 + L[j], wrap(note, 5, text_w - 0.075, 1)[0], fontsize=5, **T)
+                        ink = {**T, "color": MUTED}
+                    ax.text(text_x(i) + 0.075, y0 + L[j], wrap(note, 5, text_w - 0.075, 1)[0], fontsize=5, **ink)
             y += ROW
         name = str(g)
         if width_in(name, 5) > (y - ya) - 0.06:
