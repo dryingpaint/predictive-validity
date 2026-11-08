@@ -1,6 +1,7 @@
 # Model-system atlas (issue #76)
 
-For each disease × mechanism (a tile), whether the preclinical models the drug class relied on predicted what
+For each disease × mechanism (a tile) in every disease with a Phase 2 entrant in 2008–2019, with two names
+for the same patients merged into one, whether the preclinical models the drug class relied on predicted what
 happened in patients, on four questions (engagement, dose, efficacy, safety), stored as dated tracks in
 `preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`). The main paper figure is
 `atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`.
@@ -17,7 +18,6 @@ happened in patients, on four questions (engagement, dose, efficacy, safety), st
 .venv/bin/python analyses/model-system-atlas/drafts/lint.py
 .venv/bin/python analyses/model-system-atlas/drafts/route_store.py [slug ...]
 .venv/bin/python analyses/model-system-atlas/drafts/collect_questions.py   # open rule questions
-.venv/bin/python analyses/model-system-atlas/report_page.py
 .venv/bin/python analyses/model-system-atlas/glance.py
 .venv/bin/python analyses/model-system-atlas/glance_nature.py main
 .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement

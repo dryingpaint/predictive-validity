@@ -4,7 +4,7 @@ latest comparison, the year it earned it, the model, and the reason when it fail
     .venv/bin/python analyses/model-system-atlas/glance.py      # writes glance.csv; glance_nature.py draws it
 
 Reads preclin.atlas_track_entry with its verdicts (the adjudicated status where an adjudicator decided, the
-checker's corrected year where the status stands) and applies report_page.headline: a cell's headline is the best
+checker's corrected year where the status stands) and applies headline(): a cell's headline is the best
 latest status among its tracks, one per model, that predicted before the patient result; untested when none did; a
 retrodiction never sets it. The entry drawn is the latest prospective entry on the track that set the headline.
 When a cell is split by modality the worst strip is shown. A cell whose only tracks are retrodictions is drawn as
@@ -21,7 +21,6 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..")))
-from report_page import final_status, final_year, headline
 
 from report import frame
 
@@ -34,6 +33,38 @@ SHORT = {"metabolic dysfunction-associated steatohepatitis": "MASH", "paroxysmal
          "gastroesophageal reflux disease": "GERD", "non-small cell lung carcinoma": "NSCLC",
          "hepatitis C virus infection": "hepatitis C", "HIV infectious disease": "HIV", "plasma cell myeloma": "multiple myeloma",
          "acute myeloid leukemia": "acute myeloid leukaemia", "chronic obstructive pulmonary disease": "COPD"}
+HEADLINE = ["same", "neg", "other", "contra"]  # statuses a prospective track can set the headline with, best first
+# why a never-compared entry was never compared (drafts/DRAFTER_BRIEF.md rule 5), as the figure prints it
+UNTESTED_REASON = {"no_prediction": "No checkable prediction", "not_measured": "Not measured in patients",
+                   "unpublished": "Model data unpublished", "unsettled": "Patient result unclear"}
+
+
+def final_status(r) -> str:
+    """The adjudicated status when an adjudicator decided, else the drafter's."""
+    return r["adjudicated_status"] if r.get("adjudicated_status") else r["status"]
+
+
+def final_year(r) -> int:
+    """The checker's corrected year when the entry's final status is the drafter's, else the drafter's year. It is
+    the year shown; a track's order stays the drafted one (seq), which lint.py checked."""
+    if r.get("verdict") == "corrected" and r.get("proposed_year") and final_status(r) == r["status"]:
+        return int(r["proposed_year"])
+    return int(r["year"])
+
+
+def headline(entries: list[dict]) -> str | None:
+    """A cell's headline: the best latest status among its tracks (one per model_id) that predicted before the
+    patient result; untested when none did. A track's latest entry is its last in seq order. A retrodiction is shown
+    on its track but never sets the headline, nor hides the prospective entries before it on the same track."""
+    kept = [e for e in entries if e["final"] != "drop"]
+    if not kept:
+        return None
+    last = {}
+    for e in sorted(kept, key=lambda e: e["seq"]):
+        if e["final"] != "retro" and not e["retrodiction"]:
+            last[e["model_id"]] = e["final"]
+    tested = [s for s in last.values() if s in HEADLINE]
+    return min(tested, key=HEADLINE.index) if tested else "untested"
 
 
 def load() -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -63,7 +94,7 @@ def strip(g: pd.DataFrame) -> tuple[str, dict, dict] | None:
     ents = sorted((x for x in g.to_dict("records") if x["final"] != "drop"), key=lambda x: x["seq"])
     if not ents:
         return None
-    st = headline(ents, lambda x: x["final"])
+    st = headline(ents)
     latest = {(x["modality"], x["model_id"]): x for x in ents}
     if st == "untested" and all(x["final"] == "retro" for x in latest.values()):
         return "retro", max(latest.values(), key=lambda x: (x["year"], x["seq"])), latest

@@ -30,8 +30,7 @@ from matplotlib.textpath import TextPath
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from glance import QUESTIONS, SHORT, cells, load
-from report_page import UNTESTED_REASON
+from glance import QUESTIONS, SHORT, UNTESTED_REASON, cells, load
 
 INK, MUTED, RULE, RULE_AREA = "#1a1a1a", "#6b7372", "#dcdfdf", "#9aa1a1"
 # A rainbow of status hues, every pair at least deltaE 8.7 apart under colour-vision deficiency on white
