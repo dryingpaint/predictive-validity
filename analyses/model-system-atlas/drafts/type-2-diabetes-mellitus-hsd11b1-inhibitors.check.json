@@ -44,18 +44,6 @@
    "note": "Verbatim first clause of the JEM abstract sentence. Li 2018 (PMID 30613321) confirms BMS-823778 ED50 34 mg/kg (DIO acute PD) and 5.2 mg/kg (ex vivo adipose). No NOAEL/MTD stated, so margin_stated false is right."
   },
   {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2015,
-   "rule": "decision 7 (dating) with evidence rule 2 (tier-5 press release must be found; trial_unreported)",
-   "note": "Row 'reached, failed, abandoned' holds (DOM 2023). But the failure was public in 2015: Vitae 8-K press releases 2015-06-29 and 2015-12-17 (EDGAR 0001104659-15-048184, -085551) report FPG unmet in both arms and termination. Add a 2015 tier-5 entry."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
@@ -180,7 +168,7 @@
   },
   {
    "cell": "dose",
-   "index": 3,
+   "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -190,7 +178,7 @@
   },
   {
    "cell": "dose",
-   "index": 4,
+   "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

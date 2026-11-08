@@ -128,7 +128,6 @@
     "confidence": "high",
     "judgement": "The efficacy section gives the dose but no toxicokinetics; the exposure margins in the review are for toxicology species, not the hepatoma mice.",
     "model_first_use_year": 2012,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    },
@@ -166,7 +165,6 @@
     "confidence": "medium",
     "judgement": "Neither the 2015 review nor Matsuki 2018 (abstract) states the xenograft exposure against the clinical one, so the track stays untested; the sibling track scores the class dose question.",
     "model_first_use_year": 2015,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    },
@@ -205,7 +203,6 @@
     "reason": "Effective mouse exposure reached at 160 mg",
     "judgement": "Scored same under 'reached, drug worked': the paper puts mouse and human exposure side by side (comparison_stated) and RESORCE succeeded at the matched dose. Published after RESORCE, but the H129 study itself was filed in 2012 (same 27-vs-36-day result), so the exposure statement is not a retrodiction of efficacy; retrodiction left false and flagged here. No NOAEL-type margin is stated (mice lost about 8% body weight), so margin_stated is false.",
     "model_first_use_year": 2012,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    },
@@ -239,7 +236,6 @@
     "confidence": "medium",
     "confidence_note": "Proxy opening: the analysis was published 2017 (epub 2017-05-31) but the regimen it recommends was REFLECT's from its March 2013 start (NCT01761266, bodyweight stratification), so the model existed by 2013. Full text read (PMC5575539). model_filed true on the 2018 HCC label (section 2.4 weight-based dose); the 2018 sNDA review PDFs themselves returned 404.",
     "judgement": "Opening entry at first use. Model is in silico (logistic exposure-response on cycle-1 dose modifications; AUC cutoff 2430 ng·h/mL, body-weight cutoff 57.8 kg), not an animal.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "patient_trials": [],
@@ -279,7 +275,6 @@
     "confidence_note": "Paired by me (Tamai 2017 model vs Kudo 2018 trial); REFLECT's observed exposure by weight group is not reported in the abstract, so magnitude is null. Abstract-level reading of Kudo 2018. The 2018 FDA label (206947s007, sections 2.4 and 14.3) carries the same regimen at tier 2 but does not state the comparison.",
     "judgement": "Scored same under 'reached, drug worked': the trial gave the model-chosen regimen and OS was non-inferior (HR 0.92). margin_stated true because the model named a tolerated exposure ceiling (AUC 2430 ng·h/mL, early dose modification) and set the regimen below it; patients were dosed to that target and the trial succeeded. Year is the Lancet publication (2018), not the 2017 Tamai paper, since the trial result is the patient side. No regulator review of the 2018 HCC sNDA was retrievable, so comparison_stated stays false.",
     "reason": "Weight-based dose reached and sufficient",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "patient_trials": [],

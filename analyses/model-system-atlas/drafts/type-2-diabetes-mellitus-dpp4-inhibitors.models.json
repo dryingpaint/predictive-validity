@@ -248,7 +248,6 @@
       "note": "Omarigliptin's rat, dog and monkey PK projected a human half-life long enough for once-weekly dosing; no human regimen yet compared.",
       "short": "Non-rodent PK projects weekly dosing",
       "quote": "MK-3102 (omarigliptin), was identified as a potent and selective dipeptidyl peptidase 4 (DPP-4) inhibitor with an excellent pharmacokinetic profile amenable for once-weekly human dosing and selected as a clinical development candidate.",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "judgement": "Own track per the checker: the regimen prediction comes from non-rodent PK scaled to humans, not from the rodent plasma-DPP-4/OGTT system that the draft's dose index 3 (Krishna 2016) is keyed to. Dose only: the system predicts exposure and interval, not efficacy or harm."
@@ -285,7 +284,6 @@
       "note": "Human alpha t1/2 33-50 h, beta ~140 h beside dog 22 h; 25 mg weekly held 87.5% trough DPP-4 inhibition, weekly regimen stood.",
       "short": "Weekly interval from animal PK held",
       "quote": "日本人健康成人に本薬 25 mg を週 1 回 3 週間反復経口投与したときの最終投与 168 時間後における本薬未変化体の血漿中非結合形薬物濃度は 8.2 nmol/L、血漿中 DPP-4 活性阻害率は 87.5%であった（P005 試験）。",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "judgement": "The predicted regimen (weekly) was reached and was enough: trough DPP-4 inhibition above the 80% target and a positive 24-week Phase 3 at that interval. The draft's dose index 3 (Krishna 2016, tier 1) is this comparison on the wrong track; it should be re-keyed to this model_id rather than duplicated, so no 2016 entry is added here."
@@ -323,7 +321,6 @@
       "note": "Cofrogliptin 10 mg/kg held ~80% monkey DPP-4 inhibition through day 14; allometry predicted the biweekly regimen that lowered HbA1c in Phase 3.",
       "short": "Monkey PK-PD matched biweekly regimen",
       "quote": "Based on allometric scaling analyses, cofrogliptin is predicted to display superior human pharmacokinetic properties relative to MK3102, with anticipated longer-acting features that align with its clinical dosing frequency.",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "reason": "Animal PK set the interval that held",

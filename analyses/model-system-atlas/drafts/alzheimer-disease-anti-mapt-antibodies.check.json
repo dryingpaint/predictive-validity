@@ -54,7 +54,9 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "PMC9194753; quote verbatim; registry results 2022-03-16 and CDR-SB primary confirmed. Modeled 4500 mg target met (plasma tau saturating above it, CSF:serum as in phase 1) and 8100 mg also failed: row 'reached, failed' gives contra derived_from efficacy."
+   "note": "PMC9194753; quote verbatim; registry results 2022-03-16 and CDR-SB primary confirmed. Modeled 4500 mg target met (plasma tau saturating above it, CSF:serum as in phase 1) and 8100 mg also failed: row 'reached, failed' gives contra derived_from efficacy.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): the modeled 4500 mg binding target was met"
   },
   {
    "cell": "dose",
@@ -64,7 +66,9 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Quote verbatim. CSF unbound N-terminal tau fell at every dose (P<0.0001) with no CDR-SB effect; same v3 row for a second member. Strengthens only."
+   "note": "Quote verbatim. CSF unbound N-terminal tau fell at every dose (P<0.0001) with no CDR-SB effect; same v3 row for a second member. Strengthens only.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): a second member reached the mouse ISF target (CSF unbound tau fell)"
   },
   {
    "cell": "efficacy",

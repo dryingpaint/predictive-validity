@@ -199,7 +199,6 @@
     "src": "https://doi.org/10.1158/1535-7163.MCT-05-0410",
     "srcLabel": "Albert 2006",
     "quote": "efficacy correlated more strongly with time over a threshold value (cellular KDR IC50 corrected for plasma protein binding = 0.08 microg/mL, >or=7 hours) than with plasma area under the curve or Cmax.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    },
@@ -237,7 +236,6 @@
     "src": "https://doi.org/10.1200/JCO.2008.21.7125",
     "srcLabel": "Wong 2009",
     "quote": "Oral clearance of ABT-869 was linear, with a mean of 2.7 +/- 1.2 L/h and half-life of 18.4 +/- 5.7 hours, with no evidence of drug accumulation at day 15.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Target exposure reached; sufficiency untested in CRC",
@@ -277,7 +275,6 @@
     "src": "https://pubmed.ncbi.nlm.nih.gov/25920197/",
     "srcLabel": "Yu 2014",
     "quote": "This study is to establish physiologically based pharmacokinetic (PBPK) models of famitinib in rat and monkey, and then to predict the pharmacokinetics and tissue distribution of famitinib in human based on the PBPK models.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "untested_reason": "unsettled"
@@ -316,7 +313,6 @@
     "src": "https://pubmed.ncbi.nlm.nih.gov/25920197/",
     "srcLabel": "Yu 2014",
     "quote": "The AUC0-∞, ratios of observed and predicted data in human were 1.63 (rat to human) and 1.57 (monkey to human), respectively.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Human exposure reproduced within 2-fold"

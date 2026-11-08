@@ -338,16 +338,16 @@
     "model": "ER+ ESR1-wild-type breast xenografts (MCF7, tamoxifen-resistant MCF7, HCI013 PDX)",
     "model_id": "er-pos-wt-breast-xenograft",
     "year": 2023,
-    "status": "contra",
+    "status": "same",
     "src": "https://doi.org/10.1200/JCO.22.02746",
     "srcLabel": "Tolaney 2023",
     "note": "Amcenestrant 400 mg was set on FES-PET saturation without DLT, then failed AMEERA-3 (PFS HR 1.05) and AMEERA-5, and was abandoned.",
-    "short": "Target reached; amcenestrant failed, abandoned",
+    "short": "ER occupancy target reached at 400 mg",
     "quote": "PFS was numerically similar between amcenestrant and TPC (median PFS [mPFS], 3.6 v 3.7 months; stratified hazard ratio [HR], 1.051 [95% CI, 0.789 to 1.4]; one-sided P = .643).",
-    "derived_from": "efficacy",
     "margin_stated": false,
     "reason": "Exposure reached; class failed in unselected patients",
-    "judgement": "Rule row 'reached, failed, abandoned': the exposure target (near-complete ER occupancy) was reached at 400 mg with no DLT, the primary endpoint failed, and the drug was dropped, so dose is contra derived from efficacy and the failure is counted once. Year is the registry results posting (2023-03-30), before the JCO paper (2023-06-22)."
+    "judgement": "Dose scored on its own prediction (rule v4): a second member reached near-complete ER occupancy at 400 mg. Rule row 'reached, failed, abandoned': the exposure target (near-complete ER occupancy) was reached at 400 mg with no DLT, the primary endpoint failed, and the drug was dropped, so dose is contra derived from efficacy and the failure is counted once. Year is the registry results posting (2023-03-30), before the JCO paper (2023-06-22).",
+    "strengthens": true
    },
    {
     "subjects": null,

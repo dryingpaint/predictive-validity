@@ -52,7 +52,9 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "rule": "dose table: reached, failed, abandoned -> contra, derived_from efficacy; one drug's contra beats another's same",
-   "note": "Fleischmann 2022 (PMID 38293957) quote verbatim; Goess 2019 abstract says occupancy correlated with rat-CIA efficacy. Registry 2021-05-03 confirmed. Spebrutinib (83% patient occupancy, ACR20 P=0.25, epub 2019-11) could date this contra to 2019; not required."
+   "note": "Fleischmann 2022 (PMID 38293957) quote verbatim; Goess 2019 abstract says occupancy correlated with rat-CIA efficacy. Registry 2021-05-03 confirmed. Spebrutinib (83% patient occupancy, ACR20 P=0.25, epub 2019-11) could date this contra to 2019; not required.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): a second member reached the rat-CIA occupancy target"
   },
   {
    "cell": "efficacy",

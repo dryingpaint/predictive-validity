@@ -123,7 +123,6 @@
     "source_calls_it": null,
     "population": "BRCA-mutant / HRD",
     "model_first_use_year": 2009,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "prediction_level": "class"
@@ -162,7 +161,6 @@
     "source_calls_it": "match",
     "population": "Advanced solid tumours; recurrent ovarian cancer",
     "model_first_use_year": 2009,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "prediction_level": "class"
@@ -196,7 +194,6 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Platinum-sensitive recurrent ovarian cancer (NOVA safety population)",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "model_id": "niraparib-isd-model",
@@ -235,7 +232,6 @@
     "magnitude_basis": "PFS benefit and haematologic toxicity at the 200 mg individualized starting dose vs the model's predicted benefit",
     "source_calls_it": "match",
     "population": "Platinum-sensitive recurrent ovarian cancer, China, BRCA-mutant and wild-type (NORA)",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "model_id": "niraparib-isd-model",

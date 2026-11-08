@@ -38,15 +38,6 @@
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Kiyosue 2013 (PMID 23522182) quote verbatim; NCT01152385 results first posted 2012-08-27 confirmed. Reached-failed-abandoned row, derived_from efficacy. No AZD1656 exposure target exists, so low confidence is right."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
    "note": "Zhang 2013 (PMID 23263772) quote verbatim; NCT01024244 terminated 'due to nonclinical safety findings', results 2011-10-26. Model was fitted to patient MAD data, not preclinical; flip from contra rests on that. See rule question."
   },
   {
@@ -144,7 +135,7 @@
   },
   {
    "cell": "dose",
-   "index": 4,
+   "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
@@ -154,7 +145,7 @@
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",

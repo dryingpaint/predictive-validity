@@ -174,7 +174,7 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "House 2015 resolves (PMID 26324315, online 2015-08-14); quote verbatim (abstract); NCT00838591 has no posted results. Contra derived from efficacy holds only while efficacy #6 is contra; see rule question 3."
+   "note": "Rossoni 2005 quote verbatim; picomole intratracheal doses, no human dose; untested opening 2005."
   },
   {
    "cell": "dose",
@@ -184,17 +184,9 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Rossoni 2005 quote verbatim; picomole intratracheal doses, no human dose; untested opening 2005."
-  },
-  {
-   "cell": "dose",
-   "index": 9,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim in synopsis. EU CTR 2008-001773-15 (posted 2017-01-01) shows carmoterol 4 ug once daily held trough FEV1 +0.26 L p<0.001, so this is 'target too low': contra stays, derived_from null, magnitude off_by_2x."
+   "note": "Quote verbatim in synopsis. EU CTR 2008-001773-15 (posted 2017-01-01) shows carmoterol 4 ug once daily held trough FEV1 +0.26 L p<0.001, so this is 'target too low': contra stays, derived_from null, magnitude off_by_2x.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): target too low: 4 ug once daily held trough FEV1 (EU CTR 2008-001773-15)"
   },
   {
    "cell": "efficacy",

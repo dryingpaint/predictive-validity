@@ -95,7 +95,7 @@ def cells(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
             rows.append({"slug": t.slug, "area": t.area, "mondo_id": t.mondo_id, "disease": t.disease, "mechanism": t.mechanism, "programs": t.class_programs,
                          "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model": pick.get("model"),
                          "short": pick.get("short"), "tracks": len(last), "other_tracks": max(len(last) - 1, 0),
-                         "derived": pick.get("fields", {}).get("derived_from"), "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
+                         "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
                          "untested_reason": pick.get("fields", {}).get("untested_reason") if st == "untested" else None,
                          "dissent": None if dissent is None else dissent["short"], "dissent_model": None if dissent is None else dissent["model"]})
     df = pd.DataFrame(rows)
@@ -111,8 +111,7 @@ def main() -> None:
     missing = df[(df.status == "untested") & df.untested_reason.isna()]
     if len(missing):
         print("never-compared cells without untested_reason:", *(missing.slug + " " + missing.question), sep="\n  ")
-    print(f"dissent cells {int(df.dissent.notna().sum())}; outcome negative {int((df.outcome_tested == 'negative').sum())}; "
-          f"derived dose contras {int(((df.question == 'dose') & (df.status == 'contra') & (df.derived == 'efficacy')).sum())}")
+    print(f"dissent cells {int(df.dissent.notna().sum())}; outcome negative {int((df.outcome_tested == 'negative').sum())}")
 
 
 if __name__ == "__main__":

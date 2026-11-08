@@ -35,16 +35,6 @@
    "note": "CT.gov API: results first posted 2017-03-07; primary 54.1 vs 2.7, P<0.001 (sign test), n=145. Quote is a field rendering. Regimen the model ranked was used and worked: same under the dose table. Year from June 2010 release confirmed."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "rule": null,
-   "note": "CT.gov: 17.4 (6.4-28.3) vs 13.6 (0.0-28.0), diff 3.8 (-14.3 to 21.8), n=68, posted 2017-03-07. Mirrors efficacy per 'reached, failed, abandoned'; 10-K 2012 shows SPA agreed Nov 2011 then Phase 3 deferred, not formally abandoned. See rule questions 1-2."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

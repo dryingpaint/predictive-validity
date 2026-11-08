@@ -105,34 +105,6 @@
    "note": "Peltola abstract verbatim: AUC rose only to 300 mg, fell on day 8, PK prevents development. Sponsor-stated PK failure with no model-stated human target (rule question 1). NCT02344017 has no results."
   },
   {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2019,
-   "rule": "v3 dose table (brief: target reached and enough); decision 16",
-   "note": "Taplin quote verbatim. Model stated no exposure target, the ground the draft uses to keep dose[1] untested for the same drug at the same 2,550 mg/d; the derived 'reached, failed, abandoned' row is inconsistent here. Rule question 1.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 scores the model's stated exposure/regimen target; Purushottamachar 2013 stated none (the draft keeps dose 2 untested on that ground), so nothing was compared: untested, as AML CD33 dose 4. Failure counted once, in efficacy (Taplin 2019)."
-  },
-  {
-   "cell": "dose",
-   "index": 6,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2020,
-   "rule": "v3 dose table toxicity row (decision 16): never reached because of toxicity, no stated margin",
-   "note": "Madan quote verbatim. No model exposure target, and patients left after a median of 2 cycles for toxicity, so the regimen was never sustained to the 12-week read; the no-margin toxicity row gives untested. Rule questions 1 and 4.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4: Toren 2015 stated no exposure target (draft keeps dose 3 untested for that), so no derived contra, as AML CD33 dose 4; decision 16: no stated margin, toxicity block untested. Failure counted in efficacy, harm in safety."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
@@ -308,7 +280,7 @@
   },
   {
    "cell": "dose",
-   "index": 7,
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",
@@ -319,7 +291,7 @@
   },
   {
    "cell": "dose",
-   "index": 8,
+   "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "abstract_only",

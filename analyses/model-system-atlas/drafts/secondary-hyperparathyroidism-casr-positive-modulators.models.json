@@ -104,7 +104,6 @@
       "modality": "peptide",
       "note": "First PK/PD model (healthy males, single IV dose): three-compartment PK, iPTH indirect response, EC50 21 ng/mL; no patient regimen yet tested.",
       "short": "Healthy-subject PK/PD model, EC50 21 ng/mL",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false
      },
@@ -144,7 +143,6 @@
       "magnitude": "within_2x",
       "magnitude_basis": "responder proportion: ~75% simulated to reach >30% PTH reduction after 12 weeks of titration (final PKPD model, Table 16) vs 74.0% and 75.3% observed",
       "source_calls_it": "match",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false
      }

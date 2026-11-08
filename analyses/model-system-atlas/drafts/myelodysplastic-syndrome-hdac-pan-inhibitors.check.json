@@ -63,15 +63,6 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim (abstract). The 60 mg RP2D was the protocol dose, so decision 4 case 3 (derived contra) fits; decision 16 blocked_by needs a stated margin and the mouse gave none. Yalniz 2020's 'suboptimal drug exposure' is the sponsor's reading."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -80,15 +71,6 @@
    "proposed_year": 2004,
    "rule": "7",
    "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3)."
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Dimicoli AJH 2012 (epub 2011-11-10) quote verbatim; NCT00939159 results 2015-06-18 verified. Derived contra follows decision 4 case 3, but the cell model stated no exposure target, so 'reached' is undefined (rule question); derived entries leave the dose count anyway."
   },
   {
    "cell": "efficacy",
@@ -158,7 +140,7 @@
   },
   {
    "cell": "dose",
-   "index": 6,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

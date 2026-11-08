@@ -232,7 +232,6 @@
     "srcLabel": "Suleiman 2019",
     "quote": "A two-compartment model with first-order absorption and elimination described the pharmacokinetics of risankizumab.",
     "judgement": "Opens the in-silico track at its first public date (PubMed 2018-08-21; print March 2019). One track for the sponsors' phase 2 popPK/exposure-response dose models (AbbVie risankizumab; Lilly mirikizumab, CTS 2025) under the identity rule: same system class, same prediction (the phase 2 exposure plateau fixes the induction dose). Surrogate mouse dosing (15 mg/kg IP) set no human target, so this is the only model that stated one.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -271,7 +270,6 @@
     "quote": "Model predictions together with observed data indicated that the efficacy may have reached a plateau at 600 mg IV induction regimen with no substantial added benefit from the 1200 mg IV induction regimen.",
     "reason": "600 mg IV reached; phase 3 confirmed plateau",
     "judgement": "Dose table case 'reached, drug worked': the regimen the phase 2 exposure-response read chose (600 mg IV at weeks 0, 4, 8) was given in ADVANCE/MOTIVATE (registry 2022-06-14 and 2022-07-06), met both coprimaries, and the 1200 mg arm showed no added benefit, so the target was enough. Maintenance was not model-chosen (no phase 2 dose-ranging; 180 vs 360 mg SC showed no dose-response). The hepatotoxicity at this exposure is counted once, in safety on the cynomolgus track, because this model stated no margin. Tier-1 corroboration that changes no status: Suleiman 2023 CPT (doi 10.1002/cpt.2831, epub 2023-01-20, abstract-level) says the same from phase 2+3 data, and Lilly's mirikizumab model (doi 10.1111/cts.70320, 2025) found VIVID-1's 900 mg result 'aligned with SERENITY'.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    }

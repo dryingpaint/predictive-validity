@@ -197,7 +197,6 @@
     "srcLabel": "FDA capmatinib review 2020",
     "quote": "Based on population PK simulations, 96% (90% CI: 94%, 98%) of patients have steady state capmatinib plasma concentration above IC95 for MET inhibition during the dosing interval with 400 mg b.i.d regimen.",
     "margin_stated": true,
-    "derived_from": null,
     "blocked_by": null,
     "judgement": "Decision 16: the model stated the effective exposure was tolerated (Liu 2011) and the clinic reached it without that toxicity (MTD not reached at 600 mg BID capsules), so margin_stated is true. Dose is scored same because efficacy was positive at that exposure."
    },
@@ -274,7 +273,6 @@
     "srcLabel": "Hu 2025",
     "judgement": "A dose prediction exists (lower savolitinib dose equivalent) but no trial has tested it, so untested rather than an empty cell.",
     "margin_stated": null,
-    "derived_from": null,
     "blocked_by": null
    }
   ],

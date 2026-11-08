@@ -165,7 +165,9 @@
    "status_supported": true,
    "rule": null,
    "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Kivitz 2018 resolves; PK sentence verbatim. Registry NCT02885181 results posted 2018-09-19 (start 2016-09-21) sets year 2018. Rat target reached qualitatively, primary failed, no further RA trial: 'reached, failed, abandoned' row, contra derived_from efficacy. margin_stated=false right."
+   "note": "Kivitz 2018 resolves; PK sentence verbatim. Registry NCT02885181 results posted 2018-09-19 (start 2016-09-21) sets year 2018. Rat target reached qualitatively, primary failed, no further RA trial: 'reached, failed, abandoned' row, contra derived_from efficacy. margin_stated=false right.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): patient exposure matched the rat's effective exposure"
   },
   {
    "cell": "efficacy",

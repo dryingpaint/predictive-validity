@@ -56,15 +56,6 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "NCT03622112 results 2020-11-27: 720 ug +0.082 L p=0.060, FF +0.111 p=0.014, cortisol ratio 0.916 p=0.285 all verified. Abandonment still unverified by any sponsor document; GRANIT's only publication is ATS 2021 A1202 (unread)."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
    "note": "Uings 2013 quote verbatim; full text is free (PMC3831715), not paywalled as stated. Proxy NCT00483899 (posted 2007-06-07) is the AMP-challenge trial, a human model the draft never tracks (see missing)."
   },
   {
@@ -194,7 +185,7 @@
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -204,7 +195,7 @@
   },
   {
    "cell": "dose",
-   "index": 6,
+   "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -212,7 +203,9 @@
    "proposed_status": "contra",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "rule": "decision 4 case (4) (reached, failed, higher dose later worked: target too low, not derived_from efficacy)",
-   "note": "Status contra holds, field wrong: Bareille 2013 Curr Drug Ther 8(2) shows 2 and 4 mg improved day-28 FEV1, so the 1 mg regimen was too low. Set derived_from null, record magnitude (2 mg vs 1 mg, about 2x), count as an independent dose miss. Margin is qualitative (existing rule question 3)."
+   "note": "Status contra holds, field wrong: Bareille 2013 Curr Drug Ther 8(2) shows 2 and 4 mg improved day-28 FEV1, so the 1 mg regimen was too low. Set derived_from null, record magnitude (2 mg vs 1 mg, about 2x), count as an independent dose miss. Margin is qualitative (existing rule question 3).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): target too low: 2 and 4 mg improved day-28 FEV1 (Bareille 2013)"
   },
   {
    "cell": "safety",

@@ -77,18 +77,6 @@
   {
    "cell": "dose",
    "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 admitted; higher tier sets status)",
-   "note": "Status right (window doses reached, failed, abandoned). Roche media release, Basel 21 Jan 2014, said FlashLyte/DayLyte 'failed to meet their primary endpoints': comparison public 2014, not 2016."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -98,23 +86,13 @@
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "decision 3",
    "note": "Rosenbrock 2018 verbatim; HV PK/PD counts for dose. 'Enough' was only shown by Fleischhacker 2021 (NCT02832037 results 2021-02-24), so 2018 vs 2021 dating is a rule question, not a correction."
-  },
-  {
-   "cell": "dose",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Keefe 2025 Lancet Psychiatry (PMID 41233083), EPMC date 2025-12-01; CONNEX-1 results posted 2025-11-05 confirmed. Boehringer topline release Jan 2025 is earlier but same year. Contra derived from efficacy is right."
   },
   {
    "cell": "efficacy",
@@ -220,7 +198,7 @@
   },
   {
    "cell": "dose",
-   "index": 7,
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -230,13 +208,15 @@
   },
   {
    "cell": "dose",
-   "index": 8,
+   "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
    "note": "Surti 2023 Discussion verbatim; Methods: doses selected from PET occupancy, ketamine fMRI and LTP, 40 mg strongest. 40/60 mg bid dosed with daily adherence checks, MCCB primary flat: contra derived_from efficacy. NCT01911676 results 2023-02-27 < epub 2023-05-02, year 2023. margin_stated could be true (well-tolerated held); no status change.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): 40 and 60 mg bid, chosen from the LTP peak and occupancy, were dosed"
   },
   {
    "cell": "efficacy",

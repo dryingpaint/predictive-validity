@@ -346,7 +346,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -384,7 +383,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2011,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -422,7 +420,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -461,7 +458,6 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2013,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true
    },
@@ -495,7 +491,6 @@
     "note": "Guinea-pig tracheal-strip off-rate and in vivo duration picked PF-03635659 for once-daily dosing; no patient readout yet.",
     "short": "Pfizer guinea-pig duration picked PF-03635659",
     "judgement": "Opening entry: the model existed and was used for a member drug before any patient comparison was public.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null,
     "model_id": "pfizer-guinea-pig-trachea-duration",
@@ -531,7 +526,6 @@
     "srcLabel": "NCT01033487 results 2016",
     "quote": "Trough FEV1 was calculated as the average of the largest FEV1 value from 3 readings recorded at 24 hours (hrs) and 24.5 hrs post-dose.",
     "confidence": "medium",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "note": "Once-daily target reached: a single 180–1450 µg dose kept trough FEV1 51–93 mL over placebo at 24 h (tiotropium +61 mL).",
@@ -573,7 +567,6 @@
     "note": "Ex-vivo human bronchi showed concentration-dependent antagonism of carbachol contraction, filed under the IND before Phase 2b; no patient comparison yet.",
     "short": "Human bronchi antagonism filed, uncompared",
     "judgement": "Opening entry at the earliest documented use. Dated to the IND memo rather than the 2018 paper because the FDA text shows the tissue data were in hand before the dose-ranging trial; this is therefore not a retrodiction.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null,
     "model_id": "revefenacin-human-bronchus-ex-vivo",
@@ -609,7 +602,6 @@
     "srcLabel": "Hegde 2018",
     "confidence": "high",
     "quote": "Indeed, clinical Phase 2 dose-range studies have demonstrated sustained 24 hours bronchodilation in COPD patients following once-daily dosing.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "note": "Once-daily regimen implied by the >10 h tissue offset was reached: once-daily nebulized dosing gave sustained 24-h bronchodilation in Phase 2.",

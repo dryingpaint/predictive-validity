@@ -150,7 +150,6 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "magnitude": "direction_only",
@@ -162,18 +161,18 @@
    },
    {
     "year": 2022,
-    "status": "contra",
+    "status": "same",
     "model": "CIA occupancy-efficacy PK/PD",
     "model_id": "cia-occupancy-pkpd",
     "note": "Elsubrutinib reached adequate exposure and BTK engagement at every dose yet matched placebo; the rat-CIA occupancy target that predicted efficacy did not hold.",
-    "short": "Target reached, no effect",
+    "short": "Rat-CIA occupancy target reached",
     "src": "https://doi.org/10.1016/S2665-9913(22)00092-3",
     "srcLabel": "Fleischmann 2022",
     "quote": "No significant improvements in efficacy measures for elsubrutinib alone (any dose) versus placebo were detected, despite adequate plasma exposure and target engagement.",
     "confidence": "medium",
     "confidence_note": "Abstract-level (Lancet Rheumatol paywalled).",
     "reason": "Target reached; drug failed and was dropped",
-    "judgement": "v3 dose rule 'reached, failed, abandoned': contra derived_from efficacy, so the failure is the same one counted in efficacy. Model side Goess 2019 (rat CIA; 'BTK occupancy in disease models correlated with in vivo efficacy'). Elsubrutinib went on only in the ABBV-599 combination, whose effect the paper attributes to upadacitinib. Year from the paper (April 2022); the registry posting of 2021-05-03 gives the result but not the exposure statement.",
+    "judgement": "Dose scored on its own prediction (rule v4): a second member reached the rat-CIA occupancy target. v3 dose rule 'reached, failed, abandoned': contra derived_from efficacy, so the failure is the same one counted in efficacy. Model side Goess 2019 (rat CIA; 'BTK occupancy in disease models correlated with in vivo efficacy'). Elsubrutinib went on only in the ABBV-599 combination, whose effect the paper attributes to upadacitinib. Year from the paper (April 2022); the registry posting of 2021-05-03 gives the result but not the exposure statement.",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -188,7 +187,6 @@
     "product_in_model": true,
     "model_kind": "animal",
     "retrodiction": false,
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "magnitude": "direction_only",
@@ -196,7 +194,8 @@
     "source_calls_it": "miss",
     "population": "Unselected",
     "model_first_use_year": 2010,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "strengthens": true
    }
   ],
   "efficacy": [

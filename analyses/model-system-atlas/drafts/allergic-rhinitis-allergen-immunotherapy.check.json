@@ -50,7 +50,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "PR dated 18 Apr 2017, quote verbatim; model_src NCT01447784 resolves (no results). 'Reached, failed, abandoned' row holds (escalated regimens also failed). But trial_unreported must be false: NCT02150343 posted results 2018-06-15 (tier 3; CS wk 50-52 1.69/1.51/1.40 vs placebo 1.56). 2013 PR confirms chamber regimen 'four doses over 12 weeks'."
+   "note": "PR dated 18 Apr 2017, quote verbatim; model_src NCT01447784 resolves (no results). 'Reached, failed, abandoned' row holds (escalated regimens also failed). But trial_unreported must be false: NCT02150343 posted results 2018-06-15 (tier 3; CS wk 50-52 1.69/1.51/1.40 vs placebo 1.56). 2013 PR confirms chamber regimen 'four doses over 12 weeks'.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): the chamber's 4 x 12 nmol course was dosed in the field study"
   },
   {
    "cell": "dose",
@@ -153,16 +155,6 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "note": "Quote verbatim. model_src Mosges 2017 (epub 2017-12-22; Phase IIb Aug-Nov 2014): CPT 51.2% at 170 ug P=.023, 46.3% at 370 ug. Phase III (Jan-Sep 2016) dosed 170 ug, 89% reached it. Prospective; within_2x and margin_stated (no grade III/IV up to 370 ug) supported.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "fc.py scrape of FirstWord reproduces the 2019-12-20 Business Wire release; quote verbatim; 0.15 vs 0.30 primary, programme 'placed on hold', judicial reorganization filed. NCT03724240 first posted 2018-10-30, no results, status unknown. 'reached, failed, abandoned' contra supported.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
   },
   {

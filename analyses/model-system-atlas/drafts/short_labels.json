@@ -222,7 +222,15 @@
   "Human HCC cell-line and patient-derived xenografts in immunodeficient mice": "Human HCC cell-line and PDX xenografts",
   "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)": "CRPC lines and xenografts, EZH2i + AR blockade",
   "Docetaxel-refractory PSMA-high CRPC xenografts dosed with PSMA ADC": "PSMA-high CRPC xenografts, PSMA ADC",
-  "Raji CD19+ Burkitt xenograft in NSG mice, FMC63-4-1BB CAR T cells (liso-cel lineage)": "Raji xenograft in NSG mice, CD19 CAR T"
+  "Raji CD19+ Burkitt xenograft in NSG mice, FMC63-4-1BB CAR T cells (liso-cel lineage)": "Raji xenograft in NSG mice, CD19 CAR T",
+  "PBPK model of BMS-823778 built on in-vitro metabolism and healthy-volunteer PK, simulating CYP2C19/UGT1A4 genotypes and DDI": "BMS-823778 PBPK, CYP2C19/UGT1A4 genotypes",
+  "NCI rat and beagle dog repeat-dose (daily x5 intravenous) toxicology of alvespimycin with plasma and tissue PK (Glaze 2005)": "Rat and dog repeat-dose toxicology (alvespimycin)",
+  "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout": "BEZ235 xenografts, tumour PI3K/Akt readout",
+  "MCF-7/AC-1 aromatase-expressing xenografts under letrozole (dalotuzumab, ridaforolimus)": "MCF-7/AC-1 xenografts under letrozole",
+  "Human visual-evoked-potential LTP (EEG neuroplasticity) in schizophrenia patients": "Human visual-evoked LTP in schizophrenia",
+  "AR-PARP cross-talk: PARP-1 required for AR transcriptional output in LNCaP/C4-2/VCaP cells, castrate xenografts and primary-tumour explants (Schiewer 2012); ADT- or enzalutamide-induced HR deficiency plus olaparib in xenografts (Asim 2017, Li 2017)": "AR-PARP cross-talk cells and xenografts",
+  "Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen": "Rat plasma FFA suppression (Merck screen)",
+  "Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK, from mouse/rat/dog in-vivo PK and human in-vitro ADME (S*BIO, Jayaraman 2011)": "Allometry and Simcyp PBPK (pracinostat)"
  },
  "dissent": {
   "Human NTD signal gone; mouse harm unconfirmed": "Mouse NTD; human signal gone",
@@ -295,7 +303,12 @@
   "Adriforant worked in mice, not in patients": "Adriforant: mice yes, patients no",
   "0/11 exon-20 responses; HER2 14%": "0/11 exon-20 responses",
   "Haematological toxicity the GEMM missed": "GEMM missed blood toxicity",
-  "ALT rise in 81%, 87% immunosuppressed": "ALT rise in 81% of patients"
+  "ALT rise in 81%, 87% immunosuppressed": "ALT rise in 81% of patients",
+  "Phase 3 dosed below Phase 2, target unverified": "Phase 3 dosed below Phase 2",
+  "2 ug too low; 4 ug held trough FEV1": "2 ug too low; 4 ug worked",
+  "1 mg too low; 2 and 4 mg improved FEV1": "1 mg too low; 2-4 mg worked",
+  "Every-other-week regimen lost engagement; Phase 2b missed": "Q2W regimen lost engagement",
+  "NEFA suppression not held on chronic dosing": "NEFA suppression not held"
  },
  "mechanism": {
   "FGF21 analogue (FGFR1c/KLB) agonists": "FGF21 analogues",

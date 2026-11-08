@@ -46,15 +46,6 @@
    "note": "The paper states no model exposure target or margin. The quote is the engagement datum counted a second time. LY2886721's patient trial stopped for liver toxicity with no stated margin, so the drafter's own note gives untested."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "note": "The Henley quote matches (NEJM paywalled; confirmed via search snippet). Contra derived_from efficacy follows the table. But product_in_model should be false (dogs got LY2886721, not atabecestat), and the Lilly dog model did not set atabecestat's dose. See rule questions."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

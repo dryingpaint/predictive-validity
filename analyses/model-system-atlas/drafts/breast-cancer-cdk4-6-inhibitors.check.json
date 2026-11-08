@@ -103,7 +103,9 @@
    "quote_found": "abstract_only",
    "status_supported": true,
    "note": "Tolaney 2020 (PMID 32694159) abstract: cohort D unbound brain-met levels 96x/19x IC50, quote verbatim. Target reached, iORR failed, indication not pursued: contra derived_from efficacy per dose table. Model prospective (2015 vs results 2019).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): brain-metastasis exposure exceeded the rodent-derived target"
   },
   {
    "cell": "efficacy",

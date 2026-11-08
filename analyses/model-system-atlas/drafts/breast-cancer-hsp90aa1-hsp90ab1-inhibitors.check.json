@@ -35,20 +35,6 @@
    "note": "Quote verbatim in Jensen 2008 abstract (30 mg/kg, >1,000x GI50 for ~2 days, weekly regimen). margin_stated null is right: no NOAEL/MTD public."
   },
   {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2013,
-   "rule": "v3 dose table: the 'reached, failed' row needs the target shown reached (PK); status table untested = no admissible comparison",
-   "note": "Modi 2013 full text (PMC3646160): PK measured (retaspimycin AUC 10,003 ng h/mL), dose taken from phase 1 MTD, no comparison to any xenograft exposure, authors suspect underdosing, higher-dose studies ongoing. Reach never shown, so untested.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 (dose; #90 unresolved): case 3 requires the exposure target shown reached. Modi 2013 reports no xenograft-exposure comparison and suspects underdosing; drafter's own source_calls_it is 'unresolved'. Untested, not derived contra."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
@@ -174,7 +160,7 @@
   },
   {
    "cell": "dose",
-   "index": 3,
+   "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -185,7 +171,7 @@
   },
   {
    "cell": "dose",
-   "index": 4,
+   "index": 3,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
