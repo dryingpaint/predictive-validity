@@ -6,7 +6,7 @@ happened in patients, on four questions (engagement, dose, efficacy, safety), st
 `atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`.
 
 `DATABASE_URL` and `FIRECRAWL_API_KEY` live in `.env`. Only `class_audit.py store`, `fetch_sources.py store` and
-`drafts/route_store.py` write to the database, each replacing its own unit.
+`drafts/route_store.py` (through `drafts/track_store.py`) write to the database, each replacing its own unit.
 
 ```
 .venv/bin/python analyses/model-system-atlas/lists.py                      # the disease list
