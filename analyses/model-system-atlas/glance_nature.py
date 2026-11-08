@@ -31,11 +31,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from glance import QUESTIONS, SHORT, cells, load
 
-# capable-plots: INK, CAPABLE (muted blue), PLACEBO (muted grey), VIBRANT coral and violet
-INK, CAPABLE, PLACEBO = "#1a1a1a", "#83a9bc", "#b2b8b8"
-MUTED, RULE, RULE_AREA = "#6b7372", "#dcdfdf", "#9aa1a1"
-STATUS = {"same": (CAPABLE, "Matched"), "neg": (CAPABLE, "Matched, incl. a known failure"), "other": (CAPABLE, "Matched on the platform only"),
-          "contra": ("#F0563D", "Contradicted"), "retro": ("#7C5CFC", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
+INK, MUTED, RULE, RULE_AREA = "#1a1a1a", "#6b7372", "#dcdfdf", "#9aa1a1"
+# A rainbow of status hues, every pair at least deltaE 8.7 apart under colour-vision deficiency on white
+# (dataviz validate_palette.js --pairs all); "never compared" stays neutral grey.
+STATUS = {"same": ("#3DBB7A", "Matched"), "neg": ("#2A7BD0", "Matched, incl. a known failure"),
+          "other": ("#CF9A12", "Matched on the platform only"), "contra": ("#C9362B", "Contradicted"),
+          "retro": ("#E07FC0", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
 HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
 
 

@@ -5,8 +5,8 @@
 <style>
 :root {
   --ground: #f5f6f3; --surface: #ffffff; --ink: #17201d; --muted: #5a6662; --faint: #8b9692; --rule: #d6dcd8;
-  --same: #1f86c8; --contra: #d13b1f; --retro: #8a5cc8; --other: #9fc6e3; --untested: #dfe4e0; --none: transparent;
-  --hatch: rgba(10, 30, 50, .55); --chip-ink: #ffffff; --focus: #1f86c8;
+  --same: #3DBB7A; --neg: #2A7BD0; --contra: #C9362B; --retro: #E07FC0; --other: #CF9A12; --untested: #dfe4e0; --none: transparent;
+  --hatch: rgba(10, 30, 50, .55); --chip-ink: #ffffff; --focus: #2A7BD0;
   --serif: "Spectral", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -15,14 +15,14 @@
   :root:not([data-theme="light"]) {
     color-scheme: dark;
     --ground: #111513; --surface: #181e1b; --ink: #e6ebe8; --muted: #9ba7a2; --faint: #6e7a75; --rule: #2b3330;
-    --same: #3d98d8; --contra: #e0553a; --retro: #a07ee0; --other: #3a6585; --untested: #2f3734;
+    --same: #249C74; --neg: #2474CF; --contra: #BD432F; --retro: #D066B1; --other: #B18D2A; --untested: #2f3734;
     --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ground: #111513; --surface: #181e1b; --ink: #e6ebe8; --muted: #9ba7a2; --faint: #6e7a75; --rule: #2b3330;
-  --same: #3d98d8; --contra: #e0553a; --retro: #a07ee0; --other: #3a6585; --untested: #2f3734;
+  --same: #249C74; --neg: #2474CF; --contra: #BD432F; --retro: #D066B1; --other: #B18D2A; --untested: #2f3734;
   --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110;
 }
 body { background: var(--ground); color: var(--ink); font: 15px/1.55 var(--sans); }
@@ -43,7 +43,7 @@ section { display: grid; gap: 16px; }
 .legend i { display: inline-block; width: 22px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; }
 .sw-same { background: var(--same); } .sw-contra { background: var(--contra); } .sw-retro { background: var(--retro); }
 .sw-other { background: var(--other); } .sw-untested { background: var(--untested); }
-.sw-neg { background: repeating-linear-gradient(135deg, var(--same) 0 3px, var(--hatch) 3px 4.5px); }
+.sw-neg { background: repeating-linear-gradient(135deg, var(--neg) 0 3px, var(--hatch) 3px 4.5px); }
 .qbars { display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; }
 .qbar { display: grid; grid-template-columns: 110px 1fr 120px; gap: 12px; align-items: center; font-size: 13.5px; }
 .qbar .bar { display: flex; gap: 2px; height: 16px; }
@@ -75,12 +75,12 @@ td.yr { font: 12.5px var(--mono); font-variant-numeric: tabular-nums; white-spac
 .chip { display: inline-block; padding: 1px 7px; border-radius: 10px; font: 500 11.5px var(--sans); color: var(--chip-ink); white-space: nowrap; }
 .chip.untested { color: var(--ink); background: var(--untested); }
 .chip.same { background: var(--same); } .chip.contra { background: var(--contra); } .chip.retro { background: var(--retro); }
-.chip.other { background: var(--other); color: var(--ink); }
-.chip.neg { background: repeating-linear-gradient(135deg, var(--same) 0 3px, var(--hatch) 3px 4.5px); }
+.chip.other { background: var(--other); color: var(--ink); } .chip.same { color: #0d1110; } .chip.retro { color: #0d1110; }
+.chip.neg { background: repeating-linear-gradient(135deg, var(--neg) 0 3px, var(--hatch) 3px 4.5px); }
 .q-quote { color: var(--muted); font-style: italic; }
 .vd { font-size: 12px; color: var(--muted); }
 .vd.corrected { color: var(--contra); }
-a { color: var(--same); }
+a { color: var(--focus); }
 .reg-controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid var(--rule); background: var(--surface); color: var(--ink); }
 .reg { display: grid; gap: 14px; }
@@ -96,7 +96,7 @@ select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid 
 .mech .mbar i { position: absolute; inset: 0 auto 0 0; background: var(--faint); border-radius: 3px; }
 .mech .mbar i.tr { background: var(--ink); }
 .mech .n { font: 11.5px var(--mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--same); display: inline-block; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--focus); display: inline-block; }
 .more { color: var(--muted); font-size: 12.5px; }
 .method { display: grid; gap: 10px; color: var(--muted); font-size: 14px; }
 .method p { max-width: 80ch; }
@@ -213,7 +213,7 @@ function render() {
   document.getElementById("qbars").innerHTML = Q.map(([q, name]) => {
     const c = Counter(tiles.map(t => latest(t.cells[q] || [])).filter(Boolean));
     const n = Object.values(c).reduce((a, b) => a + b, 0) || 1;
-    const segs = ORDER.filter(s => c[s]).map(s => `<span style="width:${100 * c[s] / n}%;background:${s === "neg" ? "repeating-linear-gradient(135deg,var(--same) 0 3px,var(--hatch) 3px 4.5px)" : `var(--${s})`}" data-tip="${esc(`${name}: ${LABEL[s]} — ${c[s]} of ${n} tiles`)}"></span>`).join("");
+    const segs = ORDER.filter(s => c[s]).map(s => `<span style="width:${100 * c[s] / n}%;background:${s === "neg" ? "repeating-linear-gradient(135deg,var(--neg) 0 3px,var(--hatch) 3px 4.5px)" : `var(--${s})`}" data-tip="${esc(`${name}: ${LABEL[s]} — ${c[s]} of ${n} tiles`)}"></span>`).join("");
     const m = (c.same || 0) + (c.neg || 0) + (c.other || 0);
     return `<div class="qbar"><b>${name}</b><div class="bar">${segs}</div><span class="num">${m} matched · ${c.contra || 0} contra · ${c.untested || 0} never</span></div>`;
   }).join("");
@@ -221,7 +221,7 @@ function render() {
 
   // Atlas
   const atlas = document.getElementById("atlas");
-  let html = `<svg width="0" height="0" style="position:absolute"><defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="5" height="5" fill="var(--same)"></rect><rect width="1.6" height="5" fill="var(--hatch)"></rect></pattern></defs></svg>`;
+  let html = `<svg width="0" height="0" style="position:absolute"><defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(135)"><rect width="5" height="5" fill="var(--neg)"></rect><rect width="1.6" height="5" fill="var(--hatch)"></rect></pattern></defs></svg>`;
   html += `<div class="arow head"><div>Disease · mechanism<br><span class="axis" style="justify-content:flex-start">programs · share of disease</span></div>` +
     Q.map(([, n, sub]) => `<div class="q"><b>${n}</b>${sub}<div class="axis"><span>${Y0}</span><span>2006</span><span>${Y1}</span></div></div>`).join("") + `</div>`;
   let area = null;
