@@ -10,7 +10,6 @@ import pandas as pd
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "analyses", "model-system-atlas"))
 import glance  # noqa: E402
 import glance_nature  # noqa: E402
-import report_page  # noqa: E402
 
 
 def entry(model_id, year, status, seq=1, modality="", adjudicated=None, retrodiction=None, **fields):
@@ -61,9 +60,9 @@ def test_a_cell_whose_entries_were_all_dropped_has_no_headline():
 
 def test_the_checkers_corrected_year_stands_only_when_the_status_does():
     r = {"status": "same", "year": 2014, "verdict": "corrected", "proposed_year": 2011, "adjudicated_status": None}
-    assert report_page.final_year(r) == 2011
-    assert report_page.final_year({**r, "adjudicated_status": "contra"}) == 2014
-    assert report_page.final_year({**r, "verdict": "confirmed"}) == 2014
+    assert glance.final_year(r) == 2011
+    assert glance.final_year({**r, "adjudicated_status": "contra"}) == 2014
+    assert glance.final_year({**r, "verdict": "confirmed"}) == 2014
 
 
 def test_adjudicated_status_overrides_the_drafters():
@@ -127,7 +126,7 @@ def test_a_never_compared_cell_carries_the_reason_of_the_entry_drawn():
     assert row.status == "untested" and row.untested_reason == "not_measured"
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "analyses", "model-system-atlas", "drafts"))
     import lint
-    assert set(report_page.UNTESTED_REASON) == lint.ENUM["untested_reason"] - {None}
+    assert set(glance.UNTESTED_REASON) == lint.ENUM["untested_reason"] - {None}
 
 
 def test_every_headline_status_the_data_can_carry_has_a_figure_style():
