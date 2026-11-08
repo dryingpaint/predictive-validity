@@ -1,0 +1,27 @@
+{
+ "tile": "psoriasis-rorc-inverse-agonists",
+ "searched": [
+  "sources/manifest.csv: grep for RORC/psoriasis rows; no member (AGN-242428, BI 730357, VTP-43742, GSK2981278) has an FDA/EMA review in the bundle (none reached Phase 3)",
+  "PubMed esearch: 'BI 730357', 'BI730357', 'VTP-43742', 'GSK2981278', 'AGN-242428'; esummary of all hits (27 records)",
+  "PubMed esearch: 'RORgammat inverse agonist psoriasis clinical translational' (found Xue 2016 Sci Rep, JNJ-54271074; Smith 2016)",
+  "PubMed abstracts: Delic 2026 JID (40683336), Akbarialiabad 2025 JID (40423599), Zou 2022 Pharmacol Res (35750301), Ooi 2023 CPT:PSP (36919398), Harcken 2021 ACS Med Chem Lett (33488976), Gooderham 2025 JID (39848568), Xue 2016 Sci Rep (27905482)",
+  "Europe PMC: '\"BI 730357\" AND (\"whole blood\" OR \"IL-17\")'; '\"VTP-43742\" AND (\"whole blood\" OR \"healthy volunteers\")'; '\"GSK2981278\"'; 'RORC AND Candida AND (inverse agonist OR inhibitor) AND psoriasis'",
+  "Europe PMC full text PMC11737796 (2025 PLoS One, thymocyte-apoptosis margin for RORgt inverse agonists): grepped for member drugs and clinical comparisons",
+  "Harcken 2021 full text (PMC7812678) for the BI 730357 whole-blood and minicircle data: Europe PMC returned 500, PMC HTML and BioC fetch failed; not read",
+  "NCT03339999 protocol (AGN-242428) pdftotext: grepped for mouse/rat/dog/monkey/imiquimod/nonclinical/thymus/lymphoma/whole blood",
+  "WebSearch: Delic Krueger RORgamma inhibition plaque psoriasis BI 730357 skin transcriptome",
+  "WebSearch: RORgt inhibitor trial candidiasis/infections vs human RORC deficiency (Okada 2015) for BI 730357 or VTP-43742",
+  "WebSearch: GSK2981278 ointment lack of efficacy, skin penetration, explant, Kang 2018 plaque test"
+ ],
+ "added_models": [],
+ "considered_not_added": [
+  "BI 730357 human whole-blood ex vivo IL-17 assay (Harcken 2021, IC50 ~140 nM): the same system as the draft's human-whole-blood-il17-vtp track (human whole-blood IL-17 secretion ex vivo); a BI-side entry would not change that track's status, and the Harcken full text could not be fetched to quote it.",
+  "IL-23 minicircle mouse (BI 730357) for engagement: already tracked (il23-minicircle-mouse-bi, efficacy cell). Lead for the main draft, not a new system: Delic 2026 JID (doi:10.1016/j.jid.2025.06.1588, PMID 40683336) reports lesional-skin IL-23/IL-17 gene inhibition >1.5-fold at 100-200 mg but shallower than anti-IL-17 antibodies, the patient side of the mouse's skin IL-17A mRNA readout (up to 109% inhibition). Research letter, paywalled; read via search snippet only.",
+  "Ooi 2023 bounded-integer PK/PD model of PASI (in silico): fitted to the same Phase I/II patient data whose plateau it describes; not a model run before or independently of the patient result, so not a model-system prediction (not even a retrodiction with independent inputs).",
+  "Human RORC bi-allelic loss of function (Okada 2015 Science, human_genetic; predicts candidiasis and mycobacterial susceptibility): no source compares it with infections in any member's trial; Gooderham 2025 abstract reports only that BI 730357 was well tolerated. No comparison, so no track.",
+  "RORgt-null / adult-deleted mouse thymic lymphoma and thymocyte-apoptosis in vitro margin (PMC11737796, AZ compounds; Guntermann 2017 JCI Insight, Novartis compound): no member drug tested and no trial long enough to compare; the draft's safety judgement already names the concern.",
+  "JNJ-54271074 human psoriatic epidermal cell + skin-homing T cell co-culture and IL-23 mouse (Xue 2016 Sci Rep): compound is not a class member, and no member was run in it with a patient comparison.",
+  "VTP-43742 nonclinical models (patent-only, Expert Opin Ther Pat 2016/2017) and AGN-242428 nonclinical package (protocol defers to the IB): no published model data, nothing to compare.",
+  "GSK2981278 post-hoc skin penetration work: none found beyond the sRICA explants and IMQ mouse the draft already tracks; Sci Rep 2021 (PMC8080595) notes skin exposure was never disclosed but runs a different compound."
+ ]
+}

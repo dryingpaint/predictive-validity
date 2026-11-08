@@ -1,0 +1,166 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/alzheimer-disease-bace1-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "May 2015 (PMID 25609634, PMC6605527) full text read on PMC; quote verbatim. Opening untested is right. The 2012 proxy is late: the PDAPP and dog work came before the 2011-12 Phase 1 studies."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract sentence verbatim. Dog CSF Abeta 1-x nadir ~80% vs human CSF Abeta1-40/1-42 -71 to -83% at 70 mg; within_2x and proximal tier hold. Willis 2022 (PMC8842743) repeats the match for LY3202626."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim, and untested is right. The note's claim that human doses were chosen to reproduce dog CSF lowering is not in the paper, which reports plain SAD/MAD escalation. The note should be reworded."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "dose table / decision 16 (never reached because of toxicity, no stated margin -> untested); dose question definition",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 dose row: the paper (full text re-read) sets no dog exposure target; the CSF match is the engagement readout. LY2886721 Phase 2 stopped for liver toxicity with no stated margin: untested (#22, decision 16).",
+   "note": "The paper states no model exposure target or margin. The quote is the engagement datum counted a second time. LY2886721's patient trial stopped for liver toxicity with no stated margin, so the drafter's own note gives untested."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "The Henley quote matches (NEJM paywalled; confirmed via search snippet). Contra derived_from efficacy follows the table. But product_in_model should be false (dogs got LY2886721, not atabecestat), and the Lilly dog model did not set atabecestat's dose. See rule questions."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. PDAPP mice used for Abeta only, matching the house-style ad-amyloid entry. Same early proxy-year caveat as engagement 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PACC was EARLY's primary endpoint (Sperling 2021 abstract); the registry date 2020-02-10 checks out. Contra matches the ad-amyloid house style. product_in_model should be false (sibling LY2886721). The other patient_trials registry dates and whyStopped texts check out."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "The retinal-pathology tox quote is verbatim."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Verbatim. The paper states 4 of 70 patients had liver enzyme rises, and NCT01561430 results were posted 2018-05-18. Willis 2022 states 'This finding was not observed in nonclinical toxicology studies'. Liver is a harm the species could show, so contra holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Jonsson 2012 abstract (PMID 22801501) read; quote verbatim. Untested opening of the human-genetic track, 2012, class level, product_in_model false: all correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Henley 2019 quote confirmed via search snippet (NEJM paywalled); Sperling 2021 abstract agrees (-1.09 final). Genetics 2012 precede EARLY, so prospective; primary endpoint reversed: contra. EARLY results-posted 2020-02-10 and NAVIGATE-AD 2021-04-19 match registry. See rule question on A673T substrate specificity."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Filser abstract (PMID 25599931, epub 2014-10-29) read; quote verbatim. Untested opening, class level, sibling inhibitors so product_in_model false: correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Filser (2014) stated mechanism-based cognitive deficits before EARLY began (Nov 2015) and reported (2019): prospective, not retro. Patients showed reversible dose-related worsening (Sperling 2021 abstract), as mice did. Same holds; academic rather than sponsor model, noted."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Abstract (PMID 39348529, 2024-09-30) read; objectives sentence verbatim. Untested opening, ex_vivo, patient level, year 2024 correct."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Abstract states patients' DRB1*12:01/13:02/15:01 restriction first, then clones built from donors chosen for those alleles; quote verbatim. Post-hoc and reproduces the human data: retro (decision 10), not same. Correct."
+  }
+ ],
+ "missing": [
+  "Willis 2022 (doi:10.3233/ADR-210037, PMC8842743): LY3202626 was 'predicted to have reduced risk' of hepatotoxicity because of its low dose. NAVIGATE-AD (NCT02791191) showed 'no evidence of hepatotoxicity'. This is a later safety prediction that held, on a dose-load heuristic rather than an animal model, so it is probably not model_change; see rule questions.",
+  "J&J's May 2018 atabecestat discontinuation for liver enzymes (tier 5): no atabecestat nonclinical tox source was found either way. Safety stays contra from LY2886721, but the drafter should say that atabecestat's tox prediction was searched for.",
+  "Elenbecestat (Eisai/Biogen) Sept 2019 MISSION AD stop press release: already covered by the NCT02956486 registry record, which is the higher tier, so no status change."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Can a dose 'contra derived_from efficacy' be paired across sibling drugs when the model that set the exposure target (Lilly dogs, LY2886721) never set the failed drug's dose? Atabecestat doses came from its own human CSF PK/PD. And when the failed trial (EARLY) was stopped for toxicity while the efficacy readout was interim, which dose-table row applies?",
+  "Does a later safety prediction made from a non-model heuristic (low daily dose lowers idiosyncratic DILI risk, LY3202626) count as model_change and let the safety cell turn back, or is it out of scope because it is not a model system?",
+  "The opening year for unpublished preclinical work is proxied to a member's Phase 2 start (2012). Should it be the first-in-human date (LY2886721 Phase 1, about 2011) instead?",
+  "Efficacy 4 (A673T genetics vs atabecestat): A673T lowers beta-cleavage of APP only, while drug BACE1 inhibition also blocks other substrates (e.g. SEZ6), the likely cause of cognitive worsening. Is that a 'condition the model never tested' (#35/#72 -> untested) when no trial source attributes it so? Kept contra."
+ ]
+}

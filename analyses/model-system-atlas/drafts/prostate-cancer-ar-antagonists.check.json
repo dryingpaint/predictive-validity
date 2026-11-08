@@ -1,0 +1,165 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/prostate-cancer-ar-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Clegg 2012 (PMID 22266222, epub 2012-01-20) resolves; quote verbatim in abstract. Quote is about efficacy, not the reporter readout; luciferase readout confirmed in FDA review NDA 210951 (LNCaP/AR-Luc, 10 mg/kg/d). Untested opener fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "engagement definition",
+   "note": "Rathkopf 2013 (PMID 24002508, epub 2013-09-03) quote verbatim; FDHT-PET fell at all doses (direct). Reporter vs PSA as proximal AR transcriptional output is reasonable. Registry date 2018-07-27 confirmed for NCT01171898."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Clegg abstract states 30 mg/kg/d maximal response and 'higher therapeutic index with a greater potential to reach maximally efficacious doses in man'. AUC ~160.3 µg·h/mL projection confirmed in FDA review (lines ~1293-1297). margin_stated is qualitative only."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "Evidence rule 1; decision 16",
+   "note": "Status same holds (reached, worked, no MTD to 480 mg). Fix fields: Rathkopf does not set the model projection beside patient PK, so comparison_stated false, source_calls_it null. Margin weak: dog convulsions at Cmax 7 µg/mL vs human 6 µg/mL."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Clegg 2012 abstract quote verbatim; 8/10 tumours regressed >50% at 10 mg/kg confirmed in FDA review."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "efficacy definition",
+   "note": "Smith 2016 (PMID 27160947, epub 2016-05-06): primary endpoint 12-wk PSA response, quote verbatim; nmCRPC on ADT matches castrate model. NCT registry dates for all four patient_trials confirmed. Judgement's proxalutamide reason is wrong (see missing)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "Evidence rule 6",
+   "note": "FDA review quote verbatim (line 1093); dog convulsions 25 mg/kg/d, GABA-A IC50 3.0/0.88 µM; label seizure 0.2%; ARAMIS 0.2% both arms confirmed. Latest status same stands, but cell must open with an untested entry at model_first_use_year 2010 (proxy)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Moilanen 2015 (PMID 26137992) abstract carries the quote verbatim; FDA review NDA 212099 confirms study 09000124 VCaP regrowth delay after orchidectomy. Untested opener at 2009 proxy is correct; prospective.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. Xenografts (09000124, 1010TM03) ran ~2009-10, before ARADES (start 2011-03, published 2014), so not retro. FDA review: CR-VCaP tumour trend non-significant, PSA fell; direction_only same holds. Registry date 2017-03-29 verified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Joseph 2013 (PMID 23779130, epub 2013-06-18) abstract quote verbatim; resistant lines and F876L xenografts are the model. Opener 2013 at publication proxy correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Mutation found in lines first, then sought in ARN-509-001 plasma, so prospective, not retro. Readout is an exploratory biomarker, not a trial endpoint (see rule question); Rathkopf 2017 rarity noted. NCT01171898 results 2018-07-27 verified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zhou 2020 (PMID 32460179, epub 2020-05-24) quote verbatim; xenograft published before Kintor's Sept 2020 interim rPFS miss, so not retro. Post-NHA trial population never modelled; untested per decision on unmodelled conditions.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Moilanen 2015 abstract quote verbatim; FDA review confirms mouse brain:plasma 0.02 and no CNS signs in rats/dogs at Cmax up to 46/35 uM. Opener at 2015 publication proxy; model predates ARAMIS.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Quote in FDA multidisciplinary review NDA 212099 section 8.2.5.2 (line break only); seizures 0.2% vs 0.2%, none in 12 with seizure history. Model ran before ARAMIS, so same, not retro. Tier 2 correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Proxalutamide (pruxelutamide, a class member) has an in-vivo model: Zhou 2020 Eur J Cancer, doi:10.1016/j.ejca.2020.04.013 (PMID 32460179), 'The efficacy of GT0918 was investigated in a castration-resistant xenograft model' plus phase 1 (PSA>=50% in 2/16). The draft's claim that its preclinical work is cell lines only is wrong. Kintor announced (Sept 2020 IDMC; tier 5, e.g. Kintor 2020 interim results, en.kintor.com.cn/news/131.html) that the 2L+ mCRPC phase 3 missed interim rPFS. It needs its own model_id entry in efficacy: probably untested (model never tested post-abiraterone/docetaxel disease), otherwise contra. The trial population was not verified.",
+  "Darolutamide's own model (castration-resistant VCaP xenograft; FDA review NDA 212099, lines ~1364-1378) is only mentioned in a judgement. As a different system, it should get its own model_id entries (efficacy vs ARADES NCT01317641 / ARAMIS; safety, where mouse brain:plasma was low and ARAMIS seizures were 0.2% in both arms).",
+  "Rezvilutamide (SHR3680): CHART phase 3 in high-volume mHSPC was positive, but no published in-vivo model was found, so no entry is needed. TRC-253 (JNJ-63576253): preclinical xenografts in Branch 2021 MCT (doi:10.1158/1535-7163.MCT-20-0510); the phase 1/2a primary endpoint was DLT, so it is unscored, as the draft says.",
+  "Enzalutamide's own F876L resistance models: Korpal 2013 Cancer Discov (doi:10.1158/2159-8290.CD-13-0142, PMID 23842682; resistant LNCaP-derived lines) and Balbas 2013 eLife (doi:10.7554/eLife.00499; mutagenesis screen) predicted F876L resistance; Azad 2015 Clin Cancer Res (doi:10.1158/1078-0432.CCR-14-2666) reported F876L in cfDNA of an enzalutamide-progressing patient and AR aberrations predicting lower PSA response. They could join the arn509-resistant-cell-lines-f876l track (product_in_model per drug) if enzalutamide is a member."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: when the filed animal toxicity (dog convulsions at a Cmax at or near the human Cmax) predicts a harm at clinical exposure and patients show it at 0.2%, is that 'same' in direction, or does the magnitude need to be recorded as over_predicted?",
+  "Rule 6 opener: when the model's first use (2010 dog study) became public only in the same document that carries the comparison (2018 FDA review), is an untested opener at model_first_use_year still required? The draft skipped it and lint did not flag it.",
+  "Population mismatch for a member drug on its own model: if a castration-resistant (NHA-naive) xenograft is paired with a post-abiraterone phase 3 failure (proxalutamide), is the cell untested under 'conditions the model never tested', or contra?",
+  "Patient-level parallel tracks (efficacy 6): when the model predicts a resistance mutation and the patient datum is an exploratory cfDNA finding in progressing patients (not a trial endpoint, no carrier vs non-carrier comparison), does it count as an admissible 'primary' efficacy comparison, or should it be untested?"
+ ]
+}

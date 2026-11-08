@@ -1,0 +1,39 @@
+{
+ "tile": "hiv-infectious-disease-hiv-rt-nrti-inhibitors",
+ "searched": [
+  "sources/manifest.csv grep: azvudine | censavudine | rovafovir | GS-9131 | festinavir | BMS-986001 -> no FDA review rows (no member is FDA-approved)",
+  "Europe PMC: (azvudine OR FNC OR 4'-azidocytidine) AND (HIV OR SIV OR SHIV) AND (macaque OR monkey OR mouse OR rat OR humanized OR 'in vivo') -> 291 hits, no HIV animal efficacy study",
+  "Europe PMC: (censavudine OR festinavir OR BMS-986001 OR 4'-Ed4T OR OBP-601) AND (mouse OR rat OR monkey OR dog OR humanized OR pharmacokinetic OR 'in vivo') -> 65 hits; only Guha 2014 tox, Wang 2013 mtDNA, rat DBS bioanalytics",
+  "Europe PMC: (GS-9131 OR GS-9148 OR rovafovir) -> 62 hits; Cihlar 2008/2009, Ray 2008 metabolism, Q151L 2011, discovery 2010; no animal efficacy or in-silico model",
+  "Europe PMC: azvudine AND (M184I OR M184V OR resistance) -> Wang 2014 PLoS One in-vitro selection; Bioorg Chem 2026 and Sci Rep 2025 site-directed mutant panels (cell culture)",
+  "Europe PMC: azvudine AND HIV AND (trial OR patients OR phase) -> no peer-reviewed azvudine HIV trial paper",
+  "Europe PMC: azvudine AND (pharmacokinetic OR 'population pharmacokinetic' OR PBPK OR 'physiologically based' OR 'exposure-response' OR thymus) -> no HIV PK/PD or QSP dose model",
+  "Europe PMC: (censavudine OR festinavir OR BMS-986001) AND (patients OR trial OR phase) -> Cotte 2013, Gupta 2016, SAD Phase 1 (PMID 24374821), HIV-2 in-vitro 2015",
+  "Europe PMC core abstracts read: PMID 39027259 (azvudine thymus, rat + SARS-CoV-2 rhesus), 37930315 (AIDS 2023 M184I letter: no abstract, not open access, fullTextXML 404), 37378948 (FNC BALB/c acute tox), 24374821 (censavudine SAD), 42372457 (FNC resistant-strain panel 2026), 41093949 (subtype B vs CRF01_AE mutant panel 2025), 32678592 (FNC J Med Chem 2020), 25144636 (Wang 2014)",
+  "Europe PMC: azvudine AND (rhesus OR macaque OR cynomolgus OR 'non-human primate') -> only COVID-19 macaque work",
+  "Europe PMC: azvudine AND HIV AND (CD4 OR 'immune reconstitution' OR thymus OR thymic) -> reviews and the COVID thymus paper only",
+  "Europe PMC: azvudine AND HIV-1 AND (efficacy OR 'viral load' OR virological) NOT COVID -> Wang 2014 in vitro only",
+  "Europe PMC: (FNC OR 4'-azido-2'-deoxy-2'-fluoro) AND HIV, 2010-2020 -> J Med Chem 2020 mechanism, Caco-2/rat absorption 2017, P-gp 2018, rat/dog plasma assay 2014",
+  "Europe PMC: (GS-9131 OR GS-9148) AND (clinical OR isolates OR phenotype OR patients) -> no clinical-isolate or patient paper beyond the 2008 design paper",
+  "Europe PMC: (azvudine OR FNC OR azidocytidine) AND HIV AND (humanized OR SCID OR NSG OR BLT OR hu-PBL) -> none",
+  "Europe PMC: (GS-9131 OR GS-9148 OR censavudine OR festinavir OR BMS-986001 OR 4'-Ed4T) AND (humanized OR SCID OR SIV OR SHIV OR macaque OR 'in vivo efficacy') -> none",
+  "ClinicalTrials.gov v2: intervention azvudine/FNC, condition HIV -> NCT04109183 (Phase 2, n=172, completed 2019-01, no results posted), NCT04303598 (Phase 3, n=720, status unknown, no results)"
+ ],
+ "added_models": [],
+ "considered_not_added": [
+  "Azvudine NMPA package insert (阿兹夫定片说明书, conditional approval 2021-07; pivotal Phase 2 = NCT04109183, 172 ART-naive patients, HIV-1 RNA <50 copies/mL at week 48): a regulator-document patient-side record for the existing hiv-nrti-cell-culture-panel track (model side Wang 2014, 10.1371/journal.pone.0105617), not a new model system; it belongs as a 2021 `same` entry on that track for engagement and efficacy (tier pending rule question 1), so it is out of scope for added_models.",
+  "In-vitro M184I resistance selection (Wang 2014) vs M184I after short-term azvudine for COVID-19 in people with HIV (Jiang et al., AIDS 2023;37(8):1341-2, PMID 37930315, 10.1097/QAD.0000000000003564; letter, no abstract, not open access, full text not read): in-vitro resistance selection is already part of the cell-culture panel's model description, so this is a patient-level resistance comparison on the existing track (imported_from COVID-19), not a distinct system.",
+  "Azvudine thymus-homing tissue distribution in rat and SARS-CoV-2-infected rhesus macaques (Acta Pharm Sin B 2024, PMID 39027259; Zhang 2021 STTT macaque model): COVID-19 indication; no HIV patient comparison of thymic enrichment or CD4 protection found; not an HIV model.",
+  "FNC acute toxicity in BALB/c mice, OECD-423 (APJCP 2023, PMID 37378948): post-approval single-dose rodent study with no patient comparison stated and no prediction tied to the label's adverse reactions; no source puts it beside patient data.",
+  "FNC PBMC-triphosphate retention and A3G restoration in FNC-treated patients (J Med Chem 2020, PMID 32678592): intracellular triphosphate persistence is the cell-culture dose track already in the draft; the A3G/Vif finding is a mechanism observed in patients with no prior model prediction to compare.",
+  "Rat/dog plasma PK and Caco-2/rat intestinal absorption of FNC (PMID 24999865, 28487144, 30223932): bioanalytical and absorption work with no stated human-dose prediction and no patient comparison found.",
+  "HIV-2 in-vitro activity of censavudine (PMID 26392486) and azvudine (Wang 2014): no HIV-2 patients were dosed with either drug; no comparison exists.",
+  "Patient-derived isolate phenotyping used to enrol NRTI-resistant patients in the GS-9131 Phase 2 (NCT03472326): the same cell-culture system with clinical isolates, already in the panel's description; no new system and no peer-reviewed isolate paper beyond CROI posters.",
+  "Humanized-mouse or SIV/SHIV macaque efficacy model: none found for azvudine, censavudine or GS-9131 in HIV.",
+  "In-silico PK/PD, PBPK or QSP dose-selection model: none found for any member in HIV (azvudine population-PK work is in COVID-19).",
+  "Human challenge or human genetic model: not applicable to NRTIs; none found.",
+  "Censavudine healthy-volunteer single-ascending-dose Phase 1 (PMID 24374821): human PK only; the abstract states no animal-PK-based dose prediction, so it adds nothing to a new track.",
+  "CL-197 first-in-human (AAC 2026, PMID 42695945): not a class member.",
+  "Earlier public date for the GS-9131 termination (Adis 2020-04-28): a dating question on an existing entry, not a model system."
+ ]
+}

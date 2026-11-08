@@ -1,0 +1,24 @@
+{
+ "snapshot": "2026-11-02",
+ "window": [
+  "2008-01-01",
+  "2019-12-31"
+ ],
+ "phase": 2,
+ "programs": 5816,
+ "diseases": 949,
+ "seed": 20261102,
+ "sample_n": 200,
+ "merge": {
+  "MONDO:0005416": "MONDO:0005178",
+  "MONDO:0005015": "MONDO:0005148",
+  "MONDO:0013209": "MONDO:0007027",
+  "MONDO:0005324": "MONDO:0011786",
+  "MONDO:0002050": "MONDO:0002009"
+ },
+ "drop": {
+  "MONDO:0037829": "purine metabolism disease: mapping error (DATA_FIXES.md #5)",
+  "MONDO:0001475": "neutropenia: supportive care, no disease model of its own",
+  "MONDO:0002280": "anemia: supportive care, no disease model of its own"
+ }
+}

@@ -1,0 +1,326 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/allergic-disease-allergen-immunotherapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT00729508 re-opened via CT.gov API: brief summary last sentence verbatim; first posted 2008-08-07, start 2008-08, TRSS-in-EEC primary. Untested opener holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT01383590 primary-outcome title verbatim; first posted 2011-06-28, start 2011-10, Cat-PAD arm. Separate NAC track from the chamber is defensible (different challenge system)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Patel 2013 abstract (PMID 22981787) quote verbatim; epub 2012-09-13, print 2013-01. Readout moved in dosed patients, but it is the chamber's own efficacy readout: see rule question 2."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT03094845 brief summary verbatim; start 2016-09-28, first posted 2017-03-29, phase 2, 36 patients, safety primary; CT.gov shows no later hdmASIT+ trial. Untested holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ellis 2018 full text (PMC5896125) quote verbatim; epub 2018-04-12. Open-label n=19, no placebo arm, so the readout moved but uncontrolled; medium confidence is generous, low would also fit."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same registry record as engagement 1; opener for the peptide strip holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT00685711 secondary-outcome title verbatim (first posted 2008-05-28, start 2008-01). Worm 2011 abstract confirms the 3 nmol LPSR pick; never field-dosed, so untested not contra is right."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT00987909 brief summary verbatim; ALK, start 2009-09, completed 2010-05, AEs primary, chamber symptom score secondary; no publication found (Europe PMC). Opener for the 'other' strip holds."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Circassia 2016-06-20 release re-opened; quote verbatim; both regimens failed. Rule 4 case 3 (derived contra) applies. A tier-3 record (NCT01620762 results 2018-05-14) exists and could carry a 2018 strengthens entry as efficacy 6 does."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same NCT03094845 record; 15 injections over 7 weeks, safety primary, no exposure target stated, no field trial. Untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Biedermann 2019 abstract quote verbatim (epub 2019-01-15). Couroux 2019 full text (PMC6588091) verified: 'in-field phase III trial has been initiated with the SQ tree SLIT-tablet (12 DU)' and 'generally well tolerated in all administered doses', so margin_stated under decision 16 holds. NCT02481856 start 2015-06 confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As engagement 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As dose 2; untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As engagement 2; untested opener holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As engagement 4; untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Release quote verbatim; it also states 'Such a dramatic placebo effect was not a feature of our earlier phase II studies', so comparison_stated true is right. Same regimen, same drug: contra holds. Track identity across allergens is rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "NCT01620762 results (posted 2018-05-14) re-read via API: Combined Score 1.04 / 1.00 / 1.05, SE 0.068 each, n 467/470/470; quote is a faithful transcription of the outcome table. Strengthens entry holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4",
+   "note": "Ellis 2018 full text read: open-label, no placebo arm, authors write 'no firm conclusions of efficacy can be drawn'. An uncontrolled pre/post TNSS drop is not a prediction that Cat-PAD beats placebo, which is what the field tested; NAC made no admissible prediction, so untested, not contra.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35/#72), decision 8 (untested = model exists, not compared): open-label NAC with no placebo arm predicted only a pre/post TNSS fall, which Cat-PAD field arms reproduced (-58%); the failure is the placebo response the NAC never tested."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As engagement 1; peptide-strip opener holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As dose 3; 'other'-strip opener holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Worm 2011 abstract (PMID 21211644) quote verbatim; print Jan 2011. Assay ran alongside CP001 (2008), so model_first_use_year could be 2008 by proxy; no status change."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "As engagement 4; untested holds."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Patient side verbatim in the 2016 release; registry SAEs 11/467, 13/470 vs 9/470 confirmed. Model side (NCT01033344 record, no results) states no tolerability prediction; Patel 2013 full text is paywalled (Elsevier blocked) and its abstract has no safety sentence. Decision 4 (#58): null-null is same only if the model stated the null; needs a chamber source saying 'well tolerated' (Patel 2013 text or WAO J 2013 abstract PMC3643727)."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Worm 2011 abstract quote verbatim on the model side; release quote verbatim on the patient side. Negative prediction (no IgE-mediated release) held in 937 dosed patients; direction-only, tier 5 patient side, low-medium confidence is right."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Biedermann 2019 abstract quote verbatim; Couroux 2019 full text carries 'local reactions in the oral cavity of mild-to-moderate severity'. Same holds on the 'other' strip; whether a route-specific local reaction is a platform harm (split) or on-target (pooled) is rule question 3."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Worm 2011 abstract (PMID 21211644, print 2011-01, no epub) quote verbatim. Peptide-selection PBMC assay; no dosed-patient T-cell readout until 2019. Untested opener holds; 2008 proxy date possible via CP001, no status change."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Rudulier full text (PMC6817377; received 2018-09-11, epub 2019-06-07): NCT00867906 samples, n 12/13 analysed. CRTh2 MFI change P=0.047 (within-group P=0.06), uncorrected; frequency, other receptors, memory unchanged. Decision 11 partial = same holds; rule question on readout identity."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Moldaver abstract verbatim (PMID 29906527). PubMed history: received 2017-03-29, accepted 2018-03-28, epub 2018-06-12; premise cites Phase 2 success, not the 2016 failure. Peptides and strain not in abstract (full text paywalled). Untested opener, 2018 dating hold."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "NCT01620762 results (2018-05-14) re-read: CS 1.04/1.00/1.05, SE 0.068, analysed n 417/414/414 (467/470/470 randomised). Paper submitted 2017-03-29, nine months after the 2016-06-20 failure, as a bystander-tolerance study not motivated by it: retrodiction false defensible; contra either way (decision 10)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Würtzen full text (PMC7984359; epub 2020-12-08, print 2021-02) quote verbatim. Blood from 397 Phase 3 subjects (EudraCT 2015-004821-15) at baseline and months 1-9; T-cell lines n=29 untreated. First reported use 2020; untested opener holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim; source states its hypothesis as the basis for the 'observed clinical cross-protection' (decision 10, retro). Biedermann 2019 abstract quote verbatim (epub 2019-01-15; TPS TCS -2.27, 37%, key secondary; BPS primary also met). endpoint_role null: see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Lund 2023 full text (PMC10702988; received 2023-09-11, epub 2023-11-22) quote verbatim. n=29 birch and 22 oak T-cell lines from untreated donors, tablet not in model (product_in_model false right); intro frames the work as basis of the observed seasonal effects. Retro, strengthens holds."
+  }
+ ],
+ "missing": [
+  "ToleroMune Ragweed (member) chamber results exist that the draft names only in judgement text: 2010 chamber study NCT01198613 (Circassia PR 2012-03-08, AAAAI 2012 abstract: optimal regimen 97% greater TRSS reduction than placebo only in the moderate-baseline subgroup) and the 2014 Phase IIb chamber NCT02061709 (Circassia PR 2014-12-08: 8 x 12 nmol vs placebo 1.25 TRSS points, p=0.149, 'marked placebo effect'). Both are model-side (tier 5, not admissible as model_src) and no field result followed; the field observational study NCT01398137 (2011 season, n=90, 'to inform the design of a phase III field study') has no posted results and no publication. Nothing scoreable, but the chamber track should record that the ragweed chamber itself missed its primary in 2014, two years before the cat field failure.",
+  "Cat-PAD Phase 3 follow-on NCT02040844 (results posted 2018-05-14): year-2 Combined Score 1.99 / 1.91 vs 1.93 placebo, n=430. Add to patient_trials on efficacy 5/6; no status change.",
+  "SQ tree SLIT-tablet paediatric Phase 3 NCT04878354 (12 DU; results posted 2025-01-22; Allergy 2024, doi:10.1111/all.16363) is a second field confirmation of the chamber-chosen dose on the 'other' strip. patient_trials entry; no status change under decision 6.",
+  "Cat-PAD paediatric safety study NCT01921257 (phase 2, results posted 2018-04-17) is a second dosed population for the peptide safety strip (basophil and chamber tracks); no status change, could raise confidence on safety 5/6 if read.",
+  "No animal model found that was compared with patients for any member (Europe PMC searches on Cat-PAD, Ragweed-SPIRE, hdmASIT+, tree SLIT-tablet); the draft's 'no animal model' premise stands."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Track identity for human-challenge systems: is an allergen exposure chamber one model_id across allergens and products (same facility class, same TRSS readout, same prediction), as drafted, or one per allergen/member ('a member drug's own model', decision 8)? As one track, Cat-PAD's 2016 contra hides the tree tablet's 2019 field success under decision 6 ('one drug's contra beats another's same'); split by allergen, the figure shows green for birch and red for cat. The same question hits the sibling allergic-rhinitis tile.",
+  "Engagement on a human-challenge track: the 'PD readout the model used' is the model's own symptom endpoint in the same dosed humans, so engagement is same whenever the chamber study was positive and untested otherwise (tautological). Should human_challenge tracks score engagement on a mechanistic biomarker (IgG4, basophil, T-cell), leave the cell empty, or keep the downstream readout with readout_tier downstream as drafted?",
+  "Safety null-null on a human-challenge track (decision 4, #58): the chamber subjects are themselves patients, so 'well tolerated' in the chamber paper and 'well tolerated' in the field are the same kind of observation at two sizes. Is a chamber tolerability sentence a stated prediction, and is a route-specific local reaction (sublingual tablet oral reactions) a platform harm split by modality or an on-target allergen harm kept pooled?",
+  "An uncontrolled model result whose own authors disclaim it as an efficacy test (Ellis 2018 NAC, 'no firm conclusions of efficacy can be drawn'): does it make a scoreable prediction (contra when the field fails, as drafted) or is it untested (as proposed)? Decision 4's #57 covers a disclaimed patient trial, not a disclaimed model study.",
+  "Decision 16 on allergen products: the 'tolerated dose at or above the effective one' is a DU regimen with an AE profile from the same chamber study, not a NOAEL/MTD margin. Does margin_stated apply to any human dose-ranging study that reports tolerability, or only to a stated ceiling?",
+  "models: Engagement on an ex-vivo patient-cell track: the opener (Worm 2011) read proliferation and cytokines, the dosed-patient entry (Rudulier 2019) read tetramer frequency and chemokine-receptor expression on the same Fel d 1-specific CD4+ T cells. Does 'the PD readout the model used' mean the opener's readout (then untested) or any readout on the model's cell system (same + partial as drafted)? And does one uncorrected P=0.047 among ~12 readouts, with the authors' 'may decrease', meet decision 11 partial or #90 unresolved?",
+  "models: A retrodiction scored on a positive key secondary (SQ tree tablet, alder/hazel-season TCS) when the primary (birch-season TCS) was also met: decision 4 ties efficacy to the primary or a poc_gate secondary, but the ex-vivo cross-reactivity panel predicts only the cross-season effect. Admissible with endpoint_role null as drafted, or should the retro be scored on the primary via the birch-specific IgG4/IgE-blocking readouts?",
+  "models: A model paper submitted after a Phase 3 failure (Moldaver received 2017-03-29 vs 2016-06-20) whose experiments may have run before it and whose stated motivation is not the failed trial: decision 10 requires 'motivated by the patient result' for retrodiction: true. Is the flag decided by motivation (false, as drafted) or by run date when unknown? Status is contra either way."
+ ]
+}

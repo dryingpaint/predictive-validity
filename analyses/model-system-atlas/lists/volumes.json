@@ -1,0 +1,462 @@
+[
+ {
+  "area": "allergy",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0011786",
+    "label": "allergic rhinitis",
+    "n": 39
+   },
+   {
+    "mondo_id": "MONDO:0005642",
+    "label": "atopic conjunctivitis",
+    "n": 14
+   },
+   {
+    "mondo_id": "MONDO:0005271",
+    "label": "allergic disease",
+    "n": 7
+   },
+   {
+    "mondo_id": "MONDO:0005361",
+    "label": "eosinophilic esophagitis",
+    "n": 5
+   }
+  ],
+  "rest": 24,
+  "n_rest_indications": 12
+ },
+ {
+  "area": "autoimmune",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0008383",
+    "label": "rheumatoid arthritis",
+    "n": 96
+   },
+   {
+    "mondo_id": "MONDO:0005083",
+    "label": "psoriasis",
+    "n": 78
+   },
+   {
+    "mondo_id": "MONDO:0005101",
+    "label": "ulcerative colitis",
+    "n": 70
+   },
+   {
+    "mondo_id": "MONDO:0005011",
+    "label": "Crohn disease",
+    "n": 36
+   }
+  ],
+  "rest": 223,
+  "n_rest_indications": 55
+ },
+ {
+  "area": "cardiovascular",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0005252",
+    "label": "heart failure",
+    "n": 22
+   },
+   {
+    "mondo_id": "MONDO:0005044",
+    "label": "hypertensive disorder",
+    "n": 19
+   },
+   {
+    "mondo_id": "MONDO:0004981",
+    "label": "atrial fibrillation",
+    "n": 16
+   },
+   {
+    "mondo_id": "MONDO:0005010",
+    "label": "coronary artery disorder",
+    "n": 14
+   }
+  ],
+  "rest": 135,
+  "n_rest_indications": 47
+ },
+ {
+  "area": "endocrine",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0005148",
+    "label": "type 2 diabetes mellitus",
+    "n": 125
+   },
+   {
+    "mondo_id": "MONDO:0005147",
+    "label": "type 1 diabetes mellitus",
+    "n": 31
+   },
+   {
+    "mondo_id": "MONDO:0005133",
+    "label": "endometriosis",
+    "n": 13
+   },
+   {
+    "mondo_id": "MONDO:0006964",
+    "label": "secondary hyperparathyroidism",
+    "n": 6
+   }
+  ],
+  "rest": 51,
+  "n_rest_indications": 24
+ },
+ {
+  "area": "gastroenterology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0007027",
+    "label": "metabolic dysfunction-associated steatohepatitis",
+    "n": 76
+   },
+   {
+    "mondo_id": "MONDO:0005052",
+    "label": "irritable bowel syndrome",
+    "n": 18
+   },
+   {
+    "mondo_id": "MONDO:0005388",
+    "label": "primary biliary cholangitis",
+    "n": 15
+   },
+   {
+    "mondo_id": "MONDO:0007186",
+    "label": "gastroesophageal reflux disease",
+    "n": 11
+   }
+  ],
+  "rest": 125,
+  "n_rest_indications": 50
+ },
+ {
+  "area": "hematology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0011382",
+    "label": "sickle cell disease",
+    "n": 19
+   },
+   {
+    "mondo_id": "MONDO:0010602",
+    "label": "hemophilia A",
+    "n": 15
+   },
+   {
+    "mondo_id": "MONDO:0010604",
+    "label": "hemophilia B",
+    "n": 10
+   },
+   {
+    "mondo_id": "MONDO:0100244",
+    "label": "paroxysmal nocturnal hemoglobinuria",
+    "n": 9
+   }
+  ],
+  "rest": 74,
+  "n_rest_indications": 39
+ },
+ {
+  "area": "infectious_disease",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0005231",
+    "label": "hepatitis C virus infection",
+    "n": 52
+   },
+   {
+    "mondo_id": "MONDO:0005109",
+    "label": "HIV infectious disease",
+    "n": 32
+   },
+   {
+    "mondo_id": "MONDO:0005812",
+    "label": "influenza",
+    "n": 20
+   },
+   {
+    "mondo_id": "MONDO:0005366",
+    "label": "chronic hepatitis B virus infection",
+    "n": 18
+   }
+  ],
+  "rest": 298,
+  "n_rest_indications": 82
+ },
+ {
+  "area": "metabolic",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0021187",
+    "label": "hyperlipidemia",
+    "n": 33
+   },
+   {
+    "mondo_id": "MONDO:0011122",
+    "label": "obesity disorder",
+    "n": 25
+   },
+   {
+    "mondo_id": "MONDO:0005347",
+    "label": "hypertriglyceridemia",
+    "n": 9
+   },
+   {
+    "mondo_id": "MONDO:0008300",
+    "label": "Prader-Willi syndrome",
+    "n": 6
+   }
+  ],
+  "rest": 104,
+  "n_rest_indications": 63
+ },
+ {
+  "area": "neurology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0004975",
+    "label": "Alzheimer disease",
+    "n": 76
+   },
+   {
+    "mondo_id": "MONDO:0005180",
+    "label": "Parkinson disease",
+    "n": 41
+   },
+   {
+    "mondo_id": "MONDO:0006626",
+    "label": "diabetic neuropathy",
+    "n": 32
+   },
+   {
+    "mondo_id": "MONDO:0005277",
+    "label": "migraine disorder",
+    "n": 29
+   }
+  ],
+  "rest": 402,
+  "n_rest_indications": 101
+ },
+ {
+  "area": "oncology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0005233",
+    "label": "non-small cell lung carcinoma",
+    "n": 191
+   },
+   {
+    "mondo_id": "MONDO:0007254",
+    "label": "breast cancer",
+    "n": 129
+   },
+   {
+    "mondo_id": "MONDO:0008315",
+    "label": "prostate cancer",
+    "n": 91
+   },
+   {
+    "mondo_id": "MONDO:0005575",
+    "label": "colorectal cancer",
+    "n": 88
+   },
+   {
+    "mondo_id": "MONDO:0018874",
+    "label": "acute myeloid leukemia",
+    "n": 79
+   },
+   {
+    "mondo_id": "MONDO:0009831",
+    "label": "malignant pancreatic neoplasm",
+    "n": 74
+   },
+   {
+    "mondo_id": "MONDO:0009693",
+    "label": "plasma cell myeloma",
+    "n": 73
+   },
+   {
+    "mondo_id": "MONDO:0007256",
+    "label": "hepatocellular carcinoma",
+    "n": 73
+   },
+   {
+    "mondo_id": "MONDO:0008170",
+    "label": "ovarian cancer",
+    "n": 58
+   },
+   {
+    "mondo_id": "MONDO:0005105",
+    "label": "melanoma",
+    "n": 52
+   },
+   {
+    "mondo_id": "MONDO:0018177",
+    "label": "glioblastoma",
+    "n": 51
+   },
+   {
+    "mondo_id": "MONDO:0018881",
+    "label": "myelodysplastic syndrome",
+    "n": 44
+   },
+   {
+    "mondo_id": "MONDO:0001056",
+    "label": "gastric cancer",
+    "n": 40
+   },
+   {
+    "mondo_id": "MONDO:0008433",
+    "label": "small cell lung carcinoma",
+    "n": 39
+   },
+   {
+    "mondo_id": "MONDO:0018906",
+    "label": "follicular lymphoma",
+    "n": 34
+   }
+  ],
+  "rest": 736,
+  "n_rest_indications": 176
+ },
+ {
+  "area": "ophthalmology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0006733",
+    "label": "dry eye syndrome",
+    "n": 51
+   },
+   {
+    "mondo_id": "MONDO:0005150",
+    "label": "age-related macular degeneration",
+    "n": 27
+   },
+   {
+    "mondo_id": "MONDO:0004728",
+    "label": "diabetic macular edema",
+    "n": 21
+   },
+   {
+    "mondo_id": "MONDO:0005338",
+    "label": "open-angle glaucoma",
+    "n": 20
+   }
+  ],
+  "rest": 153,
+  "n_rest_indications": 57
+ },
+ {
+  "area": "other",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0004980",
+    "label": "atopic eczema",
+    "n": 81
+   },
+   {
+    "mondo_id": "MONDO:0005178",
+    "label": "osteoarthritis",
+    "n": 65
+   },
+   {
+    "mondo_id": "MONDO:0011438",
+    "label": "acne",
+    "n": 31
+   },
+   {
+    "mondo_id": "MONDO:0005016",
+    "label": "diabetic kidney disease",
+    "n": 26
+   }
+  ],
+  "rest": 348,
+  "n_rest_indications": 104
+ },
+ {
+  "area": "psychiatry",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0002009",
+    "label": "major depressive disorder",
+    "n": 62
+   },
+   {
+    "mondo_id": "MONDO:0005090",
+    "label": "schizophrenia",
+    "n": 45
+   },
+   {
+    "mondo_id": "MONDO:0007743",
+    "label": "attention deficit-hyperactivity disorder",
+    "n": 21
+   },
+   {
+    "mondo_id": "MONDO:0013600",
+    "label": "insomnia",
+    "n": 11
+   }
+  ],
+  "rest": 91,
+  "n_rest_indications": 35
+ },
+ {
+  "area": "respiratory",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0004979",
+    "label": "asthma",
+    "n": 84
+   },
+   {
+    "mondo_id": "MONDO:0005002",
+    "label": "chronic obstructive pulmonary disease",
+    "n": 46
+   },
+   {
+    "mondo_id": "MONDO:0009061",
+    "label": "cystic fibrosis",
+    "n": 43
+   },
+   {
+    "mondo_id": "MONDO:0800504",
+    "label": "idiopathic pulmonary fibrosis",
+    "n": 24
+   }
+  ],
+  "rest": 84,
+  "n_rest_indications": 25
+ },
+ {
+  "area": "urology",
+  "indications": [
+   {
+    "mondo_id": "MONDO:0006624",
+    "label": "overactive bladder",
+    "n": 11
+   },
+   {
+    "mondo_id": "MONDO:0018301",
+    "label": "interstitial cystitis",
+    "n": 10
+   },
+   {
+    "mondo_id": "MONDO:0010811",
+    "label": "benign prostatic hyperplasia",
+    "n": 8
+   },
+   {
+    "mondo_id": "MONDO:0001780",
+    "label": "premature ejaculation",
+    "n": 5
+   }
+  ],
+  "rest": 23,
+  "n_rest_indications": 8
+ }
+]

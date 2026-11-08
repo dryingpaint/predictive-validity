@@ -50,6 +50,7 @@ by the step named; no other step writes it.
 | Drug literature | `preclin.literature_*` (being consolidated into one set of tables), `preclin.moiety_publication`, `preclin.pubmed_search` | `pipeline.literature`, `pipeline.attribution literature` |
 | Stops | `preclin.stop`, `preclin.stop_signal`, `preclin.stop_continuation`, `preclin.analysis_method` | `pipeline.stop_causes`, `pipeline.attribution` |
 | Evidence-line dataset | `preclin.evidence_line`, `preclin.evidence_entry`, `preclin.evidence_entry_line`, `preclin.evidence_line_build` | `report.evidence_lines store` (`check` says whether it is stale) |
+| Model-system atlas | `preclin.atlas_*` (build, indication, moiety_review, mechanism, member, register view, track_entry, track_verdict, source_document) | `analyses/model-system-atlas/class_audit.py store`, `fetch_sources.py store`, `drafts/track_store.py` |
 | Provenance | `preclin.evidence_source_release` (every source release read), `pv_evidence.llm_decision` and `pv_evidence.llm_decision_run` (every LLM decision and run), `preclin.schema_migration` (this runner) | the loaders, `pipeline.llm`, `db/migrate.py` |
 
 `public.targets` (genes with Ensembl ids and symbols) and `public.gene_constraint` (gnomAD v4.1

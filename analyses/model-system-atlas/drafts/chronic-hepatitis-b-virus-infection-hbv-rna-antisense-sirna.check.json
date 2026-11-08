@@ -1,0 +1,210 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/chronic-hepatitis-b-virus-infection-hbv-rna-antisense-sirna.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Wooddell 2013 (PMID 23439496) resolves; quote is the abstract sentence cut at 'proteins' (continues ', and viral DNA with long duration of effect'); the Europe PMC record is not cut as confidence_note claims. Opener untested stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wooddell 2017 (PMID 28954926) abstract verbatim. ARC-520 is not a member so untested stands. The abstract says the chimp work investigated a patient result already seen, so retrodiction should be true (decision 10); status unchanged."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "7 (dating: earliest public comparison) with 2 (tier 5 admissible patient-side)",
+   "note": "Yuen 2022 verbatim, NCT03365947 results 2024-06-04 confirmed. But member ARB-1467 HBsAg reductions were public 2016-12-12 (Arbutus PR, tier 5) and elebsiran -1.03 to -1.65 log10 in NCT03672188 results posted 2021-12-13 (tier 3). Year 2022 is late."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "12 (do not widen) with checker brief item 3: pairing scores conditions the model never tested",
+   "note": "Chimps were dosed only with ARC-520 (non-member); the stated prediction concerns ARC-520. That an integrant-covering siRNA restores HBeAg-negative response is the drafter's inference, and Yuen 2022 does not attribute the similar response to integrant coverage.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decisions 1(b), 8 (proxy), 10: checker's 'never tested' premise fails on the source. Wooddell 2017 full text dosed HBeAg-negative chimps with siHBV-75 (integrant-covering) and knockdown matched HBeAg-positive; JNJ-3989 targets all HBV transcripts (JPET 2022). same."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Same truncated Wooddell 2013 abstract sentence as engagement 1. No human target stated; untested opener stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4 (dose asks whether the model's stated exposure/regimen target was reached) with evidence rule 3 (no quotable model-side target)",
+   "note": "JPET 2022 (PMID 36041884) abstract is mouse PK only (>42-day liver exposure), states no human exposure or regimen target; the 1-10 mg/kg to 100-400 mg mapping is the drafter's. The patient quote shows a plateau, not a reached target.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 dose: scores the model's stated exposure/regimen target. JPET 2022 (epub after the trial) gives mouse PK only, no human target; the mg/kg mapping is drafter-made, so post-hoc scaling, source_calls_it scaling. untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Same truncated abstract sentence. The note's 'rebound' claim is not in the abstract (it says 'long duration of effect'); full text not checked. Untested opener stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "REEF-1 (PMID 37442152) abstract verbatim; primary endpoint = NA-stopping criteria at wk 48 (paper and NCT03982186, results 2024-07-10). same/partial holds. Draft omits REEF-2's 0/130 functional-cure miss (see missing); NCT04667104 registry_date is 2024-07-03, not null."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim but it concerns NAG-MLP + chol-siF7 (DPC platform), not the members' GalNAc or LNP platforms, so it binds no member. Patient ALT signals (elebsiran 2/15 monotherapy; ARB-1467 2016 transaminase discontinuation; REEF-1 ALT/AST SAE) have no model-side comparison; untested stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7 (opener at first class use, proxy allowed), 8",
+   "note": "Thi 2019 (PMID 30403127, epub 2018-11-19, print 2019) abstract verbatim; full text closed. Abstract names 'human chimeric mouse model' without strain. ARB-1740 is not a member, product_in_model false is right. Untested opener stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10 (retrodiction) with 7 (dating)",
+   "note": "Noack 2026 (PMID 41586499, PMC12959159) full text verbatim; received 2025-07-24, published 2026-01-26, after NCT03672188 results (2021-12-13) and Gane 2023. No elebsiran-only PXB arm; ~1-log increment over muHBC34 vs 1.65 log patients is within 2x. retro stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7, 8",
+   "note": "Noack 2026 full text verbatim (HBV-infected PHH, EC50 1.4 nM HBsAg, 2.5 nM HBeAg, no cytotoxicity). model_first_use_year 2026 is unverifiable earlier: Thi 2019 full text (closed) may have used PHH for ARB-1740. Untested opener stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10 with 7",
+   "note": "Same Noack 2026 sentence verbatim; publication postdates the patient HBsAg data, experiment dates not stated, so retrodiction holds. direction_only is right: an in-vitro EC50 has no patient counterpart. retro stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4 (no stated exposure or regimen target)",
+   "note": "Thi 2019 abstract verbatim; it states no dose, exposure or human target. Noack 2026 full text gives 3 mg/kg mouse doses with no human mapping. Untested stands; the drafter's 2.9 mg/kg mapping is rightly not scored.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3 (efficacy = trial primary endpoint)",
+   "note": "Thi 2019 abstract verbatim; chimeric mice read liver/serum HBsAg only. No member primary endpoint (NA-stopping criteria, functional cure) is expressible in an immunodeficient model, so untested rather than contra is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3 (safety: stated prediction or askable silence)",
+   "note": "Thi 2019 abstract verbatim; it carries no tolerability statement for the chimeric mice, and ARB-1740 is not a member, so no silence is scored. Untested opener stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3 (stated prediction), 10 (not a retrodiction for the member)",
+   "note": "Gane 2023 (PMID 37290591) full text read (SGUL OA copy). Mice were uninfected PXB cDNA-uPA/SCID (PhoenixBio), 12-100 mg/kg x5, hALT1; paper says the model 'was used to predict the safety of VIR-2218' and findings were 'first demonstrated preclinically'. same holds; experiment date not stated.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "ARB-1467 (member) Phase 2 patient HBsAg data in Arbutus press releases, 2016-12-12 (mean max -1.0 log10 after three monthly 0.4 mg/kg doses, 3/5 >1 log; one discontinuation for transaminase elevation) and 2017 AASLD release: tier 5, admissible patient-side with model_src Wooddell 2013; the draft's note calling these 'congress abstracts only, not scored' is wrong. https://investor.arbutusbio.com/news-releases/news-release-details/arbutus-provides-additional-data-arb-1467-phase-ii-clinical",
+  "NCT03672188 registry results record (elebsiran, posted 2021-12-13, tier 3): Maximum Reduction of Serum HBsAg From Baseline -1.03 to -1.65 log10 IU/mL across dose groups vs -0.07/-0.10 placebo; earliest tier<=3 member comparison, before Yuen 2022. https://clinicaltrials.gov/study/NCT03672188",
+  "REEF-2 (NCT04129554; Agarwal 2024 J Hepatol, doi 10.1016/j.jhep.2024.03.046, PMID 38583491, epub 2024-04-05; registry results 2024-07-31): primary endpoint functional cure met by 0/130 (HBsAg fell 1.89 log10 on treatment). A member's primary-endpoint miss the efficacy cell does not show.",
+  "MARCH (Vir press release 2025-05-09, tier 5): study-defined primary endpoint HBsAg seroclearance 24 wk post-EOT 8% (4/51) tobevibart+elebsiran and 16% (5/32) with PEG-IFN in all participants; Phase 3 will not proceed without a partner. Every arm includes tobevibart (non-member mAb), so admissibility is a rule question. https://investors.vir.bio/news/news-details/2025/Vir-Biotechnology-Announces-Preliminary-24-Week-Post-End-of-Treatment-Data-for-Tobevibart-and-Elebsiran-Combinations-in-Chronic-Hepatitis-B-From-the-MARCH-Study/default.aspx",
+  "Noack et al. 2026 Antimicrob Agents Chemother (doi 10.1128/aac.01127-25, PMID 41586499, epub 2026-01-26): elebsiran itself in AAV-HBV C57BL/6 mice (max 2.81 log HBsAg with muHBC34) and in HBV-infected human liver-chimeric mice (2.51 log), plus HBV-infected primary human hepatocytes (HBsAg EC50 1.4 nM). Published after the patient data, so a retro entry on hbv-genome-mouse with product_in_model true, and two untracked systems (human liver-chimeric mouse; PHH in vitro).",
+  "NCT04667104 (PENGUIN) registry results posted 2024-07-03; draft records null.",
+  "No tier 1-3 model source for ARB-1467's own preclinical data was found (Europe PMC returns reviews only); if none exists, its patient data pair with the shared mouse track via Wooddell 2013 (sibling-dosed).",
+  "Rat repeat-dose hepatotoxicity (GalNAc-siRNA off-target) and NHP toxicology, Schlegel et al. 2022 Nucleic Acids Res (doi 10.1093/nar/gkac539, PMC9262600, epub 2022-07-01): ALN-HBV 'passed preclinical safety evaluations in both the rats and nonhuman primates' yet gave ALT >=3x ULN in 5/18 healthy volunteers (a silent-model miss on the non-member parent, product_in_model false), and the ESC+ redesign ALN-HBV02/VIR-2218 (member) showed an improved rat therapeutic window before re-entering the clinic. No rat or NHP tox track exists for this class. Also cites HepG2.2.15 RNA-seq off-target comparison of VIR-2218 vs ALN-HBV as the in-vitro basis.",
+  "The Gane 2023 safety comparison (safety 3) used uninfected PXB mice as a human-hepatocyte hepatotoxicity model; the track id 'hbv-human-liver-chimeric-mouse' is labelled 'HBV-infected'. Same PXB chassis, so not split here, but the model name should read 'human liver-chimeric (PXB) mice' with infection status per entry (decision 8)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a model's explanation of a non-member's failure mode (chimp integrant finding for ARC-520, Wooddell 2017) count as a prospective prediction for a member designed around it (JNJ-3989), when the trial source never attributes the member's result to that design? (engagement 4)",
+  "When the retrodicted patient result belongs to a non-member (ARC-520), does the opener carry retrodiction: true even though the status is untested either way? (engagement 2)",
+  "Dose 'reached, drug worked -> same': must a model source state the exposure or regimen target, or does a drafter-made mg/kg mapping from a PK-only mouse paper suffice? (dose 2)",
+  "When a member's later trial has a primary endpoint the model cannot express (REEF-2 off-treatment functional cure, 0/130), is that contra, same-partial, or no status entry? (efficacy)",
+  "Do combination trials in which every arm includes a non-member class (MARCH: tobevibart + elebsiran) score for the member, and if so on whose primary endpoint?",
+  "Are HBV-transgenic, hydrodynamic pHBV and AAV-HBV mice one track (hbv-genome-mouse) or three systems needing separate model_ids (decision 8)?",
+  "Safety 3 (Gane 2023 PXB hALT1): the mouse run was motivated by the ALN-HBV volunteer ALT elevations already seen (2016) but predicted the member VIR-2218's volunteer result before it was known. Is a model that retrodicts the comparator and predicts the member 'same' (as drafted) or 'retro' under decision 10?",
+  "Noack 2026 (engagement 6, 8): experiment dates are not stated and could predate the 2021 patient data. Does decision 10 turn on when the model result was run, or on when it was public (decision 7)? The drafter and this check used public date."
+ ]
+}

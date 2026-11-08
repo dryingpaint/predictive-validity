@@ -1,0 +1,288 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/plasma-cell-myeloma-psmb5-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "status table (same); evidence rule 6 (earliest public comparison)",
+   "note": "Piva 2008 resolves; quote verbatim (abstract). The 2007 opener stands, but 'no patient PD ever published' is wrong: Gallerani 2013 (doi 10.1016/j.ejca.2012.09.009, epub 2012-10-08) reports dose-related PBMC proteasome inhibition, 45.4% at RD, in MM patients. Add a 2012 same entry.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opener stands; the proposed 2012 Gallerani same entry was added to the draft as a new entry."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kupperman 2010 resolves; quote verbatim. FDA PharmR confirms study MLN9708-24699: tumour 20S inhibition Emax 71.7% (IV) and 60.6% (PO), GADD34 and cleaved caspase-3 induction; model_filed true holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Smith 2015 resolves; quote verbatim (abstract); NCT00830869 results posted 2019-09-09 confirmed. Solid-tumour patients are admissible under the healthy-volunteer rule; Assouline 2014 abstract gives no PD result, so 2015 is the earliest quotable on this track."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Piva 2008 resolves; quote verbatim; opener at first use holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kupperman 2010 resolves; quote verbatim. PharmR (study MLN9708-24699 results) confirms plasma AUC24 1680 and tumour AUC24 16,100 h*ng/mL at 6 mg/kg PO."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "ClinPharmR quote found line-wrapped; AUC0-last 1160 and AUC0-168 846 at 4 mg confirmed; PharmR dog 2-fold NOAEL separation and AUC0-168 1940 confirmed. Same holds (reached, worked), but margin_stated draws on the rat/dog system, not this model_id (rule question 2)."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Vogl 2017 resolves; quote verbatim; NCT01023880 terminated, ORR primary, no results. Contra derived from efficacy is defensible: dosed to MTD with dose-related PBMC proteasome inhibition (Gallerani 2013), authors attribute discontinuation to efficacy. Untested alternative is rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Piva 2008 resolves; quote verbatim; opener holds. A separate track from MM.1S/SCID is reasonable: different sponsor's xenograft panel, different prediction (parity with bortezomib, marrow sparing)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Kupperman 2010 resolves; quote verbatim. Chauhan 2011 abstract confirms the myeloma xenograft follow-up on the same system."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "SumR quote verbatim; registry 2016-01-27 and the Moreau 2016 / Ghobrial 2019 patient_trials quotes confirmed. 2015 same holds on the pre-specified primary. Missing later: CHMP negative opinion 2016-05-26 (reversed 2016-09-15) and TOURMALINE-MM2 missed PFS 2020, if NDMM is in context."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Vogl 2017 resolves; quote verbatim; NCT01023880 ORR primary, terminated, no results. Contra supported: 9% PR at MTD against complete regressions, paper attributes discontinuation to efficacy; contra not neg is right (no quotable model effect size). Untested alternative: rule question 1."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Piva 2008 resolves; quote verbatim; opener holds. The same sentence also predicts sparing of normal epithelial cells, which Gallerani 2013's dose-limiting rash contradicts earlier than Vogl 2017 (see entry 5)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR quote near-verbatim (text reads 'hematopoietic/lymphatic systems, and nervous system (dog only)'). Hematology Tables 22 (rat) and 27 (dog) are images; no platelet text in the OCR, as the draft says. 2009 proxy opener holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Zhou 2009 resolves; quote verbatim; opener holds."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "SumR quote verbatim; Moreau 2016 abstract confirms thrombocytopenia 12%/7% vs 5%/4%, rash 36% vs 23%, neuropathy 27% vs 22%. PharmR text lists GI, lymphoid, liver (rat) and neuronal (dog) findings; no platelet or skin finding readable. Same + partial holds."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "evidence rule 6 (earliest public comparison); safety definition (imported comparisons transfer with imported_from)",
+   "note": "Vogl 2017 resolves; quote verbatim; contra holds. Earlier public contradiction: Gallerani 2013 (epub 2012-10-08, solid tumours plus MM) 'Skin rash was dose-limiting and occurred in 53% of patients' against Piva's favourable epithelial-cell profile. The thrombocytopenia datum itself stays 2017."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "evidence rule 6 (earliest public comparison); safety definition (imported comparisons transfer with imported_from)",
+   "note": "Ghobrial 2019 resolves; quote verbatim; NCT01416428 terminated, no results, whyStopped carries the halt statement. Earlier public contradiction: Infante 2016 (epub 2016-02-29, solid tumours, imported_from) nausea 91%, vomiting 86%, grade 5 GI haemorrhage DLT. Hari 2019 is a correspondence, no abstract."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "adjudication / draft amendment",
+   "note": "Gallerani 2013 (doi 10.1016/j.ejca.2012.09.009, PMID 23058787, epub 2012-10-08) resolves; quote verified verbatim against the Europe PMC and PubMed abstracts; same (direction_only) dated 2012 holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Piva 2008 resolves (PMID 18057228, epub 2007-12-05); quote verbatim in abstract; patient-level opener holds. The explant readout is pooled over bortezomib-treated (not refractory) patients, so the per-patient claim is weaker than the model label; the bortezomib-resistant claim comes from Chauhan 2011 (abstract confirmed)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "decision 4 (efficacy = the trial's primary endpoint; a secondary scores only with endpoint_role: poc_gate)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Kumar 2014 resolves; quote verbatim in PMC full text, which states the primary objective was safety/MTD and ORR a secondary objective (cohorts 11/10/6/4; registry primary = AEs, results 2015-08-28). Same rests on a secondary endpoint with endpoint_role null and a pooled model readout, which the brief rules out: untested, with Kumar 2014 folded into the opener's patient_trials. Same survives only if the prior-exposure expansion cohorts count as a pre-specified poc_gate, or if re-sourced to TOURMALINE-MM1's prior-PI-exposed subgroup (69.5%, StatR line 532; PI-refractory excluded) on the PFS primary (rule question). model_filed true confirmed: PharmR p.27 excerpts Chauhan 2011's 'cytotoxicity in multiple myeloma cells ex vivo' figure.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4: Kumar 2014's primary endpoint was safety/MTD; ORR was an ordinary secondary objective (endpoint_role null). Stratifying expansion cohorts by prior-PI exposure is population design, not a sponsor-named proof-of-concept gate, so the primary governs: untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Sanchez 2010 resolves (PMID 19958357, epub 2009-12-01); quote verbatim in abstract, which also carries the bortezomib-sensitive and bortezomib-resistant xenograft tumours. A distinct system from Piva 2008's Cephalon cell-line xenografts (other laboratory, patient-derived SCID-hu), so its own model_id is right under decision 8. The LAGkappa-1A/-1B naming is in neither this abstract nor Berenson 2012's (abstract says 'three xenograft studies'); verify from full text or relabel generically."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Vogl 2017 resolves; quote verbatim (abstract); NCT01023880 ORR primary, terminated, no results; 2017 (epub 2017-01-31) holds. Not a duplicate under this run's rule: model_id is per system (decision 8) and decision 6 scores each track by the same rules, so one trial contradicting two systems that made the same single-agent prediction gives a contra on each; the cell headline de-duplicates, per-track counts do not (rule question). Contra not neg holds: no model effect size is quoted."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2014,
+   "rule": "decision 7 (year = earliest of registry, epub, print)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Gupta 2015 resolves (PMID 25377318); quote verbatim (abstract); opener, in_silico kind and model_filed true hold (ClinPharmR line 236: sponsor's phase-2 popPK). PubMed record created 2014-11-08 (accepted 2014-10-30), i.e. online ahead of the May 2015 print: epub_year, model_first_use_year and entry year move to 2014. Status unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "ClinPharmR quote found line-wrapped at lines 860-861 (also 2317: 'BSA does not impact AUC-inf as BSA was not identified as a covariate on CL'). Same holds under decision 4 case 2: fixed 4 mg reached equivalent exposure across BSA 1.2-2.7 m2 and MM1 met PFS (SumR, verified on efficacy 3). Prospective, not retro: MM1 dosed 4 mg fixed on this prediction. comparison_stated true is fair (the review sets the sponsor's phase-2 popPK rationale, lines 236-238, beside its own finding). within_2x rests on the no-covariate finding, not quoted AUCs; model_src year follows dose 5 to 2014."
+  }
+ ],
+ "missing": [
+  "Delanzomib patient PD on the delanzomib-mm-xenograft track: Gallerani 2013, Eur J Cancer 49:290-296, doi 10.1016/j.ejca.2012.09.009, PMID 23058787, epub 2012-10-08: 'Proteasome inhibition in peripheral blood mononuclear cells was dose related in MM patients; it was of 45.4±11.5% at the RD.' Engagement same (direction_only) dated 2012; also a dose datum (RD 1.5 mg/m2 twice weekly, MTD set by rash) and safety data (rash 53%, dose-limiting; no significant peripheral neuropathy).",
+  "TOURMALINE-MM2, NCT01850524, ixazomib-Rd vs placebo-Rd in transplant-ineligible newly diagnosed myeloma: primary PFS missed, HR 0.830 (95% CI 0.676-1.018), p=0.073, median 35.3 vs 21.8 months. Facon 2021 Blood, doi 10.1182/blood.2020008787, PMID 33763699; topline press release Takeda 2020-03-10 (Healio 2020-03-11). A 2020 contra on the mm1s-scid-xenograft efficacy track, outranking the 2015 same, if newly diagnosed patients belong to the context (rule question 3).",
+  "TOURMALINE-MM3 (post-transplant maintenance, PFS positive, Lancet 2019) and TOURMALINE-MM4 (non-transplant maintenance, PFS positive, 2020): same-direction newly-diagnosed trials for patient_trials if that population is in context; DOIs not verified in this check.",
+  "EMA record of the same trial the FDA SumR scores: CHMP negative opinion 2016-05-26 (final PFS HR 0.82, p=0.0548 read as not demonstrating benefit), positive opinion on re-examination 2016-09-15, conditional MA 2016-11-21. EPAR Ninlaro EMEA/H/C/003844; EMA Q&A https://www.ema.europa.eu/et/media/14960; Takeda release 2016-05-27 via https://myelomabeacon.org/pr/2016/05/27/ninlaro-ixazomib-chmp-negative-opinion/; Tzogani 2019 ESMO Open. A tier-2 document the efficacy cell should cite (rule question 5).",
+  "Patient-derived ex vivo MM cells, a patient-level system with no model_id in the draft: Piva 2008 CD138+ explants from untreated and bortezomib-treated patients; Chauhan 2010 (doi 10.1182/blood-2010-04-276626) and Chauhan 2011 (doi 10.1158/1078-0432.CCR-11-0476) 'MM cells resistant to conventional and bortezomib therapies'. Patient side: Richardson 2014 (88% prior bortezomib) and Kumar 2014 (cohorts by prior bortezomib/carfilzomib exposure); the refractory-subgroup ORR is not in the abstracts, so the track probably closes untested, but it existed and was used for this class.",
+  "Oprozomib halt source: NCT01416428's own whyStopped carries the 'program evaluation identified that the safety profile and pharmacokinetic (PK) characteristics of the formulation ... required further optimization' statement; the draft attributes it only to NCT01881789 (results posted 2021-03-03, confirmed)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose with no model-stated exposure target: delanzomib was dosed to an MTD set by unpredicted toxicity (rash, thrombocytopenia), showed dose-related PBMC proteasome inhibition (45% at RD), and failed. Is that 'reached, failed, abandoned' (dose contra derived_from efficacy; efficacy contra) or 'never reached because of toxicity; no stated margin' (both untested)? The table assumes a stated target.",
+  "margin_stated across tracks: the ixazomib dose entry (model_id mm1s-scid-xenograft) carries margin_stated: true from the GLP rat/dog NOAEL, a different system with its own model_id in safety. Must a stated margin be scored on the stating system's own track (a dose entry for ixazomib-rat-dog-glp-tox), and does a margin first made public in the 2015 FDA review (study pre-dating the IND) count as 'stated before the trial'?",
+  "Population axis: the brief defines population as genotype / biomarker / pathogen, else Unselected; the draft wrote 'Unselected (relapsed/refractory)'. Is line of therapy a population split? If not, TOURMALINE-MM2's missed primary (2020) is a contra on the ixazomib track and MM3/MM4 belong in patient_trials.",
+  "A numerically favourable but non-significant primary (TOURMALINE-MM2: HR 0.83, p=0.073, +13.5 months median PFS): contra under 'did the primary endpoint respond as predicted', or is there room for same with source_calls_it unresolved? Decision 13 says judge on the data, not the sponsor's reading, but does not say which way a missed significance threshold falls.",
+  "Regulatory reversal on one trial: the CHMP's 2016-05-26 negative opinion on TOURMALINE-MM1 (tier 2) was reversed on re-examination four months later. Does the interim negative opinion create a dated contra entry, or does only the regulator's final decision set the status when two tier-2 records of the same trial disagree?",
+  "Safety dating with imported_from: when the first public contradiction of a safety claim comes from another indication (Infante 2016 solid tumours; Gallerani 2013 mixed), does the entry take that earlier year with imported_from, or the first same-disease date the draft used? My two year corrections assume the earlier date.",
+  "Patient-level tracks vs the primary-endpoint rule (decision 4): an ex-vivo patient-cell prediction ('bortezomib-exposed patients still respond') is naturally tested by response rate within a prior-exposure cohort, which in a phase 1 is a secondary objective. Does a sponsor-designed expansion cohort stratified by prior-PI exposure (Kumar 2014, NCT00963820) count as a pre-specified poc_gate, or must a patient-level efficacy track wait for a subgroup of a primary endpoint (TOURMALINE-MM1 prior-PI-exposed 69.5% on PFS)?",
+  "One patient datum on two model tracks: Vogl 2017's 9% PR anchors a contra on both delanzomib-mm-xenograft and delanzomib-lagk-scid-hu-pdx (two systems, same single-agent prediction). The headline de-duplicates (decision 6) but per-track contra counts record one drug failure twice. Should the statistics de-duplicate per drug-trial datum, or is 'two models both wrong' the intended count?",
+  "In-silico dose models built and used before publication: the ixazomib popPK was run during phase 2 (ClinPharmR line 236) and dosed MM1 at fixed 4 mg from 2012, but the earliest public record is the Nov-2014 epub. Decision 7 opens the track at the earliest public record; should model_first_use_year instead carry the regulator-documented first use with a proxy flag?"
+ ]
+}

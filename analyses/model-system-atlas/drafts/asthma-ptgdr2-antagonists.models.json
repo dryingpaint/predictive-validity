@@ -1,0 +1,123 @@
+{
+ "tile": "asthma-ptgdr2-antagonists",
+ "searched": [
+  "manifest.csv rows for asthma / PTGDR2 antagonists: all 'no NDA/BLA', no FDA review text for any member",
+  "PubMed: (setipiprant OR fevipiprant OR AZD1981 OR BI 671800 OR QAV680 OR MK-1029 OR ARRY-502 OR GB001 OR ADC3680) AND allergen challenge",
+  "PubMed: (CRTH2 OR DP2) antagonist allergen challenge asthma late asthmatic response",
+  "PubMed: allergen challenge AND (fevipiprant OR MK-1029 OR GB001 OR BI 671800 OR QAV680)",
+  "PubMed: setipiprant asthma",
+  "PubMed: fevipiprant model-based dose selection / pharmacokinetic pharmacodynamic model",
+  "PubMed: (CRTH2 OR DP2 OR fevipiprant) quantitative systems pharmacology asthma",
+  "PubMed: (fevipiprant OR CRTH2 antagonist OR DP2 antagonist) AND ex vivo AND asthma patients",
+  "PubMed: (CRTH2 OR DP2 OR PTGDR2) antagonist asthma responders biomarker predict",
+  "PubMed: PTGDR2 polymorphism asthma (human genetic model)",
+  "PubMed: (CRTH2 OR DP2 OR PTGDR2) knockout mice asthma",
+  "PubMed: fevipiprant/timapiprant/CRTH2 antagonist human airway epithelium or precision-cut lung slices",
+  "PubMed: fevipiprant guinea pig OR AZD1981 guinea pig",
+  "ClinicalTrials.gov API: MK-1029, setipiprant, ACT-129968 studies; primary outcome results for NCT01343407, NCT01624974, NCT02720081"
+ ],
+ "added_models": [
+  {
+   "model_id": "human-allergen-challenge-lar",
+   "model": "Inhaled allergen challenge in mild atopic asthmatics (late asthmatic response)",
+   "model_kind": "human_challenge",
+   "model_first_use_year": 2011,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_filed": false,
+      "imported_from": null,
+      "population": "Mild atopic asthmatics (allergen challenge); unselected asthma (trials)",
+      "source_calls_it": null,
+      "retrodiction": false,
+      "patient_signal_reversed": false,
+      "year": 2011,
+      "status": "untested",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 3,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "epub_year": null,
+      "print_year": null,
+      "registry_date": null,
+      "product_in_model": true,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "model_first_use_year": 2011,
+      "note": "Members were tested on the late asthmatic response to inhaled allergen in mild atopic asthmatics: MK-1029 from 2011, setipiprant published 2014.",
+      "short": "Allergen challenge run on members",
+      "src": "https://clinicaltrials.gov/study/NCT01343407",
+      "srcLabel": "NCT01343407",
+      "quote": "A Two-part Study of the Effects of MK-1029 in Allergen-Challenged Asthmatics (MK-1029-003)",
+      "confidence": "medium",
+      "confidence_note": "Opening year is the registry start of NCT01343407 (2011-04-19); the setipiprant challenge (Diamant 2014) is not registered and may be earlier.",
+      "judgement": "Opening untested entry at the earliest dated member use of the allergen challenge model; proxy year from the registry start date."
+     },
+     {
+      "model_filed": false,
+      "imported_from": null,
+      "population": "Mild atopic asthmatics (allergen challenge); unselected asthma (trials)",
+      "source_calls_it": null,
+      "retrodiction": false,
+      "patient_signal_reversed": false,
+      "year": 2014,
+      "status": "contra",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/cea.12357",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": "2013-09-10",
+      "product_in_model": false,
+      "magnitude": "null",
+      "magnitude_basis": "model: setipiprant cut late-response FEV1 AUC 25.6% vs placebo; trial: AZD1981 pre-bronchodilator FEV1 +0.02 L vs placebo, P=0.58",
+      "model_first_use_year": 2011,
+      "note": "Setipiprant cut the allergen late asthmatic response 25.6%, predicting a lung-function benefit; AZD1981, a member, had already missed its FEV1 primary in 1,140 asthmatics.",
+      "short": "Challenge said yes; FEV1 trials missed",
+      "src": "https://doi.org/10.2147/DDDT.S147389",
+      "srcLabel": "Bateman 2018",
+      "quote": "However, the improvement for the highest AZD1981 dose (400 mg BID) vs placebo was not statistically significant (0.02 L, P=0.58), preventing interpretation of statistical testing for the lower doses.",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading of both papers. Model side: Diamant 2014 (PMID 24964348, entrez 2014-06-26): 'setipiprant significantly reduced the allergen-induced late asthmatic response (LAR), inhibiting the area under the response vs. time curve (AUC(3-10 h)) by on average 25.6% (P = 0.006)'. AZD1981 was never run in the challenge model.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "reason": "Challenge positive, member FEV1 trials failed",
+      "judgement": "Paired, not stated: no source sets the challenge result beside a member's trial. Dated 2014, when the model side became public (the AZD1981 registry result was posted 2013-09-10). Sibling-drug pairing as in the main strip. MK-1029's own challenge (NCT01343407, posted 2019-02-08) cut LAR FEV1 AUC to 0.48x placebo; its phase 2 FEV1 primaries split (NCT02720081 +0.107 L, p=0.023; NCT01624974 +0.047 L, p=0.28) and the program stopped. Not scored neg: no source states a class LAR bar.",
+      "patient_trials": [
+       {
+        "nct": "NCT02555683",
+        "registry_date": "2020-05-18",
+        "doi": "https://doi.org/10.1016/S2213-2600(20)30412-4",
+        "quote": "Although neither trial showed a statistically significant reduction in asthma exacerbations after adjusting for multiple testing, consistent and modest reductions in exacerbations rates were observed in both studies with the 450 mg dose of fevipiprant."
+       },
+       {
+        "nct": "NCT03683576",
+        "registry_date": "2021-08-23",
+        "doi": "https://doi.org/10.1016/j.chest.2022.02.038",
+        "quote": "Although GB001 did not significantly reduce the odds of asthma worsening, reductions favoring GB001 were observed."
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "OC000459 (timapiprant) allergen challenge (Singh 2013, ERJ): not a member drug of this class table; the member-drug challenges (setipiprant, MK-1029) are used instead.",
+  "Sheep Ascaris model (Shichijo 2009): the drug, S-5751, is a DP1 antagonist, outside the class.",
+  "Guinea pig models used for AZD1981 (Schmidt 2013): a rodent allergic airway model, same system as the draft's rodent-allergic-airway track.",
+  "Fevipiprant physiologically based biopharmaceutics model (2023) and population PK (2021): formulation and PK, run after phase 3; no efficacy or dose-to-response comparison.",
+  "QSP / in-silico dose-selection model: none found for any member.",
+  "PTGDR polymorphism studies (meta-analysis 2013): PTGDR is DP1, not PTGDR2; no genotype-to-drug-response comparison.",
+  "Patient ex-vivo cells or biomarker-selected responders: no source found that used patient cells to predict member-drug response; eosinophil-high subgroups are a biomarker, not a model system.",
+  "Allergen challenge for engagement/dose: challenge sputum eosinophils are themselves a human readout; MK-1029 challenge doses (60 and 500 mg) not stated as the basis of phase 2 doses, so no dose entry.",
+  "Allergic rhinitis allergen chambers / seasonal AR trials (BI 671800, setipiprant): a different indication with no stated asthma prediction.",
+  "Ullah 2024 mouse chronic asthma with rhinovirus on steroid: already in the draft."
+ ]
+}

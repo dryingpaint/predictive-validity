@@ -1,0 +1,125 @@
+{
+ "tile": "acute-myeloid-leukemia-flt3-inhibitors",
+ "searched": [
+  "FDA multidisciplinary reviews in the bundle (gilteritinib NDA 211349, quizartinib NDA 216993): grep for Ba/F3, ex vivo, saturation, F691, patient-derived, PDX, primary blasts",
+  "Europe PMC/PubMed: AC220 (quizartinib) resistance FLT3 kinase domain mutations, in vitro saturation mutagenesis vs patients",
+  "Europe PMC/PubMed: crenolanib resistance screen (Smith 2014 PNAS, Galanis 2014 Blood) and clinical resistance to crenolanib (Zhang 2019 Nat Commun)",
+  "Europe PMC/PubMed: gilteritinib Ba/F3 FLT3-D835Y/F691 preclinical (Mori 2017) and clinical resistance on gilteritinib (McMahon 2019 Cancer Discov)",
+  "Europe PMC/PubMed: FLT3 ex vivo drug sensitivity of primary AML blasts correlated with clinical response; Beat AML functional genomic landscape",
+  "Europe PMC/PubMed: FLT3 inhibitor patient-derived xenograft co-clinical",
+  "Europe PMC/PubMed: quizartinib exposure-response / population PK (QT, dose choice); quizartinib in FLT3-ITD-negative AML (QUIWI, QuANTUM-Wild)",
+  "Europe PMC/PubMed: crenolanib phase III; lestaurtinib ex vivo cytotoxic response vs clinical response",
+  "ClinicalTrials.gov API: NCT00989261, NCT01657682, NCT01522469, NCT02014558 (results first posted dates)"
+ ],
+ "added_models": [
+  {
+   "model_id": "flt3-itd-ba-f3-resistance-screen",
+   "model": "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2012,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2012,
+      "status": "untested",
+      "prediction_level": "patient",
+      "model_id": "flt3-itd-ba-f3-resistance-screen",
+      "model": "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2012,
+      "note": "In vitro mutagenesis of FLT3-ITD in Ba/F3 cells named the kinase-domain residues whose mutation would make quizartinib stop working.",
+      "short": "Screen names quizartinib resistance residues",
+      "src": "https://doi.org/10.1038/nature11016",
+      "srcLabel": "Smith 2012",
+      "quote": "Here we report point mutations at three residues within the kinase domain of FLT3-ITD that confer substantial in vitro resistance to AC220 (quizartinib), an active investigational inhibitor of FLT3, KIT, PDGFRA, PDGFRB and RET",
+      "confidence": "high",
+      "confidence_note": "Abstract-level reading. model_kind is ex_vivo because the enum has no in-vitro cell-line value; the system is an engineered murine cell line, not patient cells.",
+      "judgement": "Opening entry at the screen's first use; the comparison appears in the same paper.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "FLT3-ITD AML, relapsed/refractory on quizartinib"
+     },
+     {
+      "year": 2012,
+      "status": "same",
+      "prediction_level": "patient",
+      "model_id": "flt3-itd-ba-f3-resistance-screen",
+      "model": "Ba/F3 FLT3-ITD saturation mutagenesis resistance screen (in vitro)",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2012,
+      "note": "Every one of eight patients who relapsed on quizartinib carried new FLT3 kinase-domain mutations at residues the screen had flagged (D835, F691).",
+      "short": "8/8 relapses carry screen-predicted mutations",
+      "src": "https://doi.org/10.1038/nature11016",
+      "srcLabel": "Smith 2012",
+      "quote": "evolution of AC220-resistant substitutions at two of these amino acid positions was observed in eight of eight FLT3-ITD-positive AML patients with acquired resistance to AC220.",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading. The trial the eight patients came from (AC220 phase 1 NCT00462761 or phase 2 NCT00989261, whose results were first posted 2019-11-29) is not named in the abstract, so registry_date is left null. Whether the screen was run before the patient samples were sequenced is not stated.",
+      "judgement": "Patient-level prediction: which genotype loses response. Scored same, not retro: the resistance residues were unknown clinically before this paper, and the screen and patient sequencing are reported together. Two of three predicted residues appeared in patients (Y842 did not), so magnitude is direction_only.",
+      "reason": "Predicted resistance residues found in patients",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "in vitro resistance residues vs residues mutated at relapse in patients",
+      "source_calls_it": "match",
+      "population": "FLT3-ITD AML, relapsed on quizartinib",
+      "patient_trials": [
+       {
+        "nct": "NCT02014558",
+        "registry_date": "2019-02-20",
+        "doi": "10.1158/2159-8290.CD-18-1453",
+        "quote": "Less frequently, secondary FLT3-F691L gatekeeper mutations or BCR-ABL1 fusions were identified at progression."
+       },
+       {
+        "nct": "NCT01522469",
+        "registry_date": "2024-01-30",
+        "doi": "10.1038/s41467-018-08263-x",
+        "quote": "Unlike other FLT3 inhibitors, crenolanib does not induce FLT3 secondary mutations, and mutations of the FLT3 gatekeeper residue are infrequent."
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Same screen applied to crenolanib (Smith 2014 PNAS, doi:10.1073/pnas.1320661111: no resistant colonies at clinically achievable concentrations) vs Zhang 2019 Nat Commun (no FLT3 secondary mutations, gatekeeper infrequent on crenolanib) and to gilteritinib (Mori 2017, doi:10.1007/s10637-017-0470-z: F691 inhibited 'to a lesser degree') vs McMahon 2019 (F691L at progression, less often than RAS): both agree with the screen, so they change no status; recorded as patient_trials on the 2012 entry. Zhang 2019's patients came from NCT01522469/NCT01657682; which one is not verified.",
+  "Ex-vivo plasma inhibitory assay (patient plasma on FLT3-ITD cells): already the draft's engagement read-out on the same cell-line system.",
+  "Ex-vivo drug sensitivity of primary AML blasts (Beat AML, Tyner 2018 Nature; crenolanib on D835 primary blasts, Galanis 2014): sensitivity tracks FLT3 genotype, but no source found comparing a patient's ex-vivo result with that patient's clinical response to a member drug. The lestaurtinib work that did (Levis/Pratz) uses a non-member drug.",
+  "FLT3 patient-derived xenografts: used in development of newer, non-member inhibitors; no co-clinical comparison for a member found.",
+  "Quizartinib exposure-response QT and population PK models used to pick doses: built from patient data, not a preclinical model; out of scope.",
+  "Quizartinib in FLT3-ITD-negative AML (QUIWI, QuANTUM-Wild): population outside the FLT3-mutated tile.",
+  "Human genetic or challenge models: none exist for this class."
+ ]
+}

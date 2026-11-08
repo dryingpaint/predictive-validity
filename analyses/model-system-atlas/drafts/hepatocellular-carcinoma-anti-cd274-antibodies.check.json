@@ -1,0 +1,176 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hepatocellular-carcinoma-anti-cd274-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Stewart 2015 resolves (PMID 25943534, epub 2015-05-05); quote verbatim in abstract; ONC4736-0020 is listed in FDA PharmR so model_filed holds. The judgement's '3 ug/mL, 90% of maximal' figure is not in the bundle text; not load-bearing."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kelley 2021 resolves (PMID 34292792, epub 2021-07-22); quote verbatim in abstract; registry results 2021-12-06 confirmed. Proliferating CD8+ readout moved in durvalumab-dosed HCC patients; partial and downstream are right since T300+D drove the peak."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "7",
+   "note": "Quote verbatim in PharmR. The same monkey track opens at 2012 (proxy) in safety and model_first_use_year is 2012, but the dose cell opens at 2017; rule 7 opens each cell at first use. Redate to 2012, status unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abou-Alfa 2022 resolves (PMID 38319892, epub 2022-06-06); quote verbatim; registry 2023-06-18 confirmed. PharmR states the 19.7-fold NOAEL margin verbatim, so margin_stated holds. 'Reached and worked' inherits the efficacy cell's combination-arm question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Morales-Kastresana 2013 resolves (PMID 24030703, epub 2013-09-12); quote verbatim. Abstract reports no single-agent anti-PD-L1 arm, so 'modest alone' is not in the quoted source. The sponsor relied on filed cross-indication models instead; see missing."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. HIMALAYA primary was STRIDE (durvalumab plus tremelimumab, non-member); durvalumab-alone OS a secondary per registry. EMERALD-1 verified: PFS HR 0.77 primary met, D+TACE HR 0.94 missed; final OS missed (HR 1.10, 0.93): add to patient_trials."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dong 2004 resolves (PMID 15030776, print 2004-03); quote verbatim. BLA cites PD-L1-knockout mice only for LCMV susceptibility (Mueller 2010), not the hepatitis phenotype, so model_filed is true for the system, not the prediction. Latchman 2004 resolves."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in SumR section 5.2 (also the label); 16/1414 (1.1%), one fatal, confirmed there. MONDO:0040679 is urothelial carcinoma (OLS). Direction-only match on an imported population is supported."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR. Proxy date plausible: PharmR dates the GLP tissue cross-reactivity study to 25 Aug 2011 and FIH NCT01693562 was posted 2012; the review gives no monkey study dates."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR; the reviewer's own sentence sets the monkey rash beside Study 1108 irAEs, so comparison_stated holds. Partial direction-only match imported from urothelial carcinoma is supported."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hepatology 2025 resolves (PMID 40384092, epub 2025-05-16); quote verbatim; registry 2023-06-18 confirmed. No status change: rule 7 writes entries only on change and reserves strengthens for a second miss; fold into the 2017 note. Could not verify 2022 full text."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PharmR (local bundle) carries the quote verbatim in the reviewer's Results/Conclusion for ONC4736-0006; report date 7 Feb 2012, non-GLP, MedImmune Cambridge confirmed. Model predates HIMALAYA, so not retro. Stewart 2015 (tier 1) also reports this co-implant system."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Quote verbatim (PMID 38319892, epub 2022-06-06) but the source states durvalumab-alone OS non-inferiority was a secondary objective; primary was STRIDE with non-member tremelimumab. endpoint_role primary is mislabelled; no poc_gate (#64, #144). Not retro.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: decision 12 (members only, #70) bars the STRIDE primary; decision 4 does not say whether an alpha-controlled member-only non-inferiority key secondary vs sorafenib is a poc_gate. Yes: same relabelled poc_gate; no: untested. Covers indices 2, 4, 6."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Stewart 2015 resolves (PMID 25943534, epub 2015-05-05); quote verbatim in abstract. Fix the model text: PharmR table lists the oxaliplatin CT26 study as ONC4736-0011, 0018 is the anti-mouse CTLA-4 combination, 0019 the dose-level study; surrogate is 10F.9G2. No dates in the table, so 2015 stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Same pairing as index 4: quote verbatim, model_src resolves, not retro (2015 predates HIMALAYA). Scored endpoint is the member-only non-inferiority secondary, labelled primary, without poc_gate (#64, #144); the met primary belongs to a non-member combination. EMERALD-1 sub-quote verbatim.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: same HIMALAYA pairing as efficacy index 4, decided together. Decision 12 (members only) bars the non-member STRIDE primary; decision 4 leaves open whether the member-only non-inferiority key secondary is a poc_gate. Drafter's same stands."
+  }
+ ],
+ "missing": [
+  "Efficacy track for the models the class actually relied on (rule 8, checker step 4): durvalumab's filed cross-indication efficacy systems, the human-T-cell co-implant A375/HPAC xenografts dosed with MEDI4736 and CT26 mice dosed with the anti-mouse PD-L1 surrogate (Stewart 2015, doi 10.1158/2326-6066.CIR-14-0191; FDA PharmR BLA 761069 studies ONC4736-0019, TGI up to 74%/95%). The draft opens efficacy on an academic transgenic HCC model the sponsor never used; the filed models need their own model_id with model_kind cross_indication, model_filed true, paired with HIMALAYA.",
+  "EMERALD-1 final overall survival, not in the draft: Sangro et al., Annals of Oncology 2026 abstract 183O (ESMO GI 2026; PII S0923-7534(26)00410-2), data cut-off 4 Jul 2025: D+B+TACE vs TACE median OS 29.9 vs 33.3 months, HR 1.10 (95% CI 0.87-1.39, p=0.470); D+TACE vs TACE 33.6 vs 33.3 months, HR 0.93 (0.74-1.19, p=0.666); immune-mediated AEs 65.5%/38.4%/34.5%. Key secondary, so status stays with the met PFS primary, but it belongs in efficacy patient_trials with a quote (conference abstract, confidence low) and bears on outcome_tested (rule question 2).",
+  "EMERALD-1 primary figures the drafter recalled, now verified from the Lancet abstract (PMID 39798579, epub 2025-01-08): PFS 15.0 vs 8.2 months, HR 0.77 (0.61-0.98), p=0.032 for durvalumab+bevacizumab+TACE vs TACE (primary, met); 10.0 months, HR 0.94 (0.75-1.19), p=0.64 for durvalumab+TACE vs TACE (key secondary, not met). The patient_trials quote for NCT03778957 should carry these numbers rather than the aims sentence.",
+  "HIMALAYA long-term OS updates for the durvalumab-alone arm, patient_trials facts: four-year update (Ann Oncol 2024, doi 10.1016/j.annonc.2024.02.005) and five-year update (J Hepatol 2025, doi 10.1016/j.jhep.2025.03.033).",
+  "Benmelstobart HCC patient data beyond the draft's phase 1b: ALTER-H006 adjuvant benmelstobart plus anlotinib phase II (Nat Commun 2025, doi 10.1038/s41467-025-66342-2); DEB-TACE plus transarterial TQB2450 plus anlotinib phase II (Front Immunol 2025, doi 10.3389/fimmu.2025.1667785); adjuvant HAIC plus anlotinib plus TQB2450 (Innovation 2025, doi 10.1016/j.xinn.2025.100910). All single-arm with a non-member TKI and no model comparison; note-only, no status change.",
+  "Safety fact for the HCC note: EMERALD-1 reported three study-treatment-related deaths on durvalumab+TACE (arterial haemorrhage, liver injury, multiple organ dysfunction) vs three on placebo (Lancet abstract), and Lancet correspondence asked whether unexplained early deaths were liver failure (doi 10.1016/s0140-6736(25)01666-6; authors' reply 10.1016/s0140-6736(25)01667-8). Not attributed to durvalumab, so no status change, but the draft's 'no unpredicted harm appeared in HCC' should cite it.",
+  "Searched and not found (Europe PMC, title-restricted and free-text, 2026-11-05): no patient-derived HCC organoid or ex-vivo system compared with patients for a member drug; no humanized-mouse HCC study of durvalumab, sugemalimab or benmelstobart; no sugemalimab HCC preclinical model (only the BLU-554 + CS1001 phase Ib/II, NCT04194801, results 2023-02-06). The draft's 'no model comparison' for benmelstobart and sugemalimab stands."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Combination arm with a non-member partner: HIMALAYA's primary endpoint was OS for STRIDE (durvalumab plus tremelimumab, an anti-CTLA-4 outside the class) vs sorafenib; the member-only arm met only a pre-specified non-inferiority secondary (HR 0.86). Decision 12 (#70) limits combination-arm contra to attributed events but nothing decides whether a combination-arm primary success scores same for the member class, or whether a member-only non-inferiority secondary can carry same without endpoint_role poc_gate. The draft's efficacy same, and hence dose same, rest on this.",
+  "outcome_tested scope: the scored efficacy comparison (HIMALAYA) was itself an OS endpoint, matched. A later member trial in the same disease (EMERALD-1, embolisation-eligible setting) met a surrogate primary (PFS) and then missed its key-secondary OS (HR 1.10). Does that set outcome_tested negative on the cell, stay in patient_trials, or does the different stage/setting keep it apart? Decision 9 covers only the case where the model predicted the surrogate.",
+  "Class membership: atezolizumab is an anti-CD274 antibody with the largest HCC patient record (IMbrave150 positive OS; IMbrave050 adjuvant RFS later lost significance) and the only stated model-vs-patient comparison for anti-PD-(L)1 in HCC (Pfister 2021 Nature, NASH mice plus trial meta-analysis), yet the tile's member list is benmelstobart, durvalumab, sugemalimab. If the reviewed class table is right the draft is correct to exclude it; if the table is wrong, both tracks and missing change materially. Please confirm the table.",
+  "Opening-year consistency across cells of one model_id: the monkey track opens at 2012 (proxy) in safety but 2017 in dose with model_first_use_year 2012 on both. Rule 7 implies every cell opens at first use; a lint check for year-of-first-entry equal to model_first_use_year per cell would catch this.",
+  "Confirmation entries: rule 7 writes a new entry only on a status change and reserves strengthens true for a second miss that removes the first miss's excuse. The draft's safety entry 5 uses strengthens true for a confirmation of same in the context's own disease. Is a confirming entry allowed, and if so should it carry a distinct flag so matrix counts do not treat it as a status change?",
+  "Models check (indices 4 and 6): the same HIMALAYA pairing is confirmed at efficacy index 2 and corrected to untested at indices 4 and 6 under decision 4 (#64/#144). One adjudication should cover all three: either a pre-specified, alpha-controlled member-only non-inferiority key secondary may carry endpoint_role poc_gate (same stands, relabelled), or a combination-arm primary with a non-member cannot carry a member-class same (untested)."
+ ]
+}

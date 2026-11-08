@@ -1,0 +1,249 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/non-small-cell-lung-carcinoma-vegfr-multikinase-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bundle PharmR line 785 lists study M03012 by title only (wraps 'in'/'Mice'). No NSCLC trial reported MVD or pVEGFR2; untested holds. Year 2003 is an inferred study-number proxy, flagged by the draft."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "DOI resolves to Okamoto 2013 Cancer Lett (PMID 23856031), tier 1; quote verbatim in abstract. Hida 2019 took no on-treatment RET readout; untested holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PLoS One 2019 (PMC6392299) full text read: models are CT26, BNL 1ME A.7R.1, B16-F10; no lung model, so cross_indication is right. No LEAP immune PD; untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same PharmR title line. Review's exposure margins are toxicology-species only; no lung exposure target stated. Untested holds, but see dose 4 for the consistency problem."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract quote verbatim. Cell potencies only; no exposure target to compare with the 24 mg dose. Untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Methods sentence verbatim in PMC6392299 full text; paper gives no mouse PK or human-equivalent dose. Untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2022,
+   "rule": "dose table ('reached' presumes a stated model target) + evidence rule 5; decision 16 scope",
+   "note": "JTO 2024 abstract quote verbatim; registry 2022-06-02 verified. The same track's entry 3 says the model stated no exposure target, which is why the H460 and RET tracks stay untested; scoring this one 'reached, failed' applies the opposite reading. Make it consistent: untested here, or H460 dose becomes same.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4: the dose cell asks whether the model's stated exposure/occupancy/regimen target was reached; Kato 2019 stated none (draft dose 3), so no prediction was compared: untested (decision 8), as the H460 and RET tracks are scored."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR title line; model_src Yamamoto 2014 resolves (PMID 25197551, tier 1), H460 in its xenograft panel per abstract. Opening untested entry holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract conclusion verbatim; epub 2013-07-12 verified, after NCT01877083 start (2013-04-05) but before any result. Untested opening entry holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "CT.gov results first posted 2016-02-18; primary OS medians 38.4 (26.57-47.86) vs 24.1 (15.29-36.43) weeks match the structured fields; PFS 20.9 vs 7.9, ORR 10.1% vs 2.2%. HR 0.70/p=0.065 (EU register) not verifiable here (site blocked). Direction agrees; same holds; suggest source_calls_it partial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Abstract sentence verbatim; epub 2019-02-27, LEAP-006/007 first posted 2019-02-04. Opening untested entry on the combination track holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Lung Cancer 2019 (PMID 31710864) abstract quotes verbatim; registry results 2019-08-13 verified; primary ORR 16.0% (4.5-36.1), n=25. Pre-specified ORR bar not in registry or abstract, so same+partial vs contra is a rule question (listed)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "LEAP-007 quote verbatim; results 2022-06-02, LEAP-008 2024-08-22, LEAP-006 2025-02-21 all verified, patient_trials quotes verbatim. Contra holds. magnitude 'opposite' overstates: OS HR 1.10 (0.87-1.39) is null, PFS HR 0.78 favoured the combination; null or direction_only fits better."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR line 1857 verbatim. 2005 IND proxy opening entry holds."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PharmR lines 2984-2986 verbatim; reviewer states the comparison. MONDO:0002108 = thyroid cancer (OLS), the 2015 DTC NDA population, so imported_from is right. Same holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Hida abstract quote verbatim; model side PharmR lines 153 and 3034 (hypertension, proteinuria) verified. LEAP-007 registry (NCT03829332) adds lung bleeding in the predicted direction: serious haemoptysis 9/309 vs 2/312, pulmonary haemorrhage 3 vs 1. Same holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "PMC9715775 full text: abstract sentence verbatim. Six LLC groups n=5, 3x8 Gy, anti-PD-1 10 mg/kg confirmed; no trial cited. No on-treatment immune readout in any member-drug NSCLC trial; untested holds. readout_tier null matches the draft's other engagement entries."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Methods sentence verbatim (non-breaking space inside '5 mg/kg'). Lenvatinib 4 mg/kg p.o. confirmed in PMC12773621. Neither paper states a human exposure target, so untested, consistent with the adjudicated dose 4 and the H460/RET tracks."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Abstract conclusion verbatim. Epub 2022-10-24; paper cites no trial; earliest public doublet result is ELCC 2023 abstract 43P (cutoff 2022-06-22), after the model; no famitinib + RT NSCLC trial exists (CT.gov 0). Prospective opening untested entry holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 1 (drafter-made comparison must test the model's prediction); decision 7",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Abstract quotes verbatim (JITC 38388167, CII 38727837). Model never ran famitinib + anti-PD-1; trial had no RT and no famitinib-free arm, so the add-on prediction went untested (Hida ran the modelled regimen). Decision 7: no status change; facts belong in entry 7's patient_trials."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 ('post-dates and is motivated by'; fresh prospective prediction clause); brief rule 3 bullet 1",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Received 2025-08-14, epub 2026-01-02; four arms n=8, no lenvatinib + anti-PD-L1 arm; LEAP uncited. Post-dates LEAP but neither motivated by it nor ran its regimen; the triple has no NSCLC trial (CT.gov 0). Decision 10 fresh prospective prediction: untested, retrodiction false."
+  }
+ ],
+ "missing": [
+  "Famitinib murine lung-cancer syngeneic model of famitinib + radiotherapy + immune checkpoint inhibitor (Thorac Cancer 2022, PMID 36281217, doi 10.1111/1759-7714.14689): a lung model for a member drug with NSCLC patient data on the camrelizumab + famitinib doublet (JITC 2024, PMID 38388167, doi 10.1136/jitc-2023-007227, first-line PD-L1>=1% ORR 53.7%; Cancer Immunol Immunother 2024, PMID 38727837, doi 10.1007/s00262-024-03715-4, post chemo-IO ORR 7.5%) and three terminated phase 3s. The draft says no famitinib NSCLC model exists; this track is absent (pairing is partial because the model regimen adds RT).",
+  "Famitinib in EGFR-mutant NSCLC cell-line xenografts NCI-H1975 and PC-9 with almonertinib/HS-10296 (Thorac Cancer 2021, PMID 33656275, doi 10.1111/1759-7714.13902): a member-drug entry for the nsclc-human-xenograft-immunodeficient-mouse track (untested; the camrelizumab + famitinib phase 2 EGFR-mutant subgroup n=6 ORR 33% is the only patient side).",
+  "Lenvatinib in an immunocompetent C57BL/6 lung adenocarcinoma model with RT + anti-PD-L1 (Cancer Biol Ther 2026, PMID 41481002, doi 10.1080/15384047.2025.2610526): the first lung-specific syngeneic model of lenvatinib + checkpoint blockade, published after LEAP-006/007/008 failed, reporting potentiation; a retrodiction candidate on the combination track (decision 10: contra if it does not reproduce the human result), subject to rule question 5.",
+  "Patient trials the famitinib arm omits from patient_trials: NCT04346381 basket cohorts above (JITC 2024; CII 2024). Checked and excluded as non-member drugs: RET-fusion NSCLC PDX/cell models (Dis Model Mech 2020, PMID 33318047; cabozantinib, RXDX-105) and lung adenocarcinoma PDOs (Clin Cancer Res 2021, PMID 34083237; pralsetinib, poziotinib)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose when the model stated no exposure, occupancy or regimen target but the trial gave the full clinical dose of the modelled regimen: untested (nothing to compare, as the draft scores the H460 and RET tracks) or 'reached' with the efficacy-derived status (as it scores the CT26/BNL track)? The dose table presumes a target and does not say.",
+  "Single-arm phase 2 whose primary ORR (16%, 4/25) the authors call 'relatively low' with PFS 7.3 months: does same + source_calls_it partial require the trial's pre-specified ORR bar to be met, or does any activity in the predicted direction on the primary endpoint suffice? If the bar governs, Hida 2019 is contra.",
+  "A 100% biomarker-selected trial (RET fusion-positive) scored at prediction_level patient inside the Unselected context: does the RET-fusion track belong to a separate 'RET fusion-positive' population context, and does a patient-level prediction resting on RET rather than VEGFR inhibition belong to the VEGFR multikinase class at all? The >=80% rule covers only the reverse direction.",
+  "A cross_indication model (CT26 colon / BNL hepatoma isografts, no lung tumour ever tested) as a track in the NSCLC context: is a contra admissible when the model never tested the disease, or should cross_indication entries cap at untested here with the contra scored in the CRC/HCC contexts?",
+  "A post-failure lung model that tests a different regimen (adds radiotherapy to lenvatinib + anti-PD-L1): is it a retrodiction of the LEAP result under decision 10 (contra for not reproducing it) or a fresh prospective prediction for the triple combination?",
+  "A second model run on an existing track that leaves the status untested (Liu 2026 lenvatinib after Yuan 2022 famitinib on llc-syngeneic-c57bl6-rt-checkpoint): decision 7 writes a new entry only on a status change or a second miss with strengthens: true. Does a new member-drug run of the same system get its own untested entry, or a note plus patient_trials on the opening entry? (models check)"
+ ],
+ "could_not_verify": [
+  "EU register 2011-002347-10 results (HR 0.70, p=0.065 for Study 703) - clinicaltrialsregister.eu returned a 244-byte block page; CT.gov carries medians only.",
+  "ASCO 2014 Havel abstract (J Clin Oncol 32:15_suppl 8043) - not indexed in Europe PMC.",
+  "Hida 2019 pre-specified ORR threshold and Yamamoto 2014 H460 per-dose numbers - paywalled/full text not opened; abstract level.",
+  "Famitinib and vorolanib toxicology (no NDA) - as the draft states.",
+  "ELCC 2023 abstract 43P (earliest public first-line camrelizumab + famitinib NSCLC result, ORR 53.7%) seen only as a search hit; not opened. Bears only on the retrodiction check of Yuan 2022 (published 2022-10-24, earlier). (models check)"
+ ]
+}

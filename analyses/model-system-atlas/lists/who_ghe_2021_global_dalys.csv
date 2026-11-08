@@ -1,0 +1,215 @@
+code,depth,cause,dalys_2021
+0,1,All Causes,3070013593.31898
+10,2,"Communicable, maternal, perinatal and nutritional conditions",1003769260.17495
+20,2,Infectious and parasitic diseases,311041529.368406
+30,2,Tuberculosis,56186843.6407326
+40,2,STDs excluding HIV,7307227.55512704
+50,2,Syphilis,6138321.45718449
+60,2,Chlamydia,175876.399490601
+70,2,Gonorrhoea,73570.1298225486
+80,2,Trichomoniasis,233061.500431774
+85,2,Gential Herpes,212254.01384094
+90,2,Other STDs,474144.054356684
+100,2,HIV/AIDS,42981071.8691376
+110,2,Diarrhoeal diseases,68653407.9497347
+120,2,Childhood-cluster diseases,18532661.7958179
+130,2,Whooping cough,6996761.33633741
+140,2,Diphtheria,545256.744695676
+150,2,Measles,8468921.64324908
+160,2,Tetanus,2521722.07153576
+170,2,Meningitis,22431287.5127248
+180,2,Encephalitis,4786752.35859791
+185,2,Hepatitis,7363476.35973024
+186,2,Acute hepatitis A,3348177.9958767
+190,2,Acute hepatitis B,3030900.81455036
+200,2,Acute hepatitis C,588575.442997364
+205,2,Acute hepatitis E,395822.106305817
+210,2,Parasitic and vector diseases,60111264.9215836
+220,2,Malaria,48564293.27052
+230,2,Trypanosomiasis,51109.9952277473
+240,2,Chagas disease,245266.372582854
+250,2,Schistosomiasis,2157109.63630818
+260,2,Leishmaniasis,1255044.92816673
+270,2,lymphatic filariasis,1453960.47664259
+280,2,Onchocerciasis,928496.174496328
+285,2,Cysticercosis,605415.939776604
+295,2,Echinococcosis,65877.7962778755
+300,2,Dengue,2983920.15776599
+310,2,Trachoma,159715.703263356
+315,2,Yellow fever,426141.371146638
+320,2,Rabies,1214913.09940873
+330,2,Intestinal nematode infections,2187210.9249839
+340,2,Ascariasis,1014124.40482136
+350,2,Trichuriasis,291578.624143687
+360,2,Hookworm disease,507473.949994534
+362,2,Food-borne trematodes,374033.946024327
+365,2,Leprosy,28240.308707044
+370,2,Other infectious diseases,21727129.0996956
+380,2,Respiratory Infectious ,413136284.23334
+390,2,Lower respiratory infections,106639853.617714
+395,2,COVID-19,296854519.203202
+400,2,Upper respiratory infections,7125024.32616547
+410,2,Otitis media,2516887.08625841
+420,2,Maternal conditions,15775373.6664268
+490,2,Neonatal conditions,198155116.578829
+500,2,Preterm birth complications,99409428.9024359
+510,2,Birth asphyxia and birth trauma,52867865.0186641
+520,2,Neonatal sepsis and infections,25217062.104431
+530,2,Other neonatal conditions,20660760.553298
+540,2,Nutritional deficiencies,64405911.3997825
+550,2,Protein-energy malnutrition,18509463.1762223
+560,2,Iodine deficiency,2278851.8830357
+570,2,Vitamin A deficiency,1157400.66968559
+580,2,Iron-deficiency anaemia,40346665.0072299
+590,2,Other nutritional deficiencies,2113530.66360896
+600,2,Noncommunicable diseases,1765019224.2705
+610,2,Malignant neoplasms,256371850.211902
+620,2,Mouth and oropharynx cancers,11944993.1422397
+621,2,Lip and oral cavity,6754908.65874413
+622,2,Nasopharynx,2268666.9854889
+623,2,Other pharynx,2921417.49800664
+630,2,Oesophagus cancer,11107298.9351724
+640,2,Stomach cancer,15832514.8379392
+650,2,Colon and rectum cancers,21404869.0345435
+660,2,Liver cancer,19003413.20991
+661,2,Liver cancer secondary to hepatitis B,10522538.1557535
+662,2,Liver cancer secondary to hepatitis C,3582761.08767782
+663,2,Liver cancer secondary to alcohol use,3602248.453982
+664,2,Other liver cancer,1295865.5124966
+670,2,Pancreas cancer,10440710.9393095
+680,2,"Trachea, bronchus, lung cancers",41700232.5494462
+690,2,Melanoma and other skin cancers,2948954.27689703
+691,2,Malignant skin melanoma,1578225.76566054
+692,2,Non-melanoma skin cancer,1370728.51123649
+700,2,Breast cancer,22019335.1547352
+710,2,Cervix uteri cancer,10851943.6624611
+720,2,Corpus uteri cancer,2651631.79804867
+730,2,Ovary cancer,5970550.01982594
+740,2,Prostate cancer,7950389.42886681
+742,2,Testicular cancer,505852.023243928
+745,2,Kidney cancer,4164876.72343563
+750,2,Bladder cancer,4372283.12860755
+751,2,Brain and nervous system cancers,9541694.11107788
+752,2,Gallbladder and biliary tract cancer,3033528.55926508
+753,2,Larynx cancer,2694881.86540408
+754,2,Thyroid cancer,1380775.26870515
+755,2,Mesothelioma,516168.574451812
+760,2,"Lymphomas, multiple myeloma",11189721.5348814
+761,2,Hodgkin lymphoma,939486.746413804
+762,2,Non-Hodgkin lymphoma,7418958.28745017
+763,2,Multiple myeloma,2831276.50101742
+770,2,Leukaemia,11728934.4699505
+780,2,Other malignant neoplasms,23416296.9634843
+790,2,Other neoplasms,4500875.84206024
+800,2,Diabetes mellitus,89983358.4869585
+810,2,"Endocrine, blood, immune disorders",30178435.1079153
+811,2,Thalassaemias,3212939.97493253
+812,2,Sickle cell disorders and trait,6372308.36751906
+813,2,Other haemoglobinopathies and haemolytic anaemias,5391303.08703394
+814,2,"Other endocrine, blood and immune disorders",15201883.6784298
+820,2,Mental and substance use disorders,197174663.706565
+830,2,Depressive disorders,55092151.5766269
+840,2,Bipolar disorder,7525195.21172484
+850,2,Schizophrenia,16922307.358739
+860,2,Alcohol use disorders,18029184.4150111
+870,2,Drug use disorders,19039844.2328894
+871,2,Opioid use disorders,13773400.7029425
+872,2,Cocaine use disorders,1592401.53793934
+873,2,Amphetamine use disorders,1958714.7200633
+874,2,Cannabis use disorders,633458.694187923
+875,2,Other drug use disorders,1081868.57775642
+880,2,Anxiety disorders,45743414.0715411
+890,2,Eating disorders,3741920.99803776
+900,2,Austism and Asperger syndrome,9649933.17108073
+910,2,Childhood behavioural disorders,8449403.04085503
+911,2,Attention deficit/hyperactivity syndrome,3729251.96989359
+912,2,Conduct disorder,4720151.07096144
+920,2,Idiopathic intellectual disability,3718811.22518011
+930,2,Other mental and behavioural disorders,9262498.40487874
+940,2,Neurological conditions,112166496.467247
+950,2,Alzheimer disease and other dementias,34929356.553432
+960,2,Parkinson disease,7103626.08156789
+970,2,Epilepsy,15478730.7137934
+980,2,Multiple sclerosis,1051793.78603191
+990,2,Migraine,40248883.1888598
+1000,2,Non-migrane headache,4547751.44890872
+1010,2,Other neurological conditions,8806354.69465325
+1020,2,Sense organ diseases,71855326.2439273
+1030,2,Glaucoma,660697.324120249
+1040,2,Cataracts,6878406.2428559
+1050,2,Uncorrected refractive errors,5016648.2613419
+1060,2,Macular degeneration,490726.054857196
+1070,2,Other vision loss,5354763.45699471
+1080,2,Other hearing loss,50551199.9283682
+1090,2,Other sense organ disorders,2902884.9753892
+1100,2,Cardiovascular diseases,450242078.66348
+1110,2,Rheumatic heart disease,15824517.8391361
+1120,2,Hypertensive heart disease,28975468.4648453
+1130,2,Ischaemic heart disease,203844810.194223
+1140,2,Stroke,157748449.303655
+1141,2,Ischaemic stroke,69557496.2019379
+1142,2,Haemorrhagic stroke,88190952.8740772
+1150,2,"Cardiomyopathy, myocarditis, endocarditis",14129942.224531
+1160,2,Other circulatory diseases,29718890.6370892
+1170,2,Respiratory diseases,103259892.672303
+1180,2,Chronic obstructive pulmonary disease,68487274.696717
+1190,2,Asthma,25022844.5578892
+1200,2,Other respiratory diseases,9749773.41769686
+1210,2,Digestive diseases,89881269.1993576
+1220,2,Peptic ulcer disease,6308210.92253971
+1230,2,Cirrhosis of the liver,43304346.5595563
+1231,2,Cirrhosis due to hepatitis B,10794059.3383803
+1232,2,Cirrhosis due to hepatitis C,11335778.5092855
+1233,2,Cirrhosis due to alcohol use,12936127.3903646
+1234,2,Other liver cirrhosis,8238381.32152592
+1240,2,Appendicitis,1469890.6940567
+1241,2,Gastritis and duodenitis,2967830.44794113
+1242,2,Paralytic ileus and intestinal obstruction,6783585.17734034
+1244,2,Inflammatory bowel disease,1323136.94139975
+1246,2,Gallbladder and biliary diseases,8183791.29950354
+1248,2,Pancreatitis,4290361.80097755
+1250,2,Other digestive diseases,15250115.3560426
+1260,2,Genitourinary diseases,82689746.8071153
+1270,2,Kidney diseases,43657766.6076594
+1271,2,Acute glomerulonephritis,341840.054811477
+1272,2,Chronic kidney disease due to diabetes,12188592.6408685
+1273,2,Other chronic kidney disease,31127333.9119794
+1280,2,Benign prostatic hyperplasia,2314637.7823437
+1290,2,Urolithiasis,949275.680544561
+1300,2,Other urinary diseases,7997239.27566243
+1310,2,Infertility,918771.031947681
+1320,2,Gynecological diseases,26852056.4289576
+1330,2,Skin diseases,35960362.7871771
+1340,2,Musculoskeletal diseases,163813869.215921
+1350,2,Rheumatoid arthritis,3306273.5144504
+1360,2,Osteoarthritis,21545470.1538527
+1370,2,Gout,1806026.61187802
+1380,2,Back and neck pain,90694163.6386523
+1390,2,Other musculoskeletal disorders,46461935.2970876
+1400,2,Congenital anomalies,51279271.056289
+1410,2,Neural tube defects,3718245.61792628
+1420,2,Cleft lip and cleft palate,500515.049532144
+1430,2,Down syndrome,2153553.82558063
+1440,2,Congenital heart anomalies,24684939.5697354
+1450,2,Other chromosomal anomalies,2115997.3287083
+1460,2,Other congenital anomalies,18106019.6648062
+1470,2,Oral conditions,23343848.3948171
+1480,2,Dental caries,2419056.43675409
+1490,2,Periodontal disease,6951357.87490025
+1500,2,Edentulism,9565598.26825315
+1502,2,Other oral disorders,4407835.81490959
+1505,2,Sudden infant death syndrome,2317879.40746637
+1510,2,Injuries,301225023.621232
+1520,2,Unintentional injuries,225216456.120423
+1530,2,Road injury,68869294.2430619
+1540,2,Poisonings,4283865.06090812
+1550,2,Falls,70982947.0528207
+1560,2,"Fire, heat and hot substances",11009466.6726901
+1570,2,Drowning,19900132.6248146
+1575,2,Exposure to mechanical forces,10899943.3322054
+1580,2,Natural disasters,960680.417700764
+1590,2,Other unintentional injuries,38310126.7162218
+1600,2,Intentional injuries,76008567.5008082
+1610,2,Self-harm,35466374.7026244
+1620,2,Interpersonal violence,28809900.029758
+1630,2,Collective violence and legal intervention,11732292.7684258

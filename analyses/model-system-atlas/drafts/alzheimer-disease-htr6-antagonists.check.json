@@ -1,0 +1,258 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/alzheimer-disease-htr6-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 20569520 resolves; quote verbatim in abstract. Opening untested at the first in-vivo occupancy paper is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 36825693 resolves; quote verbatim (abstract). Proxy year 2011 consistent with NCT01258751 first posted 2010-12-13 and the Cornery 2011 AAIC abstract (Fullerton 2018 ref 13)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract). Opening entry for the rat brain-penetration track; the rat Cbu/Cpu 0.05 figure is the next abstract sentence."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 28212021 resolves; quote verbatim (abstract). Microdialysis readout and the cognition battery are one rat system (Nirogi 2019 characterises both), so one model_id is right; harmonise the `model` label across cells."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "4 (engagement: PD readout moved in dosed humans; healthy volunteers count) + 2 (data not shown scores at low confidence)",
+   "note": "Registry facts confirmed (posted 2017-10-12, terminated 2018-02-19, no results). But Atri 2018 Discussion reports a healthy-volunteer PET study: >80% 5-HT6 occupancy at 30 and 60 mg/d. Rat occupancy readout moved in humans: same, 2018, low confidence (data not shown).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decisions 2 and 3: Atri 2018 Discussion (verified) cites Schmidt 2014, Alzheimers Dement 10(4):P925, for >80% 5-HT6 occupancy at 30/60 mg in healthy men; conference-only clinical side, low confidence, admissible; the rat occupancy readout moved: same."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract). NCT01258751 completed 2011-05, before Phase 2, so not a retrodiction. The comparison was first public as the Cornery 2011 AAIC abstract; year could be 2011 if that supplement is admissible (rule question)."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract); the paper itself calls rat the wrong species, so comparison_stated true and contra on its own track are right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract); proxy year as engagement 2."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract). Quote carries no exposure number but supports an untested opener."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC5887246 full text; NCT01712074 results posted 2017-03-20, terminated 2015-10-23 for futility. Reached-failed-abandoned row applied correctly; model side (NHP, abstracted 2011, published 2023) paired by the drafter."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "4 (dose row 3: reached, failed, abandoned -> contra with derived_from efficacy) + 2 (data not shown, low confidence)",
+   "note": "Quote verbatim (abstract). Atri 2018 Discussion states healthy-volunteer PET gave >80% 5-HT6 occupancy at 30 and 60 mg/d and guided Phase 3 doses; rat target was >65%. Reached, failed, abandoned: contra derived_from efficacy, 2018, low confidence (data not shown).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Decision 4 case 3 (reached, failed, abandoned): rat target >65% occupancy; healthy-volunteer PET >80% at 30/60 mg (Atri 2018 citing Schmidt 2014, decisions 2-3, low confidence) guided Phase 3; failed, abandoned: contra, derived_from efficacy."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC9157584 full text; NCT02580305 results 2023-06-09, epub 2022-06-01. Suven press release 2019-12-02 predates both (rule question on dating)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 25297016 resolves; quote verbatim (abstract); NCT01019421 has no results. Primary met; direction-level pairing with Arnt 2010 acceptable, the trial does not attribute the effect to conditions the model never tested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote and three patient_trials quotes verbatim (abstract); registry dates 2017-09-19 / 2018-02-20 / 2018-02-07 confirmed. Atri Discussion shows the occupancy target was reached, resolving the dose confound. Lundbeck press release 2016-09-22 predates registry (rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Resolves; quote verbatim (abstract)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote and patient_trials quote verbatim in PMC9157584; sponsor states the miss, so comparison_stated true. Epub 2022-06-01 precedes registry 2023-06-09. Suven press release 2019-12-02 predates (rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract). Untested is right: tox species unpublished, no NDA. Judgement overstates 'no patient harm': Atri 2018 reports ALT/AST >3x ULN in 0.7-3.3% idalopirdine vs 0-1.3% placebo, no Hy's law case; still unscorable without the tox species."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 27039041 resolves (epub 2016-03-31, print Aug 2016); quote verbatim (abstract). Untested right: no human ACh/EEG/fMRI readout of idalopirdine exists. Separate track from occupancy (different readout) is right; prediction_level class, readout_tier downstream fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same source; quote verbatim (abstract). Opener at first class use, epub 2016 (decision 7); same-year collision ordered model entry first, as decision 7 asks.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim; abstract opens 'A recent phase 2 trial showed ... idalopirdine improved cognition ... on donepezil' and closes with the quote, so the model post-dates (2016 vs Wilkinson epub 2014-10-05) and is motivated by LADDER: retro, never same. Mork 2017 abstract verbatim ('may provide a mechanistic model ... phase 2 studies (Wilkinson et al. 2014)'). No admissible pre-2014 source for the potentiation model. Wilkinson patient_trials quote verbatim (abstract). Direction-only right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMID 29318278: quote and all three patient_trials quotes verbatim (abstract). Registry results 2017-09-19 set year 2017 (decision 7). Decision 10: the model (public 2016-03) preceded the Phase 3 read-out (press release 2016-09-22, registry 2017-09), so its first prospective test is scored the usual way: contra. Dose confound closed by adjudicated engagement 5 / dose 5 (>80% occupancy at 30/60 mg). Nit: magnitude is the string \"null\", not JSON null (lint silent). Press-release dating rule question as efficacy 3.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "rule": "2 (#125: a registry protocol narrative with no results is a sponsor statement, not a source; tier 3 needs posted outcome data)",
+   "note": "NCT01213355 confirmed: first posted 2010-10-04, 38 subjects, 5-way crossover, 5/20/60 mg vs donepezil 10 mg, GMLT primary, completed 2011-08, no results; quote verbatim in briefSummary. Status untested stands; source_tier 3 is wrong (no results posted) and no tier 1-3 source names the study (Fullerton 2018, Neurol Ther 2018 PMC5990506, Biomolecules 2023 PMC9953539 searched). Precedent: engagement 5 also rests on a no-results registry record at tier 3. Year 2010 survives as opener at first class use (#112).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Lundbeck rat AChEI-potentiation models for idalopirdine (dorsal-hippocampus ACh microdialysis + network oscillations, Herrik 2016 Neuropharmacology PMID 27039041; frontal gamma oscillations with donepezil, Mork 2017 Neuropharmacology PMID 27647493; mPFC microdialysis Eur J Pharmacol 2017 PMID 28188762; awake-rat fMRI with donepezil, Front Pharmacol 2017 PMID 28659792). This is the class's actual AD add-on rationale, run after LADDER (2014) so a retrodiction (`retro`), then prospectively contradicted by the three Phase 3 nulls on donepezil (Atri 2018). The draft names Herrik/Mork in efficacy judgement 1 but gives them no track.",
+  "Healthy-volunteer PET 5-HT6 occupancy of idalopirdine (unpublished; reported only in the Atri 2018 JAMA Discussion, https://jamanetwork.com/journals/jama/fullarticle/2668349: 'in vivo positron emission tomography receptor occupancy study conducted among healthy participants', '>80% ... at doses of 30 and 60 mg/d'). This is the human side the draft said it could not retrieve; it drives the two corrections above. The same paragraph notes 5-HT6 expression is ~40% lower in AD brain, the caveat behind the terminated AD-patient PET NCT03307993.",
+  "Cornery 2011, 'Receptor occupancy of the 5-HT6 receptor antagonist SAM-760 in non-human primates and healthy human volunteers', Alzheimers Dement 7:S794 (cited as Fullerton 2018 ref 13): the stated NHP-vs-human comparison was public in 2011, not 2023. Admissibility of a journal-supplement abstract is a rule question; if admissible, engagement entry 6 dates to 2011.",
+  "Patient-side only, no status change: idalopirdine systematic review and meta-analysis, Int Psychogeriatr 2019 (PMID 30560763), tier 4; could sit in patient_trials of efficacy entry 3.",
+  "CHECKER_BRIEF_v3 / models: SAM-760 rat scopolamine / MK-801 object-recognition model (Pfizer), a member drug's own efficacy model with a patient comparison (NCT01712074 futility stop). Reported only as AAIC 2011 supplement abstracts: Comery 2011 Alzheimers Dement 7:S794 (doi 10.1016/j.jalz.2011.05.2278) and Bell 2011 7:S778 (doi 10.1016/j.jalz.2011.05.2237), as cited by the Biomolecules 2023 review PMID 36830678 (PMC9953539, Table 2). Trackable only if the supplement-abstract rule question resolves admissible; it would then answer rule question 5 (SAM-760 efficacy model). Note the 'Cornery 2011' in this file is Comery 2011."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dating with a tier-5 source: the STARSHINE failure was public in Lundbeck's press release 2016-09-22 and the masupirdine Phase 2 miss in Suven's 2019-12-02 release, before any registry posting or paper. Rule 7 says 'earliest admissible source that makes the comparison'; a press release reports only the patient side and the drafter pairs it. Does it set `year` (efficacy 3 -> 2016, efficacy 5 and dose 6 -> 2019), or only registry/epub/print?",
+  "Journal-supplement conference abstracts: rule 2 says 'a PMID-only supplement counts (#60)'. Does a DOI-bearing AAIC abstract in Alzheimers Dement (Cornery 2011, 7:S794) count as tier 1? If yes the NHP engagement `same` dates 2011 not 2023, and the 2011 proxy openers become real entries.",
+  "Human PD data reported only as 'data not shown' inside a trial paper's Discussion (Atri 2018: healthy-volunteer PET, >80% occupancy at 30/60 mg, no study ever published): rule 2 says low confidence, but is it enough to move a track from untested to same (engagement) and to contra derived_from efficacy (dose), or must the PET study itself be a source?",
+  "Intepirdine (RVT-101/SB-742457), a selective 5-HT6 antagonist with a Phase 3 failure (MINDSET) that Fullerton 2018 groups with idalopirdine as the class's Phase 3 record, is absent from the tile's member list (class_programs 3). The draft correctly did not widen; is the omission from `preclin.atlas_register` intended?",
+  "A member drug whose human efficacy failure has no published disease-model side (SAM-760: Pfizer published only PET/PK, no efficacy model): the efficacy cell shows nothing for it while its dose cell scores contra on the NHP PET track. Should the NHP track carry an efficacy `untested` marker, or is 'no model relied on' decided per drug?",
+  "CHECKER_BRIEF_v3 / models: can an `untested` opener rest on a registry protocol record with no results? Decision 2 (#125) calls it a sponsor statement, not a source, yet it is the only document showing the SAM-760 healthy-volunteer scopolamine challenge (efficacy 9) and the AD-patient PET (engagement 5) existed. If inadmissible, the human-challenge track has no source and disappears, hiding a model that demonstrably ran; if admissible, what tier does it carry (drafter used 3)?"
+ ]
+}

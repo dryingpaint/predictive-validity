@@ -1,0 +1,32 @@
+{
+ "tile": "allergic-rhinitis-ptgdr2-antagonists",
+ "searched": [
+  "manifest.csv rows for the tile (2026-11-05): all four members 'no NDA/BLA', no FDA review bundle to grep",
+  "Europe PMC: (setipiprant OR ACT-129968) AND (rhinitis OR allergen OR mouse OR mice OR rat OR 'in vivo' OR model OR challenge): 56 hits; only Fretz 2013 J Med Chem (PK in rat/dog, no disease model), Diamant 2014, Ratner 2017, Sidharta 2013 disposition",
+  "Europe PMC: (fevipiprant OR QAW039) AND (rhinitis OR 'nasal allergen' OR chamber OR mouse OR mice OR rat OR 'in vivo' OR 'ex vivo' OR nasal): 210 hits; no AR model or AR patient source; PBBM dissolution model (AAPS J 2023) and popPK (Drug Res 2021) are asthma/healthy-volunteer formulation work",
+  "Europe PMC: (QAV680 OR NVP-QAV680): 9 hits; only Sandham 2013 Bioorg Med Chem carries in-vivo data",
+  "Europe PMC: ('BI 671800' OR BI671800): 32 hits; no preclinical paper, only chamber (Krug 2014), asthma trials (Hall 2015, Miller 2017) and reviews",
+  "Europe PMC: (CRTH2 OR DP2 OR PTGDR2) AND antagonist AND 'allergic rhinitis' AND rodent terms AND (sneezing OR nasal): 20 hits; rodent AR systems are Stearns 2009/Stebbins 2010 (AM156), Shiraishi 2014 (ARRY-063), Cry j 1 pollinosis CRTH2-KO mouse (Nomiya 2008), none with a member drug",
+  "Europe PMC: (CRTH2 OR DP2) AND antagonist AND ('nasal allergen challenge' OR 'nasal provocation' OR 'nasal challenge'): 42 hits; PMID 24456221 is the ARRY-063 OVA mouse (same system as the draft's OVA track); no member-drug nasal allergen challenge",
+  "Europe PMC: members AND (PBPK OR 'population pharmacokinetic' OR 'exposure-response' OR 'receptor occupancy' OR 'systems pharmacology'): 14 hits; Krause 2016 already tracked; fevipiprant popPK/PBBM are not AR",
+  "Europe PMC: (PTGDR2 OR CRTH2 OR GPR44) AND (polymorphism OR variant OR SNP OR genotype) AND 'allergic rhinitis' AND (antagonist OR response): no pharmacogenetic comparison with a member drug",
+  "ClinicalTrials.gov v2 API, each member x rhinitis: NCT00784732 and NCT01103050 (QAV680, both EEC, Ontario, no results), NCT01804400 (fevipiprant EEC, no results), NCT01007721 (BI 671800 EEC), NCT01241214/NCT01484119 (setipiprant field SAR); no nasal-allergen-challenge design for any member",
+  "Sandham 2013 (doi 10.1016/j.bmc.2013.08.025): Europe PMC abstract + ScienceDirect preview via fc.py; full text paywalled (no PMC); abstract says 'efficacy in rodent CRTh2-dependent mechanistic and allergic disease models'; abbreviation list carries BAL (bronchoalveolar lavage) and no nasal term, so the in-vivo model is a lung/BAL readout; a rodent rhinitis model could not be confirmed or excluded",
+  "Krug 2014 full text via fc.py (jacionline PDF): 'BI 671800 is active in a number of animal models of asthma and allergic dermatitis; in human subjects it inhibits PGD2-stimulated eosinophil shape change (ESC) ... (data on file)'; AR animal refs 9,10 are Stearns 2009 and Lukacs 2008; no comparison of any animal model with the chamber result",
+  "Lukacs 2008 (PMID 18757520, PMC2584886): abstract and efetch metadata only (author-manuscript body not served); compound unnamed ('a highly potent and specific antagonist of CRTH2'), Actimis affiliation; cockroach-egg-antigen mouse airway inflammation model",
+  "fc.py search x3 (QAV680 in-vivo nasal; BI 671800 preclinical mouse; QAV680 EEC results): no QAV680 or BI 671800 rodent rhinitis report; QAV680 EEC results exist only as an ERS 2014 congress abstract (ERJ 44 suppl 58 P4069, QAV680 + cetirizine) and a FirstWord news item, both for the chamber track already in the draft"
+ ],
+ "added_models": [],
+ "considered_not_added": [
+  "BI 671800 animal models of asthma and allergic dermatitis (Krug 2014 intro, 'data on file'): cross-indication animal systems, unnamed, with no tier 1-3 model-side source (Lukacs 2008 never names BI 671800) and no stated comparison with the chamber or field result; a lung-inflammation readout is not the chamber's prediction, so a drafter pairing would not be the same prediction",
+  "QAV680 rodent 'CRTh2-dependent mechanistic and allergic disease models' (Sandham 2013): full text paywalled; preview abbreviations (BAL) point to a lung/BAL model, not rhinitis; QAV680's only AR patient data are the unreported EEC trials (NCT00784732, NCT01103050; ERS 2014 abstract), so no admissible patient-side comparison exists for a QAV680-dosed model; if the full text shows a nasal model it would bear on the existing ova-mouse-allergic-rhinitis track, not a new one",
+  "Lukacs 2008 cockroach-antigen mouse airway inflammation (Actimis compound): member identity not established in the source; asthma model; no AR patient comparison",
+  "Cry j 1 pollinosis CRTH2-knockout mouse (Nomiya 2008, J Immunol): human_genetic/animal class-level system never run with a member drug and never compared with member patient results",
+  "Nasal allergen challenge in AR patients: no member drug was run in one (registry sweep); the only CRTH2-antagonist NAC literature is OC000459, a non-member",
+  "Fevipiprant PBBM dissolution model (AAPS J 2023) and population PK (Drug Res 2021): in-silico, healthy-volunteer/asthma formulation and PK work with no AR exposure target or AR patient comparison",
+  "Fevipiprant receptor-kinetics model (Sykes 2016 Mol Pharmacol, 'slowly dissociating ... potential for improved clinical efficacy'): in-vitro prediction with no AR patient side, since the fevipiprant chamber study NCT01804400 was never reported",
+  "PTGDR2/CRTH2 polymorphisms in AR: association studies only; no comparison with response to a member drug",
+  "Sidharta 2014 setipiprant Phase 1 and Erpenbeck 2016 fevipiprant Phase 1: PK/tolerability with no ex-vivo PD model readout (as the checker found)",
+  "Horak 2012 OC000459 Vienna chamber and the Actelion 2012-04-02 release: sibling and patient-side sources for the existing chamber track, not model systems; left to the adjudicator per the task"
+ ]
+}

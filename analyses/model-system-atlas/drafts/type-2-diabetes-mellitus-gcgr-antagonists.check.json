@@ -1,0 +1,346 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/type-2-diabetes-mellitus-gcgr-antagonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Yan 2009 (JPET, PMID 19129372) resolves; quote verbatim in abstract. Model opens untested 2009; mAb B is not named as AMG 477, so product_in_model false is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mu 2012 (PLoS One, PMC3501516) resolves; quote verbatim in abstract. GRA1 is a Merck sibling of MK-3577; untested at 2012 is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "15",
+   "note": "Peng 2014 (AAPS J, PMID 25160589) names MK-3577, 36 healthy subjects; quote verbatim. Same supported (healthy volunteers count). readout_tier direct is arguable: readout is glucose production, so decision 15 may read it downstream."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "2",
+   "note": "Trade-press item dated 2015-11-19 carries the sentence verbatim; it reproduces REMD Bio's release, so the tier-5 source should be the release itself. Status same, low confidence, trial_unreported is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Mott 2024 (Domest Anim Endocrinol, PMID 39018655) resolves; quote verbatim. Cat study run for feline diabetes, not motivated by the 2014 human result; decision 10's retrodiction test is doubtful (see rule questions). src equals model_src; patient side (Peng 2014) is implicit."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Yan 2009 resolves; quote verbatim. NCT02455011 confirmed completed 2018-02 with no results posted, so antibody dose stays untested in T2D; margin_stated false correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Guzman-Perez 2013 (BMCL, PMID 23562063) resolves; quote verbatim. Untested correct. Cosmetic: the small-molecule dose strip opens 2013 while model_first_use_year is 2012 (engagement and efficacy open 2012)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Kazierad 2016 (DOM, PMID 27059951) resolves; quote verbatim; NCT01856595 results 2018-11-01 confirmed. Same under the reached-and-worked row; exposure match is inferred from PD, no numeric rat-vs-human comparison, low confidence is honest. No stated margin, so no decision-16 contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gu 2009 (JPET, PMID 19720878) resolves; quote verbatim. NCT02455011 posted no results (confirmed), so antibody efficacy untested in T2D; T1D HbA1c correctly kept out."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mu 2012 resolves; quote verbatim in abstract. Untested at 2012 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Kazda 2016 (Diabetes Care, PMID 26681715) online 2015-12-17 (draft says 12-19); quote verbatim; HbA1c is the stated efficacy measure. Registry dates all confirmed (2018-04-24, 2017-01-11, 2017-08-07). NCT00868790 is TERMINATED; note it. Same, not neg, is right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gu 2009 resolves; quote verbatim. Abstract also claims no 'other undesirable metabolic perturbations', which sharpens the later silence-contradicted call. Untested at 2009 correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Guzman-Perez 2013 resolves; clause verbatim from the abstract. Untested correct; toxicology species not stated in the abstract."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "5",
+   "note": "Kelly 2015 (DOM, PMID 25656305) resolves; quote verbatim; 28-day multiple dosing was in 47 T2D patients. Contra via a sibling-sponsor package is allowed. On-target harm carries modality; see rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kazierad 2016 resolves; quote verbatim; NCT01856595 results 2018-11-01 confirmed. Strengthening contra with the modelled compound itself is right. Guan 2015 is wrongly set aside: its model side is admissible as a sibling proxy (see missing)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Pettus 2018 quote verbatim in PMC6181222 full text (BioC). Imported T1D same supported; full text also reports no lipid, BP or weight change. Dating: Crossref online 2018-01-22, DOI created 2017-12-28; year 2017 holds only if the accepted-article posting counts."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Pettus 2022 (Nat Med, PMID 36192552) online 2022-10-03; quote verbatim; NCT03117998 results 2023-05-25 confirmed. Contra by silence on transaminases, LDL-C and BP is supported; mice could show all three."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Parker 2002 (BBRC, PMID 11785978, print 2002-01) resolves; quote verbatim in abstract. Opening untested at the knockout's first use; genetic system, product_in_model false and no dose entry are right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Kazda 2016 (PMID 26681715, epub 2015-12-17) raw abstract carries both quotes verbatim; Conarello 2007 model_src (epub 2006-11-28) 'resistant to STZ-induced hyperglycaemia' verbatim. Prospective, primary HbA1c, direction_only; NCT00871572/NCT01241448 results 2018-04-24 verified.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Tan 2025 (PMID 40526184, PMC12358300, epub 2025-06-17) full text seen; quote verbatim. Opening untested ahead of the same-paper comparison (#30). Cosmetic: retrodiction false on an entry whose judgement calls the model a retrodiction by construction.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Full text confirms FHH/IGRH within 0.1% of observed week-24 dHbA1c, ADOPT/FFH over-predict by 0.288%/0.153%, Phase 2b = NCT01241448 (Kazda 2016, 2015-12-17). Models evaluated 2025 against a 2015 result: retro, never same; within_2x and source_calls_it match hold.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Parker 2002 quote verbatim. All five follow-on knockout sources in the note resolve with the stated dates (Gelling 2003-01-24, Conarello 2006-11-28, Longuet 2008-11, Yang 2011-06-01, Yu 2011-08-10). Gelling also states normal body weight with reduced adiposity on chow.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Kelly 2015 (PMID 25656305, epub 2015-03-02) quote verbatim (tilde glyph only); Gelling 2003 'supraphysiological glucagon levels', alpha-cell hyperplasia. Prospective same, direction_only. Kelly's dose-dependent aminotransferase rise is left uncharged as knockout silence; ALT is measurable in mice, so decision 4 could read it as askable silence (rule question).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Kazierad 2016 (PMID 27059951, epub 2016-05-12) both quotes verbatim; Yang 2011 (PMC3130710, 2011-06-01) 'adverse lipid changes' and 'amino acids, cholesterol, and bile acid' verbatim. Prospective; NCT01856595 results 2018-11-01 verified. strengthens on a same-after-same entry: decision 7 names strengthens only for a second miss.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Guzman 2017 (PMID 28371155, epub 2017-06-08) raw abstract carries the quote verbatim plus HFF +4.44% and ALT +10.7 U/L vs placebo; NCT02111096 (terminated) results 2018-04-24 verified. Conarello 2007 stated, on high-fat diet, decreased body weight and resistance to hepatic steatosis; patients gained weight and liver fat, the trial's key endpoint. Guzman attributes the harms to chronic antagonism, not to untested conditions, so #35/#72 do not rescue it; a stated prediction failed in the opposite direction (decisions 4, 11), sticky under 6, no tier 1-4 attenuation source. Liver fat is arguable (Longuet 2008 and Yang 2011 show reduced fatty-acid oxidation and raised lipogenesis in the knockout), but weight is a clean miss: decreased on HFD (Conarello), normal on chow (Gelling), up in patients. No earlier member weight or liver-fat datum (Kelly 2015, Kazda 2016, Kazda 2017 abstracts report none), so 2017 holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Zhou 2009 (Pancreas, PMID 19657311, PMC2767399, print 2009-11, no earlier online date) quote verbatim. human_genetic is in scope under decision 8; untested opening at the first case; product_in_model false and no dose entry are right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kelly 2015 quote verbatim; Zhou 2009 model_src resolves. Prospective 2009 to 2015, same direction_only on hyperglucagonaemia. Zhou's abstract states no glycaemic phenotype; the no-hypoglycaemia reading rests on Larger 2016 (PMC5118975, 2016-11-21, verified), which the note already treats as changing no status.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "10",
+   "note": "Guan 2015 (PMID 26373568, epub 2015-09-15) quote verbatim. The abstract says the model was built to explain MK-0893's dose-dependent LDL-C rise in T2D patients and reproduced it in dosed mice: a model that post-dates and is motivated by a class patient result and reproduces it is retro with retrodiction true (decision 10), not untested. MK-0893 is the same target and modality; decision 12 bars widening only to a sibling target. Track end state unchanged (14-16 stay prospective). Full text unreachable (PMC not OA subset, jlr.org 403), so the unnamed 'structurally diverse GRAs' could not be checked against MK-3577; product_in_model false stands on the named compound.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: built after and motivated by MK-0893's human LDL-C rise, reproduced it: retro, retrodiction true. Decision 12 bars widening only to sibling targets or non-selective drugs; MK-0893 is the same selective mechanism and modality; retro never sets the headline."
+  },
+  {
+   "cell": "safety",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Kazierad 2016 quote verbatim; Guan 2015 resolves and predates it (2015-09-15 vs 2016-05-12); NCT01856595 results 2018-11-01 verified. Under decision 10 the first prospective member prediction after a retrodiction is a fresh entry scored the usual way: same, direction_only. A pre-2015-09 member LDL-C conference abstract could not be excluded; Kazda 2016's abstract reports no lipids.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kazda 2017 (PMID 28191913, epub 2017-03-27) quote verbatim; NCT02091362 results 2018-07-19 verified. Second member, lipid rise at an HbA1c-lowering dose; strengthens, no status change.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "12",
+   "note": "Pettus 2022 (PMID 36192552, PMC9872851, epub 2022-10-03) quote verbatim; NCT03117998 results 2023-05-25 verified. Imported from T1D (MONDO:0005147) for safety only, as decision 12 allows; third member, antibody modality, on-target pooling holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Gcgr-/- knockout mouse, a genetic model of full antagonism with no track: Yang 2011 BMC Genomics doi:10.1186/1471-2164-12-281 (hepatic metabolic alterations, 'implications on anti-glucagon therapies', 2011-06-01, before the LY2409021 liver-fat finding Guzman 2017 doi:10.1111/dom.12958) and Yu 2011 PLoS One doi:10.1371/journal.pone.0023397 (alpha-cell hyperplasia then PNETs; hyperglucagonaemia matched in Kelly 2015 / Pettus 2018, PNET never assessable). Drafter should open it as its own model_id and score safety on it.",
+  "Mahvash disease, human GCGR loss-of-function (model_kind human_genetic): Zhou 2009 Pancreas doi:10.1097/MPA.0b013e3181b2bb03, PMID 19657311 (homozygous P86S: hyperglucagonaemia, alpha-cell hyperplasia, islet tumour, no hypoglycaemia). Compared with GRA-dosed patients it matches on hyperglucagonaemia and absence of hypoglycaemia (Kelly 2015); PNET risk untestable in 6-month trials. No track in the draft.",
+  "Guan 2015 J Lipid Res doi:10.1194/jlr.M060897 (online 2015-09-15): mouse model of GRA-induced LDL-C rise via cholesterol absorption, dosed with MK-0893 and 'structurally diverse GRAs'. A sibling-dosed model side is admissible (product_in_model false); it predates the member LDL-C findings (PF-06291874 Kazierad 2016, 2016-05-12; volagidemab Pettus 2022), so under decision 10 its first member comparison is a fresh prospective entry, not excluded by the member-only rule as the draft's safety #4 judgement says."
+ ],
+ "overall": "accept_with_corrections",
+ "overall_note": "All 17 entries confirmed: every DOI/URL resolves to the named document, every quote is verbatim (abstract-level except Pettus 2018 and the press item, seen in full), all registry dates verified against ClinicalTrials.gov v2. Corrections are the three missing model tracks, not any scored status.",
+ "could_not_verify": [
+  "Full text of the paywalled Wiley/Elsevier papers (Peng 2014, Kelly 2015, Kazierad 2016/2018, Kazda 2016/2017, Guzman-Perez 2013, Mott 2024): quotes checked against abstracts only.",
+  "Whether Wiley posted Pettus 2018 as an accepted article on 2017-12-29 (draft's online date); Crossref and Europe PMC give 2018-01-22.",
+  "The original REMD Bio 2015 press release URL (only the Clinical Trials Arena reproduction was opened).",
+  "Models check: Guan 2015 full text (PMC4617405 not in the OA subset; jlr.org returns 403), so the identities of the 'structurally diverse GRAs' and whether any is MK-3577 remain unverified; also the paywalled Wiley/ADA full texts of Kelly 2015, Kazda 2016/2017, Kazierad 2016, Guzman 2017 and Conarello 2007 (abstracts only)."
+ ],
+ "rule_questions": [
+  "Decision 15: is an in-vivo pharmacological challenge in dosed humans (exogenous glucagon blocked, read as glucose/glucose production) 'direct' like an ex-vivo blockade of a stimulus, or 'downstream' because the readout is physiology? The draft calls it direct and admits the stricter reading.",
+  "Decision 10: does a post-hoc study run for another purpose (veterinary feline diabetes, Mott 2024) that neither cites nor is motivated by the human result qualify as a retrodiction track, or is it outside 'model systems compared with patients for the class' and should carry no entry?",
+  "Decision 12: when an on-target class harm (transaminases, LDL-C, BP, hyperglucagonaemia) is predicted or missed by modality-specific model systems, do the safety entries carry `modality` (as drafted) or stay pooled as the brief says for on-target harms?",
+  "Decisions 10 and 12: a model built to explain a non-member sibling's human harm (Guan 2015, MK-0893 LDL-C) that then anticipates the same harm with member drugs: is its first member comparison a prospective `same` (fresh entry after a retrodiction) or `retro`, given the retrodicted human result belongs to a drug outside the member list?",
+  "Decision 2, tier 5: does a trade-press article quoting the sponsor's statement count as the sponsor press release, or must the release itself (or an SEC filing) be the cited source?",
+  "Decision 4 (models check): does askable silence apply to a genetic characterisation model (Gcgr-/- knockout) as to a dosed tox package? ALT was measurable in mice and the knockout papers never reported it; patients showed dose-dependent aminotransferase rises (Kelly 2015). The draft leaves the knockout uncharged (safety 8) because its stated predictions govern.",
+  "Decision 7: may strengthens: true carry a second match on a track (same after same, safety 9/15/16), or is it reserved for a second miss that removes the first miss's excuse, with further matches going into patient_trials?",
+  "Decision 10 vs the member list: a class patient result from a same-mechanism, same-modality programme outside the tile's four members (MK-0893 LDL-C) motivated Guan 2015; the models check proposes retro for safety 13 on that reading, the drafter untested because MK-0893 is a non-member.",
+  "Decision 10 (models check): on an in-silico track built after the result (Tan 2025), should the opening untested entry carry retrodiction: true as well, or only the comparison entry?"
+ ]
+}

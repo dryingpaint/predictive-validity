@@ -1,0 +1,275 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/alzheimer-disease-anti-mapt-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "DOI resolves (PMID 21841002); JBC full text unavailable, quote verbatim in abstract. Untested opener on the first sponsor-lineage passive immunization is fine; Boutajangout 2011 (PHF1, JNPL3) slightly precedes it but is no member lineage."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "Evidence rule 6 (year = earliest date the comparison was public)",
+   "note": "Quote verbatim (abstract). Status same holds, but Yanamandra 2017 (doi 10.1126/scitranslmed.aal2029: HJ8.5 in P301S mice and ABBV-8E12 in PSP patients, plasma tau rose in both, stated) is public 2017-04-19; Qureshi 2018 + Bright 2015 also precede 2021."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMC10724064; quote verbatim. The mouse side is stated in the same paper, so 2023 is the stated comparison's date (the 2022-11-08 registry posting carries no mouse side). Strengthens only."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "As engagement entry 1: resolves, quote verbatim in the abstract, untested opener. No human exposure target existed in 2011."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMC9194753; quote verbatim; registry results 2022-03-16 and CDR-SB primary confirmed. Modeled 4500 mg target met (plasma tau saturating above it, CSF:serum as in phase 1) and 8100 mg also failed: row 'reached, failed' gives contra derived_from efficacy."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim. CSF unbound N-terminal tau fell at every dose (P<0.0001) with no CDR-SB effect; same v3 row for a second member. Strengthens only."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "As engagement entry 1; untested opener on the P301 track. Fleisher 2024's MC-1/JNPL3/P301S basis sentence verified verbatim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "PMC6208734; quote verbatim. Mapping holds: Courade puts A/B within aa 15-30 (truncation beyond 24/30); WO2014028777A2 = iPierian IPN002 (aa 15-24), US20150183855A1 = WashU HJ8.5 (aa 25-30). Missed: antibody F (Lilly WO2016137811A1, MC-1 epitope) = zagotenemab, partial only."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote near-verbatim (reference mark '9' inside the sentence). Tauriel primary CDR-SB (registry 2022-03-16) missed while the murine surrogate cut tau in P301L mice; contra on the primary, source calls it a miss. Supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2022,
+   "rule": "neg definition / decision 13: class_threshold must be the class's usual effect bar, one its successful drugs cleared",
+   "note": "Patient quote verbatim; registry 2022-11-08 confirmed. Direction matched, but class_threshold is UCB's antibody D bar, not one a successful member cleared (none exist): neg unmet, same. Also antibody F = zagotenemab (partial); Shulman does not cite Courade, Florian does.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 13 and checker brief: neg needs a class_threshold the class's successful drugs cleared (its usual bar); UCB's antibody-D selection bar is the assay's own and no member cleared it. Null predicted, null observed (#58): same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; class-wide stated comparison. TANGO's registry primary is AEs with CDR-SB the powered efficacy gate, so poc_gate is right; the other members' primaries are clinical (registry confirmed). Strengthens only."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim (abstract). No model-side tolerability statement is quotable from the abstract and the full text is paywalled, so untested stands. PSP phase 2 safety (Dam 2021, Hoglinger 2021) is importable but changes nothing without a model prediction."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Bright 2015 (PMID 25442111, epub 2014-09-16): quote verbatim, abstract only (Elsevier paywall). Untested opener at 2014 under rule 6. Abstract confirms AD-patient-derived neuron media eTau and two human-tau mouse lines: a distinct system, own track fine.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Shulman 2023 full text (PMC10724064): quote verbatim; Abeta42 -1.90% high dose vs -3.81% placebo confirmed. Model predicted Abeta falls; no change vs placebo: contra, downstream, direction_only. Abeta42 not a registry outcome, so 2023 holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Sopko 2020 full text read (fc.py): quote verbatim. Biogen's own HEK293T RD-CFP/YFP biosensor, bead immunodepletion of AD/CBD/PSP insoluble tau and rTg4510 ISF; cites Courade 2018 only as literature. Separate from Courade's assay under rule 8 (member drug's own model).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Decision 10 / drafter brief: a model run after the clinic knew the answer is retro, never same",
+   "note": "Full text postdates Qureshi 2018, Boxer 2019 and the PSP phase 2 miss ('previously investigated... failed'); pooled-CSF depletion (3 HV/4 AD/4 PSP) has no earlier record and the >90% sentence reconciles after the fact. retro, retrodiction true; a fresh prospective same vs TANGO AD CSF is available.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: the ex-vivo CSF depletion is first public in 2020, after the 2018 HV and 2019 PSP CSF data it reconciles with; drafter conceded the order was unstated. A retrodiction reproducing the known result is retro, never same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Yanamandra 2013 (PMC3924573): quote verbatim in abstract; epub 2013-09-26. Untested opener. P301S-lysate seeds in Diamond biosensor vs Courade's AD-PHF seeds gave opposite calls for the same V-region, so a separate track is right; in-vivo arm stays on the P301 track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Florian 2023 abstract: quote verbatim. NCT02880956 results posted 2022-08-26 (verified), primary CDR-SB: paired contra at 2022 holds, model_src named. Tilavonemab = humanized HJ8.5 (product_in_model false correct).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Sopko 2020 full text: quote verbatim. Untested opener 2020; the AD-efficacy prediction was prospective (TANGO unreported) even though the paper knew the PSP miss. Distinct procedure, seed prep, biosensor line and antibody format from Courade 2018: own track under rule 8.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Shulman full text: CDR-SB quote verbatim; 'supported by preclinical data... remove seeding-competent forms of tau from AD brain lysate' citing Sopko (ref 18) verbatim, so comparison_stated true. Contra on the poc_gate. Year 2023 follows the stated-comparison precedent of engagement #3; paired alternative is 2022-11-08.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Geerts 2023 full text (PMC10474108): quote verbatim. Untested opener at model_first_use_year 2023 per rule 6. Minor: the confidence_note's 'gosuranemab AD data unreported' sentence is not in the text; gosuranemab is simulated in a 52-week PSP study (Fig. 3).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Quote verbatim; 'Both tilavonemab in PSP and semorinemab in AD failed to change clinical progression' verbatim, comparison stated. Built after the Tauriel miss (registry 2022-03-16) and fitted to observed CSF data: retro under decision 10 is right, never same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Goff 2025 full text (PMC12256572, received 2024-10-25): quote verbatim; retro correct. Identity is the open point: Goff contrasts its spatial MCell model with 'well-mixed' models like Geerts 2023, so it may be a second in-silico system rather than a strengthening entry (rule question).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Engagement, P301 track, 2017: Yanamandra et al. 2017 Sci Transl Med 9:eaal2029 (doi 10.1126/scitranslmed.aal2029, PMID 28424326) put HJ8.5 in P301S mice beside ABBV-8E12 (tilavonemab lineage) in PSP patients, plasma tau rising dose-dependently in both, four years before Ayalon 2021. Qureshi 2018 (doi 10.1016/j.trci.2018.10.007; gosuranemab in healthy volunteers, CSF unbound N-terminal tau suppressed 67-97%) paired with Bright 2015 (IPN002 clearing ISF eTau in human-tau mice) is a second pre-2021 comparison.",
+  "Model with no track: iPierian's eTau model, AD-patient-derived cortical-neuron conditioned media plus two human-tau transgenic lines, in which IPN002 (gosuranemab's parent) neutralizing eTau lowered Abeta (Bright et al. 2015 Neurobiol Aging 36:693, doi 10.1016/j.neurobiolaging.2014.09.007, epub 2014-09-16). Patient side: TANGO CSF Abeta42 change at week 76 was 'small and comparable between groups' (-1.90% high dose vs -3.81% placebo; Shulman 2023). A member drug's own patient-derived-cell model whose stated prediction was not met.",
+  "Mouse-seed biosensor assay (Yanamandra et al. 2013 Neuron 80:402, doi 10.1016/j.neuron.2013.07.046, PMC3924573): HJ8.5 was selected because it fully blocked P301S-brain-lysate seeding, and tilavonemab then failed (Florian 2023). It is the mouse-seed counterpart of Courade's AD-seed assay and predicted the opposite; the draft folds its in-vivo arm into the P301 mouse track but gives the selection assay no track. Courade 2018 itself contrasts the two results for antibody B.",
+  "Tier-5 record not cited: Biogen press release 2021-06-16 (https://investors.biogen.com/node/23611) reported TANGO missed CDR-SB at week 78 and discontinued gosuranemab, seventeen months before the registry posting (2022-11-08) the draft dates its 2022 entry to. Status is unchanged (tier 1 governs); the dating is a rule question. The AC Immune/Genentech Tauriel topline release (September 2020) was not verified in this check.",
+  "Within the seeding-assay track: Courade's antibody F took its V-region from WO2016137811A1 (Eli Lilly; conformational epitope aa 7-9 + 312-322, i.e. MC-1, zagotenemab's parent) and 'showed only partial activity on AD Tau'. The draft states zagotenemab was not among the reference antibodies; three of four members' V-regions were in fact tested, and the effect_size and notes should carry F.",
+  "Immunodepletion track, engagement, prospective entry: Sopko 2020's ex-vivo depletion of unbound N-terminal tau in pooled AD-patient CSF (Neurobiol Dis 146:105120, epub 2020-09-28) preceded TANGO's AD-patient CSF readout (NCT03352557 results 2022-11-08; Shulman 2023 doi 10.1038/s43587-023-00523-w, all doses P < 0.0001). After the 2020 entry is scored retro, this is the track's first prospective prediction and a fresh paired `same` under decision 10."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "neg in a class with no successful drug: the definition needs 'the class's usual effect bar'. When every member failed, may the model's own selection bar (here UCB's antibody D, a non-member) stand as class_threshold, or is neg unavailable, which makes the one case where a model called the whole class's failure unscorable as such?",
+  "Engagement in another indication's patients: healthy volunteers count; do PSP patients (Yanamandra 2017, tilavonemab lineage) count as 'dosed humans' for an AD context, so that the stated comparison dates the engagement same to 2017 rather than 2021?",
+  "Dating against a tier-5 record: rule 6 lists registry posting, online publication, label or print as year anchors. When a sponsor press release (Biogen 2021-06-16) made a failure public before the registry posting (2022-11-08) and a tier-1 paper later set the status, does year follow the press release?",
+  "A reference antibody carrying a member's V-region in another backbone (Courade's mouse-IgG1 versions of IPN002, HJ8.5 and MC-1): is product_in_model true or false, and do its data count as 'the model's own data for a drug of this class' for neg?",
+  "Same group, same parameters, same conclusion, different numerical method: is Goff 2025's spatial Monte Carlo (MCell) cleft model the same system as Geerts 2023's ODE QSP model (one model_id, strengthening entry, as drafted) or a 'later or better model' with its own track under rule 8? Goff itself contrasts its model with 'well-mixed' models."
+ ]
+}

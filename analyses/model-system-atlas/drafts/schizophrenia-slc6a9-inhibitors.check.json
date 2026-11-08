@@ -1,0 +1,322 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/schizophrenia-slc6a9-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Alberati 2012 Neuropharmacology (PMID 22138164), epub 2011-11-27, print 2012-02; rat CSF/striatal microdialysis sentence verbatim in abstract. Untested at first use is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 3",
+   "note": "Hofmann 2016 Psychopharmacology (PMID 27178435), epub 2016-05-14; healthy volunteers, 2.3x at 60 mg; 'similar to animals' sentence verbatim. Stated comparison; HV count for engagement."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Rosenbrock 2018 Clin Transl Sci (PMID 30136756, OA), epub 2018-08-23; rat 30-78% vs human 50% at 10 mg verbatim. NCT02362516 results first posted 2026-03-30 confirmed."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Borroni NeuroImage (PMID 22178811), epub 2011-12-10, print 2013-07; baboon 150-300 ng/mL for 50% occupancy verbatim in abstract. Own track (primate PET) is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 3",
+   "note": "Martin-Facklam Neuropsychopharmacology (PMID 23132267), epub 2012-11-07; EC50 ~190/200/130 ng/mL, Emax ~92% verbatim. Pairing against baboon 150-300 ng/mL is within 2x; HV count."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Alberati 2012: 'LTP at 100 nM but not at 300 nM' verbatim in abstract. Inverted-U window as its own dose model is defensible; no member filed, so model_filed null is right."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Umbricht 2014 JAMA Psychiatry (PMID 24696094), EPMC first date 2014-06-01, no epub listed; occupancy-window sentence verbatim. Note Roche's 21 Jan 2014 phase 3 miss precedes it (see index 3)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 admitted; higher tier sets status)",
+   "note": "Status right (window doses reached, failed, abandoned). Roche media release, Basel 21 Jan 2014, said FlashLyte/DayLyte 'failed to meet their primary endpoints': comparison public 2014, not 2016."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Same Alberati 2012 sentence as engagement 1; CSF-glycine PD as a second dose track (PD-defined iclepertin dose) is a different prediction from the LTP window, so separate model_id is acceptable."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 3",
+   "note": "Rosenbrock 2018 verbatim; HV PK/PD counts for dose. 'Enough' was only shown by Fleischhacker 2021 (NCT02832037 results 2021-02-24), so 2018 vs 2021 dating is a rule question, not a correction."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Keefe 2025 Lancet Psychiatry (PMID 41233083), EPMC date 2025-12-01; CONNEX-1 results posted 2025-11-05 confirmed. Boehringer topline release Jan 2025 is earlier but same year. Contra derived from efficacy is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Alberati 2012 hyperlocomotion sentence verbatim in abstract; first published member data on the NMDA-hypofunction screens the class relied on."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 11 (partial)",
+   "note": "Both quoted sentences verbatim; PP significant, ITT trend: same + partial fits. comparison_stated true rests on the occupancy sentence, not the hyperlocomotion model; a pairing would be more exact (field only). CandleLyte quote verbatim, epub 2014-03-29."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 admitted; higher tier sets status)",
+   "note": "Bugarski-Kirola epub 2016-12-15 verbatim; all 8 patient_trials quotes verbatim (SearchLyte epub 2016-11-02, Dunayevich 2016-10-24); AMG 747 'Toxic Epidermal Necrolysis' stop confirmed on registry. Roche's 21 Jan 2014 release made the phase 3 miss public: year 2014."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "note": "Rosenbrock 2022 JPET (PMID 35661632), epub 2022-06-05; the abstract itself opens from 'iclepertin improved cognition in a recent clinical study', so retro is right. Whether this is a separate system from the hyperlocomotion track is a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (first prospective test after a retrodiction)",
+   "note": "Keefe 2025 verbatim; CONNEX-1/2/3 results posted 2025-11-05, 2025-12-12, 2026-02-06 confirmed; primary MCCB composite not met. Contra on the MK-801 cognition track is right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10",
+   "note": "Liu Cutan Ocul Toxicol (PMID 24147951), epub 2013-10-22, print 2014; built to explain 'recent reports of visual disturbance with GlyT1 inhibitors in clinical trials', so retro, own track. Abstract-level."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 3 (no quotable comparison = untested)",
+   "note": "Winter Exp Hematol (PMID 27403535), epub 2016-07-09; 20% Hb fall verbatim; abstract states no patient comparison, so untested holds. Full text (paywalled) may state the bitopertin clinical Hb fall, which would make it retro."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Nagy J Clin Pharmacol (PMID 42053463, OA), EPMC date 2026-05-01; both spans verbatim; sponsor states rodent-to-patient Hb comparison, rodent work pre-FIH so prospective same, direction only. Abstract also reports phase 2 Hb falls (10/25 mg), so an earlier dated comparison may exist in Fleischhacker 2021 full text (not checked)."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Roberts 2010 Neuroreport 21(5):390-4 (PMID 20186106), 31 Mar 2010; abstract sentence verbatim; DOI maps to LWW issue page (403 bot block). Member drug (PF-3463275 = PF-03463275); prospective untested opener, 2010.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "D'Souza 2018 (PMC6068006 text) verbatim; epub 2018-01-31, print 2018-09-15. Ketamine-fMRI readout unmoved at 44-76% occupancy in healthy volunteers; source states the NHP contrast, so comparison_stated true. Contra, not retro (trial result 2023).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Published abstract verbatim (PMID 29499855). Discussion names 60-80% occupancy as optimal window; 2018 untested opener for a human dose model. Year 2018 (epub 2018-01-31).",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Surti 2023 Discussion verbatim; Methods: doses selected from PET occupancy, ketamine fMRI and LTP, 40 mg strongest. 40/60 mg bid dosed with daily adherence checks, MCCB primary flat: contra derived_from efficacy. NCT01911676 results 2023-02-27 < epub 2023-05-02, year 2023. margin_stated could be true (well-tolerated held); no status change.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Published abstract verbatim; explicit prospective prediction (LTP gain should let PF-03463275 augment CT). 2018 untested opener; not a retrodiction.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract verbatim; patient_trials quote verbatim in Discussion. Primary = MCCB composite change (CT.gov, n=71 actual); neither dose improved it. Surti's 'perhaps a wider dose range' is speculation, not attribution to untested conditions; LTP-link caveat supports source_calls_it unresolved. Contra, 2023.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Published abstract verbatim; ketamine substudy in healthy subjects only. Assay's primary readout null at 10-40 mg bid; authors 'question the utility of the reversal of ketamine effects as an assay'. 2018 untested opener.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "rule": "13",
+   "note": "Quote and pairing verified (Surti lists ketamine fMRI among dose inputs, no stated comparison). effect_size is the model's own null, fine; but class_threshold is the assay's binary positive call, which no member (nor Org 25935) ever cleared in humans and no successful class drug anchors. Not an admissible class bar under decision 13; score same + direction_only (rule question 4 above).",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Decision 13 (brief §3): neg needs a class bar the class's successful drugs cleared; drafter's class_threshold is the assay's criterion and concedes none exists. Null model, null trial, null taken as the prediction: same, direction_only (decision 4, #58)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Roberts 2010 abstract verbatim; abstract offers 'translational support for targeting glycine transporter in adjunctive treatment for cognitive dysfunction in schizophrenia'. Prospective 2010 untested opener; member drug dosed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Paired by us: Surti 2023 text has no primate/Roberts citation, so comparison_stated false is right; model_src Roberts 2010 tier 1. MCCB primary failed (NCT01911676 results 2023-02-27); model prospective 2010, so contra not retro. Year 2023.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Human visual-evoked-potential LTP (neuroplasticity) in schizophrenia patients with PF-03463275 (D'Souza 2018, Biol Psychiatry, 10.1016/j.biopsych.2017.12.019, epub 2018-01-31, model_kind human_challenge): LTP peaked at 40 mg bid (~75% occupancy) and chose the 40-60 mg doses of Surti 2023 (10.1016/j.schres.2023.04.010, NCT01911676 results 2023-02-27), which failed on MCCB. A member drug's own model with a prospective dose/efficacy contra; the draft mentions it in judgement but gives it no track.",
+  "Human ketamine-challenge fMRI working-memory model in healthy volunteers with PF-03463275 (same D'Souza 2018: 'PF-03463275 did not attenuate any ketamine-induced effects'): a model that predicted no effect for a drug that then failed (Surti 2023). No track; how to score it is a rule question.",
+  "Roche media release, Basel 21 January 2014 (tier 5): 'two phase III studies of ... bitopertin ... failed to meet their primary endpoints' (FlashLyte NN25310, DayLyte WN25309, PANSS negative factor at 24 weeks); https://www.fiercebiotech.com/biotech/roche-provides-update-on-first-two-of-six-phase-iii-studies-of-bitopertin-schizophrenia-0 . Dates the efficacy and dose contras to 2014.",
+  "Boehringer Ingelheim press release, January 2025 (tier 5): CONNEX topline 'primary and key secondary endpoints were not met'; https://www.boehringer-ingelheim.com/us/connex-clinical-program-topline-results-announcement . Same year as the draft's 2025 entries; no change, but it should be cited as the earliest public date.",
+  "Org 25935 human ketamine challenge in healthy males (D'Souza 2012, Neuropsychopharmacology, 10.1038/npp.2011.295, epub 2011-11-23): a human_challenge system for the GlyT1 mechanism, but Org 25935 is not on the member list, so it is listed here for the rule question, not as a scored track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dating vs tiers: when a tier-5 press release (Roche, 21 Jan 2014) makes a phase 3 failure public two years before the tier-1 record that sets the status, does decision 7 ('earliest date the comparison was public') move the entry's year to the press-release date, and is `trial_unreported: true` still carried once the trial is later reported?",
+  "Dose from healthy-volunteer PK alone: decision 3 lets HV PK/PD count for dose, but the cell definition reads 'was the target reached, and was it enough'. Is a dose `same` dated when the PD target was hit in volunteers (Rosenbrock 2018) or when efficacy first showed it was enough (Fleischhacker 2021)?",
+  "Track granularity under decision 8: are rodent NMDA-antagonist hyperlocomotion (mouse, amphetamine/L-687,414) and rodent MK-801 cognition/EEG (T-maze, ASSR) one system (same challenge paradigm) or two (different readouts, different predicted symptom domain)? The draft splits them; the checker brief warns against splitting one system.",
+  "A model that correctly predicted no effect (PF-03463275 did not attenuate ketamine effects; the drug then failed): `neg` requires `class_threshold` as a bar the class's own successful drugs cleared, but this class has no successful drug. Is a correct negative prediction `same`, `neg` with a null threshold, or unscorable?",
+  "Can a non-member drug of the given mechanism (Org 25935, GlyT1 inhibitor) open a track as a sibling-drug proxy with `product_in_model: false`, or does the reviewed member list exclude it entirely?",
+  "Retrodiction by publication order: Rosenbrock 2022 cites the positive phase 2 in its introduction but does not state when the experiments ran. Is publication after the clinical result sufficient for `retrodiction: true`, or must the source show the work was run afterwards?"
+ ]
+}

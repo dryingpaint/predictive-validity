@@ -1,0 +1,165 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hepatocellular-carcinoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 25529917, Hepatology 2015); quote verbatim in abstract. Untested opener is right: surrogate-dosed orthotopic HCC mice, no member PD readout compared in HCC patients."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundle (RO 80-100% from day 2, AK105-101 solid-tumour patients); in-vitro 0.1/0.5 ug/mL stated beside it. Same holds. model_first_use_year 2025 is first public date; the assay predates it."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "APOLLO resolves (PMID 40349716); OS quote verbatim. NOAEL 60 mg/kg Q2W confirmed in bundle. Same under decision 16. Caveats: 93% ADA in 13-week monkeys; magnitude encodes a safety margin, not an error (suggest null)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2025,
+   "rule": "CHECKER_BRIEF_v3 section 3, first bullet (trial attributes result to conditions the model never tested); dose table row 'reached, drug worked' not met",
+   "note": "Quote verbatim in bundle; measured trough 30.1 ug/mL shows target reached. But 'enough' rests on APOLLO, anlotinib plus penpulimab vs sorafenib, a condition the model never tested; no penpulimab-alone HCC trial. Follows efficacy 4.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 dose tie: `same` needs case 2 (reached and the drug worked); exposure reached (trough 30.1 ug/mL) but 'worked' rests on APOLLO's anlotinib+penpulimab arm, a condition the popPK model never tested (brief section 3 bullet 1). Follows efficacy 4."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves; quote verbatim in abstract. Untested opener correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 32112738, epub 2020-02-26); quote verbatim; NCT02989922 results 2024-03-15 confirmed. Monotherapy isolates the antibody, so same in direction holds; single-arm, no stated null (rule question). patient_trials DOIs and quotes all verbatim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 37499670, epub 2023-07-24); OS quote verbatim; registry 2024-02-06 confirmed. Yang 2021 abstract confirms apatinib plus anti-PD-1 in a syngeneic HCC mouse, so the combination was modelled. Model string misnames Chen's lines for Yang's unnamed model."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2025,
+   "rule": "CHECKER_BRIEF_v3 section 3, first bullet (trial attributes result to conditions the model never tested); DRAFTER_BRIEF_v3 'same' requires agreement for a drug of the class",
+   "note": "APOLLO resolves; OS quote verbatim; TGI 74.1/54.5% confirmed in bundle. But the model dosed penpulimab alone and APOLLO credits anlotinib plus penpulimab vs sorafenib; no penpulimab-alone HCC trial, so the antibody's contribution is unisolated.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Checker brief section 3 bullet 1, decision 4 (#35/#72), mirror of #70: APOLLO credits anlotinib+penpulimab; the MC38 model dosed penpulimab alone, so the result is attributed to a condition it never tested. CARES-310 unaffected: Yang 2021 modelled the combination."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 10485649, Immunity 1999); quote verbatim. Untested opener correct; model_filed true matches the penpulimab review citing PD-1-deficient mice."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 30541416, epub 2018-12-12); quote verbatim. Retro is right: screen followed known haemangiomas. HCC rate 145/217 (66.8%) verified in Wang 2020 abstract. Source patients were phase 1, not HCC: set imported_from or cite Wang 2020."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves (PMID 37325495, epub 2022-08-30); quote verbatim; NCT03973112 no results confirmed. Same/partial holds at low confidence. Unverified: Qin 2020 or RESCUE full text may name immune-related AEs in 2020, which would move the year."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundle; NOAEL 60 mg/kg, irAE 158/558 (28.3%) in Applicant Table 34, MONDO:0015459 = nasopharyngeal carcinoma confirmed. Contra holds, but FDA says 93% ADA 'may explain the limited findings'; 6-week study listed spleen, thymus, adrenal, salivary target organs."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "DOI resolves (PMID 20624978); quote verbatim in abstract. Bundle p.1815-1829 and label 13.2 cite it: model_filed true. Untested holds; the only member TB cases (AK105-304 SAE; Lin 2023 camrelizumab, PMID 37304292) are chemo-combined. Opener year 2010 right."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "DOI resolves (PMID 33452107); quote verbatim; full text (PMC BioC) confirms it followed anti-PD-1 TB case reports, so retrodiction reasoning stands. Review and label 13.2 cite it. Untested holds: no isolated member comparison; Lin 2023 camrelizumab case is chemo-combined."
+  }
+ ],
+ "missing": [
+  "Regulatory failure not shown: FDA complete response letters for camrelizumab plus rivoceranib in unresectable HCC (2024-05-16, 2025, 2026-07-10), cGMP/inspection-based, not efficacy; changes no model comparison. Source (tier 5): Elevar Therapeutics press release, https://www.biospace.com/press-releases/elevar-therapeutics-receives-fda-complete-response-letter-for-combination-of-rivoceranib-and-camrelizumab-as-a-first-line-treatment-for-unresectable-or-metastatic-hepatocellular-carcinoma",
+  "Patient-level ex-vivo HCC system exists for the mechanism but not for a member: patient-derived organotypic tumour spheroids predicting lenvatinib plus tislelizumab response (Wang 2026, Front Oncol, doi:10.3389/fonc.2026.1744326, PMID 42311270). Tislelizumab is not a tile member, so it does not score; the draft's claim that no member has an HCC ex-vivo predictor stands.",
+  "Model-stated safety prediction with no patient comparison in the draft: the penpulimab review (bundle p.40) cites Mtb-infected PD-1 knockout mice and anti-PD-1 in Mtb-infected monkeys (Kauffman 2021) as predicting infection exacerbation, carried into label section 13.2; an untested knockout/monkey harm the safety cell could record.",
+  "Searched and found nothing: no public in-vivo model for camrelizumab (SHR-1210), serplulimab (HLX10; only the structural paper PMID 34972111) or spartalizumab (PDR001) on PubMed, so no missed member-own animal track.",
+  "Member-drug TB case the Mtb tracks' judgements say does not exist: Lin 2023, Front Immunol 14:1162190 (PMID 37304292, PMC10248429), camrelizumab plus chemotherapy, lung squamous cell carcinoma, pulmonary TB after one cycle, tabulated in the 2026 review PMC13581663. Chemotherapy-combined, so it does not isolate the antibody and untested stands on both Mtb tracks; the judgement text should cite it instead of claiming no camrelizumab case exists (abstract does not name the drug, which is why tiab searches miss it).",
+  "Member-drug cohort data on the Mtb prediction, neither isolating a member and no status change: Zhongshan ICI cohort (PMID 42733647, PMC13571672, 2026), camrelizumab n=3 and penpulimab n=1 among 118 LTBI/TB-history lung-cancer patients, none developing active TB; Shenzhen real-world cohort (PMID 42751276, PMC13579480, 2026), camrelizumab and serplulimab pooled among 841 anti-PD-1 patients with 44 active TB and no per-drug counts."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Combination trials: when the model dosed the antibody alone and the only HCC patient result is antibody plus an active TKI vs sorafenib with no antibody-alone arm (APOLLO), is that agreement 'in direction' for the antibody, or a condition the model never tested (untested)? Affects efficacy 4 and dose 2; CARES-310 is unaffected because Yang 2021 modelled the combination.",
+  "Single-arm trials without a pre-specified null (Qin 2020, co-primary ORR and 6-month OS): can efficacy score 'same', or does 'primary endpoint responded as predicted' require a tested hypothesis or a comparator?",
+  "Tox studies with lost exposure: when 93% of 13-week monkeys were ADA-positive and the FDA says this may explain the limited findings, is the model's silence on immune-mediated harm still a scorable 'contra', or is the study inadmissible as a prediction?",
+  "model_id grain for syngeneic tumour models: do different cell lines, hosts and sites (Chen 2015 orthotopic HCA-1/RIL-175 vs Yang 2021 unnamed syngeneic HCC) under the same surrogate antibody share one model_id, as the MC38 pooling precedent implies, or are they separate tracks?",
+  "Dose 'magnitude' when a stated margin held: the drafter recorded the NOAEL-to-clinical-dose ratio (about 20x) as off_by_>5x; should a safety-margin ratio be recorded as magnitude at all, or left null?",
+  "Retrodictive model on an untested opener: Kauffman 2021's introduction says it was run as anti-PD-1 TB case reports accumulated, but lint forbids retrodiction: true unless the status is retro or contra, so the flag is recorded false and the fact lives only in judgement text. Should an untested entry carry retrodiction: true?",
+  "Combination isolation in the safety cell: every member TB datum (penpulimab AK105-304 SAE, Lin 2023 camrelizumab case) is under chemotherapy co-administration. Applying the tile's efficacy-4 combination rule leaves infection-exacerbation tracks permanently untested; is a case report under member plus chemotherapy admissible for safety when the harm is the model's stated mechanism?",
+  "Pooled class cohorts on a prediction_level: class track: the Shenzhen anti-PD-1 cohort (44/889 active TB) includes camrelizumab and serplulimab without per-drug counts. Can a pooled anti-PD-1 cohort containing members score a class-level safety track, or must a member be isolated?"
+ ]
+}

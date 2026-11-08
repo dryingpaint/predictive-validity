@@ -1,0 +1,226 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/hepatitis-c-virus-infection-hcv-ns5b-nucleotide-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Sofia 2010 resolves (PMID 20845908); quote verbatim in abstract, truncated at clause. Opener untested is right. Replicon track opens 2010 although PSI-7851 replicon data were public 2009 as abstracts; acceptable proxy."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "7",
+   "note": "FDA ClinPharm quote verbatim (3-day GS-9851 MAD). Comparison was public earlier: Rodriguez-Torres J Hepatol epub 2012-11-23 (doi 10.1016/j.jhep.2012.11.018, tier 1) reports -5.3 vs -2.8 log10 at 28 days; paired with Lam 2012 (epub 2012-03-19) the entry dates 2012."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "8",
+   "note": "PharmR quote near-verbatim (line break only). Untested opener right. First use is probably 2008: the review cites study 7851-08-005 and CRO number 0515-08127 beside PSI-7851-09-0001; model_first_use_year 2009 is a year late."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "PharmR section 1.2 quote verbatim (two consecutive sentences). Decision 16 ceiling: NOAEL margins 9/27/41x stated, patients dosed to 400 mg without the harm; same with margin_stated true is right. Floor untested on the replicon track is accepted."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Sofia 2010 quote verbatim; untested opener right. Lam 2012 (PMID 22430955, epub 2012-03-19) confirmed for the pan-genotype and S282T predictions cited in judgement."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "11",
+   "note": "ClinPharmR quote verbatim; FISSION/NEUTRINO registry dates 2014-04-02/2014-05-08 confirmed; Lawitz 2013 NEJM is doi 10.1056/NEJMoa1214853 (PMID 23607594, epub 2013-04-23), add to patient_trials. Label Table 10: GT3 SVR12 56% vs GT2 95%; no source calls the replicon match partial, same direction_only stands."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "PharmR quote verbatim (line-broken). Untested opener right; same 2008 first-use caveat as dose. Model label 'rat, dog and mouse' does not describe BMS-986094's rat/cynomolgus package later scored on this track; rename the track generically."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "5",
+   "note": "CrossR quote verbatim. Status same accepted under decision 5 #51: rat myocardial degeneration at 14x (7-day GS-9851) with clean 6-month NOAEL at 9x, patients clean. magnitude should be off_by_>5x on the exposure multiple, not direction_only. See rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "7",
+   "note": "Gill 2016 resolves (PMID 27864544); quote verbatim. Contra right, year not: FDA Sovaldi MedR (Dec 2013, tier 2) quotes the 2012-08-23 release 'unexpected events, which involve heart and kidney toxicity'; paired with Vernachio 2011 (doi 10.1128/AAC.01335-10) it dates 2013."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2014,
+   "rule": "7",
+   "note": "Gill 2016 quote verbatim; retro right. Comparison was public earlier: Ahmad, Hepatology (doi 10.1002/hep.27488, PubMed 2014-09-25, print 2015) states patient pathology 'consistent with some results of recent primate studies'; tier 1, low confidence (primate data then unpublished)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Regan 2016 resolves (PMID 27474787, epub 2016-08-23, print 64(5):1430); quote verbatim in abstract. Retro right; patient side (nine cases, 2015 FDA/EMA warnings) is in the same abstract. MK-3682 negative prediction correctly left unscored."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Millard 2016 resolves (PMID 27503387, epub 2016-08-07); quote verbatim in abstract. Retro right. Yu 2018 (PMID 29847141) confirmed for the line-dependence caveat."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Yanagida 2021 resolves (PMID 34334557, J Toxicol Sci 46(8):359); quote verbatim. Retro supported, but no status change on the track: #113/#127 reserve strengthens for a second miss, so this belongs in entry 6's note, not a new entry."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Lam 2010 resolves (PMID 20516278, AAC 54(8), epub 2010-06-01); sentence verbatim in the abstract (unit rendered microM). Untested opener right; GS-7977 tested as prodrug in Arnold 2012 so product_in_model holds; PharmR 4.2 mtDNA/cytochrome c oxidase citation confirmed.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "CrossR quote verbatim (line-broken, p.371-372 of text). MedR 2.4 class-motivated cardiac review confirmed. Null-null is same under #58 because Lam 2010/PharmR made the null a prediction; same-package convention already accepted at safety 2. Same-year contra (index 10) governs the track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "MedR quote verbatim (quoting 2012-08-23 release); Vernachio 2011 model_src sentence verbatim (abstract only). Contra holds as a stated prediction: Feng 2016 later found BMS-986094 CC50 1.1 uM in HepG2 (galactose) and 6.7 uM in primary hepatocytes, so the IND-era HepG2/CEM clean call failed in its own cells. 2013 dating follows safety 3; adjudication may prefer 2015 since Ahmad 2015 disputes the mitochondrial mechanism.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Arnold 2012 resolves (PLoS Pathog 8(11):e1003030, 2012-11-15); quote verbatim in abstract. Cites the 2012-08-23 BMS release, so post-dates the halt (no received date in the XML). GS-7977 tested as prodrug, 2'-F-2'-C-Me-UTP least incorporated; PharmR 4.2 citation confirmed. Untested opener right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Feng 2016 resolves (PMID 26596942, epub 2015-11-23, print AAC 60(2):806); quote verbatim. Retro right: run after and citing the halt; PolRMT 92% vs 0.45% and PC-3 CC50 0.68 vs >100 uM confirmed in Tables. Mechanism contested (Feng notes Ahmad 2015 found direct mitochondrial toxicity unlikely), fine for direction_only.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim. Contra upheld: the panel ran PSI-938 in primary human hepatocytes, Huh-7, HepG2 (all >89-100 uM) and PolRMT (1.6%), so the hepatic harm was asked and answered clean, and nucleoside hepatotoxicity is the harm class such panels exist to flag. Alternative (#90 tested-could-not-resolve -> untested/unresolved; Good 2020 CYP3A4 O6-ethylguanine 'likely' mechanism) raised as a rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "In-vitro mitochondrial-toxicity assays (POLRMT incorporation; HepG2/CEM/PC-3 mitochondrial protein synthesis and respiration) have no track. Prospective: Vernachio 2011 AAC (doi 10.1128/AAC.01335-10, epub 2011-02-28) 'No evidence of mitochondrial toxicity was observed after 14 days of INX-08189 exposure in both HepG2 and CEM human cell lines', then the 2012 cardiotoxicity (contra). Retrodiction: Feng 2016 AAC (doi 10.1128/AAC.01922-15, epub 2015-11-23) BMS-986094 'primary effect on mitochondrial function at submicromolar concentrations' while sofosbuvir's active form was a poor PolRMT substrate (retro); Jin 2017 AAC (doi 10.1128/AAC.00492-17) extends it.",
+  "IDX-184 on the IND-toxicology track: Luo 2015 Hum Exp Toxicol (doi 10.1177/0960327115592939, epub 2015-07-02) reports 13/26/32-week mouse/rat/cynomolgus studies naming heart, liver, kidney, skeletal muscle and lower GI as targets, with echocardiography in the monkey. Patients: healthy-subject SAD (Zhou 2010, doi 10.1128/AAC.01101-10) and 3-day monotherapy (Lalezari 2012, doi 10.1128/AAC.01521-12: 'adverse events ... similar' to placebo) showed none, and the programme was stopped on the BMS-986094 class concern. A decision-5 / #51 comparison the draft left unscored; the 12-week Phase 2b safety record (Idenix) was not found this session.",
+  "IDX-184 on the replicon track: 3-day monotherapy fell only -0.5 to -0.7 log10 at 25-100 mg (Lalezari 2012) and Luo 2015 records termination for 'suboptimal efficacy'; candidate neg under decision 13 if its replicon EC50 sat below the class bar (not computed here).",
+  "GS-0938 (PSI-352938) member safety failure sits in the bundle: Sovaldi MedR 'Due to ALT elevations associated with GS-0938' (QUANTUM, Dec 2011); no animal-side source found, so it stays unscored but should be named in the safety judgement with its FDA citation. ALS-2200/VX-135 2013 liver-enzyme hold not verified (press-release tier).",
+  "[models check] CYP3A4 metabolite-formation assay (Good 2020, PLoS One, doi 10.1371/journal.pone.0227104, PMC6949113): a distinct in-vitro system from the mitochondrial panels. Retrodicts the PSI-938 / PSI-661 hepatotoxicity ('likely due to the formation of mutagenic O6-alkylated nucleobase metabolites'; PSI-938 formed 1.57 uM O6-ethylguanine with rhCYP3A4) and made a prospective clean prediction for AT-527 (no O6-alkylguanine formed) matched by the 8-week Phase 2 record (NCT05904470). Sponsor-authored and the PSI-938 attribution is hedged ('likely'), so candidate retro 2020 + same, low confidence; no track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dating a silence-based safety contra: the harm was public in Aug 2012 (press release, tier 5) and Dec 2013 (FDA MedR, tier 2) but no source stated that the animals missed it until Gill 2016. Does a drafter pairing of a pre-trial model paper that is silent on the harm (Vernachio 2011: rats and cynos dosed, no mito toxicity in cells) with the regulator's quotation of the sponsor's 'unexpected' make the comparison public at 2012/2013, or must the model side explicitly state the toxicology prediction?",
+  "Decision 5 #51 wording: 'A 25-50x margin below clinical exposure does not gate same; record it in magnitude.' For sofosbuvir, rat myocardial degeneration at 14x AUC (7-day, GS-9851) with a clean 6-month NOAEL at 9x and the FDA requesting a follow-up rat study: is this same + off_by_>5x (prediction 'no harm at clinical exposure' held) or contra/opposite (predicted harm that never appeared)?",
+  "Retrodiction dating when the patient paper (Ahmad, PubMed 2014-09-25) cites unpublished model data ('consistent with some results of recent primate studies', data not shown): does that tier-1 statement set the retro entry's year at low confidence, or does the model paper (Gill 2016) govern?",
+  "Track identity for IND toxicology across members: the draft runs one track for sofosbuvir (rat/dog/mouse), BMS-986094 (rat/cynomolgus) and would for IDX-184 (mouse/rat/cynomolgus); is 'standard repeat-dose toxicology' one system per decision 13 (#48), or one track per species set? And is Gill's cynomolgus study with echocardiography a 'newer model' (second track, decision 6) or the same monkey model re-run (retro on the IND track)?",
+  "Second matched retrodiction on one track (Yanagida 2021 after Millard 2016): #113/#127 permit a new entry only on a status change or a second miss; may strengthens: true carry a second match, or does it fold into the note?",
+  "Decision 5 for a terminated member: IDX-184's animals predicted heart/kidney/muscle harm; patients dosed up to 12 weeks before the class hold showed none. Is a predicted harm absent from a short, truncated patient dataset contra/opposite, or untested because the dataset could not have shown it?"
+ ]
+}

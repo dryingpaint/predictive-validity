@@ -1,0 +1,202 @@
+{
+  "draft": "analyses/model-system-atlas/drafts/v3/ulcerative-colitis-s1pr1-agonists.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "PMID 15290910 resolves; quote verbatim in abstract. FTY720 non-member, product_in_model false correct; untested opener at 2004 fine."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "NEJM quote verbatim (abstract). Scott 2016 51% found verbatim in PMC4867749 full text. TOUCHSTONE NCT01647516 results posted 2020-10-14 as given. Downstream readout, within_2x reasonable."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Scott 2016 abstract sentence verbatim; regimen target opener, untested."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Tran 2017 quote verbatim. Europe PMC gives first publication 2017-04-11, not 2017-08-07 as the judgement says; year 2017 unchanged. Once daily also worked in TOUCHSTONE 2016, which could date it a year earlier."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "738/446-fold quote and 2.4-fold HED sentence verbatim in the 216956 review. The note's 'without liver harm' is wrong: label 5.3 reports ALT >3x ULN in 4.5% vs 2.1% placebo (UC-1). 2 mg was tolerated, so same holds; fix the note."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Mizushima quote verbatim; Song 2008 quote verbatim (epub 2007-09-26). NCT01375179 confirmed TERMINATED, 27 enrolled, no whyStopped, no results."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "same",
+      "proposed_year": 2016,
+      "rule": "Evidence rule 1 (comparison_stated)",
+      "note": "Status right, field wrong: Scott 2016 full text states it: 'also consistent with preclinical disease model observations, RPC1063 induced clinical remission ... in patients with ulcerative colitis.' Set comparison_stated true (Scott epub 2016-04-28). Registry dates check out."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Sanna 2004 (JBC, epub 2004-01-19) quote verbatim in abstract."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Tran 2017 quote verbatim; FDA 209899 MedR S1P3 sentence found. Contra stands for the S1P3-KO model, but the filed monkey CV study (see missing) predicted the HR fall correctly, so the cell's best model changes in 2020."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "IKACh quote, EC50 6x below Cmax, and -3.3 to -19.4 / -7.3 to -9.4 bpm all verbatim in the 216956 review. The study names etrasimod by its early code AR401959, so it may predate etrasimod FIH; still a retrodiction against fingolimod. Retro is defensible."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Monkey CV quote verbatim in bundled 209899 SumR. Untested opener at 2012 proxy (IND-enabling, before ozanimod FIH) acceptable; prediction_level class fine.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim in 209899 SumR, same paragraph as the monkey study, so comparison_stated true holds. Study is ICH safety pharmacology run on ozanimod before its patients, not motivated by them: same, not retro. Partial (BP opposite) correctly flagged.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "NOEL 350 mg/kg/day dog CV quote verbatim in 216956 review. Untested opener at 2014 proxy fine.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 7,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "proposed_year": 2023,
+      "rule": "Decision 4 safety row (#13, #54, #89): silence is contra only if the harm was measurable in the model species at the time",
+      "note": "Quotes verbatim, but dogs do not show S1P1 first-dose bradycardia: Bolli 2013 PLoS One (PMID 24069292) says HR/AV effects 'not observed in mice, rats, and dogs with selective S1P1 receptor modulators'. Silence not askable, so untested with note, not contra.",
+      "checked_by": "CHECKER_BRIEF_v3 / models",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Decision 4 safety row: silence is contra only if the harm was measurable in the model species. Bolli 2013 (PMID 24069292, pre-2014) confirms dogs do not show S1P1 first-dose HR/AV effects, so dog silence was not askable: untested with note."
+    },
+    {
+      "cell": "safety",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Battery quote verbatim in 216956 review. Untested opener at 2014 proxy fine; review also gives 59% inhibition at 3 uM, IC50 ~4-12x Cmax, as the note says.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "TQT quote verbatim in 216956 review (healthy volunteers, 4 mg). hERG run pre-trial, so same not retro. Low confidence right: 4-12x total-Cmax margin is soft, though high protein binding widens the free margin.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 10,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "'The lung was a prominent target of ozanimod in rat and monkey' verbatim in 209899 SumR. Untested opener at 2012 proxy fine.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "safety",
+      "index": 11,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Zeposia 2020 label FEV1 quote verbatim (bundled lbl). Animal tox predates patients, so same not retro; paired with different readouts (histology vs spirometry), direction_only and low confidence appropriate.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    }
+  ],
+  "missing": [
+    "Safety, model_change same, 2020, comparison_stated true, tier 2, imported_from MS (MONDO:0005301), model_filed true: FDA ozanimod Summary Review 209899 (2020) says 'The applicant provided data from a cardiovascular safety study in cynomolgus monkeys that demonstrated dose-dependent cardiovascular effects of ozanimod. Heart rate decreased by 20%...' and 'Reduction in heart rate and increased blood pressure are seen in patients treated with ozanimod.' The filed system predicted the bradycardia that the S1P3-KO mouse missed.",
+    "Safety, contra for etrasimod, 2023: dog CV safety pharmacology was silent (NOEL 350 mg/kg/day, FDA 216956 review) but patients' heart rate fell up to 19.4 bpm. The drafter mentions this only in a judgement. It is a different model (dog telemetry) and should be its own entry.",
+    "Efficacy patient_trials: NCT02447302 (etrasimod OASIS) has no DOI; Sandborn 2020 Gastroenterology doi 10.1053/j.gastro.2019.10.035. No change to status.",
+    "Searched for unreported UC failures of a member drug: none found. Ozanimod and etrasimod met their UC primary endpoints; mocravimod's UC phase 2 was terminated with no reason or results.",
+    "Safety, parallel track for the dog-silence gap: conscious guinea-pig telemetry (ponesimod, product_in_model false, non-member proxy) reproduced S1P1 first-dose HR fall and AV delay that rats and dogs did not; Bolli et al. 2013 PLoS One doi 10.1371/journal.pone.0074285 (PMID 24069292), compared with healthy-volunteer ponesimod data. No UC-patient comparison found, so at most an untested/retro note."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Decision 16 and margin_stated: the etrasimod NOAEL studies were IND-enabling (pre-trial), but the multiple at MRHD (738x/446x) is stated only in the 2023 review, after the trial. Does a pre-trial filed NOAEL count as a margin 'stated before the trial'?",
+    "Decision 16: the rat liver findings fell at >1000x MRHD, but patients at 2 mg had ALT elevations (label 5.3) that did not block dosing. Is that a misplaced-margin dose contra, a safety entry, or neither?",
+    "Can a retro entry (safety 3, model_change true) follow a contra and be drawn as the cell's latest status, or does a contra stand until a prospective prediction holds?",
+    "When the drafter's chosen model (S1P3-KO mouse, a design rationale in the literature) differs from the filed safety system (cynomolgus CV study), which one is 'the model the class relied on' for the safety cell, and do both get entries?",
+    "Scott 2016 was received Aug 2015, after the TOUCHSTONE topline (Oct 2014 press release), but the mouse colitis experiments probably predate the trial. Is a model paper published after the patient result a retrodiction when the experiments were run earlier?",
+    "Prediction_level class: ozanimod's monkey CV study (c.2012) and etrasimod's hERG/tox ran before their own patients but after fingolimod's class bradycardia was known (2006+). Is a filed product-specific study run after the class result a retrodiction at prediction_level class? Scored here as prospective (same) because it was not motivated by the patient result."
+  ]
+}

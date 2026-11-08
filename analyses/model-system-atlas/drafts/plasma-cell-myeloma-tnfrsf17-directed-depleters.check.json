@@ -1,0 +1,144 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/plasma-cell-myeloma-tnfrsf17-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Carpenter 2013 (PMID 23344265, epub 2013-01-23) resolves; quote verbatim in abstract. Opening untested at model first use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ali 2016 (PMID 27412889) quote verbatim in abstract; NCT02215967 results first posted 2019-10-08 confirmed. Same NCI CAR-BCMA construct as Carpenter. Plasma-cell clearance is close to an efficacy readout; downstream tier acceptable."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abecma SBRA (fda.gov/media/147627) quote verbatim. Mouse strain is redacted (b)(4) in the SBRA, not named NSG; NSG comes from Carpenter. No cell-dose target carried to patients; untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tai 2014 (PMID 24569262) quote verbatim in abstract. FDA Blenrep review shows dose chosen from DREAMM-1 responses, no xenograft exposure target or stated tolerability margin; decision 16 does not apply. Untested holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Carpenter 2013 abstract quote; correct opening entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Lonial 2019 (PMID 31859245, epub 2019-12-16) quote verbatim; primary endpoint ORR by IRC confirmed; NCT03525678 results posted 2020-04-28 confirmed. KarMMa quote verbatim (PMID 33626253, primary ORR). DREAMM-3 (failed PFS, HR 1.03, GSK 2022-11-07) left unscored as active-comparator question; defensible but see rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim ('No ABECMA-related adverse findings'); immunodeficient mice cannot show CRS/ICANS, so silence is not a miss. Untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA Blenrep multidisciplinary review (761158) quote verbatim; review also states rabbits showed similar corneal effects and drug does not bind rat BCMA, supporting ADC/platform split."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "71%/44% keratopathy quote verbatim in FDA review. Review says rat/rabbit corneal necrosis was 'considered non-adverse'; harm predicted in kind, severity under-called. Same/direction_only is a defensible reading; see rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Carreño 2026 (PMC13238829, CPT:PSP, published 4 Jun 2026) abstract sentence verbatim. Opening untested at first public use, class level, 2026: correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Full text: KVA model fitted on 959 pts incl. DREAMM-7/-8 (DREAMM-7 38% of observations) and verified on 200 DREAMM-7/103 DREAMM-8 pts; VGPR+ 62.0/62.0, 60.2/68.0. Run after results known: retro, not same.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Friedman 2018 (PMID 29641319, Hum Gene Ther May 2018) quote verbatim in abstract. Panel data preceded CRB-401 (Raje cites it as preclinical, ref 28), so model_filed true holds; 2018 is a publication proxy for first use.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "6",
+   "note": "Quote verbatim in Raje author manuscript (PMC8202968). Status same stands (preclinical data predate trial, not retro). But ORR 100% vs 91% by BCMA level was public at ASH Dec 2017 (Berdeja; ASH Clinical News), so year 2017.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "DREAMM-3 primary PFS miss (HR 1.03) was public 2022-11-07 via GSK press release / SEC 6-K (https://www.sec.gov/Archives/edgar/data/1131399/000165495422014760/a4558f.htm); patient_trials cites only the 2026 final analysis DOI with a title as its quote and should cite the 2022 record, the first public date.",
+  "Ide-cel insertional-oncogenesis prediction: Abecma SBRA states integration-site analysis 'does not preferentially integrate in or near genes of concern for oncogenic transformation' and an IL-2-independent growth assay 'showed no signs of uncontrolled cellular proliferation' (ex_vivo model). FDA required a class boxed warning for T-cell malignancies, including CAR+ cases, on BCMA- and CD19-directed CAR-T incl. Abecma (Jan-Apr 2024; https://www.onclive.com/view/fda-requires-boxed-warning-for-risk-of-t-cell-malignancies-with-approved-car-t-cell-therapies). A candidate cell-therapy safety entry (contra or untested, depending on whether any ide-cel case was CAR+); not verified at product level here."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: when the model showed the harm but its own report called it non-adverse (Blenrep corneal necrosis 'considered non-adverse') and patients had severe keratopathy, is that a predicted harm that held (same, direction_only) or a stated 'no adverse finding' contradicted (contra)? Rules decide neither.",
+  "Efficacy: a confirmatory phase 3 vs an active comparator that misses (DREAMM-3) while single-agent activity is reproduced: is the comparator 'a condition the model never tested' (untested) or a primary-endpoint miss (contra)? The rule list names untested only when the trial source attributes the result to untested conditions; GSK attributed it to nothing.",
+  "Engagement: may a phase 1 whose primary endpoint is safety supply the engagement entry when its readout (marrow plasma-cell clearance) is effectively the efficacy readout of the xenograft?",
+  "Class-level post-marketing harms (CAR-T T-cell malignancy boxed warning) shared with CD19 products: score in this context or import?",
+  "Efficacy index 4 (ide-cel response by tumour BCMA level): a patient-selection prediction scored on a phase 1 subgroup of a secondary end point (ORR; primary was safety) with endpoint_role null. Should such patient-level selection entries require endpoint_role poc_gate, or are they exempt from the secondary-endpoint rule?",
+  "Dating when the patient result (ASH 2017 abstract) is public before the model's first publication (Friedman 2018) but the model data were filed pre-trial: may the opening untested entry be dated earlier than its publication to keep the strip ordered?"
+ ]
+}

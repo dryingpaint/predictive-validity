@@ -1,0 +1,389 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/breast-cancer-parp1-2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Donawho 2007 (PMID 17473206) resolves; Ki sentence verbatim in abstract. Untested at model first use is right; MX-1 plus syngeneic models form one track."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "1",
+   "note": "Full text (PMC2739635) read: paper states a mouse-derived 0.21 umol/L PAR-inhibition target, reached in all cohorts, and compares xenograft vs patient recovery, so comparison_stated should be true. Cohort had no breast patients and included lymphomas; 'solid tumours' is wrong."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Temozolomide potentiation sentence verbatim in abstract; opens untested 2007."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Same holds: Kummar states the preclinical plasma target (0.21 umol/L, mouse PAR studies) was exceeded at every dose. Set comparison_stated true; magnitude could be within_2x on Cmax. Patients not breast, allowed for dose."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Interpretation sentence verbatim. Derived contra is correct: PD target reached (50 mg BID vs 25 mg single-dose PAR inhibition), no later higher-dose success in unselected TNBC, so 'reached, failed' not 'target too low'."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "MX-1 sentence verbatim; untested at first use."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2016,
+   "rule": "4",
+   "note": "Rugo 2016 full text: 'Our design did not evaluate the individual contributions of veliparib and carboplatin.' The model's prediction (veliparib adds to carboplatin) was never isolated; the pCR gain is attributable to a condition the model did not test. Untested, source_calls_it unresolved.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: decision 4 states the untested-conditions rule for contra only (#35, #72); #57 covers disclaimed failures; the checker brief extends it to same. Is a met primary with the class drug's contribution unisolated same or untested?"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Contra stands: veliparib added nothing to carboplatin (53% vs 58%). Donawho's potentiation claim spanned BRCA-wt models, and Loibl does not attribute the miss to genotype. Geyer 2022 and Han 2018 quotes verbatim; registry dates verified; abstract-only for gBRCA subgroup."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Rottenberg 2008 (PMC2579381) resolves; sentence verbatim. Sibling drug (olaparib) in model, product_in_model false is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3",
+   "note": "Somlo 2017 sentence verbatim; NCT01149083 results posted 2025-08-15, epub 2017-03-29 earliest. Single-arm ORR in the GEMM-named genotype: same, direction_only, is the right call."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "PFS sentence verbatim; NCT02163694 results 2022-04-04, epub 2020-08-27. BROCADE 2018 (missed PFS, ORR significant) is untested under decision 4, not contra, so track stays same. strengthens is defined for a second miss, not a second match."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "ORR sentence verbatim; NCT03575065 results 2022-09-07 precede epub 2022-12-02, year 2022 right. Same flag caveat as index 6."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Full text (PMC7434893): DRP retrodiction in 13 mixed-tumour patients; both gBRCA breast patients progressed. NCT03562832 completed 2024-08, no results; web search found no 2X-121 breast release (hits were LiPlaCis 2023, a 2017 'planned study' note). SEC filings not checked."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Sentence verbatim. Full text: toxicity judged on weight loss, apathy and necropsy only; no haematology measured. Paper also states increased cisplatin nephrotoxicity with AZD2281, a stated combination prediction the draft does not score."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Contra supported as askable silence: mice can show cytopenias, Rottenberg measured none yet claimed 'excellent therapeutic index'; pamiparib monotherapy gave grade 3+ haematologic TEAEs, 64.8% dose reductions. Low confidence is right; see rule question 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Daemen 2012 (PMC3429780, epub 2012-08-09) resolves; sentence verbatim in full text. Opening untested for an olaparib-built signature, product_in_model false, prediction_level patient, is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "4",
+   "note": "Quote near-verbatim (full text); QBE pre-specified. Arm added carboplatin to control; Wolf defers 'carboplatin alone', BrighTNess found veliparib adds nothing, Tovey 2023 shows DDR signatures predict carboplatin. PARPi prediction never isolated: untested, unresolved; mirrors adjudicated efficacy[2].",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: as efficacy[2]: decision 4 states the untested-conditions rule for contra only (#35, #72); the arm co-added carboplatin, so the PARPi prediction is unisolated. Is a met pre-specified interaction same or untested? Same, consistent with efficacy[2]."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "McGonigle 2015 (PMC4747407) resolves; PD sentence verbatim. Opening untested for a member drug's own xenograft is right; MX-1 chemopotentiation folded into one track is one system.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3",
+   "note": "Plummer 2020 (PMC7434893, epub 2020-06-11) resolves; sentence verbatim. Mixed-tumour patient PBMC PAR allowed for engagement; proximal, direction_only right; Plummer cites the xenograft PD without comparing, so paired is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Sentence verbatim. Full text: '30 or 100 mg/kg was well-tolerated without any significant body weight loss or deaths (data not shown)', so the model's margin is a data-not-shown sentence; opening untested is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim. MTD 600 mg QD is the PD-saturating dose; DLTs 1/6 at 600 (anaphylaxis), 4/6 at 800 (fatigue). No toxicity at or below the effective exposure, so decision 16 same; low confidence right given data-not-shown mouse tolerability.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Abstract sentence verbatim (PMC4747407). Untested right: Plummer's two gBRCA breast progressors are n=2 in a mixed escalation; NCT03562832 has no results or paper and the prior checker found no 2X-121 breast release.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Sentence verbatim (Discussion). A stated prediction (no TNKS-type intestinal toxicity) a mouse can test. Full text also reports body-weight loss with the TMZ combination, a combination prediction the draft does not score.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Quote verbatim. No intestinal DLT (DLTs: anaphylaxis 600 mg, fatigue 800 mg); diarrhoea 29% any grade; rash, photosensitivity, chromaturia unpredicted. Same on the stated intestinal prediction with partial is defensible; imported mixed-tumour phase 1 allowed for safety.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Xiong 2020 (PMC7350150, epub 2020-07-08) resolves; sentence verbatim. Opening untested; the IND-era xenograft published after the phase 1 start (2015) but before Lickliter (epub 2021) is not a retrodiction, proxy year noted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Lickliter 2022 (PMC8854719) epub 2021-11-18, year 2021 right; sentence verbatim. PBMC PAR plateau ~80% from 10 mg BID in mixed solid tumours; same, proximal, direction_only.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Sentence verbatim (figure legend; text: 'No body weight loss was observed during the treatment'). Opening untested; the tolerated-at-efficacious-dose statement at 1.6-12.5 mg/kg BID is the only margin stated.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim. PAR plateau 10 mg BID vs RP2D 60 and MTD 80 mg BID; DLTs were grade 2 nausea (40-80 mg) and grade 3 fatigue (120 mg); nothing at or below the effective exposure, so decision 16 same with margin_stated true.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "8",
+   "note": "Xiong 2020 sentence verbatim (Discussion). Opening untested; genotype-selected single-agent regression as a patient-level prediction on pamiparib's own system, distinct from the olaparib GEMM, is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Xu 2023 abstract quote verbatim; registry results 2022-09-07 precede epub 2022-12-02, year 2022 right. Single-arm gBRCA ORR scored same, direction_only, consistent with efficacy[5] and [7] on the GEMM track.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "4",
+   "note": "Sentence verbatim (figure legend). Full text: body weight twice weekly was the only tolerability readout; no haematology, 'tolerat' absent. Opening untested fine; whether this silence is askable is rule question 2.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2021,
+   "rule": "7",
+   "note": "Quote verbatim (abstract). Contra follows the safety[2] reading pending rule question 2. Lickliter 2022 (epub 2021-11-18: grade>=3 anaemia 24.8%, neutropenia 5.9%, haematologic dose reductions 23.8%) is the first admissible patient dataset; date 2021 with imported_from, as E7449 safety[4] does.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "Bui 2026 (PMC13522806, epub 2026-08-06) resolves; AUC sentence verbatim. Opening untested in the comparison year with the model entry first on the same-year collision is right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Quote verbatim. Built after I-SPY 2, BrighTNess and Geyer 2022: retro, not same. Full text: sensitive TORG146 responded to cisplatin with or without veliparib; concordance is with a patient-trained classifier, so low confidence and partial are right.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "PARPi-7 and BRCA1ness cell-line-derived expression signatures, pre-specified and tested against pCR in the I-SPY 2 veliparib/carboplatin arm (patient-level, in_silico): 'PARPi-7, BRCA1ness, and MP1/2 specifically associated with response in the VC arm but not the control arm.' Wolf 2017, NPJ Breast Cancer, https://doi.org/10.1038/s41523-017-0025-7 (PMC5572474). Same carboplatin confound as efficacy[2].",
+  "2X-121 (E7449)'s own BRCA-deficient xenografts: 'single agent had significant antitumor activity in BRCA-deficient xenografts' and 'the lack of toxicity'. McGonigle 2015, Oncotarget, https://doi.org/10.18632/oncotarget.5846 (PMC4747407). A member drug's own model with no track; opens untested 2015 (breast patient data unreported; Plummer 2020's two gBRCA breast patients progressed).",
+  "Pamiparib's own preclinical package (Xiong 2020, J Med Chem, https://doi.org/10.1021/acs.jmedchem.0c01346: PARP1/2 IC50 1.3/0.9 nM, cellular PARylation IC50 0.2 nM, brain penetration; xenograft efficacy in full text, not checked). Paired with Xu 2023 it is a member drug's own model with no track; the draft scores pamiparib on the olaparib GEMM only.",
+  "Kummar 2009's mouse PK/PD model (0.21 umol/L plasma target from single-dose PAR studies in mice) is stated in the source, not a pairing; same MX-1 track, so a field fix (comparison_stated true) rather than a new track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When a trial's own authors state the design cannot separate the class drug from a co-added chemotherapy (Rugo 2016: 'did not evaluate the individual contributions of veliparib and carboplatin'), is a met primary endpoint untested (prediction never isolated) or same with source_calls_it unresolved? Decision 4 states the 'conditions the model never tested' rule only for contra.",
+  "Does an efficacy GEMM that reports 'no signs of toxicity' from weight, behaviour and necropsy alone count as askable silence on haematological toxicity (contra when patients show cytopenias), or must a scoreable safety prediction come from a study that measured the harm?",
+  "A BRCA-deficient xenograft's chemopotentiation tested in a biomarker-unselected trial (BrighTNess, gBRCA stratified, roughly 15%) that fails overall with the genotype subgroup underpowered: contra on the model, as drafted, or untested under the 80% biomarker rule read in reverse? Confirmed contra here because Donawho's claim also covered BRCA-wt models.",
+  "strengthens: true is defined (decision 7, #127) for a second miss that removes the first miss's excuse; the draft uses it for repeat matches (BROCADE3, pamiparib). Should repeat matches be entries or go to patient_trials?"
+ ]
+}

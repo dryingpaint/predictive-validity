@@ -1,0 +1,214 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/alzheimer-disease-anti-app-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 16707786 resolves to Wilcock 2006; quote verbatim in abstract. 2H6 as ponezumab's murine parent accepted (product_in_model false)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 29067345 (PET-PIB study); quote verbatim. NCT00945672 confirmed as this study: 36 enrolled, 10 and 7.5 mg/kg arms, Swedish sites; results posted 2024-04-19. Plaque unchanged vs mouse fall: contra holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Swanson 2021 quote verbatim; PharmR AD-TR-007 and Lord 2009 abstract both say insoluble Abeta and plaque unchanged in plaque-bearing mice. Contra is defensible, but the model's main readout, protofibrils, was never measured in patients (see rule question)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 22787053 Adolfsson 2012; quote verbatim. No human exposure target stated in the abstract."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cummings 2018 (PMID 29695589) quote verbatim. 2014 date matches AC Immune release of 16 Jul 2014 (ABBY missed co-primaries); CREAD futility and registry date 2020-07-16 confirmed. Scoring dose with no model-stated target is a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wilcock 2006 abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "ABBY primaries ADAS-Cog12 and CDR-SB confirmed in the abstract and on NCT01343966, with no posted results. Ponezumab NCT00722046 primary is safety (registry), so it rightly stays in patient_trials. Registry date 2022-11-07 confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2022,
+   "rule": "8",
+   "note": "The class relied on mAb158's protofibril lowering, not behaviour. Lord 2009: place learning 'depended neither on treatment nor transgenicity', so the test had no deficit to rescue. A null from that test is not a no-benefit prediction. Cell stays contra from entry 2.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 8 and rule 4 (#73): lecanemab advanced on tg-ArcSwe protofibril lowering; the filed fear-conditioning null (W-20100159) and Lord 2009 maze, with no transgenic deficit, were not relied on as a prediction. A non-relied-on insensitive test is untested."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wilcock 2006 abstract."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. The phase 1 claim gives no numbers (data-not-shown style), so confidence should be low, not medium. The microglia assays are in vitro, not ex_vivo patient cells. ABBY's 1 ARIA-E case in 431 supports 'same'."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Landen 2017a quote verbatim; registry date confirmed. The judgement wrongly says no microhemorrhage model was run for lecanemab: PharmR/SumR show mAb158 studies in Tg2576 and APPArcSwe were run despite the 2014 waiver (see missing)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Madrasi 2021 (PMID 33938131, PMC8478725 full text) quote verbatim. Opening untested entry at 2021 first use; class level, crenezumab in model. Model calibrated post hoc to published PET data.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC8478725. Paper: model calibrated to 'observed PD including Aβ plaque changes measured by PET'; only aducanumab 1-3 mg/kg was 'a priori'. BLAZE PET (Cummings/Salloway 2018, PMC6146627) preceded it, so retro is correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Söderberg 2022 (PMID 36253511, PMC10119362) quote verbatim in abstract and full text. Epub 17 Oct 2022. Opening untested entry; ex_vivo for a cell-free binding assay accepted.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC10119362 full text. Epub 17 Oct 2022, after Study 201 (2018/2021) and Clarity AD topline (27 Sep 2022): retro, not same. Hedged 'may explain' and comparators are non-members; low confidence fits.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Söderberg 2024 (PMID 38740836) quote verbatim in abstract. Opening untested entry at 2024 first use; every ARIA-E rate compared was already published.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; crenezumab 'negligible CAA fibril binding' with no ARIA-E also stated. All ARIA-E rates (Clarity AD 12.6%, 2022) predate it: retro correct.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR p.27 quote verbatim. W-20090278 and W-20100295 are short-term protofibril studies, not the microhemorrhage studies, but they do date first Tg2576-mAb158 use to ~2009; model_filed wording should say so. Untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label (Jan 2023) ARIA-H 6% vs 5% verbatim; PharmR/SumR: no mAb158 microhemorrhage in Tg2576 (4 months, to 50 mg/kg/week). Same holds, assuming the mouse study preceded Study 201 readout; its run date is not stated in the review, only its 2023 publication.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jul 2023 label (s001) quote verbatim: ARIA-H 17% (152/898) vs 9% (80/897); label adds no increase in isolated ARIA-H. Mouse null from SumR line 347. Contra at medium confidence holds; excess riding with ARIA-E is a caveat, not a reversal.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "safety, lecanemab, contra (model_id tg-arcswe-mab158, plus Tg2576 with mAb158), year 2023. FDA SumR, BLA 761269 (sources/761269/761269Orig1s000SumR.txt, line 346): 'In studies specifically conducted with mAb158 to microhemorrhage in Tg2576 and APPArcSwe transgenic mice, no mAb158-related microhemorrhage was seen.' PharmR studies AD-TR-009 (3 months) and the 4-month Tg2576 study are consistent. Patients: Clarity AD (van Dyck 2022, doi 10.1056/NEJMoa2212948) had ARIA-E 12.6% (abstract) and excess ARIA-H in the full text; Study 201 had ARIA-E 10% vs 1% in the Jan 2023 label (ARIA-H 6% vs 5%, no excess). The model-side numbers were first public in the Jan 2023 FDA review. Under rule 6 this contra likely sets the safety cell's latest status.",
+  "efficacy, lecanemab (only if the protofibril model is scored as predicting benefit): Study 201 missed its 12-month Bayesian ADCOMS primary (64% vs the 80% bar; Eisai release Dec 2017; Swanson 2021, doi 10.1186/s13195-021-00813-8), before Clarity AD met its primary in 2022."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement: when the model's main PD readout (brain protofibrils) was never measured in patients, may the cell be scored on a secondary readout that the model said would NOT move (plaque), where the patient readout moved more than the model predicted? Or is it untested?",
+  "Dose: when no member's model stated a human exposure target, does 'reached, failed, abandoned' still give dose contra derived_from efficacy, or is dose untested because there was no target to compare?",
+  "Safety and best model: rule 6 makes one drug's contra override another's same within one model. Ponezumab's Tg2576/2H6 model matched (2017) and lecanemab's mAb158 model missed ARIA (2023). These are different models of one class, so which status does the cell show after 2023?",
+  "Safety: ARIA-E (edema) cannot be seen with histology in mice. Does a mouse study that reported only microhemorrhage count as silent on ARIA-E (not a miss), leaving only excess ARIA-H in Clarity AD to score?",
+  "Efficacy: Study 201 favoured drug in direction (64% probability of a 25% effect) but missed its Bayesian gate. Against a model predicting benefit, is that a primary-endpoint miss (contra) or a directional match?"
+ ]
+}

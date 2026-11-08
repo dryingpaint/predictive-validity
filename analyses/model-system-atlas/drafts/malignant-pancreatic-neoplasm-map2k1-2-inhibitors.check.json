@@ -1,0 +1,173 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/malignant-pancreatic-neoplasm-map2k1-2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "lint": "0 findings, no unknown keys (members key accepted; tile members = pimasertib, refametinib, trametinib; mechanism_key, modality_groups, class_share 0.041 match tiles.json; tile area is 'oncology', draft writes 'Oncology')",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "DOI resolves (BMC Cancer, OA, PMID 20920162); quote verbatim in abstract. Untested opener holds. FDA PharmR study UH2008/00051/02 ran trametinib in pancreatic xenografts with pERK IHC, so the track's model_first_use_year could be 2008 rather than 2010."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "engagement definition",
+   "note": "Lancet Oncol DOI resolves; quote verbatim (abstract). Gilmartin 2011 resolves. FDA ClinPharmR confirms dose-dependent tumour pERK/Ki67/p27 inhibition at 0.5-2 mg (MEK111054). Mixed-tumour phase 1 is admissible for engagement. Same holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Quote verbatim in abstract; opener holds. Same first-use caveat as engagement: trametinib pancreatic xenograft PK/PD and the 3 mg/kg mouse MTD sit in FDA PharmR study UH2008/00051/02 (2008 study code)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "16",
+   "note": "Quote verbatim; the paper itself sets exposure against the preclinical target, so comparison_stated true. ClinPharmR p.11 confirms the 10.4 ng/mL target exceeded at 2 mg; PharmR confirms mouse MTD 3 mg/kg vs 0.3-1 mg/kg efficacious. Decision 16 margin holds."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "dose table: reached, failed, abandoned",
+   "note": "EJC DOI resolves; quote verbatim. NCT01231581 results posted 2013-09-26 (verified), so 2013. Contra derived_from efficacy, counted once. Walters 2013 tested trametinib alone and with lapatinib, not with gemcitabine (rule question 1)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6",
+   "note": "Quote verbatim (abstract); opener holds. The quote is about the rapamycin combination; the abstract's single-agent sentence ('alone or in combination with rapamycin showed significant growth inhibition in all the 3 models') fits the stated single-agent prediction better."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "contra; efficacy primary endpoint",
+   "note": "Registry primary OS, phase 2, n=160, results 2013-09-26 verified; quotes verbatim; NCT01016483 (2017-06-23) and NCT01251640 (no results) verified. Contra holds. '5/5 trametinib PDX' is not stated in Walters' abstract; add-on design is rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "10",
+   "note": "MCT DOI resolves (epub 2014-11-05; Crossref created 2014-11-07); quote verbatim. Abstract says 'mutant Kras-driven GEMM', p53 status unstated, so 'KPC-type' is inference. Received date unobtainable (AACR blocked), so retro rests on publication dating; rule question 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "evidence rule 1-2",
+   "note": "IJC DOI resolves; quotes verbatim; NCT01016483 phase II primary PFS, results 2017-06-23. Contra holds. Model paper identifiable: Vena 2015 CCR 10.1158/1078-0432.CCR-15-0485 (pimasertib + gemcitabine, orthotopic model, epub 2015-07-30): set model_src tier 1, comparison_stated false (rationale cite = pairing)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety definition; imported_from",
+   "note": "Bundle PharmR line 3992 carries the quote verbatim; dog ophthalmoscopy was done (cornea opacity, adnexal discharge only) while patients had CSR/RPED/RVO, so contra on a harm the species could show. Pimasertib ocular 28.9% vs 4.8% verified. Mouse echo retrodiction rightly not credited."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "6; 8 (#108)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "DOI resolves (PMID 21245089, epub 2011-01-18); quote verbatim in abstract; untested opener and patient level hold. PharmR lines 775-779 file the sponsor's panel ('preponderance of ras or raf mutants among the highly sensitive lines', UH2007-00097): model_filed should be true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7; 10",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "EJC DOI resolves (PMID 24915778, epub 2014-06-07); both quotes verbatim in abstract. NCT01231581 results (2013-09-26) carry no KRAS subgroup, so 2014 holds. Model (2011) predates the result: not retro. Contra holds; add-on design is rule question 1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "7; 8 (#16, #34); 11",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "Target Oncol DOI resolves (PMID 27975152; Crossref online 2016-12-14, print 2017-02): year 2016 holds; quote verbatim, abstract only (Springer paywalled). Iverson 2009 abstract (10.1158/0008-5472.CAN-09-0679) claims no genotype sensitivity, so the proxy pairing stands. Source calls the reversal a 'trend' (rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7 (#127)",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "note": "IJC DOI resolves (PMID 29756206, epub 2018-08-09); both quotes verbatim in abstract. NCT01016483 results (2017-06-23) carry no KRAS data, so 2018 holds. Contra with strengthens holds; KRAS assay (tissue vs ctDNA) unstated in the abstract."
+  }
+ ],
+ "missing": [
+  "NCT02704156 (results posted 2021-02-16): randomised phase 2, n=170, KRAS-mutant PD-L1-positive locally recurrent PDAC after resection, SBRT + pembrolizumab + trametinib 2 mg vs SBRT + gemcitabine, primary endpoint OS; HR 0.69 (95% CI 0.51-0.95), p=0.021 in the republished report Zhu 2022 Lancet Oncol 10.1016/S1470-2045(22)00066-3 (the 2021 report 10.1016/S1470-2045(21)00286-2 was retracted and republished; notice 10.1016/S1470-2045(22)00064-X). A member-drug randomised primary-endpoint readout in this disease that the draft does not show. The arms differ in three components, so it probably scores untested on the class question, but it belongs in patient_trials, and any preclinical basis pairing MEK inhibition with PD-1 blockade and radiation in a KRAS GEMM would be a track entry.",
+  "Vena 2015 Clin Cancer Res 10.1158/1078-0432.CCR-15-0485 (epub 2015-07-30): pimasertib + gemcitabine 'caused significant tumor growth delays in an orthotopic pancreatic cancer model'. This is the model side the draft left null for Van Cutsem 2018, and the only member-drug model in the context that tested the add-on-to-gemcitabine design the trials used; it predates the 2017 results posting, so it is a prospective pairing, not a retrodiction.",
+  "Lapatinib + trametinib phase I, Cancer Chemother Pharmacol 2020 10.1007/s00280-020-04066-4: the Walters 2013 PDX combination prediction did reach patients (34 enrolled, 3 pancreatic); dose-limiting toxicities set the RP2R at trametinib 1 mg continuous, below the 2 mg single-agent dose. A dose-cell comparison for the xenograft track (dose table row 'never reached because of toxicity; no stated margin' -> untested) that the draft's judgement says never reached patients.",
+  "GSK2256098 (FAK inhibitor) + trametinib 0.5 mg phase II in advanced PDAC, J Gastrointest Oncol 2022 10.21037/jgo-22-86: primary endpoint clinical benefit, 1 of 11 evaluable, 'not active in unselected advanced PDAC'. A member-drug pancreatic trial the draft does not show; MEK inhibition is not isolated and the trametinib dose was sub-therapeutic; its model side (KPC FAK/MEK work) was not identified in this run.",
+  "Trametinib 2 mg + gemcitabine phase I/Ib in Japanese patients, Invest New Drugs 2015 10.1007/s10637-015-0270-2 (NCT01324258): interstitial lung disease in 3 of 5 pancreatic patients, one fatal. A harm in this disease on the context's regimen; whether the rat/dog lung findings in NDA 204114 predicted it was not checked here. Candidate safety entry for the tox-species track.",
+  "Checked and excluded: patient-derived organoids (Front Immunol 2026 10.3389/fimmu.2026.1760379) screened trametinib combinations in PDOs and matched PDXs, but compared organoids with patients only for gemcitabine/paclitaxel, so there is no MEK-class patient comparison and no missing PDO track.",
+  "[CHECKER_BRIEF_v3 / models] Tox-species-rat-dog track, safety: tier-2 stated comparison in NDA 204114 PharmR lines 400-405 (analyses/model-system-atlas/sources/204114/204114Orig1s000PharmR.txt): 13-week dog study, 'the lymph nodes and lungs were target organs'; lung histopathology 'minimal hemorrhage, mononuclear infiltration, pleural fibrosis, and macrophage accumulation. All findings in the lung were classified as minimal to mild; however, clinically, treatment with trametinib has been associated with cases of interstitial lung disease and pneumonitis.' A regulator's reconciliation counts as stated (safety rule, #79); rat lungs are not named. Disease-specific patient side: trametinib + gemcitabine Japanese phase I/Ib, Invest New Drugs 2015 10.1007/s10637-015-0270-2 (ILD in 3 of 5 pancreatic patients, one fatal). Candidate safety entry (dog lung signal -> clinical ILD, year 2013) on the same track as the 2013 ocular contra.",
+  "[CHECKER_BRIEF_v3 / models] PDX track (pdac-xenograft-pdx), efficacy: a member-drug combination comparison the sweep parked under considered_not_added. Model: Kinsey 2019 Nat Med 10.1038/s41591-019-0367-9 (trametinib + chloroquine regressed patient-derived PDA xenografts; one patient responded to trametinib + hydroxychloroquine). Patients: Witte 2024 J Cancer Res Clin Oncol 10.1007/s00432-024-05954-5 (AIO retrospective, trametinib + hydroxychloroquine, no responses) and Tang 2023 BMC Cancer 10.1186/s12885-023-11464-3 (real-world third-/later-line, trametinib + hydroxychloroquine, no responses); THREAD NCT03825289 terminated without results. Same PDX system, model tested the regimen patients received, model precedes the patient series: a candidate prospective contra entry on the existing track (tier 1 both sides), not a new track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Add-on trials: when the model tested the member drug alone (Walters 2013: trametinib single agent and with lapatinib) and the trial tested drug + gemcitabine vs gemcitabine, does the 'conditions the model never tested' clause make the pairing untested, or does a single-agent growth-inhibition prediction count against an add-on null? (For pimasertib, Vena 2015 tested the combination, so the track keeps a clean contra either way.)",
+  "Retrodiction dating: when the only public dates are publication dates and the paper's own framing shows the trials were still running when the experiments were designed ('several are currently in clinical trials'), does retrodiction follow the epub date (retro, as drafted) or the experiment date (same)? Junttila 2015's received date could not be retrieved.",
+  "The 80% biomarker bar: does 'biomarker is >= 80% of the trial population' mean the fraction measured positive by the trial's assays (64% KRAS-mutant in Infante 2014, cfDNA/archival tissue) or the known prevalence in the disease (~90% of PDAC)? The population label 'Unselected' vs 'KRAS-mutant' turns on this.",
+  "Multi-component regimens: when the member drug is one of three differing components (SBRT + pembrolizumab + trametinib vs SBRT + gemcitabine, NCT02704156, positive OS primary endpoint), is the result ever admissible as same for the class, or always untested with the trial recorded in patient_trials?",
+  "Track openers: the GEMM track has no untested opener at its model_first_use_year. Does a non-member MEK inhibitor in the same KRAS GEMM (Collisson 2012 Cancer Discov with PD325901; Alagesan 2015 with selumetinib, neither re-opened in this run) set model_first_use_year under 'proxy allowed', which would open the track in 2012 rather than 2014?",
+  "[models] model_kind for an immortalised pan-tumour cancer cell-line panel (Gilmartin 2011): the enum offers ex_vivo (patient ex-vivo cells) but no in_vitro; is ex_vivo the intended bin, or does the enum need in_vitro?",
+  "[models] Patient-level prediction when the class result is null in everyone: Infante 2014 and Van Cutsem 2018 show no benefit in any arm and 'KRAS status did not influence' outcomes. Is the genotype-selection prediction contra (the predicted responders did not respond) or untested (no responders in whom selection could show)? Only Van Laethem 2017 (KRAS-wild-type did better) is a true reversal; the track's latest status is contra either way.",
+  "[models] source_calls_it for Van Laethem 2017: the source calls the wild-type advantage 'a trend ... that deserves future investigation' and never names a cell-line panel; is 'miss' admissible as source-stated, or should an un-framed subgroup reversal be 'unresolved'?"
+ ]
+}

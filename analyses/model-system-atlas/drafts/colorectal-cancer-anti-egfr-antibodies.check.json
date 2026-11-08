@@ -1,0 +1,350 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/v3/colorectal-cancer-anti-egfr-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF_v3",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Pedersen 2010 resolves (PMID 20068188); quote verbatim in abstract. Opening untested entry at model_first_use_year 2010 is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2013,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim (abstract). Status same holds. But ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551, online 2013-05-20) already reported 'profound down-regulation of EGFR' in serial biopsies; year should be 2013."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Montagut 2018 resolves (PMC5885274); quote verbatim in abstract; downstream ctDNA readout fits. ESMO 2017 abstract 478O may pre-date it but I could not read whether it reported the ECD ctDNA fall."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gerdes 2013 resolves (PMID 23209031, epub 2012-12-03); quote verbatim in abstract; opening untested at 2012 correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Delord 2014 resolves (PMID 24262587, epub 2013-11-18); quote verbatim in abstract; downstream readout, paired by drafter (comparison_stated false) is right since the abstract only infers MoA."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bleeker 2004 resolves (PMID 15383606); quote verbatim in abstract. NCT00677924 registry confirms AE primary, n=9, no PK/PD outcome: untested is right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Skartved 2011 resolves (PMID 21825041); quote verbatim. Full text read: clinical chemistry measured, no NOAEL, margin or human exposure target stated, so margin_stated false is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2013,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim in full text. 'Reached, worked' row applies at the PoC gate. ASCO 2013 abstract 3551 already showed 9 and 12 mg/kg active with PD confirmed; year should be 2013."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2017,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim (abstract); derived_from efficacy row holds (NCT02568046 and NCT03549338 terminations confirmed on registry). Failure was public 2017-09 (Symphogen release; ESMO 2017 abstract 478O, Ann Oncol 28 suppl 5): year 2017."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gerdes 2013 full text read (AACR): 25 mg/kg weekly dosing sentence verbatim; no human exposure target stated, so untested opening is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Delord 2014 quote verbatim in abstract; 1400 mg regimen; contra derived from the 0/25 efficacy failure follows the dose table. Paz-Ares 2011 clearance plateau not re-checked."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lammerts van Bueren 2006 resolves (PMID 16885363); quote verbatim in abstract. NCT00677924 posted no PK, so untested is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Pedersen 2010 quote verbatim in abstract; opens the Sym004 efficacy track correctly."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2013,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim; full text calls the expansion cohorts 'proof of mechanism and proof of concept', supporting poc_gate. ASCO 2013 abstract 3551 (PR 4/39, 'clearly demonstrating proof-of-concept') makes the year 2013."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "decision 10 (retrodiction scored retro, never same)",
+   "note": "Retrodiction. Dienstmann 2015 (and ASCO 2013) already reported a PR in an EGFR S492R patient; Sanchez-Martin's introduction says the model work was done to characterise that observation, and the G465R case is a phase 1 patient sequenced afterwards.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: S\u00e1nchez-Mart\u00edn 2016's introduction frames the ECD-mutant models as characterising the phase I S492R partial response (Dienstmann 2015); the G465R case is a phase 1 patient. Post-dates and motivated by the patient result, reproduces it: retro, never same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2017,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim (abstract); full text confirms ECD mutations 'not linked to clinical benefit' and the ctDNA subgroup is 'retrospective hypothesis-generating'. Primary OS failure was public 2017-09 (Symphogen release, ESMO 2017 478O): year 2017."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PDX sentence verbatim in PMC full text (eFigure 11, Supplement 2). Separate track, retrodiction true, status retro is correct under decision 10."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gerdes 2013 full text: xenograft superiority sentence and 'first-in-class treatment of patients with KRAS-mutated tumors' both verbatim; untested opening correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Delord 2014 abstract: 'The primary end-point was tumour response'; 0 objective responses, SD 40%, in 25 KRAS-mutant patients. Contra on the model's stated KRAS-mutant prediction holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves to ASCO GI 2015 abstract 669 (GAIN-C); quote and both HRs verbatim; NCT01326000 has no posted results. Contra holds, but tier of a meeting abstract is a rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bleeker 2004 quote verbatim. NCT00677924: 9 patients, AE primary, terminated 'Due to changes in portfolio review'. Untested rather than contra is right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Skartved 2011 quote verbatim (abstract). Full text: rash dose-related, blistering at 36/24 mg/kg; clinical chemistry measured, magnesium never mentioned; no NOAEL."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_year": 2013,
+   "rule": "rule 6 (dating: earliest public date)",
+   "note": "Quote verbatim; cynomolgus-comparison sentence found in full text, so comparison_stated true holds. ASCO 2013 abstract 3551 reported grade 3+ rash 62% and hypomagnesaemia 38%: year 2013. Hypomagnesaemia silence is a rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Br J Cancer 2014;110:1221 (PMC3950873) resolves; quote verbatim (abstract Results); online 2014-02-04. Untested opening at 2014 holds. Roche Diagnostics and Roche Glycart co-authored and funded the ex-vivo study.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "rule": "decision 10 (a model run after the patient result was known is retro, never same)",
+   "note": "Quote verbatim (abstract). NK decline was public in Paz-Ares 2011; Delord accepted 2013-10-15, online 2013-11-18, before the ex-vivo paper (received 2013-10-24, online 2014-02-04), whose authors Oppenheim and Farzaneh co-wrote Delord. Retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: the ex-vivo result (online 2014-02-04) post-dates the patient NK decline (Paz-Ares 2011; Delord online 2013-11-18), and its authors (Oppenheim, Farzaneh, Passioukov) co-wrote Delord, so hindsight holds on either reading of 'motivated by'. Reproduces it: retro, never same."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Oncotarget 2017;8:67592 (PMC5620195) resolves; quote verbatim (abstract); online 2017-06-27. No Sym004 patient study read MET/AKT/MAPK phosphorylation; untested holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (Figure 6 legend); methods confirm 50 mg/kg and cetuximab 1 mg twice weekly for 30 weeks, no PK and no human target. margin_stated false and untested hold.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PMC manuscript reads '7.9 (95% CI, 6.5-9.9) months', units placed differently, figures identical. Year 2017 verified: Symphogen release 2017-09-11, ESMO 2017 oral 478O (Ann Oncol 28 suppl 5). Online 2018-02-08, not 04-12; NCT03717038 withdrawn, NCT03549338 and NCT02568046 terminated.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract Conclusions). GAIN-C (NCT01326000) recruited from 2011 and read out 2015-01, after the model, so the combination prediction opens untested at 2014.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ascopubs page (via Firecrawl) resolves to ASCO GI 2015 abstract 669, Bridgewater; conclusion sentence and both HRs verbatim; published online 2015-01-20. Contra on the model's own combination prediction holds; abstract-tier rule question stands.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (Discussion). The paper's conclusion restricts the claim to MET-driven acquired resistance; untested opening at 2017 holds. Whether the track is class- or patient-level is a rule question.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (Introduction, citing NCT01117428). Dienstmann 2015 and ASCO 2013 pre-date receipt (2016-12-05) and the paper itself makes the comparison; retro under decision 10 holds.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract Conclusions, PMID 29423521). Prospective: Napolitano calls the phase 2 'under investigation'. Failure public 2017-09-11 (Symphogen) and ESMO 2017 478O, so year 2017 verified. JAMA Oncol online 2018-02-08.",
+   "checked_by": "CHECKER_BRIEF_v3 / models"
+  }
+ ],
+ "missing": [
+  "Napolitano et al. 2017 Oncotarget (PMID 28978055): Sym004 in CRC xenografts with acquired cetuximab resistance and MET activation; a CRC-specific resistance model on the Sym004 platform (model_src for the 2018 contra; MET-amplified subgroup never tested in patients).",
+  "Br J Cancer 2014 (PMID 24496456): imgatuzumab ADCC by NK cells taken ex vivo from colorectal cancer patients, irrespective of chemotherapy; a patient ex-vivo model (model_kind ex_vivo) with no track, never compared with outcome (untested).",
+  "Dienstmann et al. ASCO 2013 abstract 3551, DOI 10.1200/jco.2013.31.15_suppl.3551 (online 2013-05-20): phase 1 expansion PD, activity and DLTs public two years before Cancer Discov 2015; sets 2013 dates if abstracts are admissible.",
+  "Symphogen press release 2017-09 (symphogen.com/2017/09/sym004-randomized-phase-2-study-results/; tier 5) and ESMO 2017 abstract 478O (Ann Oncol 28 suppl 5): 'did not meet the primary end-point of a 3-month improvement of overall survival'; earliest public record of the phase 2 failure.",
+  "Ann Oncol 2017 (PMID 28950289): randomized window study of imgatuzumab vs cetuximab pharmacodynamics in operable HNSCC; importable engagement comparison (imported_from HNSCC) for the imgatuzumab track.",
+  "Patient PK sources with no entry: Japanese phase 1 (Cancer Sci 2018, PMID 30099818) and Sym004 population PK (J Pharmacokinet Pharmacodyn 2020, PMID 31679083); later patient PK is its own dated dose entry under the brief, status unchanged."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is a meeting abstract with a DOI (ASCO/ESMO supplement) a tier 1 source? The draft relies on one for GAIN-C (efficacy 8); if abstracts are inadmissible that contra has no other record, and if admissible, ASCO 2013 abstract 3551 re-dates four 2015 entries to 2013.",
+  "Does a tier 5 press release (or a conference abstract) set `year` under rule 6 when the status rests on a later tier 1 paper of the same trial (Sym004 phase 2: Symphogen 2017-09 vs JAMA Oncol 2018)?",
+  "Safety silence: Skartved 2011 measured clinical chemistry in cynomolgus and reported no magnesium finding, yet hypomagnesaemia was a human DLT. Is EGFR-dependent renal magnesium wasting a harm the species 'could have shown' (contra) or excluded like CRS in mouse?",
+  "Track placement of a retrodiction on an existing platform: do the ECD-mutant cell lines and xenografts (Sanchez-Martin 2016) stay on sym004-egfr-resistant-xenograft with retrodiction true, or take their own model_id like the PDX panel?",
+  "Is a single-patient 'proof-of-principle' (n=1) an admissible comparison for a patient-level `same`? The rules require >=1 drug, not a minimum number of patients."
+ ]
+}
