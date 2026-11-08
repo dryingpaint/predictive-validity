@@ -5,8 +5,8 @@ Capable house palette (issue #76).
     .venv/bin/python analyses/model-system-atlas/glance_nature.py supplement    # atlas_glance_supplement_p*.*
 
 main: the top 15 diseases by global DALYs in 2021 (lists/burden.csv), one tile each, the mechanism with the most
-programs. supplement: every drafted tile, diseases in DALY order then the rest by area, paginated. Panel a (the
-verdict by question) is over every drafted tile on both.
+programs. supplement: every tile, diseases in DALY order then the rest by area, paginated. Panel a (the
+verdict by question) is over every tile on both.
 
 Same data and headline rule as glance.py (imported from it). No in-figure title: the caption in
 atlas_glance_caption.md carries it. Panel a: the verdict by question. Panel b: one row per tile, one cell per
@@ -125,7 +125,7 @@ def order_tiles(df: pd.DataFrame, order: str, top: int | None = None, one_per_di
 
 
 def draw(df: pd.DataFrame, out: str, order: str = "area", top: int | None = None, one_per_disease: bool = False, note: str = "") -> list[str]:
-    """Panel a over every drafted tile; panel b over the ordered selection, paginated. Returns the files written."""
+    """Panel a over every tile; panel b over the ordered selection, paginated. Returns the files written."""
     plt.rcParams.update(RC)
     tiles = order_tiles(df, order, top, one_per_disease)
     n_all = df.slug.nunique()
@@ -164,7 +164,7 @@ def draw(df: pd.DataFrame, out: str, order: str = "area", top: int | None = None
 
 
 def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
-    """Panel a: the verdict by question over every drafted tile, with the legend."""
+    """Panel a: the verdict by question over every tile, with the legend."""
     ax.text(0.08, 0.2, "a", fontsize=8, fontweight="bold", **T)
     bx0, bw, by0, bh, bgap = 1.2, 3.75, 0.3, 0.115, 0.05
     for i, (q, title, _) in enumerate(QUESTIONS):
@@ -184,7 +184,7 @@ def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
             if w > 0.16:
                 ax.text(bx0 + x + w / 2, y + bh / 2, str(n), fontsize=5.5, ha="center", **T)
             x += w
-    ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} drafted tiles", fontsize=5, color=MUTED, va="center")
+    ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} tiles", fontsize=5, color=MUTED, va="center")
     lx, ly = 5.35, 0.2
     items = [("same", False, "Matched"), ("neg", False, STATUS["neg"][1]), ("other", False, STATUS["other"][1]), ("contra", False, "Contradicted"),
              ("contra", True, "Contradicted through efficacy (dose)"), ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
@@ -274,17 +274,17 @@ def main() -> None:
     p = argparse.ArgumentParser(description="The atlas at a glance as a journal figure: the main cut or the full supplement.")
     p.add_argument("figure", choices=["main", "supplement"],
                    help="main: the top 15 diseases by WHO 2021 DALYs, one tile each (the mechanism with the most programs); "
-                        "supplement: every drafted tile, diseases by DALY rank, then those without a WHO cause by area")
+                        "supplement: every tile, diseases by DALY rank, then those without a WHO cause by area")
     p.add_argument("--top", type=int, default=15, help="main: how many diseases")
     a = p.parse_args()
     e, tiles = load()
     df = cells(e, tiles)
     if a.figure == "main":
         note = (f"Panel b: the top {a.top} diseases by global DALYs in 2021 (WHO Global Health Estimates), "
-                "each with the mechanism that had the most programs; drafted tiles only.")
+                "each with the mechanism that had the most programs.")
         written = draw(df, os.path.join(HERE, "atlas_glance_main"), order="burden", top=a.top, one_per_disease=True, note=note)
     else:
-        note = "Panel b: every drafted tile; diseases by global DALYs in 2021 (WHO Global Health Estimates), then those without a WHO cause by area."
+        note = "Panel b: every tile; diseases by global DALYs in 2021 (WHO Global Health Estimates), then those without a WHO cause by area."
         written = draw(df, os.path.join(HERE, "atlas_glance_supplement"), order="burden", note=note)
     print(f"{len(written)} page(s): " + ", ".join(os.path.basename(w) for w in written) + f"; {len(CUT)} strings cut" + "".join("\n  " + c for c in CUT))
 

@@ -116,14 +116,14 @@ select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid 
 
   <section aria-labelledby="h-q">
     <h2 id="h-q">What the models got right, by question</h2>
-    <p class="lede" id="q-lede">Latest status of each drafted tile's four cells, after the checker and adjudicator.</p>
+    <p class="lede" id="q-lede">Latest status of each tile's four cells, after the checker and adjudicator.</p>
     <div class="qbars" id="qbars"></div>
     <div class="legend" id="legend"></div>
   </section>
 
   <section aria-labelledby="h-atlas">
     <h2 id="h-atlas">The atlas</h2>
-    <p class="lede">One row per drafted mechanism. Thin sub-strips under a cell are its modalities (dose and platform harms are split by modality). Hover a strip for the year and the model; select a row for every entry, its source and the checker's verdict.</p>
+    <p class="lede">One row per tile. Thin sub-strips under a cell are its modalities (dose and platform harms are split by modality). Hover a strip for the year and the model; select a row for every entry, its source and the checker's verdict.</p>
     <div class="scroll"><div class="atlas" id="atlas"></div></div>
   </section>
 
@@ -204,7 +204,7 @@ function render() {
     [d.build.n_register?.toLocaleString() ?? "—", "disease × mechanism pairs registered"],
     [d.build.n_tracked ?? "—", "tracked: 3+ programs"],
     [tiles.length, "track records drafted and checked"],
-    [cells.length ? Math.round(100 * compared / cells.length) + "%" : "—", "of drafted cells ever compared with patients"],
+    [cells.length ? Math.round(100 * compared / cells.length) + "%" : "—", "of cells ever compared with patients"],
     [d.agreement.kappa == null ? "—" : d.agreement.kappa.toFixed(2), `drafter–checker κ over ${d.agreement.cells} cells`],
   ];
   document.getElementById("stats").innerHTML = st.map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");

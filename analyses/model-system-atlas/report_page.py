@@ -1,4 +1,4 @@
-"""Render the atlas report page from the database: the drafted tiles' track records, the register of every
+"""Render the atlas report page from the database: the tiles' track records, the register of every
 mechanism, and the drafter-checker agreement.
 
     .venv/bin/python analyses/model-system-atlas/report_page.py

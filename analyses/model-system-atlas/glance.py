@@ -1,4 +1,4 @@
-"""The atlas at a glance, as data: for each drafted tile and each question, the cell's headline status at its
+"""The atlas at a glance, as data: for each tile and each question, the cell's headline status at its
 latest comparison, the year it earned it, the model, and the reason when it failed (issue #76).
 
     .venv/bin/python analyses/model-system-atlas/glance.py      # writes glance.csv; glance_nature.py draws it
