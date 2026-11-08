@@ -602,5 +602,32 @@
   "Grunig 1998 IL-13 blockade OVA mouse (Science companion to Wills-Karp): the same wild-type OVA mouse system as the draft's ova-mouse-il13 track, not a new system.",
   "Human IL-13 air-pouch mouse (FDA 761180, CAT354Rp037): an in-vivo PD assay with no patient counterpart readout and no comparison found.",
   "Regulator reliance: none; no asthma approval or label expansion for any member rests on model data."
+ ],
+ "gaps": [
+  {
+   "lead": "Lebrikizumab whole-lung allergen challenge (Scheerens 2014, PMID 24131304; NCT00781443)",
+   "outcome": "tracked",
+   "detail": "human-allergen-challenge-lar in added_models: efficacy 2008 untested (NCT00781443), 2013 contra (Noonan 2013, challenge result in confidence_note), 2017 contra (Korenblat 2018)."
+  },
+  {
+   "lead": "TROPOS (NCT02281357; Busse 2019, PMID 30442714)",
+   "outcome": "tracked",
+   "detail": "In patient_trials of il13-humanised-ova-mouse efficacy 2018 contra (Panettieri 2018, registry 2018-05-16); adding it to the draft's cyno-antigen-challenge efficacy 2018 STRATOS entry patient_trials is a verdict-level correction, not a new system."
+  },
+  {
+   "lead": "Korenblat 2018 (PMID 29413502; NCT02104674)",
+   "outcome": "tracked",
+   "detail": "human-allergen-challenge-lar efficacy 2017 contra (Korenblat 2018, NCT02104674 results posted 2026-07-17); its replication on hbe-il13-signature / ova-mouse-il13 needs only a verdict, the draft already holds contra on both (Noonan 2013, Piper 2013)."
+  },
+  {
+   "lead": "IL-13-humanised OVA mouse dosed with tralokinumab (May 2012; FDA 761180 CAT354Rp043)",
+   "outcome": "tracked",
+   "detail": "il13-humanised-ova-mouse in added_models: engagement 2011 untested, 2018 contra (Russell 2018); efficacy 2011 untested, 2012 contra (Piper 2013), 2018 contra (Panettieri 2018)."
+  },
+  {
+   "lead": "Gauvreau 2011 IMA-638/IMA-026 allergen challenge (PMID 21057005)",
+   "outcome": "none",
+   "detail": "Outside the rules: anrukinzumab/IMA-026 are not tile members (members: GSK679586, dectrekumab, lebrikizumab, tralokinumab), so not scorable."
+  }
  ]
 }

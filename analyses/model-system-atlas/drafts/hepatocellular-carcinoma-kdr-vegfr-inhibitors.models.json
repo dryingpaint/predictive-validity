@@ -13,7 +13,8 @@
   "Europe PMC: ABSTRACT apatinib OR rivoceranib AND hepatocellular AND predict(ive/s) AND response OR efficacy AND patients AND cell lines OR xenograft OR mice OR model (4 hits: QSP 2026, TACE nomograms 2024, a network meta-analysis, a guideline review)",
   "Europe PMC core abstracts for PMIDs 34785656 (Zhuo 2021), 32533100 (Yang 2020), 41398194 (Cui 2025), 41782865 (Huang 2026)",
   "Dating: PubMed efetch for 32533100 (received 2019-12-28, accepted 2020-05-29, epub 2020-06-12, print Cancer Gene Ther 28:89-97 Feb 2021) and 39558364; nature.com article page for Yang 2020 (strain C57BL/6 named; no received date rendered); Crossref for the ASCO 2020 AHELP abstract 10.1200/JCO.2020.38.15_suppl.4507 (issued 2020-05-20, created 2020-05-25)",
-  "Human challenge and human genetic models: none exist for VEGFR2 inhibition in HCC, not searched further. Registry result dates for AHELP NCT02329860 (2024-01-22) and CARES-310 NCT03764293 (2024-02-06) are taken from the draft, which the checker confirmed; not re-queried"
+  "Human challenge and human genetic models: none exist for VEGFR2 inhibition in HCC, not searched further. Registry result dates for AHELP NCT02329860 (2024-01-22) and CARES-310 NCT03764293 (2024-02-06) are taken from the draft, which the checker confirmed; not re-queried",
+  "Gap pass: Europe PMC core record PMID 31285418 (Liang 2019 Exp Mol Med) abstract for the apatinib xenograft safety quote"
  ],
  "added_models": [
   {
@@ -166,10 +167,95 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hcc-human-xenograft-immunodeficient-rodent",
+   "model": "Human liver-cancer cell-line xenografts in athymic rats and nude mice (KRN951 rat panel incl. SK-HEP-1; apatinib HCC mouse xenografts)",
+   "model_kind": "animal",
+   "model_first_use_year": 2006,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "prediction_level": "class",
+      "model_id": "hcc-human-xenograft-immunodeficient-rodent",
+      "model": "Human liver-cancer cell-line xenografts in athymic rats and nude mice (KRN951 rat panel incl. SK-HEP-1; apatinib HCC mouse xenografts)",
+      "model_kind": "animal",
+      "model_first_use_year": 2006,
+      "model_src": "https://doi.org/10.1038/s12276-019-0274-7",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "source_calls_it": null,
+      "comparison_stated": false,
+      "year": 2019,
+      "status": "untested",
+      "note": "Apatinib-treated HCC xenograft mice developed hypertension and mild liver and kidney damage; no HCC patient had a randomised apatinib safety readout yet.",
+      "short": "Xenograft mice on apatinib: hypertension; AHELP unreported",
+      "src": "https://doi.org/10.1038/s12276-019-0274-7",
+      "srcLabel": "Liang 2019",
+      "quote": "The drug safety evaluation revealed that both of these drugs caused hypertension and mild liver and kidney damage.",
+      "confidence": "medium",
+      "confidence_note": "Abstract read (Europe PMC, PMID 31285418, epub 2019-07-08); full text PMC6802662 reports tail-cuff BP rise by day 10 and raised ALT/AST, urine protein and creatinine in nude mice. Published before AHELP's first public readout (ASCO abstract 2020-05-20).",
+      "judgement": "Safety cell on the existing xenograft track (same human HCC cell-line xenografts in nude mice the track pools): apatinib itself in the model, so product_in_model true. Opens untested at publication.",
+      "endpoint_role": null,
+      "outcome_tested": null,
+      "patient_trials": [],
+      "subjects": null,
+      "source_tier": 1,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "population": "Unselected"
+     },
+     {
+      "prediction_level": "class",
+      "model_id": "hcc-human-xenograft-immunodeficient-rodent",
+      "model": "Human liver-cancer cell-line xenografts in athymic rats and nude mice (KRN951 rat panel incl. SK-HEP-1; apatinib HCC mouse xenografts)",
+      "model_kind": "animal",
+      "model_first_use_year": 2006,
+      "model_src": "https://doi.org/10.1038/s12276-019-0274-7",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "source_calls_it": null,
+      "comparison_stated": false,
+      "year": 2021,
+      "status": "same",
+      "strengthens": true,
+      "note": "AHELP: grade 3-4 hypertension in 28% of apatinib versus 2% of placebo patients, the harm apatinib caused in HCC xenograft mice.",
+      "short": "AHELP hypertension 28% vs 2% matched xenograft mice",
+      "src": "https://doi.org/10.1016/S2468-1253(21)00109-6",
+      "srcLabel": "Qin 2021",
+      "quote": "The most common treatment-related adverse events of grade 3 or 4 were hypertension (71 [28%] patients in the apatinib group vs three [2%] in the placebo group)",
+      "confidence": "medium",
+      "reason": "Apatinib mouse BP rise matched HCC hypertension",
+      "confidence_note": "Abstract-level reading of Qin 2021; Liang 2019 epub 2019-07-08, before the 2020-05-20 ASCO readout, so prospective. Liver damage in mice is not scored: AHELP's abstract quote names hypertension, not transaminase rises, as the leading grade 3-4 event.",
+      "judgement": "Paired by me (neither paper cites the other): direction only, the hypertension the apatinib xenograft study reported appeared in apatinib-treated HCC patients. Same.",
+      "subjects": "patients",
+      "source_tier": 1,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "registry_date": "2024-01-22",
+      "magnitude": "direction_only",
+      "magnitude_basis": "mouse tail-cuff BP rise on apatinib vs grade 3-4 hypertension 28% vs 2% on apatinib in AHELP",
+      "population": "Unselected, pretreated advanced HCC (China)"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
-  "Liang 2019 Exp Mol Med (the checker's 'Lu 2019'; first author is Liang Q; doi 10.1038/s12276-019-0274-7, PMID 31285418, epub 2019-07-08): HepG2-Red-fLuc and SMMC-7721-fLuc subcutaneous plus HepG2 orthotopic xenografts in athymic BALB/c nude mice on apatinib vs sorafenib; tail-cuff mean blood pressure rose on day 10 (69.5 vs 62.3 mmHg control), urine creatinine and protein and serum ALT/AST rose. This is the same human cell-line xenograft in nude mice that the draft's hcc-human-xenograft-immunodeficient-rodent track already pools (Yang 2018 apatinib mouse xenografts), so it is not a new track: it is a safety-cell addition on that existing track (product_in_model true, published before AHELP's 2020-05-20 ASCO readout) and the model_src that would make the draft's safety entry 4 product_in_model true.",
   "McNamara 2015 DCE-US (doi 10.1002/cncr.29227): patient-side evidence for the existing xenograft track's engagement cell (the checker's correction to downstream same, 2015), not a model system.",
   "Tivozanib first-in-human PD (AV-951-03-B01: dose-dependent serum sVEGFR-2 fall and tumour-perfusion reduction, FDA 212904 Multidiscipline Review lines 1417-1420; Eskens 2011): patient-side, other-indication solid tumours, for the existing xenograft track's engagement cell; admissibility is the checker's rule question 1.",
   "FDA 212904 rat-vs-clinical exposure statement (rat 0.2 mg/kg Cmax 70-108 ng/mL, AUC 1640 ng*h/mL vs 86.9 ng/mL and 1510 ng*h/mL at 1.34 mg/day): patient-side, comparison stated by the regulator, for the existing xenograft track's dose cell (checker's correction to same, 2021).",
@@ -179,5 +265,42 @@
   "Prognostic nomograms for TACE plus apatinib (BMC Gastroenterol 2024, PMID 38589828): statistical patient-side models, not a preclinical system.",
   "Apatinib-resistance mouse work (Akkermansia muciniphila, Transl Cancer Res 2026, PMID 42724514) and the AST-3424 prodrug combination (J Pharmacol Sci 2023, PMID 37169481): apatinib as resistance or combination context, no member-drug prediction compared with patients.",
   "HCC organoids, PDX, zebrafish xenografts, precision-cut slices, humanized mice: no study of apatinib, axitinib or tivozanib in any of these found in Europe PMC (title or abstract); the organoid biobanks on the sibling multikinase tile tested sorafenib, lenvatinib or regorafenib, outside this member list."
+ ],
+ "gaps": [
+  {
+   "lead": "McNamara 2015 DCE-US engagement (axitinib, 8/12 tumour blood volume fell)",
+   "outcome": "verdict",
+   "detail": "engagement entry 2 (hcc-human-xenograft-immunodeficient-rodent): checker corrected and adjudicated to same, 2015, downstream direction_only; patient-side evidence, not a model system"
+  },
+  {
+   "lead": "Tivozanib FIH AV-951-03-B01 sVEGFR-2 and perfusion fall (other-indication patients)",
+   "outcome": "verdict",
+   "detail": "engagement entry 2 on the xenograft track; patient-side PD in non-HCC solid tumours, admissibility is checker rule question 1 (decision 3); no new system"
+  },
+  {
+   "lead": "FDA 212904 rat-effective vs 1.34 mg/day clinical exposure comparison",
+   "outcome": "verdict",
+   "detail": "dose entry 2 (xenograft track): checker proposed same 2021, adjudicated untested (HCC RP2D 1 mg, efficacy indeterminate; rule question 2); corrects an entry, no new system"
+  },
+  {
+   "lead": "Liang 2019 Exp Mol Med apatinib HCC xenograft hypertension (checker's 'Lu 2019')",
+   "outcome": "added",
+   "detail": "safety cell on hcc-human-xenograft-immunodeficient-rodent: 2019 untested (Liang 2019, product_in_model true), 2021 same vs AHELP hypertension 28% vs 2%"
+  },
+  {
+   "lead": "J Transl Med 2024 patient-derived LCSC lines, C2 subtype axitinib-sensitive",
+   "outcome": "tracked",
+   "detail": "efficacy entry 7, hcc-lcsc-signature-in-silico-drug-sensitivity, 2024 untested (checker confirmed)"
+  },
+  {
+   "lead": "No additional member-drug HCC monotherapy failure or HCC organoid/PDX study found",
+   "outcome": "none",
+   "detail": "checker's own negative search note; nothing to settle, no new comparison"
+  },
+  {
+   "lead": "Attribution note: Liang 2019 safety item never merged, safety entry 4 product_in_model false",
+   "outcome": "added",
+   "detail": "same addition as the Liang 2019 lead: xenograft-track safety cell 2019 untested / 2021 same, product_in_model true; safety entry 4 itself stays on the class tox track"
+  }
  ]
 }

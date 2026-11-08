@@ -319,5 +319,22 @@
   "Brigatinib PBPK DDI modelling: the 2017 review only required it as a post-marketing commitment (PMR 3190-2 / PMC 3190-6), no comparison at approval, so no 2017 entry on the alk-pbpk-ddi track.",
   "Iruplinalkib and foritinib: the checker found no model comparison; their Ba/F3 and xenograft programmes are the same systems as the draft's tracks and no patient comparison with a distinct model was searched for within budget.",
   "No true co-clinical PDX trial (patients matched to their own PDX response) for ALK inhibitors was found in PubMed or web search; the Recondo PDX track is the only in-vivo patient-derived comparison located."
+ ],
+ "gaps": [
+  {
+   "lead": "ALTA-3 head-to-head (NCT03596866; Yang 2023, PMID 37574132): brigatinib not superior to alectinib, PFS HR 0.97, against the Ba/F3 panel ranking (208772 MultidisciplineR Table 4)",
+   "outcome": "verdict",
+   "detail": "Patient side of the existing alk-mutant-cells track (efficacy cell, after the 2019 entry), not a new system; no verdict covers it yet, so needs one: a 2023 entry on alk-mutant-cells (ranking miss, contra or over_predicted per the open within-class rule question) and a fix to the context note's 'every track matched'."
+  },
+  {
+   "lead": "Patient-derived organoid track, ALK-positive NSCLC (Lee 2023, doi 10.1186/s13046-023-02899-4)",
+   "outcome": "tracked",
+   "detail": "alk-nsclc-pdo-codrp, efficacy cell: 2023 untested opener and 2023 retro entry (draft efficacy index 7); the checker's efficacy[7] verdict (adjudicated retro, five patients not four, AUC miss in the note) covers the correction."
+  },
+  {
+   "lead": "CKB 25891: alectinib failing in an ALK I1171N/F1174I 'PDX'",
+   "outcome": "none",
+   "detail": "Resolved to Mizuta 2021 Nat Commun (PMID 33627640): an engineered I1171N+F1174I overexpressing patient-derived line xenografted, not a PDX from an alectinib-resistant tumour; same mutant-panel system as alk-mutant-cells (one system, one track) and the compound mutant's resistance was already known from patients, so no new system."
+  }
  ]
 }

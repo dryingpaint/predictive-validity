@@ -105,5 +105,22 @@
   "Disease progression / indirect-comparison models of long-term 6MWD and FVC (2024-2026, CER papers): in-silico extrapolations from trial data, not compared with later patient outcomes",
   "Patient-derived iPSC, organoid or PDX-like co-clinical systems, human challenge or genetic models: none found for the member drugs",
   "Earlier dating of gaa-ko-mouse engagement (Schoser 2021 Hex4; ATB200-02 Hex4) raised by the checker: a dating correction to an existing track, not a missing system"
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement: PROPEL urinary Hex4/CK vs alglucosidase in Schoser 2021 Lancet Neurol / Amicus Feb 2021 topline",
+   "outcome": "verdict",
+   "detail": "Dating correction to gaa-ko-mouse engagement entry 2 (same, 2023 -> 2021); already covered by the checker's corrected/adjudicated verdict (rule 6)."
+  },
+  {
+   "lead": "Possible earlier engagement comparison: ATB200-02 (NCT02675465) urinary Hex4 reductions from 2018",
+   "outcome": "verdict",
+   "detail": "Would only re-date gaa-ko-mouse engagement entry 2; ATB200-02 is single-arm (no alglucosidase comparator) and its first tier-1 report is Byrne 2023 J Neurol (PMID 38057636), later than Schoser 2021, so the 2021 verdict stands."
+  },
+  {
+   "lead": "Clervonafusp alfa (VAL-1221) Gaa KO mouse vs phase 1/2 NCT02898753",
+   "outcome": "none",
+   "detail": "Gaa KO data are the gaa-ko-mouse system; NCT02898753 terminated (company closure, n=12) with no posted or published results (CT.gov, Europe PMC); later VAL-1221 work is Lafora disease, outside the tile."
+  }
  ]
 }

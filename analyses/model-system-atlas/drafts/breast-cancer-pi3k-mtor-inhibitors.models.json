@@ -207,5 +207,32 @@
   "No patient-derived organoid, ex-vivo explant, human genetic, or co-clinical PDX comparison surfaced for dactolisib, voxtalisib, bimiralisib or apitolisib in breast cancer (searches 3, 9, 11); voxtalisib and bimiralisib hits were lymphoma, glioma and phase 1 papers only.",
   "No in-silico or PK/PD human-dose prediction surfaced for PF-04691502, voxtalisib, bimiralisib or dactolisib (searches 4, 8, 10); the only published translational PK/PD prediction in the class is the apitolisib one added here.",
   "Moein 2024 could alternatively be read as a new entry on the existing gdc0980-genentech-xenografts track; it is kept separate because the Salphati 2012 PK/PD model is an in-silico system making a quantitative exposure, clearance and dose prediction the efficacy panel never made (track identity rule for this run)."
+ ],
+ "gaps": [
+  {
+   "lead": "Gedatolisib (PF-05212384/PKI-587): Mallon 2011 MDA-MB-361 xenografts vs VIKTORIA-1 and 2026 approval",
+   "outcome": "none",
+   "detail": "Outside the rules: gedatolisib is not one of the tile's five members (tiles.json: apitolisib, bimiralisib, dactolisib, pf-04691502, voxtalisib); the class table is not widened here (checker rule question 1)."
+  },
+  {
+   "lead": "Gedatolisib vs alpelisib in CDK4/6i- and ET-resistant ER+ PDX/PDO (Sci Transl Med 2025)",
+   "outcome": "none",
+   "detail": "Outside the rules: the dosed drug is gedatolisib, not a member drug; no member drug was dosed in this PDX/PDO panel."
+  },
+  {
+   "lead": "Gedatolisib cell-line/xenograft panel (NPJ Breast Cancer 2024) with phase 1b gedatolisib+palbociclib+ET (Lancet Oncol 2025; Clin Cancer Res 2025)",
+   "outcome": "none",
+   "detail": "Outside the rules: gedatolisib is not a member drug of this tile."
+  },
+  {
+   "lead": "PF-04691502 PTEN-deficient PDX (Oncotarget 2017) and LAR TNBC PDX (Theranostics 2020)",
+   "outcome": "none",
+   "detail": "No patient comparison (MODELS_TASK step 2 admits only systems compared with patient results): PF-04691502 never produced a breast patient readout (NCT01430585 Ki-67 arms never enrolled) and the Theranostics TNBC cohort was genotyped, not dosed; PF-04691502 already has track pf04691502-pfizer-xenografts (efficacy 5)."
+  },
+  {
+   "lead": "Dactolisib vs everolimus randomized phase II in pNET (Oncologist 2018) for safety",
+   "outcome": "verdict",
+   "detail": "Patient-side data for an existing system, not a new one: it needs a checker verdict on safety entry 1 (bez235-novartis-xenografts, Maira 2008 untested) to add an imported (pNET) dactolisib safety entry for stomatitis/hyperglycaemia; no current verdict covers it."
+  }
  ]
 }

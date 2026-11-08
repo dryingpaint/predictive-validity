@@ -241,6 +241,26 @@
    "rule": "2 (#125: a registry protocol narrative with no results is a sponsor statement, not a source; tier 3 needs posted outcome data)",
    "note": "NCT01213355 confirmed: first posted 2010-10-04, 38 subjects, 5-way crossover, 5/20/60 mg vs donepezil 10 mg, GMLT primary, completed 2011-08, no results; quote verbatim in briefSummary. Status untested stands; source_tier 3 is wrong (no results posted) and no tier 1-3 source names the study (Fullerton 2018, Neurol Ther 2018 PMC5990506, Biomolecules 2023 PMC9953539 searched). Precedent: engagement 5 also rests on a no-results registry record at tier 3. Year 2010 survives as opener at first class use (#112).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "doi resolves to Comery 2011 AAIC P4-253 (Alzheimers Dement 7(4S):S794); quote verbatim in Background. Untested opener right. Rodent data never published (PubMed SAM-760/PF-05212377: 4 papers, none efficacy); admissibility hangs on supplement-abstract rule question; low confidence apt.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Fullerton 2018 quote and patient_trials quote verbatim (abstract). NCT01712074 results first posted 2017-03-20 sets 2017; model 2011 predates registration 2012, so prospective contra. Nit: trial enrolled NPI>=10 patients, not 'unselected'; Fullerton's generic design/population hedge is not a model-untested condition.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -257,6 +277,7 @@
   "Human PD data reported only as 'data not shown' inside a trial paper's Discussion (Atri 2018: healthy-volunteer PET, >80% occupancy at 30/60 mg, no study ever published): rule 2 says low confidence, but is it enough to move a track from untested to same (engagement) and to contra derived_from efficacy (dose), or must the PET study itself be a source?",
   "Intepirdine (RVT-101/SB-742457), a selective 5-HT6 antagonist with a Phase 3 failure (MINDSET) that Fullerton 2018 groups with idalopirdine as the class's Phase 3 record, is absent from the tile's member list (class_programs 3). The draft correctly did not widen; is the omission from `preclin.atlas_register` intended?",
   "A member drug whose human efficacy failure has no published disease-model side (SAM-760: Pfizer published only PET/PK, no efficacy model): the efficacy cell shows nothing for it while its dose cell scores contra on the NHP PET track. Should the NHP track carry an efficacy `untested` marker, or is 'no model relied on' decided per drug?",
-  "CHECKER_BRIEF_v3 / models: can an `untested` opener rest on a registry protocol record with no results? Decision 2 (#125) calls it a sponsor statement, not a source, yet it is the only document showing the SAM-760 healthy-volunteer scopolamine challenge (efficacy 9) and the AD-patient PET (engagement 5) existed. If inadmissible, the human-challenge track has no source and disappears, hiding a model that demonstrably ran; if admissible, what tier does it carry (drafter used 3)?"
+  "CHECKER_BRIEF_v3 / models: can an `untested` opener rest on a registry protocol record with no results? Decision 2 (#125) calls it a sponsor statement, not a source, yet it is the only document showing the SAM-760 healthy-volunteer scopolamine challenge (efficacy 9) and the AD-patient PET (engagement 5) existed. If inadmissible, the human-challenge track has no source and disappears, hiding a model that demonstrably ran; if admissible, what tier does it carry (drafter used 3)?",
+  "CHECKER_BRIEF / models: can a one-sentence background claim in a sponsor's PET conference abstract ('pro-cognitive effects in multiple rodent assays', no assay, dose or data) carry a model track and a contra (efficacy 10-11), or is it a sponsor statement like the no-results registry narrative of decision 2 (#125)?"
  ]
 }

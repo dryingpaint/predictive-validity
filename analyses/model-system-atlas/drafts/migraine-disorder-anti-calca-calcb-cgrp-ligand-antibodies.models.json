@@ -337,5 +337,37 @@
   "Patient-derived cells or organoids, PDX co-clinical trials, ex-vivo drug sensitivity, human loss-of-function genetic models: none found for this class; the predicts/correlates search returned only clinical responder-predictor cohorts, which are not models.",
   "Rat dura substance P and CGRP release with GTN and anti-CGRP antibodies (J Headache Pain 2025, doi 10.1186/s10194-025-02050-y, PMID 40380328): no patient comparison.",
   "Fremanezumab pediatric chronic migraine miss (NCT04464707, 2025): a patient-side datum for the existing efficacy tracks (checker rule question 1), not a missing model system; left to the draft's tracks."
+ ],
+ "gaps": [
+  {
+   "lead": "Fremanezumab pediatric chronic migraine Phase 3 NCT04464707 primary miss (2025)",
+   "outcome": "verdict",
+   "detail": "Patient-side datum for the existing efficacy track evoked-vasodilation-rat-nhp (efficacy 2, Dodick 2014 'same'), not a new system; whether a pediatric miss scores contra is checker rule question 1."
+  },
+  {
+   "lead": "Human ex-vivo artery model, Ohlsson 2018 (PMID 30109438)",
+   "outcome": "tracked",
+   "detail": "human-exvivo-artery-myograph: engagement 3 (untested), efficacy 5 (untested opener) and efficacy 6 (retro)."
+  },
+  {
+   "lead": "Mouse CGRP-evoked light aversion / grimace with ALD405, Mason 2017 and Rea 2018",
+   "outcome": "tracked",
+   "detail": "mouse-cgrp-evoked-behaviour: efficacy 7 (untested opener) and efficacy 8 (retro); Rea 2018 noted in its confidence_note."
+  },
+  {
+   "lead": "Rodent GTN / spontaneous-trigeminal-allodynia models with ALD405, Christensen 2019",
+   "outcome": "tracked",
+   "detail": "rodent-gtn-sta-pain: efficacy 9 (untested opener) and efficacy 10 (retro)."
+  },
+  {
+   "lead": "Rat post-concussion headache model, Bree & Levy 2017 (761089 PharmR DPR-2017-037)",
+   "outcome": "tracked",
+   "detail": "Folded into rat-headache-behaviour (efficacy 3, which the checker accepts as one track); PharmR citation and its post-traumatic-headache Phase 2 miss (NCT03347188) recorded in considered_not_added."
+  },
+  {
+   "lead": "CHALLENGE-MIG NCT05127486; galcanezumab and fremanezumab cluster headache trials",
+   "outcome": "none",
+   "detail": "Outside the rules: CHALLENGE-MIG is an active-comparator superiority endpoint no model predicted; cluster headache is another disease (different MONDO context) from this migraine tile."
+  }
  ]
 }

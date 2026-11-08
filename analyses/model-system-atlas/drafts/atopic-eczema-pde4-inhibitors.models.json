@@ -10,7 +10,8 @@
   "ClinicalTrials.gov API: NCT01037881 (LEO 29102 Phase 2 results), NCT01702181 (difamilast US Phase 2)",
   "Europe PMC: open-access full text for Felding 2014 and Eirefelt 2020 (none)",
   "WebSearch: LEO 29102 allergic contact dermatitis mouse Felding 2014",
-  "Searched for patient-level (ex vivo patient cells, organoids), human genetic (PDE4 loss-of-function) and QSP/in-silico dose models for this class: none found in the above"
+  "Searched for patient-level (ex vivo patient cells, organoids), human genetic (PDE4 loss-of-function) and QSP/in-silico dose models for this class: none found in the above",
+  "PubMed and Europe PMC: difamilast AND (stress OR idiopathic OR psychological) for a full paper of the JID 2022 abstract 576 stress model (none)"
  ],
  "added_models": [
   {
@@ -439,5 +440,32 @@
   "DRM02: Phase 2 failure from Dermira 10-K (tier 5), but no model side found; nothing to add as a track.",
   "AN2898: Phase 2 NCT01301508 with no posted results found and no published model side.",
   "Patient-derived cells / organoids, human genetic and QSP dose models: none found for topical PDE4 inhibitors in AD."
+ ],
+ "gaps": [
+  {
+   "lead": "LEO 29102: Phase 2 NCT01037881 EASI primary not significant (results 2019-10-14) vs mouse allergic contact dermatitis (Felding 2014)",
+   "outcome": "added",
+   "detail": "mouse-acd-leo29102, efficacy: untested 2009 (Felding 2014) then contra 2019 (NCT01037881 registry results)"
+  },
+  {
+   "lead": "DRM02: Dermira 10-K (March 2015) says DRM02 gel was not more effective than vehicle",
+   "outcome": "verdict",
+   "detail": "Corrects the draft's tile note ('DRM02 ... stopped' should read failed proof-of-concept vs vehicle, tier 5); no model side found, so no track (see considered_not_added)"
+  },
+  {
+   "lead": "Difamilast: FDA NDA 219474 review names a mouse chronic contact dermatitis model; Japanese Phase 2/3 primaries met",
+   "outcome": "added",
+   "detail": "mouse-chronic-acd-difamilast, efficacy: untested 2012 (FDA MultidisciplineR) then same 2023 (Hiyama 2023)"
+  },
+  {
+   "lead": "LEO 39652: Phase 2 NCT02219633 lack of efficacy; explant retro reproduction (Eirefelt 2020)",
+   "outcome": "none",
+   "detail": "Not a class member: tiles.json members are DRM02, an-2898, crisaborole, difamilast, leo-29102; only the LEO 29102 arm of the explant track is scored (human-skin-explant-dofm-camp)"
+  },
+  {
+   "lead": "Difamilast psychological-stress idiopathic dermatitis mouse model (JID 2022 abstract 576)",
+   "outcome": "none",
+   "detail": "Conference abstract only, not a tier 1 peer-reviewed paper (admissible-sources rule 2); no full paper in PubMed or Europe PMC; would only be a further retro reproduction"
+  }
  ]
 }

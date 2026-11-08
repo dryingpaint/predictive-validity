@@ -331,5 +331,27 @@
   "Ublituximab and divozilimab own models: none found beyond the cynomolgus toxicology already tracked (divozilimab not searched in depth; no FDA review)",
   "Patient-derived cells / ex-vivo sensitivity, human genetic or challenge models: none found for anti-CD20 in MS",
   "MIRROR dose-range regression (Bar-Or 2018) that set the ofatumumab B-cell target: a patient dose-finding trial, not a model system; its use is folded into the Yu 2022 track's magnitude_basis"
+ ],
+ "gaps": [
+  {
+   "lead": "Safety, cyno-bcell-depletion-tox 2017 'same': ocrelizumab study 02-082-0352 first-dose IL-6 rise (761053 PharmR) vs first-infusion reactions",
+   "outcome": "verdict",
+   "detail": "Corrects the existing cyno-bcell-depletion-tox safety cell: needs a 2017 'same' entry before the 2022 ublituximab contra (PharmR line 1105 'IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals'); covered by the check.json missing item and its safety rule_question; same system, not a new track"
+  },
+  {
+   "lead": "Efficacy: marmoset rhMOG/CFA EAE with HuMab 7D8 (Kap 2010, PMID 20739677)",
+   "outcome": "tracked",
+   "detail": "eae-marmoset-humab7d8, efficacy cell (2010 untested, 2011 same vs Kappos 2011)"
+  },
+  {
+   "lead": "Efficacy: mouse MOG35-55 EAE with mouse anti-CD20 (Matsushita 2008 JCI)",
+   "outcome": "tracked",
+   "detail": "eae-mog35-55-mouse-anti-cd20, efficacy cell (2008 untested, 2011 same on the after-onset arm)"
+  },
+  {
+   "lead": "Engagement: huCD20 transgenic mouse PK/PD in 761053 PharmR (line 206)",
+   "outcome": "none",
+   "detail": "PharmR lines 206 and 1729-1800: PK/ADME and SPECT biodistribution only (binding to B cells in lymphoid organs); no B-cell depletion prediction compared with patients, so no model-to-patient comparison"
+  }
  ]
 }

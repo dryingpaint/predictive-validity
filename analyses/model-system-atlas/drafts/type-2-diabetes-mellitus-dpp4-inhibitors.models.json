@@ -10,7 +10,11 @@
   "Europe PMC: (DPP4 OR DPP-4) AND (loss-of-function OR Mendelian randomization OR genetic variant) AND (DPP-4 inhibitor OR gliptin) AND (response OR efficacy): 260 hits, none pairs a human DPP4 genotype with a member's response",
   "Europe PMC: (quantitative systems pharmacology OR systems pharmacology OR PBPK) AND members: 15 hits; PBPK papers for HSK7653 (2023) and teneligliptin (2024) found, no new patient comparison",
   "Europe PMC: (teneligliptin OR omarigliptin) AND (hERG OR telemetry OR QT prolongation) AND (monkey OR dog): 8 hits, no peer-reviewed member paper; the regulator reviews are the only record",
-  "Europe PMC: (teneligliptin OR omarigliptin OR vildagliptin OR saxagliptin) AND monkey AND (skin lesion OR necrotic OR DPP-8 OR DPP-9): 35 hits, no member paper on the monkey skin finding"
+  "Europe PMC: (teneligliptin OR omarigliptin OR vildagliptin OR saxagliptin) AND monkey AND (skin lesion OR necrotic OR DPP-8 OR DPP-9): 35 hits, no member paper on the monkey skin finding",
+  "Gap pass: Europe PMC besigliptin / SHR117887 / SHR-117887: 5 hits; only model paper is Wu et al. 2012 Acta Pharmacol Sin doi:10.1038/aps.2012.75 (ICR mouse, DIO rat, ob/ob mouse OGTT and serum DPP-4); others are a 2019 rat metabolism paper and reviews",
+  "Gap pass: PubChem synonyms for besigliptin (code SHR117887, Jiangsu Hengrui); ClinicalTrials.gov besigliptin OR SHR117887: one trial, NCT01984489 (Phase 2 add-on to metformin, n=120, completed 2013-08, no results posted)",
+  "Gap pass: fc.py web search 'besigliptin', 'SHR117887 pharmacokinetics/HbA1c/phase 3', '贝格列汀 恒瑞 临床': no published patient PK/PD, efficacy or safety result; Hengrui's marketed DPP-4 is retagliptin (SP2086)",
+  "Gap pass: Europe PMC DOI 10.1021/acs.jmedchem.0c00374 (Zhang 2020) abstract: mouse PK only; biweekly regimen stated from ongoing clinical studies"
  ],
  "added_models": [
   {
@@ -299,7 +303,7 @@
       "registry_date": null,
       "model_filed": null,
       "product_in_model": true,
-      "retrodiction": false,
+      "retrodiction": true,
       "imported_from": null,
       "magnitude": "within_2x",
       "magnitude_basis": "dosing interval: monkey DPP-4 inhibition ~80% through day 14 after 10 mg/kg plus allometric scaling vs the biweekly 10/25 mg regimen that lowered HbA1c 0.63/0.59% at week 24 (NCT04556851)",
@@ -307,7 +311,7 @@
       "population": "Unselected",
       "confidence_note": "Abstract-level, open access; sponsor (Haisco) authors. Published 2026-01-05, after the Phase 3 (Gao 2025, doi:10.1111/dom.16014; NCT04556851, no results posted) read out. The monkey work is IND-enabling pharmacology run before the clinic, so scored prospective (retrodiction false) and dated at publication (decision 7); this is the checker's rule question 4, and if read as a retrodiction the status becomes retro. model_filed null: the Chinese NMPA review is not public.",
       "year": 2026,
-      "status": "same",
+      "status": "retro",
       "strengthens": true,
       "prediction_level": "class",
       "model_id": "nonrodent-pk-allometry",
@@ -324,7 +328,7 @@
       "blocked_by": null,
       "margin_stated": null,
       "reason": "Animal PK set the interval that held",
-      "judgement": "Second member on the track, status unchanged. The draft dropped this because the paper post-dates the Phase 3; v3 dates by public date, so it is entered as strengthens with the retrodiction question flagged rather than left out."
+      "judgement": "Second member on the track. Retrodiction: Gou 2026 (epub 2026-01-05) reports the monkey PK-PD and allometry after the cofrogliptin Phase 3 had read out (Gao 2025, NCT04556851) and frames them as aligning with the clinical biweekly regimen, so retro, not same (brief: retrodiction). Zhang 2020 (J Med Chem, the discovery paper) gives mouse PK only in its abstract and states the biweekly regimen from ongoing clinical studies, so it is not a prospective model-side source."
      }
     ]
    }
@@ -341,5 +345,47 @@
   "Cofrogliptin PBPK for special populations (Ejps 2023, 10.1016/j.ejps.2023.106553) and teneligliptin age PBPK (Diabetes Ther 2024): human-data in-silico dose tools; same scope question as the draft's PopPK/PD and C-QTc tracks (checker rule question 1) and no verified comparison of a prediction with a later patient result.",
   "Omarigliptin concentration-QTc model and cofrogliptin PopPK/PD-MBMA: already tracks in the draft.",
   "Patient-derived cells/organoids, PDX, ex-vivo sensitivity, human challenge and DPP4 loss-of-function genetics: searched, nothing comparing a member with patients found."
+ ],
+ "gaps": [
+  {
+   "lead": "PMDA regulator packages (teneligliptin 2012, omarigliptin 2015) not used",
+   "outcome": "verdict",
+   "detail": "rodent-dpp4-ogtt engagement 1, dose 1-2, efficacy 1-2: checker verdicts already set model_filed true, year 2012 and margin_stated true from the 2012 review; the reviews now source cyno-repeat-dose-skin-tox, herg-nonrodent-telemetry-qt and nonrodent-pk-allometry dose 5"
+  },
+  {
+   "lead": "Cynomolgus necrotic-dermatosis / DPP-8-9 cutaneous toxicity model",
+   "outcome": "tracked",
+   "detail": "cyno-repeat-dose-skin-tox, safety 3 (untested 2012) and safety 4 (contra 2012, magnitude opposite); Lankas 2005 is mechanism source only (no member dosed)"
+  },
+  {
+   "lead": "hERG + dog/monkey telemetry QT vs thorough QT (teneligliptin, omarigliptin)",
+   "outcome": "tracked",
+   "detail": "herg-nonrodent-telemetry-qt, safety 5 (untested 2012), 6 (same 2012, teneligliptin TQT 160 mg) and 7 (same 2015, omarigliptin TQT); dose-ceiling margin_stated is the checker's dose 1 verdict (decision 16)"
+  },
+  {
+   "lead": "Label harms: teneligliptin hepatic dysfunction/ILD 2014, pemphigoid 2016; omarigliptin pemphigoid 2018",
+   "outcome": "none",
+   "detail": "no source pairs a model with these: rat lung phospholipidosis is a different pathology and unpaired; animals silent on pemphigoid is the open checker rule question 2 (recorded in cyno-repeat-dose-skin-tox safety 4 judgement)"
+  },
+  {
+   "lead": "Cofrogliptin monkey PK-PD -> biweekly regimen (Gou 2026)",
+   "outcome": "verdict",
+   "detail": "nonrodent-pk-allometry dose 6 (2026): set retrodiction true, status retro (published after the Gao 2025 Phase 3, framed as aligning with the known regimen)"
+  },
+  {
+   "lead": "Prusogliptin patient PK/PD 2025 (Liu, Clin Pharmacokinet, NCT05146869)",
+   "outcome": "verdict",
+   "detail": "not a new system: needs an engagement entry (patients, 2025, same) on the existing rodent-dpp4-ogtt track with Yeh 2021 as model side; the checker's missing item is the verdict"
+  },
+  {
+   "lead": "Zhang 2020 J Med Chem (cofrogliptin discovery) as prospective model side",
+   "outcome": "none",
+   "detail": "abstract reports mouse PK only and takes the biweekly regimen from ongoing clinical studies, so no animal-PK interval prediction before the patient result (retrodiction rule)"
+  },
+  {
+   "lead": "besigliptin tosylate",
+   "outcome": "none",
+   "detail": "model side exists (SHR117887 rodent OGTT/DPP-4, Wu 2012 Acta Pharmacol Sin) but no patient result is public: sole trial NCT01984489 (Phase 2, 2013) posted no results; no paper or web report found"
+  }
  ]
 }

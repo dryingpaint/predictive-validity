@@ -10,7 +10,9 @@
   "Europe PMC: regorafenib/lenvatinib/anlotinib/famitinib + patient-derived / organoid / ex vivo + renal cell",
   "Europe PMC: famitinib/SHR1020 xenograft preclinical",
   "Europe PMC: lenvatinib plus anti-PD-1 syngeneic (Kato 2019), KEYNOTE-146 RCC cohort (Lee 2021), CLEAR (Motzer 2021)",
-  "ClinicalTrials.gov API: NCT02811861, NCT02501096 results first posted dates"
+  "ClinicalTrials.gov API: NCT02811861, NCT02501096 results first posted dates",
+  "Gap pass: FDA Lenvima label revised 05/2016 (206947s003lbl.pdf, accessdata) section 12.1 for the lenvatinib+everolimus RCC xenograft statement",
+  "Gap pass: fc.py search anlotinib vs sunitinib mRCC phase II first public report (ASCO 2016 abstract 4565, JCO 34:15_suppl; Zhou 2019 PMID 30902918; NCT02072031)"
  ],
  "added_models": [
   {
@@ -192,11 +194,33 @@
   }
  ],
  "considered_not_added": [
-  "Anlotinib Caki-1 renal xenograft (Xie 2018 Cancer Sci, doi:10.1111/cas.13536, epub 2018-03-25; 3 mg/kg anlotinib inhibited Caki-1 growth 80%, comparable to sunitinib 50 mg/kg): same system as the draft's rcc-xenograft-786o-a498-caki track, so not a new model; it is a lead for that track, predating the anlotinib RCC phase II paper (Zhou 2019) and contradicting the draft note that anlotinib mouse data all came after the trials. Whether the phase II result was public (meeting abstract) before 2018 was not checked.",
+  "Anlotinib Caki-1 renal xenograft (Xie 2018 Cancer Sci, doi:10.1111/cas.13536, epub 2018-03-25; 3 mg/kg anlotinib inhibited Caki-1 growth 80%, comparable to sunitinib 50 mg/kg): same system as the draft's rcc-xenograft-786o-a498-caki track, so not a new model; it is a lead for that track, predating the anlotinib RCC phase II paper (Zhou 2019) and contradicting the draft note that anlotinib mouse data all came after the trials. The phase II was public at ASCO 2016 (JCO 34:15_suppl 4565), so the Caki-1 data are a retrodiction.",
   "Lenvatinib dose exposure-response model for RCC (14 vs 18 mg; Study 218, Pal 2022 Eur Urol doi:10.1016/j.eururo.2021.12.024, 14 mg not noninferior): no model-stated RCC dose prediction found; published E-R/popPK dose models are for HCC (Tamai 2017) and DTC (Hayato 2018); the 2016 FDA RCC clin-pharm review could not be retrieved.",
   "Patient-derived organoids / PDX / ex vivo sensitivity for regorafenib, lenvatinib, anlotinib or famitinib in RCC: no study comparing with patient response found.",
   "Famitinib: only non-RCC xenograft models found (gastric BGC-823); no RCC model to compare.",
   "Regorafenib: no RCC-specific model beyond the draft's xenograft, DCE-MRI and tox tracks; no in-silico dose model.",
   "Human genetic or challenge models: none exist for VEGFR TKIs in RCC."
+ ],
+ "gaps": [
+  {
+   "lead": "Yamamoto 2014 Vascular Cell lenvatinib 19-model xenograft vascular-score panel",
+   "outcome": "tracked",
+   "detail": "lenvatinib-xenograft-vascular-score, efficacy cell (untested 2014; CLEAR 2024 entry, which the checker corrected to untested)"
+  },
+  {
+   "lead": "FDA lenvatinib RCC supplement review / 2016 label stating lenvatinib+everolimus beat either drug in RCC xenografts",
+   "outcome": "verdict",
+   "detail": "rcc-xenograft-786o-a498-caki efficacy retro entry (Matsuki 2017): label revised 05/2016 sec 12.1 says the combination reduced 'tumor volume in mouse xenograft models of human renal cell cancer greater than each drug alone', so year can move 2017->2016; still retro (after Study 205)"
+  },
+  {
+   "lead": "Xie 2018 Cancer Sci anlotinib xenografts (renal?)",
+   "outcome": "verdict",
+   "detail": "Includes Caki-1 renal xenograft (epub 2018-03), same system as rcc-xenograft-786o-a498-caki; anlotinib-vs-sunitinib RCC phase II was public at ASCO 2016 (abstract 4565), so it is a retro point, no prospective anlotinib model; draft's 'anlotinib mouse data came after the trial' stands, no status change"
+  },
+  {
+   "lead": "Famitinib RCC patient data (NCT01829841; camrelizumab+famitinib, Qu 2021)",
+   "outcome": "none",
+   "detail": "Only famitinib model found is gastric BGC-823 xenograft; no RCC model compared with patients (no comparison exists)"
+  }
  ]
 }

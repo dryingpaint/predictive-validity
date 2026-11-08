@@ -199,5 +199,32 @@
   "Zhou 2013 rat retinal model: already tracked as rat-retina-model.",
   "Serum HSP70 xenograft biomarker (PMID 19747088, title-level only) and the 2026 retinal-organoid luminespib screen in retinoblastoma (PMID 41809370): not NSCLC systems and no NSCLC patient comparison; the HSP70 readout is already on the panel's engagement track.",
   "No patient-derived NSCLC organoid, ex-vivo drug-sensitivity, co-clinical PDX, human-challenge or human-genetic comparison for any member was found on PubMed or Europe PMC."
+ ],
+ "gaps": [
+  {
+   "lead": "Kanamaru 2014 beagle-dog retinal toxicity (PMID 24418710)",
+   "outcome": "tracked",
+   "detail": "beagle-dog-retina-model, safety entries 4 (untested 2014) and 5 (retro 2014), product_in_model false, class-level"
+  },
+  {
+   "lead": "Garon 2013 luminespib NSCLC cell lines and xenografts (PMID 23493311)",
+   "outcome": "verdict",
+   "detail": "same system as nsclc-xenograft-panel; corrects model_src of engagement 2 and dose 2 (Sessa 2013 pairings), covered by the checker notes on those entries"
+  },
+  {
+   "lead": "Acquaviva 2012 KRAS-mutant ganetespib panel (PMID 23012248)",
+   "outcome": "verdict",
+   "detail": "no GEMM, same system as nsclc-xenograft-panel; needs a verdict naming Socinski 2013 cohort B KRAS miss on efficacy entry 2; patient datum already scored on kras-p53-lung-gemm efficacy 7"
+  },
+  {
+   "lead": "Synta press release 2015-10-20 GALAXY-2 futility",
+   "outcome": "verdict",
+   "detail": "patient-side tier-5 date for efficacy entry 4 (nsclc-xenograft-panel); checker verdict 'corrected' already sets year 2015"
+  },
+  {
+   "lead": "Synta 8-K exhibit 99.1 June 2011 ASCO ALK responses",
+   "outcome": "verdict",
+   "detail": "dates the patient result for efficacy entry 3 (alk-nsclc-xenograft, retro); checker verdict confirmed cites it as the reason for retro"
+  }
  ]
 }

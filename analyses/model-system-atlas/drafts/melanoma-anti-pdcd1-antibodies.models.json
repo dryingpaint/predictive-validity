@@ -295,5 +295,32 @@
   "HX009 (PD-1 x CD47 bispecific) preclinical models and nivolumab/pembrolizumab as positive controls in 34885_IVHU, TR003 and the HuGEMM study: class context, not members, not scored.",
   "Tang 2019 peripheral activated-CD8+ null ('no major impact') as a scored engagement comparison for the PBMC-engrafted NSG track: not scored, see that entry's judgement; a checker may score it same at low confidence.",
   "Tumour-type caveat: the PBMC-engrafted NSG efficacy arms used MC38 (toripalimab) and HCC827 (pucotenlimab), neither melanoma, like the draft's knock-in MC38 track; scored direction-only against melanoma ORR primaries."
+ ],
+ "gaps": [
+  {
+   "lead": "PBMC-humanised NSG mouse (Studies 34885_IVHU, TR003; FDA 761240 review)",
+   "outcome": "tracked",
+   "detail": "pbmc-humanised-nsg-mouse: engagement[1] untested 2017 (draft engagement 3) and efficacy[1] untested 2017 (draft efficacy 5), with efficacy[2] Tang 2020 and efficacy[3] Cui 2023 pairings"
+  },
+  {
+   "lead": "Fu 2017 monkey PK/ADA vs Tang 2019 patient ADA/trough",
+   "outcome": "verdict",
+   "detail": "dose-side comparison on existing tori-cynomolgus-monkey track (no dose cell there; nearest entry draft engagement 2, Tang 2019); not a new system, needs a checker verdict on whether to open a dose entry"
+  },
+  {
+   "lead": "Searched-nothing-found item (pucotenlimab, prolgolimab before Gordeev 2024, toripalimab organoid/PDX/humanised-mouse)",
+   "outcome": "none",
+   "detail": "prolgolimab pre-2024 and toripalimab melanoma organoid/PDX: none found (Europe PMC searches in 'searched'); pucotenlimab part is wrong: Zhang 2020 mAbs is tracked on pbmc-humanised-nsg-mouse efficacy[3] (draft efficacy 7)"
+  },
+  {
+   "lead": "Pucotenlimab HuGEMM hPD-1 knock-in MC38 arm (Zhang 2020) vs Cui 2023",
+   "outcome": "verdict",
+   "detail": "same system as tori-hpd1-knockin-mc38-mouse; corrects draft efficacy 2 judgement ('no published pre-clinic model') and needs a 2023 same/strengthens entry on that track via checker verdict"
+  },
+  {
+   "lead": "Pucotenlimab cynomolgus single-dose PK/ADA vs phase 1a CTR20180125 (Zhang 2020)",
+   "outcome": "verdict",
+   "detail": "second member on existing tori-cynomolgus-monkey track, dose-side (monkey over-predicted immunogenicity); needs a checker verdict alongside the Fu 2017/Tang 2019 ADA item, not a new system"
+  }
  ]
 }

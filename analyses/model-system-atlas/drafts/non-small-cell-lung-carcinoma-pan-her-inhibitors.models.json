@@ -374,5 +374,37 @@
   "Patient-derived organotypic spheroids / organoids for HER2-mutant NSCLC (Ivanova 2020 Clin Cancer Res 10.1158/1078-0432.ccr-19-1844, combination screening; 2026 Hum Vaccin Immunother organoid drug-sensitivity case): titles only, no member-drug patient comparison evident; not opened.",
   "In-silico dose models (PBPK, population PK, exposure-response, QSP) for dacomitinib, poziotinib, pyrotinib or tarloxotinib in NSCLC: the search returned reviews and non-member PK papers only; nothing pairing a model-chosen dose with a member-drug patient result.",
   "Pyrotinib HER2 exon 20 PDO/PDX (Wang 2019) and poziotinib EGFR/HER2 exon 20 Ba/F3-PDX-GEMM (Robichaux 2018): already tracked in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "Dacomitinib in HER2-exon-20 NSCLC (Engelman 2007 cells -> Kris 2015 phase 2, 26 HER2-ex20 patients, 3 PR)",
+   "outcome": "tracked",
+   "detail": "her2-ex20-mutant-cells-dacomitinib: efficacy 12 / dose 10 (Kris 2015, same), openings engagement 7, dose 9, efficacy 11, safety 10; contested status and endpoint_role covered by checker verdict on efficacy 12 (rule 4, rule question 6)"
+  },
+  {
+   "lead": "Tarloxotinib TH-4000 EGFR-mutant models (AACR 2015/press release) -> NCT02454842 terminated 'Lack of efficacy' (start 2015-06, n=21, no results posted)",
+   "outcome": "verdict",
+   "detail": "Corrects hypoxia-activated-exon20-xenografts-tarloxotinib (first use 2015 and a missed contra at efficacy 9; also engagement 6, dose 7); checker verdict efficacy 9 'corrected' (rule 7) and rule question 3 cover it. No separate track: model side is only a conference abstract/press release (no tier 1-3 paper in Europe PMC 2010-2020) and patient side is a no-results registry record/tier-5 release"
+  },
+  {
+   "lead": "Poziotinib FDA ODAC briefing 2022-09-22 and Nov 2022 CRL (NDA 215643)",
+   "outcome": "verdict",
+   "detail": "Patient-side regulator record for exon20-baf3-pdx-gemm-poziotinib (dose 5 / efficacy 6, ZENITH20); checker verdict efficacy 6 'corrected' (rule 7) and rule question 4 (which document is src) cover it; not a model system"
+  },
+  {
+   "lead": "Robichaux 2021 structure-based EGFR mutation classification (in silico, retrodiction)",
+   "outcome": "tracked",
+   "detail": "egfr-structure-function-classification-insilico: efficacy 13 (Robichaux 2021, untested opening; afatinib retrodictions are non-member) and efficacy 14 (Elamin 2022, retro)"
+  },
+  {
+   "lead": "Janne 2014 ARCHER 1017 (Lancet Oncol, epub 2014-11-05, PMID 25456362) on dacomitinib del19/L858R track",
+   "outcome": "verdict",
+   "detail": "Dates egfr-del19-nsclc-xenografts efficacy 4 (and paired dose 3) to 2014: EGFR-mutant PFS4 95.5% (95% CI 83.2-98.9) vs <=50% null; checker note on efficacy 4 (decision 7) covers it; same trial as NCT00818441, registry results 2016-06-01"
+  },
+  {
+   "lead": "ZENITH20 cohort-1 earliest records (Spectrum topline Dec 2019/Jan 2020, SEC exhibit, AACR 2020 abstract)",
+   "outcome": "verdict",
+   "detail": "Dating of exon20-baf3-pdx-gemm-poziotinib efficacy 6 (contra) from 2025 to 2019/2020; checker verdict efficacy 6 'corrected' (rule 7) covers it; exact press-release date unconfirmed"
+  }
  ]
 }

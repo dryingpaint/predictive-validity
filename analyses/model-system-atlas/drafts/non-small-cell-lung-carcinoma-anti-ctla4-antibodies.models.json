@@ -168,5 +168,47 @@
   "Gombos 2018 (AGEN1884/zalifrelimab monkey toxicology and human T-cell assays): the monkey system is already tracked as cynomolgus-toxicology, the paper states no patient comparison, and zalifrelimab has no NSCLC patient result (only cervical cancer trials surfaced).",
   "Quavonlimab (MK-1308): no preclinical model paper surfaced; Perets 2021 (NSCLC Phase 1) is already discussed in the draft's engagement judgement.",
   "Humanised-PDX NSCLC mice, patient-derived organoids / tumour fragments and QSP virtual trials: searches returned anti-PD-1-only NSCLC work (Meraz, NPRL2 2025), HCC and breast QSP models, or reviews; no NSCLC system dosed with an anti-CTLA-4 member and compared with patients was found."
+ ],
+ "gaps": [
+  {
+   "lead": "KEYNOTE-598 (NCT03302234)",
+   "outcome": "verdict",
+   "detail": "Corrects syngeneic-mouse-dual-blockade efficacy 6 (and dose 4 derived from it) to contra 2020; covered by the efficacy 6 verdict, adjudicated contra (decision 6)."
+  },
+  {
+   "lead": "Lung-MAP S1400I (NCT02785952)",
+   "outcome": "verdict",
+   "detail": "Second contra on syngeneic-mouse-dual-blockade efficacy; covered by the same efficacy 6 corrected/adjudicated contra verdict (Gettinger 2021)."
+  },
+  {
+   "lead": "CheckMate 73L (NCT04026412)",
+   "outcome": "verdict",
+   "detail": "Patient result for the existing syngeneic-mouse-dual-blockade efficacy track, not a new system; needs a verdict on a 2024 entry after efficacy 6, scoring left to rule question 5 (confounded regimen)."
+  },
+  {
+   "lead": "Du 2018 Cell Res (Ctla4h/h knock-in mice dosed with ipilimumab)",
+   "outcome": "tracked",
+   "detail": "ctla4-humanised-knockin-mouse, safety 7 (retro 2018, product_in_model true), opened by safety 6 (Lute 2005)."
+  },
+  {
+   "lead": "Selby 2016 PLoS One (cynomolgus combination toxicology + human-PBL assays)",
+   "outcome": "verdict",
+   "detail": "Monkey GI findings are a 2016 entry on cynomolgus-toxicology (safety 4 verdict: track stays contra); human-PBL assays not added: only a melanoma efficacy comparison stated, disease-only rule bars import."
+  },
+  {
+   "lead": "FDA PharmR BLA 125377 hCTLA-4 transgenic tumour mice",
+   "outcome": "tracked",
+   "detail": "Folded into syngeneic-mouse-surrogate-ctla4 (engagement 1 verdict notes the filed SA1/N, MC-38, CT-26 hCTLA-4 studies); same prediction and same NSCLC comparisons, track identity is rule question 4."
+  },
+  {
+   "lead": "Ji 2019 Clin Cancer Res (cynomolgus nivolumab+ipilimumab myocarditis)",
+   "outcome": "verdict",
+   "detail": "Same system as cynomolgus-toxicology, not a new model_id; needs a 2019 retro entry on that safety track after safety 4, track status stays contra."
+  },
+  {
+   "lead": "Axelrod 2022 Nature (alpha-myosin T cells in Pdcd1-/- Ctla4+/- mice)",
+   "outcome": "verdict",
+   "detail": "Later retro entry on ctla4-het-pdcd1-null-mouse after safety 9; covered by the safety 9 verdict note (status unchanged)."
+  }
  ]
 }

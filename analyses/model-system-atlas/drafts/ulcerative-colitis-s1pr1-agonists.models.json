@@ -310,5 +310,32 @@
   "Patient-level predictors (S1PR1 expression, genetic variants, organoids, ex vivo sensitivity): none found for a member drug.",
   "Mouse EAE and cuprizone models (ozanimod): MS efficacy, not UC.",
   "Rat/rabbit embryo-fetal toxicity: no patient comparison available."
+ ],
+ "gaps": [
+  {
+   "lead": "Safety: ozanimod cynomolgus monkey CV study (FDA 209899 SumR, imported from MS, model_filed)",
+   "outcome": "tracked",
+   "detail": "monkey-cv-safety-ozanimod, safety cell: 2012 untested opener + 2020 same (imported_from MONDO:0005301, comparison_stated true); checker safety 4-5 confirmed"
+  },
+  {
+   "lead": "Safety: etrasimod dog CV safety pharmacology silent (NOEL 350 mg/kg) vs patients' HR fall",
+   "outcome": "verdict",
+   "detail": "Tracked as dog-cv-telemetry-etrasimod (safety, 2014 opener + 2023 entry); checker verdict safety 7 corrects its contra to untested (dogs do not show S1P1 first-dose bradycardia, Bolli 2013 PMID 24069292), adjudicated untested"
+  },
+  {
+   "lead": "Efficacy patient_trials: NCT02447302 (etrasimod OASIS) lacks DOI; Sandborn 2020 doi 10.1053/j.gastro.2019.10.035",
+   "outcome": "verdict",
+   "detail": "Metadata fix to the draft's efficacy entry 2 patient_trials row NCT02447302 (doi null -> https://doi.org/10.1053/j.gastro.2019.10.035); no status change, covered by the checker's missing note"
+  },
+  {
+   "lead": "Unreported UC failures of a member drug",
+   "outcome": "none",
+   "detail": "Checker searched: ozanimod (True North) and etrasimod (ELEVATE) met UC endpoints; mocravimod NCT01375179 terminated with no reason or results, so no patient result to compare (already noted in efficacy entry 1)"
+  },
+  {
+   "lead": "Safety: conscious guinea-pig telemetry with ponesimod (Bolli 2013, PMID 24069292)",
+   "outcome": "none",
+   "detail": "Outside the rules for added_models: ponesimod is not a member drug and the comparison was with ponesimod healthy-volunteer data, not a member drug's patient result; serves only as the evidence behind verdict safety 7"
+  }
  ]
 }

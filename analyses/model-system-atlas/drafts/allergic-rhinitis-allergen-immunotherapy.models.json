@@ -531,5 +531,37 @@
   "DP/MG/14-1: zero hits on Europe PMC and ClinicalTrials.gov; identity could not be established.",
   "Human genetic model of allergen tolerance: none exists for this class.",
   "In-silico / QSP dose-selection model: none found for any member (Europe PMC QSP / PK-PD / 'in silico' + allergen immunotherapy + dose)."
+ ],
+ "gaps": [
+  {
+   "lead": "gp-ASIT+ conjunctival provocation test (CPT) track",
+   "outcome": "tracked",
+   "detail": "gpasit-conjunctival-provocation-test in added_models: engagement 2013 untested/2018 same, dose 2013 untested/2018 same/2019 contra, efficacy 2013 untested/2018 same/2019 contra, safety 2013 untested/2018 same (merged draft engagement 3-4, dose 5-6, efficacy 3-5, safety 5-6)"
+  },
+  {
+   "lead": "NCT02150343 HDM-SPIRE field Phase 2b results posted 2018-06-15",
+   "outcome": "verdict",
+   "detail": "Corrects allergen-exposure-chamber dose 3, efficacy 2, safety 3 (trial_unreported false, statuses unchanged); checker verdicts on dose 3 and efficacy 2 already state it, safety 3 needs the same flag"
+  },
+  {
+   "lead": "Circassia PRNewswire 2013-09-12 HDM-SPIRE chamber Phase II",
+   "outcome": "verdict",
+   "detail": "Dates allergen-exposure-chamber engagement 2 to 2013 (corrected verdict, proposed_year 2013) and is the model-side safety statement noted in the safety 3 verdict; same chamber system, no new track"
+  },
+  {
+   "lead": "Health Canada RDS00632 Itulatek (birch SLIT-tablet)",
+   "outcome": "verdict",
+   "detail": "Sets model_filed true on allergen-exposure-chamber dose 4 and safety 4 (SQ tree chamber dose-finding); safety 4 verdict already says so, dose 4 needs it"
+  },
+  {
+   "lead": "Not found / not searched: SPIRE peptide animal models, DP/MG/14-1, Salsola kali, rBet v 1 mouse",
+   "outcome": "tracked",
+   "detail": "rBet v 1 mouse now tracked as rbetv1-balbc-birch-asthma-mouse (efficacy 6-7); SPIRE peptide animal, DP/MG/14-1 and Salsola kali searched in the models pass with no model-to-patient comparison found (none, see considered_not_added)"
+  },
+  {
+   "lead": "Stallergenes 2009-09-16 VO59.08 Phase IIb/III press release",
+   "outcome": "verdict",
+   "detail": "Earliest patient source for rbetv1-balbc-birch-asthma-mouse efficacy 6-7 (retrodiction true; efficacy 7 corrected verdict year 2013) and for patient-blood-dc-pbmc dose 2/safety 2; corrects dating, adds no system"
+  }
  ]
 }

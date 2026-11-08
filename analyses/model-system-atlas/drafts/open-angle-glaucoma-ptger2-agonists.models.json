@@ -7,7 +7,8 @@
   "grep label for ocular inflammation, macular edema, eyelash changes; StatR Table 12 AE rows",
   "PubMed esearch: omidenepag OR DE-117 OR aganepag OR simenepag OR AGN-210961 (all ~100 titles scanned)",
   "PubMed efetch abstracts: 31934812, 34003984, 32412835, 37884204, 40773215, 31913226, 34283308, 33005498, 32994409",
-  "PubMed esearch: omidenepag (eyelash OR sulcus OR periorbit) (phase 3 OR RENGE OR AYAME)"
+  "PubMed esearch: omidenepag (eyelash OR sulcus OR periorbit) (phase 3 OR RENGE OR AYAME)",
+  "Gap pass: PubMed esearch aganepag OR simenepag OR AGN-210961 OR AGN-210669 (8 hits, none an aganepag/simenepag model-to-patient comparison); esummary 31674861, 34495425"
  ],
  "added_models": [
   {
@@ -442,5 +443,27 @@
   "Cystoid macular edema: case series only (PMIDs 40773215, 33692292, 37495978); no model of monotherapy CME found",
   "Aganepag isopropyl and simenepag isopropyl: no admissible model source or patient comparison found (no FDA bundle, no PubMed hits)",
   "No patient-level, PDX, human genetic or in-silico/QSP dose models exist for this class"
+ ],
+ "gaps": [
+  {
+   "lead": "Monkey laser-flare study 104Fq080 retro track on ocular inflammation",
+   "outcome": "tracked",
+   "detail": "cyno-laser-flare-combo, safety entries 3 (untested 2019) and 4 (retro 2022, PharmR + label 5.3)"
+  },
+  {
+   "lead": "Phase 1 healthy-volunteer IOP lowering (Aihara 2019, PMID 31674861)",
+   "outcome": "verdict",
+   "detail": "Extra patient datum for cyno-laser-oht-iop engagement entry 2 (same, 2019); checker verdict on that entry already notes it; no new system, no status or year change"
+  },
+  {
+   "lead": "aganepag isopropyl and simenepag isopropyl",
+   "outcome": "none",
+   "detail": "PubMed search (aganepag/simenepag/AGN-210961/AGN-210669) finds no published model-to-patient comparison; no NDA in the FDA bundle"
+  },
+  {
+   "lead": "RENGE 12-month study (PMID 34495425) as patient source for DUES/PAPS tracks",
+   "outcome": "verdict",
+   "detail": "Alternative tier 1 patient source for 3t3l1-adipogenesis safety entry 8 (same, 2020) and hof-3d-organoid-adipogenesis entry 10 (retro); RENGE (2021) is later than the cited 2020 source, so no status or year change"
+  }
  ]
 }

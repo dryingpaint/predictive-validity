@@ -9,7 +9,10 @@
   "Europe PMC: TQ-A3334 OR JNJ-4964 OR JNJ-64794964 (incl. population PK/PD model)",
   "Europe PMC: (vesatolimod OR GS-9620) AND pharmacokinetic/pharmacodynamic model AND hepatitis",
   "Europe PMC: (GS-9620 OR vesatolimod) AND hepatitis B AND ex vivo AND patients (Boni 2018)",
-  "ClinicalTrials.gov API: GS-9620 / vesatolimod studies and start dates"
+  "ClinicalTrials.gov API: GS-9620 / vesatolimod studies and start dates",
+  "Europe PMC core records: Herschke 2021 (PMID 34718044), JNJ-4964 FIH (PMID 35485332), TQ-A3334 HV (PMID 33405993), Boni 2018 (PMID 29378197)",
+  "Full text Herschke 2021 via fc.py scrape (ScienceDirect): plasma cytokines, ALT, histology, human references",
+  "Europe PMC: ANA773 OR RG7795 OR RO6864018 (56 hits; only HCV patient trials and reviews), with woodchuck/mouse/chimpanzee/hepatocyte"
  ],
  "added_models": [
   {
@@ -233,6 +236,80 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "aav-hbv-mouse",
+   "model": "AAV/HBV mice",
+   "model_kind": "animal",
+   "model_first_use_year": 2021,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "product_in_model": true,
+      "judgement": null,
+      "year": 2021,
+      "status": "untested",
+      "readout_tier": "downstream",
+      "note": "Weekly oral JNJ-4964/TQ-A3334 in AAV/HBV mice induced plasma CXCL10 (IP-10), IFN-α, IL-12p40, IFN-γ, IL-6 and MCP-1 8 h after dosing.",
+      "short": "AAV/HBV mice: CXCL10, IFN-α induced",
+      "src": "https://doi.org/10.1016/j.antiviral.2021.105196",
+      "srcLabel": "Herschke 2021",
+      "quote": "At 20 mg/kg, a ∼75-fold induction of CXCL10 was observed after the 1st dose",
+      "confidence": "medium",
+      "confidence_note": "Full text read (ScienceDirect HTML, Section 3.2 and Fig. 5); mouse paper epub 2021-10-28, print 2021-12.",
+      "epub_year": 2021,
+      "print_year": 2021
+     },
+     {
+      "model_src": "https://doi.org/10.1016/j.antiviral.2021.105196",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "plasma/serum IFN-α, IP-10 (CXCL10) and MCP-1 induction after dosing, present vs present",
+      "source_calls_it": null,
+      "population": "Unselected (HBeAg-positive or -negative CHB, viremic or NA-suppressed)",
+      "subjects": "healthy_volunteers",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "product_in_model": true,
+      "judgement": "Retrodiction: the healthy-volunteer cytokine and ISG data (TQ-A3334 epub 2021-01-13; JNJ-4964 FIH 2021-05) were public before the mouse paper (epub 2021-10-28); it reproduced them, so retro. Medium confidence: the mouse dosing date is not stated.",
+      "year": 2021,
+      "status": "retro",
+      "readout_tier": "downstream",
+      "note": "In healthy adults JNJ-4964 dose-dependently raised serum IFN-α, IP-10 and MCP-1 and ISGs, the cytokines the mouse showed.",
+      "short": "HV: IFN-α, IP-10, MCP-1 rose as in mice",
+      "src": "https://doi.org/10.1177/13596535211056581",
+      "srcLabel": "JNJ-4964 FIH 2021",
+      "quote": "JNJ-4964 dose-dependently and transiently induced cytokines with potential anti-HBV activity, including interferon-α, IP-10, IL-1 RA, and/or MCP-1, and interferon-stimulated genes (ISG15, MX1, and OAS1) in serum.",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level for the human study (PMID 35485332). Paired by me. TQ-A3334 HV study (doi:10.1080/13543784.2021.1873275) likewise saw MCP-1, ISG15, MX1, OAS1 rise at 1.0-1.8 mg.",
+      "reason": "HV cytokines matched, after the fact",
+      "epub_year": 2021,
+      "print_year": 2021
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -244,5 +321,32 @@
   "Humanized-liver (uPA/SCID) mouse with GS-9620: no study found",
   "Holmberg 2025 GS-9620 ex vivo sex/age activity: HIV context, PBMC from donors, no CHB patient comparison",
   "Li 2018 (doi:10.1016/j.jhep.2017.12.008) intrahepatic T/B-cell aggregates: chimpanzee system already tracked"
+ ],
+ "gaps": [
+  {
+   "lead": "Boni 2018 Gastroenterology patient T/NK-cell responses",
+   "outcome": "tracked",
+   "detail": "hbv-chimpanzee-texas engagement 2 is already same (2013, downstream ISGs); Boni 2018 is further patient-side downstream confirmation on that track, no status change"
+  },
+  {
+   "lead": "AAV/HBV mouse engagement (JNJ-4964 FIH, TQ-A3334 HV ISGs)",
+   "outcome": "added",
+   "detail": "aav-hbv-mouse engagement: untested 2021 (plasma CXCL10/IFN-α, Herschke 2021) then retro 2021 (JNJ-4964 HV cytokines/ISGs public before the mouse paper)"
+  },
+  {
+   "lead": "AAV/HBV mouse safety (normal ALT vs HV flu-like AEs, lymphopenia, cotton-wool spots)",
+   "outcome": "none",
+   "detail": "Safety rule / untested_reason no_prediction: the mouse named no harm; normal ALT is its non-cytolytic mechanism readout, and HV harms (flu-like symptoms, lymphopenia, retinal spots) were not measured in it; no harm-vs-patient comparison"
+  },
+  {
+   "lead": "Viremic phase 2 NCT02579382 (Agarwal 2018) patient_trials",
+   "outcome": "tracked",
+   "detail": "already in patient_trials of hbv-chimpanzee-texas efficacy 3 and whv-woodchuck-cornell efficacy 5 (registry_date 2020-05-18, doi 10.1111/jvh.12942)"
+  },
+  {
+   "lead": "RG7795 (ANA773) preclinical-vs-patient comparison",
+   "outcome": "none",
+   "detail": "Europe PMC ANA773/RG7795/RO6864018: patient data only in HCV (Bergmann 2011, 2012) and HV of a different prodrug; no HBV model compared with CHB patients"
+  }
  ]
 }

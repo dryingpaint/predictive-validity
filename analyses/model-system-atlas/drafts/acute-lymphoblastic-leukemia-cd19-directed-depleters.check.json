@@ -205,6 +205,29 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Quote verbatim in abstract (fever, IL-6, delayed meningeal neurotoxicity). Model framed as recapitulating clinic-known CRS/neurotoxicity, so retrodiction and retro correct. CD19 vs CD44v6 arm split not verified (paywall)."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to Kang 2020 Exp Hematol Oncol (PMC7278071; received Mar 2020, epub Jun 2020); quote verbatim in abstract. Opening untested entry at first publication is right; NSG-Raji system distinct from other tracks."
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "rule": "Evidence rule 1: a trial paper that merely cites the model paper is a pairing (comparison_stated: false, model_src named)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim (PMC11456753). Ma 2024 only cites the preclinical work (ref 23) without mouse numbers: set comparison_stated false, model_src Kang 2020 (tier 1). Infusions Dec 2015-Feb 2019 predate the mouse paper; post hoc, non-randomized: lower confidence."
   }
  ],
  "missing": [
@@ -218,6 +241,7 @@
   "A phase 1 trial whose primary endpoint is safety and whose only efficacy readout is a secondary (CR/MRD) with no poc_gate designation: does efficacy stay untested (strict reading, as proposed for efficacy 4) or can a single-arm phase 1 count its response readout?",
   "Engagement for a cell-depleting class: is clearance of the target-bearing malignant cells (MRD) an engagement readout at all, given it is also the efficacy endpoint, or should engagement use normal B-cell aplasia?",
   "Safety for an ADC track where the mouse tolerability study dosed below the human-equivalent of the clinical dose: does 'no obvious side effects' count as a stated prediction (scorable same/contra) or as no_prediction?",
-  "A nonclinical package filed for one indication (Tecartus MCL SBRA) and carried to another (B-ALL supplement): should model_filed be true for the second indication without the supplement review being opened?"
+  "A nonclinical package filed for one indication (Tecartus MCL SBRA) and carried to another (B-ALL supplement): should model_filed be true for the second indication without the supplement review being opened?",
+  "safety 11 (nsg-raji-ssCART19-il6kd): all patient infusions (Dec 2015-Feb 2019) preceded Kang 2020 submission (Mar 2020), but the ssCART-vs-cCART comparison was first analysed post hoc in 2024 and the mouse run date is not stated. Is a model published after patients were dosed, but before the comparative result was analysed, prospective (same) or retro?"
  ]
 }

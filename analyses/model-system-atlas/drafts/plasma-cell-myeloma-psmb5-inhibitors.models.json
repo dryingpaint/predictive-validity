@@ -314,5 +314,37 @@
   "Exposure-response logistic model for maintenance dose selection (Gupta 2016, doi 10.1007/s10637-016-0346-7; 3 mg to 4 mg titration for TOURMALINE-MM3/MM4): a different in-silico model whose patient side is newly diagnosed maintenance, outside the tile's relapsed/refractory population until rule question 3 is settled. PBPK CYP3A DDI model and the ORR-to-PFS model-based meta-analysis (Gupta 2019, doi 10.1002/cpt.1047): not dose-target or disease-model predictions.",
   "Berenson 2012 LAGκ/RPMI8226 delanzomib + dexamethasone/lenalidomide xenografts (doi 10.1016/j.leukres.2012.07.018): same LAGκ system; its combination trial NCT01348919 (ORR 40% at MTD, 5 patients, results 2023-06-28) is recorded as patient_trials on the LAGκ track and changes no status.",
   "Oprozomib in Waldenström macroglobulinaemia xenografts (Roccaro 2010): different disease. Solid-tumour and lymphoma phase 1 PD (Smith 2015): already the draft's engagement entry. Patient PBMC proteasome-inhibition assays: patient-side readouts, not a model system."
+ ],
+ "gaps": [
+  {
+   "lead": "Gallerani 2013 delanzomib patient PD (doi 10.1016/j.ejca.2012.09.009)",
+   "outcome": "tracked",
+   "detail": "delanzomib-mm-xenograft, engagement entry 4 (2012 same, direction_only); its rash datum is the safety-5 verdict (corrected to 2012 contra) and its RD/MTD datum is checker rule question 1 on the dose cell"
+  },
+  {
+   "lead": "TOURMALINE-MM2 (NCT01850524; Facon 2021, doi 10.1182/blood.2020008787, PMID 33763699): missed PFS primary, HR 0.830, p=0.073",
+   "outcome": "verdict",
+   "detail": "Corrects mm1s-scid-xenograft efficacy entry 3 (2015 same) rather than adding a system; brief line 12 makes population genotype/biomarker/pathogen only, so NDMM is in context and a 2020 contra is likely; covered by the efficacy-3 verdict note and rule questions 3-4"
+  },
+  {
+   "lead": "TOURMALINE-MM3 (doi 10.1016/S0140-6736(18)33003-4, epub 2018-12-10) and TOURMALINE-MM4 (doi 10.1200/JCO.20.02060, epub 2020-10-06): positive PFS maintenance trials",
+   "outcome": "verdict",
+   "detail": "Same-direction patient_trials for mm1s-scid-xenograft efficacy entry 3 (DOIs verified in Europe PMC); no new system; hinges on rule question 3"
+  },
+  {
+   "lead": "EMA CHMP negative opinion 2016-05-26, positive on re-examination 2016-09-15, conditional MA 2016-11-21 (EPAR EMEA/H/C/003844)",
+   "outcome": "verdict",
+   "detail": "Tier-2 record of TOURMALINE-MM1 for mm1s-scid-xenograft efficacy entry 3 (source/patient_trials, possibly a dated contra); covered by the efficacy-3 verdict note and rule question 5"
+  },
+  {
+   "lead": "Patient-derived ex vivo MM cells (Piva 2008; Chauhan 2010, 2011)",
+   "outcome": "tracked",
+   "detail": "mm-patient-cells-ex-vivo, efficacy entries 5 (2007 untested) and 6 (Kumar 2014, adjudicated untested under decision 4 by the efficacy-6 verdict)"
+  },
+  {
+   "lead": "Oprozomib halt source: NCT01416428 whyStopped carries the program-evaluation statement",
+   "outcome": "verdict",
+   "detail": "Citation correction to oprozomib-rodent-dog-tolerability safety entry 6 (Ghobrial 2019), whose judgement cites only NCT01881789; the safety-6 verdict already records the NCT01416428 whyStopped"
+  }
  ]
 }

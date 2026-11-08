@@ -367,5 +367,52 @@
   "Tokai 2016-07-26 release (tier 5): a patient-side datum on the galeterone tracks, not a model system; the new CTC track follows the draft's dating (tier-1 2019 sets the status) pending the adjudicator's rule question 2.",
   "ARMOR2 AR-V7 subset (EORTC-NCI-AACR 2014) and Shore 2016 ASCO seviteronel abstracts: conference-only, no admissible tier; the former enters only through Kwegyir-Afful 2015's report of it.",
   "2026 preprints on seviteronel vs abiraterone steroidogenic effects (10.21203/rs.3.rs-10778095/v1): not peer-reviewed, not tier 1."
+ ],
+ "gaps": [
+  {
+   "lead": "Tokai 10-K / press release 2016-07-26 (ARMOR3-SV DMC futility)",
+   "outcome": "verdict",
+   "detail": "Dating of galeterone-cwr22rv1-arv7 efficacy[6] (and galeterone-ctc-ar-variant-assay efficacy[9]) 2019 contra: whether a 2016 tier-5 contra with trial_unreported true precedes it is checker rule question 2; no new system"
+  },
+  {
+   "lead": "ARMOR2 AR-V7 subset 6/7 PSA responders (EORTC-NCI-AACR 2014)",
+   "outcome": "tracked",
+   "detail": "galeterone-ctc-ar-variant-assay efficacy[8] 2015 untested (via Kwegyir-Afful 2015); conference-only admissibility is rule question 6, opener-vs-retro is the CTC rule question"
+  },
+  {
+   "lead": "NCT01709734 (ARMOR2) TERMINATED for lack of efficacy",
+   "outcome": "verdict",
+   "detail": "Registry datum on galeterone-lapc4-xenograft efficacy[4] 2015 same; checker verdict on efficacy[4] already notes it and keeps the 2015 status under rule 7; no results posted"
+  },
+  {
+   "lead": "Madan 2020 registry record NCT02130700 vs inferred NCT02445976",
+   "outcome": "verdict",
+   "detail": "Corrects the NCT on seviteronel-crpc-xenografts efficacy[7] 2020 contra (and safety[6]); needs a checker verdict on that entry's patient_trials, no new system"
+  },
+  {
+   "lead": "Seviteronel NCT02012920 / NCT02361086 and Shore 2016 ASCO abstract",
+   "outcome": "none",
+   "detail": "Both trials completed with no posted results; Europe PMC (seviteronel OR VT-464) AND phase AND prostate (516 hits) shows no journal report beyond Madan 2020 and the 2019 pop-PK fit; ASCO abstract is conference-only (no admissible tier)"
+  },
+  {
+   "lead": "ODM-204 model dating (trial start 2015-02 vs Oksala 2018)",
+   "outcome": "verdict",
+   "detail": "model_first_use_year on odm204-vcap-xenograft (engagement[6], dose[4], efficacy[5], safety[5]); covered by checker rule question 5, no new system"
+  },
+  {
+   "lead": "Patient-derived organoids / ex-vivo cells for galeterone or seviteronel",
+   "outcome": "none",
+   "detail": "None found (searches in 'searched'); Alyamani 2017 is patient-serum metabolism explaining the miss, not a model prediction; seviteronel's only PDX is on seviteronel-crpc-xenografts"
+  },
+  {
+   "lead": "ODM-204 cynomolgus-monkey / hCG-rat steroidogenesis (Oksala 2019)",
+   "outcome": "verdict",
+   "detail": "model_id split of existing engagement[6] and safety[5] (to e.g. odm204-primate-steroidogenesis with 2018 untested openers) for the adjudicator; adding it here would double-count those two patient comparisons"
+  },
+  {
+   "lead": "Yin 2017 seviteronel shows no lyase selectivity",
+   "outcome": "none",
+   "detail": "Model-side contradiction of seviteronel-cyp17a1-lyase-selectivity with no patient comparison; no entry under the model-to-patient comparison rule"
+  }
  ]
 }

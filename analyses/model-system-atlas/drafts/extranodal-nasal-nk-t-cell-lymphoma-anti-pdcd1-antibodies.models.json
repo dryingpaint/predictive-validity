@@ -117,5 +117,27 @@
   "Cynomolgus toxicology for sintilimab and camrelizumab: no FDA review in the bundle (no NDA/BLA), not verified; tislelizumab monkey track already in the draft.",
   "Humanized-mouse, PDX, organoid or ex-vivo drug-sensitivity models of ENKTL with a member drug: none found in Europe PMC searches.",
   "Tislelizumab combination trials in ENKTL (liposomal mitoxantrone 2026, selinexor TOUCH 2026): combination regimens, no model-vs-patient comparison found at title level."
+ ],
+ "gaps": [
+  {
+   "lead": "NK/T-cell-line tumour-bearing mouse model treated with anti-PD-1 (Xue 2019, OTT, doi:10.2147/OTT.S187280)",
+   "outcome": "tracked",
+   "detail": "el4-syngeneic-mouse-rmp1-14, efficacy (2019 untested, 2020 same vs ORIENT-4); the in-vivo tumour is EL4 with surrogate RMP1-14, product_in_model false; retro question already in checker verdict efficacy index 5"
+  },
+  {
+   "lead": "ENKTL cell lines with STAT3-driven PD-L1 expression (Song 2018, Blood)",
+   "outcome": "none",
+   "detail": "in-vitro PD-L1 regulation with no member or surrogate anti-PD-1 dosed and no prediction compared with patients; rationale already covered by enktl-biopsy-pdl1-ihc"
+  },
+  {
+   "lead": "PD-L1 genomic structural alterations as responder selector (Lim 2020, Leukemia)",
+   "outcome": "none",
+   "detail": "tested on pembrolizumab only; outside the member list (camrelizumab, sintilimab, tislelizumab), only members score"
+  },
+  {
+   "lead": "Sintilimab plus chidamide in r/r ENKTL (SCENT, STTT 2024)",
+   "outcome": "none",
+   "detail": "abstract reviewed: ctDNA/EBV-DNA kinetics and STAT3 mutation are on-treatment prognostic biomarkers in an HDAC-inhibitor combination, not a model system predicting member-drug response"
+  }
  ]
 }

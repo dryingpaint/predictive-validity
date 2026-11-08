@@ -205,6 +205,39 @@
    "rule": "10",
    "note": "Quote verbatim. Contra upheld: the panel ran PSI-938 in primary human hepatocytes, Huh-7, HepG2 (all >89-100 uM) and PolRMT (1.6%), so the hepatic harm was asked and answered clean, and nucleoside hepatotoxicity is the harm class such panels exist to flag. Alternative (#90 tested-could-not-resolve -> untested/unresolved; Good 2020 CYP3A4 O6-ethylguanine 'likely' mechanism) raised as a rule question.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Good 2020 PLoS One full text (PMC6949113) abstract carries the quote verbatim. Opener untested at first published use (2020) for a member; distinct CYP3A4 metabolite system from the mitochondrial tracks."
+  },
+  {
+   "cell": "safety",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in Results; PSI-938 1.57 uM O6-ethylguanine (31%) confirmed. Run after PSI-938's 2011-12 ALT stop, so retro 2020 is right. Hedged 'likely due to' supports low confidence."
+  },
+  {
+   "cell": "safety",
+   "index": 16,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2025,
+   "rule": "Dating (decision 6): year is the earliest date the comparison was public, including registry results posting; registry_date is mandatory",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in Hepatology abstract (PMID 42826065, epub 2026-10-02). NCT05904470 results posted 2025-10-21: 19/275 SAEs, none hepatic, no hepatic AE among common events. Status same holds; year should be 2025, registry_date 2025-10-21."
   }
  ],
  "missing": [

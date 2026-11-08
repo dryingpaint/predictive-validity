@@ -9,7 +9,9 @@
   "PubMed: (IL-33) AND atopic dermatitis AND (predict* OR correlat*) AND (serum OR ex vivo OR biomarker) AND (response OR responder*) (13 hits, no patient-level responder model)",
   "PubMed efetch: Kosloski 2024 (39077906), itepekimab phase 1 (34523807), tozorakimab popPK/TE (39183511) for the PD readouts reported in dosed humans (eosinophils, total IL-33; no serum IgE, no IL-5)",
   "ClinicalTrials.gov API v2: all LY3375880/torudokimab trials (NCT03343587, NCT03831191, NCT03913260) with outcome measures; NCT03831191 and NCT03533751 whyStopped and results dates",
-  "Europe PMC: full text for Chen 2019 STM (none: not OA, no author manuscript); abstract-level only"
+  "Europe PMC: full text for Chen 2019 STM (none: not OA, no author manuscript); abstract-level only",
+  "Oxford ORA accepted manuscript of Chen 2019 (pdftotext): serum total IgE unchanged at day 29/140; discussion cites Peng 2018 decreased IgE",
+  "Europe PMC core record PMID 32296080 (Pietka 2020) abstract and dates"
  ],
  "added_models": [
   {
@@ -24,14 +26,14 @@
       "year": 2017,
       "status": "untested",
       "model": "Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)",
-      "note": "Antibody blockade in DNCB mice cut lesional eosinophil and mast-cell infiltration and serum IgE; none of these readouts was posted from an anti-IL-33 AD trial.",
+      "note": "Antibody blockade in DNCB mice cut lesional eosinophil and mast-cell infiltration and serum IgE; no dosed-human readout yet.",
       "short": "DNCB mice: skin eosinophils, IgE fell",
       "src": "https://doi.org/10.1007/s10753-017-0673-7",
       "srcLabel": "Peng 2018",
       "quote": "Eosinophils and mast cells infiltration and serum IgE levels were also significantly reduced by αIL-33Ab.",
       "confidence": "medium",
-      "confidence_note": "Abstract-level (Springer, paywalled). Blood eosinophils fell in dosed patients (Chen 2019; Kosloski 2024), but the model's readouts were lesional infiltrates and serum IgE, neither posted for a member's AD trial (NCT03533751, NCT03738423, NCT03831191 outcome lists), so no pairing was made.",
-      "judgement": "Own track: a dosed neutralising antibody in a hapten (DNCB) model is a different system from the MC903 transgenic/knockout track and makes a different kind of prediction (pharmacological, not genetic). Untested rather than same: the compartment differs (skin infiltrate vs blood count) and serum IgE was not reported in any AD trial of the four members.",
+      "confidence_note": "Abstract-level (Springer, paywalled). The serum-IgE readout is compared with dosed AD patients in the 2019 entry (Chen 2019 accepted manuscript); lesional eosinophil and mast-cell infiltrates were never posted for a member's AD trial.",
+      "judgement": "Own track: a dosed neutralising antibody in a hapten (DNCB) model is a different system from the MC903 transgenic/knockout track and makes a different kind of prediction (pharmacological, not genetic). Opens untested at 2017 (online 2017-09-26).",
       "model_id": "anti-il33-mab-dncb-mouse-ad",
       "subjects": null,
       "comparison_stated": false,
@@ -54,6 +56,42 @@
       "population": "Unselected",
       "model_first_use_year": 2017,
       "prediction_level": "class"
+     },
+     {
+      "year": 2019,
+      "status": "contra",
+      "model": "Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)",
+      "note": "One 300 mg etokimab dose left serum total IgE unchanged at day 29 and day 140 in 12 AD patients, where antibody-dosed DNCB mice had lowered serum IgE.",
+      "short": "Mouse IgE fell; patients' IgE unchanged",
+      "src": "https://doi.org/10.1126/scitranslmed.aax2945",
+      "srcLabel": "Chen 2019",
+      "quote": "There was no significant change in serum total IgE during the study",
+      "confidence": "low",
+      "confidence_note": "Read in the Oxford accepted manuscript (ORA uuid:5e031a33): open-label single dose, 12 patients, no placebo arm for IgE; means 10101 to 9954 kU/L at day 29. Blood eosinophils did fall (draft's mouse-track entry), so the miss is readout-specific.",
+      "judgement": "Paired myself: Chen 2019 cites Peng's decreased serum IgE in its discussion but does not set it against its own null IgE result. The model's serum-IgE prediction did not reproduce in dosed AD patients; contra on that readout, low confidence.",
+      "model_id": "anti-il33-mab-dncb-mouse-ad",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1007/s10753-017-0673-7",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": false,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "serum total IgE, day 29 and day 140 vs baseline (no change)",
+      "source_calls_it": null,
+      "population": "Unselected",
+      "model_first_use_year": 2017,
+      "prediction_level": "class",
+      "readout_tier": "downstream"
      }
     ],
     "efficacy": [
@@ -443,13 +481,55 @@
   }
  ],
  "considered_not_added": [
-  "Pietka 2020 (Sci Rep, 10.1038/s41598-020-63410-z; received 2020-01-28 citing the NCT03533751 failure; IL-33-/-, ST2-/- and double-knockout mice develop MC903 dermatitis like wild type): same system as the draft's il33-st2-mouse-dermatitis track (knockouts on MC903), so a retro entry on that existing track, not a new model; left to the draft owner.",
   "Laquer 2022 BJD (10.1111/bjd.21631, epub 2022-07-29): tier 1 report of torudokimab's AD trial, patient side only; belongs in patient_trials on the existing tracks (carried here only inside the added tracks' patient_trials).",
   "Tozorakimab population PK/target-engagement model (Br J Clin Pharmacol 2024, 10.1111/bcp.16195): in_silico dose model built on healthy-volunteer and COPD phase 1 data, published after FRONTIER-2, no AD exposure target or AD comparison stated; a COPD-tile track if any.",
   "Itepekimab phase 1 PK/PD in healthy adults and asthma (Clin Transl Sci 2022, 10.1111/cts.13157): human dosing data, not a model system; its eosinophil/total-IL-33 readouts are already the draft's engagement comparison via Kosloski 2024.",
   "England 2023 (Sci Rep, 10.1038/s41598-023-36642-y) tozorakimab characterization: primary human cells and a murine lung epithelial-injury model, no skin or AD system; Imai 2019 JID is the K14-IL-33 transgenic system already tracked.",
   "Itepekimab/REGN3500 preclinical airway models (humanized-IL-33 HDM asthma mice) and etokimab peanut-allergy study (JCI Insight 2019): other indications, no AD comparison.",
   "Peng 2018's serum IL-33/sST2 correlation with human AD activity: a biomarker association, not a prediction about treatment; noted in the track's judgement, not scored.",
-  "Patient-level systems (patient-derived cells or organoids, ex-vivo responder assays, PDX) for anti-IL-33 in AD: PubMed search returned none."
+  "Patient-level systems (patient-derived cells or organoids, ex-vivo responder assays, PDX) for anti-IL-33 in AD: PubMed search returned none.",
+  "Pietka 2020 (Sci Rep, 10.1038/s41598-020-63410-z; received 2020-01-28 after the ATLAS miss): IL-33-/-, ST2-/- and double-knockout mice develop MC903 dermatitis like wild type. Same system as the draft's il33-st2-mouse-dermatitis track; its retro entry (efficacy, 2020) falls between that track's 2019 and 2024 contra entries, which an append through added_models cannot place, so it is left as a verdict for the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "Peng 2018 anti-mouse-IL-33 antibody in DNCB mice",
+   "outcome": "tracked",
+   "detail": "anti-il33-mab-dncb-mouse-ad: engagement 2017 untested; efficacy 2017 untested, 2019 contra, 2021 contra"
+  },
+  {
+   "lead": "Pietka 2020 retro entry on il33-st2-mouse-dermatitis",
+   "outcome": "verdict",
+   "detail": "needs an efficacy entry on draft track il33-st2-mouse-dermatitis, year 2020, retrodiction true (reproduces the null; lint flags contra->matched), between efficacy entries 3 (2019) and 7 (2024); not appendable here"
+  },
+  {
+   "lead": "DaSilva-Arnold 2018 Stat6VT IL-33-deficient mice",
+   "outcome": "tracked",
+   "detail": "stat6vt-il33-deficient-mouse: efficacy 2018 untested, 2019 same"
+  },
+  {
+   "lead": "Okragly 2021 torudokimab human-IL-33 mouse PD assay",
+   "outcome": "tracked",
+   "detail": "torudokimab-hil33-mouse-pd: engagement 2021 untested"
+  },
+  {
+   "lead": "Chen 2019 etokimab in-vitro neutrophil migration",
+   "outcome": "tracked",
+   "detail": "etokimab-neutrophil-migration-ex-vivo: engagement 2019 untested, 2019 same (comparison_stated)"
+  },
+  {
+   "lead": "Laquer 2022 BJD torudokimab trial report",
+   "outcome": "verdict",
+   "detail": "patient source, not a model: doi 10.1111/bjd.21631 belongs on NCT03831191 patient_trials of the draft's efficacy tracks; carried on anti-il33-mab-dncb-mouse-ad efficacy 2021"
+  },
+  {
+   "lead": "England 2023 tozorakimab; Imai 2019 K14-IL-33",
+   "outcome": "none",
+   "detail": "England: no skin/AD system (lung model); Imai 2019: same system as il33-st2-mouse-dermatitis, already tracked"
+  },
+  {
+   "lead": "Peng 2018 serum-IgE readout vs Chen 2019 IgE",
+   "outcome": "added",
+   "detail": "anti-il33-mab-dncb-mouse-ad engagement 2019 contra (low confidence), Chen 2019 accepted manuscript; opener note updated"
+  }
  ]
 }

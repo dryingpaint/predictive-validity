@@ -171,5 +171,27 @@
   "QSP / computer-modeling of PDE10A inhibitors (Geerts/In Silico Biosciences): only reviews found (Geerts 2017, 2019), no dated PDE10A prediction to compare.",
   "Primate EPS/dyskinesia models for members: none found.",
   "Patient-derived cells, organoids or ex-vivo assays: none for this class in schizophrenia."
+ ],
+ "gaps": [
+  {
+   "lead": "DeMartinis et al. 2012 SIRS Poster #212 (doi 10.1016/s0920-9964(12)70783-1), PF-02545920 monotherapy phase 2a",
+   "outcome": "verdict",
+   "detail": "Corrects the date of efficacy index 2 (rodent-antipsychotic-screens, contra) from 2016 to 2012; the checker verdict on efficacy index 2 already proposes 2012. Any earlier dating of dose index 2 (pde10a-rodent-exposure-occupancy) needs a verdict once the poster text is read."
+  },
+  {
+   "lead": "OMS824 (member): Omeros suspended PDE10 trials in 2015 after a rat high-dose toxicology finding",
+   "outcome": "none",
+   "detail": "A preclinical finding that stopped trials, with no patient result to compare, falls outside the rule that a system must be compared with patient results. Already listed in considered_not_added."
+  },
+  {
+   "lead": "Lu AF11167 NCT03793712 (stopped for futility), registry_date null",
+   "outcome": "verdict",
+   "detail": "A date field on efficacy index 2 (rodent-antipsychotic-screens), patient_trials row NCT03793712. No results are posted; the earliest public date is Meyer-Lindenberg 2022 (doi 10.1016/j.euroneuro.2022.05.009). The status stays contra, so no new system is needed."
+  },
+  {
+   "lead": "Roche RG7203 reward-processing fMRI/MID model in healthy volunteers, then chronic schizophrenia patients (Schizophr Bull 2018 suppl S43)",
+   "outcome": "none",
+   "detail": "RG7203 is a Roche PDE10A inhibitor and not one of the tile's five members (Lu AF11167, OMS824, balipodect, elpipodect, mardepodect), so a non-member drug falls outside the rules."
+  }
  ]
 }

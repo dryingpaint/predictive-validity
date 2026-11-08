@@ -486,5 +486,27 @@
   "Swan 2019 Haematologica and Sogkas 2018 JACI: the same human-genetic system as the added track; folded into its judgement (Swan's stated comparison is quoted there) rather than separate tracks.",
   "Healthy-volunteer basophil assay as an engagement track: the readout moved in the volunteers who are the model and no separate patient PD comparison was found, so only its dose track is added.",
   "TIDAL as a prospective entry on the A20 PK track: Zelenetz 2024 does not cite the model or tumour retention as the regimen basis, so the TIDAL comparison is scored on the Eschweiler regimen and basophil tracks only."
+ ],
+ "gaps": [
+  {
+   "lead": "Mouse PI3Kdelta-inhibitor colitis and intermittent-dosing model (Eschweiler 2022)",
+   "outcome": "tracked",
+   "detail": "added_models pik3cd-inhibitor-mouse-colitis-intermittent-dosing: dose (untested 2022, retro Pagel 2022, same Zelenetz 2024 TIDAL) and safety (untested, retro 2022), product_in_model false"
+  },
+  {
+   "lead": "Human PIK3CD loss-of-function genotype (Cohen 2018 JACI; Swan 2019 Haematologica)",
+   "outcome": "tracked",
+   "detail": "added_models pik3cd-lof-human-genotype: safety (untested 2018, retro 2018); Swan 2019 and Sogkas 2018 folded into its judgement"
+  },
+  {
+   "lead": "Zandelisib A20 syngeneic mouse PK/distribution model (Moreno 2019 Target Oncol)",
+   "outcome": "tracked",
+   "detail": "added_models zandelisib-a20-syngeneic-mouse-pk: dose (untested 2019, retro 2019); no TIDAL entry since Zelenetz 2024 does not cite the model"
+  },
+  {
+   "lead": "Human Treg ex-vivo assay with idelalisib-treated CLL patient phenotyping (Chellappa 2019 J Immunol)",
+   "outcome": "tracked",
+   "detail": "added_models idelalisib-human-treg-ex-vivo: safety (untested 2019, retro 2019)"
+  }
  ]
 }

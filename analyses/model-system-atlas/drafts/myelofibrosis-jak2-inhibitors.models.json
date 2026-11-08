@@ -8,7 +8,9 @@
   "Europe PMC: Kesarwani Jak2 substrate-site fedratinib ruxolitinib resistance (no hit)",
   "Europe PMC: fedratinib JAKARTA-2 ruxolitinib resistant; BMS-911543 Purandare / Pomicter 2015",
   "Europe PMC: PMID 21220608 (Pardanani 2011 JCO phase 1)",
-  "ClinicalTrials.gov API: NCT01437787 (JAKARTA, results 2026-08-11), NCT01523171 (JAKARTA-2, results 2026-07-16)"
+  "ClinicalTrials.gov API: NCT01437787 (JAKARTA, results 2026-08-11), NCT01523171 (JAKARTA-2, results 2026-07-16)",
+  "Europe PMC: BMS-911543 (core search; Purandare 2012 Leukemia PMID 22015772 doi:10.1038/leu.2011.292 confirmed, patient JAK2V617F+ progenitor colony assays)",
+  "ClinicalTrials.gov API: NCT01236352 (BMS-911543; terminated for portfolio/business decisions; primary best overall response 0 CR, 4 PR, ~34 clinical improvement across arms; results 2019-05-21)"
  ],
  "added_models": [
   {
@@ -305,5 +307,27 @@
   "Fedratinib activity against ruxolitinib-resistant JAK2 (Kesarwani substrate-site work) vs JAKARTA-2: source not found in Europe PMC, unverified.",
   "Fedratinib population PK / exposure-response models (FDA clin pharm): built on patient data to justify 400 mg, not a preclinical prediction.",
   "PDX co-clinical, human genetic or challenge models: none found for this class."
+ ],
+ "gaps": [
+  {
+   "lead": "Zhang 2014 DMD Caco-2/hTHTR2 thiamine-transport model (fedratinib, Wernicke's)",
+   "outcome": "tracked",
+   "detail": "thtr2-caco2-uptake-assay: safety 5 (untested 2014) and safety 6 (retro 2014, retrodiction true)"
+  },
+  {
+   "lead": "Geron 2008 patient-derived JAK2V617F+ progenitor colony and xenograft model (TG101348)",
+   "outcome": "tracked",
+   "detail": "jak2v617f-patient-progenitor-colony: engagement 3-4 (untested 2008, same 2019) and efficacy 3-4 (untested 2008, same 2015)"
+  },
+  {
+   "lead": "BMS-911543 on the JAK2V617F BMT mouse (Pomicter 2015 'limited efficacy') vs NCT01236352 / Tefferi 2023",
+   "outcome": "verdict",
+   "detail": "Same system as jak2v617f-bmt-mouse; efficacy 1's judgement holds it as unsettled (program stopped for business; registry primary 4 PR but ~34 clinical improvements of 42+ ph2, Mayo 62% spleen response); scoring awaits checker rule question 1 on efficacy 1, no new system"
+  },
+  {
+   "lead": "BMS-911543 on JAK2V617F+ patient CD34+ progenitors (Purandare 2012)",
+   "outcome": "verdict",
+   "detail": "Source verified (Leukemia 2012, PMID 22015772, doi:10.1038/leu.2011.292); same system as jak2v617f-patient-progenitor-colony (efficacy 4 judgement already notes it); patient side is the same business-stopped NCT01236352, so whether it gets a scored entry hangs on rule question 1, no new system"
+  }
  ]
 }

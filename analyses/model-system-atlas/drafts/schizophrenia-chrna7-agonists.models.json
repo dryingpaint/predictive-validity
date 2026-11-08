@@ -35,5 +35,32 @@
   "Patient exposure-response in Walling 2016 (no relationship between TC-5619 plasma concentration and SANS change) and ABT-126 sparse PK in Haig 2016: patient-side data with no model prediction to compare against",
   "ABT-126 in the MPTP macaque (Parkinson's dyskinesia, 2015), ABT-126 Alzheimer's trials (Gault 2015/2016), TC-5619 ADHD and AD studies: other indications; they transfer only to safety via imported_from, which the in-disease safety entries make unnecessary",
   "Non-member alpha7 agonists with their own model-patient pairs (Hayward 2017 low-attentive rat 5C-CPT with encenicline; DBA/2 gating and human P50 with DMXB-A; BMS-933043, RG3487, AQW051, PHA-543613 aged-rat PVT): outside the member list, so they cannot score this context"
+ ],
+ "gaps": [
+  {
+   "lead": "Targacept press release 2013-12-16 (TC-5619 NCT01488929 SANS-primary miss)",
+   "outcome": "verdict",
+   "detail": "Patient-side dating source, not a system: covered by checker verdicts on efficacy 6 (rodent-schizophrenia-screens, year 2015->2013) and efficacy 5 (pcp-nest-building-mouse, adjudicated retro->contra); the draft has no dose 5 entry, so the dose cell gains no entry from it"
+  },
+  {
+   "lead": "Targacept 8-K EX-99.1 2011-01-19 (TC-5619 NCT01003379 GMLT positive, well tolerated)",
+   "outcome": "verdict",
+   "detail": "Patient-side dating source: covered by checker verdicts moving rodent-schizophrenia-screens dose 3, efficacy 4 and safety 3 from 2012 to 2011 (rule 6 with rule 2)"
+  },
+  {
+   "lead": "Mazurov 2012 J Med Chem (PMID 23126648) stated animal-model/phase 2 comparison",
+   "outcome": "verdict",
+   "detail": "Tier-1 comparison source for the existing rodent-schizophrenia-screens track (efficacy 4 / dose 3 / safety 3, bradanicline); it can replace or back the Hauser 2009 model_src on those entries but adds no system, and the 2011 8-K already sets an earlier year"
+  },
+  {
+   "lead": "ABT-126 NCT00912431 (HV PK/exploratory biomarker) and NCT01043458 (PK in schizophrenia)",
+   "outcome": "none",
+   "detail": "No posted results and no publication (CT.gov v2 API, Europe PMC); Haig 2016 states no ABT-126 occupancy studies were done; no verifiable model-to-patient comparison, so no track (evidence rule: a system needs a resolvable quoted source)"
+  },
+  {
+   "lead": "Checked-and-not-missing items (Hayward 2017 encenicline 5C-CPT, DMXB-A gating, ABT-126 preclinical, AbbVie registry, other-indication trials)",
+   "outcome": "none",
+   "detail": "Non-member drugs (encenicline, DMXB-A) are outside the member list; no ABT-126 preclinical efficacy paper or posted AbbVie results exist; ADHD/AD trials are other indications already made unnecessary by in-disease safety entries"
+  }
  ]
 }

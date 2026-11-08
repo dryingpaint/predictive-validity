@@ -14,7 +14,9 @@
   "PubMed: (CRTH2 OR DP2 OR PTGDR2) knockout mice asthma",
   "PubMed: fevipiprant/timapiprant/CRTH2 antagonist human airway epithelium or precision-cut lung slices",
   "PubMed: fevipiprant guinea pig OR AZD1981 guinea pig",
-  "ClinicalTrials.gov API: MK-1029, setipiprant, ACT-129968 studies; primary outcome results for NCT01343407, NCT01624974, NCT02720081"
+  "ClinicalTrials.gov API: MK-1029, setipiprant, ACT-129968 studies; primary outcome results for NCT01343407, NCT01624974, NCT02720081",
+  "Gap pass: Europe PMC ADC3680 OR ADC3680B OR PTR-36 (no indexed primary paper); ClinicalTrials.gov API ADC3680/PTR-36 (NCT01173770, NCT01448954, NCT01730027, none with results); fc.py search 'ADC3680 CRTH2 antagonist Pulmagen asthma'",
+  "Gap pass: ERS 2013 abstract Fitzgerald P735 (ADC3680 in vitro profile, ESC IC90 dose prediction, 6-month tox); FierceBiotech on Pulmagen/Teijin Dec 2016 phase 2 release; ERS 2014 abstract 4836 (ARRY-502 Th2 biomarkers)"
  ],
  "added_models": [
   {
@@ -119,5 +121,42 @@
   "Allergen challenge for engagement/dose: challenge sputum eosinophils are themselves a human readout; MK-1029 challenge doses (60 and 500 mg) not stated as the basis of phase 2 doses, so no dose entry.",
   "Allergic rhinitis allergen chambers / seasonal AR trials (BI 671800, setipiprant): a different indication with no stated asthma prediction.",
   "Ullah 2024 mouse chronic asthma with rhinovirus on steroid: already in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "ARRY-502 phase 2 met pre-BD FEV1 primary, July 2013 (Array 10-K)",
+   "outcome": "verdict",
+   "detail": "Patient-side datum, not a new system: add to efficacy rodent-allergic-airway contra 2013 entry (and challenge-LAR pairing) as an earlier member 'same' (tier 5, trial_unreported); checker missing item covers it; cell still ends 2013 contra."
+  },
+  {
+   "lead": "Novartis Oct/Dec 2019 ZEAL/LUSTER releases; ZEAL-1 NCT03215758 absent from patient_trials",
+   "outcome": "verdict",
+   "detail": "Dating and patient_trials correction to efficacy rodent-allergic-airway contra entry (efficacy #2); no new system."
+  },
+  {
+   "lead": "ADC3680B (PTR-36) positive phase II on mPEF",
+   "outcome": "verdict",
+   "detail": "Verified: 16-week Japan phase 2 (Teijin, ~160 pts, 5 and 20 mg QD), mPEF was the primary and met at both doses, press release Dec 2016 (tier 5, trial_unreported); add to efficacy rodent-allergic-airway contra entry patient_trials; NCT01730027 (FEV1 primary, 2013-14) never reported."
+  },
+  {
+   "lead": "ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract 4836)",
+   "outcome": "verdict",
+   "detail": "Read: FeNO -27.0 ppb vs placebo (p<0.0001) in FeNO-high patients, plus periostin, TARC, CRTh2+ eosinophils down; a downstream 'same' supporting engagement human-eos-th2-dp2-assays (engagement #2), conference abstract; no new system."
+  },
+  {
+   "lead": "OC000459 (timapiprant) allergen challenge LAR and FEV1 trials",
+   "outcome": "verdict",
+   "detail": "Corrects human-allergen-challenge-lar opening year to 2006 (checker efficacy #4 verdict covers it); a scored OC000459 'same' is outside the rules: timapiprant is not on the member list (DRAFTER_BRIEF scope: only member drugs score)."
+  },
+  {
+   "lead": "Setipiprant own PoC FEV1 trial NCT01225315, no posted results",
+   "outcome": "verdict",
+   "detail": "Add NCT01225315 as a trial_unreported same-drug patient_trial on the human-allergen-challenge-lar contra entry (efficacy #5); no new system."
+  },
+  {
+   "lead": "ADC3680B (member never mentioned)",
+   "outcome": "verdict",
+   "detail": "Its models are tracked systems: human whole-blood eosinophil shape change IC90 predicted a 6 mg QD dose (Fitzgerald ERS 2013 P735), phase 2 at 5/20 mg met mPEF primary Dec 2016: supports dose human-eos-th2-dp2-assays (dose #2); 6-month tox NOAEL margin ~400 bears on safety dp2-selectivity-tox (safety #1). No new system."
+  }
  ]
 }

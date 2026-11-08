@@ -10,7 +10,9 @@
   "Europe PMC: acalabrutinib AND (PBPK OR moderate CYP3A) AND clinical study",
   "FDA bundle grep: PBPK / physiologically-based / verification in NDA 210259 and NDA 213217 multidisciplinary reviews",
   "ClinicalTrials.gov API: zanubrutinib AND (fluconazole OR diltiazem OR voriconazole)",
-  "Europe PMC full text PMC4862586 (Byrd 2016) for the murine thrombosis model: full-text XML not returned"
+  "Europe PMC full text PMC4862586 (Byrd 2016) for the murine thrombosis model: full-text XML not returned",
+  "FDA NDA 213217 review (bundle) section 5 nonclinical tox for zanubrutinib, grep hemorrhage/atrial/cardiac",
+  "fc.py search: zanubrutinib CLL NDA 213217 supplement 2023 review; fetched accessdata 2024/213217Orig1s007.pdf, grep nonclinical/PBPK/occupancy/mouse/xenograft"
  ],
  "added_models": [
   {
@@ -239,5 +241,27 @@
   "Patient ex-vivo drug sensitivity of CLL cells to acalabrutinib/zanubrutinib: no study found linking ex-vivo response to patient outcome for member drugs (ibrutinib-based work is out of class).",
   "Orelabrutinib and tirabrutinib preclinical models (TMD8/DLBCL xenografts): no CLL model-patient comparison found.",
   "Zanubrutinib CLL supplemental review (2023): not in the bundle and not fetched within budget."
+ ],
+ "gaps": [
+  {
+   "lead": "Murine in-vivo thrombosis model with human platelets (Byrd 2016 NEJM)",
+   "outcome": "tracked",
+   "detail": "btk-selectivity-offtarget-assays, safety entry 1 (2015, same): the thrombosis model is part of that track's model side, as the checker's own verdict notes; acalabrutinib already has tracks, so no separate added system."
+  },
+  {
+   "lead": "Zanubrutinib nonclinical toxicology (NDA 213217) has no safety track",
+   "outcome": "verdict",
+   "detail": "Extends rat-dog-glp-tox (safety entry 4) to zanubrutinib: NDA 213217 review reports multi-organ hemorrhage in rat/dog and patient hemorrhage; a draft edit to that track needing a checker verdict (and rule question 2 on cross-sponsor tracks), not a new system."
+  },
+  {
+   "lead": "Zanubrutinib CLL supplemental review (NDA 213217 S-007, 2023)",
+   "outcome": "none",
+   "detail": "Read 213217Orig1s007: 'No new non-clinical pharmacology/toxicology data'; no PBPK or animal model compared with CLL patients. Only a post-hoc BTK-knockout-mouse rationale for neutropenia, not a model prediction (What the model is: no comparison)."
+  },
+  {
+   "lead": "QSP target-occupancy model (Demin 2025, doi 10.1002/psp4.13307)",
+   "outcome": "tracked",
+   "detail": "qsp-btk-occupancy in added_models: engagement entries 4 (2025 untested) and 5 (2025 retro); PFS link narrative only, so no efficacy entry."
+  }
  ]
 }

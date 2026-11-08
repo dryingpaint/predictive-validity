@@ -9,7 +9,9 @@
   "ClinicalTrials.gov API v2: NCT02810951 (FCX-007 phase 1/2, results 2021-09-16) and NCT04213261 (DEFI-RDEB phase 3, results 2024-04-01)",
   "fc.py search: FCX-007 phase 1/2 type VII collagen expression anchoring fibrils biopsy results -- JID 2018 abstract 591 (10.1016/j.jid.2018.03.599, paywalled), Castle Creek 2020 poster PDF",
   "curl + pdftotext: castlecreekbio.com Phase-1.2-poster-FCX-007.pdf (created 2020-01-16)",
-  "Crossref: DOI for Marinkovich 2018 JID abstract 591"
+  "Crossref: DOI for Marinkovich 2018 JID abstract 591",
+  "gap pass: Europe PMC AUTH Woodley DT AND type VII collagen AND intravenous -- Woodley 2013 JID (PMID 23321924, doi:10.1038/jid.2013.10, PMC3890237): IV rC7 into nude mice bearing C7-null mouse skin grafts, rC7 at DEJ and anchoring fibrils restored",
+  "gap pass: beremagene geperpavec = B-VEC (Vyjuvek), already the draft's bvec-col7-hypomorph-mouse-rdeb-xenograft track"
  ],
  "added_models": [
   {
@@ -189,5 +191,27 @@
   "Hologene 7 (NCT02984085, terminated): no admissible model or patient source found",
   "Patient-level selection (pz-cel/PTR-01 NC1 genotype, anti-C7 status): an eligibility criterion read from patients' own samples, not a model whose prediction was compared",
   "In-silico / QSP dose models and human genetic models: none found for any member; all doses were fixed sheets, wound-area based gels or empirical mg/kg"
+ ],
+ "gaps": [
+  {
+   "lead": "Dabocemagene autoficel (D-Fi/FCX-007) has no track",
+   "outcome": "tracked",
+   "detail": "gene-corrected-rdeb-fibroblast-intradermal-scid-mouse (added_models): engagement 2003 untested -> 2020 same; efficacy 2003 untested -> 2024 untested (DEFI-RDEB stopped early)"
+  },
+  {
+   "lead": "Earlier protein-replacement model for PTR-01 track (Woodley 2004 / Remington 2009)",
+   "outcome": "verdict",
+   "detail": "col7-null-mouse-iv-rc7 opening entries (year 2015, Hou 2015) need a verdict: Woodley 2013 JID (doi:10.1038/jid.2013.10, epub 2013) ran IV rC7 into C7-null skin grafted on nude mice, so the IV track could open 2013; Woodley 2004/Remington 2009 were intradermal (considered_not_added)"
+  },
+  {
+   "lead": "Hologene 7 (NCT02984085)",
+   "outcome": "none",
+   "detail": "terminated, no posted results and no admissible model source; already in considered_not_added"
+  },
+  {
+   "lead": "beremagene geperpavec",
+   "outcome": "tracked",
+   "detail": "B-VEC is beremagene geperpavec: bvec-col7-hypomorph-mouse-rdeb-xenograft, engagement/efficacy/safety 2018 untested -> 2022 same; dose 2018 untested"
+  }
  ]
 }

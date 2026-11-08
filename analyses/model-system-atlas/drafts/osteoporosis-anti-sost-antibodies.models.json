@@ -10,7 +10,8 @@
   "Europe PMC: Krishna AND sclerostin AND aneurysm AND ApoE; TITLE 'sclerostin inhibits angiotensin II-induced aortic aneurysm' (Krishna 2017 ATVB, epub 2016-12-22)",
   "Europe PMC: sclerosteosis heterozygous BMD; TITLE 'Bone mineral density in sclerosteosis' (Gardner 2005 JCEM)",
   "Europe PMC DOI:10.1056/NEJMoa1708322 (ARCH, CV adverse events, for pairing)",
-  "Checker 'missing' list in osteoporosis-anti-sost-antibodies.check.json used as leads"
+  "Checker 'missing' list in osteoporosis-anti-sost-antibodies.check.json used as leads",
+  "grep of 761062 multidisciplinary review for coronary artery|platelet activ|150483|vasoconstrict: Studies 150483 (coronary rings) and 125269 (platelets), both new in the 2018 resubmission"
  ],
  "added_models": [
   {
@@ -585,6 +586,150 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "human-coronary-artery-rings-ex-vivo",
+   "model": "Isolated healthy human coronary artery rings in myograph baths (Amgen Study 150483, non-GLP)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+      "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (vasospasm), not ischemic events.",
+      "subjects": null,
+      "comparison_stated": false,
+      "imported_from": null,
+      "year": 2019,
+      "status": "untested",
+      "product_in_model": true,
+      "source_tier": 2,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA BLA 761062 review 2019",
+      "note": "Romosozumab and sclerostin applied to isolated human coronary artery rings to test for vasoconstriction, run in response to the ARCH CV imbalance.",
+      "short": "Romosozumab on human coronary rings",
+      "quote": "(E) in human coronary artery rings: no vasoconstrictive effect of romosozumab or human sclerostin.",
+      "confidence": "medium",
+      "judgement": "Opening entry at the review's public date (proxy); a new study in the 2018 resubmission, run after the ARCH CV imbalance."
+     },
+     {
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "retrodiction": true,
+      "magnitude": "opposite",
+      "magnitude_basis": "Vasoconstriction (none vs vehicle; sumatriptan positive control) vs ARCH serious CV event imbalance",
+      "source_calls_it": null,
+      "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+      "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (vasospasm), not ischemic events.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "imported_from": null,
+      "year": 2019,
+      "status": "contra",
+      "product_in_model": true,
+      "source_tier": 2,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA BLA 761062 review 2019",
+      "note": "No vasoconstriction up to about 10-fold clinical Cmax, failing to reproduce the ARCH cardiovascular imbalance that became a boxed warning.",
+      "short": "No CV signal; trials showed one",
+      "quote": "(E) in human coronary artery rings: no vasoconstrictive effect of romosozumab or human sclerostin.",
+      "confidence": "low",
+      "reason": "Missed the CV signal in patients",
+      "judgement": "Judgement call, as for the sponsor GWAS: a retrodiction that found no CV liability where patients showed one is contra. The review itself does not set the ring result against ARCH, so comparison_stated is false."
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "human-whole-blood-platelet-activation",
+   "model": "Human whole blood platelet activation assay by flow cytometry (Amgen Study 125269, non-GLP)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+      "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (platelet activation), not ischemic events.",
+      "subjects": null,
+      "comparison_stated": false,
+      "imported_from": null,
+      "year": 2019,
+      "status": "untested",
+      "product_in_model": true,
+      "source_tier": 2,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA BLA 761062 review 2019",
+      "note": "Romosozumab added to human whole blood to test for platelet activation (pro-thrombotic potential), run in response to the ARCH CV imbalance.",
+      "short": "Romosozumab on human platelets",
+      "quote": "(A) in an in vitro study: no activation of human platelets by romosozumab;",
+      "confidence": "medium",
+      "judgement": "Opening entry at the review's public date (proxy); a new study in the 2018 resubmission, run after the ARCH CV imbalance."
+     },
+     {
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "retrodiction": true,
+      "magnitude": "opposite",
+      "magnitude_basis": "CD62P/P-selectin on platelets (none at 1-300 ug/mL) vs ARCH serious CV event imbalance",
+      "source_calls_it": null,
+      "population": "Unselected (postmenopausal women with low BMD or osteoporosis)",
+      "confidence_note": "FDA review text; study date not public, 2019 used as proxy; tests one mechanism (platelet activation), not ischemic events.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "imported_from": null,
+      "year": 2019,
+      "status": "contra",
+      "product_in_model": true,
+      "source_tier": 2,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/761062Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA BLA 761062 review 2019",
+      "note": "No platelet activation up to about 10-fold clinical Cmax, failing to reproduce the ARCH cardiovascular imbalance that became a boxed warning.",
+      "short": "No CV signal; trials showed one",
+      "quote": "(A) in an in vitro study: no activation of human platelets by romosozumab;",
+      "confidence": "low",
+      "reason": "Missed the CV signal in patients",
+      "judgement": "Judgement call, as for the sponsor GWAS: a retrodiction that found no CV liability where patients showed one is contra. The review does not set the assay against ARCH, so comparison_stated is false."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -596,5 +741,37 @@
   "Romosozumab exposure-response / popPK models for dose selection: none with a stated pre-trial human target found in the FDA review grep or searches; not verified further",
   "Patient-derived cells, PDX, ex-vivo sensitivity and challenge models: not applicable to an anabolic osteoporosis antibody; none found",
   "Sclerosteosis/van Buchem patients and CV risk (FDA review, Beighton communications): too few subjects to show a modest CV increase; mentioned on the carrier track, not scored"
+ ],
+ "gaps": [
+  {
+   "lead": "Human-genetic SOST-variant MR track (Bovijn 2020; later Alcalde-Herraiz 2024, Thorolfsdottir 2026)",
+   "outcome": "tracked",
+   "detail": "sost-variant-mendelian-randomization, efficacy + safety retro entries (Bovijn 2020); later MRs noted in considered_not_added"
+  },
+  {
+   "lead": "Sponsor GWAS in 2019 FDA BLA 761062 resubmission (no MI/stroke association)",
+   "outcome": "tracked",
+   "detail": "sost-snp-ukbiobank-sponsor-gwas, safety retro contra (and efficacy retro)"
+  },
+  {
+   "lead": "OVX cynomolgus monkey on romosozumab 12 months (Ominsky 2017)",
+   "outcome": "tracked",
+   "detail": "ovx-cyno-romosozumab-12mo, efficacy retro entry"
+  },
+  {
+   "lead": "Blosozumab injection-site reactions / phase 3 stop",
+   "outcome": "none",
+   "detail": "patient-side only; no public model predicted local tolerance (no model-patient comparison to score)"
+  },
+  {
+   "lead": "Krishna 2017 AngII ApoE KO mouse, sclerostin protective",
+   "outcome": "tracked",
+   "detail": "angii-apoe-ko-mouse-sost, safety entries (Krishna 2017 opening, Saag 2017 same)"
+  },
+  {
+   "lead": "Human coronary artery rings ex vivo (Study 150483) and human platelet activation assay (Study 125269)",
+   "outcome": "added",
+   "detail": "human-coronary-artery-rings-ex-vivo and human-whole-blood-platelet-activation, safety retro contra (FDA BLA 761062 review)"
+  }
  ]
 }

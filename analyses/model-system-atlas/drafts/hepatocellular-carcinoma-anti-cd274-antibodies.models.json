@@ -218,5 +218,42 @@
   "Europe PMC (2026-11-05): no humanized-mouse or human-T-cell co-implant HCC xenograft of durvalumab, no HCC PDX co-clinical study, no patient-derived HCC organoid or ex-vivo assay compared with patients for a member drug.",
   "The co-implant xenograft's schedule observation (A375 tumor volume smaller after 1-2 doses of MEDI4736 than after more) was not carried into any human regimen by the FDA review, so no dose entry is written for it.",
   "Systems the draft already tracks (primary human T-cell assay ONC4736-0020, cynomolgus monkey toxicology, c-myc/OVA transgenic HCC surrogate mice, PD-L1-knockout mouse): skipped."
+ ],
+ "gaps": [
+  {
+   "lead": "Efficacy track for the filed cross-indication systems (A375/HPAC human-T-cell co-implant xenografts with MEDI4736; CT26 with anti-mouse PD-L1 surrogate)",
+   "outcome": "tracked",
+   "detail": "durva-human-tcell-coimplant-xenograft (efficacy 3-4) and ct26-anti-mouse-pdl1-surrogate (efficacy 5-6), both cross_indication, model_filed, paired with HIMALAYA/EMERALD-1; already in added_models"
+  },
+  {
+   "lead": "EMERALD-1 final OS (Sangro, Ann Oncol 2026 abstract 183O: HR 1.10 D+B+TACE, HR 0.93 D+TACE)",
+   "outcome": "verdict",
+   "detail": "patient-side fact for existing NCT03778957 pairings (efficacy 2, 4, 6); checker verdict efficacy 2 already says add to patient_trials; no new system, no status change"
+  },
+  {
+   "lead": "EMERALD-1 primary figures (Lancet 2025, PMID 39798579: PFS HR 0.77 met; D+TACE HR 0.94 missed)",
+   "outcome": "verdict",
+   "detail": "corrects the NCT03778957 patient_trials quote on efficacy 2 (and 4, 6); covered by checker verdict efficacy 2"
+  },
+  {
+   "lead": "HIMALAYA four- and five-year OS updates (Ann Oncol 2024; J Hepatol 2025)",
+   "outcome": "verdict",
+   "detail": "patient_trials facts for NCT02519348 on efficacy 2/4/6; needs a verdict note on efficacy 2, same trial, no new model"
+  },
+  {
+   "lead": "Benmelstobart HCC phase II trials (ALTER-H006, DEB-TACE+TQB2450+anlotinib, HAIC+anlotinib+TQB2450)",
+   "outcome": "none",
+   "detail": "single-arm patient data with non-member TKI partner and no preclinical model compared; outside rule 8 (no model-to-patient comparison)"
+  },
+  {
+   "lead": "EMERALD-1 treatment-related deaths and Lancet correspondence on early liver-failure deaths",
+   "outcome": "verdict",
+   "detail": "note correction on safety 4/5 (durva-cyno-monkey-tox) 'no unpredicted harm in HCC' sentence; checker safety 5 verdict covers no status change; not attributed to durvalumab"
+  },
+  {
+   "lead": "Organoid/ex-vivo, humanized-mouse HCC and sugemalimab preclinical searches",
+   "outcome": "none",
+   "detail": "checker and MODELS pass searched Europe PMC 2026-11-05: no such model compared with patients for durvalumab, sugemalimab or benmelstobart"
+  }
  ]
 }

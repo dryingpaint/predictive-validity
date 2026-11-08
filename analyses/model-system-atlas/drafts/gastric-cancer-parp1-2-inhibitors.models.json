@@ -357,5 +357,37 @@
   "Jiang 2016 olaparib in hypoxic NSCLC xenografts (doi 10.1016/j.ijrobp.2016.01.035): same hypoxia-HRD system with a member drug dosed; folded into the hypoxia track's opening judgement rather than opened as a separate track.",
   "Petrelli 2023's own 57-patient GEA cohort: platinum-treated, not a class-member comparison, so it sets no status on the PDX track.",
   "AstraZeneca 2016 and BeiGene 2021 press releases (checker leads): dating corrections on existing tracks, not model systems."
+ ],
+ "gaps": [
+  {
+   "lead": "Olaparib + ramucirumab NCI10066 (Cecchini 2023 BJC, NCT03008278)",
+   "outcome": "tracked",
+   "detail": "hypoxia-hrd-parpi-sensitisation, efficacy 2023 contra (doi 10.1038/s41416-023-02534-1), opening untested entries at Hegan 2010 in all three cells; checker confirmed (efficacy 5-6)."
+  },
+  {
+   "lead": "Rucaparib (NCT03995017, rucaparib + ramucirumab +/- nivolumab)",
+   "outcome": "none",
+   "detail": "Status UNKNOWN, no results posted, no paper (Europe PMC rucaparib AND gastric, CT.gov API); its only gastric model use is in vitro in Petrelli 2023 PDX cells, covered by gastric-pdx-brca2-germline; recorded in considered_not_added."
+  },
+  {
+   "lead": "AstraZeneca press release 2016-05-18 (GOLD top-line OS miss)",
+   "outcome": "verdict",
+   "detail": "Dating of gastric-cell-lines-atm-low efficacy entry 3 (GOLD, 2017 contra); checker verdict 'corrected' proposes year 2016, status contra unchanged; tier-5 dating is rule question 1."
+  },
+  {
+   "lead": "BeiGene press release 2021-06-04 (PARALLEL 303 PFS miss)",
+   "outcome": "verdict",
+   "detail": "Dating of parpi-cross-indication-hrd efficacy entry 4 (2023 contra); checker verdict 'corrected' proposes year 2021, status contra unchanged; tier-5 dating is rule question 1."
+  },
+  {
+   "lead": "MEDIOLA gastric cohort (olaparib + durvalumab, ASCO GI 2019 abstract)",
+   "outcome": "none",
+   "detail": "Patient result exists only as a conference abstract, not an admissible source tier; no full paper found; model rationale is ovarian/breast STING/PD-L1, no gastric model."
+  },
+  {
+   "lead": "Gastric PDO/PDX compared with patient response for a PARP inhibitor",
+   "outcome": "none",
+   "detail": "No organoid comparison found (Europe PMC gastric organoid AND olaparib/PARP); the one PDX platform with a member drug (Petrelli 2023) is already tracked as gastric-pdx-brca2-germline (efficacy 2023 untested, 2026 same)."
+  }
  ]
 }

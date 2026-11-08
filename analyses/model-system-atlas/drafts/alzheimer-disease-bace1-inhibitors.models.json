@@ -252,5 +252,22 @@
   "Elenbecestat preclinical models (guinea pig/monkey): no paper comparing them with patients found",
   "QSP / in-silico models for member drugs: none found beyond verubecestat's (non-member)",
   "Patient-derived iPSC neurons or organoids for BACE1 inhibitors: none compared with patient outcomes found"
+ ],
+ "gaps": [
+  {
+   "lead": "Willis 2022 LY3202626 'predicted to have reduced risk' of hepatotoxicity (low daily dose); NAVIGATE-AD no hepatotoxicity",
+   "outcome": "none",
+   "detail": "Outside 'What the model is': a dose-load rule of thumb, not a model system (no animal, cell, genetic or in-silico system), so no track and no model_change; liver cell stays on ly2886721-nonclinical-tox safety 2 (contra)."
+  },
+  {
+   "lead": "J&J May 2018 atabecestat discontinuation for liver enzymes: atabecestat nonclinical tox prediction",
+   "outcome": "none",
+   "detail": "Searched (Europe PMC atabecestat preclinical, J Med Chem 2021 discovery paper, WebSearch reactive metabolite/covalent binding): only 'sufficient safety margins in preclinical models' with species/margins paywalled; injury is HLA-DRB1-restricted immune-mediated, which standard tox species cannot show (safety rule), and the atabecestat liver signal is tracked by atabecestat-diat-hla-tcell-clones safety 5-6."
+  },
+  {
+   "lead": "Elenbecestat (Eisai/Biogen) Sept 2019 MISSION AD stop press release",
+   "outcome": "tracked",
+   "detail": "pdapp-mouse efficacy 2 patient_trials NCT02956486 (registry 2021-02-03), higher tier than the press release; no status change."
+  }
  ]
 }

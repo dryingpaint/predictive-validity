@@ -14,7 +14,8 @@
   "Europe PMC core records (abstract + dates) for PMIDs 34364948 (pegbelfermin 1-yr monkey bone), 34773249 (efruxifermin rat tox), 29641994 (Frayling 2018), 27505721 (Li 2017), 37088457 (FALCON 1), 37696614 (pegozafermin popPK/PD), 33205064 (Kaufman 2020), 37562970 (pegozafermin JPET 2023)",
   "Europe PMC full text XML: Kaufman 2020 (PMC7659583) for bone / blood-pressure / variant / PK-PD sentences and refs 26-28; Tillman 2022 rat paper (PMC9306736) for human comparison, food intake, NOAEL/margin statements (none)",
   "ClinicalTrials.gov API v2: NCT03486899 (FALCON 1: no bone outcome measure in the results record), NCT03976401 (BALANCED results 2022-08-04), NCT04929483 (ENLIVEN results 2026-01-06, arms 15/30 mg QW, 44 mg Q2W), NCT01492465/NCT01856881 (PF-05231023 trials cited by Kaufman; not member trials); no CT.gov record for the efruxifermin phase 1 MAD is cited in Kaufman 2020",
-  "PubMed esummary: online dates for PMIDs 34773249 (2022-01-29), 37696614 (2023-10-02), 37356033 (2023-06-24)"
+  "PubMed esummary: online dates for PMIDs 34773249 (2022-01-29), 37696614 (2023-10-02), 37356033 (2023-06-24)",
+  "Firecrawl search (fc.py): efruxifermin SYNCHRONY Histology phase 3 topline results 2026 (no topline found)"
  ],
  "added_models": [
   {
@@ -524,5 +525,47 @@
   "FDA/EMA reviews: none; manifest.csv lists 'no NDA/BLA' for all three members, so regulator reliance on model data could not arise.",
   "Rat toxicology dose/margin entry: Tillman 2022 states no NOAEL or exposure margin (full text grepped), so decision 16 cannot be applied; safety only.",
   "Monkey 1-year study on GI harms: the abstract reports no clinical-sign or GI data and the paper is paywalled, so the monkey track's silence on diarrhoea/nausea stays unscored; FALCON 1 reported no bone outcome, so no prospective bone comparison at 48 weeks exists."
+ ],
+ "gaps": [
+  {
+   "lead": "Member-drug monkey bone model with a stated margin: pegbelfermin 1-year skeletally-mature cynomolgus study (Toxicol Appl Pharmacol 2021, doi 10.1016/j.taap.2021.115673, PMID 34364948) at 0.7-2.2x human AUC (20 mg QW) found no bone effects and states 'low potential for negative effects on bone quality in adult humans'. A second bone track (margin_stated true); retro vs same depends on when the study was run (rule question 4).",
+   "outcome": "tracked",
+   "detail": "cyno-monkey-1yr-bone-tox, safety (untested 2021, retro 2021, margin stated); retro vs same is rule question 4"
+  },
+  {
+   "lead": "Member-drug rat BP/sympathetic model: efruxifermin 4/26-week Sprague Dawley tox (Br J Pharmacol 2022, doi 10.1111/bph.15725, PMID 34773249) states 'absence of an increase in sympathetic tone in rats mirrors the unchanged salivary cortisol and systemic blood pressure following efruxifermin treatment in humans' (Kaufman 2020 PK-PD). Stated comparison, published after the human data: retro. Rats also ate more, matching the increased-appetite AE.",
+   "outcome": "tracked",
+   "detail": "sd-rat-chronic-tox, safety (untested 2022, retro 2022 on Tillman 2022's stated comparison with Kaufman 2020)"
+  },
+  {
+   "lead": "Human-genetic model on blood pressure: Kaufman 2020 (doi 10.1016/j.xcrm.2020.100057) compares the absence of a BP effect of efruxifermin with FGF21 loss-of-function variant carriers having higher BP (its ref 28); model_kind human_genetic, no track.",
+   "outcome": "tracked",
+   "detail": "fgf21-variant-carriers-ukbb, safety (untested 2018 Frayling 2018, same 2020 Kaufman 2020)"
+  },
+  {
+   "lead": "Monkey-track safety silence: tremor (Kaufman 2020: product-related withdrawals for tremor at 140 mg QW efruxifermin) and GI AEs (diarrhoea/nausea, the class's commonest harm) are harms a cynomolgus monkey could show; Stanislaus 2017 / Rosenstock 2023 say nothing. No safety entry exists on the obese-diabetic-cyno-monkey track; the pegbelfermin 1-year monkey paper (clinical observations, food intake) could settle whether monkeys predicted GI effects.",
+   "outcome": "none",
+   "detail": "Pegbelfermin 1-year monkey paper (PMID 34364948) is paywalled and its abstract reports no GI or tremor signs; Stanislaus 2017/Rosenstock 2023 state none, so no monkey GI/tremor prediction exists to score"
+  },
+  {
+   "lead": "Later mouse bone model that reversed Wei 2012: Kaufman 2020 ref 27, a DIO-mouse rhFGF21 study finding no bone loss (likely Li et al., J Bone Miner Res 2017, Amgen); a separate track or a retrodiction on the bone question, absent from the draft.",
+   "outcome": "tracked",
+   "detail": "dio-mouse-rhfgf21-bone, safety (untested 2016 Li 2017, same 2020 Kaufman 2020; checker dates the same to 2018)"
+  },
+  {
+   "lead": "Pegozafermin phase 1b/2a in NASH patients (Loomba, Lancet Gastroenterol Hepatol 2022, doi 10.1016/s2468-1253(22)00347-8, NCT04048135, epub 2022-12-12): MASH-patient adiponectin/liver-fat PD for the monkey track one year before ENLIVEN; dates the subjects=patients engagement datum earlier than the healthy-volunteer SAD.",
+   "outcome": "verdict",
+   "detail": "Dates obese-diabetic-cyno-monkey engagement 4 (same 2023); checker's correction of that entry to 2020 (Kaufman 2020) already predates Loomba 2022, so no new entry"
+  },
+  {
+   "lead": "Non-member FGF21 analogues with tier-1 stated monkey-to-human comparisons: PF-05231023 (Talukdar 2016, doi 10.1016/j.cmet.2016.02.001; raised BP/heart rate in one human study) and LY2405319 (Gaich 2013, doi 10.1016/j.cmet.2013.08.005). Outside the member list, so not scored; see rule question 5.",
+   "outcome": "none",
+   "detail": "PF-05231023 and LY2405319 are not member drugs; only members score (DRAFTER_BRIEF: do not widen the member list); rule question 5"
+  },
+  {
+   "lead": "Could not verify: no phase 3 topline for SYNCHRONY Histology (efruxifermin) or ENLIGHTEN-Fibrosis (pegozafermin; 89bio guides 1H 2027) was found by web search as of 2026-11-05; no BMS press release on pegbelfermin discontinuation was checked beyond the registry (no phase 3 registered).",
+   "outcome": "none",
+   "detail": "Not a model system: no SYNCHRONY Histology or ENLIGHTEN-Fibrosis phase 3 topline found (Firecrawl search 2026-11-07, akerotx.com, CT.gov NCT06215716 'results delayed'), so nothing to score yet"
+  }
  ]
 }

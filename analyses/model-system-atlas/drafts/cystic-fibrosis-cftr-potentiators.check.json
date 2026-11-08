@@ -247,6 +247,28 @@
    "rule": "10",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "PubMed 42343021 (Pharm Res, epub 2026-06-24) abstract: quote verbatim. Human clearance is from the healthy-male ADME study (doi 10.1124/dmd.124.001751, Europe PMC 2024-11-15); scaling published 19 months later and framed as validating the scalars, so retro is right. Full text not open."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "product_in_model false -> untested opening proxy",
+   "note": "Europe PMC PMID 27334259 (Sci Transl Med 2016-06-01, DOI matches): quote verbatim in abstract. Organoid FIS shown with ivacaftor/lumacaftor only, no tile member, so untested opening is right; prediction_level patient fits.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested (unsettled): agreement claimed only at tier 5, neither model predictions nor trial results public at tier 1-3",
+   "note": "cf-europe.eu page (community adaptation of 2025-10-20 press release) carries the quote verbatim, -12% to +22% ppFEV1, organoid FIS pre-selection. Organoids run before the trial, so prospective, not retro. Untested/unsettled is right; '41 adults' is from the registry, not this page.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

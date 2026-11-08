@@ -11,7 +11,8 @@
   "WebSearch: ZUMA-19 lenzilumab axicabtagene ciloleucel phase 1 results neurologic events cytokine release syndrome",
   "WebSearch: Humanigen ZUMA-19 lenzilumab axicabtagene ciloleucel phase 1 data press release neurotoxicity grade 3 (2021-04-20 press release coverage: Healio, BioSpace, StreetInsider)",
   "WebSearch: CD19 CAR T follicular lymphoma patient-derived xenograft OR organoid OR ex vivo model predicts clinical response axicabtagene lisocabtagene",
-  "WebSearch: axicabtagene ciloleucel OR lisocabtagene maraleucel cellular kinetics quantitative systems pharmacology model dose selection CAR T expansion predicts response"
+  "WebSearch: axicabtagene ciloleucel OR lisocabtagene maraleucel cellular kinetics quantitative systems pharmacology model dose selection CAR T expansion predicts response",
+  "Gap pass: Europe PMC search (relmacabtagene OR relma-cel OR JWCAR029) and the same AND (xenograft OR mice OR murine OR preclinical OR NSG); abstracts of PMID 40888120 and 36477110; fc.py search 'relmacabtagene autoleucel JWCAR029 preclinical xenograft mouse model nonclinical'"
  ],
  "added_models": [
   {
@@ -458,5 +459,42 @@
   "Relma-cel (JWCAR029) nonclinical package: NMPA review not public; shares the liso-cel construct; no separate model found",
   "Tisagenlecleucel (ELARA) and tafasitamab (inMIND) FL data and their models: not members; not widened",
   "Humanigen 2021-04-20 ZUMA-19 press release (tier 5): same six patients as the 2024 registry record, which outranks it and sets the status; recorded in the judgement, not as its own entry"
+ ],
+ "gaps": [
+  {
+   "lead": "Cheadle 2014 syngeneic BALB/c A20 anti-mouse CD19 CD28-CD3zeta CAR toxicity model",
+   "outcome": "tracked",
+   "detail": "syngeneic-balbc-a20-mcd19-cd28z-car-toxicity-mouse, safety cell (2014 untested opener, 2014 retro vs Kochenderfer 2012)"
+  },
+  {
+   "lead": "Cheadle 2010 syngeneic BALB/c A20 amCD19z CAR model",
+   "outcome": "tracked",
+   "detail": "syngeneic-balbc-a20-amcd19z-car-mouse, engagement/efficacy (2010 untested, 2011 same) and safety (2010 untested, 2011 contra) vs Kochenderfer 2012"
+  },
+  {
+   "lead": "Sterner 2019 NSG-SGM3 PDX ALL CRS/neuroinflammation GM-CSF model and ZUMA-19",
+   "outcome": "tracked",
+   "detail": "pdx-all-nsg-crs-neuroinflammation-gmcsf-mouse, safety cell (2018 untested, 2018 retro, 2024 contra ZUMA-19 registry)"
+  },
+  {
+   "lead": "Giavridis IL-1 blockade prediction tested in Park 2023 and Blood Adv 2025 anakinra",
+   "outcome": "verdict",
+   "detail": "Correction to existing track scid-beige-raji-crs-mouse safety cell (only a 2018 retro entry): needs a dated 2023 entry (same + partial, or contra); covered by checker verdict on safety index 3 and the mitigation-trial rule question"
+  },
+  {
+   "lead": "Liso-cel Raji/NSG track has no safety entry (Breyanzi SBRA GVHD/no-survival statement)",
+   "outcome": "verdict",
+   "detail": "Correction to existing track raji-nsg-xenograft-fmc63-41bb-car: needs a 2015 untested safety opener quoting the Breyanzi SBRA (fda.gov/media/146242); a draft-entry fix, not a new system"
+  },
+  {
+   "lead": "Not found: no member failure in FL; no FL patient-derived organoid/ex-vivo selection model",
+   "outcome": "none",
+   "detail": "Reported as not found by the checker; prior pass's WebSearch for FL PDX/organoid/ex-vivo CAR-T response models found only a non-member ARI-0001 ASH 2024 abstract (considered_not_added)"
+  },
+  {
+   "lead": "relmacabtagene autoleucel",
+   "outcome": "none",
+   "detail": "Europe PMC (relma-cel/JWCAR029, 178 hits; with xenograft/mice/preclinical/NSG, 118) and web search found only clinical papers (RELIANCE FL 2025 BJH 10.1111/bjh.20122, phase 1 2022); no published relma-cel nonclinical model or model-to-patient comparison; no FDA BLA, NMPA review not public; construct shared with liso-cel, whose Raji/NSG track already exists"
+  }
  ]
 }

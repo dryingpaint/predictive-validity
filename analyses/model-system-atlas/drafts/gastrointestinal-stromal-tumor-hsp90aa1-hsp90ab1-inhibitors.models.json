@@ -281,5 +281,27 @@
   "Ganetespib preclinical safety (Ying 2012: no cardiac or liver toxicity): registry AE table not broken down into those organs within budget; not added",
   "Pimitespib (TAS-116) GIST PDX/xenografts vs CHAPTER-GIST-301: pimitespib is not in the tile's member list",
   "Patient-derived organoids/ex-vivo sensitivity, PDX co-clinical, in-silico/QSP dose models, human genetic models for Hsp90 inhibitors in GIST: none found"
+ ],
+ "gaps": [
+  {
+   "lead": "GIST cell lines with 17-AAG (Bauer 2006) and IPI-504 vs PDGFRA D842V (Dewaele 2008)",
+   "outcome": "tracked",
+   "detail": "gist-cell-lines-17aag (efficacy 5-7: 2006 untested, Dickson 2012 same, NCT01039519 contra) and pdgfra-d842v-cells-ipi504 (efficacy 8, untested); both already in added_models and merged into the draft"
+  },
+  {
+   "lead": "Genotype-level track: Smyth 2012 'irrespective of KIT mutation'; Wagner 2016 KIT/PDGFRA status vs efficacy",
+   "outcome": "tracked",
+   "detail": "pdgfra-d842v-cells-ipi504 (prediction_level patient, efficacy 8) holds the genotype prediction; Smyth's claim is the same system as gist-xenograft-at13387 (efficacy 2/4); Wagner's 2 SD + 1 PDGFRA PR too thin to score a genotype change (see considered_not_added)"
+  },
+  {
+   "lead": "Ganetespib has no track (preclinical xenograft vs NCT01039519)",
+   "outcome": "tracked",
+   "detail": "ganetespib-xenograft-mouse (efficacy 9: Ying 2012 untested; efficacy 10: NCT01039519 results 2016-03-10 contra)"
+  },
+  {
+   "lead": "No further model system found for members in GIST (ganetespib FDG-PET in NCT01039519)",
+   "outcome": "none",
+   "detail": "cycle-1 FDG-PET is a patient secondary measure, not a model system; searches for PDX, organoid, ex vivo, in-silico models of members in GIST found none"
+  }
  ]
 }

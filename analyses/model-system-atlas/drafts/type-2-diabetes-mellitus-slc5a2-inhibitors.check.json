@@ -259,6 +259,28 @@
    "rule": "decision 10 (retrodiction = retro, never same)",
    "note": "Quote verbatim in abstract. Label fracture 14.2/18.7/17.6 per 1000 PY (line 358) precedes the 2015-07-23 epub; NCT01106651 results posted 2013-05-29: run after the result was known, so retro not same; year 2015 right. Direction only fits: clearest effect in control mice.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dating rule 6 (opener at model_first_use_year, proxy allowed); untested_reason unpublished",
+   "note": "Lee 2023 BCP (PMID 37602795) abstract opens with the quote verbatim. FIH NCT03364985 first posted 2017-12-07 (CT.gov API), so the 2017 proxy opener and untested/unpublished hold; model_filed null fair (MFDS only).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose table: target reached = same; retrodiction = model run after result known",
+   "note": "Quote verbatim in abstract, which compares predictions to observations before refinement: the 0.3 mg ZDF prediction predates FIH data, so not retro; Hwang 2022 UGE plateau 0.3-2.0 mg reached. Normal-rat 2 mg prediction overshot ~7x; full text unavailable.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -282,7 +304,8 @@
   "A model that names the right organ with the wrong direction (rat bone accretion and hypercalciuria; human BMD loss and fractures, found by the bone monitoring the rat prompted): contra with magnitude opposite, as drafted, or same with source_calls_it partial? And may a 14-carrier human LoF phenotype ('glucosuria without hypoglycemia') be paired against trial hypoglycaemia rates as a same?",
   "Decision 10 'known': does a patient result count as known from the sponsor's run (canagliflozin FIH NCT01177150 completed 2007-04) or from publication (Sha 2011-07)? The Sglt2-null engagement pairing is prospective only on the latter; and does a non-member's public UGE result (dapagliflozin, 2009) make a 2011 knockout a class retrodiction?",
   "Safety partial agreement across sources: Ly 2011 named four harms; infection and volume depletion held, weight loss stands in for malnutrition, mortality did not. Decision 11 'partial' is written for one source's readouts; is a drafter-assigned partial admissible when the label never cites the model, or does the mortality miss make it contra?",
-  "Dose 'same' dating: when healthy-volunteer PK is reached years before efficacy is shown (ertugliflozin 2011 vs 2017), is the entry dated at the PK or at the first primary-endpoint success?"
+  "Dose 'same' dating: when healthy-volunteer PK is reached years before efficacy is shown (ertugliflozin 2011 vs 2017), is the entry dated at the PK or at the first primary-endpoint success?",
+  "Enavogliflozin dose 6: a sponsor model stated before the FIH but first published (2023) after the FIH result (2022) - the brief dates it at publication but does not say whether an unpublished-before-the-result prediction counts as prospective (same) or should be retro; it also stated two dose targets (0.3 mg ZDF, 2 mg normal rat) and the draft scores only the one that matched."
  ],
  "could_not_verify": [
   "Ertugliflozin combined FDA pharmacology review (2017): accessdata returned an excessive-requests apology page twice; not retried.",

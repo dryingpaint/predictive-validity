@@ -206,5 +206,42 @@
   "Niraparib/abiraterone population PK and exposure-response (NDA 216793, 2023): descriptive of MAGNITUDE data with no prior prediction to compare.",
   "Talazoparib (Shen 2013 MX-1/Capan-1), niraparib (Jones 2009 MDA-MB-436) and fuzuloparib BRCA-mutant xenografts: same synthetic-lethality system and prediction as the brca2-null-synthetic-lethality track; not widened into separate tracks.",
   "MURAL PDX collection (Risbridger 2021) and the 2025-2026 PDO drug-screening platforms surfaced by search: no PARP-inhibitor arm with a patient comparison identified at abstract level; not pursued within budget."
+ ],
+ "gaps": [
+  {
+   "lead": "FDA ODAC 2023-04-28 on sNDA 208558/S-025 (PROpel)",
+   "outcome": "verdict",
+   "detail": "Patient-side tier-2 corroboration for efficacy 15 (ar-parp-crosstalk-xenografts contra 2023, Chi 2023); same year, so it adds a second source but changes no status or year; not a model system."
+  },
+  {
+   "lead": "EMA Lynparza II/0036 EPAR (2020, BRCA1/2-only mCRPC indication)",
+   "outcome": "verdict",
+   "detail": "Dating evidence: would move efficacy 7 (hrr-gene-panel-cell-screen contra, Carreira 2021) to 2020 and adds an ATM datum to efficacy 10 (atm-null-prostate-isogenic same 2023) once its gene-level quote is pulled; not a new system."
+  },
+  {
+   "lead": "Beshiri 2018 Clin Cancer Res LuCaP PDX-derived organoids",
+   "outcome": "tracked",
+   "detail": "lucap-pdx-organoids, efficacy untested 2018 + retro 2018 (Beshiri 2018), already in added_models and merged as efficacy 16-17."
+  },
+  {
+   "lead": "Karkampouna 2021 Nat Commun PDX/organoids (PMID 33602919)",
+   "outcome": "none",
+   "detail": "Full text (PMC7892572) has no PARP-inhibitor arm; olaparib only in discussion/reference, so no model-to-patient comparison."
+  },
+  {
+   "lead": "Fuzuloparib (member) FUZUPRO NCT04691804",
+   "outcome": "none",
+   "detail": "No fuzuloparib-specific prostate model found; its BRCA-mutant xenograft and AR-PARP basis are the brca2-null-synthetic-lethality and ar-parp-crosstalk-xenografts systems; FUZUPRO has only a meeting abstract (inadmissible tier), so no patient-side entry yet."
+  },
+  {
+   "lead": "Janssen 2022-02-15 MAGNITUDE futility and AstraZeneca 2021-09-24 PROpel press releases",
+   "outcome": "verdict",
+   "detail": "Tier-5 records (admissible, patient-side, trial_unreported false since papers exist) that would date efficacy 15 (ar-parp contra) to 2022 and efficacy 14 (ar-parp same, Clarke 2022) to 2021; a dating verdict on existing entries, not a system."
+  },
+  {
+   "lead": "Niraparib DAT binding / dog blood-pressure (Zejula 2017 review) vs MAGNITUDE hypertension",
+   "outcome": "verdict",
+   "detail": "Belongs on safety 2 (parpi-rat-dog-toxicology, Zejula 2017 review), where the confidence_note already names it; scoring it is a verdict on that track, not a new system."
+  }
  ]
 }

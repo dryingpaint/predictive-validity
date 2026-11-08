@@ -521,9 +521,172 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "cf-hne-isc",
+   "model": "Patient nasal epithelial cell cultures (Ussing chamber)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2017,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": "patients",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/s41598-017-07504-1",
+      "model_src_tier": 1,
+      "epub_year": 2017,
+      "print_year": 2017,
+      "registry_date": null,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "confidence": "medium",
+      "confidence_note": "Abstract and PMC full text (PMC5547155) read. 2017 is first use with a member for patient-level prediction.",
+      "year": 2017,
+      "status": "untested",
+      "untested_reason": "unsettled",
+      "population": "F508del/F508del (one F508del/S549N on ivacaftor)",
+      "drug_basis": "lumacaftor, tezacaftor (in vitro); lumacaftor/ivacaftor (patients)",
+      "note": "Short-circuit current in each patient's own nasal cell cultures, with lumacaftor or tezacaftor added, as a readout of that patient's correctable CFTR.",
+      "short": "Nasal cells measure each patient's rescue",
+      "src": "https://doi.org/10.1038/s41598-017-07504-1",
+      "srcLabel": "Pranke 2017",
+      "quote": "The CFTR correctors lumacaftor and tezacaftor significantly increased the ∆IscF/I+V response to about 25% (SEM = 4.4) of the WT-CFTR level and the CFTR apical expression to about 22% (SEM = 4.6) of the WT-CFTR level in F508del/F508del HNE cells.",
+      "endpoint_role": null,
+      "outcome_tested": null
+     },
+     {
+      "subjects": "patients",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/s41598-017-07504-1",
+      "model_src_tier": 1,
+      "epub_year": 2017,
+      "print_year": 2017,
+      "registry_date": null,
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "per-patient HNE corrected Isc vs per-patient FEV1 change at 6 months (R2 = 0.95)",
+      "source_calls_it": "match",
+      "confidence": "low",
+      "confidence_note": "n = 8 (7 on lumacaftor/ivacaftor, 1 on ivacaftor, not a member). Full text says nasal cells were sampled before treatment started; whether the assay was read before the 6-month FEV1 was known is not stated. Not a registered trial.",
+      "year": 2017,
+      "status": "same",
+      "population": "F508del/F508del (one F508del/S549N on ivacaftor)",
+      "drug_basis": "lumacaftor/ivacaftor (Orkambi), 7 of 8 patients",
+      "note": "Lumacaftor/ivacaftor correction in each patient's pre-treatment nasal cells tracked that patient's FEV1 change after 6 months of Orkambi; three FEV1 non-responders had low in-vitro correction.",
+      "short": "Nasal-cell rescue ranks individual FEV1 response",
+      "src": "https://doi.org/10.1038/s41598-017-07504-1",
+      "srcLabel": "Pranke 2017",
+      "quote": "The level of CFTR correction in HNE cultures significantly correlated with the FEV1 change at 6 months in 8 patients treated with CFTR modulators.",
+      "endpoint_role": null,
+      "outcome_tested": "positive",
+      "judgement": "Patient-level: cells were sampled before each patient started Orkambi, so this is scored as a prediction, not a retrodiction; the class result was already known in 2015 but the individual responses were not."
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "f508del-hbe-ussing",
+   "model": "Patient F508del bronchial cells (Ussing chamber)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2009,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": "patients",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "imported_from": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1056/NEJMoa1807119",
+      "model_src_tier": 1,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": "2021-04-22",
+      "retrodiction": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "HBE chloride transport vs ppFEV1 change",
+      "source_calls_it": "match",
+      "confidence": "medium",
+      "confidence_note": "Abstract only read. Phase 2, 29-day FEV1; Vertex took elexacaftor, not bamocaftor, to approval.",
+      "year": 2018,
+      "status": "same",
+      "population": "F508del/minimal function and F508del/F508del",
+      "drug_basis": "bamocaftor (VX-659) in VX-659/tezacaftor/ivacaftor",
+      "note": "VX-659 triple raised ppFEV1 up to 13.3 points (F508del/MF) and 9.7 points added to tezacaftor/ivacaftor (F508del/F508del), as its HBE activity predicted.",
+      "short": "Bamocaftor: FEV1 up to +13.3 as HBE predicted",
+      "src": "https://doi.org/10.1056/NEJMoa1807119",
+      "srcLabel": "Davies 2018",
+      "quote": "Robust in vitro activity of VX-659-tezacaftor-ivacaftor targeting Phe508del CFTR protein translated into improvements for patients with Phe508del-MF or Phe508del-Phe508del genotypes.",
+      "endpoint_role": "primary",
+      "outcome_tested": "positive",
+      "strengthens": "First stated same-drug comparison on this track: efficacy 2 is a pairing the FDA called 'limited'; Davies 2018 states bamocaftor's HBE activity 'translated' into FEV1 gains."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
   "cf-rectal-organoid-fis efficacy 2025: CHOICES (posenacaftor triple) rests on a tier-5 news item with no tier 1-3 model-side source; not scored"
+ ],
+ "gaps": [
+  {
+   "lead": "Elexacaftor tox (NDA 212273): rat/dog no liver signal vs Trikafta transaminases/liver failure",
+   "outcome": "verdict",
+   "detail": "Same #70/decision-12 attribution question as safety 2 (vanzacaftor-rat-dog-tox, adjudicated untested): label attributes liver injury to the TRIKAFTA combination; needs an adjudicator call before an elexacaftor-rat-dog-tox safety track is scored"
+  },
+  {
+   "lead": "Lumacaftor liver-related SAEs (Orkambi 2015 label 5.2)",
+   "outcome": "verdict",
+   "detail": "Corrects safety 1 (lumacaftor-rat-dog-tox 2009 untested): needs a dated 2015 label entry or a note; weak since transaminase rates matched placebo; checker flagged it under safety 1"
+  },
+  {
+   "lead": "Galicaftor HBE model side (Wang 2018 J Med Chem) for NCT04853368 FEV1 miss",
+   "outcome": "verdict",
+   "detail": "Corrects efficacy 2 judgement (f508del-hbe-ussing): cite Wang 2018 and say it is unscored because galicaftor was combined with non-member correctors (ABBV-119/576), not that no model prediction exists"
+  },
+  {
+   "lead": "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride met)",
+   "outcome": "tracked",
+   "detail": "Already in engagement 3 judgement (f508del-hbe-ussing); same system, tier-5 only with no posted results, so it changes no status"
+  },
+  {
+   "lead": "Patient nasal epithelial cultures (Pranke 2017 Sci Rep)",
+   "outcome": "added",
+   "detail": "cf-hne-isc, efficacy: 2017 untested opening, 2017 same (patient-level, n=8, R2=0.95 with 6-month FEV1)"
+  },
+  {
+   "lead": "VX-152",
+   "outcome": "none",
+   "detail": "Phase 2 NCT02951195 results posted 2021-01-28 but no tier 1-3 model-side source: PubMed/Europe PMC hits for VX-152 + bronchial epithelial are reviews only (rule 2: tier 3-5 patient side needs a named model_src)"
+  },
+  {
+   "lead": "bamocaftor",
+   "outcome": "added",
+   "detail": "f508del-hbe-ussing (existing system, new drug): efficacy 2018 same with strengthens, Davies 2018 NEJM stated comparison (NCT03224351). Its sweat-chloride match belongs in engagement 3's judgement, as it cannot be appended after the 2019 contra"
+  },
+  {
+   "lead": "olacaftor",
+   "outcome": "none",
+   "detail": "VX-440 Phase 2 NCT02951182 results posted 2020-08-28; no published HBE or other model data for VX-440 (PubMed 'VX-440 OR olacaftor' = Cochrane only; Europe PMC hits are reviews)"
+  }
  ]
 }

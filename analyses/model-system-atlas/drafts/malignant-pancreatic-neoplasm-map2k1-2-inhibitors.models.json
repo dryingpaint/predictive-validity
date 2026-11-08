@@ -13,7 +13,8 @@
   "PubMed metadata: Chang 2010, Gilmartin 2011, Iverson 2009, Infante 2014, Van Laethem 2017, Van Cutsem 2018, Huijberts 2020, Adjei 2015, Weekes 2013 abstracts for genotype-sensitivity claims and KRAS subgroup outcomes",
   "Crossref: online/print dates for Van Laethem 2017, Infante 2014, Van Cutsem 2018, Gilmartin 2011",
   "FDA bundle: grep lung/pulmonary/interstitial/pneumonitis in sources/204114/204114Orig1s000PharmR.txt for the dog and rat lung findings",
-  "WebFetch: doi.org and link.springer.com for Van Laethem 2017 full text - blocked by Springer auth redirect, abstract-level only"
+  "WebFetch: doi.org and link.springer.com for Van Laethem 2017 full text - blocked by Springer auth redirect, abstract-level only",
+  "Europe PMC: DOI 10.21037/jgo-22-86 (GSK2256098 + trametinib phase II PDAC) abstract - rationale is MEK/FAK co-activation in PDAC, no model named"
  ],
  "added_models": [
   {
@@ -220,5 +221,47 @@
   "Vena 2015 CCR pimasertib + gemcitabine orthotopic model: model_src for the existing PDX-track Van Cutsem entry, not a new system.",
   "FAK inhibitor + trametinib phase II (J Gastrointest Oncol 2022): not searched further in this run (budget); its model side would be KPC GEMM work, the existing GEMM track.",
   "In-silico / exposure-response dose models: no pancreatic-specific QSP or PK-PD dose model with a patient comparison found; trametinib's 2 mg came from mixed-tumour phase I pERK/PK already on the PDX dose cell."
+ ],
+ "gaps": [
+  {
+   "lead": "NCT02704156 / Zhu 2022 Lancet Oncol (SBRT + pembrolizumab + trametinib vs SBRT + gemcitabine)",
+   "outcome": "verdict",
+   "detail": "No model of the triple regimen exists (PubMed KPC/syngeneic searches, trial rationale cites none); record NCT02704156 in patient_trials of efficacy 2 (pdac-xenograft-pdx, contra 2013) as untested for the class (three differing components); rule question 4 decides"
+  },
+  {
+   "lead": "Vena 2015 CCR pimasertib + gemcitabine orthotopic model",
+   "outcome": "verdict",
+   "detail": "Model side of efficacy 4 (pdac-xenograft-pdx, Van Cutsem 2018 contra): set model_src 10.1158/1078-0432.CCR-15-0485, tier 1, comparison_stated false, not retro; check verdict efficacy 4 already covers it"
+  },
+  {
+   "lead": "Lapatinib + trametinib phase I, Huijberts 2020 (10.1007/s00280-020-04066-4)",
+   "outcome": "verdict",
+   "detail": "Existing pdac-xenograft-pdx track (Walters 2013 model): needs a dose-cell entry, 2020, untested (combination stopped at trametinib 1 mg by DLTs, no stated margin); no new system"
+  },
+  {
+   "lead": "GSK2256098 + trametinib 0.5 mg phase II PDAC (J Gastrointest Oncol 2022, 10.21037/jgo-22-86)",
+   "outcome": "none",
+   "detail": "MEK inhibition not isolated (added to a non-member FAK inhibitor, sub-therapeutic 0.5 mg) and the paper names no model, only co-activation rationale; no model-to-patient comparison"
+  },
+  {
+   "lead": "Trametinib + gemcitabine Japanese phase I/Ib ILD (Invest New Drugs 2015, 10.1007/s10637-015-0270-2)",
+   "outcome": "verdict",
+   "detail": "Patient side of a safety entry on tox-species-rat-dog (dog 13-week lung target organ, PharmR lines 400-405): needs a new safety entry, same (lung signal -> clinical ILD), stated tier 2; same as the models-checker lead below"
+  },
+  {
+   "lead": "Patient-derived organoids (Front Immunol 2026, 10.3389/fimmu.2026.1760379)",
+   "outcome": "none",
+   "detail": "Organoid-patient comparison only for gemcitabine/paclitaxel; no MEK-class patient comparison (checker excluded it too)"
+  },
+  {
+   "lead": "[models] tox-species-rat-dog safety: dog lung findings vs clinical ILD (NDA 204114 PharmR 400-405)",
+   "outcome": "verdict",
+   "detail": "Existing track tox-species-rat-dog, safety cell: needs a second entry (year 2013 for the FDA's stated reconciliation, disease-specific patient side Invest New Drugs 2015), status same, comparison_stated true, source_tier 2"
+  },
+  {
+   "lead": "[models] PDX track: Kinsey 2019 Nat Med trametinib + chloroquine vs Witte 2024 / Tang 2023 patient series",
+   "outcome": "verdict",
+   "detail": "Existing track pdac-xenograft-pdx, efficacy cell: needs a prospective contra entry (model 2019 precedes 2023-2024 series with no responses; THREAD NCT03825289 terminated, no results); not a new system"
+  }
  ]
 }

@@ -7,7 +7,8 @@
   "fc search: tominersen brain region exposure model deep structures caudate NHP PET",
   "fc search: HTT lowering antisense mouse model predicts clinical CSF mutant huntingtin Southwell",
   "Europe PMC core records: PMC11255113 (Iwamoto 2024), PMID 28829437 (Iwamoto 2017 NBT), PMID 37221972 (tominersen PopPK), PMID 31737741 (Keskin 2019)",
-  "fc search: AMT-130 CSF mutant huntingtin 24 months high dose variable uniQure 2023 update"
+  "fc search: AMT-130 CSF mutant huntingtin 24 months high dose variable uniQure 2023 update",
+  "Gap pass: class_members.csv (ifezuntirgene inilparvovec = AMT-130, rAAV5-miHTT, NCT04120493); fc scrape PMC11255113 (Iwamoto 2024) for HTT-2723/tominersen"
  ],
  "added_models": [
   {
@@ -103,5 +104,32 @@
   "Wave published preclinical data for WVE-120101/120102 before PRECISION-HD: none found; Iwamoto 2017 (Nat Biotechnol, doi:10.1038/nbt.3948) is about stereopure mipomersen, not HTT. Wave's model stays unpublished.",
   "Human genetic HTT loss-of-function / haploinsufficiency carriers: no source compares them with a member drug's patient engagement, dose or safety result.",
   "Patient-derived cells or PDX-style co-clinical selection, human challenge, regulator reliance on model data: none exist for this class (no NDA/BLA; FDA declined the external control for AMT-130 in Nov 2025)."
+ ],
+ "gaps": [
+  {
+   "lead": "uniQure regulatory update Nov 2025 (FDA no longer accepts Enroll-HD external control)",
+   "outcome": "verdict",
+   "detail": "Not a status change; belongs in the note of efficacy 5 (hd-rodent-aav5-mihtt, same 2025); checker missing item covers it."
+  },
+  {
+   "lead": "NCT03225833 (WVE-120101, rovanersen) registry results posted 2022-02-10",
+   "outcome": "verdict",
+   "detail": "Corrects the registry citation/registry_date of engagement 2, dose 2 and safety 2 (wave-snp12-preclinical, untested); checker verdict on engagement 2 covers it; no new system."
+  },
+  {
+   "lead": "Iwamoto 2024 tominersen-surrogate HTT-2723 in patient iPSC neurons",
+   "outcome": "verdict",
+   "detail": "Same system as engagement 6 (hd-ipsc-neuron-snp-aso); HTT-2723 is a comparator 'designed based on tominersen' (not the product) and the paper states no tominersen patient comparison; at most a second retro entry on that track, which merge would dedupe here, so it needs a drafter/checker decision."
+  },
+  {
+   "lead": "Southwell 2015 (CSF mHTT tracks brain HTT lowering in mice/NHP)",
+   "outcome": "verdict",
+   "detail": "Same system as hd-mouse-nhp-aso-htt; should be set as model_src (tier 1) of engagement 4, not a new track."
+  },
+  {
+   "lead": "ifezuntirgene inilparvovec",
+   "outcome": "tracked",
+   "detail": "INN of AMT-130 (rAAV5-miHTT, class_members.csv); tracked as tghd-minipig-aav5-mihtt (engagement 3, 5), hd-ipsc-neuron-aav5-mihtt (engagement 7, 8), hd-rodent-minipig-aav5-dose (dose 3), hd-rodent-aav5-mihtt (efficacy 3, 5), nhp-rat-aav5-tox (safety 3, 4)."
+  }
  ]
 }

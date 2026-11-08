@@ -398,5 +398,32 @@
   "iPSC-derived CD33 CAR-NK (ASH 2022 abstract cited by Huang 2025) and SENTI-202 CD33/FLT3 logic-gated CAR-NK (ASH 2025 abstract): abstracts only, no peer-reviewed report pairing a model with patients",
   "Albinger 2022 primary CD33-CAR-NK (Blood Cancer J) and the Frankfurt automated CAR-NK manufacturing paper (BMT 2024): preclinical/manufacturing only, no patient comparison",
   "Gale 2018 adult gemtuzumab genotype null: non-member datum, set aside (decision 13), mentioned in the genotype track's confidence_note"
+ ],
+ "gaps": [
+  {
+   "lead": "Vasu 2022 Haematologica (doi:10.3324/haematol.2020.274118, NCT01690624 report)",
+   "outcome": "verdict",
+   "detail": "Corrects existing track aml-blast-nk-adcc-ex-vivo, not a new system: efficacy 5 re-dated to 2022 by the checker verdict (contra stands); engagement 4 (2021 contra) already added on adjudication; dose 3 adjudicated untested"
+  },
+  {
+   "lead": "Fiedler 2022 Haematologica (doi:10.3324/haematol.2022.281128, BI 836858 + decitabine, NCT02632721)",
+   "outcome": "verdict",
+   "detail": "Needs a verdict on aml-blast-nk-adcc-ex-vivo efficacy: Vasu 2016 modelled decitabine-enhanced BI 836858 ADCC, so Fiedler's uncontrolled ORR 19/49 is a new 2022 entry on that track plus a patient_trials row; no new system"
+  },
+  {
+   "lead": "Stanchina 2019 J Hematol Oncol (rs12459419 vs SGN-CD33A response)",
+   "outcome": "tracked",
+   "detail": "cd33-rs12459419-splice-genotype, efficacy 8 (2019 contra, Stanchina 2019); rule question 6 pending with the adjudicator"
+  },
+  {
+   "lead": "Vadastuximab cynomolgus toxicology (unverifiable)",
+   "outcome": "none",
+   "detail": "No retrievable source: no NDA/BLA or FDA review in the bundle, Stein 2018 PMC text is front matter only; no quote, so no track can open (safety 1 confirmed untested)"
+  },
+  {
+   "lead": "anti-CD33 CAR-NK cells",
+   "outcome": "tracked",
+   "detail": "cd33-car-nk92-in-vitro (Tang 2018, all four cells untested) and cd33-car-nk-cb-nsg-xenograft (efficacy 10: Huang 2025, same); already in the merged draft"
+  }
  ]
 }

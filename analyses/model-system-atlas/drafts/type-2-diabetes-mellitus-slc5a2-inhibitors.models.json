@@ -10,7 +10,11 @@
   "Europe PMC REST: canagliflozin AND (\"systems pharmacology\" OR \"mechanistic model\") AND renal glucose (no canagliflozin preclinical-to-human QSP model found; dapagliflozin mPBPK only)",
   "Europe PMC REST: canagliflozin AND (\"DBA/2J\" OR \"Sglt2 knockout\" OR \"Sglt2-/-\") AND bone (no second bone retrodiction found)",
   "Europe PMC fullTextXML for PMC4679447 (Thrailkill) and PMC3014040 (Ly): endpoint returned no text; abstract-level only",
-  "ClinicalTrials.gov API v2: query.intr=PF-04971729, phase 1 (FIH NCT00989079, no results posted)"
+  "ClinicalTrials.gov API v2: query.intr=PF-04971729, phase 1 (FIH NCT00989079, no results posted)",
+  "Europe PMC: enavogliflozin (94 hits) and DWP16001 (19 hits), titles screened for rodent efficacy, translational PK/PD and PBPK papers",
+  "Europe PMC abstracts: Lee 2023 BCP (PMID 37602795), Park 2025 JPET (PMID 40706136), Kim 2023 Pharmaceutics PBPK (PMID 36986803), Hwang 2022 BCP (PMID 35395697), Choi 2020 (PMID 32183468)",
+  "ClinicalTrials.gov API v2: DWP16001 studies (FIH NCT03364985, phase 3 NCT04632862/NCT04634500/NCT04654390)",
+  "Europe PMC abstract: Miao 2013 DMD ertugliflozin human ADME (PMID 23169609, doi 10.1124/dmd.112.049551)"
  ],
  "added_models": [
   {
@@ -374,6 +378,83 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "enavogliflozin-rat-pkpd-translation",
+   "model": "Mechanistic population PK/PD model of enavogliflozin (DWP16001) in ZDF and normal rats, scaled by allometry and in-vitro IC50 ratios to predict efficacious human doses",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2017,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "patient_trials": null,
+      "subjects": null,
+      "epub_year": 2023,
+      "print_year": 2024,
+      "registry_date": "2017-12-07",
+      "confidence": "medium",
+      "confidence_note": "Abstract only (Br J Clin Pharmacol, epub 2023-09-22). Year 2017 is a proxy: the model was built to design the first-in-human study NCT03364985 (first posted 2017-12-07), but was not public until 2023.",
+      "year": 2017,
+      "status": "untested",
+      "untested_reason": "unpublished",
+      "note": "A mechanistic PK/PD model scaled from ZDF and normal rats predicted efficacious human doses of enavogliflozin to design its first-in-human study.",
+      "short": "Rat PK/PD scaled to a human dose",
+      "src": "https://doi.org/10.1111/bcp.15891",
+      "srcLabel": "Lee 2023",
+      "quote": "The objective of this study was to characterize the pharmacokinetics (PK)/pharmacodynamics (PD) of DWP16001, a novel sodium-glucose cotransporter 2 inhibitor, and predict efficacious doses for the first-in-human study using various translational approaches.",
+      "margin_stated": false,
+      "blocked_by": null,
+      "judgement": "Opener at first use, proxied at the FIH registration it was built for. No FDA filing exists for enavogliflozin (Korea MFDS approval), and the MFDS dossier was not searched, so model_filed null."
+     },
+     {
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/bcp.15891",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": "within_2x",
+      "magnitude_basis": "ZDF-rat-translated efficacious dose (0.3 mg) vs the dose at which healthy-volunteer UGE plateaued and that phase 3 took forward (0.3 mg); refined-model fold error 1.2 uses clinical data",
+      "source_calls_it": "match",
+      "population": "Unselected",
+      "patient_trials": null,
+      "subjects": "healthy_volunteers",
+      "epub_year": 2023,
+      "print_year": 2024,
+      "registry_date": "2017-12-07",
+      "confidence": "medium",
+      "confidence_note": "Abstract only. The abstract states the 1.2-fold agreement only after refinement on early clinical data; the pre-refinement fold error is not given. FIH NCT03364985 (start 2017-12-03, completed 2019-05-21) has no posted results; its PK/PD is Hwang 2022 (doi 10.1111/bcp.15348, epub 2022-04-22): UGE 50-60 g/d at 0.3-2.0 mg.",
+      "year": 2023,
+      "status": "same",
+      "margin_stated": false,
+      "blocked_by": null,
+      "note": "The ZDF-rat translation predicted 0.3 mg efficacious; healthy volunteers reached UGE plateau from 0.3 mg, the dose phase 3 used.",
+      "short": "Rat-translated 0.3 mg dose reached",
+      "src": "https://doi.org/10.1111/bcp.15891",
+      "srcLabel": "Lee 2023",
+      "quote": "Efficacious doses of 0.3 and 2 mg of DWP16001 were predicted using human half-maximal inhibitory concentration values translated from Zucker Diabetic Fatty rats and normal rats, respectively.",
+      "reason": "Rat-translated 0.3 mg dose reached",
+      "judgement": "Dose: the model's stated target (0.3 mg from the ZDF translation) was reached in healthy volunteers with plateau glucosuria (Hwang 2022), and the source sets prediction beside observation (comparison_stated true). Prospective: the model was built to design the FIH, so retrodiction false, though its publication (2023) followed the FIH paper (2022); dated at the 2023 publication. The normal-rat translation (2 mg) over-predicted the dose; the ZDF one matched. No margin stated."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -384,6 +465,60 @@
   "Canagliflozin population PK/PD and dose-regimen models (e.g. de Winter 2017 BJCP): built on human trial data, not a preclinical or in-silico model that predicted a human result before it was known; not added.",
   "Enavogliflozin: no rodent-efficacy or model-comparison source found beyond the checker's note (PK/tissue-distribution paper PMID 35745783); not searched further within budget.",
   "Patient-derived cells or organoids, PDX co-clinical trials, ex-vivo drug sensitivity, human challenge models: none found for SGLT2 inhibitors in any search; the Genetics of Response to Canagliflozin study (CTS 2026, PMID 42144570) is patient pharmacogenetics with no model system and no model-vs-patient comparison.",
-  "UK Biobank SLC5A2 Mendelian randomization (Katzmann 2021) and familial renal glucosuria: already tracked by the draft as slc5a2-lof-frg."
+  "UK Biobank SLC5A2 Mendelian randomization (Katzmann 2021) and familial renal glucosuria: already tracked by the draft as slc5a2-lof-frg.",
+  "Enavogliflozin PBPK (Kim 2023, PMID 36986803): built on published clinical data, not a prior prediction; not added.",
+  "Enavogliflozin reverse-translational study (Park 2025, PMID 40706136): explains clinical potency after the fact with docking and rat metabolite dosing; no stated model-vs-patient comparison beyond narrative; not added."
+ ],
+ "gaps": [
+  {
+   "lead": "Thrailkill 2016 DBA/2J mouse canagliflozin bone (retro)",
+   "outcome": "tracked",
+   "detail": "sglt2-dba2j-mouse-bone, safety: 2015 untested opener and 2015 retro (Thrailkill 2016)"
+  },
+  {
+   "lead": "Jurczak 2011 Sglt2-knockout mouse (HFD, db/db)",
+   "outcome": "tracked",
+   "detail": "slc5a2-null-mouse: engagement 2011 untested/same, efficacy 2011 untested and 2013 same (Jurczak 2011 cited)"
+  },
+  {
+   "lead": "Ertugliflozin has no entry in any cell",
+   "outcome": "tracked",
+   "detail": "ertugliflozin-rat-allometry-pk, dose 2011 untested/same (checker re-dates the same to 2017); its rat glucosuria and SD-rat/dog tox are the existing t2dm-rodent-diabetic and sglt2-rodent-tox systems and change no status; label 5.5 amputation is a harm no species could show"
+  },
+  {
+   "lead": "Tofogliflozin Suzuki 2012 JPET db/db and diabetic rats",
+   "outcome": "none",
+   "detail": "same system as t2dm-rodent-diabetic, already same from 2013; a member entry changing no status adds no entry (one entry per change of status); no tofogliflozin prediction-vs-patient paper found"
+  },
+  {
+   "lead": "Canagliflozin lower-limb amputation (2017 boxed warning, removed 2020)",
+   "outcome": "verdict",
+   "detail": "note on sglt2-rodent-tox safety entry 3 (2013): add amputation beside DKA as an unpredicted harm; no species could show it, so no status change"
+  },
+  {
+   "lead": "Perry 2019 rat euglycaemic ketoacidosis retrodiction",
+   "outcome": "none",
+   "detail": "run with dapagliflozin, not a member of this tile; evidence from a non-member does not score here"
+  },
+  {
+   "lead": "Enavogliflozin (no rodent-efficacy source found)",
+   "outcome": "added",
+   "detail": "enavogliflozin-rat-pkpd-translation: dose 2017 untested opener, 2023 same (Lee 2023 BCP, ZDF-translated 0.3 mg reached; Hwang 2022 FIH)"
+  },
+  {
+   "lead": "NCT01177150 registry_date for engagement entry 4 (Sha 2011)",
+   "outcome": "verdict",
+   "detail": "slc5a2-null-mouse engagement 2011 same: registry_date null should be 2010-08-06 (first posted; no results), as the checker's verdict on engagement 4 says"
+  },
+  {
+   "lead": "Miao 2013 ertugliflozin ADME clearance within 1.5x of allometry",
+   "outcome": "none",
+   "detail": "Europe PMC abstract (PMID 23169609) is mass balance and metabolism only, with no allometric comparison; claim not verifiable, dose 4 magnitude stays null"
+  },
+  {
+   "lead": "Vallon 2011 JASN Sglt2-/- mouse (epub 2010-07-08)",
+   "outcome": "verdict",
+   "detail": "slc5a2-null-mouse: model_first_use_year and the engagement/efficacy/safety openers should move to 2010 (Vallon epub), same system, no new track"
+  }
  ]
 }

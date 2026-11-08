@@ -9,7 +9,12 @@
   "ClinicalTrials.gov API v2: NCT03603327 (Etzion pilot; first posted 2018-07-27, no results posted)",
   "PubMed: NS5A P32 deletion hepatitis C (sofosbuvir velpatasvir OR glecaprevir pibrentasvir) retreatment patients sustained virologic response, 2018- (patient tests of the P32del prediction); metadata for PMIDs 41989713, 31846553, 30612205",
   "FDA text bundle grep (NDAs 206843, 205834, 206619, 207931, 208624, 208261, 212477) for viral dynamic / kinetic model / mathematical model / chimeric mice / uPA-SCID / TK-NOG: no regulator reliance on an in-silico kinetic model or a humanized mouse found (3 incidental hits)",
-  "Checker leads re-read against the draft: Shi 2013 GT2 vs Sulkowski 2014 and the Harvoni Oct-2014 label section 12.4 are existing tracks (hcv-chimeric-upa-scid-mouse, hcv-replicon-huh7), not new systems"
+  "Checker leads re-read against the draft: Shi 2013 GT2 vs Sulkowski 2014 and the Harvoni Oct-2014 label section 12.4 are existing tracks (hcv-chimeric-upa-scid-mouse, hcv-replicon-huh7), not new systems",
+  "PubMed: TD-6450 (1 hit, unrelated); Europe PMC \"TD-6450\" (5 hits, none with model or patient data); ClinicalTrials.gov TD-6450 (NCT02022306, NCT02116543, NCT02593162, NCT02716428; no results posted); fc.py web search failed",
+  "PubMed: GSK2336805 (9 hits; preclinical replicon AAC 2014 PMID 24126581, FTIH Wilfret 2013 PMID 23896477, Gardner 2014 PMID 24107072 read)",
+  "PubMed: ravidasvir OR PPI-668 (24 hits; discovery BMCL 2016, STORM-C-1 2021, phase 2/3 trials, popPK 2024 titles screened)",
+  "PubMed: ruzasvir OR MK-8408 (19 hits; in-vitro profile AAC 2018, C-CREST trials, Zitzmann 2026 CPT multiscale model PMID 42693517 read)",
+  "PubMed: ledipasvir sofosbuvir retreatment daclatasvir asunaprevir failure NS5A (6 hits) plus checker PMIDs 26208695, 28315983, 28815329, 29504692, 28332272, 28884930 (abstracts read)"
  ],
  "added_models": [
   {
@@ -220,6 +225,55 @@
   "Goyal 2022 Open Forum Infect Dis and Goyal 2026 J Infect Dis: in-silico cohort analyses of response-guided shortening with no patient comparison of a shortened course; Gorstein 2020 Antiviral Res modelled sofosbuvir + ribavirin, no NS5A member drug.",
   "Mawatari 2020 Hepatol Res (doi:10.1111/hepr.13474): one P32del patient among three glecaprevir/pibrentasvir retreatment failures; consistent with the TK-NOG mouse but pibrentasvir was not dosed in that model and the result was known in kind from Uemura 2019, so no prospective entry.",
   "Chimpanzee, marmoset/GBV-B and primary-hepatocyte systems: no NS5A-class patient comparison found in the searches above; not added.",
-  "Japanese sofosbuvir/velpatasvir + ribavirin DAA-failure trial outcomes by P32del status: not verified within budget, so the TK-NOG forward prediction (velpatasvir regimens fail P32del) stays without a prospective entry."
+  "Japanese sofosbuvir/velpatasvir + ribavirin DAA-failure trial outcomes by P32del status: not verified within budget, so the TK-NOG forward prediction (velpatasvir regimens fail P32del) stays without a prospective entry.",
+  "Zitzmann 2026 CPT (bemnifosbuvir + ruzasvir, Perelson multiscale model fitted to NCT05904470 kinetics): a fit with no prediction compared with patients, on the existing hcv-viral-kinetic-model system; not added.",
+  "Kai 2015 J Gastroenterol (TK-NOG, DCV/ASV-failure serum, ledipasvir + GS-558093 failed EOT/SVR) vs Suda 2017 (LDV/SOF+RBV SVR 13/15), Kawakami 2017 (26/30), Ikeda 2018 (19/29): belongs on the existing hcv-tk-nog-humanized-liver-mouse track as a 2015 untested opener and a 2017 contra, but the merge appends after the draft's 2019 entries (lint: years not sorted), so it is left to a checker verdict on that track rather than added here."
+ ],
+ "gaps": [
+  {
+   "lead": "Shi 2013 humanized-mouse GT2 combination failure vs Sulkowski 2014 daclatasvir + sofosbuvir 92% SVR in GT2",
+   "outcome": "verdict",
+   "detail": "Second prediction on the existing hcv-chimeric-upa-scid-mouse track (efficacy 3, Shi 2013 retro); corrects that entry's 'never tested' claim and needs a checker verdict on rule question 2 (conditions differ), not a new system"
+  },
+  {
+   "lead": "FDA Harvoni label Oct 2014 section 12.4 baseline NS5A RAPs relapse 5/23 vs 2/85",
+   "outcome": "verdict",
+   "detail": "Earlier dating of the regulator patient-level comparison on hcv-replicon-huh7 (efficacy 4, FDA Daklinza label 2015, same): rule 6 moves first regulator use to 2014; checker verdict needed on that entry"
+  },
+  {
+   "lead": "Osawa 2019 GLE/PIB humanized mice and Doi 2019 P32del humanized-liver mice",
+   "outcome": "tracked",
+   "detail": "Doi 2019 is tracked as hcv-tk-nog-humanized-liver-mouse (efficacy 9-10); Osawa 2019 used the Hiroshima uPA/SCID system, a retrodiction belonging on hcv-chimeric-upa-scid-mouse (efficacy 3 track), needing a verdict entry there"
+  },
+  {
+   "lead": "In-silico viral-kinetic model (Guedj 2013 PNAS)",
+   "outcome": "tracked",
+   "detail": "hcv-viral-kinetic-model, efficacy 6 (Guedj 2013 untested), 7 (Dahari 2016 retro), 8 (Etzion 2020 same)"
+  },
+  {
+   "lead": "Kai (checker: Kan) 2015 TK-NOG DCV/ASV-failure prediction and 2017 LDV/SOF retreatment tests",
+   "outcome": "verdict",
+   "detail": "Existing hcv-tk-nog-humanized-liver-mouse track (efficacy 9, Doi 2019 untested): verdict needed to move the opener to Kai 2015 (PMID 26208695) and insert a 2017 contra (Suda 2017 PMID 28315983 SVR 13/15; Kawakami 2017 26/30) vs the mouse's predicted ledipasvir failure; not appended because the draft order would be unsorted"
+  },
+  {
+   "lead": "TD-6450",
+   "outcome": "none",
+   "detail": "No publication with preclinical-to-patient data (PubMed 0 relevant, Europe PMC 0 relevant); 4 CT.gov trials with no posted results"
+  },
+  {
+   "lead": "gsk-2336805",
+   "outcome": "none",
+   "detail": "Only comparison is replicon EC50/resistance (AAC 2014) vs single-dose and 28-day viral-load declines (Wilfret 2013, Gardner 2014): the existing hcv-replicon-huh7 system, so no new system (MODELS_TASK: skip systems the draft tracks)"
+  },
+  {
+   "lead": "ravidasvir",
+   "outcome": "none",
+   "detail": "Replicon potency (BMCL 2016) then STORM-C-1 and phase 2/3 SVR trials; no model beyond the existing hcv-replicon-huh7 system and no published model-to-patient comparison"
+  },
+  {
+   "lead": "ruzasvir",
+   "outcome": "none",
+   "detail": "Replicon/RAS profile (AAC 2018) is the existing hcv-replicon-huh7 system; Zitzmann 2026 multiscale model is a fit to patient kinetics on the existing hcv-viral-kinetic-model system with no prediction compared"
+  }
  ]
 }

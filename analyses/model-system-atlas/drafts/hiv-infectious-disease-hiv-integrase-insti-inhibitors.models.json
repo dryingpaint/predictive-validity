@@ -9,7 +9,8 @@
   "Europe PMC: dolutegravir physiologically based pharmacokinetic + pregnancy / neonates / rifampicin",
   "Europe PMC: Kobayashi S/GSK1349572 in vitro antiretroviral properties; Yoshinaga GSK1265744",
   "ClinicalTrials.gov API: results-first-posted dates for NCT00950859 (VIKING) and NCT01328041 (VIKING-3)",
-  "Crossref: Koteff 2013 online date"
+  "Crossref: Koteff 2013 online date",
+  "Europe PMC by DOI (gap pass): Cabrera 2019 AIDS, Cabrera 2026 DMM, Tukeman 2024 AIDS, Gelineau-van Waes 2023 Front Cell Dev Biol; Crossref dates for Tukeman"
  ],
  "added_models": [
   {
@@ -270,15 +271,145 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "mouse-low-folate-dtg-ntd",
+   "model": "Folate-deficient pregnant CD-1 mice dosed with DTG (nutrient-sensitised NTD model)",
+   "model_kind": "animal",
+   "model_first_use_year": 2023,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "confidence_note": "abstract-level reading",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected",
+      "model_src": null,
+      "model_src_tier": null,
+      "source_tier": 1,
+      "year": 2023,
+      "status": "untested",
+      "note": "Pregnant CD-1 mice on normal or low folic-acid diets dosed with dolutegravir at human-therapeutic-equivalent and supratherapeutic doses, built after the Tsepamo signal.",
+      "short": "Low-folate mouse DTG study",
+      "src": "https://doi.org/10.1097/QAD.0000000000003639",
+      "srcLabel": "Tukeman 2024",
+      "quote": "They were treated with water, a human therapeutic-equivalent dose, or supratherapeutic dose of DTG from mouse embryonic day E6.5 to E12.5.",
+      "confidence": "high",
+      "subjects": null,
+      "comparison_stated": false,
+      "epub_year": 2023,
+      "print_year": 2024,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "judgement": "Opening entry. A folate-sensitised mouse (CD-1, low-folate diet) is a different system from the C57BL/6J therapeutic-dose track: NTDs appear only when folate is low. Published ahead of print June 2023 (PMID 37382903, Crossref record 2023-06-29); issue 2024."
+     },
+     {
+      "confidence_note": "abstract-level reading; NTD counts not in the abstract",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected",
+      "model_src": null,
+      "model_src_tier": null,
+      "source_tier": 1,
+      "year": 2023,
+      "status": "retro",
+      "note": "Exencephaly appeared at therapeutic-equivalent DTG only in low-folate dams; the authors offer it as an explanation of the Botswana NTD signal.",
+      "short": "Low-folate mice reproduce Botswana signal",
+      "src": "https://doi.org/10.1097/QAD.0000000000003639",
+      "srcLabel": "Tukeman 2024",
+      "quote": "it is possible that DTG exposures in people living with HIV with low folate status during pregnancy may explain, at least in part, the elevated NTD risk signal observed in Botswana.",
+      "confidence": "medium",
+      "reason": "Reproduced the known human signal",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "epub_year": 2023,
+      "print_year": 2024,
+      "retrodiction": true,
+      "magnitude": "direction_only",
+      "magnitude_basis": "presence of DTG-induced NTDs in low-folate mice vs Tsepamo NTD excess",
+      "source_calls_it": "match",
+      "judgement": "Run after the 2018-2019 Tsepamo reports, so retro. Gelineau-van Waes 2023 (10.3389/fcell.2023.1175917) found the same with hypomagnesemic strains (LM/Bc) and low-Mg diets; same sensitised-mouse concept, not scored separately."
+     },
+     {
+      "confidence_note": "abstract-level reading; Botswana folate status inferred from lack of fortification, not measured in the source",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "imported_from": null,
+      "population": "Unselected",
+      "model_src": "https://doi.org/10.1097/QAD.0000000000003639",
+      "model_src_tier": 1,
+      "source_tier": 1,
+      "year": 2025,
+      "status": "contra",
+      "note": "With more Tsepamo births the DTG NTD rate fell to 0.10% vs 0.11% on other ART, in an unfortified, low-folate population: the harm the sensitised mice showed did not appear.",
+      "short": "Human NTD signal gone",
+      "src": "https://doi.org/10.1097/QAD.0000000000004326",
+      "srcLabel": "Brummel 2025",
+      "quote": "This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.",
+      "confidence": "low",
+      "reason": "Predicted harm absent in patients",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "epub_year": 2025,
+      "print_year": null,
+      "retrodiction": false,
+      "magnitude": "opposite",
+      "magnitude_basis": "mouse NTDs at therapeutic DTG under low folate vs no NTD excess in final Tsepamo data",
+      "source_calls_it": null,
+      "judgement": "First test after the model was built, so retrodiction false; patient_signal_reversed is the turn-back flag for a model that predicted no harm, so false here. Confirmed by Zash 2026 (10.1016/j.langlo.2026.104076)."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
   "SHIV macaque rectal/vaginal challenge with long-acting cabotegravir (Andrews 2014) vs HPTN 083/084: prevention in HIV-negative people, not patients of this disease; the main draft and its checker also leave it out of the treatment context.",
   "Cell-culture PA-IC90 x fold-change used to choose dolutegravir 50 mg twice daily for INSTI-resistant virus (VIKING cohort II): same system as the draft's dose track (hiv-cell-pa-ic90-trough).",
-  "Low-folate CD-1 mice (Tukeman 2023), zebrafish (Cabrera 2026), FOLR1 binding, brain organoids (Caiaffa 2024) and mouse whole-embryo culture (Ao 2025) for DTG neural-tube defects: mechanistic retrodictions that cite Tsepamo only as motivation; no stated comparison of their numbers with patients beyond the mouse track added.",
+  "Zebrafish (Cabrera 2019/2026), FOLR1 binding, brain organoids (Caiaffa 2024) and mouse whole-embryo culture (Ao 2025) for DTG neural-tube defects: mechanistic retrodictions with no stated comparison with patients; low-folate CD-1 mice now added as mouse-low-folate-dtg-ntd.",
   "Human adipose stem cell / adipocyte models of INSTI weight gain (Pickering 2026; Gorwood 2020 not retrieved): mechanistic retrodictions with no comparison of magnitude with patient weight data found.",
   "In-vitro resistance passage (R263K selection) vs mutations that emerged in SAILING: a resistance-pathway prediction, not one of the four questions.",
   "In-vitro OCT2/MATE1 inhibition vs metformin exposure rise (dolutegravir-metformin DDI study): same OCT2 track, would not change its status; not verified within budget.",
   "PBPK / population-PK models for DTG in pregnancy, with rifampicin, and for cabotegravir LA dosing: built on human PK rather than a preclinical system; no member-specific PBPK comparison found in the search."
+ ],
+ "gaps": [
+  {
+   "lead": "Min 2010 AAC healthy-volunteer Ctau ~25x PA-IC90 (dose dating)",
+   "outcome": "verdict",
+   "detail": "dating of dose entries on hiv-cell-pa-ic90-trough; checker verdicts dose 1 (open 2009) and dose 2 (same at 2011) cover it"
+  },
+  {
+   "lead": "Brummel/Zash AIDS 2025 10.1097/QAD.0000000000004326 (Tsepamo signal attenuates)",
+   "outcome": "verdict",
+   "detail": "rat-rabbit-efd safety 3 re-dated to 2025 by checker verdict; also the 2025 contra entry on mouse-periconception-dtg-therapeutic"
+  },
+  {
+   "lead": "Zash 2018 NEJM letter / May 2018 FDA-EMA communications (first NTD signal)",
+   "outcome": "verdict",
+   "detail": "dating of rat-rabbit-efd safety 2 (2019 contra); covered by checker note on safety 2 and its rule question on letter-vs-quotable dating"
+  },
+  {
+   "lead": "Zebrafish embryo DTG developmental-toxicity model (Cabrera 2019 AIDS; Cabrera 2026 DMM)",
+   "outcome": "none",
+   "detail": "endpoint is general embryo mortality/dysmorphology, not NTDs, and neither abstract compares it with any patient result; no comparison to score"
+  },
+  {
+   "lead": "Second mouse NTD model: low-folate CD-1 (Tukeman AIDS 2024) and hypomagnesemic strains (Gelineau-van Waes 2023)",
+   "outcome": "added",
+   "detail": "mouse-low-folate-dtg-ntd safety: untested 2023, retro 2023 (Tukeman), contra 2025 (Brummel); Gelineau-van Waes noted in judgement"
+  }
  ]
 }

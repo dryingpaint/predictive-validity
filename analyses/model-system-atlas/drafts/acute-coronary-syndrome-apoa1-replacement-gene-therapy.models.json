@@ -10,7 +10,8 @@
   "Europe PMC: (CER-001 OR MDCO-216 OR ETC-216 OR apoA-I Milano) AND (PK model OR dose selection OR in silico OR mathematical OR PBPK) -- Keyserling 2017 (28213743), CARAT (30046828)",
   "Europe PMC: (CER-001 OR MDCO-216 OR CSL112) AND (organoid OR patient-derived OR ex vivo OR macrophages) AND patients AND (predict OR correlat*) -- reviews only",
   "Europe PMC: EXT_ID 28213743, 30046828 abstracts; PMC5394142 full text (fetch failed, HTTP 500)",
-  "checker 'missing' list read as leads"
+  "checker 'missing' list read as leads",
+  "Gap pass: Europe PMC (CSL111 OR reconstituted HDL) AND (rabbit OR mouse) AND atheroscl* 1995-2008 (62 hits, no CSL111-specific in vivo efficacy model); EXT_ID 17387133 (ERASE, Tardif 2007) abstract"
  ],
  "added_models": [
   {
@@ -453,5 +454,37 @@
   "MDCO-216 / ETC-216 nonclinical toxicology: not public in the abstracts read; no comparison found",
   "Patient-derived cells, PDX, challenge models, QSP dose selection: none found for this class",
   "Haase 2012 APOA1 resequencing (rare variants, MI HR 1.72 driven by A164S without apoA-I change): does not isolate apoA-I level; Haase 2010 used instead"
+ ],
+ "gaps": [
+  {
+   "lead": "CER-001 human engagement: Kootte 2015 (FHA patients, efflux +44%)",
+   "outcome": "verdict",
+   "detail": "Draft engagement #3 (mouse-cer001): checker corrected and adjudicated a 2015 'same' entry (Kootte 2015, PMID 25561459); no new system"
+  },
+  {
+   "lead": "Rabbit IVUS/MRI track for apoA-I Milano/POPC (Parolini 2008)",
+   "outcome": "tracked",
+   "detail": "rabbit-carotid-apoa1-milano, draft efficacy #7-9 (2002 untested, 2003 same Nissen, 2017 contra MILANO-PILOT with Parolini 2008 as model_src)"
+  },
+  {
+   "lead": "MILANO-PILOT failure public 2016-11-15",
+   "outcome": "verdict",
+   "detail": "Dating of draft efficacy #6 adjudicated to 2016; the same year applies to MILANO-PILOT entries efficacy #9 and #12 (checker notes), which need the same verdict"
+  },
+  {
+   "lead": "Human genetic track: ApoA-I Milano carriers (Sirtori 2001)",
+   "outcome": "tracked",
+   "detail": "apoa1-milano-carriers, draft efficacy #10-12 (2001 untested, 2003 same, 2017 contra)"
+  },
+  {
+   "lead": "Ex vivo human plasma/whole-blood CSL112 efflux (Diditchenko 2013)",
+   "outcome": "tracked",
+   "detail": "human-plasma-csl112-exvivo, draft engagement #6-7 (2013 untested, 2014 same Gille 2014)"
+  },
+  {
+   "lead": "CSL111 and ERASE (Tardif 2007) if member 'apolipoprotein a-i' includes CSL111",
+   "outcome": "verdict",
+   "detail": "No CSL111-specific model found; ERASE (PMID 17387133, primary failed vs placebo, P=.48) would only add an entry to existing class-level efficacy tracks, pending checker rule question 4 on which drug the member denotes"
+  }
  ]
 }

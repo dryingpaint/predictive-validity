@@ -10,7 +10,10 @@
   "Europe PMC: grazoprevir/MK-5172 monotherapy genotype; vaniprevir/MK-7009 monotherapy or viral load or proof-of-concept",
   "Europe PMC: asunaprevir AND chimeric mice/humanized liver/uPA; member PIs AND chimeric/humanized mice/human hepatocytes AND HCV",
   "Europe PMC: member PIs AND viral kinetic / viral dynamic / mathematical model",
-  "ClinicalTrials.gov API: NCT00998985 (grazoprevir protocol 5172-004) results posting date"
+  "ClinicalTrials.gov API: NCT00998985 (grazoprevir protocol 5172-004) results posting date",
+  "Europe PMC: (narlaprevir OR SCH 900518 | GS-9256 | vedroprevir OR GS-9451 | voxilaprevir OR GS-9857) AND (chimpanzee OR mice OR rat OR dog OR replicon); paritaprevir/ABT-450 AND chimpanzee/chimeric/humanized (Europe PMC call failed)",
+  "PubMed abstracts: Reddy 2012 AAC (PMID 22470110) + PMC3370793 full text Table 2; Tong 2010 narlaprevir (20308381); Yang 2014 GS-9451 (23939899); Yang 2017 GS-9256 (28106531)",
+  "FDA bundle: 209195 (voxilaprevir) and 206619 (paritaprevir) previously grepped for chimpanzee/chimeric/humanized/viral kinetic/exposure-response - no hits"
  ],
  "added_models": [
   {
@@ -164,6 +167,81 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hcv-vk-pkpd-replicon-lpr",
+   "model": "Viral-kinetic PK/PD model driven by replicon EC50, plasma trough and preclinical liver-to-plasma ratio (cross-compound)",
+   "model_kind": "in_silico",
+   "model_first_use_year": 2012,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "confidence": "medium",
+      "subjects": null,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1128/AAC.06283-11",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "HCV genotype 1 (unselected for NS3 polymorphisms)",
+      "readout_tier": "proximal",
+      "src": "https://doi.org/10.1128/AAC.06283-11",
+      "srcLabel": "Reddy 2012",
+      "year": 2012,
+      "status": "untested",
+      "note": "Viral-kinetic model fed replicon EC50, plasma trough and preclinical liver-to-plasma ratio to predict 3-day PI monotherapy viral load declines.",
+      "short": "VK model from replicon EC50 and liver ratio",
+      "quote": "This analysis includes data for 8 NNPolIs and 14 PIs, including VL decreases from 3-day monotherapy, total plasma trough concentrations on day 3 (C(min)), replicon data",
+      "confidence_note": "Opening entry at first use; the model was built after the monotherapy results it reproduces were public.",
+      "comparison_stated": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "untested_reason": null,
+      "judgement": "Opening entry. The cross-compound VK-PK/PD model is in silico, distinct from the replicon and rat-PK tracks: it converts replicon potency plus animal liver uptake into a predicted human viral load decline."
+     },
+     {
+      "confidence": "medium",
+      "subjects": "patients",
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1128/AAC.06283-11",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": true,
+      "imported_from": null,
+      "population": "HCV genotype 1 (unselected for NS3 polymorphisms)",
+      "readout_tier": "proximal",
+      "src": "https://doi.org/10.1128/AAC.06283-11",
+      "srcLabel": "Reddy 2012",
+      "year": 2012,
+      "status": "contra",
+      "note": "Retrodiction: replicon potency plus trough failed to predict PI viral load declines; even with liver ratios, paritaprevir fell 4.07 log10, predicted 1.9.",
+      "short": "PI viral load declines under-predicted",
+      "quote": "For PIs, however, predicting VL decreases using the same model and the EC(50,PS) and day 3 C(min) was not successful; a model including LPR values and the EC(50) instead of the EC(50,PS) provided a better prediction of VL decrease.",
+      "confidence_note": "Full text (PMC3370793) read: Table 2 gives ABT-450/r 50 mg QD observed -4.07 vs predicted -1.9 log10; authors note several PI outliers 'perform significantly better than the prediction'.",
+      "comparison_stated": true,
+      "magnitude": "off_by_>5x",
+      "magnitude_basis": "day-3 plasma HCV RNA log10 decline, predicted -1.9 vs observed -4.07 (paritaprevir/ritonavir 50 mg QD); 2.2 log10 = ~160-fold in viral load",
+      "source_calls_it": "miss",
+      "reason": "Model under-predicted PI viral load falls",
+      "judgement": "Retrodiction (all 14 PI monotherapy studies were public before 2012), so contra not neg. The protein-shifted replicon version failed outright; the LPR-refit version still missed paritaprevir, danoprevir-class outliers by >2 log10. GS-9256, vedroprevir (GS-9451) and narlaprevir are in the dataset without a model prediction."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -176,5 +254,47 @@
   "PK/viral-kinetic models (danoprevir 2015 Antivir Ther PMID 25321394; daclatasvir/asunaprevir 2018 Acta Pharmacol Sin PMID 28880015; danoprevir multiscale 2013 PLoS Comput Biol PMID 23516348): fitted to the same patients' viral loads, not an independent prediction; none found choosing a member's dose before the clinic.",
   "Human challenge or human-genetic models: none exist for HCV protease inhibitors (IL28B genotype predicts interferon response, not the protease inhibitor).",
   "Checker 'missing' items (vaniprevir phase II efficacy, glecaprevir rat NOAEL margin, sovaprevir DDI hold): belong to the draft's existing replicon and tox tracks, not new systems; left to the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "Efficacy: vaniprevir phase II Manns 2012 RVR (efficacy turns 'same' in 2012)",
+   "outcome": "verdict",
+   "detail": "Corrects the date of efficacy entry 2 (hcv-gt1b-replicon 'same' 2013 -> 2012 via vaniprevir); covered by the checker's missing item, a date fix not a new system"
+  },
+  {
+   "lead": "Dose: glecaprevir rat NOAEL 70x margin (209394 PharmR)",
+   "outcome": "verdict",
+   "detail": "Alternative for dose entry 2 (replicon-ec99-rat-pk / tox margin, corrected verdict proposes 2013); margin_stated 'same' 2017 on existing tracks, needs the draft's adjudication"
+  },
+  {
+   "lead": "Safety: sovaprevir FDA clinical hold June 2013 (ALT with atazanavir/ritonavir)",
+   "outcome": "verdict",
+   "detail": "No status change on rodent-dog-repeat-dose-tox (DDI condition never tested in animals); belongs in safety entry 1/2 judgement per checker"
+  },
+  {
+   "lead": "paritaprevir",
+   "outcome": "added",
+   "detail": "hcv-vk-pkpd-replicon-lpr engagement: untested 2012, contra 2012 retro (ABT-450/r observed -4.07 vs predicted -1.9 log10, Reddy 2012)"
+  },
+  {
+   "lead": "gs-9256",
+   "outcome": "none",
+   "detail": "Only replicon EC50/animal PK (Yang 2017) - same system as hcv-gt1b-replicon (skip rule); in Reddy 2012 dataset without a model prediction; no chimp/chimeric-mouse/VK comparison found"
+  },
+  {
+   "lead": "narlaprevir",
+   "outcome": "none",
+   "detail": "Replicon only (Tong 2010) - same system as hcv-gt1b-replicon (skip rule); in Reddy 2012 dataset without prediction; not FDA-filed; no other model-to-patient comparison found"
+  },
+  {
+   "lead": "vedroprevir",
+   "outcome": "none",
+   "detail": "GS-9451 replicon + rat liver ratio 'consistent with' phase 1b (Yang 2014) - same system as hcv-gt1b-replicon/replicon-ec99-rat-pk, no status change; no prediction in Reddy 2012"
+  },
+  {
+   "lead": "voxilaprevir",
+   "outcome": "none",
+   "detail": "Clinical-isolate replicon phenotyping (PMID 30728196) is the hcv-gt1b-replicon system (skip rule); 209195 FDA review has no chimp/chimeric/VK model; tox margins sit on rodent-dog-repeat-dose-tox"
+  }
  ]
 }

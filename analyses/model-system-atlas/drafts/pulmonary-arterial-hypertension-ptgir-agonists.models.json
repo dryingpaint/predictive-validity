@@ -190,5 +190,32 @@
   "Hamster cheek-pouch thrombosis / 'without the hypotensive activity of PGI2' claim (Sim 1985): antithrombotic, not PAH; the no-hypotension claim was not compared with PAH patient data",
   "Short-term haemodynamic series of oral beraprost in PPH (Saji 1996, doi:10.1016/s0002-9149(96)90408-7) and ralinepag phase 2/ADVANCE OUTCOMES: patient-side data for the existing mct-rat track, not new model systems",
   "In-silico / QSP, human genetic, patient-derived organoid or PDX models for PTGIR agonists in PAH: none found"
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement, mct-rat: Saji 1996 Am J Cardiol (PMID 8712155) acute PVR fall in 4 PPH patients",
+   "outcome": "verdict",
+   "detail": "Adds a paired same entry (1996) to existing mct-rat engagement track before engagement 2 (Galie 2002 contra); beraprost already tracked, so not a new system; latest status unchanged; needs a checker verdict to insert it."
+  },
+  {
+   "lead": "Safety, mct-rat: Yuki 1994 'Psa was not lowered dose-dependently by BPS'",
+   "outcome": "verdict",
+   "detail": "Opens a safety cell (untested, 1994) on existing mct-rat model_id, to pair with Galie 2002/Barst 2003 AE data; beraprost has tracks, so a verdict on the mct-rat track, not an added system."
+  },
+  {
+   "lead": "Ralinepag MCT rat data, Tran 2017 J Med Chem (PMID 28072531)",
+   "outcome": "verdict",
+   "detail": "Same mct-rat model_id; correction is to name Tran 2017 as model_src on the ralinepag patient entries rather than add a system; needs a verdict on those entries."
+  },
+  {
+   "lead": "Ralinepag ADVANCE CAPACITY (NCT04084678) terminated for sponsor decision",
+   "outcome": "none",
+   "detail": "Termination for sponsor decision with no efficacy readout is not a patient result; no comparison, status unchanged."
+  },
+  {
+   "lead": "Efficacy, pah-pasmc-human-pa-exvivo: UT press release 2019-04-08 BEAT failure predates Shen 2019",
+   "outcome": "verdict",
+   "detail": "Covered by checker verdict on efficacy 7 (corrected: retrodiction true, year 2019, status contra, adjudicated)."
+  }
  ]
 }

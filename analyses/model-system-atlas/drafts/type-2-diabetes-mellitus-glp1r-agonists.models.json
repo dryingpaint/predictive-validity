@@ -12,7 +12,9 @@
   "Europe PMC: Sathananthan 2010 GLP1R polymorphisms and GLP-1 infusion clamp (full text PMC2928367)",
   "Europe PMC: Marso 2016 SUSTAIN-6",
   "ClinicalTrials.gov API: NCT01037582, NCT01720446 dates",
-  "PubMed E-utilities (rate-limited after 2 queries; switched to Europe PMC)"
+  "PubMed E-utilities (rate-limited after 2 queries; switched to Europe PMC)",
+  "Gap pass: Europe PMC 'HS-20004', 'HS20004', 'noiiglutide' (alias of HS-20004/SHR20004); ClinicalTrials.gov HS-20004 (NCT02746302, NCT02746315, NCT02750007, NCT03848793); web search HS-20004",
+  "Gap pass: Europe PMC 'froniglutide', 'PF1801', 'PB1023', 'Glymera'; ClinicalTrials.gov froniglutide and PB1023 (NCT01236404, NCT01658501, NCT01427257, NCT01478399); Europe PMC ELP-GLP-1 preclinical 2008-2016 (Luginbuhl 2013 PNAS, Amiram 2013 PNAS); J Control Release 2016 review PMC4889564"
  ],
  "added_models": [
   {
@@ -381,5 +383,37 @@
   "Human islet or Caco-2/SNAC in-vitro permeability: no patient comparison found.",
   "Patient-derived cells/organoids or PDX co-clinical: none exist for this class in T2D.",
   "Members without FDA packages (efpeglenatide, CJC-1134-PC, TTP273, pegloxenatide, etc.): no distinct model system with a patient comparison found within budget."
+ ],
+ "gaps": [
+  {
+   "lead": "Dose (semaglutide): Kapitza 2015 / Nauck 2016 date the dose comparison to 2015",
+   "outcome": "verdict",
+   "detail": "dose entry 2 (sema-minipig-pk, same): checker corrected and adjudicated year 2015 under rule 7 (Kapitza 2015, PMID 25475122); no new system."
+  },
+  {
+   "lead": "Safety (danuglipron): 2025 discontinuation for one possible DILI case in obesity",
+   "outcome": "none",
+   "detail": "Tier 5 press only, obesity study; no tier 1-3 tox source stating hepatic silence found, so no prediction to score (already in considered_not_added)."
+  },
+  {
+   "lead": "No missed efficacy failures for TTP273, CJC-1134-PC, efpeglenatide, LY2428757",
+   "outcome": "none",
+   "detail": "Checker note reports no missed failure; positive phase 2 readouts carry no model-to-patient comparison for these members, so nothing to add."
+  },
+  {
+   "lead": "Safety (semaglutide): SUSTAIN-6 press release 2016-04-28 predates Scott 2016",
+   "outcome": "verdict",
+   "detail": "safety entry 6 (glp1r-ala316thr-genetics, same 2016): confidence_note should record the press release; checker note on safety 6 covers it, not retro under decision 10."
+  },
+  {
+   "lead": "HS-20004",
+   "outcome": "none",
+   "detail": "HS-20004 = noiiglutide (SHR20004): only phase 1/2 human papers (obesity 2023-2024, HR17031 combo 2025); no published preclinical model or model-to-patient comparison found."
+  },
+  {
+   "lead": "froniglutide",
+   "outcome": "none",
+   "detail": "Froniglutide = PF1801/PB1023 (Glymera): T2D phase 2a/2b results only in press/review (IIb missed non-inferiority vs liraglutide); preclinical data are myositis mice and academic ELP-GLP-1 constructs, none compared with PB1023 patient results."
+  }
  ]
 }

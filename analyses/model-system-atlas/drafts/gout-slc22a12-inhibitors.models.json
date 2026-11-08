@@ -10,7 +10,10 @@
   "Europe PMC: UR-1102 OR URC102 OR DOI 10.1093/rheumatology/kez140",
   "Jun 2025 Arthritis Res Ther full text (BMC HTML): confirmed ref 10 (Ahn 2016, UR-1102) is cited as epaminurad's in vitro/in vivo study; hepatotoxicity comparison sentence",
   "ClinicalTrials.gov API: NCT01953497, NCT02524678, NCT02290210, NCT02557126, NCT04804111 (none posted results)",
-  "Europe PMC DOI lookups for dates: Tan 2017 Sci Rep (verinurad), Lee 2019 Rheumatology, Ahn 2016 JPET"
+  "Europe PMC DOI lookups for dates: Tan 2017 Sci Rep (verinurad), Lee 2019 Rheumatology, Ahn 2016 JPET",
+  "Gap pass: Europe PMC RDEA806 OR RDEA-806 (only HIV NNRTI papers and gout reviews; no gout patient paper)",
+  "Gap pass: FDA bundle 207988 PharmR grep RDEA806 (SR08-007/008/012 mechanism studies run to explain urate fall already seen in healthy volunteers)",
+  "Gap pass: ClinicalTrials.gov intr=RDEA806 (NCT00741442 gout, NCT00617526 HIV; no posted results)"
  ],
  "added_models": [
   {
@@ -243,5 +246,42 @@
   "Tatrai 2021 (Pharmaceutics) in vitro Cmax/IC50 cut-off vs clinical sUA change: a retrospective analysis on the same hURAT1 cell system the draft tracks",
   "D-0120: no preclinical model publication or patient result found in Europe PMC; not verified via press releases",
   "Rat MSU crystal arthritis, rat/cyno tox, URAT1 LoF genetics: already tracked in the draft"
+ ],
+ "gaps": [
+  {
+   "lead": "Fleischmann 2014 lesinurad + febuxostat earlier human PD for genotype track",
+   "outcome": "verdict",
+   "detail": "slc22a12-lof-renal-hypouricemia engagement entry 2: checker corrected and adjudicated year to 2014, status same"
+  },
+  {
+   "lead": "Zurampic label 2015 12.1-12.2 stated comparison for hURAT1 track",
+   "outcome": "verdict",
+   "detail": "hurat1-cell-urate-uptake engagement entry 4: checker corrected and adjudicated year to 2015, tier 2, status same"
+  },
+  {
+   "lead": "Verinurad hURAT1 IC50 vs gout sUA lowering",
+   "outcome": "tracked",
+   "detail": "hurat1-cell-urate-uptake (engagement and efficacy already same); a further member drug's same is no change of status on that track"
+  },
+  {
+   "lead": "Epaminurad (URC102) volunteer and phase 2b sUA results",
+   "outcome": "tracked",
+   "detail": "capuchin-monkey-uricosuric engagement (same 2019, Lee 2019) and efficacy (same 2025, Jun 2025)"
+  },
+  {
+   "lead": "Other systems: capuchin monkey (UR-1102) and hURAT1 knock-in mouse",
+   "outcome": "tracked",
+   "detail": "capuchin-monkey-uricosuric tracked (UR-1102 is epaminurad, a member); knock-in mouse is none: tested only benzbromarone, a non-member"
+  },
+  {
+   "lead": "Verinurad / D-0120 renal adverse events or failure",
+   "outcome": "tracked",
+   "detail": "verinurad renal signal falls on slc22a12-lof-renal-hypouricemia safety, already same 2015 via lesinurad, no status change; D-0120 none: no published model or patient result"
+  },
+  {
+   "lead": "rdea-806",
+   "outcome": "none",
+   "detail": "Urate lowering found first in HIV/healthy-volunteer trials; hURAT1 assay SR08-012 run after (retro, hurat1 track); gout trial NCT00741442 posted no results, no paper"
+  }
  ]
 }

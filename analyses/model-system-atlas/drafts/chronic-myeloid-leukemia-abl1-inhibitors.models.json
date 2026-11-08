@@ -275,5 +275,42 @@
   "In vitro platelet function / thrombin generation with TKIs (PMID 31714021, 2020): no comparison with patient outcomes in the abstract",
   "Flumatinib's own preclinical models: no separate model system found beyond cell lines and mouse xenografts already on the draft's track",
   "hiPSC-cardiomyocyte ponatinib studies (Talbert 2015 and others): same system as the added hipsc-cardiovascular-cells track"
+ ],
+ "gaps": [
+  {
+   "lead": "Zabriskie 2014 T315I-inclusive compound mutants as a later entry against the 2009 mutagenesis screen",
+   "outcome": "verdict",
+   "detail": "Status change on existing baf3-bcr-abl-mutagenesis-screen efficacy track (2013 'same' entry); needs a checker verdict on a 2014 partial/contra entry, not a new system"
+  },
+  {
+   "lead": "Ba/F3 compound-mutant in vitro resistance profiling (Zabriskie 2014)",
+   "outcome": "tracked",
+   "detail": "baf3-bcr-abl1-compound-mutant-panel, efficacy cell, 2014 untested then 2014 retro"
+  },
+  {
+   "lead": "Ex vivo drug-response profiling predicting ponatinib response (Blood Cancer J 2015)",
+   "outcome": "none",
+   "detail": "Single patient with t(1;9) B-cell ALL, not CML; outside the tile's disease (unit rule)"
+  },
+  {
+   "lead": "EPIC phase 3 ponatinib vs imatinib terminated for arterial occlusive events (Lipton 2016)",
+   "outcome": "verdict",
+   "detail": "Patient result bearing on existing rat-monkey-toxicology safety entry (2012 same, partial) and bcr-abl-cell-xenograft efficacy note; needs a verdict on a later entry, no new model system"
+  },
+  {
+   "lead": "OPTIC dose-ranging responses at 15 mg below the 40 nM screen threshold (Cortes 2021)",
+   "outcome": "verdict",
+   "detail": "Later entry on existing baf3-bcr-abl-mutagenesis-screen dose track (2012 same); needs a checker verdict on a 2021 partial entry"
+  },
+  {
+   "lead": "Vamotinib's own preclinical model (Mian 2015, Ba/F3 T315I and mouse)",
+   "outcome": "tracked",
+   "detail": "kinase-selectivity-profiling safety 2014 untested (src Mian 2015) to 2025 same (Turkina 2025); Ba/F3/mouse efficacy is the bcr-abl-cell-xenograft system"
+  },
+  {
+   "lead": "flumbatinib",
+   "outcome": "tracked",
+   "detail": "Spelling variant of flumatinib; bcr-abl-cell-xenograft efficacy cell, 2020 same entry (Zhang 2021 flumatinib vs imatinib)"
+  }
  ]
 }

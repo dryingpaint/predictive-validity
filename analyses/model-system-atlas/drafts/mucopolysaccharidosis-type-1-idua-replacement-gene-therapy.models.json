@@ -11,7 +11,8 @@
   "PMC5240037 full text (Hinderer 2016) via fc.py scrape: dose, MED, immune toxicity, CSF biomarkers",
   "ClinicalTrials.gov v2: NCT03071341 (AGT-181 extension; CSF HS/DS secondary, no results), NCT03580083 (RGX-111; suspended, no results)",
   "REGENXBIO Feb 2022 press release via fc.py scrape: safety, CSF HS/IDUA, dose cohorts",
-  "Europe PMC: Gentner 2021 NEJM abstract (safety and IDUA endpoints)"
+  "Europe PMC: Gentner 2021 NEJM abstract (safety and IDUA endpoints)",
+  "Europe PMC: AUTH Ou L AND zinc finger AND IDUA (Ou 2018 Mol Ther abstract: no stated plasma IDUA or dose target for SB-318)"
  ],
  "added_models": [
   {
@@ -352,5 +353,27 @@
   "In-silico/QSP dose models: none found for these four drugs",
   "Human genetic model (attenuated MPS I residual IDUA as the required enzyme level): not used as a stated prediction for these programs; not searched to a comparison",
   "Rhesus 6-month AGT-181 toxicology / hypoglycemia: already tracked as rhesus-agt181-tox"
+ ],
+ "gaps": [
+  {
+   "lead": "MPS I dog (and NHP) intrathecal/intracisternal AAV9-hIDUA track for RGX-111 (Hinderer 2015, Hinderer 2016)",
+   "outcome": "tracked",
+   "detail": "mps1-dog-aav9-icm-tolerized (engagement untested+same, dose untested, safety untested) holds Hinderer 2016 as its own dog track; Hinderer 2015 neonatal tolerance listed in considered_not_added (canine vector, no patient comparison); NHP tox is rhesus-icm-aav9-hidua-tox safety 3"
+  },
+  {
+   "lead": "Rhesus monkey brain uptake of valanafusp (HIRMAb-IDUA) vs recombinant IDUA (Boado/Pardridge)",
+   "outcome": "tracked",
+   "detail": "rhesus-hirmab-idua-brain-uptake engagement untested entry; patient CSF HS/DS (NCT03071341 secondary) has no reported result, so it stays untested"
+  },
+  {
+   "lead": "No dose entries for the ZFN (SB-318) or AAV9-ICM (RGX-111) tracks",
+   "outcome": "tracked",
+   "detail": "RGX-111: mps1-dog-aav9-icm-tolerized dose untested (dog MED for FIH); SB-318: Ou 2018 states no exposure target, and dose-scaling arithmetic is excluded by the brief, so no ZFN dose entry"
+  },
+  {
+   "lead": "Program status: NCT02702115 TERMINATED and NCT03580083 SUSPENDED",
+   "outcome": "verdict",
+   "detail": "Registry status only, no system or entry status changes; NCT02702115 registry already confirmed in the efficacy 8 verdict, NCT03580083 status could be noted on the RGX-111 entries (engagement 7/10, efficacy 7)"
+  }
  ]
 }

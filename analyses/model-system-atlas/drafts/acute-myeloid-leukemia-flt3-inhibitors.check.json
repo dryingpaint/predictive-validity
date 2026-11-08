@@ -107,6 +107,17 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Full text: screen found D835/F691/Y842 first; relapse genotypes were then sequenced ('attention was focused on the codons identified in the in vitro screen'). Relapse genotypes were unknown before, so same, not retro. D835F not predicted, Y842 absent: direction_only right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "Status table: untested; evidence rule 5 untested_reason unsettled (patients measured, result inconclusive)",
+   "note": "Bundle review (NDA 211349) has the 0/18 TKD quote verbatim and states gilteritinib 'decreased proliferation' of Ba/F3 FLT3-D835Y (IC50 1.6 nM). FDA called 0/18 inconclusive (upper CI 19%), PMR-3; untested/unsettled, prospective, 2018 correct."
   }
  ],
  "missing": [
@@ -115,7 +126,8 @@
   "MORPHO (gilteritinib post-HCT maintenance, NCT02997202): missed primary RFS (HR 0.68, p=0.0518); Astellas topline release 2023-03-09; Levis JCO 2024 doi:10.1200/JCO.23.02474. Post-transplant maintenance was not modelled, so it is a patient_trials/untested note with no status change, but it is a Phase 3 failure the draft does not show.",
   "QuANTUM-R regulatory reading: FDA ODAC (May 2019) and a complete response letter (June 2019) questioned the robustness of the OS result; quizartinib was not approved in the US until 2023. The 2019 entry does not record this tier-2 view.",
   "Crenolanib (a class member) is absent: phase 3 NCT03250338 in relapsed/refractory FLT3-mutated AML was reportedly presented at ASH 2025 (benefit reported in NPM1/FLT3 co-mutated patients), and ARO-021 (NCT03258931) vs midostaurin is completed. Not verified here; the drafter should check primary-endpoint results. AKN-028 is also not mentioned.",
-  "Gilteritinib in-vitro activity against FLT3-TKD (Ba/F3 D835Y), the basis for enrolling and labelling FLT3-TKD patients, has no patient-level track. The FDA Xospata multidisciplinary review (NDA 211349, 2018, in bundle) reports CR/CRh 0/18 in TKD vs 35/161 in ITD in the pooled interim analysis and issued PMR-3 (>=30 TKD patients) and PMC-1 (in-vitro sensitivity of other non-ITD mutations). Candidate 2018 patient-level untested/contra entry; ADMIRAL's later TKD subgroup should be checked before scoring."
+  "Gilteritinib in-vitro activity against FLT3-TKD (Ba/F3 D835Y), the basis for enrolling and labelling FLT3-TKD patients, has no patient-level track. The FDA Xospata multidisciplinary review (NDA 211349, 2018, in bundle) reports CR/CRh 0/18 in TKD vs 35/161 in ITD in the pooled interim analysis and issued PMR-3 (>=30 TKD patients) and PMC-1 (in-vitro sensitivity of other non-ITD mutations). Candidate 2018 patient-level untested/contra entry; ADMIRAL's later TKD subgroup should be checked before scoring.",
+  "Efficacy, track flt3-tkd-d835y-ba-f3-gilteritinib: ADMIRAL final analysis (Perl 2019 NEJM, doi:10.1056/NEJMoa1902688) reports the FLT3-TKD subgroup (CR/CRh and OS forest plot) and the PMR-3 >=30-TKD-patient report; check whether either settles the 2018 untested/unsettled entry (not verified here)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

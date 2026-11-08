@@ -187,5 +187,27 @@
   "HDV in-vitro infection model with NAPs (Beilstein 2018, doi 10.1128/JVI.01416-17): hepatitis D, a different disease from this tile (MONDO:0005366); any patient comparison would be against REP 301 HDV outcomes, so it belongs to an HDV context, not here.",
   "DHBV-infected Pekin ducks with REP 2139 plus ETV/TDF (Quinet 2018, doi 10.1002/hep.29737) and the mouse/cynomolgus PK-toxicology (Roehl 2017): already tracked in the draft (dhbv-pekin-duck, cyno-mouse-pk-tox).",
   "WHV woodchuck, HBV-transgenic mouse, human-liver chimeric mouse (Schoneweis 2018), HepG2.2.15/UNC7938 assay (Blanchet 2019, Boulon 2020) and the Aligos re-engineered duck (Debing 2024): already tracked in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "ALG-010133 (Aligos STOPS, NCT04485663 halted for insufficient activity)",
+   "outcome": "none",
+   "detail": "Not a member of this tile (members REP 2055, REP 2139, REP 2165); scores nowhere under decision 12; checker rule question 7 stands."
+  },
+  {
+   "lead": "HepaRG / primary human hepatocyte entry assay (Guillot 2017)",
+   "outcome": "added",
+   "detail": "heparg-phh-hbv-entry: engagement untested opener 2017 plus contra comparison with patients 2017 (Guillot 2017)."
+  },
+  {
+   "lead": "DHBV-infected primary duck hepatocyte assay (Noordeen 2013 in vitro)",
+   "outcome": "none",
+   "detail": "No source sets its prediction beside patient results (only beside other NAPs and the duck in vivo); an untested-only opener is outside step 3."
+  },
+  {
+   "lead": "Roehl 2017 monkey-vs-patient serum-calcium comparison",
+   "outcome": "verdict",
+   "detail": "Status question on existing cyno-mouse-pk-tox track (safety entry 2, Roehl 2017 untested); covered by checker rule question 10, not a new system."
+  }
  ]
 }

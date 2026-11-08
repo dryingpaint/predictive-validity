@@ -186,5 +186,32 @@
   "Patient-level systems (patient-derived cells, ex-vivo sensitivity, pharmacogenetics): none found for member drugs; ADCY9 pharmacogenetics concerns dalcetrapib, not a member",
   "Human challenge models: none found",
   "Rat BP / H295R and human CETP/apoA-I transgenic mouse: already tracked in the draft"
+ ],
+ "gaps": [
+  {
+   "lead": "Lilly press release 2015-10-12 (evacetrapib discontinued after ACCELERATE futility)",
+   "outcome": "verdict",
+   "detail": "Date correction, not a system: efficacy index 2 (hcetp-apoai-tg-mouse, 2011 same) patient_trials NCT01687998 dated 2018-05-16; needs a verdict on whether the tier-5 2015 announcement dates outcome_tested negative earlier. No existing verdict covers it."
+  },
+  {
+   "lead": "Rocacetrapib (CKD-519) Choi 2019 allometric PK/PD model",
+   "outcome": "tracked",
+   "detail": "ckd519-allometric-pkpd, dose cell: untested 2014 (dose index 3) and contra 2019, off_by_>5x bioavailability (dose index 4); both confirmed by checker."
+  },
+  {
+   "lead": "Teramoto 2014 (PMID 24786356) patient CETP-activity engagement",
+   "outcome": "verdict",
+   "detail": "Engagement index 2 (hcetp-apoai-tg-mouse, 2014 same, Suico 2014): checker verdict already notes Teramoto is the same year and no change is needed."
+  },
+  {
+   "lead": "DRL-17822 patient_trials quote paraphrases NCT01388816 results table",
+   "outcome": "verdict",
+   "detail": "Efficacy index 2 patient_trials entry NCT01388816: quote is not verbatim (numbers verified); needs a verdict to replace it with registry wording or mark it a table summary. No new system."
+  },
+  {
+   "lead": "Brown 1989 / Inazu 1990 CETP deficiency paired with de Grooth 2002 (JTT-705)",
+   "outcome": "verdict",
+   "detail": "cetp-lof-human-genetics: efficacy index 3 verdict rebases the untested opener to 1989 (Brown 1989); efficacy index 4 adjudicated same 2011 because JTT-705/dalcetrapib are non-members (decision 12)."
+  }
  ]
 }

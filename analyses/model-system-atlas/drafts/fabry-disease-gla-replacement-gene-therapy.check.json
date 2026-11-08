@@ -144,6 +144,46 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Khan 2021 abstract quote verbatim; NCT03454893 results also state no SAEs related to AVR-RD-01 (conditioning-attributed). Model before patient result, so same not retro."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PubMed 32775495 abstract has the quote verbatim; Yasuda 2020 (epub Jul 2020) precedes any STAAR result (first posted 2026), so prospective, not retro. Untested until patient data; product_in_model true (ST-920 itself)."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "CT.gov API: outcome description verbatim; plasma alpha-Gal A rose in every dose group (week 52 means 15-163 nmol/h/mL) as the mouse study predicted. Model predates results; same, not retro."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in abstract ('good safety profile'); no patient safety results public in 2020, so untested is right. Not the track's latest entry, so untested_reason is informational."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "CT.gov API: SAEs sepsis, brainstem stroke, CVA, chest pain, enthesopathy; no hepatic SAE up to 2.63e13 vg/kg. One female-expansion subject had non-serious transaminase/LFT increases; same holds, could carry source_calls_it partial."
   }
  ],
  "missing": [

@@ -205,5 +205,27 @@
   "Sorafenib mouse PBPK (Cancer Chemother Pharmacol 2013, PMID 23455451): sorafenib is not a member (donafenib is its deuterated analogue) and the model has no human comparison.",
   "Famitinib gastric-cancer xenograft (2016), the famitinib healthy-volunteer food/DDI PK studies (PMIDs 36867007, 36107220, 36087164; NCT05046808, NCT05041920, NCT05147727) and the 2026 radiofrequency/sunitinib-class in-vitro paper (PMID 42450219): not CRC models, or human-only studies with no model prediction.",
   "Regulator reliance: no member has a public FDA/EMA review (manifest.csv has no rows), so no in-vitro or model data accepted in lieu of a trial could be read; model_filed stays null on every entry."
+ ],
+ "gaps": [
+  {
+   "lead": "NCT01365910 registry results record (posted 2014-08-26): hypertension 20/30, ORR 0/30",
+   "outcome": "verdict",
+   "detail": "Corrects safety #2 (linifanib-rat-telemetry-hypertension, confidence_note says registry does not itemise hypertension); checker verdict safety #2 already corrects it to retro 2009 and cites the 2014-08-26 posting. ORR 0/30 is linifanib CRC efficacy, untested under #32/#53/#80, so no efficacy status changes."
+  },
+  {
+   "lead": "No untracked model found (famitinib, donafenib, linifanib CRC xenograft/organoid/PDX sweeps)",
+   "outcome": "none",
+   "detail": "Checker found no untracked system; models file searches (Europe PMC member x CRC x xenograft/organoid/PDX/ex-vivo) agree; donafenib model papers are HCC/glioblastoma only."
+  },
+  {
+   "lead": "FACT (NCT02390947) and donafenib phase 3 (NCT02870582) unreported; famitinib + camrelizumab CRC basket (PMID 39872476)",
+   "outcome": "none",
+   "detail": "No posted results, so no patient readout to compare; the basket is a PD-1 combination with no paired famitinib + anti-PD-1 CRC mouse model (patient_trials at most, no status)."
+  },
+  {
+   "lead": "Models check: (ABT-869 OR linifanib) AND (DCE-MRI OR Ktrans), Luo 2012 rat glioma, Koh 2011",
+   "outcome": "none",
+   "detail": "Luo 2012 (PMID 22080168) is an orthotopic rat glioma model, out of tile; Koh 2011 (PMID 21432928) is patient-side from the same phase 1 already tracked via Wong 2009 (engagement #2/#4) and changes no status."
+  }
  ]
 }

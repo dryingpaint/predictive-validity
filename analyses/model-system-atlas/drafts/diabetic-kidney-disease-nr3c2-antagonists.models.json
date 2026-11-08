@@ -12,7 +12,8 @@
   "Europe PMC search: finerenone AND (exposure-response OR PK/PD OR PBPK OR quantitative systems pharmacology OR model-informed OR population pharmacokinetic): 67 hits, first 40 by date",
   "Europe PMC core records for PMIDs 31583611 (Snelder 2020 phase 2b PK/PD dose-selection model), 34773606 (FIDELIO-DKD dose-exposure-response, primary outcome), 35508594 (FIDELIO-DKD UACR/eGFR exposure-response), 38797092 (QSP hyperkalaemia virtual trials 2024)",
   "Europe PMC search: (finerenone OR esaxerenone OR apararenone) AND db/db: 201 hits, first 40 by date (through 2022-08), no member-drug db/db primary paper found before the 2025 esaxerenone paper",
-  "fc.py scrape of doi 10.1016/j.biopha.2023.115661, 10.1016/j.lfs.2025.124008, 10.1016/j.bcp.2026.118370 for stated patient-trial comparisons and albuminuria results"
+  "fc.py scrape of doi 10.1016/j.biopha.2023.115661, 10.1016/j.lfs.2025.124008, 10.1016/j.bcp.2026.118370 for stated patient-trial comparisons and albuminuria results",
+  "Gap pass: Europe PMC core records for PMIDs 36768859 (ZSF1 finerenone 2023) and 40072066 (db/db finerenone Cells 2025); fc.py scrape of mdpi.com/1422-0067/24/3/2536 full text for UACR result and FIDELIO/FIGARO citations"
  ],
  "added_models": [
   {
@@ -196,6 +197,8 @@
    "cells": {
     "efficacy": [
      {
+      "retrodiction": false,
+      "patient_signal_reversed": false,
       "year": 2025,
       "status": "untested",
       "model": "db/db type 2 diabetic mouse",
@@ -215,14 +218,12 @@
       "model_src": null,
       "model_src_tier": null,
       "trial_unreported": false,
-      "patient_signal_reversed": false,
       "epub_year": 2025,
       "print_year": 2025,
       "registry_date": null,
       "model_filed": false,
       "product_in_model": true,
       "model_kind": "animal",
-      "retrodiction": false,
       "magnitude": null,
       "magnitude_basis": null,
       "source_calls_it": null,
@@ -233,6 +234,8 @@
       "model_first_use_year": 2025
      },
      {
+      "retrodiction": true,
+      "patient_signal_reversed": false,
       "year": 2026,
       "status": "retro",
       "model": "db/db type 2 diabetic mouse",
@@ -253,14 +256,12 @@
       "model_src": "https://doi.org/10.1016/j.bcp.2026.118370",
       "model_src_tier": 1,
       "trial_unreported": false,
-      "patient_signal_reversed": false,
       "epub_year": 2026,
       "print_year": 2026,
       "registry_date": "2021-07-19",
       "model_filed": false,
       "product_in_model": true,
       "model_kind": "animal",
-      "retrodiction": true,
       "magnitude": "direction_only",
       "magnitude_basis": "glomerular fibrosis histology in db/db mice vs FIDELIO-DKD kidney composite HR 0.82 (UACR -31%); no common scale",
       "source_calls_it": null,
@@ -358,6 +359,92 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "zsf1-rat",
+   "model": "ZSF1 obese hypertensive type 2 diabetic rat",
+   "model_kind": "animal",
+   "model_first_use_year": 2023,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2023,
+      "status": "untested",
+      "model": "ZSF1 obese hypertensive type 2 diabetic rat",
+      "note": "ZSF1 rats, with raised UACR, BUN and renal fibrosis, given finerenone 10 mg/kg/day for 12 weeks: kidney function unchanged, renal hypertrophy reduced; the study is framed as an HFpEF model.",
+      "short": "ZSF1 rat: finerenone leaves kidney function unchanged",
+      "src": "https://doi.org/10.3390/ijms24032536",
+      "srcLabel": "Lima-Posada 2023",
+      "quote": "Finerenone treatment did not impact kidney function but reduced renal hypertrophy and cardiac fibrosis.",
+      "confidence": "medium",
+      "confidence_note": "Open-access full text read on mdpi.com (PMC9916671); first published 2023-01-28. Not in the Kerendia integrated review.",
+      "judgement": "Opening entry at the model's first use for a member drug; the paper post-dates FIDELIO-DKD and FIGARO-DKD, so its scored entry is a retrodiction.",
+      "model_id": "zsf1-rat",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "endpoint_role": null,
+      "outcome_tested": null,
+      "patient_trials": [],
+      "population": "Unselected (albuminuric CKD with type 2 diabetes)",
+      "model_first_use_year": 2023
+     },
+     {
+      "year": 2023,
+      "status": "contra",
+      "model": "ZSF1 obese hypertensive type 2 diabetic rat",
+      "note": "Run after FIDELIO-DKD and FIGARO-DKD, which the paper cites, the ZSF1 rat failed to reproduce finerenone's albuminuria lowering: no change in UACR, BUN, glomerular or tubular injury, or renal fibrosis.",
+      "short": "Post-FIDELIO ZSF1 rat misses the UACR drop",
+      "src": "https://doi.org/10.3390/ijms24032536",
+      "srcLabel": "Lima-Posada 2023",
+      "quote": "The absence of albuminuria lowering effect of the MRA finerenone in ZSF1 rats may be intrinsic to the model (or to the treatment duration), but other studies are needed to clarify this point.",
+      "confidence": "medium",
+      "confidence_note": "Full text read. Results: 'The treatment of finerenone for 12 weeks had no impact on BUN ..., UACR ..., glomerular and tubular injuries ... or renal fibrosis'. The paper cites FIDELIO-DKD and FIGARO-DKD as having shown renal benefit but does not set its UACR null against the patient UACR reduction itself.",
+      "judgement": "Decision 10: a retrodiction that failed to reproduce the known patient result (UACR -31% in FIDELIO-DKD, dose-dependent in ARTS-DN) is contra. Its own track: a different model (obese leptin-receptor-deficient T2D hypertensive rat) from the DOCA-salt, KK-Ay, MWF and db/db systems.",
+      "model_id": "zsf1-rat",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.3390/ijms24032536",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": "2021-07-19",
+      "model_filed": false,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "retrodiction": true,
+      "magnitude": "direction_only",
+      "magnitude_basis": "no UACR change in ZSF1 rats at 10 mg/kg/day vs FIDELIO-DKD UACR -31% at 4 months",
+      "source_calls_it": null,
+      "endpoint_role": "primary",
+      "outcome_tested": "positive",
+      "patient_trials": [],
+      "population": "Unselected (albuminuric CKD with type 2 diabetes)",
+      "model_first_use_year": 2023,
+      "reason": "Post-FIDELIO ZSF1 rat fails to reproduce UACR drop"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -373,5 +460,47 @@
   "Esaxerenone low-renin Dahl salt-sensitive rat (Hypertens Res 2018) and cardioprotective Dahl rat (IJMS 2021): same dahl-ss-rat system already tracked. Esaxerenone DOCA/salt rat (Arai 2016): already pooled on docasalt-unx-rat.",
   "Patient-level systems (organoids, patient-derived cells, ex vivo kidney tissue) and a human genetic model (NR3C2 loss of function / pseudohypoaldosteronism type 1): Europe PMC sweep found no use with a member drug; nothing to add.",
   "AZD9977, KBP-5074, balcinrenone, eplerenone and spironolactone models: not members of this class table; not widened."
+ ],
+ "gaps": [
+  {
+   "lead": "Apararenone aldosterone-infused uninephrectomised rat (J Med Chem 2022)",
+   "outcome": "none",
+   "detail": "Same mineralocorticoid-excess + uninephrectomy system and same prediction as docasalt-unx-rat (identity rule: new track needs different model and prediction); post-phase 2; see considered_not_added"
+  },
+  {
+   "lead": "Munich Wistar Fromter rat (Front Pharmacol 2018)",
+   "outcome": "tracked",
+   "detail": "mwf-rat, efficacy untested 2018 then retro 2018 (added_models)"
+  },
+  {
+   "lead": "Second KK-Ay esaxerenone paper (Hypertens Res 2020)",
+   "outcome": "verdict",
+   "detail": "Existing kkay-hs-diabetic-mouse efficacy index 5: comparison_stated source supporting retro over same; needs the checker's retro verdict on that entry"
+  },
+  {
+   "lead": "Retrodictions: esaxerenone db/db (Life Sci 2025), finerenone T1D model (Biomed Pharmacother 2023), finerenone diabetic mice (Biochem Pharmacol 2026)",
+   "outcome": "tracked",
+   "detail": "dbdb-mouse efficacy (Yang 2025, Wang 2026 pooled) and mwf-stz-hfhs-t1d-rat efficacy untested 2023 then retro 2023 (added_models)"
+  },
+  {
+   "lead": "ARTS-DN Japan (Katayama 2017) patient datum",
+   "outcome": "verdict",
+   "detail": "Patient side, not a system: belongs in patient_trials of docasalt-unx-rat efficacy index 2 (and bears on dahl-ss-rat safety contra dating)"
+  },
+  {
+   "lead": "Healthy conscious dog natriuresis (Kerendia integrated review)",
+   "outcome": "none",
+   "detail": "Same PD readout and prediction as rat-mr-agonist-natriuresis (engagement 2, same FDA review); second species, descriptive, changes no status; identity rule"
+  },
+  {
+   "lead": "ZSF1 obese hypertensive diabetic rat (IJMS 2023)",
+   "outcome": "added",
+   "detail": "zsf1-rat efficacy: untested 2023, then contra 2023 (retrodiction: no UACR lowering vs FIDELIO-DKD UACR -31%)"
+  },
+  {
+   "lead": "Earlier db/db source: finerenone Cells 2025 (PMID 40072066)",
+   "outcome": "verdict",
+   "detail": "Draft efficacy 10 (dbdb-mouse opener, Yang 2025) should be re-sourced to Li 2025, Cells, doi 10.3390/cells14050337 (epub 2025-02-26, 'finerenone attenuated the kidney injuries in established DN in db/db mice'), and efficacy 11 (retro, Wang 2026) moved to 2025 on the same source, which states the patient benefit as premise; needs a checker verdict"
+  }
  ]
 }

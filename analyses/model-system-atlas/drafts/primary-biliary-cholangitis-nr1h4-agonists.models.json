@@ -157,5 +157,27 @@
   "In-silico / QSP / PBPK dose-selection models for cilofexor, EDP-305 or tropifexor: none found in the sweeps.",
   "Tropifexor's met GGT primary (NCT02516605, results 2019-11-13; Schramm 2022) with no efficacy entry on a prospective track: a patient-side gap on existing tracks, not a missing model. The 2015-2020 sweep found no public pre-trial cholestasis disease model for tropifexor (only Tully 2017 rodent PD), so the adjudicator's choice is an efficacy entry on rodent-fxr-pd or an explicit 'no public disease model' statement in the cell.",
   "For the adjudicator on the existing safety cell: Xu 2023 (full text) reports that cilofexor did not change VAS or 5-D itch scores vs placebo in PBC over 12 weeks (Figure S4), which bears on safety entry 2's cilofexor 7 % pruritus-discontinuation figure taken from the AASLD 2019 abstract."
+ ],
+ "gaps": [
+  {
+   "lead": "Humanized-liver mouse IL-31 model (Xu 2023, PMID 35686937)",
+   "outcome": "tracked",
+   "detail": "pxb-humanized-liver-il31, safety 4 (untested 2022), 5 (retro NASH, imported_from MONDO:0007027), 6 (contra PBC); OCA model-side allowance is rule question 7"
+  },
+  {
+   "lead": "Piglet BDL model (Xiao 2021, PMID 33894097)",
+   "outcome": "none",
+   "detail": "Identity rule: same surgical-cholestasis model and prediction as rodent-bdl, whose tropifexor retro is efficacy 4; abstract states no patient comparison and no GGT/bilirubin to pair; species split is rule question 8"
+  },
+  {
+   "lead": "Tropifexor met GGT primary (NCT02516605) with no efficacy entry on a prospective track",
+   "outcome": "verdict",
+   "detail": "dose 2 corrected to untested (no stated target); no public pre-trial tropifexor cholestasis model exists (2015-2020 sweep), so rodent-fxr-pd carries no efficacy prediction to score; rule question 1"
+  },
+  {
+   "lead": "Unverified INTREPID press release and unopened AASLD 2019 cilofexor abstract; no peer-reviewed PBC papers",
+   "outcome": "verdict",
+   "detail": "Covered by checker verdicts on efficacy 3 (untested, dating rule question 2) and efficacy 5 (untested, conference-abstract tier rule question 3); no system to add"
+  }
  ]
 }

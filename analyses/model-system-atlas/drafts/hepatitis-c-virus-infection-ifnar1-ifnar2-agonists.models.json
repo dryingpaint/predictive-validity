@@ -12,7 +12,8 @@
   "Europe PMC: pegylated consensus interferon AND hepatitis C AND (phase III OR SVR), 2015-2026; Ding Y PEG-CIFN; Kawin/Jilin consensus interferon",
   "Europe PMC: DOI 10.3109/08923970902814111 (Cao 2009, checker lead)",
   "Firecrawl web: Hanferon interferon hepatitis C",
-  "Firecrawl web: interferon alpha-5 Digna Biotech hepatitis C trial results"
+  "Firecrawl web: interferon alpha-5 Digna Biotech hepatitis C trial results",
+  "Europe PMC: DOI:10.3109/08923970902814111 (PMID 19874220, Cao/Yao 2009: PEG-CIFN rhesus serum ELISA vs antiviral bioassay; conjugate not named PEG-IFN-SA)"
  ],
  "added_models": [],
  "considered_not_added": [
@@ -23,5 +24,32 @@
   "Hanferon: no preclinical model or patient data found in Europe PMC or web search",
   "Chimeric-liver (uPA/SCID) mouse, HCV-infected chimpanzee, viral-kinetic / QSP dose models, PDX or patient-organoid uses for any member: none found",
   "PEG-IFN-SA China NMPA approval 2018 and phase 3 NCT01903278 (checker 'missing' lead): patient-side outcome for the draft's existing monkey track, not a new model system; left to the draft's revision"
+ ],
+ "gaps": [
+  {
+   "lead": "PEG-IFN-SA China NMPA approval 2018 after phase II NCT01908335 and phase III NCT01903278",
+   "outcome": "verdict",
+   "detail": "Patient-side outcome for existing track peg-ifn-sa-monkey (efficacy 3, already 'corrected' by checker for wrong NCT); needs a verdict adding the phase 3/approval entry and tile-note wording, not a new system"
+  },
+  {
+   "lead": "Cao 2009 rhesus PK of pegylated consensus interferon (doi 10.3109/08923970902814111)",
+   "outcome": "verdict",
+   "detail": "Same system as peg-ifn-sa-monkey / peg-ifn-sa-monkey-rat-pk; would move model_first_use_year 2011->2009 only if PEG-CIFN (Yao WB group, PMID 19874220) is PEG-IFN-SA, which the abstract does not state; needs a verdict on those entries"
+  },
+  {
+   "lead": "PEG-IFN-SA nonclinical toxicology completed for NMPA filing but not public",
+   "outcome": "tracked",
+   "detail": "peg-ifn-sa-nonclinical-tox, safety 1, untested/unpublished"
+  },
+  {
+   "lead": "No source for Hanferon, nor HCV replicon, chimeric-liver mouse or patient-cell models for any member",
+   "outcome": "none",
+   "detail": "Searches in 'searched' (Europe PMC, web) found no Hanferon data and no such model-to-patient comparison for any member"
+  },
+  {
+   "lead": "interferon alfa-5",
+   "outcome": "tracked",
+   "detail": "Draft names it IFN-alpha5: ifna5-hepatoma-isg (engagement 1, efficacy 1, untested/unsettled; NCT01121731 never reported) and ifna5-macaque-pk (dose 2, untested/unpublished); no further model-to-patient comparison found"
+  }
  ]
 }

@@ -14,7 +14,8 @@
   "Europe PMC full text PMC5651361 (Delay-Goyet 2016): all sentences on sleep, insomnia, wake, EEG, vigilance, clinical trials",
   "curl + pdftotext: Sanofi DRI10734 results summary (issue date 11-Nov-2014), safety and efficacy paragraphs",
   "fc.py scrape: EU CTR results record 2010-022596-64 (first version publication date 10 May 2016; adverse-event tables not returned by the scrape)",
-  "doi.org HEAD 10.1016/j.bbr.2012.04.033 resolves to Elsevier S016643281200294X (Griebel 2012 Behav Brain Res)"
+  "doi.org HEAD 10.1016/j.bbr.2012.04.033 resolves to Elsevier S016643281200294X (Griebel 2012 Behav Brain Res)",
+  "fc.py search: Stemmelin SAR110894 CTAD 2013 phase 2 cognition daily function apathy sleep (only citations of the abstract title returned; abstract text not retrievable)"
  ],
  "added_models": [
   {
@@ -118,5 +119,32 @@
   "Nathan 2013 GSK239512 phase 1b bridging study in AD (NCT00675090): patient-side data with no model side",
   "Delay-Goyet 2016 THY-Tau22 chronic-dosing model: already tracked as thy-tau22-mouse",
   "Alhusaini 2022 Front Pharmacol review of preclinical H3 antagonist observations: a review, not a source; it names no model system beyond those tracked"
+ ],
+ "gaps": [
+  {
+   "lead": "ABT-288 schizophrenia safety (Haig 2014 Schizophr Bull; Othman 2014 BJCP), importable with imported_from MONDO:0005090",
+   "outcome": "none",
+   "detail": "Not a new model system: a patient-side import onto the existing rat-safety-pharm-eeg safety track against a generic 'wide CNS safety margin'; admissibility is the open rule question (generic margin as prediction; susceptible-population import), not an addition"
+  },
+  {
+   "lead": "EU CTR results record 2010-022596-64 (SAR110894, NCT01266525), results v1 2016-05-10",
+   "outcome": "verdict",
+   "detail": "Fills registry_date 2016-05-10 on efficacy 4 (rodent-cognition-battery, Delay-Goyet 2016 contra), already stated in the checker verdict for efficacy 4; safety 3 and 4 (rat-safety-pharm-eeg) already carry registry_date 2016-05-10 and the 2014 Sanofi tier 5 entry with trial_unreported true"
+  },
+  {
+   "lead": "GSK239512 PET occupancy protocol NCT00474513",
+   "outcome": "verdict",
+   "detail": "Corrects engagement 2 (gsk239512-pig-pet, Ashworth 2014) confidence_note 'No NCT number found'; the checker verdict for engagement 2 already records NCT00474513 from the paper; status unchanged"
+  },
+  {
+   "lead": "GSK239512 product-in-model model side: EU CTR 2007-004117-33 'active in animal cognition models'",
+   "outcome": "verdict",
+   "detail": "Needs a verdict on efficacy 2 (rodent-cognition-battery, Grove 2014): swap model_src from GSK189254 sibling (10.1124/jpet.107.120311) to the tier 3 EU CTR document with product_in_model true; same system and status, no new track"
+  },
+  {
+   "lead": "Stemmelin 2013 CTAD oral OC42 (J Nutr Health Aging 17(9), 10.1007/s12603-013-0399-7)",
+   "outcome": "verdict",
+   "detail": "Possible 2013 earlier date for safety 3 (rat-safety-pharm-eeg, 2014 contra) under rule 7; abstract text still not retrievable (fc.py search returns only citations), so sleep-AE content unverified; date stays 2014 pending a verdict and the open supplement-DOI rule question"
+  }
  ]
 }

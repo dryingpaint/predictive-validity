@@ -183,6 +183,28 @@
    "rule": "3 (stated prediction), 10 (not a retrodiction for the member)",
    "note": "Gane 2023 (PMID 37290591) full text read (SGUL OA copy). Mice were uninfected PXB cDNA-uPA/SCID (PhoenixBio), 12-100 mg/kg x5, hALT1; paper says the model 'was used to predict the safety of VIR-2218' and findings were 'first demonstrated preclinically'. same holds; experiment date not stated.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "opener: no stated comparison with patients in this entry",
+   "note": "Schlegel 2022 NAR (PMC9262600) full text read: quote verbatim in Results; HepG2.2.15 RNA-seq at 10 nM, ALN-HBV02 (VIR-2218, member) vs ALN-HBV. Untested opener at 2022 holds; ex_vivo kind forced by enum.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3 (stated comparison), 10 (model run before the member's human result, so not retro)",
+   "note": "Quote verbatim (Discussion). RNA-seq supported 'introduction of ALN-HBV02 into preclinical and clinical development', so it preceded VIR-2218 dosing; ALN-HBV ALT (5/18) was known but is the non-member parent. Direction-only same holds; Gane 2023 patient side confirmed earlier.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

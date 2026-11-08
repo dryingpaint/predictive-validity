@@ -705,5 +705,27 @@
   "Xiong 2020 intracranial H209 + temozolomide model and Wang 2020 brain-penetration DMPK: SCLC-brain and glioma predictions (tested in Schiff 2026, Piotrowski 2025), outside the breast context.",
   "Veliparib population-PK or exposure-response models for dose selection: not searched within the budget; no in-silico dose model for breast cancer surfaced in the searches run.",
   "Patient-derived xenograft co-clinical trials with a member drug in breast cancer: the Europe PMC PDX/organoid search returned only Bui 2026 (added) and reviews."
+ ],
+ "gaps": [
+  {
+   "lead": "PARPi-7 and BRCA1ness signatures tested against pCR in I-SPY 2 veliparib/carboplatin arm (Wolf 2017)",
+   "outcome": "added",
+   "detail": "already in added_models as ispy2-parpi7-brca1ness-signatures (efficacy: untested 2012, same 2017); carboplatin confound noted there"
+  },
+  {
+   "lead": "2X-121 (E7449) own BRCA-deficient xenografts (McGonigle 2015)",
+   "outcome": "added",
+   "detail": "already in added_models as e7449-brca-deficient-xenografts (engagement/dose/safety same 2020 vs Plummer 2020; efficacy untested 2015, breast phase 2 unreported)"
+  },
+  {
+   "lead": "Pamiparib own preclinical package (Xiong 2020 / Wang 2020 J Med Chem)",
+   "outcome": "added",
+   "detail": "already in added_models as pamiparib-mda-mb-436-xenograft (engagement/dose same 2021, efficacy same 2022, safety contra 2022 vs Xu 2023)"
+  },
+  {
+   "lead": "Kummar 2009 mouse PK/PD 0.21 umol/L plasma target",
+   "outcome": "verdict",
+   "detail": "field fix on draft engagement[2] and dose[2] (mx1-brca-xenograft-chemopotentiation track): comparison_stated true; checker verdicts on those entries already cover it"
+  }
  ]
 }

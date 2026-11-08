@@ -243,5 +243,37 @@
   "BMS 2018 press release / ESMO IO 2018 dating of CheckMate 331 and 451: dating of existing entries (dose 3, efficacy 4), not a model system; not touched.",
   "Taniguchi 2022 (PMC9449677): same system as Sen 2019 (RPP syngeneic, anti-PD-L1), folded into the sclc-rpp-syngeneic-mouse-anti-pdl1 track's model text and confidence_note rather than opened as its own track.",
   "Hiatt 2022 RP-48 syngeneic model and Mahadevan 2021: already tracked (sclc-rp-syngeneic-mouse) or excluded by the draft's own judgement; skipped."
+ ],
+ "gaps": [
+  {
+   "lead": "CheckMate 331 OS miss public 2018-10-12 (BMS release, ESMO IO 2018 LBA); CheckMate 451 miss announced Nov 2018",
+   "outcome": "verdict",
+   "detail": "Dating correction to efficacy 4 (mc38-mouse-pd1-blockade, contra 2020 -> 2018 under decision 7); covered by the checker's 'corrected' verdict on efficacy 4 (proposed_year 2018); dose 3 (poppk-regimen-simulation) is not a CheckMate 331 entry and needs no change"
+  },
+  {
+   "lead": "Toripalimab human-PD-1 knock-in MC38 model (FDA 761240 review 2023) as its own track",
+   "outcome": "added",
+   "detail": "Already in added_models as hpd1-knockin-mc38 (efficacy untested 2019; merged draft efficacy 7); EXTENTORCH is a chemotherapy combination, so no status change"
+  },
+  {
+   "lead": "Mtb-infected PD-1 knockout: imported TB reactivation on anti-PD-1 (Picchi 2018, PMID 29269089)",
+   "outcome": "verdict",
+   "detail": "Corrects existing track safety 2 (mtb-infected-pd1-knockout-mouse, untested 2010), not a new system; needs a checker verdict on whether it moves to same with imported_from the reporting indication (2018)"
+  },
+  {
+   "lead": "Sen 2019 / Taniguchi 2022 anti-PD-L1 in RPP syngeneic SCLC mice",
+   "outcome": "added",
+   "detail": "Already in added_models as sclc-rpp-syngeneic-mouse-anti-pdl1 (efficacy untested 2019, merged draft efficacy 10); sibling-class surrogate held untested under decisions 12/13, reviewer may drop"
+  },
+  {
+   "lead": "2024 Rb1/Trp53/Msh2 MMR-deficient SCLC mouse (PMC11564195)",
+   "outcome": "added",
+   "detail": "Already in added_models as sclc-rpm-msh2-gemm (efficacy untested 2024 then retro 2024; merged draft efficacy 8-9)"
+  },
+  {
+   "lead": "PASSION (Fan 2021, PMID 33166719; NCT03417895 results 2024-08-07)",
+   "outcome": "none",
+   "detail": "Camrelizumab plus apatinib single-arm combination: combination rule (model dosed the antibody alone) gives no status change; belongs in efficacy patient_trials, not a model system"
+  }
  ]
 }

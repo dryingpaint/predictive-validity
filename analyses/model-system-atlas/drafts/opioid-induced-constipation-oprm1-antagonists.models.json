@@ -377,5 +377,32 @@
   "Bevenopran (ADL5945/CB-5945): no published model data found; phase 2 positive, phase 3 terminated",
   "Methylsamidorphan (ALKS 37): no published model data found; phase 2 press release only",
   "Human opioid-induced transit challenge, PDPK/QSP dose models, patient-derived cells: none found for any member"
+ ],
+ "gaps": [
+  {
+   "lead": "Axelopran model source Armstrong 2013 (PMID 23512167): rat loperamide gastric emptying, castor-oil diarrhoea, dog GI contractility, CNS models",
+   "outcome": "tracked",
+   "detail": "rat-loperamide-gastric-emptying efficacy 1-2, mouse-morphine-dependent-withdrawal safety 1-2, rat-dog-hotplate-analgesia-window dose 1-2 (all src Armstrong 2013 opening); dog contractility not split (no separate patient readout)"
+  },
+  {
+   "lead": "NCT01122030 naldemedine single doses in opioid-dependent chronic-pain patients (results posted 2017-05-30)",
+   "outcome": "verdict",
+   "detail": "Patient-side evidence for existing rat-morphine-dependent-withdrawal safety 2 and rat-gi-transit-vs-tailflick-window dose 2 (both same, 2017); results posted 2017 so neither year nor status changes; covered by those confirmed verdicts"
+  },
+  {
+   "lead": "Rat in-vivo brain opioid receptor occupancy (naldemedine, S-297995-EB-257-N in PharmR)",
+   "outcome": "none",
+   "detail": "No human brain occupancy or central-receptor readout compared with it; outside the rule that a track needs a patient comparison (central sparing already tracked by tail-flick window and withdrawal tracks)"
+  },
+  {
+   "lead": "J Pain 2013;14(4 Suppl) abstract: no analgesic interference or CNS withdrawal for TD-1211 in phase 2b (COWS)",
+   "outcome": "verdict",
+   "detail": "Would move mouse-morphine-dependent-withdrawal safety 2 and rat-dog-hotplate-analgesia-window dose 2 from 2019 to 2013 if supplement abstracts are tier 1 (checker rule question 4); jpain.org page gives title only, COWS figures unverified, so entries left at Long 2019"
+  },
+  {
+   "lead": "Axelopran phase 2b efficacy public Oct 2012 (ACG 2012 / Theravance PR) paired with Armstrong 2013",
+   "outcome": "verdict",
+   "detail": "Would date rat-loperamide-gastric-emptying efficacy 2 to 2013, but no single source states model and patient result together before Long 2019 and the patient side is a meeting abstract/press release; status same unchanged, needs rule-question-4 verdict"
+  }
  ]
 }

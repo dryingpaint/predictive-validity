@@ -373,5 +373,37 @@
   "Human challenge models (methacholine, allergen, exercise): no challenge study of a member drug in asthma found (22 hits, reviews only).",
   "Patient ex-vivo systems (human isolated bronchi, airway smooth muscle cells, precision-cut lung slices, organoids): the Almirall human isolated bronchi are already inside the Almirall track; nothing else for a member.",
   "Bjermer 2015 AZD3199 clinical pharmacokinetics (PMID 25709399): healthy-volunteer, asthma and COPD PK with no model prediction; and Bindel & Seifert 2026 database review of recombinant beta-AR affinities (PMID 42401193): not a model system."
+ ],
+ "gaps": [
+  {
+   "lead": "EU CTR 2008-001773-15 (CHF 5188 budesonide/carmoterol 400/4 ug, trough FEV1 +0.26 L)",
+   "outcome": "verdict",
+   "detail": "Patient record for the existing chiesi-guinea-pig-challenge-bronchoconstriction track, not a new system: would add an efficacy 'same' after efficacy #8 and reset dose #8 (the Chiesi dose contra) to 'target too low'; whether a fixed combination with no budesonide-alone arm counts is checker rule_question 1 (decision 4 vs 6)."
+  },
+  {
+   "lead": "ClinicalTrials.gov NCT00683449 (MediciNova acute-exacerbation dose-finding, results 2011-07-29)",
+   "outcome": "verdict",
+   "detail": "Earlier tier-3 patient record for kissei-pregnant-rat-organ-bath-selectivity efficacy #6 (House 2015 contra): append to that entry's patient_trials; no analyses posted, direction unresolved, changes no status."
+  },
+  {
+   "lead": "Pregnant-sheep infusion model of KUR-1246 (Kiguchi 2002; Murata 2005 BJOG)",
+   "outcome": "tracked",
+   "detail": "kissei-pregnant-sheep-infusion-tocolysis, safety #8 (untested 2002, Kiguchi 2002) and #9 (same 2012, Matsuda 2012 hypokalaemia), carried in added_models."
+  },
+  {
+   "lead": "MediciNova dog study MN-221 FY08-065 (IV bedoradrine on nebulised albuterol, CHEST 2010 poster / press release)",
+   "outcome": "none",
+   "detail": "Outside the source rules: a conference poster and press release only, no peer-reviewed or regulator record, and tier 5 is admissible patient-side only, so it cannot be model_src; note-only."
+  },
+  {
+   "lead": "Tanabe TA-2005 airway models (Kikkawa 1991, Voss 1992, Kikkawa 1994)",
+   "outcome": "verdict",
+   "detail": "Voss 1992 is tracked as ta2005-tight-binding-receptor-kinetics (engagement #13-14, efficacy #9-10); Kikkawa 1991/1994 are the same system as chiesi-guinea-pig-challenge-bronchoconstriction, whose model_first_use_year should move 2005 -> 1991 on engagement #9-10, dose #7-8, efficacy #7-8 (a date correction, not a new system)."
+  },
+  {
+   "lead": "Residual: Kikkawa 1991/1994 folded into the Chiesi guinea-pig track with model_first_use_year still 2005",
+   "outcome": "verdict",
+   "detail": "Same correction as above: set model_first_use_year 1991 on every chiesi-guinea-pig-challenge-bronchoconstriction entry; Europe PMC search for human bronchi/airway-cell carmoterol models found no further system."
+  }
  ]
 }

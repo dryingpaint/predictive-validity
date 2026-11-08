@@ -234,5 +234,17 @@
   "Fulranumab-specific preclinical models: none found in Europe PMC; Wang 2017 (fulranumab IC trial) belongs in the draft's existing efficacy patient_trials, not a new track.",
   "Urinary NGF as a responder biomarker for anti-NGF in IC/BPS: no source testing it against trial response found.",
   "ASP6294 placental-transfer studies in pregnant rats and primates (Koya 2023): no patient comparison possible (no pregnancies reported)."
+ ],
+ "gaps": [
+  {
+   "lead": "Wang 2017 BMC Urol (PMID 28056917): fulranumab 9 mg SC in IC/BPS, NCT01060254, n=31, primary endpoint not significant",
+   "outcome": "verdict",
+   "detail": "Correction to chem-cystitis-rodent-ngf-sequestration efficacy entry 3 (contra 2012): add NCT01060254/Wang 2017 to patient_trials and fix the 'no results' note; no status change (already contra), not a new system"
+  },
+  {
+   "lead": "ASP6294 PEG-Fab' (Koya 2023, MAbs) and EU CTR 2016-004138-12 results (women only, P=0.591, female subgroup not confirmed)",
+   "outcome": "tracked",
+   "detail": "asp6294-arthritis-rodent efficacy entry 5 (contra 2022, EudraCT results quote) and chem-cystitis-rodent-ngf-sequestration efficacy entry 3 patient_trials (NCT03282318); confirms existing quotes, nothing to add"
+  }
  ]
 }

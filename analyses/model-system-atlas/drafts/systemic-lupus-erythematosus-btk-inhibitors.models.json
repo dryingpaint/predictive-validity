@@ -186,5 +186,22 @@
   "Ibrutinib-treated lupus mice and BTK-knockout B cells (Shi 2025): ibrutinib is not a class member and no patient comparison",
   "Fenebrutinib RA population PK / model-based meta-analysis (Pharm Res 2020): RA, not SLE; no SLE comparison",
   "Member GLP toxicology: already tracked (member-gltox), unpublished"
+ ],
+ "gaps": [
+  {
+   "lead": "SLEek elsubrutinib arm biomarkers (Lupus Sci Med 2026, doi 10.1136/lupus-2026-002162) vs ABBV-105 NZB/W data (Goess 2018)",
+   "outcome": "none",
+   "detail": "Checker itself found no new track: same nzbw-lupus-mouse system and status-neutral (no change of status: one entry per change); abstract unavailable, so no verifiable quote to add."
+  },
+  {
+   "lead": "Becker 2019 (doi 10.1111/cts.12713) healthy-volunteer evobrutinib occupancy as earliest engagement/dose comparison",
+   "outcome": "verdict",
+   "detail": "Corrects existing entries, not a new system: engagement 5 and dose 2 adjudicated to same, year 2019, model_id nzbw-lupus-mouse (checker verdicts engagement 5, dose 2)."
+  },
+  {
+   "lead": "Wallace 2022 (doi 10.1002/acr2.11511) stating the mouse-to-patient efficacy comparison",
+   "outcome": "verdict",
+   "detail": "Same nzbw-lupus-mouse efficacy track, status unchanged (contra): needs a verdict on efficacy 2 to cite Wallace 2022 as comparison_stated:true support; no new entry or system."
+  }
  ]
 }

@@ -12,7 +12,8 @@
   "Bareille 2013 Curr Drug Ther adaptive trial (doi 10.2174/1574885511308020001 via Crossref bibliographic query): Ingenta crawler page Cloudflare-blocked, unread",
   "WebSearch: Pinkerton Velsecorat AZD7594 SGRM Pre-Clinical Efficacy ATS 2021 (no abstract text found)",
   "Firecrawl search: Leaker 2015 GW870086X adenosine PC20 (located the correct PII); Bareille 2013 GW870086 adaptive trial (Ingenta/PMC pointers only)",
-  "Abstracts read from the Europe PMC sweep for in-silico/ex-vivo candidates: Boger 2016 AZD5423 mechanistic deposition-dissolution PK model (PMID 27740878), isolated perfused rat lung (PMID 32394314), model-based pulmonary-exposure deconvolution (PMID 34585333), velsecorat 2b PEF hidden-Markov model (PMID 42249718), Werkstrom 2016 and Prothon 2022 healthy-volunteer PD"
+  "Abstracts read from the Europe PMC sweep for in-silico/ex-vivo candidates: Boger 2016 AZD5423 mechanistic deposition-dissolution PK model (PMID 27740878), isolated perfused rat lung (PMID 32394314), model-based pulmonary-exposure deconvolution (PMID 34585333), velsecorat 2b PEF hidden-Markov model (PMID 42249718), Werkstrom 2016 and Prothon 2022 healthy-volunteer PD",
+  "Gap pass: fc.py search + scrape of eurekaselect.com/public/article/55867 (Bareille 2013 Curr Drug Ther adaptive trial abstract, read); fc.py search for SUN S0597 HRA allergen-challenge summary (not found); CT.gov API NCT02041221 (SAD/MAD, AE primary, no challenge arm listed); fc.py scrape of atsjournals A1418 (Pinkerton 2021, no content)"
  ],
  "added_models": [
   {
@@ -189,6 +190,52 @@
       "source_calls_it": null,
       "endpoint_role": "primary",
       "outcome_tested": null
+     },
+     {
+      "model_id": "amp-bronchoprovocation-ahr",
+      "model": "AMP (adenosine monophosphate) bronchoprovocation in steroid-naive mild asthmatics (human challenge)",
+      "model_kind": "human_challenge",
+      "prediction_level": "class",
+      "model_first_use_year": 2007,
+      "population": "Steroid-naive mild asthmatics (challenge); mild-moderate asthmatics (28-day trial)",
+      "product_in_model": true,
+      "model_filed": false,
+      "retrodiction": false,
+      "patient_signal_reversed": true,
+      "trial_unreported": false,
+      "imported_from": null,
+      "patient_trials": [
+       {
+        "nct": "NCT01245426",
+        "registry_date": null,
+        "doi": "10.2174/1574885511308020001",
+        "quote": "Improvements in forced expiratory volume in one second (FEV1) were seen following all three doses of GW870086 relative to placebo."
+       }
+      ],
+      "year": 2015,
+      "status": "same",
+      "note": "A higher dose later worked: the adaptive 28-day trial (NCT01245426, n=135) improved day-28 FEV1 vs placebo at 2 mg (+0.172 L) and 4 mg (+0.159 L), so the class signal the challenge called held at doses above its 1 mg.",
+      "short": "2 and 4 mg later improved FEV1",
+      "src": "https://doi.org/10.2174/1574885511308020001",
+      "srcLabel": "Bareille 2013 (Curr Drug Ther)",
+      "quote": "This study provided a positive outcome with all doses of GW870086 demonstrating improvements in lung function compared with placebo.",
+      "confidence": "medium",
+      "confidence_note": "Abstract only (eurekaselect public page, read via Firecrawl); full text paywalled. 3 mg CI crossed zero (+0.105 L, -0.053 to 0.263), so 'all doses' is the authors' reading; 2 and 4 mg CIs exclude zero. Trial ran Dec 2010-Jul 2011, before the model's 2015 publication; dated to the model's epub.",
+      "reason": null,
+      "judgement": "Decision 4 row 'reached, failed, a higher dose later worked': efficacy is contra (1 mg 28-day crossover null) then same. The challenge predicted GSK's GR agonist would be clinically active in asthma; the day-28 FEV1 primary of the adaptive 2/3/4 mg trial was positive at 2 and 4 mg. Both patient results were public by 2013; the model result became public with Leaker 2015, so this same is dated 2015, after the contra entry of the same year. Paired by the drafter (comparison_stated false); Leaker cites the adaptive trial only for a 'U-shaped response'. patient_signal_reversed is set because the brief's 'contra, then same' row turns the track back on a tier-1 patient record: the 1 mg null was superseded by the higher-dose positive primary, not an attenuated signal.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1016/j.jaci.2015.01.034",
+      "model_src_tier": 1,
+      "epub_year": 2015,
+      "print_year": 2015,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": "No common quantity: PC20 AMP doubling-dose shift (model) vs day-28 FEV1 +0.16-0.17 L (trial).",
+      "source_calls_it": null,
+      "endpoint_role": "primary",
+      "outcome_tested": null
      }
     ],
     "safety": [
@@ -283,5 +330,57 @@
   "In-vitro GR assays (A549/BEAS-2B/16HBE transrepression vs transactivation, trabecular-meshwork cells, 16HBE tight junctions; Uings 2013 and the 2020 systematic review): mechanistic premise of the dissociated-steroid class, not a disease model with a patient comparison; the draft already says so.",
   "Chupp et al., ATS 2021 A1202 (GRANIT): a trial report, not a model; nothing to add.",
   "Not a model but a finding for the existing tracks: the draft's claims that NCT01245426 'was never reported' (dose entry 4) and that 'GSK ran no further asthma efficacy trial' (efficacy entry 5) are wrong. The adaptive 2/3/4 mg dose-ranging trial (136 persistent asthmatics, day-28 FEV1 primary, Dec 2010-Jul 2011) was published as Bareille et al., Curr Drug Ther 2013;8(2):69-75, doi 10.2174/1574885511308020001 (Crossref issued 2013-09-01), cited by Leaker 2015 (ref 7) for a 'U-shaped response' and summarised by the 2020 systematic review as 'improved lung function'. Text unread (Bentham/Ingenta Cloudflare-blocked); if it shows a positive FEV1 primary at 2 mg, the mouse, allergen and AMP tracks each gain a later same on the 'higher dose later worked' row."
+ ],
+ "gaps": [
+  {
+   "lead": "AMP bronchoprovocation human challenge (Leaker 2015, NCT00483899)",
+   "outcome": "tracked",
+   "detail": "amp-bronchoprovocation-ahr: draft dose 4-5, efficacy 9-10, safety 4-5"
+  },
+  {
+   "lead": "Bareille 2014 Curr Drug Ther 8(3) tier-1 record of the GW870086 allergen challenge (NCT00857857)",
+   "outcome": "verdict",
+   "detail": "allergen-challenge-lar efficacy 8: re-date 2018->2014 and tier 3->1; checker verdict on efficacy 8 (corrected) already covers it"
+  },
+  {
+   "lead": "SUN-597 (S-0597 / SPARC-1316), NCT02041221 and HRA allergen-challenge PoC",
+   "outcome": "verdict",
+   "detail": "No new system and no SUN-597 efficacy trial, so no comparison; draft text 'no public record' (mechanism note, efficacy 6 'two members') needs a verdict citing NCT02041221; HRA challenge study not found by search, so SUN-597 is not entered on allergen-challenge-lar"
+  },
+  {
+   "lead": "Healthy-volunteer cortisol/osteocalcin PD (Werkstrom 2016 AZD5423, Prothon 2022 velsecorat)",
+   "outcome": "none",
+   "detail": "Existing rat-allergic-lung-oedema-az track, not a new system; its engagement (2015) and safety (2017) cells are already same, so these would not change status (one entry per change of status)"
+  },
+  {
+   "lead": "Kuna 2017 AZD5423 in COPD, imported safety (cortisol suppressed)",
+   "outcome": "none",
+   "detail": "Consistent with the rat's moderate systemic GR effect for AZD5423, i.e. an imported same on rat-allergic-lung-oedema-az safety, already same in 2017 (safety 2); no status change, so no entry"
+  },
+  {
+   "lead": "Pinkerton ATS 2021 A1418 velsecorat preclinical model",
+   "outcome": "none",
+   "detail": "Abstract text still unobtainable (atsjournals scrape empty, Crossref/Semantic Scholar no abstract); model unidentifiable and unquotable (evidence rule 3); conference abstract, retrodiction candidate only"
+  },
+  {
+   "lead": "Chupp ATS 2021 A1202 (sponsor report of NCT03622112)",
+   "outcome": "verdict",
+   "detail": "Not a model system; rat track efficacy 3 keeps contra on the registry primary (p=0.060); a verdict should replace the draft's 'no publication' wording with this conference abstract"
+  },
+  {
+   "lead": "NCT01245426 published as Bareille 2013 Curr Drug Ther 8(2):69-75 (2/4 mg improved day-28 FEV1)",
+   "outcome": "verdict",
+   "detail": "Corrects dose 5 (checker verdict 'corrected' covers it) and mouse-ova efficacy 5 'GSK ran no further trial' (needs a verdict: mouse and allergen-challenge tracks owe a later same; their dose rows become target too low)"
+  },
+  {
+   "lead": "AMP track efficacy later same 2015 pairing Leaker 2015 with the adaptive trial",
+   "outcome": "added",
+   "detail": "Entry (not a new system) appended to amp-bronchoprovocation-ahr efficacy: same 2015, src doi 10.2174/1574885511308020001, abstract quote read on eurekaselect"
+  },
+  {
+   "lead": "Allen 2013 Curr Drug Ther 8(2):76-85 healthy-volunteer SAD/MAD GW870086 (NCT01160003)",
+   "outcome": "none",
+   "detail": "Healthy volunteers at 5-8.75 mg, above the AMP model's 1-3 mg margin, so it does not test the stated margin; text unread (Bentham blocked), no quotable sentence (evidence rule 3)"
+  }
  ]
 }

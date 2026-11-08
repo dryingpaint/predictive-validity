@@ -9,7 +9,9 @@
   "Europe PMC/PubMed: FLT3 inhibitor patient-derived xenograft co-clinical",
   "Europe PMC/PubMed: quizartinib exposure-response / population PK (QT, dose choice); quizartinib in FLT3-ITD-negative AML (QUIWI, QuANTUM-Wild)",
   "Europe PMC/PubMed: crenolanib phase III; lestaurtinib ex vivo cytotoxic response vs clinical response",
-  "ClinicalTrials.gov API: NCT00989261, NCT01657682, NCT01522469, NCT02014558 (results first posted dates)"
+  "ClinicalTrials.gov API: NCT00989261, NCT01657682, NCT01522469, NCT02014558 (results first posted dates)",
+  "Gap pass: Europe PMC 'AKN-028' (Eriksson 2012 Blood Cancer J, Eriksson 2014 Biochem Pharmacol; no clinical report); ClinicalTrials.gov intr=AKN-028 (NCT01573247 terminated, no results) and intr=crenolanib (NCT03250338, NCT03258931 completed 2026, no results posted)",
+  "Gap pass: FDA Xospata review (NDA 211349) grep for D835Y/TKD; Europe PMC crenolanib resistance (Smith 2014 PNAS, Galanis 2014 Blood, Zhang 2019 Nat Commun)"
  ],
  "added_models": [
   {
@@ -111,6 +113,55 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "flt3-tkd-d835y-ba-f3-gilteritinib",
+   "model": "Ba/F3 cells expressing FLT3-D835Y (TKD) treated with gilteritinib (in vitro)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2018,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2018,
+      "status": "untested",
+      "prediction_level": "patient",
+      "model_id": "flt3-tkd-d835y-ba-f3-gilteritinib",
+      "model": "Ba/F3 cells expressing FLT3-D835Y (TKD) treated with gilteritinib (in vitro)",
+      "model_kind": "ex_vivo",
+      "model_first_use_year": 2018,
+      "src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2018/211349Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA Xospata review 2018",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "subjects": "patients",
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "relapsed/refractory AML with FLT3-TKD (D835/I836) mutation, gilteritinib",
+      "note": "Gilteritinib blocked Ba/F3 FLT3-D835Y growth, the basis for treating TKD patients; no TKD-only patient reached CR/CRh (0/18 pooled), which FDA judged too small to call.",
+      "short": "TKD 0/18 CR/CRh; FDA calls it inconclusive",
+      "quote": "The lack of any response in black patients (0/12) or in patients with a TKD mutation (0/18) does not necessarily indicate a lack of efficacy, since the numbers of patients in these groups are small.",
+      "confidence": "medium",
+      "confidence_note": "FDA pooled interim analysis of Studies 0101 and 0301 (ADMIRAL NCT02421939); PMR asked for >=30 TKD patients. ADMIRAL's final TKD subgroup (Perl 2019 NEJM) was not checked here and could settle the track. model_first_use_year is a proxy (review date); the sponsor's Ba/F3 work (Mori 2017) predates it.",
+      "judgement": "Opening entry at the model's first (proxy) use, which is also the first patient comparison. Model readout: the same review states gilteritinib 'decreased proliferation' of FLT3-D835Y Ba/F3 cells. The regulator called the patient result inconclusive (upper 95% bound 19%), so the status is untested, not contra.",
+      "untested_reason": "unsettled",
+      "comparison_stated": true
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -121,5 +172,42 @@
   "Quizartinib exposure-response QT and population PK models used to pick doses: built from patient data, not a preclinical model; out of scope.",
   "Quizartinib in FLT3-ITD-negative AML (QUIWI, QuANTUM-Wild): population outside the FLT3-mutated tile.",
   "Human genetic or challenge models: none exist for this class."
+ ],
+ "gaps": [
+  {
+   "lead": "Efficacy earlier 'same' in 2018 (Cortes 2018 Lancet Oncol phase 2; ADMIRAL CR/CRh in FDA review)",
+   "outcome": "verdict",
+   "detail": "Dates efficacy entry 2 (flt3-itd-mv4-11-xenograft, 2019 same) to 2018; the checker confirmed that entry, so it needs a corrected-year verdict."
+  },
+  {
+   "lead": "LACEWING Astellas release 2020-12-21",
+   "outcome": "verdict",
+   "detail": "Efficacy entry 3 (flt3-itd-mv4-11-xenograft, contra): checker verdict already corrects its year to 2020."
+  },
+  {
+   "lead": "MORPHO post-HCT gilteritinib maintenance (NCT02997202) missed RFS",
+   "outcome": "none",
+   "detail": "No model predicted post-transplant maintenance (DRAFTER_BRIEF evidence rule: a status needs a model prediction for that context); at most a patient_trials note on efficacy entry 2."
+  },
+  {
+   "lead": "QuANTUM-R FDA ODAC/CRL 2019 doubts on OS",
+   "outcome": "verdict",
+   "detail": "Efficacy entry 2 (flt3-itd-mv4-11-xenograft, 2019 same) should record the tier-2 view (source_calls_it partial or a note); the checker's confirmed verdict does not cover it."
+  },
+  {
+   "lead": "Crenolanib absent (phase 3 NCT03250338, ARO-021 NCT03258931)",
+   "outcome": "tracked",
+   "detail": "Crenolanib's model comparison (Smith 2014 saturation screen vs Zhang 2019 no FLT3 secondary mutations) sits as patient_trials on flt3-itd-ba-f3-resistance-screen efficacy 2012 same; both phase 3 trials have no posted or peer-reviewed results and no crenolanib model predicted those combinations."
+  },
+  {
+   "lead": "Gilteritinib Ba/F3 D835Y (TKD) activity vs TKD patients",
+   "outcome": "added",
+   "detail": "flt3-tkd-d835y-ba-f3-gilteritinib, efficacy: 2018 untested (unsettled; CR/CRh 0/18 in TKD-only, FDA calls it inconclusive)."
+  },
+  {
+   "lead": "akn-028",
+   "outcome": "none",
+   "detail": "Only preclinical reports (Eriksson 2012 cell lines/primary AML/mouse; 2014 kinase profiling); its phase I/II NCT01573247 terminated with no posted or published patient results, so no comparison exists."
+  }
  ]
 }

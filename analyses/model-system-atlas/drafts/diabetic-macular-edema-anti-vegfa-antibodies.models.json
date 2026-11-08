@@ -247,5 +247,32 @@
   "Abicipar rabbit chronic retinal-neovascularisation leak model (Rodrigues 2018): already tracked as rabbit-chronic-rnv-leak; the Luu 2020 PK/PD model is a different system with a different prediction (human vitreal free VEGF), so it was given its own track rather than a post-hoc refit entry on the RNV track.",
   "Rabbit ocular PK of conbercept after scatter laser (PMID 40260388, 2025) and monkey laser-CNV models of aflibercept/conbercept: no DME patient comparison (CNV models are nAMD); the STZ-rat conbercept work (Huang 2012) is already on the diabetic-rat-brb-evans-blue track.",
   "Patient-derived organoids or cells, PDX, human challenge and human genetic models: none found for anti-VEGFA agents in DME in the searches above."
+ ],
+ "gaps": [
+  {
+   "lead": "Applicant popPK (in silico) model for aflibercept 8 mg, ocular LLOQ 8.7 -> 15 weeks",
+   "outcome": "tracked",
+   "detail": "aflibercept-hd-poppk-ocular in added_models: dose untested 2023 (opening) and dose retro 2024 vs PHOTON (draft dose 5-6)"
+  },
+  {
+   "lead": "Abicipar mechanistic translational PK/PD model (Luu 2020, PMID 32098861)",
+   "outcome": "tracked",
+   "detail": "abicipar-translational-pkpd-model in added_models: engagement untested 2020 + retro 2020 (draft engagement 3-4), dose untested 2020 (draft dose 7)"
+  },
+  {
+   "lead": "DA VINCI phase 2 (Do 2011, PMID 21546089) redating",
+   "outcome": "verdict",
+   "detail": "not a model; checker verdicts engagement 2, dose 2 and efficacy 2 (corrected, proposed_year 2011) already cover the redating"
+  },
+  {
+   "lead": "Aqueous VEGF after aflibercept in treatment-naive DME (PMID 32589498)",
+   "outcome": "none",
+   "detail": "a patient datum, not a model system; aflibercept already has tracks (added is only for a member with no track); at most an optional paired engagement entry (comparison_stated false) on rabbit-ivt-pk-decay-model, which the checker marked optional"
+  },
+  {
+   "lead": "abicipar pegol",
+   "outcome": "tracked",
+   "detail": "named 'abicipar' throughout: rabbit-chronic-rnv-leak dose 3 (untested 2018, PALM no results), abicipar-translational-pkpd-model engagement 3-4 and dose 7, ivt-repeat-dose-toxicology safety 3 (same 2020, EMA Rayoqta)"
+  }
  ]
 }

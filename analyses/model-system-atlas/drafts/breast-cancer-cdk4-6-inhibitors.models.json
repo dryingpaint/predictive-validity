@@ -317,5 +317,22 @@
   "QSP / semi-mechanistic neutropenia models: those found are fitted to patient data (popPK/PD), not preclinical predictions; none chose a dose prospectively from preclinical data.",
   "Abemaciclib dog telemetry: the 208716 review grep found no QTc finding, so the dog-cv-telemetry track carries only palbociclib and ribociclib.",
   "Dalpiciclib, lerociclib: xenograft efficacy only, same system as the draft's tracks; no separate patient comparison found."
+ ],
+ "gaps": [
+  {
+   "lead": "Efficacy: PALLAS (palbociclib adjuvant, failed iDFS; Mayer 2021 Lancet Oncol, PMID 33460574)",
+   "outcome": "verdict",
+   "detail": "Patient result for the existing breast-cell-line-panel efficacy track (entries untested/same via PALOMA-1), not a new system; whether it is a 2020-21 contra or an untested condition is the checker's open rule question on adjuvant settings."
+  },
+  {
+   "lead": "Efficacy: PENELOPE-B (palbociclib post-neoadjuvant, negative iDFS; Loibl 2021 JCO, PMID 33793299)",
+   "outcome": "verdict",
+   "detail": "Same as PALLAS: a candidate status entry on breast-cell-line-panel efficacy, pending the checker's adjuvant rule question; no new model system."
+  },
+  {
+   "lead": "Safety: ribociclib dog telemetry QTc consistent with clinical QTc prolongation (FDA 209092 Multidiscipline review 2017)",
+   "outcome": "tracked",
+   "detail": "dog-cv-telemetry, safety cell, 2017 'same' entry (comparison_stated true, FDA 209092 quote); checker confirmed it (safety index 6)."
+  }
  ]
 }

@@ -97,5 +97,17 @@
   "Funapide (XEN402/XPF-001/XPF-002) preclinical models: none published; no Xenon animal, ex-vivo or PK model found to compare with Goldberg 2012 or NCT01486446",
   "Genotype-guided structural modelling plus functional profiling of patient mutant channels (Yang 2012 Nat Commun; Geha 2016 JAMA Neurol): validated only on carbamazepine, a non-member, so it does not score for this class",
   "Heterologous expression of patients' mutant Nav1.7 channels tested with a member: not found in the abstracts read (Cao 2016 body paywalled)"
+ ],
+ "gaps": [
+  {
+   "lead": "Dose track: PBPK model from a healthy-volunteer microdose study (Jones 2016, PMID 26895021)",
+   "outcome": "tracked",
+   "detail": "pf05089771-pbpk-microdose, dose cell: untested 2010 opening, then same 2016 (SAD PK matched PBPK prediction); checker dose entries 2-3 confirmed"
+  },
+  {
+   "lead": "Siebenga 2020 healthy-volunteer evoked-pain battery (PMC7070789)",
+   "outcome": "none",
+   "detail": "Human volunteer readout run in 2015 after the IEM result at 150 mg BID, not a model prediction compared with IEM patients; outside the model-system rule (see considered_not_added)"
+  }
  ]
 }

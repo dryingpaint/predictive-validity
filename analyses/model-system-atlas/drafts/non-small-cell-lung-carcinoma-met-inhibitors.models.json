@@ -12,7 +12,8 @@
   "Europe PMC: organoid AND member drugs AND lung AND patient (reviews excluded); (co-clinical OR coclinical OR avatar) AND MET AND lung AND member drugs; PDX AND METex14 AND lung AND response; (patient-derived cell OR patient-derived cell line) AND (METex14 OR MET-amplified) AND lung AND member drugs",
   "Europe PMC core records and full texts for the candidate systems: Bahcall 2016 (10.1158/2159-8290.CD-16-0686; NCBI efetch author manuscript PMC5140694), Fujino 2019 (10.1016/j.jtho.2019.06.023), Recondo 2020 (10.1158/1078-0432.CCR-19-3608), Fujino 2022 (10.1186/s13045-022-01299-z), Rotow 2019 (10.1158/1078-0432.CCR-19-1667), Wang 2023 (10.1016/j.xcrm.2022.100911; full text PMC9975107), Kim 2021 (10.1158/1078-0432.CCR-20-5026; full text PMC9401503)",
   "FDA text bundle, manifest rows for NDA 213591 (capmatinib) and NDA 214096 (tepotinib) multidisciplinary reviews: organoid, patient-derived xenograft, PDX, Ba/F3, co-clinical, ex vivo, quantitative systems pharmacology, physiologically-based, transgenic, knock-in, resistance mutation, D1228, Y1230",
-  "ClinicalTrials.gov API v2: NCT02143466 (TATTON, no results posted as of 2026-11-05), NCT02414139 (GEOMETRY mono-1, results first posted 2024-03-20), NCT02864992 (VISION, results first posted 2023-06-09)"
+  "ClinicalTrials.gov API v2: NCT02143466 (TATTON, no results posted as of 2026-11-05), NCT02414139 (GEOMETRY mono-1, results first posted 2024-03-20), NCT02864992 (VISION, results first posted 2023-06-09)",
+  "NCBI efetch PMC11832172 (Estevam 2025 full text; Europe PMC fullTextXML returned 500): inhibitor panel includes capmatinib, tepotinib, savolitinib, glumetinib (gumarontinib) and crizotinib"
  ],
  "added_models": [
   {
@@ -381,5 +382,52 @@
   "HGF-transgenic mice bearing EGFR-mutant HCC827/PC9 tumours in the FDA tepotinib review (no tepotinib effect despite MET activation): a negative-selection datum from the same xenograft-in-mouse system as the met-driven-xenograft track, not a new system.",
   "Capmatinib and tepotinib PBPK models in the FDA reviews: used for drug-interaction predictions only, never compared with an efficacy or dose-target result in patients; not a track.",
   "GEOMETRY-III (NCT04427072) and VISION cohort B (Le 2023, 10.1016/j.xcrm.2023.101280): patient-side items for the existing met-driven-xenograft efficacy entry's patient_trials, outside the scope of added_models."
+ ],
+ "gaps": [
+  {
+   "lead": "GEOMETRY-III (NCT04427072; ESMO 2023 1391P)",
+   "outcome": "verdict",
+   "detail": "Patient-side randomised capmatinib vs docetaxel result, no new system: add to patient_trials of met-driven-xenograft efficacy 3 (Wolf 2020), status same unchanged; needs a checker verdict on that entry."
+  },
+  {
+   "lead": "VISION cohort B (Le 2023, 10.1016/j.xcrm.2023.101280)",
+   "outcome": "verdict",
+   "detail": "Tepotinib in high-level MET-amplified NSCLC is the patient side of the amplification prediction: add to patient_trials of met-driven-xenograft efficacy 3 (or efficacy 2), no status change; needs a verdict."
+  },
+  {
+   "lead": "Ai 2018 gumarontinib/SCC244 NSCLC PDX (10.1158/1535-7163.MCT-17-0368)",
+   "outcome": "tracked",
+   "detail": "Same MET-driven xenograft/PDX system and prediction as met-driven-xenograft (efficacy 1-3); GLORY (NCT04270591) already in efficacy 3 patient_trials; Ai 2018 can be cited there as gumarontinib's own model source."
+  },
+  {
+   "lead": "Gavine 2015 savolitinib gastric PDX (10.1016/j.molonc.2014.08.015)",
+   "outcome": "verdict",
+   "detail": "Corrects met-driven-xenograft efficacy 3 judgement, which lists savolitinib as xenograft-predicted: its published model is gastric-cancer PDX, no NSCLC model found; needs a verdict on efficacy 3 wording."
+  },
+  {
+   "lead": "Lu 2017 MetDelta15 immunocompetent mouse (10.1158/0008-5472.CAN-16-1944)",
+   "outcome": "none",
+   "detail": "Only inhibitor dosed was crizotinib (non-member) and the paired patient was on crizotinib; outside the member-drug rule, note-only."
+  },
+  {
+   "lead": "Fernandes 2023 CRISPR METex14 cells in hHGF knock-in mice (10.1002/1878-0261.13397)",
+   "outcome": "none",
+   "detail": "In-vivo TKIs were crizotinib and OMO-1 (non-members); capmatinib only in vitro with no patient comparison stated; no member-drug retrodiction."
+  },
+  {
+   "lead": "Hu 2025 PDO + QSP (10.3389/fphar.2025.1685468)",
+   "outcome": "tracked",
+   "detail": "QSP arm is met-qsp-virtual-trial (dose 4, efficacy 9-10); the PDO arm dosed no member drug and reports no patient outcomes, so it adds nothing (member-drug rule)."
+  },
+  {
+   "lead": "Estevam 2025 Ba/F3 deep mutational scan (10.7554/elife.101882)",
+   "outcome": "tracked",
+   "detail": "Panel includes capmatinib, tepotinib, savolitinib, glumetinib (full text read); same Ba/F3 system as baf3-engineered-met-panel, whose retro (efficacy 5) and same (efficacy 6) already hold; a 2025 pooled retro changes no status."
+  },
+  {
+   "lead": "Wang 2023 Table S6 METex14 organoid cases (bozitinib P-86, crizotinib P-105)",
+   "outcome": "verdict",
+   "detail": "Vebreltinib/bozitinib is not a tile member (members: capmatinib, gumarontinib, sar-125844, savolitinib, tepotinib); nsclc-effusion-organoid-dst efficacy 8 note 'two METex14 cases also predicted accurately' should say both were non-member drugs; needs a verdict."
+  }
  ]
 }

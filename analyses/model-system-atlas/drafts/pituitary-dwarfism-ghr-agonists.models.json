@@ -299,5 +299,17 @@
   "Pegpesen population PK/PD (2026) and other PEG-hGH preclinical papers (doi 10.2147/dddt.s517485): not class member drugs",
   "Growth-response prediction models (KIGS/Ranke) and patient-derived cells, PDX, human challenge or genetic models: none applied to somapacitan, somatropin pegol or somavaratan",
   "Healthy-volunteer IGF-I (Rasmussen 2014) and hypophysectomized-rat growth for somapacitan: same systems as existing draft tracks"
+ ],
+ "gaps": [
+  {
+   "lead": "Somatropin pegol (Jintrolong) 52-week cynomolgus choroid-plexus vacuolation tox, Wang 2022 (doi 10.3389/fendo.2022.821588)",
+   "outcome": "tracked",
+   "detail": "model_id cyno-jintrolong-52wk-cp-vacuolation, dose entries 7-8 (untested 2017, retro 2022) and safety entries 5-6 (untested 2017, retro 2022)"
+  },
+  {
+   "lead": "Rasmussen 2014 (doi 10.1210/jc.2014-1702) first-in-human somapacitan dose-dependent IGF-1 in healthy men",
+   "outcome": "verdict",
+   "detail": "Corrects date of engagement entry 4 (somapacitan-animal-igf1-pd, Miller 2022) to 2017; checker verdict engagement 4 (corrected, rule 6) already covers it"
+  }
  ]
 }

@@ -7,7 +7,10 @@
   "PubMed: Gonzalvez F[au] AND EGFR exon 20; Zhou C[au] AND mobocertinib AND platinum-pretreated; mobocertinib AND EXCLAIM-2",
   "PubMed: Robichaux[au] AND EGFR (structure-based classification predicts drug response, Nature 2021); Europe PMC full text PMC8481125",
   "PubMed: organoid AND osimertinib AND patient; lung cancer organoid AND drug sensitivity AND clinical response AND EGFR; patient-derived organoids AND predict AND lung cancer tumor response AND real-world; Europe PMC full text PMC9975107",
-  "ClinicalTrials.gov v2 status for NCT02716116, NCT04129502, NCT02228369, NCT01802632 (results posting dates)"
+  "ClinicalTrials.gov v2 status for NCT02716116, NCT04129502, NCT02228369, NCT01802632 (results posting dates)",
+  "Gap pass: PubMed <drug synonyms> AND (xenograft OR mice OR preclinical OR organoid OR PDX OR in vivo) for abivertinib/avitinib/AC0010, ASK120067/limertinib, aumolertinib/almonertinib/HS-10296, befotertinib/D-0316, furmonertinib/firmonertinib/alflutinib/AST2818, mavelertinib/PF-06747775, nazartinib/EGF816, pruvonertinib/YK-029A, rezivertinib/BPI-7711, zipalertinib/CLN-081/TAS6417, zorifertinib/AZD3759",
+  "Gap pass: PubMed clinical searches for AZD3759/zorifertinib (EVEREST, Yang 2016 STM), YK-029A, PF-06747775 phase, nazartinib phase, befotertinib T790M, rezivertinib, limertinib; ClinicalTrials.gov NCT05364073 status and primary outcomes",
+  "Gap pass: FDA bundle grep for the 11 drugs: only lazertinib (219008) present"
  ],
  "added_models": [
   {
@@ -417,6 +420,88 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "egfr-pacc-cells-xenograft-firmonertinib",
+   "model": "EGFR PACC-mutant cell lines and xenografts (firmonertinib)",
+   "model_kind": "animal",
+   "model_first_use_year": 2022,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "epub_year": 2026,
+      "print_year": 2026,
+      "confidence": "medium",
+      "confidence_note": "Abstract-level reading; full text not open. 2022 is a proxy from the FURTHER start (NCT05364073, 2022-06-30): the PACC cell and xenograft data were the trial's rationale, but their first peer-reviewed publication is the 2026 paper.",
+      "year": 2022,
+      "status": "untested",
+      "population": "EGFR PACC-mutant NSCLC",
+      "note": "Firmonertinib's own PACC-mutant cell lines and xenografts predicted activity, unlike the structure-group prediction of third-generation resistance made for osimertinib.",
+      "short": "PACC cells and xenografts respond",
+      "src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+      "srcLabel": "Le 2026",
+      "quote": "Firmonertinib had high anti-proliferative efficacy in EGFR PACC-mutant cells and xenografts.",
+      "endpoint_role": null,
+      "judgement": "Opens at the first-in-human PACC study, since the model must have preceded it."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "cell/xenograft regression vs confirmed ORR",
+      "source_calls_it": null,
+      "epub_year": 2026,
+      "print_year": 2026,
+      "confidence": "low",
+      "confidence_note": "Abstract-level reading. Phase 1b dose-randomised, no comparator; Stage 2 primary outcome is ORR (registry). NCT05364073 has no posted results (checked 2026-11-07). Whether every preclinical experiment preceded the clinical readout is not stated in the abstract, so retrodiction is left false.",
+      "year": 2026,
+      "status": "same",
+      "population": "Treatment-naive metastatic EGFR PACC-mutant NSCLC",
+      "note": "In FURTHER, first-line firmonertinib gave confirmed ORRs of 43% (160 mg) and 68% (240 mg) in PACC-mutant NSCLC, matching the drug's own preclinical prediction.",
+      "short": "FURTHER: ORR 43-68% in PACC",
+      "src": "https://doi.org/10.1016/j.ccell.2026.09.011",
+      "srcLabel": "Le 2026 (FURTHER)",
+      "quote": "patients with metastatic EGFR PACC-mutant NSCLC randomized to receive first-line firmonertinib 160 mg (n = 25) or 240 mg (n = 22) had confirmed objective response rates (ORRs) of 43% and 68%",
+      "endpoint_role": "primary",
+      "reason": "Response as predicted",
+      "patient_trials": [
+       {
+        "nct": "NCT05364073",
+        "registry_date": null,
+        "doi": "https://doi.org/10.1016/j.ccell.2026.09.011",
+        "quote": "Intracranial ORR among patients with brain metastases at baseline was 47% (8/17)."
+       }
+      ],
+      "judgement": "Paired, not stated: the paper reports both but does not frame the preclinical data as a prediction. PACC first-line lies outside the draft's T790M/exon 20 population; kept for the same reason as egfr-bafs-structure-groups (population is an open rule question)."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -429,5 +514,102 @@
   "Osimertinib dose-selection PK/PD or QSP model: no model-stated human efficacious exposure found (the checker also found none); 80 mg was chosen from AURA clinical data.",
   "PDX co-clinical trials for third-generation TKIs: no study pairing PDX response with the donor patient's response on a member drug found within budget.",
   "Not verified: Takeda October 2023 press release on EXCLAIM-2 (would move the mobocertinib contra to 2023); WebSearch not used to stay within budget."
+ ],
+ "gaps": [
+  {
+   "lead": "Naquotinib SOLAR (missing #1)",
+   "outcome": "verdict",
+   "detail": "Same xenograft system as egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same); SOLAR (first-line) is outside the draft's T790M/exon 20 population, so a naquotinib contra entry there waits on the checker's population rule question."
+  },
+  {
+   "lead": "Mobocertinib EXCLAIM-2 (missing #2)",
+   "outcome": "tracked",
+   "detail": "egfr-ex20ins-bafs-pdx efficacy entry 3 (contra 2025, Janne 2025, NCT04129502) in added_models."
+  },
+  {
+   "lead": "Osimertinib FLAURA (missing #3)",
+   "outcome": "verdict",
+   "detail": "Would be a same entry on egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same) if the population ruling widens to first-line; no new system."
+  },
+  {
+   "lead": "Rociletinib ODAC/CRL 2016 (missing #4)",
+   "outcome": "verdict",
+   "detail": "Belongs on egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same) (Walter 2013 xenograft is the same system) as a note or entry; scoring awaits the rociletinib rule question."
+  },
+  {
+   "lead": "Olmutinib TEN/SJS (missing #5)",
+   "outcome": "verdict",
+   "detail": "Same system as herg-rat-dog-tox safety (entry 2 contra 2015); an olmutinib note changes no status."
+  },
+  {
+   "lead": "AURA3 CNS analysis (missing #6)",
+   "outcome": "none",
+   "detail": "Secondary/subgroup endpoint: only primary endpoints are scored; at most a note on egfrm-brain-met-mouse-nhp-pet efficacy entry 2."
+  },
+  {
+   "lead": "BLOOM ASCO 2016 abstract (missing #7)",
+   "outcome": "none",
+   "detail": "Meeting abstract is not an admissible source tier; dating note only, egfrm-brain-met-mouse-nhp-pet dose/efficacy 2016 openings unchanged."
+  },
+  {
+   "lead": "Organoid Hu 2021 (missing #8)",
+   "outcome": "none",
+   "detail": "Gefitinib/afatinib are not tile members (member rule); lung-cancer-organoid-dst stays dated 2023."
+  },
+  {
+   "lead": "abivertinib",
+   "outcome": "none",
+   "detail": "PubMed abivertinib/avitinib/AC0010 + preclinical terms returned only BTK, PK and DDI papers; no published own-model-to-patient comparison."
+  },
+  {
+   "lead": "ask-120067",
+   "outcome": "tracked",
+   "detail": "Limertinib's xenografts (Zhang 2020, PMID 32404161) are the same T790M/activating xenograft system as egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same); its first-line phase 3 (Lancet Respir Med 2025) agrees and changes no status."
+  },
+  {
+   "lead": "aumolertinib",
+   "outcome": "none",
+   "detail": "PubMed aumolertinib/almonertinib/HS-10296 + preclinical terms: combination/resistance papers only; no stated or paired own-model comparison with APOLLO/AENEAS found."
+  },
+  {
+   "lead": "befotertinib",
+   "outcome": "none",
+   "detail": "No preclinical paper on PubMed for befotertinib/D-0316; patient papers only (Lu 2022 JTO, PMID 35724798)."
+  },
+  {
+   "lead": "firmonertinib",
+   "outcome": "added",
+   "detail": "egfr-pacc-cells-xenograft-firmonertinib efficacy: untested 2022 (FURTHER start), same 2026 (Le 2026 Cancer Cell, ORR 43%/68%, NCT05364073)."
+  },
+  {
+   "lead": "mavelertinib",
+   "outcome": "none",
+   "detail": "Only the discovery paper (J Med Chem 2017) and a terminated phase 1b/2 (PMID 35657653); same xenograft system as the main strip, no stated comparison."
+  },
+  {
+   "lead": "nazartinib",
+   "outcome": "tracked",
+   "detail": "EGF816 xenografts (Jia 2016, PMID 26825170) vs phase 1 (Lancet Respir Med 2020) are the same system as egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same); agreement, no status change."
+  },
+  {
+   "lead": "pruvonertinib",
+   "outcome": "tracked",
+   "detail": "YK-029A T790M/ex20ins xenografts (Eur J Med Chem 2023) vs phase 1 (JTO 2024; Lung Cancer 2025) fall on egfr-ex20ins-bafs-pdx efficacy (2021 same) and the main strip; agreement, no status change."
+  },
+  {
+   "lead": "rezivertinib",
+   "outcome": "none",
+   "detail": "No preclinical paper on PubMed for rezivertinib/BPI-7711; patient papers only (e.g. Lancet Respir Med 2025 vs gefitinib)."
+  },
+  {
+   "lead": "zipalertinib",
+   "outcome": "tracked",
+   "detail": "TAS6417/CLN-081 Ba/F3 and PDX (Hasako 2018, PMID 29748209) are the same exon 20 system as egfr-ex20ins-bafs-pdx efficacy (2021 same); agreement, no status change."
+  },
+  {
+   "lead": "zorifertinib",
+   "outcome": "tracked",
+   "detail": "AZD3759 mouse BM/LM models (Yang 2016 STM, PMID 27928026) are the same system as egfrm-brain-met-mouse-nhp-pet efficacy (2019 same); EVEREST (Med 2025, NCT03653546, PFS HR 0.719) agrees and changes no status."
+  }
  ]
 }

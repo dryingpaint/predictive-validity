@@ -191,5 +191,27 @@
   "In-silico PBPK and tumour-response models for 177Lu-PSMA (Kletting 2016 ligand-amount simulation PMID 27611841; Kletting 2019 PMID 29748236): fitted to patient kinetics rather than a preclinical prediction compared with an outcome, and the FDA review states the literature dosimetry models were not used for labelling; no prospective model-chosen dose compared with patients was found (titles and FDA text only, not read in full).",
   "FDA review 5.4 minipig cardiovascular and respiratory safety pharmacology of the cold ligand: the same rat/minipig system, folded into the toxicology track rather than split; the bundle carries the design but no quotable result.",
   "Roy 2020 cross-species salivary PSMA comparison and the human salivary/lacrimal dosimetry (FDA review, Zechmann 2014): already on the xenograft track; not a new system."
+ ],
+ "gaps": [
+  {
+   "lead": "Cold-ligand rat and minipig toxicology (FDA review NDA 215833)",
+   "outcome": "added",
+   "detail": "psma-617-cold-ligand-rat-minipig-tox: safety 2021 untested opener, 2022 same (tier 2, animal)"
+  },
+  {
+   "lead": "Rupp 2019 human submandibular-gland tissue autoradiography (PMID 30737300)",
+   "outcome": "added",
+   "detail": "human-smg-tissue-autoradiography: safety 2019 untested opener, 2019 contra retrodiction (ex_vivo)"
+  },
+  {
+   "lead": "Fendler 2017 syngeneic RM1-hPSMA model (PMID 28546332)",
+   "outcome": "tracked",
+   "detail": "psma-pos-neg-xenograft efficacy entry 2 (model_src Fendler 2017); same PSMA-dependent-response prediction, so identity rule keeps it pooled; its hematologic-tolerability claim has no patient comparison (mouse MBq does not scale, #50/#99)"
+  },
+  {
+   "lead": "LuCaP PDX / patient-derived organoid comparisons with radioligand patients",
+   "outcome": "none",
+   "detail": "PubMed LuCaP AND PSMA-617/MIP-1095/PSMA ADC -> only PSMA ADC DiPippo records already on psma-adc-crpc-xenograft; organoid AND 177Lu-PSMA AND patient -> 0 records"
+  }
  ]
 }

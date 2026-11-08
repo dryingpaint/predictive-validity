@@ -100,5 +100,22 @@
   "Patient-derived RA synovial tissue / ex vivo patient cells with member BTK inhibitors: no study linking ex vivo response to trial or patient response found.",
   "QSP model of BTK-inhibitor occupancy in B-cell malignancies (2025, CPT:PSP doi 10.1002/psp4.13307): built after occupancy data were known, in oncology, and engagement occupancy is already tracked.",
   "Ex vivo CLL/MCL patient platelet study showing class-wide aggregation impairment regardless of selectivity (2025, J Clin Exp Hematop doi 10.3960/jslrt.25028): model-side data only, no new patient-outcome comparison; not read beyond title."
+ ],
+ "gaps": [
+  {
+   "lead": "Safety, imported from MCL: acalabrutinib 91-day dog platelet aggregation 'Unremarkable' (FDA NDA 210259) vs 31.5% MCL hemorrhage",
+   "outcome": "none",
+   "detail": "Silent-model rule needs the species able to show BTK-dependent GPVI platelet dysfunction; dog capability unresolved (checker rule question) and agonist unstated; acalabrutinib platelet safety is tracked by human-platelet-aggregometry-acala-vs-ibru (safety 2-3)."
+  },
+  {
+   "lead": "Efficacy patient_trials: NCT02387762 (acalabrutinib + MTX) registered primary DAS28-CRP week 4, results 2019-03-26",
+   "outcome": "verdict",
+   "detail": "Corrects the patient_trials label on efficacy entry 2 (cia-rodent, 2019 contra) from 'exploratory' to registered primary miss; checker note on efficacy 2 covers it; status and year unchanged."
+  },
+  {
+   "lead": "Efficacy/dose: spebrutinib NCT01975610 primary ACR20 week 4 missed (P=0.25, epub 2019-11-13) at 83% median BTK occupancy",
+   "outcome": "verdict",
+   "detail": "Same system as cia-occupancy-pkpd; bears on dose entry 3 (2022, adjudicated same) and could date a dose contra to 2019; checker note on dose 3 covers it, needs adjudication under rule v4, no new system."
+  }
  ]
 }

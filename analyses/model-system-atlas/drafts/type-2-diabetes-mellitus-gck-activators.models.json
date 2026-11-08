@@ -12,7 +12,8 @@
   "Europe PMC: glucokinase activator AND (predict* OR translat*) AND (clinical OR patients) AND (islets OR in vitro OR ex vivo OR hepatocytes)",
   "Europe PMC: (HMS5552 OR sinogliatin OR RO5305552 OR dorzagliatin) AND patients, 2012-2019 (to date the sinogliatin first-in-patient study)",
   "ClinicalTrials.gov API: HMS5552 (first-in-patient NCT02077452, Mar-Oct 2014; Phase 2 NCT02561338)",
-  "Crossref: online/print dates for 10.1007/s40262-016-0484-2, 10.2337/db25-0066, 10.1186/s12933-024-02321-z, 10.1038/s41591-022-01802-6, 10.3389/fendo.2023.1175198"
+  "Crossref: online/print dates for 10.1007/s40262-016-0484-2, 10.2337/db25-0066, 10.1186/s12933-024-02321-z, 10.1038/s41591-022-01802-6, 10.3389/fendo.2023.1175198",
+  "Europe PMC gap pass: (cadisegliatin OR TTP399 OR \"TTP-399\"), 56 hits; T2D model-to-patient work is Vella 2019 (PMID 30651321) only; SimpliciT1 and DKA studies are type 1 diabetes"
  ],
  "added_models": [
   {
@@ -381,5 +382,42 @@
   "Dorzagliatin population PK (Clin Pharmacokinet 2023) and dorzagliatin-empagliflozin DDI PK/PD (2026): fitted to patient data, not predictions compared with patient results.",
   "Zebrafish GK regulation (Commun Biol 2024): no patient comparison found.",
   "FDA/EMA reviews: none exist for any member (manifest rows all 'no NDA/BLA'); dorzagliatin's NMPA review was not searched."
+ ],
+ "gaps": [
+  {
+   "lead": "safety 2011: MK-0941 raised triglycerides and hypoglycaemia in patients while Eiki 2011 rodent model was silent on lipids",
+   "outcome": "verdict",
+   "detail": "Status/date of gka-rodent-t2d safety 2 (2013 retro, Meininger 2011): whether rodent silence in 2011 scores contra is a checker rule question on that entry, not a new system"
+  },
+  {
+   "lead": "dose 2011: MK-0941 dose reached and Week-14 primary met (Meininger 2011)",
+   "outcome": "verdict",
+   "detail": "Adds a 2011 'reached, drug worked' dose same row to existing gka-rodent-t2d dose cell (after dose 1, 2003 untested); a status correction on that model, no new system"
+  },
+  {
+   "lead": "efficacy patient_trials: PF-04991532 met 12-week HbA1c primary (NCT01336738, NCT01338870)",
+   "outcome": "verdict",
+   "detail": "Extra patient_trials for gka-rodent-t2d efficacy (entries 2-3); checker says no status change; PF-04991532 rodent work is the same system"
+  },
+  {
+   "lead": "efficacy patient_trials: PF-04937319 (nerigliatin) met 12-week HbA1c primary at 100 mg (Amin 2015)",
+   "outcome": "verdict",
+   "detail": "Extra patient_trials for gka-rodent-t2d efficacy (entries 2-3); no status change"
+  },
+  {
+   "lead": "safety: LY2599506 Phase 2s terminated for nonclinical safety findings",
+   "outcome": "none",
+   "detail": "Animal harm never compared with patient results (trials stopped before patients could show it); no model-to-patient comparison, already in considered_not_added"
+  },
+  {
+   "lead": "safety: Baker 2014 rodent model showed no triglyceride rise vs patient hyperlipidaemia",
+   "outcome": "verdict",
+   "detail": "Same rodent system as gka-rodent-t2d; a conflicting source for safety 2 (2013 retro) and safety 3 (2024 same), needs a checker verdict on those entries' status"
+  },
+  {
+   "lead": "cadisegliatin",
+   "outcome": "tracked",
+   "detail": "Cadisegliatin is TTP399: gck-human-genetics, efficacy 4 (2019 same, Vella 2019 AGATA 6-month HbA1c); its other trials are type 1 diabetes, outside this tile's disease"
+  }
  ]
 }

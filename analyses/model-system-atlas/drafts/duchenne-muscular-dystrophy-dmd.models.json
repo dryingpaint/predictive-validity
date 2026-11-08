@@ -10,7 +10,12 @@
   "PubMed: hDMD AND PRO045; hDMD mice AND exon 44 AND antisense; hDMD AND exon 53",
   "PubMed: Kinali AND AVI-4658 (patient-fibroblast selection, IM proof of concept)",
   "Europe PMC full text PMC2755039 (Kinali 2009): not returned",
-  "ClinicalTrials.gov API: NCT00159250 results posting date"
+  "ClinicalTrials.gov API: NCT00159250 results posting date",
+  "Gap pass: Europe PMC/PMC full text PMC6202794 (Watanabe 2018) for monkey/cynomolgus: none",
+  "Gap pass: 212154 bundle (ClinPharmR, MedR, SumR, label) for monkey exon 53 skipping: none; no PharmR in bundle",
+  "Gap pass: PubMed viltolarsen AND monkey -> Imai 2023 (PMID 37468285, allometric PK), Imai 2024 (PMID 38991781, tissue Kp/skipping; full text paywalled, abstract only)",
+  "Gap pass: PubMed SRP-5051 OR vesleteplirsen (3 reviews); fc.py search SRP-5051 nonclinical kidney; NCT03675126 protocol PDF (nonclinical renal findings redacted as CCI)",
+  "Gap pass: PubMed PRO044/PRO045/BMN044/BMN045 [tiab]: 0 hits; ClinicalTrials.gov API NCT01037309 (results posted 2015-04, dystrophin primary) and NCT01826474 (terminated, no results)"
  ],
  "added_models": [
   {
@@ -245,6 +250,35 @@
   "hDMD mouse for PRO044/PRO045/golodirsen: no PubMed hit linking hDMD to these members; PRO044/PRO045 patient data not verified",
   "CXMD dog multi-exon PMO cocktail (FDA 206488 PharmR): species-specific sequence, not a class member drug, and no patient comparison stated",
   "In-silico/PBPK dose models: no hits in the three ClinPharm reviews",
-  "Human genetic models (in-frame deletion Becker patients as dystrophin-level benchmark): not searched within budget"
+  "Human genetic models (in-frame deletion Becker patients as dystrophin-level benchmark): not searched within budget",
+  "Cynomolgus allometric PK scaling for viltolarsen (Imai 2023, DMD 51:1428): retrospective PK fit to observed human plasma, no dose or patient-outcome prediction; not a dose-choosing model run before patient data",
+  "Cynomolgus/DMD-model mouse tissue Kp vs exon 53 skipping for viltolarsen (Imai 2024, DMD 52:1029): run after patient skipping was known (Komaki 2018), abstract states no monkey-to-patient comparison; full text paywalled"
+ ],
+ "gaps": [
+  {
+   "lead": "rodent-nhp-glp-tox dose entry (eteplirsen NOAEL AUC margins 20x monkey / 6x juvenile rat; golodirsen small margin)",
+   "outcome": "verdict",
+   "detail": "Existing system rodent-nhp-glp-tox (tracked in safety); a dose-cell entry with margin_stated for eteplirsen 30 mg/kg is an entry on an existing track, for the adjudicator; margins come from the 2016/2019 PharmR, after first patient dosing, so check margin timing"
+  },
+  {
+   "lead": "vesleteplirsen (PPMO) nonclinical renal/electrolyte prediction vs MOMENTUM hypomagnesemia and kidney decline",
+   "outcome": "verdict",
+   "detail": "Belongs to safety track rodent-nhp-glp-tox (draft note already names vesleteplirsen, unscored); the only public nonclinical source found, protocol NCT03675126 v5.0 (2020), redacts the mouse/NHP findings (CCI) though it sets renal stopping rules; keep as unsettled note, it qualifies the golodirsen/viltolarsen renal contra entries"
+  },
+  {
+   "lead": "hDMD transgenic mouse (Arechavala-Gomeza 2007) as its own engagement track",
+   "outcome": "tracked",
+   "detail": "hdmd-transgenic-mouse, engagement (2007 untested; 2009 same vs Kinali 2009)"
+  },
+  {
+   "lead": "PRO044 and PRO045 (2'OMePS) engagement pairings",
+   "outcome": "verdict",
+   "detail": "Their preclinical systems (patient myotubes, hDMD mouse) are already tracked as dmd-patient-myoblasts and hdmd-transgenic-mouse; PRO044 patient dystrophin results posted on NCT01037309 (2015), PRO045 NCT01826474 terminated without results, no peer-reviewed model-to-patient comparison found (PubMed tiab 0 hits); any entry is on an existing track"
+  },
+  {
+   "lead": "Cynomolgus monkey exon 53 skipping for viltolarsen (Watanabe 2018)",
+   "outcome": "none",
+   "detail": "Watanabe 2018 full text (PMC6202794) has no monkey data (RD cells and patient cells only, already dmd-patient-myoblasts); Imai 2024 monkey skipping data postdate patient results and state no monkey-to-patient comparison"
+  }
  ]
 }

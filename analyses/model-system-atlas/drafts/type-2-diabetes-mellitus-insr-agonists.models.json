@@ -465,5 +465,57 @@
   "Model-based PK/PD simulations used to choose the efsitora loading dose (1.5-3x weekly dose; Heise 2023, Frias 2023) and icodec's loading-dose and titration algorithms: built from human phase 1 PK, not preclinical models (same reasoning as the FLT3 tile's exclusion of population PK models); not added.",
   "Patient-derived cells, organoids or ex-vivo sensitivity for degludec, icodec, efsitora or peglispro: Europe PMC search returned 76 hits, none comparing a patient's ex-vivo result with that patient's response to a member drug; no patient-level system exists for this class.",
   "Human genetic models (INSR loss-of-function syndromes) and human challenge models: no comparison with a member drug's patient result found; not added."
+ ],
+ "gaps": [
+  {
+   "lead": "Degludec three-times-weekly regimen (Zinman 2013, FDA 2015 SumR lines 705-712)",
+   "outcome": "verdict",
+   "detail": "Needs a dose contra dated 2013 on the existing novo-pig-clamp-rat-dog-pk track (regimen read off the pig clamp/rat-dog protraction); not a new system."
+  },
+  {
+   "lead": "Efsitora's own model system (Lilly STZ-diabetic rat, Moyers 2022)",
+   "outcome": "tracked",
+   "detail": "lilly-stz-rat-glucodynamics: engagement 2023 same (Heise 2023), dose 2023 same, efficacy 2022 same (Bue-Valleskey 2023)."
+  },
+  {
+   "lead": "Icodec selection model (dog IV half-life screen + rat SC potency, Kjeldsen 2021; FDA 761326 PharmR)",
+   "outcome": "tracked",
+   "detail": "novo-pig-clamp-rat-dog-pk: dose 2026 same quotes the rat/dog/pig half-lives and engagement 2021 names the icodec diabetic-rat data as model_src; at most a model_src refinement."
+  },
+  {
+   "lead": "Icodec hypoglycaemia on the Novo track (FDA 761326 SumR 2026; T1D CRL 2024-07-10)",
+   "outcome": "verdict",
+   "detail": "Needs a safety entry on novo-pig-clamp-rat-dog-pk (pig clamp 'even distribution' vs day 2-4 level 2/3 hypoglycaemia; CRL importable from MONDO:0005147)."
+  },
+  {
+   "lead": "Degludec stated lower-hypoglycaemia prediction (FDA 2015 SumR lines 707-709)",
+   "outcome": "verdict",
+   "detail": "Needs a safety same dated 2012 (BEGIN Once Long) on novo-pig-clamp-rat-dog-pk; existing track, not a new system."
+  },
+  {
+   "lead": "Efsitora T1D safety (QWINT-5) and efsitora malignancy excess",
+   "outcome": "tracked",
+   "detail": "QWINT-5 is lilly-stz-rat-glucodynamics safety 2024 contra (imported); the malignancy imbalance (761408 lines 714-715, 812-821) needs a verdict entry on insulin-mitogenicity-cells."
+  },
+  {
+   "lead": "EX1000 identification (NCT00698802, NCT00660374)",
+   "outcome": "none",
+   "detail": "Not a model system and no preclinical model or patient result posted; only the draft's context note should name it, scores nothing."
+  },
+  {
+   "lead": "Efsitora hypoglycaemia on the rat-dog-chronic-tox track (761408 IntegratedR lines 3518-3523; Bergenstal 2024)",
+   "outcome": "verdict",
+   "detail": "Needs a safety same dated 2024 (imported MONDO:0005147) on rat-dog-chronic-tox; checker says the harm should be counted there rather than as the lilly-stz-rat-glucodynamics safety 2024 contra."
+  },
+  {
+   "lead": "insulin efsitora alfa",
+   "outcome": "tracked",
+   "detail": "Mentioned as efsitora: lilly-stz-rat-glucodynamics engagement 2023, dose 2023, efficacy 2022 same, safety 2024 contra."
+  },
+  {
+   "lead": "insulin peglispro",
+   "outcome": "tracked",
+   "detail": "Mentioned as peglispro/LY2605541: lilly-dog-hepatic-clamp engagement 2016 same; lilly-stz-rat-glucodynamics efficacy 2016 same (IMAGINE 2); rat-dog-chronic-tox safety 2017 contra."
+  }
  ]
 }

@@ -84,5 +84,17 @@
   "George 2004 (Blood, epub 2004-10-28: K562, MV4-11, primary CML-BC and AML cells) and Giles 2006 (Clin Cancer Res, print 2006-08-01: H3/H2B acetylation in CD34+ blasts, 13 AML, 1 MDS, 1 ALL): first use and earliest patient comparison of the system already tracked as panobinostat-leukemia-cells; the re-dating to 2004/2006 is the checker's correction on the existing track, not a new system.",
   "Panobinostat non-human-primate CSF/plasma PK (DIPG) and mouse blood-brain-barrier PK models: other indications, no MDS comparison.",
   "Regulator documents: only the Farydak myeloma label (205353) is in the bundle; no MDS regulator document exists for any member, and no in-vitro or model data were relied on for MDS. No human challenge or human genetic model applies to this class."
+ ],
+ "gaps": [
+  {
+   "lead": "Engagement, pracinostat-mouse-xenograft: Mol Cancer Ther 2011 tissue-acH3 PD paper (10.1158/1535-7163.mct-11-0044)",
+   "outcome": "verdict",
+   "detail": "Same system as pracinostat-mouse-xenograft (HCT-116/HL-60 SCID mice); corrects engagement cell: add a 2011 same (comparison_stated true, solid-tumour phase 1 PBMC acH3, r=0.97) between entry 1 (untested 2010) and entry 2 (Abaza 2017, adjudicated same); checker missing item is the verdict, adjudicator edit."
+  },
+  {
+   "lead": "Engagement, panobinostat-leukemia-cells: Int J Oncol 2014 HL-60 plus Tan 2014 trial PBMCs (10.3892/ijo.2014.2555)",
+   "outcome": "verdict",
+   "detail": "Same system as panobinostat-leukemia-cells; corrects engagement entry 4 (Tan 2014, same) to comparison_stated true with this paper as src/model_src; the checker's engagement-4 verdict re-dates the track's first comparison to Giles 2006; no new system."
+  }
  ]
 }

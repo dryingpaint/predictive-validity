@@ -13,7 +13,11 @@
   "ClinicalTrials.gov API v2 records NCT01213355 and NCT02005991 (design, outcomes, results status)",
   "Europe PMC full text PMC5887246 (Fullerton 2018) grepped for scopolamine, preclinical, monkey, occupancy, model",
   "Europe PMC OA status of the four Lundbeck papers; PMC5467007 (Ferris 2017) full text grepped for exposure/occupancy/LADDER/phase 3",
-  "Europe PMC and NCBI efetch for Atri 2018 (PMC5833662): author manuscript, no body text retrievable (not retried)"
+  "Europe PMC and NCBI efetch for Atri 2018 (PMC5833662): author manuscript, no body text retrievable (not retried)",
+  "GAP pass: Crossref DOIs 10.1016/j.jalz.2011.05.2278 and 10.1016/j.jalz.2011.05.2237 (titles: Comery 2011 NHP/human PET occupancy; Bell 2011 Phase 1 PK)",
+  "GAP pass: Wiley abstract of Comery 2011 (fc.py scrape) read in full",
+  "GAP pass: PMC9953539 (Biomolecules 2023) full text grepped for SAM-760; Table 2 cites refs 50-51 (Bell 2011, Comery 2011) for the rodent object-recognition data",
+  "GAP pass: PMC5887246 (Fullerton 2018) full text grepped for animal/rodent/preclinical/futility"
  ],
  "added_models": [
   {
@@ -232,6 +236,91 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rodent-sam760-cognition-or",
+   "model": "Rodent cognition assays for SAM-760 (cholinergic/glutamatergic deficit object recognition)",
+   "model_kind": "animal",
+   "model_first_use_year": 2011,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected mild-to-moderate AD dementia, add-on to a cholinesterase inhibitor",
+      "patient_trials": null,
+      "model": "Rodent cognition assays for SAM-760 (cholinergic/glutamatergic deficit object recognition)",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "epub_year": 2011,
+      "print_year": 2011,
+      "registry_date": null,
+      "confidence": "low",
+      "confidence_note": "AAIC 2011 supplement abstract (Comery 2011, Alzheimers Dement 7(4S):S794, doi resolves, abstract read on Wiley); the rodent data themselves were never published, only this sponsor summary sentence. The assay list (MK-801, scopolamine, combined deficit object recognition) comes from a review (Biomolecules 2023, PMC9953539 Table 2), which is a pointer, not a source.",
+      "year": 2011,
+      "status": "untested",
+      "note": "Pfizer reported SAM-760 as pro-cognitive in multiple rodent assays (object recognition reversal of MK-801/scopolamine deficits per review) before Phase 2; the data were never published.",
+      "short": "SAM-760 rodent cognition, summary only",
+      "src": "https://doi.org/10.1016/j.jalz.2011.05.2278",
+      "srcLabel": "Comery 2011",
+      "quote": "SAM-760 has demonstrated pro-cognitive effects in multiple rodent assays.",
+      "endpoint_role": null,
+      "outcome_tested": null,
+      "judgement": "Opener at first public statement of SAM-760's own efficacy model (answers rule question 5: Pfizer did state one, in a conference abstract). A member drug's own model, different drug and deficit paradigm from idalopirdine's subchronic-PCP NOR and masupirdine's battery, so its own track per the drafter's member-model convention. Admissibility rests on the supplement-abstract rule question; the adjudication already accepted Schmidt 2014 (Alzheimers Dement supplement) at low confidence."
+     },
+     {
+      "model_src": "https://doi.org/10.1016/j.jalz.2011.05.2278",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": "null",
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected mild-to-moderate AD dementia, add-on to a cholinesterase inhibitor",
+      "patient_trials": [
+       {
+        "nct": "NCT01712074",
+        "registry_date": "2017-03-20",
+        "doi": "10.1186/s13195-018-0368-9",
+        "quote": "The mean week 12 treatment difference was 0.70 points ( P = 0.43) for ADAS-cog13 and 2.19 points ( P = 0.20) for NPI score, both of which were numerically in favor of placebo."
+       }
+      ],
+      "model": "Rodent cognition assays for SAM-760 (cholinergic/glutamatergic deficit object recognition)",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": "2017-03-20",
+      "confidence": "medium",
+      "confidence_note": "Patient side high (Fullerton 2018 full text, PMC5887246; NCT01712074 results posted 2017-03-20 set the year); model side is a one-sentence conference-abstract summary, so medium overall.",
+      "year": 2017,
+      "status": "contra",
+      "note": "SAM-760 30 mg on donepezil was stopped for futility at interim (ADAS-cog13 difference 0.70 points favouring placebo), against the rodent pro-cognitive prediction.",
+      "short": "Rodent pro-cognition fails Phase 2 futility",
+      "src": "https://doi.org/10.1186/s13195-018-0368-9",
+      "srcLabel": "Fullerton 2018",
+      "quote": "SAM-760 was safe and well tolerated, but there was no benefit of SAM-760 on measures of cognition, neuropsychiatric symptoms, or daily function.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "reason": "Rodent pro-cognition; Phase 2 futility",
+      "judgement": "Prospective: the rodent claim (2011) predates the trial (registered 2012). Fullerton 2018 does not put the rodent data beside the result, so the pairing is mine (model_src Comery 2011). Occupancy was saturated at 30 mg (dose 4), so not a dose miss."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -245,5 +334,32 @@
   "Human post-mortem 5-HT6 expression (~40% lower in AD cortex; Lorke 2006, cited by Atri 2018 as a caveat): a tissue observation, no prediction compared with patient response.",
   "Ferris 2017 'clinically relevant exposure' statement for the potentiation doses: no new exposure target; the idalopirdine dose question is carried by the rat occupancy track for the same drug and exposures, so no dose cell was opened on the potentiation track.",
   "Rat P-gp brain-penetration and NHP PET occupancy systems for SAM-760, masupirdine rat cognition battery, IND toxicology: already tracked in the draft."
+ ],
+ "gaps": [
+  {
+   "lead": "Lundbeck rat AChEI-potentiation models (Herrik 2016, Mork/Amat-Foraster 2017, Ferris 2017)",
+   "outcome": "tracked",
+   "detail": "added_models rat-donepezil-potentiation-pd: engagement 1 (2016 untested), efficacy 1-3 (2016 untested, 2016 retro vs LADDER, 2017 contra vs Atri 2018)"
+  },
+  {
+   "lead": "Healthy-volunteer PET 5-HT6 occupancy of idalopirdine (Atri 2018 Discussion)",
+   "outcome": "verdict",
+   "detail": "Human side of rat-subchronic-pcp-nor; covered by adjudicated verdicts engagement 5 -> same 2018 and dose 5 -> contra 2018 (low confidence, citing Schmidt 2014)"
+  },
+  {
+   "lead": "Comery ('Cornery') 2011 AAIC abstract, SAM-760 NHP and human PET occupancy",
+   "outcome": "verdict",
+   "detail": "Abstract read (Wiley): NHP complete blockade >10 nM free, human RO >70% at 60 mg; needs a verdict re-dating engagement 6 (nhp-pet-5ht6-occupancy same) from 2023 to 2011 if supplement abstracts are admissible (rule question 2)"
+  },
+  {
+   "lead": "Idalopirdine systematic review/meta-analysis, Int Psychogeriatr 2019 (PMID 30560763)",
+   "outcome": "verdict",
+   "detail": "Patient-side tier 4, no status change; at most a patient_trials addition to efficacy entry 3 (rat-subchronic-pcp-nor contra 2017)"
+  },
+  {
+   "lead": "SAM-760 rat scopolamine/MK-801 object-recognition model (Comery 2011 / Bell 2011 abstracts)",
+   "outcome": "added",
+   "detail": "rodent-sam760-cognition-or: efficacy 2011 untested (Comery 2011 'pro-cognitive effects in multiple rodent assays'), 2017 contra (Fullerton 2018, NCT01712074 futility); Bell 2011 is Phase 1 PK only and carries no model data"
+  }
  ]
 }

@@ -356,6 +356,46 @@
    "rule": null,
    "note": "PMID 34652966; quote verbatim in abstract. NCT03588299 hasResults false (completed 2026-09-15); untested is right.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cao 2022 (PMID 35778500, PMC9935387, epub 2022-07-01); quote verbatim in Results (mouse passive transfer, AAV6-hF9 proxy, product_in_model false). Opening untested entry on the patient-level track; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Discussion; Table 3 shows 11 SB-525-1603 subjects enrolled at NR 0.38-1.11 with dose-dependent FVIII. Mouse data set the 0.34 cutoff before enrollment, so prospective same, patient level. Comparison covers only above-cutoff patients.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sternberg 2026 Blood (PMID 42371804, PMC13389822, 2026-10-01); quote verbatim in abstract. Opening untested entry for a post-clinic track; full text not reachable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. Mouse model built after AAV trials had shown the OSA>CSA FVIII-SQ gap; mice and SPK-8011 participants agree, so retro (retrodiction true) is correct, not same.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

@@ -9,7 +9,11 @@
   "fc search: TBI-1501 CD19 CAR-T Takara ALL preclinical",
   "fc search: BinD19 CD19 CAR T ALL",
   "fc search: CD19 CAR-T cells CRS suppression technology ALL trial (NCT03275493)",
-  "fc search: Norelli 2018 HuSGM3 CD19 CAR CD44v6 CRS neurotoxicity"
+  "fc search: Norelli 2018 HuSGM3 CD19 CAR CD44v6 CRS neurotoxicity",
+  "ClinicalTrials.gov NCT03275493 (Shanghai Unicar-Therapy; ssCART-19 = CRS suppression arm)",
+  "Europe PMC: ssCART-19 / IL-6 knockdown / IL-6 shRNA CD19 CAR",
+  "PubMed efetch 39380843 (Ma 2024 Hemasphere), 41145445 (Xue 2025 Blood Cancer J); BioC full text PMC11456753",
+  "Europe PMC title search: Kang 2020 Exp Hematol Oncol (PMID 32523801) IL-6-knockdown CAR T xenograft"
  ],
  "added_models": [
   {
@@ -159,17 +163,117 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "nsg-raji-ssCART19-il6kd",
+   "model": "Conventional vs IL-6-shRNA (ssCART-19) CD19 CAR T cells in NOD/SCID/gamma-c-null mice bearing luciferase Raji cells",
+   "model_kind": "animal",
+   "model_first_use_year": 2020,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "subjects": null,
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Relapsed/refractory CD19+ B-cell ALL",
+      "retrodiction": false,
+      "product_in_model": true,
+      "modality": "cell therapy",
+      "epub_year": 2020,
+      "print_year": 2020,
+      "confidence": "medium",
+      "confidence_note": "Opening entry at first use (Research Square preprint Mar 2020; journal 8 Jun 2020).",
+      "judgement": null,
+      "year": 2020,
+      "status": "untested",
+      "note": "ssCART-19 (IL-6 shRNA CD19 CAR) vs conventional CART-19 in NSG mice bearing Raji: lower serum IL-6, same antitumour effect, predicting less severe CRS.",
+      "short": "Mouse: IL-6 knockdown lowers serum IL-6",
+      "src": "https://doi.org/10.1186/s40164-020-00166-2",
+      "srcLabel": "Kang 2020",
+      "quote": "the mice bearing Raji cells treated with ssCART-19 cells showed significant lower IL-6 levels in serum than those treated with regular CART-19 cells, but comparable anti-tumor efficacy between the animal groups."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "grade >=3 CRS 14.9% (ssCART-19) vs 37.5% (conventional CART-19), post hoc across two trials",
+      "source_calls_it": "match",
+      "population": "Relapsed/refractory CD19+ B-cell ALL",
+      "retrodiction": false,
+      "product_in_model": true,
+      "modality": "cell therapy",
+      "epub_year": 2024,
+      "print_year": 2024,
+      "confidence": "medium",
+      "confidence_note": "Open-access full text (PMC11456753) read; non-randomized post hoc comparison of two trials (NCT03275493 sponsor). Paper cites the preclinical IL-6 reduction as its rationale.",
+      "judgement": "Model predicted lower IL-6-driven CRS with the CRS-suppression CAR; patients had less grade >=3 CRS with comparable CR/CRi. Model published 2020 before the patient comparison (2024), so not a retrodiction.",
+      "year": 2024,
+      "status": "same",
+      "note": "Patients on ssCART-19 had less severe CRS and ICANS than on conventional CD19 CAR T, as the mouse IL-6 data predicted.",
+      "short": "Less severe CRS in patients, as predicted",
+      "src": "https://doi.org/10.1002/hem3.70007",
+      "srcLabel": "Ma 2024",
+      "quote": "Grade ≥3 CRS occurred in 14.89% (7/47) of the ssCART-19 group versus 37.5% (15/40) in the cCART-19 group (p = 0.036).",
+      "reason": "Same: less severe CRS, as mouse IL-6 predicted"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
   "Brexucabtagene product phenotype (CCR7+CD45RA+ naive T cells) as response correlate: published for ZUMA-2/ZUMA-7 (MCL, LBCL), no ALL (ZUMA-3) model-vs-patient comparison found; product characterization rather than a model system",
   "TBI-1501 (Takara/Otsuka): only press releases and registry listing found; no published preclinical model compared with patients",
   "BinD19: no preclinical or patient publication found",
-  "CD19 CAR-T with CRS suppression technology (NCT03275493): registry only; no model data found",
   "Norelli/Giavridis IL-1 blockade (anakinra) prediction: concerns a co-medication to mitigate toxicity, not one of this class's four questions",
   "Rhesus macaque CAR T neurotoxicity model (Taraseviciute 2018): CD20 CAR, sibling target outside the class",
   "In-silico CAR T cellular-kinetic models: published for tisagenlecleucel/axicabtagene, not member drugs",
   "JCAR015 ROCKET cerebral-edema deaths (NCT02535364, 2016-17): patient outcome that belongs as a note on the draft's nalm6-scid-beige-19-28z safety track, not a new model system",
   "Davila 2014 (19-28z adults): intermediate patient source on the draft's existing nalm6 track, no new system"
+ ],
+ "gaps": [
+  {
+   "lead": "JCAR015 ROCKET phase 2 (NCT02535364) cerebral-edema deaths",
+   "outcome": "verdict",
+   "detail": "Corrects no status: dated note on the draft's nalm6 (19-28z) safety track and ROCKET's unreported CR primary already covered by adjudicated verdict efficacy 4 (untested); SCID mice cannot show it (safety 1 untested/no_prediction)"
+  },
+  {
+   "lead": "Giavridis 2018 and Norelli 2018 CRS/neurotoxicity mouse models",
+   "outcome": "tracked",
+   "detail": "added_models scid-beige-raji-ip-1928z-crs (safety, retro 2018) and husgm3-humanized-car-crs-neurotox (safety, retro 2018); checker safety 6-9 confirmed"
+  },
+  {
+   "lead": "Davila 2014 Sci Transl Med (19-28z, 88% CR)",
+   "outcome": "none",
+   "detail": "Intermediate patient source on the existing nalm6 track with no status change; adds no system (status per change rule)"
+  },
+  {
+   "lead": "Unsearched members TBI-1501, BinD19, CD19 CAR-T with CRS suppression technology",
+   "outcome": "added",
+   "detail": "CRS-suppression product added as nsg-raji-ssCART19-il6kd (safety same 2024); TBI-1501 and BinD19: registry/press only, no model-to-patient comparison found (none)"
+  },
+  {
+   "lead": "CD19 CAR-T cells with CRS suppression technology",
+   "outcome": "added",
+   "detail": "nsg-raji-ssCART19-il6kd: Kang 2020 NSG-Raji ssCART-19 lower serum IL-6 (untested 2020) -> Ma 2024 Hemasphere grade>=3 CRS 14.9% vs 37.5% (same 2024)"
+  }
  ]
 }

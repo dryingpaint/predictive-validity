@@ -303,5 +303,37 @@
   "hdmASIT+ and ALK cat SLIT-tablet: no animal, humanized, ex-vivo T-cell or basophil-activation paper found for either member.",
   "In-silico / QSP dose models and human genetic models: none found for any member.",
   "ITULAZAX homologous-group indication (EU DCP 2019): regulator acceptance rests on the Phase 3 alder/hazel-season data plus cross-reactivity, not on model data in lieu of a trial; not a model system, regulatory_reliance left false."
+ ],
+ "gaps": [
+  {
+   "lead": "ToleroMune Ragweed chamber studies NCT01198613 / NCT02061709 and field observational NCT01398137",
+   "outcome": "none",
+   "detail": "Chamber readouts are model-side only (allergen-exposure-chamber track, untested opener efficacy 1); no ragweed field efficacy result exists (NCT01398137 has no posted results; Europe PMC 'ToleroMune Ragweed'/'Ragweed-SPIRE'/'Amb a 1 peptide' returns 7 reviews only), so no model-to-patient comparison; the 2014 chamber miss belongs in the chamber track's judgement text (adjudicator)."
+  },
+  {
+   "lead": "Cat-PAD Phase 3 follow-on NCT02040844 (results posted 2018-05-14)",
+   "outcome": "verdict",
+   "detail": "patient_trials addition to allergen-exposure-chamber efficacy 5/6 (contra); no status change; checker missing item covers it."
+  },
+  {
+   "lead": "SQ tree SLIT-tablet paediatric Phase 3 NCT04878354 (results posted 2025-01-22)",
+   "outcome": "verdict",
+   "detail": "patient_trials addition to allergen-exposure-chamber dose 6 (same, 12 DU); no status change; checker missing item covers it."
+  },
+  {
+   "lead": "Cat-PAD paediatric safety study NCT01921257 (results posted 2018-04-17)",
+   "outcome": "verdict",
+   "detail": "patient_trials addition to safety 5 (allergen-exposure-chamber) and safety 6 (cat-pad-blood-basophil-histamine-release), both same; may raise confidence, no status change."
+  },
+  {
+   "lead": "No animal model compared with patients for any member",
+   "outcome": "tracked",
+   "detail": "Superseded: added_models cat-pad-mouse-allergic-airways (Moldaver 2019 Fel d 1 peptide mouse model), efficacy untested 2018 opener and contra 2018 vs NCT01620762."
+  },
+  {
+   "lead": "tree pollen allergen extract",
+   "outcome": "tracked",
+   "detail": "Member is the SQ tree SLIT-tablet (ITULAZAX): allergen-exposure-chamber dose 6 (same 2019, 12 DU) and safety 7 (same 2019); added_models tree-tablet-birch-homologous-cross-reactivity-ex-vivo efficacy (untested 2020, retro 2020, retro 2023)."
+  }
  ]
 }

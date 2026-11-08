@@ -19,7 +19,8 @@
   "BioC full text PMC11408354 (FLAT, prolgolimab flat dose): grep for model / simulation / exposure / trough",
   "ClinicalTrials.gov API: NCT05783882 (FLAT) status and dates",
   "fc.py search: balstilimab AGEN2034 preclinical cynomolgus receptor occupancy",
-  "fc.py search: geptanolimab GB226 preclinical pharmacology mouse tumor model"
+  "fc.py search: geptanolimab GB226 preclinical pharmacology mouse tumor model",
+  "Gap pass: fc.py scrape thepharmaletter.com 'Russia registers new drug for treatment of aggressive forms of female cancer' (2026-10-13): the drug is fuzuloparib (Elefusa, PARP inhibitor), not prolgolimab"
  ],
  "added_models": [
   {
@@ -107,5 +108,27 @@
   "Cervical cancer patient-derived organoids, PDX or humanized-mouse models, or ex-vivo tumour fragments with any member drug: none found.",
   "Russian registration of prolgolimab for cervical cancer: a regulator decision on trial data (CAESURA), not reliance on model data; not opened.",
   "Human challenge, genetic (PDCD1 loss-of-function) or QSP models for this class in cervical cancer: none found."
+ ],
+ "gaps": [
+  {
+   "lead": "No missed model system found (no public preclinical package for balstilimab or geptanolimab; no cervical organoid or patient-cell comparison)",
+   "outcome": "none",
+   "detail": "Checker found no missed system; this pass's searches agree (see searched and considered_not_added); nothing to add."
+  },
+  {
+   "lead": "Geptanolimab phase II in PD-L1+ R/M cervical cancer (JCO 2023;41(16_suppl):5535)",
+   "outcome": "none",
+   "detail": "Patient result only: geptanolimab has no published preclinical model to compare it with, so no track can exist; at most a context note in the draft."
+  },
+  {
+   "lead": "Balstilimab BLA withdrawn on FDA advice after pembrolizumab's full approval (Agenus 2021-10-22)",
+   "outcome": "none",
+   "detail": "Regulatory context, not a model system or a correction to any entry; balstilimab has no track; could go in the tile's context note."
+  },
+  {
+   "lead": "Russian registration of a drug for cervical cancer, possibly prolgolimab (thepharmaletter)",
+   "outcome": "none",
+   "detail": "Opened via fc.py: the article is about fuzuloparib (PARP inhibitor) for breast/ovarian cancer, not prolgolimab; no effect on ct26-prolgolimab efficacy entries."
+  }
  ]
 }

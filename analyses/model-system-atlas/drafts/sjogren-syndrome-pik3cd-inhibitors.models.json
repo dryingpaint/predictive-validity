@@ -11,7 +11,9 @@
   "Europe PMC: PI3Kdelta/leniolisib/seletalisib/parsaclisib AND (NOD OR salivary gland) AND Sjogren",
   "Europe PMC: leniolisib whole blood",
   "Europe PMC abstracts: Helmer 2017 (seletalisib FIH), Allen 2017 (seletalisib characterization), Hoegenauer 2017 (CDZ173 discovery), Rao 2017 (leniolisib APDS), Juarez 2020",
-  "PMC BioC full text PMC5384962 (Helmer 2017): basophil ex vivo assay, dose selection, study dates"
+  "PMC BioC full text PMC5384962 (Helmer 2017): basophil ex vivo assay, dose selection, study dates",
+  "Gap pass: ClinicalTrials.gov API parsaclisib/INCB050465 all studies (found NCT03627065, primary Sjögren's Phase 2, results posted 2021-03-24)",
+  "Gap pass: Europe PMC parsaclisib AND Sjogren (PMID 34214886, Int Immunopharmacol 2021); full text via fc.py scrape"
  ],
  "added_models": [
   {
@@ -177,6 +179,91 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "parsaclisib-nod-mouse",
+   "model": "Spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice (parsaclisib)",
+   "model_kind": "animal",
+   "model_first_use_year": 2019,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_id": "parsaclisib-nod-mouse",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "imported_from": null,
+      "population": "Unselected primary Sjögren's syndrome (moderate-to-severe)",
+      "model_first_use_year": 2019,
+      "prediction_level": "class",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "model_src": null,
+      "model_src_tier": null,
+      "registry_date": null,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "year": 2019,
+      "status": "untested",
+      "epub_year": 2021,
+      "print_year": 2021,
+      "src": "https://doi.org/10.1016/j.intimp.2021.107904",
+      "srcLabel": "Incyte NOD mouse 2021",
+      "quote": "Parsaclisib treatment led to a dose-dependent, significant reduction in the histopathology score of salivary glands, based on lymphocytic infiltration (p < 0.0001)",
+      "note": "Incyte dosed spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice with parsaclisib: less salivary gland infiltration, lower saliva BAFF and anti-SSA/SSB.",
+      "short": "NOD mice: gland infiltrates reduced",
+      "confidence": "medium",
+      "judgement": "Opening entry dated from the IACUC protocol numbers (19-12-054/055, December 2019). The run came after the member trial NCT03627065 reached primary completion (2019-12-07), so the scored entry is flagged retrodiction.",
+      "confidence_note": "Full text read (ScienceDirect). Paper published online 2021-06-29; it does not mention the Sjögren's trial."
+     },
+     {
+      "model_id": "parsaclisib-nod-mouse",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "animal",
+      "imported_from": null,
+      "population": "Unselected primary Sjögren's syndrome (moderate-to-severe)",
+      "model_first_use_year": 2019,
+      "prediction_level": "class",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "model_src": "https://doi.org/10.1016/j.intimp.2021.107904",
+      "model_src_tier": 1,
+      "registry_date": "2021-03-24",
+      "retrodiction": true,
+      "magnitude": null,
+      "magnitude_basis": "mouse salivary gland histopathology score vs patient salivary gland ultrasound (SGUS) responders",
+      "source_calls_it": null,
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 3,
+      "year": 2021,
+      "status": "contra",
+      "epub_year": null,
+      "print_year": null,
+      "src": "https://clinicaltrials.gov/study/NCT03627065",
+      "srcLabel": "NCT03627065 results",
+      "quote": "Proportion of Participants With a 1 Point or Greater Change on the Salivary Gland Ultrasound (SGUS) Score for Parotid and Submandibular Glands",
+      "note": "Mice showed less gland inflammation, but no parsaclisib-treated Sjögren's patient improved SGUS by 1 point or more, and salivary CXCL13 rose.",
+      "short": "Patients: no gland ultrasound response",
+      "confidence": "low",
+      "reason": "No SGUS responders; mouse gland benefit not seen",
+      "judgement": "Paired by me: the mouse work ran after the trial ended, so a retrodiction, and it did not reproduce the null gland result, so contra. A stricter reader could call a 10-patient single-arm trial unsettled.",
+      "confidence_note": "Registry results (posted 2021-03-24): primary SGUS >=1-point change 0/8 at week 4 and 0/7 at week 12 (n=10, open label, no control); salivary CXCL13 +0.96 and +1.98; stimulated flow -0.05 g/min at week 12; ESSDAI -5.3 uncontrolled.",
+      "patient_trials": []
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -188,6 +275,23 @@
   "Seletalisib psoriatic skin biopsies (Helmer 2017): a different disease's patient tissue, no Sjögren's prediction",
   "Seletalisib/leniolisib APDS patient T-cell blasts (Rao 2017): APDS patient-derived cells, no Sjögren's comparison",
   "NOD mouse or patient-derived salivary gland cultures with a PI3Kδ inhibitor: none found",
-  "Parsaclisib: no Sjögren's trial found (per checker and search)"
+  "Parsaclisib NOD.B10 whole-blood pAKT (engagement): NCT03627065 measured no PD readout, so no comparison"
+ ],
+ "gaps": [
+  {
+   "lead": "Leniolisib pAkt-positive B-cell PD in Sjögren's Study 2203 (FDA review NDA 217759)",
+   "outcome": "tracked",
+   "detail": "leniolisib-whole-blood-b-cell, engagement entry 2 (Rao 2017, same); the Study 2203 Sjögren's pAkt result is not public, so it gets no entry of its own"
+  },
+  {
+   "lead": "Seletalisib healthy-volunteer PD from first-in-human studies (Helmer 2017)",
+   "outcome": "tracked",
+   "detail": "seletalisib-human-whole-blood, engagement entry 2 (Helmer 2017, same, direct)"
+  },
+  {
+   "lead": "No parsaclisib Sjögren's trial found",
+   "outcome": "added",
+   "detail": "Wrong: NCT03627065 (parsaclisib Phase 2 in Sjögren's, n=10, results 2021-03-24) exists; added parsaclisib-nod-mouse efficacy (retro run, contra 2021); the draft's efficacy entry 1 'both member Phase 2' also needs a verdict adding NCT03627065 to patient_trials"
+  }
  ]
 }

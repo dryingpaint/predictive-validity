@@ -8,7 +8,11 @@
   "PubMed: Campochiaro PA[au] AND RGX-314 AND Lancet (PMID 38554726)",
   "PubMed: NT-503 OR (encapsulated cell AND anti-VEGF AND neovascular AMD) (11 hits, none NT-503 model-patient comparisons)",
   "ClinicalTrials.gov API: NCT03066258 results posting date and outcome measures",
-  "fc.py search: ABBV-RGX-314 ATMOSPHERE ASCENT phase 3 topline results 2026"
+  "fc.py search: ABBV-RGX-314 ATMOSPHERE ASCENT phase 3 topline results 2026",
+  "Europe PMC: DOI 10.1016/j.ophtha.2014.03.026 (AURORA, PMID 24793528) abstract",
+  "Europe PMC: DOI 10.1172/JCI129085 (Ding 2019, PMID 31408444) abstract: NHP/pig arms used AAV8.GFP, not RGX-314",
+  "Europe PMC: (RGX-314 OR ABBV-RGX-314) AND suprachoroidal; AAVIATE OR ALTITUDE; 'surabgene lomparvovec' (reviews only, no primary suprachoroidal patient paper)",
+  "Europe PMC: abicipar AND (model OR preclinical OR rabbit OR monkey) (MAPLE 2023 is a patient study; no further model-patient comparison)"
  ],
  "added_models": [
   {
@@ -374,6 +378,90 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "monkey-laser-cnv-conbercept",
+   "model": "Rhesus monkey laser-induced CNV (conbercept)",
+   "model_kind": "animal",
+   "model_first_use_year": 2008,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "model_id": "monkey-laser-cnv-conbercept",
+      "model": "Rhesus monkey laser-induced CNV (conbercept)",
+      "model_kind": "animal",
+      "model_first_use_year": 2008,
+      "prediction_level": "class",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected (neovascular AMD)",
+      "readout_tier": "downstream",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2008,
+      "print_year": 2008,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "confidence": "high",
+      "confidence_note": "Abstract-level (Europe PMC); Mol Vis 2008;14:37-49, PMID 18246030 (no DOI).",
+      "year": 2008,
+      "status": "untested",
+      "src": "https://pubmed.ncbi.nlm.nih.gov/18246030/",
+      "srcLabel": "Zhang 2008",
+      "note": "Intravitreal KH902 (conbercept) at 300-500 ug reduced CNV leakage in laser-injured rhesus eyes, a downstream readout of VEGF-A neutralisation.",
+      "short": "Monkey CNV leakage fell",
+      "quote": "The reduction of experimental CNV was greater in eyes treated with 300 microg and 500 microg KH902 than in eyes treated with 0.1 mg KH902 and the control eyes.",
+      "judgement": "Engagement opening on the draft's monkey CNV track; same study as its efficacy opening entry."
+     },
+     {
+      "model_id": "monkey-laser-cnv-conbercept",
+      "model": "Rhesus monkey laser-induced CNV (conbercept)",
+      "model_kind": "animal",
+      "model_first_use_year": 2008,
+      "prediction_level": "class",
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected (neovascular AMD)",
+      "readout_tier": "downstream",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://pubmed.ncbi.nlm.nih.gov/18246030/",
+      "model_src_tier": 1,
+      "epub_year": 2014,
+      "print_year": 2014,
+      "registry_date": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "CNV leakage (monkey) vs central retinal thickness reduction (patients)",
+      "source_calls_it": null,
+      "confidence": "medium",
+      "confidence_note": "Abstract-level (Europe PMC, PMID 24793528). Dose-ranging phase 2 without a sham arm; CRT change from baseline.",
+      "year": 2014,
+      "status": "same",
+      "src": "https://doi.org/10.1016/j.ophtha.2014.03.026",
+      "srcLabel": "Li 2014 (AURORA)",
+      "note": "AURORA phase 2: conbercept cut central retinal thickness by 120-171 um at month 12 in all regimens, as monkey CNV leakage suppression predicted.",
+      "short": "Retinal thickness fell in patients",
+      "quote": "At month 12, mean reductions in CRT in the 4 regimens were 119.8, 129.7, 152.1, and 170.8 μm, respectively.",
+      "reason": "exudation fell as monkey CNV predicted",
+      "judgement": "Paired by me, as the draft pairs mouse CNV with HAWK/HARRIER fluid for brolucizumab. Earliest public patient anatomic result (AURORA 2014); PHOENIX also reports CRT reductions."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -382,6 +470,44 @@
   "Abicipar rat laser CNV and rabbit chronic neovascularization models (EMA WAR): efficacy shown only as in-vivo proof of concept; no patient comparison stated beyond what the draft's rabbit vasculopathy track covers.",
   "Brolucizumab population PK / clinical pharmacology modelling: ClinPharmR not in the bundle; not verified.",
   "NT-503 encapsulated cell therapy: no admissible preclinical model source with a patient comparison found.",
-  "RGX-314 NHP/pig suprachoroidal expression (Ding 2019) and suprachoroidal phase 2 (ALTITUDE/AAVIATE): not searched within budget; subretinal rat track added instead."
+  "RGX-314 NHP/pig suprachoroidal expression (Ding 2019) and suprachoroidal phase 2 (ALTITUDE/AAVIATE): not searched within budget; subretinal rat track added instead.",
+  "RGX-314 suprachoroidal NHP/pig (Ding 2019): those arms used reporter AAV8.GFP, not RGX-314, and read GFP coverage of RPE; patient aqueous protein from AAVIATE/ALTITUDE is only in sponsor releases. No comparable readout."
+ ],
+ "gaps": [
+  {
+   "lead": "Brolucizumab rabbit track (4/36 rabbits severe IOI vs label IOI 4% vs 1%)",
+   "outcome": "tracked",
+   "detail": "brolucizumab-rabbit-ivt, safety cell (2010 untested, 2019 same)"
+  },
+  {
+   "lead": "Conbercept monkey CNV track, engagement (AURORA/PHOENIX CRT)",
+   "outcome": "added",
+   "detail": "monkey-laser-cnv-conbercept engagement cell: 2008 untested + 2014 same (AURORA CRT -120 to -171 um); existing track, no new system"
+  },
+  {
+   "lead": "RGX-314 rat model (Ding 2019) vs Campochiaro 2024",
+   "outcome": "tracked",
+   "detail": "rgx314-rat-vegf-leakage, engagement (2019 untested, 2024 same) and efficacy (2019 untested, unsettled)"
+  },
+  {
+   "lead": "Abicipar in-silico PK track fitted to patient serum/aqueous",
+   "outcome": "tracked",
+   "detail": "abicipar-insilico-ocular-pk, dose cell (2015 untested, 2020 retro) and efficacy (2020 same)"
+  },
+  {
+   "lead": "RGX-314 suprachoroidal NHP/pig vs ALTITUDE/AAVIATE aqueous protein",
+   "outcome": "none",
+   "detail": "NHP/pig arms used AAV8.GFP reporter (product not in model, GFP coverage readout); no peer-reviewed suprachoroidal patient protein data, only sponsor releases"
+  },
+  {
+   "lead": "abicipar pegol",
+   "outcome": "tracked",
+   "detail": "named 'abicipar' in rabbit-vegf-vasculopathy-abicipar, abicipar-rabbit-dog-ivt-tox, abicipar-insilico-ocular-pk"
+  },
+  {
+   "lead": "surabgene lomparvovec",
+   "outcome": "tracked",
+   "detail": "named RGX-314 (ABBV-RGX-314) in rgx314-rat-vegf-leakage engagement/efficacy"
+  }
  ]
 }

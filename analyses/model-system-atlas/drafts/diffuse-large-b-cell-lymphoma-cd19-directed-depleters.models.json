@@ -10,7 +10,8 @@
   "fc.py search: inebilizumab MEDI-551 DLBCL cynomolgus B-cell depletion pharmacokinetic model predicted human dose",
   "fc.py search: Caimi 2022 Blood ASH abstract loncastuximab LOTIS-2 CD19 quantitative systems pharmacology virtual patients",
   "fc.py search: tisagenlecleucel CBER review nonclinical lymphoma xenograft mouse model DLBCL supplement",
-  "Europe PMC REST: PMC10887233 (Caimi 2023 EJHaem, 10.1002/jha2.816, PMID 38406517) and Tarantelli 2024 Haematologica (10.3324/haematol.2023.284197, PMID 38721745) plus its 2023 bioRxiv preprint, abstracts"
+  "Europe PMC REST: PMC10887233 (Caimi 2023 EJHaem, 10.1002/jha2.816, PMID 38406517) and Tarantelli 2024 Haematologica (10.3324/haematol.2023.284197, PMID 38721745) plus its 2023 bioRxiv preprint, abstracts",
+  "CBER Kymriah LBCL supplement SBRA (April 13 2018, fda.gov PDF via curl+pdftotext): section 4 states no new nonclinical pharmacology/toxicology; clin pharm section is patient-only kinetics, no model"
  ],
  "added_models": [
   {
@@ -177,5 +178,22 @@
   "Patient-derived DLBCL xenografts, ex vivo patient-cell sensitivity, or human genetic models for any member: none found with a patient comparison.",
   "Kymriah CBER review (BLA 125646 DLBCL supplement): not in the bundle and not fetched; any lymphoma xenograft it names is unverified.",
   "Tafasitamab and axicabtagene/lisocabtagene: CD19 depleters outside the tile's member list."
+ ],
+ "gaps": [
+  {
+   "lead": "Al-Katib 2009 Clin Cancer Res (SAR3419 WSU-DLCL2/WSU-FSCCL SCID xenograft)",
+   "outcome": "verdict",
+   "detail": "Corrects model source of sar3419-lymphoma-xenograft efficacy 3 (opener to Al-Katib 2009, year 2009) and efficacy 4 model_src; covered by the checker's corrected verdict on efficacy 3 (adjudicated untested, 2009)."
+  },
+  {
+   "lead": "LOTIS-5 phase 3 (Lonca-R vs R-GemOx, PFS HR 0.73, 2026)",
+   "outcome": "verdict",
+   "detail": "Adds a confirming patient_trial to adct402-lymphoma-xenograft efficacy 8 (same); no status change; noted in the checker's confirmed verdict on efficacy 8."
+  },
+  {
+   "lead": "CBER review of Kymriah DLBCL supplement (BLA 125646)",
+   "outcome": "none",
+   "detail": "SBRA 2018-04-13 section 4: 'No new nonclinical pharmacology/toxicology information was included in this supplement'; original-BLA NSG xenograft already tracked as ctl019-nsg-all-xenograft."
+  }
  ]
 }

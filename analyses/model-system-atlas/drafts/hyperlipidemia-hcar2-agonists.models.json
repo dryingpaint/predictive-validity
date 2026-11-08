@@ -434,5 +434,27 @@
   "Patient-derived or ex-vivo adipocyte lipolysis: the member papers' in-vitro work is recombinant hu-GPR109a cell assays (Palani EC50 2 nM; Boatman), not patient-derived, and no patient comparison was found.",
   "Golden Syrian hamster diet-induced hyperlipidaemia (ARI-3037MO, Connolly 2011 abstract) and the monkey in Tuteja Table 1 (a niacin prodrug): non-members; ARI-3037's HCAR2 agonism is undisclosed.",
   "Offermanns 2012 Focus (10.1126/scitranslmed.3004445): a commentary, used as a pointer only; its MK-1903 flushing sentence could not be verified against the page."
+ ],
+ "gaps": [
+  {
+   "lead": "Rat plasma FFA/TG model (Merck/Schering-Plough) for MK-1903 and SCH 900271",
+   "outcome": "added",
+   "detail": "rat-ffa-merck-sp in added_models: engagement untested 2009 (Shen 2009) -> same 2012 (Boatman 2012); dose and efficacy contra 2012; distinct from GSK rat-gp-nefa-gsk."
+  },
+  {
+   "lead": "Mouse dermal blood-flow (laser-Doppler) flush model, Merck, MK-1903",
+   "outcome": "added",
+   "detail": "mouse-dermal-bloodflow-merck in added_models: engagement and safety untested 2007 (Shen 2007) -> same 2012 (Boatman 2012 mouse +30% vs NCT00847197 AE rows); separate from the niacin Gpr109a-knockout track."
+  },
+  {
+   "lead": "Lauring 2012 SCH900271 phase 1B (10 mg vs 2 g ER-niacin vs placebo, 4 weeks)",
+   "outcome": "verdict",
+   "detail": "Patient-side in-trial niacin comparator, not a model system; bears on beagle-dog-merck safety 4 (checker verdict already cites it for partial) and efficacy 6; body/supplement unreadable, so unquotable."
+  },
+  {
+   "lead": "Lauring 2012 Fig. S1 and Table S2 (unchecked supplement)",
+   "outcome": "verdict",
+   "detail": "Would change existing entries only: dog track comparison_stated (engagement 4 verdict) and dating of knockout-mouse flush 'same' (safety 2, already corrected to Lauring Aug 2012); supplement download denied, no new system."
+  }
  ]
 }

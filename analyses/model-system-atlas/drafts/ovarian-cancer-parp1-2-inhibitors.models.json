@@ -11,7 +11,9 @@
   "Europe PMC: ovarian cancer organoids AND clinical response (titles); DNA repair inhibitor response organoids",
   "Abstracts read: de Witte 2020 Cell Rep, Hill 2018 Cancer Discov, Nanki 2020 Sci Rep, Senkowski 2023 Dev Cell, Ito 2023 Hum Cell, Thorel 2025 J Exp Clin Cancer Res, Castroviejo-Bermejo 2018 EMBO Mol Med, Sun 2018 Oncotarget, Berek 2018 Ann Oncol, Wu 2021 Ann Oncol (NORA), Mirza 2023 Cancer (PRIMA ISD), Vulsteke 2024 EJC, Gonzalez-Martin 2019 NEJM (PRIMA)",
   "FDA bundle grep (208447 MultidisciplineR, 214876 ClinPharmR/label, 216793 MultidisciplineR, 209115 MultiDisciplineR): exposure-response, 77 kg, 150,000, individualization, patient-derived, organoid, PDX",
-  "ClinicalTrials.gov API: NCT03705156 (NORA) and NCT02655016 (PRIMA) results-posting dates"
+  "ClinicalTrials.gov API: NCT03705156 (NORA) and NCT02655016 (PRIMA) results-posting dates",
+  "Gap pass: Europe PMC ARIEL4 AND rucaparib; TITLE AG014699 BRCA xenograft (Drew 2011); PubMed efetch 35298906, 39914419; CT.gov NCT02855944 results date",
+  "Gap pass: Europe PMC (stenoparib OR 2X-121 OR E7449) AND (ovarian OR patients); CT.gov NCT03878849 (recruiting, no results)"
  ],
  "added_models": [
   {
@@ -89,6 +91,90 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rucaparib-brca-xenograft",
+   "model": "BRCA-deficient cancer cells and xenografts (rucaparib, AG014699)",
+   "model_kind": "animal",
+   "model_first_use_year": 2010,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "endpoint_role": null,
+      "outcome_tested": null,
+      "year": 2010,
+      "status": "untested",
+      "note": "Rucaparib (AG014699) killed BRCA1/2-mutant and BRCA1-silenced cancer cells but not BRCA-proficient ones, and slowed growth of BRCA-mutant xenografts.",
+      "short": "BRCA-mutant xenografts respond to rucaparib",
+      "src": "https://doi.org/10.1093/jnci/djq509",
+      "srcLabel": "Drew 2011",
+      "quote": "Growth of xenograft tumors with BRCA1/2 mutations or with epigenetically silenced BRCA1 was reduced by AG014699 treatment",
+      "confidence": "high",
+      "confidence_note": "Abstract-level (PMID 21183737, epub 2010-12-23).",
+      "judgement": "Rucaparib's own BRCA-deficient cell and xenograft model (breast, pancreatic lines), distinct from the niraparib track; opens at first publication.",
+      "epub_year": 2010,
+      "print_year": 2011,
+      "population": "BRCA-mutant / HRD"
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1093/jnci/djq509",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": "2022-02-11",
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "xenograft tumour growth delay vs PFS hazard ratio",
+      "source_calls_it": null,
+      "endpoint_role": "primary",
+      "outcome_tested": "negative",
+      "year": 2022,
+      "status": "same",
+      "note": "ARIEL4's primary endpoint: rucaparib beat chemotherapy on investigator PFS in BRCA-mutant relapsed ovarian cancer (7.4 vs 5.7 months, HR 0.64); final OS later favoured chemotherapy.",
+      "short": "ARIEL4 PFS met; OS later worse",
+      "src": "https://doi.org/10.1016/S1470-2045(22)00122-X",
+      "srcLabel": "Kristeleit 2022 (ARIEL4)",
+      "quote": "Results from the ARIEL4 study support rucaparib as an alternative treatment option to chemotherapy for patients with relapsed, BRCA1-mutated or BRCA2-mutated ovarian carcinoma.",
+      "confidence": "high",
+      "confidence_note": "Abstract-level; registry results posted 2022-02-11; final OS from Oza/Kristeleit 2025 Lancet Oncol abstract.",
+      "reason": "BRCA-mutant PFS benefit as predicted",
+      "judgement": "Paired by me: Drew 2011 (model) with ARIEL4 (trial). Status follows the primary PFS endpoint, which the model's tumour-growth prediction matches in direction. Final OS (19.4 vs 25.4 months, HR 1.3, p=0.047; 69% crossover) went the other way, so outcome_tested is negative; FDA's rucaparib treatment indication was withdrawn in June 2022.",
+      "epub_year": 2022,
+      "print_year": 2022,
+      "population": "Relapsed ovarian cancer, deleterious BRCA1/2 mutation, >=2 prior chemotherapies (ARIEL4)",
+      "patient_trials": [
+       {
+        "nct": "NCT02855944",
+        "registry_date": "2022-02-11",
+        "doi": "10.1016/S1470-2045(24)00674-0",
+        "quote": "Median overall survival was 19·4 months (95% CI 15·2-23·6) in the rucaparib group versus 25·4 months (21·4-27·6) in the chemotherapy group"
+       }
+      ]
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -101,5 +187,22 @@
   "FDA 2017 niraparib exposure-safety logistic regression (208447 review): part of the same patient-data dose model; FDA did not use exposure-efficacy for dose selection, so folded into niraparib-isd-model rather than tracked separately.",
   "Niraparib PBPK / population PK models (hepatic impairment 2026, PRIMA popPK 2024): no prospective patient comparison of a model-chosen dose found within budget.",
   "Pamiparib, senaparib, 2X-121 (stenoparib) DRP, veliparib: no model-vs-patient comparison found beyond the draft's tracks; stenoparib's DRP ex-vivo/transcriptomic predictor is in a non-BRCA-selected population with press-release-only results."
+ ],
+ "gaps": [
+  {
+   "lead": "ARIEL4 (rucaparib vs chemotherapy, NCT02855944; PFS met, final OS detriment)",
+   "outcome": "added",
+   "detail": "rucaparib-brca-xenograft, efficacy: untested 2010 (Drew 2011) -> same 2022 (ARIEL4 primary PFS), outcome_tested negative with the 2025 final OS as patient_trials; the niraparib efficacy track cannot carry a rucaparib trial"
+  },
+  {
+   "lead": "NOVA final OS (gBRCA HR ~0.85 n.s.; non-gBRCA OS detriment; 2022 label restriction)",
+   "outcome": "verdict",
+   "detail": "corrects efficacy entry 2 (brca-deficient-xenograft-niraparib, 2016): set outcome_tested (negative/null on gBRCA OS) and add the final OS as patient_trials; PFS status stays same; covered by the checker's missing item and rule question"
+  },
+  {
+   "lead": "Stenoparib (2X-121) phase 2 NCT03878849, DRP-selected platinum-resistant ovarian",
+   "outcome": "none",
+   "detail": "no peer-reviewed model-to-patient comparison (Europe PMC empty; registry recruiting, no results; sponsor press releases only, tier 5); DRP-selected population is outside the BRCA/HRD context"
+  }
  ]
 }

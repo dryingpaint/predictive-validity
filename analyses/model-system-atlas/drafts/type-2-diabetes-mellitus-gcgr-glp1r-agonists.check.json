@@ -278,6 +278,38 @@
    "rule": "7 (#127 strengthens), 4",
    "note": "PMC8247525 verbatim; 'increased incidence of ... nausea and vomiting versus placebo and liraglutide'. Registry 2020-07-20: vomiting 51/256 and 43/256 (200/300 ug) vs 5/112 placebo, 3/110 liraglutide. Year 2020 right; strengthens holds.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Elvert 2018 (PMC6055720, full text): quote verbatim in abstract conclusions; monkey arm cut TEI to 60-70%, lowered weight, improved glucose tolerance; surrogate 'share[s] pharmacological properties with SAR425899'. Untested opening fine; product_in_model false correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "DRAFTER_BRIEF: a model built or run after the clinic already knew the answer is a retrodiction; status retro, never same",
+   "note": "Tillner quote verbatim (abstract). But NCT02411825 completed 2016-01 (registry), before Elvert's earliest dated record (received 2017-05-09); monkey run date not stated. Sponsor knew the MAD result: retrodiction: true, retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Registry: HbA1c -1.52/-1.62/-1.56 vs placebo -0.66, liraglutide -1.31; weight -4.3/-5.3/-4.4 vs lira -4.6. Trial completed 2017-12-27, after Elvert submission/acceptance (2017-05-09/2017-12-25): prospective same holds; first prospective entry if [12] becomes retro."
   }
  ],
  "missing": [
@@ -296,6 +328,7 @@
   "Safety: is a pre-specified heart-rate rise (+7 bpm vs placebo, +4 vs liraglutide, MK-8521) a 'harm' for the askable-silence rule when it is also GLP-1R class pharmacology? Decision 13 sets cross-class evidence aside, but this is the member's own trial.",
   "One paper, two species (Henderson 2016: DIO mouse and cynomolgus): must the second species be its own model_id track even when the drafter read only the abstract, given the monkey's stated no-vomiting prediction changes the safety cell?",
   "Safety (cyno-monkey): the 'no vomiting' is a tolerability observation in 4-/8-week toxicity studies at >=10x the clinical per-kg dose, not a pre-specified emesis endpoint. Is that a stated prediction (contra on its own terms) or askable silence (contra only via species capacity)? Same contra either way, but the rule path differs. [models]",
-  "Decision 10: Bosch 2025 asserts the 4GI-HbA1c prediction was made 'prior to the initiation' of the Ph2b (started 2017-08-02) but offers no dated record (model first public 2021-12-24, comparison 2025, earliest poster c. 2024). Does an unsourced sponsor claim of priority ever lift retro to same? [models]"
+  "Decision 10: Bosch 2025 asserts the 4GI-HbA1c prediction was made 'prior to the initiation' of the Ph2b (started 2017-08-02) but offers no dated record (model first public 2021-12-24, comparison 2025, earliest poster c. 2024). Does an unsourced sponsor claim of priority ever lift retro to same? [models]",
+  "dio-nhp-surrogate efficacy[12] [models]: the monkey run date is unstated; the model's first dated record (manuscript received 2017-05-09) postdates the sponsor's own MAD completion (NCT02411825, 2016-01) but precedes its publication (2018-09). Is a sponsor-internal readout 'the clinic already knew the answer' when the model run date is unknown?"
  ]
 }

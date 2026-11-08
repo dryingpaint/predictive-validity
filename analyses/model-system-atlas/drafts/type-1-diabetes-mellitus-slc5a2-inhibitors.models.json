@@ -234,6 +234,45 @@
        }
       ]
      }
+    ],
+    "safety": [
+     {
+      "year": 2020,
+      "status": "retro",
+      "model": "Exposure-response simulation of empagliflozin 2.5 mg built on EASE-2 patient data (M-EASE-1 semi-mechanistic, M-EASE-2 descriptive)",
+      "note": "An Emax exposure-response model built on EASE-3 predicted the EASE-2 week-26 BHB rise (small, dose-related, far below 1.5 mmol/L); both trials' BHB data were public since 2018.",
+      "short": "Simulation reproduces known BHB rise",
+      "src": "https://doi.org/10.1111/dom.13945",
+      "srcLabel": "Perkins 2020",
+      "quote": "It was developed based on data from EASE‐3 and qualified by predicting the BHB changes in the EASE‐2 study population.",
+      "confidence": "medium",
+      "confidence_note": "Full text (PMC7064984, Results and Discussion: simulated medians 'closely approximated the values directly observed in the EASE‐2 and EASE‐3 trials'; 'minor blood BHB level elevation ... was confirmed'). EASE-2 NCT02414958 results posted 2018-11-20; Rosenstock 2018 (PMID 30287422) published both trials' BHB. DKA itself was not modelled (low event numbers).",
+      "reason": "In-silico ketone model only retrodicted",
+      "judgement": "Retrodiction (decision 10): fitted to EASE-3 BHB and checked against EASE-2 BHB, both public before the 2020 paper, so retro, not same. Scored in safety because the readout is the ketone rise, the class's DKA-risk biomarker; the paper states DKA events could not be modelled, so it makes no DKA-incidence prediction. Same system as the efficacy entry; comparison stated by the source.",
+      "model_id": "empa-t1d-exposure-response-sim",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2020,
+      "print_year": 2020,
+      "registry_date": "2018-11-20",
+      "model_filed": null,
+      "product_in_model": true,
+      "model_kind": "in_silico",
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": "match",
+      "population": "Unselected",
+      "model_first_use_year": 2020,
+      "outcome_tested": null
+     }
     ]
    }
   }
@@ -250,5 +289,37 @@
   "Insulinopenic dehydrated rat (Perry 2019): already the draft's rat-eudka-perry track.",
   "Other T2D rodent models in the member filings that are silent on ketones (ZDF rat in NDA 202293, db/db and DIO mice in later papers such as Xu 2017 PMID 28579299 empagliflozin DIO mice): silence in a model that was never read for ketones is not scored; only the NDA 206111 ZDF study, which states a ketone finding, is added.",
   "T2D patient ketone studies (Ferrannini 2016, Daniele 2016, Al Jobori 2017) and the FDA Drug Safety Communication of 2015-05-15 on class-level FAERS DKA cases: patient-side only, T2D or drug-unattributed, not models and not member-specific T1D data."
+ ],
+ "gaps": [
+  {
+   "lead": "Devenny 2012 DIO rat, dapagliflozin BHB (PMID 22402735)",
+   "outcome": "tracked",
+   "detail": "dio-rat-devenny, safety: untested 2012 (Devenny 2012) then same 2018 (Mathieu 2018 DEPICT-2 DKA); already in added_models"
+  },
+  {
+   "lead": "Vallon 2013 Sglt2-KO Akita mouse (PMID 23152292, epub 2012-11-14)",
+   "outcome": "verdict",
+   "detail": "akita-mouse, engagement entry 3: model_first_use_year 2013 should read 2012; checker verdict on engagement 3 notes the earlier first use; no status change"
+  },
+  {
+   "lead": "Tahara 2014 ipragliflozin STZ rat (PMID 24533859)",
+   "outcome": "tracked",
+   "detail": "stz-rat track (engagement 1/2/4, dose 1, efficacy 1-3, safety 1-2): same system, third member drug, no status change; a Tahara 2014 vs Kaku 2019 citation would add no new status"
+  },
+  {
+   "lead": "EMA variation assessment report WS/1344 (EMA/CHMP/213138/2019)",
+   "outcome": "none",
+   "detail": "patient-side tier-2 regulatory record ('No new non-clinical data'), not a model system; corroborates stz-rat safety 2/dose 1 and changes no status"
+  },
+  {
+   "lead": "FDA EMDAC briefing document, 13 Nov 2019 (empagliflozin 2.5 mg)",
+   "outcome": "none",
+   "detail": "not retrievable (fda.gov/media/132422 404); not a model system; would only set model_filed on empa-t1d-exposure-response-sim (left null)"
+  },
+  {
+   "lead": "Perkins 2020 BHB Emax exposure-response model (PMC7064984)",
+   "outcome": "added",
+   "detail": "new safety-cell retro 2020 entry on the existing empa-t1d-exposure-response-sim item (same system; no new model_id)"
+  }
  ]
 }

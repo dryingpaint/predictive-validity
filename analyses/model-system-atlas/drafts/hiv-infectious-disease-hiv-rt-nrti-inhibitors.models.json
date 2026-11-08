@@ -17,7 +17,8 @@
   "Europe PMC: (GS-9131 OR GS-9148) AND (clinical OR isolates OR phenotype OR patients) -> no clinical-isolate or patient paper beyond the 2008 design paper",
   "Europe PMC: (azvudine OR FNC OR azidocytidine) AND HIV AND (humanized OR SCID OR NSG OR BLT OR hu-PBL) -> none",
   "Europe PMC: (GS-9131 OR GS-9148 OR censavudine OR festinavir OR BMS-986001 OR 4'-Ed4T) AND (humanized OR SCID OR SIV OR SHIV OR macaque OR 'in vivo efficacy') -> none",
-  "ClinicalTrials.gov v2: intervention azvudine/FNC, condition HIV -> NCT04109183 (Phase 2, n=172, completed 2019-01, no results posted), NCT04303598 (Phase 3, n=720, status unknown, no results)"
+  "ClinicalTrials.gov v2: intervention azvudine/FNC, condition HIV -> NCT04109183 (Phase 2, n=172, completed 2019-01, no results posted), NCT04303598 (Phase 3, n=720, status unknown, no results)",
+  "ClinicalTrials.gov v2 NCT03472326 statusModule: statusVerifiedDate 2020-12, resultsFirstPost and lastUpdatePost 2021-01-05; /api/int history endpoint 403"
  ],
  "added_models": [],
  "considered_not_added": [
@@ -35,5 +36,22 @@
   "Censavudine healthy-volunteer single-ascending-dose Phase 1 (PMID 24374821): human PK only; the abstract states no animal-PK-based dose prediction, so it adds nothing to a new track.",
   "CL-197 first-in-human (AAC 2026, PMID 42695945): not a class member.",
   "Earlier public date for the GS-9131 termination (Adis 2020-04-28): a dating question on an existing entry, not a model system."
+ ],
+ "gaps": [
+  {
+   "lead": "Azvudine NMPA package insert (conditional approval 2021-07; pivotal Phase 2 NCT04109183, 172 ART-naive patients, week-48 HIV-1 RNA <50 copies/mL)",
+   "outcome": "verdict",
+   "detail": "Patient-side record for the existing hiv-nrti-cell-culture-panel track (model side Wang 2014): a 2021 `same` entry in engagement and efficacy (after engagement #2 and efficacy #3), tier pending rule question 1; checker's engagement #2 verdict already names it; efficacy headline stays the GS-9131 contra (efficacy #4) under decision 6. Not a new system."
+  },
+  {
+   "lead": "Azvudine in-vitro M184I selection (Wang 2014) vs M184I after short-term azvudine for COVID-19 in people with HIV (AIDS 2023, PMID 37930315)",
+   "outcome": "verdict",
+   "detail": "In-vitro resistance selection is already part of hiv-nrti-cell-culture-panel's model description, so this is a possible 2023 engagement entry on that track (imported_from COVID-19, product_in_model true); letter full text unread (not OA), so it needs a checker verdict before entry. Not a new system."
+  },
+  {
+   "lead": "Earlier public date for the GS-9131 failure (Adis 2020-04-28; Fierce Biotech pipeline drop)",
+   "outcome": "verdict",
+   "detail": "Dating of efficacy #4 (contra, registry_date 2021-01-05). CT.gov v2 statusModule: TERMINATED, whyStopped 'did not meet the targeted antiviral response', statusVerified 2020-12, results and last update both posted 2021-01-05; version history API 403. No admissible earlier date found, so 2021-01-05 stands."
+  }
  ]
 }

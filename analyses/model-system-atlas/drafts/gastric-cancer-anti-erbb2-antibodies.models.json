@@ -195,5 +195,27 @@
   "Zanidatamab (HERIZON-GEA-01): not a member of this tile; the checker has filed the member-list question.",
   "KN026-specific preclinical models: none on PubMed (checker confirmed); the CRIB-platform track already covers anbenitamab.",
   "Margetuximab gastric-specific models beyond the N87 ADCC assay and cynomolgus toxicology: none found; both already tracked."
+ ],
+ "gaps": [
+  {
+   "lead": "Ughetto 2021 HER2 hyper-amplified gastric PDX preclinical randomized trials (PMID 33755862)",
+   "outcome": "tracked",
+   "detail": "her2-hyperamplified-gastric-pdx (added_models, already merged): efficacy #8 untested 2021 and #9 retrodiction 2021; checker verdict on #9 adjudicated untested"
+  },
+  {
+   "lead": "CD16A genotype x response in CP-MGAH22-05 (ASCO 2018 abstr 4030; Catenacci 2020)",
+   "outcome": "verdict",
+   "detail": "patient side of fc-optimised-adcc-cd16a-158f, efficacy #4: checker verdict corrected (proposed same 2018), adjudicated untested pending rule question; no new system"
+  },
+  {
+   "lead": "KC-WISE earlier public records (ESMO 2025 LBA; Zhao 2025 Cancer Commun PMID 41273757)",
+   "outcome": "verdict",
+   "detail": "crib-her2-biparatopic-xenograft efficacy #7: checker verdict corrected year 2026 -> 2025, status same unchanged"
+  },
+  {
+   "lead": "JACOB primary result first public at ESMO 2017 (abstract 616O)",
+   "outcome": "verdict",
+   "detail": "checker verdicts already move efficacy #2 (nci-n87-gastric-xenograft), safety #2 (pertuzumab-cyno-tox) and dose #6 (pertuzumab-xenograft-exposure-target) to 2017, pending rule question 1 on congress abstracts"
+  }
  ]
 }

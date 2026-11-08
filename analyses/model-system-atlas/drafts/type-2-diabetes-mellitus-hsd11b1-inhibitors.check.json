@@ -215,6 +215,36 @@
    "status_supported": true,
    "note": "PMC9811530 full text: quote verbatim; ACTH 'increased but within the normal range' in all dose groups, reverting after discontinuation. Paper cites earlier inhibitor trials (refs 12, 14, 15), not CRD, as the drafter says. 2015 8-Ks silent on HPA, NCT01874483 no results: 2022 dating holds.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PubMed 9405715 abstract: quote verbatim (incl. 'hyperglycamia' typo). Efficacy opener on the KO track, 1997, untested, class-level genetic stand-in; product_in_model false correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Vitae 8-K EX-99.1 2015-06-29 re-opened: quote verbatim; FPG called the primary efficacy data, so poc_gate holds (registry primary is safety). Tier 5 with trial_unreported and tier-1 model_src as rule 2 requires; KO predicted glucose lowering, contra 2015.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Europe PMC abstract of doi:10.1111/dom.14932 (first published 2022-12-22): quote verbatim. Higher-tier record of the same trial keeps contra (strengthens); epub 2022/print 2023 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

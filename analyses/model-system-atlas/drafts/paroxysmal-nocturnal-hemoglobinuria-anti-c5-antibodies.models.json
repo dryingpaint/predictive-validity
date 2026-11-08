@@ -8,7 +8,10 @@
   "Europe PMC: COMMODORE 1 crovalimab switch; crovalimab AND (polymorphism OR R885H) AND PNH",
   "Europe PMC full text PMC12035591 (Cosson 2025), PMC11707819 (pooled COMMODORE safety), PMC7082616 (Röth 2020, no full text)",
   "PubMed efetch PMID 35608260 (Nishimura 2022 BJH letter, no abstract); Unpaywall (not OA); Wiley, ScienceDirect, ASH pages (403)",
-  "WebSearch: Nishimura crovalimab C5 polymorphism COMPOSER subanalysis R885H outcomes"
+  "WebSearch: Nishimura crovalimab C5 polymorphism COMPOSER subanalysis R885H outcomes",
+  "GAP: Europe PMC (pozelimab AND cemdisiran); (pozelimab OR REGN3918) AND (cynomolgus OR preclinical OR R885H); read PMC9202903 (NHP pozelimab+cemdisiran PK/PD, 2022) and the EJHaem 2025 Phase 2 abstract (NCT04811716)",
+  "GAP: FDA bundle 761388 IntegratedR, C5 polymorphism / C5 SNP cohort of COMMODORE 1 nonrandomized arm (enrolment, baseline, discontinuations, efficacy tables)",
+  "GAP: fc.py search COMMODORE 1 C5 polymorphism cohort LDH / hemolysis control; Wiley ajh.27413 scrape (failed)"
  ],
  "added_models": [
   {
@@ -237,6 +240,29 @@
   "Tesidolumab (LFG316): no model-to-patient comparison found; development stopped for strategy.",
   "In-vitro C3-opsonization / extravascular hemolysis and strong-activation residual C5 activity models (Risitano 2009, Harder 2017): built and compared on eculizumab (non-member); no member-specific comparison found in the budget.",
   "Model-informed precision dosing of crovalimab (Ter Avest 2026, in silico): retrospective dosing-individualization study with no prospective patient comparison.",
-  "Crovalimab C5-polymorphism cohort of COMMODORE 1 (FDA 761388): cohort-level efficacy not reported in the review beyond one discontinuation for lack of efficacy; used as a flag in the R885H entry, not as its own entry."
+  "Crovalimab C5-polymorphism cohort of COMMODORE 1 (FDA 761388): cohort-level efficacy not reported in the review beyond one discontinuation for lack of efficacy; used as a flag in the R885H entry, not as its own entry.",
+  "Pozelimab + cemdisiran NHP PK/PD (PMC9202903, 2022) vs Phase 2 NCT04811716 / ACCESS-1 NCT05133531: every patient arm pairs pozelimab with cemdisiran, a non-member siRNA; patient_trials at most, no status change (checker)."
+ ],
+ "gaps": [
+  {
+   "lead": "Pozelimab + cemdisiran ACCESS-1 (NCT05133531) positive vs ravulizumab",
+   "outcome": "none",
+   "detail": "Combination with non-member siRNA cemdisiran: patient_trials at most, changes no status (checker); the NHP combination PK/PD study (PMC9202903) was not scored for the same reason."
+  },
+  {
+   "lead": "Tesidolumab stopped by Novartis for strategy, not efficacy",
+   "outcome": "tracked",
+   "detail": "efficacy #2 (c5-hemolysis-assay-human-serum) patient_trials NCT02534909 records tesidolumab as efficacious; the stop is a strategic choice, not a failure, so no entry."
+  },
+  {
+   "lead": "Pozelimab FDA review BLA 761339 is CHAPLE disease, not PNH",
+   "outcome": "none",
+   "detail": "Outside the tile's indication (CHAPLE, not PNH); the draft correctly does not use it."
+  },
+  {
+   "lead": "COMMODORE 1 C5-polymorphism cohort: one discontinuation for lack of efficacy (FDA 761388)",
+   "outcome": "verdict",
+   "detail": "Bears on engagement #4 (c5-r885h-variant-hemolysis-assay, 2022 same), whose note already flags it; review gives no genotype-level hemolysis data (cohort mixes polymorphisms, n=6), so status stays same pending a verdict note."
+  }
  ]
 }

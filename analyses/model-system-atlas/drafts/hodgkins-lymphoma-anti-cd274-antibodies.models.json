@@ -8,7 +8,8 @@
   "PubMed: KL-A167 (tagitanlimab) - phase 1, pharmacokinetics, preclinical",
   "PubMed: (TQB2450 OR benmelstobart) AND (phase 1 OR phase I)",
   "PubMed abstract: sugemalimab population PK model across phase I-III including lymphoma (Wang 2025, PMID 39389094)",
-  "Europe PMC: CS1001 Hodgkin; KL-A167 OR tagitanlimab; benmelstobart OR TQB2450 phase 1; Hodgkin AND anti-PD-L1 AND (xenograft OR organoid OR ex vivo OR mouse)"
+  "Europe PMC: CS1001 Hodgkin; KL-A167 OR tagitanlimab; benmelstobart OR TQB2450 phase 1; Hodgkin AND anti-PD-L1 AND (xenograft OR organoid OR ex vivo OR mouse)",
+  "Europe PMC full text PMC8722342 (Chen 2022) for CS1001 response vs 9p24.1 FISH; Europe PMC DOI:10.1177/17588359231220516 (TQB2450 phase 1, PMID 38188467, epub 2024-01-06)"
  ],
  "added_models": [
   {
@@ -177,5 +178,32 @@
   "Sugemalimab population PK model (Wang 2025, Br J Clin Pharmacol; EPAR simulations for a 1500 mg dose above 115 kg): fitted to the patient data it describes, with no prospective dose prediction checked in cHL patients",
   "Tagitanlimab (KL-A167) and benmelstobart (TQB2450): no public preclinical model, receptor-occupancy or dose-model data found; their cHL phase 2s (NCT03580564, NCT03800706) have no published results",
   "Patient-derived cHL cells, PDX or organoids for anti-PD-L1: none found (cHL has very few tumour cells and no established PDX use for this class)"
+ ],
+ "gaps": [
+  {
+   "lead": "Tier-5 corroboration of the CS1001 cHL failure (CStone 2019 annual results, HKEX 2020-03-26: cHL NDA conditional on data, none filed)",
+   "outcome": "verdict",
+   "detail": "Corroborates efficacy entry 2 (chl-9p24-pdl1-genetics, 2022 contra, checker verdict confirmed); goes in its confidence_note/patient_trials, no status or system change."
+  },
+  {
+   "lead": "Benmelstobart (TQB2450) phase 1, 1/3 Hodgkin lymphoma PR at 3 mg/kg (Ther Adv Med Oncol, PMID 38188467, epub 2024-01-06)",
+   "outcome": "verdict",
+   "detail": "Patient datum only, no model system; belongs in patient_trials of efficacy entry 2 (chl-9p24-pdl1-genetics); phase 1, n=3, not a primary endpoint, so it moves no status."
+  },
+  {
+   "lead": "Patient-level entry: Chen 2022 FISH, all five CS1001 non-responders 9p24.1-amplified",
+   "outcome": "verdict",
+   "detail": "Same system as track chl-9p24-pdl1-genetics (efficacy); a patient-level entry there is a draft edit (retrodiction true, FISH after outcome; five outcome-selected cases with no unamplified comparator), not a new system."
+  },
+  {
+   "lead": "No other model system compared with patients (KL-A167 NCT03580564, TQB2450 NCT03800706 cHL phase 2s unreported)",
+   "outcome": "none",
+   "detail": "Agrees with considered_not_added: no preclinical, occupancy or dose-model data for tagitanlimab or benmelstobart, and no published cHL phase 2 results to compare against."
+  },
+  {
+   "lead": "Gong et al. CII 2022 (PMID 34984540) as first-in-human source for sugemalimab engagement and dose",
+   "outcome": "verdict",
+   "detail": "Corrects engagement entry 2 (sugemalimab-invitro-pdl1-binding) and dose entry 2 (sugemalimab-cyno-tox) to year 2022 with the Gong citation; checker verdicts 'corrected' (adjudicated, rule 6) already cover both."
+  }
  ]
 }

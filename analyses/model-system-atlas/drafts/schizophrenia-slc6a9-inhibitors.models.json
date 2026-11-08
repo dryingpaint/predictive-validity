@@ -401,5 +401,32 @@
   "Mouse TUNL working-memory / NMDA-antagonist network paper (Psychopharmacology 2026, PMID 42405981): a rodent NMDA-antagonist cognition system of the kind the draft already tracks (rodent-mk801-cognition-eeg), and post-CONNEX",
   "Iclepertin patient EEG/MMN substudy (Surti 2023 cites 'improvements in cognition with BI 425809 were not correlated with MMN changes'): the engagement comparison for the existing rodent-mk801-cognition-eeg track, not a new system; not verified here",
   "LTP track engagement cell: the trial's own day-7 VEP-LTP replication is 'to be reported elsewhere' (Surti 2023), so no engagement entry was written for human-vep-ltp-neuroplasticity"
+ ],
+ "gaps": [
+  {
+   "lead": "Human VEP-LTP neuroplasticity in patients with PF-03463275 (D'Souza 2018; Surti 2023)",
+   "outcome": "tracked",
+   "detail": "human-vep-ltp-neuroplasticity: dose 5-6 and efficacy 6-7 (2018 untested, 2023 contra), already in added_models and merged into the draft"
+  },
+  {
+   "lead": "Human ketamine-challenge fMRI working memory in healthy volunteers with PF-03463275 (D'Souza 2018)",
+   "outcome": "tracked",
+   "detail": "human-ketamine-challenge-fmri-wm: efficacy 8-9 (2018 untested, 2023 neg); checker verdict on efficacy 9 (same + direction_only) and rule question 4 cover how it is scored"
+  },
+  {
+   "lead": "Roche media release 21 Jan 2014 (bitopertin FlashLyte/DayLyte phase 3 miss)",
+   "outcome": "verdict",
+   "detail": "dates rodent-nmda-antagonist-behaviour efficacy 3 (contra) to 2014; checker verdict 'corrected' (decision 7 with decision 2) already covers it; no bitopertin dose contra exists to redate"
+  },
+  {
+   "lead": "Boehringer Ingelheim CONNEX topline release, Jan 2025",
+   "outcome": "verdict",
+   "detail": "earliest public date for rodent-mk801-cognition-eeg efficacy 5 (contra, 2025); year unchanged, checker verdict 'confirmed' covers it; cite as earliest date only"
+  },
+  {
+   "lead": "Org 25935 human ketamine challenge (D'Souza 2012)",
+   "outcome": "none",
+   "detail": "Org 25935 is not a member drug (reviewed member list); same system tracked through PF-03463275 as human-ketamine-challenge-fmri-wm; non-member proxy is checker rule question 5"
+  }
  ]
 }

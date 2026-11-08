@@ -7,7 +7,8 @@
   "curl + pdftotext Breyanzi SBRA (fda.gov/media/146242), section 4 nonclinical pharmacology/toxicology",
   "PubMed esearch/efetch: Rossi 2018 polyfunctional CAR (29895668), Sommermeyer 2016 (26369987), Abramson 2020 TRANSCEND (32888407), Locke 2020 product attributes (33035333)",
   "ClinicalTrials.gov API: NCT02631044 (no results posted), NCT00924326 (results 2019-03-21)",
-  "Reused verified Giavridis 2018 / Norelli 2018 quotes from the ALL CD19 tile's models file (same papers)"
+  "Reused verified Giavridis 2018 / Norelli 2018 quotes from the ALL CD19 tile's models file (same papers)",
+  "Europe PMC: (relmacabtagene OR relma-cel OR JWCAR029) [178 hits] and AND (mice OR xenograft OR in vitro OR ex vivo OR preclinical) [131 hits]: only clinical, real-world, review and patient-covariate papers (e.g. 38097551 scRNA of patient blood)"
  ],
  "added_models": [
   {
@@ -367,5 +368,42 @@
   "In-silico cellular-kinetic / QSP models of axi-cel (e.g. ZUMA-1 kinetics fits): fitted to clinical data, none used to choose a dose prospectively found",
   "Liso-cel xenograft dose-dependence: model stated no human dose, exposure or margin, so no dose cell added",
   "Kite axi-cel nonclinical package: the murine surrogate syngeneic model the draft already tracks"
+ ],
+ "gaps": [
+  {
+   "lead": "Norelli 2018 humanized SGM3 CRS/neurotoxicity model (PMID 29808007)",
+   "outcome": "tracked",
+   "detail": "husgm3-humanized-car-crs-neurotox, safety entries 5 (untested 2018) and 6 (retro 2018)"
+  },
+  {
+   "lead": "Giavridis 2018 SCID-beige CRS model (PMID 29808005)",
+   "outcome": "tracked",
+   "detail": "scid-beige-raji-ip-1928z-crs, safety entries 3 (untested 2018) and 4 (retro 2018)"
+  },
+  {
+   "lead": "Taraseviciute 2018 rhesus macaque CAR T neurotoxicity model (PMID 29563103)",
+   "outcome": "none",
+   "detail": "CD20 CAR: sibling target outside the CD19 class (mechanism rule); not added"
+  },
+  {
+   "lead": "Kochenderfer 2010 Blood case report: earlier B-cell aplasia comparison",
+   "outcome": "verdict",
+   "detail": "Re-dates an existing entry on syngeneic-mcd19-car-mouse (safety 2, and engagement 2 already adjudicated to 2010), imported_from follicular lymphoma; needs a checker verdict, not a new system"
+  },
+  {
+   "lead": "axicabtagene ciloleucel",
+   "outcome": "tracked",
+   "detail": "syngeneic-mcd19-car-mouse (Kite/NCI murine surrogate): engagement 2, efficacy 2 (Neelapu 2017), safety 2 (CBER Yescarta review); also exvivo-car-product-polyfunctionality-psi efficacy 6"
+  },
+  {
+   "lead": "lisocabtagene maraleucel",
+   "outcome": "tracked",
+   "detail": "nsg-cd19-xenograft-defined-cd4cd8-car, efficacy 3 (untested 2015) and 4 (same 2020, TRANSCEND ORR 73%)"
+  },
+  {
+   "lead": "relmacabtagene autoleucel",
+   "outcome": "none",
+   "detail": "Europe PMC relma-cel/JWCAR029 searches (incl. preclinical terms) found no published model-to-patient comparison; licensed JCAR017 platform, no separate nonclinical package public"
+  }
  ]
 }

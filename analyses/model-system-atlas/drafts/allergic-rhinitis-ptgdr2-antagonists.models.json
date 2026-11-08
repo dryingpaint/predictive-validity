@@ -28,5 +28,22 @@
   "PTGDR2/CRTH2 polymorphisms in AR: association studies only; no comparison with response to a member drug",
   "Sidharta 2014 setipiprant Phase 1 and Erpenbeck 2016 fevipiprant Phase 1: PK/tolerability with no ex-vivo PD model readout (as the checker found)",
   "Horak 2012 OC000459 Vienna chamber and the Actelion 2012-04-02 release: sibling and patient-side sources for the existing chamber track, not model systems; left to the adjudicator per the task"
+ ],
+ "gaps": [
+  {
+   "lead": "Actelion media release 2012-04-02 (setipiprant Phase 3 SAR miss, development stopped; via RTTNews/PharmaTimes)",
+   "outcome": "verdict",
+   "detail": "patient-side date only, no new system; dates allergen-exposure-chamber efficacy#2 and setipiprant-asthma-allergen-challenge dose#3/efficacy#6 (draft 2017); checker verdicts already propose 2013/2014 (later model half) and rule question 1 asks whether the tier-5 2012 date governs"
+  },
+  {
+   "lead": "Horak 2012 Allergy (PMID 23025511): OC000459 Vienna grass-pollen chamber, n=35",
+   "outcome": "verdict",
+   "detail": "sibling model-side source for existing allergen-exposure-chamber track (efficacy#2 contra, engagement#2); would move efficacy#2 year to 2012 if sibling proxies count on the model side; covered by the efficacy#2 corrected verdict note"
+  },
+  {
+   "lead": "No untracked model system found (fevipiprant/setipiprant Phase 1, ARRY-063 OVA mouse, NCT01804400, ramatroban)",
+   "outcome": "none",
+   "detail": "checker's own negative finding; Phase 1 papers lack ex vivo PD, ARRY-063 is the tracked ova-mouse-allergic-rhinitis system, NCT01804400 unreported, ramatroban outside the class (non-selective); searched list in this file agrees"
+  }
  ]
 }

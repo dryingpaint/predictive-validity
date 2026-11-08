@@ -63,8 +63,8 @@
       "src": "https://doi.org/10.1073/pnas.1007394107",
       "srcLabel": "Lázár-Molnár 2010",
       "quote": "PD-1-deficient mice showed dramatically reduced survival compared with wild-type mice.",
-      "reason": "Only member TB datum is chemo-confounded",
-      "judgement": "Opening entry for the infection-exacerbation system the penpulimab review cites (Lázár-Molnár 2010) and the label's section 13.2 carries, so model_filed is true. Kept as its own track rather than folded into the draft's pd1-knockout-mouse (Nishimura 1999): the same genotype, but a different experimental system (aerosol Mtb challenge) making a different prediction (lethal failure to control a primary infection, not autoimmunity), which the run's identity rule separates. No product in the model: germline absence of PD-1, no antibody. Patient side considered: the penpulimab FDA review's AK105-304 combination-therapy SAE list (penpulimab 200 mg Q3W plus gemcitabine and cisplatin/carboplatin, nasopharyngeal carcinoma, n=146) names 'pulmonary tuberculosis' once among SAEs the investigator deemed drug-related, and no TB appears elsewhere in the review. That is the only member-drug patient datum on this prediction: n=1, chemotherapy co-administered (itself a TB risk), a TB-endemic population, no comparator rate and no FDA attribution, so the antibody's contribution is unisolated and, by the checker's standing rule on this tile (efficacy 4 and dose 2 corrected to untested for the same reason), it cannot carry same. PubMed has no peer-reviewed TB case under camrelizumab, penpulimab, serplulimab or spartalizumab; the ICI-TB series and reviews name only non-members."
+      "reason": "Member TB data chemo-confounded or pooled",
+      "judgement": "Opening entry for the infection-exacerbation system the penpulimab review cites (Lázár-Molnár 2010) and the label's section 13.2 carries, so model_filed is true. Kept as its own track rather than folded into the draft's pd1-knockout-mouse (Nishimura 1999): the same genotype, but a different experimental system (aerosol Mtb challenge) making a different prediction (lethal failure to control a primary infection, not autoimmunity), which the run's identity rule separates. No product in the model: germline absence of PD-1, no antibody. Patient side considered: the penpulimab FDA review's AK105-304 combination-therapy SAE list (penpulimab 200 mg Q3W plus gemcitabine and cisplatin/carboplatin, nasopharyngeal carcinoma, n=146) names 'pulmonary tuberculosis' once among SAEs the investigator deemed drug-related, and no TB appears elsewhere in the review. That is the only member-drug patient datum on this prediction: n=1, chemotherapy co-administered (itself a TB risk), a TB-endemic population, no comparator rate and no FDA attribution, so the antibody's contribution is unisolated and, by the checker's standing rule on this tile (efficacy 4 and dose 2 corrected to untested for the same reason), it cannot carry same. The one peer-reviewed member case, Lin 2023 (Front Immunol 14:1162190, PMID 37304292), is pulmonary TB after one cycle of camrelizumab plus chemotherapy in lung squamous cell carcinoma: chemotherapy-combined, so it does not isolate the antibody either. Two 2026 cohorts add no isolated member signal: the Zhongshan LTBI/TB-history cohort (PMID 42733647; camrelizumab n=3, penpulimab n=1, none developed active TB) and the Shenzhen real-world cohort (PMID 42751276; camrelizumab and serplulimab pooled among 841 anti-PD-1 patients, no per-drug counts)."
      }
     ]
    }
@@ -111,7 +111,7 @@
       "srcLabel": "Kauffman 2021",
       "quote": "Animals treated with anti-PD-1 monoclonal antibody developed worse disease and higher granuloma bacterial loads compared with isotype control-treated monkeys.",
       "reason": "Retrodictive macaque model; member datum confounded",
-      "judgement": "Opening entry for the second infection system the penpulimab review cites and label section 13.2 carries (model_filed true). A separate track from the knockout mouse under the run's identity rule: pharmacological PD-1 blockade of an established infection in a primate, predicting exacerbation of controlled disease, versus germline absence during primary infection in mice predicting failure to survive it. The antibody is a primatized anti-PD-1, not a member (product_in_model false). The study was run after the clinic already knew that anti-PD-1 reactivates TB (16 nivolumab/pembrolizumab cases reviewed in Eur J Cancer 2020), so any comparison later scored on this track is a retrodiction under decision 10 and can only be retro or contra; retrodiction is recorded false here because the status is untested and lint allows the flag only on a scored entry. Patient side considered: the penpulimab FDA review's AK105-304 combination-therapy SAE list (penpulimab 200 mg Q3W plus gemcitabine and cisplatin/carboplatin, nasopharyngeal carcinoma, n=146) names 'pulmonary tuberculosis' once among SAEs the investigator deemed drug-related, and no TB appears elsewhere in the review. That is the only member-drug patient datum on this prediction: n=1, chemotherapy co-administered (itself a TB risk), a TB-endemic population, no comparator rate and no FDA attribution, so the antibody's contribution is unisolated and, by the checker's standing rule on this tile (efficacy 4 and dose 2 corrected to untested for the same reason), it cannot carry same. PubMed has no peer-reviewed TB case under camrelizumab, penpulimab, serplulimab or spartalizumab; the ICI-TB series and reviews name only non-members."
+      "judgement": "Opening entry for the second infection system the penpulimab review cites and label section 13.2 carries (model_filed true). A separate track from the knockout mouse under the run's identity rule: pharmacological PD-1 blockade of an established infection in a primate, predicting exacerbation of controlled disease, versus germline absence during primary infection in mice predicting failure to survive it. The antibody is a primatized anti-PD-1, not a member (product_in_model false). The study was run after the clinic already knew that anti-PD-1 reactivates TB (16 nivolumab/pembrolizumab cases reviewed in Eur J Cancer 2020), so any comparison later scored on this track is a retrodiction under decision 10 and can only be retro or contra; retrodiction is recorded false here because the status is untested and lint allows the flag only on a scored entry. Patient side considered: the penpulimab FDA review's AK105-304 combination-therapy SAE list (penpulimab 200 mg Q3W plus gemcitabine and cisplatin/carboplatin, nasopharyngeal carcinoma, n=146) names 'pulmonary tuberculosis' once among SAEs the investigator deemed drug-related, and no TB appears elsewhere in the review. That is the only member-drug patient datum on this prediction: n=1, chemotherapy co-administered (itself a TB risk), a TB-endemic population, no comparator rate and no FDA attribution, so the antibody's contribution is unisolated and, by the checker's standing rule on this tile (efficacy 4 and dose 2 corrected to untested for the same reason), it cannot carry same. The one peer-reviewed member case, Lin 2023 (Front Immunol 14:1162190, PMID 37304292), is pulmonary TB after one cycle of camrelizumab plus chemotherapy in lung squamous cell carcinoma: chemotherapy-combined, so it does not isolate the antibody either. Two 2026 cohorts add no isolated member signal: the Zhongshan LTBI/TB-history cohort (PMID 42733647; camrelizumab n=3, penpulimab n=1, none developed active TB) and the Shenzhen real-world cohort (PMID 42751276; camrelizumab and serplulimab pooled among 841 anti-PD-1 patients, no per-drug counts)."
      }
     ]
    }
@@ -119,7 +119,7 @@
  ],
  "considered_not_added": [
   "Penpulimab AK105-304 'pulmonary tuberculosis' SAE (FDA review, investigator-attributed drug-related, penpulimab plus gemcitabine/platinum in nasopharyngeal carcinoma, n=1, no comparator rate): the only member-drug patient datum on the Mtb prediction; chemotherapy confounds it and the checker's combination rule on this tile makes it unisolated, so both Mtb tracks stay untested and cite it in their judgements rather than scoring same or retro.",
-  "Peer-reviewed TB under a member: none found for camrelizumab, penpulimab, serplulimab or spartalizumab. The ICI-TB literature (Eur J Cancer 2020 systematic review PMID 32375103; Thorax 2022 pharmacovigilance PMID 35277447; J Clin Pharmacol 2023 case series PMID 36309847; Oncologist 2024 cohort PMID 38227604; Front Pharmacol 2025 real-world cohort PMID 41322314) is class-level and names no member in abstract or open-access text; non-member patient data are set aside, not scored.",
+  "Peer-reviewed TB under a member: only Lin 2023 (PMID 37304292), camrelizumab plus chemotherapy, chemo-confounded; cited in both Mtb tracks' judgements. The ICI-TB literature (Eur J Cancer 2020 systematic review PMID 32375103; Thorax 2022 pharmacovigilance PMID 35277447; J Clin Pharmacol 2023 case series PMID 36309847; Oncologist 2024 cohort PMID 38227604; Front Pharmacol 2025 real-world cohort PMID 41322314) is class-level and names no member in abstract or open-access text; non-member patient data are set aside, not scored.",
   "FDA complete response letters for camrelizumab plus rivoceranib in unresectable HCC (2024-05-16, 2025, 2026-07-10; Elevar press releases, tier 5): cGMP/inspection-based, not efficacy; no model comparison and no status change on any track.",
   "Patient-derived organotypic tumour spheroids predicting lenvatinib plus tislelizumab response in HCC (Wang 2026, Front Oncol, PMID 42311270): tislelizumab is not a tile member; the member list is not widened, so this patient-level ex-vivo system does not score.",
   "Camrelizumab population-PK model with model-based Monte Carlo flat-dose simulation (Wang 2021, Acta Pharmacol Sin, PMID 33154554, epub 2020-11-05; 200 mg Q2W and 3 mg/kg Q2W 'provided similar exposure distributions'): an in-silico dose system for a member, but published after the 3 mg/kg HCC phase 2 (Qin 2020) and tested in HCC only inside CARES-310's camrelizumab-plus-rivoceranib arm, which the checker's combination rule leaves unisolated; the NMPA flat-dose label switch would be the regulator-reliance datum but no NMPA document is in the bundle. No admissible comparison, so not added.",
@@ -128,5 +128,37 @@
   "Immune-humanized PDX of hormone-receptor-positive breast cancer with anti-PD-1 mAbs (PMID 37533997): cross-indication, no patient comparison; no HCC organoid, PDX co-clinical or ex-vivo sensitivity system with a member antibody was found.",
   "Serplulimab (HLX10) and spartalizumab (PDR001): PubMed in-vivo, xenograft and monkey searches return only clinical papers; no public model to track, agreeing with the checker.",
   "Systems the draft already tracks (hcc-syngeneic-mouse-pd1-surrogate, in-vitro-pd1-occupancy, cyno-monkey-ro, poppk-regimen-simulation, mc38-mouse-pd1-blockade, pd1-knockout-mouse, receptor-proteome-screen): skipped."
+ ],
+ "gaps": [
+  {
+   "lead": "FDA complete response letters for camrelizumab plus rivoceranib in HCC (2024-05-16, 2025, 2026-07-10)",
+   "outcome": "none",
+   "detail": "cGMP/inspection-based regulatory outcome, not a patient efficacy or safety result; compares with no model system, so no track or status changes"
+  },
+  {
+   "lead": "Patient-derived organotypic spheroids predicting lenvatinib plus tislelizumab response (Wang 2026, PMID 42311270)",
+   "outcome": "none",
+   "detail": "Tislelizumab is not a tile member (members: camrelizumab, penpulimab, serplulimab, spartalizumab); the member list is not widened, so it does not score"
+  },
+  {
+   "lead": "Penpulimab review's Mtb-infected PD-1 knockout mice and anti-PD-1 in Mtb-infected monkeys (Kauffman 2021), label 13.2",
+   "outcome": "tracked",
+   "detail": "mtb-infected-pd1-knockout-mouse and mtb-rhesus-anti-pd1-blockade, safety cell, untested openers (2010, 2021) in added_models; draft safety 5/6 confirmed"
+  },
+  {
+   "lead": "No public in-vivo model for camrelizumab, serplulimab or spartalizumab",
+   "outcome": "none",
+   "detail": "PubMed in-vivo/xenograft/monkey/humanized searches for each return only clinical or non-HCC papers (see searched); no member-own animal track to add"
+  },
+  {
+   "lead": "Lin 2023 camrelizumab TB case (Front Immunol, PMID 37304292)",
+   "outcome": "verdict",
+   "detail": "Corrects judgement text of mtb-infected-pd1-knockout-mouse and mtb-rhesus-anti-pd1-blockade safety 1 (now cite it); chemotherapy-combined, so untested stands on both"
+  },
+  {
+   "lead": "Zhongshan (PMID 42733647) and Shenzhen (PMID 42751276) 2026 ICI-TB cohorts",
+   "outcome": "none",
+   "detail": "No member isolated (camrelizumab n=3/penpulimab n=1 with no TB; Shenzhen pools members without per-drug counts); cited in both Mtb judgements, no status change"
+  }
  ]
 }

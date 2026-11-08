@@ -10,7 +10,8 @@
   "Europe PMC: (laruparetigene OR AGTC-501 OR cotoretigene OR AAV8-RPGR OR AAV-RPGR) AND (organoid OR patient-derived OR iPSC OR in silico OR model) 2016-2026 -- Sourd 2026 NHP (42137601)",
   "fc.py search: LUMEOS botaretigene phase 3 primary endpoint; J&J press release bota-vec LUMEOS",
   "fc.py scrape: Fierce Biotech 5 May 2025; J&J Medical Connect LUMEOS page (404); Foundation Fighting Blindness ARVO 2025; MeiraGTx SEC EX-99.1 16 Apr 2026",
-  "ClinicalTrials.gov API: NCT04671433 (completed, no results posted)"
+  "ClinicalTrials.gov API: NCT04671433 (completed, no results posted)",
+  "Europe PMC gap pass: (hRKp OR rhodopsin kinase) AND RPGR AND (AAV5 OR AAV2/5 OR MeiraGTx) AND (mice OR dog OR primate) -- no bota-vec-specific animal study; only reviews, Sladen 2024 organoids, Beltran 2017"
  ],
  "added_models": [
   {
@@ -156,5 +157,42 @@
   "rAAV5-RPGR ORF15 in Rpgr-KO mice (Chen 2026, AJO): a non-member product, not compared with patients",
   "2026 meta-analyses (Chen 2026 J Transl Med; Montes-de-Oca-Saucedo 2026 J Clin Med; Yang 2026 TVST): tier 4 patient-side only, no model system",
   "In-silico/QSP dose models, PDX, ex-vivo patient sensitivity, human genetic models: none found for AAV-RPGR"
+ ],
+ "gaps": [
+  {
+   "lead": "Sladen 2024 RPGR-KO iPSC retinal organoids with the bota-vec construct (PMID 38339118)",
+   "outcome": "added",
+   "detail": "rpgr-ko-ipsc-retinal-organoid-botavec: engagement 2024 untested; efficacy 2024 untested -> 2025 contra (LUMEOS VMA primary missed)"
+  },
+  {
+   "lead": "Bota-vec phase 1/2, Michaelides 2024 AJO (PMID 38871269)",
+   "outcome": "none",
+   "detail": "Patient-side only; no bota-vec animal model located to pair it with (Europe PMC search), and the organoid track bears on engagement/efficacy, not safety"
+  },
+  {
+   "lead": "XLPRA1/XLPRA2 dogs with AAV2/5-hRPGR, Beltran 2012 PNAS (PMID 22308428)",
+   "outcome": "tracked",
+   "detail": "Same XLPRA2 dog system as xlpra2-dog-agtc501 (dose/efficacy/safety); Beltran 2017 optimised it into AGTC-501, not bota-vec"
+  },
+  {
+   "lead": "2026 AAV-RPGR meta-analyses (J Transl Med; J Clin Med)",
+   "outcome": "none",
+   "detail": "Tier 4 patient-side pooling with no model system; adds no track and corrects no existing entry"
+  },
+  {
+   "lead": "botaretigene sparoparvovec",
+   "outcome": "added",
+   "detail": "rpgr-ko-ipsc-retinal-organoid-botavec (efficacy 2025 contra); no own mouse/dog/NHP basis published"
+  },
+  {
+   "lead": "cotoretigene toliparvovec",
+   "outcome": "tracked",
+   "detail": "rpgr-ko-rd9-mouse-aav8-corpgr (AAV8-coRPGR = cotoretigene): efficacy 2021 contra (XIRIUS), safety 2020 contra"
+  },
+  {
+   "lead": "laruparetigene zovaparvovec",
+   "outcome": "tracked",
+   "detail": "xlpra2-dog-agtc501 (AGTC-501 = laru-zova): dose 2024 same, efficacy 2026 same (VISTA), safety 2024 same"
+  }
  ]
 }

@@ -102,7 +102,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT00875277", "registry_date": "2019-12-11", "doi": null, "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."}
+       {
+        "nct": "NCT00875277",
+        "registry_date": "2019-12-11",
+        "doi": null,
+        "quote": "Change in Total Clinical Score (TCS) of the Clinical Symptoms Compared to Baseline (Day 1): LEO 29102 Cream Vehicle -1.60; LEO 29102 Cream -3.04; P<0.001."
+       }
       ]
      }
     ]
@@ -116,5 +121,37 @@
   "Topical photodynamic therapy plus crisaborole in imiquimod mice (J Med Chem 2025, doi 10.1021/acs.jmedchem.5c01266): same imiquimod system, a combination with a non-member agent, no stated patient comparison; not added.",
   "LEO 29102 human skin open-flow microperfusion cAMP (Pharm Res 2020, doi 10.1007/s11095-020-02962-1) and crisaborole lesional biomarkers (JACI 2019): atopic dermatitis; engagement does not import across diseases.",
   "Patient-derived cells or skin, ex-vivo drug sensitivity, human challenge or genetic models, in-silico/QSP or dermal PBPK dose models, and regulator reliance on model data: none found for crisaborole, DRM02 or LEO 29102 in psoriasis (searches listed above). Apremilast and roflumilast models were not widened into this tile."
+ ],
+ "gaps": [
+  {
+   "lead": "Dong 2016 JPET (PMID 27353073) benzoxaborole Th17-cytokine models after the psoriasis trials",
+   "outcome": "verdict",
+   "detail": "Same systems as existing tracks: owed 2016 retro entries (comparison_stated true) on pde4-human-pbmc-cytokine-release (engagement/efficacy, product_in_model true) and pde4-mouse-phorbol-ear-edema efficacy (compd3, product_in_model false), after efficacy 2-3; covered by check missing item 1 and 5, contra vs NCT01300052 is the adjudicator's call"
+  },
+  {
+   "lead": "Youn 2023 Exp Dermatol (PMID 36461082) crisaborole in mouse psoriasis-like dermatitis",
+   "outcome": "verdict",
+   "detail": "Imiquimod-induced, so existing track pde4-mouse-imiquimod-psoriasiform (efficacy 6): owed a 2022 retro entry, product_in_model true, comparison_stated true, vs Hashim 2020; covered by check missing items 2 and 4"
+  },
+  {
+   "lead": "Not missing: ClinPharmR psoriasis PK studies; LEO 29102 explant cAMP and crisaborole AD biomarkers",
+   "outcome": "none",
+   "detail": "Topical with no model exposure target gives no dose comparison (dose 1-2 stand); AD engagement does not import across diseases (only safety imports)"
+  },
+  {
+   "lead": "[models check] Youn 2023 inducer confirmed as imiquimod",
+   "outcome": "verdict",
+   "detail": "Resolves lead 2: retrodiction entry on pde4-mouse-imiquimod-psoriasiform efficacy track (after efficacy 6), not a new model_id"
+  },
+  {
+   "lead": "[models check] Dong 2016 adds no model_id",
+   "outcome": "verdict",
+   "detail": "Agrees with lead 1: 2016 retro entries owed on pde4-human-pbmc-cytokine-release and pde4-mouse-phorbol-ear-edema; no new system"
+  },
+  {
+   "lead": "[models check] Hashim 2020 JAAD (PMID 31279028) crisaborole intertriginous/facial psoriasis trial",
+   "outcome": "verdict",
+   "detail": "Patient trial, not a model: owed as a patient_trials row on pde4-mouse-phorbol-ear-edema efficacy 3 (2011 contra stands, decision 6/7) if in population; rule question 10"
+  }
  ]
 }

@@ -10,7 +10,8 @@
   "Europe PMC: fruquintinib AND (PBPK OR physiologically based OR population pharmacokinetic OR exposure-response)",
   "Europe PMC full text: PMC13168235 (El-Khoury 2026 patient-derived spheroids), PMC13400167 (Dai 2026 vascularized tumoroid-on-a-chip); abstracts PMID 40946589, 41246975, 29675102, 33790633",
   "Sun 2014 full text (PMC4622458) via fc.py scrape: PDX tumour types (Europe PMC fullTextXML returned an error)",
-  "ClinicalTrials.gov API: fruquintinib DDI studies (NCT04557397 CYP3A inhibitor/inducer, first posted 2020-09-21, no results posted; NCT05368805 P-gp/BCRP)"
+  "ClinicalTrials.gov API: fruquintinib DDI studies (NCT04557397 CYP3A inhibitor/inducer, first posted 2020-09-21, no results posted; NCT05368805 P-gp/BCRP)",
+  "Gap pass: Europe PMC abstract of Eskens 2011 (PMID 21976547) read to settle the engagement lead"
  ],
  "added_models": [
   {
@@ -307,5 +308,32 @@
   "Patient-derived tumour-like cell clusters for CRC chemosensitivity (Transl Oncol 2025, doi 10.1016/j.tranon.2025.102518): chemotherapy only, no VEGFR inhibitor tested",
   "Sun 2014 mouse lung VEGF-induced pVEGFR2 PD model: already folded into the draft's crc-xenograft-rodent engagement and dose entries",
   "Zebrafish xenografts, human challenge models, organoids with a member drug compared to that patient's response, and cross-indication (RCC to CRC) use of tivozanib: no source found for member drugs in CRC; BATON-CRC is already in the draft's patient_trials"
+ ],
+ "gaps": [
+  {
+   "lead": "Eskens 2011 tivozanib phase I DCE-MRI / VEGF-A / sVEGFR-2 readout (PMID 21976547)",
+   "outcome": "verdict",
+   "detail": "Corrects crc-xenograft-rodent engagement: needs a 2011 'same' entry after engagement[0] (Nakamura 2006, tivozanib); abstract also says 'Animal data incorrectly predicted toxicity' (DLTs at 2.0 mg start dose), a 2011 contra the safety cell (tox-rodent-nonrodent) lacks; patient-side readout, not a model"
+  },
+  {
+   "lead": "EMA Fotivda EPAR 2017 (safety-pharmacology BP comparison; nude-rat 14-xenograft panel incl. LoVo)",
+   "outcome": "verdict",
+   "detail": "Source/date correction: safety[1] (tox-rodent-nonrodent, FDA tivozanib review 2021) should cite the 2017 EPAR as the earlier regulator record; nude-rat panel is the existing crc-xenograft-rodent system (cite on its tivozanib entries), not a new model"
+  },
+  {
+   "lead": "Rivoceranib (apatinib) CRC cell-line xenografts (Acta Pharmacol Sin 2019; Onco Targets Ther 2020)",
+   "outcome": "verdict",
+   "detail": "Same system as crc-xenograft-rodent; corrects the efficacy note's 'no CRC-specific preclinical model' wording; rivoceranib CRC patient data are single-arm only, so no status changes and no new track"
+  },
+  {
+   "lead": "Sun 2014 fruquintinib PDX panel (colorectal PDX?)",
+   "outcome": "tracked",
+   "detail": "crc-pdx-mouse, efficacy (2014 untested Sun 2014; 2017 same Xu 2017) in added_models; full text confirms colon PDX COL1T0117P4"
+  },
+  {
+   "lead": "Patient-derived organoids/ex-vivo cells vs response; randomized rivoceranib CRC trial; FRUQUITAS",
+   "outcome": "none",
+   "detail": "No member-drug model-to-patient comparison found; spheroid and tumoroid-chip screens tracked as untested (crc-patient-spheroids, crc-vascularized-tumoroid-chip); no controlled rivoceranib CRC trial; FRUQUITAS not read out"
+  }
  ]
 }

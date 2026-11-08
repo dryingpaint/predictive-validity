@@ -14,7 +14,10 @@
   "PubMed: ST6GAL1 AND lenvatinib; FGF19 AND lenvatinib AND hepatocellular AND patients AND (response OR survival)",
   "PubMed: (zebrafish OR chick chorioallantoic OR co-clinical) AND hepatocellular AND (lenvatinib OR regorafenib) AND patients",
   "Full texts read: Tamai 2017 (PMC5575539), Finn 2021 (PMC9401497), Ji 2023 LICOB (PMC10949980 via pmc.ncbi.nlm.nih.gov), JHEP Rep 2025 review 10.1016/j.jhepr.2025.101426 (for what Yang 2024 compared); fc.py scrape of Myojin 2021 (abstract/references only) and of Cancer Cell 2024 (blocked twice); fc.py search for Yang 2024 text",
-  "ClinicalTrials.gov API v2: NCT01761266 (REFLECT, results first posted 2018-09-25), NCT00946153 (lenvatinib HCC Study 202, results first posted 2019-02-01)"
+  "ClinicalTrials.gov API v2: NCT01761266 (REFLECT, results first posted 2018-09-25), NCT00946153 (lenvatinib HCC Study 202, results first posted 2019-02-01)",
+  "Gap pass: Europe PMC DOI check 10.1158/1078-0432.CCR-14-0725 (Tai 2014, epub 2014-09-23, PMID 25248379, PLC5 xenograft 20/40 mg/kg regorafenib)",
+  "Gap pass: FDA 2017 regorafenib (203085 S-007) and 2018 lenvatinib (206947 S-007) HCC supplement review TOC URLs: 404; fc.py search found only labels",
+  "Gap pass: EMA Stivarga II/0020 variation report (EMA/467788/2017) and Lenvima II/0011-G variation report (EMA/582721/2018) downloaded and grepped for non-clinical/xenograft/FGF19/FGF23"
  ],
  "added_models": [
   {
@@ -269,5 +272,32 @@
   "Human genetic or human challenge models: none exist for VEGFR multikinase inhibition in HCC",
   "In-silico dose models for regorafenib, donafenib, catequentinib/anlotinib: regorafenib's 160 mg came from a phase 1 MTD and no model-based dose choice with a patient comparison was found; donafenib and anlotinib have no HCC model comparison in PubMed/Europe PMC (abstract level)",
   "Chinese real-world lenvatinib popPK (J Clin Pharmacol 2022, doi:10.1002/jcph.2103): a post-hoc PK description, no prospective prediction compared with patients"
+ ],
+ "gaps": [
+  {
+   "lead": "Tai 2014 Clin Cancer Res regorafenib PLC5 xenograft (doi:10.1158/1078-0432.CCR-14-0725)",
+   "outcome": "verdict",
+   "detail": "Same system as hcc-human-xenograft-immunodeficient-mouse; needs a prospective regorafenib entry on that track's efficacy cell (model 2014, paired with Bruix 2017 'same' 2016) ahead of the Kissel 2017 retro entry (efficacy index 4); checker missing item covers it; not a new system"
+  },
+  {
+   "lead": "Patient-derived liver-cancer organoid biobanks (Yang 2024 Cancer Cell; Ji 2023 LICOB)",
+   "outcome": "tracked",
+   "detail": "hcc-patient-derived-organoid-biobank, efficacy: 2022 untested (Cell Oncol 2022) and 2024 untested (Yang 2024); LICOB PDX listed in considered_not_added"
+  },
+  {
+   "lead": "FGF19-driven HCC as patient-level lenvatinib prediction (Matsuki 2018; Myojin 2021)",
+   "outcome": "tracked",
+   "detail": "hcc-multidriver-transposon-mouse-tki-screen, efficacy: 2020 untested then 2020 same (Myojin 2021, prediction_level patient); Matsuki 2018 Hep3B FGF19 xenograft sits on hcc-human-xenograft-immunodeficient-mouse"
+  },
+  {
+   "lead": "Finn 2021 REFLECT PD biomarkers (doi:10.1158/1078-0432.CCR-20-4219): serum FGF19/FGF23 rise on lenvatinib",
+   "outcome": "verdict",
+   "detail": "Patient side for engagement on hcc-human-xenograft-immunodeficient-mouse (engagement index 2, 2015 untested; model readout pFRS2/MVD); a downstream entry turns on the checker's open rule question on analyte concordance; not a new system"
+  },
+  {
+   "lead": "FDA regorafenib HCC sNDA review 2017, FDA lenvatinib HCC sNDA review 2018, EMA Lenvima HCC variation report",
+   "outcome": "verdict",
+   "detail": "FDA supplement reviews 404. EMA Stivarga II/0020 (2017): no new non-clinical data, relies on filed mouse hepatoma; nothing to change. EMA Lenvima II/0011-G (adopted 2018-06-28): 5 HCC xenografts, lenvatinib 1.5-2x sorafenib; tier-2 model side for xenograft efficacy index 5 (Kudo 2018), supports over_predicted; no earlier date"
+  }
  ]
 }

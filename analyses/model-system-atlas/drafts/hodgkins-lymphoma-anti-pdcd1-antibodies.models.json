@@ -8,7 +8,8 @@
   "PubMed: SHR-1210 polyspecificity VEGFR2 receptor proteome screen (Finlay 2019, PMID 30541416)",
   "PubMed: camrelizumab / SHR-1210 Hodgkin lymphoma phase 2 (Song 2019, PMID 31420358; Nie 2019 decitabine combination, PMID 31039052)",
   "PubMed: nivolumab flat dose 240 mg / 480 mg population PK model validation against observed exposure",
-  "ClinicalTrials.gov v2 API: camrelizumab Hodgkin studies (no results-posted record found for the phase 2)"
+  "ClinicalTrials.gov v2 API: camrelizumab Hodgkin studies (no results-posted record found for the phase 2)",
+  "Gap pass: Europe PMC for tislelizumab, penpulimab, zimberelimab Hodgkin trials and Fc-engineering (FcgammaR-null) preclinical claims compared with patients"
  ],
  "added_models": [
   {
@@ -168,5 +169,27 @@
   "Decitabine-primed anti-PD-1 in PD-1-refractory cHL (Nie 2019; Blood 2024 tumour-microenvironment work): combination-therapy biology, not a model whose prediction for the class was compared with patients.",
   "PD-1 knockout M. tuberculosis infection model (cited in every member label): no cHL patient comparison of infection severity found.",
   "Pembrolizumab models (mouse/PK-PD 200 mg flat dose): pembrolizumab is not a member of this class table."
+ ],
+ "gaps": [
+  {
+   "lead": "FDA Opdivo label 05/2016 (125554s019) section 5.10 allogeneic HSCT complications as earlier nivolumab-specific patient side for the mouse-GVHD track",
+   "outcome": "verdict",
+   "detail": "mouse-gvhd-pd1-blockade safety index 4: checker corrected/adjudicated to same, year 2016, src the May 2016 label"
+  },
+  {
+   "lead": "CheckMate 205 (Younes 2016) as the scored efficacy entry on the 9p24.1 cell-line track",
+   "outcome": "verdict",
+   "detail": "chl-9p24-cell-lines-hrs efficacy index 2: checker corrected/adjudicated to same, year 2016, src Younes 2016 (primary ORR endpoint)"
+  },
+  {
+   "lead": "PD-1 knockout mouse autoimmunity (Nishimura 1999/2001) has no safety track",
+   "outcome": "tracked",
+   "detail": "pd1-knockout-mouse-autoimmunity, safety (untested 1999; same, checker-dated 2014 to Ansell 2015) already in added_models"
+  },
+  {
+   "lead": "Other members' cHL trials (tislelizumab, camrelizumab, penpulimab, zimberelimab) and camrelizumab RCCEP safety track",
+   "outcome": "tracked",
+   "detail": "camrelizumab RCCEP: camrelizumab-receptor-proteome-screen safety (untested 2018; retro 2019 Song); tislelizumab/penpulimab/zimberelimab cHL trials are single-arm with no model compared (Fc-null design claims are not tested against patients): none for those"
+  }
  ]
 }

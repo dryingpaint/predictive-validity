@@ -147,6 +147,26 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Telemetry quote verbatim; review shows multi-organ hemorrhage in animals, dog platelets rising, patient AF/flutter 2% and thrombocytopenia. Contra consistent with ibrutinib track judgement. registry_date 2022 postdates year; year 2019 fine."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Bundled 210259 MultidisciplineR (Ref ID 4173186): quote verbatim in the toxicology overview. Rat 26-week, dog 91-day/39-week and dog telemetry filed; untested opening at the 2014 first-in-human proxy year is fine."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim. Review confirms dog 39-week red-cell decreases only, rat heart hemorrhage only in moribund 300/200 mg/kg females; ACE-LY-004 hemorrhage 31.5% (major 0.8%), platelets decreased 44.4%, AF 0. Contra judgement consistent with sibling tracks."
   }
  ],
  "missing": [
@@ -154,7 +174,8 @@
   "MCL cell-line pharmacogenomic profiling (Rahal 2014 Nat Med, doi:10.1038/nm.3435, PMID 24362935): ibrutinib-insensitive lines carry alternative NF-kB (TRAF2/BIRC3) lesions, found in 15% of 165 patients; a patient-level prediction of primary ibrutinib resistance. Track at least as untested/unsettled, or scored if a later patient-outcome paper tests TRAF2/BIRC3 vs response.",
   "Acalabrutinib and zanubrutinib (members) have their own FDA nonclinical reviews (NDA 210259, 2017; NDA 213217, 2019) not in the bundle: dog/rat tox vs patient AF, bleeding and cytopenias should be checked as further safety entries on a tox track.",
   "Acalabrutinib canine B-NHL (Harrington 2016, doi:10.1371/journal.pone.0159607) and zanubrutinib occupancy (PBMC and lymph-node, Tam 2019 Blood) are in notes only; they would be member-drug entries on the existing canine and occupancy tracks, no status change.",
-  "Acalabrutinib rat/dog GLP toxicology and dog telemetry (NDA 210259 MultidisciplineR 2017, in bundle): 'acalabrutinib had no toxicologically-significant effects on cardiovascular function in a cardiovascular study in telemetered dogs', while label lists AF/flutter 3% and hemorrhage; would be a safety track parallel to the ibrutinib/zanubrutinib tox tracks (likely contra)."
+  "Acalabrutinib rat/dog GLP toxicology and dog telemetry (NDA 210259 MultidisciplineR 2017, in bundle): 'acalabrutinib had no toxicologically-significant effects on cardiovascular function in a cardiovascular study in telemetered dogs', while label lists AF/flutter 3% and hemorrhage; would be a safety track parallel to the ibrutinib/zanubrutinib tox tracks (likely contra).",
+  "Acalabrutinib platelet-function models (light-transmission aggregometry and humanized VWF-HA1 mouse thrombus formation) predicted fewer platelet effects than ibrutinib (FDA NDA 210259 MultidisciplineR 2017, pharmacology section); compare ELEVATE-RR head-to-head bleeding/AF (Byrd 2021 JCO, doi:10.1200/JCO.21.01210, CLL, imported_from). A comparative-safety track not drafted."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

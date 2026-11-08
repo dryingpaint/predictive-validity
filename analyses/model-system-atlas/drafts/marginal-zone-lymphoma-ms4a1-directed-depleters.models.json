@@ -277,5 +277,22 @@
   "QSP model of loncastuximab + T-cell bispecifics (2025, NPJ Syst Biol Appl): combination with a non-member ADC; no patient comparison for a member in MZL.",
   "Imvotamab NHL efficacy (60% ORR at 100 mg, EHA 2022) for MZL: no MZL-specific data and no imvotamab preclinical MZL model; mixed-NHL responses not scored for MZL efficacy.",
   "Rituximab/obinutuzumab/ofatumumab models: not members of this tile's class list."
+ ],
+ "gaps": [
+  {
+   "lead": "Imvotamab (member) engagement track: preclinical deep B-cell depletion vs insufficient depletion in RA/SLE phase 1b (IGM press release 2025-01-09)",
+   "outcome": "tracked",
+   "detail": "imvotamab-igm-cyno-humanized-mouse, engagement (2019 untested opener; 2025 entry from the IGM 2025-01-09 release, imported RA/SLE); verdict engagement #5 already adjudicates its status contra->same/partial and sets imported_from"
+  },
+  {
+   "lead": "Imvotamab NHL phase 1 NCT04082936 enrolled MZL, terminated, no posted results; EHA 2022 P1276 60% ORR at 100 mg in R/R NHL",
+   "outcome": "tracked",
+   "detail": "imvotamab-igm-cyno-humanized-mouse safety 2022 same and imvotamab-invitro-synapse-model dose 2022 retro both cite NCT04082936 (registry 2019-09-10) and PMC9429641 with MZL-eligible population; mixed-NHL ORR not scored as MZL efficacy (no MZL subset, see considered_not_added)"
+  },
+  {
+   "lead": "Ublituximab B-cell depletion in MS patients (ULTIMATE I/II, Steinman 2022; Fox 2021 phase 2)",
+   "outcome": "verdict",
+   "detail": "Adds a human readout to existing track ublituximab-exvivo-adcc engagement (draft engagement #3), not a new system; verdict engagement #3 already adjudicates a 2017 paired same from Sawas 2017 CLL depletion, which the MS readout only reinforces (would carry imported_from MS)"
+  }
  ]
 }
