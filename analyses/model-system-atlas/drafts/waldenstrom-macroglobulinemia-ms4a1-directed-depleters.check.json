@@ -1,0 +1,133 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/waldenstrom-macroglobulinemia-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Quote found in bundled PharmR text (OCR 'CD20°'). Opening untested at proxy 2004 is acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinPharmR text has the 93%/91% BFR CD5+CD19+ decrease. The readout is malignant B-cell count, so calling it proximal is a fair call. CLL patients are admissible for engagement. Paired, so hatched."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR confirms the reviewer NOAEL of 20 mg/kg (0.7x) with LOAEL 100 mg/kg (brain focal arteritis), while the sponsor reported 100 mg/kg as the NOAEL. Furman confirms the WM 2000 mg dose came from CLL. Untested/no_prediction is defensible; see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Teeling 2004 abstract (PMID 15172969) ends with the quoted sentence verbatim. Furman's PMC text cites in-vitro CDC superiority as the rationale for the trial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract: the primary endpoint is ORR (CR+PR+MR) and the quote is verbatim. Registry results posted 2012-04-30 for NCT00811733 (confirmed). The model's 'improved' superiority over rituximab was never tested, so I'd add source_calls_it 'partial'. Status stays same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2014,
+   "rule": "Dating rule 6 (earliest public date: online 2014-12-31); rule 5 untested_reason order",
+   "note": "Quote is verbatim on the haematologica page. Status untested stands. Year should be 2014 (epub). Sawas 2017's full text lists only FL, MZL, MCL, DLBCL and CLL, with no WM patients, so untested_reason should be not_measured, not unsettled.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: untested stands; Sawas 2017 Table 1 enrols FL, MZL, CLL/SLL, MCL, DLBCL, no WM, so no trial measured the readout: not_measured. Rule 6: online 2014-12-31 sets year 2014."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found in PharmR. Opening proxy year 2004 is acceptable."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR states infection deaths were 'consistent with clinical observations' and that humans are more sensitive to infusion reactions, so same/partial with imported_from CLL is supported. Unscored predicted harms (haemolytic anaemia, brain arteritis at 3.5x) raise a rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Bleeker 2008 abstract (Europe PMC, DOI resolves, online 2007-11-27) has the quote verbatim and states the 5-10 ug/mL maintenance target. Untested opening, class level, prospective. The 10 ug/mL half comes from the monkey arm of the same paper."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Furman 2017 PMC Table 5 row matches (TGA 23.4, TGB 181 ug/mL before dose 4). The target was stated by the model paper, not a sponsor trough. The trial started 2009, after the 2007 model, so not retro. Same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote is verbatim in the Bleeker abstract, but I saw only the abstract. In-vivo xenograft kept as its own track apart from in-vitro CDC. Untested 2007, class level."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "The 51%/59% ORR quote is verbatim in the Furman PMC text. ORR is primary, and the registry posting of 2012-04-30 sets the year. The model predates the 2009 trial, so this is prospective, not retro. Direction-only same is fine."
+  }
+ ],
+ "missing": [
+  "NCT01536067 (ofatumumab + bortezomib, untreated WM, phase 2, terminated, results posted): a WM patient trial of a class member in combination. It belongs in patient_trials on the efficacy track and does not change the status.",
+  "No uncovered model system found: Europe PMC and a web search for ofatumumab, ublituximab or veltuzumab against WM cell lines (BCWM.1), xenografts or patient cells turned up nothing beyond Le Garff-Tavernier 2015. Veltuzumab has no WM data (its NCT00989586 is a B-NHL combination)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose: the sponsor's tox report states a NOAEL of 100 mg/kg (3.5x the clinical dose), which held in patients, but the FDA reviewer re-set the NOAEL to 20 mg/kg (0.7x) on brain arteritis. Whose stated margin counts as the model's margin_stated: the sponsor's, or the regulator's re-reading?",
+  "Safety: monkeys showed fatal haemolytic anaemia (which FDA called likely species-specific) and focal brain arteritis at 3.5x the clinical exposure, and neither was seen as such in patients. Does a harm the regulator discounted, or one seen only above human exposure, count as a 'predicted harm that never appeared' (contra/opposite)?"
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hepatitis-c-virus-infection-ifnar1-ifnar2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 15320963 resolves; quote verbatim in abstract. NCT01121731 (Digna, completed 2013-01) has no posted results; PD among aims. untested/unsettled fits."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 21985916 (epub 2011-10-08, print 2012) resolves; quote verbatim. Opening untested entry for the monkey track is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Read PMC4386949 full text: quote verbatim; serum ex vivo antiviral bioassay (VSV/WISH) in both monkey and volunteers, so same readout. Paired correctly with model_src. Readout is drug bioactivity more than target engagement; direct is defensible."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote is a verbatim truncation of an abstract sentence. Abstract states no human dose, exposure or margin; untested correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 23394696 resolves; quote verbatim. The paper validates a bioassay, it does not show macaque PK was run; 'Macaque PK run, unpublished' is inference. Status untested/unpublished stands; I did not verify absence of a later macaque PK paper."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in full text. A PK resemblance is not a stated human exposure/regimen target; untested/no_prediction is right under the dose rule."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Registry: NCT01121731 phase 1/2, 70 enrolled, primary 'Safe dose level', completed 2013-01, hasResults false; patient_trials quote matches brief summary. untested/unsettled fits."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim (abstract last sentence). Opening untested entry correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2016,
+   "rule": "Checker brief 3: same/contra from a pairing whose trial result rests on conditions the model never tested -> untested; DRAFTER rule 5 no_prediction (readout with no HCV counterpart)",
+   "note": "Ding quote verbatim. Monkey model was a VSV serum bioassay in uninfected animals; it made no HCV RNA prediction. Also patient_trials NCT wrong: Ding's arms match NCT01605513 (Jilin, primary undetectable HCV RNA wk12), not NCT01903278.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "DRAFTER rule 5 no_prediction; CHECKER 3: uninfected-monkey VSV serum bioassay never tested HCV infection or HCV RNA; its bioactivity readout is already scored under engagement, so no efficacy prediction to pair with Ding 2016."
+  }
+ ],
+ "missing": [
+  "PEG-IFN-SA (peginterferon alfacon-2, Paiyisheng, Beijing Kawin) was approved by China NMPA in June 2018 for adult chronic hepatitis C after phase Ib, II (NCT01908335, primary cEVR, 212 pts) and III (NCT01903278, primary SVR vs Pegasys/RBV, 719 pts, completed 2015-08; no registry results). Sources: https://www.kawin.com.cn/news/information/2023/0724/151.html ; https://baike.baidu.com/item/%E5%9F%B9%E9%9B%86%E6%88%90%E5%B9%B2%E6%89%B0%E7%B4%A0%CE%B1-2%E6%B3%A8%E5%B0%84%E6%B6%B2/67337319 . The draft's efficacy and tile note stop at the 2016 phase 1b; the phase 3 success/approval is the class's furthest outcome and should be recorded (patient side), and the tile note 'only PEG-IFN-SA published patient data' should mention approval.",
+  "Earlier monkey PK work on pegylated consensus interferon: Cao 2009, Immunopharmacol Immunotoxicol 31:543 (doi 10.3109/08923970902814111), rhesus serum ELISA, cited by Zheng 2014 as ref 15; if this is PEG-IFN-SA, model_first_use_year for the monkey tracks is 2009, not 2011 (not verified).",
+  "Nonclinical toxicology of PEG-IFN-SA was completed for the NMPA filing (Kawin states pharmacology/toxicology done) but is not public; safety untested/unpublished stands.",
+  "No source found for Hanferon (any model or patient data), nor any HCV replicon, chimeric-liver mouse or patient-cell model compared with patients for these three members (Europe PMC and web search, not exhaustive)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When a class enters patients on an in-vivo serum bioactivity (bioassay) model in a species the virus cannot infect, does that model's generic claim of 'sustained in vivo antiviral action' count as an efficacy prediction that HCV RNA will fall (scorable same), or only as engagement, leaving efficacy untested/no_prediction?",
+  "Is a non-US/EU regulator approval (China NMPA, 2018) with no public review document an admissible tier 2 source, or only tier 5 (sponsor statement), for recording a phase 3 success?"
+ ]
+}

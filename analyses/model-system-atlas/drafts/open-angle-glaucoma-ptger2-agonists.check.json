@@ -1,0 +1,196 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/open-angle-glaucoma-ptger2-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kirihara 2018 (PMID 29332128) resolves; quote verbatim in abstract. Opening untested at 2012 proxy is fine; FDA PharmR confirms monkey pharmacology filed."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Aihara 2019 IJG (PMID 30839416) quote verbatim; Fuwa 2018 JOP (PMID 29989843) gives monkey 27-44% at 0.002%. NCT01868126 first posted 2013-06-04 confirmed. Phase 1 HV IOP (PMID 31674861, 2019) could be a patient_trials item; no status change."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim but does not carry the regimen claim; Kirihara abstract's 'effective duration suggests sufficient efficacy by once-daily dosing' would be the better quote. Status unaffected."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Regimen half: Kirihara states QD sufficiency, QD met endpoints (quote verbatim); NCT03858894 results 2020-08-04 confirmed. PharmR confirms no NOAEL in monkey ocular tox, so margin_stated false is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same source and quote as engagement 1; opening untested fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "AYAME (PMID 32533949) primary endpoint quote verbatim; NCT02623738 2015-12-08 ok. Fix patient_trials: NCT03691649 is SPECTRUM 3 and NCT03691662 is SPECTRUM 4 (CT.gov official titles), so quotes are attached to swapped NCTs."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR line 443: 'Miosis and increased corneal thickness, recovery observed.' verbatim; no NOAEL stated for 13/39-week monkey studies."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR lines 2624-2625 verbatim; reviewer sets monkey corneal thickness beside clinical AE, AYAME 11.7% vs 1.0% confirmed. comparison_stated true and 2022 dating defensible."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR text bundle: 104Fq080 report date July 16, 2019, non-GLP cynomolgus flare study; opening untested at 2019 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR key findings quote verbatim; reviewer states study was prompted by clinical study 33-001 inflammation, so retro (not same) is right; label 5.3 lists ocular inflammation. Year 2022 = review public.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "JOP 2020 (PMID 32412835, epub 2020-05-17) conclusion verbatim; same study as PharmR 104Fm090, report date July 26, 2019, so opening at 2019 holds.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "StatR Table 12 row verbatim (integrated DE-117 0.7% vs timolol 1.9%; AYAME 0.0% vs latanoprost 0.5%). AYAME/RENGE read out before the July 2019 mouse report, so retro is consistent with the rule.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "JOP abstract conclusion verbatim (PMID 31934812). Epub 2020-01-14; manuscript jop.2019.0079 and PharmR report 603Qn020 support a 2019 first-use proxy.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "note": "Quote verbatim (Nakakura 2020, PMID 31913226). But the 3T3-L1 assay is Santen's (PharmR 603Qn020), run after its 52-week RENGE trial had shown no DUES (Aihara 2024 review, PMID 38168596); same logic the draft used for the eyelash track. Should be retro, retrodiction true.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Retrodiction: a model built or run after the clinic already knew the answer is retro, never same",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Santen's 3T3-L1 assay (603Qn020, ~2019) ran after its 52-week RENGE trial (completed pre-2018 Japanese approval) showed no DUES; reproduced it, so retro, as on the eyelash track. Draft retrodiction flag should be true."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "TVST 2021 (PMID 34003984) translational-relevance sentence verbatim; opening untested 2021.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Organoid study (April 2021) postdates Nakakura 2020 switch series; patient quote verbatim; retro correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Exp Eye Res 2023 (PMID 37884204, epub 2023-10-24) abstract sentence verbatim; opening untested 2023.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Abstract sentence verbatim; model built after the FP-combination warning, so retro; partial agreement (omidenepag alone negative) noted via source_calls_it partial.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Possible retrodiction track on ocular inflammation: non-GLP monkey study 104Fq080 (report dated 2019-07-16, FDA PharmR 2022, Table 92) found laser-flare aqueous flare rising on omidenepag 0.002% monotherapy at D4/D7 versus D1 and higher with FP-agonist combination; patients: Omlonti label 5.3 'Ocular inflammation has been reported in patients taking Omlonti' (accessdata.fda.gov label/2022/215092s000lbl.pdf) and the Japanese tafluprost-combination contraindication (PMC9058248 review points to it). Run after the human signal, so it would be retro (retrodiction: true), not same. The drafter set it aside for lack of a human source, but label 5.3 is a tier 2 source.",
+  "Phase 1 healthy-volunteer IOP lowering (Aihara et al., PMID 31674861, 2019) is an engagement datum (healthy volunteers count) that the draft omits; no status change.",
+  "No admissible model source or patient failure found for aganepag isopropyl or simenepag isopropyl (searched); the draft's statement stands.",
+  "Patient-side source for the DUES/PAPS tracks predating the 3T3-L1 and organoid models: RENGE 12-month study (Jpn J Ophthalmol 2021, PMID 34495425, doi 10.1007/s10384-021-00868-y; summarized in Aihara 2024, PMID 38168596: no DUES/eyelash/iris colour change after a year) - a tier 1 patient source the safety tracks could cite."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "SPECTRUM 3 (NCT03691649) missed its primary endpoint, noninferiority to timolol, while omidenepag's own IOP drop matched the other trials. The monkeys made no prediction against timolol. Does a missed active-comparator noninferiority primary endpoint count as an efficacy contra, or is it outside what the model predicted? The draft says outside; the rules do not say.",
+  "When the model's PD readout is the clinical endpoint itself (IOP), the engagement and efficacy cells score the same readout on different trials. Is that double counting allowed, or should engagement be untested/no_prediction?",
+  "Dose: Kirihara 2018 published the QD-sufficiency statement after Phase 2 had already used QD, but the animal work dates to 2011. Is a regimen statement first published after the trial a prospective prediction, given the model was run before?"
+ ]
+}

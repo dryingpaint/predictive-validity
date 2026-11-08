@@ -1,0 +1,212 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/huntington-disease-htt-antisense-sirna.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Europe PMC abstract (PMID 22726834) has the quote verbatim; opening untested entry for the mouse/NHP track is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry outcome title verbatim; results posted 2022-04-25. Sister trial NCT03225833 (WVE-120101) posted earlier, 2022-02-10, and is the better registry citation. Wave model data unpublished, so untested/unpublished holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Evers 2018 abstract (PMID 30007561) has the quote verbatim; opening untested entry for the minipig track is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tabrizi 2019 full text (Firecrawl): dose-dependent CSF mHTT fall; the paper says preclinical data support CSF mHTT reflecting CNS tissue, so comparison_stated is defensible. Proximal, direction only."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "uniQure Q2 2022 release has the quote verbatim; tier 5, trial_unreported, model_src Evers 2018 tier 1. NCT04120493 has no posted results. Low confidence is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PMC11255113 full text: HTT-164 = WVE-120101, HTT-273 = WVE-120102, iPS-109Q neurons, ~15% mHTT lowering, and the paper cites the 2021 clinical discontinuation, so retrodiction/retro is correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in the Tabrizi abstract. But 'unpublished' is the wrong reason: the model's dose-to-HTT-reduction target is in the public NEJM Supplementary Appendix. If it states a tissue-reduction target, the entry could score; not read by me either.",
+   "rule": "rule 5 untested_reason (unpublished = model data not public)"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry outcome title verbatim; no public Wave model dose or margin, so untested/unpublished stands."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Spronck 2019 abstract (PMID 30984798) quote verbatim; no stated human vector-genome target, so no_prediction holds; modality gene therapy given."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Kordasiewicz 2012 abstract: the quote is a verbatim leading fragment of a longer sentence. Opening untested entry is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry outcome title verbatim (TFC was measured); Wave efficacy model unpublished, so untested/unpublished stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Spronck 2019 abstract has the rotarod sentence verbatim; opening untested entry for the AAV rodent track."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "McColgan 2023 text has the quote verbatim. The pre-specified primary endpoint was cUHDRS/TFC at week 101; week 69 was an ad hoc analysis after dosing stopped. Registry results posted 2023-11-07, so the year stays 2023. See rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "uniQure 24 Sep 2025 release has the quote verbatim: primary met against a propensity-matched external control. Tier 5, trial_unreported. FDA later (Nov 2025) said the external control was not enough for a BLA; noted in missing."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tabrizi 2019 full text has the quote verbatim (cites refs 7-8). Opening untested, modality oligo."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry outcome title verbatim; Wave toxicology not public, so untested/unpublished stands."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Spronck 2021 abstract (PMID 33498212) has the quote verbatim; untested before the patient events is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "uniQure Q2 2022 release has the quote verbatim. NHP CED study reported no inflammation, and patients had SUSARs with local inflammation, a harm NHP can show. Contra stands at low confidence; tier 5 with model_src tier 1."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in McColgan 2023. The supplement's Figure S7 ('Preclinical study to assess toxicity of tominersen ... at week 39') is an image I could not read. If it shows NHP CSF pleocytosis or ventricular change, the silence premise fails (then dose, misplaced margin).",
+   "rule": "safety: silence contradicted on a harm the species could have shown; count-once rule"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Europe PMC PMID 31737741 abstract has the quote verbatim (epub 2019-10-04). Prospective opening untested: NCT04120493 started 2019-09-06, no AMT-130 patient HTT data until 2022. 'First patient dosed Oct 2019' in judgement is unverified; immaterial."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "GlobeNewswire Aug 2022 release has the quote verbatim (n=4 treated, sham -16.8%). Keskin 2019 model_src predates the readout, so same not retro; tier 5 with trial_unreported correct; direction_only fair."
+  }
+ ],
+ "missing": [
+  "uniQure regulatory update (Nov 2025, https://uniqure.gcs-web.com/news-releases/news-release-details/uniqure-provides-regulatory-update-amt-130-huntingtons-disease-0): at the pre-BLA meeting FDA no longer accepted the Enroll-HD external control. Not a status change under the rules, but efficacy 5's note should carry it; a BLA was filed later (BioSpace).",
+  "NCT03225833 (WVE-120101, rovanersen) registry results posted 2022-02-10. This is the earlier registry record for the Wave engagement/dose/safety entries, which cite only NCT03225846.",
+  "Iwamoto 2024 (doi:10.1016/j.omtn.2024.102246) also tests a tominersen-surrogate pan-silencer (HTT-2723) in patient iPSC neurons, a retrodiction of tominersen's CSF lowering. It could be a second retro on the iPSC track; the draft scores only the Wave molecules.",
+  "Southwell et al. 2015 (Sci Rep, cited as ref 15 in Tabrizi 2019): BACHD/YAC128 mouse and NHP data that CSF mHTT tracks brain HTT lowering. This is the model behind the engagement readout and could be cited as model_src for engagement 4."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy 4: GENERATION HD1's pre-specified primary was cUHDRS/TFC at week 101, but dosing stopped early and only an ad hoc week-69 analysis of the same measure exists. Does an early-timepoint analysis of the primary measure count as the primary endpoint (endpoint_role primary)?",
+  "Efficacy 5: the AMT-130 'primary' is a cUHDRS comparison against a propensity-matched external control, and a later timepoint (48 months) was reportedly non-significant (tier 5/trade press). Does an external-control primary score same, and does a later non-significant timepoint from the same open-label study count as attenuation?",
+  "Dose 1: when the model's stated target sits in a public supplement the drafter did not read, which untested_reason applies? 'unpublished' does not fit."
+ ]
+}

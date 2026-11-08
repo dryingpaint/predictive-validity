@@ -1,0 +1,100 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/exocrine-pancreatic-insufficiency-pnlip-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Aloulou 2015 Gastroenterology (epub 2015-08-29); quote is the abstract's conclusion verbatim; minipig CFA 60.1% to 84.6-90.0% on 4-80 mg YLLIP2. Opening untested correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "10-K R7 text holds the quote verbatim (11 CP patients, +21.8%, p=0.002). NCT03481803 primary is safety, no posted results. Phase 2a completed June 2018, announced 2018 (Fierce). CFA as a 'downstream' engagement readout is a call; see rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "In-vitro equivalence quote verbatim in abstract. 10-K says 2.2 g/d was an FDA-agreed bridging dose from phase 2a highest safe dose, not a model target; untested/no_prediction stands. Model name merges the in-vitro assay into the minipig model_id."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract: YLLIP2 CFA 84.6-90.0% vs pancreatin 90.5% in PEI minipigs; equivalence-to-pancreatin prediction correctly stated."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2021,
+   "rule": "Dating (rule 6): the entry's year is the earliest date the comparison was public; tier 5 sources must be used to get the trials right (rule 2).",
+   "note": "Registry confirms OPTION primary CFA 55.6 vs PERT 86.2 (results 2022-06-06); OPTION 2 2.2/4.4 g 66/52.8 vs 83.3/89.3. Contra holds, but AzurRx 31 Mar 2021 OPTION 2 topline: 'majority did not' reach non-inferiority; track turns contra in 2021.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rules 6 and 2: contra stands; the 31 Mar 2021 OPTION 2 topline (tier 5, majority missed non-inferiority vs PERT) is the earliest public comparison, so the entry dates to 2021; the later registry records agree."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "IND-clearance quote verbatim in 10-K R7. No published MS1819 toxicology found in searches; untested/unpublished with proxy year 2017 is right. Registry shows only mild AEs, no harm to score."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to Suzuki 1997 Gastroenterology (Jun 1997); quote is the abstract conclusion verbatim. Duct-ligated dogs, bacterial lipase; burlulipase is B. plantarii lipase (Gosset, patent DE102017104482). Opening untested, prospective, 1997 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to Heubi 2016 J Pediatr (epub 2016-06-11); quote verbatim in abstract; CFA primary, NCT01710644 (no posted results). Dog model 1997 predates trial start 2013, so prospective, not retro; same with direction_only magnitude stands."
+  }
+ ],
+ "missing": [
+  "OPTION 2 topline press release, 31 Mar 2021 (https://firstwordpharma.com/story/5263483): 'OPTION 2 did not consistently meet the primary efficacy endpoint ... the majority did not' reach non-inferiority with PERT; sponsor blames enteric-capsule formulation. Should be the dated tier-5 contra entry (or move the efficacy contra to 2021).",
+  "Sponsor's 25 Sep 2019 OPTION release (10-K R7): ~50% of patients reached non-inferiority CFA; sponsor called it positive. A low-confidence tier-5 point the draft cites only in its judgement.",
+  "Phase 2 MS1819 + PERT combination trial in CF with severe EPI (BioSpace topline: CFA +6.57% from baseline). This is add-on use, not the minipig's monotherapy prediction; could go in patient_trials.",
+  "The in-vitro test-meal assay (Aloulou 2015: 10 mg YLLIP2 = 1200 mg pancreatin) is a separate system with its own prediction; the draft folds it into the minipig model_id in the dose cell. No patient comparison, so it would be an untested track at most.",
+  "No public disease-model data found for burlulipase or SLV339 (searches returned nothing), which agrees with the draft.",
+  "Burlulipase follow-on: Heubi 2016 called for 'a larger phase 2 dose ranging trial'; Anthera 10-K 2017 (https://www.sec.gov/Archives/edgar/data/1316175/000121465917002018/d3917010k.htm) lists NM-BL only as completed phase 1/2. No later burlulipase patient result found, so the canine track has no further comparison."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "For an enzyme replacement, the model's PD readout (CFA) is also the efficacy endpoint. Can an uncontrolled CFA change from baseline in a safety-primary phase 2a be scored as engagement (readout_tier downstream) while the controlled CFA comparison is scored as efficacy? Or does that count one readout twice?",
+  "OPTION 2's sponsor puts the failure down to enteric-capsule formulation, which the minipig (purified enzyme) never tested. The brief would make an OPTION 2-only pairing untested. Does the non-enteric OPTION shortfall (55.6 vs 86.2) keep the contra by itself? I judged that it does.",
+  "Minipigs got milligram doses of purified YLLIP2; patients got grams of MS1819-SD spray-dried powder with undisclosed lipase content. When the dose cell is untested (no_prediction), can an under-dose explanation ever move efficacy to untested, or does efficacy always follow the trial?"
+ ]
+}

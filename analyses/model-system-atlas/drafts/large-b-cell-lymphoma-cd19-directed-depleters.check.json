@@ -1,0 +1,168 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/large-b-cell-lymphoma-cd19-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "PMC2981541 full text: 'completely eliminated normal B cells from mice for at least 143 days' (en-dash in anti-CD19–CAR). CBER Yescarta memo 4.3 summarises this syngeneic model. Opening untested 2010 correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (earliest public comparison); engagement: any dosed humans count",
+   "note": "Quote verbatim in JCO (epub 2014-08-25; NCT00924326 results 2019-03-21 correct). But Kochenderfer 2010 Blood case report (doi 10.1182/blood-2010-04-281931, epub 2010-07-28, same FMC63-28Z/NCI product) already showed blood B cells absent >=39 weeks.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same either way (engagement: any dosed humans count). Evidence rule 6: Kochenderfer 2010 Blood (epub 2010-07-28, same NCI FMC63-28Z product the entry already accepts, NCT00924326) shows blood B cells absent >=39 weeks; earliest public comparison is 2010."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found verbatim (3 x 10^8 T cells/kg mirrors trial doses). Model stated no human exposure/regimen target or margin; untested/no_prediction fits the dose table."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PMC2981541; paper also states efficacy 'critically dependent on irradiation'. CBER memo confirms model eliminated established CD19+ lymphoma."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Neelapu 2017 (PMID 29226797, epub 2017-12-10): ORR is the stated primary end point; quote verbatim. NCT02348216 results first posted 2021-11-23 correct. No member-drug LBCL failure found (ZUMA-7, TRANSFORM positive)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Warning quote verbatim; paper also says 'The only toxicity ever noted in the treated mice was a lack of B cells.' Named harm = B-cell depletion; untested opening correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "fda.gov/media/109149 is the CBER BLA clinical review memo (STN 125643); 'Grade 1 or 2 hypogammaglobulinemia occurred in 16/108 (15%) subjects' verbatim; section 4.3 'mice did not show any overt signs of toxicity'. Tier 2 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 26369987 (Leukemia, epub 15 Sep 2015) abstract has quote; full text: NSG mice engrafted with Raji/ffluc. Opening untested at 2015, class level; animal tier 1 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 32888407 abstract: 186/256 (73%) ORR, primary endpoint. Breyanzi SBRA s.4 cites dose-dependent antitumour activity in CD19+ engrafted immunocompromised rodents. Model 2015 precedes trial readout: prospective same, not retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 29895668 (Blood, epub 12 Jun 2018) abstract has quote; ex vivo preinfusion FMC63-28Z products from NCT00924326. Opening untested 2018, patient level fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Same abstract: PSI 'significantly associated with clinical response'; study self-described exploratory, run on products of patients whose outcomes were already known, so retro (retrodiction true) is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 29808005 (Nat Med, epub 28 May 2018) abstract has quote; SCID-beige, intraperitoneal Raji, human 1928z CAR (full text). Opening untested 2018, class level."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMC6410714 full text: 'Remarkably, the serum cytokine profile elicited in these mice was highly similar to that reported in clinical studies' (18/19 cytokines); no neurological signs. Built after clinical CRS known: retro correct."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 29808007 (Nat Med, epub 28 May 2018) abstract has quote verbatim. Opening untested 2018, class level, animal."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 29808007 abstract has quote verbatim; model explicitly built to reproduce clinic-observed CRS and neurotoxicity, so retro (retrodiction true) is correct."
+  }
+ ],
+ "missing": [
+  "Humanized SGM3 mouse CAR-T model (Norelli 2018 Nat Med, doi 10.1038/s41591-018-0036-4, PMID 29808007) reproduced CD19 CAR T CRS and neurotoxicity seen in patients: a retrodiction safety track (retro).",
+  "SCID-beige xenograft CRS model (Giavridis 2018 Nat Med, doi 10.1038/s41591-018-0041-7, PMID 29808005) reproduced CAR T CRS (IL-6/IL-1 from macrophages) after the clinic: retrodiction safety track.",
+  "Rhesus macaque CAR T neurotoxicity model (Taraseviciute 2018 Cancer Discov, doi 10.1158/2159-8290.CD-17-1368, PMID 29563103; CD20 CAR, product_in_model false) reproduced CRS and neurotoxicity: retrodiction safety track.",
+  "Safety B-cell aplasia comparison could open earlier: Kochenderfer 2010 Blood case report (doi 10.1182/blood-2010-04-281931) showed B-cell absence and very low immunoglobulins in a follicular lymphoma patient (imported comparison, 2010)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement: does a patient dosed with the academic NCI FMC63-28Z product (pre-Kite axi-cel) count as a member drug? The draft already accepts it for 2014; if yes, the earliest date is the 2010 case report.",
+  "Safety: should the on-target B-cell aplasia comparison be dated to the first patient showing it in another B-cell lymphoma (2010, imported_from follicular lymphoma) rather than the first LBCL record (2017)?",
+  "Safety: the brief says a mouse cannot show cytokine release; does that extend to ICANS, and to an immunocompetent syngeneic tumour-bearing mouse (later mouse models did reproduce CRS/ICANS)?",
+  "Liso-cel and relma-cel nonclinical packages (CBER Breyanzi memo 4.3 mentions only absent carcinogenicity/genotoxicity studies) were not checked for a separate xenograft track; unverified."
+ ]
+}

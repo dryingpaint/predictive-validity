@@ -1,0 +1,191 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hypopituitarism-ghr-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Fares 2010 (PMID 20660071) abstract carries the quote verbatim; hypophysectomized rats, GH-LA = somatrogon. Opening untested is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cleland 2012 (PMID 22678811, PMC3427893) abstract carries the quote verbatim. Opening untested on the monkey track is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yuen 2013 abstract quote verbatim; full text confirms dose selection cites monkey potency ('Because in vivo potency was enhanced in monkeys...'). IGF-1 rose in GHD adults: same, downstream."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public)",
+   "note": "Quote verbatim in Deal 2022 full text, status right, but somatrogon's IGF-1 rise in GHD patients was public earlier: Strasburger 2017 (doi 10.1530/eje-16-0748, epub 2016-12-08) adults; Zelinska 2017 (10.1210/jc.2016-3547) children vs daily r-hGH.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed. Evidence rule 6: year is the earliest public comparison; Strasburger 2017 (epub 2016-12-08) showed somatrogon raising IGF-1 in GHD patients, so the entry dates 2016, not Deal 2022."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Fares 2010 abstract; rat gives total-mg/kg comparison only, no human dose or margin. untested/no_prediction holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cleland 2012 states the monkey dose equivalence and, in the discussion, 'administered up to monthly ... at total monthly doses lower than the typical daily rhGH': a stated regimen target."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yuen 2013 quote verbatim. Doses picked from monkey potency; 0.8 mg/kg (~5 ug/kg/d equivalent) held adult IGF-1 in range ~3 weeks, so the equivalence held in adults (within 2x)."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "Dose: whether the reached dose worked is efficacy's alone; a dose contra must rest on the model's own target (here IGF-1 potency), not the trial's failure",
+   "note": "Contra rests on VELOCITY height velocity, which is efficacy. The defensible dose contra is Moore 2016 (epub 2015-12-16): children needed 5.0 mg/kg monthly to normalize IGF-1 vs monkey-equivalent ~1-1.4 mg/kg; re-source there. Moore full text not read.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Dose rule: VELOCITY growth miss is efficacy only. Contra holds on the model's own IGF-1 target: Moore 2016 (epub 2015-12-16) needed 5.0 mg/kg monthly to normalize pediatric IGF-1 vs monkey 1.4; target too low, off_by_2-5x."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Fares 2010 abstract quote verbatim. Same hypophysectomized-rat system as Cleland's rats for somavaratan, so one model_id is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Moore 2016 abstract quote verbatim; epub 2015-12-16, so 2015 is right. Single-arm VISTA growth only in direction; same at medium confidence is fair."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Press release quote verbatim (via fc.py); NCT02339090 results 2022-12-30 confirm LS diff -1.28, CI -2.32 to -0.24 vs -2.0. PP population met non-inferiority; ITT primary governs. Contra stands."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Cleland 2012 abstract quote verbatim; full text adds injection-site histology in monkeys. A stated negative prediction on a harm the species can show."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yuen 2013 full text has the quote verbatim and 'No injection site lipoatrophy was observed.' Single-dose test; medium confidence appropriate."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Each cell opens at model_first_use_year with status untested",
+   "note": "Europe PMC PMID 26713839 (epub 2016-01-18); quote verbatim in abstract. Opening untested at 2016, class level, downstream IGF-1 readout correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction: model built or run after the clinic knew the answer is retro",
+   "note": "Strasburger PMID 27932411 epub 2016-12-08, quote verbatim; model_src abstract checked. Monkey PK/PD/tox was IND-enabling (pre-FIH 2009), so prospective despite 2016 publication; same, year 2016 stands.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose: no exposure/regimen target or margin stated -> untested (no_prediction)",
+   "note": "Quote verbatim in Hershkovitz abstract; animal-to-animal exposure match states no human dose or margin. untested/no_prediction correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "untested_reason no_prediction: no named harm",
+   "note": "Quote verbatim in abstract; general tolerability names no harm. untested/no_prediction correct; lipoatrophy case series not scored, consistent with existing rule question.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Somatrogon's own nonclinical models: Hershkovitz 2016 Mol Pharm (doi 10.1021/acs.molpharmaceut.5b00868), Sprague-Dawley rats and rhesus monkeys, PK/PD and repeat-dose toxicology ('every 5 days ... exposure comparable to daily rhGH'; 'well-tolerated in rats and monkeys'). Rhesus-monkey track (engagement/dose/safety) for somatrogon is absent; pair with Strasburger 2017 (10.1530/eje-16-0748) and Zelinska 2017 (10.1210/jc.2016-3547).",
+  "Somatrogon injection-site lipoatrophy in children after approval: case series doi 10.4274/jcrpe.galenos.2025.2025-10-16 (2025, 3 cases, 'documented only once previously') and doi 10.3390/children12010058 (2025). A harm rats/monkeys could show; a possible safety contra on a somatrogon tox track.",
+  "Somatrogon regulator nonclinical reviews (FDA BLA 761184 / EMA Ngenla EPAR 2022) are not in the source bundle and were not checked; model_filed for somatrogon entries remains unsourced.",
+  "Somatrogon phase 2 pediatric trial (Zelinska 2017, 10.1210/jc.2016-3547) with daily r-hGH arm: an earlier efficacy/engagement datum on the rat track (adequate catch-up growth; 0.66 mg/kg/wk closest to daily) not listed in patient_trials.",
+  "Somatrogon monkey track: whether Hershkovitz 2016 full text (paywalled) or FDA BLA 761184 nonclinical review states a human starting dose/margin or examined injection-site lipoatrophy in monkeys was not checked; could change dose 5 / safety 3."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "When a model states a potency equivalence (monkey 1.4 mg/kg/month = 0.05 mg/kg/day rhGH) and patients later need a higher dose on the same PD readout to normalize it, is that the 'reached, failed, higher dose worked' dose contra, or is the target 'reached' because dose-finding simply escalated?",
+  "Does a post-marketing case series (tier 1, no denominator) count as a patient comparison that can make a safety contra for a negative animal prediction (lipoatrophy)?",
+  "For efficacy 3, a tier 5 press release is cited though a tier 3 registry record of the same trial exists; should src move to the registry (year then 2022) or stay on the earlier-public press release (2017)? The brief says the higher tier sets the status but dates by first public."
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/systemic-lupus-erythematosus-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Katewa 2017 JCI Insight (PMID 28405610, epub 2017-04-06) abstract has the quote verbatim; G-744 is a non-member sibling, so product_in_model false is right. Opening untested 2017 fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Isenberg 2021 (PMID 34042314) abstract quote verbatim. NCT02908100 registry (results 2020-07-07) lists no plasmablast/anti-dsDNA outcome, so 2021 epub is the right year."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Wallace full text (PMC9837396); Haselmayer full text shows evobrutinib cut anti-dsDNA in IFN-a NZB/W mice. Registry (2020-12-17) posted IgG change only, not anti-dsDNA, so 2022 stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "one system split across two model_ids: each model system is one track sharing one model_id",
+   "note": "Haselmayer full text (PMC6500888): the occupancy PK/PD/efficacy model was fitted in the IFN-a-accelerated NZB/W F1 mice, the same system as nzbw-lupus-mouse. Use that model_id; this opening entry then duplicates entry 1.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "One system keeps one model_id: the Haselmayer PK/PD was fitted in the same IFN-a NZB/W mice (nzbw-lupus-mouse). On that track this 2019 untested repeats entry 1's 2017 opening; one entry per change of status, so drop."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "Healthy volunteers count (engagement); rule 6 earliest public date; one system one model_id",
+   "note": "Becker 2019 Clin Transl Sci (doi 10.1111/cts.12713, epub 2019-11-29): 'After multiple dosing, full BTK occupancy was achieved with 25 mg'. Healthy-volunteer occupancy dates the match to 2019; model_id nzbw-lupus-mouse. Track latest stays contra (entry 3).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Engagement: healthy volunteers count; rule 6 earliest public date. Becker 2019 (PMID 31654487, epub 2019-11-29) abstract: full BTK occupancy at 25 mg after multiple dosing. Same, year 2019, model_id nzbw-lupus-mouse; track latest stays contra."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "one system split across two model_ids",
+   "note": "Quote verbatim (Haselmayer 2019 abstract and full text). The 80% occupancy target was derived in the accelerated NZB/W F1 mice: model_id should be nzbw-lupus-mouse. Status and year unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "One system keeps one model_id: the 80% occupancy target came from IFN-a NZB/W mice, so model_id nzbw-lupus-mouse. Status and year unchanged; not the track's latest entry (dose 2 follows)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "Dose: healthy-volunteer PK counts; a later patient PK/occupancy source is its own dated entry; rule 6",
+   "note": "Wallace quote verbatim, but Becker 2019 (epub 2019-11-29) already showed full BTK occupancy at 25 mg/day in healthy volunteers, above the mouse 80% target: same in 2019, within_2x. Wallace 2022 changes no status.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose: healthy-volunteer PK counts; rule 6. Becker 2019 (epub 2019-11-29, verified): full occupancy at 25 mg/day, above the mouse 80% target. Same in 2019, within_2x; Wallace 2022 changes no status. model_id nzbw-lupus-mouse."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Katewa 2017 abstract quote verbatim; G-744 ameliorated nephritis in spontaneous and IFNa-accelerated NZB/W F1 mice."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Isenberg abstract quote verbatim; SRI-4 is the registered primary; NCT02908100 results posted 2020-07-07 (year 2020 right). Patient_trials verified (registry 2020-12-17, 2023-07-21; quotes in abstracts). Wallace 2022 also states the comparison for the class."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Liver AESI quote verbatim in Wallace full text. No member approved, so no FDA review package; no public GLP tox found. epub_year/print_year 2022/2023 describe the patient source while the entry year is 2017: cosmetic."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Herman 2018 (PMID 29484638, epub 2018-03-23) abstract: quote verbatim. Opening untested entry for an HV-fitted PK/PD model; HV data fitted the model so is not its test. Tier 1, year 2018 correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Isenberg 2021 full text (Wiley via fc.py, output truncated mid-quote): 'reductions in pBTK levels consistent with those predic[ted]'; ref 11 is Herman 2018. Prediction predates SLE results, so prospective: same, not retro. pBTK direct."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Herman 2018 abstract quote verbatim; model stated a regimen target (high BTK inhibition over dosing interval). No margin from the model itself; untested 2018 opening correct."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Isenberg 2021: 'dosing regimens of fenebrutinib were selected based on a previously generated PK/PD model of BTK inhibition (ref 11 = Herman 2018)'; troughs gave predicted pBTK reduction. Target reached, so same; efficacy failure belongs to efficacy. Prospective."
+  }
+ ],
+ "missing": [
+  "No new model track found. Additional engagement data, status-neutral: elsubrutinib arm biomarkers in the SLEek study (Lupus Sci Med 2026, doi 10.1136/lupus-2026-002162, epub 2026-10-29; abstract not available) set against ABBV-105 NZB/W data (Goess 2018); same nzbw-lupus-mouse track.",
+  "Healthy-volunteer occupancy for evobrutinib (Becker 2019, doi 10.1111/cts.12713) is missing as the earliest engagement/dose comparison; see engagement 5 and dose 2.",
+  "Wallace 2022 (doi 10.1002/acr2.11511) states the mouse-to-patient efficacy comparison itself ('Several studies have demonstrated that BTK inhibitors are effective in murine models of SLE; this effectiveness, however, has not translated'): could be cited as a comparison_stated:true efficacy entry; status unchanged."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Is a PK/PD occupancy-efficacy model fitted in the same NZB/W mice a separate track from the efficacy readouts in those mice? I treated it as the same system (one model_id).",
+  "The engagement track pools a direct readout (BTK occupancy: matched) and a downstream readout (autoantibodies: contradicted, evobrutinib). Under 'contra beats same' the cell shows contra although target engagement held; should engagement be scored per readout_tier?",
+  "The 80% occupancy target was published (Haselmayer, April 2019) after the member SLE trials started (Jan 2017) but before any readout. Does the 'stated before the trial' requirement apply to dose targets as well as to margins?",
+  "Fenebrutinib SLE regimen: the HV PK/PD model (fenebrutinib-hv-pkpd) stated the regimen, but the BTK-inhibition level it aimed at came from NZB/W mice (Isenberg 2021 dose rationale, ref 16). Does the dose target score on both the HV-model and mouse-btk-occupancy-pkpd tracks, or only one?"
+ ]
+}

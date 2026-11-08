@@ -1,0 +1,139 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/glycogen-storage-disease-ii-gaa-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Europe PMC: Maga JBC, PMID 23188827, first published 2012-11-27; quote verbatim in abstract. GILT-tagged GAA is the reveglucosidase (BMN 701) precursor, a member drug. Opening untested at 2012 fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "Evidence rule 6 (dating: earliest date the comparison was public)",
+   "note": "Quote verbatim in IntegratedR 6.1.4; Hex4 -1.88 vs +1.22 confirmed (Table 10). Status same holds, but PROPEL urinary Hex4 vs alglucosidase was public in Schoser 2021 Lancet Neurol and Amicus Feb 2021 topline, before the 2023 review/registry.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6: PROPEL Hex4/CK vs alglucosidase was public in Schoser 2021 Lancet Neurol (online Nov 2021; biomarkers among reported domains), before the 2023 review/registry; year should be 2021."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (IntegratedR ~line 1774); review says the margins supported ATB200-02 starting doses, so model_filed true and opening untested at 2016 proxy are reasonable."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim mid-sentence (line ~7301). Monkey 26-wk NOAEL 200 mg/kg pre-dated PROPEL; patients dosed to 20 mg/kg without organ toxicity; Decision 16 same with margin_stated is supported. Year 2023 fine: margin first public in the review."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Maga abstract; opening untested entry at 2012."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate; one system split across two model_ids",
+   "note": "Quote verbatim in Peng abstract (epub 2016-11-16). Patient comparator is exploratory MIP/MEP in Byrne phase 1/2 whose registry primary is adverse events, so endpoint_role 'primary' is wrong. Same GAA tm1Rabn mouse as gaa-ko-mouse track; should share model_id.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: primary endpoint (or pre-specified poc_gate) governs. Byrne phase 1/2 primary was safety; MIP/MEP exploratory, so no admissible comparison. INSPIRE MIP primary single-arm, terminated, untested: rule 5 unsettled."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Schoser abstract: 6MWD diff 13.6 m (95% CI -2.8 to 29.9), superiority missed; quote verbatim. Xu 2019 abstract claims superiority over alglucosidase in mice. same+partial defensible on direction; see rule question. Registry results 2023-09-11 confirmed."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (IntegratedR line ~7299). Opening untested at 2016 proxy."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Byrne 2017 abstract: hypoglycaemia 63%, verbatim. No public reveglucosidase toxicology found; untested/unpublished stands. Minor: track opens at 2017 though model_first_use_year 2011."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (line 861). Clean organ tox vs no organ toxicity in patients; anaphylaxis to a human protein not scored as a miss is consistent with the CRS rule. '151 patients' not checked."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in local IntegratedR (6.3.3 In Vitro Evidence, Fig 26, RRB200-040). Buffer study RRB200-010 is in 13.1 'Studies Submitted Under the IND'; stabilisation rationale public by 2016-17 Amicus releases. Opening untested at 2016 proxy fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim (IntegratedR p.67, Table 30 numbers match). Model prospective: stabilisation filed under IND before ATB200-02 PK, so not retro. same + partial supported (<50% rise). Xu 2019 JCI Insight (tier 1) also reports ex vivo blood stabilisation; no pre-2023 public PK comparison found."
+  }
+ ],
+ "missing": [
+  "Engagement: PROPEL urinary Hex4/CK vs alglucosidase reported in Schoser 2021 Lancet Neurol (doi:10.1016/S1474-4422(21)00331-8) and Amicus topline press release Feb 2021; dates the gaa-ko-mouse engagement comparison to 2021, not 2023.",
+  "Possible earlier engagement comparison: ATB200-02 open-label phase 1/2 (NCT02675465) urinary Hex4 reductions on cipaglucosidase+miglustat, presented from 2018; not verified in a tier 1-3 source.",
+  "Clervonafusp alfa (VAL-1221, 3E10-Fab-GAA): Gaa KO mouse data exist and phase 1/2 NCT02898753 terminated without results; no track in the draft (would be untested/unsettled). Not verified within budget."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy: when the model predicted superiority over an active comparator and the primary superiority test missed (point estimate favourable, CI crossing zero), is that same+partial (direction) or contra (prediction of superiority not borne out)?",
+  "Efficacy retro on a separate readout (plethysmography) of the same mouse strain: separate track by readout, or the same model_id as the strain's glycogen/muscle-function track?",
+  "Can a retrodiction be scored against an exploratory endpoint of a safety-primary phase 1/2 when the only trial with that endpoint as primary (INSPIRE, single-arm, terminated) was never inferentially tested?",
+  "miglustat-blood-stability-ex-vivo: plasma GAA activity/protein exposure is a PK readout; the rules do not say whether an exposure-enhancement prediction belongs in engagement (proximal) or the dose cell."
+ ]
+}

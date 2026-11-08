@@ -1,0 +1,218 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-hepatitis-b-virus-infection-tlr7-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lanford 2013 (PMID 23415804, PMC3691056) resolves; quote verbatim in abstract. Opening untested entry with 2012 proxy year is acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lopatin 2013 (PMID 23416308, epub 2013-02-15) quote verbatim in abstract; ISG induction in HV matches chimp ISG induction in direction. Note: chimp 1 mg/kg also induced ISGs without serum IFN-α, so direction_only is fair."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2015,
+   "rule": "Retrodiction: a model run after the clinic already knew the answer that reproduces the human data is retro, never same",
+   "note": "Quote verbatim (full text PMC4439359). It compares woodchuck ISGs with already-published healthy-volunteer ISG data (Lopatin 2013, ref 11); the human engagement answer was known, so retrodiction: true, status retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: the woodchuck study was run after Lopatin 2013 published human ISG induction and reproduced it; a model run after the clinic knew the answer that matches is retro, never same."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim (partial sentence). Note is wrong: full text says at 1 mg/kg chimps had ISGs 'with no detectable increase in serum levels of IFN-α'; only 2 mg/kg was systemic. Pre-systemic regimen is framed as hypothesis, so untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "Dose: same only on a target the model system stated; a target taken from human data is not a model prediction (untested_reason no_prediction)",
+   "note": "The 'target' is human ISG at tolerated doses, read from prior human data; reaching it is circular and duplicates engagement 3. Also woodchuck efficacy dose 5 mg/kg caused thrombocytopenia (dose cut to 2.5), so no tolerated margin was stated.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule: the ISG 'target' was read from prior human data, not stated by the woodchuck system; a target scores only on the model system that stated it. untested_reason no_prediction."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Herschke 2021 (PMID 34718044) quote verbatim in abstract. OCEANcure05 (PMID 42811768) abstract gives no dual-vs-NA HBsAg effect and credits decline to adding PD-L1; untested/unsettled correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Lanford abstract; 2.2-log mean HBV DNA reduction, HBsAg/HBeAg reduced. n=3 chimpanzees."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Janssen 2018 (PMID 29104121, epub 2017-12-11) quote verbatim; HBsAg at week 24 is the primary endpoint. Trial does not attribute failure to dose, and chimp stated no dose target, so contra stands per dose table."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Menne 2015 (PMID 25559326, epub 2015-01-02) quote verbatim in abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Janssen primary-endpoint quote; woodchuck predicted WHsAg loss at ISG levels it said humans reach; patients showed none. Contra correct. NCT02579382 (viremic, results 2020-05-18) could be listed in patient_trials."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Lanford full text (Results, liver-enzyme section)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gane 2015 (PMID 25733157) quote verbatim in abstract conclusion; tolerated as in chimps, partial is fair. An earlier 2013 HV comparison (Lopatin: well tolerated to 12 mg, flu-like at 8-12 mg) exists but is healthy volunteers."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2017,
+   "rule": "Safety: a predicted harm that never appeared in patients is contra, magnitude opposite; untested_reason no_prediction excludes a model that named a harm",
+   "note": "Full text: platelet falls 'occurred primarily at 5 mg/kg', the efficacious, ISG-matched regimen (groups dose-cut to 2.5 for thrombocytopenia), not above it. Patients at matched ISG levels: no thrombocytopenia AE row (registry, 5% threshold). Low confidence: lab tables unread.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Safety rule: full text shows thrombocytopenia 'primarily at 5 mg/kg', the efficacious ISG-matched dose; patients at matched ISGs had no thrombocytopenia (Janssen 2018, Agarwal 2018). Named harm absent: contra, opposite; low confidence."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Fosdick 2014 (PMID 24133297, epub 2013-10-16) resolves; quote verbatim in abstract. Opening untested entry at 2011 proxy (monkey/mouse PK/PD preceding first-in-human) acceptable."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim; same paper states monkey and healthy-volunteer whole-blood OAS1/MX1 induction without systemic IFN-alpha. Monkey PD presumably IND-enabling (pre-FIH), so not retro; full text unavailable, timing inferred, medium confidence fair."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Same source and quote as engagement 4; untested opening entry at proxy year is acceptable."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2013,
+   "rule": "Dose: margin_stated only where a model source stated the margin before the trial; otherwise the model stated no target or margin (untested)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Lopatin quote verbatim (PMID 23416308, epub 2013-02-15). The only model source stating the presystemic window (Fosdick, epub 2013-10) postdates and includes the human data; no pre-trial stated target or margin found.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule / checker rule on margin_stated: Fosdick (epub 2013-10) states the presystemic window only alongside already-published human data; no pre-trial stated target or margin. untested_reason no_prediction."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Niu 2018 (PMID 29247725, epub 2017-12-13) quote verbatim in abstract; GS-9620 alone inactive in PHH, conditioned media reduced HBV DNA/RNA/antigens. Untested opening at 2017 fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Janssen 2018 (PMID 29104121) quote verbatim; Gane 2015 no-HBsAg-change known before Niu, so retrodiction true and contra (failed to reproduce) follows the rule. Caveat: patients had no serum IFN-alpha, the condition driving the in vitro effect."
+  }
+ ],
+ "missing": [
+  "Boni 2018 Gastroenterology (doi:10.1053/j.gastro.2018.01.030, epub 2018-01-31): in NA-suppressed patients GS-9620 1-4 mg weekly raised HBV-specific T-cell and NK responses; patient-side match to the chimp/woodchuck NK and lymphocyte activation (engagement, downstream; abstract explicitly cites both models).",
+  "AAV/HBV mouse track (JNJ-4964/TQ-A3334) has no engagement entry: JNJ-4964 first-in-human (doi:10.1177/13596535211056581, 2021) and TQ-A3334 HV study (doi:10.1080/13543784.2021.1873275, epub 2021-01-13) show dose-dependent ISG15/MX1/OAS1 induction; both precede the mouse paper (Oct 2021), so likely retro.",
+  "AAV/HBV mouse safety: mouse showed normal ALT and no hepatocyte death; JNJ-4964 HV showed IFN-α-linked flu-like AEs, lymphopenia and one case of retinal cotton-wool spots (doi:10.1177/13596535211056581); a safety track for this model is absent.",
+  "Viremic phase 2 NCT02579382 (vesatolimod + TDF, results posted 2020-05-18; Agarwal 2018) is mentioned only in a confidence_note; belongs in efficacy patient_trials.",
+  "RG7795 (ANA773): no preclinical-vs-patient comparison found in Europe PMC search; not verified further."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a model that frames a hypothesised regimen ('pre-systemic' dosing: ISGs without serum IFN-α, Lanford 2013) state a dose target, making dose 'same' when humans were dosed exactly there, or is a hypothesis to be tested not a stated target?",
+  "When a model study calibrates its PD to previously published human data (Menne 2015 ISG vs Lopatin 2013), is the engagement match a retrodiction even if the animal dosing may have run in parallel with the human study?",
+  "A model harm observed at the effective dose but never scaled to a human exposure: is it a named-harm prediction (contra if absent in patients) or no_prediction?",
+  "Efficacy 7 (PHH + PBMC conditioned media): the in vitro antiviral effect came from IFN-rich conditioned media, while patients were dosed presystemically with no serum IFN-alpha. Is a pairing contra, or untested because the patient exposure condition was never modelled, when the trial source itself does not attribute the failure to that condition?"
+ ]
+}

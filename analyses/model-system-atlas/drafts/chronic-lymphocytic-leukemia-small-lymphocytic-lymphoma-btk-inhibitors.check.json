@@ -1,0 +1,207 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Herman 2017 full text (PMC5548968, epub 2016-11-30): quote verbatim; intro cites Byrd 2015 'impressive clinical activity' (ref 28), so retro is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 1 (paired comparison)",
+   "note": "NDA 210259 review: mouse CD69/CD86 ED50 0.16-1.8 mg/kg and 100 mg BID maximal trough occupancy both present, in separate sections; paired is right. Track lacks an opening 2015 untested entry (rule 6); human occupancy public in Byrd 2015."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 1 (paired comparison)",
+   "note": "Tam 2019 abstract quote verbatim; Guo 2019 abstract confirms in-vivo mouse PD used to prioritise compounds. Zanubrutinib on the same mouse-PD track as acalabrutinib is acceptable."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Dose table row 1 (no model-stated target)",
+   "note": "Review quote verbatim; dose set on ACE-CL-001 occupancy. Review NOAEL multiples (16-18x AUC) are computed at review against clinical exposure, not a pre-trial margin, so untested holds."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Dose table row 1 (no model-stated target)",
+   "note": "Tam 2019 abstract: 160 mg BID chosen on lymph-node occupancy in patients; Guo 2019 abstract states no human target."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Efficacy scored on primary endpoint",
+   "note": "Byrd 2016 full text (PMC4862586, epub 2015-12-07) quote verbatim, cites canine AACR 2014 abstract. ACE-CL-001 a safety-primary phase 1-2, so untested opening is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Source reads 'reduced tumor burden and increased survival compared to vehicle treatment' (no comma/'with'); retro correct given cited clinical activity."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 1 (paired comparison)",
+   "note": "Ghia 2020 abstract quote verbatim (PFS primary). Harrington 2016 full text: dog ORR 25% (5/20), median PFS 22.5 d, DLBCL-type dogs. ELEVATE-TN epub 2020-04-01 precedes ASCEND but same year."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Status same; comparison_stated",
+   "note": "Byrd 2016 full text: quote verbatim; 'No major hemorrhage or atrial fibrillation was noted.' Platelet readout is patients' own platelets; the model side is the selectivity panel plus a murine thrombosis model."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Status same + source_calls_it partial",
+   "note": "Byrd 2021 (PMC8547923) conclusion verbatim; purpose states the selectivity hypothesis, so comparison_stated true is right. AF reduced not abolished: partial fits."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 1 (paired comparison)",
+   "note": "Brown 2023 abstract quote verbatim (epub 2022-12-13); Guo 2019 abstract states selectivity over TEC/EGFR/Src. Paired is right."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 5 (untested_reason unsettled)",
+   "note": "Dog 39-wk quote verbatim; rat lethal-dose myocardial necrosis also verified. Entry is out of year order after the 2022 entry (single modality). Dog tox 'platelet aggregation unremarkable' vs ~50% patient bleeding: see rule question."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 (opening untested at model_first_use_year)",
+   "note": "Demin 2025 CPT:PSP (epub 2025-02-12, PMC12001278) resolves; quote verbatim in abstract. Opening untested 2025 with no_prediction fits.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Quote verbatim in abstract; model 'developed to describe' and 'validated using available clinical BTK occupancy data', so retro is right. BM occupancy has no clinical counterpart, correctly excluded.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 6 (opening untested at model_first_use_year)",
+   "note": "NDA 210259 review: quote verbatim (moderate CYP3A inhibitor section); Simcyp confirmed. Moderate-inhibitor predictions untested clinically for acalabrutinib in this review; not_measured fits.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "Review: fmCYP3A 0.82 'assigned to allow the best description of observed DDI effect with itraconazole'; rifampin quote verbatim. Both DDI studies predate model, so retro is right.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Retrodiction (retro, never same)",
+   "note": "NDA 213217 review: quote verbatim; pred/obs Cmax/AUC 0.74-1.23 table present (HV and patients). Verification on data in hand, so retro. Same PBPK system type, one track is right.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dose rule (model stated exposure target, held in patients)",
+   "note": "Tariq 2022 Leuk Lymphoma (epub 2022-12-08) quote verbatim; 80 mg BID+fluconazole/diltiazem AUC GLSM ratios 0.94/0.81 vs 320 QD. Prospective (post-label FDA PMR). Review gives 2.57-4.17x moderate range; '~2.8x' not seen. Mixed B-cell histology.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Murine in-vivo thrombosis model with human platelets (Byrd 2016 NEJM, Methods ref 19; https://doi.org/10.1056/NEJMoa1509981) is folded into the btk-selectivity-offtarget-assays track rather than its own system.",
+  "Zanubrutinib nonclinical toxicology (FDA NDA 213217 multidisciplinary review, in the bundle) has no safety track; the rat/dog GLP tox track covers acalabrutinib only.",
+  "Zanubrutinib CLL supplemental approval review (NDA 213217/218785, 2023) not in bundle (manifest error) and not consulted by draft or checker.",
+  "QSP target-occupancy model for zanubrutinib/acalabrutinib compared with patient occupancy and PFS (CPT Pharmacometrics Syst Pharmacol, https://doi.org/10.1002/psp4.13307); likely a retrodiction, in_silico track."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Rat/dog GLP tox: dogs reported unremarkable platelet aggregation and no bleeding at exposures above clinical, yet ~50% of patients had bleeding events and AF 3%. Is that a silence a dog 'could have shown' (contra) or unsettled because ibrutinib-class harms were already expected?",
+  "Can one selectivity-panel track (and one mouse-PD track) span two member drugs whose panels were run by different sponsors (Acerta vs BeiGene), or does each sponsor's assay count as a separate model system?",
+  "Must each track open with a model_first_use_year untested entry (rule 6) when its first comparison came later? The mouse-PD (2015) and selectivity tracks open directly with same; lint does not flag it."
+ ],
+ "unverified": "Byrd 2016 supplement (mouse PD that could date the engagement pairing to 2015) not read; registry_date values not re-checked."
+}

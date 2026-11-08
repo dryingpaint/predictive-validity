@@ -1,0 +1,196 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/mantle-cell-lymphoma-cd19-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves to Kochenderfer 2010 Blood (PMID 20631379); quote verbatim in abstract. Same syngeneic lymphodepleted model the Tecartus SBRA describes. Opening untested correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zammarchi 2018 (PMID 29298756); quote verbatim in abstract. No tumour crosslink/gamma-H2AX readout in patients found; untested/not_measured fits."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA 125703 (dated 2020-07-23) states 'TECARTUS induced B cell aplasia in the majority' and describes the murine CD19 CAR model targeting normal B cells. readout_tier 'direct' is generous (cell depletion, arguably proximal); status unaffected."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract. Mouse gave no human cell dose; ZUMA-2 dose carried from ZUMA-1. untested/no_prediction correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Zammarchi 2018 abstract; opening untested entry."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote in BLA 761196 review. Quote itself shows no model margin, but review states monkey Cmax/AUC margins ~3x/45x vs 150 ug/kg and 1/6 HNSTD start; MTD not reached. Better quote: the margin sentence. Pre-trial timing of margin unclear."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Kochenderfer 2010 abstract; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Zammarchi 2018 abstract; FDA review lists Ramos/Daudi/WSU-DLCL2 etc., no MCL xenograft. Opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2020,
+   "rule": "Efficacy follows the trial's primary endpoint; a secondary counts only with endpoint_role poc_gate (checker brief: efficacy scored on a secondary endpoint without poc_gate). untested_reason not_measured/unsettled.",
+   "note": "Hamadani 2021 quote verbatim (ORR 46.7% MCL). NCT02669017 primary outcomes are DLTs, RP2D and TEAEs; ORR secondary, n=15 MCL, endpoint_role null. Cannot score same; xenografts were not MCL either.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy follows the trial's primary endpoint unless a secondary is a poc_gate (efficacy rule). LOTIS-1 primaries were DLT/RP2D/TEAEs; MCL ORR secondary, no poc_gate. Latest track entry: untested_reason not_measured (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Wang 2020 NEJM (PMID 32242358); abstract reads '95% confidence interval [CI], 84 to 98'. NCT02601313 primary = ORR, results posted 2020-09-10. Paired same, direction_only, fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote is Figure 5 legend in Tarantelli 2024 full text (haematologica.org). Combination model with no MCL patient result; untested/not_measured fits. model_filed null acceptable (not filed)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Kochenderfer 2010 abstract; opening untested."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Zammarchi 2018 abstract; opening untested."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim; hypogammaglobulinemia 13/82 (16%) and B-cell loss reported. Mouse silence on CRS/ICANS correctly not scored. Judgement cites NEJM CRS 15%/neuro 31%; SBRA safety set shows 18%/37% grade>=3."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "BLA 761196 review: 'The toxicities observed in animals have generally been observed in patients', followed by lung/kidney inflammation caveat; partial same with imported_from DLBCL fits."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PubMed 26819453 (Clin Cancer Res, epub 2016-01-27); quote verbatim in abstract. CTL019 is a CD19 CAR (sibling product, product_in_model false). Opening untested 2016 correct; no MCL patient result then."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Wang 2020 NEJM quote near-verbatim (abstract reads '95% confidence interval [CI], 84 to 98'); primary endpoint ORR. Model published 2016, before ZUMA-2 results, so prospective: same, not retro. Direction-only pairing fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "SBRA BLA 125703 (dated 2020-07-23), section 4: quote verbatim. Product itself, filed. 2015 opening year is a proxy (allowed). Cell lines unnamed; model_kind ex_vivo is nearest enum for in vitro lines."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Same ZUMA-2 quote as index 7 (near-verbatim); co-culture ran before ZUMA-2 dosing, so not a retrodiction. Weak, direction-only pairing; target lines may not be MCL. Efficacy cell entries are no longer in year order after merge (2015 after 2020)."
+  }
+ ],
+ "missing": [
+  "Ruella et al. 2016 Clin Cancer Res (doi:10.1158/1078-0432.CCR-15-1527, PMID 26819453): anti-CD19 CAR T cells (CTL019, sibling product) in MCL cell-line and patient-derived xenografts predicted CAR T activity in MCL; an MCL-specific model track (product_in_model false) pairable with ZUMA-2.",
+  "Tecartus SBRA (fda.gov/media/141093) in vitro co-culture cytotoxicity of KTE-X19 against CD19+ targets: product-in-model ex_vivo system the drafter consciously gave no track; at least an opening untested entry could be argued."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose: does a monkey exposure margin (Cmax ~3x, AUC ~45x vs the 150 ug/kg clinical dose) stated in the BLA review, plus the 1/6-HNSTD starting-dose rule, count as a pre-trial stated margin (margin_stated) when the review computing it post-dates the phase 1?",
+  "Engagement: is depletion of normal CD19+ B cells by a depleter a 'direct' readout (target engagement) or 'proximal/downstream'?"
+ ]
+}

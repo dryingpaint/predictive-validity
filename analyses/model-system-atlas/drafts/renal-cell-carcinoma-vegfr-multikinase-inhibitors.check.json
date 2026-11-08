@@ -1,0 +1,151 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/renal-cell-carcinoma-vegfr-multikinase-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wilhelm 2011 (PMID 21170960, epub 2011-04-22) resolves; Gadomer/GS9L sentence verbatim in abstract. Opening untested entry at first publication is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mross 2012 (PMID 22421192) resolves; quote verbatim. DCE-MRI perfusion fell in mixed solid-tumour phase 1 (healthy/other patients allowed for engagement). Direction only, downstream tier, paired: correct."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wilhelm 2011 abstract. Grep of regorafenib PharmR for an efficacious/minimum effective exposure found none; doses set by phase 1 MTD, so untested/no_prediction is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "786-O shrinkage sentence verbatim. Trial NCT00664326 ran April 2008-June 2011; xenograft data published before its 2012 report, so the opening entry is sound."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Eisen 2012 (PMID 22959186, epub 2012-09-06) quote verbatim; ORR is the stated primary. Registry results first posted 2012-11-28 confirmed via CT.gov API; year 2012 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Matsuki 2017 (PMID 28107584) quote verbatim; abstract opens from the phase II result, so retrodiction/retro and comparison_stated true hold. See rule question on retro after same on one track."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Du 2022 (PMID 35222406) quote verbatim; abstract cites anlotinib's patient efficacy first, so retro is right. Zhou 2019 patient quote verbatim. Catequentinib is AL3818 (anlotinib), so it is a member."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled 203085 PharmR; next sentence notes liver enzyme elevations seen clinically. Imported from CRC flagged. Track has no opening untested entry at 2008 (rule 6), lint did not flag."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Model sentence ('Lenvatinib induced renal toxicity in rats and monkeys, including proteinuria') verbatim in bundled 206947 PharmR (Feb 2015); Motzer 2015 quote verbatim; registry 2019-02-27 confirmed. Pairing sound; no opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Yamamoto 2014 (PMID 25197551, epub 2014-09-06) resolves; quote verbatim in abstract conclusion. Patient-selection prediction not known from patients at the time, so opening untested at 2014, prediction_level patient, correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested -> untested; latest untested carries untested_reason (not_measured)",
+   "note": "CLEAR biomarker paper (PMID 39672382) quote verbatim. Model predicted IHC vascular score (MVD + pericyte coverage) for lenvatinib alone; patient readout is an RNA MVD signature in the lenvatinib+pembrolizumab arm. Readout never measured; set untested, untested_reason not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5 not_measured: the model's IHC vascular score (MVD plus pericyte coverage, lenvatinib alone) was never measured; CLEAR measured an RNA MVD signature in the lenvatinib-pembrolizumab arm. No admissible contra pairing."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "Dating rule 6: each cell opens at model_first_use_year",
+   "note": "Kato 2019 (PMID 30811474) quote verbatim. Same Eisai syngeneic system (Hepa1-6, lenvatinib plus anti-PD-1) was first published in Kimura 2018 Cancer Sci (doi:10.1111/cas.13806, epub 2018-11-16); opening entry and model_first_use_year should be 2018.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed (opening entry, rule 6). Checker right on dating: Kimura 2018 Cancer Sci (doi:10.1111/cas.13806, online 2018-11-16) ran lenvatinib plus anti-PD-1 in Hepa1-6, so opening year and model_first_use_year should be 2018."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Motzer 2021 (PMID 33616314, epub 2021-02-13) quote verbatim; its background states the combination already had RCC activity (KEYNOTE-146 reports from 2016-17), before Kimura 2018/Kato 2019, so retro is right. Direction only vs sunitinib."
+  }
+ ],
+ "missing": [
+  "Yamamoto 2014 Vascular Cell (doi:10.1186/2045-824X-6-18, PMID 25197551): lenvatinib 19-model xenograft panel with a vascular-score (MVD + pericyte coverage) sensitivity biomarker; kidney cancer had the highest MVD/vascular score in human specimens. A patient-level prediction track for lenvatinib, likely untested (not_measured) in RCC; published after Study 205's ASCO 2014 readout.",
+  "FDA review of the lenvatinib RCC supplement (NDA 206947 S-007, 2016) and the 2016 label section 12/13 stating lenvatinib+everolimus exceeded either drug in RCC xenografts: not in the bundle; a regulator source that could date the lenvatinib RCC-xenograft retrodiction to 2016 rather than 2017.",
+  "Xie 2018 Cancer Sci (doi:10.1111/cas.13536): anlotinib preclinical characterization with in-vivo xenografts, published before the RCC phase II paper (2019); check whether a renal xenograft was included, which would give anlotinib a prospective model.",
+  "Famitinib RCC patient data: phase II NCT01829841 (started 2011-05, no results posted) and camrelizumab+famitinib RCC cohort (Qu 2021 Clin Cancer Res, doi:10.1158/1078-0432.ccr-21-1698). Only famitinib model found is gastric BGC-823 xenograft (doi:10.3892/ol.2016.4909), not RCC; draft's 'no famitinib RCC model' stands."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "A retrodiction (efficacy 3, retro 2017) on a track whose prior prospective entry is same (2012): should the track's latest status become retro, hiding the prospective match, or should retro entries not change a track's displayed status once it has a prospective same?",
+  "Rule 6 says each cell opens at model_first_use_year with untested; the two safety tracks open directly at same with model_first_use_year 2008/2010. Is an opening untested entry required per track, and should lint enforce it?",
+  "Lenvatinib (Study 205) is listed as a patient_trial on the regorafenib 786-O track and lenvatinib's own xenografts share that model_id: is 'nude-mouse RCC cell-line xenograft' one system across sponsors and cell lines (786-O vs A-498/Caki), or one track per member drug?",
+  "Patient-level (biomarker) track paired with a combination arm and a different assay of the same biological variable (RNA MVD signature vs IHC vascular score): the rules do not say whether that is a different readout (untested/not_measured) or an admissible contra at low confidence."
+ ]
+}

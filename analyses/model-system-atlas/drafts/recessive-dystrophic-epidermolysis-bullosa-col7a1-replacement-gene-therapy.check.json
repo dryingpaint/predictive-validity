@@ -1,0 +1,250 @@
+{
+  "draft": "analyses/model-system-atlas/drafts/recessive-dystrophic-epidermolysis-bullosa-col7a1-replacement-gene-therapy.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Gurevich 2022 (PMID 35347281) abstract has the quote verbatim; SBRA s.4 confirms hypomorph mouse and xenograft studies. 2018 opening proxy acceptable."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim in abstract; paper reports mice/xenograft and patient C7/anchoring fibrils together, so comparison_stated true is fair. Proximal readout correct."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Siprashvili 2010 (PMID 20497034) quote verbatim; SBRA 2025 confirms Col7 expression to 12 months in immunodeficient-mouse wound implants."
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "JAMA 2016 quote verbatim; 90%->66%->42% C7 positivity vs 1-year xenograft persistence; same with source_calls_it partial is right."
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Hou 2015 (PMID 26203639) quote verbatim. Earlier FB-rhC7 work in engrafted RDEB skin (cited in the abstract) is the same protein track's prior use; opening year could be earlier."
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "BridgeBio release scraped; quote verbatim. NCT04599881 lists skin delivery (NC1/NC2 IF) as a secondary outcome; no posted results, so tier 5 with trial_unreported true is right."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "SBRA 169342 s.5 quote verbatim; mouse studies stated no human dose or margin. untested/no_prediction correct."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "SBRA 186796 clinical pharmacology quote verbatim; nonclinical section states no human dose. untested/no_prediction correct."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Single newborn-mouse IV dose; no human dose/exposure/margin in abstract. PTR-01 phase 1/2 used 3.0 mg/kg weekly (registry), not a model-stated target."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "SBRA 169342 s.4 quote verbatim."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim; phase 1/2 primary objectives (C7, AF, wound area) met; GEM-3 NEJM 67% vs 22% is a consistent patient_trials entry."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Siprashvili 2010 quote verbatim."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Tang 2025 (PMID 40570869) quote verbatim; coprimary endpoints (>=50% healing, pain) both met. Year 2025 holds whether dated by April 2025 label or June Lancet epub."
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Hou 2015 quote verbatim."
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": false,
+      "note": "NCT04599881 primary efficacy endpoint is >=2-level 7-pt Global Impression of Change in a majority of lesions; quoted >=50% wound-area reduction is a registry secondary. Release: 4/6 patients responders on primary. Status stays same; swap quote.",
+      "proposed_status": "same",
+      "rule": "efficacy: the trial's primary endpoint governs; a secondary needs endpoint_role poc_gate",
+      "adjudicated_status": "same",
+      "adjudication_note": "Efficacy rule: primary endpoint governs. Registry primary is >=2-level 7-pt GIC in majority of lesions; release: 4/6 patients responders. Still positive, uncontrolled; status same, but quote should be the GIC responder sentence."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote verbatim, but these GLP studies used wild-type BALB/c mice (IV, ID, wounded skin), not the COL7 hypomorph/xenograft system; give the safety track its own model_id (e.g. bvec-balbc-glp-tox). Status unchanged.",
+      "proposed_status": "untested",
+      "rule": "one system per model_id: two systems sharing one is a failure",
+      "adjudicated_status": "untested",
+      "adjudication_note": "One system per model_id: SBRA GLP tox used wild-type BALB/c mice, not COL7 hypomorphs/xenografts; move to its own track (e.g. bvec-balbc-glp-tox). Status untested unchanged."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim; no grade>=2 related AEs matches the BALB/c GLP silence; status same holds but on a separate BALB/c GLP track, with model_src the SBRA.",
+      "proposed_status": "same",
+      "rule": "one system per model_id: two systems sharing one is a failure",
+      "adjudicated_status": "same",
+      "adjudication_note": "One system per model_id: pair belongs on the BALB/c GLP tox track (model_src SBRA). No grade>=2 related AEs or shedding matches clean GLP tox; status same."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim; SBRA 2025 confirms GLP tox/BD in immunodeficient-mouse implants with no gross/histopathological findings and no clonality - same system."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim. Anti-C7 antibodies (2/7) and tissue-bound antibodies (4/7) in phase 1/2a (SBRA) are harms immunodeficient mice cannot show, so not a miss."
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim. ADA is a registry primary outcome of NCT04599881 with no results posted; release says only 'well tolerated'. untested/unsettled correct."
+    },
+    {
+      "cell": "engagement",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Woodley 2003 JID (Nov 2003) abstract has the quote verbatim; intradermal injection was into normal mouse skin plus regenerated RDEB skin. Model-only opener, untested 2003, class level, product_in_model false all correct."
+    },
+    {
+      "cell": "engagement",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Castle Creek poster PDF (created 2020-01-16) read; quote verbatim. Model 2003 predates trial, so prospective, not retro. same with source_calls_it partial fits two subjects shown; proximal readout correct."
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Quote verbatim in Woodley 2003 abstract. Model-only opener, untested 2003, correct."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "near",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "ClinicalTrials.gov API: NCT04213261 primary 'Complete Wound Closure of the First Wound Pair at Week 24', 1 vs 0, enrollment 6, results posted 2024-04-01. Brief's unsettled covers inconclusive; untested/unsettled, year 2024 supported."
+    }
+  ],
+  "missing": [
+    "Dabocemagene autoficel (D-Fi/FCX-007) has no track: model = gene-corrected RDEB fibroblasts injected intradermally into RDEB skin xenografts on SCID mice (Woodley 2003 J Invest Dermatol, doi:10.1046/j.1523-1747.2003.12571.x, product_in_model false; Fibrocell's own FCX-007 SCID-xenograft data only in a 2015 ASHG poster). Patient side: phase 1/2 NCT02810951 registry results (complete wound closure 40%/80% treated vs 0% untreated wounds, primary was AEs) and phase 3 DEFI-RDEB NCT04213261 registry results (primary: complete closure of first wound pair at week 24, 1 vs 0; trial stopped early). Likely an efficacy entry untested/unsettled, or a paired comparison.",
+    "Earlier protein-replacement model for PTR-01 track: fibroblast-derived rC7 injected into RDEB skin xenografts / IV in engrafted mice (Woodley 2004 Nat Med; Remington 2009 Mol Ther, cited in Hou 2015 abstract) - could move the col7-null/rC7 track opening year before 2015.",
+    "Hologene 7 (NCT02984085, terminated, no results): no admissible model or patient source found; the note's claim holds."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Dating: Krystal's GEM-3 topline (Nov 2021) and Abeona's VIITAL topline (Nov 2022) press releases precede the tier-1 papers; rule 6 lists registry/epub/label/print but not tier-5 releases. Should a tier-5 release date an entry when a higher-tier record later sets its status?",
+    "Product identity: PTR-01 is CHO-derived rC7 licensed from Shire; whether it is the exact CHO-rhC7 of Hou 2015 (product_in_model true vs false) is unconfirmed - does uncertainty default product_in_model to null, as drafted?",
+    "The DEFI-RDEB phase 3 (1 vs 0 closures, stopped early for vector supply) - is an underpowered terminated trial 'unsettled' (untested) or a contra for a model predicting healing?"
+  ]
+}

@@ -1,0 +1,181 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/pulmonary-arterial-hypertension-ptgir-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yuki 1994 (PMID 7825169) abstract read; quote is its closing sentence; Ppa dose-dependently suppressed over 3 weeks. Opening untested entry correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Galie 2002 (PMID 11985913) abstract: haemodynamics a secondary endpoint, no significant change at max tolerated dose. Contra on readout is admissible; one drug's contra holds over ralinepag's 2019 PVR fall. Missed earlier 1996 same entry (see missing)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Rowlands 2016 AJRCCM A2220: full abstract page did not render; telemetry sentence confirmed via search snippet, anti-remodeling sentence not seen directly. Opening untested entry fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02927366 results posted 2019-08-07; 'Only descriptive analysis performed.' in PVR outcome description. Day-111 PVR ratio 1.07 is n=4 QCC374 (6 randomized) vs 2 placebo; note says n=6. Unsettled is right."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Yuki 1994 abstract gives drinking-water concentrations only, no human exposure or margin; beraprost and ralinepag titrated to tolerability. untested/no_prediction correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Rowlands abstract states rat window only, no human dose; FIH NCT02245828 basis not published. untested/unpublished acceptable (no_prediction would also fit)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Yuki 1994 sentence; opening untested entry correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Galie 2002 abstract: primary 6MWD +25.1 m, p=0.036, quote verbatim. same, direction_only, primary \u2014 supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Barst 2003 (PMID 12821234) abstract: primary = disease progression over 12 months; effect at 6 months only, attenuated later. Quote verbatim. Contra supported, but see rule question on durability as an untested condition."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Rowlands 2016; anti-remodeling sentence not seen verbatim (page did not render), telemetry sentence of same abstract confirmed. Opening untested fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NCT02927366 primary PVR week 16, descriptive only; registry caveat says no meaningful comparison possible. untested/unsettled correct; QCC374 n at week 16 is 4, not 6."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Telemetered-rat no-sBP-change sentence confirmed near-verbatim via search snippet of the abstract PDF. Opening untested correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry AE table: headache 5/6, flushing 3/6, jaw pain 2/6, syncope 1/6 on QCC374, 0/2 placebo; no hypotension term. Quote is the PVR descriptive caveat, not an AE sentence, but status untested/unsettled is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Sim 1985 (PMID 3913423) abstract read; quote verbatim. Opening untested entry at model_first_use_year 1985 correct; class level, beraprost itself in model."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Demolis 1993 (PMID 7506323, DOI resolves) abstract: quote verbatim; 40/60 ug inhibited ex vivo ADP aggregation in healthy volunteers (count). Paired with 1985 in vitro model, prospective, direct readout: same supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Shen 2019 (PMID 31158340, epub 2019-05-31) abstract: quote verbatim. Opening untested entry fine, but the model paper postdates the 8 Apr 2019 BEAT topline press release (see index 7)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "Retrodiction: a model built or run after the clinic already knew the answer is retrodiction: true; failed to reproduce -> contra",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "United Therapeutics PR 2019-04-08 announced BEAT failed its primary endpoint, before Shen 2019 epub (2019-05-31). Set retrodiction: true (contra stays as failed retrodiction); year 2019, when both were public. PR not cited in draft.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: BEAT failure press release (2019-04-08) predates Shen 2019 epub (2019-05-31), so the ex vivo pairing is a retrodiction that failed to reproduce the human result; contra either way, retrodiction flag true."
+  }
+ ],
+ "missing": [
+  "Engagement, mct-rat track: Saji/Ichida-type short-term haemodynamic study of oral beraprost, Am J Cardiol 1996, doi:10.1016/s0002-9149(96)90408-7 (PMID 8712155): PVR fell 24% in 4 PPH patients. A paired same entry (1996) before the 2002 contra; latest status unchanged.",
+  "Safety, mct-rat track: Yuki 1994 (doi:10.1620/tjem.173.371) states 'Psa was not lowered dose-dependently by BPS' - a no-systemic-hypotension prediction for beraprost with no safety track; Galie 2002/Barst 2003 AE data could pair with it.",
+  "Ralinepag's own MCT rat data: Tran 2017 J Med Chem (PMID 28072531) 'oral efficacy in the rat monocrotaline model' - cited only in judgement/confidence_note; could be named as model_src for the ralinepag patient_trials (same mct-rat model_id).",
+  "Ralinepag ADVANCE CAPACITY (NCT04084678) terminated for 'Sponsor decision' - no efficacy failure, does not change status.",
+  "Efficacy, pah-pasmc-human-pa-exvivo track: United Therapeutics press release 2019-04-08 'BEAT Study of Esuberaprost Does Not Meet Primary Endpoint' (https://ir.unither.com/press-releases/2019/04-08-2019-145624946; tier 5) - BEAT failure public before Shen 2019, making the ex vivo pairing a retrodiction; also CHEST 2019 abstract (journal.chestnet.org S0012-3692(19)32994-0)."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Efficacy 3: BEAT's 12-month primary failed because benefit attenuated over time; the MCT rat studies were 3-week designs. Is treatment duration a 'condition the model never tested' (-> untested) or is a model's benefit claim implicitly a durable-benefit claim (-> contra)?",
+  "Engagement 2: is an uncontrolled acute haemodynamic series (1996) admissible as a same entry before the controlled 2002 null, and should engagement use only controlled comparisons?"
+ ]
+}

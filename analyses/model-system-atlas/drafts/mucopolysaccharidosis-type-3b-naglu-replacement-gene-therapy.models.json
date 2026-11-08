@@ -1,0 +1,128 @@
+{
+ "tile": "mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy",
+ "searched": [
+  "Draft, check.json (missing list, rule questions) and tiles.json read; manifest.csv: all three member rows 'no NDA/BLA', no FDA review text to grep",
+  "Europe PMC: Cressant AND Sanfilippo AND striatum -- Cressant 2004 J Neurosci (15537895), Naglu-/- mouse intraputaminal AAV2/AAV5-NaGlu",
+  "Europe PMC: Fu H AND Sanfilippo B AND adeno-associated 2002 -- no direct hit",
+  "Europe PMC: Heldermon AND MPS IIIB AND intracranial; Heldermon AND bone marrow AND intracranial -- Heldermon 2013 (23535899), Gilkes 2016/2021, Rouse 2023 (AAV8 programs, not members)",
+  "Europe PMC: Tardieu AND rAAV2/5-hNAGLU; Deiva AND NAGLU -- Deiva 2021 Hum Gene Ther (34405688) 5.5-year follow-up, Gougeon 2021 (34040605)",
+  "Europe PMC: NAGLU AND (patient fibroblasts OR iPSC) AND tralesinidase -- Yogalingam 2019 (30657762) BMN 250 uptake in cell types; Huang 2021 (34411609) patient iPSC model; no patient comparison",
+  "Europe PMC: SBC-103 AND rhNAGLU -- reviews only; no nonclinical toxicology paper",
+  "Europe PMC: Ciron AND Hurler AND dog AND brain AND gene therapy -- Hurler dog is in Ellinwood 2011 (21139569), already the draft's dog paper",
+  "Europe PMC: NAGLU residual activity attenuated genotype/phenotype Sanfilippo B -- variant-profile papers only, no prediction of enzyme threshold compared with treated patients",
+  "Europe PMC: (NAGLU OR Sanfilippo B) AND (pharmacokinetic model OR allometric OR PBPK OR in silico) AND (tralesinidase OR BMN 250 OR SBC-103) -- none",
+  "Europe PMC core abstracts: 15537895 (Cressant 2004), 34405688 (Deiva 2021)"
+ ],
+ "added_models": [
+  {
+   "model_id": "naglu-ko-mouse-aav-intracerebral",
+   "model": "Naglu-/- mouse, intraputaminal AAV2/AAV5-NaGlu",
+   "model_kind": "animal",
+   "model_first_use_year": 2004,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "year": 2004, "status": "untested",
+      "subjects": null, "comparison_stated": false, "source_tier": 1,
+      "model_src": null, "model_src_tier": null, "trial_unreported": false, "patient_signal_reversed": false,
+      "registry_date": null, "epub_year": 2004, "print_year": 2004, "model_filed": null,
+      "product_in_model": false, "retrodiction": false, "imported_from": null,
+      "magnitude": null, "magnitude_basis": null, "source_calls_it": null,
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "confidence": "high", "confidence_note": "Abstract-level (Europe PMC 15537895); full text PMC6730192 not read.",
+      "readout_tier": "proximal",
+      "note": "Single intraputaminal AAV5-NaGlu in 6-week Naglu-/- mice gave brain-wide NaGlu activity above physiological levels; no patient data yet.",
+      "short": "Mouse brain NaGlu after AAV, pre-clinic",
+      "src": "https://doi.org/10.1523/jneurosci.3558-04.2004", "srcLabel": "Cressant 2004",
+      "quote": "High NaGlu activity, far above physiological levels, was measured in the brain and persisted at 38 weeks of age.",
+      "judgement": "Opening entry: the Paris group's mouse study chose AAV5 over AAV2 for the intracerebral route later used with rAAV2/5-hNAGLU; a separate system from the draft's dog track and from the mouse IV/ICV enzyme tracks."
+     },
+     {
+      "year": 2017, "status": "same",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1523/jneurosci.3558-04.2004", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "registry_date": null, "epub_year": 2017, "print_year": 2017, "model_filed": null,
+      "product_in_model": false, "retrodiction": false, "imported_from": null,
+      "magnitude": "direction_only", "magnitude_basis": "brain (mouse) vs lumbar CSF (patient) NAGLU activity after intracerebral AAV",
+      "source_calls_it": "match",
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "confidence": "medium", "confidence_note": "Abstract-level; n=4; ISRCTN19853672/NCT03300453 have no posted results. Patient quote taken from the draft's verified Tardieu 2017 entry.",
+      "readout_tier": "proximal",
+      "note": "Children given intracerebral rAAV2/5-hNAGLU had CSF NAGLU at 15-20% of unaffected children, as the mouse brain expression predicted.",
+      "short": "CSF NAGLU detected in all 4 children",
+      "src": "https://doi.org/10.1016/s1474-4422(17)30169-2", "srcLabel": "Tardieu 2017",
+      "quote": "NAGLU activity was detected in lumbar CSF and was 15-20% of that in unaffected children.",
+      "reason": "Transgene NAGLU expressed in patients' CNS",
+      "judgement": "Paired: mouse brain enzyme vs patient CSF enzyme; direction matches, levels not comparable (mouse supraphysiological, patients below normal)."
+     }
+    ],
+    "efficacy": [
+     {
+      "year": 2004, "status": "untested",
+      "subjects": null, "comparison_stated": false, "source_tier": 1,
+      "model_src": null, "model_src_tier": null, "trial_unreported": false, "patient_signal_reversed": false,
+      "registry_date": null, "epub_year": 2004, "print_year": 2004, "model_filed": null,
+      "product_in_model": false, "retrodiction": false, "imported_from": null,
+      "magnitude": null, "magnitude_basis": null, "source_calls_it": null,
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "confidence": "high", "confidence_note": "Abstract-level (Europe PMC 15537895).",
+      "endpoint_role": null, "outcome_tested": null,
+      "note": "Treated Naglu-/- mice behaved normally and lost most storage vacuolation, though improvement was partial in some animals.",
+      "short": "Mouse behavior normalized, pre-clinic",
+      "src": "https://doi.org/10.1523/jneurosci.3558-04.2004", "srcLabel": "Cressant 2004",
+      "quote": "These results indicate that NaGlu delivery from intracerebral sources has the capacity to alleviate most disease manifestations in the MPSIIIB mouse model.",
+      "judgement": "Opening entry: the mouse predicts that intracerebral NAGLU expression prevents neurological disease."
+     },
+     {
+      "year": 2017, "status": "same",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1523/jneurosci.3558-04.2004", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "registry_date": null, "epub_year": 2017, "print_year": 2017, "model_filed": null,
+      "product_in_model": false, "retrodiction": false, "imported_from": null,
+      "magnitude": "direction_only", "magnitude_basis": "developmental quotient decline vs natural history",
+      "source_calls_it": "partial",
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "confidence": "low", "confidence_note": "Abstract-level; uncontrolled n=4 against natural history; registered primary was safety. Quote from the draft's verified Tardieu 2017 entry.",
+      "endpoint_role": null, "outcome_tested": null,
+      "note": "All four children still declined but less than natural history at 30 months; youngest near normal.",
+      "short": "Slower decline vs natural history",
+      "src": "https://doi.org/10.1016/s1474-4422(17)30169-2", "srcLabel": "Tardieu 2017",
+      "quote": "Compared with the natural history of mucopolysaccharidosis type III syndromes, neurocognitive progression was improved in all patients, with the youngest patient having function close to that in healthy children.",
+      "judgement": "Scored on the neurocognitive secondary as the draft does for the dog track (only efficacy readout); partial because decline slowed rather than stopped."
+     },
+     {
+      "year": 2021, "status": "contra",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1523/jneurosci.3558-04.2004", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "registry_date": null, "epub_year": 2021, "print_year": 2021, "model_filed": null,
+      "product_in_model": false, "retrodiction": false, "imported_from": null,
+      "magnitude": "direction_only", "magnitude_basis": "brain atrophy and neurocognition vs untreated Sanfilippo A/B children at 5.5 years",
+      "source_calls_it": "miss",
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "confidence": "low", "confidence_note": "Abstract-level (Europe PMC 34405688); n=4, uncontrolled; efficacy was the secondary endpoint; the youngest patient did better than untreated children.",
+      "endpoint_role": null, "outcome_tested": null,
+      "note": "At 5.5 years, 3 of 4 children had brain atrophy and neurocognition no different from untreated Sanfilippo children despite persistent CSF NAGLU.",
+      "short": "No benefit in 3 of 4 at 5.5 y",
+      "src": "https://doi.org/10.1089/hum.2021.135", "srcLabel": "Deiva 2021",
+      "quote": "Patients 2, 3, and 4 showed progressive brain atrophy and neurocognitive evolution that did not differ from untreated Sanfilippo A/B children.",
+      "reason": "Benefit not sustained in older children",
+      "judgement": "Long-term follow-up of the same trial overturns the 30-month signal in 3 of 4 patients, so the mouse prediction of alleviating most disease manifestations is contradicted; the youngest patient's milder course keeps confidence low. The checker flagged the same datum for the dog track."
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "MPS I (Hurler) dog, intracerebral rAAV2/5 (source of the vector dose): reported in Ellinwood 2011, the draft's dog paper; no human dose target stated and no separate patient comparison",
+  "Naglu-/- mouse, AAV8/AAV9 vectors (Heldermon 2013, Gilkes 2016/2021, Rouse 2023) and ABO-101 (AAV9-NAGLU): products outside the member list; no member-drug patient comparison",
+  "SBC-103 nonclinical toxicology (rat/NHP): not published; no patient comparison found",
+  "Patient fibroblasts / iPSC-derived neural cells (Yogalingam 2019 BMN 250 uptake; Huang 2021 patient iPSC model): no comparison with patient results",
+  "Human genetic model (attenuated NAGLU variants with residual activity as an enzyme-threshold predictor): no source compares it with treated patients",
+  "In-silico / PK / allometric model for tralesinidase alfa or SBC-103 dose: none found",
+  "Dog ICV tralesinidase dose margin (Ellinwood 2022) and Deiva 2021 data for the dog AAV track: belong to tracks the draft already has (checker 'missing'), not new systems; this file does not edit the draft"
+ ]
+}

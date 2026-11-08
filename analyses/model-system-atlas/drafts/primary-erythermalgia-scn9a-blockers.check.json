@@ -1,0 +1,97 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/primary-erythermalgia-scn9a-blockers.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cao 2016 (PMID 27099175) abstract quote verbatim. Neuronal excitability/heat firing has no measured human counterpart in NCT01769274 (PI-NRS only); untested/not_measured holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Registry arm text verbatim (results posted 2019-11-19). Untested is right for the iPSC track, but iPSC was not the system dose relied on: PBPK/IC50 model (Jones 2016) stated a target and matched SAD PK; see missing."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cox 2006 (PMID 17167479) quote verbatim in abstract. Opening untested fine; genetics track arguably opens 2004 (IEM gain-of-function, Yang 2004), proxy acceptable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Goldberg 2012 (PMID 22035805, epub 2011-10-28) quote verbatim; abstract itself frames CIP/IEM opposite-phenotype model. NCT01090622 primary is pain intensity difference, consistent. Topical NCT01486446 and PF-05089771 registry means also favour drug; no contra."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cao 2016 quote verbatim. Lines derived from trial subjects, trial completed 2013-07, published with results: retrodiction/retro correct. Registry primary 2.08 vs 2.73, 1.95 vs 2.04, untested statistically, direction matches."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested; one entry per change of status",
+   "note": "Registry quote verbatim; 0/5 SAE PF-05089771, 1/7 SAE topical XPF-002 confirmed. Status untested/unpublished stands, but the sole untested entry should sit at 2010 (its own judgement says so), not 2019.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: both agree untested; with no comparison ever public, the sole entry is the opening one at model_first_use_year 2010, not 2019. Rule 5: untested_reason unpublished already set and fits first."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dating rule 6: each cell opens at model_first_use_year with untested, proxy allowed",
+   "note": "DOI resolves to Jones 2016 Clin Pharmacokinet (PMID 26895021); quote verbatim in abstract. Opening untested at 2010 (microdose NCT01165736 start, before SAD) is an allowed proxy; class-level, in_silico, tier 1 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dose: target reached = same; healthy-volunteer PK counts",
+   "note": "Quote verbatim in abstract; PBPK stated 1 g for ~12x IC50 Cmax before the SAD study (2010-12), so prospective, not retro. SAD PK 'compared well' = target reached; comparison_stated true, 2016 correct. Fold error unknown (abstract only).",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Dose track: PBPK model from a healthy-volunteer microdose study (Jones et al. 2016, Clin Pharmacokinet, doi:10.1007/s40262-015-0365-0, PMID 26895021; model_kind in_silico, product_in_model true). Stated: 'PBPK model for PF-05089771 predicted a 1 g oral dose would be required to achieve exposures of approximately 12x Nav1.7 IC50 at Cmax'; 'In a subsequent single ascending oral dose clinical study, the predictions for PF-05089771 compared well with observed data.' Healthy-volunteer PK counts: dose same, comparison_stated true, 2016. This model, not iPSC neurons, set the IEM dose (1600 mg). Whether Cao 2016 reports IEM-patient exposure vs the IC50 multiple was not checked (paywalled).",
+  "Possible dose/engagement context: Siebenga et al. 2020 (Clin Transl Sci, PMC7070789) healthy-volunteer evoked-pain battery found no PF-05089771 analgesia. It is a human readout, not a model compared with patients, so likely no new track; listed for the drafter to rule out."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Patient-level genotype-to-drug-response predictions in IEM (structural modelling plus iPSC/DRG functional profiling predicting carbamazepine response of Nav1.7-V400M/S241T; Yang 2012 Nat Commun, Geha 2016 JAMA Neurol) use a non-selective drug outside the member list. Under the class rule they do not score, but the brief does not say whether a patient-level model validated only on a non-member drug should be listed as an untested track for the class.",
+  "Funapide (XEN402) is described in some sources as a broader Nav blocker (Nav1.7 plus other subtypes). The tile lists it as a member; checker accepted the given class table without re-deciding selectivity."
+ ]
+}

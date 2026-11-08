@@ -1,0 +1,122 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/sjogren-syndrome-pik3cd-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 6 (cell opens untested at model_first_use_year, proxy allowed)",
+   "note": "Nayar 2019 (PMID 30472652, epub 2018-11-24) quote verbatim in abstract; full text confirms pS6 flow staining in mice and 10 mg/kg seletalisib. 2015 opening year is a proxy tied to NCT02610543 start (Oct 2015)."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "same: direction agreement for >=1 member drug; paired comparison",
+   "note": "Juarez (PMID 32949140, keaa410) abstract has the quote verbatim: biopsy foci and PI3K-mTOR signalling reduced vs placebo, matching the mouse readouts. readout_tier downstream is right. Full text not read, so comparison_stated false stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Dose table row 1: model stated no exposure/regimen target nor margin -> untested, no_prediction",
+   "note": "Nayar full text gives only 10 mg/kg/day gavage in mice, with no human exposure, regimen or margin projection. The quote shows the model was used but does not itself support the dose call; acceptable for untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 5 untested_reason unsettled (patients measured, result inconclusive)",
+   "note": "Abstract: ESSDAI primary -2.59 (CI -7.30, 2.11), terminated at 36% power. Registry NCT02775916 (results posted 2019-10-18): ESSPRI net -0.69 (CI -3.34, 1.94), ESSDAI +0.51. Both inconclusive, so unsettled is defensible. Entry year 2015 with 2019/2020 sources is odd but allowed, since status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 5 unpublished; Rule 6 opening entry",
+   "note": "FDA multidisciplinary review (bundle txt, line ~1693) has the quote verbatim under the 39-week rat study 1470444. NCT02775916 started 2016-06-01, so a 2016 proxy is fine."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "same: stated harm (skin inflammation; GI inflammation/diarrhoea) appeared in patients",
+   "note": "Model side verbatim; monkey and rat GI toxicity and diarrhoea are also in the review. Registry AEs: rash 10/20 (1 SAE) and diarrhoea 5/20 on leniolisib vs 1/10 each on placebo. The placebo denominator is 10, not the 9 in magnitude_basis (cosmetic)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Allen 2017 (JPET, PMID 28442583) abstract contains the quote verbatim. Opening year 2013 proxy matches Helmer Study-1 ethics ref 13/SC/0366; untested opening correct; prediction_level class."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Helmer 2017 full text (PMC5384962) has quote verbatim; assay predates dosing so prospective, not retro. Subjects healthy/psoriasis, not Sjögren's; authors flag high variability, so direction_only same is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "Dating: each cell opens at model_first_use_year (proxy allowed); the opening cannot post-date a trial that already used the model",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Hoegenauer 2017 quote verbatim in abstract. Proxy 2016 post-dates APDS trial NCT02435173 (start 2015-08-24), which used ex vivo pAkt, and FIH Study 2101 earlier; open at 2015 or earlier.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: status untested on both sides; opening year should be 2015, since APDS trial NCT02435173 (start 2015-08-24, registry) measured ex vivo whole-blood B-cell pAkt. Not the track's latest entry, so no untested_reason."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Rao 2017 (Blood, epub 2017-09-29) abstract has quote verbatim. Whole-blood assays preceded the APDS dosing, so same, not retro. APDS not Sjögren's patients; acceptable for engagement as dosed humans."
+  }
+ ],
+ "missing": [
+  "Possible engagement track: leniolisib pAkt-positive B-cell PD (ex vivo, direct readout) measured in Sjögren's patients in Study 2203 (CCDZ173X2203), per FDA review NDA 217759 clinical pharmacology section (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/217759Orig1s000MultidisciplineR.pdf). The draft scores engagement only on the seletalisib mouse track.",
+  "Possible engagement track: seletalisib healthy-volunteer PD from first-in-human studies (Helmer 2017, doi:10.1007/s00228-017-2205-7). The draft cites it for dose selection only, not as an engagement comparison.",
+  "No parsaclisib Sjögren's trial found on ClinicalTrials.gov or Europe PMC, and no press release reporting a member failure beyond the two Phase 2s."
+ ],
+ "overall": "accept",
+ "rule_questions": [
+  "Efficacy: two small member Phase 2s each missed their primary with CIs spanning zero (one terminated at 36% power), and the mouse's functional readout (saliva flow) was unchanged in patients. Is pooled class-level inconclusive data 'unsettled' or 'contra'? The rules do not set a power or CI threshold.",
+  "Efficacy: should an untested track whose untested_reason changes (from opening to 'unsettled' once trials report) get a new dated entry, or does the single 2015 entry carry the 2019/2020 data?"
+ ]
+}

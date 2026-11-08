@@ -1,0 +1,268 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/age-related-macular-degeneration-anti-vegfa-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR bundle (TDOC-0013037 mouse laser CNV). Opening untested at 2011 proxy is fine; reviewer adds that target saturation was not achieved."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "DOI resolves to HAWK/HARRIER (PMID 30986442). Abstract says 'Anatomic outcomes favored brolucizumab over aflibercept'; the word 'retinal fluid' is not in the abstract, so quote is near, not verbatim. Status same/direction_only holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "NOAEL 6 mg/eye quote verbatim (6-month study TDOC-0016684); Table 39 states 2-fold margin. Note the IND study TDOC-0012707 (2011 proxy) saw ocular inflammation at 0-3 mg/eye including vehicle."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Decision 16 / count the harm once",
+   "note": "Quote verbatim. Same with margin_stated is defensible since the monkeys named no IOI. But the review does not compare the margin with patients: comparison_stated should be false and source_calls_it null (paired with label)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EMA withdrawal report EMA/415176/2020 downloaded; quote verbatim; rabbits had severe IOI at 3 mg/eye, and EMA calls ocular margins 'quite low' versus the 2 mg/eye dose."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Decision 16: toxicity at or below the effective exposure is contra with blocked_by toxicity",
+   "note": "DOI resolves to CEDAR/SEQUOIA (PMID 32471729); IOI 15.4/15.3/0.3% verbatim in abstract. Animals predicted IOI but placed it above 2 mg/eye, so dose not safety. magnitude off_by_2-5x is loosely supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "PMID 18246030 (Mol Vis 2008, KH902 rhesus laser CNV) resolves; quote verbatim in abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in PharmR bundle."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Rodrigues 2018 IOVS abicipar characterisation (PMID 30535424); quote verbatim in abstract. BIO-12-960 confirmed in EMA report."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6 (dating: earliest public comparison)",
+   "note": "PHOENIX quote verbatim. Earlier: AURORA phase 2 (doi:10.1016/j.ophtha.2014.03.026), primary endpoint BCVA change at month 3, +8.97/+10.43 letters; uncontrolled, but it opens 'same' in 2014. PANDA-1 terminated 'desired primary endpoint was not met' confirmed.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same either way; per Evidence rule 6 the entry dates to 2014: AURORA's primary endpoint (BCVA change, month 3) gained 8.97/10.43 letters, matching the predicted activity. The efficacy rule asks only whether the primary endpoint responded."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in HAWK/HARRIER abstract. Non-inferiority vs aflibercept counted as direction agreement, consistent with treating PANDA as non-scoring."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; primary endpoint met at Q8/Q12. Efficacy scored as the trial showed while dose is contra is consistent with decision 16 (target reached)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EpiScreen ESB01 (August 2008) quote verbatim in PharmR."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Proxy year 2011, but the 2011 IND monkey study did show ocular inflammation (also in vehicle); the 'no ocular effects' quote is from the 2014 pivotal study."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Reviewer sentence verbatim (including the typo 'appear have'); a stated comparison by FDA reviewer; label IOI 4% vs 1% confirmed."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label quote verbatim; IOI 4% vs 1% in label table. Contra holds against the pivotal monkey study, but the IND monkey study saw ocular inflammation (incl. vehicle) judged not dose-limiting, so the miss is partial."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ding 2019 JCI (PMID 31408444) abstract has the quote verbatim. Opening untested entry fine; but model_first_use_year 2019 postdates public patient protein data (AAO Oct 2018).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2024,
+   "rule": "Retrodiction: a model run after the clinic knew the answer is retro, never same",
+   "note": "Quote verbatim in Campochiaro 2024 abstract. Dose-dependent aqueous RGX-314 protein in patients was public at AAO 2018 (REGENXBIO release; Retinal Physician Oct 2018), before Ding 2019; as dated the rat model is a retrodiction.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: rat model first public Aug 2019 (Ding, JCI); dose-dependent patient aqueous RGX-314 protein was public at AAO Oct 2018. An earlier run date is unsourced, so retro; draft's retrodiction flag should be true."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "EMA WAR Rayoqta s.3.2.2: quote verbatim; model simulated proposed phase 3 2Q8/2Q12 regimens. Opening untested at 2015 proxy acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in EMA WAR; human model scaled using patient aqueous/serum data, so retro with retrodiction true is correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "'complete suppression of VEGF concentrations were predicted' verbatim in EMA WAR; opening untested fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kunimoto 2020 (PMID 32471729) conclusions verbatim; primary endpoint. Simulation of phase 3 regimens preceded CEDAR/SEQUOIA readout, so prospective same holds; model predicted PD suppression, not efficacy directly (direction_only appropriate).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Ding 2019 abstract; phase 1/2a primary was safety; ATMOSPHERE/ASCENT topline not found; untested/unsettled holds.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "PharmR bundle p.37: report E1008S029.01, Dec 22 2010, 'Severe ocular inflammation was observed in 4/36 rabbits treated at a single dose-level, 500 ug/eye' verbatim; presumed pre-GMP batch.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label quote verbatim (s.6.2); table gives IOI 4% vs 1%. PharmR s.11.1 says GMP lots 'continued to cause infrequent severe ocular inflammation in monkeys and rabbits', supporting same despite reviewer calling pre-GMP findings not relevant.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Brolucizumab rabbit track: single-dose ivt TK study reported severe ocular inflammation in 4/36 rabbits at 500 ug/eye (FDA PharmR 761125, bundle); paired with label IOI 4% vs 1% this is a safety 'same' on a separate rabbit model_id.",
+  "Conbercept monkey CNV track, engagement: AURORA (doi:10.1016/j.ophtha.2014.03.026) and PHOENIX report central retinal thickness reductions, a downstream counterpart to monkey CNV leakage; no engagement entry exists for this track.",
+  "RGX-314 track (draft note says no admissible model source): Ding 2019 JCI (doi:10.1172/jci129085) rat model, RGX-314 Fab expression suppressed VEGF-induced vascular leakage; patient side Campochiaro 2024 Lancet phase 1/2a (doi:10.1016/S0140-6736(24)00310-6), aqueous RGX-314 protein and CRT/injection burden. Engagement (proximal) and efficacy comparisons possible.",
+  "Abicipar in-silico PK track (rabbit ocular PK scaled to human): EMA/415176/2020 states 'the human model again fitted well against the measured abicipar concentrations in serum and aqueous humor from patients' (comparison_stated; likely retrodiction since human data used in scaling) for the dose cell.",
+  "RGX-314 suprachoroidal NHP/pig expression (Ding 2019 JCI, doi:10.1172/JCI129085) vs suprachoroidal phase 2 ALTITUDE/AAVIATE patient aqueous protein (REGENXBIO releases); no track."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does an uncontrolled phase 2 primary endpoint (change from baseline, AURORA) count as the first efficacy comparison, ahead of a sham-controlled phase 3?",
+  "When a model predicts only activity vs vehicle, does failing non-inferiority vs an active comparator (PANDA-1/2) leave the track unchanged, as the draft assumes?",
+  "Safety silence when the species showed the harm in one study but it was dismissed (monkey IND study: ocular inflammation in vehicle and low doses, not dose-limiting): miss (contra) or partial?",
+  "Is a margin 'stated before the trial' when it exists only in unpublished sponsor reports dated before phase 3 and made public in the later regulator review (brolucizumab, abicipar dose entries)?",
+  "RGX-314 rat model: first public date (Ding 2019) postdates public patient protein data (2018), though the rat work likely supported the 2017 IND. Does the publication date or the presumed (unsourced) IND date decide retrodiction?"
+ ]
+}

@@ -1,0 +1,223 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/acute-lymphoblastic-leukemia-cd19-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "DOI resolves to Brentjens 2007 Clin Cancer Res (PMID 17855649); quote verbatim in abstract. Opening untested entry is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Brentjens 2013 STM (PMC3742551) full text has the quote verbatim. Same direction holds. readout_tier 'direct' is debatable: MRD clearance is the efficacy readout too (proximal/downstream); B-cell aplasia would be the cleaner PD readout."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in abstract; untested is right. Latest untested entry on this track lacks untested_reason; should be 'no_prediction' (mouse cell numbers/schedule set no human dose)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Carol 2013 CCR (PMID 23426279) abstract has quote verbatim; no human dose or exposure stated, so untested/no_prediction holds."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "fda.gov/media/141093 is the Tecartus SBRA of 23 Jul 2020 (MCL indication, STN 125703); quote verbatim. No human dose stated. Note the SBRA is the MCL review, not the 2021 B-ALL supplement."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Brentjens 2007 abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Carol 2013 abstract; pediatric PDX vs adult trial is a population caveat worth noting."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Kantarjian 2016 full text: CD19 analyzed locally only for eligibility (>30%), no response-by-CD19-level analysis, so not_measured holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "efficacy: did the trial's primary endpoint respond; a secondary endpoint governs only with endpoint_role poc_gate",
+   "note": "Brentjens 2013 full text: 'The primary endpoint of this study is safety of CAR modified T cell infusion' (NCT01044069); endpoint_role 'primary' is wrong. ROCKET (NCT02535364, CR primary) stopped for deaths, efficacy unreported. untested_reason unsettled.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: the trial's primary endpoint governs; NCT01044069's primary was safety, no poc_gate, and house style (SAPHIRA1) leaves such trials unscored. ROCKET's CR primary went unreported after deaths: untested_reason unsettled (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kantarjian 2016 (PMID 26775883): primary endpoint ORR, 25.5% at selected dose, study stopped early; quote verbatim. Contra over partial-same is defensible against near-universal xenograft responses."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim (MCL review); model_filed true is supported for the BLA."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ZUMA-3 Lancet 2021 (PMID 34097852) primary endpoint overall CR/CRi, quote verbatim; model_src Kochenderfer 2010 Blood (PMID 20631379) is the murine-CD19 CAR paper. Lymphoma-model-to-ALL transfer flagged by drafter."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote is about homing, not safety, but untested/no_prediction is right: SCID mice cannot show CRS or cerebral edema."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Carol 2013 full text (PMC3618498) has the sentence verbatim (continues '...suggesting that the observed morbidity...was likely due to...CNS')."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Partial same is defensible: 10 mg/kg weekly in mice (~30 mg/m2) is below 70/90 mg/m2. But confidence_note is wrong: the ALL trial did assess ocular AEs (9 grade 1/2) and 3 neuropathies."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA quote verbatim."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "Evidence rule 6 (dating: earliest public date, label included)",
+   "note": "Quote verbatim in FDA approval summary (PMC9526496). Status same is right, but the B-ALL USPI carrying the hypogammaglobulinemia warning was public in Oct 2021, so the year should be 2021.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed by both. Evidence rule 6: the brexu-cel B-ALL label carrying the hypogammaglobulinemia warning was public October 2021, so the entry's year should be 2021, not 2022."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to Giavridis 2018 Nat Med (PMID 29808005, epub 28 May 2018); quote verbatim in abstract. Full text (PMC6410714) confirms human 1928z CAR T in SCID-beige with i.p. Raji. Opening untested 2018 fine."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in PMC6410714 (18 of 19 clinical cytokines); text also states no neuropathology seen in mice. Built after clinical CRS was known, so retro (not same) is correct; partial call justified."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to Norelli 2018 Nat Med (PMID 29808007, epub 28 May 2018); quote verbatim in abstract. Full text not seen, so CD19-CAR arm unverified; product_in_model false is appropriate."
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in abstract (fever, IL-6, delayed meningeal neurotoxicity). Model framed as recapitulating clinic-known CRS/neurotoxicity, so retrodiction and retro correct. CD19 vs CD44v6 arm split not verified (paywall)."
+  }
+ ],
+ "missing": [
+  "JCAR015 ROCKET phase 2 (NCT02535364): halted Jul 2016 and terminated Mar 2017 after 5 cerebral-edema deaths (Juno press releases; AJMC/BioPharma Dive; PMID 29208604). Not a scorable mouse miss (SCID mice cannot show it), but the trial outcome belongs in a dated safety note on the nalm6 track.",
+  "CRS/neurotoxicity mouse models built with the class's own CAR: Giavridis 2018 Nat Med (doi:10.1038/s41591-018-0041-7; 19-28z CAR T in SCID-beige, IL-1/IL-6 CRS) and Norelli 2018 Nat Med (doi:10.1038/s41591-018-0036-4; humanized mice, CRS and neurotoxicity). Both reproduce known patient CRS, so they would be retrodiction tracks (retro) for safety.",
+  "Davila 2014 Sci Transl Med (doi:10.1126/scitranslmed.3008226; 16 adults, 19-28z, 88% CR) is an intermediate patient source for the nalm6 track (no status change).",
+  "No data were searched or shown for members TBI-1501, BinD19 or 'CD19 CAR-T with CRS suppression technology'; not verified by checker either."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "A phase 1 trial whose primary endpoint is safety and whose only efficacy readout is a secondary (CR/MRD) with no poc_gate designation: does efficacy stay untested (strict reading, as proposed for efficacy 4) or can a single-arm phase 1 count its response readout?",
+  "Engagement for a cell-depleting class: is clearance of the target-bearing malignant cells (MRD) an engagement readout at all, given it is also the efficacy endpoint, or should engagement use normal B-cell aplasia?",
+  "Safety for an ADC track where the mouse tolerability study dosed below the human-equivalent of the clinical dose: does 'no obvious side effects' count as a stated prediction (scorable same/contra) or as no_prediction?",
+  "A nonclinical package filed for one indication (Tecartus MCL SBRA) and carried to another (B-ALL supplement): should model_filed be true for the second indication without the supplement review being opened?"
+ ]
+}

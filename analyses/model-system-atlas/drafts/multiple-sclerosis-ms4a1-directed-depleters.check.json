@@ -1,0 +1,191 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/multiple-sclerosis-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Bundle 125326 PharmR line 228: quote present (OCR renders CD20+ as CD20\"). Ofatumumab is a member; 2009 CLL review, no MS data, untested correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ocrevus label line 449 verbatim; model_src 761053 PharmR Study 02-082-0352: B cells down 65% and >99% at 0.05 and 10 mg/kg on Day 10. Proximal readout, paired, same holds."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "125326 PharmR line 221 quote present. Monkey doses gave no MS regimen target; untested correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Hauser 2017 (PMID 28002679) abstract has quote; PharmR lines 2103-2104 state NOAEL 100 mg/kg. Margin same is supportable, but magnitude within_2x mislabels a ~12-fold margin; use direction_only or null. Quote is weak for 'no dose-limiting toxicity'."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Weber 2010 Ann Neurol, PMID 20641064, epub 2010-09: quote verbatim in abstract. Same abstract reports anti-CD20 exacerbated MOG p35-55 EAE; choosing the rMOG arm is a judgement (see rule_questions)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kappos 2011 Lancet, PMID 22047971, epub 2011-10-31: quote verbatim; GdE lesions were the primary endpoint. Pairing, no untested conditions. ASCLEPIOS DOI exists (10.1056/NEJMoa1917246) but is null in patient_trials. registry_date 2017-05-11 not checked."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Torres 2022 Front Immunol, PMID 35967378, 2022-07-28: quote verbatim. Done after OPERA/ASCLEPIOS were known, so retrodiction scored retro is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "125326 PharmR line 214 quote present with the OCR '|'. Untested in 2009 correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ocrevus label line 203 verbatim (58% vs 52%); 761053 PharmR shows infections treated with penicillin and dams dying of opportunistic infection. Same on any-infection holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Briumvi label line 278 and 761238 PharmR lines 407-410 (no cytokine change after repeated dosing) verified. Contra stands under the one-drug-contra rule, but the draft misses the 2017 ocrelizumab first-dose IL-6 match (see missing)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Yu 2022 (PMID 35233753) resolves; quote verbatim in abstract Methods. Untested opener at 2022 publication is correct; product_in_model true."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in Yu 2022 Results. Model fit to the same pooled phase 2/3 patients after 20 mg was chosen and tested; authors say it 'confirms the dose chosen', so retrodiction and retro (not same) are right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kap 2010 (PMID 20739677, epub 2010-08-25) resolves; quote verbatim. Treatment from day 21 in rhMOG/CFA marmosets; HuMab 7D8 is a non-member human anti-CD20, product_in_model false. Untested 2010 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kappos 2011 (PMID 22047971) quote verbatim; GEL count is the primary endpoint. Marmoset model predates the trial and showed small MRI lesions, so paired same (not retro) holds at class level."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Matsushita 2008 JCI (PMID 18802481) resolves; quote verbatim. Peptide MOG35-55 EAE is a different system from the draft's B-cell-dependent rMOG track, so a separate model_id is justified."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Paired on the after-onset depletion arm, which predates Kappos 2011 and corresponds to treating established MS; quote verbatim, primary endpoint. Same supported; pre-induction exacerbation untestable in patients."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Hauser 2023 (PMID 36792367) quote verbatim (Discussion). Roche 2020-09-09 release confirms the analysis was presented at AAN 2019 and drove MUSETTE/GAVOTTE, so the 2019 proxy and not-retro for the high-dose question stand."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Lancet 2026 (PMID 42208560) quote and cCDP figures verified; 12-week cCDP is the primary endpoint and the paper cites the exposure analysis as rationale (stated). Roche release 2025-04-02 dates it 2025. Contra holds; magnitude 'opposite' overstates a null (HR 0.93/0.95)."
+  }
+ ],
+ "missing": [
+  "Safety, same track (cyno-bcell-depletion-tox), 2017 'same': the ocrelizumab monkey PK/PD study 02-082-0352 (761053 PharmR p.12, bundle line ~1101) found 'IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals', with fewer elevations after the second dose. That matches the first-infusion reactions in patients (34.3% in OPERA, Hauser 2017 PMID 28002679; Ocrevus label 5.1). It belongs before the 2022 ublituximab contra, and it shows the ublituximab study's repeat-dose-only sampling, not the species, is why no cytokines were seen.",
+  "Efficacy track missing: marmoset EAE (rhMOG/CFA) with late B-cell depletion by HuMab 7D8, a sibling human anti-CD20 that cross-reacts with marmoset CD20. Kap et al. 2010 J Immunol, doi 10.4049/jimmunol.1001393 (PMID 20739677), reported it 'halts the development of EAE'; it pairs with Kappos 2011 (ocrelizumab phase 2, 2011). Follow-up: Kap 2014 J Immunol doi 10.4049/jimmunol.1303125. product_in_model false.",
+  "Efficacy, possible earlier track (not verified this session): mouse MOG35-55 EAE with mouse anti-CD20 (Matsushita et al. 2008 JCI). Depletion before induction exacerbated EAE and depletion after onset reduced it. Mixed predictions; if added, model_first_use_year for EAE moves to 2008.",
+  "Engagement: the huCD20 transgenic mouse PK/PD in the 761053 PharmR (line 206) is a second B-cell depletion system with no track; low priority."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Safety: a primate study measured cytokines only after repeated dosing (ublituximab), and the class's harm is a first-infusion effect. Does 'silence on a harm the species could have shown' cover a study design that sampled outside the harm's window? Another member's monkeys did show first-dose IL-6. Under the current rules the 2022 contra stands and beats the missing 2017 ocrelizumab 'same'.",
+  "Efficacy: one paper (Weber 2010) gives opposite anti-CD20 effects in two EAE paradigms (rMOG improved, MOG p35-55 worsened). Do they count as one model with a mixed prediction, or two model_ids where only the B-cell-dependent paradigm is a class prediction? The draft chose the rMOG arm alone.",
+  "Efficacy: the class entered MS on rituximab's phase 2 (HERMES, 2008), a same-target non-member in MS patients. Is that a cross_indication or sibling-drug 'model' track, or out of scope because rituximab is not a member?",
+  "Dose: what should magnitude be for a margin_stated 'same' when the margin held with ~12-fold headroom? within_2x reads as prediction accuracy."
+ ]
+}

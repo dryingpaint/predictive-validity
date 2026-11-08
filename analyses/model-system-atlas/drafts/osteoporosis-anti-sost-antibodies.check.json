@@ -1,0 +1,311 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/osteoporosis-anti-sost-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Li 2009 JBMR resolves (Europe PMC); quote verbatim in abstract. Scl-AbII research antibody, product_in_model false correct; opening untested."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Padhi 2011 (AMG 785 = romosozumab) FIH in healthy men and postmenopausal women; quote verbatim. Paired with rat bone formation; downstream readout, healthy volunteers allowed. Europe PMC lists 2011; 2010 epub not independently confirmed."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ominsky 2010 JBMR resolves; quote verbatim; humanized Scl-AbIV in gonad-intact cynos, 3-30 mg/kg."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same Padhi quote paired with monkey track; direction-only same is supported."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Li 2009 abstract gives no human dose, exposure or margin; untested/no_prediction fits."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 5 (untested_reason order); rule 6 dating",
+   "note": "Quote verbatim in FDA review. Status untested holds (no pre-trial margin public). But margins come from romosozumab's own 6-month tox, not Scl-AbIV; IND margins unpublished, so untested_reason 'unpublished' fits first. Year 2010 vs 2019 source inconsistent."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Li 2009 quote verbatim; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "McClung 2014 NEJM: primary endpoint is 12-month lumbar spine BMD (confirmed in abstract); quote is first part of abstract sentence. Blosozumab Recker 2015 quote verbatim. Paired same, outcome_tested positive supported."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Ominsky 2010 quote verbatim; opening untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Same McClung pairing on monkey track; direction only reasonable given different sites and durations."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA multidisciplinary review (bundle txt), next to the rat 98-week study (osteosarcoma 2/54 at 19x judged not significant). Same, medium confidence given 1-year human exposure."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Review states the five CV studies were run because of Study 142 (ARCH) findings, so retrodiction true; mostly null with necrotic-plaque increase; retro/partial is defensible."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; study detail (Amgen #122002, r13C7, ZA positive control produced ONJ, Scl-Ab did not) in review. Patient side (FRAME ONJ cases, label warning) sits in Cosman 2016, not in src/model_src as cited; should name it."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gardner 2005 JCEM resolves (epub 2005-09-27); quote verbatim in abstract conclusions; authors frame titratable sclerostin loss for osteoporosis therapeutics. Opening untested at 2005 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "McClung 2014 NEJM quote verbatim in abstract. Model (2005) prospective to phase 2, so same not retro; paired, direction_only fair. Class relied on carrier genetics as rationale.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA BLA 761062 multidisciplinary review (bundle) (Study 150655 conclusion). Opening untested at 2019 proxy acceptable; study date not public.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA review p.55 (followed by 'but no detectable effect on risk of MI or stroke'). Run after FRAME/ARCH, so retro is right.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Bovijn 2020 Sci Transl Med resolves (2020-06-01); quote verbatim in abstract. Opening untested 2020 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "'Commensurate with the therapeutic effect of romosozumab' stated by the source; built after trials, so retro. Alcalde-Herraiz 2024 abstract also shows 85% lower hip fracture risk; no change.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Rule 6: each cell opens at model_first_use_year (study run 2012 per FDA review)",
+   "note": "Ominsky 2017 JBMR resolves (epub 2016-12-13), quote verbatim. FDA review dates this study (No. 107903) treatment Jan 2012-Jan 2013, so the track should open at 2012, not 2016; status untested stands.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opening entry stays untested; FDA BLA 761062 review dates Study 107903 treatment Jan 2012-Jan 2013, so year and model_first_use_year should be 2012, not 2016. Not the track latest; no untested_reason."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Retro holds: phase 2 NCT00896532 primary completion 2011-02-21 (sponsor knew BMD result) before the monkey study started Jan 2012; published after McClung 2014. Year 2016 (epub) is when the pairing became public.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Gardner quote; abstract says 'without any unwanted skeletal effects' and mild or no skull hyperostosis in carriers, supporting the no-hyperostosis prediction. Opening 2005 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA review 8.4.4 verbatim: hyperostosis 'is not a feature of individuals heterozygous' then trial rates 0.5% vs 0.8%; comparison stated. Prospective (2005 model), so same. CV silence: review says population too small; not scored, reasonable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA review Study 150655 conclusion. Opening untested 2019 proxy acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Retrodiction run after ARCH imbalance; found no MI/stroke association, failing to reproduce the CV harm FDA kept as boxed warning, so contra under the retrodiction rule. FDA reads it as not exonerating.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Bovijn 2020 abstract verbatim; opening untested 2020 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Variants scaled to 210 mg raised MI/revascularization and MACE risk; post-ARCH, so retro. Alcalde-Herraiz 2024 abstract confirms 25-85% excess CAD risk (contradicts the earlier checker 'missing' note that it found no CV effect).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Krishna 2017 ATVB resolves (epub 2016-12-22); quote verbatim. Opening untested 2016 correct. FDA pharm/tox review cites it as a residual CV concern.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "Rule 3 (no quotable prediction -> untested); untested_reason no_prediction",
+   "note": "Saag quote verbatim (epub 2017-09-11). But Krishna tested excess sclerostin, never inhibition, and states no harm for inhibitors; the sponsor's actual Scl-Ab ApoE mouse showed no effect. No quotable model prediction, aneurysm readout not the human MI/stroke.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 3 and rule 5: Krishna raised sclerostin and states no harm for inhibitors (abstract conclusion: treating vascular disease); no quotable model prediction for this class, so untested, untested_reason no_prediction."
+  }
+ ],
+ "missing": [
+  "Human-genetic track (SOST variants mimicking inhibition): Bovijn 2020 Sci Transl Med, doi 10.1126/scitranslmed.aay6570 (verified Europe PMC) - variants scaled to romosozumab 210 mg gave lower fracture risk and higher MI/MACE risk; retrodiction of the ARCH CV signal (retro on safety; also retro on efficacy). Later MR found no CV effect: Alcalde-Herraiz 2024 Nat Commun doi 10.1038/s41467-024-53623-5; Thorolfsdottir 2026 Hum Mol Genet doi 10.1093/hmg/ddaf177.",
+  "Sponsor GWAS analysis filed in the 2019 FDA BLA 761062 resubmission: 'no genetic association between risk of osteoporosis or fracture and risk of MI or stroke' - a human_genetic retrodiction that failed to reproduce the CV signal (contra) on the review's own page set.",
+  "OVX cynomolgus monkey dosed with romosozumab itself for 12 months (Ominsky 2017 JBMR, doi 10.1002/jbmr.3036, epub Dec 2016, after FRAME): BMD +14-26% spine/femur; a distinct system (OVX, product_in_model true) that should be its own retro track rather than dropped.",
+  "Blosozumab phase 3 was discontinued for injection-site reactions (2015; only a non-admissible social post found, Lilly pipeline/SEC filing needed); Recker 2015 reports ISRs in 22.6-40% and ADAs. No safety entry covers blosozumab local tolerance (likely untested/unpublished).",
+  "Krishna 2017 (cited in the FDA review): sclerostin protective in angiotensin-II ApoE KO mice, an atherosclerosis/aneurysm model published around ARCH; possible additional CV-safety track (product_in_model false).",
+  "Human isolated coronary artery rings ex vivo (Amgen Study 150483, non-GLP; FDA BLA 761062 multidisciplinary review): no vasoconstriction by romosozumab or sclerostin, a post-ARCH human-tissue CV model that failed to reproduce the CV signal; no track (likely retro-contra, as for the sponsor GWAS). Also in-vitro human platelet activation study (no activation) in the same review."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Dose cell: when a regulator review publishes tox exposure multiples only after the trials, but the IND margin existed pre-trial and is unpublished, is untested_reason 'unpublished' or 'no_prediction'? And should that entry's year be the model's first use (2010) or the review date (2019)?",
+  "Safety ONJ: can a small rat periodontitis study 'show' an event occurring in ~0.06% of patients (2/3321 in FRAME)? Is the model's relative call (less than zoledronate) contradicted by rare labeled cases, or is it unsettled?",
+  "Should a human-genetic MR track whose later analyses reversed (Bovijn 2020 positive vs 2024/2026 null) be scored with patient_signal_reversed logic, given that rule is written for patient signals, not model signals?",
+  "angii-apoe-ko-mouse-sost: when a model tested the opposite manipulation (target overexpression) and only a regulator infers the harm for inhibitors, does that inference count as the model's stated prediction for a same/contra pairing?",
+  "ovx-cyno-romosozumab-12mo: a model run after the sponsor's internal phase 2 readout but before public results - retro is applied on sponsor knowledge; confirm that is the intended test."
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 (PMID 31981978) abstract quote verbatim; FDA BLA 761324 review confirms 5-week cyno study and 2017 pre-IND. Opening year 2020 while model_first_use_year 2017; fine under lint."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hutchings 2021 (PMID 34508654) abstract quote verbatim; B-cell depletion in patients matches monkey. readout_tier 'proximal' for target-cell depletion is arguable (could be direct/downstream); status unaffected."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled BLA 761263 review (Applicant's Position, Other Toxicology Studies); EC20 values and derived start dose not given, so untested/unpublished stands."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hosseini 2020 (PMID 32859946) quote verbatim; abstract states the results supported a change to step-fractionated dosing in the ongoing Phase I, so prospective. Model built on mosunetuzumab nonclinical plus blinatumomab clinical data."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Budde 2022 (PMID 34914545, epub 2021-12-16) quote verbatim; step-up reached 60 mg vs 2.8 mg fixed with grade>=3 CRS 1.0%. Margin held; efficacy correctly kept out."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 quote verbatim; BLA 761324 review Table (GMB3013-083) confirms one DLBCL PDX in huNOG mice responding only at 5 mg/kg; other xenografts Raji/Daudi/JEKO-1."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Thieblemont 2023 (PMID 36548927, epub 2022-12-22) quote verbatim; primary end point ORR by IRC stated in abstract. Pairing and year correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2026,
+   "rule": "Evidence rule 2: where a higher-tier record of the same trial exists it sets the status; tier 5 entries only when trial unreported",
+   "note": "Status same holds. But NCT04628494 results posted 2026-11-03 (OS HR 0.96, p=0.7285; verified via CT.gov API), so src should be the tier 3 registry record and trial_unreported false. EHA 2026 abstract reports PFS (co-primary per reports) significantly improved.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Both sides agree on same. Efficacy outcome_tested rule: status follows the surrogate (tumour regression), OS-negative phase 3 sets outcome_tested negative. Rule 2: registry record (tier 3, 2026-11-03) should be src, trial_unreported false; status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 quote verbatim; BLA 761324 review confirms first-dose cytokine release, one female killed at 1 mg/kg IV ~12.75 h, lower cytokines after SC, and uncoordinated movements."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hutchings 2021 quote is a verbatim fragment of the abstract sentence; CRS 59% all grade 1-2 matches monkey prediction of SC-attenuated cytokine release. Monkey uncoordinated movements vs later ICANS 6.4% would also read same."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hamlin 2022 (PMID 36875713) quote verbatim. I did not search independently for MT-3724 nonclinical toxicology; 'unpublished' accepted at low confidence."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "van der Horst 2021 Blood Cancer J (PMC7892878, published 2021-02-18) abstract quote verbatim; median DLBCL lysis 65% (n=16). Untested opening entry, year 2021 fine. Samples include newly diagnosed as well as R/R patients; population label slightly narrow."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Discussion quote verbatim; introduction cites preliminary FIH (NCT03625037, ref 14) responses incl. CRs in R/R DLBCL already reported; received 2020-08, so model run after patient result: retro, not same. Year 2021, class level correct."
+  }
+ ],
+ "missing": [
+  "Mosunetuzumab (CD20-TDB) cynomolgus + xenograft track: Sun 2015 Sci Transl Med doi:10.1126/scitranslmed.aaa4802 (monkey B-cell depletion at 1 mg/kg, in-vivo tumour killing) vs Budde 2022 doi:10.1200/JCO.21.00931 (patient B-cell depletion; aggressive B-NHL ORR 34.9%) -- engagement and efficacy tracks for a second member drug.",
+  "Mosunetuzumab cynomolgus toxicology (FDA BLA 761263 review: CRS-like signs, 26-week study infections/mortality from B-cell depletion) vs patient CRS and infections -- a safety track not drawn.",
+  "Imvotamab (IgM CD20xCD3) preclinical models (Cancer Res 2022;82(12 Suppl):4179) vs Phase 1/2 NCT04082936 in R/R NHL incl. DLBCL, terminated; IGM halted imvotamab development (BioPharma Dive, Jan 2025) -- a member-drug failure the draft does not show.",
+  "EPCORE DLBCL-1 (NCT04628494): EHA 2026 abstract (Fox et al.) reports a statistically significant PFS improvement alongside the non-significant OS; the draft's efficacy entry 3 should record this."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "A randomized outcome trial against active therapy (EPCORE DLBCL-1, OS negative) that does not change the track's status: separate dated entry, or outcome_tested/patient_trials on the earlier surrogate entry? And is superiority over chemoimmunotherapy a condition the vehicle-controlled xenografts never tested (untested) rather than an outcome trial of their surrogate?",
+  "readout_tier for depletion of the target-bearing cell by a depleter class: direct, proximal or downstream?",
+  "Opening entry year: model_first_use_year (2017 per FDA pre-IND) or the model source's publication year (2020)?"
+ ]
+}

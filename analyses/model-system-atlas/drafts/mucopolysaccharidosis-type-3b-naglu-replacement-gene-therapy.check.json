@@ -1,0 +1,291 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ellinwood 2011 abstract (PMID 21139569) contains the quote verbatim; opening untested entry is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tardieu 2017 abstract quote is verbatim; CSF NAGLU 15-20% is a proximal readout, direction matches. Deiva 2021 (doi 10.1089/hum.2021.135) shows CSF NAGLU still 18% at 5.5 y."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "note": "DOI resolves to Elsevier pii S1096719213006549 (Mol Genet Metab meeting abstract); Europe PMC does not index it and I could not read the title. Opening untested status does not depend on it."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Whitley 2019 quote verbatim; NCT02324049 results first posted 2018-07-12. Contra stands, but the model side is a title-only abstract with an unknown mouse IV dose, so confidence should be low."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kan 2014 abstract quote is verbatim; the opening entry is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2023,
+   "rule": "one system split across two model_ids; one drug's contra still beats another drug's same on the same track",
+   "note": "Muschol 2023 quote verbatim, so TA alone matches. But naglu-ko-mouse-iv-sbc103 and this track are the same Naglu-/- mouse. Merged, the 2018 SBC-103 contra holds the track.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: Is a track the animal colony (Naglu-/- mouse) whatever product and route, or animal x product/route? If the colony, merging with naglu-ko-mouse-iv-sbc103 lets the 2018 contra hold (one drug's contra beats another's same)."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ellinwood 2022 abstract quote is verbatim. The colony is the ISU MPS IIIB dog colony founded at UPenn, which also appears to be the colony behind the Ellinwood 2011 AAV dogs. See rule question 2 on merging."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Muschol full text (PMC9843052) has the dog-model sentence verbatim; it cites the dog result, so comparison_stated false is right. I did not verify the 19-of-22 count. Status stays same if merged with the dog AAV track."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim; the dosage information came from Hurler dogs and gives no human target, so untested/no_prediction is right."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "note": "Same meeting abstract as engagement 3, which I could not read. Untested/no_prediction is plausible."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Aoyagi-Scharber 2017 quote verbatim; it states no human dose or exposure, so untested is right."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2023,
+   "rule": "dose table: model stated the effective exposure was tolerated, patients dosed to target without that toxicity -> same with margin_stated: true",
+   "note": "Pinkstaff full text (PMC10009680): 30 mg NHP scales to the 300 mg clinical dose by brain mass, and 73 mg was tolerated. Patients reached 300 mg (Muschol). Margin is public, not unpublished. Partial: pleocytosis SAEs.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "RULE QUESTION: Pinkstaff full text states 73 mg NHP tolerated vs 30 mg scaled to 300 mg clinical (so 'unpublished' is wrong). Does an IND-enabling margin published only in 2023, after trial start, count as stated before the trial (margin_stated)?"
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim; opening entry is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
+   "note": "Registered primary (ISRCTN19853672/NCT03300453) is safety only; neurocognition was secondary with no PoC gate. If the secondary is admitted, Deiva 2021 adds a contra: 3 of 4 patients 'did not differ from untreated' children.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: the primary endpoint governs; a secondary only with endpoint_role poc_gate. Registered primary was safety (both sides agree); neurocognition was a non-gated secondary, so efficacy is untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "unverified",
+   "source_resolves": true,
+   "quote_found": "not_found",
+   "status_supported": true,
+   "note": "Title-only meeting abstract, not readable to me; opening untested status is fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
+   "note": "Whitley quote verbatim, but the NCT02324049 sole primary is severe TEAEs and neurocognition was secondary with no gate. If secondaries are admitted, contra stands. untested_reason would be not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: the primary endpoint governs; a secondary only with endpoint_role poc_gate. Registered primary was safety (both sides agree); neurocognition was a non-gated secondary, so efficacy is untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Dog quote verbatim. NCT02754076 lists DQ rate-of-change as co-primary, and Muschol does not report it, so untested/unsettled is right."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim; the immunosuppression prediction is the opening entry."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Tardieu quote verbatim. Deiva 2021 later finds anti-NAGLU T cells still present ('lack of acquired tolerance') but no serious drug reactions. Same/partial still holds."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Pinkstaff abstract quote verbatim."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Muschol full text quote verbatim. The NHP CSF/catheter infiltrates match the patients' CSF pleocytosis and device events, though worse in patients; same/partial is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Cressant 2004 (PMID 15537895, doi resolves) abstract has the quote verbatim; 45 Naglu-/- mice, intraputaminal AAV2/AAV5-NaGlu; opening untested 2004 is right, prospective to the 2007+ trial."
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Tardieu 2017 quote verbatim (already verified on engagement 2); mouse model published 2004, before the trial, so same not retro. Deiva 2021 abstract confirms CSF NAGLU still 18% at 5.5 y. Merge question is rule question 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Cressant 2004 abstract closing sentence verbatim; abstract also says improvement 'only partial in some animals'. Opening untested 2004 entry is right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
+   "note": "Quote verbatim (verified on efficacy 2). Registered primary was safety; Deiva 2021 states efficacy was the secondary endpoint; no poc_gate. Same correction as dog efficacy 2; stands as same/partial only if rule question 1 admits secondaries.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: the primary endpoint governs; a secondary only with endpoint_role poc_gate. Registered primary was safety (both sides agree); neurocognition was a non-gated secondary, so efficacy is untested."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
+   "note": "Deiva 2021 abstract quote verbatim; it labels efficacy 'secondary endpoint'. If secondaries are admitted, contra is supported, though the trial ties benefit to age at treatment (mice treated at 6 weeks), arguing untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: the primary endpoint governs; a secondary only with endpoint_role poc_gate. Registered primary was safety (both sides agree); neurocognition was a non-gated secondary, so efficacy is untested. Track's latest entry: untested_reason not_measured."
+  }
+ ],
+ "missing": [
+  "Deiva et al. 2021, Hum Gene Ther 32:1251, doi 10.1089/hum.2021.135 (PMID 34405688), the 5.5-year follow-up of rAAV2/5-hNAGLU. In 3 of 4 patients brain atrophy and neurocognition 'did not differ from untreated Sanfilippo A/B children'. This is a 2021 efficacy entry on mps3b-dog-aav5-intracerebral (contra if secondaries are admitted). It also adds an engagement datum (CSF NAGLU 18%) and a safety datum (no acquired tolerance).",
+  "No dose entry for the mps3b-dog-icv-ta track. Ellinwood 2022 (PMC9426762) states the 48 mg dog dose 'provides a sufficient safety margin over the clinical dose (300 mg weekly)'. Dogs tolerated it and patients were dosed at 300 mg, so this is a candidate same with margin_stated.",
+  "Regulator reliance is pending. Spruce Biosciences reports positive Type B and pre-BLA meetings with FDA (investors.sprucebio.com news releases; BLA planned Q4 2026) on CSF HS-NRE as the endpoint, which rests partly on the dog CSF/brain HS-NRE correlation. There is no label yet, so regulatory_reliance stays false for now.",
+  "SBC-103 (IV protein) nonclinical toxicology has no dose or safety track; the data are presumably unpublished. An untested/unpublished opening entry would show that the model existed.",
+  "ABO-101 (AAV9-NAGLU, Abeona, NCT03315182) and its Naglu-/- mouse data are outside the given member list, so they are not scored. I am flagging this only so the class table can be checked."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Every class member's phase 1/2 trial has safety as its only registered primary, except TA, where DQ is co-primary. Is efficacy then untested, or may the efficacy secondary be scored without a pre-specified poc_gate?",
+  "Is a track the animal colony (the MPS IIIB dog, the Naglu-/- mouse) whatever the product and route (intraparenchymal AAV vs ICV enzyme; IV vs ICV enzyme), or the animal crossed with the delivery route? The answer decides the merges and therefore engagement 6.",
+  "An NHP or dog study was run before the trial (IND-enabling) but published after it. Does its stated tolerability margin count as 'stated before the trial' for margin_stated?",
+  "Member 'lesinidase alfa' is assumed to be SBC-103 (Alexion/Synageva rhNAGLU). I did not confirm the INN mapping.",
+  "Models check: efficacy 7-8 on naglu-ko-mouse-aav-intracerebral rest on rule question 1 (secondary efficacy). If admitted, does Deiva 2021's age-dependent outcome (youngest patient benefited; mice treated at 6 weeks) make the 2021 entry contra or untested (condition not tested)?"
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "tile": "hypopituitarism-ghr-agonists",
+ "searched": [
+  "Read draft, check.json missing list and tiles.json spec (members: somatrogon, somatropin pegol, somavaratan)",
+  "sources/manifest.csv grep for somatrogon / somatropin pegol / somavaratan / Ngenla: no rows (no FDA bundle for these members)",
+  "Europe PMC: DOI 10.1021/acs.molpharmaceut.5b00868 (Hershkovitz 2016, somatrogon rat + rhesus monkey PK/PD and toxicology)",
+  "Europe PMC: DOI 10.1530/eje-16-0748 (Strasburger 2017, somatrogon phase 2 GHD adults) and 10.1210/jc.2016-3547 (Zelinska 2017, phase 2 GHD children)",
+  "Europe PMC: DOIs 10.4274/jcrpe.galenos.2025.2025-10-16 and 10.3390/children12010058 (somatrogon lipoatrophy case reports)",
+  "Europe PMC: (somatrogon OR MOD-4023) AND (pharmacokinetic pharmacodynamic model OR population model OR modeling)",
+  "Europe PMC: (NNC126-0083 OR somatropin pegol): phase 1 healthy volunteers 2010, GHD adults 2011, GHD children 2011; preclinical source search",
+  "Europe PMC: (pegylated growth hormone) AND (hypophysectomized rat) AND Novo/NNC, 2005-2012",
+  "Europe PMC: (somavaratan OR VRS-317) AND (model OR modeling OR pharmacokinetic)",
+  "Europe PMC: (somatrogon OR MOD-4023) AND (monkey OR rhesus OR rat)",
+  "ClinicalTrials.gov API: MOD-4023 studies (start dates, results posting dates)"
+ ],
+ "added_models": [
+  {
+   "model_id": "rhesus-monkey-somatrogon",
+   "model": "Rhesus monkey PK/PD and repeat-dose toxicology (somatrogon)",
+   "model_kind": "animal",
+   "model_first_use_year": 2016,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "year": 2016, "status": "untested",
+      "note": "Somatrogon every 5 days gave exposure comparable to daily rhGH and raised IGF-1 in rats and rhesus monkeys.",
+      "short": "Monkey IGF-1 up on 5-day dosing",
+      "src": "https://doi.org/10.1021/acs.molpharmaceut.5b00868", "srcLabel": "Hershkovitz 2016",
+      "quote": "Repeated administration of MOD-4023 led to elevated levels of insulin-like growth factor 1 (IGF-1), and twice-weekly injections of MOD-4023 resulted in larger increase in weight gain with fewer injections and a lower accumulative hGH dose.",
+      "confidence": "medium", "confidence_note": "Abstract only (paywalled Mol Pharm); opening entry at publication (epub 2016-01-18), though the studies preceded first-in-human dosing (NCT01060722, started 2009-10).",
+      "judgement": "Monkey kept as its own track: the draft's hypox-rat track is somatrogon's rat system; the monkey is a separate species with its own IGF-1 readout.",
+      "subjects": null, "comparison_stated": false, "source_tier": 1, "model_src": null, "model_src_tier": null,
+      "trial_unreported": false, "patient_signal_reversed": false, "epub_year": 2016, "print_year": 2016, "registry_date": null,
+      "model_filed": null, "product_in_model": true, "retrodiction": false, "imported_from": null, "magnitude": null,
+      "magnitude_basis": null, "source_calls_it": null, "population": "Growth hormone deficiency (pediatric and adult)",
+      "readout_tier": "downstream"
+     },
+     {
+      "year": 2016, "status": "same",
+      "note": "Weekly somatrogon raised IGF-1 dose-dependently in GH-deficient adults and held IGF-1 SDS in the normal range, as in monkeys.",
+      "short": "GHD adults IGF-1 up, as monkey",
+      "src": "https://doi.org/10.1530/eje-16-0748", "srcLabel": "Strasburger 2017",
+      "quote": "Dose-dependent response was observed for both PK and PD data of weekly MOD-4023 treatment. Insulin-like growth factor I (IGF-I) SDS levels were maintained within normal range.",
+      "confidence": "medium", "confidence_note": "Abstract read (PMC5292974 available, full text not read). Adult phase 2 NCT01225666 has no posted results; epub 2016-12-08.",
+      "reason": "IGF-1 rose in GHD adults, as monkeys",
+      "judgement": "Paired by me: Strasburger does not set the monkey data beside patients in the abstract. Monkey predicted IGF-1 rise on infrequent dosing; adults showed it on weekly dosing, so same in direction.",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1021/acs.molpharmaceut.5b00868", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false, "epub_year": 2016, "print_year": 2017, "registry_date": null,
+      "model_filed": null, "product_in_model": true, "retrodiction": false, "imported_from": null, "magnitude": "direction_only",
+      "magnitude_basis": "IGF-1 rise on less-than-daily dosing", "source_calls_it": null,
+      "population": "Growth hormone deficiency (pediatric and adult)", "readout_tier": "downstream"
+     }
+    ],
+    "dose": [
+     {
+      "year": 2016, "status": "untested",
+      "note": "Monkey and rat exposure was matched to daily rhGH per 5 days; no human dose, exposure target or margin stated in the abstract.",
+      "short": "No human dose stated",
+      "src": "https://doi.org/10.1021/acs.molpharmaceut.5b00868", "srcLabel": "Hershkovitz 2016",
+      "quote": "administration of MOD-4023 every 5 days in rats and monkeys resulted in exposure comparable to daily rhGH, and the serum half-life of MOD-4023 was significantly longer.",
+      "confidence": "low", "confidence_note": "Abstract only; the full text may state a human dose projection that was not checked.",
+      "reason": "No human dose or margin stated",
+      "judgement": "An animal-to-animal exposure comparison is not a human dose prediction; children later needed 0.66 mg/kg/wk (Zelinska 2017), but no monkey target to score it against.",
+      "untested_reason": "no_prediction",
+      "subjects": null, "comparison_stated": false, "source_tier": 1, "model_src": null, "model_src_tier": null,
+      "trial_unreported": false, "patient_signal_reversed": false, "epub_year": 2016, "print_year": 2016, "registry_date": null,
+      "model_filed": null, "product_in_model": true, "retrodiction": false, "imported_from": null, "magnitude": null,
+      "magnitude_basis": null, "source_calls_it": null, "population": "Growth hormone deficiency (pediatric and adult)",
+      "blocked_by": null, "margin_stated": false
+     }
+    ],
+    "safety": [
+     {
+      "year": 2016, "status": "untested",
+      "note": "Repeat-dose toxicology called somatrogon well tolerated in rats and monkeys; no harm named. Pediatric lipoatrophy case reports followed in 2025.",
+      "short": "Well tolerated, no harm named",
+      "src": "https://doi.org/10.1021/acs.molpharmaceut.5b00868", "srcLabel": "Hershkovitz 2016",
+      "quote": "MOD-4023 was found to be well-tolerated in rats and monkeys, with minimal adverse events, suggesting an acceptable safety profile.",
+      "confidence": "low", "confidence_note": "Abstract only; whether the monkey studies examined injection-site lipoatrophy is not known. Toxicology detail and FDA/EMA nonclinical reviews not checked.",
+      "reason": "Tox named no checkable harm",
+      "judgement": "A general tolerability statement names no harm, so no_prediction. The 2025 lipoatrophy case series (3 GHD children, no denominator; rhGH also causes it) is not scored as a contra of a silence that is unpublished in detail.",
+      "untested_reason": "no_prediction",
+      "subjects": null, "comparison_stated": false, "source_tier": 1, "model_src": null, "model_src_tier": null,
+      "trial_unreported": false, "patient_signal_reversed": false, "epub_year": 2016, "print_year": 2016, "registry_date": null,
+      "model_filed": null, "product_in_model": true, "retrodiction": false, "imported_from": null, "magnitude": null,
+      "magnitude_basis": null, "source_calls_it": null, "population": "Growth hormone deficiency (pediatric and adult)"
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Somatrogon rats in Hershkovitz 2016 (Sprague-Dawley PK/tox, weight gain): same rat system as the draft's hypox-rat-gh track (Fares 2010), not a new track.",
+  "Somatropin pegol (NNC126-0083) preclinical models: no published nonclinical source found; only phase 1 healthy-volunteer (2010), GHD adult (2011) and GHD child (2011) trials.",
+  "Somavaratan (VRS-317) own models: rats, juvenile monkeys and pig/monkey lipoatrophy already tracked; no PK/PD or QSP model found.",
+  "Somatrogon population PK / IGF-1 PK/PD models (OR10-04 2020; Stan/Torsten popPK 2025; IGF-1 assessment 2025): built from patient data to interpret IGF-1 sampling, not a model prediction compared with a later patient result.",
+  "Somatrogon lipoatrophy case reports (10.4274/jcrpe.galenos.2025.2025-10-16, GHD; 10.3390/children12010058, idiopathic short stature, outside population): no denominator; noted on the monkey safety entry, not scored.",
+  "Somatrogon FDA BLA 761184 / EMA Ngenla EPAR nonclinical reviews: not in the source bundle and not fetched within budget; model_filed left null.",
+  "Patient-derived cells, ex-vivo sensitivity, PDX, human challenge or genetic models (e.g. GHR-deficient Laron patients) for these drugs: none found compared with clinical response."
+ ]
+}

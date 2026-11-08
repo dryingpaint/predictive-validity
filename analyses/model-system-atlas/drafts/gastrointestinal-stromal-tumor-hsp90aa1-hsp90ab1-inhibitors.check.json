@@ -1,0 +1,215 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dakappagari 2010 (PMID 19747088) abstract has the quote verbatim; opening untested entry with 2008 proxy (NCT00618319 start 2008-02 confirmed) is allowed."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Smyth 2012 (PMID 22714264, PMC3992119) abstract has the quote verbatim; NCT01294202 start 2011-03 confirmed as proxy year."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dickson 2012 full text (PMC4023320): serum HSP70 fourfold at cycle 2 (P<0.05), PBMC up to 30-fold; mouse 3-4-fold, so within_2x holds. Epub 2012-08-16, print 2013."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Shapiro/CCR 2014 abstract (PMID 25336693, epub 2014-10-21) has quote verbatim. Caveat: phase 1 in mixed solid tumours began before Smyth's GIST xenografts; possible retrodiction (see rule questions)."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lundgren 2009 (PMID 19372565) abstract has quote verbatim; opening untested entry, proxy 2008."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Smyth 2012 full text not re-opened (budget); abstract states no human exposure target. untested/no_prediction fits: a mouse mg/kg MTD is not a human target."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim but cites Zhang 2006 (ref 13), not Lundgren. Better quote: '600 mg twice weekly ... exposure (AUC) ... greater than the exposure (AUC) resulting in at least 90% of the antitumor activity in xenograft models.' Status same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lundgren 2009 abstract quote verbatim; non-GIST xenografts; opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Smyth 2012 abstract last sentence verbatim; opening untested entry, proxy 2011."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Checker brief 3: same/contra from a pairing whose trial source attributes the result to conditions the model never tested should be untested; brief 4: model must be the system the class relied on.",
+   "note": "Dickson pairs nothing with Lundgren's HER2/non-GIST xenografts; it attributes GIST activity to KIT degradation and cites GIST in-vitro data (Bauer 2006, Dewaele/IPI-504). Model never tested KIT-driven GIST; untested_reason unsettled or not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Checker brief 3 and 4: Dickson attributes GIST activity to KIT degradation and cites GIST in-vitro models; BIIB021's non-GIST xenografts never tested KIT-driven GIST, so the pairing is inadmissible. untested_reason not_measured."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wagner 2016 abstract quote verbatim; NCT01294202 primary outcome is reduction/stabilisation at 4 months (=19% disease control), so endpoint_role primary is right. Contra is defensible against Smyth's predicted enhanced combination activity."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dickson full text has quote verbatim; no BIIB021 nonclinical tox found; untested/unpublished fits."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Smyth 2012 abstract: 'Importantly, the combination of AT13387 and imatinib was well tolerated.' Opening untested entry."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wagner 2016 abstract: well tolerated, 81% GI disorders, diarrhoea 58%. same + partial is reasonable; mice showed weight loss only. An efficacy xenograft, not GLP tox, is the model; acceptable since it made the combination tolerability claim."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Bauer 2006 (PMID 16982758) abstract: quote verbatim (last sentence); GIST882/GIST430/GIST48 KIT-positive lines, 17-AAG outside member list so product_in_model false. Opening untested 2006 fits."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Dickson 2012 (PMC4023320; epub 2012-08-16, print 2013) abstract: 'This study met its primary end-point.' verbatim; primary FDG-PET mPR. Prior verdict confirms Dickson cites Bauer 2006 as GIST rationale, so pairing with this track is apt."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "NCT01039519 API: primary clinical benefit 18.5%, ORR 0%, n=27, results first posted 2016-03-10. Quote is only the endpoint definition; Wagner 2016 'limited antitumour activity' (tier 1, in patient_trials) carries the contra. Contra beats BIIB021 same."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Dewaele 2008 (PMID 18794084) conclusion quoted verbatim; IPI-504 degraded PDGFRA D842V in primary cells and lines. No member trial reports D842V outcomes; patient-level untested/unsettled fits."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Ying 2012 (PMID 22144665, epub 2011-12-05) quote verbatim; no GIST xenograft. Year 2010 proxy = NCT01039519 start 2010-01 (confirmed)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2016,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "Checker brief 3 (pairing whose result rests on conditions the model never tested -> untested), applied as in prior verdict efficacy 3 for BIIB021's non-GIST xenografts; untested_reason unsettled.",
+   "note": "Model never tested GIST (non-GIST xenografts), same as corrected efficacy 3. Also the quote is the ORR title, a secondary outcome, while endpoint_role says primary; primary is clinical benefit 18.5%.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Checker brief 3/4 as efficacy 3: non-GIST xenografts made no GIST prediction; also drafter rule 3 and efficacy primary-endpoint rule: the quote is the secondary ORR title, not the clinical-benefit primary. untested_reason not_measured."
+  }
+ ],
+ "missing": [
+  "GIST cell lines with sibling HSP90 inhibitor 17-AAG (Bauer 2006 Cancer Res, doi:10.1158/0008-5472.CAN-06-0165) and IPI-504 against PDGFRA D842V (Dewaele 2008, Dickson ref 14): the in-vitro GIST basis Dickson 2012 cites for BIIB021's GIST trial; product_in_model false; no track.",
+  "Genotype-level (prediction_level: patient) track: Smyth 2012 GIST cell lines/xenografts predicted activity 'irrespective of KIT mutation' in imatinib-resistant clones; Wagner 2016 (doi:10.1016/j.ejca.2016.03.076) explored KIT/PDGFRA status vs efficacy (only PR in PDGFRA-mutant).",
+  "Ganetespib (class member) has no track: its preclinical xenograft model is not entered, while its GIST registry result NCT01039519 (results posted 2016-03-10; clinical-benefit primary, no responses per draft note) is a tier-3 failure listed only in patient_trials.",
+  "No further model system found for members in GIST (models check): ganetespib's only GIST-specific readout is cycle-1 FDG-PET in selected NCT01039519 patients (66.7% response, secondary), a patient measure, not a model."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Engagement 4: the GIST xenograft (Smyth 2012) is paired with an onalespib phase 1 in mixed solid tumours whose dosing (and likely HSP70 data at meetings) predates the GIST model. Is that a prospective same, a retro, or should engagement pair with the non-GIST models the phase 1 relied on?",
+  "Can a non-disease xenograft (BIIB021 in HER2/other tumours) count as a class-level efficacy prediction for GIST when the trial's own rationale cites different (GIST in-vitro, sibling-drug) models? If yes, ganetespib's non-GIST xenografts paired with NCT01039519 would score contra by symmetry.",
+  "Pimitespib (TAS-116, HSP90a/b-selective) met its GIST phase 3 (CHAPTER-GIST-301) and is approved in Japan but is not in the tile's member list; confirm it is deliberately outside the class."
+ ]
+}

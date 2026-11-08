@@ -1,0 +1,106 @@
+{
+ "tile": "waldenstrom-macroglobulinemia-ms4a1-directed-depleters",
+ "searched": [
+  "Draft, check.json (missing list: NCT01536067 combination trial; checker found no uncovered model system) and tiles.json spec (members ofatumumab, ublituximab, veltuzumab) read",
+  "FDA bundle 125326 (ofatumumab) ClinPharmR/PharmR/MedR grep: population PK, NONMEM, target-mediated, dose selection, xenograft, SCID -- SCID xenograft proof of concept (PharmR); clinical dose chosen on CLL exposure-response, popPK descriptive only",
+  "Europe PMC: (ofatumumab OR ublituximab OR veltuzumab OR TG-1101 OR HuMax-CD20) AND (waldenstrom OR lymphoplasmacytic OR macroglobulinemia) -- only Furman 2017 and reviews; no WM cell-line, xenograft or patient-cell study for a member beyond Le Garff-Tavernier 2015",
+  "Europe PMC: (ofatumumab OR ublituximab) AND (FCGR3A OR Fc gamma receptor OR polymorphism) AND response AND patients -- no WM genotype-response study for a member",
+  "Europe PMC: ofatumumab AND (SCID OR xenograft) AND (dose OR plasma concentration); TITLE 'Estimation of dose requirements for sustained in vivo activity' -- Bleeker 2008 (PMID 18045353)",
+  "Europe PMC: (ublituximab OR LFB-R603 OR EMAB-6) AND (xenograft OR SCID OR cynomolgus) -- no WM-relevant hit",
+  "Europe PMC EXT_ID 15172969 (Teeling 2004 abstract); PMC5484580 Furman 2017 full text (PK table, biomarker/correlation terms, CD20 expression, flare)",
+  "ClinicalTrials.gov API NCT00811733: results first posted 2012-04-30, outcome measures include Cmax and Ctrough of ofatumumab"
+ ],
+ "added_models": [
+  {
+   "model_id": "scid-xenograft-ofatumumab",
+   "model": "SCID mice bearing CD20+ human B-cell tumour xenografts dosed with ofatumumab (tumour growth vs plasma concentration)",
+   "model_kind": "animal",
+   "model_first_use_year": 2007,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "year": 2007, "status": "untested",
+      "note": "Xenograft: initial plasma 5 ug/mL, expected to saturate CD20, inhibited tumour; regrowth below half-saturation; 5-10 ug/mL proposed for sustained activity.",
+      "short": "Xenograft sets 5-10 ug/mL target",
+      "src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "srcLabel": "Bleeker 2008",
+      "quote": "In a mouse xenograft model, a single dose, resulting in an initial plasma antibody concentration of 5 microg/ml, which was expected to result in full target saturation, effectively inhibited human B-cell tumour development.",
+      "confidence": "medium", "confidence_note": "Abstract-level (Europe PMC). Online 2007-11-27, print Feb 2008.",
+      "judgement": "The exposure target (plasma 5-10 ug/mL maintaining CD20 saturation) is stated by the xenograft/monkey paper itself, so it is this track's dose prediction; no tolerability margin stated.",
+      "subjects": null, "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "epub_year": 2007, "print_year": 2008, "registry_date": null, "model_filed": null,
+      "product_in_model": true, "retrodiction": false, "imported_from": null,
+      "magnitude": null, "magnitude_basis": null, "source_calls_it": null,
+      "population": "Unselected (untreated or relapsed WM)",
+      "blocked_by": null, "margin_stated": false
+     },
+     {
+      "year": 2012, "status": "same",
+      "note": "WM patients on 1000-2000 mg had troughs of 23-181 ug/mL before dose 4, well above the xenograft's 5-10 ug/mL saturation target.",
+      "short": "WM troughs far above target",
+      "src": "https://doi.org/10.1016/s2352-3026(16)30166-1", "srcLabel": "Furman 2017",
+      "quote": "C trough prior to Dose 4, μg/mL 13 23·4 (5,252) 21 181 (252)",
+      "confidence": "medium", "confidence_note": "PMC full text (PMC5484580) Table 5 read; quote is a table row. Ctrough first posted with registry results 2012-04-30 (NCT00811733); paper online Dec 2016.",
+      "reason": "Exposure target reached in WM",
+      "judgement": "Judgement call: paired by me; the WM trial does not cite the xenograft target. Early troughs before dose 2 (3.0 and 8.0 ug/mL) sat near or below it, but from dose 3 on troughs exceeded it in both groups, so same.",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "epub_year": 2016, "print_year": 2017, "registry_date": "2012-04-30", "model_filed": null,
+      "product_in_model": true, "retrodiction": false, "imported_from": null,
+      "magnitude": null, "magnitude_basis": "plasma ofatumumab trough vs 5-10 ug/mL saturation target", "source_calls_it": null,
+      "population": "Unselected (untreated or relapsed WM)",
+      "blocked_by": null, "margin_stated": false
+     }
+    ],
+    "efficacy": [
+     {
+      "year": 2007, "status": "untested",
+      "note": "A single ofatumumab dose inhibited human B-cell tumour development in SCID mice; FDA cites the xenograft as proof of concept.",
+      "short": "Xenograft tumour growth inhibited",
+      "src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "srcLabel": "Bleeker 2008",
+      "quote": "In a mouse xenograft model, a single dose, resulting in an initial plasma antibody concentration of 5 microg/ml, which was expected to result in full target saturation, effectively inhibited human B-cell tumour development.",
+      "confidence": "medium", "confidence_note": "Abstract-level (Europe PMC). The xenograft cell line is not named in the abstract; no WM-derived cells were used.",
+      "judgement": "Kept separate from the draft's in-vitro CDC/ADCC track: an in-vivo animal system with its own readout.",
+      "subjects": null, "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "epub_year": 2007, "print_year": 2008, "registry_date": null, "model_filed": null,
+      "product_in_model": true, "retrodiction": false, "imported_from": null,
+      "magnitude": null, "magnitude_basis": null, "source_calls_it": null,
+      "population": "Unselected (untreated or relapsed WM)"
+     },
+     {
+      "year": 2012, "status": "same",
+      "note": "Phase 2 NCT00811733: ofatumumab monotherapy gave 51-59% overall response in untreated or relapsed WM.",
+      "short": "WM responded, 59% ORR",
+      "src": "https://doi.org/10.1016/s2352-3026(16)30166-1", "srcLabel": "Furman 2017",
+      "quote": "19 (51%, 95% CI 34·4-68·1) of 37 patients achieved an overall response after cycle 1 and 22 (59%, 42·1-75·2) of 37 achieved an overall response after the redosing cycle",
+      "confidence": "medium", "confidence_note": "Abstract plus PMC full text. Year set by registry results posting 2012-04-30; paper online Dec 2016.",
+      "reason": "WM responded as xenograft predicted",
+      "judgement": "Judgement call: class-level direction only (tumour inhibition vs response); paired by me, the trial paper cites in-vitro CDC, not the xenograft.",
+      "subjects": "patients", "comparison_stated": false, "source_tier": 1,
+      "model_src": "https://doi.org/10.1111/j.1365-2141.2007.06916.x", "model_src_tier": 1,
+      "trial_unreported": false, "patient_signal_reversed": false,
+      "epub_year": 2016, "print_year": 2017, "registry_date": "2012-04-30", "model_filed": null,
+      "product_in_model": true, "retrodiction": false, "imported_from": null,
+      "magnitude": "direction_only", "magnitude_basis": "overall response rate vs xenograft tumour inhibition", "source_calls_it": null,
+      "population": "Unselected (untreated or relapsed WM)",
+      "endpoint_role": "primary", "outcome_tested": null, "patient_trials": []
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Ofatumumab population PK / TMDD model (FDA ClinPharmR, Furman 2017 NONMEM): descriptive, fitted after dosing; the 2000 mg dose came from CLL exposure-response in patients, not a model prediction",
+  "FCGR3A V158F genotype as a patient-level predictor: studied for rituximab (not a member) in WM; no ofatumumab, ublituximab or veltuzumab WM genotype-response study found",
+  "CD20 expression level on WM cells: Furman cites low CD20 in WM as a reason to raise the dose but reports no CD20-response correlation; no patient comparison",
+  "Ublituximab cynomolgus and in-vitro ADCC models (FDA 761238, MS): no ublituximab WM patient data, so nothing to compare; the WM ex-vivo NK ADCC track is already in the draft",
+  "Veltuzumab SCID/Raji xenograft and cynomolgus data: veltuzumab has no WM patient data (NCT00989586 is a B-NHL combination)",
+  "NCT01536067 (ofatumumab + bortezomib, untreated WM): a combination patient trial, not a model system; belongs in patient_trials on the existing efficacy track",
+  "Human challenge, genetic, patient-derived organoid/PDX co-clinical or QSP dose models for member drugs in WM: none found"
+ ]
+}

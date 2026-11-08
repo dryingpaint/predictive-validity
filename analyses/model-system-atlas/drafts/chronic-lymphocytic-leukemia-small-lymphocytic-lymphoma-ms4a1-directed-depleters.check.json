@@ -1,0 +1,181 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to de Romeuf 2008 (PMID 18302712); quote verbatim in abstract. Ex-vivo ADCC has no patient counterpart in GENUINE; untested/not_measured stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 (PMID 31981978, epub 2020-01-23); quote verbatim. Abstract says the monkey studies supported the FIH trial, so model_filed true is reasonable."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mhibik 2023 (PMID 37219524); quote verbatim. T-cell expansion not reported in CLL-1 abstracts read (2021, 2024); untested/not_measured stands."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Danilov 2024 ASH abstract (Blood 144 Suppl 1:883) scraped; uMRD quote verbatim; NCT04623541 first posted 2020-11-10 confirmed. Pairing is a call; readout_tier arguably proximal (target-cell clearance) rather than downstream."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. 'Difference more pronounced at low doses' states no exposure target or margin; untested/no_prediction correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Abstract states route/bioavailability only, no human exposure target or NOAEL margin; CLL 48 mg came from NHL-1. Epcoritamab FDA review not in bundle, not read."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim (last sentence of abstract); opening untested at 2008 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "GENUINE (PMID 33631112, epub 2021-02-22); quote verbatim; amended single primary ORR confirmed; NCT02301156 posted 2014-11-25, results 2022-05-20. Earlier ublituximab CLL data (2016-17, combo or mixed NHL/CLL phase 1) reasonably kept as patient_trials."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "What the model is: a model built or run after the clinic already knew the answer is a retrodiction (retrodiction: true)",
+   "note": "Quote verbatim. Mhibik 2023 cites Kater, Blood 2021;138 Suppl 1:2627 (EPCORE CLL-1: partial responses in 3 of 5 R/R CLL), so CLL activity was public before these experiments; set retrodiction: true.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Retrodiction rule: Mhibik 2023's own introduction cites EPCORE CLL-1 (Kater, Blood 2021 suppl, PR 3/5 in BTKi-exposed R/R CLL), so the model ran after CLL activity was public; opening entry stays untested, retrodiction: true."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2024,
+   "rule": "A retrodiction that reproduced the human data is retro, never same",
+   "note": "ORR 61%/CR 39% quote verbatim and primary endpoint confirmed. But the PBMC/PDX track was run after ASH 2021 CLL responses (doi 10.1182/blood-2021-146563), so the match is retro, retrodiction: true.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: the PBMC/PDX track postdates Kater 2021's CLL responses in BTKi-exposed patients; the 2024 expansion ORR 61% reproduces that known direction, no new prospective claim, so retro, never same."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim; cytokine release in monkeys is a harm the species can show; opening untested 2020 fine."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2021,
+   "rule": "Evidence rule 6 (dating): year is the earliest date the comparison was public",
+   "note": "CRS 96% quote verbatim in Danilov 2024, but Kater ASH 2021 (Blood 138 Suppl 1:2627, doi 10.1182/blood-2021-146563) already reported 'CRS (100%)... All pts experienced CRS in the first cycle, but no CRS events were higher than grade 2.' Date to 2021, cite Kater.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dating rule 6: status unchanged; Kater ASH 2021 (doi 10.1182/blood-2021-146563) already reported CRS in 100% of R/R CLL patients, all grade ≤2, so the matched entry dates to 2021."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) resolves; quote verbatim in abstract. Opening untested at 2008 correct; prediction_level class."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kalaycio 2016 (PMID 26389849, epub 2015-10-19); quote verbatim. Monkey model public 2008, before the CLL result, so prospective (not retro). NCT00546793 posted 2007-10-19, CLL in conditions; trial-to-paper link not stated in abstract."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim. Abstract gives only 'low doses' qualitatively, no human exposure target or margin; untested/no_prediction correct. Kalaycio abstract confirms no exposure-response across 80-320 mg."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim. NCT00546793 primary outcome is safety/tolerability (registry checked); 2/21 PR quote verbatim in Kalaycio. No efficacy-primary CLL trial, so untested; untested_reason unsettled is defensible (not_measured also arguable)."
+  }
+ ],
+ "missing": [
+  "Veltuzumab (a class member) track: low-dose IV/SC veltuzumab depleted circulating and sessile B cells in cynomolgus monkeys and controlled lymphoma xenografts (Goldenberg 2009 Blood, doi 10.1182/blood-2008-07-168146, PMID 18941114), compared with SC low-dose veltuzumab in CLL (Kalaycio 2016 Leuk Lymphoma, doi 10.3109/10428194.2015.1085531, epub 2015-10-19): 'Lymphocytosis decreased in all patients' (engagement same, 2015) and 2/21 PR, 'no obvious exposure-response relationship' (efficacy/dose). The draft note says no veltuzumab model source was found.",
+  "Earlier patient-side source for the epcoritamab tracks: Kater et al., Blood 2021;138(Suppl 1):2627, doi 10.1182/blood-2021-146563 (EPCORE CLL-1 dose escalation: CRS 100%, PRs in 3/5), which dates the cyno safety comparison to 2021 and makes the Mhibik PBMC/PDX efficacy track a retrodiction."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a model paper that cites early single-arm patient responses (Mhibik 2023 citing ASH 2021 PRs in 3/5) count as a retrodiction for the class-efficacy question even though its specific claim (activity in BTKi-progressing samples, CD20-independence) was new?",
+  "GENUINE topline (met ORR primary endpoint) was public by TG Therapeutics press release / ASCO 2017; rule 6 lists registry, epub, label, print but not tier-5 releases. Should a tier-5 topline set the entry year (2017) when the tier-1 paper (2021) sets the status?",
+  "Is blood MRD of the CD20+ CLL clone a valid human counterpart of monkey peripheral B-cell depletion for engagement, and should its readout_tier be proximal rather than downstream?"
+ ]
+}

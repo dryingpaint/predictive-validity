@@ -1,0 +1,341 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/mucopolysaccharidosis-type-1-idua-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Visigalli 2010 Blood resolves; quote verbatim in abstract. Opening untested entry for the OTL-203 parent model is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Boado 2011 Mol Pharm resolves; quote verbatim. Surrogate mouse-TfR fusion, product_in_model false is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hinderer 2014 resolves; quote verbatim. Source is cats only; the model label 'cat and dog' covers a second species no cited source supports (see missing)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Ou 2018 resolves (epub Nov 2018, after Nov 2017 first dosing but before any patient readout), so not a retrodiction. Quote verbatim."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Giugliani 2018 resolves; quote verbatim. NCT03053089 first posted 2017-02-14 matches. Urinary GAG proximal and stabilized/improved; partial is fair."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gentner 2021 NEJM resolves; quote verbatim; NCT03488394 posted 2018-04-05. Supraphysiologic blood IDUA matches mouse claim."
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "REGENXBIO 9 Feb 2022 release scraped; quote verbatim; tier 5 with trial_unreported true and model_src tier 1. NCT03580083 posted 2018-07-09."
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Harmatz 2022 Mol Ther resolves; quote verbatim; MPS I subjects showed only transient leukocyte IDUA, contradicting the mouse's sustained expression claim."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mouse stated supranormal hematopoietic IDUA as the requirement; valid model-stated exposure target."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Blood IDUA up to supraphysiologic levels was a registered primary and was reached in all eight; dose same is right."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Boado 2009 J Biotechnol resolves; quote verbatim; AGT-181 is valanafusp alfa, stated no toxicity 0.2-20 mg/kg."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "Decision 16: toxicity at or below the effective exposure is contra; count the harm in dose when the model predicted it but misplaced the margin",
+   "note": "Monkeys stated no glucose change to 20 mg/kg and hypoglycemia only at 30 mg/kg in saline (none with dextrose); patients had drug-related hypoglycemia at 1-6 mg/kg. Margin misplaced >5x, though dosing was not blocked. Abstract-level; dextrose use in patients not verified.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Decision 16: monkeys stated no hypoglycemia with dextrose to 30 mg/kg; patients infused in D5NS had drug-related hypoglycemia at 1-6 mg/kg. Toxicity at the effective exposure, margin misplaced >5x: contra; harm counted here, not safety."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening entry, fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening entry, fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening entry; abstract confirms cats have no defined neurological phenotype."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening entry, fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2018,
+   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
+   "note": "NCT03053089/NCT03071341 primaries are adverse events only; DQ and grey matter are not registered endpoints. No admissible efficacy comparison: untested, untested_reason not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; DQ/grey matter is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
+   "note": "NCT03488394 primaries are survival, engraftment, safety and blood IDUA (scored in engagement/dose); urinary GAG normalization is a secondary with no poc_gate. Untested, not_measured, pending rule question.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: primary endpoint or poc_gate secondary only. NCT03488394 primaries are safety, engraftment and blood IDUA (scored in engagement/dose); urinary GAG is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2022,
+   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
+   "note": "NCT03580083 primary is safety and tolerability; BSID-III is a secondary, two children, no comparator. Untested, not_measured.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; BSID-III is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2022,
+   "rule": "efficacy is scored on the primary endpoint, or a secondary only with endpoint_role poc_gate",
+   "note": "Registry confirmed (results 2023-01-26; urine HS +30.2/+3.6), but urine GAG is a secondary and primary is TEAEs; the quote is an outcome title, not a sentence. If kept, Harmatz 2022 (Oct 2022) dates it earlier.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy rule: scored on the trial's primary endpoint, or a secondary only with endpoint_role poc_gate. Registered primary was safety only; urine GAG/HS is a secondary, no PoC gate. Untested, not_measured (rule 5)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Boado 2012 DMD resolves; quote verbatim; named hypoglycemia harm from HIR agonism."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hypoglycemia appeared in patients as predicted in kind; partial is right. If dose 4 becomes contra for the misplaced margin, the count-once rule may remove this from safety (rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hordeaux 2018 resolves; quote verbatim. REGENXBIO 2022 release reports no drug-related SAEs and no DRG/nerve-conduction readout; untested not_measured holds."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Hinderer 2016 (PMC5240037) full text: quote verbatim but describes the naive (non-tolerized) cohort; tolerized dogs showed 'dose-dependent elevation in CSF IDUA activity similar to the non-tolerized dogs'. Untested opening entry stands; 2016 predates RGX-111 trial.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "REGENXBIO 9 Feb 2022 release scraped: quote verbatim; CSF IDUA detectable in 3/4. Tier 5 with trial_unreported and model_src tier 1 correct. Dog model (2016) predates NCT03580083 (2018), so prospective same, not retro.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hinderer 2016 abstract: MED quote verbatim. No stated exposure target mapped to human per-gram-brain cohorts; untested/unsettled, margin_stated false correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text: immune-toxicity quote verbatim (non-tolerized dogs). RGX-111 patients received a 48-week immunosuppression regimen per press release, so the prediction was not tested; untested/unsettled correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Boado 2008 Biotechnol Bioeng abstract: quote verbatim. Rhesus brain uptake predates NCT03071341; no patient CSF/brain delivery readout reported. Untested/unsettled correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Visigalli 2016 Hum Gene Ther abstract: quote verbatim; human HSPC xenografts with clinical-grade LV. Untested opening entry correct, separate system from Idua-/- mouse.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gentner 2021 NEJM abstract: quote verbatim; supraphysiologic blood IDUA was a primary end point. Xenograft model (2016) predates trial (2018): prospective pairing, same correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Visigalli 2016 abstract: GLP tox/biodistribution quote verbatim; supports a stated tolerability prediction. Not the track's latest entry, so no untested_reason needed.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gentner 2021 abstract: safety (primary end point) similar to autologous HSCT at 2.1 y, quote verbatim. Prospective, same correct; short follow-up for clonal events noted at medium confidence.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "MPS I dog (and NHP) intrathecal/intracisternal AAV9-hIDUA track for RGX-111: Hinderer 2015 Mol Ther doi:10.1038/mt.2015.99 and Hinderer 2016 Mol Genet Metab doi:10.1016/j.ymgme.2016.06.006 (anti-IDUA immunity predicted; RGX-111 trial used immunosuppression). Draft's model_id mps1-cat-dog-aav9-it names dogs but cites cats only: two species under one model_id.",
+  "Rhesus monkey brain uptake of valanafusp (HIRMAb-IDUA) vs recombinant IDUA, the BBB-delivery model the protein relied on: Boado/Pardridge 2017 Mol Pharm doi:10.1021/acs.molpharmaceut.6b01166; patient CSF HS/DS was a registered secondary of NCT03071341 with no reported result (untested, unsettled).",
+  "No dose entries for the ZFN (SB-318) or AAV9-ICM (RGX-111) tracks; Ou 2018 and Hordeaux 2018 give vector doses translated to the 1e13-5e13 vg/kg and RGX-111 cohorts; not verified whether a stated exposure target exists.",
+  "Program status: NCT02702115 TERMINATED and NCT03580083 SUSPENDED per ClinicalTrials.gov; neither changes a status but could be noted."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Phase 1/2 gene-therapy trials here all have safety-only (or safety + transgene-expression) primaries. Should efficacy then be untested (not_measured), or may a registered secondary disease endpoint stand in when no efficacy primary exists at all? I applied the strict rule to efficacy 5-8.",
+  "When a model predicted a harm in kind but placed it at a >5x higher dose and patients were not dose-limited by it (valanafusp hypoglycemia), is dose contra without blocked_by, and does count-once then remove the safety same entry?"
+ ]
+}

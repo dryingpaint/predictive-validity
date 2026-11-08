@@ -1,0 +1,101 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gillies 2005 (Blood, PMID 15665105) abstract carries the quote verbatim. Only mechanistic readout is in-vitro ADCC with no human counterpart; untested/no_prediction fits."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "A model built or run after the clinic already knew the answer is a retrodiction: record it with retrodiction: true",
+   "note": "Quote verbatim in Aleksandrova 2024 abstract (epub 2024-09-25). Lymphoma-patient CAR T expansion (Cmax, responders vs non-) was public in ASH 2022 abstract (Blood 140 Suppl 1:12980, 15 Nov 2022); co-culture is a retrodiction, set retrodiction: true.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Retrodiction rule: lymphoma expansion was measured 2018-2020 and public in ASH 2022 before the 2024 co-culture; opening entry stays untested but should carry retrodiction: true. Not the latest entry, so no untested_reason."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2026,
+   "rule": "A retrodiction that reproduced the human data: its status is retro, never same",
+   "note": "Kutsch 2026 (EJC, PMID 42906410) quote verbatim. Expansion matches direction, but the 2024 melanoma-product co-culture post-dates the public 2022 lymphoma expansion data, and the 2018 lymphoma trial cannot have relied on it. Score retro.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule (retro, never same): the 2024 co-culture post-dates lymphoma expansion data measured 2018-2020 and public in ASH 2022 (abstract confirmed); it reproduced the direction, so retro."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Mouse mg/kg only; no human exposure target or margin stated. Registry confirms MTD 4.0 mg/m2 from escalation. untested/no_prediction, modality antibody, correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening untested entry at model first use 2005; quote verbatim in abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CT.gov API: NCT01874288 results first posted 2020-11-24; whyStopped text verbatim; BOR is a PRIMARY outcome: CR 2+1, PR 1+1 (3 CR, 2 PR). NCT02151903 posted 2020-11-27, quote verbatim. Rituximab-refractory eligibility not re-checked."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text has no cytotoxicity endpoint against lymphoma or tumour model; untested/no_prediction stands. Should carry retrodiction: true for consistency with engagement (status unaffected)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "SCID efficacy model, silent on safety; CRS not showable in SCID mice. Registry shows 2 DLTs in the top cohort. untested stands."
+  }
+ ],
+ "missing": [
+  "ASH 2022 abstract (Blood 140 Suppl 1:12980, https://ashpublications.org/blood/article/140/Supplement%201/12980/488176) reported MB-CART20.1 lymphoma expansion and CRs before the co-culture paper; not an admissible tier, but it fixes the co-culture as a retrodiction.",
+  "No cell-therapy entry in dose or safety. MB-CART20.1's own preclinical basis for the 2018 lymphoma trial (EudraCT 2017-000121-12) is not public, so a cell-therapy dose/safety track would be untested/unpublished. The companion MB-CART20.1 melanoma trial (EJC 2026, https://www.sciencedirect.com/science/article/pii/S0959804926015625) reports severe toxicities, which bear on cross-indication safety (imported_from).",
+  "Not verified: CART20 (NCT02965157, Beijing Biohealthcare, status unknown, no results) may share its construct with the Chinese PLA General Hospital CD20 CAR (Zhang 2016, Signal Transduct Target Ther, NCT01735955). If it does, that paper is patient data for a member."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a release or potency co-culture of clinical products made for another indication (melanoma) count as a model system for the lymphoma class, when the lymphoma trial cannot have relied on it?",
+  "Retrodiction timing: should 'the clinic already knew the answer' count a conference abstract (ASH 2022), which is not an admissible scoring tier?",
+  "Safety for an antibody-class member whose GLP toxicology is unpublished: should the track be the efficacy model (no_prediction) or an unnamed tox model (unpublished)?"
+ ]
+}

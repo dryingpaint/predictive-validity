@@ -1,0 +1,243 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/pituitary-dwarfism-ghr-agonists.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Cleland 2012 (PMID 22678811, epub 2012-06-07) resolves; quote verbatim in abstract. Opening untested at model first use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Moore 2013 (PMID 23585663, epub 2013-04-12) quote verbatim; 0.8 mg/kg kept IGF-I normal ~3 weeks vs ~1 month in monkeys, so within_2x is fair. Proximal readout, adults admissible for engagement."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Thygesen 2017 (PMID 28595133) quote verbatim in conclusion. Studies were run to support the clinical trials, so not a retrodiction despite 2017 publication."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2017,
+   "rule": "Evidence rule 6 (year = earliest date the comparison was public); engagement admits healthy volunteers",
+   "note": "Miller 2022 quote verbatim, status right. But Rasmussen 2014 (doi 10.1210/jc.2014-1702, healthy men) reported 'A dose-dependent IGF-1 response was observed', so the pairing was possible once Thygesen published: date the same entry 2017.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Both agree on same. Rule 6 plus engagement admitting healthy volunteers: Rasmussen 2014 (PMID 25013997) reported a dose-dependent IGF-1 response, so the pairing was public once Thygesen 2017 appeared; the entry's year should be 2017."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Opening untested is right; if entry 2 is corrected this becomes or is joined by the latest untested and needs untested_reason no_prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "Dose: a target scores only on the model system that stated it; the drafter's own mg/kg arithmetic is not one (untested_reason no_prediction)",
+   "note": "Cleland states a monkey regimen equivalence, never a human dose. Mapping monkey 1.4 mg/kg 1:1 to children is drafter arithmetic. Moore 2016 full text: pediatric dose came from its own IGF-1 dose-finding; it never says lower doses failed.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule: a target scores only where the model system stated it; drafter mg/kg arithmetic is not one. Cleland 2012 states a monkey regimen equivalence and potency ratio, no human dose. untested, no_prediction (rule 5)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found verbatim in bundled 761156 SumR text. Tier 2, model_filed true correct."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "REAL4 quote verbatim; 0.16 mg/kg/wk sits within adult MRHD for children, so the >100x monkey margin held. Margin was in the IND before REAL4, public 2020; acceptable but borderline (see rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. FDA SumR confirms somapacitan was also run in hypophysectomised rats (same track, product_in_model true)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Moore 2016 (epub 2015-12-16) quote verbatim in abstract conclusions; HV was a main outcome of an uncontrolled phase 1b/2a; direction-only same is reasonable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "NCT02339090 results first posted 2022-12-30 (checked) and VELOCITY failure is well documented; press release text not opened, quote matches widely reported wording. src should arguably be the tier 3 registry record, which sets status; status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Cleland abstract."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text (PMC4803167) settles the drafter's open point: 'There were no cases of injection site lipoatrophy or nodule formation.' Use that as quote and raise confidence to medium/high."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled SumR; rat findings (ventricle dilatation, diabetes, CPN) described as GH-class pharmacology."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "REAL4 quote verbatim; SumR also notes no new DM diagnoses in adult main period. Same is supported."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Juul 2019 full text (PMC6325982): quote verbatim; paper states the PK/PD model 'was used to support the phase II dose selection' and REAL 3 ran from March 2016, so prospective. Year 2015 proxy (registration) acceptable; class level fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Savendahl 2020 full text (PMC7069655) quote verbatim; trial ran 2016-2018 after model. IGF-I SDS rose with dose, below +2. Caveat: averages are derived by refitting the same model to REAL 3 samples, so partly circular; same stands.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Juul 2019 quote verbatim; model also states 0.16 mg/kg/week gives higher IGF-I than daily hGH without exceeding +2 SDS. A stated regimen target from the model itself, prospective; opening untested correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. 0.16 target (above daily GH, below +2) held; 0.08 'match' undershot (-1.09 vs -0.40). Partial same defensible; the ~0.12 interpolated dose behind within_2x is drafter arithmetic, used only for magnitude, so keep it out of the status.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Wang 2022 full text (PMC9336684) quote verbatim; MOE table gives AUC margin 120.5 at NOAEL. Study cites CFDA GLP decree 2017, after 2014 approval, so the track is a retrodiction; the opening entry could carry retrodiction: true too.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim. Margin stated only after phase III/IV dosing was known, so retro (not same) is right; margin_stated true is fine for a retro entry because no prospective credit is given.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in Wang 2022 full text: the safety-margin section predicted no vacuolation or PEG accumulation at 0.2 mg/kg/week. Opening untested, year 2017 proxy acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; run after phase III/IV safety known, so retro. Patients' choroid plexus was never imaged; comparison is on adverse reactions only, which ties to the existing rule question on unmeasurable harms (not_measured vs retro).",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Somatropin pegol (Jintrolong), a class member, has a comparison_stated model: 52-week cynomolgus tox with choroid-plexus vacuolation, NOAEL 3 mg/kg/wk, safety margin >120.5 and predicted vacuolation threshold 6.45x the 0.2 mg/kg/wk clinical dose, set beside phase III/IV pediatric safety (no new AEs). doi 10.3389/fendo.2022.821588 (2022-07-15). New track for dose (margin_stated) and safety; contradicts the tile note 'no admissible model source found'.",
+  "Rasmussen 2014 (doi 10.1210/jc.2014-1702): first-in-human somapacitan, dose-dependent IGF-1 response in healthy men; earlier patient side for the somapacitan animal IGF-I track (see engagement 4)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy entry 3: does a model's per-mg potency claim versus daily rhGH (hypox rat 3x) amount to a prediction of non-inferiority at the clinical dose, so that a failed NI primary is contra rather than untested/same? Both arms grew; only the comparison failed.",
+  "Dose entry 4: a tox margin stated in an IND before the pediatric trial but first public in a 2020 FDA review written during that trial: does that count as 'stated before the trial' for margin_stated?",
+  "Jintrolong choroid-plexus vacuolation: PEG-platform harm with no human readout (vacuolation cannot be measured in children). Is a predicted harm that patients cannot be measured for contra (never appeared) or untested (not_measured)?"
+ ]
+}

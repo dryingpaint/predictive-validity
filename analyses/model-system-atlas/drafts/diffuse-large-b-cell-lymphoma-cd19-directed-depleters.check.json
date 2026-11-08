@@ -1,0 +1,273 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/diffuse-large-b-cell-lymphoma-cd19-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Milone 2009 Mol Ther resolves (epub 2009-04); quote verbatim in abstract. ALL xenograft, 4-1BB CAR; untested opener correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Herbst 2010 JPET resolves; quote verbatim. NCT01453205 posted ORR only, no B-cell counts; untested/not_measured fits."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Schuster 2017 NEJM resolves (epub 2017-12-10); quote verbatim. NCT02030834 results posted 2020-10-05 confirmed. Proximal readout, same, paired; fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zammarchi 2018 Blood resolves (epub 2018-01); quote verbatim. No patient crosslink/gamma-H2AX readout found either; untested/not_measured."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim, but Blanc 2011 is indexed as a Review (PubMed pubType), so not an admissible source tier 1; status untested/unpublished unaffected. Consider Al-Katib 2009 as cited model paper."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. FDA review (bundle) confirms Applicant's 1/6 HNSTD monkey convention for starting dose; untested opener fine."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2019,
+   "rule": "dose: margin_stated only where a model source stated the margin before the trial; an MTD (or no-MTD) is not a model target; untested_reason no_prediction",
+   "note": "The ~3x AUC figure is the 2021 label's exposure multiple for ADVERSE testis findings at monkey 0.3 mg/kg, not a tolerated margin; 1/6 HNSTD set only a start dose. Draft admits monkey stated no effective exposure. Cumulative toxicity at 200 µg/kg.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table row 1: monkey stated no effective exposure; FDA's ~3x AUC multiple is at adverse testis findings, and 1/6 HNSTD only set a start dose, so no tolerated margin was stated. Rule 5: no_prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract gives potency vs rituximab only, no human dose; untested/no_prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract states no human cell dose; untested/no_prediction. CBER review for BLA 125646 not in bundle; not checked either."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim; opener at model_first_use_year 2009."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Note the abstract measured normal B-cell depletion only; 'implying superiority in lymphoma' is the drafter's reading (see rule question)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2009,
+   "rule": "Evidence rule 2 (reviews point to a source but are not one); rule 6 (cell opens at model_first_use_year)",
+   "note": "Blanc 2011 is a Review. Primary model paper is Al-Katib 2009 Clin Cancer Res (10.1158/1078-0432.ccr-08-2808, epub 2009-06): WSU-DLCL2 SCID xenograft, SAR3419 beat rituximab and CHOP. Opener should be 2009, model_first_use_year 2009.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested agreed. Evidence rule 2: Blanc 2011 is a review; opener should cite primary Al-Katib 2009 (PMID 19509168, epub 2009-06-09), year and model_first_use_year 2009 per rule 6."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Coiffier 2016 BJH quote verbatim; primary ORR null (<=40%) not rejected. Contra stands, but model_src should be Al-Katib 2009 not the Blanc review. NCT01470456/NCT01472887 no results posted, confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. FDA review confirms Ramos 6-9/10 and Daudi 7/10 tumor-free; no mice tumor-free in WSU-DLCL2 up to 1 mg/kg."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CT.gov NCT01453205 results first posted 2018-03-12; quote is the ORR definition; values 47.5/46.2/43.6, p=0.554; stated purpose superiority vs rituximab with ICE/DHAP. Contra defensible; see rule question."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "JULIET NEJM epub 2018-12, print 2019; quote verbatim; NCT02445248 results posted 2024-04-18 confirmed. BELINDA as patient_trial fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "LOTIS-2 Lancet Oncol epub 2021-05-11; quote verbatim; NCT03589469 results 2021-07-29 confirmed. Could add LOTIS-5 (positive PFS, 2026) as patient_trial; no status change."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim (sentence truncated). Blanc 2011 is a Review; untested/unpublished stands regardless."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "FDA review (bundle) lists monkey marrow, kidney, skin, testis findings; opener fine."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote and 'These trends are noted because there are pericardial effusions...' found verbatim in bundle text. Same+partial defensible; kidney/testis non-carryover raised as rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract is pharmacology only; untested/unpublished fits for DLBCL context (NMOSD BLA tox not read, as draft says)."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Immunodeficient NSG cannot show CRS/ICANS; silence not a miss per brief; untested/no_prediction."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Caimi 2023 EJHaem (PMC10887233) abstract quote verbatim. ASH 2022 abstract (Blood 140 Suppl 1:9548, online 2022-11-15) confirms the QSP model existed in 2022; untested opener at 2022 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "retro",
+   "proposed_year": 2022,
+   "rule": "Dating: year is the earliest date the comparison was public (online publication)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim; retro correct (run on LOTIS-2 after 2021 results), prediction_level patient fits. Same QSP-vs-IHC conclusion published online 2022-11-15 in Blood ASH abstract (10.1182/blood-2022-159626), so year 2022, not 2023.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retro agreed. Rule 6 dating: same QSP-vs-IHC comparison was public in the Blood ASH 2022 abstract (10.1182/blood-2022-159626, Nov 2022), so year 2022."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in Caimi 2023 abstract. Six-line panel shown on the ASH Dec 2022 poster (adctmedical.com PDF snippet), so 2022 opener proxy holds. ex_vivo is nearest enum for cell lines."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim; 'Similarly' sets cell lines beside patients, run after LOTIS-2, so retro. Cell-line data not in the ASH 2022 abstract text (poster only), so 2023 epub dating stands."
+  }
+ ],
+ "missing": [
+  "Al-Katib 2009 Clin Cancer Res 10.1158/1078-0432.ccr-08-2808: primary SAR3419 xenograft paper (WSU-DLCL2 DLBCL and WSU-FSCCL in SCID mice, superior to rituximab/CHOP); should be the model source of the sar3419-lymphoma-xenograft track instead of the Blanc 2011 review.",
+  "LOTIS-5 phase 3 (Lonca-R vs R-GemOx, R/R DLBCL): PFS primary endpoint met, HR 0.73 (ADC Therapeutics press release 2026-06-03, https://ir.adctherapeutics.com/2026-06-03-ADC-Therapeutics-Announces-Results-From-LOTIS-5-Phase-3-Confirmatory-Clinical-Trial-of-ZYNLONTA-R-in-Combination-with-Rituximab-in-Relapsed-or-Refractory-Diffuse-Large-B-Cell-Lymphoma); patient_trial on efficacy 8, no status change.",
+  "Not checked: CBER review of Kymriah DLBCL supplement (BLA 125646) for any lymphoma xenograft or other model compared with patients."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy 4: the xenograft predicted activity (complete regressions) and patients responded (ORR 31%) but below the sponsor's 40% bar. Does missing a pre-specified ORR bar count as a direction contra, or only as neg/partial?",
+  "Efficacy 6: the transgenic mouse compared normal B-cell depletion depth with rituximab as monotherapy; the trial tested tumour ORR on an ICE/DHAP backbone. Is a model readout of normal-B-cell depletion a prediction of tumour-response superiority, or should this be untested (conditions/readout never tested)?",
+  "Safety 3: monkey kidney nephropathy and testis toxicity had no reported patient counterpart. Testis is unmeasurable in practice; kidney could have shown. Does a named harm absent in patients force contra/opposite, or is it absorbed into same+partial?",
+  "Can a sponsor Review (Blanc 2011) carry an untested opener's quote when it is the only public statement of the model, or must the opener cite the primary paper?"
+ ]
+}

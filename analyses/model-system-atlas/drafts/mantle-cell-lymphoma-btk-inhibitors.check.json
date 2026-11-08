@@ -1,0 +1,167 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/mantle-cell-lymphoma-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Honigberg 2010 PNAS (PMID 20615965) resolves; quote verbatim in abstract. Opening untested entry at 2010 fine; FDA PharmR confirms dog 100 mg/kg complete occupancy 24 h."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Advani JCO (PMID 23045577) epub 2012-10-08; quote verbatim. Same probe, direct readout, full occupancy in patients. registry_date 2009-02-24 is first-posting; NCT00849654 has no results, so field should be null."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Honigberg abstract; occupancy-tied-to-efficacy is a model-stated target, borderline but the phase 1 escalated against it. Untested opening fine."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Advani quote verbatim (design sentence; the occupancy-reached sentence would be the stronger quote). Target reached -> same; margin_stated false correct (dog tolerability unpublished pre-trial). registry_date should be null as above."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Honigberg abstract. Canine B-NHL is cross-histology (DLBCL-like) model; opening untested fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wang NEJM (PMID 23782157) epub 2013-06-19, ORR primary endpoint, quote verbatim; NCT01236391 results first posted 2015-03-13 confirmed. ACE-LY-004 quote verbatim; Harrington dog ORR 25% (5/20) confirmed."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zhang CCR 2017 (PMID 28348046) quote verbatim but generic: abstract does not show MCL-specific ibrutinib donor/PDX pairs. Retro, patient-level reasonable; keep low confidence."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled PharmR text (Reference ID 3360071). Opening proxy at 2009 first-in-human acceptable."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim; review states platelets rose in rats/dogs. AF is not in the review text; it is in the 2013 MCL label, so the AF miss is drafter pairing. Contra holds on thrombocytopenia alone."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Zhang 2025 Sci Adv (PMC12680032) full text read; quote verbatim from abstract. Opening untested entry at 2025, first MCL use; patient-level fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Full text: 4 AVO patients (1 R/R, 3 untreated) classed by circulating-lymphocyte kinetics after cycle-1 acalabrutinib, then assayed; retro correct, not same. Readout is not the trial endpoint and mostly outside R/R; low confidence apt."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Rahal 2014 Nat Med (PMID 24362935, epub 2013-12-22); quote verbatim in abstract. Opening untested 2013, patient-level prediction of ibrutinib insensitivity."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested -> untested (untested_reason unsettled)",
+   "note": "Freeman 2022 abstract: BIRC3 harm shown 'in this cohort', pooled over ibrutinib and temsirolimus arms; no ibrutinib-arm result, so prognostic, not ibrutinib insensitivity. Propose untested/unsettled unless full text shows arm-specific effect.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Checker's rule (trial attributes result to conditions model never tested) and rule 5: Freeman reports BIRC3 harm pooled over ibrutinib and temsirolimus arms (abstract; full text paywalled), so ibrutinib-specific insensitivity is unsettled."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in bundled 213217 MultidisciplineR (line ~1103). Opening untested at first-in-human proxy 2014; model_filed true supported."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Telemetry quote verbatim; review shows multi-organ hemorrhage in animals, dog platelets rising, patient AF/flutter 2% and thrombocytopenia. Contra consistent with ibrutinib track judgement. registry_date 2022 postdates year; year 2019 fine."
+  }
+ ],
+ "missing": [
+  "Ex-vivo primary MCL/CLL cell buoyant-mass change vs in-vivo BTK inhibitor sensitivity, patient-level, comparison stated (Science Advances 2025, doi:10.1126/sciadv.ady2963, PMID 41348872): 'changes in cell buoyant mass within primary patient specimens ex vivo correlate with sensitivity to Bruton's tyrosine kinase inhibitors in vivo in MCL'. New track (ex_vivo, patient-level).",
+  "MCL cell-line pharmacogenomic profiling (Rahal 2014 Nat Med, doi:10.1038/nm.3435, PMID 24362935): ibrutinib-insensitive lines carry alternative NF-kB (TRAF2/BIRC3) lesions, found in 15% of 165 patients; a patient-level prediction of primary ibrutinib resistance. Track at least as untested/unsettled, or scored if a later patient-outcome paper tests TRAF2/BIRC3 vs response.",
+  "Acalabrutinib and zanubrutinib (members) have their own FDA nonclinical reviews (NDA 210259, 2017; NDA 213217, 2019) not in the bundle: dog/rat tox vs patient AF, bleeding and cytopenias should be checked as further safety entries on a tox track.",
+  "Acalabrutinib canine B-NHL (Harrington 2016, doi:10.1371/journal.pone.0159607) and zanubrutinib occupancy (PBMC and lymph-node, Tam 2019 Blood) are in notes only; they would be member-drug entries on the existing canine and occupancy tracks, no status change.",
+  "Acalabrutinib rat/dog GLP toxicology and dog telemetry (NDA 210259 MultidisciplineR 2017, in bundle): 'acalabrutinib had no toxicologically-significant effects on cardiovascular function in a cardiovascular study in telemetered dogs', while label lists AF/flutter 3% and hemorrhage; would be a safety track parallel to the ibrutinib/zanubrutinib tox tracks (likely contra)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "registry_date when the trial registry has no results posted: the draft uses the first-posting date; rule 6 reads as results posting only, implying null. Which?",
+  "Safety year when the FDA review was signed 2013 (MCL approval Nov 2013, NDA 205552 Orig1) but the bundled copy sits in the 2014 Orig2 folder: does the year follow the earliest public posting of any copy of the review (possibly 2013 under Orig1)?",
+  "Is 'occupancy correlated with efficacy' in a mouse paper a model-stated dose target for the dose cell, or only an engagement prediction, given the brief bars targets the model never stated?",
+  "magnitude 'opposite' on a silence-contradicted harm where animals moved the lab value the other way (platelets rose): the brief defines 'opposite' for a predicted harm that never appeared.",
+  "Is a biomarker's pooled prognostic effect across a randomized trial's in-class and out-of-class arms (RAY: ibrutinib vs temsirolimus) admissible as a same for a model predicting in-class insensitivity, or untested?"
+ ]
+}

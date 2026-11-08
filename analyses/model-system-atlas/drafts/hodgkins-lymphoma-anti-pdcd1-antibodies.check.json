@@ -1,0 +1,183 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/hodgkins-lymphoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wang 2014 (PMID 24872026, Cancer Immunol Res) resolves; quote verbatim in abstract. Opening untested at 2006 proxy is fine; FDA ClinPharm review confirms binding EC50 0.1 ug/mL on activated human T cells."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Brahmer 2010 (PMID 20516446) quote verbatim. Occupancy >70% on circulating T cells is a direct readout; solid-tumour patients acceptable for a T-cell readout. Pairing dated 2014 by model paper is consistent."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found verbatim in bundled 125527 ClinPharm review. Surrogate-antibody inference for product_in_model false is unconfirmed by the review but plausible (nivolumab does not bind mouse PD-1)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Review states the mouse PK-PD HED prediction (~1 mg/kg) and that 3 mg/kg troughs >16 ug/mL (>160x EC50), MTD not reached at 10 mg/kg. Target reached; margin_stated false correct; efficacy kept separate."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Green 2010 (PMID 20628145, Blood) quote verbatim. Cell lines plus microdissected HRS cells as an ex-vivo rationale system is a fair track; opening untested 2010."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "efficacy scored on a secondary endpoint without endpoint_role: poc_gate",
+   "note": "NCT01592370 registry primary outcomes are drug-related grade 3-4 AEs/SAEs/labs only; ORR 87% is secondary, no poc_gate shown. First primary-endpoint result: CheckMate 205 (Younes 2016, epub 2016-07-20, primary ORR 66.3%). Status same holds, year 2016, src Younes.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Efficacy rule (primary endpoint governs): NCT01592370 registry primaries are grade 3-4 AEs only, ORR secondary, no poc_gate. First primary-endpoint match is CheckMate 205 (Younes 2016); same holds, dated 2016 per rule 6."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Roemer 2016 (PMID 27069084, JCO) quote verbatim (Conclusion). Untested opening for the FISH patient-level track is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Roemer 2018 (PMID 29394125) quote verbatim. Full text (PMC5877802) also ties 9p24.1 grade to best overall response: progressors more likely polysomy, PD v non-PD P=.006, so the primary-endpoint label holds. Better quote: that sentence. Partial is fair."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Wang 2014 quote verbatim; monkey studies filed (label/MedR cite 1- and 3-month monkey repeat-dose tox). Opening proxy 2006 fine."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Brahmer 2010 colitis quote verbatim. Contra/opposite on monkey silence is a defensible call. A cHL-specific source (Ansell 2015 or the May 2016 cHL label 5.x immune-mediated warnings) would remove the import flag; status unchanged."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Blazar 2003 (PMID 12874215, J Immunol) quote verbatim; anti-mouse PD-1/PD-L1 reagents and PD-1-deficient donors, product_in_model false correct."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "Dating rule 6 (earliest public date) and evidence rule 2 (higher-tier/member-specific record sets the entry)",
+   "note": "Merryman 2017 quote verbatim (epub 2017-01-10) but mixes non-member pembrolizumab/pidilizumab. The May 2016 Opdivo cHL label (125554s019, tier 2) already reports 6/17 deaths, 29% grade>=3 aGVHD, hyperacute GVHD after nivolumab. Same, year 2016, src that label.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dating rule 6 and evidence rule 2: May 2016 Opdivo label (125554s019, verified) already reports 29% grade>=3 aGVHD and hyperacute GVHD after nivolumab, member-specific. Same holds; year 2016, src that label."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Nishimura 1999 Immunity (PMID 10485649) resolves; quote verbatim in abstract. Opening untested at first use 1999, prediction_level class, product_in_model false all correct."
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "Dating: the entry's year is the earliest date the comparison was public",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Label quote verbatim (pdftotext, line 645). But Ansell 2015 NEJM (epub 6 Dec 2014, PMC4348009) already reported drug-related grade 3 pneumonitis, colitis, pancreatitis in 23 cHL patients. Same holds; year 2014, src Ansell.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dating rule 6: Ansell 2015 NEJM (epub Dec 2014) reported drug-related grade 3 pneumonitis and colitis in nivolumab-treated cHL, before the 2016 label. Same holds; year 2014, src Ansell."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Finlay 2019 MAbs (PMID 30541416, epub 12 Dec 2018) quote verbatim. Abstract states the screen was run because SHR-1210 already caused hemangioma in patients; untested opening at 2018 is fine. comparison_stated true on an opening entry is odd but harmless."
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Song 2019 CCR (PMID 31420358, epub 16 Aug 2019) quote verbatim. Screen run after patient haemangiomas were known, so retrodiction: retro (not same) is correct; year 2019, prediction_level class OK."
+  }
+ ],
+ "missing": [
+  "FDA Opdivo label revised 05/2016 (https://www.accessdata.fda.gov/drugsatfda_docs/label/2016/125554s019lbl.pdf), section 5.10 Complications of Allogeneic HSCT after OPDIVO in cHL Trials 8 and 9: nivolumab-specific, earlier, tier 2 patient side for the mouse-GVHD track.",
+  "CheckMate 205 (Younes 2016, https://doi.org/10.1016/S1470-2045(16)30167-X; NCT02181738 results posted 2018-12-11) should be the scored efficacy entry on the 9p24.1 cell-line track rather than a patient_trials item, since it carries the primary ORR endpoint.",
+  "PD-1 knockout mouse autoimmunity (Nishimura 1999 Immunity, https://doi.org/10.1016/S1074-7613(00)80089-8; Nishimura 2001 Science, https://doi.org/10.1126/science.291.5502.319); the nivolumab label cites immune-mediated disorders in PD-1 knockout mice. This model predicted the immune-mediated harms the monkey track missed, and it has no safety track.",
+  "Other member drugs' cHL trials were not checked as entries: tislelizumab (Song 2020 Leukemia), camrelizumab (Song 2019 Clin Cancer Res), penpulimab, zimberelimab. Camrelizumab's reactive cutaneous capillary endothelial proliferation is a member-specific harm that may need a safety track against its own primate toxicology. Not verified within budget."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy index 2: a phase 1 with only safety primary outcomes in the registry but 'safety and efficacy' as the paper's stated objectives. Does the paper's wording count as a primary endpoint, or must the registry's primary outcome govern? I applied the registry.",
+  "Safety index 4: the mouse model blocked PD-1 at transplant, but patients got PD-1 blockade weeks before HSCT. Is that a different condition the model never tested, which would make it untested under the 'conditions the model never tested' rule, or the same predicted harm? I left it as same.",
+  "Engagement and dose patient sides come from solid-tumour patients dosed at the cHL regimen. Is that admissible without imported_from, as the draft has it, or does it need imported_from like the safety import?"
+ ]
+}

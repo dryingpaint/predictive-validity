@@ -1,0 +1,112 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/fragile-x-syndrome-grm5-negative-modulators.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Each cell opens at model_first_use_year with status untested",
+   "note": "de Vrij 2008 (PMID 18571098) resolves; quote verbatim in abstract. model_id fmr1-ko-mouse-ppi names the same Fmr1 KO mouse (same paper) that dose/efficacy call fmr1-ko-mouse-behaviour; see rule_questions."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "same + source_calls_it partial; comparison_stated false pairing",
+   "note": "Berry-Kravis 2009 (PMID 19126569) resolves; quote verbatim. Open-label single dose, 6/12 met PPI criterion; same/partial/low confidence is defensible. Abstract cites fenobam's own animal data but no source given, so pairing with MPEP mouse stands."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2005,
+   "rule": "Dating rule 6: each cell opens at model_first_use_year",
+   "note": "Status untested/no_prediction is right: no model stated a human exposure or margin; human mavoglurant PET occupancy (PMID 33545349) guided dosing but is human, not a model target. Opening year should be 2005: Yan 2005 MPEP rescue in Fmr1 KO mice.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: status untested agreed (no model-stated human exposure, occupancy or margin; untested_reason no_prediction stands). Cell opens at model_first_use_year 2005, Yan 2005 MPEP Fmr1 KO rescue (PMID 16054174 verified), not 2008."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2005,
+   "rule": "Dating rule 6: each cell opens at model_first_use_year",
+   "note": "Quote verbatim in de Vrij 2008. Earlier Fmr1 KO rescue by mGluR5 blockade exists: Yan 2005 Neuropharmacology (doi:10.1016/j.neuropharm.2005.06.004, MPEP suppressed audiogenic seizures and open-field phenotype). Open the track 2005; model_first_use_year 2005.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opening untested agreed. Track opens at model_first_use_year 2005: Yan 2005 (PMID 16054174, verified) MPEP rescued Fmr1 KO seizures and open-field phenotype, predating de Vrij 2008. Not the latest entry, so no untested_reason."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "contra: model predicted wrongly; primary endpoint governs",
+   "note": "Jacquemont 2011 (PMID 21209411) quote verbatim; ABC-C primary failed, methylation subgroup exploratory. 2016 and 2017 patient_trials quotes verbatim. NCT02920892 should cite the FXLEARN primary paper (doi:10.1172/jci171723), which states the model-patient contrast itself."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "untested_reason unpublished; species cannot show hallucination, so silence is not a miss",
+   "note": "Youssef 2017 (PMID 28816242) quote verbatim. No FDA review exists (manifest: no NDA/BLA for all three members). Untested/unpublished stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Evidence rule 6 (track opens untested at model_first_use_year)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to McBride 2005 Neuron (PMID 15748850, Mar 2005); quote verbatim in abstract. Opening untested entry at 2005, prediction_level class, sibling mGluR antagonists with product_in_model false is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Evidence rule 1 (paired comparison, comparison_stated false); primary endpoint failure",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Jacquemont 2011 Sci Transl Med (PMID 21209411, Jan 2011) resolves; quote verbatim in abstract; primary ABC-C failed. Fly prediction public 2005, before trial, so prospective, not retro. model_src McBride 2005 correct. contra 2011 stands."
+  }
+ ],
+ "missing": [
+  "FXLEARN primary paper, Berry-Kravis 2023 JCI (doi:10.1172/jci171723, NCT02920892): primary WCS endpoint not different from placebo in 3-6 year olds; states 'Despite the large body of evidence supporting use of mGluR5 NAMs in animal models of FXS, this study suggests that this mechanism of action does not translate' (comparison_stated true, tier 1). Should replace the 2024 biomarker paper as the NCT02920892 source and could be the stated-comparison entry on the efficacy track.",
+  "Yan 2005 Neuropharmacology (doi:10.1016/j.neuropharm.2005.06.004): MPEP rescued audiogenic seizures and open-field behaviour in Fmr1 KO mice; earliest use of the efficacy/dose model (opening year 2005, not 2008). It also reports a Fragile X-specific tolerance at high mGluR5 antagonist doses.",
+  "Drosophila dfmr1 model, McBride 2005 Neuron (doi:10.1016/j.neuron.2005.01.038): MPEP rescued courtship, synaptic plasticity and mushroom body defects; a separate animal system with no track (untested on its own track, or opening proxy).",
+  "Dolen 2007 Neuron (doi:10.1016/j.neuron.2007.12.001): genetic Grm5 halving corrected multiple Fmr1 KO phenotypes; the founding mGluR-theory model the trials cite; same mouse system, belongs in the efficacy track's opening evidence.",
+  "Human [11C]-ABP688 PET occupancy of mavoglurant in healthy volunteers (doi:10.1016/j.neuroimage.2021.117785, PMID 33545349): direct engagement readout (27-85% occupancy at 25-400 mg) that 'served to guide the dosing'; no model-stated occupancy target found to pair it with, but it is the class's direct human engagement datum and the draft does not mention it."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "The same Fmr1 KO mouse (same de Vrij 2008 paper) carries model_id fmr1-ko-mouse-ppi in engagement and fmr1-ko-mouse-behaviour in dose/efficacy. The brief says one system keeps one slug in every cell; is a readout-specific slug (PPI as the engagement readout) a separate system or a split?",
+  "Is a circuit/behavioural readout like PPI admissible as an 'engagement' PD readout at all (readout_tier downstream), when the class has a direct human readout (PET occupancy) that no model stated a target for?",
+  "Should efficacy pairings use only member-drug mouse data (mavoglurant Levenga Feb 2011, one month after Jacquemont Jan 2011) or is sibling MPEP data acceptable for the first contra? The draft uses MPEP with product_in_model false; the brief allows it, but the member's own model postdating the trial by one month is not addressed.",
+  "dfmr1-drosophila track: Drosophila has no mGluR5 ortholog (its single mGluR, DmGluRA, is group II/III-like), so the fly rescue by MPEP and other mGluR antagonists does not test the class target. Does a model lacking the class target count as a track for an mGluR5 NAM class, or only as a sibling-target model outside the context?"
+ ]
+}

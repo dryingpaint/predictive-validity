@@ -1,0 +1,163 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/fabry-disease-gla-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Kizhner 2015 (PMID 25155442, epub 2014-08-10, print 2015-02) resolves; quote verbatim in abstract. Opening untested entry fine. FDA primuline 'nonspecific and nonquantitative' criticism confirmed in bundle."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Schiffmann 2019 (PMID 30834538, epub 2019-04-08) quote verbatim; NCT01678898 results posted 2020-01-27 confirmed. Mouse 64% residual vs -84% PTC: direction_only reasonable. FDA says the mouse lipid assay could not confirm Gb3 specifically; see rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundled BLA 761161 multidiscipline review; FDA excluded allergic reactions from NOAEL ('not considered relevant to predicting potential immunogenicity in humans'). Margin held at 1 mg/kg. Margin public only 2023; see rule question on pre-trial statement."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jeyakumar 2023 (PMC10284695) quote verbatim. NCT04040049 terminated, why_stopped business (focus on FLT201), results 2026-08-06 confirmed. NHP silent on hepatotoxicity, so harm counted in safety; untested acceptable, though margin_stated true with untested is awkward."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Kizhner 2015 quote, verbatim. Opening entry fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim. Registry confirms F01/02 primary = AEs, no registered secondaries; FDA review treats renal PTC Gb3 (BLISS) as the efficacy surrogate and F20/BALANCE eGFR slope as primary. poc_gate is a drafter call, not a sponsor pre-specification; see rule question."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA review. Non-immune organ silence held; one immune-complex MPGN case (F20) is immune-mediated, consistent with FDA excluding animal immunogenicity. Same is supported."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Jeyakumar 2023 NHP no-toxicity quote verbatim; opening untested entry valid before the 2026 registry posting."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "ClinicalTrials.gov API: SAE 'Transaminase increase' 1/1 in each arm (0.75e12, 1.5e12 vg/kg), 'Myocarditis' 1 in low arm; results first posted 2026-08-06. Quote is a table term, not a sentence. Contra defensible; see rule question on immune AAV hepatitis."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Pacienza 2012 abstract (PMID 22472949): quote verbatim; sibling LV-alpha-gal A/IRES/hCD25 vector so product_in_model false is right; no patient data in 2012, untested/not_measured."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Khan 2021 abstract (PMID 33633114) quote verbatim; model side Huang 2017 (LV/AGA patient CD34+ in NSF mice) ran before FACTs results, supported the CTA, so prospective same, not retro."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Pacienza 2012 abstract: heart/kidney Gb3 quote verbatim; opening untested entry, year 2012 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "NCT03454893 results (posted 2024-01-05): kidney PTC Gb3 outcome typed PRIMARY, mean -3.555 (n=2); quote verbatim from outcome description. Huang 2017 model predates trial start 2018-02, so prospective same."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Huang 2017 abstract (PMID 28603745) quote verbatim on NSF xenograft tox; untested/unsettled at 2017 since FACTs reported no safety until 2021."
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Khan 2021 abstract quote verbatim; NCT03454893 results also state no SAEs related to AVR-RD-01 (conditioning-attributed). Model before patient result, so same not retro."
+  }
+ ],
+ "missing": [
+  "ST-920 (isaralgagene civaparvovec) safety track (gene therapy modality): NCT04046224 results posted 2026-04-14 list no transaminase/hepatic SAEs (SAEs: sepsis, stroke, chest pain, enthesopathy) at doses far above FLT190's; its preclinical mouse/NHP tox (Sangamo; model-side source not located in this check, possibly unpublished) would be a separate model_id whose silence held.",
+  "AVR-RD-01 (voxeralgagene autotemcel) has no safety or dose track: lentiviral HSC product with conditioning, nonclinical mouse studies vs FACTs/FAB-201 patients (Khan 2021, doi 10.1038/s41467-021-21371-5; NCT03454893 results 2024-01-05). Model-side source not verified here.",
+  "FDA BLA 761161 review (tier 2) itself states the Fabry-mouse lipid data 'were unable to provide independent nonclinical confirmation of the clinical results' (primuline TLC nonspecific). This is a comparison_stated regulator source on the gla-ko-mouse track that the draft uses only in confidence_note; it could be its own entry with source_calls_it 'unresolved'.",
+  "Sangamo topline press release (STAAR registrational, positive eGFR slope at 52 weeks; investor.sangamo.com) and PTC acquisition release: tier 5 patient-side outcome data for ST-920 not cited in patient_trials."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Efficacy: when the trial that measured the model's surrogate registered only an AE primary and no secondaries, may the regulator-relied surrogate (renal PTC Gb3) be scored as poc_gate, or must efficacy follow the first trial with an efficacy primary (BALANCE eGFR slope, 2023)? The status would stay same but the year would move from 2019 to 2023.",
+  "Engagement/efficacy: does a regulator's statement that the model readout was nonspecific (lipid by primuline TLC, not Gb3) and could not confirm the clinical result downgrade a drafter-paired 'same' to source_calls_it 'unresolved' or 'partial'?",
+  "Safety: AAV transaminase rises in patients are usually capsid T-cell mediated and rarely reproduced in NHPs. Is NHP silence on immune-mediated AAV hepatitis a harm 'the species could have shown' (contra), or out of scope like CRS in a mouse?",
+  "Dose: a tox margin (NOAEL multiple of MRHD) first made public in the 2023 BLA review but generated before or alongside the 2012 first-in-patient trial: does it count as 'stated before the trial' for margin_stated?",
+  "Dose: when a stated NHP margin was broken in patients 20-40x below the clean dose but NHPs showed no such harm, is the dose entry untested (harm counted in safety) correct even though margin_stated is true and Decision 16 says toxicity at or below the effective exposure is dose contra?"
+ ]
+}

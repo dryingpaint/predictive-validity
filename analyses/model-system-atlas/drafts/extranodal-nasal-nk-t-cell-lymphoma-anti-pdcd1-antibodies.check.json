@@ -1,0 +1,89 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "2 findings, both informational: engagement and dose are empty cells (no model relied on); accepted as the brief's empty-list case, not sent back.",
+ "entries": [
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Kim 2016 Ann Hematol (PMID 27696202; epub 2016-10-03, print 2017). Quote is verbatim in the abstract; 79 biopsies, PD-L1 79.7% tumour cells. Opening untested at 2016 is correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tao 2021 STTT (PMC8548511), NCT03228836, ORR primary endpoint; quote verbatim; results first posted 2020-12-17 (CT.gov API). Paper cites EBV-driven PD-L1 only as rationale, so pairing correct. Tislelizumab cohort 1 stop (IDMC, modest efficacy) missed no prespecified bar; same holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Bachy 2023 Blood Adv (PMC10440460); quote verbatim, continues 'no firm conclusions can be made'. The PD-L1/ORR analysis pools cohorts 1-3 (ENKTL, PTCL, CTCL), so not ENKTL-only either: untested/unsettled stands."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2016,
+   "rule": "Evidence rule 6: each cell opens at model_first_use_year with status untested (proxy allowed).",
+   "note": "Label quote verbatim (761232 lbl, 13.1). Bundled multidiscipline reviews have only TOC text for nonclinical (one 'cynomolgus' hit, Table 7 title). Status untested/no_prediction is fine; the track's only entry should open at 2016, not 2024.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Evidence rule 6: both agree on untested (no_prediction); the track opens at model_first_use_year, so the entry year should be 2016, not the 2024 label date. untested_reason no_prediction already set."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6: track opens untested at model_first_use_year; retrodiction flag per 'A model built or run after the clinic already knew the answer'.",
+   "note": "Xue 2019 OTT (PMC6433108, epub 2019-03-19); quote verbatim in abstract. Full text confirms EL4-GFP in C57BL/6, BioXCell RMP1-14. Untested opening at 2019 stands; retrodiction should be true (see index 5).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2020,
+   "rule": "Retrodiction: a model run after the clinic already knew the answer is retro, never same.",
+   "note": "ORIENT-4 quote verbatim (abstract); results posted 2020-12-17. But Xue's own intro says anti-PD-1 clinical efficacy in NKTL was already 'extensively investigated' (pembrolizumab 2017), and ORIENT-4 enrolled Aug 2017-Feb 2018, before the mouse work.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: Does a non-member same-target drug's public patient result (pembrolizumab, Kwong 2017) make a later model a retrodiction for the member class, given \"only those drugs score\"? No member result was public before Xue 2019."
+  }
+ ],
+ "missing": [
+  "NK/T-cell-line tumour-bearing mouse model treated with anti-PD-1 (Wang/others 2019, Onco Targets Ther, doi:10.2147/OTT.S187280, PMID 30962691): improved survival in vivo, published 2019 before ORIENT-4 results; a candidate efficacy track (product_in_model likely false; antibody identity not checked) that could pair with ORIENT-4 (2020) as same.",
+  "ENKTL cell lines with STAT3-driven PD-L1 expression (Song et al. 2018, Blood) as an in-vitro rationale model; not verified in this check, likely no member drug dosed.",
+  "PD-L1 genomic structural alterations as a responder selector in NKTCL (Lim et al., Leukemia 2020) were tested on pembrolizumab only, outside the member list; noted so the drafter can record why it does not score.",
+  "Sintilimab plus chidamide in r/r ENKTL (STTT 2024, doi:10.1038/s41392-024-01825-0) not reviewed by the draft; check for any biomarker-vs-response comparison on a member drug (combination therapy, may fall outside the class)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "The same system (ENKTL biopsy PD-L1 IHC) appears under two model_ids, enktl-biopsy-pdl1-ihc (class) and enktl-biopsy-pdl1-selector (patient). The brief says one system keeps one slug, but prediction_level differs; should class-level and patient-level uses of one system share a track?",
+  "Is patient tumour tissue IHC (no drug applied) a 'model system' for the efficacy question, or only a rationale? The rules allow ex_vivo patient material but do not say whether undosed tissue qualifies.",
+  "When a model predicted only direction (susceptibility), does a sibling member's trial stopped early by an IDMC for 'modest efficacy' (tislelizumab ORR 31.8%, no prespecified bar) count as contra for that drug, given 'one drug's contra beats another's same'?",
+  "ORIENT-4 interim results appeared as conference abstracts (ASH 2019) before the 2020-12-17 registry posting; do Blood supplement abstracts count as tier 1 for dating?",
+  "ENKTL anti-PD-1: does patient efficacy of a non-member anti-PD-1 (pembrolizumab, Kwong 2017) known before a model was run make that model a retrodiction for the member class (camrelizumab/sintilimab/tislelizumab)? Checker proposed retro for the EL4/RMP1-14 track; the member trial (ORIENT-4) had also completed enrolment before the model was published."
+ ]
+}

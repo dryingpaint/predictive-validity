@@ -1,0 +1,219 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/follicular-lymphoma-ms4a1-directed-depleters.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) quote verbatim in abstract. Note the abstract itself says findings 'are consistent with activity in patients with NHL', so a stated comparison existed in 2008."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Morschhauser 2009 (PMID 19451441, epub 2009-05-18) quote verbatim. Registry exists: NCT00285428 (start 2004-09) and NCT00596804; drafter said not located. Peripheral B-cell depletion matches monkey depletion."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 (PMID 31981978) quote verbatim; FDA review lines ~1977-1981 confirm SC lower Cmax/cytokines, comparable depletion."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hutchings 2021 (PMID 34508654) quote verbatim; 48 mg RP2D, MTD not reached, no grade>=3 CRS. Whether an SC-route claim counts as a 'regimen target' is borderline (see rule questions)."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Li 2022 (PMID 35996883, epub 2022-09-27) quote verbatim; fit to escalation data and published a year after Hutchings 2021 named 48 mg RP2D, though abstract says it 'guided selection of 48 mg'. Retrodiction status is a rule question."
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2024,
+   "rule": "dose: target reached -> same; rule 6 dating = earliest public comparison",
+   "note": "Sinnollareddy 2026 (PMID 42541678) quote verbatim, but it updates a popPK model, not Li's PBPK/PD. Dose scores target reached: FL cohort dosed to 48 mg was public in Linton 2024 (or FDA 2023 E-R plateau), so date 2024.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose table: target reached -> same; reaching 48 mg, not the later plateau analysis (an efficacy matter), scores dose. Rule 6: date to Linton 2024 FL cohort dosed to 48 mg, not Sinnollareddy 2026."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Stein 2004 (PMID 15102696) quote verbatim; abstract adds 'expected that in humans IMMU-106 should be at least as effective as rituximab'."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "efficacy scores the trial's primary endpoint unless a secondary is a pre-specified poc_gate",
+   "note": "Quote verbatim, but registry NCT00285428 primary outcome is 'Safety and tolerance of different dose levels'; ORR was secondary, no poc_gate. Drafter excluded Hutchings 2021 FL ORR for the same reason; apply consistently.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Efficacy scores the trial's primary endpoint: NCT00285428 primary is 'Safety and tolerance of different dose levels', efficacy secondary, no poc_gate. Untested, untested_reason not_measured (rule 5), consistent with Hutchings 2021 handling."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Engelberts 2020 quote verbatim; humanized-mouse models were non-FL lines/PDX (FDA review)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "van der Horst 2021 (PMID 33602901, Feb 2021) quote verbatim; FL n=15, irrespective of prior CD20 mAb."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Li 2022 quote verbatim; FDA review (line ~9124) also describes model built on preclinical plus escalation data."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Linton 2024 (PMID 38889737) quote verbatim; pivotal FL cohort ORR is the primary endpoint. Class-level directional match from non-FL mouse models; acceptable."
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Linton quote; ex-vivo prediction (activity irrespective of prior CD20 mAb) prospective vs pivotal FL cohort."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Linton quote. Model input included escalation FL patients (10 FL, 90% ORR), so prospectivity for the pivotal cohort is arguable; low confidence appropriate."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in FDA BLA 761324 multidisciplinary review (bundle txt line 1978-1979); tier 2 correct; dated to Engelberts 2020."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hutchings 2021 quote verbatim (CRS 59%, all grade 1-2). Monkey CRS prediction held. Linton 2024 FL: CRS 65% G1-2, 2% G3; neutropenia 25% G3-4 consistent with monkey 'reversible hematologic changes'."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shi 2024 (PMC11245993) intro sentence on Daudi nude-mouse regression, equal to obinutuzumab, found verbatim; summary only, no figures or citation. Opening untested at 2019 proxy (first MIL62 trials) is acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2024,
+   "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested should be untested (untested_reason: unsettled)",
+   "note": "ORR quote verbatim, but single-arm MIL62+lenalidomide; paper credits the combination (lenalidomide synergy) and the xenograft tested MIL62 alone in Burkitt Daudi. MIL62 monotherapy FL data (NCT04103905) are unpublished.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: can a single-arm trial of a class drug combined with a non-class active drug (lenalidomide) score efficacy for a monotherapy model, or is it untested/unsettled because the class drug's share is not isolated?"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA BLA 761324 review p.57: ProStorm soluble whole-blood assay (study 32318, non-GLP) quote verbatim. Not reported in Engelberts 2020 (monkey cytokines only), so first public 2023; 2017 opening proxy fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Hutchings 2021 abstract quote verbatim (CRS 59%, grade 1-2). Assay run pre-IND and filed, so prospective, not retro; dated 2023 when assay first public. Mixed B-NHL with FL subset; direction_only magnitude appropriate.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Veltuzumab phase I/II registry records NCT00285428 (start 2004-09, primary: safety/tolerance) and NCT00596804; the draft says the registry record was not located.",
+  "FDA BLA 761324 multidisciplinary review (2023) exposure-response: 'TMDD saturation was observed starting from 48 mg, due to a plateau in tumor killing' with full doses >48 mg not expected to add efficacy. This is an earlier public dose comparison than Sinnollareddy 2026, though in LBCL.",
+  "Goldenberg 2009 (doi:10.1182/blood-2008-07-168146) abstract states mouse/monkey findings 'are consistent with activity in patients with NHL given low intravenous or subcutaneous doses', which makes it a comparison_stated source, possibly a retrodiction.",
+  "MIL62: phase 1b/2 with lenalidomide in R/R FL/MZL (eClinicalMedicine 2024, sciencedirect pii S2589537024002815) and phase 3 NCT04834024 (MIL62+len vs len, PFS primary, status unknown, no results). No MIL62 preclinical model track was searched; any MIL62 xenograft paper would be its own track.",
+  "Imvotamab (IGM-2323): NCT04082936 terminated for 'Strategic Pipeline Prioritization' (not efficacy); phase 1 data only as meeting abstracts (e.g. EHA 2022 P1276, PMC9429641). No efficacy failure to add, but the context note could cite the termination reason.",
+  "MIL62 monotherapy phase I/II NCT04103905 in CD20+ NHL incl. FL/MZL (Shi 2024, eClinicalMedicine doi:10.1016/j.eclinm.2024.102702, reports ORR 'similar to obinutuzumab', FL data unpublished): the monotherapy test of the Daudi xenograft track once published."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does a model's route recommendation (monkey SC vs IV lowers cytokine peaks with equal depletion) count as a 'regimen target' for dose, when humans were never dosed IV for comparison? The draft scores it same; the alternative is untested/no_prediction.",
+  "Is an in-silico PBPK/PD model fit to the same trial's escalation data, published after that trial named the 48 mg RP2D but said to have guided the choice, a retrodiction for dose (retro) and prospective for the later pivotal FL cohort's efficacy?",
+  "When the dose 'same' depends only on the target being reached, does the entry date to when FL patients were dosed to target (Linton 2024) or to when a later analysis confirmed the plateau the model stated (Sinnollareddy 2026)?"
+ ]
+}

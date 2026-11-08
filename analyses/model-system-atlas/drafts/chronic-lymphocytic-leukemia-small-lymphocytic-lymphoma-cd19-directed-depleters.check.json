@@ -1,0 +1,237 @@
+{
+  "draft": "analyses/model-system-atlas/drafts/chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-cd19-directed-depleters.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Awan 2010 (PMID 19965644, epub 2009-12-02) abstract carries the quote verbatim. Opening untested is correct."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Woyach 2014 quote verbatim in abstract. Same holds, but clinical response by exam/labs is not the target's own product: readout_tier should be downstream, not proximal. NCT01161511 registered 2010."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Milone 2009 abstract has the quote (ALL xenograft, epub 2009-04-21). Opening entry fine."
+    },
+    {
+      "cell": "engagement",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Porter 2011 NEJM quote verbatim; >1000-fold expansion and 6-month persistence match the xenograft's persistence prediction. n=1; paired, direction_only fine."
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Fraietta 2016 quote verbatim (epub 2016-01-26). Track is a combination with a non-member BTKi; see rule question."
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Gauthier 2020 quote verbatim; equivalent expansion contradicts predicted better engraftment. Abstract cites preclinical efficacy/CRS rationale, not engraftment, so comparison_stated is arguably false; magnitude 'opposite' should be null/direction_only (no effect, not reversed)."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Quote found verbatim in bundled 761163 MultidisciplineR (line ~2133). Proxy year 2010 (FIH) acceptable."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "'8-9 fold higher than corresponding values in humans' verbatim (line ~2052), in the Applicant's Position; human comparator is the 12 mg/kg label dose, which CLL patients also received without MTD (Woyach 2014). Margin held."
+    },
+    {
+      "cell": "dose",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Xenograft gave no human cell dose; untested/no_prediction is right. Frey 2020 (NCT01747486) found no significant dose effect, consistent with no model dose prediction."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Quote verbatim in Awan 2010 abstract. Tafasitamab CLL phase 1 had safety primary; correct not to score."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "NCT01466153: superiority vs rituximab stated as purpose; ORR 52.8/63.9 vs 59.7%, CMH p=0.4475; results posted 2017-05-31. Ward 2011 abstract confirms CLL ex-vivo ADCC claim. Quote is only the endpoint definition; better quote the superiority purpose."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Opening entry fine, but the track misses a 2019 entry: NCT01747486 (CTL019 CLL) had primary 'CR within 3 months', results posted 2019-02-26 (see missing)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Siddiqi 2023 primary endpoint and null ≤5% confirmed in abstract (epub 2023-06-06). model_src Sommermeyer 2016 is a Raji lymphoma NSG xenograft for defined-composition CAR-T: same system type, acceptable on one model_id."
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Fraietta 2016 closing sentence verbatim."
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": false,
+      "proposed_status": "untested",
+      "proposed_year": 2022,
+      "rule": "Checker 3: same/contra only when the trial tests what the model predicted; Drafter rule 5 untested_reason 'unsettled'",
+      "note": "Gill 2022 CR-at-3-months is a co-primary (verified), but single-arm: the model's distinctive prediction (ibrutinib adds to CAR-T) has no comparator, and Gauthier's non-randomised PFS (38% vs 50%) leans against. Propose untested/unsettled.",
+      "adjudicated_status": "untested",
+      "adjudication_note": "Status table: same needs agreement in direction. Fraietta 2016 predicted ibrutinib enhances CAR-T; Gill 2022 single-arm 44% CR has no CAR-T-alone comparator, so it cannot show that direction. Rule 5: unsettled."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Infection quote verbatim in bundled review (line ~2137)."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "note": "Fever/tremor during dosing verbatim (lines ~1551-1554, 2025). CLL patient side is Woyach 2014 (IRR grade 1-2 most common; G3-4 cytopenias, TLS), not the review's DLBCL data; cite Woyach as patient source. Same/partial fine."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "note": "Immunodeficient mice cannot show CRS/ICANS; untested/no_prediction correct. Quote is weakly related but adequate for an untested entry."
+    },
+    {
+      "cell": "engagement",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Herbst 2010 JPET (PMID 20605905, epub 2010-07-06) abstract has the quote verbatim. NCT00983619 results state B-cell analysis was not required; untested/not_measured holds. class level, 2010 correct."
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Same Herbst 2010 abstract, quote verbatim; abstract closes 'promising new approach for the treatment of B-cell malignancies'. Opening untested entry at first use, 2010, fine."
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "NCT01466153 primary ORR (CLL, randomised vs rituximab+B): 59.7 vs 52.8/63.9%, results posted 2017-05-31; quote verbatim. Prospective, primary endpoint, contra/null defensible; caveat: mouse depleted normal B cells, not CLL."
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Fraietta 2018 Nat Med (PMID 29713085, epub 2018-04-30) abstract quote verbatim. Opening untested at first use 2018; prediction_level patient correct."
+    },
+    {
+      "cell": "efficacy",
+      "index": 10,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "abstract_only",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Quote verbatim in abstract. Signature derived from already-treated CTL019 CLL patients with known response, so retrodiction: retro (not same) is correct; 2018, patient level."
+    }
+  ],
+  "missing": [
+    "Efficacy, cart19-nsg-xenograft track: NCT01747486 CTL019 randomized dose-optimization in R/R CLL, primary 'Number of Patients Achieving Complete Response Within 3 Months', results posted 2019-02-26 (https://clinicaltrials.gov/study/NCT01747486); Frey 2020 JCO doi:10.1200/JCO.19.03237 reports CR 28% (90% CI 16-44%) at 4 weeks. Earliest scored efficacy entry (likely same, partial), dated 2019, not 2023.",
+    "Safety, cll-ibrutinib-cart19-xenograft track: Gauthier 2020 (doi:10.1182/blood.2019002936) cites preclinical data that ibrutinib reduces CRS (Ruella et al., Clin Cancer Res 2017, xenograft; DOI not verified here) and reports lower CRS severity and cytokines with concurrent ibrutinib: a stated safety comparison (likely same) with no entry.",
+    "Antibody arm, inebilizumab: MEDI-551 B-cell depletion in human-CD19 transgenic mice (Herbst et al., JPET 2010; not verified this session) and its cynomolgus toxicology (BLA 761142 pharm/tox, not in bundle) have no engagement/dose/safety track; inebilizumab B-cell depletion in CLL/NMOSD patients would be the comparison."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Is a model of a combination regimen (CD19 CAR-T plus ibrutinib, a non-member BTK inhibitor) in scope for the CD19-depleter class, or does it fall under 'a member drug outside the class'? It decides whether the cll-ibrutinib-cart19-xenograft track exists at all.",
+    "When an incremental prediction (drug X improves class member Y) is followed only by a single-arm combination trial meeting its primary endpoint, is that same (direction) or untested (no comparator)?",
+    "Dose margin_stated: monkey NOAEL existed before FIH but was public only in the 2020 FDA review; does an unpublished pre-trial margin count as 'stated before the trial'?",
+    "For engagement, does clinical response/lymphocyte clearance count as a PD readout for an ex-vivo cytotoxicity model, and at which readout_tier?"
+  ]
+}

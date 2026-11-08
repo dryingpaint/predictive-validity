@@ -1,0 +1,119 @@
+{
+ "tile": "fragile-x-syndrome-grm5-negative-modulators",
+ "searched": [
+  "Draft, check.json missing list and tiles.json spec for the tile",
+  "sources/manifest.csv grep for fenobam, mavoglurant, basimglurant: no FDA/EMA review (no member approved)",
+  "Europe PMC: fragile X + iPSC / patient-derived / organoid / human neurons + mGluR5 NAM or MPEP/CTEP",
+  "Europe PMC: fragile X + lymphocyte / platelet / fibroblast + ERK or mGluR5 + member drugs",
+  "Europe PMC: fragile X + Drosophila / dfmr1 + MPEP or mGluR + clinical/translation; dfmr1 + member drugs",
+  "Europe PMC: fragile X + mGluR5 NAM + chronic tolerance / treatment resistance (Stoppel 2021)",
+  "Europe PMC: fragile X + EEG / ERP / auditory + member drugs",
+  "Europe PMC: fragile X + member drugs + responder / predict response + patient cells",
+  "Europe PMC: McBride 2005 Neuron (PMID 15748850), Berry-Kravis 2023 JCI FXLEARN (PMID 37651202), Erickson 2022 J Clin Psychopharmacol commentary (PMID 35489028)"
+ ],
+ "added_models": [
+  {
+   "model_id": "dfmr1-drosophila",
+   "model": "Drosophila dfmr1 mutant (courtship memory, mushroom body)",
+   "model_kind": "animal",
+   "model_first_use_year": 2005,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2005,
+      "print_year": 2005,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "FMR1 full mutation (fragile X syndrome)",
+      "confidence": "high",
+      "confidence_note": "Abstract-level (Europe PMC). Flies were dosed with non-member mGluR antagonists (MPEP and others), not a member drug.",
+      "judgement": "Separate animal system from the Fmr1 KO mouse; opens at its first published rescue, which explicitly predicts benefit in patients.",
+      "year": 2005,
+      "status": "untested",
+      "note": "mGluR antagonists rescued courtship memory and mushroom body defects in dfmr1 mutant flies; authors predicted patient benefit.",
+      "short": "Fly FXS defects rescued by mGluR block",
+      "src": "https://doi.org/10.1016/j.neuron.2005.01.038",
+      "srcLabel": "McBride 2005",
+      "quote": "They also raise the possibility that compounds having similar effects on metabotropic glutamate receptors may ameliorate cognitive and behavioral defects observed in Fragile X patients."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1016/j.neuron.2005.01.038",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2011,
+      "print_year": 2011,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "ABC-C change vs placebo: fly predicted behavioural/cognitive improvement, patients showed no significant effect",
+      "source_calls_it": "miss",
+      "population": "FMR1 full mutation (fragile X syndrome)",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level. Pairing made by us: the trial papers cite animal models generically, not the fly. NCT00718341 has no posted results. Fly courtship memory has no direct human endpoint, so the match is on direction of behavioural benefit only.",
+      "judgement": "Same patient failures as the mouse efficacy track; scored contra at the first controlled primary-endpoint failure, later member failures kept in patient_trials.",
+      "year": 2011,
+      "status": "contra",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "note": "Mavoglurant missed its ABC-C primary in a 30-patient crossover; later mavoglurant, basimglurant and FXLEARN trials also failed.",
+      "short": "Mavoglurant missed ABC-C primary",
+      "src": "https://doi.org/10.1126/scitranslmed.3001708",
+      "srcLabel": "Jacquemont 2011",
+      "quote": "We detected no significant effects of treatment on the primary outcome measure, the Aberrant Behavior Checklist-Community Edition (ABC-C) score, at day 19 or 20 of treatment.",
+      "patient_trials": [
+       {
+        "nct": "NCT01357239",
+        "registry_date": "2015-05-12",
+        "doi": "https://doi.org/10.1126/scitranslmed.aab4109",
+        "quote": "Neither of the studies achieved the primary efficacy end point of improvement on behavioral symptoms measured by the Aberrant Behavior Checklist-Community Edition using the FXS-specific algorithm (ABC-C(FX)) after 12 weeks of treatment with mavoglurant."
+       },
+       {
+        "nct": "NCT01517698",
+        "registry_date": null,
+        "doi": "https://doi.org/10.1038/npp.2017.177",
+        "quote": "In this phase 2 clinical trial, basimglurant did not demonstrate improvement over placebo."
+       },
+       {
+        "nct": "NCT02920892",
+        "registry_date": "2023-10-10",
+        "doi": "https://doi.org/10.1172/jci171723",
+        "quote": "Despite the large body of evidence supporting use of mGluR5 NAMs in animal models of FXS, this study suggests that this mechanism of action does not translate into benefit for the human FXS population"
+       }
+      ],
+      "reason": "Primary endpoints failed across members"
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Fmr1 KO mouse chronic CTEP paradigm (Michalon 2012 adult chronic rescue; Stoppel 2021 acquired tolerance and juvenile critical-period persistence, doi:10.3389/fpsyt.2021.718953): same Fmr1 KO mouse system the draft tracks as fmr1-ko-mouse-behaviour. Stoppel 2021 would be a retro entry on that track (tolerance reproduces chronic-trial failure), and its juvenile-persistence prediction is contradicted by FXLEARN 2023 (doi:10.1172/jci171723); both belong to the existing track, not a new one.",
+  "Fmr1 KO mouse EEG/auditory ERP biomarkers (e.g. doi:10.1080/17590914.2025.2564628): same mouse system; no member-drug human EEG comparison found.",
+  "Patient-derived iPSC neurons / organoids / lymphoblastoid or fibroblast cells: no study found that used them with a member drug and compared with patient response.",
+  "Human [11C]-ABP688 PET occupancy of mavoglurant (doi:10.1016/j.neuroimage.2021.117785): a human measurement, not a model system; no model-stated occupancy target to pair it with.",
+  "FMR1 promoter methylation as a responder marker: emerged from the 2011 trial itself (not a model) and failed prospectively in 2016; no model system behind it.",
+  "In-silico / QSP dose models, human genetic (GRM5) models, human challenge models: none found for this class in FXS.",
+  "Member-specific models (mavoglurant Levenga 2011, basimglurant/CTEP Roche mouse work): same Fmr1 KO mouse system already tracked."
+ ]
+}

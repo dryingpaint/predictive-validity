@@ -1,0 +1,27 @@
+{
+ "tile": "hepatitis-c-virus-infection-ifnar1-ifnar2-agonists",
+ "searched": [
+  "sources/manifest.csv: all three members (moiety 30009, 30030, 31816) are 'no NDA/BLA'; no FDA/EMA review text exists",
+  "Europe PMC: \"interferon alpha 5\" AND (hepatitis C OR HCV)",
+  "Europe PMC: \"IFN-alpha5\" AND (replicon OR HCV)",
+  "Europe PMC: \"interferon alpha 5\"/IFN-alpha5 AND (mice OR AAV OR liver), 2005-2020",
+  "Europe PMC: Hanferon",
+  "Europe PMC: \"consensus interferon\" AND variant AND (PEG-IFN-SA OR IFN-SA); \"recombinant consensus interferon\" AND variant",
+  "Europe PMC: (peginterferon alfacon-2 OR PEG-IFN-SA OR PEG-CIFN) AND hepatitis; \"alfacon-2\" OR Paiyisheng",
+  "Europe PMC: \"consensus interferon\" AND (pegylated OR PEG) AND (rhesus OR monkey OR replicon OR Huh7)",
+  "Europe PMC: pegylated consensus interferon AND hepatitis C AND (phase III OR SVR), 2015-2026; Ding Y PEG-CIFN; Kawin/Jilin consensus interferon",
+  "Europe PMC: DOI 10.3109/08923970902814111 (Cao 2009, checker lead)",
+  "Firecrawl web: Hanferon interferon hepatitis C",
+  "Firecrawl web: interferon alpha-5 Digna Biotech hepatitis C trial results"
+ ],
+ "added_models": [],
+ "considered_not_added": [
+  "Rhesus monkey PK of pegylated consensus IFN (Cao 2009, doi 10.3109/08923970902814111; and 40 kDa PEG-CIFN rhesus PK, PMID 18985796, 2008): same system as the draft's peg-ifn-sa-monkey(-rat-pk) tracks, not a new track; if this PEG-CIFN is PEG-IFN-SA those tracks' model_first_use_year would move to 2008/2009 (identity of the conjugate not verified from abstracts)",
+  "HCV replicon / HCV-2a-infected Huh7 cells treated with consensus IFN (Bhattacharya-type comparison, PMID 19043919, 2008): drug was CIFN alfacon-1 (Infergen), outside the member list; no PEG-IFN-SA or IFN-alpha5 replicon data found",
+  "Patient PBMC / liver IFN-alpha subtype expression (Castelruiz 1999 doi 10.1002/hep.510290625; Larrea 2001 doi 10.1046/j.1365-2893.2001.00273.x): human observational rationale for IFN-alpha5 (subtype deficit in HCV liver); made no checkable prediction of drug response and the IFN-alpha5 trial (NCT01121731) never reported",
+  "Ex vivo patient PBMC Th1/Th2 response to IFN-alpha subtypes incl. IFN-alpha5 (Ariyasu 2005, PMID 15926860): ex vivo patient cells, but no comparison with dosed-patient outcomes; IFN-alpha5 trial unreported",
+  "Hanferon: no preclinical model or patient data found in Europe PMC or web search",
+  "Chimeric-liver (uPA/SCID) mouse, HCV-infected chimpanzee, viral-kinetic / QSP dose models, PDX or patient-organoid uses for any member: none found",
+  "PEG-IFN-SA China NMPA approval 2018 and phase 3 NCT01903278 (checker 'missing' lead): patient-side outcome for the draft's existing monkey track, not a new model system; left to the draft's revision"
+ ]
+}

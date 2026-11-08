@@ -1,0 +1,232 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/duchenne-muscular-dystrophy-dmd.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "lint": "0 findings",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6 (opening entry at model_first_use_year)",
+   "note": "Quote found in bundled 206488 PharmR (Alter 2006 summary; '10- 20%' hyphenation only). Opening untested correct; surrogate PMO so product_in_model false is right."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Status 'same' (direction agrees; magnitude recorded)",
+   "note": "Cirak 2011 abstract verbatim; western blot 7.7-18% in three best responders vs mdx up to 50%. Same holds. FDA's 2016 0.93% (wk180) would push class-wide magnitude to off_by_>5x; consider a 2016 magnitude note."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Evidence rule 6",
+   "note": "Arechavala-Gomeza 2007 abstract verbatim. Same source also used hDMD transgenic mice, a separate system folded into this track. model_filed should be true: 211970 PharmR describes patient-myoblast sequence screening for golodirsen."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Status 'same'; rule 1 pairing (comparison_stated false)",
+   "note": "Cirak 2011 abstract confirms exon 51 skipping in all cohorts with the PMO selected in the 2007 study for the UK trial. direction_only reasonable."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Dose table row 1 / untested_reason no_prediction",
+   "note": "Quote verbatim in 206488 PharmR. mdx surrogate gave no human exposure target. But the GLP tox track (rodent/NHP) stated NOAEL margins that held; see missing."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6",
+   "note": "Quote verbatim in 206488 PharmR (Wu 2011 summary, dated to 2006 as opening proxy). Fine."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Efficacy: primary endpoint governs; outcome_tested for later outcome trials",
+   "note": "Mendell 2013 abstract verbatim; dystrophin-positive fibres were the 201 primary. Year 2013 (epub) precedes registry 2015-11-09. outcome_tested negative correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Status 'contra'; tier 5 with trial_unreported, model_src tier 2",
+   "note": "Press release (2024-05-27) quote verbatim; registry NCT04060199 primary is TTSTAND velocity, results posted 2024-12-11 (tier 3, no analysis text) so year 2024 stands. ESSENCE P=0.309 confirmed (Sarepta topline), but pooled golodirsen+casimersen."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Evidence rule 6",
+   "note": "Abstract verbatim. The quote is generic (validation path), but it is fine for an untested opening entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Status 'same' on surrogate primary; outcome_tested negative",
+   "note": "Same Mendell 2013 quote; pairing to the patient-cell-selected PMO is right. Status follows the surrogate per brief."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Status 'same'; patient_trials change no status",
+   "note": "Clemens 2020 abstract verbatim (WB dystrophin was a primary). DOI 10.1016/j.omtn.2018.09.017 resolves to Watanabe NS-065/NCNP-01 paper. Frank 2020 golodirsen quote verbatim."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Evidence rule 6 / safety stated prediction",
+   "note": "Quote verbatim. But 'minimal' undersells it: the review calls renal tubule degeneration/necrosis the primary toxicity in all species, with AUC margins of 6-20x at NOAEL. That margin held in patients (see rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Safety: predicted harm absent in patients is contra, magnitude opposite",
+   "note": "Vyondys 53 label 2019 quote verbatim. 211970 PharmR confirms severe/irreversible renal damage 'with only a small safety margin based on exposure'. Contra under the brief, though the clinical database is small."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Safety contra; strengthens",
+   "note": "212154 SumR quote verbatim. Same direction as golodirsen."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opening entry at model_first_use_year",
+   "note": "PubMed 17767400 abstract has the quote verbatim; FDA 206488 PharmR confirms 22.1% hDMD gastrocnemius skipping. Prospective (2007, before Study 33 began Oct 2007). Class level correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "same; paired comparison_stated false",
+   "note": "Kinali 2009 (PMID 19713152, epub Aug 2009) interpretation sentence verbatim. hDMD model published 2007, before trial, so prospective; IM route matches. Registry results 2019-12-05 confirmed; year 2009 from epub correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "Rule 6 opening entry; untested_reason only on latest untested",
+   "note": "206488 PharmR quote verbatim; study 4658-GLP-0901 lots dated May 7, 2009. Results unpublished until 2016 review. Should carry retrodiction true (run after Study 33 completed Dec 2008).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "A model built or run after the clinic already knew the answer is a retrodiction; status retro, never same",
+   "note": "MedR quote verbatim. Monkey GLP-0901 started ~May 2009, after Study 33 IM dose response (primary completion Dec 2008, NCT00159250). Comparison made by FDA in 2016: retrodiction, so retro with retrodiction true. Routes also differ (IV/SC vs IM).",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: PharmR shows GLP-0901 test article received May 7, 2009, after Study 33 dosing completed (Dec 2008); FDA's 2016 side-by-side reproduces a known patient result, so retro (retrodiction true), not same."
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Rule 6 opening entry; prediction_level patient",
+   "note": "Kinali 2009 METHODS sentence verbatim in abstract. Fibroblast response used to select patients before dosing: prospective, patient-level, product in model.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "same + source_calls_it partial for partial agreement",
+   "note": "FINDINGS sentence verbatim. All five fibroblast-selected boys at 0.9 mg responded; no screen-negative arm, so partial is right. Discrimination untested; could be noted, status stands.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "Dose cell has no track for rodent/cynomolgus GLP toxicology (rodent-nhp-glp-tox), which stated NOAEL AUC margins for eteplirsen (20x monkey, 6x juvenile rat; 206488 PharmR) and a small margin for golodirsen (211970 PharmR). Patients were dosed at 30 mg/kg without renal toxicity, so this is a candidate dose 'same' with margin_stated true, provided the margin was stated before dosing.",
+  "Vesleteplirsen (member, PPMO): MOMENTUM stopped for persistent hypomagnesemia and declining kidney function (Sarepta community letter 'Update SRP-5051 Program', 2024; AJMC 'Sarepta Halts Development'). Its nonclinical renal and electrolyte predictions were not found. The safety cell should carry it at least as an unsettled/unpublished note, and checking for a public nonclinical source is worthwhile, because this patient renal harm cuts against the 'kidney toxicity absent in patients' contra.",
+  "hDMD transgenic mouse (full human DMD locus), used in Arechavala-Gomeza 2007 (doi:10.1089/hum.2006.061) to pick the human exon 51 sequence. It is a separate system from patient myoblasts and could be its own engagement track.",
+  "PRO044 and PRO045 (members, 2'OMePS): patient exon-skipping and dystrophin data exist (PRO044 NCT01037309; PRO045 NCT01826474), and BioMarin discontinued them in 2016. The draft has no entry for these members; engagement pairings were not verified here.",
+  "Cynomolgus monkey exon 53 skipping for viltolarsen (Watanabe 2018, doi:10.1016/j.omtn.2018.09.017) is a possible further engagement track; not verified in full text."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "mdx efficacy contra (2024): in mdx, function improved only above about 10% dystrophin (Wu 2011: none at 2.6%), and patients reached about 1-6%. Is RACER53/ESSENCE a contra, or a result under conditions the model never tested (untested)? The trial sources do not cite dystrophin level as the cause (NS Pharma cites age, duration and steroids), so contra stands under the literal rule.",
+  "ESSENCE (listed in patient_trials) pooled golodirsen with casimersen, which is not in the class member list. Is a pooled primary admissible as a patient datum for the member drug?",
+  "Eteplirsen's GLP tox gave kidney NOAEL margins that held in patients. Does that belong in safety (2016 'same' before golodirsen's 2019 contra) or only in dose under Decision 16? The brief's 'count the harm once' does not settle it when the harm never appeared.",
+  "Do the class members' renal-monitoring label warnings, plus vesleteplirsen's patient kidney decline on the same PMO backbone with a peptide, make the 'renal toxicity absent' contra 'other' (same platform showed the harm), or is PPMO a different platform?"
+ ]
+}

@@ -1,0 +1,163 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/sjogren-syndrome-btk-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Angst 2020 J Med Chem (PMID 32083858, epub 2020-03-04). Quote verbatim in abstract. Opening untested at first public use is correct."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kaul 2021 CTS (PMC8504815, epub 2021-04-09); quote verbatim. Blood BTK occupancy in healthy volunteers is the rat system's readout; direct tier, paired. Fine."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gillooly 2017 PLoS One (PMC5524405, epub 2017-07-24); quote verbatim in abstract. Note the model_id lumps mouse CIA/CAIA with human in-vitro B-cell assays (see rule question)."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Lee 2017 EJCP (PMC5423977, epub 2017-03-06, before Gillooly's July 2017 paper); quote verbatim. CD69 matches Gillooly's co-stimulatory-molecule readout; year 2017 correct since both public that year. Low confidence appropriate."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Same Angst 2020 abstract quote; opening untested is fine, but the abstract states only a rat dose for 90% occupancy, not a human exposure/occupancy target."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2021,
+   "rule": "dose: a target scores on the track of the model system that stated it; same on a target the model never stated (the drafter's reading) is not allowed; untested_reason no_prediction",
+   "note": "Kaul quote verbatim, but the rat source states an EC90 dose in rats, not that >=90% occupancy is the efficacious target; Kaul full text never cites a preclinical occupancy target. 'Target' is the drafter's inference. Untested (no_prediction) unless J Med Chem full text states one.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose rule: a target scores only if the model system stated it. Angst 2020 gives a rat occupancy EC90 in mg/kg, not a human exposure/occupancy target; Kaul never cites one. Drafter's inference; rule 5 no_prediction."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Meng 2021 CPT (PMC9298258, epub 2021-10-27); quote verbatim. Price 2022 confirms 40 mg tirabrutinib; no occupancy reported in Sjogren patients. Untested/not_measured fine; arguably it is human-fit, not preclinical."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gillooly quote verbatim. NCT02843659 confirmed TERMINATED, 'Inability to meet protocol objectives', results posted 2018-10-04. Untested/unsettled correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Opening untested for the rat CIA track at 2020; quote verbatim in abstract, which also names the Sjogren phase 2."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dorner ARD (PMC10894844); primary endpoint ESSDAI wk24 met, quote verbatim. NCT04035668 results posted 2022-12-20 (registry status TERMINATED, sponsor's decision; results also at ACR Nov 2022). Same/direction_only acceptable given cross-disease model (rule question)."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote found verbatim in bundled NDA 218436 integrated review. 2016 proxy and untested/unpublished are fine."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label quote verbatim (bundle). Same, imported, 2025 correct as tox was unpublished until then. imported_from MONDO:0005492 resolves to 'urticaria', not chronic spontaneous urticaria specifically; minor. Sjogren 10.2% vs 8.3% not re-checked."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "Admissible sources, in tiers: tier 1 is a peer-reviewed paper with DOI or PMID",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "acrabstracts.org page is Yoshizawa et al., ACR/ARHP 2012 meeting abstract; quote verbatim (1/3/10 mg/kg CIA scores 10.9/5.3/2.3 vs 13). No DOI/PMID (Europe PMC, Crossref), so not tier 1; status and year unchanged, source_tier mis-stated.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Opening entry at model_first_use_year (rule 6), status untested either way. ACR 2012 abstract has no DOI/PMID, so not tier 1 (rule 2); source_tier is mis-stated but the status stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2020,
+   "rule": "A paired comparison names its model side in model_src with model_src_tier 1-3; tier 1 requires DOI or PMID",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Price 2022 (PMID 35377447) quote verbatim; NCT03100942 results posted 2020-01-22, start 2017-05-01, so prospective, not retro. Ariza 2019 J Mol Sci (iMedPub) has no DOI/PMID; no admissible model source exists, so contra cannot stand. Contra if adjudicator admits it.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 2: model_src tier 1 needs DOI or PMID; Ariza 2019 (iMedPub) and the ACR abstract have none (Europe PMC, Crossref checked). No admissible model side, so no admissible comparison: untested, reason unpublished (no admissible publication)."
+  }
+ ],
+ "missing": [
+  "Tirabrutinib mouse CIA track: Ariza Y et al. 2019, J Mol Sci 3:2 (iMedPub, published 2019-03-11; https://www.imedpub.com/articles/brutons-tyrosine-kinase-btk-inhibitor-tirabrutinib-suppresses-osteoclastogenesis-and-inflammation-in-a-mouse-collageninduced-arthr.php?aid=24145) reports dose-dependent CIA efficacy and warrants clinical testing in inflammatory disease; paired with NCT03100942 (results 2020-01-22; Price 2022 doi:10.1093/rheumatology/keac167, primary not met, 34.7% vs 26.7%, P=0.33) this is an efficacy contra 2020 on a tirabrutinib-CIA track. Earlier ONO-4059 CIA ACR abstract also exists (acrabstracts.org). The draft says no tirabrutinib preclinical model was found.",
+  "Same tirabrutinib paper: TNP-Ficoll mouse study showed once-daily dosing did not give continuous B-cell BTK inhibition (twice daily needed); the Sjogren trial dosed 40 mg once daily. Possible dose-regimen statement on the tirabrutinib track (likely untested, no human target stated).",
+  "BMS-986142 safety: RA phase 2 (NCT02638948; PMID 38251590) discontinued the 350 mg arm for elevated liver enzymes; no safety track for BMS-986142 (imported from RA; nonclinical tox likely unpublished -> untested/unpublished, or contra if tox was silent)."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "Does an arthritis model (rat or mouse CIA) relied on for a Sjogren trial count as a disease model scored as 'animal', or is this 'the class went straight to patients on another indication's data' (empty cell / cross_indication)?",
+  "Is a tirabrutinib CIA paper in an iMedPub journal with no DOI/PMID found admissible as model_src (tier 1 requires DOI or PMID)?",
+  "Can one model_id cover both mouse CIA/CAIA and human in-vitro B-cell assays from the same pharmacology paper, or are they two systems?",
+  "Does a rat occupancy EC90 (a rat dose) count as a stated occupancy target for the human dose cell?",
+  "Is an iMedPub (J Mol Sci) paper or an ACR meeting abstract, neither with DOI/PMID, admissible as the model side of a pairing? If yes, efficacy 5 stays contra (2020); if no, the whole mouse-cia-tirabrutinib track has no admissible model source."
+ ]
+}

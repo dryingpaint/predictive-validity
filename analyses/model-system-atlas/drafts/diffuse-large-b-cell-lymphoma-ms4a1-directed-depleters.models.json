@@ -1,0 +1,100 @@
+{
+ "tile": "diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters",
+ "searched": [
+  "Draft, check.json missing list (mosunetuzumab Sun 2015 cyno/xenograft, mosunetuzumab cyno toxicology, imvotamab preclinical vs NCT04082936, EPCORE DLBCL-1 PFS) and tiles.json members (epcoritamab, imvotamab, mosunetuzumab, mt-3724, zuberitamab)",
+  "Source bundle manifest: DLBCL rows give BLA 761263 (mosunetuzumab) and 761324 (epcoritamab) multidiscipline reviews; grep for primary tumour cells / patient-derived / ex vivo / lymph node biopsy found no ex-vivo patient-sample study filed",
+  "Firecrawl search: imvotamab IGM-2323 phase 1 DLBCL results response rate (ASH 2021 abstract: DLBCL ORR ~31%, CR 50% at 100 mg; development later halted)",
+  "Europe PMC: (epcoritamab OR mosunetuzumab OR DuoBody-CD3xCD20 OR CD20-TDB) AND (CD20 expression OR ex vivo OR patient-derived)",
+  "Europe PMC: (epcoritamab OR mosunetuzumab OR glofitamab) AND CD20 expression AND response AND baseline/biomarker (patient-level CD20-density prediction)",
+  "Europe PMC: van der Horst epcoritamab primary patient tumour cells (PMID 33602901) and PMC7892878 full text for its clinical comparison and timing",
+  "Europe PMC: MT-3724 OR zuberitamab OR HS006 (preclinical models vs patient results)",
+  "Europe PMC abstracts PMID 36548927 (Thieblemont 2023) and 34508654 (Hutchings 2021) for subgroup and anti-CD20-refractory response statements"
+ ],
+ "added_models": [
+  {
+   "model_id": "exvivo-bnhl-primary-cells-epcoritamab",
+   "model": "Ex vivo cytotoxicity against primary lymph-node B-NHL tumour cells (epcoritamab)",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2021,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2021,
+      "status": "untested",
+      "note": "Epcoritamab lysed primary DLBCL tumour cells from lymph-node biopsies (median 65%), including from patients relapsed or refractory to anti-CD20 therapy.",
+      "short": "Kills primary DLBCL cells ex vivo",
+      "src": "https://doi.org/10.1038/s41408-021-00430-6",
+      "srcLabel": "van der Horst 2021",
+      "quote": "In the presence of T-cells from a healthy donor, epcoritamab demonstrated potent activity against primary tumor cells, irrespective of prior treatments, including CD20 mAbs.",
+      "confidence": "high",
+      "confidence_note": "Quote verbatim in the abstract (PMID 33602901); full text read on PMC7892878.",
+      "judgement": "Opening entry at publication; a system distinct from the draft's humanized-mouse xenografts (patients' own tumour cells, healthy-donor or autologous T cells, no animal). retrodiction flag is carried on the scored entry only.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected (relapsed/refractory CD20+ large B-cell lymphoma)",
+      "endpoint_role": null
+     },
+     {
+      "year": 2021,
+      "status": "retro",
+      "note": "The authors set the ex vivo killing beside the ongoing first-in-human trial's early responses in R/R DLBCL, which were already public when the work was published.",
+      "short": "Ex vivo killing matches known responses",
+      "src": "https://doi.org/10.1038/s41408-021-00430-6",
+      "srcLabel": "van der Horst 2021",
+      "quote": "These data support the single-agent activity of epcoritamab demonstrated in the ongoing first in human trial",
+      "reason": "Run after trial responses were known",
+      "confidence": "medium",
+      "confidence_note": "Full text (PMC7892878) cites the phase I/II trial's preliminary DLBCL/FL efficacy (ref 14, NCT03625037) as already reported; not found in BLA 761324 review.",
+      "judgement": "Retrodiction: the paper cites the trial's encouraging DLBCL responses, so the clinic knew the answer first; it reproduced activity, hence retro, not same. comparison_stated true because the paper itself sets model and trial side by side.",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/s41408-021-00430-6",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2021,
+      "print_year": 2021,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": true,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "ex vivo lysis of primary DLBCL cells vs objective responses in R/R DLBCL",
+      "source_calls_it": "match",
+      "population": "Unselected (relapsed/refractory CD20+ large B-cell lymphoma)",
+      "endpoint_role": "primary",
+      "outcome_tested": null
+     }
+    ]
+   }
+  }
+ ],
+ "considered_not_added": [
+  "Mosunetuzumab (CD20-TDB) cynomolgus B-cell depletion and humanized/xenograft tumour killing (Sun 2015, doi:10.1126/scitranslmed.aaa4802) vs Budde 2022: same systems as the draft's cyno and humanized-mouse tracks; patient results (B-cell depletion, aNHL ORR 34.9%) agree in direction, so no new track and no status change. Adjudicator may append them as strengthening entries on those tracks.",
+  "Mosunetuzumab cynomolgus toxicology (BLA 761263: CRS-like signs, infections in 26-week study) vs patient CRS/infections: same system as the draft's cyno safety track; agrees in direction, no new track.",
+  "Imvotamab (IgM CD20xCD3) cyno and humanized-mouse xenograft data (Cancer Res 2022 suppl abstract 4179) vs NCT04082936: same systems as existing tracks; ASH 2021 abstract reported DLBCL ORR ~31% (activity, same direction). Development halted for business/portfolio reasons; no efficacy contradiction found. Not verified beyond press/abstract level.",
+  "Ex vivo patient-level biomarkers from van der Horst 2021 (HVEM inverse association, lymph-node effector:target ratio): no patient trial found comparing these with clinical response; not added as a patient-level track.",
+  "CD20 antigen-density prediction (cell-line killing vs CD20 level) vs patient CD20 expression and response: odronextamab data (outside the member list) show CR with low CD20; no member-drug comparison found in the searches run.",
+  "MT-3724 xenograft/nonclinical models: no published preclinical efficacy paper found (Europe PMC); draft already carries its unpublished toxicology track.",
+  "Zuberitamab (HS006) preclinical ADCC/CDC and xenograft vs rituximab: no published preclinical paper found; phase 3 Hi-CHOP vs R-CHOP (doi:10.1136/jitc-2024-008895) has no model side to pair.",
+  "Mosunetuzumab human PBMC EC20 assay and QSP CRS model: already tracked in the draft."
+ ]
+}

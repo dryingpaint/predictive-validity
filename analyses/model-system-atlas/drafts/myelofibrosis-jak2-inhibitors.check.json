@@ -1,0 +1,181 @@
+{
+ "draft": "analyses/model-system-atlas/drafts/myelofibrosis-jak2-inhibitors.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "DOI resolves to Wernig 2008 Cancer Cell (PMID 18394554); quote is a verbatim truncation of the abstract's last sentence. Opening untested at 2008 is correct; FDA review restates the 60/120 mg/kg STAT3/5 blockade."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Pardanani 2011 JCO (PMID 21220608) abstract quote verbatim; NCT00631462 has no results. Same/direction_only fair. Caveat: NS-018 phase 1 reported allele burden 'largely unchanged' and BMS-911543 mice showed no allele fall; neither changes this fedratinib entry."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wernig abstract. No human exposure target or margin from the mouse; FDA review shows FIH dose set by escalation (MTD 680 mg/d). untested/no_prediction correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wernig 2008 abstract. Model is the one the FDA review cites for efficacy (lines ~314-319 of the CDTL review). Opening untested 2008 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Pardanani 2015 JAMA Oncol (PMID 26181658) quote verbatim; primary endpoint SVR35. NCT01437787 results first posted 2026-08-11, NCT01423851 2022-03-09, NCT01236352 2019-05-21 all confirmed. Pairing; same direction_only supported."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "note": "Bundle text line 327 has the quote verbatim, but the next sentence reads 'Gait abnormalities were also observed in high-dose animals' - worth recording in the note. IND October 2007 confirmed (line 125); target organs marrow/liver (rat), many in dog."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote verbatim in Wernig 2008 abstract. untested opening entry on the mouse track is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Verstovsek 2017 Leukemia (PMID 27479177, epub 2016-08) quote verbatim; Nakaya 2014 BCJ model quote verbatim and explicitly predicts 'reduced hematologic adverse effects'. Contra supported, though 'reduced' vs other JAK2i could be read as partial."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Quote verbatim in bundle (line 2624); review also gives the 0.3-fold AUC rat thiamine study and ThTr inhibition. Contra on tox track 2019 supported; rat gait abnormalities at high dose is a weak CNS hint, not encephalopathy."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Geron 2008 Cancer Cell abstract (PMID 18394555) carries the quote verbatim; STAT5 inhibition in PV progenitors, no human pSTAT then. Opening untested at first use 2008, class level, correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Label 2019 line 570 verbatim. Model (2008) preceded patient readout, so same not retro; direction_only for pSTAT5 vs pSTAT3 is right. Pardanani 2011 JCO full text may report pSTAT3 earlier (year 2011); not retrieved.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Quote is the last sentence of the Geron 2008 abstract, verbatim; prospective (phase 1 results 2011), untested 2008 correct. Cells were PV progenitors, as the note says.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "JAKARTA JAMA Oncol 2015 abstract (PMID 26181658) verbatim; primary spleen endpoint met, model predated it, same is right. Phase 1 (Pardanani 2011) had 39% spleen response earlier, but phase 3 primary endpoint is the right gate.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Zhang 2014 DMD abstract (PMID 25063672) verbatim; opens citing the terminated program for WE, so built post hoc. Opening untested 2014 acceptable.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Abstract verbatim; potent Caco-2/hTHTR2 inhibition reproduced the known WE mechanism after the clinic knew it: retrodiction true, status retro (not same), 2014 correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA multidiscipline review (bundle txt l.2776-2778) verbatim; study OPT-2017-097 run 'because of claims that cases of Wernicke's encephalopathy occurred'. Year 2017 is a study-code proxy; untested opening fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Review l.2628/2779 verbatim. Post-hoc assay showed only weak ThTr inhibition at ~100x Cmax, failing to reproduce WE; failed retrodiction is contra under the brief. Low confidence apt given disputed causality and Zhang 2014 disagreement.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "In-vitro thiamine-transport model (Caco-2 cells, recombinant hTHTR2): Zhang et al. 2014 Drug Metab Dispos, doi:10.1124/dmd.114.058883 (PMID 25063672) showed fedratinib inhibits thiamine uptake after the WE cases - a safety track, retrodiction: true, status retro (2014); the FDA review restates the ThTr1/ThTr2 assay (24.5%/44.2% at 300 uM).",
+  "Patient-derived JAK2V617F+ progenitor colony and xenograft model: Geron et al. 2008 Cancer Cell, doi:10.1016/j.ccr.2008.02.017 (PMID 18394555), TG101348 inhibited patient progenitor colonies and engraftment - an ex_vivo efficacy/engagement track (PV-derived cells) with no entry; BMS-911543 also inhibited CD34+ cells from JAK2V617F patients (cited in Pomicter 2015).",
+  "BMS-911543 on the same JAK2V617F BMT mouse track: Pomicter et al. 2015 Exp Hematol, doi:10.1016/j.exphem.2015.03.006 (PMID 25912019) found 'limited activity', no RBC effect and no allele-burden fall; NCT01236352 lists IWG best overall response as a PRIMARY outcome (results posted 2019-05-21), and Tefferi 2023 BCJ doi:10.1038/s41408-022-00780-9 reports 62% spleen response in 31 Mayo BMS-911543 patients. The draft's 'not scored/unsettled' needs an explicit entry or note.",
+  "BMS-911543 on JAK2V617F+ patient CD34+ progenitors (Purandare et al. 2012 Leukemia 26:280, cited by Pomicter 2015; DOI not verified): a member drug's run on the same ex-vivo progenitor system, could be an entry on track jak2v617f-patient-progenitor-colony; its trial outcome is a business stop."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "BMS-911543: the mouse predicted limited activity (Pomicter 2015); NCT01236352 has IWG best overall response as a co-primary (3 PR/42 per draft) while a Mayo cohort reports 62% spleen response. Is this neg/same (limited model, limited IWG response, program stopped for business) or contra (patients' spleens responded) or unsettled because the stop was a business decision?",
+  "Fedratinib (Wernig, Gilliland lab) and NS-018 (Nakaya, Nippon Shinyaku) and BMS-911543 (Pomicter) used separately built JAK2V617F retroviral BMT mice; does 'one system' mean one model type (one model_id, as drafted) or one lab's system?",
+  "Should the rat/dog toxicology track carry a dose-cell entry (untested, unpublished) since its data set the FIH start but were public only in 2019, or is the dose cell correctly limited to the mouse track?",
+  "Safety contra for Wernicke's: the post-hoc rat thiamine study reached only 0.3x human AUC, and rodent chow is thiamine-replete - is WE a harm 'the species could have shown' at the exposures the tox package used?"
+ ]
+}
