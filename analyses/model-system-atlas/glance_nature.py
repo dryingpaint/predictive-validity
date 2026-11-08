@@ -39,8 +39,8 @@ STATUS = {"same": ("#3DBB7A", "Matched"), "neg": ("#2A7BD0", "Matched, incl. a k
           "other": ("#CF9A12", "Matched on the platform only"), "contra": ("#C9362B", "Contradicted"),
           "retro": ("#E07FC0", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
 # why a never-compared cell was never compared (drafts/DRAFTER_BRIEF.md rule 5), on the cell's second line
-UNTESTED_REASON = {"no_prediction": "Model gave nothing to check in people", "not_measured": "Trials never measured its readout",
-                   "unpublished": "Model data unpublished", "unsettled": "Patient result unreported or inconclusive"}
+UNTESTED_REASON = {"no_prediction": "No checkable prediction", "not_measured": "Not measured in patients",
+                   "unpublished": "Model data unpublished", "unsettled": "Patient result unclear"}
 HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
 
 
