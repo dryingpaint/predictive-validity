@@ -607,7 +607,7 @@
   "mechanism_key": "HCV NS5A|inhibitor",
   "mechanism": "HCV NS5A inhibitors",
   "class_programs": 10,
-  "class_share": 0.192,
+  "class_share": 0.143,
   "modality_groups": [
    "small molecule"
   ],
@@ -634,7 +634,7 @@
   "mechanism_key": "HCV NS5B (non-nucleoside)|inhibitor",
   "mechanism": "HCV NS5B (non-nucleoside) inhibitors",
   "class_programs": 10,
-  "class_share": 0.192,
+  "class_share": 0.143,
   "modality_groups": [
    "small molecule"
   ],
@@ -661,7 +661,7 @@
   "mechanism_key": "HCV NS5B (nucleotide)|inhibitor",
   "mechanism": "HCV NS5B (nucleotide) inhibitors",
   "class_programs": 7,
-  "class_share": 0.135,
+  "class_share": 0.1,
   "modality_groups": [
    "small molecule"
   ],
@@ -2138,26 +2138,6 @@
   "order": 131
  },
  {
-  "slug": "chronic-hepatitis-c-virus-infection-ifnar1-ifnar2-agonists",
-  "area": "infectious_disease",
-  "disease": "chronic hepatitis C virus infection",
-  "mondo_id": "MONDO:0005354",
-  "mechanism_key": "IFNAR1/IFNAR2|agonist",
-  "mechanism": "IFNAR1/IFNAR2 agonists",
-  "class_programs": 3,
-  "class_share": 0.167,
-  "modality_groups": [
-   "protein"
-  ],
-  "members": [
-   "Hanferon",
-   "PEG-IFN-SA",
-   "interferon alfa-5"
-  ],
-  "furthest_phase": 3,
-  "order": 132
- },
- {
   "slug": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors",
   "area": "oncology",
   "disease": "chronic lymphocytic leukemia/small lymphocytic lymphoma",
@@ -2558,7 +2538,7 @@
   "mechanism_key": "HCV NS3/4A protease|inhibitor",
   "mechanism": "HCV NS3/4A protease inhibitors",
   "class_programs": 13,
-  "class_share": 0.25,
+  "class_share": 0.186,
   "modality_groups": [
    "small molecule"
   ],
@@ -3559,5 +3539,25 @@
   ],
   "furthest_phase": 3,
   "order": 196
+ },
+ {
+  "slug": "hepatitis-c-virus-infection-ifnar1-ifnar2-agonists",
+  "area": "infectious_disease",
+  "disease": "hepatitis C virus infection",
+  "mondo_id": "MONDO:0005231",
+  "mechanism_key": "IFNAR1/IFNAR2|agonist",
+  "mechanism": "IFNAR1/IFNAR2 agonists",
+  "class_programs": 3,
+  "class_share": 0.043,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "Hanferon",
+   "PEG-IFN-SA",
+   "interferon alfa-5"
+  ],
+  "furthest_phase": 3,
+  "order": 197
  }
 ]

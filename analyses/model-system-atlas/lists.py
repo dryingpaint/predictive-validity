@@ -51,6 +51,7 @@ MERGE = {
     "MONDO:0004784": "MONDO:0004979",  # allergic asthma -> asthma
     "MONDO:0005344": "MONDO:0005366",  # hepatitis B virus infection -> chronic hepatitis B virus infection
     "MONDO:0005041": "MONDO:0005338",  # glaucoma -> open-angle glaucoma
+    "MONDO:0005354": "MONDO:0005231",  # chronic hepatitis C virus infection -> hepatitis C virus infection
 }
 # dropped outright (issue #76): a mapping error and supportive-care conditions
 DROP = {

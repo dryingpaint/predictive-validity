@@ -853,24 +853,23 @@ infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,SLC10A1|
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR2;TLR9|agonist,TLR2;TLR9 agonists,1,0.031,peptide,,3,0.42,thymalfasin,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR8|agonist,TLR8 agonists,1,0.031,small molecule,,2,0.42,selgantolimod,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.031,antibody,selective,2,0.42,serplulimab,False
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,IFNAR1/IFNAR2|agonist,IFNAR1/IFNAR2 agonists,3,0.167,protein,selective,3,0.17,Hanferon; PEG-IFN-SA; interferon alfa-5,True
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,ADORA3|agonist,ADORA3 agonists,1,0.056,small molecule,,2,0.17,namodenoson,False
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,CD3E|other,CD3E,1,0.056,antibody,,2,0.17,anti-CD3 monoclonal antibody,False
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,PPIA|inhibitor,PPIA inhibitors,1,0.056,small molecule,,2,0.17,9-(n-methyl-l-isoleucine)-cyclosporin a,False
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,DLL1 (PD-1 claimed) (off-class)|binder_neutralizer,anti-DLL1 (PD-1 claimed) (off-class) antibodies,1,0.056,antibody,off-class,2,0.17,pidilizumab,False
 infectious_disease,MONDO:0001209,common wart,7,PPP2CA|inhibitor,PPP2CA inhibitors,1,0.143,small molecule,,3,0.6,cantharidin,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS3/4A protease|inhibitor,HCV NS3/4A protease inhibitors,13,0.25,small molecule,selective,4,0.2,asunaprevir; danoprevir; faldaprevir; glecaprevir; grazoprevir; gs-9256,True
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5A|inhibitor,HCV NS5A inhibitors,10,0.192,small molecule,selective,4,0.2,TD-6450; daclatasvir; elbasvir; gsk-2336805; ledipasvir; ombitasvir,True
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5B (non-nucleoside)|inhibitor,HCV NS5B (non-nucleoside) inhibitors,10,0.192,small molecule,selective,4,0.2,CDI-31244; abt-072; beclabuvir; dasabuvir; filibuvir; lomibuvir,True
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV NS5B (nucleotide)|inhibitor,HCV NS5B (nucleotide) inhibitors,7,0.135,small molecule,selective,4,0.2,ALS-002200; bemnifosbuvir; bms-986094; idx-184; psi-352938; sofosbuvir,True
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,CASP1;CASP8;CASP9|inhibitor,CASP1;CASP8;CASP9 inhibitors,1,0.019,small molecule,,2,0.2,nivocasan,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,DGAT1|inhibitor,DGAT1 inhibitors,1,0.019,small molecule,,2,0.2,pradigastat,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,HCV RNA|gene_expression_reduction,HCV RNA antisense / siRNA,1,0.019,gene therapy,selective,2,0.2,TT-034,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,IFNLR1;IL10RB|agonist,IFNLR1;IL10RB agonists,1,0.019,protein,,3,0.2,peginterferon lambda-1a,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,MIR122|inhibitor,MIR122 inhibitors,1,0.019,oligo,,2,0.2,miravirsen,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,PPIA|inhibitor,PPIA inhibitors,1,0.019,small molecule,,2,0.2,scy-635,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,SLCO1B3|inhibitor,SLCO1B3 inhibitors,1,0.019,small molecule,,2,0.2,silibinin,False
-infectious_disease,MONDO:0005231,hepatitis C virus infection,52,APOH|binder_neutralizer,anti-APOH antibodies,1,0.019,antibody,,2,0.2,bavituximab,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS3/4A protease|inhibitor,HCV NS3/4A protease inhibitors,13,0.186,small molecule,selective,4,0.19,asunaprevir; danoprevir; faldaprevir; glecaprevir; grazoprevir; gs-9256,True
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5A|inhibitor,HCV NS5A inhibitors,10,0.143,small molecule,selective,4,0.19,TD-6450; daclatasvir; elbasvir; gsk-2336805; ledipasvir; ombitasvir,True
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5B (non-nucleoside)|inhibitor,HCV NS5B (non-nucleoside) inhibitors,10,0.143,small molecule,selective,4,0.19,CDI-31244; abt-072; beclabuvir; dasabuvir; filibuvir; lomibuvir,True
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV NS5B (nucleotide)|inhibitor,HCV NS5B (nucleotide) inhibitors,7,0.1,small molecule,selective,4,0.19,ALS-002200; bemnifosbuvir; bms-986094; idx-184; psi-352938; sofosbuvir,True
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,IFNAR1/IFNAR2|agonist,IFNAR1/IFNAR2 agonists,3,0.043,protein,selective,3,0.19,Hanferon; PEG-IFN-SA; interferon alfa-5,True
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,PPIA|inhibitor,PPIA inhibitors,2,0.029,small molecule,,2,0.19,9-(n-methyl-l-isoleucine)-cyclosporin a; scy-635,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,ADORA3|agonist,ADORA3 agonists,1,0.014,small molecule,,2,0.19,namodenoson,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,CASP1;CASP8;CASP9|inhibitor,CASP1;CASP8;CASP9 inhibitors,1,0.014,small molecule,,2,0.19,nivocasan,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,CD3E|other,CD3E,1,0.014,antibody,,2,0.19,anti-CD3 monoclonal antibody,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,DGAT1|inhibitor,DGAT1 inhibitors,1,0.014,small molecule,,2,0.19,pradigastat,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,HCV RNA|gene_expression_reduction,HCV RNA antisense / siRNA,1,0.014,gene therapy,selective,2,0.19,TT-034,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,IFNLR1;IL10RB|agonist,IFNLR1;IL10RB agonists,1,0.014,protein,,3,0.19,peginterferon lambda-1a,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,MIR122|inhibitor,MIR122 inhibitors,1,0.014,oligo,,2,0.19,miravirsen,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,SLCO1B3|inhibitor,SLCO1B3 inhibitors,1,0.014,small molecule,,2,0.19,silibinin,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,APOH|binder_neutralizer,anti-APOH antibodies,1,0.014,antibody,,2,0.19,bavituximab,False
+infectious_disease,MONDO:0005231,hepatitis C virus infection,70,DLL1 (PD-1 claimed) (off-class)|binder_neutralizer,anti-DLL1 (PD-1 claimed) (off-class) antibodies,1,0.014,antibody,off-class,2,0.19,pidilizumab,False
 infectious_disease,MONDO:0005789,hepatitis D virus infection,6,FNTA;FNTB|inhibitor,FNTA;FNTB inhibitors,1,0.167,small molecule,,3,0.4,lonafarnib,False
 infectious_disease,MONDO:0005789,hepatitis D virus infection,6,HBsAg release (NAP)|inhibitor,HBsAg release (NAP) inhibitors,1,0.167,oligo,selective,2,0.4,REP 2139,False
 infectious_disease,MONDO:0005789,hepatitis D virus infection,6,IFNLR1;IL10RB|agonist,IFNLR1;IL10RB agonists,1,0.167,protein,,3,0.4,peginterferon lambda-1a,False

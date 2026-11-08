@@ -6,7 +6,7 @@
  ],
  "phase": 2,
  "programs": 5814,
- "diseases": 936,
+ "diseases": 935,
  "merge": {
   "MONDO:0005416": "MONDO:0005178",
   "MONDO:0005015": "MONDO:0005148",
@@ -24,7 +24,8 @@
   "MONDO:0011758": "MONDO:0001586",
   "MONDO:0004784": "MONDO:0004979",
   "MONDO:0005344": "MONDO:0005366",
-  "MONDO:0005041": "MONDO:0005338"
+  "MONDO:0005041": "MONDO:0005338",
+  "MONDO:0005354": "MONDO:0005231"
  },
  "drop": {
   "MONDO:0037829": "purine metabolism disease: mapping error (DATA_FIXES.md #5)",
