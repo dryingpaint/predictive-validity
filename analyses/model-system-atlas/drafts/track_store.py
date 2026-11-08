@@ -63,8 +63,11 @@ def store(path: str, drafted_by: str, cur) -> int:
         c = json.load(open(check))
         base = int(c.get("index_base", 1))
         by_index = {(q, i): (mod, seq) for q, mod, seq, i, _ in entries}
-        verdicts = [(v, by_index[(v["cell"], int(v["index"]) - base + 1)]) for v in c.get("entries", [])
-                    if (v.get("cell"), int(v.get("index", -1)) - base + 1) in by_index]
+        unmatched = [f'{v.get("cell")}#{v.get("index")}' for v in c.get("entries", [])
+                     if (v.get("cell"), int(v.get("index", -1)) - base + 1) not in by_index]
+        if unmatched:
+            raise SystemExit(f"{check}: not stored, verdicts name no entry of the draft: {', '.join(unmatched)}")
+        verdicts = [(v, by_index[(v["cell"], int(v["index"]) - base + 1)]) for v in c.get("entries", [])]
         execute_values(cur, """INSERT INTO preclin.atlas_track_verdict (mondo_id, mechanism_key, question, modality, seq,
                                    verdict, source_resolves, quote_found, proposed_status, proposed_year, rule, note,
                                    adjudicated_status, adjudication_note, checked_by) VALUES %s""",

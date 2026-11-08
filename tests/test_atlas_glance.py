@@ -1,4 +1,4 @@
-"""analyses/model-system-atlas/glance.py: a cell's headline from its tracks (decision 6), the dissent, and the
+"""analyses/model-system-atlas/glance.py: a cell's headline from its tracks, the dissent, and the
 label wrapping of the journal figure. Synthetic entries, no database."""
 from __future__ import annotations
 
@@ -10,12 +10,13 @@ import pandas as pd
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "analyses", "model-system-atlas"))
 import glance  # noqa: E402
 import glance_nature  # noqa: E402
+import report_page  # noqa: E402
 
 
-def entry(model_id, year, status, seq=1, modality="", adjudicated=None, **fields):
+def entry(model_id, year, status, seq=1, modality="", adjudicated=None, retrodiction=None, **fields):
     return {"mondo_id": "MONDO:1", "mechanism_key": "X|inhibitor", "question": "efficacy", "modality": modality, "seq": seq,
             "year": year, "status": status, "model_id": model_id, "model": model_id.replace("-", " "),
-            "src_label": "", "retrodiction": status == "retro", "fields": {"short": f"{model_id} {status}", **fields},
+            "src_label": "", "retrodiction": status == "retro" if retrodiction is None else retrodiction, "fields": {"short": f"{model_id} {status}", **fields},
             "adjudicated_status": adjudicated, "final": adjudicated or status, "short": f"{model_id} {status}"}
 
 
@@ -28,7 +29,7 @@ def test_best_track_sets_the_headline_over_a_contradicted_track():
                                                 entry("b", 2012, "untested"), entry("b", 2018, "same", seq=2)))
     assert st == "same"
     assert pick["model_id"] == "b" and pick["year"] == 2018
-    assert {k: v["final"] for k, v in last.items()} == {"a": "contra", "b": "same"}
+    assert {v["model_id"]: v["final"] for v in last.values()} == {"a": "contra", "b": "same"}
 
 
 def test_a_retrodiction_never_sets_the_headline_and_an_all_retro_cell_is_marked():
@@ -36,6 +37,33 @@ def test_a_retrodiction_never_sets_the_headline_and_an_all_retro_cell_is_marked(
     assert st == "untested"
     st, pick, _ = glance.headline_entry(cell(entry("b", 2020, "retro")))
     assert st == "retro" and pick["model_id"] == "b"
+
+
+def test_a_retrodiction_after_a_match_on_the_same_track_leaves_the_match_standing():
+    st, pick, _ = glance.headline_entry(cell(entry("a", 2017, "same"), entry("a", 2026, "retro", seq=2)))
+    assert st == "same" and pick["year"] == 2017
+
+
+def test_a_retrodiction_scored_contradicted_never_sets_the_headline():
+    st, _, _ = glance.headline_entry(cell(entry("a", 2015, "same"), entry("b", 2020, "contra", retrodiction=True)))
+    assert st == "same"
+
+
+def test_one_model_in_two_modality_strips_is_two_tracks():
+    _, _, last = glance.headline_entry(cell(entry("a", 2015, "same", modality="antibody"),
+                                            entry("a", 2016, "same", modality="small molecule")))
+    assert len(last) == 2
+
+
+def test_a_cell_whose_entries_were_all_dropped_has_no_headline():
+    assert glance.headline_entry(cell(entry("a", 2015, "same", adjudicated="drop"))) is None
+
+
+def test_the_checkers_corrected_year_stands_only_when_the_status_does():
+    r = {"status": "same", "year": 2014, "verdict": "corrected", "proposed_year": 2011, "adjudicated_status": None}
+    assert report_page.final_year(r) == 2011
+    assert report_page.final_year({**r, "adjudicated_status": "contra"}) == 2014
+    assert report_page.final_year({**r, "verdict": "confirmed"}) == 2014
 
 
 def test_adjudicated_status_overrides_the_drafters():

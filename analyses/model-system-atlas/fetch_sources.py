@@ -61,11 +61,14 @@ def get(url: str, attempts: int = 3) -> bytes:
 
 
 def documents(appl_no: str, appl_type: str) -> list[tuple[str, str]]:
-    """(kind, url) for the original approval's review PDFs and label."""
+    """(kind, url) for the original approval's review PDFs and label; empty when openFDA has no record of the
+    application. A failed request raises."""
     try:
         rec = json.loads(get(OPENFDA.format(f"{appl_type}{appl_no}")))["results"][0]
-    except Exception:
-        return []
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return []
+        raise
     docs, tocs = [], []
     for s in rec.get("submissions", []):
         if s.get("submission_type") != "ORIG":
@@ -76,10 +79,7 @@ def documents(appl_no: str, appl_type: str) -> list[tuple[str, str]]:
             elif d.get("type") == "Review":
                 tocs.append(d["url"])
     for toc in tocs:
-        try:
-            page = get(toc).decode("latin-1")
-        except Exception:
-            continue
+        page = get(toc).decode("latin-1")
         flags = dict(re.findall(r"(\w+):\s*([01])\s*,", page))
         for name in sorted(set(re.findall(r"[\w\-. ]+?\.pdf", page, re.IGNORECASE))):
             name = name.strip().lstrip("/")
@@ -184,9 +184,12 @@ def main(store_documents: bool) -> None:
                           JOIN preclin.fda_application a USING (appl_no)
                           WHERE am.moiety_id = ANY(%s) AND am.biosimilar_of IS NULL""", (ids,))
     by_moiety = appl.groupby("moiety_id")
-    plan, rows = {}, []
+    plan, failed, rows = {}, {}, []
     for a in appl.drop_duplicates("appl_no").itertuples():
-        plan[a.appl_no] = documents(a.appl_no, a.appl_type) if a.center == "CDER" else []
+        try:
+            plan[a.appl_no] = documents(a.appl_no, a.appl_type) if a.center == "CDER" else []
+        except Exception as e:  # recorded per application; one failure does not stop the bundle
+            failed[a.appl_no] = f"openfda: {type(e).__name__}: {e}"[:200]
     jobs = {(n, u) for n, docs in plan.items() for _, u in docs}
     with ThreadPoolExecutor(4) as ex:
         done = dict(zip(jobs, ex.map(lambda j: fetch(*j), jobs)))
@@ -198,8 +201,9 @@ def main(store_documents: bool) -> None:
             continue
         for a in by_moiety.get_group(mid).itertuples():
             if not plan.get(a.appl_no):
+                error = failed.get(a.appl_no) or ("not_in_openfda" if a.center == "CBER" else "no review documents")
                 rows.append({"context": m["context"], "moiety_id": mid, "appl_no": a.appl_no, "kind": None,
-                             "error": "not_in_openfda" if a.center == "CBER" else "no review documents"})
+                             "error": error})
             for kind, url in plan.get(a.appl_no, []):
                 rows.append({"context": m["context"], "moiety_id": mid, "appl_no": a.appl_no, "kind": kind,
                              **done[(a.appl_no, url)]})

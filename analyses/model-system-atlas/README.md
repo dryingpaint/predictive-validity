@@ -2,7 +2,7 @@
 
 For each disease × mechanism (a tile), whether the preclinical models the drug class relied on predicted what
 happened in patients, on four questions (engagement, dose, efficacy, safety), stored as dated tracks in
-`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`). The main paper figure is
+`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`). The main paper figure is
 `atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`.
 
 `DATABASE_URL` and `FIRECRAWL_API_KEY` live in `.env`. Only `class_audit.py store`, `fetch_sources.py store` and

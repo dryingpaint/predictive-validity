@@ -2,14 +2,14 @@
 
 `class_audit.py` rebuilds the lists.py cohort (novel Phase 2 entrants 2008–2019 in the 71 named
 indications, 2,629 programs) and joins it to a hand review (`reviews.csv`, 706 moieties: every
-member of the classes chosen under each earlier rule, every member of every tracked mechanism, and every
-unresolved-target program in allergic disease, allergic rhinitis, atopic conjunctivitis, acne,
-chronic HBV, HIV, HCV, BPH and dry eye). Each review row cites ChEMBL, an FDA or registry page,
+member of every tracked mechanism, every unresolved-target program in allergic disease, allergic
+rhinitis, atopic conjunctivitis, acne, chronic HBV, HIV, HCV, BPH and dry eye, and members of some
+untracked mechanisms). Each review row cites ChEMBL, an FDA or registry page,
 a DOI or a PubMed query. Outputs: `class_members.csv` (one row per program, review columns plus
 `db_issue`), `register.csv` (every indication × mechanism) and the tracked tiles,
 `lists/named_contexts.csv`.
 
-**Drawn on the published identity rebuild.** The interim draw ran while the identity rebuild had removed the programs of merged entities (relugolix and cannabidiol among them). The register was redrawn on 2026-11-05 on the published build (programs build 2cc25092); no reviewed moiety was a merge loser in `preclin.moiety_merge`, so `reviews.csv` needed no remap.
+**Programs build.** The register is drawn on programs build 2cc25092 (2026-11-05). No reviewed moiety is a merge loser in `preclin.moiety_merge`.
 
 ## 1. Where the database disagrees with the review
 
@@ -74,9 +74,8 @@ least 3 distinct novel Phase 2 programs is tracked** and gets a tile in `lists/n
 already succeeded, which is the outcome the atlas tests. There is no single winner per indication,
 and so no tie-breaks.
 
-**Result (redrawn 2026-11-05 on the published identity rebuild, programs build 2cc25092): 1,693 register rows (`register.csv`); 119 tracked tiles in 48 of 71
+**Result (programs build 2cc25092): 1,693 register rows (`register.csv`); 119 tracked tiles in 48 of 71
 indications (27 with more than one); 23 indications have no tracked tile.**
-33 tiles are the mechanism the earlier single-winner rule would have picked. Against the interim draw, endometriosis gains a tile (GnRH antagonists, 3) now that relugolix's programs are back.
 
 | indication | Phase 2 programs | tiles | tracked mechanisms (programs, modalities when more than one) |
 |---|---|---|---|

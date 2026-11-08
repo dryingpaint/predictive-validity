@@ -1,13 +1,11 @@
 """Render the atlas report page from the database: the drafted tiles' track records, the register of every
 mechanism, and the drafter-checker agreement.
 
-    .venv/bin/python analyses/model-system-atlas/report_page.py [--interim]
+    .venv/bin/python analyses/model-system-atlas/report_page.py
 
 Reads preclin.atlas_* (migration 133) and writes report/atlas.html beside this file from
-report/template.html, with the data embedded. --interim labels the page as drawn from a programs build
-that was mid-rebuild.
+report/template.html, with the data embedded.
 """
-import argparse
 import glob
 import json
 import math
@@ -31,6 +29,14 @@ def final_status(r) -> str:
     return r["adjudicated_status"] if r.get("adjudicated_status") else r["status"]
 
 
+def final_year(r) -> int:
+    """The checker's corrected year when the entry's final status is the drafter's, else the drafter's year. It is
+    the year shown; a track's order stays the drafted one (seq), which lint.py checked."""
+    if r.get("verdict") == "corrected" and r.get("proposed_year") and final_status(r) == r["status"]:
+        return int(r["proposed_year"])
+    return int(r["year"])
+
+
 def checked_status(r) -> str:
     """The checker's reading: its proposal on a corrected entry, else the drafter's status."""
     return r["proposed_status"] if r.get("verdict") == "corrected" and r.get("proposed_status") else r["status"]
@@ -49,14 +55,15 @@ def kappa(pairs: list[tuple[str, str]]) -> float | None:
 
 def headline(entries: list[dict], key) -> str | None:
     """A cell's headline: the best latest status among its tracks (one per model_id) that predicted before the
-    patient result; untested when none did. A retrodiction is shown on its track but never sets the headline."""
-    last = {}
-    for e in sorted(entries, key=lambda e: (e["year"], e["seq"])):
-        s = key(e)
-        if s != "drop":
-            last[e["model_id"]] = s
-    if not last:
+    patient result; untested when none did. A track's latest entry is its last in seq order. A retrodiction is shown
+    on its track but never sets the headline, nor hides the prospective entries before it on the same track."""
+    kept = [e for e in entries if key(e) != "drop"]
+    if not kept:
         return None
+    last = {}
+    for e in sorted(kept, key=lambda e: e["seq"]):
+        if key(e) != "retro" and not e["retrodiction"]:
+            last[e["model_id"]] = key(e)
     tested = [s for s in last.values() if s in HEADLINE]
     return min(tested, key=HEADLINE.index) if tested else "untested"
 
@@ -86,12 +93,13 @@ def load() -> dict:
         recs = [dict(x) for _, x in g.iterrows()]
         for x in recs:
             x["fields"] = x["fields"] or {}
-            x["final"] = final_status(x)
             for k, v in list(x.items()):
                 if v is not None and hasattr(v, "item"):
                     x[k] = v.item()
                 elif isinstance(v, float) and math.isnan(v):
                     x[k] = None
+            x["final"] = final_status(x)
+            x["year"] = final_year(x)
         cells = {}
         for q in QUESTIONS:
             cq = [x for x in recs if x["question"] == q]
@@ -99,9 +107,6 @@ def load() -> dict:
                 cell = [x for x in cq if x["modality"] == mod]
                 if any(x.get("verdict") for x in cell):
                     pairs.append((headline(cell, lambda e: e["status"]), headline(cell, checked_status)))
-            for x in cq:  # a checker's corrected year stands when the status is unchanged
-                if x.get("verdict") == "corrected" and x.get("proposed_year") and x["final"] == x["status"]:
-                    x["year"] = int(x["proposed_year"])
             cells[q] = [{"modality": x["modality"], "seq": x["seq"], "year": x["year"], "status": x["final"],
                          "drafted": x["status"], "model": x["model"], "model_id": x["model_id"], "src": x["src"],
                          "src_label": x["src_label"], "quote": x["quote"], "tier": x["source_tier"],
@@ -136,11 +141,7 @@ def load() -> dict:
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--interim", action="store_true")
-    a = ap.parse_args()
     data = load()
-    data["interim"] = a.interim
     checks = [json.load(open(f)) for f in glob.glob(os.path.join(HERE, "drafts", "*.check.json"))]
     data["open"] = {"rule_questions": sum(len(c.get("rule_questions") or []) for c in checks),
                     "missed": sum(len(c.get("missing") or []) for c in checks)}

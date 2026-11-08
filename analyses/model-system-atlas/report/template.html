@@ -6,7 +6,7 @@
 :root {
   --ground: #f5f6f3; --surface: #ffffff; --ink: #17201d; --muted: #5a6662; --faint: #8b9692; --rule: #d6dcd8;
   --same: #1f86c8; --contra: #d13b1f; --retro: #8a5cc8; --other: #9fc6e3; --untested: #dfe4e0; --none: transparent;
-  --hatch: rgba(10, 30, 50, .55); --chip-ink: #ffffff; --focus: #1f86c8; --banner: #fff4dc; --banner-ink: #6b4a00;
+  --hatch: rgba(10, 30, 50, .55); --chip-ink: #ffffff; --focus: #1f86c8;
   --serif: "Spectral", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -16,14 +16,14 @@
     color-scheme: dark;
     --ground: #111513; --surface: #181e1b; --ink: #e6ebe8; --muted: #9ba7a2; --faint: #6e7a75; --rule: #2b3330;
     --same: #3d98d8; --contra: #e0553a; --retro: #a07ee0; --other: #3a6585; --untested: #2f3734;
-    --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110; --banner: #3a2f14; --banner-ink: #f2d38a;
+    --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ground: #111513; --surface: #181e1b; --ink: #e6ebe8; --muted: #9ba7a2; --faint: #6e7a75; --rule: #2b3330;
   --same: #3d98d8; --contra: #e0553a; --retro: #a07ee0; --other: #3a6585; --untested: #2f3734;
-  --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110; --banner: #3a2f14; --banner-ink: #f2d38a;
+  --hatch: rgba(255, 255, 255, .55); --chip-ink: #0d1110;
 }
 body { background: var(--ground); color: var(--ink); font: 15px/1.55 var(--sans); }
 .wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 40px; }
@@ -34,7 +34,6 @@ p { margin: 0; max-width: 68ch; }
 .lede { color: var(--muted); font-size: 17px; }
 .eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 header { display: grid; gap: 14px; }
-.banner { background: var(--banner); color: var(--banner-ink); border-radius: 6px; padding: 10px 14px; font-size: 13.5px; max-width: 80ch; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
 .stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; }
 .stat b { font: 600 28px/1.1 var(--serif); font-variant-numeric: tabular-nums; }
@@ -112,7 +111,6 @@ select { font: inherit; padding: 5px 8px; border-radius: 6px; border: 1px solid 
     <div class="eyebrow">Predictive validity · issue #76</div>
     <h1>Model-System Atlas</h1>
     <p class="lede">For each drug mechanism in each disease, did the preclinical model the field relied on predict what happened in patients? Every strip runs 1985–2026 and changes colour in the year a published comparison changed the answer.</p>
-    <div class="banner" id="banner" hidden></div>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -161,17 +159,18 @@ const ORDER = ["same", "neg", "other", "retro", "contra", "untested"];
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const fill = s => s === "neg" ? "url(#hatch)" : `var(--${s})`;
 
-// The headline entry of a cell up to a year: each track's (model_id's) latest entry, the best of those that
-// predicted before the patient result (report_page.py HEADLINE); an untested entry when none did.
+// The headline entry of a cell up to a year: each track's (model_id's) latest prospective entry in seq order,
+// the best of those that predicted before the patient result (report_page.py headline); an untested entry when
+// none did. A retrodiction never sets the headline nor hides the prospective entries before it on its track.
 const HEADLINE = ["same", "neg", "other", "contra"];
 function headlineEntry(entries, upTo = Infinity) {
+  const shown = [...entries].filter(e => e.year <= upTo).sort((a, b) => a.seq - b.seq);
+  if (!shown.length) return null;
   const last = {};
-  [...entries].filter(e => e.year <= upTo).sort((a, b) => a.year - b.year || a.seq - b.seq)
-    .forEach(e => { last[e.model_id] = e; });
-  const v = Object.values(last);
-  if (!v.length) return null;
-  const tested = v.filter(e => HEADLINE.includes(e.status)).sort((a, b) => HEADLINE.indexOf(a.status) - HEADLINE.indexOf(b.status));
-  return tested[0] || { ...v[v.length - 1], status: "untested" };
+  shown.filter(e => e.status !== "retro" && !e.retro).forEach(e => { last[e.model_id] = e; });
+  const tested = Object.values(last).filter(e => HEADLINE.includes(e.status))
+    .sort((a, b) => HEADLINE.indexOf(a.status) - HEADLINE.indexOf(b.status));
+  return tested[0] || { ...shown[shown.length - 1], status: "untested" };
 }
 function latest(entries) { return headlineEntry(entries)?.status ?? null; }
 
@@ -199,11 +198,6 @@ function strip(entries, cls) {
 
 function render() {
   const d = DATA, tiles = d.tiles;
-  if (d.interim) {
-    const b = document.getElementById("banner");
-    b.hidden = false;
-    b.textContent = `Interim: drawn from the programs table while it was being rebuilt (snapshot ${d.build.snapshot}). Program counts and the register will change slightly when the rebuild publishes; the drafted track records will not.`;
-  }
   const cells = tiles.flatMap(t => Q.map(([q]) => t.cells[q] || []).filter(c => c.length));
   const compared = cells.filter(c => latest(c) !== "untested").length;
   const st = [

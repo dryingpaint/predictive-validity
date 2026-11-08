@@ -216,9 +216,8 @@ def register(m: pd.DataFrame, named: pd.DataFrame) -> tuple[pd.DataFrame, pd.Dat
     reg = reg.merge(named[["mondo_id", "label", "area", "n"]].rename(columns={"mondo_id": "mondo_id_named", "n": "n_indication"}),
                     on="mondo_id_named")
     reg = reg.sort_values(["area", "label", "n", "mechanism"], ascending=[True, True, False, True])
-    m["tracked"] = m.mechanism_key.map(reg.groupby("mechanism_key").tracked.any()).fillna(False) & \
-        m.set_index(["mondo_id_named", "mechanism_key"]).index.isin(
-            reg[reg.tracked].set_index(["mondo_id_named", "mechanism_key"]).index)
+    m["tracked"] = m.set_index(["mondo_id_named", "mechanism_key"]).index.isin(
+        reg[reg.tracked].set_index(["mondo_id_named", "mechanism_key"]).index)
     return reg, m
 
 

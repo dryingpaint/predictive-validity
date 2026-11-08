@@ -26,10 +26,10 @@ def open_corrections(slug: str) -> list[str]:
     for v in c.get("entries", []):
         if v.get("verdict") != "corrected" or v.get("adjudicated_status"):
             continue
-        try:
-            e = d["cells"][v["cell"]][int(v["index"]) - base]
-        except (KeyError, IndexError, TypeError, ValueError):
-            continue
+        i = int(v["index"]) - base
+        if v.get("cell") not in d["cells"] or not 0 <= i < len(d["cells"][v["cell"]]):
+            raise SystemExit(f'{slug}.check.json: verdict {v.get("cell")}#{v.get("index")} names no entry of the draft')
+        e = d["cells"][v["cell"]][i]
         if v.get("proposed_status") and v["proposed_status"] != e.get("status"):
             out.append(f'{v["cell"]}#{v["index"]} {e.get("status")}->{v["proposed_status"]}')
     return out

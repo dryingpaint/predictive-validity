@@ -173,7 +173,9 @@ def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
         d = df[df.question == q]
         x = 0.0
         for st, derived in [("same", False), ("neg", False), ("other", False), ("contra", False), ("contra", True), ("retro", False), ("untested", False)]:
-            sel = (d.status == st) & ((d.derived == "efficacy") if derived else (d.derived != "efficacy"))
+            sel = d.status == st
+            if st == "contra":
+                sel &= (d.derived == "efficacy") if derived else (d.derived != "efficacy")
             n = int(sel.sum())
             if not n:
                 continue
@@ -186,7 +188,8 @@ def draw_verdict(ax, df: pd.DataFrame, n_tiles: int, T: dict) -> None:
     lx, ly = 5.35, 0.2
     items = [("same", False, "Matched"), ("neg", False, STATUS["neg"][1]), ("other", False, STATUS["other"][1]), ("contra", False, "Contradicted"),
              ("contra", True, "Contradicted through efficacy (dose)"), ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
-    items = [it for it in items if ((df.status == it[0]) & ((df.derived == "efficacy") if it[1] else (df.derived != "efficacy"))).any()]
+    derived = (df.status == "contra") & (df.derived == "efficacy")
+    items = [it for it in items if ((df.status == it[0]) & (derived if it[1] else ~derived)).any()]
     step = min(0.115, (1.02 - ly - 0.015) / (len(items) + 2))  # the legend stays above the panel-b note at y = 1.1 however many statuses occur
     sq = min(0.1, step - 0.01)
     for i, (st, derived, label) in enumerate(items):
