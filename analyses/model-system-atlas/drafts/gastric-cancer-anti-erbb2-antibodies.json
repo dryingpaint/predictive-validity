@@ -52,7 +52,8 @@
     "source_calls_it": null,
     "population": "HER2-positive gastric cancer",
     "model_first_use_year": 2011,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2011,
@@ -89,7 +90,8 @@
     "source_calls_it": null,
     "population": "HER2-positive tumours; CD16A-158F carriers",
     "model_first_use_year": 2011,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2017,
@@ -126,7 +128,8 @@
     "source_calls_it": null,
     "population": "HER2-positive cancer cell lines and xenografts",
     "model_first_use_year": 2017,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -164,48 +167,8 @@
     "source_calls_it": null,
     "population": "HER2-positive gastric cancer",
     "model_first_use_year": 2011,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
-   },
-   {
-    "year": 2018,
-    "status": "contra",
-    "model": "HER2-positive human gastric cancer xenografts (NCI-N87, 4-1ST) in mice, pertuzumab plus trastuzumab",
-    "note": "JOSHUA reached the 20 µg/mL target (day-43 Cmin 62.7 µg/mL at 840 mg q3w); JACOB used that dose and missed OS.",
-    "short": "Target reached, JACOB failed",
-    "src": "https://doi.org/10.1016/S1470-2045(18)30481-9",
-    "srcLabel": "Tabernero 2018",
-    "quote": "overall survival was not significantly different between treatment groups (median overall survival 17·5 months [95% CI 16·2-19·3] in the pertuzumab group and 14·2 months [12·9-15·5] in the control group; hazard ratio 0·84 [95% CI 0·71-1·00]; p=0·057)",
-    "confidence": "medium",
-    "confidence_note": "Abstract-level reading of JACOB and of JOSHUA (Kang 2014, doi 10.1038/bjc.2014.356; NCT01461057 results posted 2016-06-27, co-primary endpoint day-43 pertuzumab Cmin >= 20 µg/mL: mean 40.0 µg/mL at 840/420 mg, 62.7 µg/mL at 840 mg q3w). The 20 µg/mL target was derived in breast, not gastric, models (Perjeta EPAR; Phesgo review).",
-    "reason": "Exposure reached; survival still missed",
-    "judgement": "Table row 'reached, failed, abandoned': the programme's only exposure target (serum trough >= 20 µg/mL) was met in gastric patients at the 840 mg q3w dose chosen after JOSHUA, and JACOB then missed its primary endpoint, so the failure is counted once in efficacy and derived here. Not left untested as in a no-target cell-line case because an explicit target existed and JOSHUA was run to test it. The monkey tolerability finding (no NOAEL, decision 16) is scored in safety, not here, because patients were dosed to target.",
-    "model_id": "nci-n87-gastric-xenograft",
-    "prediction_level": "class",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": "https://www.ema.europa.eu/en/documents/assessment-report/perjeta-epar-public-assessment-report_en.pdf",
-    "model_src_tier": 2,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": 2018,
-    "print_year": 2018,
-    "registry_date": "2018-02-14",
-    "model_filed": false,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "First-line HER2-positive metastatic gastric/GEJ cancer, pertuzumab 840 mg q3w with trastuzumab and cisplatin-fluoropyrimidine",
-    "model_first_use_year": 2011,
-    "derived_from": "efficacy",
-    "blocked_by": null,
-    "margin_stated": false
    },
    {
     "year": 2011,
@@ -241,7 +204,6 @@
     "source_calls_it": null,
     "population": "Cynomolgus monkeys, 15-150 mg/kg",
     "model_first_use_year": 2011,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true
    },
@@ -280,7 +242,6 @@
     "source_calls_it": null,
     "population": "HER2-positive gastro-oesophageal adenocarcinoma after trastuzumab, margetuximab 15 mg/kg q3w plus pembrolizumab",
     "model_first_use_year": 2011,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true
    },
@@ -319,7 +280,6 @@
     "source_calls_it": null,
     "population": "HER2-positive cancer cell lines and xenografts",
     "model_first_use_year": 2017,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -352,7 +312,6 @@
     "model_filed": true,
     "product_in_model": true,
     "population": "HER2-overexpressing xenograft lines (breast, NSCLC and other non-gastric); regimen selection for HER2-positive breast cancer",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "model_id": "pertuzumab-xenograft-exposure-target",
@@ -370,16 +329,16 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "year": 2018,
-    "status": "contra",
+    "status": "same",
     "note": "Target reached in gastric patients: JOSHUA day-43 trough 62.7 µg/mL at 840 mg q3w, JACOB's PK paper says the majority reached target; JACOB then missed OS, so the exposure was not enough.",
-    "short": "Target reached, JACOB failed",
+    "short": "20 ug/mL trough target met",
     "src": "https://doi.org/10.1016/S1470-2045(18)30481-9",
     "srcLabel": "Tabernero 2018",
     "quote": "overall survival was not significantly different between treatment groups (median overall survival 17·5 months [95% CI 16·2-19·3] in the pertuzumab group and 14·2 months [12·9-15·5] in the control group; hazard ratio 0·84 [95% CI 0·71-1·00]; p=0·057)",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading of Kang 2014 (JOSHUA, doi 10.1038/bjc.2014.356: mean day-43 Cmin 40.0 µg/mL at 840/420 mg, 62.7 µg/mL at 840 mg q3w, the latter chosen for phase 3) and of Kirschbrown 2019 (doi 10.1007/s00280-019-03871-w: 'The 840 mg q3w dose allowed the majority of patients in JACOB to achieve target pertuzumab concentrations'). JACOB OS was first public at ESMO 2017 (abstract 616O); year 2018 follows the draft's JACOB entries pending the checker's dating question.",
     "reason": "Exposure target reached, no OS benefit",
-    "judgement": "Dose table row 'reached, failed, abandoned': the only exposure target the programme stated (trough >= 20 µg/mL, from xenografts) was met in gastric patients at the 840 mg q3w dose JOSHUA selected, and JACOB missed its primary endpoint; the failure is counted once in efficacy on the gastric-xenograft track and derived here. Paired by me: Tabernero 2018 does not set the xenograft target beside the result; Kirschbrown 2019 states the target was reached but does not score the model. Not blocked by toxicity and no tolerability margin came from this model (margin_stated false), so decision 16 does not apply. Trastuzumab's exposure is not scored (not a member).",
+    "judgement": "Dose scored on its own prediction (rule v4): the 20 ug/mL xenograft trough target was met in gastric patients. Dose table row 'reached, failed, abandoned': the only exposure target the programme stated (trough >= 20 µg/mL, from xenografts) was met in gastric patients at the 840 mg q3w dose JOSHUA selected, and JACOB missed its primary endpoint; the failure is counted once in efficacy on the gastric-xenograft track and derived here. Paired by me: Tabernero 2018 does not set the xenograft target beside the result; Kirschbrown 2019 states the target was reached but does not score the model. Not blocked by toxicity and no tolerability margin came from this model (margin_stated false), so decision 16 does not apply. Trastuzumab's exposure is not scored (not a member).",
     "subjects": "patients",
     "comparison_stated": false,
     "source_tier": 1,
@@ -391,7 +350,6 @@
     "model_filed": true,
     "product_in_model": true,
     "population": "First-line HER2-positive (IHC 3+ or IHC 2+/ISH+) metastatic gastric/GEJ cancer, JACOB n=780 (374 with evaluable pertuzumab PK); JOSHUA phase 2a n=30",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "model_id": "pertuzumab-xenograft-exposure-target",

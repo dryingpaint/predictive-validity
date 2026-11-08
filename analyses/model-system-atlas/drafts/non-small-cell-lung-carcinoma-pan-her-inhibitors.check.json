@@ -82,7 +82,7 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Reckamp 2014 quote verbatim (PMC4164026); 45 mg MTD given, 0/6 T790M responders, never pursued: row 'reached, failed, abandoned' fits. The source's under-inhibition hedge would move this to row 1 only with T790M-tumour exposure data; none exists. Registry 2019-05-21 confirmed."
+   "note": "FDA review quote verbatim ('sensitive dacomitinib' sic in source). No human exposure target stated; untested opening holds."
   },
   {
    "cell": "dose",
@@ -92,7 +92,7 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "FDA review quote verbatim ('sensitive dacomitinib' sic in source). No human exposure target stated; untested opening holds."
+   "note": "Wu 2017 abstract quote verbatim; registry results 2018-10-26 confirmed. 45 mg reached, PFS HR 0.59: 'reached, drug worked'. FDA review confirms rat AUC half clinical; no model stated a margin, so margin_stated false is right; harm sits in safety 4."
   },
   {
    "cell": "dose",
@@ -102,21 +102,11 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Wu 2017 abstract quote verbatim; registry results 2018-10-26 confirmed. 45 mg reached, PFS HR 0.59: 'reached, drug worked'. FDA review confirms rat AUC half clinical; no model stated a margin, so margin_stated false is right; harm sits in safety 4."
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
    "note": "Robichaux 2018 quote verbatim in full text (16 mg/day tolerable, 150 nM, >125x IC50). Stated margin recorded on the opening; untested holds."
   },
   {
    "cell": "dose",
-   "index": 6,
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -126,7 +116,7 @@
   },
   {
    "cell": "dose",
-   "index": 7,
+   "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -136,7 +126,7 @@
   },
   {
    "cell": "dose",
-   "index": 8,
+   "index": 7,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -146,13 +136,15 @@
   },
   {
    "cell": "dose",
-   "index": 9,
+   "index": 8,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Quote verbatim in full text (HED of the 150 mg/m2 RP2D used in NCT02449681, NCT02454842, NCT03805841). Regimen matched, 0/11 responded, programme dropped: 'reached, failed, abandoned', derived_from efficacy. ESMO LBA61 DOI not indexed by Europe PMC; registry (2023-06-28) confirms the failure."
+   "note": "Quote verbatim in full text (HED of the 150 mg/m2 RP2D used in NCT02449681, NCT02454842, NCT03805841). Regimen matched, 0/11 responded, programme dropped: 'reached, failed, abandoned', derived_from efficacy. ESMO LBA61 DOI not indexed by Europe PMC; registry (2023-06-28) confirms the failure.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): the trial dosed the regimen the model mirrored"
   },
   {
    "cell": "efficacy",
@@ -365,7 +357,7 @@
   },
   {
    "cell": "dose",
-   "index": 10,
+   "index": 9,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -376,7 +368,7 @@
   },
   {
    "cell": "dose",
-   "index": 11,
+   "index": 10,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

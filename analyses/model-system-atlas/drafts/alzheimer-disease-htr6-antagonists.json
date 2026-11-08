@@ -443,19 +443,18 @@
     "prediction_level": "class",
     "patient_trials": null,
     "year": 2017,
-    "status": "contra",
+    "status": "same",
     "model_id": "nhp-pet-5ht6-occupancy",
     "model": "Non-human primate PET 5-HT6 receptor occupancy ([11C]GSK215083)",
     "note": "30 mg saturated 5-HT6 receptors in humans, the occupancy the monkey model targeted; the Phase 2 was stopped for futility on ADAS-cog13.",
-    "short": "Occupancy saturated at 30 mg, trial futile",
+    "short": "Monkey occupancy target saturated at 30 mg",
     "src": "https://doi.org/10.1186/s13195-018-0368-9",
     "srcLabel": "Fullerton 2018",
     "quote": "Despite a human positron emission tomography (PET) study indicating saturation of the 5-HT6 receptor at the 30-mg QD dose, there was no significant difference compared with placebo for the primary endpoint (ADAS-cog13).",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Target occupancy reached; drug failed; abandoned",
-    "judgement": "Reached, failed, abandoned: contra derived from efficacy. The efficacy failure itself is not scored on a model track because Pfizer published no SAM-760 disease-model efficacy data; Fullerton 2018 went to Phase 2 on class clinical data plus human occupancy. Fullerton calls the outcome unexplained ('precise reasons ... are unknown'), hence source_calls_it unresolved. The paper puts human occupancy beside the outcome; the model side (NHP) is paired by me, so comparison_stated false with model_src Sawant-Basak 2023."
+    "judgement": "Dose scored on its own prediction (rule v4): 30 mg saturated 5-HT6 receptors, the occupancy the monkey targeted. Reached, failed, abandoned: contra derived from efficacy. The efficacy failure itself is not scored on a model track because Pfizer published no SAM-760 disease-model efficacy data; Fullerton 2018 went to Phase 2 on class clinical data plus human occupancy. Fullerton calls the outcome unexplained ('precise reasons ... are unknown'), hence source_calls_it unresolved. The paper puts human occupancy beside the outcome; the model side (NHP) is paired by me, so comparison_stated false with model_src Sawant-Basak 2023."
    },
    {
     "subjects": "patients",
@@ -519,19 +518,18 @@
     "prediction_level": "class",
     "patient_trials": null,
     "year": 2022,
-    "status": "contra",
+    "status": "same",
     "model_id": "rat-cognition-ort-mwm-ram",
     "model": "Rat cognition battery (object recognition, water maze, radial arm maze) with donepezil + memantine",
     "note": "Patient plasma concentrations met or exceeded the rat efficacious concentrations, and masupirdine failed on ADAS-Cog 11 at 26 weeks.",
-    "short": "Rat efficacious exposure reached; trial failed",
+    "short": "Rat efficacious exposure reached",
     "src": "https://doi.org/10.1002/trc2.12307",
     "srcLabel": "Nirogi 2022",
     "quote": "Concentrations achieved in this study were equivalent or higher than the concentrations observed to be efficacious in the animal models of cognition.",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Target exposure reached; drug failed; abandoned",
-    "judgement": "Reached, failed, abandoned: contra derived from efficacy; the sponsor itself states exposures were at or above the animal efficacious range. Year 2022 (epub 2022-06-01) precedes the registry results posting (2023-06-09)."
+    "judgement": "Dose scored on its own prediction (rule v4): patient plasma met the rat efficacious concentrations. Reached, failed, abandoned: contra derived from efficacy; the sponsor itself states exposures were at or above the animal efficacious range. Year 2022 (epub 2022-06-01) precedes the registry results posting (2023-06-09)."
    }
   ],
   "efficacy": [
@@ -968,7 +966,8 @@
     "quote": "25 patients (seven taking placebo and 18 taking idalopirdine) discontinued treatment because of adverse events, the difference between groups being mainly due to asymptomatic transient increases in transaminase concentrations in some idalopirdine-treated patients.",
     "imported_from": null,
     "reason": "No tox-vs-patient comparison published",
-    "judgement": "Untested rather than an empty list: toxicology studies existed (INDs were opened for all three members) but nothing public compares them with patients. Phase 3 idalopirdine TEAEs were similar to placebo with Hy's-law monitoring (Atri 2018); SAM-760 (Fullerton 2018) and masupirdine (Nirogi 2022) were reported safe and well tolerated, so no patient harm exists to score a silence against."
+    "judgement": "Untested rather than an empty list: toxicology studies existed (INDs were opened for all three members) but nothing public compares them with patients. Phase 3 idalopirdine TEAEs were similar to placebo with Hy's-law monitoring (Atri 2018); SAM-760 (Fullerton 2018) and masupirdine (Nirogi 2022) were reported safe and well tolerated, so no patient harm exists to score a silence against.",
+    "untested_reason": "unpublished"
    }
   ]
  }

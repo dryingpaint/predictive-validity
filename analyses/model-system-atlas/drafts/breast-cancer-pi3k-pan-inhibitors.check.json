@@ -44,7 +44,9 @@
    "proposed_status": "contra",
    "proposed_year": 2016,
    "rule": "16",
-   "note": "Krop 2016 (PMID 27155741) quote verbatim and it attributes the miss to toxicity-limited dosing (45% dose modifications, 34% non-progression discontinuations, part 2 cut to 260 mg). With Raynaud's stated margin this is an independent window contra: blocked_by toxicity, margin_stated true, derived_from null, not derived_from efficacy."
+   "note": "Krop 2016 (PMID 27155741) quote verbatim and it attributes the miss to toxicity-limited dosing (45% dose modifications, 34% non-progression discontinuations, part 2 cut to 260 mg). With Raynaud's stated margin this is an independent window contra: blocked_by toxicity, margin_stated true, derived_from null, not derived_from efficacy.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): 340 mg was at or above the 330 mg where tumour pAkt fell >90%"
   },
   {
    "cell": "efficacy",

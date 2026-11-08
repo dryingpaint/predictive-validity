@@ -61,7 +61,6 @@
       "population": "Unselected",
       "model_first_use_year": 2018,
       "prediction_level": "class",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false,
       "judgement": "A separate track from the cell-culture trough target: that model sets what trough is needed, this in-silico model predicts what regimen reaches it under CYP3A induction, and the brief lists in-silico models used to choose doses as their own system. Opened in 2018 at the first tier-1 statement of the superposition projection (epub 2018-05-03). model_filed=true by inference: the 30 Aug 2018 Pifeltro label (section 2.2, Table 7) carries the twice-daily-with-rifabutin adjustment while its DDI table holds only the single-dose rifabutin study, and the PBPK paper calls the twice-daily trial 'subsequent', so the adjustment rested on the model at filing; the FDA clinical pharmacology review that would state this is not in the bundle (210807 MultidisciplineR 404). That is regulator reliance on in-silico data for a dosing recommendation, noted here rather than set at context level. No registry record exists for the Merck DDI trial (ClinicalTrials.gov search returned none). prediction_level=class because the model picks a regimen for a co-medicated subgroup, not which patients respond. margin_stated=false: no tolerated-exposure margin is stated."
@@ -99,7 +98,6 @@
       "population": "Unselected",
       "model_first_use_year": 2018,
       "prediction_level": "class",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false,
       "judgement": "Called same under the dose table's 'reached, drug worked' row: the model's target was the steady-state trough of 100 mg once daily without inducers, the exposure at which doravirine passed DRIVE-FORWARD and DRIVE-AHEAD, and the source itself states that the twice-daily-with-rifabutin exposures matched the prediction (comparison_stated=true, source_calls_it=match). 'Enough' is inherited from the Phase 3 exposure the regimen was designed to reproduce; no efficacy trial on rifabutin was run and none is needed for a PK-matched regimen. Not a retrodiction: the projection (2018) and the label adjustment preceded the confirmatory trial. Year 2020 is the online publication; the trial has no registry record and no separate paper was found, so the PBPK paper is the only tier-1 record of it (trial_unreported=false because a tier-1 source reports it). The model's second use, choosing 100 mg twice daily for the rifapentine/isoniazid DDI study, is not scored: that study tested a different inducer, not the model's rifabutin prediction."

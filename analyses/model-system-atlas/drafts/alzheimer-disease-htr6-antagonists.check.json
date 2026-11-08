@@ -106,7 +106,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in PMC5887246 full text; NCT01712074 results posted 2017-03-20, terminated 2015-10-23 for futility. Reached-failed-abandoned row applied correctly; model side (NHP, abstracted 2011, published 2023) paired by the drafter."
+   "note": "Quote verbatim in PMC5887246 full text; NCT01712074 results posted 2017-03-20, terminated 2015-10-23 for futility. Reached-failed-abandoned row applied correctly; model side (NHP, abstracted 2011, published 2023) paired by the drafter.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): 30 mg saturated 5-HT6 receptors, the occupancy the monkey targeted"
   },
   {
    "cell": "dose",
@@ -129,7 +131,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim in PMC9157584 full text; NCT02580305 results 2023-06-09, epub 2022-06-01. Suven press release 2019-12-02 predates both (rule question on dating)."
+   "note": "Quote verbatim in PMC9157584 full text; NCT02580305 results 2023-06-09, epub 2022-06-01. Suven press release 2019-12-02 predates both (rule question on dating).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): patient plasma met the rat efficacious concentrations"
   },
   {
    "cell": "efficacy",

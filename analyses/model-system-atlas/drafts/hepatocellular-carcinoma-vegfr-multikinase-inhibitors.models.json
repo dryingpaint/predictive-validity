@@ -55,7 +55,6 @@
       "confidence": "medium",
       "confidence_note": "Proxy opening: the analysis was published 2017 (epub 2017-05-31) but the regimen it recommends was REFLECT's from its March 2013 start (NCT01761266, bodyweight stratification), so the model existed by 2013. Full text read (PMC5575539). model_filed true on the 2018 HCC label (section 2.4 weight-based dose); the 2018 sNDA review PDFs themselves returned 404.",
       "judgement": "Opening entry at first use. Model is in silico (logistic exposure-response on cycle-1 dose modifications; AUC cutoff 2430 ng·h/mL, body-weight cutoff 57.8 kg), not an animal.",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false,
       "patient_trials": []
@@ -91,7 +90,6 @@
       "confidence_note": "Paired by me (Tamai 2017 model vs Kudo 2018 trial); REFLECT's observed exposure by weight group is not reported in the abstract, so magnitude is null. Abstract-level reading of Kudo 2018. The 2018 FDA label (206947s007, sections 2.4 and 14.3) carries the same regimen at tier 2 but does not state the comparison.",
       "judgement": "Scored same under 'reached, drug worked': the trial gave the model-chosen regimen and OS was non-inferior (HR 0.92). margin_stated true because the model named a tolerated exposure ceiling (AUC 2430 ng·h/mL, early dose modification) and set the regimen below it; patients were dosed to that target and the trial succeeded. Year is the Lancet publication (2018), not the 2017 Tamai paper, since the trial result is the patient side. No regulator review of the 2018 HCC sNDA was retrievable, so comparison_stated stays false.",
       "reason": "Weight-based dose reached and sufficient",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": true,
       "patient_trials": []

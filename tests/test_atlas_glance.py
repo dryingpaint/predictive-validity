@@ -77,14 +77,14 @@ def test_modality_strips_show_the_worst():
     assert st == "contra" and pick["modality"] == "small molecule"
 
 
-def test_cells_records_the_dissent_and_the_derived_flag():
+def test_cells_records_the_dissent():
     e = cell(entry("a", 2010, "untested"), entry("a", 2015, "contra", seq=2),
-             entry("b", 2012, "untested"), entry("b", 2018, "same", seq=2, derived_from="efficacy"))
+             entry("b", 2012, "untested"), entry("b", 2018, "same", seq=2))
     tiles = pd.DataFrame([{"slug": "t", "area": "x", "disease": "d", "mondo_id": "MONDO:1", "mechanism_key": "X|inhibitor",
                            "mechanism": "X inhibitors", "class_programs": 3, "class_share": 0.1}])
     df = glance.cells(e, tiles)
     row = df[df.question == "efficacy"].iloc[0]
-    assert row.status == "same" and row.year == 2018 and row.derived == "efficacy"
+    assert row.status == "same" and row.year == 2018 and pd.isna(row.untested_reason)
     assert row.dissent == "a contra" and row.dissent_model == "a"
     assert row.tracks == 2 and row.other_tracks == 1
     assert df[df.question == "safety"].status.isna().all()
@@ -119,7 +119,16 @@ def test_order_tiles_main_cut_is_one_tile_per_ranked_disease_with_the_most_progr
     assert list(by_area.group) == ["Endocrine", "Endocrine", "Respiratory", "Respiratory"]
 
 
+def test_a_never_compared_cell_carries_the_reason_of_the_entry_drawn():
+    e = cell(entry("a", 2010, "untested", untested_reason="not_measured"), entry("b", 2020, "retro"))
+    tiles = pd.DataFrame([{"slug": "t", "area": "x", "disease": "d", "mondo_id": "MONDO:1", "mechanism_key": "X|inhibitor",
+                           "mechanism": "X inhibitors", "class_programs": 3, "class_share": 0.1}])
+    row = glance.cells(e, tiles).query("question == 'efficacy'").iloc[0]
+    assert row.status == "untested" and row.untested_reason == "not_measured"
+    assert set(glance_nature.UNTESTED_REASON) == {"no_prediction", "not_measured", "unpublished", "unsettled"}
+
+
 def test_every_headline_status_the_data_can_carry_has_a_figure_style():
     assert set(glance.WORST) <= set(glance_nature.STATUS)
-    assert glance_nature.style("neg")["hatch"] and glance_nature.style("contra", derived=True)["hatch"] == "////"
+    assert glance_nature.style("neg")["hatch"] and glance_nature.style("contra")["hatch"] is None
     assert glance_nature.style("same")["hatch"] is None

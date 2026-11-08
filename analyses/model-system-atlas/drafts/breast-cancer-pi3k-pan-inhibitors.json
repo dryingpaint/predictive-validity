@@ -103,7 +103,6 @@
     "quote": "GDC-0941 showed comparable in vitro antitumor activity to PI-103, PI-540, and PI-620 and exhibited 78% oral bioavailability in mice, with tumor exposure above 50% antiproliferative concentrations for >8 hours following 150 mg/kg p.o. and sustained phosphatidylinositide 3-kinase pathway inhibition.",
     "confidence": "high",
     "confidence_note": "Abstract-level reading. The abstract reports no body-weight, NOAEL or tolerated-dose statement for mice.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "subjects": null,
@@ -129,18 +128,17 @@
    },
    {
     "year": 2016,
-    "status": "contra",
+    "status": "same",
     "model": "PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-4)",
     "model_id": "pi3k-driven-breast-xenografts",
     "prediction_level": "class",
     "note": "FERGI dosed pictilisib at 340 mg, above the 330 mg where tumour pAkt fell >90%; PFS missed, dose cut to 260 mg, program dropped.",
-    "short": "Target exposure reached, pictilisib failed",
+    "short": "pAkt suppression exposure reached",
     "src": "https://doi.org/10.1016/S1470-2045(16)00106-6",
     "srcLabel": "Krop 2016",
     "quote": "Although addition of pictilisib to fulvestrant did not significantly improve progression-free survival, dosing of pictilisib was limited by toxicity, potentially limiting its efficacy.",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (PMC5524539). FERGI NCT01437566 has no results posted, so registry_date is null. No exposure-level model-versus-patient comparison was read, so magnitude is null.",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "subjects": "patients",
@@ -163,7 +161,7 @@
     "population": "ER+/HER2-negative, aromatase-inhibitor-resistant advanced breast cancer (FERGI)",
     "model_first_use_year": 2009,
     "reason": "Reached, failed, abandoned in this setting",
-    "judgement": "Part 1 gave 340 mg daily, at or above the 330 mg RP2D where Sarker 2015 showed >90% tumour pAkt suppression, so the model's pathway-inhibition exposure was reached; the primary endpoint missed and Roche stopped pictilisib in this setting, which is the 'reached, failed, abandoned' row (contra derived from efficacy). Part 2's cut to 260 mg for toxicity is not scored as blocked_by because Raynaud 2009 stated no tolerability margin. Buparlisib on the same track would be same: its 100 mg/day MTD showed clear target inhibition (Bendell 2012) and BELLE-2 met its primary at that dose; one drug's contra beats another's same on one track, so it sits in this judgement. PEGGY dosed 260 mg on days 1-5 only, below the daily target, and also failed."
+    "judgement": "Dose scored on its own prediction (rule v4): 340 mg was at or above the 330 mg where tumour pAkt fell >90%. Part 1 gave 340 mg daily, at or above the 330 mg RP2D where Sarker 2015 showed >90% tumour pAkt suppression, so the model's pathway-inhibition exposure was reached; the primary endpoint missed and Roche stopped pictilisib in this setting, which is the 'reached, failed, abandoned' row (contra derived from efficacy). Part 2's cut to 260 mg for toxicity is not scored as blocked_by because Raynaud 2009 stated no tolerability margin. Buparlisib on the same track would be same: its 100 mg/day MTD showed clear target inhibition (Bendell 2012) and BELLE-2 met its primary at that dose; one drug's contra beats another's same on one track, so it sits in this judgement. PEGGY dosed 260 mg on days 1-5 only, below the daily target, and also failed."
    }
   ],
   "efficacy": [

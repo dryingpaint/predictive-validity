@@ -120,7 +120,6 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null,
     "population": "EGFR-mutant (H1975) xenografts",
@@ -129,10 +128,10 @@
    },
    {
     "year": 2013,
-    "status": "contra",
+    "status": "same",
     "model": "Genotype-defined NSCLC cell lines and xenografts (H1975 and others)",
     "note": "Luminespib's RP2D exposure matched xenograft-active concentrations and ganetespib reached its MTD regimen, yet single-agent NSCLC response was 4%; the miss is booked under efficacy.",
-    "short": "Exposure reached; the class still failed",
+    "short": "Xenograft-active exposure reached",
     "src": "https://doi.org/10.1158/1078-0432.CCR-12-3404",
     "srcLabel": "Sessa 2013",
     "quote": "At 70 mg/m(2), the AUY922 concentration achieved was consistent with active concentrations in a range of xenograft models.",
@@ -158,12 +157,11 @@
     "magnitude": null,
     "magnitude_basis": "xenograft-active plasma concentration reached at RP2D; no occupancy measure",
     "source_calls_it": "match",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": null,
     "population": "Advanced solid tumours (phase 1), not NSCLC-specific",
     "model_first_use_year": 2012,
-    "judgement": "Row 'reached, failed, abandoned' of the dose table: exposure reached (stated by Sessa), class failed, no member approved, so dose is contra derived from efficacy and the failure is counted once. A stricter reading scores this as 'target too low': the model said regression needs consecutive-day dosing and patients only ever got weekly or day-1/15 regimens, but no patient-side source states that sustained client suppression was not reached, so I did not. margin_stated is null: Ying 2012 claims no cardiac or liver toxicity at effective doses in mice, but no NOAEL or MTD is public for any member (no NDA)."
+    "judgement": "Dose scored on its own prediction (rule v4): the RP2D exposure matched xenograft-active concentrations (Sessa). Row 'reached, failed, abandoned' of the dose table: exposure reached (stated by Sessa), class failed, no member approved, so dose is contra derived from efficacy and the failure is counted once. A stricter reading scores this as 'target too low': the model said regression needs consecutive-day dosing and patients only ever got weekly or day-1/15 regimens, but no patient-side source states that sustained client suppression was not reached, so I did not. margin_stated is null: Ying 2012 claims no cardiac or liver toxicity at effective doses in mice, but no NOAEL or MTD is public for any member (no NDA)."
    }
   ],
   "efficacy": [

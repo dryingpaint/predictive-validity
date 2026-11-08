@@ -159,9 +159,9 @@
     "source_calls_it": null,
     "population": "Castration-resistant",
     "model_first_use_year": 2012,
-    "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2025,
@@ -196,45 +196,6 @@
     "source_calls_it": null,
     "population": "Castration-resistant",
     "model_first_use_year": 2012,
-    "derived_from": null,
-    "blocked_by": null,
-    "margin_stated": false
-   },
-   {
-    "year": 2026,
-    "status": "contra",
-    "model": "Human CRPC cell lines and xenografts (EZH2 inhibitor + AR blockade)",
-    "note": "Tazemetostat 1200 mg BID + enzalutamide, 1.5x the dose with proven skin H3K27me3 inhibition, missed rPFS in CELLO-1 phase 2; development abandoned.",
-    "short": "Tazemetostat at PD-active dose failed, abandoned",
-    "src": "https://clinicaltrials.gov/study/NCT04179864",
-    "srcLabel": "CELLO-1 registry 2026",
-    "quote": "The study was terminated early as Sponsor decided to discontinue the development of tazemetostat in metastatic castration resistant prostate cancer and the primary endpoint was not met for this study.",
-    "confidence": "medium",
-    "confidence_note": "Registry results record (posted 2026-03-10); no prostate PD data for tazemetostat, exposure inferred from the FDA review's skin H3K27me3 EC50 (734 ng·h/mL) at 800 mg BID.",
-    "judgement": "Target reached, trial failed, abandoned: dose contra derived from efficacy, counted once. One drug's contra beats mevrometostat's same on the same track. Margin was never stated by the model, so this is not a toxicity block.",
-    "reason": "Tazemetostat reached target, failed, abandoned",
-    "model_id": "crpc-ezh2-xenograft",
-    "prediction_level": "class",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 3,
-    "model_src": "https://doi.org/10.1126/science.aah4199",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": null,
-    "print_year": null,
-    "registry_date": "2026-03-10",
-    "model_filed": null,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": "miss",
-    "population": "Castration-resistant",
-    "model_first_use_year": 2012,
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false
    }
@@ -313,7 +274,8 @@
     "model_first_use_year": 2017,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "untested_reason": "unsettled"
    },
    {
     "year": 2025,
@@ -408,7 +370,8 @@
       "doi": null,
       "quote": "Efficacy: Composite Response Rate (%) for Phase 2 Randomized and Phase 2 Single-arm Treatment Groups"
      }
-    ]
+    ],
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -447,7 +410,8 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Castration-resistant, neuroendocrine (CRPC-NE)"
+    "population": "Castration-resistant, neuroendocrine (CRPC-NE)",
+    "untested_reason": "unsettled"
    }
   ],
   "safety": [

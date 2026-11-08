@@ -124,7 +124,8 @@
     "quote": "intravenous administration of ABECMA demonstrated dose-dependent anti-tumor activity and improved survival compared to control mice.",
     "reason": "No dose target to compare",
     "judgement": "Dated at model first use (Carpenter 2013) with the FDA summary as the source that names the filed model. Teclistamab's ex vivo EC90 dose model (v2 lead) dropped: teclistamab is not a member of this tile.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -160,7 +161,8 @@
     "quote": "Importantly, J6M0-mcMMAF rapidly eliminates myeloma cells in subcutaneous and disseminated mouse models, and mice remain tumor-free up to 3.5 months.",
     "reason": "No exposure target stated",
     "judgement": "No source states a xenograft exposure target or a tolerated-margin claim for the effective dose, so decision 16 does not apply; the corneal harm is counted once, in safety. DREAMM-1 (Trudel 2018, doi:10.1016/S1470-2045(18)30576-X) primary endpoints were MTD and RP2D. Vonsetamig (antibody) has no myeloma dose data found.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -195,7 +197,8 @@
     "model_id": "belamaf-sim-framework-poppk-kva",
     "model": "Belantamab PopPK + M-protein tumour-growth + keratopathy Markov simulation framework",
     "model_kind": "in_silico",
-    "model_first_use_year": 2026
+    "model_first_use_year": 2026,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

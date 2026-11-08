@@ -53,7 +53,6 @@
       "magnitude_basis": null,
       "source_calls_it": null,
       "population": "Rats and beagle dogs, daily x5 intravenous (one dog cohort oral)",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": true,
       "judgement": "Opens the toxicology track at publication. margin_stated is true because the package states MTDs in both species and a starting dose, a tolerability margin in the sense of decision 16, even though no efficacious exposure is named alongside it. Its own track: a different system (GLP-style repeat-dose toxicology in two species) and a different prediction (tolerated dose and dose-limiting organs) from the HER2 xenograft dose track."
@@ -91,7 +90,6 @@
       "magnitude_basis": "Tolerated dose per course: dog MTD 8 mg/m2 per day x5 (40 mg/m2) versus human MTD 80 mg/m2 once weekly with trastuzumab",
       "source_calls_it": null,
       "population": "HER2-positive metastatic breast cancer (25 of 28 patients), phase 1 with trastuzumab, weekly 60-100 mg/m2",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": true,
       "judgement": "Same under decision 16: the model stated an MTD and the dog's dose-limiting harms (GI, renal, gallbladder, marrow) did not stop escalation to or above that exposure; the DLTs that set the human MTD (keratitis, LV dysfunction) were unpredicted and are counted once, in safety. The 'enough' half is unanswerable because no efficacy trial followed, so a stricter reader could hold this at untested; scored because the margin was stated and held. The pairing is mine (Jhaveri 2012 does not cite the toxicology paper in its abstract)."

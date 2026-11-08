@@ -69,10 +69,10 @@
    "index": 2,
    "verdict": "confirmed",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Abstract verbatim; epub 2015-03-07. The 60 ug/mL target is sponsor-set; its xenograft derivation is not in the abstract (unverified). Row 'reached, failed, abandoned' applies; contra derived from efficacy stands."
+   "note": "Full text verbatim. Resistance model with no exposure target; untested correct."
   },
   {
    "cell": "dose",
@@ -82,21 +82,11 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Full text verbatim. Resistance model with no exposure target; untested correct."
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
    "note": "Abstract verbatim. In-vivo model is an NSCLC PDX (see engagement 4). No margin stated, so decision 16's 'no stated margin' row gives untested; correct."
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

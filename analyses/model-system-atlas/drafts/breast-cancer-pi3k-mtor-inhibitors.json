@@ -316,7 +316,6 @@
     "src": "https://doi.org/10.1158/1535-7163.MCT-08-0017",
     "srcLabel": "Maira 2008",
     "quote": "Thus, the compound was well tolerated, displayed disease stasis when administered orally, and enhanced the efficacy of other anticancer agents when used in in vivo combination studies.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "confidence": "high",
@@ -353,7 +352,6 @@
     "src": "https://doi.org/10.1007/s00280-018-3610-z",
     "srcLabel": "Rodon 2018",
     "quote": "Pharmacokinetic profiles showed low-to-moderate variability at low dose (10 mg) and high variability at high doses (100 mg and above). Gastrointestinal AEs were frequent at high doses.",
-    "derived_from": null,
     "blocked_by": "toxicity",
     "margin_stated": true,
     "reason": "GI toxicity blocked the mouse regimen",
@@ -378,7 +376,8 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "advanced solid tumours incl. HER2-positive breast cancer with trastuzumab",
-    "model_first_use_year": 2008
+    "model_first_use_year": 2008,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -391,7 +390,6 @@
     "src": "https://doi.org/10.1158/1535-7163.MCT-13-0709",
     "srcLabel": "Yu 2014",
     "quote": "In mouse xenograft models, oral administration of XL765 results in dose-dependent inhibition of phosphorylation of AKT, p70S6K, and S6 with a duration of action of approximately 24 hours.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "confidence": "high",
@@ -415,45 +413,8 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2014
-   },
-   {
-    "year": 2015,
-    "status": "contra",
-    "model": "Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition",
-    "model_id": "xl765-exelixis-xenografts",
-    "prediction_level": "class",
-    "note": "Voxtalisib 50 mg BID with letrozole was the MTD, reached and taken into phase II, where it failed; the drug was not pursued in breast cancer.",
-    "short": "MTD reached, phase II failed, abandoned",
-    "src": "https://doi.org/10.1007/s10549-015-3615-9",
-    "srcLabel": "Blackwell 2015",
-    "quote": "Twenty-one patients were enrolled in phase I; MTDs were determined to be pilaralisib tablets 400 mg once daily (QD) or voxtalisib capsules 50 mg twice daily in combination with letrozole tablets 2.5 mg QD.",
-    "derived_from": "efficacy",
-    "blocked_by": null,
-    "margin_stated": false,
-    "reason": "Dose reached, efficacy failed, abandoned",
-    "confidence": "medium",
-    "confidence_note": "Abstract-level reading (paywalled). Whether 50 mg BID sustained the model's 24 h pathway inhibition is not stated; the half-life is 4.6 h (Papadopoulos 2015) and the breast paper calls voxtalisib's PD impact weaker than pilaralisib's.",
-    "judgement": "Scored by the table row 'reached, failed, abandoned': contra derived from efficacy, one failure counted once. If a reviewer reads the short half-life and weak glucose PD as the target never being reached, the failure moves here as a PK miss and efficacy becomes untested; the cell colour is the same either way.",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": "https://doi.org/10.1158/1535-7163.MCT-13-0709",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": 2015,
-    "print_year": 2015,
-    "registry_date": null,
-    "model_filed": false,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "HR-positive, HER2-negative metastatic breast cancer refractory to a non-steroidal aromatase inhibitor",
-    "model_first_use_year": 2014
+    "model_first_use_year": 2014,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2011,
@@ -466,7 +427,6 @@
     "src": "https://doi.org/10.1158/1535-7163.MCT-11-0446",
     "srcLabel": "Wallin 2011",
     "quote": "Low doses of GDC-0980 potently inhibited tumor growth in xenograft models including those with activated PI3K, loss of LKB1 or PTEN, and elicited an exposure-related decrease in PD biomarkers.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "No breast efficacy to judge enough",
@@ -491,7 +451,8 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2011
+    "model_first_use_year": 2011,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -522,7 +483,6 @@
     "srcLabel": "Salphati 2012",
     "confidence": "medium",
     "confidence_note": "Abstract-level reading (Drug Metab Dispos, not in PMC). 2012 is a publication proxy: the prediction was made before first-in-human dosing (NCT00854152 started 2009-03). Apitolisib never reached an NDA, so model_filed is unknown.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "population": "Unselected",
@@ -530,7 +490,8 @@
     "note": "Allometry predicted human CL 5.1 mL/min/kg and 55 mg once daily as the efficacious dose; no tolerability margin stated.",
     "short": "Predicted 55 mg QD efficacious dose",
     "reason": "55 mg never tolerated; no stated margin",
-    "judgement": "Later knowledge recorded without changing status: Dolly 2016 (doi 10.1158/1078-0432.CCR-15-2225) found MTD 50 mg and RP2D 40 mg once daily with fasting hyperglycaemia dose-limiting at 40 and 70 mg, and Moein 2024 population CL/F of 0.304 L/h/kg (5.07 mL/min/kg) matched the 5.1 mL/min/kg prediction. The predicted regimen was never a tolerated dose and the model stated no margin, so decision 16's no-margin row keeps the cell untested rather than contra with blocked_by toxicity."
+    "judgement": "Later knowledge recorded without changing status: Dolly 2016 (doi 10.1158/1078-0432.CCR-15-2225) found MTD 50 mg and RP2D 40 mg once daily with fasting hyperglycaemia dose-limiting at 40 and 70 mg, and Moein 2024 population CL/F of 0.304 L/h/kg (5.07 mL/min/kg) matched the 5.1 mL/min/kg prediction. The predicted regimen was never a tolerated dose and the model stated no margin, so decision 16's no-margin row keeps the cell untested rather than contra with blocked_by toxicity.",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

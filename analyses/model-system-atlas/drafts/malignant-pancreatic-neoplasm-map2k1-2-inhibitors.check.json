@@ -45,16 +45,6 @@
    "note": "Quote verbatim; the paper itself sets exposure against the preclinical target, so comparison_stated true. ClinPharmR p.11 confirms the 10.4 ng/mL target exceeded at 2 mg; PharmR confirms mouse MTD 3 mg/kg vs 0.3-1 mg/kg efficacious. Decision 16 margin holds."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "dose table: reached, failed, abandoned",
-   "note": "EJC DOI resolves; quote verbatim. NCT01231581 results posted 2013-09-26 (verified), so 2013. Contra derived_from efficacy, counted once. Walters 2013 tested trametinib alone and with lapatinib, not with gemcitabine (rule question 1)."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

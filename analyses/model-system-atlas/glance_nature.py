@@ -10,8 +10,9 @@ verdict by question) is over every tile on both.
 
 Same data and headline rule as glance.py (imported from it). No in-figure title: the caption in
 atlas_glance_caption.md carries it. Panel a: the verdict by question. Panel b: one row per tile, one cell per
-question; the mark is the status, the bold year is when it was earned, then the model; a failure or a
-retrodiction carries its reason. Text is 5–7 pt Helvetica, lines 0.25–0.5 pt, fonts embedded editable.
+question; the mark is the status, the bold year is when it was earned, then the model; a failure, a
+retrodiction or a never-compared cell carries its reason. Text is 5–7 pt Helvetica, lines 0.25–0.5 pt, fonts
+embedded editable.
 Writes atlas_glance.png (300 dpi), .svg and .pdf beside this file. Read-only.
 """
 import json
@@ -37,7 +38,10 @@ INK, MUTED, RULE, RULE_AREA = "#1a1a1a", "#6b7372", "#dcdfdf", "#9aa1a1"
 STATUS = {"same": ("#3DBB7A", "Matched"), "neg": ("#2A7BD0", "Matched, incl. a known failure"),
           "other": ("#CF9A12", "Matched on the platform only"), "contra": ("#C9362B", "Contradicted"),
           "retro": ("#E07FC0", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
-HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
+# why a never-compared cell was never compared (drafts/DRAFTER_BRIEF.md rule 5), on the cell's second line
+UNTESTED_REASON = {"no_prediction": "No checkable prediction", "not_measured": "Not measured in patients",
+                   "unpublished": "Model data unpublished", "unsettled": "Patient result unclear"}
+HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched
 
 
 def other_model_mark(ax, x: float, y: float, s: float) -> None:
@@ -46,9 +50,9 @@ def other_model_mark(ax, x: float, y: float, s: float) -> None:
                          edgecolor=STATUS["contra"][0], linewidth=0.6))
 
 
-def style(status: str, derived: bool = False) -> dict:
-    """The mark's fill for a status: a hatched matched status or a derived dose contra gets white hatching."""
-    hatch = "////" if derived else HATCH.get(status)
+def style(status: str) -> dict:
+    """The mark's fill for a status: a hatched matched status gets white hatching."""
+    hatch = HATCH.get(status)
     return {"facecolor": STATUS[status][0], "edgecolor": "white" if hatch else "none", "linewidth": 0, "hatch": hatch}
 AREA = {"infectious_disease": "Infectious disease", "other": "Other"}
 # gutter labels for groups too short to carry the full name (a one-row group is 0.27 in)
@@ -180,29 +184,25 @@ def draw_verdict(ax, df: pd.DataFrame, shown: pd.DataFrame, n_tiles: int, T: dic
         ax.text(bx0 - 0.08, y + bh / 2, title, fontsize=6, ha="right", **T)
         d = df[df.question == q]
         x = 0.0
-        for st, derived in [("same", False), ("neg", False), ("other", False), ("contra", False), ("contra", True), ("retro", False), ("untested", False)]:
-            sel = d.status == st
-            if st == "contra":
-                sel &= (d.derived == "efficacy") if derived else (d.derived != "efficacy")
-            n = int(sel.sum())
+        for st in ["same", "neg", "other", "contra", "retro", "untested"]:
+            n = int((d.status == st).sum())
             if not n:
                 continue
             w = n / n_tiles * bw
-            ax.add_patch(Rectangle((bx0 + x + 0.012, y), w - 0.024, bh, **style(st, derived)))
+            ax.add_patch(Rectangle((bx0 + x + 0.012, y), w - 0.024, bh, **style(st)))
             if w > 0.16:
                 ax.text(bx0 + x + w / 2, y + bh / 2, str(n), fontsize=5.5, ha="center", **T)
             x += w
     ax.text(bx0, by0 + 4 * (bh + bgap) + 0.03, f"of {n_tiles} tiles", fontsize=5, color=MUTED, va="center")
     lx, ly = 5.35, 0.2
-    items = [("same", False, "Matched"), ("neg", False, STATUS["neg"][1]), ("other", False, STATUS["other"][1]), ("contra", False, "Contradicted"),
-             ("contra", True, "Contradicted through efficacy (dose)"), ("retro", False, "Retrodiction only"), ("untested", False, "Never compared")]
-    derived = (df.status == "contra") & (df.derived == "efficacy")
-    items = [it for it in items if ((df.status == it[0]) & (derived if it[1] else ~derived)).any()]
+    items = [("same", "Matched"), ("neg", STATUS["neg"][1]), ("other", STATUS["other"][1]), ("contra", "Contradicted"),
+             ("retro", "Retrodiction only"), ("untested", "Never compared")]
+    items = [it for it in items if (df.status == it[0]).any()]
     step = min(0.115, (1.02 - ly - 0.015) / (len(items) + 2))  # the legend stays above the panel-b note at y = 1.1 however many statuses occur
     sq = min(0.1, step - 0.01)
-    for i, (st, derived, label) in enumerate(items):
+    for i, (st, label) in enumerate(items):
         yy = ly + i * step
-        ax.add_patch(FancyBboxPatch((lx, yy), sq, sq, boxstyle="round,pad=0,rounding_size=0.018", **style(st, derived)))
+        ax.add_patch(FancyBboxPatch((lx, yy), sq, sq, boxstyle="round,pad=0,rounding_size=0.018", **style(st)))
         ax.text(lx + 0.16, yy + sq / 2, label, fontsize=5.5, **T)
     yy = ly + len(items) * step + 0.015
     if shown.dissent.notna().any():
@@ -243,14 +243,16 @@ def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) ->
                     ax.add_patch(Rectangle((x, y0 + 0.065 - mark / 2), mark, mark, facecolor="none", edgecolor=RULE_AREA, linewidth=0.4))
                     ax.text(text_x(i), y0 + 0.065, "no model relied on", fontsize=5, color=MUTED, va="center")
                     continue
-                derived = c.status == "contra" and c.derived == "efficacy"
-                ax.add_patch(FancyBboxPatch((x, y0 + 0.065 - mark / 2), mark, mark, boxstyle="round,pad=0,rounding_size=0.018", **style(c.status, derived)))
+                ax.add_patch(FancyBboxPatch((x, y0 + 0.065 - mark / 2), mark, mark, boxstyle="round,pad=0,rounding_size=0.018", **style(c.status)))
                 year = str(c.year)
                 yw = width_in(year, 5.5, "bold") + 0.045
                 L = (0.065, 0.135, 0.205)
                 model = MODEL_SHORT.get(c.model or "", c.model or "")
                 ax.text(text_x(i), y0 + L[0], year, fontsize=5.5, fontweight="bold", **T)
-                reason = [] if c.status in ("same", "untested") else wrap(c.short or "", 5, text_w, 2)
+                if c.status == "untested":
+                    reason = wrap(UNTESTED_REASON.get(c.untested_reason, ""), 5, text_w, 1) if isinstance(c.untested_reason, str) else []
+                else:
+                    reason = [] if c.status == "same" else wrap(c.short or "", 5, text_w, 2)
                 extra = int(c.status == "same" and (c.outcome_tested == "negative" or isinstance(c.dissent, str)))
                 lines = wrap(model, 5, text_w, 3 - len(reason) - extra, first_w=text_w - yw)
                 ax.text(text_x(i) + yw, y0 + L[0], lines[0], fontsize=5, color=MUTED, va="center")

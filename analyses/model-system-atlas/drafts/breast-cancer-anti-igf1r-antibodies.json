@@ -306,46 +306,8 @@
     "population": "Unselected",
     "model_first_use_year": 2003,
     "judgement": null,
-    "margin_stated": false
-   },
-   {
-    "year": 2015,
-    "status": "contra",
-    "model": "ER+ MCF-7 breast xenografts in nude mice (IMC-A12, h7C10)",
-    "model_id": "mcf7-er-pos-xenograft",
-    "prediction_level": "class",
-    "note": "Cixutumumab reached its pre-set 60 µg/mL trough at 10 mg/kg q2w (the breast dose) and dalotuzumab its RP2D with tumour PD; both failed in breast and were dropped.",
-    "short": "Target trough reached; drug failed; abandoned",
-    "src": "https://doi.org/10.1007/s10637-015-0217-7",
-    "srcLabel": "Higano 2015",
-    "quote": "A maximum tolerated dose was not identified; pre-determined target serum minimum concentrations (60 μg/mL) were achieved with ≥6 mg/kg weekly and ≥10 mg/kg every-2-week dosing.",
-    "confidence": "medium",
-    "confidence_note": "Abstract-level. The 60 µg/mL target's derivation (xenograft modelling vs other) is not given in the abstract. Dalotuzumab: Atzori 2011 Cmin >25 µg/mL at ≥5 mg/kg and tumour PD at the 10 mg/kg weekly RP2D used in NCT01234857 and NCT01605396.",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": "https://pubmed.ncbi.nlm.nih.gov/14695208/",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": 2015,
-    "print_year": 2015,
-    "registry_date": null,
-    "model_filed": false,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "Advanced solid tumours (phase 1); breast trials at the same doses",
-    "model_first_use_year": 2003,
-    "judgement": "Rule row 'reached, failed, abandoned': the sponsor-defined trough was met at the breast regimen (Gradishar 10 mg/kg q2w), the breast trials failed on PFS, and cixutumumab, dalotuzumab and R1507 (NCT00796107 stopped for discontinued development) all left the clinic. Counted once, derived from efficacy.",
-    "derived_from": "efficacy",
-    "blocked_by": null,
     "margin_stated": false,
-    "reason": "Exposure reached, efficacy failed, class abandoned"
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2012,
@@ -381,7 +343,8 @@
     "population": "ER+, progressed on endocrine therapy",
     "model_first_use_year": 2012,
     "judgement": "A model that predicts no response has no exposure target to reach; dose cannot be scored on this track.",
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2014,
@@ -418,7 +381,8 @@
     "model_first_use_year": 2014,
     "judgement": "Decision 16: ridaforolimus's effective dose was not deliverable with dalotuzumab (stomatitis), but no tolerability margin was stated by the model, so the row is 'no stated margin: untested'. Dalotuzumab's own 10 mg/kg weekly was reached.",
     "margin_stated": false,
-    "blocked_by": null
+    "blocked_by": null,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2016,
@@ -454,7 +418,8 @@
     "population": "ER+ hormone-sensitive breast cancer",
     "model_first_use_year": 2016,
     "judgement": "No target to compare with Rugo 2017's 10 mg/kg weekly; untested.",
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

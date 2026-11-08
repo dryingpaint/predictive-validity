@@ -193,7 +193,6 @@
     "note": "Mice were dosed to efficacy with tolerability stated, but no human exposure target was public before the phase 1.",
     "short": "Mouse efficacious dose stated as tolerated",
     "quote": "The compound selectivity combined with excellent drug-like properties translates to dose- and time-dependent inhibition of PI3Kα signaling in vivo, resulting in robust therapeutic efficacy and tolerability in PIK3CA-dependent tumors.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "judgement": "Opening entry; the tolerability statement is the margin decision 16 scores later."
@@ -227,7 +226,6 @@
     "model_id": "pik3ca-mutant-cell-panel-xenografts",
     "src": "https://doi.org/10.1056/NEJMoa1813904",
     "srcLabel": "André 2019",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "note": "Alpelisib 300 mg/day (phase 1 MTD 400 mg) was deliverable and beat placebo on PFS; hyperglycaemia at that dose was the predicted on-target effect.",
@@ -268,7 +266,6 @@
     "note": "Xenograft and PDX dosing of BYL719 with fulvestrant; no exposure target or tolerability margin in the abstract.",
     "short": "No exposure target stated",
     "quote": "Fulvestrant markedly sensitized ER-positive tumors to PI3Kα inhibition, resulting in major tumor regressions in vivo.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "No exposure-vs-model comparison possible",

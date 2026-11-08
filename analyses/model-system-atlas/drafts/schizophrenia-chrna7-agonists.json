@@ -52,7 +52,8 @@
     "quote": "In vivo microdialysis in awake rats showed an increase in extracellular prefrontal cortical dopamine in response to low doses of AZD0328.",
     "readout_tier": "downstream",
     "reason": "PD marker never measured in humans",
-    "judgement": "The model's PD read-outs (cortical dopamine release; ex-vivo alpha7 up-regulation in Werkheiser 2011, 10.1016/j.neuroscience.2011.04.033) have no human counterpart; the patient study NCT00669903 measured cognition only, which is efficacy, not engagement."
+    "judgement": "The model's PD read-outs (cortical dopamine release; ex-vivo alpha7 up-regulation in Werkheiser 2011, 10.1016/j.neuroscience.2011.04.033) have no human counterpart; the patient study NCT00669903 measured cognition only, which is efficacy, not engagement.",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -89,7 +90,8 @@
     "quote": "At the 0.3 mg/kg dose, there was a statistically significant drug × genotype interaction effect (p = 0.022) demonstrating the ability of TC-5619 to normalize PPI in th(tk−)/th(tk−) mice.",
     "readout_tier": "downstream",
     "reason": "Gating read-out not taken in patients",
-    "judgement": "Human P50 gating data for alpha7 agonists exist only for DMXB-A (GTS-21), which is not a member of this class, so they cannot score here; Hashimoto 2015 (review) lists no gating study for the three members."
+    "judgement": "Human P50 gating data for alpha7 agonists exist only for DMXB-A (GTS-21), which is not a member of this class, so they cannot score here; Hashimoto 2015 (review) lists no gating study for the three members.",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "pig-pet-alpha7-occupancy",
@@ -126,7 +128,8 @@
     "quote": "This study underscores the importance of preclinical PET imaging and target engagement analysis in informing clinical trial strategies, including dosing decisions.",
     "readout_tier": "direct",
     "reason": "No human occupancy to compare",
-    "judgement": "A post-hoc occupancy model (2024) with no human occupancy datum for TC-5619, ABT-126 or AZD0328; it is a model that exists and was never compared, not a retrodiction, because it reproduces no human result."
+    "judgement": "A post-hoc occupancy model (2024) with no human occupancy datum for TC-5619, ABT-126 or AZD0328; it is a model that exists and was never compared, not a retrodiction, because it reproduces no human result.",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -202,45 +205,6 @@
     "judgement": "Castner 2011 (10.1016/j.biopsych.2010.08.006, epub 2010-10) titrated the rhesus dose from the rodent range and found working-memory gains at 0.0016 and 0.00048 mg/kg; that paper defines the human target but appeared after the trial posted."
    },
    {
-    "model_id": "az-trace-dose-cognition",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 3,
-    "model_src": "https://doi.org/10.1016/j.biopsych.2010.08.006",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": null,
-    "print_year": null,
-    "registry_date": "2010-08-06",
-    "model_filed": null,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "Unselected",
-    "model_first_use_year": 2009,
-    "prediction_level": "class",
-    "confidence": "medium",
-    "confidence_note": "Registry record only; no PK or occupancy was posted, so 'reached' rests on mg/kg scaling of oral doses against intramuscular rhesus doses.",
-    "year": 2010,
-    "status": "contra",
-    "model": "AstraZeneca trace-dose cognition models: rat PFC dopamine release and operant learning, mouse NOR, rhesus spatial delayed response",
-    "note": "Patients received 0.0009–0.675 mg/day, bracketing the rhesus-effective 0.00048–0.0016 mg/kg; the cognition composite did not separate and AZ stopped development.",
-    "short": "Trace doses given, no cognitive effect",
-    "src": "https://clinicaltrials.gov/study/NCT00669903",
-    "srcLabel": "NCT00669903 results 2010",
-    "quote": "Since AZD0328 is unlikely to meet the current Target Product Profile, Astrazeneca decided to stop further development of AZD0328",
-    "derived_from": "efficacy",
-    "blocked_by": null,
-    "margin_stated": false,
-    "reason": "Model dose range covered, drug failed",
-    "judgement": "Call: the registry arms (low 0.00093–0.0028 mg, 'optimal' 0.0048–0.0329 mg, high 0.075–0.675 mg oral) span 0.00001–0.01 mg/kg, which covers the rhesus-effective 0.00048–0.0016 mg/kg and the mouse NOR range; the day-14 GMLT+OCLT composite was 0.234/0.240/0.194 vs placebo 0.266 and the sponsor terminated. Reached and failed, so contra derived from efficacy; a stricter reader wanting human PK could leave it untested."
-   },
-   {
     "model_id": "rodent-schizophrenia-screens",
     "subjects": "patients",
     "comparison_stated": false,
@@ -275,44 +239,6 @@
     "quote": "GMLT statistically favored TC-5619 (P=0.036) in this exploratory trial.",
     "margin_stated": false,
     "judgement": "Scored same because the trial dosed through the rat-effective range and its primary endpoint responded; it is provisional, as the 2015 phase 2 at 5 and 50 mg reversed it."
-   },
-   {
-    "model_id": "rodent-schizophrenia-screens",
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": "https://doi.org/10.1016/j.bcp.2009.05.030",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": 2015,
-    "print_year": 2016,
-    "registry_date": null,
-    "model_filed": null,
-    "product_in_model": true,
-    "model_kind": "animal",
-    "retrodiction": false,
-    "imported_from": null,
-    "magnitude": null,
-    "magnitude_basis": null,
-    "source_calls_it": null,
-    "population": "Unselected",
-    "model_first_use_year": 2009,
-    "prediction_level": "class",
-    "confidence": "low",
-    "confidence_note": "Abstract-level reading; no human exposure or occupancy published for TC-5619; the 2024 pig PET (about 40% occupancy) is not a human datum.",
-    "year": 2015,
-    "status": "contra",
-    "model": "Rodent schizophrenia screens: th(tk-)/th(tk-) mouse PPI and social behaviour, rat apomorphine-PPI, rat novel object recognition",
-    "note": "5 and 50 mg/day (up to about 0.7 mg/kg, above the rat 0.3 mg/kg) for 24 weeks; no benefit on SANS or cognition, programme abandoned.",
-    "short": "Above rat-effective dose, no effect",
-    "src": "https://doi.org/10.1093/schbul/sbv072",
-    "srcLabel": "Walling 2016",
-    "quote": "SANS score showed no statistical benefit for TC-5619 vs placebo at week 24 (5 mg, 2-tailed P = .159; 50 mg, P = .689).",
-    "derived_from": "efficacy",
-    "margin_stated": false,
-    "reason": "Rat dose range exceeded, drug failed",
-    "judgement": "Reached-and-failed, so contra derived from efficacy; ABT-126 at 25–75 mg (Haig 2016, 2018) failed likewise but its preclinical dose work is unpublished, so it cannot anchor a dose comparison on this track."
    }
   ],
   "efficacy": [

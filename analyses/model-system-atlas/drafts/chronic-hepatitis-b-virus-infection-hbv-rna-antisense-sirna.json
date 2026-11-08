@@ -359,7 +359,6 @@
     "src": "https://doi.org/10.1038/mt.2013.31",
     "srcLabel": "Wooddell 2013",
     "quote": "Using transient and transgenic mouse models of HBV infection, we show that a single coinjection of NAG-MLP with potent chol-siRNAs targeting conserved HBV sequences resulted in multilog repression of viral RNA, proteins",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null,
     "judgement": "Opener for the mouse track: the class's first in-vivo system, dosed with ARC-520-lineage chol-siRNAs (sibling of no member), so product_in_model is false. Model_first_use_year 2013."
@@ -397,11 +396,11 @@
     "src": "https://doi.org/10.1016/j.jhep.2022.07.010",
     "srcLabel": "Yuen 2022",
     "quote": "Smaller HBsAg reductions were seen with 25 mg (n = 8) and 50 mg (n = 8) than with 100 to 400 mg (n = 40).",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Regimen reached, HBsAg response plateaued",
-    "judgement": "Scored same under 'reached, drug worked': the JNJ-3989 mouse PK paper supports monthly dosing (sustained liver exposure beyond 42 days) and patients plateaued from 100 mg Q4W, with weekly dosing adding nothing. No tolerability margin was stated in either source, so margin_stated false and nothing is counted against the toxic end."
+    "judgement": "Scored same under 'reached, drug worked': the JNJ-3989 mouse PK paper supports monthly dosing (sustained liver exposure beyond 42 days) and patients plateaued from 100 mg Q4W, with weekly dosing adding nothing. No tolerability margin was stated in either source, so margin_stated false and nothing is counted against the toxic end.",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -439,9 +438,9 @@
     "srcLabel": "Thi 2019",
     "quote": "Combination of ARB-1740 with a capsid inhibitor and pegylated interferon-alpha led to greater liver HBsAg reduction which correlated with more robust induction of innate immune responses in a human chimeric mouse model of HBV.",
     "judgement": "The 3 mg/kg mouse dose is numerically close to the 200 mg human dose (about 2.9 mg/kg), but no source states a target, so a drafter-made mapping is not scored (checker rule question, dose 2).",
-    "derived_from": null,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

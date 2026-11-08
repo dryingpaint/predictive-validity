@@ -22,6 +22,8 @@ For EVERY entry in every cell:
    - `neg` whose `effect_size` is the sponsor's reading rather than the model's number, or whose
      `class_threshold` is not a bar the class's own successful drugs cleared;
    - a dose ceiling (`margin_stated`) where no model source stated the margin before the trial;
+   - a dose entry `contra` because the reached dose did not work (that failure is efficacy's alone), or
+     `same` on a target the model system never stated (a sponsor trough, an MTD, the drafter's arithmetic);
    - a member drug outside the class you were given (another target, a non-selective drug, another
      modality).
 4. Confirm `model` is the system the class relied on for that question, not a better one in principle.

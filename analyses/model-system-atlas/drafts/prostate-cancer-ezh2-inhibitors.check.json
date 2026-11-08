@@ -62,20 +62,6 @@
    "adjudication_note": "Decision 12: mevrometostat is not in the reviewed class table (zeprumetostat = SHR2554), so dropped. Cell stays untested from 2012; the models stated no exposure target (decision 4), so any in-class entry would also need one."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2024,
-   "rule": "4",
-   "note": "Registry quote verbatim; 1200 mg BID confirmed as RP2D. A derived contra needs an efficacy contra (see efficacy 4); 'target reached' is skin-PD scaling from other tumours with no prostate PD (#50/#99). ESMO 2024 abstract re-dates to 2024.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4 dose tie: a derived contra needs an efficacy contra, and efficacy 4 is now untested/unresolved. No prostate PD; 'target reached' is skin-PD scaling from other tumours (#50/#99, source_calls_it scaling). Untested, dated 2024 (ESMO 1603P)."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
