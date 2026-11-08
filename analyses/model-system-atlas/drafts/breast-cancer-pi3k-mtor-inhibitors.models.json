@@ -193,6 +193,53 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "bez235-novartis-xenografts",
+   "model": "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout",
+   "model_kind": "animal",
+   "model_first_use_year": 2008,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "model_id": "bez235-novartis-xenografts",
+      "model": "Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2008,
+      "year": 2016,
+      "status": "contra",
+      "note": "Mice were reported to tolerate the effective dose; in the pNET phase II, 83% had grade 3/4 events and AE discontinuations doubled everolimus's.",
+      "short": "Stated tolerability broke in pNET patients",
+      "src": "https://doi.org/10.1634/theoncologist.2017-0144",
+      "srcLabel": "Salazar 2018",
+      "quote": "However, treatment with BEZ235 single agent 400 mg bid was accompanied with toxicity requiring frequent treatment modifications and discontinuations in this population with advanced pNET.",
+      "imported_from": "MONDO:0019954",
+      "reason": "Well-tolerated claim contradicted in pNET",
+      "confidence": "low",
+      "confidence_note": "Full text read (PMC6058330). Imported from pancreatic NET (no randomized breast safety readout for dactolisib). Year is the NCT01628913 results posting (2016-04-07); the paper was e-published 2017-12-14. Rodon 2018 called the breast GI DLTs formulation-driven, so whether mice could show this harm is uncertain; abstract-level for the model.",
+      "judgement": "The checker adjudicated dose entry 2 to untested, so the GI harm is no longer counted in dose; under decision 16 a harm the model did not name belongs in safety. Maira 2008 stated the compound was well tolerated at the effective dose, and diarrhoea (90%), stomatitis (74%) and frequent discontinuations contradicted it.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1158/1535-7163.MCT-08-0017",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2017,
+      "print_year": 2018,
+      "registry_date": "2016-04-07",
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "mTOR-inhibitor-naive advanced pancreatic NET (NCT01628913), randomized vs everolimus"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -231,8 +278,8 @@
   },
   {
    "lead": "Dactolisib vs everolimus randomized phase II in pNET (Oncologist 2018) for safety",
-   "outcome": "verdict",
-   "detail": "Patient-side data for an existing system, not a new one: it needs a checker verdict on safety entry 1 (bez235-novartis-xenografts, Maira 2008 untested) to add an imported (pNET) dactolisib safety entry for stomatitis/hyperglycaemia; no current verdict covers it."
+   "outcome": "entry",
+   "detail": "Added safety entry on bez235-novartis-xenografts: 2016 contra, imported_from MONDO:0019954 (pNET), Salazar 2018 doi 10.1634/theoncologist.2017-0144 (PMC6058330), NCT01628913 results posted 2016-04-07. No verdict covers it; the checker's dose 2 adjudication to untested leaves the harm uncounted, so safety entry 1's note 'GI harm counted in dose' is now stale."
   }
  ]
 }

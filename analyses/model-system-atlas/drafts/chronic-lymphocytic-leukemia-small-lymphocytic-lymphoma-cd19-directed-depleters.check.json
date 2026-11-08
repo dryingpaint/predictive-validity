@@ -220,6 +220,43 @@
       "status_supported": true,
       "checked_by": "CHECKER_BRIEF / models",
       "note": "Quote verbatim in abstract. Signature derived from already-treated CTL019 CLL patients with known response, so retrodiction: retro (not same) is correct; 2018, patient level."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Status rule 6 (opening untested at model_first_use_year)",
+      "note": "Ruella 2017 Leukemia (PMID 27677739, epub 2016-09-28) intro has the quote verbatim; xenograft read human CAR-T cytokines, a checkable CRS proxy. Untested opening in 2016 fine.",
+      "checked_by": "CHECKER_BRIEF / models"
+    },
+    {
+      "cell": "safety",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "comparison_stated pairing; prospective (cohort designed after the preclinical data)",
+      "note": "Gauthier 2020 Blood (PMC7205814) full text: quote verbatim; adjusted OR 0.25 for CRS grade, lower MCP-1/sIL-2Ra. Abstract says pilot was run because preclinical studies showed reduced CRS, so prospective, same not retro.",
+      "checked_by": "CHECKER_BRIEF / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "same",
+      "proposed_year": 2019,
+      "rule": "Dating rule 6: year is the earliest public comparison (registry results posting)",
+      "note": "Gap fix: year 2023 -> 2019; src -> NCT01747486 results (posted 2019-02-26; primary CR within 3 mo: CR+CRi 6/18 high dose, 1/13 low dose CTL019); Frey 2020 quote verbatim in abstract. registry_date should be first-posted 2012-12-11, not 2019-02-26.",
+      "checked_by": "CHECKER_BRIEF / models",
+      "adjudicated_status": "same",
+      "adjudication_note": "Drafter and checker agree on same (Status table: primary CR endpoint met, direction agrees with xenograft clearance). The correction is dating only: rule 6 dates it to the earliest public comparison, NCT01747486 results posted 2019."
     }
   ],
   "missing": [

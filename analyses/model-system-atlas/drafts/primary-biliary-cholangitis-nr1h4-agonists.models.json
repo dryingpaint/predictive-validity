@@ -171,13 +171,13 @@
   },
   {
    "lead": "Tropifexor met GGT primary (NCT02516605) with no efficacy entry on a prospective track",
-   "outcome": "verdict",
-   "detail": "dose 2 corrected to untested (no stated target); no public pre-trial tropifexor cholestasis model exists (2015-2020 sweep), so rodent-fxr-pd carries no efficacy prediction to score; rule question 1"
+   "outcome": "covered",
+   "detail": "Covered by the checker verdict on dose 2 (corrected/adjudicated same -> untested: rodent-fxr-pd states no exposure, occupancy or regimen target). The rodent-fxr-pd track is a PD model with no efficacy prediction, so no efficacy entry is owed on it; the tropifexor GGT primary (NCT02516605, posted 2019-11-13) is already paired on rodent-bdl as efficacy 4 (retro, Kilavuz 2021). Nothing scored changes."
   },
   {
    "lead": "Unverified INTREPID press release and unopened AASLD 2019 cilofexor abstract; no peer-reviewed PBC papers",
-   "outcome": "verdict",
-   "detail": "Covered by checker verdicts on efficacy 3 (untested, dating rule question 2) and efficacy 5 (untested, conference-abstract tier rule question 3); no system to add"
+   "outcome": "covered",
+   "detail": "Covered by checker verdicts on efficacy 3 (INTREPID NCT03394924 same -> untested, primary ALP responder missed; year 2020 if the press release dates) and efficacy 5 (cilofexor Mdr2 retro -> untested, NCT02943447 posts safety primaries only and the AASLD 2019 abstract is not an admissible tier). Same cells, indices and changes; no entry or fix owed."
   }
  ]
 }

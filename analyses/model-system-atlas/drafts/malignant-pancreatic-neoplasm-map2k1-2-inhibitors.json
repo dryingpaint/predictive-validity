@@ -525,6 +525,53 @@
       "quote": "PFS and OS outcomes did not indicate any treatment benefit for pimasertib over placebo in combination with gemcitabine"
      }
     ]
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "model_id": "pdac-xenograft-pdx",
+    "model_kind": "animal",
+    "prediction_level": "class",
+    "model_first_use_year": 2010,
+    "modality": null,
+    "imported_from": null,
+    "trial_unreported": false,
+    "model_filed": false,
+    "population": "KRAS-mutant (G12D/G12V), third- or later-line metastatic",
+    "year": 2023,
+    "status": "contra",
+    "strengthens": true,
+    "model": "Patient-derived pancreatic xenografts (trametinib + chloroquine)",
+    "note": "Trametinib + chloroquine regressed patient-derived PDA xenografts (Kinsey 2019); patients given trametinib + hydroxychloroquine third-line had no responses (1/10 stable disease).",
+    "short": "PDX regressions; no patient responses",
+    "src": "https://doi.org/10.1186/s12885-023-11464-3",
+    "srcLabel": "Tang 2023",
+    "quote": "Of the 10 patients with measurable disease, only 1 patient achieved stable disease, and the remaining patients had progressive disease.",
+    "confidence": "low",
+    "confidence_note": "Abstract-level (PubMed) for both sides. Patient side is a retrospective real-world series (8 on trametinib + HCQ, 5 on trametinib + CDK4/6i), no pre-specified primary endpoint and no control; Witte 2024 (10.1007/s00432-024-05954-5, 13/13 evaluable THCQ patients progressed) repeats it. THREAD NCT03825289 terminated with no results posted. model_filed false: Kinsey 2019 is academic, not in NDA 204114.",
+    "judgement": "Same PDX system, now dosed with the exact regimen patients later received; the model (epub 2019-03-04) precedes both patient series, so prospective. Regressions predicted, no responses seen: contra, same status as the track since 2013, so strengthens. Hydroxychloroquine is a non-member partner, but trametinib is the member drug and the model tested the same combination.",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1038/s41591-019-0367-9",
+    "model_src_tier": 1,
+    "epub_year": 2023,
+    "print_year": 2023,
+    "registry_date": null,
+    "product_in_model": true,
+    "magnitude": "direction_only",
+    "magnitude_basis": "Xenograft regression vs objective response (0 of 10 measurable patients responded)",
+    "source_calls_it": "miss",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": null,
+      "registry_date": null,
+      "doi": "10.1007/s00432-024-05954-5",
+      "quote": "In the THCQ subgroup, all patients evaluable for response (13/19) had progressive disease (PD) within 100 days."
+     }
+    ]
    }
   ],
   "safety": [

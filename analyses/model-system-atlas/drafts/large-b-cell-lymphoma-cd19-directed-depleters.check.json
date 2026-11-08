@@ -150,6 +150,21 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "PMID 29808007 abstract has quote verbatim; model explicitly built to reproduce clinic-observed CRS and neurotoxicity, so retro (retrodiction true) is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (earliest public comparison)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Fields year and epub_year 2017->2010: Kochenderfer 2010 Blood (doi 10.1182/blood-2010-04-281931, PMID 20668228, epub 2010-07-28) verbatim: 'serum immunoglobulins decreased to very low levels after treatment'. Mouse model_src epub 2010-07-14 precedes it; status stays same.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same either way. Evidence rule 6 plus safety transfer rule (imported_from): Kochenderfer 2010 Blood (epub 2010-07-28, same NCI product) shows very low immunoglobulins after the mouse paper; earliest public comparison is 2010."
   }
  ],
  "missing": [

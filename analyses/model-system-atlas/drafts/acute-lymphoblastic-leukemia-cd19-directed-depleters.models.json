@@ -252,8 +252,8 @@
  "gaps": [
   {
    "lead": "JCAR015 ROCKET phase 2 (NCT02535364) cerebral-edema deaths",
-   "outcome": "verdict",
-   "detail": "Corrects no status: dated note on the draft's nalm6 (19-28z) safety track and ROCKET's unreported CR primary already covered by adjudicated verdict efficacy 4 (untested); SCID mice cannot show it (safety 1 untested/no_prediction)"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: ROCKET (NCT02535364) CR primary unreported after cerebral-edema deaths is already covered by check.json efficacy 4 (adjudicated untested, untested_reason unsettled); the deaths are a note on the nalm6 safety track, whose entry 1 stays untested/no_prediction (SCID mice cannot show cerebral edema)."
   },
   {
    "lead": "Giavridis 2018 and Norelli 2018 CRS/neurotoxicity mouse models",

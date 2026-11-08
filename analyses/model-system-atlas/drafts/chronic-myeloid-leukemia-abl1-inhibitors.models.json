@@ -264,6 +264,57 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "baf3-bcr-abl-mutagenesis-screen",
+   "model": "Ba/F3 BCR-ABL cell-based mutagenesis screen",
+   "model_kind": "ex_vivo",
+   "model_first_use_year": 2009,
+   "prediction_level": "patient",
+   "cells": {
+    "efficacy": [
+     {
+      "year": 2014,
+      "status": "same",
+      "model_id": "baf3-bcr-abl-mutagenesis-screen",
+      "model": "Ba/F3 BCR-ABL cell-based mutagenesis screen",
+      "model_kind": "ex_vivo",
+      "prediction_level": "patient",
+      "model_first_use_year": 2009,
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1016/j.ccr.2009.09.028",
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2014,
+      "print_year": 2014,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "ponatinib resistance in patients by BCR-ABL1 genotype against the screen's recovered resistant clones",
+      "source_calls_it": "partial",
+      "population": "BCR::ABL1-positive (Ph+) CML and Ph+ ALL treated with ponatinib, compound mutation carriers",
+      "confidence": "medium",
+      "confidence_note": "PMC4160372 full text read. Patients pooled from ponatinib trials with CML and Ph+ ALL; registry_date null because the paper's patient series is not one registered trial's results record.",
+      "note": "T315I-inclusive compound mutants (E255V/T315I) caused clinical ponatinib failure; the 2009 screen had recovered that mutant, though its headline claimed complete abrogation of resistance.",
+      "short": "Compound mutants escape ponatinib, as screen flagged",
+      "src": "https://doi.org/10.1016/j.ccr.2014.07.006",
+      "srcLabel": "Zabriskie 2014",
+      "quote": "Vulnerability of ponatinib to certain two-component compound mutations was demonstrated in pre-clinical studies (O'Hare et al., 2009), suggesting they may emerge as a clinical problem in patients treated with ponatinib.",
+      "reason": "Screen-flagged compound mutants escaped in patients",
+      "judgement": "Scored same with source_calls_it partial, not contra: the source states the 2009 screen recovered E255V/T315I and flagged compound mutants, and patients failed with them; the abstract's 'completely abrogated resistance' overstated coverage at clinical exposure. Strengthens the 2013 same: the source states the comparison itself and extends it to compound mutants.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "strengthens": true
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -279,8 +330,8 @@
  "gaps": [
   {
    "lead": "Zabriskie 2014 T315I-inclusive compound mutants as a later entry against the 2009 mutagenesis screen",
-   "outcome": "verdict",
-   "detail": "Status change on existing baf3-bcr-abl-mutagenesis-screen efficacy track (2013 'same' entry); needs a checker verdict on a 2014 partial/contra entry, not a new system"
+   "outcome": "entry",
+   "detail": "efficacy, baf3-bcr-abl-mutagenesis-screen, 2014 same (source_calls_it partial, comparison_stated true), Zabriskie 2014 PMC4160372: source states the 2009 screen recovered E255V/T315I and flagged compound-mutant vulnerability that then caused clinical ponatinib failure"
   },
   {
    "lead": "Ba/F3 compound-mutant in vitro resistance profiling (Zabriskie 2014)",
@@ -294,13 +345,13 @@
   },
   {
    "lead": "EPIC phase 3 ponatinib vs imatinib terminated for arterial occlusive events (Lipton 2016)",
-   "outcome": "verdict",
-   "detail": "Patient result bearing on existing rat-monkey-toxicology safety entry (2012 same, partial) and bcr-abl-cell-xenograft efficacy note; needs a verdict on a later entry, no new model system"
+   "outcome": "covered",
+   "detail": "check.json safety 1 already adjudicated contra (2012) for the missed arterial thrombosis; EPIC (terminated, primary endpoint not evaluable) repeats contra on safety and leaves efficacy unevaluable, so no status change on any track"
   },
   {
    "lead": "OPTIC dose-ranging responses at 15 mg below the 40 nM screen threshold (Cortes 2021)",
-   "outcome": "verdict",
-   "detail": "Later entry on existing baf3-bcr-abl-mutagenesis-screen dose track (2012 same); needs a checker verdict on a 2021 partial entry"
+   "outcome": "covered",
+   "detail": "Dose rule: the 40 nM target was reached at 45 mg (dose 2, same); OPTIC responses at 15 mg are an efficacy-of-lower-dose matter, not a dose miss under the brief table, so nothing scored changes"
   },
   {
    "lead": "Vamotinib's own preclinical model (Mian 2015, Ba/F3 T315I and mouse)",

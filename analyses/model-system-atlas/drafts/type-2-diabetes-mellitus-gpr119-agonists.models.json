@@ -315,18 +315,18 @@
   },
   {
    "lead": "Daiichi Sankyo DS-8500a discontinuation May 2017",
-   "outcome": "verdict",
-   "detail": "patient-side tier 5 note for draft efficacy index 3 (rodent track, DS-8500a); already raised in that entry's checker verdict; portfolio cut, does not change contra; not a model system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a tier 5 portfolio cut for firuglipel, patient-side note only; draft efficacy index 3 (rodent track) is already contra from 2014 and its 2018 entry is set by the NCT02647320 registry results; check.json efficacy 3 note already records it."
   },
   {
    "lead": "Inagaki 2017 NCT02222350 (doi:10.1136/bmjdrc-2017-000424)",
-   "outcome": "verdict",
-   "detail": "fills the null doi/quote patient_trials row in draft efficacy index 3 and moves draft safety index 2 to year 2017 (checker verdict 'corrected', proposed_year 2017); not a new system"
+   "outcome": "covered",
+   "detail": "Already proposed: check.json safety index 2 verdict 'corrected', proposed_year 2017 (Inagaki 2017, 2017-09-29) with Chu 2007 as model side; filling the null doi/quote row of efficacy index 3 patient_trials is an extra patient trial with status unchanged (contra; Inagaki met its WMG primary, as did the other Japanese trials already listed), and check.json efficacy 3 note names it."
   },
   {
    "lead": "MBX-2982 Phase 2 NCT01035879 (no posted results)",
-   "outcome": "verdict",
-   "detail": "tier 5 source found: CymaBay SEC Form 10 Amdt 2 (2013) 'MBX-2982 generally lowered mean weighted glucose ... not always to a statistically significant degree and not to the extent of sitagliptin'; needs a verdict adding it as trial_unreported patient_trials on the draft's rodent efficacy/engagement track (and to MBX-2982's retro on t2d-nstz-rat-repeat-ogtt); no new system. JNJ-38431055 (Katz 2012) stays out, non-member (decision 12)"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: tier 5 (CymaBay Form 10/A 2013, trial_unreported) and its own wording, glucose lowered 'not always to a statistically significant degree and not to the extent of sitagliptin', is inconclusive (unsettled); as an extra patient_trials row it leaves the rodent efficacy track contra (2014, GSK1292263) and the nSTZ retro (rests on GSK1292263, Nunez 2014) unchanged. Re-scrape of the SEC filing via fc.py truncated before the MBX-2982 trial paragraph, so the quote rests on the gap pass's read."
   }
  ]
 }

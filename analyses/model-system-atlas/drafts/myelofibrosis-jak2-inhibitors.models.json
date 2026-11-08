@@ -321,13 +321,13 @@
   },
   {
    "lead": "BMS-911543 on the JAK2V617F BMT mouse (Pomicter 2015 'limited efficacy') vs NCT01236352 / Tefferi 2023",
-   "outcome": "verdict",
-   "detail": "Same system as jak2v617f-bmt-mouse; efficacy 1's judgement holds it as unsettled (program stopped for business; registry primary 4 PR but ~34 clinical improvements of 42+ ph2, Mayo 62% spleen response); scoring awaits checker rule question 1 on efficacy 1, no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 2 (jak2v617f-bmt-mouse, same 2015) judgement already records BMS-911543 as unsettled. NCT01236352 (terminated 'portfolio/business decisions', results posted 2019-05-21) has co-primaries AEs and IWG best overall response; few PRs with many clinical improvements matches the mouse's 'limited activity' at most in direction, so no contra and no status change on the track. Scoring of business stops stays checker rule question 1."
   },
   {
    "lead": "BMS-911543 on JAK2V617F+ patient CD34+ progenitors (Purandare 2012)",
-   "outcome": "verdict",
-   "detail": "Source verified (Leukemia 2012, PMID 22015772, doi:10.1038/leu.2011.292); same system as jak2v617f-patient-progenitor-colony (efficacy 4 judgement already notes it); patient side is the same business-stopped NCT01236352, so whether it gets a scored entry hangs on rule question 1, no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 4 (jak2v617f-patient-progenitor-colony, same 2015) judgement already notes BMS-911543's CD34+ inhibition; its only patient comparison is the business-stopped NCT01236352 (mixed IWG response), which cannot flip a same track to contra, so no entry. Rule question 1 governs."
   }
  ]
 }

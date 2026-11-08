@@ -24,7 +24,9 @@
    "proposed_status": "same",
    "proposed_year": 2017,
    "rule": "Evidence rule 6 (year = earliest date the comparison was public)",
-   "note": "Quote verbatim (abstract). Status same holds, but Yanamandra 2017 (doi 10.1126/scitranslmed.aal2029: HJ8.5 in P301S mice and ABBV-8E12 in PSP patients, plasma tau rose in both, stated) is public 2017-04-19; Qureshi 2018 + Bright 2015 also precede 2021."
+   "note": "Quote verbatim (abstract). Status same holds, but Yanamandra 2017 (doi 10.1126/scitranslmed.aal2029: HJ8.5 in P301S mice and ABBV-8E12 in PSP patients, plasma tau rose in both, stated) is public 2017-04-19; Qureshi 2018 + Bright 2015 also precede 2021.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 6 plus the engagement rule ('moved in dosed humans'; only efficacy is limited to the context's patients): Yanamandra 2017 (PMID 28424326, epub 2017-04-19) states P301S-mouse and tilavonemab-PSP plasma tau rises. Same; year 2017."
   },
   {
    "cell": "engagement",
@@ -258,6 +260,28 @@
    "rule": null,
    "note": "Goff 2025 full text (PMC12256572, received 2024-10-25): quote verbatim; retro correct. Identity is the open point: Goff contrasts its spatial MCell model with 'well-mixed' models like Geerts 2023, so it may be a second in-silico system rather than a strengthening entry (rule question).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Decision 10: a model run after the clinic knew the answer is retro, never same",
+   "note": "Sopko 2020 (Europe PMC, epub 2020-09-28) abstract carries the quote verbatim; postdates Qureshi 2018 and Boxer 2019 CSF suppression, so retro holds. Duplicates engagement #7 (same source, year, adjudicated retro): keep one.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "note": "Shulman 2023 full text (PMC10724064 via NCBI efetch): quote verbatim; all doses P<0.0001 vs placebo, -92.6% high dose; cites Sopko as ref 18. AD-patient CSF readout first public here, after Sopko 2020: same, readout direct.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

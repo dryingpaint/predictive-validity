@@ -290,6 +290,46 @@
    "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Rule 3 and rule 5: Krishna raised sclerostin and states no harm for inhibitors (abstract conclusion: treating vascular disease); no quotable model prediction for this class, so untested, untested_reason no_prediction."
+  },
+  {
+   "cell": "safety",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "FDA BLA 761062 review (local bundle) lists Study 150483 among new resubmission studies; quote verbatim. Run after ARCH imbalance; opening untested 2019 (review public date proxy) acceptable."
+  },
+  {
+   "cell": "safety",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Study 150483: no vasoconstriction up to 300 ug/mL (~10x Cmax), sumatriptan constricted; post-ARCH, FDA-requested. Retrodiction failing to reproduce labeled CV harm is contra, consistent with sponsor GWAS verdict (safety 7)."
+  },
+  {
+   "cell": "safety",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Study 125269 (non-GLP) in review's list of new studies; quote verbatim; FDA requested a platelet study after ARCH's early event separation. Opening untested 2019 proxy acceptable."
+  },
+  {
+   "cell": "safety",
+   "index": 15,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "No CD62P/P-selectin platelet activation at 1-300 ug/mL (~10x Cmax 28.1 ug/mL); retrodiction after ARCH, failed to reproduce CV harm, so contra per DRAFTER_BRIEF retrodiction rule; product_in_model true correct."
   }
  ],
  "missing": [
@@ -298,7 +338,8 @@
   "OVX cynomolgus monkey dosed with romosozumab itself for 12 months (Ominsky 2017 JBMR, doi 10.1002/jbmr.3036, epub Dec 2016, after FRAME): BMD +14-26% spine/femur; a distinct system (OVX, product_in_model true) that should be its own retro track rather than dropped.",
   "Blosozumab phase 3 was discontinued for injection-site reactions (2015; only a non-admissible social post found, Lilly pipeline/SEC filing needed); Recker 2015 reports ISRs in 22.6-40% and ADAs. No safety entry covers blosozumab local tolerance (likely untested/unpublished).",
   "Krishna 2017 (cited in the FDA review): sclerostin protective in angiotensin-II ApoE KO mice, an atherosclerosis/aneurysm model published around ARCH; possible additional CV-safety track (product_in_model false).",
-  "Human isolated coronary artery rings ex vivo (Amgen Study 150483, non-GLP; FDA BLA 761062 multidisciplinary review): no vasoconstriction by romosozumab or sclerostin, a post-ARCH human-tissue CV model that failed to reproduce the CV signal; no track (likely retro-contra, as for the sponsor GWAS). Also in-vitro human platelet activation study (no activation) in the same review."
+  "Human isolated coronary artery rings ex vivo (Amgen Study 150483, non-GLP; FDA BLA 761062 multidisciplinary review): no vasoconstriction by romosozumab or sclerostin, a post-ARCH human-tissue CV model that failed to reproduce the CV signal; no track (likely retro-contra, as for the sponsor GWAS). Also in-vitro human platelet activation study (no activation) in the same review.",
+  "Human atherosclerotic plaque immunohistochemistry (Amgen Study 150498, FDA BLA 761062 multidisciplinary review, item (C)): no sclerostin in vulnerable plaque areas and no association with donors' CV events; a post-ARCH human-tissue CV comparison with no track (likely retro-contra or untested, since no drug was applied)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

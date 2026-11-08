@@ -138,7 +138,9 @@
    "proposed_status": "contra",
    "proposed_year": 2022,
    "rule": "evidence rule 6 (year = earliest public date) and rule 2 (a higher-tier record of the same trial sets the status)",
-   "note": "Registry zeros confirmed (quote is the truncated measure title). Missed the tier-1 report Vasu 2022, Haematologica 107:770 (doi:10.3324/haematol.2020.274118), which itself sets preclinical superiority beside absent clinical activity (comparison_stated true). Re-date to 2022 on it; contra stands."
+   "note": "Registry zeros confirmed (quote is the truncated measure title). Missed the tier-1 report Vasu 2022, Haematologica 107:770 (doi:10.3324/haematol.2020.274118), which itself sets preclinical superiority beside absent clinical activity (comparison_stated true). Re-date to 2022 on it; contra stands.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed (contra). Rules 2 and 6: tier-1 Vasu 2022 (doi:10.3324/haematol.2020.274118) sets it, comparison_stated true; dated to Crossref online 2021-12-02, so year 2021, not 2022 or 2025 (see the second efficacy-5 verdict)."
   },
   {
    "cell": "efficacy",
@@ -284,6 +286,21 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Quote verbatim. Model side stated limited HSC toxicity and no HSC damage in mice; patients' grade 3-4 marrow suppression (Flu/Cy-confounded) all resolved within a month without HSCT rescue; source calls it favourable. same, direction_only, low confidence stands; a strict reader could call it partial."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2021,
+   "rule": "evidence rule 6 (year = earliest public date); rule 2 (higher-tier record of the same trial)",
+   "note": "Vasu 2022 (PMC8883544) re-opened: Crossref published-online 2021-12-02. Fields: year 2025->2021, epub_year 2021, print_year 2022, src doi:10.3324/haematol.2020.274118, source_tier 1, comparison_stated true (\"considered superior...in preclinical experiments...did not show clinical activity\"); \"No responses to treatment were detected\". contra stands.",
+   "checked_by": "CHECKER_BRIEF / models gaps",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra stands. Rule 6: earliest public date is Crossref published-online 2021-12-02 (verified), so year 2021, epub 2021, print 2022; rule 2: tier-1 Vasu paper supersedes the 2025 registry record as src."
   }
  ],
  "missing": [

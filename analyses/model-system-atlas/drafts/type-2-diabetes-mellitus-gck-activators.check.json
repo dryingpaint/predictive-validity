@@ -95,7 +95,9 @@
    "proposed_status": "retro",
    "proposed_year": 2012,
    "rule": "evidence rule 6 (dating)",
-   "note": "Retro status is right (De Ceuninck postdates Meininger). But the year should be 2012: Crossref shows the BJP paper online 2012 (record created 2012-08-28, published-online 2012-12-20), not 2013."
+   "note": "Retro status is right (De Ceuninck postdates Meininger). But the year should be 2012: Crossref shows the BJP paper online 2012 (record created 2012-08-28, published-online 2012-12-20), not 2013.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed (drafter rule: a retrodiction that reproduced the human data is retro). Rule 6 dating: De Ceuninck model side was online 2012, so the paired comparison dates to 2012, not 2013."
   },
   {
    "cell": "safety",
@@ -107,7 +109,9 @@
    "proposed_status": "same",
    "proposed_year": 2023,
    "rule": "evidence rule 6 (dating)",
-   "note": "Liang 2024 quote verbatim. An earlier tier-4 meta-analysis (Frontiers Endocrinol 2023, doi 10.3389/fendo.2023.1175198) already showed GKA-raised triglycerides (WMD +0.322 mmol/L, P=0.001). The flip is blocked if the missing 2011 contra is added."
+   "note": "Liang 2024 quote verbatim. An earlier tier-4 meta-analysis (Frontiers Endocrinol 2023, doi 10.3389/fendo.2023.1175198) already showed GKA-raised triglycerides (WMD +0.322 mmol/L, P=0.001). The flip is blocked if the missing 2011 contra is added.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "'A failed model stays failed on its track' (contra rule): Baker 2014, a rodent retrodiction on this track, failed to reproduce the patient triglyceride rise, so neither the 2023 meta-analysis nor Liang 2024 can return the track to same."
   },
   {
    "cell": "engagement",
@@ -216,6 +220,36 @@
    "status_supported": true,
    "note": "Quote verbatim. Full text says dorzagliatin and TTP399 'did not cause hypertriglyceridemia', yet SEED/DAWN reported ~20% TG rise and hyperlipidaemia 12-14% vs 9-11%: dorzagliatin's own TG rise is the cleaner contra pairing than the pooled meta-analysis. Source_calls_it is the authors' 'match'.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2011,
+   "rule": "safety: silence contradicted on a harm the species could show; contra stays failed on its track",
+   "note": "Field status: 'same' -> 'contra' from 2011. Eiki 2011 (PMID 21937665, epub 2011-09-21) MK-0941 rodent/dog abstract reports glucose, PK, durability only, silent on lipids; Meininger 2011 (epub 2011-10-12) MK-0941 raised triglycerides. Insert contra 2011 before safety 2.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: does a pharmacology paper's silence on lipids (Eiki 2011, abstract only, no public tox data) count as the model's silence contradicted under the safety rule, or is it rule 5 'unpublished' and not scored?"
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2014,
+   "rule": "retrodiction that failed to reproduce human data is contra; a failed model stays failed",
+   "note": "Field status: 'same' -> 'contra' (2014, retrodiction true). Baker 2014 (PMID 24772484, doi 10.1111/bph.12504) abstract verbatim: two GKAs in Zucker rats and gk(wt/del) mice 'without increases in plasma or hepatic triglycerides', after MK-0941's 2011 rise. Track cannot return to same.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Retrodiction rule: Baker 2014 ran GKAs in Zucker rats and gk(wt/del) mice after MK-0941's 2011 triglyceride rise and found no triglyceride increase: failed to reproduce, contra; a failed model stays failed, blocking the 2024 same."
   }
  ],
  "missing": [

@@ -16,7 +16,8 @@
   "PubMed: fevipiprant guinea pig OR AZD1981 guinea pig",
   "ClinicalTrials.gov API: MK-1029, setipiprant, ACT-129968 studies; primary outcome results for NCT01343407, NCT01624974, NCT02720081",
   "Gap pass: Europe PMC ADC3680 OR ADC3680B OR PTR-36 (no indexed primary paper); ClinicalTrials.gov API ADC3680/PTR-36 (NCT01173770, NCT01448954, NCT01730027, none with results); fc.py search 'ADC3680 CRTH2 antagonist Pulmagen asthma'",
-  "Gap pass: ERS 2013 abstract Fitzgerald P735 (ADC3680 in vitro profile, ESC IC90 dose prediction, 6-month tox); FierceBiotech on Pulmagen/Teijin Dec 2016 phase 2 release; ERS 2014 abstract 4836 (ARRY-502 Th2 biomarkers)"
+  "Gap pass: ERS 2013 abstract Fitzgerald P735 (ADC3680 in vitro profile, ESC IC90 dose prediction, 6-month tox); FierceBiotech on Pulmagen/Teijin Dec 2016 phase 2 release; ERS 2014 abstract 4836 (ARRY-502 Th2 biomarkers)",
+  "Apply pass: Array BioPharma FY2013 10-K (sec.gov); ClinicalTrials.gov API ARRY-502 (NCT01561690, NCT01349725, no results); fc.py scrape ERS 2014 abstract 4836"
  ],
  "added_models": [
   {
@@ -125,38 +126,38 @@
  "gaps": [
   {
    "lead": "ARRY-502 phase 2 met pre-BD FEV1 primary, July 2013 (Array 10-K)",
-   "outcome": "verdict",
-   "detail": "Patient-side datum, not a new system: add to efficacy rodent-allergic-airway contra 2013 entry (and challenge-LAR pairing) as an earlier member 'same' (tier 5, trial_unreported); checker missing item covers it; cell still ends 2013 contra."
+   "outcome": "covered",
+   "detail": "Verified in Array BioPharma FY2013 10-K (sec.gov): 'In July 2013, we announced positive results ... ARRY-502 achieved the primary endpoint of significant improvement in pre-bronchodilator FEV1' (200 mg BID, +3.9% vs placebo, P=0.02; NCT01561690, no posted results). A tier-5 member 'same' in the same year as the efficacy #2 contra (2013-09-10) on the rodent-allergic-airway track; contra beats same, the track still reads contra from 2013, so no scored change. Belongs in efficacy #2 patient_trials (trial_unreported); the checker's missing item already records it. An appended entry would also sit out of year order on the track (lint)."
   },
   {
    "lead": "Novartis Oct/Dec 2019 ZEAL/LUSTER releases; ZEAL-1 NCT03215758 absent from patient_trials",
-   "outcome": "verdict",
-   "detail": "Dating and patient_trials correction to efficacy rodent-allergic-airway contra entry (efficacy #2); no new system."
+   "outcome": "covered",
+   "detail": "Novartis 2019 releases and ZEAL-1 (NCT03215758) are later patient trials on a track already contra since 2013; adding them to patient_trials changes no status or year."
   },
   {
    "lead": "ADC3680B (PTR-36) positive phase II on mPEF",
-   "outcome": "verdict",
-   "detail": "Verified: 16-week Japan phase 2 (Teijin, ~160 pts, 5 and 20 mg QD), mPEF was the primary and met at both doses, press release Dec 2016 (tier 5, trial_unreported); add to efficacy rodent-allergic-airway contra entry patient_trials; NCT01730027 (FEV1 primary, 2013-14) never reported."
+   "outcome": "covered",
+   "detail": "ADC3680B Dec 2016 mPEF result is a later member 'same' on efficacy tracks already contra since 2013/2014; patient_trials only, no status or year change."
   },
   {
    "lead": "ARRY-502 reduced Th2 mediators in patients (ERS 2014 abstract 4836)",
-   "outcome": "verdict",
-   "detail": "Read: FeNO -27.0 ppb vs placebo (p<0.0001) in FeNO-high patients, plus periostin, TARC, CRTh2+ eosinophils down; a downstream 'same' supporting engagement human-eos-th2-dp2-assays (engagement #2), conference abstract; no new system."
+   "outcome": "fix",
+   "detail": "engagement, index 2, fields year/src/epub_year/print_year: current year 2016 (Gonem 2016, https://doi.org/10.1016/S2213-2600(16)30179-5); source supports 2014: ERS 2014 abstract 4836 (Eur Respir J 44 Suppl 58: 4836, https://doi.org/10.1183/13993003/erj.44.Suppl_58.4836) reports a member, ARRY-502 200 mg BID x4 wk, lowering FeNO 27.0 ppb vs placebo (p<0.0001) and 'blood CRTh2+ eosinophils' in Th2-high patients, a downstream 'same' on human-eos-th2-dp2-assays two years before Gonem. Status same unchanged; first 'same' moves to 2014 (conference abstract, low confidence; Gonem 2016 can stay as the higher-tier support in judgement)."
   },
   {
    "lead": "OC000459 (timapiprant) allergen challenge LAR and FEV1 trials",
-   "outcome": "verdict",
-   "detail": "Corrects human-allergen-challenge-lar opening year to 2006 (checker efficacy #4 verdict covers it); a scored OC000459 'same' is outside the rules: timapiprant is not on the member list (DRAFTER_BRIEF scope: only member drugs score)."
+   "outcome": "covered",
+   "detail": "Checker verdict efficacy #4 (corrected, proposed_year 2006) already proposes the opening-year change; a scored OC000459 entry is outside the class (timapiprant not a member)."
   },
   {
    "lead": "Setipiprant own PoC FEV1 trial NCT01225315, no posted results",
-   "outcome": "verdict",
-   "detail": "Add NCT01225315 as a trial_unreported same-drug patient_trial on the human-allergen-challenge-lar contra entry (efficacy #5); no new system."
+   "outcome": "covered",
+   "detail": "NCT01225315 has no posted results; an unreported patient_trial on efficacy #5 (contra) changes no status."
   },
   {
    "lead": "ADC3680B (member never mentioned)",
-   "outcome": "verdict",
-   "detail": "Its models are tracked systems: human whole-blood eosinophil shape change IC90 predicted a 6 mg QD dose (Fitzgerald ERS 2013 P735), phase 2 at 5/20 mg met mPEF primary Dec 2016: supports dose human-eos-th2-dp2-assays (dose #2); 6-month tox NOAEL margin ~400 bears on safety dp2-selectivity-tox (safety #1). No new system."
+   "outcome": "covered",
+   "detail": "ADC3680 IC90 dose prediction and 6-month tox margin: dose track already same from 2016 (dose #2) and exposure reached at 5/20 mg is unverified; no patient safety result for ADC3680 to compare with the margin, so safety #1 stays untested. No scored change."
   }
  ]
 }

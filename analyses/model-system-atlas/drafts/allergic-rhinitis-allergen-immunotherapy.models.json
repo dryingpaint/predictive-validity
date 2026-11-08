@@ -540,18 +540,18 @@
   },
   {
    "lead": "NCT02150343 HDM-SPIRE field Phase 2b results posted 2018-06-15",
-   "outcome": "verdict",
-   "detail": "Corrects allergen-exposure-chamber dose 3, efficacy 2, safety 3 (trial_unreported false, statuses unchanged); checker verdicts on dose 3 and efficacy 2 already state it, safety 3 needs the same flag"
+   "outcome": "covered",
+   "detail": "Covered: check.json verdicts on dose 3, efficacy 2 and safety 3 each already state trial_unreported must be false (NCT02150343 results posted 2018-06-15); statuses contra/contra/same unchanged."
   },
   {
    "lead": "Circassia PRNewswire 2013-09-12 HDM-SPIRE chamber Phase II",
-   "outcome": "verdict",
-   "detail": "Dates allergen-exposure-chamber engagement 2 to 2013 (corrected verdict, proposed_year 2013) and is the model-side safety statement noted in the safety 3 verdict; same chamber system, no new track"
+   "outcome": "covered",
+   "detail": "Covered: engagement 2 corrected verdict already proposes year 2013 from this release (status same unchanged); its model-side safety statement is noted in the safety 3 verdict and changes no status."
   },
   {
    "lead": "Health Canada RDS00632 Itulatek (birch SLIT-tablet)",
-   "outcome": "verdict",
-   "detail": "Sets model_filed true on allergen-exposure-chamber dose 4 and safety 4 (SQ tree chamber dose-finding); safety 4 verdict already says so, dose 4 needs it"
+   "outcome": "covered",
+   "detail": "Covered: dose 4 and safety 4 verdicts both already state model_filed should be true on RDS00632 ('a Phase II dose-finding EEC trial')."
   },
   {
    "lead": "Not found / not searched: SPIRE peptide animal models, DP/MG/14-1, Salsola kali, rBet v 1 mouse",
@@ -560,8 +560,8 @@
   },
   {
    "lead": "Stallergenes 2009-09-16 VO59.08 Phase IIb/III press release",
-   "outcome": "verdict",
-   "detail": "Earliest patient source for rbetv1-balbc-birch-asthma-mouse efficacy 6-7 (retrodiction true; efficacy 7 corrected verdict year 2013) and for patient-blood-dc-pbmc dose 2/safety 2; corrects dating, adds no system"
+   "outcome": "covered",
+   "detail": "Covered: efficacy 7 corrected verdict already proposes year 2013 with this release as src; efficacy 6 verdict flags retrodiction true. For patient-blood-dc-pbmc dose 2 (untested) and safety 2 the ex-vivo data were first public in Nony 2015 (Europe PMC, epub 2015-04-20), so the comparison cannot predate 2015 and the abstract does not date the assay relative to the trial: no scored field changes."
   }
  ]
 }

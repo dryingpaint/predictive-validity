@@ -176,13 +176,13 @@
  "gaps": [
   {
    "lead": "Efficacy earlier 'same' in 2018 (Cortes 2018 Lancet Oncol phase 2; ADMIRAL CR/CRh in FDA review)",
-   "outcome": "verdict",
-   "detail": "Dates efficacy entry 2 (flt3-itd-mv4-11-xenograft, 2019 same) to 2018; the checker confirmed that entry, so it needs a corrected-year verdict."
+   "outcome": "fix",
+   "detail": "cell efficacy, index 2, field year (with src/srcLabel/quote/epub_year/print_year/registry_date/population): current 2019 (Cortes 2019 QuANTUM-R); the source supports 2018: Cortes 2018 Lancet Oncol single-arm phase 2 of quizartinib, NCT00989261, doi:10.1016/S1470-2045(18)30240-7, PMID 29859851, epub 2018-05-31, co-primary CRc 56% (cohort 1) and 46% (cohort 2) in FLT3-ITD; quote: 'Single-agent quizartinib was shown to be highly active and generally well tolerated in patients with relapsed or refractory acute myeloid leukaemia, particularly those with FLT3-ITD mutations.' Same status, first public comparison is 2018 (rule 6); QuANTUM-R moves to patient_trials. Note CR alone was 3-5% (co-primary), so source_calls_it partial is arguable."
   },
   {
    "lead": "LACEWING Astellas release 2020-12-21",
-   "outcome": "verdict",
-   "detail": "Efficacy entry 3 (flt3-itd-mv4-11-xenograft, contra): checker verdict already corrects its year to 2020."
+   "outcome": "covered",
+   "detail": "Check verdict on efficacy index 3 (corrected) already proposes year 2020 from the Astellas 2020-12-21 release, status contra unchanged."
   },
   {
    "lead": "MORPHO post-HCT gilteritinib maintenance (NCT02997202) missed RFS",
@@ -191,8 +191,8 @@
   },
   {
    "lead": "QuANTUM-R FDA ODAC/CRL 2019 doubts on OS",
-   "outcome": "verdict",
-   "detail": "Efficacy entry 2 (flt3-itd-mv4-11-xenograft, 2019 same) should record the tier-2 view (source_calls_it partial or a note); the checker's confirmed verdict does not cover it."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: QuANTUM-R tier-1 paper sets the status (rule 2); the ODAC 2019 doubts on OS robustness are a note/source_calls_it on efficacy index 2, and with the 2018 fix (lead 1) QuANTUM-R becomes a patient_trials item with status unchanged."
   },
   {
    "lead": "Crenolanib absent (phase 3 NCT03250338, ARO-021 NCT03258931)",

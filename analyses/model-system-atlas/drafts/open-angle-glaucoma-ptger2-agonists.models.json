@@ -452,8 +452,8 @@
   },
   {
    "lead": "Phase 1 healthy-volunteer IOP lowering (Aihara 2019, PMID 31674861)",
-   "outcome": "verdict",
-   "detail": "Extra patient datum for cyno-laser-oht-iop engagement entry 2 (same, 2019); checker verdict on that entry already notes it; no new system, no status or year change"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: an extra healthy-volunteer datum for engagement 2 (cyno-laser-oht-iop, same, 2019), already noted by the checker verdict on engagement 2; no status or year change."
   },
   {
    "lead": "aganepag isopropyl and simenepag isopropyl",
@@ -462,8 +462,8 @@
   },
   {
    "lead": "RENGE 12-month study (PMID 34495425) as patient source for DUES/PAPS tracks",
-   "outcome": "verdict",
-   "detail": "Alternative tier 1 patient source for 3t3l1-adipogenesis safety entry 8 (same, 2020) and hof-3d-organoid-adipogenesis entry 10 (retro); RENGE (2021) is later than the cited 2020 source, so no status or year change"
+   "outcome": "covered",
+   "detail": "Checker verdict on safety 8 (3t3l1-adipogenesis) already proposes retro/retrodiction true on the grounds that RENGE showed no DUES before the assay ran; for safety 10 (hof-3d-organoid-adipogenesis, retro 2021) RENGE is an alternative patient source with no status or year change."
   }
  ]
 }

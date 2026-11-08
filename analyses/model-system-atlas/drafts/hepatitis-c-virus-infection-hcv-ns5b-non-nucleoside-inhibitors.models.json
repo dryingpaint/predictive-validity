@@ -347,13 +347,13 @@
   },
   {
    "lead": "Replicon resistance-pathway prediction compared in patients (filibuvir M423, dasabuvir S556G/C316Y/M414T, lomibuvir DUAL breakthrough)",
-   "outcome": "verdict",
-   "detail": "same system as hcv-gt1-replicon; would add a 2011 status entry to its efficacy track (after the 2009 untested opener), pending the checker's rule question on which cell scores resistance pathways; no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored. A resistance-substitution overlap compares no primary endpoint; the check's adjudication of efficacy 5 (decision 4) scores the same kind of comparison on the chimpanzee track untested, so filibuvir M423 (2011) and dasabuvir S556G/C316Y/M414T would add only an untested entry after hcv-gt1-replicon efficacy 1 (2009 untested), no status change; rule question 4 in the check carries the open question. The lomibuvir DUAL breakthrough (Di Bisceglie 2014, PMID 24901821, first published 2014-07-01) post-dates the replicon track's efficacy 3 contra (2014-01-27), so the track's 2014 contra is unchanged."
   },
   {
    "lead": "Beclabuvir as second approved member (Ximency, PMDA Dec 2016; UNITY-2; Lemm 2014 replicon)",
-   "outcome": "verdict",
-   "detail": "corrects the tile note ('only dasabuvir reached approval') and adds a beclabuvir same on the existing hcv-gt1-replicon efficacy track; beclabuvir is already scored on hcv-chimeric-mouse-upa-scid efficacy 2015"
+   "outcome": "covered",
+   "detail": "Changes nothing scored. The tile-note correction ('only dasabuvir reached approval'; beclabuvir approved in Japan as Ximency, Dec 2016) is a note. A 2015 beclabuvir same (UNITY-2) on hcv-gt1-replicon efficacy would follow that track's efficacy 3 contra (filibuvir, 2014); one drug's contra beats another's same on the same track, so the track stays contra and UNITY-2 is at most a patient_trials record; beclabuvir already scores on hcv-chimeric-mouse-upa-scid efficacy 7."
   },
   {
    "lead": "Tegobuvir QT signal (2007) and 2011 dosing halt, tier 5 patient side",

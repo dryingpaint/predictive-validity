@@ -518,8 +518,8 @@
  "gaps": [
   {
    "lead": "Naquotinib SOLAR (missing #1)",
-   "outcome": "verdict",
-   "detail": "Same xenograft system as egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same); SOLAR (first-line) is outside the draft's T790M/exon 20 population, so a naquotinib contra entry there waits on the checker's population rule question."
+   "outcome": "covered",
+   "detail": "Changes nothing scored under the draft's stated population (EGFR-mutant with T790M, or exon 20 insertion): SOLAR (NCT02588261) was first-line activating-mutation NSCLC vs erlotinib/gefitinib, so no entry is required on egfrm-t790m-xenograft-transgenic efficacy. Whether it scores (and would turn that track contra) rests on check.json rule questions 2 and 3 (population; active comparator), not on a missing entry."
   },
   {
    "lead": "Mobocertinib EXCLAIM-2 (missing #2)",
@@ -528,18 +528,18 @@
   },
   {
    "lead": "Osimertinib FLAURA (missing #3)",
-   "outcome": "verdict",
-   "detail": "Would be a same entry on egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same) if the population ruling widens to first-line; no new system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: FLAURA is first-line, outside the draft's T790M/exon 20 population, and even if admitted it is a 'same' on egfrm-t790m-xenograft-transgenic efficacy, which is already 'same' since 2015 (Janne 2015); no status change. Population is check.json rule question 2."
   },
   {
    "lead": "Rociletinib ODAC/CRL 2016 (missing #4)",
-   "outcome": "verdict",
-   "detail": "Belongs on egfrm-t790m-xenograft-transgenic efficacy (2014 untested, 2015 same) (Walter 2013 xenograft is the same system) as a note or entry; scoring awaits the rociletinib rule question."
+   "outcome": "covered",
+   "detail": "Changes nothing scored. No primary endpoint failed against the xenograft prediction: TIGER-X confirmed ORR ~30% is still activity in direction, and TIGER-3 (NCT02322281; Yang 2020 JTO Clin Res Rep, doi 10.1016/j.jtocrr.2020.100114; registry results posted 2019-07-23) favoured rociletinib on PFS (4.1/5.5 vs 2.5 mo; T790M HR 0.55) and states 'Incomplete enrollment prevented evaluation of the primary efficacy end point.' At most a patient_trials note on efficacy 2; scoring question is check.json rule question 4."
   },
   {
    "lead": "Olmutinib TEN/SJS (missing #5)",
-   "outcome": "verdict",
-   "detail": "Same system as herg-rat-dog-tox safety (entry 2 contra 2015); an olmutinib note changes no status."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: herg-rat-dog-tox safety is already contra since 2015 (entry 2), and an olmutinib SJS/TEN datum (idiosyncratic immune skin reaction rats/dogs are not shown to model, on a different sponsor's tox package) could only add a note."
   },
   {
    "lead": "AURA3 CNS analysis (missing #6)",

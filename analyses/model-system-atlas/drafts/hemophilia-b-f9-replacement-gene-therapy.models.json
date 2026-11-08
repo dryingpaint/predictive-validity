@@ -540,8 +540,8 @@
   },
   {
    "lead": "AskBio009/BAX 335 loss of expression",
-   "outcome": "verdict",
-   "detail": "Tracked as hemb-mouse-scaav8-fixr338l engagement (2014 untested, 2020 contra Konkle 2021) and safety; earlier 2015-2016 sponsor/ASH disclosure would move the engagement contra entry's year earlier, needs a checker verdict on that entry."
+   "outcome": "fix",
+   "detail": "engagement, index 5 (hemb-mouse-scaav8-fixr338l contra, Konkle 2021): field year, current 2020, source supports 2015. Baxalta's 24 Jun 2015 release on its ISTH 2015 oral presentation (https://www.fiercebiotech.com/biotech/baxalta-reports-continued-progress-on-phase-1-2-clinical-trial-of-bax335-investigational) first made the loss public: 'In the highest dose cohort (3x1012 vg/kg), expression levels have peaked above 50 percent, though the two patients in this cohort experienced an immune response which has led to decreased FIX expression, with one patient resuming regular FIX infusions.' The Feb 2015 Baxter EAHAD release reported only one patient with raised liver enzymes, no loss. Status contra unchanged; src stays Konkle 2021 for the full 7-of-8 result, or cite the 2015 release (source_tier lower, sponsor press release) if the year moves."
   },
   {
    "lead": "verbrinacogene setparvovec (FLT180a) NHP model",

@@ -12,7 +12,8 @@
   "Europe PMC: (somavaratan OR VRS-317) AND (model OR modeling OR pharmacokinetic)",
   "Europe PMC: (somatrogon OR MOD-4023) AND (monkey OR rhesus OR rat)",
   "ClinicalTrials.gov API: MOD-4023 studies (start dates, results posting dates)",
-  "Gap pass: EMA Ngenla EPAR (EMA/15620/2022, CHMP Dec 2021) via curl + pdftotext: nonclinical PK/tox in rats and rhesus monkeys, local tolerance, margins, phase 3 injection-site AEs and lipoatrophy"
+  "Gap pass: EMA Ngenla EPAR (EMA/15620/2022, CHMP Dec 2021) via curl + pdftotext: nonclinical PK/tox in rats and rhesus monkeys, local tolerance, margins, phase 3 injection-site AEs and lipoatrophy",
+  "Apply pass: EPAR sections 2.5.4.3/2.5.4.7 (monkey injection-site findings, local tolerance) and clinical safety (phase 3 ISR 43.1% vs 25.2%, no lipoatrophy); ClinicalTrials.gov NCT02968004 results first posted 2021-06-25"
  ],
  "added_models": [
   {
@@ -158,6 +159,49 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rhesus-monkey-somatrogon",
+   "model": "Rhesus monkey PK/PD and repeat-dose toxicology (somatrogon)",
+   "model_kind": "animal",
+   "model_first_use_year": 2016,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "year": 2022,
+      "status": "same",
+      "note": "Monkey tox showed reversible injection-site reactions, alike for somatrogon and daily somatropin; phase 3 children had injection-site reactions, more on somatrogon, no lipoatrophy.",
+      "short": "Injection-site reactions in monkeys and children",
+      "src": "https://www.ema.europa.eu/en/documents/assessment-report/ngenla-epar-public-assessment-report_en.pdf",
+      "srcLabel": "EMA Ngenla EPAR 2022",
+      "quote": "In the Phase 3 main study, injection site reactions AEs were more commonly reported with somatrogon compared to somatropin. (43.1% during somatrogon treatment vs. 25.2% during somatropin treatment).",
+      "confidence": "medium",
+      "confidence_note": "EPAR text read (pdftotext). Monkey side from the same EPAR (sections 2.5.4.3 and 2.5.4.7): injection-site infiltration only, non-adverse, reversible; the EPAR does not set it beside the phase 3 rates. Lipoatrophy: none in monkeys or phase 3.",
+      "reason": "Injection-site harm named, seen in children",
+      "judgement": "Paired by me. The monkey named injection-site reactions as its only finding and patients showed them, so same; partial because monkeys showed no excess over daily somatropin while children did (43.1% vs 25.2%). 2025 lipoatrophy case series not scored (no denominator).",
+      "model_id": "rhesus-monkey-somatrogon",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": "https://www.ema.europa.eu/en/documents/assessment-report/ngenla-epar-public-assessment-report_en.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "registry_date": "2021-06-25",
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "injection-site reaction occurrence (monkey histology vs patient AE incidence)",
+      "source_calls_it": "partial",
+      "population": "Growth hormone deficiency (pediatric and adult)"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -178,23 +222,23 @@
   },
   {
    "lead": "Somatrogon injection-site lipoatrophy case series 2025 (jcrpe 2025-10-16; children12010058)",
-   "outcome": "verdict",
-   "detail": "safety rhesus-monkey-somatrogon 2016 (safety 3) confirmed no_prediction; EPAR: no lipoatrophy in monkeys and none in phase 3; case series lack a denominator (checker rule question on case series open)"
+   "outcome": "covered",
+   "detail": "safety rhesus-monkey-somatrogon 2016 (safety 3) confirmed no_prediction; EPAR: no lipoatrophy in monkeys and none in phase 3; case series lack a denominator (checker rule question on case series open); apply: case series have no denominator and change nothing scored; checker confirmed safety 3"
   },
   {
    "lead": "FDA BLA 761184 / EMA Ngenla EPAR nonclinical reviews not checked; model_filed unsourced",
-   "outcome": "verdict",
-   "detail": "EMA EPAR read: monkey tox local infiltration only, margins computed post hoc from 0.66 mg/kg/week; supports dose 5 and safety 3 as untested/no_prediction; FDA review not fetched"
+   "outcome": "fix",
+   "detail": "model_filed: engagement 5, engagement 6, dose 5, safety 3 (rhesus-monkey-somatrogon), field model_filed, current null, source supports true: EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 reports the GLP 4-week and 26-week rhesus monkey repeat-dose tox and monkey PK filed in the MAA (https://www.ema.europa.eu/en/documents/assessment-report/ngenla-epar-public-assessment-report_en.pdf)"
   },
   {
    "lead": "Zelinska 2017 somatrogon phase 2 pediatric vs daily r-hGH",
-   "outcome": "verdict",
-   "detail": "engagement hypox-rat-gh (engagement 4) adjudicated to 2016 citing Strasburger/Zelinska; a somatrogon growth datum on hypox-rat-gh efficacy is an entry on an existing track, needs a verdict, not a new system"
+   "outcome": "covered",
+   "detail": "engagement hypox-rat-gh (engagement 4) adjudicated to 2016 citing Strasburger/Zelinska; a somatrogon growth datum on hypox-rat-gh efficacy is an entry on an existing track, needs a verdict, not a new system; apply: engagement 4 verdict already moves the year to 2016 on Strasburger/Zelinska; Zelinska growth on hypox-rat-gh efficacy is same while the track is same (2015) and cannot undo the 2017 contra, so no status change"
   },
   {
    "lead": "Hershkovitz full text / FDA review: human starting dose or monkey lipoatrophy",
-   "outcome": "verdict",
-   "detail": "EPAR states no human starting dose from monkeys and no monkey lipoatrophy; dose 5 and safety 3 stay untested/no_prediction"
+   "outcome": "entry",
+   "detail": "EPAR states no human starting dose from monkeys and no monkey lipoatrophy; dose 5 and safety 3 stay untested/no_prediction; apply: EPAR shows monkeys did name a harm (injection-site reactions, reversible); added safety 2022 same (partial) on rhesus-monkey-somatrogon paired with phase 3 ISR 43.1% vs 25.2%, no lipoatrophy. dose 5 stays untested (no human dose stated)"
   }
  ]
 }

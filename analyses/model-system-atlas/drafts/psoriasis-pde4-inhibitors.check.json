@@ -135,6 +135,16 @@
    "rule": null,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Quote verbatim (section 3.2, Figure 4A). Received 2019-11-11 with LEO co-authors citing the 2009 plaque win: retrodiction, retro not same (decision 10). Registry primary -3.04 vs -1.60, P<0.001 confirmed. Therapeutic arm vehicle-confounded (Figure S4); partial stands, rule question 8."
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "CT.gov API: primary PGA success 17.4 vs 13.6, results posted 2017-03-07 (quote is a field rendering). PMC10066830 full text: imiquimod 5% ear x4 days, 'significantly reduced ear thickness' verbatim. Post-trial run, disagrees with posted primary: contra not retro; same track. Hashim scope is RQ10."
   }
  ],
  "missing": [

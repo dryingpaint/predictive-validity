@@ -73,7 +73,7 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Galie 2002 abstract: primary 6MWD +25.1 m, p=0.036, quote verbatim. same, direction_only, primary \u2014 supported."
+   "note": "Galie 2002 abstract: primary 6MWD +25.1 m, p=0.036, quote verbatim. same, direction_only, primary — supported."
   },
   {
    "cell": "efficacy",
@@ -164,6 +164,21 @@
    "note": "United Therapeutics PR 2019-04-08 announced BEAT failed its primary endpoint, before Shen 2019 epub (2019-05-31). Set retrodiction: true (contra stays as failed retrodiction); year 2019, when both were public. PR not cited in draft.",
    "adjudicated_status": "contra",
    "adjudication_note": "Retrodiction rule: BEAT failure press release (2019-04-08) predates Shen 2019 epub (2019-05-31), so the ex vivo pairing is a retrodiction that failed to reproduce the human result; contra either way, retrodiction flag true."
+  },
+  {
+   "cell": "safety",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2002,
+   "rule": "Pairing: a prospective model prediction later matched by the patient result is same (model 1994 precedes the 2002 trial, so not retro)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in Yuki 1994 abstract (PMID 7825169). Galie 2002 full text (JACC, doi:10.1016/S0735-1097(02)01786-2) states 'the safety profile of the drug was excellent with neither systemic hypotension'; hypotension data were reported, so not unsettled: add paired same, 2002.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Pairing rule (rule 1, comparison_stated false): Yuki 1994 'Psa was not lowered' vs Galie 2002 JACC full text 'neither systemic hypotension' (verified). Prospective; 1994 opener stays untested, track becomes same in 2002."
   }
  ],
  "missing": [
@@ -171,7 +186,8 @@
   "Safety, mct-rat track: Yuki 1994 (doi:10.1620/tjem.173.371) states 'Psa was not lowered dose-dependently by BPS' - a no-systemic-hypotension prediction for beraprost with no safety track; Galie 2002/Barst 2003 AE data could pair with it.",
   "Ralinepag's own MCT rat data: Tran 2017 J Med Chem (PMID 28072531) 'oral efficacy in the rat monocrotaline model' - cited only in judgement/confidence_note; could be named as model_src for the ralinepag patient_trials (same mct-rat model_id).",
   "Ralinepag ADVANCE CAPACITY (NCT04084678) terminated for 'Sponsor decision' - no efficacy failure, does not change status.",
-  "Efficacy, pah-pasmc-human-pa-exvivo track: United Therapeutics press release 2019-04-08 'BEAT Study of Esuberaprost Does Not Meet Primary Endpoint' (https://ir.unither.com/press-releases/2019/04-08-2019-145624946; tier 5) - BEAT failure public before Shen 2019, making the ex vivo pairing a retrodiction; also CHEST 2019 abstract (journal.chestnet.org S0012-3692(19)32994-0)."
+  "Efficacy, pah-pasmc-human-pa-exvivo track: United Therapeutics press release 2019-04-08 'BEAT Study of Esuberaprost Does Not Meet Primary Endpoint' (https://ir.unither.com/press-releases/2019/04-08-2019-145624946; tier 5) - BEAT failure public before Shen 2019, making the ex vivo pairing a retrodiction; also CHEST 2019 abstract (journal.chestnet.org S0012-3692(19)32994-0).",
+  "Safety, mct-rat track: Galie 2002 ALPHABET full text (doi:10.1016/S0735-1097(02)01786-2, Discussion): 'Despite the high doses of beraprost sodium used in this study, the safety profile of the drug was excellent with neither systemic hypotension nor hepatic, renal or hematologic side effects.' Pairs with Yuki 1994 no-Psa-fall prediction as a same entry (2002), product_in_model true."
  ],
  "overall": "accept",
  "rule_questions": [

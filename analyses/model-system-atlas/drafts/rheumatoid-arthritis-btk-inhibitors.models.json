@@ -109,13 +109,13 @@
   },
   {
    "lead": "Efficacy patient_trials: NCT02387762 (acalabrutinib + MTX) registered primary DAS28-CRP week 4, results 2019-03-26",
-   "outcome": "verdict",
-   "detail": "Corrects the patient_trials label on efficacy entry 2 (cia-rodent, 2019 contra) from 'exploratory' to registered primary miss; checker note on efficacy 2 covers it; status and year unchanged."
+   "outcome": "covered",
+   "detail": "Covered: check.json efficacy 2 note already flags NCT02387762 DAS28-CRP wk4 as the registered primary (posted 2019-03-26), and the lead only relabels a patient_trials item; efficacy 2 stays contra, year 2019 (BMS-986142 registry 2019-05-28)."
   },
   {
    "lead": "Efficacy/dose: spebrutinib NCT01975610 primary ACR20 week 4 missed (P=0.25, epub 2019-11-13) at 83% median BTK occupancy",
-   "outcome": "verdict",
-   "detail": "Same system as cia-occupancy-pkpd; bears on dose entry 3 (2022, adjudicated same) and could date a dose contra to 2019; checker note on dose 3 covers it, needs adjudication under rule v4, no new system."
+   "outcome": "covered",
+   "detail": "Covered: check.json dose 3 note raises spebrutinib and its adjudication (rule v4) scores dose on its own prediction, so a target-reached failure is same, not a 2019 contra. Re-opened Schafer 2019 (PMC7021855, epub 2019-11-13): 375 mg/day gave median BTK occupancy 83% but the paper ties the dose to no CIA-derived occupancy target, so no stated dose prediction to score; the efficacy miss (P=0.25) is already in efficacy 2 patient_trials, after the 2019-05-28 contra, so no status or year changes."
   }
  ]
 }

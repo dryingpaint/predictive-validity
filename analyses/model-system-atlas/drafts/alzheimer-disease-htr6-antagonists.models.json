@@ -343,18 +343,18 @@
   },
   {
    "lead": "Healthy-volunteer PET 5-HT6 occupancy of idalopirdine (Atri 2018 Discussion)",
-   "outcome": "verdict",
-   "detail": "Human side of rat-subchronic-pcp-nor; covered by adjudicated verdicts engagement 5 -> same 2018 and dose 5 -> contra 2018 (low confidence, citing Schmidt 2014)"
+   "outcome": "covered",
+   "detail": "Covered: check.json engagement 5 (corrected -> same, 2018, adjudicated same) and dose 5 (corrected -> contra, 2018, adjudicated contra) already score the Atri 2018 healthy-volunteer PET (>80% occupancy at 30/60 mg/d) on the rat-subchronic-pcp-nor track."
   },
   {
    "lead": "Comery ('Cornery') 2011 AAIC abstract, SAM-760 NHP and human PET occupancy",
-   "outcome": "verdict",
-   "detail": "Abstract read (Wiley): NHP complete blockade >10 nM free, human RO >70% at 60 mg; needs a verdict re-dating engagement 6 (nhp-pet-5ht6-occupancy same) from 2023 to 2011 if supplement abstracts are admissible (rule question 2)"
+   "outcome": "fix",
+   "detail": "engagement, index 6 (nhp-pet-5ht6-occupancy, same): field year (with epub_year/print_year) current 2023, source supports 2011; src current https://doi.org/10.1002/bdd.2351 (Sawant-Basak 2023), earliest source making the NHP-vs-human occupancy comparison is Comery T et al. 2011, 'P4-253: Receptor occupancy of the 5-HT6 receptor antagonist SAM-760 in non-human primates and healthy human volunteers', Alzheimers Dement 7(4S):S794, https://doi.org/10.1016/j.jalz.2011.05.2278 (Crossref issued 2011-07; DOI-bearing, so tier 1 under rule 2, the same standing the tile's added rodent-sam760-cognition-or track already gives this abstract). Abstract re-opened on Wiley: NHP complete blockade at free plasma >10 nM; human striatal RO >70% after a single 60 mg dose. Quote: 'Characterization of the RO: exposure relationship for SAM-760 in NHP and human striatum demonstrated that high levels of RO can be achieved at clinically relevant drug exposures.' Status stays same; srcLabel 'Comery 2011'; Sawant-Basak 2023 stays as the full peer-reviewed comparison (confidence_note). The draft's 'Cornery' is a misspelling of Comery."
   },
   {
    "lead": "Idalopirdine systematic review/meta-analysis, Int Psychogeriatr 2019 (PMID 30560763)",
-   "outcome": "verdict",
-   "detail": "Patient-side tier 4, no status change; at most a patient_trials addition to efficacy entry 3 (rat-subchronic-pcp-nor contra 2017)"
+   "outcome": "covered",
+   "detail": "Covered: patient-side tier 4 meta-analysis (PMID 30560763) of the same idalopirdine trials already scored in efficacy 3 (contra 2017); it changes no status, at most a patient_trials note."
   },
   {
    "lead": "SAM-760 rat scopolamine/MK-801 object-recognition model (Comery 2011 / Bell 2011 abstracts)",

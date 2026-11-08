@@ -80,6 +80,17 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "note": "Gooderham 2025 abstract (PMID 39848568) quote verbatim; co-primary met. Harcken 2021 (PMC7812678) shows BI 730357 in IL-23 minicircle mouse, skin IL-17A up to 109%, S100a8/9 95%. NCT03635099 results 2022-06-02. model_first_use_year null; ~2018 (pre-trial) would fit."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested_reason unpublished: no public model prediction to compare",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Protocol PDF resolves (AGN-242428, NCT03339999); quote verbatim at nonclinical section, deferring tox to the IB. Registry: TERMINATED, whyStopped 'safety reason', signal unnamed. No public model prediction, so untested/unpublished stands."
   }
  ],
  "missing": [

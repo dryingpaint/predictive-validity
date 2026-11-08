@@ -188,8 +188,8 @@
   },
   {
    "lead": "Kater 2021 ASH (Blood 138 Suppl 1:2627, doi 10.1182/blood-2021-146563) as earlier patient source for epcoritamab tracks",
-   "outcome": "verdict",
-   "detail": "Corrects existing entries, no new system: safety 2 (epcoritamab-cyno CRS same, redate 2021, cite Kater), efficacy 3 (cll-pbmc-epcoritamab-pdx opening, retrodiction true) and efficacy 4 (same -> retro); all three already carry adjudicated checker verdicts"
+   "outcome": "covered",
+   "detail": "check.json verdicts already propose each change: safety 2 (same, redate 2021, cite Kater), efficacy 3 (untested, retrodiction true), efficacy 4 (same -> retro). Kater 2021 abstract (scraped) reports CRS 100% and PR 3/5 but no B-cell depletion or MRD, so engagement 4 is unaffected."
   }
  ]
 }

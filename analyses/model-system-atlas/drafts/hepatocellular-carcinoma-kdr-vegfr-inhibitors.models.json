@@ -269,18 +269,18 @@
  "gaps": [
   {
    "lead": "McNamara 2015 DCE-US engagement (axitinib, 8/12 tumour blood volume fell)",
-   "outcome": "verdict",
-   "detail": "engagement entry 2 (hcc-human-xenograft-immunodeficient-rodent): checker corrected and adjudicated to same, 2015, downstream direction_only; patient-side evidence, not a model system"
+   "outcome": "covered",
+   "detail": "engagement 2 verdict (corrected, adjudicated same 2015, downstream, direction_only) already proposes this change on this entry."
   },
   {
    "lead": "Tivozanib FIH AV-951-03-B01 sVEGFR-2 and perfusion fall (other-indication patients)",
-   "outcome": "verdict",
-   "detail": "engagement entry 2 on the xenograft track; patient-side PD in non-HCC solid tumours, admissibility is checker rule question 1 (decision 3); no new system"
+   "outcome": "fix",
+   "detail": "engagement, index 2 (hcc-human-xenograft-immunodeficient-rodent): year 2020 in draft, verdict proposes 2015 (McNamara, axitinib, product_in_model false); the source supports year 2011, src https://doi.org/10.1158/1078-0432.CCR-11-0411 (Eskens 2011, PMID 21976547, epub 2011-10-05), product_in_model true, subjects patients (advanced solid tumours, other indications), status same, readout_tier downstream, direction_only, quote 'Dynamic contrast-enhanced MRI indicated reduction in tumor perfusion.' (also sVEGFR-2 dose-dependent fall; FDA 212904 Multidiscipline Review lines 1417-1420). Tivozanib was the drug in the KRN951 rat panel whose DCE-MRI Ktrans fell. Not added as a new entry because merge appends after the 2020 entry and breaks year order. Holds only if rule question 1 admits other-indication patients for engagement; otherwise 2015 McNamara stands."
   },
   {
    "lead": "FDA 212904 rat-effective vs 1.34 mg/day clinical exposure comparison",
-   "outcome": "verdict",
-   "detail": "dose entry 2 (xenograft track): checker proposed same 2021, adjudicated untested (HCC RP2D 1 mg, efficacy indeterminate; rule question 2); corrects an entry, no new system"
+   "outcome": "covered",
+   "detail": "dose 2 verdict (corrected, proposed same 2021, adjudicated untested) already proposes this change on this entry."
   },
   {
    "lead": "Liang 2019 Exp Mol Med apatinib HCC xenograft hypertension (checker's 'Lu 2019')",

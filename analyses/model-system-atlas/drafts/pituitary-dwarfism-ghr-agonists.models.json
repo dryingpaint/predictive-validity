@@ -308,8 +308,8 @@
   },
   {
    "lead": "Rasmussen 2014 (doi 10.1210/jc.2014-1702) first-in-human somapacitan dose-dependent IGF-1 in healthy men",
-   "outcome": "verdict",
-   "detail": "Corrects date of engagement entry 4 (somapacitan-animal-igf1-pd, Miller 2022) to 2017; checker verdict engagement 4 (corrected, rule 6) already covers it"
+   "outcome": "covered",
+   "detail": "Checker verdict engagement 4 (corrected, rule 6, proposed_year 2017, adjudicated same) already proposes this change on this entry, citing Rasmussen 2014 (PMID 25013997)."
   }
  ]
 }

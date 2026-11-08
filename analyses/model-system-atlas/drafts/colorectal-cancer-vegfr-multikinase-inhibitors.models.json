@@ -209,8 +209,8 @@
  "gaps": [
   {
    "lead": "NCT01365910 registry results record (posted 2014-08-26): hypertension 20/30, ORR 0/30",
-   "outcome": "verdict",
-   "detail": "Corrects safety #2 (linifanib-rat-telemetry-hypertension, confidence_note says registry does not itemise hypertension); checker verdict safety #2 already corrects it to retro 2009 and cites the 2014-08-26 posting. ORR 0/30 is linifanib CRC efficacy, untested under #32/#53/#80, so no efficacy status changes."
+   "outcome": "covered",
+   "detail": "Covered by check.json safety #2 (linifanib-rat-telemetry-hypertension): verdict corrected, proposed retro 2009, note cites NCT01365910 results posted 2014-08-26 listing hypertension 20/30. The confidence_note claim that the registry does not itemise hypertension is unscored and superseded by that verdict. ORR 0/30 leaves linifanib CRC efficacy untested (#32/#53/#80); no status changes."
   },
   {
    "lead": "No untracked model found (famitinib, donafenib, linifanib CRC xenograft/organoid/PDX sweeps)",

@@ -244,8 +244,8 @@
  "gaps": [
   {
    "lead": "No failure found for any member; vunakizumab Phase III (PMID 42952621) and netakimab PLANETA positive trials not listed in patient_trials",
-   "outcome": "verdict",
-   "detail": "Positive trials only, no model system run for netakimab or vunakizumab (Europe PMC preclinical searches return reviews and case reports only); at most patient_trials additions on efficacy 2 (pso-pbmc-il17-exvivo) that change no status, as the checker's missing item already says; no system added"
+   "outcome": "covered",
+   "detail": "Adds only positive patient trials (vunakizumab Phase III, netakimab PLANETA) as patient_trials on efficacy that change no status; no model system was run for netakimab or vunakizumab, so nothing scored changes."
   }
  ]
 }

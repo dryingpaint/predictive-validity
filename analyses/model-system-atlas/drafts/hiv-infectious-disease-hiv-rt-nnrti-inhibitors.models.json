@@ -76,7 +76,7 @@
       "srcLabel": "Yee 2021",
       "quote": "In a subsequent clinical trial, doravirine and M9 exposures, when doravirine 100 mg twice daily was coadministered with rifabutin, were found to be consistent with model predictions using rifampin and efavirenz as representative inducers.",
       "confidence": "medium",
-      "confidence_note": "Abstract-level reading (Wiley full text paywalled, no PMC; Europe PMC lists first publication 2020-09-28). The abstract reports the confirmatory trial only as 'consistent with model predictions' and names neither its population nor the observed/predicted ratios, so subjects and magnitude are left null rather than inferred; every other doravirine DDI trial in the programme, including the twice-daily rifapentine study (Clin Transl Sci 2020, PMC7719366, which chose 100 mg twice daily 'based on nonparametric superposition predictions'), was in healthy volunteers. Rifampin and efavirenz served as the model's induction calibrators because M9 had not been measured in the earlier rifabutin study.",
+      "confidence_note": "Abstract-level reading (Wiley full text paywalled, no PMC; Europe PMC lists first publication 2020-09-28). The abstract reports the confirmatory trial only as 'consistent with model predictions' and names neither its population nor the observed/predicted ratios, so subjects and magnitude are left null rather than inferred; every other doravirine DDI trial in the programme, including the twice-daily rifapentine study (Clin Transl Sci 2020, PMC7719366, which chose 100 mg twice daily 'based on nonparametric superposition predictions'), was in healthy volunteers. Rifampin and efavirenz served as the model's induction calibrators because M9 had not been measured in the earlier rifabutin study. The observed ratios first appear in the Pifeltro label s007 (01/2022, https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/210806s007lbl.pdf) Table 9: rifabutin 300 mg QD with doravirine 100 mg BID, N=15, AUC 1.03, Cmax 0.97, C24 0.98, footnote 'Doravirine 100 mg BID resulted in similar pharmacokinetic values when compared to 100 mg QD without rifabutin'; magnitude is set from it. The label does not name the trial's population, so subjects stays null.",
       "reason": "Twice-daily rifabutin dose matched PK model",
       "subjects": null,
       "comparison_stated": true,
@@ -92,8 +92,8 @@
       "product_in_model": true,
       "model_kind": "in_silico",
       "retrodiction": false,
-      "magnitude": null,
-      "magnitude_basis": "predicted versus observed doravirine and M9 exposure at 100 mg twice daily with rifabutin; the abstract states consistency without ratios, so no magnitude bin is assigned",
+      "magnitude": "within_2x",
+      "magnitude_basis": "observed doravirine C24 geometric mean ratio at 100 mg twice daily with rifabutin 300 mg QD versus 100 mg once daily alone, 0.98 (90% CI 0.88-1.10; AUC 1.03, Cmax 0.97; N=15), against the projected restoration to the once-daily trough (ratio 1.0); Pifeltro label s007 (01/2022) Table 9",
       "source_calls_it": "match",
       "population": "Unselected",
       "model_first_use_year": 2018,
@@ -119,13 +119,13 @@
  "gaps": [
   {
    "lead": "Pifeltro label 12.4: cell-culture-selected V106A/M, F227C, Y318F beside DRIVE-FORWARD/DRIVE-AHEAD failure substitutions (tier 2, 2018)",
-   "outcome": "verdict",
-   "detail": "Belongs on the existing hiv-nnrti-cell-culture track (efficacy cell, after index 2) as a 2018 tier-2 resistance-selection comparison, not a new system; needs a checker verdict on whether the drafter adds that entry and at which prediction_level (class: lab-selected mutations, not donor-matched isolates)."
+   "outcome": "covered",
+   "detail": "Changes nothing scored. The track hiv-nnrti-cell-culture is prediction_level class, and its efficacy cell is already same from 2012 (index 2) with DRIVE-FORWARD/DRIVE-AHEAD in patient_trials; a 2018 class entry would repeat same (an extra patient datum, status unchanged). Label 12.4 (2018 s000, bundle txt lines 736-760) lists cell-culture and clinical substitutions side by side without stating a comparison, so no quote supports a separate status; the resistance pathway is not one of the four questions."
   },
   {
    "lead": "Tier-5 Idenix Sep 2008 press release (7-day monotherapy) and Feb 2011 clinical-hold coverage",
-   "outcome": "verdict",
-   "detail": "Dating only: would move engagement/dose/efficacy index 2 (same, 2012) to 2008 and safety index 2 (contra, 2012) to 2011; statuses unchanged; covered by checker rule question 1."
+   "outcome": "covered",
+   "detail": "Dating only, statuses unchanged; the checker raises it as rule question 1 in the check file (whether a tier-5 press release sets year under rule 6). No field change until that rule is answered."
   },
   {
    "lead": "No separate model system (humanized mice, RT-SHIV, elsulfavirine animal or patient data)",
@@ -134,8 +134,8 @@
   },
   {
    "lead": "Pifeltro label s007 (01/2022) Table 9 observed rifabutin + doravirine 100 mg BID ratios (AUC 1.03, C24 0.98, N=15)",
-   "outcome": "verdict",
-   "detail": "Fills magnitude and subjects of dor-cyp3a-induction-pk-model dose index 4 (2020, same); year and status unchanged; covered by that entry's checker note."
+   "outcome": "fix",
+   "detail": "Cell dose, index 4 (added track dor-cyp3a-induction-pk-model, 2020 same, Yee 2021): field magnitude, current null, source supports within_2x (observed C24 GMR 0.98, AUC 1.03, Cmax 0.97, N=15, BID with rifabutin vs QD alone, against projected restoration to QD trough); source Pifeltro label s007 01/2022 Table 9, https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/210806s007lbl.pdf (re-opened). Applied to the added entry in this file with magnitude_basis and confidence_note. subjects stays null: neither the label nor the Yee 2021 abstract names the trial population. Year 2020 and status same unchanged."
   },
   {
    "lead": "Population-PK adolescent dose bridge, Pifeltro label 12.3 (IMPAACT 2014)",

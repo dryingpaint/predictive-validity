@@ -377,13 +377,13 @@
  "gaps": [
   {
    "lead": "EU CTR 2008-001773-15 (CHF 5188 budesonide/carmoterol 400/4 ug, trough FEV1 +0.26 L)",
-   "outcome": "verdict",
-   "detail": "Patient record for the existing chiesi-guinea-pig-challenge-bronchoconstriction track, not a new system: would add an efficacy 'same' after efficacy #8 and reset dose #8 (the Chiesi dose contra) to 'target too low'; whether a fixed combination with no budesonide-alone arm counts is checker rule_question 1 (decision 4 vs 6)."
+   "outcome": "covered",
+   "detail": "Covered by check.json: efficacy #8 verdict 'corrected' proposed same at 2017 from EU CTR 2008-001773-15 (adjudicated contra under decision 12, fixed combination with no budesonide-alone arm), and dose #8 verdict already scores contra 'target too low' (magnitude off_by_2x) on the same record."
   },
   {
    "lead": "ClinicalTrials.gov NCT00683449 (MediciNova acute-exacerbation dose-finding, results 2011-07-29)",
-   "outcome": "verdict",
-   "detail": "Earlier tier-3 patient record for kissei-pregnant-rat-organ-bath-selectivity efficacy #6 (House 2015 contra): append to that entry's patient_trials; no analyses posted, direction unresolved, changes no status."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: an extra patient_trials record for kissei-pregnant-rat-organ-bath-selectivity efficacy #6 (no analyses posted, direction unresolved, status contra unchanged); check.json efficacy #6 note already places NCT00683449 in patient_trials."
   },
   {
    "lead": "Pregnant-sheep infusion model of KUR-1246 (Kiguchi 2002; Murata 2005 BJOG)",
@@ -397,13 +397,13 @@
   },
   {
    "lead": "Tanabe TA-2005 airway models (Kikkawa 1991, Voss 1992, Kikkawa 1994)",
-   "outcome": "verdict",
-   "detail": "Voss 1992 is tracked as ta2005-tight-binding-receptor-kinetics (engagement #13-14, efficacy #9-10); Kikkawa 1991/1994 are the same system as chiesi-guinea-pig-challenge-bronchoconstriction, whose model_first_use_year should move 2005 -> 1991 on engagement #9-10, dose #7-8, efficacy #7-8 (a date correction, not a new system)."
+   "outcome": "fix",
+   "detail": "chiesi-guinea-pig-challenge-bronchoconstriction track: model_first_use_year 2005 -> 1994 on engagement #9-10, dose #7-8, efficacy #7-8; and the opening untested entries engagement #9, dose #7, efficacy #7: year 2005 -> 1994, epub_year/print_year 1994, src https://doi.org/10.1038/sj.bjp.0706096 (Rossoni 2005) -> https://doi.org/10.1248/bpb.17.1047 (Kikkawa 1994 Biol Pharm Bull 17:1047, PMID 7820105, published 1994-08-01), srcLabel 'Rossoni 2005' -> 'Kikkawa 1994', quote -> 'When TA-2005 was administered by inhalation to guinea pigs or by the intraduodenal route to cats, it exhibited a long-lasting inhibitory effect comparable or superior to the effects of salmeterol and formoterol.' Source (abstract, Europe PMC): anaesthetised guinea-pig histamine and ovalbumin-antigen bronchoconstriction with inhaled duration of protection, the same system and claim as Rossoni 2005. Not 1991: Kikkawa 1991 (PMID 1687479) is an isolated-trachea organ bath, a different set-up from the in vivo challenge system."
   },
   {
    "lead": "Residual: Kikkawa 1991/1994 folded into the Chiesi guinea-pig track with model_first_use_year still 2005",
-   "outcome": "verdict",
-   "detail": "Same correction as above: set model_first_use_year 1991 on every chiesi-guinea-pig-challenge-bronchoconstriction entry; Europe PMC search for human bronchi/airway-cell carmoterol models found no further system."
+   "outcome": "fix",
+   "detail": "Same fix as the Tanabe TA-2005 lead (one correction, recorded twice because the gap list carries it twice): chiesi-guinea-pig-challenge-bronchoconstriction track: model_first_use_year 2005 -> 1994 on engagement #9-10, dose #7-8, efficacy #7-8; and the opening untested entries engagement #9, dose #7, efficacy #7: year 2005 -> 1994, epub_year/print_year 1994, src https://doi.org/10.1038/sj.bjp.0706096 (Rossoni 2005) -> https://doi.org/10.1248/bpb.17.1047 (Kikkawa 1994 Biol Pharm Bull 17:1047, PMID 7820105, published 1994-08-01), srcLabel 'Rossoni 2005' -> 'Kikkawa 1994', quote -> 'When TA-2005 was administered by inhalation to guinea pigs or by the intraduodenal route to cats, it exhibited a long-lasting inhibitory effect comparable or superior to the effects of salmeterol and formoterol.' Source (abstract, Europe PMC): anaesthetised guinea-pig histamine and ovalbumin-antigen bronchoconstriction with inhaled duration of protection, the same system and claim as Rossoni 2005. Not 1991: Kikkawa 1991 (PMID 1687479) is an isolated-trachea organ bath, a different set-up from the in vivo challenge system."
   }
  ]
 }

@@ -621,6 +621,51 @@
     ],
     "reason": "Built after Phase 3 success",
     "judgement": "Retrodiction (decision 10): the authors' stated purpose is to validate the models against a class already known to work ('confirming that translationally-relevant disease mechanisms are engaged'), so the models reproduced a known patient result; retro, never same. product_in_model false (ALD405 is eptinezumab's sibling). The abstract's 'potential clinical utility ... in the abortive treatment of migraine' is a forward prediction for an indication no member drug has tested and is not scored."
+   },
+   {
+    "retrodiction": false,
+    "patient_signal_reversed": false,
+    "model_id": "evoked-vasodilation-rat-nhp",
+    "prediction_level": "class",
+    "subjects": "patients",
+    "comparison_stated": false,
+    "source_tier": 1,
+    "model_src": "https://doi.org/10.1038/bjp.2008.334",
+    "model_src_tier": 1,
+    "trial_unreported": false,
+    "epub_year": 2026,
+    "print_year": 2026,
+    "registry_date": "2020-07-09",
+    "model_filed": true,
+    "product_in_model": false,
+    "model_kind": "animal",
+    "magnitude": "opposite",
+    "magnitude_basis": "Model gives % inhibition of evoked vasodilation, trial gives migraine-day change; the predicted benefit was absent (LS mean difference -0.1 day, 95% CI -1.48 to 1.22)",
+    "source_calls_it": "miss",
+    "population": "Unselected",
+    "model_first_use_year": 2008,
+    "confidence": "low",
+    "confidence_note": "Paired by me (Zeller 2008 model, Teva pediatric CM trial). Results first posted on ClinicalTrials.gov 2025-12-19 (tier 3: LS mean difference -0.1, p=0.8484), which dates the entry; the AAN 2026 abstract (Hershey et al., Neurology supplement) is the src, abstract read in full. Whether a pediatric chronic-migraine miss scores against an adult-derived Unselected track is checker rule question 1; the companion pediatric EM trial NCT04458857 met its primary.",
+    "year": 2025,
+    "status": "contra",
+    "model": "Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)",
+    "note": "Fremanezumab missed its primary in children and adolescents with chronic migraine (6-17 y), against the class benefit the rat model called; pediatric EM was positive.",
+    "short": "Pediatric CM Phase 3 primary missed",
+    "src": "https://doi.org/10.1212/WNL.0000000000214996",
+    "srcLabel": "Hershey 2026",
+    "quote": "Fremanezumab significantly reduced MMD versus placebo (–2.5 vs –1.4; p=0.0210) in the EM study; no significant difference was observed between treatment groups in the CM study (–3.8 vs –3.7; p=0.8484).",
+    "endpoint_role": "primary",
+    "outcome_tested": null,
+    "patient_trials": [
+     {
+      "nct": "NCT04458857",
+      "registry_date": "2020-07-07",
+      "doi": "10.1212/WNL.0000000000214996",
+      "quote": "Fremanezumab significantly reduced MMD versus placebo (–2.5 vs –1.4; p=0.0210) in the EM study"
+     }
+    ],
+    "reason": "Member drug missed placebo-controlled primary in pediatric CM",
+    "judgement": "Scored contra because a member drug missed its placebo-controlled primary endpoint in patients of the context disease (Unselected population includes children), and one drug's contra beats the adult same on this track; the positive pediatric EM study is recorded under patient_trials."
    }
   ],
   "safety": [

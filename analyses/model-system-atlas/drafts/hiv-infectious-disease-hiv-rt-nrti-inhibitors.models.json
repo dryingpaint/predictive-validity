@@ -40,18 +40,18 @@
  "gaps": [
   {
    "lead": "Azvudine NMPA package insert (conditional approval 2021-07; pivotal Phase 2 NCT04109183, 172 ART-naive patients, week-48 HIV-1 RNA <50 copies/mL)",
-   "outcome": "verdict",
-   "detail": "Patient-side record for the existing hiv-nrti-cell-culture-panel track (model side Wang 2014): a 2021 `same` entry in engagement and efficacy (after engagement #2 and efficacy #3), tier pending rule question 1; checker's engagement #2 verdict already names it; efficacy headline stays the GS-9131 contra (efficacy #4) under decision 6. Not a new system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the checker's missing list proposes the NMPA-label azvudine result as a 2021 `same` on hiv-nrti-cell-culture-panel. Engagement is already `same` since 2013 (Cotte 2013), so a further `same` is no change of status; efficacy has been `contra` since 2021-01-05 (GS-9131, efficacy #4) and one drug's contra beats another drug's same on the same track, so a 2021-07 azvudine `same` leaves the track `contra`. At most an extra patient trial with the status unchanged (tier of an NMPA 说明书 is open as checker rule question 1); the draft note's 'unpublished, scores nothing' wording is a note, not a scored field."
   },
   {
    "lead": "Azvudine in-vitro M184I selection (Wang 2014) vs M184I after short-term azvudine for COVID-19 in people with HIV (AIDS 2023, PMID 37930315)",
-   "outcome": "verdict",
-   "detail": "In-vitro resistance selection is already part of hiv-nrti-cell-culture-panel's model description, so this is a possible 2023 engagement entry on that track (imported_from COVID-19, product_in_model true); letter full text unread (not OA), so it needs a checker verdict before entry. Not a new system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: in-vitro M184I selection (Wang 2014) agreeing with M184I after azvudine for COVID-19 in people with HIV (AIDS 2023 letter, PMID 37930315) would be a further agreeing comparison on hiv-nrti-cell-culture-panel, whose engagement cell is already `same` (2013); resistance genotype is not the track's viral-load readout, and the letter's full text is not open access, so no quote supports a separate entry. Also listed by the checker under missing."
   },
   {
    "lead": "Earlier public date for the GS-9131 failure (Adis 2020-04-28; Fierce Biotech pipeline drop)",
-   "outcome": "verdict",
-   "detail": "Dating of efficacy #4 (contra, registry_date 2021-01-05). CT.gov v2 statusModule: TERMINATED, whyStopped 'did not meet the targeted antiviral response', statusVerified 2020-12, results and last update both posted 2021-01-05; version history API 403. No admissible earlier date found, so 2021-01-05 stands."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: re-checked CT.gov v2 for NCT03472326 (2026-11-07): TERMINATED, whyStopped 'GS-9131 did not meet the targeted antiviral response', resultsFirstSubmit and lastUpdateSubmit 2020-12-07, resultsFirstPost and lastUpdatePost 2021-01-05; the history endpoint returns 403 and the history tab does not render via scrape. Adis (2020-04-28) and Fierce Biotech are not admissible tiers, so efficacy #4 year 2021 / registry_date 2021-01-05 stand; whether a status change dates a comparison is checker rule question 5."
   }
  ]
 }

@@ -27,8 +27,8 @@
  "gaps": [
   {
    "lead": "ASH 2022 abstract (Blood 140 Suppl 1:12980) fixes MB-CART20.1 co-culture as a retrodiction",
-   "outcome": "verdict",
-   "detail": "Corrects mb-cart20-1-target-coculture engagement entries 2 (retrodiction: true) and 3 (same -> retro); checker verdicts on engagement[2] and engagement[3] already cover it, no new system."
+   "outcome": "covered",
+   "detail": "Covered by check.json verdicts: engagement[2] (corrected, retrodiction: true, status untested) and engagement[3] (corrected, same -> retro, 2026) on mb-cart20-1-target-coculture; no new entry or fix."
   },
   {
    "lead": "No cell-therapy entry in dose or safety (MB-CART20.1 nonclinical basis unpublished; melanoma trial toxicities)",

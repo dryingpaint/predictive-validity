@@ -525,13 +525,13 @@
   },
   {
    "lead": "AZD8683 on the AstraZeneca guinea-pig track (Mete 2013, NCT01205269, NCT01708057)",
-   "outcome": "verdict",
-   "detail": "az-guinea-pig-bronchoprotection already names AZD8683 (engagement 1 judgement); its 2013 registry FEV1 results are a second same that does not change the track's 2011 same (engagement/dose/efficacy 2, checker-corrected to 2011); NCT01205269 AE table lists no events, so no safety status change to the contra entries"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: AZD8683's 2013 registry FEV1 results (NCT01205269, NCT01708057) are a second drug's same on az-guinea-pig-bronchoprotection, whose engagement 2, dose 2, efficacy 2 are already same (check.json corrects their year to 2011); safety on the track is already contra (safety 2, 3) and a contra track stays contra, so an AZD8683 AE entry would not change its status."
   },
   {
    "lead": "Revefenacin patient-side sources before the 2018 FDA review (NCT02040792 2016-12-07, Quinn 2017, Pudi 2017)",
-   "outcome": "verdict",
-   "detail": "Date move only: checker verdicts already correct revefenacin-rat-dog-bronchoprotection engagement 4, dose 4, efficacy 4 and safety 5 to 2016 (rule 6); no new system"
+   "outcome": "covered",
+   "detail": "check.json already proposes the same change on these entries: engagement 4, dose 4, efficacy 4 and safety 5 (revefenacin-rat-dog-bronchoprotection) corrected to year 2016 under rule 6 (NCT02040792 results 2016-12-07); status unchanged, no new system."
   },
   {
    "lead": "QAX028 and CHF5992",

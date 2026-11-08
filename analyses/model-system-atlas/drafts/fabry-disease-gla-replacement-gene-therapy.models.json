@@ -446,8 +446,8 @@
   },
   {
    "lead": "FDA BLA 761161 statement that Fabry-mouse lipid data could not confirm clinical results",
-   "outcome": "verdict",
-   "detail": "corrects gla-ko-mouse engagement 2 / efficacy 2 (source_calls_it), covered by the checker's rule question on regulator nonspecific-readout statements"
+   "outcome": "fix",
+   "detail": "engagement 2 and efficacy 2 (gla-ko-mouse, Schiffmann 2019 pairing), field source_calls_it: current null, source supports 'unresolved'. FDA BLA 761161 Multidiscipline Review (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/761161Orig1s000MultidisciplineR.pdf, nonclinical section): the Fabry-mouse GL3 methods 'were not validated or appropriately quantitative or specific for GL3, and therefore were unable to provide independent nonclinical confirmation of the clinical results.' No checker verdict proposes this (both entries 'confirmed'; raised only as a rule question and a missing item). Status same unchanged."
   },
   {
    "lead": "Sangamo STAAR topline / PTC acquisition press releases (ST-920 patient data)",

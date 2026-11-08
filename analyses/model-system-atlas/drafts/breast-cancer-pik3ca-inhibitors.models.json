@@ -329,13 +329,13 @@
  "gaps": [
   {
    "lead": "NEO-ORB NCT01923168 (Mayer 2019)",
-   "outcome": "verdict",
-   "detail": "Corrects efficacy 3 (pik3ca-mutant-cell-panel-xenografts) and efficacy 5 (er-pos-pik3ca-mut-er-feedback-xenograft); covered by the adjudicated verdicts on both (decision 4/#35: early-stage letrozole setting never tested, untested not contra, SOLAR-1 same stands); NEO-ORB pAKT fall is an engagement patient_trials line for engagement 2, no new system."
+   "outcome": "covered",
+   "detail": "Covered: check.json efficacy 3 and efficacy 5 verdicts propose the NEO-ORB change (contra 2018) and both are adjudicated (decision 4/#35: early-stage letrozole neoadjuvant setting is a condition the models never tested, so untested, SOLAR-1 same stands; NEO-ORB to patient_trials). Its pAKT fall is an engagement 2 patient_trials line that changes no status."
   },
   {
    "lead": "LORELEI NCT02273973 (Saura 2019)",
-   "outcome": "verdict",
-   "detail": "Needs a verdict on efficacy 3 (pik3ca-mutant-cell-panel-xenografts): taselisib registry results 2018-05-21 (confirmed via CT.gov API) give an earlier same with source_calls_it partial (ORR met in PIK3CA-mutant subset, pCR not) predating SOLAR-1; patient side of an existing track, no new system."
+   "outcome": "covered",
+   "detail": "Covered: changes nothing scored. LORELEI (NCT02273973, CT.gov results first posted 2018-05-21, confirmed) is taselisib + letrozole neoadjuvant in early-stage HR+ disease, the same setting the efficacy 3/5 adjudication (decision 4/#35, NEO-ORB) holds is a condition the advanced-disease cell-panel/xenograft track never tested; so it cannot open a scored 2018 same on efficacy 3, and the checker's missing list itself files it as a same + source_calls_it partial patient_trials line. Efficacy 3 stays same 2019 (SOLAR-1)."
   },
   {
    "lead": "Juric 2015 PTEN-null metastasis PDX",
@@ -364,8 +364,8 @@
   },
   {
    "lead": "INAVO121 NCT05646862",
-   "outcome": "verdict",
-   "detail": "efficacy 6 (mutant-p110a-degradation-model) stays untested; CT.gov API 2026-11-07: recruiting, hasResults false; the confirmed verdict on efficacy 6 already names NCT05646862 for its note."
+   "outcome": "covered",
+   "detail": "Covered: efficacy 6 (mutant-p110a-degradation-model) stays untested; INAVO121 NCT05646862 has no results (CT.gov 2026-11-07, recruiting, hasResults false) and the confirmed check.json verdict on efficacy 6 already names it for the note; changes nothing scored."
   }
  ]
 }

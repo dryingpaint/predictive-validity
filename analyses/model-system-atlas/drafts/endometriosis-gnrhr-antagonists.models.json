@@ -291,6 +291,51 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rat-autotransplant-endometriosis",
+   "model": "Rat surgically induced (autotransplant) endometriosis, implant volume",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "confidence_note": "Abstract-level (Wiley paywall). The EPAR (p.18) carries the rat endometriosis study, so model_filed true, but not the ~1 umol/L free target. No endometriosis trial reports free linzagolix concentrations to set against it; human unbound fraction is ~0.1% (EPAR hepatic-impairment study), so any comparison would be my own arithmetic.",
+      "year": 2023,
+      "status": "untested",
+      "note": "Rat autotransplant model stated an effective free last-observed linzagolix concentration of ~1 umol/L; no patient free-exposure comparison has been published.",
+      "short": "Rat states ~1 umol/L free effective level",
+      "src": "https://doi.org/10.1111/1440-1681.13778",
+      "srcLabel": "Tezuka 2023",
+      "quote": "The effective concentration of linzagolix, calculated as the free form of the last-observed drug concentration, was ~1 μmol/L in endometriosis model rats.",
+      "confidence": "medium",
+      "reason": "Free-drug target stated, never compared",
+      "judgement": "Opening dose entry on the existing rat track: the model states an exposure target, but no source compares it with human free exposure, so untested rather than same; deriving human free Clast from total levels and fu would be my own arithmetic.",
+      "blocked_by": null,
+      "margin_stated": null,
+      "untested_reason": "not_measured",
+      "epub_year": 2023,
+      "print_year": 2023
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -316,13 +361,13 @@
   },
   {
    "lead": "Rat autotransplant track has no dose entry; Tezuka 2023 (PMID 37186405) states free Clast ~1 umol/L effective",
-   "outcome": "verdict",
-   "detail": "adds a dose entry to the existing rat-autotransplant-endometriosis track, not a new system; needs a checker verdict on that track (opening untested 2023, then compare to EPAR ~3-fold free-drug margin at 200 mg)"
+   "outcome": "entry",
+   "detail": "rat-autotransplant-endometriosis, dose cell: untested 2023 opening entry (Tezuka 2023, 10.1111/1440-1681.13778, free Clast ~1 umol/L effective); no source compares it with human free exposure, so not same."
   },
   {
    "lead": "Knock-in mouse reversibility (Nakata 2014, recovery within 14 days) vs faster menses return on relugolix than leuprorelin (Osuga 2022, PMID 34895700)",
-   "outcome": "verdict",
-   "detail": "a held prediction on the existing hgnrhr-knockin-mouse track (safety cell), not a new system; needs a checker verdict adding that entry"
+   "outcome": "covered",
+   "detail": "changes nothing scored: a held reversibility prediction on hgnrhr-knockin-mouse safety cannot lift the track's 2021 bone contra (a failed model stays failed), so it adds no change of status."
   },
   {
    "lead": "Nothing missed on failures; opigolix/ASP1707 has no preclinical model",

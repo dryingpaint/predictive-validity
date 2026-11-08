@@ -206,7 +206,9 @@
    "proposed_status": "contra",
    "proposed_year": 2020,
    "rule": "7",
-   "note": "Quote verbatim; 14.8% vs 17% null and registry 13.9% confirmed. contra holds; the year does not: Le 2025 says cohort 1 was presented at AACR 2020, and the sponsor announced the miss Dec 2019/Jan 2020. Decision 7: earliest public record."
+   "note": "Quote verbatim; 14.8% vs 17% null and registry 13.9% confirmed. contra holds; the year does not: Le 2025 says cohort 1 was presented at AACR 2020, and the sponsor announced the miss Dec 2019/Jan 2020. Decision 7: earliest public record.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed: ZENITH20-1 missed its pre-specified primary ORR (14.8% vs 17% null), contra on the primary-endpoint rule. Rule 6 (earliest public date): the AACR 2020 abstract is an online publication, so year is 2020 at latest, not 2025."
   },
   {
    "cell": "efficacy",
@@ -242,7 +244,9 @@
    "proposed_status": "untested",
    "proposed_year": 2015,
    "rule": "7",
-   "note": "Quote verbatim; untested opening is right but four years late: Estrada-Bernal cites the same 150 mg/m2 regimen in NCT02454842 (EGFR-mutant NSCLC, start 2015-06, terminated for lack of efficacy). Track opens 2015 with a missed contra (missing 2, rule question 3)."
+   "note": "Quote verbatim; untested opening is right but four years late: Estrada-Bernal cites the same 150 mg/m2 regimen in NCT02454842 (EGFR-mutant NSCLC, start 2015-06, terminated for lack of efficacy). Track opens 2015 with a missed contra (missing 2, rule question 3).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Both say untested; not the track latest (2020 contra follows). Year stays 2019: the 2015 TH-4000 EGFR-mutant xenografts are a different genotype panel, a different system per \"a different system gets a new model_id\"; score them as their own track."
   },
   {
    "cell": "efficacy",
@@ -398,7 +402,9 @@
    "proposed_status": "same",
    "rule": "4",
    "note": "Quote verbatim; registry 2016-06-01, cohort B 3 PR/30. same + off_by_2-5x stands: no bar existed to miss. Full text: 'exploratory study with no predefined primary end point, study outcome, or sample size... No statistical hypothesis was tested'; registry primary is cohort A PFS4 only. endpoint_role 'primary' is wrong (poc_gate or a 'none' value); responses present (two durable, one 9-bp insertion; 0/13 YVMA) and the source calls it validation (#53, decision 11). Confidence can rise to medium.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: registry confirms cohort B (HER2) has no primary; its ORR/PFS4 are secondaries, none poc_gate. Efficacy rule scores only primary/poc_gate. Is an exploratory cohort with responses same+magnitude or untested (no_prediction/not_measured)?"
   },
   {
    "cell": "efficacy",
@@ -432,6 +438,21 @@
    "rule": null,
    "note": "Engelman 2007 abstract quote verbatim. Kris 2015 full text: diarrhoea 90% (grade 3/4 20%/3%), dermatitis 73%, one mirtazapine-interaction death; a cell line cannot show these, so silence is untested, not contra (decision 4 safety).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2019,
+   "rule": "7",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Gap fix: field year, value 2019 (not 2025, not the earlier verdict's 2020). GenomeWeb 2019-12-27 re-opened: 'Spectrum Pharmaceuticals said Thursday that its drug candidate poziotinib failed to meet the pre-specified primary endpoint in the first cohort'. contra unchanged; src choice stays rule question 4.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: contra is agreed; rule 6 lists registry, online publication, label, print. Does a tier-5 press release (Spectrum, 26 Dec 2019) set year 2019 when higher-tier records (AACR 2020, Le 2025) exist, and which is src?"
   }
  ],
  "missing": [

@@ -118,7 +118,9 @@
    "proposed_status": "untested",
    "proposed_year": 2008,
    "rule": "What the model is (v3): each model system is its own track with its own model_id",
-   "note": "Status untested stands. Eichhorn 2008 (Cancer Res, PMID 19010894) is the NKI BT474 shRNA/PIK3CA-mutant lapatinib-resistance model, not Maira's Novartis xenograft panel: needs its own model_id. Abstract only (PMC cookie-blocked); BEZ235 in vivo use unverified, so model_kind animal is unverified. patient_trials quotes verified verbatim (Rodon abstract; NCT01495247 whyStopped)."
+   "note": "Status untested stands. Eichhorn 2008 (Cancer Res, PMID 19010894) is the NKI BT474 shRNA/PIK3CA-mutant lapatinib-resistance model, not Maira's Novartis xenograft panel: needs its own model_id. Abstract only (PMC cookie-blocked); BEZ235 in vivo use unverified, so model_kind animal is unverified. patient_trials quotes verified verbatim (Rodon abstract; NCT01495247 whyStopped).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Both say untested: no breast primary efficacy endpoint read (rule 5). Track rule (model_id per system) sides with checker: Eichhorn's NKI BT474 model is not Maira's Novartis panel and needs its own model_id; reason unsettled."
   },
   {
    "cell": "efficacy",
@@ -243,6 +245,17 @@
    "rule": null,
    "note": "Quote verbatim in abstract. MCF7-neo/HER2 is a breast xenograft, so the stasis prediction bears on the tile; NCT01437566 arm B and NCT01254526 completed without results (verified at efficacy index 4) and 55 mg was never given, so untested holds.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "safety: silence contradicted on a harm the species could show; imported_from for another indication; decision 16 count-once",
+   "note": "Salazar 2018 (PMC6058330, epub 2017-12-14) quote verbatim; diarrhoea 90.3%, stomatitis 74.2%, grade 3/4 83.9%, AE discontinuations 38.7 vs 16.1% verified. NCT01628913 results posted 2016-04-07. Maira 2008 'well tolerated' verified earlier (dose 1). Contra in safety holds."
   }
  ],
  "missing": [
@@ -260,6 +273,7 @@
   "Safety silence: when the only public model source is an efficacy xenograft paper that says nothing about a known on-target class harm (hyperglycaemia) which the sponsor's unpublished tox package would have predicted, is the model's silence a miss (contra), or is the safety model the tox species and the cell empty/untested?",
   "model_first_use_year when the model characterisation paper post-dates first-in-human dosing (XL765: patients from 2007, Yu 2014): publication year or first documented use (e.g. AACR abstract)?",
   "Engagement from a dosed patient in another indication (lymphoma PD for a breast context): admissible as the draft assumes, and should imported_from be recorded on engagement entries as it is on safety?",
-  "In-silico track identity (models check): Moein 2024's retrospective PK-PD-efficacy model was fit to a 786-O renal xenograft and phase 1 solid-tumour data, Salphati 2012's prospective model to an MCF7-neo/HER2 breast xenograft with allometric PK. Does a sponsor's later model of the same drug share the first model's model_id (gdc0980-genentech-translational-pkpd, as drafted), or is each fitted model its own in-silico track? Status is retro either way."
+  "In-silico track identity (models check): Moein 2024's retrospective PK-PD-efficacy model was fit to a 786-O renal xenograft and phase 1 solid-tumour data, Salphati 2012's prospective model to an MCF7-neo/HER2 breast xenograft with allometric PK. Does a sponsor's later model of the same drug share the first model's model_id (gdc0980-genentech-translational-pkpd, as drafted), or is each fitted model its own in-silico track? Status is retro either way.",
+  "Safety 4 vs dose: Maira 2008 stated tolerability at the effective dose (dose 1 margin_stated true), yet the pNET GI harm is scored in safety because the model never named it; decision 16's count-once wording leaves open whether a stated margin broken by an unnamed harm belongs in dose. Safety 1's note ('GI harm counted in dose') is stale after dose 2 went untested."
  ]
 }

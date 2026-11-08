@@ -213,6 +213,21 @@
    "rule": "same + source_calls_it partial for partial agreement",
    "note": "FINDINGS sentence verbatim. All five fibroblast-selected boys at 0.9 mg responded; no screen-negative arm, so partial is right. Discrimination untested; could be noted, status stands.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2016,
+   "rule": "Checker brief 3: a dose ceiling (margin_stated) where no model source stated the margin before the trial; dose table row 1 (no stated margin -> untested)",
+   "note": "Quote verbatim (206488 PharmR p.~1010, table p.~3533), but margin is against the trial's own patient AUC, stated 2016; 39-wk monkey (dosing Mar 2011) and juvenile rat (Nov 2011) ran alongside Study 201. Monkey NOAEL also given as 40 mg/kg (~3x). Set margin_stated false.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Checker brief 3 / dose table row 1: PharmR margins (20x, 6x) are against Study 202 Week-152 patient AUC, computed in 2016; no pre-trial margin statement is public, so untested (unpublished)."
   }
  ],
  "missing": [

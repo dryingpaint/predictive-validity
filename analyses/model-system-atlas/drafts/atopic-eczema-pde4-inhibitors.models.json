@@ -449,8 +449,8 @@
   },
   {
    "lead": "DRM02: Dermira 10-K (March 2015) says DRM02 gel was not more effective than vehicle",
-   "outcome": "verdict",
-   "detail": "Corrects the draft's tile note ('DRM02 ... stopped' should read failed proof-of-concept vs vehicle, tier 5); no model side found, so no track (see considered_not_added)"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: only the tile-level note ('DRM02 ... stopped' should read failed proof-of-concept vs vehicle, Dermira 10-K March 2015, tier 5); the checker already records it (check.json gap notes). No model side found, so no track or entry."
   },
   {
    "lead": "Difamilast: FDA NDA 219474 review names a mouse chronic contact dermatitis model; Japanese Phase 2/3 primaries met",

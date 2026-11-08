@@ -415,13 +415,13 @@
   },
   {
    "lead": "Roche media release 21 Jan 2014 (bitopertin FlashLyte/DayLyte phase 3 miss)",
-   "outcome": "verdict",
-   "detail": "dates rodent-nmda-antagonist-behaviour efficacy 3 (contra) to 2014; checker verdict 'corrected' (decision 7 with decision 2) already covers it; no bitopertin dose contra exists to redate"
+   "outcome": "covered",
+   "detail": "efficacy 3 (rodent-nmda-antagonist-behaviour, contra): check.json verdict 'corrected' proposes year 2014 from this release (decision 7 with decision 2), same cell, index and change; dose 2 (Umbricht 2014) is same, target reached, so nothing else to redate"
   },
   {
    "lead": "Boehringer Ingelheim CONNEX topline release, Jan 2025",
-   "outcome": "verdict",
-   "detail": "earliest public date for rodent-mk801-cognition-eeg efficacy 5 (contra, 2025); year unchanged, checker verdict 'confirmed' covers it; cite as earliest date only"
+   "outcome": "covered",
+   "detail": "efficacy 5 (rodent-mk801-cognition-eeg, contra 2025): release is Jan 2025, same year and status as the entry; changes nothing scored; check.json verdict 'confirmed'"
   },
   {
    "lead": "Org 25935 human ketamine challenge (D'Souza 2012)",

@@ -415,13 +415,13 @@
  "gaps": [
   {
    "lead": "EMA EPAR Parsabiv EMA/664198/2016",
-   "outcome": "verdict",
-   "detail": "Dates and re-sources existing tracks; checker verdict on dose 2 (rat-pkpd-tox) already sets year 2016 and margin_stated false from the EPAR 'no safety margins' sentence; no new system."
+   "outcome": "covered",
+   "detail": "Covered: check.json dose 2 verdict already proposes year 2016 and margin_stated false from the EPAR 'no safety margins' sentence."
   },
   {
    "lead": "Adenine-diet uremic rat and double-nephrectomised rat (Goto 2023)",
-   "outcome": "verdict",
-   "detail": "Same predictions (PTH fall, PTG hyperplasia, aortic Ca) as uremic-rat for members that already have that track; needs a verdict renaming the uremic-rat model label (engagement 1, dose 3, efficacy 1) to name the 5/6 Nx, adenine and double-Nx rat it pools, not a new track."
+   "outcome": "covered",
+   "detail": "Covered: a model-label wording change on uremic-rat entries; no status, year or scored field changes."
   },
   {
    "lead": "Patient-derived parathyroid cells ex vivo (Fujioka 2020)",
@@ -430,8 +430,8 @@
   },
   {
    "lead": "NCT03960437 and NCT03795558 as patient tests of the rat calcification prediction",
-   "outcome": "verdict",
-   "detail": "Efficacy 2 (uremic-rat, Block 2017): outcome_tested stays false; NCT03960437 collected no T50 or vascular calcification, NCT03795558 measured only serum T50 (no change); both belong in that entry's patient_trials."
+   "outcome": "covered",
+   "detail": "Covered: extra patient trials on efficacy 2 with status and outcome_tested unchanged."
   },
   {
    "lead": "Monkey toxicology for evocalcet (PMDA Orkedia review)",
@@ -440,13 +440,13 @@
   },
   {
    "lead": "In-vitro hERG (etelcalcetide PharmR, EPAR)",
-   "outcome": "verdict",
-   "detail": "Its call (QTc not from channel block) is the rat-dog-tox safety 2 call; the brief's model_kind has no in-vitro kind, so the verdict is to name the hERG assay in rat-dog-tox safety 2 note/judgement, not a new track."
+   "outcome": "covered",
+   "detail": "Covered: note/judgement wording on safety 2 (rat-dog-tox); call and status unchanged."
   },
   {
    "lead": "PMDA review reports as tier-2 sources (Orkedia, Upasita)",
-   "outcome": "verdict",
-   "detail": "Orkedia: checker verdict on dose 3 (uremic-rat, Kawata 2018) already sets model_filed true; Upasita English review not found in a third search, so upacicalcet model_filed stays null."
+   "outcome": "covered",
+   "detail": "Covered: check.json dose 3 verdict already sets model_filed true from the PMDA Orkedia review; upacicalcet model_filed stays null (no source found)."
   },
   {
    "lead": "ASP-7991",

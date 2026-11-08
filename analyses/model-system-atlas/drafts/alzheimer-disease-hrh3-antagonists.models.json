@@ -128,23 +128,23 @@
   },
   {
    "lead": "EU CTR results record 2010-022596-64 (SAR110894, NCT01266525), results v1 2016-05-10",
-   "outcome": "verdict",
-   "detail": "Fills registry_date 2016-05-10 on efficacy 4 (rodent-cognition-battery, Delay-Goyet 2016 contra), already stated in the checker verdict for efficacy 4; safety 3 and 4 (rat-safety-pharm-eeg) already carry registry_date 2016-05-10 and the 2014 Sanofi tier 5 entry with trial_unreported true"
+   "outcome": "covered",
+   "detail": "Covered: the checker verdict for efficacy 4 (rodent-cognition-battery, Delay-Goyet 2016 contra) already states registry_date should be 2016-05-10; the change is to registry_date only, the entry year stays 2016 and status contra is unchanged, so nothing scored moves. Safety 3 and 4 already carry 2016-05-10."
   },
   {
    "lead": "GSK239512 PET occupancy protocol NCT00474513",
-   "outcome": "verdict",
-   "detail": "Corrects engagement 2 (gsk239512-pig-pet, Ashworth 2014) confidence_note 'No NCT number found'; the checker verdict for engagement 2 already records NCT00474513 from the paper; status unchanged"
+   "outcome": "covered",
+   "detail": "Covered: the checker verdict for engagement 2 (gsk239512-pig-pet, Ashworth 2014) already records NCT00474513 from the paper; the change is to confidence_note (and a registry lookup), status same and year 2014 unchanged, nothing scored."
   },
   {
    "lead": "GSK239512 product-in-model model side: EU CTR 2007-004117-33 'active in animal cognition models'",
-   "outcome": "verdict",
-   "detail": "Needs a verdict on efficacy 2 (rodent-cognition-battery, Grove 2014): swap model_src from GSK189254 sibling (10.1124/jpet.107.120311) to the tier 3 EU CTR document with product_in_model true; same system and status, no new track"
+   "outcome": "covered",
+   "detail": "Covered (changes nothing scored). Source re-opened: EU CTR 2007-004117-33 summary report 109689 (https://www.clinicaltrialsregister.eu/ctr-search/rest/download/result/attachment/2007-004117-33/1/10899, first version published 2016-07-02) says 'Pre-clinical studies show GSK239512 to be a highly potent ... histamine H3 receptor antagonist which is active in animal models of cognition.' It gives no data or model, and was public only in 2016, after efficacy 2's 2013 date; the current sibling model_src (Medhurst 2007, product_in_model false) is admissible under the brief, and swapping it changes neither status (same) nor year. Not a wrong field, so no fix."
   },
   {
    "lead": "Stemmelin 2013 CTAD oral OC42 (J Nutr Health Aging 17(9), 10.1007/s12603-013-0399-7)",
-   "outcome": "verdict",
-   "detail": "Possible 2013 earlier date for safety 3 (rat-safety-pharm-eeg, 2014 contra) under rule 7; abstract text still not retrievable (fc.py search returns only citations), so sleep-AE content unverified; date stays 2014 pending a verdict and the open supplement-DOI rule question"
+   "outcome": "covered",
+   "detail": "Covered (no supportable change). Re-searched via fc.py (Stemmelin SAR110894 CTAD 2013; CTAD 2013 oral communications): the OC42 abstract text is still not retrievable, so whether it reports the sleep adverse events is unverified and no earlier year can be quoted; safety 3 (rat-safety-pharm-eeg) stays 2014. The supplement-DOI admissibility is already lodged in check.json rule_questions (Rule 7 dating)."
   }
  ]
 }

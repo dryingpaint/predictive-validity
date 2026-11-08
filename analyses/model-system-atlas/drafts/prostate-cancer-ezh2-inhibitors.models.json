@@ -90,13 +90,13 @@
   },
   {
    "lead": "ESMO 2024 CELLO-1 abstract 1603P",
-   "outcome": "verdict",
-   "detail": "Corrects crpc-ezh2-xenograft efficacy entry 4 (CELLO-1): checker verdict already re-dates it to 2024 and adjudication sets untested (unresolved, #53/#90); 1603P already cited in its confidence_note"
+   "outcome": "covered",
+   "detail": "check.json efficacy index 4 (crpc-ezh2-xenograft, CELLO-1) already proposes and adjudicates status untested, year 2024, citing 1603P 'Median rPFS by BCR was 16.6 and 13.8 months'; same cell, index and change."
   },
   {
    "lead": "Constellation FY2020 10-K ProSTAR discontinuation",
-   "outcome": "verdict",
-   "detail": "Portfolio decision, not an efficacy result: belongs as a tier-5 source on the ProSTAR (NCT03480646, lirametostat) patient_trials item of crpc-ezh2-xenograft efficacy entry 4; quote verified verbatim on sec.gov; changes no status, needs adjudicator to attach it"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a portfolio decision that would only add a tier-5 source to the ProSTAR (NCT03480646) patient_trials item of crpc-ezh2-xenograft efficacy[4]; patient_trials change no status, and efficacy[4] status is set by the check.json verdict (untested 2024)."
   }
  ]
 }

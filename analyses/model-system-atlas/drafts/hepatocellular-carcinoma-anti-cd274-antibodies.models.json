@@ -227,18 +227,18 @@
   },
   {
    "lead": "EMERALD-1 final OS (Sangro, Ann Oncol 2026 abstract 183O: HR 1.10 D+B+TACE, HR 0.93 D+TACE)",
-   "outcome": "verdict",
-   "detail": "patient-side fact for existing NCT03778957 pairings (efficacy 2, 4, 6); checker verdict efficacy 2 already says add to patient_trials; no new system, no status change"
+   "outcome": "covered",
+   "detail": "covered: patient_trials fact only (key secondary, HR 1.10/0.93), no status change; check.json efficacy 2 verdict proposes adding it to patient_trials and missing[1] records it"
   },
   {
    "lead": "EMERALD-1 primary figures (Lancet 2025, PMID 39798579: PFS HR 0.77 met; D+TACE HR 0.94 missed)",
-   "outcome": "verdict",
-   "detail": "corrects the NCT03778957 patient_trials quote on efficacy 2 (and 4, 6); covered by checker verdict efficacy 2"
+   "outcome": "covered",
+   "detail": "covered: corrects the NCT03778957 patient_trials quote only (efficacy 4 and 6 already carry the Lancet PFS quote); check.json efficacy 2 verdict and missing[2] propose it; no scored field changes"
   },
   {
    "lead": "HIMALAYA four- and five-year OS updates (Ann Oncol 2024; J Hepatol 2025)",
-   "outcome": "verdict",
-   "detail": "patient_trials facts for NCT02519348 on efficacy 2/4/6; needs a verdict note on efficacy 2, same trial, no new model"
+   "outcome": "covered",
+   "detail": "covered: patient_trials facts for HIMALAYA (NCT03298451) only, same trial, no new model or status change; check.json missing[3] records them"
   },
   {
    "lead": "Benmelstobart HCC phase II trials (ALTER-H006, DEB-TACE+TQB2450+anlotinib, HAIC+anlotinib+TQB2450)",
@@ -247,8 +247,8 @@
   },
   {
    "lead": "EMERALD-1 treatment-related deaths and Lancet correspondence on early liver-failure deaths",
-   "outcome": "verdict",
-   "detail": "note correction on safety 4/5 (durva-cyno-monkey-tox) 'no unpredicted harm in HCC' sentence; checker safety 5 verdict covers no status change; not attributed to durvalumab"
+   "outcome": "covered",
+   "detail": "covered: note correction on safety 5 only; deaths not attributed to durvalumab, no status change; check.json safety 5 verdict confirms no status change and missing[5] records it"
   },
   {
    "lead": "Organoid/ex-vivo, humanized-mouse HCC and sugemalimab preclinical searches",

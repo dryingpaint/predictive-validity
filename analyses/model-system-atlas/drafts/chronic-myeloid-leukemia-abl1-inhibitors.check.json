@@ -158,6 +158,16 @@
    "status_supported": true,
    "note": "Turkina 2025 (PMC12141164) quote verbatim; phase 1 reported no vascular occlusive or arterial events, ABI normal. Prediction (2014) preceded trial, so same, not retro; low confidence apt (n=51, ~6 months).",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Zabriskie 2014 (PMC4160372) intro carries quote (citation stripped in BioC). O'Hare 2009 full text (PMC2804470): T315I-start screen kept E255V/T315I to 320 nM, above 101 nM plasma level; 2009 screen predates 2014 failures, so prospective same, not retro."
   }
  ],
  "missing": [

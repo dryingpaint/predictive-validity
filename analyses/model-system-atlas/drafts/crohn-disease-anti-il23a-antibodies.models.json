@@ -284,8 +284,8 @@
   },
   {
    "lead": "Steere 2023 J Pharmacol Exp Ther (doi 10.1124/jpet.122.001512) as tier-1 model_src for the LSN2479016 surrogate colitis data",
-   "outcome": "verdict",
-   "detail": "Not a new system: better model_src for mouse-colitis-anti-p19-surrogate, efficacy entry 2 (opener citing BLA 761279); a source correction for the checker, no status change."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the mouse track's efficacy entries (2 opener, 4 same) cite Elson 2007 as src/model_src, a valid tier-1 source for the anti-p19 surrogate colitis prediction; Steere 2023 (mirikizumab surrogate LSN2479016) would be an additional source for the same system and claim, no field is wrong and no status changes."
   },
   {
    "lead": "IL23R pharmacogenetic prediction of ustekinumab response (doi 10.3390/ph19091428)",
@@ -294,8 +294,8 @@
   },
   {
    "lead": "AstraZeneca press release 2023-06-01 as earlier public source for the brazikumab stop",
-   "outcome": "verdict",
-   "detail": "Corrects the date of the NCT03759288 trial line in mouse-colitis-anti-p19-surrogate efficacy entry 4 (registry 2026-06-23 -> 2023-06-01, tier 5, strategic stop, no safety concern); changes no status."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT03759288 sits only in patient_trials of efficacy entries 3 and 4 (lists that change no status); its registry_date 2026-06-23 is the registry posting date that field records, and checker verdict efficacy[4] already notes the 2023-06-01 AstraZeneca strategic stop with no safety concern."
   }
  ]
 }

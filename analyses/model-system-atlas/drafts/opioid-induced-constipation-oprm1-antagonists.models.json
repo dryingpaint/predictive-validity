@@ -386,8 +386,8 @@
   },
   {
    "lead": "NCT01122030 naldemedine single doses in opioid-dependent chronic-pain patients (results posted 2017-05-30)",
-   "outcome": "verdict",
-   "detail": "Patient-side evidence for existing rat-morphine-dependent-withdrawal safety 2 and rat-gi-transit-vs-tailflick-window dose 2 (both same, 2017); results posted 2017 so neither year nor status changes; covered by those confirmed verdicts"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: an extra patient trial that leaves rat-morphine-dependent-withdrawal safety 2 and rat-gi-transit-vs-tailflick-window dose 2 at same, 2017 (results posted 2017-05-30, same year)."
   },
   {
    "lead": "Rat in-vivo brain opioid receptor occupancy (naldemedine, S-297995-EB-257-N in PharmR)",
@@ -396,13 +396,13 @@
   },
   {
    "lead": "J Pain 2013;14(4 Suppl) abstract: no analgesic interference or CNS withdrawal for TD-1211 in phase 2b (COWS)",
-   "outcome": "verdict",
-   "detail": "Would move mouse-morphine-dependent-withdrawal safety 2 and rat-dog-hotplate-analgesia-window dose 2 from 2019 to 2013 if supplement abstracts are tier 1 (checker rule question 4); jpain.org page gives title only, COWS figures unverified, so entries left at Long 2019"
+   "outcome": "fix",
+   "detail": "safety 4 (mouse-morphine-dependent-withdrawal) and dose 4 (rat-dog-hotplate-analgesia-window): field year, current 2019, source supports 2013 (with epub_year/print_year 2013, comparison_stated false, src https://doi.org/10.1016/j.jpain.2013.01.661 'J Pain 2013 abstract 421', model_src Armstrong 2013 https://doi.org/10.1007/s00210-013-0844-5, model_src_tier 1, confidence low). Source: J Pain 2013;14(4 Suppl) abstract 421, read in the supplement PDF: COWS max 7.0 TD-1211 vs 6.0 placebo; pain scores and opioid dose not worse; quote 'Treatment of OIC patients with TD-1211 for 5 weeks was not associated with impaired analgesia or centrally-mediated opioid withdrawal.' Status same unchanged; safety 4 source_calls_it 'partial' can drop since withdrawal was measured directly. Admissibility hinges on rule question 4 (supplement abstracts). Not added as entries: a 2013 entry cannot sit before the existing 2019 one through added_models (lint: years not sorted)."
   },
   {
    "lead": "Axelopran phase 2b efficacy public Oct 2012 (ACG 2012 / Theravance PR) paired with Armstrong 2013",
-   "outcome": "verdict",
-   "detail": "Would date rat-loperamide-gastric-emptying efficacy 2 to 2013, but no single source states model and patient result together before Long 2019 and the patient side is a meeting abstract/press release; status same unchanged, needs rule-question-4 verdict"
+   "outcome": "fix",
+   "detail": "efficacy 4 (rat-loperamide-gastric-emptying): field year, current 2019, source supports 2013 (with epub_year/print_year 2013, comparison_stated false, src https://doi.org/10.1016/S0016-5085(13)60574-0 'Vickery 2013, DDW abstract 899', model_src Armstrong 2013 https://doi.org/10.1007/s00210-013-0844-5, model_src_tier 1, confidence low). Source: Gastroenterology 2013;144(5 Suppl 1) abstract 899 (published 1 May 2013), read in the supplement PDF: primary CSBM change over weeks 2-5, 0.8/wk placebo vs 2.5 (p=0.0003), 2.6 (p=0.001), 1.5 (p=0.04) at 15/10/5 mg; quote 'Conclusions: TD-1211 increased CSBM and SBM frequency and improved measures of straining, rectal pain, and overall constipation symptoms in OIC patients.' Status same and endpoint_role primary unchanged. Mouse transit track (efficacy 6) unaffected: its model data were public only in 2019. Admissibility hinges on rule question 4."
   }
  ]
 }

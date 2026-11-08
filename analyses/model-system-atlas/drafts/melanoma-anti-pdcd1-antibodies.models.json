@@ -304,8 +304,8 @@
   },
   {
    "lead": "Fu 2017 monkey PK/ADA vs Tang 2019 patient ADA/trough",
-   "outcome": "verdict",
-   "detail": "dose-side comparison on existing tori-cynomolgus-monkey track (no dose cell there; nearest entry draft engagement 2, Tang 2019); not a new system, needs a checker verdict on whether to open a dose entry"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: Fu 2017 (PMID 28317872, abstract re-read) reports monkey ADA lowering AUC after repeat 10 mg/kg but states no human exposure, occupancy or regimen target nor a margin from it, so a dose cell on tori-cynomolgus-monkey would be untested (no_prediction). The monkey NOAEL margin question is check.json rule question 1, and the in-vitro track's dose[2] already scores the trough."
   },
   {
    "lead": "Searched-nothing-found item (pucotenlimab, prolgolimab before Gordeev 2024, toripalimab organoid/PDX/humanised-mouse)",
@@ -314,13 +314,13 @@
   },
   {
    "lead": "Pucotenlimab HuGEMM hPD-1 knock-in MC38 arm (Zhang 2020) vs Cui 2023",
-   "outcome": "verdict",
-   "detail": "same system as tori-hpd1-knockin-mc38-mouse; corrects draft efficacy 2 judgement ('no published pre-clinic model') and needs a 2023 same/strengthens entry on that track via checker verdict"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: an extra patient trial with the status unchanged. tori-hpd1-knockin-mc38-mouse efficacy is already same from 2020 (draft efficacy 2) with a later same/strengthens in 2026 (draft efficacy 4), so a 2023 pucotenlimab same leaves every year's status as is (and appended after the 2026 entry it breaks the track's year order in lint). Re-opened both sources: Zhang 2020 (PMC7153830) 'HuGEMM with human PD-1 gene knock-in syngeneic MC38-bearing mice ... HX008 significantly inhibits tumor growth'; Cui 2023 (doi:10.1186/s12885-022-10473-y, epub 2023-02-06, NCT04749485 registered 2021-02-11) 'the primary endpoint of this study was reached' (ORR 20.17%). Belongs as a patient_trials item on draft efficacy 2 (model_src doi:10.1080/19420862.2020.1724751), and that entry's judgement sentence 'no published pre-clinic model' for pucotenlimab is wrong (text only)."
   },
   {
    "lead": "Pucotenlimab cynomolgus single-dose PK/ADA vs phase 1a CTR20180125 (Zhang 2020)",
-   "outcome": "verdict",
-   "detail": "second member on existing tori-cynomolgus-monkey track, dose-side (monkey over-predicted immunogenicity); needs a checker verdict alongside the Fu 2017/Tang 2019 ADA item, not a new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: Zhang 2020 (PMC7153830) sets monkey ADA beside 1/30 phase 1a ADA but itself says 'ADA responses in animals are not predictive of responses in humans'; the monkey PK states no human exposure, regimen target or margin, so a cynomolgus dose entry would be untested (no_prediction). Immunogenicity is not a harm scored in safety; the cynomolgus safety track is already contra (toripalimab 2019)."
   }
  ]
 }

@@ -175,8 +175,8 @@
  "gaps": [
   {
    "lead": "DeMartinis et al. 2012 SIRS Poster #212 (doi 10.1016/s0920-9964(12)70783-1), PF-02545920 monotherapy phase 2a",
-   "outcome": "verdict",
-   "detail": "Corrects the date of efficacy index 2 (rodent-antipsychotic-screens, contra) from 2016 to 2012; the checker verdict on efficacy index 2 already proposes 2012. Any earlier dating of dose index 2 (pde10a-rodent-exposure-occupancy) needs a verdict once the poster text is read."
+   "outcome": "fix",
+   "detail": "Efficacy index 2 date 2016->2012 is covered by the check.json verdict on efficacy index 2. Fix not proposed by any verdict: cell dose, index 2 (pde10a-rodent-exposure-occupancy), field year (with src/srcLabel/quote/epub_year/print_year), current 2019 (DeMartinis 2019, doi 10.1097/JCP.0000000000001047), source supports 2013: Uthayathas et al. 2014 Neuropharmacology 77:257-267, doi 10.1016/j.neuropharm.2013.10.015 (PMID 24490227, PMC3934827; Crossref online 2013-10-25, print 2014-02), Pfizer co-authors state the phase 2A free plasma exposures matched the rat CAR IC50 (0.16 nM, Schmidt 2008): 'mean MP-10 Cp,u 1-3 h after 0.21 and 0.67 mg/kg were approximately 0.19 nM and 0.89 nM, respectively, which were similar to those examined in the MP-10 Phase 2A study (DeMartinis, 2012).' Status stays same (target reached); epub_year 2013, print_year 2014, comparison_stated true, source_tier 1. The 2012 poster abstract itself is not retrievable (Elsevier elides it; Crossref/S2/ResearchGate give title only), so 2013 is the earliest quotable date."
   },
   {
    "lead": "OMS824 (member): Omeros suspended PDE10 trials in 2015 after a rat high-dose toxicology finding",
@@ -185,8 +185,8 @@
   },
   {
    "lead": "Lu AF11167 NCT03793712 (stopped for futility), registry_date null",
-   "outcome": "verdict",
-   "detail": "A date field on efficacy index 2 (rodent-antipsychotic-screens), patient_trials row NCT03793712. No results are posted; the earliest public date is Meyer-Lindenberg 2022 (doi 10.1016/j.euroneuro.2022.05.009). The status stays contra, so no new system is needed."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT03793712 is a patient_trials row on efficacy index 2 (rodent-antipsychotic-screens) whose status stays contra; the missing registry_date (no results posted; earliest public record Meyer-Lindenberg 2022, doi 10.1016/j.euroneuro.2022.05.009) is a non-scoring field."
   },
   {
    "lead": "Roche RG7203 reward-processing fMRI/MID model in healthy volunteers, then chronic schizophrenia patients (Schizophr Bull 2018 suppl S43)",

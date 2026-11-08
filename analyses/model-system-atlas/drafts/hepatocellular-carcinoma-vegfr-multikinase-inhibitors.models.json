@@ -260,6 +260,51 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "hcc-human-xenograft-immunodeficient-mouse",
+   "model": "Human HCC cell-line and patient-derived xenografts in immunodeficient mice",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "product_in_model": true,
+      "year": 2016,
+      "status": "same",
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1158/1078-0432.CCR-14-0725",
+      "model_src_tier": 1,
+      "epub_year": 2016,
+      "print_year": 2017,
+      "registry_date": "2017-06-05",
+      "model_filed": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "PLC5 xenograft tumour inhibition at 20-40 mg/kg/d vs RESORCE overall survival benefit",
+      "source_calls_it": null,
+      "population": "Unselected, progressed on sorafenib",
+      "note": "Tai 2014 showed regorafenib inhibiting PLC5 HCC xenografts before RESORCE read out; RESORCE then improved survival (HR 0.63).",
+      "short": "Pre-RESORCE regorafenib xenograft matched RESORCE",
+      "src": "https://doi.org/10.1016/S0140-6736(16)32453-9",
+      "srcLabel": "Bruix 2017",
+      "quote": "Regorafenib improved overall survival with a hazard ratio of 0·63 (95% CI 0·50-0·79; one-sided p<0·0001); median survival was 10·6 months (95% CI 9·1-12·1) for regorafenib versus 7·8 months (6·3-8·8) for placebo.",
+      "confidence": "medium",
+      "confidence_note": "Paired by me: Tai 2014 (epub 2014-09-23, PMID 25248379; abstract read: 'Regorafenib induced significant tumor inhibition') vs Bruix 2017 (online 2016-12-06, PMID 27932229, abstract read). Academic study, not filed. Xenograft was treatment-naive PLC5, patients sorafenib-progressed. Its 2014 use predates the track's 2015 first-use year, kept at the track's value.",
+      "judgement": "Prospective regorafenib prediction on the xenograft track: published 2014, before RESORCE (2016), so scored same rather than retro, dated to the Lancet online date. Precedes Kissel 2017 retro on the same track. Dose 20-40 mg/kg/d is 2-4x the exposure-matched 10 mg/kg, a dose-cell matter not scored here.",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": []
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -276,8 +321,8 @@
  "gaps": [
   {
    "lead": "Tai 2014 Clin Cancer Res regorafenib PLC5 xenograft (doi:10.1158/1078-0432.CCR-14-0725)",
-   "outcome": "verdict",
-   "detail": "Same system as hcc-human-xenograft-immunodeficient-mouse; needs a prospective regorafenib entry on that track's efficacy cell (model 2014, paired with Bruix 2017 'same' 2016) ahead of the Kissel 2017 retro entry (efficacy index 4); checker missing item covers it; not a new system"
+   "outcome": "entry",
+   "detail": "Added efficacy entry on hcc-human-xenograft-immunodeficient-mouse: 2016 same, Tai 2014 PLC5 xenograft (model_src, epub 2014-09-23) paired with Bruix 2017 RESORCE (online 2016-12-06), comparison_stated false, ahead of Kissel 2017 retro."
   },
   {
    "lead": "Patient-derived liver-cancer organoid biobanks (Yang 2024 Cancer Cell; Ji 2023 LICOB)",
@@ -291,13 +336,13 @@
   },
   {
    "lead": "Finn 2021 REFLECT PD biomarkers (doi:10.1158/1078-0432.CCR-20-4219): serum FGF19/FGF23 rise on lenvatinib",
-   "outcome": "verdict",
-   "detail": "Patient side for engagement on hcc-human-xenograft-immunodeficient-mouse (engagement index 2, 2015 untested; model readout pFRS2/MVD); a downstream entry turns on the checker's open rule question on analyte concordance; not a new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the xenograft track's PD readout was tumour pFRS2/MVD; REFLECT measured serum FGF19/FGF23, a different analyte, so engagement index 2 stays untested pending the checker's open rule question 3 on analyte concordance."
   },
   {
    "lead": "FDA regorafenib HCC sNDA review 2017, FDA lenvatinib HCC sNDA review 2018, EMA Lenvima HCC variation report",
-   "outcome": "verdict",
-   "detail": "FDA supplement reviews 404. EMA Stivarga II/0020 (2017): no new non-clinical data, relies on filed mouse hepatoma; nothing to change. EMA Lenvima II/0011-G (adopted 2018-06-28): 5 HCC xenografts, lenvatinib 1.5-2x sorafenib; tier-2 model side for xenograft efficacy index 5 (Kudo 2018), supports over_predicted; no earlier date"
+   "outcome": "covered",
+   "detail": "EMA Lenvima II/0011-G only adds a tier-2 model side for efficacy index 5 (status and date unchanged); its source_calls_it over_predicted is already proposed in the checker's verdict note on efficacy index 5 (and rule question 4). EMA Stivarga and FDA 404s change nothing."
   }
  ]
 }

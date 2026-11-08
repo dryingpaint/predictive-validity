@@ -173,13 +173,13 @@
  "gaps": [
   {
    "lead": "FDA Opdivo label 05/2016 (125554s019) section 5.10 allogeneic HSCT complications as earlier nivolumab-specific patient side for the mouse-GVHD track",
-   "outcome": "verdict",
-   "detail": "mouse-gvhd-pd1-blockade safety index 4: checker corrected/adjudicated to same, year 2016, src the May 2016 label"
+   "outcome": "covered",
+   "detail": "Covered by check.json: mouse-gvhd-pd1-blockade safety index 4: checker corrected/adjudicated to same, year 2016, src the May 2016 label"
   },
   {
    "lead": "CheckMate 205 (Younes 2016) as the scored efficacy entry on the 9p24.1 cell-line track",
-   "outcome": "verdict",
-   "detail": "chl-9p24-cell-lines-hrs efficacy index 2: checker corrected/adjudicated to same, year 2016, src Younes 2016 (primary ORR endpoint)"
+   "outcome": "covered",
+   "detail": "Covered by check.json: chl-9p24-cell-lines-hrs efficacy index 2: checker corrected/adjudicated to same, year 2016, src Younes 2016 (primary ORR endpoint)"
   },
   {
    "lead": "PD-1 knockout mouse autoimmunity (Nishimura 1999/2001) has no safety track",

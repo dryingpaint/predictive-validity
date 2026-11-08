@@ -246,6 +246,17 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "same",
    "adjudication_note": "Decision 4 safety: the model's stated prediction (24-week LS BMD loss within -1.6% at 75-125 mg) held in EDELWEISS 3 (<1% at 75 mg, Donnez 2024). Prospective under decision 10; decision 16 counts no window failure. Same, 2024."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "dose: same only on a target the model stated and a source shows reached in patients",
+   "note": "Europe PMC abstract (PMID 37186405, epub 2023-04-26) has the quote verbatim. EPAR p.18 names the rat model at 50 mg/kg BID without the free target; no source compares it with patient free exposure. Untested 2023 holds.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "field_corrections": [

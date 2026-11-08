@@ -371,8 +371,8 @@
  "gaps": [
   {
    "lead": "Tokai 10-K / press release 2016-07-26 (ARMOR3-SV DMC futility)",
-   "outcome": "verdict",
-   "detail": "Dating of galeterone-cwr22rv1-arv7 efficacy[6] (and galeterone-ctc-ar-variant-assay efficacy[9]) 2019 contra: whether a 2016 tier-5 contra with trial_unreported true precedes it is checker rule question 2; no new system"
+   "outcome": "fix",
+   "detail": "efficacy, index 6 (galeterone-cwr22rv1-arv7) and index 9 (galeterone-ctc-ar-variant-assay), year: current 2019 (Taplin 2019, tier 1); source supports 2016 for the track's contra: Tokai press release 2016-07-26 (https://ir.eledon.com/news-releases/news-release-details/tokai-pharmaceuticals-announces-clinical-update, tier 5, trial_unreported true): 'the DMC determined that the ARMOR3-SV trial will likely not succeed in meeting its primary endpoint of demonstrating an improvement in radiographic progression-free survival (rPFS) for galeterone versus enzalutamide in AR-V7 positive mCRPC.' Under rule 2 each track needs a 2016 tier-5 contra before index 6/9, which then carry strengthens: true (NCT02438007 TERMINATED, primary completion 2016-07, no results posted). Not added as entries: merged after the draft's 2019 rows they fail lint (unsorted years, same-status without strengthens) without editing the draft."
   },
   {
    "lead": "ARMOR2 AR-V7 subset 6/7 PSA responders (EORTC-NCI-AACR 2014)",
@@ -381,13 +381,13 @@
   },
   {
    "lead": "NCT01709734 (ARMOR2) TERMINATED for lack of efficacy",
-   "outcome": "verdict",
-   "detail": "Registry datum on galeterone-lapc4-xenograft efficacy[4] 2015 same; checker verdict on efficacy[4] already notes it and keeps the 2015 status under rule 7; no results posted"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: checker efficacy[4] note records the termination and keeps the 2015 same under rule 7; no results posted."
   },
   {
    "lead": "Madan 2020 registry record NCT02130700 vs inferred NCT02445976",
-   "outcome": "verdict",
-   "detail": "Corrects the NCT on seviteronel-crpc-xenografts efficacy[7] 2020 contra (and safety[6]); needs a checker verdict on that entry's patient_trials, no new system"
+   "outcome": "fix",
+   "detail": "efficacy, index 7, patient_trials[0].nct: current NCT02445976; source supports NCT02130700 (ClinicalTrials.gov: Innocrin with NCI collaborator, sole site NIH/NCI, 17 enrolled, chemotherapy-naive and previous-chemotherapy CRPC cohorts, 12-week PSA primary, start 2014-04, no results), matching Madan 2020 abstract (PMID 32327394: NCI authors, 2 cohorts by prior docetaxel, 17 enrolled, 12-week PSA50 primary). safety[6] carries no patient_trials."
   },
   {
    "lead": "Seviteronel NCT02012920 / NCT02361086 and Shore 2016 ASCO abstract",
@@ -396,8 +396,8 @@
   },
   {
    "lead": "ODM-204 model dating (trial start 2015-02 vs Oksala 2018)",
-   "outcome": "verdict",
-   "detail": "model_first_use_year on odm204-vcap-xenograft (engagement[6], dose[4], efficacy[5], safety[5]); covered by checker rule question 5, no new system"
+   "outcome": "fix",
+   "detail": "engagement 6, dose 4, efficacy 5, safety 5 (odm204-vcap-xenograft), model_first_use_year: current 2018; registry supports 2015 (NCT02344017 start 2015-02, first posted 2015-01-22: preclinical VCaP/primate data existed before first-in-human). Source ClinicalTrials.gov NCT02344017; checker raised only as rule question 5, no verdict proposes it."
   },
   {
    "lead": "Patient-derived organoids / ex-vivo cells for galeterone or seviteronel",
@@ -406,8 +406,8 @@
   },
   {
    "lead": "ODM-204 cynomolgus-monkey / hCG-rat steroidogenesis (Oksala 2019)",
-   "outcome": "verdict",
-   "detail": "model_id split of existing engagement[6] and safety[5] (to e.g. odm204-primate-steroidogenesis with 2018 untested openers) for the adjudicator; adding it here would double-count those two patient comparisons"
+   "outcome": "fix",
+   "detail": "engagement 6 and safety 5, model_id: current odm204-vcap-xenograft; source supports a separate system odm204-primate-steroidogenesis (Oksala 2019, doi 10.1016/j.jsbmb.2018.02.004: cynomolgus monkey / hCG-rat steroid inhibition and 'well tolerated in both rodents and primates'), which needs untested openers in engagement and safety. Checker agrees in missing item 8 but entries are confirmed, no verdict re-keys them."
   },
   {
    "lead": "Yin 2017 seviteronel shows no lyase selectivity",

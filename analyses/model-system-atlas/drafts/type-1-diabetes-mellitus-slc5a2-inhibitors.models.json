@@ -298,8 +298,8 @@
   },
   {
    "lead": "Vallon 2013 Sglt2-KO Akita mouse (PMID 23152292, epub 2012-11-14)",
-   "outcome": "verdict",
-   "detail": "akita-mouse, engagement entry 3: model_first_use_year 2013 should read 2012; checker verdict on engagement 3 notes the earlier first use; no status change"
+   "outcome": "covered",
+   "detail": "akita-mouse, engagement 3, model_first_use_year 2013: no change. Re-opened Vallon 2013 (Europe PMC PMID 23152292, doi 10.1152/ajprenal.00409.2012, epub 2012-11-14): 'Sglt2(-/-) mice ... after induction of low-dose streptozotocin (STZ) diabetes' -- an STZ-diabetic knockout mouse, not Akita, so not the akita-mouse system. Europe PMC search (Akita/Ins2 x SGLT2/member drugs, to 2013-12-31) finds no Akita SGLT2 study before Vallon 2014 (PMID 24226524, epub 2013-11-13); 2013 stands. Checker verdict on engagement 3 is confirmed with no field change; nothing scored changes."
   },
   {
    "lead": "Tahara 2014 ipragliflozin STZ rat (PMID 24533859)",

@@ -225,8 +225,8 @@
   },
   {
    "lead": "Bjermer 2013 (PMID 23907810, NCT00736489): AZD3199 potassium/heart rate/QTc vs formoterol",
-   "outcome": "verdict",
-   "detail": "Covered by checker verdict on az-guinea-pig-histamine-bronchoconstriction safety 6: corrected to same 2014, imported_from MONDO:0004979 (asthma)"
+   "outcome": "covered",
+   "detail": "check.json safety 6 (az-guinea-pig-histamine-bronchoconstriction) already proposes untested -> same, year 2014, imported_from MONDO:0004979 on Bjermer 2013 (NCT00736489); adjudicated same"
   },
   {
    "lead": "Program stops (abediterol NCT04199598 business prioritisation; PF-00610355 strategic 2011; AZD3199 unknown)",
@@ -235,8 +235,8 @@
   },
   {
    "lead": "Hughes 2015 (Drug Des Devel Ther, PMID 25709399): AZD3199 lower systemic availability in COPD",
-   "outcome": "verdict",
-   "detail": "Supporting exposure evidence for az-guinea-pig-histamine-bronchoconstriction dose 7 (Kuna 2013); no new system, optional citation on that entry"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: check.json dose 7 is confirmed (same 2014, Kuna 2013) and its note already cites Hughes 2015 (PMID 25709399) for the lower COPD exposure; optional supporting citation only"
   }
  ]
 }

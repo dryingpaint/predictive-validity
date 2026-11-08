@@ -276,6 +276,36 @@
       "status_supported": true,
       "note": "Lincoff 2024 AEGIS-II (PMID 38587254) abstract; quote verbatim; primary MACE HR 0.93, P=0.24. Genetics predicted no benefit, trial null: same, direction_only. Haase 2010 predates; prospective.",
       "checked_by": "CHECKER_BRIEF / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "contra",
+      "proposed_year": 2016,
+      "rule": "Dating rule 6: year is the earliest date the comparison was public",
+      "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays.",
+      "checked_by": "CHECKER_BRIEF / models",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
+    },
+    {
+      "cell": "efficacy",
+      "index": 12,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "contra",
+      "proposed_year": 2016,
+      "rule": "Dating rule 6: year is the earliest date the comparison was public",
+      "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays.",
+      "checked_by": "CHECKER_BRIEF / models",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
     }
   ],
   "missing": [

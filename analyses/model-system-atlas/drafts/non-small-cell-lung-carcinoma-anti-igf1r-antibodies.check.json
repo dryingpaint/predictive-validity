@@ -96,6 +96,17 @@
    "rule": "rule 7 dating; retrodiction rule",
    "note": "Quote verbatim in PharmR 11.4; exec summary: 'did not predict these effects'. Monkey studies 2004-05 preceded clinical hyperglycemia, so contra not retro. Review signed Dec 2019/Jan 2020; 2021 posting year unverified, 2020 defensible.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "paired comparison; retrodiction rule; endpoint_role",
+   "note": "Habben 2011 ASCO 7584 read verbatim on ascopubs: primary 12-wk PFS rate, IGF1R-level subgroups no effect. Gong 2009 (Oct 2009, before 2011 result) predicted total IGF-1R-high sensitivity, also with erlotinib; prospective, so contra not retro. IHC H-score vs total IGF-1R noted.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

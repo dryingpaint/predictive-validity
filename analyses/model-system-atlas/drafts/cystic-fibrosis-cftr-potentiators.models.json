@@ -521,8 +521,8 @@
   },
   {
    "lead": "GLPG1837 on the HBE track (Gees 2018) before SAPHIRA1",
-   "outcome": "verdict",
-   "detail": "cf-hbe-ussing engagement needs 2018 untested (Gees 2018, doi 10.3389/fphar.2018.01221, GLPG1837 in primary CF lung cells by TECC) and 2019 same, partial, paired with Davies 2019, inserted before engagement entry 4 (2025); covered by the checker's missing item; appending would break year order. Also confirms engagement 2 (Van der Plas 2018) was a recombinant YFP assay."
+   "outcome": "covered",
+   "detail": "covered: check.json missing[1] already proposes this exact change (cf-hbe-ussing engagement, GLPG1837, Gees 2018 doi 10.3389/fphar.2018.01221, paired with Davies 2019), and it must be inserted before engagement entry 4 (2025); appending via merge would break year order, so it goes in by the checker's draft edit. Also confirms engagement 2 (Van der Plas 2018) was a recombinant YFP assay."
   },
   {
    "lead": "Checked and not missing: navocaftor (NCT03969888) and ORIGIN-1 (ETI only)",

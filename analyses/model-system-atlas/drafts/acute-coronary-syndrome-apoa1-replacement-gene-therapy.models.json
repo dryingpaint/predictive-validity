@@ -458,8 +458,8 @@
  "gaps": [
   {
    "lead": "CER-001 human engagement: Kootte 2015 (FHA patients, efflux +44%)",
-   "outcome": "verdict",
-   "detail": "Draft engagement #3 (mouse-cer001): checker corrected and adjudicated a 2015 'same' entry (Kootte 2015, PMID 25561459); no new system"
+   "outcome": "covered",
+   "detail": "Check verdict on engagement #3 (mouse-cer001) proposes and adjudicates status same, year 2015 on Kootte 2015 (PMID 25561459); same cell, index and change."
   },
   {
    "lead": "Rabbit IVUS/MRI track for apoA-I Milano/POPC (Parolini 2008)",
@@ -468,8 +468,8 @@
   },
   {
    "lead": "MILANO-PILOT failure public 2016-11-15",
-   "outcome": "verdict",
-   "detail": "Dating of draft efficacy #6 adjudicated to 2016; the same year applies to MILANO-PILOT entries efficacy #9 and #12 (checker notes), which need the same verdict"
+   "outcome": "fix",
+   "detail": "Efficacy #6 is covered by its corrected verdict (year 2016). Not covered: efficacy #9 (rabbit-carotid-apoa1-milano) and efficacy #12 (apoa1-milano-carriers), field year, current 2017, source supports 2016 (rule 6, earliest public date), registry_date 2017-07-13 stays. Source: Cleveland Clinic release https://newsroom.clevelandclinic.org/2016/11/15/cleveland-clinic-researchers-find-no-benefit-hdl-raising-injection-regression-coronary-heart-disease, dated November 15, 2016: 'Cleveland Clinic researchers have found that infusions of MDCO-216 ... did not have a favorable effect on coronary disease progression.' Same MILANO-PILOT trial and result as efficacy #6."
   },
   {
    "lead": "Human genetic track: ApoA-I Milano carriers (Sirtori 2001)",
@@ -483,8 +483,8 @@
   },
   {
    "lead": "CSL111 and ERASE (Tardif 2007) if member 'apolipoprotein a-i' includes CSL111",
-   "outcome": "verdict",
-   "detail": "No CSL111-specific model found; ERASE (PMID 17387133, primary failed vs placebo, P=.48) would only add an entry to existing class-level efficacy tracks, pending checker rule question 4 on which drug the member denotes"
+   "outcome": "covered",
+   "detail": "The reviewed class table (lists/class_audit/class_members.csv) maps member 'apolipoprotein a-i' to code name CSL112 only. CSL111 is outside the member list, so ERASE (Tardif 2007) scores nothing on any track; this answers rule question 4."
   }
  ]
 }

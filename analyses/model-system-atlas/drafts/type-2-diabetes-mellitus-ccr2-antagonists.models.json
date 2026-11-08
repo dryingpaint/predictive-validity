@@ -135,8 +135,8 @@
   },
   {
    "lead": "Sullivan et al. 2013 Metabolism doi:10.1016/j.metabol.2013.06.008 (PMID 23953944), mouse-active CCX140-B analogue in DIO and db/db mice",
-   "outcome": "verdict",
-   "detail": "same system as dio-dbdb-mouse-ccr2-antagonist, no new model_id; needs a verdict on efficacy 2 (2011 CCX140-B pairing) to set model_src to doi:10.1016/j.metabol.2013.06.008 (member's own model, EASD 2011) in place of Weisberg JCI24335 and mark the comparison sponsor-stated"
+   "outcome": "fix",
+   "detail": "efficacy 2: (a) model_src is 'https://doi.org/10.1172/JCI24335' (Weisberg 2006, non-member antagonist); source supports 'https://doi.org/10.1016/j.metabol.2013.06.008' (Sullivan 2013 Metabolism, PMID 23953944, model_src_tier 1 unchanged), the member's own model: 'A mouse-active chemical analogue of the clinical candidate CCX140-B was tested in diet-induced obese (DIO) mice and db/db mice.' (b) comparison_stated is false; source supports true: the 15 Sep 2011 ChemoCentryx press release (entry's src) reports the Phase II result and the DIO/db/db mouse result together ('These data were presented this week in Lisbon, Portugal at the 47th European Association for the Study of Diabetes (EASD) in the form of two presentations'; 'CCR2 inhibition was studied in two models of type 2 diabetes: diet-induced obese mice and db/db mice'), and Sullivan 2013 states the link ('These mechanisms may contribute to the promising anti-diabetic effects seen in humans with at least one CCR2 antagonist'). Not proposed by the check.json verdict on efficacy 2, which changes src/status only. product_in_model stays false (analogue, not CCX140-B). Checker to rule whether the model, public at EASD Sept 2011 alongside the clinic but printed 2013, makes this entry a retrodiction."
   },
   {
    "lead": "de Zeeuw 2015 Lancet Diabetes Endocrinol (PMID 26268910, NCT01447147), 52-week CCX140-B in T2D with nephropathy",

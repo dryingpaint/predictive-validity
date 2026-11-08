@@ -93,7 +93,9 @@
    "rule": "7",
    "note": "Spigel 2021 quote verbatim; contra on the filed track supported (randomised primary OS miss, nivolumab alone; decision 6). Comparison public 2018-10-12 via BMS press release and ESMO IO 2018 LBA: decision 7 gives 2018, status unchanged.",
    "proposed_status": "contra",
-   "proposed_year": 2018
+   "proposed_year": 2018,
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6 / decision 6: status agreed, randomised OS miss on nivolumab alone. Year 2018 holds by rule 6 alone: the CheckMate 331 LBA5 abstract (Ann Oncol 2018 suppl 10) was an online publication; the press release is not needed."
   },
   {
    "cell": "efficacy",
@@ -165,7 +167,9 @@
    "rule": "7/12",
    "note": "Quote verbatim in PMC8050700. Same supported, but the knockout hit was public in 2014 from the imported melanoma datum that opens the monkey contra (FDA review, label section 8.1): open 2014 with imported_from MONDO:0005105; Ready 2019 strengthens.",
    "proposed_status": "same",
-   "proposed_year": 2014
+   "proposed_year": 2014,
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 with the safety transfer rule: status agreed; the knockout's autoimmunity pairs with the 2014 melanoma label's immune-mediated pneumonitis, colitis, nephritis, the same imported datum opening the monkey contra; year 2014, imported_from MONDO:0005105, Ready 2019 strengthens."
   },
   {
    "cell": "efficacy",
@@ -213,6 +217,17 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "untested",
    "adjudication_note": "RULE QUESTION: decision 12 (#69) scores a sibling-target surrogate (anti-PD-L1 for anti-PD-1) other; decision 13 and lint.py make other safety-only; no rule names drop. Does the track enter efficacy, and as other, untested, or not at all?"
+  },
+  {
+   "cell": "safety",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "safety transfer rule (imported_from); model predates patient report so not retro",
+   "note": "DOI resolves to Picchi 2018 (epub 2017-12-18); quote verbatim in journal full-text snippet. Lazar-Molnar 2010 PNAS shows PD-1-/- mice extraordinarily TB-sensitive, 7 years before; same/class/low confidence fits. Earlier case: Fujita 2016 J Thorac Oncol nivolumab TB.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

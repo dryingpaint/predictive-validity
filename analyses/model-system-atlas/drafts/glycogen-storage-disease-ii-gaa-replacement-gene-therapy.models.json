@@ -109,13 +109,13 @@
  "gaps": [
   {
    "lead": "Engagement: PROPEL urinary Hex4/CK vs alglucosidase in Schoser 2021 Lancet Neurol / Amicus Feb 2021 topline",
-   "outcome": "verdict",
-   "detail": "Dating correction to gaa-ko-mouse engagement entry 2 (same, 2023 -> 2021); already covered by the checker's corrected/adjudicated verdict (rule 6)."
+   "outcome": "covered",
+   "detail": "Covered by check.json engagement index 2 (verdict corrected, adjudicated same, proposed_year 2021, rule 6): the same re-dating of gaa-ko-mouse engagement entry 2 from 2023 to 2021 on Schoser 2021 Lancet Neurol."
   },
   {
    "lead": "Possible earlier engagement comparison: ATB200-02 (NCT02675465) urinary Hex4 reductions from 2018",
-   "outcome": "verdict",
-   "detail": "Would only re-date gaa-ko-mouse engagement entry 2; ATB200-02 is single-arm (no alglucosidase comparator) and its first tier-1 report is Byrne 2023 J Neurol (PMID 38057636), later than Schoser 2021, so the 2021 verdict stands."
+   "outcome": "covered",
+   "detail": "Changes nothing scored beyond the engagement index 2 verdict (year 2021): Europe PMC (ATB200 OR cipaglucosidase) AND (Hex4 OR tetrasaccharide) finds no tier 1-3 ATB200-02 (NCT02675465) Hex4 report before Byrne 2023 J Neurol (PMID 38057636, epub 2023-12-06), later than Schoser 2021; status same is unchanged."
   },
   {
    "lead": "Clervonafusp alfa (VAL-1221) Gaa KO mouse vs phase 1/2 NCT02898753",

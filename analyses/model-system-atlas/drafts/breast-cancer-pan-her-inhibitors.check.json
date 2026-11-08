@@ -98,7 +98,9 @@
    "proposed_status": "same",
    "proposed_year": 2018,
    "rule": "7",
-   "note": "Ma 2019 quote verbatim (epub 2019-08-20). Park 2018 (10.1002/ijc.31651, PubMed 2018-07-07; NCT02418689, PFS primary 4.04 months, 'meaningful activity') is this track's earlier public primary-endpoint match, for the very drug Kim 2012 modelled; the first same should be dated 2018."
+   "note": "Ma 2019 quote verbatim (epub 2019-08-20). Park 2018 (10.1002/ijc.31651, PubMed 2018-07-07; NCT02418689, PFS primary 4.04 months, 'meaningful activity') is this track's earlier public primary-endpoint match, for the very drug Kim 2012 modelled; the first same should be dated 2018.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: Efficacy rule (primary endpoint 'responded as predicted'): does a single-arm phase 2 with no prespecified PFS bar (Park 2018, poziotinib, median PFS 4.04 mo, 'meaningful activity') count as a match that dates the first same to 2018?"
   },
   {
    "cell": "safety",
@@ -203,6 +205,21 @@
    "rule": "12",
    "note": "Johnston 2016 abstract quote verbatim (non-breaking spaces only); NCT01151215 results 2014-05-08, after Morrison epub 2014-02-20. Weeks of daily gavage could show diarrhoea or weight loss: askable silence contradicted, contra holds. Set imported_from (MINT, sibling population, decision 12).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "contra",
+   "proposed_year": 2013,
+   "rule": "4",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2014 -> 2013; src -> Tjulandin 2014 (10.1007/s10637-013-9963-6, PMID 23589215, epub 2013-04-16, print 2014; breast 5/28). Quote verbatim in abstract; DLTs grade 3 rash, grade 3-4 diarrhoea. Imported_from applies (decision 12).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6 dating plus askable-silence contra (first-pass adjudication): Tjulandin 2014 phase 1 (epub 2013-04-16; DLTs grade 3 rash, grade 3-4 diarrhoea, breast 5/28) is the earliest public harm; contra 2013, imported_from set."
   }
  ],
  "missing": [

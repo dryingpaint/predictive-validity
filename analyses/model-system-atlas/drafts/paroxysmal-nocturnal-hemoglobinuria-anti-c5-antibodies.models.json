@@ -261,8 +261,8 @@
   },
   {
    "lead": "COMMODORE 1 C5-polymorphism cohort: one discontinuation for lack of efficacy (FDA 761388)",
-   "outcome": "verdict",
-   "detail": "Bears on engagement #4 (c5-r885h-variant-hemolysis-assay, 2022 same), whose note already flags it; review gives no genotype-level hemolysis data (cohort mixes polymorphisms, n=6), so status stays same pending a verdict note."
+   "outcome": "covered",
+   "detail": "Changes nothing scored. FDA 761388 IntegratedR (bundle text) reports only that in the C5 polymorphism cohort (n=6, polymorphisms not broken down by genotype) 'one subject discontinued the study treatment on or after 24 weeks of treatment due to lack of efficacy'; no genotype, free C5, terminal complement or LDH data per subject. Not attributable to an R885H carrier or to failed C5 neutralization, so it cannot contradict engagement #4 (c5-r885h-variant-hemolysis-assay, 2022 same), whose note already records it. Re-searched (fc.py search; PMC11760285 review): no publication gives the cohort's genotype-level outcomes."
   }
  ]
 }

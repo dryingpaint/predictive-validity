@@ -650,18 +650,18 @@
  "gaps": [
   {
    "lead": "Elexacaftor tox (NDA 212273): rat/dog no liver signal vs Trikafta transaminases/liver failure",
-   "outcome": "verdict",
-   "detail": "Same #70/decision-12 attribution question as safety 2 (vanzacaftor-rat-dog-tox, adjudicated untested): label attributes liver injury to the TRIKAFTA combination; needs an adjudicator call before an elexacaftor-rat-dog-tox safety track is scored"
+   "outcome": "covered",
+   "detail": "No elexacaftor tox track exists in the draft, so no entry can be appended; under the decision-12 (#70) adjudication already applied to safety 2 (label attributes liver injury to the TRIKAFTA combination, not a class drug), a new track would score only untested. Changes nothing scored."
   },
   {
    "lead": "Lumacaftor liver-related SAEs (Orkambi 2015 label 5.2)",
-   "outcome": "verdict",
-   "detail": "Corrects safety 1 (lumacaftor-rat-dog-tox 2009 untested): needs a dated 2015 label entry or a note; weak since transaminase rates matched placebo; checker flagged it under safety 1"
+   "outcome": "covered",
+   "detail": "Safety 1 (lumacaftor-rat-dog-tox) is already untested/unsettled; the Orkambi 2015 label 5.2 liver SAEs (3 vs 0) are attributed to the ORKAMBI combination with an ivacaftor backbone and transaminase rates matched placebo, so under the decision-12 adjudication a 2015 entry stays untested. Note only; changes nothing scored."
   },
   {
    "lead": "Galicaftor HBE model side (Wang 2018 J Med Chem) for NCT04853368 FEV1 miss",
-   "outcome": "verdict",
-   "detail": "Corrects efficacy 2 judgement (f508del-hbe-ussing): cite Wang 2018 and say it is unscored because galicaftor was combined with non-member correctors (ABBV-119/576), not that no model prediction exists"
+   "outcome": "covered",
+   "detail": "Judgement-text correction to efficacy 2 (cite Wang 2018 J Med Chem, doi 10.1021/acs.jmedchem.7b01339; unscored because galicaftor was given with non-member correctors). Changes no status, year or scored field."
   },
   {
    "lead": "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride met)",

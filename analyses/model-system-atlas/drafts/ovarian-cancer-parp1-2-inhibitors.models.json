@@ -196,8 +196,8 @@
   },
   {
    "lead": "NOVA final OS (gBRCA HR ~0.85 n.s.; non-gBRCA OS detriment; 2022 label restriction)",
-   "outcome": "verdict",
-   "detail": "corrects efficacy entry 2 (brca-deficient-xenograft-niraparib, 2016): set outcome_tested (negative/null on gBRCA OS) and add the final OS as patient_trials; PFS status stays same; covered by the checker's missing item and rule question"
+   "outcome": "fix",
+   "detail": "efficacy, index 2 (brca-deficient-xenograft-niraparib, 2016, NOVA), field outcome_tested: current null; source supports \"negative\" (status stays same on the PFS primary). Add patient_trials item {nct: NCT01847274, doi: 10.1016/j.ygyno.2025.03.018, quote: \"Median OS with niraparib and placebo was 40.9 and 38.1 months, respectively, in the gBRCA-mutated cohort (hazard ratio [HR], 0.85; 95% confidence interval [CI], 0.61-1.20)\"}. Source: Matulonis 2025 Gynecol Oncol (PMID 40139026, epub 2025-03-25), abstract: 'OS did not significantly differ between treatment arms.' No check.json verdict proposes this: the efficacy-2 verdict is 'confirmed' and its note points at ARIEL4 (a rucaparib trial, now on the rucaparib-brca-xenograft track), not NOVA OS."
   },
   {
    "lead": "Stenoparib (2X-121) phase 2 NCT03878849, DRP-selected platinum-resistant ovarian",

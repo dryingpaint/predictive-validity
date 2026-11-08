@@ -207,6 +207,64 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "pdac-xenograft-pdx",
+   "model": "Pancreatic cell-line and patient-derived xenografts",
+   "model_kind": "animal",
+   "model_first_use_year": 2010,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "model_id": "pdac-xenograft-pdx",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2010,
+      "modality": null,
+      "retrodiction": false,
+      "imported_from": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "model_filed": false,
+      "population": "KRAS-mutant (G12D/G12V), third- or later-line metastatic",
+      "year": 2023,
+      "status": "contra",
+      "strengthens": true,
+      "model": "Patient-derived pancreatic xenografts (trametinib + chloroquine)",
+      "note": "Trametinib + chloroquine regressed patient-derived PDA xenografts (Kinsey 2019); patients given trametinib + hydroxychloroquine third-line had no responses (1/10 stable disease).",
+      "short": "PDX regressions; no patient responses",
+      "src": "https://doi.org/10.1186/s12885-023-11464-3",
+      "srcLabel": "Tang 2023",
+      "quote": "Of the 10 patients with measurable disease, only 1 patient achieved stable disease, and the remaining patients had progressive disease.",
+      "confidence": "low",
+      "confidence_note": "Abstract-level (PubMed) for both sides. Patient side is a retrospective real-world series (8 on trametinib + HCQ, 5 on trametinib + CDK4/6i), no pre-specified primary endpoint and no control; Witte 2024 (10.1007/s00432-024-05954-5, 13/13 evaluable THCQ patients progressed) repeats it. THREAD NCT03825289 terminated with no results posted. model_filed false: Kinsey 2019 is academic, not in NDA 204114.",
+      "judgement": "Same PDX system, now dosed with the exact regimen patients later received; the model (epub 2019-03-04) precedes both patient series, so prospective. Regressions predicted, no responses seen: contra, same status as the track since 2013, so strengthens. Hydroxychloroquine is a non-member partner, but trametinib is the member drug and the model tested the same combination.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/s41591-019-0367-9",
+      "model_src_tier": 1,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": null,
+      "product_in_model": true,
+      "magnitude": "direction_only",
+      "magnitude_basis": "Xenograft regression vs objective response (0 of 10 measurable patients responded)",
+      "source_calls_it": "miss",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": null,
+        "registry_date": null,
+        "doi": "10.1007/s00432-024-05954-5",
+        "quote": "In the THCQ subgroup, all patients evaluable for response (13/19) had progressive disease (PD) within 100 days."
+       }
+      ]
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -225,18 +283,18 @@
  "gaps": [
   {
    "lead": "NCT02704156 / Zhu 2022 Lancet Oncol (SBRT + pembrolizumab + trametinib vs SBRT + gemcitabine)",
-   "outcome": "verdict",
-   "detail": "No model of the triple regimen exists (PubMed KPC/syngeneic searches, trial rationale cites none); record NCT02704156 in patient_trials of efficacy 2 (pdac-xenograft-pdx, contra 2013) as untested for the class (three differing components); rule question 4 decides"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the triple regimen (SBRT + pembrolizumab + trametinib vs SBRT + gemcitabine) has no model and differs in three components, so it is at most an extra patient trial (NCT02704156, results 2021-02-16; Zhu 2022 Lancet Oncol 10.1016/S1470-2045(22)00066-3) in patient_trials of efficacy 2, with the 2013 contra unchanged; check.json missing[0] records it, rule question 4 decides admissibility."
   },
   {
    "lead": "Vena 2015 CCR pimasertib + gemcitabine orthotopic model",
-   "outcome": "verdict",
-   "detail": "Model side of efficacy 4 (pdac-xenograft-pdx, Van Cutsem 2018 contra): set model_src 10.1158/1078-0432.CCR-15-0485, tier 1, comparison_stated false, not retro; check verdict efficacy 4 already covers it"
+   "outcome": "covered",
+   "detail": "check.json efficacy 4 verdict already proposes model_src 10.1158/1078-0432.CCR-15-0485, model_src_tier 1, comparison_stated false on the same entry."
   },
   {
    "lead": "Lapatinib + trametinib phase I, Huijberts 2020 (10.1007/s00280-020-04066-4)",
-   "outcome": "verdict",
-   "detail": "Existing pdac-xenograft-pdx track (Walters 2013 model): needs a dose-cell entry, 2020, untested (combination stopped at trametinib 1 mg by DLTs, no stated margin); no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: lapatinib + trametinib stopped at trametinib 1 mg by DLTs with no stated combination margin, the dose table row 'never reached because of toxicity; no stated margin' -> untested, which does not displace the 2012 single-agent dose same on pdac-xenograft-pdx (one entry per change of status). Recorded in check.json missing[2]."
   },
   {
    "lead": "GSK2256098 + trametinib 0.5 mg phase II PDAC (J Gastrointest Oncol 2022, 10.21037/jgo-22-86)",
@@ -245,8 +303,8 @@
   },
   {
    "lead": "Trametinib + gemcitabine Japanese phase I/Ib ILD (Invest New Drugs 2015, 10.1007/s10637-015-0270-2)",
-   "outcome": "verdict",
-   "detail": "Patient side of a safety entry on tox-species-rat-dog (dog 13-week lung target organ, PharmR lines 400-405): needs a new safety entry, same (lung signal -> clinical ILD), stated tier 2; same as the models-checker lead below"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the dog-lung -> clinical ILD agreement (PharmR lines 400-405; Invest New Drugs 2015 10.1007/s10637-015-0270-2) is a same on tox-species-rat-dog in the same 2013 review whose ocular miss already makes safety 1 contra; a matched harm cannot turn a failed track (contra beats same), so it is a note on safety 1, not a status change. Same as the [models] tox lead."
   },
   {
    "lead": "Patient-derived organoids (Front Immunol 2026, 10.3389/fimmu.2026.1760379)",
@@ -255,13 +313,13 @@
   },
   {
    "lead": "[models] tox-species-rat-dog safety: dog lung findings vs clinical ILD (NDA 204114 PharmR 400-405)",
-   "outcome": "verdict",
-   "detail": "Existing track tox-species-rat-dog, safety cell: needs a second entry (year 2013 for the FDA's stated reconciliation, disease-specific patient side Invest New Drugs 2015), status same, comparison_stated true, source_tier 2"
+   "outcome": "covered",
+   "detail": "Same as the Invest New Drugs ILD lead: a same comparison on tox-species-rat-dog in 2013, the year safety 1 is already contra for unpredicted ocular toxicity; contra holds, so no new status entry; belongs in safety 1's note."
   },
   {
    "lead": "[models] PDX track: Kinsey 2019 Nat Med trametinib + chloroquine vs Witte 2024 / Tang 2023 patient series",
-   "outcome": "verdict",
-   "detail": "Existing track pdac-xenograft-pdx, efficacy cell: needs a prospective contra entry (model 2019 precedes 2023-2024 series with no responses; THREAD NCT03825289 terminated, no results); not a new system"
+   "outcome": "entry",
+   "detail": "Added to added_models under pdac-xenograft-pdx, efficacy 2023 contra (strengthens): model Kinsey 2019 Nat Med 10.1038/s41591-019-0367-9 (PDX regression on trametinib + chloroquine), patients Tang 2023 BMC Cancer 10.1186/s12885-023-11464-3 (0/10 responses) with Witte 2024 in patient_trials; low confidence, retrospective series."
   }
  ]
 }

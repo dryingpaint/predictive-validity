@@ -424,7 +424,8 @@
     "blocked_by": null,
     "margin_stated": null,
     "reason": "No human exposure target stated by the duck",
-    "judgement": "The duck opener is 2015, not 2013, because the 2013 prophylaxis study carried no therapeutic regimen. Patients in REP 101 received REP 2055 at 400-1200 mg intravenously (Al-Mahtab 2016 full text) while ducks got 10 mg/kg intraperitoneally; no source maps one onto the other, so a drafter-made mg/kg mapping is not scored. The tolerated-dose margin is scored on the toxicology-species track."
+    "judgement": "The duck opener is 2015, not 2013, because the 2013 prophylaxis study carried no therapeutic regimen. Patients in REP 101 received REP 2055 at 400-1200 mg intravenously (Al-Mahtab 2016 full text) while ducks got 10 mg/kg intraperitoneally; no source maps one onto the other, so a drafter-made mg/kg mapping is not scored. The tolerated-dose margin is scored on the toxicology-species track.",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "cyno-mouse-pk-tox",
@@ -637,7 +638,8 @@
     "srcLabel": "Noordeen 2013",
     "quote": "REP 2006 displayed significant toxicity in ducks, which was attributed to CpG-mediated proinflammation, while REP 2031 (which has no CpG motifs) displayed no toxicity.",
     "reason": "No duck-patient tolerability comparison",
-    "judgement": "Left untested rather than scored: REP 101/102 patients had infusion-related 'administration tolerability issues', gum bleeding with raised INR at 1200 mg, asymptomatic hypocalcaemia at 400 mg, and hair loss, dysphagia and dysgeusia on REP 2139-Ca that the sponsor attributes to heavy-metal exposure endemic at the Bangladesh site (Al-Mahtab 2016). Ducks measured neither calcium nor coagulation and received intraperitoneal bolus doses, and no source puts duck and patient tolerability side by side; the explicit tolerability margin is on the toxicology-species track."
+    "judgement": "Left untested rather than scored: REP 101/102 patients had infusion-related 'administration tolerability issues', gum bleeding with raised INR at 1200 mg, asymptomatic hypocalcaemia at 400 mg, and hair loss, dysphagia and dysgeusia on REP 2139-Ca that the sponsor attributes to heavy-metal exposure endemic at the Bangladesh site (Al-Mahtab 2016). Ducks measured neither calcium nor coagulation and received intraperitoneal bolus doses, and no source puts duck and patient tolerability side by side; the explicit tolerability margin is on the toxicology-species track.",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "cyno-mouse-pk-tox",

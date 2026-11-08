@@ -119,13 +119,13 @@
  "gaps": [
   {
    "lead": "FXLEARN primary paper, Berry-Kravis 2023 JCI (doi:10.1172/jci171723, NCT02920892)",
-   "outcome": "verdict",
-   "detail": "Corrects the NCT02920892 source in patient_trials of fmr1-ko-mouse-behaviour efficacy entry 2 (2024 biomarker paper -> doi:10.1172/jci171723); covered by check verdict efficacy #2 note; already cited on dfmr1-drosophila efficacy entry 2."
+   "outcome": "covered",
+   "detail": "Check verdict efficacy #2 (confirmed) already proposes citing doi:10.1172/jci171723 for NCT02920892 in patient_trials of fmr1-ko-mouse-behaviour efficacy #2; a patient_trials source change, status contra unchanged; already cited on dfmr1-drosophila efficacy entry 2."
   },
   {
    "lead": "Yan 2005 Neuropharmacology (doi:10.1016/j.neuropharm.2005.06.004)",
-   "outcome": "verdict",
-   "detail": "Re-dates opening untested entries of fmr1-ko-mouse-behaviour dose #1 and efficacy #1 to 2005 (model_first_use_year 2005); covered by adjudicated verdicts dose #1 and efficacy #1."
+   "outcome": "covered",
+   "detail": "Adjudicated verdicts dose #1 and efficacy #1 (corrected) already re-date the opening untested entries of fmr1-ko-mouse-behaviour to 2005 (model_first_use_year 2005, Yan 2005 PMID 16054174)."
   },
   {
    "lead": "Drosophila dfmr1 model, McBride 2005 Neuron (doi:10.1016/j.neuron.2005.01.038)",

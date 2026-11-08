@@ -474,8 +474,8 @@
   },
   {
    "lead": "Second KK-Ay esaxerenone paper (Hypertens Res 2020)",
-   "outcome": "verdict",
-   "detail": "Existing kkay-hs-diabetic-mouse efficacy index 5: comparison_stated source supporting retro over same; needs the checker's retro verdict on that entry"
+   "outcome": "covered",
+   "detail": "Existing kkay-hs-diabetic-mouse efficacy index 5: comparison_stated source supporting retro over same; needs the checker's retro verdict on that entry | covered: check.json efficacy 5 is 'corrected', proposed_status retro, proposed_year 2020 (adjudicated retro)."
   },
   {
    "lead": "Retrodictions: esaxerenone db/db (Life Sci 2025), finerenone T1D model (Biomed Pharmacother 2023), finerenone diabetic mice (Biochem Pharmacol 2026)",
@@ -484,8 +484,8 @@
   },
   {
    "lead": "ARTS-DN Japan (Katayama 2017) patient datum",
-   "outcome": "verdict",
-   "detail": "Patient side, not a system: belongs in patient_trials of docasalt-unx-rat efficacy index 2 (and bears on dahl-ss-rat safety contra dating)"
+   "outcome": "covered",
+   "detail": "Patient side, not a system: belongs in patient_trials of docasalt-unx-rat efficacy index 2 (and bears on dahl-ss-rat safety contra dating) | covered: a patient_trials addition changes no status (check.json efficacy 2 note already places Katayama 2017 there); the Dahl-rat dating question is in check.json rule_questions (decision 5 converse) and ARTS-DN Japan saw no hyperkalaemia, so it cannot date the safety 6 contra earlier."
   },
   {
    "lead": "Healthy conscious dog natriuresis (Kerendia integrated review)",
@@ -499,8 +499,8 @@
   },
   {
    "lead": "Earlier db/db source: finerenone Cells 2025 (PMID 40072066)",
-   "outcome": "verdict",
-   "detail": "Draft efficacy 10 (dbdb-mouse opener, Yang 2025) should be re-sourced to Li 2025, Cells, doi 10.3390/cells14050337 (epub 2025-02-26, 'finerenone attenuated the kidney injuries in established DN in db/db mice'), and efficacy 11 (retro, Wang 2026) moved to 2025 on the same source, which states the patient benefit as premise; needs a checker verdict"
+   "outcome": "covered",
+   "detail": "Draft efficacy 10 (dbdb-mouse opener, Yang 2025) should be re-sourced to Li 2025, Cells, doi 10.3390/cells14050337 (epub 2025-02-26, 'finerenone attenuated the kidney injuries in established DN in db/db mice'), and efficacy 11 (retro, Wang 2026) moved to 2025 on the same source, which states the patient benefit as premise; needs a checker verdict | covered: check.json efficacy 10 note proposes swapping the opener to Li 2025 Cells (year 2025 unchanged) and efficacy 11 is 'corrected' with proposed_year 2025 on that source (adjudicated retro 2025)."
   }
  ]
 }

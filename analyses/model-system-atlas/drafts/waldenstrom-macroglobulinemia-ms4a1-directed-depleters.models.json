@@ -174,8 +174,8 @@
  "gaps": [
   {
    "lead": "NCT01536067 (ofatumumab + bortezomib, untreated WM, phase 2, terminated, results posted)",
-   "outcome": "verdict",
-   "detail": "Combination trial, changes no status: belongs in patient_trials of draft efficacy #2 (cd20-cdc-invitro-ofatumumab, 2012 same) per the checker's missing note; added to patient_trials of scid-xenograft-ofatumumab efficacy 2012 entry here (results posted 2016-06-10)"
+   "outcome": "covered",
+   "detail": "Combination trial (ofatumumab + bortezomib, terminated, results posted 2016-06-10); changes no status, so covered: recorded in patient_trials of the scid-xenograft-ofatumumab efficacy 2012 entry. Combination trial, changes no status: belongs in patient_trials of draft efficacy #2 (cd20-cdc-invitro-ofatumumab, 2012 same) per the checker's missing note; added to patient_trials of scid-xenograft-ofatumumab efficacy 2012 entry here (results posted 2016-06-10)"
   },
   {
    "lead": "No uncovered model system found (checker search of ofatumumab/ublituximab/veltuzumab WM cell lines, xenografts, patient cells)",

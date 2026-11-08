@@ -186,6 +186,17 @@
    "rule": "7 (#113, #127), 12 (no widening)",
    "note": "Quote verbatim in abstract (PMID 38593780). Full text unread: cell.com and ScienceDirect 403 to curl, WebFetch and fc.py; no PMC, preprint or repository copy (OpenAlex, Europe PMC, Unpaywall). Whether lenvatinib was compared with patient response stays unknown; untested holds.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "3, 10 (prospective vs retro), 8",
+   "note": "Bruix 2017 quote verbatim in abstract (PMID 27932229, online 2016-12-06). model_src Tai 2014 (PMID 25248379, epub 2014-09-23) abstract: PLC5 xenografts, 20/40 mg/kg/d, 'significant tumor inhibition'; predates readout, so same not retro. Track opening year should be 2014.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

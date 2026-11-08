@@ -550,8 +550,8 @@
  "gaps": [
   {
    "lead": "Engagement, P301 track, 2017: Yanamandra 2017 (HJ8.5 P301S mice beside ABBV-8E12 PSP plasma tau); Qureshi 2018 + Bright 2015",
-   "outcome": "verdict",
-   "detail": "Dating of draft engagement #2 (tau-tg-mice-p301, Ayalon 2021) to 2017; covered by the checker's corrected verdict (proposed_year 2017, rule 6); no new system."
+   "outcome": "covered",
+   "detail": "Checker verdict on draft engagement #2 (tau-tg-mice-p301, Ayalon 2021) is 'corrected' with proposed_year 2017 under rule 6 (Yanamandra 2017, doi 10.1126/scitranslmed.aal2029); same cell, index and change, no new system."
   },
   {
    "lead": "iPierian eTau model (Bright 2015) vs TANGO CSF Abeta42",
@@ -565,18 +565,18 @@
   },
   {
    "lead": "Biogen press release 2021-06-16 (TANGO missed CDR-SB, discontinued)",
-   "outcome": "verdict",
-   "detail": "Dating question on the TANGO efficacy entries (#4 ad-tau-seeding-assay 2022, registry 2022-11-08); status unchanged, tier 1 governs; logged in RULE_QUESTIONS, not a model system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: TANGO statuses (efficacy #4/#5, #9) are unchanged and tier 1 governs; a sponsor press release is not a rule-6 year anchor (registry posting, online publication, label, print), so the 2022-11-08 registry date stands; logged as a checker rule question."
   },
   {
    "lead": "Courade 2018 antibody F (zagotenemab MC-1 V-region, partial activity on AD tau)",
-   "outcome": "verdict",
-   "detail": "Belongs to ad-tau-seeding-assay efficacy #2 and #4; the checker's verdict notes on #2 and #4 carry antibody F for effect_size and notes; no new system."
+   "outcome": "covered",
+   "detail": "Checker verdicts on efficacy #2 and #4 (ad-tau-seeding-assay) already carry antibody F (Lilly WO2016137811A1, MC-1, zagotenemab, partial activity); #4 is adjudicated neg->same, so effect_size/class_threshold no longer score and the remaining change is note text only."
   },
   {
    "lead": "Immunodepletion track, engagement, prospective entry (Sopko 2020 AD CSF vs TANGO AD CSF)",
-   "outcome": "verdict",
-   "detail": "Engagement #7 (ad-lysate-immunodepletion-gosuranemab, 2020) set to retro per the adjudicated verdict; fresh prospective entry appended on that track: engagement 2023 same, Shulman 2023 (unbound N-terminal tau down at all doses)."
+   "outcome": "entry",
+   "detail": "Written as added_models ad-lysate-immunodepletion-gosuranemab engagement: 2023 same, Shulman 2023 (doi 10.1038/s43587-023-00523-w, PMC10724064 full text, quote verified verbatim), model_src Sopko 2020, comparison_stated false, readout direct; follows the checker's 2020 retro verdict on draft engagement #7."
   }
  ]
 }

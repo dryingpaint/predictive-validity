@@ -471,18 +471,18 @@
  "gaps": [
   {
    "lead": "ARB-1467 Phase 2 HBsAg data in Arbutus press releases 2016-12-12 and 2017 AASLD (tier 5)",
-   "outcome": "verdict",
-   "detail": "Dates engagement 3 (hbv-genome-mouse, Yuen 2022) to 2016 via model_src Wooddell 2013; checker verdict engagement 3 (proposed_year 2016) covers it"
+   "outcome": "covered",
+   "detail": "Check verdict engagement 3 (hbv-genome-mouse) already proposes year 2016 from the 2016-12-12 Arbutus release (tier 5, model_src Wooddell 2013), adjudicated same/2016; nothing further."
   },
   {
    "lead": "NCT03672188 registry results 2021-12-13 (elebsiran HBsAg -1.03 to -1.65 log10)",
-   "outcome": "verdict",
-   "detail": "Same dating correction on engagement 3 (hbv-genome-mouse); covered by checker verdict engagement 3; already the patient side of engagement 6 (hbv-human-liver-chimeric-mouse)"
+   "outcome": "covered",
+   "detail": "Same change on the same entry: check verdict engagement 3 re-dates hbv-genome-mouse to 2016, earlier than the 2021-12-13 NCT03672188 posting; the registry record is already the patient side of engagement 6."
   },
   {
    "lead": "REEF-2 NCT04129554, functional cure 0/130 (Agarwal 2024)",
-   "outcome": "verdict",
-   "detail": "Adds a member primary-endpoint miss to the existing hbv-genome-mouse efficacy track; needs a verdict on efficacy 2 (REEF-1 same/partial) - the mouse predicted no cure, so it supports, not flips, that entry; no new system"
+   "outcome": "covered",
+   "detail": "Extra patient trial with status unchanged: REEF-2 (NCT04129554, Agarwal 2024) is the same member JNJ-3989 missing functional cure (0/130), consistent with efficacy 2's same/partial call (knockdown without cure, HBsAg loss rare); no status change on hbv-genome-mouse, so no new entry."
   },
   {
    "lead": "MARCH (Vir PR 2025-05-09) tobevibart+elebsiran seroclearance 8%/16%",
@@ -496,8 +496,8 @@
   },
   {
    "lead": "NCT04667104 (PENGUIN) registry results 2024-07-03, draft records null",
-   "outcome": "verdict",
-   "detail": "Date correction on efficacy 2 patient_trials (hbv-genome-mouse); checker verdict efficacy 2 already names it"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT04667104 registry_date (2024-07-03) sits inside efficacy 2 patient_trials, which change no status; the check file already records the date (efficacy 2 note and missing)."
   },
   {
    "lead": "No tier 1-3 model source for ARB-1467 own preclinical data",
@@ -511,13 +511,13 @@
   },
   {
    "lead": "PXB track label: Gane 2023 safety 3 used uninfected PXB mice",
-   "outcome": "verdict",
-   "detail": "Label fix on hbv-human-liver-chimeric-mouse safety 3 (model name should read human liver-chimeric PXB mice, infection status per entry); same chassis, no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a model-name label on hbv-human-liver-chimeric-mouse safety 3 (uninfected PXB mice); same model_id, status same confirmed by the check verdict on safety 3."
   },
   {
    "lead": "ARB-001467 (ARB-1467, member never mentioned by id)",
-   "outcome": "verdict",
-   "detail": "Its tier-5 patient HBsAg data (2016-12-12) date engagement 3 on hbv-genome-mouse via Wooddell 2013 (checker verdict engagement 3); no own tier 1-3 preclinical model source in Europe PMC (reviews only), manifest has no NDA/BLA, so no new system"
+   "outcome": "covered",
+   "detail": "Covered by check verdict engagement 3 (ARB-1467 tier-5 data re-date hbv-genome-mouse to 2016); no own tier 1-3 preclinical source for ARB-1467, so no new entry."
   }
  ]
 }

@@ -250,13 +250,13 @@
  "gaps": [
   {
    "lead": "Fleischmann 2014 lesinurad + febuxostat earlier human PD for genotype track",
-   "outcome": "verdict",
-   "detail": "slc22a12-lof-renal-hypouricemia engagement entry 2: checker corrected and adjudicated year to 2014, status same"
+   "outcome": "covered",
+   "detail": "covered: check.json engagement 2 (slc22a12-lof-renal-hypouricemia) corrected, adjudicated same, year 2014 (Fleischmann 2014, doi 10.1093/rheumatology/ket487)"
   },
   {
    "lead": "Zurampic label 2015 12.1-12.2 stated comparison for hURAT1 track",
-   "outcome": "verdict",
-   "detail": "hurat1-cell-urate-uptake engagement entry 4: checker corrected and adjudicated year to 2015, tier 2, status same"
+   "outcome": "covered",
+   "detail": "covered: check.json engagement 4 (hurat1-cell-urate-uptake) corrected, adjudicated same, year 2015, Zurampic label 12.1-12.2, tier 2"
   },
   {
    "lead": "Verinurad hURAT1 IC50 vs gout sUA lowering",

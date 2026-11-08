@@ -152,8 +152,8 @@
   },
   {
    "lead": "Lin 2023 camrelizumab TB case (Front Immunol, PMID 37304292)",
-   "outcome": "verdict",
-   "detail": "Corrects judgement text of mtb-infected-pd1-knockout-mouse and mtb-rhesus-anti-pd1-blockade safety 1 (now cite it); chemotherapy-combined, so untested stands on both"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the camrelizumab-plus-chemotherapy TB case is chemo-confounded, so safety 1 on mtb-infected-pd1-knockout-mouse and mtb-rhesus-anti-pd1-blockade stays untested; both judgements already cite PMID 37304292 and the check verdicts already apply the same chemo-combined reading"
   },
   {
    "lead": "Zhongshan (PMID 42733647) and Shenzhen (PMID 42751276) 2026 ICI-TB cohorts",

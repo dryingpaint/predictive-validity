@@ -448,13 +448,13 @@
   },
   {
    "lead": "Lauring 2012 SCH900271 phase 1B (10 mg vs 2 g ER-niacin vs placebo, 4 weeks)",
-   "outcome": "verdict",
-   "detail": "Patient-side in-trial niacin comparator, not a model system; bears on beagle-dog-merck safety 4 (checker verdict already cites it for partial) and efficacy 6; body/supplement unreadable, so unquotable."
+   "outcome": "covered",
+   "detail": "Extra patient trial with no registry record and an unreadable body; it changes no status: beagle-dog-merck safety 4 stays same (checker verdict already cites the phase 1B for the comparative window) and efficacy 6 stays contra on the phase 2B (NCT00941603)."
   },
   {
    "lead": "Lauring 2012 Fig. S1 and Table S2 (unchecked supplement)",
-   "outcome": "verdict",
-   "detail": "Would change existing entries only: dog track comparison_stated (engagement 4 verdict) and dating of knockout-mouse flush 'same' (safety 2, already corrected to Lauring Aug 2012); supplement download denied, no new system."
+   "outcome": "covered",
+   "detail": "The scored change it would carry, the earlier dating of mouse-gpr109a-ko safety 2 to Lauring Aug 2012, is already proposed by the check.json verdict on safety 2 (corrected, proposed_year 2012). The dog-track comparison_stated on engagement 4 changes no status and the supplement (Fig. S1) is not served, so no source supports a different value."
   }
  ]
 }

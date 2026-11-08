@@ -184,8 +184,8 @@
   },
   {
    "lead": "efficacy (parallel track r1507-nsclc-cell-line-panel): Habben 2011 ASCO 7584 contra",
-   "outcome": "verdict",
-   "detail": "abstract now read verbatim; 2011 contra entry appended to r1507-nsclc-cell-line-panel efficacy (status change on an existing track), needs a checker verdict"
+   "outcome": "entry",
+   "detail": "r1507-nsclc-cell-line-panel efficacy 2011 contra in added_models (after 2009 untested opening); Habben 2011 ASCO 7584 abstract re-read verbatim on ascopubs (fc.py scrape); no check.json verdict covers efficacy index 4"
   }
  ]
 }

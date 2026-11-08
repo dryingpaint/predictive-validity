@@ -386,13 +386,13 @@
  "gaps": [
   {
    "lead": "GEOMETRY-III (NCT04427072; ESMO 2023 1391P)",
-   "outcome": "verdict",
-   "detail": "Patient-side randomised capmatinib vs docetaxel result, no new system: add to patient_trials of met-driven-xenograft efficacy 3 (Wolf 2020), status same unchanged; needs a checker verdict on that entry."
+   "outcome": "covered",
+   "detail": "Extra patient trial for met-driven-xenograft efficacy 3 (Wolf 2020, same); status unchanged, nothing scored changes (APPLY_TASK step 2 covered rule). Checker lists it under missing patient_trials."
   },
   {
    "lead": "VISION cohort B (Le 2023, 10.1016/j.xcrm.2023.101280)",
-   "outcome": "verdict",
-   "detail": "Tepotinib in high-level MET-amplified NSCLC is the patient side of the amplification prediction: add to patient_trials of met-driven-xenograft efficacy 3 (or efficacy 2), no status change; needs a verdict."
+   "outcome": "covered",
+   "detail": "Extra patient trial (tepotinib, high-level MET amplification) for met-driven-xenograft efficacy 3; efficacy 3 already partial 'same' on the amplification call, so status unchanged; nothing scored changes."
   },
   {
    "lead": "Ai 2018 gumarontinib/SCC244 NSCLC PDX (10.1158/1535-7163.MCT-17-0368)",
@@ -401,8 +401,8 @@
   },
   {
    "lead": "Gavine 2015 savolitinib gastric PDX (10.1016/j.molonc.2014.08.015)",
-   "outcome": "verdict",
-   "detail": "Corrects met-driven-xenograft efficacy 3 judgement, which lists savolitinib as xenograft-predicted: its published model is gastric-cancer PDX, no NSCLC model found; needs a verdict on efficacy 3 wording."
+   "outcome": "covered",
+   "detail": "Judgement wording on met-driven-xenograft efficacy 3 only: savolitinib sits in patient_trials (changes no status); status same, product_in_model true and model_src (Baltschukat 2019, capmatinib) rest on capmatinib's NSCLC xenografts, so no scored field is wrong."
   },
   {
    "lead": "Lu 2017 MetDelta15 immunocompetent mouse (10.1158/0008-5472.CAN-16-1944)",
@@ -426,8 +426,8 @@
   },
   {
    "lead": "Wang 2023 Table S6 METex14 organoid cases (bozitinib P-86, crizotinib P-105)",
-   "outcome": "verdict",
-   "detail": "Vebreltinib/bozitinib is not a tile member (members: capmatinib, gumarontinib, sar-125844, savolitinib, tepotinib); nsclc-effusion-organoid-dst efficacy 8 note 'two METex14 cases also predicted accurately' should say both were non-member drugs; needs a verdict."
+   "outcome": "covered",
+   "detail": "Note wording on nsclc-effusion-organoid-dst efficacy 8 only; checker verdict on efficacy 8 already records P-86 bozitinib and P-105 crizotinib as non-member cases and keeps the n=1 savolitinib same; nothing scored changes."
   }
  ]
 }

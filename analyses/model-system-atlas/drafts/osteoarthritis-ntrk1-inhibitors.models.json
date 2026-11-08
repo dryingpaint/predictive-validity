@@ -504,13 +504,13 @@
   },
   {
    "lead": "GZ389988 first-in-human NCT02424942 (IA ascending dose, plasma/synovial PK, no results)",
-   "outcome": "verdict",
-   "detail": "patient-side PK, not a model system; checker verdict on engagement 2 (rat-mia-knee-oa 2019 untested) already records it as unreported, untested stands"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: NCT02424942 has no posted results or publication, so no patient PK/engagement readout exists; the checker verdict on engagement 2 (rat-mia-knee-oa 2019 untested, not_measured) already records it as unreported and confirms untested."
   },
   {
    "lead": "ASP7962 Phase 1 healthy-volunteer studies NCT01981928 / NCT02136316",
-   "outcome": "verdict",
-   "detail": "volunteer PK, not a model system, no results posted; belongs as a citation on dose 2 (rat-mia-knee-oa 2019 untested), covered by the checker's dose 2 verdict, no status change"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: healthy-volunteer PK with no results posted or published, citation only; the checker verdict on dose 2 (rat-mia-knee-oa 2019 untested) confirms the status, and no model stated an exposure target these studies could test."
   },
   {
    "lead": "Astellas / Sanofi / Purdue discontinuation notices for ASP7962, GZ389988A, VM902A",

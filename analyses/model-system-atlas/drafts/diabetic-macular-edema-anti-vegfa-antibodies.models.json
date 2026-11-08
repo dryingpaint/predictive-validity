@@ -261,8 +261,8 @@
   },
   {
    "lead": "DA VINCI phase 2 (Do 2011, PMID 21546089) redating",
-   "outcome": "verdict",
-   "detail": "not a model; checker verdicts engagement 2, dose 2 and efficacy 2 (corrected, proposed_year 2011) already cover the redating"
+   "outcome": "covered",
+   "detail": "DA VINCI (Do 2011, PMID 21546089) is not a model; check.json verdicts engagement 2, dose 2 and efficacy 2 (corrected, proposed_status same, proposed_year 2011) already propose this redating on the same cells and indices."
   },
   {
    "lead": "Aqueous VEGF after aflibercept in treatment-naive DME (PMID 32589498)",

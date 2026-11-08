@@ -431,13 +431,13 @@
   },
   {
    "lead": "Dienstmann ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551)",
-   "outcome": "verdict",
-   "detail": "dating source, not a system: checker already corrected engagement 2, dose 2, efficacy 2 and safety 2 (Dienstmann 2015 entries) to year 2013"
+   "outcome": "covered",
+   "detail": "covered: check.json already proposes year 2013 (rule 6) on engagement 2, dose 2, efficacy 2 and safety 2 (Dienstmann 2015 entries, sym004-egfr-resistant-xenograft); a dating source, not a new entry"
   },
   {
    "lead": "Symphogen press release 2017-09 and ESMO 2017 abstract 478O (Sym004 phase 2 OS failure)",
-   "outcome": "verdict",
-   "detail": "dating source, not a system: checker already corrected efficacy 4 (Montagut 2018 contra on sym004-egfr-resistant-xenograft) to year 2017; efficacy 14 already dated 2017"
+   "outcome": "covered",
+   "detail": "covered: check.json already proposes year 2017 (rule 6) on efficacy 4 (Montagut 2018 contra); efficacy 14 already dated 2017 and confirmed. Engagement 3 (ctDNA ECD fall) stays 2018: the Symphogen 2017-09 release reports the OS miss and a biomarker-negative subgroup, not the ECD ctDNA decrease"
   },
   {
    "lead": "Temam 2017 Ann Oncol (PMID 28950289), imgatuzumab vs cetuximab PD window study in HNSCC",

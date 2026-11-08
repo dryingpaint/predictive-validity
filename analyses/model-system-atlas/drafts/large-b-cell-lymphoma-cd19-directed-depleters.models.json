@@ -387,8 +387,8 @@
   },
   {
    "lead": "Kochenderfer 2010 Blood case report: earlier B-cell aplasia comparison",
-   "outcome": "verdict",
-   "detail": "Re-dates an existing entry on syngeneic-mcd19-car-mouse (safety 2, and engagement 2 already adjudicated to 2010), imported_from follicular lymphoma; needs a checker verdict, not a new system"
+   "outcome": "fix",
+   "detail": "safety, index 2 (syngeneic-mcd19-car-mouse, status same): year 2017 -> 2010; epub_year 2017 -> 2010 (epub 2010-07-28), print_year 2017 -> 2010; imported_from null -> MONDO:0018906 (follicular lymphoma); src https://www.fda.gov/media/109149/download (FDA CBER Yescarta review 2017) -> https://doi.org/10.1182/blood-2010-04-281931 (Kochenderfer 2010 Blood, PMID 20668228, PMC2993617, source_tier 1); registry_date 2021-11-23 -> 2019-03-21 (NCT00924326); population -> advanced follicular lymphoma (NCT00924326, same NCI FMC63-28Z product accepted for engagement 2); quote -> 'Consistent with eradication of B-lineage cells, serum immunoglobulins decreased to very low levels after treatment.' Status stays same (on-target B-cell aplasia/hypogammaglobulinaemia predicted by the mouse and seen in a patient); evidence rule 6 earliest public comparison; the 2017 CBER LBCL record changes no status and can stay as supporting note."
   },
   {
    "lead": "axicabtagene ciloleucel",

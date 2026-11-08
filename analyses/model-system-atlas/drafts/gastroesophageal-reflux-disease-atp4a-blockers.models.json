@@ -322,8 +322,8 @@
  "gaps": [
   {
    "lead": "Sebela TRIUMpH press release 2025-04-23 (tegoprazan EE and NERD primary endpoints met)",
-   "outcome": "verdict",
-   "detail": "Patient-side addition to draft efficacy entry 2 (Lee 2019 healing pairing) as a tier-5 patient_trial; checker missing note already covers it, no status change, no new model system"
+   "outcome": "covered",
+   "detail": "Extra patient trial for efficacy entry 2 with status unchanged (primary endpoints met, matching the existing call); the check.json missing note already records it. Nothing scored changes."
   },
   {
    "lead": "Fexuprazan phase III EE head-to-head (Jeong 2024 J Clin Med, doi:10.3390/jcm13113262), retracted",
@@ -332,8 +332,8 @@
   },
   {
    "lead": "Tegoprazan Korean NERD phase 3 and TRIUMpH NERD",
-   "outcome": "verdict",
-   "detail": "Additional patient_trials for draft efficacy entry 2; checker missing note covers it, no status change, no model compared with them"
+   "outcome": "covered",
+   "detail": "Extra patient trial for efficacy entry 2 with status unchanged (primary endpoints met, matching the existing call); the check.json missing note already records it. Nothing scored changes."
   },
   {
    "lead": "Zastaprazan (JP-1366) GERD-patient popPK model (doi:10.1002/psp4.13228)",

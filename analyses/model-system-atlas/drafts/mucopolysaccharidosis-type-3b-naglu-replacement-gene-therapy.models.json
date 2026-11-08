@@ -187,6 +187,84 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "mps3b-dog-icv-ta",
+   "model": "MPS IIIB dog, ICV tralesinidase alfa (20 months)",
+   "model_kind": "animal",
+   "model_first_use_year": 2016,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "comparison_stated": false,
+      "source_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "modality": "protein",
+      "year": 2016,
+      "status": "untested",
+      "subjects": null,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2022,
+      "print_year": 2022,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "blocked_by": null,
+      "margin_stated": null,
+      "confidence": "medium",
+      "confidence_note": "Full text (PMC9426762, BioC) read. Opening year 2016 is a proxy (trial start April 2016), as on this track's engagement entry.",
+      "note": "20-month ICV study in MPS IIIB dogs at 12 and 48 mg every other week; dose scaled to humans by brain mass.",
+      "short": "Dog dose scaled by brain mass",
+      "src": "https://doi.org/10.1124/jpet.122.001119",
+      "srcLabel": "Ellinwood 2022",
+      "quote": "Therefore, one appropriate method to scale doses across species to estimate an efficacious dose for human patients is to correct for brain mass.",
+      "judgement": "Opening entry for the dog track's dose cell; the dog study stated both an effective-dose estimate and a tolerability margin, published 2022."
+     },
+     {
+      "comparison_stated": false,
+      "source_tier": 1,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "model_filed": null,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "population": "Unselected (NAGLU-deficient MPS IIIB)",
+      "modality": "protein",
+      "year": 2023,
+      "status": "same",
+      "subjects": "patients",
+      "model_src": "https://doi.org/10.1124/jpet.122.001119",
+      "model_src_tier": 1,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "magnitude": "within_2x",
+      "magnitude_basis": "dog-predicted effective clinical dose (300 mg weekly, CSF HS normalization) vs dose that normalized patient CSF HS (300 mg)",
+      "source_calls_it": "partial",
+      "blocked_by": null,
+      "margin_stated": true,
+      "confidence": "medium",
+      "confidence_note": "Dog full text read; Muschol 2023 full text quote from the draft's verified engagement entry. NCT02754076 has no posted results (checked). Subject to rule question 3 on margins published after trial start.",
+      "note": "Dogs tolerated 48 mg (about 960 mg every other week human-equivalent), a stated margin over 300 mg weekly; patients reached CSF HS normalization at 300 mg.",
+      "short": "300 mg normalized CSF HS, margin held",
+      "src": "https://doi.org/10.1172/jci165076",
+      "srcLabel": "Muschol 2023",
+      "quote": "In the Part 1 dose escalation (30, 100, and 300 mg) phase, a 300 mg dose of tralesinidase alfa was necessary to achieve normalization of HS and HS-NRE levels in the CSF and plasma.",
+      "reason": "300 mg reached HS target; margin held",
+      "judgement": "Dog paper states 48 mg 'provides a sufficient safety margin over the clinical dose (300 mg weekly)' and 300 mg 'should normalize HS'; patients reached that at 300 mg and were kept on it. Partial: drug-related CSF pleocytosis SAEs (counted in safety). Same rule question as dose 4 (cyno-icv-ta-tox): margin published 2022, after the 2016 trial start but before patient data (2023); if the adjudicator rules such margins inadmissible, this becomes untested."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -201,13 +279,13 @@
  "gaps": [
   {
    "lead": "Deiva 2021 (Hum Gene Ther, PMID 34405688) 5.5-year follow-up of rAAV2/5-hNAGLU",
-   "outcome": "verdict",
-   "detail": "Corrects the draft's mps3b-dog-aav5-intracerebral efficacy 2 (Tardieu 2017 same); efficacy-secondary verdict (adjudicated untested, no poc_gate) covers it; the same datum is tracked as naglu-ko-mouse-aav-intracerebral efficacy 2021 here, and the CSF NAGLU 18% / no-tolerance data only restate engagement 2 / safety 2"
+   "outcome": "covered",
+   "detail": "Corrects the draft's mps3b-dog-aav5-intracerebral efficacy 2 (Tardieu 2017 same); efficacy-secondary verdict (adjudicated untested, no poc_gate) covers it; the same datum is tracked as naglu-ko-mouse-aav-intracerebral efficacy 2021 here, and the CSF NAGLU 18% / no-tolerance data only restate engagement 2 / safety 2 | covered: check.json efficacy 2 verdict (corrected, adjudicated untested; primary was safety, no poc_gate) already handles Deiva 2021 on this cell; engagement 2 and safety 2 notes record its CSF NAGLU and T-cell data with status unchanged."
   },
   {
    "lead": "No dose entry for mps3b-dog-icv-ta (Ellinwood 2022: 48 mg dog dose gives margin over 300 mg clinical)",
-   "outcome": "verdict",
-   "detail": "Entry on an existing draft track, not a new system; needs a dose verdict on mps3b-dog-icv-ta (candidate same, margin_stated, subject to rule question 3 on IND-enabling margins published after trial start, as dose 4 cyno-icv-ta-tox)"
+   "outcome": "entry",
+   "detail": "Entry on an existing draft track, not a new system; needs a dose verdict on mps3b-dog-icv-ta (candidate same, margin_stated, subject to rule question 3 on IND-enabling margins published after trial start, as dose 4 cyno-icv-ta-tox) | entry: added dose 2016 untested (opening) and 2023 same (margin_stated, partial) on mps3b-dog-icv-ta, modality protein; Ellinwood 2022 full text states 48 mg dog dose = ~960 mg QOW human-equivalent by brain mass and a sufficient margin over 300 mg weekly; Muschol 2023 300 mg normalized CSF HS."
   },
   {
    "lead": "Regulator reliance pending (Spruce pre-BLA on CSF HS-NRE)",

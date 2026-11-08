@@ -231,6 +231,48 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rat-dog-glp-tox",
+   "model": "Rat and dog GLP repeat-dose toxicology",
+   "model_kind": "animal",
+   "model_first_use_year": 2014,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/213217Orig1s000MultidisciplineR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2019,
+      "print_year": 2019,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "hemorrhage in rat/dog repeat-dose tox vs any bleeding (~50%) and major hemorrhage (3%) in the pooled B-cell malignancy safety set",
+      "source_calls_it": null,
+      "population": "Unselected",
+      "confidence": "medium",
+      "confidence_note": "FDA review text (bundle). Patient side is a pooled B-cell malignancy safety set (n=629) incl. CLL, CLL share not separated; the review lists hemorrhage among events chosen from preclinical findings and class effects but does not credit the animal finding alone.",
+      "year": 2019,
+      "status": "same",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2019/213217Orig1s000MultidisciplineR.pdf",
+      "srcLabel": "FDA NDA 213217 review 2019",
+      "note": "Zanubrutinib rat/dog tox showed multi-organ hemorrhage and bleeding-related RBC loss; patients had ~50% any bleeding and 3% major hemorrhage.",
+      "short": "Zanubrutinib tox bleeding matched patients",
+      "quote": "Events of clinical interest were identified based on preclinical findings, data from clinical studies, and pharmacological effects associated with BTK inhibitors, including hemorrhage, infections, cytopenias, atrial fibrillation or flutter, and second primary malignancies.",
+      "judgement": "Paired within one review: the nonclinical section reports multi-organ hemorrhage in rat and dog, the clinical section ~50% bleeding; direction matched, so same. Zanubrutinib's sponsor tox placed on the existing rat-dog-glp-tox track (same system type; cross-sponsor question open).",
+      "reason": "Animal hemorrhage matched patient bleeding"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -250,8 +292,8 @@
   },
   {
    "lead": "Zanubrutinib nonclinical toxicology (NDA 213217) has no safety track",
-   "outcome": "verdict",
-   "detail": "Extends rat-dog-glp-tox (safety entry 4) to zanubrutinib: NDA 213217 review reports multi-organ hemorrhage in rat/dog and patient hemorrhage; a draft edit to that track needing a checker verdict (and rule question 2 on cross-sponsor tracks), not a new system."
+   "outcome": "entry",
+   "detail": "Added rat-dog-glp-tox safety entry (2019, same, paired, NDA 213217 review): rat/dog multi-organ hemorrhage vs ~50% any bleeding / 3% major hemorrhage in patients. No checker verdict proposes it; draft safety entry 4 (acalabrutinib, 2017 untested) unchanged."
   },
   {
    "lead": "Zanubrutinib CLL supplemental review (NDA 213217 S-007, 2023)",

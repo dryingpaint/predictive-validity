@@ -445,6 +445,108 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "scid-beige-raji-crs-mouse",
+   "model": "SCID-beige mice with high Raji burden, 19-28z CAR T cells (CRS model)",
+   "model_kind": "animal",
+   "model_first_use_year": 2018,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "retrodiction": false,
+      "population": "Unselected",
+      "year": 2023,
+      "status": "same",
+      "model_id": "scid-beige-raji-crs-mouse",
+      "model": "SCID-beige mice with high Raji burden, 19-28z CAR T cells (CRS model)",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "note": "Prospective test of 'IL-1 blockade abates CRS': prophylactic anakinra with commercial CD19 CAR-T (74% axi-cel), LBCL/MCL: severe CRS 6.4%, all-grade 74%.",
+      "short": "Anakinra lowered severe CRS, not CRS",
+      "src": "https://doi.org/10.1038/s41591-023-02404-6",
+      "srcLabel": "Park 2023",
+      "quote": "All-grade CRS occurred in 74%, and severe CRS occurred in 6.4% of patients.",
+      "confidence": "low",
+      "confidence_note": "Single-arm, non-prespecified interim (n=31), historical comparison only (ZUMA-1 axi-cel: CRS 93%, grade >=3 13%); abstract-level; registry NCT04148430 has no posted results.",
+      "judgement": "First prospective test after the 2018 retrodiction (decision 10), scored as usual. Giavridis predicted IL-1 blockade abates CRS severity (title: 'abated by IL-1 blockade'); severe CRS fell to 6.4% against axi-cel's historical 13%, but all-grade CRS stayed 74%, so same with source_calls_it partial. Park names 'preclinical models' only for ICANS, so this is a pairing (comparison_stated false). The 2025 axi-cel study (once-daily anakinra insufficient to prevent grade >=2 CRS/NT) used a lower-intensity regimen and a hospitalization endpoint; recorded in patient_trials, alternative reading contra. LBCL/MCL patients, hence imported_from DLBCL.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://doi.org/10.1038/s41591-018-0041-7",
+      "model_src_tier": 1,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "model_filed": false,
+      "product_in_model": false,
+      "magnitude": "direction_only",
+      "magnitude_basis": "severe (grade >=3) CRS rate with anakinra prophylaxis vs historical axi-cel",
+      "source_calls_it": "partial",
+      "imported_from": "MONDO:0018905",
+      "reason": "Anakinra cut severe CRS only",
+      "patient_trials": [
+       {
+        "nct": "NCT04150913",
+        "registry_date": null,
+        "doi": "https://doi.org/10.1182/bloodadvances.2024015161",
+        "quote": "Our study, in line with others, demonstrates that once-daily prophylactic anakinra is insufficient to prevent the development of toxicities that would require hospitalization in most patients."
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "raji-nsg-xenograft-fmc63-41bb-car",
+   "model": "Raji CD19+ Burkitt xenograft in NSG mice, FMC63-4-1BB CAR T cells (liso-cel lineage)",
+   "model_kind": "animal",
+   "model_first_use_year": 2015,
+   "prediction_level": "class",
+   "cells": {
+    "safety": [
+     {
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "registry_date": null,
+      "retrodiction": false,
+      "population": "Unselected",
+      "year": 2015,
+      "status": "untested",
+      "model_id": "raji-nsg-xenograft-fmc63-41bb-car",
+      "model": "Raji CD19+ Burkitt xenograft in NSG mice, FMC63-4-1BB CAR T cells (liso-cel lineage)",
+      "model_kind": "animal",
+      "model_first_use_year": 2015,
+      "prediction_level": "class",
+      "note": "FDA: long-term safety could not be studied; liso-cel does not survive in immunocompetent rodents and causes xenogeneic GVHD in immunocompromised mice.",
+      "short": "Xenograft gave no usable safety read",
+      "src": "https://www.fda.gov/media/146242/download",
+      "srcLabel": "FDA Breyanzi SBRA 2021",
+      "quote": "Animal studies to assess the long-term safety of BREYANZI were limited because BREYANZI does not survive in immunocompetent rodents and induces graft-versus-host disease in immunocompromised mice.",
+      "confidence": "high",
+      "confidence_note": null,
+      "judgement": "Track opener at model first use (Sommermeyer 2016, epub 2015). The filed rodent models named no human harm (no CRS, neurotoxicity or margin); xenogeneic GVHD has no patient counterpart for autologous cells, so nothing checkable: untested, no_prediction.",
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2021,
+      "print_year": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "reason": "No harm prediction from xenograft",
+      "untested_reason": "no_prediction"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -478,13 +580,13 @@
   },
   {
    "lead": "Giavridis IL-1 blockade prediction tested in Park 2023 and Blood Adv 2025 anakinra",
-   "outcome": "verdict",
-   "detail": "Correction to existing track scid-beige-raji-crs-mouse safety cell (only a 2018 retro entry): needs a dated 2023 entry (same + partial, or contra); covered by checker verdict on safety index 3 and the mitigation-trial rule question"
+   "outcome": "entry",
+   "detail": "Added scid-beige-raji-crs-mouse safety 2023 same (source_calls_it partial, low) from Park 2023 (10.1038/s41591-023-02404-6), paired with Giavridis 2018; Blood Adv 2025 (NCT04150913) in patient_trials. Checker confirmed safety 3 without proposing this entry, so not covered."
   },
   {
    "lead": "Liso-cel Raji/NSG track has no safety entry (Breyanzi SBRA GVHD/no-survival statement)",
-   "outcome": "verdict",
-   "detail": "Correction to existing track raji-nsg-xenograft-fmc63-41bb-car: needs a 2015 untested safety opener quoting the Breyanzi SBRA (fda.gov/media/146242); a draft-entry fix, not a new system"
+   "outcome": "entry",
+   "detail": "Added raji-nsg-xenograft-fmc63-41bb-car safety 2015 untested opener (untested_reason no_prediction), quote verified verbatim in the Breyanzi SBRA (fda.gov/media/146242) section 4."
   },
   {
    "lead": "Not found: no member failure in FL; no FL patient-derived organoid/ex-vivo selection model",

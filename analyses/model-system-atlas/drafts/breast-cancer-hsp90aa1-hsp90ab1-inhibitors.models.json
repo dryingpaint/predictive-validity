@@ -337,13 +337,13 @@
   },
   {
    "lead": "ENCHANT-1 (NCT01677455) interim, Synta SEC exhibit 99.1 2013-12-12",
-   "outcome": "verdict",
-   "detail": "Patient-side tier-5 datum, not a model system; covered by the checker verdict on efficacy #4 (tnbc-xenograft, adjudicated untested citing ENCHANT-1 TNBC 2/11 PR); belongs in patient_trials (trial_unreported) of efficacy #2/#4 tracks"
+   "outcome": "covered",
+   "detail": "Checker verdict on efficacy #4 (tnbc-xenograft) already adjudicates it untested citing ENCHANT-1 TNBC 2/11 PR; otherwise a tier-5 patient_trials datum (trial_unreported) that changes no status."
   },
   {
    "lead": "Ganetespib first-in-human phase 1, Goldman 2013 (PMID 23530663)",
-   "outcome": "verdict",
-   "detail": "Patient-side (mixed solid tumours) dose/engagement/safety source, not a model system; the checker verdict on safety #2 (ganetespib-mouse-tox) already cites its grade 3 diarrhoea DLT; no new track"
+   "outcome": "covered",
+   "detail": "Checker verdict on safety #2 (ganetespib-mouse-tox) already cites its grade 3 diarrhoea DLT; mixed solid tumours, and no ganetespib track states a human dose/exposure target or engagement readout for it to score, so it changes nothing scored."
   },
   {
    "lead": "No PDX/organoid comparison for any member in breast cancer; Jensen 2008 MAXF clonogenic assays",

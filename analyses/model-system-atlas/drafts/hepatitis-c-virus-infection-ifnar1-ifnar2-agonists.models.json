@@ -28,13 +28,13 @@
  "gaps": [
   {
    "lead": "PEG-IFN-SA China NMPA approval 2018 after phase II NCT01908335 and phase III NCT01903278",
-   "outcome": "verdict",
-   "detail": "Patient-side outcome for existing track peg-ifn-sa-monkey (efficacy 3, already 'corrected' by checker for wrong NCT); needs a verdict adding the phase 3/approval entry and tile-note wording, not a new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the check verdict adjudicates efficacy 3 (peg-ifn-sa-monkey) to untested/no_prediction because the uninfected-monkey serum bioassay made no HCV RNA prediction, so the phase 2 (NCT01908335), phase 3 (NCT01903278) and 2018 NMPA approval are further patient trials with the status unchanged; the wrong-NCT fix on efficacy 3 is already in the verdict. Tile-note wording is not scored."
   },
   {
    "lead": "Cao 2009 rhesus PK of pegylated consensus interferon (doi 10.3109/08923970902814111)",
-   "outcome": "verdict",
-   "detail": "Same system as peg-ifn-sa-monkey / peg-ifn-sa-monkey-rat-pk; would move model_first_use_year 2011->2009 only if PEG-CIFN (Yao WB group, PMID 19874220) is PEG-IFN-SA, which the abstract does not state; needs a verdict on those entries"
+   "outcome": "covered",
+   "detail": "Changes nothing scored. Re-opened PMID 19874220 (Cao/Yao 2009, China Pharmaceutical University): PEG-CIFN dosed to rhesus at 150-1250 ug/kg for an ELISA validation; it never names IFN-SA or Fagen. Zheng 2014 (PMC4386949) cites it as ref 15 only among 'branched PEG-proteins' references, while PEG-IFN-SA is a 20 kDa linear mPEG-ALD N-terminal conjugate from Chongqing Fagen first described by Cai 2011. Not the same product, so model_first_use_year 2011 stands."
   },
   {
    "lead": "PEG-IFN-SA nonclinical toxicology completed for NMPA filing but not public",

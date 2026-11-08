@@ -319,13 +319,13 @@
   },
   {
    "lead": "Safety: etrasimod dog CV safety pharmacology silent (NOEL 350 mg/kg) vs patients' HR fall",
-   "outcome": "verdict",
-   "detail": "Tracked as dog-cv-telemetry-etrasimod (safety, 2014 opener + 2023 entry); checker verdict safety 7 corrects its contra to untested (dogs do not show S1P1 first-dose bradycardia, Bolli 2013 PMID 24069292), adjudicated untested"
+   "outcome": "covered",
+   "detail": "check.json safety 7 (dog-cv-telemetry-etrasimod, 2023) already proposes contra -> untested (adjudicated untested; Bolli 2013 PMID 24069292: dogs do not show S1P1 first-dose bradycardia). No further change."
   },
   {
    "lead": "Efficacy patient_trials: NCT02447302 (etrasimod OASIS) lacks DOI; Sandborn 2020 doi 10.1053/j.gastro.2019.10.035",
-   "outcome": "verdict",
-   "detail": "Metadata fix to the draft's efficacy entry 2 patient_trials row NCT02447302 (doi null -> https://doi.org/10.1053/j.gastro.2019.10.035); no status change, covered by the checker's missing note"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: patient_trials DOI metadata on efficacy 2 (NCT02447302 doi null -> https://doi.org/10.1053/j.gastro.2019.10.035, Sandborn 2020); status unchanged. Already listed in check.json missing."
   },
   {
    "lead": "Unreported UC failures of a member drug",

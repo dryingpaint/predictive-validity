@@ -241,6 +241,51 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "rodent-nhp-glp-tox",
+   "model": "Rodent and cynomolgus monkey GLP toxicology",
+   "model_kind": "animal",
+   "model_first_use_year": 2016,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "population": "DMD mutations amenable to single-exon skipping (exon 44, 45, 51 or 53)",
+      "year": 2016,
+      "status": "same",
+      "note": "Kidney-toxicity NOAEL exposures in monkey and juvenile rat were 20-fold and 6-fold the AUC of boys dosed 30 mg/kg weekly; no laboratory sign of renal toxicity in patients.",
+      "short": "Renal NOAEL margin held at 30 mg/kg",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2016/206488Orig1s000PharmR.pdf",
+      "srcLabel": "FDA pharm review 2016",
+      "quote": "Mean eteplirsen plasma exposures (AUC) at the NOAELs for monkey and juvenile rat were 20-fold and 6-fold, respectively, greater than that in patients dosed once weekly with 30 mg/kg IV eteplirsen.",
+      "confidence": "medium",
+      "confidence_note": "Margin from the bundled 206488 PharmR (patient AUC from Study 4658-US-202, NCT01540409, results posted 2019-07-10); patient renal side from 206488 MedR: 'There was no laboratory indication of renal toxicity'. The PharmR also states margins against 'anticipated human exposure', so a margin existed before dosing, but its pre-dosing value is not public.",
+      "reason": "Tox margin held at the dosed exposure",
+      "judgement": "Decision 16: a stated tolerability margin (NOAEL above the effective exposure) that held in patients scores dose same with margin_stated true; the harm never appeared, so it is counted here, not in safety. Eteplirsen only; golodirsen's small margin is not scored here.",
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "retrodiction": false,
+      "imported_from": null,
+      "epub_year": 2016,
+      "print_year": 2016,
+      "registry_date": "2019-07-10",
+      "model_filed": true,
+      "product_in_model": true,
+      "magnitude": null,
+      "magnitude_basis": "plasma AUC at kidney NOAEL vs patient AUC at 30 mg/kg weekly (20x monkey, 6x juvenile rat)",
+      "source_calls_it": null,
+      "blocked_by": null,
+      "margin_stated": true,
+      "untested_reason": null
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -257,13 +302,13 @@
  "gaps": [
   {
    "lead": "rodent-nhp-glp-tox dose entry (eteplirsen NOAEL AUC margins 20x monkey / 6x juvenile rat; golodirsen small margin)",
-   "outcome": "verdict",
-   "detail": "Existing system rodent-nhp-glp-tox (tracked in safety); a dose-cell entry with margin_stated for eteplirsen 30 mg/kg is an entry on an existing track, for the adjudicator; margins come from the 2016/2019 PharmR, after first patient dosing, so check margin timing"
+   "outcome": "entry",
+   "detail": "Added dose entry on track rodent-nhp-glp-tox: 2016 same, margin_stated true (eteplirsen kidney NOAEL AUC 20x monkey / 6x juvenile rat vs patients at 30 mg/kg; MedR: no laboratory indication of renal toxicity). Source 206488 PharmR."
   },
   {
    "lead": "vesleteplirsen (PPMO) nonclinical renal/electrolyte prediction vs MOMENTUM hypomagnesemia and kidney decline",
-   "outcome": "verdict",
-   "detail": "Belongs to safety track rodent-nhp-glp-tox (draft note already names vesleteplirsen, unscored); the only public nonclinical source found, protocol NCT03675126 v5.0 (2020), redacts the mouse/NHP findings (CCI) though it sets renal stopping rules; keep as unsettled note, it qualifies the golodirsen/viltolarsen renal contra entries"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the nonclinical renal findings are redacted (NCT03675126 protocol), so no model prediction can be quoted; the safety track already holds a member contra (golodirsen 2019) and one drug's contra beats any later same. Left as a note and the checker's rule question 4."
   },
   {
    "lead": "hDMD transgenic mouse (Arechavala-Gomeza 2007) as its own engagement track",
@@ -272,8 +317,8 @@
   },
   {
    "lead": "PRO044 and PRO045 (2'OMePS) engagement pairings",
-   "outcome": "verdict",
-   "detail": "Their preclinical systems (patient myotubes, hDMD mouse) are already tracked as dmd-patient-myoblasts and hdmd-transgenic-mouse; PRO044 patient dystrophin results posted on NCT01037309 (2015), PRO045 NCT01826474 terminated without results, no peer-reviewed model-to-patient comparison found (PubMed tiab 0 hits); any entry is on an existing track"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: dmd-patient-myoblasts and hdmd-transgenic-mouse are already 'same' on engagement; a PRO044 pairing (NCT01037309) would be a further same with no status change, and PRO045 (NCT01826474) has no posted results."
   },
   {
    "lead": "Cynomolgus monkey exon 53 skipping for viltolarsen (Watanabe 2018)",

@@ -498,8 +498,8 @@
   },
   {
    "lead": "Pietka 2020 retro entry on il33-st2-mouse-dermatitis",
-   "outcome": "verdict",
-   "detail": "needs an efficacy entry on draft track il33-st2-mouse-dermatitis, year 2020, retrodiction true (reproduces the null; lint flags contra->matched), between efficacy entries 3 (2019) and 7 (2024); not appendable here"
+   "outcome": "covered",
+   "detail": "check.json 'missing' item 2 already proposes this entry (efficacy, il33-st2-mouse-dermatitis, 2020, retro, retrodiction true), pending rule question 2. Not appendable via added_models: it must sit between efficacy entries 3 (2019 contra) and 7 (2024 contra), and lint rejects contra->retro without patient_signal_reversed (false here). Sourced fields for whoever applies it: src https://doi.org/10.1038/s41598-020-63410-z (Pietka 2020 Sci Rep, received 2020-01-28, published 2020-04-15, PMID 32296080); quote 'Our findings indicate that lack of interleukin-33 and its receptor ST2 does not prevent the development of AD-like skin inflammation.'; comparison_stated true (introduction: 'IL-33 inhibition by etokimab failed to report efficacy in a follow-up phase-2b clinical trial (NCT03533751)'); source_tier 1, epub/print 2020, product_in_model false, magnitude direction_only."
   },
   {
    "lead": "DaSilva-Arnold 2018 Stat6VT IL-33-deficient mice",
@@ -518,8 +518,8 @@
   },
   {
    "lead": "Laquer 2022 BJD torudokimab trial report",
-   "outcome": "verdict",
-   "detail": "patient source, not a model: doi 10.1111/bjd.21631 belongs on NCT03831191 patient_trials of the draft's efficacy tracks; carried on anti-il33-mab-dncb-mouse-ad efficacy 2021"
+   "outcome": "covered",
+   "detail": "patient_trials doi only (NCT03831191, 10.1111/bjd.21631); changes no status, and check.json efficacy 7 already proposes adding it"
   },
   {
    "lead": "England 2023 tozorakimab; Imai 2019 K14-IL-33",

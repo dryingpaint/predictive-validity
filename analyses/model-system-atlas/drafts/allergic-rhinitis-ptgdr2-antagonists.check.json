@@ -121,7 +121,9 @@
    "proposed_status": "contra",
    "proposed_year": 2013,
    "rule": "decision 7 with decision 2 (tier 5); status under decision 6 (one drug's contra beats another's same), see rule question 4 (#35)",
-   "note": "All numbers verified (chamber TNSS AUC -17%, p=.0026; Phase 3 DNSS -0.02, p=0.652; Phase 2 -0.15, p=0.030). Miss public 2012-04-02; member model side Krug epub 2013-12-09 gives 2013 (Horak 2012 OC000459 chamber, a sibling source, would give 2012)."
+   "note": "All numbers verified (chamber TNSS AUC -17%, p=.0026; Phase 3 DNSS -0.02, p=0.652; Phase 2 -0.15, p=0.030). Miss public 2012-04-02; member model side Krug epub 2013-12-09 gives 2013 (Horak 2012 OC000459 chamber, a sibling source, would give 2012).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra agreed. Rule 6 earliest public date (tier-5 dating per precedent): Actelion miss 2012-04-02 (RTTNews, verified); sibling chamber side Horak 2012 (epub 2012-10-01, verified) makes the pairing public 2012. Later verdict supersedes 2013."
   },
   {
    "cell": "efficacy",
@@ -166,7 +168,9 @@
    "proposed_status": "contra",
    "proposed_year": 2014,
    "rule": "decision 7 with decision 2 (tier 5)",
-   "note": "Status stands: DNSS is the registered primary in NCT01241214 and NCT01484119; Phase 3 null; development dropped. Phase 3 miss public 2012-04-02; model side (Diamant) public 2014, so the comparison dates to 2014, not the 2017 paper."
+   "note": "Status stands: DNSS is the registered primary in NCT01241214 and NCT01484119; Phase 3 null; development dropped. Phase 3 miss public 2012-04-02; model side (Diamant) public 2014, so the comparison dates to 2014, not the 2017 paper.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra agreed. Rule 6 earliest public date: Phase 3 miss public 2012-04-02 (tier 5, verified); model side Diamant 2014 first published 2014-08-01 (verified). Comparison public 2014, so year 2014, not 2017."
   },
   {
    "cell": "safety",
@@ -207,6 +211,36 @@
    "status_supported": true,
    "rule": "decision 4 (safety) and decision 1 (comparison stated)",
    "note": "Ratner quote verbatim; comparison is stated: the PoM dose 'was well tolerated and protected against allergen-induced AR ... over a 5-day period [37]' and 'well tolerated in both studies'. Same tolerability fact is also carried as dose margin_stated true (rule question 5)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 patient side)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2017 -> 2012. Model side Stebbins 2010 (Europe PMC 2010-05-04, 'AM156 inhibited sneezing and nasal rubs'); Phase 3 miss public 2012-04-02 (RTTNews: 'did not confirm efficacy findings made in earlier studies'). Status contra as adjudicated.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra (as adjudicated earlier). Rule 6 earliest public date: Stebbins 2010 model side (2010-05-04, verified) plus Actelion tier-5 miss 2012-04-02 (RTTNews, verified), so year 2012, not 2017."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "decision 7 (earliest public date) with decision 8 (sibling-dosed model side, product_in_model false)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2017 -> 2012 (supersedes proposed 2013). Horak 2012 (PMID 23025511, first published 2012-10-01): OC000459 'significantly reduced both nasal and ocular symptoms' in Vienna chamber; Phase 3 miss public 2012-04-02 (RTTNews). model_src would become Horak 2012.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status contra agreed. Rule 6: Horak 2012 OC000459 chamber (first published 2012-10-01, verified) is an admissible sibling model side (decision 8, product_in_model false); with the 2012-04-02 tier-5 miss, year 2012; model_src Horak."
   }
  ],
  "missing": [

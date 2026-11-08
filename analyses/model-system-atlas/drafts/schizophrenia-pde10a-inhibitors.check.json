@@ -13,7 +13,9 @@
    "proposed_status": "untested",
    "proposed_year": 2008,
    "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Suzuki 2015 (PMID 25525190, epub 2014-12) quote verbatim. Status fine, but the cell opens at 2014 while model_first_use_year is 2008 (Schmidt 2008, MP-10/TP-10 striatal readouts). Open at 2008."
+   "note": "Suzuki 2015 (PMID 25525190, epub 2014-12) quote verbatim. Status fine, but the cell opens at 2014 while model_first_use_year is 2008 (Schmidt 2008, MP-10/TP-10 striatal readouts). Open at 2008.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: the cell opens at model_first_use_year (2008, proxy allowed) with untested; both agree on status, opener year moves 2014->2008. Not the track's latest entry, so no untested_reason."
   },
   {
    "cell": "engagement",
@@ -35,7 +37,9 @@
    "proposed_status": "untested",
    "proposed_year": 2008,
    "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Quote verbatim in Suzuki 2015 abstract (exceeds 40 words only via MK-801 chemical name). Same opening-year issue: Pfizer set PF-02545920 exposures from 2008 rodent work; open at 2008."
+   "note": "Quote verbatim in Suzuki 2015 abstract (exceeds 40 words only via MK-801 chemical name). Same opening-year issue: Pfizer set PF-02545920 exposures from 2008 rodent work; open at 2008.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: opener at model_first_use_year 2008 (proxy allowed), status untested agreed. Not the track's latest entry (dose 2 is same), so no untested_reason."
   },
   {
    "cell": "dose",
@@ -69,7 +73,9 @@
    "proposed_status": "contra",
    "proposed_year": 2012,
    "rule": "Evidence rule 6 (earliest public date)",
-   "note": "Quote verbatim; NCT01939548 results 2016-08-22 confirmed. But the monotherapy failure (NCT01175135, completed 2011-08) was public April 2012: DeMartinis et al., SIRS Poster #212, Schizophr Res, doi 10.1016/s0920-9964(12)70783-1. Title/Crossref seen; abstract text not read."
+   "note": "Quote verbatim; NCT01939548 results 2016-08-22 confirmed. But the monotherapy failure (NCT01175135, completed 2011-08) was public April 2012: DeMartinis et al., SIRS Poster #212, Schizophr Res, doi 10.1016/s0920-9964(12)70783-1. Title/Crossref seen; abstract text not read.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rules 6 and 3: contra agreed. Unread 2012 SIRS poster has no quote, so cannot date it; Uthayathas 2013 (epub 2013-10, PMC3934827) states MP-10 'did not meet the primary endpoint' in Phase 2A: date 2013. NCT01175135 results 2018."
   },
   {
    "cell": "safety",
@@ -134,6 +140,21 @@
    "rule": "dose/efficacy table 'reached, failed, abandoned'; Evidence rule 1 (pairing)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Macek 2019 (PMID 30190165) quote verbatim (abstract). NCT02477020 results first posted 2017-09-29 confirmed. Macek 2020 says all Go criteria met and phase 1 'showed some consistent evidence of antipsychotic activity'. Pairing, contra holds; 2017 correct."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "Evidence rule: cell dated to the earliest public source stating the comparison",
+   "note": "Field year 2019->2013 (src doi 10.1016/j.neuropharm.2013.10.015, Uthayathas 2014, PMC3934827 full text; epub_year 2013 per Crossref 2013-10-25, print_year 2014). Verbatim: MP-10 Cp,u ~0.19/0.89 nM bracketing rat CAR IC50 0.16 nM 'similar to those examined in the MP-10 Phase 2A study'. Status same.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 and dose table 'target reached': Uthayathas (epub 2013-10, PMC3934827) states rat CAR IC50 0.16 nM and Cp,u 0.19-0.89 nM 'similar to those examined in the MP-10 Phase 2A study'. Same, dated 2013."
   }
  ],
  "missing": [

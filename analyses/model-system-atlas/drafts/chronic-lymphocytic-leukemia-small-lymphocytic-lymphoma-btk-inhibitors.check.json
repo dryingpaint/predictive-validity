@@ -189,6 +189,16 @@
    "rule": "Dose rule (model stated exposure target, held in patients)",
    "note": "Tariq 2022 Leuk Lymphoma (epub 2022-12-08) quote verbatim; 80 mg BID+fluconazole/diltiazem AUC GLSM ratios 0.94/0.81 vs 320 QD. Prospective (post-label FDA PMR). Review gives 2.57-4.17x moderate range; '~2.8x' not seen. Mixed B-cell histology.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "NDA 213217 review (bundle): quote verbatim; nonclinical section reports multi-organ hemorrhage (rat 26-wk, dog 39-wk bleeding, RBC loss); clinical ~50% any bleeding, 3% major in n=629. GLP tox predates patient data, so same not retro. Direction-only."
   }
  ],
  "missing": [

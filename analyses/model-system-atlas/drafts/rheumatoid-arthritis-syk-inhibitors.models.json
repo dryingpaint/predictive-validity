@@ -262,6 +262,55 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "cynomolgus-bleeding-time-lanraplenib",
+   "model": "Cynomolgus monkey platelet/bleeding-time (lanraplenib)",
+   "model_kind": "animal",
+   "model_first_use_year": 2018,
+   "prediction_level": "class",
+   "cells": {
+    "engagement": [
+     {
+      "model_id": "cynomolgus-bleeding-time-lanraplenib",
+      "model": "Cynomolgus monkey platelet/bleeding-time (lanraplenib)",
+      "model_kind": "animal",
+      "model_first_use_year": 2018,
+      "prediction_level": "class",
+      "population": "Unselected",
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "patient_signal_reversed": false,
+      "model_filed": null,
+      "trial_unreported": false,
+      "year": 2018,
+      "status": "untested",
+      "subjects": "healthy_volunteers",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2018,
+      "print_year": 2018,
+      "registry_date": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "readout_tier": "direct",
+      "confidence": "low",
+      "confidence_note": "Abstract-level reading; Thromb Res body paywalled (publisher scrape returned no text). The abstract reports ex vivo GPVI aggregation for dosed monkeys only; human data named are in vitro whole blood and bleeding time. Dolton 2016 FIH abstract reports bleeding time only.",
+      "src": "https://doi.org/10.1016/j.thromres.2018.08.012",
+      "srcLabel": "Clarke 2018",
+      "quote": "Ex vivo, GPVI-stimulated platelet aggregation was inhibited in GS-9876-treated monkeys without a concomitant increase in BT.",
+      "note": "Monkey PD readout was ex vivo GPVI-stimulated platelet aggregation; no public source reports that readout in dosed humans, only bleeding time.",
+      "short": "Monkey platelet blockade, no human ex vivo",
+      "judgement": "Opening entry the track needs. The checker read the conclusion as human ex vivo inhibition, but the abstract's human platelet data are in vitro whole blood; 'in monkeys or humans' qualifies bleeding time. Cannot quote a dosed-human readout, so untested.",
+      "reason": "Human ex vivo aggregation not reported",
+      "untested_reason": "not_measured"
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -280,8 +329,8 @@
  "gaps": [
   {
    "lead": "Clarke 2018 ex vivo GPVI platelet aggregation in GS-9876-dosed monkeys and humans (engagement on cynomolgus-bleeding-time-lanraplenib)",
-   "outcome": "verdict",
-   "detail": "Not a new system: needs an engagement entry on the existing cynomolgus-bleeding-time-lanraplenib track (2018, healthy_volunteers, readout direct, same source as safety 3); checker missing item 1 covers it"
+   "outcome": "entry",
+   "detail": "Added engagement entry 2018 untested (readout direct, healthy_volunteers, not_measured) on cynomolgus-bleeding-time-lanraplenib from Clarke 2018 (10.1016/j.thromres.2018.08.012). Abstract reports ex vivo GPVI aggregation only in dosed monkeys; human data are in vitro whole blood and bleeding time, so the human counterpart cannot be quoted (body paywalled)."
   },
   {
    "lead": "Kivitz ACR 2018 lanraplenib RA Phase 2 abstract",
@@ -290,8 +339,8 @@
   },
   {
    "lead": "Oscotec's own 2021-01-07 disclosure of the cevidoplenib RA miss",
-   "outcome": "verdict",
-   "detail": "Source of efficacy 4 (mouse-kbxn-serum-transfer-cevidoplenib, contra 2021); no sponsor release or DART text found, Korea Biomedical Review stays the src; tier/year covered by checker rule question 3 (registry NCT04057118 posted 2024-07-31)"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 4 stays contra 2021 whichever source holds (registry NCT04057118 posted 2024-07-31 confirms the miss and is already its registry_date); sponsor DART text not found; src tier/year is checker rule question 3, not a field error."
   },
   {
    "lead": "Entospletinib in K/BxN (Kaposztas 2023)",

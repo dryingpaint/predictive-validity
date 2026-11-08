@@ -316,6 +316,120 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "mouse-ova-allergic-inflammation-gsk",
+   "model": "Mouse OVA allergic airway inflammation (GSK)",
+   "model_kind": "animal",
+   "model_first_use_year": 2007,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "patient_trials": [
+       {
+        "nct": "NCT01245426",
+        "registry_date": null,
+        "doi": "10.2174/1574885511308020001",
+        "quote": "Improvements in forced expiratory volume in one second (FEV1) were seen following all three doses of GW870086 relative to placebo."
+       }
+      ],
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "src": "https://doi.org/10.2174/1574885511308020001",
+      "srcLabel": "Bareille 2013 (Curr Drug Ther)",
+      "quote": "This study provided a positive outcome with all doses of GW870086 demonstrating improvements in lung function compared with placebo.",
+      "reason": null,
+      "model_id": "mouse-ova-allergic-inflammation-gsk",
+      "model": "Mouse OVA allergic airway inflammation (GSK)",
+      "model_kind": "animal",
+      "model_first_use_year": 2007,
+      "year": 2013,
+      "status": "same",
+      "note": "A higher dose later worked: GSK's adaptive 28-day trial (NCT01245426, n=135) improved day-28 FEV1 vs placebo at 2 mg (+0.172 L) and 4 mg (+0.159 L).",
+      "short": "2 and 4 mg later improved FEV1",
+      "confidence": "medium",
+      "confidence_note": "Abstract only (eurekaselect public page, read via fc.py); full text paywalled. 3 mg CI crossed zero (+0.105 L, -0.053 to 0.263), so 'all doses' is the authors' reading; 2 and 4 mg CIs exclude zero. Curr Drug Ther 8(2) and the J Asthma 1 mg paper (epub 2013-10-01) are both 2013, so contra and same share a year.",
+      "judgement": "Decision 4 row 'reached, failed, a higher dose later worked': efficacy is contra (1 mg 28-day crossover null, efficacy 5) then same. The mouse OVA model predicted FP-comparable efficacy; the adaptive 2/3/4 mg trial's day-28 FEV1 primary was positive at 2 and 4 mg, so the draft's 'GSK ran no further asthma efficacy trial' is wrong. Dose on this track stays untested: the mouse stated no human dose. patient_signal_reversed set because the higher-dose positive primary supersedes the 1 mg null on this track. Paired by the drafter.",
+      "patient_signal_reversed": true,
+      "model_src": "https://doi.org/10.1111/bph.12232",
+      "epub_year": 2013,
+      "print_year": 2013,
+      "magnitude_basis": "No common quantity: mouse OVA anti-inflammatory efficacy vs FP (model) vs day-28 FEV1 +0.16-0.17 L (trial)."
+     }
+    ]
+   }
+  },
+  {
+   "model_id": "allergen-challenge-lar",
+   "model": "Allergen-induced late asthmatic response in mild atopic asthmatics (human challenge)",
+   "model_kind": "human_challenge",
+   "model_first_use_year": 2009,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "prediction_level": "class",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src_tier": 1,
+      "trial_unreported": false,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "patient_trials": [
+       {
+        "nct": "NCT01245426",
+        "registry_date": null,
+        "doi": "10.2174/1574885511308020001",
+        "quote": "Improvements in forced expiratory volume in one second (FEV1) were seen following all three doses of GW870086 relative to placebo."
+       }
+      ],
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "src": "https://doi.org/10.2174/1574885511308020001",
+      "srcLabel": "Bareille 2013 (Curr Drug Ther)",
+      "quote": "This study provided a positive outcome with all doses of GW870086 demonstrating improvements in lung function compared with placebo.",
+      "reason": null,
+      "model_id": "allergen-challenge-lar",
+      "model": "Allergen-induced late asthmatic response in mild atopic asthmatics (human challenge)",
+      "model_kind": "human_challenge",
+      "model_first_use_year": 2009,
+      "year": 2018,
+      "status": "same",
+      "note": "The challenge called 3 mg protective (LAR, methacholine PC20, FeNO) and 1 mg weak; the adaptive 28-day trial then improved FEV1 at 2 and 4 mg.",
+      "short": "3 mg protective; 2-4 mg trial worked",
+      "confidence": "medium",
+      "confidence_note": "Both sides abstract only: the challenge report (Bareille 2014 Curr Drug Ther 8(3):155-163, issued January 2014) read as its ResearchGate abstract via fc.py; the adaptive trial as its eurekaselect abstract. Registry NCT00857857 (results 2018-02-20) gives the 3 mg minimum-FEV1 LAR protection +0.456 L vs FP +0.526 L. Challenge abstract: 'GW870086 3 mg demonstrated anti-inflammatory activity and offered protection from airway hyperresponsiveness.' Year held at 2018 to stay in order behind efficacy 8, which the draft still dates 2018; the checker's verdict re-dates efficacy 8 to 2014, and this entry moves to 2014 with it (the challenge report was public January 2014).",
+      "judgement": "Decision 4 row 'reached, failed, a higher dose later worked' applied to this track: its 1 mg reading was weak (efficacy 8, neg) and the 1 mg trial failed; its 3 mg arm gave near-ICS LAR protection, and the next trial at 2-4 mg met its FEV1 primary at 2 and 4 mg. The comparison was public in January 2014 (challenge report; patient side 2013); year is set to 2018 only to follow efficacy 8's current date and should move to 2014 when that verdict is applied. The draft's note on efficacy 8 that 3 mg 'was never taken into a trial' is superseded. The AZD5423 and SUN-597 arms of this track stay uncompared. Paired by the drafter.",
+      "patient_signal_reversed": false,
+      "model_src": "https://doi.org/10.2174/15748855113089990005",
+      "epub_year": 2014,
+      "print_year": 2014,
+      "magnitude_basis": "No common quantity: weighted-mean LAR protection at 3 mg (model) vs day-28 FEV1 +0.16-0.17 L at 2 and 4 mg (trial)."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -339,13 +453,13 @@
   },
   {
    "lead": "Bareille 2014 Curr Drug Ther 8(3) tier-1 record of the GW870086 allergen challenge (NCT00857857)",
-   "outcome": "verdict",
-   "detail": "allergen-challenge-lar efficacy 8: re-date 2018->2014 and tier 3->1; checker verdict on efficacy 8 (corrected) already covers it"
+   "outcome": "covered",
+   "detail": "Checker verdict on efficacy 8 ('corrected', proposed_year 2014 on the tier-1 report doi 10.2174/15748855113089990005) already proposes the re-date and tier lift; status adjudicated neg."
   },
   {
    "lead": "SUN-597 (S-0597 / SPARC-1316), NCT02041221 and HRA allergen-challenge PoC",
-   "outcome": "verdict",
-   "detail": "No new system and no SUN-597 efficacy trial, so no comparison; draft text 'no public record' (mechanism note, efficacy 6 'two members') needs a verdict citing NCT02041221; HRA challenge study not found by search, so SUN-597 is not entered on allergen-challenge-lar"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: no SUN-597 efficacy or challenge result exists to compare, so the fix is wording in the mechanism note and efficacy 6 note only."
   },
   {
    "lead": "Healthy-volunteer cortisol/osteocalcin PD (Werkstrom 2016 AZD5423, Prothon 2022 velsecorat)",
@@ -364,13 +478,13 @@
   },
   {
    "lead": "Chupp ATS 2021 A1202 (sponsor report of NCT03622112)",
-   "outcome": "verdict",
-   "detail": "Not a model system; rat track efficacy 3 keeps contra on the registry primary (p=0.060); a verdict should replace the draft's 'no publication' wording with this conference abstract"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: rat efficacy 3 keeps contra on the registry primary (p=0.060), and the checker verdict on efficacy 3 already notes the sponsor's ATS 2021 A1202 abstract; wording only."
   },
   {
    "lead": "NCT01245426 published as Bareille 2013 Curr Drug Ther 8(2):69-75 (2/4 mg improved day-28 FEV1)",
-   "outcome": "verdict",
-   "detail": "Corrects dose 5 (checker verdict 'corrected' covers it) and mouse-ova efficacy 5 'GSK ran no further trial' (needs a verdict: mouse and allergen-challenge tracks owe a later same; their dose rows become target too low)"
+   "outcome": "entry",
+   "detail": "Dose 5 (AMP) target-too-low is covered by the checker's 'corrected' verdict. Entries added: mouse-ova-allergic-inflammation-gsk efficacy same 2013 (after the 2013 contra) and allergen-challenge-lar efficacy same (public 2014; year held at 2018 behind efficacy 8 until its re-date verdict is applied) (3 mg protective in the challenge, Bareille 2014 Curr Drug Ther 8(3)), both src doi 10.2174/1574885511308020001 with its abstract quote. No dose change: neither the mouse nor the allergen track states a human dose target (mouse dose 3 untested stays; allergen track has no dose cell)."
   },
   {
    "lead": "AMP track efficacy later same 2015 pairing Leaker 2015 with the adaptive trial",

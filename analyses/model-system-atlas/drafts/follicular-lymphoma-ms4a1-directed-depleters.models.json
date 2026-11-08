@@ -203,18 +203,18 @@
  "gaps": [
   {
    "lead": "Veltuzumab registry records NCT00285428 / NCT00596804",
-   "outcome": "verdict",
-   "detail": "Corrects registry_date/endpoint on scid-raji-xenograft efficacy #2 (and cyno engagement #2); covered by checker verdict efficacy #2 -> untested/not_measured (primary safety/tolerance in both records)."
+   "outcome": "fix",
+   "detail": "Status change on efficacy #2 (same -> untested/not_measured) is already covered by checker verdict efficacy #2. Unproposed field fix: cell engagement, index 2, field registry_date, current null, source supports 2006-02-02 (ClinicalTrials.gov NCT00285428, IM-T-hA20-01, Immunomedics phase I of hA20 in CD20+ NHL, start 2004-09, studyFirstPost 2006-02-02; alias NCT00112970); the same registry_date applies to efficacy index 2 (Morschhauser 2009, same trial). Source: https://clinicaltrials.gov/study/NCT00285428"
   },
   {
    "lead": "FDA BLA 761324 E-R: TMDD saturation from 48 mg (LBCL)",
-   "outcome": "verdict",
-   "detail": "Dating of epcoritamab-pbpk-pd-trimer dose #4; covered by checker/adjudicated verdict: same, dated 2024 (Linton FL cohort dosed to 48 mg), not Sinnollareddy 2026; the LBCL E-R is not an FL system."
+   "outcome": "covered",
+   "detail": "Covered by checker verdict dose #4 (corrected/adjudicated: same, year 2024, Linton 2024 FL cohort dosed to 48 mg); the FDA E-R TMDD plateau is LBCL and adds no scored change."
   },
   {
    "lead": "Goldenberg 2009 abstract states consistency with NHL patients",
-   "outcome": "verdict",
-   "detail": "Flag on cyno-b-cell-depletion engagement #1 (comparison_stated, possible retro); needs a verdict on that entry, noted in checker engagement #1; adds no system."
+   "outcome": "fix",
+   "detail": "Cell engagement, index 1 (Goldenberg 2009, cyno-b-cell-depletion), fields status and comparison_stated: current untested / false; source supports same / true (year 2008, epub 2008-10-21), because the abstract itself sets the mouse/monkey low-dose B-cell depletion beside patient data: 'These findings are consistent with activity in patients with non-Hodgkin lymphoma given low intravenous or subcutaneous doses of veltuzumab.' Retrodiction left false: the phase I (NCT00285428) began 2004-09, so the IV monkey work likely preceded it, but the SC studies' timing is not stated; flag for the checker. Source: https://doi.org/10.1182/blood-2008-07-168146 (PMID 18941114, abstract)."
   },
   {
    "lead": "MIL62 + lenalidomide phase 1b/2 (Shi 2024) and phase 3 NCT04834024",

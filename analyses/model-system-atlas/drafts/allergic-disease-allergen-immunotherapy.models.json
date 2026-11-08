@@ -312,18 +312,18 @@
   },
   {
    "lead": "Cat-PAD Phase 3 follow-on NCT02040844 (results posted 2018-05-14)",
-   "outcome": "verdict",
-   "detail": "patient_trials addition to allergen-exposure-chamber efficacy 5/6 (contra); no status change; checker missing item covers it."
+   "outcome": "covered",
+   "detail": "patient_trials addition to allergen-exposure-chamber efficacy 5/6 (contra); no status change; checker missing item covers it. Covered: an extra patient trial with the status unchanged changes nothing scored."
   },
   {
    "lead": "SQ tree SLIT-tablet paediatric Phase 3 NCT04878354 (results posted 2025-01-22)",
-   "outcome": "verdict",
-   "detail": "patient_trials addition to allergen-exposure-chamber dose 6 (same, 12 DU); no status change; checker missing item covers it."
+   "outcome": "covered",
+   "detail": "patient_trials addition to allergen-exposure-chamber dose 6 (same, 12 DU); no status change; checker missing item covers it. Covered: an extra patient trial with the status unchanged changes nothing scored."
   },
   {
    "lead": "Cat-PAD paediatric safety study NCT01921257 (results posted 2018-04-17)",
-   "outcome": "verdict",
-   "detail": "patient_trials addition to safety 5 (allergen-exposure-chamber) and safety 6 (cat-pad-blood-basophil-histamine-release), both same; may raise confidence, no status change."
+   "outcome": "covered",
+   "detail": "patient_trials addition to safety 5 (allergen-exposure-chamber) and safety 6 (cat-pad-blood-basophil-histamine-release), both same; may raise confidence, no status change. Covered: an extra patient trial with the status unchanged changes nothing scored."
   },
   {
    "lead": "No animal model compared with patients for any member",

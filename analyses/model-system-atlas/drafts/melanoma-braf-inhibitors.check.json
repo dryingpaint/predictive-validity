@@ -240,6 +240,17 @@
    "rule": "",
    "note": "PMC5821416 read: quote verbatim. Retro is right, since the vemurafenib and dabrafenib rates were published 2012-13. Article received/accepted 2016-02-29 and Crossref record created 2016-03-22, so the stated comparison may date to 2016 (or to Gao 2015); retro either way.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "one drug's contra beats another's same; contra when the model source shows the system silent on the patient finding",
+   "note": "NDA 210496 review bundle: cuSCC 7.8% quote verbatim (p.~190); p.35 rat skin abnormalities at all doses, no neoplasia, carcinogenicity not done; paw hyperkeratosis 3/10 males; 57.3% is Enc 300 column. Contra on cuSCC consistent with safety 2/4.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

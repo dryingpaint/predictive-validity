@@ -402,13 +402,13 @@
  "gaps": [
   {
    "lead": "Vasu 2022 Haematologica (doi:10.3324/haematol.2020.274118, NCT01690624 report)",
-   "outcome": "verdict",
-   "detail": "Corrects existing track aml-blast-nk-adcc-ex-vivo, not a new system: efficacy 5 re-dated to 2022 by the checker verdict (contra stands); engagement 4 (2021 contra) already added on adjudication; dose 3 adjudicated untested"
+   "outcome": "fix",
+   "detail": "efficacy 5 (aml-blast-nk-adcc-ex-vivo): year 2025 -> 2021; the check verdict re-dates it to 2022, but Vasu 2022 (doi:10.3324/haematol.2020.274118, PMID 34854276) was published online 2021-12-02 (Crossref published-online; print 2022-03-01), rule 6, the same dating engagement 4 uses. With it: src -> https://doi.org/10.3324/haematol.2020.274118, source_tier 3 -> 1, epub_year null -> 2021, print_year null -> 2022, comparison_stated false -> true (the paper sets preclinical ADCC beside absent clinical activity); status contra unchanged. Engagement 4 (2021 contra) already added; dose 3 adjudicated untested."
   },
   {
    "lead": "Fiedler 2022 Haematologica (doi:10.3324/haematol.2022.281128, BI 836858 + decitabine, NCT02632721)",
-   "outcome": "verdict",
-   "detail": "Needs a verdict on aml-blast-nk-adcc-ex-vivo efficacy: Vasu 2016 modelled decitabine-enhanced BI 836858 ADCC, so Fiedler's uncontrolled ORR 19/49 is a new 2022 entry on that track plus a patient_trials row; no new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored. Fiedler 2022 (doi:10.3324/haematol.2022.281128, PMC9713566, full text read): phase I primary endpoints were MTD and DLTs; 'the phase II part of the trial was not conducted'; ORR 19/49 is single-arm with decitabine, which efficacy 5 already records as unattributable, and the track's contra stands. Only the NCT02632721 patient_trials row of efficacy 5 should carry doi 10.3324/haematol.2022.281128."
   },
   {
    "lead": "Stanchina 2019 J Hematol Oncol (rs12459419 vs SGN-CD33A response)",

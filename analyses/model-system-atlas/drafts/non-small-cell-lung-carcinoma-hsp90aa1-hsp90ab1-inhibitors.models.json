@@ -208,23 +208,23 @@
   },
   {
    "lead": "Garon 2013 luminespib NSCLC cell lines and xenografts (PMID 23493311)",
-   "outcome": "verdict",
-   "detail": "same system as nsclc-xenograft-panel; corrects model_src of engagement 2 and dose 2 (Sessa 2013 pairings), covered by the checker notes on those entries"
+   "outcome": "fix",
+   "detail": "engagement 2, model_src: current https://doi.org/10.1158/1078-0432.CCR-11-2967 (Shimamura 2012, ganetespib); source supports https://doi.org/10.1158/1535-7163.MCT-12-0998 (Garon 2013, PMID 23493311, epub 2013-03-14), luminespib in NSCLC xenografts with client depletion ('decreased EGF receptor (EGFR) protein expression in H1975 xenografts'), the same drug Sessa 2013 dosed; with it product_in_model false -> true (model_src_tier 1 unchanged). dose 2, model_src: current https://doi.org/10.1158/1078-0432.CCR-11-2967 (Shimamura 2012); Sessa 2013 (PMID 23757357) states the comparison 'consistent with active concentrations in a range of xenograft models' and its reference list (Europe PMC) cites the luminespib xenograft papers Eccles 2008 (https://doi.org/10.1158/0008-5472.CAN-07-5256, PMID 18413753) and Jensen 2008 (https://doi.org/10.1186/bcr1996), not Shimamura and not Garon 2013; source supports model_src = Eccles 2008 (tier 1), product_in_model true unchanged. Status of neither entry changes."
   },
   {
    "lead": "Acquaviva 2012 KRAS-mutant ganetespib panel (PMID 23012248)",
-   "outcome": "verdict",
-   "detail": "no GEMM, same system as nsclc-xenograft-panel; needs a verdict naming Socinski 2013 cohort B KRAS miss on efficacy entry 2; patient datum already scored on kras-p53-lung-gemm efficacy 7"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 2 (nsclc-xenograft-panel, Socinski 2013) is already contra at patient level for 2013; the cohort B KRAS miss (0 of 17 PR, 5.9% PFS16) is already in its note ('16-week PFS 13%, 6% and 20%') and is scored on kras-p53-lung-gemm efficacy 7 (checker confirmed). At most a note on efficacy 2."
   },
   {
    "lead": "Synta press release 2015-10-20 GALAXY-2 futility",
-   "outcome": "verdict",
-   "detail": "patient-side tier-5 date for efficacy entry 4 (nsclc-xenograft-panel); checker verdict 'corrected' already sets year 2015"
+   "outcome": "covered",
+   "detail": "check.json efficacy 4 verdict 'corrected' proposes proposed_year 2015 citing the Synta 2015-10-20 press release (rule 7), status contra unchanged."
   },
   {
    "lead": "Synta 8-K exhibit 99.1 June 2011 ASCO ALK responses",
-   "outcome": "verdict",
-   "detail": "dates the patient result for efficacy entry 3 (alk-nsclc-xenograft, retro); checker verdict confirmed cites it as the reason for retro"
+   "outcome": "covered",
+   "detail": "check.json efficacy 3 verdict 'confirmed' already cites Synta's ASCO 2011 release and 8-K (June 2011) as the reason the Sang 2013 ALK model is retro; nothing scored changes."
   }
  ]
 }

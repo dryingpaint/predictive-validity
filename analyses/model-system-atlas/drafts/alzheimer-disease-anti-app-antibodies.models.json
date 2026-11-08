@@ -360,8 +360,8 @@
   },
   {
    "lead": "efficacy, lecanemab: Study 201 missed its 12-month Bayesian ADCOMS gate (64% vs 80%) before Clarity AD met its primary in 2022",
-   "outcome": "verdict",
-   "detail": "Conditional on the protofibril model being scored as predicting benefit; checker adjudicated efficacy entry 3 (tg-arcswe-mab158, 2022) to untested under rules 4 and 8 (mouse behavioural null not relied on), so no benefit prediction exists to score Study 201 against; draft entry 3 judgement already records the 201 miss"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: check.json adjudicates efficacy entry 3 (tg-arcswe-mab158, 2022) to untested (rules 4 and 8; the mouse behavioural null was not relied on and the model stated no benefit prediction on a clinical endpoint), so the track has no benefit prediction for Study 201's missed 12-month Bayesian ADCOMS gate (Swanson 2021, doi 10.1186/s13195-021-00813-8) to be scored against; draft entry 3 judgement already records the 201 miss."
   }
  ]
 }

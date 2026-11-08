@@ -67,7 +67,9 @@
    "status_supported": true,
    "note": "The Fierce Biotech URL returned 403, so I could not see the quote. Smith 2020 abstract independently confirms MK-3207 was discontinued over DILI concerns. No MK-3207 animal toxicology is public, so untested is reasonable. A citable copy of the 2009 Merck release is needed. | Fierce URL Cloudflare-blocked. 'Never published' is wrong: Monroe 2020 Table 1 gives MK-3207 rat 6 mo 30X, NHP 9 mo 4X, mouse 6 mo 14X, no liver signal. Untested stands for 2009; add a 2020 contra (see missing).",
    "rule": "safety row, askable silence (#13, #54); decision 6 dating",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6/7 dating and rule 5: in 2009 MK-3207 animal toxicology was not public, so no comparison existed; untested stands. Monroe 2020 contra is already the later entry, so no untested_reason (not latest)."
   },
   {
    "cell": "safety",
@@ -208,6 +210,17 @@
    "source_resolves": true,
    "status_supported": true,
    "rule": "decision 4 (safety: silence where the harm is measurable is contra)"
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction: a model run after the patient result was known is retro",
+   "note": "Smith 2020 (Toxicol Sci, Europe PMC) abstract quote verbatim. DILIsym runs postdate the 2009 MK-3207 discontinuation for liver injury, so retro (not same) is correct; year 2020, class level fits a member drug.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

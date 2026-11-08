@@ -291,8 +291,8 @@
   },
   {
    "lead": "Ublituximab B-cell depletion in MS patients (ULTIMATE I/II, Steinman 2022; Fox 2021 phase 2)",
-   "outcome": "verdict",
-   "detail": "Adds a human readout to existing track ublituximab-exvivo-adcc engagement (draft engagement #3), not a new system; verdict engagement #3 already adjudicates a 2017 paired same from Sawas 2017 CLL depletion, which the MS readout only reinforces (would carry imported_from MS)"
+   "outcome": "covered",
+   "detail": "Verdict engagement #3 (ublituximab-exvivo-adcc) already adjudicates the track's latest entry to a 2017 paired same from Sawas 2017 CLL depletion; the MS depletion readout (Fox 2021, Steinman 2022) agrees in direction and changes no status, so no entry is owed."
   }
  ]
 }

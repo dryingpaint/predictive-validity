@@ -209,13 +209,13 @@
   },
   {
    "lead": "FDA lenvatinib RCC supplement review / 2016 label stating lenvatinib+everolimus beat either drug in RCC xenografts",
-   "outcome": "verdict",
-   "detail": "rcc-xenograft-786o-a498-caki efficacy retro entry (Matsuki 2017): label revised 05/2016 sec 12.1 says the combination reduced 'tumor volume in mouse xenograft models of human renal cell cancer greater than each drug alone', so year can move 2017->2016; still retro (after Study 205)"
+   "outcome": "fix",
+   "detail": "efficacy, index 3 (rcc-xenograft-786o-a498-caki, Matsuki 2017 retro), field year: current 2017, source supports 2016 (status stays retro, still after Study 205). Source: FDA Lenvima label revised 05/2016, https://www.accessdata.fda.gov/drugsatfda_docs/label/2016/206947s003lbl.pdf, sec 12.1: 'lenvatinib and everolimus showed increased antiangiogenic and antitumor activity as demonstrated by ... tumor volume in mouse xenograft models of human renal cell cancer greater than each drug alone.' The same label carries the Study 205 RCC results (sec 14), so the comparison was public in 2016 (tier 2); src/srcLabel could move to the label."
   },
   {
    "lead": "Xie 2018 Cancer Sci anlotinib xenografts (renal?)",
-   "outcome": "verdict",
-   "detail": "Includes Caki-1 renal xenograft (epub 2018-03), same system as rcc-xenograft-786o-a498-caki; anlotinib-vs-sunitinib RCC phase II was public at ASCO 2016 (abstract 4565), so it is a retro point, no prospective anlotinib model; draft's 'anlotinib mouse data came after the trial' stands, no status change"
+   "outcome": "covered",
+   "detail": "Xie 2018 Cancer Sci (doi:10.1111/cas.13536, epub 2018-03) Caki-1 anlotinib xenograft is a retrodiction on rcc-xenograft-786o-a498-caki (anlotinib RCC phase II public at ASCO 2016, abstract 4565); that track is already retro from 2016/2017, so a 2018 retro entry changes nothing scored."
   },
   {
    "lead": "Famitinib RCC patient data (NCT01829841; camrelizumab+famitinib, Qu 2021)",

@@ -120,6 +120,21 @@
    "checked_by": "CHECKER_BRIEF / models",
    "rule": "Status table: untested; evidence rule 5 untested_reason unsettled (patients measured, result inconclusive)",
    "note": "Bundle review (NDA 211349) has the 0/18 TKD quote verbatim and states gilteritinib 'decreased proliferation' of Ba/F3 FLT3-D835Y (IC50 1.6 nM). FDA called 0/18 inconclusive (upper CI 19%), PMR-3; untested/unsettled, prospective, 2018 correct."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "DRAFTER_BRIEF evidence rule 6 (dating: earliest public comparison); efficacy primary endpoint",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2019 -> 2018. Cortes 2018 Lancet Oncol (PMID 29859851, doi:10.1016/S1470-2045(18)30240-7, epub 2018-05-31, NCT00989261) quote verbatim in abstract; co-primary CRc 56%/46% in FLT3-ITD. CR co-primary only 3-4%, so source_calls_it partial; QuANTUM-R to patient_trials.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Both call same. Rule 6 dates the entry to the earliest public comparison: Cortes 2018 single-arm phase 2, co-primary CRc 46-56% in FLT3-ITD (epub 2018-05-31); the status table needs agreement on a primary endpoint, not randomisation. Year 2018."
   }
  ],
  "missing": [

@@ -293,8 +293,8 @@
  "gaps": [
   {
    "lead": "Camrelizumab's own hPD-1-transgenic MC38 mouse model (NCT03092895 sponsor protocol s1.5.5)",
-   "outcome": "verdict",
-   "detail": "Corrects efficacy entry 2 (mc38-mouse-pd1-blockade, CameL) judgement 'camrelizumab has no public in-vivo model'; same system as that track, checker verdict on efficacy 2 already covers it, protocol tier and under-call status queued in rule_questions."
+   "outcome": "covered",
+   "detail": "Changes nothing scored. The checker's efficacy 2 verdict (confirmed) already flags the wrong judgement text 'camrelizumab has no public in-vivo model'; that is a note, not a field. The camrelizumab hPD-1-transgenic MC38 data (20.40% TGI, not significant) became public only when the NCT03092895 protocol was uploaded 2023-07-04, so efficacy 2 (2021) keeps product_in_model false; a 2023 product_in_model true datum on mc38-mouse-pd1-blockade adds no status change, since efficacy 4 (2023, same, product_in_model true) already carries it. Whether the under-call should be contra and the protocol's tier are open rule questions in the check file, not a fix."
   },
   {
    "lead": "Toripalimab NSG+MC38+allogeneic CD8 CTL and huPBMC-NSG systems (BLA 761240 review pp.43, 49)",

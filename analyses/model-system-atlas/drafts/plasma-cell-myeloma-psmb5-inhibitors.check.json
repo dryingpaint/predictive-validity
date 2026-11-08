@@ -158,7 +158,9 @@
    "proposed_status": "contra",
    "proposed_year": 2012,
    "rule": "evidence rule 6 (earliest public comparison); safety definition (imported comparisons transfer with imported_from)",
-   "note": "Vogl 2017 resolves; quote verbatim; contra holds. Earlier public contradiction: Gallerani 2013 (epub 2012-10-08, solid tumours plus MM) 'Skin rash was dose-limiting and occurred in 53% of patients' against Piva's favourable epithelial-cell profile. The thrombocytopenia datum itself stays 2017."
+   "note": "Vogl 2017 resolves; quote verbatim; contra holds. Earlier public contradiction: Gallerani 2013 (epub 2012-10-08, solid tumours plus MM) 'Skin rash was dose-limiting and occurred in 53% of patients' against Piva's favourable epithelial-cell profile. The thrombocytopenia datum itself stays 2017.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed. Rule 6 (earliest public comparison) with the safety rule (comparisons in another population transfer, imported_from): Gallerani 2013 (epub 2012-10-08) rash DLT in 53% contradicts the model's silence; entry year moves to 2012."
   },
   {
    "cell": "safety",
@@ -170,7 +172,9 @@
    "proposed_status": "contra",
    "proposed_year": 2016,
    "rule": "evidence rule 6 (earliest public comparison); safety definition (imported comparisons transfer with imported_from)",
-   "note": "Ghobrial 2019 resolves; quote verbatim; NCT01416428 terminated, no results, whyStopped carries the halt statement. Earlier public contradiction: Infante 2016 (epub 2016-02-29, solid tumours, imported_from) nausea 91%, vomiting 86%, grade 5 GI haemorrhage DLT. Hari 2019 is a correspondence, no abstract."
+   "note": "Ghobrial 2019 resolves; quote verbatim; NCT01416428 terminated, no results, whyStopped carries the halt statement. Earlier public contradiction: Infante 2016 (epub 2016-02-29, solid tumours, imported_from) nausea 91%, vomiting 86%, grade 5 GI haemorrhage DLT. Hari 2019 is a correspondence, no abstract.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed. Rule 6 with the safety transfer rule: Infante 2016 (epub 2016-02-29, solid tumours, imported_from) showed dose-limiting GI toxicity against the tolerated-in-dogs claim; entry year moves to 2016."
   },
   {
    "cell": "engagement",
@@ -241,7 +245,9 @@
    "proposed_year": 2014,
    "rule": "decision 7 (year = earliest of registry, epub, print)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Gupta 2015 resolves (PMID 25377318); quote verbatim (abstract); opener, in_silico kind and model_filed true hold (ClinPharmR line 236: sponsor's phase-2 popPK). PubMed record created 2014-11-08 (accepted 2014-10-30), i.e. online ahead of the May 2015 print: epub_year, model_first_use_year and entry year move to 2014. Status unchanged."
+   "note": "Gupta 2015 resolves (PMID 25377318); quote verbatim (abstract); opener, in_silico kind and model_filed true hold (ClinPharmR line 236: sponsor's phase-2 popPK). PubMed record created 2014-11-08 (accepted 2014-10-30), i.e. online ahead of the May 2015 print: epub_year, model_first_use_year and entry year move to 2014. Status unchanged.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed. Rule 6 (year = earliest of registry, epub, print): PubMed entrez 2014-11-08, accepted 2014-10-30, ahead of May 2015 print; opener year, epub_year and model_first_use_year move to 2014. Not the track's latest entry."
   },
   {
    "cell": "dose",
@@ -253,6 +259,17 @@
    "rule": null,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "ClinPharmR quote found line-wrapped at lines 860-861 (also 2317: 'BSA does not impact AUC-inf as BSA was not identified as a covariate on CL'). Same holds under decision 4 case 2: fixed 4 mg reached equivalent exposure across BSA 1.2-2.7 m2 and MM1 met PFS (SumR, verified on efficacy 3). Prospective, not retro: MM1 dosed 4 mg fixed on this prediction. comparison_stated true is fair (the review sets the sponsor's phase-2 popPK rationale, lines 236-238, beside its own finding). within_2x rests on the no-covariate finding, not quoted AUCs; model_src year follows dose 5 to 2014."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Facon 2021 resolves (PMID 33763699); quote verbatim in abstract; PFS is the stated primary (registry too, results 2021-02-01). 2020 holds: Takeda topline release 2020 public. Ixazomib-Rd add-on matches MM1's design on this track. Contra hinges on rule questions 3-4."
   }
  ],
  "missing": [

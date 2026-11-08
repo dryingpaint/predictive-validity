@@ -44,7 +44,9 @@
    "proposed_status": "same",
    "proposed_year": 2012,
    "rule": "7",
-   "note": "PMID 34413118, quote verbatim. Same holds but dates to 2012: degludec's human clamp profile (Heise 2012, PMID 22594461; FDA 2015 SumR 'relatively flat at steady state') already matched the pig clamp. FDA 2026 SumR: icodec peak day 2, nadir day 7."
+   "note": "PMID 34413118, quote verbatim. Same holds but dates to 2012: degludec's human clamp profile (Heise 2012, PMID 22594461; FDA 2015 SumR 'relatively flat at steady state') already matched the pig clamp. FDA 2026 SumR: icodec peak day 2, nadir day 7.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 (dating): status same agreed; the track's first same dates to 2012, when degludec's human steady-state clamp (Heise 2012, PMID 22594461, epub 2012-06) matched the pig clamp's flat profile. Icodec 2021 adds no status change."
   },
   {
    "cell": "dose",
@@ -66,7 +68,9 @@
    "proposed_status": "same",
    "proposed_year": 2015,
    "rule": "7",
-   "note": "761326 PharmR lines 95-96 verbatim; 173/61 h = 2.8x, bin correct. But degludec's once-daily target was reached and compared by 2015 (FDA ClinPharmR line 2831 human t1/2 18-19 h; PharmR rat t1/2 ~25 h; SumR 705-708), so the first same predates icodec."
+   "note": "761326 PharmR lines 95-96 verbatim; 173/61 h = 2.8x, bin correct. But degludec's once-daily target was reached and compared by 2015 (FDA ClinPharmR line 2831 human t1/2 18-19 h; PharmR rat t1/2 ~25 h; SumR 705-708), so the first same predates icodec.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 (dating) with the dose table (target reached = same): degludec's once-daily target was reached and set beside rat/dog PK in the 2015 FDA reviews, so the track's first same is 2015, not icodec's 2026."
   },
   {
    "cell": "efficacy",
@@ -88,7 +92,9 @@
    "proposed_status": "same",
    "proposed_year": 2011,
    "rule": "7",
-   "note": "PMID 23043166; quote verbatim; registry 2015-11-13 confirmed; all five patient_trials registry dates match CT.gov. Earlier T2D HbA1c comparison exists: phase 2 Zinman 2011 (PMID 21396703, NCT00611884, degludec OD similar to glargine), so year 2011."
+   "note": "PMID 23043166; quote verbatim; registry 2015-11-13 confirmed; all five patient_trials registry dates match CT.gov. Earlier T2D HbA1c comparison exists: phase 2 Zinman 2011 (PMID 21396703, NCT00611884, degludec OD similar to glargine), so year 2011.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 (dating): same agreed; degludec's phase 2 T2D HbA1c result (Zinman 2011 Lancet, PMID 21396703, 2011-03) already matched, so the track's first same is 2011; BEGIN 2012 confirms without changing status."
   },
   {
    "cell": "safety",
@@ -196,7 +202,9 @@
    "proposed_year": 2022,
    "rule": "7",
    "note": "Heise 2023 quote verbatim; off_by_2-5x verified (rat ~120 h, FDA 82-147 h; human ~17 d, IntegratedR line 1260). Entry carries registry_date 2022-11-02 (NCT04450394, verified), the earliest recorded date and the one the track's efficacy entry uses; rule 7 dates it 2022.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6 (dating): year is the earliest public date, including registry results posting; NCT04450394 results posted 2022-11-02 showed the once-weekly regimen reached and tolerated, so same dates 2022, not Heise 2023."
   },
   {
    "cell": "efficacy",
@@ -255,6 +263,54 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4 (#35, #72): Lancet and FDA IntegratedR 692-695, 824-827 attribute the severe-hypoglycaemia excess to initiation/titration against a daily comparator, conditions the single-dose STZ rat never tested, so untested not contra; the harm belongs on rat-dog-chronic-tox (#23)."
+  },
+  {
+   "cell": "safety",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "7",
+   "note": "203313 PharmR lines 2457-2459 verbatim (Study 6UIR050902-100, Mar-2006, LYD pigs). Opening untested at the 2006 proxy; the clamp states no hypoglycaemia comparison.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4 (safety row); same + source_calls_it partial",
+   "note": "PMID 23043166 abstract verbatim; overall confirmed hypo 1.52 vs 1.85 similar, nocturnal lower, so partial. SumR 707-709 verbatim, but it grounds the lower-hypoglycaemia premise in human phase 1 PK/PD; the pig clamp shows the same flat profile. DEVOTE 2017 would strengthen.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "4 (safety row; #35, #72), as adjudicated on safety 6",
+   "note": "PMID 37356066 quote verbatim. No icodec lower-hypoglycaemia prediction is stated (inferred), and FDA 761326 SumR 182-184 blames a weekly day-2 peak; single-dose species t1/2 25-61 h vs 173 h human (PharmR 95-96) never tested that profile.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Decision 4 (#35, #72), as safety 6: FDA SumR attributes the excess to a weekly day-2 peak, a profile single-dose species (t1/2 25-61 h) never tested; no icodec hypoglycaemia prediction is quoted. Untested; track stays at 2012 same."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "4 dose rows (#91); a dose entry is not contra because a reached regimen did not work",
+   "note": "Gap fix rejected. Zinman 2013 (PMID 24622318) quote verbatim, but 3TW rested on human phase 2 (>42 h) and phase 1 PK/PD (SumR 698-712), not a pig/rat/dog-stated target; the regimen was given and failed HbA1c, efficacy's failure.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

@@ -309,10 +309,9 @@
       "magnitude_basis": "dosing interval: monkey DPP-4 inhibition ~80% through day 14 after 10 mg/kg plus allometric scaling vs the biweekly 10/25 mg regimen that lowered HbA1c 0.63/0.59% at week 24 (NCT04556851)",
       "source_calls_it": "match",
       "population": "Unselected",
-      "confidence_note": "Abstract-level, open access; sponsor (Haisco) authors. Published 2026-01-05, after the Phase 3 (Gao 2025, doi:10.1111/dom.16014; NCT04556851, no results posted) read out. The monkey work is IND-enabling pharmacology run before the clinic, so scored prospective (retrodiction false) and dated at publication (decision 7); this is the checker's rule question 4, and if read as a retrodiction the status becomes retro. model_filed null: the Chinese NMPA review is not public.",
+      "confidence_note": "Abstract-level, open access; sponsor (Haisco) authors. Published 2026-01-05, after the Phase 3 (Gao 2025, doi:10.1111/dom.16014; NCT04556851, no results posted) read out, and it first discloses the allometric projection, benchmarked against the known clinical regimen: a retrodiction under decision 10 (checker adjudication). model_filed null: the Chinese NMPA review is not public.",
       "year": 2026,
       "status": "retro",
-      "strengthens": true,
       "prediction_level": "class",
       "model_id": "nonrodent-pk-allometry",
       "model_kind": "animal",
@@ -349,8 +348,8 @@
  "gaps": [
   {
    "lead": "PMDA regulator packages (teneligliptin 2012, omarigliptin 2015) not used",
-   "outcome": "verdict",
-   "detail": "rodent-dpp4-ogtt engagement 1, dose 1-2, efficacy 1-2: checker verdicts already set model_filed true, year 2012 and margin_stated true from the 2012 review; the reviews now source cyno-repeat-dose-skin-tox, herg-nonrodent-telemetry-qt and nonrodent-pk-allometry dose 5"
+   "outcome": "fix",
+   "detail": "model_filed on rodent-dpp4-ogtt entries no verdict covers (engagement 1 and efficacy 1 are proposed by their verdicts; dose 2/efficacy 2 year 2012 and margin_stated by theirs): engagement 2, dose 1, dose 2, efficacy 2 (teneligliptin, model side Fukuda-Tsuru 2012): model_filed null -> true; source PMDA Tenelia review 2012 https://www.pmda.go.jp/files/000153594.pdf 3.(i).A, primary pharmacodynamics 4.2.1.1-10 to -12 (Wistar plasma DPP-4 ED50 0.41 mg/kg, Zucker Fatty rat OGTT, carbohydrate load and active GLP-1): 'In the primary pharmacodynamics studies (4.2.1.1-10–12), plasma DPP-4 activity was inhibited by approximately 40% at the lowest dose that had a significant effect compared with control group'. engagement 3, dose 3, efficacy 3 (omarigliptin, model side Biftu 2014): model_filed null -> true; source PMDA Marizev review 2015 https://www.pmda.go.jp/drugs/2015/P20151007002/170050000_22700AMX01014000_A100_2.pdf nonclinical 4.2.1.1.2 (normal and DPP-4-/- mouse OGTT, plasma DPP-4 inhibition 64.0/85.1/91.3% at 0.1/0.3/1 mg/kg). Dose 3 is to be re-keyed to nonrodent-pk-allometry per its verdict; model_filed true either way."
   },
   {
    "lead": "Cynomolgus necrotic-dermatosis / DPP-8-9 cutaneous toxicity model",
@@ -369,13 +368,13 @@
   },
   {
    "lead": "Cofrogliptin monkey PK-PD -> biweekly regimen (Gou 2026)",
-   "outcome": "verdict",
-   "detail": "nonrodent-pk-allometry dose 6 (2026): set retrodiction true, status retro (published after the Gao 2025 Phase 3, framed as aligning with the known regimen)"
+   "outcome": "covered",
+   "detail": "check.json dose 6 verdict (corrected, adjudicated) proposes retro, retrodiction true, drop strengthens on this entry; added_models already carries it (confidence_note and strengthens aligned here)."
   },
   {
    "lead": "Prusogliptin patient PK/PD 2025 (Liu, Clin Pharmacokinet, NCT05146869)",
-   "outcome": "verdict",
-   "detail": "not a new system: needs an engagement entry (patients, 2025, same) on the existing rodent-dpp4-ogtt track with Yeh 2021 as model side; the checker's missing item is the verdict"
+   "outcome": "covered",
+   "detail": "changes nothing scored: rodent-dpp4-ogtt engagement is already same from 2012 (Eto 2012, patients) and 2016; a 2025 prusogliptin same in patients leaves the status unchanged (one entry per change of status), so no entry added."
   },
   {
    "lead": "Zhang 2020 J Med Chem (cofrogliptin discovery) as prospective model side",

@@ -54,7 +54,9 @@
    "proposed_status": "same",
    "proposed_year": 2012,
    "rule": "7, 2, 16",
-   "note": "Quote verbatim, NCT date confirmed. But the April 2012 PMDA review (tier 2) already pairs rat ED50/Zucker data, the 10-40 mg dose-response and a stated monkey NOAEL that held (no QTc at 40 mg): year 2012, margin_stated true."
+   "note": "Quote verbatim, NCT date confirmed. But the April 2012 PMDA review (tier 2) already pairs rat ED50/Zucker data, the 10-40 mg dose-response and a stated monkey NOAEL that held (no QTc at 40 mg): year 2012, margin_stated true.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rules 2, 6: same either way; the 2012 PMDA review sets year 2012. Decision 16: the NOAEL is the cynomolgus tox system's margin, not this rodent track's, margin_stated stays null; a margin scores on the track that stated it."
   },
   {
    "cell": "dose",
@@ -65,7 +67,9 @@
    "status_supported": true,
    "proposed_status": "same",
    "rule": "8",
-   "note": "Quote verbatim; same holds. Model_id wrong: the once-weekly regimen was projected from dog/monkey PK allometry (Biftu 2014), not the rodent OGTT system; split into its own track. Marizev PMDA review 2015 is the tier-2 record."
+   "note": "Quote verbatim; same holds. Model_id wrong: the once-weekly regimen was projected from dog/monkey PK allometry (Biftu 2014), not the rodent OGTT system; split into its own track. Marizev PMDA review 2015 is the tier-2 record.",
+   "adjudicated_status": "same",
+   "adjudication_note": "One system per model_id (checker item 3): the weekly regimen came from dog/monkey PK allometry, so re-key to nonrodent-pk-allometry, where PMDA 2015 (dose 5) already scores it; status same unchanged."
   },
   {
    "cell": "efficacy",
@@ -87,7 +91,9 @@
    "proposed_status": "same",
    "proposed_year": 2012,
    "rule": "7, 2",
-   "note": "Quote verbatim, primary endpoint HbA1c, registry date confirmed. The Phase 2 dose-ranging and Phase 3 HbA1c results sit beside the Zucker data in the April 2012 PMDA review (tier 2), which sets year 2012; status same unchanged."
+   "note": "Quote verbatim, primary endpoint HbA1c, registry date confirmed. The Phase 2 dose-ranging and Phase 3 HbA1c results sit beside the Zucker data in the April 2012 PMDA review (tier 2), which sets year 2012; status same unchanged.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rules 2 and 6: the April 2012 PMDA review (tier 2) first made the dose-ranging HbA1c results public beside the Zucker data, so year 2012; status same unchanged."
   },
   {
    "cell": "efficacy",
@@ -224,6 +230,122 @@
    "rule": null,
    "note": "Quote verbatim (P010; review 2015-08-18); hERG IC20 76.9x and dog telemetry NOEL 40.8x confirmed. Stated null prediction held at 7x dose: same. No status change; strengthens follows tile convention, decision 7 would file it under patient_trials.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "10",
+   "note": "Europe PMC abstract (epub 2026-01-05) has the quote verbatim and the ~80% monkey DPP-4 inhibition to day 14. Published after Phase 3, benchmarked to the known regimen: retro, retrodiction true holds (matches adjudicated dose 6).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Tenelia review 2012 (000153594.pdf) 3.(i).A: 4.2.1.1-10 to -12 (Wistar DPP-4 ED50 0.41 mg/kg, Zucker OGTT, active GLP-1) and 'inhibited by approximately 40% at the lowest dose' verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed: the 2012 PMDA Tenelia review carries the rat DPP-4/OGTT data, so model_filed true (rule 8); status same unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "untested",
+   "proposed_year": 2012,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Tenelia review 2012 (000153594.pdf) 3.(i).A: 4.2.1.1-10 to -12 (Wistar DPP-4 ED50 0.41 mg/kg, Zucker OGTT, active GLP-1) and 'inhibited by approximately 40% at the lowest dose' verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "model_filed true per the 2012 PMDA review (rule 8); status untested unchanged (opening entry; not the track's latest, so no untested_reason)."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Tenelia review 2012 (000153594.pdf) 3.(i).A: 4.2.1.1-10 to -12 (Wistar DPP-4 ED50 0.41 mg/kg, Zucker OGTT, active GLP-1) and 'inhibited by approximately 40% at the lowest dose' verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed true per the 2012 PMDA review (rule 8); status same unchanged; year per the companion verdict (2012, rule 6)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Tenelia review 2012 (000153594.pdf) 3.(i).A: 4.2.1.1-10 to -12 (Wistar DPP-4 ED50 0.41 mg/kg, Zucker OGTT, active GLP-1) and 'inhibited by approximately 40% at the lowest dose' verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed true per the 2012 PMDA review (rule 8); status same unchanged; year per the companion verdict (2012, rule 6)."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Marizev review 2015: nonclinical 4.2.1.1.2 (normal and DPP-4-/- mouse OGTT; plasma DPP-4 inhibition 64.0/85.1/91.3%) verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed true per the 2015 PMDA Marizev review (rule 8); status same unchanged."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2016,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Marizev review 2015: nonclinical 4.2.1.1.2 (normal and DPP-4-/- mouse OGTT; plasma DPP-4 inhibition 64.0/85.1/91.3%) verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed true per the 2015 PMDA Marizev review (rule 8); status same unchanged; entry re-keyed to nonrodent-pk-allometry per the companion verdict."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "model_filed (regulator package carries the model data)",
+   "note": "model_filed: null -> true. Re-opened PMDA Marizev review 2015: nonclinical 4.2.1.1.2 (normal and DPP-4-/- mouse OGTT; plasma DPP-4 inhibition 64.0/85.1/91.3%) verbatim. Status unchanged.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "model_filed true per the 2015 PMDA Marizev review (rule 8); status same unchanged."
   }
  ],
  "missing": [

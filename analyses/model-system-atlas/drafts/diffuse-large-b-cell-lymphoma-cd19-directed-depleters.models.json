@@ -182,13 +182,13 @@
  "gaps": [
   {
    "lead": "Al-Katib 2009 Clin Cancer Res (SAR3419 WSU-DLCL2/WSU-FSCCL SCID xenograft)",
-   "outcome": "verdict",
-   "detail": "Corrects model source of sar3419-lymphoma-xenograft efficacy 3 (opener to Al-Katib 2009, year 2009) and efficacy 4 model_src; covered by the checker's corrected verdict on efficacy 3 (adjudicated untested, 2009)."
+   "outcome": "covered",
+   "detail": "Checker corrected verdict on efficacy 3 already re-sources the opener to Al-Katib 2009 (year and model_first_use_year 2009); efficacy 4 model_src swap from the Blanc review to Al-Katib 2009 is in the checker note and changes nothing scored (status contra stands)."
   },
   {
    "lead": "LOTIS-5 phase 3 (Lonca-R vs R-GemOx, PFS HR 0.73, 2026)",
-   "outcome": "verdict",
-   "detail": "Adds a confirming patient_trial to adct402-lymphoma-xenograft efficacy 8 (same); no status change; noted in the checker's confirmed verdict on efficacy 8."
+   "outcome": "covered",
+   "detail": "Extra confirming patient trial on adct402-lymphoma-xenograft efficacy 8 (same); status unchanged, already noted in the checker confirmed verdict on efficacy 8."
   },
   {
    "lead": "CBER review of Kymriah DLBCL supplement (BLA 125646)",

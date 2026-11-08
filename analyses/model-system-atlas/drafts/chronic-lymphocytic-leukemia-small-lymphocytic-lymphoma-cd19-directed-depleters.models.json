@@ -193,6 +193,80 @@
           }
         ]
       }
+    },
+    {
+      "model_id": "cll-ibrutinib-cart19-xenograft",
+      "model": "CAR-T plus concurrent ibrutinib in CLL/ALL xenografts",
+      "model_kind": "animal",
+      "model_first_use_year": 2016,
+      "prediction_level": "class",
+      "cells": {
+        "safety": [
+          {
+            "trial_unreported": false,
+            "patient_signal_reversed": false,
+            "model_filed": null,
+            "retrodiction": false,
+            "imported_from": null,
+            "population": "Unselected (relapsed/refractory CLL/SLL)",
+            "modality": "cell therapy",
+            "comparison_stated": false,
+            "source_tier": 1,
+            "model_src": null,
+            "model_src_tier": null,
+            "product_in_model": true,
+            "magnitude": null,
+            "magnitude_basis": null,
+            "source_calls_it": null,
+            "subjects": null,
+            "epub_year": 2016,
+            "print_year": 2017,
+            "registry_date": null,
+            "year": 2016,
+            "status": "untested",
+            "src": "https://doi.org/10.1038/leu.2016.262",
+            "srcLabel": "Ruella 2017",
+            "quote": "we hypothesized that ibrutinib would reduce CART19-mediated CRS without impairing the anti-tumor efficacy of these cells.",
+            "note": "CTL019 plus ibrutinib in immunodeficient-mouse lymphoma xenografts was tested for lower CAR-T cytokine release.",
+            "short": "Ibrutinib predicted to blunt CAR-T CRS",
+            "confidence": "low",
+            "confidence_note": "Letter without abstract; only the publisher preview read (epub 2016-09-28). Xenograft was mantle cell lymphoma, the same CAR-T plus ibrutinib xenograft system as Fraietta 2016.",
+            "judgement": "Opening safety entry at the system's first use; the xenograft read human cytokines from the CAR-T cells, so it made a checkable CRS-cytokine prediction."
+          },
+          {
+            "trial_unreported": false,
+            "patient_signal_reversed": false,
+            "model_filed": null,
+            "retrodiction": false,
+            "imported_from": null,
+            "population": "Unselected (relapsed/refractory CLL/SLL)",
+            "modality": "cell therapy",
+            "comparison_stated": true,
+            "source_tier": 1,
+            "model_src": "https://doi.org/10.1038/leu.2016.262",
+            "model_src_tier": 1,
+            "product_in_model": false,
+            "magnitude": "direction_only",
+            "magnitude_basis": "CRS grade and CRS-associated cytokines with vs without concurrent ibrutinib",
+            "source_calls_it": "match",
+            "subjects": "patients",
+            "epub_year": 2020,
+            "print_year": 2020,
+            "registry_date": "2013-05-31",
+            "year": 2020,
+            "status": "same",
+            "src": "https://doi.org/10.1182/blood.2019002936",
+            "srcLabel": "Gauthier 2020",
+            "quote": "Our observations are consistent with preclinical data; Ruella et al reported that mice receiving ibrutinib and CD19 CAR T cells had lower serum concentrations of CRS-associated cytokines",
+            "note": "CLL patients on concurrent ibrutinib had lower CRS grade (adjusted OR 0.25) and lower MCP-1 and sIL-2Ra than those without.",
+            "short": "Ibrutinib lowered CRS, as mice showed",
+            "reason": "Lower CRS with ibrutinib, as predicted",
+            "confidence": "medium",
+            "confidence_note": "Full text read (PMC7205814). Non-randomised comparison with an earlier cohort of NCT01865617 (first posted 2013-05-31). Product JCAR014, not the CTL019 dosed in the mice.",
+            "judgement": "Judgement call: the paper names the Ruella xenograft and states agreement, so comparison_stated true, match. The brief says mice cannot show CRS; here the xenograft measured human CAR-T cytokines, a harm proxy it could show. Combination-regimen scope is the checker's open rule question."
+          }
+        ]
+      }
     }
   ],
   "considered_not_added": [
@@ -209,13 +283,13 @@
   "gaps": [
     {
       "lead": "NCT01747486 / Frey 2020 CTL019 dose-optimization CR (efficacy, cart19-nsg-xenograft)",
-      "outcome": "verdict",
-      "detail": "Corrects the earliest scored efficacy entry of cart19-nsg-xenograft (efficacy index 2, dated 2023 TRANSCEND) to a 2019 same/partial entry; covered by checker missing item 1, not a new system"
+      "outcome": "fix",
+      "detail": "efficacy, index 4 (cart19-nsg-xenograft): year 2023 -> 2019, src Siddiqi 2023 (doi:10.1016/s0140-6736(23)01052-8) -> NCT01747486 results (https://clinicaltrials.gov/study/NCT01747486, source_tier 1 -> 3, registry_date 2017-11-06 -> 2019-02-26, epub/print 2023 -> 2019/null), status same/partial unchanged. Registry primary 'Number of Patients Achieving Complete Response Within 3 Months': CR+CRi 6/18 at 1-5x10e8 and 1/13 at 1-5x10e7 CTL019 (results posted 2019-02-26); Frey 2020 JCO (PMID 32298202, doi:10.1200/JCO.19.03237): 'At 4 weeks, the complete and overall responses for the 32 evaluable patients were 28% (90% CI, 16% to 44%) and 44% (90% CI, 29% to 60%), respectively.' Siddiqi 2023 then moves to patient_trials. Not an added entry: a 2019 same appended after the 2023 same would break year order and repeat the status on one track."
     },
     {
       "lead": "Gauthier 2020 lower CRS with concurrent ibrutinib (safety, cll-ibrutinib-cart19-xenograft)",
-      "outcome": "verdict",
-      "detail": "Needs a safety opening/scored entry on the existing cll-ibrutinib-cart19-xenograft track (Ruella 2017 xenograft is the same system); covered by checker missing item 2 and its combination rule question"
+      "outcome": "entry",
+      "detail": "Added to added_models under cll-ibrutinib-cart19-xenograft, safety (modality cell therapy): 2016 untested opening (Ruella 2017 Leukemia, doi:10.1038/leu.2016.262, epub 2016-09-28) and 2020 same (Gauthier 2020, doi:10.1182/blood.2019002936, comparison_stated true, match: lower CRS grade and cytokines with concurrent ibrutinib, as the xenograft showed)."
     },
     {
       "lead": "Inebilizumab MEDI-551 human-CD19 transgenic mouse depletion and cynomolgus toxicology",

@@ -371,13 +371,13 @@
   },
   {
    "lead": "AstraZeneca press release 2016-05-18 (GOLD top-line OS miss)",
-   "outcome": "verdict",
-   "detail": "Dating of gastric-cell-lines-atm-low efficacy entry 3 (GOLD, 2017 contra); checker verdict 'corrected' proposes year 2016, status contra unchanged; tier-5 dating is rule question 1."
+   "outcome": "covered",
+   "detail": "check.json efficacy index 3 (GOLD, gastric-cell-lines-atm-low) verdict corrected proposes year 2016 from the AstraZeneca 2016-05-18 press release, status contra unchanged; same cell, index and change."
   },
   {
    "lead": "BeiGene press release 2021-06-04 (PARALLEL 303 PFS miss)",
-   "outcome": "verdict",
-   "detail": "Dating of parpi-cross-indication-hrd efficacy entry 4 (2023 contra); checker verdict 'corrected' proposes year 2021, status contra unchanged; tier-5 dating is rule question 1."
+   "outcome": "covered",
+   "detail": "check.json efficacy index 4 (PARALLEL 303, parpi-cross-indication-hrd) verdict corrected proposes year 2021 from the BeiGene 2021-06-04 press release, status contra unchanged; same cell, index and change."
   },
   {
    "lead": "MEDIOLA gastric cohort (olaparib + durvalumab, ASCO GI 2019 abstract)",

@@ -258,18 +258,18 @@
  "gaps": [
   {
    "lead": "Efficacy: vaniprevir phase II Manns 2012 RVR (efficacy turns 'same' in 2012)",
-   "outcome": "verdict",
-   "detail": "Corrects the date of efficacy entry 2 (hcv-gt1b-replicon 'same' 2013 -> 2012 via vaniprevir); covered by the checker's missing item, a date fix not a new system"
+   "outcome": "fix",
+   "detail": "efficacy, index 2 (hcv-gt1b-replicon 'same'), field year (with src/srcLabel/quote/epub_year/print_year): current 2013 (Olysio label 2013), source supports 2012 (epub 2012-07-17, print 2012-09): Manns 2012 Hepatology doi:10.1002/hep.25743 (PMID 22473713), vaniprevir + PegIFN/RBV phase II, primary endpoint RVR 'Rates of RVR were significantly higher in each of the vaniprevir dose groups, compared to the control regimen (68.8%-83.3% versus 5.6%; P < 0.001 for all comparisons).' The replicon's protease-inhibitor-plus-interferon prediction held for a member drug a year before the Olysio label; the track turns 'same' in 2012, not 2013 (Q80K detail can stay in the judgement)."
   },
   {
    "lead": "Dose: glecaprevir rat NOAEL 70x margin (209394 PharmR)",
-   "outcome": "verdict",
-   "detail": "Alternative for dose entry 2 (replicon-ec99-rat-pk / tox margin, corrected verdict proposes 2013); margin_stated 'same' 2017 on existing tracks, needs the draft's adjudication"
+   "outcome": "covered",
+   "detail": "Checker verdict on dose index 2 (corrected; adjudicated same) already names the glecaprevir 70x NOAEL margin as the alternative; dose track stays 'same' on the adjudicated 2009 date, so no scored change."
   },
   {
    "lead": "Safety: sovaprevir FDA clinical hold June 2013 (ALT with atazanavir/ritonavir)",
-   "outcome": "verdict",
-   "detail": "No status change on rodent-dog-repeat-dose-tox (DDI condition never tested in animals); belongs in safety entry 1/2 judgement per checker"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the DDI-driven ALT harm was never tested in animals, so safety status is unchanged; a judgement note only (checker missing item 3)."
   },
   {
    "lead": "paritaprevir",

@@ -137,6 +137,16 @@
    "rule": "7 (#127)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "IJC DOI resolves (PMID 29756206, epub 2018-08-09); both quotes verbatim in abstract. NCT01016483 results (2017-06-23) carry no KRAS data, so 2018 holds. Contra with strengthens holds; KRAS assay (tissue vs ctDNA) unstated in the abstract."
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Tang 2023 (PMID 37817078) and Kinsey 2019 (epub 2019-03-04) abstracts confirm quotes; model precedes patient series, contra prospective. Tang's 10 measurable mix HCQ and CDK4/6i arms; Witte 2024 THCQ 13/13 PD supports the same contra."
   }
  ],
  "missing": [

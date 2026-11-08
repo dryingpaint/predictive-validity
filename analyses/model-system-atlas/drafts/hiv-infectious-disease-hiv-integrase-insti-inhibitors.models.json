@@ -388,18 +388,18 @@
  "gaps": [
   {
    "lead": "Min 2010 AAC healthy-volunteer Ctau ~25x PA-IC90 (dose dating)",
-   "outcome": "verdict",
-   "detail": "dating of dose entries on hiv-cell-pa-ic90-trough; checker verdicts dose 1 (open 2009) and dose 2 (same at 2011) cover it"
+   "outcome": "covered",
+   "detail": "Checker verdicts on dose 1 (open untested at 2009, Min 2010 AAC epub 2009-11-02) and dose 2 (same; adjudicated to 2009) already propose this re-dating."
   },
   {
    "lead": "Brummel/Zash AIDS 2025 10.1097/QAD.0000000000004326 (Tsepamo signal attenuates)",
-   "outcome": "verdict",
-   "detail": "rat-rabbit-efd safety 3 re-dated to 2025 by checker verdict; also the 2025 contra entry on mouse-periconception-dtg-therapeutic"
+   "outcome": "covered",
+   "detail": "Checker verdict on safety 3 proposes year 2025 from Brummel AIDS 2025 (10.1097/QAD.0000000000004326); the mouse-periconception-dtg-therapeutic track already carries the 2025 contra entry."
   },
   {
    "lead": "Zash 2018 NEJM letter / May 2018 FDA-EMA communications (first NTD signal)",
-   "outcome": "verdict",
-   "detail": "dating of rat-rabbit-efd safety 2 (2019 contra); covered by checker note on safety 2 and its rule question on letter-vs-quotable dating"
+   "outcome": "fix",
+   "detail": "safety, index 2 (rat-rabbit-efd contra), field year (with epub_year, print_year, src, srcLabel, quote): current year 2019 (epub_year 2019, print_year 2019, src 10.1056/NEJMoa1905230 Zash 2019); source supports year 2018 (epub_year 2018, print_year 2018): Zash NEJM letter 10.1056/NEJMc1807653, PMID 30037297, PMC6550482, epub 2018-07-24, print 2018-09. The letter's text is quotable in PMC, so the quote rule does not hold the entry at 2019: \"Among the 426 infants born to HIV-positive women who had been taking dolutegravir-based antiretroviral therapy from the time of conception, 4 (0.94%) had a neural-tube defect.\" Status contra unchanged."
   },
   {
    "lead": "Zebrafish embryo DTG developmental-toxicity model (Cabrera 2019 AIDS; Cabrera 2026 DMM)",

@@ -335,8 +335,8 @@
  "gaps": [
   {
    "lead": "Safety, cyno-bcell-depletion-tox 2017 'same': ocrelizumab study 02-082-0352 first-dose IL-6 rise (761053 PharmR) vs first-infusion reactions",
-   "outcome": "verdict",
-   "detail": "Corrects the existing cyno-bcell-depletion-tox safety cell: needs a 2017 'same' entry before the 2022 ublituximab contra (PharmR line 1105 'IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals'); covered by the check.json missing item and its safety rule_question; same system, not a new track"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the cyno-bcell-depletion-tox safety track already turns 'same' in 2017 (draft safety #2, Ocrevus label, confirmed by check.json), so a second 2017 'same' on first-dose IL-6 vs first-infusion reactions is no change of status; the 2022 ublituximab 'contra' (safety #3) stands under the one-drug-contra rule, as check.json's verdict on safety #3 and its safety rule_question say. Evidence for the record: 761053 PharmR line ~1105 'IL-6 levels were increased on SD1 at 2 hours post-dose in 15 of 16 animals'."
   },
   {
    "lead": "Efficacy: marmoset rhMOG/CFA EAE with HuMab 7D8 (Kap 2010, PMID 20739677)",

@@ -257,6 +257,21 @@
    "status_supported": true,
    "note": "SBRA: 'no ... thromboembolic events or deaths reported in either trial' verbatim. Predicted harm absent in patients -> contra, magnitude opposite per brief, though FDA reads mouse deaths as endogenous-FIX/bleeding artefact (see rule_questions).",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2015,
+   "rule": "year = first public patient result (dating rule)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2020 -> 2015. Baxalta 24 Jun 2015 release (ISTH 2015, fiercebiotech/BusinessWire) verbatim: top cohort peaked >50% but immune response 'led to decreased FIX expression'. Contra already public; src could cite release (sponsor, lower tier).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status table (contra): drafter and checker agree. Only the year is disputed; rule 6 dates an entry by the earliest public comparison, so the 2015 Baxalta/ISTH release (tier 5, admissible per rule 2) supports year 2015; Konkle stays src."
   }
  ],
  "missing": [

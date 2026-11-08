@@ -242,6 +242,21 @@
    "note": "Quote verbatim (PBPK review executive summary). FDA built the model during the 2018 review and 'validated' it against B7461012 (completed 2017-05-04): retro, not same. Table 100 obs/pred AUC 1.12 itraconazole, 2.1-2.6 rifampicin under-predicted (partial). strengthens is for a second miss (#127); a second match goes to patient_trials (#113).",
    "adjudicated_status": "retro",
    "adjudication_note": "retro (decision 10): FDA built the lorlatinib PBPK model in review and validated it against completed B7461012 (2017); itraconazole within 2x, rifampicin under-predicted 2-2.6x (partial, decision 11). Same-status second match: patient_trials per #113, not strengthens (#127)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "proposed_year": 2023,
+   "rule": "same/contra from a pairing whose trial source attributes the result to conditions the model never tested should be untested",
+   "note": "Quote verbatim in Yang 2023 abstract (PMID 37574132); NCT03596866 results 2025-02-19 confirmed; Zhang 2016 abstract confirms mutant-panel superiority claim. ALTA-3 unselected for ALK mutations; authors attribute tie to low ctDNA ALK fusion (34%). Panel's mutant ranking untested.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "drop",
+   "adjudication_note": "drop (checker rule 3a): Zhang 2016 ranked brigatinib over alectinib on ALK mutants; ALTA-3 was mutation-unselected, tie attributed to low ctDNA ALK fusion. Inadmissible pairing; track stays same (2019), so no untested entry."
   }
  ],
  "missing": [

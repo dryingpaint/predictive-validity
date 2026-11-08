@@ -226,6 +226,39 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Quote verbatim (urinary free cortisol and weighted-mean osteocalcin unchanged at 1-3 mg over 7 days). Neither GW870086 patient report read (J Asthma 1 mg; Curr Drug Ther 8(2) 2-4 mg abstract) carries cortisol or bone data, so untested with strengthens stands."
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "decision 4 row 'reached, failed, a higher dose later worked' (contra, then same)",
+   "note": "Bareille 2013 Curr Drug Ther 8(2) abstract re-read (eurekaselect): conclusion quote verbatim; 2 mg +0.172 L, 4 mg +0.159 L CIs exclude zero, 3 mg crosses. Challenge ran 2005-06, prospective. patient_signal_reversed is used for decision 4, not attenuation."
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "decision 4 row 'reached, failed, a higher dose later worked' (contra, then same)",
+   "note": "Same adaptive-trial abstract quote, verbatim. Mouse OVA (Uings 2013) predates the trials' design, so not retro; 2013 shares a year with contra entry 5, ordered after it. Class-level same on the day-28 FEV1 primary holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "decision 4 row (contra/neg, then same); dating rule (later of model and trial public dates)",
+   "note": "NCT00857857 registry: LAR min FEV1 vs placebo 3 mg +0.456 L (0.255-0.657), 1 mg +0.265, FP +0.526; challenge ran 2009, before the Dec 2010 adaptive trial. Same holds. Year 2018 tracks efficacy 8; moves to 2014 if 8 is re-dated."
   }
  ],
  "missing": [

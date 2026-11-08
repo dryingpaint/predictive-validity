@@ -301,8 +301,8 @@
   },
   {
    "lead": "Pfizer pipeline PDF 2011-11-10 lists PH-797804 for COPD only (OA dropped without stated result)",
-   "outcome": "verdict",
-   "detail": "Not a model; source for dose entry 1 (rat-endotoxin-tnf-pd, 2009 untested) note only; the checker's dose verdict already cites it and keeps untested (rule_question on silent-drop signals open)"
+   "outcome": "covered",
+   "detail": "Covered: not a model and changes nothing scored. The checker's dose verdict (dose index 1, rat-endotoxin-tnf-pd, 2009 untested) already cites the Pfizer 2011-11-10 pipeline (PH-797804 listed for COPD only) and keeps untested; the OA result was never stated, so no status, year or field changes."
   },
   {
    "lead": "No further model system; ARRY-797 Blood 2006 myeloma LPS-IL-6 abstract",

@@ -161,8 +161,8 @@
   },
   {
    "lead": "Di Cosimo 2015 model identity (in-vivo arm is NSCLC PDX LXFA629; breast rests on MCF7 in vitro)",
-   "outcome": "verdict",
-   "detail": "Re-keys ridaforolimus-dalotuzumab-pathway-models (engagement 4, dose 3, efficacy 8); covered by checker verdict engagement 4 ('Rename the track'), no new system."
+   "outcome": "covered",
+   "detail": "Covered by check.json verdict engagement 4 ('Rename the track'; untested stands): a track-name/model-identity change on ridaforolimus-dalotuzumab-pathway-models (engagement 4, dose 3, efficacy 8) with no status, year or source change, so nothing scored moves and no new entry or fix is owed."
   }
  ]
 }

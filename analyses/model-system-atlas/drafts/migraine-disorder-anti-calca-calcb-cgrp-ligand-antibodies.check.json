@@ -1,225 +1,238 @@
 {
- "draft": "analyses/model-system-atlas/drafts/v3/migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies.json",
- "index_base": 1,
- "checked_by": "CHECKER_BRIEF_v3",
- "lint": "0 findings",
- "entries": [
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Zeller 2008 BJP (PMID 18776916, epub 2008-09-08); quote verbatim in abstract. model_filed true holds: 761089 PharmR lists Zeller's 7E9 in saphenous flare and dural closed-cranial-window models."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Vermeersch 2015 JPET (PMID 26116630, epub 2015-06-26); quote verbatim, abstract only. NCT01337596 first posted 2011-04-19 confirmed. readout_tier direct vs downstream is an open rule question (in-vivo stimulus blockade)."
-  },
-  {
-   "cell": "dose",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Zeller 2008 abstract; quote verbatim. Proxy opener on the same system; nothing to change."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim. 761063 PharmR confirms monkey NOAEL = 100 mg/kg QW HD in all studies (margin held); ClinPharmR: no apparent exposure-efficacy relationship, 120 similar to 240 mg. src should be the patient side (Dodick 2014), Vermeersch as model_src; margin source is the PharmR."
-  },
-  {
-   "cell": "efficacy",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Zeller 2008 abstract; quote verbatim. Whether a PD-only model with an explicit efficacy claim populates the efficacy cell at all is raised as a rule question."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Dodick 2014 Lancet Neurol (PMID 25127173, epub 2014-08-10); quote verbatim incl. middle dots; NCT01625988 posted 2012-06-22. All six patient_trials quotes verified verbatim or near (PROMISE-1 minus-sign glyphs; EVOLVE-1 via PubMed). Track misses the 2025 pediatric CM failure (see missing)."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Kopruszinski 2017 Cephalalgia (PMID 27206958, epub 2016-05-19, print 2017-05); quote verbatim. Post-dates Bigal 2015 (2015-09-30) so retro is right. 761089 PharmR files this MOH model (study DPR-2017-038) and the FDA 'relevance not known' sentence refers to it."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Melo-Carrillo 2017 J Neurosci (PMID 28642283, epub 2017-06-22); quote verbatim in abstract. 761089 PharmR has no trigeminovascular/single-unit study, so model_filed null (or false) is right; retro with stated comparison holds."
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Zeller 2008; quote verbatim and the paper title itself states no effect on heart rate or arterial blood pressure. Explicit null prediction on a readout rats can show."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Bigal 2014 Cephalalgia (PMID 24662322, epub 2014-03-24), LBR-101 up to 2000 mg in healthy women >=40; quote verbatim (abstract conclusion). Healthy volunteers count; paired same holds."
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Quote verbatim at 761063 SumR lines 761-762. PharmR: no stand-alone safety pharmacology, CV assessed inside 6-wk/6-mo tox with no adverse CV; reviewer recommended a CV study but SumR PMRs are pediatric/pregnancy only, so 'no CV PMR' holds."
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2022,
-   "rule": "6",
-   "note": "Quote verbatim in 761089 s031 (Revised 8/2025); s030 SLC dated 2025-03-21 confirmed on Drugs@FDA. Contra holds, but de Vries Lentsch 2022 Neurology (doi 10.1212/WNL.0000000000201008, epub 2022-10-04, erenumab+fremanezumab cohort) already showed BP rising: comparison public 2022 (abstract only; fremanezumab arm pooled)."
-  },
-  {
-   "cell": "engagement",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Ohlsson 2018 J Headache Pain (PMID 30109438, epub 2018-08-14); full text read; quote verbatim. Ex-vivo blockade = readout_tier direct (decision 15). No member-drug CGRP/PACAP provocation or dosed-human arterial readout found (only erenumab, out of class); untested holds.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Opener at model_first_use_year 2018 (decision 7), same-year collision with the retro entry, model entry first. Quote verbatim in abstract and full text; product_in_model true (fremanezumab 66.7 nM-0.67 uM on human artery rings).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Received 2018-06-07, after HALO CM (Silberstein 2017 NEJM, PMID 29171818; patient quote verbatim). Intro cites phase 2 and 3 fremanezumab efficacy (refs 8, 14, 15 = Bigal 2015 x2, Silberstein 2017), so decision 10 retro holds. confidence_note misnames Dodick 2014 (that ref is galcanezumab).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Mason 2017 J Neurosci 37(1):204 (PMID 28053042, 2017-01-04); full text read via jneurosci.org: ALD405 30 mg/kg i.p., Alder co-authors, so product_in_model false is right. First class-antibody use 2017 opens the track (decision 7); quote verbatim.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 8,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Full text cites 'therapeutic efficacy of CGRP-blocking ... antibodies (Dodick 2014a,b; Bigal 2015)' as premise, so decision 10 retro, not same. Dodick 2014 (PMID 25297013, 2014-10-05) patient quote verbatim, but it is the endpoint definition; the result (-1.0 day, one-sided p=0.03) is in the same abstract.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 9,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "Christensen 2019 Cephalalgia (PMID 31288556, epub 2019-07-09); abstract only (no PMC); quote verbatim in abstract. Opener year 2019 holds. Mouse GTN and bred-rat STA are two systems under one model_id; see rule question.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 10,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
-   "note": "ALD405 10 mg/kg run to 'confirm translationally-relevant mechanisms', after Dodick 2014, PROMISE-1 topline (Alder release 2017-06-27) and PROMISE-2 (Jan 2018): decision 10 retro. Ashina 2020 (PMID 32075406) quote verbatim; note that paired tier-1 source post-dates the model paper.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  }
- ],
- "missing": [
-  "Fremanezumab pediatric chronic migraine Phase 3 NCT04464707 (6-17 y): primary endpoint NOT met, LS mean difference -0.1 MMD (95% CI -1.48 to 1.22), p=0.8484, placebo -3.7 vs fremanezumab -3.8; CT.gov results posted 2025-12-19 (tier 3); AAN 2026 abstract Hershey et al. (index.mirasmart.com/AAN2026/PDFfiles/AAN2026-001129.html) states 'no significant difference was observed between treatment groups in the CM study (-3.8 vs -3.7; p=0.8484)'. A member-drug primary-endpoint miss in the context disease with no entry on the efficacy track; companion EM study NCT04458857 was positive (-2.5 vs -1.4, p=0.0210; label s031 adds pediatric EM). Whether it scores contra is rule question 1.",
-  "Human ex-vivo artery model: Ohlsson et al. 2018, 'Fremanezumab blocks CGRP induced dilatation in human cerebral, middle meningeal and abdominal arteries', J Headache Pain, doi 10.1186/s10194-018-0905-8 (PMID 30109438, 2018-08-14): model_kind ex_vivo, product_in_model true, retrodiction after Phase 3; no track in the draft.",
-  "Mouse CGRP-evoked light-aversion / spontaneous-pain models blocked by ALD405 (eptinezumab's murine sibling, Alder): Mason et al. 2017 J Neurosci doi 10.1523/JNEUROSCI.2967-16.2016 (PMID 28053042) and Rea et al. 2018 Pain doi 10.1097/j.pain.0000000000001337 (PMID 29994995): retrodiction track, product_in_model false; no track in the draft.",
-  "Rodent GTN / migraine-like pain models with ALD405 and olcegepant: Christensen et al. 2019 Cephalalgia doi 10.1177/0333102419861726 (PMID 31288556, 2019-07-09): retrodiction, product_in_model false; no track in the draft.",
-  "Rat post-concussion headache model (Bree & Levy, Cephalalgia, doi 10.1177/0333102416681571, epub 2016-12-07) is filed in the 761089 PharmR as a paradigm distinct from the MOH model; the draft folds it into rat-headache-behaviour without an entry or source of its own. Acceptable as one track, but the PharmR citation should be recorded.",
-  "For the record, not scoring: CHALLENGE-MIG NCT05127486 (galcanezumab vs rimegepant, Lilly 2024 release) missed superiority on >=50% responder, an active-comparator endpoint no model predicted; galcanezumab chronic cluster headache and fremanezumab ENFORCE cluster headache (futility, 2018-2019) are another disease (MONDO cluster headache), outside this context."
- ],
- "overall": "accept_with_corrections",
- "rule_questions": [
-  "Pediatric-population miss: fremanezumab failed its primary endpoint in pediatric chronic migraine (NCT04464707, 2025) after matching in adults. Under 'patients of the context's disease only' and 'one drug's contra still beats another drug's same', does a pediatric placebo-controlled miss flip an Unselected (adult-derived) efficacy track to contra, or is age a population split the context does not cover?",
-  "Efficacy cell on a PD-only system: when the only prospective preclinical system is a target-engagement model (evoked vasodilation) whose authors nonetheless made an explicit efficacy prediction (Zeller 2008), does efficacy score same on that track, or is the cell the empty list because no disease model was relied on? The draft's context note says 'not on a disease model' yet populates the cell.",
-  "readout_tier for in-vivo blockade of an evoked stimulus (capsaicin-induced dermal blood flow): the rule lists ex-vivo blockade of a stimulus as direct; in-vivo physiology (blood flow) could be downstream. Undecided.",
-  "magnitude for a predicted-null harm that then appeared: 'opposite' is defined for a predicted harm that never appeared; the reverse case (null predicted, hypertension reported) has no stated value.",
-  "Dating a class-wide pharmacovigilance harm: a tier-1 prospective cohort pooling a sibling-class drug (erenumab) with a member (fremanezumab) showed BP rising in 2022; does a pooled cohort where the member is the minority arm set the member's comparison date, or only the member-specific label (2025)?",
-  "margin_stated on a PD-model track: the tolerability margin comes from the FDA-filed monkey tox NOAEL (a separate study on the same species), not from the CIDBF PK/PD model that is the track's model_id. Does a tox NOAEL count as 'the model stated the margin' for decision 16?",
-  "Christensen 2019 runs two paradigms (mouse GTN-provoked allodynia; selectively bred rat spontaneous trigeminal allodynia) with one result under one model_id rodent-gtn-sta-pain. Decision 8 tracks each system; does one paper/one result justify one track, or should it be split?"
- ]
+  "draft": "analyses/model-system-atlas/drafts/v3/migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies.json",
+  "index_base": 1,
+  "checked_by": "CHECKER_BRIEF_v3",
+  "lint": "0 findings",
+  "entries": [
+    {
+      "cell": "engagement",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Zeller 2008 BJP (PMID 18776916, epub 2008-09-08); quote verbatim in abstract. model_filed true holds: 761089 PharmR lists Zeller's 7E9 in saphenous flare and dural closed-cranial-window models."
+    },
+    {
+      "cell": "engagement",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Vermeersch 2015 JPET (PMID 26116630, epub 2015-06-26); quote verbatim, abstract only. NCT01337596 first posted 2011-04-19 confirmed. readout_tier direct vs downstream is an open rule question (in-vivo stimulus blockade)."
+    },
+    {
+      "cell": "dose",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Zeller 2008 abstract; quote verbatim. Proxy opener on the same system; nothing to change."
+    },
+    {
+      "cell": "dose",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Quote verbatim. 761063 PharmR confirms monkey NOAEL = 100 mg/kg QW HD in all studies (margin held); ClinPharmR: no apparent exposure-efficacy relationship, 120 similar to 240 mg. src should be the patient side (Dodick 2014), Vermeersch as model_src; margin source is the PharmR."
+    },
+    {
+      "cell": "efficacy",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Zeller 2008 abstract; quote verbatim. Whether a PD-only model with an explicit efficacy claim populates the efficacy cell at all is raised as a rule question."
+    },
+    {
+      "cell": "efficacy",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Dodick 2014 Lancet Neurol (PMID 25127173, epub 2014-08-10); quote verbatim incl. middle dots; NCT01625988 posted 2012-06-22. All six patient_trials quotes verified verbatim or near (PROMISE-1 minus-sign glyphs; EVOLVE-1 via PubMed). Track misses the 2025 pediatric CM failure (see missing)."
+    },
+    {
+      "cell": "efficacy",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Kopruszinski 2017 Cephalalgia (PMID 27206958, epub 2016-05-19, print 2017-05); quote verbatim. Post-dates Bigal 2015 (2015-09-30) so retro is right. 761089 PharmR files this MOH model (study DPR-2017-038) and the FDA 'relevance not known' sentence refers to it."
+    },
+    {
+      "cell": "efficacy",
+      "index": 4,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Melo-Carrillo 2017 J Neurosci (PMID 28642283, epub 2017-06-22); quote verbatim in abstract. 761089 PharmR has no trigeminovascular/single-unit study, so model_filed null (or false) is right; retro with stated comparison holds."
+    },
+    {
+      "cell": "safety",
+      "index": 1,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Zeller 2008; quote verbatim and the paper title itself states no effect on heart rate or arterial blood pressure. Explicit null prediction on a readout rats can show."
+    },
+    {
+      "cell": "safety",
+      "index": 2,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Bigal 2014 Cephalalgia (PMID 24662322, epub 2014-03-24), LBR-101 up to 2000 mg in healthy women >=40; quote verbatim (abstract conclusion). Healthy volunteers count; paired same holds."
+    },
+    {
+      "cell": "safety",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Quote verbatim at 761063 SumR lines 761-762. PharmR: no stand-alone safety pharmacology, CV assessed inside 6-wk/6-mo tox with no adverse CV; reviewer recommended a CV study but SumR PMRs are pediatric/pregnancy only, so 'no CV PMR' holds."
+    },
+    {
+      "cell": "safety",
+      "index": 4,
+      "verdict": "corrected",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "proposed_status": "contra",
+      "proposed_year": 2022,
+      "rule": "6",
+      "note": "Quote verbatim in 761089 s031 (Revised 8/2025); s030 SLC dated 2025-03-21 confirmed on Drugs@FDA. Contra holds, but de Vries Lentsch 2022 Neurology (doi 10.1212/WNL.0000000000201008, epub 2022-10-04, erenumab+fremanezumab cohort) already showed BP rising: comparison public 2022 (abstract only; fremanezumab arm pooled).",
+      "adjudicated_status": "contra",
+      "adjudication_note": "Rule 6: contra holds; year should be 2022. de Vries Lentsch 2022 (PMID 36195452, epub 2022-10-04, tier 1) shows systolic BP rose on fremanezumab (n=87, member drug), contradicting the models' null BP prediction before the 2025 label."
+    },
+    {
+      "cell": "engagement",
+      "index": 3,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Ohlsson 2018 J Headache Pain (PMID 30109438, epub 2018-08-14); full text read; quote verbatim. Ex-vivo blockade = readout_tier direct (decision 15). No member-drug CGRP/PACAP provocation or dosed-human arterial readout found (only erenumab, out of class); untested holds.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Opener at model_first_use_year 2018 (decision 7), same-year collision with the retro entry, model entry first. Quote verbatim in abstract and full text; product_in_model true (fremanezumab 66.7 nM-0.67 uM on human artery rings).",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Received 2018-06-07, after HALO CM (Silberstein 2017 NEJM, PMID 29171818; patient quote verbatim). Intro cites phase 2 and 3 fremanezumab efficacy (refs 8, 14, 15 = Bigal 2015 x2, Silberstein 2017), so decision 10 retro holds. confidence_note misnames Dodick 2014 (that ref is galcanezumab).",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 7,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Mason 2017 J Neurosci 37(1):204 (PMID 28053042, 2017-01-04); full text read via jneurosci.org: ALD405 30 mg/kg i.p., Alder co-authors, so product_in_model false is right. First class-antibody use 2017 opens the track (decision 7); quote verbatim.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 8,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Full text cites 'therapeutic efficacy of CGRP-blocking ... antibodies (Dodick 2014a,b; Bigal 2015)' as premise, so decision 10 retro, not same. Dodick 2014 (PMID 25297013, 2014-10-05) patient quote verbatim, but it is the endpoint definition; the result (-1.0 day, one-sided p=0.03) is in the same abstract.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 9,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "Christensen 2019 Cephalalgia (PMID 31288556, epub 2019-07-09); abstract only (no PMC); quote verbatim in abstract. Opener year 2019 holds. Mouse GTN and bred-rat STA are two systems under one model_id; see rule question.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 10,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": null,
+      "note": "ALD405 10 mg/kg run to 'confirm translationally-relevant mechanisms', after Dodick 2014, PROMISE-1 topline (Alder release 2017-06-27) and PROMISE-2 (Jan 2018): decision 10 retro. Ashina 2020 (PMID 32075406) quote verbatim; note that paired tier-1 source post-dates the model paper.",
+      "checked_by": "CHECKER_BRIEF_v3 / models"
+    },
+    {
+      "cell": "efficacy",
+      "index": 11,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "rule": "Status table: contra; one drug's contra beats another's same; dating rule 6 (registry results posting)",
+      "note": "AAN 2026 abstract (mirasmart AAN2026-001129) quote verbatim; DOI redirects to neurology.org. CT.gov NCT04464707: 6-17 y, results posted 2025-12-19, LS diff -0.1, p=0.8484, so year 2025 holds. source_calls_it 'miss' should be null (abstract names no model). Rule question 1 still open.",
+      "checked_by": "CHECKER_BRIEF / models"
+    }
+  ],
+  "missing": [
+    "Fremanezumab pediatric chronic migraine Phase 3 NCT04464707 (6-17 y): primary endpoint NOT met, LS mean difference -0.1 MMD (95% CI -1.48 to 1.22), p=0.8484, placebo -3.7 vs fremanezumab -3.8; CT.gov results posted 2025-12-19 (tier 3); AAN 2026 abstract Hershey et al. (index.mirasmart.com/AAN2026/PDFfiles/AAN2026-001129.html) states 'no significant difference was observed between treatment groups in the CM study (-3.8 vs -3.7; p=0.8484)'. A member-drug primary-endpoint miss in the context disease with no entry on the efficacy track; companion EM study NCT04458857 was positive (-2.5 vs -1.4, p=0.0210; label s031 adds pediatric EM). Whether it scores contra is rule question 1.",
+    "Human ex-vivo artery model: Ohlsson et al. 2018, 'Fremanezumab blocks CGRP induced dilatation in human cerebral, middle meningeal and abdominal arteries', J Headache Pain, doi 10.1186/s10194-018-0905-8 (PMID 30109438, 2018-08-14): model_kind ex_vivo, product_in_model true, retrodiction after Phase 3; no track in the draft.",
+    "Mouse CGRP-evoked light-aversion / spontaneous-pain models blocked by ALD405 (eptinezumab's murine sibling, Alder): Mason et al. 2017 J Neurosci doi 10.1523/JNEUROSCI.2967-16.2016 (PMID 28053042) and Rea et al. 2018 Pain doi 10.1097/j.pain.0000000000001337 (PMID 29994995): retrodiction track, product_in_model false; no track in the draft.",
+    "Rodent GTN / migraine-like pain models with ALD405 and olcegepant: Christensen et al. 2019 Cephalalgia doi 10.1177/0333102419861726 (PMID 31288556, 2019-07-09): retrodiction, product_in_model false; no track in the draft.",
+    "Rat post-concussion headache model (Bree & Levy, Cephalalgia, doi 10.1177/0333102416681571, epub 2016-12-07) is filed in the 761089 PharmR as a paradigm distinct from the MOH model; the draft folds it into rat-headache-behaviour without an entry or source of its own. Acceptable as one track, but the PharmR citation should be recorded.",
+    "For the record, not scoring: CHALLENGE-MIG NCT05127486 (galcanezumab vs rimegepant, Lilly 2024 release) missed superiority on >=50% responder, an active-comparator endpoint no model predicted; galcanezumab chronic cluster headache and fremanezumab ENFORCE cluster headache (futility, 2018-2019) are another disease (MONDO cluster headache), outside this context."
+  ],
+  "overall": "accept_with_corrections",
+  "rule_questions": [
+    "Pediatric-population miss: fremanezumab failed its primary endpoint in pediatric chronic migraine (NCT04464707, 2025) after matching in adults. Under 'patients of the context's disease only' and 'one drug's contra still beats another drug's same', does a pediatric placebo-controlled miss flip an Unselected (adult-derived) efficacy track to contra, or is age a population split the context does not cover?",
+    "Efficacy cell on a PD-only system: when the only prospective preclinical system is a target-engagement model (evoked vasodilation) whose authors nonetheless made an explicit efficacy prediction (Zeller 2008), does efficacy score same on that track, or is the cell the empty list because no disease model was relied on? The draft's context note says 'not on a disease model' yet populates the cell.",
+    "readout_tier for in-vivo blockade of an evoked stimulus (capsaicin-induced dermal blood flow): the rule lists ex-vivo blockade of a stimulus as direct; in-vivo physiology (blood flow) could be downstream. Undecided.",
+    "magnitude for a predicted-null harm that then appeared: 'opposite' is defined for a predicted harm that never appeared; the reverse case (null predicted, hypertension reported) has no stated value.",
+    "Dating a class-wide pharmacovigilance harm: a tier-1 prospective cohort pooling a sibling-class drug (erenumab) with a member (fremanezumab) showed BP rising in 2022; does a pooled cohort where the member is the minority arm set the member's comparison date, or only the member-specific label (2025)?",
+    "margin_stated on a PD-model track: the tolerability margin comes from the FDA-filed monkey tox NOAEL (a separate study on the same species), not from the CIDBF PK/PD model that is the track's model_id. Does a tox NOAEL count as 'the model stated the margin' for decision 16?",
+    "Christensen 2019 runs two paradigms (mouse GTN-provoked allodynia; selectively bred rat spontaneous trigeminal allodynia) with one result under one model_id rodent-gtn-sta-pain. Decision 8 tracks each system; does one paper/one result justify one track, or should it be split?"
+  ]
 }

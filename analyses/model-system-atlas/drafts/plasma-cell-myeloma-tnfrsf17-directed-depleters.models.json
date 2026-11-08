@@ -182,8 +182,8 @@
  "gaps": [
   {
    "lead": "DREAMM-3 primary PFS miss public 2022-11-07 (GSK / SEC 6-K); patient_trials cites only the 2026 final analysis",
-   "outcome": "verdict",
-   "detail": "Corrects efficacy[2] (bcma-myeloma-xenograft-adc) patient_trials[1]: cite the 2022-11-07 GSK/SEC 6-K record as first public date; dating fix covered by check.json missing item and efficacy 2 note, no new system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: corrects efficacy[2] (bcma-myeloma-xenograft-adc) patient_trials[2] citation/date to the 2022-11-07 GSK/SEC 6-K record (https://www.sec.gov/Archives/edgar/data/1131399/000165495422014760/a4558f.htm); status unchanged. Already proposed in check.json 'missing' item 1; the score question (active-comparator miss) is open in check.json rule_questions."
   },
   {
    "lead": "Ide-cel integration-site / IL-2-independent growth assay vs class T-cell malignancy boxed warning",

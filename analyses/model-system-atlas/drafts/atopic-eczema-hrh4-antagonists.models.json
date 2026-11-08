@@ -793,8 +793,8 @@
   },
   {
    "lead": "Uluckan 2023 MC903 dermatitis filed under FITC track",
-   "outcome": "verdict",
-   "detail": "re-key of draft efficacy 6-7 to h4-mouse-mc903-dermatitis (checker verdict on efficacy 6); track held in added_models"
+   "outcome": "covered",
+   "detail": "check.json efficacy 7 (corrected, adjudicated contra 2023) already proposes the re-key of Uluckan 2023 to its own h4-mouse-mc903-dermatitis track; track held in added_models"
   },
   {
    "lead": "Glatzer 2013 AD-patient outer-root-sheath keratinocytes (PMID 23932072)",
@@ -803,13 +803,13 @@
   },
   {
    "lead": "izuforant (LEO 152020) phase 2 NCT05117060 missing from member list",
-   "outcome": "verdict",
-   "detail": "register question on the tile spec's members (HRH4|antagonist), not a model system; needs a register verdict, no draft entry changed here"
+   "outcome": "covered",
+   "detail": "register question raised in check.json rule_questions (HRH4|antagonist member list); izuforant is outside the given member list, so under the brief it scores nothing on this tile until the register adds it; no entry changed"
   },
   {
    "lead": "pf-5212372 is a cPLA2-alpha inhibitor, not an H4R antagonist",
-   "outcome": "verdict",
-   "detail": "register question: member should be dropped (class_programs 2, or 3 with izuforant); no model system or track involves it"
+   "outcome": "covered",
+   "detail": "register question raised in check.json rule_questions; no draft entry or track involves pf-5212372, so dropping it changes nothing scored"
   },
   {
    "lead": "Seike 2010 chronic allergic contact dermatitis, repeated TNCB (PMID 19886918)",

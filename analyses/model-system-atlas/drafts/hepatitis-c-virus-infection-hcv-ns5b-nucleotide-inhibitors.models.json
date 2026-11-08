@@ -402,8 +402,8 @@
   },
   {
    "lead": "IDX-184 on the replicon track (Lalezari 2012, -0.5 to -0.7 log10)",
-   "outcome": "verdict",
-   "detail": "hcv-replicon-huh7 efficacy 2 (2013): judgement says no member failed on efficacy, but Luo 2015 records termination for 'suboptimal efficacy'; needs a checker verdict on decision-13 neg (IDX-184 replicon EC50 vs class bar not computed)"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: hcv-replicon-huh7 efficacy 2 stays same, no 'neg'. IDX-184 never failed in patients on efficacy: 3-day monotherapy -0.5 to -0.7 log10 at 25-100 mg vs placebo -0.05, authors call it 'significant antiviral activity' (Lalezari 2012, doi 10.1128/AAC.01521-12, PMID 23070151); 14-day IDX184 + P/R gave -2.7 to -4.3 log10 vs -1.5 for P/R alone, 'greater antiviral activity ... than P/R' (Antivir Ther 2013, doi 10.3851/imp2552, PMID 23439365). Luo 2015's 'suboptimal efficacy' is a sponsor statement in a toxicology paper beside the BMS-986094 regulatory hold, not a trial result; decision 13 judges neg on data, not on what the sponsor said. The draft judgement's 'no member failed on efficacy' could name IDX-184 as stopped on the class hold (note only)."
   },
   {
    "lead": "GS-0938 (PSI-352938) safety failure; ALS-2200/VX-135 liver hold",

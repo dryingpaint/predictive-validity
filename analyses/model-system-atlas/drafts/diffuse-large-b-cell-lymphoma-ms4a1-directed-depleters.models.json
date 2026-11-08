@@ -103,8 +103,8 @@
  "gaps": [
   {
    "lead": "Mosunetuzumab (CD20-TDB) cynomolgus + xenograft track: Sun 2015 vs Budde 2022 (engagement and efficacy)",
-   "outcome": "verdict",
-   "detail": "Same systems as cyno-epcoritamab (engagement) and humanized-mouse-lymphoma-xenograft (efficacy); Budde 2022 (epub 2021-12) agrees in direction, so both stay same from 2021 (Hutchings 2021); only the opening untested entry of cyno-epcoritamab engagement could move to 2015 (Sun 2015, PMID 25972002), which needs a verdict (cf. check rule_question 3)."
+   "outcome": "fix",
+   "detail": "cell engagement, index 1 (cyno-epcoritamab opening untested entry): field year, current 2020 (Engelberts 2020; track model_first_use_year 2017), source supports 2015 with src https://doi.org/10.1126/scitranslmed.aaa4802 (Sun 2015, PMID 25972002, first published 2015-05-01) and model_first_use_year 2015 for the cynomolgus system: 'In cynomolgus monkeys, CD20-TDB potently depletes B cells in peripheral blood and lymphoid tissues at a single dose of 1 mg/kg' (mosunetuzumab, a class member, product_in_model true). No status changes: Budde 2022 patient B-cell depletion agrees in direction, and the track is already same from 2021 (Hutchings 2021). No verdict in check.json proposes this; it bears on check rule_question 3."
   },
   {
    "lead": "Mosunetuzumab cynomolgus toxicology (BLA 761263: CRS-like signs, infections) vs patient CRS and infections",
@@ -118,8 +118,8 @@
   },
   {
    "lead": "EPCORE DLBCL-1 (NCT04628494) EHA 2026 PFS improvement alongside non-significant OS",
-   "outcome": "verdict",
-   "detail": "Efficacy entry 3 (humanized-mouse-lymphoma-xenograft, 2026): covered by the checker's corrected verdict (src to tier 3 registry record posted 2026-11-03, trial_unreported false, status same, outcome_tested negative on OS); PFS belongs in that entry's note/patient_trials."
+   "outcome": "covered",
+   "detail": "check.json efficacy index 3 (corrected, adjudicated same): src to the NCT04628494 tier 3 registry record posted 2026-11-03, trial_unreported false, outcome_tested negative on OS. The EHA 2026 PFS improvement changes no status; it belongs in that entry's note/patient_trials."
   }
  ]
 }

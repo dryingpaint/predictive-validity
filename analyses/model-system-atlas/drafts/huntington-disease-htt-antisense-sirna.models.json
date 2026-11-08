@@ -108,23 +108,23 @@
  "gaps": [
   {
    "lead": "uniQure regulatory update Nov 2025 (FDA no longer accepts Enroll-HD external control)",
-   "outcome": "verdict",
-   "detail": "Not a status change; belongs in the note of efficacy 5 (hd-rodent-aav5-mihtt, same 2025); checker missing item covers it."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: FDA's Nov 2025 refusal of the Enroll-HD external control is a note on efficacy 5 (hd-rodent-aav5-mihtt, same 2025); the checker's missing item records it."
   },
   {
    "lead": "NCT03225833 (WVE-120101, rovanersen) registry results posted 2022-02-10",
-   "outcome": "verdict",
-   "detail": "Corrects the registry citation/registry_date of engagement 2, dose 2 and safety 2 (wave-snp12-preclinical, untested); checker verdict on engagement 2 covers it; no new system."
+   "outcome": "fix",
+   "detail": "engagement 2, dose 2, efficacy 2, safety 2 (wave-snp12-preclinical): field registry_date, current 2022-04-25 (NCT03225846), source supports 2022-02-10, the earlier results posting of sister trial NCT03225833 (WVE-120101; ClinicalTrials.gov API resultsFirstPostDate 2022-02-10, ACTUAL); src may cite https://clinicaltrials.gov/study/NCT03225833. Status untested/unpublished unchanged."
   },
   {
    "lead": "Iwamoto 2024 tominersen-surrogate HTT-2723 in patient iPSC neurons",
-   "outcome": "verdict",
-   "detail": "Same system as engagement 6 (hd-ipsc-neuron-snp-aso); HTT-2723 is a comparator 'designed based on tominersen' (not the product) and the paper states no tominersen patient comparison; at most a second retro entry on that track, which merge would dedupe here, so it needs a drafter/checker decision."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: HTT-2723 is a tominersen-designed surrogate (product_in_model false) on the same track as engagement 6 (hd-ipsc-neuron-snp-aso), whose 2024 retro entry from the same paper (Iwamoto 2024, doi:10.1016/j.omtn.2024.102246) already scores the track; a second retro the same year adds no status."
   },
   {
    "lead": "Southwell 2015 (CSF mHTT tracks brain HTT lowering in mice/NHP)",
-   "outcome": "verdict",
-   "detail": "Same system as hd-mouse-nhp-aso-htt; should be set as model_src (tier 1) of engagement 4, not a new track."
+   "outcome": "fix",
+   "detail": "engagement 4 (hd-mouse-nhp-aso-htt, same 2019): field model_src, current null, source supports https://doi.org/10.1038/srep12166 (Southwell 2015 Sci Rep, PMID 26174131: 'mutant huntingtin levels in cerebrospinal fluid reflect brain levels, increasing with disease stage and decreasing following brain huntingtin suppression'); model_src_tier null -> 1."
   },
   {
    "lead": "ifezuntirgene inilparvovec",

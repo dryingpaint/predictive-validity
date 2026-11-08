@@ -167,6 +167,31 @@
    "status_supported": true,
    "note": "Hu 2016 (PMID 26631614, epub 2015-12-02) abstract quote verbatim; abstract itself states neutropenia was already dose-limiting in humans, so retrodiction -> retro is correct.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is the efficacy question, never this one; target reached -> same",
+   "note": "Tolaney 2020 (PMID 32694159) quote verbatim in abstract; brain-met exposure 96x/19x IC50. Merge artifact duplicating dose 4 (same, 2019, rule v4) with stale contra from models.json; failure belongs to efficacy 4. Drop or set same.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table: target reached is same; the failed intracranial response is efficacy 4 contra. Entry duplicates dose 4 (same, 2019, same track); one entry per status change, so drop it."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Mayer 2021 Lancet Oncol (PMID 33460574) Interpretation quote verbatim; primary iDFS, prospective vs Finn 2009 panel. Year 2020 from Pfizer futility release fits dating rule. Contra vs untested for adjuvant setting stays the open rule question.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

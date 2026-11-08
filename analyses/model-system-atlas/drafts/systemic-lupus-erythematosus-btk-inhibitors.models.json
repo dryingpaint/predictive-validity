@@ -195,13 +195,13 @@
   },
   {
    "lead": "Becker 2019 (doi 10.1111/cts.12713) healthy-volunteer evobrutinib occupancy as earliest engagement/dose comparison",
-   "outcome": "verdict",
-   "detail": "Corrects existing entries, not a new system: engagement 5 and dose 2 adjudicated to same, year 2019, model_id nzbw-lupus-mouse (checker verdicts engagement 5, dose 2)."
+   "outcome": "covered",
+   "detail": "Checker verdicts engagement 5 (adjudicated same, year 2019, model_id nzbw-lupus-mouse, Becker 2019) and dose 2 (adjudicated same, year 2019, within_2x, Becker 2019) already propose this change on these entries."
   },
   {
    "lead": "Wallace 2022 (doi 10.1002/acr2.11511) stating the mouse-to-patient efficacy comparison",
-   "outcome": "verdict",
-   "detail": "Same nzbw-lupus-mouse efficacy track, status unchanged (contra): needs a verdict on efficacy 2 to cite Wallace 2022 as comparison_stated:true support; no new entry or system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: efficacy 2 (nzbw-lupus-mouse) is already contra, dated 2020 from the NCT02908100 registry results; Wallace 2022 is later and status-neutral, so under one entry per change of status it adds no entry and fixes no field (checker confirmed efficacy 2 and noted Wallace)."
   }
  ]
 }

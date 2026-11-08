@@ -37,7 +37,9 @@
    "proposed_status": "untested",
    "proposed_year": 2004,
    "rule": "7",
-   "note": "Fiskus 2009 resolves, quote verbatim. Status stands; date only: the ex vivo leukemia-cell system was first used for panobinostat in George 2004 (Blood, 10.1182/blood-2004-09-3413), so the track opens at 2004."
+   "note": "Fiskus 2009 resolves, quote verbatim. Status stands; date only: the ex vivo leukemia-cell system was first used for panobinostat in George 2004 (Blood, 10.1182/blood-2004-09-3413), so the track opens at 2004.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed; date-only correction under rule 6 (track opens at model_first_use_year): George 2004 (PMID 15514006, epub 2004-10-28) used LBH589 on human leukemia cells, H3/H4 acetylation readout. Not the latest track entry; no untested_reason needed."
   },
   {
    "cell": "engagement",
@@ -49,7 +51,9 @@
    "proposed_status": "same",
    "proposed_year": 2006,
    "rule": "7",
-   "note": "Tan 2014 quote verbatim (OA abstract). Same holds, but the earliest public comparison is Giles 2006 (CCR, tier 1): H3/H2B acetylation rose in CD34+ blasts, 13 AML + 1 MDS. Dimicoli 2011 (MDS-only) saw induction in 2/5: partial."
+   "note": "Tan 2014 quote verbatim (OA abstract). Same holds, but the earliest public comparison is Giles 2006 (CCR, tier 1): H3/H2B acetylation rose in CD34+ blasts, 13 AML + 1 MDS. Dimicoli 2011 (MDS-only) saw induction in 2/5: partial.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed. Rule 6 dates the entry to the earliest public comparison: Giles 2006 (PMID 16899611) showed H2B/H3 acetylation rising in CD34+ blasts of dosed patients; engagement counts any dosed humans. Year 2006."
   },
   {
    "cell": "dose",
@@ -70,7 +74,9 @@
    "proposed_status": "untested",
    "proposed_year": 2004,
    "rule": "7",
-   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3)."
+   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed; date-only correction under rule 6: track first use is George 2004 (PMID 15514006). Existing untested_reason no_prediction stands (rule 5): cell concentrations, no human exposure target."
   },
   {
    "cell": "efficacy",
@@ -100,7 +106,9 @@
    "proposed_status": "untested",
    "proposed_year": 2004,
    "rule": "7",
-   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3)."
+   "note": "Fiskus 2009 quote verbatim. Date only: track first use is George 2004 (see engagement 3).",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed; date-only correction under rule 6: track first use is George 2004 (PMID 15514006). Not the latest entry on the track (2011 contra follows), so no untested_reason."
   },
   {
    "cell": "efficacy",
@@ -162,6 +170,16 @@
    "note": "First check (before the re-key, same entry): Jayaraman DMD 2011 resolves; quote verbatim, abstract only, no fold given. The match is predicted-vs-observed human PK from mouse/rat/dog allometry plus Simcyp, not a model-stated effective exposure; that system shares the xenograft model_id (rule question). | Models check: Re-key to pracinostat-allometry-simcyp-pk agreed; second verdict. Quote verbatim. Published comparison (epub 2011-08-26) postdates phase 1 PK (Razak 2011-02-01, Yong 2011-03-08; FIH 2007); prediction run date not public. Decision 10 and famitinib precedent: retro, retrodiction true, year 2011.",
    "adjudicated_status": "retro",
    "adjudication_note": "retro (decision 10): the only admissible model result (Jayaraman, epub 2011-08) post-dates the phase 1 PK (Feb/Mar 2011) and reports the prediction against observed data; no source dates the prediction before FIH (decisions 2, 7). Matches famitinib-pbpk."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Europe PMC abstract (PMID 21586629, epub 2011-05-17): quote verbatim; acH3 tracked dose in mouse tissues (r2 0.76-0.94) and rose with dose in 30 phase 1 PBMCs (r=0.97). Stated comparison; mouse acH3 prediction published 2010 before patient data, so same, not retro."
   }
  ],
  "missing": [

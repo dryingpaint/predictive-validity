@@ -461,13 +461,13 @@
  "gaps": [
   {
    "lead": "Roche NCT00823680 primary result on EU register (EudraCT 2008-001122-13, mean daily glucose missed)",
-   "outcome": "verdict",
-   "detail": "Corrects dio-mouse efficacy entry 3 (Heise 2014): checker verdict 'corrected' to untested already covers it; no new system."
+   "outcome": "covered",
+   "detail": "check.json efficacy index 3 verdict corrected to untested (registry primary mean daily glucose missed per Roche CSR synopsis, EudraCT 2008-001122-13) already proposes this change."
   },
   {
    "lead": "BI 187004 phase 2 failure announced 2015 in Vitae 8-Ks",
-   "outcome": "verdict",
-   "detail": "Dates the dio-mouse efficacy contra (entry 4) to 2015; checker verdict 'corrected' proposed_year 2015 covers it. Dose: dio-mouse dose entry 1 stated no exposure target, so a target-reached failure is efficacy only (brief dose table); the 8-K is also used on the new hsd11b1-ko-mouse efficacy entry."
+   "outcome": "covered",
+   "detail": "check.json efficacy index 4 verdict corrected, proposed_status contra, proposed_year 2015 (Vitae 8-K, tier 5, trial_unreported true) already proposes this change; dose unaffected (dio-mouse dose stated no exposure target)."
   },
   {
    "lead": "HSD11B1 knockout mouse as an efficacy model (Kotelevtsev 1997, Morton 2004)",

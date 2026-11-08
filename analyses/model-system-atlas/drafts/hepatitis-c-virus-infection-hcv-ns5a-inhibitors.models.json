@@ -14,7 +14,8 @@
   "PubMed: GSK2336805 (9 hits; preclinical replicon AAC 2014 PMID 24126581, FTIH Wilfret 2013 PMID 23896477, Gardner 2014 PMID 24107072 read)",
   "PubMed: ravidasvir OR PPI-668 (24 hits; discovery BMCL 2016, STORM-C-1 2021, phase 2/3 trials, popPK 2024 titles screened)",
   "PubMed: ruzasvir OR MK-8408 (19 hits; in-vitro profile AAC 2018, C-CREST trials, Zitzmann 2026 CPT multiscale model PMID 42693517 read)",
-  "PubMed: ledipasvir sofosbuvir retreatment daclatasvir asunaprevir failure NS5A (6 hits) plus checker PMIDs 26208695, 28315983, 28815329, 29504692, 28332272, 28884930 (abstracts read)"
+  "PubMed: ledipasvir sofosbuvir retreatment daclatasvir asunaprevir failure NS5A (6 hits) plus checker PMIDs 26208695, 28315983, 28815329, 29504692, 28332272, 28884930 (abstracts read)",
+  "Apply pass: PubMed efetch abstracts for PMIDs 23322441 (Shi 2013), 24428467 (Sulkowski 2014), 26208695 (Kan 2015), 28315983 (Suda 2017), 28815329 (Kawakami 2018); FDA bundle sources/205834/205834s000lbl.txt section 12.4 (Harvoni Oct 2014, baseline NS5A polymorphisms vs relapse)"
  ],
  "added_models": [
   {
@@ -232,13 +233,13 @@
  "gaps": [
   {
    "lead": "Shi 2013 humanized-mouse GT2 combination failure vs Sulkowski 2014 daclatasvir + sofosbuvir 92% SVR in GT2",
-   "outcome": "verdict",
-   "detail": "Second prediction on the existing hcv-chimeric-upa-scid-mouse track (efficacy 3, Shi 2013 retro); corrects that entry's 'never tested' claim and needs a checker verdict on rule question 2 (conditions differ), not a new system"
+   "outcome": "covered",
+   "detail": "Changes nothing scored; rule question 2 already carries it. Shi 2013 abstract (PMID 23322441) gives the GT2a/2b failure for 4-week BMS-788329 + BMS-605339 (NS3 PI) or + BMS-821095 (NS5B non-nucleoside), and attributes it to the partners: 'Anti-HCV effects of BMS-605339 and BMS-821095 were more potent against genotype 1b than against genotype 2a.' Sulkowski 2014 (NEJM 370:211, PMID 24428467, NCT01359644) cured 92% of 26 GT2 patients with daclatasvir + sofosbuvir (nucleotide) for 24 weeks: neither the partner class nor the duration the mouse tested, so no admissible contra on hcv-chimeric-upa-scid-mouse; efficacy 3 stays retro. Only the judgement wording 'never tested with a member drug' is loose (unscored)."
   },
   {
    "lead": "FDA Harvoni label Oct 2014 section 12.4 baseline NS5A RAPs relapse 5/23 vs 2/85",
-   "outcome": "verdict",
-   "detail": "Earlier dating of the regulator patient-level comparison on hcv-replicon-huh7 (efficacy 4, FDA Daklinza label 2015, same): rule 6 moves first regulator use to 2014; checker verdict needed on that entry"
+   "outcome": "fix",
+   "detail": "efficacy 4 (hcv-replicon-huh7, first patient-level entry): field year (with epub_year/print_year, src, srcLabel, quote), current 2015 / FDA Daklinza label 2015, source supports 2014 / FDA Harvoni label Oct 2014 section 12.4 (http://www.accessdata.fda.gov/drugsatfda_docs/label/2014/205834s000lbl.pdf; bundle sources/205834/205834s000lbl.txt lines 1105-1127), which pairs ledipasvir replicon resistance positions with relapse: 'In treatment-experienced subjects whose virus had baseline NS5A polymorphisms at resistance-associated positions, relapse rates were 22% (5/23) after 12 weeks and 0% (0/19) after 24 weeks of treatment with HARVONI.' Status stays same (patient-level), but source_calls_it should be partial: in treatment-naive ION-1/ION-3 relapse was 6% (3/48) vs 5% (8/167) at 8 weeks and 1% vs 1% at 12 weeks with vs without baseline RAPs. The Daklinza 2015 Y93H/ALLY-3 comparison can remain as a strengthening note."
   },
   {
    "lead": "Osawa 2019 GLE/PIB humanized mice and Doi 2019 P32del humanized-liver mice",
@@ -252,8 +253,8 @@
   },
   {
    "lead": "Kai (checker: Kan) 2015 TK-NOG DCV/ASV-failure prediction and 2017 LDV/SOF retreatment tests",
-   "outcome": "verdict",
-   "detail": "Existing hcv-tk-nog-humanized-liver-mouse track (efficacy 9, Doi 2019 untested): verdict needed to move the opener to Kai 2015 (PMID 26208695) and insert a 2017 contra (Suda 2017 PMID 28315983 SVR 13/15; Kawakami 2017 26/30) vs the mouse's predicted ledipasvir failure; not appended because the draft order would be unsorted"
+   "outcome": "fix",
+   "detail": "efficacy 9 (hcv-tk-nog-humanized-liver-mouse opener): year 2019 -> 2015, src Doi 2019 -> Kan 2015 (J Gastroenterol 50:1145, doi:10.1007/s00535-015-1108-6, PMID 26208695, epub 2015-07-25), model_first_use_year 2019 -> 2015; the checker verdict on efficacy 9 already proposes this part. Not proposed anywhere and not appendable in year order from models.json: a 2017 contra entry between the opener and efficacy 10 (2019 retro). Model side, Kan 2015 abstract: 'Administration of ledipasvir/GS-558093 (a NS5B nucleotide analog) in these mice failed to achieve end-of-treatment response or sustained virologic response' (DCV/ASV-failure virus, NS3 D168V + NS5A L31V + Y93H; prospective, product_in_model true, prediction_level patient). Patient side, Suda 2017 (J Gastroenterol 52:1122, doi:10.1007/s00535-017-1328-z, PMID 28315983, epub 2017-03-18; 13/15 carried NS5A L31 + Y93H): 'Overall, 86.7% (13/15) of patients achieved a sustained viral response, and all patients completed therapy.' Kawakami 2018 (doi:10.1007/s00535-017-1380-8, PMID 28815329, epub 2017-08-16): SVR12 26/30, failures linked to cirrhosis plus L31M/I + Y93H. Proposed: efficacy, year 2017, status contra, retrodiction false, comparison_stated false, source_tier 1, model_src Kan 2015 (tier 1), magnitude opposite, endpoint_role primary, confidence medium (abstract-level; patients got 12 weeks with ribavirin and sofosbuvir, mice ledipasvir + GS-558093 without ribavirin)."
   },
   {
    "lead": "TD-6450",

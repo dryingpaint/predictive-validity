@@ -294,6 +294,55 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "tox-rodent-nonrodent",
+   "model": "Telemetered cynomolgus monkeys (tivozanib)",
+   "model_kind": "animal",
+   "model_first_use_year": 2014,
+   "prediction_level": "class",
+   "cells": {
+    "dose": [
+     {
+      "year": 2011,
+      "status": "contra",
+      "model_id": "tox-rodent-nonrodent",
+      "model": "Telemetered cynomolgus monkeys (tivozanib)",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2014,
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 1,
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2021/212904Orig1s000MultidisciplineR.pdf",
+      "model_src_tier": 2,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2011,
+      "print_year": 2011,
+      "registry_date": null,
+      "model_filed": true,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "off_by_2-5x",
+      "magnitude_basis": "monkey cardiovascular safety-pharmacology NOAEL 0.3 mg/kg/day (FDA HED 5.8 mg/day) vs grade 3 hypertension DLTs at 1.78 mg (2.0 mg salt) and at the 1.34 mg (1.5 mg salt) MTD; about 4.3x",
+      "source_calls_it": "miss",
+      "population": "Advanced solid tumours (first-in-human AV-951-03-B01; CRC enrolled)",
+      "confidence": "medium",
+      "confidence_note": "Patient side at abstract level (Europe PMC, epub 2011-10-05). The abstract does not name the animal study; the NOAEL is from the 2021 FDA review. First-in-human study AV-951-03-B01 is not on ClinicalTrials.gov, so registry_date is null. Entry predates the track's 2014 proxy model_first_use_year, which the checker already called late.",
+      "note": "The first-in-human trial reported animal data had mispredicted toxicity: the 2.0 mg start dose gave grade 3 hypertension and proteinuria DLTs; hypertension DLT recurred at the 1.5 mg MTD.",
+      "short": "Start dose toxic; animal margin wrong",
+      "src": "https://doi.org/10.1158/1078-0432.CCR-11-0411",
+      "srcLabel": "Eskens 2011",
+      "quote": "Animal data incorrectly predicted toxicity, resulting in DLTs at the starting dose (2.0 mg) consisting of grade 3 proteinuria and hypertension and grade 3 ataxia.",
+      "judgement": "Dose, not safety: the monkey package did predict a blood-pressure rise but placed it far above the human dose, so under 'count the harm once' the misplaced margin is scored here. Decision 16: the stated cardiovascular NOAEL (HED 5.8 mg/day) exceeded the effective dose, yet grade 3 hypertension DLT occurred at the 1.5 mg MTD that became the recommended dose, so toxicity at the effective exposure is contra, blocked_by toxicity. Efficacy is not affected (the dose was given). The existing safety same (FDA 2021, re-dated 2017 by the checker) scores the same harm by direction; the checker should decide whether it stays. Patient side is a mixed solid-tumour phase I (CRC enrolled); imported_from is not allowed on dose, so the population field carries it.",
+      "reason": "Animal data mispredicted toxicity at start dose",
+      "blocked_by": "toxicity",
+      "margin_stated": true
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -312,18 +361,18 @@
  "gaps": [
   {
    "lead": "Eskens 2011 tivozanib phase I DCE-MRI / VEGF-A / sVEGFR-2 readout (PMID 21976547)",
-   "outcome": "verdict",
-   "detail": "Corrects crc-xenograft-rodent engagement: needs a 2011 'same' entry after engagement[0] (Nakamura 2006, tivozanib); abstract also says 'Animal data incorrectly predicted toxicity' (DLTs at 2.0 mg start dose), a 2011 contra the safety cell (tox-rodent-nonrodent) lacks; patient-side readout, not a model"
+   "outcome": "entry",
+   "detail": "Engagement half covered: check.json engagement index 2 proposes a 2011 'same' from Eskens 2011. Toxicity half added as an entry: added_models tox-rodent-nonrodent, dose cell, 2011 contra (blocked_by toxicity, margin_stated true), quote 'Animal data incorrectly predicted toxicity...' (Eskens 2011, doi 10.1158/1078-0432.CCR-11-0411); margin from FDA 212904 monkey CV NOAEL HED 5.8 mg/day."
   },
   {
    "lead": "EMA Fotivda EPAR 2017 (safety-pharmacology BP comparison; nude-rat 14-xenograft panel incl. LoVo)",
-   "outcome": "verdict",
-   "detail": "Source/date correction: safety[1] (tox-rodent-nonrodent, FDA tivozanib review 2021) should cite the 2017 EPAR as the earlier regulator record; nude-rat panel is the existing crc-xenograft-rodent system (cite on its tivozanib entries), not a new model"
+   "outcome": "covered",
+   "detail": "check.json safety index 2 proposes re-dating to 2017 with src = EMA Fotivda EPAR (EMA/CHMP/437168/2017), comparison_stated true; citing the nude-rat panel on the crc-xenograft-rodent tivozanib entries is a source note that changes no status."
   },
   {
    "lead": "Rivoceranib (apatinib) CRC cell-line xenografts (Acta Pharmacol Sin 2019; Onco Targets Ther 2020)",
-   "outcome": "verdict",
-   "detail": "Same system as crc-xenograft-rodent; corrects the efficacy note's 'no CRC-specific preclinical model' wording; rivoceranib CRC patient data are single-arm only, so no status changes and no new track"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: same crc-xenograft-rodent system and rivoceranib CRC patient data are single-arm only; only the efficacy note's 'no CRC-specific preclinical model' wording changes (check.json missing item 3)."
   },
   {
    "lead": "Sun 2014 fruquintinib PDX panel (colorectal PDX?)",

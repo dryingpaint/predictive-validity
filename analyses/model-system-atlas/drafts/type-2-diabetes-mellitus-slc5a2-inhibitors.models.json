@@ -492,8 +492,8 @@
   },
   {
    "lead": "Canagliflozin lower-limb amputation (2017 boxed warning, removed 2020)",
-   "outcome": "verdict",
-   "detail": "note on sglt2-rodent-tox safety entry 3 (2013): add amputation beside DKA as an unpredicted harm; no species could show it, so no status change"
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a note on sglt2-rodent-tox safety entry 3 (2013); no species could show amputation, so status (contra), year and fields stay."
   },
   {
    "lead": "Perry 2019 rat euglycaemic ketoacidosis retrodiction",
@@ -507,8 +507,8 @@
   },
   {
    "lead": "NCT01177150 registry_date for engagement entry 4 (Sha 2011)",
-   "outcome": "verdict",
-   "detail": "slc5a2-null-mouse engagement 2011 same: registry_date null should be 2010-08-06 (first posted; no results), as the checker's verdict on engagement 4 says"
+   "outcome": "fix",
+   "detail": "engagement, index 4 (slc5a2-null-mouse, 2011 same, Sha 2011): field registry_date, current null, source supports 2010-08-06 (NCT01177150, canagliflozin JNJ-28431754 first-in-human SAD in healthy men; start 2006-11, primary completion 2007-04, first posted 2010-08-06, no results posted; ClinicalTrials.gov API v2 https://clinicaltrials.gov/study/NCT01177150). The checker's verdict on engagement 4 is confirmed and only notes the date is fillable; it proposes no change. Year stays 2011 (no results on the registry; Sha 2011 print is the first public comparison)."
   },
   {
    "lead": "Miao 2013 ertugliflozin ADME clearance within 1.5x of allometry",
@@ -517,8 +517,8 @@
   },
   {
    "lead": "Vallon 2011 JASN Sglt2-/- mouse (epub 2010-07-08)",
-   "outcome": "verdict",
-   "detail": "slc5a2-null-mouse: model_first_use_year and the engagement/efficacy/safety openers should move to 2010 (Vallon epub), same system, no new track"
+   "outcome": "fix",
+   "detail": "Track slc5a2-null-mouse: model_first_use_year current 2011, source supports 2010. Openers: engagement index 3 year 2011 -> 2010 (src may become Vallon 2011, epub_year 2010, print_year 2011); efficacy index 6 year 2011 -> 2010; safety index 6 year 2011 -> 2010 (proxy opener). Source: Vallon et al., JASN 2011, \"SGLT2 mediates glucose reabsorption in the early proximal tubule\", doi 10.1681/asn.2010030246, PMID 20616166, Europe PMC electronicPublicationDate 2010-07-08, print 2011-01-01; abstract: \"Sglt2(-/-) mice had glucosuria, polyuria, and increased food and fluid intake without differences in plasma glucose concentrations\". No verdict proposes it (only the checker's missing list). Scored entries (engagement 4 2011 same, efficacy 7 2013 same, safety 7 2013 same) unchanged."
   }
  ]
 }

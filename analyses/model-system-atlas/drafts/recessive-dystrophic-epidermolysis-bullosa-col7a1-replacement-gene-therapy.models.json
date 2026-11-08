@@ -200,8 +200,8 @@
   },
   {
    "lead": "Earlier protein-replacement model for PTR-01 track (Woodley 2004 / Remington 2009)",
-   "outcome": "verdict",
-   "detail": "col7-null-mouse-iv-rc7 opening entries (year 2015, Hou 2015) need a verdict: Woodley 2013 JID (doi:10.1038/jid.2013.10, epub 2013) ran IV rC7 into C7-null skin grafted on nude mice, so the IV track could open 2013; Woodley 2004/Remington 2009 were intradermal (considered_not_added)"
+   "outcome": "fix",
+   "detail": "Track col7-null-mouse-iv-rc7 opening entries engagement #5, dose #3, efficacy #5, safety #5 (1-based): field year (and model_first_use_year on these and on engagement #6, efficacy #6) is 2015; the source supports 2013. Woodley 2013 J Invest Dermatol (PMID 23321924, doi:10.1038/jid.2013.10, epub 2013-01-15, print 2013 Jul, PMC3890237 full text) already ran IV rC7 into athymic nude mice bearing C7-null mouse skin grafts: 'We administered intravenous rC7 to the adult athymic nude mice hosting RDEB mouse skin grafts.' rC7 incorporated at the DEJ and formed anchoring fibrils; no adverse effects up to 33 mg/kg. Openers stay untested (no human dose, no patient comparison); src/srcLabel/quote of the openers could cite Woodley 2013. Caveat: 2013 used grafted C7-null skin, not newborn null mice, and the rC7 producer cell (CHO vs fibroblast) is not stated in the letter; same IV-rC7-into-C7-null-skin system, so a proxy opener. Woodley 2004/Remington 2009 were intradermal (different route) and do not move the IV track."
   },
   {
    "lead": "Hologene 7 (NCT02984085)",

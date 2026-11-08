@@ -271,6 +271,31 @@
    "note": "Deiva 2021 abstract quote verbatim; it labels efficacy 'secondary endpoint'. If secondaries are admitted, contra is supported, though the trial ties benefit to age at treatment (mice treated at 6 weeks), arguing untested.",
    "adjudicated_status": "untested",
    "adjudication_note": "Efficacy rule: the primary endpoint governs; a secondary only with endpoint_role poc_gate. Registered primary was safety (both sides agree); neurocognition was a non-gated secondary, so efficacy is untested. Track's latest entry: untested_reason not_measured."
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Ellinwood 2022 full text (PMC9426762) has the brain-mass scaling quote verbatim; opening untested at 2016 proxy (dog study start) is allowed by the dating rule."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2023,
+   "rule": "A model built or run after the clinic already knew the answer is a retrodiction: retro, never same",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Muschol 2023 quote verbatim in abstract. But Ellinwood 2022 states the 300 mg margin and normalization citing Muschol 2021 patient data ('This dose normalizes HS...'; 'support the current human clinical dose'): stated after patients known, so retro (retrodiction: true), not same.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Ellinwood 2022 states the 300 mg target and 48 mg margin after citing patient CSF HS normalization at 300 mg; no margin stated before the trial (margin_stated check). Reproduced the known result: retro, not same."
   }
  ],
  "missing": [
@@ -286,6 +311,7 @@
   "Is a track the animal colony (the MPS IIIB dog, the Naglu-/- mouse) whatever the product and route (intraparenchymal AAV vs ICV enzyme; IV vs ICV enzyme), or the animal crossed with the delivery route? The answer decides the merges and therefore engagement 6.",
   "An NHP or dog study was run before the trial (IND-enabling) but published after it. Does its stated tolerability margin count as 'stated before the trial' for margin_stated?",
   "Member 'lesinidase alfa' is assumed to be SBC-103 (Alexion/Synageva rhNAGLU). I did not confirm the INN mapping.",
-  "Models check: efficacy 7-8 on naglu-ko-mouse-aav-intracerebral rest on rule question 1 (secondary efficacy). If admitted, does Deiva 2021's age-dependent outcome (youngest patient benefited; mice treated at 6 weeks) make the 2021 entry contra or untested (condition not tested)?"
+  "Models check: efficacy 7-8 on naglu-ko-mouse-aav-intracerebral rest on rule question 1 (secondary efficacy). If admitted, does Deiva 2021's age-dependent outcome (youngest patient benefited; mice treated at 6 weeks) make the 2021 entry contra or untested (condition not tested)?",
+  "Models check: dose 6 (mps3b-dog-icv-ta) proposed retro because Ellinwood 2022 states the 300 mg margin while citing Muschol 2021 patient CSF HS normalization; if the dog dosing ran pre-trial, does a margin first stated after patient results count as margin_stated (rule question 3) or only as retro?"
  ]
 }

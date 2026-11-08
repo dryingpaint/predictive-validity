@@ -248,6 +248,26 @@
    "status_supported": true,
    "note": "Label quote verbatim (s.6.2); table gives IOI 4% vs 1%. PharmR s.11.1 says GMP lots 'continued to cause infrequent severe ocular inflammation in monkeys and rabbits', supporting same despite reviewer calling pre-GMP findings not relevant.",
    "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "PMID 18246030 (Mol Vis 2008) abstract has the quote verbatim; rhesus laser CNV leakage suppressed at 300-500 ug KH902. No patient data in 2008, so untested at 2008 is right; same system as the efficacy track."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "DOI resolves to AURORA (Ophthalmology, epub May 2014, PMID 24793528); CRT quote verbatim. Monkey CNV (2008) precedes it, so prospective same holds. CRT is a secondary end point but this is the engagement cell, not efficacy."
   }
  ],
  "missing": [

@@ -53,7 +53,9 @@
    "proposed_status": "untested",
    "proposed_year": 2009,
    "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
-   "note": "Sandham 2013 (PMID 24021582, epub 2013-08-22) quote verbatim. The entry sets model_first_use_year 2009 but year 2013. The opening untested entry should sit at the model_first_use_year proxy, 2009."
+   "note": "Sandham 2013 (PMID 24021582, epub 2013-08-22) quote verbatim. The entry sets model_first_use_year 2009 but year 2013. The opening untested entry should sit at the model_first_use_year proxy, 2009.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: the rodent track opens untested at its model_first_use_year proxy (2009, QAV680 entering trials), so the opening entry's year moves 2013 -> 2009; status unchanged."
   },
   {
    "cell": "efficacy",
@@ -96,7 +98,9 @@
    "proposed_year": 2006,
    "rule": "Evidence rule 6 (cell opens at model_first_use_year)",
    "note": "NCT01343407 title verbatim, start 2011-04-19. But a member used the model earlier: OC000459 bronchial allergen challenge NCT01056692 started 2006-02 (LAR primary; Singh 2013 ERJ, PMID 22496329). Opening entry and model_first_use_year should be 2006.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested stands, but year stays 2011: OC000459 (timapiprant) is not an asthma member in the class table, so its 2006 challenge cannot open this class's cell (unit rule: only member drugs score)."
   },
   {
    "cell": "efficacy",
@@ -109,7 +113,24 @@
    "proposed_year": 2013,
    "rule": "Evidence rule 6 (dating) / decision 10 (prospective, not retro)",
    "note": "Bateman 2018 quote verbatim; Diamant 2014 abstract confirms setipiprant LAR study. Not retro: challenges ran 2006-2011, before AZD1981 read out. OC000459 cut LAR 25.4% (epub 2012-04-10), so the model side was public before AZD1981's 2013-09-10 posting: date 2013. Track lacks an earlier OC000459 'same' (see missing).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra stands (one drug's contra beats another's same). Year stays 2014 under rule 6: the earlier 2012 model side is OC000459, a non-member; the member model side (setipiprant, Diamant 2014) went public in 2014."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6 (dating: first public same)",
+   "note": "Field year (also src/epub_year/print_year): 2016 -> 2014. ERS 2014 abstract 4836 (Eur Respir J 44 Suppl 58, Sept 2014) verbatim: ARRY-502 200 mg BID cut FeNO 27.0 ppb vs placebo (p<0.0001) and blood CRTh2+ eosinophils. Th2-high subgroup, conference abstract.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: earliest public same is ARRY-502 (member) ERS 2014 abstract, ERJ 44 Suppl 58:4836, DOI-bearing (rule 2 tier 1): FeNO -27.0 ppb vs placebo, blood CRTh2+ eosinophils reduced. Year 2016 -> 2014; downstream tier."
   }
  ],
  "missing": [

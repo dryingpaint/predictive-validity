@@ -452,6 +452,123 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "novo-pig-clamp-rat-dog-pk",
+   "model": "LYD pig euglycaemic clamp + rat/dog PK",
+   "model_kind": "animal",
+   "prediction_level": "class",
+   "model_first_use_year": 2006,
+   "cells": {
+    "safety": [
+     {
+      "model_id": "novo-pig-clamp-rat-dog-pk",
+      "model": "LYD pig euglycaemic clamp + rat/dog PK",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2006,
+      "retrodiction": false,
+      "patient_signal_reversed": false,
+      "trial_unreported": false,
+      "product_in_model": true,
+      "population": "Unselected",
+      "year": 2006,
+      "status": "untested",
+      "note": "Novo's 2006 pig clamp profiled degludec's flat, protracted action against glargine; no hypoglycaemia comparison with patients yet.",
+      "short": "Pig clamp: flat protracted profile",
+      "src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/203313Orig1s000_203314Orig1s000PharmR.pdf",
+      "srcLabel": "FDA Tresiba pharmacology review 2015",
+      "quote": "Action profile of insulin 454 (0.6 mM and 1.2 mM) or Glargine (0.6 mM). A euglycaemic clamp study in pigs [by Novo Nordisk A/S, Denmark]",
+      "confidence": "high",
+      "confidence_note": "Same bundle quote as the track's engagement opening (PharmR lines 2457-2459); study dated March 2006, review public 2015, so 2006 is a proxy.",
+      "judgement": null,
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 2,
+      "model_src": null,
+      "model_src_tier": null,
+      "epub_year": 2015,
+      "print_year": 2015,
+      "registry_date": null,
+      "model_filed": true,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "imported_from": null
+     },
+     {
+      "model_id": "novo-pig-clamp-rat-dog-pk",
+      "model": "LYD pig euglycaemic clamp + rat/dog PK",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2006,
+      "retrodiction": false,
+      "patient_signal_reversed": false,
+      "trial_unreported": false,
+      "product_in_model": true,
+      "population": "Unselected",
+      "year": 2012,
+      "status": "same",
+      "note": "The flat profile was expected to lower hypoglycaemia; BEGIN Once Long showed similar overall but lower nocturnal confirmed hypoglycaemia with degludec vs glargine.",
+      "short": "Degludec: lower nocturnal hypoglycaemia held",
+      "src": "https://doi.org/10.2337/dc12-1205",
+      "srcLabel": "Zinman 2012",
+      "quote": "There were few episodes of nocturnal confirmed hypoglycemia in the overall population, and these occurred at a lower rate with degludec versus glargine (0.25 vs. 0.39 episodes/PYE; P = 0.038).",
+      "confidence": "medium",
+      "confidence_note": "Abstract-level. The prediction is stated in the FDA 2015 summary review (lines 707-709), drawn from the protracted flat profile shown in pig clamps and human PK/PD; overall confirmed hypoglycaemia was similar (1.52 vs 1.85/PYE), so partial.",
+      "judgement": "Same, partial: the stated prediction ('a protracted time-action profile that is relatively flat ... might enable true once-daily coverage with a lower risk of hypoglycemia', FDA 2015 SumR) held for nocturnal but not overall confirmed hypoglycaemia in BEGIN Once Long. Pairing is the drafter's, dated to the trial as the track's efficacy entry is.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "http://www.accessdata.fda.gov/drugsatfda_docs/nda/2015/203313Orig1s000_203314Orig1s000SumR.pdf",
+      "model_src_tier": 2,
+      "epub_year": 2012,
+      "print_year": 2012,
+      "registry_date": "2015-11-13",
+      "model_filed": true,
+      "magnitude": "direction_only",
+      "magnitude_basis": "nocturnal confirmed hypoglycaemia rate vs glargine",
+      "source_calls_it": "partial",
+      "imported_from": null
+     },
+     {
+      "model_id": "novo-pig-clamp-rat-dog-pk",
+      "model": "LYD pig euglycaemic clamp + rat/dog PK",
+      "model_kind": "animal",
+      "prediction_level": "class",
+      "model_first_use_year": 2006,
+      "retrodiction": false,
+      "patient_signal_reversed": false,
+      "trial_unreported": false,
+      "product_in_model": true,
+      "population": "Unselected",
+      "year": 2023,
+      "status": "contra",
+      "note": "Icodec, selected on the same protraction models, gave more level 2/3 hypoglycaemia than daily glargine in T2D (ONWARDS 1); FDA traces it to a day-2 peak.",
+      "short": "Icodec: more level 2/3 hypoglycaemia",
+      "src": "https://doi.org/10.1056/NEJMoa2303208",
+      "srcLabel": "Rosenstock 2023 (ONWARDS 1)",
+      "quote": "Rates of combined clinically significant or severe hypoglycemia were 0.30 events per person-year of exposure with icodec and 0.16 events per person-year of exposure with glargine U100",
+      "confidence": "low",
+      "confidence_note": "Abstract-level. Rate ratio 1.64 (0.98-2.75) at week 52, 1.63 (1.02-2.61) at week 83. FDA 761326 SumR 2026 (lines 184-186, 442-443) confirms higher level 2/3 rates on days 2-4; the 2024 T1D CRL for hypoglycaemia is the stronger signal but is another disease. Whether the class-level lower-hypoglycaemia claim was stated for icodec is inferred.",
+      "reason": "Weekly icodec raised hypoglycaemia, not lowered",
+      "judgement": "Contra on the stated prediction that a flat protracted profile lowers hypoglycaemia: icodec's pig/dog/rat data showed sustained, protracted glucose lowering (761326 PharmR lines 91-96), but in patients the PD profile peaked on day 2 and level 2/3 hypoglycaemia was higher than with daily glargine (FDA 2026 SumR: 'peak glycemic response on day 2 and nadir on day 7 post-injection, resulting in higher level 2/3 hypoglycemia rates on days 2-4'). Hypoglycaemia is measurable in these species. Kept in the context's own T2D data, so no import.",
+      "subjects": "patients",
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2026/761326Orig2s000PharmR.pdf",
+      "model_src_tier": 2,
+      "epub_year": 2023,
+      "print_year": 2023,
+      "registry_date": "2025-06-12",
+      "model_filed": true,
+      "magnitude": "opposite",
+      "magnitude_basis": "level 2/3 hypoglycaemia rate vs daily glargine (predicted lower, observed rate ratio 1.6)",
+      "source_calls_it": null,
+      "imported_from": null
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -469,8 +586,8 @@
  "gaps": [
   {
    "lead": "Degludec three-times-weekly regimen (Zinman 2013, FDA 2015 SumR lines 705-712)",
-   "outcome": "verdict",
-   "detail": "Needs a dose contra dated 2013 on the existing novo-pig-clamp-rat-dog-pk track (regimen read off the pig clamp/rat-dog protraction); not a new system."
+   "outcome": "fix",
+   "detail": "dose, index 2, status/year: current same 2026 (icodec; the checker proposes same 2015 for degludec once-daily). Zinman 2013 (doi:10.1016/S2213-8587(13)70013-5, PMID 24622318, epub 2013-07-09; NCT01068678/NCT01076647, results 2015-12-28/2015-11-10) supports a dose contra dated 2013 under rule 4 row 7 / #91: the three-times-weekly regimen the protracted profile supported (FDA 2015 SumR lines 705-712) was given and failed HbA1c non-inferiority (ETD 0.34% and 0.26%), quote: 'The inferior glycaemic control and increased risk of hypoglycaemia with IDeg 3TW compared with IGlar OD do not support a three-times-weekly dosing regimen.' Not appendable as an entry: it would sit after index 2 (2026, or the proposed 2015) out of year order, and under decision 6 the track's later icodec same could not follow it. The track should read 2006 untested, 2012 same (degludec once-daily reached, BEGIN), 2013 contra (3TW, magnitude off_by_2-5x on dosing interval ~56 h vs 24 h), with the icodec 2026 same dropped as no change of status; or, if rule question 1 resolves that the filed regimen governs, 3TW goes to patient_trials and index 2 stands."
   },
   {
    "lead": "Efsitora's own model system (Lilly STZ-diabetic rat, Moyers 2022)",
@@ -484,13 +601,13 @@
   },
   {
    "lead": "Icodec hypoglycaemia on the Novo track (FDA 761326 SumR 2026; T1D CRL 2024-07-10)",
-   "outcome": "verdict",
-   "detail": "Needs a safety entry on novo-pig-clamp-rat-dog-pk (pig clamp 'even distribution' vs day 2-4 level 2/3 hypoglycaemia; CRL importable from MONDO:0005147)."
+   "outcome": "entry",
+   "detail": "safety 2023 contra on novo-pig-clamp-rat-dog-pk (ONWARDS 1, NEJMoa2303208; FDA 761326 SumR 184-186), after a 2006 untested opening; low confidence, T2D own data so no import."
   },
   {
    "lead": "Degludec stated lower-hypoglycaemia prediction (FDA 2015 SumR lines 707-709)",
-   "outcome": "verdict",
-   "detail": "Needs a safety same dated 2012 (BEGIN Once Long) on novo-pig-clamp-rat-dog-pk; existing track, not a new system."
+   "outcome": "entry",
+   "detail": "safety 2012 same (partial) on novo-pig-clamp-rat-dog-pk (Zinman 2012 nocturnal hypoglycaemia 0.25 vs 0.39/PYE; prediction FDA 2015 SumR 707-709)."
   },
   {
    "lead": "Efsitora T1D safety (QWINT-5) and efsitora malignancy excess",
@@ -504,8 +621,8 @@
   },
   {
    "lead": "Efsitora hypoglycaemia on the rat-dog-chronic-tox track (761408 IntegratedR lines 3518-3523; Bergenstal 2024)",
-   "outcome": "verdict",
-   "detail": "Needs a safety same dated 2024 (imported MONDO:0005147) on rat-dog-chronic-tox; checker says the harm should be counted there rather than as the lilly-stz-rat-glucodynamics safety 2024 contra."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: rat-dog-chronic-tox is contra since 2017 (safety index 4, peglispro liver), and under decision 6 an efsitora same (FDA 761408 IntegratedR 3518-3520 tox hypoglycaemia vs QWINT-5 severe hypoglycaemia 10% vs 3%, imported MONDO:0005147) cannot turn it back; lint rejects contra -> matched without patient_signal_reversed. With the STZ-rat safety contra adjudicated to untested, the efsitora hypoglycaemia harm is recorded only in judgements."
   },
   {
    "lead": "insulin efsitora alfa",

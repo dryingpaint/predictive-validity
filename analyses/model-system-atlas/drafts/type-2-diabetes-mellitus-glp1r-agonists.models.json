@@ -387,8 +387,8 @@
  "gaps": [
   {
    "lead": "Dose (semaglutide): Kapitza 2015 / Nauck 2016 date the dose comparison to 2015",
-   "outcome": "verdict",
-   "detail": "dose entry 2 (sema-minipig-pk, same): checker corrected and adjudicated year 2015 under rule 7 (Kapitza 2015, PMID 25475122); no new system."
+   "outcome": "covered",
+   "detail": "covered: check.json dose index 2 (sema-minipig-pk, same) is corrected and adjudicated to year 2015 under rule 7 (Kapitza 2015, PMID 25475122); same cell, index and change."
   },
   {
    "lead": "Safety (danuglipron): 2025 discontinuation for one possible DILI case in obesity",
@@ -402,8 +402,8 @@
   },
   {
    "lead": "Safety (semaglutide): SUSTAIN-6 press release 2016-04-28 predates Scott 2016",
-   "outcome": "verdict",
-   "detail": "safety entry 6 (glp1r-ala316thr-genetics, same 2016): confidence_note should record the press release; checker note on safety 6 covers it, not retro under decision 10."
+   "outcome": "covered",
+   "detail": "covered: changes nothing scored (a confidence_note addition); check.json safety index 6 note already records the 2016-04-28 SUSTAIN-6 press release and keeps status same under decision 10."
   },
   {
    "lead": "HS-20004",

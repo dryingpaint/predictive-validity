@@ -182,18 +182,18 @@
  "gaps": [
   {
    "lead": "Tier-5 corroboration of the CS1001 cHL failure (CStone 2019 annual results, HKEX 2020-03-26: cHL NDA conditional on data, none filed)",
-   "outcome": "verdict",
-   "detail": "Corroborates efficacy entry 2 (chl-9p24-pdl1-genetics, 2022 contra, checker verdict confirmed); goes in its confidence_note/patient_trials, no status or system change."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: tier-5 corroboration of efficacy entry 2 (chl-9p24-pdl1-genetics, 2022 contra, checker confirmed); a higher-tier source already sets that status, so it is confidence_note material only."
   },
   {
    "lead": "Benmelstobart (TQB2450) phase 1, 1/3 Hodgkin lymphoma PR at 3 mg/kg (Ther Adv Med Oncol, PMID 38188467, epub 2024-01-06)",
-   "outcome": "verdict",
-   "detail": "Patient datum only, no model system; belongs in patient_trials of efficacy entry 2 (chl-9p24-pdl1-genetics); phase 1, n=3, not a primary endpoint, so it moves no status."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: benmelstobart phase 1, n=3 Hodgkin, 1 PR, not a primary endpoint, no model system attached; a patient_trials item on efficacy entry 2 with the status unchanged."
   },
   {
    "lead": "Patient-level entry: Chen 2022 FISH, all five CS1001 non-responders 9p24.1-amplified",
-   "outcome": "verdict",
-   "detail": "Same system as track chl-9p24-pdl1-genetics (efficacy); a patient-level entry there is a draft edit (retrodiction true, FISH after outcome; five outcome-selected cases with no unamplified comparator), not a new system."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: the Chen 2022 FISH datum already underlies efficacy entry 2 (chl-9p24-pdl1-genetics, 2022 contra, confirmed). The track is prediction_level class, so a patient-level entry cannot go on it; and five outcome-selected non-responders with no unamplified comparator (97% of cHL is amplified) is no admissible test of patient selection."
   },
   {
    "lead": "No other model system compared with patients (KL-A167 NCT03580564, TQB2450 NCT03800706 cHL phase 2s unreported)",
@@ -202,8 +202,8 @@
   },
   {
    "lead": "Gong et al. CII 2022 (PMID 34984540) as first-in-human source for sugemalimab engagement and dose",
-   "outcome": "verdict",
-   "detail": "Corrects engagement entry 2 (sugemalimab-invitro-pdl1-binding) and dose entry 2 (sugemalimab-cyno-tox) to year 2022 with the Gong citation; checker verdicts 'corrected' (adjudicated, rule 6) already cover both."
+   "outcome": "covered",
+   "detail": "Checker verdicts 'corrected' on engagement 2 and dose 2 (proposed_year 2022, Gong et al. CII 2022, PMID 34984540, adjudicated under rule 6) already propose this change on both entries."
   }
  ]
 }

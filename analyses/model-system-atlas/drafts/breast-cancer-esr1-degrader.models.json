@@ -465,8 +465,8 @@
  "gaps": [
   {
    "lead": "persevERA (NCT04546009) first-line giredestrant+palbociclib, ITT PFS not met (Roche 2026-03-09)",
-   "outcome": "verdict",
-   "detail": "Patient-side result for efficacy #3 (er-pos-wt-breast-xenograft, contra); belongs in its patient_trials (tier 5, trial_unreported), status unchanged; checker verdict on efficacy #3 already says so."
+   "outcome": "covered",
+   "detail": "Checker entry 13 (efficacy #3, er-pos-wt-breast-xenograft, contra) already proposes adding persevERA (NCT04546009, Roche 2026-03-09) to patient_trials with status unchanged; changes nothing scored."
   },
   {
    "lead": "Safety-pharmacology package (hERG to 30 uM, single-dose dog telemetry) vs patient dQTcF 10.9 ms / label 5.1 QTc warning",
@@ -475,8 +475,8 @@
   },
   {
    "lead": "ZN-c5 discontinued August 2022 with no randomised readout",
-   "outcome": "verdict",
-   "detail": "Corrects efficacy #3's judgement ('never produced a randomised efficacy comparison') by citing the Zentalis discontinuation; adds no system, since ZN-c5's own MCF7 and ESR1-mutant xenografts are the two existing xenograft tracks."
+   "outcome": "covered",
+   "detail": "Changes nothing scored: a citation for efficacy #3's judgement text (ZN-c5 discontinued Aug 2022, no randomised readout); checker missing[2] already raises it; no system or status added."
   },
   {
    "lead": "Patient-derived organoid / ex-vivo comparison with a member drug",

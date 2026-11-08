@@ -201,6 +201,32 @@
    "rule": null,
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Conclusion sentence verbatim; abstract reports efficacy only. Kivitz 2018: no deaths or SAE, AE rate below placebo, so no harm appeared to contradict the rat's silence; untested holds. Bleeding stays on the cynomolgus track."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": null,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Europe PMC abstract: quote verbatim; human data are in vitro whole blood plus bleeding time only. Kivitz 2018 reports unspecified ex vivo whole-blood responses in RA, not GPVI platelet aggregation, so untested/not_measured 2018 holds."
+  },
+  {
+   "cell": "dose",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2018,
+   "rule": "dose: whether the reached dose worked is the efficacy question; a drug that reached its target and failed is an efficacy failure only (table row 'target reached' = same)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Kivitz ACR 2018 quote verbatim. Exposure reached, so status field should be same, not contra; the miss is already efficacy 6. 'Reached, failed, abandoned' is no table row. Also duplicates dose 5 (same 2018, same source).",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table row 'target reached' = same, not contra; failure is efficacy 6 only. That same duplicates dose 5 (same track, 2018, source); 'one entry per change of status on that track' requires dropping it."
   }
  ],
  "missing": [

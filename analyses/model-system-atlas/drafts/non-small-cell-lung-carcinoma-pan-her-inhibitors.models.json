@@ -18,7 +18,8 @@
   "Europe PMC: members AND ('population pharmacokinetic' OR 'exposure-response' OR PBPK OR 'physiologically based' OR 'quantitative systems') AND lung (81 hits, reviews and non-member PK papers only)",
   "Europe PMC: (pyrotinib) AND lung AND (HER2 OR ERBB2) AND (patient-derived OR PDX OR xenograft OR Ba/F3) NOT REVIEW (41 hits); (poziotinib OR HM781-36B) AND lung AND (patient-derived OR PDX OR organoid OR Ba/F3) AND (clinical OR patients) NOT REVIEW (32 hits)",
   "Europe PMC: NCT04504071 OR (dacomitinib AND 'uncommon EGFR mutations' AND phase II) PUB_YEAR 2023-2026, sorted by date (no primary publication among the top 6); (dacomitinib OR poziotinib) AND PACC/P-loop AND (prospective OR phase II) 2022-2026 (reviews only)",
-  "ClinicalTrials.gov API v2 search: intr = members, cond = lung, term = PACC OR atypical OR uncommon OR structure (5 hits; NCT04504071 dacomitinib uncommon EGFR phase 2, active not recruiting, no results)"
+  "ClinicalTrials.gov API v2 search: intr = members, cond = lung, term = PACC OR atypical OR uncommon OR structure (5 hits; NCT04504071 dacomitinib uncommon EGFR phase 2, active not recruiting, no results)",
+  "Apply pass: Europe PMC EXT_ID:25456362 (Janne 2014 abstract, 51% EGFR-mutant as-enrolled); ClinicalTrials.gov API v2 NCT02454842 status module; fc.py search ZENITH20 cohort 1 topline December 2019; fc.py scrape GenomeWeb 2019-12-27 article (dated Spectrum's announcement Thursday 2019-12-26)"
  ],
  "added_models": [
   {
@@ -383,13 +384,13 @@
   },
   {
    "lead": "Tarloxotinib TH-4000 EGFR-mutant models (AACR 2015/press release) -> NCT02454842 terminated 'Lack of efficacy' (start 2015-06, n=21, no results posted)",
-   "outcome": "verdict",
-   "detail": "Corrects hypoxia-activated-exon20-xenografts-tarloxotinib (first use 2015 and a missed contra at efficacy 9; also engagement 6, dose 7); checker verdict efficacy 9 'corrected' (rule 7) and rule question 3 cover it. No separate track: model side is only a conference abstract/press release (no tier 1-3 paper in Europe PMC 2010-2020) and patient side is a no-results registry record/tier-5 release"
+   "outcome": "covered",
+   "detail": "Checker verdict efficacy 9 'corrected' (rule 7) proposes the 2015 opening for hypoxia-activated-exon20-xenografts-tarloxotinib, and its notes on engagement 6 and dose 7 carry the same 2015 first use. The missed contra is not written: whether the 2015 EGFR-mutant TH-4000 test belongs on this exon-20 track or a sibling track is the checker's open rule question 3, and its patient side has no results record (ClinicalTrials.gov API v2 NCT02454842, re-opened: TERMINATED, whyStopped 'Lack of efficacy', start 2015-06, completion 2017-01-31, no results) and its model side no tier 1-3 paper."
   },
   {
    "lead": "Poziotinib FDA ODAC briefing 2022-09-22 and Nov 2022 CRL (NDA 215643)",
-   "outcome": "verdict",
-   "detail": "Patient-side regulator record for exon20-baf3-pdx-gemm-poziotinib (dose 5 / efficacy 6, ZENITH20); checker verdict efficacy 6 'corrected' (rule 7) and rule question 4 (which document is src) cover it; not a model system"
+   "outcome": "covered",
+   "detail": "Checker verdict efficacy 6 'corrected' (rule 7) and rule question 4 cover it. The ODAC briefing (2022-09-22) and CRL (Nov 2022) are later than the earliest record of the cohort-1 miss, so they change neither status nor year on exon20-baf3-pdx-gemm-poziotinib; cohort 2 met its ORR bar, so dose 5 / efficacy 6 are unchanged. Not a model system."
   },
   {
    "lead": "Robichaux 2021 structure-based EGFR mutation classification (in silico, retrodiction)",
@@ -398,13 +399,13 @@
   },
   {
    "lead": "Janne 2014 ARCHER 1017 (Lancet Oncol, epub 2014-11-05, PMID 25456362) on dacomitinib del19/L858R track",
-   "outcome": "verdict",
-   "detail": "Dates egfr-del19-nsclc-xenografts efficacy 4 (and paired dose 3) to 2014: EGFR-mutant PFS4 95.5% (95% CI 83.2-98.9) vs <=50% null; checker note on efficacy 4 (decision 7) covers it; same trial as NCT00818441, registry results 2016-06-01"
+   "outcome": "covered",
+   "detail": "Changes nothing scored. Janne 2014 (Lancet Oncol, doi 10.1016/s1470-2045(14)70461-9, PMID 25456362, epub 2014-11-05, abstract re-opened in Europe PMC): primary endpoint PFS at 4 months 'in the as-enrolled population', of whom only 45/89 (51%) carried EGFR exon 19/21 mutations, below the brief's 80% biomarker rule; the EGFR-mutant PFS4 95.5% is a subgroup, not the primary. The draft already logs ARCHER 1009 / BR.26 out under the same rule, so efficacy 4 (and dose 3) on egfr-del19-nsclc-xenografts keep 2017 (Wu 2017); Janne 2014 can sit only as a patient_trials item."
   },
   {
    "lead": "ZENITH20 cohort-1 earliest records (Spectrum topline Dec 2019/Jan 2020, SEC exhibit, AACR 2020 abstract)",
-   "outcome": "verdict",
-   "detail": "Dating of exon20-baf3-pdx-gemm-poziotinib efficacy 6 (contra) from 2025 to 2019/2020; checker verdict efficacy 6 'corrected' (rule 7) covers it; exact press-release date unconfirmed"
+   "outcome": "fix",
+   "detail": "efficacy | 6 | year | current 2025 (verdict proposes 2020) | 2019 | Spectrum announced on Thursday 2019-12-26 that ZENITH20 cohort 1 missed its pre-specified primary endpoint: GenomeWeb 2019-12-27 (https://www.genomeweb.com/drug-discovery-development/spectrums-poziotinib-failed-meet-primary-phase-ii-trial-endpoint, 'Spectrum Pharmaceuticals said Thursday that its drug candidate poziotinib failed to meet the pre-specified primary endpoint in the first cohort'); FirstWord and Targeted Oncology also say 'In December 2019, the company reported that the primary endpoint for Cohort 1 (EGFR) was not met'. Under decision 7 the year is 2019, not 2020; which document is src (tier-5 release with trial_unreported, or Le 2025) stays rule question 4."
   }
  ]
 }
