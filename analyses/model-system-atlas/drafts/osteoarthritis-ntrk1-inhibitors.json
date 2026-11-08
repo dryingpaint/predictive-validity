@@ -87,7 +87,8 @@
     "source_calls_it": "unresolved",
     "readout_tier": null,
     "population": "Unselected",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -165,7 +166,8 @@
     "blocked_by": null,
     "margin_stated": null,
     "population": "Unselected",
-    "model_first_use_year": 2015
+    "model_first_use_year": 2015,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

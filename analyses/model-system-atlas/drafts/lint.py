@@ -23,7 +23,7 @@ KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", 
         "patient_trials", "strengthens", "prediction_level", "modality", "model_id", "source_tier", "model_src",
         "model_src_tier", "trial_unreported", "patient_signal_reversed", "model_kind", "retrodiction",
         "imported_from", "magnitude_basis", "confidence_note", "readout_tier", "derived_from", "blocked_by",
-        "margin_stated", "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
+        "margin_stated", "effect_size", "class_threshold", "endpoint_role", "outcome_tested", "untested_reason"}
 REQUIRED = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "retrodiction",
             "confidence", "magnitude", "source_calls_it")
 ENUM = {
@@ -38,6 +38,7 @@ ENUM = {
     "endpoint_role": {"primary", "poc_gate", None},
     "outcome_tested": {None, "positive", "negative", "negative_confounded"},
     "prediction_level": {"class", "patient", None},
+    "untested_reason": {"no_prediction", "not_measured", "unpublished", "unsettled", None},
 }
 ONLY_IN = {"readout_tier": "engagement", "derived_from": "dose", "blocked_by": "dose", "margin_stated": "dose",
            "endpoint_role": "efficacy", "outcome_tested": "efficacy", "imported_from": "safety"}

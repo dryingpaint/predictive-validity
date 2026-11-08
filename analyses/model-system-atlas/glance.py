@@ -9,7 +9,7 @@ latest status among its tracks, one per model, that predicted before the patient
 retrodiction never sets it. The entry drawn is the latest prospective entry on the track that set the headline.
 When a cell is split by modality the worst strip is shown. A cell whose only tracks are retrodictions is drawn as
 "retrodiction only". A track whose latest status is contradicted while the headline is matched is the cell's
-dissent. Writes glance.csv beside this file; glance_nature.py imports load() and cells() and draws the figure.
+dissent. A never-compared cell carries the untested_reason of the entry drawn. Writes glance.csv beside this file; glance_nature.py imports load() and cells() and draws the figure.
 Read-only.
 """
 import json
@@ -96,6 +96,7 @@ def cells(e: pd.DataFrame, tiles: pd.DataFrame) -> pd.DataFrame:
                          "share": t.class_share, "question": q, "status": st, "year": pick.get("year"), "model": pick.get("model"),
                          "short": pick.get("short"), "tracks": len(last), "other_tracks": max(len(last) - 1, 0),
                          "derived": pick.get("fields", {}).get("derived_from"), "outcome_tested": pick.get("fields", {}).get("outcome_tested"),
+                         "untested_reason": pick.get("fields", {}).get("untested_reason") if st == "untested" else None,
                          "dissent": None if dissent is None else dissent["short"], "dissent_model": None if dissent is None else dissent["model"]})
     df = pd.DataFrame(rows)
     df["year"] = df.year.astype("Int64")
@@ -107,6 +108,9 @@ def main() -> None:
     df = cells(e, tiles)
     df.to_csv(os.path.join(HERE, "glance.csv"), index=False)
     print(pd.crosstab(df.question, df.status.fillna("blank")).to_string())
+    missing = df[(df.status == "untested") & df.untested_reason.isna()]
+    if len(missing):
+        print("never-compared cells without untested_reason:", *(missing.slug + " " + missing.question), sep="\n  ")
     print(f"dissent cells {int(df.dissent.notna().sum())}; outcome negative {int((df.outcome_tested == 'negative').sum())}; "
           f"derived dose contras {int(((df.question == 'dose') & (df.status == 'contra') & (df.derived == 'efficacy')).sum())}")
 

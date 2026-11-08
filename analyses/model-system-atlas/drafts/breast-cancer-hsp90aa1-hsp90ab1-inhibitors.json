@@ -234,7 +234,8 @@
     "margin_stated": null,
     "population": "HER2-positive metastatic breast cancer, trastuzumab-pretreated",
     "model_first_use_year": 2008,
-    "judgement": "Row 'reached, failed, abandoned' of the dose table: the model's weekly regimen was given at a tolerated dose, no confirmed responses followed and the trial stopped at stage 1, so dose is contra derived from efficacy and the failure counts once. Modi raises underdosing as a possibility without a PK demonstration, so I did not use the 'target never reached' row, which would make efficacy untested; a stricter reader could. Luminespib is the opposite case, exposure stated as reached (Sessa 2013) with a 22% response rate in HER2-positive breast (Kong 2016), but the retaspimycin contra holds the track. margin_stated is null: no NOAEL or MTD is public for any member (no NDA)."
+    "judgement": "Row 'reached, failed, abandoned' of the dose table: the model's weekly regimen was given at a tolerated dose, no confirmed responses followed and the trial stopped at stage 1, so dose is contra derived from efficacy and the failure counts once. Modi raises underdosing as a possibility without a PK demonstration, so I did not use the 'target never reached' row, which would make efficacy untested; a stricter reader could. Luminespib is the opposite case, exposure stated as reached (Sessa 2013) with a 22% response rate in HER2-positive breast (Kong 2016), but the retaspimycin contra holds the track. margin_stated is null: no NOAEL or MTD is public for any member (no NDA).",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -309,7 +310,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
-    "judgement": "Same under decision 16: the model stated an MTD and the dog's dose-limiting harms (GI, renal, gallbladder, marrow) did not stop escalation to or above that exposure; the DLTs that set the human MTD (keratitis, LV dysfunction) were unpredicted and are counted once, in safety. The 'enough' half is unanswerable because no efficacy trial followed, so a stricter reader could hold this at untested; scored because the margin was stated and held. The pairing is mine (Jhaveri 2012 does not cite the toxicology paper in its abstract)."
+    "judgement": "Same under decision 16: the model stated an MTD and the dog's dose-limiting harms (GI, renal, gallbladder, marrow) did not stop escalation to or above that exposure; the DLTs that set the human MTD (keratitis, LV dysfunction) were unpredicted and are counted once, in safety. The 'enough' half is unanswerable because no efficacy trial followed, so a stricter reader could hold this at untested; scored because the margin was stated and held. The pairing is mine (Jhaveri 2012 does not cite the toxicology paper in its abstract).",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

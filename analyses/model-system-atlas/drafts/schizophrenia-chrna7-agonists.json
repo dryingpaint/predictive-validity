@@ -52,7 +52,8 @@
     "quote": "In vivo microdialysis in awake rats showed an increase in extracellular prefrontal cortical dopamine in response to low doses of AZD0328.",
     "readout_tier": "downstream",
     "reason": "PD marker never measured in humans",
-    "judgement": "The model's PD read-outs (cortical dopamine release; ex-vivo alpha7 up-regulation in Werkheiser 2011, 10.1016/j.neuroscience.2011.04.033) have no human counterpart; the patient study NCT00669903 measured cognition only, which is efficacy, not engagement."
+    "judgement": "The model's PD read-outs (cortical dopamine release; ex-vivo alpha7 up-regulation in Werkheiser 2011, 10.1016/j.neuroscience.2011.04.033) have no human counterpart; the patient study NCT00669903 measured cognition only, which is efficacy, not engagement.",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "rodent-schizophrenia-screens",
@@ -89,7 +90,8 @@
     "quote": "At the 0.3 mg/kg dose, there was a statistically significant drug × genotype interaction effect (p = 0.022) demonstrating the ability of TC-5619 to normalize PPI in th(tk−)/th(tk−) mice.",
     "readout_tier": "downstream",
     "reason": "Gating read-out not taken in patients",
-    "judgement": "Human P50 gating data for alpha7 agonists exist only for DMXB-A (GTS-21), which is not a member of this class, so they cannot score here; Hashimoto 2015 (review) lists no gating study for the three members."
+    "judgement": "Human P50 gating data for alpha7 agonists exist only for DMXB-A (GTS-21), which is not a member of this class, so they cannot score here; Hashimoto 2015 (review) lists no gating study for the three members.",
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "pig-pet-alpha7-occupancy",
@@ -126,7 +128,8 @@
     "quote": "This study underscores the importance of preclinical PET imaging and target engagement analysis in informing clinical trial strategies, including dosing decisions.",
     "readout_tier": "direct",
     "reason": "No human occupancy to compare",
-    "judgement": "A post-hoc occupancy model (2024) with no human occupancy datum for TC-5619, ABT-126 or AZD0328; it is a model that exists and was never compared, not a retrodiction, because it reproduces no human result."
+    "judgement": "A post-hoc occupancy model (2024) with no human occupancy datum for TC-5619, ABT-126 or AZD0328; it is a model that exists and was never compared, not a retrodiction, because it reproduces no human result.",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

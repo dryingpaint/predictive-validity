@@ -89,7 +89,8 @@
     "model_first_use_year": 2005,
     "readout_tier": null,
     "reason": "PD readout of the mouse never measured in patients",
-    "strengthens": "Adds the first patient-side look: no member trial measured the mouse's readout"
+    "strengthens": "Adds the first patient-side look: no member trial measured the mouse's readout",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -126,7 +127,8 @@
     "src": "https://doi.org/10.1172/JCI24335",
     "srcLabel": "Weisberg 2006",
     "quote": "In mice with established obesity, short-term treatment with a pharmacological antagonist of CCR2 lowered macrophage content of adipose tissue and improved insulin sensitivity without significantly altering body mass or improving hepatic steatosis.",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": null,
@@ -162,7 +164,8 @@
     "srcLabel": "Sullivan 2013",
     "quote": "The trough plasma level of CCX140 in mice treated with 30 mg/kg CCX140-B was 170 nM.",
     "model_first_use_year": 2013,
-    "reason": "No stated target; 1000 mg JNJ no better than 250 mg"
+    "reason": "No stated target; 1000 mg JNJ no better than 250 mg",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -460,7 +463,8 @@
     "src": "https://doi.org/10.1172/JCI24335",
     "srcLabel": "Weisberg 2006",
     "quote": "In mice with established obesity, short-term treatment with a pharmacological antagonist of CCR2 lowered macrophage content of adipose tissue and improved insulin sensitivity without significantly altering body mass or improving hepatic steatosis.",
-    "model_first_use_year": 2005
+    "model_first_use_year": 2005,
+    "untested_reason": "no_prediction"
    },
    {
     "subjects": "patients",

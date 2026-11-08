@@ -401,7 +401,8 @@
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Regimen reached, HBsAg response plateaued",
-    "judgement": "Scored same under 'reached, drug worked': the JNJ-3989 mouse PK paper supports monthly dosing (sustained liver exposure beyond 42 days) and patients plateaued from 100 mg Q4W, with weekly dosing adding nothing. No tolerability margin was stated in either source, so margin_stated false and nothing is counted against the toxic end."
+    "judgement": "Scored same under 'reached, drug worked': the JNJ-3989 mouse PK paper supports monthly dosing (sustained liver exposure beyond 42 days) and patients plateaued from 100 mg Q4W, with weekly dosing adding nothing. No tolerability margin was stated in either source, so margin_stated false and nothing is counted against the toxic end.",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -441,7 +442,8 @@
     "judgement": "The 3 mg/kg mouse dose is numerically close to the 200 mg human dose (about 2.9 mg/kg), but no source states a target, so a drafter-made mapping is not scored (checker rule question, dose 2).",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

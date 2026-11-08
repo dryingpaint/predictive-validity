@@ -52,7 +52,8 @@
     "magnitude_basis": null,
     "source_calls_it": null,
     "population": "Unselected",
-    "model_first_use_year": 2013
+    "model_first_use_year": 2013,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -89,7 +90,8 @@
     "quote": "Topical treatment with tanfanercept decreases inflammatory cytokines in tears.",
     "confidence": "medium",
     "judgement": "Downstream readout (tear cytokines, not free TNF-alpha or a direct occupancy measure). Nobody has reported tear or conjunctival cytokines, or ocular-surface TNF-alpha, in tanfanercept-dosed people (the checker found none in Dong 2022, VELOS or Shettle 2022 either), so the comparison is untested. No dose or safety entries: the paper states no exposure target and makes no tolerability claim for the drops.",
-    "reason": "No human tear-cytokine readout"
+    "reason": "No human tear-cytokine readout",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

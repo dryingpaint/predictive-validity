@@ -462,7 +462,8 @@
     "quote": "Binding was reversible, non-competitive and highly selective against a panel of more than 340 other enzymes and receptors, including DP1 (>1000-fold selective).",
     "reason": "No published animal-patient safety comparison",
     "judgement": "No member was filed with FDA or EMA (manifest: no NDA/BLA), so no review names the toxicology package. Patient safety was placebo-like for fevipiprant (LUSTER serious AEs 9% in every arm), but GB001 60 mg carried a risk of liver injury (Moss 2022). With no public GB001 preclinical toxicology I cannot say whether the model was silent or stated a margin, so the hepatic signal is left unscored rather than called contra.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "unpublished"
    }
   ]
  }

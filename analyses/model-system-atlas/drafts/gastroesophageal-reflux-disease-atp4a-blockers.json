@@ -420,7 +420,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -556,7 +557,8 @@
     "source_calls_it": null,
     "population": "Unselected",
     "model_first_use_year": 2025,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "unpublished"
    }
   ]
  }

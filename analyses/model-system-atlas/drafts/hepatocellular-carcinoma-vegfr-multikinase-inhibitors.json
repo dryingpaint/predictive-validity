@@ -51,7 +51,8 @@
     "confidence": "high",
     "judgement": "The only HCC model in the regorafenib NDA (report A58231) has no PD readout at all; the review reports survival and body weight only. Untested, not blank: a model existed.",
     "model_first_use_year": 2012,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "prediction_level": "class",
@@ -88,7 +89,8 @@
     "reason": "Model PD readouts never measured in patients",
     "judgement": "Matsuki 2018 reports MVD and tumour pFRS2/pErk as the PD readouts; REFLECT biomarker work measured serum proteins (VEGF, FGF19/23, ANG2), a different quantity, and no HCC biopsy MVD series exists. Untested rather than a downstream same.",
     "model_first_use_year": 2015,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

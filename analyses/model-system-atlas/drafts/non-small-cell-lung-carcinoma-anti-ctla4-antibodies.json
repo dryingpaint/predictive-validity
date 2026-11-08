@@ -50,7 +50,8 @@
     "src": "https://doi.org/10.1126/science.271.5256.1734",
     "srcLabel": "Leach 1996",
     "quote": "Furthermore, this rejection resulted in immunity to a secondary exposure to tumor cells.",
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "model_id": "syngeneic-mouse-dual-blockade",
@@ -86,7 +87,8 @@
     "srcLabel": "Curran 2010",
     "quote": "Combination PD-1 and CTLA-4 blockade increases effector T-cell (Teff) infiltration, resulting in highly advantageous Teff-to-regulatory T-cell ratios with the tumor.",
     "readout_tier": null,
-    "reason": "No NSCLC PD readout compared"
+    "reason": "No NSCLC PD readout compared",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

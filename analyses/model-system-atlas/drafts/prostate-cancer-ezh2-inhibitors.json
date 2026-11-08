@@ -236,7 +236,8 @@
     "model_first_use_year": 2012,
     "derived_from": "efficacy",
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -313,7 +314,8 @@
     "model_first_use_year": 2017,
     "endpoint_role": null,
     "outcome_tested": null,
-    "patient_trials": []
+    "patient_trials": [],
+    "untested_reason": "unsettled"
    },
    {
     "year": 2025,
@@ -408,7 +410,8 @@
       "doi": null,
       "quote": "Efficacy: Composite Response Rate (%) for Phase 2 Randomized and Phase 2 Single-arm Treatment Groups"
      }
-    ]
+    ],
+    "untested_reason": "unsettled"
    },
    {
     "retrodiction": false,
@@ -447,7 +450,8 @@
     "magnitude": null,
     "magnitude_basis": null,
     "source_calls_it": null,
-    "population": "Castration-resistant, neuroendocrine (CRPC-NE)"
+    "population": "Castration-resistant, neuroendocrine (CRPC-NE)",
+    "untested_reason": "unsettled"
    }
   ],
   "safety": [

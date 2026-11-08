@@ -104,6 +104,12 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
 4. Verify every DOI resolves to the paper you mean (PubMed tools or WebFetch). Never invent a citation.
    Paywalled abstract only: say so in `confidence_note`.
 5. Finding nothing is a finding. If nobody compared, write `untested` and say in `note` what model was used.
+   A track's latest `untested` entry also carries `untested_reason`, the one that fits first:
+   `unpublished` (the model's data, usually toxicology, are not public); `no_prediction` (the model gave
+   nothing checkable in people: no human dose, exposure or tolerability margin, no named harm, or a readout
+   with no human counterpart); `not_measured` (the model made a prediction, but no trial measured its
+   readout); `unsettled` (patients were measured, but the result is unreported, inconclusive, or belongs to
+   a drug outside the class).
 6. **Dating.** The entry's `year` is the earliest date the comparison was public: registry results posting,
    online publication, label, or print. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
@@ -131,7 +137,8 @@ off_by_>5x | direction_only | null | opposite) · `magnitude_basis` (the quantit
 `model_first_use_year` · `confidence` (high | medium | low, enum) · `confidence_note` (free text) ·
 engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by`, `margin_stated` · `neg` only:
 `effect_size`, `class_threshold` · efficacy only: `endpoint_role`,
-`outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status).
+`outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status). ·
+`untested` only: `untested_reason` (rule 5).
 Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial;
 `modality_groups` (list) and `class_share` as given.
 

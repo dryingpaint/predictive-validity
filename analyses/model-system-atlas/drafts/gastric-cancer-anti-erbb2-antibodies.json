@@ -52,7 +52,8 @@
     "source_calls_it": null,
     "population": "HER2-positive gastric cancer",
     "model_first_use_year": 2011,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2011,
@@ -89,7 +90,8 @@
     "source_calls_it": null,
     "population": "HER2-positive tumours; CD16A-158F carriers",
     "model_first_use_year": 2011,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "year": 2017,
@@ -126,7 +128,8 @@
     "source_calls_it": null,
     "population": "HER2-positive cancer cell lines and xenografts",
     "model_first_use_year": 2017,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [

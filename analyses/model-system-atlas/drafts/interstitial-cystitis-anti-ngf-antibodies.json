@@ -51,7 +51,8 @@
     "population": "Unselected",
     "model_first_use_year": 1997,
     "readout_tier": null,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -91,7 +92,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

@@ -312,7 +312,8 @@
     "prediction_level": "class",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": true
+    "margin_stated": true,
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2011,
@@ -351,7 +352,8 @@
     "prediction_level": "class",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

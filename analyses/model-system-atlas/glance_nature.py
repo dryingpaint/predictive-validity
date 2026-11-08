@@ -10,8 +10,9 @@ verdict by question) is over every tile on both.
 
 Same data and headline rule as glance.py (imported from it). No in-figure title: the caption in
 atlas_glance_caption.md carries it. Panel a: the verdict by question. Panel b: one row per tile, one cell per
-question; the mark is the status, the bold year is when it was earned, then the model; a failure or a
-retrodiction carries its reason. Text is 5–7 pt Helvetica, lines 0.25–0.5 pt, fonts embedded editable.
+question; the mark is the status, the bold year is when it was earned, then the model; a failure, a
+retrodiction or a never-compared cell carries its reason. Text is 5–7 pt Helvetica, lines 0.25–0.5 pt, fonts
+embedded editable.
 Writes atlas_glance.png (300 dpi), .svg and .pdf beside this file. Read-only.
 """
 import json
@@ -37,6 +38,9 @@ INK, MUTED, RULE, RULE_AREA = "#1a1a1a", "#6b7372", "#dcdfdf", "#9aa1a1"
 STATUS = {"same": ("#3DBB7A", "Matched"), "neg": ("#2A7BD0", "Matched, incl. a known failure"),
           "other": ("#CF9A12", "Matched on the platform only"), "contra": ("#C9362B", "Contradicted"),
           "retro": ("#E07FC0", "Retrodiction only"), "untested": ("#e2e5e5", "Never compared")}
+# why a never-compared cell was never compared (drafts/DRAFTER_BRIEF.md rule 5), on the cell's second line
+UNTESTED_REASON = {"no_prediction": "Model gave nothing to check in people", "not_measured": "Trials never measured its readout",
+                   "unpublished": "Model data unpublished", "unsettled": "Patient result unreported or inconclusive"}
 HATCH = {"neg": "\\\\\\\\", "other": "...."}  # the matched statuses the page draws hatched; a derived dose contra is hatched "////"
 
 
@@ -250,7 +254,10 @@ def draw_rows(ax, df: pd.DataFrame, tiles: pd.DataFrame, top: float, T: dict) ->
                 L = (0.065, 0.135, 0.205)
                 model = MODEL_SHORT.get(c.model or "", c.model or "")
                 ax.text(text_x(i), y0 + L[0], year, fontsize=5.5, fontweight="bold", **T)
-                reason = [] if c.status in ("same", "untested") else wrap(c.short or "", 5, text_w, 2)
+                if c.status == "untested":
+                    reason = wrap(UNTESTED_REASON.get(c.untested_reason, ""), 5, text_w, 1) if isinstance(c.untested_reason, str) else []
+                else:
+                    reason = [] if c.status == "same" else wrap(c.short or "", 5, text_w, 2)
                 extra = int(c.status == "same" and (c.outcome_tested == "negative" or isinstance(c.dissent, str)))
                 lines = wrap(model, 5, text_w, 3 - len(reason) - extra, first_w=text_w - yw)
                 ax.text(text_x(i) + yw, y0 + L[0], lines[0], fontsize=5, color=MUTED, va="center")

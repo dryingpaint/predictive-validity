@@ -51,7 +51,8 @@
     "confidence": "high",
     "judgement": "Study M03012 is listed by title only; Yamamoto 2014 (10.1186/2045-824x-6-18) gives the readouts (CD31 MVD, tumour pVEGFR2 in KP-1/VEGF). No NSCLC trial of a member drug reported a tumour MVD or receptor-phosphorylation series, so untested rather than a downstream same.",
     "model_first_use_year": 2003,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "prediction_level": "patient",
@@ -87,7 +88,8 @@
     "confidence": "high",
     "judgement": "Abstract-level reading. Patient-level model (RET fusion selects responders). The Hida 2019 phase 2 took no on-treatment biopsies, so the direct readout has no human counterpart.",
     "model_first_use_year": 2013,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "prediction_level": "class",
@@ -124,7 +126,8 @@
     "judgement": "Full text read (PMC6392299): models are CT26 colon, BNL hepatoma and B16-F10 melanoma; no lung model, hence cross_indication. LEAP-006/007/008 abstracts report no immune PD; a checker with full texts could revisit.",
     "model_first_use_year": 2019,
     "readout_tier": null,
-    "reason": "No model PD readout measured in NSCLC patients"
+    "reason": "No model PD readout measured in NSCLC patients",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -161,7 +164,8 @@
     "quote": "Compared with radioimmunotherapy, the addition of famitinib further promoted the infiltration of CD8+ T cells and M1 type tumor associated macrophages, and reduced the number of myeloid suppressor cells.",
     "judgement": "One track for both LLC runs: same cell line (LLC), host (C57BL/6), RT schedule (3 x 8 Gy), checkpoint antibody dose (10 mg/kg) and prediction (a VEGFR TKI potentiates radio-immunotherapy); only the member drug differs. A lung-specific immunocompetent system, so distinct from the draft's cross-indication CT26/BNL isografts (syngeneic-ct26-bnl-mouse-lenvatinib-anti-pd1) and from the immunodeficient human xenograft track. Opening entry at first use; the model's PD readouts are tumour immune-cell counts that no NSCLC trial of a member drug has measured on treatment.",
     "reason": "Mouse immune readouts not measured in patients",
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -202,7 +206,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Model never stated an exposure target"
+    "reason": "Model never stated an exposure target",
+    "untested_reason": "no_prediction"
    },
    {
     "prediction_level": "patient",
@@ -241,7 +246,8 @@
     "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "No exposure target stated by the model"
+    "reason": "No exposure target stated by the model",
+    "untested_reason": "no_prediction"
    },
    {
     "prediction_level": "class",
@@ -318,7 +324,8 @@
     "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
-    "reason": "Full combination dose reached; trials failed"
+    "reason": "Full combination dose reached; trials failed",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -357,7 +364,8 @@
     "reason": "No human exposure target stated",
     "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

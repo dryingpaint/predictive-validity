@@ -121,7 +121,8 @@
     "model_first_use_year": 2019,
     "reason": "No model exposure target stated",
     "judgement": "FLIGHT-FXR chose 10-90 ug 'based on preclinical results, safety and pharmacological activity' and escalated to 140-200 ug on a human exposure-response analysis (AUC > 40 ng*h/mL), not on a model target. Cilofexor: rat efficacy at 10-30 mg/kg (Schwabl 2021) but ATLAS used 30 mg, the dose that barely moved liver fat in Patel 2020 (-1.8% vs +1.9%); no exposure multiple published. EDP-305 (30 mg/kg rodents vs 1-2.5 mg) and vonafexor likewise unmapped. No stated tolerability margin, so decision 16 does not apply.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
