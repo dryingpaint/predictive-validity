@@ -199,6 +199,28 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Janssen 2018 (PMID 29104121) quote verbatim; Gane 2015 no-HBsAg-change known before Niu, so retrodiction true and contra (failed to reproduce) follows the rule. Caveat: patients had no serum IFN-alpha, the condition driving the in vitro effect."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 6 (cell opens at model_first_use_year with untested)",
+   "note": "Herschke 2021 (PMID 34718044, DOI resolves to ScienceDirect S0166354221001868, epub 2021-10-28) full text Section 3.2: quote verbatim. Opening untested entry; paper itself says translation to CHB is uncertain, no human comparison.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "retrodiction rule: model published after human result known is retro, never same",
+   "note": "JNJ-4964 FIH (PMID 35485332) quote verbatim in abstract; Europe PMC dates issue 2021-05, epub 2021-10-27. TQ-A3334 HV PD (PMID 33405993, epub 2021-01-13) and FIH preceded mouse paper; retro stands. Healthy volunteers count; direction_only fine.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -206,7 +228,9 @@
   "AAV/HBV mouse track (JNJ-4964/TQ-A3334) has no engagement entry: JNJ-4964 first-in-human (doi:10.1177/13596535211056581, 2021) and TQ-A3334 HV study (doi:10.1080/13543784.2021.1873275, epub 2021-01-13) show dose-dependent ISG15/MX1/OAS1 induction; both precede the mouse paper (Oct 2021), so likely retro.",
   "AAV/HBV mouse safety: mouse showed normal ALT and no hepatocyte death; JNJ-4964 HV showed IFN-α-linked flu-like AEs, lymphopenia and one case of retinal cotton-wool spots (doi:10.1177/13596535211056581); a safety track for this model is absent.",
   "Viremic phase 2 NCT02579382 (vesatolimod + TDF, results posted 2020-05-18; Agarwal 2018) is mentioned only in a confidence_note; belongs in efficacy patient_trials.",
-  "RG7795 (ANA773): no preclinical-vs-patient comparison found in Europe PMC search; not verified further."
+  "RG7795 (ANA773): no preclinical-vs-patient comparison found in Europe PMC search; not verified further.",
+  "AAV/HBV mouse track, later patient-side engagement: OCEANcure05 (NCT04202653; doi:10.3350/cmh.2026.0476, PMID 42811768, 2026) measured HBV-specific CD8+ T-cell responses in NA-suppressed CHB on TQ-A3334, the mouse's HBsAg-specific T-cell readout; abstract reports the gain only with added anti-PD-L1, so full text needed for the TQ-A3334-alone arm.",
+  "JNJ-4964 single-dose immune transcriptomics in healthy adults (PMID 37199270, 2023) and population PK/PD of cytokine induction (PMID 36691849, 2023): further patient-side engagement sources for the AAV/HBV mouse track's CXCL10/IFN-alpha readout."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

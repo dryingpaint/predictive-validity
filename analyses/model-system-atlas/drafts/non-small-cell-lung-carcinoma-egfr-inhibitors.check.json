@@ -138,7 +138,9 @@
    "proposed_year": 2023,
    "rule": "Evidence rule 6 (dating: earliest public date); rule 2 (tier 5 finds the failure)",
    "note": "Status contra stands (quote verbatim, PMID 39879577). Takeda press release 2023-10-02 announced EXCLAIM-2 missed primary PFS and withdrawal (Healio, OncLive, BioCentury); earliest public date sets year 2023. Active-comparator rule question still open.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Both say contra: primary PFS endpoint failed (efficacy rule, table 'as the trial showed'). Rule 6 dates it to the earliest public date: Takeda release 2 Oct 2023 (takeda.com, verified), so year 2023, not 2025."
   },
   {
    "cell": "efficacy",
@@ -179,6 +181,28 @@
    "status_supported": true,
    "note": "AUC 0.94 sentence verbatim; organoids derived before next-line osimertinib and treatment chose by guidelines, so not retro. Low confidence warranted: Methods enrolled only patients whose 'concurrent or subsequent' response evaluations were 'consistent with the LCO-based drug test results'.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Dating (6): cell opens at model_first_use_year, proxy allowed",
+   "note": "Le 2026 (PMID 42887497) abstract quote verbatim. Model public before readout: Nilsson AACR Apr 2024 poster (PACC cells + xenografts) and Musib 2022 cited in WCLC 2024 abstract; 2022 proxy supported, model_src could cite the 2024 poster.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "Retrodiction: model public (AACR Apr 2024) before first PACC clinical data (WCLC 9 Sep 2024), so same not retro",
+   "note": "Abstract ORR 43%/68% verbatim; ORR is FURTHER Stage 2 primary endpoint (BICR). Not a retrodiction: preclinical PACC data shown Apr 2024, clinical first shown Sep 2024. Comparison was public at WCLC 2024 (cORR 34.8%/63.6%); year 2024 arguable.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -198,6 +222,7 @@
   "EXCLAIM-2 / SOLAR failed against an active comparator while the drug's activity (ORR ~30%) matched the model's prediction of regression. Is failing to beat an active comparator, which no model tested, contra or untested ('conditions the model never tested')?",
   "Rociletinib: regulatory rejection because unconfirmed responses overstated ORR, with no failed pre-specified primary endpoint. Is that an efficacy contra, a partial same, or unscored?",
   "Brain-metastasis pairing: a parenchymal brain-metastasis mouse model paired with a leptomeningeal-only trial at twice the label dose (BLOOM). Is LM disease 'a condition the model never tested' (untested) or the same CNS-activity question (same)?",
-  "Organoid studies whose enrolment keeps only patients with response evaluations 'consistent with' the organoid test: is a selection-filtered cohort admissible as same, or should it score at most low-confidence same / untested?"
+  "Organoid studies whose enrolment keeps only patients with response evaluations 'consistent with' the organoid test: is a selection-filtered cohort admissible as same, or should it score at most low-confidence same / untested?",
+  "efficacy 13 (FURTHER): does a conference presentation (WCLC 2024 abstract/press release, 9 Sep 2024, citing the preclinical PACC data) date a comparison under rule 6, making year 2024 rather than the 2026 Cancer Cell paper?"
  ]
 }

@@ -10,7 +10,11 @@
   "Europe PMC: (netarsudil OR AR-13324) AND (ex vivo OR enucleated OR perfusion), sorted by citations",
   "ClinicalTrials.gov: netarsudil aqueous humor dynamics (NCT02406287, NCT03233308 records and results dates)",
   "Europe PMC full text PMC13194400 (ARHGEF12 genotype and netarsudil response)",
-  "Checker 'missing' leads: ATS907 ARVO 2011 monkey abstract, DE-104 Phase 2 registry records (from check.json; not re-searched)"
+  "Checker 'missing' leads: ATS907 ARVO 2011 monkey abstract, DE-104 Phase 2 registry records (from check.json; not re-searched)",
+  "Europe PMC: \"AR-12286\" OR verosudil; AR-12286 AND (monkey OR rabbit OR animal); sovesudil OR AMA0076 OR PHP-201; RKI983 OR RKI-983",
+  "ClinicalTrials.gov API (intervention): AR-12286, AMA0076, PHP-201/sovesudil, RKI983, ATS907, DE-104",
+  "Williams 2011 AJO full text (entokey): AR-12286 model data cited only as ARVO 2009 e-abstracts",
+  "Firecrawl search: AR-12286 preclinical monkey/rabbit IOP; Amakem AMA0076 phase II results (PR Newswire 2013-11-14 read)"
  ],
  "added_models": [
   {
@@ -320,6 +324,160 @@
      }
     ]
    }
+  },
+  {
+   "model_id": "nzw-rabbit-iop-sovesudil",
+   "model": "New Zealand white rabbit, normotensive and acute hypertensive IOP plus hyperemia scoring, topical AMA0076 (sovesudil)",
+   "model_kind": "animal",
+   "model_first_use_year": 2012,
+   "prediction_level": "class",
+   "cells": {
+    "efficacy": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2014,
+      "print_year": 2014,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "model_first_use_year": 2012,
+      "confidence": "high",
+      "confidence_note": "Abstract-level (Europe PMC). Opening year is a proxy: the rabbit work preceded the first-in-human study NCT01693315 (start 2012-09); paper online 2014-02-18.",
+      "year": 2012,
+      "status": "untested",
+      "untested_reason": "unsettled",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [],
+      "note": "AMA0076 (sovesudil) lowered IOP in normotensive and acutely hypertensive New Zealand white rabbits, as well as Y-39983 did.",
+      "short": "Rabbit IOP lowered",
+      "src": "https://doi.org/10.1167/iovs.13-13157",
+      "srcLabel": "Van de Velde 2014",
+      "quote": "Administration of AMA0076 effectively reduces IOP in ocular normotensive and acute hypertensive rabbits without causing distinct hyperemia.",
+      "judgement": "Sovesudil's own model, distinct from the netarsudil monkey/rabbit track. Opens at the first-in-human start year as proxy for first use."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 5,
+      "model_src": "https://doi.org/10.1167/iovs.13-13157",
+      "model_src_tier": 1,
+      "trial_unreported": true,
+      "patient_signal_reversed": false,
+      "epub_year": 2013,
+      "print_year": null,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "direction of IOP change from baseline",
+      "source_calls_it": "match",
+      "population": "Ocular hypertension or open-angle glaucoma",
+      "model_first_use_year": 2012,
+      "confidence": "medium",
+      "confidence_note": "Tier 5 sponsor release (2013-11-14); NCT01693315 has no posted results and no paper. Ha 2021 (tier 1, normal-tension glaucoma) repeated the IOP fall; listed in patient_trials, changes no status. NCT02136940 (Phase 2, POAG) has no posted results.",
+      "year": 2014,
+      "status": "same",
+      "reason": "IOP fell in patients as predicted",
+      "endpoint_role": "primary",
+      "outcome_tested": null,
+      "patient_trials": [
+       {
+        "nct": "NCT03106532",
+        "registry_date": null,
+        "doi": "10.1111/aos.14949",
+        "quote": "0.5% sovesudil TID met the criteria for superiority to the placebo."
+       }
+      ],
+      "note": "In the first-in-human trial the best AMA0076 dose cut mean diurnal IOP 3.7 mmHg from baseline (p=0.020 vs placebo), as the rabbits predicted.",
+      "short": "Patient IOP down 3.7 mmHg",
+      "src": "https://www.prnewswire.com/news-releases/amakem-presents-positive-top-line-clinical-results-for-ama0076-for-glaucoma-at-ophthalmology-innovation-summit-231913301.html",
+      "srcLabel": "Amakem 2013",
+      "quote": "The results seen so far with AMA0076 suggest that the promise seen in pre-clinical development has been carried into the clinic successfully.",
+      "judgement": "Stated by an investigator in the sponsor release. Year 2014: the release (2013-11) predates the rabbit paper (2014-02), so the comparison was public only once both sides were. Rabbit work preceded the trial, so not retro."
+     }
+    ],
+    "safety": [
+     {
+      "subjects": null,
+      "comparison_stated": false,
+      "source_tier": 1,
+      "model_src": null,
+      "model_src_tier": null,
+      "trial_unreported": false,
+      "patient_signal_reversed": false,
+      "epub_year": 2014,
+      "print_year": 2014,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": null,
+      "magnitude_basis": null,
+      "source_calls_it": null,
+      "population": "Unselected",
+      "model_first_use_year": 2012,
+      "confidence": "high",
+      "confidence_note": "Abstract-level (Europe PMC). Opening year is a proxy: the rabbit work preceded the first-in-human study NCT01693315 (start 2012-09); paper online 2014-02-18.",
+      "year": 2012,
+      "status": "untested",
+      "untested_reason": "unsettled",
+      "note": "Single topical AMA0076 gave significantly less conjunctival hyperemia than Y-39983 in rabbits, the design goal of a locally acting ROCK inhibitor.",
+      "short": "Rabbit: minimal hyperemia",
+      "src": "https://doi.org/10.1167/iovs.13-13157",
+      "srcLabel": "Van de Velde 2014",
+      "quote": "The degree of hyperemia was significantly lower in rabbits treated with AMA0076 then with Y-39983.",
+      "judgement": "Named harm with a stated prediction (little hyperemia) checkable in patients."
+     },
+     {
+      "subjects": "patients",
+      "comparison_stated": true,
+      "source_tier": 5,
+      "model_src": "https://doi.org/10.1167/iovs.13-13157",
+      "model_src_tier": 1,
+      "trial_unreported": true,
+      "patient_signal_reversed": false,
+      "epub_year": 2013,
+      "print_year": null,
+      "registry_date": null,
+      "model_filed": false,
+      "product_in_model": true,
+      "retrodiction": false,
+      "imported_from": null,
+      "magnitude": "direction_only",
+      "magnitude_basis": "presence of conjunctival hyperemia",
+      "source_calls_it": "match",
+      "population": "Ocular hypertension or open-angle glaucoma",
+      "model_first_use_year": 2012,
+      "confidence": "medium",
+      "confidence_note": "Tier 5 sponsor release; no posted results for NCT01693315. Ha 2021 (doi 10.1111/aos.14949, NTG, TID dosing) later reported hyperaemia in 24.4% (0.5%) and 17.5% (0.25%), mostly mild, which the authors call 'relatively low'; changes no status.",
+      "year": 2014,
+      "status": "same",
+      "reason": "Little hyperemia in patients, as predicted",
+      "note": "No hyperemia-related adverse events at the most effective dose in the first-in-human trial; rabbits had predicted minimal hyperemia.",
+      "short": "No hyperemia in patients",
+      "src": "https://www.prnewswire.com/news-releases/amakem-presents-positive-top-line-clinical-results-for-ama0076-for-glaucoma-at-ophthalmology-innovation-summit-231913301.html",
+      "srcLabel": "Amakem 2013",
+      "quote": "To see such low levels of hyperemia accompanying meaningful reductions in IOP is a breakthrough in the development of ROCK inhibitors.",
+      "judgement": "Same release; the investigator ties the clinical hyperemia result to the preclinical promise. Year 2014 as for efficacy."
+     }
+    ]
+   }
   }
  ],
  "considered_not_added": [
@@ -331,6 +489,46 @@
   "Corticosteroid-induced ocular hypertensive mouse treated with netarsudil (Li 2019 PNAS, Li 2021 eLife): no member-drug trial in steroid-induced glaucoma to compare with; outside the unselected OAG population.",
   "Corneal verticillata: no predictive model beyond the monkey ocular toxicology the draft already tracks in safety.",
   "In-silico / QSP dose models, patient-derived cells, human challenge models: none found for netarsudil, ATS907 or DE-104.",
-  "Ripasudil (Japan) models and trials: ripasudil is not a member drug of this tile."
+  "Ripasudil (Japan) models and trials: ripasudil is not a member drug of this tile.",
+  "Verosudil (AR-12286) monkey outflow/IOP (Wang RF, ARVO 2009 e-abstract 1465): conference abstract with no DOI/PMID, so no admissible model side.",
+  "Verosudil (AR-12286) steroid-induced OHT mouse (Ren 2023, doi 10.1167/iovs.64.2.7): run after patient IOP results (2011) and in steroid-induced OHT, with no AR-12286 trial in that population.",
+  "RKI983 (Novartis): no publication; NCT00846989 and NCT00515424 have no posted results; no model data found."
+ ],
+ "gaps": [
+  {
+   "lead": "ATS907 ARVO 2011 monkey abstract (checker missing 1)",
+   "outcome": "none",
+   "detail": "Model side is an ARVO abstract with no DOI/PMID (rule 2 tier 1); Phase 2 NCT01668524 (completed) and NCT01520116 (unknown) have no posted results, failure known only from a review."
+  },
+  {
+   "lead": "DE-104 Phase 2 trials (checker missing 2)",
+   "outcome": "none",
+   "detail": "No public DE-104 model data; NCT00650338/NCT00657579/NCT00656240/NCT00868894 have no posted results; discontinuation only in a review (not a source, rule 2)."
+  },
+  {
+   "lead": "Ripasudil (checker missing 3)",
+   "outcome": "none",
+   "detail": "Not a member drug of this tile (members: ATS907, DE-104, RKI983, netarsudil, sovesudil, verosudil)."
+  },
+  {
+   "lead": "AR-12286 (checker missing 4)",
+   "outcome": "none",
+   "detail": "AR-12286 is verosudil; its monkey data are only ARVO 2009 e-abstracts (no DOI/PMID, rule 2); Williams 2011 patient trial has no tier 1-3 model to pair with; Ren 2023 SIOH mouse is retro and off-population."
+  },
+  {
+   "lead": "RKI983",
+   "outcome": "none",
+   "detail": "Europe PMC: no papers; ClinicalTrials.gov NCT00846989, NCT00515424 completed with no results; no model data found."
+  },
+  {
+   "lead": "sovesudil",
+   "outcome": "added",
+   "detail": "nzw-rabbit-iop-sovesudil: efficacy and safety (hyperemia) untested 2012 -> same 2014 (Van de Velde 2014 rabbit vs Amakem 2013 FIH release; Ha 2021 NTG Phase II as patient_trial)."
+  },
+  {
+   "lead": "verosudil",
+   "outcome": "none",
+   "detail": "Same as AR-12286: no peer-reviewed or regulator model data before its patient trials (Williams 2011, Kopczynski 2013, Skaat 2016); only ARVO abstracts and a 2023 retro steroid mouse."
+  }
  ]
 }

@@ -234,6 +234,43 @@
    "status_supported": true,
    "note": "Castellani 2026 abstract quote verbatim; primary ppFEV1 +9.2 in FRT-selected variants. Prospective, so same, patient level, 2024. With efficacy 9 and 10 retro, this is the FRT track's first prospective same (decision 10).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "untested means a model existed and nobody compared it",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Pranke 2017 Sci Rep (nature.com full text, published 2017-08-07) abstract quote verbatim. Lumacaftor/tezacaftor rescue in HNE with no prospective patient comparison; untested 2017 opening for the cf-hne-isc track holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "A model built or run after the clinic already knew the answer is a retrodiction: retro, never same",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim. Nasal cells sampled pre-treatment, but correlation (R2=0.95, n=8) was drawn after 6-month FEV1 was known and after Orkambi's FEV1 benefit was public (2014-15); no stated pre-outcome prediction. retrodiction: true, as Dekkers 2016 (efficacy 5).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Retrodiction rule (run after the answer was known): Pranke methods say nasal cells were 'always sampled before starting' Orkambi; cultures read weeks later, before 6-month FEV1. Patient-level answer unknown then; same, low confidence, n=7 members."
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "stated same-drug comparison, primary endpoint met, model run before the trial",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Davies 2018 NEJM (PMID 30334693, epub 2018-10-18) conclusion quote verbatim in abstract; ppFEV1 is a primary endpoint (P<0.001). Bamocaftor HBE selection preceded NCT03224351/NCT03029455, so prospective. Inconsistent with efficacy 2's note excluding Keating 2018 as a repeat."
   }
  ],
  "missing": [
@@ -241,7 +278,8 @@
   "Lumacaftor liver: Orkambi 2015 label 5.2/6.1, 'Three patients who received ORKAMBI had liver-related serious adverse reactions ... compared to none in the placebo group', rats and dogs silent on liver (PharmR l.435). Weak because transaminase rates were similar to placebo; the draft should at least note it in safety 1.",
   "Galicaftor HBE model side exists (Wang 2018 J Med Chem, doi 10.1021/acs.jmedchem.7b01339) for the NCT04853368 FEV1 miss (cohort 2 vs placebo 0.9, p=0.402, verified on CT.gov). The draft says no model prediction was found; the judgement should cite this paper and say why it is not scored (combination with non-member correctors).",
   "PELICAN (NCT03474042, GLPG2737 on Orkambi, sweat chloride primary met, no posted results) is a same-drug match on the same HBE model; it belongs in the engagement judgement (it is mentioned) but could be its own dated tier-5 entry before the 2019 contra.",
-  "Patient nasal epithelial cell cultures (HNE): Pranke 2017 Sci Rep, doi 10.1038/s41598-017-07504-1 (PMID 28785019), 'Correction of CFTR function in nasal epithelial cells ... predicts improvement of respiratory function by CFTR modulators' (lumacaftor/ivacaftor); later Thorax 2026 doi 10.1136/thorax-2025-223153 on sequential modulators. No parallel track in the draft."
+  "Patient nasal epithelial cell cultures (HNE): Pranke 2017 Sci Rep, doi 10.1038/s41598-017-07504-1 (PMID 28785019), 'Correction of CFTR function in nasal epithelial cells ... predicts improvement of respiratory function by CFTR modulators' (lumacaftor/ivacaftor); later Thorax 2026 doi 10.1136/thorax-2025-223153 on sequential modulators. No parallel track in the draft.",
+  "Keating 2018 NEJM (doi 10.1056/NEJMoa1807120, elexacaftor VX-445 HBE + Phase 2, NCT03227471) states the same HBE-to-FEV1 translation as Davies 2018; if efficacy 14 (bamocaftor) is kept as its own f508del-hbe-ussing entry, elexacaftor's stated comparison should be one too, or efficacy 2's note excluding it should cover both."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [

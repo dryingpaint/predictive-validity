@@ -23,7 +23,9 @@
    "proposed_status": "same",
    "proposed_year": 2013,
    "rule": "6",
-   "note": "Abstract verbatim (PMID 25786369); match holds. Martin 2014 NDT (doi 10.1093/ndt/gft417, epub 2013-11-13, healthy males: dose-dependent iPTH decrease at 30 min) made the comparison public in 2013; healthy volunteers count. Date 2013 (print 2014)."
+   "note": "Abstract verbatim (PMID 25786369); match holds. Martin 2014 NDT (doi 10.1093/ndt/gft417, epub 2013-11-13, healthy males: dose-dependent iPTH decrease at 30 min) made the comparison public in 2013; healthy volunteers count. Date 2013 (print 2014).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: status same agreed; date 2013, when Martin 2014 NDT (epub 2013-11) showed dose-dependent iPTH fall in healthy volunteers, who count for engagement, so the comparison was first public then."
   },
   {
    "cell": "dose",
@@ -44,7 +46,9 @@
    "proposed_status": "same",
    "proposed_year": 2016,
    "rule": "16; 6",
-   "note": "Verbatim, but it is the fertility NOAEL sentence. PharmR Table 69: 6-month rat margin 0.7x, dog 0.15x; EPAR EMA/664198/2016 says 'no safety margins'. Set margin_stated false; same stands (target reached, drug worked); date 2016 on EPAR."
+   "note": "Verbatim, but it is the fertility NOAEL sentence. PharmR Table 69: 6-month rat margin 0.7x, dog 0.15x; EPAR EMA/664198/2016 says 'no safety margins'. Set margin_stated false; same stands (target reached, drug worked); date 2016 on EPAR.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: Decision 16 with the 6-month rat NOAEL below patient exposure (FDA 0.7x; EMA 'no safety margins') and no stated exposure target: margin_stated false leaves only a regimen, so same or untested? Date 2016 (EPAR)."
   },
   {
    "cell": "dose",
@@ -83,7 +87,9 @@
    "proposed_status": "same",
    "proposed_year": 2015,
    "rule": "6",
-   "note": "Abstract verbatim; registry dates 2017-03-27, 2017-03-27, 2017-02-08 confirmed. Same holds. Bell 2015 phase 2 primary endpoint (mean % PTH change, p<0.05 both cohorts) was public May 2015 and the EPAR carried phase 3 in 2016; date 2015."
+   "note": "Abstract verbatim; registry dates 2017-03-27, 2017-03-27, 2017-02-08 confirmed. Same holds. Bell 2015 phase 2 primary endpoint (mean % PTH change, p<0.05 both cohorts) was public May 2015 and the EPAR carried phase 3 in 2016; date 2015.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: same agreed; Bell 2015's phase 2 primary endpoint (mean % PTH change, met in both cohorts, patients) was the first public patient comparison, so the entry dates 2015, not the 2017 phase 3."
   },
   {
    "cell": "safety",
@@ -104,7 +110,9 @@
    "proposed_status": "same",
    "proposed_year": 2016,
    "rule": "6",
-   "note": "Quote verbatim (PharmR dog telemetry). Label 64%/10%, 7%/0.2%, QTcF>60 ms 1.2%/0% and SumR rodent GI-mucosa sentence confirmed. EPAR (adopted 2016-09-15): 'QTc changes have also been observed in patients'; date 2016. CHF unscored: rule question."
+   "note": "Quote verbatim (PharmR dog telemetry). Label 64%/10%, 7%/0.2%, QTcF>60 ms 1.2%/0% and SumR rodent GI-mucosa sentence confirmed. EPAR (adopted 2016-09-15): 'QTc changes have also been observed in patients'; date 2016. CHF unscored: rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: is a labeled heart-failure Warning on a 2.2% vs 1.2% imbalance a harm dog telemetry's silence was contradicted on (contra), or too weak to score? Otherwise same; rule 6 dates it 2016 on the EPAR."
   },
   {
    "cell": "safety",

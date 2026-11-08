@@ -227,7 +227,9 @@
    "proposed_year": 2024,
    "rule": "Evidence rule 1: a trial paper that merely cites the model paper is a pairing (comparison_stated: false, model_src named)",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Quote verbatim (PMC11456753). Ma 2024 only cites the preclinical work (ref 23) without mouse numbers: set comparison_stated false, model_src Kang 2020 (tier 1). Infusions Dec 2015-Feb 2019 predate the mouse paper; post hoc, non-randomized: lower confidence."
+   "note": "Quote verbatim (PMC11456753). Ma 2024 only cites the preclinical work (ref 23) without mouse numbers: set comparison_stated false, model_src Kang 2020 (tier 1). Infusions Dec 2015-Feb 2019 predate the mouse paper; post hoc, non-randomized: lower confidence.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Evidence rule 1: Ma 2024 only cites the mouse work, so a pairing (comparison_stated false, model_src Kang 2020); status stays same. Not retro: no patient CRS comparison was public before Kang 2020 (rule 7)."
   }
  ],
  "missing": [

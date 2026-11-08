@@ -29,7 +29,7 @@
       "model_kind": "ex_vivo",
       "model_first_use_year": 2024,
       "population": "RPGR-associated X-linked RP (males)",
-      "product_in_model": true,
+      "product_in_model": false,
       "retrodiction": false,
       "imported_from": null,
       "magnitude": null,
@@ -69,7 +69,7 @@
       "model_kind": "ex_vivo",
       "model_first_use_year": 2024,
       "population": "RPGR-associated X-linked RP (males)",
-      "product_in_model": true,
+      "product_in_model": false,
       "retrodiction": false,
       "imported_from": null,
       "magnitude": null,
@@ -107,7 +107,7 @@
       "model_kind": "ex_vivo",
       "model_first_use_year": 2024,
       "population": "RPGR-associated X-linked RP (males)",
-      "product_in_model": true,
+      "product_in_model": false,
       "retrodiction": false,
       "imported_from": null,
       "magnitude": null,
@@ -182,7 +182,7 @@
   {
    "lead": "botaretigene sparoparvovec",
    "outcome": "added",
-   "detail": "rpgr-ko-ipsc-retinal-organoid-botavec (efficacy 2025 contra); no own mouse/dog/NHP basis published"
+   "detail": "rpgr-ko-ipsc-retinal-organoid-botavec (bota-vec hRKp.RPGR cassette in AAV7m8, product_in_model false): efficacy 2025 contra (LUMEOS); no own mouse/dog/NHP basis published"
   },
   {
    "lead": "cotoretigene toliparvovec",

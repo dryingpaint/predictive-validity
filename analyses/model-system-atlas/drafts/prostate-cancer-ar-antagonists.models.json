@@ -13,7 +13,8 @@
   "Europe PMC: Fizazi darolutamide ARAMIS seizure 2019",
   "Kintor web page en.kintor.com.cn/news/131.html (2020 interim report; no rPFS result in it)",
   "WebSearch: Kintor proxalutamide phase III mCRPC rPFS interim not significant",
-  "Europe PMC: (proxalutamide OR pruxelutamide OR GT0918) AND prostate (112 hits; Zhou 2020 EJC PMID 32460179; phase 2 mCRPC IJC 2023 PMID 36919366)"
+  "Europe PMC: (proxalutamide OR pruxelutamide OR GT0918) AND prostate (112 hits; Zhou 2020 EJC PMID 32460179; phase 2 mCRPC IJC 2023 PMID 36919366)",
+  "Europe PMC EXT_ID:36919366 (proxalutamide mCRPC phase 2, Int J Cancer 2023, doi:10.1002/ijc.34512; primary PSA50 35-43% at week 16, CTR20170177)"
  ],
  "added_models": [
   {
@@ -257,7 +258,7 @@
   },
   {
    "model_id": "gt0918-crpc-xenograft-mouse",
-   "model": "Castration-resistant xenografts (proxalutamide, GT0918)",
+   "model": "Castration-resistant xenografts (pruxelutamide/proxalutamide, GT0918)",
    "model_kind": "animal",
    "model_first_use_year": 2020,
    "prediction_level": "class",
@@ -331,8 +332,8 @@
   },
   {
    "lead": "pruxelutamide",
-   "outcome": "verdict",
-   "detail": "Tracked as proxalutamide/GT0918 in gt0918-crpc-xenograft-mouse efficacy; that cell needs a checker verdict on adding the mCRPC phase 2 read (IJC 2023, PMID 36919366, CTR20170177; primary PSA response 35-43%) after the untested 2020 entry."
+   "outcome": "tracked",
+   "detail": "Same drug as proxalutamide/GT0918: gt0918-crpc-xenograft-mouse, efficacy cell (untested 2020, Zhou 2020). Phase 2 mCRPC (IJC 2023, PSA50 35-43%) is a surrogate read and the 2L+ phase 3 missed interim rPFS in a population the xenograft never modelled, so the cell stays untested."
   }
  ]
 }

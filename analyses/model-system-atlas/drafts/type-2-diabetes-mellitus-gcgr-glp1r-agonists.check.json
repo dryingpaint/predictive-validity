@@ -299,7 +299,9 @@
    "proposed_status": "retro",
    "checked_by": "CHECKER_BRIEF / models",
    "rule": "DRAFTER_BRIEF: a model built or run after the clinic already knew the answer is a retrodiction; status retro, never same",
-   "note": "Tillner quote verbatim (abstract). But NCT02411825 completed 2016-01 (registry), before Elvert's earliest dated record (received 2017-05-09); monkey run date not stated. Sponsor knew the MAD result: retrodiction: true, retro."
+   "note": "Tillner quote verbatim (abstract). But NCT02411825 completed 2016-01 (registry), before Elvert's earliest dated record (received 2017-05-09); monkey run date not stated. Sponsor knew the MAD result: retrodiction: true, retro.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: Elvert gives no run date and no human result, and was public (accepted 2017-12) before Tillner (2018-09). Does the sponsor's internal MAD completion (2016-01) count as 'the clinic already knew', making it retro?"
   },
   {
    "cell": "efficacy",

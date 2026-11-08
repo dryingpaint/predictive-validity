@@ -44,7 +44,9 @@
    "proposed_status": "same",
    "proposed_year": 2024,
    "rule": "6 (dating)",
-   "note": "Lancet Respir Med epub 2025-01-02, quote verbatim; same is right. But the 2024-12-20 label carries both sides (12.1 HBE; 14 sweat chloride -8.4 and -2.8 mmol/L), which the draft itself uses to date efficacy 4 as 2024. Same year for both."
+   "note": "Lancet Respir Med epub 2025-01-02, quote verbatim; same is right. But the 2024-12-20 label carries both sides (12.1 HBE; 14 sweat chloride -8.4 and -2.8 mmol/L), which the draft itself uses to date efficacy 4 as 2024. Same year for both.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6: the 2024-12-20 label carries HBE data (12.1) and SKYLINE sweat chloride (-8.4, -2.8 mmol/L), as efficacy 4 is dated; year 2024, not 2025."
   },
   {
    "cell": "engagement",
@@ -235,7 +237,9 @@
    "proposed_year": 2022,
    "rule": "7 (dating)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Review section 2 quote verbatim (line 2059); 'predicted to provide exposure similar' at line 10556 is clinical PK, not the in-vitro model, as the draft says. Same holds. But the entry records registry_date 2022-01-25 (NCT03911713 results posted, confirmed on CT.gov), the earliest admissible source for the once-daily regimen matching IVA q12h on ppFEV1; rule 7 takes the earliest, so 2022 not 2024."
+   "note": "Review section 2 quote verbatim (line 2059); 'predicted to provide exposure similar' at line 10556 is clinical PK, not the in-vitro model, as the draft says. Same holds. But the entry records registry_date 2022-01-25 (NCT03911713 results posted, confirmed on CT.gov), the earliest admissible source for the once-daily regimen matching IVA q12h on ppFEV1; rule 7 takes the earliest, so 2022 not 2024.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed (dose rule: regimen reached, worked). Rule 6 (checker cited 7): paired comparison public once NCT03911713 results posted 2022-01-25, 250 mg QD matching IVA q12h; year 2022."
   },
   {
    "cell": "dose",

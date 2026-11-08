@@ -381,8 +381,8 @@
  "gaps": [
   {
    "lead": "Axelopran model source Armstrong 2013 (PMID 23512167): rat loperamide gastric emptying, castor-oil diarrhoea, dog GI contractility, CNS models",
-   "outcome": "tracked",
-   "detail": "rat-loperamide-gastric-emptying efficacy 1-2, mouse-morphine-dependent-withdrawal safety 1-2, rat-dog-hotplate-analgesia-window dose 1-2 (all src Armstrong 2013 opening); dog contractility not split (no separate patient readout)"
+   "outcome": "added",
+   "detail": "added_models rat-loperamide-gastric-emptying efficacy (Armstrong 2013 opening, Long 2019 same), plus mouse-morphine-dependent-withdrawal safety and rat-dog-hotplate-analgesia-window dose from the same paper; dog contractility not split (no separate patient readout)"
   },
   {
    "lead": "NCT01122030 naldemedine single doses in opioid-dependent chronic-pain patients (results posted 2017-05-30)",

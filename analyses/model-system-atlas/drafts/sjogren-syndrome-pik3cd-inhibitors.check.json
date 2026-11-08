@@ -107,16 +107,40 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Rao 2017 (Blood, epub 2017-09-29) abstract has quote verbatim. Whole-blood assays preceded the APDS dosing, so same, not retro. APDS not Sjögren's patients; acceptable for engagement as dosed humans."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "rule 5 / opening entry at model_first_use_year, untested",
+   "note": "Full text (ScienceDirect via DOI) has the quote verbatim; IACUC protocols 19-12-054/055 support a 2019 opening year. Opening untested entry for the parsaclisib NOD.ShiLtJ/NOD.B10 track is correct.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "retrodiction that failed to reproduce the human data is contra",
+   "note": "CT.gov API: NCT03627065 primary completion 2019-12-07, results posted 2021-03-24; primary SGUS >=1-point responders 0/8 (wk4), 0/7 (wk12); CXCL13 rose. Mouse run (IACUC Dec 2019) after primary completion, so retrodiction; contra holds.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
   "Possible engagement track: leniolisib pAkt-positive B-cell PD (ex vivo, direct readout) measured in Sjögren's patients in Study 2203 (CCDZ173X2203), per FDA review NDA 217759 clinical pharmacology section (https://www.accessdata.fda.gov/drugsatfda_docs/nda/2023/217759Orig1s000MultidisciplineR.pdf). The draft scores engagement only on the seletalisib mouse track.",
   "Possible engagement track: seletalisib healthy-volunteer PD from first-in-human studies (Helmer 2017, doi:10.1007/s00228-017-2205-7). The draft cites it for dose selection only, not as an engagement comparison.",
-  "No parsaclisib Sjögren's trial found on ClinicalTrials.gov or Europe PMC, and no press release reporting a member failure beyond the two Phase 2s."
+  "No parsaclisib Sjögren's trial found on ClinicalTrials.gov or Europe PMC, and no press release reporting a member failure beyond the two Phase 2s.",
+  "Efficacy entry 1 (draft, 'both member Phase 2') should list parsaclisib NCT03627065 (Phase 2 primary Sjogren's, n=10, open label, primary SGUS endpoint null, results posted 2021-03-24; https://clinicaltrials.gov/study/NCT03627065) among its patient_trials."
  ],
  "overall": "accept",
  "rule_questions": [
   "Efficacy: two small member Phase 2s each missed their primary with CIs spanning zero (one terminated at 36% power), and the mouse's functional readout (saliva flow) was unchanged in patients. Is pooled class-level inconclusive data 'unsettled' or 'contra'? The rules do not set a power or CI threshold.",
-  "Efficacy: should an untested track whose untested_reason changes (from opening to 'unsettled' once trials report) get a new dated entry, or does the single 2015 entry carry the 2019/2020 data?"
+  "Efficacy: should an untested track whose untested_reason changes (from opening to 'unsettled' once trials report) get a new dated entry, or does the single 2015 entry carry the 2019/2020 data?",
+  "parsaclisib-nod-mouse: the mouse run is dated only by IACUC protocol numbers (Dec 2019), days after the trial's primary completion (2019-12-07) and before any public result (2021-03); the paper calls the trial ongoing. The rules do not say whether 'the clinic already knew the answer' means sponsor-internal readout or public results."
  ]
 }

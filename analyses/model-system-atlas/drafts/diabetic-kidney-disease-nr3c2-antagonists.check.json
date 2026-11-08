@@ -158,7 +158,9 @@
    "proposed_year": 2019,
    "rule": "7",
    "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract quote verbatim (PMC7051931). Crossref published-online 2019-10-04 (PubMed entrez 2019-10-05): epub_year 2019, so year and model_first_use_year 2019 under decision 7. Untested opening right; in-silico scope is a rule question."
+   "note": "Abstract quote verbatim (PMC7051931). Crossref published-online 2019-10-04 (PubMed entrez 2019-10-05): epub_year 2019, so year and model_first_use_year 2019 under decision 7. Untested opening right; in-silico scope is a rule question.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Untested opener stands (not the track's latest; 2021 same follows). Rule 6 dating: Crossref online 2019-10-04, so year 2019. In-silico dose-choice models are in scope (MODELS_TASK, model_kind in_silico); no rule question."
   },
   {
    "cell": "dose",
@@ -238,7 +240,9 @@
    "proposed_year": 2025,
    "rule": "7",
    "checked_by": "CHECKER_BRIEF_v3 / models",
-   "note": "Abstract quote and FIDELIO 18% intro sentence verbatim; retro by decision 10. Earliest source making the comparison is the OA Cells 2025 finerenone db/db paper (patient benefit stated as premise, kidney injury attenuated), so 2025; read its UACR before keeping direction_only. One track for both members is right."
+   "note": "Abstract quote and FIDELIO 18% intro sentence verbatim; retro by decision 10. Earliest source making the comparison is the OA Cells 2025 finerenone db/db paper (patient benefit stated as premise, kidney injury attenuated), so 2025; read its UACR before keeping direction_only. One track for both members is right.",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: post-FIDELIO db/db finerenone run reproduces kidney protection, retro. Rule 6: earliest such comparison is Cells 2025 (PMID 40072066, epub 2025-02-26; premise 'renoprotective role...confirmed in DM and CKD patients'), so year 2025."
   },
   {
    "cell": "efficacy",

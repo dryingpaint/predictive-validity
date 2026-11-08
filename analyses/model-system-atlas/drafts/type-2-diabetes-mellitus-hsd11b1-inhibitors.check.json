@@ -32,7 +32,9 @@
    "proposed_status": "same",
    "proposed_year": 2021,
    "rule": "decision 7 (dating: earliest public date; healthy volunteers count)",
-   "note": "Quote verbatim (PMID 36343645, OA). The direct ex-vivo adipose readout was public 2021-08-15: BI 187004 single-dose study in healthy overweight men, NCT01587417, 86.8-99.5% inhibition (doi:10.1186/s40842-021-00130-x). Date this strengthening entry 2021."
+   "note": "Quote verbatim (PMID 36343645, OA). The direct ex-vivo adipose readout was public 2021-08-15: BI 187004 single-dose study in healthy overweight men, NCT01587417, 86.8-99.5% inhibition (doi:10.1186/s40842-021-00130-x). Date this strengthening entry 2021.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed (same, strengthening). Dating rule 6 plus engagement rule 'healthy volunteers count': the 2021 single-dose study (NCT01587417, 86.8-99.5% adipose inhibition) is the earliest public direct readout, so date this entry 2021."
   },
   {
    "cell": "dose",
@@ -88,7 +90,9 @@
    "proposed_status": "contra",
    "proposed_year": 2015,
    "rule": "decision 7 (dating) with evidence rule 2 (tier-5 press release, trial_unreported: true)",
-   "note": "Contra holds. Vitae 8-K 2015-06-29: fasting plasma glucose was the predefined primary efficacy endpoint, unmet; 2015-12-17: monotherapy arm unmet, programme terminated. Add a 2015 tier-5 entry; poc_gate is now sourced. patient_trials quotes for NCT01111955/NCT00698789 are near-verbatim, not verbatim."
+   "note": "Contra holds. Vitae 8-K 2015-06-29: fasting plasma glucose was the predefined primary efficacy endpoint, unmet; 2015-12-17: monotherapy arm unmet, programme terminated. Add a 2015 tier-5 entry; poc_gate is now sourced. patient_trials quotes for NCT01111955/NCT00698789 are near-verbatim, not verbatim.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Evidence rule 2 and dating rule 6: Vitae 8-K (2015) reports the predefined FPG endpoint unmet, a tier-5 contra with trial_unreported true; the 2023 tier-1 paper of the same trial also reads contra. Contra, first public 2015."
   },
   {
    "cell": "efficacy",

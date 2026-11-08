@@ -41,7 +41,9 @@
       "proposed_status": "same",
       "proposed_year": 2013,
       "rule": "dose table row 'reached, drug worked'; evidence rule 7",
-      "note": "Quote verbatim, but abstract shows no exposure vs EC99, and 'drug worked' was only a 5-day viral decline in 2009; efficacy known from Olysio label 2013. Alternative: glecaprevir 70x NOAEL (209394 PharmR, verbatim) as margin_stated same, 2017."
+      "note": "Quote verbatim, but abstract shows no exposure vs EC99, and 'drug worked' was only a 5-day viral decline in 2009; efficacy known from Olysio label 2013. Alternative: glecaprevir 70x NOAEL (209394 PharmR, verbatim) as margin_stated same, 2017.",
+      "adjudicated_status": "same",
+      "adjudication_note": "Dose table row 'target reached' and rule 6: dose scores whether the stated once-daily/EC99 regimen was reached, not whether the drug worked (efficacy). Reesink 2009: 'pharmacokinetics supported a once daily dosing regimen'. Same, dated 2009, not 2013."
     },
     {
       "cell": "efficacy",
@@ -127,6 +129,27 @@
       "status_supported": true,
       "checked_by": "CHECKER_BRIEF_v3 / models",
       "note": "Kan 2016 (PMID 27651415) quote verbatim in abstract; post-dates the 2015 mouse prediction, so same, not retro. The 2016 mouse arm is post hoc and correctly unscored. Caveat: retrospective single-centre cohort, not a trial primary endpoint."
+    },
+    {
+      "cell": "engagement",
+      "index": 5,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "note": "Reddy 2012 AAC (PMID 22470110, PMC3370793, epub 2012-04-02) resolves; quote verbatim in abstract. Untested opener at first use is fine; in-silico VK model distinct from replicon and rat-PK tracks."
+    },
+    {
+      "cell": "engagement",
+      "index": 6,
+      "verdict": "confirmed",
+      "source_resolves": true,
+      "quote_found": "verbatim",
+      "status_supported": true,
+      "checked_by": "CHECKER_BRIEF / models",
+      "rule": "retrodiction that failed to reproduce human data is contra; one drug's contra beats another's same",
+      "note": "Full text read. Table 2 footnote d confirms predictions use the LPR model; ABT-450/r 50 mg -4.07 vs -1.9 verbatim. retro=true correct (all PI monotherapy data predated). 'perform significantly better' phrase not found; danoprevir misses are 1.7 log10 (day-2 data), not >2."
     }
   ],
   "missing": [

@@ -240,7 +240,9 @@
    "proposed_status": "untested",
    "rule": "2 (#125: a registry protocol narrative with no results is a sponsor statement, not a source; tier 3 needs posted outcome data)",
    "note": "NCT01213355 confirmed: first posted 2010-10-04, 38 subjects, 5-way crossover, 5/20/60 mg vs donepezil 10 mg, GMLT primary, completed 2011-08, no results; quote verbatim in briefSummary. Status untested stands; source_tier 3 is wrong (no results posted) and no tier 1-3 source names the study (Fullerton 2018, Neurol Ther 2018 PMC5990506, Biomolecules 2023 PMC9953539 searched). Precedent: engagement 5 also rests on a no-results registry record at tier 3. Year 2010 survives as opener at first class use (#112).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Drafter and checker agree: untested. Rules 3 and 5: the challenge result was never posted or published, so nothing compares; untested whether or not the no-results registry record is admissible (tier only differs). untested_reason unpublished."
   },
   {
    "cell": "efficacy",

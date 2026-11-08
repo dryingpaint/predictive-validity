@@ -114,7 +114,9 @@
    "proposed_status": "contra",
    "proposed_year": 2023,
    "rule": "8",
-   "note": "Uluckan 2023 (PMID 36690055) quote verbatim. Contra holds either way, but MC903 calcipotriol dermatitis is a different system from FITC hapten Th2 dermatitis: own model_id, and the histamine-itch half belongs on h4-mouse-pruritus. 'During the Ph2b' makes retrodiction false defensible."
+   "note": "Uluckan 2023 (PMID 36690055) quote verbatim. Contra holds either way, but MC903 calcipotriol dermatitis is a different system from FITC hapten Th2 dermatitis: own model_id, and the histamine-itch half belongs on h4-mouse-pruritus. 'During the Ph2b' makes retrodiction false defensible.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule: status table (contra; retrodiction). Both agree contra; draft already re-keyed to own h4-mouse-mc903-dermatitis track. Run 'during the Ph2b' so retrodiction false; a failed retrodiction would also be contra."
   },
   {
    "cell": "safety",
@@ -268,7 +270,9 @@
    "proposed_year": 2010,
    "rule": "7 (#112), 8 (#122, #84)",
    "note": "Kollmeier 2014 (PMID 24817035) quote verbatim; NCT01068223 ran 2010-02 to 2010-05, no results. Human challenge is in scope for efficacy (#122, #84). First class use was 2010, and safety 1 dates a 2010 opening by the same proxy: open 2010.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6: cell opens at model_first_use_year, proxy allowed. Status untested agreed; challenge study NCT01068223 ran 2010-02 to 2010-05, so the opening year should be 2010, not 2014 (draft year unchanged here)."
   },
   {
    "cell": "efficacy",

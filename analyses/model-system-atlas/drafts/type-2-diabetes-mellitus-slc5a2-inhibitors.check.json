@@ -192,7 +192,9 @@
    "proposed_year": 2017,
    "rule": "dose cell definition (reached AND enough); RULES section 4 tie (2) 'reached and the drug worked = same'",
    "note": "Quote verbatim; comparison_stated true holds. FIH NCT00989079 ran 2009-10 to 2009-12, no results. 'Reached' is 2011; 'enough' only at VERTIS MONO (Terra 2017, doi 10.1111/dom.12888, epub 2017-02-22), so date the same 2017, as the canagliflozin dose entry is dated at its label.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose table (brief v4, dose scored on its own prediction): target reached = same; whether the dose worked is efficacy's question, and healthy-volunteer PK counts. Kalgutkar 2011 states FIH PK matched the rat-scaled prediction: same, dated 2011, not 2017."
   },
   {
    "cell": "efficacy",

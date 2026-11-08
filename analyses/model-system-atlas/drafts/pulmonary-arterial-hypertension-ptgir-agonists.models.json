@@ -205,7 +205,7 @@
   {
    "lead": "Ralinepag MCT rat data, Tran 2017 J Med Chem (PMID 28072531)",
    "outcome": "verdict",
-   "detail": "Same mct-rat model_id; correction is to name Tran 2017 as model_src on the ralinepag patient entries rather than add a system; needs a verdict on those entries."
+   "detail": "Same system as mct-rat, so not added; the draft holds no ralinepag entry (Torres 2019 only in the engagement 2 judgement), so it needs a verdict on mct-rat: new ralinepag patient entries with model_src Tran 2017 (doi:10.1021/acs.jmedchem.6b00871) - engagement same (Torres 2019, PVR -29.8%) and efficacy same (ADVANCE OUTCOMES, Lancet 2026, doi:10.1016/s0140-6736(26)01011-1, clinical worsening HR 0.45), which would move mct-rat efficacy's latest status off the 2003 contra."
   },
   {
    "lead": "Ralinepag ADVANCE CAPACITY (NCT04084678) terminated for sponsor decision",

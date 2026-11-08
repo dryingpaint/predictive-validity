@@ -184,7 +184,9 @@
    "proposed_year": 2019,
    "rule": "A model built or run after the clinic already knew the answer is a retrodiction (retrodiction: true); if it reproduced the human data its status is retro, never same",
    "note": "Quote verbatim in Liang 2019 abstract (PMID 31285418, epub 2019-07-08). But hypertension in HCC patients on a member drug was already published (Kang 2015 axitinib 54%, safety entry 3), and apatinib hypertension in gastric-cancer patients by 2016. Retrodiction: retro 2019.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Liang 2019 xenograft BP study ran after member-drug hypertension in HCC patients was public (Kang 2015, 54%; safety track entry 3); it reproduced that, so retro, never untested or same."
   },
   {
    "cell": "safety",
@@ -197,7 +199,9 @@
    "proposed_year": 2021,
    "rule": "A retrodiction that reproduced the human data is retro, never same",
    "note": "AHELP quote verbatim (Qin 2021 abstract, PMID 33971141): grade 3-4 hypertension 28% vs 2%. Pairing is direction-correct, but the Liang 2019 model postdates Kang 2015 HCC hypertension, so the track stays retro; this entry changes no status and could be dropped.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: the xenograft safety readout postdates Kang 2015 HCC hypertension, so AHELP's matching hypertension keeps the track retro; same is barred for a retrodiction. Entry changes no status."
   }
  ],
  "missing": [

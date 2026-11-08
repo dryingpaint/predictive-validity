@@ -32,7 +32,9 @@
    "proposed_status": "untested",
    "proposed_year": 2009,
    "rule": "Evidence rule 6 (dating: cell opens at model_first_use_year)",
-   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009."
+   "note": "Quote verbatim. The PA-IC90 trough target (0.064 ug/mL) was public earlier: Min 2010 AAC healthy-volunteer abstract, epub 2009-11-02. Open at 2009, model_first_use_year 2009.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed; dispute is dating only. Rule 6 (cell opens at model_first_use_year): Min 2010 AAC (epub 2009-11-02) states the PA-IC90 0.064 ug/mL target, so the opening untested entry belongs at 2009."
   },
   {
    "cell": "dose",
@@ -44,7 +46,9 @@
    "proposed_status": "same",
    "proposed_year": 2011,
    "rule": "Evidence rule 6 (dating) with dose table row 'reached, drug worked'; healthy-volunteer PK counts",
-   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013."
+   "note": "FDA ClinPharm quote verbatim (bundle). But Min 2010 (2009) states HV 50 mg Ctau ~25x PA-IC90, and 2011 monotherapy/SPRING-1 showed it worked; earliest public pairing is 2011, not 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose table 'target reached' is same; efficacy is not needed and HV PK counts. Rule 6: Min 2010 (epub 2009-11-02) shows HV 50 mg Ctau ~25x PA-IC90, so the comparison was public 2009, earlier than checker's 2011."
   },
   {
    "cell": "efficacy",
@@ -92,7 +96,9 @@
    "proposed_status": "same",
    "proposed_year": 2025,
    "rule": "Decision 6(b) (patient_signal_reversed) with evidence rule 6 dating",
-   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025."
+   "note": "Zash 2026 quote verbatim; Crossref print 2026-11. Earlier tier 1 Tsepamo reanalysis, AIDS 2025 (10.1097/QAD.0000000000004326, epub 2025-08-26): 'This difference diminished with subsequent data, with updated estimates of 0.10% for DTG and 0.11% for non-DTG exposures.' Date reversal 2025.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule contra (patient_signal_reversed) with rule 6 dating: Brummel 2025 AIDS (PMID 40880283, epub 2025-08-26), tier 1, shows Tsepamo NTD signal fell to background (0.10% vs 0.11%). Same; year 2025."
   },
   {
    "cell": "efficacy",
@@ -125,7 +131,9 @@
    "proposed_year": 2012,
    "rule": "Evidence rule 6 (dating: earliest public date)",
    "note": "ClinPharmR quote verbatim (bundle). But Koteff BJCP (PMID 22905856), which cites the in-vitro OCT2 data, was accepted 2012-08-11 and online 2012-08-22; open at 2012, model_first_use_year 2012.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Status agreed; dating only. Rule 6: Koteff BJCP (PMID 22905856), online 2012-08, cites the in-vitro OCT2 data; opening untested entry and model_first_use_year move to 2012."
   },
   {
    "cell": "safety",
@@ -138,7 +146,9 @@
    "proposed_year": 2012,
    "rule": "Evidence rule 6 (dating: epub_year)",
    "note": "Quote verbatim in abstract. Iohexol GFR test was prospective for the model's new claim (no true GFR loss), so same, not retro. Online 2012-08-22 (print 2013): year and epub_year 2012.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status agreed (prospective iohexol test of the OCT2 claim, not retro). Rule 6 dating: year is earliest public date, Koteff online 2012-08; year and epub_year 2012."
   },
   {
    "cell": "safety",
@@ -169,6 +179,36 @@
    "status_supported": true,
    "note": "Brummel AIDS (PMID 40880283) epub 2025-08-26, quote verbatim; contra/opposite holds. But the final Tsepamo data came after the 2020 model, so this is its first prospective test: retrodiction should be false; patient_signal_reversed is the turn-back flag, set false.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Tukeman AIDS PMID 37382903; quote verbatim in abstract. Crossref record created 2023-06-29 (ahead of print), issue 2024, so year 2023 holds. Opening untested entry for a distinct folate-sensitised CD-1 system is right."
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Quote verbatim in abstract; exencephaly at therapeutic-equivalent DTG only on low-folate diet. Built after the 2018 Tsepamo signal and offered as its explanation, so retro with retrodiction true is correct."
+  },
+  {
+   "cell": "safety",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Brummel AIDS PMID 40880283 (epub 2025-08-26); quote verbatim. Contra/opposite holds at low confidence: Brummel never names folate, so the low-folate condition the model needs is the drafter's inference from Botswana's lack of fortification."
   }
  ],
  "missing": [
@@ -176,12 +216,14 @@
   "Zash et al. AIDS 2025, 10.1097/QAD.0000000000004326: earliest peer-reviewed report of the Tsepamo NTD signal attenuating (0.10% vs 0.11%).",
   "Zash 2018 NEJM letter 10.1056/NEJMc1807653 (epub 2018-07-24) and the May 2018 FDA/EMA safety communications: first public NTD signal, a year before the scored entry.",
   "Zebrafish embryo DTG developmental-toxicity model (Cabrera et al. AIDS 2019, 10.1097/QAD.0000000000002289; Cabrera 2026 DMM 10.1242/dmm.052632): folate-receptor antagonism and NTD-type defects set against the Tsepamo signal; no track.",
-  "Second mouse NTD model, SWV/Fnn and other strains dosed with DTG (Tukeman et al. AIDS 2024, 10.1097/QAD.0000000000003639; Gelineau-van Waes 2023 Front Cell Dev Biol 10.3389/fcell.2023.1175917): DTG-induced NTDs, folate-responsive; a separate model system from the C57BL/6J therapeutic-dose track."
+  "Second mouse NTD model, SWV/Fnn and other strains dosed with DTG (Tukeman et al. AIDS 2024, 10.1097/QAD.0000000000003639; Gelineau-van Waes 2023 Front Cell Dev Biol 10.3389/fcell.2023.1175917): DTG-induced NTDs, folate-responsive; a separate model system from the C57BL/6J therapeutic-dose track.",
+  "Hypomagnesemic-mouse DTG NTD model (Gelineau-van Waes et al. 2023, Front Cell Dev Biol 10.3389/fcell.2023.1175917): low-Mg diet / LM/Bc strain sensitiser, folded into the low-folate track as a note; a different sensitiser, so arguably its own model_id."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "When the first public patient signal is a tier 1 letter with no abstract (Zash 2018) and a tier 2 regulator communication exists but could not be retrieved, should the contra be dated to the first public signal (2018) or the first quotable source (2019)?",
   "For dose 'reached, drug worked', is the entry dated when both halves are public (HV PK reaching target 2009 + first efficacy 2011) via pairing, or does it need a source that states trough vs target and response together (FDA review 2013)?",
-  "Class-wide harms not tested against tox packages (INSTI weight gain, DTG creatinine/OCT2, neuropsychiatric AEs): does rodent silence on weight gain count as a miss the species could have shown?"
+  "Class-wide harms not tested against tox packages (INSTI weight gain, DTG creatinine/OCT2, neuropsychiatric AEs): does rodent silence on weight gain count as a miss the species could have shown?",
+  "mouse-low-folate-dtg-ntd safety 11: the model predicts NTDs only under low folate; the patient source (Brummel 2025) does not report maternal folate status. Is contra allowed when the model's sensitising condition is inferred for the population rather than shown by the patient source, or must it be untested?"
  ]
 }

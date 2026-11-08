@@ -217,6 +217,46 @@
    "status_supported": true,
    "note": "SBRA quote verbatim: no thromboembolic events or FIX inhibitors in either trial. NHP data first public in the 2024 SBRA, so year 2024 correct; prospective, same, class level.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Dane 2018 ASH abstract (Blood 132 Suppl 1:2197) read in full via doi; quote verbatim, 14 rhesus macaques. Opening untested, year 2018, class level correct. Conference abstract: source_tier 1 is generous.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Chowdary 2022 (PMID 35857660) abstract: quote verbatim; FIX 23-260%, five 51-78% at <=1.28e12 vg/kg. Macaque data public 2018, before results, so same not retro; off_by_>5x underprediction fits.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 9,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "FDA SBRA Beqvez (fda.gov/media/178688) section 4: quote verbatim; 6 of 110 healthy-mouse deaths test-article related, doses 2-10x below human. Opening untested; 2015 first-use proxy, public 2024.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "safety",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "SBRA: 'no ... thromboembolic events or deaths reported in either trial' verbatim. Predicted harm absent in patients -> contra, magnitude opposite per brief, though FDA reads mouse deaths as endogenous-FIX/bleeding artefact (see rule_questions).",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -224,12 +264,14 @@
   "AskBio009/BAX 335 (Konkle 2021, PMID 33067633): FIX not sustained beyond 5-11 weeks in 7 of 8 patients; first public in Baxalta 2015-2016 releases and ASH abstracts. Only mentioned in judgement/patient_trials; a dated engagement/dose entry against its own preclinical model (Monahan 2015 mice/NHP) would show the miss even if the best-model rule leaves the cell at same.",
   "verbrinacogene setparvovec (FLT180a, Chowdary 2022 NEJM 10.1056/NEJMoa2119913): needed glucocorticoids +/- tacrolimus, one AV-fistula thrombosis at FIX 260%; development paused 2022 (Freeline). Its preclinical (NHP) model was not read by the drafter or by me.",
   "AAV5-hFIX (AMT-060, Miesbach 2018 Blood 10.1182/blood-2017-09-804419): FIX 4.4-6.9 IU/dL; no comparison with its NHP predictions was looked for (dose cell, gene therapy).",
-  "Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section)."
+  "Fidanacogene predecessor (AAVRh74var-hFIX-Padua) GLP toxicology in healthy mice: 6 test-article-related unscheduled deaths (brain/skin pathology, read as exacerbated tissue/vascular injury in animals with endogenous FIX) at doses 2-10x below the human dose; no such harm in patients. Safety track absent from the draft (FDA SBRA Beqvez, https://www.fda.gov/media/178688/download, nonclinical section).",
+  "Humanised (chimeric human-murine) liver mouse and primary human hepatocyte cultures for AAVS3/FLT180a (Dane 2018 ASH, doi 10.1182/blood-2018-99-117969): AAVS3 6-fold more efficient than AAV8 on human hepatocytes; a human-hepatocyte potency track that the macaque track's underprediction of patient FIX would test (Chowdary 2022)."
  ],
  "overall": "accept_with_corrections",
  "rule_questions": [
   "Best-model rule vs class members on different models: when one member (BAX 335, mouse model) is contradicted and another (fidanacogene, dog model) matches in the same cell and same year range, the cell shows only the dog's same. Should a different member's contra on a different model of the same kind (AAV8 FIX-Padua, liver) be shown?",
   "Two dog systems for fidanacogene: Crudele 2015 AAV8-cFIX-Padua (cited by George 2017) vs the AAVRh74var-cFIX-R338L surrogate FDA reviewed. Are these one model_id (same species, transgene, route) or two, and which is 'the model the class relied on' for dose?",
-  "Year of a pairing whose patient side was public first by press release (Dec 2022) and model side only in the SBRA (Apr 2024): rule 6 does not say whether the year is the later of the two dates."
+  "Year of a pairing whose patient side was public first by press release (Dec 2022) and model side only in the SBRA (Apr 2024): rule 6 does not say whether the year is the later of the two dates.",
+  "safety 10 (healthy-mouse AAVRh74var-hFIX-Padua tox): FDA attributes the deaths to endogenous FIX plus repeated blood draws, conditions patients lack. Does a model harm explained by a model-only condition stay contra/opposite, or become untested?"
  ]
 }
