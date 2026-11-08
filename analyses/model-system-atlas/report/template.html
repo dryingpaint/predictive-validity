@@ -277,7 +277,7 @@ function detail(t) {
     if (!c.length) return `<div><h3>${name}</h3><p class="vd">No model was relied on for this question.</p></div>`;
     return `<div><h3>${name}</h3><div class="scroll"><table><thead><tr><th>Year</th><th>Status</th><th>Model</th><th>Evidence</th><th>Check</th></tr></thead><tbody>` +
       c.map(e => `<tr><td class="yr">${e.year}${e.modality ? `<br><span class="vd">${esc(e.modality)}</span>` : ""}</td>
-        <td><span class="chip ${e.status}">${LABEL[e.status].split(":")[0]}</span>${e.reversed ? '<div class="vd">patient signal faded</div>' : ""}</td>
+        <td><span class="chip ${e.status}">${LABEL[e.status].split(":")[0]}</span>${e.reversed ? '<div class="vd">patient signal faded</div>' : ""}${e.status === "untested" && e.why_untested ? `<div class="vd">${esc(e.why_untested)}</div>` : ""}</td>
         <td>${esc(e.model)}</td>
         <td>${esc(e.note || "")}${e.quote ? `<div class="q-quote">“${esc(e.quote)}”</div>` : ""}${e.src ? `<div><a href="${esc(e.src)}" target="_blank" rel="noopener">${esc(e.src_label || "source")}</a>${e.tier ? ` <span class="vd">tier ${e.tier}${e.stated === false ? ", paired" : ""}</span>` : ""}</div>` : ""}</td>
         <td class="vd ${e.verdict === "corrected" ? "corrected" : ""}">${e.verdict ? esc(e.verdict) : "not checked"}${e.verdict === "corrected" ? `: checker said ${esc(e.proposed)}${e.adjudicated ? `; adjudicated ${esc(e.adjudicated)}` : ""}` : ""}${e.check_note ? `<div>${esc(e.check_note)}</div>` : ""}</td></tr>`).join("") +

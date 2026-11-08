@@ -125,7 +125,9 @@ def test_a_never_compared_cell_carries_the_reason_of_the_entry_drawn():
                            "mechanism": "X inhibitors", "class_programs": 3, "class_share": 0.1}])
     row = glance.cells(e, tiles).query("question == 'efficacy'").iloc[0]
     assert row.status == "untested" and row.untested_reason == "not_measured"
-    assert set(glance_nature.UNTESTED_REASON) == {"no_prediction", "not_measured", "unpublished", "unsettled"}
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "analyses", "model-system-atlas", "drafts"))
+    import lint
+    assert set(report_page.UNTESTED_REASON) == lint.ENUM["untested_reason"] - {None}
 
 
 def test_every_headline_status_the_data_can_carry_has_a_figure_style():

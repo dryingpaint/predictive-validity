@@ -22,6 +22,9 @@ from report import frame
 QUESTIONS = ["engagement", "dose", "efficacy", "safety"]
 STATUSES = ["same", "neg", "other", "contra", "retro", "untested"]
 HEADLINE = ["same", "neg", "other", "contra"]  # statuses a prospective track can set the headline with, best first
+# why a never-compared entry was never compared (drafts/DRAFTER_BRIEF.md rule 5), as the figure and the page print it
+UNTESTED_REASON = {"no_prediction": "No checkable prediction", "not_measured": "Not measured in patients",
+                   "unpublished": "Model data unpublished", "unsettled": "Patient result unclear"}
 
 
 def final_status(r) -> str:
@@ -114,6 +117,7 @@ def load() -> dict:
                          "level": x["fields"].get("prediction_level"),
                          "reversed": x["patient_signal_reversed"], "confidence": x["confidence"],
                          "note": x["fields"].get("note"), "short": x["fields"].get("short"),
+                         "why_untested": UNTESTED_REASON.get(x["fields"].get("untested_reason")),
                          "judgement": x["fields"].get("judgement"), "verdict": x.get("verdict"),
                          "proposed": x.get("proposed_status"), "rule": x.get("rule"), "check_note": x.get("check_note"),
                          "adjudicated": x.get("adjudicated_status"), "adjudication_note": x.get("adjudication_note")}
