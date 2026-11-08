@@ -15,7 +15,6 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STORE = os.path.join(HERE, "track_store.py")
-DRAFTED_BY = "DRAFTER_BRIEF / atlas-2026-11-05"
 
 
 def open_corrections(slug: str) -> list[str]:
@@ -42,7 +41,7 @@ def main() -> None:
         if pending:
             print("ADJUDICATE", slug, pending)
             continue
-        r = subprocess.run([sys.executable, STORE, os.path.join(HERE, f"{slug}.json"), "--drafted-by", DRAFTED_BY],
+        r = subprocess.run([sys.executable, STORE, os.path.join(HERE, f"{slug}.json")],
                            capture_output=True, text=True, check=False)
         tail = [line for line in (r.stdout + r.stderr).splitlines() if "RuntimeWarn" not in line and line.strip()]
         print("STORE" if r.returncode == 0 else "FAILED", slug, "|", tail[-1] if tail else "")

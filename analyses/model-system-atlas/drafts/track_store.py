@@ -84,7 +84,7 @@ def store(path: str, drafted_by: str, cur) -> int:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("drafts", nargs="+")
-    ap.add_argument("--drafted-by", default="DRAFTER_BRIEF")
+    ap.add_argument("--drafted-by", default="DRAFTER_BRIEF_v3 / atlas-v3-2026-11-05")
     a = ap.parse_args()
     with llm.connect() as conn, conn.cursor() as cur:
         for p in a.drafts:
