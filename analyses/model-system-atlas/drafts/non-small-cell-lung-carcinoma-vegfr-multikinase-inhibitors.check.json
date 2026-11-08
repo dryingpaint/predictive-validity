@@ -65,20 +65,6 @@
    "note": "Methods sentence verbatim in PMC6392299 full text; paper gives no mouse PK or human-equivalent dose. Untested holds."
   },
   {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2022,
-   "rule": "dose table ('reached' presumes a stated model target) + evidence rule 5; decision 16 scope",
-   "note": "JTO 2024 abstract quote verbatim; registry 2022-06-02 verified. The same track's entry 3 says the model stated no exposure target, which is why the H460 and RET tracks stay untested; scoring this one 'reached, failed' applies the opposite reading. Make it consistent: untested here, or H460 dose becomes same.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Decision 4: the dose cell asks whether the model's stated exposure/occupancy/regimen target was reached; Kato 2019 stated none (draft dose 3), so no prediction was compared: untested (decision 8), as the H460 and RET tracks are scored."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
@@ -181,7 +167,7 @@
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

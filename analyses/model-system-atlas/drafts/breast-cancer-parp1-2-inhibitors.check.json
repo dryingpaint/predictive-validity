@@ -45,16 +45,6 @@
    "note": "Same holds: Kummar states the preclinical plasma target (0.21 umol/L, mouse PAR studies) was exceeded at every dose. Set comparison_stated true; magnitude could be within_2x on Cmax. Patients not breast, allowed for dose."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4",
-   "note": "Interpretation sentence verbatim. Derived contra is correct: PD target reached (50 mg BID vs 25 mg single-dose PAR inhibition), no later higher-dose success in unselected TNBC, so 'reached, failed' not 'target too low'."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",
@@ -207,7 +197,7 @@
   },
   {
    "cell": "dose",
-   "index": 4,
+   "index": 3,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -218,7 +208,7 @@
   },
   {
    "cell": "dose",
-   "index": 5,
+   "index": 4,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -284,7 +274,7 @@
   },
   {
    "cell": "dose",
-   "index": 6,
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -295,7 +285,7 @@
   },
   {
    "cell": "dose",
-   "index": 7,
+   "index": 6,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

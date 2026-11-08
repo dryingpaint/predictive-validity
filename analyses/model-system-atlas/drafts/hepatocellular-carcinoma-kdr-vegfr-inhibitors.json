@@ -127,7 +127,6 @@
     "confidence": "high",
     "judgement": "Opening entry. The 2021 FDA tivozanib review repeats the rat panel (0.2 and 1 mg/kg/day, TGI in 11/15 and 14/15 lines including liver) but states no exposure multiple against the clinical dose, so there is no target to compare.",
     "model_first_use_year": 2006,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false
    },
@@ -167,9 +166,9 @@
     "reason": "No HCC-model exposure target to compare",
     "judgement": "Not scored 'reached, failed' for axitinib: the efficacious-plasma-concentration work in the axitinib NDA (NonclinPharm-003) used melanoma, colon and lung xenografts, not a liver model, so this track states no target that the 5 mg BID HCC dose could be said to reach; the axitinib failure is counted once, in efficacy. Apatinib's 750 mg AHELP dose likewise has no HCC-model exposure anchor (Yang 2018 gives mouse doses, no exposure).",
     "model_first_use_year": 2006,
-    "derived_from": null,
     "blocked_by": null,
-    "margin_stated": false
+    "margin_stated": false,
+    "untested_reason": "unsettled"
    }
   ],
   "efficacy": [

@@ -68,15 +68,6 @@
    "note": "Salimi 2013 JEM resolves (PMID 24323357, OA); quote verbatim. Untested opener: no mouse source states an antibody exposure target; product_in_model false correct."
   },
   {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Decision 4 case 3 (reached, failed, abandoned): serum saturation at 300 mg plus termination for lack of efficacy supports contra derived_from efficacy. Registry lacks the saturation datum, so 2024 vs registry_date 2022 is a dating rule question, not a correction."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

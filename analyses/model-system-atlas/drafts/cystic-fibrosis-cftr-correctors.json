@@ -825,7 +825,8 @@
     "srcLabel": "FDA pharm review 2015",
     "quote": "There were no relevant target organs of toxicity identified in rats.",
     "judgement": "Lumacaftor's respiratory events in patients (chest tightness, dyspnoea; label 5.3) went unpredicted by clean rat plethysmography at 250–1000 mg/kg. Not scored: the events concentrate in patients with low FEV1, a CF-airway harm a healthy rat could not show.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "unsettled"
    },
    {
     "subjects": "patients",
@@ -861,7 +862,8 @@
     "quote": "Cases of serious and potentially fatal drug-induced liver injury and liver failure have been reported with a drug that contains the same or similar active ingredients as ALYFTREK.",
     "reason": "Rat liver margin >20×; patients injured at 1×",
     "judgement": "Judgement call. FDA integrated review: rat target organs were 'stomach (erosion/ulcers) and liver (hepatocellular vacuolar degeneration, multifocal hepatocellular necrosis) at exposures greater than 20 times (males) and 60 times (females)' MRHD; dogs clean to 100×. The model named the organ but misplaced the margin. It is scored here, not in dose, because the target dose was reached and the harm was not dose-limiting. Year 2025 is the public date of the review. The earlier elexacaftor case (Trikafta 2019 LFT warning, no animal liver signal seen on a grep of NDA 212273) was not verified in full.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "unsettled"
    }
   ]
  }

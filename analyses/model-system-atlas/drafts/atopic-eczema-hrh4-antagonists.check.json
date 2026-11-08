@@ -55,26 +55,6 @@
    "note": "Cowden 2010 quote verbatim; untested opening on the dermatitis track. No exposure target stated anywhere in the abstracts checked."
   },
   {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4 (case 3)",
-   "note": "Murata 2015 (PMID 25491792) quote verbatim; NCT01497119 terminated, no results. Case-3 contra derived_from efficacy holds only if 'reached' can rest on human PD with no model exposure target, and if the terminated trial counts; both raised as rule questions."
-  },
-  {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4 (case 3), 2",
-   "note": "NCT03517566 record verified: Novartis, whyStopped 'Lack of efficacy', results posted 2021-07-20, IGA 1.9 % placebo vs 3.3/7.2/0.8/6.9 % at 3/10/30/50 mg. Tier 3 with model_src Cowden 2010; derived contra."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

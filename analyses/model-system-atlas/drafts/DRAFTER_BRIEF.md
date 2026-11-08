@@ -47,17 +47,20 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
   `direct` (occupancy, free target, ex-vivo blockade of a stimulus), `proximal` (the target's own product:
   transgene protein, viral load, acid, cGMP) or `downstream` (a biomarker or physiology further down).
   Healthy volunteers count.
-- **dose**: was the model's exposure / occupancy / regimen target reached in humans, **and was it enough**?
-  Dose is tied to efficacy so one failure is counted once:
+- **dose**: did the model's stated dose prediction hold in humans? It has two halves: was the exposure /
+  occupancy / regimen target the model stated reached, and did the tolerability margin it stated hold?
+  Whether the reached dose worked is the efficacy question, never this one, so a drug that reached its
+  target and failed is an efficacy failure only. A target scores on the track of the model system that
+  stated it; a sponsor's trough, an MTD or your own mg/kg arithmetic is not one.
 
   | what happened | dose | efficacy |
   |---|---|---|
+  | the model stated no exposure, occupancy or regimen target, nor a margin | `untested` | as the trial showed |
+  | target reached | `same` | as the trial showed |
   | target never reached in humans (PK) | `contra` | `untested` |
   | the model stated the effective exposure was tolerated, and patients were dosed to target without that toxicity | `same` with `margin_stated: true` | as the trial showed |
   | never reached because of toxicity; the model stated the effective exposure was tolerated | `contra` with `blocked_by: "toxicity"`, `margin_stated: true` | `untested` |
   | never reached because of toxicity; no stated margin | `untested` | `untested` |
-  | reached, drug worked | `same` | `same` |
-  | reached, failed, abandoned | `contra` with `derived_from: "efficacy"` | `contra` |
   | reached, failed, a higher dose later worked | `contra` (target too low; record `magnitude`) | `contra`, then `same` |
 
   Healthy-volunteer PK counts; a later patient PK/occupancy source is its own dated entry.
@@ -104,6 +107,12 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
 4. Verify every DOI resolves to the paper you mean (PubMed tools or WebFetch). Never invent a citation.
    Paywalled abstract only: say so in `confidence_note`.
 5. Finding nothing is a finding. If nobody compared, write `untested` and say in `note` what model was used.
+   A track's latest `untested` entry also carries `untested_reason`, the one that fits first:
+   `unpublished` (the model's data, usually toxicology, are not public); `no_prediction` (the model gave
+   nothing checkable in people: no human dose, exposure or tolerability margin, no named harm, or a readout
+   with no human counterpart); `not_measured` (the model made a prediction, but no trial measured its
+   readout); `unsettled` (patients were measured, but the result is unreported, inconclusive, or belongs to
+   a drug outside the class).
 6. **Dating.** The entry's `year` is the earliest date the comparison was public: registry results posting,
    online publication, label, or print. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
@@ -129,9 +138,10 @@ in every entry and cell, a different system gets a new one) · `subjects` (patie
 off_by_>5x | direction_only | null | opposite) · `magnitude_basis` (the quantity it is computed on) ·
 `source_calls_it` (match | miss | scaling | partial | unresolved | over_predicted) · `population` ·
 `model_first_use_year` · `confidence` (high | medium | low, enum) · `confidence_note` (free text) ·
-engagement only: `readout_tier` · dose only: `derived_from`, `blocked_by`, `margin_stated` · `neg` only:
+engagement only: `readout_tier` · dose only: `blocked_by`, `margin_stated` · `neg` only:
 `effect_size`, `class_threshold` · efficacy only: `endpoint_role`,
-`outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status).
+`outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status). ·
+`untested` only: `untested_reason` (rule 5).
 Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial;
 `modality_groups` (list) and `class_share` as given.
 

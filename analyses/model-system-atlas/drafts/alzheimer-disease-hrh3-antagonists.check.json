@@ -44,15 +44,6 @@
    "note": "Quote verbatim in PMC3635600; 0.1-2 ng/mL = ~10-40% RO, 3 mg MTD, 5-6 mg intolerable, 580-fold NOAEL margin all confirmed. PubMed indexed 2012-09-29 (accepted 2012-09-20): online 2012, so year 2012. Steady-state Cmax figures not verified."
   },
   {
-   "cell": "dose",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Quote verbatim in abstract; JAD 42:959 resolves. CT.gov API: NCT01018875 has no posted results. Reached-failed-abandoned mapping to contra with derived_from efficacy is correct."
-  },
-  {
    "cell": "efficacy",
    "index": 1,
    "verdict": "confirmed",

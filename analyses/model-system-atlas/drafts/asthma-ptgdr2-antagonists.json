@@ -157,42 +157,6 @@
     "margin_stated": false,
     "judgement": "Scored same, not untested: the source itself states the target was reached, and the doses that reached it then moved sputum eosinophils (Gonem 2016) and met the FEV1 primary in dose-ranging (Bateman 2017, 150 mg/day optimum). margin_stated false: the tolerated range is human data, not a model-stated margin.",
     "prediction_level": "class"
-   },
-   {
-    "subjects": "patients",
-    "comparison_stated": false,
-    "source_tier": 1,
-    "model_src": "https://doi.org/10.1002/cpdd.244",
-    "model_src_tier": 1,
-    "trial_unreported": false,
-    "patient_signal_reversed": false,
-    "epub_year": 2020,
-    "print_year": 2021,
-    "registry_date": "2020-05-18",
-    "model_filed": false,
-    "product_in_model": true,
-    "model_kind": "ex_vivo",
-    "retrodiction": false,
-    "magnitude": "null",
-    "magnitude_basis": "annualised moderate-to-severe exacerbation rate ratio",
-    "source_calls_it": null,
-    "population": "Unselected",
-    "model_first_use_year": 2012,
-    "confidence": "high",
-    "confidence_note": "Abstract-level reading.",
-    "year": 2020,
-    "status": "contra",
-    "model": "Human eosinophil DP2 potency scaled to human exposure",
-    "model_id": "human-eos-th2-dp2-assays",
-    "note": "At 150 and 450 mg, both at or above target exposure, fevipiprant did not significantly cut exacerbations in 1,771 severe asthmatics; development stopped.",
-    "short": "Target reached; exacerbations unchanged",
-    "src": "https://doi.org/10.1016/S2213-2600(20)30412-4",
-    "srcLabel": "Brightling 2021",
-    "quote": "Although neither trial showed a statistically significant reduction in asthma exacerbations after adjusting for multiple testing, consistent and modest reductions in exacerbations rates were observed in both studies with the 450 mg dose of fevipiprant.",
-    "derived_from": "efficacy",
-    "reason": "Reached, failed, abandoned",
-    "judgement": "Decision table row 'reached, failed, abandoned': dose contra derived from efficacy so the failure is counted once. Year is the LUSTER-1 registry posting (NCT02555683, 2020-05-18); ZEAL-1 (NCT03215758, FEV1 primary) posted results 2020-02-12, same year. A Novartis press release in late 2019 likely announced the misses; not verified, so not used for dating.",
-    "prediction_level": "class"
    }
   ],
   "efficacy": [
@@ -462,7 +426,8 @@
     "quote": "Binding was reversible, non-competitive and highly selective against a panel of more than 340 other enzymes and receptors, including DP1 (>1000-fold selective).",
     "reason": "No published animal-patient safety comparison",
     "judgement": "No member was filed with FDA or EMA (manifest: no NDA/BLA), so no review names the toxicology package. Patient safety was placebo-like for fevipiprant (LUSTER serious AEs 9% in every arm), but GB001 60 mg carried a risk of liver injury (Moss 2022). With no public GB001 preclinical toxicology I cannot say whether the model was silent or stated a margin, so the hepatic signal is left unscored rather than called contra.",
-    "prediction_level": "class"
+    "prediction_level": "class",
+    "untested_reason": "unpublished"
    }
   ]
  }

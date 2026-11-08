@@ -196,11 +196,11 @@
     "population": "Unselected",
     "model_first_use_year": 2017,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "reason": "ug doses engaged FXR and lowered GGT",
-    "judgement": "Year is the registry results posting for NCT02516605 (2019-11-13), which carried the per-dose GGT fold changes (0.74/0.41/0.28/0.31 vs 0.86 placebo); Schramm 2022 is the tier-1 record and sets the status. Scored 'reached, drug worked'. No model stated a tolerability margin, so the pruritus ceiling (3 AE discontinuations at 150 ug; EDP-305 18% pruritus discontinuations at 2.5 mg; cilofexor 7% at 100 mg) is scored once, in safety, not here. EDP-305 and cilofexor have no published rodent exposure bridge in the sources I reached."
+    "judgement": "Year is the registry results posting for NCT02516605 (2019-11-13), which carried the per-dose GGT fold changes (0.74/0.41/0.28/0.31 vs 0.86 placebo); Schramm 2022 is the tier-1 record and sets the status. Scored 'reached, drug worked'. No model stated a tolerability margin, so the pruritus ceiling (3 AE discontinuations at 150 ug; EDP-305 18% pruritus discontinuations at 2.5 mg; cilofexor 7% at 100 mg) is scored once, in safety, not here. EDP-305 and cilofexor have no published rodent exposure bridge in the sources I reached.",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [
@@ -317,7 +317,8 @@
       "quote": "In the intent-to-treat (ITT) analysis, EDP-305 1 mg and 2.5 mg treatment arms resulted in 45% (n=14/31, p=0.106) and 46% (n=13/28, p=0.063) ALP response, respectively, compared to 11% (n=1/9) in the placebo arm."
      }
     ],
-    "judgement": "This is the main call of the tile. The pre-specified ITT primary (ALP responder rate) was not met and Enanta dropped PBC (press release 2020-05-06, Business Wire 20200506005860), which under the dose table reads 'reached, failed, abandoned' = contra. I scored same + partial instead because the data, not the sponsor's words, govern (decision 13): the direction matched (46% vs 11%, OR 7), absolute ALP change was significant vs placebo (p=0.017/0.021) and so were ALT/AST/GGT, and the placebo arm held 9 patients, so the miss is a power miss, not a model miss. A reviewer who holds to the primary-endpoint test should flip this to contra with source_calls_it unresolved; the 2023 retro entry below would then need to leave this track. Year is the registry posting (the brief's dating events do not include press releases); the comparison was first public in May 2020. No peer-reviewed INTREPID paper was found on PubMed."
+    "judgement": "This is the main call of the tile. The pre-specified ITT primary (ALP responder rate) was not met and Enanta dropped PBC (press release 2020-05-06, Business Wire 20200506005860), which under the dose table reads 'reached, failed, abandoned' = contra. I scored same + partial instead because the data, not the sponsor's words, govern (decision 13): the direction matched (46% vs 11%, OR 7), absolute ALP change was significant vs placebo (p=0.017/0.021) and so were ALT/AST/GGT, and the placebo arm held 9 patients, so the miss is a power miss, not a model miss. A reviewer who holds to the primary-endpoint test should flip this to contra with source_calls_it unresolved; the 2023 retro entry below would then need to leave this track. Year is the registry posting (the brief's dating events do not include press releases); the comparison was first public in May 2020. No peer-reviewed INTREPID paper was found on PubMed.",
+    "untested_reason": "unsettled"
    },
    {
     "year": 2021,

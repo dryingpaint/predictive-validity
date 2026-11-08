@@ -51,7 +51,8 @@
     "source_calls_it": null,
     "population": "ATM-low gastric cancer",
     "model_first_use_year": 2014,
-    "readout_tier": null
+    "readout_tier": null,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -87,7 +88,8 @@
     "model": "Hypoxia-induced HRD (contextual synthetic lethality): hypoxic human cancer cells with RAD51/BRCA1 down-regulation sensitised to PARP inhibition",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -123,7 +125,8 @@
     "model": "Gastroesophageal adenocarcinoma PDX platform and PDX-derived primary cells, BRCA2 germline-mutant with loss of the wild-type allele, olaparib/rucaparib/niraparib xenotrials",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -161,9 +164,9 @@
     "source_calls_it": null,
     "population": "ATM-low gastric cancer",
     "model_first_use_year": 2014,
-    "derived_from": null,
     "blocked_by": null,
-    "margin_stated": null
+    "margin_stated": null,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -199,7 +202,8 @@
     "model": "Hypoxia-induced HRD (contextual synthetic lethality): hypoxic human cancer cells with RAD51/BRCA1 down-regulation sensitised to PARP inhibition",
     "model_kind": "ex_vivo",
     "prediction_level": "class",
-    "model_first_use_year": 2010
+    "model_first_use_year": 2010,
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": false,
@@ -235,7 +239,8 @@
     "model": "Gastroesophageal adenocarcinoma PDX platform and PDX-derived primary cells, BRCA2 germline-mutant with loss of the wild-type allele, olaparib/rucaparib/niraparib xenotrials",
     "model_kind": "animal",
     "prediction_level": "patient",
-    "model_first_use_year": 2023
+    "model_first_use_year": 2023,
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

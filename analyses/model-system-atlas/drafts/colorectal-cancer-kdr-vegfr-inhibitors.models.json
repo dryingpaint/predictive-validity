@@ -150,7 +150,6 @@
       "srcLabel": "FDA fruquintinib review 2023",
       "quote": "The Applicant conducted PBPK analysis to assess DDI potentials of fruquintinib as a victim when coadministered with CYP3A4 modulators and as an inhibitor when coadministered with P-gp and BCRP transporter substrates.",
       "judgement": "In-silico dose model, a separate system from the animal PK/PD track; opener at first public use.",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false
      },
@@ -189,7 +188,6 @@
       "quote": "The model captured the observed fruquintinib PK changes when coadministered with itraconazole (AUCR was 1.1) and rifampin (AUCR was 0.35), a strong CYP3A4 inhibitor and a strong CYP3A4 inducer, respectively.",
       "judgement": "Retrodiction, not same: fmCYP3A4 was refined on the itraconazole result and rifampin served as the verification set, both known before the model was finalised. Its one prospective prediction (efavirenz, AUC 68% of baseline) became the label's no-dose-adjustment statement for moderate CYP3A inducers without a clinical study, a regulator reliance on the in-silico model that stays untested in humans, so no fresh entry. The model concerns exposure under co-medication, not the efficacy exposure target; filed under dose as the brief's in-silico dose-choice case and flagged for the checker.",
       "reason": "FDA: PBPK captured both clinical DDI results",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": false
      }

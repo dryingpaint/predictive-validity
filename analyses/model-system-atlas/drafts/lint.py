@@ -22,8 +22,8 @@ KEYS = {"year", "status", "model", "note", "short", "src", "srcLabel", "quote", 
         "magnitude", "source_calls_it", "population", "model_first_use_year", "judgement", "reason",
         "patient_trials", "strengthens", "prediction_level", "modality", "model_id", "source_tier", "model_src",
         "model_src_tier", "trial_unreported", "patient_signal_reversed", "model_kind", "retrodiction",
-        "imported_from", "magnitude_basis", "confidence_note", "readout_tier", "derived_from", "blocked_by",
-        "margin_stated", "effect_size", "class_threshold", "endpoint_role", "outcome_tested"}
+        "imported_from", "magnitude_basis", "confidence_note", "readout_tier", "blocked_by",
+        "margin_stated", "effect_size", "class_threshold", "endpoint_role", "outcome_tested", "untested_reason"}
 REQUIRED = ("model_id", "subjects", "comparison_stated", "source_tier", "model_kind", "retrodiction",
             "confidence", "magnitude", "source_calls_it")
 ENUM = {
@@ -33,13 +33,13 @@ ENUM = {
     "magnitude": {"within_2x", "off_by_2-5x", "off_by_>5x", "direction_only", "null", "opposite", None},
     "source_calls_it": {"match", "miss", "scaling", "partial", "unresolved", "over_predicted", None},
     "readout_tier": {"direct", "proximal", "downstream", None},
-    "derived_from": {"efficacy", None},
     "blocked_by": {"toxicity", None},
     "endpoint_role": {"primary", "poc_gate", None},
     "outcome_tested": {None, "positive", "negative", "negative_confounded"},
     "prediction_level": {"class", "patient", None},
+    "untested_reason": {"no_prediction", "not_measured", "unpublished", "unsettled", None},
 }
-ONLY_IN = {"readout_tier": "engagement", "derived_from": "dose", "blocked_by": "dose", "margin_stated": "dose",
+ONLY_IN = {"readout_tier": "engagement", "blocked_by": "dose", "margin_stated": "dose",
            "endpoint_role": "efficacy", "outcome_tested": "efficacy", "imported_from": "safety"}
 MODALITY = {"small molecule", "antibody", "ADC", "protein", "peptide", "oligo", "cell therapy", "gene therapy", "other"}
 
@@ -69,8 +69,6 @@ def rule_findings(q: str, e: dict, prev: dict | None) -> list[str]:
         out.append("other outside safety")
     if e.get("blocked_by") == "toxicity" and e.get("margin_stated") is not True:
         out.append("blocked_by toxicity without margin_stated")
-    if e.get("blocked_by") and e.get("derived_from"):
-        out.append("a toxicity block is never derived_from efficacy")
     if q == "engagement" and s not in ("untested", None) and "readout_tier" not in e:
         out.append("engagement entry without readout_tier")
     if prev and prev.get("status") == "contra" and s in MATCHED:

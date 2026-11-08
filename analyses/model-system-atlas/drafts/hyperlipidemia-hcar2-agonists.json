@@ -407,11 +407,11 @@
    },
    {
     "year": 2012,
-    "status": "contra",
+    "status": "same",
     "model": "Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing",
     "model_id": "mouse-gpr109a-ko",
     "note": "Human doses hit the model's PD target (acute FFA suppression) yet lipids did not move; both Merck programmes stopped.",
-    "short": "PD target reached, lipids unmoved",
+    "short": "FFA suppression target reached",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
     "quote": "Both MK-1903 and SCH900271 lowered FFAs acutely in humans; however, neither had the expected effects on serum lipids.",
@@ -437,10 +437,9 @@
     "population": "Unselected",
     "model_first_use_year": 2003,
     "prediction_level": "class",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
-    "judgement": "Scored under the 'reached, failed, abandoned' row: FFA suppression, the only dose target the model offered, was achieved acutely at tolerated doses, and the lipid endpoints failed. The chronic-FFA rebound is a PD-durability finding the model never specified, so it does not convert this into a 'target never reached' row; noted, not scored."
+    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the model's PD target, was reached. Scored under the 'reached, failed, abandoned' row: FFA suppression, the only dose target the model offered, was achieved acutely at tolerated doses, and the lipid endpoints failed. The chronic-FFA rebound is a PD-durability finding the model never specified, so it does not convert this into a 'target never reached' row; noted, not scored."
    },
    {
     "year": 2011,
@@ -477,11 +476,11 @@
    },
    {
     "year": 2012,
-    "status": "contra",
+    "status": "same",
     "model": "Fasted beagle dog, plasma FFA and flushing",
     "model_id": "beagle-dog-merck",
     "note": "SCH900271 reached acute FFA suppression in humans and still failed on lipids in the phase 2B; programme stopped.",
-    "short": "FFA target met, LDL-C unmoved",
+    "short": "FFA suppression target reached",
     "src": "https://doi.org/10.1126/scitranslmed.3003877",
     "srcLabel": "Lauring 2012",
     "quote": "Both MK-1903 and SCH900271 lowered FFAs acutely in humans; however, neither had the expected effects on serum lipids.",
@@ -507,9 +506,8 @@
     "population": "Unselected",
     "model_first_use_year": 2011,
     "prediction_level": "class",
-    "derived_from": "efficacy",
     "margin_stated": false,
-    "judgement": "Same logic as the mouse track, paired by me with the dog paper. The dog's 10-fold flush window is scored in safety, not here, because it is a harm prediction rather than an exposure target."
+    "judgement": "Dose scored on its own prediction (rule v4): acute FFA suppression, the dog's PD target, was reached. Same logic as the mouse track, paired by me with the dog paper. The dog's 10-fold flush window is scored in safety, not here, because it is a harm prediction rather than an exposure target."
    },
    {
     "year": 2015,
@@ -550,7 +548,7 @@
     "model": "Rat and guinea pig plasma NEFA (GSK)",
     "model_id": "rat-gp-nefa-gsk",
     "note": "GSK256073 5-150 mg suppressed NEFA in dyslipidaemic patients but showed no exposure-HDL-C relationship; phase 2a stopped for futility.",
-    "short": "Exposure reached, no HDL-C response",
+    "short": "NEFA suppression not held on chronic dosing",
     "src": "https://clinicaltrials.gov/study/NCT00903617",
     "srcLabel": "NCT00903617 results 2017",
     "quote": "Percent Change From Baseline in NEFA, week 4: GSK256073 5 mg 38.8, 50 mg 37.4, 150 mg 26.2, Placebo 7.0 (fasting; large SDs).",
@@ -576,10 +574,9 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "derived_from": "efficacy",
     "margin_stated": false,
     "reason": "Doses reached, lipid efficacy absent",
-    "judgement": "Reached-failed-abandoned row. Exposure accumulated 2-fold on chronic dosing (Dobbins 2015, T2DM), so PK was not the limit; the registry's own stop reason is lack of a PK/PD relationship for HDL-C."
+    "judgement": "Dose scored on its own prediction (rule v4): PD target not held: fasting trough NEFA rose on chronic dosing (registry). Reached-failed-abandoned row. Exposure accumulated 2-fold on chronic dosing (Dobbins 2015, T2DM), so PK was not the limit; the registry's own stop reason is lack of a PK/PD relationship for HDL-C."
    },
    {
     "retrodiction": false,
@@ -613,7 +610,6 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "judgement": "Opener."
@@ -622,11 +618,11 @@
     "retrodiction": false,
     "patient_signal_reversed": false,
     "year": 2012,
-    "status": "contra",
+    "status": "same",
     "model": "Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen",
     "model_id": "rat-ffa-merck-sp",
     "note": "Human doses reached the rat's PD target (90 % FFA suppression) yet the phase 2 lipid effect was weak; Merck stopped MK-1903.",
-    "short": "FFA target reached, lipids failed, stopped",
+    "short": "90 % FFA suppression target reached",
     "src": "https://doi.org/10.1021/jm2010964",
     "srcLabel": "Boatman 2012",
     "quote": "Because R,R-19a produced only a weak effect on serum lipids as compared with niacin, we conclude that the beneficial effects of niacin are most likely the result of an undefined GPR109a independent pathway.",
@@ -650,11 +646,10 @@
     "population": "Unselected",
     "model_first_use_year": 2009,
     "prediction_level": "class",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": false,
     "reason": "Target reached, lipid efficacy absent",
-    "judgement": "Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603)."
+    "judgement": "Dose scored on its own prediction (rule v4): the rat's PD target (90 % FFA suppression) was met in phase 1. Reached-failed-abandoned row, as the draft scores the knockout-mouse and dog tracks in the same year. The rat's PD target was met in phase 1 (FFA -90 %) and the phase 2A (NCT00847197, posted 2010-09-22) found no LDL-C change; Boatman's conclusion is the sponsor's own statement that the FFA-to-lipids prediction failed. SCH 900271 (rat FFA -70 %, Palani 2012) followed the same path in the phase 2B (NCT00941603)."
    }
   ],
   "efficacy": [

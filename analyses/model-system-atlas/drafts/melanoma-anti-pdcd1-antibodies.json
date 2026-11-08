@@ -235,7 +235,6 @@
     "srcLabel": "FDA multidisciplinary review 2023",
     "quote": "In vitro experiments demonstrated that when the serum/plasma concentration of toripalimab was >20 nM or 3 μg/mL, PD-1 receptors on the surface of T-cells were saturated.",
     "model_first_use_year": 2017,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null,
     "judgement": "The dose model is not an animal: an in-vitro occupancy titration on phase-1 patient T cells, from which the sponsor derived a 20 ug/mL steady-state trough target (about 7x the saturating concentration) meant to cover the tumour microenvironment. The monkey NOAEL (100 mg/kg, 13-23x patient AUC) supplies the tolerability margin; it is scored on this track rather than opened as a separate dose track."
@@ -273,7 +272,6 @@
     "srcLabel": "Tang 2019",
     "quote": "As shown in Additional file 1 : Table S3, the majority of subjects in the 3 dose cohorts maintained full occupancy (> 80%) of the PD-1 receptor on the peripheral blood T lymphocytes over the course of treatment.",
     "model_first_use_year": 2017,
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": true,
     "reason": "Occupancy trough target reached and sufficient",

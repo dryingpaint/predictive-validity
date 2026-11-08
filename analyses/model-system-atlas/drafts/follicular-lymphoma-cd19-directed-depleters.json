@@ -192,7 +192,8 @@
     "population": "Unselected",
     "model_first_use_year": 2010,
     "prediction_level": "class",
-    "reason": "No model-derived dose target"
+    "reason": "No model-derived dose target",
+    "untested_reason": "no_prediction"
    },
    {
     "year": 2015,
@@ -227,7 +228,8 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "reason": "No model-derived dose target"
+    "reason": "No model-derived dose target",
+    "untested_reason": "no_prediction"
    }
   ],
   "efficacy": [

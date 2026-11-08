@@ -51,7 +51,8 @@
     "readout_tier": "proximal",
     "quote": "In vivo, AZD8931 inhibited xenograft growth in a range of models while significantly affecting EGFR, erbB2, and erbB3 phosphorylation and downstream signaling pathways, apoptosis, and proliferation.",
     "reason": "No human erbB phosphorylation readout found",
-    "judgement": "The model's PD readout was ex-vivo erbB phosphorylation. MINT's rash and diarrhoea show EGFR-class pharmacology in patients but are not that readout, so the track stays untested."
+    "judgement": "The model's PD readout was ex-vivo erbB phosphorylation. MINT's rash and diarrhoea show EGFR-class pharmacology in patients but are not that readout, so the track stays untested.",
+    "untested_reason": "not_measured"
    },
    {
     "subjects": null,
@@ -87,7 +88,8 @@
     "readout_tier": "proximal",
     "quote": "It reduced the level of p-HER2, p-AKT, p-ERK, and p-STAT3.",
     "reason": "No patient p-HER2 readout published",
-    "judgement": "Ma 2017 (pyrotinib phase 1) sequenced ctDNA for predictive mutations and reported no target-phosphorylation readout; nothing paired the cell-line p-HER2 drop with dosed patients for any member, so untested, not an empty cell."
+    "judgement": "Ma 2017 (pyrotinib phase 1) sequenced ctDNA for predictive mutations and reported no target-phosphorylation readout; nothing paired the cell-line p-HER2 drop with dosed patients for any member, so untested, not an empty cell.",
+    "untested_reason": "not_measured"
    },
    {
     "retrodiction": false,
@@ -124,7 +126,8 @@
     "model_first_use_year": 2014,
     "judgement": "The model's PD readout is tumour HER-pathway phosphorylation; no sapitinib trial reported one, so engagement stays untested on this track.",
     "reason": "No patient HER-phosphorylation readout exists",
-    "patient_trials": null
+    "patient_trials": null,
+    "untested_reason": "not_measured"
    }
   ],
   "dose": [
@@ -247,7 +250,6 @@
     "quote": "For studies in vivo, transplantable MCF7/TamRes xenografts were treated with tamoxifen or fulvestrant, either alone or in combination with AZD8931.",
     "confidence": "high",
     "confidence_note": "Full text read: 100 mg/kg daily oral gavage; no plasma exposure, no body-weight or tolerability data reported.",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": false,
     "subjects": null,

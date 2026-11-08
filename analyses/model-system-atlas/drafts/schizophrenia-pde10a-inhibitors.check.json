@@ -45,7 +45,9 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": "dose table row 'reached, failed, abandoned'",
-   "note": "DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread)."
+   "note": "DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): patient exposures sat inside the predicted efficacious range"
   },
   {
    "cell": "efficacy",

@@ -106,16 +106,6 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "rule": null,
-   "note": "Blackwell 2015 (BCRT, PMID 26497877, epub 2015-10-24) resolves; quote verbatim in abstract (paywalled body). 'Reached, failed, abandoned' row applied with MTD standing in for an exposure target the model never stated (rule question 2)."
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": null,
    "note": "Wallin 2011 quote verbatim. FERGI arm B (NCT01437566, PFS primary, completed 2016-04) has no results posting or publication (PubMed and web searched), so 'enough' cannot be judged; untested holds. Note cites a 2016 result inside a 2011-dated entry, harmless since status is unchanged."
   },
   {
@@ -234,7 +224,7 @@
   },
   {
    "cell": "dose",
-   "index": 6,
+   "index": 5,
    "verdict": "confirmed",
    "source_resolves": true,
    "quote_found": "verbatim",

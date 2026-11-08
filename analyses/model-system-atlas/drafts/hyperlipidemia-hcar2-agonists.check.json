@@ -74,7 +74,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Reached-failed-abandoned row gives contra; chronic FFA loss is a PD not PK failure, which the table has no row for (rule question 2). Status unchanged either way. comparison_stated issue as engagement 2."
+   "note": "Reached-failed-abandoned row gives contra; chronic FFA loss is a PD not PK failure, which the table has no row for (rule question 2). Status unchanged either way. comparison_stated issue as engagement 2.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): acute FFA suppression, the model's PD target, was reached"
   },
   {
    "cell": "dose",
@@ -92,7 +94,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Same logic as dose 2; pairing with Palani sound; registry_date 2016-04-12 confirmed for NCT00941603."
+   "note": "Same logic as dose 2; pairing with Palani sound; registry_date 2016-04-12 confirmed for NCT00941603.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): acute FFA suppression, the dog's PD target, was reached"
   },
   {
    "cell": "dose",
@@ -110,7 +114,9 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Registry row verbatim (posted 2017-09-21) but it shows fasting trough NEFA ROSE (+26 to +39% vs +7% placebo; SDs 70-135% impossible for decreases). Note 'suppressed NEFA' is wrong; PD target not held. Contra holds under either row."
+   "note": "Registry row verbatim (posted 2017-09-21) but it shows fasting trough NEFA ROSE (+26 to +39% vs +7% placebo; SDs 70-135% impossible for decreases). Note 'suppressed NEFA' is wrong; PD target not held. Contra holds under either row.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): PD target not held: fasting trough NEFA rose on chronic dosing (registry)"
   },
   {
    "cell": "efficacy",
@@ -308,7 +314,9 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "note": "Boatman abstract verbatim. Case-3 row (reached, failed, abandoned) with derived_from efficacy as on dose 2/4; margin_stated false right (abstract gives no numeric margin). Acute target reached, chronic lost (Lauring): existing rule question 2; contra either way.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Dose scored on its own prediction (rule v4): the rat's PD target (90 % FFA suppression) was met in phase 1"
   },
   {
    "cell": "efficacy",

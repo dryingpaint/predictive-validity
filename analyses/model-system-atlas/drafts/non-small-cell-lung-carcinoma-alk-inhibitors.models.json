@@ -226,7 +226,6 @@
       "magnitude": null,
       "magnitude_basis": null,
       "source_calls_it": null,
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "population": "healthy subjects (single-dose ketoconazole and rifampin DDI studies) extrapolated to ALK-positive NSCLC patients at steady state"
@@ -264,7 +263,6 @@
       "magnitude": "within_2x",
       "magnitude_basis": "alectinib AUC ratio with posaconazole, simulated 1.64 vs observed 1.75 (study NP28990)",
       "source_calls_it": "partial",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "population": "healthy subjects, single 300 mg alectinib with posaconazole (NP28990) or rifampicin (NP29042)"
@@ -304,7 +302,6 @@
       "magnitude": "within_2x",
       "magnitude_basis": "lorlatinib exposure with itraconazole, PBPK-predicted vs observed (study B7461012, PBPK review lines 11079-11110); perpetrator check on midazolam Table 101 predicted/observed 0.94-1.43",
       "source_calls_it": "match",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "population": "healthy subjects, single 100 mg lorlatinib with itraconazole 200 mg QD (B7461012); extrapolated to steady state in patients"

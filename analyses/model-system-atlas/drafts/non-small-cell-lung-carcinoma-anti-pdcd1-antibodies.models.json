@@ -92,7 +92,12 @@
       "endpoint_role": "primary",
       "outcome_tested": null,
       "patient_trials": [
-       {"nct": "NCT03856411", "registry_date": null, "doi": "10.1200/JCO.22.00727", "quote": "At the interim OS analysis, the toripalimab arm had a significantly longer OS than the placebo arm (median OS not reached v 17.1 months, hazard ratio = 0.69; 95% CI, 0.53 to 0.92; two-sided P = .0099)."}
+       {
+        "nct": "NCT03856411",
+        "registry_date": null,
+        "doi": "10.1200/JCO.22.00727",
+        "quote": "At the interim OS analysis, the toripalimab arm had a significantly longer OS than the placebo arm (median OS not reached v 17.1 months, hazard ratio = 0.69; 95% CI, 0.53 to 0.92; two-sided P = .0099)."
+       }
       ],
       "judgement": "Pairing is mine (comparison_stated false): the FDA review reports the model, CHOICE-01 the patients, and nobody set them side by side. Scored same because the model's direction was positive with a real window (CTLs alone inert), but partial: it under-called a drug that then gave HR 0.49. Whether an under-call of a drug that worked is same direction-only or should be set aside is the open rule question the checker raised for camrelizumab's model.",
       "reason": "Minor mouse activity; drug worked in NSCLC"
@@ -226,7 +231,6 @@
       "magnitude_basis": null,
       "source_calls_it": null,
       "population": "Unselected",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "judgement": "One track for both members' popPK models, by analogy with the draft's single monkey track; each is a sponsor model fit to patient PK and used to pick the regimen carried into the Phase 3. The brief's in-silico dose-model category; prediction_level class.",
@@ -265,7 +269,6 @@
       "magnitude_basis": "observed steady-state Cmax/Cmin at 240 mg Q3W (85/19 ug/mL) vs the 3 mg/kg Q2W reference (77/25 ug/mL) the simulation matched to; simulated 95% exposure coverage 88-96%",
       "source_calls_it": "match",
       "population": "Unselected",
-      "derived_from": null,
       "blocked_by": null,
       "margin_stated": null,
       "judgement": "Reached-and-worked rule. The FDA states the observed 240 mg Q3W and 3 mg/kg Q2W exposures were similar and both sat within the concentration predicted to keep tumour PD-1 fully occupied; the efficacy pairing with CHOICE-01 is mine, so comparison_stated false. No tolerability margin is a popPK output, so margin_stated null; the monkey track carries decision 16.",

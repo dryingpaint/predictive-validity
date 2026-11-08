@@ -202,7 +202,6 @@
     "population": "Unselected",
     "model_first_use_year": 2008,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -241,24 +240,23 @@
     "population": "Unselected",
     "model_first_use_year": 2014,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
    {
     "model_id": "setipiprant-asthma-allergen-challenge",
     "year": 2017,
-    "status": "contra",
+    "status": "same",
     "model": "Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)",
     "note": "1000 mg b.i.d. was given in both field trials, worked in Phase 2 (-0.15 DNSS, p=0.030), failed in Phase 3 (-0.02, p=0.652); programme dropped.",
-    "short": "Challenge regimen reached, failed, abandoned",
+    "short": "Challenge regimen reached and tolerated",
     "src": "https://doi.org/10.1186/s13223-017-0183-z",
     "srcLabel": "Ratner 2017",
     "quote": "However, no therapeutic effects were observed for this dose versus placebo in the Phase 3 trial.",
     "confidence": "medium",
     "confidence_note": "Full text read (open access, PMC5379543). Phase 3 trough exposure was lower than Phase 2 on the same nominal regimen (median 1120 vs 1540-1920 ng/mL; 250 mg capsules replaced by 500 mg tablets), which a re-scorer could read as 'target not reached'.",
     "reason": "Regimen reached, Phase 3 failed, dropped",
-    "judgement": "Scored on the 'reached, failed, abandoned' row: the model gave a regimen, not an exposure target, and that regimen was dosed in 579 + 630 patients. The model also stated the regimen was tolerated ('setipiprant was well tolerated and no clinically relevant adverse events occurred') and it was, so margin_stated is true, but the efficacy failure makes the dose call contra, derived_from efficacy so the failure is counted once. Ratner states the comparison (the dose 'was selected ... based on findings from a Phase 2 proof-of-mechanism study') and calls the Phase 2/3 discrepancy 'not fully known', hence unresolved. Earliest public date: the Phase 3 completed 2012-02 and no results were ever posted; a 2012 sponsor announcement was not found by search, so the entry is dated to the paper (online 2017-04-04).",
+    "judgement": "Dose scored on its own prediction (rule v4): the challenge regimen, 1000 mg b.i.d., was dosed and tolerated. Scored on the 'reached, failed, abandoned' row: the model gave a regimen, not an exposure target, and that regimen was dosed in 579 + 630 patients. The model also stated the regimen was tolerated ('setipiprant was well tolerated and no clinically relevant adverse events occurred') and it was, so margin_stated is true, but the efficacy failure makes the dose call contra, derived_from efficacy so the failure is counted once. Ratner states the comparison (the dose 'was selected ... based on findings from a Phase 2 proof-of-mechanism study') and calls the Phase 2/3 discrepancy 'not fully known', hence unresolved. Earliest public date: the Phase 3 completed 2012-02 and no results were ever posted; a 2012 sponsor announcement was not found by search, so the entry is dated to the paper (online 2017-04-04).",
     "subjects": "patients",
     "comparison_stated": true,
     "source_tier": 1,
@@ -280,7 +278,6 @@
     "population": "Unselected",
     "model_first_use_year": 2014,
     "prediction_level": "class",
-    "derived_from": "efficacy",
     "blocked_by": null,
     "margin_stated": true
    },
@@ -319,7 +316,6 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    },
@@ -358,7 +354,6 @@
     "population": "Unselected",
     "model_first_use_year": 2015,
     "prediction_level": "class",
-    "derived_from": null,
     "blocked_by": null,
     "margin_stated": null
    }
