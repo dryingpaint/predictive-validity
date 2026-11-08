@@ -15,8 +15,8 @@ recurrence names) and rows whose stage was dropped are read from the name with t
 (`basis` = name). "chronic" is the default state of a chronic disease and, like a subtype that only
 restates the disease (HIV-1, plaque psoriasis), is folded into the general indication.
 
-Cohort and disease list as lists.py: Phase 2 entries 2008-2019, the 71 named indications in
-lists/named_indications.csv. Read-only. Writes lists/indications.csv (one row per disease x
+Cohort as lists.py: Phase 2 entries 2008-2019, in the diseases that have a tracked tile
+(lists/named_contexts.csv). Read-only. Writes lists/indications.csv (one row per disease x
 indication), lists/indications_by_disease.csv, and disease_indications.png / .svg beside this file.
 """
 import os
@@ -213,10 +213,10 @@ def draw(per: pd.DataFrame, by: pd.DataFrame, snap: str, share_name: float, out:
     fy = lambda inches: 1 - inches / fig_h
 
     n_ind = int(by.n_indications.sum())
-    fig.text(0.012, fy(0.28), "Seventy-one diseases, their programs, and the indications those programs were tested in",
+    fig.text(0.012, fy(0.28), f"The {len(by)} diseases with a tracked tile, their programs, and the indications those programs were tested in",
              fontsize=15, fontweight="bold", color=INK, va="top")
     fig.text(0.012, fy(0.62),
-             "Programs entering Phase 2 in 2008–2019 in the atlas's 71 named diseases. An indication is the stage, patient subtype or line of therapy a "
+             "Programs entering Phase 2 in 2008–2019 in the atlas's diseases that have a tracked tile. An indication is the stage, patient subtype or line of therapy a "
              "program's trials were registered under within the disease;\n\"general\" is the disease with none stated. A program counts in every "
              "indication it was tested in, so a disease's indications add to more than its programs. Each axis is a number of programs, log scale.",
              fontsize=8.4, color=MUTED, va="top", linespacing=1.45)
@@ -299,6 +299,7 @@ def draw(per: pd.DataFrame, by: pd.DataFrame, snap: str, share_name: float, out:
 
 def main() -> None:
     named = pd.read_csv(os.path.join(LISTS, "named_indications.csv"))
+    named = named[named.mondo_id.isin(pd.read_csv(os.path.join(LISTS, "named_contexts.csv")).mondo_id)]
     ent, snap = cohort(named)
     x = classify(condition_rows(ent, named), named)
     per, by = tabulate(ent, x, named)

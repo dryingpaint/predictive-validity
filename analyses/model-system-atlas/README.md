@@ -9,7 +9,7 @@ happened in patients, on four questions (engagement, dose, efficacy, safety), st
 `drafts/route_store.py` write to the database, each replacing its own unit.
 
 ```
-.venv/bin/python analyses/model-system-atlas/lists.py                      # named indications
+.venv/bin/python analyses/model-system-atlas/lists.py                      # the disease list
 .venv/bin/python analyses/model-system-atlas/class_audit.py [store]        # register and tracked tiles
 .venv/bin/python analyses/model-system-atlas/fetch_sources.py [store]      # FDA review texts
 # per tile, the agent passes in drafts/{DRAFT,CHECK,ADJ,MODELS,MODELS_CHECK}_TASK.md, then:
