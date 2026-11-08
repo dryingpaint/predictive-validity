@@ -37,7 +37,6 @@ def test_an_override_wins_over_a_rule_and_an_unknown_family_is_refused(tmp_path)
     p.write_text("slug,model_id,family,note\nt,m,no_such_family,\n")
     with pytest.raises(ValueError):
         families.load_overrides(str(p))
-    assert set(families.SHORT) == set(families.FAMILIES)
 
 
 def test_prediction_reads_safety_and_a_model_that_said_no():
@@ -116,10 +115,7 @@ def test_safety_review_must_cover_every_compared_contra(tmp_path, monkeypatch, c
         lessons.cmd_safety(t)
 
 
-def test_wilson_interval_and_kappa():
-    lo, hi = lessons.wilson(9, 27)
-    assert 0.18 < lo < 0.20 and 0.51 < hi < 0.53
-    assert all(np.isnan(v) for v in lessons.wilson(0, 0))
+def test_kappa():
     assert lessons.kappa(pd.Series(["a", "b", "a", "b"]), pd.Series(["a", "b", "a", "b"])) == 1.0
     assert lessons.kappa(pd.Series(["a", "a", "b", "b"]), pd.Series(["a", "b", "a", "b"])) == 0.0
 

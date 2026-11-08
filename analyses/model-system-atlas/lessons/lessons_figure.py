@@ -22,7 +22,7 @@ from matplotlib.patches import Rectangle  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, HERE)
-from families import SHORT  # noqa: E402
+from families import FAMILIES  # noqa: E402
 from glance_nature import INK, MUTED, RC, RULE, STATUS  # noqa: E402
 
 MATCHED, CONTRA, RETRO, UNTESTED = STATUS["same"][0], STATUS["contra"][0], STATUS["retro"][0], STATUS["untested"][0]
@@ -49,7 +49,7 @@ def legend(ax, handles, labels, x: float) -> None:
               handletextpad=0.4, columnspacing=1.0, borderaxespad=0)
 
 
-def engagement_panel(ax, es: pd.DataFrame) -> None:
+def engagement_panel(ax, es: pd.DataFrame, n_tiles: int) -> None:
     """One 100 % stacked bar per row of the engagement summary, grouped, the contradicted share and its interval at the right."""
     y = 0.0
     for group in ["outcome", "tier", "area"]:
@@ -75,7 +75,7 @@ def engagement_panel(ax, es: pd.DataFrame) -> None:
     ax.set_xticks([0, 0.5, 1])
     ax.set_xticklabels(["0", "50 %", "100 %"])
     n_held = int(es[es.group == "outcome"].n.sum())
-    ax.set_xlabel(f"Tiles whose engagement headline matched ({n_held} of 119)", fontsize=6, labelpad=2)
+    ax.set_xlabel(f"Tiles whose engagement headline matched ({n_held} of {n_tiles})", fontsize=6, labelpad=2)
     ax.set_title("a  Target reached, disease still unpredicted", fontsize=7, loc="left", pad=6)
     ax.text(1.03, 0.45, "contradicted (Wilson 95 %)", fontsize=5, color=MUTED, ha="left", va="center", style="italic")
     legend(ax, [Rectangle((0, 0), 1, 1, facecolor=c, edgecolor="white", linewidth=0.5) for c, _ in EFF_STYLE.values()], [l for _, l in EFF_STYLE.values()], -0.5)
@@ -86,11 +86,11 @@ def safety_panel(ax, u: pd.DataFrame, n_systems: int, n_tracks: int) -> None:
     """Stacked counts per harm class from the unique (system, harm, type) rows."""
     counts = u.harm.value_counts()
     y = 0.0
+    by_type = pd.crosstab(u.harm, u.type)
     for harm in counts.index:
-        g = u[u.harm == harm]
         left = 0
         for key, (color, hatch, _) in TYPE_STYLE.items():
-            n = int((g.type == key).sum())
+            n = int(by_type.loc[harm].get(key, 0))
             if n:
                 ax.add_patch(Rectangle((left, y - 0.36), n, 0.72, facecolor=color, edgecolor="white", linewidth=0.5, hatch=hatch))
                 left += n
@@ -107,19 +107,23 @@ def safety_panel(ax, u: pd.DataFrame, n_systems: int, n_tracks: int) -> None:
     clean(ax)
 
 
-def draw(es: pd.DataFrame, u: pd.DataFrame, n_tracks: int, out: str) -> None:
-    plt.rcParams.update(RC)
-    fig = plt.figure(figsize=(7.2, 4.1))
-    ax_a = fig.add_axes([0.20, 0.17, 0.235, 0.70])
-    ax_b = fig.add_axes([0.72, 0.17, 0.24, 0.70])
-    engagement_panel(ax_a, es)
-    safety_panel(ax_b, u, u.model_id.nunique(), n_tracks)
-    fig.text(0.5, 0.012, "Every tile reached Phase 2: a model that said no and was believed is not here. Nothing here is a sensitivity. "
-             "Statuses are the atlas's adjudicated statuses.", fontsize=5, color=MUTED, ha="center", va="bottom")
+def save(fig, out: str) -> None:
     for ext in ("png", "pdf", "svg"):
         fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
     plt.close(fig)
     print(f"wrote {out}.png/.pdf/.svg")
+
+
+def draw(es: pd.DataFrame, n_tiles: int, u: pd.DataFrame, n_tracks: int, out: str) -> None:
+    plt.rcParams.update(RC)
+    fig = plt.figure(figsize=(7.2, 4.1))
+    ax_a = fig.add_axes([0.20, 0.17, 0.235, 0.70])
+    ax_b = fig.add_axes([0.72, 0.17, 0.24, 0.70])
+    engagement_panel(ax_a, es, n_tiles)
+    safety_panel(ax_b, u, u.model_id.nunique(), n_tracks)
+    fig.text(0.5, 0.012, "Every tile reached Phase 2: a model that said no and was believed is not here. Nothing here is a sensitivity. "
+             "Statuses are the atlas's adjudicated statuses.", fontsize=5, color=MUTED, ha="center", va="bottom")
+    save(fig, out)
 
 
 def forest(ax, r: pd.DataFrame, title: str, xlabel: str) -> None:
@@ -143,7 +147,7 @@ def forest(ax, r: pd.DataFrame, title: str, xlabel: str) -> None:
             ax.plot(row.ppv, yy, "o", ms=3.2, color=INK, zorder=3)
         else:
             ax.plot(row.ppv, yy, "o", ms=3.0, markerfacecolor="white", markeredgecolor=INK, markeredgewidth=0.6, zorder=3)
-        ax.text(-0.05, yy, SHORT[row.family], fontsize=5.5, ha="right", va="center", color=INK)
+        ax.text(-0.05, yy, FAMILIES[row.family][1], fontsize=5.5, ha="right", va="center", color=INK)
         ax.text(1.05, yy, f"{row.matched}/{row.n_tracks} · {row.n_tiles} tiles", fontsize=5, ha="left", va="center", color=MUTED)
     if n_rank < len(rows):
         yr = ys[n_rank] + 0.85
@@ -168,7 +172,4 @@ def draw_families(rates: pd.DataFrame, out: str) -> None:
     forest(ax_b, rates[rates.q == "safety"], "b  Safety: how often the safety picture held", "Share of safety predictions that held in patients")
     fig.text(0.5, 0.012, "Rates follow the classes each family served (family_rates_by_outcome.csv splits them). Intervals: 95 % cluster bootstrap over tiles. "
              "Nothing here is a sensitivity.", fontsize=5, color=MUTED, ha="center", va="bottom")
-    for ext in ("png", "pdf", "svg"):
-        fig.savefig(f"{out}.{ext}", dpi=300 if ext == "png" else None)
-    plt.close(fig)
-    print(f"wrote {out}.png/.pdf/.svg")
+    save(fig, out)

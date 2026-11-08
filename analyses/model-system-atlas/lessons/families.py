@@ -7,61 +7,40 @@ No database access; lessons.py feeds it rows."""
 from __future__ import annotations
 
 import csv
-import os
 import re
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-OVERRIDES = os.path.join(HERE, "overrides.csv")
-
-# code -> (label, group); the order is the order the figure lists them in
+# code -> (label, short label for the forest panels at 5.5 pt); the order is the order the figure lists them in
 FAMILIES: dict[str, tuple[str, str]] = {
-    "tox_repeat_dose": ("Toxicology in standard species", "animal"),
-    "tox_cv_safety_pharm": ("Cardiovascular safety pharmacology", "animal"),
-    "xenograft_cell_line": ("Cell-line xenograft", "animal"),
-    "xenograft_pdx": ("Patient-derived xenograft", "animal"),
-    "syngeneic_tumour": ("Syngeneic mouse tumour", "animal"),
-    "gemm_tumour": ("Engineered mouse tumour (GEMM)", "animal"),
-    "humanised_mouse": ("Humanised or knock-in mouse", "animal"),
-    "target_knockout": ("Target knockout or mutant animal", "animal"),
-    "genetic_disease_model": ("Transgenic or genetic disease model", "animal"),
-    "infected_or_chimeric_liver": ("Infected or human-liver-chimeric animal", "animal"),
-    "inflammatory_disease_model": ("Induced inflammatory or joint disease model", "animal"),
-    "metabolic_disease_model": ("Rodent metabolic, renal or endocrine model", "animal"),
-    "behaviour_cns_model": ("Rodent behaviour, cognition or pain model", "animal"),
-    "pkpd_occupancy_animal": ("PK, occupancy or PET in animals", "animal"),
-    "organ_pharmacology_animal": ("Organ-level evoked pharmacology", "animal"),
-    "nonrodent_disease_model": ("Non-rodent disease or pharmacology model", "animal"),
-    "patient_material_ex_vivo": ("Patient-derived cells, organoids or tissue", "ex vivo"),
-    "donor_primary_human": ("Donor primary human cells, blood or tissue", "ex vivo"),
-    "cell_line_assay": ("Cell line, replicon or cell panel", "ex vivo"),
-    "biochemical_assay": ("Biochemical, binding or transporter assay", "ex vivo"),
-    "allergen_challenge_human": ("Allergen challenge in people", "human challenge"),
-    "pharmacological_challenge_human": ("Pharmacological challenge in people", "human challenge"),
-    "target_lof_genetics": ("Target loss-of-function carriers", "human genetics"),
-    "pharmacogenetic_stratification": ("Pharmacogenetic stratification", "human genetics"),
-    "pbpk_translational": ("PBPK or translational PK from preclinical data", "in silico"),
-    "poppk_exposure_response": ("Population PK / exposure-response from clinical data", "in silico"),
-    "qsp_mechanistic": ("QSP or mechanistic disease model", "in silico"),
-    "expression_classifier": ("Expression or structure classifier", "in silico"),
-    "cross_indication": ("Cross-indication import", "cross-indication"),
+    "tox_repeat_dose": ("Toxicology in standard species", "Toxicology, standard species"),
+    "tox_cv_safety_pharm": ("Cardiovascular safety pharmacology", "CV safety pharmacology"),
+    "xenograft_cell_line": ("Cell-line xenograft", "Cell-line xenograft"),
+    "xenograft_pdx": ("Patient-derived xenograft", "Patient-derived xenograft"),
+    "syngeneic_tumour": ("Syngeneic mouse tumour", "Syngeneic mouse tumour"),
+    "gemm_tumour": ("Engineered mouse tumour (GEMM)", "Engineered mouse tumour (GEMM)"),
+    "humanised_mouse": ("Humanised or knock-in mouse", "Humanised or knock-in mouse"),
+    "target_knockout": ("Target knockout or mutant animal", "Target knockout animal"),
+    "genetic_disease_model": ("Transgenic or genetic disease model", "Transgenic disease model"),
+    "infected_or_chimeric_liver": ("Infected or human-liver-chimeric animal", "Infected / chimeric-liver animal"),
+    "inflammatory_disease_model": ("Induced inflammatory or joint disease model", "Induced inflammatory model"),
+    "metabolic_disease_model": ("Rodent metabolic, renal or endocrine model", "Rodent metabolic / renal model"),
+    "behaviour_cns_model": ("Rodent behaviour, cognition or pain model", "Rodent behaviour / pain model"),
+    "pkpd_occupancy_animal": ("PK, occupancy or PET in animals", "PK, occupancy or PET in animals"),
+    "organ_pharmacology_animal": ("Organ-level evoked pharmacology", "Organ-level evoked pharmacology"),
+    "nonrodent_disease_model": ("Non-rodent disease or pharmacology model", "Non-rodent disease model"),
+    "patient_material_ex_vivo": ("Patient-derived cells, organoids or tissue", "Patient cells or organoids"),
+    "donor_primary_human": ("Donor primary human cells, blood or tissue", "Donor human cells or tissue"),
+    "cell_line_assay": ("Cell line, replicon or cell panel", "Cell line or replicon"),
+    "biochemical_assay": ("Biochemical, binding or transporter assay", "Biochemical / binding assay"),
+    "allergen_challenge_human": ("Allergen challenge in people", "Allergen challenge in people"),
+    "pharmacological_challenge_human": ("Pharmacological challenge in people", "Drug challenge in people"),
+    "target_lof_genetics": ("Target loss-of-function carriers", "Target LoF carriers (human)"),
+    "pharmacogenetic_stratification": ("Pharmacogenetic stratification", "Pharmacogenetic stratification"),
+    "pbpk_translational": ("PBPK or translational PK from preclinical data", "PBPK / translational PK"),
+    "poppk_exposure_response": ("Population PK / exposure-response from clinical data", "Population PK, clinical data"),
+    "qsp_mechanistic": ("QSP or mechanistic disease model", "QSP / mechanistic model"),
+    "expression_classifier": ("Expression or structure classifier", "Expression / structure classifier"),
+    "cross_indication": ("Cross-indication import", "Cross-indication import"),
 }
-
-# figure labels, short enough for the forest panels at 5.5 pt
-SHORT: dict[str, str] = {
-    "tox_repeat_dose": "Toxicology, standard species", "tox_cv_safety_pharm": "CV safety pharmacology", "xenograft_cell_line": "Cell-line xenograft",
-    "xenograft_pdx": "Patient-derived xenograft", "syngeneic_tumour": "Syngeneic mouse tumour", "gemm_tumour": "Engineered mouse tumour (GEMM)",
-    "humanised_mouse": "Humanised or knock-in mouse", "target_knockout": "Target knockout animal", "genetic_disease_model": "Transgenic disease model",
-    "infected_or_chimeric_liver": "Infected / chimeric-liver animal", "inflammatory_disease_model": "Induced inflammatory model",
-    "metabolic_disease_model": "Rodent metabolic / renal model", "behaviour_cns_model": "Rodent behaviour / pain model",
-    "pkpd_occupancy_animal": "PK, occupancy or PET in animals", "organ_pharmacology_animal": "Organ-level evoked pharmacology",
-    "nonrodent_disease_model": "Non-rodent disease model", "patient_material_ex_vivo": "Patient cells or organoids",
-    "donor_primary_human": "Donor human cells or tissue", "cell_line_assay": "Cell line or replicon", "biochemical_assay": "Biochemical / binding assay",
-    "allergen_challenge_human": "Allergen challenge in people", "pharmacological_challenge_human": "Drug challenge in people",
-    "target_lof_genetics": "Target LoF carriers (human)", "pharmacogenetic_stratification": "Pharmacogenetic stratification",
-    "pbpk_translational": "PBPK / translational PK", "poppk_exposure_response": "Population PK, clinical data", "qsp_mechanistic": "QSP / mechanistic model",
-    "expression_classifier": "Expression / structure classifier", "cross_indication": "Cross-indication import",
-}
-assert set(SHORT) == set(FAMILIES)
 
 
 def _r(*pats: str) -> re.Pattern:
@@ -184,32 +163,27 @@ RULES: list[tuple[str, str | frozenset | None, re.Pattern]] = [
 def assign(model_kind: str, text: str) -> tuple[str, str]:
     """The first rule that admits the kind and matches the text: (family, 'rule'); ('unassigned', '') when none."""
     for fam, kind, rx in RULES:
-        if isinstance(kind, frozenset):
-            if model_kind not in kind:
-                continue
-        elif kind and model_kind != kind:
+        if model_kind not in (kind if isinstance(kind, frozenset) else {kind}):
             continue
         if rx.search(text):
             return fam, "rule"
     return "unassigned", ""
 
 
-def load_overrides(path: str = OVERRIDES) -> dict[tuple[str, str], tuple[str, str]]:
-    """(slug, model_id) -> (family, note); an unknown family code is an error, not a silent new family."""
+def load_overrides(path: str) -> dict[tuple[str, str], str]:
+    """(slug, model_id) -> family; an unknown family code is an error, not a silent new family."""
     out = {}
-    if not os.path.exists(path):
-        return out
     with open(path, newline="") as f:
         for row in csv.DictReader(f):
             fam = row["family"].strip()
             if fam not in FAMILIES:
                 raise ValueError(f"overrides.csv: unknown family {fam!r} for {row['slug']} / {row['model_id']}")
-            out[(row["slug"], row["model_id"])] = (fam, row.get("note", ""))
+            out[(row["slug"], row["model_id"])] = fam
     return out
 
 
 def family_of(slug: str, model_id: str, model_kind: str, text: str, overrides: dict) -> tuple[str, str]:
     """(family, source) with source 'override' or 'rule'; 'unassigned' when neither decides."""
     if (slug, model_id) in overrides:
-        return overrides[(slug, model_id)][0], "override"
+        return overrides[(slug, model_id)], "override"
     return assign(model_kind, text)
