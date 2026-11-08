@@ -1,671 +1,5 @@
 [
  {
-  "slug": "rheumatoid-arthritis-btk-inhibitors",
-  "area": "autoimmune",
-  "disease": "rheumatoid arthritis",
-  "mondo_id": "MONDO:0008383",
-  "mechanism_key": "BTK|inhibitor",
-  "mechanism": "BTK inhibitors",
-  "class_programs": 8,
-  "class_share": 0.083,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "TAS5315",
-   "acalabrutinib",
-   "bms-986142",
-   "elsubrutinib",
-   "evobrutinib",
-   "fenebrutinib",
-   "poseltinib",
-   "spebrutinib"
-  ],
-  "furthest_phase": 2
- },
- {
-  "slug": "psoriasis-anti-il17a-antibodies",
-  "area": "autoimmune",
-  "disease": "psoriasis",
-  "mondo_id": "MONDO:0005083",
-  "mechanism_key": "IL17A|binder_neutralizer",
-  "mechanism": "anti-IL17A antibodies",
-  "class_programs": 4,
-  "class_share": 0.05,
-  "modality_groups": [
-   "antibody",
-   "protein"
-  ],
-  "members": [
-   "ixekizumab",
-   "izokibep",
-   "netakimab",
-   "vunakizumab"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "psoriasis-rorc-inverse-agonists",
-  "area": "autoimmune",
-  "disease": "psoriasis",
-  "mondo_id": "MONDO:0005083",
-  "mechanism_key": "RORC|inverse_agonist",
-  "mechanism": "RORC inverse agonists",
-  "class_programs": 4,
-  "class_share": 0.05,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "AGN-242428",
-   "BI 730357",
-   "VTP-43742",
-   "gsk-2981278"
-  ],
-  "furthest_phase": 2
- },
- {
-  "slug": "ulcerative-colitis-s1pr1-agonists",
-  "area": "autoimmune",
-  "disease": "ulcerative colitis",
-  "mondo_id": "MONDO:0005101",
-  "mechanism_key": "S1PR1|agonist",
-  "mechanism": "S1PR1 agonists",
-  "class_programs": 3,
-  "class_share": 0.043,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "etrasimod",
-   "mocravimod",
-   "ozanimod"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "type-2-diabetes-mellitus-glp1r-agonists",
-  "area": "endocrine",
-  "disease": "type 2 diabetes mellitus",
-  "mondo_id": "MONDO:0005148",
-  "mechanism_key": "GLP1R|agonist",
-  "mechanism": "GLP1R agonists",
-  "class_programs": 12,
-  "class_share": 0.095,
-  "modality_groups": [
-   "peptide",
-   "protein",
-   "small molecule"
-  ],
-  "members": [
-   "CJC-1134-PC",
-   "HS-20004",
-   "LY2428757",
-   "TTP054",
-   "TTP273",
-   "YH14617",
-   "danuglipron",
-   "dulaglutide",
-   "efpeglenatide",
-   "froniglutide",
-   "pegloxenatide",
-   "semaglutide"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "type-2-diabetes-mellitus-gck-activators",
-  "area": "endocrine",
-  "disease": "type 2 diabetes mellitus",
-  "mondo_id": "MONDO:0005148",
-  "mechanism_key": "GCK|activator",
-  "mechanism": "GCK activators",
-  "class_programs": 9,
-  "class_share": 0.071,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "arry-403",
-   "azd-1656",
-   "cadisegliatin",
-   "dorzagliatin",
-   "globalagliatin",
-   "ly-2599506",
-   "mk-0941",
-   "nerigliatin",
-   "pf-04991532"
-  ],
-  "furthest_phase": 3
- },
- {
-  "slug": "metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists",
-  "area": "gastroenterology",
-  "disease": "metabolic dysfunction-associated steatohepatitis",
-  "mondo_id": "MONDO:0007027",
-  "mechanism_key": "NR1H4|agonist",
-  "mechanism": "NR1H4 agonists",
-  "class_programs": 4,
-  "class_share": 0.053,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "cilofexor",
-   "edp-305",
-   "tropifexor",
-   "vonafexor"
-  ],
-  "furthest_phase": 2
- },
- {
-  "slug": "gastroesophageal-reflux-disease-atp4a-blockers",
-  "area": "gastroenterology",
-  "disease": "gastroesophageal reflux disease",
-  "mondo_id": "MONDO:0007186",
-  "mechanism_key": "ATP4A|blocker",
-  "mechanism": "ATP4A blockers",
-  "class_programs": 3,
-  "class_share": 0.273,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "fexuprazan",
-   "revaprazan",
-   "tegoprazan"
-  ],
-  "furthest_phase": 3
- },
- {
-  "slug": "hemophilia-b-f9-replacement-gene-therapy",
-  "area": "hematology",
-  "disease": "hemophilia B",
-  "mondo_id": "MONDO:0010604",
-  "mechanism_key": "F9|replacement",
-  "mechanism": "F9 replacement / gene therapy",
-  "class_programs": 7,
-  "class_share": 0.7,
-  "modality_groups": [
-   "gene therapy",
-   "protein"
-  ],
-  "members": [
-   "AAV5-hFIX",
-   "AskBio009",
-   "DTX101",
-   "albutrepenonacog alfa",
-   "dalcinonacog alfa",
-   "fidanacogene elaparvovec",
-   "verbrinacogene setparvovec"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies",
-  "area": "hematology",
-  "disease": "paroxysmal nocturnal hemoglobinuria",
-  "mondo_id": "MONDO:0100244",
-  "mechanism_key": "C5|binder_neutralizer",
-  "mechanism": "anti-C5 antibodies",
-  "class_programs": 4,
-  "class_share": 0.444,
-  "modality_groups": [
-   "antibody"
-  ],
-  "members": [
-   "crovalimab",
-   "pozelimab",
-   "ravulizumab",
-   "tesidolumab"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "hepatitis-c-virus-infection-hcv-ns3-4a-protease-inhibitors",
-  "area": "infectious_disease",
-  "disease": "hepatitis C virus infection",
-  "mondo_id": "MONDO:0005231",
-  "mechanism_key": "HCV NS3/4A protease|inhibitor",
-  "mechanism": "HCV NS3/4A protease inhibitors",
-  "class_programs": 13,
-  "class_share": 0.25,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "asunaprevir",
-   "danoprevir",
-   "faldaprevir",
-   "glecaprevir",
-   "grazoprevir",
-   "gs-9256",
-   "narlaprevir",
-   "paritaprevir",
-   "simeprevir",
-   "sovaprevir",
-   "vaniprevir",
-   "vedroprevir",
-   "voxilaprevir"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "hiv-infectious-disease-hiv-integrase-insti-inhibitors",
-  "area": "infectious_disease",
-  "disease": "HIV infectious disease",
-  "mondo_id": "MONDO:0005109",
-  "mechanism_key": "HIV integrase (INSTI)|inhibitor",
-  "mechanism": "HIV integrase (INSTI) inhibitors",
-  "class_programs": 3,
-  "class_share": 0.094,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "bictegravir",
-   "cabotegravir",
-   "dolutegravir"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "hyperlipidemia-cetp-inhibitors",
-  "area": "metabolic",
-  "disease": "hyperlipidemia",
-  "mondo_id": "MONDO:0021187",
-  "mechanism_key": "CETP|inhibitor",
-  "mechanism": "CETP inhibitors",
-  "class_programs": 3,
-  "class_share": 0.091,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "drl-17822",
-   "evacetrapib",
-   "rocacetrapib"
-  ],
-  "furthest_phase": 3
- },
- {
-  "slug": "alzheimer-disease-bace1-inhibitors",
-  "area": "neurology",
-  "disease": "Alzheimer disease",
-  "mondo_id": "MONDO:0004975",
-  "mechanism_key": "BACE1|inhibitor",
-  "mechanism": "BACE1 inhibitors",
-  "class_programs": 4,
-  "class_share": 0.053,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "atabecestat",
-   "elenbecestat",
-   "ly-2886721",
-   "ly-3202626"
-  ],
-  "furthest_phase": 3
- },
- {
-  "slug": "alzheimer-disease-anti-app-antibodies",
-  "area": "neurology",
-  "disease": "Alzheimer disease",
-  "mondo_id": "MONDO:0004975",
-  "mechanism_key": "APP|binder_neutralizer",
-  "mechanism": "anti-APP antibodies",
-  "class_programs": 3,
-  "class_share": 0.039,
-  "modality_groups": [
-   "antibody"
-  ],
-  "members": [
-   "crenezumab",
-   "lecanemab",
-   "ponezumab"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "migraine-disorder-cgrp-receptor-antagonists",
-  "area": "neurology",
-  "disease": "migraine disorder",
-  "mondo_id": "MONDO:0005277",
-  "mechanism_key": "CGRP receptor|antagonist",
-  "mechanism": "CGRP receptor antagonists",
-  "class_programs": 4,
-  "class_share": 0.138,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "bi-44370",
-   "mk-3207",
-   "rimegepant",
-   "ubrogepant"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "acute-myeloid-leukemia-flt3-inhibitors",
-  "area": "oncology",
-  "disease": "acute myeloid leukemia",
-  "mondo_id": "MONDO:0018874",
-  "mechanism_key": "FLT3|inhibitor",
-  "mechanism": "FLT3 inhibitors",
-  "class_programs": 4,
-  "class_share": 0.051,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "akn-028",
-   "crenolanib",
-   "gilteritinib",
-   "quizartinib"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "breast-cancer-cdk4-6-inhibitors",
-  "area": "oncology",
-  "disease": "breast cancer",
-  "mondo_id": "MONDO:0007254",
-  "mechanism_key": "CDK4/6|inhibitor",
-  "mechanism": "CDK4/6 inhibitors",
-  "class_programs": 6,
-  "class_share": 0.047,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "abemaciclib",
-   "dalpiciclib",
-   "lerociclib",
-   "palbociclib",
-   "ribociclib",
-   "trilaciclib"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "non-small-cell-lung-carcinoma-egfr-inhibitors",
-  "area": "oncology",
-  "disease": "non-small cell lung carcinoma",
-  "mondo_id": "MONDO:0005233",
-  "mechanism_key": "EGFR|inhibitor",
-  "mechanism": "EGFR inhibitors",
-  "class_programs": 18,
-  "class_share": 0.094,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "abivertinib",
-   "ask-120067",
-   "aumolertinib",
-   "befotertinib",
-   "firmonertinib",
-   "lazertinib",
-   "mavelertinib",
-   "mobocertinib",
-   "naquotinib",
-   "nazartinib",
-   "olmutinib",
-   "osimertinib",
-   "pruvonertinib",
-   "rezivertinib",
-   "rociletinib",
-   "sunvozertinib",
-   "zipalertinib",
-   "zorifertinib"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "non-small-cell-lung-carcinoma-anti-igf1r-antibodies",
-  "area": "oncology",
-  "disease": "non-small cell lung carcinoma",
-  "mondo_id": "MONDO:0005233",
-  "mechanism_key": "IGF1R|binder_neutralizer",
-  "mechanism": "anti-IGF1R antibodies",
-  "class_programs": 4,
-  "class_share": 0.021,
-  "modality_groups": [
-   "antibody"
-  ],
-  "members": [
-   "cixutumumab",
-   "dalotuzumab",
-   "ganitumab",
-   "teprotumumab"
-  ],
-  "furthest_phase": 2
- },
- {
-  "slug": "plasma-cell-myeloma-tnfrsf17-directed-depleters",
-  "area": "oncology",
-  "disease": "plasma cell myeloma",
-  "mondo_id": "MONDO:0009693",
-  "mechanism_key": "TNFRSF17|depleter",
-  "mechanism": "TNFRSF17-directed depleters",
-  "class_programs": 8,
-  "class_share": 0.11,
-  "modality_groups": [
-   "ADC",
-   "antibody",
-   "cell therapy"
-  ],
-  "members": [
-   "BCMA CAR-NK 92 cells",
-   "BCMA CAR-T cells",
-   "P-BCMA-101",
-   "belantamab mafodotin",
-   "idecabtagene vicleucel",
-   "orvacabtagene autoleucel",
-   "vonsetamig",
-   "zevorcabtagene autoleucel"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "prostate-cancer-ar-antagonists",
-  "area": "oncology",
-  "disease": "prostate cancer",
-  "mondo_id": "MONDO:0008315",
-  "mechanism_key": "AR|antagonist",
-  "mechanism": "AR antagonists",
-  "class_programs": 5,
-  "class_share": 0.055,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "apalutamide",
-   "darolutamide",
-   "pruxelutamide",
-   "rezvilutamide",
-   "trc-253"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "ovarian-cancer-parp1-2-inhibitors",
-  "area": "oncology",
-  "disease": "ovarian cancer",
-  "mondo_id": "MONDO:0008170",
-  "mechanism_key": "PARP1/2|inhibitor",
-  "mechanism": "PARP1/2 inhibitors",
-  "class_programs": 6,
-  "class_share": 0.103,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "2x-121",
-   "niraparib",
-   "pamiparib",
-   "rucaparib",
-   "senaparib",
-   "veliparib"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "open-angle-glaucoma-rock-inhibitors",
-  "area": "ophthalmology",
-  "disease": "open-angle glaucoma",
-  "mondo_id": "MONDO:0005338",
-  "mechanism_key": "ROCK|inhibitor",
-  "mechanism": "ROCK inhibitors",
-  "class_programs": 3,
-  "class_share": 0.15,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "ATS907",
-   "DE-104",
-   "netarsudil"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "atopic-eczema-pde4-inhibitors",
-  "area": "other",
-  "disease": "atopic eczema",
-  "mondo_id": "MONDO:0004980",
-  "mechanism_key": "PDE4|inhibitor",
-  "mechanism": "PDE4 inhibitors",
-  "class_programs": 5,
-  "class_share": 0.062,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "DRM02",
-   "an-2898",
-   "crisaborole",
-   "difamilast",
-   "leo-29102"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "schizophrenia-pde10a-inhibitors",
-  "area": "psychiatry",
-  "disease": "schizophrenia",
-  "mondo_id": "MONDO:0005090",
-  "mechanism_key": "PDE10A|inhibitor",
-  "mechanism": "PDE10A inhibitors",
-  "class_programs": 5,
-  "class_share": 0.111,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "Lu AF11167",
-   "OMS824",
-   "balipodect",
-   "elpipodect",
-   "mardepodect"
-  ],
-  "furthest_phase": 2
- },
- {
-  "slug": "insomnia-hcrtr1-2-antagonists",
-  "area": "psychiatry",
-  "disease": "insomnia",
-  "mondo_id": "MONDO:0013600",
-  "mechanism_key": "HCRTR1/2|antagonist",
-  "mechanism": "HCRTR1/2 antagonists",
-  "class_programs": 6,
-  "class_share": 0.545,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "daridorexant",
-   "fazamorexant",
-   "filorexant",
-   "lemborexant",
-   "suvorexant",
-   "vornorexant"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "cystic-fibrosis-cftr-correctors",
-  "area": "respiratory",
-  "disease": "cystic fibrosis",
-  "mondo_id": "MONDO:0009061",
-  "mechanism_key": "CFTR|corrector",
-  "mechanism": "CFTR correctors",
-  "class_programs": 10,
-  "class_share": 0.233,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "VX-152",
-   "bamocaftor",
-   "elexacaftor",
-   "galicaftor",
-   "glpg-2737",
-   "lumacaftor",
-   "olacaftor",
-   "posenacaftor",
-   "tezacaftor",
-   "vanzacaftor"
-  ],
-  "furthest_phase": 4
- },
- {
-  "slug": "asthma-ptgdr2-antagonists",
-  "area": "respiratory",
-  "disease": "asthma",
-  "mondo_id": "MONDO:0004979",
-  "mechanism_key": "PTGDR2|antagonist",
-  "mechanism": "PTGDR2 antagonists",
-  "class_programs": 9,
-  "class_share": 0.107,
-  "modality_groups": [
-   "small molecule"
-  ],
-  "members": [
-   "ADC3680B",
-   "GB001",
-   "MK-1029",
-   "arry-502",
-   "azd-1981",
-   "bi-671800",
-   "fevipiprant",
-   "qav-680",
-   "setipiprant"
-  ],
-  "furthest_phase": 3
- },
- {
-  "slug": "interstitial-cystitis-anti-ngf-antibodies",
-  "area": "urology",
-  "disease": "interstitial cystitis",
-  "mondo_id": "MONDO:0018301",
-  "mechanism_key": "NGF|binder_neutralizer",
-  "mechanism": "anti-NGF antibodies",
-  "class_programs": 3,
-  "class_share": 0.3,
-  "modality_groups": [
-   "antibody"
-  ],
-  "members": [
-   "ASP6294",
-   "fulranumab",
-   "tanezumab"
-  ],
-  "furthest_phase": 2
- },
- {
   "slug": "allergic-disease-allergen-immunotherapy",
   "area": "allergy",
   "disease": "allergic disease",
@@ -679,10 +13,10 @@
    "peptide"
   ],
   "members": [
+   "Cat-PAD",
+   "ToleroMune Ragweed",
    "cat allergen extract",
-   "cat-pad",
-   "hdmasit+",
-   "toleromune ragweed",
+   "hdmASIT+",
    "tree pollen allergen extract"
   ],
   "furthest_phase": 3,
@@ -724,15 +58,15 @@
    "protein"
   ],
   "members": [
+   "DP/MG/14-1",
+   "Grass-SPIRE",
+   "HDM-SPIRE",
+   "Ragweed-SPIRE",
+   "Salsola kali pollen allergen extract",
+   "ToleroMune HDM",
    "birch pollen allergen extract",
-   "dp/mg/14-1",
-   "gpasit+",
-   "grass-spire",
-   "hdm-spire",
-   "ragweed-spire",
-   "rbet v 1",
-   "salsola kali pollen allergen extract",
-   "toleromune hdm"
+   "gpASIT+",
+   "rBet v 1"
   ],
   "furthest_phase": 3,
   "order": 33
@@ -790,8 +124,8 @@
    "small molecule"
   ],
   "members": [
+   "DRM02",
    "crisaborole",
-   "drm02",
    "leo-29102"
   ],
   "furthest_phase": 2,
@@ -999,11 +333,11 @@
    "peptide"
   ],
   "members": [
+   "MK-8521",
+   "SAR425899",
    "cotadutide",
    "efinopegdutide",
-   "mk-8521",
-   "pegapamodutide",
-   "sar425899"
+   "pegapamodutide"
   ],
   "furthest_phase": 2,
   "order": 46
@@ -1021,10 +355,10 @@
    "small molecule"
   ],
   "members": [
+   "PSN821",
    "firuglipel",
    "gsk-1292263",
-   "mbx-2982",
-   "psn821"
+   "mbx-2982"
   ],
   "furthest_phase": 2,
   "order": 47
@@ -1042,14 +376,14 @@
    "small molecule"
   ],
   "members": [
+   "INCB019602",
+   "JTT-654",
+   "RO5093151",
+   "S-707106",
    "bi-187004",
    "bms-770767",
    "bms-823778",
-   "incb019602",
-   "jtt-654",
-   "mk-0736",
-   "ro5093151",
-   "s-707106"
+   "mk-0736"
   ],
   "furthest_phase": 2,
   "order": 48
@@ -1067,7 +401,7 @@
    "protein"
   ],
   "members": [
-   "ex1000",
+   "EX1000",
    "insulin 338",
    "insulin degludec",
    "insulin efsitora alfa",
@@ -1153,13 +487,13 @@
    "protein"
   ],
   "members": [
-   "bax 888",
+   "BAX 888",
+   "SPK-8016",
    "dirloctocogene samoparvovec",
    "efanesoctocog alfa",
    "giroctocogene fitelparvovec",
    "peboctocogene camaparvovec",
    "simoctocog alfa",
-   "spk-8016",
    "valoctocogene roxaparvovec"
   ],
   "furthest_phase": 4,
@@ -1233,12 +567,12 @@
   "mechanism_key": "HBV RNA|gene_expression_reduction",
   "mechanism": "HBV RNA antisense / siRNA",
   "class_programs": 3,
-  "class_share": 0.167,
+  "class_share": 0.094,
   "modality_groups": [
    "oligo"
   ],
   "members": [
-   "arb-001467",
+   "ARB-001467",
    "elebsiran",
    "tomligisiran"
   ],
@@ -1253,14 +587,14 @@
   "mechanism_key": "HBsAg release (NAP)|inhibitor",
   "mechanism": "HBsAg release (NAP) inhibitors",
   "class_programs": 3,
-  "class_share": 0.167,
+  "class_share": 0.094,
   "modality_groups": [
    "oligo"
   ],
   "members": [
-   "rep 2055",
-   "rep 2139",
-   "rep 2165"
+   "REP 2055",
+   "REP 2139",
+   "REP 2165"
   ],
   "furthest_phase": 2,
   "order": 58
@@ -1278,6 +612,7 @@
    "small molecule"
   ],
   "members": [
+   "TD-6450",
    "daclatasvir",
    "elbasvir",
    "gsk-2336805",
@@ -1286,7 +621,6 @@
    "pibrentasvir",
    "ravidasvir",
    "ruzasvir",
-   "td-6450",
    "velpatasvir"
   ],
   "furthest_phase": 4,
@@ -1305,9 +639,9 @@
    "small molecule"
   ],
   "members": [
+   "CDI-31244",
    "abt-072",
    "beclabuvir",
-   "cdi-31244",
    "dasabuvir",
    "filibuvir",
    "lomibuvir",
@@ -1332,7 +666,7 @@
    "small molecule"
   ],
   "members": [
-   "als-002200",
+   "ALS-002200",
    "bemnifosbuvir",
    "bms-986094",
    "idx-184",
@@ -1376,9 +710,9 @@
    "small molecule"
   ],
   "members": [
+   "SAR110894",
    "abt-288",
-   "gsk-239512",
-   "sar110894"
+   "gsk-239512"
   ],
   "furthest_phase": 2,
   "order": 63
@@ -1459,7 +793,7 @@
    "cell therapy"
   ],
   "members": [
-   "anti-cd33 car-nk cells",
+   "anti-CD33 CAR-NK cells",
    "bi-836858",
    "vadastuximab talirine"
   ],
@@ -1479,11 +813,11 @@
    "small molecule"
   ],
   "members": [
+   "ZN-c5",
    "amcenestrant",
    "brilanestrant",
    "giredestrant",
-   "vepdegestrant",
-   "zn-c5"
+   "vepdegestrant"
   ],
   "furthest_phase": 4,
   "order": 68
@@ -2157,9 +1491,9 @@
    "other"
   ],
   "members": [
+   "PSMA ADC",
    "lutetium lu-177 vipivotide tetraxetan",
-   "mip-1095",
-   "psma adc"
+   "mip-1095"
   ],
   "furthest_phase": 4,
   "order": 101
@@ -2240,7 +1574,7 @@
    "protein"
   ],
   "members": [
-   "esba105",
+   "ESBA105",
    "licaminlimab",
    "tanfanercept"
   ],
@@ -2321,8 +1655,8 @@
    "small molecule"
   ],
   "members": [
+   "FX005",
    "emprumapimod",
-   "fx005",
    "pha-797804"
   ],
   "furthest_phase": 2,
@@ -2341,9 +1675,9 @@
    "small molecule"
   ],
   "members": [
+   "VM902A",
    "asp-7962",
-   "gz-389988",
-   "vm902a"
+   "gz-389988"
   ],
   "furthest_phase": 2,
   "order": 110
@@ -2381,7 +1715,7 @@
    "small molecule"
   ],
   "members": [
-   "amg 747",
+   "AMG 747",
    "bitopertin",
    "iclepertin",
    "pf-03463275"
@@ -2397,7 +1731,7 @@
   "mechanism_key": "ADRB2|agonist",
   "mechanism": "ADRB2 agonists",
   "class_programs": 4,
-  "class_share": 0.048,
+  "class_share": 0.046,
   "modality_groups": [
    "small molecule"
   ],
@@ -2418,7 +1752,7 @@
   "mechanism_key": "NR3C1|agonist",
   "mechanism": "NR3C1 agonists",
   "class_programs": 4,
-  "class_share": 0.048,
+  "class_share": 0.046,
   "modality_groups": [
    "small molecule"
   ],
@@ -2439,13 +1773,13 @@
   "mechanism_key": "IL13|binder_neutralizer",
   "mechanism": "anti-IL13 antibodies",
   "class_programs": 4,
-  "class_share": 0.048,
+  "class_share": 0.046,
   "modality_groups": [
    "antibody"
   ],
   "members": [
+   "GSK679586",
    "dectrekumab",
-   "gsk679586",
    "lebrikizumab",
    "tralokinumab"
   ],
@@ -2486,11 +1820,11 @@
    "small molecule"
   ],
   "members": [
+   "AZD8683",
+   "CHF5992",
+   "QAX028",
    "azd-9164",
-   "azd8683",
-   "chf5992",
    "pf-03635659",
-   "qax028",
    "revefenacin"
   ],
   "furthest_phase": 4,
@@ -2538,5 +1872,1692 @@
   ],
   "furthest_phase": 4,
   "order": 119
+ },
+ {
+  "slug": "acute-coronary-syndrome-apoa1-replacement-gene-therapy",
+  "area": "cardiovascular",
+  "disease": "acute coronary syndrome",
+  "mondo_id": "MONDO:0005542",
+  "mechanism_key": "APOA1|replacement",
+  "mechanism": "APOA1 replacement / gene therapy",
+  "class_programs": 3,
+  "class_share": 0.333,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "CER-001",
+   "MDCO-216",
+   "apolipoprotein a-i"
+  ],
+  "furthest_phase": 3,
+  "order": 120
+ },
+ {
+  "slug": "acute-lymphoblastic-leukemia-cd19-directed-depleters",
+  "area": "oncology",
+  "disease": "acute lymphoblastic leukemia",
+  "mondo_id": "MONDO:0004967",
+  "mechanism_key": "CD19|depleter",
+  "mechanism": "CD19-directed depleters",
+  "class_programs": 6,
+  "class_share": 0.353,
+  "modality_groups": [
+   "ADC",
+   "cell therapy"
+  ],
+  "members": [
+   "BinD19",
+   "CD19 CAR-T cells with CRS suppression technology",
+   "TBI-1501",
+   "brexucabtagene autoleucel",
+   "coltuximab ravtansine",
+   "vadacabtagene leraleucel"
+  ],
+  "furthest_phase": 4,
+  "order": 121
+ },
+ {
+  "slug": "acute-myeloid-leukemia-flt3-inhibitors",
+  "area": "oncology",
+  "disease": "acute myeloid leukemia",
+  "mondo_id": "MONDO:0018874",
+  "mechanism_key": "FLT3|inhibitor",
+  "mechanism": "FLT3 inhibitors",
+  "class_programs": 4,
+  "class_share": 0.051,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "akn-028",
+   "crenolanib",
+   "gilteritinib",
+   "quizartinib"
+  ],
+  "furthest_phase": 4,
+  "order": 122
+ },
+ {
+  "slug": "age-related-macular-degeneration-anti-vegfa-antibodies",
+  "area": "ophthalmology",
+  "disease": "age-related macular degeneration",
+  "mondo_id": "MONDO:0005150",
+  "mechanism_key": "VEGFA|binder_neutralizer",
+  "mechanism": "anti-VEGFA antibodies",
+  "class_programs": 5,
+  "class_share": 0.096,
+  "modality_groups": [
+   "antibody",
+   "cell therapy",
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "NT-503",
+   "abicipar pegol",
+   "brolucizumab",
+   "conbercept",
+   "surabgene lomparvovec"
+  ],
+  "furthest_phase": 4,
+  "order": 123
+ },
+ {
+  "slug": "alzheimer-disease-anti-app-antibodies",
+  "area": "neurology",
+  "disease": "Alzheimer disease",
+  "mondo_id": "MONDO:0004975",
+  "mechanism_key": "APP|binder_neutralizer",
+  "mechanism": "anti-APP antibodies",
+  "class_programs": 3,
+  "class_share": 0.039,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "crenezumab",
+   "lecanemab",
+   "ponezumab"
+  ],
+  "furthest_phase": 4,
+  "order": 124
+ },
+ {
+  "slug": "alzheimer-disease-bace1-inhibitors",
+  "area": "neurology",
+  "disease": "Alzheimer disease",
+  "mondo_id": "MONDO:0004975",
+  "mechanism_key": "BACE1|inhibitor",
+  "mechanism": "BACE1 inhibitors",
+  "class_programs": 4,
+  "class_share": 0.053,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "atabecestat",
+   "elenbecestat",
+   "ly-2886721",
+   "ly-3202626"
+  ],
+  "furthest_phase": 3,
+  "order": 125
+ },
+ {
+  "slug": "asthma-ptgdr2-antagonists",
+  "area": "respiratory",
+  "disease": "asthma",
+  "mondo_id": "MONDO:0004979",
+  "mechanism_key": "PTGDR2|antagonist",
+  "mechanism": "PTGDR2 antagonists",
+  "class_programs": 9,
+  "class_share": 0.103,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "ADC3680B",
+   "GB001",
+   "MK-1029",
+   "arry-502",
+   "azd-1981",
+   "bi-671800",
+   "fevipiprant",
+   "qav-680",
+   "setipiprant"
+  ],
+  "furthest_phase": 3,
+  "order": 126
+ },
+ {
+  "slug": "atopic-eczema-pde4-inhibitors",
+  "area": "other",
+  "disease": "atopic eczema",
+  "mondo_id": "MONDO:0004980",
+  "mechanism_key": "PDE4|inhibitor",
+  "mechanism": "PDE4 inhibitors",
+  "class_programs": 5,
+  "class_share": 0.062,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "DRM02",
+   "an-2898",
+   "crisaborole",
+   "difamilast",
+   "leo-29102"
+  ],
+  "furthest_phase": 4,
+  "order": 127
+ },
+ {
+  "slug": "b-cell-non-hodgkin-lymphoma-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "B-cell non-Hodgkin lymphoma",
+  "mondo_id": "MONDO:0015759",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 3,
+  "class_share": 0.375,
+  "modality_groups": [
+   "antibody",
+   "cell therapy"
+  ],
+  "members": [
+   "CART20",
+   "MB-CART20.1",
+   "di-leu16-il2"
+  ],
+  "furthest_phase": 2,
+  "order": 128
+ },
+ {
+  "slug": "breast-cancer-cdk4-6-inhibitors",
+  "area": "oncology",
+  "disease": "breast cancer",
+  "mondo_id": "MONDO:0007254",
+  "mechanism_key": "CDK4/6|inhibitor",
+  "mechanism": "CDK4/6 inhibitors",
+  "class_programs": 6,
+  "class_share": 0.047,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "abemaciclib",
+   "dalpiciclib",
+   "lerociclib",
+   "palbociclib",
+   "ribociclib",
+   "trilaciclib"
+  ],
+  "furthest_phase": 4,
+  "order": 129
+ },
+ {
+  "slug": "cervical-cancer-anti-pdcd1-antibodies",
+  "area": "oncology",
+  "disease": "cervical cancer",
+  "mondo_id": "MONDO:0002974",
+  "mechanism_key": "PDCD1|binder_neutralizer",
+  "mechanism": "anti-PDCD1 antibodies",
+  "class_programs": 4,
+  "class_share": 0.5,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "balstilimab",
+   "geptanolimab",
+   "prolgolimab",
+   "zimberelimab"
+  ],
+  "furthest_phase": 3,
+  "order": 130
+ },
+ {
+  "slug": "chronic-hepatitis-b-virus-infection-tlr7-agonists",
+  "area": "infectious_disease",
+  "disease": "chronic hepatitis B virus infection",
+  "mondo_id": "MONDO:0005366",
+  "mechanism_key": "TLR7|agonist",
+  "mechanism": "TLR7 agonists",
+  "class_programs": 3,
+  "class_share": 0.094,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "TQ-A3334",
+   "rg-7795",
+   "vesatolimod"
+  ],
+  "furthest_phase": 2,
+  "order": 131
+ },
+ {
+  "slug": "chronic-hepatitis-c-virus-infection-ifnar1-ifnar2-agonists",
+  "area": "infectious_disease",
+  "disease": "chronic hepatitis C virus infection",
+  "mondo_id": "MONDO:0005354",
+  "mechanism_key": "IFNAR1/IFNAR2|agonist",
+  "mechanism": "IFNAR1/IFNAR2 agonists",
+  "class_programs": 3,
+  "class_share": 0.167,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "Hanferon",
+   "PEG-IFN-SA",
+   "interferon alfa-5"
+  ],
+  "furthest_phase": 3,
+  "order": 132
+ },
+ {
+  "slug": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-btk-inhibitors",
+  "area": "oncology",
+  "disease": "chronic lymphocytic leukemia/small lymphocytic lymphoma",
+  "mondo_id": "MONDO:0003864",
+  "mechanism_key": "BTK|inhibitor",
+  "mechanism": "BTK inhibitors",
+  "class_programs": 4,
+  "class_share": 0.138,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "acalabrutinib",
+   "orelabrutinib",
+   "tirabrutinib",
+   "zanubrutinib"
+  ],
+  "furthest_phase": 4,
+  "order": 133
+ },
+ {
+  "slug": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-cd19-directed-depleters",
+  "area": "oncology",
+  "disease": "chronic lymphocytic leukemia/small lymphocytic lymphoma",
+  "mondo_id": "MONDO:0003864",
+  "mechanism_key": "CD19|depleter",
+  "mechanism": "CD19-directed depleters",
+  "class_programs": 4,
+  "class_share": 0.138,
+  "modality_groups": [
+   "antibody",
+   "cell therapy"
+  ],
+  "members": [
+   "CD19 CAR-T cells",
+   "inebilizumab",
+   "lisocabtagene maraleucel",
+   "tafasitamab"
+  ],
+  "furthest_phase": 4,
+  "order": 134
+ },
+ {
+  "slug": "chronic-lymphocytic-leukemia-small-lymphocytic-lymphoma-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "chronic lymphocytic leukemia/small lymphocytic lymphoma",
+  "mondo_id": "MONDO:0003864",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 4,
+  "class_share": 0.138,
+  "modality_groups": [
+   "antibody",
+   "protein"
+  ],
+  "members": [
+   "epcoritamab",
+   "mt-3724",
+   "ublituximab",
+   "veltuzumab"
+  ],
+  "furthest_phase": 3,
+  "order": 135
+ },
+ {
+  "slug": "chronic-myeloid-leukemia-abl1-inhibitors",
+  "area": "oncology",
+  "disease": "chronic myeloid leukemia",
+  "mondo_id": "MONDO:0011996",
+  "mechanism_key": "ABL1|inhibitor",
+  "mechanism": "ABL1 inhibitors",
+  "class_programs": 3,
+  "class_share": 0.273,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "flumbatinib",
+   "ponatinib",
+   "vamotinib"
+  ],
+  "furthest_phase": 4,
+  "order": 136
+ },
+ {
+  "slug": "cystic-fibrosis-cftr-correctors",
+  "area": "respiratory",
+  "disease": "cystic fibrosis",
+  "mondo_id": "MONDO:0009061",
+  "mechanism_key": "CFTR|corrector",
+  "mechanism": "CFTR correctors",
+  "class_programs": 10,
+  "class_share": 0.233,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "VX-152",
+   "bamocaftor",
+   "elexacaftor",
+   "galicaftor",
+   "glpg-2737",
+   "lumacaftor",
+   "olacaftor",
+   "posenacaftor",
+   "tezacaftor",
+   "vanzacaftor"
+  ],
+  "furthest_phase": 4,
+  "order": 137
+ },
+ {
+  "slug": "diffuse-large-b-cell-lymphoma-cd19-directed-depleters",
+  "area": "oncology",
+  "disease": "diffuse large B-cell lymphoma",
+  "mondo_id": "MONDO:0018905",
+  "mechanism_key": "CD19|depleter",
+  "mechanism": "CD19-directed depleters",
+  "class_programs": 4,
+  "class_share": 0.129,
+  "modality_groups": [
+   "ADC",
+   "antibody",
+   "cell therapy"
+  ],
+  "members": [
+   "coltuximab ravtansine",
+   "inebilizumab",
+   "loncastuximab tesirine",
+   "tisagenlecleucel"
+  ],
+  "furthest_phase": 4,
+  "order": 138
+ },
+ {
+  "slug": "diffuse-large-b-cell-lymphoma-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "diffuse large B-cell lymphoma",
+  "mondo_id": "MONDO:0018905",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 5,
+  "class_share": 0.161,
+  "modality_groups": [
+   "antibody",
+   "protein"
+  ],
+  "members": [
+   "epcoritamab",
+   "imvotamab",
+   "mosunetuzumab",
+   "mt-3724",
+   "zuberitamab"
+  ],
+  "furthest_phase": 4,
+  "order": 139
+ },
+ {
+  "slug": "duchenne-muscular-dystrophy-dmd",
+  "area": "neurology",
+  "disease": "Duchenne muscular dystrophy",
+  "mondo_id": "MONDO:0010679",
+  "mechanism_key": "DMD|other",
+  "mechanism": "DMD",
+  "class_programs": 8,
+  "class_share": 0.333,
+  "modality_groups": [
+   "oligo"
+  ],
+  "members": [
+   "BMN-053",
+   "DS-5141b",
+   "PRO044",
+   "PRO045",
+   "eteplirsen",
+   "golodirsen",
+   "vesleteplirsen",
+   "viltolarsen"
+  ],
+  "furthest_phase": 4,
+  "order": 140
+ },
+ {
+  "slug": "exocrine-pancreatic-insufficiency-pnlip-replacement-gene-therapy",
+  "area": "gastroenterology",
+  "disease": "exocrine pancreatic insufficiency",
+  "mondo_id": "MONDO:0001684",
+  "mechanism_key": "PNLIP|replacement",
+  "mechanism": "PNLIP replacement / gene therapy",
+  "class_programs": 3,
+  "class_share": 0.75,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "SLV339",
+   "adrulipase alfa",
+   "burlulipase"
+  ],
+  "furthest_phase": 2,
+  "order": 141
+ },
+ {
+  "slug": "extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies",
+  "area": "oncology",
+  "disease": "extranodal nasal NK/T cell lymphoma",
+  "mondo_id": "MONDO:0019472",
+  "mechanism_key": "PDCD1|binder_neutralizer",
+  "mechanism": "anti-PDCD1 antibodies",
+  "class_programs": 3,
+  "class_share": 0.5,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "camrelizumab",
+   "sintilimab",
+   "tislelizumab"
+  ],
+  "furthest_phase": 3,
+  "order": 142
+ },
+ {
+  "slug": "fabry-disease-gla-replacement-gene-therapy",
+  "area": "metabolic",
+  "disease": "Fabry disease",
+  "mondo_id": "MONDO:0010526",
+  "mechanism_key": "GLA|replacement",
+  "mechanism": "GLA replacement / gene therapy",
+  "class_programs": 4,
+  "class_share": 0.8,
+  "modality_groups": [
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "FLT190",
+   "isaralgagene civaparvovec",
+   "pegunigalsidase alfa",
+   "voxeralgagene autotemcel"
+  ],
+  "furthest_phase": 4,
+  "order": 143
+ },
+ {
+  "slug": "follicular-lymphoma-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "follicular lymphoma",
+  "mondo_id": "MONDO:0018906",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 4,
+  "class_share": 0.118,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "MIL62",
+   "epcoritamab",
+   "imvotamab",
+   "veltuzumab"
+  ],
+  "furthest_phase": 4,
+  "order": 144
+ },
+ {
+  "slug": "fragile-x-syndrome-grm5-negative-modulators",
+  "area": "neurology",
+  "disease": "fragile X syndrome",
+  "mondo_id": "MONDO:0010383",
+  "mechanism_key": "GRM5|negative_modulator",
+  "mechanism": "GRM5 negative modulators",
+  "class_programs": 3,
+  "class_share": 0.375,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "basimglurant",
+   "fenobam",
+   "mavoglurant"
+  ],
+  "furthest_phase": 3,
+  "order": 145
+ },
+ {
+  "slug": "gastroesophageal-reflux-disease-atp4a-blockers",
+  "area": "gastroenterology",
+  "disease": "gastroesophageal reflux disease",
+  "mondo_id": "MONDO:0007186",
+  "mechanism_key": "ATP4A|blocker",
+  "mechanism": "ATP4A blockers",
+  "class_programs": 3,
+  "class_share": 0.273,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "fexuprazan",
+   "revaprazan",
+   "tegoprazan"
+  ],
+  "furthest_phase": 3,
+  "order": 146
+ },
+ {
+  "slug": "gastrointestinal-stromal-tumor-hsp90aa1-hsp90ab1-inhibitors",
+  "area": "oncology",
+  "disease": "gastrointestinal stromal tumor",
+  "mondo_id": "MONDO:0011719",
+  "mechanism_key": "HSP90AA1/HSP90AB1|inhibitor",
+  "mechanism": "HSP90AA1/HSP90AB1 inhibitors",
+  "class_programs": 3,
+  "class_share": 0.25,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "biib-021",
+   "ganetespib",
+   "onalespib"
+  ],
+  "furthest_phase": 2,
+  "order": 147
+ },
+ {
+  "slug": "glycogen-storage-disease-ii-gaa-replacement-gene-therapy",
+  "area": "metabolic",
+  "disease": "glycogen storage disease II",
+  "mondo_id": "MONDO:0009290",
+  "mechanism_key": "GAA|replacement",
+  "mechanism": "GAA replacement / gene therapy",
+  "class_programs": 3,
+  "class_share": 0.6,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "cipaglucosidase alfa",
+   "clervonafusp alfa",
+   "reveglucosidase alfa"
+  ],
+  "furthest_phase": 4,
+  "order": 148
+ },
+ {
+  "slug": "gout-slc22a12-inhibitors",
+  "area": "other",
+  "disease": "gout",
+  "mondo_id": "MONDO:0005393",
+  "mechanism_key": "SLC22A12|inhibitor",
+  "mechanism": "SLC22A12 inhibitors",
+  "class_programs": 5,
+  "class_share": 0.25,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "D-0120",
+   "epaminurad",
+   "lesinurad",
+   "rdea-806",
+   "verinurad"
+  ],
+  "furthest_phase": 4,
+  "order": 149
+ },
+ {
+  "slug": "hemophilia-b-f9-replacement-gene-therapy",
+  "area": "hematology",
+  "disease": "hemophilia B",
+  "mondo_id": "MONDO:0010604",
+  "mechanism_key": "F9|replacement",
+  "mechanism": "F9 replacement / gene therapy",
+  "class_programs": 7,
+  "class_share": 0.7,
+  "modality_groups": [
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "AAV5-hFIX",
+   "AskBio009",
+   "DTX101",
+   "albutrepenonacog alfa",
+   "dalcinonacog alfa",
+   "fidanacogene elaparvovec",
+   "verbrinacogene setparvovec"
+  ],
+  "furthest_phase": 4,
+  "order": 150
+ },
+ {
+  "slug": "hepatitis-c-virus-infection-hcv-ns3-4a-protease-inhibitors",
+  "area": "infectious_disease",
+  "disease": "hepatitis C virus infection",
+  "mondo_id": "MONDO:0005231",
+  "mechanism_key": "HCV NS3/4A protease|inhibitor",
+  "mechanism": "HCV NS3/4A protease inhibitors",
+  "class_programs": 13,
+  "class_share": 0.25,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "asunaprevir",
+   "danoprevir",
+   "faldaprevir",
+   "glecaprevir",
+   "grazoprevir",
+   "gs-9256",
+   "narlaprevir",
+   "paritaprevir",
+   "simeprevir",
+   "sovaprevir",
+   "vaniprevir",
+   "vedroprevir",
+   "voxilaprevir"
+  ],
+  "furthest_phase": 4,
+  "order": 151
+ },
+ {
+  "slug": "hiv-infectious-disease-hiv-integrase-insti-inhibitors",
+  "area": "infectious_disease",
+  "disease": "HIV infectious disease",
+  "mondo_id": "MONDO:0005109",
+  "mechanism_key": "HIV integrase (INSTI)|inhibitor",
+  "mechanism": "HIV integrase (INSTI) inhibitors",
+  "class_programs": 3,
+  "class_share": 0.094,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "bictegravir",
+   "cabotegravir",
+   "dolutegravir"
+  ],
+  "furthest_phase": 4,
+  "order": 152
+ },
+ {
+  "slug": "hodgkins-lymphoma-anti-cd274-antibodies",
+  "area": "oncology",
+  "disease": "Hodgkins lymphoma",
+  "mondo_id": "MONDO:0004952",
+  "mechanism_key": "CD274|binder_neutralizer",
+  "mechanism": "anti-CD274 antibodies",
+  "class_programs": 3,
+  "class_share": 0.136,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "benmelstobart",
+   "sugemalimab",
+   "tagitanlimab"
+  ],
+  "furthest_phase": 2,
+  "order": 153
+ },
+ {
+  "slug": "hodgkins-lymphoma-anti-pdcd1-antibodies",
+  "area": "oncology",
+  "disease": "Hodgkins lymphoma",
+  "mondo_id": "MONDO:0004952",
+  "mechanism_key": "PDCD1|binder_neutralizer",
+  "mechanism": "anti-PDCD1 antibodies",
+  "class_programs": 6,
+  "class_share": 0.273,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "camrelizumab",
+   "nivolumab",
+   "penpulimab",
+   "sintilimab",
+   "tislelizumab",
+   "zimberelimab"
+  ],
+  "furthest_phase": 4,
+  "order": 154
+ },
+ {
+  "slug": "huntington-disease-htt-antisense-sirna",
+  "area": "neurology",
+  "disease": "Huntington disease",
+  "mondo_id": "MONDO:0007739",
+  "mechanism_key": "HTT|gene_expression_reduction",
+  "mechanism": "HTT antisense / siRNA",
+  "class_programs": 4,
+  "class_share": 0.267,
+  "modality_groups": [
+   "gene therapy",
+   "oligo"
+  ],
+  "members": [
+   "ifezuntirgene inilparvovec",
+   "lexanersen",
+   "rovanersen",
+   "tominersen"
+  ],
+  "furthest_phase": 3,
+  "order": 155
+ },
+ {
+  "slug": "hyperlipidemia-cetp-inhibitors",
+  "area": "metabolic",
+  "disease": "hyperlipidemia",
+  "mondo_id": "MONDO:0021187",
+  "mechanism_key": "CETP|inhibitor",
+  "mechanism": "CETP inhibitors",
+  "class_programs": 3,
+  "class_share": 0.091,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "drl-17822",
+   "evacetrapib",
+   "rocacetrapib"
+  ],
+  "furthest_phase": 3,
+  "order": 156
+ },
+ {
+  "slug": "hypopituitarism-ghr-agonists",
+  "area": "endocrine",
+  "disease": "hypopituitarism",
+  "mondo_id": "MONDO:0005152",
+  "mechanism_key": "GHR|agonist",
+  "mechanism": "GHR agonists",
+  "class_programs": 3,
+  "class_share": 0.5,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "somatrogon",
+   "somatropin pegol",
+   "somavaratan"
+  ],
+  "furthest_phase": 4,
+  "order": 157
+ },
+ {
+  "slug": "insomnia-hcrtr1-2-antagonists",
+  "area": "psychiatry",
+  "disease": "insomnia",
+  "mondo_id": "MONDO:0013600",
+  "mechanism_key": "HCRTR1/2|antagonist",
+  "mechanism": "HCRTR1/2 antagonists",
+  "class_programs": 6,
+  "class_share": 0.545,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "daridorexant",
+   "fazamorexant",
+   "filorexant",
+   "lemborexant",
+   "suvorexant",
+   "vornorexant"
+  ],
+  "furthest_phase": 4,
+  "order": 158
+ },
+ {
+  "slug": "interstitial-cystitis-anti-ngf-antibodies",
+  "area": "urology",
+  "disease": "interstitial cystitis",
+  "mondo_id": "MONDO:0018301",
+  "mechanism_key": "NGF|binder_neutralizer",
+  "mechanism": "anti-NGF antibodies",
+  "class_programs": 3,
+  "class_share": 0.3,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "ASP6294",
+   "fulranumab",
+   "tanezumab"
+  ],
+  "furthest_phase": 2,
+  "order": 159
+ },
+ {
+  "slug": "large-b-cell-lymphoma-cd19-directed-depleters",
+  "area": "oncology",
+  "disease": "large B-cell lymphoma",
+  "mondo_id": "MONDO:0968974",
+  "mechanism_key": "CD19|depleter",
+  "mechanism": "CD19-directed depleters",
+  "class_programs": 3,
+  "class_share": 0.75,
+  "modality_groups": [
+   "cell therapy"
+  ],
+  "members": [
+   "axicabtagene ciloleucel",
+   "lisocabtagene maraleucel",
+   "relmacabtagene autoleucel"
+  ],
+  "furthest_phase": 4,
+  "order": 160
+ },
+ {
+  "slug": "mantle-cell-lymphoma-btk-inhibitors",
+  "area": "oncology",
+  "disease": "mantle cell lymphoma",
+  "mondo_id": "MONDO:0018876",
+  "mechanism_key": "BTK|inhibitor",
+  "mechanism": "BTK inhibitors",
+  "class_programs": 4,
+  "class_share": 0.267,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "acalabrutinib",
+   "ibrutinib",
+   "orelabrutinib",
+   "zanubrutinib"
+  ],
+  "furthest_phase": 4,
+  "order": 161
+ },
+ {
+  "slug": "mantle-cell-lymphoma-cd19-directed-depleters",
+  "area": "oncology",
+  "disease": "mantle cell lymphoma",
+  "mondo_id": "MONDO:0018876",
+  "mechanism_key": "CD19|depleter",
+  "mechanism": "CD19-directed depleters",
+  "class_programs": 3,
+  "class_share": 0.2,
+  "modality_groups": [
+   "ADC",
+   "cell therapy"
+  ],
+  "members": [
+   "axicabtagene ciloleucel",
+   "brexucabtagene autoleucel",
+   "loncastuximab tesirine"
+  ],
+  "furthest_phase": 4,
+  "order": 162
+ },
+ {
+  "slug": "marginal-zone-lymphoma-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "marginal zone lymphoma",
+  "mondo_id": "MONDO:0017604",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 3,
+  "class_share": 0.333,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "epcoritamab",
+   "imvotamab",
+   "ublituximab"
+  ],
+  "furthest_phase": 3,
+  "order": 163
+ },
+ {
+  "slug": "metabolic-dysfunction-associated-steatohepatitis-nr1h4-agonists",
+  "area": "gastroenterology",
+  "disease": "metabolic dysfunction-associated steatohepatitis",
+  "mondo_id": "MONDO:0007027",
+  "mechanism_key": "NR1H4|agonist",
+  "mechanism": "NR1H4 agonists",
+  "class_programs": 4,
+  "class_share": 0.053,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "cilofexor",
+   "edp-305",
+   "tropifexor",
+   "vonafexor"
+  ],
+  "furthest_phase": 2,
+  "order": 164
+ },
+ {
+  "slug": "migraine-disorder-cgrp-receptor-antagonists",
+  "area": "neurology",
+  "disease": "migraine disorder",
+  "mondo_id": "MONDO:0005277",
+  "mechanism_key": "CGRP receptor|antagonist",
+  "mechanism": "CGRP receptor antagonists",
+  "class_programs": 4,
+  "class_share": 0.138,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "bi-44370",
+   "mk-3207",
+   "rimegepant",
+   "ubrogepant"
+  ],
+  "furthest_phase": 4,
+  "order": 165
+ },
+ {
+  "slug": "mucopolysaccharidosis-type-1-idua-replacement-gene-therapy",
+  "area": "metabolic",
+  "disease": "mucopolysaccharidosis type 1",
+  "mondo_id": "MONDO:0001586",
+  "mechanism_key": "IDUA|replacement",
+  "mechanism": "IDUA replacement / gene therapy",
+  "class_programs": 4,
+  "class_share": 0.667,
+  "modality_groups": [
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "RGX-111",
+   "azamidugene autotemcel",
+   "devafidugene civaparvovec",
+   "valanafusp alfa"
+  ],
+  "furthest_phase": 3,
+  "order": 166
+ },
+ {
+  "slug": "mucopolysaccharidosis-type-3b-naglu-replacement-gene-therapy",
+  "area": "metabolic",
+  "disease": "mucopolysaccharidosis type 3B",
+  "mondo_id": "MONDO:0009656",
+  "mechanism_key": "NAGLU|replacement",
+  "mechanism": "NAGLU replacement / gene therapy",
+  "class_programs": 3,
+  "class_share": 0.75,
+  "modality_groups": [
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "lesinidase alfa",
+   "rAAV2/5-hNAGLU",
+   "tralesinidase alfa"
+  ],
+  "furthest_phase": 3,
+  "order": 167
+ },
+ {
+  "slug": "multiple-sclerosis-ms4a1-directed-depleters",
+  "area": "neurology",
+  "disease": "multiple sclerosis",
+  "mondo_id": "MONDO:0005301",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 4,
+  "class_share": 0.154,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "divozilimab",
+   "ocrelizumab",
+   "ofatumumab",
+   "ublituximab"
+  ],
+  "furthest_phase": 4,
+  "order": 168
+ },
+ {
+  "slug": "myelofibrosis-jak2-inhibitors",
+  "area": "oncology",
+  "disease": "myelofibrosis",
+  "mondo_id": "MONDO:0044903",
+  "mechanism_key": "JAK2|inhibitor",
+  "mechanism": "JAK2 inhibitors",
+  "class_programs": 3,
+  "class_share": 0.143,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "bms-911543",
+   "fedratinib",
+   "ilginatinib"
+  ],
+  "furthest_phase": 4,
+  "order": 169
+ },
+ {
+  "slug": "non-small-cell-lung-carcinoma-anti-igf1r-antibodies",
+  "area": "oncology",
+  "disease": "non-small cell lung carcinoma",
+  "mondo_id": "MONDO:0005233",
+  "mechanism_key": "IGF1R|binder_neutralizer",
+  "mechanism": "anti-IGF1R antibodies",
+  "class_programs": 4,
+  "class_share": 0.021,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "cixutumumab",
+   "dalotuzumab",
+   "ganitumab",
+   "teprotumumab"
+  ],
+  "furthest_phase": 2,
+  "order": 170
+ },
+ {
+  "slug": "non-small-cell-lung-carcinoma-egfr-inhibitors",
+  "area": "oncology",
+  "disease": "non-small cell lung carcinoma",
+  "mondo_id": "MONDO:0005233",
+  "mechanism_key": "EGFR|inhibitor",
+  "mechanism": "EGFR inhibitors",
+  "class_programs": 18,
+  "class_share": 0.094,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "abivertinib",
+   "ask-120067",
+   "aumolertinib",
+   "befotertinib",
+   "firmonertinib",
+   "lazertinib",
+   "mavelertinib",
+   "mobocertinib",
+   "naquotinib",
+   "nazartinib",
+   "olmutinib",
+   "osimertinib",
+   "pruvonertinib",
+   "rezivertinib",
+   "rociletinib",
+   "sunvozertinib",
+   "zipalertinib",
+   "zorifertinib"
+  ],
+  "furthest_phase": 4,
+  "order": 171
+ },
+ {
+  "slug": "open-angle-glaucoma-ptger2-agonists",
+  "area": "ophthalmology",
+  "disease": "open-angle glaucoma",
+  "mondo_id": "MONDO:0005338",
+  "mechanism_key": "PTGER2|agonist",
+  "mechanism": "PTGER2 agonists",
+  "class_programs": 3,
+  "class_share": 0.111,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "aganepag isopropyl",
+   "omidenepag isopropyl",
+   "simenepag isopropyl"
+  ],
+  "furthest_phase": 4,
+  "order": 172
+ },
+ {
+  "slug": "open-angle-glaucoma-rock-inhibitors",
+  "area": "ophthalmology",
+  "disease": "open-angle glaucoma",
+  "mondo_id": "MONDO:0005338",
+  "mechanism_key": "ROCK|inhibitor",
+  "mechanism": "ROCK inhibitors",
+  "class_programs": 6,
+  "class_share": 0.222,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "ATS907",
+   "DE-104",
+   "RKI983",
+   "netarsudil",
+   "sovesudil",
+   "verosudil"
+  ],
+  "furthest_phase": 4,
+  "order": 173
+ },
+ {
+  "slug": "opioid-induced-constipation-oprm1-antagonists",
+  "area": "gastroenterology",
+  "disease": "opioid-induced constipation",
+  "mondo_id": "MONDO:0100187",
+  "mechanism_key": "OPRM1|antagonist",
+  "mechanism": "OPRM1 antagonists",
+  "class_programs": 4,
+  "class_share": 0.8,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "axelopran",
+   "bevenopran",
+   "methylsamidorphan",
+   "naldemedine"
+  ],
+  "furthest_phase": 4,
+  "order": 174
+ },
+ {
+  "slug": "osteoporosis-anti-sost-antibodies",
+  "area": "other",
+  "disease": "osteoporosis",
+  "mondo_id": "MONDO:0005298",
+  "mechanism_key": "SOST|binder_neutralizer",
+  "mechanism": "anti-SOST antibodies",
+  "class_programs": 3,
+  "class_share": 0.6,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "blosozumab",
+   "romosozumab",
+   "setrusumab"
+  ],
+  "furthest_phase": 4,
+  "order": 175
+ },
+ {
+  "slug": "ovarian-cancer-parp1-2-inhibitors",
+  "area": "oncology",
+  "disease": "ovarian cancer",
+  "mondo_id": "MONDO:0008170",
+  "mechanism_key": "PARP1/2|inhibitor",
+  "mechanism": "PARP1/2 inhibitors",
+  "class_programs": 6,
+  "class_share": 0.103,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "2x-121",
+   "niraparib",
+   "pamiparib",
+   "rucaparib",
+   "senaparib",
+   "veliparib"
+  ],
+  "furthest_phase": 4,
+  "order": 176
+ },
+ {
+  "slug": "paroxysmal-nocturnal-hemoglobinuria-anti-c5-antibodies",
+  "area": "hematology",
+  "disease": "paroxysmal nocturnal hemoglobinuria",
+  "mondo_id": "MONDO:0100244",
+  "mechanism_key": "C5|binder_neutralizer",
+  "mechanism": "anti-C5 antibodies",
+  "class_programs": 4,
+  "class_share": 0.444,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "crovalimab",
+   "pozelimab",
+   "ravulizumab",
+   "tesidolumab"
+  ],
+  "furthest_phase": 4,
+  "order": 177
+ },
+ {
+  "slug": "pituitary-dwarfism-ghr-agonists",
+  "area": "endocrine",
+  "disease": "pituitary dwarfism",
+  "mondo_id": "MONDO:0006909",
+  "mechanism_key": "GHR|agonist",
+  "mechanism": "GHR agonists",
+  "class_programs": 3,
+  "class_share": 1.0,
+  "modality_groups": [
+   "protein"
+  ],
+  "members": [
+   "somapacitan",
+   "somatropin pegol",
+   "somavaratan"
+  ],
+  "furthest_phase": 4,
+  "order": 178
+ },
+ {
+  "slug": "plasma-cell-myeloma-tnfrsf17-directed-depleters",
+  "area": "oncology",
+  "disease": "plasma cell myeloma",
+  "mondo_id": "MONDO:0009693",
+  "mechanism_key": "TNFRSF17|depleter",
+  "mechanism": "TNFRSF17-directed depleters",
+  "class_programs": 8,
+  "class_share": 0.11,
+  "modality_groups": [
+   "ADC",
+   "antibody",
+   "cell therapy"
+  ],
+  "members": [
+   "BCMA CAR-NK 92 cells",
+   "BCMA CAR-T cells",
+   "P-BCMA-101",
+   "belantamab mafodotin",
+   "idecabtagene vicleucel",
+   "orvacabtagene autoleucel",
+   "vonsetamig",
+   "zevorcabtagene autoleucel"
+  ],
+  "furthest_phase": 4,
+  "order": 179
+ },
+ {
+  "slug": "primary-erythermalgia-scn9a-blockers",
+  "area": "neurology",
+  "disease": "primary erythermalgia",
+  "mondo_id": "MONDO:0007571",
+  "mechanism_key": "SCN9A|blocker",
+  "mechanism": "SCN9A blockers",
+  "class_programs": 3,
+  "class_share": 0.75,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "XPF-001",
+   "funapide",
+   "pf-05089771"
+  ],
+  "furthest_phase": 2,
+  "order": 180
+ },
+ {
+  "slug": "prostate-cancer-ar-antagonists",
+  "area": "oncology",
+  "disease": "prostate cancer",
+  "mondo_id": "MONDO:0008315",
+  "mechanism_key": "AR|antagonist",
+  "mechanism": "AR antagonists",
+  "class_programs": 5,
+  "class_share": 0.055,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "apalutamide",
+   "darolutamide",
+   "pruxelutamide",
+   "rezvilutamide",
+   "trc-253"
+  ],
+  "furthest_phase": 4,
+  "order": 181
+ },
+ {
+  "slug": "psoriasis-anti-il17a-antibodies",
+  "area": "autoimmune",
+  "disease": "psoriasis",
+  "mondo_id": "MONDO:0005083",
+  "mechanism_key": "IL17A|binder_neutralizer",
+  "mechanism": "anti-IL17A antibodies",
+  "class_programs": 4,
+  "class_share": 0.051,
+  "modality_groups": [
+   "antibody",
+   "protein"
+  ],
+  "members": [
+   "ixekizumab",
+   "izokibep",
+   "netakimab",
+   "vunakizumab"
+  ],
+  "furthest_phase": 4,
+  "order": 182
+ },
+ {
+  "slug": "psoriasis-rorc-inverse-agonists",
+  "area": "autoimmune",
+  "disease": "psoriasis",
+  "mondo_id": "MONDO:0005083",
+  "mechanism_key": "RORC|inverse_agonist",
+  "mechanism": "RORC inverse agonists",
+  "class_programs": 4,
+  "class_share": 0.051,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "AGN-242428",
+   "BI 730357",
+   "VTP-43742",
+   "gsk-2981278"
+  ],
+  "furthest_phase": 2,
+  "order": 183
+ },
+ {
+  "slug": "pulmonary-arterial-hypertension-ptgir-agonists",
+  "area": "respiratory",
+  "disease": "pulmonary arterial hypertension",
+  "mondo_id": "MONDO:0015924",
+  "mechanism_key": "PTGIR|agonist",
+  "mechanism": "PTGIR agonists",
+  "class_programs": 3,
+  "class_share": 0.214,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "QCC374",
+   "beraprost",
+   "ralinepag"
+  ],
+  "furthest_phase": 3,
+  "order": 184
+ },
+ {
+  "slug": "recessive-dystrophic-epidermolysis-bullosa-col7a1-replacement-gene-therapy",
+  "area": "other",
+  "disease": "recessive dystrophic epidermolysis bullosa",
+  "mondo_id": "MONDO:0009179",
+  "mechanism_key": "COL7A1|replacement",
+  "mechanism": "COL7A1 replacement / gene therapy",
+  "class_programs": 5,
+  "class_share": 0.714,
+  "modality_groups": [
+   "gene therapy",
+   "protein"
+  ],
+  "members": [
+   "Hologene 7",
+   "PTR-01",
+   "beremagene geperpavec",
+   "dabocemagene autoficel",
+   "prademagene zamikeracel"
+  ],
+  "furthest_phase": 4,
+  "order": 185
+ },
+ {
+  "slug": "renal-cell-carcinoma-vegfr-multikinase-inhibitors",
+  "area": "oncology",
+  "disease": "renal cell carcinoma",
+  "mondo_id": "MONDO:0005086",
+  "mechanism_key": "VEGFR multikinase|inhibitor",
+  "mechanism": "VEGFR multikinase inhibitors",
+  "class_programs": 4,
+  "class_share": 0.138,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "catequentinib",
+   "famitinib",
+   "lenvatinib",
+   "regorafenib"
+  ],
+  "furthest_phase": 4,
+  "order": 186
+ },
+ {
+  "slug": "retinitis-pigmentosa-rpgr-replacement-gene-therapy",
+  "area": "ophthalmology",
+  "disease": "retinitis pigmentosa",
+  "mondo_id": "MONDO:0019200",
+  "mechanism_key": "RPGR|replacement",
+  "mechanism": "RPGR replacement / gene therapy",
+  "class_programs": 3,
+  "class_share": 0.214,
+  "modality_groups": [
+   "gene therapy"
+  ],
+  "members": [
+   "botaretigene sparoparvovec",
+   "cotoretigene toliparvovec",
+   "laruparetigene zovaparvovec"
+  ],
+  "furthest_phase": 3,
+  "order": 187
+ },
+ {
+  "slug": "rheumatoid-arthritis-btk-inhibitors",
+  "area": "autoimmune",
+  "disease": "rheumatoid arthritis",
+  "mondo_id": "MONDO:0008383",
+  "mechanism_key": "BTK|inhibitor",
+  "mechanism": "BTK inhibitors",
+  "class_programs": 8,
+  "class_share": 0.083,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "TAS5315",
+   "acalabrutinib",
+   "bms-986142",
+   "elsubrutinib",
+   "evobrutinib",
+   "fenebrutinib",
+   "poseltinib",
+   "spebrutinib"
+  ],
+  "furthest_phase": 2,
+  "order": 188
+ },
+ {
+  "slug": "schizophrenia-pde10a-inhibitors",
+  "area": "psychiatry",
+  "disease": "schizophrenia",
+  "mondo_id": "MONDO:0005090",
+  "mechanism_key": "PDE10A|inhibitor",
+  "mechanism": "PDE10A inhibitors",
+  "class_programs": 5,
+  "class_share": 0.111,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "Lu AF11167",
+   "OMS824",
+   "balipodect",
+   "elpipodect",
+   "mardepodect"
+  ],
+  "furthest_phase": 2,
+  "order": 189
+ },
+ {
+  "slug": "sjogren-syndrome-btk-inhibitors",
+  "area": "autoimmune",
+  "disease": "Sjogren syndrome",
+  "mondo_id": "MONDO:0010030",
+  "mechanism_key": "BTK|inhibitor",
+  "mechanism": "BTK inhibitors",
+  "class_programs": 3,
+  "class_share": 0.176,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "bms-986142",
+   "remibrutinib",
+   "tirabrutinib"
+  ],
+  "furthest_phase": 2,
+  "order": 190
+ },
+ {
+  "slug": "sjogren-syndrome-pik3cd-inhibitors",
+  "area": "autoimmune",
+  "disease": "Sjogren syndrome",
+  "mondo_id": "MONDO:0010030",
+  "mechanism_key": "PIK3CD|inhibitor",
+  "mechanism": "PIK3CD inhibitors",
+  "class_programs": 3,
+  "class_share": 0.176,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "leniolisib",
+   "parsaclisib",
+   "seletalisib"
+  ],
+  "furthest_phase": 2,
+  "order": 191
+ },
+ {
+  "slug": "systemic-lupus-erythematosus-btk-inhibitors",
+  "area": "autoimmune",
+  "disease": "systemic lupus erythematosus",
+  "mondo_id": "MONDO:0007915",
+  "mechanism_key": "BTK|inhibitor",
+  "mechanism": "BTK inhibitors",
+  "class_programs": 3,
+  "class_share": 0.083,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "elsubrutinib",
+   "evobrutinib",
+   "fenebrutinib"
+  ],
+  "furthest_phase": 2,
+  "order": 192
+ },
+ {
+  "slug": "type-2-diabetes-mellitus-gck-activators",
+  "area": "endocrine",
+  "disease": "type 2 diabetes mellitus",
+  "mondo_id": "MONDO:0005148",
+  "mechanism_key": "GCK|activator",
+  "mechanism": "GCK activators",
+  "class_programs": 9,
+  "class_share": 0.072,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "arry-403",
+   "azd-1656",
+   "cadisegliatin",
+   "dorzagliatin",
+   "globalagliatin",
+   "ly-2599506",
+   "mk-0941",
+   "nerigliatin",
+   "pf-04991532"
+  ],
+  "furthest_phase": 3,
+  "order": 193
+ },
+ {
+  "slug": "type-2-diabetes-mellitus-glp1r-agonists",
+  "area": "endocrine",
+  "disease": "type 2 diabetes mellitus",
+  "mondo_id": "MONDO:0005148",
+  "mechanism_key": "GLP1R|agonist",
+  "mechanism": "GLP1R agonists",
+  "class_programs": 12,
+  "class_share": 0.096,
+  "modality_groups": [
+   "peptide",
+   "protein",
+   "small molecule"
+  ],
+  "members": [
+   "CJC-1134-PC",
+   "HS-20004",
+   "LY2428757",
+   "TTP054",
+   "TTP273",
+   "YH14617",
+   "danuglipron",
+   "dulaglutide",
+   "efpeglenatide",
+   "froniglutide",
+   "pegloxenatide",
+   "semaglutide"
+  ],
+  "furthest_phase": 4,
+  "order": 194
+ },
+ {
+  "slug": "ulcerative-colitis-s1pr1-agonists",
+  "area": "autoimmune",
+  "disease": "ulcerative colitis",
+  "mondo_id": "MONDO:0005101",
+  "mechanism_key": "S1PR1|agonist",
+  "mechanism": "S1PR1 agonists",
+  "class_programs": 3,
+  "class_share": 0.043,
+  "modality_groups": [
+   "small molecule"
+  ],
+  "members": [
+   "etrasimod",
+   "mocravimod",
+   "ozanimod"
+  ],
+  "furthest_phase": 4,
+  "order": 195
+ },
+ {
+  "slug": "waldenstrom-macroglobulinemia-ms4a1-directed-depleters",
+  "area": "oncology",
+  "disease": "Waldenstrom macroglobulinemia",
+  "mondo_id": "MONDO:0100280",
+  "mechanism_key": "MS4A1|depleter",
+  "mechanism": "MS4A1-directed depleters",
+  "class_programs": 3,
+  "class_share": 0.375,
+  "modality_groups": [
+   "antibody"
+  ],
+  "members": [
+   "ofatumumab",
+   "ublituximab",
+   "veltuzumab"
+  ],
+  "furthest_phase": 3,
+  "order": 196
  }
 ]

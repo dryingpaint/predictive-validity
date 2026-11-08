@@ -708,3 +708,141 @@ same_entity_as,moiety_id,drug,verified_target,verified_action,selectivity,modali
 ,27463,anti-CD33 CAR-NK cells,CD33,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=CD33+CAR-NK+acute+myeloid+leukemia,CAR-NK
 ,28719,bedoradrine,ADRB2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2111083/,"MN-221, intravenous"
 ,4108,carmoterol,ADRB2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1094785/,LABA
+,1673,ofatumumab,MS4A1,depleter,selective,antibody,2009-10-26,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125326,"Arzerra BLA 125326 (2009), now marketed as Kesimpta"
+,1910,pacritinib,JAK2/FLT3,inhibitor,dual,small molecule,2022-02-28,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=208712,"JAK2/FLT3 dual (also IRAK1, ACVR1); database target JAK2 alone understates it"
+,2042,zanubrutinib,BTK,inhibitor,selective,small molecule,2019-11-14,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=213217,covalent BTK inhibitor
+,2286,romosozumab,SOST,binder_neutralizer,selective,antibody,2019-04-09,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761062,
+,2334,ropeginterferon alfa-2b,IFNAR1/IFNAR2,agonist,selective,protein,2021-11-12,False,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761166,"monopegylated interferon alfa-2b; interferon alfa-2b (1986) and peginterferon alfa-2b (2001) were approved before Phase 2 entry, so not a new mechanism or moiety class"
+,2360,tislelizumab,PDCD1,binder_neutralizer,selective,antibody,2024-03-13,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761232,
+,3527,brexucabtagene autoleucel,CD19,depleter,selective,cell therapy,2020-07-24,,https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/tecartus-brexucabtagene-autoleucel,CBER BLA (Tecartus)
+,4753,D-0120,SLC22A12,inhibitor,selective,small molecule,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC9445164/,selective URAT1 inhibitor (InventisBio)
+,4913,orelabrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650321/,approved in China (2020); not FDA approved
+,5664,ilginatinib,JAK2,inhibitor,selective,small molecule,,,https://doi.org/10.1038/bcj.2013.73,"NS-018: JAK2 (V617F-preferring) inhibitor, also hits SRC-family kinases"
+,6937,cotoretigene toliparvovec,RPGR,replacement,selective,gene therapy,,,https://doi.org/10.1016/j.ophtha.2024.02.023,AAV8-RPGR subretinal gene therapy (XIRIUS)
+,7446,basimglurant,GRM5,negative_modulator,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3301626/,mGluR5 negative allosteric modulator
+,7734,verinurad,SLC22A12,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3707347/,
+,8287,coltuximab ravtansine,CD19,depleter,selective,ADC,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2109286/,anti-CD19 maytansinoid (DM4) ADC
+,8701,veltuzumab,MS4A1,depleter,selective,antibody,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1743088/,humanized anti-CD20
+,9565,somavaratan,GHR,agonist,selective,protein,,,https://doi.org/10.1210/jc.2015-3279,long-acting rhGH-XTEN fusion
+,10028,funapide,SCN9A,blocker,selective,small molecule,,,https://doi.org/10.1016/j.pain.2011.09.008,XEN402: Nav1.7-directed sodium channel blocker; selectivity over other Nav subtypes not well established
+,10776,lesinidase alfa,NAGLU,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02618512,recombinant human NAGLU enzyme replacement
+,12828,Hologene 7,COL7A1,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT02984085,genetically corrected autologous cultured epidermal graft (ex vivo COL7A1 gene correction)
+,14287,voxeralgagene autotemcel,GLA,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT03454893,autologous CD34+ cells transduced with lentiviral GLA (ex vivo gene therapy)
+,27273,beraprost,PTGIR,agonist,selective,small molecule,,,https://doi.org/10.1016/j.bcp.2019.05.026,"BPS-314d-MR is esuberaprost, the active single isomer of beraprost (approved in Japan, never FDA approved); prostacyclin IP receptor agonist"
+,29341,vamotinib,ABL1,inhibitor,selective,small molecule,,,https://doi.org/10.1038/leu.2014.326,PF-114: BCR-ABL inhibitor active against T315I
+,30247,BinD19,CD19,depleter,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT03156101,autologous CD19 CAR-T (4-1BB)
+,31002,PRO044,DMD,other,selective,oligo,,,https://clinicaltrials.gov/study/NCT01037309,exon 44 skipping antisense oligonucleotide (restores dystrophin reading frame)
+,31816,interferon alfa-5,IFNAR1/IFNAR2,agonist,selective,protein,,,https://clinicaltrials.gov/study/NCT01121731,recombinant IFN-alpha subtype 5 (Digna Biotech); never FDA approved
+,33879,BMN-053,DMD,other,selective,oligo,,,https://clinicaltrials.gov/study/NCT01957059,exon 53 skipping antisense oligonucleotide (2'-OMePS); distinct from golodirsen/viltolarsen
+,34644,CART20,MS4A1,depleter,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT02965157,autologous anti-CD20 CAR-T
+,40476,RGX-111,IDUA,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT03580083,AAV9-IDUA gene therapy for MPS I
+,1764,ponatinib,ABL1,inhibitor,selective,small molecule,2012-12-14,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=203469,pan-BCR-ABL incl. T315I; also hits VEGFR/FGFR/PDGFR/SRC
+,1916,naldemedine,OPRM1,antagonist,selective,small molecule,2017-03-23,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=208854,peripherally acting
+,2107,omidenepag isopropyl,PTGER2,agonist,selective,small molecule,2022-09-22,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=215092,prodrug of omidenepag
+,2322,inebilizumab,CD19,depleter,selective,antibody,2020-06-11,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761142,
+,2342,lonapegsomatropin,GHR,agonist,selective,protein,2021-08-25,False,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761177,transient-conjugate prodrug releasing unmodified somatropin (long approved): no new active moiety
+,2362,ublituximab,MS4A1,depleter,selective,antibody,2022-12-28,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761238,
+,3678,beremagene geperpavec,COL7A1,replacement,selective,gene therapy,2023-05-19,,https://www.fda.gov/vaccines-blood-biologics/vyjuvek,topical HSV-1 vector (Vyjuvek)
+,4766,geptanolimab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL4594355,
+,5036,setrusumab,SOST,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL4297918,
+,5689,sintilimab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL4297829,approved in China only
+,7274,arbekacin,ribosome (nonsense readthrough),other,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=arbekacin+Duchenne,"database target wrong: aminoglycoside acting on the ribosome to read through premature stop codons in DMD; dystrophin is the restored product, not the target; approved in Japan only"
+,7504,ralinepag,PTGIR,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL3301604,
+,7871,vesatolimod,TLR7,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL2424780,
+,8315,simenepag isopropyl,PTGER2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism.json?molecule_chembl_id=CHEMBL2105710,
+,8816,apolipoprotein a-i,APOA1,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02108262,CSL112: plasma-derived apoA-I reconstituted HDL to raise cholesterol efflux; never approved
+,9761,PTR-01,COL7A1,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT03752905,recombinant human collagen VII given IV
+,10145,MB-CART20.1,MS4A1,depleter,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT03664635,autologous CD20 CAR-T
+,11009,botaretigene sparoparvovec,RPGR,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT03252847,AAV5-RPGR subretinal
+,12924,vadacabtagene leraleucel,CD19,depleter,selective,cell therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=JCAR015,CD19 CAR-T (CD28 costimulation)
+,14397,QCC374,PTGIR,agonist,selective,small molecule,,,https://clinicaltrials.gov/study/NCT02927366,inhaled non-prostanoid IP agonist (Novartis); trial record does not state mechanism (ATS 2016 abstract A2220 does)
+,27422,ypeginterferon alfa-2b,IFNAR1/IFNAR2,agonist,selective,protein,,False,https://clinicaltrials.gov/study/NCT01140997,40 kD Y-shaped PEG conjugate of interferon alfa-2b (Amoytop); interferon alfa-2b and peginterferon alfa-2b are FDA approved: no new active moiety
+,30009,PEG-IFN-SA,IFNAR1/IFNAR2,agonist,selective,protein,,,https://clinicaltrials.gov/study/NCT01908335,PEGylated recombinant interferon-alpha sequence variant (Beijing Kawin); a new molecule
+,30574,NT-503,VEGFA,binder_neutralizer,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT02228304,encapsulated cell implant secreting a soluble VEGF receptor-Fc
+,31499,fenobam,GRM5,negative_modulator,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=fenobam+fragile+X,
+,32117,HM10660A,IFNAR1/IFNAR2,agonist,selective,protein,,False,https://pubmed.ncbi.nlm.nih.gov/28982547/,long-acting interferon alfa-2b (LAPS Fc conjugate): no new active moiety
+,34066,laruparetigene zovaparvovec,RPGR,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT03316560,rAAV2tYF-GRK1-RPGR
+,35561,SLV339,PNLIP,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT00630279,recombinant microbial lipase replacing pancreatic lipase activity (not human PNLIP)
+,1811,ibrutinib,BTK,inhibitor,selective,small molecule,2013-11-13,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=205552,covalent BTK inhibitor
+,2002,golodirsen,DMD,other,selective,oligo,2019-12-12,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=211970,PMO exon 53 skipping; restores truncated dystrophin
+,2180,leniolisib,PIK3CD,inhibitor,selective,small molecule,2023-03-24,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=217759,
+,2330,somapacitan,GHR,agonist,selective,protein,2020-08-28,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761156,long-acting albumin-binding GH
+,2347,somatrogon,GHR,agonist,selective,protein,2023-06-27,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761184,long-acting CTP-fused GH
+,2368,mosunetuzumab,MS4A1,depleter,selective,antibody,2022-12-22,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761263,CD20xCD3 bispecific T-cell engager; CD3 arm is the effector not a target
+,3887,tisagenlecleucel,CD19,depleter,selective,cell therapy,2017-08-30,,https://www.fda.gov/vaccines-blood-biologics/cellular-gene-therapy-products/kymriah-tisagenlecleucel,
+,4783,pabinafusp alfa,IDS,replacement,selective,protein,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4594565/,anti-TfR antibody fused to iduronate-2-sulfatase (brain-penetrant); approved in Japan 2021 not by FDA
+,5418,seletalisib,PIK3CD,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4297648/,
+,5748,epaminurad,SLC22A12,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4640580/,URAT1 inhibitor
+,7355,axelopran,OPRM1,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3137313/,peripherally restricted opioid antagonist (also delta/kappa activity)
+,7552,vixotrigine,Nav (pan),blocker,pan,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=vixotrigine+broad-spectrum+voltage-gated+sodium+channel+blocker,database target too narrow: marketed as Nav1.7-selective but characterised as broad-spectrum state-dependent Nav blocker (<10-fold across subtypes)
+,8030,bevenopran,OPRM1,antagonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039511/,peripherally acting mu antagonist
+,8386,sovesudil,ROCK,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=sovesudil+OR+PHP-201,ROCK1/ROCK2 inhibitor (soft drug for topical ocular use)
+,8835,vesleteplirsen,DMD,other,selective,oligo,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL6068593/,peptide-conjugated PMO exon 51 skipping; database action gene_expression_increase not in vocabulary
+,9783,isaralgagene civaparvovec,GLA,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=ST-920+Fabry,AAV2/6 liver-directed GLA gene therapy
+,10230,DS-5141b,DMD,other,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=DS-5141b,ENA-modified oligo exon 45 skipping
+,11032,TQ-A3334,TLR7,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/34718044/,same compound as JNJ-64794964 / AL-034
+,13976,rovanersen,HTT,gene_expression_reduction,selective,oligo,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650526/,allele-selective (SNP rs362307) stereopure ASO
+,14479,devafidugene civaparvovec,IDUA,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=SB-318+MPS+I,ZFN in vivo genome editing inserting IDUA into the albumin locus
+,27930,dabocemagene autoficel,COL7A1,replacement,selective,gene therapy,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL4650267/,ex vivo gene-modified autologous fibroblasts expressing COL7
+,30030,Hanferon,IFNAR1/IFNAR2,agonist,selective,protein,,,https://clinicaltrials.gov/study/NCT01194037,amino-acid variant of interferon alfa-2b (HanAll HL143); new molecule never FDA approved
+,30744,CD19 CAR-T cells with CRS suppression technology,CD19,depleter,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT03275493,
+,31586,burlulipase,PNLIP,replacement,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=burlulipase,recombinant bacterial (Burkholderia plantarii) lipase substituting for pancreatic lipase
+,32522,di-leu16-il2,MS4A1,depleter,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/15692062/,database modality wrong: anti-CD20 antibody-IL-2 immunocytokine fusion not an ADC
+,34250,aganepag isopropyl,PTGER2,agonist,selective,small molecule,,,https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2105714/,
+,40259,azamidugene autotemcel,IDUA,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=OTL-203,ex vivo lentiviral HSC gene therapy
+,1841,eteplirsen,DMD,other,selective,oligo,2016-09-19,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=206488,exon 51-skipping PMO restores truncated dystrophin (splice modulation; no list action fits)
+,2009,viltolarsen,DMD,other,selective,oligo,2020-08-12,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=212154,exon 53-skipping PMO restores truncated dystrophin (splice modulation; no list action fits)
+,2194,remibrutinib,BTK,inhibitor,selective,small molecule,2025-09-30,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=218436,covalent BTK inhibitor (Rhapsido NDA 218436)
+,2331,pegunigalsidase alfa,GLA,replacement,selective,protein,2023-05-09,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761161,
+,2351,loncastuximab tesirine,CD19,depleter,selective,ADC,2021-04-23,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761196,anti-CD19 PBD-dimer ADC
+,2380,epcoritamab,MS4A1,depleter,selective,antibody,2023-05-19,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761324,CD3xCD20 bispecific T-cell engager; CD3 arm is the effector not a target (DB CD3E agonist dropped)
+,4548,parsaclisib,PIK3CD,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL4297615,
+,4791,tominersen,HTT,gene_expression_reduction,selective,oligo,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL4297581,non-allele-selective HTT ASO
+,5545,zimberelimab,PDCD1,binder_neutralizer,selective,antibody,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL4297856,approved in China only
+,6411,tralesinidase alfa,NAGLU,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02754076,rhNAGLU-IGF2 fusion given ICV
+,7391,verosudil,ROCK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL3545065,
+,7635,albinterferon alfa-2b,IFNAR1/IFNAR2,agonist,selective,protein,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL2107842,albumin-IFN-alpha-2b fusion; new molecule though IFN-alpha-2b is approved
+,8180,methylsamidorphan,OPRM1,antagonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ALKS+37,ALKS 37: quaternary N-methyl samidorphan; peripherally restricted mu antagonist (samidorphan itself approved 2021-05-28 in Lybalvi)
+,8388,tirabrutinib,BTK,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL4071161,approved Japan 2020; US NDA for R/R PCNSL under review (PDUFA Dec 2026) so no FDA approval yet
+,9393,valanafusp alfa,IDUA,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT03053089,IDUA fused to anti-insulin-receptor mAb for BBB transport
+,9867,MDCO-216,APOA1,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02678923,ApoA-I Milano/phospholipid complex (HDL mimetic); mechanism not stated on the trial page
+,10238,SAP-001,unknown,inhibitor,,small molecule,,,https://www.shantonpharma.com/mechanism/168.html,sponsor: first-in-class inhibitor of an undisclosed renal urate reabsorption transporter; DB SLC22A12 (URAT1) unconfirmed
+,11859,CER-001,APOA1,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02484378,engineered pre-beta HDL (recombinant apoA-I + phospholipids)
+,14101,tefidsogene civaparvovec,IDS,replacement,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT03041324,ZFN in vivo editing inserts IDS into the albumin locus
+,14589,clervonafusp alfa,GAA,replacement,selective,protein,,,https://clinicaltrials.gov/study/NCT02898753,GAA fused to 3E10 antibody fragment
+,28711,XPF-001,SCN9A,blocker,selective,small molecule,,,https://clinicaltrials.gov/study/NCT01090622,"Xenon oral Nav1.7 blocker, probably XEN402/funapide (PMID 22035805); identity not confirmed"
+,30077,TBI-1501,CD19,depleter,selective,cell therapy,,,https://clinicaltrials.gov/study/NCT03155191,autologous CD19 CAR-T
+,30756,AXP1275,CCR3,antagonist,off-class,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/29423947/,database target wrong: CCR3 antagonist not PTGDR2 (CRTH2)
+,31735,somatropin pegol,GHR,agonist,selective,protein,,,https://clinicaltrials.gov/study/NCT00715689,PEGylated growth hormone; mechanism inferred from molecule (trial page does not state it)
+,33095,bms-911543,JAK2,inhibitor,selective,small molecule,,,https://www.ebi.ac.uk/chembl/api/data/mechanism?molecule_chembl_id=CHEMBL3545215,
+,34490,RKI983,ROCK,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/30378487/,Novartis topical ROCK inhibitor (review lists RKI-983)
+,40293,ifezuntirgene inilparvovec,HTT,gene_expression_reduction,selective,gene therapy,,,https://clinicaltrials.gov/study/NCT04120493,AAV5-delivered miRNA lowering HTT; mechanism not stated on the trial page
+,1871,lesinurad,SLC22A12,inhibitor,selective,small molecule,2015-12-22,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=207988,URAT1 (also OAT4) inhibitor; major metabolite of RDEA806
+,2017,fedratinib,JAK2,inhibitor,selective,small molecule,2019-08-16,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=212327,JAK2-selective over JAK1/3/TYK2; secondary FLT3 activity
+,2282,ocrelizumab,MS4A1,depleter,selective,antibody,2017-03-28,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761053,
+,2332,tafasitamab,CD19,depleter,selective,antibody,2020-07-31,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761163,Fc-enhanced anti-CD19 (ADCC/ADCP)
+,2353,cipaglucosidase alfa,GAA,replacement,selective,protein,2023-09-28,,https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=761204,
+,2829,prademagene zamikeracel,COL7A1,replacement,selective,gene therapy,2025-04-28,,https://www.fda.gov/vaccines-blood-biologics/zevaskyn,autologous keratinocyte sheets transduced ex vivo with COL7A1 (cell-based gene therapy)
+,4571,balstilimab,PDCD1,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=balstilimab,anti-PD-1; BLA withdrawn 2021
+,4886,mt-3724,MS4A1,depleter,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=MT-3724,engineered toxin body: anti-CD20 scFv fused to Shiga-like toxin A subunit
+,5550,idursulfase beta,IDS,replacement,selective,protein,,False,https://pubmed.ncbi.nlm.nih.gov/?term=idursulfase+beta,"recombinant iduronate-2-sulfatase (Hunterase), same enzyme as idursulfase (Elaprase, approved 2006-07-24): not novel"
+,6822,adrulipase alfa,PNLIP,replacement,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=MS1819+lipase,recombinant Yarrowia lipolytica lipase (LIP2) replacing pancreatic lipase activity; not human PNLIP
+,7400,flumbatinib,ABL1,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=flumbatinib,imatinib derivative: BCR-ABL (also PDGFR/KIT) inhibitor; approved in China only
+,7710,blosozumab,SOST,binder_neutralizer,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=blosozumab,
+,8193,mavoglurant,GRM5,negative_modulator,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=mavoglurant,mGluR5 negative allosteric modulator
+,8526,pf-05089771,SCN9A,blocker,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=PF-05089771,Nav1.7-selective blocker
+,9534,rg-7795,TLR7,agonist,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=ANA773,oral prodrug of a TLR7 agonist
+,9889,tagitanlimab,CD274,binder_neutralizer,selective,antibody,,,https://www.cancer.gov/publications/dictionaries/cancer-drug/def/tagitanlimab,anti-PD-L1; approved in China only
+,10391,divozilimab,MS4A1,depleter,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/37560833/,anti-CD20 (Biocad); approved in Russia only
+,12535,imvotamab,MS4A1,depleter,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/?term=IGM-2323,IgM CD20xCD3 bispecific T-cell engager; CD3 arm recruits T cells (not a separate agonist target)
+,14124,lexanersen,HTT,gene_expression_reduction,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=WVE-120102,stereopure ASO targeting mutant-HTT SNP rs362331
+,27027,CD19 CAR-T cells,CD19,depleter,selective,cell therapy,,,https://sigma.larvol.com/product.php?e1=772690&tab=newstrac,DSCAR01; distinct CD19 CAR-T product (not an approved CAR-T)
+,28726,surabgene lomparvovec,VEGFA,binder_neutralizer,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=RGX-314,AAV8 encoding an anti-VEGF Fab (ranibizumab-like)
+,30111,PRO045,DMD,other,selective,oligo,,,https://pubmed.ncbi.nlm.nih.gov/?term=PRO045+exon+45,exon 45 skipping ASO restoring dystrophin reading frame
+,30869,rdea-806,SLC22A12,inhibitor,selective,small molecule,,,https://pubmed.ncbi.nlm.nih.gov/?term=RDEA806,HIV NNRTI; uricosuric via URAT1 inhibition by its major metabolite lesinurad (RDEA594)
+,31765,recombinant human serum albumin/interferon alpha-2a fusion protein,IFNAR1/IFNAR2,agonist,selective,protein,,,https://clinicaltrials.gov/study/NCT01901198,long-acting HSA-IFN alpha-2a fusion; new molecule distinct from interferon alfa-2a
+,33813,reveglucosidase alfa,GAA,replacement,selective,protein,,,https://pubmed.ncbi.nlm.nih.gov/?term=BMN+701,IGF2 (GILT)-tagged recombinant GAA
+,34577,rAAV2/5-hNAGLU,NAGLU,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=rAAV2%2F5-hNAGLU,intracerebral AAV5 gene therapy
+,40381,FLT190,GLA,replacement,selective,gene therapy,,,https://pubmed.ncbi.nlm.nih.gov/?term=FLT190,liver-directed AAV gene therapy
+,27235,zuberitamab,MS4A1,depleter,selective,antibody,,,https://adisinsight.springer.com/drugs/800051638,"humanized anti-CD20 mAb (HS006, Hisun); AdisInsight files it as a rituximab biosimilar but it has its own INN and sequence, so novelty is left to the approval date"
+,12050,MIL62,MS4A1,depleter,selective,antibody,,,https://pubmed.ncbi.nlm.nih.gov/39007066/,glycoengineered type II anti-CD20 mAb (obinutuzumab beta)

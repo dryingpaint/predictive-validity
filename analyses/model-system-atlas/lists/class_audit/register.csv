@@ -19,7 +19,7 @@ allergy,MONDO:0005642,atopic conjunctivitis,14,CMKLR1|agonist,CMKLR1 agonists,1,
 allergy,MONDO:0005642,atopic conjunctivitis,14,ITGAL;ITGB2|antagonist,ITGAL;ITGB2 antagonists,1,0.071,small molecule,,2,0.42,lifitegrast,False
 allergy,MONDO:0005642,atopic conjunctivitis,14,RASP (aldehyde trap)|inhibitor,RASP (aldehyde trap) inhibitors,1,0.071,small molecule,selective,3,0.42,reproxalap,False
 allergy,MONDO:0005642,atopic conjunctivitis,14,SYK|inhibitor,SYK inhibitors,1,0.071,small molecule,,2,0.42,PRT-2761,False
-allergy,MONDO:0044212,chronic idiopathic urticaria,3,BTK|inhibitor,BTK inhibitors,1,0.333,small molecule,,4,0.0,remibrutinib,False
+allergy,MONDO:0044212,chronic idiopathic urticaria,3,BTK|inhibitor,BTK inhibitors,1,0.333,small molecule,selective,4,0.0,remibrutinib,False
 allergy,MONDO:0044212,chronic idiopathic urticaria,3,CD200R1|agonist,CD200R1 agonists,1,0.333,antibody,,2,0.0,ucenprubart,False
 allergy,MONDO:0044212,chronic idiopathic urticaria,3,IGHE|binder_neutralizer,anti-IGHE antibodies,1,0.333,antibody,,3,0.0,ligelizumab,False
 allergy,MONDO:0850230,chronic urticaria,1,SIGLEC8|depleter,SIGLEC8-directed depleters,1,1.0,antibody,,2,0.0,lirentelimab,False
@@ -66,7 +66,7 @@ autoimmune,MONDO:0005011,Crohn disease,36,MADCAM1|binder_neutralizer,anti-MADCAM
 autoimmune,MONDO:0005011,Crohn disease,36,TNF|binder_neutralizer,anti-TNF antibodies,1,0.028,antibody,,2,0.14,V565,False
 autoimmune,MONDO:0018304,Schnitzler syndrome,1,NLRP3|inhibitor,NLRP3 inhibitors,1,1.0,small molecule,,2,0.0,dapansutrile,False
 autoimmune,MONDO:0010030,Sjogren syndrome,17,BTK|inhibitor,BTK inhibitors,3,0.176,small molecule,selective,2,0.0,bms-986142; remibrutinib; tirabrutinib,True
-autoimmune,MONDO:0010030,Sjogren syndrome,17,PIK3CD|inhibitor,PIK3CD inhibitors,3,0.176,small molecule,,2,0.0,leniolisib; parsaclisib; seletalisib,True
+autoimmune,MONDO:0010030,Sjogren syndrome,17,PIK3CD|inhibitor,PIK3CD inhibitors,3,0.176,small molecule,selective,2,0.0,leniolisib; parsaclisib; seletalisib,True
 autoimmune,MONDO:0010030,Sjogren syndrome,17,CD28|antagonist,CD28 antagonists,1,0.059,antibody,,2,0.0,lulizumab pegol,False
 autoimmune,MONDO:0010030,Sjogren syndrome,17,CD40LG|antagonist,CD40LG antagonists,1,0.059,protein,,3,0.0,dazodalibep,False
 autoimmune,MONDO:0010030,Sjogren syndrome,17,CTSS|inhibitor,CTSS inhibitors,1,0.059,small molecule,,2,0.0,petesicatib,False
@@ -124,7 +124,7 @@ autoimmune,MONDO:0013730,graft versus host disease,10,CCR5|binder_neutralizer,an
 autoimmune,MONDO:0013730,graft versus host disease,10,CD6|binder_neutralizer,anti-CD6 antibodies,1,0.1,antibody,,3,0.0,itolizumab,False
 autoimmune,MONDO:0013730,graft versus host disease,10,multi-target (mechanism unresolved) (off-class)|other,multi-target (mechanism unresolved) (off-class),1,0.1,small molecule,off-class,2,0.0,cannabidiol,False
 autoimmune,MONDO:0012105,granulomatosis with polyangiitis,1,C5|binder_neutralizer,anti-C5 antibodies,1,1.0,antibody,,2,0.0,vilobelimab,False
-autoimmune,MONDO:0006559,hidradenitis suppurativa,17,BTK|inhibitor,BTK inhibitors,1,0.059,small molecule,,3,0.0,remibrutinib,False
+autoimmune,MONDO:0006559,hidradenitis suppurativa,17,BTK|inhibitor,BTK inhibitors,1,0.059,small molecule,selective,3,0.0,remibrutinib,False
 autoimmune,MONDO:0006559,hidradenitis suppurativa,17,C5AR1|antagonist,C5AR1 antagonists,1,0.059,small molecule,,2,0.0,avacopan,False
 autoimmune,MONDO:0006559,hidradenitis suppurativa,17,IRAK4|inhibitor,IRAK4 inhibitors,1,0.059,small molecule,,2,0.0,zimlovisertib,False
 autoimmune,MONDO:0006559,hidradenitis suppurativa,17,JAK1|inhibitor,JAK1 inhibitors,1,0.059,small molecule,,3,0.0,povorcitinib,False
@@ -393,7 +393,7 @@ cardiovascular,MONDO:0008364,Raynaud disease,5,PDE5A|inhibitor,PDE5A inhibitors,
 cardiovascular,MONDO:0008364,Raynaud disease,5,PTGIR|agonist,PTGIR agonists,1,0.2,small molecule,,2,0.0,selexipag,False
 cardiovascular,MONDO:0041656,ST-elevation myocardial infarction,6,CXCR4|antagonist,CXCR4 antagonists,1,0.167,peptide,,2,0.67,balixafortide,False
 cardiovascular,MONDO:0041656,ST-elevation myocardial infarction,6,LCAT|replacement,LCAT replacement / gene therapy,1,0.167,protein,,2,0.67,recombinant human lecithin:cholesterol acyltransferase,False
-cardiovascular,MONDO:0005542,acute coronary syndrome,9,APOA1|replacement,APOA1 replacement / gene therapy,3,0.333,protein,,3,0.0,CER-001; MDCO-216; apolipoprotein a-i,True
+cardiovascular,MONDO:0005542,acute coronary syndrome,9,APOA1|replacement,APOA1 replacement / gene therapy,3,0.333,protein,selective,3,0.0,CER-001; MDCO-216; apolipoprotein a-i,True
 cardiovascular,MONDO:0005542,acute coronary syndrome,9,F10|inhibitor,F10 inhibitors,2,0.222,small molecule,,2,0.0,darexaban; letaxaban,False
 cardiovascular,MONDO:0005542,acute coronary syndrome,9,F9|other,F9,1,0.111,oligo,,2,0.0,anivamersen,False
 cardiovascular,MONDO:0005542,acute coronary syndrome,9,F9|inhibitor,F9 inhibitors,1,0.111,oligo,,2,0.0,pegnivacogin,False
@@ -407,7 +407,7 @@ cardiovascular,MONDO:0020673,arterial occlusion,1,FGA;FGB;FGG|degrader,FGA;FGB;F
 cardiovascular,MONDO:0005311,atherosclerosis,4,MAPK11;MAPK14|inhibitor,MAPK11;MAPK14 inhibitors,1,0.25,small molecule,,2,0.0,losmapimod,False
 cardiovascular,MONDO:0005311,atherosclerosis,4,SOAT1|inhibitor,SOAT1 inhibitors,1,0.25,small molecule,,2,0.0,K-604,False
 cardiovascular,MONDO:0005311,atherosclerosis,4,APOB|binder_neutralizer,anti-APOB antibodies,1,0.25,antibody,,2,0.0,orticumab,False
-cardiovascular,MONDO:1060134,atherosclerotic cardiovascular disease,2,APOA1|replacement,APOA1 replacement / gene therapy,1,0.5,protein,,2,0.0,apolipoprotein a-i,False
+cardiovascular,MONDO:1060134,atherosclerotic cardiovascular disease,2,APOA1|replacement,APOA1 replacement / gene therapy,1,0.5,protein,selective,2,0.0,apolipoprotein a-i,False
 cardiovascular,MONDO:1060134,atherosclerotic cardiovascular disease,2,PCSK9|gene_expression_reduction,PCSK9 antisense / siRNA,1,0.5,oligo,,4,0.0,inclisiran,False
 cardiovascular,MONDO:0004981,atrial fibrillation,16,CACNA1C/KCNH2/SCN5A (multichannel)|blocker,CACNA1C/KCNH2/SCN5A (multichannel) blockers,2,0.125,small molecule,pan,3,0.15,azd-1305; vanoxerine,False
 cardiovascular,MONDO:0004981,atrial fibrillation,16,ADORA1|agonist,ADORA1 agonists,1,0.062,small molecule,,2,0.15,tecadenoson,False
@@ -538,13 +538,13 @@ endocrine,MONDO:0004946,hypoglycemia,3,GLP1R|antagonist,GLP1R antagonists,1,0.33
 endocrine,MONDO:0004946,hypoglycemia,3,INSR|negative_modulator,INSR negative modulators,1,0.333,antibody,,2,0.0,ersodetug,False
 endocrine,MONDO:0002146,hypogonadism,1,KISS1R|agonist,KISS1R agonists,1,1.0,peptide,,2,0.0,tak-448,False
 endocrine,MONDO:0018555,hypogonadotropic hypogonadism,1,CYP19A1|inhibitor,CYP19A1 inhibitors,1,1.0,small molecule,,2,0.0,leflutrozole,False
-endocrine,MONDO:0005152,hypopituitarism,6,GHR|agonist,GHR agonists,4,0.667,protein,,4,0.0,lonapegsomatropin; somatrogon; somatropin pegol; somavaratan,True
+endocrine,MONDO:0005152,hypopituitarism,6,GHR|agonist,GHR agonists,3,0.5,protein,selective,4,0.0,somatrogon; somatropin pegol; somavaratan,True
 endocrine,MONDO:0005152,hypopituitarism,6,GH1|replacement,GH1 replacement / gene therapy,2,0.333,protein,,3,0.0,albusomatropin; efpegsomatropin,False
 endocrine,MONDO:0002150,hypothalamic disorder,1,METAP2|inhibitor,METAP2 inhibitors,1,1.0,small molecule,,2,0.0,beloranib,False
 endocrine,MONDO:0005420,hypothyroidism,1,THRA;THRB|agonist,THRA;THRB agonists,1,1.0,other,,3,0.0,thyroid,False
 endocrine,MONDO:0005047,infertility disorder,2,OXTR|antagonist,OXTR antagonists,2,1.0,peptide;small molecule,,3,0.0,barusiban; nolasiban,False
 endocrine,MONDO:1010112,isolated short stature,1,GHR|agonist,GHR agonists,1,1.0,protein,,2,0.0,pegylated somatropin,False
-endocrine,MONDO:0006909,pituitary dwarfism,3,GHR|agonist,GHR agonists,3,1.0,protein,,4,0.0,somapacitan; somatropin pegol; somavaratan,True
+endocrine,MONDO:0006909,pituitary dwarfism,3,GHR|agonist,GHR agonists,3,1.0,protein,selective,4,0.0,somapacitan; somatropin pegol; somavaratan,True
 endocrine,MONDO:0008487,polycystic ovary syndrome,5,SGLT1/2|inhibitor,SGLT1/2 inhibitors,1,0.2,small molecule,dual,2,0.5,licogliflozin,False
 endocrine,MONDO:0008487,polycystic ovary syndrome,5,TACR3|antagonist,TACR3 antagonists,1,0.2,small molecule,,2,0.5,pavinetant,False
 endocrine,MONDO:0006920,prediabetes syndrome,1,BRD2;BRD3;BRD4|inhibitor,BRD2;BRD3;BRD4 inhibitors,1,1.0,small molecule,,2,0.0,apabetalone,False
@@ -637,7 +637,7 @@ gastroenterology,MONDO:0005412,duodenal ulcer,1,ATP4A|inhibitor,ATP4A inhibitors
 gastroenterology,MONDO:0002268,dyspepsia,6,HTR4|agonist,HTR4 agonists,2,0.333,small molecule,,2,0.0,YH12852; naronapride,False
 gastroenterology,MONDO:0002268,dyspepsia,6,DRD2;HTR4|antagonist;agonist,DRD2;HTR4 antagonist;agonist,1,0.167,other,,2,0.0,lucoridalines,False
 gastroenterology,MONDO:0002268,dyspepsia,6,GUCY2C|agonist,GUCY2C agonists,1,0.167,peptide,,2,0.0,recanaclotide,False
-gastroenterology,MONDO:0001684,exocrine pancreatic insufficiency,4,PNLIP|replacement,PNLIP replacement / gene therapy,3,0.75,protein,,2,0.0,SLV339; adrulipase alfa; burlulipase,True
+gastroenterology,MONDO:0001684,exocrine pancreatic insufficiency,4,PNLIP|replacement,PNLIP replacement / gene therapy,3,0.75,protein,selective,2,0.0,SLV339; adrulipase alfa; burlulipase,True
 gastroenterology,MONDO:0001684,exocrine pancreatic insufficiency,4,CEL|replacement,CEL replacement / gene therapy,1,0.25,protein,,2,0.0,bucelipase alfa,False
 gastroenterology,MONDO:0004790,fatty liver disease,1,multi-target (mechanism unresolved) (off-class)|other,multi-target (mechanism unresolved) (off-class),1,1.0,small molecule,off-class,2,0.0,cannabidiol,False
 gastroenterology,MONDO:0100430,fibrotic liver disease,4,LOXL2|inhibitor,LOXL2 inhibitors,1,0.25,antibody,,2,0.25,simtuzumab,False
@@ -717,7 +717,7 @@ gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,
 gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,SCD|inhibitor,SCD inhibitors,1,0.013,small molecule,,3,0.22,icomidocholic acid,False
 gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,SGLT1/2|inhibitor,SGLT1/2 inhibitors,1,0.013,small molecule,dual,2,0.22,licogliflozin,False
 gastroenterology,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,TSPO;VDAC1|other,TSPO;VDAC1,1,0.013,small molecule,,2,0.22,olesoxime,False
-gastroenterology,MONDO:0100187,opioid-induced constipation,5,OPRM1|antagonist,OPRM1 antagonists,4,0.8,small molecule,,4,0.0,axelopran; bevenopran; methylsamidorphan; naldemedine,True
+gastroenterology,MONDO:0100187,opioid-induced constipation,5,OPRM1|antagonist,OPRM1 antagonists,4,0.8,small molecule,selective,4,0.0,axelopran; bevenopran; methylsamidorphan; naldemedine,True
 gastroenterology,MONDO:0004568,paralytic ileus,1,HTR4|agonist,HTR4 agonists,1,1.0,small molecule,,2,0.0,velusetrag,False
 gastroenterology,MONDO:0006896,peptic esophagitis,2,ATP4A|blocker,ATP4A blockers,1,0.5,small molecule,,2,0.0,YH4808,False
 gastroenterology,MONDO:0006896,peptic esophagitis,2,ATP4A|inhibitor,ATP4A inhibitors,1,0.5,small molecule,,2,0.0,azeloprazole,False
@@ -760,7 +760,7 @@ hematology,MONDO:0020725,anemia due to chronic disorder,9,BMP6|binder_neutralize
 hematology,MONDO:0015909,aplastic anemia,3,CXCR4|antagonist,CXCR4 antagonists,1,0.333,peptide,,2,0.0,motixafortide,False
 hematology,MONDO:0015909,aplastic anemia,3,MPL|agonist,MPL agonists,1,0.333,small molecule,,3,0.0,rafutrombopag,False
 hematology,MONDO:0008846,atransferrinemia,1,TF|replacement,TF replacement / gene therapy,1,1.0,protein,,2,0.0,apotransferrin,False
-hematology,MONDO:0020108,autoimmune hemolytic anemia,2,PIK3CD|inhibitor,PIK3CD inhibitors,1,0.5,small molecule,,3,0.0,parsaclisib,False
+hematology,MONDO:0020108,autoimmune hemolytic anemia,2,PIK3CD|inhibitor,PIK3CD inhibitors,1,0.5,small molecule,selective,3,0.0,parsaclisib,False
 hematology,MONDO:0020108,autoimmune hemolytic anemia,2,SYK|inhibitor,SYK inhibitors,1,0.5,small molecule,,3,0.0,fostamatinib,False
 hematology,MONDO:0019532,"autoimmune hemolytic anemia, warm type",2,C3|inhibitor,C3 inhibitors,1,0.5,peptide,,2,0.0,pegcetacoplan,False
 hematology,MONDO:0019532,"autoimmune hemolytic anemia, warm type",2,FCGRT|binder_neutralizer,anti-FCGRT antibodies,1,0.5,antibody,,2,0.0,orilanolimab,False
@@ -834,16 +834,16 @@ infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV gp120 attachment|
 infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV protease|inhibitor,HIV protease inhibitors,1,0.031,small molecule,selective,2,0.27,tmc-310911,False
 infectious_disease,MONDO:0005109,HIV infectious disease,32,IL7R|agonist,IL7R agonists,1,0.031,protein,,2,0.27,interleukin-7 human recombinant,False
 infectious_disease,MONDO:0005109,HIV infectious disease,32,NCBP1;NCBP2|positive_modulator,NCBP1;NCBP2 positive modulators,1,0.031,small molecule,,2,0.27,obefazimod,False
-infectious_disease,MONDO:0005109,HIV infectious disease,32,SLC22A12|inhibitor,SLC22A12 inhibitors,1,0.031,small molecule,,2,0.27,rdea-806,False
+infectious_disease,MONDO:0005109,HIV infectious disease,32,SLC22A12|inhibitor,SLC22A12 inhibitors,1,0.031,small molecule,selective,2,0.27,rdea-806,False
 infectious_disease,MONDO:0005109,HIV infectious disease,32,CD4|binder_neutralizer,anti-CD4 antibodies,1,0.031,antibody,,3,0.27,semzuvolimab,False
 infectious_disease,MONDO:0005109,HIV infectious disease,32,HIV Env (bnAb)|binder_neutralizer,anti-HIV Env (bnAb) antibodies,1,0.031,antibody,selective,2,0.27,lafuvitug,False
 infectious_disease,MONDO:0005920,Plasmodium falciparum malaria,2,SELP|inhibitor,SELP inhibitors,1,0.5,other,,2,0.0,sevuparin,False
 infectious_disease,MONDO:0005647,anogenital human papillomavirus infection,11,TLR7|agonist,TLR7 agonists,1,0.091,small molecule,,2,0.62,LFX453,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBV RNA|gene_expression_reduction,HBV RNA antisense / siRNA,3,0.094,oligo,selective,2,0.42,ARB-001467; elebsiran; tomligisiran,True
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBsAg release (NAP)|inhibitor,HBsAg release (NAP) inhibitors,3,0.094,oligo,selective,2,0.42,REP 2055; REP 2139; REP 2165,True
-infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,IFNAR1;IFNAR2|agonist,IFNAR1;IFNAR2 agonists,3,0.094,protein,,3,0.42,albinterferon alfa-2b; recombinant human serum albumin/interferon alpha-2a fusion protein; ypeginterferon alfa-2b,True
-infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR7|agonist,TLR7 agonists,3,0.094,small molecule,,2,0.42,TQ-A3334; rg-7795; vesatolimod,True
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR7|agonist,TLR7 agonists,3,0.094,small molecule,selective,2,0.42,TQ-A3334; rg-7795; vesatolimod,True
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBV core (CAM)|inhibitor,HBV core (CAM) inhibitors,2,0.062,small molecule,selective,2,0.42,morphothiadine; vebicorvir,False
+infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,IFNAR1/IFNAR2|agonist,IFNAR1/IFNAR2 agonists,2,0.062,protein,selective,2,0.42,albinterferon alfa-2b; recombinant human serum albumin/interferon alpha-2a fusion protein,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,FNTB;PGGT1B|inhibitor,FNTB;PGGT1B inhibitors,1,0.031,small molecule,,2,0.42,antroquinonol,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,HBV polymerase (nucleoside)|inhibitor,HBV polymerase (nucleoside) inhibitors,1,0.031,small molecule,selective,2,0.42,metacavir,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,IFNLR1;IL10RB|agonist,IFNLR1;IL10RB agonists,1,0.031,protein,,2,0.42,peginterferon lambda-1a,False
@@ -853,7 +853,7 @@ infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,SLC10A1|
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR2;TLR9|agonist,TLR2;TLR9 agonists,1,0.031,peptide,,3,0.42,thymalfasin,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,TLR8|agonist,TLR8 agonists,1,0.031,small molecule,,2,0.42,selgantolimod,False
 infectious_disease,MONDO:0005366,chronic hepatitis B virus infection,32,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.031,antibody,selective,2,0.42,serplulimab,False
-infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,IFNAR1;IFNAR2|agonist,IFNAR1;IFNAR2 agonists,6,0.333,protein,,3,0.17,HM10660A; Hanferon; PEG-IFN-SA; interferon alfa-5; ropeginterferon alfa-2b; ypeginterferon alfa-2b,True
+infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,IFNAR1/IFNAR2|agonist,IFNAR1/IFNAR2 agonists,3,0.167,protein,selective,3,0.17,Hanferon; PEG-IFN-SA; interferon alfa-5,True
 infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,ADORA3|agonist,ADORA3 agonists,1,0.056,small molecule,,2,0.17,namodenoson,False
 infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,CD3E|other,CD3E,1,0.056,antibody,,2,0.17,anti-CD3 monoclonal antibody,False
 infectious_disease,MONDO:0005354,chronic hepatitis C virus infection,18,PPIA|inhibitor,PPIA inhibitors,1,0.056,small molecule,,2,0.17,9-(n-methyl-l-isoleucine)-cyclosporin a,False
@@ -892,7 +892,7 @@ infectious_disease,MONDO:0005249,pneumonia,7,GSN|replacement,GSN replacement / g
 infectious_disease,MONDO:0018469,pulmonary non-tuberculous mycobacterial infection,2,CSF2RA;CSF2RB|agonist,CSF2RA;CSF2RB agonists,1,0.5,protein,,2,0.0,molgramostim,False
 infectious_disease,MONDO:0024355,respiratory tract infectious disorder,3,PI3K/MTOR|inhibitor,PI3K/MTOR inhibitors,1,0.333,small molecule,dual,3,0.5,dactolisib,False
 metabolic,MONDO:0008763,Alstrom syndrome,1,FFAR1;GPR84|agonist;antagonist,FFAR1;GPR84 agonist;antagonist,1,1.0,small molecule,,3,0.0,fezagepras,False
-metabolic,MONDO:0010526,Fabry disease,5,GLA|replacement,GLA replacement / gene therapy,4,0.8,cell therapy;gene therapy;protein,,4,0.0,FLT190; isaralgagene civaparvovec; pegunigalsidase alfa; voxeralgagene autotemcel,True
+metabolic,MONDO:0010526,Fabry disease,5,GLA|replacement,GLA replacement / gene therapy,4,0.8,gene therapy;protein,selective,4,0.0,FLT190; isaralgagene civaparvovec; pegunigalsidase alfa; voxeralgagene autotemcel,True
 metabolic,MONDO:0010526,Fabry disease,5,UGCG|inhibitor,UGCG inhibitors,1,0.2,small molecule,,3,0.0,venglustat,False
 metabolic,MONDO:0018150,Gaucher disease,1,GBA1|replacement,GBA1 replacement / gene therapy,1,1.0,cell therapy,,2,0.0,AVR-RD-02,False
 metabolic,MONDO:0009265,Gaucher disease type I,2,GBA1;SCN10A|other;blocker,GBA1;SCN10A other;blocker,1,0.5,small molecule,,2,0.0,ambroxol,False
@@ -918,11 +918,11 @@ metabolic,MONDO:0009258,classic galactosemia,1,AKR1B1|inhibitor,AKR1B1 inhibitor
 metabolic,MONDO:0001676,erythropoietic protoporphyria,1,MC1R|agonist,MC1R agonists,1,1.0,small molecule,,3,0.0,dersimelagon,False
 metabolic,MONDO:0018637,familial chylomicronemia syndrome,2,ANGPTL3|gene_expression_reduction,ANGPTL3 antisense / siRNA,1,0.5,oligo,,2,0.0,vupanorsen,False
 metabolic,MONDO:0018637,familial chylomicronemia syndrome,2,SREBF1|inhibitor,SREBF1 inhibitors,1,0.5,small molecule,,2,0.0,CAT-2003,False
-metabolic,MONDO:0005439,familial hypercholesterolemia,2,APOA1|replacement,APOA1 replacement / gene therapy,1,0.5,protein,,2,0.0,CER-001,False
+metabolic,MONDO:0005439,familial hypercholesterolemia,2,APOA1|replacement,APOA1 replacement / gene therapy,1,0.5,protein,selective,2,0.0,CER-001,False
 metabolic,MONDO:0005439,familial hypercholesterolemia,2,THRB|agonist,THRB agonists,1,0.5,small molecule,,2,0.0,resmetirom,False
 metabolic,MONDO:0020088,familial partial lipodystrophy,1,ANGPTL3|gene_expression_reduction,ANGPTL3 antisense / siRNA,1,1.0,oligo,,2,0.0,vupanorsen,False
 metabolic,MONDO:0002413,glycogen storage disease I,1,G6PC1|replacement,G6PC1 replacement / gene therapy,1,1.0,gene therapy,,4,0.0,pariglasgene brecaparvovec,False
-metabolic,MONDO:0009290,glycogen storage disease II,5,GAA|replacement,GAA replacement / gene therapy,3,0.6,protein,,4,0.0,cipaglucosidase alfa; clervonafusp alfa; reveglucosidase alfa,True
+metabolic,MONDO:0009290,glycogen storage disease II,5,GAA|replacement,GAA replacement / gene therapy,3,0.6,protein,selective,4,0.0,cipaglucosidase alfa; clervonafusp alfa; reveglucosidase alfa,True
 metabolic,MONDO:0009290,glycogen storage disease II,5,GAA|other,GAA,1,0.2,small molecule,,2,0.0,duvoglustat,False
 metabolic,MONDO:0004737,homocystinuria,1,CBS|replacement,CBS replacement / gene therapy,1,1.0,protein,,3,0.0,pegtibatinase,False
 metabolic,MONDO:0018328,homozygous familial hypercholesterolemia,5,LDLR|replacement,LDLR replacement / gene therapy,1,0.2,gene therapy,,2,0.0,RGX-501,False
@@ -958,17 +958,17 @@ metabolic,MONDO:0005347,hypertriglyceridemia,9,DGAT1|inhibitor,DGAT1 inhibitors,
 metabolic,MONDO:0005347,hypertriglyceridemia,9,SREBF1|inhibitor,SREBF1 inhibitors,1,0.111,small molecule,,2,0.25,CAT-2003,False
 metabolic,MONDO:0005347,hypertriglyceridemia,9,ANGPTL3|binder_neutralizer,anti-ANGPTL3 antibodies,1,0.111,antibody,,2,0.25,evinacumab,False
 metabolic,MONDO:0018570,hypophosphatasia,2,ALPL|replacement,ALPL replacement / gene therapy,1,0.5,protein,,4,0.0,asfotase alfa,False
-metabolic,MONDO:0018570,hypophosphatasia,2,SOST|binder_neutralizer,anti-SOST antibodies,1,0.5,antibody,,2,0.0,setrusumab,False
+metabolic,MONDO:0018570,hypophosphatasia,2,SOST|binder_neutralizer,anti-SOST antibodies,1,0.5,antibody,selective,2,0.0,setrusumab,False
 metabolic,MONDO:0004736,inborn disorder of amino acid metabolism,1,CFTR;DMD;F8;F9;PAX6|gene_expression_increase,CFTR;DMD;F8;F9;PAX6 gene therapy,1,1.0,small molecule,,2,0.0,ataluren,False
 metabolic,MONDO:0009637,inborn mitochondrial myopathy,1,NFE2L2|activator,NFE2L2 activators,1,1.0,small molecule,,2,0.0,omaveloxolone,False
 metabolic,MONDO:0800449,lysosomal acid lipase deficiency,1,LIPA|replacement,LIPA replacement / gene therapy,1,1.0,protein,,4,0.0,sebelipase alfa,False
 metabolic,MONDO:0018868,metachromatic leukodystrophy,2,ARSA|replacement,ARSA replacement / gene therapy,2,1.0,cell therapy;protein,,4,0.0,atidarsagene autotemcel; cebsulfase alfa,False
 metabolic,MONDO:0044970,mitochondrial disease,3,ALOX15|inhibitor,ALOX15 inhibitors,1,0.333,small molecule,,3,0.5,vatiquinone,False
-metabolic,MONDO:0001586,mucopolysaccharidosis type 1,6,IDUA|replacement,IDUA replacement / gene therapy,4,0.667,cell therapy;gene therapy;protein,,3,0.0,RGX-111; azamidugene autotemcel; devafidugene civaparvovec; valanafusp alfa,True
-metabolic,MONDO:0010674,mucopolysaccharidosis type 2,3,IDS|replacement,IDS replacement / gene therapy,3,1.0,gene therapy;protein,,3,0.0,idursulfase beta; pabinafusp alfa; tefidsogene civaparvovec,True
+metabolic,MONDO:0001586,mucopolysaccharidosis type 1,6,IDUA|replacement,IDUA replacement / gene therapy,4,0.667,gene therapy;protein,selective,3,0.0,RGX-111; azamidugene autotemcel; devafidugene civaparvovec; valanafusp alfa,True
+metabolic,MONDO:0010674,mucopolysaccharidosis type 2,3,IDS|replacement,IDS replacement / gene therapy,2,0.667,gene therapy;protein,selective,3,0.0,pabinafusp alfa; tefidsogene civaparvovec,False
 metabolic,MONDO:0018937,mucopolysaccharidosis type 3,1,SGSH|replacement,SGSH replacement / gene therapy,1,1.0,protein,,2,0.0,n-sulfoglucosamine sulfohydrolase,False
 metabolic,MONDO:0009655,mucopolysaccharidosis type 3A,2,SGSH|replacement,SGSH replacement / gene therapy,2,1.0,gene therapy;protein,,2,0.0,SAF-301; sobi-003,False
-metabolic,MONDO:0009656,mucopolysaccharidosis type 3B,4,NAGLU|replacement,NAGLU replacement / gene therapy,3,0.75,gene therapy;protein,,3,0.0,lesinidase alfa; rAAV2/5-hNAGLU; tralesinidase alfa,True
+metabolic,MONDO:0009656,mucopolysaccharidosis type 3B,4,NAGLU|replacement,NAGLU replacement / gene therapy,3,0.75,gene therapy;protein,selective,3,0.0,lesinidase alfa; rAAV2/5-hNAGLU; tralesinidase alfa,True
 metabolic,MONDO:0009656,mucopolysaccharidosis type 3B,4,HAO1;NAGLU|gene_expression_reduction;replacement,HAO1;NAGLU gene_expression_reduction;replacement,1,0.25,gene therapy,,2,0.0,rAAV9.CMV.hNAGLU,False
 metabolic,MONDO:0009659,mucopolysaccharidosis type 4A,1,GALNS|replacement,GALNS replacement / gene therapy,1,1.0,protein,,4,0.0,elosulfase alfa,False
 metabolic,MONDO:0009661,mucopolysaccharidosis type 6,1,B4GALT7;SERPIND1|other;activator,B4GALT7;SERPIND1 other;activator,1,1.0,small molecule,,2,0.0,odiparcil,False
@@ -1046,8 +1046,7 @@ neurology,MONDO:0008608,Down syndrome,3,APP|other,APP,1,0.333,small molecule,,2,
 neurology,MONDO:0008608,Down syndrome,3,GABRA5|negative_modulator,GABRA5 negative modulators,1,0.333,small molecule,,2,0.0,basmisanil,False
 neurology,MONDO:0100135,Dravet syndrome,2,CYP46A1|inhibitor,CYP46A1 inhibitors,1,0.5,small molecule,,3,0.0,soticlestat,False
 neurology,MONDO:0100135,Dravet syndrome,2,multi-target (mechanism unresolved) (off-class)|other,multi-target (mechanism unresolved) (off-class),1,0.5,small molecule,off-class,4,0.0,cannabidiol,False
-neurology,MONDO:0010679,Duchenne muscular dystrophy,24,DMD|other,DMD,6,0.25,oligo;small molecule,,4,0.13,BMN-053; DS-5141b; PRO044; PRO045; arbekacin; golodirsen,True
-neurology,MONDO:0010679,Duchenne muscular dystrophy,24,DMD|gene_expression_increase,DMD gene therapy,3,0.125,oligo,,4,0.13,eteplirsen; vesleteplirsen; viltolarsen,True
+neurology,MONDO:0010679,Duchenne muscular dystrophy,24,DMD|other,DMD,8,0.333,oligo,selective,4,0.13,BMN-053; DS-5141b; PRO044; PRO045; eteplirsen; golodirsen,True
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,DMD|replacement,DMD replacement / gene therapy,2,0.083,gene therapy,,4,0.13,SGT-001; delandistrogene moxeparvovec,False
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,MSTN|binder_neutralizer,anti-MSTN antibodies,2,0.083,antibody;protein,,2,0.13,domagrozumab; ramatercept,False
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,EPRS1|inhibitor,EPRS1 inhibitors,1,0.042,small molecule,,2,0.13,halofuginone,False
@@ -1057,16 +1056,17 @@ neurology,MONDO:0010679,Duchenne muscular dystrophy,24,NFKB1;RELA|inhibitor,NFKB
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,NR3C1|partial_agonist,NR3C1 partial_agonist,1,0.042,small molecule,,4,0.13,vamorolone,False
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,UTRN|gene_expression_increase,UTRN gene therapy,1,0.042,small molecule,,2,0.13,ezutromid,False
 neurology,MONDO:0010679,Duchenne muscular dystrophy,24,CCN2|binder_neutralizer,anti-CCN2 antibodies,1,0.042,antibody,,3,0.13,pamrevlumab,False
+neurology,MONDO:0010679,Duchenne muscular dystrophy,24,ribosome (nonsense readthrough) (off-class)|other,ribosome (nonsense readthrough) (off-class),1,0.042,small molecule,off-class,2,0.13,arbekacin,False
 neurology,MONDO:0100339,Friedreich ataxia,8,CSF2RB;EPOR|agonist,CSF2RB;EPOR agonists,1,0.125,protein,,2,0.38,carbamylated erythropoietin,False
 neurology,MONDO:0100339,Friedreich ataxia,8,DAO|inhibitor,DAO inhibitors,1,0.125,small molecule,,2,0.38,luvadaxistat,False
 neurology,MONDO:0100339,Friedreich ataxia,8,NFE2L2|activator,NFE2L2 activators,1,0.125,small molecule,,4,0.38,omaveloxolone,False
 neurology,MONDO:0100339,Friedreich ataxia,8,PPARG|agonist,PPARG agonists,1,0.125,small molecule,,2,0.38,leriglitazone,False
 neurology,MONDO:0011603,GNE myopathy,1,GNE|other,GNE,1,1.0,small molecule,,3,0.0,aceneuramic acid,False
 neurology,MONDO:0016218,Guillain-Barre syndrome,1,IGHG1|degrader,IGHG1 degrader,1,1.0,protein,,2,0.0,imlifidase,False
-neurology,MONDO:0007739,Huntington disease,15,HTT|gene_expression_reduction,HTT antisense / siRNA,4,0.267,gene therapy;oligo,,3,0.2,ifezuntirgene inilparvovec; lexanersen; rovanersen; tominersen,True
+neurology,MONDO:0007739,Huntington disease,15,HTT|gene_expression_reduction,HTT antisense / siRNA,4,0.267,gene therapy;oligo,selective,3,0.2,ifezuntirgene inilparvovec; lexanersen; rovanersen; tominersen,True
 neurology,MONDO:0007739,Huntington disease,15,PDE10A|inhibitor,PDE10A inhibitors,2,0.133,small molecule,selective,2,0.2,OMS824; mardepodect,False
 neurology,MONDO:0007739,Huntington disease,15,AHR|agonist,AHR agonists,1,0.067,small molecule,,2,0.2,laquinimod,False
-neurology,MONDO:0007739,Huntington disease,15,GRM5|negative_modulator,GRM5 negative modulators,1,0.067,small molecule,,2,0.2,mavoglurant,False
+neurology,MONDO:0007739,Huntington disease,15,GRM5|negative_modulator,GRM5 negative modulators,1,0.067,small molecule,selective,2,0.2,mavoglurant,False
 neurology,MONDO:0007739,Huntington disease,15,MAPK14|inhibitor,MAPK14 inhibitors,1,0.067,small molecule,,2,0.2,neflamapimod,False
 neurology,MONDO:0007739,Huntington disease,15,SIRT1|inhibitor,SIRT1 inhibitors,1,0.067,small molecule,,2,0.2,selisistat,False
 neurology,MONDO:0007739,Huntington disease,15,SLC18A2|inhibitor,SLC18A2 inhibitors,1,0.067,small molecule,,2,0.2,bevantolol,False
@@ -1145,7 +1145,7 @@ neurology,MONDO:0006626,diabetic neuropathy,32,INS|replacement,INS replacement /
 neurology,MONDO:0006626,diabetic neuropathy,32,LYN|negative_modulator,LYN negative modulators,1,0.031,small molecule,,2,0.21,NRD135S.E1,False
 neurology,MONDO:0006626,diabetic neuropathy,32,OPRL1;OPRM1|agonist,OPRL1;OPRM1 agonists,1,0.031,small molecule,,2,0.21,cebranopadol,False
 neurology,MONDO:0006626,diabetic neuropathy,32,OPRM1|agonist,OPRM1 agonists,1,0.031,small molecule,,2,0.21,desmetramadol,False
-neurology,MONDO:0006626,diabetic neuropathy,32,SCN9A|blocker,SCN9A blockers,1,0.031,small molecule,,2,0.21,pf-05089771,False
+neurology,MONDO:0006626,diabetic neuropathy,32,SCN9A|blocker,SCN9A blockers,1,0.031,small molecule,selective,2,0.21,pf-05089771,False
 neurology,MONDO:0006626,diabetic neuropathy,32,TRPA1|antagonist,TRPA1 antagonists,1,0.031,small molecule,,2,0.21,isc-17536,False
 neurology,MONDO:0006626,diabetic neuropathy,32,TRPM8|antagonist,TRPM8 antagonists,1,0.031,small molecule,,2,0.21,elismetrep,False
 neurology,MONDO:0006626,diabetic neuropathy,32,NGF/TNF|binder_neutralizer,anti-NGF/TNF antibodies,1,0.031,antibody,dual,2,0.21,MEDI7352,False
@@ -1177,7 +1177,7 @@ neurology,MONDO:0005546,fibromyalgia,12,SLC6A2|inhibitor,SLC6A2 inhibitors,1,0.0
 neurology,MONDO:0005384,focal epilepsy,5,CASP1|inhibitor,CASP1 inhibitors,1,0.2,small molecule,,2,0.25,belnacasan,False
 neurology,MONDO:0005384,focal epilepsy,5,GABRA1;SCN1A;SCN2A;SCN3A;SCN8A|positive_modulator;blocker;blocker;blocker;blocker,GABRA1;SCN1A;SCN2A;SCN3A;SCN8A positive_modulator;blocker;blocker;blocker;blocker,1,0.2,small molecule,,4,0.25,cenobamate,False
 neurology,MONDO:0005384,focal epilepsy,5,KCNQ2;KCNQ3|opener,KCNQ2;KCNQ3 openers,1,0.2,small molecule,,3,0.25,azetukalner,False
-neurology,MONDO:0010383,fragile X syndrome,8,GRM5|negative_modulator,GRM5 negative modulators,3,0.375,small molecule,,3,0.0,basimglurant; fenobam; mavoglurant,True
+neurology,MONDO:0010383,fragile X syndrome,8,GRM5|negative_modulator,GRM5 negative modulators,3,0.375,small molecule,selective,3,0.0,basimglurant; fenobam; mavoglurant,True
 neurology,MONDO:0010383,fragile X syndrome,8,GABRA1;GABRA2;GABRA3;GABRA4;GABRA5;GABRA6;GABRB1;GABRB2;GABRB3;GABRD;GABRE;GABRG1;GABRG2;GABRG3;GABRP;GABRQ|positive_modulator,GABRA1;GABRA2;GABRA3;GABRA4;GABRA5;GABRA6;GABRB1;GABRB2;GABRB3;GABRD;GABRE;GABRG1;GABRG2;GABRG3;GABRP;GABRQ positive modulators,1,0.125,small molecule,,2,0.0,ganaxolone,False
 neurology,MONDO:0010383,fragile X syndrome,8,GABRA4;GABRB3;GABRD|agonist,GABRA4;GABRB3;GABRD agonists,1,0.125,small molecule,,2,0.0,gaboxadol,False
 neurology,MONDO:0010383,fragile X syndrome,8,HTR2B|antagonist,HTR2B antagonists,1,0.125,small molecule,,2,0.0,metadoxine,False
@@ -1221,7 +1221,7 @@ neurology,MONDO:0005475,migraine with aura,1,HTR1B;HTR1D;NOS1|agonist;agonist;in
 neurology,MONDO:0100431,migraine without aura,1,HTR1B;HTR1D;NOS1|agonist;agonist;inhibitor,HTR1B;HTR1D;NOS1 agonist;agonist;inhibitor,1,1.0,small molecule,,2,0.0,NXN-188,False
 neurology,MONDO:0008015,motion sickness,2,CHRM1;CHRM2;CHRM3;CHRM4;CHRM5|antagonist,CHRM1;CHRM2;CHRM3;CHRM4;CHRM5 antagonists,1,0.5,small molecule,,2,0.0,levophencynonate,False
 neurology,MONDO:0008015,motion sickness,2,TACR1|antagonist,TACR1 antagonists,1,0.5,small molecule,,4,0.0,tradipitant,False
-neurology,MONDO:0005301,multiple sclerosis,26,MS4A1|depleter,MS4A1-directed depleters,4,0.154,antibody,,4,0.14,divozilimab; ocrelizumab; ofatumumab; ublituximab,True
+neurology,MONDO:0005301,multiple sclerosis,26,MS4A1|depleter,MS4A1-directed depleters,4,0.154,antibody,selective,4,0.14,divozilimab; ocrelizumab; ofatumumab; ublituximab,True
 neurology,MONDO:0005301,multiple sclerosis,26,BTK|inhibitor,BTK inhibitors,2,0.077,small molecule,selective,3,0.14,evobrutinib; tolebrutinib,False
 neurology,MONDO:0005301,multiple sclerosis,26,S1PR1;S1PR5|agonist,S1PR1;S1PR5 agonists,2,0.077,small molecule,,4,0.14,ceralifimod; siponimod,False
 neurology,MONDO:0005301,multiple sclerosis,26,DHODH|inhibitor,DHODH inhibitors,1,0.038,small molecule,,3,0.14,vidofludimus,False
@@ -1253,14 +1253,14 @@ neurology,MONDO:0021107,narcolepsy,5,SLC6A2;SLC6A3|inhibitor,SLC6A2;SLC6A3 inhib
 neurology,MONDO:0019371,narcolepsy without cataplexy,1,GABRA1;GABRB2;GABRG2|negative_modulator,GABRA1;GABRB2;GABRG2 negative modulators,1,1.0,small molecule,,2,0.0,pentetrazol,False
 neurology,MONDO:0021667,neuralgia,7,GRIA1;GRIA2;GRIA3;GRIA4|negative_modulator,GRIA1;GRIA2;GRIA3;GRIA4 negative modulators,1,0.143,small molecule,,3,0.6,perampanel,False
 neurology,MONDO:0021667,neuralgia,7,NGF|binder_neutralizer,anti-NGF antibodies,1,0.143,antibody,selective,2,0.6,fulranumab,False
+neurology,MONDO:0800207,"neuropathy, small fiber",2,Nav (pan)|blocker,Nav (pan) blockers,1,0.5,small molecule,pan,2,0.0,vixotrigine,False
 neurology,MONDO:0800207,"neuropathy, small fiber",2,SCN10A|blocker,SCN10A blockers,1,0.5,small molecule,,2,0.0,VX-150,False
-neurology,MONDO:0800207,"neuropathy, small fiber",2,SCN9A|blocker,SCN9A blockers,1,0.5,small molecule,,2,0.0,vixotrigine,False
 neurology,MONDO:0006663,perinatal asphyxia,1,NOS1;NOS2|inhibitor,NOS1;NOS2 inhibitors,1,1.0,small molecule,,2,0.0,2-iminobiotin,False
 neurology,MONDO:0005244,peripheral neuropathy,1,GRIN1|negative_modulator,GRIN1 negative modulators,1,1.0,small molecule,,2,0.0,dimiracetam,False
 neurology,MONDO:0015643,photosensitive epilepsy,3,CACNA1G;CACNA1H;CACNA1I|blocker,CACNA1G;CACNA1H;CACNA1I blockers,1,0.333,small molecule,,2,0.33,apinocaltamide,False
 neurology,MONDO:0015643,photosensitive epilepsy,3,SLC6A1|inhibitor,SLC6A1 inhibitors,1,0.333,small molecule,,2,0.33,E2730,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,CACNA1B|blocker,CACNA1B blockers,2,0.095,small molecule,,2,0.21,cnv-2197944; z-160,False
-neurology,MONDO:0041052,postherpetic neuralgia,21,SCN9A|blocker,SCN9A blockers,2,0.095,small molecule,,2,0.21,KHK6188; funapide,False
+neurology,MONDO:0041052,postherpetic neuralgia,21,SCN9A|blocker,SCN9A blockers,2,0.095,small molecule,selective,2,0.21,KHK6188; funapide,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,ADORA1|positive_modulator,ADORA1 positive modulators,1,0.048,small molecule,,2,0.21,t-62,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,AGTR2|antagonist,AGTR2 antagonists,1,0.048,small molecule,,2,0.21,olodanrigan,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,CACNA2D1;CACNA2D2|other,CACNA2D1;CACNA2D2,1,0.048,small molecule,,4,0.21,gabapentin enacarbil,False
@@ -1272,11 +1272,12 @@ neurology,MONDO:0041052,postherpetic neuralgia,21,PRKCE|inhibitor,PRKCE inhibito
 neurology,MONDO:0041052,postherpetic neuralgia,21,SNAP25|inhibitor,SNAP25 inhibitors,1,0.048,protein,,2,0.21,senrebotase,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,TRPV1|agonist,TRPV1 agonists,1,0.048,small molecule,,2,0.21,zucapsaicin,False
 neurology,MONDO:0041052,postherpetic neuralgia,21,TRPV1|antagonist,TRPV1 antagonists,1,0.048,small molecule,,2,0.21,dwp-05195,False
-neurology,MONDO:0007571,primary erythermalgia,4,SCN9A|blocker,SCN9A blockers,4,1.0,small molecule,,2,0.0,XPF-001; funapide; pf-05089771; vixotrigine,True
+neurology,MONDO:0007571,primary erythermalgia,4,SCN9A|blocker,SCN9A blockers,3,0.75,small molecule,selective,2,0.0,XPF-001; funapide; pf-05089771,True
+neurology,MONDO:0007571,primary erythermalgia,4,Nav (pan)|blocker,Nav (pan) blockers,1,0.25,small molecule,pan,2,0.0,vixotrigine,False
 neurology,MONDO:0000451,primary progressive multiple sclerosis,1,AHR|agonist,AHR agonists,1,1.0,small molecule,,3,0.0,laquinimod,False
 neurology,MONDO:0019037,progressive supranuclear palsy,4,MAPT|binder_neutralizer,anti-MAPT antibodies,2,0.5,antibody,selective,2,0.0,gosuranemab; tilavonemab,False
 neurology,MONDO:0002959,radiculopathy,5,CACNA1B|blocker,CACNA1B blockers,1,0.2,small molecule,,2,0.33,z-160,False
-neurology,MONDO:0002959,radiculopathy,5,SCN9A|blocker,SCN9A blockers,1,0.2,small molecule,,2,0.33,vixotrigine,False
+neurology,MONDO:0002959,radiculopathy,5,Nav (pan)|blocker,Nav (pan) blockers,1,0.2,small molecule,pan,2,0.33,vixotrigine,False
 neurology,MONDO:0005314,relapsing-remitting multiple sclerosis,13,HLA-DRB1|other,HLA-DRB1,1,0.077,peptide,,2,0.4,plovamer,False
 neurology,MONDO:0005314,relapsing-remitting multiple sclerosis,13,PPARG|partial_agonist,PPARG partial_agonist,1,0.077,small molecule,,2,0.4,ibrigampar,False
 neurology,MONDO:0005314,relapsing-remitting multiple sclerosis,13,S1PR1|other,S1PR1,1,0.077,small molecule,,2,0.4,amiselimod,False
@@ -1311,14 +1312,14 @@ neurology,MONDO:0700322,tinnitus,4,GRIN1|antagonist,GRIN1 antagonists,1,0.25,sma
 neurology,MONDO:0700322,tinnitus,4,KCNC1|positive_modulator,KCNC1 positive modulators,1,0.25,small molecule,,2,0.0,AUT00063,False
 neurology,MONDO:0858950,traumatic brain injury,6,NOS1;NOS2|inhibitor,NOS1;NOS2 inhibitors,1,0.167,small molecule,,3,0.4,ronopterin,False
 neurology,MONDO:0858950,traumatic brain injury,6,SIGMAR1/NMDA/SERT (dextromethorphan-like) (off-class)|other,SIGMAR1/NMDA/SERT (dextromethorphan-like) (off-class),1,0.167,small molecule,off-class,2,0.4,deudextromethorphan,False
-neurology,MONDO:0008599,trigeminal neuralgia,2,SCN9A|blocker,SCN9A blockers,1,0.5,small molecule,,2,0.0,vixotrigine,False
+neurology,MONDO:0008599,trigeminal neuralgia,2,Nav (pan)|blocker,Nav (pan) blockers,1,0.5,small molecule,pan,2,0.0,vixotrigine,False
 neurology,MONDO:0006008,vestibular neuronitis,1,HRH4|antagonist,HRH4 antagonists,1,1.0,small molecule,,2,0.0,seliforant,False
 oncology,MONDO:0019438,AL amyloidosis,1,IGKC;IGLC1|binder_neutralizer,anti-IGKC;IGLC1 antibodies,1,1.0,antibody,,3,0.0,birtamimab,False
-oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,ADC;cell therapy,,2,0.0,CART20; MB-CART20.1; di-leu16-il2,True
+oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,antibody;cell therapy,selective,2,0.0,CART20; MB-CART20.1; di-leu16-il2,True
 oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,CD19|depleter,CD19-directed depleters,2,0.25,cell therapy,,2,0.0,TriCAR-T-CD19; autologous CD19-targeting CAR T cells,False
 oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,CD19;CD22|depleter,CD19;CD22-directed depleters,1,0.125,cell therapy,,2,0.0,CD19 and CD22 targeted CAR-T cells,False
 oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,TLR8|agonist,TLR8 agonists,1,0.125,small molecule,,2,0.0,motolimod,False
-oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.125,antibody,,2,0.0,geptanolimab,False
+oncology,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.125,antibody,selective,2,0.0,geptanolimab,False
 oncology,MONDO:0007243,Burkitt lymphoma,1,AURKA|inhibitor,AURKA inhibitors,1,1.0,small molecule,,2,0.0,alisertib,False
 oncology,MONDO:0019467,CD4+/CD56+ hematodermic neoplasm,1,IL3RA|depleter,IL3RA-directed depleters,1,1.0,ADC,,4,0.0,pivekimab sunirine,False
 oncology,MONDO:0015564,Castleman disease,1,IL6|binder_neutralizer,anti-IL6 antibodies,1,1.0,antibody,,4,0.0,siltuximab,False
@@ -1348,7 +1349,7 @@ oncology,MONDO:0005525,T-cell leukemia,1,CD3E|depleter,CD3E-directed depleters,1
 oncology,MONDO:0015760,T-cell non-Hodgkin lymphoma,3,DEGS1|inhibitor,DEGS1 inhibitors,1,0.333,small molecule,,2,0.0,fenretinide,False
 oncology,MONDO:0015760,T-cell non-Hodgkin lymphoma,3,SYK|inhibitor,SYK inhibitors,1,0.333,small molecule,,2,0.0,fostamatinib,False
 oncology,MONDO:0015760,T-cell non-Hodgkin lymphoma,3,TRBC1|depleter,TRBC1-directed depleters,1,0.333,cell therapy,,2,0.0,AUTO4,False
-oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,antibody,,3,0.0,ofatumumab; ublituximab; veltuzumab,True
+oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,MS4A1|depleter,MS4A1-directed depleters,3,0.375,antibody,selective,3,0.0,ofatumumab; ublituximab; veltuzumab,True
 oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,BTK|inhibitor,BTK inhibitors,2,0.25,small molecule,selective,2,0.0,acalabrutinib; orelabrutinib,False
 oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,CSNK1E;PIK3CD|inhibitor,CSNK1E;PIK3CD inhibitors,1,0.125,small molecule,,2,0.0,umbralisib,False
 oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,PIK3CD|inhibitor,PIK3CD inhibitors,1,0.125,small molecule,selective,3,0.0,idelalisib,False
@@ -1356,8 +1357,7 @@ oncology,MONDO:0100280,Waldenstrom macroglobulinemia,8,TLR7;TLR8;TLR9|antagonist
 oncology,MONDO:0009891,acquired polycythemia vera,8,MDM2|inhibitor,MDM2 inhibitors,2,0.25,small molecule,,2,0.0,idasanutlin; navtemadlin,False
 oncology,MONDO:0009891,acquired polycythemia vera,8,ACVR1;JAK1;JAK2|inhibitor,ACVR1;JAK1;JAK2 inhibitors,1,0.125,small molecule,,2,0.0,momelotinib,False
 oncology,MONDO:0009891,acquired polycythemia vera,8,HDAC1;HDAC2;HDAC3|inhibitor,HDAC1;HDAC2;HDAC3 inhibitors,1,0.125,small molecule,,3,0.0,givinostat,False
-oncology,MONDO:0009891,acquired polycythemia vera,8,IFNAR1;IFNAR2|agonist,IFNAR1;IFNAR2 agonists,1,0.125,protein,,4,0.0,ropeginterferon alfa-2b,False
-oncology,MONDO:0009891,acquired polycythemia vera,8,JAK2|inhibitor,JAK2 inhibitors,1,0.125,small molecule,,2,0.0,pacritinib,False
+oncology,MONDO:0009891,acquired polycythemia vera,8,JAK2/FLT3|inhibitor,JAK2/FLT3 inhibitors,1,0.125,small molecule,dual,2,0.0,pacritinib,False
 oncology,MONDO:0009891,acquired polycythemia vera,8,SLC40A1|inhibitor,SLC40A1 inhibitors,1,0.125,peptide,,4,0.0,rusfertide,False
 oncology,MONDO:0009891,acquired polycythemia vera,8,TERT|inhibitor,TERT inhibitors,1,0.125,oligo,,2,0.0,imetelstat,False
 oncology,MONDO:0005173,actinic keratosis,11,HK2|other,HK2,1,0.091,small molecule,,2,0.25,VDA-1102,False
@@ -1366,7 +1366,7 @@ oncology,MONDO:0005173,actinic keratosis,11,SRC;TUBB|inhibitor,SRC;TUBB inhibito
 oncology,MONDO:0005173,actinic keratosis,11,TLR7|agonist,TLR7 agonists,1,0.091,small molecule,,2,0.25,LFX453,False
 oncology,MONDO:0005173,actinic keratosis,11,TLR7;TLR8|agonist,TLR7;TLR8 agonists,1,0.091,small molecule,,2,0.25,resiquimod,False
 oncology,MONDO:0010643,acute leukemia,1,AXL;MERTK|inhibitor,AXL;MERTK inhibitors,1,1.0,small molecule,,2,0.0,tamnorzatinib,False
-oncology,MONDO:0004967,acute lymphoblastic leukemia,17,CD19|depleter,CD19-directed depleters,6,0.353,ADC;cell therapy,,4,0.24,BinD19; CD19 CAR-T cells with CRS suppression technology; TBI-1501; brexucabtagene autoleucel; coltuximab ravtansine; vadacabtagene leraleucel,True
+oncology,MONDO:0004967,acute lymphoblastic leukemia,17,CD19|depleter,CD19-directed depleters,6,0.353,ADC;cell therapy,selective,4,0.24,BinD19; CD19 CAR-T cells with CRS suppression technology; TBI-1501; brexucabtagene autoleucel; coltuximab ravtansine; vadacabtagene leraleucel,True
 oncology,MONDO:0004967,acute lymphoblastic leukemia,17,MEN1|inhibitor,MEN1 inhibitors,2,0.118,small molecule,,4,0.24,revumenib; ziftomenib,False
 oncology,MONDO:0004967,acute lymphoblastic leukemia,17,CD19|other,CD19,1,0.059,cell therapy,,2,0.24,CD19-positive feeder T cells,False
 oncology,MONDO:0004967,acute lymphoblastic leukemia,17,CD19;CD22|depleter,CD19;CD22-directed depleters,1,0.059,cell therapy,,2,0.24,AUTO3,False
@@ -1433,7 +1433,7 @@ oncology,MONDO:0019471,adult T-cell leukemia/lymphoma,5,EZH1;EZH2|inhibitor,EZH1
 oncology,MONDO:0019471,adult T-cell leukemia/lymphoma,5,HDAC (pan)|inhibitor,HDAC (pan) inhibitors,1,0.2,small molecule,pan,2,0.0,panobinostat,False
 oncology,MONDO:0019471,adult T-cell leukemia/lymphoma,5,HDAC1;HDAC10;HDAC2;HDAC3|inhibitor,HDAC1;HDAC10;HDAC2;HDAC3 inhibitors,1,0.2,small molecule,,3,0.0,tucidinostat,False
 oncology,MONDO:0017595,aggressive B-cell non-Hodgkin lymphoma,1,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,1.0,antibody,,2,0.0,MEDI0680,False
-oncology,MONDO:0011655,alveolar soft part sarcoma,1,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,1.0,antibody,,2,0.0,geptanolimab,False
+oncology,MONDO:0011655,alveolar soft part sarcoma,1,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,1.0,antibody,selective,2,0.0,geptanolimab,False
 oncology,MONDO:0020325,anaplastic large cell lymphoma,2,ALK/ROS1/MET|inhibitor,ALK/ROS1/MET inhibitors,1,0.5,small molecule,pan,2,0.0,unecritinib,False
 oncology,MONDO:0020325,anaplastic large cell lymphoma,2,TNFRSF8|other,TNFRSF8,1,0.5,ADC,,4,0.0,brentuximab vedotin,False
 oncology,MONDO:0001879,anus cancer,1,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,1.0,antibody,,4,0.0,retifanlimab,False
@@ -1549,11 +1549,10 @@ oncology,MONDO:0019087,cholangiocarcinoma,8,SPHK2|inhibitor,SPHK2 inhibitors,1,0
 oncology,MONDO:0019087,cholangiocarcinoma,8,STK33|inhibitor,STK33 inhibitors,1,0.125,small molecule,,2,0.14,amcasertib,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,BTK|inhibitor,BTK inhibitors,4,0.138,small molecule,selective,4,0.04,acalabrutinib; orelabrutinib; tirabrutinib; zanubrutinib,True
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD19|depleter,CD19-directed depleters,4,0.138,antibody;cell therapy,selective,4,0.04,CD19 CAR-T cells; inebilizumab; lisocabtagene maraleucel; tafasitamab,True
-oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,MS4A1|depleter,MS4A1-directed depleters,3,0.103,antibody;protein,,3,0.04,mt-3724; ublituximab; veltuzumab,True
+oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,MS4A1|depleter,MS4A1-directed depleters,4,0.138,antibody;protein,selective,3,0.04,epcoritamab; mt-3724; ublituximab; veltuzumab,True
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,ABL1;LYN|inhibitor,ABL1;LYN inhibitors,1,0.034,small molecule,,2,0.04,bafetinib,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,AXL|inhibitor,AXL inhibitors,1,0.034,small molecule,,2,0.04,dubermatinib,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD37|depleter,CD37-directed depleters,1,0.034,antibody,,2,0.04,otlertuzumab,False
-oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD3E;MS4A1|agonist;depleter,CD3E;MS4A1 agonist;depleter,1,0.034,antibody,,2,0.04,epcoritamab,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD44|other,CD44,1,0.034,peptide,,2,0.04,acetyl-lys-pro-ser-ser-pro-pro-glu-glu-nh2,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CDK1;CDK2;CDK5;CDK9|inhibitor,CDK1;CDK2;CDK5;CDK9 inhibitors,1,0.034,small molecule,,3,0.04,dinaciclib,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CRBN;IKZF1;IKZF3|other;degrader;degrader,CRBN;IKZF1;IKZF3 other;degrader;degrader,1,0.034,small molecule,,2,0.04,avadomide,False
@@ -1566,7 +1565,7 @@ oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,2
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CD74|binder_neutralizer,anti-CD74 antibodies,1,0.034,antibody,,2,0.04,milatuzumab,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,CXCL12|binder_neutralizer,anti-CXCL12 antibodies,1,0.034,oligo,,2,0.04,olaptesed pegol,False
 oncology,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,KLRC1|binder_neutralizer,anti-KLRC1 antibodies,1,0.034,antibody,,2,0.04,monalizumab,False
-oncology,MONDO:0011996,chronic myeloid leukemia,11,ABL1|inhibitor,ABL1 inhibitors,3,0.273,small molecule,,4,0.1,flumbatinib; ponatinib; vamotinib,True
+oncology,MONDO:0011996,chronic myeloid leukemia,11,ABL1|inhibitor,ABL1 inhibitors,3,0.273,small molecule,selective,4,0.1,flumbatinib; ponatinib; vamotinib,True
 oncology,MONDO:0011996,chronic myeloid leukemia,11,ABL1;BCR|inhibitor,ABL1;BCR inhibitors,2,0.182,small molecule,,3,0.1,radotinib; vodobatinib,False
 oncology,MONDO:0011996,chronic myeloid leukemia,11,ABL1;FLT3;KIT|inhibitor,ABL1;FLT3;KIT inhibitors,1,0.091,small molecule,,3,0.1,olverembatinib,False
 oncology,MONDO:0011996,chronic myeloid leukemia,11,FLT3|agonist,FLT3 agonists,1,0.091,protein,,2,0.1,cdx-301,False
@@ -1651,13 +1650,12 @@ oncology,MONDO:0019210,cutaneous neuroendocrine carcinoma,7,CD274|binder_neutral
 oncology,MONDO:0019210,cutaneous neuroendocrine carcinoma,7,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.143,antibody,,4,0.14,retifanlimab,False
 oncology,MONDO:0015447,differentiated thyroid carcinoma,1,FAS;TNFRSF1A|gene_expression_increase,FAS;TNFRSF1A gene therapy,1,1.0,gene therapy,,2,0.0,ofranergene obadenovec,False
 oncology,MONDO:0006033,diffuse intrinsic pontine glioma,1,IL12A;IL12B;MMP1|gene_expression_increase,IL12A;IL12B;MMP1 gene therapy,1,1.0,small molecule,,2,0.0,veledimex,False
-oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD19|depleter,CD19-directed depleters,4,0.129,ADC;antibody;cell therapy,,4,0.0,coltuximab ravtansine; inebilizumab; loncastuximab tesirine; tisagenlecleucel,True
-oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD3E;MS4A1|agonist;depleter,CD3E;MS4A1 agonist;depleter,3,0.097,antibody,,4,0.0,epcoritamab; imvotamab; mosunetuzumab,True
+oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,MS4A1|depleter,MS4A1-directed depleters,5,0.161,antibody;protein,selective,4,0.0,epcoritamab; imvotamab; mosunetuzumab; mt-3724; zuberitamab,True
+oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD19|depleter,CD19-directed depleters,4,0.129,ADC;antibody;cell therapy,selective,4,0.0,coltuximab ravtansine; inebilizumab; loncastuximab tesirine; tisagenlecleucel,True
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD37|depleter,CD37-directed depleters,2,0.065,ADC;antibody,,2,0.0,bi-836826; naratuximab emtansine,False
-oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,MS4A1|depleter,MS4A1-directed depleters,2,0.065,antibody;protein,,2,0.0,mt-3724; zuberitamab,False
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,AURKA|inhibitor,AURKA inhibitors,1,0.032,small molecule,,2,0.0,alisertib,False
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,BCL2|gene_expression_reduction,BCL2 antisense / siRNA,1,0.032,oligo,,2,0.0,rosomidnar,False
-oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,BTK|inhibitor,BTK inhibitors,1,0.032,small molecule,,3,0.0,zanubrutinib,False
+oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,BTK|inhibitor,BTK inhibitors,1,0.032,small molecule,selective,3,0.0,zanubrutinib,False
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD19|other,CD19,1,0.032,ADC,,2,0.0,denintuzumab mafodotin,False
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD19;CD22|depleter,CD19;CD22-directed depleters,1,0.032,cell therapy,,2,0.0,AUTO3,False
 oncology,MONDO:0018905,diffuse large B-cell lymphoma,31,CD22|other,CD22,1,0.032,ADC,,2,0.0,pinatuzumab vedotin,False
@@ -1690,22 +1688,21 @@ oncology,MONDO:0007576,esophageal cancer,9,EGFR|inhibitor,EGFR inhibitors,2,0.22
 oncology,MONDO:0007576,esophageal cancer,9,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,2,0.222,small molecule,pan,3,0.22,catequentinib; donafenib,False
 oncology,MONDO:0007576,esophageal cancer,9,KDR|inhibitor,KDR inhibitors,1,0.111,protein,,2,0.22,"endostatin, n-terminal-mggshhhhh",False
 oncology,MONDO:0007576,esophageal cancer,9,KDR|binder_neutralizer,anti-KDR antibodies,1,0.111,antibody,,4,0.22,ramucirumab,False
-oncology,MONDO:0007576,esophageal cancer,9,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.111,antibody,,3,0.22,sintilimab,False
+oncology,MONDO:0007576,esophageal cancer,9,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.111,antibody,selective,3,0.22,sintilimab,False
 oncology,MONDO:0005580,esophageal squamous cell carcinoma,2,CD274;CTLA4|binder_neutralizer,anti-CD274;CTLA4 antibodies,1,0.5,antibody,,2,0.0,erfonrilimab,False
 oncology,MONDO:0005580,esophageal squamous cell carcinoma,2,EGFR|binder_neutralizer,anti-EGFR antibodies,1,0.5,antibody,,2,0.0,SCT200,False
 oncology,MONDO:0005029,essential thrombocythemia,3,ACVR1;JAK1;JAK2|inhibitor,ACVR1;JAK1;JAK2 inhibitors,1,0.333,small molecule,,2,0.0,momelotinib,False
-oncology,MONDO:0005029,essential thrombocythemia,3,JAK2|inhibitor,JAK2 inhibitors,1,0.333,small molecule,,2,0.0,pacritinib,False
+oncology,MONDO:0005029,essential thrombocythemia,3,JAK2/FLT3|inhibitor,JAK2/FLT3 inhibitors,1,0.333,small molecule,dual,2,0.0,pacritinib,False
 oncology,MONDO:0005029,essential thrombocythemia,3,TERT|inhibitor,TERT inhibitors,1,0.333,oligo,,2,0.0,imetelstat,False
 oncology,MONDO:0019472,extranodal nasal NK/T cell lymphoma,6,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,3,0.5,antibody,selective,3,0.33,camrelizumab; sintilimab; tislelizumab,True
 oncology,MONDO:0019472,extranodal nasal NK/T cell lymphoma,6,CD274|binder_neutralizer,anti-CD274 antibodies,1,0.167,antibody,selective,3,0.33,sugemalimab,False
 oncology,MONDO:0006210,fibrolamellar hepatocellular carcinoma,1,AURKA;KDR|inhibitor,AURKA;KDR inhibitors,1,1.0,small molecule,,2,0.0,enmd-981693,False
+oncology,MONDO:0018906,follicular lymphoma,34,MS4A1|depleter,MS4A1-directed depleters,4,0.118,antibody,selective,4,0.0,MIL62; epcoritamab; imvotamab; veltuzumab,True
 oncology,MONDO:0018906,follicular lymphoma,34,CD19|depleter,CD19-directed depleters,3,0.088,cell therapy,selective,4,0.0,axicabtagene ciloleucel; lisocabtagene maraleucel; relmacabtagene autoleucel,True
 oncology,MONDO:0018906,follicular lymphoma,34,PIK3CD|inhibitor,PIK3CD inhibitors,3,0.088,small molecule,selective,4,0.0,idelalisib; linperlisib; zandelisib,True
-oncology,MONDO:0018906,follicular lymphoma,34,CD3E;MS4A1|agonist;depleter,CD3E;MS4A1 agonist;depleter,2,0.059,antibody,,4,0.0,epcoritamab; imvotamab,False
-oncology,MONDO:0018906,follicular lymphoma,34,MS4A1|depleter,MS4A1-directed depleters,2,0.059,antibody,,3,0.0,MIL62; veltuzumab,False
 oncology,MONDO:0018906,follicular lymphoma,34,AURKA|inhibitor,AURKA inhibitors,1,0.029,small molecule,,2,0.0,alisertib,False
 oncology,MONDO:0018906,follicular lymphoma,34,BCL2|inhibitor,BCL2 inhibitors,1,0.029,small molecule,,3,0.0,venetoclax,False
-oncology,MONDO:0018906,follicular lymphoma,34,BTK|inhibitor,BTK inhibitors,1,0.029,small molecule,,4,0.0,zanubrutinib,False
+oncology,MONDO:0018906,follicular lymphoma,34,BTK|inhibitor,BTK inhibitors,1,0.029,small molecule,selective,4,0.0,zanubrutinib,False
 oncology,MONDO:0018906,follicular lymphoma,34,CD19|other,CD19,1,0.029,ADC,,2,0.0,denintuzumab mafodotin,False
 oncology,MONDO:0018906,follicular lymphoma,34,CD22|other,CD22,1,0.029,ADC,,2,0.0,pinatuzumab vedotin,False
 oncology,MONDO:0018906,follicular lymphoma,34,CD37|other,CD37,1,0.029,other,,2,0.0,lutetium (lu177) lilotomab satetraxetan,False
@@ -1835,7 +1832,7 @@ oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,CD274|binder_neu
 oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,CTLA4|binder_neutralizer,anti-CTLA4 antibodies,1,0.036,antibody,selective,3,0.04,tremelimumab,False
 oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,ERBB3|binder_neutralizer,anti-ERBB3 antibodies,1,0.036,antibody,,2,0.04,cdx-3379,False
 oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,KLRC1|binder_neutralizer,anti-KLRC1 antibodies,1,0.036,antibody,,3,0.04,monalizumab,False
-oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.036,antibody,,3,0.04,sintilimab,False
+oncology,MONDO:0010150,head and neck squamous cell carcinoma,28,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.036,antibody,selective,3,0.04,sintilimab,False
 oncology,MONDO:0007256,hepatocellular carcinoma,73,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,4,0.055,small molecule,pan,4,0.13,catequentinib; donafenib; lenvatinib; regorafenib,True
 oncology,MONDO:0007256,hepatocellular carcinoma,73,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,4,0.055,antibody,selective,3,0.13,camrelizumab; penpulimab; serplulimab; spartalizumab,True
 oncology,MONDO:0007256,hepatocellular carcinoma,73,KDR (VEGFR)|inhibitor,KDR (VEGFR) inhibitors,3,0.041,small molecule,selective,3,0.13,axitinib; rivoceranib; tivozanib,True
@@ -1965,19 +1962,18 @@ oncology,MONDO:0005112,malignant pleural mesothelioma,6,DPP4|other,DPP4,1,0.167,
 oncology,MONDO:0005112,malignant pleural mesothelioma,6,STAT3|inhibitor,STAT3 inhibitors,1,0.167,small molecule,,2,0.17,napabucasin,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,BTK|inhibitor,BTK inhibitors,4,0.267,small molecule,selective,4,0.0,acalabrutinib; ibrutinib; orelabrutinib; zanubrutinib,True
 oncology,MONDO:0018876,mantle cell lymphoma,15,CD19|depleter,CD19-directed depleters,3,0.2,ADC;cell therapy,selective,4,0.0,axicabtagene ciloleucel; brexucabtagene autoleucel; loncastuximab tesirine,True
-oncology,MONDO:0018876,mantle cell lymphoma,15,CD3E;MS4A1|agonist;depleter,CD3E;MS4A1 agonist;depleter,2,0.133,antibody,,2,0.0,epcoritamab; imvotamab,False
+oncology,MONDO:0018876,mantle cell lymphoma,15,MS4A1|depleter,MS4A1-directed depleters,2,0.133,antibody,selective,2,0.0,epcoritamab; imvotamab,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,AURKA|inhibitor,AURKA inhibitors,1,0.067,small molecule,,2,0.0,alisertib,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,CDK1;CDK2;CDK5;CDK9|inhibitor,CDK1;CDK2;CDK5;CDK9 inhibitors,1,0.067,small molecule,,2,0.0,dinaciclib,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,CDK4/6|inhibitor,CDK4/6 inhibitors,1,0.067,small molecule,selective,3,0.0,abemaciclib,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,MTOR|inhibitor,MTOR inhibitors,1,0.067,small molecule,,2,0.0,everolimus,False
 oncology,MONDO:0018876,mantle cell lymphoma,15,PIK3CA;PIK3CD|inhibitor,PIK3CA;PIK3CD inhibitors,1,0.067,small molecule,,3,0.0,copanlisib,False
-oncology,MONDO:0017604,marginal zone lymphoma,9,BTK|inhibitor,BTK inhibitors,2,0.222,small molecule,,4,0.0,orelabrutinib; zanubrutinib,False
-oncology,MONDO:0017604,marginal zone lymphoma,9,CD3E;MS4A1|agonist;depleter,CD3E;MS4A1 agonist;depleter,2,0.222,antibody,,2,0.0,epcoritamab; imvotamab,False
+oncology,MONDO:0017604,marginal zone lymphoma,9,MS4A1|depleter,MS4A1-directed depleters,3,0.333,antibody,selective,3,0.0,epcoritamab; imvotamab; ublituximab,True
+oncology,MONDO:0017604,marginal zone lymphoma,9,BTK|inhibitor,BTK inhibitors,2,0.222,small molecule,selective,4,0.0,orelabrutinib; zanubrutinib,False
 oncology,MONDO:0017604,marginal zone lymphoma,9,PIK3CD|inhibitor,PIK3CD inhibitors,2,0.222,small molecule,selective,3,0.0,idelalisib; zandelisib,False
 oncology,MONDO:0017604,marginal zone lymphoma,9,CD19|depleter,CD19-directed depleters,1,0.111,cell therapy,selective,2,0.0,axicabtagene ciloleucel,False
-oncology,MONDO:0017604,marginal zone lymphoma,9,MS4A1|depleter,MS4A1-directed depleters,1,0.111,antibody,,3,0.0,ublituximab,False
 oncology,MONDO:0000430,mature T-cell and NK-cell non-Hodgkin lymphoma,5,KDR|inhibitor,KDR inhibitors,1,0.2,protein,,2,0.0,"endostatin, n-terminal-mggshhhhh",False
-oncology,MONDO:0000430,mature T-cell and NK-cell non-Hodgkin lymphoma,5,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.2,antibody,,2,0.0,geptanolimab,False
+oncology,MONDO:0000430,mature T-cell and NK-cell non-Hodgkin lymphoma,5,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,1,0.2,antibody,selective,2,0.0,geptanolimab,False
 oncology,MONDO:0015277,medullary thyroid gland carcinoma,1,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,1,1.0,small molecule,pan,3,0.0,catequentinib,False
 oncology,MONDO:0007959,medulloblastoma,2,SMO|antagonist,SMO antagonists,1,0.5,small molecule,,2,0.0,sonidegib,False
 oncology,MONDO:0005105,melanoma,52,BRAF|inhibitor,BRAF inhibitors,3,0.058,small molecule,selective,4,0.08,dabrafenib; encorafenib; vemurafenib,True
@@ -2063,13 +2059,14 @@ oncology,MONDO:0018881,myelodysplastic syndrome,44,IL6|binder_neutralizer,anti-I
 oncology,MONDO:0018881,myelodysplastic syndrome,44,INHBA|binder_neutralizer,anti-INHBA antibodies,1,0.023,protein,,2,0.1,sotatercept,False
 oncology,MONDO:0018881,myelodysplastic syndrome,44,TLR2|binder_neutralizer,anti-TLR2 antibodies,1,0.023,antibody,,2,0.1,tomaralimab,False
 oncology,MONDO:0015041,myelodysplastic syndrome with excess blasts-2,1,SYK/FLT3/JAK multikinase|inhibitor,SYK/FLT3/JAK multikinase inhibitors,1,1.0,small molecule,pan,2,0.0,tuspetinib,False
-oncology,MONDO:0044903,myelofibrosis,21,JAK2|inhibitor,JAK2 inhibitors,4,0.19,small molecule,,4,0.0,bms-911543; fedratinib; ilginatinib; pacritinib,True
+oncology,MONDO:0044903,myelofibrosis,21,JAK2|inhibitor,JAK2 inhibitors,3,0.143,small molecule,selective,4,0.0,bms-911543; fedratinib; ilginatinib,True
 oncology,MONDO:0044903,myelofibrosis,21,ACVR1;JAK1;JAK2|inhibitor,ACVR1;JAK1;JAK2 inhibitors,1,0.048,small molecule,,4,0.0,momelotinib,False
 oncology,MONDO:0044903,myelofibrosis,21,APCS|replacement,APCS replacement / gene therapy,1,0.048,protein,,2,0.0,zinpentraxin alfa,False
 oncology,MONDO:0044903,myelofibrosis,21,BCL2;BCL2L1;BCL2L2|inhibitor,BCL2;BCL2L1;BCL2L2 inhibitors,1,0.048,small molecule,,3,0.0,navitoclax,False
 oncology,MONDO:0044903,myelofibrosis,21,EEF1A2|inhibitor,EEF1A2 inhibitors,1,0.048,small molecule,,2,0.0,plitidepsin,False
 oncology,MONDO:0044903,myelofibrosis,21,HDAC (pan)|inhibitor,HDAC (pan) inhibitors,1,0.048,small molecule,pan,2,0.0,panobinostat,False
 oncology,MONDO:0044903,myelofibrosis,21,JAK1;JAK2|inhibitor,JAK1;JAK2 inhibitors,1,0.048,small molecule,,3,0.0,jaktinib,False
+oncology,MONDO:0044903,myelofibrosis,21,JAK2/FLT3|inhibitor,JAK2/FLT3 inhibitors,1,0.048,small molecule,dual,4,0.0,pacritinib,False
 oncology,MONDO:0044903,myelofibrosis,21,KDM1A|inhibitor,KDM1A inhibitors,1,0.048,small molecule,,3,0.0,bomedemstat,False
 oncology,MONDO:0044903,myelofibrosis,21,LOXL2|inhibitor,LOXL2 inhibitors,1,0.048,antibody,,2,0.0,simtuzumab,False
 oncology,MONDO:0044903,myelofibrosis,21,MAPK1;MAPK3|inhibitor,MAPK1;MAPK3 inhibitors,1,0.048,small molecule,,2,0.0,rineterkib,False
@@ -2086,7 +2083,7 @@ oncology,MONDO:0020561,myxoid/round cell liposarcoma,2,MAGEA4|depleter,MAGEA4-di
 oncology,MONDO:0015459,nasopharyngeal carcinoma,8,VEGFR multikinase|inhibitor,VEGFR multikinase inhibitors,2,0.25,small molecule,pan,2,0.12,donafenib; famitinib,False
 oncology,MONDO:0015459,nasopharyngeal carcinoma,8,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,2,0.25,antibody,selective,4,0.12,penpulimab; spartalizumab,False
 oncology,MONDO:0015459,nasopharyngeal carcinoma,8,EGFR|inhibitor,EGFR inhibitors,1,0.125,small molecule,,3,0.12,icotinib,False
-oncology,MONDO:0015459,nasopharyngeal carcinoma,8,CD274|binder_neutralizer,anti-CD274 antibodies,1,0.125,antibody,,3,0.12,tagitanlimab,False
+oncology,MONDO:0015459,nasopharyngeal carcinoma,8,CD274|binder_neutralizer,anti-CD274 antibodies,1,0.125,antibody,selective,3,0.12,tagitanlimab,False
 oncology,MONDO:0019496,neuroendocrine neoplasm,4,NCL|other,NCL,1,0.25,small molecule,,2,0.0,quarfloxin,False
 oncology,MONDO:0019496,neuroendocrine neoplasm,4,SSTR2|antagonist,SSTR2 antagonists,1,0.25,other,,2,0.0,satoreotide tetraxetan,False
 oncology,MONDO:0019496,neuroendocrine neoplasm,4,TRAP1|inhibitor,TRAP1 inhibitors,1,0.25,small molecule,,2,0.0,foslinanib,False
@@ -2314,9 +2311,9 @@ oncology,MONDO:0009693,plasma cell myeloma,73,TNFSF13|binder_neutralizer,anti-TN
 oncology,MONDO:0009693,plasma cell myeloma,73,TNFSF13B|binder_neutralizer,anti-TNFSF13B antibodies,1,0.014,antibody,,2,0.02,tabalumab,False
 oncology,MONDO:0009693,plasma cell myeloma,73,tubulin|inhibitor,tubulin inhibitors,1,0.014,small molecule,selective,2,0.02,lexibulin,False
 oncology,MONDO:0003304,plexiform neurofibroma,1,MAP2K1;MAP2K2|inhibitor,MAP2K1;MAP2K2 inhibitors,1,1.0,small molecule,,4,0.0,mirdametinib,False
-oncology,MONDO:0002571,primary central nervous system lymphoma,5,BTK|inhibitor,BTK inhibitors,1,0.2,small molecule,,3,0.0,orelabrutinib,False
+oncology,MONDO:0002571,primary central nervous system lymphoma,5,BTK|inhibitor,BTK inhibitors,1,0.2,small molecule,selective,3,0.0,orelabrutinib,False
 oncology,MONDO:0002571,primary central nervous system lymphoma,5,FLT3;IRAK4|inhibitor,FLT3;IRAK4 inhibitors,1,0.2,small molecule,,2,0.0,emavusertib,False
-oncology,MONDO:0002571,primary central nervous system lymphoma,5,MS4A1|depleter,MS4A1-directed depleters,1,0.2,antibody,,2,0.0,ublituximab,False
+oncology,MONDO:0002571,primary central nervous system lymphoma,5,MS4A1|depleter,MS4A1-directed depleters,1,0.2,antibody,selective,2,0.0,ublituximab,False
 oncology,MONDO:0002571,primary central nervous system lymphoma,5,PI3K/MTOR|inhibitor,PI3K/MTOR inhibitors,1,0.2,small molecule,dual,2,0.0,bimiralisib,False
 oncology,MONDO:0000607,primary cutaneous T-cell non-Hodgkin lymphoma,14,CCR4|depleter,CCR4-directed depleters,1,0.071,antibody,,4,0.0,mogamulizumab,False
 oncology,MONDO:0000607,primary cutaneous T-cell non-Hodgkin lymphoma,14,CD3E|depleter,CD3E-directed depleters,1,0.071,protein,,2,0.0,resimmune,False
@@ -2334,7 +2331,7 @@ oncology,MONDO:0000607,primary cutaneous T-cell non-Hodgkin lymphoma,14,XPO1|inh
 oncology,MONDO:0020323,primary mediastinal large B-cell lymphoma,1,CD274|binder_neutralizer,anti-CD274 antibodies,1,1.0,antibody,selective,2,0.0,benmelstobart,False
 oncology,MONDO:0009692,primary myelofibrosis,1,SMO|antagonist,SMO antagonists,1,1.0,small molecule,,2,0.0,patidegib,False
 oncology,MONDO:0001023,prolymphocytic leukemia,2,BTK|inhibitor,BTK inhibitors,1,0.5,small molecule,selective,2,0.0,acalabrutinib,False
-oncology,MONDO:0001023,prolymphocytic leukemia,2,MS4A1|depleter,MS4A1-directed depleters,1,0.5,antibody,,2,0.0,veltuzumab,False
+oncology,MONDO:0001023,prolymphocytic leukemia,2,MS4A1|depleter,MS4A1-directed depleters,1,0.5,antibody,selective,2,0.0,veltuzumab,False
 oncology,MONDO:0008315,prostate cancer,91,AR|antagonist,AR antagonists,5,0.055,small molecule,selective,4,0.05,apalutamide; darolutamide; pruxelutamide; rezvilutamide; trc-253,True
 oncology,MONDO:0008315,prostate cancer,91,PARP1/2|inhibitor,PARP1/2 inhibitors,5,0.055,small molecule,selective,4,0.05,fuzuloparib; niraparib; olaparib; pamiparib; talazoparib,True
 oncology,MONDO:0008315,prostate cancer,91,CYP17A1/AR|inhibitor,CYP17A1/AR inhibitors,3,0.033,small molecule,dual,3,0.05,galeterone; odm-204; seviteronel,True
@@ -2507,7 +2504,7 @@ oncology,MONDO:0001187,urinary bladder cancer,22,PDCD1|binder_neutralizer,anti-P
 oncology,MONDO:0004986,urinary bladder carcinoma,2,FGFR3|binder_neutralizer,anti-FGFR3 antibodies,1,0.5,antibody,,2,0.0,vofatamab,False
 oncology,MONDO:0004987,urinary bladder neoplasm,1,IL2RB|agonist,IL2RB agonists,1,1.0,protein,,3,0.0,bempegaldesleukin,False
 oncology,MONDO:0040679,urothelial carcinoma,25,FGFR1;FGFR2;FGFR3|inhibitor,FGFR1;FGFR2;FGFR3 inhibitors,2,0.08,small molecule,,2,0.0,derazantinib; pemigatinib,False
-oncology,MONDO:0040679,urothelial carcinoma,25,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,2,0.08,antibody,,3,0.0,tislelizumab; zimberelimab,False
+oncology,MONDO:0040679,urothelial carcinoma,25,PDCD1|binder_neutralizer,anti-PDCD1 antibodies,2,0.08,antibody,selective,3,0.0,tislelizumab; zimberelimab,False
 oncology,MONDO:0040679,urothelial carcinoma,25,AXL;KDR;MERTK;TYRO3|inhibitor,AXL;KDR;MERTK;TYRO3 inhibitors,1,0.04,small molecule,,3,0.0,sitravatinib,False
 oncology,MONDO:0040679,urothelial carcinoma,25,BTK|inhibitor,BTK inhibitors,1,0.04,small molecule,selective,2,0.0,acalabrutinib,False
 oncology,MONDO:0040679,urothelial carcinoma,25,ERBB2|other,ERBB2,1,0.04,cell therapy,,2,0.0,lapuleucel-t,False
@@ -2633,9 +2630,8 @@ ophthalmology,MONDO:1010183,macular telangiectasia type 2,1,CNTF|gene_expression
 ophthalmology,MONDO:0015290,neurotrophic keratopathy,1,NGF (NTRK1 agonist)|agonist,NGF (NTRK1 agonist) agonists,1,1.0,protein,selective,4,0.0,cenegermin,False
 ophthalmology,MONDO:0017634,non-infectious anterior uveitis,1,RASP (aldehyde trap)|inhibitor,RASP (aldehyde trap) inhibitors,1,1.0,small molecule,selective,3,0.0,reproxalap,False
 ophthalmology,MONDO:0006875,ocular hypertension,1,HSD11B1|inhibitor,HSD11B1 inhibitors,1,1.0,small molecule,,2,0.0,azd-4017,False
-ophthalmology,MONDO:0005338,open-angle glaucoma,27,PTGER2|agonist,PTGER2 agonists,3,0.111,small molecule,,4,0.15,aganepag isopropyl; omidenepag isopropyl; simenepag isopropyl,True
-ophthalmology,MONDO:0005338,open-angle glaucoma,27,ROCK|inhibitor,ROCK inhibitors,3,0.111,small molecule,dual; selective,4,0.15,ATS907; DE-104; netarsudil,True
-ophthalmology,MONDO:0005338,open-angle glaucoma,27,ROCK1;ROCK2|inhibitor,ROCK1;ROCK2 inhibitors,3,0.111,small molecule,,3,0.15,RKI983; sovesudil; verosudil,True
+ophthalmology,MONDO:0005338,open-angle glaucoma,27,ROCK|inhibitor,ROCK inhibitors,6,0.222,small molecule,dual; selective,4,0.15,ATS907; DE-104; RKI983; netarsudil; sovesudil; verosudil,True
+ophthalmology,MONDO:0005338,open-angle glaucoma,27,PTGER2|agonist,PTGER2 agonists,3,0.111,small molecule,selective,4,0.15,aganepag isopropyl; omidenepag isopropyl; simenepag isopropyl,True
 ophthalmology,MONDO:0005338,open-angle glaucoma,27,ADORA2A|agonist,ADORA2A agonists,2,0.074,small molecule,selective,2,0.15,OPA-6566; evodenoson,False
 ophthalmology,MONDO:0005338,open-angle glaucoma,27,ADORA1|agonist,ADORA1 agonists,1,0.037,small molecule,,3,0.15,trabodenoson,False
 ophthalmology,MONDO:0005338,open-angle glaucoma,27,ADORA3|agonist,ADORA3 agonists,1,0.037,small molecule,,2,0.15,piclidenoson,False
@@ -2660,7 +2656,7 @@ ophthalmology,MONDO:0001660,proliferative diabetic retinopathy,2,TUBB|inhibitor,
 ophthalmology,MONDO:0005085,pterygium,3,FGFR1;FGFR2;FGFR3;FLT1;FLT4;KDR;PDGFRA;PDGFRB|inhibitor,FGFR1;FGFR2;FGFR3;FLT1;FLT4;KDR;PDGFRA;PDGFRB inhibitors,1,0.333,small molecule,,2,0.0,AG-86893,False
 ophthalmology,MONDO:0006951,retinal vein occlusion,6,PTPRB|inhibitor,PTPRB inhibitors,1,0.167,small molecule,,2,0.25,razuprotafib,False
 ophthalmology,MONDO:0006951,retinal vein occlusion,6,VEGFA|binder_neutralizer,anti-VEGFA antibodies,1,0.167,protein,selective,3,0.25,conbercept,False
-ophthalmology,MONDO:0019200,retinitis pigmentosa,14,RPGR|replacement,RPGR replacement / gene therapy,3,0.214,gene therapy,,3,0.38,botaretigene sparoparvovec; cotoretigene toliparvovec; laruparetigene zovaparvovec,True
+ophthalmology,MONDO:0019200,retinitis pigmentosa,14,RPGR|replacement,RPGR replacement / gene therapy,3,0.214,gene therapy,selective,3,0.38,botaretigene sparoparvovec; cotoretigene toliparvovec; laruparetigene zovaparvovec,True
 ophthalmology,MONDO:0019200,retinitis pigmentosa,14,NGF (NTRK1 agonist)|agonist,NGF (NTRK1 agonist) agonists,1,0.071,protein,selective,2,0.38,cenegermin,False
 ophthalmology,MONDO:0019200,retinitis pigmentosa,14,PDE6B|replacement,PDE6B replacement / gene therapy,1,0.071,gene therapy,,2,0.38,AAV2/5-hPDE6B,False
 ophthalmology,MONDO:0019200,retinitis pigmentosa,14,RHO|gene_expression_reduction,RHO antisense / siRNA,1,0.071,oligo,,2,0.38,QR-1123,False
@@ -2749,7 +2745,7 @@ other,MONDO:0004691,autosomal dominant polycystic kidney disease,3,ABL1;BCR;SRC|
 other,MONDO:0004691,autosomal dominant polycystic kidney disease,3,AVPR2|antagonist,AVPR2 antagonists,1,0.333,small molecule,,3,0.0,lixivaptan,False
 other,MONDO:0004691,autosomal dominant polycystic kidney disease,3,EGFR/HER2/VEGFR/SRC multikinase|inhibitor,EGFR/HER2/VEGFR/SRC multikinase inhibitors,1,0.333,small molecule,pan,2,0.0,tesevatinib,False
 other,MONDO:0017265,autosomal recessive congenital ichthyosis,1,TGM1|replacement,TGM1 replacement / gene therapy,1,1.0,gene therapy,,2,0.0,inetagugene geperpavec,False
-other,MONDO:0005315,bone fracture,3,SOST|binder_neutralizer,anti-SOST antibodies,1,0.333,antibody,,2,0.67,romosozumab,False
+other,MONDO:0005315,bone fracture,3,SOST|binder_neutralizer,anti-SOST antibodies,1,0.333,antibody,selective,2,0.67,romosozumab,False
 other,MONDO:0043519,burn,8,F3|replacement,F3 replacement / gene therapy,1,0.125,protein,,2,0.71,TT-173,False
 other,MONDO:0043519,burn,8,IGF1R|agonist,IGF1R agonists,1,0.125,protein,,2,0.71,BVS857,False
 other,MONDO:0005300,chronic kidney disease,19,NR3C2|antagonist,NR3C2 antagonists,2,0.105,small molecule,,3,0.29,ly-2623091; ocedurenone,False
@@ -2759,7 +2755,7 @@ other,MONDO:0005300,chronic kidney disease,19,ELN|degrader,ELN degrader,1,0.053,
 other,MONDO:0005300,chronic kidney disease,19,EPOR|agonist,EPOR agonists,1,0.053,peptide,,2,0.29,pegmolesatide,False
 other,MONDO:0005300,chronic kidney disease,19,IGHG1|degrader,IGHG1 degrader,1,0.053,protein,,2,0.29,imlifidase,False
 other,MONDO:0005300,chronic kidney disease,19,KLK1|replacement,KLK1 replacement / gene therapy,1,0.053,protein,,2,0.29,rinvecalinase alfa,False
-other,MONDO:0005300,chronic kidney disease,19,SLC22A12|inhibitor,SLC22A12 inhibitors,1,0.053,small molecule,,2,0.29,verinurad,False
+other,MONDO:0005300,chronic kidney disease,19,SLC22A12|inhibitor,SLC22A12 inhibitors,1,0.053,small molecule,selective,2,0.29,verinurad,False
 other,MONDO:0005300,chronic kidney disease,19,IL6|binder_neutralizer,anti-IL6 antibodies,1,0.053,antibody,,2,0.29,ziltivekimab,False
 other,MONDO:0024327,chronic renal failure syndrome,3,INHBA|binder_neutralizer,anti-INHBA antibodies,1,0.333,protein,,2,0.5,sotatercept,False
 other,MONDO:0004605,chronic ulcer of skin,26,ADRA2C|antagonist,ADRA2C antagonists,1,0.038,small molecule,,2,0.76,BAY1193397,False
@@ -2803,7 +2799,7 @@ other,MONDO:0100313,focal segmental glomerulosclerosis,7,MAPK11;MAPK14|inhibitor
 other,MONDO:0100313,focal segmental glomerulosclerosis,7,PPP3CA|inhibitor,PPP3CA inhibitors,1,0.143,small molecule,,2,0.0,voclosporin,False
 other,MONDO:0100313,focal segmental glomerulosclerosis,7,SLIT2|binder_neutralizer,anti-SLIT2 antibodies,1,0.143,protein,,2,0.0,PF-06730512,False
 other,MONDO:0100313,focal segmental glomerulosclerosis,7,TGFB1;TGFB2;TGFB3|binder_neutralizer,anti-TGFB1;TGFB2;TGFB3 antibodies,1,0.143,antibody,,2,0.0,fresolimumab,False
-other,MONDO:0005393,gout,20,SLC22A12|inhibitor,SLC22A12 inhibitors,6,0.3,small molecule,,4,0.06,D-0120; SAP-001; epaminurad; lesinurad; rdea-806; verinurad,True
+other,MONDO:0005393,gout,20,SLC22A12|inhibitor,SLC22A12 inhibitors,5,0.25,small molecule,selective,4,0.06,D-0120; epaminurad; lesinurad; rdea-806; verinurad,True
 other,MONDO:0005393,gout,20,IL1B|inhibitor,IL1B inhibitors,1,0.05,small molecule,,2,0.06,diacerein,False
 other,MONDO:0005393,gout,20,NLRP3;SLC22A12|inhibitor,NLRP3;SLC22A12 inhibitors,1,0.05,small molecule,,2,0.06,tranilast,False
 other,MONDO:0005393,gout,20,PNP|inhibitor,PNP inhibitors,1,0.05,small molecule,,2,0.06,ulodesine,False
@@ -2864,7 +2860,7 @@ other,MONDO:0005178,osteoarthritis,65,NTRK (pan-Trk)|inhibitor,NTRK (pan-Trk) in
 other,MONDO:0005178,osteoarthritis,65,OPRL1;OPRM1|agonist,OPRL1;OPRM1 agonists,1,0.015,small molecule,,2,0.31,cebranopadol,False
 other,MONDO:0005178,osteoarthritis,65,P2RX3|antagonist,P2RX3 antagonists,1,0.015,small molecule,,2,0.31,gefapixant,False
 other,MONDO:0005178,osteoarthritis,65,SCN10A|blocker,SCN10A blockers,1,0.015,small molecule,,2,0.31,VX-150,False
-other,MONDO:0005178,osteoarthritis,65,SCN9A|blocker,SCN9A blockers,1,0.015,small molecule,,2,0.31,funapide,False
+other,MONDO:0005178,osteoarthritis,65,SCN9A|blocker,SCN9A blockers,1,0.015,small molecule,selective,2,0.31,funapide,False
 other,MONDO:0005178,osteoarthritis,65,TGFB1|gene_expression_increase,TGFB1 gene therapy,1,0.015,cell therapy,,3,0.31,tonogenchoncel-l,False
 other,MONDO:0005178,osteoarthritis,65,TRPV1|antagonist,TRPV1 antagonists,1,0.015,small molecule,,2,0.31,azd-1386,False
 other,MONDO:0005178,osteoarthritis,65,CALCA/CALCB (CGRP ligand)|binder_neutralizer,anti-CALCA/CALCB (CGRP ligand) antibodies,1,0.015,antibody,selective,2,0.31,galcanezumab,False
@@ -2872,9 +2868,9 @@ other,MONDO:0005178,osteoarthritis,65,CSF2|binder_neutralizer,anti-CSF2 antibodi
 other,MONDO:0005178,osteoarthritis,65,GFRA3|binder_neutralizer,anti-GFRA3 antibodies,1,0.015,antibody,,2,0.31,nadecnemab,False
 other,MONDO:0005178,osteoarthritis,65,IL1A;IL1B|binder_neutralizer,anti-IL1A;IL1B antibodies,1,0.015,antibody,,2,0.31,lutikizumab,False
 other,MONDO:0005178,osteoarthritis,65,TNF|binder_neutralizer,anti-TNF antibodies,1,0.015,antibody,,2,0.31,DLX105,False
-other,MONDO:0019019,osteogenesis imperfecta,1,SOST|binder_neutralizer,anti-SOST antibodies,1,1.0,antibody,,3,0.0,setrusumab,False
+other,MONDO:0019019,osteogenesis imperfecta,1,SOST|binder_neutralizer,anti-SOST antibodies,1,1.0,antibody,selective,3,0.0,setrusumab,False
 other,MONDO:0017198,osteopetrosis,2,FKBP1A|other,FKBP1A,1,0.5,small molecule,,2,0.5,rimiducid,False
-other,MONDO:0005298,osteoporosis,5,SOST|binder_neutralizer,anti-SOST antibodies,3,0.6,antibody,,4,0.0,blosozumab; romosozumab; setrusumab,True
+other,MONDO:0005298,osteoporosis,5,SOST|binder_neutralizer,anti-SOST antibodies,3,0.6,antibody,selective,4,0.0,blosozumab; romosozumab; setrusumab,True
 other,MONDO:0005298,osteoporosis,5,BMPR1A;BMPR1B;BMPR2|agonist,BMPR1A;BMPR1B;BMPR2 agonists,1,0.2,protein,,2,0.0,dibotermin alfa,False
 other,MONDO:0005298,osteoporosis,5,CASR|negative_modulator,CASR negative modulators,1,0.2,small molecule,,2,0.0,encaleret,False
 other,MONDO:0008159,postmenopausal osteoporosis,1,PTH1R|agonist,PTH1R agonists,1,1.0,peptide,,2,0.0,ostabolin-c,False
@@ -2888,7 +2884,7 @@ other,MONDO:0026045,prurigo nodularis,2,IL31RA|binder_neutralizer,anti-IL31RA an
 other,MONDO:0026045,prurigo nodularis,2,OSMR|binder_neutralizer,anti-OSMR antibodies,1,0.5,antibody,,2,0.0,vixarelimab,False
 other,MONDO:0043771,radiodermatitis,3,NFE2L2|activator,NFE2L2 activators,1,0.333,small molecule,,2,0.67,omaveloxolone,False
 other,MONDO:0006603,reactive cutaneous fibrous lesion,1,CCN2|gene_expression_reduction,CCN2 antisense / siRNA,1,1.0,oligo,,2,0.0,PF-06473871,False
-other,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,COL7A1|replacement,COL7A1 replacement / gene therapy,5,0.714,cell therapy;gene therapy;protein,,4,0.0,Hologene 7; PTR-01; beremagene geperpavec; dabocemagene autoficel; prademagene zamikeracel,True
+other,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,COL7A1|replacement,COL7A1 replacement / gene therapy,5,0.714,gene therapy;protein,selective,4,0.0,Hologene 7; PTR-01; beremagene geperpavec; dabocemagene autoficel; prademagene zamikeracel,True
 other,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,COL7A1|other,COL7A1,1,0.143,oligo,,2,0.0,QR-313,False
 other,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,TMSB4X|replacement,TMSB4X replacement / gene therapy,1,0.143,peptide,,2,0.0,thymosin .beta.-4,False
 other,MONDO:0006604,rosacea,14,KDR|inhibitor,KDR inhibitors,1,0.071,small molecule,,2,0.56,bfh-772,False
@@ -2959,7 +2955,7 @@ psychiatry,MONDO:0024379,"circadian rhythm sleep disorder, irregular sleep wake 
 psychiatry,MONDO:0005186,cocaine dependence,4,ABAT|inhibitor,ABAT inhibitors,1,0.25,small molecule,,2,0.0,vigabatrin,False
 psychiatry,MONDO:0005186,cocaine dependence,4,BCHE|other,BCHE,1,0.25,protein,,2,0.0,TV-1380,False
 psychiatry,MONDO:0005186,cocaine dependence,4,DBH|inhibitor,DBH inhibitors,1,0.25,small molecule,,2,0.0,nepicastat,False
-psychiatry,MONDO:0005186,cocaine dependence,4,GRM5|negative_modulator,GRM5 negative modulators,1,0.25,small molecule,,2,0.0,mavoglurant,False
+psychiatry,MONDO:0005186,cocaine dependence,4,GRM5|negative_modulator,GRM5 negative modulators,1,0.25,small molecule,selective,2,0.0,mavoglurant,False
 psychiatry,MONDO:0001942,generalized anxiety disorder,4,GABRA2;GABRA3;GABRA5|positive_modulator,GABRA2;GABRA3;GABRA5 positive modulators,1,0.25,small molecule,,2,0.5,darigabat,False
 psychiatry,MONDO:0001942,generalized anxiety disorder,4,SCN1A;SCN2A;SCN3A;SCN8A|blocker,SCN1A;SCN2A;SCN3A;SCN8A blockers,1,0.25,small molecule,,2,0.5,rufinamide,False
 psychiatry,MONDO:0013600,insomnia,11,HCRTR1/2|antagonist,HCRTR1/2 antagonists,6,0.545,small molecule,selective,4,0.0,daridorexant; fazamorexant; filorexant; lemborexant; suvorexant; vornorexant,True
@@ -2974,7 +2970,7 @@ psychiatry,MONDO:0002009,major depressive disorder,62,CRHR1|antagonist,CRHR1 ant
 psychiatry,MONDO:0002009,major depressive disorder,62,FAAH|inhibitor,FAAH inhibitors,2,0.032,small molecule,,2,0.08,SSR411298; jnj-42165279,False
 psychiatry,MONDO:0002009,major depressive disorder,62,GRIN1|positive_modulator,GRIN1 positive modulators,2,0.032,peptide;small molecule,,3,0.08,rapastinel; zelquistinel,False
 psychiatry,MONDO:0002009,major depressive disorder,62,GRIN2B|antagonist,GRIN2B antagonists,2,0.032,small molecule,selective,2,0.08,evt-101; rislenemdaz,False
-psychiatry,MONDO:0002009,major depressive disorder,62,GRM5|negative_modulator,GRM5 negative modulators,2,0.032,small molecule,,2,0.08,azd-2066; basimglurant,False
+psychiatry,MONDO:0002009,major depressive disorder,62,GRM5|negative_modulator,GRM5 negative modulators,2,0.032,small molecule,selective,2,0.08,azd-2066; basimglurant,False
 psychiatry,MONDO:0002009,major depressive disorder,62,OPRD1|agonist,OPRD1 agonists,2,0.032,small molecule,,2,0.08,azd-2327; azd-7268,False
 psychiatry,MONDO:0002009,major depressive disorder,62,CACNA1B;SCN2A|blocker,CACNA1B;SCN2A blockers,1,0.016,small molecule,,2,0.08,jnj-26489112,False
 psychiatry,MONDO:0002009,major depressive disorder,62,CHRNA3;CHRNA4;CHRNB2;CHRNB4|antagonist,CHRNA3;CHRNA4;CHRNB2;CHRNB4 antagonists,1,0.016,small molecule,,3,0.08,dexmecamylamine,False
@@ -3009,7 +3005,7 @@ psychiatry,MONDO:0002009,major depressive disorder,62,TACR1|antagonist,TACR1 ant
 psychiatry,MONDO:0002009,major depressive disorder,62,IL6|binder_neutralizer,anti-IL6 antibodies,1,0.016,antibody,,2,0.08,sirukumab,False
 psychiatry,MONDO:0008575,nicotine dependence,4,MAOB|inhibitor,MAOB inhibitors,1,0.25,small molecule,,2,0.0,sembragiline,False
 psychiatry,MONDO:0008575,nicotine dependence,4,OPRK1|antagonist,OPRK1 antagonists,1,0.25,small molecule,,2,0.0,aticaprant,False
-psychiatry,MONDO:0008114,obsessive-compulsive disorder,4,GRM5|negative_modulator,GRM5 negative modulators,1,0.25,small molecule,,2,0.0,mavoglurant,False
+psychiatry,MONDO:0008114,obsessive-compulsive disorder,4,GRM5|negative_modulator,GRM5 negative modulators,1,0.25,small molecule,selective,2,0.0,mavoglurant,False
 psychiatry,MONDO:0008114,obsessive-compulsive disorder,4,SLC6A9|inhibitor,SLC6A9 inhibitors,1,0.25,small molecule,selective,2,0.0,bitopertin,False
 psychiatry,MONDO:0005530,opiate dependence,1,OPRM1|partial_agonist,OPRM1 partial_agonist,1,1.0,small molecule,,2,0.0,buprenorphine hemiadipate,False
 psychiatry,MONDO:0005383,panic disorder,1,SLC6A9|inhibitor,SLC6A9 inhibitors,1,1.0,small molecule,,2,0.0,org-25935,False
@@ -3066,7 +3062,7 @@ respiratory,MONDO:0006502,acute respiratory distress syndrome,8,TNFRSF1A|binder_
 respiratory,MONDO:0013282,alpha 1-antitrypsin deficiency,4,SERPINA1|gene_expression_reduction,SERPINA1 antisense / siRNA,2,0.5,oligo,,3,0.0,ALN-AAT02; fazirsiran,False
 respiratory,MONDO:0013282,alpha 1-antitrypsin deficiency,4,SERPINA1|replacement,SERPINA1 replacement / gene therapy,2,0.5,gene therapy,,2,0.0,ADVM-043; rAAV1-CB-hAAT,False
 respiratory,MONDO:0850287,aspirin-induced respiratory disease,1,TBXA2R|antagonist,TBXA2R antagonists,1,1.0,small molecule,,2,0.0,ifetroban,False
-respiratory,MONDO:0004979,asthma,87,PTGDR2|antagonist,PTGDR2 antagonists,10,0.115,small molecule,selective,3,0.11,ADC3680B; AXP1275; GB001; MK-1029; arry-502; azd-1981,True
+respiratory,MONDO:0004979,asthma,87,PTGDR2|antagonist,PTGDR2 antagonists,9,0.103,small molecule,selective,3,0.11,ADC3680B; GB001; MK-1029; arry-502; azd-1981; bi-671800,True
 respiratory,MONDO:0004979,asthma,87,ADRB2|agonist,ADRB2 agonists,4,0.046,small molecule,selective,2,0.11,abediterol; azd-3199; bedoradrine; carmoterol,True
 respiratory,MONDO:0004979,asthma,87,NR3C1|agonist,NR3C1 agonists,4,0.046,small molecule,selective,2,0.11,azd-5423; gw-870086; sun-597; velsecorat,True
 respiratory,MONDO:0004979,asthma,87,IL13|binder_neutralizer,anti-IL13 antibodies,4,0.046,antibody,selective,3,0.11,GSK679586; dectrekumab; lebrikizumab; tralokinumab,True
@@ -3081,7 +3077,8 @@ respiratory,MONDO:0004979,asthma,87,IL33|binder_neutralizer,anti-IL33 antibodies
 respiratory,MONDO:0004979,asthma,87,IL5|binder_neutralizer,anti-IL5 antibodies,2,0.023,antibody,,4,0.11,mepolizumab; reslizumab,False
 respiratory,MONDO:0004979,asthma,87,ADORA1|antagonist,ADORA1 antagonists,1,0.011,small molecule,,2,0.11,PBF-680,False
 respiratory,MONDO:0004979,asthma,87,ALOX5AP|inhibitor,ALOX5AP inhibitors,1,0.011,small molecule,,2,0.11,fiboflapon,False
-respiratory,MONDO:0004979,asthma,87,BTK|inhibitor,BTK inhibitors,1,0.011,small molecule,,2,0.11,remibrutinib,False
+respiratory,MONDO:0004979,asthma,87,BTK|inhibitor,BTK inhibitors,1,0.011,small molecule,selective,2,0.11,remibrutinib,False
+respiratory,MONDO:0004979,asthma,87,CCR3 (off-class)|antagonist,CCR3 (off-class) antagonists,1,0.011,small molecule,off-class,2,0.11,AXP1275,False
 respiratory,MONDO:0004979,asthma,87,CHRNA3;CHRNA7;CHRNB4|antagonist;positive_modulator;antagonist,CHRNA3;CHRNA7;CHRNB4 antagonist;positive_modulator;antagonist,1,0.011,small molecule,,2,0.11,asm-024,False
 respiratory,MONDO:0004979,asthma,87,CHRNA7|agonist,CHRNA7 agonists,1,0.011,small molecule,,2,0.11,tc-6987,False
 respiratory,MONDO:0004979,asthma,87,CXCR1;CXCR2|antagonist,CXCR1;CXCR2 antagonists,1,0.011,small molecule,,2,0.11,navarixin,False
@@ -3184,7 +3181,7 @@ respiratory,MONDO:0007147,obstructive sleep apnea syndrome,4,KCNK3;KCNK9|blocker
 respiratory,MONDO:0007147,obstructive sleep apnea syndrome,4,PPARA|agonist,PPARA agonists,1,0.25,small molecule,,2,0.33,palmidrol,False
 respiratory,MONDO:0016575,primary ciliary dyskinesia,1,SCNN1A;SCNN1B;SCNN1G|blocker,SCNN1A;SCNN1B;SCNN1G blockers,1,1.0,small molecule,,2,0.0,idrevloride,False
 respiratory,MONDO:0001437,pulmonary alveolar proteinosis,1,CSF2RA;CSF2RB|agonist,CSF2RA;CSF2RB agonists,1,1.0,protein,,3,0.0,molgramostim,False
-respiratory,MONDO:0015924,pulmonary arterial hypertension,14,PTGIR|agonist,PTGIR agonists,3,0.214,small molecule,,3,0.0,QCC374; beraprost; ralinepag,True
+respiratory,MONDO:0015924,pulmonary arterial hypertension,14,PTGIR|agonist,PTGIR agonists,3,0.214,small molecule,selective,3,0.0,QCC374; beraprost; ralinepag,True
 respiratory,MONDO:0015924,pulmonary arterial hypertension,14,DBH|inhibitor,DBH inhibitors,1,0.071,small molecule,,2,0.0,zamicastat,False
 respiratory,MONDO:0015924,pulmonary arterial hypertension,14,EDNRA;EDNRB|antagonist,EDNRA;EDNRB antagonists,1,0.071,small molecule,,3,0.0,tezosentan,False
 respiratory,MONDO:0015924,pulmonary arterial hypertension,14,KEAP1|inhibitor,KEAP1 inhibitors,1,0.071,small molecule,,3,0.0,bardoxolone methyl,False
