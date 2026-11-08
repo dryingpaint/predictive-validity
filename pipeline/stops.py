@@ -95,9 +95,12 @@ def stops():
     return modes, rows, progs, trials
 
 
+latest_decisions = frame.held_once(llm.latest_decisions)  # a report build reads each task's decisions once
+
+
 def inferred_causes() -> pd.DataFrame:
     """The latest validated stop-cause inference of each program: key, llm_decision_id, parsed_output."""
-    return llm.latest_decisions(INFERENCE_TASK, INFERENCE_VERSION)
+    return latest_decisions(INFERENCE_TASK, INFERENCE_VERSION)
 
 
 def cohort(modes: pd.DataFrame) -> pd.DataFrame:
@@ -115,7 +118,7 @@ def cohort(modes: pd.DataFrame) -> pd.DataFrame:
 def decided(task: str) -> pd.DataFrame:
     """The latest validated efficacy-attribution decision of each stop for a task: key, llm_decision_id and the
     decision's fields."""
-    d = llm.latest_decisions(task, LABEL_VERSION)
+    d = latest_decisions(task, LABEL_VERSION)
     return pd.concat([d[["key", "llm_decision_id"]], pd.DataFrame(list(d.parsed_output), index=d.index)], axis=1)
 
 

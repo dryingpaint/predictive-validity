@@ -56,3 +56,6 @@ db/data_program_master.csv
 !/report/output/figures/*.png
 !/report/output/figures/*.svg
 !/report/output/figures/*.pdf
+
+# cohort-run progress logs
+/logs/

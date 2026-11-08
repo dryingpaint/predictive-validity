@@ -309,3 +309,25 @@ the Cell studies category and its dependency subcategory are scored on oncology 
 lines are known for every one of those entries, so the category means the same thing across its scope. The
 dependency scores are DEMETER2 and CERES reprocessings (2018–19) of screens published 2014–2017: the screen data
 existed before entry, but the exact scores were computed later.
+**Name vetting, 2026-11-05, added after the third attempt's pilot gate.** The cohort search showed that the
+synonyms taken from PubChem and ChEMBL included common words, generic class and protein names, and other drugs'
+names (for spinosad "Success", "Justice" and "Tracer"; for elinzanetant "Compound A"; for colestipol "POLY" and
+reserpine brand names; for albumin human "Bovine serum albumin"), so retrieval pulled in tens to hundreds of
+thousands of unrelated records. An LLM now vets each drug's candidate names before searching, given its
+nonproprietary and registry names, modality and targets, and keeps only names that unambiguously denote the drug;
+a second model re-vets a seeded sample. Drugs whose vetted names differ are searched again. Records the screen
+already read as reporting none of the three kinds stay out; records it read as qualifying, and new records, are
+screened again under the vetted names. The gate is re-scored on rows 201–300 against the same blind reference
+set with the same metrics, and both the pre- and post-vetting results are reported. A drug still returning more
+than 100,000 records is held from the paid prefilter until approved. The reference set's files, lost from
+temporary storage, were rebuilt from the reference agents' recorded steps; re-scoring the pre-vetting pipeline
+against them reproduces the recorded gate (one healthy-animal reference study more: 149 against 148).
+
+**Reporting the literature lines, 2026-11-05, after the full-cohort run and before its estimates were published.**
+No kind passed the gate on the final retrieval (v3_final: recall 74%, 67% and 39%). At the user's direction the
+three lines are reported as exploratory, not left out: the evidence chart draws them in their own marked areas
+(published animal studies of the drug, with the disease-model and healthy-animal-only groups; a published study
+of target engagement in people), the main text states the result with the recall caveat, and no conclusion of
+the report rests on them. Drugs whose generic name is an endogenous molecule with no product-specific name
+(alcohol, nitric oxide, ademetionine) were searched by product names and codes only, a vetting exception recorded
+in report/audits/literature_name_vet.json.

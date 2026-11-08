@@ -1,0 +1,3579 @@
+{
+ "drugs": 106,
+ "identical": 82,
+ "mean_jaccard": 0.9538174535108497,
+ "rows": [
+  {
+   "moiety_id": 12555,
+   "name": "pracinostat",
+   "candidates": [
+    "pracinostat",
+    "MEI-004",
+    "SB939",
+    "SB 939",
+    "SB-939",
+    "pracinostatum",
+    "HDAC Inhibitor SB939",
+    "KAEMPFEROL 3-O-BETA-D-",
+    "KAEMPFEROL 3-O-.BETA.-D-"
+   ],
+   "kept": [
+    "HDAC Inhibitor SB939",
+    "MEI-004",
+    "SB 939",
+    "SB-939",
+    "SB939",
+    "pracinostat",
+    "pracinostatum"
+   ],
+   "check_kept": [
+    "HDAC Inhibitor SB939",
+    "MEI-004",
+    "SB 939",
+    "SB-939",
+    "SB939",
+    "pracinostat",
+    "pracinostatum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1003,
+   "name": "sodium fluoride",
+   "candidates": [
+    "sodium fluoride",
+    "Dentalfluoro",
+    "Dentiplus",
+    "Duraphat",
+    "En-de-kay",
+    "Fluor-a-day",
+    "Fluoride",
+    "Fluorigard",
+    "Fluorigard daily",
+    "Fluorigard weekly",
+    "Fluor ret",
+    "Nafril ret",
+    "Natrii fluoridum",
+    "Natrum fluoratum",
+    "Neutral sodium fluoride",
+    "NSC-77385",
+    "Ossin",
+    "Osteofluor",
+    "Pergantene",
+    "Point-two",
+    "Zymafluor",
+    "Florocid",
+    "Pediaflor",
+    "Sodium flouride",
+    "Fluonatril",
+    "Fluorident",
+    "Sodium monofluoride",
+    "Villiaumite",
+    "Antibulit",
+    "Floridine",
+    "Fluoraday",
+    "Fluorol",
+    "Flursol",
+    "Karidium"
+   ],
+   "kept": [
+    "Antibulit",
+    "Dentalfluoro",
+    "Dentiplus",
+    "Duraphat",
+    "En-de-kay",
+    "Floridine",
+    "Florocid",
+    "Fluonatril",
+    "Fluor ret",
+    "Fluor-a-day",
+    "Fluoraday",
+    "Fluorident",
+    "Fluorigard",
+    "Fluorigard daily",
+    "Fluorigard weekly",
+    "Fluorol",
+    "Flursol",
+    "Karidium",
+    "NSC-77385",
+    "Nafril ret",
+    "Natrii fluoridum",
+    "Natrum fluoratum",
+    "Neutral sodium fluoride",
+    "Ossin",
+    "Osteofluor",
+    "Pediaflor",
+    "Pergantene",
+    "Point-two",
+    "Sodium flouride",
+    "Sodium monofluoride",
+    "Villiaumite",
+    "Zymafluor",
+    "sodium fluoride"
+   ],
+   "check_kept": [
+    "Antibulit",
+    "Dentalfluoro",
+    "Dentiplus",
+    "Duraphat",
+    "En-de-kay",
+    "Florocid",
+    "Fluonatril",
+    "Fluor ret",
+    "Fluor-a-day",
+    "Fluoraday",
+    "Fluorigard",
+    "Fluorigard daily",
+    "Fluorigard weekly",
+    "Flursol",
+    "Karidium",
+    "NSC-77385",
+    "Nafril ret",
+    "Natrii fluoridum",
+    "Natrum fluoratum",
+    "Neutral sodium fluoride",
+    "Osteofluor",
+    "Pediaflor",
+    "Pergantene",
+    "Sodium flouride",
+    "Sodium monofluoride",
+    "Zymafluor",
+    "sodium fluoride"
+   ],
+   "same": false,
+   "jaccard": 0.8181818181818182,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 10214,
+   "name": "SAR366234",
+   "candidates": [
+    "SAR366234"
+   ],
+   "kept": [
+    "SAR366234"
+   ],
+   "check_kept": [
+    "SAR366234"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 10240,
+   "name": "naxtarubicin",
+   "candidates": [
+    "naxtarubicin",
+    "L-Annamycin",
+    "Annamycin",
+    "C-2632",
+    "C2632",
+    "Naxtarubicina",
+    "Naxtarubicine"
+   ],
+   "kept": [
+    "Annamycin",
+    "C-2632",
+    "C2632",
+    "L-Annamycin",
+    "Naxtarubicina",
+    "Naxtarubicine",
+    "naxtarubicin"
+   ],
+   "check_kept": [
+    "Annamycin",
+    "C-2632",
+    "C2632",
+    "L-Annamycin",
+    "Naxtarubicina",
+    "Naxtarubicine",
+    "naxtarubicin"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 10852,
+   "name": "NNC0247-0829",
+   "candidates": [
+    "NNC0247-0829"
+   ],
+   "kept": [
+    "NNC0247-0829"
+   ],
+   "check_kept": [
+    "NNC0247-0829"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 11816,
+   "name": "PD-L1 t-haNK",
+   "candidates": [
+    "PD-L1 t-haNK"
+   ],
+   "kept": [
+    "PD-L1 t-haNK"
+   ],
+   "check_kept": [
+    "PD-L1 t-haNK"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 11961,
+   "name": "nanatinostat",
+   "candidates": [
+    "nanatinostat",
+    "CHR-3996",
+    "VRx-3996",
+    "Chr 3996",
+    "Hdac inhibitor chr-3996"
+   ],
+   "kept": [
+    "CHR-3996",
+    "Chr 3996",
+    "VRx-3996",
+    "nanatinostat"
+   ],
+   "check_kept": [
+    "CHR-3996",
+    "Chr 3996",
+    "Hdac inhibitor chr-3996",
+    "VRx-3996",
+    "nanatinostat"
+   ],
+   "same": false,
+   "jaccard": 0.8,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 11994,
+   "name": "AGEN1223",
+   "candidates": [
+    "AGEN1223"
+   ],
+   "kept": [
+    "AGEN1223"
+   ],
+   "check_kept": [
+    "AGEN1223"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 13387,
+   "name": "CLBS03",
+   "candidates": [
+    "CLBS03"
+   ],
+   "kept": [
+    "CLBS03"
+   ],
+   "check_kept": [
+    "CLBS03"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1113,
+   "name": "pramipexole",
+   "candidates": [
+    "pramipexole",
+    "CTC-413",
+    "CTC-501",
+    "P2B001",
+    "PPX ER",
+    "Neliprax",
+    "NSC-760426",
+    "Pipexus",
+    "Pramipexol",
+    "SUD-919CL2Y",
+    "U-98528E",
+    "Mirapexin",
+    "Pramipexolum",
+    "Sifrol",
+    "Mirapex"
+   ],
+   "kept": [
+    "CTC-413",
+    "CTC-501",
+    "Mirapex",
+    "Mirapexin",
+    "NSC-760426",
+    "Neliprax",
+    "P2B001",
+    "PPX ER",
+    "Pipexus",
+    "Pramipexol",
+    "Pramipexolum",
+    "SUD-919CL2Y",
+    "Sifrol",
+    "U-98528E",
+    "pramipexole"
+   ],
+   "check_kept": [
+    "CTC-413",
+    "CTC-501",
+    "Mirapex",
+    "Mirapexin",
+    "NSC-760426",
+    "Neliprax",
+    "Pipexus",
+    "Pramipexol",
+    "Pramipexolum",
+    "SUD-919CL2Y",
+    "Sifrol",
+    "U-98528E",
+    "pramipexole"
+   ],
+   "same": false,
+   "jaccard": 0.8666666666666667,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1484,
+   "name": "spinosad",
+   "candidates": [
+    "spinosad",
+    "APT-001",
+    "Blackhawk",
+    "Comfortis",
+    "Conserve",
+    "DE-105",
+    "Entrust",
+    "Extinosad",
+    "Justice",
+    "LY-232105",
+    "Natroba",
+    "Natrova",
+    "Naturalyte",
+    "PP-105",
+    "Spinosad component of trifexis",
+    "Spinosyns spinosad",
+    "Spintor",
+    "Success",
+    "Tracer",
+    "XDE-105"
+   ],
+   "kept": [
+    "APT-001",
+    "Comfortis",
+    "DE-105",
+    "Entrust",
+    "Extinosad",
+    "LY-232105",
+    "Natroba",
+    "Natrova",
+    "Naturalyte",
+    "PP-105",
+    "Spinosyns spinosad",
+    "Spintor",
+    "XDE-105",
+    "spinosad"
+   ],
+   "check_kept": [
+    "Comfortis",
+    "DE-105",
+    "Extinosad",
+    "LY-232105",
+    "Natroba",
+    "Natrova",
+    "Spinosyns spinosad",
+    "Spintor",
+    "XDE-105",
+    "spinosad"
+   ],
+   "same": false,
+   "jaccard": 0.7142857142857143,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 1494,
+   "name": "dabigatran etexilate",
+   "candidates": [
+    "dabigatran etexilate",
+    "BIBR 1048",
+    "BIBR 1048 MS",
+    "RDG-17012",
+    "WD-1602",
+    "BIBR-1048",
+    "BIBR1048",
+    "BIBR 1048 BS RS1",
+    "BIBR-1048-BS-RS1",
+    "Dabigatran etexilato",
+    "Pradaxa",
+    "Prazaxa",
+    "KSGXQBZTULBEEQ-UHFFFAOYSA-N",
+    "MSK162773",
+    "SW219397-1"
+   ],
+   "kept": [
+    "BIBR 1048",
+    "BIBR 1048 BS RS1",
+    "BIBR 1048 MS",
+    "BIBR-1048",
+    "BIBR-1048-BS-RS1",
+    "BIBR1048",
+    "Dabigatran etexilato",
+    "KSGXQBZTULBEEQ-UHFFFAOYSA-N",
+    "Pradaxa",
+    "Prazaxa",
+    "RDG-17012",
+    "WD-1602",
+    "dabigatran etexilate"
+   ],
+   "check_kept": [
+    "BIBR 1048",
+    "BIBR 1048 BS RS1",
+    "BIBR 1048 MS",
+    "BIBR-1048",
+    "BIBR-1048-BS-RS1",
+    "BIBR1048",
+    "Dabigatran etexilato",
+    "KSGXQBZTULBEEQ-UHFFFAOYSA-N",
+    "MSK162773",
+    "Pradaxa",
+    "Prazaxa",
+    "RDG-17012",
+    "SW219397-1",
+    "WD-1602",
+    "dabigatran etexilate"
+   ],
+   "same": false,
+   "jaccard": 0.8666666666666667,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1583,
+   "name": "sulbactam",
+   "candidates": [
+    "sulbactam",
+    "CSE-1034",
+    "SUL-DUR",
+    "CP-458992",
+    "NSC-759886",
+    "Sulbactamum",
+    "Betamaze",
+    "Penicillanic Acid Sulfone",
+    "CP 45899",
+    "CP45899",
+    "CP-45899",
+    "SULTAMICILLIN IMPURITY A"
+   ],
+   "kept": [
+    "Betamaze",
+    "CP 45899",
+    "CP-45899",
+    "CP-458992",
+    "CP45899",
+    "NSC-759886",
+    "Penicillanic Acid Sulfone",
+    "Sulbactamum",
+    "sulbactam"
+   ],
+   "check_kept": [
+    "Betamaze",
+    "CP 45899",
+    "CP-45899",
+    "CP45899",
+    "NSC-759886",
+    "Penicillanic Acid Sulfone",
+    "Sulbactamum",
+    "sulbactam"
+   ],
+   "same": false,
+   "jaccard": 0.8888888888888888,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1590,
+   "name": "clarithromycin",
+   "candidates": [
+    "clarithromycin",
+    "ABT-268",
+    "DW4421-2",
+    "RHB-104",
+    "RHB-204",
+    "6-o-methylerythromycin",
+    "A-56268",
+    "ABBOTT-56268",
+    "Biaxin",
+    "Biaxin xl",
+    "Biaxin xl pac",
+    "Clarie xl",
+    "Clarithromycine",
+    "Clarithromycin identity",
+    "Claritromicina",
+    "Clarosip",
+    "Cyllind",
+    "Febzin xl",
+    "Klacid",
+    "Klaricid",
+    "Klaricid 500",
+    "Klaricid adult",
+    "Klaricid i.v.",
+    "Klaricid paed",
+    "Klaricid xl",
+    "Macladin",
+    "Mavid",
+    "Mycifor xl",
+    "Naxy",
+    "NSC-758704",
+    "TE-031",
+    "Veclam",
+    "Xetinin xl",
+    "Zeclar",
+    "6-O-Methylerythromycin a",
+    "Clarithromycinum"
+   ],
+   "kept": [
+    "6-O-Methylerythromycin a",
+    "6-o-methylerythromycin",
+    "A-56268",
+    "ABBOTT-56268",
+    "ABT-268",
+    "Biaxin",
+    "Biaxin xl",
+    "Biaxin xl pac",
+    "Clarie xl",
+    "Clarithromycine",
+    "Clarithromycinum",
+    "Claritromicina",
+    "Clarosip",
+    "Cyllind",
+    "Febzin xl",
+    "Klacid",
+    "Klaricid",
+    "Klaricid 500",
+    "Klaricid adult",
+    "Klaricid i.v.",
+    "Klaricid paed",
+    "Klaricid xl",
+    "Macladin",
+    "Mavid",
+    "Mycifor xl",
+    "NSC-758704",
+    "Naxy",
+    "TE-031",
+    "Veclam",
+    "Xetinin xl",
+    "Zeclar",
+    "clarithromycin"
+   ],
+   "check_kept": [
+    "6-O-Methylerythromycin a",
+    "6-o-methylerythromycin",
+    "A-56268",
+    "ABBOTT-56268",
+    "ABT-268",
+    "Biaxin",
+    "Biaxin xl",
+    "Biaxin xl pac",
+    "Clarie xl",
+    "Clarithromycine",
+    "Clarithromycinum",
+    "Claritromicina",
+    "Clarosip",
+    "Cyllind",
+    "Febzin xl",
+    "Klacid",
+    "Klaricid",
+    "Klaricid 500",
+    "Klaricid adult",
+    "Klaricid i.v.",
+    "Klaricid paed",
+    "Klaricid xl",
+    "Macladin",
+    "Mycifor xl",
+    "NSC-758704",
+    "TE-031",
+    "Veclam",
+    "Xetinin xl",
+    "Zeclar",
+    "clarithromycin"
+   ],
+   "same": false,
+   "jaccard": 0.9375,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 12017,
+   "name": "vanoxerine",
+   "candidates": [
+    "vanoxerine",
+    "GBR 12909",
+    "GBR-12909",
+    "Vanoxerina",
+    "Vanoxerinum",
+    "Vanoxeamine",
+    "GBR12909"
+   ],
+   "kept": [
+    "GBR 12909",
+    "GBR-12909",
+    "GBR12909",
+    "Vanoxeamine",
+    "Vanoxerina",
+    "Vanoxerinum",
+    "vanoxerine"
+   ],
+   "check_kept": [
+    "GBR 12909",
+    "GBR-12909",
+    "GBR12909",
+    "Vanoxerina",
+    "Vanoxerinum",
+    "vanoxerine"
+   ],
+   "same": false,
+   "jaccard": 0.8571428571428571,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1698,
+   "name": "pembrolizumab",
+   "candidates": [
+    "pembrolizumab",
+    "ABP 234",
+    "AVT32",
+    "AVT32-DRL_PB",
+    "BAT3306",
+    "BCD-201",
+    "Bmab1800",
+    "CT-P51",
+    "FYB206",
+    "GME751",
+    "HLX17",
+    "MK-1308A",
+    "MK-3475",
+    "MK-3475A",
+    "MK-4280A",
+    "MK-7684A",
+    "MK3475",
+    "QL2107",
+    "RPH-075",
+    "SCH 900475",
+    "Keytruda",
+    "Lambrolizumab",
+    "SCH-900475"
+   ],
+   "kept": [
+    "ABP 234",
+    "AVT32",
+    "AVT32-DRL_PB",
+    "BAT3306",
+    "BCD-201",
+    "Bmab1800",
+    "CT-P51",
+    "FYB206",
+    "GME751",
+    "HLX17",
+    "Keytruda",
+    "Lambrolizumab",
+    "MK-3475",
+    "MK-3475A",
+    "MK3475",
+    "QL2107",
+    "RPH-075",
+    "SCH 900475",
+    "SCH-900475",
+    "pembrolizumab"
+   ],
+   "check_kept": [
+    "ABP 234",
+    "AVT32",
+    "AVT32-DRL_PB",
+    "BAT3306",
+    "BCD-201",
+    "Bmab1800",
+    "CT-P51",
+    "FYB206",
+    "GME751",
+    "HLX17",
+    "Keytruda",
+    "Lambrolizumab",
+    "MK-3475",
+    "MK-3475A",
+    "MK3475",
+    "QL2107",
+    "RPH-075",
+    "SCH 900475",
+    "SCH-900475",
+    "pembrolizumab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1803,
+   "name": "ferric oxyhydroxide",
+   "candidates": [
+    "ferric oxyhydroxide",
+    "PA21-1",
+    "Dexferrum",
+    "Ferric hydroxide",
+    "Ferrite yellow 2939",
+    "Ferrlecit",
+    "Infed",
+    "Iron dextran",
+    "Proferdex",
+    "Sucroferric oxyhydroxide",
+    "Velphoro",
+    "Venofer",
+    "Ferric hydroxide oxide",
+    "FERRIC OXY-HYDROXIDE",
+    "5Fe2O3.9H2O",
+    "Iron hydroxide oxide",
+    "FeHO2",
+    "ALLCHARITE",
+    "GOETHITE",
+    "SBR759",
+    "XANTHOSIDERITE"
+   ],
+   "kept": [
+    "5Fe2O3.9H2O",
+    "ALLCHARITE",
+    "FERRIC OXY-HYDROXIDE",
+    "FeHO2",
+    "Ferric hydroxide",
+    "Ferric hydroxide oxide",
+    "Ferrite yellow 2939",
+    "GOETHITE",
+    "Iron hydroxide oxide",
+    "PA21-1",
+    "SBR759",
+    "Sucroferric oxyhydroxide",
+    "Velphoro",
+    "XANTHOSIDERITE",
+    "ferric oxyhydroxide"
+   ],
+   "check_kept": [
+    "FERRIC OXY-HYDROXIDE",
+    "PA21-1",
+    "SBR759",
+    "Sucroferric oxyhydroxide",
+    "Velphoro",
+    "ferric oxyhydroxide"
+   ],
+   "same": false,
+   "jaccard": 0.4,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1837,
+   "name": "ferric pyrophosphate citrate",
+   "candidates": [
+    "ferric pyrophosphate citrate",
+    "Triferic",
+    "Triferic avnu",
+    "SOLUBLE FERRIC PYROPHOSPHATE"
+   ],
+   "kept": [
+    "SOLUBLE FERRIC PYROPHOSPHATE",
+    "Triferic",
+    "Triferic avnu",
+    "ferric pyrophosphate citrate"
+   ],
+   "check_kept": [
+    "SOLUBLE FERRIC PYROPHOSPHATE",
+    "Triferic",
+    "Triferic avnu",
+    "ferric pyrophosphate citrate"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 19,
+   "name": "famciclovir",
+   "candidates": [
+    "famciclovir",
+    "BRL-42810",
+    "Famvir",
+    "NSC-758921",
+    "Famciclovirum",
+    "BRL 42810",
+    "BRL42810"
+   ],
+   "kept": [
+    "BRL 42810",
+    "BRL-42810",
+    "BRL42810",
+    "Famciclovirum",
+    "Famvir",
+    "NSC-758921",
+    "famciclovir"
+   ],
+   "check_kept": [
+    "BRL 42810",
+    "BRL-42810",
+    "BRL42810",
+    "Famciclovirum",
+    "Famvir",
+    "NSC-758921",
+    "famciclovir"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1913,
+   "name": "plecanatide",
+   "candidates": [
+    "plecanatide",
+    "SP-304",
+    "Guanilib",
+    "Plecanatida",
+    "Trulance",
+    "plecanatidum",
+    "Trulance Immediate release"
+   ],
+   "kept": [
+    "Guanilib",
+    "Plecanatida",
+    "SP-304",
+    "Trulance",
+    "Trulance Immediate release",
+    "plecanatide",
+    "plecanatidum"
+   ],
+   "check_kept": [
+    "Guanilib",
+    "Plecanatida",
+    "SP-304",
+    "Trulance",
+    "Trulance Immediate release",
+    "plecanatide",
+    "plecanatidum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2,
+   "name": "amantadine",
+   "candidates": [
+    "amantadine",
+    "ADS-5102",
+    "ADS-8902",
+    "Amantadina",
+    "Amantidine",
+    "NSC-341865",
+    "TCMDC-125869",
+    "1-Adamantanamine",
+    "adamantan-1-amine",
+    "1-Adamantylamine",
+    "1-Aminoadamantane",
+    "Adamantanamine",
+    "Adamantylamine",
+    "Aminoadamantane",
+    "Adamantamine",
+    "Pk-merz",
+    "Amantadinum",
+    "Endantadine",
+    "Gocovri",
+    "Viregyt",
+    "GenAmantadine"
+   ],
+   "kept": [
+    "1-Adamantanamine",
+    "1-Adamantylamine",
+    "1-Aminoadamantane",
+    "ADS-5102",
+    "ADS-8902",
+    "Adamantamine",
+    "Adamantanamine",
+    "Adamantylamine",
+    "Amantadina",
+    "Amantadinum",
+    "Amantidine",
+    "Aminoadamantane",
+    "Endantadine",
+    "GenAmantadine",
+    "Gocovri",
+    "NSC-341865",
+    "Pk-merz",
+    "Viregyt",
+    "adamantan-1-amine",
+    "amantadine"
+   ],
+   "check_kept": [
+    "1-Adamantanamine",
+    "1-Adamantylamine",
+    "1-Aminoadamantane",
+    "ADS-5102",
+    "ADS-8902",
+    "Adamantamine",
+    "Adamantanamine",
+    "Adamantylamine",
+    "Amantadina",
+    "Amantadinum",
+    "Amantidine",
+    "Aminoadamantane",
+    "Endantadine",
+    "GenAmantadine",
+    "Gocovri",
+    "NSC-341865",
+    "Pk-merz",
+    "TCMDC-125869",
+    "Viregyt",
+    "adamantan-1-amine",
+    "amantadine"
+   ],
+   "same": false,
+   "jaccard": 0.9523809523809523,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2066,
+   "name": "berotralstat",
+   "candidates": [
+    "berotralstat",
+    "BCX7353",
+    "BCX-7353",
+    "berotralstatum"
+   ],
+   "kept": [
+    "BCX-7353",
+    "BCX7353",
+    "berotralstat",
+    "berotralstatum"
+   ],
+   "check_kept": [
+    "BCX-7353",
+    "BCX7353",
+    "berotralstat",
+    "berotralstatum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 12848,
+   "name": "en-3356",
+   "candidates": [
+    "en-3356",
+    "ASN001",
+    "EN3356",
+    "ASN-001",
+    "AQVYQEWAZCIHMU-UHFFFAOYSA-N",
+    "SB18844",
+    "PD161642",
+    "TS-08676",
+    "T30161"
+   ],
+   "kept": [
+    "AQVYQEWAZCIHMU-UHFFFAOYSA-N",
+    "EN3356",
+    "en-3356"
+   ],
+   "check_kept": [
+    "AQVYQEWAZCIHMU-UHFFFAOYSA-N",
+    "ASN-001",
+    "ASN001",
+    "EN3356",
+    "en-3356"
+   ],
+   "same": false,
+   "jaccard": 0.6,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 12940,
+   "name": "FLX-787",
+   "candidates": [
+    "FLX-787",
+    "FLX-787-ODT"
+   ],
+   "kept": [
+    "FLX-787",
+    "FLX-787-ODT"
+   ],
+   "check_kept": [
+    "FLX-787",
+    "FLX-787-ODT"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2223,
+   "name": "elinzanetant",
+   "candidates": [
+    "elinzanetant",
+    "BAY 3427080",
+    "NT-814",
+    "BAY-3427080",
+    "Bay3427080",
+    "NT814",
+    "Compound A"
+   ],
+   "kept": [
+    "BAY 3427080",
+    "BAY-3427080",
+    "Bay3427080",
+    "NT-814",
+    "NT814",
+    "elinzanetant"
+   ],
+   "check_kept": [
+    "BAY 3427080",
+    "BAY-3427080",
+    "Bay3427080",
+    "NT-814",
+    "NT814",
+    "elinzanetant"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 2229,
+   "name": "sepiapterin",
+   "candidates": [
+    "sepiapterin",
+    "CNSA-001",
+    "PTC923",
+    "L-sepiapterin",
+    "PTC-923",
+    "Sepiapterina",
+    "Sepiapterine",
+    "sepia-pterin"
+   ],
+   "kept": [
+    "CNSA-001",
+    "L-sepiapterin",
+    "PTC-923",
+    "PTC923",
+    "Sepiapterina",
+    "Sepiapterine",
+    "sepia-pterin",
+    "sepiapterin"
+   ],
+   "check_kept": [
+    "CNSA-001",
+    "L-sepiapterin",
+    "PTC-923",
+    "PTC923",
+    "Sepiapterina",
+    "Sepiapterine",
+    "sepia-pterin",
+    "sepiapterin"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2309,
+   "name": "isatuximab",
+   "candidates": [
+    "isatuximab",
+    "SAR650984",
+    "Isatuximab irfc",
+    "Isatuximab-irfc",
+    "SAR-650984",
+    "Sarclisa"
+   ],
+   "kept": [
+    "Isatuximab irfc",
+    "Isatuximab-irfc",
+    "SAR-650984",
+    "SAR650984",
+    "Sarclisa",
+    "isatuximab"
+   ],
+   "check_kept": [
+    "Isatuximab irfc",
+    "Isatuximab-irfc",
+    "SAR-650984",
+    "SAR650984",
+    "Sarclisa",
+    "isatuximab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2310,
+   "name": "sacituzumab govitecan",
+   "candidates": [
+    "sacituzumab govitecan",
+    "GS-0132",
+    "IMMU 132",
+    "IMMU-132",
+    "hRS7-SN38",
+    "HRS7SN38",
+    "Sacituzumab govitecan hziy",
+    "Sacituzumab govitecan-hziy",
+    "Trodelvy"
+   ],
+   "kept": [
+    "GS-0132",
+    "HRS7SN38",
+    "IMMU 132",
+    "IMMU-132",
+    "Sacituzumab govitecan hziy",
+    "Sacituzumab govitecan-hziy",
+    "Trodelvy",
+    "hRS7-SN38",
+    "sacituzumab govitecan"
+   ],
+   "check_kept": [
+    "GS-0132",
+    "HRS7SN38",
+    "IMMU 132",
+    "IMMU-132",
+    "Sacituzumab govitecan hziy",
+    "Sacituzumab govitecan-hziy",
+    "Trodelvy",
+    "hRS7-SN38",
+    "sacituzumab govitecan"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2330,
+   "name": "somapacitan",
+   "candidates": [
+    "somapacitan",
+    "NN-8640",
+    "NN8640",
+    "NNC-0195-0092",
+    "NNC-01950092",
+    "NNC0195-0092",
+    "NNC01950092",
+    "Sogroya",
+    "Somapacitan beco",
+    "Somapacitan-beco"
+   ],
+   "kept": [
+    "NN-8640",
+    "NN8640",
+    "NNC-0195-0092",
+    "NNC-01950092",
+    "NNC0195-0092",
+    "NNC01950092",
+    "Sogroya",
+    "Somapacitan beco",
+    "Somapacitan-beco",
+    "somapacitan"
+   ],
+   "check_kept": [
+    "NN-8640",
+    "NN8640",
+    "NNC-0195-0092",
+    "NNC-01950092",
+    "NNC0195-0092",
+    "NNC01950092",
+    "Sogroya",
+    "Somapacitan beco",
+    "Somapacitan-beco",
+    "somapacitan"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 13276,
+   "name": "bucillamine",
+   "candidates": [
+    "bucillamine",
+    "Bucilamina",
+    "Bucilant",
+    "Tiobutarit",
+    "Bucillaminum",
+    "DE019",
+    "Rimatil",
+    "Thiobutarit"
+   ],
+   "kept": [
+    "Bucilamina",
+    "Bucilant",
+    "Bucillaminum",
+    "DE019",
+    "Rimatil",
+    "Thiobutarit",
+    "Tiobutarit",
+    "bucillamine"
+   ],
+   "check_kept": [
+    "Bucilamina",
+    "Bucilant",
+    "Bucillaminum",
+    "DE019",
+    "Rimatil",
+    "Thiobutarit",
+    "Tiobutarit",
+    "bucillamine"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 13361,
+   "name": "ESR-114",
+   "candidates": [
+    "ESR-114"
+   ],
+   "kept": [
+    "ESR-114"
+   ],
+   "check_kept": [
+    "ESR-114"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2402,
+   "name": "lerodalcibep",
+   "candidates": [
+    "lerodalcibep",
+    "HST101",
+    "LIB003",
+    "Lerodalcibep-LIGA"
+   ],
+   "kept": [
+    "HST101",
+    "LIB003",
+    "Lerodalcibep-LIGA",
+    "lerodalcibep"
+   ],
+   "check_kept": [
+    "LIB003",
+    "Lerodalcibep-LIGA",
+    "lerodalcibep"
+   ],
+   "same": false,
+   "jaccard": 0.75,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 13511,
+   "name": "LY3475766",
+   "candidates": [
+    "LY3475766"
+   ],
+   "kept": [
+    "LY3475766"
+   ],
+   "check_kept": [
+    "LY3475766"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2707,
+   "name": "cyclosporine",
+   "candidates": [
+    "cyclosporine",
+    "CsA-PG",
+    "CyCol",
+    "CyclASol",
+    "FOV1101-00",
+    "HU007",
+    "HU00701",
+    "L-CsA",
+    "LX201",
+    "NOVA22007",
+    "NeuroSTAT",
+    "OTX-101",
+    "OTX-CSI",
+    "SHR8028",
+    "ST-0529",
+    "TJCS",
+    "TJO-087",
+    "27-400",
+    "ANTIBIOTIC S-7481F1",
+    "Atopica",
+    "Capimune",
+    "Capsorin",
+    "Cequa",
+    "Ciclosporin",
+    "Ciclosporin a",
+    "Ciclosporina",
+    "Ciclosporine",
+    "Ciclosporinum",
+    "Cyclosporin",
+    "Cyclosporin a",
+    "Cyclosporine a",
+    "Cyclosporine microemulsion",
+    "Deximune",
+    "Equoral",
+    "Gengraf",
+    "Ikervis",
+    "Mitogard",
+    "Neoplanta",
+    "Neoral",
+    "NSC-290193",
+    "OL-27-400",
+    "Optimmune",
+    "Ramihyphin a",
+    "Restasis",
+    "Restasis multidose",
+    "Sandimmun",
+    "Sandimmune",
+    "SANG-35",
+    "Sangcya",
+    "SDZ-OXL-400"
+   ],
+   "kept": [
+    "ANTIBIOTIC S-7481F1",
+    "Atopica",
+    "Capimune",
+    "Capsorin",
+    "Cequa",
+    "Ciclosporin",
+    "Ciclosporin a",
+    "Ciclosporina",
+    "Ciclosporine",
+    "Ciclosporinum",
+    "CsA-PG",
+    "CyCol",
+    "CyclASol",
+    "Cyclosporin",
+    "Cyclosporin a",
+    "Cyclosporine a",
+    "Cyclosporine microemulsion",
+    "Deximune",
+    "Equoral",
+    "FOV1101-00",
+    "Gengraf",
+    "HU007",
+    "HU00701",
+    "Ikervis",
+    "L-CsA",
+    "LX201",
+    "Mitogard",
+    "NOVA22007",
+    "NSC-290193",
+    "Neoplanta",
+    "Neoral",
+    "NeuroSTAT",
+    "OL-27-400",
+    "OTX-101",
+    "OTX-CSI",
+    "Optimmune",
+    "Ramihyphin a",
+    "Restasis",
+    "Restasis multidose",
+    "SANG-35",
+    "SDZ-OXL-400",
+    "SHR8028",
+    "ST-0529",
+    "Sandimmun",
+    "Sandimmune",
+    "Sangcya",
+    "TJO-087",
+    "cyclosporine"
+   ],
+   "check_kept": [
+    "ANTIBIOTIC S-7481F1",
+    "Atopica",
+    "Capimune",
+    "Capsorin",
+    "Cequa",
+    "Ciclosporin",
+    "Ciclosporin a",
+    "Ciclosporina",
+    "Ciclosporine",
+    "Ciclosporinum",
+    "CsA-PG",
+    "CyclASol",
+    "Cyclosporin",
+    "Cyclosporin a",
+    "Cyclosporine a",
+    "Cyclosporine microemulsion",
+    "Deximune",
+    "Equoral",
+    "FOV1101-00",
+    "Gengraf",
+    "HU007",
+    "HU00701",
+    "Ikervis",
+    "L-CsA",
+    "LX201",
+    "NOVA22007",
+    "NSC-290193",
+    "Neoral",
+    "OL-27-400",
+    "OTX-101",
+    "OTX-CSI",
+    "Optimmune",
+    "Ramihyphin a",
+    "Restasis",
+    "Restasis multidose",
+    "SANG-35",
+    "SDZ-OXL-400",
+    "SHR8028",
+    "ST-0529",
+    "Sandimmun",
+    "Sandimmune",
+    "Sangcya",
+    "TJO-087",
+    "cyclosporine"
+   ],
+   "same": false,
+   "jaccard": 0.9166666666666666,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 13984,
+   "name": "tabelecleucel",
+   "candidates": [
+    "tabelecleucel",
+    "ATA129",
+    "ATA-129",
+    "Ebvallo",
+    "EBV-CTL"
+   ],
+   "kept": [
+    "ATA-129",
+    "ATA129",
+    "Ebvallo",
+    "tabelecleucel"
+   ],
+   "check_kept": [
+    "ATA-129",
+    "ATA129",
+    "Ebvallo",
+    "tabelecleucel"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 27296,
+   "name": "QAX028",
+   "candidates": [
+    "QAX028"
+   ],
+   "kept": [
+    "QAX028"
+   ],
+   "check_kept": [
+    "QAX028"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 29114,
+   "name": "autologous bone marrow-derived mesenchymal stem cells",
+   "candidates": [
+    "Cellgram-CLI",
+    "Cellgram-ED",
+    "cellgram-spine",
+    "CELLGRAM",
+    "STR-01",
+    "STR01"
+   ],
+   "kept": [
+    "CELLGRAM",
+    "Cellgram-CLI",
+    "Cellgram-ED",
+    "STR-01",
+    "STR01",
+    "cellgram-spine"
+   ],
+   "check_kept": [
+    "CELLGRAM",
+    "Cellgram-CLI",
+    "Cellgram-ED",
+    "cellgram-spine"
+   ],
+   "same": false,
+   "jaccard": 0.6666666666666666,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 29290,
+   "name": "RO5095932",
+   "candidates": [
+    "RO5095932"
+   ],
+   "kept": [
+    "RO5095932"
+   ],
+   "check_kept": [
+    "RO5095932"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 29608,
+   "name": "GSK679586",
+   "candidates": [
+    "GSK679586"
+   ],
+   "kept": [
+    "GSK679586"
+   ],
+   "check_kept": [
+    "GSK679586"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 10164,
+   "name": "urabrelimab",
+   "candidates": [
+    "urabrelimab",
+    "SRF231",
+    "SRF-231"
+   ],
+   "kept": [
+    "SRF-231",
+    "SRF231",
+    "urabrelimab"
+   ],
+   "check_kept": [
+    "SRF-231",
+    "SRF231",
+    "urabrelimab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 10496,
+   "name": "pegrizeprument",
+   "candidates": [
+    "pegrizeprument",
+    "VEL-101",
+    "FR-104",
+    "PEGRISEPRUMENT",
+    "hCD28.3"
+   ],
+   "kept": [
+    "FR-104",
+    "PEGRISEPRUMENT",
+    "VEL-101",
+    "hCD28.3",
+    "pegrizeprument"
+   ],
+   "check_kept": [
+    "FR-104",
+    "PEGRISEPRUMENT",
+    "VEL-101",
+    "pegrizeprument"
+   ],
+   "same": false,
+   "jaccard": 0.8,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 3008,
+   "name": "lovotibeglogene autotemcel",
+   "candidates": [
+    "lovotibeglogene autotemcel",
+    "BB305",
+    "LentiGlobin BB305",
+    "bb1111",
+    "BB-1111",
+    "Lyfgenia"
+   ],
+   "kept": [
+    "BB-1111",
+    "BB305",
+    "LentiGlobin BB305",
+    "Lyfgenia",
+    "bb1111",
+    "lovotibeglogene autotemcel"
+   ],
+   "check_kept": [
+    "BB-1111",
+    "BB305",
+    "LentiGlobin BB305",
+    "Lyfgenia",
+    "bb1111",
+    "lovotibeglogene autotemcel"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 30313,
+   "name": "CYAD-101",
+   "candidates": [
+    "CYAD-101"
+   ],
+   "kept": [
+    "CYAD-101"
+   ],
+   "check_kept": [
+    "CYAD-101"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 30497,
+   "name": "tasquinimod",
+   "candidates": [
+    "tasquinimod",
+    "ABR-215050",
+    "TASQ",
+    "tasquinimodum"
+   ],
+   "kept": [
+    "ABR-215050",
+    "tasquinimod",
+    "tasquinimodum"
+   ],
+   "check_kept": [
+    "ABR-215050",
+    "tasquinimod",
+    "tasquinimodum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 31567,
+   "name": "levonadifloxacin",
+   "candidates": [
+    "levonadifloxacin",
+    "WCK 771",
+    "WCK771",
+    "Levonadifloxacina",
+    "Levonadifloxacine",
+    "WCK-771 FREE BASE",
+    "WCK771 FREE BASE",
+    "levonadifloxacino",
+    "levonadifloxacinum"
+   ],
+   "kept": [
+    "Levonadifloxacina",
+    "Levonadifloxacine",
+    "WCK 771",
+    "WCK-771 FREE BASE",
+    "WCK771",
+    "WCK771 FREE BASE",
+    "levonadifloxacin",
+    "levonadifloxacino",
+    "levonadifloxacinum"
+   ],
+   "check_kept": [
+    "Levonadifloxacina",
+    "Levonadifloxacine",
+    "WCK 771",
+    "WCK-771 FREE BASE",
+    "WCK771",
+    "WCK771 FREE BASE",
+    "levonadifloxacin",
+    "levonadifloxacino",
+    "levonadifloxacinum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 1395,
+   "name": "mecasermin rinfabate",
+   "candidates": [
+    "mecasermin rinfabate",
+    "OHB-607",
+    "Mecasermina rinfabato",
+    "Mecasermine rinfabate",
+    "RHIGF-I/RHIGFBP-3"
+   ],
+   "kept": [
+    "Mecasermina rinfabato",
+    "Mecasermine rinfabate",
+    "OHB-607",
+    "RHIGF-I/RHIGFBP-3",
+    "mecasermin rinfabate"
+   ],
+   "check_kept": [
+    "Mecasermina rinfabato",
+    "Mecasermine rinfabate",
+    "OHB-607",
+    "RHIGF-I/RHIGFBP-3",
+    "mecasermin rinfabate"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 32235,
+   "name": "OpRegen",
+   "candidates": [
+    "OpRegen"
+   ],
+   "kept": [
+    "OpRegen"
+   ],
+   "check_kept": [
+    "OpRegen"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 14184,
+   "name": "amg-925",
+   "candidates": [
+    "amg-925",
+    "AMG 925",
+    "FLX925",
+    "AMG925",
+    "FLX-925"
+   ],
+   "kept": [
+    "AMG 925",
+    "AMG925",
+    "FLX-925",
+    "FLX925",
+    "amg-925"
+   ],
+   "check_kept": [
+    "AMG 925",
+    "AMG925",
+    "FLX-925",
+    "FLX925",
+    "amg-925"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 14342,
+   "name": "dilpacimab",
+   "candidates": [
+    "dilpacimab",
+    "ABT-165",
+    "Abt 165",
+    "PR-1283233"
+   ],
+   "kept": [
+    "ABT-165",
+    "Abt 165",
+    "PR-1283233",
+    "dilpacimab"
+   ],
+   "check_kept": [
+    "ABT-165",
+    "Abt 165",
+    "PR-1283233",
+    "dilpacimab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 32436,
+   "name": "BTL-TML-HSV",
+   "candidates": [
+    "BTL-TML-HSV",
+    "BTL TML HSV"
+   ],
+   "kept": [
+    "BTL TML HSV",
+    "BTL-TML-HSV"
+   ],
+   "check_kept": [
+    "BTL TML HSV",
+    "BTL-TML-HSV"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 2068,
+   "name": "lumasiran",
+   "candidates": [
+    "lumasiran",
+    "ALN-GO1",
+    "AD-65585",
+    "ALN-65585",
+    "ALN-G01"
+   ],
+   "kept": [
+    "AD-65585",
+    "ALN-65585",
+    "ALN-G01",
+    "ALN-GO1",
+    "lumasiran"
+   ],
+   "check_kept": [
+    "AD-65585",
+    "ALN-65585",
+    "ALN-G01",
+    "ALN-GO1",
+    "lumasiran"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 27678,
+   "name": "ngx-267",
+   "candidates": [
+    "ngx-267",
+    "AF267B",
+    "NGX267",
+    "AF-267B",
+    "AF 267B",
+    "NGX 267"
+   ],
+   "kept": [
+    "AF 267B",
+    "AF-267B",
+    "AF267B",
+    "NGX 267",
+    "NGX267",
+    "ngx-267"
+   ],
+   "check_kept": [
+    "AF 267B",
+    "AF-267B",
+    "AF267B",
+    "NGX 267",
+    "NGX267",
+    "ngx-267"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 27920,
+   "name": "posizolid",
+   "candidates": [
+    "posizolid",
+    "AZD5847",
+    "AZD-2563",
+    "AZD2563",
+    "AZD-5847",
+    "AZD 2563",
+    "posizolidum",
+    "posizolid disodium phosphate"
+   ],
+   "kept": [
+    "AZD 2563",
+    "AZD-2563",
+    "AZD-5847",
+    "AZD2563",
+    "AZD5847",
+    "posizolid",
+    "posizolid disodium phosphate",
+    "posizolidum"
+   ],
+   "check_kept": [
+    "AZD 2563",
+    "AZD-2563",
+    "AZD-5847",
+    "AZD2563",
+    "AZD5847",
+    "posizolid",
+    "posizolid disodium phosphate",
+    "posizolidum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 28127,
+   "name": "ro-5045337",
+   "candidates": [
+    "ro-5045337",
+    "RG7112",
+    "RO5045337",
+    "RO5045377",
+    "MDM2 ANTAGONIST RO5045337",
+    "R 7112",
+    "R-7112",
+    "RG-7112",
+    "R7112",
+    "RG 7112",
+    "Ro 5045337"
+   ],
+   "kept": [
+    "MDM2 ANTAGONIST RO5045337",
+    "R 7112",
+    "R-7112",
+    "R7112",
+    "RG 7112",
+    "RG-7112",
+    "RG7112",
+    "RO5045337",
+    "Ro 5045337",
+    "ro-5045337"
+   ],
+   "check_kept": [
+    "MDM2 ANTAGONIST RO5045337",
+    "R 7112",
+    "R-7112",
+    "R7112",
+    "RG 7112",
+    "RG-7112",
+    "RG7112",
+    "RO5045337",
+    "Ro 5045337",
+    "ro-5045337"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 29799,
+   "name": "medi-547",
+   "candidates": [
+    "medi-547",
+    "1c1-mcmmaf",
+    "Medi 547",
+    "MEDI547"
+   ],
+   "kept": [
+    "1c1-mcmmaf",
+    "MEDI547",
+    "Medi 547",
+    "medi-547"
+   ],
+   "check_kept": [
+    "1c1-mcmmaf",
+    "MEDI547",
+    "Medi 547",
+    "medi-547"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 30391,
+   "name": "bms-919373",
+   "candidates": [
+    "bms-919373",
+    "XGKULQQVQWCASY-UHFFFAOYSA-N",
+    "XAC35382",
+    "BMS 919373"
+   ],
+   "kept": [
+    "BMS 919373",
+    "XAC35382",
+    "XGKULQQVQWCASY-UHFFFAOYSA-N",
+    "bms-919373"
+   ],
+   "check_kept": [
+    "BMS 919373",
+    "XAC35382",
+    "XGKULQQVQWCASY-UHFFFAOYSA-N",
+    "bms-919373"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 3808,
+   "name": "valoctocogene roxaparvovec",
+   "candidates": [
+    "valoctocogene roxaparvovec",
+    "BMN-270",
+    "BMN270",
+    "Roctavian",
+    "Valoctocogen roxaparvovec"
+   ],
+   "kept": [
+    "BMN-270",
+    "BMN270",
+    "Roctavian",
+    "Valoctocogen roxaparvovec",
+    "valoctocogene roxaparvovec"
+   ],
+   "check_kept": [
+    "BMN-270",
+    "BMN270",
+    "Roctavian",
+    "Valoctocogen roxaparvovec",
+    "valoctocogene roxaparvovec"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 31067,
+   "name": "tas-266",
+   "candidates": [
+    "tas-266",
+    "TAS266"
+   ],
+   "kept": [
+    "TAS266",
+    "tas-266"
+   ],
+   "check_kept": [
+    "TAS266",
+    "tas-266"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 33154,
+   "name": "bms-903452",
+   "candidates": [
+    "bms-903452",
+    "BMS 903452",
+    "SB16861",
+    "DA-51253",
+    "TS-09382"
+   ],
+   "kept": [
+    "BMS 903452",
+    "bms-903452"
+   ],
+   "check_kept": [
+    "BMS 903452",
+    "bms-903452"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4107,
+   "name": "iclaprim",
+   "candidates": [
+    "iclaprim",
+    "AR-100",
+    "Iclaprime",
+    "Ro-482622",
+    "RO 48-2622",
+    "RO-48-2622",
+    "AR 100",
+    "AR-100.001",
+    "iclaprimum"
+   ],
+   "kept": [
+    "AR 100",
+    "AR-100",
+    "AR-100.001",
+    "Iclaprime",
+    "RO 48-2622",
+    "RO-48-2622",
+    "Ro-482622",
+    "iclaprim",
+    "iclaprimum"
+   ],
+   "check_kept": [
+    "AR-100.001",
+    "Iclaprime",
+    "RO 48-2622",
+    "RO-48-2622",
+    "Ro-482622",
+    "iclaprim",
+    "iclaprimum"
+   ],
+   "same": false,
+   "jaccard": 0.7777777777777778,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 34067,
+   "name": "pivagabine",
+   "candidates": [
+    "pivagabine",
+    "CXB722",
+    "CXB-722",
+    "Pivagabina",
+    "pivagabin",
+    "N-trimethylacetyl GABA",
+    "pivagabinum",
+    "4-Pivalamidobutanoic acid"
+   ],
+   "kept": [
+    "4-Pivalamidobutanoic acid",
+    "CXB-722",
+    "CXB722",
+    "N-trimethylacetyl GABA",
+    "Pivagabina",
+    "pivagabin",
+    "pivagabine",
+    "pivagabinum"
+   ],
+   "check_kept": [
+    "4-Pivalamidobutanoic acid",
+    "CXB-722",
+    "CXB722",
+    "N-trimethylacetyl GABA",
+    "Pivagabina",
+    "pivagabin",
+    "pivagabine",
+    "pivagabinum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4424,
+   "name": "bevifimod",
+   "candidates": [
+    "bevifimod",
+    "PRTX-100",
+    "Iggsorb",
+    "Pansorbin",
+    "Protein a",
+    "STAPHYLOCOCCAL PROTEIN A"
+   ],
+   "kept": [
+    "PRTX-100",
+    "bevifimod"
+   ],
+   "check_kept": [
+    "PRTX-100",
+    "bevifimod"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 4906,
+   "name": "vupanorsen",
+   "candidates": [
+    "vupanorsen",
+    "AKCEA-ANGPTL3-LRx",
+    "IONIS ANGPTL3-LRx",
+    "IONIS-ANGPTL3-LRx",
+    "ISIS 703802",
+    "ISIS-703802"
+   ],
+   "kept": [
+    "AKCEA-ANGPTL3-LRx",
+    "IONIS ANGPTL3-LRx",
+    "IONIS-ANGPTL3-LRx",
+    "ISIS 703802",
+    "ISIS-703802",
+    "vupanorsen"
+   ],
+   "check_kept": [
+    "AKCEA-ANGPTL3-LRx",
+    "IONIS ANGPTL3-LRx",
+    "IONIS-ANGPTL3-LRx",
+    "ISIS 703802",
+    "ISIS-703802",
+    "vupanorsen"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5006,
+   "name": "albumin human",
+   "candidates": [
+    "albumin human",
+    "GLR1075",
+    "OrsHSA",
+    "OsrHSA",
+    "RU-101",
+    "Albumin",
+    "Albuminar-5",
+    "Albumin bovine",
+    "Albumin human. plasma-derived",
+    "Albumin. plasma-derived",
+    "Albumin test",
+    "Albumisol",
+    "Albutein",
+    "Allergen: bos d 6",
+    "Bovine albumin",
+    "Bovine serum albumin",
+    "Bsa for protein quantitation",
+    "Buminate",
+    "Fraction v",
+    "Human albumin",
+    "Human serum albumin",
+    "Normal human serum albumin",
+    "Plasbumin",
+    "Serum albumin",
+    "Serum albumin bovine"
+   ],
+   "kept": [
+    "Albumin human. plasma-derived",
+    "Albuminar-5",
+    "Albumisol",
+    "Albutein",
+    "Buminate",
+    "GLR1075",
+    "Human albumin",
+    "Human serum albumin",
+    "Normal human serum albumin",
+    "OrsHSA",
+    "OsrHSA",
+    "Plasbumin",
+    "RU-101",
+    "albumin human"
+   ],
+   "check_kept": [
+    "Albumin human. plasma-derived",
+    "Albuminar-5",
+    "Albumisol",
+    "Albutein",
+    "Buminate",
+    "GLR1075",
+    "Normal human serum albumin",
+    "OrsHSA",
+    "OsrHSA",
+    "Plasbumin",
+    "albumin human"
+   ],
+   "same": false,
+   "jaccard": 0.7857142857142857,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 5130,
+   "name": "plocabulin",
+   "candidates": [
+    "plocabulin",
+    "PM060184",
+    "J3.348.355D",
+    "Plocabulina",
+    "Plocabuline",
+    "Pm 060184",
+    "PM-060184",
+    "plocabulinum"
+   ],
+   "kept": [
+    "PM-060184",
+    "PM060184",
+    "Plocabulina",
+    "Plocabuline",
+    "Pm 060184",
+    "plocabulin",
+    "plocabulinum"
+   ],
+   "check_kept": [
+    "J3.348.355D",
+    "PM-060184",
+    "PM060184",
+    "Plocabulina",
+    "Plocabuline",
+    "Pm 060184",
+    "plocabulin",
+    "plocabulinum"
+   ],
+   "same": false,
+   "jaccard": 0.875,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5257,
+   "name": "efanesoctocog alfa",
+   "candidates": [
+    "efanesoctocog alfa",
+    "BIVV001",
+    "Altuviiio",
+    "Altuvoct",
+    "Efanesoctocog alfa-ehtl"
+   ],
+   "kept": [
+    "Altuviiio",
+    "Altuvoct",
+    "BIVV001",
+    "Efanesoctocog alfa-ehtl",
+    "efanesoctocog alfa"
+   ],
+   "check_kept": [
+    "Altuviiio",
+    "Altuvoct",
+    "BIVV001",
+    "Efanesoctocog alfa-ehtl",
+    "efanesoctocog alfa"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5326,
+   "name": "acumapimod",
+   "candidates": [
+    "acumapimod",
+    "BCT197",
+    "Bct-197",
+    "acumapimodum",
+    "compound A"
+   ],
+   "kept": [
+    "BCT197",
+    "Bct-197",
+    "acumapimod",
+    "acumapimodum"
+   ],
+   "check_kept": [
+    "BCT197",
+    "Bct-197",
+    "acumapimod",
+    "acumapimodum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 5364,
+   "name": "nomacopan",
+   "candidates": [
+    "nomacopan",
+    "rVA576",
+    "Coversin",
+    "rEV576",
+    "REV-576",
+    "REV-675",
+    "REV675",
+    "OmCI"
+   ],
+   "kept": [
+    "Coversin",
+    "OmCI",
+    "REV-576",
+    "nomacopan",
+    "rEV576",
+    "rVA576"
+   ],
+   "check_kept": [
+    "Coversin",
+    "OmCI",
+    "REV-576",
+    "nomacopan",
+    "rEV576",
+    "rVA576"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5452,
+   "name": "cvx-060",
+   "candidates": [
+    "cvx-060",
+    "PF-04856884",
+    "CVX060"
+   ],
+   "kept": [
+    "CVX060",
+    "PF-04856884",
+    "cvx-060"
+   ],
+   "check_kept": [
+    "CVX060",
+    "PF-04856884",
+    "cvx-060"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4754,
+   "name": "avoralstat",
+   "candidates": [
+    "avoralstat",
+    "BCX4161",
+    "BCX-4161",
+    "avoralstatum",
+    "BCX-V",
+    "Avoralstat Impurity 1"
+   ],
+   "kept": [
+    "BCX-4161",
+    "BCX4161",
+    "avoralstat",
+    "avoralstatum"
+   ],
+   "check_kept": [
+    "BCX-4161",
+    "BCX4161",
+    "avoralstat",
+    "avoralstatum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4812,
+   "name": "danvatirsen",
+   "candidates": [
+    "danvatirsen",
+    "AZD9150",
+    "IONIS-STAT3Rx",
+    "ISIS 481464",
+    "ISIS-STAT3Rx",
+    "AZD 9150",
+    "AZD-9150",
+    "ISIS-481464"
+   ],
+   "kept": [
+    "AZD 9150",
+    "AZD-9150",
+    "AZD9150",
+    "IONIS-STAT3Rx",
+    "ISIS 481464",
+    "ISIS-481464",
+    "ISIS-STAT3Rx",
+    "danvatirsen"
+   ],
+   "check_kept": [
+    "AZD 9150",
+    "AZD-9150",
+    "AZD9150",
+    "IONIS-STAT3Rx",
+    "ISIS 481464",
+    "ISIS-481464",
+    "ISIS-STAT3Rx",
+    "danvatirsen"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4866,
+   "name": "ladiratuzumab vedotin",
+   "candidates": [
+    "ladiratuzumab vedotin",
+    "SGN-LIV1A",
+    "SGNLIV1A",
+    "Ladiratuzumab vedotina",
+    "Ladiratuzumab vedotine"
+   ],
+   "kept": [
+    "Ladiratuzumab vedotina",
+    "Ladiratuzumab vedotine",
+    "SGN-LIV1A",
+    "SGNLIV1A",
+    "ladiratuzumab vedotin"
+   ],
+   "check_kept": [
+    "Ladiratuzumab vedotina",
+    "Ladiratuzumab vedotine",
+    "SGN-LIV1A",
+    "SGNLIV1A",
+    "ladiratuzumab vedotin"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5886,
+   "name": "tinlarebant",
+   "candidates": [
+    "tinlarebant",
+    "LBS-008",
+    "Bpn-14967",
+    "Tinlarebant?",
+    "A1DE1",
+    "LBS008"
+   ],
+   "kept": [
+    "Bpn-14967",
+    "LBS-008",
+    "LBS008",
+    "tinlarebant"
+   ],
+   "check_kept": [
+    "Bpn-14967",
+    "LBS-008",
+    "LBS008",
+    "tinlarebant"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 493,
+   "name": "melphalan",
+   "candidates": [
+    "melphalan",
+    "lpam",
+    "Alanine nitrogen mustard",
+    "Alkeran",
+    "CB 3025",
+    "CB-3025",
+    "L-pam",
+    "L-phenylalanine mustard",
+    "L-sarcolysin",
+    "Melfalan",
+    "NCI-C04853",
+    "NSC-241286",
+    "NSC-8806",
+    "Phenylalanine mustard",
+    "SK 15673",
+    "SK-15673",
+    "L-Sarcolysine",
+    "Levofalan",
+    "L-Sarkolysin",
+    "p-L-Sarcolysin",
+    "Levofolan",
+    "Levopholan",
+    "Melphalanum",
+    "Melfalano",
+    "Phenylalanine nitrogen mustard"
+   ],
+   "kept": [
+    "Alanine nitrogen mustard",
+    "Alkeran",
+    "CB 3025",
+    "CB-3025",
+    "L-Sarcolysine",
+    "L-Sarkolysin",
+    "L-pam",
+    "L-phenylalanine mustard",
+    "L-sarcolysin",
+    "Levofalan",
+    "Levofolan",
+    "Levopholan",
+    "Melfalan",
+    "Melfalano",
+    "Melphalanum",
+    "NCI-C04853",
+    "NSC-241286",
+    "NSC-8806",
+    "Phenylalanine mustard",
+    "Phenylalanine nitrogen mustard",
+    "SK 15673",
+    "SK-15673",
+    "melphalan",
+    "p-L-Sarcolysin"
+   ],
+   "check_kept": [
+    "Alkeran",
+    "CB 3025",
+    "CB-3025",
+    "L-Sarcolysine",
+    "L-Sarkolysin",
+    "L-pam",
+    "L-phenylalanine mustard",
+    "L-sarcolysin",
+    "Levofalan",
+    "Levofolan",
+    "Levopholan",
+    "Melfalan",
+    "Melfalano",
+    "Melphalanum",
+    "NCI-C04853",
+    "NSC-241286",
+    "NSC-8806",
+    "Phenylalanine mustard",
+    "Phenylalanine nitrogen mustard",
+    "SK 15673",
+    "SK-15673",
+    "lpam",
+    "melphalan",
+    "p-L-Sarcolysin"
+   ],
+   "same": false,
+   "jaccard": 0.92,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 6056,
+   "name": "onzemipgene parvec",
+   "candidates": [
+    "onzemipgene parvec",
+    "AAVCAGsCD59",
+    "JNJ-81201887"
+   ],
+   "kept": [
+    "AAVCAGsCD59",
+    "JNJ-81201887",
+    "onzemipgene parvec"
+   ],
+   "check_kept": [
+    "AAVCAGsCD59",
+    "JNJ-81201887",
+    "onzemipgene parvec"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 6437,
+   "name": "kvd-001",
+   "candidates": [
+    "kvd-001",
+    "KVD001"
+   ],
+   "kept": [
+    "KVD001",
+    "kvd-001"
+   ],
+   "check_kept": [
+    "KVD001",
+    "kvd-001"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 607,
+   "name": "colestipol",
+   "candidates": [
+    "colestipol",
+    "COLESTIPOL HYDROCHLORIDE",
+    "Colestid",
+    "Colestid flavored colestid",
+    "Colestid orange",
+    "Colestipol hcl",
+    "Flavored colestid",
+    "NSC-147003",
+    "Alseroxylon",
+    "Rautensin",
+    "Rauwiloid",
+    "Colestipolum",
+    "U 26597A",
+    "Egalin",
+    "Rau-Tab",
+    "POLY"
+   ],
+   "kept": [
+    "COLESTIPOL HYDROCHLORIDE",
+    "Colestid",
+    "Colestid flavored colestid",
+    "Colestid orange",
+    "Colestipol hcl",
+    "Colestipolum",
+    "Flavored colestid",
+    "NSC-147003",
+    "U 26597A",
+    "colestipol"
+   ],
+   "check_kept": [
+    "COLESTIPOL HYDROCHLORIDE",
+    "Colestid",
+    "Colestid flavored colestid",
+    "Colestid orange",
+    "Colestipol hcl",
+    "Colestipolum",
+    "Flavored colestid",
+    "NSC-147003",
+    "U 26597A",
+    "colestipol"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": true
+  },
+  {
+   "moiety_id": 6885,
+   "name": "curcumin",
+   "candidates": [
+    "curcumin",
+    "GZ17-6.02",
+    "LipoCurc",
+    "C.i. 75300",
+    "Ci 75300",
+    "Ci-75300",
+    "C.i. natural yellow 3",
+    "Curcumin e100",
+    "Diferuloylmethane",
+    "Haldar",
+    "INS-100",
+    "INS NO. 100",
+    "Jianghuangsu",
+    "Kacha haldi",
+    "Kurkum",
+    "Merita earth",
+    "Nanocurc",
+    "NSC-32982",
+    "NSC-687842",
+    "Turmeric yellow",
+    "Natural yellow 3",
+    "Curcumin I",
+    "Curcuma",
+    "Indian saffron",
+    "Gelbwurz",
+    "Yellow Ginger",
+    "Souchet",
+    "Haidr",
+    "Halad",
+    "Halud",
+    "Terra Merita",
+    "Safran d'Inde",
+    "Yo-Kin"
+   ],
+   "kept": [
+    "C.i. 75300",
+    "C.i. natural yellow 3",
+    "Ci 75300",
+    "Ci-75300",
+    "Curcumin I",
+    "Curcumin e100",
+    "Diferuloylmethane",
+    "GZ17-6.02",
+    "INS NO. 100",
+    "INS-100",
+    "LipoCurc",
+    "NSC-32982",
+    "NSC-687842",
+    "Nanocurc",
+    "Natural yellow 3",
+    "curcumin"
+   ],
+   "check_kept": [
+    "C.i. 75300",
+    "C.i. natural yellow 3",
+    "Ci 75300",
+    "Ci-75300",
+    "Curcumin I",
+    "Curcumin e100",
+    "Diferuloylmethane",
+    "INS NO. 100",
+    "Jianghuangsu",
+    "LipoCurc",
+    "NSC-32982",
+    "NSC-687842",
+    "Nanocurc",
+    "Natural yellow 3",
+    "Turmeric yellow",
+    "curcumin"
+   ],
+   "same": false,
+   "jaccard": 0.7777777777777778,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 6939,
+   "name": "rebamipide",
+   "candidates": [
+    "rebamipide",
+    "AD-203",
+    "MCT-SR",
+    "OPC-12759",
+    "Mucosta",
+    "NSC-758955",
+    "Proamipide",
+    "Rebamipida",
+    "Rebator",
+    "Rebamipidum",
+    "OPC 12759"
+   ],
+   "kept": [
+    "AD-203",
+    "Mucosta",
+    "NSC-758955",
+    "OPC 12759",
+    "OPC-12759",
+    "Proamipide",
+    "Rebamipida",
+    "Rebamipidum",
+    "Rebator",
+    "rebamipide"
+   ],
+   "check_kept": [
+    "Mucosta",
+    "NSC-758955",
+    "OPC 12759",
+    "OPC-12759",
+    "Proamipide",
+    "Rebamipida",
+    "Rebamipidum",
+    "Rebator",
+    "rebamipide"
+   ],
+   "same": false,
+   "jaccard": 0.9,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7012,
+   "name": "efgivanermin alfa",
+   "candidates": [
+    "efgivanermin alfa",
+    "MEDI1873",
+    "Efgivanermina alfa",
+    "Efgivanermine alfa",
+    "Medi 1873",
+    "MEDI-1873"
+   ],
+   "kept": [
+    "Efgivanermina alfa",
+    "Efgivanermine alfa",
+    "MEDI-1873",
+    "MEDI1873",
+    "Medi 1873",
+    "efgivanermin alfa"
+   ],
+   "check_kept": [
+    "Efgivanermina alfa",
+    "Efgivanermine alfa",
+    "MEDI-1873",
+    "MEDI1873",
+    "Medi 1873",
+    "efgivanermin alfa"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7084,
+   "name": "bapotulimab",
+   "candidates": [
+    "bapotulimab",
+    "BAY-1905254"
+   ],
+   "kept": [
+    "BAY-1905254",
+    "bapotulimab"
+   ],
+   "check_kept": [
+    "BAY-1905254",
+    "bapotulimab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7352,
+   "name": "edasalonexent",
+   "candidates": [
+    "edasalonexent",
+    "CAT-1004",
+    "Cat 1004",
+    "CAT1004",
+    "Edasalonexento"
+   ],
+   "kept": [
+    "CAT-1004",
+    "CAT1004",
+    "Cat 1004",
+    "Edasalonexento",
+    "edasalonexent"
+   ],
+   "check_kept": [
+    "CAT-1004",
+    "CAT1004",
+    "Cat 1004",
+    "Edasalonexento",
+    "edasalonexent"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7447,
+   "name": "radalbuvir",
+   "candidates": [
+    "radalbuvir",
+    "GS-9669",
+    "DA-57334"
+   ],
+   "kept": [
+    "GS-9669",
+    "radalbuvir"
+   ],
+   "check_kept": [
+    "DA-57334",
+    "GS-9669",
+    "radalbuvir"
+   ],
+   "same": false,
+   "jaccard": 0.6666666666666666,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7470,
+   "name": "sapanisertib",
+   "candidates": [
+    "sapanisertib",
+    "INK128",
+    "MLN0128",
+    "TAK-228",
+    "CB-228",
+    "Ink-128",
+    "Mln-0128",
+    "INK 128",
+    "sapanisertibum"
+   ],
+   "kept": [
+    "CB-228",
+    "INK 128",
+    "INK128",
+    "Ink-128",
+    "MLN0128",
+    "Mln-0128",
+    "TAK-228",
+    "sapanisertib",
+    "sapanisertibum"
+   ],
+   "check_kept": [
+    "CB-228",
+    "INK 128",
+    "INK128",
+    "Ink-128",
+    "MLN0128",
+    "Mln-0128",
+    "TAK-228",
+    "sapanisertib",
+    "sapanisertibum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7611,
+   "name": "darexaban",
+   "candidates": [
+    "darexaban",
+    "YM150",
+    "Tanexaban",
+    "YM-150",
+    "YM150 cpd",
+    "darexabanum"
+   ],
+   "kept": [
+    "YM-150",
+    "YM150",
+    "darexaban",
+    "darexabanum"
+   ],
+   "check_kept": [
+    "Tanexaban",
+    "YM-150",
+    "YM150",
+    "YM150 cpd",
+    "darexaban",
+    "darexabanum"
+   ],
+   "same": false,
+   "jaccard": 0.6666666666666666,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7676,
+   "name": "lanabecestat",
+   "candidates": [
+    "lanabecestat",
+    "AZD3293",
+    "LY3314814",
+    "AZD 3293",
+    "AZD-3293",
+    "LY-3314814"
+   ],
+   "kept": [
+    "AZD 3293",
+    "AZD-3293",
+    "AZD3293",
+    "LY-3314814",
+    "LY3314814",
+    "lanabecestat"
+   ],
+   "check_kept": [
+    "AZD 3293",
+    "AZD-3293",
+    "AZD3293",
+    "LY-3314814",
+    "LY3314814",
+    "lanabecestat"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7688,
+   "name": "volasertib",
+   "candidates": [
+    "volasertib",
+    "BI 6727",
+    "Bi-6727",
+    "BI6727"
+   ],
+   "kept": [
+    "BI 6727",
+    "BI6727",
+    "Bi-6727",
+    "volasertib"
+   ],
+   "check_kept": [
+    "BI 6727",
+    "BI6727",
+    "Bi-6727",
+    "volasertib"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 7754,
+   "name": "zoligratinib",
+   "candidates": [
+    "zoligratinib",
+    "CH5183284",
+    "Debio1347",
+    "FGFR INHIBITOR DEBIO 1347",
+    "Debio-1347",
+    "CH-5183284",
+    "Debio 1347",
+    "FF284",
+    "Debiopharm 1347",
+    "debio 1347-101"
+   ],
+   "kept": [
+    "CH-5183284",
+    "CH5183284",
+    "Debio 1347",
+    "Debio-1347",
+    "Debio1347",
+    "Debiopharm 1347",
+    "FF284",
+    "FGFR INHIBITOR DEBIO 1347",
+    "debio 1347-101",
+    "zoligratinib"
+   ],
+   "check_kept": [
+    "CH-5183284",
+    "CH5183284",
+    "Debio 1347",
+    "Debio-1347",
+    "Debio1347",
+    "Debiopharm 1347",
+    "FF284",
+    "FGFR INHIBITOR DEBIO 1347",
+    "zoligratinib"
+   ],
+   "same": false,
+   "jaccard": 0.9,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8106,
+   "name": "nonacog beta pegol",
+   "candidates": [
+    "nonacog beta pegol",
+    "Rebinyn",
+    "Refixia"
+   ],
+   "kept": [
+    "Rebinyn",
+    "Refixia",
+    "nonacog beta pegol"
+   ],
+   "check_kept": [
+    "Rebinyn",
+    "Refixia",
+    "nonacog beta pegol"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8177,
+   "name": "cinpanemab",
+   "candidates": [
+    "cinpanemab",
+    "BIIB054",
+    "BIIB-054",
+    "Ni-202"
+   ],
+   "kept": [
+    "BIIB-054",
+    "BIIB054",
+    "Ni-202",
+    "cinpanemab"
+   ],
+   "check_kept": [
+    "BIIB-054",
+    "BIIB054",
+    "Ni-202",
+    "cinpanemab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8185,
+   "name": "osoresnontrine",
+   "candidates": [
+    "osoresnontrine",
+    "14C-BI 409306",
+    "BI 409306",
+    "BI 498306",
+    "BI-409306",
+    "Osoresnontrina",
+    "SUB 166499"
+   ],
+   "kept": [
+    "14C-BI 409306",
+    "BI 409306",
+    "BI-409306",
+    "Osoresnontrina",
+    "SUB 166499",
+    "osoresnontrine"
+   ],
+   "check_kept": [
+    "14C-BI 409306",
+    "BI 409306",
+    "BI-409306",
+    "Osoresnontrina",
+    "SUB 166499",
+    "osoresnontrine"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8261,
+   "name": "modimelanotide",
+   "candidates": [
+    "modimelanotide",
+    "ABT-719",
+    "AP214",
+    "Ap-214",
+    "Modimelanotida",
+    "ZP-1480",
+    "ZP1480",
+    "AP 214"
+   ],
+   "kept": [
+    "ABT-719",
+    "AP 214",
+    "AP214",
+    "Ap-214",
+    "Modimelanotida",
+    "ZP-1480",
+    "ZP1480",
+    "modimelanotide"
+   ],
+   "check_kept": [
+    "ABT-719",
+    "AP 214",
+    "AP214",
+    "Ap-214",
+    "Modimelanotida",
+    "ZP-1480",
+    "ZP1480",
+    "modimelanotide"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8285,
+   "name": "semuloparin",
+   "candidates": [
+    "semuloparin",
+    "AVE5026",
+    "AVE-5026"
+   ],
+   "kept": [
+    "AVE-5026",
+    "AVE5026",
+    "semuloparin"
+   ],
+   "check_kept": [
+    "AVE-5026",
+    "AVE5026",
+    "semuloparin"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8389,
+   "name": "azd-2066",
+   "candidates": [
+    "azd-2066",
+    "AZD2066",
+    "Azd 2066",
+    "SXWHYTICXCLKDG-GFCCVEGCSA-N"
+   ],
+   "kept": [
+    "AZD2066",
+    "Azd 2066",
+    "SXWHYTICXCLKDG-GFCCVEGCSA-N",
+    "azd-2066"
+   ],
+   "check_kept": [
+    "AZD2066",
+    "Azd 2066",
+    "SXWHYTICXCLKDG-GFCCVEGCSA-N",
+    "azd-2066"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8407,
+   "name": "faldaprevir",
+   "candidates": [
+    "faldaprevir",
+    "BI 201335",
+    "BI 201335 NA",
+    "BI201335",
+    "BI-201335",
+    "faldaprevirum"
+   ],
+   "kept": [
+    "BI 201335",
+    "BI 201335 NA",
+    "BI-201335",
+    "BI201335",
+    "faldaprevir",
+    "faldaprevirum"
+   ],
+   "check_kept": [
+    "BI 201335",
+    "BI 201335 NA",
+    "BI-201335",
+    "BI201335",
+    "faldaprevir",
+    "faldaprevirum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8592,
+   "name": "bimagrumab",
+   "candidates": [
+    "bimagrumab",
+    "BYM338",
+    "LY3985863",
+    "BYM-338",
+    "O81t794r34"
+   ],
+   "kept": [
+    "BYM-338",
+    "BYM338",
+    "LY3985863",
+    "O81t794r34",
+    "bimagrumab"
+   ],
+   "check_kept": [
+    "BYM-338",
+    "BYM338",
+    "LY3985863",
+    "O81t794r34",
+    "bimagrumab"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8594,
+   "name": "pomaglumetad methionil",
+   "candidates": [
+    "pomaglumetad methionil",
+    "14C-LY2140023",
+    "LY2140023",
+    "LY-2140023",
+    "LY 2140023"
+   ],
+   "kept": [
+    "14C-LY2140023",
+    "LY 2140023",
+    "LY-2140023",
+    "LY2140023",
+    "pomaglumetad methionil"
+   ],
+   "check_kept": [
+    "14C-LY2140023",
+    "LY 2140023",
+    "LY-2140023",
+    "LY2140023",
+    "pomaglumetad methionil"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 8926,
+   "name": "RO5545965",
+   "candidates": [
+    "RO5545965"
+   ],
+   "kept": [
+    "RO5545965"
+   ],
+   "check_kept": [
+    "RO5545965"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 9455,
+   "name": "peposertib",
+   "candidates": [
+    "peposertib",
+    "M3814",
+    "MSC2490484A",
+    "NEDISERTIB",
+    "M-3814",
+    "MSC 2490484A",
+    "MSC-2490484A",
+    "peposertibum",
+    "M 3814"
+   ],
+   "kept": [
+    "M 3814",
+    "M-3814",
+    "M3814",
+    "MSC 2490484A",
+    "MSC-2490484A",
+    "MSC2490484A",
+    "NEDISERTIB",
+    "peposertib",
+    "peposertibum"
+   ],
+   "check_kept": [
+    "M 3814",
+    "M-3814",
+    "M3814",
+    "MSC 2490484A",
+    "MSC-2490484A",
+    "MSC2490484A",
+    "NEDISERTIB",
+    "peposertib",
+    "peposertibum"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 964,
+   "name": "flumazenil",
+   "candidates": [
+    "flumazenil",
+    "ERX-963",
+    "Anexate",
+    "Flumazepil",
+    "Lanexat",
+    "Mazicon",
+    "NSC-759193",
+    "RO-15-1788",
+    "RO-151788",
+    "RO 15-1788/000",
+    "RO-15-1788/000",
+    "RO-151788000",
+    "RO-1722",
+    "RO-41-8157",
+    "Romazicon",
+    "Flumazenilo",
+    "Flumazenilum",
+    "Ro 151788"
+   ],
+   "kept": [
+    "Anexate",
+    "ERX-963",
+    "Flumazenilo",
+    "Flumazenilum",
+    "Flumazepil",
+    "Lanexat",
+    "Mazicon",
+    "NSC-759193",
+    "RO 15-1788/000",
+    "RO-15-1788",
+    "RO-15-1788/000",
+    "RO-151788",
+    "RO-151788000",
+    "Ro 151788",
+    "Romazicon",
+    "flumazenil"
+   ],
+   "check_kept": [
+    "Anexate",
+    "ERX-963",
+    "Flumazenilo",
+    "Flumazenilum",
+    "Flumazepil",
+    "Lanexat",
+    "Mazicon",
+    "NSC-759193",
+    "RO 15-1788/000",
+    "RO-15-1788",
+    "RO-15-1788/000",
+    "RO-151788",
+    "RO-151788000",
+    "Ro 151788",
+    "Romazicon",
+    "flumazenil"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 31166,
+   "name": "herbal ingredient",
+   "candidates": [
+    "herbal ingredient"
+   ],
+   "kept": [
+    "herbal ingredient"
+   ],
+   "check_kept": [
+    "herbal ingredient"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 34377,
+   "name": "PSC-01",
+   "candidates": [
+    "PSC-01"
+   ],
+   "kept": [
+    "PSC-01"
+   ],
+   "check_kept": [
+    "PSC-01"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 4856,
+   "name": "EDP-514",
+   "candidates": [
+    "EDP-514"
+   ],
+   "kept": [
+    "EDP-514"
+   ],
+   "check_kept": [
+    "EDP-514"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 5921,
+   "name": "IK-175",
+   "candidates": [
+    "IK-175"
+   ],
+   "kept": [
+    "IK-175"
+   ],
+   "check_kept": [
+    "IK-175"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 9146,
+   "name": "NNC9204-1177",
+   "candidates": [
+    "NNC9204-1177"
+   ],
+   "kept": [
+    "NNC9204-1177"
+   ],
+   "check_kept": [
+    "NNC9204-1177"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  },
+  {
+   "moiety_id": 9784,
+   "name": "DN1508052-01",
+   "candidates": [
+    "DN1508052-01"
+   ],
+   "kept": [
+    "DN1508052-01"
+   ],
+   "check_kept": [
+    "DN1508052-01"
+   ],
+   "same": true,
+   "jaccard": 1.0,
+   "hand_case": false
+  }
+ ],
+ "exceptions": {
+  "rule": "Drugs whose INN is an endogenous or ubiquitous molecule are searched by product names and development or registry codes only; the molecule's own names denote the substance in general (literature.PRODUCT_NAMES_ONLY, vet task literature_name_vet_product).",
+  "drugs": {
+   "1233": "alcohol (dehydrated alcohol injection)",
+   "1164": "nitric oxide (inhaled)",
+   "31983": "ademetionine (S-adenosylmethionine)"
+  }
+ }
+}

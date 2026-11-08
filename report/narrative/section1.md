@@ -8,8 +8,6 @@ For development programs that entered a phase in 2008–2019 and were developed 
 
 {{SECTION1_STOP_CAUSES}}
 
-{{SECTION1_EFFICACY}}
-
 ### By disease area and modality
 
 ![Likelihood of approval by disease area](report/output/figures/loa_by_area.png)

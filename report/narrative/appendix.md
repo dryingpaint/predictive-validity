@@ -30,10 +30,6 @@ Per-source detail (who compiles each source, what this analysis takes from it, r
 * **Phase entry and outcome:** a program enters a phase when its first industry-sponsored trial of that phase starts. It *advanced* when a later-phase trial in its disease started (any sponsor) or the FDA approved the entity for the disease. A trial that has not started, because it is still not yet recruiting or its record went silent before its estimated start date, marks neither entry nor advancement. A program is *suspended* when none of its trials, nor the trial that marked its Phase 1 entry, has been active within {{section1.lag_months}} months of the snapshot ({{section1.snapshot}}); otherwise it is still running and *censored*. A suspended program that stop tracing found had gone on (appendix on stops) instead advanced, if a later-phase trial started anywhere by the snapshot, or is censored, if its development went on within {{section1.lag_months}} months of it; one that was never a development program, but an academic study using an approved drug as a research tool or a drug-interaction or dosing study, is left out. Programs whose entity was already approved for the disease are lifecycle programs and are left out; an approval dated only as before 2008 (the first approval letters read) is placed at the entity's first FDA approval, the earliest it could have happened. As in BIO's report, a phase a program skipped (Phase 1 straight to Phase 3, or approval from Phase 2) counts as a success in that phase, each phase's success rate is advanced ÷ (advanced + suspended), and LOA is their product. *US-developed* programs are those with a US-sited industry trial in the phase; a cohort with fewer than ten entities resolved in a phase gets no LOA.
 * **Approval:** FDA approval of the entity for the program's disease, a subtype or population of it, or a broader approved class that includes it, judged from the dated approval letters, original-approval dates and labels of every application of the entity (CDER and CBER).
 
-### Phase transitions
-
-![Share of Phase 1 entrants still in development at each phase, all programs and those developed in the US, against BIO 2011–2020](report/output/figures/phase_funnel.png)
-
 ### How LOA moves with each definition
 
 {{SENSITIVITY_TABLE}}
@@ -56,7 +52,21 @@ Three labels were also compared with the decisions their revised prompts replace
 
 {{APPENDIX_SECTION2}}
 
+### Can the evidence pick individual programs?
+
+Programs that entered Phase 1 in 2008–2016 were followed for ten years ({{section2.n_prediction|int}} programs, {{section2.n_prediction_positive|int}} approved), and models were tested on targets they had not seen.
+
+![Held-out AUC with and without the evidence lines, and the change in AUC when each line is removed](report/output/figures/prediction.png)
+
+{{SECTION2_PREDICTION}}
+
 {{APPENDIX_SECTION3}}
+
+### By endpoint
+
+![Endpoint classes](report/output/figures/s3_endpoints.png)
+
+{{SECTION3_ENDPOINTS}}
 
 {{APPENDIX_CATEGORIES}}
 
