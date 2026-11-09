@@ -69,3 +69,26 @@ colorectal-cancer-kdr-vegfr-inhibitors,crc-xenograft-rodent,xenograft_cell_line,
 malignant-pancreatic-neoplasm-map2k1-2-inhibitors,pdac-xenograft-pdx,xenograft_pdx,dose and efficacy entries mention the tox margin; the system is the PDX
 type-2-diabetes-mellitus-slc5a2-inhibitors,t2dm-rodent-diabetic,metabolic_disease_model,the dose entry quotes tox margins; the system is the diabetic rodent
 psoriasis-rorc-inverse-agonists,gsk-srica-human-skin,patient_material_ex_vivo,lesional psoriatic explants beside healthy sRICA skin
+duchenne-muscular-dystrophy-dmd,mdx-mouse-surrogate-pmo,genetic_disease_model,mdx dystrophin-null mouse dosed with a mouse-sequence surrogate
+fragile-x-syndrome-grm5-negative-modulators,dfmr1-drosophila,genetic_disease_model,dfmr1 mutant fly: a genetic disease model
+hiv-infectious-disease-hiv-integrase-insti-inhibitors,mouse-low-folate-dtg-ntd,tox_repeat_dose,developmental toxicology in a nutrient-sensitised pregnancy
+huntington-disease-htt-antisense-sirna,hd-mouse-aso-phenotype,genetic_disease_model,"YAC128, BACHD and R6/2 transgenic HD mice"
+huntington-disease-htt-antisense-sirna,wave-snp12-preclinical,cell_line_assay,allele-selective knockdown assays in cells
+hypopituitarism-ghr-agonists,hypox-rat-gh,metabolic_disease_model,surgical endocrine deficiency in the rat
+pituitary-dwarfism-ghr-agonists,hypox-rat-growth,metabolic_disease_model,surgical endocrine deficiency in the rat
+open-angle-glaucoma-ptger2-agonists,mouse-eyelash-growth,organ_pharmacology_animal,topical periocular pharmacology readout
+open-angle-glaucoma-ptger2-agonists,3t3l1-adipogenesis,cell_line_assay,mouse preadipocyte cell line
+opioid-induced-constipation-oprm1-antagonists,mouse-morphine-gi-transit-gastric-emptying,organ_pharmacology_animal,"opioid-evoked gut transit, as rat-opioid-gi-transit"
+opioid-induced-constipation-oprm1-antagonists,rat-gi-transit-vs-tailflick-window,organ_pharmacology_animal,"opioid-evoked gut transit against analgesia, as rat-opioid-gi-transit"
+opioid-induced-constipation-oprm1-antagonists,rat-loperamide-gastric-emptying,organ_pharmacology_animal,opioid-evoked gastric emptying
+opioid-induced-constipation-oprm1-antagonists,rat-morphine-dependent-withdrawal,behaviour_cns_model,"precipitated withdrawal, as mouse-morphine-dependent-withdrawal"
+osteoporosis-anti-sost-antibodies,ovx-rat-scl-ab,metabolic_disease_model,ovariectomy bone loss: an induced endocrine model
+osteoporosis-anti-sost-antibodies,ovx-rat-periodontitis-onj,inflammatory_disease_model,induced periodontitis on ovariectomy (jaw osteonecrosis risk)
+pulmonary-arterial-hypertension-ptgir-agonists,mct-rat,organ_pharmacology_animal,"monocrotaline rat, as rat-mct-hxsu-intratracheal"
+renal-cell-carcinoma-vegfr-multikinase-inhibitors,rat-gs9l-dcemri-perfusion,syngeneic_tumour,rat 9L gliosarcoma in rats
+sjogren-syndrome-pik3cd-inhibitors,adv5-sialadenitis-mouse,inflammatory_disease_model,virus-induced focal sialadenitis
+sjogren-syndrome-pik3cd-inhibitors,parsaclisib-nod-mouse,genetic_disease_model,spontaneous autoimmune NOD strains
+systemic-lupus-erythematosus-btk-inhibitors,nzbw-lupus-mouse,genetic_disease_model,spontaneous lupus-prone NZB/W F1 strain
+extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies,enktl-biopsy-pdl1-ihc,expression_classifier,PD-L1 IHC on tumour biopsies
+extranodal-nasal-nk-t-cell-lymphoma-anti-pdcd1-antibodies,enktl-biopsy-pdl1-selector,expression_classifier,PD-L1 IHC as a responder selector
+hodgkins-lymphoma-anti-pdcd1-antibodies,chl-9p24-fish-biopsy,pharmacogenetic_stratification,"9p24.1 FISH, as chl-9p24-pdl1-genetics"

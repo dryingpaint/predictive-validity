@@ -359,12 +359,13 @@
     "src": "https://doi.org/10.1016/j.intimp.2021.107904",
     "srcLabel": "Incyte NOD mouse 2021",
     "quote": "Parsaclisib treatment led to a dose-dependent, significant reduction in the histopathology score of salivary glands, based on lymphocytic infiltration (p < 0.0001)",
-    "note": "Incyte dosed spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice with parsaclisib: less salivary gland infiltration, lower saliva BAFF and anti-SSA/SSB.",
+    "note": "Incyte dosed spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice with parsaclisib: less salivary gland infiltration, lower saliva BAFF and anti-SSA/SSB. The NOD-mouse study was run after the Phase 2 primary completed (2019-12), so it predicted nothing before patients were measured; its only comparison is a retrodiction.",
     "short": "NOD mice: gland infiltrates reduced",
     "confidence": "medium",
     "judgement": "Opening entry dated from the IACUC protocol numbers (19-12-054/055, December 2019). The run came after the member trial NCT03627065 reached primary completion (2019-12-07), so the scored entry is flagged retrodiction.",
     "confidence_note": "Full text read (ScienceDirect). Paper published online 2021-06-29; it does not mention the Sjögren's trial.",
-    "model": "Spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice (parsaclisib)"
+    "model": "Spontaneous NOD.ShiLtJ and NOD.B10 Sjögren's mice (parsaclisib)",
+    "untested_reason": "no_prediction"
    },
    {
     "retrodiction": true,

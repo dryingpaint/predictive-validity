@@ -1,72 +1,86 @@
 area,rank,mondo_id,label,n,merged_from,programs,n_indications,n_specific,programs_general,largest_specific,largest_specific_programs
 allergy,1,MONDO:0011786,allergic rhinitis,39,MONDO:0005324,39,2,1,26,seasonal,20
-allergy,2,MONDO:0005642,atopic conjunctivitis,14,,14,1,0,14,,0
 allergy,3,MONDO:0005271,allergic disease,7,,7,2,1,7,Cat allergy,2
-allergy,4,MONDO:0005361,eosinophilic esophagitis,5,,5,1,0,5,,0
 autoimmune,1,MONDO:0008383,rheumatoid arthritis,96,,96,5,4,94,Seropositive,1
 autoimmune,2,MONDO:0005083,psoriasis,78,,78,1,0,78,,0
 autoimmune,3,MONDO:0005101,ulcerative colitis,70,,70,3,2,66,acute,5
-autoimmune,4,MONDO:0005011,Crohn disease,36,,36,4,3,35,Steroid-dependent,1
-cardiovascular,1,MONDO:0005252,heart failure,22,,22,2,1,22,acute,4
-cardiovascular,2,MONDO:0005044,hypertensive disorder,19,,19,5,4,18,resistant,2
-cardiovascular,3,MONDO:0004981,atrial fibrillation,16,,16,2,1,16,paroxysmal,1
-cardiovascular,4,MONDO:0005010,coronary artery disorder,14,,14,1,0,14,,0
+autoimmune,4,MONDO:0005011,Crohn disease,36,,36,4,3,35,Fibrostenotic,1
+autoimmune,5,MONDO:0007915,systemic lupus erythematosus,36,,36,3,2,36,Active,1
+autoimmune,7,MONDO:0010030,Sjogren syndrome,17,,17,1,0,17,,0
+cardiovascular,8,MONDO:0005542,acute coronary syndrome,9,,9,1,0,9,,0
 endocrine,1,MONDO:0005148,type 2 diabetes mellitus,125,MONDO:0005015,125,3,2,125,obese,2
 endocrine,2,MONDO:0005147,type 1 diabetes mellitus,31,,31,1,0,31,,0
 endocrine,3,MONDO:0005133,endometriosis,13,,13,2,1,13,relapsed,1
-endocrine,4,MONDO:0006964,secondary hyperparathyroidism,6,,6,1,0,6,,0
-gastroenterology,1,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,MONDO:0013209,76,3,2,76,"non-cirrhotic, fibrotic",1
-gastroenterology,2,MONDO:0005052,irritable bowel syndrome,18,,18,4,3,15,diarrhea-predominant,5
+endocrine,4,MONDO:0005152,hypopituitarism,6,,6,1,0,6,,0
+endocrine,5,MONDO:0006964,secondary hyperparathyroidism,6,,6,1,0,6,,0
+endocrine,10,MONDO:0006909,pituitary dwarfism,3,,3,1,0,3,,0
+gastroenterology,1,MONDO:0007027,metabolic dysfunction-associated steatohepatitis,76,MONDO:0013209,76,3,2,76,PCOS,1
 gastroenterology,3,MONDO:0005388,primary biliary cholangitis,15,,15,1,0,15,,0
-gastroenterology,4,MONDO:0007186,gastroesophageal reflux disease,11,,11,1,0,11,,0
-hematology,1,MONDO:0011382,sickle cell disease,19,,19,2,1,19,Hb-SC,1
+gastroenterology,5,MONDO:0007186,gastroesophageal reflux disease,11,,11,1,0,11,,0
+gastroenterology,10,MONDO:0100187,opioid-induced constipation,5,,5,1,0,5,,0
+gastroenterology,12,MONDO:0001684,exocrine pancreatic insufficiency,4,,4,1,0,4,,0
 hematology,2,MONDO:0010602,hemophilia A,15,,15,6,5,13,severe,5
 hematology,3,MONDO:0010604,hemophilia B,10,,10,2,1,10,inhibitor-positive,2
-hematology,4,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,9,,9,2,1,9,acute,1
-infectious_disease,1,MONDO:0005231,hepatitis C virus infection,52,,52,9,8,52,genotype 1,9
+hematology,5,MONDO:0100244,paroxysmal nocturnal hemoglobinuria,9,,9,2,1,9,acute,1
+infectious_disease,1,MONDO:0005231,hepatitis C virus infection,70,MONDO:0005354,70,9,8,70,genotype 1,11
 infectious_disease,2,MONDO:0005109,HIV infectious disease,32,,32,1,0,32,,0
-infectious_disease,3,MONDO:0005812,influenza,20,,20,3,2,18,H3N2,2
-infectious_disease,4,MONDO:0005366,chronic hepatitis B virus infection,18,,18,1,0,18,,0
+infectious_disease,3,MONDO:0005366,chronic hepatitis B virus infection,32,MONDO:0005344,32,2,1,32,atypical,1
 metabolic,1,MONDO:0021187,hyperlipidemia,33,,33,2,1,33,heterozygous,1
-metabolic,2,MONDO:0011122,obesity disorder,25,,25,1,0,25,,0
-metabolic,3,MONDO:0005347,hypertriglyceridemia,9,,9,2,1,9,severe,1
-metabolic,4,MONDO:0008300,Prader-Willi syndrome,6,,6,1,0,6,,0
+metabolic,4,MONDO:0001586,mucopolysaccharidosis type 1,6,MONDO:0011758,6,1,0,6,,0
+metabolic,6,MONDO:0009290,glycogen storage disease II,5,,5,2,1,5,late-onset,2
+metabolic,7,MONDO:0010526,Fabry disease,5,,5,1,0,5,,0
+metabolic,10,MONDO:0009656,mucopolysaccharidosis type 3B,4,,4,1,0,4,,0
 neurology,1,MONDO:0004975,Alzheimer disease,76,,76,4,3,73,early,13
-neurology,2,MONDO:0005180,Parkinson disease,41,,41,2,1,40,early,2
-neurology,3,MONDO:0006626,diabetic neuropathy,32,,32,1,0,32,,0
-neurology,4,MONDO:0005277,migraine disorder,29,,29,4,3,28,without aura,4
+neurology,4,MONDO:0005277,migraine disorder,29,,29,4,3,28,with aura,4
+neurology,6,MONDO:0005301,multiple sclerosis,26,,26,8,7,23,relapsed · Relapsing-remitting,13
+neurology,7,MONDO:0010679,Duchenne muscular dystrophy,24,,24,1,0,24,,0
+neurology,11,MONDO:0007739,Huntington disease,15,,15,1,0,15,,0
+neurology,16,MONDO:0010383,fragile X syndrome,8,,8,1,0,8,,0
+neurology,31,MONDO:0007571,primary erythermalgia,4,,4,2,1,3,Primary inherited,1
 oncology,1,MONDO:0005233,non-small cell lung carcinoma,191,,191,34,33,175,metastatic,75
 oncology,2,MONDO:0007254,breast cancer,129,,129,43,42,95,metastatic,84
 oncology,3,MONDO:0008315,prostate cancer,91,,91,19,18,64,metastatic,33
 oncology,4,MONDO:0005575,colorectal cancer,88,,88,16,15,62,metastatic,53
 oncology,5,MONDO:0018874,acute myeloid leukemia,79,,79,8,7,78,relapsed,29
 oncology,6,MONDO:0009831,malignant pancreatic neoplasm,74,,74,8,7,58,metastatic,43
-oncology,7,MONDO:0009693,plasma cell myeloma,73,,73,8,7,67,relapsed,36
-oncology,8,MONDO:0007256,hepatocellular carcinoma,73,,73,7,6,64,advanced,31
+oncology,7,MONDO:0007256,hepatocellular carcinoma,73,,73,7,6,64,advanced,31
+oncology,8,MONDO:0009693,plasma cell myeloma,73,,73,8,7,67,relapsed,36
 oncology,9,MONDO:0008170,ovarian cancer,58,,58,20,19,49,relapsed,19
 oncology,10,MONDO:0005105,melanoma,52,,52,9,8,44,metastatic,33
-oncology,11,MONDO:0018177,glioblastoma,51,,51,6,5,46,relapsed,16
 oncology,12,MONDO:0018881,myelodysplastic syndrome,44,,44,6,5,42,relapsed,7
 oncology,13,MONDO:0001056,gastric cancer,40,,40,12,11,35,advanced,16
 oncology,14,MONDO:0008433,small cell lung carcinoma,39,,39,6,5,33,metastatic,18
 oncology,15,MONDO:0018906,follicular lymphoma,34,,34,7,6,33,relapsed,16
-ophthalmology,1,MONDO:0006733,dry eye syndrome,51,,51,2,1,51,meibomian gland dysfunction,1
-ophthalmology,2,MONDO:0005150,age-related macular degeneration,27,,27,5,4,27,neovascular,3
-ophthalmology,3,MONDO:0004728,diabetic macular edema,21,,21,2,1,21,center-involved,1
-ophthalmology,4,MONDO:0005338,open-angle glaucoma,20,,20,2,1,20,Primary open angle,1
+oncology,16,MONDO:0018905,diffuse large B-cell lymphoma,31,,31,9,8,28,relapsed,13
+oncology,17,MONDO:0003864,chronic lymphocytic leukemia/small lymphocytic lymphoma,29,MONDO:0004948,29,7,6,23,B-cell,11
+oncology,18,MONDO:0005086,renal cell carcinoma,29,,29,9,8,19,metastatic,16
+oncology,22,MONDO:0004952,Hodgkins lymphoma,22,MONDO:0009348,22,9,8,20,relapsed,12
+oncology,23,MONDO:0044903,myelofibrosis,21,,21,6,5,21,Post-treated,3
+oncology,26,MONDO:0004967,acute lymphoblastic leukemia,17,MONDO:0004947;MONDO:0020511,17,5,4,12,B-cell,4
+oncology,27,MONDO:0018876,mantle cell lymphoma,15,,15,5,4,14,relapsed,10
+oncology,31,MONDO:0011719,gastrointestinal stromal tumor,12,,12,2,1,12,advanced,1
+oncology,35,MONDO:0011996,chronic myeloid leukemia,11,,11,3,2,11,relapsed,2
+oncology,39,MONDO:0017604,marginal zone lymphoma,9,,9,6,5,9,relapsed,6
+oncology,40,MONDO:0002974,cervical cancer,8,,8,5,4,8,relapsed,3
+oncology,44,MONDO:0015759,B-cell non-Hodgkin lymphoma,8,,8,2,1,7,relapsed,2
+oncology,46,MONDO:0100280,Waldenstrom macroglobulinemia,8,MONDO:0000432,8,2,1,7,relapsed,2
+oncology,53,MONDO:0019472,extranodal nasal NK/T cell lymphoma,6,,6,3,2,6,nasal type,2
+oncology,66,MONDO:0968974,large B-cell lymphoma,4,,4,2,1,4,relapsed,2
+ophthalmology,1,MONDO:0005150,age-related macular degeneration,52,MONDO:0005417;MONDO:0003004,52,6,5,43,neovascular,16
+ophthalmology,2,MONDO:0006733,dry eye syndrome,51,,51,2,1,51,meibomian gland dysfunction,1
+ophthalmology,3,MONDO:0005338,open-angle glaucoma,27,MONDO:0005041,27,3,2,27,Primary open angle,2
+ophthalmology,4,MONDO:0004728,diabetic macular edema,21,,21,2,1,21,center-involved,1
+ophthalmology,5,MONDO:0019200,retinitis pigmentosa,14,,14,3,2,12,X-linked,3
 other,1,MONDO:0004980,atopic eczema,81,,81,1,0,81,,0
 other,2,MONDO:0005178,osteoarthritis,65,MONDO:0005416,65,3,2,65,primary,1
-other,3,MONDO:0011438,acne,31,,31,1,0,31,,0
-other,4,MONDO:0005016,diabetic kidney disease,26,,26,1,0,26,,0
-psychiatry,1,MONDO:0002009,major depressive disorder,62,MONDO:0002050,62,7,6,58,treatment-resistant · 3L+,8
+other,5,MONDO:0005016,diabetic kidney disease,26,,26,1,0,26,,0
+other,6,MONDO:0005393,gout,20,,20,2,1,19,acute,2
+other,15,MONDO:0009179,recessive dystrophic epidermolysis bullosa,7,MONDO:0006543,7,3,2,6,Dominant dystrophic,1
+other,20,MONDO:0005298,osteoporosis,5,,5,2,1,5,Postmenopausal,2
 psychiatry,2,MONDO:0005090,schizophrenia,45,,45,6,5,44,acute,3
-psychiatry,3,MONDO:0007743,attention deficit-hyperactivity disorder,21,,21,1,0,21,,0
 psychiatry,4,MONDO:0013600,insomnia,11,,11,1,0,11,,0
-respiratory,1,MONDO:0004979,asthma,84,,84,7,6,82,allergic,6
+respiratory,1,MONDO:0004979,asthma,87,MONDO:0004784,87,7,6,83,allergic,7
 respiratory,2,MONDO:0005002,chronic obstructive pulmonary disease,46,,46,1,0,46,,0
 respiratory,3,MONDO:0009061,cystic fibrosis,43,,43,1,0,43,,0
-respiratory,4,MONDO:0800504,idiopathic pulmonary fibrosis,24,,24,1,0,24,,0
-urology,1,MONDO:0006624,overactive bladder,11,,11,1,0,11,,0
+respiratory,5,MONDO:0015924,pulmonary arterial hypertension,14,,14,1,0,14,,0
 urology,2,MONDO:0018301,interstitial cystitis,10,,10,1,0,10,,0
-urology,3,MONDO:0010811,benign prostatic hyperplasia,8,,8,1,0,8,,0
-urology,4,MONDO:0001780,premature ejaculation,5,,5,1,0,5,,0

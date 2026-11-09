@@ -86,9 +86,10 @@
     "status": "untested",
     "src": "https://doi.org/10.3389/fimmu.2024.1328368",
     "srcLabel": "Aleksandrova 2024",
-    "note": "Clinical-grade CD20 CAR T products expanded and released cytokines on CD20+ targets, antigen-dependently; no lymphoma patient data public yet.",
+    "note": "Clinical-grade CD20 CAR T products expanded and released cytokines on CD20+ targets, antigen-dependently; no lymphoma patient data public yet. The co-culture was run after lymphoma expansion data were public (ASH 2022), so it predicted nothing before patients were measured; its only comparison is a retrodiction.",
     "short": "CAR T expand on CD20 targets",
-    "quote": "All tested CAR T cell products were capable to translate into T cell activation upon engagement of CAR target cells, indicated by the increase in pro-inflammatory cytokine release and by the increase in CAR T cell amplification."
+    "quote": "All tested CAR T cell products were capable to translate into T cell activation upon engagement of CAR target cells, indicated by the increase in pro-inflammatory cytokine release and by the increase in CAR T cell amplification.",
+    "untested_reason": "no_prediction"
    },
    {
     "model_id": "mb-cart20-1-target-coculture",
