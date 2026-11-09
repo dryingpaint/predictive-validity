@@ -2,6 +2,22 @@
 
 <!-- Rendered by `python -m report` into REPORT_APPENDIX.md, the doc's "Appendix detail" tab. -->
 
+## Definitions
+
+What each cause of a stop, and each kind of evidence, means in the main tab.
+
+### Why programs stop: causes and subcauses
+
+Every stop has one cause; where a source gives more detail, one subcause from the cause's list, the first listed winning when more than one applies. A stop no source explains is described by what the drug and its sponsor did next.
+
+{{FAILURE_DEFINITIONS_TABLE}}
+
+### Lines of evidence
+
+Each program is scored for the evidence its targets had for its disease as of the year before it entered the phase.
+
+{{EVIDENCE_DEFINITIONS_TABLE}}
+
 ## Tables behind the figures
 
 The numbers each figure in the main tab draws, with the columns the figures leave out.

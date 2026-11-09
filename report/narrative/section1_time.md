@@ -8,3 +8,7 @@ Two features of the registry bear on these trends.
 * **Later entrants have had less time.** A program that entered a phase in 2008 has had eighteen years to resolve; one that entered in 2019, about seven. The share of programs still running rises in the latest years, most in Phase 3 (in parentheses below), so those years' rates rest on the programs that resolved first.
 
 {{YEAR_TABLE}}
+
+The table below shows what keeps a program counted as running, among programs that entered a phase in 2008–2019 and are still running at the snapshot. A program with no US approval keeps running as long as any trial in its disease is under way, so an extension or long-term study can hold it there after its development has in effect ended; such programs stay out of the success rates rather than counting as stops. They are {{section1.still_running.3.other_study_share|pct0}} of still-running Phase 3 programs; counting them as stopped instead would move the Phase 3 success rate from {{section1.still_running.3.rate|pct}} to {{section1.still_running.3.rate_if_stopped|pct}}, and the Phase 2 rate from {{section1.still_running.2.rate|pct}} to {{section1.still_running.2.rate_if_stopped|pct}}.
+
+{{RUNNING_TABLE}}

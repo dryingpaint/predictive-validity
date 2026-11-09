@@ -39,6 +39,12 @@ Of the entries with no predictive evidence, {{evidence_analysis.basis.rest.publi
 
 {{SECTION2_SPECIFIC}}
 
+### Biology or sponsor commitment?
+
+![A: the risk ratio of advancing from Phase 2 within four years for programs with genetic evidence for their disease, as reported, with sponsor size, with each large sponsor compared with itself, and within sponsor-size tiers. B: for each large sponsor with at least three programs of each kind, the share of its genetically supported Phase 2 programs that advanced against the share of its other programs. C: at the first randomised Phase 2 efficacy trial, the risk ratio of meeting the primary endpoint and of advancing after a met or a missed endpoint](report/output/figures/sponsor_confound.png)
+
+{{SECTION3_COMMITMENT}}
+
 ### Confirmatory hypotheses
 
 ![The pre-registered hypotheses](report/output/figures/s3_hypotheses.png)
@@ -47,7 +53,7 @@ Of the entries with no predictive evidence, {{evidence_analysis.basis.rest.publi
 
 ### By disease area
 
-![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
+![Relative success of human genetics and of mouse genetics by disease area](report/output/figures/genetics_by_area.png)
 
 {{SECTION2_AREA}}
 

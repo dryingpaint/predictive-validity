@@ -30,6 +30,7 @@ The unit is a development program: one molecular entity developed for one diseas
 | Year each evidence item became known where its own date is missing or a later revision (ClinVar record creation, IMPC releases, study dates) | `pipeline.evidence_dates` | `preclin.evidence_known_year`, `preclin.clinvar_accession_calibration` |
 | Open Targets associations; evidence rows dated by when they became known, with yearly score series rebuilt from them; mouse phenotypes | `pipeline.opentargets` | `preclin.ot_association`, `preclin.ot_evidence`, `preclin.ot_mouse_phenotype` |
 | Germline mechanism per target and disease; mouse-model orientation (both drug-blind) | `pipeline.targets mechanism`, `mouse` | `preclin.gene_disease_mechanism`, `preclin.mouse_model_relation` |
+| Why an engaged drug failed: other drugs on its target, then a verdict from the sources | `pipeline.target_history` | `preclin.stop_target_history` |
 | Analyses, label-quality checks, figures, report | `python -m report`: `report.section1`, `section2`, `section3`, `attribution`, `stop_causes`, `methods`, `quality`, `figures`, `render` | `report/output/`, `REPORT.md`, `REPORT_APPENDIX.md` |
 | Every classification as a Google Sheet, one tab per kind | `python -m report.sheet` | [Predictive validity: classifications](https://docs.google.com/spreadsheets/d/1_--uUMY_ZQcGkUZw1rDUMgl4MAS44k5348GPZrY4q0I) |
 

@@ -238,30 +238,105 @@ def loa_bars(csv, title, name, ref):
     save(fig, name)
 
 
+BY_AREA_LINES = {"genetic_any": "Human genetics", "animal_model": "Mouse genetics"}
+
+
 def genetics_by_area():
+    """Relative success of human genetics and of mouse genetics in each disease-area group, one panel each; a
+    group with too few programs carrying the line to estimate shows its count instead of a dot."""
     df = pd.read_csv(os.path.join(OUT, "section2", "relative_success_by_area.csv"))
-    df = df[df.feature.eq("genetic_any")].dropna(subset=["rs"]).sort_values("rs")
-    pooled = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature").loc["genetic_any"]
-    fig, ax = plt.subplots(figsize=(7, 0.42 * (len(df) + 1) + 1))
-    labels = [*df.group_label, "All areas"]
-    rs, lo, hi = [*df.rs, pooled.rs], [*df.rs_lo, pooled.rs_lo], [*df.rs_hi, pooled.rs_hi]
-    n = [*df.n_with, pooled.n_with]
+    pooled = pd.read_csv(os.path.join(OUT, "section2", "relative_success.csv")).set_index("feature")
+    groups = list(df[df.feature.eq("genetic_any")].sort_values("rs", na_position="first").group_label)
+    labels = [*groups, "All areas"]
     y = np.arange(len(labels))
-    ax.errorbar(np.log2(rs), y, xerr=[np.log2(rs) - np.log2(lo), np.log2(hi) - np.log2(rs)], fmt="none",
-                ecolor=INK2, elinewidth=1, capsize=0)
-    ax.scatter(np.log2(rs), y, s=[28] * len(df) + [60], marker="o", zorder=3,
-               color=[ACCENT] * len(df) + [INK], edgecolors="none")
-    ax.axvline(0, color=INK2, linewidth=1)
-    for yi in y:
-        ax.text(max(np.log2(hi[yi]), 0) + 0.08, yi, f"{rs[yi]:.2f}× (n={n[yi]:,})", va="center", color=INK2, fontsize=8)
-    ticks = [0.5, 1, 2, 4, 8]
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.set_yticks(y, labels, color=INK, fontsize=9)
-    ax.get_yticklabels()[-1].set_fontweight("bold")
-    style(ax)
-    ax.set_title("Relative success of human genetic evidence, by disease area (95% CI)", loc="left", color=INK,
-                 fontsize=10)
+    fig, axes = plt.subplots(1, len(BY_AREA_LINES), figsize=(10, 0.42 * len(labels) + 1.2), sharey=True,
+                             gridspec_kw={"wspace": 0.08})
+    for ax, (feature, title) in zip(axes, BY_AREA_LINES.items()):
+        d = df[df.feature.eq(feature)].set_index("group_label").reindex(groups)
+        p = pooled.loc[feature]
+        rs, lo, hi = [*d.rs, p.rs], [*d.rs_lo, p.rs_lo], [*d.rs_hi, p.rs_hi]
+        n = [*d.n_with.fillna(0).astype(int), int(p.n_with)]
+        for yi in y:
+            if pd.isna(rs[yi]):
+                ax.text(0.05, yi, f"too few to estimate (n={n[yi]:,})", va="center", color=MUTED, fontsize=8)
+                continue
+            last = yi == len(labels) - 1
+            ax.plot([np.log2(lo[yi]), np.log2(hi[yi])], [yi, yi], color=INK2, linewidth=1)
+            ax.scatter(np.log2(rs[yi]), yi, s=60 if last else 28, color=INK if last else ACCENT, zorder=3,
+                       edgecolors="none")
+            ax.text(max(np.log2(hi[yi]), 0) + 0.08, yi, f"{rs[yi]:.2f}× (n={n[yi]:,})", va="center", color=INK2,
+                    fontsize=8)
+        ax.axvline(0, color=INK2, linewidth=1)
+        ticks = [0.5, 1, 2, 4, 8]
+        ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
+        ax.set_xlim(np.log2(0.4), np.log2(14))
+        style(ax)
+        ax.set_title(title, loc="left", color=INK, fontsize=10)
+    axes[0].set_yticks(y, labels, color=INK, fontsize=9)
+    axes[0].get_yticklabels()[-1].set_fontweight("bold")
+    fig.suptitle("Relative success in reaching approval, by disease area (95% CI)", x=0.12, ha="left", color=INK,
+                 fontsize=10, y=1.02)
     save(fig, "genetics_by_area")
+
+
+COMMITMENT_ROWS = {  # (panel, label) -> row label, in drawing order; None leaves a gap
+    ("sponsor", "reported"): "As reported", ("sponsor", "size_tier"): "+ sponsor size",
+    ("sponsor", "own_baseline"): "+ each large sponsor compared with itself", None: None,
+    ("tier", "top20"): "20 largest sponsors only", ("tier", "21-100"): "Sponsors ranked 21–100 only",
+    ("tier", "smaller"): "Smaller sponsors only"}
+READOUT_ROWS = {"advanced_overall": "Advanced", "met_readout": "Met primary endpoint",
+                "advanced_if_met": "Advanced after a met endpoint", "advanced_if_not_met": "Advanced after a miss"}
+
+
+def sponsor_confound():
+    """The Phase 2 genetics risk ratio under sponsor adjustments and within sponsor-size tiers (A), each large
+    sponsor's genetically supported against other programs (B), and the advantage split at the Phase 2 readout (C)."""
+    c = pd.read_csv(os.path.join(OUT, "section3", "commitment.csv")).set_index(["panel", "label"])
+    w = pd.read_csv(os.path.join(OUT, "section3", "within_sponsor.csv"))
+    fig, (a, b, cc) = plt.subplots(1, 3, figsize=(16, 5.4), gridspec_kw={"width_ratios": [1, 0.9, 1], "wspace": 1.0})
+    rows, ticks, labels, y = [], [], [], len(COMMITMENT_ROWS)
+    for key, label in COMMITMENT_ROWS.items():
+        y -= 1
+        if key is None or key not in c.index or pd.isna(c.loc[key, "rr"]):
+            continue
+        r = c.loc[key]
+        rows.append((y, r.rr, r.lo, r.hi, INK if key[0] == "sponsor" and key[1] == "reported" else
+                     ACCENT if key[0] == "sponsor" else INK2, True))
+        ticks.append(y)
+        labels.append(f"{label} (n={int(r.n):,})")
+    forest(a, rows, lim=(0.5, 4))
+    a.set_yticks(ticks, labels, color=INK, fontsize=8)
+    a.set_xlabel("Risk ratio of advancing from Phase 2 within 4 years,\ngenetics for the disease vs none", color=INK2,
+                 fontsize=8)
+    a.set_title("A  Sponsor size", loc="left", color=INK, fontsize=10)
+    w = w.assign(gap=w.s4_with - w.s4_without).sort_values("gap").reset_index(drop=True)
+    for i, r in w.iterrows():
+        b.plot([100 * r.s4_without, 100 * r.s4_with], [i, i], color=ACCENT if r.gap > 0 else MUTED, linewidth=1.5,
+               alpha=0.6)
+        b.scatter(100 * r.s4_without, i, s=10 + (r.programs - r["with"]), color=BAR, edgecolor="white", zorder=3)
+        b.scatter(100 * r.s4_with, i, s=10 + 5 * r["with"], color=ACCENT, edgecolor="white", zorder=4)
+    b.set_yticks([])
+    b.set_xlim(-2, 102)
+    b.set_xlabel("Phase 2 programs that advanced within 4 years (%)", color=INK2, fontsize=8)
+    style(b)
+    b.set_title(f"B  Within each large sponsor: higher at {int((w.gap > 0).sum())} of {len(w)}", loc="left",
+                color=INK, fontsize=10)
+    b.scatter([], [], s=40, color=ACCENT, label="Genetic evidence for the disease")
+    b.scatter([], [], s=40, color=BAR, label="The sponsor's other programs")
+    b.legend(frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.12), ncol=2)
+    rows, ticks, labels = [], [], []
+    for i, (key, label) in enumerate(READOUT_ROWS.items()):
+        if ("readout", key) not in c.index or pd.isna(c.loc[("readout", key), "rr"]):
+            continue
+        r, yy = c.loc[("readout", key)], len(READOUT_ROWS) - 1 - i
+        rows.append((yy, r.rr, r.lo, r.hi, INK if key == "advanced_overall" else ACCENT, True))
+        ticks.append(yy)
+        labels.append(f"{label} (n={int(r.n):,})")
+    forest(cc, rows, lim=(0.5, 4))
+    cc.set_yticks(ticks, labels, color=INK, fontsize=8)
+    cc.set_xlabel("Risk ratio, genetics for the disease vs none", color=INK2, fontsize=8)
+    cc.set_title("C  At the first Phase 2 efficacy readout", loc="left", color=INK, fontsize=10)
+    save(fig, "sponsor_confound")
 
 
 def dose_response():
@@ -740,6 +815,8 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success.csv")):
         dose_response()
         prediction()
+    if os.path.exists(os.path.join(OUT, "section3", "commitment.csv")):
+        sponsor_confound()
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
