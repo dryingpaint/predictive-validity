@@ -110,11 +110,12 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "contra",
-   "proposed_year": 2014,
-   "rule": "12",
-   "note": "Quote verbatim; Hickinson 2010 full text silent on tolerability. Mice show EGFR-TKI diarrhoea; MINT (diarrhoea 40/51 vs 12 %, rash 32/48 vs 12 %) transfers for safety under decision 12. Track B scores identical silence contra; add 2014 contra.",
+   "proposed_year": 2013,
+   "rule": "4",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2014 -> 2013; src -> Tjulandin 2014 (10.1007/s10637-013-9963-6, PMID 23589215, epub 2013-04-16, print 2014; breast 5/28). Quote verbatim in abstract; DLTs grade 3 rash, grade 3-4 diarrhoea. Imported_from applies (decision 12). | superseded: corrected (): Quote verbatim; Hickinson 2010 full text silent on tolerability. Mice show EGFR-TKI diarrhoea; MINT (diarrhoea 40/51 vs 12 %, rash 32/48 vs 12 %) transfers for safety under decision 12. Track B scores identical silence contra; add 2014 contra.",
    "adjudicated_status": "contra",
-   "adjudication_note": "Decision 4: askable silence contradicted. Dosed mice can show EGFR-TKI diarrhoea and skin harm (the draft's own Track B safety#3 scores identical silence contra); MINT transfers for safety under decision 12 with imported_from. Contra, 2014."
+   "adjudication_note": "Rule 6 dating plus askable-silence contra (first-pass adjudication): Tjulandin 2014 phase 1 (epub 2013-04-16; DLTs grade 3 rash, grade 3-4 diarrhoea, breast 5/28) is the earliest public harm; contra 2013, imported_from set."
   },
   {
    "cell": "safety",
@@ -205,21 +206,6 @@
    "rule": "12",
    "note": "Johnston 2016 abstract quote verbatim (non-breaking spaces only); NCT01151215 results 2014-05-08, after Morrison epub 2014-02-20. Weeks of daily gavage could show diarrhoea or weight loss: askable silence contradicted, contra holds. Set imported_from (MINT, sibling population, decision 12).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "safety",
-   "index": 1,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "4",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2014 -> 2013; src -> Tjulandin 2014 (10.1007/s10637-013-9963-6, PMID 23589215, epub 2013-04-16, print 2014; breast 5/28). Quote verbatim in abstract; DLTs grade 3 rash, grade 3-4 diarrhoea. Imported_from applies (decision 12).",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Rule 6 dating plus askable-silence contra (first-pass adjudication): Tjulandin 2014 phase 1 (epub 2013-04-16; DLTs grade 3 rash, grade 3-4 diarrhoea, breast 5/28) is the earliest public harm; contra 2013, imported_from set."
   }
  ],
  "missing": [

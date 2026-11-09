@@ -65,11 +65,17 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "fda.gov/media/109149 is the CBER BLA clinical review memo (STN 125643); 'Grade 1 or 2 hypogammaglobulinemia occurred in 16/108 (15%) subjects' verbatim; section 4.3 'mice did not show any overt signs of toxicity'. Tier 2 correct."
+   "proposed_status": "same",
+   "proposed_year": 2010,
+   "rule": "Evidence rule 6 (earliest public comparison)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Fields year and epub_year 2017->2010: Kochenderfer 2010 Blood (doi 10.1182/blood-2010-04-281931, PMID 20668228, epub 2010-07-28) verbatim: 'serum immunoglobulins decreased to very low levels after treatment'. Mouse model_src epub 2010-07-14 precedes it; status stays same. | superseded: confirmed (): fda.gov/media/109149 is the CBER BLA clinical review memo (STN 125643); 'Grade 1 or 2 hypogammaglobulinemia occurred in 16/108 (15%) subjects' verbatim; section 4.3 'mice did not show any overt signs of toxicity'. Tier 2 correct.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same either way. Evidence rule 6 plus safety transfer rule (imported_from): Kochenderfer 2010 Blood (epub 2010-07-28, same NCI product) shows very low immunoglobulins after the mouse paper; earliest public comparison is 2010."
   },
   {
    "cell": "efficacy",
@@ -150,21 +156,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "PMID 29808007 abstract has quote verbatim; model explicitly built to reproduce clinic-observed CRS and neurotoxicity, so retro (retrodiction true) is correct."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2010,
-   "rule": "Evidence rule 6 (earliest public comparison)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Fields year and epub_year 2017->2010: Kochenderfer 2010 Blood (doi 10.1182/blood-2010-04-281931, PMID 20668228, epub 2010-07-28) verbatim: 'serum immunoglobulins decreased to very low levels after treatment'. Mouse model_src epub 2010-07-14 precedes it; status stays same.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same either way. Evidence rule 6 plus safety transfer rule (imported_from): Kochenderfer 2010 Blood (epub 2010-07-28, same NCI product) shows very low immunoglobulins after the mouse paper; earliest public comparison is 2010."
   }
  ],
  "missing": [

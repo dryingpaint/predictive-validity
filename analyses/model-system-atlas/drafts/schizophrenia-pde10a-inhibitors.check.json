@@ -44,14 +44,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "dose table row 'reached, failed, abandoned'",
-   "note": "DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread).",
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "Evidence rule: cell dated to the earliest public source stating the comparison",
+   "note": "Field year 2019->2013 (src doi 10.1016/j.neuropharm.2013.10.015, Uthayathas 2014, PMC3934827 full text; epub_year 2013 per Crossref 2013-10-25, print_year 2014). Verbatim: MP-10 Cp,u ~0.19/0.89 nM bracketing rat CAR IC50 0.16 nM 'similar to those examined in the MP-10 Phase 2A study'. Status same. | superseded: confirmed (): DeMartinis 2019 (PMID 31205187) quote verbatim; Walling 2019 says exposures 'seemed adequate for binding/inhibiting PDE10A'. model_src Schmidt 2008 abstract states no exposure target; a PF-02545920 occupancy-efficacy paper would be a better model side. The 2012 SIRS poster may date this earlier (unread).",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): patient exposures sat inside the predicted efficacious range"
+   "adjudication_note": "Rule 6 and dose table 'target reached': Uthayathas (epub 2013-10, PMC3934827) states rat CAR IC50 0.16 nM and Cp,u 0.19-0.89 nM 'similar to those examined in the MP-10 Phase 2A study'. Same, dated 2013."
   },
   {
    "cell": "efficacy",
@@ -140,21 +143,6 @@
    "rule": "dose/efficacy table 'reached, failed, abandoned'; Evidence rule 1 (pairing)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "Macek 2019 (PMID 30190165) quote verbatim (abstract). NCT02477020 results first posted 2017-09-29 confirmed. Macek 2020 says all Go criteria met and phase 1 'showed some consistent evidence of antipsychotic activity'. Pairing, contra holds; 2017 correct."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "Evidence rule: cell dated to the earliest public source stating the comparison",
-   "note": "Field year 2019->2013 (src doi 10.1016/j.neuropharm.2013.10.015, Uthayathas 2014, PMC3934827 full text; epub_year 2013 per Crossref 2013-10-25, print_year 2014). Verbatim: MP-10 Cp,u ~0.19/0.89 nM bracketing rat CAR IC50 0.16 nM 'similar to those examined in the MP-10 Phase 2A study'. Status same.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 and dose table 'target reached': Uthayathas (epub 2013-10, PMC3934827) states rat CAR IC50 0.16 nM and Cp,u 0.19-0.89 nM 'similar to those examined in the MP-10 Phase 2A study'. Same, dated 2013."
   }
  ],
  "missing": [

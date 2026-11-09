@@ -17,12 +17,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2009,
+   "checked_by": "CHECKER_BRIEF / models",
    "rule": "1",
-   "note": "Full text (PMC2739635) read: paper states a mouse-derived 0.21 umol/L PAR-inhibition target, reached in all cohorts, and compares xenograft vs patient recovery, so comparison_stated should be true. Cohort had no breast patients and included lymphomas; 'solid tumours' is wrong."
+   "note": "Field comparison_stated: false -> true. Kummar 2009 full text (PMC2739635) sets the mouse-derived 0.21 umol/L PAR target, reports it exceeded, and states >90% PAR inhibition with 24 h recovery 'in both xenograft models and the clinical trial'. Status and year unchanged. | superseded: confirmed (): Full text (PMC2739635) read: paper states a mouse-derived 0.21 umol/L PAR-inhibition target, reached in all cohorts, and compares xenograft vs patient recovery, so comparison_stated should be true. Cohort had no breast patients and included lymphomas; 'solid tumours' is wrong.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 1: Kummar 2009 full text (PMC2739635) says >90% PAR inhibition with 24 h recovery 'in both xenograft models and the clinical trial', a stated comparison. comparison_stated true; status same unchanged."
   },
   {
    "cell": "dose",
@@ -37,12 +42,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
+   "proposed_status": "same",
+   "proposed_year": 2009,
+   "checked_by": "CHECKER_BRIEF / models",
    "rule": "4",
-   "note": "Same holds: Kummar states the preclinical plasma target (0.21 umol/L, mouse PAR studies) was exceeded at every dose. Set comparison_stated true; magnitude could be within_2x on Cmax. Patients not breast, allowed for dose."
+   "note": "Field comparison_stated: false -> true. Kummar 2009 (PMC2739635): 'The target Cmax of 0.21 umol/L was exceeded in the first patient cohort', target defined from mouse tumour PAR studies, so the paper states the model comparison. Status and year unchanged. | superseded: confirmed (): Same holds: Kummar states the preclinical plasma target (0.21 umol/L, mouse PAR studies) was exceeded at every dose. Set comparison_stated true; magnitude could be within_2x on Cmax. Patients not breast, allowed for dose.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 1 and dose rule: Kummar 2009 full text defines the 0.21 umol/L target from mouse tumour PAR studies and reports it exceeded in the first cohort. comparison_stated true; same unchanged."
   },
   {
    "cell": "efficacy",
@@ -363,36 +373,6 @@
    "rule": "10",
    "note": "Quote verbatim. Built after I-SPY 2, BrighTNess and Geyer 2022: retro, not same. Full text: sensitive TORG146 responded to cisplatin with or without veliparib; concordance is with a patient-trained classifier, so low confidence and partial are right.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2009,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "1",
-   "note": "Field comparison_stated: false -> true. Kummar 2009 full text (PMC2739635) sets the mouse-derived 0.21 umol/L PAR target, reports it exceeded, and states >90% PAR inhibition with 24 h recovery 'in both xenograft models and the clinical trial'. Status and year unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 1: Kummar 2009 full text (PMC2739635) says >90% PAR inhibition with 24 h recovery 'in both xenograft models and the clinical trial', a stated comparison. comparison_stated true; status same unchanged."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2009,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "4",
-   "note": "Field comparison_stated: false -> true. Kummar 2009 (PMC2739635): 'The target Cmax of 0.21 umol/L was exceeded in the first patient cohort', target defined from mouse tumour PAR studies, so the paper states the model comparison. Status and year unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 1 and dose rule: Kummar 2009 full text defines the 0.21 umol/L target from mouse tumour PAR studies and reports it exceeded in the first cohort. comparison_stated true; same unchanged."
   }
  ],
  "missing": [

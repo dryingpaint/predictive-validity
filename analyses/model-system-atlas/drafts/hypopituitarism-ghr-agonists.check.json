@@ -133,60 +133,6 @@
   {
    "cell": "engagement",
    "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "Each cell opens at model_first_use_year with status untested",
-   "note": "Europe PMC PMID 26713839 (epub 2016-01-18); quote verbatim in abstract. Opening untested at 2016, class level, downstream IGF-1 readout correct.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 6,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "retrodiction: model built or run after the clinic knew the answer is retro",
-   "note": "Strasburger PMID 27932411 epub 2016-12-08, quote verbatim; model_src abstract checked. Monkey PK/PD/tox was IND-enabling (pre-FIH 2009), so prospective despite 2016 publication; same, year 2016 stands.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "dose",
-   "index": 5,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "dose: no exposure/regimen target or margin stated -> untested (no_prediction)",
-   "note": "Quote verbatim in Hershkovitz abstract; animal-to-animal exposure match states no human dose or margin. untested/no_prediction correct.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "untested_reason no_prediction: no named harm",
-   "note": "Quote verbatim in abstract; general tolerability names no harm. untested/no_prediction correct; lipoatrophy case series not scored, consistent with existing rule question.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "safety",
-   "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "EPAR text (pdftotext) has the 43.1% vs 25.2% ISR quote and 'no reports of lipoatrophy'; s.2.5.4.3/2.5.4.7: 26-week monkey injection-site infiltration only, alike with somatropin, reversible. Tox preceded phase 3, filed in MAA; same, partial holds."
-  },
-  {
-   "cell": "engagement",
-   "index": 5,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -195,7 +141,7 @@
    "proposed_year": 2016,
    "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged.",
+   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Europe PMC PMID 26713839 (epub 2016-01-18); quote verbatim in abstract. Opening untested at 2016, class level, downstream IGF-1 readout correct.",
    "adjudicated_status": "untested",
    "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
   },
@@ -210,7 +156,7 @@
    "proposed_year": 2016,
    "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged.",
+   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Strasburger PMID 27932411 epub 2016-12-08, quote verbatim; model_src abstract checked. Monkey PK/PD/tox was IND-enabling (pre-FIH 2009), so prospective despite 2016 publication; same, year 2016 stands.",
    "adjudicated_status": "same",
    "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
   },
@@ -225,7 +171,7 @@
    "proposed_year": 2016,
    "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged.",
+   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Quote verbatim in Hershkovitz abstract; animal-to-animal exposure match states no human dose or margin. untested/no_prediction correct.",
    "adjudicated_status": "untested",
    "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true. untested_reason no_prediction kept (rule 5)."
   },
@@ -240,9 +186,19 @@
    "proposed_year": 2016,
    "rule": "DRAFTER_BRIEF rule 8: model_filed must be sourced from the regulator review, not left null",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged.",
+   "note": "Field model_filed: null -> true. EMA Ngenla EPAR EMA/15620/2022 s.2.5.4 (p.24-27) reports rhesus monkey single/repeat-dose PK and GLP 4-week and 26-week repeat-dose tox filed in the somatrogon MAA. Status and year unchanged. | superseded: confirmed (CHECKER_BRIEF / models): Quote verbatim in abstract; general tolerability names no harm. untested/no_prediction correct; lipoatrophy case series not scored, consistent with existing rule question.",
    "adjudicated_status": "untested",
    "adjudication_note": "Status unchanged; drafter and checker agree. Correction is field-only: rule 8 requires model_filed from the regulator review; Ngenla EPAR s.2.5.4 lists the rhesus PK/tox in the MAA, so model_filed true."
+  },
+  {
+   "cell": "safety",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "EPAR text (pdftotext) has the 43.1% vs 25.2% ISR quote and 'no reports of lipoatrophy'; s.2.5.4.3/2.5.4.7: 26-week monkey injection-site infiltration only, alike with somatropin, reversible. Tox preceded phase 3, filed in MAA; same, partial holds."
   }
  ],
  "missing": [

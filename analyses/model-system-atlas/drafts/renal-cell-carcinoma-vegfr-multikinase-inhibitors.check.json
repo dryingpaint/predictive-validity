@@ -51,11 +51,17 @@
   {
    "cell": "efficacy",
    "index": 3,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Matsuki 2017 (PMID 28107584) quote verbatim; abstract opens from the phase II result, so retrodiction/retro and comparison_stated true hold. See rule question on retro after same on one track."
+   "proposed_status": "retro",
+   "proposed_year": 2016,
+   "rule": "year = first public date of the model-patient comparison",
+   "note": "Field year: 2017 -> 2016. Lenvima label revised 05/2016 (206947s003lbl.pdf) sec 12.1 states lenvatinib+everolimus beat each drug alone in RCC xenografts verbatim, and sec 14 carries Study 2 (205) RCC results. Status stays retro; src could move to label (tier 2). | superseded: confirmed (): Matsuki 2017 (PMID 28107584) quote verbatim; abstract opens from the phase II result, so retrodiction/retro and comparison_stated true hold. See rule question on retro after same on one track.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Status agreed (retro, retrodiction rule). Checker right on dating (rule 6): Lenvima label revised 05/2016 (206947s003, verified) sec 12.1 states the RCC xenograft combination result beside Study 205 in sec 14, so year 2016."
   },
   {
    "cell": "efficacy",
@@ -133,21 +139,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Motzer 2021 (PMID 33616314, epub 2021-02-13) quote verbatim; its background states the combination already had RCC activity (KEYNOTE-146 reports from 2016-17), before Kimura 2018/Kato 2019, so retro is right. Direction only vs sunitinib."
-  },
-  {
-   "cell": "efficacy",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "retro",
-   "proposed_year": 2016,
-   "rule": "year = first public date of the model-patient comparison",
-   "note": "Field year: 2017 -> 2016. Lenvima label revised 05/2016 (206947s003lbl.pdf) sec 12.1 states lenvatinib+everolimus beat each drug alone in RCC xenografts verbatim, and sec 14 carries Study 2 (205) RCC results. Status stays retro; src could move to label (tier 2).",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Status agreed (retro, retrodiction rule). Checker right on dating (rule 6): Lenvima label revised 05/2016 (206947s003, verified) sec 12.1 states the RCC xenograft combination result beside Study 205 in sec 14, so year 2016."
   }
  ],
  "missing": [

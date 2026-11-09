@@ -40,13 +40,17 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "contra",
+   "status_supported": true,
+   "proposed_status": "same",
    "proposed_year": 2016,
    "rule": "16",
-   "note": "Krop 2016 (PMID 27155741) quote verbatim and it attributes the miss to toxicity-limited dosing (45% dose modifications, 34% non-progression discontinuations, part 2 cut to 260 mg). With Raynaud's stated margin this is an independent window contra: blocked_by toxicity, margin_stated true, derived_from null, not derived_from efficacy.",
+   "field": "model_src",
+   "current_value": "https://doi.org/10.1158/1535-7163.MCT-08-1200",
+   "proposed_value": "https://doi.org/10.1158/1078-0432.CCR-14-0947",
+   "note": "Field model_src: Raynaud 2009 (Sarker ref 9) is wrong for the 6 uM.h target. Sarker 2015 (PMC4287394, epub 2014) states the uncited MDA-MB-361 PK-PD target; Salphati 2011 abstract names no MDA-MB-361, full text paywalled. Set model_src to Sarker 2015, tier 1; status same unchanged. | superseded: corrected (): Krop 2016 (PMID 27155741) quote verbatim and it attributes the miss to toxicity-limited dosing (45% dose modifications, 34% non-progression discontinuations, part 2 cut to 260 mg). With Raynaud's stated margin this is an independent window contra: blocked_by toxicity, margin_stated true, derived_from null, not derived_from efficacy.",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): 340 mg was at or above the 330 mg where tumour pAkt fell >90%"
+   "adjudication_note": "Dose table row 'target reached' (decision 16): both agree same; correction is model_src only. The xenograft-derived pAkt-suppression exposure target (Sarker 2015 states it) was reached at 340 mg in FERGI; reached-and-failed is efficacy's."
   },
   {
    "cell": "efficacy",
@@ -166,24 +170,6 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4: efficacy scores the primary endpoint or a pre-specified PoC gate; Mayer 2014's primary was MTD, no gate, and the PAM50 luminal-A correlate is post-hoc and non-significant. Nothing for the retrodiction to reproduce (decision 10)."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2016,
-   "rule": "16",
-   "field": "model_src",
-   "current_value": "https://doi.org/10.1158/1535-7163.MCT-08-1200",
-   "proposed_value": "https://doi.org/10.1158/1078-0432.CCR-14-0947",
-   "note": "Field model_src: Raynaud 2009 (Sarker ref 9) is wrong for the 6 uM.h target. Sarker 2015 (PMC4287394, epub 2014) states the uncited MDA-MB-361 PK-PD target; Salphati 2011 abstract names no MDA-MB-361, full text paywalled. Set model_src to Sarker 2015, tier 1; status same unchanged.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Dose table row 'target reached' (decision 16): both agree same; correction is model_src only. The xenograft-derived pAkt-suppression exposure target (Sarker 2015 states it) was reached at 340 mg in FERGI; reached-and-failed is efficacy's."
   }
  ],
  "missing": [

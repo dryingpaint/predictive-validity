@@ -87,12 +87,17 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Long 2019 full text (PMC6912869): rat loperamide GE ID50 0.24 mg/kg and phase 2b CSBM p=0.0001 stated together. Registry primary is weeks 2-5, paper gives week 5; same holds. Model predates trial, so not retro.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "Year is the later of model source and patient result public; earlier paired source dates the comparison",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2019 -> 2013. Vickery 2013 DDW abstract 899 (doi 10.1016/S0016-5085(13)60574-0) read: primary CSBM wks 2-5, 0.8 placebo vs 2.5/2.6/1.5 (all p<0.05); conclusion quote verbatim. Paired with Armstrong 2013; same, primary. Supplement-abstract admissibility open. | superseded: confirmed (CHECKER_BRIEF / models): Long 2019 full text (PMC6912869): rat loperamide GE ID50 0.24 mg/kg and phase 2b CSBM p=0.0001 stated together. Registry primary is weeks 2-5, paper gives week 5; same holds. Model predates trial, so not retro.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Primary CSBM responded as predicted; same either way. RULE QUESTION: is the DDW 2013 Gastroenterology supplement abstract tier 1 (rule 2), moving rule 6 year from 2019 to 2013?"
   },
   {
    "cell": "efficacy",
@@ -127,12 +132,17 @@
   {
    "cell": "safety",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Long 2019 quote verbatim; similar TEAEs is indirect for CNS withdrawal, so partial is right. A J Pain 2013 phase 2b abstract reports COWS max 7 vs 6 placebo (direct withdrawal readout, earlier paired 2013 source); see missing.",
-   "checked_by": "CHECKER_BRIEF / models"
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "Year is the later of model source and patient result public; earlier paired source dates the comparison",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2019 -> 2013. J Pain 2013 abstract 421 DOI resolves (title: no CNS opioid withdrawal for TD-1211, body paywalled); DDW 2013 abstract 899 verbatim: 'no evidence of CNS opioid withdrawal'. With Armstrong 2013 model, same at 2013. Hinges on supplement-abstract rule question. | superseded: confirmed (CHECKER_BRIEF / models): Long 2019 quote verbatim; similar TEAEs is indirect for CNS withdrawal, so partial is right. A J Pain 2013 phase 2b abstract reports COWS max 7 vs 6 placebo (direct withdrawal readout, earlier paired 2013 source); see missing.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same either way (model silence on CNS withdrawal held). RULE QUESTION: is a journal-supplement conference abstract a tier 1 source under rule 2, so rule 6 dates this to 2013 rather than 2019?"
   },
   {
    "cell": "dose",
@@ -147,16 +157,6 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Long 2019 quote verbatim (no impact on opioid analgesic use at efficacious doses). Margin first public in Armstrong 2013, after the phase 2b ended (May 2012); see rule question on margin_stated timing.",
-   "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "safety",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
@@ -165,39 +165,9 @@
    "proposed_year": 2013,
    "rule": "Year is the later of model source and patient result public; earlier paired source dates the comparison",
    "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2019 -> 2013. J Pain 2013 abstract 421 DOI resolves (title: no CNS opioid withdrawal for TD-1211, body paywalled); DDW 2013 abstract 899 verbatim: 'no evidence of CNS opioid withdrawal'. With Armstrong 2013 model, same at 2013. Hinges on supplement-abstract rule question.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same either way (model silence on CNS withdrawal held). RULE QUESTION: is a journal-supplement conference abstract a tier 1 source under rule 2, so rule 6 dates this to 2013 rather than 2019?"
-  },
-  {
-   "cell": "dose",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "Year is the later of model source and patient result public; earlier paired source dates the comparison",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2019 -> 2013. DDW 2013 abstract 899 (Gastroenterology suppl, May 2013) verbatim: 'no evidence of ... analgesic interference'; J Pain 2013 abstract title says same. Armstrong 2013 hot-plate margin public Mar 2013. margin_stated timing rule question still open.",
+   "note": "Field year: 2019 -> 2013. DDW 2013 abstract 899 (Gastroenterology suppl, May 2013) verbatim: 'no evidence of ... analgesic interference'; J Pain 2013 abstract title says same. Armstrong 2013 hot-plate margin public Mar 2013. margin_stated timing rule question still open. | superseded: confirmed (CHECKER_BRIEF / models): Long 2019 quote verbatim (no impact on opioid analgesic use at efficacious doses). Margin first public in Armstrong 2013, after the phase 2b ended (May 2012); see rule question on margin_stated timing.",
    "adjudicated_status": "same",
    "adjudication_note": "Decision 16 same, margin held. RULE QUESTION: is a supplement abstract tier 1 for rule 6 dating (2013 vs 2019), and must margin_stated be public before the trial?"
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "Year is the later of model source and patient result public; earlier paired source dates the comparison",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2019 -> 2013. Vickery 2013 DDW abstract 899 (doi 10.1016/S0016-5085(13)60574-0) read: primary CSBM wks 2-5, 0.8 placebo vs 2.5/2.6/1.5 (all p<0.05); conclusion quote verbatim. Paired with Armstrong 2013; same, primary. Supplement-abstract admissibility open.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Primary CSBM responded as predicted; same either way. RULE QUESTION: is the DDW 2013 Gastroenterology supplement abstract tier 1 (rule 2), moving rule 6 year from 2019 to 2013?"
   }
  ],
  "missing": [

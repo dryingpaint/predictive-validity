@@ -16,12 +16,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "",
-   "note": "Gonem 2016 (PMID 27503237, epub 2016-08-05) quote verbatim. Sputum eosinophils were the trial's primary outcome; downstream tier is right. NCT01545726 has no posted results, as the draft says."
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "Evidence rule 6 (dating: first public same)",
+   "note": "Field year (also src/epub_year/print_year): 2016 -> 2014. ERS 2014 abstract 4836 (Eur Respir J 44 Suppl 58, Sept 2014) verbatim: ARRY-502 200 mg BID cut FeNO 27.0 ppb vs placebo (p<0.0001) and blood CRTh2+ eosinophils. Th2-high subgroup, conference abstract. | superseded: confirmed (): Gonem 2016 (PMID 27503237, epub 2016-08-05) quote verbatim. Sputum eosinophils were the trial's primary outcome; downstream tier is right. NCT01545726 has no posted results, as the draft says.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: earliest public same is ARRY-502 (member) ERS 2014 abstract, ERJ 44 Suppl 58:4836, DOI-bearing (rule 2 tier 1): FeNO -27.0 ppb vs placebo, blood CRTh2+ eosinophils reduced. Year 2016 -> 2014; downstream tier."
   },
   {
    "cell": "dose",
@@ -116,21 +121,6 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "contra",
    "adjudication_note": "Contra stands (one drug's contra beats another's same). Year stays 2014 under rule 6: the earlier 2012 model side is OC000459, a non-member; the member model side (setipiprant, Diamant 2014) went public in 2014."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "Evidence rule 6 (dating: first public same)",
-   "note": "Field year (also src/epub_year/print_year): 2016 -> 2014. ERS 2014 abstract 4836 (Eur Respir J 44 Suppl 58, Sept 2014) verbatim: ARRY-502 200 mg BID cut FeNO 27.0 ppb vs placebo (p<0.0001) and blood CRTh2+ eosinophils. Th2-high subgroup, conference abstract.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6: earliest public same is ARRY-502 (member) ERS 2014 abstract, ERJ 44 Suppl 58:4836, DOI-bearing (rule 2 tier 1): FeNO -27.0 ppb vs placebo, blood CRTh2+ eosinophils reduced. Year 2016 -> 2014; downstream tier."
   }
  ],
  "missing": [

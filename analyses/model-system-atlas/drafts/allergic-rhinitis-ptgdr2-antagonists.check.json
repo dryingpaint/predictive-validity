@@ -119,11 +119,12 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "contra",
-   "proposed_year": 2013,
-   "rule": "decision 7 with decision 2 (tier 5); status under decision 6 (one drug's contra beats another's same), see rule question 4 (#35)",
-   "note": "All numbers verified (chamber TNSS AUC -17%, p=.0026; Phase 3 DNSS -0.02, p=0.652; Phase 2 -0.15, p=0.030). Miss public 2012-04-02; member model side Krug epub 2013-12-09 gives 2013 (Horak 2012 OC000459 chamber, a sibling source, would give 2012).",
+   "proposed_year": 2012,
+   "rule": "decision 7 (earliest public date) with decision 8 (sibling-dosed model side, product_in_model false)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2017 -> 2012 (supersedes proposed 2013). Horak 2012 (PMID 23025511, first published 2012-10-01): OC000459 'significantly reduced both nasal and ocular symptoms' in Vienna chamber; Phase 3 miss public 2012-04-02 (RTTNews). model_src would become Horak 2012. | superseded: corrected (): All numbers verified (chamber TNSS AUC -17%, p=.0026; Phase 3 DNSS -0.02, p=0.652; Phase 2 -0.15, p=0.030). Miss public 2012-04-02; member model side Krug epub 2013-12-09 gives 2013 (Horak 2012 OC000459 chamber, a sibling source, would give 2012).",
    "adjudicated_status": "contra",
-   "adjudication_note": "Status contra agreed. Rule 6 earliest public date (tier-5 dating per precedent): Actelion miss 2012-04-02 (RTTNews, verified); sibling chamber side Horak 2012 (epub 2012-10-01, verified) makes the pairing public 2012. Later verdict supersedes 2013."
+   "adjudication_note": "Status contra agreed. Rule 6: Horak 2012 OC000459 chamber (first published 2012-10-01, verified) is an admissible sibling model side (decision 8, product_in_model false); with the 2012-04-02 tier-5 miss, year 2012; model_src Horak."
   },
   {
    "cell": "efficacy",
@@ -141,12 +142,14 @@
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "rule": "decision 8 and #73 (a model the class did not rely on is not scored) with decision 4 (#35)",
-   "note": "Quote verbatim. No member was ever reported in the OVA-mouse rhinitis model (QAV680 unspecified 'rodent allergic disease models'; setipiprant, fevipiprant in vitro only; BI 671800 unpublished) and no source compares it with patients. If kept, year is 2012 (Stebbins 2010 + 2012-04-02 release).",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2012,
+   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 patient side)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2017 -> 2012. Model side Stebbins 2010 (Europe PMC 2010-05-04, 'AM156 inhibited sneezing and nasal rubs'); Phase 3 miss public 2012-04-02 (RTTNews: 'did not confirm efficacy findings made in earlier studies'). Status contra as adjudicated. | superseded: corrected (): Quote verbatim. No member was ever reported in the OVA-mouse rhinitis model (QAV680 unspecified 'rodent allergic disease models'; setipiprant, fevipiprant in vitro only; BI 671800 unpublished) and no source compares it with patients. If kept, year is 2012 (Stebbins 2010 + 2012-04-02 release).",
    "adjudicated_status": "contra",
-   "adjudication_note": "Contra stands: decision 1(b) admits drafter pairing; decision 8 admits sibling-dosed proxies (product_in_model false, #16/#34). #73's reliance test covers only the inverse miss; #35 needs a source attribution Ratner does not make ('not fully known')."
+   "adjudication_note": "Status contra (as adjudicated earlier). Rule 6 earliest public date: Stebbins 2010 model side (2010-05-04, verified) plus Actelion tier-5 miss 2012-04-02 (RTTNews, verified), so year 2012, not 2017."
   },
   {
    "cell": "efficacy",
@@ -211,36 +214,6 @@
    "status_supported": true,
    "rule": "decision 4 (safety) and decision 1 (comparison stated)",
    "note": "Ratner quote verbatim; comparison is stated: the PoM dose 'was well tolerated and protected against allergen-induced AR ... over a 5-day period [37]' and 'well tolerated in both studies'. Same tolerability fact is also carried as dose margin_stated true (rule question 5)."
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "decision 7 (earliest public date) with decision 2 (tier 5 patient side)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2017 -> 2012. Model side Stebbins 2010 (Europe PMC 2010-05-04, 'AM156 inhibited sneezing and nasal rubs'); Phase 3 miss public 2012-04-02 (RTTNews: 'did not confirm efficacy findings made in earlier studies'). Status contra as adjudicated.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra (as adjudicated earlier). Rule 6 earliest public date: Stebbins 2010 model side (2010-05-04, verified) plus Actelion tier-5 miss 2012-04-02 (RTTNews, verified), so year 2012, not 2017."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2012,
-   "rule": "decision 7 (earliest public date) with decision 8 (sibling-dosed model side, product_in_model false)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2017 -> 2012 (supersedes proposed 2013). Horak 2012 (PMID 23025511, first published 2012-10-01): OC000459 'significantly reduced both nasal and ocular symptoms' in Vienna chamber; Phase 3 miss public 2012-04-02 (RTTNews). model_src would become Horak 2012.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status contra agreed. Rule 6: Horak 2012 OC000459 chamber (first published 2012-10-01, verified) is an admissible sibling model side (decision 8, product_in_model false); with the 2012-04-02 tier-5 miss, year 2012; model_src Horak."
   }
  ],
  "missing": [

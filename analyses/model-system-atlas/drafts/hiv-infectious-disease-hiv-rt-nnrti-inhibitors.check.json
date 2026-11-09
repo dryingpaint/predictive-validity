@@ -108,17 +108,6 @@
   {
    "cell": "dose",
    "index": 4,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4",
-   "note": "Yee 2021 = PMID 32989795, epub 2020-09-28; quote verbatim in abstract. Prospective: trial 'subsequent' to model, 2018 projection and label preceded it; volunteer PK admissible for dose (decision 3). Observed BID row (N=15, AUC 1.03, C24 0.98) first in 01/2022 label, absent 10/2019, so 2020 stands; magnitude fillable from it.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "dose",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
@@ -126,7 +115,7 @@
    "proposed_status": "same",
    "proposed_year": 2020,
    "rule": "4",
-   "note": "Gap fix: field magnitude, null -> within_2x. Re-opened Pifeltro label s007 (01/2022) Table 9: rifabutin 300 mg QD + doravirine 100 mg BID, N=15, AUC 1.03, Cmax 0.97, C24 0.98; footnote 'similar pharmacokinetic values'. Status same, year 2020 unchanged.",
+   "note": "Gap fix: field magnitude, null -> within_2x. Re-opened Pifeltro label s007 (01/2022) Table 9: rifabutin 300 mg QD + doravirine 100 mg BID, N=15, AUC 1.03, Cmax 0.97, C24 0.98; footnote 'similar pharmacokinetic values'. Status same, year 2020 unchanged. | superseded: confirmed (CHECKER_BRIEF_v3 / models): Yee 2021 = PMID 32989795, epub 2020-09-28; quote verbatim in abstract. Prospective: trial 'subsequent' to model, 2018 projection and label preceded it; volunteer PK admissible for dose (decision 3). Observed BID row (N=15, AUC 1.03, C24 0.98) first in 01/2022 label, absent 10/2019, so 2020 stands; magnitude fillable from it.",
    "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "same",
    "adjudication_note": "Drafter and checker agree on same (status table: matched, record magnitude). The correction only fills magnitude within_2x from the label PK table (AUC 1.03 with rifabutin, rule 4); status unchanged."

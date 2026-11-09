@@ -57,11 +57,17 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Bundle label: QUEST pooled SVR12 80% (419/521) vs 50% (132/264); Q80K 58% vs 84%; replicon Q80K FC 11 in 12.4; 5.1 cross-refs 12.4. NCT01289782 results posted 2014-06-04 confirmed. An earlier member 'same' exists (see missing)."
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "efficacy dated at first member primary-endpoint result in patients (earliest public source)",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Field year: 2013 -> 2012. Manns 2012 Hepatology (doi:10.1002/hep.25743, PMID 22473713, epub 2012-07-17) vaniprevir+PR phase II, primary RVR 68.8-83.3% vs 5.6%, P<0.001 (abstract verbatim). SVR not significant; Q80K stays in judgement. | superseded: confirmed (): Bundle label: QUEST pooled SVR12 80% (419/521) vs 50% (132/264); Q80K 58% vs 84%; replicon Q80K FC 11 in 12.4; 5.1 cross-refs 12.4. NCT01289782 results posted 2014-06-04 confirmed. An earlier member 'same' exists (see missing).",
+   "adjudicated_status": "same",
+   "adjudication_note": "Both say same (status rule: matched for >=1 class drug). Rule 6 dating: Manns 2012 (epub 2012-07-17) primary endpoint RVR 68.8-83.3% vs 5.6% verified, so the track's first same dates 2012; Q80K label stays judgement."
   },
   {
    "cell": "safety",
@@ -150,21 +156,6 @@
    "checked_by": "CHECKER_BRIEF / models",
    "rule": "retrodiction that failed to reproduce human data is contra; one drug's contra beats another's same",
    "note": "Full text read. Table 2 footnote d confirms predictions use the LPR model; ABT-450/r 50 mg -4.07 vs -1.9 verbatim. retro=true correct (all PI monotherapy data predated). 'perform significantly better' phrase not found; danoprevir misses are 1.7 log10 (day-2 data), not >2."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2012,
-   "rule": "efficacy dated at first member primary-endpoint result in patients (earliest public source)",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Field year: 2013 -> 2012. Manns 2012 Hepatology (doi:10.1002/hep.25743, PMID 22473713, epub 2012-07-17) vaniprevir+PR phase II, primary RVR 68.8-83.3% vs 5.6%, P<0.001 (abstract verbatim). SVR not significant; Q80K stays in judgement.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Both say same (status rule: matched for >=1 class drug). Rule 6 dating: Manns 2012 (epub 2012-07-17) primary endpoint RVR 68.8-83.3% vs 5.6% verified, so the track's first same dates 2012; Q80K label stays judgement."
   }
  ],
  "missing": [

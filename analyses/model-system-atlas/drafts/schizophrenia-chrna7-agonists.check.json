@@ -99,18 +99,19 @@
    "note": "Registry resolves; LS means 0.234/0.240/0.194 vs 0.266 and the termination quote verified; results posted 2010-08-06. model_src should be Sydserff 2009 (Castner post-dates the posting). Contra stands."
   },
   {
-   "cell": "efficacy",
-   "index": 4,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "same",
    "proposed_year": 2011,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim; GMLT was the primary. Public first in Targacept 8-K EX-99.1 of 2011-01-19 (tier 5), so year 2011 under rule 6; the bar was one-sided p<0.10 (adjusted p=0.054), so confidence low.",
+   "rule": "Evidence rule on comparison_stated: a source that itself puts the model result beside the patient result states the comparison",
+   "checked_by": "CHECKER_BRIEF / models",
+   "cell": "efficacy",
+   "index": 4,
+   "note": "Field comparison_stated: false -> true. Mazurov 2012 J Med Chem (10.1021/jm301048a, epub 2012-11-13, abstract) pairs \"positive effects across cognitive, positive, and negative symptoms of schizophrenia in animal models\" with phase II PoC \"encouraging results\". Status same, year 2011 unchanged. | superseded: corrected (): Quote verbatim; GMLT was the primary. Public first in Targacept 8-K EX-99.1 of 2011-01-19 (tier 5), so year 2011 under rule 6; the bar was one-sided p<0.10 (adjusted p=0.054), so confidence low.",
    "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 with rule 2: Targacept's January 2011 top-line release (tier 5) made the GMLT-primary result public first, so year 2011; Lieberman 2013 (tier 1) still sets the status. Status same."
+   "adjudication_note": "Rule 1: Mazurov 2012 itself sets the animal-model results beside the phase II proof of concept, so comparison_stated true; status same, year 2011."
   },
   {
    "cell": "efficacy",
@@ -181,35 +182,6 @@
    "note": "PMID 20965497 resolves; quote verbatim; epub 2010-10-20 fits year 2010. Impairing dose 0.48 mg/kg never approached in patients; untested stands."
   },
   {
-   "cell": "safety",
-   "index": 3,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule 6 (year = earliest date the comparison was public) with rule 2 (tier-5 press release / SEC filing admissible on the patient side; the tier-1 paper still sets the status)",
-   "note": "Quote verbatim. Prediction held (no nicotinic harms in three trials). Public first in the 2011-01-19 8-K ('was well tolerated'; nausea 5%), so year 2011 under rule 6.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 6 with rule 2: the January 2011 top-line release (tier 5) first reported TC-5619 well tolerated, so year 2011; Lieberman 2013 sets the status. Same."
-  },
-  {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Evidence rule on comparison_stated: a source that itself puts the model result beside the patient result states the comparison",
-   "checked_by": "CHECKER_BRIEF / models",
-   "cell": "efficacy",
-   "index": 4,
-   "note": "Field comparison_stated: false -> true. Mazurov 2012 J Med Chem (10.1021/jm301048a, epub 2012-11-13, abstract) pairs \"positive effects across cognitive, positive, and negative symptoms of schizophrenia in animal models\" with phase II PoC \"encouraging results\". Status same, year 2011 unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Rule 1: Mazurov 2012 itself sets the animal-model results beside the phase II proof of concept, so comparison_stated true; status same, year 2011."
-  },
-  {
    "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
@@ -220,7 +192,7 @@
    "checked_by": "CHECKER_BRIEF / models",
    "cell": "safety",
    "index": 3,
-   "note": "Field comparison_stated: false -> true. Mazurov 2012 abstract pairs \"no detectable effects on muscle or ganglionic nicotinic receptor subtypes\" with \"was well tolerated in a phase II clinical proof of concept trial\". Status same, year 2011 unchanged.",
+   "note": "Field comparison_stated: false -> true. Mazurov 2012 abstract pairs \"no detectable effects on muscle or ganglionic nicotinic receptor subtypes\" with \"was well tolerated in a phase II clinical proof of concept trial\". Status same, year 2011 unchanged. | superseded: corrected (): Quote verbatim. Prediction held (no nicotinic harms in three trials). Public first in the 2011-01-19 8-K ('was well tolerated'; nausea 5%), so year 2011 under rule 6.",
    "adjudicated_status": "same",
    "adjudication_note": "Rule 1: Mazurov 2012 pairs no muscle/ganglionic nicotinic effects in models with phase II tolerability, so comparison_stated true. Status same."
   }

@@ -56,12 +56,13 @@
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": false,
-   "proposed_status": "contra",
+   "proposed_status": "untested",
    "proposed_year": 2011,
-   "rule": "efficacy poc_gate rule; evidence rule 2 (higher-tier record of the same trial sets the status); decision 13",
-   "note": "Press-release quote verbatim, but a tier-3 record exists: EU CTR 2009-016051-22 results (posted 2022-03-01, CSR CL004_140 synopsis dated 17 Mar 2011). Pre-specified gate was FPG vs placebo ('main efficacy hypothesis'), NOT met: LSM FPG change -10.7/-21.4/-4.3/-16.1 mg/dL placebo/pio/5 mg/10 mg, 'not statistically different'. HOMA-IR, insulin, OGTT AUC, adiponectin, hsCRP unchanged. HbA1c p=0.045 at 10 mg only is a lower-ranked secondary. Replace src with the EU CTR record (tier 3, trial_unreported false, registry_date 2022-03-01); endpoint_role poc_gate on FPG.",
+   "rule": "CHECKER_BRIEF step 4 (model is the system the class relied on: member's own model); comparison_stated when the source sets model beside trial; status per adjudicated rule 2 / #32",
+   "note": "Gap fix: model_src -> https://doi.org/10.1016/j.metabol.2013.06.008 (Sullivan 2013, PMID 23953944, CCX140-B mouse-active analogue, DIO+db/db; abstract verified). comparison_stated -> true: 15 Sep 2011 release pairs both EASD talks. CSR dated Mar 2011 predates the mouse talk; set retrodiction true. Status stays untested. | superseded: corrected (): Press-release quote verbatim, but a tier-3 record exists: EU CTR 2009-016051-22 results (posted 2022-03-01, CSR CL004_140 synopsis dated 17 Mar 2011). Pre-specified gate was FPG vs placebo ('main efficacy hypothesis'), NOT met: LSM FPG change -10.7/-21.4/-4.3/-16.1 mg/dL placebo/pio/5 mg/10 mg, 'not statistically different'. HOMA-IR, insulin, OGTT AUC, adiponectin, hsCRP unchanged. HbA1c p=0.045 at 10 mg only is a lower-ranked secondary. Replace src with the EU CTR record (tier 3, trial_unreported false, registry_date 2022-03-01); endpoint_role poc_gate on FPG.",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "untested",
-   "adjudication_note": "Rule 2: tier-3 CSR CL004_140 sets status. FPG gate (decision 4/#144) missed, HbA1c secondary hit, CSR conclusion only 'encouraging': #32 untested. CSR attributes placebo's fall to baseline imbalance (#35); pioglitazone also did not separate."
+   "adjudication_note": "Rule 2 (tier-3 CSR CL004_140 sets status over tier-5 release): FPG poc_gate missed, so untested, matching the earlier adjudication of this entry. Not the track latest (efficacy 3 is), so no untested_reason."
   },
   {
    "cell": "efficacy",
@@ -130,21 +131,6 @@
    "rule": "decision 7 (a new entry is written only on a status change on its track; trial facts that change nothing go in patient_trials)",
    "note": "Quote verbatim. No genotype result anywhere reachable: synopsis, CT.gov NCT01028963 (no results, no stratification), Hanefeld 2012 abstract (Semantic Scholar; full text 522 at OMICS). Untested holds; but same source and status as entry 5, so decision 7 would fold it into patient_trials.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2011,
-   "rule": "CHECKER_BRIEF step 4 (model is the system the class relied on: member's own model); comparison_stated when the source sets model beside trial; status per adjudicated rule 2 / #32",
-   "note": "Gap fix: model_src -> https://doi.org/10.1016/j.metabol.2013.06.008 (Sullivan 2013, PMID 23953944, CCX140-B mouse-active analogue, DIO+db/db; abstract verified). comparison_stated -> true: 15 Sep 2011 release pairs both EASD talks. CSR dated Mar 2011 predates the mouse talk; set retrodiction true. Status stays untested.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 2 (tier-3 CSR CL004_140 sets status over tier-5 release): FPG poc_gate missed, so untested, matching the earlier adjudication of this entry. Not the track latest (efficacy 3 is), so no untested_reason."
   }
  ],
  "missing": [

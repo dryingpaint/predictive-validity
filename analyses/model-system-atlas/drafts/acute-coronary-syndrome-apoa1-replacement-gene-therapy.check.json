@@ -1,328 +1,308 @@
 {
-  "draft": "analyses/model-system-atlas/drafts/acute-coronary-syndrome-apoa1-replacement-gene-therapy.json",
-  "index_base": 1,
-  "checked_by": "CHECKER_BRIEF",
-  "entries": [
-    {
-      "cell": "engagement",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Shah 2001 (PMID 11425766) abstract; quote verbatim. Opening untested entry fine. Minor: product_in_model false here but true on efficacy #2 with the same model_src (Shah 2001); make consistent."
-    },
-    {
-      "cell": "engagement",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Diditchenko 2013 (PMID 23868939) abstract; quote verbatim; opening untested entry for rabbit CSL112 track."
-    },
-    {
-      "cell": "engagement",
-      "index": 3,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": false,
-      "proposed_status": "same",
-      "proposed_year": 2015,
-      "rule": "engagement: did the PD readout the model used move in dosed humans (any dosed humans count)",
-      "note": "Tardy quote verbatim, but peer-reviewed human PD exists: Kootte 2015 J Lipid Res (doi:10.1194/jlr.M055665, epub Jan 2015) CER-001 raised efflux 44% and 'stimulates cholesterol mobilization' in FHA patients. Add a 2015 same entry; untested_reason 'unsettled' is wrong.",
-      "adjudicated_status": "same",
-      "adjudication_note": "Engagement rule (any dosed humans count): Kootte 2015 (PMID 25561459, epub 2015-01-05) CER-001 in FHA patients \"stimulates cholesterol mobilization\", efflux +44%. 2013 opening untested stands; track becomes same in 2015, downstream."
-    },
-    {
-      "cell": "engagement",
-      "index": 4,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Gille 2014 (PMID 24969776, epub 2014-06-26) abstract; quote verbatim; ABCA1 efflux up to 630%. Same, direction_only fine. Year could be 2013 if Easton MAD paper (epub Oct 2013) reported efflux; not checked."
-    },
-    {
-      "cell": "engagement",
-      "index": 5,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Kallend 2016 (PMID 27418968, epub 2015-12-11) abstract; quote verbatim; efflux rose in HV and stable CAD as in mice. Same, 2015 supported."
-    },
-    {
-      "cell": "dose",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Shah 1998 (PMID 9498542) abstract; quote verbatim; mouse regimen only, no human target or margin. untested/no_prediction right."
-    },
-    {
-      "cell": "dose",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Diditchenko 2013 abstract; quote verbatim; no human exposure target stated."
-    },
-    {
-      "cell": "dose",
-      "index": 3,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Tardy 2014 abstract; quote verbatim; no human target stated."
-    },
-    {
-      "cell": "efficacy",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Shah 1998 abstract; conclusion sentence verbatim; opening untested entry."
-    },
-    {
-      "cell": "efficacy",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Nissen 2003 (PMID 14600188) abstract; quote verbatim; prespecified primary was within-group PAV change in pooled ETC-216 (P=.02), so same/partial holds. Counting ETC-216 as member MDCO-216 is a judgement (see rule questions)."
-    },
-    {
-      "cell": "efficacy",
-      "index": 3,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Tardy 2014 (epub 2013-11-08) abstract; quote verbatim; opening untested entry."
-    },
-    {
-      "cell": "efficacy",
-      "index": 4,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Diditchenko 2013 quote verbatim; rabbit predicted efflux only, so AEGIS-II (NEJM 2024, quote verbatim) tests no model prediction; untested/no_prediction right."
-    },
-    {
-      "cell": "efficacy",
-      "index": 5,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "CHI-SQUARE (PMID 24780501, epub 2014-04-29) abstract; quote verbatim; primary TAV 12 mg/kg vs placebo P=0.81. Source does not attribute null to an untested condition. CARAT quote verbatim. Contra 2014 holds."
-    },
-    {
-      "cell": "efficacy",
-      "index": 6,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "proposed_status": "contra",
-      "proposed_year": 2016,
-      "rule": "Dating rule 6: year is the earliest date the comparison was public",
-      "note": "Quote verbatim (PMID 30046837); registry results 2017-07-13 confirmed. But results were presented at AHA and in a Cleveland Clinic release on 2016-11-15, and MedCo discontinued MDCO-216 then. Year 2016. Statin-background attribution raised as rule question.",
-      "adjudicated_status": "contra",
-      "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT results presented at AHA and in Cleveland Clinic release 2016-11-15 (tier 5, verified), before 2017 registry posting. Status contra unchanged; year 2016."
-    },
-    {
-      "cell": "safety",
-      "index": 1,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "AEGIS-I (PMID 27881559) abstract; quote verbatim. CSL112 tox unpublished, no FDA package (manifest: no NDA/BLA); untested/unpublished right. AEGIS-II excess hypersensitivity cannot score without a tox source."
-    },
-    {
-      "cell": "safety",
-      "index": 2,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Reijers 2017 (PMID 28844118) abstract; conclusion verbatim; ex vivo assay reported after Kallend 2015 in vivo data, so retro is right; comparison stated in-source."
-    },
-    {
-      "cell": "engagement",
-      "index": 6,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Diditchenko 2013 (PMID 23868939, epub 2013-07-18) abstract; quote verbatim. Opening untested entry for the ex vivo human-plasma system, separate from the same paper's rabbit track; fine.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "engagement",
-      "index": 7,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Gille 2014 (PMID 24969776, epub 2014-06-26) abstract; quote verbatim; ABCA1 efflux up to 630% in dosed volunteers. Ex vivo spiking predates the human report; same, downstream, 2014 supported.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "dose",
-      "index": 4,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Keyserling 2017 full text (PMC5394142): '20 mg/kg was considered the no adverse-effect level' in 4-week animal studies, set before phase I. Opening untested at proxy 2008, low confidence; fine.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "dose",
-      "index": 5,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "note": "Full text: animal NOAEL 20 mg/kg vs mouse plaque inhibition maximal at 5 mg/kg (U-shaped above 10), so the margin was stated pre-trial; volunteers tolerated 0.25-45 mg/kg. same, margin_stated true supported (Decision 16).",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 7,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Chiesa 2002 (PMID 12016263, epub 2002-05-01) abstract; quote verbatim. Opening untested entry for the rabbit carotid track; fine.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 8,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Nissen 2003 (PMID 14600188) abstract; quote verbatim; primary within-group PAV -1.06% (P=.02), not vs placebo, so same/partial right. Chiesa 2002 published before results (enrolment to Mar 2003): prospective, not retro.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 9,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Nicholls 2018 (PMID 30046837) and Parolini 2008 (PMID 18342229) abstracts; quotes verbatim. Rabbit vehicle progressed, ETC-216 regressed; MDCO-216 no better than placebo (+0.73%, P=.07): contra. Statin-background caveat is the open rule question; year arguably 2016 (AHA/press 2016-11-15).",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 10,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Sirtori 2001 (PMID 11306522) abstract; conclusion quote verbatim. Opening untested entry for the carrier human_genetic track; fine.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 11,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Nissen 2003 abstract cites the Italian ApoA-I Milano carriers as rationale; quote verbatim; carriers 2001 predate results. same/partial, direction_only supported.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 12,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "MILANO-PILOT abstract; quote verbatim; infused Milano variant gave no placebo-adjusted regression against the carriers' implied protection: contra supported. Same statin-background rule question and 2016 dating note as efficacy 9.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 13,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Haase 2010 (PMID 20826588, epub 2010-09-08) abstract; quote verbatim. Opening untested entry; note the class did not rely on this model (contrary genetic evidence) - see rule question.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 14,
-      "verdict": "confirmed",
-      "source_resolves": true,
-      "quote_found": "abstract_only",
-      "status_supported": true,
-      "note": "Lincoff 2024 AEGIS-II (PMID 38587254) abstract; quote verbatim; primary MACE HR 0.93, P=0.24. Genetics predicted no benefit, trial null: same, direction_only. Haase 2010 predates; prospective.",
-      "checked_by": "CHECKER_BRIEF / models"
-    },
-    {
-      "cell": "efficacy",
-      "index": 9,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "proposed_status": "contra",
-      "proposed_year": 2016,
-      "rule": "Dating rule 6: year is the earliest date the comparison was public",
-      "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays.",
-      "checked_by": "CHECKER_BRIEF / models",
-      "adjudicated_status": "contra",
-      "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
-    },
-    {
-      "cell": "efficacy",
-      "index": 12,
-      "verdict": "corrected",
-      "source_resolves": true,
-      "quote_found": "verbatim",
-      "status_supported": true,
-      "proposed_status": "contra",
-      "proposed_year": 2016,
-      "rule": "Dating rule 6: year is the earliest date the comparison was public",
-      "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays.",
-      "checked_by": "CHECKER_BRIEF / models",
-      "adjudicated_status": "contra",
-      "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
-    }
-  ],
-  "missing": [
-    "CER-001 human engagement: Kootte 2015 J Lipid Res doi:10.1194/jlr.M055665 (FHA patients, efflux +44%, cholesterol mobilization) - a same entry on the mouse-cer001 engagement track.",
-    "Rabbit IVUS/MRI track for apoA-I Milano/POPC: Parolini 2008 JACC doi:10.1016/j.jacc.2007.12.010 (ETC-216 regressed rabbit carotid atheroma on IVUS, dose guidance); a retrodiction of Nissen 2003 and a prospective prediction for MILANO-PILOT efficacy (and possibly dose).",
-    "MILANO-PILOT failure public 2016-11-15: Cleveland Clinic release https://newsroom.clevelandclinic.org/2016/11/15/cleveland-clinic-researchers-find-no-benefit-hdl-raising-injection-regression-coronary-heart-disease and MedCo discontinuation (firstwordpharma.com/story/4261668).",
-    "Human genetic track (not verified): ApoA-I Milano carriers (Sirtori 2001 Circulation, Limone sul Garda study) cited by Kallend 2016 as the basis for the class; a human_genetic model compared with MILANO-PILOT.",
-    "Ex vivo human plasma/whole-blood CSL112 efflux (Diditchenko 2013, same paper) is a separate ex_vivo system from the rabbit; could be its own engagement track paired with Gille 2014.",
-    "If 'apolipoprotein a-i' includes CSL111 (plasma-derived apoA-I/soy PC): ERASE (Tardif 2007 JAMA, doi:10.1001/jama.297.15.jama70004) failed its placebo-controlled IVUS primary; not verified here."
-  ],
-  "overall": "accept_with_corrections",
-  "rule_questions": [
-    "MILANO-PILOT concludes no incremental regression 'in the setting of contemporary statin therapy'; the apoE-/- mice were never on statins. Does that framing count as the trial attributing the result to a condition the model never tested (-> untested) or is it background (-> contra)?",
-    "Does ETC-216 (Esperion apoA-I Milano/POPC, older manufacturing with host-cell proteins) score as the member MDCO-216, or is it a different product outside the class list?",
-    "Is a sponsor/academic press release or congress presentation date admissible for an entry's year when the dating rule lists registry, epub, label and print only?",
-    "Which drug(s) does the member 'apolipoprotein a-i' denote: CSL112 only, or also CSL111?",
-    "models: a human genetic model that predicted NO benefit (Haase 2010 APOA1 variants) and that the class did not rely on - is it admissible as a track, and is a null-matches-null pairing scored 'same'?",
-    "models: MILANO-PILOT attributes its null to 'the setting of contemporary statin therapy', a condition neither the rabbit nor the carrier model tested - contra or untested (efficacy 9, 12)?"
-  ]
+ "draft": "analyses/model-system-atlas/drafts/acute-coronary-syndrome-apoa1-replacement-gene-therapy.json",
+ "index_base": 1,
+ "checked_by": "CHECKER_BRIEF",
+ "entries": [
+  {
+   "cell": "engagement",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shah 2001 (PMID 11425766) abstract; quote verbatim. Opening untested entry fine. Minor: product_in_model false here but true on efficacy #2 with the same model_src (Shah 2001); make consistent."
+  },
+  {
+   "cell": "engagement",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Diditchenko 2013 (PMID 23868939) abstract; quote verbatim; opening untested entry for rabbit CSL112 track."
+  },
+  {
+   "cell": "engagement",
+   "index": 3,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2015,
+   "rule": "engagement: did the PD readout the model used move in dosed humans (any dosed humans count)",
+   "note": "Tardy quote verbatim, but peer-reviewed human PD exists: Kootte 2015 J Lipid Res (doi:10.1194/jlr.M055665, epub Jan 2015) CER-001 raised efflux 44% and 'stimulates cholesterol mobilization' in FHA patients. Add a 2015 same entry; untested_reason 'unsettled' is wrong.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Engagement rule (any dosed humans count): Kootte 2015 (PMID 25561459, epub 2015-01-05) CER-001 in FHA patients \"stimulates cholesterol mobilization\", efflux +44%. 2013 opening untested stands; track becomes same in 2015, downstream."
+  },
+  {
+   "cell": "engagement",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Gille 2014 (PMID 24969776, epub 2014-06-26) abstract; quote verbatim; ABCA1 efflux up to 630%. Same, direction_only fine. Year could be 2013 if Easton MAD paper (epub Oct 2013) reported efflux; not checked."
+  },
+  {
+   "cell": "engagement",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Kallend 2016 (PMID 27418968, epub 2015-12-11) abstract; quote verbatim; efflux rose in HV and stable CAD as in mice. Same, 2015 supported."
+  },
+  {
+   "cell": "dose",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shah 1998 (PMID 9498542) abstract; quote verbatim; mouse regimen only, no human target or margin. untested/no_prediction right."
+  },
+  {
+   "cell": "dose",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Diditchenko 2013 abstract; quote verbatim; no human exposure target stated."
+  },
+  {
+   "cell": "dose",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tardy 2014 abstract; quote verbatim; no human target stated."
+  },
+  {
+   "cell": "efficacy",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Shah 1998 abstract; conclusion sentence verbatim; opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Nissen 2003 (PMID 14600188) abstract; quote verbatim; prespecified primary was within-group PAV change in pooled ETC-216 (P=.02), so same/partial holds. Counting ETC-216 as member MDCO-216 is a judgement (see rule questions)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 3,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Tardy 2014 (epub 2013-11-08) abstract; quote verbatim; opening untested entry."
+  },
+  {
+   "cell": "efficacy",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Diditchenko 2013 quote verbatim; rabbit predicted efflux only, so AEGIS-II (NEJM 2024, quote verbatim) tests no model prediction; untested/no_prediction right."
+  },
+  {
+   "cell": "efficacy",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "CHI-SQUARE (PMID 24780501, epub 2014-04-29) abstract; quote verbatim; primary TAV 12 mg/kg vs placebo P=0.81. Source does not attribute null to an untested condition. CARAT quote verbatim. Contra 2014 holds."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Dating rule 6: year is the earliest date the comparison was public",
+   "note": "Quote verbatim (PMID 30046837); registry results 2017-07-13 confirmed. But results were presented at AHA and in a Cleveland Clinic release on 2016-11-15, and MedCo discontinued MDCO-216 then. Year 2016. Statin-background attribution raised as rule question.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT results presented at AHA and in Cleveland Clinic release 2016-11-15 (tier 5, verified), before 2017 registry posting. Status contra unchanged; year 2016."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "AEGIS-I (PMID 27881559) abstract; quote verbatim. CSL112 tox unpublished, no FDA package (manifest: no NDA/BLA); untested/unpublished right. AEGIS-II excess hypersensitivity cannot score without a tox source."
+  },
+  {
+   "cell": "safety",
+   "index": 2,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Reijers 2017 (PMID 28844118) abstract; conclusion verbatim; ex vivo assay reported after Kallend 2015 in vivo data, so retro is right; comparison stated in-source."
+  },
+  {
+   "cell": "engagement",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Diditchenko 2013 (PMID 23868939, epub 2013-07-18) abstract; quote verbatim. Opening untested entry for the ex vivo human-plasma system, separate from the same paper's rabbit track; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "engagement",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Gille 2014 (PMID 24969776, epub 2014-06-26) abstract; quote verbatim; ABCA1 efflux up to 630% in dosed volunteers. Ex vivo spiking predates the human report; same, downstream, 2014 supported.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Keyserling 2017 full text (PMC5394142): '20 mg/kg was considered the no adverse-effect level' in 4-week animal studies, set before phase I. Opening untested at proxy 2008, low confidence; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "dose",
+   "index": 5,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Full text: animal NOAEL 20 mg/kg vs mouse plaque inhibition maximal at 5 mg/kg (U-shaped above 10), so the margin was stated pre-trial; volunteers tolerated 0.25-45 mg/kg. same, margin_stated true supported (Decision 16).",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 7,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Chiesa 2002 (PMID 12016263, epub 2002-05-01) abstract; quote verbatim. Opening untested entry for the rabbit carotid track; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nissen 2003 (PMID 14600188) abstract; quote verbatim; primary within-group PAV -1.06% (P=.02), not vs placebo, so same/partial right. Chiesa 2002 published before results (enrolment to Mar 2003): prospective, not retro.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Dating rule 6: year is the earliest date the comparison was public",
+   "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays. | superseded: confirmed (CHECKER_BRIEF / models): Nicholls 2018 (PMID 30046837) and Parolini 2008 (PMID 18342229) abstracts; quotes verbatim. Rabbit vehicle progressed, ETC-216 regressed; MDCO-216 no better than placebo (+0.73%, P=.07): contra. Statin-background caveat is the open rule question; year arguably 2016 (AHA/press 2016-11-15).",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
+  },
+  {
+   "cell": "efficacy",
+   "index": 10,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Sirtori 2001 (PMID 11306522) abstract; conclusion quote verbatim. Opening untested entry for the carrier human_genetic track; fine.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Nissen 2003 abstract cites the Italian ApoA-I Milano carriers as rationale; quote verbatim; carriers 2001 predate results. same/partial, direction_only supported.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 12,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "proposed_status": "contra",
+   "proposed_year": 2016,
+   "rule": "Dating rule 6: year is the earliest date the comparison was public",
+   "note": "Field year: 2017 -> 2016. Cleveland Clinic release dated November 15, 2016 reports MILANO-PILOT: MDCO-216 'did not have a favorable effect on coronary disease progression'. Same trial/result as efficacy 6; status contra unchanged; registry_date 2017-07-13 stays. | superseded: confirmed (CHECKER_BRIEF / models): MILANO-PILOT abstract; quote verbatim; infused Milano variant gave no placebo-adjusted regression against the carriers' implied protection: contra supported. Same statin-background rule question and 2016 dating note as efficacy 9.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Rule 6, earliest public date: MILANO-PILOT result public via AHA presentation and Cleveland Clinic release 2016-11-15 (tier 5 admissible, rule 2), before 2017-07-13 registry posting. Contra unchanged, as efficacy 6; year 2016."
+  },
+  {
+   "cell": "efficacy",
+   "index": 13,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Haase 2010 (PMID 20826588, epub 2010-09-08) abstract; quote verbatim. Opening untested entry; note the class did not rely on this model (contrary genetic evidence) - see rule question.",
+   "checked_by": "CHECKER_BRIEF / models"
+  },
+  {
+   "cell": "efficacy",
+   "index": 14,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "note": "Lincoff 2024 AEGIS-II (PMID 38587254) abstract; quote verbatim; primary MACE HR 0.93, P=0.24. Genetics predicted no benefit, trial null: same, direction_only. Haase 2010 predates; prospective.",
+   "checked_by": "CHECKER_BRIEF / models"
+  }
+ ],
+ "missing": [
+  "CER-001 human engagement: Kootte 2015 J Lipid Res doi:10.1194/jlr.M055665 (FHA patients, efflux +44%, cholesterol mobilization) - a same entry on the mouse-cer001 engagement track.",
+  "Rabbit IVUS/MRI track for apoA-I Milano/POPC: Parolini 2008 JACC doi:10.1016/j.jacc.2007.12.010 (ETC-216 regressed rabbit carotid atheroma on IVUS, dose guidance); a retrodiction of Nissen 2003 and a prospective prediction for MILANO-PILOT efficacy (and possibly dose).",
+  "MILANO-PILOT failure public 2016-11-15: Cleveland Clinic release https://newsroom.clevelandclinic.org/2016/11/15/cleveland-clinic-researchers-find-no-benefit-hdl-raising-injection-regression-coronary-heart-disease and MedCo discontinuation (firstwordpharma.com/story/4261668).",
+  "Human genetic track (not verified): ApoA-I Milano carriers (Sirtori 2001 Circulation, Limone sul Garda study) cited by Kallend 2016 as the basis for the class; a human_genetic model compared with MILANO-PILOT.",
+  "Ex vivo human plasma/whole-blood CSL112 efflux (Diditchenko 2013, same paper) is a separate ex_vivo system from the rabbit; could be its own engagement track paired with Gille 2014.",
+  "If 'apolipoprotein a-i' includes CSL111 (plasma-derived apoA-I/soy PC): ERASE (Tardif 2007 JAMA, doi:10.1001/jama.297.15.jama70004) failed its placebo-controlled IVUS primary; not verified here."
+ ],
+ "overall": "accept_with_corrections",
+ "rule_questions": [
+  "MILANO-PILOT concludes no incremental regression 'in the setting of contemporary statin therapy'; the apoE-/- mice were never on statins. Does that framing count as the trial attributing the result to a condition the model never tested (-> untested) or is it background (-> contra)?",
+  "Does ETC-216 (Esperion apoA-I Milano/POPC, older manufacturing with host-cell proteins) score as the member MDCO-216, or is it a different product outside the class list?",
+  "Is a sponsor/academic press release or congress presentation date admissible for an entry's year when the dating rule lists registry, epub, label and print only?",
+  "Which drug(s) does the member 'apolipoprotein a-i' denote: CSL112 only, or also CSL111?",
+  "models: a human genetic model that predicted NO benefit (Haase 2010 APOA1 variants) and that the class did not rely on - is it admissible as a track, and is a null-matches-null pairing scored 'same'?",
+  "models: MILANO-PILOT attributes its null to 'the setting of contemporary statin therapy', a condition neither the rabbit nor the carrier model tested - contra or untested (efficacy 9, 12)?"
+ ]
 }

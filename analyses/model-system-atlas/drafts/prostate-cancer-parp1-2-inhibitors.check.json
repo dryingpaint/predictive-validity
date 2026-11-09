@@ -124,11 +124,17 @@
   {
    "cell": "efficacy",
    "index": 7,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Carreira 2021 resolves (received 2021-01-11, epub 2021-05-27); quote verbatim (Europe PMC spaces the italic gene names, hence a low string score). Contra defensible for a patient-level rule, but contra + source_calls_it partial is undefined by the table (rule question 2). TOPARP-B's own 30% bar passed ATM (37%) and failed CDK12. EMA II/0036 (Sept 2020, BRCA1/2-only) would date this contra to 2020 with a tier-2 source."
+   "proposed_status": "contra",
+   "proposed_year": 2020,
+   "rule": "rule 6 (date by earliest admissible record of the patient result)",
+   "note": "Field year: 2021 -> 2020. EMA II/0036 EPAR (EMA/541236/2020, CHMP 17 Sep 2020, tier 2) p.161 verbatim: non-clinical non-BRCA HRR sensitivity 'do not appear to translate into clinical setting'. Contra unchanged; Carreira 2021 stays supporting. | superseded: confirmed (): Carreira 2021 resolves (received 2021-01-11, epub 2021-05-27); quote verbatim (Europe PMC spaces the italic gene names, hence a low string score). Contra defensible for a patient-level rule, but contra + source_calls_it partial is undefined by the table (rule question 2). TOPARP-B's own 30% bar passed ATM (37%) and failed CDK12. EMA II/0036 (Sept 2020, BRCA1/2-only) would date this contra to 2020 with a tier-2 source.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status table (contra): drafter and checker agree on contra; only the date differs. Rule 6: the EMA II/0036 EPAR (tier 2, CHMP Sep 2020) made the comparison public first, so the track's contra opens in 2020."
   },
   {
    "cell": "efficacy",
@@ -161,11 +167,12 @@
    "quote_found": "verbatim",
    "status_supported": false,
    "proposed_status": "retro",
-   "proposed_year": 2023,
-   "rule": "decision 10 (a retrodiction that reproduces the human data is retro, never same)",
-   "note": "Model written knowing TOPARP-B/PROfound ATM non-response (see index 9), so the match is retro not same. Also the pairing quotes a pooled non-BRCA subgroup, not an ATM datum: an ATM-specific source (TOPARP-B ATM 11%; EMA II/0036 ATM subgroup) should carry it.",
+   "proposed_year": 2020,
+   "rule": "rule 6 (date by earliest admissible record); decision 10 (retrodiction is retro)",
+   "note": "Field year: 2023 -> 2020, src -> EMA II/0036 EPAR (tier 2). p.113 verbatim ATM-specific datum: olaparib vs NHA rPFS HR 1.04 (0.61-1.87) in ATM subgroup. Status retro per adjudicated verdict; Rafiei 2020 model_src unchanged. | superseded: corrected (): Model written knowing TOPARP-B/PROfound ATM non-response (see index 9), so the match is retro not same. Also the pairing quotes a pooled non-BRCA subgroup, not an ATM datum: an ATM-specific source (TOPARP-B ATM 11%; EMA II/0036 ATM subgroup) should carry it.",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: Rafiei 2020 (received 2019-10-22) post-dates TOPARP-B ATM (ASCO 2019) and ESMO PROfound (2019-09-30); its introduction cites both before the hypothesis, so retrodiction is true and the reproduced non-response is retro, not same. Pooled non-BRCA quote: sourcing caveat."
+   "adjudication_note": "Decision 10: Rafiei 2020 post-dates and cites TOPARP-B and PROfound, so the reproduced ATM non-response is retro, as already adjudicated. Rule 6: EMA II/0036 EPAR ATM subgroup (rPFS HR 1.04, 2020) is the earliest ATM-specific record."
   },
   {
    "cell": "efficacy",
@@ -300,36 +307,6 @@
    "rule": "decision 10; decision 3 (healthy-volunteer PK) and decision 12 (cross-indication) for admissibility",
    "note": "Quote verbatim; Tables 2-3 confirm 2.75/2.66 and 0.32/0.12; FDA 'Yes' with caveat supports partial. Retro holds: only the V13.1 model re-fitted to interim DDI data is reviewed, though the initial V12 model was prospective. Subjects: advanced-solid-tumour patients, imported_from null (rule question).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 7,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2020,
-   "rule": "rule 6 (date by earliest admissible record of the patient result)",
-   "note": "Field year: 2021 -> 2020. EMA II/0036 EPAR (EMA/541236/2020, CHMP 17 Sep 2020, tier 2) p.161 verbatim: non-clinical non-BRCA HRR sensitivity 'do not appear to translate into clinical setting'. Contra unchanged; Carreira 2021 stays supporting.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status table (contra): drafter and checker agree on contra; only the date differs. Rule 6: the EMA II/0036 EPAR (tier 2, CHMP Sep 2020) made the comparison public first, so the track's contra opens in 2020."
-  },
-  {
-   "cell": "efficacy",
-   "index": 10,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2020,
-   "rule": "rule 6 (date by earliest admissible record); decision 10 (retrodiction is retro)",
-   "note": "Field year: 2023 -> 2020, src -> EMA II/0036 EPAR (tier 2). p.113 verbatim ATM-specific datum: olaparib vs NHA rPFS HR 1.04 (0.61-1.87) in ATM subgroup. Status retro per adjudicated verdict; Rafiei 2020 model_src unchanged.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: Rafiei 2020 post-dates and cites TOPARP-B and PROfound, so the reproduced ATM non-response is retro, as already adjudicated. Rule 6: EMA II/0036 EPAR ATM subgroup (rPFS HR 1.04, 2020) is the earliest ATM-specific record."
   }
  ],
  "missing": [

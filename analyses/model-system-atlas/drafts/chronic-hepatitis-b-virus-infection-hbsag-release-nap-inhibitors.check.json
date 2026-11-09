@@ -166,12 +166,17 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
-   "status_supported": true,
-   "rule": "4, 10",
-   "note": "Roehl 2017 quote verbatim. Full text also sets monkey calcium (unchanged at doses exceeding clinical) against the Bangladeshi mineral-deficiency symptoms in its own words, so a stated calcium retrodiction exists here; its status (untested under #35/#72 vs contra under 10) is a rule question."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2017,
+   "rule": "decision 10 (a model run after the patient result was known is retro, never same); decision 4 (heavy-metal symptoms a harm the unexposed monkey could not show)",
+   "note": "Field status, value retro in 2017 (new entry after the untested opener, before the 2020 same): PMC5466589 Discussion verbatim sets 6-month cynomolgus serum calcium unchanged beside unchanged patient calcium/magnesium (Al-Mahtab 2016). Comparison_stated true, retrodiction true. | superseded: confirmed (): Roehl 2017 quote verbatim. Full text also sets monkey calcium (unchanged at doses exceeding clinical) against the Bangladeshi mineral-deficiency symptoms in its own words, so a stated calcium retrodiction exists here; its status (untested under #35/#72 vs contra under 10) is a rule question.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Decision 10: Roehl 2017 Discussion states 6-month cyno serum calcium unchanged beside unchanged Bangladesh patient calcium/magnesium; REP 2165 designed after those trials, so a stated retrodiction reproducing patients is retro, not untested."
   },
   {
    "cell": "safety",
@@ -226,21 +231,6 @@
    "rule": "10, 11 (#58)",
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "note": "PMC5341074 full text: quote verbatim minus ref superscript 38. Stelma 2015 unindexed (Europe PMC 0 hits): patient cytokine rise cannot be sized or attributed to NAP vs pegIFN; harm-level null was a stated prediction (#58) and held. Retro + partial stands."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2017,
-   "rule": "decision 10 (a model run after the patient result was known is retro, never same); decision 4 (heavy-metal symptoms a harm the unexposed monkey could not show)",
-   "note": "Field status, value retro in 2017 (new entry after the untested opener, before the 2020 same): PMC5466589 Discussion verbatim sets 6-month cynomolgus serum calcium unchanged beside unchanged patient calcium/magnesium (Al-Mahtab 2016). Comparison_stated true, retrodiction true.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: Roehl 2017 Discussion states 6-month cyno serum calcium unchanged beside unchanged Bangladesh patient calcium/magnesium; REP 2165 designed after those trials, so a stated retrodiction reproducing patients is retro, not untested."
   }
  ],
  "missing": [

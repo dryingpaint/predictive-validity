@@ -97,12 +97,17 @@
   {
    "cell": "efficacy",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "rule": "efficacy: patient-level same, comparison stated by regulator (tier 2); rule 6 dating note",
-   "note": "Quote verbatim in bundled label section 12.4; Table 7 (54% 7/13 vs 92% 124/135; cirrhotics 25% 1/4) verified; NCT02032901 results posted 2015-09-14. Patient-level same supported; 2,737-fold figure not re-read. Harvoni Oct-2014 label made the same comparison earlier (missing)."
+   "proposed_status": "same",
+   "proposed_year": 2014,
+   "rule": "rule 6 dating (earliest source stating the comparison); source_calls_it partial",
+   "note": "Field year/epub_year/print_year 2015->2014, src -> FDA Harvoni label Oct 2014 (205834s000lbl.pdf, sec 12.4, bundle lines 1105-1127): treatment-experienced baseline NS5A RAP relapse 22% (5/23); quote verbatim. Naive ION-1/3 showed no difference (6% vs 5%), so source_calls_it partial. | superseded: confirmed (): Quote verbatim in bundled label section 12.4; Table 7 (54% 7/13 vs 92% 124/135; cirrhotics 25% 1/4) verified; NCT02032901 results posted 2015-09-14. Patient-level same supported; 2,737-fold figure not re-read. Harvoni Oct-2014 label made the same comparison earlier (missing).",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6 dating: Harvoni label Oct 2014 sec 12.4 already pairs baseline NS5A RAPs with relapse (22%, 5/23 treatment-experienced; naive no difference), so year 2014, source_calls_it partial."
   },
   {
    "cell": "efficacy",
@@ -182,13 +187,13 @@
    "index": 9,
    "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
    "proposed_status": "untested",
    "proposed_year": 2015,
-   "rule": "decision 7 (opener at first class use) and decision 8 (one model_id per system)",
-   "note": "Doi 2019 resolves (J Gastroenterol 54:449, published 2019-01-25); quote verbatim; TK-NOG host confirmed from keywords, abbreviation list, ref 19 Hasegawa 2011 and CIEA co-author Suemizu (methods paywalled). Split from the Hiroshima/PhoenixBio cDNA-uPA/SCID track (Osawa 2019 affiliations and refs Tateno 2015, Uchida 2017) is right. But the same Osaka TK-NOG system was first used for the class in Kan 2015 (J Gastroenterol 50:1145, PMID 26208695, epub 2015-07-25: DCV/ASV-failure L31V+Y93H serum into TK-NOG mice, LDV+GS-558093 failed), so the opener is Kan 2015, model_first_use_year 2015, and the model description should drop the per-experiment P32del inoculum. Status untested stands for the opener; Kan's prospective prediction is listed in missing.",
-   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "rule": "decision 7 (opener at first class use)",
+   "note": "Field year 2019->2015, src -> Kai 2015 (first author Kai Y, not Kan; J Gastroenterol 50:1145, doi:10.1007/s00535-015-1108-6, PMID 26208695, epub 2015-07-25), model_first_use_year 2015. Abstract confirms TK-NOG mice, LDV/GS-558093 failed. Status untested stands for opener. | superseded: corrected (CHECKER_BRIEF_v3 / models): Doi 2019 resolves (J Gastroenterol 54:449, published 2019-01-25); quote verbatim; TK-NOG host confirmed from keywords, abbreviation list, ref 19 Hasegawa 2011 and CIEA co-author Suemizu (methods paywalled). Split from the Hiroshima/PhoenixBio cDNA-uPA/SCID track (Osawa 2019 affiliations and refs Tateno 2015, Uchida 2017) is right. But the same Osaka TK-NOG system was first used for the class in Kan 2015 (J Gastroenterol 50:1145, PMID 26208695, epub 2015-07-25: DCV/ASV-failure L31V+Y93H serum into TK-NOG mice, LDV+GS-558093 failed), so the opener is Kan 2015, model_first_use_year 2015, and the model description should drop the per-experiment P32del inoculum. Status untested stands for the opener; Kan's prospective prediction is listed in missing.",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Drafter and checker agree on untested; only the opener date differs. Rule 6 / opener at first class use: Kai 2015 (PMID 26208695) first used TK-NOG for the class, so year 2015. Not the track latest (retro follows); no untested_reason."
   },
@@ -202,36 +207,6 @@
    "rule": "decision 10: model run after the patient result was known -> retro, never same",
    "note": "Quote verbatim in abstract. Donor serum came from a patient who had already failed LDV/SOF, so the LDV+GS-558093 mouse failure reproduces a known patient result: retro, patient-level, 2019 right. The retro rests on the donor history; Uemura 2019 (epub 2019-01-05, GLE/PIB) is incidental since pibrentasvir was not dosed in the mice. source_calls_it 'match' is the drafter's reading, not stated by the source. Abstract level.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2014,
-   "rule": "rule 6 dating (earliest source stating the comparison); source_calls_it partial",
-   "note": "Field year/epub_year/print_year 2015->2014, src -> FDA Harvoni label Oct 2014 (205834s000lbl.pdf, sec 12.4, bundle lines 1105-1127): treatment-experienced baseline NS5A RAP relapse 22% (5/23); quote verbatim. Naive ION-1/3 showed no difference (6% vs 5%), so source_calls_it partial.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed. Rule 6 dating: Harvoni label Oct 2014 sec 12.4 already pairs baseline NS5A RAPs with relapse (22%, 5/23 treatment-experienced; naive no difference), so year 2014, source_calls_it partial."
-  },
-  {
-   "cell": "efficacy",
-   "index": 9,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2015,
-   "rule": "decision 7 (opener at first class use)",
-   "note": "Field year 2019->2015, src -> Kai 2015 (first author Kai Y, not Kan; J Gastroenterol 50:1145, doi:10.1007/s00535-015-1108-6, PMID 26208695, epub 2015-07-25), model_first_use_year 2015. Abstract confirms TK-NOG mice, LDV/GS-558093 failed. Status untested stands for opener.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Drafter and checker agree on untested; only the opener date differs. Rule 6 / opener at first class use: Kai 2015 (PMID 26208695) first used TK-NOG for the class, so year 2015. Not the track latest (retro follows); no untested_reason."
   }
  ],
  "missing": [

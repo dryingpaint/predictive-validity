@@ -68,7 +68,7 @@
    "proposed_status": "same",
    "proposed_year": 2015,
    "rule": "7",
-   "note": "761326 PharmR lines 95-96 verbatim; 173/61 h = 2.8x, bin correct. But degludec's once-daily target was reached and compared by 2015 (FDA ClinPharmR line 2831 human t1/2 18-19 h; PharmR rat t1/2 ~25 h; SumR 705-708), so the first same predates icodec.",
+   "note": "761326 PharmR lines 95-96 verbatim; 173/61 h = 2.8x, bin correct. But degludec's once-daily target was reached and compared by 2015 (FDA ClinPharmR line 2831 human t1/2 18-19 h; PharmR rat t1/2 ~25 h; SumR 705-708), so the first same predates icodec. | superseded: confirmed (CHECKER_BRIEF / models): Gap fix rejected. Zinman 2013 (PMID 24622318) quote verbatim, but 3TW rested on human phase 2 (>42 h) and phase 1 PK/PD (SumR 698-712), not a pig/rat/dog-stated target; the regimen was given and failed HbA1c, efficacy's failure.",
    "adjudicated_status": "same",
    "adjudication_note": "Rule 6 (dating) with the dose table (target reached = same): degludec's once-daily target was reached and set beside rat/dog PK in the 2015 FDA reviews, so the track's first same is 2015, not icodec's 2026."
   },
@@ -300,17 +300,6 @@
    "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4 (#35, #72), as safety 6: FDA SumR attributes the excess to a weekly day-2 peak, a profile single-dose species (t1/2 25-61 h) never tested; no icodec hypoglycaemia prediction is quoted. Untested; track stays at 2012 same."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "rule": "4 dose rows (#91); a dose entry is not contra because a reached regimen did not work",
-   "note": "Gap fix rejected. Zinman 2013 (PMID 24622318) quote verbatim, but 3TW rested on human phase 2 (>42 h) and phase 1 PK/PD (SumR 698-712), not a pig/rat/dog-stated target; the regimen was given and failed HbA1c, efficacy's failure.",
-   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

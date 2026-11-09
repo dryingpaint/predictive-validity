@@ -57,11 +57,17 @@
   {
    "cell": "engagement",
    "index": 6,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Resolves; quote verbatim (abstract). NCT01258751 completed 2011-05, before Phase 2, so not a retrodiction. The comparison was first public as the Cornery 2011 AAIC abstract; year could be 2011 if that supplement is admissible (rule question)."
+   "proposed_status": "same",
+   "proposed_year": 2011,
+   "rule": "Year is the first public source stating the comparison (DOI-bearing supplement abstract, tier 1 under rule 2)",
+   "note": "Field year (epub_year/print_year) 2023 -> 2011; src -> https://doi.org/10.1016/j.jalz.2011.05.2278, srcLabel 'Comery 2011'. Crossref issued 2011-07; abstract re-read: NHP full blockade >10 nM free, human striatal RO >70% at 60 mg. Status stays same. | superseded: confirmed (): Resolves; quote verbatim (abstract). NCT01258751 completed 2011-05, before Phase 2, so not a retrodiction. The comparison was first public as the Cornery 2011 AAIC abstract; year could be 2011 if that supplement is admissible (rule question).",
+   "checked_by": "CHECKER_BRIEF / models (gap fix)",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: does a DOI-bearing journal-supplement conference abstract (Comery 2011, Alzheimers Dement 7:S794) count as rule-2 tier 1 for rule-6 dating? Status is same either way (both agree); year stays 2023 unless admissible, then 2011."
   },
   {
    "cell": "engagement",
@@ -263,21 +269,6 @@
    "status_supported": true,
    "note": "Fullerton 2018 quote and patient_trials quote verbatim (abstract). NCT01712074 results first posted 2017-03-20 sets 2017; model 2011 predates registration 2012, so prospective contra. Nit: trial enrolled NPI>=10 patients, not 'unselected'; Fullerton's generic design/population hedge is not a model-untested condition.",
    "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 6,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2011,
-   "rule": "Year is the first public source stating the comparison (DOI-bearing supplement abstract, tier 1 under rule 2)",
-   "note": "Field year (epub_year/print_year) 2023 -> 2011; src -> https://doi.org/10.1016/j.jalz.2011.05.2278, srcLabel 'Comery 2011'. Crossref issued 2011-07; abstract re-read: NHP full blockade >10 nM free, human striatal RO >70% at 60 mg. Status stays same.",
-   "checked_by": "CHECKER_BRIEF / models (gap fix)",
-   "adjudicated_status": "same",
-   "adjudication_note": "RULE QUESTION: does a DOI-bearing journal-supplement conference abstract (Comery 2011, Alzheimers Dement 7:S794) count as rule-2 tier 1 for rule-6 dating? Status is same either way (both agree); year stays 2023 unless admissible, then 2011."
   }
  ],
  "missing": [

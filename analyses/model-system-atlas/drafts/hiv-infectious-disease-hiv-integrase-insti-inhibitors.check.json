@@ -80,11 +80,17 @@
   {
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule."
+   "proposed_status": "contra",
+   "proposed_year": 2018,
+   "rule": "year = earliest public source showing the patient result (epub date)",
+   "note": "year: 2019 -> 2018 (epub_year 2018, print_year 2018; src 10.1056/NEJMc1807653, Zash 2018 NEJM letter, PMID 30037297, epub 2018-07-24). PMC6550482 text verbatim: 'Among the 426 infants ... 4 (0.94%) had a neural-tube defect.' Status contra unchanged. | superseded: confirmed (): Zash 2019 NEJM quote verbatim. Signal first public July 2018 (NEJM letter 10.1056/NEJMc1807653, epub 2018-07-24; no abstract to quote, FDA 2018 DSC page 404). 2019 dating kept per quote rule.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Status agreed (contra; rat EFD silent on NTDs). Rule 6 dating: Zash 2018 NEJM letter (PMID 30037297, epub 2018-07-24) first showed 4/426 NTDs with DTG at conception; year 2018."
   },
   {
    "cell": "safety",
@@ -209,21 +215,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Brummel AIDS PMID 40880283 (epub 2025-08-26); quote verbatim. Contra/opposite holds at low confidence: Brummel never names folate, so the low-folate condition the model needs is the drafter's inference from Botswana's lack of fortification."
-  },
-  {
-   "cell": "safety",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2018,
-   "rule": "year = earliest public source showing the patient result (epub date)",
-   "note": "year: 2019 -> 2018 (epub_year 2018, print_year 2018; src 10.1056/NEJMc1807653, Zash 2018 NEJM letter, PMID 30037297, epub 2018-07-24). PMC6550482 text verbatim: 'Among the 426 infants ... 4 (0.94%) had a neural-tube defect.' Status contra unchanged.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "contra",
-   "adjudication_note": "Status agreed (contra; rat EFD silent on NTDs). Rule 6 dating: Zash 2018 NEJM letter (PMID 30037297, epub 2018-07-24) first showed 4/426 NTDs with DTG at conception; year 2018."
   }
  ],
  "missing": [

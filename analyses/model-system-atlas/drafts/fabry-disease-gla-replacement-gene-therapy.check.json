@@ -16,11 +16,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Schiffmann 2019 (PMID 30834538, epub 2019-04-08) quote verbatim; NCT01678898 results posted 2020-01-27 confirmed. Mouse 64% residual vs -84% PTC: direction_only reasonable. FDA says the mouse lipid assay could not confirm Gb3 specifically; see rule question."
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
+   "note": "Field source_calls_it: null -> 'unresolved'. Bundled BLA 761161 review (nonclinical, resubmission): mouse GL3 methods 'were unable to provide independent nonclinical confirmation of the clinical results' (primuline TLC nonspecific). Status same, year 2019 unchanged. | superseded: confirmed (): Schiffmann 2019 (PMID 30834538, epub 2019-04-08) quote verbatim; NCT01678898 results posted 2020-01-27 confirmed. Mouse 64% residual vs -84% PTC: direction_only reasonable. FDA says the mouse lipid assay could not confirm Gb3 specifically; see rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule (same): mouse tissue Gb3 fell and patient renal PTC Gb3 fell 84%, same direction; drafter pairing admissible (evidence rule 1). FDA assay-specificity caveat changes source_calls_it to unresolved, not the status."
   },
   {
    "cell": "dose",
@@ -52,11 +58,17 @@
   {
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "abstract_only",
+   "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Quote verbatim. Registry confirms F01/02 primary = AEs, no registered secondaries; FDA review treats renal PTC Gb3 (BLISS) as the efficacy surrogate and F20/BALANCE eGFR slope as primary. poc_gate is a drafter call, not a sponsor pre-specification; see rule question."
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "checked_by": "CHECKER_BRIEF / models",
+   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
+   "note": "Field source_calls_it: null -> 'unresolved'. Same BLA 761161 passage; FDA adds the KO mouse 'does not exhibit clinical signs' so could not assess eGFR. Status same, year 2019 unchanged. | superseded: confirmed (): Quote verbatim. Registry confirms F01/02 primary = AEs, no registered secondaries; FDA review treats renal PTC Gb3 (BLISS) as the efficacy surrogate and F20/BALANCE eGFR slope as primary. poc_gate is a drafter call, not a sponsor pre-specification; see rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status rule (same): mouse Gb3 clearance prediction agreed in direction with patient PTC Gb3 reduction; evidence rule 1 admits the pairing. FDA nonspecific-assay and no-clinical-signs caveats set source_calls_it unresolved only; status unchanged."
   },
   {
    "cell": "safety",
@@ -184,36 +196,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "CT.gov API: SAEs sepsis, brainstem stroke, CVA, chest pain, enthesopathy; no hepatic SAE up to 2.63e13 vg/kg. One female-expansion subject had non-serious transaminase/LFT increases; same holds, could carry source_calls_it partial."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
-   "note": "Field source_calls_it: null -> 'unresolved'. Bundled BLA 761161 review (nonclinical, resubmission): mouse GL3 methods 'were unable to provide independent nonclinical confirmation of the clinical results' (primuline TLC nonspecific). Status same, year 2019 unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same): mouse tissue Gb3 fell and patient renal PTC Gb3 fell 84%, same direction; drafter pairing admissible (evidence rule 1). FDA assay-specificity caveat changes source_calls_it to unresolved, not the status."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "checked_by": "CHECKER_BRIEF / models",
-   "rule": "source_calls_it enum (unresolved); a tier-2 regulator source on the model's comparison",
-   "note": "Field source_calls_it: null -> 'unresolved'. Same BLA 761161 passage; FDA adds the KO mouse 'does not exhibit clinical signs' so could not assess eGFR. Status same, year 2019 unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status rule (same): mouse Gb3 clearance prediction agreed in direction with patient PTC Gb3 reduction; evidence rule 1 admits the pairing. FDA nonspecific-assay and no-clinical-signs caveats set source_calls_it unresolved only; status unchanged."
   }
  ],
  "missing": [

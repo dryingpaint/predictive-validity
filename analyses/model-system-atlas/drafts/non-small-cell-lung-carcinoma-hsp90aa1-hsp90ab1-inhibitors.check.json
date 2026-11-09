@@ -16,11 +16,17 @@
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Sessa 2013 resolves; PBMC HSP70 and tumour client depletion moved at RP2D, abstract only. Goldman 2013 (epub 2013-03-25, same drug as the model) is the earlier same-year source. product_in_model false here but true on the identical dose pairing; harmonise."
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "model_src is the member drug's own model for the pairing",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Fix model_src: https://doi.org/10.1158/1078-0432.CCR-11-2967 (Shimamura, ganetespib) -> https://doi.org/10.1158/1535-7163.MCT-12-0998 (Garon 2013, luminespib; abstract: 'decreased EGF receptor (EGFR) protein expression in H1975 xenografts'); product_in_model false -> true. Status unchanged. | superseded: confirmed (): Sessa 2013 resolves; PBMC HSP70 and tumour client depletion moved at RP2D, abstract only. Goldman 2013 (epub 2013-03-25, same drug as the model) is the earlier same-year source. product_in_model false here but true on the identical dose pairing; harmonise.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 2 (paired comparison names its model side): model_src should be the member's own H1975 xenograft readout, Garon 2013 luminespib (EGFR depletion), product_in_model true; the fix changes no status."
   },
   {
    "cell": "dose",
@@ -34,13 +40,17 @@
   {
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
-   "quote_found": "verbatim",
+   "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Decision 4 case 3: Sessa states xenograft-active concentrations reached at 70 mg/m2, single-agent NSCLC failed, so contra derived_from efficacy, counted once. Sessa's stated comparison is to luminespib xenografts (Garon 2013), not Shimamura; product_in_model should match engagement entry 2.",
+   "proposed_status": "same",
+   "proposed_year": 2013,
+   "rule": "model_src is the model the trial source states it compared with",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Fix model_src: Shimamura 2012 -> https://doi.org/10.1158/0008-5472.CAN-07-5256 (Eccles 2008, tier 1). Sessa abstract: 'consistent with active concentrations in a range of xenograft models'; Europe PMC references cite Eccles 2008, Jensen 2008 (PMID 18430202), not Shimamura or Garon. Status unchanged. | superseded: confirmed (): Decision 4 case 3: Sessa states xenograft-active concentrations reached at 70 mg/m2, single-agent NSCLC failed, so contra derived_from efficacy, counted once. Sessa's stated comparison is to luminespib xenografts (Garon 2013), not Shimamura; product_in_model should match engagement entry 2.",
    "adjudicated_status": "same",
-   "adjudication_note": "Dose scored on its own prediction (rule v4): the RP2D exposure matched xenograft-active concentrations (Sessa)"
+   "adjudication_note": "Status same agreed. Rule 1/2: Sessa states the comparison with 'a range of xenograft models', citing Eccles 2008 and Jensen 2008, not Shimamura; model_src should be Eccles 2008. The fix changes no status."
   },
   {
    "cell": "efficacy",
@@ -168,36 +178,6 @@
    "rule": "4 (#58), 10",
    "note": "Socinski 2013 (PMID 23553849, epub 2013-04-03) quotes verbatim; cohort B is KRAS. Same holds under #58: the GEMM stated the monotherapy null as a prediction and was discriminating (combination regressed). Not retro: the paper never mentions ganetespib or NCT01031225.",
    "detail": "The question put to this check: is a no-effect prediction confirmed by a null cohort same or untested? Decision 4 as decided (RULES_V3_PROPOSAL §4, #58): a null-null is same only when the model made the null a prediction; the #58 recommendation adds that the null must be discriminating (falsifiable). Both hold here. De Raedt states the single-agent null as a result ('none of the single agents investigated in this study exerted a cytotoxic response when administered individually') and draws the clinical inference that such agents 'might be overlooked if they are assessed exclusively as mono-therapies'; and the same MRI system showed regression on IPI-504 plus rapamycin, so a ganetespib monotherapy response in KRAS-mutant patients would have contradicted it (#10). So same, direction_only, not untested. Retrodiction checked, since the drafter left it open: Synta's 8-K exhibit 99.1 of 2011-06-04 did report cohort B (13 evaluable, 5/13 SD, no objective response, headlined as 62% target-lesion shrinkage), three months before De Raedt's print date; but decision 10 requires post-dates AND motivated by, and the paper is an Nf1/MPNST and Kras lung mechanism study of Infinity's IPI-504 that never names ganetespib or the trial, with no online-first and a Sept 2011 print, so the experiments were not run to reproduce the cohort. The public reading in June 2011 was encouraging, not a null; the clean null (0/17 PR, 5.9% PFS16) is Socinski 2013, the entry's year. The GEMM's positive (combination) prediction was tested in NSCLC only with retaspimycin plus everolimus (NCT01427946, started 2011-07, no posted results), outside the member list, so the drafter's 'only the monotherapy half is scored' is right. Confidence low is appropriate: own pairing, sibling drug in the model, p53 status of cohort B unknown."
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "model_src is the member drug's own model for the pairing",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Fix model_src: https://doi.org/10.1158/1078-0432.CCR-11-2967 (Shimamura, ganetespib) -> https://doi.org/10.1158/1535-7163.MCT-12-0998 (Garon 2013, luminespib; abstract: 'decreased EGF receptor (EGFR) protein expression in H1975 xenografts'); product_in_model false -> true. Status unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed. Rule 2 (paired comparison names its model side): model_src should be the member's own H1975 xenograft readout, Garon 2013 luminespib (EGFR depletion), product_in_model true; the fix changes no status."
-  },
-  {
-   "cell": "dose",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2013,
-   "rule": "model_src is the model the trial source states it compared with",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Fix model_src: Shimamura 2012 -> https://doi.org/10.1158/0008-5472.CAN-07-5256 (Eccles 2008, tier 1). Sessa abstract: 'consistent with active concentrations in a range of xenograft models'; Europe PMC references cite Eccles 2008, Jensen 2008 (PMID 18430202), not Shimamura or Garon. Status unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Status same agreed. Rule 1/2: Sessa states the comparison with 'a range of xenograft models', citing Eccles 2008 and Jensen 2008, not Shimamura; model_src should be Eccles 2008. The fix changes no status."
   }
  ],
  "missing": [

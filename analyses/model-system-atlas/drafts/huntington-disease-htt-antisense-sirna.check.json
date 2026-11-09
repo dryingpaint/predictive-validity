@@ -13,13 +13,19 @@
    "note": "Europe PMC abstract (PMID 22726834) has the quote verbatim; opening untested entry for the mouse/NHP track is correct."
   },
   {
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "registry_date: earliest results posting of a member's trial",
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Registry outcome title verbatim; results posted 2022-04-25. Sister trial NCT03225833 (WVE-120101) posted earlier, 2022-02-10, and is the better registry citation. Wave model data unpublished, so untested/unpublished holds."
+   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged. | superseded: confirmed (): Registry outcome title verbatim; results posted 2022-04-25. Sister trial NCT03225833 (WVE-120101) posted earlier, 2022-02-10, and is the better registry citation. Wave model data unpublished, so untested/unpublished holds.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
   },
   {
    "cell": "engagement",
@@ -33,11 +39,17 @@
   {
    "cell": "engagement",
    "index": 4,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "verbatim",
    "status_supported": true,
-   "note": "Tabrizi 2019 full text (Firecrawl): dose-dependent CSF mHTT fall; the paper says preclinical data support CSF mHTT reflecting CNS tissue, so comparison_stated is defensible. Proximal, direction only."
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "same",
+   "proposed_year": 2019,
+   "rule": "paired entry: model_src names the model source",
+   "note": "Field model_src: null -> https://doi.org/10.1038/srep12166 (Southwell 2015, PMID 26174131), model_src_tier 1. Abstract: CSF mHTT reflects brain levels, decreasing after ASO brain HTT suppression in HD mice (mice only, no NHP). Status unchanged. | superseded: confirmed (): Tabrizi 2019 full text (Firecrawl): dose-dependent CSF mHTT fall; the paper says preclinical data support CSF mHTT reflecting CNS tissue, so comparison_stated is defensible. Proximal, direction only.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Field-only correction (model_src = Southwell 2015 CSF-mHTT mouse paper); both agree status same: CSF mHTT fell dose-dependently in patients as the model readout predicted (engagement rule)."
   },
   {
    "cell": "engagement",
@@ -68,13 +80,19 @@
    "rule": "rule 5 untested_reason (unpublished = model data not public)"
   },
   {
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "registry_date: earliest results posting of a member's trial",
    "cell": "dose",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Registry outcome title verbatim; no public Wave model dose or margin, so untested/unpublished stands."
+   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged. | superseded: confirmed (): Registry outcome title verbatim; no public Wave model dose or margin, so untested/unpublished stands.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
   },
   {
    "cell": "dose",
@@ -95,13 +113,19 @@
    "note": "Kordasiewicz 2012 abstract: the quote is a verbatim leading fragment of a longer sentence. Opening untested entry is correct."
   },
   {
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "registry_date: earliest results posting of a member's trial",
    "cell": "efficacy",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Registry outcome title verbatim (TFC was measured); Wave efficacy model unpublished, so untested/unpublished stands."
+   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged. | superseded: confirmed (): Registry outcome title verbatim (TFC was measured); Wave efficacy model unpublished, so untested/unpublished stands.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
   },
   {
    "cell": "efficacy",
@@ -140,13 +164,19 @@
    "note": "Tabrizi 2019 full text has the quote verbatim (cites refs 7-8). Opening untested, modality oligo."
   },
   {
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "proposed_status": "untested",
+   "proposed_year": 2017,
+   "rule": "registry_date: earliest results posting of a member's trial",
    "cell": "safety",
    "index": 2,
-   "verdict": "confirmed",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "note": "Registry outcome title verbatim; Wave toxicology not public, so untested/unpublished stands."
+   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged. | superseded: confirmed (): Registry outcome title verbatim; Wave toxicology not public, so untested/unpublished stands.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
   },
   {
    "cell": "safety",
@@ -195,81 +225,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "GlobeNewswire Aug 2022 release has the quote verbatim (n=4 treated, sham -16.8%). Keskin 2019 model_src predates the readout, so same not retro; tier 5 with trial_unreported correct; direction_only fair."
-  },
-  {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "proposed_status": "untested",
-   "proposed_year": 2017,
-   "rule": "registry_date: earliest results posting of a member's trial",
-   "cell": "engagement",
-   "index": 2,
-   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
-  },
-  {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "proposed_status": "untested",
-   "proposed_year": 2017,
-   "rule": "registry_date: earliest results posting of a member's trial",
-   "cell": "dose",
-   "index": 2,
-   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
-  },
-  {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "proposed_status": "untested",
-   "proposed_year": 2017,
-   "rule": "registry_date: earliest results posting of a member's trial",
-   "cell": "efficacy",
-   "index": 2,
-   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
-  },
-  {
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "near",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "proposed_status": "untested",
-   "proposed_year": 2017,
-   "rule": "registry_date: earliest results posting of a member's trial",
-   "cell": "safety",
-   "index": 2,
-   "note": "Field registry_date: 2022-04-25 -> 2022-02-10 (NCT03225833, WVE-120101; CT.gov API resultsFirstPostDate 2022-02-10 ACTUAL). Its PD outcome is titled just 'Pharmacodynamics', so quote is near if src moves. Status untested/unpublished and year 2017 unchanged.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Rule 5: Wave models (WVE-120101/120102) unpublished, so untested with untested_reason unpublished stands. Correction is only registry_date (NCT03225833 results posted 2022-02-10, verified on CT.gov); status unchanged."
-  },
-  {
-   "cell": "engagement",
-   "index": 4,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "checked_by": "CHECKER_BRIEF / models",
-   "proposed_status": "same",
-   "proposed_year": 2019,
-   "rule": "paired entry: model_src names the model source",
-   "note": "Field model_src: null -> https://doi.org/10.1038/srep12166 (Southwell 2015, PMID 26174131), model_src_tier 1. Abstract: CSF mHTT reflects brain levels, decreasing after ASO brain HTT suppression in HD mice (mice only, no NHP). Status unchanged.",
-   "adjudicated_status": "same",
-   "adjudication_note": "Field-only correction (model_src = Southwell 2015 CSF-mHTT mouse paper); both agree status same: CSF mHTT fell dose-dependently in patients as the model readout predicted (engagement rule)."
   }
  ],
  "missing": [

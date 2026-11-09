@@ -6,20 +6,32 @@
   {
    "cell": "engagement",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
-   "status_supported": true,
-   "note": "Goldenberg 2009 (PMID 18941114, epub 2008-10-21) quote verbatim in abstract. Note the abstract itself says findings 'are consistent with activity in patients with NHL', so a stated comparison existed in 2008."
+   "status_supported": false,
+   "proposed_status": "retro",
+   "proposed_year": 2008,
+   "rule": "Retrodiction: a model compared after the clinic knew the answer is retro, never same",
+   "note": "Abstract (epub 2008-10-21) does state the comparison: 'consistent with activity in patients with NHL given low IV or SC doses', so comparison_stated true. Phase I NCT00285428 began 2004-09; patient data already known, so retrodiction true, status retro not same. | superseded: confirmed (): Goldenberg 2009 (PMID 18941114, epub 2008-10-21) quote verbatim in abstract. Note the abstract itself says findings 'are consistent with activity in patients with NHL', so a stated comparison existed in 2008.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule: Goldenberg 2009 says monkey studies 'have now confirmed' and 'corroborat[e] the activity observed in patients at very low doses', already reported; run after the clinic knew, reproduced it, so retro, comparison_stated."
   },
   {
    "cell": "engagement",
    "index": 2,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Morschhauser 2009 (PMID 19451441, epub 2009-05-18) quote verbatim. Registry exists: NCT00285428 (start 2004-09) and NCT00596804; drafter said not located. Peripheral B-cell depletion matches monkey depletion."
+   "proposed_status": "same",
+   "proposed_year": 2009,
+   "rule": "Dating (6): record registry_date; the registry lookup is mandatory",
+   "note": "Field registry_date: null -> 2006-02-02 (NCT00285428, IM-T-hA20-01 hA20 phase I in CD20+ NHL, start 2004-09, first posted 2006-02-02). Status and year unchanged by this fix. | superseded: confirmed (): Morschhauser 2009 (PMID 19451441, epub 2009-05-18) quote verbatim. Registry exists: NCT00285428 (start 2004-09) and NCT00596804; drafter said not located. Peripheral B-cell depletion matches monkey depletion.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule ('retro, never same'): same monkey data, whose run post-dated the reported phase I depletion (Goldenberg 2009), paired with that trial's paper; registry_date 2006-02-02 fix accepted."
   },
   {
    "cell": "dose",
@@ -79,10 +91,12 @@
    "quote_found": "abstract_only",
    "status_supported": false,
    "proposed_status": "untested",
-   "rule": "efficacy scores the trial's primary endpoint unless a secondary is a pre-specified poc_gate",
-   "note": "Quote verbatim, but registry NCT00285428 primary outcome is 'Safety and tolerance of different dose levels'; ORR was secondary, no poc_gate. Drafter excluded Hutchings 2021 FL ORR for the same reason; apply consistently.",
+   "proposed_year": 2009,
+   "rule": "Dating (6): record registry_date; the registry lookup is mandatory",
+   "note": "Field registry_date: null -> 2006-02-02 (NCT00285428 first posted 2006-02-02, start 2004-09). Status kept at the adjudicated untested (primary endpoint safety); only registry_date changes. | superseded: corrected (): Quote verbatim, but registry NCT00285428 primary outcome is 'Safety and tolerance of different dose levels'; ORR was secondary, no poc_gate. Drafter excluded Hutchings 2021 FL ORR for the same reason; apply consistently.",
+   "checked_by": "CHECKER_BRIEF / models",
    "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy scores the trial's primary endpoint: NCT00285428 primary is 'Safety and tolerance of different dose levels', efficacy secondary, no poc_gate. Untested, untested_reason not_measured (rule 5), consistent with Hutchings 2021 handling."
+   "adjudication_note": "Efficacy scores the primary endpoint (NCT00285428 primary: safety/tolerance; no poc_gate), as adjudicated earlier; registry_date 2006-02-02 per rule 6. untested_reason not_measured already set."
   },
   {
    "cell": "efficacy",
@@ -200,51 +214,6 @@
    "status_supported": true,
    "note": "Hutchings 2021 abstract quote verbatim (CRS 59%, grade 1-2). Assay run pre-IND and filed, so prospective, not retro; dated 2023 when assay first public. Mixed B-NHL with FL subset; direction_only magnitude appropriate.",
    "checked_by": "CHECKER_BRIEF / models"
-  },
-  {
-   "cell": "engagement",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "same",
-   "proposed_year": 2009,
-   "rule": "Dating (6): record registry_date; the registry lookup is mandatory",
-   "note": "Field registry_date: null -> 2006-02-02 (NCT00285428, IM-T-hA20-01 hA20 phase I in CD20+ NHL, start 2004-09, first posted 2006-02-02). Status and year unchanged by this fix.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule ('retro, never same'): same monkey data, whose run post-dated the reported phase I depletion (Goldenberg 2009), paired with that trial's paper; registry_date 2006-02-02 fix accepted."
-  },
-  {
-   "cell": "efficacy",
-   "index": 2,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "untested",
-   "proposed_year": 2009,
-   "rule": "Dating (6): record registry_date; the registry lookup is mandatory",
-   "note": "Field registry_date: null -> 2006-02-02 (NCT00285428 first posted 2006-02-02, start 2004-09). Status kept at the adjudicated untested (primary endpoint safety); only registry_date changes.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Efficacy scores the primary endpoint (NCT00285428 primary: safety/tolerance; no poc_gate), as adjudicated earlier; registry_date 2006-02-02 per rule 6. untested_reason not_measured already set."
-  },
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": false,
-   "proposed_status": "retro",
-   "proposed_year": 2008,
-   "rule": "Retrodiction: a model compared after the clinic knew the answer is retro, never same",
-   "note": "Abstract (epub 2008-10-21) does state the comparison: 'consistent with activity in patients with NHL given low IV or SC doses', so comparison_stated true. Phase I NCT00285428 began 2004-09; patient data already known, so retrodiction true, status retro not same.",
-   "checked_by": "CHECKER_BRIEF / models",
-   "adjudicated_status": "retro",
-   "adjudication_note": "Retrodiction rule: Goldenberg 2009 says monkey studies 'have now confirmed' and 'corroborat[e] the activity observed in patients at very low doses', already reported; run after the clinic knew, reproduced it, so retro, comparison_stated."
   }
  ],
  "missing": [

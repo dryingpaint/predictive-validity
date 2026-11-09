@@ -204,11 +204,12 @@
    "quote_found": "verbatim",
    "status_supported": true,
    "proposed_status": "contra",
-   "proposed_year": 2020,
+   "proposed_year": 2019,
    "rule": "7",
-   "note": "Quote verbatim; 14.8% vs 17% null and registry 13.9% confirmed. contra holds; the year does not: Le 2025 says cohort 1 was presented at AACR 2020, and the sponsor announced the miss Dec 2019/Jan 2020. Decision 7: earliest public record.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Gap fix: field year, value 2019 (not 2025, not the earlier verdict's 2020). GenomeWeb 2019-12-27 re-opened: 'Spectrum Pharmaceuticals said Thursday that its drug candidate poziotinib failed to meet the pre-specified primary endpoint in the first cohort'. contra unchanged; src choice stays rule question 4. | superseded: corrected (): Quote verbatim; 14.8% vs 17% null and registry 13.9% confirmed. contra holds; the year does not: Le 2025 says cohort 1 was presented at AACR 2020, and the sponsor announced the miss Dec 2019/Jan 2020. Decision 7: earliest public record.",
    "adjudicated_status": "contra",
-   "adjudication_note": "Status agreed: ZENITH20-1 missed its pre-specified primary ORR (14.8% vs 17% null), contra on the primary-endpoint rule. Rule 6 (earliest public date): the AACR 2020 abstract is an online publication, so year is 2020 at latest, not 2025."
+   "adjudication_note": "RULE QUESTION: contra is agreed; rule 6 lists registry, online publication, label, print. Does a tier-5 press release (Spectrum, 26 Dec 2019) set year 2019 when higher-tier records (AACR 2020, Le 2025) exist, and which is src?"
   },
   {
    "cell": "efficacy",
@@ -438,21 +439,6 @@
    "rule": null,
    "note": "Engelman 2007 abstract quote verbatim. Kris 2015 full text: diarrhoea 90% (grade 3/4 20%/3%), dermatitis 73%, one mirtazapine-interaction death; a cell line cannot show these, so silence is untested, not contra (decision 4 safety).",
    "checked_by": "CHECKER_BRIEF_v3 / models"
-  },
-  {
-   "cell": "efficacy",
-   "index": 6,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "verbatim",
-   "status_supported": true,
-   "proposed_status": "contra",
-   "proposed_year": 2019,
-   "rule": "7",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Gap fix: field year, value 2019 (not 2025, not the earlier verdict's 2020). GenomeWeb 2019-12-27 re-opened: 'Spectrum Pharmaceuticals said Thursday that its drug candidate poziotinib failed to meet the pre-specified primary endpoint in the first cohort'. contra unchanged; src choice stays rule question 4.",
-   "adjudicated_status": "contra",
-   "adjudication_note": "RULE QUESTION: contra is agreed; rule 6 lists registry, online publication, label, print. Does a tier-5 press release (Spectrum, 26 Dec 2019) set year 2019 when higher-tier records (AACR 2020, Le 2025) exist, and which is src?"
   }
  ],
  "missing": [

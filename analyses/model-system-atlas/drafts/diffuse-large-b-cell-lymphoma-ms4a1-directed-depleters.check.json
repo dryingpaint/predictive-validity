@@ -6,11 +6,17 @@
   {
    "cell": "engagement",
    "index": 1,
-   "verdict": "confirmed",
+   "verdict": "corrected",
    "source_resolves": true,
    "quote_found": "abstract_only",
    "status_supported": true,
-   "note": "Engelberts 2020 (PMID 31981978) abstract quote verbatim; FDA BLA 761324 review confirms 5-week cyno study and 2017 pre-IND. Opening year 2020 while model_first_use_year 2017; fine under lint."
+   "proposed_status": "untested",
+   "proposed_year": 2015,
+   "rule": "Opening entry opens at model_first_use_year with status untested, proxy allowed; one system per model_id",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Gap fix: field year 2020 -> 2015 (model_first_use_year 2017 -> 2015), src doi:10.1126/scitranslmed.aaa4802 (Sun 2015, PMID 25972002, 2015-05-01). Abstract verbatim: 'In cynomolgus monkeys, CD20-TDB potently depletes B cells... at a single dose of 1 mg/kg'. Mosunetuzumab is a member; status unchanged. | superseded: confirmed (): Engelberts 2020 (PMID 31981978) abstract quote verbatim; FDA BLA 761324 review confirms 5-week cyno study and 2017 pre-IND. Opening year 2020 while model_first_use_year 2017; fine under lint.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Both agree untested (rule 6 opening entry). Year: open at the epcoritamab track's model_first_use_year 2017, not 2015; Sun 2015 is mosunetuzumab's monkey study, a separate model_id track (one system per model_id), as the checker's missing list says."
   },
   {
    "cell": "engagement",
@@ -126,21 +132,6 @@
    "status_supported": true,
    "checked_by": "CHECKER_BRIEF / models",
    "note": "Discussion quote verbatim; introduction cites preliminary FIH (NCT03625037, ref 14) responses incl. CRs in R/R DLBCL already reported; received 2020-08, so model run after patient result: retro, not same. Year 2021, class level correct."
-  },
-  {
-   "cell": "engagement",
-   "index": 1,
-   "verdict": "corrected",
-   "source_resolves": true,
-   "quote_found": "abstract_only",
-   "status_supported": true,
-   "proposed_status": "untested",
-   "proposed_year": 2015,
-   "rule": "Opening entry opens at model_first_use_year with status untested, proxy allowed; one system per model_id",
-   "checked_by": "CHECKER_BRIEF / models",
-   "note": "Gap fix: field year 2020 -> 2015 (model_first_use_year 2017 -> 2015), src doi:10.1126/scitranslmed.aaa4802 (Sun 2015, PMID 25972002, 2015-05-01). Abstract verbatim: 'In cynomolgus monkeys, CD20-TDB potently depletes B cells... at a single dose of 1 mg/kg'. Mosunetuzumab is a member; status unchanged.",
-   "adjudicated_status": "untested",
-   "adjudication_note": "Both agree untested (rule 6 opening entry). Year: open at the epcoritamab track's model_first_use_year 2017, not 2015; Sun 2015 is mosunetuzumab's monkey study, a separate model_id track (one system per model_id), as the checker's missing list says."
   }
  ],
  "missing": [
