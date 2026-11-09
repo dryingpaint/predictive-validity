@@ -62,14 +62,14 @@ For 2,952 of the 5,428 Phase 2 and 3 stops among 2008–2019 entries, the regist
     * Slow enrollment: 73%
     * COVID-19: 9%
     * Trials redesigned or replaced: 6%
-* **Efficacy failures**, by whether the drug engaged its target, among Phase 2 and 3 programs that stopped for efficacy or exposure:
-    * Engaged its target, but the disease did not respond: 1,037 of the 1,285 programs where engagement is known
-    * Never engaged its target or reached adequate exposure: 19% (17%–22%) of those, 118 of them inferred because another drug on the same target worked; as common in Phase 3 (18%) as in Phase 2 (20%)
+* **Efficacy failures**, by what the evidence shows about target engagement (shares of all Phase 2 and 3 programs that stopped for efficacy or exposure):
+    * Engaged its target, but the disease did not respond: 47%
+    * No human evidence of engagement either way: 35%
+    * Never engaged its target or reached adequate exposure: 11%
     * Trial design, population or endpoint: 7%
-    * Toxicity offset any efficacy: 12 programs
-    * No engagement data either way: 35%
+    * Toxicity offset any efficacy: 1%
 
-    The first kind points to a gap in models of the disease, and the second to a gap in models of dose and engagement.
+    Where engagement is known, 19% (17%–22%) were never engaged, as often in Phase 3 (18%) as in Phase 2 (20%); in 118 of them this is inferred because another drug on the same target worked. The first kind points to a gap in models of the disease, the third to a gap in models of dose and engagement.
 * **Stops no source explains**, by signal:
     * Sponsor started no later trial: 35%
     * Drug dropped while its sponsor carried on: 35%
@@ -147,6 +147,17 @@ Approval rises with the strength of genetic support, from 9% with none to 33% in
 Beyond that, sharper versions do not help. Among programs with germline genetics, strong GWAS evidence (0.54), Mendelian evidence (0.92) and genetics pointing the drug's way (1.10) did no better than the rest; nor did a close phenotype match (1.19) or mouse genetics pointing the drug's way (1.11) among programs with mouse genetics, or a driver matching the drug among oncology programs with a driver (0.98). Direction could not be tested properly: of the Phase 2 programs with genetic support, 270 acted in the direction the genetics favoured and only 10 against it, because sponsors almost never develop against an established mechanism.
 
 
+### Biology or sponsor commitment?
+
+![A: the risk ratio of advancing from Phase 2 within four years for programs with genetic evidence for their disease, as reported, with sponsor size, with each large sponsor compared with itself, and within sponsor-size tiers. B: for each large sponsor with at least three programs of each kind, the share of its genetically supported Phase 2 programs that advanced against the share of its other programs. C: at the first randomised Phase 2 efficacy trial, the risk ratio of meeting the primary endpoint and of advancing after a met or a missed endpoint](report/output/figures/sponsor_confound.png)
+
+Advancing from Phase 2 is partly a sponsor's decision, so genetically supported programs might do better because sponsors back them harder, not because their biology is right. Two checks point mostly to the biology.
+
+**It is not who runs them.** Genetically supported programs are about as common at the largest sponsors as at the smallest (11% of Phase 2 programs at the 20 largest, 12% at sponsors outside the top 100). Adding sponsor size to the model leaves the risk ratio of advancing at 1.93 (1.94 as reported), and comparing each of the 24 largest sponsors only with itself leaves it at 1.92. The advantage holds in each size tier, from 1.75× at the 20 largest to 1.99× at the smallest. At 21 of the 36 large sponsors with at least three programs of each kind, genetically supported programs advanced more often than the sponsor's others (30% against 19% on average).
+
+**Most of the advantage shows at the readout, which the sponsor does not choose.** For the 1,430 programs whose first randomised Phase 2 efficacy trial has a readable result, genetically supported programs met the primary endpoint more often (43% against 28%; 1.43×, 1.13–1.81). Given the readout, they advanced only somewhat more often, after a met endpoint (47% against 36%; 1.32×, 0.93–1.87) and after a missed one (16% against 11%), neither clearly. Some extra backing cannot be ruled out: genetic support lowered stops for sponsor decisions about as much as stops for lack of efficacy (ratio of the two effects 1.19, 0.76–1.85). Approval, which needs the FDA to accept the Phase 3 data, shows the advantage too (2.80×).
+
+
 ### Confirmatory hypotheses
 
 ![The pre-registered hypotheses](report/output/figures/s3_hypotheses.png)
@@ -160,7 +171,7 @@ Three hypotheses about the drug itself were added before any of their outcomes w
 
 ### By disease area
 
-![Relative success of human genetic evidence by disease area](report/output/figures/genetics_by_area.png)
+![Relative success of human genetics and of mouse genetics by disease area](report/output/figures/genetics_by_area.png)
 
 Human genetic evidence goes with approval in every area group with enough programs to measure it, clearly so in all but immunology and inflammation, and its effect does not differ measurably between them (p = 0.62 for the difference at Phase 2). It is largest in cardiometabolic and endocrine diseases (3.37×, 23% against 7%) and neuroscience (3.16×), smaller in oncology (2.00×), and least clear in immunology and inflammation (1.47×, 0.69–2.42), where much of the evidence is GWAS. Hematology and the other areas have too few genetically supported programs to estimate. Leaving out any one group keeps the pooled relative success between 2.56 and 3.25.
 
@@ -176,7 +187,7 @@ The fair reading is that a drug well short of 100 nM at its target rarely succee
 
 ### What this means
 
-* **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3.
+* **Disease-specific human genetics carries over.** It fades as the evidence moves away from the disease, holds within a target, does not come from hindsight, and roughly doubles the chance of reaching Phase 3. It holds at sponsors of every size and within the same sponsor, and shows mostly as more Phase 2 trials meeting their primary endpoint, which the sponsor does not choose.
 * **It is a filter, not a forecast.** Nearly three in four genetically supported Phase 2 programs still did not advance, most programs that advanced had no such evidence, and sharper versions of the evidence did not pick better programs. Added to disease area, modality, novelty and entry year, the evidence raises the held-out AUC for predicting approval only from 0.59 to 0.63 (appendix).
 * **No kind of endpoint shows it clearly.** Genetically supported trials missed regulatory surrogates less often in trials with posted results, but the interval spans no effect; on clinical scales, events and survival the difference is small or not demonstrable.
 * **Other preclinical evidence adds less.** Tumour genetics helps in oncology; mouse genetics helps mostly by riding along with human genetics; RNA changes in diseased tissue, curated disease mechanisms and the drug's own potency, selectivity and drug-likeness add nothing reliable.
@@ -277,6 +288,14 @@ Two features of the registry bear on these trends.
 | 2017 | 64% (9%) | 35% (14%) | 49% (27%) |
 | 2018 | 53% (12%) | 31% (20%) | 44% (30%) |
 | 2019 | 54% (16%) | 37% (21%) | 51% (36%) |
+
+The table below shows what keeps a program counted as running, among programs that entered a phase in 2008–2019 and are still running at the snapshot. A program with no US approval keeps running as long as any trial in its disease is under way, so an extension or long-term study can hold it there after its development has in effect ended; such programs stay out of the success rates rather than counting as stops. They are 29% of still-running Phase 3 programs; counting them as stopped instead would move the Phase 3 success rate from 41.7% to 39.2%, and the Phase 2 rate from 31.0% to 30.7%.
+
+| Phase entered | Still running | A trial of the phase or a later one is under way | Only an extension, long-term or earlier-phase study is under way | Its last trial ended within the past 24 months | The registry shows it stopped, but tracing found development going on |
+| :---- | :---- | :---- | :---- | :---- | :---- |
+| Phase 1 | 490 (7% of entrants) | 173 (35%) | 23 (5%) | 273 (56%) | 21 (4%) |
+| Phase 2 | 643 (10% of entrants) | 330 (51%) | 51 (8%) | 209 (33%) | 53 (8%) |
+| Phase 3 | 428 (19% of entrants) | 205 (48%) | 122 (29%) | 82 (19%) | 19 (4%) |
 
 
 ### How each label was made, and how good it is
@@ -479,6 +498,8 @@ Of the registered rules only the benchmark met the bar (held-out risk ratio 1.87
 **Direction of effect.** A drug that lowers its target's function should help when loss of function protects against the disease or gain of function causes it, and harm or do nothing when loss of function causes it. Open Targets' direction fields cannot test this: they label each variant from its predicted consequence, so the few truncating ClinVar variants listed for PCSK9 in hypercholesterolaemia, MYH7 in hypertrophic cardiomyopathy or TTR in amyloidosis make these gain-of-function diseases read as loss of function; their many pathogenic missense variants carry no direction at all. We therefore had an LLM state, for every target and disease with germline evidence, without being told any drug, whether disease-causing variants lower or raise the gene's function, whether protective variants are known, and the year each was first shown for that disease. Where Gene2Phenotype records an absent gene product, the label was loss of function in 63 of 66 pairs and gain of function in 0. A spot check of an earlier version of the labels found somatic cancer mutations counted as germline and some years taken from another disease; the final prompt rules out both. Sponsors almost never develop against an established mechanism. Of the Phase 2 programs with genetic support, 270 acted in the direction the genetics favoured, 10 against it, and 165 had genetics without an established direction by entry. Concordant programs advanced at 28% and undirected ones at 27%: once there is genetic support, knowing its direction did not pick winners among the programs sponsors chose to run, and the discordant group is too small to show whether going against the genetics fails. Protective loss of function plus a drug that lowers function, the PCSK9 pattern, covered 48 Phase 2 programs on 22 targets, which advanced as often as others (0.87, 0.43–1.79). Mouse genetics was treated the same way: for each mutant mouse line, without the drug, whether it lowers or raises the gene's function and whether its phenotypes resemble the disease or its opposite. A model pointing the drug's way (a knockout protected from the disease, for an inhibitor) gave 1.55 (1.21–2.00) against programs with no oriented model, a model pointing the other way 1.23, and nothing once genetic support is accounted for (1.21). Among Phase 3 programs a concordant model went with approval within four years (1.53, 1.03–2.29), one of many comparisons made after the plan.
 
 **Endpoints at the program level.** At the program level, classifying each Phase 2 program by the endpoint of its first randomised Phase 2 efficacy trial (started within a year of entry and before it advanced), genetic support gives 2.19 (1.45–3.28; 638 programs) where that endpoint was proximal and 1.20 (0.72–2.00; 1,233) where it was intermediate; distal-endpoint and oncology programs had too few genetically supported targets to estimate. The endpoint classifier read each trial's registered primary outcomes and the targets of its investigational drug, but not the drug's name. In an audit of 43 trials stratified by class, it picked the governing outcome correctly in 43 and the class in 43. Knowing the targets, it counts target engagement only for the drug's own target; not knowing the drug, it cannot apply rules that depend on its class, such as FEV1 counting as a regulatory surrogate only for bronchodilators. Trials still in follow-up that have posted results have no outcome label yet and are not counted (90, against 5,590 in the analysis).
+
+**Sponsor and readout.** A program's sponsor is the lead sponsor of its first industry Phase 2 trial, resolved by an LLM to the company it names and that company's corporate parent in the years its Phase 2 trials started, so a subsidiary counts with its parent and a later acquisition does not reach back (0.3% of programs unresolved). Sponsor size is the number of programs the company took into Phase 2 in 2008–2019, in three tiers: the 20 largest, the next 80 and the rest. "Compared with itself" gives each of the 24 sponsors with at least 30 Phase 2 programs (41% of programs) its own baseline and pools the rest by tier. A program's readout is the primary result (a mixed result counts as missed) of its first randomised industry Phase 2 efficacy trial that started within a year of entry and before the program advanced, the same trial as the endpoint analysis; 31% of Phase 2 programs have one. Models are otherwise this analysis's: modified Poisson, errors clustered by primary-target set, adjusted for disease area, modality, period, novelty and precedent.
 
 
 ### By endpoint

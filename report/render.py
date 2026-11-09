@@ -91,6 +91,38 @@ def year_table() -> str:
                                              "Phase 3 → approval (share still running)"]))
 
 
+def running_table() -> str:
+    from report.section1 import RUNNING_WHY
+    df = pd.read_csv(os.path.join(OUT, "section1", "still_running.csv")).set_index("phase")
+    rows = [[f"Phase {ph}", f"{int(r.running):,} ({pct(r.running / r.entered, 0)} of entrants)",
+             *[f"{int(r[k]):,} ({pct(r[k] / r.running, 0)})" for k in RUNNING_WHY]] for ph, r in df.iterrows()]
+    return table(pd.DataFrame(rows, columns=["Phase entered", "Still running", *RUNNING_WHY.values()]))
+
+
+def failure_definitions_table() -> str:
+    """Every cause of a stop and its subcauses, with the definitions the classifiers were given."""
+    from pipeline.stop_causes import SUBCAUSE_MEANING
+    from report.attribution import SUBCAUSE_LABELS
+    from report.stop_causes import BREAKDOWN, CAUSE_LABELS, CAUSE_MEANING, FATE_MEANING, SUBCAUSE_NAMES
+    rows = []
+    for cause, label in CAUSE_LABELS.items():
+        rows.append([f"**{label}**", "", CAUSE_MEANING[cause]])
+        if cause == "efficacy":
+            rows += [["", short, sentence_case(long.split(": ", 1)[-1])] for long, short in SUBCAUSE_LABELS.values()]
+        for sub in BREAKDOWN.get(cause, []):
+            meaning = (FATE_MEANING if cause == "unknown" else SUBCAUSE_MEANING)[sub].replace("not_stated", '"not stated"')
+            rows.append(["", SUBCAUSE_NAMES[sub], sentence_case(meaning)])
+    return table(pd.DataFrame(rows, columns=["Cause", "Subcause", "Definition"]))
+
+
+def evidence_definitions_table() -> str:
+    """Each area of the evidence chart: what counts as having it, and where it comes from."""
+    from report.evidence_lines import AREA_MEANING, AREAS
+    rows = [[AREAS[k][0].label.split(":")[0].replace(" (exploratory)", ""), counts, source]
+            for k, (counts, source) in AREA_MEANING.items()]
+    return table(pd.DataFrame(rows, columns=["Evidence", "What counts", "Source and dating"]))
+
+
 def sensitivity_table() -> str:
     df = pd.read_csv(os.path.join(OUT, "section1", "loa_overall.csv"))
     df = df.assign(**{"Cohort or definition": df.label.map(sentence_case),
@@ -495,7 +527,8 @@ def s3_rules_table() -> str:
 
 
 TABLES = {"TRANSITIONS_TABLE": transitions_table, "SENSITIVITY_TABLE": sensitivity_table,
-          "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table,
+          "PERIOD_TABLE": period_table, "YEAR_TABLE": year_table, "RUNNING_TABLE": running_table,
+          "FAILURE_DEFINITIONS_TABLE": failure_definitions_table, "EVIDENCE_DEFINITIONS_TABLE": evidence_definitions_table,
           "AREA_TABLE": lambda: stratum_table("loa_by_area.csv", "Disease area", bio.AREA_LOA),
           "MODALITY_TABLE": lambda: stratum_table("loa_by_modality.csv", "Modality", bio.MODALITY_LOA),
           "FAILURE_TABLE": failure_table, "RS_TABLE": rs_table, "PREDICTION_TABLE": prediction_table, "CHEMBL_MATCH_TABLE": chembl_match_table,
