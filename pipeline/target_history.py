@@ -352,6 +352,10 @@ def label(_args) -> None:
     run_id = llm.run(TASK, items)
     decided = llm.decisions(run_id)
     with llm.connect() as conn, conn.cursor() as cur:
+        # a verdict holds only this run's decision: rows it did not decide (or no longer reads) are cleared
+        cur.execute("""UPDATE preclin.stop_target_history SET verdict = NULL, verdict_evidence = NULL,
+                         verdict_basis = NULL, quote = NULL, sources = '{}', llm_decision_id = NULL,
+                         label_method_id = NULL WHERE llm_decision_id IS NOT NULL""")
         execute_values(cur, """UPDATE preclin.stop_target_history h SET verdict = v.verdict,
                                  verdict_evidence = v.evidence, verdict_basis = v.basis, quote = nullif(v.quote, ''),
                                  sources = v.sources, llm_decision_id = v.decision, label_method_id = v.method
