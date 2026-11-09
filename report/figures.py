@@ -546,7 +546,7 @@ CIRCULAR = {("lit_human_engagement", "stop_engagement")}
 def evidence_grid():
     """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
     adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much, and how many
-    stops among the programs with the evidence it rests on."""
+    stops among the programs with the evidence it rests on; an uncoloured cell gives the interval."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
     rows = [c for c in GRID_ROWS if c in df.index]
@@ -563,8 +563,8 @@ def evidence_grid():
                 stops = round(df.at[c, "exposed"] * df.at[c, f"{outcome}_ppv"])
                 change = f"{1 - rr:.0%} fewer" if hi < 1 else f"{rr - 1:.0%} more"
                 color, text, ink = FEWER if hi < 1 else MORE, f"{change}\n{stops:,} stops", "white"
-            else:
-                color, text, ink = NEUTRAL, "no clear effect", MUTED
+            else:  # the interval spans 1: what it leaves possible, not a claim of no effect
+                color, text, ink = NEUTRAL, f"can't tell\n{lo:.2f}–{hi:.2f}×", MUTED
             ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
             ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
                     fontweight="bold" if ink == "white" else "normal")
