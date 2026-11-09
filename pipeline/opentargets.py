@@ -221,6 +221,7 @@ def apply_dates(cur) -> None:
                          FROM preclin.ot_evidence WHERE evidence_year IS NOT NULL AND score > 0
                          GROUP BY 1, 2, 3) s
                    WHERE (a.target_ensembl, a.disease_id, a.datasource) = (s.target_ensembl, s.disease_id, s.datasource)""")
+    cur.execute("REFRESH MATERIALIZED VIEW preclin.ot_evidence_tiers")  # the report's summary of the dated evidence
 
 
 def dates(_args) -> None:

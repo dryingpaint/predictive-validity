@@ -29,14 +29,14 @@ For {{stop_causes.inferred.programs|int}} of the {{stop_causes.stops|int}} Phase
     * Slow enrollment: {{stop_causes.subcauses.operational.enrollment.share|pct0}}
     * COVID-19: {{stop_causes.subcauses.operational.covid_19.share|pct0}}
     * Trials redesigned or replaced: {{stop_causes.subcauses.operational.trial_redesigned.share|pct0}}
-* **Efficacy failures**, by whether the drug engaged its target, among Phase 2 and 3 programs that stopped for efficacy or exposure:
-    * Engaged its target, but the disease did not respond: {{attribution.phase23.subcauses.engaged_no_benefit.n|int}} of the {{attribution.phase23.testable.n|int}} programs where engagement is known
-    * Never engaged its target or reached adequate exposure: {{attribution.phase23.testable.not_engaged_share|pct0}} ({{attribution.phase23.testable.lo|pct0}}–{{attribution.phase23.testable.hi|pct0}}) of those, {{attribution.phase23.details.other_drug_on_target_worked.n|int}} of them inferred because another drug on the same target worked; as common in Phase 3 ({{attribution.by_phase.3.testable.not_engaged_share|pct0}}) as in Phase 2 ({{attribution.by_phase.2.testable.not_engaged_share|pct0}})
+* **Efficacy failures**, by what the evidence shows about target engagement (shares of all Phase 2 and 3 programs that stopped for efficacy or exposure):
+    * Engaged its target, but the disease did not respond: {{attribution.phase23.subcauses.engaged_no_benefit.share|pct0}}
+    * No human evidence of engagement either way: {{attribution.phase23.subcauses.no_engagement_data.share|pct0}}
+    * Never engaged its target or reached adequate exposure: {{attribution.phase23.subcauses.not_engaged.share|pct0}}
     * Trial design, population or endpoint: {{attribution.phase23.subcauses.trial_design.share|pct0}}
-    * Toxicity offset any efficacy: {{attribution.phase23.subcauses.toxicity_offset.n|int}} programs
-    * No engagement data either way: {{attribution.phase23.subcauses.no_engagement_data.share|pct0}}
+    * Toxicity offset any efficacy: {{attribution.phase23.subcauses.toxicity_offset.share|pct0}}
 
-    The first kind points to a gap in models of the disease, and the second to a gap in models of dose and engagement.
+    Where engagement is known, {{attribution.phase23.testable.not_engaged_share|pct0}} ({{attribution.phase23.testable.lo|pct0}}–{{attribution.phase23.testable.hi|pct0}}) were never engaged, as often in Phase 3 ({{attribution.by_phase.3.testable.not_engaged_share|pct0}}) as in Phase 2 ({{attribution.by_phase.2.testable.not_engaged_share|pct0}}); in {{attribution.phase23.details.other_drug_on_target_worked.n|int}} of them this is inferred because another drug on the same target worked. The first kind points to a gap in models of the disease, the third to a gap in models of dose and engagement.
 * **Stops no source explains**, by signal:
     * Sponsor started no later trial: {{stop_causes.subcauses.unknown.sponsor_went_quiet.share|pct0}}
     * Drug dropped while its sponsor carried on: {{stop_causes.subcauses.unknown.drug_dropped.share|pct0}}

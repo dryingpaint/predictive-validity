@@ -31,6 +31,25 @@ CAUSE_LABELS = {"efficacy": "Efficacy or exposure (PK, dose, formulation)", "saf
                 "operational": "Operational (enrollment, sites, supply, regulatory)",
                 "positive_not_advanced": "Positive readout, not yet advanced", "unknown": "Unknown",
                 "not_stopped": "Did not actually stop", "not_a_program": "Not a development program"}
+CAUSE_MEANING = {
+    "efficacy": "No or too little efficacy: futility, a missed primary endpoint, or efficacy not competitive with the "
+                "standard of care; or a failure of exposure, pharmacokinetics, dose or formulation",
+    "safety": "Adverse events, poor tolerability, a safety signal, or a clinical hold for safety",
+    "sponsor_decision": "The sponsor chose to stop or could not go on: other programs put first, commercial or "
+                        "competitive reasons, a partner leaving, an acquisition or merger, or running out of money",
+    "operational": "Running the trial failed: enrollment, sites or drug supply, COVID-19, a regulatory or procedural "
+                   "hold not about safety, or a trial redesigned or replaced",
+    "positive_not_advanced": "The trial met its primary endpoint and the program still did not move on in the disease",
+    "unknown": "No source gives the cause or allows a reasoned inference; described instead by what the drug and its "
+               "sponsor did next",
+    "not_stopped": "Development went on under another registry, region, name or combination, or the FDA "
+                   "approved the drug for the disease",
+    "not_a_program": "An academic study using an approved drug as a research tool, or a "
+                     "drug-interaction or dosing study"}
+FATE_MEANING = {"sponsor_went_quiet": "the sponsor started no registered trial more than 12 months after the stop",
+                "drug_approved_elsewhere": "the drug has an FDA approval for another disease",
+                "drug_continued_elsewhere": "the drug went on in other diseases",
+                "drug_dropped": "none of these: the drug went no further while its sponsor stayed active"}
 SHOWN = {"efficacy": CAUSE_LABELS["efficacy"], "safety": "Safety", "sponsor_decision": "Sponsor decision",
          "operational": "Operational", "positive_not_advanced": CAUSE_LABELS["positive_not_advanced"],
          "unknown": "Unknown"}  # the figure's categories; a program that did not stop is left out
