@@ -2,6 +2,84 @@
 
 <!-- Rendered by `python -m report` into REPORT_APPENDIX.md, the doc's "Appendix detail" tab. -->
 
+## Definitions
+
+What each cause of a stop, and each kind of evidence, means in the main tab.
+
+### Why programs stop: causes and subcauses
+
+Every stop has one cause; where a source gives more detail, one subcause from the cause's list, the first listed winning when more than one applies. A stop no source explains is described by what the drug and its sponsor did next.
+
+| Cause | Subcause | Definition |
+| :---- | :---- | :---- |
+| **Efficacy or exposure (PK, dose, formulation)** |  | No or too little efficacy: futility, a missed primary endpoint, or efficacy not competitive with the standard of care; or a failure of exposure, pharmacokinetics, dose or formulation |
+|  | Not engaged | Exposure or engagement too low, or another drug on the target worked |
+|  | Engaged, no benefit | Target or mechanism wrong for the disease as tested |
+|  | Trial design, population, endpoint | Trial design, population or endpoint, mechanism not in question |
+|  | Toxicity offset efficacy | On-target toxicity offset efficacy |
+|  | No engagement data | No human evidence of engagement either way |
+| **Safety** |  | Adverse events, poor tolerability, a safety signal, or a clinical hold for safety |
+|  | On-target toxicity | The text ties the harm to the drug's mechanism, to hitting its target |
+|  | Off-target toxicity | The text ties the harm to the molecule rather than the target (off-target binding, metabolites, the formulation) |
+|  | Animal toxicology finding | A toxicity finding in animal or laboratory studies stopped it, with no mechanism stated (a need for more preclinical work that names no toxicity is "not stated") |
+|  | Harm in patients, mechanism not stated | Harm or a safety signal seen in people in a trial, named or not (liver injury, deaths, side effects patients would not tolerate, an unfavourable benefit-risk), with no mechanism stated |
+|  | Other stated reason | The text gives a specific reason that none of the listed subcauses covers, each read broadly |
+|  | Not stated | The text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', 'business' or 'administrative reasons', or a safety concern without saying whether it was seen in people or animals |
+| **Sponsor decision (portfolio, commercial, partner, acquisition, funding or closure)** |  | The sponsor chose to stop or could not go on: other programs put first, commercial or competitive reasons, a partner leaving, an acquisition or merger, or running out of money |
+|  | Acquisition or merger | The sponsor was acquired or merged and the program was dropped |
+|  | Funding or closure | The sponsor or the trial ran out of money (including a grant that ended), or the sponsor wound down, went bankrupt or closed |
+|  | Partner exit or none found | A licensing or development partner ended the deal or handed the rights back, or the sponsor was looking for a partner to take it forward and none did |
+|  | Replaced by a successor | Development moved to another formulation, dose form, combination or follow-on drug |
+|  | Regulator asked for more trials | A regulator required further trials or data and the sponsor did not go on |
+|  | Commercial or competitive | The market, pricing, reimbursement, a competing drug, a change in the standard of care or a change in the clinical landscape made it not worth pursuing |
+|  | Portfolio prioritisation | The text says the sponsor chose to put its resources into other programs, areas or indications |
+|  | Other stated reason | The text gives a specific reason that none of the listed subcauses covers, each read broadly |
+|  | Not stated | The text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', 'business' or 'administrative reasons', or a safety concern without saying whether it was seen in people or animals |
+| **Operational (enrollment, sites, supply, regulatory)** |  | Running the trial failed: enrollment, sites or drug supply, COVID-19, a regulatory or procedural hold not about safety, or a trial redesigned or replaced |
+|  | COVID-19 | The COVID-19 pandemic disrupted the trial |
+|  | Regulatory hold on the trial | A regulatory or procedural requirement or hold, not about safety, stopped the trial itself |
+|  | Trial redesigned or replaced | The trial was stopped to be redesigned or replaced by another trial of the same drug, or its design could not answer the question |
+|  | Enrollment | Patients could not be recruited or retained fast enough |
+|  | Sites or supply | Running the trial: sites, investigators or staff, drug supply, manufacturing for the trial, trial procedures or measurements, delays, or other logistics |
+|  | Other stated reason | The text gives a specific reason that none of the listed subcauses covers, each read broadly |
+|  | Not stated | The text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', 'business' or 'administrative reasons', or a safety concern without saying whether it was seen in people or animals |
+| **Positive readout, not yet advanced** |  | The trial met its primary endpoint and the program still did not move on in the disease |
+|  | Regulator declined approval | A regulator (the FDA, the EMA, China's NMPA or another) declined to approve it |
+|  | Acquisition or merger | The sponsor was acquired or merged and the program was dropped |
+|  | Funding or closure | The sponsor or the trial ran out of money (including a grant that ended), or the sponsor wound down, went bankrupt or closed |
+|  | Partner exit or none found | A licensing or development partner ended the deal or handed the rights back, or the sponsor was looking for a partner to take it forward and none did |
+|  | Replaced by a successor | Development moved to another formulation, dose form, combination or follow-on drug |
+|  | Regulator asked for more trials | A regulator required further trials or data and the sponsor did not go on |
+|  | Commercial or competitive | The market, pricing, reimbursement, a competing drug, a change in the standard of care or a change in the clinical landscape made it not worth pursuing |
+|  | Portfolio prioritisation | The text says the sponsor chose to put its resources into other programs, areas or indications |
+|  | Approved outside the US | The drug was approved, or filed, outside the United States, and no other reason is given |
+|  | Other stated reason | The text gives a specific reason that none of the listed subcauses covers, each read broadly |
+|  | Not stated | The text gives no more detail than the cause: 'strategic reasons', 'a change in strategy', 'business' or 'administrative reasons', or a safety concern without saying whether it was seen in people or animals |
+| **Unknown** |  | No source gives the cause or allows a reasoned inference; described instead by what the drug and its sponsor did next |
+|  | Sponsor started no later trial | The sponsor started no registered trial more than 12 months after the stop |
+|  | Drug approved in another disease | The drug has an FDA approval for another disease |
+|  | Drug continued in other diseases | The drug went on in other diseases |
+|  | Drug dropped, sponsor active | None of these: the drug went no further while its sponsor stayed active |
+| **Did not actually stop** |  | Development went on under another registry, region, name or combination, or the FDA approved the drug for the disease |
+| **Not a development program** |  | An academic study using an approved drug as a research tool, or a drug-interaction or dosing study |
+
+### Lines of evidence
+
+Each program is scored for the evidence its targets had for its disease as of the year before it entered the phase.
+
+| Evidence | What counts | Source and dating |
+| :---- | :---- | :---- |
+| Human genetics | Inherited variants link the target's gene to the program's disease, a subtype of it or a disease at least 0.8 similar on MONDO (Lin): GWAS credible sets, gene burden tests, ClinVar, PanelApp, Orphanet, Gene2Phenotype, ClinGen, UniProt | Open Targets 26.09; each item dated by when it became known |
+| Curated pathways | A curated pathway records a disease mutation disrupting a pathway the target is in | Reactome, through Open Targets |
+| Tumour genetics | The target's gene is recurrently mutated in the program's cancer (oncology only) | COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets |
+| Diseased tissue | The target's RNA level differs at least 2.1-fold between diseased and normal tissue | Expression Atlas, through Open Targets |
+| Mouse genetics | Mice with the target's gene knocked out or mutated whose phenotypes resemble the disease; not drugs tested in mice | IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm |
+| The drug | The drug's binding or activity at its primary target, measured in laboratory assays: potency of 100 nM or better, and selectivity over other proteins (small molecules) | ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it |
+| Published animal studies of the drug before entry | A published study of the drug itself in animals, in a model of the disease or in healthy animals (exploratory: the searches miss some of these studies) | PubMed abstracts, screened by an LLM |
+| Published study of the drug acting on its target in people | A published study showing the drug acting on its target in people (exploratory) | PubMed abstracts, screened by an LLM |
+| Target safety risk | A property of the target, not evidence for the disease: people rarely carry broken copies of the gene (gnomAD LOEUF below 0.35), or mice without it die before weaning | gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets |
+| Earlier drugs on the same target | The benchmark, not preclinical evidence: an FDA-approved drug on the same target, for a related disease (Lin at least 0.5) or only for unrelated ones, or another drug on the target that failed a related-disease Phase 2 or 3 trial in the three years before entry | Drugs@FDA approvals and ClinicalTrials.gov |
+
 ## Tables behind the figures
 
 The numbers each figure in the main tab draws, with the columns the figures leave out.

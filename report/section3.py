@@ -33,6 +33,7 @@ import pandas as pd
 import statsmodels.api as sm
 from statsmodels.discrete.conditional_models import ConditionalLogit
 
+from pipeline import llm
 from report import frame
 from report.disease_match import Mondo
 from report.section1 import SEED, approval_dates, failure_modes, phase_rows
@@ -115,41 +116,7 @@ def evidence_index() -> tuple[dict, dict]:
     became known (preclin.ot_evidence.evidence_year: IMPC-consortium mouse models by their
     first IMPC data release, ClinVar records by their creation); undated items count only
     when evidence is not frozen."""
-    q75 = float(frame.query("""SELECT percentile_cont(0.75) WITHIN GROUP (ORDER BY resource_score) AS q
-                               FROM preclin.ot_evidence WHERE datasource = 'impc'""").q.iloc[0])
-    g = frame.query("""
-        WITH e AS (
-            SELECT target_ensembl AS ens, disease_id, resource_score, confidence,
-                   direction_on_target AS dot, direction_on_trait AS dtr, (detail->>'log2FoldChangeValue')::float AS lfc,
-                   CASE WHEN datasource <> 'impc' THEN datasource
-                        WHEN preclin.ot_evidence_key(datasource, detail) IS NOT NULL THEN 'impc' ELSE 'mgi' END AS source,
-                   coalesce(evidence_year, %(never)s) AS y,
-                   datasource NOT IN ('eva', 'eva_somatic')
-                     OR detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic'] AS counts
-            FROM preclin.ot_evidence
-            WHERE (datasource NOT IN ('eva', 'eva_somatic')
-                   OR detail->'clinicalSignificances' ?| array['pathogenic', 'likely pathogenic', 'protective'])
-              AND NOT (datasource = 'clingen' AND confidence IN ('Disputed', 'Refuted', 'Limited',
-                                                                   'No Known Disease Relationship'))
-              AND NOT (datasource = 'impc' AND resource_score IS NULL))
-        SELECT ens, disease_id, source, min(y) FILTER (WHERE counts) AS y_any,
-               min(y) FILTER (WHERE counts AND (
-                                    (source = 'gwas_credible_sets' AND resource_score >= 0.8)
-                                 OR (source = 'eva' AND confidence IN ('criteria provided, multiple submitters, no conflicts',
-                                                                       'reviewed by expert panel', 'practice guideline'))
-                                 OR (source = 'clingen' AND confidence IN ('Definitive', 'Strong'))
-                                 OR (source = 'gene2phenotype' AND confidence IN ('definitive', 'strong'))
-                                 OR (source = 'genomics_england' AND confidence = 'green')
-                                 OR (source IN ('impc', 'mgi') AND resource_score >= %(q75)s))) AS y_strong,
-               min(y) FILTER (WHERE source = 'gwas_credible_sets' AND resource_score >= 0.5
-                                AND resource_score < 0.8) AS y_mid,
-               min(y) FILTER (WHERE source = 'gwas_credible_sets' AND resource_score < 0.5) AS y_weak,
-               min(y) FILTER (WHERE dot = 'LoF' AND dtr = 'protect') AS y_lof_protect,
-               min(y) FILTER (WHERE counts AND dot = 'LoF' AND dtr = 'risk') AS y_lof_risk,
-               min(y) FILTER (WHERE counts AND dot = 'GoF' AND dtr = 'risk') AS y_gof_risk,
-               min(y) FILTER (WHERE dot = 'GoF' AND dtr = 'protect') AS y_gof_protect,
-               min(y) FILTER (WHERE lfc > 0) AS y_up
-        FROM e GROUP BY 1, 2, 3""", {"never": NEVER, "q75": q75})
+    g = frame.query("SELECT * FROM preclin.ot_evidence_tiers")  # the summary of preclin.ot_evidence (migration 140)
     g["family"] = g.source.map(FAMILY)
     germline_first = g[g.family.isin(GERMLINE)].groupby("ens").y_any.min().dropna().astype(int).to_dict()
     mondo = frame.query("SELECT disease_id, mondo_ids FROM preclin.ot_disease WHERE cardinality(mondo_ids) > 0")
@@ -565,17 +532,100 @@ def proximity_test(x: pd.DataFrame, outcome: str = "not_met") -> dict:
     return {"n": int(len(x)), "g3_at_proximal": coef(fit, "g3"), "interaction_per_step": coef(fit, "g3_trend")}
 
 
-def program_endpoint(trials: pd.DataFrame, endpoints: pd.DataFrame, c2: pd.DataFrame) -> pd.Series:
-    """Endpoint class of each Phase 2 program's first randomised industry Phase 2 efficacy trial
-    that started within a year of entry and before the program advanced (a later trial would
-    let the outcome choose the stratum)."""
+def first_efficacy_trial(trials: pd.DataFrame, endpoints: pd.DataFrame, c2: pd.DataFrame) -> pd.DataFrame:
+    """Each Phase 2 program's first randomised industry Phase 2 efficacy trial that started within a year of entry
+    and before the program advanced (a later trial would let the outcome choose it): nct_id and endpoint_class,
+    indexed by program."""
     own = trials[(trials.phase == 2) & trials.attach.eq("disease") & trials.starts_phase][["program_id", "nct_id", "start_date"]] \
         .merge(endpoints, on="nct_id").merge(c2[["program_id", "entry", "event", "event_date"]], on="program_id")
     start = pd.to_datetime(own.start_date)
     own = own[(start <= pd.to_datetime(own.entry) + pd.Timedelta(days=365))
               & (own.event.ne("advanced") | (start < pd.to_datetime(own.event_date)))]
     return own.sort_values(["program_id", "start_date", "nct_id"]).drop_duplicates("program_id") \
-              .set_index("program_id").endpoint_class
+              .set_index("program_id")[["nct_id", "endpoint_class"]]
+
+
+def program_endpoint(trials: pd.DataFrame, endpoints: pd.DataFrame, c2: pd.DataFrame) -> pd.Series:
+    """Endpoint class of each Phase 2 program's first efficacy trial (first_efficacy_trial)."""
+    return first_efficacy_trial(trials, endpoints, c2).endpoint_class
+
+
+SPONSOR_TASK, SPONSOR_VERSION = "sponsor_company", "v1"  # pipeline.sponsors
+SPONSOR_TIERS = {"top20": 20, "21-100": 100}  # rank cutoffs of sponsor size; the rest are "smaller"
+latest_decisions = frame.held_once(llm.latest_decisions)
+
+
+def sponsors(rows: pd.DataFrame, trials: pd.DataFrame) -> pd.DataFrame:
+    """Per Phase 2 program in `rows`: the company behind the lead sponsor of its first industry Phase 2 trial (its
+    corporate parent when those trials ran, pipeline.sponsors), that company's number of Phase 2 programs in `rows`
+    and its size tier (SPONSOR_TIERS by that number)."""
+    ph2 = rows[(rows.phase == 2) & ~rows.credited].program_id
+    t = trials[(trials.phase == 2) & trials.industry & trials.program_id.isin(ph2) & trials.start_date.notna()]
+    t = t.sort_values(["program_id", "start_date", "nct_id"]).drop_duplicates("program_id")
+    lead = frame.query("SELECT nct_id, lead_sponsor FROM preclin.ctgov_study WHERE nct_id = ANY(%s)",
+                       (sorted(t.nct_id),)).set_index("nct_id").lead_sponsor
+    dec = latest_decisions(SPONSOR_TASK, SPONSOR_VERSION)
+    parent = dict(zip(dec.key, (o["parent"] for o in dec.parsed_output)))
+    out = pd.DataFrame({"program_id": t.program_id.to_numpy(),
+                        "sponsor": t.nct_id.map(lead).map(parent).fillna("unresolved").to_numpy()})
+    size = out.sponsor.value_counts()
+    rank = size.rank(ascending=False, method="first")
+    out["sponsor_programs"] = out.sponsor.map(size)
+    r = out.sponsor.map(rank)
+    out["sponsor_tier"] = np.where(r <= SPONSOR_TIERS["top20"], "top20",
+                                   np.where(r <= SPONSOR_TIERS["21-100"], "21-100", "smaller"))
+    return out
+
+
+def commitment(c2: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame, outcomes: pd.DataFrame,
+               endpoints: pd.DataFrame) -> dict:
+    """Whether the genetics advantage at Phase 2 is the sponsor's commitment rather than the biology: the headline
+    risk ratio with sponsor size and with each large sponsor as its own baseline, within size tiers and within
+    sponsors; and split at the Phase 2 readout, which the sponsor does not choose, into whether the first efficacy
+    trial met its primary endpoint and whether a program advanced given its readout."""
+    d = c2.merge(sponsors(rows, trials), on="program_id", how="left")
+    d["sponsor"] = d.sponsor.fillna("unresolved")
+    d["sponsor_tier"] = d.sponsor_tier.fillna("smaller")
+    d["log_sponsor_programs"] = np.log(d.sponsor_programs.fillna(1))
+    own = d.sponsor.map(d.sponsor.value_counts()) >= MIN_LEVEL
+    d["sponsor_fe"] = np.where(own & d.sponsor.ne("unresolved"), d.sponsor, "pooled " + d.sponsor_tier)
+    models = {"reported": COVARS, "size_tier": (*COVARS, "sponsor_tier"),
+              "log_size": (*COVARS, "log_sponsor_programs"), "own_baseline": (*COVARS, "sponsor_fe")}
+    out = {"models": {k: {"n": int(len(d)), **coef(poisson(d, "s4", ["g3"], cov), "g3")} for k, cov in models.items()},
+           "tiers": {t: {"n": int(len(g)), "genetics_share": float((g.g3 > 0).mean()), "s4": float(g.s4.mean()),
+                         **coef(poisson(g, "s4", ["g3"]), "g3")} for t, g in d.groupby("sponsor_tier")},
+           "own_baseline_sponsors": int(d[own & d.sponsor.ne("unresolved")].sponsor.nunique()),
+           "own_baseline_share": float((own & d.sponsor.ne("unresolved")).mean()),
+           "unresolved_share": float(d.sponsor.eq("unresolved").mean())}
+    w = d[d.sponsor.ne("unresolved")].groupby("sponsor").apply(
+        lambda g: pd.Series({"programs": len(g), "with": int((g.g3 > 0).sum()), "s4_with": g[g.g3 > 0].s4.mean(),
+                             "s4_without": g[g.g3 <= 0].s4.mean()}), include_groups=False)
+    w = w[(w["with"] >= 3) & (w.programs - w["with"] >= 3)].reset_index()
+    w.to_csv(os.path.join(OUT, "within_sponsor.csv"), index=False)
+    out["within"] = {"sponsors": int(len(w)), "higher": int((w.s4_with > w.s4_without).sum()),
+                     "mean_with": float(w.s4_with.mean()), "mean_without": float(w.s4_without.mean())}
+    first = first_efficacy_trial(trials, endpoints, d)
+    read = outcomes[outcomes.primary_endpoint.isin(["met", "not_met", "mixed"])].drop_duplicates("nct_id") \
+        .set_index("nct_id").primary_endpoint
+    d["readout"] = d.program_id.map(first.nct_id).map(read)
+    r = d[d.readout.notna()].assign(met=lambda x: x.readout.eq("met").astype(float))
+    out["readout"] = {"n": int(len(r)), "share_of_c2": float(len(r) / len(d)), "met": float(r.met.mean()),
+                      "advanced_overall": {"n": int(len(r)), **coef(poisson(r, "s4", ["g3"]), "g3")},
+                      "met_readout": {"n": int(len(r)), **coef(poisson(r, "met", ["g3"]), "g3")},
+                      "advanced_if_met": {"n": int(r.met.sum()), **coef(poisson(r[r.met > 0], "s4", ["g3"]), "g3"),
+                                          "s4_with": float(r[(r.met > 0) & (r.g3 > 0)].s4.mean()),
+                                          "s4_without": float(r[(r.met > 0) & (r.g3 <= 0)].s4.mean())},
+                      "advanced_if_not_met": {"n": int((r.met == 0).sum()),
+                                              **coef(poisson(r[r.met == 0], "s4", ["g3"]), "g3"),
+                                              "s4_with": float(r[(r.met == 0) & (r.g3 > 0)].s4.mean()),
+                                              "s4_without": float(r[(r.met == 0) & (r.g3 <= 0)].s4.mean())},
+                      "met_with": float(r[r.g3 > 0].met.mean()), "met_without": float(r[r.g3 <= 0].met.mean())}
+    rows_out = [{"panel": "sponsor", "label": k, **v} for k, v in out["models"].items()] \
+        + [{"panel": "tier", "label": k, **{x: v[x] for x in ("n", "rr", "lo", "hi") if x in v}} for k, v in out["tiers"].items()] \
+        + [{"panel": "readout", "label": k, **{x: v[x] for x in ("n", "rr", "lo", "hi") if x in v}}
+           for k, v in out["readout"].items() if isinstance(v, dict)]
+    pd.DataFrame(rows_out).to_csv(os.path.join(OUT, "commitment.csv"), index=False)
+    return out
 
 
 def bootstrap_rr(d: pd.DataFrame, col: str, rng: np.random.Generator) -> np.ndarray:
@@ -837,6 +887,7 @@ def main() -> None:
     n["trials"] = {"n": int(len(tf)), "not_met": float(tf.not_met.mean()),
                    "unlabelled_with_results": unlabelled_with_results(endpoints, outcomes, trials, scored)}
     n["endpoint_audit"] = endpoint_audit()
+    n["commitment"] = commitment(c2, rows, trials, outcomes, endpoints)
     n["by_endpoint_stratum"] = {s: {**summary(g), **estimate(g, "s4", "g3")} for s, g in c2.groupby("endpoint_stratum")}
 
     c23, covp = pd.concat([c2, c3]), (*COVARS, "phase")

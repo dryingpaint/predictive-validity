@@ -7,35 +7,36 @@
   "REPORT.md": {
    "name": "Predictive Validity Report",
    "node": "1e3b2f56-9d69",
-   "rev": 313,
+   "rev": 319,
    "sections": {
     "Predictive Validity in Drug Development": "965f1731527f1e6e",
     "Predictive Validity in Drug Development > Introduction": "3458a6e501cc3b2c",
     "Predictive Validity in Drug Development > A history of drug development": "d5cc16d8618d2e15",
     "Predictive Validity in Drug Development > Industry failure modes": "7b6bce41d66da1d8",
     "Predictive Validity in Drug Development > Industry failure modes > How programs are counted": "e0d81f5ad4c46e80",
-    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "f22c2b010847e1cd",
+    "Predictive Validity in Drug Development > Industry failure modes > Why programs stop": "0c6d9be2dc72325c",
     "Predictive Validity in Drug Development > Industry failure modes > By disease area and modality": "02a929c8ebc27e79",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence": "d2fff9e8e7e62b90",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Evidence and design": "287454dea4e70fa0",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Which evidence predicts": "f31f742ec568cc78",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What programs enter on": "50d05337b0f39741",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Does stronger or more specific evidence help?": "f88e43ff255faf1b",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Biology or sponsor commitment?": "7e13ad43103c8cbc",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > Confirmatory hypotheses": "5e3ecf86d151f369",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "bf72f66682b6e6ba",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > By disease area": "65bbf3251a279ab4",
     "Predictive Validity in Drug Development > Predictive power of preclinical evidence > The drug's own pharmacology": "6ebe678989c501ce",
-    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What this means": "0bb776beb610fa44",
+    "Predictive Validity in Drug Development > Predictive power of preclinical evidence > What this means": "dcff41ae2ddcc25e",
     "Predictive Validity in Drug Development > Historical case studies": "3a39006d4045d6fa",
     "Predictive Validity in Drug Development > Appendix": "9c0a710947ddf48a",
     "Predictive Validity in Drug Development > Appendix > Data": "e820c9c10c068c86",
     "Predictive Validity in Drug Development > Appendix > How programs are counted": "095872aa8e36bc2e",
     "Predictive Validity in Drug Development > Appendix > How LOA moves with each definition": "888e6d1ad6fb7a9e",
-    "Predictive Validity in Drug Development > Appendix > Change over time": "28c6dcff539aa5c4",
+    "Predictive Validity in Drug Development > Appendix > Change over time": "457bcd23f9ef315e",
     "Predictive Validity in Drug Development > Appendix > How each label was made, and how good it is": "31035308bbbc59fc",
     "Predictive Validity in Drug Development > Appendix > How stops were traced and efficacy failures classified": "9507414e57e588b6",
     "Predictive Validity in Drug Development > Appendix > How the evidence is scored and modelled": "3940905050016e77",
     "Predictive Validity in Drug Development > Appendix > Can the evidence pick individual programs?": "e8d231fb8a07a845",
-    "Predictive Validity in Drug Development > Appendix > Design of the Phase 2 analysis": "b13526a446b38b13",
+    "Predictive Validity in Drug Development > Appendix > Design of the Phase 2 analysis": "920e954ec6faf523",
     "Predictive Validity in Drug Development > Appendix > By endpoint": "00128bcb673bdaeb",
     "Predictive Validity in Drug Development > Appendix > Evidence categories": "c0e0dc52b54a2478",
     "Predictive Validity in Drug Development > Appendix > Limitations": "1f57acbcef0ea7af",
@@ -45,9 +46,12 @@
   "REPORT_APPENDIX.md": {
    "name": "Appendix detail",
    "node": "9bf11c10-61a3",
-   "rev": 60,
+   "rev": 61,
    "sections": {
     "Appendix detail": "dd0cdf63730712ee",
+    "Appendix detail > Definitions": "8e4be647166ec494",
+    "Appendix detail > Definitions > Why programs stop: causes and subcauses": "5d1db69fe1e09862",
+    "Appendix detail > Definitions > Lines of evidence": "83c316379b858502",
     "Appendix detail > Tables behind the figures": "e889f9a39ba14b82",
     "Appendix detail > Tables behind the figures > Phase transitions": "52adcf4824e201b4",
     "Appendix detail > Tables behind the figures > Why programs stop": "b2355cbbf3e3001e",
@@ -121,9 +125,9 @@
    "published": "blob/24d140a1-c925"
   },
   "report/output/figures/genetics_by_area.png": {
-   "hash": "336d086eb7986577",
-   "blob": "blob/b2ca8d52-08d5",
-   "published": "blob/b2ca8d52-08d5"
+   "hash": "e508233caf4d6aa5",
+   "blob": "blob/1c0af967-e21a",
+   "published": "blob/1c0af967-e21a"
   },
   "report/output/figures/history.png": {
    "hash": "e3607251702dd4ef",
@@ -149,6 +153,11 @@
    "hash": "3ea2053e134937d0",
    "blob": "blob/45d2b551-1075",
    "published": "blob/45d2b551-1075"
+  },
+  "report/output/figures/sponsor_confound.png": {
+   "hash": "06bb7faf3b9555d4",
+   "blob": "blob/b438f9d1-708d",
+   "published": "blob/b438f9d1-708d"
   }
  }
 }
