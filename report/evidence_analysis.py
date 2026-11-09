@@ -41,7 +41,7 @@ from report import stop_causes
 from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, SAFETY, build, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
-from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable
+from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable, sponsors
 from report.windows import SECTION1
 
 OUT = os.path.join(frame.REPO, "report", "output", "evidence_analysis")
@@ -179,8 +179,8 @@ def evidence_basis(d: pd.DataFrame) -> dict:
                      "none": float((~(published | approved | potent))[rest].mean())}}
 
 
-def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame,
-                                                                          dict]:
+def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame, trials: pd.DataFrame) \
+        -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
     """The lines table (the registered categories), the areas table (the chart's grouping, AREAS), the stop-risk
     table (stop_risk) and numbers from
     the evidence-line dataset, the phase rows and the failure modes."""
@@ -204,10 +204,28 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
          "areas": {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in areas if r.get("column")},
          "literature_gate": literature_gate(),
          "basis": evidence_basis(d),
+         "published_strata": published_strata(d, rows, trials),
          **hypotheses(d)}
     stops = stop_risk(traced_stops(d))
     n["stop_risk"] = {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in stops.to_dict("records")}
     return pd.DataFrame(out), pd.DataFrame(areas), stops, n
+
+
+def published_strata(d: pd.DataFrame, rows: pd.DataFrame, trials: pd.DataFrame) -> dict:
+    """Where the gap at Phase 2 for a published study of the drug in an animal model of the disease lies: advancing
+    with and without it by the size tier of the program's sponsor (report.section3.sponsors) and by human genetic
+    support, and the adjusted risk ratio with both held fixed."""
+    col = "lit_animal_disease"
+    p2 = d[(d.phase == 2) & d.s4.notna() & d[col].notna()].merge(
+        sponsors(rows, trials)[["program_id", "sponsor_tier"]], on="program_id", how="left")
+    p2 = p2.assign(**{col: p2[col].astype(float), "sponsor_tier": p2.sponsor_tier.fillna("smaller"),
+                      "genetic": p2.cat_human_genetics.fillna(0).gt(0).astype(float)})
+    group = lambda g: {"n": int(len(g)), "share": float(g[col].mean()),  # noqa: E731
+                       "s4_with": float(g[g[col] > 0].s4.mean()), "s4_without": float(g[g[col] <= 0].s4.mean())}
+    return {"tiers": {t: group(g) for t, g in p2.groupby("sponsor_tier")},
+            "large": group(p2[p2.sponsor_tier.ne("smaller")]),
+            "genetic": {"with": group(p2[p2.genetic > 0]), "without": group(p2[p2.genetic <= 0])},
+            "adjusted": adjusted(p2, "s4", [col], (*COVARS, "sponsor_tier", "genetic"))}
 
 
 def literature_gate() -> dict:
@@ -225,7 +243,7 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes))
+    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes), trials)
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
     stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)
