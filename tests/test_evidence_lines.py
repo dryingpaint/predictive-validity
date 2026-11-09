@@ -3,7 +3,8 @@ import math
 import pandas as pd
 
 from report.evidence_lines import (AREAS, area_alone, area_columns, biomarker_selected, cell_dependency,
-                                    earlier_failure, failures_by_gene, molecule_lines, stale_inputs)
+                                    earlier_failure, earlier_safety_stop, failures_by_gene, molecule_lines,
+                                    stale_inputs)
 
 RELATED = frozenset({"MONDO:A", "MONDO:A1"})
 FAILED = pd.DataFrame([
@@ -31,6 +32,25 @@ def test_the_entitys_own_failures_and_unrelated_diseases_do_not_count():
 
 def test_entries_before_2011_have_no_value():
     assert earlier_failure(BY_GENE, 9, ["GENE1"], RELATED, pd.Timestamp("2010-12-31")) is None
+
+
+UNSAFE = failures_by_gene(pd.DataFrame([
+    (1, "MONDO:Z", "2012-06-30"),   # another entity on GENE1, any disease
+    (9, "MONDO:A", "2010-01-31"),   # the entity itself
+], columns=["moiety_id", "mondo_id", "ended"]), GENES)
+
+
+def test_another_drugs_safety_stop_in_any_disease_counts_a_year_after_its_trials_ended():
+    assert earlier_safety_stop(UNSAFE, 9, ["GENE1"], pd.Timestamp("2013-07-01")) is True
+    assert earlier_safety_stop(UNSAFE, 9, ["GENE1"], pd.Timestamp("2013-06-01")) is False
+
+
+def test_the_entitys_own_safety_stop_and_entries_before_2011_do_not_count():
+    assert earlier_safety_stop(UNSAFE, 9, ["GENE2"], pd.Timestamp("2016-01-01")) is False
+    own = failures_by_gene(pd.DataFrame([(9, "MONDO:A", "2010-01-31")], columns=["moiety_id", "mondo_id", "ended"]),
+                           GENES)
+    assert earlier_safety_stop(own, 9, ["GENE1"], pd.Timestamp("2016-01-01")) is False
+    assert earlier_safety_stop(UNSAFE, 9, ["GENE1"], pd.Timestamp("2010-12-31")) is None
 
 
 ASSAYS = pd.DataFrame([
@@ -201,7 +221,7 @@ def test_an_areas_tiers_are_mutually_exclusive_and_make_up_the_area():
                 {"rare_variant": 1.0, "gwas": 1.0, "g3": 1.0, "allelic_series": 1.0},
                 {"rare_variant": 0.0, "gwas": 0.0, "g3": 0.0})
     for col in ("somatic", "somatic_concordant", "expression", "reactome", "altered_animal", "animal_close",
-                "potent_100nm", "selective", "constrained", "ko_lethal", "earlier_failure", "precedent"):
+                "potent_100nm", "selective", "earlier_failure", "precedent"):
         d[col] = d[col].fillna(0.0) if col in d else 0.0
     d["assay_best"] = math.nan
     out = d.join(area_columns(d))

@@ -39,6 +39,10 @@ For 2,952 of the 5,428 Phase 2 and 3 stops among 2008–2019 entries, the regist
 
 **Efficacy is the main reason programs stop in Phases 2 and 3.** Counting sourced and likely causes, efficacy or exposure ended 48% of Phase 2 stops and 48% of Phase 3 stops, against 29% of Phase 2 and 3 stops as the registry records them. Sponsor decisions are the next largest cause in Phase 2 (25%) and the largest in Phase 1 (47%). In Phase 3, 30% of stops followed a positive readout. Safety is rare once only stops whose sponsor gives a safety reason count: 4% in Phase 2 and 4% in Phase 3.
 
+**Why drugs that engaged their target still failed.** Of the efficacy stops whose engagement was examined, 47% are drugs that reached and engaged their target while the disease did not respond (1,035 stops). What other drugs on the same target went on to do separates the explanations. For 34% of them the target worked only in other diseases: real biology, the wrong disease, often an approved drug tried in a new one. Another 7% hit targets no drug has worked on anywhere, though others were tried in the disease. For 23% another drug on the target already worked, or later worked, in the same disease, so this drug or its trial fell short; for 11% the target worked only in a related subtype or stage. 17% were the only attempt on their target, which leaves the question open.
+
+![Phase 2 and 3 stops among 2008–2019 entries: by cause; the efficacy stops by what the evidence shows about engagement; and the stops where the drug engaged its target without benefit, by what other drugs on the same target did](report/output/figures/why_stop.png)
+
 **What each cause breaks down into.** Shares are of Phase 2 and 3 stops whose cause is sourced.
 
 * **Sponsor decisions**: a source names the decision for 59% of these stops; the other 41% are the likely cause where no source gives one, and have no subcause. Where a source gives it, by subcause:
@@ -122,6 +126,14 @@ Patient selection does not explain the results: holding biomarker-selected enrol
 
 
 **Published studies of the drug (exploratory).** Programs whose drug had already been studied in animals in the published literature reached approval less often, not more: 0.79× as often for any published animal study, and 0.74× for a study in an animal model of the disease. In Phase 2 the gap remains when disease area, modality, era, novelty and precedent are held equal (0.83×, 0.71–0.99). A published study showing the drug acting on its target in people made no clear difference (1.04×). Publication is more likely a marker of who develops a drug than a cause of failure: companies rarely publish their own animal work before a trial, so a drug with a published animal record is more often one studied by academic groups, which these data cannot test directly. The searches found about three in four of the animal-model studies a blind hand search found, and fewer of the others (appendix).
+
+### Which failure each kind of evidence prevents
+
+![Which evidence goes with fewer or more Phase 1–3 stops for each reason](report/output/figures/evidence_grid.png)
+
+*Each cell compares programs with the evidence against those without it, for stops of one kind: human evidence shows the drug never adequately engaged its target (engagement); tolerability capped the dose or exposure failed (dose); it engaged the target and the disease did not respond (efficacy); harm (safety). Coloured cells are differences whose 95% range does not include zero, adjusted for disease area, modality, entry period, novelty, target precedent and phase; grey cells are not. Below the rule: signals of a target's or drug's safety risk (exploratory).*
+
+**Evidence that the target is right prevents efficacy failures, and nothing measured prevents safety failures.** Human genetics went with 31% fewer stops where the drug engaged its target without benefit, mouse genetics resembling the disease 22% fewer, and an earlier drug on the target 34% fewer. Genetic support did not change how often a drug failed to engage its target or reach adequate exposure; an earlier drug on the target did, with 47% fewer such failures, as later drugs on a target someone has already drugged tend to reach it. No line known before entry clearly prevents safety stops, including the standard genetic safety flags and an earlier drug on the same target stopping for safety; only about one program in 45 stops for safety, too few to show a modest effect. A published study of the drug engaging its target in people is not tested against engagement failures ("not testable"), because those failures were judged from the same publications.
 
 ### What programs enter on
 

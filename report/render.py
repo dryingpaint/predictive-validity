@@ -34,7 +34,9 @@ def pct(x, digits=1):
 
 
 FORMATS = {"": str, "pct": pct, "pct0": lambda v: pct(v, 0), "int": lambda v: f"{int(v):,}",
-           "x2": "{:.2f}".format, "x3": "{:.3f}".format, "p": lambda v: p_value(v)}
+           "x2": "{:.2f}".format, "x3": "{:.3f}".format, "p": lambda v: p_value(v),
+           "reduction": lambda rr: pct(1 - rr, 0),  # a risk ratio below 1 as the share fewer
+           "inverse": lambda share: f"{1 / share:.0f}"}  # a share as "one in N"
 BAND_NAMES = {"low": "lowest third", "middle": "middle third", "high": "highest third"}  # of programs with any support
 
 
