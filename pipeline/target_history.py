@@ -303,8 +303,8 @@ def history_lines(h: History, moiety_id: int, mondo_id: str, names: dict, label:
     def where(d: str) -> str:
         return "this disease" if d in close else "related" if d in rel else "other"
     lines = []
-    for o in h.partners.get(moiety_id, ()):
-        ss = sorted(h.succ.get(o, ()), key=lambda s: (s.mondo_id not in close, s.mondo_id not in rel))
+    for o in sorted(h.partners.get(moiety_id, ())):
+        ss = sorted(h.succ.get(o, ()), key=lambda s: (s.mondo_id not in close, s.mondo_id not in rel, s.mondo_id, s.kind))
         wins = [f"{'approved' if s.kind == 'approved' else 'met primary endpoint'} in {label.get(s.mondo_id, s.mondo_id)}"
                 f" ({where(s.mondo_id)}{', biomarker-selected' if s.selected else ''}"
                 f"{', ' + str(s.ended.year) if s.ended is not None else ''})" for s in ss[:4]]
@@ -312,7 +312,7 @@ def history_lines(h: History, moiety_id: int, mondo_id: str, names: dict, label:
         lost = [f"failed in {label.get(d, d)} ({where(d)})" for d in fails[:3]]
         if wins or lost:
             lines.append((bool(wins), f"{names.get(o, o)}: " + "; ".join(wins + lost)))
-    return [t for _, t in sorted(lines, key=lambda x: not x[0])][:MAX_PARTNERS]
+    return [t for _, t in sorted(lines, key=lambda x: (not x[0], x[1]))][:MAX_PARTNERS]
 
 
 def items_for(chosen: pd.DataFrame, h: History, with_history: bool, suffix: str = "") -> dict[str, dict]:
