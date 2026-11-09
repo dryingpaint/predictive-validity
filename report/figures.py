@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import textwrap
 
 import matplotlib
 matplotlib.use("Agg")
@@ -524,18 +525,14 @@ def evidence_translates():
     save(fig, "evidence_translates")
 
 
-# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, about the
-# drug, then the safety lines below a rule.
+# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, then about
+# the drug.
 GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_animal": "Mouse genetics shows the disease",
              "expression": "RNA change in diseased tissue", "cat_precedent": "Earlier drugs on the same target",
              "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
-             "lit_human_engagement": "Drug shown to engage its target in people",
-             "liability": "Standard genetic safety flags", "ko_vital_organ": "Mutant mice: vital-organ phenotype",
-             "earlier_safety_stop": "Earlier drug on the target stopped for safety",
-             "poor_selectivity": "Drug binds another protein within 10-fold"}
-# The model-system atlas's four questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
-GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose"), ("stop_no_benefit", "Efficacy"),
-                ("stop_safety", "Safety")]
+             "lit_human_engagement": "Drug shown to engage its target in people"}
+# The model-system atlas's efficacy questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
+GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy")]
 FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
 # Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
 # efficacy attribution judges engagement on, so it cannot be tested against engagement stops.
@@ -543,13 +540,13 @@ CIRCULAR = {("lit_human_engagement", "stop_engagement")}
 
 
 def evidence_grid():
-    """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
-    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much."""
+    """Which evidence goes with fewer or more stops on each of the atlas's efficacy questions: a cell is coloured when the
+    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much, and how many
+    stops among the programs with the evidence it rests on; an uncoloured cell gives the interval."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
     rows = [c for c in GRID_ROWS if c in df.index]
-    targetdrug = sum(1 for c in rows if df.at[c, "group"] == "area")
-    fig, ax = plt.subplots(figsize=(8.2, 0.48 * len(rows) + 1.0))
+    fig, ax = plt.subplots(figsize=(6.6, 0.48 * len(rows) + 1.0))
     for i, c in enumerate(rows):
         for j, (outcome, _) in enumerate(GRID_COLUMNS):
             rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
@@ -557,16 +554,15 @@ def evidence_grid():
                 color, text, ink = NEUTRAL, "not testable", MUTED
             elif pd.isna(rr):
                 color, text, ink = NEUTRAL, "too few stops", MUTED
-            elif hi < 1:
-                color, text, ink = FEWER, f"{1 - rr:.0%} fewer", "white"
-            elif lo > 1:
-                color, text, ink = MORE, f"{rr - 1:.0%} more", "white"
-            else:
-                color, text, ink = NEUTRAL, "no clear effect", MUTED
+            elif hi < 1 or lo > 1:
+                stops = round(df.at[c, "exposed"] * df.at[c, f"{outcome}_ppv"])
+                change = f"{1 - rr:.0%} fewer" if hi < 1 else f"{rr - 1:.0%} more"
+                color, text, ink = FEWER if hi < 1 else MORE, f"{change}\n{stops:,} stops", "white"
+            else:  # the interval spans 1: what it leaves possible, not a claim of no effect
+                color, text, ink = NEUTRAL, f"can't tell\n{lo:.2f}–{hi:.2f}×", MUTED
             ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
             ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
                     fontweight="bold" if ink == "white" else "normal")
-    ax.axhline(targetdrug - 0.05, color=INK2, linewidth=0.8)
     ax.set_xlim(0, len(GRID_COLUMNS))
     ax.set_ylim(len(rows), -0.1)
     ax.set_xticks([j + 0.48 for j in range(len(GRID_COLUMNS))], [t for _, t in GRID_COLUMNS], fontsize=10.5,
@@ -579,60 +575,106 @@ def evidence_grid():
     save(fig, "evidence_grid")
 
 
-# The stop drill-down's segments: (key, label, colour); the first segment of each bar is the next bar's whole.
+# The stop drill-down's segments: (key, label, colour, hatched); the first segment of each bar is the next bar's whole.
+# Blue is the part carried down (and, in the last bar, the stops whose target worked somewhere); grey shades are the
+# other known answers, darkest first; a pale hatched segment is a stop whose answer is not known.
+DRILL_GREYS = ("#5f5e5a", "#8f8e88", "#b6b5ae", "#d4d3cd")
+DRILL_PALE = "#ecebe6"
 DRILL = [
-    ("shown", "All Phase 2–3 stops", [("efficacy", "Efficacy", ACCENT), ("sponsor_decision", "Sponsor decision", "#8a8984"),
-                                     ("positive_not_advanced", "Positive result,\nnot taken forward", "#b9b8b0"),
-                                     ("operational", "Operational", GRID), ("safety", "Safety", "#eb6834"),
-                                     ("unknown", "", GRID)]),
-    ("efficacy", "Stopped for efficacy", [("engaged_no_benefit", "Engaged the target,\nno benefit", ACCENT),
-                                          ("not_engaged", "Never\nengaged", "#8a8984"),
-                                          ("trial_design", "Trial couldn't answer", "#b9b8b0"),
-                                          ("no_engagement_data", "Engagement\nnever measured", GRID),
-                                          ("not_examined", "Not examined", GRID)]),
+    ("shown", "All Phase 2–3 stops", [
+        ("efficacy", "Efficacy", ACCENT, False), ("sponsor_decision", "Sponsor decision", DRILL_GREYS[0], False),
+        ("positive_not_advanced", "Positive result, not taken forward", DRILL_GREYS[1], False),
+        ("operational", "Operational", DRILL_GREYS[2], False), ("safety", "Safety", DRILL_GREYS[3], False),
+        ("unknown", "Unknown", DRILL_PALE, True)]),
+    ("efficacy", "Stopped for efficacy", [
+        ("engaged_no_benefit", "Engaged the target, no benefit", ACCENT, False),
+        ("not_engaged", "Never engaged", DRILL_GREYS[0], False),
+        ("trial_design", "Trial couldn't answer", DRILL_GREYS[2], False),
+        ("no_engagement_data", "Engagement never measured", DRILL_PALE, True),
+        ("not_examined", "Not examined", DRILL_GREYS[3], False)]),
     ("engaged", "Engaged the target, no benefit", [
-        ("worked_elsewhere_only", "Target works, but only\nin other diseases", ACCENT),
-        ("worked_here", "Another drug on the target\nalready worked here", "#7fb0e8"),
-        ("worked_related", "Works in a related\nsubtype or stage", "#c6dbf4"),
-        ("never_worked_tried_again", "Never worked; tried again", "#8a8984"),
-        ("never_worked_single", "Never worked;\nonly attempt", GRID), ("no_target", "No target", GRID)]),
+        ("worked_elsewhere_only", "Target works, but only in other diseases", ACCENT, False),
+        ("worked_here", "Another drug on the target already worked here", "#7fb0e8", False),
+        ("worked_related", "Works in a related subtype or stage", "#c6dbf4", False),
+        ("never_worked_tried_again", "Never worked; tried again", DRILL_GREYS[0], False),
+        ("never_worked_single", "Never worked; only attempt", DRILL_GREYS[2], False),
+        ("no_target", "No target", DRILL_GREYS[3], False)]),
 ]
-DRILL_LABEL_MIN = 0.075  # a segment narrower than this share is labelled below its bar
+
+
+def fit_label(ax, renderer, text: str, width_px: float, max_lines: int = 3, **kw) -> str | None:
+    """The label wrapped onto at most max_lines lines that fit in width_px, or None when no wrapping fits."""
+    for chars in range(len(text), 3, -1):
+        wrapped = textwrap.fill(text, chars, break_long_words=False)
+        if wrapped.count("\n") >= max_lines:
+            break
+        probe = ax.text(0, 0, wrapped, **kw)
+        fits = probe.get_window_extent(renderer).width <= width_px
+        probe.remove()
+        if fits:
+            return wrapped
+    return None
 
 
 def why_stop():
     """Phase 2–3 stops among 2008–2019 entries broken down three times (report.stop_causes.drilldown): by cause, the
     efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by what other
-    drugs on the target did."""
+    drugs on the target did. A segment too narrow for its label is named in a lane under its bar, which the funnel to
+    the next bar leaves clear."""
     n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
-    fig, ax = plt.subplots(figsize=(12, 5.6))
-    height, gap = 0.8, 1.75
-    dark = {ACCENT, "#8a8984", "#eb6834"}
+    fig, ax = plt.subplots(figsize=(12, 6.2))
+    height, lane, gap, pad = 0.8, 0.42, 1.95, 0.008
+    ax.set_xlim(-0.01, 1.01)
+    ax.set_ylim(-(len(DRILL) - 1) * gap - height / 2 - lane, height / 2 + 0.45)
+    ax.axis("off")
+    renderer = fig.canvas.get_renderer()
+    px = ax.get_window_extent(renderer).width / (ax.get_xlim()[1] - ax.get_xlim()[0])
     for i, (key, title, segments) in enumerate(DRILL):
         part = n[key]
         total = n["stops"] if key == "shown" else n[key]["stops"]
-        y, x, below = -i * gap, 0.0, 0
+        y, x, outside = -i * gap, 0.0, []
         ax.text(0, y + height / 2 + 0.08, f"{title}  ({total:,})", color=INK, fontsize=11, fontweight="bold",
                 va="bottom")
-        for j, (k, label, color) in enumerate(segments):
+        for j, (k, label, color, hatched) in enumerate(segments):
             w = part[k]["n"] / total
-            ax.barh(y, w - 0.003, left=x, height=height, color=color)
-            ink = "white" if color in dark else INK
-            if w >= DRILL_LABEL_MIN:
-                ax.text(x + 0.008, y + 0.17, f"{w:.0%}", color=ink, fontsize=12, fontweight="bold", va="center")
-                ax.text(x + 0.008, y - 0.02, label, color=ink, fontsize=8, va="top", linespacing=1.05)
-            elif label:
-                ax.text(x + w / 2, y - height / 2 - 0.06 - 0.2 * below, f"{label.replace(chr(10), ' ')} {w:.0%}",
-                        color=INK2, fontsize=8, ha="center", va="top")
-                below += 1
-            if j == 0 and i < len(DRILL) - 1:
-                top = -(i + 1) * gap + height / 2 + 0.4
-                ax.add_patch(matplotlib.patches.Polygon([(x, y - height / 2), (x + w, y - height / 2), (1, top), (0, top)],
-                                                        closed=True, color=ACCENT, alpha=0.08, linewidth=0))
+            ax.barh(y, w - 0.003, left=x, height=height, color=color, hatch="////" if hatched else None,
+                    edgecolor="white" if hatched else color, linewidth=0)
+            ink = "white" if dark(color) else INK
+            room = (w - 2 * pad - 0.003) * px
+            wrapped = fit_label(ax, renderer, label, room, fontsize=8, linespacing=1.05)
+            share = ax.text(0, 0, f"{w:.0%}", fontsize=12, fontweight="bold")
+            if wrapped and share.get_window_extent(renderer).width <= room:
+                box = dict(boxstyle="square,pad=0.15", fc=color, ec="none") if hatched else None
+                ax.text(x + pad, y + 0.17, f"{w:.0%}", color=ink, fontsize=12, fontweight="bold", va="center", bbox=box)
+                ax.text(x + pad, y - 0.02, wrapped, color=ink, fontsize=8, va="top", linespacing=1.05, bbox=box)
+            else:
+                outside.append((x + w / 2, f"{label} {w:.0%}"))
+            share.remove()
+            if j == 0:
+                drilled = w
             x += w
-    ax.set_xlim(-0.01, 1.01)
-    ax.set_ylim(-(len(DRILL) - 1) * gap - 0.8, 1.0)
-    ax.axis("off")
+        # Lane labels sit under their segments, nudged right where they would overlap, then back left to end in the bar.
+        widths = []
+        for _, text in outside:
+            t = ax.text(0, 0, text, fontsize=8)
+            widths.append(t.get_window_extent(renderer).width / px)
+            t.remove()
+        lefts, right = [], 0.0
+        for (centre, _), width in zip(outside, widths):
+            lefts.append(max(centre - width / 2, right + 0.012))
+            right = lefts[-1] + width
+        limit = 1.0
+        for m in reversed(range(len(outside))):
+            lefts[m] = min(lefts[m], limit - widths[m])
+            limit = lefts[m] - 0.012
+        for (centre, text), left in zip(outside, lefts):
+            ax.plot([centre, centre], [y - height / 2, y - height / 2 - 0.1], color=MUTED, linewidth=0.8)
+            ax.text(left, y - height / 2 - 0.13, text, color=INK2, fontsize=8, va="top")
+        if i < len(DRILL) - 1:
+            bottom, top = y - height / 2, -(i + 1) * gap + height / 2 + 0.45
+            drop = bottom - lane if outside else bottom
+            ax.add_patch(matplotlib.patches.Polygon([(0, bottom), (drilled, bottom), (drilled, drop), (1, top), (0, top)],
+                                                    closed=True, color=ACCENT, alpha=0.08, linewidth=0))
     save(fig, "why_stop")
 
 
