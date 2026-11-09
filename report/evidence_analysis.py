@@ -14,12 +14,18 @@ subcategory of report.evidence_lines.CATEGORIES, among the entries it applies to
   again with biomarker-selected enrolment added as a sensitivity;
 - for efficacy categories, the adjusted risk ratio of an efficacy stop among Phase 2 and 3 entries; for
   safety risk, of a safety stop among Phase 1-3 entries.
+For the stop-risk figure, each area and each safety line (report.evidence_lines.SAFETY) is also tested
+against the traced cause of each stop (report.stop_causes: the cause, or the likely cause where no source states
+one): the adjusted risk ratio of stopping for efficacy or exposure and for safety, and of the efficacy stop split
+into the model-system atlas's questions (dose, engagement, efficacy proper; stop_outcomes), among Phase 1-3 entries,
+adjusted as above with phase added. A stop for any other reason is not an event of either.
 A line exposed in fewer than MIN_ENTRIES entries or MIN_TARGETS distinct target sets is described, not
 estimated. Descriptive lines (hindsight, 10 nM potency) are estimated alongside but make up no category.
 N1-N3 are tested as the plan words them and Holm-corrected together.
 
 Writes report/output/evidence_analysis/: lines.csv (the registered categories), areas.csv (the same estimates for
-the chart's areas and their mutually exclusive tiers, AREAS) and numbers.json, which also carries the literature
+the chart's areas and their mutually exclusive tiers, AREAS), stop_risk.csv (the stop-risk figure's rows) and
+numbers.json, which also carries the literature
 gate results (report/audits/literature_gate.json) that leave the literature lines descriptive.
 """
 from __future__ import annotations
@@ -30,7 +36,9 @@ import os
 import pandas as pd
 
 from report import frame
-from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, build, stale
+from pipeline.stops import keys
+from report import stop_causes
+from report.evidence_lines import ADJUSTMENTS, APPLIES, AREAS, CATEGORIES, SAFETY, build, stale
 from report.section1 import failure_modes, phase_rows
 from report.section2 import relative_success
 from report.section3 import COVARS, MIN_TARGETS, adjusted, cause_outcomes, describe, estimate, holm, jsonable
@@ -88,6 +96,49 @@ def line_row(cat: str, level: str, line, d: pd.DataFrame, lr: pd.DataFrame) -> d
     return row
 
 
+DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can carry (report.section1.REASON_ORDER)
+
+
+def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
+    """Outcome column -> whether each traced stop (report.stop_causes.load) counts. Efficacy and safety are the
+    causes; the efficacy stop is then split into the model-system atlas's questions: dose (tolerability capped the
+    dose, toxicity offset the benefit, or the registry gives a PK, dose or formulation reason), engagement (the drug
+    never engaged its target, by low exposure or by failing where another drug on the target worked) and efficacy
+    proper (the target was engaged without benefit)."""
+    eff = t.likely.eq("efficacy")
+    dose = eff & (t.detail.eq("dose_capped") | t.subcause.eq("toxicity_offset") | t.registry_reason.eq(DOSE_REASON))
+    return {"stop_efficacy": eff, "stop_safety": t.likely.eq("safety"), "stop_dose": dose,
+            "stop_engagement": eff & t.subcause.eq("not_engaged") & ~dose,
+            "stop_no_benefit": eff & t.subcause.eq("engaged_no_benefit") & ~dose}
+
+
+def traced_stops(d: pd.DataFrame) -> pd.DataFrame:
+    """d with one column per stop_outcomes: 1 where the entry's traced stop counts, else 0."""
+    t = stop_causes.load()
+    k = pd.Series(keys(d), index=d.index)
+    return d.assign(**{col: k.map(dict(zip(t.key, hit))).fillna(False).astype(float)
+                       for col, hit in stop_outcomes(t).items()})
+
+
+def stop_risk(d: pd.DataFrame) -> pd.DataFrame:
+    """For each area line and safety line, the adjusted risk ratio of each stop outcome (traced_stops) among the entries it
+    applies to (Phase 1-3), when the line is exposed enough to estimate."""
+    out = []
+    for group, cat, line in [*(("area", cat, line) for cat, (line, _) in AREAS.items() if cat != "safety_risk"),
+                             *(("safety", "safety_risk", ln) for ln in SAFETY)]:
+        elig = d[line.column].notna() & APPLIES[line.applies](d)
+        x = d.loc[elig].assign(x=d.loc[elig, line.column].astype(float))
+        desc = describe(x.assign(any_outcome=1.0), "any_outcome", "x")
+        row = {"group": group, "category": cat, "label": line.label, "column": line.column, "exposed": desc["n"],
+               "targets": desc["n_targets"], "estimated": exposed_enough(desc)}
+        covars = tuple(c for c in COVARS_23 if not (cat == "precedent" and c == "precedent"))
+        for outcome in [c for c in d.columns if c.startswith("stop_")] if row["estimated"] else ():
+            r = estimate(x, outcome, "x", covars)
+            row |= {f"{outcome}_{k}": r.get(k) for k in ("ppv", "rate_without", "rr", "lo", "hi", "p")}
+        out.append(row)
+    return pd.DataFrame(out)
+
+
 def hypotheses(d: pd.DataFrame) -> dict:
     """N1-N3 as worded in the plan, on Phase 2 entries; N2's two claims are tested together by
     taking the larger p (intersection-union)."""
@@ -126,8 +177,10 @@ def evidence_basis(d: pd.DataFrame) -> dict:
                      "none": float((~(published | approved | potent))[rest].mean())}}
 
 
-def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
-    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS) and numbers from
+def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame,
+                                                                          dict]:
+    """The lines table (the registered categories), the areas table (the chart's grouping, AREAS), the stop-risk
+    table (stop_risk) and numbers from
     the evidence-line dataset, the phase rows and the failure modes."""
     d = d.assign(precedent=d.precedent.fillna(0),  # no resolved target: no approved drug known on it
                  target=d.target.fillna("entity " + d.moiety_id.astype(str)))  # and it is its own cluster
@@ -150,7 +203,7 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
          "literature_gate": literature_gate(),
          "basis": evidence_basis(d),
          **hypotheses(d)}
-    return pd.DataFrame(out), pd.DataFrame(areas), n
+    return pd.DataFrame(out), pd.DataFrame(areas), stop_risk(traced_stops(d)), n
 
 
 def literature_gate() -> dict:
@@ -168,9 +221,10 @@ def main() -> None:
     snap = frame.snapshot()
     progs, trials, outcomes = frame.programs(), frame.program_trials(), frame.trial_outcomes()
     rows = phase_rows(progs, trials, snap, window=SECTION1)
-    lines, areas, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes))
+    lines, areas, stops, n = analyse(build(), rows, failure_modes(rows, progs, trials, outcomes))
     lines.to_csv(os.path.join(OUT, "lines.csv"), index=False)
     areas.to_csv(os.path.join(OUT, "areas.csv"), index=False)
+    stops.to_csv(os.path.join(OUT, "stop_risk.csv"), index=False)
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(jsonable(n), f, indent=1)
 

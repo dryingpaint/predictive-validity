@@ -331,3 +331,22 @@ of target engagement in people), the main text states the result with the recall
 the report rests on them. Drugs whose generic name is an endogenous molecule with no product-specific name
 (alcohol, nitric oxide, ademetionine) were searched by product names and codes only, a vetting exception recorded
 in report/audits/literature_name_vet.json.
+
+**Safety lines, 2026-11-08, exploratory, fixed before any of the new lines was compared with an outcome.** The
+standard genetic flags (loss-of-function intolerance, mouse knockout lethal before weaning) showed no association
+with safety stops. Each measures complete, lifelong loss of the gene, which a drug's partial, adult inhibition does
+not reproduce. Three lines are added, chosen after that result and so reported as exploratory, each tested against
+stops for efficacy or exposure and stops for safety (traced causes, Phase 1-3 entries, adjusted as in the Models
+section with phase added):
+
+- **A vital-organ phenotype in mutant mice.** Any Open Targets mouse phenotype of the target in the Mammalian
+  Phenotype classes cardiovascular (MP:0005385), liver and biliary (MP:0005370), haematopoietic (MP:0005397),
+  immune (MP:0005387) or nervous system (MP:0003631). Undated, like knockout lethality.
+- **An earlier safety stop on the target.** Another entity on one of the entry's primary targets, in any
+  disease, stopped for safety (the traced cause, or the likely cause where no source states one), with its trials
+  ended at least a year before entry. Scored on entries from 2011, since the traced stops begin with 2008 entries.
+- **Poor selectivity.** A small molecule whose best off-target potency known the year before entry is within
+  10-fold of its primary-target potency (the selectivity line's complement, where an off-target was measured).
+
+The evidence chart shows the two standard flags as one line; each flag stays in the registered categories and
+the appendix table.
