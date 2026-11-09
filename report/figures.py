@@ -525,15 +525,12 @@ def evidence_translates():
     save(fig, "evidence_translates")
 
 
-# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, about the
-# drug, then the safety lines below a rule.
+# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, then about
+# the drug.
 GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_animal": "Mouse genetics shows the disease",
              "expression": "RNA change in diseased tissue", "cat_precedent": "Earlier drugs on the same target",
              "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
-             "lit_human_engagement": "Drug shown to engage its target in people",
-             "liability": "Standard genetic safety flags", "ko_vital_organ": "Mutant mice: vital-organ phenotype",
-             "earlier_safety_stop": "Earlier drug on the target stopped for safety",
-             "poor_selectivity": "Drug binds another protein within 10-fold"}
+             "lit_human_engagement": "Drug shown to engage its target in people"}
 # The model-system atlas's efficacy questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
 GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy")]
 FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
@@ -549,7 +546,6 @@ def evidence_grid():
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
     rows = [c for c in GRID_ROWS if c in df.index]
-    targetdrug = sum(1 for c in rows if df.at[c, "group"] == "area")
     fig, ax = plt.subplots(figsize=(6.6, 0.48 * len(rows) + 1.0))
     for i, c in enumerate(rows):
         for j, (outcome, _) in enumerate(GRID_COLUMNS):
@@ -567,7 +563,6 @@ def evidence_grid():
             ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
             ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
                     fontweight="bold" if ink == "white" else "normal")
-    ax.axhline(targetdrug - 0.05, color=INK2, linewidth=0.8)
     ax.set_xlim(0, len(GRID_COLUMNS))
     ax.set_ylim(len(rows), -0.1)
     ax.set_xticks([j + 0.48 for j in range(len(GRID_COLUMNS))], [t for _, t in GRID_COLUMNS], fontsize=10.5,
