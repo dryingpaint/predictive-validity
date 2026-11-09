@@ -362,3 +362,90 @@ not tested against engagement stops, which were judged from the same publication
 After the literature result was seen (2026-11-09), the report added two exploratory splits of the animal-model
 line at Phase 2: by the size of the sponsor's company (report.section3.sponsors) and by human genetic support. They
 were chosen to test explanations of a result already known, so they are not confirmations.
+
+## Amendment, 2026-11-09: target biology in the literature
+
+Fixed before any data for these lines is retrieved and before any of them is compared with an outcome.
+
+**Why.** The categories of the 2026-11-03 amendment follow the structured sources the report already used (Open
+Targets, MGI and IMPC, DepMap, ChEMBL, PubChem), and literature was searched only for evidence about the drug. Evidence
+about the target's biology in the disease that lives only in papers was never collected: perturbing the target in
+human cells or tissue, perturbing it in animals by means other than genetics, finding it altered in patients'
+tissue, and finding it tracks the disease in patients. Curated pathways count only a pathway with a disease mutation
+in it, which is a genetic line. Without these lines the report cannot say whether the evidence most often used to
+pick a novel target predicts anything.
+
+**Unit.** A pair of a human gene and a disease: every gene of an entry's primary-target set with the entry's MONDO
+disease. The cohort's entries with a target and a disease give 7,193 gene–disease pairs over 1,217 genes and 997
+diseases (3,857 pairs at Phase 2). Each pair is searched up to the year before its latest entry; each entry counts
+only records published no later than the year before its own entry. An entry is exposed to a kind when any gene of
+its target set has a qualifying record for the entry's disease, a subtype of it, or a disease within Lin ≥ 0.8,
+the same neighbourhood as G3.
+
+**Kinds**, each about the target, not the program's drug, and each needing original data (no reviews):
+
+1. **Perturbed in human cells or tissue.** The gene or its protein is knocked down, knocked out, overexpressed or
+   acted on by any agent other than the program's drug, in primary or patient-derived human cells, organoids,
+   iPSC-derived cells or ex vivo human tissue, and a phenotype of the disease changes. Established cell lines count
+   as a separate subcategory (1b), since they are the commonest and weakest form.
+2. **Perturbed in animals, other than by genetics.** A tool compound, antibody, antisense, RNAi or viral vector
+   other than the program's drug acts on the target in an animal model of the disease and changes a disease
+   phenotype. Germline knockouts and mutants are the mouse genetics line and are excluded here.
+3. **Altered in patients' tissue.** The protein's level, activity, localisation or modification differs between
+   patients' diseased tissue and control tissue, or single-cell data place the gene in a cell state that differs
+   in the disease. Bulk RNA differences are the diseased-tissue line and are excluded here.
+4. **Tracks the disease in patients.** In an observational study of patients, the target's level or activity
+   (in tissue or circulation) goes with the disease's presence, severity, progression or outcome. Genetic
+   association is excluded (human genetics).
+
+Interventional studies in people are excluded: a drug on the target that worked in people is clinical precedent.
+
+**Retrieval**, per pair, up to its cutoff year:
+- PubMed titles and abstracts matching any vetted name of the gene or protein and any name of the disease, its
+  synonyms and its subtypes, every hit kept;
+- Europe PMC records outside MEDLINE, by the same query;
+- Firecrawl's research index: one semantic search per pair and kind, and related-paper expansion from each record
+  that qualifies.
+Gene names are vetted as drug names were: an LLM keeps only HGNC symbols, aliases and protein names that
+unambiguously denote the gene (aliases such as CAT, MET, SET or PC are dropped), and a second model re-vets a seeded
+sample. Records already stored (public.publications, preclin.literature_record) are reused.
+
+**Screen.** An LLM reads each record with the gene, the disease and the four kinds, and says whether it reports
+original data and which kinds it shows for that gene in that disease (or a named related disease, mapped to MONDO
+as the drug lines' disease models were). Pairs with more than 3,000 records pass a cheaper prefilter first, as in
+literature version 3. A second model relabels a seeded check sample.
+
+**Pilot gate.** 300 seeded pairs first. Agents with web access, blind to the pipeline's results, list every
+qualifying study for pairs 1–100. A kind enters the analysis only if, against that list, retrieval recall is at
+least 80%, the check agrees at κ ≥ 0.6, and at least 8% of Phase 2 entries carry it. A kind that fails may be
+revised once, scored on a fresh blind reference set (pairs 101–200); if it fails again it is reported as
+descriptive. There is no third attempt.
+
+**Analysis**, for each kind that passes and for the category (any kind), as for the 2026-11-03 categories:
+relative success to approval, the adjusted risk ratio of S4 at Phase 2, the risk ratio of an efficacy stop at
+Phases 2–3, and the stop outcomes of the evidence grid. Lines that fail the gate are shown as exploratory, as the
+drug literature lines are.
+
+**Confirmatory hypotheses** (Holm-corrected together; each tested only if its kind passes the gate):
+- **T1.** Perturbation in human cells or tissue (kind 1, primary and patient-derived systems) raises S4.
+- **T2.** Non-genetic perturbation in an animal model of the disease (kind 2) raises S4.
+- **T3.** Altered protein in patients' tissue (kind 3) raises S4.
+- **T4.** Tracking the disease in patients (kind 4) raises S4.
+Each is also estimated holding human genetics fixed, which says whether the literature adds to genetics.
+
+**Storage.** New tables keyed by gene (Ensembl id) and MONDO disease, beside the drug-keyed literature tables:
+`preclin.target_literature_search`, `_firecrawl`, `_hit`, `_prefilter` and `_screen`, then
+`preclin.target_literature_evidence`, one row per gene, disease, kind and record with its publication year, shaped
+like `preclin.ot_evidence` so the as-of and MONDO matching code applies unchanged. The lines join
+`preclin.evidence_line` and `preclin.evidence_entry_line` through `report.evidence_lines store`. No existing table
+changes.
+
+**Cost.** Measured in the pilot, which reports tokens and Firecrawl credits per pair; the full run waits for
+approval of its cost. As a scale: literature version 3 cost about $560 in model tokens over 4,620 drugs, and
+Firecrawl about 0.21 credits per call (here about 30,000 searches plus expansions). A pair returning more than
+100,000 records is held from the paid prefilter until approved.
+
+**Not covered.** Evidence that is not public before entry (sponsors' internal data, how a target was found in a
+phenotypic screen) cannot be scored. Structured sources without dates before entry (Human Protein Atlas pathology)
+or that begin late (single-cell atlases, from about 2018) are not used for these kinds; they may be added later as
+hindsight lines.
