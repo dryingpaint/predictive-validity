@@ -428,6 +428,38 @@ def by_year(rows: pd.DataFrame) -> pd.DataFrame:
     return r.reset_index()[["phase", "entry_year", "advanced", "suspended", "censored", "rate", "censored_share"]]
 
 
+RUNNING_WHY = {"trial": "A trial of the phase or a later one is under way",
+               "other_study": "Only an extension, long-term or earlier-phase study is under way",
+               "recent": "Its last trial ended within the past 24 months",
+               "traced": "The registry shows it stopped, but tracing found development going on"}
+
+
+def running_why(rows: pd.DataFrame, registry: pd.DataFrame, progs: pd.DataFrame, trials: pd.DataFrame) -> pd.Series:
+    """What keeps each still-running row of `rows` running (a key of RUNNING_WHY, the first that applies in that
+    order); other rows get no value."""
+    t = trials[trials.start_date.notna() & trials.overall_status.isin(frame.ACTIVE)]
+    t = t[own_trials(progs, t)]
+    starting = t[t.starts_phase].groupby("program_id").phase.max()
+    active = set(t.program_id)
+    was = registry[~registry.credited].set_index(["program_id", "phase"]).event
+    run = (rows.event == "censored") & ~rows.credited
+    return pd.Series([("traced" if was.get((p, ph)) == "suspended" else
+                       "trial" if starting.get(p, 0) >= ph else "other_study" if p in active else "recent")
+                      if r else None for p, ph, r in zip(rows.program_id, rows.phase, run)], index=rows.index)
+
+
+def still_running(rows: pd.DataFrame, why: pd.Series) -> pd.DataFrame:
+    """Per phase: programs that entered it in the window and still count as running, by what keeps them running,
+    and the phase's rate if those held only by an extension, long-term or earlier-phase study counted as stopped."""
+    out = rows.assign(why=why)[why.notna()].groupby("phase").why.value_counts().unstack(fill_value=0) \
+              .reindex(columns=list(RUNNING_WHY), fill_value=0)
+    out["running"] = out.sum(axis=1)
+    out["entered"] = rows[~rows.credited].groupby("phase").size()
+    stopped = rows.assign(event=rows.event.where(why.ne("other_study"), "suspended"))
+    out["rate"], out["rate_if_stopped"] = rates(rows).rate, rates(stopped).rate
+    return out.reset_index()
+
+
 def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     snap = frame.snapshot()
@@ -468,6 +500,8 @@ def main() -> None:
     periods = by_period(rows)
     periods.to_csv(os.path.join(OUT, "loa_by_period.csv"), index=False)
     by_year(rows).to_csv(os.path.join(OUT, "rates_by_entry_year.csv"), index=False)
+    running = still_running(rows, running_why(rows, registry, progs, trials))
+    running.to_csv(os.path.join(OUT, "still_running.csv"), index=False)
 
     modes = failure_modes(registry, progs, trials, frame.trial_outcomes())  # what the registry records
     modes.to_csv(os.path.join(OUT, "failure_modes_programs.csv"), index=False)
@@ -514,7 +548,11 @@ def main() -> None:
                                   **{e: int(n) for e, n in rows[~rows.credited].event.value_counts().sub(
                                       registry[~registry.credited].event.value_counts(), fill_value=0).items()}},
                "periods": {r["label"]: r for r in periods.to_dict(orient="records")},
-               "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio, **strata}
+               "failure_modes": failure_numbers, "rank_correlation_with_bio": rank_bio,
+               "still_running": {int(r["phase"]): {**{k: int(r[k]) for k in (*RUNNING_WHY, "running", "entered")},
+                                                   "rate": r["rate"], "rate_if_stopped": r["rate_if_stopped"],
+                                                   **{f"{k}_share": r[k] / r["running"] for k in RUNNING_WHY}}
+                                 for r in running.to_dict(orient="records")}, **strata}
     with open(os.path.join(OUT, "numbers.json"), "w") as f:
         json.dump(numbers, f, indent=1, default=float)
     print(json.dumps(overall, indent=1, default=float))

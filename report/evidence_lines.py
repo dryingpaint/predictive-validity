@@ -65,6 +65,39 @@ class Line:
     key: str | None = None  # the registry key of a line with no column, fixed so that rewording the label keeps it
 
 
+# What each chart area counts and where it comes from, for the appendix's definitions table (keys of AREAS).
+AREA_MEANING = {
+    "human_genetics": ("Inherited variants link the target's gene to the program's disease, a subtype of it or a disease "
+                       "at least 0.8 similar on MONDO (Lin): GWAS credible sets, gene burden tests, ClinVar, PanelApp, "
+                       "Orphanet, Gene2Phenotype, ClinGen, UniProt",
+                       "Open Targets 26.09; each item dated by when it became known"),
+    "pathway": ("A curated pathway records a disease mutation disrupting a pathway the target is in",
+                "Reactome, through Open Targets"),
+    "tumour_genetics": ("The target's gene is recurrently mutated in the program's cancer (oncology only)",
+                        "COSMIC Cancer Gene Census, IntOGen and ClinVar somatic, through Open Targets"),
+    "diseased_tissue": ("The target's RNA level differs at least 2.1-fold between diseased and normal tissue",
+                        "Expression Atlas, through Open Targets"),
+    "animal": ("Mice with the target's gene knocked out or mutated whose phenotypes resemble the "
+               "disease; not drugs tested in mice",
+               "IMPC knockouts (dated by first data release) and MGI lines (dated by first paper), matched by PhenoDigm"),
+    "molecule": ("The drug's binding or activity at its primary target, measured in laboratory assays: potency of 100 nM "
+                 "or better, and selectivity over other proteins (small molecules)",
+                 "ChEMBL 37, each measurement dated by the paper, patent or dataset that reported it"),
+    "published_animal": ("A published study of the drug itself in animals, in a model of the disease or in healthy "
+                         "animals (exploratory: the searches miss some of these studies)",
+                         "PubMed abstracts, screened by an LLM"),
+    "early_human": ("A published study showing the drug acting on its target in people (exploratory)",
+                    "PubMed abstracts, screened by an LLM"),
+    "safety_risk": ("A property of the target, not evidence for the disease: people rarely carry broken copies of the "
+                    "gene (gnomAD LOEUF below 0.35), or mice without it die before weaning",
+                    "gnomAD v4.1; Mammalian Phenotype ontology, through Open Targets"),
+    "precedent": ("The benchmark, not preclinical evidence: an FDA-approved drug on the same target, for a related "
+                  "disease (Lin at least 0.5) or only for unrelated ones, or another drug on the target that failed a "
+                  "related-disease Phase 2 or 3 trial in the three years before entry",
+                  "Drugs@FDA approvals and ClinicalTrials.gov"),
+}
+
+
 LITERATURE_GATE = "v3_final"  # the gate scoring of the retrieval the literature lines are built from
 
 
