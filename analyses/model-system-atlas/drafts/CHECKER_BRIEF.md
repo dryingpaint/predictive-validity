@@ -14,9 +14,17 @@ For EVERY entry in every cell:
 3. Confirm the quote supports the `status` under the rules. The failures that flip the most cells,
    and the rules most likely to be misapplied:
    - `same`/`contra` from a pairing whose trial source attributes the result to conditions the model never
-     tested (should be `untested`);
+     tested (should be `untested`), except a combination with another active drug, which is scored on the
+     primary endpoint with `combination_with` set (DRAFTER_BRIEF, efficacy);
    - efficacy scored on a secondary endpoint without `endpoint_role: poc_gate`;
-   - a retrodiction scored `same` (should be `retro`), or a prospective model marked `retrodiction`;
+   - a retrodiction scored `same` (should be `retro`), or a prospective model marked `retrodiction`; a model
+     first public after a patient result on the same target (member or not) is a retrodiction;
+   - a `year` later than the earliest public date (registry posting, congress abstract, press release,
+     epub, label, print);
+   - `drug`, `route` or `population_group` that does not match the patients compared; a harm imported from
+     another disease where this disease's patients were measured;
+   - a co-primary, non-inferiority or single-arm design scored other than the efficacy rules say, or not
+     described in `note`;
    - one system split across two `model_id`s, or two systems sharing one; a `contra` → matched move on a
      track whose `patient_signal_reversed` source does not show attenuation to background;
    - `neg` whose `effect_size` is the sponsor's reading rather than the model's number, or whose

@@ -26,8 +26,11 @@ Start by listing **every model system that has been compared with patients for t
 the one the class went into patients on. Search the pivotal preclinical papers and FDA/EMA reviews, and
 also "<class or member> + <model type> + predicts / correlates with clinical response", regulator
 reliance (label expansions on in-vitro data), and patient-level uses (patient-derived organoids or cells
-used to choose who gets treated). Each model system is a **track**: its entries share one `model_id`
-and are scored by the same rules within that track. The system the class went into patients on is one
+used to choose who gets treated). Each model system is scored per drug and per route: a **track** is one
+`model_id` used for one member `drug` by one `route`, and its entries are scored by the same rules within
+that track. The same mouse dosed with two drugs, or with one drug by two routes, is two tracks; a `contra`
+on one does not carry to the other. `model_id`, `model`, `model_kind`, `prediction_level` and
+`model_first_use_year` describe the system and are identical on every entry that shares the `model_id`. The system the class went into patients on is one
 track among them. Every entry
 records `prediction_level`: `class` (does the drug class work) or `patient` (does the model pick which
 patients or genotypes respond). Three cases that are all in scope:
@@ -38,7 +41,9 @@ patients or genotypes respond). Three cases that are all in scope:
   data): the cell is an **empty list**, which the figure draws blank. `untested` means a model existed
   and nobody compared it. Keep the two apart.
 A model built or run after the clinic already knew the answer is a **retrodiction**: record it with
-`retrodiction: true`. If it reproduced the human data its status is `retro`, never `same`; if it failed to
+`retrodiction: true`. Post-dating alone makes it one: a model result first public after a patient result
+for the same target was public is a retrodiction, whether or not the source says the patient result
+motivated it, and whether that patient result was for a member drug or for another drug on the same target. If it reproduced the human data its status is `retro`, never `same`; if it failed to
 reproduce them, `contra`. Its first prospective prediction afterwards is a fresh entry scored as usual
 .
 
@@ -73,11 +78,25 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
   otherwise `"primary"`. Patients of the context's disease only. A biomarker-unselected trial counts for a
   biomarker context when the biomarker is ≥ 80 % of the trial population. If the model predicted a
   surrogate and an outcome trial was later run, set `outcome_tested`: null / positive / negative /
-  negative_confounded; the status still follows the surrogate.
+  negative_confounded; the status still follows the surrogate. Trial designs that do not fit cleanly are
+  scored, and the design is written into `note` in plain words:
+  - a member drug combined with another active drug: scored on the trial's primary endpoint like any
+    other trial; name the partner in `combination_with`;
+  - co-primary endpoints with one met: scored as the authors call the trial (a failure when they call it
+    one), with both results in `note`;
+  - a pre-specified, alpha-controlled non-inferiority key secondary of a member drug alone: it governs,
+    `endpoint_role: "poc_gate"`;
+  - a single-arm trial with no success bar set in advance: scored on its primary endpoint, against the
+    direction the model predicted (a response where the model predicted one is `same`; none is `contra`),
+    with the endpoint and its value in `note`.
 - **safety**: did the model's stated prediction hold, or was its silence contradicted on a harm the
   species could have shown? A mouse cannot show cytokine release, so its silence on CRS is not a miss. A
   predicted harm that never appeared in patients is a wrong prediction: `contra`, `magnitude: "opposite"`.
-  Safety comparisons made in another indication or population transfer, flagged `imported_from`.
+  A statement that the drug was well tolerated or showed no toxicity, even in a paper about efficacy, is a
+  safety prediction of that model and is scored. Patients of the tile's own disease decide: a harm seen
+  only in another disease's patients is imported (`imported_from`, `population_group: "other_disease"`)
+  only when this disease has no patient safety data for the class; where this disease's patients were
+  measured, their result sets the status.
 
 ## Status of one track, as of a year (one entry per change of status on that track)
 | key | status | rule |
@@ -114,7 +133,8 @@ reproduce them, `contra`. Its first prospective prediction afterwards is a fresh
    readout); `unsettled` (patients were measured, but the result is unreported, inconclusive, or belongs to
    a drug outside the class).
 6. **Dating.** The entry's `year` is the earliest date the comparison was public: registry results posting,
-   online publication, label, or print. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
+   online publication, congress abstract, sponsor press release, label, or print, whichever came first,
+   even when a later paper is the higher-tier source of the status. Record all of `registry_date`, `epub_year`, `print_year`. Each cell
    opens at `model_first_use_year` with status `untested`, proxy allowed, so the strip shows when a model
    existed before it was tested.
 7. Do NOT use approval status or later knowledge to decide a status; use what was known at the entry's date.
@@ -142,6 +162,15 @@ engagement only: `readout_tier` · dose only: `blocked_by`, `margin_stated` · `
 `effect_size`, `class_threshold` · efficacy only: `endpoint_role`,
 `outcome_tested`, `patient_trials` (list of {nct, registry_date, doi, quote} that change no status). ·
 `untested` only: `untested_reason` (rule 5).
+Track and population, on every entry: `drug` (the member drug, exactly as the tile lists it, whose patient
+result the entry compares, or that the model was run for at an opener; `"class"` only for a system tied to
+no drug, such as human genetics or a target knockout) · `route` (oral | iv | sc | im | inhaled | intranasal |
+topical | ocular_topical | intravitreal | subretinal | suprachoroidal | intrathecal | intracerebral |
+intra_articular | intradermal | sublingual | transdermal | ex_vivo_cells | not_applicable | mixed: the
+route the drug was given by in the patients compared) · `population_group` (unselected | biomarker_selected |
+stage_or_line | other_disease: the patients compared, coded; `population` keeps the words) ·
+`combination_with` (the partner drug in a combination trial, else null). True/false fields hold true, false
+or null only; years are integers; `registry_date` is YYYY-MM-DD.
 Context-level: `regulatory_reliance: true` when a regulator accepted model data in lieu of a trial;
 `modality_groups` (list) and `class_share` as given.
 
