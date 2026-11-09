@@ -145,6 +145,16 @@
    "note": "Price 2022 (PMID 35377447) quote verbatim; NCT03100942 results posted 2020-01-22, start 2017-05-01, so prospective, not retro. Ariza 2019 J Mol Sci (iMedPub) has no DOI/PMID; no admissible model source exists, so contra cannot stand. Contra if adjudicator admits it.",
    "adjudicated_status": "untested",
    "adjudication_note": "Rule 2: model_src tier 1 needs DOI or PMID; Ariza 2019 (iMedPub) and the ACR abstract have none (Europe PMC, Crossref checked). No admissible model side, so no admissible comparison: untested, reason unpublished (no admissible publication)."
+  },
+  {
+   "cell": "efficacy",
+   "index": 6,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Price 2022 (PMID 35377447, PMC9707320) quote verbatim in abstract; NCT03100942 results first posted 2020-01-22. Untested/unpublished for 2020 applies the efficacy 5 adjudication: no DOI/PMID model source (rule 2), so no admissible pairing."
   }
  ],
  "missing": [

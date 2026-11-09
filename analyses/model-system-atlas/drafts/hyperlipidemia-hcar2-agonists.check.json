@@ -209,7 +209,9 @@
    "proposed_status": "same",
    "proposed_year": 2012,
    "rule": "6",
-   "note": "Registry flushing row verbatim; same supported. Earlier public: Lauring Aug 2012 (MK-1903 phase 2A AE Tables S2/S3; Offermanns Focus 10.1126/scitranslmed.3004445: 'at least MK-1903 produced a flushing response similar to that of nicotinic acid') and MK-1903 registry 2010 SOC rows."
+   "note": "Registry flushing row verbatim; same supported. Earlier public: Lauring Aug 2012 (MK-1903 phase 2A AE Tables S2/S3; Offermanns Focus 10.1126/scitranslmed.3004445: 'at least MK-1903 produced a flushing response similar to that of nicotinic acid') and MK-1903 registry 2010 SOC rows.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Year stays 2016: rules 3 and 6 need a verbatim admissible quote; the Offermanns Focus is commentary (rule 2), and Lauring Table S2 flushing row is unquoted, paywalled. Quoting it would date 2012."
   },
   {
    "cell": "safety",
@@ -357,6 +359,21 @@
    "status_supported": true,
    "note": "Registry SOC rows verbatim. Direction held: mouse +30 % dermal blood flow (Tuteja via Boatman), patients flushed, Tuteja Table 1 NASTy '+'. Whether the mouse's window over niacin held is unread (Boatman full text, Offermanns Focus): possible same + partial.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 9,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": false,
+   "proposed_status": "same",
+   "proposed_year": 2012,
+   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is the efficacy question; target reached = same (CHECKER_BRIEF 3: dose contra because the reached dose did not work)",
+   "note": "Boatman 2012 abstract verbatim (ACS, epub 2012-04-09, paywalled). Phase 1 met the rat FFA target; the lipid failure is efficacy 10's. Duplicates dose 8 (same source, year): merge re-added the stale contra copy from models.json; drop it.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Duplicate of dose 8 (same track, source, year). Dose table: target reached = same; lipid failure is efficacy's. One entry per status change on a track, so the stale contra copy is dropped."
   }
  ],
  "missing": [

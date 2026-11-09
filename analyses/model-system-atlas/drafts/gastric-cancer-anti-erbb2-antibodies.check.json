@@ -94,7 +94,9 @@
    "proposed_status": "contra",
    "proposed_year": 2017,
    "rule": "6 (earliest public date)",
-   "note": "Status contra is right: JACOB primary OS HR 0.84, p=0.057 (abstract verbatim; NCT01774786 results 2018-02-14 confirmed). Year: the result was presented at ESMO 2017 (abstract 616O; ASCO Post 2017-11-25 reports it), so earliest public date is 2017 if congress abstracts count (rule question 1)."
+   "note": "Status contra is right: JACOB primary OS HR 0.84, p=0.057 (abstract verbatim; NCT01774786 results 2018-02-14 confirmed). Year: the result was presented at ESMO 2017 (abstract 616O; ASCO Post 2017-11-25 reports it), so earliest public date is 2017 if congress abstracts count (rule question 1).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "RULE QUESTION: does a DOI-bearing congress supplement abstract (ESMO 2017 616O) set rule-6 year? No sponsor release found; ASCO Post is news. Status contra agreed; year 2018 unless admissible, then 2017."
   },
   {
    "cell": "efficacy",
@@ -150,7 +152,9 @@
    "proposed_status": "same",
    "proposed_year": 2025,
    "rule": "6 (earliest public date)",
-   "note": "Liu 2026 (PMID 41571045) resolves, quotes verbatim, both co-primaries met; NCT05427383 has no results (confirmed). But the interim was public at ESMO 2025 (LBA oral, 17 Oct 2025; Alphamab PR Newswire Oct 2025) and the phase II part is in Cancer Commun 2025 (PMID 41273757), so year 2025."
+   "note": "Liu 2026 (PMID 41571045) resolves, quotes verbatim, both co-primaries met; NCT05427383 has no results (confirmed). But the interim was public at ESMO 2025 (LBA oral, 17 Oct 2025; Alphamab PR Newswire Oct 2025) and the phase II part is in Cancer Commun 2025 (PMID 41273757), so year 2025.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6 earliest public date, tier-5 precedent: Alphamab PR Newswire release of the ESMO 2025 LBA interim (verified) plus Cancer Commun 2025 phase II part, so year 2025."
   },
   {
    "cell": "safety",
@@ -162,7 +166,9 @@
    "proposed_status": "same",
    "proposed_year": 2013,
    "rule": "6 (earliest public date)",
-   "note": "EPAR (EMA/17250/2013, dated 13 Dec 2012) downloads and the quote is verbatim at the non-clinical discussion; comparison_stated and imported_from breast are right. The CHMP report became public with the March 2013 EU decision, so year 2013, print_year 2013."
+   "note": "EPAR (EMA/17250/2013, dated 13 Dec 2012) downloads and the quote is verbatim at the non-clinical discussion; comparison_stated and imported_from breast are right. The CHMP report became public with the March 2013 EU decision, so year 2013, print_year 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6: the Perjeta EPAR (EMA/17250/2013) became public with the March 2013 EU decision; the December 2012 CHMP date is internal. Year 2013, print_year 2013."
   },
   {
    "cell": "safety",
@@ -174,7 +180,9 @@
    "proposed_status": "same",
    "proposed_year": 2017,
    "rule": "6 (earliest public date)",
-   "note": "JACOB AE sentence verbatim in abstract; grade 3-5 diarrhoea 13% vs 6% supports the monkey-predicted harm holding in gastric patients. Same year caveat as efficacy #2 (ESMO 2017)."
+   "note": "JACOB AE sentence verbatim in abstract; grade 3-5 diarrhoea 13% vs 6% supports the monkey-predicted harm holding in gastric patients. Same year caveat as efficacy #2 (ESMO 2017).",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: does the ESMO 2017 supplement abstract (DOI) date the JACOB diarrhoea comparison under rule 6? Status same agreed; year 2018 unless admissible, then 2017, as efficacy 2."
   },
   {
    "cell": "safety",
@@ -247,6 +255,20 @@
    "note": "Retrodiction flag right: Discussion opens on JACOB's 'formally negative results'. But the model's prediction was conditional on >=8 copies and the source attributes JACOB's miss to IHC/ISH selection it never modelled; source_calls_it unresolved maps to untested under #90. Note overstates: pertuzumab-arm CR <=3/8 (GTR0108/0233/0277), GTR0402 PR; 5/8 pools lapatinib. 'Apparently discordant' sentence unverified (Discussion truncated in scrape).",
    "adjudicated_status": "untested",
    "adjudication_note": "Decision 4 Also-clause (#35/#72, #90): the PDX predicted only for >=8-copy tumours; JACOB's IHC/ISH population was never modelled, the source attributes the miss to that selection, and unresolved maps to untested. Decision 10's contra presumes a reproduction attempt."
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "rule": "DRAFTER_BRIEF dose: 'target reached' -> same; a drug that reached its target and failed is an efficacy failure only",
+   "checked_by": "CHECKER_BRIEF / models",
+   "note": "Tabernero 2018 (PMID 30217672) OS quote verbatim in PubMed abstract. Entry is contra only because JACOB failed after the 20 ug/mL trough was reached; that failure belongs to efficacy #2. Duplicates dose #6 (adjudicated same): fold into it or delete.",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table: target reached gives same; JACOB's OS miss is efficacy 2's failure. Dose 6 already scores same on this track from the same source and year; one entry per status change, so this duplicate is dropped."
   }
  ],
  "missing": [

@@ -21,7 +21,9 @@
    "status_supported": true,
    "proposed_year": 2013,
    "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim (abstract). Status same holds. But ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551, online 2013-05-20) already reported 'profound down-regulation of EGFR' in serial biopsies; year should be 2013."
+   "note": "Quote verbatim (abstract). Status same holds. But ASCO 2013 abstract 3551 (DOI 10.1200/jco.2013.31.15_suppl.3551, online 2013-05-20) already reported 'profound down-regulation of EGFR' in serial biopsies; year should be 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6, earliest public date: ASCO 2013 abstract 3551 (Dienstmann, JCO online 2013-05-20, verified) reported 'profound down-regulation of EGFR' in serial tumour biopsies and states the preclinical premise. Year 2013."
   },
   {
    "cell": "engagement",
@@ -77,7 +79,9 @@
    "status_supported": true,
    "proposed_year": 2013,
    "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim in full text. 'Reached, worked' row applies at the PoC gate. ASCO 2013 abstract 3551 already showed 9 and 12 mg/kg active with PD confirmed; year should be 2013."
+   "note": "Quote verbatim in full text. 'Reached, worked' row applies at the PoC gate. ASCO 2013 abstract 3551 already showed 9 and 12 mg/kg active with PD confirmed; year should be 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed. Rule 6: ASCO 2013 abstract 3551 (Dienstmann, JCO online 2013-05-20, verified) already showed weekly 9 and 12 mg/kg reached, with PD 'confirmed its mechanism of action'. Year 2013; Dienstmann 2015 remains src."
   },
   {
    "cell": "dose",
@@ -126,7 +130,9 @@
    "status_supported": true,
    "proposed_year": 2013,
    "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim; full text calls the expansion cohorts 'proof of mechanism and proof of concept', supporting poc_gate. ASCO 2013 abstract 3551 (PR 4/39, 'clearly demonstrating proof-of-concept') makes the year 2013."
+   "note": "Quote verbatim; full text calls the expansion cohorts 'proof of mechanism and proof of concept', supporting poc_gate. ASCO 2013 abstract 3551 (PR 4/39, 'clearly demonstrating proof-of-concept') makes the year 2013.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Status same agreed (poc_gate). Rule 6: ASCO 2013 abstract 3551 (Dienstmann, JCO online 2013-05-20, verified) reported PR 4/39 at 9-12 mg/kg, 'clearly demonstrating proof-of-concept', against the preclinical resistance premise. Year 2013."
   },
   {
    "cell": "efficacy",
@@ -139,7 +145,7 @@
    "rule": "decision 10 (retrodiction scored retro, never same)",
    "note": "Retrodiction. Dienstmann 2015 (and ASCO 2013) already reported a PR in an EGFR S492R patient; Sanchez-Martin's introduction says the model work was done to characterise that observation, and the G465R case is a phase 1 patient sequenced afterwards.",
    "adjudicated_status": "retro",
-   "adjudication_note": "Decision 10: S\u00e1nchez-Mart\u00edn 2016's introduction frames the ECD-mutant models as characterising the phase I S492R partial response (Dienstmann 2015); the G465R case is a phase 1 patient. Post-dates and motivated by the patient result, reproduces it: retro, never same."
+   "adjudication_note": "Decision 10: Sánchez-Martín 2016's introduction frames the ECD-mutant models as characterising the phase I S492R partial response (Dienstmann 2015); the G465R case is a phase 1 patient. Post-dates and motivated by the patient result, reproduces it: retro, never same."
   },
   {
    "cell": "efficacy",
@@ -150,7 +156,9 @@
    "status_supported": true,
    "proposed_year": 2017,
    "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim (abstract); full text confirms ECD mutations 'not linked to clinical benefit' and the ctDNA subgroup is 'retrospective hypothesis-generating'. Primary OS failure was public 2017-09 (Symphogen release, ESMO 2017 478O): year 2017."
+   "note": "Quote verbatim (abstract); full text confirms ECD mutations 'not linked to clinical benefit' and the ctDNA subgroup is 'retrospective hypothesis-generating'. Primary OS failure was public 2017-09 (Symphogen release, ESMO 2017 478O): year 2017.",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Contra agreed. Rule 6: Symphogen release 2017-09 (tier 5, verified) states the primary OS end-point was not met, before Montagut 2018. Year 2017; Montagut 2018 still sets status (rule 2)."
   },
   {
    "cell": "efficacy",
@@ -215,7 +223,9 @@
    "status_supported": true,
    "proposed_year": 2013,
    "rule": "rule 6 (dating: earliest public date)",
-   "note": "Quote verbatim; cynomolgus-comparison sentence found in full text, so comparison_stated true holds. ASCO 2013 abstract 3551 reported grade 3+ rash 62% and hypomagnesaemia 38%: year 2013. Hypomagnesaemia silence is a rule question."
+   "note": "Quote verbatim; cynomolgus-comparison sentence found in full text, so comparison_stated true holds. ASCO 2013 abstract 3551 reported grade 3+ rash 62% and hypomagnesaemia 38%: year 2013. Hypomagnesaemia silence is a rule question.",
+   "adjudicated_status": "same",
+   "adjudication_note": "RULE QUESTION: year 2013 is decided (rule 6; ASCO 2013 3551 reports grade 3+ rash 62%, hypomagnesaemia 38%). Can monkeys show hypomagnesaemia, and does contradicted silence on it outweigh the matched rash in one entry?"
   },
   {
    "cell": "engagement",
@@ -310,6 +320,20 @@
    "status_supported": true,
    "note": "Quote verbatim (abstract Conclusions, PMID 29423521). Prospective: Napolitano calls the phase 2 'under investigation'. Failure public 2017-09-11 (Symphogen) and ESMO 2017 478O, so year 2017 verified. JAMA Oncol online 2018-02-08.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "near",
+   "status_supported": false,
+   "proposed_status": "untested",
+   "rule": "DRAFTER_BRIEF dose table: 'the model stated no exposure, occupancy or regimen target, nor a margin' -> untested; a drug that reached its target and failed is an efficacy failure only",
+   "note": "Montagut 2018 (doi 10.1001/jamaoncol.2017.5245, PMC5885274) full text: OS quote near-verbatim (CI placement differs). Arms 12 and 9/6 mg/kg; Napolitano 2017 model stated no human target (dose 6). Failure belongs to efficacy 14; dose should be untested.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Dose table and dose definition: Napolitano 2017 stated no exposure, regimen target or margin; a reached-and-failed drug is an efficacy failure only (efficacy 14). Untested, reason no_prediction (rule 5)."
   }
  ],
  "missing": [

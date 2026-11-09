@@ -69,7 +69,7 @@
       "confidence": "high",
       "confidence_note": null,
       "year": 2023,
-      "status": "contra",
+      "status": "same",
       "src": "https://doi.org/10.1016/j.schres.2023.04.010",
       "srcLabel": "Surti 2023",
       "quote": "PF-03463275 treatment, at doses demonstrated to engage the target, was safe and well-tolerated but did not produce a greater improvement in CIAS compared to CT alone.",
@@ -78,9 +78,9 @@
       "blocked_by": null,
       "margin_stated": null,
       "note": "40 and 60 mg bid, chosen from the LTP peak and highest occupancy, dosed with adherence checks; no MCCB gain over CT alone; programme ended.",
-      "short": "LTP-chosen doses reached; no efficacy",
+      "short": "LTP- and occupancy-chosen doses reached",
       "reason": "LTP-chosen doses reached; failed",
-      "judgement": "Reached, failed, abandoned: contra derived from efficacy, counted once. The trial paper sets its dose rationale beside the result ('Despite these controls, neither dose of the study drug improved MCCB scores'), so the comparison is stated. Registry results (2023-02-27) precede the epub (2 May 2023); year 2023 either way."
+      "judgement": "Dose scored on its own prediction (rule v4): 40 and 60 mg bid, chosen from the LTP peak and occupancy, were dosed. Reached, failed, abandoned: contra derived from efficacy, counted once. The trial paper sets its dose rationale beside the result ('Despite these controls, neither dose of the study drug improved MCCB scores'), so the comparison is stated. Registry results (2023-02-27) precede the epub (2 May 2023); year 2023 either way."
      }
     ],
     "efficacy": [

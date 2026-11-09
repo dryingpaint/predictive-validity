@@ -171,6 +171,17 @@
    "rule": "10",
    "note": "PMID 31858718, epub 2020-01-21, OA full text (PMC7064984): EASE-3 'not used during model development', aim 'to confirm' the observed 2.5 mg result; retro under decision 10. Table 2: simulated -0.27/-0.29 vs -0.28, within_2x. Filing unstated; model_filed null holds.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "safety",
+   "index": 8,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "rule": "decision 10 (retrodiction)",
+   "note": "PMC7064984 full text: model built on EASE-3 BHB, qualified against EASE-2 BHB, both published 2018 (Rosenstock); retro correct. Paper states DKA events could not be modelled, so no DKA-incidence prediction. Tier 1, year 2020 confirmed.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

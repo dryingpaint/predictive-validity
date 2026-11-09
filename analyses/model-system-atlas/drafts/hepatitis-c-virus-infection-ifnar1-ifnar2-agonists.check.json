@@ -89,6 +89,17 @@
    "note": "Ding quote verbatim. Monkey model was a VSV serum bioassay in uninfected animals; it made no HCV RNA prediction. Also patient_trials NCT wrong: Ding's arms match NCT01605513 (Jilin, primary undetectable HCV RNA wk12), not NCT01903278.",
    "adjudicated_status": "untested",
    "adjudication_note": "DRAFTER rule 5 no_prediction; CHECKER 3: uninfected-monkey VSV serum bioassay never tested HCV infection or HCV RNA; its bioactivity readout is already scored under engagement, so no efficacy prediction to pair with Ding 2016."
+  },
+  {
+   "cell": "safety",
+   "index": 1,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "abstract_only",
+   "status_supported": true,
+   "rule": "DRAFTER untested_reason unpublished: model never published a prediction",
+   "note": "DOI resolves to Cai 2011 Regul Pept (epub 2011-10-08, print 2012). Quote verbatim from abstract aims sentence; abstract covers PK, distribution, excretion, serum antiviral activity only, no toxicology. untested/unpublished stands.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [

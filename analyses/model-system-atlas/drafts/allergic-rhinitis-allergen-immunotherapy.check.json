@@ -23,7 +23,9 @@
    "proposed_status": "same",
    "proposed_year": 2013,
    "rule": "evidence rule 6 (year = earliest public comparison)",
-   "note": "Ellis 2017 abstract (PMID 28236469, epub 2017-02-21) quote verbatim; same holds. But HDM-SPIRE's chamber TRSS moved (p=0.02) in Circassia PRNewswire 2013-09-12, tier 5 with model_src NCT01447784 (tier 3): earliest member comparison is 2013. Status unchanged."
+   "note": "Ellis 2017 abstract (PMID 28236469, epub 2017-02-21) quote verbatim; same holds. But HDM-SPIRE's chamber TRSS moved (p=0.02) in Circassia PRNewswire 2013-09-12, tier 5 with model_src NCT01447784 (tier 3): earliest member comparison is 2013. Status unchanged.",
+   "adjudicated_status": "same",
+   "adjudication_note": "Rule 6: status same agreed; only the year is at issue. Circassia's 2013 HDM-SPIRE chamber press release (tier 5, model_src NCT01447784) is admissible, so the year should move to 2013."
   },
   {
    "cell": "dose",
@@ -208,7 +210,9 @@
    "proposed_year": 2013,
    "rule": "7 (dating: earliest admissible source; same pattern as engagement 2)",
    "note": "Nony 2015 (PMID 25846209, epub 2015-04-20) quote verbatim. retro confirmed: VO59.08 (483 patients, all 3 doses significant on AASS) was public in Stallergenes' 2009-09-16 release (BioSpace copy, tier 5), before the mouse paper. Earliest public comparison is the mouse paper year 2013, with that PR as src and Tourdot 2013 as model_src; Nony 2015 stays the tier-1 record.",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "retro",
+   "adjudication_note": "Retrodiction rule and rule 6: retro agreed. Patient result was public in 2009 (tier 5), so the comparison first became public with the 2013 mouse paper; year 2013, Nony 2015 stays the tier-1 record."
   },
   {
    "cell": "safety",
@@ -229,6 +233,20 @@
    "status_supported": true,
    "note": "Quote verbatim. Model side verified in Phase IIb full text (no grade III/IV, no epinephrine, 89.9% no SR). Phase III: ESR 10.1% (37/368) vs 2.3% placebo; serious ESRs grade 2/3/4, the grade 4 needed epinephrine. Rate held; literal 'no grade III/IV' did not (2/368), beyond the ~150-active Phase IIb's reach. same/partial supported; rule question 5 stands.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 7,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "rule": "Dose table: 'target reached' -> dose same; whether the reached dose worked is the efficacy question, never this one (cf. dose 3 adjudication, rule v4)",
+   "note": "Business Wire PR 2019-12-20 via FirstWord resolves, quote verbatim. The CPT-chosen 170 ug course was dosed; the CSMS shortfall is already efficacy 5's contra. As same it repeats dose 6 without strengthens: fold into dose 6's note.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table/rule: target reached is dose same; the 2019 Phase III failure is efficacy only. As same it repeats dose 6 with no status change (one entry per change of status), so drop."
   }
  ],
  "missing": [

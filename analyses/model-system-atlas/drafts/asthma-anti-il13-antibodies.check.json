@@ -326,7 +326,9 @@
    "proposed_year": 2013,
    "rule": "2 (#125) with 7",
    "note": "NCT00781443 resolves (start 2008-12, n=29, no results); title verbatim. A results-free registry record is a sponsor statement, not a source (#125). Open on Scheerens 2014 (PMID 24131304, tier 1, online 2013-10-18) at 2013; keep model_first_use_year 2008; before the same-year contra (#30).",
-   "checked_by": "CHECKER_BRIEF_v3 / models"
+   "checked_by": "CHECKER_BRIEF_v3 / models",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 6 opener: both sides agree untested. Decision 2 (#125): the results-free NCT00781443 protocol record is no source; cite Scheerens 2014 (tier 1). Year stays model_first_use_year 2008 as rule 6's proxy, before the 2013 contra."
   },
   {
    "cell": "efficacy",
@@ -347,6 +349,20 @@
    "status_supported": true,
    "note": "PMID 29413502 verbatim; epub 2017-12-13, NCT02104674 results 2026-07-17 confirmed. Primary missed (83 mL, p=0.06), no significant secondary, authors call it a miss; challenge public since 2013, so cleanly prospective. Strengthens right.",
    "checked_by": "CHECKER_BRIEF_v3 / models"
+  },
+  {
+   "cell": "dose",
+   "index": 4,
+   "verdict": "corrected",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": false,
+   "proposed_status": "same",
+   "rule": "DRAFTER_BRIEF dose: whether the reached dose worked is the efficacy question, never this one; a drug that reached its target and failed is an efficacy failure only",
+   "note": "PMID 29792288 abstract, quote verbatim. 300 mg q2w (the model's regimen) was given, so the target was reached: same, not contra. That duplicates dose 3 with no strengthens; fold into dose 3 and delete.",
+   "checked_by": "CHECKER_BRIEF / models",
+   "adjudicated_status": "drop",
+   "adjudication_note": "Dose table 'target reached' gives same, not contra (efficacy failure only). Dose 3 already scores that same on this track from the same source and year; one entry per status change, so this duplicate is dropped."
   }
  ],
  "missing": [

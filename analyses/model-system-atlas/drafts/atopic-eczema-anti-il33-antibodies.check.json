@@ -131,7 +131,9 @@
    "proposed_status": "contra",
    "proposed_year": 2021,
    "rule": "7",
-   "note": "Status right, year wrong: the second miss was public 2021-04-20 (NCT03831191 results, 'terminated for lack of efficacy after an interim analysis'), then NCT03736967 2021-11-01. Torudokimab's tier-1 report Laquer 2022 BJD (10.1111/bjd.21631, epub 2022-07-29) is missing from patient_trials (doi null)."
+   "note": "Status right, year wrong: the second miss was public 2021-04-20 (NCT03831191 results, 'terminated for lack of efficacy after an interim analysis'), then NCT03736967 2021-11-01. Torudokimab's tier-1 report Laquer 2022 BJD (10.1111/bjd.21631, epub 2022-07-29) is missing from patient_trials (doi null).",
+   "adjudicated_status": "contra",
+   "adjudication_note": "Both agree contra (second miss on a failed track, strengthens). Rule 6: year is the earliest public date of that second miss, NCT03831191 results 2021-04-20, not Kosloski 2024; add Laquer 2022 DOI to patient_trials."
   },
   {
    "cell": "safety",
@@ -152,7 +154,9 @@
    "proposed_status": "same",
    "proposed_year": 2021,
    "rule": "12",
-   "note": "Model side is torudokimab-specific (specificity, cyno PK), an off-target prediction that does not pool across members (decision 12); pair with torudokimab's own record, NCT03831191 AE table (2021-04-20; SAEs 0/33, 0/35, 0/34, 2/33) or Laquer 2022, not itepekimab. Low confidence; else untested."
+   "note": "Model side is torudokimab-specific (specificity, cyno PK), an off-target prediction that does not pool across members (decision 12); pair with torudokimab's own record, NCT03831191 AE table (2021-04-20; SAEs 0/33, 0/35, 0/34, 2/33) or Laquer 2022, not itepekimab. Low confidence; else untested.",
+   "adjudicated_status": "untested",
+   "adjudication_note": "Rule 5 no_prediction: a binding-specificity panel plus cyno PK names no harm and states no margin, so nothing checkable; 'clean antibody' is the drafter's inference. Torudokimab data also cannot predict itepekimab's tolerability."
   },
   {
    "cell": "engagement",
@@ -253,6 +257,16 @@
    "checked_by": "CHECKER_BRIEF_v3 / models",
    "adjudicated_status": "contra",
    "adjudication_note": "Decision 4 (#58): the model predicted worsening, not a null, and that effect was absent (arms tracked placebo); null-null is same only when the null was predicted. Decision 5 analogue: a conservative model is still wrong. magnitude: opposite."
+  },
+  {
+   "cell": "engagement",
+   "index": 11,
+   "verdict": "confirmed",
+   "source_resolves": true,
+   "quote_found": "verbatim",
+   "status_supported": true,
+   "note": "Chen 2019 accepted manuscript (ORA uuid:5e031a33-1e4d...) quote verbatim: IgE 10101/9954/10321 kU/L, day 0/29/140. Peng 2018 abstract (online 2017-09-26): aIL-33Ab significantly reduced serum IgE in DNCB mice. Contra low confidence holds; Chen attributes the null to nothing.",
+   "checked_by": "CHECKER_BRIEF / models"
   }
  ],
  "missing": [
@@ -263,7 +277,8 @@
   "Chen 2019 (doi 10.1126/scitranslmed.aax2945): 'etokimab also inhibited neutrophil migration to skin interstitial fluid in vitro', an ex_vivo human system compared in-source with the in vivo HDM challenge; candidate separate ex_vivo engagement track (same, comparison_stated true) rather than folded into the human_challenge track.",
   "Laquer 2022 (Br J Dermatol, doi 10.1111/bjd.21631, PMID 35481678, epub 2022-07-29; Lilly authors incl. Okragly, Sims): tier-1 report of the torudokimab AD trial, 'Interleukin-33 antibody failed to demonstrate benefit in a phase II ... study'. Not a model, but a missed source: patient_trials NCT03831191 has doi null. No abstract (research letter); not opened, paywalled.",
   "Checked and not applicable: England 2023 (Sci Rep, doi 10.1038/s41598-023-36642-y) tozorakimab characterization uses primary human cells and a murine lung epithelial-injury model, no skin or AD system; Imai 2019 (JID, 10.1016/j.jid.2019.04.016) is the same K14-IL-33 transgenic track already opened by Imai 2013.",
-  "models: Peng 2018 serum-IgE readout vs Chen 2019 full text (ORA accepted manuscript, https://ora.ox.ac.uk/objects/uuid:5e031a33-1e4d-4f51-b2e7-3c4001ee8f4d): 'There was no significant change in serum total IgE during the study (mean total serum IgE at study entry 10101+7594 kU/L; day 29 post-etokimab 9954+7394 kU/L; day 140 post-etokimab 10321+8103 kU/L)'. A missed engagement pairing on anti-il33-mab-dncb-mouse-ad: the model predicted serum IgE falls, 12 dosed AD patients showed none at day 29/140, while peripheral eosinophils fell 40% (lesional in the model). Candidate contra or same + partial, year 2019, low confidence (single open-label 300 mg dose, no placebo arm for IgE)."
+  "models: Peng 2018 serum-IgE readout vs Chen 2019 full text (ORA accepted manuscript, https://ora.ox.ac.uk/objects/uuid:5e031a33-1e4d-4f51-b2e7-3c4001ee8f4d): 'There was no significant change in serum total IgE during the study (mean total serum IgE at study entry 10101+7594 kU/L; day 29 post-etokimab 9954+7394 kU/L; day 140 post-etokimab 10321+8103 kU/L)'. A missed engagement pairing on anti-il33-mab-dncb-mouse-ad: the model predicted serum IgE falls, 12 dosed AD patients showed none at day 29/140, while peripheral eosinophils fell 40% (lesional in the model). Candidate contra or same + partial, year 2019, low confidence (single open-label 300 mg dose, no placebo arm for IgE).",
+  "engagement, anti-il33-mab-dncb-mouse-ad: Kosloski 2024 (doi:10.1111/cts.13874) itepekimab AD PK/PD with repeated q2w/q4w dosing may report serum total IgE; a secondary listing says IgE reductions were 'more gradual'. Not confirmed it was itepekimab vs placebo; if so, a later same entry on this track."
  ],
  "could_not_verify": [
   "Smith 2017 full text for an atopic dermatitis phenotype of rs146597587 (Europe PMC full-text fetch timed out; not retried).",
@@ -282,6 +297,7 @@
   "#127 defines `strengthens: true` for a second miss; is it allowed on a same-to-same engagement entry (Kosloski 2024 direct readout), or should that datum go in `patient_trials`?",
   "models: efficacy, a prospective model whose stated prediction was worsening (DaSilva-Arnold: IL-33 attenuates Stat6VT disease) when patients showed a null (ATLAS arms ~ placebo): same on the no-benefit half (direction_only), contra by #58/decision 4 (predicted effect absent), or an efficacy analogue of decision 5's over-prediction? Under decision 6 the answer sets the tile's efficacy headline.",
   "models: decision 10 for an ex-vivo assay inside the trial paper itself, run after and 'given the clinical trial data' (Chen 2019 transwells on trial blister fluid): retro as proposed, and does a track that only ever retrodicted still open with an untested entry (#30/#112)?",
-  "models: rule 7 proxy dating for a candidate-selection PD assay published four years after first-in-human (Okragly 2021; FIH Nov 2017): open the untested strip at publication (2021, as the draft's cyno track) or at first class use with the paper as proxy (2017)?"
+  "models: rule 7 proxy dating for a candidate-selection PD assay published four years after first-in-human (Okragly 2021; FIH Nov 2017): open the untested strip at publication (2021, as the draft's cyno track) or at first class use with the paper as proxy (2017)?",
+  "engagement 11: the DNCB model dosed antibody 14 times over 33 days; Chen gave one 300 mg dose. Is a single-dose null on a slow-turnover readout (IgE) a contra, or untested because the dosing regimen differs from the model's?"
  ]
 }
