@@ -535,7 +535,7 @@ GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_anim
              "earlier_safety_stop": "Earlier drug on the target stopped for safety",
              "poor_selectivity": "Drug binds another protein within 10-fold"}
 # The model-system atlas's four questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
-GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose"), ("stop_no_benefit", "Efficacy"),
+GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy"),
                 ("stop_safety", "Safety")]
 FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
 # Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
@@ -545,7 +545,8 @@ CIRCULAR = {("lit_human_engagement", "stop_engagement")}
 
 def evidence_grid():
     """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
-    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much."""
+    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much, and how many
+    stops among the programs with the evidence it rests on."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
     rows = [c for c in GRID_ROWS if c in df.index]
@@ -558,10 +559,10 @@ def evidence_grid():
                 color, text, ink = NEUTRAL, "not testable", MUTED
             elif pd.isna(rr):
                 color, text, ink = NEUTRAL, "too few stops", MUTED
-            elif hi < 1:
-                color, text, ink = FEWER, f"{1 - rr:.0%} fewer", "white"
-            elif lo > 1:
-                color, text, ink = MORE, f"{rr - 1:.0%} more", "white"
+            elif hi < 1 or lo > 1:
+                stops = round(df.at[c, "exposed"] * df.at[c, f"{outcome}_ppv"])
+                change = f"{1 - rr:.0%} fewer" if hi < 1 else f"{rr - 1:.0%} more"
+                color, text, ink = FEWER if hi < 1 else MORE, f"{change}\n{stops:,} stops", "white"
             else:
                 color, text, ink = NEUTRAL, "no clear effect", MUTED
             ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
