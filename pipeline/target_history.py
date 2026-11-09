@@ -379,12 +379,20 @@ def validate(_args) -> None:
     picks = validate_sample(d)
     items = items_for(d[d.key.isin(set(picks))], History(), with_history=False, suffix="|blind")
     run_id = llm.run(TASK, items)
+    a = agreement(blind_verdicts(str(run_id), d))
     with llm.connect() as conn, conn.cursor() as cur:
         llm.record_method(cur, VALIDATE_METHOD, "Blind check of the target-failure verdict", VALIDATE_DESCRIPTION,
                           ["preclin.stop_target_history", "preclin.ctgov_study", "web search"],
-                          {"seed": VALIDATION_SEED, "per_fate": VALIDATION_PER_FATE, "run": str(run_id)})
+                          {"seed": VALIDATION_SEED, "per_fate": VALIDATION_PER_FATE, "run": str(run_id),
+                           "agreement": a})
         conn.commit()
-    print(f"sample={len(items)} decided={len(llm.decisions(run_id))} run={run_id}")
+    print(f"sample={len(items)} decided={a['decided']} agree={a['agree']} run={run_id}")
+
+
+def blind_verdicts(run_id: str, d: pd.DataFrame) -> pd.DataFrame:
+    """The blind run's verdicts with each stop's target fate."""
+    return pd.DataFrame([(k.removesuffix("|blind"), o["verdict"]) for k, _, o in llm.decisions(run_id)],
+                        columns=["key", "verdict"]).merge(d[["key", "target_fate"]], on="key")
 
 
 def agreement(blind: pd.DataFrame) -> dict:
@@ -409,8 +417,8 @@ def summary(_args) -> None:
     run = frame.query("SELECT parameters->>'run' AS run FROM preclin.analysis_method WHERE method_id = %s",
                       (VALIDATE_METHOD,))
     if len(run) and run.run[0]:
-        blind = pd.DataFrame([(k.removesuffix("|blind"), o["verdict"]) for k, _, o in llm.decisions(run.run[0])],
-                             columns=["key", "verdict"]).merge(d[["key", "target_fate"]], on="key")
+        blind = blind_verdicts(run.run[0], d)
+        print(pd.crosstab(blind.target_fate, blind.verdict).to_string())
         print(agreement(blind))
 
 
