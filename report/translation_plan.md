@@ -359,3 +359,6 @@ target having worked where this one was not shown to engage counts as none of th
 target's record, so it would make target evidence predict engagement failure by construction (checked: with it,
 genetic support went with 1.7× the engagement stops; without it, no clear difference). Published human engagement is
 not tested against engagement stops, which were judged from the same publications.
+After the literature result was seen (2026-11-09), the report added two exploratory splits of the animal-model
+line at Phase 2: by the size of the sponsor's company (report.section3.sponsors) and by human genetic support. They
+were chosen to test explanations of a result already known, so they are not confirmations.
