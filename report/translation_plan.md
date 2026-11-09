@@ -350,3 +350,12 @@ section with phase added):
 
 The evidence chart shows the two standard flags as one line; each flag stays in the registered categories and
 the appendix table.
+
+**Stops by the model-system atlas's four questions, 2026-11-09, exploratory.** Each evidence area and safety line is
+also tested against stops split the way the atlas splits its questions: dose (tolerability capped the dose, toxicity
+offset the benefit, or a registered PK, dose or formulation reason), engagement (human evidence shows exposure or
+engagement too low), efficacy (the target was engaged without benefit) and safety. A stop coded as another drug on the
+target having worked where this one was not shown to engage counts as none of these: its code follows from the
+target's record, so it would make target evidence predict engagement failure by construction (checked: with it,
+genetic support went with 1.7× the engagement stops; without it, no clear difference). Published human engagement is
+not tested against engagement stops, which were judged from the same publications.

@@ -14,7 +14,6 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.lines
 import matplotlib.patches
 import numpy as np
 import pandas as pd
@@ -525,123 +524,116 @@ def evidence_translates():
     save(fig, "evidence_translates")
 
 
-# The stop-risk figure's row names, by column: the areas' evidence, then the safety lines.
-STOP_RISK_NAMES = {"g3": "Human genetics", "reactome": "Curated pathway", "somatic": "Tumour genetics",
-                   "expression": "RNA change in diseased tissue", "altered_animal": "Mouse genetics shows the disease",
-                   "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
-                   "lit_human_engagement": "Published study of the drug engaging its target in people",
-                   "cat_precedent": "Earlier drugs on the same target",
-                   "liability": "Standard flags: gene intolerant to loss in people,\nor knockout mice die young",
-                   "ko_vital_organ": "Mutant mice show a vital-organ phenotype",
-                   "earlier_safety_stop": "An earlier drug on the target stopped for safety",
-                   "poor_selectivity": "Drug binds another protein within 10-fold"}
-STOP_COLORS = {"stop_efficacy": ACCENT, "stop_safety": "#eb6834"}
-STOP_LABELS = {"stop_efficacy": "Stopped for efficacy or exposure", "stop_safety": "Stopped for safety"}
+# The evidence grid's rows (report.evidence_analysis.stop_risk columns), in order: evidence about the target, about the
+# drug, then the safety lines below a rule.
+GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_animal": "Mouse genetics shows the disease",
+             "expression": "RNA change in diseased tissue", "cat_precedent": "Earlier drugs on the same target",
+             "area_measured": "Drug binding measured", "area_lit_animal": "Published animal studies of the drug",
+             "lit_human_engagement": "Drug shown to engage its target in people",
+             "liability": "Standard genetic safety flags", "ko_vital_organ": "Mutant mice: vital-organ phenotype",
+             "earlier_safety_stop": "Earlier drug on the target stopped for safety",
+             "poor_selectivity": "Drug binds another protein within 10-fold"}
 # The model-system atlas's four questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
-QUESTION_STOPS = [("stop_engagement", "Engagement", "never engaged the target"),
-                  ("stop_dose", "Dose", "dose capped or exposure failed"),
-                  ("stop_no_benefit", "Efficacy", "engaged the target, no benefit"),
-                  ("stop_safety", "Safety", "stopped for harm")]
-QUESTION_ROWS = ["g3", "somatic", "altered_animal", "expression", "cat_precedent", "area_measured", "area_lit_animal",
-                 "lit_human_engagement"]  # target evidence, then evidence about the drug; the safety lines follow
-STOP_RR_LIM = (0.25, 4)
+GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose"), ("stop_no_benefit", "Efficacy"),
+                ("stop_safety", "Safety")]
+FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
+# Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
+# efficacy attribution judges engagement on, so it cannot be tested against engagement stops.
+CIRCULAR = {("lit_human_engagement", "stop_engagement")}
 
 
-def stop_rows() -> pd.DataFrame:
+def evidence_grid():
+    """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
+    adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
-    return df[df.estimated.eq(True) & df.column.isin(STOP_RISK_NAMES)]
+    df = df[df.estimated.eq(True)].set_index("column")
+    rows = [c for c in GRID_ROWS if c in df.index]
+    targetdrug = sum(1 for c in rows if df.at[c, "group"] == "area")
+    fig, ax = plt.subplots(figsize=(8.2, 0.48 * len(rows) + 1.0))
+    for i, c in enumerate(rows):
+        for j, (outcome, _) in enumerate(GRID_COLUMNS):
+            rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
+            if (c, outcome) in CIRCULAR:
+                color, text, ink = NEUTRAL, "not testable", MUTED
+            elif pd.isna(rr):
+                color, text, ink = NEUTRAL, "too few stops", MUTED
+            elif hi < 1:
+                color, text, ink = FEWER, f"{1 - rr:.0%} fewer", "white"
+            elif lo > 1:
+                color, text, ink = MORE, f"{rr - 1:.0%} more", "white"
+            else:
+                color, text, ink = NEUTRAL, "no clear effect", MUTED
+            ax.add_patch(matplotlib.patches.Rectangle((j, i), 0.96, 0.9, color=color, linewidth=0))
+            ax.text(j + 0.48, i + 0.45, text, ha="center", va="center", fontsize=9, color=ink,
+                    fontweight="bold" if ink == "white" else "normal")
+    ax.axhline(targetdrug - 0.05, color=INK2, linewidth=0.8)
+    ax.set_xlim(0, len(GRID_COLUMNS))
+    ax.set_ylim(len(rows), -0.1)
+    ax.set_xticks([j + 0.48 for j in range(len(GRID_COLUMNS))], [t for _, t in GRID_COLUMNS], fontsize=10.5,
+                  color=INK, fontweight="bold")
+    ax.xaxis.tick_top()
+    ax.tick_params(length=0)
+    ax.set_yticks([i + 0.45 for i in range(len(rows))], [GRID_ROWS[c] for c in rows], fontsize=10, color=INK)
+    for side in ax.spines.values():
+        side.set_visible(False)
+    save(fig, "evidence_grid")
 
 
-def paired_forest(rows: pd.DataFrame, ys: list[float], outcomes: tuple[str, str], xlabel: str, name: str,
-                  header: tuple[float, str] | None = None):
-    """Two adjusted risk ratios per row, the first outcome above the second; a hollow dot is a 95% interval that
-    includes 1, and an interval past the axis ends in an arrowhead. `header` puts an italic divider label at y."""
-    lo_lim, hi_lim = STOP_RR_LIM
-    fig, ax = plt.subplots(figsize=(8.5, 0.5 * len(ys) + 1.6))
-    for outcome, dy in zip(outcomes, (-0.14, 0.14)):
-        color = STOP_COLORS[outcome]
-        for yi, r in zip(ys, rows.itertuples()):
-            rr, lo, hi = (getattr(r, f"{outcome}_{k}") for k in ("rr", "lo", "hi"))
-            if pd.isna(rr):
-                continue
-            ax.plot([np.log2(max(lo, lo_lim)), np.log2(min(hi, hi_lim))], [yi + dy] * 2, color=color, linewidth=1.8)
-            for end, beyond, mark in ((lo_lim, lo < lo_lim, "<"), (hi_lim, hi > hi_lim, ">")):
-                if beyond:
-                    ax.plot(np.log2(end), yi + dy, mark, markersize=6, color=color, clip_on=False)
-            clear = lo > 1 or hi < 1
-            ax.plot(np.log2(rr), yi + dy, "o", markersize=7, color=color, markeredgewidth=1.5,
-                    markerfacecolor=color if clear else "white", markeredgecolor=color)
-    ax.axvline(0, color=INK2, linewidth=1)
-    ticks = [0.25, 0.5, 1, 2, 4]
-    ax.set_xticks(np.log2(ticks), [f"{t:g}×" for t in ticks])
-    ax.set_xlim(np.log2(lo_lim), np.log2(hi_lim))
-    ax.set_yticks(ys, [STOP_RISK_NAMES[c] for c in rows.column], color=INK, fontsize=10)
-    ax.set_ylim(ys[-1] + 0.6, -1.4)
-    style(ax)
-    if header:
-        ax.axhline(header[0] - 0.45, color=GRID, linewidth=1)
-        ax.text(np.log2(lo_lim), header[0], header[1], color=INK2, fontsize=9.5, style="italic", va="center")
-    ax.text(np.log2(lo_lim * 1.05), -0.95, "◀ fewer stops", color=INK2, fontsize=9, va="center")
-    ax.text(np.log2(hi_lim / 1.05), -0.95, "more stops ▶", color=INK2, fontsize=9, va="center", ha="right")
-    ax.set_xlabel(xlabel, color=INK2, fontsize=9)
-    ax.legend(handles=[matplotlib.lines.Line2D([], [], marker="o", linestyle="", color=STOP_COLORS[o], markersize=7,
-                                               label=STOP_LABELS[o]) for o in outcomes],
-              loc="lower left", bbox_to_anchor=(0, 1.0), ncol=2, frameon=False, fontsize=9.5, labelcolor=INK2,
-              handletextpad=0.2, borderaxespad=0.2)
-    save(fig, name)
+# The stop drill-down's segments: (key, label, colour); the first segment of each bar is the next bar's whole.
+DRILL = [
+    ("shown", "All Phase 2–3 stops", [("efficacy", "Efficacy", ACCENT), ("sponsor_decision", "Sponsor decision", "#8a8984"),
+                                     ("positive_not_advanced", "Positive result,\nnot taken forward", "#b9b8b0"),
+                                     ("operational", "Operational", GRID), ("safety", "Safety", "#eb6834"),
+                                     ("unknown", "", GRID)]),
+    ("efficacy", "Stopped for efficacy", [("engaged_no_benefit", "Engaged the target,\nno benefit", ACCENT),
+                                          ("not_engaged", "Never\nengaged", "#8a8984"),
+                                          ("trial_design", "Trial couldn't answer", "#b9b8b0"),
+                                          ("no_engagement_data", "Engagement\nnever measured", GRID),
+                                          ("not_examined", "Not examined", GRID)]),
+    ("engaged", "Engaged the target, no benefit", [
+        ("worked_elsewhere_only", "Target works, but only\nin other diseases", ACCENT),
+        ("worked_here", "Another drug on the target\nalready worked here", "#7fb0e8"),
+        ("worked_related", "Works in a related\nsubtype or stage", "#c6dbf4"),
+        ("never_worked_tried_again", "Never worked; tried again", "#8a8984"),
+        ("never_worked_single", "Never worked;\nonly attempt", GRID), ("no_target", "No target", GRID)]),
+]
+DRILL_LABEL_MIN = 0.075  # a segment narrower than this share is labelled below its bar
 
 
-def stop_risk():
-    """Risk of stopping for efficacy or exposure, and for safety, with each line against without
-    (report.evidence_analysis.stop_risk): the evidence areas sorted by their efficacy ratio, then the safety lines."""
-    df = stop_rows()
-    areas = df[df.group.eq("area")].sort_values("stop_efficacy_rr")
-    safety = df[df.group.eq("safety")]
-    ys = [*range(len(areas)), *(len(areas) + 1.2 + i for i in range(len(safety)))]
-    paired_forest(pd.concat([areas, safety], ignore_index=True), ys, ("stop_efficacy", "stop_safety"),
-                  "Risk of stopping, programs with the evidence against those without (adjusted, 95% range)",
-                  "stop_risk", header=(len(areas) + 0.55, "Safety signals"))
-
-
-def four_questions():
-    """For each evidence line, the adjusted risk ratio of a stop on each of the model-system atlas's four questions
-    (engagement, dose, efficacy, safety), one panel per question: target evidence, then the drug, then the safety
-    lines. A hollow dot is a 95% interval that includes 1; an interval past the axis ends in an arrowhead."""
-    df = stop_rows().set_index("column")
-    order = [c for c in QUESTION_ROWS if c in df.index]
-    safety = [c for c in df.index if df.at[c, "group"] == "safety"]
-    rows = df.loc[order + safety]
-    ys = [*range(len(order)), *(len(order) + 1.2 + i for i in range(len(safety)))]
-    lo_lim, hi_lim = STOP_RR_LIM
-    fig, axes = plt.subplots(1, len(QUESTION_STOPS), figsize=(14, 0.42 * len(ys) + 1.8), sharey=True,
-                             gridspec_kw={"wspace": 0.08})
-    for ax, (outcome, title, sub) in zip(axes, QUESTION_STOPS):
-        for yi, (_, r) in zip(ys, rows.iterrows()):
-            rr, lo, hi = (r[f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
-            if pd.isna(rr):
-                continue
-            ax.plot([np.log2(max(lo, lo_lim)), np.log2(min(hi, hi_lim))], [yi, yi], color=ACCENT, linewidth=1.8)
-            for end, beyond, mark in ((lo_lim, lo < lo_lim, "<"), (hi_lim, hi > hi_lim, ">")):
-                if beyond:
-                    ax.plot(np.log2(end), yi, mark, markersize=6, color=ACCENT, clip_on=False)
-            clear = lo > 1 or hi < 1
-            ax.plot(np.log2(rr), yi, "o", markersize=7, color=ACCENT, markeredgewidth=1.5, markeredgecolor=ACCENT,
-                    markerfacecolor=ACCENT if clear else "white")
-        ax.axvline(0, color=INK2, linewidth=1)
-        ax.axhline(len(order) + 0.1, color=GRID, linewidth=1)
-        ax.set_xticks(np.log2([0.5, 1, 2]), ["0.5×", "1×", "2×"])  # the panels' edges, 0.25× and 4×, go unlabelled
-        ax.set_xlim(np.log2(lo_lim), np.log2(hi_lim))
-        ax.tick_params(axis="x", labelsize=9)
-        style(ax)
-        ax.set_title(f"{title}\n", loc="left", color=INK, fontsize=11, fontweight="bold")
-        ax.text(0, 1.012, sub, transform=ax.transAxes, color=INK2, fontsize=9)
-    axes[0].set_yticks(ys, [STOP_RISK_NAMES[c] for c in rows.index], color=INK, fontsize=10)
-    axes[0].set_ylim(ys[-1] + 0.6, -0.6)
-    axes[0].text(-0.02, len(order) + 0.55, "Safety signals", transform=axes[0].get_yaxis_transform(), ha="right",
-                 va="center", color=INK2, fontsize=9.5, style="italic")
-    fig.supxlabel("Risk of that kind of stop, programs with the evidence against those without (adjusted, 95% range; "
-                  "left of 1 = fewer stops)", color=INK2, fontsize=9, y=0.03)
-    save(fig, "four_questions")
+def why_stop():
+    """Phase 2–3 stops among 2008–2019 entries broken down three times (report.stop_causes.drilldown): by cause, the
+    efficacy stops by what the evidence shows about engagement, and the engaged-without-benefit stops by what other
+    drugs on the target did."""
+    n = json.load(open(os.path.join(OUT, "stop_causes", "numbers.json")))["drilldown"]
+    fig, ax = plt.subplots(figsize=(12, 5.6))
+    height, gap = 0.8, 1.75
+    dark = {ACCENT, "#8a8984", "#eb6834"}
+    for i, (key, title, segments) in enumerate(DRILL):
+        part = n[key]
+        total = n["stops"] if key == "shown" else n[key]["stops"]
+        y, x, below = -i * gap, 0.0, 0
+        ax.text(0, y + height / 2 + 0.08, f"{title}  ({total:,})", color=INK, fontsize=11, fontweight="bold",
+                va="bottom")
+        for j, (k, label, color) in enumerate(segments):
+            w = part[k]["n"] / total
+            ax.barh(y, w - 0.003, left=x, height=height, color=color)
+            ink = "white" if color in dark else INK
+            if w >= DRILL_LABEL_MIN:
+                ax.text(x + 0.008, y + 0.17, f"{w:.0%}", color=ink, fontsize=12, fontweight="bold", va="center")
+                ax.text(x + 0.008, y - 0.02, label, color=ink, fontsize=8, va="top", linespacing=1.05)
+            elif label:
+                ax.text(x + w / 2, y - height / 2 - 0.06 - 0.2 * below, f"{label.replace(chr(10), ' ')} {w:.0%}",
+                        color=INK2, fontsize=8, ha="center", va="top")
+                below += 1
+            if j == 0 and i < len(DRILL) - 1:
+                top = -(i + 1) * gap + height / 2 + 0.4
+                ax.add_patch(matplotlib.patches.Polygon([(x, y - height / 2), (x + w, y - height / 2), (1, top), (0, top)],
+                                                        closed=True, color=ACCENT, alpha=0.08, linewidth=0))
+            x += w
+    ax.set_xlim(-0.01, 1.01)
+    ax.set_ylim(-(len(DRILL) - 1) * gap - 0.8, 1.0)
+    ax.axis("off")
+    save(fig, "why_stop")
 
 
 # Eras of drug discovery: (from, to, technology, unit of the biological hypothesis, examples).
@@ -820,6 +812,7 @@ def main():
     if os.path.exists(os.path.join(OUT, "section2", "relative_success_by_area.csv")):
         genetics_by_area()
     if os.path.exists(os.path.join(OUT, "stop_causes", "numbers.json")):
+        why_stop()
         stop_causes_by_phase()
         registered_vs_traced()
     if os.path.exists(os.path.join(OUT, "section3", "rules.csv")):
@@ -830,8 +823,7 @@ def main():
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "lines.csv")):
         evidence_translates()
     if os.path.exists(os.path.join(OUT, "evidence_analysis", "stop_risk.csv")):
-        stop_risk()
-        four_questions()
+        evidence_grid()
 
 
 if __name__ == "__main__":

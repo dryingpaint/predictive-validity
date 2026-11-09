@@ -102,13 +102,15 @@ DOSE_REASON = "PK, dose or formulation"  # the registry reason a dose stop can c
 def stop_outcomes(t: pd.DataFrame) -> dict[str, pd.Series]:
     """Outcome column -> whether each traced stop (report.stop_causes.load) counts. Efficacy and safety are the
     causes; the efficacy stop is then split into the model-system atlas's questions: dose (tolerability capped the
-    dose, toxicity offset the benefit, or the registry gives a PK, dose or formulation reason), engagement (the drug
-    never engaged its target, by low exposure or by failing where another drug on the target worked) and efficacy
-    proper (the target was engaged without benefit)."""
+    dose, toxicity offset the benefit, or the registry gives a PK, dose or formulation reason), engagement (human
+    evidence shows exposure or engagement too low) and efficacy proper (the target was engaged without benefit). A stop
+    coded as another drug on the target having worked where this one was not shown to engage is neither: the code
+    follows from the target's record, so counting it would make target evidence predict engagement failure by
+    construction."""
     eff = t.likely.eq("efficacy")
     dose = eff & (t.detail.eq("dose_capped") | t.subcause.eq("toxicity_offset") | t.registry_reason.eq(DOSE_REASON))
     return {"stop_efficacy": eff, "stop_safety": t.likely.eq("safety"), "stop_dose": dose,
-            "stop_engagement": eff & t.subcause.eq("not_engaged") & ~dose,
+            "stop_engagement": eff & t.subcause.eq("not_engaged") & t.detail.ne("other_drug_on_target_worked") & ~dose,
             "stop_no_benefit": eff & t.subcause.eq("engaged_no_benefit") & ~dose}
 
 
@@ -203,7 +205,9 @@ def analyse(d: pd.DataFrame, rows: pd.DataFrame, fm: pd.DataFrame) -> tuple[pd.D
          "literature_gate": literature_gate(),
          "basis": evidence_basis(d),
          **hypotheses(d)}
-    return pd.DataFrame(out), pd.DataFrame(areas), stop_risk(traced_stops(d)), n
+    stops = stop_risk(traced_stops(d))
+    n["stop_risk"] = {r["column"]: {k: v for k, v in r.items() if k != "column"} for r in stops.to_dict("records")}
+    return pd.DataFrame(out), pd.DataFrame(areas), stops, n
 
 
 def literature_gate() -> dict:
