@@ -1,13 +1,16 @@
-"""Store tile drafts' track records in preclin.atlas_track_entry and their verdicts in atlas_track_verdict.
+"""Store tile drafts' track records in preclin.atlas_track, atlas_track_entry and atlas_track_verdict.
 
     .venv/bin/python analyses/model-system-atlas/drafts/track_store.py DRAFT.json [...] [--drafted-by TEXT]
 
-A draft is stored only if lint.py finds nothing but empty cells in it and its (mondo_id, mechanism_key) is
-a tracked row of preclin.atlas_register. Storing a draft replaces its tile: every entry and verdict of
-that tile is deleted and rewritten in one transaction. The verdict file is the draft's sibling
-<id>.check.json (CHECKER_BRIEF.md); an adjudicator's decision is its adjudicated_status.
+A draft is stored only if lint.py finds nothing but empty cells in it, every entry key is one the brief lists,
+and its (mondo_id, mechanism_key) is a tracked row of preclin.atlas_register. A track is one model system for
+one member drug by one route (model_id x drug x route); its drug is linked to the member's moiety through
+lists/class_audit/class_members.csv. Storing a draft replaces its tile: every track, entry and verdict of that
+tile is deleted and rewritten in one transaction. The verdict file is the draft's sibling <id>.check.json
+(CHECKER_BRIEF.md); an adjudicator's decision is its adjudicated_status.
 """
 import argparse
+import csv
 import json
 import os
 import sys
@@ -16,13 +19,29 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "..", "..")))
 sys.path.insert(0, HERE)
 
-from lint import lint  # noqa: E402
+from lint import KEYS, lint  # noqa: E402
 from pipeline import llm  # noqa: E402
 from psycopg2.extras import Json, execute_values  # noqa: E402
 
 QUESTIONS = ("engagement", "dose", "efficacy", "safety")
-COLUMNS = ("year", "status", "model_id", "model", "src", "srcLabel", "quote", "source_tier", "comparison_stated",
-           "retrodiction", "patient_signal_reversed", "confidence")
+MEMBERS = os.path.join(HERE, "..", "lists", "class_audit", "class_members.csv")
+TRACK = ("model_id", "model", "model_kind", "prediction_level", "model_first_use_year", "drug", "route")
+# draft key -> entry column; the track's own fields live on atlas_track
+ENTRY = {"year": "year", "status": "status", "src": "src", "srcLabel": "src_label", "quote": "quote",
+         "source_tier": "source_tier", "comparison_stated": "comparison_stated", "retrodiction": "retrodiction",
+         "patient_signal_reversed": "patient_signal_reversed", "confidence": "confidence", "population": "population",
+         "population_group": "population_group", "combination_with": "combination_with",
+         "imported_from": "imported_from", "subjects": "subjects", "untested_reason": "untested_reason",
+         "magnitude": "magnitude", "magnitude_basis": "magnitude_basis", "source_calls_it": "source_calls_it",
+         "readout_tier": "readout_tier", "endpoint_role": "endpoint_role", "outcome_tested": "outcome_tested",
+         "blocked_by": "blocked_by", "margin_stated": "margin_stated", "product_in_model": "product_in_model",
+         "model_filed": "model_filed", "trial_unreported": "trial_unreported", "strengthens": "strengthens",
+         "effect_size": "effect_size", "class_threshold": "class_threshold", "model_src": "model_src",
+         "model_src_tier": "model_src_tier", "registry_date": "registry_date", "epub_year": "epub_year",
+         "print_year": "print_year", "short": "short", "note": "note", "judgement": "judgement", "reason": "reason",
+         "confidence_note": "confidence_note", "patient_trials": "patient_trials"}
+FALSE_IF_MISSING = ("retrodiction", "patient_signal_reversed", "trial_unreported")
+assert set(ENTRY) | set(TRACK) | {"modality"} == KEYS, "every key the brief lists has a column"
 
 
 def rows(d: dict) -> list[tuple]:
@@ -37,25 +56,56 @@ def rows(d: dict) -> list[tuple]:
     return out
 
 
+def track_id(e: dict) -> str:
+    return " / ".join(str(e[k]) for k in ("model_id", "drug", "route"))
+
+
+def moieties(key: tuple[str, str]) -> dict[str, int]:
+    """Member drug name -> moiety_id for one tile."""
+    with open(MEMBERS) as f:
+        return {r["drug"].lower(): int(r["moiety_id"]) for r in csv.DictReader(f)
+                if (r["mondo_id"], r["mechanism_key"]) == key and r["drug"]}
+
+
+def value(col: str, v):
+    if col == "patient_trials":
+        return Json(v) if v else None
+    if col in ("effect_size", "class_threshold") and v is not None:
+        return str(v)
+    return v
+
+
 def store(path: str, drafted_by: str, cur) -> int:
     issues = [i for i in lint([path])[1] if "empty cell" not in i[2]]
     if issues:
         raise SystemExit(f"{path}: not stored, lint findings:\n" + "\n".join(" | ".join(i) for i in issues))
     d = json.load(open(path))
+    entries = rows(d)
+    unknown = sorted({k for *_, e in entries for k in e if k not in KEYS})
+    if unknown:
+        raise SystemExit(f"{path}: not stored, keys the brief does not list: {unknown}")
     key = (d["mondo_id"], d["mechanism_key"])
     cur.execute("SELECT tracked FROM preclin.atlas_register WHERE mondo_id = %s AND mechanism_key = %s", key)
     hit = cur.fetchone()
     if not hit or not hit[0]:
         raise SystemExit(f"{path}: {key} is not a tracked tile of preclin.atlas_register")
-    entries = rows(d)
+    moiety = moieties(key)
+    tracks = {track_id(e): e for *_, e in entries}
+    missing = sorted({e["drug"] for e in tracks.values() if e["drug"] != "class" and e["drug"].lower() not in moiety})
+    if missing:
+        raise SystemExit(f"{path}: not stored, drugs with no moiety among the tile's members: {missing}")
     cur.execute("DELETE FROM preclin.atlas_track_entry WHERE mondo_id = %s AND mechanism_key = %s", key)
-    execute_values(cur, """INSERT INTO preclin.atlas_track_entry (mondo_id, mechanism_key, question, modality, seq,
-                               year, status, model_id, model, src, src_label, quote, source_tier, comparison_stated,
-                               retrodiction, patient_signal_reversed, confidence, fields, drafted_by)
-                            VALUES %s""",
-                   [(*key, q, mod, seq, *(e.get(c) if c not in ("retrodiction", "patient_signal_reversed")
-                                          else bool(e.get(c)) for c in COLUMNS),
-                     Json({k: v for k, v in e.items() if k not in COLUMNS and k != "modality"}), drafted_by)
+    cur.execute("DELETE FROM preclin.atlas_track WHERE mondo_id = %s AND mechanism_key = %s", key)
+    execute_values(cur, f"""INSERT INTO preclin.atlas_track (mondo_id, mechanism_key, track_id, {", ".join(TRACK)},
+                               moiety_id) VALUES %s""",
+                   [(*key, t, *(e.get(k) for k in TRACK), None if e["drug"] == "class" else moiety[e["drug"].lower()])
+                    for t, e in tracks.items()])
+    cols = list(ENTRY.values())
+    execute_values(cur, f"""INSERT INTO preclin.atlas_track_entry (mondo_id, mechanism_key, question, modality, seq,
+                               track_id, {", ".join(cols)}, drafted_by) VALUES %s""",
+                   [(*key, q, mod, seq, track_id(e),
+                     *(bool(e.get(k)) if k in FALSE_IF_MISSING else value(c, e.get(k)) for k, c in ENTRY.items()),
+                     drafted_by)
                     for q, mod, seq, _, e in entries])
     check = path[:-5] + ".check.json"
     n_verdicts = 0
@@ -77,7 +127,7 @@ def store(path: str, drafted_by: str, cur) -> int:
                          v.get("checked_by") or c.get("checked_by", "CHECKER_BRIEF"))
                         for v, (mod, seq) in verdicts])
         n_verdicts = len(verdicts)
-    print(f"{os.path.basename(path)}: {len(entries)} entries, {n_verdicts} verdicts -> {key}")
+    print(f"{os.path.basename(path)}: {len(tracks)} tracks, {len(entries)} entries, {n_verdicts} verdicts -> {key}")
     return len(entries)
 
 

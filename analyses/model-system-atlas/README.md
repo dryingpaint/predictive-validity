@@ -3,7 +3,7 @@
 For each disease × mechanism (a tile) in every disease with a Phase 2 entrant in 2008–2019, with two names
 for the same patients merged into one, whether the preclinical models the drug class relied on predicted what
 happened in patients, on four questions (engagement, dose, efficacy, safety), stored as dated tracks in
-`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`). The main paper figure is
+`preclin.atlas_*` (migrations `db/133_atlas.sql`, `db/135_atlas_tracks.sql`, `db/137_atlas_comments.sql`, `db/138_atlas_all_diseases.sql`, `db/141_atlas_track_columns.sql`). The main paper figure is
 `atlas_glance_main.*`; the supplementary figure is `atlas_glance_supplement_p1..p4.*`. `lessons/` is an exploratory
 drill-down over the stored tiles (model families, engagement held against efficacy, the safety contradictions typed
 by hand; `lessons/LESSONS.md`, `lessons/robustness.md`); its figures are not paper figures.

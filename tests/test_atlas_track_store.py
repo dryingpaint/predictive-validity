@@ -45,4 +45,5 @@ def test_store_replaces_the_tile_and_keys_each_verdict_to_its_entry(tmp_path, mo
     for v, row in zip(check["entries"], verdicts):
         named = draft["cells"][v["cell"]][int(v["index"]) - base]
         stored = by_key[(row[2], row[3], row[4])]
-        assert (stored[7], stored[5], stored[11]) == (named["model_id"], named["year"], named["quote"])
+        assert (stored[5], stored[6], stored[10]) == (f'{named["model_id"]} / {named["drug"]} / {named["route"]}',
+                                                     named["year"], named["quote"])
