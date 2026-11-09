@@ -534,9 +534,8 @@ GRID_ROWS = {"g3": "Human genetics", "somatic": "Tumour genetics", "altered_anim
              "liability": "Standard genetic safety flags", "ko_vital_organ": "Mutant mice: vital-organ phenotype",
              "earlier_safety_stop": "Earlier drug on the target stopped for safety",
              "poor_selectivity": "Drug binds another protein within 10-fold"}
-# The model-system atlas's four questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
-GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy"),
-                ("stop_safety", "Safety")]
+# The model-system atlas's efficacy questions, as stop outcomes (report.evidence_analysis.stop_outcomes)
+GRID_COLUMNS = [("stop_engagement", "Engagement"), ("stop_dose", "Dose or exposure"), ("stop_no_benefit", "Efficacy")]
 FEWER, MORE, NEUTRAL = ACCENT, "#eb6834", "#f4f3ef"
 # Cells whose evidence is what the stop's label was read from: published human engagement is the evidence the
 # efficacy attribution judges engagement on, so it cannot be tested against engagement stops.
@@ -544,14 +543,14 @@ CIRCULAR = {("lit_human_engagement", "stop_engagement")}
 
 
 def evidence_grid():
-    """Which evidence goes with fewer or more stops on each of the atlas's four questions: a cell is coloured when the
+    """Which evidence goes with fewer or more stops on each of the atlas's efficacy questions: a cell is coloured when the
     adjusted risk ratio's 95% interval clears 1 (report.evidence_analysis.stop_risk) and says by how much, and how many
     stops among the programs with the evidence it rests on; an uncoloured cell gives the interval."""
     df = pd.read_csv(os.path.join(OUT, "evidence_analysis", "stop_risk.csv"))
     df = df[df.estimated.eq(True)].set_index("column")
     rows = [c for c in GRID_ROWS if c in df.index]
     targetdrug = sum(1 for c in rows if df.at[c, "group"] == "area")
-    fig, ax = plt.subplots(figsize=(8.2, 0.48 * len(rows) + 1.0))
+    fig, ax = plt.subplots(figsize=(6.6, 0.48 * len(rows) + 1.0))
     for i, c in enumerate(rows):
         for j, (outcome, _) in enumerate(GRID_COLUMNS):
             rr, lo, hi = (df.at[c, f"{outcome}_{k}"] for k in ("rr", "lo", "hi"))
