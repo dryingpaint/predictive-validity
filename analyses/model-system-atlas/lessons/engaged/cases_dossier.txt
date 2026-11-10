@@ -1,0 +1,1125 @@
+
+==================== rheumatoid-arthritis-btk-inhibitors  [autoimmune; furthest phase 2; 8 programs]
+-- engagement (cell headline same)
+   2013 same     BTK occupancy probe in CIA mice
+      reason: Human occupancy matched the mouse readout
+      note: Spebrutinib (CC-292) occupancy that tracked CIA efficacy in mice was reproduced in healthy volunteers: 2 mg/kg engaged all circulating BTK.
+-- efficacy (cell headline contra)
+   2010 untested Collagen-induced arthritis (rodent)
+      note: Ibrutinib abolished mouse CIA; every member then went into RA on mouse or rat CIA (spebrutinib, poseltinib, BMS-986142, fenebrutinib, elsubrutinib, evobrutinib, TAS5315).
+   2019 contra   Collagen-induced arthritis (rodent)
+      reason: CIA-active drugs failed primary endpoints
+      note: BMS-986142 showed robust efficacy in mouse CIA but missed both co-primary endpoints (ACR20, ACR70) in MTX-inadequate responders; poseltinib, evobrutinib, elsubrutinib and TAS5315 followed.
+      judgement: Year is the registry results posting (NCT02638948, 2019-05-28), the earliest public date; the tier-1 paper sets the status. This precedes fenebrutinib's success (registry 2019-09-10), and under v3 one drug's contra beats another's same on the same model, so fenebrutinib is listed in patient_trials and does not turn the cell back. Not neg: the model's own data for each failed drug showed robust CIA
+-- dose (cell headline same)
+   2020 same     CIA occupancy-efficacy PK/PD
+      note: Fenebrutinib doses were set to reach the rat-CIA inhibition target (IC70); 150 mg QD and 200 mg BID beat placebo on ACR50, 50 mg QD did not.
+   2022 same     CIA occupancy-efficacy PK/PD
+      reason: Target reached; drug failed and was dropped
+      note: Elsubrutinib reached adequate exposure and BTK engagement at every dose yet matched placebo; the rat-CIA occupancy target that predicted efficacy did not hold.
+
+==================== alzheimer-disease-bace1-inhibitors  [neurology; furthest phase 3; 4 programs]
+-- engagement (cell headline same)
+   2015 same     PDAPP mice and cannulated beagle dogs (brain/CSF Aβ)
+      reason: Human CSF Aβ fell as in dogs
+      note: LY2886721 lowered CSF Aβ in healthy volunteers as it had in dogs and mice, in one paper side by side.
+-- efficacy (cell headline contra)
+   2012 untested APP A673T protective variant carriers (Icelandic genetics)
+      note: A673T lowers β-cleavage of APP ~40% in vitro and protects carriers from AD and age-related cognitive decline.
+      judgement: A natural experiment in reduced BACE1 cleavage, cited as the rationale for BACE1 prevention trials; product_in_model false (no drug).
+   2019 contra   APP A673T protective variant carriers (Icelandic genetics)
+      reason: Members failed where genetics predicted protection
+      note: Atabecestat, given to the amyloid-positive unimpaired people A673T genetics argued would benefit, worsened the primary cognitive score.
+      judgement: Paired, not stated: no source found that sets A673T beside a member's trial. Lifelong partial reduction from birth differs from late partial inhibition; the genetics predicted the class works, and the earliest-stage member trial worsened cognition.
+   2012 untested PDAPP (APP V717F) transgenic mice
+      note: PDAPP mice model Aβ production and plaque, not neuron loss or cognitive decline.
+   2019 contra   PDAPP (APP V717F) transgenic mice
+      reason: Aβ lowered; members all failed
+      note: Atabecestat lowered Aβ as the mice predicted but worsened the primary PACC score in amyloid-positive people.
+      judgement: The mouse prediction is implicit (Aβ lowering implies disease modification); paired, not stated. Atabecestat was never tested in the cited mice.
+-- dose (cell headline untested)
+
+==================== breast-cancer-cdk4-6-inhibitors  [oncology; furthest phase 4; 6 programs]
+-- engagement (cell headline same)
+   2016 same     Human tumour xenografts in mice (phospho-Rb Ser780)
+      reason: Phospho-Rb fell in dosed patients
+      note: In the abemaciclib first-in-human study, phospho-Rb fell in patients' skin keratinocytes and tumours, as in xenografts.
+-- efficacy (cell headline contra)
+   2009 untested Human breast cancer cell-line panel (47 lines)
+      note: Luminal ER-positive lines were most sensitive to palbociclib and basal lines most resistant; palbociclib synergised with tamoxifen.
+      judgement: model_kind ex_vivo is the nearest enum for an in-vitro cell-line panel. FDA's palbociclib pharmacology review says these data and an ER+ xenograft supported enrolling ER+/HER2- patients.
+   2014 same     Human breast cancer cell-line panel (47 lines)
+      reason: ER+ prediction held in PALOMA-1
+      note: PALOMA-1: palbociclib plus letrozole doubled PFS in ER+/HER2- advanced disease (HR 0.49); selecting by cyclin D1 or p16 added nothing.
+      judgement: Partial: the panel's main call (ER+ sensitive) held, but its secondary markers (high cyclin D1, low p16) did not enrich benefit (cohort 2 HR 0.51 vs cohort 1 HR 0.30). Later Phase 3s (PALOMA-2/3, MONALEESA, MONARCH, DAWNA) confirm; not re-entered.
+   2020 contra   Human breast cancer cell-line panel (47 lines)
+      reason: Adjuvant palbociclib failed (PALLAS, PENELOPE-B)
+      note: PALLAS: adding palbociclib to adjuvant endocrine therapy did not improve invasive disease-free survival in early ER+/HER2- breast cancer.
+      judgement: The context population (HR+/HER2-) does not exclude early disease, and the panel predicted palbociclib activity in ER+ breast cancer (with tamoxifen synergy) without restricting stage; palbociclib failed its primary endpoint there, so contra under 'one drug's contra beats another's same'. Abemaciclib's positive monarchE does not reverse it. PENELOPE-B (also negative) changes no status and rides in
+   2015 untested Rodent brain penetration and intracranial xenograft (abemaciclib)
+      note: Abemaciclib prolonged survival of rats with intracranial U87MG tumours, with brain exposure above CDK4/6 Ki.
+      judgement: Opening entry at first use.
+   2019 contra   Rodent brain penetration and intracranial xenograft (abemaciclib)
+      reason: Primary intracranial ORR not met
+      note: In HR+/HER2- brain metastases, abemaciclib gave an intracranial response rate of 5.2%; the study missed its primary endpoint.
+      judgement: Scored on the primary endpoint (iORR); the rodent prediction was about CNS antitumour activity, which response did not show.
+-- dose (cell headline same)
+   2019 same     Rodent brain penetration and intracranial xenograft (abemaciclib)
+      reason: Exposure reached, intracranial efficacy failed
+      note: Brain-metastasis tissue exposure far exceeded target, as rodents predicted, but intracranial response missed its primary endpoint.
+   2017 same     Abemaciclib xenograft PK/PD model (phospho-Rb to tumour growth)
+      reason: Target exposure reached; drug worked
+      note: Combined with patient popPK, the xenograft model predicted skin target engagement; maximal phospho-Rb inhibition is reached at 150 and 200 mg twice daily.
+
+==================== non-small-cell-lung-carcinoma-anti-igf1r-antibodies  [oncology; furthest phase 2; 4 programs]
+-- engagement (cell headline same)
+   2011 same     Human tumour cells and xenografts treated with h7C10 (dalotuzumab)
+      reason: Tumour IGF-1R signalling fell in patients
+      note: Paired biopsies in dalotuzumab-treated patients showed lower tumour IGF-1R and downstream signalling, the readout the model used.
+-- efficacy (cell headline contra)
+   2005 untested A549 NSCLC xenografts in nude mice
+      note: h7C10 with vinorelbine or anti-EGFR antibody almost abolished A549 tumour growth and prolonged survival orthotopically.
+      judgement: Chose the dalotuzumab-parent A549 xenograft as the class's NSCLC model: it is a member antibody in an NSCLC xenograft and tested the same add-on combinations the trials ran.
+   2011 contra   A549 NSCLC xenografts in nude mice
+      reason: Add-on gave no PFS benefit
+      note: Teprotumumab (R1507) added to erlotinib did not raise 12-week PFS (37% and 44% vs 39%) in unselected NSCLC.
+      judgement: Paired the xenograft combination result with the first randomized NSCLC trial of a member; the trial drug (R1507) differs from the model's antibody (h7C10), so product_in_model false. Later cixutumumab trials agree and are listed as patient_trials.
+   2009 untested 22-line NSCLC cell panel treated with R1507 (total IGF-1R as response marker)
+      reason: Patient biomarker test not verifiable
+      note: Panel predicted high total tumour IGF-1R picks R1507 responders; Roche's biomarker analysis of the R1507+erlotinib trial (Habben 2011) could not be read verbatim.
+      judgement: Cell lines in vitro are not an enum kind; ex_vivo used as the closest non-animal kind. Ramalingam 2011 cites this panel but does not compare it with trial biomarker data (biomarkers 'reported separately'), so it is not a stated comparison.
+   2011 contra   22-line NSCLC cell panel treated with R1507 (total IGF-1R as response marker)
+      reason: Total IGF-1R did not enrich for R1507 benefit
+      note: In the randomized R1507+erlotinib trial (NO21160), tumour IGF-1R level defined no subgroup that benefited on the primary 12-week PFS rate, against the panel's prediction.
+      judgement: Paired comparison: Gong 2009 predicted high total IGF-1R marks sensitivity; the trial's IGF1R-level subgroups showed no PFS effect on the primary endpoint. Abstract does not cite the panel, so comparison_stated false.
+-- dose (cell headline untested)
+
+==================== schizophrenia-pde10a-inhibitors  [psychiatry; furthest phase 2; 5 programs]
+-- engagement (cell headline same)
+   2016 same     Rodent striatal cAMP/cGMP and PDE10A occupancy
+      reason: Striatal target occupied in humans
+      note: Human [11C]T-773 PET: TAK-063 occupied putamen PDE10A 2.8-72% across 3-1000 mg, rising with dose and plasma level, as in rodents.
+   2019 same     Rat and monkey ketamine-challenge phMRI/EEG reversal
+      reason: Human ketamine BOLD moved as in animals
+      note: TAK-063 reduced ketamine-induced resting BOLD effect sizes in key regions in 27 healthy men, as it had in rats and monkeys.
+-- efficacy (cell headline contra)
+   2008 untested Rodent CAR / psychostimulant hyperlocomotion
+      note: Pfizer's TP-10 and MP-10 (PF-02545920) were profiled in rodent antipsychotic screens; Pfizer proposed PDE10A as a schizophrenia target.
+   2016 contra   Rodent CAR / psychostimulant hyperlocomotion
+      reason: Rodent screens positive; members failed
+      note: Adjunctive PF-02545920 5/15 mg Q12H for 12 weeks: PANSS change -13.1/-16.0 vs -16.7 placebo, stopped at interim; later member trials also failed.
+      judgement: Dated to the NCT01939548 results posting (2016-08-22), the first public comparison; the registry says 'A pre-planned interim analysis indicated the trial was unlikely to meet the pre-specified efficacy criteria.' comparison_stated true because the paper names the preclinical rationale and says the data refute it; a stricter reader would call it a pairing. No later member trial turned the cell: bal
+   2013 untested Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)
+      note: Takeda ran a ketamine challenge in healthy men to test whether TAK-063 blocks ketamine-induced brain changes and psychotic-like symptoms before phase 2.
+      judgement: Quote is the registry title; the study was run before any member's patient efficacy result, so it is a prospective model, not a retrodiction.
+   2017 contra   Healthy-volunteer ketamine challenge (fMRI BOLD/EEG)
+      reason: Human challenge passed; patient trial failed
+      note: The ketamine challenge met Takeda's Go criterion, but TAK-063 20 mg missed the PANSS primary endpoint in acute schizophrenia (p=0.115).
+      judgement: Paired, not stated. Dated to the NCT02477020 results posting (2017-09-29); the challenge's own results were posted 2017-01-12. Takeda states the phase 1 results 'showed some consistent evidence of antipsychotic activity', so the model predicted benefit. Magnitude null: the drug was numerically better but not separated.
+-- dose (cell headline same)
+   2019 same     Rodent antipsychotic-like dose and occupancy
+      reason: Target exposure reached, no efficacy
+      note: PF-02545920 exposures in patients sat inside the range predicted to be efficacious, yet PANSS did not separate from placebo; the exposure target was reached and was not enough.
+
+==================== asthma-ptgdr2-antagonists  [respiratory; furthest phase 3; 9 programs]
+-- engagement (cell headline same)
+   2016 same     Human eosinophils and Th2 cells in vitro
+      reason: Patient airway eosinophils fell as predicted
+      note: Fevipiprant 225 mg twice daily cut sputum eosinophils 3.5-fold more than placebo over 12 weeks in 61 eosinophilic asthmatics.
+-- efficacy (cell headline contra)
+   2011 untested Inhaled allergen challenge in mild atopic asthmatics (late asthmatic response)
+      note: Members were tested on the late asthmatic response to inhaled allergen in mild atopic asthmatics: MK-1029 from 2011, setipiprant published 2014.
+      judgement: Opening untested entry at the earliest dated member use of the allergen challenge model; proxy year from the registry start date.
+   2014 contra   Inhaled allergen challenge in mild atopic asthmatics (late asthmatic response)
+      reason: Challenge positive, member FEV1 trials failed
+      note: Setipiprant cut the allergen late asthmatic response 25.6%, predicting a lung-function benefit; AZD1981, a member, had already missed its FEV1 primary in 1,140 asthmatics.
+      judgement: Paired, not stated: no source sets the challenge result beside a member's trial. Dated 2014, when the model side became public (the AZD1981 registry result was posted 2013-09-10). Sibling-drug pairing as in the main strip. MK-1029's own challenge (NCT01343407, posted 2019-02-08) cut LAR FEV1 AUC to 0.48x placebo; its phase 2 FEV1 primaries split (NCT02720081 +0.107 L, p=0.023; NCT01624974 +0.047 L
+   2024 retro    Mouse chronic asthma with rhinovirus exacerbation, on corticosteroid
+      reason: Retrodiction reproduces phase 3 failure
+      note: Built after phase 3 failed: DP2 antagonism alone resolved disease, but added corticosteroid, as in the trials, ablated its benefit.
+      judgement: A different model, run after LUSTER, that the authors set beside the human trials; scored retro, not same (decision 10). product_in_model null because the abstract does not name the antagonist.
+   2013 untested Rodent allergic airway disease models
+      note: QAV680, a member, was effective in rodent CRTh2-dependent mechanistic and allergic disease models before entering asthma trials.
+      judgement: model_first_use_year 2009 is a proxy: QAV680 entered asthma trials (NCT00814216, completed 2009-10) on these data, published only in 2013. AZD1981 could not be tested in mouse or rat cells, which did not respond to DP2 agonists (Schmidt 2013), so the rodent model's relevance is itself doubtful.
+   2013 contra   Rodent allergic airway disease models
+      note: AZD1981 up to 400 mg twice daily added to ICS/LABA did not improve FEV1 in 1,140 atopic asthmatics; results posted September 2013.
+      judgement: Dated to the registry posting of NCT01197794 (2013-09-10), the first public in-class primary-endpoint result. Later member trials split: BI 671800 met its FEV1 primary (Hall 2015, +3-4% predicted) and fevipiprant met it in dose-ranging (Bateman 2017), but a failed model stays failed and one drug's contra beats another's same. Phase 3 confirmed the miss (LUSTER, ZEAL).
+-- dose (cell headline same)
+   2016 same     Human eosinophil DP2 potency scaled to human exposure
+      note: Fevipiprant plasma levels in healthy volunteers reached the occupancy the in-vitro pharmacology called for, and were tolerated to 500 mg/day.
+
+==================== allergic-disease-allergen-immunotherapy  [allergy; furthest phase 3; 5 programs]
+-- engagement (cell headline same)
+   2012 same     Allergen exposure chamber (EEC)
+      reason: Chamber symptom readout moved in dosed patients
+      note: 4 x 6 nmol Cat-PAD cut chamber TRSS vs placebo at 1 year (P=.0104) in dosed patients; the chamber's own readout moved.
+   2019 same     Patient PBMC Fel d 1-specific CD4+ T cells (ex vivo), Cat-PAD
+      reason: Partial T-cell readout shift, P=0.047
+      note: In Cat-PAD-dosed patients Fel d 1-specific CD4+ T cells kept their frequency and phenotype; only CRTh2 fell (P=0.047), a partial move.
+   2018 same     Nasal allergen challenge (AR-CIC NAC), Cat-PAD
+      reason: NAC symptom readout moved in dosed patients
+      note: Pooled n=19: four 6 nmol Cat-PAD injections cut NAC-induced TNSS at 15 min to 2 h (p<0.05 to <0.01), open-label.
+-- efficacy (cell headline contra)
+   2008 untested Allergen exposure chamber (EEC)
+      note: First member chamber study (CP002): four Cat-PAD regimens scored on TRSS under controlled cat-allergen challenge, 18 weeks after start of dosing.
+      judgement: Model first use is the first member-drug chamber trial (NCT00729508, start 2008-08). One chamber track across cat, ragweed and birch products: same system, same prediction.
+   2016 contra   Allergen exposure chamber (EEC)
+      note: Cat-PAD beat placebo in the chamber at 1 year but not in the 1,408-patient field Phase 3, where placebo improved 58.5%; allergy development stopped.
+      judgement: Sponsor states the comparison ('Such a dramatic placebo effect was not a feature of our earlier phase II studies'). Track stays contra after the tree tablet's 2019 Phase 3 success (recorded in patient_trials): one drug's contra beats another's same on the same track and no source shows the cat signal reversed. Ragweed-SPIRE never went to field (this release stopped its dose-ranging preparation) an
+   2018 contra   Allergen exposure chamber (EEC)
+      reason: Chamber predicted an effect placebo erased
+      note: Registry results: mean Combined Score 1.04 (one course) and 1.00 (two courses) vs 1.05 placebo at weeks 52-54; SAEs 11, 13 vs 9.
+      judgement: Same status, higher tier: the registry results record (tier 3) sets the status per the 'higher-tier record' rule, so strengthens true. Paired with the Patel 2013 chamber paper; the record itself makes no model comparison.
+   2008 untested Late-phase skin response to intradermal cat allergen (LPSR), Cat-PAD
+      note: Single Cat-PAD doses inhibited the late-phase skin response (Worm 2011); the LPSR made no field-tested efficacy prediction before the chamber took over.
+      judgement: Same system as the dose entry; its 3 nmol pick was superseded by the chamber's 4 x 6 nmol and no field trial dosed it, so untested rather than contra.
+   2018 untested Mouse allergic airways disease after Fel d 1 peptide immunotherapy (dual OVA/Fel d 1 sensi
+      note: Larché-lab mouse model: Fel d 1 peptide treatment protected dually sensitised mice from airway eosinophilia and TH2 infiltration on cat allergen challenge.
+      judgement: The only animal model found for any member drug: Europe PMC sweeps on Cat-PAD, ToleroMune, SPIRE, Fel d 1 peptides, hdmASIT+, SQ tree tablet and cat SLIT with mouse/murine/humanized/transgenic terms return nothing else. First use dated to the online publication (2018-06-12).
+   2018 contra   Mouse allergic airways disease after Fel d 1 peptide immunotherapy (dual OVA/Fel d 1 sensi
+      reason: Mouse efficacy, no field effect
+      note: Mouse model showed peptide-induced protection; the 1,408-patient field Phase 3 found Combined Score 1.04/1.00 vs 1.05 placebo, no treatment effect.
+      judgement: Model predicts the class works (airway protection after peptide treatment); the field primary showed none. Year is the first date both sides were public (model epub 2018-06). The mouse endpoint is airway inflammation, the human one rhinoconjunctivitis symptoms plus medication, so direction only. product_in_model left null because the abstract does not say the peptides were the Cat-PAD mix.
+   2011 untested Nasal allergen challenge (AR-CIC NAC), Cat-PAD
+      note: Open-label biomarker studies RES-003/RES-004 dosed 4 x 6 nmol Cat-PAD and read NAC-induced TNSS and PNIF as secondary endpoints.
+      judgement: Separate track from the chamber (different system, single-visit nasal challenge without placebo); first use is the start of NCT01383590/NCT01383603 (2011-10).
+   2018 untested Nasal allergen challenge (AR-CIC NAC), Cat-PAD
+      reason: NAC read an effect placebo erased
+      note: Open-label NAC read a TNSS fall after 4 x 6 nmol Cat-PAD; the same regimen's field Phase 3 showed CS 1.04 vs 1.05 placebo.
+      judgement: Paired comparison: Ellis 2018 reports the NAC effect and cites the chamber trials but not the 2016 field failure. Scored contra because the paper takes its readout as detecting clinical efficacy ('the model was able to detect clinical efficacy of a therapeutic AR agent') and the field found none against placebo; a checker may prefer untested since the NAC studies had no placebo arm and the authors
+   2016 untested Conjunctival provocation test (CPT), hdmASIT+
+      note: Only member trial for hdmASIT+: a 36-patient subcutaneous safety study (ABT-hdmASIT001); the sponsor reported a CPT secondary by press only.
+      judgement: Its own untested track: the CPT was used for this member but no field trial followed (the DB holds one trial, highest phase 2), so there is nothing to compare.
+   2020 untested Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor
+      note: ALK's ex-vivo cross-reactivity panel: Phase 3 sera (IgE, IgG4, IgE-blocking factor, BAT) and T-cell lines across alder, hazel, hornbeam, beech, chestnut.
+      judgement: First use is the publication (epub 2020-12-08); samples were drawn during the Phase 3 but the cross-reactivity analyses were reported only after the alder/hazel-season result was known. A different system from the chamber track (ex-vivo serology and T-cell lines, predicting cross-protection rather than dose).
+   2020 retro    Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor
+      note: After the Phase 3 showed alder/hazel-season efficacy, the ex-vivo panel reproduced it: IgE, IgG4, blocking and T-cell responses cross-react across the homologous group.
+      judgement: Retrodiction (decision 10): the source itself frames its analyses as the basis for the observed clinical cross-protection, so retro, never same. Scored on the tree-pollen-season effect, a key secondary. The IgE cross-reactivity idea behind the homologous-group definition predates the product, but no member-specific prospective ex-vivo paper was found, so no prospective credit.
+   2023 retro    Birch-homologous-group cross-reactivity ex vivo (patient sera IgE/IgG4/IgE-blocking factor
+      reason: Ex-vivo cross-reactivity reproduces known cross-protection
+      note: Same T-cell lines re-read with Bet v 1-homologous peptides and tetramers: cross-reactivity extends to oak, matching the oak-season effect.
+      judgement: Second retrodiction on the same track, flagged strengthens; it adds oak (the EEC and post hoc oak-season effect) and tetramer confirmation but changes nothing.
+-- dose (cell headline same)
+   2016 same     Allergen exposure chamber (EEC)
+      reason: Chamber regimen failed in the field
+      note: The field Phase 3 dosed the chamber's 4 x 6 nmol course plus an 8 x 6 nmol escalation; neither beat placebo; allergy development stopped.
+   2019 same     Allergen exposure chamber (EEC)
+      reason: Chamber dose was enough in the field
+      note: Chamber dose-finding picked 12 DU as effective and tolerated; the Phase 3 dosed 12 DU and cut birch-season TCS 40% (P<.0001).
+
+==================== allergic-rhinitis-ptgdr2-antagonists  [allergy; furthest phase 3; 4 programs]
+-- engagement (cell headline same)
+   2013 same     Allergen exposure chamber (EEC), pollen
+      reason: Chamber readouts moved in dosed patients
+      note: BI 671800 cut nasal eosinophils, IL-4/eotaxin and the TNSS AUC in 146 chamber-challenged SAR patients: the chamber's own readouts moved in dosed patients.
+   2013 same     Human whole-blood PGD2 eosinophil shape-change assay
+      reason: Ex vivo stimulus blockade held in patients
+      note: BI 671800 blocked ex vivo PGD2-induced eosinophil shape change dose-dependently in chamber-challenged SAR patients, as the in vitro assay predicted.
+-- efficacy (cell headline contra)
+   2008 untested Allergen exposure chamber (EEC), pollen
+      note: First member chamber study: QAV680 dosed 10 days, TNSS scored over the last 2 h of pollen exposure on day 10.
+      judgement: Opens the chamber track at the earliest member use verified. The 2012-2013 fevipiprant chamber study (NCT01804400, n=188) has no posted results and no publication, so fevipiprant contributes nothing scorable.
+   2017 contra   Allergen exposure chamber (EEC), pollen
+      reason: Chamber-positive class failed field Phase 3
+      note: Chamber said the class relieves SAR symptoms (BI 671800 TNSS AUC -17%); setipiprant's 630-patient field Phase 3 found none on DNSS (-0.02) while cetirizine worked.
+      judgement: Contra because the chamber predicted class efficacy and the only adequately powered field Phase 3 of a member (95% power for a 0.20 DNSS difference) found nothing on the primary or any secondary endpoint, and development stopped. Ratner itself puts the chamber evidence beside its results ('in line with the growing clinical evidence from several CRHT2 antagonists investigated in allergen challenge 
+   2009 untested OVA-sensitised mouse allergic rhinitis (sneezing, nasal rubs, nasal obstruction)
+      note: Selective DP2 antagonists relieved sneezing and nasal rubs in sensitised mice; only non-member class compounds were ever reported in it.
+      judgement: Separate animal track, opened with a class proxy (product_in_model false): the Amira tricyclics here, AM156 (Stebbins 2010, doi 10.1016/j.ejphar.2010.04.031) and ARRY-063 (Shiraishi 2014, doi 10.1111/cea.12280). Setipiprant's discovery paper (Fretz 2013, doi 10.1021/jm400122f) reports in vitro potency and rat/dog PK only.
+   2017 contra   OVA-sensitised mouse allergic rhinitis (sneezing, nasal rubs, nasal obstruction)
+      reason: Mouse-predicted class effect absent in Phase 3
+      note: Mouse said selective DP2 antagonism stops sneezing and nasal rubs; the class's one field Phase 3 (setipiprant) moved no nasal symptom.
+      judgement: Allowed under v3 as a sibling-dosed model (product_in_model false) compared with a member's trial. The model side named is AM156 (Stebbins 2010), the explicit sneezing/nasal-rub result. Contra beats the Phase 2 'same' on the same track. A re-scorer who sets aside sibling-dosed animal evidence would leave this track untested.
+   2014 untested Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)
+      note: Setipiprant 1000 mg b.i.d. cut the allergen-induced late asthmatic response by 25.6% in 15 asthmatics: the proof of mechanism behind the SAR field trials.
+      judgement: This is the system setipiprant went into SAR patients on (Ratner 2017 calls it the proof-of-mechanism study behind the 1000 mg b.i.d. dose), so it is its own track; it predicts for the class via another indication's challenge, hence model_kind cross_indication.
+   2017 contra   Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)
+      reason: PoM-backed regimen failed Phase 3 primary
+      note: Same drug, same regimen: positive Phase 2 primary (-0.15 DNSS, p=0.030) then a null Phase 3 (-0.02, p=0.652) with cetirizine positive in both.
+      judgement: Contra on the primary (DNSS, fixed-sequence multiplicity control in Phase 3). Ratner states the comparison (dose chosen on the PoM) and leaves the discrepancy 'not fully known', so unresolved. Phase 2 was the same-year 'same' that the Phase 3 outranks.
+-- dose (cell headline same)
+   2017 same     Bronchial allergen challenge in mild allergic asthmatics (setipiprant proof-of-mechanism)
+      reason: Regimen reached, Phase 3 failed, dropped
+      note: 1000 mg b.i.d. was given in both field trials, worked in Phase 2 (-0.15 DNSS, p=0.030), failed in Phase 3 (-0.02, p=0.652); programme dropped.
+
+==================== allergic-rhinitis-allergen-immunotherapy  [allergy; furthest phase 3; 8 programs]
+-- engagement (cell headline same)
+   2017 same     Allergen exposure chamber (EEC)
+      reason: Chamber symptom readout moved in dosed patients
+      note: Grass-SPIRE 8x6 nmol cut chamber TRSS vs placebo (-5.4 vs -3.8, P=.0346) in dosed patients; the chamber's readout moved.
+   2018 same     Conjunctival provocation test (CPT), gp-ASIT+
+      reason: CPT readout moved in dosed patients
+      note: In the Phase III (BTT009) the CPT readout fell in dosed patients (P<.001) alongside the seasonal symptom score.
+-- efficacy (cell headline contra)
+   2010 untested Allergen exposure chamber (EEC)
+      note: First member chamber study: ragweed-SPIRE dosed before the season, symptoms scored under controlled ragweed challenge.
+      judgement: Model first use is dated to the first member-drug chamber trial (first posted 2010-09-10), not to Cat-PAD (2008-10), which is not a member.
+   2017 contra   Allergen exposure chamber (EEC)
+      reason: Chamber predicted a field effect that placebo erased
+      note: HDM-SPIRE beat placebo in the chamber but not in the one-year field Phase 2b (CS vs placebo p=0.26-0.65); allergy R&D halted.
+      judgement: Track stays contra after 2019 although the birch tablet chamber study predicted its positive Phase 3 (recorded in patient_trials): one drug's contra beats another drug's same on the same track, and no source shows the HDM signal reversed. Cat-PAD's 2016 Phase 3 failure follows the same pattern but is not a member and does not score. gp-ASIT+ missed its Phase 3 primary (2018, press) with no model s
+   2013 untested Conjunctival provocation test (CPT), gp-ASIT+
+      note: First member use of the CPT: the subcutaneous gp-ASIT+ dose-escalation study scored CPT threshold shift alongside safety and antibodies.
+      judgement: Model first use is the first subcutaneous gp-ASIT+ study that read CPT (started 2013-08); the earlier oral gpASIT+ trials scored field symptoms, not CPT.
+   2018 same     Conjunctival provocation test (CPT), gp-ASIT+
+      note: CPT predicted the 170 ug course would work; the first Phase III met its peak-season CSMS primary (-15.5%, P=.041), below the 20% it was powered for.
+      judgement: Primary endpoint met at P=.041, so same; source_calls_it partial because the effect fell under the pre-specified 20% the trial was sized for. Paired comparison with the Phase IIb CPT dose-finding (model_src); the Phase III cites it without restating the CPT numbers.
+   2019 contra   Conjunctival provocation test (CPT), gp-ASIT+
+      reason: CPT-predicted effect missed confirmatory primary
+      note: The confirmatory Phase III (2019 season, same 170 ug course) missed its 0.30 CSMS primary (0.15, p=0.05); ASIT biotech filed for judicial reorganization.
+      judgement: The CPT model predicted a field effect for the 170 ug course; the same drug's second Phase III fell short of its primary, so the track turns contra (one contra beats a same on the same track, and no source shows the earlier signal reversed). Tier 5 with the Phase IIb CPT paper as model_src; trial_unreported true.
+   2013 untested BALB/c birch-pollen allergic asthma mouse, sublingual rBet v 1a
+      note: Only animal model found for a member: birch-pollen-sensitized BALB/c mice given sublingual rBet v 1a showed reduced AHR, eosinophilia and Th2 responses.
+      judgement: Opening untested entry at the model's first (and only) published use. The model itself postdates the tablet's positive dose-finding trial, so its first comparison is scored as a retrodiction (next entry).
+   2015 retro    BALB/c birch-pollen allergic asthma mouse, sublingual rBet v 1a
+      reason: Mouse reproduced the known tablet effect
+      note: Mouse SLIT with rBet v 1a cut AHR and Th2 responses; the rBet v 1 tablet had already cut patients' adjusted symptom score 17% vs placebo (P<0.025).
+      judgement: Scored retro, not same (decision 10): the model was run after the clinic knew the answer. Year is the tier-1 patient record (Nony 2015, epub 2015-04-08). Dose, engagement and safety not added for this model: the mouse made no exposure prediction (50 ug/dose twice weekly vs 12.5-50 ug daily tablets), Nony 2015's abstract reports no immunology, and the mouse paper states no safety readout.
+-- dose (cell headline same)
+   2017 same     Allergen exposure chamber (EEC)
+      reason: Chamber regimen failed in the field
+      note: The field study used the chamber's 4x12 nmol/12-week course plus two higher regimens; none beat placebo and the programme was abandoned.
+   2019 same     Allergen exposure chamber (EEC)
+      reason: Chamber dose was enough in the field
+      note: Chamber dose-finding picked 12 DU as effective and tolerated; the Phase 3 dosed 12 SQ-Bet and cut season TCS 40% (P<.0001).
+   2018 same     Conjunctival provocation test (CPT), gp-ASIT+
+      note: CPT dose-finding picked 170 ug (51.2% threshold shift, P=.023); the Phase III dosed 170 ug and met its peak-season CSMS primary (-15.5%, P=.041).
+
+==================== rheumatoid-arthritis-anti-csf2-antibodies  [autoimmune; furthest phase 3; 3 programs]
+-- engagement (cell headline same)
+   2018 same     Mouse GM-CSF-IRF4-CCL17 pathway in zymosan/antigen arthritis pain models
+      reason: Mouse PD marker moved in dosed patients
+      note: Otilimab cut serum CCL17 by about a third while GM-CSF-otilimab complex showed engagement; CCL17 rebounded at week 12 when every-other-week dosing lost engagement.
+-- efficacy (cell headline contra)
+   2001 untested Mouse collagen-induced and streptococcal cell wall arthritis, anti-GM-CSF mAb 22E9
+      note: 22E9 cleared established CIA and TNF-independent SCW arthritis (comparable to dexamethasone, better than etanercept); the model behind namilumab and otilimab.
+      judgement: Opening entry. The lenzilumab RA trial (NCT00995449, 9 patients, terminated 'program refocus', results posted 2012-09-25) and the MOR103 Phase 1b/2a (NCT01023256, safety primary) produced no primary-endpoint efficacy datum and change no status.
+   2018 same     Mouse collagen-induced and streptococcal cell wall arthritis, anti-GM-CSF mAb 22E9
+      reason: Mouse prediction held for namilumab
+      note: NEXUS namilumab 150 mg: DAS28-CRP -1.69 vs -0.77 placebo at week 12 (difference -0.92, p=0.010), dose-responsive; the mouse prediction held in direction.
+      judgement: Paired by me: the trial paper does not cite the mouse comparison. First primary-endpoint comparison for the class; the MOR103 exploratory signal (2014) and the 9-patient lenzilumab run-in are listed but change no status.
+   2019 untested Mouse collagen-induced and streptococcal cell wall arthritis, anti-GM-CSF mAb 22E9
+      reason: Primary missed at every dose
+      note: BAROQUE otilimab 22.5-180 mg missed DAS28-CRP remission at week 24 at every dose (best 19% vs 3%, p=0.053); disease activity and pain improved on secondaries.
+      judgement: Called contra on the primary-endpoint rule, not on direction: every dose sat numerically above placebo and pain PROs improved, but the pre-specified primary was missed at all five doses, and one drug's miss beats another drug's match on the same track. The regimen's loss of engagement is scored separately in dose.
+   2023 contra   Mouse collagen-induced and streptococcal cell wall arthritis, anti-GM-CSF mAb 22E9
+      reason: Mouse TNF-refractory prediction failed in patients
+      note: contRAst 3 failed ACR20 in bDMARD/JAKi-IR patients, the TNF-refractory setting the SCW model singled out; contRAst 1 and 2 met ACR20 but trailed tofacitinib.
+      judgement: Strengthens the 2019 contra rather than reversing it: contRAst 1 and 2 met their ACR20 primaries (partial agreement, recorded in patient_trials) but a track already contra turns back only on patient_signal_reversed, which does not apply, and contRAst 3 is a fresh primary miss in the TNF-refractory population Plater-Zyberk 2009 explicitly predicted for (model_src). Not neg: the mouse data never fel
+-- dose (cell headline same)
+   2023 same     Cynomolgus monkey 13-week SC and 26-week IV GLP toxicology of otilimab (GSK3196165)
+      note: contRAst 3 dosed 150 mg weekly, the dose the monkey margin covered, with adverse-event rates matching placebo and sarilumab.
+   2025 same     Cynomolgus monkey 13-week SC and 26-week IV GLP toxicology of otilimab (GSK3196165)
+      reason: Monkey NOEL margin held in patients
+      note: contRAst X: no PAP over up to 2.5 years at the covered dose; the monkey margin held to the end of the programme.
+   2020 contra   Mouse collagen-induced and streptococcal cell wall arthritis, anti-GM-CSF mAb 22E9
+      reason: Regimen under-engaged target; Phase 2b missed
+      note: The Phase 2a/2b regimen under-dosed the target: engagement and CCL17 suppression were lost on every-other-week maintenance, and BAROQUE missed its primary at all five doses.
+
+==================== type-2-diabetes-mellitus-gpr119-agonists  [endocrine; furthest phase 2; 4 programs]
+-- engagement (cell headline same)
+   2014 same     Human primary colonic L-cell cultures (GLP-1/PYY secretion ex vivo)
+      reason: Human L-cell null GLP-1 call held
+      note: GSK1292263 100-600 mg/day for 14 days in 96 T2D patients left total and active GLP-1 unchanged, as human L-cell cultures had shown for AR231453.
+   2014 contra   GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)
+      reason: GLP-1/GIP readout did not move in T2D
+      note: GSK1292263 for 14 days in T2D: total PYY rose ~25% (5-fold meal peaks) but total/active GLP-1, GIP, insulin and C-peptide were flat; the model's readouts did not move.
+-- efficacy (cell headline contra)
+   2018 untested Neonatal-STZ diabetic rat, 2-week repeat dosing with OGTT (clinically tested members run a
+      note: DS-8500a dosed beside GSK1292263 and MBX-2982 (30 mg/kg each, 14 days) in nSTZ rats, OGTT on days 0 and 14, to test loss of efficacy.
+      judgement: Own track, separate from the draft's mouse OGTT/incretin system (Chu 2007, model_id t2d-rodent-gpr119-ogtt): different species, an induced diabetic model, repeat dosing, and the clinically tested members run in it. The checker's rule question on splitting rat from mouse is left to the checker; this track scores only what the draft leaves unscored.
+   2018 retro    Neonatal-STZ diabetic rat, 2-week repeat dosing with OGTT (clinically tested members run a
+      reason: Reproduces GSK1292263's 14-day failure
+      note: Run after Nunez 2014: GSK1292263 and MBX-2982 (30 mg/kg) gave no significant OGTT glucose-AUC reduction on day 0 or 14 in nSTZ rats; DS-8500a did.
+      judgement: Retrodiction (decision 10): Daiichi chose the comparators because they 'had already been studied in clinical stages' and cites the GSK1292263 phase 2 failure (Nunez 2014) in the introduction, so the run post-dates the known answer; the paper states the comparison ('These observations seem to differ from the clinical results showing that a single dose of GSK1292263 (25-800 mg) had a tendency to red
+   2007 untested GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)
+      note: AR231453 improved oral glucose tolerance in wild-type and diabetic KK-Ay mice, GPR119-dependently; Overton 2006 had shown PSN632408 cut food intake and weight gain in rats.
+   2014 contra   GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)
+      note: GSK1292263 100-600 mg/day for 14 days (96 T2D patients, alone or on metformin) lowered neither fasting nor 24-h glucose; the mouse OGTT prediction failed.
+      judgement: Contra on the class: the published mouse model (sibling agonist AR231453) and GSK's unpublished rat data predicted glucose lowering; 14-day dosing at steady-state exposures above the single-dose-active level gave none. MBX-2982 (NCT01035879, 4 weeks, 2009-10) and PSN821 (NCT01386099, 12 weeks, 2011) have no posted results and no peer-reviewed report; Nunez cites conference abstracts for glucose lo
+   2018 contra   GPR119-agonist-dosed mice (OGTT; insulin, GLP-1/GIP release)
+      reason: GSK263 no effect; firuglipel sub-DPP-4i, failed in N. America
+      note: Firuglipel 12 weeks on metformin (US/Canada, n=298): HbA1c -0.08% vs placebo at 75 mg (p=0.57) while sitagliptin cut 0.43%; the Japanese monotherapy trial gave -0.44%, below sitagliptin.
+      judgement: Second contra on the same track (strengthens). The Japanese 12-week trial (Yamada 2018, NCT02628392) met its HbA1c primary (-0.44% at 75 mg) but did not beat sitagliptin 50 mg, so a same + partial reading exists for firuglipel alone; the North-American trial on metformin failed outright with an active comparator that worked, and the track rule (one drug's contra beats another's same) keeps contra.
+-- dose (cell headline untested)
+
+==================== type-2-diabetes-mellitus-hsd11b1-inhibitors  [endocrine; furthest phase 2; 8 programs]
+-- engagement (cell headline same)
+   2014 same     Cortisone reductase deficiency: people with loss-of-function HSD11B1 or H6PD genotypes
+      reason: Urinary steroid signature of CRD reproduced
+      note: RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary corticosteroid excretion, the GC/MS steroid signature that defines CRD.
+   2014 same     Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      note: RO5093151 200 mg bid for 28 days in metformin-treated T2D shifted urinary cortisol:cortisone metabolites, the hepatic enzyme-product readout the mouse used.
+   2022 same     Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      reason: Enzyme blocked 88-99% in liver and fat
+      note: BI 187004 10-360 mg for 14 days in T2D blocked 11β-HSD1 88-99% in adipose biopsies ex vivo and lowered the urinary ratio, matching the ex-vivo adipose DIO-mouse assay.
+   2022 contra   Rat ex-vivo adipose 11β-HSD1 activity after 7-9 days' continuous dosing with sibling inhib
+      reason: Predicted loss of inhibition did not occur
+      note: BI 187004 once daily for 14 days in T2D kept adipose 11β-HSD1 88-99% inhibited after dose 2 and 74-98% 24 h after dose 14: no tachyphylaxis.
+-- efficacy (cell headline contra)
+   2005 untested Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      note: Compound 544 lowered fasting glucose, insulin, weight and lipids in DIO mice and improved glucose tolerance in KKAy mice; no patient yet.
+   2013 untested Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      note: MK-0736 in 620 T2D+hypertension patients: HbA1c -0.28 % at 2 mg (p=0.035) but NS at 0.5 and 8 mg, weight -1.9 kg; BP primaries missed; trial terminated.
+      judgement: Scored same with source_calls_it partial, not contra: the model predicted lower glucose and weight and both moved in that direction, but HbA1c reached significance at one of three doses only (-0.18/-0.28/-0.22 %) and the primary endpoints were blood pressure, which the mouse never predicted, so endpoint_role is null. A stricter reading (secondary endpoint, inconsistent dose-response) would leave t
+   2014 untested Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      note: RO5093151 for 28 days in metformin-treated T2D: HbA1c trends, weight -1.67 kg (p=0.019), insulin sensitivity NS; registry primary (mean daily glucose) not in the abstract.
+      judgement: Same/partial on the authors' own wording ('slight metabolic improvements ... often did not reach statistical significance'); the alternative is contra on an unmet glucose primary, which the abstract does not state. Strengthens the 2013 entry rather than changing it.
+   2022 contra   Diet-induced obese and KKAy mice dosed with a selective 11β-HSD1 inhibitor
+      reason: Full target block, no glucose effect
+      note: BI 187004 20-240 mg ± metformin for 28 days in 103 T2D patients: complete hepatic inhibition, no change in FPG, weight or meal-test glucose; weighted mean glucose rose at 80/240 mg.
+      judgement: The glucose endpoints were the proof-of-concept gate on which Boehringer stopped the compound, so endpoint_role is poc_gate although the registry primary is safety. Contra beats the two partial matches on this track. Magnitude 'opposite' rests on the weighted-mean-glucose rise; a 'null effect' reading would give magnitude null with the same status. INCB13739 (-0.6 % HbA1c, primary met, Rosenstock 
+   2023 untested Goto-Kakizaki and cortisone-treated rats (JTT-654)
+      reason: No patient result to compare
+      note: JTT-654 lowered fasting glucose and insulin in non-obese GK rats; its 152-patient T2D phase 2 (NCT00997152) was terminated in 2010 with no result ever disclosed.
+      judgement: A separate track because it is a different system (non-obese rat) and a different member. Not flagged as a retrodiction: the paper postdates the clinic but no patient result is public, so there is nothing it could reproduce or contradict.
+   1997 untested 11β-HSD1 knockout mouse
+      note: Enzyme-null mice resisted hyperglycaemia on obesity or stress: a prediction that blocking 11β-HSD1 lowers glucose in obese diabetics.
+      judgement: Efficacy opener on the existing hsd11b1-ko-mouse track (draft carries it in safety only); a genetic stand-in for lifelong complete inhibition, so product_in_model is false. Morton 2004 (Diabetes 53:931) extends it to diet-induced obesity.
+   2015 contra   11β-HSD1 knockout mouse
+      reason: Glucose did not fall as the KO predicted
+      note: BI 187004 add-on to metformin for 28 days in overweight T2D missed the predefined fasting-glucose endpoint; the monotherapy arm also missed and Boehringer ended the programme.
+      judgement: Contra: the KO predicted resistance to obesity-driven hyperglycaemia, and a member reaching near-complete hepatic and adipose inhibition did not lower FPG. Tier 5, first public date of the failure (checker lead). RO5093151's missed mean-daily-glucose primary (EudraCT 2008-001122-13 synopsis, posted 2015-06-26) points the same way.
+   2022 contra   11β-HSD1 knockout mouse
+      reason: Full target block, no glucose effect
+      note: Full publication of the 28-day BI 187004 trial in 103 T2D patients: complete target block, no clinically relevant change in glucose endpoints.
+      judgement: Strengthens the 2015 contra with the peer-reviewed readout; same source the dio-mouse efficacy contra uses.
+-- dose (cell headline untested)
+   2018 retro    PBPK model of BMS-823778 built on in-vitro metabolism and healthy-volunteer PK, simulating
+      reason: Retrodiction of known PK, never run prospectively
+      note: The verified PBPK model reproduced observed BMS-823778 PK across populations and the 5-fold higher exposure in CYP2C19 poor metabolizers.
+
+==================== hiv-infectious-disease-hiv-rt-nrti-inhibitors  [infectious_disease; furthest phase 3; 3 programs]
+-- engagement (cell headline same)
+   2013 same     HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutant
+      reason: Monotherapy viral load fell as predicted
+      note: Ten-day censavudine monotherapy cut HIV-1 RNA 0.97-1.28 log10 at 100-600 mg once daily: the RT target the cell assay predicted was engaged in patients.
+-- efficacy (cell headline contra)
+   2004 untested HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutant
+      note: Cell-culture replication (CEM/PBMC) was the efficacy model for 4'-Ed4T; no animal efficacy model was used for any member.
+      judgement: No animal efficacy model was relied on by any member (none located for 4'-Ed4T, GS-9131 or FNC in PubMed/Europe PMC; the FNC macaque work is SARS-CoV-2), so the cell is a populated cell-culture track, not an empty list. patient_trials is empty on the opener.
+   2013 same     HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutant
+      note: Phase 2a: ten days of censavudine monotherapy produced substantial HIV-1 RNA declines in every dose group, as cell culture predicted.
+      judgement: Phase 2a monotherapy scored as the proof-of-concept read-out; endpoint_role set to primary because antiviral activity was a stated objective of the study, with the caveat that the EudraCT record was not read to confirm its ranking. comparison_stated false: the abstract does not juxtapose the cell data, so the model side is Dutschman 2004. Subjects were treatment-experienced but off ART for 3 month
+   2015 same     HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutant
+      note: Phase 2b AI467003: censavudine 100-400 mg with efavirenz/lamivudine matched tenofovir DF at week 24 (81-94% vs 89% <50 copies/mL); BMS still dropped it.
+      judgement: Strengthening entry for the same member: the Phase 2b primary endpoint was met at every dose. Year is the Lancet HIV epub (2015-12-12); NCT01489046 never posted results, so registry_date is null. Model side is Li 2013 (site-directed and clinical-isolate susceptibility on the same panel). BMS's discontinuation followed the fat-gain and resistance findings, not an efficacy failure, so neg is unavail
+   2021 contra   HIV-1 replication in cell culture (CEM/PBMC/MT-4) with site-directed NRTI-resistant mutant
+      reason: Cell-predicted activity vs resistant virus failed
+      note: Cell culture predicted GS-9131 unaffected by K65R/L74V/M184V; in NRTI-resistant patients, functional monotherapy at 60 and 180 mg missed the >0.5 log10 bar.
+      judgement: Patient-level prediction (which genotypes respond) and the track's only contra. The model (Cihlar 2008; restated at CROI 2017) said K65R, L74V and M184V alone or combined did not reduce GS-9131 activity and four or more TAMs gave fold changes of at most 1.5; the Phase 2 enrolled adults failing 2 NRTI + NNRTI regimens with a protocol-defined NRTI-resistance profile, and the drug missed the >0.5 log
+-- dose (cell headline same)
+   2013 same     Cell-culture potency plus intracellular triphosphate persistence as the exposure and regim
+      note: Once-daily 100-600 mg censavudine gave dose-proportional PK and exposures on the plateau of the exposure-response curve; all doses were active.
+
+==================== hyperlipidemia-hcar2-agonists  [metabolic; furthest phase 2; 3 programs]
+-- engagement (cell headline same)
+   2012 same     Fasted beagle dog, plasma FFA and flushing
+      note: SCH900271 lowered FFA acutely in dosed humans, as the dog screen predicted; the paper does not itself name the dog.
+   2012 same     Wild-type mouse dermal blood-flow (vasodilation / flushing) model after oral agonist, Merc
+      reason: Cutaneous vasodilation appeared in dosed patients
+      note: MK-1903 raised mouse dermal blood flow 30 %; dosed patients showed vascular (36 % vs 11 %) and skin (28 % vs 3 %) events.
+   2012 same     Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing
+      note: MK-1903 and SCH900271 lowered plasma FFA acutely in dosed humans as in mice, but chronic suppression was not sustained.
+   2012 same     Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen
+      reason: Rat FFA call held acutely in humans
+      note: MK-1903 lowered rat plasma FFA 90 % and single doses above 50 mg lowered healthy-volunteer FFA 90 % within 1-2 h; SCH 900271 likewise.
+   2015 same     Rat and guinea pig plasma NEFA (GSK)
+      reason: Lipolysis readout moved in humans
+      note: GSK authors state the rat/guinea-pig NEFA models predicted the human response: long-lasting NEFA and triglyceride lowering in healthy men.
+-- efficacy (cell headline contra)
+   2011 untested Fasted beagle dog, plasma FFA and flushing
+      note: Dog FFA screen advanced SCH 900271 'for the treatment of dyslipidemia'; the lipid prediction rests on the FFA hypothesis.
+   2012 contra   Fasted beagle dog, plasma FFA and flushing
+      note: SCH900271 phase 2B (619 patients, 8 weeks): LDL-C -3.5 % vs placebo at 15 mg (P=0.06), no dose-response; programme stopped.
+      judgement: Paired by me: dog model (Palani 2012) vs Lauring 2012 / NCT00941603. The 5 mg arm reached P<0.01 at -5.7 % but 10 and 15 mg did less, so I treat the result as a failure the sponsor abandoned, as Lauring states ('neither had the expected effects').
+   2003 untested Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing
+      note: Knockout mouse implied GPR109A agonism carries niacin's lipid lowering (FFA hypothesis); no agonist had been tested in patients.
+   2010 contra   Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing
+      note: MK-1903 phase 2A: LDL-C unchanged versus placebo (+0.2 %, P=0.93) and HDL-C +4.6 % at 4 weeks in 191 dyslipidaemic patients.
+      judgement: Earliest public comparison: results posted 2010-09-22, before Boatman (Apr 2012) or Lauring (Aug 2012). Co-primary LDL-C null; HDL-C rose 4.6 %, statistically significant but a fraction of niacin's, which Boatman 2012 (https://doi.org/10.1021/jm2010964) calls 'only a weak effect on serum lipids as compared with niacin'. Scored on the LDL-C co-primary; a reader weighting HDL-C would get off_by_2-5x
+   2012 contra   Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing
+      note: Merck's own write-up: neither full agonist had the expected lipid effects; knockout mice kept niacin's lipid efficacy without the receptor.
+      judgement: Strengthens the 2010 contra with a tier-1, comparison-stated source covering both Merck agonists. The same paper's knockout result ('the absence of GPR109A had no effect on niacin's lipid efficacy') is a retrodiction for niacin, not a member, so it is recorded on the Lauring mouse track rather than scored here.
+   2012 retro    Humanized LDLR-deficient mouse with or without GPR109A
+      reason: FFA fell, lipids did not; model wrong
+      note: Re-run after the clinic: MK-1903 lowered FFA but not TG, LDL or HDL in humanized LDLR-deficient mice, mirroring the patient null.
+      judgement: Separate track (different background: humanized, LDLR-deficient; different prediction: the null) per the run's track-identity rule. Scored retro, never same: it reproduced a human answer already public. No opener entry because the model's first public use is this entry.
+   2009 untested Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen
+      note: Rat FFA suppression stood in for lipid efficacy under the FFA hypothesis; no member agonist had reached dyslipidaemic patients.
+      judgement: Opener.
+   2012 contra   Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen
+      reason: Weak lipid effect versus niacin, abandoned
+      note: MK-1903 phase 2A: LDL-C co-primary null (+0.2 % vs placebo), HDL-C +4.6 %, a fraction of niacin; SCH 900271 phase 2B likewise.
+      judgement: Dated 2012 because MK-1903's own rat datum was public only with Boatman (Apr 2012); a reader pairing the sibling-based rat prediction (Shen 2009) with the 2010 registry posting would date it 2010, still contra. Scored on the LDL-C co-primary as the draft does on its other tracks; HDL-C +4.6 % and TG -10.3 % moved in the predicted direction but below the niacin bar, and the sponsor abandoned both m
+   2015 untested Rat and guinea pig plasma NEFA (GSK)
+      note: GSK256073's FTIH lowered triglycerides as well as NEFA in healthy men; no patient lipid trial published.
+      judgement: Healthy-volunteer triglyceride lowering is engagement-grade evidence, not an efficacy comparison in patients of the context's disease, so untested here.
+   2017 contra   Rat and guinea pig plasma NEFA (GSK)
+      reason: Third agonist fails on lipids
+      note: GSK256073 phase 2a in dyslipidaemia stopped for futility after Part A: no exposure-HDL-C relationship that could predict HDL-C raising.
+      judgement: Paired by me: Sprecher 2015 (rat/guinea pig NEFA, FTIH TG lowering) vs the registry. The primary was a PK/PD exposure-HDL-C relationship rather than a fixed-dose lipid change; its futility is the sponsor's own efficacy verdict, so contra rather than untested.
+-- dose (cell headline same)
+   2012 same     Fasted beagle dog, plasma FFA and flushing
+      note: SCH900271 reached acute FFA suppression in humans and still failed on lipids in the phase 2B; programme stopped.
+   2012 same     Gpr109a (PUMA-G) knockout vs wild-type mouse, plasma FFA / flushing
+      note: Human doses hit the model's PD target (acute FFA suppression) yet lipids did not move; both Merck programmes stopped.
+   2012 same     Rat plasma FFA (and TG) suppression after oral agonist, Merck / Schering-Plough screen
+      reason: Target reached, lipid efficacy absent
+      note: Human doses reached the rat's PD target (90 % FFA suppression) yet the phase 2 lipid effect was weak; Merck stopped MK-1903.
+   2017 contra   Rat and guinea pig plasma NEFA (GSK)
+      reason: Doses reached, lipid efficacy absent
+      note: GSK256073 5-150 mg suppressed NEFA in dyslipidaemic patients but showed no exposure-HDL-C relationship; phase 2a stopped for futility.
+
+==================== alzheimer-disease-hrh3-antagonists  [neurology; furthest phase 2; 3 programs]
+-- engagement (cell headline same)
+   2014 same     Pig PET and in-vitro H3 affinity of GSK239512 (vs human [11C]GSK189254 PET)
+      reason: Occupancy reached; models under-called affinity
+      note: Human PET found 62-97 % H3 occupancy at 6-120 ug single doses; in-vivo affinity was ~9x the pig PET estimate and >10x in vitro.
+-- efficacy (cell headline contra)
+   2012 untested Rodent procognitive battery (rat inhibitory avoidance, social recognition, water maze; rat
+      note: ABT-288 and SAR110894 were procognitive across rat and mouse memory tests, including scopolamine and Abeta25-35 deficit models; GSK239512 rode on sibling GSK189254 data.
+      judgement: One track for the three sponsors' rodent cognition batteries: same model type, same prediction (symptomatic cognitive benefit). Member first use is 2012 (Griebel April, Esbenshade July); Medhurst 2007 used GSK189254, a non-member sibling, so it does not open the strip.
+   2013 same     Rodent procognitive battery (GSK189254 sibling data for GSK239512)
+      note: GSK239512 10-80 ug hit one co-primary (CogState episodic memory, ES 0.35, p=0.0495) but not executive/working memory or ADAS-Cog in 196 untreated AD patients.
+      judgement: Co-primary design: one endpoint met at p=0.0495, the other and ADAS-Cog did not, and GSK did not take the drug further in AD. By the v3 rule partial agreement is same with source_calls_it partial; I would call this a failure by the usual co-primary convention and say so here, but the status follows the rule. Nathan 2013 phase 1b (https://doi.org/10.2174/1567205011310030003) reported larger effect 
+   2014 contra   Rodent procognitive battery (ABT-288 in rat inhibitory avoidance, social recognition, wate
+      note: ABT-288 1 and 3 mg were numerically worse than placebo on ADAS-Cog13 in 242 patients; stopped for futility while donepezil worked.
+      judgement: Comparison stated: the same abstract records 'efficacy across several preclinical cognitive domains' and 'did not demonstrate efficacy'. Magnitude opposite because the ADAS-Cog point estimates sat on the wrong side of placebo (not significant). The positive-control donepezil arm worked, so the trial could detect a symptomatic effect. The parallel ABT-288 schizophrenia failure (Haig 2014, Schizophr
+   2016 contra   Rodent procognitive battery (SAR110894 in rat/mouse object recognition, scopolamine, Abeta
+      reason: Rodents procognitive; three AD trials failed
+      note: Sanofi's own scientists: no sustained symptomatic efficacy in any 4-24-week AD trial despite robust rodent procognition; SAR110894 0.5-5 mg was worse than placebo on ADAS-Cog11.
+      judgement: Strengthens the 2014 contra with the class-wide, explicitly stated comparison from the SAR110894 sponsor, covering the third member. The patient numbers come from the Sanofi summary: ADAS-Cog11 estimated differences from placebo +0.26, +0.62, +0.72 (worse) at 0.5, 2, 5 mg, p=0.77/0.47/0.42, so magnitude opposite. A nominal ADCS-ADL win at 5 mg (p=0.02, unadjusted) is a secondary and changes nothin
+   2016 untested THY-Tau22 tau-transgenic mouse, 6-month SAR110894 (disease modification)
+      reason: Disease-modifying claim never tested
+      note: Six months of SAR110894 cut tau hyperphosphorylation, tangles and memory deficits in THY-Tau22 mice; no disease-modification trial was ever run, so the prediction is untested.
+      judgement: Separate track under the identity rule: a different model (tau transgenic, chronic 6-month dosing) making a different prediction (slowed tau pathology) from the symptomatic rodent battery. Published after the 2013 symptomatic trial failed, but it is not a retrodiction of that result, so retrodiction false; Sanofi filed a use patent (PCT/EP2013/057241) and ran no trial.
+-- dose (cell headline same)
+   2013 same     Rat five-trial inhibitory avoidance (SHR pups) exposure-response (ABT-288)
+      note: Healthy volunteers reached and exceeded the rat band at the tolerated 3 mg (steady-state Cmax ~5 ng/mL); sleep AEs capped dosing only at 5-6 mg.
+
+==================== alzheimer-disease-htr6-antagonists  [neurology; furthest phase 3; 3 programs]
+-- engagement (cell headline same)
+   2023 same     Non-human primate PET 5-HT6 receptor occupancy ([11C]GSK215083)
+      reason: Monkey occupancy EC50 matched human PET
+      note: Monkey unbound-plasma EC50 for occupancy (0.31 nM) matched the human PET value (0.37 nM); humans reached ~80% occupancy at >=15 mg.
+   2023 contra   Rat unbound brain/plasma ratio (P-gp substrate) as predictor of human CNS penetration
+      reason: Rat P-gp penetration prediction wrong
+      note: Rat predicted poor CNS exposure (unbound brain/plasma 0.05) yet humans reached ~80% 5-HT6 occupancy, matching the monkey (0.64).
+   2017 same     Rat in-vivo striatal 5-HT6 occupancy ([3H]Lu AE60157) with subchronic-PCP NOR
+      reason: Rat occupancy target never checked in humans
+      note: Lundbeck registered a PET occupancy study of idalopirdine in AD patients in Oct 2017 and terminated it (Feb 2018) with no results posted.
+-- efficacy (cell headline contra)
+   2010 untested Healthy-volunteer scopolamine challenge (CogState battery, donepezil 10 mg positive contro
+      reason: Challenge result never published
+      note: Pfizer's proof-of-mechanism: SAM-760 5-60 mg against scopolamine deficits in 38 healthy adults (2010-11); never reported, so the Phase 2 futility cannot be compared.
+      judgement: A human pharmacological challenge is a model system (brief: 'the system was not an animal'). It existed and was used for a member drug before Phase 2 (NCT01712074, 2012), but no admissible result exists to compare with the Phase 2 futility stop (Fullerton 2018), so untested rather than an empty list. Engagement and dose cells are not opened: the challenge is itself a human readout and no exposure 
+   2017 untested Rat cognition battery (object recognition, water maze, radial arm maze) with donepezil + m
+      note: Masupirdine was pro-cognitive in rat object recognition, water maze and radial arm maze, alone and on top of donepezil + memantine.
+      judgement: Opens the masupirdine track at the discovery paper; the fuller behavioural characterisation (Nirogi 2019) names the three tasks.
+   2022 contra   Rat cognition battery (object recognition, water maze, radial arm maze) with donepezil + m
+      reason: Rat battery positive; patients null
+      note: Phase 2 (564 moderate AD patients on donepezil + memantine): 50 and 100 mg masupirdine did not change ADAS-Cog 11 at 26 weeks.
+      judgement: Sponsor's own paper states the model-to-patient miss, so comparison_stated true. Sponsor-identified, not scored: possible drug-drug interaction of memantine with masupirdine (post hoc, Nirogi 2022 Neurol Ther), which would be a dose question but is a post hoc subgroup finding.
+   2016 untested Rat donepezil-potentiation PD models (hippocampal ACh, network oscillations)
+      note: Lundbeck's AD add-on rationale: idalopirdine potentiates donepezil's effects on hippocampal ACh and network oscillations in rats.
+      judgement: Opener at first publication (epub 2016-03-31). The same paper already states the comparison with LADDER, recorded as the next entry.
+   2016 retro    Rat donepezil-potentiation PD models (hippocampal ACh, network oscillations)
+      note: Run after LADDER (2014): rat potentiation of donepezil's ACh and oscillation effects is offered as the mechanism of LADDER's 2.16-point ADAS-cog gain.
+      judgement: Retrodiction: LADDER (Wilkinson 2014) was known and is cited in the abstract as the premise ('A recent phase 2 trial showed ...'), so retro, not same (decision 10). Mork 2017 Eur J Pharmacol states the same comparison more explicitly ('may provide a mechanistic model for the pro-cognitive effects ... in the phase 2 studies (Wilkinson et al. 2014)'). Direction only: the rat readouts are PD biomarke
+   2017 contra   Rat donepezil-potentiation PD models (hippocampal ACh, network oscillations)
+      reason: Rat add-on synergy; three Phase 3 nulls
+      note: The model's prospective prediction, an add-on benefit on donepezil, failed in three Phase 3 trials (2,525 patients, 10-60 mg/d on a cholinesterase inhibitor).
+      judgement: First prospective test after the retrodiction (decision 10): the model was published in 2016, the Phase 3 results in 2017. Contra beats the retro on the same track. Phase 3 doses (10-60 mg/d) were below LADDER's 90 mg/d, but the add-on was tested at the occupancy target (>80% at 30-60 mg/d per Atri's Discussion), so the null is not a dose miss. Atri 2018 does not put the rat model beside the resul
+   2010 untested Rat subchronic-PCP novel object recognition deficit
+      note: Idalopirdine reversed a PCP-induced recognition deficit in rats at >65% occupancy; a schizophrenia-cognition model carried into AD.
+      judgement: The only published efficacy model for idalopirdine is a schizophrenia-cognition model; Lundbeck's AD rationale rested on 5-HT6 blockade potentiating donepezil (Herrik 2016, Mork 2017 rat microdialysis/EEG), published after LADDER.
+   2014 same     Rat subchronic-PCP novel object recognition deficit
+      note: LADDER: 90 mg/d idalopirdine on donepezil improved ADAS-cog by 2.16 points vs placebo at 24 weeks in moderate AD (primary met).
+      judgement: Scored on what was known in 2014 (rule 7): the model predicted pro-cognitive effect and the Phase 2 primary endpoint agreed in direction. Pairing made by me (Arnt 2010 vs Wilkinson 2014); Lundbeck's later rat papers cite LADDER but a citation is a pairing, not a stated comparison.
+   2017 contra   Rat subchronic-PCP novel object recognition deficit
+      reason: Rat deficit reversed; Phase 3 null
+      note: Three Phase 3 trials (2,525 patients, 10-60 mg/d on a cholinesterase inhibitor) showed no ADAS-Cog benefit at 24 weeks; program ended.
+      judgement: Contra beats the earlier same on the same track. Magnitude 'null' (no effect in patients where the model predicted one). Caveat recorded, not scored: Phase 3 doses (10-60 mg/d) were below the 90 mg/d that worked in LADDER, so the Phase 3 null is confounded by dose as much as by the model; the dose cell carries that. The SAM-760 Phase 2 (Fullerton 2018) and intepirdine Phase 3 failures are not scor
+   2011 untested Rodent cognition assays for SAM-760 (cholinergic/glutamatergic deficit object recognition)
+      note: Pfizer reported SAM-760 as pro-cognitive in multiple rodent assays (object recognition reversal of MK-801/scopolamine deficits per review) before Phase 2; the data were never published.
+      judgement: Opener at first public statement of SAM-760's own efficacy model (answers rule question 5: Pfizer did state one, in a conference abstract). A member drug's own model, different drug and deficit paradigm from idalopirdine's subchronic-PCP NOR and masupirdine's battery, so its own track per the drafter's member-model convention. Admissibility rests on the supplement-abstract rule question; the adjud
+   2017 contra   Rodent cognition assays for SAM-760 (cholinergic/glutamatergic deficit object recognition)
+      reason: Rodent pro-cognition; Phase 2 futility
+      note: SAM-760 30 mg on donepezil was stopped for futility at interim (ADAS-cog13 difference 0.70 points favouring placebo), against the rodent pro-cognitive prediction.
+      judgement: Prospective: the rodent claim (2011) predates the trial (registered 2012). Fullerton 2018 does not put the rodent data beside the result, so the pairing is mine (model_src Comery 2011). Occupancy was saturated at 30 mg (dose 4), so not a dose miss.
+-- dose (cell headline same)
+   2017 same     Non-human primate PET 5-HT6 receptor occupancy ([11C]GSK215083)
+      reason: Target occupancy reached; drug failed; abandoned
+      note: 30 mg saturated 5-HT6 receptors in humans, the occupancy the monkey model targeted; the Phase 2 was stopped for futility on ADAS-cog13.
+   2022 same     Rat cognition battery (object recognition, water maze, radial arm maze) with donepezil + m
+      reason: Target exposure reached; drug failed; abandoned
+      note: Patient plasma concentrations met or exceeded the rat efficacious concentrations, and masupirdine failed on ADAS-Cog 11 at 26 weeks.
+   2017 contra   Rat in-vivo striatal 5-HT6 occupancy ([3H]Lu AE60157) with subchronic-PCP NOR
+      reason: Exposure-to-target never published for idalopirdine
+      note: Phase 3 used 10-60 mg/d, below the 90 mg/d that worked in Phase 2; whether the rat occupancy/exposure target was met at these doses is unpublished.
+
+==================== migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies  [neurology; furthest phase 4; 3 programs]
+-- engagement (cell headline same)
+   2015 same     Cynomolgus capsaicin-induced dermal blood flow (CIDBF), PK/PD-translated to humans
+      reason: Human CIDBF matched monkey PK/PD
+      note: Monkey CIDBF PK/PD model correctly predicted inhibition of capsaicin dermal blood flow in healthy volunteers from a single 5 mg SC galcanezumab dose.
+-- efficacy (cell headline contra)
+   2008 untested Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)
+      note: Evoked-vasodilation models read CGRP release, not migraine; Zeller still used them to call the antibody a migraine-prevention candidate.
+      judgement: No disease model existed for the class; the pharmacology package in both 2018 FDA reviews is evoked vasodilation only (CIDBF rat/monkey for galcanezumab; CIDBF monkey, saphenous flare and dural window for fremanezumab).
+   2014 same     Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)
+      reason: Direction matched; model reads CGRP, not migraine
+      note: Galcanezumab 150 mg q2w cut migraine headache days 1.2 days vs placebo in Phase 2, the direction the rat model called; Phase 3s agreed.
+      judgement: Scored same rather than untested because Zeller 2008 made an explicit prospective efficacy prediction from the rat dural-dilation model and every member's primary endpoint then responded (Phase 2: galcanezumab 2014, eptinezumab 2014, fremanezumab 2015; Phase 3: 2017-2020). Kept at direction_only and medium confidence because the model has no migraine endpoint and FDA calls its efficacy relevance u
+   2025 contra   Rat evoked neurogenic vasodilation (skin flare, middle meningeal artery)
+      reason: Member drug missed placebo-controlled primary in pediatric CM
+      note: Fremanezumab missed its primary in children and adolescents with chronic migraine (6-17 y), against the class benefit the rat model called; pediatric EM was positive.
+      judgement: Scored contra because a member drug missed its placebo-controlled primary endpoint in patients of the context disease (Unselected population includes children), and one drug's contra beats the adult same on this track; the positive pediatric EM study is recorded under patient_trials.
+   2018 untested Human ex-vivo cerebral, middle meningeal and abdominal artery rings (wire myograph, CGRP-i
+      note: Ex-vivo human artery model first run in 2018, after Phase 3; it reads CGRP vasodilation, not migraine.
+      judgement: Opens the efficacy track at model first use (2018), as the brief asks; the model has no migraine endpoint of its own.
+   2018 retro    Human ex-vivo cerebral, middle meningeal and abdominal artery rings (wire myograph, CGRP-i
+      reason: Built after Phase 3 success
+      note: Fremanezumab blocked CGRP-induced relaxation in human cerebral, middle meningeal and abdominal arteries, run after HALO had shown efficacy; authors frame it as mechanism.
+      judgement: Retrodiction (decision 10): the product was run in human tissue after the clinic knew the answer and the result was consistent with it, so retro, never same. comparison_stated false because the authors cite the trials as premise rather than placing the two results side by side; source_calls_it null for the same reason. Kept at direction_only: an ex-vivo relaxation shift cannot be set against migra
+   2017 untested Mouse CGRP-injection-evoked light aversion and spontaneous pain (grimace/squint)
+      note: CGRP-injected mice show light aversion; the model was first run with an Alder anti-CGRP antibody after the ALD403 Phase 2 had read out.
+      judgement: Opens the track at first use with an anti-CGRP antibody (2017); CGRP-evoked light aversion in mice existed earlier (Recober 2009, central CGRP in nestin/hRAMP1 mice) but had not been run with an antibody of this class.
+   2017 retro    Mouse CGRP-injection-evoked light aversion and spontaneous pain (grimace/squint)
+      reason: Built after Phase 2 success
+      note: A CGRP-blocking antibody (ALD405, eptinezumab's murine sibling) blocked CGRP-evoked light aversion in mice, three years after ALD403 Phase 2 had shown benefit.
+      judgement: Retrodiction (decision 10): the authors call the antibody a 'clinically effective migraine drug' and use the model to test where CGRP acts, so the model reproduced a result already known from patients; retro, never same. product_in_model false because ALD405 is a sibling of eptinezumab, not the product. comparison_stated false: the trials are cited as premise, not set against the model data.
+   2016 retro    Rat medication-overuse / stress-triggered headache (cutaneous allodynia)
+      reason: Built after Phase 2 success
+      note: Fremanezumab (TEV-48125) blocked trigger-evoked allodynia in rats after Phase 2 had shown efficacy; FDA later filed the model as 'relevance unknown'.
+      judgement: Retrodiction (decision 10): the model was run with the product after the clinic knew the answer and reproduced it, so retro, never same. Registry date is the TEV-48125 HFEM Phase 2b (NCT02025556) it post-dates. The FDA fremanezumab review's 'How relevant these models are for predicting efficacy in human migraine is not known' refers to this model family.
+   2017 retro    Rat trigeminovascular neuron electrophysiology (dural stimulation, cortical spreading depr
+      reason: Mechanism reproduced post hoc
+      note: Fremanezumab inhibited high-threshold trigeminovascular neurons activated from the dura or by CSD, framed by the authors as explaining the already-known clinical benefit.
+      judgement: A second retrodiction track: the authors explicitly put the rat result beside the clinical benefit and the non-responder fraction, so comparison_stated true and source_calls_it partial. Scored retro, never same (decision 10).
+   2019 untested Mouse glyceryl-trinitrate-provoked and rat spontaneous-trigeminal-allodynia migraine-like 
+      note: Mouse GTN-provoked and rat spontaneous trigeminal-allodynia models first run with an anti-CGRP antibody in 2019, after eptinezumab's Phase 3s had reported.
+      judgement: Opens the track at first use with an antibody of this class (2019). The mouse GTN model and the selectively bred spontaneous-allodynia rat are two paradigms run in one paper with one result, kept as one track to avoid duplicate rows; a later paper separating them would split it.
+   2019 retro    Mouse glyceryl-trinitrate-provoked and rat spontaneous-trigeminal-allodynia migraine-like 
+      reason: Built after Phase 3 success
+      note: ALD405 (eptinezumab's sibling) relieved mechanical hypersensitivity in GTN-provoked mice and spontaneous-allodynia rats, run after PROMISE-1 and PROMISE-2 had read out positive.
+      judgement: Retrodiction (decision 10): the authors' stated purpose is to validate the models against a class already known to work ('confirming that translationally-relevant disease mechanisms are engaged'), so the models reproduced a known patient result; retro, never same. product_in_model false (ALD405 is eptinezumab's sibling). The abstract's 'potential clinical utility ... in the abortive treatment of m
+-- dose (cell headline same)
+   2015 same     Cynomolgus capsaicin-induced dermal blood flow (CIDBF), PK/PD-translated to humans
+      reason: Model dose reached and sufficient
+      note: CIDBF PK/PD set the Phase 2 galcanezumab dose (150 mg q2w); that trial met its primary endpoint, and 120 mg monthly later did too.
+
+==================== breast-cancer-hsp90aa1-hsp90ab1-inhibitors  [oncology; furthest phase 2; 5 programs]
+-- engagement (cell headline same)
+   2012 same     HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readout
+      reason: HSP70 and HER2 readouts moved in patients
+      note: Alvespimycin plus trastuzumab in 28 patients (25 breast): Hsp70 in peripheral blood lymphocytes rose through four weeks, most at 80-100 mg/m2; the xenografts' HSP70 readout moved.
+   2014 same     HER2-overexpressing SKOV-3 xenograft with 89Zr-trastuzumab PET readout of luminespib-induc
+      reason: PET HER2 readout moved, heterogeneously
+      note: Luminespib 70 mg/m2 weekly, 16 breast patients: 89Zr-trastuzumab PET HER2 signal fell 18% on average across 29 lesions, heterogeneous, and tracked CT size change.
+-- efficacy (cell headline contra)
+   2013 untested Hormone receptor-positive breast cancer xenograft (MCF-7, ganetespib monotherapy)
+      note: Ganetespib suppressed MCF-7 xenograft growth and destabilised ER-pathway clients; no fulvestrant combination modelled, no patient comparison yet.
+      judgement: Own track: a different line and a different prediction (ER-dependent tumours respond because ER is an HSP90 client) from the HER2 and TNBC systems. The fulvestrant trial (NCT01560416) started June 2012, before this paper; the abstract does not state a fulvestrant combination in mice.
+   2019 untested Hormone receptor-positive breast cancer xenograft (MCF-7, ganetespib monotherapy)
+      reason: Randomised trial negative: PFS unchanged
+      note: Randomised phase 2, fulvestrant with or without ganetespib in 50 endocrine-resistant HR-positive patients: median PFS 3.7 vs 3.6 months, diarrhoea 97% vs 7%; primary endpoint missed.
+      judgement: Contra: the model predicted ER-positive tumours respond to ganetespib and the only randomised test of the class in breast cancer showed no PFS gain. The model never tested the fulvestrant combination, so a stricter reader could say the trial asked a question the model did not; I scored it because the trial's rationale is the model's (ER is an HSP90 client) and single-agent HR-positive activity was
+   2014 untested ER-positive human breast cancer xenografts on hormone antagonists with sub-growth-inhibito
+      reason: Emergence prediction never tested in patients
+      note: Sub-growth-inhibitory ganetespib with hormone antagonists delayed resistance emergence in ER-positive xenografts, no activity alone; the only trial (established resistance) tested a different question.
+      judgement: Untested, not contra: the trial that cites this model as rationale (Grinshpun 2026, NCT01560416) tested established resistance at full dose, and says so, while the model predicted delayed emergence in sensitive tumours at a sub-growth-inhibitory dose; the trial is recorded in patient_trials because it changes no status. Its own track, separate from er-breast-xenograft (Friedland 2014: full-dose mo
+   2008 untested HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readout
+      note: Daily luminespib gave BT474 treated/control 21% with ERBB2 depletion; Jensen 2008 and Leow 2009 (retaspimycin, with trastuzumab) made HER2-positive breast the named indication.
+      judgement: The track pools the members' HER2-positive breast xenograft work as one system: Jensen 2008 (10.1186/bcr1996, BT-474, luminespib), Leow 2009 (10.1158/1535-7163.MCT-08-1038, retaspimycin alone and with trastuzumab or lapatinib, including trastuzumab-resistant JIMT-1), Scaltriti 2011 (10.1158/1535-7163.MCT-10-0966, retaspimycin in trastuzumab-resistant xenografts) and Friedland 2014 (10.1007/s10637-
+   2013 contra   HER2-positive breast cancer xenografts (BT-474, JIMT-1) with HER2, p-AKT and HSP70 readout
+      reason: Xenograft regressions; no responses in HER2+ patients
+      note: Retaspimycin plus trastuzumab in 26 trastuzumab-pretreated HER2-positive patients: no confirmed responses, 62% stable disease, Simon stage 1 not passed; the xenograft combination regressions did not transfer.
+      judgement: Contra rather than partial-same: the model's specific prediction, that retaspimycin plus trastuzumab regresses trastuzumab-resistant HER2-positive tumours (Leow 2009, JIMT-1), was tested in exactly that population and gave no confirmed responses. One drug's contra beats another's same on the track, so Kong 2016 (luminespib, 22%) and the 2 of 13 ganetespib responses sit in patient_trials without ch
+   2004 untested Triple-negative breast cancer xenografts (MDA-MB-231 and others; orthotopic and metastasis
+      note: Alvespimycin 75 mg/kg in MDA-MB-231 xenografts: drug retained in tumour at 48 h with Raf-1 about 20% lower; a PK/PD model, no efficacy claim or patient comparison yet.
+      judgement: Opens the track at the first member-drug use of a TNBC xenograft. The efficacy prediction came later from ganetespib: Friedland 2014 (10.1007/s10637-013-9971-6, MDA-MB-231 growth suppression), Proia 2014 (10.1158/1078-0432.CCR-13-2166, TNBC xenografts, lung metastases suppressed, chemotherapy combinations) and Xiang 2014 (10.1007/s00109-013-1102-5, orthotopic MDA-MB-231 and MDA-MB-435 growth and m
+   2013 untested Triple-negative breast cancer xenografts (MDA-MB-231 and others; orthotopic and metastasis
+      reason: Xenograft activity; no TNBC responses
+      note: Single-agent ganetespib in 22 unselected metastatic patients failed its Simon stage 1 (ORR 9%); no RECIST response in TNBC, one TNBC patient with lung-metastasis regression.
+      judgement: Contra on the primary endpoint under decision 13: the data showed no TNBC response by RECIST and a failed stage 1, whatever the sponsor's model paper said about regressions; Jhaveri calls the TNBC signal 'activity', hence source_calls_it partial. A stricter reader could hold this at untested because the subset is small and its size unreported; I scored it because the model's own sponsor used these
+-- dose (cell headline untested)
+
+==================== breast-cancer-pi3k-pan-inhibitors  [oncology; furthest phase 3; 3 programs]
+-- engagement (cell headline same)
+   2014 same     PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-
+      reason: Tumour pAkt suppressed in dosed patients
+      note: Pictilisib suppressed tumour Ser473-pAkt >90% at exposures above 20 h·µmol/L and PRP pAkt >90% at the MTD; insulin, glucose and FDG-PET moved.
+-- efficacy (cell headline contra)
+   2010 untested Breast cancer cell-line panel with genotype: PIK3CA-mutant and HER2-amplified lines most s
+      note: Pharmacogenomic profiling of a large breast-line panel proposed PIK3CA mutation, HER2 amplification and a gene signature to pick responders.
+      judgement: A separate track: a different prediction (which patients respond) from a genotype-annotated line panel, not the class-level xenograft question. model_kind is animal because the panel paper also carried xenografts; the genotype call itself is in vitro.
+   2016 contra   Breast cancer cell-line panel with genotype: PIK3CA-mutant and HER2-amplified lines most s
+      reason: Genotype did not pick responders
+      note: FERGI: PIK3CA-mutant patients gained nothing over wild-type (HR 0.73 vs 0.72), and the mutant-only part 2 showed HR 1.07.
+      judgement: Patient-level prediction tested on its own drug: the panel said PIK3CA-mutant tumours are exquisitely sensitive, and the stratified, then mutant-only, FERGI showed no enrichment. PEGGY (HR 1.06 mutant), pilaralisib (no association, two trials) and BELLE-4 (HR 1.17 pathway-activated) agree. BELLE-2's tissue-defined pathway-activated group (HR 0.76 vs 0.78 overall) adds nothing, and its ctDNA PIK3CA
+   2016 untested Breast cancer patient-derived tumour xenograft (PDTX) biobank with short-term PDTX-derived
+      note: PDTC screen of pictilisib across 15 models: sensitivity sat with PIK3CA-activating mutation, PTEN loss, INPP4B loss or high p-AKT; buparlisib dosed in PDTXs in vivo.
+      judgement: Opening entry at the biobank's first published use. Patient-level prediction (which genotypes respond to pictilisib); the paper itself makes no comparison with patients.
+   2016 contra   Breast cancer patient-derived tumour xenograft (PDTX) biobank with short-term PDTX-derived
+      reason: Ex-vivo genotype call missed in patients
+      note: PDTCs said PIK3CA-mutant tumours respond better to pictilisib; FERGI's PIK3CA-mutant patients gained nothing over wild-type (HR 0.73 vs 0.72) and PEGGY agreed (HR 1.06).
+      judgement: Patient-level prediction tested on its own drug: the ex-vivo screen put pictilisib sensitivity with PIK3CA mutation and PTEN loss; the stratified, then mutant-only, FERGI showed no enrichment, and PEGGY (HR 1.06) agreed. BELLE-2's tissue-defined PI3K-pathway-activated group (HR 0.76 vs 0.78 overall) adds nothing for buparlisib, and its ctDNA PIK3CA signal is a partial match on another drug that ca
+   2015 untested Novartis PDX Encyclopedia 1x1x1 'PDX clinical trial' (~1,000 PDXs, six indications; buparl
+      note: Population-scale PDX screen of 62 treatments, buparlisib among them, built to predict clinical trial response; no breast-cancer pan-PI3K comparison verifiable from the abstract.
+      judgement: Opening entry at the PDX encyclopedia's first published use; the first verifiable comparison for a class member in breast cancer comes in Nixon 2019.
+   2019 untested Novartis PDX Encyclopedia 1x1x1 'PDX clinical trial' (~1,000 PDXs, six indications; buparl
+      reason: Model reran against known clinic answer
+      note: After luminal A tracked with clinical benefit on buparlisib + letrozole, the 170 buparlisib-treated PDXs were re-stratified: luminal A predicted response; PIK3CA mutation did not, matching the clinic.
+      judgement: Retrodiction: the luminal A hypothesis came from the patients and the PDX database was then queried 'to provide additional evidence', so the model was run against a known answer. It reproduced the direction (luminal A better on buparlisib) and also reproduced the PIK3CA non-enrichment ('PDXs with MAP3K1 alterations were more sensitive to alpelisib ... but not buparlisib'; PIK3CA-mutant PDXs trende
+   2010 untested PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-
+      note: Breast lines and xenografts with PIK3CA mutation, HER2 amplification or dual pathway lesions were exquisitely sensitive to GDC-0941; some unaltered models responded too.
+      judgement: Class-level opening entry in the breast models (the track's first use was Raynaud 2009 in non-breast xenografts, proxy allowed).
+   2016 contra   PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-
+      reason: Pictilisib failed; buparlisib wins cannot flip
+      note: FERGI: pictilisib plus fulvestrant did not improve PFS (6.6 vs 5.1 months, HR 0.74, p=0.096) in AI-resistant ER+ breast cancer.
+      judgement: Class-level call on one track. Pictilisib, the drug the model was built on, missed its PFS primary in FERGI and PEGGY, and the discovery paper's own pitch (potentiating taxanes, Wallin 2012) failed in PEGGY. Buparlisib plus fulvestrant then met PFS primaries in BELLE-2 (HR 0.78, +1.9 months) and BELLE-3 (HR 0.67, +2.1 months), which read as same with source_calls_it partial, but BELLE-4 (paclitaxe
+-- dose (cell headline same)
+   2016 same     PI3K-pathway-activated lines and xenografts (U87MG, IGROV-1; breast lines incl. MCF7, KPL-
+      reason: Reached, failed, abandoned in this setting
+      note: FERGI dosed pictilisib at 340 mg, above the 330 mg where tumour pAkt fell >90%; PFS missed, dose cut to 260 mg, program dropped.
+
+==================== breast-cancer-pi3k-mtor-inhibitors  [oncology; furthest phase 2; 5 programs]
+-- engagement (cell headline same)
+   2018 same     Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout
+      reason: Tumour pS6 fell as in xenografts
+      note: Paired tumour biopsies in three dactolisib patients showed pS6 down a median 23% (range 15-59%), the direction the xenografts gave.
+   2024 retro    Genentech translational PK/PD-efficacy model of apitolisib (xenograft pAkt-to-tumour-growt
+      reason: Retrodiction: stasis threshold 61% vs 65%
+      note: Retrospective integrated PK-PD-efficacy models fit to xenograft and phase 1 data gave the same steep pAkt-to-tumour-shrinkage curve and stasis threshold.
+   2016 same     Genentech GDC-0980 PI3K-pathway-activated xenografts with exposure-linked PD biomarkers
+      reason: Dose-related pAKT suppression held in patients
+      note: Apitolisib suppressed pAKT S473 by at least 90% in platelet-rich plasma at the MTD and cut FDG uptake over 25% in 66% at 40 mg.
+   2014 same     Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition
+      reason: Tumour pathway inhibition seen, n=1
+      note: Voxtalisib 50 mg BID inhibited PI3K/mTOR and ERK signalling in the tumour of one responding lymphoma patient; breast trial PD was glucose only.
+-- efficacy (cell headline contra)
+   2008 untested Novartis BEZ235 xenografts with ex-vivo tumour PI3K/Akt pathway readout
+      reason: No breast primary efficacy endpoint read
+      note: BEZ235 reversed PTEN-loss and PIK3CA-mutant lapatinib resistance in HER2+ breast models; no breast trial ever read a primary efficacy endpoint.
+      judgement: The only breast efficacy data are 4/30 partial responses (DCR 47%) in a phase Ib cohort of PI3K-pathway-altered HER2+ patients whose primary endpoint was DLT, so the efficacy question is unscored; under the dose table (target blocked by toxicity) it stays untested. Eichhorn's patient-level prediction is consistent with those responses but was never tested on an efficacy endpoint.
+   2012 untested Genentech translational PK/PD-efficacy model of apitolisib (xenograft pAkt-to-tumour-growt
+      reason: No breast efficacy endpoint read
+      note: Model predicted tumour stasis at 55 mg once daily; FERGI arm B and the paclitaxel combination never reported a breast endpoint.
+      judgement: The stasis prediction came from an MCF7-neo/HER2 breast xenograft, so it bears on this tile, but the only breast trials (NCT01437566 arm B, NCT01254526) completed without results and the 55 mg regimen was never given, so nothing can be scored.
+   2011 untested Genentech GDC-0980 PI3K-pathway-activated xenografts with exposure-linked PD biomarkers
+      reason: Breast arm completed, results never published
+      note: Breast lines were among the most sensitive; the apitolisib arm of FERGI (PFS primary) finished in 2016 with nothing published.
+      judgement: A model existed and a breast trial ran, but no admissible comparison exists, so untested, not an empty cell.
+   2011 untested Pfizer PF-04691502 PTEN-null and PIK3CA-mutant xenografts
+      reason: Program stopped before any efficacy endpoint
+      note: Xenograft activity in PTEN-null and PIK3CA-mutant lines, none breast; the pre-operative letrozole trial was stopped before its Ki-67 endpoint.
+      judgement: No breast comparison is possible: the only breast trial ended in its phase 1b after Pfizer saw severe skin toxicity in another study, so untested with the registry record kept as the patient-side trail.
+   2017 untested PIQUR PQR309 tumour cell lines and rat xenograft
+      reason: No published breast comparison exists
+      note: A rat xenograft carried bimiralisib to the clinic; the HER2-negative breast trial with eribulin completed in 2018 without published results.
+      judgement: Model existed, trial ran, no comparison published: untested.
+   2014 untested Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition
+      note: Repeat oral XL765 gave significant tumour growth inhibition across xenografts, with genotype affecting cell-line sensitivity.
+      judgement: Opening entry; the prediction is tumour growth inhibition, with a secondary patient-level claim that PI3K-pathway genotype shapes sensitivity.
+   2015 contra   Exelixis XL765 xenograft panel with dose-dependent pAKT/p70S6K/S6 inhibition
+      reason: Xenograft growth inhibition, no patient benefit
+      note: Phase II voxtalisib plus letrozole: no partial responses, 6-month PFS 8%, no link between PI3K-pathway alterations and benefit.
+      judgement: Class-level miss: the xenografts predicted growth inhibition and the HR+/HER2-negative phase II found no responses and PFS6 of 8% with letrozole, which the sponsor did not pursue. The patient-level claim also failed ('no association between molecular alterations in the PI3K pathway and efficacy'). Pairing of Yu 2014 with the trial is mine; the trial does not cite the model. Only member with a brea
+-- dose (cell headline untested)
+
+==================== colorectal-cancer-anti-egfr-antibodies  [oncology; furthest phase 2; 3 programs]
+-- engagement (cell headline same)
+   2013 same     Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)
+      reason: ADCC mechanism engaged; no benefit followed
+      note: In 25 KRAS-mutant mCRC patients, paired biopsies showed immune-effector infiltration rising after one cycle while circulating NK cells fell: the ADCC mechanism engaged.
+   2014 retro    Ex-vivo NK cells from mCRC patients before, during and after chemotherapy, GA201-induced A
+      reason: Patient NK cells moved on dosing
+      note: In 25 KRAS-mutant mCRC patients, peripheral NK cells fell and tumour immune-effector infiltration rose after one imgatuzumab cycle: the NK engagement the ex-vivo assay showed.
+   2015 same     EGFR-expressing cancer cell lines and A431 xenografts (Sym004)
+      note: Paired tumour and skin biopsies in anti-EGFR-refractory mCRC showed durable membrane EGFR downmodulation at week 4, the degradation the cell and xenograft work predicted.
+   2018 same     EGFR-expressing cancer cell lines and A431 xenografts (Sym004)
+      reason: Target loss seen in tumour, skin, ctDNA
+      note: Phase 2 ctDNA: EGFR ECD-mutant allele fractions fell on Sym004, as the ECD-mutant cell lines predicted; engagement without clinical benefit.
+-- efficacy (cell headline contra)
+   2018 retro    Patient-derived CRC xenografts with RAS/BRAF mutations (Sym004)
+      reason: Retrodiction of known RAS/BRAF resistance
+      note: PDX panel run with the trial: RAS- and BRAF-V600E-mutant xenografts barely responded to Sym004, matching the ctDNA-defined non-benefit in patients, a retrodiction.
+      judgement: Separate track and a retrodiction (decision 10): the RAS/BRAF-mutant PDX panel was run alongside the trial, after the clinic already knew RAS/BRAF-mutant tumours resist anti-EGFR antibodies, and reproduced it; scored retro, never same. No prospective PDX prediction for this class followed.
+   2012 untested Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)
+      note: Orthotopic KRAS-mutant and wild-type xenografts (LS174-T, HT29, A549) responded to GA201 better than to cetuximab; prediction: KRAS-mutant patients will respond via ADCC.
+      judgement: Opens the imgatuzumab track: orthotopic LS174-T (KRAS G12D) and HT29 liver-metastasis CRC models plus A549 lung; the paper's own clinical prediction is 'a first-in-class treatment of patients with KRAS-mutated tumors'. Full text read via the AACR page.
+   2013 contra   Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)
+      note: Single-agent imgatuzumab in 25 KRAS-mutant mCRC patients: no objective responses, best response stable disease (40% at 8 weeks); the KRAS-mutant xenograft prediction failed.
+      judgement: Contra, patient-level: the model's stated prediction was efficacy in KRAS-mutant tumours through ADCC; the dedicated KRAS-mutant mCRC cohort met its primary endpoint of tumour response with zero responses and stable disease in 40% at 8 weeks. Paired by me (Delord's abstract does not set the xenografts beside the result).
+   2015 contra   Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)
+      reason: KRAS-mutant and anti-cetuximab predictions failed
+      note: GAIN-C randomized phase 2: no PFS benefit from adding imgatuzumab to FOLFIRI in KRAS-mutant (HR 0.94) and no edge over cetuximab in KRAS-WT (HR 1.13); program stopped.
+      judgement: Strengthens the contra at class level: GAIN-C tested both of the model's predictions, superiority over cetuximab in KRAS-WT (PFS HR 1.13) and benefit over chemotherapy alone in KRAS-mutant (HR 0.94), and the sponsor called the primary endpoint negative in both; Roche then stopped imgatuzumab (the 2014 squamous NSCLC study was withdrawn). Grade 3+ rash 42.5% and hypomagnesaemia 30% on imgatuzumab a
+   2014 untested Ex-vivo NK cells from mCRC patients before, during and after chemotherapy, GA201-induced A
+      note: Preserved ADCC in chemotherapy-exposed patients' NK cells was read as support for GA201 plus chemotherapy in CRC; no trial result paired yet.
+      judgement: The model's stated prediction is a combination prediction (ADCC-triggering antibody plus chemotherapy), which is exactly what GAIN-C tested; the single-agent KRAS-mutant expansion (Delord 2014, 0/25 responses) was public before the model and is not scored here.
+   2015 contra   Ex-vivo NK cells from mCRC patients before, during and after chemotherapy, GA201-induced A
+      reason: Chemotherapy combination gave no PFS benefit
+      note: GAIN-C: imgatuzumab added to second-line FOLFIRI gave no PFS benefit in KRAS-mutant (HR 0.94) or over cetuximab in KRAS-WT (HR 1.13); program stopped.
+      judgement: The ex-vivo system predicted that preserved patient NK ADCC would let imgatuzumab add to chemotherapy; the randomized combination trial showed no PFS gain in either KRAS stratum. Paired by me: the abstract does not cite the ex-vivo paper. One drug's contra sets the track.
+   2017 untested CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-
+      note: Sym004 regressed every SW48 xenograft that had progressed on cetuximab, 4/7 still responding at 30 weeks; prediction: Sym004 overcomes acquired anti-EGFR resistance in mCRC.
+      judgement: Different system and different prediction from the Symphogen track: acquired resistance selected against cetuximab and driven by MET, with a treat-at-progression design, where the ECD-mutant lines predicted on a different biomarker. The MET-specific (patient-level) claim stayed untested; the class-level claim was tested by the phase 2.
+   2017 retro    CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-
+      note: The paper sets its resistant-xenograft responses beside the already-published phase 1 expansion: disease control in 26/39 anti-EGFR-refractory patients, known before the model ran.
+      judgement: Decision 10: the acquired-resistance activity the model shows was already known in patients from the phase 1 expansion, so the model's agreement with it is a retrodiction, drawn apart from same; its prospective test is the next entry.
+   2017 contra   CRC lines with acquired cetuximab resistance and MET activation (GEO-CR, SW48-CR, LIM1215-
+      reason: OS primary failed in the model's population
+      note: Randomized phase 2 in anti-EGFR-refractory mCRC, the model's population: OS not improved (HR 1.31 and 0.97 vs investigator's choice); MET-activated patients were never analysed.
+      judgement: The first prospective test after the retrodiction: the model predicted Sym004 overcomes acquired anti-EGFR resistance and the randomized trial in exactly that population missed its OS primary endpoint. The exploratory ctDNA triple-negative subgroup benefit does not rescue the class call, and the MET-specific claim stays untested.
+   2010 untested EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CR
+      note: Sym004 out-performed cetuximab in vitro and in xenografts; no patient result yet.
+      judgement: Opens the Sym004 efficacy track. Pedersen 2010 is the class-level prediction (superior to cetuximab in xenografts); the acquired-resistance predictions came later on the same platform: ligand-driven resistance (Dienstmann 2015 preclinical section), cetuximab-resistant NCI-H226 xenografts (Iida 2013, doi:10.1593/neo.131584) and EGFR-ECD-mutant CRC lines (Sanchez-Martin 2016).
+   2015 same     EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CR
+      note: Phase 1 expansion in anti-EGFR-refractory mCRC: 5/39 partial responses (13%) and 44% tumour shrinkage at 9-12 mg/kg, the activity the resistance models predicted.
+      judgement: Scored same on the proof-of-concept gate: the paper states the activity 'validates the preclinical hypothesis that a proportion of tumors remains dependent on EGFR signaling' (comparison_stated). Single-arm, 39 patients, so medium magnitude confidence; the randomized test came in 2018.
+   2016 retro    EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CR
+      note: EGFR-ECD-mutant CRC cells and xenografts stayed Sym004-sensitive; a G465R patient from the phase 1 benefited, a one-patient proof of principle.
+      judgement: Strengthens, same status, patient-level: the ECD-mutant cell lines and xenograft said Sym004 still binds and regresses tumours carrying G465R/S492R, and one such patient responded. Also the prediction the 2018 trial then tested and refuted.
+   2018 contra   EGFR-expressing cell lines and xenografts incl. cetuximab-resistant and EGFR-ECD-mutant CR
+      reason: OS and ECD-biomarker predictions both failed
+      note: Randomized phase 2 in anti-EGFR-refractory mCRC: OS not improved (HR 1.31 and 0.97 vs investigator's choice); EGFR-ECD-mutant patients, the model's biomarker, gained nothing.
+      judgement: Contra on the primary endpoint (OS, ITT) and on the patient-level prediction: the paper states that preclinical efficacy in EGFR ECD-mutated cells and the ctDNA fall in those clones 'was not linked to clinical benefit of Sym004 in the present trial'. The exploratory ctDNA-defined RAS/BRAF/EGFR-ECD-negative subgroup (median OS 12.8 vs 7.3 months, arm B vs C) is retrospective and hypothesis-generati
+   2004 untested A431 epidermoid xenografts in athymic mice (zalutumumab/2F8)
+      reason: Nine-patient CRC trial, nothing to compare
+      note: A431 xenografts regressed on 2F8; the sole CRC trial (9 cetuximab-refractory patients, 0 responses, stopped on portfolio review) allows no comparison.
+      judgement: Untested rather than contra: the only CRC trial (phase 1/2, zalutumumab 8 or 16 mg/kg with irinotecan in cetuximab-refractory mCRC) enrolled 9 patients, had adverse events as its primary outcome, posted 0 responses and 7 stable disease, and was terminated 'due to changes in portfolio review'. No efficacy conclusion is possible and no source compares it with the A431 model; the only publication is 
+-- dose (cell headline same)
+   2013 same     Orthotopic KRAS-WT and KRAS-mutant xenografts with NK-cell ADCC assays (GA201)
+      reason: Dose adequate; KRAS-mutant efficacy failed
+      note: 1,400 mg day 1/8 then q2w saturated clearance and engaged ADCC in KRAS-mutant tumours, yet gave no responses; the regimen was adequate, the prediction was not.
+   2015 same     A431NS xenograft PK and cynomolgus repeat-dose PK (Sym004)
+      note: Weekly 9-12 mg/kg reproduced the model's EGFR loss in patient tumours and gave partial responses; escalation stopped at 12 mg/kg on cumulative skin and magnesium toxicity.
+
+==================== malignant-pancreatic-neoplasm-map2k1-2-inhibitors  [oncology; furthest phase 4; 3 programs]
+-- engagement (cell headline same)
+   2012 same     Tumour xenografts, pERK by IHC (trametinib)
+      reason: Human tumour pERK matched xenograft readout
+      note: Paired tumour biopsies at 0.5-2 mg showed dose-dependent pERK and Ki67 inhibition, the readout the xenografts used; mixed solid tumours, not pancreatic.
+-- efficacy (cell headline contra)
+   2011 untested In-vitro cancer cell-line panel, RAS/BRAF genotype vs MEK-inhibitor sensitivity (trametini
+      note: Trametinib cell-line panel: RAS/BRAF-mutant lines most sensitive; applied to pancreatic cancer as a KRAS-genotype selection hypothesis, not yet compared.
+      judgement: Opener for the only patient-level prediction in the context: genotype picks responders. A different system (in-vitro immortalised-line panel) and a different prediction (who responds) from the xenograft track, so its own track; ex_vivo is the nearest model_kind.
+   2014 contra   In-vitro cancer cell-line panel, RAS/BRAF genotype vs MEK-inhibitor sensitivity (trametini
+      note: Randomised phase II pre-specified KRAS subgroups by cfDNA; KRAS-mutant patients (n=103) gained no OS from trametinib, so genotype did not pick responders.
+      judgement: The panel predicted RAS-mutant tumours as the responders; the trial tested exactly that subgroup and found no difference, a wrong patient-level prediction. Pairing: the trial cites the RAS rationale but does not set the panel beside its data.
+   2016 contra   In-vitro cancer cell-line panel, RAS/BRAF genotype vs MEK-inhibitor sensitivity (refametin
+      note: Single-arm phase I/II (n=90): response, PFS and OS were all higher without detectable KRAS mutation in ctDNA, the reverse of the panel's prediction.
+      judgement: Second member drug on the same patient-level prediction, now with the direction reversed (magnitude opposite). Same status as 2014, so strengthens.
+   2018 contra   In-vitro cancer cell-line panel, RAS/BRAF genotype vs MEK-inhibitor sensitivity (pimaserti
+      reason: Three member drugs, genotype never picked responders
+      note: Randomised phase II part (n=88): no benefit over placebo with gemcitabine and KRAS status did not influence PFS or OS; third member drug, same miss.
+      judgement: Third member drug; genotype again failed to pick responders. Same status, strengthens. The track never turned: no tier 1-4 source shows a KRAS-mutant subgroup benefiting from any member drug.
+   2014 retro    KRAS-driven GEMM (KPC-type), sibling MEK inhibitor
+      note: KPC mice given a sibling MEK inhibitor (cobimetinib) showed modest growth inhibition and no survival gain, published after the trametinib trial read out.
+      judgement: Separate track per the run rule: a different system (autochthonous KrasG12D-driven GEMM) with a different prediction (modest single-agent effect, no survival gain) from the xenografts (growth inhibition in every model). Retrodiction call: the paper's epub (2014-11-05) follows the registry posting (2013-09-26) and the Infante epub (2014-06-07), and its framing is against the clinical scene ('severa
+   2010 untested Orthotopic patient-derived pancreatic xenografts (refametinib)
+      note: Refametinib alone or with rapamycin significantly inhibited growth in all three orthotopic primary pancreatic xenografts; trametinib did the same in PDX (Walters 2013).
+      judgement: Model prediction on this track: single-agent MEK1/2 inhibition slows (does not regress) KRAS-mutant pancreatic xenografts, read as benefit worth testing in patients. Population is 'Unselected' rather than 'KRAS-mutant': no MEK inhibitor is prescribed by KRAS status, the trials enrolled unselected PDAC, and in Infante 2014 only 103/160 (64%) were KRAS-mutant by the assays used, under the 80% bar fo
+   2013 contra   Pancreatic cell-line and patient-derived xenografts
+      note: Trametinib 2 mg + gemcitabine: OS HR 0.98, KRAS-mutant subgroup no different; pimasertib (2018) and refametinib (2017) repeated the null.
+      judgement: Paired comparison: Infante 2014 reports the trial, Walters 2013 the trametinib PDX; no primary source puts the two together until Van Cutsem 2018 (next entry). Year 2013 by the registry rule; the v2 draft used 2014. Earlier unselected MEK failures (CI-1040 2004, selumetinib vs capecitabine 2012) are not scored because those drugs are not members. Refametinib (Van Laethem 2017, single-arm phase I/I
+   2017 contra   Pancreatic tumour model (pimasertib)
+      reason: Xenografts stalled; three drugs, no patient benefit
+      note: Pimasertib + gemcitabine, randomised: PFS HR 0.91, OS 7.3 vs 7.6 months, KRAS status irrelevant; the paper itself sets this against its pancreatic tumour model.
+      judgement: Strengthens the 2013 contra rather than changing it: the only primary source in this context that states the model and patient results side by side (comparison_stated true). Year 2017 by the NCT01016483 results posting (2017-06-23), ahead of the 2018 epub. Primary endpoint of the phase II part was PFS (registry), with OS secondary; both null.
+   2023 contra   Patient-derived pancreatic xenografts (trametinib + chloroquine)
+      note: Trametinib + chloroquine regressed patient-derived PDA xenografts (Kinsey 2019); patients given trametinib + hydroxychloroquine third-line had no responses (1/10 stable disease).
+      judgement: Same PDX system, now dosed with the exact regimen patients later received; the model (epub 2019-03-04) precedes both patient series, so prospective. Regressions predicted, no responses seen: contra, same status as the track since 2013, so strengthens. Hydroxychloroquine is a non-member partner, but trametinib is the member drug and the model tested the same combination.
+-- dose (cell headline same)
+   2012 same     Tumour xenografts, pERK by IHC (trametinib)
+      note: At 2 mg daily, plasma trametinib stayed above the 10.4 ng/mL preclinical target across the dosing interval; MTD 3 mg, so the margin held.
+
+==================== myelodysplastic-syndrome-hdac-pan-inhibitors  [oncology; furthest phase 3; 3 programs]
+-- engagement (cell headline same)
+   2014 same     Human leukemia cells ex vivo (K562, primary AML blasts)
+      reason: Acetylation rose and tracked response
+      note: In 39 AML/high-risk MDS patients on panobinostat plus azacitidine, histone H3/H4 acetylation rose and tracked clinical response.
+   2011 same     Mouse xenografts (HCT-116, later MOLM-13/SET-2 AML)
+      note: SB939 acH3 tracked dose in HCT-116 and HL-60 mouse tissues; in 30 solid-tumour phase 1 patients PBMC acH3 rose with dose (10-80 mg).
+   2017 same     Mouse xenografts (HCT-116, later MOLM-13/SET-2 AML)
+      reason: Acetylation did not track exposure
+      note: In 44 AML/MDS patients plasma pracinostat rose with dose but histone acetylation did not follow; solid-tumour phase 1 saw no AcH3-dose relation either.
+-- efficacy (cell headline contra)
+   2009 untested Human leukemia cells ex vivo (K562, primary AML blasts)
+      note: Panobinostat with decitabine killed K562 and primary AML cells but spared normal CD34+ progenitors; no MDS patient comparison yet.
+   2011 contra   Human leukemia cells ex vivo (K562, primary AML blasts)
+      reason: No responses; combination no OS gain
+      note: Single-agent panobinostat: 1 of 13 lower-risk MDS patients improved; 0 of 26 refractory MDS responded; with azacitidine, no OS or progression benefit and more deaths.
+      judgement: Track scored contra on the earliest MDS comparison (Dimicoli, epub 2011) and held there: 0/26 refractory MDS (NCT00594230, interim futility stop), 0% HI-E in transfusion-dependent lower-risk MDS (NCT01034657, stopped for lack of efficacy), and the randomized phase 2b with azacitidine (NCT00946647) showing no 1-year OS or TTP difference with more on-treatment deaths. The phase 2b composite CR was n
+   2012 untested Mouse AML xenografts (MOLM-13, SET-2)
+      note: Pracinostat alone shrank FLT3-ITD and JAK2-mutant AML xenografts and synergized with pacritinib; the MDS trials rested on this and on class-level HMA synergy.
+      judgement: Opens the efficacy strip at 2012 rather than 2010 because the 2010 paper's efficacy models were colorectal; the track slug and first-use year stay those of the xenograft platform.
+   2017 contra   Mouse AML xenografts (MOLM-13, SET-2)
+      reason: CR lower than placebo in MDS
+      note: Randomized, placebo-controlled phase 2 in 102 higher-risk MDS patients: CR by cycle 6 was 18% with pracinostat vs 33% with placebo, no OS or PFS gain.
+      judgement: Pairing is mine: the trial paper cites pracinostat's 'preclinical activity in myeloid malignancies' and class-level HDACi-HMA synergy but makes no model comparison. The direction reversed (CR 18% vs 33%), so magnitude is 'opposite'. The HMA-failure phase 2 (Yalniz 2020, CR 2%) and the 45 mg single-arm follow-on (ORR 35.9%, no comparator, ended by sponsor) are listed as patient_trials and change no
+-- dose (cell headline untested)
+   2011 retro    Multi-species allometric scaling plus Simcyp PBPK prediction of pracinostat human oral PK,
+      note: Human oral PK predicted from mouse/rat/dog ADME by allometry and Simcyp agreed with the phase 1 data; 60 mg RP2D reached.
+
+==================== plasma-cell-myeloma-psmb5-inhibitors  [oncology; furthest phase 4; 3 programs]
+-- engagement (cell headline same)
+   2012 same     Delanzomib programme: human MM xenografts in immunodeficient mice with tumour-vs-normal-ti
+      reason: Mouse proteasome-PD readout moved in patients
+      note: In the first-in-human phase 1, PBMC proteasome inhibition was dose related in MM patients (45.4% at the RD): the mouse proteasome-PD prediction held.
+   2015 same     Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-
+      reason: Mouse PD readouts moved in patients
+      note: In dosed patients, whole-blood 20S proteasome activity fell and ATF-3 rose in tumour biopsies: the mouse PD readouts moved in humans.
+-- efficacy (cell headline contra)
+   2009 untested Berenson-lab SCID-hu LAGκ-1A (bortezomib-sensitive) and LAGκ-1B (bortezomib-resistant) pat
+      note: Oral single-agent CEP-18770 gave marked anti-MM effects in patient-derived LAGκ xenografts and, with bortezomib, delayed bortezomib-resistant tumours; no patient result yet.
+      judgement: A separate track from delanzomib-mm-xenograft (Piva 2008, Cephalon cell-line xenografts): a different laboratory's patient-derived SCID-hu system with its own prediction (single-agent oral activity, retained activity against bortezomib-resistant disease in combination). Opened at the BJH epub (2009-12-01); the ASH 2008 abstract is earlier but was not verified beyond a search snippet.
+   2017 contra   Berenson-lab SCID-hu LAGκ-1A (bortezomib-sensitive) and LAGκ-1B (bortezomib-resistant) pat
+      reason: 9% PR against marked PDX activity
+      note: Single-agent delanzomib at the MTD gave 9% PR and development stopped, against marked single-agent activity in the LAGκ patient-derived xenografts.
+      judgement: Same patient datum as the delanzomib-mm-xenograft contra, scored on its own track because the systems differ. Contra, not neg: the abstract gives no model effect size below a class bar. Dated 2017 (epub 2017-01-31); the trial posted no registry results. The LAGκ-1B bortezomib-resistant arm was only tested in combination with bortezomib in mice and never in patients, so the patient-level half of th
+   2007 untested Delanzomib programme: human MM xenografts in immunodeficient mice with tumour-vs-normal-ti
+      note: CEP-18770 produced complete regression of MM xenografts and longer survival in a systemic MM model; no patient comparison yet.
+      judgement: Separate track from the ixazomib MM.1S/SCID system under this run's track rule: a different sponsor's xenograft panel (cell lines not named in the abstract) making a different prediction, parity with bortezomib plus marrow sparing.
+   2017 contra   Delanzomib programme: human MM xenografts in immunodeficient mice with tumour-vs-normal-ti
+      reason: Mouse regressions, 9% PR in patients
+      note: At the MTD delanzomib gave 9% partial responses and 2.5-month TTP against complete regressions in mice; development stopped for efficacy.
+      judgement: The paper itself attributes discontinuation to efficacy (source_calls_it: miss). Piva 2008 predicted a profile 'competitive with bortezomib'; single-agent bortezomib in comparable relapsed/refractory patients gave roughly 27-38% ORR, so 9% is below the class bar, but no model effect size and class threshold are quotable from the abstract, so this is contra rather than neg. This failure stays on th
+   2007 untested Patient-derived primary CD138+ myeloma cells ex vivo, including cells from bortezomib-trea
+      note: CEP-18770 killed CD138+ explants from untreated and bortezomib-treated patients; ONX 0912 (2010) and MLN2238 (2011) later killed bortezomib-resistant patient cells. No patient comparison yet.
+      judgement: Opened at first use (Piva 2008, epub 2007-12-05). Patient-level track: the system's claim is that cells from bortezomib-exposed or bortezomib-resistant patients still die on a member drug, i.e. which patients respond, not whether the class works. Separate from the cell-line xenograft tracks: different material, different prediction.
+   2014 untested Patient-derived primary CD138+ myeloma cells ex vivo, including cells from bortezomib-trea
+      reason: Responses after bortezomib, as ex vivo predicted
+      note: Single-agent ixazomib gave PRs in the bortezomib-relapsed (3/10) and relapsed-refractory (2/11) expansion cohorts, as bortezomib-resistant patient cells ex vivo predicted.
+      judgement: Scored same rather than untested because Kumar 2014 reports responses by prior-bortezomib cohort, which is the patient-level question the ex-vivo system asked (Chauhan 2011: MLN2238 kills MM cells resistant to bortezomib therapy). Paired comparison: the trial paper only cites the model work. The FDA pharmacology review reproduces Chauhan 2011's ex-vivo cytotoxicity figure, so model_filed is true f
+   2010 untested Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-
+      note: Ixazomib shrank haematologic and solid xenografts, with greater PD response tracking greater antitumour activity; no patient comparison yet.
+      judgement: Myeloma-specific MM.1S/SCID data followed in Chauhan 2011 (doi:10.1158/1078-0432.CCR-11-0476) and in the FDA pharmacology review (99-100% TGI at 6-10 mg/kg PO twice weekly).
+   2015 same     Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-
+      reason: PFS benefit as xenograft predicted
+      note: TOURMALINE-MM1 met its primary endpoint: PFS 20.6 vs 14.7 months, HR 0.74, adding ixazomib to lenalidomide-dexamethasone.
+      judgement: Dated 2015 because the FDA review package (approval 2015-11-20) made the comparison public before the registry posting (2016-01-27) and the NEJM paper (Moreau 2016, in patient_trials). The xenograft is a single-agent model; the trial was an add-on to lenalidomide-dexamethasone, and single-agent ixazomib in phase 1 gave 15-18% ORR (Richardson 2014; Kumar 2014), so magnitude is direction only. Oproz
+   2020 contra   Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-
+      reason: Frontline PFS primary missed
+      note: TOURMALINE-MM2 missed its primary endpoint: PFS 35.3 vs 21.8 months, HR 0.830, p=0.073, adding ixazomib to lenalidomide-dexamethasone in transplant-ineligible newly diagnosed myeloma.
+      judgement: Population is genotype/biomarker/pathogen else Unselected (brief), so line of therapy is not a split and newly diagnosed patients are in context. Dated 2020: Takeda's topline release (2020-03-10) made the miss public before the registry results (2021-02-01) and Facon 2021 (PubMed entry 2021-03-25), which is the tier-1 record that sets the status. A contra on the same track outranks the 2015 TOURMA
+-- dose (cell headline same)
+   2015 same     Ixazomib population-PK model (NONMEM, 226 phase 1 patients) simulating exposure after fixe
+      reason: Fixed 4 mg reached target and worked
+      note: FDA's popPK review of phase 3 data found body size does not move clearance; 4 mg fixed reached the predicted exposure and TOURMALINE-MM1 met its PFS primary.
+   2015 same     Human MM.1S myeloma xenografts in CB-17 SCID mice; tumour 20S beta5 inhibition + unfolded-
+      reason: Oral exposure reached; PFS benefit followed
+      note: Oral 4 mg weekly gave a per-dose plasma AUC within 2x of the mouse's tumour-active dose, was tolerated, and carried the PFS benefit.
+
+==================== atopic-eczema-anti-il33-antibodies  [other; furthest phase 2; 4 programs]
+-- engagement (cell headline same)
+   2019 contra   Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)
+      note: One 300 mg etokimab dose left serum total IgE unchanged at day 29 and day 140 in 12 AD patients, where antibody-dosed DNCB mice had lowered serum IgE.
+   2019 retro    In-vitro neutrophil migration to skin interstitial fluid (etokimab)
+      note: The in-vitro block of neutrophil migration was matched in the same 12 patients: etokimab cut neutrophil infiltration into HDM-challenged skin versus placebo.
+   2019 same     House-dust-mite skin challenge in AD patients (single-dose etokimab)
+      reason: Challenge neutrophils fell vs placebo
+      note: Placebo-controlled house-dust-mite skin challenge in the same 12 patients: etokimab cut neutrophil infiltration into challenged skin.
+   2019 same     IL1RL1 AD-GWAS locus and IL33 loss-of-function carriers
+      reason: Genetic eosinophil prediction held in patients
+      note: The eosinophil fall the IL33 loss-of-function carriers predicted was reproduced by one etokimab dose in AD patients.
+   2019 same     IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)
+      note: A single systemic etokimab dose lowered peripheral eosinophils by day 29 in 12 AD patients, the readout the IL-33 mice used.
+   2024 same     IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)
+      reason: Target saturated, eosinophils fell, no efficacy
+      note: Itepekimab saturated serum total IL-33 at 300 mg q4w/q2w and lowered blood eosinophils in two phase 2 AD trials.
+-- efficacy (cell headline contra)
+   2017 untested Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)
+      note: A neutralising anti-mouse-IL-33 antibody given after each DNCB challenge improved lesions, scratching, ear thickness and dermatitis score; read as curative for AD.
+      judgement: Opens the only prospective pharmacological AD-model track for the class: none of the four members binds mouse IL-33, so a surrogate anti-mouse antibody is the closest any animal came to the dosed product (product_in_model false). The same paper correlates serum IL-33/sST2 with human AD activity, a biomarker association that predicts nothing about treatment and is not scored.
+   2019 contra   Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)
+      note: ATLAS: no etokimab arm beat placebo on EASI change at week 16 (placebo -49%), where antibody-dosed DNCB mice had predicted a curative effect.
+      judgement: Direct pharmacological miss: the model dosed an antibody of the same mechanism (species-matched surrogate) and predicted benefit; the first member trial with a placebo arm gave none. Year 2019 from the press release, status set by the tier 3 registry record, matching the draft's convention for the ATLAS entry.
+   2021 contra   Anti-mouse-IL-33 antibody in DNCB-induced AD mice (Peng 2018)
+      note: Torudokimab's AD trial was stopped for lack of efficacy at interim (vIGA 0/1 5-6% vs 9.5% placebo); itepekimab and tozorakimab missed after it.
+      judgement: Strengthens the 2019 miss with a second member and a tier 3 record (year 2021 per rule 7: the second miss was public 2021-04-20, before the 2024 paper). The surrogate-antibody mouse prediction failed for every member tested with a placebo arm.
+   2019 untested House-dust-mite skin challenge in AD patients (single-dose etokimab)
+      note: Twelve-patient open-label etokimab study: 83% EASI50 after one dose plus the HDM-challenge neutrophil signal, read as therapeutic potential in AD.
+      judgement: Opens the human-challenge track in the same year its prediction was tested.
+   2019 contra   House-dust-mite skin challenge in AD patients (single-dose etokimab)
+      reason: Challenge signal, no placebo-controlled efficacy
+      note: The challenge study's predicted benefit disappeared in ATLAS: placebo-controlled EASI change at week 16 was no better than placebo in any arm.
+      judgement: Kept as a separate track because it is a different system with its own prediction (human challenge, not mouse). The challenge arm measured HDM-evoked neutrophils, not eczema, and the EASI arm had no placebo; ATLAS's 49% placebo improvement swallowed the open-label signal.
+   2012 untested IL1RL1 AD-GWAS locus and IL33 loss-of-function carriers
+      note: Japanese AD GWAS placed a risk locus at IL1RL1-IL18R1-IL18RAP (P=8e-18); the causal gene inside it was not resolved.
+      judgement: Opens the human-genetic track in AD. The locus is shared by three receptor genes and has a small odds ratio; the IL33 loss-of-function variant (Smith 2017) protects from asthma, with no AD phenotype reported.
+   2019 contra   IL1RL1 AD-GWAS locus and IL33 loss-of-function carriers
+      reason: Pathway genetics did not predict efficacy
+      note: The GWAS-implicated ST2/IL-33 axis did not translate: four antibodies against IL-33 missed their AD phase 2 primary endpoints from 2019.
+      judgement: Judgement call: a GWAS locus is a weak prediction and the task names it as rationale, so it is scored on its own human-genetic track at low confidence rather than folded into the mouse track. Pairing is mine; no source puts the genetics beside the trial.
+   2013 untested IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)
+      note: ST2/IL-33-driven ILC2s promote MC903 AD-like inflammation in mice; Li 2017 extended this to IL-33-/- and ST2-/- knockouts.
+      judgement: Opens the mouse track. The class prediction is that neutralizing IL-33 should reduce eczema; Li 2017 (doi:10.1038/cddis.2017.90) made it explicit: 'These data suggest that IL-33/IL-33R may be a therapeutic target of AD.'
+   2019 contra   IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)
+      note: ATLAS (~300 patients, four etokimab regimens): every arm missed EASI change at week 16 vs placebo; registry later showed all p>0.4.
+      judgement: Year is 2019 because the press release made the result public on 2019-11-08; the tier 3 registry record (2023-05-24) sets the status and agrees. Paired myself with Salimi 2013/Li 2017: the knockouts predicted less eczema with IL-33 loss; the antibody gave none over a 49% placebo improvement. Two later facts belong on this track but are not scored as entries: Pietka 2020 (Sci Rep, doi:10.1038/s4159
+   2024 contra   IL-33-transgenic and IL-33/ST2-knockout mice (MC903 dermatitis)
+      reason: Four antibodies, four phase 2 misses
+      note: Itepekimab's two AD trials were terminated after a failed interim; torudokimab and tozorakimab missed too, with the source doubting IL-33 drives AD.
+      judgement: Strengthens the 2019 contra with a tier 1 source and the three later trials: torudokimab NCT03831191 (terminated for lack of efficacy at interim, results 2021-04-20; the task's NCT04469530 is a sirolimus oncology trial, corrected here), itepekimab NCT03738423 (lack of efficacy, 2022-06-10) and tozorakimab FRONTIER-2 NCT04212169 (Silverberg 2025, doi:10.1111/jdv.20388, primary p 0.55-0.89). The COP
+   2018 untested Stat6VT spontaneous-AD mice with IL-33 deficiency (DaSilva-Arnold 2018)
+      note: IL-33 loss made spontaneous AD-like disease worse in Stat6VT mice: the one pre-trial AD model predicting no benefit, if anything harm, from IL-33 blockade.
+      judgement: Own track: a T-cell STAT6-driven spontaneous model crossed to IL-33 knockout is a different system from the MC903 transgenic/knockout track and predicted the opposite direction (IL-33 protective), so it cannot share that track's score.
+   2019 contra   Stat6VT spontaneous-AD mice with IL-33 deficiency (DaSilva-Arnold 2018)
+      note: ATLAS matched the Stat6VT prediction of no benefit: no etokimab arm beat placebo on EASI at week 16; the predicted worsening did not appear, so direction only.
+      judgement: same with direction_only rather than neg: neg needs the model's own number for a class member below a class effect bar, and no member was ever dosed in this system nor did the class establish an effect bar, so neg is unearnable here. Not also scored in safety: the predicted harm is the treated disease itself and is counted once, here. Itepekimab (NCT03738423, 2022-06-10), torudokimab (NCT03831191,
+-- dose (cell headline untested)
+
+==================== asthma-anti-il13-antibodies  [respiratory; furthest phase 3; 4 programs]
+-- engagement (cell headline same)
+   2018 contra   Cynomolgus monkey antigen challenge (tralokinumab)
+      reason: BAL eosinophil prediction failed in patients
+      note: Monkey model predicted BAL eosinophilia falls with tralokinumab; MESOS found no eosinophil change in bronchial submucosa, sputum or blood at 300 mg q2w.
+   2013 same     IL-13-stimulated bronchial epithelial cells and patient brushings (periostin signature)
+      reason: FeNO and Th2 chemokines fell as predicted
+      note: GSK679586 cut FeNO 19-52% dose-dependently in mild asthmatics and raised total serum IL-13 (drug-target complexes); lebrikizumab later cut CCL13/CCL17 and FeNO.
+   2016 retro    Mathematical model of blood and airway eosinophil dynamics under anti-IL-13 therapy
+      note: The paper sets its predicted blood-eosinophil rise beside the published lebrikizumab and tralokinumab phase 2 eosinophil data and calls them consistent.
+   2018 contra   Mathematical model of blood and airway eosinophil dynamics under anti-IL-13 therapy
+      reason: Airway eosinophil prediction failed in MESOS
+      note: MESOS: the model's prospective prediction of lower airway eosinophils failed; tralokinumab left bronchial submucosal and sputum eosinophils unchanged.
+   2018 contra   IL-13-humanised OVA-sensitised mouse dosed with tralokinumab
+      reason: Eosinophil readout did not move in patients
+      note: MESOS: tralokinumab 300 mg q2w left bronchial, sputum and blood eosinophils unchanged (bronchial ratio 1.43) while FeNO and IgE fell.
+-- efficacy (cell headline contra)
+   2012 untested Cynomolgus monkey antigen challenge (tralokinumab)
+      note: Tralokinumab inhibited AHR and BAL eosinophilia after antigen challenge in cynomolgus monkeys; the package was built for severe uncontrolled asthma.
+      judgement: Separate track from the OVA mouse: a primate with natural Ascaris sensitisation dosed with the product itself.
+   2012 contra   Cynomolgus monkey antigen challenge (tralokinumab)
+      note: Weeks after the monkey package appeared, tralokinumab's phase 2a missed its ACQ-6 primary; lung function improved only as a secondary.
+      judgement: Same trial scored on the monkey track because the product was dosed in that model; the monkey predicted AHR relief, the trial's primary was a symptom score.
+   2015 untested Cynomolgus monkey antigen challenge (tralokinumab)
+      note: Phase 2b: annual exacerbation rate 0.91 (q2w) and 0.97 (q4w) vs 0.90 on placebo in 452 severe asthmatics; FEV1 +7.3% at q2w only.
+      judgement: Primary missed at the regimen taken into phase 3, with the product that was dosed in the monkey; strengthens the 2012 contra rather than changing it.
+   2018 contra   Cynomolgus monkey antigen challenge (tralokinumab)
+      reason: Monkey benefit; phase 3 failed twice
+      note: STRATOS 1 all-comers AAER rate ratio 0.93 (p=0.59); the FeNO-high signal in STRATOS 1 (-44%) did not replicate in STRATOS 2 (-16%, p=0.47).
+      judgement: Terminal class failure: 2,063 severe asthmatics at the regimen that neutralised IL-13 in MESOS; AstraZeneca then dropped asthma and took tralokinumab to atopic dermatitis.
+   2007 untested IL-13-stimulated bronchial epithelial cells and patient brushings (periostin signature)
+      note: Periostin, CLCA1 and SERPINB2 marked IL-13-driven epithelium in patient brushings; serum periostin became the selection marker for lebrikizumab.
+      judgement: Patient-level track: the prediction is who responds (IL-13-signature-high patients), not whether the class works.
+   2011 same     IL-13-stimulated bronchial epithelial cells and patient brushings (periostin signature)
+      note: Prespecified periostin-high subgroup gained 8.2 FEV1 points vs 1.6 in periostin-low with lebrikizumab (p=0.03 vs 0.61).
+      judgement: comparison_stated true because the trial itself was built to test the signature model ('We hypothesized that anti-interleukin-13 therapy would benefit patients with asthma who had a pretreatment profile consistent with interleukin-13 activity') and reports the split; the model predicts who responds, not how much, so magnitude is direction_only.
+   2013 contra   IL-13-stimulated bronchial epithelial cells and patient brushings (periostin signature)
+      note: Lebrikizumab 125-500 mg in 212 ICS-free asthmatics: FEV1 primary missed and no difference by periostin subgroup.
+      judgement: Contra because the patient-level prediction (periostin-high responds) failed on a primary endpoint; a re-scorer could date it to 2016 (LAVOLTA II, biomarker-high primary p=0.06) or 2018 (STRATOS 1 chose FeNO over periostin). LUTE/VERSE (Hanania 2015, exacerbations -60% periostin-high vs -5% low, doi:10.1136/thoraxjnl-2014-206719) supported the marker in between, but a contra on a track is not undo
+   2016 untested IL-13-stimulated bronchial epithelial cells and patient brushings (periostin signature)
+      reason: Periostin selection failed to replicate
+      note: Replicate phase 3s in biomarker-high patients (periostin >=50 ng/mL or eosinophils >=300/uL): LAVOLTA I rate ratios 0.49/0.70, LAVOLTA II 0.74/0.74 (p=0.06); Roche stopped.
+      judgement: Biomarker-high pooled periostin with blood eosinophils, so this is an imperfect test of the periostin model; STRATOS 1 (2018) then picked FeNO, not periostin, as tralokinumab's biomarker and STRATOS 2 failed to replicate even that. Authors leave it unresolved ('clinically relevant changes could not be ruled out').
+   2008 untested Whole-lung allergen challenge in mild allergic asthmatics (late asthmatic response, lebrik
+      note: Genentech ran lebrikizumab (MILR1444A) 5 mg/kg q4w against the late asthmatic response to inhaled allergen in 29 mild allergic asthmatics (Dec 2008 to Nov 2009).
+      judgement: Opening untested entry at the first dated member use of the human allergen-challenge model; decision 8 puts the challenge in scope as a non-animal system. Patient-level exploratory finding (biomarker-high responders) belongs to the existing periostin track.
+   2013 contra   Whole-lung allergen challenge in mild allergic asthmatics (late asthmatic response, lebrik
+      note: Challenge: LAR cut 48% (95% CI -19 to 90, n.s.), larger in eosinophil/IgE/periostin-high subjects; Noonan: FEV1 primary missed in 212 ICS-free mild-moderate asthmatics.
+      judgement: Paired, not stated. Scheerens' own conclusion is positive ('Lebrikizumab reduced the LAR in subjects with mild asthma') and it sets that beside MILLY's FEV1 gain in ICS-uncontrolled asthma (a same, listed under patient_trials); but the trial nearest the challenge population, ICS-free mild-to-moderate asthma, missed its FEV1 primary, and one contra outranks a same on a track.
+   2017 contra   Whole-lung allergen challenge in mild allergic asthmatics (late asthmatic response, lebrik
+      reason: Two FEV1 trials missed in mild asthma
+      note: Phase 3 replicate in 310 ICS-free mild-moderate asthmatics: FEV1 +83 mL vs placebo (95% CI -3 to 170, p=0.06), primary missed.
+      judgement: Strengthens: the second trial in the population closest to the challenge subjects (mild asthma, no ICS) reproduced the miss, and the authors say so.
+   2011 untested IL-13-humanised OVA-sensitised mouse dosed with tralokinumab
+      note: Tralokinumab inhibited AHR and BAL eosinophilia after OVA challenge in IL-13-humanised mice; the package targeted severe uncontrolled asthma.
+      judgement: Opener on the only mouse the product was dosed in; a separate track from the wild-type OVA mouse (different model, different stated eosinophil prediction).
+   2012 contra   IL-13-humanised OVA-sensitised mouse dosed with tralokinumab
+      note: Tralokinumab phase 2a: ACQ-6 primary missed (-0.76 vs -0.61, p=0.375) in 194 moderate-severe asthmatics; FEV1 +0.15 L (p=0.072) not significant.
+      judgement: First member trial of the product the model was dosed with; contra on the primary-endpoint rule, the authors calling the result mixed. Scored here as well as on the wild-type mouse because the two are different systems.
+   2018 contra   IL-13-humanised OVA-sensitised mouse dosed with tralokinumab
+      reason: Product failed every phase 3 primary
+      note: STRATOS 1/2 missed their exacerbation primaries at 300 mg q2w (all-comers rate ratio 0.93; FeNO-high 0.84); TROPOS missed its OCS-sparing primary.
+      judgement: Strengthens: the product dosed in the model failed both phase 3 exacerbation trials and the OCS-sparing trial, after which AstraZeneca stopped asthma development.
+   1998 untested OVA-sensitised mouse with IL-13 neutralisation
+      note: Soluble IL-13Ralpha2-Fc reversed allergen-induced AHR and mucus in OVA mice; IL-13 alone reproduced the phenotype in naive mice.
+      judgement: The class-founding model; every member's rationale cites it. Tralokinumab is the only member later dosed in a mouse (IL-13-humanised OVA mouse, May 2012), so product_in_model turns true from 2012 on this track.
+   2011 same     OVA-sensitised mouse with IL-13 neutralisation
+      note: MILLY: lebrikizumab raised FEV1 5.5 points over placebo at week 12 (p=0.02) in 219 ICS-uncontrolled adults; exacerbations (secondary) did not fall.
+      judgement: The first member trial met its primary endpoint, so the mouse direction held for lung function; the 5.5-point gain is modest and exacerbations did not fall, which is why magnitude is direction_only.
+   2012 contra   OVA-sensitised mouse with IL-13 neutralisation
+      note: Tralokinumab phase 2a: ACQ-6 primary missed (-0.76 vs -0.61, p=0.375) in 194 moderate-severe asthmatics; FEV1 +0.15 L (p=0.072).
+      judgement: Contra on the primary-endpoint rule; the authors call it mixed ('No improvement in ACQ-6 was observed, although tralokinumab treatment was associated with improved lung function'). Noonan 2013 (lebrikizumab, FEV1 primary missed in ICS-free asthma, epub 2013-05-29, doi:10.1016/j.jaci.2013.03.051) would date the contra a year later for a re-scorer who discounts symptom scores; the end state is the s
+   2014 contra   OVA-sensitised mouse with IL-13 neutralisation
+      reason: Mouse AHR benefit; patients did not respond
+      note: GSK679586 10 mg/kg monthly: no change in ACQ (p=0.058), FEV1 (p=0.276) or exacerbations in 198 severe asthmatics, including IgE- or eosinophil-high patients.
+      judgement: Second member failure on the same track. Dectrekumab (QAX576) ran a 259-patient asthma phase 2 (NCT01130064, completed 2012) that was never published or posted, so that member cannot be scored; its only published trial is in eosinophilic oesophagitis (Rothenberg 2015, doi:10.1016/j.jaci.2014.07.049). STRATOS 2018 (all-comers AAER rate ratio 0.93) later closed the class.
+-- dose (cell headline same)
+   2018 same     Integrated population PK/PD dose-exposure-FEV1 model of tralokinumab (phase 2a/2b data)
+      reason: Target regimen reached, trials failed
+      note: 300 mg q2w, the model's near-maximal FEV1 dose, was given in STRATOS 1/2; both exacerbation primaries missed and asthma development stopped.
+
+==================== chronic-obstructive-pulmonary-disease-mapk14-inhibitors  [respiratory; furthest phase 2; 4 programs]
+-- engagement (cell headline same)
+   2018 same     AstraZeneca human alveolar-macrophage/whole-blood LPS-TNF potency model with rat inhaled l
+      reason: Ex-vivo whole-blood potency matched in vitro
+      note: AZD7624's unbound LPS-TNF potency in vitro (pIC50u 8.4-9.0) matched ex-vivo whole blood from dosed volunteers (8.8), and inhaled dosing cut LPS-induced sputum TNF-alpha 85% at 0.3 nM unbound plasma.
+   2009 same     Rat and cynomolgus endotoxin-induced TNF-alpha PD model (PH-797804)
+      reason: Endotoxin TNF fell in volunteers
+      note: PH-797804 blocked systemic endotoxin-induced TNF in rat and monkey; in human endotoxin studies it cut TNF-alpha and IL-6 dose-dependently, paralleling p38 inhibition.
+   2015 same     Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      reason: Human LPS neutrophils fell as rodent predicted
+      note: Single doses of oral PH-797804 30 mg and inhaled PF-03715455 20 mg cut post-LPS sputum neutrophil percentage by 15.1-15.3 and 8.0 points in healthy volunteers; fluticasone did nothing.
+-- efficacy (cell headline contra)
+   2018 contra   AstraZeneca human alveolar-macrophage/whole-blood LPS-TNF potency model with rat inhaled l
+      reason: Cell model right on PD, wrong on benefit
+      note: AZD7624 blocked LPS-induced TNF-alpha and IL-6 in human alveolar macrophages (pIC50 9.2) and p38-alpha was the isoform raised in COPD lung, yet the 12-week exacerbation trial showed no benefit on any endpoint.
+      judgement: Stated miss on AstraZeneca's own track (comparison_stated true): the paper sets the in vitro and challenge results beside the trial failure. Scored separately from the human-challenge track because the cell system is a different model, and from the rodent track because AZD7624 was never reported in a rodent LPS model.
+   2006 untested Ex-vivo COPD-patient alveolar macrophages, LPS cytokine release (SB239063, SD-282; later A
+      note: Macrophages from smokers and emphysema patients: sibling p38 inhibitors cut LPS-induced TNF-alpha regardless of disease status, which the authors read as a therapeutic lead for COPD.
+      judgement: Opens the efficacy cell of the existing ex-vivo COPD-macrophage track at its first use (2006); sibling drugs only, so product_in_model false.
+   2016 contra   Ex-vivo COPD-patient alveolar macrophages, LPS cytokine release (SB239063, SD-282; later A
+      reason: Predicted steroid add-on benefit did not appear
+      note: Armstrong 2011 found sibling BIRB-796 synergised with dexamethasone in COPD alveolar macrophages; oral PH-797804 6 mg added to salmeterol/fluticasone (NCT01321463) gave +27 mL trough FEV1 over placebo at 12 weeks, missing Pfizer's decision bar.
+      judgement: Scored contra on the same basis as the draft's 2015 rodent-track entry: a member drug run as add-on to a corticosteroid, the exact setting Armstrong 2011 predicts, gave a sub-MCID 27 mL gain that failed the sponsor's bar and ended the programme. Class level, no stated comparison.
+   2006 untested Healthy-volunteer inhaled-LPS sputum neutrophilia challenge (PH-797804, PF-03715455, AZD76
+      note: Opening entry: Pfizer ran PH-797804 through a single-dose inhaled-LPS sputum challenge in healthy volunteers in 2006-2008; the result stayed unpublished until 2015.
+      judgement: Opens the human-challenge track at its first use so the strip shows the model existed seven years before a COPD comparison was public. model_kind human_challenge; the challenge is itself the human PD readout, so this track has no engagement cell.
+   2015 contra   Healthy-volunteer inhaled-LPS sputum neutrophilia challenge (PH-797804, PF-03715455, AZD76
+      note: Singh 2015 set the challenge result (PH-797804 cut post-LPS sputum neutrophils 15 points) beside the 93 mL 6-week FEV1 gain in COPD patients as a translation of the model.
+      judgement: Scored same because the source itself places the challenge-model result and the COPD trial result side by side (comparison_stated true), in direction only. Not a retrodiction: the challenge study was run in 2006-2008, before the COPD trial, and merely published late. PF-03715455 also cut sputum neutrophils (8 points) here but its COPD trial (NCT02366637) was stopped at 13 patients and cannot score
+   2018 contra   Healthy-volunteer inhaled-LPS sputum neutrophilia challenge (PH-797804, PF-03715455, AZD76
+      reason: Challenge win, no patient benefit
+      note: AZD7624 cut LPS-induced sputum neutrophils 56.6% and TNF-alpha 85.4% in volunteers, then gave no exacerbation, FEV1 or symptom benefit in 213 COPD patients; the authors call the challenge a poor predictor.
+      judgement: Stated miss (comparison_stated true, source_calls_it miss): the model's own authors conclude the challenge did not predict COPD benefit. Contra beats the 2015 same on this track; no later source shows the patient signal reversed. PF-03715455's 4-week COPD crossover (NCT02366637, terminated for business reasons at n=13, results 2016-07-06: -47 mL vs +80 mL on placebo in 6 completers) is listed but 
+   2007 untested Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL
+      note: Sibling p38alpha inhibitor SD-282 cut smoke-induced BAL macrophages, neutrophils, COX-2 and IL-6 in an 11-day A/J mouse model where dexamethasone failed; no member drug was ever reported in this model.
+      judgement: Opens the canonical COPD disease model as its own track, at its first use with a p38 inhibitor (2007 epub). It is a different system from the rodent inhaled-LPS neutrophilia model (chronic smoke exposure with steroid-insensitive inflammation vs an acute endotoxin stimulus) and its prediction is disease-level, so a separate model_id. Sibling-only, as the brief allows.
+   2013 same     Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL
+      note: First member result in COPD patients: oral PH-797804 3 and 6 mg beat placebo on trough FEV1 at week 6 (+86 and +93 mL), the direction the smoke model predicted for a p38 inhibitor.
+      judgement: Paired comparison (comparison_stated false): model side Medicherla 2008 (sibling SD-282, product_in_model false), patient side the first member-drug primary endpoint in COPD. Same in direction only, as the draft's rodent-LPS track scores the same trial.
+   2015 contra   Mouse tobacco-smoke airway-inflammation model (SD-282 in A/J mice; later SB203580 in C57BL
+      reason: Smoke-model promise not borne out in COPD
+      note: PH-797804's two 12-week trials gave 27-60 mL trough-FEV1 gains that missed the sponsor's 50 mL decision bar and the drug was dropped; inhaled AZD7624 (2018) and acumapimod (2019) then failed their primaries too.
+      judgement: Dose/efficacy table row 'reached, failed, abandoned': the smoke model predicted disease benefit from p38 inhibition and the first member to reach adequately powered 12-week trials failed its bar and was dropped. One drug's contra beats another's same on the track. Paired comparison with Medicherla 2008 as model side; no source ever stated this comparison, which is why the whole track is hatched.
+   2000 untested Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      note: Sibling SB 239063 cut LPS-induced BAL neutrophils, IL-6 (>90%) and MMP-9 (64%) and bleomycin fibrosis; the authors read this as therapeutic potential in chronic airway disease.
+      judgement: Opening entry: the earliest published COPD-aspect model prediction for the class used a non-member inhibitor (product_in_model false). No member had a COPD patient result yet.
+   2013 same     Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      note: Oral PH-797804 3 and 6 mg met the 6-week trough-FEV1 primary endpoint (+86 and +93 mL vs placebo) in 230 moderate-to-severe COPD patients and improved dyspnoea.
+      judgement: Paired comparison (comparison_stated false): model side Underwood 2000, patient side the PH-797804 primary endpoint. Same in direction only: the model read BAL neutrophils and cytokines, the trial trough FEV1, so magnitude is direction_only. Losmapimod's contemporaneous COPD trials are not members and are set aside.
+   2015 contra   Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      note: Two 12-week trials (377 patients on ICS/LABA, 721 on tiotropium) gave only 27-60 mL trough FEV1 over placebo; neither met Pfizer's predefined criteria and PH-797804 was abandoned.
+      judgement: Scored contra under 'reached, failed, abandoned': the primary endpoint in two adequately sized 12-week trials fell below the predefined decision criteria (32-60 mL and 27 mL vs a 50 mL requirement) and the program ended, so the 6-week win did not hold. Judged on the data, not the sponsor's words: a 27-60 mL FEV1 gain is below the ~100 mL minimal important difference. One drug's contra beats anothe
+   2018 contra   Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      note: Inhaled AZD7624 1.0 mg daily for 12 weeks in 213 frequent exacerbators on ICS/LABA: no effect on time to first exacerbation (HR 1.39), FEV1, SGRQ or symptoms.
+      judgement: Strengthens the class-level contra with a second member on a different endpoint and route: the rodent model predicts airway anti-inflammatory activity and the inhaled drug, selected to maximise lung p38 inhibition, gave no clinical benefit. Paired with Underwood 2000; AZD7624's own stated comparisons are on the human-LPS-challenge and AstraZeneca cell-model tracks.
+   2019 contra   Rodent inhaled-LPS airway neutrophilia model (SB 239063)
+      reason: Three members failed; 6-week win did not hold
+      note: Oral acumapimod in 183 patients with acute exacerbations missed its Day-10 FEV1 primary (p=0.082); the 282-patient AETHER repeat also missed Day-7 FEV1 vs placebo (+27 and +58 mL, p=0.51 and 0.15).
+      judgement: Third member failure on the class track, in acute exacerbations rather than stable COPD: the primary endpoint was not met in the Novartis trial and, per the registry record, not met against placebo in Mereo's AETHER either. Acumapimod has no published disease-model data, so the pairing is with the class-level rodent model (product_in_model false).
+-- dose (cell headline same)
+   2020 same     Acumapimod PBPK drug-drug-interaction model (CYP3A4/P-gp inhibitors; healthy-volunteer DDI
+      reason: PBPK DDI prediction held in volunteers
+      note: Model predicted itraconazole would raise acumapimod AUC 1.31-1.69x with Cmax unchanged and stay inside the safety margin; MBCT103 (16 healthy men) observed AUC +10%, Cmax unchanged, no safety findings.
+   2018 same     AstraZeneca human alveolar-macrophage/whole-blood LPS-TNF potency model with rat inhaled l
+      reason: Reached in lung, failed, abandoned
+      note: A 1.2 mg lung-deposited dose cut LPS-induced sputum TNF-alpha 85% at sub-pharmacologic plasma levels, yet 1.0 mg once daily for 12 weeks in 213 frequent exacerbators did nothing; AZD7624 was dropped.
+   2013 same     Rat and cynomolgus endotoxin-induced TNF-alpha PD model (PH-797804)
+      note: Once-daily 0.5-10 mg for 6 weeks in 230 COPD patients: 3 and 6 mg raised trough FEV1 86-93 mL over placebo and were tolerated, so the projected dose range was reached and worked.

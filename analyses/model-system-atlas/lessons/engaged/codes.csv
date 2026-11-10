@@ -1,0 +1,28 @@
+slug,primary,secondary,confidence,resolution,rationale
+rheumatoid-arthritis-btk-inhibitors,B1,A5,low,agree,"rat-CIA occupancy target (IC70) did not hold; fenebrutinib worked only at 150 QD/200 BID, 50 QD did not; elsubrutinib fully engaged yet matched placebo"
+alzheimer-disease-bace1-inhibitors,A2,A6,high,agree,"lifelong partial reduction from birth differs from late partial inhibition; Abeta lowered as predicted, cognition worsened"
+breast-cancer-cdk4-6-inhibitors,A2,C1,medium,agree,class approved in metastatic ER+; the contra is adjuvant PALLAS (early disease) and an intracranial ORR endpoint with brain exposure above target
+non-small-cell-lung-carcinoma-anti-igf1r-antibodies,A1,C4,medium,agree,tumour IGF-1R signalling fell in paired biopsies; add-on to erlotinib gave no PFS and total IGF-1R enriched nothing
+schizophrenia-pde10a-inhibitors,A1,B1,medium,rule,occupancy saturating and ketamine BOLD moved at exposures inside the predicted range; no effect: A1 under the refined rule (saturating engagement with a trial able to detect an effect)
+asthma-ptgdr2-antagonists,C4,A1,medium,agree,"retro mouse: DP2 antagonism alone resolved disease but added corticosteroid, as in the trials, ablated its benefit; sputum eosinophils fell 3.5-fold"
+allergic-disease-allergen-immunotherapy,C3,C1,high,agree,chamber and NAC readouts moved; field Phase 3 placebo improved 58.5 % and swallowed the effect; sponsor says the placebo effect was not a feature of phase 2
+allergic-rhinitis-ptgdr2-antagonists,U,,medium,coder2,"same drug and regimen, Phase 2 positive, Phase 3 null with cetirizine positive in both; the sponsor leaves it unresolved and so does the record"
+allergic-rhinitis-allergen-immunotherapy,C3,A5,medium,coder2,HDM-SPIRE: 'chamber predicted a field effect that placebo erased'; gp-ASIT effect below the bar it was powered for
+rheumatoid-arthritis-anti-csf2-antibodies,B1,A5,medium,agree,every-other-week maintenance lost engagement and CCL17 suppression; BAROQUE missed at all doses; contRAst 1/2 met ACR20 but trailed tofacitinib
+type-2-diabetes-mellitus-gpr119-agonists,A1,A5,medium,agree,"PYY rose but GLP-1, GIP, insulin and glucose were flat at steady state; firuglipel below sitagliptin"
+type-2-diabetes-mellitus-hsd11b1-inhibitors,A1,A5,high,agree,88-99 % enzyme inhibition in liver and fat with no change in glucose endpoints; one member reached HbA1c -0.6 %
+hiv-infectious-disease-hiv-rt-nrti-inhibitors,B1,A4,low,coder1,"GS-9131 at 60 and 180 mg gave 0.13-0.29 log against a 0.5 log bar in resistant patients; degree first, resistance second; both coders low"
+hyperlipidemia-hcar2-agonists,A1,B1,high,agree,FFA suppression and flushing reproduced; LDL unchanged; knockout mice kept niacin's lipid efficacy without the receptor; chronic FFA suppression not sustained
+alzheimer-disease-hrh3-antagonists,A1,A6,high,rule,"62-97 % H3 occupancy, donepezil arm worked, ADAS-Cog numerically worse: A1 under the refined rule"
+alzheimer-disease-htr6-antagonists,A1,B1,high,rule,"~80 % occupancy at >=15 mg, 30 mg saturating, 2,525 patients in three Phase 3 nulls: A1 under the refined rule; idalopirdine dose caveat secondary"
+migraine-disorder-anti-calca-calcb-cgrp-ligand-antibodies,C3,,low,agree,"class approved in adults; the contra is fremanezumab's miss in paediatric chronic migraine, paediatric episodic positive"
+breast-cancer-hsp90aa1-hsp90ab1-inhibitors,B1,A5,low,agree,"HER2 PET signal fell only 18 % and heterogeneously; HSP70 rose; no confirmed responses in HER2+ or TNBC, no PFS with fulvestrant"
+breast-cancer-pi3k-pan-inhibitors,A5,A1,medium,agree,tumour pAkt >90 % suppressed; FERGI HR 0.74 p=0.096; buparlisib +1.9-2.1 months; PIK3CA genotype enriched nothing
+breast-cancer-pi3k-mtor-inhibitors,B1,A1,low,coder2,"dactolisib pS6 down a median 23 % in three patients, 'target blocked by toxicity'; voxtalisib breast PD was glucose only: engagement thin, not disproven causality"
+colorectal-cancer-anti-egfr-antibodies,A4,C4,medium,agree,ADCC engaged and EGFR downmodulated; KRAS-mutant and anti-EGFR-refractory tumours did not respond; RAS/BRAF PDX retrodiction reproduced the resistance
+malignant-pancreatic-neoplasm-map2k1-2-inhibitors,A1,A5,medium,coder2,tumour pERK and Ki67 fell dose-dependently; three MEK inhibitors gave no OS or PFS and KRAS status picked no responders; KPC retro shows a modest effect
+myelodysplastic-syndrome-hdac-pan-inhibitors,A1,C4,low,rule,"histone acetylation rose and tracked response yet single-agent panobinostat gave 0 of 26 responses: a named output moved, the disease did not; the combination harm is secondary"
+plasma-cell-myeloma-psmb5-inhibitors,B1,A5,low,agree,class approved; delanzomib's RD gave 45 % PBMC proteasome inhibition and 9 % PR; ixazomib frontline add-on HR 0.83 p=0.073
+atopic-eczema-anti-il33-antibodies,A1,C3,high,agree,IL-33 saturated and eosinophils fell; four antibodies missed EASI; placebo -49 %; Stat6VT mice predicted no benefit
+asthma-anti-il13-antibodies,A1,A5,medium,coder2,"IL-13 neutralised, FeNO and IgE fell, airway eosinophils and exacerbations unchanged; FEV1 gains modest"
+chronic-obstructive-pulmonary-disease-mapk14-inhibitors,A1,A5,high,coder2,"LPS-challenge TNF and neutrophils cut, 'right on PD, wrong on benefit'; 12-week FEV1 27-60 mL below the bar"
